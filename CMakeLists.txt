@@ -60,6 +60,7 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Morph/MorphEngine.h
     Source/Engines/Dub/DubEngine.h
     Source/Engines/Drift/DriftEngine.h
+    Source/Engines/Bob/BobEngine.h
 
     # Main processor
     Source/XOmnibusProcessor.h
