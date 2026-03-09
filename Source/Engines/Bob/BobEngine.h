@@ -1625,6 +1625,7 @@ private:
         v.oscB.reset();
         v.filter.reset();
         v.texture.reset();
+        v.dustTape.reset();
     }
 
     void noteOff (int noteNumber)

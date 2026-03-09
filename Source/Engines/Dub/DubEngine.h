@@ -149,12 +149,12 @@ public:
 
             case Stage::Decay:
                 level -= (level - sustain) * decayRate;
+                level = flushDenormal (level);
                 if (level <= sustain + 0.0001f)
                 {
                     level = sustain;
                     stage = Stage::Sustain;
                 }
-                if (std::abs (level) < 1.0e-20f) level = 0.0f;
                 break;
 
             case Stage::Sustain:
@@ -168,6 +168,7 @@ public:
 
             case Stage::Release:
                 level -= level * releaseRate;
+                level = flushDenormal (level);
                 if (level < 0.0001f)
                 {
                     level = 0.0f;
@@ -205,7 +206,7 @@ public:
     float process() noexcept
     {
         constexpr double twoPi = 6.28318530717958647692;
-        float out = static_cast<float> (std::sin (phase * twoPi));
+        float out = fastSin (static_cast<float> (phase * twoPi));
         phase += rate / sr;
         if (phase >= 1.0) phase -= 1.0;
         return out;
@@ -627,6 +628,11 @@ public:
         const int maxPoly      = (pPolyphony != nullptr)
             ? (1 << std::min (3, static_cast<int> (pPolyphony->load()))) : 8;
 
+        // Precompute glide coefficient (block-constant)
+        float glideCoeff = 0.0f;
+        if (glideAmt > 0.0f)
+            glideCoeff = 1.0f - fastExp (-1.0f / (srf * (0.005f + glideAmt * 0.495f)));
+
         // Map waveform index to PolyBLEP waveform
         PolyBLEP::Waveform waveform = PolyBLEP::Waveform::Saw;
         switch (oscWaveIdx)
@@ -708,8 +714,6 @@ public:
 
                 if (voice.glideActive)
                 {
-                    float glideTimeSec = 0.005f + glideAmt * 0.495f;
-                    float glideCoeff = 1.0f - std::exp (-1.0f / (srf * glideTimeSec));
                     voice.glideSourceFreq += glideCoeff * (baseFreq - voice.glideSourceFreq);
 
                     if (std::abs (voice.glideSourceFreq - baseFreq) < 0.1f)
@@ -725,7 +729,7 @@ public:
                 float driftCents = voice.drift.process (driftAmt);
                 float totalSemitones = pitchOffset + driftCents / 100.0f
                                      + lfoPitchMod * 2.0f + pitchMod;
-                float freq = baseFreq * std::pow (2.0f, totalSemitones / 12.0f);
+                float freq = baseFreq * fastExp (totalSemitones * (0.693147f / 12.0f));
 
                 // Generate oscillators
                 voice.mainOsc.setFrequency (freq, srf);
@@ -751,7 +755,7 @@ public:
                 }
                 if (std::abs (lfoCutoffMod) > 0.001f)
                 {
-                    cutoffMod *= std::pow (2.0f, lfoCutoffMod * 2.0f);
+                    cutoffMod *= fastExp (lfoCutoffMod * 2.0f * 0.693147f);
                     cutoffMod = std::max (20.0f, std::min (20000.0f, cutoffMod));
                 }
                 // External coupling filter modulation

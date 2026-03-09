@@ -326,20 +326,29 @@ public:
     {
         sr = sampleRate;
         lpState = 0.0f;
+        cachedTone = -1.0f;
     }
 
     void reset() noexcept { lpState = 0.0f; }
+
+    void updateTone (float tone) noexcept
+    {
+        if (tone == cachedTone) return;
+        cachedTone = tone;
+        float cutoff = 500.0f + tone * 15000.0f;
+        cachedCoeff = 1.0f - fastExp (-6.28318530f * cutoff / static_cast<float> (sr));
+    }
 
     float process (float input, float amount, float tone) noexcept
     {
         if (amount < 0.0001f) return input;
 
+        updateTone (tone);
+
         float rectified = std::abs (input);
         float harmonics = rectified - input * 0.5f;
 
-        float cutoff = 500.0f + tone * 15000.0f;
-        float coeff = 1.0f - std::exp (-2.0f * 3.14159265f * cutoff / static_cast<float> (sr));
-        lpState += coeff * (harmonics - lpState);
+        lpState += cachedCoeff * (harmonics - lpState);
         lpState = flushDenormal (lpState);
 
         return input + lpState * amount * 0.5f;
@@ -348,6 +357,8 @@ public:
 private:
     double sr = 44100.0;
     float lpState = 0.0f;
+    float cachedTone = -1.0f;
+    float cachedCoeff = 0.1f;
 };
 
 //==============================================================================
@@ -406,7 +417,7 @@ public:
 
             case Stage::Decay:
                 level -= (level - sustain) * decayRate;
-                if (std::abs (level) < 1.0e-20f) level = 0.0f;
+                level = flushDenormal (level);
                 if (level <= sustain + 0.0001f)
                 {
                     level = sustain;
@@ -430,6 +441,7 @@ public:
 
             case Stage::Release:
                 level -= level * releaseRate;
+                level = flushDenormal (level);
                 if (level < 0.0001f)
                 {
                     level = 0.0f;
@@ -685,6 +697,11 @@ public:
         const int maxPoly          = (pPolyphony != nullptr)
             ? (1 << std::min (3, static_cast<int> (pPolyphony->load()))) : 8;
 
+        // Precompute glide coefficient (block-constant)
+        float glideCoeff = 0.0f;
+        if (glideAmt > 0.0f)
+            glideCoeff = 1.0f - fastExp (-1.0f / (srf * (0.005f + glideAmt * 0.495f)));
+
         // Map classic waveforms
         PolyBLEP::Waveform waveA = mapWaveform (oscA_shapeIdx);
         PolyBLEP::Waveform waveB = mapWaveform (oscB_shapeIdx);
@@ -756,8 +773,6 @@ public:
 
                 if (voice.glideActive)
                 {
-                    float glideTimeSec = 0.005f + glideAmt * 0.495f;
-                    float glideCoeff = 1.0f - std::exp (-1.0f / (srf * glideTimeSec));
                     voice.glideSourceFreq += glideCoeff * (baseFreqA - voice.glideSourceFreq);
 
                     if (std::abs (voice.glideSourceFreq - baseFreqA) < 0.1f)
@@ -776,7 +791,7 @@ public:
 
                 // Total pitch modulation: drift + LFO + coupling
                 float totalPitchSemi = driftSemitones + lfoPitchMod * 2.0f + pitchMod;
-                float pitchMul = std::pow (2.0f, totalPitchSemi / 12.0f);
+                float pitchMul = fastExp (totalPitchSemi * (0.693147f / 12.0f));
 
                 float freqA = baseFreqA * pitchMul;
                 float freqB = baseFreqB * pitchMul;
@@ -853,11 +868,11 @@ public:
                 // LFO to filter
                 if (std::abs (lfoCutoffMod) > 0.001f)
                 {
-                    cutoffMod *= std::pow (2.0f, lfoCutoffMod * 2.0f);
+                    cutoffMod *= fastExp (lfoCutoffMod * 2.0f * 0.693147f);
                     cutoffMod = clamp (cutoffMod, 20.0f, 20000.0f);
                 }
                 // Voyager Drift to filter (subtle)
-                cutoffMod *= std::pow (2.0f, driftVal * 0.1f);
+                cutoffMod *= fastExp (driftVal * 0.1f * 0.693147f);
                 cutoffMod = clamp (cutoffMod, 20.0f, 20000.0f);
                 // External coupling filter modulation
                 cutoffMod += filterMod * 2000.0f;

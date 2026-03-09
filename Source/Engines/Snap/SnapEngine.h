@@ -281,7 +281,7 @@ public:
 
                 for (int u = 0; u < uCount; ++u)
                 {
-                    float detunedFreq = freq * std::pow (2.0f, voice.detuneOffsets[u] / 12.0f);
+                    float detunedFreq = freq * fastExp (voice.detuneOffsets[u] * (0.693147f / 12.0f));
                     float uniOut = 0.0f;
 
                     switch (oscModeIdx)

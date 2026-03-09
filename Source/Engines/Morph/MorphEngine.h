@@ -327,7 +327,7 @@ public:
             constexpr double twoPi = 6.28318530717958647692;
             lfoPhase += lfoRate / sr;
             if (lfoPhase >= 1.0) lfoPhase -= 1.0;
-            lfoOutput = static_cast<float> (std::sin (twoPi * lfoPhase));
+            lfoOutput = fastSin (static_cast<float> (twoPi * lfoPhase));
 
             float mixL = 0.0f, mixR = 0.0f;
 
@@ -359,7 +359,7 @@ public:
 
                 for (int i = 0; i < 3; ++i)
                 {
-                    float detunedFreq = baseFreq * std::pow (2.0f, detuneSpread[i] / 1200.0f);
+                    float detunedFreq = baseFreq * fastExp (detuneSpread[i] * (0.693147f / 1200.0f));
                     detunedFreq *= (1.0f + voice.driftValue * 0.002f);
                     voice.osc[i].setFrequency (detunedFreq, srf);
                     oscMix += voice.osc[i].processSample();

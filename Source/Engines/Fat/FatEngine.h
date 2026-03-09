@@ -963,7 +963,7 @@ public:
 
                 // Group 4: wide stereo — oscs 10,11 → left, osc 12 → right
                 {
-                    float leftSum = 0.0f, rightSum = 0.0f;
+                    float g4oscs[3];
                     for (int o = 0; o < 3; ++o)
                     {
                         auto idx = static_cast<size_t> (9 + o);
@@ -973,16 +973,14 @@ public:
                         float s = voice.oscs[idx].process (morph, voice.noiseGens[idx]);
                         if (analogAmount > 0.001f)
                             s = s + analogAmount * (fastTanh (s) - s);
-                        if (o < 2) leftSum += s;  // oscs 10, 11 → left
-                        else       rightSum += s;  // osc 12 → right
+                        g4oscs[o] = s;
                     }
-                    // Filter both sides through the same G4 filter (mono sum for filter state)
-                    float g4mono = (leftSum + rightSum) * 0.3333f;
+                    // Filter the mono sum
+                    float g4mono = (g4oscs[0] + g4oscs[1] + g4oscs[2]) * 0.3333f;
                     float g4filt = voice.filters[3].processSample (g4mono);
-                    // Reconstruct stereo using the original ratio
-                    float total = std::abs (leftSum) + std::abs (rightSum) + 1e-10f;
-                    g4L = g4filt * (leftSum / total);
-                    g4R = g4filt * (rightSum / total);
+                    // Apply fixed stereo distribution: oscs 0,1 (2/3 weight) left, osc 2 (1/3) right
+                    g4L = g4filt * g4aL * 0.667f + g4filt * g4bL * 0.333f;
+                    g4R = g4filt * g4aR * 0.667f + g4filt * g4bR * 0.333f;
                 }
 
                 // --- Mix groups to stereo ---
@@ -1284,6 +1282,19 @@ private:
         voice.velocity = velocity;
         voice.age = 0;
         voice.cachedBaseFreq = midiToFreq (noteNumber);
+
+        // Reset oscillator/filter/FX state to prevent clicks from stolen voices
+        voice.subOsc.reset();
+        voice.subDrift.reset();
+        for (int i = 0; i < 12; ++i)
+        {
+            voice.oscs[static_cast<size_t> (i)].reset();
+            voice.drifts[static_cast<size_t> (i)].reset();
+        }
+        for (int g = 0; g < 4; ++g)
+            voice.filters[static_cast<size_t> (g)].reset();
+        voice.saturation.reset();
+        voice.crusher.reset();
 
         voice.ampEnv.noteOn();
         voice.filterEnv.noteOn();
