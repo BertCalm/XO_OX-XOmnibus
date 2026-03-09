@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "name": "Fat_Snap_Decay_Two",
+  "mood": "Entangled",
+  "engines": [
+    "Fat",
+    "Snap"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "FAT envelope controls SNAP decay \u2014 density sustain determines how long the transient rings.",
+  "tags": [
+    "fat",
+    "snap",
+    "decay",
+    "envelope",
+    "entangled"
+  ],
+  "macroLabels": [
+    "FAT ENV",
+    "SNAP DECAY",
+    "DECAY DEPTH",
+    "DENSITY"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.55,
+    "movement": 0.72,
+    "density": 0.82,
+    "space": 0.42,
+    "aggression": 0.52
+  },
+  "parameters": {
+    "Fat": {
+      "fat_morph": 0.5,
+      "fat_mojo": 0.4,
+      "fat_subLevel": 0.28,
+      "fat_subOct": 0,
+      "fat_groupMix": 0.85,
+      "fat_detune": 10.0,
+      "fat_stereoWidth": 0.65,
+      "fat_ampAttack": 0.01,
+      "fat_ampDecay": 1.5,
+      "fat_ampSustain": 0.75,
+      "fat_ampRelease": 1.0,
+      "fat_fltCutoff": 4500.0,
+      "fat_fltReso": 0.2,
+      "fat_fltDrive": 0.05,
+      "fat_fltKeyTrack": 0.4,
+      "fat_fltEnvAmt": 0.15,
+      "fat_fltEnvAttack": 0.01,
+      "fat_fltEnvDecay": 0.5,
+      "fat_satDrive": 0.08,
+      "fat_crushDepth": 16.0,
+      "fat_crushRate": 44100.0,
+      "fat_arpOn": 0,
+      "fat_arpPattern": 0,
+      "fat_arpRate": 1,
+      "fat_arpOctaves": 0,
+      "fat_arpGate": 0.5,
+      "fat_arpTempo": 120.0,
+      "fat_level": 0.72,
+      "fat_voiceMode": 0,
+      "fat_glide": 0.0,
+      "fat_polyphony": 4
+    },
+    "Snap": {
+      "snap_oscMode": 2,
+      "snap_oscTune": 0.0,
+      "snap_oscShape": 0.5,
+      "snap_filterCutoff": 7500.0,
+      "snap_filterReso": 0.42,
+      "snap_filterEnvAmt": 0.62,
+      "snap_attack": 0.001,
+      "snap_decay": 0.15,
+      "snap_sustain": 0.0,
+      "snap_release": 0.1,
+      "snap_level": 0.75
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Fat",
+        "engineB": "Snap",
+        "type": "Env->Decay",
+        "amount": 0.58
+      }
+    ]
+  },
+  "sequencer": null
+}

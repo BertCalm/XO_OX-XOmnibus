@@ -1,4 +1,5 @@
 #include "XOmnibusProcessor.h"
+#include "UI/XOmnibusEditor.h"
 #include "Engines/Snap/SnapEngine.h"
 #include "Engines/Morph/MorphEngine.h"
 #include "Engines/Dub/DubEngine.h"
@@ -6,6 +7,7 @@
 #include "Engines/Bob/BobEngine.h"
 #include "Engines/Fat/FatEngine.h"
 #include "Engines/Onset/OnsetEngine.h"
+#include "Engines/Overworld/OverworldEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values)
 static bool registered_Snap = xomnibus::EngineRegistry::instance().registerEngine(
@@ -35,6 +37,10 @@ static bool registered_Fat = xomnibus::EngineRegistry::instance().registerEngine
 static bool registered_Onset = xomnibus::EngineRegistry::instance().registerEngine(
     "Onset", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OnsetEngine>();
+    });
+static bool registered_Overworld = xomnibus::EngineRegistry::instance().registerEngine(
+    "Overworld", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OverworldEngine>();
     });
 
 namespace xomnibus {
@@ -81,6 +87,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     BobEngine::addParameters(params);
     FatEngine::addParameters(params);
     OnsetEngine::addParameters(params);
+    OverworldEngine::addParameters(params);
 
     return { params.begin(), params.end() };
 }
@@ -262,7 +269,7 @@ SynthEngine* XOmnibusProcessor::getEngine(int slot) const
 
 juce::AudioProcessorEditor* XOmnibusProcessor::createEditor()
 {
-    return new juce::GenericAudioProcessorEditor(*this);
+    return new XOmnibusEditor(*this);
 }
 
 void XOmnibusProcessor::getStateInformation(juce::MemoryBlock& destData)

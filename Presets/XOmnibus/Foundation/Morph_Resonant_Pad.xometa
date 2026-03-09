@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Morph_Resonant_Pad",
+  "mood": "Foundation",
+  "engines": [
+    "Morph"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MORPH with medium filter resonance \u2014 the wavetable pad with a hint of self-resonance for character.",
+  "tags": [
+    "morph",
+    "resonant",
+    "pad",
+    "filter",
+    "foundation"
+  ],
+  "macroLabels": [
+    "RESONANCE",
+    "MORPH",
+    "FILTER CUTOFF",
+    "BLOOM"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.62,
+    "movement": 0.38,
+    "density": 0.65,
+    "space": 0.62,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Morph": {
+      "morph_morph": 0.52,
+      "morph_bloom": 0.68,
+      "morph_decay": 3.5,
+      "morph_sustain": 0.68,
+      "morph_release": 2.0,
+      "morph_filterCutoff": 4500.0,
+      "morph_filterReso": 0.28,
+      "morph_drift": 0.35,
+      "morph_sub": 0.1,
+      "morph_detune": 9.0,
+      "morph_level": 0.7,
+      "morph_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

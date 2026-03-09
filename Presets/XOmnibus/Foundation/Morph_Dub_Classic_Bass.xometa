@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "name": "Morph_Dub_Classic_Bass",
+  "mood": "Foundation",
+  "engines": [
+    "Morph",
+    "Dub"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MORPH wavetable key with DUB bass below \u2014 keys plus bass in a single preset.",
+  "tags": [
+    "morph",
+    "dub",
+    "keys",
+    "bass",
+    "foundation"
+  ],
+  "macroLabels": [
+    "MORPH KEYS",
+    "DUB BASS",
+    "BALANCE",
+    "FILTER"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.7,
+    "movement": 0.48,
+    "density": 0.72,
+    "space": 0.42,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Morph": {
+      "morph_morph": 0.5,
+      "morph_bloom": 0.55,
+      "morph_decay": 1.5,
+      "morph_sustain": 0.55,
+      "morph_release": 2.0,
+      "morph_filterCutoff": 5500.0,
+      "morph_filterReso": 0.15,
+      "morph_drift": 0.25,
+      "morph_sub": 0.1,
+      "morph_detune": 5.0,
+      "morph_level": 0.7,
+      "morph_polyphony": 4
+    },
+    "Dub": {
+      "dub_oscWave": 2,
+      "dub_oscOctave": 0,
+      "dub_oscTune": 0.0,
+      "dub_oscPwm": 0.5,
+      "dub_subLevel": 0.55,
+      "dub_noiseLevel": 0.0,
+      "dub_drift": 0.04,
+      "dub_level": 0.75,
+      "dub_filterMode": 0,
+      "dub_filterCutoff": 720.0,
+      "dub_filterReso": 0.3,
+      "dub_filterEnvAmt": 0.3,
+      "dub_attack": 0.005,
+      "dub_decay": 0.42,
+      "dub_sustain": 0.62,
+      "dub_release": 0.25,
+      "dub_pitchEnvDepth": 0.05,
+      "dub_pitchEnvDecay": 0.015,
+      "dub_lfoRate": 1.0,
+      "dub_lfoDepth": 0.0,
+      "dub_lfoDest": 0,
+      "dub_sendLevel": 0.5,
+      "dub_returnLevel": 0.5,
+      "dub_dryLevel": 0.9,
+      "dub_driveAmount": 1.2,
+      "dub_delayTime": 0.375,
+      "dub_delayFeedback": 0.45,
+      "dub_delayWear": 0.25,
+      "dub_delayWow": 0.1,
+      "dub_delayMix": 0.2,
+      "dub_reverbSize": 0.3,
+      "dub_reverbDamp": 0.5,
+      "dub_reverbMix": 0.15,
+      "dub_voiceMode": 1,
+      "dub_glide": 0.0,
+      "dub_polyphony": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

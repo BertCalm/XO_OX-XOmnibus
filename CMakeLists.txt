@@ -63,10 +63,19 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Bob/BobEngine.h
     Source/Engines/Fat/FatEngine.h
     Source/Engines/Onset/OnsetEngine.h
+    Source/Engines/Overworld/OverworldEngine.h
+
+    # UI (Gallery Model)
+    Source/UI/XOmnibusEditor.h
 
     # Main processor
     Source/XOmnibusProcessor.h
     Source/XOmnibusProcessor.cpp
+)
+
+# XOverworld DSP headers — included by OverworldEngine adapter
+target_include_directories(XOmnibus PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/../XOverworld/src"
 )
 
 target_compile_definitions(XOmnibus PUBLIC

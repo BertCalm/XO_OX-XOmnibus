@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Snap_Cascade_Fast",
+  "mood": "Flux",
+  "engines": [
+    "Snap"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "SNAP at maximum cascade speed \u2014 series of rapid decay transients at high polyphony.",
+  "tags": [
+    "snap",
+    "cascade",
+    "fast",
+    "poly",
+    "flux"
+  ],
+  "macroLabels": [
+    "DECAY",
+    "POLYPHONY",
+    "FILTER",
+    "RATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.38,
+    "movement": 0.98,
+    "density": 0.5,
+    "space": 0.32,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "Snap": {
+      "snap_oscMode": 2,
+      "snap_oscTune": 0.0,
+      "snap_oscShape": 0.5,
+      "snap_filterCutoff": 9000.0,
+      "snap_filterReso": 0.42,
+      "snap_filterEnvAmt": 0.72,
+      "snap_attack": 0.0,
+      "snap_decay": 0.04,
+      "snap_sustain": 0.0,
+      "snap_release": 0.02,
+      "snap_level": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

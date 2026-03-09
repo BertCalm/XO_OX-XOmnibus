@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Morph_Slow_Drift",
+  "mood": "Aether",
+  "engines": [
+    "Morph"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MORPH barely moving \u2014 minimum bloom rate, maximum drift. Geological timescale evolution.",
+  "tags": [
+    "morph",
+    "slow",
+    "drift",
+    "evolution",
+    "aether"
+  ],
+  "macroLabels": [
+    "DRIFT RATE",
+    "BLOOM",
+    "MORPH",
+    "FILTER"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.52,
+    "movement": 0.12,
+    "density": 0.65,
+    "space": 0.82,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Morph": {
+      "morph_morph": 0.45,
+      "morph_bloom": 0.95,
+      "morph_decay": 10.0,
+      "morph_sustain": 0.48,
+      "morph_release": 9.0,
+      "morph_filterCutoff": 4000.0,
+      "morph_filterReso": 0.15,
+      "morph_drift": 0.85,
+      "morph_sub": 0.1,
+      "morph_detune": 14.0,
+      "morph_level": 0.7,
+      "morph_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}
