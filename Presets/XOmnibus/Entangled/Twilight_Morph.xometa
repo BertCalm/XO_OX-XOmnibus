@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "name": "Twilight Morph",
+  "mood": "Entangled",
+  "engines": ["Morph", "Bob"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MORPH's evolving wavetable pad coupled with BOB's analog warmth. BOB's envelope sweeps MORPH's wavetable position — the sound morphs through timbres as notes sustain.",
+  "tags": ["pad", "morph", "evolving", "wavetable", "warm", "lush", "entangled"],
+  "macroLabels": ["MORPH POSITION", "BOB WARMTH", "COUPLING", "BLOOM"],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.75,
+    "movement": 0.6,
+    "density": 0.65,
+    "space": 0.6,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Morph": {
+      "morph_morph": 0.3,
+      "morph_bloom": 0.7,
+      "morph_decay": 4.0,
+      "morph_sustain": 0.65,
+      "morph_release": 3.5,
+      "morph_filterCutoff": 5000.0,
+      "morph_filterReso": 0.12,
+      "morph_drift": 0.35,
+      "morph_sub": 0.2,
+      "morph_detune": 10.0,
+      "morph_level": 0.7,
+      "morph_polyphony": 4
+    },
+    "Bob": {
+      "bob_oscA_wave": 0,
+      "bob_oscA_shape": 0.55,
+      "bob_oscA_tune": 0.0,
+      "bob_oscA_drift": 0.18,
+      "bob_oscB_wave": 2,
+      "bob_oscB_detune": 5.0,
+      "bob_oscB_blend": 0.3,
+      "bob_oscB_sync": 0,
+      "bob_oscB_fm": 0.0,
+      "bob_texMode": 1,
+      "bob_texLevel": 0.1,
+      "bob_texTone": 0.5,
+      "bob_texWidth": 0.6,
+      "bob_fltMode": 0,
+      "bob_fltCutoff": 3500.0,
+      "bob_fltReso": 0.2,
+      "bob_fltChar": 0.6,
+      "bob_fltDrive": 0.0,
+      "bob_fltEnvAmt": 0.2,
+      "bob_ampAttack": 1.5,
+      "bob_ampDecay": 5.5,
+      "bob_ampSustain": 0.7,
+      "bob_ampRelease": 5.0,
+      "bob_motAttack": 0.3,
+      "bob_motDecay": 3.0,
+      "bob_motSustain": 0.5,
+      "bob_motRelease": 3.5,
+      "bob_motDepth": 0.5,
+      "bob_lfo1Rate": 0.2,
+      "bob_lfo1Depth": 0.06,
+      "bob_lfo1Shape": 0,
+      "bob_lfo1Target": 0,
+      "bob_curMode": 1,
+      "bob_curAmount": 0.3,
+      "bob_bobMode": 0.45,
+      "bob_dustAmount": 0.0,
+      "bob_dustTone": 0.5,
+      "bob_level": 0.6,
+      "bob_voiceMode": 0,
+      "bob_glide": 0.0,
+      "bob_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Bob",
+        "engineB": "Morph",
+        "type": "Env->Morph",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null
+}

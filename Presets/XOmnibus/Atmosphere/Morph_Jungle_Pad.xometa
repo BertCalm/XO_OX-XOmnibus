@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Morph_Jungle_Pad",
+  "mood": "Atmosphere",
+  "engines": [
+    "Morph"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MORPH with high drift and long decay \u2014 organic, evolving, like a jungle canopy breathing.",
+  "tags": [
+    "morph",
+    "jungle",
+    "organic",
+    "pad",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "MORPH",
+    "BLOOM",
+    "DRIFT",
+    "FILTER"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.68,
+    "movement": 0.38,
+    "density": 0.65,
+    "space": 0.75,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Morph": {
+      "morph_morph": 0.48,
+      "morph_bloom": 0.82,
+      "morph_decay": 7.0,
+      "morph_sustain": 0.55,
+      "morph_release": 5.5,
+      "morph_filterCutoff": 4000.0,
+      "morph_filterReso": 0.15,
+      "morph_drift": 0.68,
+      "morph_sub": 0.1,
+      "morph_detune": 12.0,
+      "morph_level": 0.7,
+      "morph_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

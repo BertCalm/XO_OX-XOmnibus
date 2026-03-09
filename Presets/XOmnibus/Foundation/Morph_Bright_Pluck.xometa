@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Morph_Bright_Pluck",
+  "mood": "Foundation",
+  "engines": [
+    "Morph"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MORPH bright pluck \u2014 high morph for spectral richness, short decay, no sustain.",
+  "tags": [
+    "morph",
+    "pluck",
+    "bright",
+    "spectral",
+    "foundation"
+  ],
+  "macroLabels": [
+    "MORPH",
+    "DECAY",
+    "FILTER",
+    "BLOOM"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.65,
+    "space": 0.35,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Morph": {
+      "morph_morph": 0.75,
+      "morph_bloom": 0.55,
+      "morph_decay": 0.6,
+      "morph_sustain": 0.0,
+      "morph_release": 0.5,
+      "morph_filterCutoff": 7000.0,
+      "morph_filterReso": 0.25,
+      "morph_drift": 0.2,
+      "morph_sub": 0.1,
+      "morph_detune": 5.0,
+      "morph_level": 0.7,
+      "morph_polyphony": 6
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

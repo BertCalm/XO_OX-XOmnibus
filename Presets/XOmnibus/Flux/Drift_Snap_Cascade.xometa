@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "name": "Drift_Snap_Cascade",
+  "mood": "Flux",
+  "engines": [
+    "Drift",
+    "Snap"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "DRIFT filter cascades open with SNAP strikes \u2014 each percussion hit triggers a filter bloom.",
+  "tags": [
+    "drift",
+    "snap",
+    "cascade",
+    "filter",
+    "flux"
+  ],
+  "macroLabels": [
+    "SNAP RATE",
+    "DRIFT FILTER",
+    "COUPLING",
+    "SHIMMER"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.5,
+    "movement": 0.82,
+    "density": 0.55,
+    "space": 0.58,
+    "aggression": 0.48
+  },
+  "parameters": {
+    "Drift": {
+      "drift_oscA_mode": 0,
+      "drift_oscA_shape": 0,
+      "drift_oscA_tune": 0.0,
+      "drift_oscA_level": 0.7,
+      "drift_oscA_detune": 0.3,
+      "drift_oscA_pw": 0.5,
+      "drift_oscA_fmDepth": 0.0,
+      "drift_oscB_mode": 0,
+      "drift_oscB_shape": 1,
+      "drift_oscB_tune": 7.0,
+      "drift_oscB_level": 0.4,
+      "drift_oscB_detune": 0.3,
+      "drift_oscB_pw": 0.5,
+      "drift_oscB_fmDepth": 0.0,
+      "drift_subLevel": 0.0,
+      "drift_noiseLevel": 0.0,
+      "drift_hazeAmount": 0.15,
+      "drift_filterCutoff": 4000.0,
+      "drift_filterReso": 0.25,
+      "drift_filterSlope": 0,
+      "drift_filterEnvAmt": 0.0,
+      "drift_formantMorph": 0.5,
+      "drift_formantMix": 0.0,
+      "drift_shimmerAmount": 0.5,
+      "drift_shimmerTone": 0.65,
+      "drift_attack": 0.2,
+      "drift_decay": 4.0,
+      "drift_sustain": 0.6,
+      "drift_release": 4.0,
+      "drift_lfoRate": 0.1,
+      "drift_lfoDepth": 0.03,
+      "drift_lfoDest": 0,
+      "drift_driftDepth": 0.4,
+      "drift_driftRate": 0.04,
+      "drift_level": 0.6,
+      "drift_voiceMode": 0,
+      "drift_glide": 0.0,
+      "drift_polyphony": 4
+    },
+    "Snap": {
+      "snap_oscMode": 2,
+      "snap_oscTune": 0.0,
+      "snap_oscShape": 0.5,
+      "snap_filterCutoff": 8000.0,
+      "snap_filterReso": 0.4,
+      "snap_filterEnvAmt": 0.5,
+      "snap_attack": 0.001,
+      "snap_decay": 0.1,
+      "snap_sustain": 0.0,
+      "snap_release": 0.1,
+      "snap_level": 0.75
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Snap",
+        "engineB": "Drift",
+        "type": "Amp->Filter",
+        "amount": 0.6
+      }
+    ]
+  },
+  "sequencer": null
+}

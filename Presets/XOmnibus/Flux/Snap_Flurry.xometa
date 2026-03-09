@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Snap Flurry",
+  "mood": "Flux",
+  "engines": ["Snap"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "SNAP with fast decay and polyphony — rapid-fire pitched transients for quick melodic or rhythmic patterns. Play fast for a percussive flurry of bright attacks.",
+  "tags": ["snap", "fast", "percussive", "transient", "rhythmic", "flux"],
+  "macroLabels": ["SNAP AMOUNT", "DECAY RATE", "FILTER", "SPREAD"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.35,
+    "movement": 0.75,
+    "density": 0.5,
+    "space": 0.25,
+    "aggression": 0.7
+  },
+  "parameters": {
+    "Snap": {
+      "snap_oscMode": 1,
+      "snap_snap": 0.8,
+      "snap_decay": 0.08,
+      "snap_filterCutoff": 6000.0,
+      "snap_filterReso": 0.25,
+      "snap_detune": 8.0,
+      "snap_level": 0.82,
+      "snap_pitchLock": false,
+      "snap_unison": 0,
+      "snap_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

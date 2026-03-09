@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Morph Bass",
+  "mood": "Foundation",
+  "engines": ["Morph"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MORPH as a bass instrument — sub octave active, wavetable set for dark tones, short attack and plucky decay. A bass that has a different timbre each time the wavetable shifts.",
+  "tags": ["bass", "morph", "sub", "plucky", "dark", "foundation"],
+  "macroLabels": ["MORPH BASS TONE", "BLOOM", "SUB", "FILTER"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.65,
+    "movement": 0.35,
+    "density": 0.65,
+    "space": 0.3,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Morph": {
+      "morph_morph": 0.2,
+      "morph_bloom": 0.3,
+      "morph_decay": 0.4,
+      "morph_sustain": 0.5,
+      "morph_release": 0.3,
+      "morph_filterCutoff": 2000.0,
+      "morph_filterReso": 0.35,
+      "morph_drift": 0.15,
+      "morph_sub": 0.55,
+      "morph_detune": 4.0,
+      "morph_level": 0.85,
+      "morph_polyphony": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

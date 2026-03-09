@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "name": "Drift_Filter_Flow",
+  "mood": "Flux",
+  "engines": [
+    "Drift"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "DRIFT with medium LFO on filter \u2014 hypnotic filter movement in the shimmer.",
+  "tags": [
+    "drift",
+    "filter",
+    "lfo",
+    "hypnotic",
+    "flux"
+  ],
+  "macroLabels": [
+    "FILTER RATE",
+    "FILTER DEPTH",
+    "SHIMMER",
+    "DRIFT"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.75,
+    "density": 0.55,
+    "space": 0.6,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Drift": {
+      "drift_oscA_mode": 0,
+      "drift_oscA_shape": 0,
+      "drift_oscA_tune": 0.0,
+      "drift_oscA_level": 0.7,
+      "drift_oscA_detune": 0.3,
+      "drift_oscA_pw": 0.5,
+      "drift_oscA_fmDepth": 0.0,
+      "drift_oscB_mode": 0,
+      "drift_oscB_shape": 1,
+      "drift_oscB_tune": 7.0,
+      "drift_oscB_level": 0.4,
+      "drift_oscB_detune": 0.3,
+      "drift_oscB_pw": 0.5,
+      "drift_oscB_fmDepth": 0.0,
+      "drift_subLevel": 0.0,
+      "drift_noiseLevel": 0.0,
+      "drift_hazeAmount": 0.15,
+      "drift_filterCutoff": 7000.0,
+      "drift_filterReso": 0.15,
+      "drift_filterSlope": 0,
+      "drift_filterEnvAmt": 0.0,
+      "drift_formantMorph": 0.5,
+      "drift_formantMix": 0.0,
+      "drift_shimmerAmount": 0.55,
+      "drift_shimmerTone": 0.65,
+      "drift_attack": 0.5,
+      "drift_decay": 5.0,
+      "drift_sustain": 0.6,
+      "drift_release": 4.0,
+      "drift_lfoRate": 0.35,
+      "drift_lfoDepth": 0.5,
+      "drift_lfoDest": 1,
+      "drift_driftDepth": 0.5,
+      "drift_driftRate": 0.04,
+      "drift_level": 0.6,
+      "drift_voiceMode": 0,
+      "drift_glide": 0.0,
+      "drift_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

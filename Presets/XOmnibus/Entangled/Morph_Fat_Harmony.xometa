@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "name": "Morph_Fat_Harmony",
+  "mood": "Entangled",
+  "engines": [
+    "Morph",
+    "Fat"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MORPH pitch tracks into FAT \u2014 wavetable melody harmonizes the dense pad layer. Every note creates a rich, thick harmony.",
+  "tags": [
+    "morph",
+    "fat",
+    "pitch",
+    "harmony",
+    "wavetable",
+    "thick",
+    "entangled"
+  ],
+  "macroLabels": [
+    "MORPH MELODY",
+    "FAT HARMONY",
+    "INTERVAL",
+    "DENSITY"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.65,
+    "movement": 0.6,
+    "density": 0.85,
+    "space": 0.5,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Morph": {
+      "morph_morph": 0.5,
+      "morph_bloom": 0.7,
+      "morph_decay": 3.0,
+      "morph_sustain": 0.7,
+      "morph_release": 2.0,
+      "morph_filterCutoff": 6000.0,
+      "morph_filterReso": 0.15,
+      "morph_drift": 0.35,
+      "morph_sub": 0.1,
+      "morph_detune": 8.0,
+      "morph_level": 0.7,
+      "morph_polyphony": 4
+    },
+    "Fat": {
+      "fat_morph": 0.5,
+      "fat_mojo": 0.4,
+      "fat_subLevel": 0.35,
+      "fat_subOct": 0,
+      "fat_groupMix": 0.85,
+      "fat_detune": 10.0,
+      "fat_stereoWidth": 0.65,
+      "fat_ampAttack": 0.05,
+      "fat_ampDecay": 1.0,
+      "fat_ampSustain": 0.75,
+      "fat_ampRelease": 1.0,
+      "fat_fltCutoff": 3500.0,
+      "fat_fltReso": 0.2,
+      "fat_fltDrive": 0.05,
+      "fat_fltKeyTrack": 0.4,
+      "fat_fltEnvAmt": 0.15,
+      "fat_fltEnvAttack": 0.01,
+      "fat_fltEnvDecay": 0.5,
+      "fat_satDrive": 0.08,
+      "fat_crushDepth": 16.0,
+      "fat_crushRate": 44100.0,
+      "fat_arpOn": 0,
+      "fat_arpPattern": 0,
+      "fat_arpRate": 1,
+      "fat_arpOctaves": 0,
+      "fat_arpGate": 0.5,
+      "fat_arpTempo": 120.0,
+      "fat_level": 0.72,
+      "fat_voiceMode": 0,
+      "fat_glide": 0.0,
+      "fat_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Morph",
+        "engineB": "Fat",
+        "type": "Pitch->Pitch",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null
+}

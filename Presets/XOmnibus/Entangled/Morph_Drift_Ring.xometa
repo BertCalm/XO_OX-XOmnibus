@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "name": "Morph_Drift_Ring",
+  "mood": "Entangled",
+  "engines": [
+    "Morph",
+    "Drift"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MORPH wavetable ring-modulates DRIFT shimmer \u2014 spectral content of wavetable creates complex inharmonic shimmer patterns. Alien texture.",
+  "tags": [
+    "morph",
+    "drift",
+    "ring",
+    "wavetable",
+    "alien",
+    "spectral",
+    "entangled"
+  ],
+  "macroLabels": [
+    "MORPH CARRIER",
+    "DRIFT RING",
+    "MODULATION",
+    "SHIMMER"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.4,
+    "movement": 0.65,
+    "density": 0.65,
+    "space": 0.6,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Morph": {
+      "morph_morph": 0.7,
+      "morph_bloom": 0.75,
+      "morph_decay": 3.0,
+      "morph_sustain": 0.7,
+      "morph_release": 2.0,
+      "morph_filterCutoff": 7000.0,
+      "morph_filterReso": 0.15,
+      "morph_drift": 0.45,
+      "morph_sub": 0.1,
+      "morph_detune": 8.0,
+      "morph_level": 0.7,
+      "morph_polyphony": 4
+    },
+    "Drift": {
+      "drift_oscA_mode": 0,
+      "drift_oscA_shape": 0,
+      "drift_oscA_tune": 0.0,
+      "drift_oscA_level": 0.7,
+      "drift_oscA_detune": 0.3,
+      "drift_oscA_pw": 0.5,
+      "drift_oscA_fmDepth": 0.0,
+      "drift_oscB_mode": 0,
+      "drift_oscB_shape": 1,
+      "drift_oscB_tune": 7.0,
+      "drift_oscB_level": 0.4,
+      "drift_oscB_detune": 0.3,
+      "drift_oscB_pw": 0.5,
+      "drift_oscB_fmDepth": 0.0,
+      "drift_subLevel": 0.0,
+      "drift_noiseLevel": 0.0,
+      "drift_hazeAmount": 0.15,
+      "drift_filterCutoff": 8500.0,
+      "drift_filterReso": 0.08,
+      "drift_filterSlope": 0,
+      "drift_filterEnvAmt": 0.0,
+      "drift_formantMorph": 0.5,
+      "drift_formantMix": 0.2,
+      "drift_shimmerAmount": 0.6,
+      "drift_shimmerTone": 0.65,
+      "drift_attack": 1.0,
+      "drift_decay": 5.0,
+      "drift_sustain": 0.6,
+      "drift_release": 4.0,
+      "drift_lfoRate": 0.1,
+      "drift_lfoDepth": 0.03,
+      "drift_lfoDest": 0,
+      "drift_driftDepth": 0.4,
+      "drift_driftRate": 0.04,
+      "drift_level": 0.6,
+      "drift_voiceMode": 0,
+      "drift_glide": 0.0,
+      "drift_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Morph",
+        "engineB": "Drift",
+        "type": "Audio->Ring",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null
+}

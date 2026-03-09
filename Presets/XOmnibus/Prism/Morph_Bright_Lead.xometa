@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Morph_Bright_Lead",
+  "mood": "Prism",
+  "engines": [
+    "Morph"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MORPH at maximum spectral position \u2014 bright harmonic wavetable lead voice.",
+  "tags": [
+    "morph",
+    "bright",
+    "lead",
+    "spectral",
+    "prism"
+  ],
+  "macroLabels": [
+    "MORPH",
+    "FILTER",
+    "BLOOM",
+    "DRIFT"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.48,
+    "movement": 0.6,
+    "density": 0.65,
+    "space": 0.38,
+    "aggression": 0.32
+  },
+  "parameters": {
+    "Morph": {
+      "morph_morph": 0.88,
+      "morph_bloom": 0.72,
+      "morph_decay": 1.5,
+      "morph_sustain": 0.62,
+      "morph_release": 2.0,
+      "morph_filterCutoff": 8500.0,
+      "morph_filterReso": 0.22,
+      "morph_drift": 0.35,
+      "morph_sub": 0.1,
+      "morph_detune": 6.0,
+      "morph_level": 0.7,
+      "morph_polyphony": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

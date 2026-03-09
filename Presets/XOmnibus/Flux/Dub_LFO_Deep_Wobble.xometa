@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Dub_LFO_Deep_Wobble",
+  "mood": "Flux",
+  "engines": [
+    "Dub"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "DUB with deep sub-bass LFO wobble \u2014 filter drops and the low end pumps hard.",
+  "tags": [
+    "dub",
+    "wobble",
+    "sub",
+    "lfo",
+    "flux"
+  ],
+  "macroLabels": [
+    "WOBBLE RATE",
+    "WOBBLE DEPTH",
+    "SUB",
+    "FILTER"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.75,
+    "movement": 0.85,
+    "density": 0.8,
+    "space": 0.35,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Dub": {
+      "dub_oscWave": 2,
+      "dub_oscOctave": 0,
+      "dub_oscTune": 0.0,
+      "dub_oscPwm": 0.5,
+      "dub_subLevel": 0.75,
+      "dub_noiseLevel": 0.0,
+      "dub_drift": 0.04,
+      "dub_level": 0.75,
+      "dub_filterMode": 0,
+      "dub_filterCutoff": 400.0,
+      "dub_filterReso": 0.5,
+      "dub_filterEnvAmt": 0.0,
+      "dub_attack": 0.005,
+      "dub_decay": 0.35,
+      "dub_sustain": 0.6,
+      "dub_release": 0.25,
+      "dub_pitchEnvDepth": 0.05,
+      "dub_pitchEnvDecay": 0.015,
+      "dub_lfoRate": 1.5,
+      "dub_lfoDepth": 0.7,
+      "dub_lfoDest": 1,
+      "dub_sendLevel": 0.5,
+      "dub_returnLevel": 0.5,
+      "dub_dryLevel": 0.9,
+      "dub_driveAmount": 1.2,
+      "dub_delayTime": 0.375,
+      "dub_delayFeedback": 0.45,
+      "dub_delayWear": 0.25,
+      "dub_delayWow": 0.1,
+      "dub_delayMix": 0.15,
+      "dub_reverbSize": 0.3,
+      "dub_reverbDamp": 0.5,
+      "dub_reverbMix": 0.15,
+      "dub_voiceMode": 1,
+      "dub_glide": 0.0,
+      "dub_polyphony": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

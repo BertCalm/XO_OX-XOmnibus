@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "name": "Bob Glide Character",
+  "mood": "Entangled",
+  "engines": ["Bob", "Snap"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "BOB mono warm lead with portamento glide — saturated analog character that slides between notes. SNAP accents punctuate the line. BOB's amplitude drives SNAP's pitch for organic accent timing.",
+  "tags": ["lead", "glide", "mono", "bob", "warm", "character", "portamento", "entangled"],
+  "macroLabels": ["BOB CHARACTER", "GLIDE DEPTH", "COUPLING", "SNAP ACCENT"],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.75,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.35,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Bob": {
+      "bob_oscA_wave": 1,
+      "bob_oscA_shape": 0.65,
+      "bob_oscA_tune": 0.0,
+      "bob_oscA_drift": 0.12,
+      "bob_oscB_wave": 2,
+      "bob_oscB_detune": 5.0,
+      "bob_oscB_blend": 0.25,
+      "bob_oscB_sync": 0,
+      "bob_oscB_fm": 0.05,
+      "bob_texMode": 0,
+      "bob_texLevel": 0.0,
+      "bob_texTone": 0.5,
+      "bob_texWidth": 0.5,
+      "bob_fltMode": 0,
+      "bob_fltCutoff": 2200.0,
+      "bob_fltReso": 0.45,
+      "bob_fltChar": 0.7,
+      "bob_fltDrive": 0.1,
+      "bob_fltEnvAmt": 0.45,
+      "bob_ampAttack": 0.005,
+      "bob_ampDecay": 0.5,
+      "bob_ampSustain": 0.7,
+      "bob_ampRelease": 0.4,
+      "bob_motAttack": 0.005,
+      "bob_motDecay": 0.3,
+      "bob_motSustain": 0.35,
+      "bob_motRelease": 0.3,
+      "bob_motDepth": 0.55,
+      "bob_lfo1Rate": 4.5,
+      "bob_lfo1Depth": 0.05,
+      "bob_lfo1Shape": 0,
+      "bob_lfo1Target": 0,
+      "bob_curMode": 1,
+      "bob_curAmount": 0.4,
+      "bob_bobMode": 0.5,
+      "bob_dustAmount": 0.05,
+      "bob_dustTone": 0.5,
+      "bob_level": 0.8,
+      "bob_voiceMode": 1,
+      "bob_glide": 0.2,
+      "bob_polyphony": 0
+    },
+    "Snap": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.5,
+      "snap_decay": 0.25,
+      "snap_filterCutoff": 4000.0,
+      "snap_filterReso": 0.2,
+      "snap_detune": 3.0,
+      "snap_level": 0.5,
+      "snap_pitchLock": false,
+      "snap_unison": 0,
+      "snap_polyphony": 1
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Bob",
+        "engineB": "Snap",
+        "type": "Amp->Pitch",
+        "amount": 0.25
+      }
+    ]
+  },
+  "sequencer": null
+}

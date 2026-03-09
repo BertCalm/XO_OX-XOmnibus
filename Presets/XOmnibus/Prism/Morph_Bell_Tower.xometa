@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Morph Bell Tower",
+  "mood": "Prism",
+  "engines": ["Morph"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MORPH tuned for metallic bell-like tones — high filter resonance, short plucky envelope, bright wavetable position. Each note rings with spectral overtones unique to the wavetable position.",
+  "tags": ["bell", "prism", "morph", "metallic", "resonant", "bright"],
+  "macroLabels": ["MORPH POSITION", "RESONANCE", "DECAY", "DETUNE SPREAD"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.35,
+    "movement": 0.25,
+    "density": 0.5,
+    "space": 0.45,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Morph": {
+      "morph_morph": 0.8,
+      "morph_bloom": 0.2,
+      "morph_decay": 0.6,
+      "morph_sustain": 0.1,
+      "morph_release": 0.5,
+      "morph_filterCutoff": 10000.0,
+      "morph_filterReso": 0.5,
+      "morph_drift": 0.08,
+      "morph_sub": 0.0,
+      "morph_detune": 8.0,
+      "morph_level": 0.78,
+      "morph_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Morph_Mono_Lead",
+  "mood": "Foundation",
+  "engines": [
+    "Morph"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MORPH mono lead \u2014 medium morph, portamento enabled, musical glide rate.",
+  "tags": [
+    "morph",
+    "lead",
+    "mono",
+    "glide",
+    "foundation"
+  ],
+  "macroLabels": [
+    "FILTER",
+    "GLIDE",
+    "MORPH",
+    "BLOOM"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.55,
+    "movement": 0.6,
+    "density": 0.65,
+    "space": 0.35,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Morph": {
+      "morph_morph": 0.55,
+      "morph_bloom": 0.6,
+      "morph_decay": 2.0,
+      "morph_sustain": 0.65,
+      "morph_release": 2.0,
+      "morph_filterCutoff": 5500.0,
+      "morph_filterReso": 0.15,
+      "morph_drift": 0.3,
+      "morph_sub": 0.1,
+      "morph_detune": 5.0,
+      "morph_level": 0.7,
+      "morph_polyphony": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

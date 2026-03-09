@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Snap_Morph_Cosmic_Pulse",
+  "mood": "Aether",
+  "engines": [
+    "Snap",
+    "Morph"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "SNAP cosmic pulses scan MORPH wavetable \u2014 the occasional tick opens spectral gateways.",
+  "tags": [
+    "snap",
+    "morph",
+    "cosmic",
+    "pulse",
+    "aether"
+  ],
+  "macroLabels": [
+    "SNAP PULSE",
+    "MORPH SCAN",
+    "COUPLING",
+    "BLOOM"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.48,
+    "movement": 0.25,
+    "density": 0.62,
+    "space": 0.88,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Snap": {
+      "snap_oscMode": 2,
+      "snap_oscTune": 0.0,
+      "snap_oscShape": 0.5,
+      "snap_filterCutoff": 7000.0,
+      "snap_filterReso": 0.18,
+      "snap_filterEnvAmt": 0.4,
+      "snap_attack": 0.001,
+      "snap_decay": 0.15,
+      "snap_sustain": 0.0,
+      "snap_release": 0.1,
+      "snap_level": 0.3
+    },
+    "Morph": {
+      "morph_morph": 0.3,
+      "morph_bloom": 0.95,
+      "morph_decay": 9.0,
+      "morph_sustain": 0.48,
+      "morph_release": 2.0,
+      "morph_filterCutoff": 4500.0,
+      "morph_filterReso": 0.15,
+      "morph_drift": 0.72,
+      "morph_sub": 0.1,
+      "morph_detune": 8.0,
+      "morph_level": 0.7,
+      "morph_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Snap",
+        "engineB": "Morph",
+        "type": "Env->Morph",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null
+}

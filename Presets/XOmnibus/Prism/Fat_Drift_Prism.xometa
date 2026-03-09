@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "name": "Fat_Drift_Prism",
+  "mood": "Prism",
+  "engines": [
+    "Fat",
+    "Drift"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "FAT bright morph with DRIFT crystal shimmer \u2014 spectral density meets crystalline shimmer.",
+  "tags": [
+    "fat",
+    "drift",
+    "prism",
+    "bright",
+    "spectral"
+  ],
+  "macroLabels": [
+    "FAT PRISM",
+    "DRIFT CRYSTAL",
+    "COUPLING",
+    "FILTER"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.5,
+    "movement": 0.42,
+    "density": 0.82,
+    "space": 0.55,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Fat": {
+      "fat_morph": 0.75,
+      "fat_mojo": 0.4,
+      "fat_subLevel": 0.1,
+      "fat_subOct": 0,
+      "fat_groupMix": 0.85,
+      "fat_detune": 10.0,
+      "fat_stereoWidth": 0.8,
+      "fat_ampAttack": 0.5,
+      "fat_ampDecay": 1.0,
+      "fat_ampSustain": 0.75,
+      "fat_ampRelease": 1.0,
+      "fat_fltCutoff": 7000.0,
+      "fat_fltReso": 0.2,
+      "fat_fltDrive": 0.05,
+      "fat_fltKeyTrack": 0.4,
+      "fat_fltEnvAmt": 0.15,
+      "fat_fltEnvAttack": 0.01,
+      "fat_fltEnvDecay": 0.5,
+      "fat_satDrive": 0.08,
+      "fat_crushDepth": 16.0,
+      "fat_crushRate": 44100.0,
+      "fat_arpOn": 0,
+      "fat_arpPattern": 0,
+      "fat_arpRate": 1,
+      "fat_arpOctaves": 0,
+      "fat_arpGate": 0.5,
+      "fat_arpTempo": 120.0,
+      "fat_level": 0.72,
+      "fat_voiceMode": 0,
+      "fat_glide": 0.0,
+      "fat_polyphony": 4
+    },
+    "Drift": {
+      "drift_oscA_mode": 0,
+      "drift_oscA_shape": 0,
+      "drift_oscA_tune": 0.0,
+      "drift_oscA_level": 0.7,
+      "drift_oscA_detune": 0.3,
+      "drift_oscA_pw": 0.5,
+      "drift_oscA_fmDepth": 0.0,
+      "drift_oscB_mode": 0,
+      "drift_oscB_shape": 1,
+      "drift_oscB_tune": 7.0,
+      "drift_oscB_level": 0.4,
+      "drift_oscB_detune": 0.3,
+      "drift_oscB_pw": 0.5,
+      "drift_oscB_fmDepth": 0.0,
+      "drift_subLevel": 0.0,
+      "drift_noiseLevel": 0.0,
+      "drift_hazeAmount": 0.15,
+      "drift_filterCutoff": 9000.0,
+      "drift_filterReso": 0.1,
+      "drift_filterSlope": 0,
+      "drift_filterEnvAmt": 0.0,
+      "drift_formantMorph": 0.5,
+      "drift_formantMix": 0.0,
+      "drift_shimmerAmount": 0.55,
+      "drift_shimmerTone": 0.65,
+      "drift_attack": 1.0,
+      "drift_decay": 6.0,
+      "drift_sustain": 0.6,
+      "drift_release": 4.0,
+      "drift_lfoRate": 0.1,
+      "drift_lfoDepth": 0.03,
+      "drift_lfoDest": 0,
+      "drift_driftDepth": 0.3,
+      "drift_driftRate": 0.04,
+      "drift_level": 0.6,
+      "drift_voiceMode": 0,
+      "drift_glide": 0.0,
+      "drift_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Fat",
+        "engineB": "Drift",
+        "type": "Amp->Filter",
+        "amount": 0.3
+      }
+    ]
+  },
+  "sequencer": null
+}

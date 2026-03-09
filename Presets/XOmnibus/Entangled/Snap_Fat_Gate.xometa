@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "name": "Snap_Fat_Gate",
+  "mood": "Entangled",
+  "engines": [
+    "Snap",
+    "Fat"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "SNAP percussion gates FAT's massive filter \u2014 every hit opens the dense pad with a bright filter flash. Classic but with maximum density.",
+  "tags": [
+    "snap",
+    "fat",
+    "gate",
+    "filter",
+    "percussion",
+    "dynamic",
+    "entangled"
+  ],
+  "macroLabels": [
+    "SNAP TRIGGER",
+    "FAT GATE",
+    "GATE DEPTH",
+    "FILTER OPEN"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.5,
+    "movement": 0.8,
+    "density": 0.82,
+    "space": 0.4,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Snap": {
+      "snap_oscMode": 2,
+      "snap_oscTune": 0.0,
+      "snap_oscShape": 0.5,
+      "snap_filterCutoff": 8000.0,
+      "snap_filterReso": 0.5,
+      "snap_filterEnvAmt": 0.5,
+      "snap_attack": 0.001,
+      "snap_decay": 0.1,
+      "snap_sustain": 0.0,
+      "snap_release": 0.1,
+      "snap_level": 0.75
+    },
+    "Fat": {
+      "fat_morph": 0.5,
+      "fat_mojo": 0.4,
+      "fat_subLevel": 0.45,
+      "fat_subOct": 0,
+      "fat_groupMix": 0.85,
+      "fat_detune": 14.0,
+      "fat_stereoWidth": 0.65,
+      "fat_ampAttack": 0.01,
+      "fat_ampDecay": 1.0,
+      "fat_ampSustain": 0.75,
+      "fat_ampRelease": 1.0,
+      "fat_fltCutoff": 1500.0,
+      "fat_fltReso": 0.4,
+      "fat_fltDrive": 0.05,
+      "fat_fltKeyTrack": 0.4,
+      "fat_fltEnvAmt": 0.1,
+      "fat_fltEnvAttack": 0.01,
+      "fat_fltEnvDecay": 0.5,
+      "fat_satDrive": 0.08,
+      "fat_crushDepth": 16.0,
+      "fat_crushRate": 44100.0,
+      "fat_arpOn": 0,
+      "fat_arpPattern": 0,
+      "fat_arpRate": 1,
+      "fat_arpOctaves": 0,
+      "fat_arpGate": 0.5,
+      "fat_arpTempo": 120.0,
+      "fat_level": 0.72,
+      "fat_voiceMode": 0,
+      "fat_glide": 0.0,
+      "fat_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Snap",
+        "engineB": "Fat",
+        "type": "Amp->Filter",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null
+}

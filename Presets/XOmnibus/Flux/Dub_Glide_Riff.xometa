@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Dub_Glide_Riff",
+  "mood": "Flux",
+  "engines": [
+    "Dub"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "DUB mono riff lead \u2014 glide at medium speed for melodic bass riffs that slide naturally.",
+  "tags": [
+    "dub",
+    "glide",
+    "riff",
+    "mono",
+    "flux"
+  ],
+  "macroLabels": [
+    "FILTER",
+    "GLIDE",
+    "SUB",
+    "DRIVE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.7,
+    "movement": 0.7,
+    "density": 0.75,
+    "space": 0.35,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Dub": {
+      "dub_oscWave": 2,
+      "dub_oscOctave": 0,
+      "dub_oscTune": 0.0,
+      "dub_oscPwm": 0.5,
+      "dub_subLevel": 0.55,
+      "dub_noiseLevel": 0.0,
+      "dub_drift": 0.04,
+      "dub_level": 0.75,
+      "dub_filterMode": 0,
+      "dub_filterCutoff": 1200.0,
+      "dub_filterReso": 0.4,
+      "dub_filterEnvAmt": 0.45,
+      "dub_attack": 0.005,
+      "dub_decay": 0.45,
+      "dub_sustain": 0.6,
+      "dub_release": 0.3,
+      "dub_pitchEnvDepth": 0.05,
+      "dub_pitchEnvDecay": 0.015,
+      "dub_lfoRate": 1.0,
+      "dub_lfoDepth": 0.0,
+      "dub_lfoDest": 0,
+      "dub_sendLevel": 0.5,
+      "dub_returnLevel": 0.5,
+      "dub_dryLevel": 0.9,
+      "dub_driveAmount": 1.5,
+      "dub_delayTime": 0.375,
+      "dub_delayFeedback": 0.45,
+      "dub_delayWear": 0.25,
+      "dub_delayWow": 0.1,
+      "dub_delayMix": 0.2,
+      "dub_reverbSize": 0.3,
+      "dub_reverbDamp": 0.5,
+      "dub_reverbMix": 0.15,
+      "dub_voiceMode": 1,
+      "dub_glide": 0.15,
+      "dub_polyphony": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

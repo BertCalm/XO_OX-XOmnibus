@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Fat Void",
+  "mood": "Aether",
+  "engines": ["Fat"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "FAT's oscillator stack stretched into pure aether — extremely slow attack, maximum detune, sub rumbling below. A void so dense it becomes texture. Press notes and walk away.",
+  "tags": ["aether", "fat", "void", "dense", "slow", "ambient", "massive"],
+  "macroLabels": ["DETUNE WIDTH", "SUB DEPTH", "FILTER", "MORPH"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.65,
+    "movement": 0.25,
+    "density": 0.95,
+    "space": 0.75,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Fat": {
+      "fat_morph": 0.25,
+      "fat_mojo": 0.4,
+      "fat_subLevel": 0.55,
+      "fat_subOct": 1,
+      "fat_groupMix": 1.0,
+      "fat_detune": 22.0,
+      "fat_stereoWidth": 0.85,
+      "fat_ampAttack": 5.0,
+      "fat_ampDecay": 0.0,
+      "fat_ampSustain": 1.0,
+      "fat_ampRelease": 6.0,
+      "fat_fltCutoff": 2000.0,
+      "fat_fltReso": 0.08,
+      "fat_fltDrive": 0.05,
+      "fat_fltKeyTrack": 0.3,
+      "fat_fltEnvAmt": 0.15,
+      "fat_fltEnvAttack": 5.0,
+      "fat_fltEnvDecay": 0.0,
+      "fat_satDrive": 0.05,
+      "fat_crushDepth": 16.0,
+      "fat_crushRate": 44100.0,
+      "fat_arpOn": 0,
+      "fat_arpPattern": 0,
+      "fat_arpRate": 1,
+      "fat_arpOctaves": 0,
+      "fat_arpGate": 0.5,
+      "fat_arpTempo": 120.0,
+      "fat_level": 0.7,
+      "fat_voiceMode": 0,
+      "fat_glide": 0.0,
+      "fat_polyphony": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

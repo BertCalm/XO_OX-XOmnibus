@@ -285,7 +285,7 @@ External: ONSET output → other engine input (MegaCouplingMatrix)
 
 ## 5. Render Pipeline
 
-### 5.1 Seven-Step Audio Render (per block)
+### 5.1 Eight-Step Audio Render (per block)
 
 ```
 1. Cache all parameter values (ParamSnapshot pattern — zero-cost per-sample access)
@@ -294,8 +294,41 @@ External: ONSET output → other engine input (MegaCouplingMatrix)
 4. Apply coupling matrix (per-sample for tight coupling types)
 5. Route through FX based on routing mode (Independent/Shared/Chain)
 6. Apply macro modulation (CHARACTER, MOVEMENT, COUPLING, SPACE)
-7. Master output (limiter, DC block, denormal flush)
+7. Master FX chain (tape saturation → reverb → compressor) — preset-coupled, optional
+8. Master output (hard limiter, DC block, denormal flush)
 ```
+
+### 5.2 Master FX Rack
+
+A post-mix effects chain that processes the combined output of all active engines. Master FX settings are **preset-coupled** — each `.xometa` stores its own master FX state. This preserves the principle that presets define complete sonic character.
+
+**Chain order (fixed):**
+1. **Tape Saturation** — `Saturator.h` — master drive/warmth/harmonic glue
+2. **Space Reverb** — `LushReverb.h` — global ambience layer over all engines
+3. **Bus Compressor** — `Compressor.h` — output glue, squash/pump control
+
+**Implementation path:**
+- `Source/Core/MasterFXChain.h` — thin wrapper around the 3 DSP modules
+- Parameter IDs: `master_satDrive`, `master_reverbSize`, `master_reverbMix`, `master_compRatio`, `master_compAttack`, `master_compRelease`, `master_compMix`
+- All 7 parameters added to the APVTS parameter tree
+- `MasterFXChain::processBlock()` called in step 7 before final limiter
+- UI: horizontal strip at bottom of Gallery Model (always visible, not engine-specific)
+- Preset format: `.xometa` gains optional `"masterFX"` object (null = bypass all)
+
+**Example preset snippet:**
+```json
+"masterFX": {
+  "satDrive": 0.15,
+  "reverbSize": 0.4,
+  "reverbMix": 0.2,
+  "compRatio": 2.5,
+  "compAttack": 0.01,
+  "compRelease": 0.1,
+  "compMix": 0.5
+}
+```
+
+**Design principle:** Master FX are not a mixing board — they are part of the instrument sound. A dub preset with 80% master reverb sounds different from the same preset at 20% reverb. The SPACE macro (M4) should map to master reverb mix by default across all presets.
 
 ### 5.2 Thread Safety Rules
 

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Morph_Filter_Breathe",
+  "mood": "Flux",
+  "engines": [
+    "Morph"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MORPH with slow filter oscillation \u2014 the wavetable breathes in and out through the filter.",
+  "tags": [
+    "morph",
+    "filter",
+    "breathe",
+    "slow",
+    "flux"
+  ],
+  "macroLabels": [
+    "FILTER RATE",
+    "FILTER DEPTH",
+    "MORPH",
+    "BLOOM"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.55,
+    "movement": 0.65,
+    "density": 0.65,
+    "space": 0.5,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Morph": {
+      "morph_morph": 0.5,
+      "morph_bloom": 0.7,
+      "morph_decay": 4.0,
+      "morph_sustain": 0.7,
+      "morph_release": 2.0,
+      "morph_filterCutoff": 4000.0,
+      "morph_filterReso": 0.2,
+      "morph_drift": 0.5,
+      "morph_sub": 0.1,
+      "morph_detune": 8.0,
+      "morph_level": 0.7,
+      "morph_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

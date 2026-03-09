@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "name": "Morph_Fat_Foundation",
+  "mood": "Foundation",
+  "engines": [
+    "Morph",
+    "Fat"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MORPH evolving over FAT density \u2014 wavetable motion over immovable harmonic foundation.",
+  "tags": [
+    "morph",
+    "fat",
+    "foundation",
+    "evolving",
+    "dense"
+  ],
+  "macroLabels": [
+    "MORPH POSITION",
+    "FAT DENSITY",
+    "BALANCE",
+    "FILTER"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.65,
+    "movement": 0.45,
+    "density": 0.88,
+    "space": 0.52,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Morph": {
+      "morph_morph": 0.5,
+      "morph_bloom": 0.65,
+      "morph_decay": 3.5,
+      "morph_sustain": 0.7,
+      "morph_release": 2.0,
+      "morph_filterCutoff": 5500.0,
+      "morph_filterReso": 0.15,
+      "morph_drift": 0.35,
+      "morph_sub": 0.1,
+      "morph_detune": 8.0,
+      "morph_level": 0.7,
+      "morph_polyphony": 4
+    },
+    "Fat": {
+      "fat_morph": 0.4,
+      "fat_mojo": 0.4,
+      "fat_subLevel": 0.35,
+      "fat_subOct": 0,
+      "fat_groupMix": 0.85,
+      "fat_detune": 12.0,
+      "fat_stereoWidth": 0.65,
+      "fat_ampAttack": 0.3,
+      "fat_ampDecay": 1.0,
+      "fat_ampSustain": 0.75,
+      "fat_ampRelease": 1.0,
+      "fat_fltCutoff": 3000.0,
+      "fat_fltReso": 0.2,
+      "fat_fltDrive": 0.05,
+      "fat_fltKeyTrack": 0.4,
+      "fat_fltEnvAmt": 0.15,
+      "fat_fltEnvAttack": 0.01,
+      "fat_fltEnvDecay": 0.5,
+      "fat_satDrive": 0.08,
+      "fat_crushDepth": 16.0,
+      "fat_crushRate": 44100.0,
+      "fat_arpOn": 0,
+      "fat_arpPattern": 0,
+      "fat_arpRate": 1,
+      "fat_arpOctaves": 0,
+      "fat_arpGate": 0.5,
+      "fat_arpTempo": 120.0,
+      "fat_level": 0.72,
+      "fat_voiceMode": 0,
+      "fat_glide": 0.0,
+      "fat_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Morph Field",
+  "mood": "Atmosphere",
+  "engines": ["Morph"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MORPH's bloom at atmospheric maximum — extremely slow attack, heavy drift, wavetable morphing through an entire field of timbres. Environmental texture, not a musical sound.",
+  "tags": ["atmosphere", "morph", "bloom", "field", "ambient", "slow"],
+  "macroLabels": ["MORPH RANGE", "BLOOM RATE", "DRIFT DEPTH", "FILTER"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.7,
+    "density": 0.6,
+    "space": 0.8,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Morph": {
+      "morph_morph": 0.1,
+      "morph_bloom": 0.95,
+      "morph_decay": 7.0,
+      "morph_sustain": 0.55,
+      "morph_release": 6.0,
+      "morph_filterCutoff": 6000.0,
+      "morph_filterReso": 0.1,
+      "morph_drift": 0.7,
+      "morph_sub": 0.1,
+      "morph_detune": 16.0,
+      "morph_level": 0.7,
+      "morph_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}
