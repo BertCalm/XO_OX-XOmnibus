@@ -288,7 +288,7 @@ public:
         const float detuneCts  = (pDetune != nullptr) ? pDetune->load() : 12.0f;
         const float level      = (pLevel != nullptr) ? pLevel->load() : 0.8f;
         const int maxPoly      = (pPolyphony != nullptr)
-            ? (1 << static_cast<int> (pPolyphony->load())) : 8; // 0→1,1→2,2→4,3→8,4→16
+            ? (1 << std::min (4, static_cast<int> (pPolyphony->load()))) : 8; // 0→1,1→2,2→4,3→8,4→16
 
         // Effective morph position with coupling modulation
         float effectiveMorph = std::max (0.0f, std::min (3.0f, morphPos + morphMod));

@@ -207,7 +207,7 @@ public:
         const int unisonCount = (pUnison != nullptr)
             ? (1 << static_cast<int> (pUnison->load())) : 1; // 0→1, 1→2, 2→4
         const int maxPoly = (pPolyphony != nullptr)
-            ? (1 << static_cast<int> (pPolyphony->load())) : 4; // 0→1, 1→2, 2→4, 3→8
+            ? (1 << std::min (3, static_cast<int> (pPolyphony->load()))) : 4; // 0→1, 1→2, 2→4, 3→8
 
         // --- Process MIDI events ---
         for (const auto metadata : midi)

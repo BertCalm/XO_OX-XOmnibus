@@ -58,6 +58,7 @@ target_sources(XOmnibus PRIVATE
     # Engine adapters
     Source/Engines/Snap/SnapEngine.h
     Source/Engines/Morph/MorphEngine.h
+    Source/Engines/Dub/DubEngine.h
 
     # Main processor
     Source/XOmnibusProcessor.h
