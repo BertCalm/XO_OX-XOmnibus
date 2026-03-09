@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Vowel Sweep",
+  "mood": "Prism",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expressive leads voice with warm character.",
+  "tags": [
+    "supersaw",
+    "formant",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Leads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 2.0,
+      "osc_a_level": 0.8,
+      "osc_a_detune": 0.25,
+      "filt_b_mix": 0.7,
+      "filt_b_morph": 0.2,
+      "filt_b_reso": 0.4,
+      "env_filter_attack": 10.0,
+      "env_filter_decay": 400.0,
+      "env_filter_sustain": 0.3,
+      "mod_1_source": 2.0,
+      "mod_1_dest": 23.0,
+      "mod_1_amount": 0.7,
+      "env_amp_attack": 5.0,
+      "env_amp_decay": 500.0,
+      "env_amp_sustain": 0.65,
+      "env_amp_release": 300.0,
+      "delay_enable": 1.0,
+      "delay_time": 300.0,
+      "delay_feedback": 0.3,
+      "delay_mix": 0.15,
+      "master_gain": -3.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.422,
+    "warmth": 0.154,
+    "movement": 0.0,
+    "density": 0.229,
+    "space": 0.043,
+    "aggression": 0.0
+  }
+}

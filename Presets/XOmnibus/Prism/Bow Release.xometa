@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Bow Release",
+  "mood": "Prism",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Focused plucks tone with warm character.",
+  "tags": [
+    "pluck",
+    "bow",
+    "release"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Plucks",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_shape": 0.5,
+      "oscA_drift": 0.2,
+      "oscB_wave": 0.0,
+      "oscB_blend": 0.48,
+      "oscB_detune": 6.0,
+      "flt_mode": 1.0,
+      "flt_cutoff": 3800.0,
+      "flt_resonance": 0.6,
+      "flt_envAmt": 0.6,
+      "env_attack": 0.004,
+      "env_decay": 1.5,
+      "env_sustain": 0.1,
+      "env_release": 1.0,
+      "space_mix": 0.18,
+      "bob_mode": 0.1
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.418,
+    "warmth": 0.196,
+    "movement": 0.0,
+    "density": 0.231,
+    "space": 0.099,
+    "aggression": 0.195
+  }
+}

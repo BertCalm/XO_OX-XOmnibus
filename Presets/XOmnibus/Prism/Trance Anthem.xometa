@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Trance Anthem",
+  "mood": "Prism",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright leads character with warm character.",
+  "tags": [
+    "chorus",
+    "supersaw",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Leads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 2.0,
+      "osc_a_level": 0.85,
+      "osc_a_detune": 0.35,
+      "osc_b_mode": 2.0,
+      "osc_b_level": 0.7,
+      "osc_b_detune": 0.4,
+      "osc_b_tune": 12.0,
+      "filt_a_cutoff": 6000.0,
+      "filt_a_reso": 0.15,
+      "filt_a_slope": 1.0,
+      "env_amp_attack": 10.0,
+      "env_amp_decay": 400.0,
+      "env_amp_sustain": 0.8,
+      "env_amp_release": 400.0,
+      "env_filter_attack": 10.0,
+      "env_filter_decay": 300.0,
+      "env_filter_sustain": 0.5,
+      "filt_a_env_amt": 0.4,
+      "chorus_enable": 1.0,
+      "chorus_mix": 0.2,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.5,
+      "reverb_mix": 0.2,
+      "master_gain": -4.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.454,
+    "warmth": 0.0,
+    "movement": 0.0,
+    "density": 0.452,
+    "space": 0.22,
+    "aggression": 0.062
+  }
+}

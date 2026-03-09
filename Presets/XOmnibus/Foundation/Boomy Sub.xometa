@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Boomy Sub",
+  "mood": "Foundation",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Deep bass presence with warm character.",
+  "tags": [
+    "dyssey",
+    "dyssey",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Bass",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 3.0,
+      "osc_a_level": 0.9,
+      "sub_level": 0.7,
+      "sub_shape": 0.0,
+      "haze_amount": 0.15,
+      "filt_a_cutoff": 600.0,
+      "filt_a_reso": 0.2,
+      "filt_a_slope": 1.0,
+      "filt_a_drive": 0.15,
+      "env_amp_attack": 5.0,
+      "env_amp_decay": 500.0,
+      "env_amp_sustain": 0.4,
+      "env_amp_release": 250.0,
+      "master_gain": -1.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.271,
+    "warmth": 0.312,
+    "movement": 0.0,
+    "density": 0.133,
+    "space": 0.0,
+    "aggression": 0.144
+  }
+}

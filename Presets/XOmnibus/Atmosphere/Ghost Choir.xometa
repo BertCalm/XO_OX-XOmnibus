@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Ghost Choir",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Floating textures texture with voyager drift.",
+  "tags": [
+    "drifty",
+    "spacious",
+    "formant",
+    "slow-attack"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Textures",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 0.0,
+      "osc_a_level": 0.5,
+      "osc_b_mode": 0.0,
+      "osc_b_shape": 0.0,
+      "osc_b_level": 0.4,
+      "osc_b_fine": 6.0,
+      "filt_a_cutoff": 8000.0,
+      "filt_a_reso": 0.05,
+      "filt_b_mix": 0.7,
+      "filt_b_morph": 0.3,
+      "filt_b_reso": 0.45,
+      "lfo_1_rate": 0.04,
+      "lfo_1_shape": 0.0,
+      "lfo_1_depth": 0.6,
+      "mod_1_source": 4.0,
+      "mod_1_dest": 23.0,
+      "mod_1_amount": 0.7,
+      "env_amp_attack": 500.0,
+      "env_amp_sustain": 0.5,
+      "env_amp_release": 2500.0,
+      "drift_depth": 0.3,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.85,
+      "reverb_mix": 0.45,
+      "master_gain": -5.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.477,
+    "warmth": 0.319,
+    "movement": 0.12,
+    "density": 0.095,
+    "space": 0.336,
+    "aggression": 0.021
+  }
+}

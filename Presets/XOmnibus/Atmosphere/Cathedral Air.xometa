@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Cathedral Air",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expansive pads atmosphere with warm character.",
+  "tags": [
+    "spacious",
+    "slow-attack",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 3.0,
+      "osc_a_level": 0.5,
+      "osc_b_mode": 0.0,
+      "osc_b_shape": 3.0,
+      "osc_b_level": 0.5,
+      "osc_b_fine": 3.0,
+      "noise_level": 0.08,
+      "noise_type": 1.0,
+      "filt_a_cutoff": 4500.0,
+      "filt_a_reso": 0.05,
+      "shimmer_amount": 0.2,
+      "shimmer_tone": 0.5,
+      "env_amp_attack": 600.0,
+      "env_amp_sustain": 0.8,
+      "env_amp_release": 3000.0,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.9,
+      "reverb_damping": 0.3,
+      "reverb_mix": 0.5,
+      "master_gain": -5.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.503,
+    "warmth": 0.0,
+    "movement": 0.0,
+    "density": 0.108,
+    "space": 0.363,
+    "aggression": 0.021
+  }
+}

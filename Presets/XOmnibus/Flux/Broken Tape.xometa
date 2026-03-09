@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Broken Tape",
+  "mood": "Flux",
+  "engines": [
+    "XOverdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Evolving tape chaos texture with self-oscillating delay and driven saturation.",
+  "tags": [
+    "self-oscillating",
+    "wobbly",
+    "worn",
+    "wet",
+    "driven",
+    "saw"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOverdub",
+    "sourceCategory": "Tape Chaos",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOverdub": {
+      "osc_wave": 2.0,
+      "filter_cutoff": 2000.0,
+      "filter_resonance": 0.3,
+      "delay_time": 0.2,
+      "delay_feedback": 1.15,
+      "delay_wow": 1.0,
+      "delay_wear": 0.9,
+      "drive_amount": 7.0,
+      "send_level": 0.8,
+      "return_level": 0.6
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.667,
+    "warmth": 0.106,
+    "movement": 1.0,
+    "density": 0.24,
+    "space": 0.675,
+    "aggression": 1.0
+  }
+}

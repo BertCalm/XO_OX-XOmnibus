@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Alien Celesta",
+  "mood": "Prism",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Focused keys tone with prism shimmer.",
+  "tags": [
+    "shimmery",
+    "dyssey",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Keys",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 3.0,
+      "osc_a_level": 0.7,
+      "osc_a_fm_ratio": 7.0,
+      "osc_a_fm_depth": 0.15,
+      "shimmer_amount": 0.4,
+      "shimmer_tone": 0.7,
+      "filt_a_cutoff": 12000.0,
+      "filt_a_reso": 0.05,
+      "drift_depth": 0.2,
+      "env_amp_attack": 1.0,
+      "env_amp_decay": 1000.0,
+      "env_amp_sustain": 0.0,
+      "env_amp_release": 700.0,
+      "phaser_enable": 1.0,
+      "phaser_rate": 0.1,
+      "phaser_depth": 0.4,
+      "phaser_mix": 0.2,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.6,
+      "reverb_mix": 0.3,
+      "master_gain": -4.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.71,
+    "warmth": 0.11,
+    "movement": 0.0,
+    "density": 0.058,
+    "space": 0.266,
+    "aggression": 0.021
+  }
+}

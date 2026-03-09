@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "Journey Texture",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Floating textures texture with voyager drift.",
+  "tags": [
+    "drifty",
+    "spacious",
+    "chorus",
+    "slow-attack"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Textures",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 0.0,
+      "osc_a_level": 0.5,
+      "osc_b_mode": 2.0,
+      "osc_b_level": 0.4,
+      "osc_b_detune": 0.4,
+      "noise_level": 0.1,
+      "noise_type": 1.0,
+      "filt_a_cutoff": 3000.0,
+      "filt_a_reso": 0.15,
+      "shimmer_amount": 0.2,
+      "macro_journey": 0.0,
+      "env_amp_attack": 500.0,
+      "env_amp_sustain": 0.55,
+      "env_amp_release": 2000.0,
+      "drift_depth": 0.3,
+      "tidal_depth": 0.2,
+      "tidal_rate": 0.12,
+      "chorus_enable": 1.0,
+      "chorus_mix": 0.2,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.75,
+      "reverb_mix": 0.35,
+      "master_gain": -5.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.47,
+    "warmth": 0.165,
+    "movement": 0.1,
+    "density": 0.295,
+    "space": 0.325,
+    "aggression": 0.062
+  }
+}

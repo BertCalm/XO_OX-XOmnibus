@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Dawn Bloomer",
+  "mood": "Entangled",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cross-modulated living energy with analog drift and reverb depth.",
+  "tags": [
+    "moving",
+    "slow",
+    "evolving",
+    "pad"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Living",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 1.0,
+      "oscA_shape": 0.5,
+      "oscA_drift": 0.3,
+      "oscB_wave": 0.0,
+      "oscB_blend": 0.4,
+      "oscB_detune": 5.0,
+      "flt_mode": 3.0,
+      "flt_cutoff": 1200.0,
+      "flt_resonance": 0.3,
+      "flt_envAmt": 0.95,
+      "lfo1_rate": 0.04,
+      "lfo1_depth": 0.3,
+      "cur_mode": 1.0,
+      "cur_amount": 0.4,
+      "motEnv_attack": 2.0,
+      "motEnv_decay": 2.0,
+      "motEnv_sustain": 0.8,
+      "motEnv_release": 3.0,
+      "motEnv_depth": 0.9,
+      "env_attack": 2.0,
+      "env_decay": 1.5,
+      "env_sustain": 0.9,
+      "env_release": 4.0,
+      "space_mix": 0.5,
+      "space_size": 0.8,
+      "glide": 0.4
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.326,
+    "warmth": 0.267,
+    "movement": 0.605,
+    "density": 0.193,
+    "space": 0.568,
+    "aggression": 0.098
+  }
+}

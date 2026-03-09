@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Fata Morgana",
+  "mood": "Aether",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cinematic dream pads depth with bob character and analog drift.",
+  "tags": [
+    "dream",
+    "mirage",
+    "shimmering"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Dream Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_drift": 0.65,
+      "oscA_shape": 0.15,
+      "oscB_wave": 0.0,
+      "oscB_blend": 0.6,
+      "oscB_detune": 30.0,
+      "lfo1_rate": 0.04,
+      "lfo1_depth": 0.25,
+      "lfo2_rate": 0.06,
+      "lfo2_depth": 0.2,
+      "flt_mode": 3.0,
+      "flt_cutoff": 3500.0,
+      "flt_resonance": 0.12,
+      "env_attack": 3.0,
+      "env_decay": 2.0,
+      "env_sustain": 0.85,
+      "env_release": 8.0,
+      "smear_depth": 0.5,
+      "smear_width": 0.95,
+      "smear_mix": 0.45,
+      "space_mix": 0.55,
+      "space_size": 0.92,
+      "bob_mode": 0.65
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.411,
+    "warmth": 0.722,
+    "movement": 0.169,
+    "density": 0.445,
+    "space": 0.854,
+    "aggression": 0.039
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "White Noise Sweep",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ethereal textures wash with warm character.",
+  "tags": [
+    "spacious",
+    "slow-attack",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Textures",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 3.0,
+      "osc_a_level": 0.2,
+      "noise_level": 0.6,
+      "noise_type": 0.0,
+      "filt_a_cutoff": 1000.0,
+      "filt_a_reso": 0.3,
+      "filt_a_slope": 1.0,
+      "env_amp_attack": 800.0,
+      "env_amp_sustain": 0.5,
+      "env_amp_release": 3000.0,
+      "env_filter_attack": 2000.0,
+      "env_filter_decay": 3000.0,
+      "env_filter_sustain": 0.3,
+      "filt_a_env_amt": 0.5,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.8,
+      "reverb_mix": 0.4,
+      "master_gain": -5.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.311,
+    "warmth": 0.0,
+    "movement": 0.0,
+    "density": 0.017,
+    "space": 0.308,
+    "aggression": 0.124
+  }
+}

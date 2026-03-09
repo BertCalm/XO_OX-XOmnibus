@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Acetate Blur",
+  "mood": "Flux",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Evolving lo-fi atmospheres texture with bob character and analog drift.",
+  "tags": [
+    "lofi",
+    "vinyl",
+    "blur"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Lo-Fi Atmospheres",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 1.0,
+      "oscA_drift": 0.45,
+      "oscA_shape": 0.25,
+      "oscB_wave": 3.0,
+      "oscB_blend": 0.5,
+      "oscB_detune": 4.0,
+      "flt_mode": 3.0,
+      "flt_cutoff": 1800.0,
+      "flt_character": 0.45,
+      "dust_amount": 0.62,
+      "dust_age": 0.82,
+      "dust_tone": 0.25,
+      "env_attack": 1.0,
+      "env_decay": 1.5,
+      "env_sustain": 0.78,
+      "env_release": 4.0,
+      "space_size": 0.5,
+      "space_mix": 0.25,
+      "bob_mode": 0.42
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.482,
+    "warmth": 0.484,
+    "movement": 0.0,
+    "density": 0.213,
+    "space": 0.321,
+    "aggression": 0.232
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Digital Scream",
+  "mood": "Prism",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Focused leads tone with warm haze.",
+  "tags": [
+    "saturated",
+    "dyssey",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Leads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 3.0,
+      "osc_a_level": 0.9,
+      "osc_a_fm_ratio": 5.0,
+      "osc_a_fm_depth": 0.6,
+      "filt_a_cutoff": 4000.0,
+      "filt_a_reso": 0.3,
+      "filt_a_slope": 1.0,
+      "filt_a_drive": 0.3,
+      "haze_amount": 0.35,
+      "env_amp_attack": 2.0,
+      "env_amp_decay": 250.0,
+      "env_amp_sustain": 0.7,
+      "env_amp_release": 200.0,
+      "env_filter_attack": 3.0,
+      "env_filter_decay": 200.0,
+      "env_filter_sustain": 0.2,
+      "filt_a_env_amt": 0.6,
+      "master_gain": -3.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.422,
+    "warmth": 0.144,
+    "movement": 0.0,
+    "density": 0.075,
+    "space": 0.0,
+    "aggression": 0.363
+  }
+}

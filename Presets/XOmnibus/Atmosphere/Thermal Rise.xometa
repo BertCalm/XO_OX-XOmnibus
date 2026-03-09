@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Thermal Rise",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Floating warm pads texture with bob character and analog drift.",
+  "tags": [
+    "warm",
+    "rise",
+    "swell"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Warm Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 2.0,
+      "oscA_shape": 0.44,
+      "oscA_drift": 0.32,
+      "oscB_wave": 3.0,
+      "oscB_blend": 0.4,
+      "oscB_detune": 3.0,
+      "flt_mode": 1.0,
+      "flt_cutoff": 4000.0,
+      "flt_resonance": 0.26,
+      "env_attack": 0.8,
+      "env_decay": 1.0,
+      "env_sustain": 0.82,
+      "env_release": 2.0,
+      "space_mix": 0.32,
+      "space_size": 0.6,
+      "bob_mode": 0.25
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.422,
+    "warmth": 0.342,
+    "movement": 0.0,
+    "density": 0.168,
+    "space": 0.396,
+    "aggression": 0.085
+  }
+}

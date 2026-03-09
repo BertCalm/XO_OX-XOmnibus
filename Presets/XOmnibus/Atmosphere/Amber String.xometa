@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Amber String",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ethereal warm pads wash with bob character and analog drift.",
+  "tags": [
+    "warm",
+    "string",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Warm Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 3.0,
+      "oscA_shape": 0.6,
+      "oscA_drift": 0.24,
+      "oscB_wave": 0.0,
+      "oscB_blend": 0.6,
+      "oscB_detune": 7.0,
+      "flt_mode": 1.0,
+      "flt_cutoff": 3800.0,
+      "flt_resonance": 0.28,
+      "env_attack": 0.35,
+      "env_decay": 0.7,
+      "env_sustain": 0.79,
+      "env_release": 1.9,
+      "smear_width": 0.65,
+      "smear_mix": 0.28,
+      "space_mix": 0.34,
+      "bob_mode": 0.26
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.418,
+    "warmth": 0.306,
+    "movement": 0.0,
+    "density": 0.282,
+    "space": 0.32,
+    "aggression": 0.091
+  }
+}

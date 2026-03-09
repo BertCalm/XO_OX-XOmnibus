@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Sync Mayhem",
+  "mood": "Flux",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Unpredictable oddball motion with bob character and curious motion.",
+  "tags": [
+    "sync",
+    "harsh",
+    "abrasive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Oddball",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 2.0,
+      "oscA_shape": 0.32,
+      "oscA_drift": 0.18,
+      "oscB_wave": 1.0,
+      "oscB_sync": 1.0,
+      "oscB_detune": 55.0,
+      "oscB_blend": 0.75,
+      "oscB_fm": 0.15,
+      "cur_mode": 0.0,
+      "cur_amount": 0.72,
+      "flt_mode": 0.0,
+      "flt_cutoff": 7200.0,
+      "flt_resonance": 0.78,
+      "flt_drive": 0.42,
+      "lfo1_rate": 0.25,
+      "lfo1_depth": 0.5,
+      "env_attack": 0.005,
+      "env_decay": 0.4,
+      "env_sustain": 0.6,
+      "env_release": 0.8,
+      "bob_mode": 0.42
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.469,
+    "warmth": 0.284,
+    "movement": 0.547,
+    "density": 0.55,
+    "space": 0.0,
+    "aggression": 0.411
+  }
+}

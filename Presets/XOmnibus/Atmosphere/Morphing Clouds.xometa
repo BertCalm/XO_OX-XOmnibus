@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Morphing Clouds",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Floating pads texture with voyager drift.",
+  "tags": [
+    "drifty",
+    "spacious",
+    "chorus",
+    "formant",
+    "slow-attack"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 0.0,
+      "osc_a_level": 0.6,
+      "osc_b_mode": 2.0,
+      "osc_b_level": 0.5,
+      "osc_b_detune": 0.4,
+      "filt_a_cutoff": 2000.0,
+      "filt_a_reso": 0.2,
+      "filt_b_mix": 0.3,
+      "filt_b_morph": 0.2,
+      "lfo_1_rate": 0.1,
+      "lfo_1_shape": 0.0,
+      "lfo_1_depth": 0.6,
+      "mod_1_source": 4.0,
+      "mod_1_dest": 21.0,
+      "mod_1_amount": 0.4,
+      "mod_2_source": 4.0,
+      "mod_2_dest": 23.0,
+      "mod_2_amount": 0.5,
+      "env_amp_attack": 500.0,
+      "env_amp_sustain": 0.6,
+      "env_amp_release": 2500.0,
+      "drift_depth": 0.25,
+      "chorus_enable": 1.0,
+      "chorus_mix": 0.25,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.7,
+      "reverb_mix": 0.4,
+      "master_gain": -4.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.367,
+    "warmth": 0.204,
+    "movement": 0.12,
+    "density": 0.317,
+    "space": 0.341,
+    "aggression": 0.083
+  }
+}

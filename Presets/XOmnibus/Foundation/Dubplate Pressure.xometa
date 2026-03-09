@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Dubplate Pressure",
+  "mood": "Foundation",
+  "engines": [
+    "XOverdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Rooted dub bass sound with warm character.",
+  "tags": [
+    "subby",
+    "sine",
+    "verdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOverdub",
+    "sourceCategory": "Dub Bass",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOverdub": {
+      "osc_wave": 0.0,
+      "osc_octave": 1.0,
+      "osc_sub_level": 1.0,
+      "filter_cutoff": 500.0,
+      "filter_resonance": 0.4,
+      "filter_env_amt": 0.6,
+      "env_attack": 0.005,
+      "env_decay": 0.6,
+      "env_sustain": 0.3,
+      "env_release": 0.3,
+      "voice_mode": 1.0,
+      "drive_amount": 2.0,
+      "send_level": 0.3
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.466,
+    "warmth": 0.639,
+    "movement": 0.275,
+    "density": 0.69,
+    "space": 0.438,
+    "aggression": 0.275
+  }
+}

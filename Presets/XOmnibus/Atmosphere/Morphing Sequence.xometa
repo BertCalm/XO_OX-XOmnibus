@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Morphing Sequence",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ethereal textures wash with voyager drift.",
+  "tags": [
+    "drifty",
+    "spacious",
+    "formant",
+    "slow-attack"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Textures",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 0.0,
+      "osc_a_level": 0.6,
+      "osc_b_mode": 3.0,
+      "osc_b_level": 0.5,
+      "osc_b_fm_ratio": 2.0,
+      "osc_b_fm_depth": 0.2,
+      "filt_a_cutoff": 3000.0,
+      "filt_a_reso": 0.2,
+      "filt_b_mix": 0.3,
+      "filt_b_morph": 0.3,
+      "lfo_1_rate": 0.05,
+      "lfo_1_shape": 0.0,
+      "lfo_1_depth": 0.6,
+      "mod_1_source": 4.0,
+      "mod_1_dest": 23.0,
+      "mod_1_amount": 0.5,
+      "mod_2_source": 4.0,
+      "mod_2_dest": 14.0,
+      "mod_2_amount": 0.3,
+      "env_amp_attack": 400.0,
+      "env_amp_sustain": 0.6,
+      "env_amp_release": 2000.0,
+      "drift_depth": 0.3,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.75,
+      "reverb_mix": 0.35,
+      "master_gain": -4.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.399,
+    "warmth": 0.231,
+    "movement": 0.12,
+    "density": 0.117,
+    "space": 0.281,
+    "aggression": 0.083
+  }
+}

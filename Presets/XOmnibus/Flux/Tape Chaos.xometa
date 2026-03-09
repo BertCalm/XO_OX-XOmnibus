@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Tape Chaos",
+  "mood": "Flux",
+  "engines": [
+    "XOverdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Evolving tape chaos texture with self-oscillating delay and driven saturation.",
+  "tags": [
+    "self-oscillating",
+    "wobbly",
+    "worn",
+    "wet",
+    "driven",
+    "square"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOverdub",
+    "sourceCategory": "Tape Chaos",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOverdub": {
+      "osc_wave": 3.0,
+      "osc_pwm": 0.3,
+      "filter_cutoff": 1500.0,
+      "filter_resonance": 0.5,
+      "delay_time": 0.3,
+      "delay_feedback": 1.1,
+      "delay_wow": 0.8,
+      "delay_wear": 0.7,
+      "drive_amount": 5.0,
+      "send_level": 0.6,
+      "reverb_size": 0.6,
+      "reverb_mix": 0.4
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.625,
+    "warmth": 0.112,
+    "movement": 0.972,
+    "density": 0.24,
+    "space": 0.75,
+    "aggression": 1.0
+  }
+}

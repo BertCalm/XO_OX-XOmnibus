@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Slow Pendulum",
+  "mood": "Entangled",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Living living movement with analog drift and reverb depth.",
+  "tags": [
+    "moving",
+    "pendulum",
+    "oscillating"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Living",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 3.0,
+      "oscA_shape": 0.45,
+      "oscA_drift": 0.28,
+      "oscB_wave": 2.0,
+      "oscB_blend": 0.45,
+      "oscB_detune": 8.0,
+      "flt_mode": 2.0,
+      "flt_cutoff": 3000.0,
+      "flt_resonance": 0.38,
+      "flt_character": 0.55,
+      "flt_envAmt": 0.72,
+      "lfo1_rate": 0.5,
+      "lfo1_depth": 0.6,
+      "cur_mode": 1.0,
+      "cur_amount": 0.45,
+      "motEnv_attack": 0.5,
+      "motEnv_decay": 0.8,
+      "motEnv_sustain": 0.6,
+      "motEnv_release": 1.5,
+      "motEnv_depth": 0.65,
+      "env_attack": 0.2,
+      "env_decay": 0.8,
+      "env_sustain": 0.78,
+      "env_release": 2.2,
+      "space_mix": 0.38,
+      "space_size": 0.65,
+      "glide": 0.15
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.229,
+    "movement": 0.661,
+    "density": 0.246,
+    "space": 0.447,
+    "aggression": 0.124
+  }
+}

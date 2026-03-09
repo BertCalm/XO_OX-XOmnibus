@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Hearthside",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ethereal warm pads wash with bob character.",
+  "tags": [
+    "warm",
+    "cozy",
+    "domestic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Warm Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_shape": 0.3,
+      "oscA_drift": 0.2,
+      "oscB_wave": 1.0,
+      "oscB_blend": 0.44,
+      "oscB_detune": 6.0,
+      "flt_mode": 3.0,
+      "flt_cutoff": 3200.0,
+      "flt_resonance": 0.1,
+      "env_attack": 0.6,
+      "env_decay": 1.2,
+      "env_sustain": 0.9,
+      "env_release": 2.2,
+      "space_mix": 0.3,
+      "bob_mode": 0.3
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.404,
+    "warmth": 0.297,
+    "movement": 0.0,
+    "density": 0.218,
+    "space": 0.165,
+    "aggression": 0.033
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Electric Tine",
+  "mood": "Prism",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Focused keys & bells tone with warm character.",
+  "tags": [
+    "keys",
+    "tine",
+    "electric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Keys & Bells",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_shape": 0.48,
+      "oscA_drift": 0.08,
+      "oscB_wave": 2.0,
+      "oscB_fm": 0.28,
+      "oscB_blend": 0.52,
+      "oscB_detune": 5.0,
+      "flt_mode": 1.0,
+      "flt_cutoff": 5500.0,
+      "flt_resonance": 0.42,
+      "flt_envAmt": 0.52,
+      "vel_filter": 0.45,
+      "env_attack": 0.002,
+      "env_decay": 1.0,
+      "env_sustain": 0.08,
+      "env_release": 0.9,
+      "smear_depth": 0.15,
+      "smear_mix": 0.15,
+      "space_mix": 0.2,
+      "bob_mode": 0.1
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.447,
+    "warmth": 0.128,
+    "movement": 0.0,
+    "density": 0.337,
+    "space": 0.182,
+    "aggression": 0.137
+  }
+}

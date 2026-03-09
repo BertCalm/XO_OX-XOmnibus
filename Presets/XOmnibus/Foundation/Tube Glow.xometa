@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Tube Glow",
+  "mood": "Foundation",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Deep warm bass presence with warm character.",
+  "tags": [
+    "bass",
+    "tube",
+    "glowing"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Warm Bass",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_tune": -12.0,
+      "oscA_shape": 0.45,
+      "oscA_drift": 0.14,
+      "oscB_wave": 0.0,
+      "oscB_blend": 0.55,
+      "oscB_detune": -6.0,
+      "flt_mode": 3.0,
+      "flt_cutoff": 1000.0,
+      "flt_resonance": 0.15,
+      "flt_drive": 0.35,
+      "flt_character": 0.65,
+      "env_attack": 0.018,
+      "env_decay": 0.5,
+      "env_sustain": 0.72,
+      "env_release": 0.6,
+      "bob_mode": 0.12
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.49,
+    "warmth": 0.162,
+    "movement": 0.0,
+    "density": 0.179,
+    "space": 0.0,
+    "aggression": 0.18
+  }
+}

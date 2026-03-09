@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Wide Horizon",
+  "mood": "Prism",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expressive leads voice with warm character.",
+  "tags": [
+    "chorus",
+    "supersaw",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Leads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 2.0,
+      "osc_a_level": 0.7,
+      "osc_a_detune": 0.4,
+      "osc_b_mode": 2.0,
+      "osc_b_level": 0.6,
+      "osc_b_detune": 0.45,
+      "osc_b_fine": 3.0,
+      "global_spread": 0.8,
+      "filt_a_cutoff": 7000.0,
+      "filt_a_reso": 0.1,
+      "shimmer_amount": 0.2,
+      "env_amp_attack": 10.0,
+      "env_amp_decay": 400.0,
+      "env_amp_sustain": 0.75,
+      "env_amp_release": 350.0,
+      "chorus_enable": 1.0,
+      "chorus_mix": 0.2,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.45,
+      "reverb_mix": 0.2,
+      "master_gain": -4.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.538,
+    "warmth": 0.0,
+    "movement": 0.0,
+    "density": 0.451,
+    "space": 0.209,
+    "aggression": 0.041
+  }
+}

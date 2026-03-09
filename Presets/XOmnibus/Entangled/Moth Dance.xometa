@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "Moth Dance",
+  "mood": "Entangled",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cross-modulated living energy with analog drift and curious motion.",
+  "tags": [
+    "moving",
+    "flutter",
+    "delicate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Living",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_shape": 0.55,
+      "oscA_drift": 0.28,
+      "oscB_wave": 1.0,
+      "oscB_blend": 0.45,
+      "oscB_detune": 7.0,
+      "flt_mode": 1.0,
+      "flt_cutoff": 4200.0,
+      "flt_resonance": 0.48,
+      "flt_envAmt": 0.55,
+      "lfo1_rate": 3.8,
+      "lfo1_depth": 0.55,
+      "cur_mode": 2.0,
+      "cur_amount": 0.58,
+      "motEnv_attack": 0.08,
+      "motEnv_decay": 0.6,
+      "motEnv_sustain": 0.5,
+      "motEnv_release": 1.0,
+      "motEnv_depth": 0.55,
+      "env_attack": 0.025,
+      "env_decay": 0.5,
+      "env_sustain": 0.68,
+      "env_release": 1.0,
+      "space_mix": 0.28,
+      "glide": 0.04
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.426,
+    "warmth": 0.211,
+    "movement": 0.675,
+    "density": 0.234,
+    "space": 0.154,
+    "aggression": 0.156
+  }
+}

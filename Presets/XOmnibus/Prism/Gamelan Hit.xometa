@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Gamelan Hit",
+  "mood": "Prism",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Focused keys & bells tone with warm character.",
+  "tags": [
+    "bell",
+    "gamelan",
+    "percussive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Keys & Bells",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 3.0,
+      "oscA_shape": 0.58,
+      "oscA_drift": 0.1,
+      "oscB_wave": 1.0,
+      "oscB_fm": 0.62,
+      "oscB_blend": 0.7,
+      "oscB_detune": 11.0,
+      "flt_mode": 2.0,
+      "flt_cutoff": 5500.0,
+      "flt_resonance": 0.55,
+      "flt_character": 0.7,
+      "flt_envAmt": 0.6,
+      "env_attack": 0.002,
+      "env_decay": 2.0,
+      "env_sustain": 0.0,
+      "env_release": 1.8,
+      "space_mix": 0.28,
+      "space_size": 0.6,
+      "bob_mode": 0.2
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.64,
+    "warmth": 0.191,
+    "movement": 0.0,
+    "density": 0.597,
+    "space": 0.374,
+    "aggression": 0.179
+  }
+}

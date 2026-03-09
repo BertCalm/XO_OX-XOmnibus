@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Thermal Layer",
+  "mood": "Aether",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Transcendent dream pads atmosphere with bob character and analog drift.",
+  "tags": [
+    "dream",
+    "stratified",
+    "slow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Dream Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 2.0,
+      "oscA_shape": 0.3,
+      "oscA_drift": 0.55,
+      "oscB_wave": 3.0,
+      "oscB_blend": 0.72,
+      "oscB_detune": 6.0,
+      "flt_mode": 2.0,
+      "flt_cutoff": 2600.0,
+      "flt_character": 0.62,
+      "env_attack": 2.5,
+      "env_decay": 2.5,
+      "env_sustain": 0.88,
+      "env_release": 7.5,
+      "space_size": 0.9,
+      "space_decay": 0.87,
+      "space_mix": 0.53,
+      "bob_mode": 0.58
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.558,
+    "warmth": 0.639,
+    "movement": 0.0,
+    "density": 0.309,
+    "space": 0.622,
+    "aggression": 0.0
+  }
+}

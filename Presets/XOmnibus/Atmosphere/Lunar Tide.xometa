@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Lunar Tide",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expansive textures atmosphere with voyager drift and tidal pulse.",
+  "tags": [
+    "drifty",
+    "tidal",
+    "spacious",
+    "chorus",
+    "slow-attack"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Textures",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 2.0,
+      "osc_a_level": 0.5,
+      "osc_b_mode": 0.0,
+      "osc_b_shape": 3.0,
+      "osc_b_level": 0.4,
+      "osc_b_fine": 4.0,
+      "filt_a_cutoff": 3000.0,
+      "filt_a_reso": 0.15,
+      "tidal_depth": 0.6,
+      "tidal_rate": 0.1,
+      "drift_depth": 0.3,
+      "env_amp_attack": 600.0,
+      "env_amp_sustain": 0.55,
+      "env_amp_release": 2500.0,
+      "chorus_enable": 1.0,
+      "chorus_rate": 0.3,
+      "chorus_mix": 0.2,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.8,
+      "reverb_mix": 0.4,
+      "master_gain": -5.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.399,
+    "warmth": 0.165,
+    "movement": 0.3,
+    "density": 0.095,
+    "space": 0.352,
+    "aggression": 0.062
+  }
+}

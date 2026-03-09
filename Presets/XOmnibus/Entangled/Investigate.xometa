@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Investigate",
+  "mood": "Entangled",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cross-modulated curious motion energy with bob character and analog drift.",
+  "tags": [
+    "curious",
+    "motion",
+    "character"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Curious Motion",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 2.0,
+      "oscA_drift": 0.3,
+      "oscA_shape": 0.6,
+      "oscB_wave": 1.0,
+      "oscB_blend": 0.45,
+      "oscB_detune": -4.0,
+      "cur_mode": 2.0,
+      "cur_amount": 0.88,
+      "lfo1_rate": 1.8,
+      "lfo1_depth": 0.55,
+      "flt_mode": 1.0,
+      "flt_cutoff": 3200.0,
+      "flt_resonance": 0.48,
+      "smear_depth": 0.3,
+      "smear_mix": 0.28,
+      "env_attack": 0.05,
+      "env_release": 1.0,
+      "bob_mode": 0.55
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.404,
+    "warmth": 0.414,
+    "movement": 0.646,
+    "density": 0.146,
+    "space": 0.133,
+    "aggression": 0.156
+  }
+}

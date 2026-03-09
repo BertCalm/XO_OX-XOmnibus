@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Dirty Loop",
+  "mood": "Flux",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Glitchy lo-fi atmospheres character with bob character and analog drift.",
+  "tags": [
+    "lofi",
+    "loop",
+    "degraded"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Lo-Fi Atmospheres",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 3.0,
+      "oscA_drift": 0.38,
+      "oscA_shape": 0.4,
+      "oscB_wave": 2.0,
+      "oscB_blend": 0.42,
+      "oscB_detune": 5.0,
+      "flt_mode": 1.0,
+      "flt_cutoff": 2500.0,
+      "flt_resonance": 0.42,
+      "dust_amount": 0.48,
+      "dust_age": 0.62,
+      "dust_tone": 0.3,
+      "cur_mode": 2.0,
+      "cur_amount": 0.35,
+      "env_attack": 0.08,
+      "env_decay": 0.6,
+      "env_sustain": 0.65,
+      "env_release": 2.0,
+      "space_size": 0.35,
+      "space_mix": 0.18,
+      "bob_mode": 0.3
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.384,
+    "warmth": 0.382,
+    "movement": 0.175,
+    "density": 0.199,
+    "space": 0.227,
+    "aggression": 0.317
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Amber Glow",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expansive pads atmosphere with voyager drift.",
+  "tags": [
+    "drifty",
+    "saturated",
+    "chorus",
+    "slow-attack"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 1.0,
+      "osc_a_level": 0.6,
+      "osc_a_pw": 0.6,
+      "osc_b_mode": 0.0,
+      "osc_b_shape": 0.0,
+      "osc_b_level": 0.4,
+      "osc_b_tune": 7.0,
+      "haze_amount": 0.3,
+      "filt_a_cutoff": 2500.0,
+      "filt_a_reso": 0.2,
+      "filt_a_drive": 0.15,
+      "env_amp_attack": 250.0,
+      "env_amp_sustain": 0.7,
+      "env_amp_release": 1500.0,
+      "drift_depth": 0.3,
+      "chorus_enable": 1.0,
+      "chorus_mix": 0.25,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.55,
+      "reverb_mix": 0.3,
+      "master_gain": -3.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.384,
+    "warmth": 0.289,
+    "movement": 0.0,
+    "density": 0.103,
+    "space": 0.275,
+    "aggression": 0.144
+  }
+}

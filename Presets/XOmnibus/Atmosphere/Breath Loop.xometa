@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Breath Loop",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Floating textures texture with bob character and analog drift.",
+  "tags": [
+    "texture",
+    "breath",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Textures",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 1.0,
+      "oscA_drift": 0.25,
+      "tex_level": 0.55,
+      "tex_mode": 3.0,
+      "tex_tone": 0.48,
+      "tex_width": 0.72,
+      "cur_mode": 4.0,
+      "cur_amount": 0.38,
+      "flt_mode": 2.0,
+      "flt_cutoff": 2800.0,
+      "flt_character": 0.42,
+      "env_attack": 2.5,
+      "env_sustain": 0.9,
+      "env_release": 5.0,
+      "space_size": 0.55,
+      "space_mix": 0.28,
+      "bob_mode": 0.44
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.509,
+    "warmth": 0.381,
+    "movement": 0.19,
+    "density": 0.206,
+    "space": 0.356,
+    "aggression": 0.0
+  }
+}

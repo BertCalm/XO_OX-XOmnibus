@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Hollow Whistle",
+  "mood": "Prism",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expressive soft leads voice with warm character.",
+  "tags": [
+    "lead",
+    "hollow",
+    "whistle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Soft Leads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_shape": 0.55,
+      "oscA_drift": 0.08,
+      "oscB_wave": 1.0,
+      "oscB_blend": 0.22,
+      "oscB_detune": 4.0,
+      "flt_mode": 1.0,
+      "flt_cutoff": 7500.0,
+      "flt_resonance": 0.62,
+      "env_attack": 0.006,
+      "env_decay": 0.2,
+      "env_sustain": 0.58,
+      "env_release": 0.38,
+      "bob_mode": 0.06
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.472,
+    "warmth": 0.08,
+    "movement": 0.0,
+    "density": 0.122,
+    "space": 0.0,
+    "aggression": 0.202
+  }
+}

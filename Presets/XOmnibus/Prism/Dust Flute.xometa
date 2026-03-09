@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Dust Flute",
+  "mood": "Prism",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Focused soft leads tone with warm character.",
+  "tags": [
+    "lead",
+    "flute",
+    "airy"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Soft Leads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_shape": 0.8,
+      "oscA_drift": 0.18,
+      "oscB_wave": 2.0,
+      "oscB_blend": 0.2,
+      "oscB_detune": -2.0,
+      "flt_mode": 3.0,
+      "flt_cutoff": 7000.0,
+      "flt_resonance": 0.18,
+      "flt_envAmt": 0.55,
+      "env_attack": 0.02,
+      "env_decay": 0.35,
+      "env_sustain": 0.6,
+      "env_release": 0.5,
+      "space_mix": 0.15,
+      "bob_mode": 0.14
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.466,
+    "warmth": 0.19,
+    "movement": 0.0,
+    "density": 0.065,
+    "space": 0.083,
+    "aggression": 0.058
+  }
+}

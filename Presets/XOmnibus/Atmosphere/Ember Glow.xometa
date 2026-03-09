@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Ember Glow",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Floating warm pads texture with bob character and analog drift.",
+  "tags": [
+    "warm",
+    "glowing",
+    "rich"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Warm Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 1.0,
+      "oscA_shape": 0.6,
+      "oscA_drift": 0.25,
+      "oscB_wave": 0.0,
+      "oscB_blend": 0.58,
+      "oscB_detune": 12.0,
+      "flt_mode": 0.0,
+      "flt_cutoff": 3600.0,
+      "flt_resonance": 0.22,
+      "flt_drive": 0.18,
+      "env_attack": 0.55,
+      "env_decay": 0.9,
+      "env_sustain": 0.84,
+      "env_release": 1.9,
+      "smear_width": 0.75,
+      "smear_mix": 0.32,
+      "space_mix": 0.36,
+      "bob_mode": 0.22
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.413,
+    "warmth": 0.298,
+    "movement": 0.0,
+    "density": 0.339,
+    "space": 0.351,
+    "aggression": 0.139
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Butter Sub",
+  "mood": "Foundation",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Solid, grounding warm bass tone with warm character.",
+  "tags": [
+    "bass",
+    "sub",
+    "smooth"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Warm Bass",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_tune": -12.0,
+      "oscA_shape": 0.15,
+      "oscA_drift": 0.06,
+      "oscB_wave": 2.0,
+      "oscB_blend": 0.45,
+      "oscB_detune": 2.0,
+      "flt_mode": 3.0,
+      "flt_cutoff": 350.0,
+      "flt_resonance": 0.04,
+      "env_attack": 0.02,
+      "env_decay": 0.5,
+      "env_sustain": 0.8,
+      "env_release": 0.6,
+      "bob_mode": 0.05
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.228,
+    "warmth": 0.102,
+    "movement": 0.0,
+    "density": 0.171,
+    "space": 0.0,
+    "aggression": 0.013
+  }
+}

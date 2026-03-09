@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Sitar Snap",
+  "mood": "Prism",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expressive plucks voice with analog drift.",
+  "tags": [
+    "pluck",
+    "sitar",
+    "eastern"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Plucks",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_shape": 0.7,
+      "oscA_drift": 0.55,
+      "oscB_wave": 1.0,
+      "oscB_blend": 0.55,
+      "oscB_detune": 8.0,
+      "flt_mode": 1.0,
+      "flt_cutoff": 4200.0,
+      "flt_resonance": 0.68,
+      "flt_envAmt": 0.62,
+      "env_attack": 0.001,
+      "env_decay": 1.2,
+      "env_sustain": 0.12,
+      "env_release": 0.8,
+      "space_mix": 0.12,
+      "bob_mode": 0.08
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.426,
+    "warmth": 0.371,
+    "movement": 0.0,
+    "density": 0.279,
+    "space": 0.066,
+    "aggression": 0.221
+  }
+}

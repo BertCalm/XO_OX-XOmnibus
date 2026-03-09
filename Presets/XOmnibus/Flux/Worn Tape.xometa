@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Worn Tape",
+  "mood": "Flux",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Evolving lo-fi atmospheres texture with bob character and analog drift.",
+  "tags": [
+    "lofi",
+    "tape",
+    "dusty"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Lo-Fi Atmospheres",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 1.0,
+      "oscA_drift": 0.42,
+      "oscA_shape": 0.3,
+      "oscB_wave": 2.0,
+      "oscB_blend": 0.38,
+      "oscB_detune": -3.0,
+      "flt_mode": 3.0,
+      "flt_cutoff": 2200.0,
+      "flt_character": 0.5,
+      "dust_amount": 0.52,
+      "dust_age": 0.78,
+      "dust_tone": 0.28,
+      "env_attack": 0.55,
+      "env_decay": 0.8,
+      "env_sustain": 0.72,
+      "env_release": 2.5,
+      "space_size": 0.45,
+      "space_mix": 0.22,
+      "bob_mode": 0.35
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.512,
+    "warmth": 0.432,
+    "movement": 0.0,
+    "density": 0.124,
+    "space": 0.286,
+    "aggression": 0.195
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Wander Wide",
+  "mood": "Entangled",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cross-modulated curious motion energy with bob character and analog drift.",
+  "tags": [
+    "curious",
+    "wander",
+    "wide"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Curious Motion",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 2.0,
+      "oscA_drift": 0.35,
+      "oscA_shape": 0.5,
+      "oscB_wave": 2.0,
+      "oscB_blend": 0.4,
+      "oscB_detune": -8.0,
+      "cur_mode": 1.0,
+      "cur_amount": 0.82,
+      "lfo1_rate": 0.2,
+      "lfo1_depth": 0.5,
+      "flt_mode": 2.0,
+      "flt_cutoff": 3500.0,
+      "flt_resonance": 0.32,
+      "flt_character": 0.55,
+      "motEnv_depth": 0.5,
+      "flt_envAmt": 0.4,
+      "env_attack": 0.25,
+      "env_release": 1.6,
+      "smear_width": 0.8,
+      "smear_mix": 0.35,
+      "bob_mode": 0.48
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.562,
+    "warmth": 0.411,
+    "movement": 0.76,
+    "density": 0.13,
+    "space": 0.167,
+    "aggression": 0.104
+  }
+}

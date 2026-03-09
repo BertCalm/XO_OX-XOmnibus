@@ -1,0 +1,212 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "XOmnibus Preset (.xometa)",
+  "description": "Universal preset format for the XOmnibus multi-engine platform. Single source of truth — replaces per-engine C++ presets and .xocmeta files.",
+  "type": "object",
+  "required": ["schema_version", "name", "mood", "engines", "author", "version", "parameters"],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1,
+      "description": "Schema version for forward compatibility"
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Display name — unique across the entire XOmnibus library"
+    },
+    "mood": {
+      "type": "string",
+      "enum": ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "User"],
+      "description": "Top-level browsing category"
+    },
+    "engines": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["XOddCouple", "XOverdub", "XOdyssey", "XOblongBob", "XObese", "XOnset"]
+      },
+      "minItems": 1,
+      "maxItems": 3,
+      "description": "Which engine(s) this preset uses. 1 = single-engine, 2-3 = cross-engine"
+    },
+    "author": {
+      "type": "string",
+      "description": "Preset designer (use 'XO_OX Designs' for factory)"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "XOmnibus version this preset was created with"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 120,
+      "description": "1-2 sentence sound description"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 3,
+      "description": "Searchable keywords — minimum 3 (e.g., 'dub', 'warm', 'coupled')"
+    },
+    "macroLabels": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 4,
+      "maxItems": 4,
+      "description": "Custom display names for the 4 unified macros in this preset",
+      "default": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"]
+    },
+    "couplingIntensity": {
+      "type": "string",
+      "enum": ["None", "Subtle", "Moderate", "Deep"],
+      "description": "How strongly engines are coupled (None for single-engine presets)"
+    },
+    "tempo": {
+      "type": ["number", "null"],
+      "minimum": 20,
+      "maximum": 300,
+      "description": "Suggested BPM (null if not tempo-dependent)"
+    },
+    "created": {
+      "type": "string",
+      "format": "date",
+      "description": "Creation date (ISO 8601)"
+    },
+
+    "legacy": {
+      "type": "object",
+      "description": "Migration metadata — tracks where this preset came from",
+      "properties": {
+        "sourceInstrument": {
+          "type": ["string", "null"],
+          "description": "Original instrument name (null for new XOmnibus presets)"
+        },
+        "sourceCategory": {
+          "type": ["string", "null"],
+          "description": "Original category in the source instrument"
+        },
+        "sourcePresetName": {
+          "type": ["string", "null"],
+          "description": "Original preset name (if renamed during dedup)"
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "parameters": {
+      "type": "object",
+      "description": "Per-engine parameter maps. Keys are engine names, values are {paramID: rawValue} objects. Only non-default values need to be stored.",
+      "patternProperties": {
+        "^(XOddCouple|XOverdub|XOdyssey|XOblongBob|XObese|XOnset)$": {
+          "type": "object",
+          "description": "Parameter overrides for this engine — keys are APVTS parameter IDs, values are raw parameter values"
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "coupling": {
+      "type": "object",
+      "description": "Cross-engine coupling configuration (only for multi-engine presets)",
+      "properties": {
+        "pairs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["engineA", "engineB", "type", "amount"],
+            "properties": {
+              "engineA": {
+                "type": "string",
+                "description": "Source engine"
+              },
+              "engineB": {
+                "type": "string",
+                "description": "Destination engine"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "Amp->Filter",
+                  "Amp->Pitch",
+                  "LFO->Pitch",
+                  "Env->Morph",
+                  "Audio->FM",
+                  "Audio->Ring",
+                  "Filter->Filter",
+                  "Amp->Choke",
+                  "Rhythm->Blend",
+                  "Env->Decay"
+                ],
+                "description": "Coupling modulation type"
+              },
+              "amount": {
+                "type": "number",
+                "minimum": -1.0,
+                "maximum": 1.0,
+                "description": "Coupling strength (-1 to +1)"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "dna": {
+      "type": "object",
+      "description": "Sonic fingerprint — 6-dimensional vector for similarity search, morphing, and breeding",
+      "properties": {
+        "brightness": { "type": "number", "minimum": 0, "maximum": 1, "description": "Filter openness, harmonic content, shimmer" },
+        "warmth":     { "type": "number", "minimum": 0, "maximum": 1, "description": "Saturation, analog drift, sub presence, low harmonics" },
+        "movement":   { "type": "number", "minimum": 0, "maximum": 1, "description": "LFO depth, modulation, tidal pulse, curiosity" },
+        "density":    { "type": "number", "minimum": 0, "maximum": 1, "description": "Oscillator count, unison, detuning, layers" },
+        "space":      { "type": "number", "minimum": 0, "maximum": 1, "description": "Reverb, delay, chorus — wet signal presence" },
+        "aggression": { "type": "number", "minimum": 0, "maximum": 1, "description": "Drive, distortion, resonance, fracture" }
+      },
+      "required": ["brightness", "warmth", "movement", "density", "space", "aggression"],
+      "additionalProperties": false
+    },
+
+    "sequencer": {
+      "type": "object",
+      "description": "Optional step sequencer data",
+      "properties": {
+        "bpm": { "type": "number", "minimum": 20, "maximum": 300 },
+        "swing": { "type": "number", "minimum": 0, "maximum": 1 },
+        "tracks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "engine": { "type": "string", "description": "Which engine this track targets" },
+              "length": { "type": "integer", "minimum": 1, "maximum": 64 },
+              "muted": { "type": "boolean" },
+              "steps": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": { "type": "integer" },
+                    "active": { "type": "boolean" },
+                    "note": { "type": "integer" },
+                    "velocity": { "type": "number" },
+                    "probability": { "type": "number", "minimum": 0, "maximum": 1 },
+                    "paramLocks": {
+                      "type": "object",
+                      "description": "Per-step parameter overrides (Elektron-style p-locks)"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

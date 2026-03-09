@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Ice Crystal Lead",
+  "mood": "Prism",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright leads character with prism shimmer.",
+  "tags": [
+    "shimmery",
+    "spacious",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Leads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 3.0,
+      "osc_a_level": 0.6,
+      "osc_b_mode": 3.0,
+      "osc_b_level": 0.5,
+      "osc_b_fm_ratio": 4.0,
+      "osc_b_fm_depth": 0.15,
+      "shimmer_amount": 0.4,
+      "shimmer_tone": 0.9,
+      "filt_a_cutoff": 12000.0,
+      "filt_a_reso": 0.05,
+      "env_amp_attack": 10.0,
+      "env_amp_decay": 800.0,
+      "env_amp_sustain": 0.4,
+      "env_amp_release": 600.0,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.7,
+      "reverb_mix": 0.35,
+      "master_gain": -4.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.767,
+    "warmth": 0.0,
+    "movement": 0.0,
+    "density": 0.117,
+    "space": 0.269,
+    "aggression": 0.021
+  }
+}

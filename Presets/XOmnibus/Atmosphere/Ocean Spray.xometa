@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Ocean Spray",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Floating textures texture with tidal pulse.",
+  "tags": [
+    "tidal",
+    "spacious",
+    "slow-attack"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Textures",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "noise_level": 0.4,
+      "noise_type": 1.0,
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 0.0,
+      "osc_a_level": 0.25,
+      "filt_a_cutoff": 2500.0,
+      "filt_a_reso": 0.2,
+      "tidal_depth": 0.5,
+      "tidal_rate": 0.08,
+      "env_amp_attack": 1000.0,
+      "env_amp_sustain": 0.5,
+      "env_amp_release": 3000.0,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.9,
+      "reverb_damping": 0.5,
+      "reverb_mix": 0.5,
+      "master_gain": -5.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.384,
+    "warmth": 0.0,
+    "movement": 0.25,
+    "density": 0.021,
+    "space": 0.363,
+    "aggression": 0.083
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Sub Bob",
+  "mood": "Foundation",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Rooted warm bass sound with warm character.",
+  "tags": [
+    "bass",
+    "sub",
+    "warm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Warm Bass",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_tune": -12.0,
+      "oscA_shape": 0.2,
+      "oscA_drift": 0.08,
+      "oscB_wave": 3.0,
+      "oscB_blend": 0.82,
+      "oscB_detune": 2.0,
+      "flt_mode": 0.0,
+      "flt_cutoff": 650.0,
+      "flt_resonance": 0.18,
+      "env_attack": 0.015,
+      "env_decay": 0.5,
+      "env_sustain": 0.55,
+      "env_release": 0.35,
+      "bob_mode": 0.08
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.277,
+    "warmth": 0.118,
+    "movement": 0.0,
+    "density": 0.292,
+    "space": 0.0,
+    "aggression": 0.058
+  }
+}

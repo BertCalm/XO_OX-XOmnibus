@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Glass Bead",
+  "mood": "Prism",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright plucks character with warm character.",
+  "tags": [
+    "pluck",
+    "glass",
+    "bright"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Plucks",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 2.0,
+      "oscA_shape": 0.35,
+      "oscA_drift": 0.05,
+      "oscB_wave": 2.0,
+      "oscB_blend": 0.4,
+      "oscB_detune": 2.0,
+      "flt_mode": 1.0,
+      "flt_cutoff": 7000.0,
+      "flt_resonance": 0.78,
+      "flt_envAmt": 0.5,
+      "env_attack": 0.001,
+      "env_decay": 0.2,
+      "env_sustain": 0.0,
+      "env_release": 0.18,
+      "bob_mode": 0.06
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.466,
+    "warmth": 0.065,
+    "movement": 0.0,
+    "density": 0.155,
+    "space": 0.0,
+    "aggression": 0.254
+  }
+}

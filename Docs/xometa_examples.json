@@ -1,0 +1,111 @@
+[
+  {
+    "_comment": "Example 1: Single-engine preset migrated from XOddCouple",
+    "schema_version": 1,
+    "name": "Spooky Action",
+    "mood": "Entangled",
+    "engines": ["XOddCouple"],
+    "author": "XO_OX Designs",
+    "version": "1.0.0",
+    "description": "Cross-coupled engines with ghostly pitch drift. Dub pump at moderate depth.",
+    "tags": ["coupled", "dub", "drift", "ghostly", "pump"],
+    "macroLabels": ["Snap+Morph", "Bloom", "Coupling", "Space"],
+    "couplingIntensity": "Moderate",
+    "tempo": null,
+    "created": "2026-03-08",
+    "legacy": {
+      "sourceInstrument": "XOddCouple",
+      "sourceCategory": "Entangled",
+      "sourcePresetName": null
+    },
+    "parameters": {
+      "XOddCouple": {
+        "xFilterCutoff": 2400.0,
+        "xFilterRes": 0.35,
+        "xSnap": 0.6,
+        "xDecay": 0.4,
+        "oFilterCutoff": 3200.0,
+        "oMorph": 0.45,
+        "oBloom": 0.7,
+        "couplingAmount": 0.55,
+        "masterBalance": 0.5,
+        "delayMix": 0.3,
+        "reverbMix": 0.25
+      }
+    },
+    "coupling": null,
+    "sequencer": null
+  },
+  {
+    "_comment": "Example 2: Cross-engine preset (new for XOmnibus)",
+    "schema_version": 1,
+    "name": "Dub Pressure Machine",
+    "mood": "Entangled",
+    "engines": ["XOddCouple", "XOnset"],
+    "author": "XO_OX Designs",
+    "version": "1.0.0",
+    "description": "Kick pumps the pad engine, snare brightens the filter. Living rhythm.",
+    "tags": ["dub", "pump", "rhythm", "coupled", "kick", "pad"],
+    "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+    "couplingIntensity": "Deep",
+    "tempo": 130,
+    "created": "2026-03-08",
+    "legacy": {
+      "sourceInstrument": null,
+      "sourceCategory": null,
+      "sourcePresetName": null
+    },
+    "parameters": {
+      "XOddCouple": {
+        "oFilterCutoff": 1800.0,
+        "oMorph": 0.3,
+        "oBloom": 0.8,
+        "masterBalance": 0.6
+      },
+      "XOnset": {
+        "perc_v1_blend": 0.2,
+        "perc_v1_decay": 0.35,
+        "perc_v1_snap": 0.5,
+        "perc_v2_blend": 0.5,
+        "perc_v2_decay": 0.2,
+        "perc_v2_snap": 0.4,
+        "perc_v3_blend": 0.7,
+        "perc_v3_decay": 0.05
+      }
+    },
+    "coupling": {
+      "pairs": [
+        {
+          "engineA": "XOnset",
+          "engineB": "XOddCouple",
+          "type": "Amp->Filter",
+          "amount": 0.4
+        },
+        {
+          "engineA": "XOnset",
+          "engineB": "XOddCouple",
+          "type": "Amp->Pitch",
+          "amount": 0.15
+        }
+      ]
+    },
+    "sequencer": {
+      "bpm": 130,
+      "swing": 0.05,
+      "tracks": [
+        {
+          "engine": "XOnset",
+          "length": 16,
+          "muted": false,
+          "steps": [
+            { "index": 0, "active": true, "note": 36, "velocity": 1.0, "probability": 1.0 },
+            { "index": 4, "active": true, "note": 38, "velocity": 0.9, "probability": 1.0 },
+            { "index": 8, "active": true, "note": 36, "velocity": 0.85, "probability": 1.0 },
+            { "index": 10, "active": true, "note": 36, "velocity": 0.7, "probability": 0.6 },
+            { "index": 12, "active": true, "note": 38, "velocity": 0.95, "probability": 1.0 }
+          ]
+        }
+      ]
+    }
+  }
+]

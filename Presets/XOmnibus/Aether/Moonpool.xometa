@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Moonpool",
+  "mood": "Aether",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Vast dream pads space with bob character and analog drift.",
+  "tags": [
+    "dream",
+    "moonlight",
+    "slow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Dream Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 3.0,
+      "oscA_shape": 0.28,
+      "oscA_drift": 0.5,
+      "oscB_wave": 3.0,
+      "oscB_blend": 0.6,
+      "oscB_detune": 7.0,
+      "flt_mode": 3.0,
+      "flt_cutoff": 1200.0,
+      "flt_resonance": 0.1,
+      "env_attack": 2.5,
+      "env_decay": 2.0,
+      "env_sustain": 0.88,
+      "env_release": 7.0,
+      "space_size": 0.9,
+      "space_decay": 0.9,
+      "space_mix": 0.55,
+      "space_air": 0.6,
+      "bob_mode": 0.6
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.326,
+    "warmth": 0.632,
+    "movement": 0.0,
+    "density": 0.282,
+    "space": 0.633,
+    "aggression": 0.033
+  }
+}

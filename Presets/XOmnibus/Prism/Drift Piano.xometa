@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Drift Piano",
+  "mood": "Prism",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright keys character with voyager drift.",
+  "tags": [
+    "drifty",
+    "dyssey",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Keys",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 3.0,
+      "osc_a_level": 0.75,
+      "osc_a_fm_ratio": 1.0,
+      "osc_a_fm_depth": 0.2,
+      "osc_b_mode": 0.0,
+      "osc_b_shape": 3.0,
+      "osc_b_level": 0.3,
+      "drift_depth": 0.3,
+      "drift_rate": 0.08,
+      "filt_a_cutoff": 6000.0,
+      "filt_a_reso": 0.08,
+      "env_amp_attack": 3.0,
+      "env_amp_decay": 800.0,
+      "env_amp_sustain": 0.3,
+      "env_amp_release": 500.0,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.5,
+      "reverb_mix": 0.25,
+      "master_gain": -3.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.454,
+    "warmth": 0.165,
+    "movement": 0.06,
+    "density": 0.102,
+    "space": 0.193,
+    "aggression": 0.033
+  }
+}

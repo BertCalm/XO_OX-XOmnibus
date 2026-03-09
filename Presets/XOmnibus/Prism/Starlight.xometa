@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Starlight",
+  "mood": "Prism",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expressive leads voice with prism shimmer.",
+  "tags": [
+    "shimmery",
+    "dyssey",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Leads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 2.0,
+      "osc_a_level": 0.7,
+      "osc_b_mode": 0.0,
+      "osc_b_shape": 3.0,
+      "osc_b_level": 0.5,
+      "osc_b_tune": 12.0,
+      "shimmer_amount": 0.5,
+      "shimmer_tone": 0.7,
+      "filt_a_cutoff": 8000.0,
+      "filt_a_reso": 0.08,
+      "env_amp_attack": 15.0,
+      "env_amp_decay": 600.0,
+      "env_amp_sustain": 0.5,
+      "env_amp_release": 500.0,
+      "delay_enable": 1.0,
+      "delay_time": 400.0,
+      "delay_feedback": 0.4,
+      "delay_mix": 0.25,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.6,
+      "reverb_mix": 0.3,
+      "master_gain": -4.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.727,
+    "warmth": 0.0,
+    "movement": 0.0,
+    "density": 0.125,
+    "space": 0.302,
+    "aggression": 0.033
+  }
+}

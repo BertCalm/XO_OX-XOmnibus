@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Zion Gate",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOverdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expansive dub atmospheres atmosphere with deep dub echo and vast reverb space.",
+  "tags": [
+    "spacious",
+    "saw",
+    "verdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOverdub",
+    "sourceCategory": "Dub Atmospheres",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOverdub": {
+      "osc_wave": 2.0,
+      "osc_drift": 0.2,
+      "osc_sub_level": 0.4,
+      "osc_noise_level": 0.05,
+      "filter_cutoff": 1200.0,
+      "filter_resonance": 0.3,
+      "filter_env_amt": 0.15,
+      "lfo_rate": 0.12,
+      "lfo_depth": 0.3,
+      "lfo_dest": 1.0,
+      "env_attack": 1.5,
+      "env_decay": 2.0,
+      "env_sustain": 0.75,
+      "env_release": 4.0,
+      "delay_sync": 5.0,
+      "delay_feedback": 0.6,
+      "delay_wow": 0.25,
+      "delay_wear": 0.3,
+      "send_level": 0.5,
+      "reverb_size": 0.9,
+      "reverb_damp": 0.35,
+      "reverb_mix": 0.6
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.593,
+    "warmth": 0.468,
+    "movement": 0.568,
+    "density": 0.45,
+    "space": 0.789,
+    "aggression": 0.156
+  }
+}

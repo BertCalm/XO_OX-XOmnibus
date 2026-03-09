@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Hollow Bass",
+  "mood": "Foundation",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Deep bass presence with warm character.",
+  "tags": [
+    "dyssey",
+    "dyssey",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Bass",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 1.0,
+      "osc_a_level": 0.85,
+      "osc_a_pw": 0.15,
+      "sub_level": 0.6,
+      "sub_shape": 1.0,
+      "filt_a_cutoff": 800.0,
+      "filt_a_reso": 0.15,
+      "filt_a_slope": 1.0,
+      "env_amp_attack": 3.0,
+      "env_amp_decay": 400.0,
+      "env_amp_sustain": 0.5,
+      "env_amp_release": 200.0,
+      "master_gain": -2.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.294,
+    "warmth": 0.215,
+    "movement": 0.0,
+    "density": 0.121,
+    "space": 0.0,
+    "aggression": 0.062
+  }
+}

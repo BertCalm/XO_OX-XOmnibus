@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Amber Haze",
+  "mood": "Aether",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cinematic dream pads depth with bob character and analog drift.",
+  "tags": [
+    "dream",
+    "haze",
+    "amber"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Dream Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 3.0,
+      "oscA_drift": 0.38,
+      "oscA_shape": 0.5,
+      "oscB_wave": 1.0,
+      "oscB_blend": 0.55,
+      "oscB_detune": 10.0,
+      "lfo1_rate": 0.06,
+      "lfo1_depth": 0.3,
+      "flt_mode": 1.0,
+      "flt_cutoff": 1800.0,
+      "flt_resonance": 0.2,
+      "env_attack": 2.0,
+      "env_decay": 2.2,
+      "env_sustain": 0.87,
+      "env_release": 6.0,
+      "space_size": 0.85,
+      "space_mix": 0.5,
+      "space_air": 0.45,
+      "bob_mode": 0.55
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.358,
+    "warmth": 0.533,
+    "movement": 0.112,
+    "density": 0.304,
+    "space": 0.587,
+    "aggression": 0.065
+  }
+}

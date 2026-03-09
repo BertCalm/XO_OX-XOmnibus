@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Rounded Point",
+  "mood": "Prism",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright soft leads character with warm character.",
+  "tags": [
+    "lead",
+    "warm",
+    "rounded"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Soft Leads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 3.0,
+      "oscA_shape": 0.45,
+      "oscA_drift": 0.12,
+      "oscB_wave": 1.0,
+      "oscB_blend": 0.32,
+      "oscB_detune": 6.0,
+      "flt_mode": 0.0,
+      "flt_cutoff": 6000.0,
+      "flt_resonance": 0.32,
+      "env_attack": 0.016,
+      "env_decay": 0.32,
+      "env_sustain": 0.66,
+      "env_release": 0.55,
+      "bob_mode": 0.12
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.454,
+    "warmth": 0.13,
+    "movement": 0.0,
+    "density": 0.179,
+    "space": 0.0,
+    "aggression": 0.104
+  }
+}

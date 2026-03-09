@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Ghost Harmonic",
+  "mood": "Aether",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cinematic dream pads depth with bob character and analog drift.",
+  "tags": [
+    "dream",
+    "harmonic",
+    "ephemeral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Dream Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_drift": 0.5,
+      "oscA_shape": 0.15,
+      "oscB_wave": 3.0,
+      "oscB_blend": 0.75,
+      "oscB_detune": 5.0,
+      "lfo1_rate": 0.04,
+      "lfo1_depth": 0.25,
+      "flt_cutoff": 2600.0,
+      "flt_resonance": 0.35,
+      "flt_mode": 3.0,
+      "env_attack": 3.0,
+      "env_decay": 2.0,
+      "env_sustain": 0.82,
+      "env_release": 7.0,
+      "space_size": 0.92,
+      "space_decay": 0.88,
+      "space_mix": 0.52,
+      "bob_mode": 0.52
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.388,
+    "warmth": 0.585,
+    "movement": 0.094,
+    "density": 0.306,
+    "space": 0.623,
+    "aggression": 0.114
+  }
+}

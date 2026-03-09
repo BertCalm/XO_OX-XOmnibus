@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Receding Shore",
+  "mood": "Aether",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Transcendent dream pads atmosphere with bob character and analog drift.",
+  "tags": [
+    "dream",
+    "oceanic",
+    "receding"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Dream Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 3.0,
+      "oscA_shape": 0.4,
+      "oscA_drift": 0.42,
+      "oscB_wave": 3.0,
+      "oscB_blend": 0.7,
+      "oscB_detune": 8.0,
+      "cur_mode": 1.0,
+      "cur_amount": 0.38,
+      "lfo1_rate": 0.05,
+      "lfo1_depth": 0.28,
+      "flt_mode": 2.0,
+      "flt_cutoff": 2200.0,
+      "flt_character": 0.5,
+      "env_attack": 2.2,
+      "env_decay": 2.8,
+      "env_sustain": 0.9,
+      "env_release": 8.0,
+      "space_size": 0.92,
+      "space_decay": 0.88,
+      "space_mix": 0.52,
+      "bob_mode": 0.6
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.512,
+    "warmth": 0.576,
+    "movement": 0.295,
+    "density": 0.328,
+    "space": 0.623,
+    "aggression": 0.0
+  }
+}

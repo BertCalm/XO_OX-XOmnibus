@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Funky Clav",
+  "mood": "Prism",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright keys character with warm character.",
+  "tags": [
+    "dyssey",
+    "dyssey",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Keys",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 1.0,
+      "osc_a_level": 0.85,
+      "osc_a_pw": 0.3,
+      "filt_a_cutoff": 3000.0,
+      "filt_a_reso": 0.25,
+      "filt_a_slope": 1.0,
+      "env_amp_attack": 1.0,
+      "env_amp_decay": 200.0,
+      "env_amp_sustain": 0.2,
+      "env_amp_release": 150.0,
+      "env_filter_attack": 1.0,
+      "env_filter_decay": 150.0,
+      "env_filter_sustain": 0.1,
+      "filt_a_env_amt": 0.6,
+      "haze_amount": 0.2,
+      "master_gain": -2.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.399,
+    "warmth": 0.083,
+    "movement": 0.0,
+    "density": 0.071,
+    "space": 0.0,
+    "aggression": 0.103
+  }
+}

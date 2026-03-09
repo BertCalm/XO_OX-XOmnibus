@@ -1,0 +1,92 @@
+#pragma once
+#include <juce_audio_processors/juce_audio_processors.h>
+
+namespace xomnibus {
+
+//==============================================================================
+// Coupling types supported by the MegaCouplingMatrix.
+// Each defines how one engine's output modulates another engine's parameter.
+enum class CouplingType {
+    AmpToFilter,       // Engine A amplitude → Engine B filter cutoff
+    AmpToPitch,        // Engine A amplitude → Engine B pitch
+    LFOToPitch,        // Engine A LFO → Engine B pitch
+    EnvToMorph,        // Engine A envelope → Engine B wavetable/morph position
+    AudioToFM,         // Engine A audio → Engine B FM input
+    AudioToRing,       // Engine A audio × Engine B audio
+    FilterToFilter,    // Engine A filter output → Engine B filter input
+    AmpToChoke,        // Engine A amplitude chokes Engine B
+    RhythmToBlend,     // Engine A rhythm pattern → Engine B blend parameter
+    EnvToDecay,        // Engine A envelope → Engine B decay time
+    PitchToPitch,      // Engine A pitch → Engine B pitch (harmony)
+    AudioToWavetable   // Engine A audio → Engine B wavetable source
+};
+
+//==============================================================================
+// The SynthEngine interface.
+//
+// Every engine module (SNAP, MORPH, DUB, DRIFT, BOB, FAT, ONSET) implements
+// this interface. The XOmnibusProcessor holds up to 4 active engines and
+// connects them through the MegaCouplingMatrix.
+//
+// Design contract:
+//   - No memory allocation in renderBlock()
+//   - No blocking I/O in renderBlock()
+//   - getSampleForCoupling() must be O(1) — just return a cached sample
+//   - applyCouplingInput() accumulates modulation; renderBlock() consumes it
+//   - createParameterLayout() returns engine-namespaced parameter IDs
+//
+class SynthEngine {
+public:
+    virtual ~SynthEngine() = default;
+
+    //-- Lifecycle -------------------------------------------------------------
+
+    // Called before audio starts. Allocate buffers, initialize state.
+    virtual void prepare(double sampleRate, int maxBlockSize) = 0;
+
+    // Called when audio stops. Free non-essential resources.
+    virtual void releaseResources() = 0;
+
+    //-- Audio -----------------------------------------------------------------
+
+    // Render a block of audio into `buffer`. Process MIDI from `midi`.
+    // Must be real-time safe: no allocation, no blocking, no exceptions.
+    virtual void renderBlock(juce::AudioBuffer<float>& buffer,
+                            juce::MidiBuffer& midi,
+                            int numSamples) = 0;
+
+    //-- Coupling (the XOmnibus differentiator) --------------------------------
+
+    // Return the most recent output sample for coupling reads.
+    // Called per-sample by the MegaCouplingMatrix during tight coupling.
+    // Must be O(1) — return from a cached member, not a computation.
+    virtual float getSampleForCoupling(int channel, int sampleIndex) const = 0;
+
+    // Receive modulation from another engine via the coupling matrix.
+    // Called before renderBlock() for block-level coupling,
+    // or per-sample for tight coupling types (AudioToFM, AudioToRing).
+    virtual void applyCouplingInput(CouplingType type,
+                                   float amount,
+                                   const float* sourceBuffer,
+                                   int numSamples) = 0;
+
+    //-- Parameters ------------------------------------------------------------
+
+    // Return the engine's parameter layout with namespaced IDs.
+    // Example: SNAP engine returns "snap_filterCutoff", "snap_resonance", etc.
+    virtual juce::AudioProcessorValueTreeState::ParameterLayout
+        createParameterLayout() = 0;
+
+    //-- Identity --------------------------------------------------------------
+
+    // Return the engine's unique identifier (e.g., "Snap", "Morph", "Dub").
+    virtual juce::String getEngineId() const = 0;
+
+    // Return the engine's accent colour for UI theming.
+    virtual juce::Colour getAccentColour() const = 0;
+
+    // Return the maximum polyphony for this engine.
+    virtual int getMaxVoices() const = 0;
+};
+
+} // namespace xomnibus

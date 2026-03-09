@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Cassette Dream",
+  "mood": "Flux",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Unpredictable lo-fi atmospheres motion with bob character and analog drift.",
+  "tags": [
+    "lofi",
+    "warm",
+    "tape",
+    "dream"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Lo-Fi Atmospheres",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_drift": 0.38,
+      "oscA_shape": 0.22,
+      "oscB_wave": 3.0,
+      "oscB_blend": 0.42,
+      "oscB_detune": 4.0,
+      "tex_level": 0.32,
+      "tex_mode": 1.0,
+      "tex_tone": 0.45,
+      "flt_mode": 3.0,
+      "flt_cutoff": 2800.0,
+      "flt_character": 0.38,
+      "dust_amount": 0.42,
+      "dust_age": 0.58,
+      "dust_tone": 0.35,
+      "env_attack": 1.2,
+      "env_decay": 1.5,
+      "env_sustain": 0.78,
+      "env_release": 3.5,
+      "space_size": 0.5,
+      "space_mix": 0.22,
+      "bob_mode": 0.38
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.498,
+    "warmth": 0.419,
+    "movement": 0.0,
+    "density": 0.306,
+    "space": 0.304,
+    "aggression": 0.158
+  }
+}

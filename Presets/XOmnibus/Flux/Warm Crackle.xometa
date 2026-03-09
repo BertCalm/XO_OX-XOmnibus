@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Warm Crackle",
+  "mood": "Flux",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Unpredictable lo-fi atmospheres motion with bob character and analog drift.",
+  "tags": [
+    "lofi",
+    "warm",
+    "crackle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Lo-Fi Atmospheres",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_drift": 0.3,
+      "oscA_shape": 0.2,
+      "oscB_wave": 3.0,
+      "oscB_blend": 0.6,
+      "oscB_detune": 3.0,
+      "flt_mode": 3.0,
+      "flt_cutoff": 3000.0,
+      "flt_character": 0.4,
+      "dust_amount": 0.45,
+      "dust_age": 0.5,
+      "dust_tone": 0.32,
+      "env_attack": 0.7,
+      "env_decay": 1.2,
+      "env_sustain": 0.75,
+      "env_release": 3.5,
+      "space_size": 0.45,
+      "space_mix": 0.22,
+      "bob_mode": 0.38
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.509,
+    "warmth": 0.375,
+    "movement": 0.0,
+    "density": 0.233,
+    "space": 0.286,
+    "aggression": 0.169
+  }
+}

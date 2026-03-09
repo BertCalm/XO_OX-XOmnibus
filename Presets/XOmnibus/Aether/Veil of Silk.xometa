@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Veil of Silk",
+  "mood": "Aether",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Transcendent dream pads atmosphere with bob character and analog drift.",
+  "tags": [
+    "dream",
+    "silk",
+    "translucent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Dream Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 2.0,
+      "oscA_shape": 0.38,
+      "oscA_drift": 0.62,
+      "oscB_wave": 2.0,
+      "oscB_blend": 0.5,
+      "oscB_detune": 18.0,
+      "lfo1_rate": 0.07,
+      "lfo1_depth": 0.3,
+      "flt_mode": 0.0,
+      "flt_cutoff": 1600.0,
+      "flt_resonance": 0.15,
+      "env_attack": 1.6,
+      "env_decay": 2.2,
+      "env_sustain": 0.84,
+      "env_release": 6.0,
+      "smear_depth": 0.55,
+      "smear_width": 0.9,
+      "smear_mix": 0.45,
+      "space_mix": 0.48,
+      "space_size": 0.85,
+      "bob_mode": 0.5
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.349,
+    "warmth": 0.643,
+    "movement": 0.112,
+    "density": 0.388,
+    "space": 0.79,
+    "aggression": 0.049
+  }
+}

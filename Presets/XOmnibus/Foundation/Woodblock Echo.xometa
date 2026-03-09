@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "name": "Woodblock Echo",
+  "mood": "Foundation",
+  "engines": [
+    "XOddCouple"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dry woodblock click from bandpass-filtered noise with subtle dub delay echo tail. Minimal and precise.",
+  "tags": [
+    "woodblock",
+    "dry",
+    "click",
+    "minimal",
+    "delay"
+  ],
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "couplingIntensity": "None",
+  "tempo": 115,
+  "created": "2026-03-05",
+  "legacy": {
+    "sourceInstrument": "XOddCouple",
+    "sourceCategory": "Grounded",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOddCouple": {
+      "couplingAmount": 0.0,
+      "masterBalance": -0.425,
+      "xOscMode": 1,
+      "xSnap": 0.767,
+      "xDecay": 0.218,
+      "xFilterCutoff": 4842.244,
+      "xFilterReso": 0.367,
+      "xDetune": 13.356,
+      "xLevel": 0.854,
+      "xPitchLock": 0,
+      "xUnison": 0,
+      "xPolyphony": 1,
+      "oMorph": 1.253,
+      "oBloom": 0.727,
+      "oDecay": 1.544,
+      "oSustain": 0.309,
+      "oRelease": 0.727,
+      "oFilterCutoff": 3306.683,
+      "oFilterReso": 0.443,
+      "oDrift": 0.267,
+      "oSub": 0.409,
+      "oDetune": 13.356,
+      "oLevel": 0.325,
+      "oPolyphony": 1,
+      "macro1": 0.375,
+      "macro2": 0.495,
+      "macro3": 0.532,
+      "macro4": 0.484,
+      "delayEnabled": 1,
+      "delayTime": 0.261,
+      "delayFeedback": 0.696,
+      "delayMix": 0.446,
+      "delayWobble": 0.154,
+      "reverbEnabled": 1,
+      "reverbDecay": 0.446,
+      "reverbSize": 0.551,
+      "reverbMix": 0.184,
+      "reverbDamping": 0.367,
+      "phaserEnabled": 0,
+      "phaserRate": 0.5,
+      "phaserDepth": 0.5,
+      "phaserMix": 0.3,
+      "lofiEnabled": 0,
+      "lofiBitDepth": 12.0,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
+      "lofiMix": 0.3,
+      "compressorEnabled": 1,
+      "compThreshold": -14.178,
+      "compRatio": 4.089,
+      "compAttack": 13.356,
+      "compRelease": 142.667
+    }
+  },
+  "coupling": null,
+  "sequencer": {
+    "bpm": 115.0,
+    "swing": 0.084,
+    "tracks": [
+      {
+        "engine": "XOddCouple",
+        "length": 8,
+        "muted": false,
+        "steps": [
+          {
+            "index": 1,
+            "active": false,
+            "note": 36,
+            "velocity": 0.8074980447784761,
+            "probability": 1.0
+          },
+          {
+            "index": 5,
+            "active": false,
+            "note": 36,
+            "velocity": 0.7519168949341208,
+            "probability": 1.0
+          },
+          {
+            "index": 6,
+            "active": false,
+            "note": 36,
+            "velocity": 0.5233962563852306,
+            "probability": 1.0
+          },
+          {
+            "index": 7,
+            "active": false,
+            "note": 36,
+            "velocity": 0.6623572641430323,
+            "probability": 1.0
+          }
+        ]
+      },
+      {
+        "engine": "XOddCouple",
+        "length": 8,
+        "muted": false,
+        "steps": []
+      },
+      {
+        "engine": "XOddCouple",
+        "length": 8,
+        "muted": false,
+        "steps": []
+      },
+      {
+        "engine": "XOddCouple",
+        "length": 8,
+        "muted": true,
+        "steps": [
+          {
+            "index": 1,
+            "active": false,
+            "note": 61,
+            "velocity": 0.865224424741516,
+            "probability": 1.0
+          }
+        ]
+      }
+    ]
+  },
+  "dna": {
+    "brightness": 0.844,
+    "warmth": 0.286,
+    "movement": 0.361,
+    "density": 0.312,
+    "space": 0.464,
+    "aggression": 0.384
+  }
+}

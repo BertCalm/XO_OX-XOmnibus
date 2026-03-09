@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Breathing Chord",
+  "mood": "Entangled",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cross-modulated living energy with analog drift and reverb depth.",
+  "tags": [
+    "moving",
+    "breath",
+    "lfo",
+    "expressive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Living",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_shape": 0.42,
+      "oscA_drift": 0.35,
+      "oscB_wave": 1.0,
+      "oscB_blend": 0.5,
+      "oscB_detune": 6.0,
+      "flt_mode": 2.0,
+      "flt_cutoff": 2200.0,
+      "flt_resonance": 0.45,
+      "flt_envAmt": 0.72,
+      "lfo1_rate": 0.15,
+      "lfo1_depth": 0.4,
+      "cur_mode": 1.0,
+      "cur_amount": 0.55,
+      "motEnv_attack": 1.5,
+      "motEnv_decay": 2.0,
+      "motEnv_sustain": 0.5,
+      "motEnv_release": 2.5,
+      "motEnv_depth": 0.8,
+      "env_attack": 1.2,
+      "env_decay": 1.5,
+      "env_sustain": 0.85,
+      "env_release": 3.0,
+      "smear_depth": 0.35,
+      "smear_width": 0.7,
+      "smear_mix": 0.3,
+      "space_mix": 0.45,
+      "space_size": 0.75,
+      "glide": 0.15
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.374,
+    "warmth": 0.281,
+    "movement": 0.685,
+    "density": 0.237,
+    "space": 0.665,
+    "aggression": 0.146
+  }
+}

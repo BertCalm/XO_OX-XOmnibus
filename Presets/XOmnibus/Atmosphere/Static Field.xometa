@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Static Field",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expansive textures atmosphere with bob character and analog drift.",
+  "tags": [
+    "texture",
+    "static",
+    "ambient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Textures",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_drift": 0.35,
+      "oscA_shape": 0.15,
+      "oscB_blend": 0.0,
+      "tex_level": 0.68,
+      "tex_mode": 2.0,
+      "tex_tone": 0.35,
+      "tex_width": 1.0,
+      "flt_mode": 0.0,
+      "flt_cutoff": 5500.0,
+      "flt_resonance": 0.08,
+      "env_attack": 3.5,
+      "env_sustain": 0.92,
+      "env_release": 7.0,
+      "space_size": 0.6,
+      "space_mix": 0.32,
+      "bob_mode": 0.52
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.447,
+    "warmth": 0.466,
+    "movement": 0.0,
+    "density": 0.255,
+    "space": 0.396,
+    "aggression": 0.026
+  }
+}

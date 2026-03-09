@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Vowel Dream",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Floating pads texture with warm character.",
+  "tags": [
+    "spacious",
+    "chorus",
+    "formant",
+    "slow-attack"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 0.0,
+      "osc_a_level": 0.7,
+      "osc_b_mode": 0.0,
+      "osc_b_shape": 0.0,
+      "osc_b_level": 0.5,
+      "osc_b_fine": 6.0,
+      "filt_a_cutoff": 8000.0,
+      "filt_a_reso": 0.05,
+      "filt_b_mix": 0.6,
+      "filt_b_morph": 0.3,
+      "filt_b_reso": 0.35,
+      "lfo_1_rate": 0.07,
+      "lfo_1_shape": 1.0,
+      "lfo_1_depth": 0.5,
+      "mod_1_source": 4.0,
+      "mod_1_dest": 23.0,
+      "mod_1_amount": 0.6,
+      "env_amp_attack": 400.0,
+      "env_amp_sustain": 0.65,
+      "env_amp_release": 2000.0,
+      "chorus_enable": 1.0,
+      "chorus_mix": 0.2,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.65,
+      "reverb_mix": 0.35,
+      "master_gain": -4.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.477,
+    "warmth": 0.132,
+    "movement": 0.1,
+    "density": 0.125,
+    "space": 0.302,
+    "aggression": 0.021
+  }
+}

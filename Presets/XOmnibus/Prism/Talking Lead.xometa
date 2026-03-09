@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Talking Lead",
+  "mood": "Prism",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright leads character with warm character.",
+  "tags": [
+    "formant",
+    "dyssey",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Leads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 0.0,
+      "osc_a_level": 0.8,
+      "osc_b_mode": 0.0,
+      "osc_b_shape": 0.0,
+      "osc_b_level": 0.6,
+      "osc_b_fine": 7.0,
+      "filt_a_cutoff": 10000.0,
+      "filt_a_reso": 0.05,
+      "filt_b_mix": 0.65,
+      "filt_b_morph": 0.3,
+      "filt_b_reso": 0.45,
+      "lfo_1_rate": 0.3,
+      "lfo_1_shape": 1.0,
+      "lfo_1_depth": 0.5,
+      "mod_1_source": 4.0,
+      "mod_1_dest": 23.0,
+      "mod_1_amount": 0.6,
+      "env_amp_attack": 5.0,
+      "env_amp_decay": 400.0,
+      "env_amp_sustain": 0.7,
+      "env_amp_release": 250.0,
+      "master_gain": -3.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.495,
+    "warmth": 0.143,
+    "movement": 0.1,
+    "density": 0.147,
+    "space": 0.0,
+    "aggression": 0.021
+  }
+}

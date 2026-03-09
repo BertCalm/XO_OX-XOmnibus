@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Glass Marimba",
+  "mood": "Prism",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Focused keys tone with warm character.",
+  "tags": [
+    "dyssey",
+    "dyssey",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Keys",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 3.0,
+      "osc_a_level": 0.75,
+      "osc_a_fm_ratio": 4.0,
+      "osc_a_fm_depth": 0.25,
+      "filt_a_cutoff": 8000.0,
+      "filt_a_reso": 0.08,
+      "shimmer_amount": 0.2,
+      "shimmer_tone": 0.7,
+      "env_amp_attack": 1.0,
+      "env_amp_decay": 800.0,
+      "env_amp_sustain": 0.0,
+      "env_amp_release": 400.0,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.5,
+      "reverb_mix": 0.25,
+      "master_gain": -3.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.577,
+    "warmth": 0.0,
+    "movement": 0.0,
+    "density": 0.062,
+    "space": 0.193,
+    "aggression": 0.033
+  }
+}

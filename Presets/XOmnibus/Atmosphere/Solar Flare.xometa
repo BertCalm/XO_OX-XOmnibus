@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Solar Flare",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expansive textures atmosphere with voyager drift and prism shimmer.",
+  "tags": [
+    "drifty",
+    "saturated",
+    "shimmery",
+    "spacious",
+    "chorus",
+    "supersaw"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Textures",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 2.0,
+      "osc_a_level": 0.6,
+      "osc_a_detune": 0.5,
+      "osc_b_mode": 3.0,
+      "osc_b_level": 0.4,
+      "osc_b_fm_ratio": 3.0,
+      "osc_b_fm_depth": 0.25,
+      "noise_level": 0.1,
+      "haze_amount": 0.3,
+      "shimmer_amount": 0.3,
+      "shimmer_tone": 0.5,
+      "filt_a_cutoff": 4000.0,
+      "filt_a_reso": 0.15,
+      "env_amp_attack": 50.0,
+      "env_amp_decay": 600.0,
+      "env_amp_sustain": 0.5,
+      "env_amp_release": 1500.0,
+      "drift_depth": 0.35,
+      "chorus_enable": 1.0,
+      "chorus_mix": 0.2,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.7,
+      "reverb_mix": 0.35,
+      "master_gain": -5.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.529,
+    "warmth": 0.316,
+    "movement": 0.0,
+    "density": 0.328,
+    "space": 0.314,
+    "aggression": 0.062
+  }
+}

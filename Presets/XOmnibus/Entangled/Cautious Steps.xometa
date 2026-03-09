@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Cautious Steps",
+  "mood": "Entangled",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Reactive curious motion motion with bob character and analog drift.",
+  "tags": [
+    "curious",
+    "sniff",
+    "careful"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Curious Motion",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 3.0,
+      "oscA_shape": 0.48,
+      "oscA_drift": 0.32,
+      "oscB_wave": 0.0,
+      "oscB_blend": 0.44,
+      "oscB_detune": -4.0,
+      "cur_mode": 0.0,
+      "cur_amount": 0.55,
+      "lfo1_rate": 0.5,
+      "lfo1_depth": 0.32,
+      "flt_mode": 3.0,
+      "flt_cutoff": 3500.0,
+      "flt_resonance": 0.28,
+      "env_attack": 0.18,
+      "env_decay": 0.6,
+      "env_sustain": 0.68,
+      "env_release": 1.2,
+      "smear_depth": 0.2,
+      "smear_mix": 0.2,
+      "bob_mode": 0.4
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.411,
+    "warmth": 0.362,
+    "movement": 0.395,
+    "density": 0.143,
+    "space": 0.095,
+    "aggression": 0.091
+  }
+}

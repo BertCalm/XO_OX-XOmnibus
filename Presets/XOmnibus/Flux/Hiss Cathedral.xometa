@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Hiss Cathedral",
+  "mood": "Flux",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Glitchy lo-fi atmospheres character with bob character and analog drift.",
+  "tags": [
+    "lofi",
+    "hiss",
+    "spacious"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Lo-Fi Atmospheres",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 2.0,
+      "oscA_drift": 0.4,
+      "oscA_shape": 0.28,
+      "oscB_wave": 2.0,
+      "oscB_blend": 0.45,
+      "oscB_detune": 12.0,
+      "flt_mode": 3.0,
+      "flt_cutoff": 4000.0,
+      "flt_resonance": 0.08,
+      "dust_amount": 0.52,
+      "dust_age": 0.65,
+      "dust_tone": 0.4,
+      "env_attack": 1.5,
+      "env_decay": 1.8,
+      "env_sustain": 0.8,
+      "env_release": 5.0,
+      "space_size": 0.88,
+      "space_decay": 0.8,
+      "space_mix": 0.5,
+      "bob_mode": 0.55
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.422,
+    "warmth": 0.535,
+    "movement": 0.0,
+    "density": 0.296,
+    "space": 0.598,
+    "aggression": 0.221
+  }
+}

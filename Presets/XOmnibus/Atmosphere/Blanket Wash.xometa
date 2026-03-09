@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Blanket Wash",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expansive textures atmosphere with bob character and analog drift.",
+  "tags": [
+    "texture",
+    "blanket",
+    "warm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Textures",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 1.0,
+      "oscA_drift": 0.3,
+      "oscA_shape": 0.22,
+      "oscB_wave": 1.0,
+      "oscB_blend": 0.35,
+      "tex_level": 0.55,
+      "tex_mode": 1.0,
+      "tex_tone": 0.4,
+      "tex_width": 0.8,
+      "cur_mode": 1.0,
+      "cur_amount": 0.38,
+      "flt_mode": 3.0,
+      "flt_cutoff": 4000.0,
+      "flt_resonance": 0.08,
+      "env_attack": 3.0,
+      "env_sustain": 0.9,
+      "env_release": 6.0,
+      "space_size": 0.65,
+      "space_mix": 0.35,
+      "bob_mode": 0.48
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.422,
+    "warmth": 0.43,
+    "movement": 0.19,
+    "density": 0.32,
+    "space": 0.431,
+    "aggression": 0.026
+  }
+}

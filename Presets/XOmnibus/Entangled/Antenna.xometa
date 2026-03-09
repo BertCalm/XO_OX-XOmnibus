@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Antenna",
+  "mood": "Entangled",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Living living movement with analog drift and curious motion.",
+  "tags": [
+    "moving",
+    "searching",
+    "electric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Living",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_shape": 0.5,
+      "oscA_drift": 0.4,
+      "oscB_wave": 3.0,
+      "oscB_blend": 0.48,
+      "oscB_detune": 5.0,
+      "flt_mode": 1.0,
+      "flt_cutoff": 4500.0,
+      "flt_resonance": 0.58,
+      "flt_envAmt": 0.7,
+      "lfo1_rate": 1.5,
+      "lfo1_depth": 0.55,
+      "cur_mode": 2.0,
+      "cur_amount": 0.75,
+      "motEnv_attack": 0.3,
+      "motEnv_decay": 0.8,
+      "motEnv_sustain": 0.5,
+      "motEnv_release": 1.2,
+      "motEnv_depth": 0.72,
+      "env_attack": 0.04,
+      "env_decay": 0.6,
+      "env_sustain": 0.72,
+      "env_release": 1.5,
+      "smear_depth": 0.3,
+      "smear_mix": 0.28,
+      "glide": 0.1
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.431,
+    "warmth": 0.238,
+    "movement": 0.815,
+    "density": 0.218,
+    "space": 0.133,
+    "aggression": 0.189
+  }
+}

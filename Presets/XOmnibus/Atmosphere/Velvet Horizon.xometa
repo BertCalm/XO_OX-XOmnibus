@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Velvet Horizon",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expansive pads atmosphere with warm character.",
+  "tags": [
+    "chorus",
+    "slow-attack",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 0.0,
+      "osc_a_level": 0.65,
+      "osc_b_mode": 0.0,
+      "osc_b_shape": 0.0,
+      "osc_b_level": 0.55,
+      "osc_b_fine": 8.0,
+      "sub_level": 0.2,
+      "haze_amount": 0.15,
+      "filt_a_cutoff": 2800.0,
+      "filt_a_reso": 0.1,
+      "filt_a_slope": 1.0,
+      "env_amp_attack": 350.0,
+      "env_amp_decay": 1000.0,
+      "env_amp_sustain": 0.75,
+      "env_amp_release": 2000.0,
+      "drift_depth": 0.2,
+      "drift_rate": 0.1,
+      "chorus_enable": 1.0,
+      "chorus_rate": 0.8,
+      "chorus_depth": 0.4,
+      "chorus_mix": 0.3,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.6,
+      "reverb_mix": 0.3,
+      "master_gain": -3.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.393,
+    "warmth": 0.243,
+    "movement": 0.075,
+    "density": 0.144,
+    "space": 0.297,
+    "aggression": 0.041
+  }
+}

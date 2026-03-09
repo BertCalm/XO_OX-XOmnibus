@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Reel Room",
+  "mood": "Flux",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Unpredictable lo-fi atmospheres motion with bob character and analog drift.",
+  "tags": [
+    "lofi",
+    "tape",
+    "room"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Lo-Fi Atmospheres",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_drift": 0.35,
+      "oscA_shape": 0.28,
+      "oscB_wave": 1.0,
+      "oscB_blend": 0.44,
+      "oscB_detune": -3.0,
+      "flt_mode": 2.0,
+      "flt_cutoff": 2600.0,
+      "flt_character": 0.42,
+      "dust_amount": 0.38,
+      "dust_age": 0.55,
+      "dust_tone": 0.3,
+      "env_attack": 0.4,
+      "env_decay": 0.8,
+      "env_sustain": 0.7,
+      "env_release": 2.2,
+      "space_size": 0.38,
+      "space_mix": 0.2,
+      "bob_mode": 0.32
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.503,
+    "warmth": 0.376,
+    "movement": 0.0,
+    "density": 0.143,
+    "space": 0.249,
+    "aggression": 0.143
+  }
+}

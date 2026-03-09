@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Pulse Meadow",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ethereal pads wash with warm character.",
+  "tags": [
+    "chorus",
+    "slow-attack",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 1.0,
+      "osc_a_level": 0.6,
+      "osc_a_pw": 0.4,
+      "osc_b_mode": 0.0,
+      "osc_b_shape": 1.0,
+      "osc_b_level": 0.5,
+      "osc_b_pw": 0.6,
+      "osc_b_fine": 5.0,
+      "filt_a_cutoff": 3200.0,
+      "filt_a_reso": 0.15,
+      "env_amp_attack": 250.0,
+      "env_amp_sustain": 0.7,
+      "env_amp_release": 1500.0,
+      "lfo_1_rate": 0.3,
+      "lfo_1_shape": 0.0,
+      "lfo_1_depth": 0.3,
+      "mod_1_source": 4.0,
+      "mod_1_dest": 6.0,
+      "mod_1_amount": 0.4,
+      "chorus_enable": 1.0,
+      "chorus_mix": 0.3,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.6,
+      "reverb_mix": 0.3,
+      "master_gain": -3.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.404,
+    "warmth": 0.0,
+    "movement": 0.06,
+    "density": 0.117,
+    "space": 0.297,
+    "aggression": 0.062
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "name": "Interstellar Pad",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expansive pads atmosphere with voyager drift and prism shimmer.",
+  "tags": [
+    "drifty",
+    "shimmery",
+    "spacious",
+    "chorus",
+    "supersaw",
+    "formant",
+    "slow-attack"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 2.0,
+      "osc_a_level": 0.6,
+      "osc_a_detune": 0.5,
+      "osc_b_mode": 3.0,
+      "osc_b_level": 0.4,
+      "osc_b_fm_ratio": 1.5,
+      "osc_b_fm_depth": 0.2,
+      "sub_level": 0.2,
+      "filt_a_cutoff": 3500.0,
+      "filt_a_reso": 0.2,
+      "filt_a_slope": 1.0,
+      "filt_b_mix": 0.15,
+      "filt_b_morph": 0.4,
+      "shimmer_amount": 0.35,
+      "shimmer_tone": 0.55,
+      "haze_amount": 0.15,
+      "env_amp_attack": 500.0,
+      "env_amp_sustain": 0.65,
+      "env_amp_release": 2500.0,
+      "drift_depth": 0.35,
+      "drift_rate": 0.1,
+      "tidal_depth": 0.15,
+      "tidal_rate": 0.1,
+      "chorus_enable": 1.0,
+      "chorus_mix": 0.2,
+      "delay_enable": 1.0,
+      "delay_time": 450.0,
+      "delay_feedback": 0.3,
+      "delay_mix": 0.15,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.8,
+      "reverb_mix": 0.4,
+      "master_gain": -5.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.549,
+    "warmth": 0.359,
+    "movement": 0.15,
+    "density": 0.345,
+    "space": 0.395,
+    "aggression": 0.083
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Plush Overtone",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Floating warm pads texture with bob character and analog drift.",
+  "tags": [
+    "warm",
+    "rich",
+    "overtone"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Warm Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 3.0,
+      "oscA_shape": 0.48,
+      "oscA_drift": 0.28,
+      "oscB_wave": 3.0,
+      "oscB_blend": 0.38,
+      "oscB_detune": 4.0,
+      "flt_mode": 2.0,
+      "flt_cutoff": 2600.0,
+      "flt_resonance": 0.18,
+      "flt_character": 0.45,
+      "lfo1_rate": 0.1,
+      "lfo1_depth": 0.2,
+      "env_attack": 1.1,
+      "env_decay": 1.4,
+      "env_sustain": 0.86,
+      "env_release": 2.4,
+      "space_mix": 0.38,
+      "space_size": 0.62,
+      "bob_mode": 0.32
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.511,
+    "warmth": 0.363,
+    "movement": 0.075,
+    "density": 0.174,
+    "space": 0.436,
+    "aggression": 0.058
+  }
+}

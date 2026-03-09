@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Alert Rest",
+  "mood": "Entangled",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Living curious motion movement with bob character and reverb depth.",
+  "tags": [
+    "curious",
+    "nap",
+    "alert"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Curious Motion",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 2.0,
+      "oscA_drift": 0.2,
+      "oscA_shape": 0.38,
+      "oscB_wave": 1.0,
+      "oscB_blend": 0.35,
+      "oscB_detune": 5.0,
+      "cur_mode": 4.0,
+      "cur_amount": 0.55,
+      "lfo1_rate": 0.12,
+      "lfo1_depth": 0.22,
+      "flt_mode": 0.0,
+      "flt_cutoff": 3200.0,
+      "flt_resonance": 0.18,
+      "env_attack": 1.8,
+      "env_decay": 1.5,
+      "env_sustain": 0.85,
+      "env_release": 3.5,
+      "space_mix": 0.35,
+      "space_size": 0.6,
+      "bob_mode": 0.3
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.404,
+    "warmth": 0.304,
+    "movement": 0.358,
+    "density": 0.176,
+    "space": 0.413,
+    "aggression": 0.058
+  }
+}

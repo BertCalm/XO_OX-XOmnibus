@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Lee Perry",
+  "mood": "Flux",
+  "engines": [
+    "XOverdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Glitchy tape chaos character with self-oscillating delay and driven saturation.",
+  "tags": [
+    "self-oscillating",
+    "wobbly",
+    "worn",
+    "wet",
+    "driven",
+    "saw"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOverdub",
+    "sourceCategory": "Tape Chaos",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOverdub": {
+      "osc_wave": 2.0,
+      "osc_sub_level": 0.4,
+      "filter_cutoff": 1800.0,
+      "filter_resonance": 0.4,
+      "filter_env_amt": 0.3,
+      "env_attack": 0.005,
+      "env_decay": 0.3,
+      "env_sustain": 0.5,
+      "env_release": 0.4,
+      "delay_sync": 3.0,
+      "delay_feedback": 1.0,
+      "delay_wow": 0.5,
+      "delay_wear": 0.6,
+      "drive_amount": 6.0,
+      "send_level": 0.65,
+      "reverb_size": 0.4,
+      "reverb_mix": 0.25
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.651,
+    "warmth": 0.308,
+    "movement": 0.697,
+    "density": 0.42,
+    "space": 0.609,
+    "aggression": 0.941
+  }
+}

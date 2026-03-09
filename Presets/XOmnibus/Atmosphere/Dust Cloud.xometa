@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Dust Cloud",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Floating textures texture with bob character and analog drift.",
+  "tags": [
+    "texture",
+    "dust",
+    "ambient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Textures",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_drift": 0.55,
+      "oscA_shape": 0.1,
+      "tex_level": 0.78,
+      "tex_mode": 0.0,
+      "tex_tone": 0.62,
+      "tex_width": 0.82,
+      "dust_amount": 0.58,
+      "dust_age": 0.52,
+      "dust_tone": 0.4,
+      "flt_mode": 3.0,
+      "flt_cutoff": 3500.0,
+      "flt_resonance": 0.05,
+      "env_attack": 4.5,
+      "env_sustain": 0.95,
+      "env_release": 9.0,
+      "space_size": 0.72,
+      "space_mix": 0.42,
+      "bob_mode": 0.62
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.411,
+    "warmth": 0.637,
+    "movement": 0.0,
+    "density": 0.292,
+    "space": 0.495,
+    "aggression": 0.234
+  }
+}

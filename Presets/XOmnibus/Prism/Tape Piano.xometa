@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Tape Piano",
+  "mood": "Prism",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Focused keys tone with warm character.",
+  "tags": [
+    "chorus",
+    "dyssey",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Keys",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 0.0,
+      "osc_a_level": 0.7,
+      "osc_b_mode": 0.0,
+      "osc_b_shape": 2.0,
+      "osc_b_level": 0.4,
+      "haze_amount": 0.2,
+      "filt_a_cutoff": 3000.0,
+      "filt_a_reso": 0.1,
+      "filt_a_slope": 0.0,
+      "env_amp_attack": 3.0,
+      "env_amp_decay": 700.0,
+      "env_amp_sustain": 0.2,
+      "env_amp_release": 500.0,
+      "env_filter_attack": 3.0,
+      "env_filter_decay": 500.0,
+      "env_filter_sustain": 0.15,
+      "filt_a_env_amt": 0.3,
+      "drift_depth": 0.15,
+      "chorus_enable": 1.0,
+      "chorus_rate": 0.5,
+      "chorus_mix": 0.2,
+      "delay_enable": 1.0,
+      "delay_time": 400.0,
+      "delay_feedback": 0.3,
+      "delay_mix": 0.15,
+      "delay_mode": 2.0,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.4,
+      "reverb_mix": 0.15,
+      "master_gain": -3.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.399,
+    "warmth": 0.165,
+    "movement": 0.0,
+    "density": 0.112,
+    "space": 0.224,
+    "aggression": 0.041
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Pulse Glitch",
+  "mood": "Flux",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Evolving oddball texture with bob character and analog drift.",
+  "tags": [
+    "glitch",
+    "pulse",
+    "stutter"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Oddball",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 3.0,
+      "oscA_shape": 0.8,
+      "oscA_drift": 0.5,
+      "oscB_wave": 1.0,
+      "oscB_sync": 1.0,
+      "oscB_detune": 42.0,
+      "oscB_blend": 0.7,
+      "cur_mode": 3.0,
+      "cur_amount": 0.92,
+      "flt_mode": 1.0,
+      "flt_cutoff": 4800.0,
+      "flt_resonance": 0.68,
+      "lfo1_rate": 9.0,
+      "lfo1_depth": 0.8,
+      "lfo1_shape": 2.0,
+      "stutter_rate": 8.0,
+      "stutter_depth": 0.55,
+      "env_attack": 0.003,
+      "env_decay": 0.15,
+      "env_sustain": 0.42,
+      "env_release": 0.3,
+      "bob_mode": 0.82
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.436,
+    "warmth": 0.63,
+    "movement": 0.76,
+    "density": 0.477,
+    "space": 0.0,
+    "aggression": 0.496
+  }
+}

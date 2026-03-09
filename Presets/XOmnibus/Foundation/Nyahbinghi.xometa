@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Nyahbinghi",
+  "mood": "Foundation",
+  "engines": [
+    "XOverdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Rooted log drums sound with deep dub echo.",
+  "tags": [
+    "wet",
+    "subby",
+    "pitched",
+    "sine"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOverdub",
+    "sourceCategory": "Log Drums",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOverdub": {
+      "osc_wave": 0.0,
+      "pitch_env_depth": 30.0,
+      "pitch_env_decay": 0.015,
+      "osc_sub_level": 0.5,
+      "filter_cutoff": 3000.0,
+      "env_attack": 0.001,
+      "env_decay": 0.3,
+      "env_sustain": 0.0,
+      "env_release": 0.15,
+      "reverb_size": 0.7,
+      "reverb_mix": 0.4,
+      "send_level": 0.6,
+      "return_level": 0.7
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.725,
+    "warmth": 0.346,
+    "movement": 0.275,
+    "density": 0.465,
+    "space": 0.636,
+    "aggression": 0.0
+  }
+}

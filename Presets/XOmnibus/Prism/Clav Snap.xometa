@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Clav Snap",
+  "mood": "Prism",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expressive keys & bells voice with warm character.",
+  "tags": [
+    "keys",
+    "clavinet",
+    "snap"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Keys & Bells",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 2.0,
+      "oscA_shape": 0.7,
+      "oscA_drift": 0.06,
+      "oscB_wave": 1.0,
+      "oscB_blend": 0.5,
+      "oscB_detune": -2.0,
+      "flt_mode": 1.0,
+      "flt_cutoff": 4500.0,
+      "flt_resonance": 0.5,
+      "flt_drive": 0.3,
+      "flt_envAmt": 0.6,
+      "env_attack": 0.001,
+      "env_decay": 0.5,
+      "env_sustain": 0.0,
+      "env_release": 0.4,
+      "bob_mode": 0.08
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.431,
+    "warmth": 0.084,
+    "movement": 0.0,
+    "density": 0.163,
+    "space": 0.0,
+    "aggression": 0.275
+  }
+}

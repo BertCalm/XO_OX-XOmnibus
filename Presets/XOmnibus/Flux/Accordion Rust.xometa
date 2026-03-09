@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Accordion Rust",
+  "mood": "Flux",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Unpredictable oddball motion with bob character and analog drift.",
+  "tags": [
+    "accordion",
+    "reeds",
+    "rusty"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Oddball",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 1.0,
+      "oscA_shape": 0.7,
+      "oscA_drift": 0.38,
+      "oscB_wave": 0.0,
+      "oscB_blend": 0.7,
+      "oscB_detune": -9.0,
+      "cur_mode": 2.0,
+      "cur_amount": 0.65,
+      "flt_mode": 1.0,
+      "flt_cutoff": 3600.0,
+      "flt_resonance": 0.58,
+      "flt_drive": 0.3,
+      "lfo1_rate": 1.0,
+      "lfo1_depth": 0.38,
+      "env_attack": 0.03,
+      "env_decay": 0.45,
+      "env_sustain": 0.58,
+      "env_release": 0.7,
+      "bob_mode": 0.4
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.413,
+    "warmth": 0.394,
+    "movement": 0.468,
+    "density": 0.227,
+    "space": 0.0,
+    "aggression": 0.301
+  }
+}

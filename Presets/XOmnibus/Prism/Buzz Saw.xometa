@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Buzz Saw",
+  "mood": "Prism",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expressive leads voice with warm haze.",
+  "tags": [
+    "saturated",
+    "dyssey",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Leads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 0.0,
+      "osc_a_level": 0.9,
+      "osc_b_mode": 0.0,
+      "osc_b_shape": 0.0,
+      "osc_b_level": 0.8,
+      "osc_b_fine": 15.0,
+      "haze_amount": 0.6,
+      "filt_a_cutoff": 4000.0,
+      "filt_a_reso": 0.25,
+      "filt_a_slope": 1.0,
+      "filt_a_drive": 0.4,
+      "env_amp_attack": 2.0,
+      "env_amp_decay": 200.0,
+      "env_amp_sustain": 0.8,
+      "env_amp_release": 150.0,
+      "env_filter_attack": 3.0,
+      "env_filter_decay": 150.0,
+      "env_filter_sustain": 0.3,
+      "filt_a_env_amt": 0.5,
+      "master_gain": -3.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.422,
+    "warmth": 0.247,
+    "movement": 0.0,
+    "density": 0.182,
+    "space": 0.0,
+    "aggression": 0.466
+  }
+}

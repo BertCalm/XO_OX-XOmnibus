@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "FM Bell",
+  "mood": "Prism",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Focused keys tone with warm character.",
+  "tags": [
+    "dyssey",
+    "dyssey",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Keys",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 3.0,
+      "osc_a_level": 0.8,
+      "osc_a_fm_ratio": 3.0,
+      "osc_a_fm_depth": 0.4,
+      "filt_a_cutoff": 12000.0,
+      "filt_a_reso": 0.05,
+      "env_amp_attack": 1.0,
+      "env_amp_decay": 1500.0,
+      "env_amp_sustain": 0.0,
+      "env_amp_release": 1000.0,
+      "shimmer_amount": 0.15,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.6,
+      "reverb_mix": 0.3,
+      "master_gain": -3.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.563,
+    "warmth": 0.0,
+    "movement": 0.0,
+    "density": 0.067,
+    "space": 0.231,
+    "aggression": 0.021
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Dubstep Sub",
+  "mood": "Foundation",
+  "engines": [
+    "XOverdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Solid, grounding dub bass tone with warm character.",
+  "tags": [
+    "subby",
+    "saw",
+    "verdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOverdub",
+    "sourceCategory": "Dub Bass",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOverdub": {
+      "osc_wave": 2.0,
+      "osc_octave": 1.0,
+      "osc_sub_level": 0.9,
+      "filter_cutoff": 300.0,
+      "filter_resonance": 0.5,
+      "lfo_rate": 4.0,
+      "lfo_depth": 0.8,
+      "lfo_dest": 1.0,
+      "env_attack": 0.005,
+      "env_sustain": 0.8,
+      "env_release": 0.2,
+      "voice_mode": 1.0,
+      "drive_amount": 3.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.392,
+    "warmth": 0.601,
+    "movement": 0.862,
+    "density": 0.645,
+    "space": 0.48,
+    "aggression": 0.393
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "Warm Analog Solo",
+  "mood": "Prism",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expressive leads voice with warm character.",
+  "tags": [
+    "saturated",
+    "chorus",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Leads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 0.0,
+      "osc_a_level": 0.85,
+      "osc_b_mode": 0.0,
+      "osc_b_shape": 0.0,
+      "osc_b_level": 0.6,
+      "osc_b_fine": 6.0,
+      "filt_a_cutoff": 3500.0,
+      "filt_a_reso": 0.3,
+      "filt_a_slope": 1.0,
+      "filt_a_drive": 0.2,
+      "haze_amount": 0.25,
+      "env_amp_attack": 8.0,
+      "env_amp_decay": 350.0,
+      "env_amp_sustain": 0.6,
+      "env_amp_release": 250.0,
+      "env_filter_attack": 8.0,
+      "env_filter_decay": 300.0,
+      "env_filter_sustain": 0.3,
+      "filt_a_env_amt": 0.4,
+      "drift_depth": 0.2,
+      "chorus_enable": 1.0,
+      "chorus_rate": 0.8,
+      "chorus_mix": 0.15,
+      "master_gain": -3.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.411,
+    "warmth": 0.213,
+    "movement": 0.0,
+    "density": 0.151,
+    "space": 0.033,
+    "aggression": 0.206
+  }
+}

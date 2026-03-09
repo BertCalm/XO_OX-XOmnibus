@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Resonant Acid",
+  "mood": "Foundation",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Rooted bass sound with warm character.",
+  "tags": [
+    "dyssey",
+    "dyssey",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Bass",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 1.0,
+      "osc_a_level": 0.85,
+      "osc_a_pw": 0.5,
+      "filt_a_cutoff": 800.0,
+      "filt_a_reso": 0.55,
+      "filt_a_slope": 1.0,
+      "filt_a_drive": 0.25,
+      "env_amp_attack": 1.0,
+      "env_amp_decay": 180.0,
+      "env_amp_sustain": 0.35,
+      "env_amp_release": 130.0,
+      "env_filter_attack": 1.0,
+      "env_filter_decay": 100.0,
+      "env_filter_sustain": 0.1,
+      "filt_a_env_amt": 0.6,
+      "master_gain": -2.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.294,
+    "warmth": 0.0,
+    "movement": 0.0,
+    "density": 0.071,
+    "space": 0.0,
+    "aggression": 0.33
+  }
+}

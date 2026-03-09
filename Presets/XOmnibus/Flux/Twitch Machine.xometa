@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Twitch Machine",
+  "mood": "Flux",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Glitchy oddball character with bob character and analog drift.",
+  "tags": [
+    "twitch",
+    "glitch",
+    "stutter"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Oddball",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 2.0,
+      "oscA_shape": 0.4,
+      "oscA_drift": 0.82,
+      "oscB_wave": 0.0,
+      "oscB_fm": 0.62,
+      "oscB_sync": 1.0,
+      "oscB_detune": 28.0,
+      "oscB_blend": 0.68,
+      "cur_mode": 3.0,
+      "cur_amount": 1.0,
+      "flt_cutoff": 6500.0,
+      "flt_resonance": 0.72,
+      "flt_drive": 0.3,
+      "lfo1_rate": 7.5,
+      "lfo1_depth": 0.82,
+      "lfo1_shape": 2.0,
+      "env_attack": 0.002,
+      "env_decay": 0.15,
+      "env_sustain": 0.4,
+      "env_release": 0.28,
+      "bob_mode": 0.88
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.461,
+    "warmth": 0.827,
+    "movement": 0.807,
+    "density": 0.704,
+    "space": 0.0,
+    "aggression": 0.346
+  }
+}

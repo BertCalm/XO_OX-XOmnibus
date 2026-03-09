@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Wire Pluck",
+  "mood": "Prism",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright plucks character with warm character.",
+  "tags": [
+    "pluck",
+    "wire",
+    "metallic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Plucks",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 2.0,
+      "oscA_shape": 0.52,
+      "oscA_drift": 0.15,
+      "oscB_wave": 0.0,
+      "oscB_blend": 0.5,
+      "oscB_detune": 7.0,
+      "flt_mode": 1.0,
+      "flt_cutoff": 5500.0,
+      "flt_resonance": 0.65,
+      "flt_envAmt": 0.6,
+      "env_attack": 0.001,
+      "env_decay": 0.5,
+      "env_sustain": 0.08,
+      "env_release": 0.4,
+      "bob_mode": 0.1
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.447,
+    "warmth": 0.139,
+    "movement": 0.0,
+    "density": 0.25,
+    "space": 0.0,
+    "aggression": 0.211
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Koto Pluck",
+  "mood": "Prism",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright plucks character with warm character.",
+  "tags": [
+    "pluck",
+    "koto",
+    "eastern"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Plucks",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 1.0,
+      "oscA_shape": 0.48,
+      "oscA_drift": 0.2,
+      "oscB_wave": 3.0,
+      "oscB_blend": 0.38,
+      "oscB_detune": 4.0,
+      "flt_mode": 2.0,
+      "flt_cutoff": 4500.0,
+      "flt_resonance": 0.58,
+      "flt_character": 0.55,
+      "flt_envAmt": 0.55,
+      "env_attack": 0.002,
+      "env_decay": 0.8,
+      "env_sustain": 0.1,
+      "env_release": 0.6,
+      "bob_mode": 0.1
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.582,
+    "warmth": 0.169,
+    "movement": 0.0,
+    "density": 0.174,
+    "space": 0.0,
+    "aggression": 0.189
+  }
+}

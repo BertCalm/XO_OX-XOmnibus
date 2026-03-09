@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Nova Bloom",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expansive pads atmosphere with prism shimmer.",
+  "tags": [
+    "shimmery",
+    "spacious",
+    "supersaw",
+    "slow-attack"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 2.0,
+      "osc_a_level": 0.7,
+      "osc_a_detune": 0.5,
+      "osc_b_mode": 0.0,
+      "osc_b_shape": 3.0,
+      "osc_b_level": 0.3,
+      "filt_a_cutoff": 4000.0,
+      "filt_a_reso": 0.2,
+      "shimmer_amount": 0.4,
+      "shimmer_tone": 0.5,
+      "env_amp_attack": 500.0,
+      "env_amp_sustain": 0.65,
+      "env_amp_release": 2500.0,
+      "env_filter_attack": 600.0,
+      "env_filter_decay": 1500.0,
+      "env_filter_sustain": 0.5,
+      "filt_a_env_amt": 0.2,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.8,
+      "reverb_mix": 0.4,
+      "master_gain": -4.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.565,
+    "warmth": 0.0,
+    "movement": 0.0,
+    "density": 0.323,
+    "space": 0.308,
+    "aggression": 0.083
+  }
+}

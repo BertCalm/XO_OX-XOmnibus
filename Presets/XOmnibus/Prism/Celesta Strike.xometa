@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Celesta Strike",
+  "mood": "Prism",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expressive keys & bells voice with reverb depth.",
+  "tags": [
+    "bell",
+    "celesta",
+    "airy"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Keys & Bells",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_shape": 0.62,
+      "oscA_drift": 0.06,
+      "oscB_wave": 0.0,
+      "oscB_blend": 0.38,
+      "oscB_detune": 6.0,
+      "flt_mode": 2.0,
+      "flt_cutoff": 9000.0,
+      "flt_resonance": 0.45,
+      "flt_character": 0.55,
+      "flt_envAmt": 0.48,
+      "env_attack": 0.001,
+      "env_decay": 1.5,
+      "env_sustain": 0.0,
+      "env_release": 1.2,
+      "space_mix": 0.38,
+      "space_size": 0.75,
+      "space_air": 0.55,
+      "bob_mode": 0.12
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.638,
+    "warmth": 0.144,
+    "movement": 0.0,
+    "density": 0.199,
+    "space": 0.484,
+    "aggression": 0.146
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Lambswool",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expansive warm pads atmosphere with bob character and reverb depth.",
+  "tags": [
+    "warm",
+    "soft",
+    "mellow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Warm Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 3.0,
+      "oscA_shape": 0.35,
+      "oscA_drift": 0.15,
+      "oscB_wave": 2.0,
+      "oscB_blend": 0.55,
+      "oscB_detune": 9.0,
+      "flt_mode": 0.0,
+      "flt_cutoff": 2000.0,
+      "flt_resonance": 0.08,
+      "env_attack": 1.0,
+      "env_decay": 1.3,
+      "env_sustain": 0.92,
+      "env_release": 2.5,
+      "space_mix": 0.38,
+      "space_size": 0.55,
+      "bob_mode": 0.35
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.367,
+    "warmth": 0.307,
+    "movement": 0.0,
+    "density": 0.291,
+    "space": 0.411,
+    "aggression": 0.026
+  }
+}

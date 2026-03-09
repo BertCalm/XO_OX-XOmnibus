@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Pluck Bass",
+  "mood": "Foundation",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Solid, grounding warm bass tone with warm character.",
+  "tags": [
+    "bass",
+    "pluck",
+    "punchy"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Warm Bass",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 2.0,
+      "oscA_tune": -12.0,
+      "oscA_shape": 0.6,
+      "oscA_drift": 0.08,
+      "oscB_wave": 1.0,
+      "oscB_blend": 0.55,
+      "oscB_detune": 5.0,
+      "flt_mode": 0.0,
+      "flt_cutoff": 900.0,
+      "flt_resonance": 0.45,
+      "flt_drive": 0.3,
+      "env_attack": 0.003,
+      "env_decay": 0.3,
+      "env_sustain": 0.35,
+      "env_release": 0.4,
+      "bob_mode": 0.12
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.303,
+    "warmth": 0.131,
+    "movement": 0.0,
+    "density": 0.241,
+    "space": 0.0,
+    "aggression": 0.259
+  }
+}

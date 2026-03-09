@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Frantic Sniff",
+  "mood": "Entangled",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Living curious motion movement with bob character and analog drift.",
+  "tags": [
+    "curious",
+    "sniff",
+    "frantic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Curious Motion",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 3.0,
+      "oscA_shape": 0.72,
+      "oscA_drift": 0.6,
+      "oscB_wave": 2.0,
+      "oscB_blend": 0.45,
+      "oscB_detune": 3.0,
+      "cur_mode": 0.0,
+      "cur_amount": 0.98,
+      "lfo1_rate": 8.5,
+      "lfo1_depth": 0.7,
+      "lfo1_shape": 2.0,
+      "flt_mode": 3.0,
+      "flt_cutoff": 6000.0,
+      "flt_resonance": 0.6,
+      "env_attack": 0.004,
+      "env_decay": 0.18,
+      "env_sustain": 0.48,
+      "env_release": 0.55,
+      "bob_mode": 0.7
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.454,
+    "warmth": 0.633,
+    "movement": 0.752,
+    "density": 0.184,
+    "space": 0.0,
+    "aggression": 0.195
+  }
+}

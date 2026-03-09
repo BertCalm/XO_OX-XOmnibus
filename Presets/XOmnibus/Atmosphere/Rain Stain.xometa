@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Rain Stain",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expansive textures atmosphere with bob character and analog drift.",
+  "tags": [
+    "texture",
+    "rain",
+    "ambient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Textures",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 3.0,
+      "oscA_drift": 0.4,
+      "oscA_shape": 0.2,
+      "oscB_blend": 0.0,
+      "tex_level": 0.5,
+      "tex_mode": 0.0,
+      "tex_tone": 0.45,
+      "tex_width": 0.75,
+      "dust_amount": 0.35,
+      "dust_age": 0.42,
+      "dust_tone": 0.38,
+      "flt_mode": 0.0,
+      "flt_cutoff": 4500.0,
+      "flt_resonance": 0.06,
+      "env_attack": 4.0,
+      "env_sustain": 0.93,
+      "env_release": 8.0,
+      "space_size": 0.7,
+      "space_mix": 0.4,
+      "bob_mode": 0.55
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.431,
+    "warmth": 0.52,
+    "movement": 0.0,
+    "density": 0.188,
+    "space": 0.477,
+    "aggression": 0.151
+  }
+}

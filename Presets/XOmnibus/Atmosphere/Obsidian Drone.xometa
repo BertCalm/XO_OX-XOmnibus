@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Obsidian Drone",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expansive pads atmosphere with voyager drift and warm haze.",
+  "tags": [
+    "drifty",
+    "saturated",
+    "spacious",
+    "slow-attack"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 0.0,
+      "osc_a_shape": 0.0,
+      "osc_a_level": 0.8,
+      "osc_b_mode": 0.0,
+      "osc_b_shape": 0.0,
+      "osc_b_level": 0.7,
+      "osc_b_tune": -12.0,
+      "osc_b_fine": -8.0,
+      "sub_level": 0.5,
+      "sub_octave": 0.0,
+      "haze_amount": 0.5,
+      "filt_a_cutoff": 1200.0,
+      "filt_a_reso": 0.3,
+      "filt_a_slope": 1.0,
+      "filt_a_drive": 0.25,
+      "env_amp_attack": 500.0,
+      "env_amp_sustain": 0.7,
+      "env_amp_release": 2000.0,
+      "drift_depth": 0.4,
+      "drift_rate": 0.05,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.85,
+      "reverb_damping": 0.6,
+      "reverb_mix": 0.35,
+      "master_gain": -4.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.326,
+    "warmth": 0.605,
+    "movement": 0.038,
+    "density": 0.202,
+    "space": 0.303,
+    "aggression": 0.392
+  }
+}

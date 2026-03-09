@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Fog River",
+  "mood": "Aether",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Transcendent dream pads atmosphere with bob character and analog drift.",
+  "tags": [
+    "dream",
+    "fog",
+    "slow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Dream Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_drift": 0.58,
+      "oscA_shape": 0.25,
+      "oscB_wave": 1.0,
+      "oscB_blend": 0.65,
+      "oscB_detune": 20.0,
+      "lfo2_rate": 0.03,
+      "lfo2_depth": 0.32,
+      "flt_mode": 1.0,
+      "flt_cutoff": 1000.0,
+      "flt_resonance": 0.22,
+      "env_attack": 1.8,
+      "env_decay": 2.5,
+      "env_sustain": 0.86,
+      "env_release": 8.0,
+      "space_size": 0.95,
+      "space_decay": 0.92,
+      "space_mix": 0.56,
+      "bob_mode": 0.62
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.311,
+    "warmth": 0.688,
+    "movement": 0.12,
+    "density": 0.461,
+    "space": 0.656,
+    "aggression": 0.072
+  }
+}

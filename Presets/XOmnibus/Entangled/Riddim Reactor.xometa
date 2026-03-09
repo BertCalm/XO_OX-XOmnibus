@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "name": "Riddim Reactor",
+  "mood": "Entangled",
+  "engines": [
+    "XOddCouple"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Explosive rhythmic coupling at high intensity. X's envelope slams O's filter with each hit and O retaliates with pitch warps on X.",
+  "tags": [
+    "riddim",
+    "explosive",
+    "rhythmic",
+    "intense",
+    "reactive"
+  ],
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": 150,
+  "created": "2026-03-05",
+  "legacy": {
+    "sourceInstrument": "XOddCouple",
+    "sourceCategory": "Entangled",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOddCouple": {
+      "couplingAmount": 0.731,
+      "masterBalance": -0.092,
+      "xOscMode": 0,
+      "xSnap": 0.316,
+      "xDecay": 0.422,
+      "xFilterCutoff": 1444.055,
+      "xFilterReso": 0.216,
+      "xDetune": 5.814,
+      "xLevel": 0.612,
+      "xPitchLock": 0,
+      "xUnison": 0,
+      "xPolyphony": 0,
+      "oMorph": 0.122,
+      "oBloom": 0.622,
+      "oDecay": 1.163,
+      "oSustain": 0.324,
+      "oRelease": 0.622,
+      "oFilterCutoff": 1044.055,
+      "oFilterReso": 0.545,
+      "oDrift": 0.116,
+      "oSub": 0.22,
+      "oDetune": 5.814,
+      "oLevel": 0.612,
+      "oPolyphony": 1,
+      "macro1": 0.262,
+      "macro2": 0.576,
+      "macro3": 0.537,
+      "macro4": 0.408,
+      "delayEnabled": 1,
+      "delayTime": 0.3,
+      "delayFeedback": 0.316,
+      "delayMix": 0.212,
+      "delayWobble": 0.06,
+      "reverbEnabled": 1,
+      "reverbDecay": 0.514,
+      "reverbSize": 0.633,
+      "reverbMix": 0.212,
+      "reverbDamping": 0.216,
+      "phaserEnabled": 0,
+      "phaserRate": 0.5,
+      "phaserDepth": 0.5,
+      "phaserMix": 0.3,
+      "lofiEnabled": 0,
+      "lofiBitDepth": 12.0,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
+      "lofiMix": 0.3,
+      "compressorEnabled": 1,
+      "compThreshold": -10.407,
+      "compRatio": 2.203,
+      "compAttack": 5.814,
+      "compRelease": 86.101
+    }
+  },
+  "coupling": null,
+  "sequencer": {
+    "bpm": 150.0,
+    "swing": 0.008,
+    "tracks": [
+      {
+        "engine": "XOddCouple",
+        "length": 16,
+        "muted": false,
+        "steps": [
+          {
+            "index": 0,
+            "active": false,
+            "note": 36,
+            "velocity": 0.85,
+            "probability": 1.0
+          },
+          {
+            "index": 4,
+            "active": false,
+            "note": 36,
+            "velocity": 0.85,
+            "probability": 1.0
+          },
+          {
+            "index": 8,
+            "active": false,
+            "note": 36,
+            "velocity": 0.85,
+            "probability": 1.0
+          },
+          {
+            "index": 12,
+            "active": false,
+            "note": 36,
+            "velocity": 0.85,
+            "probability": 1.0
+          }
+        ]
+      },
+      {
+        "engine": "XOddCouple",
+        "length": 16,
+        "muted": false,
+        "steps": [
+          {
+            "index": 4,
+            "active": false,
+            "note": 38,
+            "velocity": 0.8,
+            "probability": 1.0
+          },
+          {
+            "index": 12,
+            "active": false,
+            "note": 38,
+            "velocity": 0.8,
+            "probability": 1.0
+          }
+        ]
+      },
+      {
+        "engine": "XOddCouple",
+        "length": 16,
+        "muted": false,
+        "steps": []
+      },
+      {
+        "engine": "XOddCouple",
+        "length": 16,
+        "muted": false,
+        "steps": [
+          {
+            "index": 0,
+            "active": false,
+            "note": 59,
+            "velocity": 0.7896669882092782,
+            "probability": 1.0
+          },
+          {
+            "index": 2,
+            "active": false,
+            "note": 61,
+            "velocity": 0.7548992203210712,
+            "probability": 1.0
+          },
+          {
+            "index": 14,
+            "active": false,
+            "note": 56,
+            "velocity": 0.8344260007921667,
+            "probability": 1.0
+          },
+          {
+            "index": 15,
+            "active": false,
+            "note": 59,
+            "velocity": 0.6326589580934167,
+            "probability": 1.0
+          }
+        ]
+      }
+    ]
+  },
+  "dna": {
+    "brightness": 0.656,
+    "warmth": 0.287,
+    "movement": 0.21,
+    "density": 0.242,
+    "space": 0.32,
+    "aggression": 0.265
+  }
+}

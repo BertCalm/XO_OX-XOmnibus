@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "Spark Trail",
+  "mood": "Entangled",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Reactive living motion with analog drift and curious motion.",
+  "tags": [
+    "moving",
+    "spark",
+    "fast",
+    "electric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Living",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 2.0,
+      "oscA_shape": 0.62,
+      "oscA_drift": 0.38,
+      "oscB_wave": 1.0,
+      "oscB_blend": 0.45,
+      "oscB_detune": 5.0,
+      "flt_mode": 1.0,
+      "flt_cutoff": 5500.0,
+      "flt_resonance": 0.55,
+      "flt_envAmt": 0.6,
+      "lfo1_rate": 10.0,
+      "lfo1_depth": 0.4,
+      "cur_mode": 3.0,
+      "cur_amount": 0.62,
+      "motEnv_attack": 0.02,
+      "motEnv_decay": 0.3,
+      "motEnv_sustain": 0.45,
+      "motEnv_release": 0.6,
+      "motEnv_depth": 0.65,
+      "env_attack": 0.005,
+      "env_decay": 0.3,
+      "env_sustain": 0.6,
+      "env_release": 0.6,
+      "glide": 0.05
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.447,
+    "warmth": 0.224,
+    "movement": 0.671,
+    "density": 0.209,
+    "space": 0.0,
+    "aggression": 0.179
+  }
+}

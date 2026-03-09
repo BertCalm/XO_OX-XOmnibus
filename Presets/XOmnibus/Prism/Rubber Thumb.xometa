@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Rubber Thumb",
+  "mood": "Prism",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright plucks character with warm character.",
+  "tags": [
+    "pluck",
+    "bass",
+    "thumb"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Plucks",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 0.0,
+      "oscA_shape": 0.4,
+      "oscA_drift": 0.12,
+      "oscA_tune": -12.0,
+      "oscB_wave": 3.0,
+      "oscB_blend": 0.72,
+      "oscB_detune": 2.0,
+      "flt_mode": 3.0,
+      "flt_cutoff": 1800.0,
+      "flt_resonance": 0.62,
+      "flt_envAmt": 0.7,
+      "env_attack": 0.002,
+      "env_decay": 0.35,
+      "env_sustain": 0.05,
+      "env_release": 0.3,
+      "bob_mode": 0.1
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.358,
+    "warmth": 0.136,
+    "movement": 0.0,
+    "density": 0.259,
+    "space": 0.0,
+    "aggression": 0.202
+  }
+}

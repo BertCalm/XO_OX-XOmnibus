@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Mycelium",
+  "mood": "Entangled",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Reactive living motion with analog drift and reverb depth.",
+  "tags": [
+    "moving",
+    "network",
+    "slow",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Living",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 1.0,
+      "oscA_shape": 0.5,
+      "oscA_drift": 0.38,
+      "oscB_wave": 1.0,
+      "oscB_blend": 0.5,
+      "oscB_detune": 6.0,
+      "flt_mode": 0.0,
+      "flt_cutoff": 2500.0,
+      "flt_resonance": 0.4,
+      "flt_envAmt": 0.65,
+      "lfo1_rate": 0.08,
+      "lfo1_depth": 0.45,
+      "cur_mode": 2.0,
+      "cur_amount": 0.68,
+      "motEnv_attack": 1.5,
+      "motEnv_decay": 2.0,
+      "motEnv_sustain": 0.65,
+      "motEnv_release": 3.0,
+      "motEnv_depth": 0.78,
+      "env_attack": 0.8,
+      "env_decay": 1.5,
+      "env_sustain": 0.88,
+      "env_release": 4.0,
+      "space_mix": 0.4,
+      "glide": 0.18
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.384,
+    "warmth": 0.289,
+    "movement": 0.762,
+    "density": 0.237,
+    "space": 0.22,
+    "aggression": 0.13
+  }
+}

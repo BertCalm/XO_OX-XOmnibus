@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Starfield",
+  "mood": "Aether",
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Transcendent dream pads atmosphere with bob character and analog drift.",
+  "tags": [
+    "dream",
+    "cosmic",
+    "sparse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOblongBob",
+    "sourceCategory": "Dream Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOblongBob": {
+      "oscA_wave": 2.0,
+      "oscA_drift": 0.4,
+      "oscA_shape": 0.45,
+      "oscB_wave": 0.0,
+      "oscB_blend": 0.5,
+      "oscB_detune": 25.0,
+      "lfo1_rate": 0.08,
+      "lfo1_depth": 0.22,
+      "flt_mode": 0.0,
+      "flt_cutoff": 3000.0,
+      "flt_resonance": 0.2,
+      "env_attack": 1.5,
+      "env_decay": 2.0,
+      "env_sustain": 0.83,
+      "env_release": 6.5,
+      "space_size": 0.94,
+      "space_decay": 0.9,
+      "space_mix": 0.55,
+      "space_air": 0.7,
+      "bob_mode": 0.56
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.399,
+    "warmth": 0.549,
+    "movement": 0.083,
+    "density": 0.412,
+    "space": 0.647,
+    "aggression": 0.065
+  }
+}

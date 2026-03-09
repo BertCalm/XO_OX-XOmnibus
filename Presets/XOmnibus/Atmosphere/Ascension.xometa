@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Ascension",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOdyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Floating textures texture with voyager drift and prism shimmer.",
+  "tags": [
+    "drifty",
+    "shimmery",
+    "spacious",
+    "chorus",
+    "supersaw",
+    "slow-attack"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "XOdyssey",
+    "sourceCategory": "Textures",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOdyssey": {
+      "osc_a_mode": 2.0,
+      "osc_a_level": 0.5,
+      "osc_a_detune": 0.4,
+      "osc_b_mode": 0.0,
+      "osc_b_shape": 3.0,
+      "osc_b_level": 0.3,
+      "osc_b_tune": 12.0,
+      "shimmer_amount": 0.5,
+      "shimmer_tone": 0.6,
+      "filt_a_cutoff": 5000.0,
+      "filt_a_reso": 0.1,
+      "env_amp_attack": 1000.0,
+      "env_amp_sustain": 0.5,
+      "env_amp_release": 3000.0,
+      "env_filter_attack": 2000.0,
+      "env_filter_decay": 3000.0,
+      "env_filter_sustain": 0.6,
+      "filt_a_env_amt": 0.3,
+      "drift_depth": 0.25,
+      "chorus_enable": 1.0,
+      "chorus_mix": 0.15,
+      "delay_enable": 1.0,
+      "delay_time": 500.0,
+      "delay_feedback": 0.4,
+      "delay_mix": 0.2,
+      "reverb_enable": 1.0,
+      "reverb_size": 0.85,
+      "reverb_mix": 0.4,
+      "master_gain": -5.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.654,
+    "warmth": 0.138,
+    "movement": 0.0,
+    "density": 0.282,
+    "space": 0.409,
+    "aggression": 0.041
+  }
+}
