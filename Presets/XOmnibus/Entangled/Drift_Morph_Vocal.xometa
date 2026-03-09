@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Drift Morph Vocal",
+  "mood": "Entangled",
+  "engines": ["Drift", "Morph"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "DRIFT formant pad coupled with MORPH wavetable. MORPH envelope sweeps DRIFT vowel position for vocal morphing.",
+  "tags": ["pad", "vocal", "coupled", "morph", "formant"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.65,
+    "movement": 0.7,
+    "density": 0.6,
+    "space": 0.4,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Drift": {
+      "drift_oscA_mode": 0,
+      "drift_oscA_shape": 1,
+      "drift_oscA_tune": 0.0,
+      "drift_oscA_level": 0.9,
+      "drift_oscA_detune": 0.3,
+      "drift_oscA_pw": 0.5,
+      "drift_oscA_fmDepth": 0.3,
+      "drift_oscB_mode": 0,
+      "drift_oscB_shape": 3,
+      "drift_oscB_tune": 0.05,
+      "drift_oscB_level": 0.4,
+      "drift_oscB_detune": 0.3,
+      "drift_oscB_pw": 0.5,
+      "drift_oscB_fmDepth": 0.3,
+      "drift_subLevel": 0.15,
+      "drift_noiseLevel": 0.0,
+      "drift_hazeAmount": 0.1,
+      "drift_filterCutoff": 4000.0,
+      "drift_filterReso": 0.15,
+      "drift_filterSlope": 0,
+      "drift_filterEnvAmt": 0.2,
+      "drift_formantMorph": 0.2,
+      "drift_formantMix": 0.5,
+      "drift_shimmerAmount": 0.1,
+      "drift_shimmerTone": 0.5,
+      "drift_attack": 0.3,
+      "drift_decay": 1.2,
+      "drift_sustain": 0.7,
+      "drift_release": 1.0,
+      "drift_lfoRate": 1.5,
+      "drift_lfoDepth": 0.0,
+      "drift_lfoDest": 0,
+      "drift_driftDepth": 0.4,
+      "drift_driftRate": 0.15,
+      "drift_level": 0.75,
+      "drift_voiceMode": 0,
+      "drift_glide": 0.0,
+      "drift_polyphony": 3
+    }
+  },
+  "coupling": {
+    "Morph->Drift": {
+      "type": "EnvToMorph",
+      "amount": 0.5
+    }
+  },
+  "sequencer": null
+}

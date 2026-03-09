@@ -1205,10 +1205,10 @@ private:
             if (!voices[static_cast<size_t> (i)].active)
                 return i;
 
-        // Oldest voice stealing
+        // Oldest voice stealing — initialize from voice 0
         int oldest = 0;
-        uint64_t oldestAge = 0;
-        for (int i = 0; i < poly; ++i)
+        uint64_t oldestAge = voices[0].age;
+        for (int i = 1; i < poly; ++i)
         {
             if (voices[static_cast<size_t> (i)].age > oldestAge)
             {

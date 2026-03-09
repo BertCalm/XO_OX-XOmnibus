@@ -2,6 +2,7 @@
 #include "Engines/Snap/SnapEngine.h"
 #include "Engines/Morph/MorphEngine.h"
 #include "Engines/Dub/DubEngine.h"
+#include "Engines/Drift/DriftEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values)
 static bool registered_Snap = xomnibus::EngineRegistry::instance().registerEngine(
@@ -15,6 +16,10 @@ static bool registered_Morph = xomnibus::EngineRegistry::instance().registerEngi
 static bool registered_Dub = xomnibus::EngineRegistry::instance().registerEngine(
     "Dub", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::DubEngine>();
+    });
+static bool registered_Drift = xomnibus::EngineRegistry::instance().registerEngine(
+    "Drift", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::DriftEngine>();
     });
 
 namespace xomnibus {
@@ -57,6 +62,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     SnapEngine::addParameters(params);
     MorphEngine::addParameters(params);
     DubEngine::addParameters(params);
+    DriftEngine::addParameters(params);
 
     return { params.begin(), params.end() };
 }
