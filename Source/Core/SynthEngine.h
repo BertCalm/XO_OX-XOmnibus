@@ -81,6 +81,11 @@ public:
     virtual juce::AudioProcessorValueTreeState::ParameterLayout
         createParameterLayout() = 0;
 
+    // Cache raw parameter pointers from the shared APVTS.
+    // Called once after the APVTS is constructed with all engine layouts merged.
+    // Engines use these cached pointers in renderBlock() for zero-cost reads.
+    virtual void attachParameters(juce::AudioProcessorValueTreeState& apvts) = 0;
+
     //-- Identity --------------------------------------------------------------
 
     // Return the engine's unique identifier (e.g., "Snap", "Morph", "Dub").

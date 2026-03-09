@@ -1,4 +1,16 @@
 #include "XOmnibusProcessor.h"
+#include "Engines/Snap/SnapEngine.h"
+#include "Engines/Morph/MorphEngine.h"
+
+// Register engines with their canonical IDs (matching getEngineId() return values)
+static bool registered_Snap = xomnibus::EngineRegistry::instance().registerEngine(
+    "Snap", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::SnapEngine>();
+    });
+static bool registered_Morph = xomnibus::EngineRegistry::instance().registerEngine(
+    "Morph", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::MorphEngine>();
+    });
 
 namespace xomnibus {
 
@@ -34,6 +46,11 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("macro4", 1), "SPACE",
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+
+    // Merge engine parameters directly.
+    // Each engine adds its namespaced parameters to the shared vector.
+    SnapEngine::addParameters(params);
+    MorphEngine::addParameters(params);
 
     return { params.begin(), params.end() };
 }
@@ -127,7 +144,8 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             continue;
 
         crossfadeBuffer.clear();
-        cf.outgoing->renderBlock(crossfadeBuffer, midi, numSamples);
+        juce::MidiBuffer emptyMidi;
+        cf.outgoing->renderBlock(crossfadeBuffer, emptyMidi, numSamples);
 
         int fadeSamples = std::min(numSamples, cf.fadeSamplesRemaining);
         float fadeStep = cf.fadeGain / static_cast<float>(fadeSamples);
@@ -164,6 +182,7 @@ void XOmnibusProcessor::loadEngine(int slot, const std::string& engineId)
     if (!newEngine)
         return;
 
+    newEngine->attachParameters(apvts);
     newEngine->prepare(currentSampleRate, currentBlockSize);
 
     // Move the old engine to crossfade-out state

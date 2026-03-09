@@ -55,6 +55,10 @@ target_sources(XOmnibus PRIVATE
     Source/DSP/Effects/Saturator.h
     Source/DSP/Effects/Compressor.h
 
+    # Engine adapters
+    Source/Engines/Snap/SnapEngine.h
+    Source/Engines/Morph/MorphEngine.h
+
     # Main processor
     Source/XOmnibusProcessor.h
     Source/XOmnibusProcessor.cpp

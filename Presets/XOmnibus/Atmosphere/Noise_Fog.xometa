@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Noise Fog",
+  "mood": "Atmosphere",
+  "engines": ["XOddCouple"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Morphed into noise territory with heavy filtering. Textural fog that breathes.",
+  "tags": ["noise", "texture", "fog", "dark"],
+  "macroLabels": ["DENSITY", "BLOOM", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.5,
+    "movement": 0.7,
+    "density": 0.8,
+    "space": 0.6,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "XOddCouple": {
+      "morph_morph": 2.7,
+      "morph_bloom": 3.5,
+      "morph_decay": 4.0,
+      "morph_sustain": 0.5,
+      "morph_release": 5.0,
+      "morph_filterCutoff": 600.0,
+      "morph_filterReso": 0.6,
+      "morph_drift": 0.7,
+      "morph_sub": 0.3,
+      "morph_detune": 30.0,
+      "morph_level": 0.65,
+      "morph_polyphony": 3
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}
