@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Quantum Kit",
+  "mood": "Flux",
+  "engines": ["Onset"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Blend at 0.5 for every voice. Sounds unlike any analog or digital drum machine.",
+  "tags": ["drums", "hybrid", "quantum", "experimental", "balanced"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.15,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v1_blend": 0.5, "perc_v1_algoMode": 1, "perc_v1_pitch": 0.0,
+      "perc_v1_decay": 0.55, "perc_v1_tone": 0.5, "perc_v1_snap": 0.4,
+      "perc_v1_body": 0.7, "perc_v1_character": 0.3, "perc_v1_level": 0.8, "perc_v1_pan": 0.0,
+
+      "perc_v2_blend": 0.5, "perc_v2_algoMode": 0, "perc_v2_pitch": 2.0,
+      "perc_v2_decay": 0.3, "perc_v2_tone": 0.55, "perc_v2_snap": 0.5,
+      "perc_v2_body": 0.35, "perc_v2_character": 0.4, "perc_v2_level": 0.75, "perc_v2_pan": 0.0,
+
+      "perc_v3_blend": 0.5, "perc_v3_algoMode": 0, "perc_v3_pitch": 0.0,
+      "perc_v3_decay": 0.06, "perc_v3_tone": 0.65, "perc_v3_snap": 0.35,
+      "perc_v3_body": 0.1, "perc_v3_character": 0.4, "perc_v3_level": 0.6, "perc_v3_pan": 0.1,
+
+      "perc_v4_blend": 0.5, "perc_v4_algoMode": 0, "perc_v4_pitch": 0.0,
+      "perc_v4_decay": 0.4, "perc_v4_tone": 0.65, "perc_v4_snap": 0.3,
+      "perc_v4_body": 0.1, "perc_v4_character": 0.4, "perc_v4_level": 0.55, "perc_v4_pan": -0.1,
+
+      "perc_v5_blend": 0.5, "perc_v5_algoMode": 3, "perc_v5_pitch": 0.0,
+      "perc_v5_decay": 0.25, "perc_v5_tone": 0.5, "perc_v5_snap": 0.55,
+      "perc_v5_body": 0.2, "perc_v5_character": 0.35, "perc_v5_level": 0.65, "perc_v5_pan": 0.15,
+
+      "perc_v6_blend": 0.5, "perc_v6_algoMode": 1, "perc_v6_pitch": -4.0,
+      "perc_v6_decay": 0.45, "perc_v6_tone": 0.45, "perc_v6_snap": 0.35,
+      "perc_v6_body": 0.55, "perc_v6_character": 0.3, "perc_v6_level": 0.65, "perc_v6_pan": -0.2,
+
+      "perc_v7_blend": 0.5, "perc_v7_algoMode": 2, "perc_v7_pitch": 7.0,
+      "perc_v7_decay": 0.35, "perc_v7_tone": 0.6, "perc_v7_snap": 0.4,
+      "perc_v7_body": 0.15, "perc_v7_character": 0.5, "perc_v7_level": 0.55, "perc_v7_pan": 0.3,
+
+      "perc_v8_blend": 0.5, "perc_v8_algoMode": 1, "perc_v8_pitch": 12.0,
+      "perc_v8_decay": 0.4, "perc_v8_tone": 0.55, "perc_v8_snap": 0.35,
+      "perc_v8_body": 0.1, "perc_v8_character": 0.5, "perc_v8_level": 0.5, "perc_v8_pan": -0.3,
+
+      "perc_level": 0.8, "perc_drive": 0.05, "perc_masterTone": 0.55
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

@@ -62,6 +62,7 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Drift/DriftEngine.h
     Source/Engines/Bob/BobEngine.h
     Source/Engines/Fat/FatEngine.h
+    Source/Engines/Onset/OnsetEngine.h
 
     # Main processor
     Source/XOmnibusProcessor.h
