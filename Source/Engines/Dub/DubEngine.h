@@ -277,7 +277,7 @@ public:
         for (int i = 0; i < numSamples; ++i)
         {
             constexpr double twoPi = 6.28318530717958647692;
-            float wowMod = static_cast<float> (std::sin (wowPhase * twoPi)) * wowAmount * 0.002f;
+            float wowMod = fastSin (static_cast<float> (wowPhase * twoPi)) * wowAmount * 0.002f;
             wowPhase += 0.3 / sr;
             if (wowPhase >= 1.0) wowPhase -= 1.0;
 

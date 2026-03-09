@@ -130,7 +130,7 @@ public:
                 float sign = (v % 2 == 1) ? 1.0f : -1.0f;
                 offset = sign * maxCents * static_cast<float> (pair) / 3.0f;
             }
-            float voiceHz = hz * std::pow (2.0f, offset / 1200.0f);
+            float voiceHz = hz * fastExp (offset * (0.693147f / 1200.0f));
             phaseIncs[v] = static_cast<double> (voiceHz) / sr;
         }
     }
@@ -207,8 +207,8 @@ public:
         double modInc = carrierInc * static_cast<double> (ratio);
         double modIndex = static_cast<double> (depth) * 5.0;
 
-        double modOut = std::sin (modPhase * twoPi) * modIndex;
-        double carrierOut = std::sin ((carrierPhase + modOut) * twoPi);
+        double modOut = static_cast<double> (fastSin (static_cast<float> (modPhase * twoPi))) * modIndex;
+        double carrierOut = static_cast<double> (fastSin (static_cast<float> ((carrierPhase + modOut) * twoPi)));
 
         carrierPhase += carrierInc;
         if (carrierPhase >= 1.0) carrierPhase -= 1.0;
