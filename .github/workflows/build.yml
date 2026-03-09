@@ -1,0 +1,68 @@
+name: Build XOmnibus
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  MACOSX_DEPLOYMENT_TARGET: '12.0'
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Cache JUCE
+        id: cache-juce
+        uses: actions/cache@v4
+        with:
+          path: Libs/JUCE
+          key: juce-8.0.4
+
+      - name: Clone JUCE 8.0.4
+        if: steps.cache-juce.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p Libs
+          git clone --depth 1 --branch 8.0.4 https://github.com/juce-framework/JUCE.git Libs/JUCE
+
+      - name: Install Ninja
+        run: brew install ninja
+
+      - name: Configure CMake
+        run: cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build
+
+      - name: Verify AU component
+        run: |
+          if [ ! -d "build/XOmnibus_artefacts/Release/AU/XOmnibus.component" ]; then
+            echo "ERROR: AU component not found"
+            exit 1
+          fi
+          echo "AU component found at build/XOmnibus_artefacts/Release/AU/XOmnibus.component"
+
+      - name: Verify Standalone app
+        run: |
+          if [ ! -d "build/XOmnibus_artefacts/Release/Standalone/XOmnibus.app" ]; then
+            echo "ERROR: Standalone app not found"
+            exit 1
+          fi
+          echo "Standalone app found at build/XOmnibus_artefacts/Release/Standalone/XOmnibus.app"
+
+      - name: Upload AU component
+        uses: actions/upload-artifact@v4
+        with:
+          name: XOmnibus-AU
+          path: build/XOmnibus_artefacts/Release/AU/XOmnibus.component
+
+      - name: Upload Standalone app
+        uses: actions/upload-artifact@v4
+        with:
+          name: XOmnibus-Standalone
+          path: build/XOmnibus_artefacts/Release/Standalone/XOmnibus.app

@@ -27,9 +27,15 @@ public:
         return reg;
     }
 
-    // Register an engine type (called at static init via REGISTER_ENGINE)
+    // Register an engine type (called at static init via REGISTER_ENGINE).
+    // Returns false if an engine with this ID is already registered.
     bool registerEngine(const std::string& id, EngineFactory factory)
     {
+        if (factories.count(id) > 0)
+        {
+            jassertfalse; // Duplicate engine ID — check REGISTER_ENGINE calls
+            return false;
+        }
         factories[id] = std::move(factory);
         return true;
     }

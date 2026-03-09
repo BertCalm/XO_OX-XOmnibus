@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(XOmnibus VERSION 0.1.0 LANGUAGES CXX)
+project(XOmnibus VERSION 0.1.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -32,9 +32,10 @@ juce_add_plugin(XOmnibus
     COPY_PLUGIN_AFTER_BUILD TRUE
 )
 
-# Source files
+# Source files — only list files that exist.
+# As new modules are built, add them here.
 target_sources(XOmnibus PRIVATE
-    # Core
+    # Core (interface + infrastructure)
     Source/Core/SynthEngine.h
     Source/Core/EngineRegistry.h
     Source/Core/MegaCouplingMatrix.h
@@ -42,24 +43,21 @@ target_sources(XOmnibus PRIVATE
     Source/Core/MacroSystem.h
     Source/Core/SharedTransport.h
 
-    # DSP (shared)
+    # DSP (shared, pure C++)
+    Source/DSP/FastMath.h
     Source/DSP/CytomicSVF.h
     Source/DSP/PolyBLEP.h
-    Source/DSP/FastMath.h
     Source/DSP/WavetableOscillator.h
+
+    # Effects (shared, pure C++)
+    Source/DSP/Effects/DubDelay.h
+    Source/DSP/Effects/LushReverb.h
+    Source/DSP/Effects/Saturator.h
+    Source/DSP/Effects/Compressor.h
 
     # Main processor
     Source/XOmnibusProcessor.h
     Source/XOmnibusProcessor.cpp
-
-    # Engine adapters (added as engines are wrapped)
-    # Source/Engines/Snap/SnapEngine.h
-    # Source/Engines/Morph/MorphEngine.h
-    # Source/Engines/Dub/DubEngine.h
-    # Source/Engines/Drift/DriftEngine.h
-    # Source/Engines/Bob/BobEngine.h
-    # Source/Engines/Fat/FatEngine.h
-    # Source/Engines/Onset/OnsetEngine.h
 )
 
 target_compile_definitions(XOmnibus PUBLIC

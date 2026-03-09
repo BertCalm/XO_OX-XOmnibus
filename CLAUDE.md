@@ -98,6 +98,24 @@ cmake --build build-ios --config Release
 - `RootNote` = `0` (MPC auto-detect convention)
 - Empty layer `VelStart` = `0` (prevents ghost triggering)
 
+## Adding New Engines
+
+New engines are designed as standalone instruments first, then integrated into XOmnibus.
+
+**Invoke:** `/new-xo-engine` — walks through ideation, architecture, scaffold, and integration prep.
+
+**Full process:** `Docs/xomnibus_new_engine_process.md`
+
+**Quick rules for XOmnibus-ready standalone development:**
+- Parameter IDs use `{shortname}_{paramName}` format from day one
+- Presets use `.xometa` JSON format from day one
+- DSP lives in inline `.h` headers (portable)
+- DSP works without UI references (just parameters)
+- M1-M4 macros produce audible change in every preset
+- Define coupling compatibility early (which `CouplingType` enums you accept)
+
+**Integration path:** Write a thin adapter implementing `SynthEngine` → `REGISTER_ENGINE()` → copy presets → done.
+
 ## Development Workflow
 
 1. Read the master spec (`Docs/xomnibus_master_specification.md`) before making changes
@@ -106,3 +124,4 @@ cmake --build build-ios --config Release
 4. Parameter IDs are namespaced by engine (e.g., `snap_filterCutoff`, `dub_sendAmount`)
 5. Run DSP stability checks after any engine modifications
 6. Preserve existing parameter IDs and preset compatibility
+7. For new engines, follow the process in `Docs/xomnibus_new_engine_process.md`

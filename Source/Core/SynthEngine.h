@@ -47,6 +47,10 @@ public:
     // Called when audio stops. Free non-essential resources.
     virtual void releaseResources() = 0;
 
+    // Reset all engine state (oscillator phases, filter state, envelopes, etc.)
+    // without reallocating buffers. Called on preset change and transport reset.
+    virtual void reset() = 0;
+
     //-- Audio -----------------------------------------------------------------
 
     // Render a block of audio into `buffer`. Process MIDI from `midi`.
