@@ -317,7 +317,13 @@ class OverviewPanel : public juce::Component
 public:
     explicit OverviewPanel(XOmnibusProcessor& proc) : processor(proc) {}
 
-    void refresh() { repaint(); }
+    // Called by the editor when engine state or coupling routes change.
+    // Avoids calling getRoutes() (which copies a vector) inside paint().
+    void refresh()
+    {
+        cachedRoutes = processor.getCouplingMatrix().getRoutes();
+        repaint();
+    }
 
     void paint(juce::Graphics& g) override
     {
@@ -396,11 +402,10 @@ public:
             }
         }
 
-        // Coupling route visualization
-        auto routes = processor.getCouplingMatrix().getRoutes();
-
-        if (!routes.empty())
+        // Coupling route visualization (uses cachedRoutes — no alloc inside paint)
+        if (!cachedRoutes.empty())
         {
+            const auto& routes = cachedRoutes;
             float matY = chainY + pillH * 0.5f + 18.0f;
             float cellW = 88.0f, cellH = 18.0f;
             int numActive = (int)std::count_if(routes.begin(), routes.end(),
@@ -446,7 +451,22 @@ public:
                                juce::Justification::centredLeft, true);
 
                     matY += cellH + 2.0f;
-                    if (matY + cellH > b.getBottom() - 8.0f) break;
+                    if (matY + cellH > b.getBottom() - 20.0f)
+                    {
+                        // Count remaining routes and show overflow indicator
+                        int remaining = 0;
+                        for (const auto& r2 : routes)
+                            if (r2.active && &r2 > &route) ++remaining;
+                        if (remaining > 0)
+                        {
+                            g.setColour(get(textMid).withAlpha(0.35f));
+                            g.setFont(juce::Font(8.5f));
+                            g.drawText("+ " + juce::String(remaining) + " more route" + (remaining > 1 ? "s" : ""),
+                                       b.withY(matY).withHeight(14.0f).toNearestInt(),
+                                       juce::Justification::centred);
+                        }
+                        break;
+                    }
                 }
             }
             else
@@ -462,6 +482,8 @@ public:
 
 private:
     XOmnibusProcessor& processor;
+    // Cached coupling routes — updated in refresh(), never in paint()
+    std::vector<MegaCouplingMatrix::CouplingRoute> cachedRoutes;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OverviewPanel)
 };
 
@@ -486,9 +508,10 @@ public:
         juce::String newId = newHasEngine ? eng->getEngineId() : juce::String{};
 
         // Only repaint when state actually changed — avoids idle repaint overhead.
-        if (newHasEngine == hasEngine && newId == engineId)
+        if (!isLoading && newHasEngine == hasEngine && newId == engineId)
             return;
 
+        isLoading = false; // engine arrived — clear loading state
         hasEngine = newHasEngine;
         engineId  = newId;
         accent    = hasEngine ? eng->getAccentColour()
@@ -511,7 +534,13 @@ public:
         g.setColour(isSelected ? accent : (hovered ? accent.withAlpha(0.4f) : get(borderGray)));
         g.drawRoundedRectangle(b, 8.0f, isSelected ? 2.5f : 1.0f);
 
-        if (hasEngine)
+        if (isLoading)
+        {
+            g.setColour(get(xoGold).withAlpha(0.5f));
+            g.setFont(juce::Font(9.0f));
+            g.drawText("LOADING...", b.toNearestInt(), juce::Justification::centred);
+        }
+        else if (hasEngine)
         {
             // Accent dot
             g.setColour(accent);
@@ -587,10 +616,13 @@ private:
                 };
                 if (result >= 1 && result <= (int)std::size(ids))
                 {
+                    isLoading = true;
+                    repaint(); // show "LOADING..." immediately
                     processor.loadEngine(slot, ids[result - 1]);
-                    juce::Timer::callAfterDelay(120, [this]
+                    // Refresh is driven by onEngineChanged (event-driven, via callAsync).
+                    // Navigate to detail panel on the next message loop tick.
+                    juce::Timer::callAfterDelay(0, [this]
                     {
-                        refresh();
                         if (onSelect) onSelect(slot);
                     });
                 }
@@ -603,6 +635,7 @@ private:
     juce::Colour accent;
     bool hasEngine  = false;
     bool isSelected = false;
+    bool isLoading  = false; // true between loadEngine() call and onEngineChanged callback
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CompactEngineTile)
 };
@@ -837,9 +870,9 @@ public:
         g.setColour(get(borderGray));
         g.drawRoundedRectangle(b.reduced(0.5f), 6.0f, 1.0f);
 
-        // Subtle dividers between the three sections
+        // Subtle dividers between the three sections (drawn only after first resized())
         g.setColour(get(borderGray).withAlpha(0.5f));
-        if (divX[0] > 0)
+        if (divX[0] > 0 && divX[1] > 0)
         {
             g.drawLine((float)divX[0], 8.0f, (float)divX[0], (float)getHeight() - 8, 1.0f);
             g.drawLine((float)divX[1], 8.0f, (float)divX[1], (float)getHeight() - 8, 1.0f);
@@ -1016,10 +1049,9 @@ public:
         selectRow(row);
     }
 
-    void listBoxItemClicked(int row, const juce::MouseEvent& e) override
+    void listBoxItemClicked(int row, const juce::MouseEvent&) override
     {
-        if (e.getNumberOfClicks() >= 1)
-            listBox.selectRow(row);
+        listBox.selectRow(row);
     }
 
     void selectedRowsChanged(int) override
