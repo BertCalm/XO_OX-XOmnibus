@@ -294,8 +294,13 @@ public:
             float readPosF = static_cast<float> (writePos) - modulatedDelay;
             if (readPosF < 0.0f) readPosF += static_cast<float> (bufferSize);
 
+            // Offset R by 5 samples (≈0.1ms Haas spread) — below fusion threshold
+            // so it sounds wider rather than as a distinct echo.
+            float readPosFR = readPosF - 5.0f;
+            if (readPosFR < 0.0f) readPosFR += static_cast<float> (bufferSize);
+
             float delayedL = cubicInterp (bufferL.data(), bufferSize, readPosF);
-            float delayedR = cubicInterp (bufferR.data(), bufferSize, readPosF);
+            float delayedR = cubicInterp (bufferR.data(), bufferSize, readPosFR);
 
             // Feedback path: bandpass filter + tanh saturation
             float fbL = fbFilterL.processSample (delayedL);
@@ -585,6 +590,8 @@ public:
     void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
                       int numSamples) override
     {
+        if (numSamples <= 0) return;
+
         // --- ParamSnapshot: read all parameters once per block ---
         const int oscWaveIdx   = (pOscWave != nullptr) ? static_cast<int> (pOscWave->load()) : 2;
         const int oscOctaveIdx = (pOscOctave != nullptr) ? static_cast<int> (pOscOctave->load()) : 2;

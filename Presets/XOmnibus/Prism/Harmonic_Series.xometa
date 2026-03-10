@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Harmonic Series",
+  "mood": "Prism",
+  "engines": [
+    "Morph"
+  ],
+  "description": "Morph sweeps through the harmonic series \u2014 tuned, purposeful, spectral.",
+  "tags": [
+    "morph",
+    "harmonic",
+    "series",
+    "tonal",
+    "prism"
+  ],
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.5,
+    "movement": 0.35,
+    "density": 0.5,
+    "space": 0.65,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Morph": {
+      "morph_morph": 0.3,
+      "morph_bloom": 0.25,
+      "morph_decay": 0.7,
+      "morph_detune": 0.15,
+      "morph_drift": 0.08,
+      "morph_filterCutoff": 5500.0,
+      "morph_filterReso": 0.35,
+      "morph_sustain": 0.6,
+      "morph_release": 0.9,
+      "morph_sub": 0.2,
+      "morph_level": 0.68,
+      "morph_polyphony": 4
+    }
+  }
+}

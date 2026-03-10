@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Drift",
+        "type": "Rhythm->Blend",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null,
+  "name": "Rhythm Shimmer",
+  "mood": "Entangled",
+  "engines": [
+    "Drift",
+    "Onset"
+  ],
+  "description": "Onset rhythm drives Drift shimmer amount \u2014 beats create harmonic sparkle.",
+  "tags": [
+    "drift",
+    "onset",
+    "rhythm",
+    "shimmer",
+    "coupling"
+  ],
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.4,
+    "movement": 0.7,
+    "density": 0.55,
+    "space": 0.8,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Drift": {
+      "drift_oscA_mode": 2,
+      "drift_oscA_level": 0.45,
+      "drift_oscA_detune": 0.4,
+      "drift_oscB_mode": 0,
+      "drift_oscB_level": 0.4,
+      "drift_oscB_detune": 0.4,
+      "drift_filterCutoff": 6000.0,
+      "drift_filterReso": 0.1,
+      "drift_shimmerAmount": 0.65,
+      "drift_attack": 1.5,
+      "drift_decay": 5.0,
+      "drift_sustain": 0.55,
+      "drift_release": 4.0,
+      "drift_driftDepth": 0.35,
+      "drift_driftRate": 0.04,
+      "drift_level": 0.62,
+      "drift_polyphony": 4
+    },
+    "Onset": {
+      "perc_v1_blend": 0.15,
+      "perc_v1_decay": 0.35,
+      "perc_v1_level": 0.6,
+      "perc_v2_blend": 0.3,
+      "perc_v2_decay": 0.15,
+      "perc_v2_level": 0.55,
+      "perc_macro_punch": 0.4,
+      "perc_macro_space": 0.55
+    }
+  }
+}

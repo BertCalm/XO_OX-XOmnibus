@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Void Shimmer",
+  "mood": "Aether",
+  "engines": [
+    "Drift"
+  ],
+  "description": "Pure shimmer in the void \u2014 no grounding, only overtones adrift.",
+  "tags": [
+    "drift",
+    "shimmer",
+    "void",
+    "overtone",
+    "aether"
+  ],
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.2,
+    "movement": 0.4,
+    "density": 0.3,
+    "space": 0.95,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Drift": {
+      "drift_oscA_mode": 2,
+      "drift_oscA_level": 0.3,
+      "drift_oscA_detune": 0.5,
+      "drift_oscB_mode": 2,
+      "drift_oscB_level": 0.25,
+      "drift_oscB_tune": 7.0,
+      "drift_oscB_detune": 0.45,
+      "drift_subLevel": 0.0,
+      "drift_noiseLevel": 0.02,
+      "drift_hazeAmount": 0.2,
+      "drift_filterCutoff": 8000.0,
+      "drift_filterReso": 0.08,
+      "drift_filterSlope": 0,
+      "drift_shimmerAmount": 0.85,
+      "drift_shimmerTone": 0.8,
+      "drift_attack": 5.0,
+      "drift_decay": 10.0,
+      "drift_sustain": 0.5,
+      "drift_release": 8.0,
+      "drift_driftDepth": 0.35,
+      "drift_driftRate": 0.02,
+      "drift_lfoRate": 0.03,
+      "drift_lfoDepth": 0.03,
+      "drift_lfoDest": 0,
+      "drift_level": 0.55,
+      "drift_voiceMode": 0,
+      "drift_polyphony": 4
+    }
+  }
+}

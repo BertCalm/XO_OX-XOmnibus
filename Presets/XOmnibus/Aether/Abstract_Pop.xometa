@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Abstract Pop",
+  "mood": "Aether",
+  "engines": [
+    "Snap"
+  ],
+  "description": "Detuned abstract snap \u2014 no sonic reference point, pure transient concept.",
+  "tags": [
+    "snap",
+    "abstract",
+    "detuned",
+    "concept",
+    "aether"
+  ],
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.3,
+    "movement": 0.4,
+    "density": 0.3,
+    "space": 0.85,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Snap": {
+      "snap_oscMode": 1,
+      "snap_oscTune": 7.0,
+      "snap_oscShape": 0.7,
+      "snap_filterCutoff": 6000.0,
+      "snap_filterReso": 0.35,
+      "snap_filterEnvAmt": 0.6,
+      "snap_attack": 0.0,
+      "snap_decay": 0.08,
+      "snap_sustain": 0.0,
+      "snap_release": 0.1,
+      "snap_snap": 0.5,
+      "snap_level": 0.45,
+      "snap_detune": 0.15
+    }
+  }
+}

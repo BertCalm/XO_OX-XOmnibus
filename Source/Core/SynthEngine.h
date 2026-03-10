@@ -96,6 +96,12 @@ public:
 
     // Return the maximum polyphony for this engine.
     virtual int getMaxVoices() const = 0;
+
+    // Return the number of currently active (sounding) voices.
+    // Default returns 0; engines with polyphony override this.
+    // Safe to call from the message thread — implementations must use an atomic
+    // or just return a cached counter updated at the end of each renderBlock().
+    virtual int getActiveVoiceCount() const { return 0; }
 };
 
 } // namespace xomnibus

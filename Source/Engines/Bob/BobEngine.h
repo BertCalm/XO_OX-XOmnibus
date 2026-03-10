@@ -1070,6 +1070,8 @@ public:
     void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
                       int numSamples) override
     {
+        if (numSamples <= 0) return;
+
         // --- ParamSnapshot ---
         const int oscA_wave        = (pOscA_wave != nullptr) ? static_cast<int> (pOscA_wave->load()) : 0;
         const float oscA_shape     = (pOscA_shape != nullptr) ? pOscA_shape->load() : 0.5f;

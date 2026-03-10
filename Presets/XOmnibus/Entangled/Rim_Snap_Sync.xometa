@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Snap",
+        "type": "Amp->Pitch",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null,
+  "name": "Rim Snap Sync",
+  "mood": "Entangled",
+  "engines": [
+    "Onset",
+    "Snap"
+  ],
+  "description": "ONSET rim triggers SNAP's sharp attack \u2014 stacked transients, double impact.",
+  "tags": [
+    "onset",
+    "snap",
+    "rim",
+    "transient",
+    "stack",
+    "coupling"
+  ],
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.35,
+    "movement": 0.7,
+    "density": 0.5,
+    "space": 0.45,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v5_blend": 0.4,
+      "perc_v5_algoMode": 0,
+      "perc_v5_decay": 0.08,
+      "perc_v5_tone": 0.7,
+      "perc_v5_snap": 0.85,
+      "perc_v5_level": 0.65,
+      "perc_macro_punch": 0.7,
+      "perc_macro_machine": 0.45
+    },
+    "Snap": {
+      "snap_oscMode": 2,
+      "snap_oscTune": 0.0,
+      "snap_oscShape": 0.65,
+      "snap_filterCutoff": 9000.0,
+      "snap_filterReso": 0.3,
+      "snap_filterEnvAmt": 0.6,
+      "snap_attack": 0.0,
+      "snap_decay": 0.05,
+      "snap_sustain": 0.0,
+      "snap_release": 0.06,
+      "snap_snap": 0.8,
+      "snap_level": 0.6
+    }
+  }
+}

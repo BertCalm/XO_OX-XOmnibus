@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Morph",
+        "type": "Rhythm->Blend",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null,
+  "name": "Snare Morph Trigger",
+  "mood": "Entangled",
+  "engines": [
+    "Onset",
+    "Morph"
+  ],
+  "description": "Snare from ONSET drives MORPH's morph parameter \u2014 rhythm shapes synthesis.",
+  "tags": [
+    "onset",
+    "morph",
+    "snare",
+    "morph",
+    "coupling",
+    "rhythm"
+  ],
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.45,
+    "movement": 0.7,
+    "density": 0.55,
+    "space": 0.6,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v1_blend": 0.2,
+      "perc_v1_decay": 0.6,
+      "perc_v1_level": 0.65,
+      "perc_v2_blend": 0.3,
+      "perc_v2_algoMode": 0,
+      "perc_v2_decay": 0.25,
+      "perc_v2_tone": 0.6,
+      "perc_v2_snap": 0.7,
+      "perc_v2_level": 0.7,
+      "perc_macro_punch": 0.5,
+      "perc_macro_mutate": 0.25
+    },
+    "Morph": {
+      "morph_morph": 0.4,
+      "morph_bloom": 0.5,
+      "morph_decay": 0.7,
+      "morph_filterCutoff": 4500.0,
+      "morph_filterReso": 0.2,
+      "morph_drift": 0.2,
+      "morph_level": 0.65,
+      "morph_polyphony": 4
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Phantom Tick",
+  "mood": "Aether",
+  "engines": [
+    "Snap"
+  ],
+  "description": "Barely audible snap \u2014 a ghost in the machine ticking in void.",
+  "tags": [
+    "snap",
+    "ghost",
+    "quiet",
+    "aether",
+    "minimal"
+  ],
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.2,
+    "movement": 0.25,
+    "density": 0.2,
+    "space": 0.9,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Snap": {
+      "snap_oscMode": 0,
+      "snap_oscTune": 0.0,
+      "snap_oscShape": 0.3,
+      "snap_filterCutoff": 8000.0,
+      "snap_filterReso": 0.15,
+      "snap_filterEnvAmt": 0.5,
+      "snap_attack": 0.0,
+      "snap_decay": 0.06,
+      "snap_sustain": 0.0,
+      "snap_release": 0.08,
+      "snap_snap": 0.3,
+      "snap_level": 0.4,
+      "snap_detune": 0.0
+    }
+  }
+}

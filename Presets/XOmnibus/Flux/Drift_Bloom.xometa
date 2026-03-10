@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Drift Bloom",
+  "mood": "Flux",
+  "engines": [
+    "Morph"
+  ],
+  "description": "Drift modulation on maximum \u2014 each note drifts into its own version of the patch.",
+  "tags": [
+    "morph",
+    "drift",
+    "bloom",
+    "evolve",
+    "organic"
+  ],
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.6,
+    "movement": 0.75,
+    "density": 0.5,
+    "space": 0.72,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Morph": {
+      "morph_morph": 0.5,
+      "morph_bloom": 0.6,
+      "morph_decay": 0.9,
+      "morph_detune": 0.45,
+      "morph_drift": 0.6,
+      "morph_filterCutoff": 4000.0,
+      "morph_filterReso": 0.18,
+      "morph_sustain": 0.5,
+      "morph_release": 2.0,
+      "morph_sub": 0.15,
+      "morph_level": 0.62,
+      "morph_polyphony": 4
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Muted Click",
+  "mood": "Atmosphere",
+  "engines": [
+    "Snap"
+  ],
+  "description": "Cloth-muted snap \u2014 intimate, close-mic'd, present but gentle.",
+  "tags": [
+    "snap",
+    "muted",
+    "intimate",
+    "close",
+    "atmosphere"
+  ],
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.7,
+    "movement": 0.25,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Snap": {
+      "snap_oscMode": 0,
+      "snap_oscTune": -3.0,
+      "snap_oscShape": 0.25,
+      "snap_filterCutoff": 3500.0,
+      "snap_filterReso": 0.1,
+      "snap_filterEnvAmt": 0.25,
+      "snap_attack": 0.002,
+      "snap_decay": 0.08,
+      "snap_sustain": 0.0,
+      "snap_release": 0.1,
+      "snap_snap": 0.15,
+      "snap_level": 0.6,
+      "snap_detune": 0.02
+    }
+  }
+}

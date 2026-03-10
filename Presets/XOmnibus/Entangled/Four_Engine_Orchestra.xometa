@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Bob",
+        "type": "Amp->Filter",
+        "amount": 0.55
+      },
+      {
+        "engineA": "Bob",
+        "engineB": "Drift",
+        "type": "Amp->Filter",
+        "amount": 0.4
+      },
+      {
+        "engineA": "Onset",
+        "engineB": "Dub",
+        "type": "Rhythm->Blend",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null,
+  "name": "Four Engine Orchestra",
+  "mood": "Entangled",
+  "engines": [
+    "Onset",
+    "Bob",
+    "Drift",
+    "Dub"
+  ],
+  "description": "All four engines locked together \u2014 percussive drives melodic drives harmonic drives space.",
+  "tags": [
+    "onset",
+    "bob",
+    "drift",
+    "dub",
+    "orchestra",
+    "four-engine",
+    "epic"
+  ],
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.6,
+    "movement": 0.7,
+    "density": 0.8,
+    "space": 0.75,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v1_blend": 0.1,
+      "perc_v1_decay": 0.7,
+      "perc_v1_level": 0.7,
+      "perc_v2_blend": 0.25,
+      "perc_v2_decay": 0.2,
+      "perc_v2_level": 0.65,
+      "perc_macro_punch": 0.55
+    },
+    "Bob": {
+      "bob_oscA_wave": 0,
+      "bob_oscA_drift": 0.1,
+      "bob_fltCutoff": 2000.0,
+      "bob_fltChar": 0.6,
+      "bob_ampAttack": 0.5,
+      "bob_ampSustain": 0.65,
+      "bob_bobMode": 0.35,
+      "bob_level": 0.65,
+      "bob_polyphony": 4
+    },
+    "Drift": {
+      "drift_oscA_mode": 0,
+      "drift_oscA_level": 0.5,
+      "drift_filterCutoff": 5500.0,
+      "drift_shimmerAmount": 0.45,
+      "drift_attack": 1.5,
+      "drift_sustain": 0.5,
+      "drift_driftDepth": 0.4,
+      "drift_level": 0.55,
+      "drift_polyphony": 4
+    },
+    "Dub": {
+      "dub_oscWave": 2,
+      "dub_oscOctave": -1,
+      "dub_subLevel": 0.55,
+      "dub_filterCutoff": 800.0,
+      "dub_filterEnvAmt": 0.35,
+      "dub_attack": 0.01,
+      "dub_sustain": 0.6,
+      "dub_sendLevel": 0.5,
+      "dub_delayTime": 0.375,
+      "dub_delayMix": 0.22,
+      "dub_level": 0.65,
+      "dub_voiceMode": 1
+    }
+  }
+}

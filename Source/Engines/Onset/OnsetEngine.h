@@ -632,13 +632,13 @@ private:
 class OnsetDelay
 {
 public:
-    static constexpr int kMaxDelaySamples = 88200; // 2 seconds at 44.1k
-
     void prepare (double sampleRate) noexcept
     {
         sr = static_cast<float> (sampleRate);
-        std::memset (bufL, 0, sizeof (bufL));
-        std::memset (bufR, 0, sizeof (bufR));
+        // Size for 2 seconds at any sample rate — fixes 96kHz OOB and 704KB stack use.
+        const size_t size = static_cast<size_t> (sampleRate * 2.0) + 1;
+        bufL.assign (size, 0.0f);
+        bufR.assign (size, 0.0f);
         writePos = 0;
         fbFilterL.setMode (CytomicSVF::Mode::LowPass);
         fbFilterR.setMode (CytomicSVF::Mode::LowPass);
@@ -648,23 +648,24 @@ public:
 
     void process (float& left, float& right, float timeSec, float feedback, float mix) noexcept
     {
-        if (mix < 0.001f) return;
+        if (mix < 0.001f || bufL.empty()) return;
 
-        int delaySamp = std::max (1, std::min (static_cast<int> (timeSec * sr), kMaxDelaySamples - 1));
+        const int maxDelay = static_cast<int> (bufL.size());
+        int delaySamp = std::max (1, std::min (static_cast<int> (timeSec * sr), maxDelay - 1));
         int readPos = writePos - delaySamp;
-        if (readPos < 0) readPos += kMaxDelaySamples;
+        if (readPos < 0) readPos += maxDelay;
 
-        float delL = bufL[readPos];
-        float delR = bufR[readPos];
+        float delL = bufL[static_cast<size_t> (readPos)];
+        float delR = bufR[static_cast<size_t> (readPos)];
 
         float fbL = fbFilterL.processSample (delL) * feedback;
         float fbR = fbFilterR.processSample (delR) * feedback;
         fbL = flushDenormal (fbL);
         fbR = flushDenormal (fbR);
 
-        bufL[writePos] = left + fbL;
-        bufR[writePos] = right + fbR;
-        writePos = (writePos + 1) % kMaxDelaySamples;
+        bufL[static_cast<size_t> (writePos)] = left + fbL;
+        bufR[static_cast<size_t> (writePos)] = right + fbR;
+        writePos = (writePos + 1) % maxDelay;
 
         left  += delL * mix;
         right += delR * mix;
@@ -672,16 +673,15 @@ public:
 
     void reset() noexcept
     {
-        std::memset (bufL, 0, sizeof (bufL));
-        std::memset (bufR, 0, sizeof (bufR));
+        std::fill (bufL.begin(), bufL.end(), 0.0f);
+        std::fill (bufR.begin(), bufR.end(), 0.0f);
         writePos = 0;
         fbFilterL.reset(); fbFilterR.reset();
     }
 
 private:
     float sr = 44100.0f;
-    float bufL[kMaxDelaySamples] = {};
-    float bufR[kMaxDelaySamples] = {};
+    std::vector<float> bufL, bufR;
     int writePos = 0;
     CytomicSVF fbFilterL, fbFilterR;
 };
@@ -1031,6 +1031,8 @@ public:
     void renderBlock (juce::AudioBuffer<float>& buffer,
                       juce::MidiBuffer& midi, int numSamples) override
     {
+        if (numSamples <= 0) return;
+
         // 1. Snapshot parameters
         float vBlend[kNumVoices], vPitch[kNumVoices], vDecay[kNumVoices];
         float vTone[kNumVoices], vSnap[kNumVoices], vBody[kNumVoices];

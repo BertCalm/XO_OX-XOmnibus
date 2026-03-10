@@ -1827,6 +1827,442 @@ FX_PRESETS = [
 ]
 
 
+# =============================================================================
+# WORLD PERCUSSION (12) — Culturally-specific acoustic drum character
+# =============================================================================
+
+WORLD_PRESETS = [
+    make_preset(
+        "Taiko Strike", "Foundation",
+        "Japanese taiko drum. Deep resonant body, sharp attack, powerful decay. Pure circuit warmth.",
+        ["taiko", "japanese", "acoustic", "deep", "powerful"],
+        make_params(
+            voice_overrides={
+                1: {"blend": 0.0, "decay": 0.7, "tone": 0.35, "snap": 0.55, "body": 0.85, "character": 0.05},
+                2: {"blend": 0.05, "decay": 0.45, "tone": 0.45, "snap": 0.5, "body": 0.7},
+                3: {"blend": 0.1, "decay": 0.08, "tone": 0.55},
+                4: {"blend": 0.1, "decay": 0.5, "tone": 0.5},
+                5: {"blend": 0.05, "decay": 0.3, "snap": 0.45, "body": 0.55},
+                6: {"blend": 0.0, "decay": 0.65, "body": 0.8, "pitch": -2},
+                7: {"blend": 0.05, "decay": 0.35, "snap": 0.4},
+                8: {"blend": 0.1, "decay": 0.4, "body": 0.6},
+            },
+            global_overrides={"perc_char_warmth": 0.6, "perc_fx_reverb_mix": 0.2, "perc_fx_reverb_size": 0.45}
+        ),
+        dna={"brightness": 0.3, "warmth": 0.7, "movement": 0.1, "density": 0.6, "space": 0.35, "aggression": 0.55}
+    ),
+
+    make_preset(
+        "Djembe Circuit", "Foundation",
+        "West African djembe through circuit models. Bass, tone, slap voices — organic hand drum character.",
+        ["djembe", "african", "hand-drum", "organic", "bass-tone-slap"],
+        make_params(
+            voice_overrides={
+                1: {"blend": 0.0, "decay": 0.4, "tone": 0.4, "snap": 0.35, "body": 0.7},    # bass
+                2: {"blend": 0.05, "decay": 0.2, "tone": 0.6, "snap": 0.5, "character": 0.1}, # tone
+                3: {"blend": 0.1, "decay": 0.05, "tone": 0.7, "snap": 0.6},                   # slap
+                4: {"blend": 0.1, "decay": 0.25, "tone": 0.65, "snap": 0.55},
+                5: {"blend": 0.05, "decay": 0.15, "snap": 0.5},
+                6: {"blend": 0.0, "decay": 0.35, "body": 0.65, "pitch": 3},
+                7: {"blend": 0.05, "decay": 0.15, "snap": 0.45},
+                8: {"blend": 0.1, "decay": 0.2},
+            },
+            global_overrides={"perc_char_warmth": 0.6, "perc_masterTone": 0.5}
+        ),
+        dna={"brightness": 0.45, "warmth": 0.65, "movement": 0.35, "density": 0.55, "space": 0.1, "aggression": 0.35}
+    ),
+
+    make_preset(
+        "Batucada Rio", "Foundation",
+        "Brazilian samba percussion. Surdo bass, caixa snare, repinique hits — Rio carnival energy.",
+        ["batucada", "samba", "brazilian", "carnival", "percussion"],
+        make_params(
+            voice_overrides={
+                1: {"blend": 0.0, "decay": 0.6, "tone": 0.4, "snap": 0.4, "body": 0.75},   # surdo
+                2: {"blend": 0.05, "decay": 0.15, "tone": 0.65, "snap": 0.65},               # caixa
+                3: {"blend": 0.0, "decay": 0.03, "tone": 0.7},
+                4: {"blend": 0.0, "decay": 0.25, "tone": 0.65},
+                5: {"blend": 0.05, "decay": 0.12, "snap": 0.6},                               # repinique
+                6: {"blend": 0.0, "decay": 0.45, "body": 0.65, "pitch": 4},
+                7: {"blend": 0.05, "decay": 0.15, "snap": 0.55},
+                8: {"blend": 0.1, "decay": 0.2},
+            },
+            global_overrides={"perc_drive": 0.1, "perc_masterTone": 0.55}
+        ),
+        dna={"brightness": 0.55, "warmth": 0.5, "movement": 0.5, "density": 0.65, "space": 0.1, "aggression": 0.5}
+    ),
+
+    make_preset(
+        "Tabla Resonance", "Prism",
+        "North Indian tabla through Modal resonators. Bayan bass, dayan treble — tuned membrane character.",
+        ["tabla", "indian", "classical", "modal", "tuned"],
+        make_params(
+            voice_overrides={
+                1: {"blend": 0.6, "algoMode": 1, "decay": 0.45, "tone": 0.35, "snap": 0.4, "body": 0.65, "character": 0.35},  # bayan
+                2: {"blend": 0.7, "algoMode": 1, "decay": 0.3, "tone": 0.7, "snap": 0.5, "character": 0.4, "pitch": 5},      # dayan
+                3: {"blend": 0.75, "algoMode": 1, "decay": 0.06, "tone": 0.75, "character": 0.35},
+                4: {"blend": 0.75, "algoMode": 1, "decay": 0.35, "tone": 0.7, "pitch": 3},
+                5: {"blend": 0.65, "algoMode": 1, "decay": 0.2, "snap": 0.5, "character": 0.3},
+                6: {"blend": 0.6, "algoMode": 1, "decay": 0.4, "body": 0.6, "character": 0.3},
+                7: {"blend": 0.7, "algoMode": 1, "decay": 0.25, "character": 0.4, "pitch": 7},
+                8: {"blend": 0.75, "algoMode": 1, "decay": 0.3, "character": 0.45},
+            },
+            global_overrides={"perc_fx_reverb_mix": 0.15, "perc_fx_reverb_size": 0.4}
+        ),
+        dna={"brightness": 0.6, "warmth": 0.55, "movement": 0.3, "density": 0.55, "space": 0.3, "aggression": 0.25}
+    ),
+
+    make_preset(
+        "Mbira Kalimba", "Prism",
+        "African thumb piano through KS synthesis. Plucked tines with resonant gourd overtones.",
+        ["mbira", "kalimba", "thumb-piano", "african", "plucked"],
+        make_params(
+            voice_overrides={
+                1: {"blend": 0.85, "algoMode": 2, "decay": 0.6, "tone": 0.55, "snap": 0.45, "body": 0.5, "character": 0.3, "pitch": -7},
+                2: {"blend": 0.9, "algoMode": 2, "decay": 0.5, "tone": 0.6, "snap": 0.5, "character": 0.3, "pitch": -3},
+                3: {"blend": 0.9, "algoMode": 2, "decay": 0.4, "tone": 0.65, "snap": 0.4, "character": 0.25},
+                4: {"blend": 0.9, "algoMode": 2, "decay": 0.55, "tone": 0.6, "pitch": 2, "character": 0.3},
+                5: {"blend": 0.85, "algoMode": 2, "decay": 0.45, "snap": 0.45, "character": 0.25, "pitch": 5},
+                6: {"blend": 0.8, "algoMode": 2, "decay": 0.5, "body": 0.5, "character": 0.2},
+                7: {"blend": 0.85, "algoMode": 2, "decay": 0.4, "character": 0.35, "pitch": 9},
+                8: {"blend": 0.9, "algoMode": 2, "decay": 0.5, "character": 0.4, "pitch": 12},
+            },
+            global_overrides={"perc_fx_reverb_mix": 0.25, "perc_fx_reverb_size": 0.45}
+        ),
+        dna={"brightness": 0.65, "warmth": 0.55, "movement": 0.2, "density": 0.4, "space": 0.45, "aggression": 0.1}
+    ),
+
+    make_preset(
+        "Cajon Box", "Foundation",
+        "Spanish cajon — bass thump, slap crack, snare wire rattle. Compact wooden box percussion.",
+        ["cajon", "spanish", "flamenco", "wooden", "compact"],
+        make_params(
+            voice_overrides={
+                1: {"blend": 0.0, "decay": 0.4, "tone": 0.45, "snap": 0.45, "body": 0.65},   # bass
+                2: {"blend": 0.05, "decay": 0.25, "tone": 0.6, "snap": 0.65, "character": 0.1}, # slap
+                3: {"blend": 0.1, "decay": 0.04, "tone": 0.65, "snap": 0.5},                    # wire
+                4: {"blend": 0.1, "decay": 0.3, "tone": 0.6, "snap": 0.5},
+                5: {"blend": 0.05, "decay": 0.15, "snap": 0.55},
+                6: {"blend": 0.0, "decay": 0.35, "body": 0.6},
+                7: {"blend": 0.05, "decay": 0.18},
+                8: {"blend": 0.1, "decay": 0.25},
+            },
+            global_overrides={"perc_char_warmth": 0.55}
+        ),
+        dna={"brightness": 0.5, "warmth": 0.6, "movement": 0.3, "density": 0.5, "space": 0.1, "aggression": 0.35}
+    ),
+
+    make_preset(
+        "Steel Pan Digital", "Prism",
+        "Caribbean steel pan through FM and Modal. Tuned metal resonance — each voice a different pitch.",
+        ["steel-pan", "caribbean", "tuned", "FM", "modal"],
+        make_params(
+            voice_overrides={
+                1: {"blend": 0.7, "algoMode": 1, "decay": 0.65, "tone": 0.5, "snap": 0.45, "body": 0.5, "character": 0.4, "pitch": -7},
+                2: {"blend": 0.75, "algoMode": 1, "decay": 0.55, "tone": 0.6, "character": 0.45, "pitch": -4},
+                3: {"blend": 0.8, "algoMode": 1, "decay": 0.45, "tone": 0.65, "character": 0.4},
+                4: {"blend": 0.8, "algoMode": 1, "decay": 0.6, "tone": 0.6, "character": 0.4, "pitch": 3},
+                5: {"blend": 0.75, "algoMode": 1, "decay": 0.5, "snap": 0.45, "character": 0.35, "pitch": 5},
+                6: {"blend": 0.7, "algoMode": 1, "decay": 0.55, "body": 0.5, "character": 0.35, "pitch": 7},
+                7: {"blend": 0.75, "algoMode": 1, "decay": 0.5, "character": 0.4, "pitch": 10},
+                8: {"blend": 0.8, "algoMode": 1, "decay": 0.55, "character": 0.45, "pitch": 12},
+            },
+            global_overrides={"perc_fx_reverb_mix": 0.3, "perc_fx_reverb_size": 0.5}
+        ),
+        dna={"brightness": 0.7, "warmth": 0.45, "movement": 0.2, "density": 0.45, "space": 0.5, "aggression": 0.15}
+    ),
+
+    make_preset(
+        "Konnakol Micro", "Prism",
+        "South Indian konnakol-inspired micro-percussion. Fast syllabic hits with modal ring.",
+        ["konnakol", "carnatic", "micro", "fast", "syllabic"],
+        make_params(
+            voice_overrides={
+                1: {"blend": 0.5, "algoMode": 1, "decay": 0.2, "tone": 0.55, "snap": 0.55, "body": 0.45, "character": 0.35},
+                2: {"blend": 0.55, "algoMode": 1, "decay": 0.15, "tone": 0.65, "snap": 0.6, "character": 0.4},
+                3: {"blend": 0.6, "algoMode": 1, "decay": 0.04, "tone": 0.7, "snap": 0.5, "character": 0.35},
+                4: {"blend": 0.6, "algoMode": 1, "decay": 0.2, "tone": 0.65, "pitch": 4},
+                5: {"blend": 0.5, "algoMode": 1, "decay": 0.12, "snap": 0.55, "character": 0.35},
+                6: {"blend": 0.45, "algoMode": 1, "decay": 0.2, "body": 0.5, "character": 0.3},
+                7: {"blend": 0.55, "algoMode": 1, "decay": 0.15, "character": 0.4, "pitch": 7},
+                8: {"blend": 0.6, "algoMode": 1, "decay": 0.18, "character": 0.45},
+            },
+            global_overrides={"perc_masterTone": 0.6}
+        ),
+        dna={"brightness": 0.65, "warmth": 0.45, "movement": 0.6, "density": 0.65, "space": 0.1, "aggression": 0.3}
+    ),
+
+    make_preset(
+        "Balafon Wood", "Prism",
+        "West African balafon — wooden keys over gourd resonators. KS synthesis with warm decay.",
+        ["balafon", "african", "wooden", "tuned", "marimba"],
+        make_params(
+            voice_overrides={
+                1: {"blend": 0.8, "algoMode": 2, "decay": 0.4, "tone": 0.4, "snap": 0.55, "body": 0.6, "character": 0.25, "pitch": -9},
+                2: {"blend": 0.85, "algoMode": 2, "decay": 0.35, "tone": 0.5, "snap": 0.5, "character": 0.25, "pitch": -5},
+                3: {"blend": 0.85, "algoMode": 2, "decay": 0.3, "tone": 0.55, "snap": 0.45, "character": 0.2},
+                4: {"blend": 0.85, "algoMode": 2, "decay": 0.4, "tone": 0.5, "pitch": 2},
+                5: {"blend": 0.8, "algoMode": 2, "decay": 0.3, "snap": 0.5, "character": 0.2, "pitch": 5},
+                6: {"blend": 0.75, "algoMode": 2, "decay": 0.45, "body": 0.55, "character": 0.2},
+                7: {"blend": 0.8, "algoMode": 2, "decay": 0.35, "character": 0.25, "pitch": 9},
+                8: {"blend": 0.85, "algoMode": 2, "decay": 0.4, "character": 0.3, "pitch": 12},
+            },
+            global_overrides={"perc_char_warmth": 0.6, "perc_fx_reverb_mix": 0.2}
+        ),
+        dna={"brightness": 0.55, "warmth": 0.6, "movement": 0.2, "density": 0.45, "space": 0.35, "aggression": 0.1}
+    ),
+
+    make_preset(
+        "Gamelan Strike", "Prism",
+        "Balinese gamelan — metallic gong and gender tones through Phase Distortion synthesis.",
+        ["gamelan", "balinese", "gong", "metallic", "phase-distortion"],
+        make_params(
+            voice_overrides={
+                1: {"blend": 0.85, "algoMode": 3, "decay": 0.8, "tone": 0.45, "snap": 0.4, "body": 0.55, "character": 0.55, "pitch": -5},
+                2: {"blend": 0.9, "algoMode": 3, "decay": 0.6, "tone": 0.55, "character": 0.6, "pitch": -2},
+                3: {"blend": 0.9, "algoMode": 3, "decay": 0.3, "tone": 0.65, "character": 0.5},
+                4: {"blend": 0.9, "algoMode": 3, "decay": 0.7, "tone": 0.6, "character": 0.55, "pitch": 3},
+                5: {"blend": 0.85, "algoMode": 3, "decay": 0.5, "snap": 0.4, "character": 0.5, "pitch": 5},
+                6: {"blend": 0.8, "algoMode": 3, "decay": 0.65, "body": 0.5, "character": 0.5},
+                7: {"blend": 0.85, "algoMode": 3, "decay": 0.55, "character": 0.6, "pitch": 7},
+                8: {"blend": 0.9, "algoMode": 3, "decay": 0.7, "character": 0.55, "pitch": 10},
+            },
+            global_overrides={"perc_fx_reverb_mix": 0.35, "perc_fx_reverb_size": 0.55}
+        ),
+        dna={"brightness": 0.65, "warmth": 0.4, "movement": 0.25, "density": 0.5, "space": 0.55, "aggression": 0.3}
+    ),
+
+    make_preset(
+        "Nyahbinghi Roots", "Foundation",
+        "Rastafarian nyahbinghi ceremony drums. Funde bass rhythm, repeater lead, akete percussion.",
+        ["nyahbinghi", "rastafarian", "ceremonial", "roots", "dub"],
+        make_params(
+            voice_overrides={
+                1: {"blend": 0.0, "decay": 0.55, "tone": 0.35, "snap": 0.3, "body": 0.75},   # funde bass
+                2: {"blend": 0.05, "decay": 0.3, "tone": 0.5, "snap": 0.4},                   # funde mid
+                3: {"blend": 0.05, "decay": 0.04, "tone": 0.6},
+                4: {"blend": 0.1, "decay": 0.35, "tone": 0.5},
+                5: {"blend": 0.1, "decay": 0.2, "snap": 0.4},                                  # repeater
+                6: {"blend": 0.0, "decay": 0.45, "body": 0.7, "pitch": -3},
+                7: {"blend": 0.05, "decay": 0.2, "snap": 0.35},
+                8: {"blend": 0.1, "decay": 0.3},
+            },
+            global_overrides={"perc_char_warmth": 0.65, "perc_fx_reverb_mix": 0.15}
+        ),
+        dna={"brightness": 0.3, "warmth": 0.7, "movement": 0.25, "density": 0.5, "space": 0.25, "aggression": 0.2}
+    ),
+
+    make_preset(
+        "Darbuka Digital", "Prism",
+        "Middle Eastern darbuka through FM and Modal synthesis. Doum, tek, ka — algorithmic riq.",
+        ["darbuka", "middle-eastern", "riq", "FM", "doum-tek-ka"],
+        make_params(
+            voice_overrides={
+                1: {"blend": 0.6, "algoMode": 0, "decay": 0.4, "tone": 0.4, "snap": 0.45, "body": 0.6, "character": 0.35},  # doum
+                2: {"blend": 0.65, "algoMode": 1, "decay": 0.2, "tone": 0.7, "snap": 0.6, "character": 0.4},                # tek
+                3: {"blend": 0.7, "algoMode": 1, "decay": 0.05, "tone": 0.75, "snap": 0.5, "character": 0.35},              # ka
+                4: {"blend": 0.7, "algoMode": 0, "decay": 0.25, "tone": 0.65, "character": 0.35},
+                5: {"blend": 0.6, "algoMode": 1, "decay": 0.15, "snap": 0.55, "character": 0.35},
+                6: {"blend": 0.55, "algoMode": 0, "decay": 0.35, "body": 0.55, "character": 0.3},
+                7: {"blend": 0.65, "algoMode": 1, "decay": 0.2, "character": 0.4},
+                8: {"blend": 0.7, "algoMode": 0, "decay": 0.25, "character": 0.35},
+            },
+            global_overrides={"perc_fx_reverb_mix": 0.15}
+        ),
+        dna={"brightness": 0.6, "warmth": 0.5, "movement": 0.4, "density": 0.55, "space": 0.2, "aggression": 0.3}
+    ),
+]
+
+# =============================================================================
+# DNA CORNER FILLS (8) — Target underrepresented sonic extremes
+# =============================================================================
+
+DNA_CORNER_PRESETS = [
+    # Max aggression + max warmth (paradox: brutally warm)
+    make_preset(
+        "Angry Velvet", "Flux",
+        "Paradox: maximum aggression with maximum warmth. Brutal but soft. Velvet hammer hits.",
+        ["paradox", "aggressive", "warm", "brutal", "velvet"],
+        make_params(
+            voice_overrides={
+                1: {"blend": 0.05, "decay": 0.4, "snap": 0.7, "body": 0.7, "character": 0.2},
+                2: {"blend": 0.1, "decay": 0.2, "snap": 0.75, "character": 0.2},
+                3: {"blend": 0.1, "decay": 0.03, "tone": 0.55, "snap": 0.6},
+                4: {"blend": 0.1, "decay": 0.25, "tone": 0.5},
+                5: {"blend": 0.1, "decay": 0.15, "snap": 0.65},
+                6: {"blend": 0.05, "decay": 0.35, "body": 0.7},
+                7: {"blend": 0.1, "decay": 0.18, "snap": 0.55},
+                8: {"blend": 0.1, "decay": 0.2},
+            },
+            global_overrides={"perc_drive": 0.4, "perc_char_grit": 0.1, "perc_char_warmth": 0.8,
+                               "perc_fx_lofi_bits": 12.0, "perc_fx_lofi_mix": 0.15}
+        ),
+        dna={"brightness": 0.4, "warmth": 0.85, "movement": 0.2, "density": 0.65, "space": 0.05, "aggression": 0.9}
+    ),
+
+    # Max movement + near-zero density (ghost chaos)
+    make_preset(
+        "Ghost Chaos", "Aether",
+        "Maximum MUTATE with near-silence. Barely-there hits that never repeat. Ghost-level presence.",
+        ["ghost", "chaos", "sparse", "mutate", "barely-there"],
+        make_params(
+            voice_overrides={
+                1: {"blend": 0.5, "decay": 0.3, "snap": 0.15, "body": 0.25},
+                2: {"blend": 0.5, "decay": 0.2, "snap": 0.15},
+                3: {"blend": 0.5, "decay": 0.04, "tone": 0.5},
+                4: {"blend": 0.5, "decay": 0.2},
+                5: {"blend": 0.5, "decay": 0.15, "snap": 0.15},
+                6: {"blend": 0.5, "decay": 0.25, "body": 0.25},
+                7: {"blend": 0.5, "decay": 0.18},
+                8: {"blend": 0.5, "decay": 0.2},
+            },
+            global_overrides={"perc_macro_mutate": 1.0, "perc_level": 0.4,
+                               "perc_fx_reverb_mix": 0.55, "perc_fx_reverb_size": 0.7}
+        ),
+        dna={"brightness": 0.5, "warmth": 0.4, "movement": 1.0, "density": 0.1, "space": 0.7, "aggression": 0.1}
+    ),
+
+    # Max space + max density (overwhelming room)
+    make_preset(
+        "Cathedral Collapse", "Aether",
+        "Enormous reverb + densely layered hits. The whole room resonating. Overwhelming spatial mass.",
+        ["cathedral", "massive", "dense", "reverb", "overwhelming"],
+        make_params(
+            voice_overrides={
+                1: {"blend": 0.2, "decay": 0.6, "snap": 0.5, "body": 0.7, "character": 0.2},
+                2: {"blend": 0.25, "decay": 0.35, "snap": 0.5, "character": 0.2},
+                3: {"blend": 0.3, "decay": 0.06, "tone": 0.6, "character": 0.15},
+                4: {"blend": 0.3, "decay": 0.4, "character": 0.15},
+                5: {"blend": 0.2, "decay": 0.25, "snap": 0.5},
+                6: {"blend": 0.15, "decay": 0.5, "body": 0.65},
+                7: {"blend": 0.25, "decay": 0.3, "character": 0.15},
+                8: {"blend": 0.3, "decay": 0.4, "character": 0.2},
+            },
+            global_overrides={
+                "perc_fx_reverb_mix": 0.75, "perc_fx_reverb_size": 0.9, "perc_fx_reverb_decay": 0.8,
+                "perc_fx_delay_mix": 0.3, "perc_fx_delay_feedback": 0.55, "perc_char_warmth": 0.55,
+            }
+        ),
+        dna={"brightness": 0.4, "warmth": 0.55, "movement": 0.2, "density": 0.9, "space": 0.95, "aggression": 0.35}
+    ),
+
+    # Max brightness + zero aggression (crystalline gentle)
+    make_preset(
+        "Crystal Gentle", "Atmosphere",
+        "Maximum brightness with zero aggression. Pure, crystalline, utterly gentle Modal tones.",
+        ["crystal", "gentle", "bright", "delicate", "pure"],
+        make_params(
+            voice_overrides={
+                1: {"blend": 0.95, "algoMode": 1, "decay": 0.5, "tone": 0.85, "snap": 0.15, "body": 0.2, "character": 0.6},
+                2: {"blend": 0.95, "algoMode": 1, "decay": 0.35, "tone": 0.9, "snap": 0.1, "character": 0.65},
+                3: {"blend": 1.0, "algoMode": 1, "decay": 0.08, "tone": 0.95, "character": 0.6},
+                4: {"blend": 1.0, "algoMode": 1, "decay": 0.4, "tone": 0.9, "character": 0.6},
+                5: {"blend": 0.95, "algoMode": 1, "decay": 0.25, "snap": 0.1, "character": 0.55},
+                6: {"blend": 0.9, "algoMode": 1, "decay": 0.45, "body": 0.25, "character": 0.5},
+                7: {"blend": 0.95, "algoMode": 1, "decay": 0.3, "character": 0.65},
+                8: {"blend": 1.0, "algoMode": 1, "decay": 0.35, "character": 0.7},
+            },
+            global_overrides={
+                "perc_level": 0.6, "perc_fx_reverb_mix": 0.4, "perc_fx_reverb_size": 0.55,
+                "perc_masterTone": 0.75,
+            }
+        ),
+        dna={"brightness": 0.95, "warmth": 0.3, "movement": 0.1, "density": 0.3, "space": 0.55, "aggression": 0.02}
+    ),
+
+    # High warmth + zero density (single warm hit)
+    make_preset(
+        "One Warm Kick", "Foundation",
+        "The simplest kit: one perfect warm kick, everything else silent. Pure bass thud. Full focus.",
+        ["minimal", "one-shot", "kick", "warm", "focused"],
+        make_params(
+            voice_overrides={
+                1: {"blend": 0.0, "decay": 0.65, "tone": 0.3, "snap": 0.4, "body": 0.85},
+                2: {"blend": 0.0, "decay": 0.001, "level": 0.0},
+                3: {"blend": 0.0, "decay": 0.001, "level": 0.0},
+                4: {"blend": 0.0, "decay": 0.001, "level": 0.0},
+                5: {"blend": 0.0, "decay": 0.001, "level": 0.0},
+                6: {"blend": 0.0, "decay": 0.001, "level": 0.0},
+                7: {"blend": 0.0, "decay": 0.001, "level": 0.0},
+                8: {"blend": 0.0, "decay": 0.001, "level": 0.0},
+            },
+            global_overrides={"perc_char_warmth": 0.75, "perc_masterTone": 0.4}
+        ),
+        dna={"brightness": 0.2, "warmth": 0.9, "movement": 0.05, "density": 0.05, "space": 0.05, "aggression": 0.2}
+    ),
+
+    # Max density + min space (wall of sound)
+    make_preset(
+        "Dry Wall", "Foundation",
+        "Zero reverb, zero delay. Every voice tight and dry. Maximum density, minimum space. A wall.",
+        ["dry", "tight", "dense", "no-reverb", "wall"],
+        make_params(
+            voice_overrides={
+                1: {"blend": 0.1, "decay": 0.3, "snap": 0.65, "body": 0.6},
+                2: {"blend": 0.1, "decay": 0.18, "snap": 0.7},
+                3: {"blend": 0.05, "decay": 0.02, "tone": 0.7, "snap": 0.6},
+                4: {"blend": 0.05, "decay": 0.2, "tone": 0.65},
+                5: {"blend": 0.1, "decay": 0.12, "snap": 0.6},
+                6: {"blend": 0.05, "decay": 0.3, "body": 0.6},
+                7: {"blend": 0.1, "decay": 0.15, "snap": 0.55},
+                8: {"blend": 0.1, "decay": 0.18},
+            },
+            global_overrides={
+                "perc_fx_reverb_mix": 0.0, "perc_fx_delay_mix": 0.0, "perc_fx_lofi_mix": 0.0,
+                "perc_drive": 0.2, "perc_masterTone": 0.6,
+            }
+        ),
+        dna={"brightness": 0.55, "warmth": 0.45, "movement": 0.1, "density": 0.95, "space": 0.02, "aggression": 0.55}
+    ),
+
+    # Max brightness + max aggression (industrial metallic)
+    make_preset(
+        "Metallic Fury", "Flux",
+        "Brightest, most aggressive possible kit. Metallic Modal + heavy drive. Industrial percussive violence.",
+        ["metallic", "bright", "aggressive", "industrial", "fury"],
+        make_params(
+            voice_overrides={
+                1: {"blend": 0.4, "algoMode": 1, "decay": 0.3, "tone": 0.85, "snap": 0.75, "body": 0.35, "character": 0.7},
+                2: {"blend": 0.5, "algoMode": 1, "decay": 0.2, "tone": 0.9, "snap": 0.8, "character": 0.75},
+                3: {"blend": 0.6, "algoMode": 1, "decay": 0.03, "tone": 0.95, "character": 0.65},
+                4: {"blend": 0.6, "algoMode": 1, "decay": 0.2, "tone": 0.9, "character": 0.7},
+                5: {"blend": 0.5, "algoMode": 1, "decay": 0.15, "snap": 0.75, "character": 0.65},
+                6: {"blend": 0.4, "algoMode": 1, "decay": 0.25, "tone": 0.85, "character": 0.6},
+                7: {"blend": 0.55, "algoMode": 1, "decay": 0.18, "character": 0.75},
+                8: {"blend": 0.65, "algoMode": 1, "decay": 0.22, "character": 0.8},
+            },
+            global_overrides={"perc_drive": 0.45, "perc_char_grit": 0.45, "perc_masterTone": 0.65}
+        ),
+        dna={"brightness": 0.95, "warmth": 0.15, "movement": 0.2, "density": 0.7, "space": 0.05, "aggression": 0.95}
+    ),
+
+    # Low brightness + low density + high movement (subtle living texture)
+    make_preset(
+        "Living Texture", "Atmosphere",
+        "Warm, dark, sparse — but MUTATE makes it breathe. Barely visible but always alive.",
+        ["texture", "dark", "sparse", "breathing", "subtle"],
+        make_params(
+            voice_overrides={
+                1: {"blend": 0.3, "decay": 0.5, "tone": 0.3, "snap": 0.2, "body": 0.5},
+                2: {"blend": 0.35, "decay": 0.3, "tone": 0.35, "snap": 0.2},
+                3: {"blend": 0.4, "decay": 0.04, "tone": 0.35},
+                4: {"blend": 0.4, "decay": 0.3, "tone": 0.3},
+                5: {"blend": 0.3, "decay": 0.2, "snap": 0.2},
+                6: {"blend": 0.25, "decay": 0.4, "body": 0.45},
+                7: {"blend": 0.35, "decay": 0.25},
+                8: {"blend": 0.4, "decay": 0.3},
+            },
+            global_overrides={
+                "perc_macro_mutate": 0.7, "perc_level": 0.5,
+                "perc_fx_reverb_mix": 0.35, "perc_char_warmth": 0.65,
+                "perc_masterTone": 0.35,
+            }
+        ),
+        dna={"brightness": 0.2, "warmth": 0.65, "movement": 0.8, "density": 0.2, "space": 0.5, "aggression": 0.05}
+    ),
+]
+
+
 ALL_PRESETS = {
     "Hero": HERO_PRESETS,
     "Replica & Extended": REPLICA_PRESETS,
@@ -1835,6 +2271,8 @@ ALL_PRESETS = {
     "Coupling": COUPLING_PRESETS,
     "Atmosphere & Aether": ATMOSPHERE_PRESETS,
     "FX & Performance": FX_PRESETS,
+    "World Percussion": WORLD_PRESETS,
+    "DNA Corner Fills": DNA_CORNER_PRESETS,
 }
 
 

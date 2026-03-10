@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Dub",
+        "type": "Amp->Filter",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null,
+  "name": "Hi Hat Dub Send",
+  "mood": "Entangled",
+  "engines": [
+    "Onset",
+    "Dub"
+  ],
+  "description": "Hi-hats from ONSET control DUB's send amount \u2014 cymbals mix into echo.",
+  "tags": [
+    "onset",
+    "dub",
+    "hihat",
+    "send",
+    "echo",
+    "coupling"
+  ],
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.7,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v3_blend": 0.5,
+      "perc_v3_algoMode": 2,
+      "perc_v3_decay": 0.12,
+      "perc_v3_tone": 0.8,
+      "perc_v3_level": 0.6,
+      "perc_v4_blend": 0.6,
+      "perc_v4_algoMode": 2,
+      "perc_v4_decay": 0.5,
+      "perc_v4_tone": 0.75,
+      "perc_v4_level": 0.55,
+      "perc_macro_space": 0.55
+    },
+    "Dub": {
+      "dub_oscWave": 2,
+      "dub_oscOctave": 0,
+      "dub_filterCutoff": 1500.0,
+      "dub_filterReso": 0.4,
+      "dub_filterEnvAmt": 0.35,
+      "dub_attack": 0.01,
+      "dub_decay": 0.4,
+      "dub_sustain": 0.5,
+      "dub_release": 0.4,
+      "dub_sendLevel": 0.7,
+      "dub_delayTime": 0.375,
+      "dub_delayFeedback": 0.5,
+      "dub_delayMix": 0.3,
+      "dub_reverbSize": 0.55,
+      "dub_reverbMix": 0.22,
+      "dub_level": 0.7,
+      "dub_voiceMode": 1
+    }
+  }
+}

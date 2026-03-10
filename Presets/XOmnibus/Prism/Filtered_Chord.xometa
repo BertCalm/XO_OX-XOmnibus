@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Filtered Chord",
+  "mood": "Prism",
+  "engines": [
+    "Dub"
+  ],
+  "description": "Dub chord stab through a resonant filter \u2014 the harmonic dub tradition.",
+  "tags": [
+    "dub",
+    "chord",
+    "filter",
+    "stab",
+    "prism"
+  ],
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.5,
+    "density": 0.6,
+    "space": 0.6,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Dub": {
+      "dub_oscWave": 1,
+      "dub_oscOctave": 0,
+      "dub_oscTune": 0.0,
+      "dub_oscPwm": 0.6,
+      "dub_subLevel": 0.3,
+      "dub_noiseLevel": 0.0,
+      "dub_drift": 0.06,
+      "dub_filterCutoff": 2000.0,
+      "dub_filterReso": 0.55,
+      "dub_filterMode": 0,
+      "dub_filterEnvAmt": 0.65,
+      "dub_attack": 0.005,
+      "dub_decay": 0.3,
+      "dub_sustain": 0.2,
+      "dub_release": 0.3,
+      "dub_pitchEnvDepth": 0.0,
+      "dub_pitchEnvDecay": 0.01,
+      "dub_lfoRate": 0.8,
+      "dub_lfoDepth": 0.0,
+      "dub_lfoDest": 0,
+      "dub_driveAmount": 1.15,
+      "dub_dryLevel": 0.88,
+      "dub_delayTime": 0.375,
+      "dub_delayFeedback": 0.4,
+      "dub_delayMix": 0.25,
+      "dub_reverbSize": 0.5,
+      "dub_reverbDamp": 0.45,
+      "dub_reverbMix": 0.22,
+      "dub_level": 0.7,
+      "dub_voiceMode": 0,
+      "dub_polyphony": 4
+    }
+  }
+}

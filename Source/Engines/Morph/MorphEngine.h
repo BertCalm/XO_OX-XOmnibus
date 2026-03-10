@@ -275,6 +275,8 @@ public:
     void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
                       int numSamples) override
     {
+        if (numSamples <= 0) return;
+
         // --- ParamSnapshot ---
         const float morphPos   = (pMorph != nullptr) ? pMorph->load() : 0.5f;
         const float attack     = (pBloom != nullptr) ? pBloom->load() : 1.25f;
@@ -290,8 +292,8 @@ public:
         const int maxPoly      = (pPolyphony != nullptr)
             ? (1 << std::min (4, static_cast<int> (pPolyphony->load()))) : 8; // 0→1,1→2,2→4,3→8,4→16
 
-        // Effective morph position with coupling modulation
-        float effectiveMorph = std::max (0.0f, std::min (3.0f, morphPos + morphMod));
+        // Effective morph position with coupling modulation + CC1 modwheel
+        float effectiveMorph = std::max (0.0f, std::min (3.0f, morphPos + morphMod + modWheelMorph));
 
         // --- Process MIDI events ---
         for (const auto metadata : midi)
@@ -300,9 +302,38 @@ public:
             if (msg.isNoteOn())
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), detuneCts, effectiveMorph, cutoff, reso, maxPoly);
             else if (msg.isNoteOff())
-                noteOff (msg.getNoteNumber());
+            {
+                if (!sustainPedalDown)
+                    noteOff (msg.getNoteNumber());
+            }
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
+            {
                 reset();
+                sustainPedalDown = false;
+            }
+            else if (msg.isController())
+            {
+                if (msg.getControllerNumber() == 64)
+                {
+                    bool wasDown = sustainPedalDown;
+                    sustainPedalDown = (msg.getControllerValue() >= 64);
+                    if (wasDown && !sustainPedalDown)
+                    {
+                        // Release all held voices on pedal up
+                        for (auto& v : voices)
+                            if (v.active && !v.releasing)
+                            {
+                                v.releasing = true;
+                                v.envStage = MorphVoice::Release;
+                            }
+                    }
+                }
+                else if (msg.getControllerNumber() == 1)
+                {
+                    // CC1 modwheel → sweep morph position (0→no change, 1→morph+=3)
+                    modWheelMorph = static_cast<float> (msg.getControllerValue()) / 127.0f * 3.0f;
+                }
+            }
         }
 
         // Reset coupling accumulators (consumed this block)
@@ -321,11 +352,14 @@ public:
         }
 
         // --- Render audio ---
+        // Precompute block-constant LFO increment (avoids division per sample)
+        const double lfoPhaseInc = lfoRate / sr;
+        constexpr double twoPi = 6.28318530717958647692;
+
         for (int sample = 0; sample < numSamples; ++sample)
         {
             // Internal LFO for coupling output (0.3 Hz sine)
-            constexpr double twoPi = 6.28318530717958647692;
-            lfoPhase += lfoRate / sr;
+            lfoPhase += lfoPhaseInc;
             if (lfoPhase >= 1.0) lfoPhase -= 1.0;
             lfoOutput = fastSin (static_cast<float> (twoPi * lfoPhase));
 
@@ -402,9 +436,9 @@ public:
                 mixR += out * (1.0f - spread * voice.driftValue);
             }
 
-            // Write to output buffer
-            float outL = mixL * level;
-            float outR = mixR * level;
+            // Write to output buffer — soft clip (tanh) prevents hard clips in dense pads
+            float outL = fastTanh (mixL * level);
+            float outR = fastTanh (mixR * level);
 
             if (buffer.getNumChannels() >= 2)
             {
@@ -722,6 +756,10 @@ private:
     // Coupling accumulators (reset each block)
     float filterCutoffMod = 0.0f;
     float morphMod = 0.0f;
+
+    // MIDI performance state
+    bool sustainPedalDown = false; // CC64
+    float modWheelMorph = 0.0f;   // CC1 [0, 3.0] — sweeps morph position
 
     // Output cache for coupling reads
     std::vector<float> outputCacheL;

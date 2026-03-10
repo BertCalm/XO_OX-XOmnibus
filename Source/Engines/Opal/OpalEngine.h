@@ -189,6 +189,8 @@ public:
                      juce::MidiBuffer& midi,
                      int numSamples) override
     {
+        if (numSamples <= 0) return;
+
         // Guard against rendering before attachParameters() has been called.
         if (p_source == nullptr)
             return;
@@ -266,12 +268,25 @@ public:
             }
             else if (m.isNoteOff())
             {
-                auto* cloud = cloudPool.findNote(m.getNoteNumber());
-                if (cloud) cloud->noteOff();
+                // Sustain pedal holds clouds active until pedal released
+                if (!sustainPedalDown)
+                {
+                    auto* cloud = cloudPool.findNote(m.getNoteNumber());
+                    if (cloud) cloud->noteOff();
+                }
             }
             else if (m.isAllNotesOff() || m.isAllSoundOff())
             {
                 cloudPool.stopAll();
+                sustainPedalDown = false;
+            }
+            else if (m.isController() && m.getControllerNumber() == 64)
+            {
+                bool wasDown = sustainPedalDown;
+                sustainPedalDown = (m.getControllerValue() >= 64);
+                // On pedal release: trigger release on all active clouds
+                if (wasDown && !sustainPedalDown)
+                    cloudPool.stopAll();
             }
         }
 
@@ -385,6 +400,9 @@ private:
     juce::AudioBuffer<float> grainWorkBuf;
     juce::AudioBuffer<float> reverbWorkBuf;
     juce::AudioBuffer<float> couplingInputBuf;
+
+    // CC64 sustain pedal
+    bool sustainPedalDown = false;
 
     // Coupling modulation accumulators (reset each block)
     float externalFilterMod = 0.0f;  // Hz offset on filter cutoff

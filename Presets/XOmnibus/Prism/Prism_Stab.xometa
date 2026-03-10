@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Prism Stab",
+  "mood": "Prism",
+  "engines": [
+    "Dub"
+  ],
+  "description": "Hard dub stab \u2014 no sustain, maximum attack, reverb throws it into space.",
+  "tags": [
+    "dub",
+    "stab",
+    "attack",
+    "sharp",
+    "prism"
+  ],
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.55,
+    "movement": 0.7,
+    "density": 0.5,
+    "space": 0.65,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Dub": {
+      "dub_oscWave": 1,
+      "dub_oscOctave": 0,
+      "dub_oscTune": 0.0,
+      "dub_oscPwm": 0.6,
+      "dub_subLevel": 0.35,
+      "dub_noiseLevel": 0.02,
+      "dub_drift": 0.03,
+      "dub_filterCutoff": 2500.0,
+      "dub_filterReso": 0.6,
+      "dub_filterMode": 0,
+      "dub_filterEnvAmt": 0.7,
+      "dub_attack": 0.001,
+      "dub_decay": 0.2,
+      "dub_sustain": 0.0,
+      "dub_release": 0.15,
+      "dub_pitchEnvDepth": 0.2,
+      "dub_pitchEnvDecay": 0.05,
+      "dub_lfoRate": 0.0,
+      "dub_lfoDepth": 0.0,
+      "dub_lfoDest": 0,
+      "dub_driveAmount": 1.3,
+      "dub_dryLevel": 0.85,
+      "dub_delayTime": 0.375,
+      "dub_delayFeedback": 0.55,
+      "dub_delayMix": 0.3,
+      "dub_reverbSize": 0.6,
+      "dub_reverbDamp": 0.35,
+      "dub_reverbMix": 0.35,
+      "dub_level": 0.72,
+      "dub_voiceMode": 0,
+      "dub_polyphony": 4
+    }
+  }
+}

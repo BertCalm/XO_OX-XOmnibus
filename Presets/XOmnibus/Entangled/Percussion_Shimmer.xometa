@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Drift",
+        "type": "Amp->Filter",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null,
+  "name": "Percussion Shimmer",
+  "mood": "Entangled",
+  "engines": [
+    "Onset",
+    "Drift"
+  ],
+  "description": "Each drum hit triggers Drift shimmer burst \u2014 percussion creates harmonic halos.",
+  "tags": [
+    "onset",
+    "drift",
+    "shimmer",
+    "halo",
+    "transient",
+    "coupling"
+  ],
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.4,
+    "movement": 0.65,
+    "density": 0.45,
+    "space": 0.82,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v1_blend": 0.3,
+      "perc_v1_decay": 0.45,
+      "perc_v1_level": 0.65,
+      "perc_v2_blend": 0.4,
+      "perc_v2_decay": 0.2,
+      "perc_v2_level": 0.6,
+      "perc_macro_punch": 0.45,
+      "perc_macro_space": 0.5
+    },
+    "Drift": {
+      "drift_oscA_mode": 2,
+      "drift_oscA_level": 0.45,
+      "drift_oscA_detune": 0.4,
+      "drift_filterCutoff": 7000.0,
+      "drift_filterReso": 0.1,
+      "drift_shimmerAmount": 0.7,
+      "drift_shimmerTone": 0.75,
+      "drift_attack": 0.3,
+      "drift_sustain": 0.35,
+      "drift_release": 2.5,
+      "drift_driftDepth": 0.3,
+      "drift_level": 0.55,
+      "drift_polyphony": 4
+    }
+  }
+}

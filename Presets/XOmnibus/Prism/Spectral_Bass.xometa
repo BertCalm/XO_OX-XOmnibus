@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Spectral Bass",
+  "mood": "Prism",
+  "engines": [
+    "Dub"
+  ],
+  "description": "Extended range bass using overtone shaping \u2014 from sub to presence.",
+  "tags": [
+    "dub",
+    "spectral",
+    "bass",
+    "extended",
+    "harmonic"
+  ],
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.65,
+    "movement": 0.3,
+    "density": 0.7,
+    "space": 0.55,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Dub": {
+      "dub_oscWave": 1,
+      "dub_oscOctave": -1,
+      "dub_oscTune": 0.0,
+      "dub_oscPwm": 0.7,
+      "dub_subLevel": 0.7,
+      "dub_noiseLevel": 0.0,
+      "dub_drift": 0.05,
+      "dub_filterCutoff": 2500.0,
+      "dub_filterReso": 0.45,
+      "dub_filterMode": 0,
+      "dub_filterEnvAmt": 0.3,
+      "dub_attack": 0.01,
+      "dub_decay": 0.7,
+      "dub_sustain": 0.6,
+      "dub_release": 0.4,
+      "dub_pitchEnvDepth": 0.07,
+      "dub_pitchEnvDecay": 0.03,
+      "dub_lfoRate": 0.2,
+      "dub_lfoDepth": 0.02,
+      "dub_lfoDest": 0,
+      "dub_driveAmount": 1.35,
+      "dub_dryLevel": 0.88,
+      "dub_delayTime": 0.5,
+      "dub_delayFeedback": 0.35,
+      "dub_delayMix": 0.18,
+      "dub_reverbSize": 0.5,
+      "dub_reverbDamp": 0.5,
+      "dub_reverbMix": 0.2,
+      "dub_level": 0.74,
+      "dub_voiceMode": 1,
+      "dub_polyphony": 0
+    }
+  }
+}

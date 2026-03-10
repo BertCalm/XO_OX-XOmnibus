@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Morph",
+        "engineB": "Drift",
+        "type": "Env->Morph",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null,
+  "name": "FM Drift",
+  "mood": "Entangled",
+  "engines": [
+    "Drift",
+    "Morph"
+  ],
+  "description": "MORPH's morphing engine modulates DRIFT's FM depth \u2014 texture multiplied.",
+  "tags": [
+    "drift",
+    "morph",
+    "FM",
+    "texture",
+    "coupling"
+  ],
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.4,
+    "movement": 0.65,
+    "density": 0.6,
+    "space": 0.72,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Drift": {
+      "drift_oscA_mode": 3,
+      "drift_oscA_level": 0.55,
+      "drift_oscA_detune": 0.35,
+      "drift_oscA_fmDepth": 0.4,
+      "drift_filterCutoff": 4500.0,
+      "drift_filterReso": 0.2,
+      "drift_shimmerAmount": 0.3,
+      "drift_attack": 1.5,
+      "drift_sustain": 0.5,
+      "drift_release": 2.5,
+      "drift_driftDepth": 0.45,
+      "drift_level": 0.62,
+      "drift_polyphony": 4
+    },
+    "Morph": {
+      "morph_morph": 0.5,
+      "morph_bloom": 0.4,
+      "morph_decay": 0.8,
+      "morph_filterCutoff": 5000.0,
+      "morph_filterReso": 0.15,
+      "morph_driftDepth": 0.3,
+      "morph_level": 0.6,
+      "morph_polyphony": 4
+    }
+  }
+}

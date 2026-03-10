@@ -194,6 +194,8 @@ public:
     void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
                       int numSamples) override
     {
+        if (numSamples <= 0) return;
+
         // --- ParamSnapshot: read all parameters once per block ---
         const int oscModeIdx = (pOscMode != nullptr)
             ? static_cast<int> (pOscMode->load()) : 0;
@@ -233,6 +235,16 @@ public:
 
         float peakEnv = 0.0f;
 
+        // Hoist block-constant filter coefficient updates outside the sample loop.
+        // cutoff/reso/srf are block-constant; computing coefficients once per block
+        // avoids repeated trig (tan) inside the per-sample, per-voice loop.
+        for (auto& voice : voices)
+        {
+            if (!voice.active) continue;
+            voice.hpf.setCoefficients (cutoff, reso, srf);
+            voice.bpf.setCoefficients (cutoff, reso, srf);
+        }
+
         for (int sample = 0; sample < numSamples; ++sample)
         {
             float mixL = 0.0f, mixR = 0.0f;
@@ -270,10 +282,6 @@ public:
                 currentMidi += pitchMod;
 
                 float freq = midiToHz (currentMidi);
-
-                // Update filters
-                voice.hpf.setCoefficients (cutoff, reso, srf);
-                voice.bpf.setCoefficients (cutoff, reso, srf);
 
                 // Generate oscillator output with unison
                 int uCount = std::min (unisonCount, 4);

@@ -433,11 +433,12 @@ class FatBitcrusher
 {
 public:
     void prepare (double sampleRate) noexcept { hostSR = sampleRate; phaseAcc = 0.0f; held = 0.0f; }
-    void reset() noexcept { phaseAcc = 0.0f; held = 0.0f; }
+    void reset() noexcept { phaseAcc = 0.0f; held = 0.0f; rng = 0x1234abcdu; }
 
     // Process with precomputed levels/invLevels to avoid per-sample std::pow.
     // levels = std::pow(2.0f, std::floor(bitDepth)) - 1.0f (block-constant)
     // invLevels = 1.0f / levels
+    // TPDF dither is added before quantization to break up quantization harmonics.
     float process (float input, float crushRate, float levels, float invLevels) noexcept
     {
         // Bypass if at full quality (levels == 65535 → bitDepth == 16)
@@ -449,7 +450,18 @@ public:
         if (phaseAcc >= 1.0f)
         {
             phaseAcc -= 1.0f;
-            held = std::round (input * levels) * invLevels;
+
+            // TPDF dither: two uniform noise samples subtracted → triangular distribution
+            // amplitude = ±1 LSB, spectrally flat, decorrelates quantization error
+            rng ^= rng << 13; rng ^= rng >> 17; rng ^= rng << 5; // xorshift32
+            const uint32_t r1 = rng;
+            rng ^= rng << 13; rng ^= rng >> 17; rng ^= rng << 5;
+            const uint32_t r2 = rng;
+            // Map [0, 2^31) to [-0.5, 0.5) for each, difference gives [-1, 1)
+            const float dither = (static_cast<float> (r1 >> 1) - static_cast<float> (r2 >> 1))
+                                 * (invLevels / static_cast<float> (0x40000000u));
+
+            held = std::round ((input + dither) * levels) * invLevels;
         }
 
         return held;
@@ -459,6 +471,7 @@ private:
     double hostSR = 44100.0;
     float phaseAcc = 0.0f;
     float held = 0.0f;
+    uint32_t rng = 0x1234abcdu;
 };
 
 //==============================================================================
@@ -681,6 +694,9 @@ struct FatVoice
     bool glideActive = false;
     float glideSourceFreq = 0.0f;
     float cachedBaseFreq = 261.63f;
+
+    // Sustain pedal hold: voice stays active while CC64 is down
+    bool sustainHeld = false;
 };
 
 //==============================================================================
@@ -695,6 +711,7 @@ public:
     juce::String getEngineId() const override { return "Fat"; }
     juce::Colour getAccentColour() const override { return juce::Colour (0xFFFF1493); }
     int getMaxVoices() const override { return kMaxVoices; }
+    int getActiveVoiceCount() const override { return activeVoiceCount.load (std::memory_order_relaxed); }
 
     //-- Lifecycle --------------------------------------------------------------
 
@@ -880,6 +897,23 @@ public:
                     noteOff (msg.getNoteNumber());
                 else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                     allVoicesOff();
+                else if (msg.isController() && msg.getControllerNumber() == 64)
+                {
+                    bool wasDown = sustainPedalDown;
+                    sustainPedalDown = (msg.getControllerValue() >= 64);
+                    // On release: trigger noteOff for any sustain-held voices
+                    if (wasDown && !sustainPedalDown)
+                    {
+                        for (auto& v : voices)
+                        {
+                            if (v.sustainHeld)
+                            {
+                                v.ampEnv.noteOff();
+                                v.sustainHeld = false;
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -1086,6 +1120,11 @@ public:
                 buffer.addSample (0, sample, (outL + outR) * 0.5f);
             }
         }
+
+        // Update active voice count for UI display (read by message thread via getActiveVoiceCount)
+        int cnt = 0;
+        for (const auto& v : voices) if (v.active) ++cnt;
+        activeVoiceCount.store (cnt, std::memory_order_relaxed);
 
         envelopeOutput = peakEnv;
     }
@@ -1345,8 +1384,13 @@ private:
         for (auto& v : voices)
             if (v.active && v.noteNumber == noteNumber)
             {
-                v.ampEnv.noteOff();
-                v.filterEnv.noteOff();
+                if (sustainPedalDown)
+                    v.sustainHeld = true; // hold until pedal released
+                else
+                {
+                    v.ampEnv.noteOff();
+                    v.filterEnv.noteOff();
+                }
             }
     }
 
@@ -1358,7 +1402,9 @@ private:
             v.ampEnv.reset();
             v.filterEnv.reset();
             v.glideActive = false;
+            v.sustainHeld = false;
         }
+        sustainPedalDown = false;
         arp.reset();
         envelopeOutput = 0.0f;
         externalPitchMod = 0.0f;
@@ -1396,6 +1442,8 @@ private:
     double sr = 44100.0;
     float srf = 44100.0f;
     std::array<FatVoice, kMaxVoices> voices;
+    std::atomic<int> activeVoiceCount { 0 };
+    bool sustainPedalDown = false;
 
     FatArpeggiator arp;
 

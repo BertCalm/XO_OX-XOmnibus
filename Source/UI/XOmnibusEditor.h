@@ -491,7 +491,7 @@ private:
 //==============================================================================
 // CompactEngineTile — slim tile in the left sidebar column.
 // Shows engine identity. Click to select (or load engine if empty).
-class CompactEngineTile : public juce::Component
+class CompactEngineTile : public juce::Component, private juce::Timer
 {
 public:
     std::function<void(int)> onSelect; // called with slot index when clicked
@@ -500,7 +500,10 @@ public:
         : processor(proc), slot(slotIndex)
     {
         refresh();
+        startTimerHz(20); // poll voice count at 20Hz
     }
+
+    ~CompactEngineTile() override { stopTimer(); }
 
     void refresh()
     {
@@ -518,6 +521,17 @@ public:
         accent    = hasEngine ? eng->getAccentColour()
                               : GalleryColors::get(GalleryColors::emptySlot);
         repaint();
+    }
+
+    void timerCallback() override
+    {
+        auto* eng = processor.getEngine(slot);
+        int newCount = eng ? eng->getActiveVoiceCount() : 0;
+        if (newCount != voiceCount)
+        {
+            voiceCount = newCount;
+            repaint();
+        }
     }
 
     void paint(juce::Graphics& g) override
@@ -551,8 +565,22 @@ public:
             g.setFont(juce::Font(11.0f).boldened());
             g.setColour(isSelected ? accent : get(textDark));
             g.drawText(engineId.toUpperCase(),
-                       (int)b.getX() + 26, (int)b.getY(), (int)b.getWidth() - 30, (int)b.getHeight(),
+                       (int)b.getX() + 26, (int)b.getY(), (int)b.getWidth() - 48, (int)b.getHeight(),
                        juce::Justification::centredLeft);
+
+            // Voice count dots — right edge, one dot per active voice
+            if (voiceCount > 0)
+            {
+                const float dotR = 3.0f, dotSpacing = 7.0f;
+                float dotX = b.getRight() - 6.0f;
+                float dotY = b.getCentreY() - dotR;
+                int maxDots = std::min(voiceCount, 6);
+                for (int d = 0; d < maxDots; ++d)
+                {
+                    g.setColour(accent.withAlpha(0.7f + 0.3f * (d == 0 ? 1.0f : 0.0f)));
+                    g.fillEllipse(dotX - static_cast<float>(d) * dotSpacing, dotY, dotR * 2.0f, dotR * 2.0f);
+                }
+            }
         }
         else
         {
@@ -561,6 +589,13 @@ public:
             g.drawText("SLOT " + juce::String(slot + 1) + " — empty",
                        b.toNearestInt(), juce::Justification::centred);
         }
+
+        // Slot number badge — top-right corner, always visible for quick navigation
+        g.setFont(juce::Font(8.0f).boldened());
+        g.setColour(get(textMid).withAlpha(hasEngine ? 0.35f : 0.2f));
+        g.drawText(juce::String(slot + 1),
+                   (int)b.getRight() - 14, (int)b.getY() + 2, 12, 12,
+                   juce::Justification::centredRight);
     }
 
     void mouseEnter(const juce::MouseEvent&) override { repaint(); }
@@ -586,40 +621,28 @@ public:
 private:
     void showLoadMenu()
     {
-        static const std::pair<const char*, juce::Colour> engines[] = {
-            {"Snap",      juce::Colour(0xFFC8553D)},
-            {"Morph",     juce::Colour(0xFF2A9D8F)},
-            {"Dub",       juce::Colour(0xFF6B7B3A)},
-            {"Drift",     juce::Colour(0xFF7B2D8B)},
-            {"Bob",       juce::Colour(0xFFE9A84A)},
-            {"Fat",       juce::Colour(0xFFFF1493)},
-            {"Onset",     juce::Colour(0xFF0066FF)},
-            {"Overworld", juce::Colour(0xFF39FF14)},
-            {"Opal",      juce::Colour(0xFFA78BFA)},
-        };
+        // Dynamically query the registry — no hardcoded ID list to keep in sync.
+        auto registeredIds = EngineRegistry::instance().getRegisteredIds();
 
         juce::PopupMenu menu;
         menu.addSectionHeader("LOAD INTO SLOT " + juce::String(slot + 1));
         menu.addSeparator();
 
-        for (int i = 0; i < (int)std::size(engines); ++i)
+        for (int i = 0; i < (int)registeredIds.size(); ++i)
         {
-            if (EngineRegistry::instance().isRegistered(engines[i].first))
-                menu.addColouredItem(i + 1, engines[i].first, engines[i].second,
-                                     true, false);
+            juce::String id(registeredIds[static_cast<size_t>(i)].c_str());
+            auto colour = GalleryColors::accentForEngine(id);
+            menu.addColouredItem(i + 1, id, colour, true, false);
         }
 
         menu.showMenuAsync(juce::PopupMenu::Options().withTargetComponent(this),
-            [this](int result)
+            [this, registeredIds](int result)
             {
-                static const char* ids[] = {
-                    "Snap","Morph","Dub","Drift","Bob","Fat","Onset","Overworld","Opal"
-                };
-                if (result >= 1 && result <= (int)std::size(ids))
+                if (result >= 1 && result <= (int)registeredIds.size())
                 {
                     isLoading = true;
                     repaint(); // show "LOADING..." immediately
-                    processor.loadEngine(slot, ids[result - 1]);
+                    processor.loadEngine(slot, registeredIds[static_cast<size_t>(result - 1)]);
                     // Refresh is driven by onEngineChanged (event-driven, via callAsync).
                     // Navigate to detail panel on the next message loop tick.
                     juce::Timer::callAfterDelay(0, [this]
@@ -637,6 +660,7 @@ private:
     bool hasEngine  = false;
     bool isSelected = false;
     bool isLoading  = false; // true between loadEngine() call and onEngineChanged callback
+    int  voiceCount = 0;     // updated by timerCallback at 20Hz
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CompactEngineTile)
 };
@@ -1348,6 +1372,7 @@ public:
         };
 
         setSize(880, 562);
+        setWantsKeyboardFocus(true);
         startTimerHz(1); // Reduced from 5Hz — idle polling only as a fallback
     }
 
@@ -1356,6 +1381,27 @@ public:
         stopTimer();
         processor.onEngineChanged = nullptr; // prevent callback after editor is destroyed
         setLookAndFeel(nullptr);
+    }
+
+    bool keyPressed(const juce::KeyPress& key) override
+    {
+        // Keys 1-4 jump directly to engine slots
+        for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
+        {
+            if (key == juce::KeyPress('1' + i))
+            {
+                if (processor.getEngine(i) != nullptr)
+                    selectSlot(i);
+                return true;
+            }
+        }
+        // Escape returns to overview
+        if (key == juce::KeyPress::escapeKey)
+        {
+            showOverview();
+            return true;
+        }
+        return false;
     }
 
     void paint(juce::Graphics& g) override
@@ -1384,11 +1430,22 @@ public:
                    juce::Rectangle<int>(16, kHeaderH - 18, 110, 12),
                    juce::Justification::centredLeft);
 
-        g.setColour(get(textMid).withAlpha(0.5f));
-        g.setFont(juce::Font(9.0f));
-        g.drawText("9 Engines · 12 Coupling Types · 1000 Presets",
-                   juce::Rectangle<int>(getWidth() - 310, 0, 298, kHeaderH - 6),
-                   juce::Justification::centredRight);
+        // Active coupling route count in header
+        {
+            auto routes = processor.getCouplingMatrix().getRoutes();
+            int activeRoutes = 0;
+            for (const auto& r : routes) if (r.active && r.amount >= 0.001f) ++activeRoutes;
+
+            juce::String routeLabel = (activeRoutes > 0)
+                ? juce::String(activeRoutes) + " coupling route" + (activeRoutes > 1 ? "s" : "") + " active"
+                : "9 Engines · 12 Coupling Types · 1000 Presets";
+
+            g.setColour(activeRoutes > 0 ? get(xoGold) : get(textMid).withAlpha(0.5f));
+            g.setFont(juce::Font(9.0f));
+            g.drawText(routeLabel,
+                       juce::Rectangle<int>(getWidth() - 310, 0, 298, kHeaderH - 6),
+                       juce::Justification::centredRight);
+        }
 
         // Sidebar separator
         int sepX = kSidebarW;

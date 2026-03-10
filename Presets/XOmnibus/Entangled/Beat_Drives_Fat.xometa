@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Fat",
+        "type": "Amp->Filter",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null,
+  "name": "Beat Drives Fat",
+  "mood": "Entangled",
+  "engines": [
+    "Onset",
+    "Fat"
+  ],
+  "description": "Kick energy from ONSET pumps FAT's density \u2014 classic sidechain feel, synthesized.",
+  "tags": [
+    "onset",
+    "fat",
+    "sidechain",
+    "pump",
+    "kick",
+    "coupling"
+  ],
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.75,
+    "density": 0.65,
+    "space": 0.5,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v1_blend": 0.05,
+      "perc_v1_algoMode": 1,
+      "perc_v1_decay": 0.65,
+      "perc_v1_snap": 0.5,
+      "perc_v1_body": 0.75,
+      "perc_v1_level": 0.8,
+      "perc_macro_punch": 0.65,
+      "perc_macro_machine": 0.2
+    },
+    "Fat": {
+      "fat_morph": 0.5,
+      "fat_mojo": 0.55,
+      "fat_subLevel": 0.4,
+      "fat_groupMix": 0.9,
+      "fat_detune": 8.0,
+      "fat_fltCutoff": 3000.0,
+      "fat_fltReso": 0.25,
+      "fat_fltDrive": 0.1,
+      "fat_fltEnvAmt": 0.25,
+      "fat_ampAttack": 0.003,
+      "fat_ampDecay": 0.5,
+      "fat_ampSustain": 0.7,
+      "fat_ampRelease": 0.6,
+      "fat_satDrive": 0.12,
+      "fat_level": 0.75,
+      "fat_voiceMode": 0,
+      "fat_polyphony": 4
+    }
+  }
+}

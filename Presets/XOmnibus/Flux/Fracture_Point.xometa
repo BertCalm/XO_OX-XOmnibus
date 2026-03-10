@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Fracture Point",
+  "mood": "Flux",
+  "engines": [
+    "Drift"
+  ],
+  "description": "Harmonic stability breaking apart \u2014 the moment before chaos.",
+  "tags": [
+    "drift",
+    "fracture",
+    "unstable",
+    "breaking",
+    "transition"
+  ],
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.35,
+    "movement": 0.8,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Drift": {
+      "drift_oscA_mode": 1,
+      "drift_oscA_level": 0.55,
+      "drift_oscA_detune": 0.55,
+      "drift_oscB_mode": 3,
+      "drift_oscB_level": 0.4,
+      "drift_oscB_detune": 0.6,
+      "drift_subLevel": 0.0,
+      "drift_noiseLevel": 0.12,
+      "drift_hazeAmount": 0.35,
+      "drift_filterCutoff": 4000.0,
+      "drift_filterReso": 0.35,
+      "drift_filterSlope": 1,
+      "drift_shimmerAmount": 0.3,
+      "drift_shimmerTone": 0.5,
+      "drift_attack": 1.0,
+      "drift_decay": 4.0,
+      "drift_sustain": 0.4,
+      "drift_release": 2.5,
+      "drift_driftDepth": 0.7,
+      "drift_driftRate": 0.08,
+      "drift_lfoRate": 0.15,
+      "drift_lfoDepth": 0.08,
+      "drift_lfoDest": 1,
+      "drift_level": 0.62,
+      "drift_voiceMode": 0,
+      "drift_polyphony": 4
+    }
+  }
+}

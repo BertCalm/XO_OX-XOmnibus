@@ -537,6 +537,10 @@ struct DriftVoice
     // Glide
     bool glideActive = false;
     float glideSourceFreq = 0.0f;
+
+    // Block-start cached base frequencies (avoids std::pow in per-sample loop)
+    float cachedBaseFreqA = 440.0f;
+    float cachedBaseFreqB = 440.0f;
 };
 
 //==============================================================================
@@ -635,6 +639,8 @@ public:
     void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
                       int numSamples) override
     {
+        if (numSamples <= 0) return;
+
         // --- ParamSnapshot: read all parameters once per block ---
 
         // Osc A
@@ -724,6 +730,8 @@ public:
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 allVoicesOff();
+            else if (msg.isController() && msg.getControllerNumber() == 1)
+                modWheelAmount = static_cast<float> (msg.getControllerValue()) / 127.0f;
         }
 
         // Consume coupling accumulators
@@ -737,6 +745,15 @@ public:
         // Setup LFO
         lfo.setRate (lfoRate);
         bool hasLfo = lfoDepth > 0.001f;
+
+        // Cache per-voice block-start base frequencies — midiToFreqTune calls std::pow,
+        // but note number + tune offsets are block-constant, so compute once.
+        for (auto& voice : voices)
+        {
+            if (!voice.active) continue;
+            voice.cachedBaseFreqA = midiToFreqTune (voice.noteNumber, oscA_tune);
+            voice.cachedBaseFreqB = midiToFreqTune (voice.noteNumber, oscB_tune);
+        }
 
         float peakEnv = 0.0f;
 
@@ -771,8 +788,8 @@ public:
                 voice.ampEnv.setParams (attack, decay, sustain, release);
 
                 // --- Glide ---
-                float baseFreqA = midiToFreqTune (voice.noteNumber, oscA_tune);
-                float baseFreqB = midiToFreqTune (voice.noteNumber, oscB_tune);
+                float baseFreqA = voice.cachedBaseFreqA;
+                float baseFreqB = voice.cachedBaseFreqB;
 
                 if (voice.glideActive)
                 {
@@ -879,6 +896,8 @@ public:
                 cutoffMod = clamp (cutoffMod, 20.0f, 20000.0f);
                 // External coupling filter modulation
                 cutoffMod += filterMod * 2000.0f;
+                // CC1 modwheel → open filter (0→no change, 1→+4000Hz)
+                cutoffMod += modWheelAmount * 4000.0f;
                 cutoffMod = clamp (cutoffMod, 20.0f, 20000.0f);
 
                 voice.filterA1.setMode (CytomicSVF::Mode::LowPass);
@@ -1365,6 +1384,7 @@ private:
     float externalPitchMod = 0.0f;
     float externalFilterMod = 0.0f;
     float externalMorphMod = 0.0f;
+    float modWheelAmount = 0.0f; // CC1 [0,1]
 
     // Output cache for coupling reads
     std::vector<float> outputCacheL;
