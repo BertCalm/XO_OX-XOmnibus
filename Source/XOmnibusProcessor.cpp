@@ -189,8 +189,11 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         enginePtrs[i]->renderBlock(engineBuffers[i], midi, numSamples);
     }
 
-    // Apply coupling matrix between engines
-    couplingMatrix.processBlock(numSamples);
+    // Apply coupling matrix between engines.
+    // Routes are loaded once here to avoid repeated atomic ref-count operations
+    // inside processBlock (each atomic_load on a shared_ptr costs a LOCK prefix).
+    auto couplingRoutes = couplingMatrix.loadRoutes();
+    couplingMatrix.processBlock(numSamples, couplingRoutes);
 
     // Mix all engine outputs to master
     const float masterVol = apvts.getRawParameterValue("masterVolume")->load();

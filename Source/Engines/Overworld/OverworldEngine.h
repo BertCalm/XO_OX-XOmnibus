@@ -187,6 +187,9 @@ public:
                      juce::MidiBuffer& midi,
                      int numSamples) override
     {
+        if (numSamples <= 0)
+            return;
+
         juce::ScopedNoDenormals noDenormals;
 
         // Build ParamSnapshot from cached atomics

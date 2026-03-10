@@ -189,6 +189,10 @@ public:
                      juce::MidiBuffer& midi,
                      int numSamples) override
     {
+        // Guard against rendering before attachParameters() has been called.
+        if (p_source == nullptr)
+            return;
+
         juce::ScopedNoDenormals noDenormals;
 
         buffer.clear();

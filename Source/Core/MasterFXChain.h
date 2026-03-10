@@ -118,17 +118,20 @@ public:
             else
             {
                 // Parallel compression blend: out = dry*(1-mix) + wet*mix
+                // Cap to dryBuffer capacity — AU hosts can deliver larger blocks
+                // at render boundaries than the samplesPerBlock negotiated in prepare().
+                const int safeSamples = juce::jmin (numSamples, dryBuffer.getNumSamples());
                 // 1) Save dry signal
-                dryBuffer.copyFrom (0, 0, buffer, 0, 0, numSamples);
-                dryBuffer.copyFrom (1, 0, buffer, 1, 0, numSamples);
+                dryBuffer.copyFrom (0, 0, buffer, 0, 0, safeSamples);
+                dryBuffer.copyFrom (1, 0, buffer, 1, 0, safeSamples);
                 // 2) Compress in-place (wet path)
                 compressor.processBlock (L, R, numSamples);
                 // 3) Scale wet by mix
                 buffer.applyGain (compMix);
                 // 4) Add dry scaled by (1 - mix)
                 const float dryGain = 1.0f - compMix;
-                buffer.addFrom (0, 0, dryBuffer, 0, 0, numSamples, dryGain);
-                buffer.addFrom (1, 0, dryBuffer, 1, 0, numSamples, dryGain);
+                buffer.addFrom (0, 0, dryBuffer, 0, 0, safeSamples, dryGain);
+                buffer.addFrom (1, 0, dryBuffer, 1, 0, safeSamples, dryGain);
             }
         }
     }

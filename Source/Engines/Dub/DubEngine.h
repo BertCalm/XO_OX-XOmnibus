@@ -274,12 +274,15 @@ public:
 
         float delaySamples = static_cast<float> (delayTimeSec * sr);
 
+        // wow LFO: accumulate phase in radians to avoid per-sample * twoPi multiply.
+        constexpr double twoPi = 6.28318530717958647692;
+        const double wowPhaseInc = 0.3 * twoPi / sr;  // radians per sample, block-constant
+
         for (int i = 0; i < numSamples; ++i)
         {
-            constexpr double twoPi = 6.28318530717958647692;
-            float wowMod = fastSin (static_cast<float> (wowPhase * twoPi)) * wowAmount * 0.002f;
-            wowPhase += 0.3 / sr;
-            if (wowPhase >= 1.0) wowPhase -= 1.0;
+            float wowMod = fastSin (static_cast<float> (wowPhase)) * wowAmount * 0.002f;
+            wowPhase += wowPhaseInc;
+            if (wowPhase >= twoPi) wowPhase -= twoPi;
 
             float flutterRaw = flutterNoise.process();
             flutterSmoothed += flutterCoeff * (flutterRaw - flutterSmoothed);

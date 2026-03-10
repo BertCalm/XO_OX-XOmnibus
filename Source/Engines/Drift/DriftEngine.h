@@ -378,6 +378,10 @@ public:
         attack = std::max (a, 0.001f);
         attackRate = 1.0f / (static_cast<float> (sr) * attack);
         decay = std::max (d, 0.001f);
+        // Compute decayRate here so it stays current when the knob changes mid-note.
+        // Previously computed only at Attack→Decay transition, causing stale values.
+        decayRate = static_cast<float> (
+            1.0 - std::exp (-1.0 / (static_cast<double> (decay) * sr)));
         sustain = clamp (s, 0.0f, 1.0f);
         release = std::max (r, 0.001f);
     }
@@ -410,8 +414,7 @@ public:
                 {
                     level = 1.0f;
                     stage = Stage::Decay;
-                    decayRate = static_cast<float> (
-                        1.0 - std::exp (-1.0 / (static_cast<double> (decay) * sr)));
+                    // decayRate is kept current by setParams(); no recompute needed.
                 }
                 break;
 

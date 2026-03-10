@@ -590,6 +590,18 @@ public:
         warmthLPR.setMode (CytomicSVF::Mode::LowPass);
     }
 
+    // Call once per block with the current warmth value to update filter coefficients.
+    // Keeps setCoefficients() (which computes 2*sin(pi*f/sr)) out of the per-sample path.
+    void setWarmth (float warmth) noexcept
+    {
+        if (warmth > 0.01f)
+        {
+            float cutoff = 18000.0f - warmth * 14000.0f;
+            warmthLPL.setCoefficients (cutoff, 0.1f, sr);
+            warmthLPR.setCoefficients (cutoff, 0.1f, sr);
+        }
+    }
+
     void process (float& left, float& right, float grit, float warmth) noexcept
     {
         if (grit > 0.01f)
@@ -600,9 +612,8 @@ public:
         }
         if (warmth > 0.01f)
         {
-            float cutoff = 18000.0f - warmth * 14000.0f;
-            warmthLPL.setCoefficients (cutoff, 0.1f, sr);
-            warmthLPR.setCoefficients (cutoff, 0.1f, sr);
+            // Coefficients are block-constant — caller should call setWarmth()
+            // once per block before process() to avoid per-sample coefficient recompute.
             left  = warmthLPL.processSample (left);
             right = warmthLPR.processSample (right);
         }
@@ -691,6 +702,20 @@ public:
         combLen[3] = static_cast<int> (1356 * scale);
         apLen[0]   = static_cast<int> (556 * scale);
         apLen[1]   = static_cast<int> (441 * scale);
+
+        // Allocate comb and allpass buffers to exactly the needed length.
+        // Static arrays sized for 44.1 kHz would overflow at higher sample rates.
+        for (int c = 0; c < 4; ++c)
+        {
+            combBufLen[c] = combLen[c] + 1;
+            combBuf[c].assign (static_cast<size_t> (combBufLen[c]), 0.0f);
+        }
+        for (int a = 0; a < 2; ++a)
+        {
+            apBufLen[a] = apLen[a] + 1;
+            apBuf[a].assign (static_cast<size_t> (apBufLen[a]), 0.0f);
+        }
+
         reset();
     }
 
@@ -706,12 +731,12 @@ public:
         for (int c = 0; c < 4; ++c)
         {
             int rp = combPos[c] - combLen[c];
-            if (rp < 0) rp += kCombBufLen;
-            float del = combBuf[c][rp];
+            if (rp < 0) rp += combBufLen[c];
+            float del = combBuf[c][static_cast<size_t> (rp)];
             combLP[c] = combLP[c] + damp * (del - combLP[c]);
             combLP[c] = flushDenormal (combLP[c]);
-            combBuf[c][combPos[c]] = input + combLP[c] * fb;
-            combPos[c] = (combPos[c] + 1) % kCombBufLen;
+            combBuf[c][static_cast<size_t> (combPos[c])] = input + combLP[c] * fb;
+            combPos[c] = (combPos[c] + 1) % combBufLen[c];
             sum += del;
         }
         sum *= 0.25f;
@@ -719,12 +744,12 @@ public:
         for (int a = 0; a < 2; ++a)
         {
             int rp = apPos[a] - apLen[a];
-            if (rp < 0) rp += kApBufLen;
-            float del = apBuf[a][rp];
+            if (rp < 0) rp += apBufLen[a];
+            float del = apBuf[a][static_cast<size_t> (rp)];
             float apIn = sum + del * 0.5f;
-            apBuf[a][apPos[a]] = apIn;
+            apBuf[a][static_cast<size_t> (apPos[a])] = apIn;
             sum = del - apIn * 0.5f;
-            apPos[a] = (apPos[a] + 1) % kApBufLen;
+            apPos[a] = (apPos[a] + 1) % apBufLen[a];
         }
 
         left  += sum * mix;
@@ -733,21 +758,30 @@ public:
 
     void reset() noexcept
     {
-        for (int c = 0; c < 4; ++c) { std::memset (combBuf[c], 0, sizeof (combBuf[c])); combPos[c] = 0; combLP[c] = 0.0f; }
-        for (int a = 0; a < 2; ++a) { std::memset (apBuf[a], 0, sizeof (apBuf[a])); apPos[a] = 0; }
+        for (int c = 0; c < 4; ++c)
+        {
+            std::fill (combBuf[c].begin(), combBuf[c].end(), 0.0f);
+            combPos[c] = 0;
+            combLP[c]  = 0.0f;
+        }
+        for (int a = 0; a < 2; ++a)
+        {
+            std::fill (apBuf[a].begin(), apBuf[a].end(), 0.0f);
+            apPos[a] = 0;
+        }
     }
 
 private:
-    static constexpr int kCombBufLen = 2048;
-    static constexpr int kApBufLen = 1024;
     float sr = 44100.0f;
-    float combBuf[4][kCombBufLen] = {};
-    float combLP[4] = {};
-    int combLen[4] = { 1116, 1188, 1277, 1356 };
-    int combPos[4] = {};
-    float apBuf[2][kApBufLen] = {};
-    int apLen[2] = { 556, 441 };
-    int apPos[2] = {};
+    std::vector<float> combBuf[4];
+    float combLP[4]  = {};
+    int combLen[4]   = { 1116, 1188, 1277, 1356 };
+    int combBufLen[4]= { 1117, 1189, 1278, 1357 };  // len + 1, sized in prepare()
+    int combPos[4]   = {};
+    std::vector<float> apBuf[2];
+    int apLen[2]     = { 556, 441 };
+    int apBufLen[2]  = { 557, 442 };                 // len + 1, sized in prepare()
+    int apPos[2]     = {};
 };
 
 //==============================================================================
@@ -756,13 +790,14 @@ private:
 class OnsetLoFi
 {
 public:
-    void process (float& left, float& right, float bits, float mix) noexcept
+    // Process with precomputed steps/invSteps to avoid per-sample std::pow.
+    // steps = std::pow(2.0f, bits), invSteps = 1.0f / steps (block-constant).
+    void process (float& left, float& right, float steps, float invSteps, float mix) noexcept
     {
         if (mix < 0.001f) return;
 
-        float steps = std::pow (2.0f, bits);
-        float crushL = std::round (left * steps) / steps;
-        float crushR = std::round (right * steps) / steps;
+        float crushL = std::round (left  * steps) * invSteps;
+        float crushR = std::round (right * steps) * invSteps;
 
         left  = left  + (crushL - left)  * mix;
         right = right + (crushR - right) * mix;
@@ -1088,6 +1123,9 @@ public:
         float pRevMix     = fxReverbMix    ? fxReverbMix->load()    : 0.0f;
         float pLofiBits   = fxLofiBits     ? fxLofiBits->load()     : 16.0f;
         float pLofiMix    = fxLofiMix      ? fxLofiMix->load()      : 0.0f;
+        // Precompute block-constant LoFi quantisation steps (avoids per-sample std::pow).
+        const float lofiSteps    = std::pow (2.0f, pLofiBits);
+        const float lofiInvSteps = 1.0f / lofiSteps;
 
         // M3 SPACE macro: drives reverb mix + delay feedback
         float mSpace = macroSpace ? macroSpace->load() : 0.0f;
@@ -1098,6 +1136,10 @@ public:
         float masterCutoff = 200.0f + masterTone * 18000.0f;
         masterFilter.setCoefficients (masterCutoff, 0.1f, static_cast<float> (sr));
         masterFilterR.setCoefficients (masterCutoff, 0.1f, static_cast<float> (sr));
+
+        // Update character stage warmth filter coefficients once per block
+        // (was previously recomputed inside every per-sample process() call).
+        characterStage.setWarmth (pCharWarmth);
 
         // QA C6: Clear coupling buffer to prevent stale tail reads
         couplingBuffer.clear();
@@ -1183,7 +1225,7 @@ public:
             // FX chain: Delay → Reverb → LoFi
             fxDelay.process (sumL, sumR, pDelTime, pDelFb, pDelMix);
             fxReverb.process (sumL, sumR, pRevSize, pRevDecay, pRevMix);
-            fxLoFi.process (sumL, sumR, pLofiBits, pLofiMix);
+            fxLoFi.process (sumL, sumR, lofiSteps, lofiInvSteps, pLofiMix);
 
             sumL *= masterLevel;
             sumR *= masterLevel;
@@ -1216,8 +1258,11 @@ public:
                              const float* sourceBuffer, int numSamples) override
     {
         float sum = 0.0f;
-        for (int i = 0; i < numSamples; ++i) sum += sourceBuffer[i];
-        float avgMod = (numSamples > 0) ? (sum / static_cast<float> (numSamples)) * amount : 0.0f;
+        if (sourceBuffer != nullptr)
+            for (int i = 0; i < numSamples; ++i) sum += sourceBuffer[i];
+        float avgMod = (numSamples > 0 && sourceBuffer != nullptr)
+                     ? (sum / static_cast<float> (numSamples)) * amount
+                     : amount;  // fall back to scalar amount if no buffer
 
         switch (type)
         {

@@ -219,9 +219,34 @@ public:
 
     void setDrive (float d) noexcept { drive = d; }
 
+    // Pre-computed coefficient bundle — avoids redundant std::tan when
+    // multiple filters in a voice share the same cutoff/resonance.
+    struct Coeffs { float g, G, k; };
+
+    // Compute coefficients once per voice per sample, share across all 4 filters.
+    static Coeffs computeCoeffs (float hz, float reso, float invSR, float srF) noexcept
+    {
+        constexpr float pi = 3.14159265f;
+        float fc = clamp (hz, 20.0f, srF * 0.42f);
+        float gv = std::tan (pi * fc * invSR);
+        float Gv = gv / (1.0f + gv);
+        float nyqRatio = fc / srF;
+        float resoScale = (nyqRatio < 0.3f) ? 1.0f
+            : 1.0f - 0.7f * ((nyqRatio - 0.3f) / 0.12f);
+        resoScale = clamp (resoScale, 0.3f, 1.0f);
+        return { gv, Gv, std::min (4.0f * reso * resoScale, 3.2f) };
+    }
+
+    // Apply pre-computed coefficients — skips std::tan.
+    void applyCoeffs (const Coeffs& c) noexcept
+    {
+        g = c.g; G = c.G; k = c.k;
+        coeffDirty = false;
+    }
+
     float processSample (float input) noexcept
     {
-        updateCoefficients();
+        updateCoefficients();  // no-op if called after applyCoeffs()
 
         // Drive: pre-saturate input
         float driveGain = 1.0f + drive * 3.0f;
@@ -410,10 +435,13 @@ public:
     void prepare (double sampleRate) noexcept { hostSR = sampleRate; phaseAcc = 0.0f; held = 0.0f; }
     void reset() noexcept { phaseAcc = 0.0f; held = 0.0f; }
 
-    float process (float input, float crushRate, float bitDepth) noexcept
+    // Process with precomputed levels/invLevels to avoid per-sample std::pow.
+    // levels = std::pow(2.0f, std::floor(bitDepth)) - 1.0f (block-constant)
+    // invLevels = 1.0f / levels
+    float process (float input, float crushRate, float levels, float invLevels) noexcept
     {
-        // Bypass if at full quality
-        if (crushRate >= static_cast<float> (hostSR) - 1.0f && bitDepth >= 15.5f)
+        // Bypass if at full quality (levels == 65535 → bitDepth == 16)
+        if (levels >= 65535.0f && crushRate >= static_cast<float> (hostSR) - 1.0f)
             return input;
 
         // Sample-and-hold
@@ -421,10 +449,7 @@ public:
         if (phaseAcc >= 1.0f)
         {
             phaseAcc -= 1.0f;
-            // Bit depth quantization
-            float levels = std::pow (2.0f, std::floor (bitDepth)) - 1.0f;
-            if (levels < 1.0f) levels = 1.0f;
-            held = std::round (input * levels) / levels;
+            held = std::round (input * levels) * invLevels;
         }
 
         return held;
@@ -873,6 +898,21 @@ public:
             voice.cachedBaseFreq = midiToFreq (voice.noteNumber);
         }
 
+        // Block-constant precomputes — hoisted out of the sample + voice loops.
+        //
+        // subRatio: the fixed freq multiplier for the sub oscillator octave offset
+        //   (subSemitones = {-24,-12,0} depending on pSubOct, block-constant).
+        // octUpRatio/octDnRatio: the fixed multiplier for the ±1 octave groups
+        //   (detuneRatio = detune, also block-constant).
+        // These replace fastExp calls that were redundantly evaluated every sample.
+        const float subRatio = fastExp (subSemitones * (0.693147f / 12.0f));
+        const float octUpRatio = fastExp ((12.0f * 100.0f + detune) * (0.693147f / 1200.0f));
+        const float octDnRatio = fastExp ((-12.0f * 100.0f - detune) * (0.693147f / 1200.0f));
+
+        // Bitcrusher: std::pow is block-constant for constant bitDepth parameter.
+        const float crushLevels = std::max (std::pow (2.0f, std::floor (crushDepth)) - 1.0f, 1.0f);
+        const float invCrushLevels = 1.0f / crushLevels;
+
         float peakEnv = 0.0f;
 
         // --- Render ---
@@ -910,16 +950,19 @@ public:
                                * (0.693147f / 12.0f));
                 cutoff = clamp (cutoff, 20.0f, 18000.0f);
 
-                // Set filters
-                for (int g = 0; g < 4; ++g)
+                // Compute filter coefficients ONCE per voice per sample (not 4×).
+                // All 4 filters in this voice share the same cutoff/resonance.
+                auto filterCoeffs = FatLadderFilter::computeCoeffs (
+                    cutoff, fltReso, 1.0f / srf, srf);
+                for (int gi = 0; gi < 4; ++gi)
                 {
-                    voice.filters[static_cast<size_t> (g)].setCutoff (cutoff);
-                    voice.filters[static_cast<size_t> (g)].setResonance (fltReso);
-                    voice.filters[static_cast<size_t> (g)].setDrive (fltDrive);
+                    voice.filters[static_cast<size_t> (gi)].applyCoeffs (filterCoeffs);
+                    voice.filters[static_cast<size_t> (gi)].setDrive (fltDrive);
                 }
 
                 // --- Sub oscillator ---
-                float subFreq = freq * fastExp (subSemitones * (0.693147f / 12.0f));
+                // Use precomputed block-constant subRatio instead of per-sample fastExp.
+                float subFreq = freq * subRatio;
                 float subDriftCents = voice.subDrift.process (analogAmount);
                 subFreq *= fastExp (subDriftCents * (0.693147f / 1200.0f));
                 voice.subOsc.setFrequency (subFreq);
@@ -929,12 +972,9 @@ public:
                     subSample = subSample + analogAmount * (fastTanh (subSample) - subSample);
 
                 // --- Group oscillators ---
-                // Detune offsets within each group: root=0, +12st=+detune, -12st=-detune
-                float detuneRatio = detune; // in cents
-
-                // Precompute pitch multipliers for oscillator groups
-                float freqOctUp = freq * fastExp ((12.0f * 100.0f + detuneRatio) * (0.693147f / 1200.0f));
-                float freqOctDn = freq * fastExp ((-12.0f * 100.0f - detuneRatio) * (0.693147f / 1200.0f));
+                // Use precomputed block-constant octave ratios (hoisted from sample loop).
+                float freqOctUp = freq * octUpRatio;
+                float freqOctDn = freq * octDnRatio;
                 float grpFreqs[3] = { freq, freqOctUp, freqOctDn };
 
                 float groupSums[3] = { 0.0f, 0.0f, 0.0f }; // G1-G3
@@ -1013,9 +1053,9 @@ public:
                 voiceL = voice.saturation.process (voiceL);
                 voiceR = voice.saturation.process (voiceR);
 
-                // Bitcrusher
-                voiceL = voice.crusher.process (voiceL, crushRate, crushDepth);
-                voiceR = voice.crusher.process (voiceR, crushRate, crushDepth);
+                // Bitcrusher — uses precomputed levels/invLevels (avoids per-sample std::pow).
+                voiceL = voice.crusher.process (voiceL, crushRate, crushLevels, invCrushLevels);
+                voiceR = voice.crusher.process (voiceR, crushRate, crushLevels, invCrushLevels);
 
                 if (!voice.ampEnv.isActive())
                 {

@@ -28,6 +28,7 @@ namespace GalleryColors {
         if (id == "Fat")       return juce::Colour(0xFFFF1493);
         if (id == "Onset")     return juce::Colour(0xFF0066FF);
         if (id == "Overworld") return juce::Colour(0xFF39FF14);
+        if (id == "Opal")      return juce::Colour(0xFFA78BFA);
         return get(borderGray);
     }
 
@@ -1249,14 +1250,21 @@ private:
     {
         auto& pm = processor.getPresetManager();
 
-        // Capture by value to remain valid after strip destruction
-        auto onSelect = [this](const PresetData& preset)
+        // SafePointer becomes null if this component is destroyed while the
+        // CallOutBox is still open (e.g., plugin editor closed during browse).
+        juce::Component::SafePointer<PresetBrowserStrip> safeThis(this);
+
+        auto onSelect = [safeThis, &proc = processor](const PresetData& preset)
         {
-            processor.getPresetManager().setCurrentPreset(preset);
-            processor.applyPreset(preset);
-            nameLabel.setText(preset.name, juce::dontSendNotification);
-            if (macroSection && !preset.macroLabels.isEmpty())
-                macroSection->setLabels(preset.macroLabels);
+            proc.getPresetManager().setCurrentPreset(preset);
+            proc.applyPreset(preset);
+            // Only touch UI members if the strip is still alive.
+            if (safeThis != nullptr)
+            {
+                safeThis->nameLabel.setText(preset.name, juce::dontSendNotification);
+                if (safeThis->macroSection && !preset.macroLabels.isEmpty())
+                    safeThis->macroSection->setLabels(preset.macroLabels);
+            }
         };
 
         juce::CallOutBox::launchAsynchronously(

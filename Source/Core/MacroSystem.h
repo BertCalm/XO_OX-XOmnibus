@@ -104,18 +104,22 @@ public:
             return;
 
         auto& slot = macroSlots[static_cast<size_t>(macroIndex)];
-        slot.targets = std::move(targets);
 
-        // Cache raw parameter pointers for each target
-        slot.cachedParams.clear();
-        slot.cachedParams.reserve(slot.targets.size());
-
-        for (const auto& target : slot.targets)
+        // Build new targets and cache outside the lock to minimise hold time.
+        std::vector<std::atomic<float>*> newCached;
+        newCached.reserve(targets.size());
+        for (const auto& target : targets)
         {
-            auto* rawParam = apvtsRef.getRawParameterValue(target.parameterId);
-            slot.cachedParams.push_back(rawParam);
+            newCached.push_back(apvtsRef.getRawParameterValue(target.parameterId));
             // rawParam may be nullptr if the target engine isn't loaded —
             // processBlock() handles this gracefully.
+        }
+
+        // Hold the lock only while swapping the vectors.
+        {
+            juce::SpinLock::ScopedLockType lock(slot.lock);
+            slot.targets      = std::move(targets);
+            slot.cachedParams = std::move(newCached);
         }
     }
 
@@ -126,6 +130,7 @@ public:
             return;
 
         auto& slot = macroSlots[static_cast<size_t>(macroIndex)];
+        juce::SpinLock::ScopedLockType lock(slot.lock);
         slot.targets.clear();
         slot.cachedParams.clear();
     }
@@ -169,6 +174,12 @@ public:
             if (numSamples > 1)
                 smoothedValues[idx].skip(numSamples - 1);
             const float smoothedMacroValue = smoothedValues[idx].getNextValue();
+
+            // Try to acquire the slot lock — if setTargets() is running on the
+            // message thread, skip this macro for one block rather than blocking.
+            juce::SpinLock::ScopedTryLockType tryLock(macroSlots[idx].lock);
+            if (!tryLock.isLocked())
+                continue;
 
             const auto& slot = macroSlots[idx];
             const auto numTargets = slot.targets.size();
@@ -295,11 +306,16 @@ private:
     //--------------------------------------------------------------------------
 
     // Per-macro slot holding targets and their cached parameter pointers.
+    //
+    // SpinLock guards setTargets() (message thread) against concurrent reads in
+    // processBlock() (audio thread).  The audio thread uses tryEnter() so it
+    // never blocks — it simply skips a single block while a preset is loading.
     struct MacroSlot {
         std::vector<MacroTarget> targets;
         // Parallel array: cachedParams[i] is the raw pointer for targets[i].
         // May contain nullptrs if target parameter doesn't exist in APVTS.
         std::vector<std::atomic<float>*> cachedParams;
+        juce::SpinLock lock;
     };
 
     static bool isValidIndex(int idx) { return idx >= 0 && idx < NumMacros; }

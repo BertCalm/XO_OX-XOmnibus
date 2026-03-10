@@ -90,12 +90,20 @@ public:
 
     //-- Audio processing (audio thread only) ----------------------------------
 
-    // Process all coupling routes for a block of audio.
-    // Call this between engine renderBlock() calls.
-    void processBlock(int numSamples)
+    // Load the current route list once per audio callback.
+    // Store the result in a local shared_ptr and pass it to processBlock()
+    // to avoid repeated atomic reference count operations inside the block.
+    std::shared_ptr<std::vector<CouplingRoute>> loadRoutes() const
     {
-        // Atomically grab the current route list — no lock, no allocation
-        auto routes = std::atomic_load(&routeList);
+        return std::atomic_load(&routeList);
+    }
+
+    // Process all coupling routes for a block of audio.
+    // Pass the shared_ptr obtained from loadRoutes() — avoids an atomic reload
+    // (and its LOCK prefix) inside this method.
+    void processBlock(int numSamples,
+                      const std::shared_ptr<std::vector<CouplingRoute>>& routes)
+    {
         if (!routes || routes->empty())
             return;
 
@@ -114,10 +122,28 @@ public:
             if (!source || !dest)
                 continue;
 
-            // Use pre-allocated scratch buffer (sized in prepare())
-            for (int i = 0; i < numSamples && i < static_cast<int>(couplingBuffer.size()); ++i)
-                couplingBuffer[static_cast<size_t>(i)] =
-                    source->getSampleForCoupling(0, i);
+            // Use pre-allocated scratch buffer (sized in prepare()).
+            // Audio coupling types carry stereo content — mix L+R to mono.
+            // Modulation coupling types (LFO, env, amp) are inherently mono.
+            const bool isAudioRoute =
+                route.type == CouplingType::AudioToWavetable
+             || route.type == CouplingType::AudioToFM
+             || route.type == CouplingType::AudioToRing;
+
+            const int limit = juce::jmin(numSamples, static_cast<int>(couplingBuffer.size()));
+            if (isAudioRoute)
+            {
+                for (int i = 0; i < limit; ++i)
+                    couplingBuffer[static_cast<size_t>(i)] =
+                        (source->getSampleForCoupling(0, i)
+                       + source->getSampleForCoupling(1, i)) * 0.5f;
+            }
+            else
+            {
+                for (int i = 0; i < limit; ++i)
+                    couplingBuffer[static_cast<size_t>(i)] =
+                        source->getSampleForCoupling(0, i);
+            }
 
             dest->applyCouplingInput(route.type, route.amount,
                                     couplingBuffer.data(), numSamples);
