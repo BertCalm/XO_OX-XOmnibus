@@ -27,21 +27,26 @@ private:
 };
 
 //==============================================================================
-// OnsetEnvelope — AD percussion envelope with dirty-flag coefficient caching.
+// OnsetEnvelope — AD/AHD/ADSR percussion envelope with coefficient caching.
 //==============================================================================
 class OnsetEnvelope
 {
 public:
-    enum class Stage { Idle, Attack, Decay };
+    enum class Stage { Idle, Attack, Hold, Decay, Sustain, Release };
+    enum class Shape { AD = 0, AHD = 1, ADSR = 2 };
 
     void prepare (double sampleRate) noexcept { sr = static_cast<float> (sampleRate); }
 
-    void trigger (float attackSec, float decaySec) noexcept
+    void trigger (float attackSec, float decaySec, Shape shape = Shape::AD,
+                  float holdSec = 0.0f, float sustainLvl = 0.0f) noexcept
     {
+        currentShape = shape;
+        sustainLevel = sustainLvl;
         stage = Stage::Attack;
         level = 0.0f;
         float aSec = std::max (attackSec, 0.0001f);
         attackRate = 1.0f / (sr * aSec);
+        holdSamplesLeft = (shape != Shape::AD) ? std::max (0, static_cast<int> (sr * holdSec)) : 0;
         float dSec = std::max (decaySec, 0.001f);
         if (dSec != lastDecay)
         {
@@ -57,9 +62,33 @@ public:
             case Stage::Idle: return 0.0f;
             case Stage::Attack:
                 level += attackRate;
-                if (level >= 1.0f) { level = 1.0f; stage = Stage::Decay; }
+                if (level >= 1.0f)
+                {
+                    level = 1.0f;
+                    stage = (holdSamplesLeft > 0) ? Stage::Hold : Stage::Decay;
+                }
+                return level;
+            case Stage::Hold:
+                if (--holdSamplesLeft <= 0)
+                    stage = Stage::Decay;
                 return level;
             case Stage::Decay:
+                if (currentShape == Shape::ADSR && sustainLevel > 0.0f)
+                {
+                    level -= (level - sustainLevel) * decayCoeff;
+                    level = flushDenormal (level);
+                    if (level <= sustainLevel + 0.001f) { level = sustainLevel; stage = Stage::Sustain; }
+                }
+                else
+                {
+                    level -= level * decayCoeff;
+                    level = flushDenormal (level);
+                    if (level < 1e-6f) { level = 0.0f; stage = Stage::Idle; }
+                }
+                return level;
+            case Stage::Sustain:
+                return level;
+            case Stage::Release:
                 level -= level * decayCoeff;
                 level = flushDenormal (level);
                 if (level < 1e-6f) { level = 0.0f; stage = Stage::Idle; }
@@ -68,17 +97,26 @@ public:
         return 0.0f;
     }
 
+    void release() noexcept
+    {
+        if (stage == Stage::Sustain || stage == Stage::Hold || stage == Stage::Decay)
+            stage = Stage::Release;
+    }
+
     bool isActive() const noexcept { return stage != Stage::Idle; }
     float getLevel() const noexcept { return level; }
-    void reset() noexcept { stage = Stage::Idle; level = 0.0f; lastDecay = -1.0f; }
+    void reset() noexcept { stage = Stage::Idle; level = 0.0f; lastDecay = -1.0f; holdSamplesLeft = 0; }
 
 private:
     float sr = 44100.0f;
     Stage stage = Stage::Idle;
+    Shape currentShape = Shape::AD;
     float level = 0.0f;
     float attackRate = 0.01f;
     float decayCoeff = 0.001f;
     float lastDecay = -1.0f;
+    float sustainLevel = 0.0f;
+    int holdSamplesLeft = 0;
 };
 
 //==============================================================================
@@ -540,6 +578,198 @@ private:
 };
 
 //==============================================================================
+// OnsetCharacterStage — Post-mixer grit (tanh saturation) + warmth (LP filter).
+//==============================================================================
+class OnsetCharacterStage
+{
+public:
+    void prepare (double sampleRate) noexcept
+    {
+        sr = static_cast<float> (sampleRate);
+        warmthLPL.setMode (CytomicSVF::Mode::LowPass);
+        warmthLPR.setMode (CytomicSVF::Mode::LowPass);
+    }
+
+    void process (float& left, float& right, float grit, float warmth) noexcept
+    {
+        if (grit > 0.01f)
+        {
+            float drive = 1.0f + grit * 6.0f;
+            left  = fastTanh (left * drive) / drive * (1.0f + grit * 2.0f);
+            right = fastTanh (right * drive) / drive * (1.0f + grit * 2.0f);
+        }
+        if (warmth > 0.01f)
+        {
+            float cutoff = 18000.0f - warmth * 14000.0f;
+            warmthLPL.setCoefficients (cutoff, 0.1f, sr);
+            warmthLPR.setCoefficients (cutoff, 0.1f, sr);
+            left  = warmthLPL.processSample (left);
+            right = warmthLPR.processSample (right);
+        }
+    }
+
+    void reset() noexcept { warmthLPL.reset(); warmthLPR.reset(); }
+
+private:
+    float sr = 44100.0f;
+    CytomicSVF warmthLPL, warmthLPR;
+};
+
+//==============================================================================
+// OnsetDelay — Dark tape-style delay with LP in feedback path.
+//==============================================================================
+class OnsetDelay
+{
+public:
+    static constexpr int kMaxDelaySamples = 88200; // 2 seconds at 44.1k
+
+    void prepare (double sampleRate) noexcept
+    {
+        sr = static_cast<float> (sampleRate);
+        std::memset (bufL, 0, sizeof (bufL));
+        std::memset (bufR, 0, sizeof (bufR));
+        writePos = 0;
+        fbFilterL.setMode (CytomicSVF::Mode::LowPass);
+        fbFilterR.setMode (CytomicSVF::Mode::LowPass);
+        fbFilterL.setCoefficients (4000.0f, 0.0f, sr);
+        fbFilterR.setCoefficients (4000.0f, 0.0f, sr);
+    }
+
+    void process (float& left, float& right, float timeSec, float feedback, float mix) noexcept
+    {
+        if (mix < 0.001f) return;
+
+        int delaySamp = std::max (1, std::min (static_cast<int> (timeSec * sr), kMaxDelaySamples - 1));
+        int readPos = writePos - delaySamp;
+        if (readPos < 0) readPos += kMaxDelaySamples;
+
+        float delL = bufL[readPos];
+        float delR = bufR[readPos];
+
+        float fbL = fbFilterL.processSample (delL) * feedback;
+        float fbR = fbFilterR.processSample (delR) * feedback;
+        fbL = flushDenormal (fbL);
+        fbR = flushDenormal (fbR);
+
+        bufL[writePos] = left + fbL;
+        bufR[writePos] = right + fbR;
+        writePos = (writePos + 1) % kMaxDelaySamples;
+
+        left  += delL * mix;
+        right += delR * mix;
+    }
+
+    void reset() noexcept
+    {
+        std::memset (bufL, 0, sizeof (bufL));
+        std::memset (bufR, 0, sizeof (bufR));
+        writePos = 0;
+        fbFilterL.reset(); fbFilterR.reset();
+    }
+
+private:
+    float sr = 44100.0f;
+    float bufL[kMaxDelaySamples] = {};
+    float bufR[kMaxDelaySamples] = {};
+    int writePos = 0;
+    CytomicSVF fbFilterL, fbFilterR;
+};
+
+//==============================================================================
+// OnsetReverb — Tight room reverb using 4 comb filters + 2 allpass diffusers.
+//==============================================================================
+class OnsetReverb
+{
+public:
+    void prepare (double sampleRate) noexcept
+    {
+        sr = static_cast<float> (sampleRate);
+        float scale = sr / 44100.0f;
+        combLen[0] = static_cast<int> (1116 * scale);
+        combLen[1] = static_cast<int> (1188 * scale);
+        combLen[2] = static_cast<int> (1277 * scale);
+        combLen[3] = static_cast<int> (1356 * scale);
+        apLen[0]   = static_cast<int> (556 * scale);
+        apLen[1]   = static_cast<int> (441 * scale);
+        reset();
+    }
+
+    void process (float& left, float& right, float roomSize, float decay, float mix) noexcept
+    {
+        if (mix < 0.001f) return;
+
+        float input = (left + right) * 0.5f;
+        float fb = 0.5f + decay * 0.45f;
+        float damp = 0.3f + (1.0f - roomSize) * 0.5f;
+
+        float sum = 0.0f;
+        for (int c = 0; c < 4; ++c)
+        {
+            int rp = combPos[c] - combLen[c];
+            if (rp < 0) rp += kCombBufLen;
+            float del = combBuf[c][rp];
+            combLP[c] = combLP[c] + damp * (del - combLP[c]);
+            combLP[c] = flushDenormal (combLP[c]);
+            combBuf[c][combPos[c]] = input + combLP[c] * fb;
+            combPos[c] = (combPos[c] + 1) % kCombBufLen;
+            sum += del;
+        }
+        sum *= 0.25f;
+
+        for (int a = 0; a < 2; ++a)
+        {
+            int rp = apPos[a] - apLen[a];
+            if (rp < 0) rp += kApBufLen;
+            float del = apBuf[a][rp];
+            float apIn = sum + del * 0.5f;
+            apBuf[a][apPos[a]] = apIn;
+            sum = del - apIn * 0.5f;
+            apPos[a] = (apPos[a] + 1) % kApBufLen;
+        }
+
+        left  += sum * mix;
+        right += sum * mix;
+    }
+
+    void reset() noexcept
+    {
+        for (int c = 0; c < 4; ++c) { std::memset (combBuf[c], 0, sizeof (combBuf[c])); combPos[c] = 0; combLP[c] = 0.0f; }
+        for (int a = 0; a < 2; ++a) { std::memset (apBuf[a], 0, sizeof (apBuf[a])); apPos[a] = 0; }
+    }
+
+private:
+    static constexpr int kCombBufLen = 2048;
+    static constexpr int kApBufLen = 1024;
+    float sr = 44100.0f;
+    float combBuf[4][kCombBufLen] = {};
+    float combLP[4] = {};
+    int combLen[4] = { 1116, 1188, 1277, 1356 };
+    int combPos[4] = {};
+    float apBuf[2][kApBufLen] = {};
+    int apLen[2] = { 556, 441 };
+    int apPos[2] = {};
+};
+
+//==============================================================================
+// OnsetLoFi — Bitcrush + sample rate reduction.
+//==============================================================================
+class OnsetLoFi
+{
+public:
+    void process (float& left, float& right, float bits, float mix) noexcept
+    {
+        if (mix < 0.001f) return;
+
+        float steps = std::pow (2.0f, bits);
+        float crushL = std::round (left * steps) / steps;
+        float crushR = std::round (right * steps) / steps;
+
+        left  = left  + (crushL - left)  * mix;
+        right = right + (crushR - right) * mix;
+    }
+};
+
+//==============================================================================
 // OnsetVoice — Single drum voice: Layer X + Layer O + blend + transient + env.
 //==============================================================================
 struct OnsetVoice
@@ -589,7 +819,8 @@ struct OnsetVoice
 
     void triggerVoice (float vel, float blend, int algoMode,
                        float pitch, float decay, float tone,
-                       float snap, float body, float character)
+                       float snap, float body, float character,
+                       int envShape = 0)
     {
         velocity = vel;
         active = true;
@@ -614,8 +845,11 @@ struct OnsetVoice
             case 3: phaseDist.trigger (freq, snap, character, tone); break;
         }
 
-        // Envelope: very fast attack, decay from parameter
-        ampEnv.trigger (0.001f, decay);
+        // Envelope: shape determines AD / AHD / ADSR behavior
+        auto shape = static_cast<OnsetEnvelope::Shape> (std::min (envShape, 2));
+        float holdTime = (shape != OnsetEnvelope::Shape::AD) ? body * 0.05f : 0.0f;
+        float sustainLvl = (shape == OnsetEnvelope::Shape::ADSR) ? 0.3f : 0.0f;
+        ampEnv.trigger (0.001f, decay, shape, holdTime, sustainLvl);
 
         // Transient: snap scaled by velocity
         transient.trigger (snap * vel, freq);
@@ -673,6 +907,8 @@ struct OnsetVoice
         return out;
     }
 
+    void releaseVoice() noexcept { ampEnv.release(); }
+
     void choke() noexcept
     {
         active = false;
@@ -725,6 +961,9 @@ public:
 
         masterFilter.setMode (CytomicSVF::Mode::LowPass);
         masterFilterR.setMode (CytomicSVF::Mode::LowPass);
+        characterStage.prepare (sampleRate);
+        fxDelay.prepare (sampleRate);
+        fxReverb.prepare (sampleRate);
 
         for (int v = 0; v < kNumVoices; ++v)
         {
@@ -747,6 +986,10 @@ public:
         couplingFilterMod = 0.0f;
         couplingDecayMod = 0.0f;
         couplingBlendMod = 0.0f;
+        std::memset (voicePeaks, 0, sizeof (voicePeaks));
+        characterStage.reset();
+        fxDelay.reset();
+        fxReverb.reset();
     }
 
     //-- Render ------------------------------------------------------------------
@@ -758,6 +1001,8 @@ public:
         float vTone[kNumVoices], vSnap[kNumVoices], vBody[kNumVoices];
         float vChar[kNumVoices], vLevel[kNumVoices], vPan[kNumVoices];
         int   vAlgo[kNumVoices];
+
+        int   vEnvShape[kNumVoices];
 
         for (int v = 0; v < kNumVoices; ++v)
         {
@@ -772,11 +1017,82 @@ public:
             vChar[v]  = vp.character ? vp.character->load() : 0.0f;
             vLevel[v] = vp.level  ? vp.level->load()  : 0.7f;
             vPan[v]   = vp.pan    ? vp.pan->load()    : 0.0f;
+            vEnvShape[v] = envShapeParams[v] ? static_cast<int> (envShapeParams[v]->load()) : 0;
+        }
+
+        // --- Macro snapshots ---
+        float mMachine = macroMachine ? macroMachine->load() : 0.5f;
+        float mPunch   = macroPunch   ? macroPunch->load()   : 0.5f;
+        float mMutate  = macroMutate  ? macroMutate->load()  : 0.0f;
+        // M3 SPACE: wired in Phase 4 (FX rack)
+
+        // M1 MACHINE: bias all blends toward circuit (0) or algorithm (1)
+        float machineBias = (mMachine - 0.5f) * 1.0f;
+        for (int v = 0; v < kNumVoices; ++v)
+            vBlend[v] = clamp (vBlend[v] + machineBias, 0.0f, 1.0f);
+
+        // M2 PUNCH: bias snap and body (0=soft, 1=aggressive)
+        float punchBias = (mPunch - 0.5f) * 0.6f;
+        for (int v = 0; v < kNumVoices; ++v)
+        {
+            vSnap[v] = clamp (vSnap[v] + punchBias, 0.0f, 1.0f);
+            vBody[v] = clamp (vBody[v] + punchBias, 0.0f, 1.0f);
+        }
+
+        // M4 MUTATE: per-block random drift on blend + character
+        if (mMutate > 0.01f)
+        {
+            for (int v = 0; v < kNumVoices; ++v)
+            {
+                vBlend[v] = clamp (vBlend[v] + mutateRng.process() * mMutate * 0.2f, 0.0f, 1.0f);
+                vChar[v]  = clamp (vChar[v]  + mutateRng.process() * mMutate * 0.2f, 0.0f, 1.0f);
+            }
+        }
+
+        // --- Cross-Voice Coupling (XVC): previous-block peaks modulate targets ---
+        float xvcGlobal = xvcGlobalAmount ? xvcGlobalAmount->load() : 0.5f;
+        if (xvcGlobal > 0.01f)
+        {
+            float kickPk  = voicePeaks[0] * xvcGlobal;
+            float snarePk = voicePeaks[1] * xvcGlobal;
+
+            // Kick → Snare filter (tone offset)
+            float ksfAmt = xvcKickSnareFilter ? xvcKickSnareFilter->load() : 0.15f;
+            vTone[1] = clamp (vTone[1] + kickPk * ksfAmt, 0.0f, 1.0f);
+
+            // Snare → Hat decay tighten
+            float shdAmt = xvcSnareHatDecay ? xvcSnareHatDecay->load() : 0.10f;
+            vDecay[2] = clamp (vDecay[2] - snarePk * shdAmt * 0.5f, 0.001f, 8.0f);
+
+            // Kick → Tom pitch duck
+            float ktpAmt = xvcKickTomPitch ? xvcKickTomPitch->load() : 0.0f;
+            vPitch[5] = vPitch[5] - kickPk * ktpAmt * 6.0f;
+
+            // Snare → Perc A blend shift
+            float spbAmt = xvcSnarePercBlend ? xvcSnarePercBlend->load() : 0.0f;
+            vBlend[6] = clamp (vBlend[6] + snarePk * spbAmt * 0.3f, 0.0f, 1.0f);
         }
 
         float masterLevel = percLevel  ? percLevel->load()  : 0.8f;
         float masterDrive = percDrive  ? percDrive->load()  : 0.0f;
         float masterTone  = percTone   ? percTone->load()   : 0.5f;
+
+        // FX + Character stage snapshots
+        float pCharGrit   = charGrit       ? charGrit->load()       : 0.0f;
+        float pCharWarmth = charWarmth     ? charWarmth->load()     : 0.5f;
+        float pDelTime    = fxDelayTime    ? fxDelayTime->load()    : 0.3f;
+        float pDelFb      = fxDelayFeedback? fxDelayFeedback->load(): 0.3f;
+        float pDelMix     = fxDelayMix     ? fxDelayMix->load()     : 0.0f;
+        float pRevSize    = fxReverbSize   ? fxReverbSize->load()   : 0.4f;
+        float pRevDecay   = fxReverbDecay  ? fxReverbDecay->load()  : 0.3f;
+        float pRevMix     = fxReverbMix    ? fxReverbMix->load()    : 0.0f;
+        float pLofiBits   = fxLofiBits     ? fxLofiBits->load()     : 16.0f;
+        float pLofiMix    = fxLofiMix      ? fxLofiMix->load()      : 0.0f;
+
+        // M3 SPACE macro: drives reverb mix + delay feedback
+        float mSpace = macroSpace ? macroSpace->load() : 0.0f;
+        pRevMix = clamp (pRevMix + mSpace * 0.6f, 0.0f, 1.0f);
+        pDelFb  = clamp (pDelFb  + mSpace * 0.3f, 0.0f, 0.95f);
 
         // QA I1: Apply master tone as LP filter on output
         float masterCutoff = 200.0f + masterTone * 18000.0f;
@@ -786,7 +1102,10 @@ public:
         // QA C6: Clear coupling buffer to prevent stale tail reads
         couplingBuffer.clear();
 
-        // 2. Process MIDI — trigger voices
+        // Hat choke mode (XVC parameter — can be disabled)
+        bool hatChokeEnabled = xvcHatChoke ? xvcHatChoke->load() >= 0.5f : true;
+
+        // 2. Process MIDI — trigger voices + note-off for ADSR
         for (const auto metadata : midi)
         {
             auto msg = metadata.getMessage();
@@ -795,13 +1114,19 @@ public:
                 int voiceIdx = noteToVoice (msg.getNoteNumber());
                 if (voiceIdx < 0) continue;
 
-                // Hat choke: closed hat (V3) chokes open hat (V4)
-                if (voiceIdx == 2) voices[3].choke();
+                // Hat choke: closed hat (V3) chokes open hat (V4) — XVC controlled
+                if (voiceIdx == 2 && hatChokeEnabled) voices[3].choke();
 
                 float vel = msg.getFloatVelocity();
                 voices[voiceIdx].triggerVoice (vel, vBlend[voiceIdx], vAlgo[voiceIdx],
                     vPitch[voiceIdx], vDecay[voiceIdx], vTone[voiceIdx],
-                    vSnap[voiceIdx], vBody[voiceIdx], vChar[voiceIdx]);
+                    vSnap[voiceIdx], vBody[voiceIdx], vChar[voiceIdx],
+                    vEnvShape[voiceIdx]);
+            }
+            else if (msg.isNoteOff())
+            {
+                int voiceIdx = noteToVoice (msg.getNoteNumber());
+                if (voiceIdx >= 0) voices[voiceIdx].releaseVoice();
             }
         }
 
@@ -817,11 +1142,12 @@ public:
             panGainR[v] = std::sqrt (0.5f * (1.0f + vPan[v]));
         }
 
-        // 4. Render all voices
+        // 4. Render all voices (with peak tracking for XVC)
         auto* outL = buffer.getWritePointer (0);
         auto* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer (1) : nullptr;
         auto* cplL = couplingBuffer.getWritePointer (0);
         auto* cplR = couplingBuffer.getWritePointer (1);
+        float blockPeaks[kNumVoices] = {};
 
         for (int s = 0; s < numSamples; ++s)
         {
@@ -832,6 +1158,8 @@ public:
                 if (!voices[v].active) continue;
 
                 float sample = voices[v].processSample (blendGainX[v], blendGainO[v], vAlgo[v]);
+                float absSamp = std::abs (sample * vLevel[v]);
+                if (absSamp > blockPeaks[v]) blockPeaks[v] = absSamp;
 
                 sumL += sample * vLevel[v] * panGainL[v];
                 sumR += sample * vLevel[v] * panGainR[v];
@@ -849,6 +1177,14 @@ public:
             sumL = masterFilter.processSample (sumL);
             sumR = masterFilterR.processSample (sumR);
 
+            // Character stage: grit (saturation) + warmth (LP)
+            characterStage.process (sumL, sumR, pCharGrit, pCharWarmth);
+
+            // FX chain: Delay → Reverb → LoFi
+            fxDelay.process (sumL, sumR, pDelTime, pDelFb, pDelMix);
+            fxReverb.process (sumL, sumR, pRevSize, pRevDecay, pRevMix);
+            fxLoFi.process (sumL, sumR, pLofiBits, pLofiMix);
+
             sumL *= masterLevel;
             sumR *= masterLevel;
 
@@ -858,7 +1194,10 @@ public:
             cplR[s] = sumR;
         }
 
-        // 4. Clear per-block state
+        // 4. Store voice peaks for next block's XVC
+        for (int v = 0; v < kNumVoices; ++v) voicePeaks[v] = blockPeaks[v];
+
+        // 5. Clear per-block state
         for (auto& v : voices) v.triggeredThisBlock = false;
         couplingFilterMod = 0.0f;
         couplingDecayMod = 0.0f;
@@ -912,10 +1251,35 @@ public:
             vp.character = apvts.getRawParameterValue (pre + "character");
             vp.level     = apvts.getRawParameterValue (pre + "level");
             vp.pan       = apvts.getRawParameterValue (pre + "pan");
+            envShapeParams[v] = apvts.getRawParameterValue (pre + "envShape");
         }
         percLevel = apvts.getRawParameterValue ("perc_level");
         percDrive = apvts.getRawParameterValue ("perc_drive");
         percTone  = apvts.getRawParameterValue ("perc_masterTone");
+
+        macroMachine = apvts.getRawParameterValue ("perc_macro_machine");
+        macroPunch   = apvts.getRawParameterValue ("perc_macro_punch");
+        macroSpace   = apvts.getRawParameterValue ("perc_macro_space");
+        macroMutate  = apvts.getRawParameterValue ("perc_macro_mutate");
+
+        xvcKickSnareFilter = apvts.getRawParameterValue ("perc_xvc_kick_to_snare_filter");
+        xvcSnareHatDecay   = apvts.getRawParameterValue ("perc_xvc_snare_to_hat_decay");
+        xvcKickTomPitch    = apvts.getRawParameterValue ("perc_xvc_kick_to_tom_pitch");
+        xvcSnarePercBlend  = apvts.getRawParameterValue ("perc_xvc_snare_to_perc_blend");
+        xvcHatChoke        = apvts.getRawParameterValue ("perc_xvc_hat_choke");
+        xvcGlobalAmount    = apvts.getRawParameterValue ("perc_xvc_global_amount");
+
+        charGrit   = apvts.getRawParameterValue ("perc_char_grit");
+        charWarmth = apvts.getRawParameterValue ("perc_char_warmth");
+
+        fxDelayTime     = apvts.getRawParameterValue ("perc_fx_delay_time");
+        fxDelayFeedback = apvts.getRawParameterValue ("perc_fx_delay_feedback");
+        fxDelayMix      = apvts.getRawParameterValue ("perc_fx_delay_mix");
+        fxReverbSize    = apvts.getRawParameterValue ("perc_fx_reverb_size");
+        fxReverbDecay   = apvts.getRawParameterValue ("perc_fx_reverb_decay");
+        fxReverbMix     = apvts.getRawParameterValue ("perc_fx_reverb_mix");
+        fxLofiBits      = apvts.getRawParameterValue ("perc_fx_lofi_bits");
+        fxLofiMix       = apvts.getRawParameterValue ("perc_fx_lofi_mix");
     }
 
     //-- Identity ----------------------------------------------------------------
@@ -928,6 +1292,10 @@ private:
     juce::AudioBuffer<float> couplingBuffer;
     CytomicSVF masterFilter;   // QA I1: master tone LP filter (L channel)
     CytomicSVF masterFilterR;  // R channel
+    OnsetCharacterStage characterStage;
+    OnsetDelay fxDelay;
+    OnsetReverb fxReverb;
+    OnsetLoFi fxLoFi;
     double sr = 44100.0;
     int blockSize = 512;
     int lastRenderedSamples = 0;
@@ -954,6 +1322,43 @@ private:
     std::atomic<float>* percLevel = nullptr;
     std::atomic<float>* percDrive = nullptr;
     std::atomic<float>* percTone  = nullptr;
+
+    // Per-voice envelope shape pointers
+    std::array<std::atomic<float>*, kNumVoices> envShapeParams {};
+
+    // Macro parameter pointers
+    std::atomic<float>* macroMachine = nullptr;
+    std::atomic<float>* macroPunch   = nullptr;
+    std::atomic<float>* macroSpace   = nullptr;
+    std::atomic<float>* macroMutate  = nullptr;
+
+    // Cross-Voice Coupling (XVC) parameter pointers
+    std::atomic<float>* xvcKickSnareFilter = nullptr;
+    std::atomic<float>* xvcSnareHatDecay   = nullptr;
+    std::atomic<float>* xvcKickTomPitch    = nullptr;
+    std::atomic<float>* xvcSnarePercBlend  = nullptr;
+    std::atomic<float>* xvcHatChoke        = nullptr;
+    std::atomic<float>* xvcGlobalAmount    = nullptr;
+
+    // FX parameter pointers
+    std::atomic<float>* fxDelayTime     = nullptr;
+    std::atomic<float>* fxDelayFeedback = nullptr;
+    std::atomic<float>* fxDelayMix      = nullptr;
+    std::atomic<float>* fxReverbSize    = nullptr;
+    std::atomic<float>* fxReverbDecay   = nullptr;
+    std::atomic<float>* fxReverbMix     = nullptr;
+    std::atomic<float>* fxLofiBits      = nullptr;
+    std::atomic<float>* fxLofiMix       = nullptr;
+
+    // Character stage parameter pointers
+    std::atomic<float>* charGrit   = nullptr;
+    std::atomic<float>* charWarmth = nullptr;
+
+    // XVC state: previous-block voice peak amplitudes
+    float voicePeaks[kNumVoices] = {};
+
+    // MUTATE macro RNG
+    OnsetNoiseGen mutateRng;
 
     //-- MIDI note to voice mapping ----------------------------------------------
     int noteToVoice (int note) const noexcept
@@ -1021,6 +1426,10 @@ private:
             params.push_back (std::make_unique<Float> (
                 juce::ParameterID (pre + "pan", 1), name + " Pan",
                 juce::NormalisableRange<float> (-1.0f, 1.0f), 0.0f));
+
+            params.push_back (std::make_unique<Choice> (
+                juce::ParameterID (pre + "envShape", 1), name + " Env",
+                juce::StringArray { "AD", "AHD", "ADSR" }, 0));
         }
 
         // Global parameters
@@ -1035,6 +1444,90 @@ private:
         params.push_back (std::make_unique<Float> (
             juce::ParameterID ("perc_masterTone", 1), "Perc Tone",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+
+        // Macros
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_macro_machine", 1), "Machine",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_macro_punch", 1), "Punch",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_macro_space", 1), "Space",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_macro_mutate", 1), "Mutate",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+
+        // Cross-Voice Coupling (XVC)
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_xvc_kick_to_snare_filter", 1), "XVC Kick>Snare Flt",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.15f));
+
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_xvc_snare_to_hat_decay", 1), "XVC Snare>Hat Dcy",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.10f));
+
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_xvc_kick_to_tom_pitch", 1), "XVC Kick>Tom Pch",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_xvc_snare_to_perc_blend", 1), "XVC Snare>Perc Bld",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_xvc_hat_choke", 1), "XVC Hat Choke",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 1.0f));
+
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_xvc_global_amount", 1), "XVC Amount",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+
+        // Character stage
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_char_grit", 1), "Perc Grit",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_char_warmth", 1), "Perc Warmth",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+
+        // FX rack
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_fx_delay_time", 1), "Perc Delay Time",
+            juce::NormalisableRange<float> (0.01f, 1.0f, 0.0f, 0.5f), 0.3f));
+
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_fx_delay_feedback", 1), "Perc Delay FB",
+            juce::NormalisableRange<float> (0.0f, 0.95f), 0.3f));
+
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_fx_delay_mix", 1), "Perc Delay Mix",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_fx_reverb_size", 1), "Perc Reverb Size",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.4f));
+
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_fx_reverb_decay", 1), "Perc Reverb Decay",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
+
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_fx_reverb_mix", 1), "Perc Reverb Mix",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_fx_lofi_bits", 1), "Perc LoFi Bits",
+            juce::NormalisableRange<float> (4.0f, 16.0f), 16.0f));
+
+        params.push_back (std::make_unique<Float> (
+            juce::ParameterID ("perc_fx_lofi_mix", 1), "Perc LoFi Mix",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
     }
 };
 

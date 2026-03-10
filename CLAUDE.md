@@ -3,10 +3,10 @@
 ## Product Identity
 
 XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
-It merges 6 character instruments into one unified creative environment where engines couple, collide,
+It merges 9 character instruments into one unified creative environment where engines couple, collide,
 and mutate into sounds impossible with any single synth.
 
-- **7 engine modules:** SNAP, MORPH, DUB, DRIFT, BOB, FAT, ONSET
+- **9 engine modules:** SNAP, MORPH, DUB, DRIFT, BOB, FAT, ONSET, OVERWORLD, OPAL
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** 1000 factory presets in `.xometa` format, 6 mood categories, 6D Sonic DNA
@@ -44,6 +44,8 @@ and mutate into sounds impossible with any single synth.
 | BOB | XOblongBob | Amber `#E9A84A` |
 | FAT | XObese | Hot Pink `#FF1493` |
 | ONSET | XOnset | Electric Blue `#0066FF` |
+| OVERWORLD | XOverworld | Neon Green `#39FF14` |
+| OPAL | XOpal | Lavender `#A78BFA` |
 
 ## Key Files
 

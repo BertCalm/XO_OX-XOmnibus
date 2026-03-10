@@ -39,6 +39,7 @@ target_sources(XOmnibus PRIVATE
     Source/Core/SynthEngine.h
     Source/Core/EngineRegistry.h
     Source/Core/MegaCouplingMatrix.h
+    Source/Core/MasterFXChain.h
     Source/Core/PresetManager.h
     Source/Core/MacroSystem.h
     Source/Core/SharedTransport.h
@@ -64,6 +65,7 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Fat/FatEngine.h
     Source/Engines/Onset/OnsetEngine.h
     Source/Engines/Overworld/OverworldEngine.h
+    Source/Engines/Opal/OpalEngine.h
 
     # UI (Gallery Model)
     Source/UI/XOmnibusEditor.h
@@ -74,8 +76,10 @@ target_sources(XOmnibus PRIVATE
 )
 
 # XOverworld DSP headers — included by OverworldEngine adapter
+# XOpal DSP headers — included by OpalEngine adapter
 target_include_directories(XOmnibus PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/../XOverworld/src"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../XOpal"
 )
 
 target_compile_definitions(XOmnibus PUBLIC
