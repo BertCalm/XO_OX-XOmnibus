@@ -69,6 +69,8 @@ Single source of truth. JSON files replacing all per-engine C++ presets and `.xo
       "type": "Amp->Filter", "amount": 0.4
     }]
   },
+  "recipe": null,                        // optional soft reference to recipe name (max 25 chars)
+  "parentPreset": null,                  // optional lineage — factory preset this derives from
   "sequencer": null                      // optional step sequencer data
 }
 ```

@@ -574,6 +574,8 @@ Single source of truth. JSON files replacing all per-engine C++ presets and `.xo
       "type": "Amp->Filter", "amount": 0.4
     }]
   },
+  "recipe": null,
+  "parentPreset": null,
   "sequencer": null,
   "surface": null
 }
@@ -583,6 +585,8 @@ Single source of truth. JSON files replacing all per-engine C++ presets and `.xo
 
 - Name: max 30 characters, unique across entire library
 - Engines: 1-3 active per preset
+- `recipe` (optional): soft reference to the recipe name this preset was built on (max 25 chars). Not a dependency — preset loads without the recipe present. Enables "show presets for this recipe" filtering.
+- `parentPreset` (optional): name of the factory preset this was derived from (max 30 chars). Enables lineage tracking. Flat lineage — variants of variants still reference the original factory preset.
 - Tags: minimum 3
 - Coupling types (enum): `Amp->Filter`, `Amp->Pitch`, `LFO->Pitch`, `Env->Morph`, `Audio->FM`, `Audio->Ring`, `Filter->Filter`, `Amp->Choke`, `Rhythm->Blend`, `Env->Decay`
 - Coupling intensity: `None`, `Subtle`, `Moderate`, `Deep`

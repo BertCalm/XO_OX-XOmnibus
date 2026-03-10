@@ -170,6 +170,18 @@
       "additionalProperties": false
     },
 
+    "recipe": {
+      "type": "string",
+      "maxLength": 25,
+      "description": "Soft reference to the recipe this preset was built on. Enables 'show presets for this recipe' filtering. Not a dependency — preset loads independently if recipe is missing."
+    },
+
+    "parentPreset": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Name of the factory preset this was derived from. Enables lineage tracking and 'show variants' browsing. Flat lineage: variants of variants still point to the original factory preset."
+    },
+
     "sequencer": {
       "type": "object",
       "description": "Optional step sequencer data",
