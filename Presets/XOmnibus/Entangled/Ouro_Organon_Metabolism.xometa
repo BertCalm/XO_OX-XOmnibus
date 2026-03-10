@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Chaos Metabolism",
+  "mood": "Entangled",
+  "engines": ["XOuroboros", "Organon"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ouroboros feeds chaotic audio into Organon's metabolic system. The organism digests strange attractors.",
+  "tags": ["coupled", "organic", "chaotic", "evolving"],
+  "macroLabels": ["CHAOS", "METABOLISM", "COUPLING", "SPACE"],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "XOuroboros": {
+      "ouro_topology": 1,
+      "ouro_rate": 95.0,
+      "ouro_chaosIndex": 0.5,
+      "ouro_leash": 0.35,
+      "ouro_theta": 0.0,
+      "ouro_phi": 0.4,
+      "ouro_damping": 0.3,
+      "ouro_injection": 0.0
+    },
+    "Organon": {
+      "org_metabolicRate": 0.4,
+      "org_entropy": 0.35,
+      "org_membrane": 0.6,
+      "org_cellDensity": 0.5,
+      "org_adaptation": 0.7,
+      "org_phasonShift": 0.3,
+      "org_lockIn": 0.0,
+      "org_level": 0.65
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "XOuroboros",
+        "engineB": "Organon",
+        "type": "Audio->FM",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.55,
+    "movement": 0.7,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  }
+}
