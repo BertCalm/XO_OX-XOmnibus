@@ -83,14 +83,17 @@ Performs Shannon Entropy analysis on the ingested signal:
 
 ### 2.3 Economy Stage (Control Rate — 2000 Hz)
 
-Tracks the organism's internal state:
+Tracks the organism's internal state via **Active Inference / Variational Free Energy minimization** (see Section 14 for full VFE detail):
 
-- **Free Energy Pool** (`freeEnergy`, 0.0–1.0): Accumulates when `entropyValue` is high (rich input). Depletes at a rate set by Metabolic Rate. When pool is full, the organism is "healthy" — harmonics are dense and stable. When depleted, harmonics thin out and become unstable.
-  - Accumulation: `freeEnergy += (entropyValue * signalFlux - metabolicCost) * dt`
-  - `metabolicCost` is derived from the current Metabolic Rate parameter.
-  - Clamped to [0.0, 1.0].
+- **Free Energy Pool** (`freeEnergy`, 0.0–1.0): Accumulates when `entropyValue` is high (rich input). Depletes at a rate set by Metabolic Rate, modulated by VFE surprise. When pool is full, the organism is "healthy" — harmonics are dense and stable. When depleted, harmonics thin out and become unstable.
+  - Intake: `entropyValue * signalFlux * adaptationGain * (1 + externalRhythmMod)`
+  - Cost: `effectiveMetabolicRate * 0.1` (where effective rate includes VFE surprise modulation)
+  - Accumulation: `freeEnergy += (intake - cost) * dt`, clamped to [0.0, 1.0]
+  - On note release: cost increases 4x (starvation)
 
-- **Free Energy Pool is internal state, NOT a user parameter.** The user observes it via a UI meter. The user influences it indirectly through Metabolic Rate (burn speed) and Signal Flux (intake gain). This resolves the ambiguity from the original document.
+- **VFE State** (5 internal variables): `predictedEntropy`, `entropyVariance`, `beliefRate`, `surprise`, `adaptationGain` — these drive the organism's adaptive behavior. The organism predicts its input entropy and adjusts when surprised.
+
+- **Free Energy Pool is internal state, NOT a user parameter.** The user observes it via a UI meter. The user influences it indirectly through Metabolic Rate (burn speed) and Signal Flux (intake gain). VFE is fully automatic — the organism learns on its own.
 
 ### 2.4 Anabolism Stage (Audio Rate)
 
@@ -154,7 +157,9 @@ The RK4 solver steps all 32 modes per sample. With SIMD vectorization (4-wide fl
 
 - **Free Energy Pool** is NOT a parameter. It is internal state displayed as a read-only meter in the UI.
 - **Noise Color** replaces the vague "Sub/Ultra" range from the original doc. It provides direct control over the internal noise substrate's character when in standalone mode, ensuring dry patches sound compelling.
-- **Phason Shift** uses normalized 0.0–1.0 range internally, displayed as 0°–360° in the UI.
+- **Phason Shift** uses normalized 0.0–1.0 range internally, displayed as 0°–360° in the UI. Each voice's metabolic control-rate counter is offset by `phasonShift * controlRateDiv`, creating temporal stagger between voices. At 0.0 all voices update in sync; at 0.5 voices are maximally spread. This produces chorus-like thickening and rhythmic pulsing when multiple voices sound simultaneously.
+- **Lock-in Strength** synchronizes the metabolic rate to SharedTransport tempo subdivisions. At 0.0 the metabolic rate is free-running. At 1.0 it quantizes to the nearest beat subdivision (quarter, eighth, sixteenth). The lock-in modulates the metabolic update timing via `getPhaseForDivision()`, creating tempo-synced pulsing without an explicit LFO.
+- **Membrane Porosity** controls a reverb/diffusion send level exposed via `getReverbSendLevel()`. The processor reads this value to route Organon's output to the shared reverb bus. At 0.0 the organism is sealed (fully dry). At 1.0 it's fully permeable (maximum reverb send). VFE surprise can modulate this — a surprised organism "sweats" more into the reverb.
 - All parameters use the `organon_` namespace prefix.
 
 ---
@@ -437,9 +442,49 @@ All 32 modes stored contiguously, aligned for 4-wide SIMD.
 
 ---
 
-## 14. Active Inference / VFE — DEFERRED TO v2
+## 14. Active Inference / Variational Free Energy (VFE) — IMPLEMENTED
 
-The Variational Free Energy minimization described in the original document (Section 2.2) is **deferred**. The v1 implementation uses the simpler entropy-driven Economy stage. VFE can be layered on top in v2 by replacing the linear `freeEnergy` accumulator with a proper Bayesian belief-update, where the organism attempts to predict its input and adjusts its harmonic structure to minimize prediction error. This is a natural extension but not required for the engine to feel "alive" — the metabolic cycle alone achieves that.
+The MetabolicEconomy now implements full Variational Free Energy minimization via Active Inference. The organism maintains a generative model of its input and adjusts internal state to minimize prediction error.
+
+### VFE Algorithm
+
+```
+VFE = precision_weighted_surprise + complexity_penalty
+    = (predicted_entropy - observed_entropy)^2 / variance + lambda * |belief_change_rate|^2
+```
+
+**Per control tick (2kHz):**
+
+1. **Prediction error (surprise):** `(observed_entropy - predicted_entropy)^2`
+2. **Precision weighting:** `1 / (entropy_variance + 0.01)` — confident predictions amplify surprise
+3. **VFE computation:** `precision * surprise + 0.1 * belief_rate^2` (complexity penalty stabilizes the organism)
+4. **Bayesian belief update:** `predicted_entropy += learning_rate * prediction_error` where `learning_rate = clamp(metabolicRate * 0.05, 0.001, 0.2)`
+5. **Variance tracking:** Exponential moving average of squared prediction errors
+6. **Adaptation gain:** High VFE → organism adapts faster (fight-or-flight). Low VFE → organism is settled (richer harmonics)
+
+### DSP Consequences
+
+| VFE State | Behavior |
+|---|---|
+| High surprise | Metabolic rate increases (vfeMod = 1 + surprise * 2), organism burns energy faster, spectral character shifts |
+| Low surprise | Organism settles, adaptation gain → 1.0, full catalyst drive applied, stable harmonic output |
+| Rapid belief change | Complexity penalty increases VFE, preventing oscillation between states |
+| Settled + fed | Richest harmonic output — all 32 modes fully energized with stable spectral distribution |
+
+### VFE Readouts (Available for Coupling + UI)
+
+- `getSurprise()` — squared prediction error (0.0 = predicted, high = shocked)
+- `getVFE()` — total variational free energy
+- `getAdaptationGain()` — how settled the organism is (1.0 = stable, 0.2 = adapting)
+- `getPredictedEntropy()` — the organism's current belief about expected input entropy
+
+### VFE Modulation Points in DSP
+
+- **Metabolic rate:** `effectiveRate *= (1.0 + surprise * 2.0)` — surprised organisms burn faster
+- **Isotope balance:** `effectiveIsotope += surprise * 0.15` — surprise shifts spectral character
+- **Catalyst drive:** `effectiveCatalyst *= adaptationGain` — settled organisms get full drive
+- **Stereo spread:** `spread = surprise * 0.15` — surprise widens the stereo image
+- **Energy intake:** `intake *= adaptationGain` — settled organisms extract more nutrition
 
 ---
 

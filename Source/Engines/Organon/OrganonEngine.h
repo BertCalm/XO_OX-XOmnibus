@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../Core/SharedTransport.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/EngineProfiler.h"
 #include "../../DSP/FastMath.h"
@@ -478,6 +479,9 @@ struct OrganonVoice
         std::memset (ingestionBuffer, 0, sizeof (ingestionBuffer));
     }
 
+    // Phason shift: per-voice phase offset for metabolic control-rate stagger
+    int phasonOffset = 0;
+
     void noteOn (int note, float vel, uint64_t time, double sampleRate) noexcept
     {
         active = true;
@@ -563,6 +567,22 @@ public:
         return activeVoiceCount.load (std::memory_order_relaxed);
     }
 
+    //-- Transport -------------------------------------------------------------
+
+    // Called by the processor to give Organon access to SharedTransport.
+    // Must be called before the first renderBlock().
+    void setSharedTransport (const SharedTransport* transport) noexcept
+    {
+        sharedTransport = transport;
+    }
+
+    // Reverb send level — read by the processor to route to shared reverb bus.
+    // Updated once per block in renderBlock().
+    float getReverbSendLevel() const noexcept
+    {
+        return reverbSendLevel.load (std::memory_order_relaxed);
+    }
+
     //-- Lifecycle -------------------------------------------------------------
 
     // Return the profiler for UI/diagnostic reads.
@@ -604,6 +624,8 @@ public:
         externalRhythmMod = 0.0f;
         externalDecayMod = 0.0f;
         couplingAudioActive = false;
+        phasonClock = 0.0f;
+        reverbSendLevel.store (0.0f, std::memory_order_relaxed);
     }
 
     //-- Audio -----------------------------------------------------------------
@@ -641,9 +663,102 @@ public:
             }
         }
 
+        // --- LOCK-IN: Sync metabolic rate to SharedTransport tempo ---
+        // lockIn 0.0 = free-running, 1.0 = fully quantized to nearest beat subdivision.
+        // We find the tempo subdivision closest to the current metabolic rate and
+        // crossfade between the free rate and the quantized rate.
+        float lockedMetabolicRate = metabolicRate;
+        float lockInTransportPhase = 0.0f;
+        if (lockIn > 0.001f && sharedTransport != nullptr)
+        {
+            double bpm = sharedTransport->getBPM();
+            if (bpm > 0.0)
+            {
+                // Convert metabolic rate (Hz) to the closest beat subdivision.
+                // beatFreq = BPM/60. Subdivisions: 1/4, 1/2, 1, 2, 4 beats.
+                float beatFreq = static_cast<float> (bpm / 60.0);
+                // Available subdivision rates (in Hz)
+                float subdivisions[5] = {
+                    beatFreq * 4.0f,   // 16th notes
+                    beatFreq * 2.0f,   // 8th notes
+                    beatFreq,          // quarter notes
+                    beatFreq * 0.5f,   // half notes
+                    beatFreq * 0.25f   // whole notes
+                };
+
+                // Find closest subdivision to current metabolic rate
+                float closestRate = subdivisions[0];
+                float closestDivision = 0.25f; // in beats
+                float bestDist = std::fabs (metabolicRate - subdivisions[0]);
+                float divisionBeats[5] = { 0.25f, 0.5f, 1.0f, 2.0f, 4.0f };
+                for (int i = 1; i < 5; ++i)
+                {
+                    float dist = std::fabs (metabolicRate - subdivisions[i]);
+                    if (dist < bestDist)
+                    {
+                        bestDist = dist;
+                        closestRate = subdivisions[i];
+                        closestDivision = divisionBeats[i];
+                    }
+                }
+
+                // Crossfade: free rate → quantized rate based on lockIn amount
+                lockedMetabolicRate = metabolicRate + lockIn * (closestRate - metabolicRate);
+
+                // Get transport phase for the locked division (used by phason clock)
+                lockInTransportPhase = static_cast<float> (
+                    sharedTransport->getPhaseForDivision (closestDivision));
+            }
+        }
+
         // Damping mapped from parameter (0.01-0.99) → actual gamma value
         // Higher param = more damping = shorter tail
         float gamma = dampingCoeff * 20.0f; // scale to useful range for ODE
+
+        // Phason Shift: compute per-voice metabolic rate modulation.
+        // Each voice gets an evenly-spaced phase offset; phasonShift controls
+        // the modulation depth. At 0.0 all voices share the same rate (no pulse).
+        // At 1.0 each voice pulses fully out of phase with the others.
+        // When lock-in is active, the phason clock syncs to transport phase.
+        float phasonMods[kMaxVoices];
+        if (phasonShift > 0.001f)
+        {
+            if (lockIn > 0.5f && lockInTransportPhase >= 0.0f)
+            {
+                // Lock phason clock to transport phase for tempo-synced pulsing
+                float targetPhase = lockInTransportPhase;
+                // Smooth transition to avoid clicks
+                float phaseDiff = targetPhase - phasonClock;
+                if (phaseDiff > 0.5f) phaseDiff -= 1.0f;
+                if (phaseDiff < -0.5f) phaseDiff += 1.0f;
+                phasonClock += phaseDiff * lockIn * 0.3f;
+                if (phasonClock < 0.0f) phasonClock += 1.0f;
+                if (phasonClock > 1.0f) phasonClock -= 1.0f;
+            }
+            else
+            {
+                // Free-running: advance at locked metabolic rate
+                float phasonCycleSamples = static_cast<float> (sr) / std::max (lockedMetabolicRate, 0.1f);
+                float phasonInc = static_cast<float> (numSamples) / phasonCycleSamples;
+                phasonClock += phasonInc;
+                if (phasonClock > 1.0f) phasonClock -= std::floor (phasonClock);
+            }
+
+            constexpr float twoPi = 6.28318530717958647692f;
+            for (int i = 0; i < kMaxVoices; ++i)
+            {
+                // Evenly space voices across the cycle
+                float voicePhase = phasonClock + static_cast<float> (i) / static_cast<float> (kMaxVoices);
+                if (voicePhase > 1.0f) voicePhase -= 1.0f;
+                // Sinusoidal modulation: ±phasonShift of metabolic rate
+                phasonMods[i] = std::sin (twoPi * voicePhase) * phasonShift;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < kMaxVoices; ++i)
+                phasonMods[i] = 0.0f;
+        }
 
         // Process each sample
         for (int s = 0; s < numSamples; ++s)
@@ -651,10 +766,14 @@ public:
             float mixL = 0.0f;
             float mixR = 0.0f;
 
+            int voiceIdx = 0;
             for (auto& voice : voices)
             {
                 if (!voice.active)
+                {
+                    ++voiceIdx;
                     continue;
+                }
 
                 // Set entropy window size based on enzyme selectivity
                 voice.entropy.setWindowSize (enzymeSelect);
@@ -686,7 +805,11 @@ public:
                 voice.entropy.pushSample (ingested);
 
                 // --- ECONOMY ---
-                voice.economy.update (metabolicRate, signalFlux,
+                // Locked + phason-shifted metabolic rate: each voice pulses at a different phase
+                float voiceMetabolicRate = lockedMetabolicRate * (1.0f + phasonMods[voiceIdx]);
+                if (voiceMetabolicRate < 0.05f) voiceMetabolicRate = 0.05f;
+
+                voice.economy.update (voiceMetabolicRate, signalFlux,
                                       voice.entropy.getEntropy(),
                                       externalRhythmMod, externalDecayMod,
                                       voice.released);
@@ -744,6 +867,8 @@ public:
                 float spread = voice.economy.getSurprise() * 0.15f;
                 mixL += sample * (1.0f - spread);
                 mixR += sample * (1.0f + spread);
+
+                ++voiceIdx;
             }
 
             // Cache output for coupling
@@ -765,11 +890,27 @@ public:
         externalDecayMod = 0.0f;
         couplingAudioActive = false;
 
-        // Update active voice count (safe to read from message thread)
+        // Update active voice count and membrane reverb send level
         int count = 0;
+        float avgSurprise = 0.0f;
         for (const auto& voice : voices)
-            if (voice.active) ++count;
+        {
+            if (voice.active)
+            {
+                ++count;
+                avgSurprise += voice.economy.getSurprise();
+            }
+        }
         activeVoiceCount.store (count, std::memory_order_relaxed);
+
+        // Membrane porosity → reverb send level
+        // Base send = membrane param, modulated by average surprise across voices
+        // Surprised organisms "sweat" more into the reverb (up to +30% extra send)
+        if (count > 0)
+            avgSurprise /= static_cast<float> (count);
+        float sendLevel = membrane + avgSurprise * 0.3f;
+        if (sendLevel > 1.0f) sendLevel = 1.0f;
+        reverbSendLevel.store (sendLevel, std::memory_order_relaxed);
     }
 
     //-- Coupling --------------------------------------------------------------
@@ -981,6 +1122,15 @@ private:
     // Output cache for coupling reads
     std::vector<float> outputCacheL;
     std::vector<float> outputCacheR;
+
+    // Phason Shift clock (0.0-1.0, advances at metabolic rate)
+    float phasonClock = 0.0f;
+
+    // Lock-in: pointer to shared transport (set externally by processor)
+    const SharedTransport* sharedTransport = nullptr;
+
+    // Membrane: reverb send level computed per block (read by processor)
+    std::atomic<float> reverbSendLevel { 0.0f };
 
     // Coupling accumulators (reset after each block)
     float externalPitchMod = 0.0f;
