@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Dub Laboratory",
+  "description": "Three-engine dub production topology. SNAP provides percussive triggers, DUB processes them through tape delay and spring reverb, DRIFT adds psychedelic undertow. A complete dub workstation in one recipe.",
+  "author": "XO_OX Designs",
+  "tags": ["dub", "production", "psychedelic", "delay"],
+  "category": "Production",
+
+  "slots": [
+    { "slot": 0, "engine": "Snap" },
+    { "slot": 1, "engine": "Dub" },
+    { "slot": 2, "engine": "Drift" }
+  ],
+
+  "coupling": {
+    "routingMode": "Independent",
+    "pairs": [
+      {
+        "engineA": "Snap",
+        "engineB": "Dub",
+        "type": "AmpToFilter",
+        "amount": 0.5
+      },
+      {
+        "engineA": "Dub",
+        "engineB": "Drift",
+        "type": "AudioToFM",
+        "amount": 0.25
+      },
+      {
+        "engineA": "Drift",
+        "engineB": "Dub",
+        "type": "FilterToFilter",
+        "amount": 0.3
+      }
+    ]
+  },
+
+  "macroLabels": ["ATTACK", "DUB DEPTH", "COUPLING", "SPACE"],
+
+  "macroMappings": [
+    { "macro": 0, "target": "snap_attackSharp", "range": [0.2, 1.0] },
+    { "macro": 0, "target": "snap_decayTime", "range": [0.05, 0.4] },
+    { "macro": 1, "target": "dub_sendAmount", "range": [0.0, 0.9] },
+    { "macro": 1, "target": "dub_feedbackAmount", "range": [0.1, 0.75] },
+    { "macro": 1, "target": "drift_climaxPosition", "range": [0.0, 0.5] },
+    { "macro": 2, "target": "_coupling_amount_0", "range": [0.0, 1.0] },
+    { "macro": 2, "target": "_coupling_amount_1", "range": [0.0, 0.7] },
+    { "macro": 2, "target": "_coupling_amount_2", "range": [0.0, 0.8] },
+    { "macro": 3, "target": "master_reverbMix", "range": [0.0, 0.6] },
+    { "macro": 3, "target": "drift_spaceMix", "range": [0.1, 0.8] }
+  ],
+
+  "defaultDNA": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.7,
+    "density": 0.5,
+    "space": 0.8,
+    "aggression": 0.3
+  }
+}

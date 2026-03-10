@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Industrial Press",
+  "description": "Three engines fighting for space. FAT's heavyweight samples meet ONSET's circuit drums and SNAP's percussive synthesis. Ring modulation and choke coupling create metallic, aggressive textures that punch through any mix.",
+  "author": "XO_OX Designs",
+  "tags": ["drums", "industrial", "aggressive", "metallic"],
+  "category": "Percussion",
+
+  "slots": [
+    { "slot": 0, "engine": "Fat" },
+    { "slot": 1, "engine": "Onset" },
+    { "slot": 2, "engine": "Snap" }
+  ],
+
+  "coupling": {
+    "routingMode": "Independent",
+    "pairs": [
+      {
+        "engineA": "Fat",
+        "engineB": "Onset",
+        "type": "AudioToRing",
+        "amount": 0.3
+      },
+      {
+        "engineA": "Onset",
+        "engineB": "Snap",
+        "type": "AmpToChoke",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Snap",
+        "engineB": "Fat",
+        "type": "EnvToDecay",
+        "amount": 0.4
+      }
+    ]
+  },
+
+  "macroLabels": ["GRIT", "PATTERN", "COUPLING", "CRUSH"],
+
+  "macroMappings": [
+    { "macro": 0, "target": "fat_mojoAmount", "range": [0.0, 1.0] },
+    { "macro": 0, "target": "snap_fmDepth", "range": [0.0, 0.7] },
+    { "macro": 1, "target": "onset_circuitBlend", "range": [0.0, 1.0] },
+    { "macro": 1, "target": "onset_algoSelect", "range": [0.0, 1.0] },
+    { "macro": 2, "target": "_coupling_amount_0", "range": [0.0, 1.0] },
+    { "macro": 2, "target": "_coupling_amount_1", "range": [0.0, 1.0] },
+    { "macro": 2, "target": "_coupling_amount_2", "range": [0.0, 0.8] },
+    { "macro": 3, "target": "master_reverbMix", "range": [0.0, 0.3] },
+    { "macro": 3, "target": "fat_filterDrive", "range": [0.0, 0.9] }
+  ],
+
+  "defaultDNA": {
+    "brightness": 0.6,
+    "warmth": 0.3,
+    "movement": 0.5,
+    "density": 0.8,
+    "space": 0.2,
+    "aggression": 0.9
+  }
+}

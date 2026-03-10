@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Ghost Orchestra",
+  "description": "Three pad engines creating shifting harmonic landscapes. MORPH's wavetable blooms flow through DRIFT's psychedelic Climax system while FAT adds orchestral density. Cascaded filter coupling creates timbral movement no single engine can achieve.",
+  "author": "XO_OX Designs",
+  "tags": ["pads", "orchestral", "evolving", "cinematic"],
+  "category": "Pads & Textures",
+
+  "slots": [
+    { "slot": 0, "engine": "Morph" },
+    { "slot": 1, "engine": "Drift" },
+    { "slot": 2, "engine": "Fat" }
+  ],
+
+  "coupling": {
+    "routingMode": "Independent",
+    "pairs": [
+      {
+        "engineA": "Morph",
+        "engineB": "Drift",
+        "type": "EnvToMorph",
+        "amount": 0.35
+      },
+      {
+        "engineA": "Drift",
+        "engineB": "Fat",
+        "type": "LFOToPitch",
+        "amount": 0.12
+      },
+      {
+        "engineA": "Fat",
+        "engineB": "Morph",
+        "type": "FilterToFilter",
+        "amount": 0.25
+      }
+    ]
+  },
+
+  "macroLabels": ["BLOOM", "JOURNEY", "COUPLING", "SPACE"],
+
+  "macroMappings": [
+    { "macro": 0, "target": "morph_morphPosition", "range": [0.0, 1.0] },
+    { "macro": 0, "target": "fat_layerBlend", "range": [0.2, 0.8] },
+    { "macro": 1, "target": "drift_climaxPosition", "range": [0.0, 1.0] },
+    { "macro": 1, "target": "morph_lfoRate", "range": [0.1, 2.0] },
+    { "macro": 2, "target": "_coupling_amount_0", "range": [0.0, 1.0] },
+    { "macro": 2, "target": "_coupling_amount_1", "range": [0.0, 0.4] },
+    { "macro": 2, "target": "_coupling_amount_2", "range": [0.0, 0.7] },
+    { "macro": 3, "target": "master_reverbMix", "range": [0.2, 0.9] },
+    { "macro": 3, "target": "master_chorusMix", "range": [0.0, 0.5] },
+    { "macro": 3, "target": "drift_spaceMix", "range": [0.2, 1.0] }
+  ],
+
+  "defaultDNA": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.8,
+    "density": 0.7,
+    "space": 0.9,
+    "aggression": 0.1
+  }
+}

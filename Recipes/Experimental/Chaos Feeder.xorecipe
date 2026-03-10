@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Chaos Feeder",
+  "description": "Four-slot feedback topology. ONSET triggers rhythmic events, FAT ring-modulates them into metallic textures, DRIFT warps pitch into alien territory, DUB feeds the result back through tape delay. A self-modulating rig where every engine reacts to the others.",
+  "author": "XO_OX Designs",
+  "tags": ["experimental", "feedback", "glitch", "reactive"],
+  "category": "Experimental",
+
+  "slots": [
+    { "slot": 0, "engine": "Onset" },
+    { "slot": 1, "engine": "Fat" },
+    { "slot": 2, "engine": "Drift" },
+    { "slot": 3, "engine": "Dub" }
+  ],
+
+  "coupling": {
+    "routingMode": "Independent",
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Fat",
+        "type": "AudioToRing",
+        "amount": 0.4
+      },
+      {
+        "engineA": "Fat",
+        "engineB": "Drift",
+        "type": "AudioToFM",
+        "amount": 0.3
+      },
+      {
+        "engineA": "Drift",
+        "engineB": "Dub",
+        "type": "FilterToFilter",
+        "amount": 0.35
+      },
+      {
+        "engineA": "Dub",
+        "engineB": "Onset",
+        "type": "RhythmToBlend",
+        "amount": 0.25
+      },
+      {
+        "engineA": "Onset",
+        "engineB": "Drift",
+        "type": "AmpToPitch",
+        "amount": 0.2
+      }
+    ]
+  },
+
+  "macroLabels": ["CHAOS", "FEEDBACK", "COUPLING", "SPACE"],
+
+  "macroMappings": [
+    { "macro": 0, "target": "drift_climaxPosition", "range": [0.0, 1.0] },
+    { "macro": 0, "target": "fat_mojoAmount", "range": [0.0, 1.0] },
+    { "macro": 0, "target": "onset_algoSelect", "range": [0.0, 1.0] },
+    { "macro": 1, "target": "dub_feedbackAmount", "range": [0.2, 0.9] },
+    { "macro": 1, "target": "dub_sendAmount", "range": [0.3, 1.0] },
+    { "macro": 2, "target": "_coupling_amount_0", "range": [0.0, 1.0] },
+    { "macro": 2, "target": "_coupling_amount_1", "range": [0.0, 1.0] },
+    { "macro": 2, "target": "_coupling_amount_2", "range": [0.0, 1.0] },
+    { "macro": 2, "target": "_coupling_amount_3", "range": [0.0, 0.7] },
+    { "macro": 2, "target": "_coupling_amount_4", "range": [0.0, 0.6] },
+    { "macro": 3, "target": "master_reverbMix", "range": [0.0, 0.5] },
+    { "macro": 3, "target": "drift_spaceMix", "range": [0.0, 0.7] }
+  ],
+
+  "defaultDNA": {
+    "brightness": 0.5,
+    "warmth": 0.3,
+    "movement": 0.9,
+    "density": 0.7,
+    "space": 0.5,
+    "aggression": 0.8
+  }
+}

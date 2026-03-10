@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Liquid Keys",
+  "description": "Expressive melodic instrument where BOB's tactile warmth meets MORPH's blooming wavetables. LFO cross-modulation creates a living, breathing keyboard feel.",
+  "author": "XO_OX Designs",
+  "tags": ["keys", "melodic", "expressive", "warm"],
+  "category": "Bass & Keys",
+
+  "slots": [
+    { "slot": 0, "engine": "Bob" },
+    { "slot": 1, "engine": "Morph" }
+  ],
+
+  "coupling": {
+    "routingMode": "Independent",
+    "pairs": [
+      {
+        "engineA": "Bob",
+        "engineB": "Morph",
+        "type": "LFOToPitch",
+        "amount": 0.15
+      },
+      {
+        "engineA": "Morph",
+        "engineB": "Bob",
+        "type": "EnvToMorph",
+        "amount": 0.4
+      }
+    ]
+  },
+
+  "macroLabels": ["CHARACTER", "SHIMMER", "COUPLING", "SPACE"],
+
+  "macroMappings": [
+    { "macro": 0, "target": "bob_curiosity", "range": [0.0, 1.0] },
+    { "macro": 0, "target": "morph_morphPosition", "range": [0.0, 0.5] },
+    { "macro": 1, "target": "morph_brightness", "range": [0.2, 0.9] },
+    { "macro": 1, "target": "bob_fltCutoff", "range": [2000, 12000] },
+    { "macro": 2, "target": "_coupling_amount_0", "range": [0.0, 0.5] },
+    { "macro": 2, "target": "_coupling_amount_1", "range": [0.0, 1.0] },
+    { "macro": 3, "target": "master_reverbMix", "range": [0.1, 0.7] },
+    { "macro": 3, "target": "master_chorusMix", "range": [0.0, 0.4] }
+  ],
+
+  "defaultDNA": {
+    "brightness": 0.6,
+    "warmth": 0.7,
+    "movement": 0.5,
+    "density": 0.4,
+    "space": 0.4,
+    "aggression": 0.1
+  }
+}
