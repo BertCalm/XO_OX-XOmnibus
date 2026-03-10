@@ -290,6 +290,27 @@ private:
 };
 
 //==============================================================================
+// Coupling type → short label, used by both OverviewPanel and CouplingPanel.
+inline juce::String couplingTypeLabel(CouplingType t)
+{
+    switch (t) {
+        case CouplingType::AmpToFilter:      return "Amp->F";
+        case CouplingType::AmpToPitch:       return "Amp->P";
+        case CouplingType::LFOToPitch:       return "LFO->P";
+        case CouplingType::EnvToMorph:       return "Env->M";
+        case CouplingType::AudioToFM:        return "Au->FM";
+        case CouplingType::AudioToRing:      return "Ring";
+        case CouplingType::FilterToFilter:   return "F->F";
+        case CouplingType::AmpToChoke:       return "Choke";
+        case CouplingType::RhythmToBlend:    return "R->B";
+        case CouplingType::EnvToDecay:       return "Env->D";
+        case CouplingType::PitchToPitch:     return "P->P";
+        case CouplingType::AudioToWavetable: return "Au->W";
+        default:                             return "?";
+    }
+}
+
+//==============================================================================
 // OverviewPanel — right-side content when no engine is selected.
 class OverviewPanel : public juce::Component
 {
@@ -375,14 +396,67 @@ public:
             }
         }
 
-        // "COUPLING ACTIVE" label if multiple engines
-        if (active.size() >= 2)
+        // Coupling route visualization
+        auto routes = processor.getCouplingMatrix().getRoutes();
+
+        if (!routes.empty())
         {
-            g.setColour(get(xoGold).withAlpha(0.6f));
-            g.setFont(juce::Font(8.5f).boldened());
-            g.drawText("COUPLING ACTIVE",
-                       b.withY(chainY + pillH * 0.5f + 10.0f).withHeight(14.0f).toNearestInt(),
-                       juce::Justification::centred);
+            float matY = chainY + pillH * 0.5f + 18.0f;
+            float cellW = 88.0f, cellH = 18.0f;
+            int numActive = (int)std::count_if(routes.begin(), routes.end(),
+                                               [](const auto& r){ return r.active; });
+            if (numActive > 0)
+            {
+                g.setColour(get(xoGold).withAlpha(0.55f));
+                g.setFont(juce::Font(8.0f).boldened());
+                g.drawText("COUPLING ROUTES (" + juce::String(numActive) + ")",
+                           b.withY(matY).withHeight(12.0f).toNearestInt(),
+                           juce::Justification::centred);
+                matY += 14.0f;
+
+                for (const auto& route : routes)
+                {
+                    if (!route.active) continue;
+                    auto* src = processor.getEngine(route.sourceSlot);
+                    auto* dst = processor.getEngine(route.destSlot);
+                    if (!src || !dst) continue;
+
+                    juce::String rowText = src->getEngineId().substring(0, 4).toUpperCase()
+                                          + " -> "
+                                          + dst->getEngineId().substring(0, 4).toUpperCase()
+                                          + "  " + couplingTypeLabel(route.type)
+                                          + "  (" + juce::String(route.amount, 2) + ")";
+
+                    auto rowBounds = b.withY(matY).withHeight(cellH).toNearestInt();
+                    rowBounds = rowBounds.withLeft(rowBounds.getCentreX() - (int)(cellW * 1.4f))
+                                        .withWidth((int)(cellW * 2.8f));
+
+                    juce::Colour routeColor = route.isNormalled
+                        ? get(borderGray).darker(0.1f)
+                        : get(xoGold).withAlpha(0.8f);
+
+                    g.setColour(routeColor.withAlpha(0.12f));
+                    g.fillRoundedRectangle(rowBounds.toFloat(), 4.0f);
+                    g.setColour(routeColor.withAlpha(0.45f));
+                    g.drawRoundedRectangle(rowBounds.toFloat().reduced(0.5f), 4.0f, 1.0f);
+
+                    g.setColour(routeColor);
+                    g.setFont(juce::Font(9.0f));
+                    g.drawText(rowText, rowBounds.reduced(6, 0),
+                               juce::Justification::centredLeft, true);
+
+                    matY += cellH + 2.0f;
+                    if (matY + cellH > b.getBottom() - 8.0f) break;
+                }
+            }
+            else
+            {
+                g.setColour(get(textMid).withAlpha(0.3f));
+                g.setFont(juce::Font(9.0f));
+                g.drawText("No active coupling routes",
+                           b.withY(chainY + pillH * 0.5f + 10.0f).withHeight(16.0f).toNearestInt(),
+                           juce::Justification::centred);
+            }
         }
     }
 
@@ -408,8 +482,15 @@ public:
     void refresh()
     {
         auto* eng = processor.getEngine(slot);
-        hasEngine = (eng != nullptr);
-        engineId  = hasEngine ? eng->getEngineId() : juce::String{};
+        bool newHasEngine = (eng != nullptr);
+        juce::String newId = newHasEngine ? eng->getEngineId() : juce::String{};
+
+        // Only repaint when state actually changed — avoids idle repaint overhead.
+        if (newHasEngine == hasEngine && newId == engineId)
+            return;
+
+        hasEngine = newHasEngine;
+        engineId  = newId;
         accent    = hasEngine ? eng->getAccentColour()
                               : GalleryColors::get(GalleryColors::emptySlot);
         repaint();
@@ -484,6 +565,7 @@ private:
             {"Fat",       juce::Colour(0xFFFF1493)},
             {"Onset",     juce::Colour(0xFF0066FF)},
             {"Overworld", juce::Colour(0xFF39FF14)},
+            {"Opal",      juce::Colour(0xFFA78BFA)},
         };
 
         juce::PopupMenu menu;
@@ -501,7 +583,7 @@ private:
             [this](int result)
             {
                 static const char* ids[] = {
-                    "Snap","Morph","Dub","Drift","Bob","Fat","Onset","Overworld"
+                    "Snap","Morph","Dub","Drift","Bob","Fat","Onset","Overworld","Opal"
                 };
                 if (result >= 1 && result <= (int)std::size(ids))
                 {
@@ -604,6 +686,18 @@ public:
         masterLbl.setBounds(mx, b.getY() + 45, 44, lh);
     }
 
+    // Called by PresetBrowserStrip when a preset with custom macroLabels is loaded.
+    void setLabels(const juce::StringArray& labels)
+    {
+        static const char* defaults[4] = {"CHARACTER","MOVEMENT","COUPLING","SPACE"};
+        for (int i = 0; i < 4; ++i)
+        {
+            auto text = (i < labels.size() && labels[i].isNotEmpty())
+                            ? labels[i] : juce::String(defaults[i]);
+            lbls[i].setText(text, juce::dontSendNotification);
+        }
+    }
+
 private:
     std::array<juce::Slider, 4> knobs;
     std::array<juce::Label,  4> lbls;
@@ -613,6 +707,538 @@ private:
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> masterAttach;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MacroSection)
+};
+
+//==============================================================================
+// AdvancedFXPanel — shown in a CallOutBox for secondary FX parameters.
+// Hosts 4 knobs: reverb size, comp ratio, comp attack, comp release.
+class AdvancedFXPanel : public juce::Component
+{
+public:
+    explicit AdvancedFXPanel(juce::AudioProcessorValueTreeState& apvts)
+    {
+        struct Def { const char* id; const char* label; };
+        static constexpr Def defs[4] = {
+            {"master_reverbSize",  "SIZE"},
+            {"master_compRatio",   "RATIO"},
+            {"master_compAttack",  "ATTACK"},
+            {"master_compRelease", "RELEASE"},
+        };
+        for (int i = 0; i < 4; ++i)
+        {
+            knobs[i].setSliderStyle(juce::Slider::RotaryVerticalDrag);
+            knobs[i].setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
+            knobs[i].setColour(juce::Slider::rotarySliderFillColourId,
+                               GalleryColors::get(GalleryColors::textMid).withAlpha(0.75f));
+            addAndMakeVisible(knobs[i]);
+            attach[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+                apvts, defs[i].id, knobs[i]);
+
+            lbls[i].setText(defs[i].label, juce::dontSendNotification);
+            lbls[i].setFont(juce::Font(8.5f).boldened());
+            lbls[i].setColour(juce::Label::textColourId,
+                              GalleryColors::get(GalleryColors::textMid));
+            lbls[i].setJustificationType(juce::Justification::centred);
+            addAndMakeVisible(lbls[i]);
+        }
+        setSize(256, 96);
+    }
+
+    void paint(juce::Graphics& g) override
+    {
+        using namespace GalleryColors;
+        g.fillAll(get(shellWhite));
+        g.setColour(get(textMid).withAlpha(0.40f));
+        g.setFont(juce::Font(8.0f).boldened());
+        g.drawText("ADVANCED  ·  REVERB + COMP",
+                   getLocalBounds().removeFromTop(14).reduced(8, 0),
+                   juce::Justification::centredLeft);
+    }
+
+    void resized() override
+    {
+        auto b = getLocalBounds().reduced(8, 4);
+        b.removeFromTop(14);
+        int cw = b.getWidth() / 4;
+        for (int i = 0; i < 4; ++i)
+        {
+            auto col = b.removeFromLeft(cw);
+            int kh = 44;
+            int ky = col.getCentreY() - (kh + 13) / 2;
+            knobs[i].setBounds(col.getCentreX() - kh / 2, ky, kh, kh);
+            lbls[i].setBounds(col.getX(), ky + kh + 2, col.getWidth(), 12);
+        }
+    }
+
+private:
+    std::array<juce::Slider, 4> knobs;
+    std::array<juce::Label, 4>  lbls;
+    std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>, 4> attach;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AdvancedFXPanel)
+};
+
+//==============================================================================
+// MasterFXSection — 3 primary knobs (SAT DRIVE, REVERB MIX, COMP GLUE) +
+// ADV button that opens a CallOutBox for the 4 secondary parameters.
+// Always visible at the bottom of the Gallery Model.
+class MasterFXSection : public juce::Component
+{
+public:
+    explicit MasterFXSection(juce::AudioProcessorValueTreeState& apvts) : myApvts(apvts)
+    {
+        struct Def { const char* id; const char* label; const char* section; };
+        static constexpr Def defs[3] = {
+            {"master_satDrive",  "DRIVE", "SAT"},
+            {"master_reverbMix", "MIX",   "REVERB"},
+            {"master_compMix",   "GLUE",  "COMP"},
+        };
+        for (int i = 0; i < 3; ++i)
+        {
+            knobs[i].setSliderStyle(juce::Slider::RotaryVerticalDrag);
+            knobs[i].setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
+            knobs[i].setColour(juce::Slider::rotarySliderFillColourId,
+                               GalleryColors::get(GalleryColors::textMid).withAlpha(0.7f));
+            addAndMakeVisible(knobs[i]);
+            attach[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+                apvts, defs[i].id, knobs[i]);
+
+            lbls[i].setText(defs[i].label, juce::dontSendNotification);
+            lbls[i].setFont(juce::Font(8.5f).boldened());
+            lbls[i].setColour(juce::Label::textColourId,
+                              GalleryColors::get(GalleryColors::textMid));
+            lbls[i].setJustificationType(juce::Justification::centred);
+            addAndMakeVisible(lbls[i]);
+
+            sectionLbls[i].setText(defs[i].section, juce::dontSendNotification);
+            sectionLbls[i].setFont(juce::Font(7.0f));
+            sectionLbls[i].setColour(juce::Label::textColourId,
+                                     GalleryColors::get(GalleryColors::textMid).withAlpha(0.45f));
+            sectionLbls[i].setJustificationType(juce::Justification::centred);
+            addAndMakeVisible(sectionLbls[i]);
+        }
+
+        advBtn.setButtonText("ADV");
+        advBtn.setTooltip("Reverb Size \xc2\xb7 Comp Ratio, Attack, Release");
+        advBtn.setColour(juce::TextButton::buttonColourId,
+                         GalleryColors::get(GalleryColors::shellWhite));
+        advBtn.setColour(juce::TextButton::textColourOffId,
+                         GalleryColors::get(GalleryColors::textMid));
+        advBtn.onClick = [this] { showAdvanced(); };
+        addAndMakeVisible(advBtn);
+    }
+
+    void paint(juce::Graphics& g) override
+    {
+        using namespace GalleryColors;
+        auto b = getLocalBounds().toFloat();
+        g.setColour(get(shellWhite).darker(0.03f));
+        g.fillRoundedRectangle(b, 6.0f);
+        g.setColour(get(borderGray));
+        g.drawRoundedRectangle(b.reduced(0.5f), 6.0f, 1.0f);
+
+        // Subtle dividers between the three sections
+        g.setColour(get(borderGray).withAlpha(0.5f));
+        if (divX[0] > 0)
+        {
+            g.drawLine((float)divX[0], 8.0f, (float)divX[0], (float)getHeight() - 8, 1.0f);
+            g.drawLine((float)divX[1], 8.0f, (float)divX[1], (float)getHeight() - 8, 1.0f);
+        }
+    }
+
+    void resized() override
+    {
+        auto b = getLocalBounds().reduced(6, 4);
+        advBtn.setBounds(b.removeFromRight(38).withSizeKeepingCentre(36, 20));
+
+        int cw = b.getWidth() / 3;
+        divX[0] = b.getX() + cw;
+        divX[1] = b.getX() + 2 * cw;
+
+        for (int i = 0; i < 3; ++i)
+        {
+            auto col = b.removeFromLeft(cw);
+            int kh = 44, lh = 12, sh = 10;
+            int ky = col.getCentreY() - (kh + lh) / 2;
+            knobs[i].setBounds(col.getCentreX() - kh / 2, ky, kh, kh);
+            lbls[i].setBounds(col.getX(), ky + kh + 2, col.getWidth(), lh);
+            sectionLbls[i].setBounds(col.getX(), col.getY() + 2, col.getWidth(), sh);
+        }
+    }
+
+private:
+    void showAdvanced()
+    {
+        juce::CallOutBox::launchAsynchronously(
+            std::make_unique<AdvancedFXPanel>(myApvts),
+            advBtn.getScreenBounds(),
+            nullptr);
+    }
+
+    juce::AudioProcessorValueTreeState& myApvts;
+    std::array<juce::Slider, 3> knobs;
+    std::array<juce::Label, 3>  lbls;
+    std::array<juce::Label, 3>  sectionLbls;
+    std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>, 3> attach;
+    juce::TextButton advBtn;
+    int divX[2] = {0, 0};
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MasterFXSection)
+};
+
+//==============================================================================
+// PresetBrowserPanel — full preset browser shown in a CallOutBox.
+// Provides mood tabs + name search + scrollable list.
+// Calls onPresetSelected callback when the user clicks a preset row.
+class PresetBrowserPanel : public juce::Component,
+                           public juce::ListBoxModel
+{
+public:
+    PresetBrowserPanel(const PresetManager& pm,
+                       std::function<void(const PresetData&)> onSelect)
+        : presetManager(pm), onPresetSelected(std::move(onSelect))
+    {
+        // Search field
+        searchField.setTextToShowWhenEmpty("Search presets\xe2\x80\xa6",
+                                           GalleryColors::get(GalleryColors::textMid).withAlpha(0.4f));
+        searchField.setColour(juce::TextEditor::backgroundColourId,
+                              GalleryColors::get(GalleryColors::slotBg));
+        searchField.setColour(juce::TextEditor::outlineColourId,
+                              GalleryColors::get(GalleryColors::borderGray));
+        searchField.setColour(juce::TextEditor::textColourId,
+                              GalleryColors::get(GalleryColors::textDark));
+        searchField.setFont(juce::Font(11.0f));
+        searchField.onTextChange = [this] { updateFilter(); };
+        addAndMakeVisible(searchField);
+
+        // Mood filter buttons (ALL = index 0, then 6 moods)
+        static const char* moodLabels[] = {
+            "ALL", "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether"
+        };
+        for (int i = 0; i < kNumMoods; ++i)
+        {
+            moodBtns[i].setButtonText(moodLabels[i]);
+            moodBtns[i].setClickingTogglesState(false);
+            moodBtns[i].setColour(juce::TextButton::buttonColourId,
+                                  GalleryColors::get(GalleryColors::shellWhite));
+            moodBtns[i].setColour(juce::TextButton::textColourOffId,
+                                  GalleryColors::get(GalleryColors::textMid));
+            moodBtns[i].setColour(juce::TextButton::buttonOnColourId,
+                                  GalleryColors::get(GalleryColors::xoGold).withAlpha(0.2f));
+            moodBtns[i].onClick = [this, i]
+            {
+                activeMood = i;
+                for (int j = 0; j < kNumMoods; ++j)
+                    moodBtns[j].setToggleState(j == i, juce::dontSendNotification);
+                updateFilter();
+            };
+            addAndMakeVisible(moodBtns[i]);
+        }
+        moodBtns[0].setToggleState(true, juce::dontSendNotification);
+
+        // Preset list
+        listBox.setModel(this);
+        listBox.setRowHeight(24);
+        listBox.setColour(juce::ListBox::backgroundColourId,
+                          GalleryColors::get(GalleryColors::slotBg));
+        listBox.setColour(juce::ListBox::outlineColourId,
+                          GalleryColors::get(GalleryColors::borderGray));
+        listBox.setOutlineThickness(1);
+        addAndMakeVisible(listBox);
+
+        // Count label
+        countLabel.setFont(juce::Font(8.5f));
+        countLabel.setColour(juce::Label::textColourId,
+                             GalleryColors::get(GalleryColors::textMid).withAlpha(0.55f));
+        countLabel.setJustificationType(juce::Justification::centredRight);
+        addAndMakeVisible(countLabel);
+
+        updateFilter();
+        setSize(380, 340);
+    }
+
+    // juce::ListBoxModel interface
+    int getNumRows() override { return (int)filtered.size(); }
+
+    void paintListBoxItem(int row, juce::Graphics& g,
+                          int w, int h, bool selected) override
+    {
+        if (row < 0 || row >= (int)filtered.size())
+            return;
+
+        const auto& preset = filtered[static_cast<size_t>(row)];
+        using namespace GalleryColors;
+
+        if (selected)
+            g.fillAll(get(xoGold).withAlpha(0.22f));
+        else if (row % 2 == 0)
+            g.fillAll(get(shellWhite));
+        else
+            g.fillAll(get(slotBg));
+
+        // Mood accent dot
+        static const juce::Colour moodColors[] = {
+            juce::Colour(0xFFC8553D), // Foundation → Snap/Terracotta
+            juce::Colour(0xFF2A9D8F), // Atmosphere → Morph/Teal
+            juce::Colour(0xFF7B2D8B), // Entangled  → Drift/Violet
+            juce::Colour(0xFF0066FF), // Prism      → Onset/Blue
+            juce::Colour(0xFFE9A84A), // Flux       → Bob/Amber
+            juce::Colour(0xFFA78BFA), // Aether     → Opal/Lavender
+        };
+        static const char* moodIds[] = {
+            "Foundation","Atmosphere","Entangled","Prism","Flux","Aether"
+        };
+        juce::Colour dot = get(borderGray);
+        for (int mi = 0; mi < 6; ++mi)
+            if (preset.mood == moodIds[mi]) { dot = moodColors[mi]; break; }
+
+        g.setColour(dot.withAlpha(0.7f));
+        g.fillEllipse(8.0f, h * 0.5f - 3.5f, 7.0f, 7.0f);
+
+        // Preset name
+        g.setColour(get(selected ? textDark : textMid));
+        g.setFont(juce::Font(10.5f));
+        g.drawText(preset.name, 22, 0, w - 36, h,
+                   juce::Justification::centredLeft, true);
+
+        // Engine tag if multi-engine
+        if (!preset.engines.isEmpty())
+        {
+            auto tag = preset.engines[0].substring(0, 3).toUpperCase();
+            g.setColour(get(textMid).withAlpha(0.30f));
+            g.setFont(juce::Font(7.5f));
+            g.drawText(tag, w - 28, 0, 26, h, juce::Justification::centredRight);
+        }
+    }
+
+    void listBoxItemDoubleClicked(int row, const juce::MouseEvent&) override
+    {
+        selectRow(row);
+    }
+
+    void listBoxItemClicked(int row, const juce::MouseEvent& e) override
+    {
+        if (e.getNumberOfClicks() >= 1)
+            listBox.selectRow(row);
+    }
+
+    void selectedRowsChanged(int) override
+    {
+        int row = listBox.getSelectedRow();
+        selectRow(row);
+    }
+
+    void paint(juce::Graphics& g) override
+    {
+        using namespace GalleryColors;
+        g.fillAll(get(shellWhite));
+    }
+
+    void resized() override
+    {
+        auto b = getLocalBounds().reduced(8, 6);
+
+        // Search field row
+        auto searchRow = b.removeFromTop(28);
+        countLabel.setBounds(searchRow.removeFromRight(56));
+        searchField.setBounds(searchRow.reduced(0, 2));
+
+        b.removeFromTop(4);
+
+        // Mood tabs row
+        auto moodRow = b.removeFromTop(24);
+        int bw = moodRow.getWidth() / kNumMoods;
+        for (int i = 0; i < kNumMoods; ++i)
+            moodBtns[i].setBounds(moodRow.removeFromLeft(bw).reduced(1, 0));
+
+        b.removeFromTop(4);
+
+        // Preset list
+        listBox.setBounds(b);
+    }
+
+private:
+    void selectRow(int row)
+    {
+        if (row >= 0 && row < (int)filtered.size() && onPresetSelected)
+            onPresetSelected(filtered[static_cast<size_t>(row)]);
+    }
+
+    void updateFilter()
+    {
+        static const char* moodNames[] = {
+            "", "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether"
+        };
+
+        auto query = searchField.getText().trim();
+
+        // Start with mood filter (index 0 = ALL = no filter)
+        const auto& lib = presetManager.getLibrary();
+        filtered.clear();
+
+        for (const auto& p : lib)
+        {
+            bool moodMatch = (activeMood == 0) || (p.mood == moodNames[activeMood]);
+            bool nameMatch = query.isEmpty() || p.name.containsIgnoreCase(query);
+            if (moodMatch && nameMatch)
+                filtered.push_back(p);
+        }
+
+        // Sort alphabetically within current filter
+        std::sort(filtered.begin(), filtered.end(),
+                  [](const PresetData& a, const PresetData& b) {
+                      return a.name.compareIgnoreCase(b.name) < 0;
+                  });
+
+        listBox.updateContent();
+        listBox.deselectAllRows();
+
+        countLabel.setText(juce::String(filtered.size()) + " presets",
+                           juce::dontSendNotification);
+    }
+
+    static constexpr int kNumMoods = 7;
+
+    const PresetManager& presetManager;
+    std::function<void(const PresetData&)> onPresetSelected;
+
+    juce::TextEditor searchField;
+    juce::TextButton moodBtns[kNumMoods];
+    juce::ListBox listBox;
+    juce::Label countLabel;
+    std::vector<PresetData> filtered;
+    int activeMood = 0; // 0 = ALL
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PresetBrowserPanel)
+};
+
+//==============================================================================
+// PresetBrowserStrip — prev/next navigation + preset name display.
+// Lives in the editor header. Calls processor.applyPreset() on navigation.
+class PresetBrowserStrip : public juce::Component,
+                           private PresetManager::Listener
+{
+public:
+    PresetBrowserStrip(XOmnibusProcessor& proc)
+        : processor(proc)
+    {
+        prevBtn.setButtonText("<");
+        nextBtn.setButtonText(">");
+        browseBtn.setButtonText("\xe2\x8a\x9e"); // ⊞ grid icon (UTF-8)
+        prevBtn.setTooltip("Previous preset");
+        nextBtn.setTooltip("Next preset");
+        browseBtn.setTooltip("Browse all presets by mood");
+
+        for (auto* btn : {&prevBtn, &nextBtn, &browseBtn})
+        {
+            btn->setColour(juce::TextButton::buttonColourId,
+                           GalleryColors::get(GalleryColors::shellWhite));
+            btn->setColour(juce::TextButton::textColourOffId,
+                           GalleryColors::get(GalleryColors::textMid));
+            addAndMakeVisible(*btn);
+        }
+
+        nameLabel.setJustificationType(juce::Justification::centred);
+        nameLabel.setFont(juce::Font(10.5f).boldened());
+        nameLabel.setColour(juce::Label::textColourId,
+                            GalleryColors::get(GalleryColors::textDark));
+        nameLabel.setInterceptsMouseClicks(false, false);
+        addAndMakeVisible(nameLabel);
+
+        prevBtn.onClick = [this]
+        {
+            auto& pm = processor.getPresetManager();
+            pm.previousPreset();
+            const auto& preset = pm.getCurrentPreset();
+            processor.applyPreset(preset);
+            if (macroSection && !preset.macroLabels.isEmpty())
+                macroSection->setLabels(preset.macroLabels);
+        };
+
+        nextBtn.onClick = [this]
+        {
+            auto& pm = processor.getPresetManager();
+            pm.nextPreset();
+            const auto& preset = pm.getCurrentPreset();
+            processor.applyPreset(preset);
+            if (macroSection && !preset.macroLabels.isEmpty())
+                macroSection->setLabels(preset.macroLabels);
+        };
+
+        browseBtn.onClick = [this] { openBrowser(); };
+
+        processor.getPresetManager().addListener(this);
+        updateDisplay();
+    }
+
+    ~PresetBrowserStrip() override
+    {
+        processor.getPresetManager().removeListener(this);
+    }
+
+    void updateDisplay()
+    {
+        auto& pm = processor.getPresetManager();
+        int total = pm.getLibrarySize();
+        bool hasPresets = total > 0;
+        prevBtn.setEnabled(hasPresets);
+        nextBtn.setEnabled(hasPresets);
+
+        if (hasPresets)
+        {
+            auto name = pm.getCurrentPreset().name;
+            nameLabel.setText(name.isEmpty() ? "—" : name,
+                              juce::dontSendNotification);
+        }
+        else
+        {
+            nameLabel.setText("no presets", juce::dontSendNotification);
+        }
+    }
+
+    void resized() override
+    {
+        auto b = getLocalBounds();
+        prevBtn.setBounds(b.removeFromLeft(22));
+        browseBtn.setBounds(b.removeFromRight(30));
+        nextBtn.setBounds(b.removeFromRight(22));
+        nameLabel.setBounds(b);
+    }
+
+    void setMacroSection(MacroSection* ms) { macroSection = ms; }
+
+private:
+    void presetLoaded(const PresetData& preset) override
+    {
+        nameLabel.setText(preset.name, juce::dontSendNotification);
+    }
+
+    void openBrowser()
+    {
+        auto& pm = processor.getPresetManager();
+
+        // Capture by value to remain valid after strip destruction
+        auto onSelect = [this](const PresetData& preset)
+        {
+            processor.getPresetManager().setCurrentPreset(preset);
+            processor.applyPreset(preset);
+            nameLabel.setText(preset.name, juce::dontSendNotification);
+            if (macroSection && !preset.macroLabels.isEmpty())
+                macroSection->setLabels(preset.macroLabels);
+        };
+
+        juce::CallOutBox::launchAsynchronously(
+            std::make_unique<PresetBrowserPanel>(pm, std::move(onSelect)),
+            browseBtn.getScreenBounds(),
+            nullptr);
+    }
+
+    XOmnibusProcessor& processor;
+    juce::TextButton prevBtn, nextBtn, browseBtn;
+    juce::Label nameLabel;
+    MacroSection* macroSection = nullptr;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PresetBrowserStrip)
 };
 
 //==============================================================================
@@ -642,7 +1268,9 @@ public:
           processor(proc),
           overview(proc),
           detail(proc),
-          macros(proc.getAPVTS())
+          macros(proc.getAPVTS()),
+          masterFXStrip(proc.getAPVTS()),
+          presetBrowser(proc)
     {
         laf = std::make_unique<GalleryLookAndFeel>();
         setLookAndFeel(laf.get());
@@ -657,17 +1285,36 @@ public:
         addAndMakeVisible(overview);
         addAndMakeVisible(detail);
         addAndMakeVisible(macros);
+        addAndMakeVisible(masterFXStrip);
+        addAndMakeVisible(presetBrowser);
 
         detail.setVisible(false);
         detail.setAlpha(0.0f);
 
-        setSize(880, 490);
-        startTimerHz(5);
+        // Scan factory preset directory
+        auto presetDir = juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory)
+                             .getChildFile("Application Support/XO_OX/XOmnibus/Presets");
+        if (presetDir.isDirectory())
+            proc.getPresetManager().scanPresetDirectory(presetDir);
+        presetBrowser.setMacroSection(&macros); // wire preset macroLabels → macro knob labels
+        presetBrowser.updateDisplay();
+
+        // Event-driven tile refresh: only repaint the affected tile and overview on engine change.
+        proc.onEngineChanged = [this](int slot)
+        {
+            if (slot >= 0 && slot < XOmnibusProcessor::MaxSlots)
+                tiles[slot]->refresh();
+            overview.refresh();
+        };
+
+        setSize(880, 562);
+        startTimerHz(1); // Reduced from 5Hz — idle polling only as a fallback
     }
 
     ~XOmnibusEditor() override
     {
         stopTimer();
+        processor.onEngineChanged = nullptr; // prevent callback after editor is destroyed
         setLookAndFeel(nullptr);
     }
 
@@ -691,7 +1338,7 @@ public:
                    juce::Rectangle<int>(16, 0, 160, kHeaderH - 3),
                    juce::Justification::centredLeft);
 
-        g.setColour(get(xoGold));
+        g.setColour(get(textDark).withAlpha(0.5f)); // xoGold (#E9C46A) fails WCAG AA on shellWhite
         g.setFont(juce::Font(8.5f).boldened());
         g.drawText("XO_OX Designs",
                    juce::Rectangle<int>(16, kHeaderH - 18, 110, 12),
@@ -699,7 +1346,7 @@ public:
 
         g.setColour(get(textMid).withAlpha(0.5f));
         g.setFont(juce::Font(9.0f));
-        g.drawText("7 Engines · 12 Coupling Types · 1000 Presets",
+        g.drawText("9 Engines · 12 Coupling Types · 1000 Presets",
                    juce::Rectangle<int>(getWidth() - 310, 0, 298, kHeaderH - 6),
                    juce::Justification::centredRight);
 
@@ -712,7 +1359,13 @@ public:
     void resized() override
     {
         auto area = getLocalBounds();
-        area.removeFromTop(kHeaderH);
+
+        // Header: reserve space for preset browser (right side)
+        auto header = area.removeFromTop(kHeaderH);
+        presetBrowser.setBounds(header.removeFromRight(220).reduced(4, 10));
+
+        // Bottom strips (from bottom up)
+        masterFXStrip.setBounds(area.removeFromBottom(kMasterFXH).reduced(6, 3));
         macros.setBounds(area.removeFromBottom(kMacroH).reduced(6, 4));
 
         // Left sidebar tiles
@@ -809,18 +1462,21 @@ private:
             overview.refresh();
     }
 
-    static constexpr int kHeaderH  = 50;
-    static constexpr int kMacroH   = 105;
-    static constexpr int kSidebarW = 155;
-    static constexpr int kFadeMs   = 150;
+    static constexpr int kHeaderH   = 50;
+    static constexpr int kMacroH    = 105;
+    static constexpr int kMasterFXH = 68;
+    static constexpr int kSidebarW  = 155;
+    static constexpr int kFadeMs    = 150;
 
     XOmnibusProcessor& processor;
     std::unique_ptr<GalleryLookAndFeel> laf;
 
     std::array<std::unique_ptr<CompactEngineTile>, XOmnibusProcessor::MaxSlots> tiles;
-    OverviewPanel   overview;
-    EngineDetailPanel detail;
-    MacroSection    macros;
+    OverviewPanel      overview;
+    EngineDetailPanel  detail;
+    MacroSection       macros;
+    MasterFXSection    masterFXStrip;
+    PresetBrowserStrip presetBrowser;
 
     int selectedSlot = -1;
 

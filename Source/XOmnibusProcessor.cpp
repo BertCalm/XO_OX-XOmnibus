@@ -8,6 +8,7 @@
 #include "Engines/Fat/FatEngine.h"
 #include "Engines/Onset/OnsetEngine.h"
 #include "Engines/Overworld/OverworldEngine.h"
+#include "Engines/Opal/OpalEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values)
 static bool registered_Snap = xomnibus::EngineRegistry::instance().registerEngine(
@@ -41,6 +42,10 @@ static bool registered_Onset = xomnibus::EngineRegistry::instance().registerEngi
 static bool registered_Overworld = xomnibus::EngineRegistry::instance().registerEngine(
     "Overworld", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OverworldEngine>();
+    });
+static bool registered_Opal = xomnibus::EngineRegistry::instance().registerEngine(
+    "Opal", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OpalEngine>();
     });
 
 namespace xomnibus {
@@ -88,6 +93,30 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     FatEngine::addParameters(params);
     OnsetEngine::addParameters(params);
     OverworldEngine::addParameters(params);
+    OpalEngine::addParameters(params);
+
+    // Master FX parameters
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_satDrive", 1), "Master Sat Drive",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.15f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_reverbSize", 1), "Master Reverb Size",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.4f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_reverbMix", 1), "Master Reverb Mix",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.2f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_compRatio", 1), "Master Comp Ratio",
+        juce::NormalisableRange<float>(1.0f, 20.0f, 0.0f, 0.4f), 2.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_compAttack", 1), "Master Comp Attack",
+        juce::NormalisableRange<float>(0.1f, 100.0f, 0.0f, 0.4f), 10.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_compRelease", 1), "Master Comp Release",
+        juce::NormalisableRange<float>(10.0f, 1000.0f, 0.0f, 0.4f), 100.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_compMix", 1), "Master Comp Mix",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
     return { params.begin(), params.end() };
 }
@@ -98,6 +127,7 @@ void XOmnibusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     currentBlockSize = samplesPerBlock;
 
     couplingMatrix.prepare(samplesPerBlock);
+    masterFX.prepare(sampleRate, samplesPerBlock, apvts);
 
     for (auto& buf : engineBuffers)
         buf.setSize(2, samplesPerBlock);
@@ -120,6 +150,7 @@ void XOmnibusProcessor::releaseResources()
         if (eng)
             eng->releaseResources();
     }
+    masterFX.reset();
 }
 
 void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
@@ -210,6 +241,9 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             cf.fadeGain = 0.0f;
         }
     }
+
+    // Master FX chain: saturation → reverb → compression (post all engines + crossfades)
+    masterFX.processBlock(buffer, numSamples);
 }
 
 void XOmnibusProcessor::loadEngine(int slot, const std::string& engineId)
@@ -237,6 +271,9 @@ void XOmnibusProcessor::loadEngine(int slot, const std::string& engineId)
     // Atomic swap — audio thread sees the new engine on next block
     auto shared = std::shared_ptr<SynthEngine>(std::move(newEngine));
     std::atomic_store(&engines[slot], shared);
+
+    if (onEngineChanged)
+        juce::MessageManager::callAsync([this, slot]{ if (onEngineChanged) onEngineChanged(slot); });
 }
 
 void XOmnibusProcessor::unloadEngine(int slot)
@@ -255,6 +292,9 @@ void XOmnibusProcessor::unloadEngine(int slot)
 
     std::shared_ptr<SynthEngine> empty;
     std::atomic_store(&engines[slot], empty);
+
+    if (onEngineChanged)
+        juce::MessageManager::callAsync([this, slot]{ if (onEngineChanged) onEngineChanged(slot); });
 }
 
 SynthEngine* XOmnibusProcessor::getEngine(int slot) const
@@ -285,6 +325,38 @@ void XOmnibusProcessor::setStateInformation(const void* data, int sizeInBytes)
     std::unique_ptr<juce::XmlElement> xml(getXmlFromBinary(data, sizeInBytes));
     if (xml && xml->hasTagName(apvts.state.getType()))
         apvts.replaceState(juce::ValueTree::fromXml(*xml));
+}
+
+void XOmnibusProcessor::applyPreset(const PresetData& preset)
+{
+    // Each engine's params are stored under its engine name key.
+    // Inner param names may be full APVTS IDs (e.g. "opal_source") or
+    // unprefixed names (e.g. "source") — try both.
+    for (const auto& [engineName, paramsVar] : preset.parametersByEngine)
+    {
+        auto* obj = paramsVar.getDynamicObject();
+        if (!obj)
+            continue;
+
+        juce::String prefix = engineName.toLowerCase() + "_";
+
+        for (const auto& prop : obj->getProperties())
+        {
+            juce::String fullId = prop.name.toString();
+
+            // Try as-is first (already a full ID like "opal_source"),
+            // then with prefix ("source" → "opal_source").
+            if (apvts.getParameter(fullId) == nullptr)
+                fullId = prefix + prop.name.toString();
+
+            if (auto* p = dynamic_cast<juce::RangedAudioParameter*>(
+                              apvts.getParameter(fullId)))
+            {
+                float val = static_cast<float>(prop.value);
+                p->setValueNotifyingHost(p->convertTo0to1(val));
+            }
+        }
+    }
 }
 
 } // namespace xomnibus
