@@ -47,6 +47,7 @@ and mutate into sounds impossible with any single synth.
 | OVERWORLD | XOverworld | Neon Green `#39FF14` |
 | OPAL | XOpal | Lavender `#A78BFA` |
 | ORGANON | XOrganon | Bioluminescent Cyan `#00CED1` |
+| OUROBOROS | XOuroboros | Strange Attractor Red `#FF2D2D` |
 
 ## Key Files
 
