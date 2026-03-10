@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Quicksilver",
+  "mood": "Prism",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Liquid, mercurial lead that shifts shape constantly.",
+  "tags": [
+    "liquid",
+    "mercurial",
+    "shifting",
+    "lead"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 5.0,
+      "organon_enzymeSelect": 3500.0,
+      "organon_catalystDrive": 0.7,
+      "organon_dampingCoeff": 0.3,
+      "organon_signalFlux": 0.6,
+      "organon_phasonShift": 0.3,
+      "organon_isotopeBalance": 0.68,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.15,
+      "organon_noiseColor": 0.68
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.3,
+    "movement": 0.55,
+    "density": 0.45,
+    "space": 0.15,
+    "aggression": 0.3
+  }
+}

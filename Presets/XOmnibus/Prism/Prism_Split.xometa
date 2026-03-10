@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Prism Split",
+  "mood": "Prism",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "White noise split into spectral rainbow components.",
+  "tags": [
+    "prism",
+    "spectral",
+    "rainbow",
+    "split"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 2.5,
+      "organon_enzymeSelect": 8000.0,
+      "organon_catalystDrive": 0.45,
+      "organon_dampingCoeff": 0.15,
+      "organon_signalFlux": 0.5,
+      "organon_phasonShift": 0.0,
+      "organon_isotopeBalance": 0.9,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.3,
+      "organon_noiseColor": 0.9
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.2,
+    "movement": 0.3,
+    "density": 0.3,
+    "space": 0.3,
+    "aggression": 0.1
+  }
+}

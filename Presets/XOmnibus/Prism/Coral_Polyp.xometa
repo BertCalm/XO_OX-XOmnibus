@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Coral Polyp",
+  "mood": "Prism",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright, living texture with gentle metabolic pulse.",
+  "tags": [
+    "coral",
+    "bright",
+    "living",
+    "gentle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 1.5,
+      "organon_enzymeSelect": 2500.0,
+      "organon_catalystDrive": 0.45,
+      "organon_dampingCoeff": 0.15,
+      "organon_signalFlux": 0.55,
+      "organon_phasonShift": 0.15,
+      "organon_isotopeBalance": 0.62,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.3,
+      "organon_noiseColor": 0.62
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.45,
+    "movement": 0.35,
+    "density": 0.35,
+    "space": 0.3,
+    "aggression": 0.1
+  }
+}

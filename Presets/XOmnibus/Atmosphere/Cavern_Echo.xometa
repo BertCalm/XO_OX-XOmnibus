@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Cavern Echo",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Resonant atmosphere with long reverberant decay.",
+  "tags": [
+    "cavern",
+    "echo",
+    "resonant",
+    "reverberant"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 0.3,
+      "organon_enzymeSelect": 600.0,
+      "organon_catalystDrive": 0.55,
+      "organon_dampingCoeff": 0.06,
+      "organon_signalFlux": 0.6,
+      "organon_phasonShift": 0.0,
+      "organon_isotopeBalance": 0.3,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.7,
+      "organon_noiseColor": 0.35
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.65,
+    "movement": 0.15,
+    "density": 0.45,
+    "space": 0.7,
+    "aggression": 0.1
+  }
+}

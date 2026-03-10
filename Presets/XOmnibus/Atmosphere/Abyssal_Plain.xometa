@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Abyssal Plain",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Total darkness. Harmonics emerge from nothing.",
+  "tags": [
+    "abyss",
+    "dark",
+    "emerging",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 0.15,
+      "organon_enzymeSelect": 200.0,
+      "organon_catalystDrive": 0.65,
+      "organon_dampingCoeff": 0.08,
+      "organon_signalFlux": 0.8,
+      "organon_phasonShift": 0.15,
+      "organon_isotopeBalance": 0.08,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.35,
+      "organon_noiseColor": 0.15
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.8,
+    "movement": 0.3,
+    "density": 0.55,
+    "space": 0.35,
+    "aggression": 0.15
+  }
+}

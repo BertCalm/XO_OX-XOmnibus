@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Humus",
+  "mood": "Foundation",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dark, fertile pad. Rich low-end with natural decay.",
+  "tags": [
+    "dark",
+    "fertile",
+    "rich",
+    "bass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 0.25,
+      "organon_enzymeSelect": 300.0,
+      "organon_catalystDrive": 0.7,
+      "organon_dampingCoeff": 0.22,
+      "organon_signalFlux": 0.75,
+      "organon_phasonShift": 0.0,
+      "organon_isotopeBalance": 0.12,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.1,
+      "organon_noiseColor": 0.2
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.85,
+    "movement": 0.15,
+    "density": 0.6,
+    "space": 0.1,
+    "aggression": 0.2
+  }
+}

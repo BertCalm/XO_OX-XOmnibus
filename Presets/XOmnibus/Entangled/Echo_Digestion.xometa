@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Echo Digestion",
+  "mood": "Entangled",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Feeds on DUB delay tails. Recycled nutrient ecology.",
+  "tags": [
+    "echo",
+    "recycled",
+    "dub",
+    "delay"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 0.6,
+      "organon_enzymeSelect": 1200.0,
+      "organon_catalystDrive": 0.5,
+      "organon_dampingCoeff": 0.12,
+      "organon_signalFlux": 0.8,
+      "organon_phasonShift": 0.15,
+      "organon_isotopeBalance": 0.45,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.35,
+      "organon_noiseColor": 0.45
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.55,
+    "movement": 0.35,
+    "density": 0.45,
+    "space": 0.35,
+    "aggression": 0.1
+  }
+}

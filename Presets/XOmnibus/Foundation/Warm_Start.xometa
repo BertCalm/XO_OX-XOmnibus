@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Warm Start",
+  "mood": "Foundation",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "A warm, slowly evolving pad that breathes on its own. The first organism.",
+  "tags": [
+    "pad",
+    "warm",
+    "evolving",
+    "organic",
+    "starter"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 0.5,
+      "organon_enzymeSelect": 800.0,
+      "organon_catalystDrive": 0.4,
+      "organon_dampingCoeff": 0.15,
+      "organon_signalFlux": 0.6,
+      "organon_phasonShift": 0.0,
+      "organon_isotopeBalance": 0.35,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.2,
+      "organon_noiseColor": 0.4
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.7,
+    "movement": 0.3,
+    "density": 0.3,
+    "space": 0.2,
+    "aggression": 0.1
+  }
+}

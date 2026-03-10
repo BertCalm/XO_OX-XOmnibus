@@ -24,7 +24,7 @@
       "type": "array",
       "items": {
         "type": "string",
-        "enum": ["XOddCouple", "XOverdub", "XOdyssey", "XOblongBob", "XObese", "XOnset"]
+        "enum": ["XOddCouple", "XOverdub", "XOdyssey", "XOblongBob", "XObese", "XOnset", "XOrganon"]
       },
       "minItems": 1,
       "maxItems": 3,
@@ -99,7 +99,7 @@
       "type": "object",
       "description": "Per-engine parameter maps. Keys are engine names, values are {paramID: rawValue} objects. Only non-default values need to be stored.",
       "patternProperties": {
-        "^(XOddCouple|XOverdub|XOdyssey|XOblongBob|XObese|XOnset)$": {
+        "^(XOddCouple|XOverdub|XOdyssey|XOblongBob|XObese|XOnset|XOrganon)$": {
           "type": "object",
           "description": "Parameter overrides for this engine — keys are APVTS parameter IDs, values are raw parameter values"
         }

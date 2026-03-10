@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Pace of Life",
+  "mood": "Flux",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Metabolic rate locked to host tempo. Living groove.",
+  "tags": [
+    "groove",
+    "tempo",
+    "living",
+    "locked"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 2.0,
+      "organon_enzymeSelect": 1200.0,
+      "organon_catalystDrive": 0.6,
+      "organon_dampingCoeff": 0.2,
+      "organon_signalFlux": 0.65,
+      "organon_phasonShift": 0.4,
+      "organon_isotopeBalance": 0.48,
+      "organon_lockIn": 0.7,
+      "organon_membrane": 0.2,
+      "organon_noiseColor": 0.48
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.5,
+    "movement": 0.7,
+    "density": 0.45,
+    "space": 0.2,
+    "aggression": 0.2
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Dark Matter Pad",
+  "mood": "Aether",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Invisible harmonic mass shaping the audible.",
+  "tags": [
+    "dark-matter",
+    "invisible",
+    "shaping",
+    "gravitational"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 0.12,
+      "organon_enzymeSelect": 500.0,
+      "organon_catalystDrive": 0.5,
+      "organon_dampingCoeff": 0.04,
+      "organon_signalFlux": 0.6,
+      "organon_phasonShift": 0.03,
+      "organon_isotopeBalance": 0.25,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.45,
+      "organon_noiseColor": 0.3
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.6,
+    "movement": 0.1,
+    "density": 0.45,
+    "space": 0.45,
+    "aggression": 0.08
+  }
+}

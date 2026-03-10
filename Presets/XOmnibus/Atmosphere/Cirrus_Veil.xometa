@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Cirrus Veil",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Wispy, translucent atmosphere at extreme height.",
+  "tags": [
+    "wispy",
+    "translucent",
+    "high",
+    "veil"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 0.9,
+      "organon_enzymeSelect": 7000.0,
+      "organon_catalystDrive": 0.2,
+      "organon_dampingCoeff": 0.06,
+      "organon_signalFlux": 0.3,
+      "organon_phasonShift": 0.08,
+      "organon_isotopeBalance": 0.82,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.6,
+      "organon_noiseColor": 0.85
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.25,
+    "movement": 0.25,
+    "density": 0.15,
+    "space": 0.6,
+    "aggression": 0.02
+  }
+}

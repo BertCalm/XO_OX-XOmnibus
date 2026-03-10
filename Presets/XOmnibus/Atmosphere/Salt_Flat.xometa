@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Salt Flat",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Wide, flat, reflective atmosphere. Minimal but vast.",
+  "tags": [
+    "flat",
+    "wide",
+    "reflective",
+    "minimal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 0.4,
+      "organon_enzymeSelect": 2000.0,
+      "organon_catalystDrive": 0.3,
+      "organon_dampingCoeff": 0.06,
+      "organon_signalFlux": 0.4,
+      "organon_phasonShift": 0.0,
+      "organon_isotopeBalance": 0.55,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.55,
+      "organon_noiseColor": 0.6
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.4,
+    "movement": 0.1,
+    "density": 0.2,
+    "space": 0.55,
+    "aggression": 0.03
+  }
+}
