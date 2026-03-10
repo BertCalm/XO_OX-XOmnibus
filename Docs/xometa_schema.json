@@ -170,6 +170,12 @@
       "additionalProperties": false
     },
 
+    "starterFor": {
+      "type": "string",
+      "enum": ["Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Onset", "Overworld", "Opal", "Organon", "Ouroboros"],
+      "description": "Designates this preset as the Module Starter for the named engine. Exactly one preset per engine should have this field. Auto-loaded when user adds this engine to an empty slot."
+    },
+
     "recipe": {
       "type": "string",
       "maxLength": 25,
