@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Voyage Organism",
+  "mood": "Atmosphere",
+  "engines": [
+    "Drift",
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "DRIFT navigates while Organon metabolizes the journey. Living travel pad.",
+  "tags": [
+    "drift",
+    "organon",
+    "voyage",
+    "living",
+    "travel"
+  ],
+  "macroLabels": [
+    "DRIFT PATH",
+    "METABOLISM",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Drift": {
+      "drift_osc_a_mode": 0,
+      "drift_haze_amount": 0.5,
+      "drift_reverb_size": 0.85,
+      "drift_master_gain": -4.0
+    },
+    "XOrganon": {
+      "organon_metabolicRate": 0.3,
+      "organon_enzymeSelect": 800.0,
+      "organon_catalystDrive": 0.4,
+      "organon_dampingCoeff": 0.08,
+      "organon_signalFlux": 0.65,
+      "organon_phasonShift": 0.12,
+      "organon_isotopeBalance": 0.4,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.5,
+      "organon_noiseColor": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Drift",
+        "engineB": "XOrganon",
+        "type": "Audio->FM",
+        "amount": 0.4
+      },
+      {
+        "engineA": "Drift",
+        "engineB": "XOrganon",
+        "type": "Env->Morph",
+        "amount": 0.3
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.6,
+    "movement": 0.45,
+    "density": 0.4,
+    "space": 0.55,
+    "aggression": 0.05
+  }
+}

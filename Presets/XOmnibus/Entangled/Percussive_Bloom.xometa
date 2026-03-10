@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Percussive Bloom",
+  "mood": "Entangled",
+  "engines": [
+    "Snap",
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "SNAP percussion feeds Organon bursts of energy. Rhythmic harmonic blooms.",
+  "tags": [
+    "snap",
+    "organon",
+    "percussion",
+    "bloom",
+    "coupled"
+  ],
+  "macroLabels": [
+    "PERCUSS",
+    "BLOOM",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Snap": {
+      "snap_oscMode": 2,
+      "snap_filterCutoff": 4000.0,
+      "snap_resonance": 0.3,
+      "snap_attack": 0.001,
+      "snap_decay": 0.15,
+      "snap_sustain": 0.0,
+      "snap_release": 0.1,
+      "snap_level": 0.8
+    },
+    "XOrganon": {
+      "organon_metabolicRate": 3.0,
+      "organon_enzymeSelect": 3000.0,
+      "organon_catalystDrive": 0.8,
+      "organon_dampingCoeff": 0.3,
+      "organon_signalFlux": 0.9,
+      "organon_phasonShift": 0.0,
+      "organon_isotopeBalance": 0.6,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.2,
+      "organon_noiseColor": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Snap",
+        "engineB": "XOrganon",
+        "type": "Audio->FM",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.35,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.2,
+    "aggression": 0.35
+  }
+}

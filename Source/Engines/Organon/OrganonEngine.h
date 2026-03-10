@@ -1,6 +1,7 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
 #include "../../DSP/CytomicSVF.h"
+#include "../../DSP/EngineProfiler.h"
 #include "../../DSP/FastMath.h"
 #include <array>
 #include <cmath>
@@ -146,11 +147,18 @@ private:
 };
 
 //==============================================================================
-// MetabolicEconomy — Free Energy Pool tracking.
+// MetabolicEconomy — Free Energy Pool tracking with Active Inference (VFE).
 //
-// Tracks the organism's internal energy state. Accumulates when entropy is
-// high (rich input). Depletes at the metabolic rate. Controls how many
-// harmonic modes are active and how dense the output is.
+// v2 upgrade: The organism now maintains a generative model of its input.
+// It predicts incoming entropy and adjusts its internal state to minimize
+// Variational Free Energy (prediction error). This creates genuinely
+// adaptive behavior — the organism "learns" its diet and anticipates it.
+//
+// VFE = D_KL[q(s) || p(s|o)] + complexity
+//     ≈ (predicted_entropy - observed_entropy)^2 + lambda * |belief_change|
+//
+// When VFE is high: the organism is surprised → it adapts faster.
+// When VFE is low: the organism has learned its environment → stable output.
 //==============================================================================
 class MetabolicEconomy
 {
@@ -166,6 +174,14 @@ public:
     {
         freeEnergy = 0.0f;
         controlCounter = 0;
+
+        // VFE state
+        predictedEntropy = 0.5f;
+        entropyVariance = 0.1f;
+        beliefRate = 0.5f;
+        surprise = 0.0f;
+        vfe = 0.0f;
+        adaptationGain = 1.0f;
     }
 
     // Update once per control tick
@@ -180,13 +196,55 @@ public:
 
         float dt = static_cast<float> (controlRateDiv) / static_cast<float> (sr);
 
-        // Effective metabolic rate (modulated by external coupling)
-        float effectiveRate = metabolicRate * (1.0f + externalDecayMod);
+        // === ACTIVE INFERENCE: Variational Free Energy minimization ===
+
+        // 1. Compute prediction error (surprise)
+        float predictionError = entropyValue - predictedEntropy;
+        surprise = predictionError * predictionError;
+
+        // 2. Compute precision-weighted prediction error
+        //    Precision = 1/variance — how confident the organism is in its prediction
+        float precision = 1.0f / (entropyVariance + 0.01f);
+        float weightedError = surprise * precision;
+
+        // 3. Compute VFE = weighted prediction error + complexity penalty
+        //    Complexity penalty penalizes rapid belief changes (keeps the organism stable)
+        float complexityPenalty = beliefRate * beliefRate * 0.1f;
+        vfe = weightedError + complexityPenalty;
+
+        // 4. Update beliefs (Bayesian belief update via gradient descent on VFE)
+        //    The organism adjusts its prediction toward the observed entropy
+        //    Learning rate scales with metabolic rate — faster metabolism = faster learning
+        float learningRate = clamp (metabolicRate * 0.05f, 0.001f, 0.2f);
+        float beliefDelta = learningRate * predictionError;
+        predictedEntropy += beliefDelta;
+        predictedEntropy = clamp (predictedEntropy, 0.0f, 1.0f);
+
+        // Track belief change rate (for complexity penalty)
+        beliefRate = beliefRate * 0.95f + std::fabs (beliefDelta) * 0.05f;
+
+        // 5. Update variance estimate (how uncertain the organism is)
+        //    Exponential moving average of squared prediction errors
+        entropyVariance = entropyVariance * 0.98f + surprise * 0.02f;
+        entropyVariance = clamp (entropyVariance, 0.001f, 1.0f);
+
+        // 6. Adaptation gain: high VFE → organism adapts faster (more responsive)
+        //    low VFE → organism is settled (more stable, richer harmonics)
+        float targetAdaptation = clamp (1.0f - vfe * 2.0f, 0.2f, 1.0f);
+        adaptationGain = adaptationGain * 0.97f + targetAdaptation * 0.03f;
+
+        // === METABOLIC ECONOMY (now modulated by VFE) ===
+
+        // Effective metabolic rate (modulated by external coupling + VFE)
+        // High surprise → metabolic rate increases (fight-or-flight response)
+        float vfeMod = 1.0f + surprise * 2.0f;
+        float effectiveRate = metabolicRate * (1.0f + externalDecayMod) * vfeMod;
         if (effectiveRate < 0.01f) effectiveRate = 0.01f;
 
         // Accumulation vs depletion
-        float intake = entropyValue * signalFlux * (1.0f + externalRhythmMod);
-        float cost = effectiveRate * 0.1f; // base metabolic cost
+        // Adaptation gain modulates intake — settled organisms extract more energy
+        float intake = entropyValue * signalFlux * adaptationGain * (1.0f + externalRhythmMod);
+        float cost = effectiveRate * 0.1f;
 
         // Starvation on note release — 4x metabolic rate
         if (noteReleased)
@@ -199,11 +257,25 @@ public:
     float getFreeEnergy() const noexcept { return freeEnergy; }
     void setFreeEnergy (float e) noexcept { freeEnergy = clamp (e, 0.0f, 1.0f); }
 
+    // VFE readouts for coupling and UI
+    float getSurprise() const noexcept { return surprise; }
+    float getVFE() const noexcept { return vfe; }
+    float getAdaptationGain() const noexcept { return adaptationGain; }
+    float getPredictedEntropy() const noexcept { return predictedEntropy; }
+
 private:
     double sr = 44100.0;
     int controlRateDiv = 22;
     int controlCounter = 0;
     float freeEnergy = 0.0f;
+
+    // VFE / Active Inference state
+    float predictedEntropy = 0.5f;   // q(s): organism's belief about expected entropy
+    float entropyVariance = 0.1f;    // uncertainty in prediction
+    float beliefRate = 0.5f;         // rate of belief change (for complexity penalty)
+    float surprise = 0.0f;           // squared prediction error
+    float vfe = 0.0f;                // variational free energy (total)
+    float adaptationGain = 1.0f;     // how settled the organism is (1.0 = stable)
 };
 
 //==============================================================================
@@ -493,6 +565,9 @@ public:
 
     //-- Lifecycle -------------------------------------------------------------
 
+    // Return the profiler for UI/diagnostic reads.
+    const EngineProfiler& getProfiler() const noexcept { return profiler; }
+
     void prepare (double sampleRate, int maxBlockSize) override
     {
         sr = sampleRate;
@@ -504,6 +579,9 @@ public:
 
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
+
+        profiler.prepare (sampleRate, maxBlockSize);
+        profiler.setCpuBudgetFraction (0.22f); // Organon's 22% CPU budget
     }
 
     void releaseResources() override
@@ -534,6 +612,8 @@ public:
                       juce::MidiBuffer& midi,
                       int numSamples) override
     {
+        EngineProfiler::ScopedMeasurement measurement (profiler);
+
         // ParamSnapshot: read all parameters once per block
         const float metabolicRate  = paramMetabolicRate  ? paramMetabolicRate->load()  : 1.0f;
         const float enzymeSelect   = paramEnzymeSelect   ? paramEnzymeSelect->load()   : 1000.0f;
@@ -623,12 +703,20 @@ public:
                                     externalPitchMod * 20.0f; // ±10 semitones at mod=±0.5
                 if (fundamental < 20.0f) fundamental = 20.0f;
 
-                float effectiveIsotope = clamp (isotopeBalance + externalMorphMod * 0.3f, 0.0f, 1.0f);
+                // VFE modulates isotope balance: surprise shifts spectral character
+                float surpriseShift = voice.economy.getSurprise() * 0.15f;
+                float effectiveIsotope = clamp (isotopeBalance + externalMorphMod * 0.3f + surpriseShift, 0.0f, 1.0f);
 
                 voice.modes.setFundamental (fundamental, effectiveIsotope);
+
+                // VFE adaptation gain modulates catalyst effectiveness:
+                // settled organisms (low VFE) get full catalyst drive
+                // surprised organisms redirect energy to adaptation
+                float effectiveCatalyst = catalystDrive * voice.economy.getAdaptationGain();
+
                 voice.modes.updateWeights (voice.entropy.getSpectralCentroid(),
                                            voice.economy.getFreeEnergy(),
-                                           catalystDrive,
+                                           effectiveCatalyst,
                                            voice.entropy.getEntropy(),
                                            effectiveIsotope);
 
@@ -652,8 +740,10 @@ public:
                 // Velocity scaling
                 sample *= voice.velocity;
 
-                mixL += sample;
-                mixR += sample;
+                // VFE-driven stereo spread: surprise widens the image slightly
+                float spread = voice.economy.getSurprise() * 0.15f;
+                mixL += sample * (1.0f - spread);
+                mixR += sample * (1.0f + spread);
             }
 
             // Cache output for coupling
@@ -899,6 +989,9 @@ private:
     float externalRhythmMod = 0.0f;
     float externalDecayMod = 0.0f;
     bool couplingAudioActive = false;
+
+    // Performance profiler
+    EngineProfiler profiler;
 
     // Cached parameter pointers (set by attachParameters)
     std::atomic<float>* paramMetabolicRate  = nullptr;
