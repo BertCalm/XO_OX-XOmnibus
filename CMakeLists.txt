@@ -66,6 +66,7 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Onset/OnsetEngine.h
     Source/Engines/Overworld/OverworldEngine.h
     Source/Engines/Opal/OpalEngine.h
+    Source/Engines/Organon/OrganonEngine.h
 
     # UI (Gallery Model)
     Source/UI/XOmnibusEditor.h

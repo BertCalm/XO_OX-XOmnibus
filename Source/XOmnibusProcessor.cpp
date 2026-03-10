@@ -9,6 +9,7 @@
 #include "Engines/Onset/OnsetEngine.h"
 #include "Engines/Overworld/OverworldEngine.h"
 #include "Engines/Opal/OpalEngine.h"
+#include "Engines/Organon/OrganonEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values)
 static bool registered_Snap = xomnibus::EngineRegistry::instance().registerEngine(
@@ -46,6 +47,10 @@ static bool registered_Overworld = xomnibus::EngineRegistry::instance().register
 static bool registered_Opal = xomnibus::EngineRegistry::instance().registerEngine(
     "Opal", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OpalEngine>();
+    });
+static bool registered_Organon = xomnibus::EngineRegistry::instance().registerEngine(
+    "Organon", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OrganonEngine>();
     });
 
 namespace xomnibus {
@@ -94,6 +99,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     OnsetEngine::addParameters(params);
     OverworldEngine::addParameters(params);
     OpalEngine::addParameters(params);
+    OrganonEngine::addParameters(params);
 
     // Master FX parameters
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
