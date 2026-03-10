@@ -383,14 +383,51 @@ private:
 
 ---
 
-## Open Questions
+## Resolved Design Decisions
 
-1. **Should presets store a `recipe` field?** Current design says no — presets are self-contained. But a recipe reference would enable "show me other presets for this recipe" without fuzzy engine-matching. Trade-off: coupling presets to recipes adds a dependency.
+### 1. Presets store a soft recipe reference — DECIDED: Yes
 
-2. **Recipe versioning.** If a recipe's coupling routes change in a future version, presets built on the old version still work (they carry their own coupling data). But should the recipe browser show version info?
+Presets include an optional `"recipe": "Bass Station"` string in `.xometa`. This is a **soft reference** — a hint, not a dependency. If the recipe doesn't exist, the preset loads perfectly (it remains self-contained). When present, it enables instant "show me all presets for this recipe" filtering without fuzzy engine-matching heuristics.
 
-3. **Maximum recipe size.** Recipes can use 2-4 slots. Should we allow 1-slot recipes as "quick start" templates for single engines, or keep recipes strictly multi-engine?
+**Change to `.xometa` schema:** Add optional `"recipe"` field (string, max 25 chars).
 
-4. **Macro mapping persistence.** When a user loads a recipe and then tweaks macro mappings, should the preset save the tweaked mappings or the recipe defaults? Current design: the preset saves whatever the current state is, independent of recipe.
+### 2. Recipe versioning — DECIDED: Skip for v1
 
-5. **Community recipes.** v1 is factory-only. When we open user recipes, do they go in `~/XOmnibus/Recipes/User/` alongside `~/XOmnibus/Presets/User/`? Same pattern, different directory.
+Recipes ship as stable artifacts in the initial release. No version field, no migration machinery. Recipes only change when XO_OX Designs updates them. By the time recipes might need evolution (year 2, new modules), real user feedback will inform whether versioning is needed. If so, a `schema_version` bump and migration note can be added then.
+
+### 3. Recipes are strictly multi-engine (2-4 slots) — DECIDED: Yes
+
+A single ingredient isn't a recipe. The recipe metaphor implies combination. Single-engine quick-start is a separate mechanism (e.g., per-engine init presets or a "Module Starter" feature) — not a recipe.
+
+### 4. Preset lineage tracking — DECIDED: Lightweight parent reference
+
+Factory presets are immutable — only XO_OX Designs edits them. When a user saves a variant:
+- The `.xometa` stores `"parentPreset": "Submarine Echo"` (the original factory preset name)
+- The save dialog suggests a name like `"Submarine Echo — [user suffix]"` with an editable suffix
+- The browser can show "variants of this preset" by querying the `parentPreset` field
+- Lineage stays **flat**: variants of variants still point to the original factory preset, not intermediate saves. Simple lineage, not a version graph.
+
+**Change to `.xometa` schema:** Add optional `"parentPreset"` field (string).
+
+### 5. Community preset ecosystem — DECIDED: Plan for it
+
+The architecture supports three preset tiers:
+
+| Tier | Path | Source | Editable |
+|------|------|--------|----------|
+| Factory | `Presets/XOmnibus/{mood}/` | Ships with app | No |
+| User | `~/XOmnibus/Presets/User/` | Saved by user | Yes |
+| Community | `~/XOmnibus/Presets/Community/` | Downloaded/shared | No (read-only locally) |
+
+The sharing mechanism (post-v1): a curated gallery on the XO_OX website where users upload `.xometa` files, XO_OX reviews and features the best, and they become available in-app. This parallels the XPN export pipeline — presets are the next shareable artifact after sound packs.
+
+Community recipes follow the same pattern: `~/XOmnibus/Recipes/User/` and `~/XOmnibus/Recipes/Community/`.
+
+---
+
+## Future Considerations
+
+- **Module Starter feature:** A separate mechanism for single-engine quick-start (not recipes). Could be per-engine init presets with curated macro mappings. Design TBD.
+- **Preset naming generator:** The variant naming convention (`"Original — suffix"`) could be enhanced with a smart suffix generator that suggests descriptive terms based on what parameters changed from the parent.
+- **Community curation pipeline:** Voting, featuring, and quality review process for community presets. Could integrate with the blog and social presence for community building.
+- **Adopted presets:** Top community presets could be "adopted" into the factory library in future releases, with credit to the creator.
