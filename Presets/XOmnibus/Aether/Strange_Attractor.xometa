@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "name": "Strange Attractor",
+  "mood": "Aether",
+  "engines": ["XOuroboros"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Lorenz attractor at default rate with high chaos, loose leash, and both projections at pi/4. The pure mathematical object, raw and alien.",
+  "tags": ["alien", "raw", "mathematical", "texture"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "XOuroboros": {
+      "ouro_topology": 0,
+      "ouro_rate": 130.0,
+      "ouro_chaosIndex": 0.7,
+      "ouro_leash": 0.2,
+      "ouro_theta": 0.7854,
+      "ouro_phi": 0.7854,
+      "ouro_damping": 0.3,
+      "ouro_injection": 0.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.3,
+    "movement": 0.6,
+    "density": 0.45,
+    "space": 0.7,
+    "aggression": 0.35
+  }
+}

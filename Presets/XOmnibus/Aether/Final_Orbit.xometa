@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "name": "Final Orbit",
+  "mood": "Aether",
+  "engines": ["XOuroboros"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Maximum chaos, maximum damping, glacial rate. A distant, smoothed rumble of mathematical entropy.",
+  "tags": ["ambient", "distant", "rumble", "ethereal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "XOuroboros": {
+      "ouro_topology": 1,
+      "ouro_rate": 40.0,
+      "ouro_chaosIndex": 0.8,
+      "ouro_leash": 0.0,
+      "ouro_theta": 1.0,
+      "ouro_phi": -0.6,
+      "ouro_damping": 0.9,
+      "ouro_injection": 0.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.7,
+    "movement": 0.5,
+    "density": 0.3,
+    "space": 0.9,
+    "aggression": 0.1
+  }
+}

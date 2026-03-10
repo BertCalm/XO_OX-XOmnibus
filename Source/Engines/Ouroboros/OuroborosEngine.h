@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../DSP/EngineProfiler.h"
 #include "../../DSP/FastMath.h"
 #include <array>
 #include <cmath>
@@ -487,6 +488,8 @@ public:
 
     //-- Lifecycle -------------------------------------------------------------
 
+    const EngineProfiler& getProfiler() const noexcept { return profiler; }
+
     void prepare (double sampleRate, int maxBlockSize) override
     {
         sr = sampleRate;
@@ -502,6 +505,9 @@ public:
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheDxDt.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheDyDt.resize (static_cast<size_t> (maxBlockSize), 0.0f);
+
+        profiler.prepare (sampleRate, maxBlockSize);
+        profiler.setCpuBudgetFraction (0.22f);
     }
 
     void releaseResources() override
@@ -535,6 +541,8 @@ public:
                       juce::MidiBuffer& midi,
                       int numSamples) override
     {
+        EngineProfiler::ScopedMeasurement measurement (profiler);
+
         // ParamSnapshot: read all parameters once per block
         const int   topology_i    = paramTopology    ? static_cast<int> (paramTopology->load())   : 0;
         const float rate          = paramRate         ? paramRate->load()         : 130.0f;
@@ -612,7 +620,11 @@ public:
                 }
 
                 // Target frequency: MIDI note overrides rate parameter
-                float targetFreq = midiToFreq (voice.noteNumber) + externalPitchMod * 20.0f;
+                // If noteNumber is valid, use MIDI pitch; otherwise fall back to rate param (drone mode)
+                float targetFreq = (voice.noteNumber >= 0)
+                    ? midiToFreq (voice.noteNumber)
+                    : rate;
+                targetFreq += externalPitchMod * 20.0f;
                 if (targetFreq < 20.0f) targetFreq = 20.0f;
 
                 // Coupling injection (from external audio)
@@ -778,8 +790,8 @@ public:
                 outR = voice.dcBlockerR.process (outR);
 
                 // --- DAMPING (LP accumulator) ---
-                voice.dampL = voice.dampL * (1.0f - dampAlpha) + outL * dampAlpha;
-                voice.dampR = voice.dampR * (1.0f - dampAlpha) + outR * dampAlpha;
+                voice.dampL = flushDenormal (voice.dampL * (1.0f - dampAlpha) + outL * dampAlpha);
+                voice.dampR = flushDenormal (voice.dampR * (1.0f - dampAlpha) + outR * dampAlpha);
                 outL = voice.dampL;
                 outR = voice.dampR;
 
@@ -1065,6 +1077,9 @@ private:
     float couplingAudioL[kMaxCouplingBuffer] {};
     float couplingAudioR[kMaxCouplingBuffer] {};
     int couplingBufferSize = 0;
+
+    // Performance profiler
+    EngineProfiler profiler;
 
     // Cached parameter pointers
     std::atomic<float>* paramTopology   = nullptr;
