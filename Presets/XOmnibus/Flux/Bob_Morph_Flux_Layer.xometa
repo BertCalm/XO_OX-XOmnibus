@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB fast stabs trigger MORPH spectral scan \u2014 each stab changes the wavetable landscape.",
+  "description": "BOB fast stabs trigger MORPH spectral scan — each stab changes the wavetable landscape.",
   "tags": [
     "bob",
     "morph",
@@ -22,7 +22,7 @@
     "COUPLING",
     "RATE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.6,

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT dense oscillators ring-modulate DUB bass \u2014 harmonic density creates bass inharmonicity.",
+  "description": "FAT dense oscillators ring-modulate DUB bass — harmonic density creates bass inharmonicity.",
   "tags": [
     "fat",
     "dub",
@@ -22,7 +22,7 @@
     "MODULATION",
     "BASS"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.42,

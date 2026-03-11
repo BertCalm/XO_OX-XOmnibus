@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine run \u2014 BOB glide lead, MORPH spectral, DUB bass rhythm. Full melodic run.",
+  "description": "Three-engine run — BOB glide lead, MORPH spectral, DUB bass rhythm. Full melodic run.",
   "tags": [
     "bob",
     "morph",
@@ -24,7 +24,7 @@
     "DUB RHYTHM",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Morph Fat Nebula",
   "mood": "Aether",
-  "engines": ["Morph", "Fat"],
+  "engines": [
+    "Morph",
+    "Fat"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "MORPH's endless bloom inside FAT's gravitational oscillator field. MORPH amplitude shapes FAT's filter as the nebula rotates — a slowly rotating mass of spectral density.",
-  "tags": ["aether", "nebula", "morph", "fat", "cosmic", "dense", "slow"],
-  "macroLabels": ["MORPH BLOOM", "FAT GRAVITY", "COUPLING", "VOID"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "aether",
+    "nebula",
+    "morph",
+    "fat",
+    "cosmic",
+    "dense",
+    "slow"
+  ],
+  "macroLabels": [
+    "MORPH BLOOM",
+    "FAT GRAVITY",
+    "COUPLING",
+    "VOID"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.45,

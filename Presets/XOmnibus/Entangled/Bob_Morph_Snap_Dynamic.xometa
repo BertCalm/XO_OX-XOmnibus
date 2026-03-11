@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine dynamic \u2014 BOB lead, MORPH scan, SNAP accent. Every element in motion.",
+  "description": "Three-engine dynamic — BOB lead, MORPH scan, SNAP accent. Every element in motion.",
   "tags": [
     "bob",
     "morph",
@@ -24,7 +24,7 @@
     "SNAP ACCENT",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.58,

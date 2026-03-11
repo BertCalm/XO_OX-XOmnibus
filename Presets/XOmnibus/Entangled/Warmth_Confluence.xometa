@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Warmth Confluence",
   "mood": "Entangled",
-  "engines": ["Bob", "Drift"],
+  "engines": [
+    "Bob",
+    "Drift"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BOB's saturated analog warmth and DRIFT's psychedelic shimmer merging into one texture. BOB amplitude gently opens DRIFT's filter — warmth and alien shimmer in balance.",
-  "tags": ["pad", "warm", "shimmer", "analog", "psychedelic", "lush", "entangled"],
-  "macroLabels": ["BOB WARMTH", "DRIFT SHIMMER", "COUPLING", "SPACE"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "pad",
+    "warm",
+    "shimmer",
+    "analog",
+    "psychedelic",
+    "lush",
+    "entangled"
+  ],
+  "macroLabels": [
+    "BOB WARMTH",
+    "DRIFT SHIMMER",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB bass ring-modulates BOB \u2014 bass harmonics interact with lead timbre for dissonant metallic textures. Aggressive grit.",
+  "description": "DUB bass ring-modulates BOB — bass harmonics interact with lead timbre for dissonant metallic textures. Aggressive grit.",
   "tags": [
     "dub",
     "bob",
@@ -24,7 +24,7 @@
     "MODULATION",
     "CHARACTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

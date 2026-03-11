@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP transient FM-modulates BOB \u2014 each hit briefly injects FM into the warm lead, creating attack-only metallic overtones. Snappy edge.",
+  "description": "SNAP transient FM-modulates BOB — each hit briefly injects FM into the warm lead, creating attack-only metallic overtones. Snappy edge.",
   "tags": [
     "snap",
     "bob",
@@ -24,7 +24,7 @@
     "FM DEPTH",
     "CHARACTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.6,

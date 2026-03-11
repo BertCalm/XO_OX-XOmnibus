@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB sync over FAT bright morph \u2014 spectral richness doubled through coupling.",
+  "description": "BOB sync over FAT bright morph — spectral richness doubled through coupling.",
   "tags": [
     "bob",
     "fat",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.75,

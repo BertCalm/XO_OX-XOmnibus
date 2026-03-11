@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT arp with BOB melodic counter \u2014 arpeggiated density with character melody on top.",
+  "description": "FAT arp with BOB melodic counter — arpeggiated density with character melody on top.",
   "tags": [
     "fat",
     "bob",
@@ -22,7 +22,7 @@
     "COUPLING",
     "RATE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

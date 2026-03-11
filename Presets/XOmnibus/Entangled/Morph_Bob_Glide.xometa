@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH pad with BOB glide lead coupling \u2014 MORPH envelope gates BOB's filter while BOB slides between notes. Dynamic melodic coupling.",
+  "description": "MORPH pad with BOB glide lead coupling — MORPH envelope gates BOB's filter while BOB slides between notes. Dynamic melodic coupling.",
   "tags": [
     "morph",
     "bob",
@@ -24,7 +24,7 @@
     "COUPLING DEPTH",
     "BOB CHARACTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

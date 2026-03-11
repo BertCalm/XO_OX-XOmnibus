@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT formant over FAT bright morph \u2014 vowel-like spectral interest over dense brightness.",
+  "description": "DRIFT formant over FAT bright morph — vowel-like spectral interest over dense brightness.",
   "tags": [
     "drift",
     "fat",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.78,

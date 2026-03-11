@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH wavetable position FM-modulates FAT \u2014 scanning the wavetable changes the FM character of the dense oscillator stack in real time.",
+  "description": "MORPH wavetable position FM-modulates FAT — scanning the wavetable changes the FM character of the dense oscillator stack in real time.",
   "tags": [
     "morph",
     "fat",
@@ -24,7 +24,7 @@
     "FM DEPTH",
     "DENSITY"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

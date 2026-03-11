@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Bob Dub Ether",
   "mood": "Aether",
-  "engines": ["Bob", "Dub"],
+  "engines": [
+    "Bob",
+    "Dub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BOB's dusty warmth and DUB's cathedral reverb combining into pure ether. DUB spring reverb creates infinite space — BOB's character floats inside it. BOB amplitude shapes DUB's filter gently.",
-  "tags": ["aether", "bob", "dub", "ethereal", "reverb", "warm", "space"],
-  "macroLabels": ["BOB GHOST", "DUB REVERB", "COUPLING", "VOID DEPTH"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "aether",
+    "bob",
+    "dub",
+    "ethereal",
+    "reverb",
+    "warm",
+    "space"
+  ],
+  "macroLabels": [
+    "BOB GHOST",
+    "DUB REVERB",
+    "COUPLING",
+    "VOID DEPTH"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.35,

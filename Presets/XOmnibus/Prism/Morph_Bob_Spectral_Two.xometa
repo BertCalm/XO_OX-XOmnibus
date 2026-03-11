@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH bright scan over BOB sync lead \u2014 wavetable spectral motion above sync richness.",
+  "description": "MORPH bright scan over BOB sync lead — wavetable spectral motion above sync richness.",
   "tags": [
     "morph",
     "bob",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.78,

@@ -2,16 +2,32 @@
   "schema_version": 1,
   "name": "Event Horizon",
   "mood": "Entangled",
-  "engines": ["XOuroboros"],
+  "engines": [
+    "XOuroboros"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Rössler attractor with heavy injection and loose leash. Transforms whatever feeds into it beyond recognition.",
-  "tags": ["coupled", "transformative", "heavy", "chaotic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Heavy",
+  "tags": [
+    "coupled",
+    "transformative",
+    "heavy",
+    "chaotic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-10",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "XOuroboros": {
       "ouro_topology": 1,

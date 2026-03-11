@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine flux groove \u2014 DUB bass drives DRIFT while MORPH scans above.",
+  "description": "Three-engine flux groove — DUB bass drives DRIFT while MORPH scans above.",
   "tags": [
     "dub",
     "drift",
@@ -24,7 +24,7 @@
     "MORPH SCAN",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.48,

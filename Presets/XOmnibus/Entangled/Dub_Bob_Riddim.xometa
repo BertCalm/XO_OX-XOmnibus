@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Dub Bob Riddim",
   "mood": "Entangled",
-  "engines": ["Dub", "Bob"],
+  "engines": [
+    "Dub",
+    "Bob"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DUB rhythm bass and BOB warm lead playing in the same space. DUB amplitude gates BOB's filter — the bass line literally shapes the lead tone through coupling. Classic riddim architecture.",
-  "tags": ["riddim", "dub", "bob", "rhythm", "bass", "lead", "entangled"],
-  "macroLabels": ["DUB BASS", "BOB LEAD", "COUPLING DEPTH", "ECHO"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "riddim",
+    "dub",
+    "bob",
+    "rhythm",
+    "bass",
+    "lead",
+    "entangled"
+  ],
+  "macroLabels": [
+    "DUB BASS",
+    "BOB LEAD",
+    "COUPLING DEPTH",
+    "ECHO"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

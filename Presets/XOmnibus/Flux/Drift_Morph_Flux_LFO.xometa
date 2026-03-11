@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT LFO modulates MORPH pitch \u2014 shimmer oscillation creates melodic pitch drift in the wavetable.",
+  "description": "DRIFT LFO modulates MORPH pitch — shimmer oscillation creates melodic pitch drift in the wavetable.",
   "tags": [
     "drift",
     "morph",
@@ -22,7 +22,7 @@
     "RATE",
     "DEPTH"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.52,

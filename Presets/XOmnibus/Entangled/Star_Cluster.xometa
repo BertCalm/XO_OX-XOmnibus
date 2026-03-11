@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Star Cluster",
   "mood": "Entangled",
-  "engines": ["Drift", "Morph"],
+  "engines": [
+    "Drift",
+    "Morph"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT formant shimmer and MORPH wavetable textures orbiting the same pitch. DRIFT's LFO gently modulates MORPH's pitch — two psychedelic engines slowly drifting apart and together.",
-  "tags": ["pad", "shimmer", "morph", "formant", "cosmic", "lush", "entangled"],
-  "macroLabels": ["DRIFT SHIMMER", "MORPH TEXTURE", "COUPLING", "SPACE"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "pad",
+    "shimmer",
+    "morph",
+    "formant",
+    "cosmic",
+    "lush",
+    "entangled"
+  ],
+  "macroLabels": [
+    "DRIFT SHIMMER",
+    "MORPH TEXTURE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.65,

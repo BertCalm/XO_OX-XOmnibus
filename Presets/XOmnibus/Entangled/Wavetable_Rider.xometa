@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Wavetable Rider",
   "mood": "Entangled",
-  "engines": ["Drift", "Morph"],
+  "engines": [
+    "Drift",
+    "Morph"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT's audio signal drives MORPH's wavetable position in real time via Audio->Wavetable coupling. DRIFT's shimmer and pitch movement scans through MORPH timbres continuously — unpredictable, alive, and unique.",
-  "tags": ["wavetable", "rider", "drift", "morph", "psychedelic", "movement", "entangled"],
-  "macroLabels": ["DRIFT LEVEL", "MORPH RANGE", "COUPLING", "FILTER"],
-  "couplingIntensity": "Strong",
+  "tags": [
+    "wavetable",
+    "rider",
+    "drift",
+    "morph",
+    "psychedelic",
+    "movement",
+    "entangled"
+  ],
+  "macroLabels": [
+    "DRIFT LEVEL",
+    "MORPH RANGE",
+    "COUPLING",
+    "FILTER"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.65,

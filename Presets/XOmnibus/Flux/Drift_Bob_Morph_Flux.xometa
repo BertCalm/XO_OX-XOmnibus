@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine melodic flux \u2014 DRIFT modulates BOB pitch while BOB scans MORPH spectral.",
+  "description": "Three-engine melodic flux — DRIFT modulates BOB pitch while BOB scans MORPH spectral.",
   "tags": [
     "drift",
     "bob",
@@ -24,7 +24,7 @@
     "MORPH SCAN",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.58,

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP percussion gates FAT's massive filter \u2014 every hit opens the dense pad with a bright filter flash. Classic but with maximum density.",
+  "description": "SNAP percussion gates FAT's massive filter — every hit opens the dense pad with a bright filter flash. Classic but with maximum density.",
   "tags": [
     "snap",
     "fat",
@@ -24,7 +24,7 @@
     "GATE DEPTH",
     "FILTER OPEN"
   ],
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.6,

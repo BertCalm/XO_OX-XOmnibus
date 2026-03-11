@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB reverb tail scans MORPH wavetable \u2014 echo decay maps spectral position.",
+  "description": "DUB reverb tail scans MORPH wavetable — echo decay maps spectral position.",
   "tags": [
     "dub",
     "morph",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.38,

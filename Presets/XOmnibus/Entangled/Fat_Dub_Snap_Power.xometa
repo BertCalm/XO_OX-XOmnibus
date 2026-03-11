@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine power \u2014 FAT density, DUB bass, SNAP punch. Maximum low-end coupling.",
+  "description": "Three-engine power — FAT density, DUB bass, SNAP punch. Maximum low-end coupling.",
   "tags": [
     "fat",
     "dub",
@@ -24,7 +24,7 @@
     "SNAP PUNCH",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.42,

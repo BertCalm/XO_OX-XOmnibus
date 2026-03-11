@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine spectral-density-shimmer \u2014 MORPH spectral middle, FAT dense ground, DRIFT shimmer sky.",
+  "description": "Three-engine spectral-density-shimmer — MORPH spectral middle, FAT dense ground, DRIFT shimmer sky.",
   "tags": [
     "morph",
     "fat",
@@ -24,7 +24,7 @@
     "DRIFT SKY",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.52,

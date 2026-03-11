@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB warm and DRIFT shimmer at the twilight hour \u2014 beauty in transition.",
+  "description": "BOB warm and DRIFT shimmer at the twilight hour — beauty in transition.",
   "tags": [
     "bob",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH wavetable amplitude gates BOB's filter \u2014 the evolving pad opens and closes the warm lead tone. Organic filter gating.",
+  "description": "MORPH wavetable amplitude gates BOB's filter — the evolving pad opens and closes the warm lead tone. Organic filter gating.",
   "tags": [
     "morph",
     "bob",
@@ -24,7 +24,7 @@
     "GATE DEPTH",
     "BOB CHARACTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

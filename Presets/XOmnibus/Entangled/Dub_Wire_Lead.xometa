@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Dub Wire Lead",
   "mood": "Entangled",
-  "engines": ["Dub", "Drift"],
+  "engines": [
+    "Dub",
+    "Drift"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DUB mono bass lead with portamento glide for classic dub runs. DRIFT shimmer pad floats behind. Play slow legato lines to feel the glide slide between notes.",
-  "tags": ["lead", "glide", "mono", "dub", "portamento", "bass", "entangled"],
-  "macroLabels": ["DUB TONE", "GLIDE TIME", "COUPLING", "SHIMMER"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "lead",
+    "glide",
+    "mono",
+    "dub",
+    "portamento",
+    "bass",
+    "entangled"
+  ],
+  "macroLabels": [
+    "DUB TONE",
+    "GLIDE TIME",
+    "COUPLING",
+    "SHIMMER"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

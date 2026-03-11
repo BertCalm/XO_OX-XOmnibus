@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine soul machine \u2014 BOB warm lead, FAT harmonic density, DUB rhythm bass. BOB gates FAT's filter while DUB holds the groove.",
+  "description": "Three-engine soul machine — BOB warm lead, FAT harmonic density, DUB rhythm bass. BOB gates FAT's filter while DUB holds the groove.",
   "tags": [
     "bob",
     "fat",
@@ -25,7 +25,7 @@
     "DUB BASS",
     "COUPLING"
   ],
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

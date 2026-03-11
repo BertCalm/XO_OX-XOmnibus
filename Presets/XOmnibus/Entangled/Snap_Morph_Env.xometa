@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP's envelope scans MORPH's wavetable \u2014 each transient hit triggers a sweep through spectral space. Percussive wavetable scanning.",
+  "description": "SNAP's envelope scans MORPH's wavetable — each transient hit triggers a sweep through spectral space. Percussive wavetable scanning.",
   "tags": [
     "snap",
     "morph",
@@ -24,7 +24,7 @@
     "SCAN DEPTH",
     "FILTER"
   ],
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.6,

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB infinite reverb bass with FAT harmonic drone \u2014 the dub space expands to fill all available air.",
+  "description": "DUB infinite reverb bass with FAT harmonic drone — the dub space expands to fill all available air.",
   "tags": [
     "dub",
     "fat",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.35,

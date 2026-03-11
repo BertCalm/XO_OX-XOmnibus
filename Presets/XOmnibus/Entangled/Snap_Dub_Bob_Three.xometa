@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP rhythm, DUB bass, BOB lead \u2014 classic three-piece entangled through rhythm coupling.",
+  "description": "SNAP rhythm, DUB bass, BOB lead — classic three-piece entangled through rhythm coupling.",
   "tags": [
     "snap",
     "dub",
@@ -24,7 +24,7 @@
     "BOB LEAD",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB bass ring-modulates DRIFT shimmer \u2014 bass harmonics inject metallic content into the sky.",
+  "description": "DUB bass ring-modulates DRIFT shimmer — bass harmonics inject metallic content into the sky.",
   "tags": [
     "dub",
     "drift",
@@ -22,7 +22,7 @@
     "MODULATION",
     "SHIMMER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

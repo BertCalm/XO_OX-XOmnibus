@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH pulse modulates DRIFT pitch \u2014 wavetable rhythm creates pitch pulses in the shimmer.",
+  "description": "MORPH pulse modulates DRIFT pitch — wavetable rhythm creates pitch pulses in the shimmer.",
   "tags": [
     "morph",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SHIMMER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

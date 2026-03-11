@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Snap Drift Layer",
   "mood": "Entangled",
-  "engines": ["Drift", "Snap"],
+  "engines": [
+    "Drift",
+    "Snap"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "SNAP percussive attack coupled with DRIFT sustained pad. SNAP amplitude modulates DRIFT filter for ducking.",
-  "tags": ["layer", "percussive", "pad", "coupled", "duck"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "layer",
+    "percussive",
+    "pad",
+    "coupled",
+    "duck"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

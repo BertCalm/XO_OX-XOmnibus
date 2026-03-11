@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Morph Drift Ascent",
   "mood": "Aether",
-  "engines": ["Morph", "Drift"],
+  "engines": [
+    "Morph",
+    "Drift"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "MORPH's bloom and DRIFT's shimmer ascending together. MORPH envelope sweeps DRIFT into ever-higher ethereal territory. Hold notes long and ride the ascent.",
-  "tags": ["pad", "ascent", "ethereal", "morph", "drift", "shimmer", "aether"],
-  "macroLabels": ["MORPH BLOOM", "DRIFT SHIMMER", "COUPLING", "ASCENT"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "pad",
+    "ascent",
+    "ethereal",
+    "morph",
+    "drift",
+    "shimmer",
+    "aether"
+  ],
+  "macroLabels": [
+    "MORPH BLOOM",
+    "DRIFT SHIMMER",
+    "COUPLING",
+    "ASCENT"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.65,

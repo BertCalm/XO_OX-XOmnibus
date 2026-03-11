@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB envelope controls FAT's internal decay time \u2014 the character voice shapes harmonic density timing.",
+  "description": "BOB envelope controls FAT's internal decay time — the character voice shapes harmonic density timing.",
   "tags": [
     "bob",
     "fat",
@@ -22,7 +22,7 @@
     "DECAY DEPTH",
     "DENSITY"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.52,

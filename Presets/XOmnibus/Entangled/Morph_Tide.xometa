@@ -2,13 +2,28 @@
   "schema_version": 1,
   "name": "Morph Tide",
   "mood": "Entangled",
-  "engines": ["Morph", "Drift"],
+  "engines": [
+    "Morph",
+    "Drift"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "MORPH's amplitude breathes DRIFT's filter open and shut like ocean tides. Slow morphing wavetable meets psychedelic shimmer — perpetual motion pad.",
-  "tags": ["movement", "oceanic", "pad", "filter", "breathe", "entangled"],
-  "macroLabels": ["MORPH DEPTH", "TIDE RATE", "COUPLING", "SHIMMER"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "movement",
+    "oceanic",
+    "pad",
+    "filter",
+    "breathe",
+    "entangled"
+  ],
+  "macroLabels": [
+    "MORPH DEPTH",
+    "TIDE RATE",
+    "COUPLING",
+    "SHIMMER"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

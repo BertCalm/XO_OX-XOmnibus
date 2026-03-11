@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT audio ring-modulates DRIFT \u2014 massive density creates metallic inharmonicity in the shimmer. Thunderstorm crystalline texture.",
+  "description": "FAT audio ring-modulates DRIFT — massive density creates metallic inharmonicity in the shimmer. Thunderstorm crystalline texture.",
   "tags": [
     "fat",
     "drift",
@@ -24,7 +24,7 @@
     "MODULATION",
     "TONE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.65,

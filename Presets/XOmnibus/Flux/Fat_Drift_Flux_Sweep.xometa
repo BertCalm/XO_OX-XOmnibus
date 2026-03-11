@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT filter sweeps DRIFT's pitch \u2014 the dense oscillator envelope modulates the shimmer pitch.",
+  "description": "FAT filter sweeps DRIFT's pitch — the dense oscillator envelope modulates the shimmer pitch.",
   "tags": [
     "fat",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "RATE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

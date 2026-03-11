@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT arp drives BOB with Rhythm->Blend \u2014 the arpeggiated pattern changes BOB's oscillator blend on each note.",
+  "description": "FAT arp drives BOB with Rhythm->Blend — the arpeggiated pattern changes BOB's oscillator blend on each note.",
   "tags": [
     "fat",
     "bob",
@@ -22,7 +22,7 @@
     "RHYTHM DEPTH",
     "CHARACTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB and FAT bass both coupled \u2014 DUB filter tracks FAT amp for maximum bass entanglement.",
+  "description": "DUB and FAT bass both coupled — DUB filter tracks FAT amp for maximum bass entanglement.",
   "tags": [
     "dub",
     "fat",
@@ -22,7 +22,7 @@
     "COUPLING",
     "DEPTH"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.32,

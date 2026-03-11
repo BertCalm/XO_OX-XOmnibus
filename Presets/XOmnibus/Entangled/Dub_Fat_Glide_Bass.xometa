@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB mono glide bass with FAT sub-layer \u2014 portamento moves the bass line while the massive harmonic stack follows. Heavyweight sliding bass.",
+  "description": "DUB mono glide bass with FAT sub-layer — portamento moves the bass line while the massive harmonic stack follows. Heavyweight sliding bass.",
   "tags": [
     "dub",
     "fat",
@@ -24,7 +24,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.35,

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB sync chord with DRIFT shimmer \u2014 spectral sync harmonics meet shimmer for chordal prism.",
+  "description": "BOB sync chord with DRIFT shimmer — spectral sync harmonics meet shimmer for chordal prism.",
   "tags": [
     "bob",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.75,

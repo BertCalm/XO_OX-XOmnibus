@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB filter mirrors into MORPH filter \u2014 the character lead's tonal sweep is replicated in the wavetable pad. Synchronized brightness.",
+  "description": "BOB filter mirrors into MORPH filter — the character lead's tonal sweep is replicated in the wavetable pad. Synchronized brightness.",
   "tags": [
     "bob",
     "morph",
@@ -24,7 +24,7 @@
     "LINK DEPTH",
     "RESONANCE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

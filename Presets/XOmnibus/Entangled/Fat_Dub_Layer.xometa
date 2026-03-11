@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Fat Dub Layer",
   "mood": "Entangled",
-  "engines": ["Fat", "Dub"],
+  "engines": [
+    "Fat",
+    "Dub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FAT's massive oscillator stack coupled with DUB's delay and spring reverb. DUB envelope drives FAT filter.",
-  "tags": ["coupled", "fat", "dub", "massive", "spacious"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "coupled",
+    "fat",
+    "dub",
+    "massive",
+    "spacious"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

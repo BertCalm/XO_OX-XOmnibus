@@ -13,7 +13,11 @@ inline const juce::StringArray validEngineNames {
     "XOddCouple", "XOverdub", "XOdyssey", "XOblongBob", "XObese", "XOnset",
     "Overworld", "Opal", "Orbital", "XOrbital",
     // Short-form aliases used by engine IDs directly
-    "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Onset"
+    "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Onset",
+    // V2 engines
+    "Organon", "XOrganon", "Ouroboros", "XOuroboros",
+    // V3 engines
+    "Obsidian", "Bite"
 };
 
 // Valid moods — the 6 browsing categories plus User.

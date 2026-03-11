@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine atmospheric coupling \u2014 DRIFT gates FAT filter while BOB harmony tracks FAT pitch.",
+  "description": "Three-engine atmospheric coupling — DRIFT gates FAT filter while BOB harmony tracks FAT pitch.",
   "tags": [
     "drift",
     "fat",
@@ -24,7 +24,7 @@
     "BOB HARMONY",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

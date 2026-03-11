@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH wavetable position controls DUB's oscillator blend \u2014 as the wavetable scans, the bass character shifts between timbres in real-time.",
+  "description": "MORPH wavetable position controls DUB's oscillator blend — as the wavetable scans, the bass character shifts between timbres in real-time.",
   "tags": [
     "rhythm",
     "blend",
@@ -24,7 +24,7 @@
     "BLEND DEPTH",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

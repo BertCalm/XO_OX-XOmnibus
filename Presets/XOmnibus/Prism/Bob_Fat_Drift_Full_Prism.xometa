@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine full prism \u2014 BOB melody, FAT spectral depth, DRIFT shimmer. Complete prism.",
+  "description": "Three-engine full prism — BOB melody, FAT spectral depth, DRIFT shimmer. Complete prism.",
   "tags": [
     "bob",
     "fat",
@@ -24,7 +24,7 @@
     "DRIFT SHIMMER",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.78,

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB bass ring-modulates SNAP \u2014 bass harmonics create metallic sidebands in the transient voice.",
+  "description": "DUB bass ring-modulates SNAP — bass harmonics create metallic sidebands in the transient voice.",
   "tags": [
     "dub",
     "snap",
@@ -22,7 +22,7 @@
     "MODULATION",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.52,

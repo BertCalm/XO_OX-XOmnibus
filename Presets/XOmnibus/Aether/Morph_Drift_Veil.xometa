@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH wavetable through DRIFT shimmer \u2014 evolving harmonics filter through a shimmering veil.",
+  "description": "MORPH wavetable through DRIFT shimmer — evolving harmonics filter through a shimmering veil.",
   "tags": [
     "morph",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "BLOOM"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

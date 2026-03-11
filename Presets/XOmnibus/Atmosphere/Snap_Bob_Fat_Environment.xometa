@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine environment \u2014 SNAP natural ticks, BOB warm air, FAT deep resonance.",
+  "description": "Three-engine environment — SNAP natural ticks, BOB warm air, FAT deep resonance.",
   "tags": [
     "snap",
     "bob",
@@ -24,7 +24,7 @@
     "FAT RESONANCE",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,

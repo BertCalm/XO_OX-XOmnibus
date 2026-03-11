@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP modulates DRIFT pitch via LFO \u2014 each attack resets LFO phase creating rhythmic pitch shimmer.",
+  "description": "SNAP modulates DRIFT pitch via LFO — each attack resets LFO phase creating rhythmic pitch shimmer.",
   "tags": [
     "snap",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SHIMMER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.62,

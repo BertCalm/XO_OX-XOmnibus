@@ -2,7 +2,7 @@
   "schema_version": 1,
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "macroLabels": [
     "CHARACTER",
@@ -41,7 +41,7 @@
     "Drift",
     "Dub"
   ],
-  "description": "All four engines locked together \u2014 percussive drives melodic drives harmonic drives space.",
+  "description": "All four engines locked together — percussive drives melodic drives harmonic drives space.",
   "tags": [
     "onset",
     "bob",

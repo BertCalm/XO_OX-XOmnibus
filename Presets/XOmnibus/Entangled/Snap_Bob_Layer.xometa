@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Snap Bob Layer",
   "mood": "Entangled",
-  "engines": ["Bob", "Snap"],
+  "engines": [
+    "Bob",
+    "Snap"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "SNAP's digital bite layered with BOB's analog warmth. SNAP's amplitude drives BOB's filter cutoff.",
-  "tags": ["coupled", "layer", "digital", "analog", "entangled"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "coupled",
+    "layer",
+    "digital",
+    "analog",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

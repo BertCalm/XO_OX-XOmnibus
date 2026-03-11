@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH scans, BOB leads, DRIFT shimmers \u2014 three-engine melodic architecture.",
+  "description": "MORPH scans, BOB leads, DRIFT shimmers — three-engine melodic architecture.",
   "tags": [
     "morph",
     "bob",
@@ -24,7 +24,7 @@
     "DRIFT SHIMMER",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

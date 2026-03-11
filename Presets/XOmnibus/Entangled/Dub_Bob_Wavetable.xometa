@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB audio signal scans BOB oscillator blend \u2014 bass harmonics directly control the lead waveform.",
+  "description": "DUB audio signal scans BOB oscillator blend — bass harmonics directly control the lead waveform.",
   "tags": [
     "dub",
     "bob",
@@ -22,7 +22,7 @@
     "SCAN DEPTH",
     "CHARACTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

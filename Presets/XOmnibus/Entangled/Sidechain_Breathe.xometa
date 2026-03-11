@@ -2,13 +2,28 @@
   "schema_version": 1,
   "name": "Sidechain Breathe",
   "mood": "Entangled",
-  "engines": ["Snap", "Dub"],
+  "engines": [
+    "Snap",
+    "Dub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "SNAP's tight percussive hits duck the DUB bass through Amp->Filter coupling. Every snap pumps the low end open — classic dub sidechain breathing.",
-  "tags": ["sidechain", "pump", "dub", "percussive", "movement", "entangled"],
-  "macroLabels": ["SNAP CRACK", "PUMP DEPTH", "COUPLING", "DUB SPACE"],
-  "couplingIntensity": "Strong",
+  "tags": [
+    "sidechain",
+    "pump",
+    "dub",
+    "percussive",
+    "movement",
+    "entangled"
+  ],
+  "macroLabels": [
+    "SNAP CRACK",
+    "PUMP DEPTH",
+    "COUPLING",
+    "DUB SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.45,

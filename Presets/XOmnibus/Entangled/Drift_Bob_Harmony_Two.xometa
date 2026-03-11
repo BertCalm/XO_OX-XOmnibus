@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT pitch follows BOB lead \u2014 harmonic doubling creates instant harmonization on every note.",
+  "description": "DRIFT pitch follows BOB lead — harmonic doubling creates instant harmonization on every note.",
   "tags": [
     "drift",
     "bob",
@@ -22,7 +22,7 @@
     "INTERVAL",
     "SHIMMER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.58,

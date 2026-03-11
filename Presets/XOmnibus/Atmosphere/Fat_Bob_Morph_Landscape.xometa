@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine landscape \u2014 FAT earth, BOB warmth, MORPH evolving sky. Complete world.",
+  "description": "Three-engine landscape — FAT earth, BOB warmth, MORPH evolving sky. Complete world.",
   "tags": [
     "fat",
     "bob",
@@ -24,7 +24,7 @@
     "MORPH SKY",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,

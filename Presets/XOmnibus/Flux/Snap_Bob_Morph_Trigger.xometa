@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine flux trigger \u2014 SNAP fires BOB while BOB scans MORPH. Cascading triggers.",
+  "description": "Three-engine flux trigger — SNAP fires BOB while BOB scans MORPH. Cascading triggers.",
   "tags": [
     "snap",
     "bob",
@@ -24,7 +24,7 @@
     "MORPH SCAN",
     "RATE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.6,

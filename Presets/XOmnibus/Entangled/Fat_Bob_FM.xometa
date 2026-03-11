@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT modulates BOB with FM \u2014 the dense oscillator stack injects FM inharmonicity into the warm character voice. Thick tonal instability.",
+  "description": "FAT modulates BOB with FM — the dense oscillator stack injects FM inharmonicity into the warm character voice. Thick tonal instability.",
   "tags": [
     "fat",
     "bob",
@@ -24,7 +24,7 @@
     "FM DEPTH",
     "CHARACTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

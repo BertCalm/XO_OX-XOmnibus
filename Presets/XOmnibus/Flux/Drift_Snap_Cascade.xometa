@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT filter cascades open with SNAP strikes \u2014 each percussion hit triggers a filter bloom.",
+  "description": "DRIFT filter cascades open with SNAP strikes — each percussion hit triggers a filter bloom.",
   "tags": [
     "drift",
     "snap",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SHIMMER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.62,

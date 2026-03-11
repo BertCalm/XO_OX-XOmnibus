@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine spectral richness \u2014 FAT bright density, DRIFT shimmer, BOB sync melody.",
+  "description": "Three-engine spectral richness — FAT bright density, DRIFT shimmer, BOB sync melody.",
   "tags": [
     "fat",
     "drift",
@@ -24,7 +24,7 @@
     "BOB SYNC",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.78,

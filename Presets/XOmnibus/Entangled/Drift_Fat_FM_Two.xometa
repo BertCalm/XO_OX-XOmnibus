@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT FM-modulates FAT \u2014 shimmer creates FM inharmonicity in the massive density layer.",
+  "description": "DRIFT FM-modulates FAT — shimmer creates FM inharmonicity in the massive density layer.",
   "tags": [
     "drift",
     "fat",
@@ -22,7 +22,7 @@
     "FM DEPTH",
     "DENSITY"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.52,

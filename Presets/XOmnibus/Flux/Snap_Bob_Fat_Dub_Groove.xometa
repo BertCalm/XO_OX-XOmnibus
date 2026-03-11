@@ -10,7 +10,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Four-engine groove \u2014 SNAP clock, BOB melody, FAT density, DUB bass. Maximum flux.",
+  "description": "Four-engine groove — SNAP clock, BOB melody, FAT density, DUB bass. Maximum flux.",
   "tags": [
     "snap",
     "bob",
@@ -26,7 +26,7 @@
     "FAT DENSITY",
     "DUB BASS"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.52,

@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Bob Drift Weave",
   "mood": "Entangled",
-  "engines": ["Bob", "Drift"],
+  "engines": [
+    "Bob",
+    "Drift"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BOB's warm character coupled with DRIFT's psychedelic shimmer. Drift envelope modulates Bob's filter.",
-  "tags": ["coupled", "warm", "shimmer", "evolving", "entangled"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "coupled",
+    "warm",
+    "shimmer",
+    "evolving",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,

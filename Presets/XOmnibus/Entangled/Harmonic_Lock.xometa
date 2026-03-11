@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Harmonic Lock",
   "mood": "Entangled",
-  "engines": ["Dub", "Drift"],
+  "engines": [
+    "Dub",
+    "Drift"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DUB's pitch drives DRIFT's pitch via Pitch->Pitch coupling — they are harmonically locked. When DUB bends or glides, DRIFT follows. Two engines become one perfectly-tuned detuned voice.",
-  "tags": ["harmonic", "pitch", "lock", "dub", "drift", "glide", "entangled"],
-  "macroLabels": ["DUB BASS", "DRIFT SHIMMER", "HARMONIC AMOUNT", "SPACE"],
-  "couplingIntensity": "Strong",
+  "tags": [
+    "harmonic",
+    "pitch",
+    "lock",
+    "dub",
+    "drift",
+    "glide",
+    "entangled"
+  ],
+  "macroLabels": [
+    "DUB BASS",
+    "DRIFT SHIMMER",
+    "HARMONIC AMOUNT",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

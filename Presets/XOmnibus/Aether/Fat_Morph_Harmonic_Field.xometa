@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT and MORPH creating a shared harmonic field \u2014 density and wavetable locked in slow mutual evolution.",
+  "description": "FAT and MORPH creating a shared harmonic field — density and wavetable locked in slow mutual evolution.",
   "tags": [
     "fat",
     "morph",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.42,

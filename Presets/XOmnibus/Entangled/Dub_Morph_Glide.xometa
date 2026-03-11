@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB mono glide bass under MORPH evolving pad \u2014 portamento bass slides beneath a morphing harmonic landscape. Soulful foundation.",
+  "description": "DUB mono glide bass under MORPH evolving pad — portamento bass slides beneath a morphing harmonic landscape. Soulful foundation.",
   "tags": [
     "dub",
     "morph",
@@ -24,7 +24,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,

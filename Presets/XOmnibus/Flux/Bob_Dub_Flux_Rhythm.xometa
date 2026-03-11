@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB rhythm drives DUB blend \u2014 character stabs shape the bass timbre in real time.",
+  "description": "BOB rhythm drives DUB blend — character stabs shape the bass timbre in real time.",
   "tags": [
     "bob",
     "dub",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.48,

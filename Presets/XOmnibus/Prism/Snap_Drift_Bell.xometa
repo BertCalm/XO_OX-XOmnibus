@@ -2,13 +2,30 @@
   "schema_version": 1,
   "name": "Snap Drift Bell",
   "mood": "Prism",
-  "engines": ["Snap", "Drift"],
+  "engines": [
+    "Snap",
+    "Drift"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "SNAP's transient attack coupled with DRIFT's shimmer shimmer resonance creates metallic bell tones. SNAP amplitude drives DRIFT as Audio->Ring coupling — spectral bell overtones from percussive hits.",
-  "tags": ["bell", "prism", "snap", "drift", "metallic", "spectral", "ring", "coupled"],
-  "macroLabels": ["SNAP STRIKE", "BELL SHIMMER", "COUPLING", "RESONANCE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "bell",
+    "prism",
+    "snap",
+    "drift",
+    "metallic",
+    "spectral",
+    "ring",
+    "coupled"
+  ],
+  "macroLabels": [
+    "SNAP STRIKE",
+    "BELL SHIMMER",
+    "COUPLING",
+    "RESONANCE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.75,

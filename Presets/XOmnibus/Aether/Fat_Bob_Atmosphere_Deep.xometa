@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT drone with BOB vapor layer \u2014 deep harmonic density with dusty presence above.",
+  "description": "FAT drone with BOB vapor layer — deep harmonic density with dusty presence above.",
   "tags": [
     "fat",
     "bob",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.4,

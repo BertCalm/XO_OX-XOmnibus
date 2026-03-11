@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine prism \u2014 BOB spectral lead, MORPH wavetable color, FAT dense bright base.",
+  "description": "Three-engine prism — BOB spectral lead, MORPH wavetable color, FAT dense bright base.",
   "tags": [
     "bob",
     "morph",
@@ -24,7 +24,7 @@
     "FAT BASE",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.82,

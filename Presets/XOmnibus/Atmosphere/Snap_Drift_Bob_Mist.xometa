@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine mist \u2014 SNAP rare ticks, DRIFT shimmer mist, BOB warm presence. Misty morning.",
+  "description": "Three-engine mist — SNAP rare ticks, DRIFT shimmer mist, BOB warm presence. Misty morning.",
   "tags": [
     "snap",
     "drift",
@@ -24,7 +24,7 @@
     "BOB WARMTH",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

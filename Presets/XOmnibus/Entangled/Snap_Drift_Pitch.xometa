@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP transient energy pitches DRIFT upward on every hit \u2014 the shimmer pad gets micro-pitched each time the snap fires. Metallic brightness.",
+  "description": "SNAP transient energy pitches DRIFT upward on every hit — the shimmer pad gets micro-pitched each time the snap fires. Metallic brightness.",
   "tags": [
     "snap",
     "drift",
@@ -24,7 +24,7 @@
     "PITCH AMOUNT",
     "SHIMMER"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.65,

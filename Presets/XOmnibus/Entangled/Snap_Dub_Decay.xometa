@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP envelope controls DUB delay decay \u2014 percussive hits gate the echo tail length. Tight transient control of reverb/delay.",
+  "description": "SNAP envelope controls DUB delay decay — percussive hits gate the echo tail length. Tight transient control of reverb/delay.",
   "tags": [
     "snap",
     "dub",
@@ -24,7 +24,7 @@
     "DECAY DEPTH",
     "ECHO"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

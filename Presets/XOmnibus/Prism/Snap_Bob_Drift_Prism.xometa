@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine prism \u2014 SNAP crystal, BOB spectral, DRIFT shimmer. Complete bright architecture.",
+  "description": "Three-engine prism — SNAP crystal, BOB spectral, DRIFT shimmer. Complete bright architecture.",
   "tags": [
     "snap",
     "bob",
@@ -24,7 +24,7 @@
     "DRIFT SHIMMER",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.78,

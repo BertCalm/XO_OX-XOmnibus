@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT density, BOB character, DUB echo \u2014 each engine in its signature role, all entangled.",
+  "description": "FAT density, BOB character, DUB echo — each engine in its signature role, all entangled.",
   "tags": [
     "fat",
     "bob",
@@ -23,7 +23,7 @@
     "DUB ECHO",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.48,

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB rhythm controls MORPH wavetable scan \u2014 bass groove sculpts spectral content in real time.",
+  "description": "DUB rhythm controls MORPH wavetable scan — bass groove sculpts spectral content in real time.",
   "tags": [
     "dub",
     "morph",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

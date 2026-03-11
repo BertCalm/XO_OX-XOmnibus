@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP sparks BOB's texture \u2014 percussive hits inject energy into the character voice, creating rhythmic bursts.",
+  "description": "SNAP sparks BOB's texture — percussive hits inject energy into the character voice, creating rhythmic bursts.",
   "tags": [
     "snap",
     "bob",
@@ -22,7 +22,7 @@
     "COUPLING",
     "RATE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.65,

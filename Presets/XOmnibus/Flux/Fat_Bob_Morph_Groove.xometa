@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine groove \u2014 FAT arp, BOB stab, MORPH scan. Dynamic three-way flux.",
+  "description": "Three-engine groove — FAT arp, BOB stab, MORPH scan. Dynamic three-way flux.",
   "tags": [
     "fat",
     "bob",
@@ -24,7 +24,7 @@
     "MORPH SCAN",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

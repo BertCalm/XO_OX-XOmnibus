@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Cathedral Breath",
   "mood": "Entangled",
-  "engines": ["Dub", "Drift"],
+  "engines": [
+    "Dub",
+    "Drift"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DUB drenched in spring reverb becomes a cathedral hall. DRIFT shimmer floats ethereally above. DUB amplitude slowly opens DRIFT's filter as the reverb tail blooms.",
-  "tags": ["pad", "reverb", "cathedral", "shimmer", "ethereal", "space", "entangled"],
-  "macroLabels": ["DUB REVERB", "SHIMMER LEVEL", "COUPLING", "TAIL"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "pad",
+    "reverb",
+    "cathedral",
+    "shimmer",
+    "ethereal",
+    "space",
+    "entangled"
+  ],
+  "macroLabels": [
+    "DUB REVERB",
+    "SHIMMER LEVEL",
+    "COUPLING",
+    "TAIL"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.45,

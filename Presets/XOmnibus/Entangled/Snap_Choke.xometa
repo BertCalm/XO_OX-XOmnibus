@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Snap Choke",
   "mood": "Entangled",
-  "engines": ["Snap", "Fat"],
+  "engines": [
+    "Snap",
+    "Fat"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "SNAP amplitude chokes FAT's massive stack on each hit. The snap cuts FAT dead — classic drum machine choke relationship where percussion silences the sustain layer.",
-  "tags": ["choke", "snap", "fat", "percussion", "cut", "rhythmic", "entangled"],
-  "macroLabels": ["SNAP CRACK", "FAT DENSITY", "CHOKE AMOUNT", "FAT DECAY"],
-  "couplingIntensity": "Strong",
+  "tags": [
+    "choke",
+    "snap",
+    "fat",
+    "percussion",
+    "cut",
+    "rhythmic",
+    "entangled"
+  ],
+  "macroLabels": [
+    "SNAP CRACK",
+    "FAT DENSITY",
+    "CHOKE AMOUNT",
+    "FAT DECAY"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

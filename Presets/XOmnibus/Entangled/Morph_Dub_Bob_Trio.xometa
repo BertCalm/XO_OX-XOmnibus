@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine melodic trio \u2014 MORPH spectral middle, DUB bass anchor, BOB character lead.",
+  "description": "Three-engine melodic trio — MORPH spectral middle, DUB bass anchor, BOB character lead.",
   "tags": [
     "morph",
     "dub",
@@ -24,7 +24,7 @@
     "BOB LEAD",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

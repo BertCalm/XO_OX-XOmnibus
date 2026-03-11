@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine groove \u2014 DUB rhythmic bass, FAT arp, BOB lead. Full arrangement in motion.",
+  "description": "Three-engine groove — DUB rhythmic bass, FAT arp, BOB lead. Full arrangement in motion.",
   "tags": [
     "dub",
     "fat",
@@ -24,7 +24,7 @@
     "BOB LEAD",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

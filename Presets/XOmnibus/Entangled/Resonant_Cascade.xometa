@@ -2,13 +2,28 @@
   "schema_version": 1,
   "name": "Resonant Cascade",
   "mood": "Entangled",
-  "engines": ["Drift", "Morph"],
+  "engines": [
+    "Drift",
+    "Morph"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT's amplitude sweeps MORPH's filter in cascading waves. Psychedelic shimmer and evolving wavetable in perpetual conversation — each engine feeding the other's texture.",
-  "tags": ["cascade", "shimmer", "morph", "movement", "filter", "entangled"],
-  "macroLabels": ["DRIFT SHIMMER", "MORPH RATE", "COUPLING", "RESONANCE"],
-  "couplingIntensity": "Strong",
+  "tags": [
+    "cascade",
+    "shimmer",
+    "morph",
+    "movement",
+    "filter",
+    "entangled"
+  ],
+  "macroLabels": [
+    "DRIFT SHIMMER",
+    "MORPH RATE",
+    "COUPLING",
+    "RESONANCE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.65,

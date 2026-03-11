@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT amplitude envelope bends BOB's pitch \u2014 as the massive pad swells, the character lead rises in tune. Dense harmonic lift.",
+  "description": "FAT amplitude envelope bends BOB's pitch — as the massive pad swells, the character lead rises in tune. Dense harmonic lift.",
   "tags": [
     "fat",
     "bob",
@@ -24,7 +24,7 @@
     "COUPLING",
     "CHARACTER"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

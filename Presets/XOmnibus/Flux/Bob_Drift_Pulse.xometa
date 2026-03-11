@@ -2,13 +2,30 @@
   "schema_version": 1,
   "name": "Bob Drift Pulse",
   "mood": "Flux",
-  "engines": ["Bob", "Drift"],
+  "engines": [
+    "Bob",
+    "Drift"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BOB's amplitude pulses rhythmically, DRIFT receives each pulse through Amp->Filter coupling creating pulsing filter gates on the shimmer pad. Two engines dancing a synchronized rhythm.",
-  "tags": ["pulse", "bob", "drift", "rhythmic", "gate", "movement", "flux", "coupled"],
-  "macroLabels": ["PULSE RATE", "DRIFT SHIMMER", "COUPLING", "SPACE"],
-  "couplingIntensity": "Strong",
+  "tags": [
+    "pulse",
+    "bob",
+    "drift",
+    "rhythmic",
+    "gate",
+    "movement",
+    "flux",
+    "coupled"
+  ],
+  "macroLabels": [
+    "PULSE RATE",
+    "DRIFT SHIMMER",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

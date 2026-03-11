@@ -2,16 +2,33 @@
   "schema_version": 1,
   "name": "Manifold Drift",
   "mood": "Entangled",
-  "engines": ["Drift", "XOuroboros"],
+  "engines": [
+    "Drift",
+    "XOuroboros"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "DRIFT's long envelopes slowly rotate the Ouroboros projection angle. Evolving harmonic architecture over glacial timescales.",
-  "tags": ["coupled", "evolving", "pad", "ethereal"],
-  "macroLabels": ["DRIFT HAZE", "ROTATION", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "coupled",
+    "evolving",
+    "pad",
+    "ethereal"
+  ],
+  "macroLabels": [
+    "DRIFT HAZE",
+    "ROTATION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "created": "2026-03-10",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Drift": {
       "drift_oscA_mode": 0,

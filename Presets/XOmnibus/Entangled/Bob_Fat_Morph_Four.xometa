@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine melodic density \u2014 BOB character, FAT harmonic foundation, MORPH spectral evolution.",
+  "description": "Three-engine melodic density — BOB character, FAT harmonic foundation, MORPH spectral evolution.",
   "tags": [
     "bob",
     "fat",
@@ -24,7 +24,7 @@
     "MORPH EVOLVE",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.52,

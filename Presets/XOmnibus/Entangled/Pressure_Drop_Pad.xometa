@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Pressure Drop Pad",
   "mood": "Entangled",
-  "engines": ["Fat", "Bob"],
+  "engines": [
+    "Fat",
+    "Bob"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FAT's massive 12-oscillator foundation with BOB's warm character underneath. FAT amplitude shapes BOB's filter — density and character, pressure and warmth together.",
-  "tags": ["pad", "fat", "bob", "dense", "warm", "massive", "entangled"],
-  "macroLabels": ["FAT DENSITY", "BOB CHARACTER", "COUPLING", "DEPTH"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "pad",
+    "fat",
+    "bob",
+    "dense",
+    "warm",
+    "massive",
+    "entangled"
+  ],
+  "macroLabels": [
+    "FAT DENSITY",
+    "BOB CHARACTER",
+    "COUPLING",
+    "DEPTH"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.4,

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH bloom at slowest rate with DRIFT shimmer \u2014 the bloom takes minutes to complete.",
+  "description": "MORPH bloom at slowest rate with DRIFT shimmer — the bloom takes minutes to complete.",
   "tags": [
     "morph",
     "drift",
@@ -22,7 +22,7 @@
     "BLOOM RATE",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.48,

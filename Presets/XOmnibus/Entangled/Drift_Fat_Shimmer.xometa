@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Drift Fat Shimmer",
   "mood": "Entangled",
-  "engines": ["Fat", "Drift"],
+  "engines": [
+    "Fat",
+    "Drift"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FAT's massive sine pad with DRIFT's shimmer and formant layered on top. Psychedelic weight.",
-  "tags": ["coupled", "pad", "shimmer", "massive", "psychedelic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "coupled",
+    "pad",
+    "shimmer",
+    "massive",
+    "psychedelic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.45,

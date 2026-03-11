@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Snap Drift Rain",
   "mood": "Atmosphere",
-  "engines": ["Snap", "Drift"],
+  "engines": [
+    "Snap",
+    "Drift"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Soft SNAP transients scattered across a DRIFT shimmer pad — like rain on a surface of light. SNAP amplitude gently disturbs DRIFT's filter, each drop a different ripple.",
-  "tags": ["atmosphere", "rain", "snap", "drift", "shimmer", "ambient", "gentle"],
-  "macroLabels": ["SNAP RAIN", "DRIFT SHIMMER", "COUPLING", "SPACE"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "atmosphere",
+    "rain",
+    "snap",
+    "drift",
+    "shimmer",
+    "ambient",
+    "gentle"
+  ],
+  "macroLabels": [
+    "SNAP RAIN",
+    "DRIFT SHIMMER",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

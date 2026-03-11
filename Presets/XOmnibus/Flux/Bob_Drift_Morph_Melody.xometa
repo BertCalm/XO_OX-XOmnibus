@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine melody \u2014 BOB glide lead, DRIFT harmony, MORPH spectral chorus.",
+  "description": "Three-engine melody — BOB glide lead, DRIFT harmony, MORPH spectral chorus.",
   "tags": [
     "bob",
     "drift",
@@ -24,7 +24,7 @@
     "MORPH CHORUS",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.58,

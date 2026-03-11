@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB fast rhythm over FAT sustained \u2014 character rhythm over dense harmonic bed.",
+  "description": "BOB fast rhythm over FAT sustained — character rhythm over dense harmonic bed.",
   "tags": [
     "bob",
     "fat",
@@ -22,7 +22,7 @@
     "COUPLING",
     "RATE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

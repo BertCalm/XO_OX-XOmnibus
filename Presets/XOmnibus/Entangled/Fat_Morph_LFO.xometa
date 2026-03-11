@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT LFO rate modulates MORPH pitch \u2014 dense oscillator oscillation creates slow pitch waves in the wavetable.",
+  "description": "FAT LFO rate modulates MORPH pitch — dense oscillator oscillation creates slow pitch waves in the wavetable.",
   "tags": [
     "fat",
     "morph",
@@ -22,7 +22,7 @@
     "COUPLING",
     "RATE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

@@ -2,13 +2,28 @@
   "schema_version": 1,
   "name": "LFO Entangle",
   "mood": "Entangled",
-  "engines": ["Dub", "Morph"],
+  "engines": [
+    "Dub",
+    "Morph"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DUB's tape LFO modulates MORPH's pitch in real time. The dub wobble becomes MORPH's melodic drift — two engines breathing the same undulation.",
-  "tags": ["lfo", "pitch", "movement", "wobble", "morph", "entangled"],
-  "macroLabels": ["DUB WOBBLE", "MORPH DRIFT", "COUPLING", "ECHO"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "lfo",
+    "pitch",
+    "movement",
+    "wobble",
+    "morph",
+    "entangled"
+  ],
+  "macroLabels": [
+    "DUB WOBBLE",
+    "MORPH DRIFT",
+    "COUPLING",
+    "ECHO"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,

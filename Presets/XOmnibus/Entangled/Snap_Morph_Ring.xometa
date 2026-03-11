@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP ring-modulates MORPH \u2014 transient creates metallic sidebands in the wavetable scan.",
+  "description": "SNAP ring-modulates MORPH — transient creates metallic sidebands in the wavetable scan.",
   "tags": [
     "snap",
     "morph",
@@ -22,7 +22,7 @@
     "MODULATION",
     "WAVETABLE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.65,

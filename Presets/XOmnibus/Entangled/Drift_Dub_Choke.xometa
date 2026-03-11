@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT shimmer chokes DUB delay tails \u2014 the atmospheric layer silences reverb and delays on the bass for a stuttered, controlled echo.",
+  "description": "DRIFT shimmer chokes DUB delay tails — the atmospheric layer silences reverb and delays on the bass for a stuttered, controlled echo.",
   "tags": [
     "drift",
     "dub",
@@ -24,7 +24,7 @@
     "CHOKE SPEED",
     "ECHO"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,

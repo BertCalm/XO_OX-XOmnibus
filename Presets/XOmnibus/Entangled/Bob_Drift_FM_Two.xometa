@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB FM-modulates DRIFT \u2014 warm character creates FM inharmonicity in the shimmer layer.",
+  "description": "BOB FM-modulates DRIFT — warm character creates FM inharmonicity in the shimmer layer.",
   "tags": [
     "bob",
     "drift",
@@ -22,7 +22,7 @@
     "FM DEPTH",
     "SHIMMER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.58,

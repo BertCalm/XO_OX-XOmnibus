@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT massive, DRIFT shimmer, BOB character \u2014 the three-engine atmosphere-lead-density combination.",
+  "description": "FAT massive, DRIFT shimmer, BOB character — the three-engine atmosphere-lead-density combination.",
   "tags": [
     "fat",
     "drift",
@@ -24,7 +24,7 @@
     "BOB CHARACTER",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.52,

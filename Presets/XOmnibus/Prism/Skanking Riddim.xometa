@@ -10,7 +10,6 @@
   "description": "Expressive dub chords voice with warm character.",
   "tags": [
     "square",
-    "verdub",
     "verdub"
   ],
   "macroLabels": [
@@ -19,7 +18,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "created": "2026-03-08",
   "legacy": {

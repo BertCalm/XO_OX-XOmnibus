@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT valley floor density with MORPH mist above \u2014 geological atmosphere.",
+  "description": "FAT valley floor density with MORPH mist above — geological atmosphere.",
   "tags": [
     "fat",
     "morph",
@@ -22,7 +22,7 @@
     "COUPLING",
     "DEPTH"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.42,

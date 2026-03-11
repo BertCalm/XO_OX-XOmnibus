@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT and DUB in the subterranean \u2014 both low, both dense, both reverberant. Underground sound.",
+  "description": "FAT and DUB in the subterranean — both low, both dense, both reverberant. Underground sound.",
   "tags": [
     "fat",
     "dub",
@@ -22,7 +22,7 @@
     "COUPLING",
     "DENSITY"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.22,

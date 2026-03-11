@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH chokes FAT when the wavetable pad is active \u2014 pad gates the massive density layer for dramatic volume sculpting.",
+  "description": "MORPH chokes FAT when the wavetable pad is active — pad gates the massive density layer for dramatic volume sculpting.",
   "tags": [
     "morph",
     "fat",
@@ -24,7 +24,7 @@
     "CHOKE SPEED",
     "DENSITY"
   ],
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.45,

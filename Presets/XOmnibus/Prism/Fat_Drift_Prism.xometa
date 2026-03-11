@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT bright morph with DRIFT crystal shimmer \u2014 spectral density meets crystalline shimmer.",
+  "description": "FAT bright morph with DRIFT crystal shimmer — spectral density meets crystalline shimmer.",
   "tags": [
     "fat",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.72,

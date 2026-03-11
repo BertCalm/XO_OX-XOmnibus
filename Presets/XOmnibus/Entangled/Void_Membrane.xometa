@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Void Membrane",
   "mood": "Entangled",
-  "engines": ["Dub", "Bob"],
+  "engines": [
+    "Dub",
+    "Bob"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DUB bass reverb sustain pad interlocked with BOB's dusty textured layer. DUB spring reverb creates the void — BOB adds grain and breath. DUB amplitude opens BOB's filter.",
-  "tags": ["pad", "dub", "bob", "reverb", "texture", "dark", "entangled"],
-  "macroLabels": ["DUB REVERB", "BOB TEXTURE", "COUPLING", "DARKNESS"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "pad",
+    "dub",
+    "bob",
+    "reverb",
+    "texture",
+    "dark",
+    "entangled"
+  ],
+  "macroLabels": [
+    "DUB REVERB",
+    "BOB TEXTURE",
+    "COUPLING",
+    "DARKNESS"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.3,

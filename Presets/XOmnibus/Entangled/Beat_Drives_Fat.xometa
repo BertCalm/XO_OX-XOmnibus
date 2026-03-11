@@ -2,7 +2,7 @@
   "schema_version": 1,
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "macroLabels": [
     "CHARACTER",
@@ -27,7 +27,7 @@
     "Onset",
     "Fat"
   ],
-  "description": "Kick energy from ONSET pumps FAT's density \u2014 classic sidechain feel, synthesized.",
+  "description": "Kick energy from ONSET pumps FAT's density — classic sidechain feel, synthesized.",
   "tags": [
     "onset",
     "fat",

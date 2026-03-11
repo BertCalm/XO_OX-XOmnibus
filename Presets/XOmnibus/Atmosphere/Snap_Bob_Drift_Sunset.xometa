@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine sunset \u2014 SNAP last light ticks, BOB warm fading, DRIFT shimmer dusk.",
+  "description": "Three-engine sunset — SNAP last light ticks, BOB warm fading, DRIFT shimmer dusk.",
   "tags": [
     "snap",
     "bob",
@@ -24,7 +24,7 @@
     "DRIFT DUSK",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.48,

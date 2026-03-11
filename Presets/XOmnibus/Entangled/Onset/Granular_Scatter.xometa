@@ -21,7 +21,7 @@
     "SPACE",
     "MUTATE"
   ],
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-10",
   "legacy": {

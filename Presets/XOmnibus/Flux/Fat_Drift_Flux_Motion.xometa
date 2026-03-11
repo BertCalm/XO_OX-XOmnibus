@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT amplitude motion modulates DRIFT filter \u2014 the dense swell creates filter movement in the shimmer.",
+  "description": "FAT amplitude motion modulates DRIFT filter — the dense swell creates filter movement in the shimmer.",
   "tags": [
     "fat",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SHIMMER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

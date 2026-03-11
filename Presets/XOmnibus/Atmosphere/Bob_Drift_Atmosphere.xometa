@@ -2,13 +2,28 @@
   "schema_version": 1,
   "name": "Bob Drift Atmosphere",
   "mood": "Atmosphere",
-  "engines": ["Bob", "Drift"],
+  "engines": [
+    "Bob",
+    "Drift"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BOB's warm character and DRIFT's shimmer creating ambient atmosphere together. Neither demands attention — they create environment. BOB opens DRIFT's filter softly over time.",
-  "tags": ["atmosphere", "ambient", "bob", "drift", "warm", "shimmer"],
-  "macroLabels": ["BOB DEPTH", "DRIFT SHIMMER", "COUPLING", "SPACE"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "atmosphere",
+    "ambient",
+    "bob",
+    "drift",
+    "warm",
+    "shimmer"
+  ],
+  "macroLabels": [
+    "BOB DEPTH",
+    "DRIFT SHIMMER",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.45,

@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Portamento Dub",
   "mood": "Entangled",
-  "engines": ["Dub", "Drift"],
+  "engines": [
+    "Dub",
+    "Drift"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Deep DUB mono portamento bass lead with long glide time for slow, weighted note slides. DRIFT sparkle pad underneath. Play slow bass lines with legato for maximum portamento effect.",
-  "tags": ["portamento", "bass", "lead", "mono", "glide", "deep", "entangled"],
-  "macroLabels": ["BASS TONE", "PORTAMENTO", "COUPLING", "DRIFT SPACE"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "portamento",
+    "bass",
+    "lead",
+    "mono",
+    "glide",
+    "deep",
+    "entangled"
+  ],
+  "macroLabels": [
+    "BASS TONE",
+    "PORTAMENTO",
+    "COUPLING",
+    "DRIFT SPACE"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.35,

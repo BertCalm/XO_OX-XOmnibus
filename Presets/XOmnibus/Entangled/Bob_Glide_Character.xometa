@@ -2,13 +2,30 @@
   "schema_version": 1,
   "name": "Bob Glide Character",
   "mood": "Entangled",
-  "engines": ["Bob", "Snap"],
+  "engines": [
+    "Bob",
+    "Snap"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BOB mono warm lead with portamento glide — saturated analog character that slides between notes. SNAP accents punctuate the line. BOB's amplitude drives SNAP's pitch for organic accent timing.",
-  "tags": ["lead", "glide", "mono", "bob", "warm", "character", "portamento", "entangled"],
-  "macroLabels": ["BOB CHARACTER", "GLIDE DEPTH", "COUPLING", "SNAP ACCENT"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "lead",
+    "glide",
+    "mono",
+    "bob",
+    "warm",
+    "character",
+    "portamento",
+    "entangled"
+  ],
+  "macroLabels": [
+    "BOB CHARACTER",
+    "GLIDE DEPTH",
+    "COUPLING",
+    "SNAP ACCENT"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

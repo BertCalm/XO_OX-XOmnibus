@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Decay Bleed",
   "mood": "Entangled",
-  "engines": ["Drift", "Dub"],
+  "engines": [
+    "Drift",
+    "Dub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT's amplitude envelope modulates DUB's decay time via Env->Decay coupling. As DRIFT swells and falls, DUB's echo trail gets longer or shorter — the decay time breathes with the envelope.",
-  "tags": ["decay", "bleed", "drift", "dub", "envelope", "dynamic", "entangled"],
-  "macroLabels": ["DRIFT ENVELOPE", "DUB DECAY", "COUPLING", "ECHO SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "decay",
+    "bleed",
+    "drift",
+    "dub",
+    "envelope",
+    "dynamic",
+    "entangled"
+  ],
+  "macroLabels": [
+    "DRIFT ENVELOPE",
+    "DUB DECAY",
+    "COUPLING",
+    "ECHO SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,

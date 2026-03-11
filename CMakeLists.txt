@@ -70,6 +70,10 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Organon/OrganonEngine.h
     Source/Engines/Ouroboros/OuroborosEngine.h
     Source/Engines/Ouroboros/OuroborosEngine.cpp
+    Source/Engines/Orbital/OrbitalEngine.h
+    Source/Engines/Orbital/OrbitalEngine.cpp
+    Source/Engines/Obsidian/ObsidianEngine.h
+    Source/Engines/Bite/BiteEngine.h
 
     # UI (Gallery Model)
     Source/UI/XOmnibusEditor.h
@@ -105,3 +109,32 @@ if(XO_MOBILE)
         juce::juce_audio_plugin_client
     )
 endif()
+
+# ==============================================================================
+# Tests (standalone console application, no audio device or GUI required)
+# ==============================================================================
+add_executable(XOmnibusTests
+    Tests/run_tests.cpp
+    Tests/DSPTests/DSPStabilityTests.cpp
+    Tests/CouplingTests/CouplingMatrixTests.cpp
+    Tests/PresetTests/PresetRoundTripTests.cpp
+)
+
+target_include_directories(XOmnibusTests PRIVATE
+    Source
+    "${CMAKE_CURRENT_SOURCE_DIR}/../XOverworld/src"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../XOpal"
+)
+
+target_link_libraries(XOmnibusTests PRIVATE
+    juce::juce_core
+    juce::juce_audio_basics
+    juce::juce_audio_processors
+)
+
+target_compile_definitions(XOmnibusTests PRIVATE
+    JUCE_STANDALONE_APPLICATION=1
+    JUCE_WEB_BROWSER=0
+    JUCE_USE_CURL=0
+    JUCE_DISPLAY_SPLASH_SCREEN=0
+)

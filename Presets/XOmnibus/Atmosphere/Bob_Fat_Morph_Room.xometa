@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine room \u2014 BOB warm mid, FAT dense low, MORPH evolving high. Complete room.",
+  "description": "Three-engine room — BOB warm mid, FAT dense low, MORPH evolving high. Complete room.",
   "tags": [
     "bob",
     "fat",
@@ -24,7 +24,7 @@
     "MORPH HIGH",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.48,

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT shimmer envelope controls MORPH decay \u2014 shimmer rise/fall maps to wavetable sustain time.",
+  "description": "DRIFT shimmer envelope controls MORPH decay — shimmer rise/fall maps to wavetable sustain time.",
   "tags": [
     "drift",
     "morph",
@@ -22,7 +22,7 @@
     "DECAY DEPTH",
     "SHIMMER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine pulse \u2014 SNAP rhythmic trigger, DUB bass pulse, DRIFT shimmer trail.",
+  "description": "Three-engine pulse — SNAP rhythmic trigger, DUB bass pulse, DRIFT shimmer trail.",
   "tags": [
     "snap",
     "dub",
@@ -24,7 +24,7 @@
     "DRIFT TRAIL",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

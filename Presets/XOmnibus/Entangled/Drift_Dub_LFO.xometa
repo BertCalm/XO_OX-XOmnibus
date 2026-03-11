@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT's slow LFO warps DUB's pitch \u2014 the shimmer engine creates a long, hypnotic pitch undulation in the bass. Psychedelic dub.",
+  "description": "DRIFT's slow LFO warps DUB's pitch — the shimmer engine creates a long, hypnotic pitch undulation in the bass. Psychedelic dub.",
   "tags": [
     "drift",
     "dub",
@@ -24,7 +24,7 @@
     "WARP RATE",
     "DEPTH"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.4,

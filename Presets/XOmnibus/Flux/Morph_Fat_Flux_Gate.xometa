@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH bloom gates FAT density \u2014 the wavetable rhythm creates dynamic windows in the thick pad.",
+  "description": "MORPH bloom gates FAT density — the wavetable rhythm creates dynamic windows in the thick pad.",
   "tags": [
     "morph",
     "fat",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.52,

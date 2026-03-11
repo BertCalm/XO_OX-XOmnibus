@@ -2,16 +2,33 @@
   "schema_version": 1,
   "name": "Orbit Smash",
   "mood": "Entangled",
-  "engines": ["Snap", "XOuroboros"],
+  "engines": [
+    "Snap",
+    "XOuroboros"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "SNAP percussive hits knock the Lorenz orbit into new trajectories. Each strike is a gravitational event.",
-  "tags": ["coupled", "percussive", "chaotic", "rhythmic"],
-  "macroLabels": ["SNAP BITE", "ORBIT CHAOS", "IMPACT", "SPACE"],
-  "couplingIntensity": "Heavy",
+  "tags": [
+    "coupled",
+    "percussive",
+    "chaotic",
+    "rhythmic"
+  ],
+  "macroLabels": [
+    "SNAP BITE",
+    "ORBIT CHAOS",
+    "IMPACT",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-10",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Snap": {
       "snap_oscMode": 0,

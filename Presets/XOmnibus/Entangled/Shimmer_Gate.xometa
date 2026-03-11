@@ -2,13 +2,28 @@
   "schema_version": 1,
   "name": "Shimmer Gate",
   "mood": "Entangled",
-  "engines": ["Drift", "Bob"],
+  "engines": [
+    "Drift",
+    "Bob"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT's psychedelic shimmer amplitude modulates BOB's warm character filter. Shimmer swells open BOB's analog tone — alien shimmer breathing through warm tubes.",
-  "tags": ["shimmer", "movement", "psychedelic", "warm", "filter", "entangled"],
-  "macroLabels": ["SHIMMER DEPTH", "BOB CHARACTER", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "shimmer",
+    "movement",
+    "psychedelic",
+    "warm",
+    "filter",
+    "entangled"
+  ],
+  "macroLabels": [
+    "SHIMMER DEPTH",
+    "BOB CHARACTER",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.6,

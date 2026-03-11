@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine aether trinity \u2014 DRIFT shimmer, FAT drone, BOB ghost. Maximum space and depth.",
+  "description": "Three-engine aether trinity — DRIFT shimmer, FAT drone, BOB ghost. Maximum space and depth.",
   "tags": [
     "drift",
     "fat",
@@ -24,7 +24,7 @@
     "BOB",
     "COUPLING"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.48,

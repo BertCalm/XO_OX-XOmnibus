@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT audio scans BOB oscillator blend \u2014 shimmer amplitude maps lead waveform in real time.",
+  "description": "DRIFT audio scans BOB oscillator blend — shimmer amplitude maps lead waveform in real time.",
   "tags": [
     "drift",
     "bob",
@@ -22,7 +22,7 @@
     "SCAN DEPTH",
     "SHIMMER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.58,

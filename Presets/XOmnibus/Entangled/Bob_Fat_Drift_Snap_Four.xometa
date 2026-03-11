@@ -10,7 +10,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Four-engine full spectrum \u2014 BOB lead, FAT density, DRIFT shimmer, SNAP rhythm. Complete.",
+  "description": "Four-engine full spectrum — BOB lead, FAT density, DRIFT shimmer, SNAP rhythm. Complete.",
   "tags": [
     "bob",
     "fat",
@@ -26,7 +26,7 @@
     "DRIFT SHIMMER",
     "SNAP RHYTHM"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

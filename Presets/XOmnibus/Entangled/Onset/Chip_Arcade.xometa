@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Designed for ONSET x OVERWORLD coupling. Chip noise modulates blend \u2014 arcade meets analog.",
+  "description": "Designed for ONSET x OVERWORLD coupling. Chip noise modulates blend — arcade meets analog.",
   "tags": [
     "coupling",
     "chip",
@@ -21,7 +21,7 @@
     "SPACE",
     "MUTATE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "created": "2026-03-10",
   "legacy": {

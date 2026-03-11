@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB sub-bass fog horn with DRIFT shimmer mist \u2014 maritime atmosphere, low and high.",
+  "description": "DUB sub-bass fog horn with DRIFT shimmer mist — maritime atmosphere, low and high.",
   "tags": [
     "dub",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "ECHO"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.3,

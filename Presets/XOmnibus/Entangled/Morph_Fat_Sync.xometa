@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Morph Fat Sync",
   "mood": "Entangled",
-  "engines": ["Morph", "Fat"],
+  "engines": [
+    "Morph",
+    "Fat"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "MORPH's evolving wavetable coupled with FAT's massive density. MORPH amplitude sweeps FAT's filter as the wavetable scans — the dense foundation gets brighter and darker in sync with the morph position.",
-  "tags": ["morph", "fat", "sync", "dense", "wavetable", "evolving", "entangled"],
-  "macroLabels": ["MORPH POSITION", "FAT DENSITY", "COUPLING", "FILTER"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "morph",
+    "fat",
+    "sync",
+    "dense",
+    "wavetable",
+    "evolving",
+    "entangled"
+  ],
+  "macroLabels": [
+    "MORPH POSITION",
+    "FAT DENSITY",
+    "COUPLING",
+    "FILTER"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

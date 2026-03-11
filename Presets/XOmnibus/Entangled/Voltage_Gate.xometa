@@ -2,13 +2,28 @@
   "schema_version": 1,
   "name": "Voltage Gate",
   "mood": "Entangled",
-  "engines": ["Snap", "Morph"],
+  "engines": [
+    "Snap",
+    "Morph"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "SNAP's digital bite rhythmically gates MORPH's evolving wavetable pad. Each snap opens the filter briefly — punchy movement on a living texture.",
-  "tags": ["gate", "movement", "percussive", "wavetable", "morph", "entangled"],
-  "macroLabels": ["SNAP BITE", "GATE DEPTH", "COUPLING", "PAD SPACE"],
-  "couplingIntensity": "Strong",
+  "tags": [
+    "gate",
+    "movement",
+    "percussive",
+    "wavetable",
+    "morph",
+    "entangled"
+  ],
+  "macroLabels": [
+    "SNAP BITE",
+    "GATE DEPTH",
+    "COUPLING",
+    "PAD SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.6,

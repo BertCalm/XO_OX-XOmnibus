@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB and BOB interlocked rhythm \u2014 bass and lead trading rhythmic patterns through coupling.",
+  "description": "DUB and BOB interlocked rhythm — bass and lead trading rhythmic patterns through coupling.",
   "tags": [
     "dub",
     "bob",
@@ -22,7 +22,7 @@
     "COUPLING",
     "RATE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.52,

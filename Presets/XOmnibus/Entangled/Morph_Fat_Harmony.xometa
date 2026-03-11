@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH pitch tracks into FAT \u2014 wavetable melody harmonizes the dense pad layer. Every note creates a rich, thick harmony.",
+  "description": "MORPH pitch tracks into FAT — wavetable melody harmonizes the dense pad layer. Every note creates a rich, thick harmony.",
   "tags": [
     "morph",
     "fat",
@@ -24,7 +24,7 @@
     "INTERVAL",
     "DENSITY"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

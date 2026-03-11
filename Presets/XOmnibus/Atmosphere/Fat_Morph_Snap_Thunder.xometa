@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine thunder \u2014 FAT pressure wave, MORPH evolving storm, SNAP lightning strike.",
+  "description": "Three-engine thunder — FAT pressure wave, MORPH evolving storm, SNAP lightning strike.",
   "tags": [
     "fat",
     "morph",
@@ -24,7 +24,7 @@
     "SNAP LIGHTNING",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.42,

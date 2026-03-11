@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB amplitude gates FAT's filter \u2014 lead melody literally cuts through the pad in a dynamic filter dance. Anti-static arrangement.",
+  "description": "BOB amplitude gates FAT's filter — lead melody literally cuts through the pad in a dynamic filter dance. Anti-static arrangement.",
   "tags": [
     "bob",
     "fat",
@@ -24,7 +24,7 @@
     "GATE DEPTH",
     "RESONANCE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

@@ -10,7 +10,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Four-engine full prism \u2014 DRIFT shimmer, MORPH spectral, BOB sync, FAT density. Maximum light.",
+  "description": "Four-engine full prism — DRIFT shimmer, MORPH spectral, BOB sync, FAT density. Maximum light.",
   "tags": [
     "drift",
     "morph",
@@ -26,7 +26,7 @@
     "BOB SYNC",
     "FAT DENSITY"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.82,

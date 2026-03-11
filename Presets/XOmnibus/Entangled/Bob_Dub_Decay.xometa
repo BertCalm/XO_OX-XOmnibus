@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB envelope controls DUB delay decay time \u2014 the lead melody's sustain literally extends or shortens the echo tail. Performance-coupled delay.",
+  "description": "BOB envelope controls DUB delay decay time — the lead melody's sustain literally extends or shortens the echo tail. Performance-coupled delay.",
   "tags": [
     "bob",
     "dub",
@@ -24,7 +24,7 @@
     "DECAY DEPTH",
     "ECHO"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

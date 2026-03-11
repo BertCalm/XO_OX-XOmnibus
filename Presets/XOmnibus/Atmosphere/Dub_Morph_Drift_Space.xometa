@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine space atmosphere \u2014 DUB gravity, MORPH spectral mist, DRIFT shimmer sky.",
+  "description": "Three-engine space atmosphere — DUB gravity, MORPH spectral mist, DRIFT shimmer sky.",
   "tags": [
     "dub",
     "morph",
@@ -24,7 +24,7 @@
     "DRIFT SKY",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,

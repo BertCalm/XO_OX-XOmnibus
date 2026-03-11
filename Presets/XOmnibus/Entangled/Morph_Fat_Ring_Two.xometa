@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH ring-modulates FAT \u2014 wavetable creates complex inharmonic interaction with dense oscillators.",
+  "description": "MORPH ring-modulates FAT — wavetable creates complex inharmonic interaction with dense oscillators.",
   "tags": [
     "morph",
     "fat",
@@ -22,7 +22,7 @@
     "MODULATION",
     "DENSITY"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.62,

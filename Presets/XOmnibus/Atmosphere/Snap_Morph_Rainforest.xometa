@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP random ticks with MORPH evolving pad \u2014 the random nature of the rainforest canopy.",
+  "description": "SNAP random ticks with MORPH evolving pad — the random nature of the rainforest canopy.",
   "tags": [
     "snap",
     "morph",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.48,

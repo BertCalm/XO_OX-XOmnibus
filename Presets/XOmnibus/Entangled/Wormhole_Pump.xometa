@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Wormhole Pump",
   "mood": "Entangled",
-  "engines": ["Fat", "Dub"],
+  "engines": [
+    "Fat",
+    "Dub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FAT's massive oscillator stack pumps DUB's tape delay filter. Dense bass frequency breathing — every note bends spacetime through the dub echo chamber.",
-  "tags": ["fat", "dub", "pump", "bass", "massive", "entangled", "movement"],
-  "macroLabels": ["FAT DENSITY", "PUMP DEPTH", "COUPLING", "ECHO SPACE"],
-  "couplingIntensity": "Strong",
+  "tags": [
+    "fat",
+    "dub",
+    "pump",
+    "bass",
+    "massive",
+    "entangled",
+    "movement"
+  ],
+  "macroLabels": [
+    "FAT DENSITY",
+    "PUMP DEPTH",
+    "COUPLING",
+    "ECHO SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.35,

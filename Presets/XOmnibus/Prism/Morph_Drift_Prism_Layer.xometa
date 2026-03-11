@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH wavetable prism over DRIFT shimmer field \u2014 two spectral layers in radiant combination.",
+  "description": "MORPH wavetable prism over DRIFT shimmer field — two spectral layers in radiant combination.",
   "tags": [
     "morph",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.68,

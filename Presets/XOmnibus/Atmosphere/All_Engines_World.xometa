@@ -12,7 +12,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Six-engine world atmosphere \u2014 all engines creating complete acoustic world. Cinematic.",
+  "description": "Six-engine world atmosphere — all engines creating complete acoustic world. Cinematic.",
   "tags": [
     "snap",
     "morph",
@@ -32,7 +32,7 @@
     "WARMTH",
     "EARTH"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,

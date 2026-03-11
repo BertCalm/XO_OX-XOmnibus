@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH wavetable ring-modulates DRIFT shimmer \u2014 spectral content of wavetable creates complex inharmonic shimmer patterns. Alien texture.",
+  "description": "MORPH wavetable ring-modulates DRIFT shimmer — spectral content of wavetable creates complex inharmonic shimmer patterns. Alien texture.",
   "tags": [
     "morph",
     "drift",
@@ -24,7 +24,7 @@
     "MODULATION",
     "SHIMMER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.6,

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT audio signal drives MORPH wavetable position \u2014 the dense oscillator stack literally steers the wavetable scan. Density becomes spectral map.",
+  "description": "FAT audio signal drives MORPH wavetable position — the dense oscillator stack literally steers the wavetable scan. Density becomes spectral map.",
   "tags": [
     "fat",
     "morph",
@@ -24,7 +24,7 @@
     "SCAN DEPTH",
     "DENSITY"
   ],
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

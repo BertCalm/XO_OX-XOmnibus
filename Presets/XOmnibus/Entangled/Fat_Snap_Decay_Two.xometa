@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT envelope controls SNAP decay \u2014 density sustain determines how long the transient rings.",
+  "description": "FAT envelope controls SNAP decay — density sustain determines how long the transient rings.",
   "tags": [
     "fat",
     "snap",
@@ -22,7 +22,7 @@
     "DECAY DEPTH",
     "DENSITY"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.62,

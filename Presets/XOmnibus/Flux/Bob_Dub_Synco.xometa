@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB rhythm drives DUB blend \u2014 character voice rhythm controls the bass timbre. Syncopated coupling.",
+  "description": "BOB rhythm drives DUB blend — character voice rhythm controls the bass timbre. Syncopated coupling.",
   "tags": [
     "bob",
     "dub",
@@ -22,7 +22,7 @@
     "COUPLING",
     "ECHO"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,

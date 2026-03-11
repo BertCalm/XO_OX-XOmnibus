@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB bass, DRIFT shimmer, MORPH scan \u2014 three engines covering bass, sky, and spectrum.",
+  "description": "DUB bass, DRIFT shimmer, MORPH scan — three engines covering bass, sky, and spectrum.",
   "tags": [
     "dub",
     "drift",
@@ -24,7 +24,7 @@
     "MORPH SCAN",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,

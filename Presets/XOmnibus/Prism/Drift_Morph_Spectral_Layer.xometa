@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT shimmer over MORPH prism scan \u2014 maximum spectral layering.",
+  "description": "DRIFT shimmer over MORPH prism scan — maximum spectral layering.",
   "tags": [
     "drift",
     "morph",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.72,

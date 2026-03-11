@@ -2,7 +2,7 @@
   "schema_version": 1,
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "macroLabels": [
     "CHARACTER",
@@ -27,7 +27,7 @@
     "Onset",
     "Bob"
   ],
-  "description": "Kick amplitude from ONSET sweeps BOB's filter \u2014 the bass breathes with the beat.",
+  "description": "Kick amplitude from ONSET sweeps BOB's filter — the bass breathes with the beat.",
   "tags": [
     "onset",
     "bob",

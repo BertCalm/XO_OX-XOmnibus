@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Snap Morph Spectrum",
   "mood": "Prism",
-  "engines": ["Snap", "Morph"],
+  "engines": [
+    "Snap",
+    "Morph"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "SNAP's bright transient triggers MORPH's evolving spectral pad. The snap attack opens MORPH's filter — percussive spectral gate on a harmonic wavetable.",
-  "tags": ["prism", "snap", "morph", "spectral", "bright", "harmonic", "coupled"],
-  "macroLabels": ["SNAP BITE", "MORPH SPECTRUM", "COUPLING", "BLOOM"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "prism",
+    "snap",
+    "morph",
+    "spectral",
+    "bright",
+    "harmonic",
+    "coupled"
+  ],
+  "macroLabels": [
+    "SNAP BITE",
+    "MORPH SPECTRUM",
+    "COUPLING",
+    "BLOOM"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.8,

@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "FM Injection",
   "mood": "Entangled",
-  "engines": ["Bob", "Drift"],
+  "engines": [
+    "Bob",
+    "Drift"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BOB's warm analog waveform directly injected into DRIFT's FM modulator via Audio->FM coupling. BOB's tone becomes DRIFT's inharmonicity — warmth becoming metallic complexity.",
-  "tags": ["fm", "inject", "bob", "drift", "metallic", "complex", "entangled"],
-  "macroLabels": ["BOB TONE", "DRIFT FM DEPTH", "COUPLING", "HARMONICS"],
-  "couplingIntensity": "Strong",
+  "tags": [
+    "fm",
+    "inject",
+    "bob",
+    "drift",
+    "metallic",
+    "complex",
+    "entangled"
+  ],
+  "macroLabels": [
+    "BOB TONE",
+    "DRIFT FM DEPTH",
+    "COUPLING",
+    "HARMONICS"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.6,

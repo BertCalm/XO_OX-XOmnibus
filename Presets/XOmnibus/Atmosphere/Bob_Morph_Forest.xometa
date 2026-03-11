@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB warm organic presence over MORPH harmonic forest floor \u2014 depth and texture.",
+  "description": "BOB warm organic presence over MORPH harmonic forest floor — depth and texture.",
   "tags": [
     "bob",
     "morph",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.45,

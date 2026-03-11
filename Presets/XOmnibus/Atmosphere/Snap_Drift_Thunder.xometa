@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP as distant thunder with DRIFT shimmer atmosphere \u2014 storm approaching.",
+  "description": "SNAP as distant thunder with DRIFT shimmer atmosphere — storm approaching.",
   "tags": [
     "snap",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.42,

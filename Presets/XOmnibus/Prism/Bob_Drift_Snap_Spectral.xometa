@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine spectral trio \u2014 BOB melody, DRIFT shimmer, SNAP crystal accents.",
+  "description": "Three-engine spectral trio — BOB melody, DRIFT shimmer, SNAP crystal accents.",
   "tags": [
     "bob",
     "drift",
@@ -24,7 +24,7 @@
     "SNAP ACCENT",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.72,

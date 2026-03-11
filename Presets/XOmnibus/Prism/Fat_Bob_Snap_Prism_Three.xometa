@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine prism intensity \u2014 FAT spectral base, BOB sync color, SNAP crystal accent.",
+  "description": "Three-engine prism intensity — FAT spectral base, BOB sync color, SNAP crystal accent.",
   "tags": [
     "fat",
     "bob",
@@ -24,7 +24,7 @@
     "SNAP ACCENT",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.82,

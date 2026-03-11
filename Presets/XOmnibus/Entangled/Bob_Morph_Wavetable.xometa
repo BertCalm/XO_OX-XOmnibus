@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB character drives MORPH wavetable position \u2014 lead playing literally sculpts the pad's spectral character. Interactive sonic coupling.",
+  "description": "BOB character drives MORPH wavetable position — lead playing literally sculpts the pad's spectral character. Interactive sonic coupling.",
   "tags": [
     "bob",
     "morph",
@@ -24,7 +24,7 @@
     "SCAN DEPTH",
     "CHARACTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Filter Mirror",
   "mood": "Entangled",
-  "engines": ["Bob", "Morph"],
+  "engines": [
+    "Bob",
+    "Morph"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BOB's filter state mirrors MORPH's via Filter->Filter coupling — they resonate as one. Two different oscillator architectures sharing the same filter character.",
-  "tags": ["filter", "mirror", "bob", "morph", "coupled", "resonant", "entangled"],
-  "macroLabels": ["BOB CHARACTER", "MORPH TEXTURE", "FILTER MIRROR", "RESONANCE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "filter",
+    "mirror",
+    "bob",
+    "morph",
+    "coupled",
+    "resonant",
+    "entangled"
+  ],
+  "macroLabels": [
+    "BOB CHARACTER",
+    "MORPH TEXTURE",
+    "FILTER MIRROR",
+    "RESONANCE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,

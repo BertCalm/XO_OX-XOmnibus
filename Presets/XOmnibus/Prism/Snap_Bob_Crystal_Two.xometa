@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP crystal and BOB spectral sync \u2014 dual spectral attack architecture.",
+  "description": "SNAP crystal and BOB spectral sync — dual spectral attack architecture.",
   "tags": [
     "snap",
     "bob",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.8,

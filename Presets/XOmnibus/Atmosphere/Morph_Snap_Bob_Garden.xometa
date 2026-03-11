@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine garden \u2014 MORPH harmonic flowers, SNAP natural ticks, BOB warm air.",
+  "description": "Three-engine garden — MORPH harmonic flowers, SNAP natural ticks, BOB warm air.",
   "tags": [
     "morph",
     "snap",
@@ -24,7 +24,7 @@
     "BOB WARMTH",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,

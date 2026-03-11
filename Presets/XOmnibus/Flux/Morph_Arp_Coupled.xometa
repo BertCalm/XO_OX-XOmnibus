@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH arp scan with DRIFT shimmer trail \u2014 each arpeggiated position leaves a shimmer echo.",
+  "description": "MORPH arp scan with DRIFT shimmer trail — each arpeggiated position leaves a shimmer echo.",
   "tags": [
     "morph",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "RATE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.58,

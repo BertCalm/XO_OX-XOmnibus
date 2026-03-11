@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine aurora \u2014 MORPH wavetable color, DRIFT shimmer light, BOB warm presence. Aurora borealis.",
+  "description": "Three-engine aurora — MORPH wavetable color, DRIFT shimmer light, BOB warm presence. Aurora borealis.",
   "tags": [
     "morph",
     "drift",
@@ -24,7 +24,7 @@
     "BOB WARMTH",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
