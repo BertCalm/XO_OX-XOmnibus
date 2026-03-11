@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Aizawa Storm",
+  "mood": "Flux",
+  "engines": [
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Full Aizawa chaos with no damping. Bright tornado.",
+  "tags": [
+    "chaos",
+    "extreme",
+    "aizawa",
+    "storm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.1,
+    "movement": 0.85,
+    "density": 0.65,
+    "space": 0.0,
+    "aggression": 0.85
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 3,
+      "ouro_rate": 350.0,
+      "ouro_chaosIndex": 0.85,
+      "ouro_leash": 0.15,
+      "ouro_theta": 0.0,
+      "ouro_phi": -1.0,
+      "ouro_damping": 0.08,
+      "ouro_injection": 0.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

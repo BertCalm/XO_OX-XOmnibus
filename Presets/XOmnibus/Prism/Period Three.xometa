@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Period Three",
+  "mood": "Prism",
+  "engines": [
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Chua at period-3 window. Strange musical regularity.",
+  "tags": [
+    "chaos",
+    "periodic",
+    "strange",
+    "musical"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.3,
+    "movement": 0.45,
+    "density": 0.35,
+    "space": 0.1,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 2,
+      "ouro_rate": 380.0,
+      "ouro_chaosIndex": 0.35,
+      "ouro_leash": 0.5,
+      "ouro_theta": 0.9,
+      "ouro_phi": 0.0,
+      "ouro_damping": 0.3,
+      "ouro_injection": 0.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

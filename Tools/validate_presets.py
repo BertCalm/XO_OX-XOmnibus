@@ -5,12 +5,14 @@ XOmnibus Preset Validator — Comprehensive .xometa Quality Assurance
 Validates all factory presets for:
   1. Schema compliance (required fields, types, ranges)
   2. DNA completeness (all 6 dimensions present, in [0,1])
-  3. Macro labels (exactly 4, non-empty)
-  4. Engine names (must be in the valid set)
-  5. Coupling pairs (valid types, valid engine refs, amounts in [-1,1])
-  6. Parameter sanity (no NaN, no extreme values)
-  7. Naming rules (2-3 words, max 30 chars, no duplicates, no jargon)
-  8. Mood distribution (flag imbalances)
+  3. DNA balance analysis (flat profiles, clustering, coverage gaps)
+  4. Macro labels (exactly 4, non-empty)
+  5. Engine names (must be in the valid set)
+  6. Coupling pairs (valid types, valid engine refs, amounts in [-1,1])
+  7. Parameter sanity (no NaN, no extreme values)
+  8. Naming rules (2-3 words, max 30 chars, no duplicates, no jargon)
+  9. Mood distribution (flag imbalances)
+  10. Coupling coverage analysis (which engine pairs lack coupling presets)
 
 Usage:
     python3 validate_presets.py [--fix] [--report] [--strict]
@@ -22,6 +24,8 @@ Options:
 """
 
 import json
+import math
+import re
 import sys
 import os
 from pathlib import Path
@@ -67,6 +71,28 @@ DNA_DIMENSIONS = ["brightness", "warmth", "movement", "density", "space", "aggre
 
 MAX_NAME_LENGTH = 30
 MAX_FILE_SIZE = 1024 * 1024  # 1 MB
+
+# Jargon words to flag in preset names (brand rule: evocative, no jargon)
+JARGON_WORDS = {
+    "init", "default", "test", "template", "basic", "demo", "example",
+    "patch", "preset", "synth", "oscillator", "osc", "filter", "lfo",
+    "adsr", "env", "wavetable", "granular", "fm", "subtractive",
+    "additive", "modular", "parameter", "param",
+}
+
+# Known engine parameter prefixes for cross-checking
+ENGINE_PARAM_PREFIXES = {
+    "OddfeliX": "snap_", "OddOscar": "morph_", "Overdub": "dub_",
+    "Odyssey": "odyssey_", "Oblong": "bob_", "Obese": "fat_",
+    "Overbite": "poss_", "Onset": "perc_", "Opal": "opal_",
+    "Overworld": "ow_", "Organon": "org_", "Ouroboros": "ouro_",
+}
+
+# Core engines that should have coupling presets with each other
+CORE_ENGINES = [
+    "OddfeliX", "OddOscar", "Overdub", "Odyssey", "Oblong",
+    "Obese", "Overbite", "Onset", "Opal", "Overworld", "Organon", "Ouroboros",
+]
 
 # ---------------------------------------------------------------------------
 # Validation result tracking
@@ -135,6 +161,17 @@ def validate_preset(filepath: Path, do_fix: bool = False) -> ValidationResult:
     else:
         if len(name) > MAX_NAME_LENGTH:
             result.warn(f"Name too long ({len(name)} chars, max {MAX_NAME_LENGTH}): '{name}'")
+        # Word count check (2-3 words preferred; split on spaces and underscores)
+        words = [w for w in re.split(r'[\s_]+', name) if w]
+        if len(words) < 2:
+            result.warn(f"Name has only {len(words)} word(s), prefer 2-3: '{name}'")
+        elif len(words) > 5:
+            result.warn(f"Name has {len(words)} words, prefer 2-3: '{name}'")
+        # Jargon check
+        name_lower_words = {w.lower() for w in words}
+        jargon_found = name_lower_words & JARGON_WORDS
+        if jargon_found:
+            result.warn(f"Name contains jargon words {jargon_found}: '{name}'")
 
     # mood
     mood = data.get("mood")
@@ -191,6 +228,13 @@ def validate_preset(filepath: Path, do_fix: bool = False) -> ValidationResult:
         # Check for all-default DNA (0.5 across the board = probably not computed)
         if all(dna.get(d) == 0.5 for d in DNA_DIMENSIONS):
             result.warn("All DNA dimensions are 0.5 — likely not computed")
+
+        # Check for flat DNA profile (all within narrow band = lacks character)
+        dna_vals = [dna.get(d, 0.5) for d in DNA_DIMENSIONS if isinstance(dna.get(d), (int, float))]
+        if len(dna_vals) >= 6:
+            dna_range = max(dna_vals) - min(dna_vals)
+            if dna_range < 0.15 and not all(v == 0.5 for v in dna_vals):
+                result.warn(f"Flat DNA profile (range={dna_range:.2f}) — preset may lack character")
     else:
         result.warn(f"DNA is not an object: {type(dna)}")
 
@@ -406,6 +450,116 @@ def run_validation(do_fix=False, report_all=False, strict=False):
         print(f"{'─' * 40}")
         for name in sorted(set(duplicate_names)):
             print(f"  - {name}")
+
+    # --- DNA Coverage Analysis ---
+    if report_all:
+        all_dna = []
+        for filepath in files:
+            try:
+                with open(filepath, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                dna = data.get("dna")
+                if dna and isinstance(dna, dict):
+                    vals = {d: dna.get(d, 0.5) for d in DNA_DIMENSIONS}
+                    all_dna.append((data.get("name", "?"), data.get("engines", []), vals))
+            except:
+                pass
+
+        if all_dna:
+            print()
+            print(f"DNA COVERAGE ANALYSIS")
+            print(f"{'─' * 60}")
+
+            # Per-dimension statistics
+            for dim in DNA_DIMENSIONS:
+                vals = [d[2][dim] for d in all_dna if isinstance(d[2].get(dim), (int, float))]
+                if not vals:
+                    continue
+                avg = sum(vals) / len(vals)
+                lo = min(vals)
+                hi = max(vals)
+                # Count how many in each quintile
+                quintiles = [0] * 5
+                for v in vals:
+                    q = min(4, int(v * 5))
+                    quintiles[q] += 1
+                q_str = " ".join(f"{q:3d}" for q in quintiles)
+                print(f"  {dim:12s}: avg={avg:.2f}  [{lo:.2f}–{hi:.2f}]  quintiles: {q_str}")
+
+            # Find underrepresented DNA regions
+            print()
+            print(f"DNA GAP ANALYSIS (quintile counts across all dimensions)")
+            print(f"{'─' * 60}")
+            for dim in DNA_DIMENSIONS:
+                vals = [d[2][dim] for d in all_dna if isinstance(d[2].get(dim), (int, float))]
+                if not vals:
+                    continue
+                quintiles = [0] * 5
+                for v in vals:
+                    q = min(4, int(v * 5))
+                    quintiles[q] += 1
+                avg_q = sum(quintiles) / 5
+                gaps = []
+                for i, q in enumerate(quintiles):
+                    if q < avg_q * 0.4:
+                        lo_pct = i * 20
+                        hi_pct = (i + 1) * 20
+                        gaps.append(f"{lo_pct}-{hi_pct}% ({q} presets)")
+                if gaps:
+                    print(f"  {dim:12s}: SPARSE in {', '.join(gaps)}")
+
+            # Flat profile count
+            flat_count = 0
+            for name, engines, vals in all_dna:
+                dna_vals = list(vals.values())
+                dna_range = max(dna_vals) - min(dna_vals)
+                if dna_range < 0.15:
+                    flat_count += 1
+            if flat_count > 0:
+                print(f"\n  {flat_count} presets have flat DNA profiles (range < 0.15)")
+
+    # --- Coupling Coverage Analysis ---
+    if report_all:
+        coupling_pairs_found = set()
+        for filepath in files:
+            try:
+                with open(filepath, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                coupling = data.get("coupling")
+                if coupling and isinstance(coupling, dict):
+                    pairs = coupling.get("pairs", [])
+                    if isinstance(pairs, list):
+                        for pair in pairs:
+                            if isinstance(pair, dict):
+                                ea = pair.get("engineA", pair.get("source", ""))
+                                eb = pair.get("engineB", pair.get("target", ""))
+                                if ea and eb:
+                                    coupling_pairs_found.add((min(ea, eb), max(ea, eb)))
+            except:
+                pass
+
+        print()
+        print(f"COUPLING COVERAGE")
+        print(f"{'─' * 60}")
+        print(f"  Unique engine pairs with coupling presets: {len(coupling_pairs_found)}")
+
+        # Find missing pairs among core engines
+        missing_pairs = []
+        for i, ea in enumerate(CORE_ENGINES):
+            for eb in CORE_ENGINES[i+1:]:
+                pair = (min(ea, eb), max(ea, eb))
+                if pair not in coupling_pairs_found:
+                    missing_pairs.append(pair)
+
+        if missing_pairs:
+            total_possible = len(CORE_ENGINES) * (len(CORE_ENGINES) - 1) // 2
+            coverage = ((total_possible - len(missing_pairs)) / total_possible) * 100
+            print(f"  Core engine pair coverage: {coverage:.0f}% ({total_possible - len(missing_pairs)}/{total_possible})")
+            print(f"\n  Missing coupling pairs ({len(missing_pairs)}):")
+            for ea, eb in sorted(missing_pairs):
+                print(f"    {ea} <-> {eb}")
+        else:
+            print(f"  All core engine pairs have coupling presets!")
 
     # Exit code
     if strict:

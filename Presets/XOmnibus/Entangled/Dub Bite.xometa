@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Dub Bite",
+  "mood": "Entangled",
+  "engines": [
+    "Overdub",
+    "Overbite"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Overdub send feeds Overbite audio input. Tape-treated bass.",
+  "tags": [
+    "coupling",
+    "overdub",
+    "overbite",
+    "dub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.5,
+    "space": 0.4,
+    "aggression": 0.25
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Overbite",
+        "type": "Audio->Wavetable",
+        "amount": 0.6
+      }
+    ]
+  },
+  "sequencer": null
+}

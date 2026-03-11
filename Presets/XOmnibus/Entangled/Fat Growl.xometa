@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Fat Growl",
+  "mood": "Entangled",
+  "engines": [
+    "Obese",
+    "Overbite"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Obese drives Overbite. Maximum low-end aggression.",
+  "tags": [
+    "coupling",
+    "obese",
+    "overbite",
+    "bass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.5,
+    "movement": 0.4,
+    "density": 0.65,
+    "space": 0.1,
+    "aggression": 0.6
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Overbite",
+        "type": "Amp->Filter",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null
+}

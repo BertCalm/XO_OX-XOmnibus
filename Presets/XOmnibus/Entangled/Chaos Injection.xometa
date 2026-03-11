@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Chaos Injection",
+  "mood": "Entangled",
+  "engines": [
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "External audio perturbs Lorenz attractor. Wild modulation.",
+  "tags": [
+    "coupling",
+    "injection",
+    "wild",
+    "modulation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.3,
+    "movement": 0.75,
+    "density": 0.5,
+    "space": 0.1,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0,
+      "ouro_rate": 200.0,
+      "ouro_chaosIndex": 0.4,
+      "ouro_leash": 0.3,
+      "ouro_theta": 0.0,
+      "ouro_phi": 0.0,
+      "ouro_damping": 0.3,
+      "ouro_injection": 0.6
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}
