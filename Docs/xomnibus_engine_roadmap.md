@@ -153,9 +153,16 @@ Every existing XOmnibus engine synthesizes *harmonically* — oscillators, wavet
 #### Phase 0 — Ideation: COMPLETE (this document)
 Concept brief at `Docs/concepts/xopal_concept_brief.md`.
 
-#### Phase 1 — Architecture: To Do
-Full architecture spec, parameter list, signal flow design.
-Run Synth Architect Protocol via `/new-xo-engine phase=1`.
+#### Phase 1 — Architecture: COMPLETE
+- 86 frozen `opal_` parameter IDs across 16 categories
+- Full signal flow: grain buffer → scheduler → 32-grain pool → filter → character → FX
+- Grain scheduler algorithm with deterministic PRNG
+- Coupling interface: `AudioToWavetable` primary, 6 supported types
+- 10 preset archetypes with DNA values, "Glass Cloud" first-encounter preset
+- 4 macros: SCATTER, DRIFT, COUPLING, SPACE
+- CPU verified at <1.1% worst case (well under 12% budget)
+- Reference: `Docs/xopal_phase1_architecture.md`
+- **Gate:** all params frozen, coupling defined, signal flow complete ✓
 
 #### Phase 2 — Scaffold + Build
 - `/new-xo-project name=XOpal identity="..." code=XOpl`
