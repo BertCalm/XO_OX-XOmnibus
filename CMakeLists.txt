@@ -66,6 +66,8 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Fat/FatEngine.h
     Source/Engines/Onset/OnsetEngine.h
     Source/Engines/Overworld/OverworldEngine.h
+    Source/Engines/Bite/BiteEngine.h
+    Source/Engines/Opal/OpalDSP.h
     Source/Engines/Opal/OpalEngine.h
     Source/Engines/Organon/OrganonEngine.h
     Source/Engines/Ouroboros/OuroborosEngine.h
@@ -80,10 +82,8 @@ target_sources(XOmnibus PRIVATE
 )
 
 # XOverworld DSP headers — included by OverworldEngine adapter
-# XOpal DSP headers — included by OpalEngine adapter
 target_include_directories(XOmnibus PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/../XOverworld/src"
-    "${CMAKE_CURRENT_SOURCE_DIR}/../XOpal"
 )
 
 target_compile_definitions(XOmnibus PUBLIC

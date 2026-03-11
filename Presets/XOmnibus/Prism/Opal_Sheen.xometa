@@ -3,20 +3,20 @@
   "name": "Opal Sheen",
   "mood": "Prism",
   "engines": [
-    "XOrganon"
+    "XOpal"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Iridescent surface shimmer. Changes color with angle.",
+  "description": "Iridescent surface shimmer. High-density tiny grains refract light.",
   "tags": [
     "opal",
     "iridescent",
     "shimmer",
-    "surface"
+    "bright"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
+    "SCATTER",
+    "DRIFT",
     "COUPLING",
     "SPACE"
   ],
@@ -29,26 +29,40 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "XOrganon": {
-      "organon_metabolicRate": 1.2,
-      "organon_enzymeSelect": 3000.0,
-      "organon_catalystDrive": 0.4,
-      "organon_dampingCoeff": 0.1,
-      "organon_signalFlux": 0.5,
-      "organon_phasonShift": 0.1,
-      "organon_isotopeBalance": 0.65,
-      "organon_lockIn": 0.0,
-      "organon_membrane": 0.35,
-      "organon_noiseColor": 0.65
+    "XOpal": {
+      "opal_source": 0,
+      "opal_grainSize": 25.0,
+      "opal_density": 80.0,
+      "opal_position": 0.5,
+      "opal_posScatter": 0.15,
+      "opal_pitchScatter": 2.0,
+      "opal_panScatter": 0.6,
+      "opal_window": 0,
+      "opal_freeze": 0.0,
+      "opal_couplingLevel": 0.0,
+      "opal_pulseWidth": 0.5,
+      "opal_detuneCents": 7.0,
+      "opal_filterCutoff": 12000.0,
+      "opal_filterReso": 0.1,
+      "opal_filterMode": 0,
+      "opal_shimmer": 0.35,
+      "opal_frost": 0.0,
+      "opal_smear": 0.1,
+      "opal_reverbMix": 0.25,
+      "opal_ampAttack": 0.2,
+      "opal_ampDecay": 0.5,
+      "opal_ampSustain": 0.8,
+      "opal_ampRelease": 1.2,
+      "opal_masterVolume": 0.8
     }
   },
   "coupling": null,
   "sequencer": null,
   "dna": {
-    "brightness": 0.6,
-    "warmth": 0.4,
-    "movement": 0.3,
-    "density": 0.3,
+    "brightness": 0.75,
+    "warmth": 0.3,
+    "movement": 0.5,
+    "density": 0.7,
     "space": 0.35,
     "aggression": 0.05
   }

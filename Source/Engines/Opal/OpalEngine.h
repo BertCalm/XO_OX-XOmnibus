@@ -1,17 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
-
-// XOpal DSP — included via target_include_directories in CMakeLists.txt
-// Points to ~/Documents/GitHub/XOpal (note: NOT XOpal/Source)
-// "Source/" prefix disambiguates from XOverworld's "src/" on macOS case-insensitive FS
-#include "Source/DSP/GrainBuffer.h"
-#include "Source/DSP/GrainVoice.h"
-#include "Source/DSP/OscillatorBank.h"
-#include "Source/DSP/GrainScheduler.h"
-#include "Source/DSP/CloudVoice.h"
-#include "Source/DSP/SVFilter.h"
-#include "Source/DSP/WindowFunctions.h"
-#include "Source/Engine/Parameters.h"
+#include "OpalDSP.h"
 
 #include <juce_audio_basics/juce_audio_basics.h>
 
