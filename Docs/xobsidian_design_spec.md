@@ -21,7 +21,7 @@
 
 **Personality in 3 words:** Crystalline, melodic, expressive.
 
-**Gallery gap filled:** No existing engine is optimized to be the *peak melodic voice*. The gallery has texture (BOB), width (FAT), chaos (OUROBOROS), granular (OPAL), drums (ONSET), and metabolic evolution (ORGANON). OBSIDIAN is the engine you reach for when the melody must *sing* — when the lead must cut through, the pad must shimmer, the arp must sparkle.
+**Gallery gap filled:** No existing engine is optimized to be the *peak melodic voice*. The gallery has texture (OBLONG), width (OBESE), chaos (OUROBOROS), granular (OPAL), drums (ONSET), and metabolic evolution (ORGANON). OBSIDIAN is the engine you reach for when the melody must *sing* — when the lead must cut through, the pad must shimmer, the arp must sparkle.
 
 ---
 

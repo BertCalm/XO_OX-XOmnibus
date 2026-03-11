@@ -54,8 +54,8 @@ The goal is to solve the "complexity problem" — additive synthesis offers infi
 
 | Existing engines | Synthesis domain |
 |-----------------|-------------------|
-| SNAP, MORPH, DRIFT, BOB, FAT, OVERWORLD | Time-domain harmonic (oscillators, wavetables, FM, samples, chip) |
-| DUB | Time-domain temporal (delays, tape echo) |
+| ODDFELIX, ODDOSCAR, ODYSSEY, OBLONG, OBESE, OVERWORLD | Time-domain harmonic (oscillators, wavetables, FM, samples, chip) |
+| OVERDUB | Time-domain temporal (delays, tape echo) |
 | ONSET | Time-domain percussive (transient synthesis) |
 | OPAL | Time-domain granular (grain scheduling) |
 | **ORBITAL** | **Spectral domain — direct harmonic control** |
@@ -215,8 +215,8 @@ All 4 macros produce audible, significant change at every point in their range i
 | `AudioToWavetable` | Maps source audio amplitude to partial amplitude offsets — source energy at harmonic frequencies boosts corresponding partials | **The killer feature.** Any engine's harmonic fingerprint superimposes onto ORBITAL's spectrum. OVERWORLD's chip DNA transfers to additive harmonics. |
 | `AmpToFilter` | Source amplitude → formant filter shift | Drum hits shift the formant vowel. Crescendos brighten the spectrum. Rhythmic spectral animation. |
 | `EnvToMorph` | Source envelope → Profile A↔B morph position | Another engine's dynamics directly animate ORBITAL's timbral evolution. Build from dark to bright over a phrase. |
-| `AudioToFM` | Source audio becomes FM modulator for ORBITAL's partials | External audio FM-bends individual harmonics. SNAP click on bell attack = "glassy crunch." |
-| `AudioToRing` | Ring modulation: ORBITAL output × source audio | Creates metallic, inharmonic sidebands around each partial. SNAP ring × ORBITAL bell = new territory. |
+| `AudioToFM` | Source audio becomes FM modulator for ORBITAL's partials | External audio FM-bends individual harmonics. ODDFELIX click on bell attack = "glassy crunch." |
+| `AudioToRing` | Ring modulation: ORBITAL output × source audio | Creates metallic, inharmonic sidebands around each partial. ODDFELIX ring × ORBITAL bell = new territory. |
 | `RhythmToBlend` | Source rhythm pattern animates harmonic group enables | Rhythmic gating of harmonic groups — upper partials pulse with the beat. Spectral rhythm. |
 | `LFOToPitch` | Source LFO → fundamental pitch offset | Standard vibrato from external engine. |
 | `PitchToPitch` | Source pitch → fundamental pitch offset | Harmony — another engine's pitch offsets ORBITAL's fundamental. |
@@ -228,12 +228,12 @@ All 4 macros produce audible, significant change at every point in their range i
 
 `getSampleForCoupling()` returns: post-filter, post-saturation output from `outputCacheL[sampleIndex]` / `outputCacheR[sampleIndex]`. Channel 2: envelope level for `AmpToFilter`/`AmpToChoke` routes.
 
-Uses the per-sample `outputCacheL/R` vector pattern (like SNAP/MORPH), not `lastSampleL/R`, enabling tight per-sample coupling for AudioToFM and AudioToRing routes.
+Uses the per-sample `outputCacheL/R` vector pattern (like ODDFELIX/ODDOSCAR), not `lastSampleL/R`, enabling tight per-sample coupling for AudioToFM and AudioToRing routes.
 
 Best receiving engines:
 - **OPAL** — ORBITAL's pure harmonic output scattered through time = spectral granular
-- **DUB** — Clean additive through tape delay = antique sine organ. Mathematical precision corrupted by analog memory.
-- **MORPH** — ORBITAL's harmonics as FM source for MORPH's wavetable oscillator = hybrid character
+- **OVERDUB** — Clean additive through tape delay = antique sine organ. Mathematical precision corrupted by analog memory.
+- **ODDOSCAR** — ORBITAL's harmonics as FM source for ODDOSCAR's wavetable oscillator = hybrid character
 
 ### Coupling types ORBITAL should NOT receive
 - `AmpToChoke` — choking kills all harmonics simultaneously (no musical use; you want per-group decay control instead, which `EnvToDecay` provides)
@@ -259,9 +259,9 @@ Best receiving engines:
 - **Why it's special:** A synthesis method that essentially doesn't exist — granular decomposition of individually addressed harmonics. The precision of additive meets the chaos of granular.
 
 ### Honorable Mentions
-- **DUB × ORBITAL** — "Antique Sine Organ": ORBITAL's mathematical precision corrupted by DUB's tape wow/flutter. Tape modulates timing between phase-coherent partials, creating a living tremolo distinct from vibrato.
-- **MORPH × ORBITAL** — "Glass with a Wooden Body": MORPH's Moog-filtered output as FM modulator for ORBITAL's upper partials. Warm, resonant FM source creates Synclavier-like glass tones.
-- **SNAP × ORBITAL** — "Glassy Crunch": SNAP's Karplus-Strong pluck audio FM-modulating ORBITAL's bell partials. Transient crunch dissolving into sustained shimmer.
+- **OVERDUB × ORBITAL** — "Antique Sine Organ": ORBITAL's mathematical precision corrupted by OVERDUB's tape wow/flutter. Tape modulates timing between phase-coherent partials, creating a living tremolo distinct from vibrato.
+- **ODDOSCAR × ORBITAL** — "Glass with a Wooden Body": ODDOSCAR's Moog-filtered output as FM modulator for ORBITAL's upper partials. Warm, resonant FM source creates Synclavier-like glass tones.
+- **ODDFELIX × ORBITAL** — "Glassy Crunch": ODDFELIX's Karplus-Strong pluck audio FM-modulating ORBITAL's bell partials. Transient crunch dissolving into sustained shimmer.
 
 ---
 
@@ -309,10 +309,10 @@ Primary moods: Prism, Atmosphere, Entangled, Aether.
 | **OVERWORLD × ORBITAL** | **12** | Chip DNA transfer — NES/Genesis/SNES harmonic fingerprints on additive spectrum |
 | **ONSET × ORBITAL** | **12** | Rhythm sculpts spectrum — percussion envelopes shape harmonic content |
 | **OPAL × ORBITAL** | **12** | Spectral granular — additive harmonics scattered through time |
-| **DUB × ORBITAL** | **8** | Antique sine organ — mathematical precision through tape delay |
-| **SNAP × ORBITAL** | **8** | Glassy crunch — Karplus-Strong + additive hybrid |
-| **MORPH × ORBITAL** | **4** | Glass with wooden body — warm filtered FM on additive harmonics |
-| **DRIFT × ORBITAL** | **4** | Odyssey spectrum — formant-on-formant, journey-driven spectral morph |
+| **OVERDUB × ORBITAL** | **8** | Antique sine organ — mathematical precision through tape delay |
+| **ODDFELIX × ORBITAL** | **8** | Glassy crunch — Karplus-Strong + additive hybrid |
+| **ODDOSCAR × ORBITAL** | **4** | Glass with wooden body — warm filtered FM on additive harmonics |
+| **ODYSSEY × ORBITAL** | **4** | Odyssey spectrum — formant-on-formant, journey-driven spectral morph |
 
 ---
 
@@ -498,49 +498,49 @@ Primary moods: Prism, Atmosphere, Entangled, Aether.
 | "Glimmer Cloud" | Aether | ORB→OPAL `AudioToWavetable` | ORBITAL glass preset through OPAL with high position scatter. Sparkling, suspended particles. |
 | "Spectral Freeze" | Aether | ORB→OPAL `AudioToWavetable` + OPAL freeze | Single ORBITAL note frozen indefinitely in OPAL. Living drone from a single keystroke. |
 
-#### DUB × ORBITAL — "Antique Sine Organ" (8)
+#### OVERDUB × ORBITAL — "Antique Sine Organ" (8)
 
 | Preset Name | Mood | Coupling Route | What It Does |
 |-------------|------|---------------|-------------|
-| "Tape Cathedral" | Atmosphere | ORB→DUB send | ORBITAL organ through DUB's tape delay. Wow/flutter de-phases the harmonics. Vintage warmth. |
-| "Echo Harmonics" | Atmosphere | ORB→DUB send | ORBITAL bell delays — each echo loses upper partials through tape saturation. Decaying spectrum. |
-| "Dub Spectrum" | Foundation | ORB→DUB send + feedback | High DUB feedback on ORBITAL bass. Self-oscillating harmonic delay. Spectral dub siren. |
-| "Spring Glass" | Prism | ORB→DUB spring reverb | ORBITAL glass through DUB's spring model. Boingy crystalline textures. |
-| "Worn Record" | Atmosphere | ORB→DUB send + tape saturation | ORBITAL pad through maximum tape saturation. Harmonics compressed into warm analog glow. |
-| "Ping Pong Orbits" | Prism | ORB→DUB ping-pong | ORBITAL bell in stereo ping-pong delay. Harmonics bouncing between speakers. |
-| "Delay Morph" | Entangled | DUB amp→ORB `AmpToFilter` | DUB's delay taps modulate ORBITAL's formant. Each echo shifts the vowel. |
-| "Cassette Choir" | Atmosphere | ORB→DUB send | ORBITAL choir formant through tape delay with heavy wow. Degraded beauty. |
+| "Tape Cathedral" | Atmosphere | ORB→OVERDUB send | ORBITAL organ through OVERDUB's tape delay. Wow/flutter de-phases the harmonics. Vintage warmth. |
+| "Echo Harmonics" | Atmosphere | ORB→OVERDUB send | ORBITAL bell delays — each echo loses upper partials through tape saturation. Decaying spectrum. |
+| "Dub Spectrum" | Foundation | ORB→OVERDUB send + feedback | High OVERDUB feedback on ORBITAL bass. Self-oscillating harmonic delay. Spectral dub siren. |
+| "Spring Glass" | Prism | ORB→OVERDUB spring reverb | ORBITAL glass through OVERDUB's spring model. Boingy crystalline textures. |
+| "Worn Record" | Atmosphere | ORB→OVERDUB send + tape saturation | ORBITAL pad through maximum tape saturation. Harmonics compressed into warm analog glow. |
+| "Ping Pong Orbits" | Prism | ORB→OVERDUB ping-pong | ORBITAL bell in stereo ping-pong delay. Harmonics bouncing between speakers. |
+| "Delay Morph" | Entangled | OVERDUB amp→ORB `AmpToFilter` | OVERDUB's delay taps modulate ORBITAL's formant. Each echo shifts the vowel. |
+| "Cassette Choir" | Atmosphere | ORB→OVERDUB send | ORBITAL choir formant through tape delay with heavy wow. Degraded beauty. |
 
-#### SNAP × ORBITAL — "Glassy Crunch" (8)
-
-| Preset Name | Mood | Coupling Route | What It Does |
-|-------------|------|---------------|-------------|
-| "Pluck Bell" | Prism | SNAP audio→ORB `AudioToFM` | SNAP Karplus-Strong pluck FM-modulating ORBITAL bell partials. Transient crunch to sustained ring. |
-| "String Spectrum" | Entangled | SNAP env→ORB `EnvToMorph` | SNAP's pluck envelope drives ORBITAL's A↔B morph. String attack shapes spectral evolution. |
-| "Metallic Touch" | Prism | SNAP audio→ORB `AudioToRing` | SNAP ring-modulated against ORBITAL harmonics. Inharmonic metallic sidebands from a pluck. |
-| "Click Glass" | Prism | SNAP audio→ORB `AudioToFM` | SNAP's filter click as brief FM burst on ORBITAL glass. Percussive sparkle on sustained shimmer. |
-| "Harmonic Pluck" | Foundation | SNAP audio→ORB `AudioToWavetable` | SNAP's harmonic content mapped onto ORBITAL's partial amplitudes. Physical modeling meets additive. |
-| "Resonant Orbit" | Entangled | SNAP env→ORB `EnvToDecay` | SNAP's envelope controls per-group decay in ORBITAL. Pluck articulation on spectral pad. |
-| "Filtered Harmonics" | Atmosphere | SNAP amp→ORB `AmpToFilter` | SNAP's amplitude drives ORBITAL's formant shift. Pluck brightens the spectrum momentarily. |
-| "Crunch Pad" | Atmosphere | SNAP audio→ORB `AudioToFM` | Sustained SNAP string FM-modulating a held ORBITAL pad. Warm crunch beneath clean harmonics. |
-
-#### MORPH × ORBITAL — "Glass with Wooden Body" (4)
+#### ODDFELIX × ORBITAL — "Glassy Crunch" (8)
 
 | Preset Name | Mood | Coupling Route | What It Does |
 |-------------|------|---------------|-------------|
-| "Moog Spectrum" | Entangled | MORPH audio→ORB `AudioToFM` | MORPH's Moog-filtered wavetable as FM modulator for ORBITAL's upper partials. Warm resonance on glass. |
-| "Wavetable Harmonics" | Entangled | MORPH audio→ORB `AudioToWavetable` | MORPH's wavetable harmonic content shaping ORBITAL's partial amplitudes. Two harmonic worlds merged. |
-| "Filter Breath" | Atmosphere | MORPH amp→ORB `AmpToFilter` | MORPH's filter sweep driving ORBITAL's formant position. Breathing in both spectral and timbral domains. |
-| "Morphing Orbits" | Entangled | MORPH env→ORB `EnvToMorph` | MORPH's modulation envelope driving ORBITAL's profile morph. Wavetable dynamics animate additive timbre. |
+| "Pluck Bell" | Prism | ODDFELIX audio→ORB `AudioToFM` | ODDFELIX Karplus-Strong pluck FM-modulating ORBITAL bell partials. Transient crunch to sustained ring. |
+| "String Spectrum" | Entangled | ODDFELIX env→ORB `EnvToMorph` | ODDFELIX's pluck envelope drives ORBITAL's A↔B morph. String attack shapes spectral evolution. |
+| "Metallic Touch" | Prism | ODDFELIX audio→ORB `AudioToRing` | ODDFELIX ring-modulated against ORBITAL harmonics. Inharmonic metallic sidebands from a pluck. |
+| "Click Glass" | Prism | ODDFELIX audio→ORB `AudioToFM` | ODDFELIX's filter click as brief FM burst on ORBITAL glass. Percussive sparkle on sustained shimmer. |
+| "Harmonic Pluck" | Foundation | ODDFELIX audio→ORB `AudioToWavetable` | ODDFELIX's harmonic content mapped onto ORBITAL's partial amplitudes. Physical modeling meets additive. |
+| "Resonant Orbit" | Entangled | ODDFELIX env→ORB `EnvToDecay` | ODDFELIX's envelope controls per-group decay in ORBITAL. Pluck articulation on spectral pad. |
+| "Filtered Harmonics" | Atmosphere | ODDFELIX amp→ORB `AmpToFilter` | ODDFELIX's amplitude drives ORBITAL's formant shift. Pluck brightens the spectrum momentarily. |
+| "Crunch Pad" | Atmosphere | ODDFELIX audio→ORB `AudioToFM` | Sustained ODDFELIX string FM-modulating a held ORBITAL pad. Warm crunch beneath clean harmonics. |
 
-#### DRIFT × ORBITAL — "Odyssey Spectrum" (4)
+#### ODDOSCAR × ORBITAL — "Glass with Wooden Body" (4)
 
 | Preset Name | Mood | Coupling Route | What It Does |
 |-------------|------|---------------|-------------|
-| "Journey Harmonics" | Entangled | DRIFT env→ORB `EnvToMorph` | DRIFT's Climax build envelope drives ORBITAL's A↔B morph. The journey from dark to bright harmonics. |
-| "Formant Odyssey" | Entangled | DRIFT amp→ORB `AmpToFilter` | DRIFT's amplitude dynamics driving ORBITAL's formant shift. Two formant systems in dialogue. |
-| "Spectral Voyage" | Atmosphere | DRIFT audio→ORB `AudioToWavetable` | DRIFT's wavetable/formant output mapped onto ORBITAL partials. Odyssey character rendered in additive. |
-| "Climax Spectrum" | Entangled | DRIFT env→ORB `EnvToMorph` + DRIFT audio→ORB `AudioToFM` | Full DRIFT build: envelope morphs profile while audio FM-modulates partials. Maximum spectral drama. |
+| "Moog Spectrum" | Entangled | ODDOSCAR audio→ORB `AudioToFM` | ODDOSCAR's Moog-filtered wavetable as FM modulator for ORBITAL's upper partials. Warm resonance on glass. |
+| "Wavetable Harmonics" | Entangled | ODDOSCAR audio→ORB `AudioToWavetable` | ODDOSCAR's wavetable harmonic content shaping ORBITAL's partial amplitudes. Two harmonic worlds merged. |
+| "Filter Breath" | Atmosphere | ODDOSCAR amp→ORB `AmpToFilter` | ODDOSCAR's filter sweep driving ORBITAL's formant position. Breathing in both spectral and timbral domains. |
+| "Morphing Orbits" | Entangled | ODDOSCAR env→ORB `EnvToMorph` | ODDOSCAR's modulation envelope driving ORBITAL's profile morph. Wavetable dynamics animate additive timbre. |
+
+#### ODYSSEY × ORBITAL — "Odyssey Spectrum" (4)
+
+| Preset Name | Mood | Coupling Route | What It Does |
+|-------------|------|---------------|-------------|
+| "Journey Harmonics" | Entangled | ODYSSEY env→ORB `EnvToMorph` | ODYSSEY's Climax build envelope drives ORBITAL's A↔B morph. The journey from dark to bright harmonics. |
+| "Formant Odyssey" | Entangled | ODYSSEY amp→ORB `AmpToFilter` | ODYSSEY's amplitude dynamics driving ORBITAL's formant shift. Two formant systems in dialogue. |
+| "Spectral Voyage" | Atmosphere | ODYSSEY audio→ORB `AudioToWavetable` | ODYSSEY's wavetable/formant output mapped onto ORBITAL partials. Odyssey character rendered in additive. |
+| "Climax Spectrum" | Entangled | ODYSSEY env→ORB `EnvToMorph` + ODYSSEY audio→ORB `AudioToFM` | Full ODYSSEY build: envelope morphs profile while audio FM-modulates partials. Maximum spectral drama. |
 
 ---
 
@@ -549,9 +549,9 @@ Primary moods: Prism, Atmosphere, Entangled, Aether.
 | Mood | Count | Primary Source |
 |------|-------|---------------|
 | Foundation | 22 | Organs, bass, percussive bells, ONSET coupling |
-| Atmosphere | 36 | Evolving pads, formant voices, OPAL/DUB coupling |
+| Atmosphere | 36 | Evolving pads, formant voices, OPAL/OVERDUB coupling |
 | Entangled | 38 | Cross-engine coupling (all pairings) |
-| Prism | 28 | Crystal bells, FM glass, bright leads, SNAP coupling |
+| Prism | 28 | Crystal bells, FM glass, bright leads, ODDFELIX coupling |
 | Flux | 18 | Animated spectra, experimental, glitch coupling |
 | Aether | 18 | Pure tones, frozen harmonics, OPAL freeze coupling |
 | **Total** | **150** | |
@@ -636,7 +636,7 @@ A single sustained C-E-G chord on a clean 64-partial preset. Moderate inharmonic
 - [x] Concept brief written
 - [x] XO word feels right (XOrbital — orbital physics metaphor maps directly to additive synthesis)
 - [x] Gallery gap is clear (no spectral-domain synthesis engine exists)
-- [x] At least 2 coupling partner ideas exist (OVERWORLD, ONSET, OPAL, DUB, SNAP, MORPH)
+- [x] At least 2 coupling partner ideas exist (OVERWORLD, ONSET, OPAL, OVERDUB, ODDFELIX, ODDOSCAR)
 - [x] Unique capability defined (spectral coupling — harmonic DNA transfer between engines)
 - [x] Excited about the sound
 

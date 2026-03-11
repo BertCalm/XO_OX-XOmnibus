@@ -9,7 +9,7 @@
 namespace xomnibus {
 
 //==============================================================================
-// Karplus-Strong string model — embedded in SNAP engine.
+// Karplus-Strong string model — embedded in ODDFELIX engine.
 // Delay-line excitation with damped feedback, used for KarplusStrong osc mode.
 //==============================================================================
 class KarplusStrongOsc
@@ -82,7 +82,7 @@ private:
 };
 
 //==============================================================================
-// SnapVoice — per-voice state for the SNAP (percussive) engine.
+// SnapVoice — per-voice state for the ODDFELIX (percussive) engine.
 //==============================================================================
 struct SnapVoice
 {
@@ -426,13 +426,13 @@ public:
                 break;
 
             default:
-                break; // Other coupling types not supported by SNAP
+                break; // Other coupling types not supported by ODDFELIX
         }
     }
 
     //-- Parameters ------------------------------------------------------------
 
-    // Static helper: add SNAP parameters to a shared vector (used by processor).
+    // Static helper: add ODDFELIX parameters to a shared vector (used by processor).
     static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         addParametersImpl (params);

@@ -10,12 +10,12 @@
 
 | Code | Source | Role | Status |
 |------|--------|------|--------|
-| SNAP | OddfeliX/OddOscar X | Percussive / rhythmic | Integrated |
-| MORPH | OddfeliX/OddOscar O | Wavetable pads | Integrated |
-| DUB | XOverdub | FX send / return bus | Integrated |
-| DRIFT | XOdyssey | Psychedelic pads, Climax | Integrated |
-| BOB | XOblong | Warm fuzzy textures | Integrated |
-| FAT | XObese | Width / thickness, 13-osc | Integrated |
+| ODDFELIX | OddfeliX/OddOscar X | Percussive / rhythmic | Integrated |
+| ODDOSCAR | OddfeliX/OddOscar O | Wavetable pads | Integrated |
+| OVERDUB | XOverdub | FX send / return bus | Integrated |
+| ODYSSEY | XOdyssey | Psychedelic pads, Climax | Integrated |
+| OBLONG | XOblong | Warm fuzzy textures | Integrated |
+| OBESE | XObese | Width / thickness, 13-osc | Integrated |
 | ONSET | XOnset | Dedicated drums | Integrated |
 | OVERWORLD | XOverworld | Chip synthesis, 6 engines | Integrated |
 
@@ -23,7 +23,7 @@
 
 | Code | Source | Role | Status |
 |------|--------|------|--------|
-| BITE | XOpossum | Bass-forward character | Phase 0 complete |
+| OVERBITE | XOverbite | Bass-forward character | Phase 0 complete |
 | OPAL | XOpal | Granular time-scatter | Phase 0 complete |
 
 ### Volume 2 — Architecture Designed
@@ -134,7 +134,7 @@ Volume 3 fills the final conceptual gaps in XOmnibus with five engines drawn fro
 
 ### Why OBSIDIAN First
 
-The gallery has texture (BOB), width (FAT), chaos (OUROBOROS), granular (OPAL), drums (ONSET), and metabolic evolution (ORGANON). It has no engine specifically optimized to be the *peak melodic voice* — the sound that carries the melody, the lead that cuts glass, the pad that shimmers. OBSIDIAN fills this gap with a synthesis method that produces inherently coherent harmonic evolution: all partials derive from a single phase-warping operation, so they move together as a unified musical voice.
+The gallery has texture (OBLONG), width (OBESE), chaos (OUROBOROS), granular (OPAL), drums (ONSET), and metabolic evolution (ORGANON). It has no engine specifically optimized to be the *peak melodic voice* — the sound that carries the melody, the lead that cuts glass, the pad that shimmers. OBSIDIAN fills this gap with a synthesis method that produces inherently coherent harmonic evolution: all partials derive from a single phase-warping operation, so they move together as a unified musical voice.
 
 **Key coupling routes unlocked:**
 > **OBSIDIAN → OCEANIC** — Crystalline phase distortion drives swarm attractor position. The crystal herds the flock.
@@ -225,12 +225,12 @@ Design spec at `Docs/xobsidian_design_spec.md`.
 | OBSIDIAN receives | ORIGAMI | AudioToFM | Spectrally folded output becomes PD distortion function — folded spectra AS waveshaping |
 | OBSIDIAN receives | ORACLE | AudioToFM | Stochastic GENDY curves replace smooth distortion functions — crystal with cracks |
 | OBSIDIAN receives | OCEANIC | AmpToFilter | Swarm density modulates formant intensity — flock makes the crystal sing |
-| OBSIDIAN receives | FAT | AmpToFilter | 13-osc amplitude drives distortion depth — massive harmonics through PD cascade |
+| OBSIDIAN receives | OBESE | AmpToFilter | 13-osc amplitude drives distortion depth — massive harmonics through PD cascade |
 
 | As Source | Target Engine | Type | Musical Effect |
 |-----------|-------------|------|----------------|
 | OBSIDIAN sends | OCEANIC | AudioToFM | Crystal tone drives swarm attractor — the lead herds the flock |
-| OBSIDIAN sends | DUB | getSample | Crystalline output through dub echo/spring chain |
+| OBSIDIAN sends | OVERDUB | getSample | Crystalline output through dub echo/spring chain |
 | OBSIDIAN sends | OPAL | AudioToWavetable | PD harmonics granulated — crystal shattered into time particles |
 
 ---
@@ -253,7 +253,7 @@ Every existing engine works in the time domain — oscillators generating wavefo
 
 **Key coupling routes unlocked:**
 > **ORIGAMI → OBSIDIAN** — Spectrally folded output drives PD distortion function. The fold becomes the waveshape.
-> **DRIFT → ORIGAMI** — Climax bloom enters FFT and gets spectrally folded. Psychedelic pads kaleidoscoped.
+> **ODYSSEY → ORIGAMI** — Climax bloom enters FFT and gets spectrally folded. Psychedelic pads kaleidoscoped.
 > **ORIGAMI → OPAL** — Folded spectral output granulated. Kaleidoscopic grains.
 
 ### Cultural Lens
@@ -311,16 +311,16 @@ Design spec at `Docs/xorigami_design_spec.md`.
 
 | As Target | Source Engine | Type | Musical Effect |
 |-----------|-------------|------|----------------|
-| ORIGAMI receives | DRIFT | AudioToWavetable | Climax bloom spectrally folded — psychedelic kaleidoscope |
-| ORIGAMI receives | FAT | AudioToWavetable | 13-osc stacked timbre spectrally transformed |
-| ORIGAMI receives | MORPH | AudioToWavetable | Wavetable output folded — wavetable of wavetables |
+| ORIGAMI receives | ODYSSEY | AudioToWavetable | Climax bloom spectrally folded — psychedelic kaleidoscope |
+| ORIGAMI receives | OBESE | AudioToWavetable | 13-osc stacked timbre spectrally transformed |
+| ORIGAMI receives | ODDOSCAR | AudioToWavetable | Wavetable output folded — wavetable of wavetables |
 | ORIGAMI receives | OBSIDIAN | AudioToFM | Crystal harmonics fold-modulate the spectral content |
 
 | As Source | Target Engine | Type | Musical Effect |
 |-----------|-------------|------|----------------|
 | ORIGAMI sends | OBSIDIAN | AudioToFM | Folded spectral output drives PD distortion function |
 | ORIGAMI sends | OPAL | AudioToWavetable | Kaleidoscopic audio granulated into spectral particles |
-| ORIGAMI sends | DUB | getSample | Folded output through dub effects chain |
+| ORIGAMI sends | OVERDUB | getSample | Folded output through dub effects chain |
 
 ---
 
@@ -398,14 +398,14 @@ Design spec at `Docs/xoracle_design_spec.md`.
 |-----------|-------------|------|----------------|
 | ORACLE receives | ORGANON | AmpToFilter | Metabolic breathing modulates GENDY mirror barriers — organism constrains chaos |
 | ORACLE receives | OUROBOROS | AudioToFM | Chaotic attractor perturbs breakpoint walks — chaos feeding stochasticity |
-| ORACLE receives | SNAP | AmpToFilter | Percussive envelopes punch through stochastic texture |
+| ORACLE receives | ODDFELIX | AmpToFilter | Percussive envelopes punch through stochastic texture |
 
 | As Source | Target Engine | Type | Musical Effect |
 |-----------|-------------|------|----------------|
 | ORACLE sends | OBSIDIAN | AudioToFM | GENDY curves replace smooth PD functions — crystal with cracks |
 | ORACLE sends | ORIGAMI | AudioToWavetable | Stochastic waveforms enter FFT for spectral folding — random kaleidoscope |
 | ORACLE sends | ORGANON | AudioToWavetable | Stochastic audio feeds metabolic engine — random nutrients |
-| ORACLE sends | DUB | getSample | GENDY output through dub effects chain |
+| ORACLE sends | OVERDUB | getSample | GENDY output through dub effects chain |
 
 ---
 
@@ -484,14 +484,14 @@ Design spec at `Docs/xobscura_design_spec.md`.
 |-----------|-------------|------|----------------|
 | OBSCURA receives | OBSIDIAN | AudioToFM | Crystal harmonics excite mass-spring chain — PD as physical force |
 | OBSCURA receives | ONSET | AmpToFilter | Drum hits inject impulse energy into the chain — percussion excites physics |
-| OBSCURA receives | SNAP | AudioToFM | Karplus-Strong pluck excites mass-spring — string exciting string |
+| OBSCURA receives | ODDFELIX | AudioToFM | Karplus-Strong pluck excites mass-spring — string exciting string |
 | OBSCURA receives | OUROBOROS | AudioToFM | Chaotic attractor perturbs mass positions — chaos rattles the chain |
 
 | As Source | Target Engine | Type | Musical Effect |
 |-----------|-------------|------|----------------|
 | OBSCURA sends | OBSIDIAN | AmpToFilter | Mass displacement drives PD stiffness — physics shapes crystal |
 | OBSCURA sends | OCEANIC | AudioToFM | Scanner output modulates swarm attractor — physical sim herds the flock |
-| OBSCURA sends | DUB | getSample | Scanned output through dub effects chain |
+| OBSCURA sends | OVERDUB | getSample | Scanned output through dub effects chain |
 | OBSCURA sends | OPAL | AudioToWavetable | Scanned waveform granulated — physics shattered into time particles |
 
 ---
@@ -584,7 +584,7 @@ Design spec at `Docs/xoceanic_design_spec.md`.
 |-----------|-------------|------|----------------|
 | OCEANIC sends | ORIGAMI | AudioToWavetable | Swarm output enters FFT for spectral folding — emergent kaleidoscope |
 | OCEANIC sends | OBSIDIAN | AmpToFilter | Swarm density modulates formant intensity — flock makes crystal sing |
-| OCEANIC sends | DUB | getSample | Swarm output through dub effects chain |
+| OCEANIC sends | OVERDUB | getSample | Swarm output through dub effects chain |
 | OCEANIC sends | OPAL | AudioToWavetable | Swarm audio granulated — flock shattered into time particles |
 
 ---
@@ -600,7 +600,7 @@ Design spec at `Docs/xoceanic_design_spec.md`.
 | V3 triple (melodic) | OBSIDIAN + ORIGAMI + ORACLE | ~30% |
 | V3 triple (experimental) | ORACLE + OBSCURA + OCEANIC | ~37% |
 | All five V3 (theoretical) | All V3 engines | ~57% with voice reduction |
-| V3 + V1 showcase | OBSIDIAN + OCEANIC + BITE + OPAL | ~45% |
+| V3 + V1 showcase | OBSIDIAN + OCEANIC + OVERBITE + OPAL | ~45% |
 
 OCEANIC is the heaviest V3 engine (128 PolyBLEP oscillators per voice × 4 voices). Eco mode recommendation: cap particles at 64 in 4-engine configs.
 
@@ -618,7 +618,7 @@ When all five V3 engines are installed, these are the priority cross-engine pres
 6. **OBSIDIAN × ORIGAMI** — *Folded Crystal* — PD harmonics geometrically transformed
 7. **OBSCURA × OCEANIC** — *Physics Herds Flock* — scanner output drives swarm attractor
 8. **ALL V3** — *The Synthesis Lab* — 4-slot config cycling all five engines in coupled pairs
-9. **OBSIDIAN × DRIFT** — *Crystal Bloom* — PD lead through Climax psychedelic bloom
+9. **OBSIDIAN × ODYSSEY** — *Crystal Bloom* — PD lead through Climax psychedelic bloom
 10. **OCEANIC × OPAL** — *Swarm Scatter* — swarm output granulated into time-scattered particles
 
 ---
@@ -649,7 +649,7 @@ The coupling web ensures no V3 engine is isolated.
 | AmpToFilter | OBSCURA→OBSIDIAN, OCEANIC→OBSIDIAN, ORGANON→ORACLE, OCEANIC (formant mod) |
 | AudioToWavetable | ORACLE→ORIGAMI, OCEANIC→ORIGAMI, OBSCURA→OPAL, OCEANIC→OPAL |
 | RhythmToBlend | ONSET→OCEANIC (murmuration trigger) |
-| getSample | All V3 engines → DUB |
+| getSample | All V3 engines → OVERDUB |
 | EnvToMorph | OBSIDIAN (expression mapping), ORIGAMI (fold modulation) |
 
 ---
@@ -658,15 +658,15 @@ The coupling web ensures no V3 engine is isolated.
 
 | # | Code | Volume | Synthesis Paradigm |
 |---|------|--------|-------------------|
-| 1 | SNAP | V0 | Percussive subtractive |
-| 2 | MORPH | V0 | Wavetable |
-| 3 | DUB | V0 | FX send/return |
-| 4 | DRIFT | V0 | Psychedelic subtractive |
-| 5 | BOB | V0 | Warm texture subtractive |
-| 6 | FAT | V0 | Massive unison stacking |
+| 1 | ODDFELIX | V0 | Percussive subtractive |
+| 2 | ODDOSCAR | V0 | Wavetable |
+| 3 | OVERDUB | V0 | FX send/return |
+| 4 | ODYSSEY | V0 | Psychedelic subtractive |
+| 5 | OBLONG | V0 | Warm texture subtractive |
+| 6 | OBESE | V0 | Massive unison stacking |
 | 7 | ONSET | V0 | Drum synthesis |
 | 8 | OVERWORLD | V0 | Chip / retro |
-| 9 | BITE | V1 | Bass character |
+| 9 | OVERBITE | V1 | Bass character |
 | 10 | OPAL | V1 | Granular time-scatter |
 | 11 | ORGANON | V2 | Metabolic / dissipative |
 | 12 | OUROBOROS | V2 | Chaotic attractor ODE |

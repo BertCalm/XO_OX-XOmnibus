@@ -6,7 +6,7 @@ XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by
 It merges 9 character instruments into one unified creative environment where engines couple, collide,
 and mutate into sounds impossible with any single synth.
 
-- **9 engine modules:** SNAP, MORPH, DUB, DRIFT, BOB, FAT, ONSET, OVERWORLD, OPAL
+- **Engine modules:** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, + more in development
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** 1000 factory presets in `.xometa` format, 6 mood categories, 6D Sonic DNA
@@ -73,12 +73,14 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
+See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas.
 
 ## Key Files
 
 | Path | Purpose |
 |------|---------|
 | `Docs/xomnibus_master_specification.md` | **THE** single source of truth |
+| `Docs/xomnibus_name_migration_reference.md` | Legacy → canonical engine name mapping |
 | `Source/Core/SynthEngine.h` | Engine interface (all engines implement this) |
 | `Source/Core/EngineRegistry.h` | Factory + 4-slot management |
 | `Source/Core/MegaCouplingMatrix.h` | Cross-engine modulation |

@@ -41,6 +41,7 @@ VALID_ENGINES = {
     "XObese", "XOnset",
     "Overworld", "Opal", "Orbital", "XOrbital",
     "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Onset",
+    "Overdub", "Odyssey", "Oblong", "Obese", "Overbite",
     "Organon", "XOrganon", "Ouroboros", "XOuroboros",
     "Obsidian", "Bite", "Origami", "Oracle", "Obscura", "Oceanic",
 }

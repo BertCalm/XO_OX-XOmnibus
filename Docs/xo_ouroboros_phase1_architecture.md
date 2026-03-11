@@ -486,12 +486,12 @@ MegaCouplingMatrix reads channels 2/3 when coupling type is `LFOToPitch`, `EnvTo
 
 | Partner | Route | Musical Effect |
 |---|---|---|
-| SNAP | SNAP → Ouroboros via `AudioToFM` | Percussive hits knock the orbit into new trajectories — rhythmic chaos |
+| ODDFELIX | ODDFELIX → Ouroboros via `AudioToFM` | Percussive hits knock the orbit into new trajectories — rhythmic chaos |
 | ORGANON | Ouroboros → Organon via `AudioToFM` | Chaotic audio feeds the metabolic organism — unpredictable nutrition |
-| DRIFT | DRIFT → Ouroboros via `EnvToMorph` | Long envelopes slowly rotate projection — evolving harmonic architecture |
-| MORPH | Ouroboros → Morph via ch2/3 `LFOToPitch` | Velocity vectors as complex LFOs driving wavetable position |
+| ODYSSEY | ODYSSEY → Ouroboros via `EnvToMorph` | Long envelopes slowly rotate projection — evolving harmonic architecture |
+| ODDOSCAR | Ouroboros → OddOscar via ch2/3 `LFOToPitch` | Velocity vectors as complex LFOs driving wavetable position |
 | ONSET | ONSET → Ouroboros via `AudioToFM` | Drum patterns as physical forces — the orbit dances to the beat |
-| BOB | Ouroboros → Bob via ch2/3 `EnvToMorph` | Chaotic velocity vectors as non-repeating morph source |
+| OBLONG | Ouroboros → Oblong via ch2/3 `EnvToMorph` | Chaotic velocity vectors as non-repeating morph source |
 
 ---
 

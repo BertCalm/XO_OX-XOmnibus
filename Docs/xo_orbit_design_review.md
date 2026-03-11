@@ -234,7 +234,7 @@ Matching Orbital's 6 voices. Chaotic attractors are computationally lighter per-
 | 4 | Event Horizon | Entangled | No | 0.3/0.4/0.9/0.8/0.6/0.5 | Rössler, Injection 0.8, Leash 0.4. Transforms whatever feeds it into spiraling harmonics. |
 | 5 | Phase Portrait | Flux | Yes | 0.6/0.3/0.9/0.5/0.2/0.4 | Aizawa, Leash 0.5, Chaos 0.6, Theta/Phi animated. Rhythmic, shifting, alive. |
 | 6 | Deterministic Ghost | Aether | Yes | 0.2/0.7/0.5/0.2/0.9/0.1 | Lorenz, Leash 0.95, Chaos 0.2, Damping 0.7, high reverb send. Near-static complex waveform. |
-| 7 | Perturbation Engine | Entangled | No | 0.5/0.3/0.8/0.6/0.3/0.7 | Rössler, Injection 1.0. Designed to be fed by SNAP/ONSET — drum hits knock the orbit into new trajectories. |
+| 7 | Perturbation Engine | Entangled | No | 0.5/0.3/0.8/0.6/0.3/0.7 | Rössler, Injection 1.0. Designed to be fed by ODDFELIX/ONSET — drum hits knock the orbit into new trajectories. |
 
 **"Strange Loop"** is the first-encounter preset: Lorenz attractor at moderate chaos with enough Leash to be pitch-stable. Produces a warm, complex tone that evolves subtly. Macros produce obvious changes. No coupling required.
 
@@ -242,8 +242,8 @@ Matching Orbital's 6 voices. Chaotic attractors are computationally lighter per-
 
 Evokes heat, energy, volatility. Distinct from:
 - Orbital's coral `#FF6B6B`
-- Snap's terracotta `#00A6D6`
-- Fat's hot pink `#FF1493`
+- OddfeliX's terracotta `#00A6D6`
+- Obese's hot pink `#FF1493`
 
 ---
 
@@ -338,10 +338,10 @@ MegaCouplingMatrix routes channels 2/3 when the coupling type is `LFOToPitch`, `
 
 | Partner | Route | Musical Effect |
 |---|---|---|
-| SNAP | SNAP → Ouroboros via `AudioToFM` | Percussive hits knock the orbit into new trajectories — rhythmic chaos |
+| ODDFELIX | ODDFELIX → Ouroboros via `AudioToFM` | Percussive hits knock the orbit into new trajectories — rhythmic chaos |
 | ORGANON | Ouroboros → Organon via `AudioToFM` | Chaotic audio feeds the metabolic organism — unpredictable nutrition creates wild harmonic blooms |
-| DRIFT | DRIFT → Ouroboros via `EnvToMorph` | Long envelopes slowly rotate the projection angle — evolving harmonic architecture |
-| MORPH | Ouroboros → Morph via ch2/3 `LFOToPitch` | Velocity vectors as complex LFOs driving wavetable position — organic, non-repeating modulation |
+| ODYSSEY | ODYSSEY → Ouroboros via `EnvToMorph` | Long envelopes slowly rotate the projection angle — evolving harmonic architecture |
+| ODDOSCAR | Ouroboros → OddOscar via ch2/3 `LFOToPitch` | Velocity vectors as complex LFOs driving wavetable position — organic, non-repeating modulation |
 | ONSET | ONSET → Ouroboros via `AudioToFM` | Drum patterns as physical forces — the orbit "dances" to the beat |
 
 ---

@@ -467,7 +467,7 @@ private:
 };
 
 //==============================================================================
-// DubVoice — per-voice state for the DUB engine.
+// DubVoice — per-voice state for the OVERDUB engine.
 //==============================================================================
 struct DubVoice
 {

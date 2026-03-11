@@ -50,7 +50,7 @@ Every XO_OX instrument must pass three questions:
    - "XO_____ is a _____ synth that _____"
    - Must be specific enough that you could explain it to a producer in 10 seconds
    - Bad: "XOpus is a versatile synth" (says nothing)
-   - Good: "XOpossum is a bass synth where plush weight meets feral bite"
+   - Good: "XOverbite is a bass synth where plush weight meets feral bite"
 
 3. **What sound can ONLY this instrument make?**
    - If the answer is "nothing unique," the concept needs work
@@ -62,12 +62,12 @@ Before building, verify the new engine adds something the gallery doesn't have:
 
 | Existing Exhibition | Sonic Territory |
 |---------------------|-----------------|
-| SNAP (OddfeliX/OddOscar X) | Percussive attacks, FM, Karplus-Strong |
-| MORPH (OddfeliX/OddOscar O) | Wavetable pads, Moog ladder warmth |
-| DUB (XOverdub) | Dub delays, send/return FX, tape character |
-| DRIFT (XOdyssey) | Psychedelic pads, formant filters, long journeys |
-| BOB (XOblong) | Warm fuzzy textures, curious motion, tactile |
-| FAT (XObese) | Heavy sampler, bold industrial character |
+| ODDFELIX (OddfeliX/OddOscar X) | Percussive attacks, FM, Karplus-Strong |
+| ODDOSCAR (OddfeliX/OddOscar O) | Wavetable pads, Moog ladder warmth |
+| OVERDUB (XOverdub) | Dub delays, send/return FX, tape character |
+| ODYSSEY (XOdyssey) | Psychedelic pads, formant filters, long journeys |
+| OBLONG (XOblong) | Warm fuzzy textures, curious motion, tactile |
+| OBESE (XObese) | Heavy sampler, bold industrial character |
 | ONSET (XOnset) | Percussive synthesis, circuit precision |
 
 **Ask:** What sonic territory is unoccupied? What coupling possibilities would a new engine open?
@@ -92,8 +92,8 @@ Before building, verify the new engine adds something the gallery doesn't have:
 - **Sonic gap it fills:** What territory is currently empty?
 - **Best coupling partners:** Which existing engines would this pair well with?
 - **Coupling types it would use:**
-  - As source (sending to other engines): [e.g., "Envelope → Morph on DRIFT pads"]
-  - As target (receiving from other engines): [e.g., "Audio FM from SNAP percussion"]
+  - As source (sending to other engines): [e.g., "Envelope → Morph on ODYSSEY pads"]
+  - As target (receiving from other engines): [e.g., "Audio FM from ODDFELIX percussion"]
 
 ## Visual Identity (First Instinct)
 - **Accent color idea:** [hex or description]

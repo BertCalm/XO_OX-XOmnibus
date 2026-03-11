@@ -635,7 +635,7 @@ struct BiteVoice
 };
 
 //==============================================================================
-// BiteEngine -- Bass-forward character synth adapted from XOpossum.
+// BiteEngine -- Bass-forward character synth adapted from XOverbite.
 //
 // Signal chain per voice:
 //   OscA (belly) + OscB (bite) + Sub -> Fur (pre-filter saturation)

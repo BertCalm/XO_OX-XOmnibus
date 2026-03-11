@@ -27,7 +27,7 @@ Three options were evaluated. Here is why two of them lose.
 | OddfeliX/OddOscar | `EngineX` / `EngineO` | `XO::` | APVTS direct | Processor owns FX |
 | XOverdub | `VoiceEngine` | `xoverdub::` | `ParamSnapshot` struct | Processor owns send/return FX |
 | XObese | `SynthEngine` | `xobese::` | `SynthParams` struct | Engine owns `FXChain` |
-| XOppossum | `SynthEngine` | (none / global) | `Params::ParamSnapshot` | Engine owns FX chain |
+| XOverbite | `SynthEngine` | (none / global) | `Params::ParamSnapshot` | Engine owns FX chain |
 | XOdyssey | (monolithic processor) | (none) | APVTS + `ParamSnapshot` | Processor owns FX |
 | XOblong | (monolithic processor) | (none) | APVTS direct | Processor owns FX |
 
@@ -160,7 +160,7 @@ The PlaySurface is the unified playing interface described in `xo_pad_surface_sp
 
 | Mode | Grid Layout | Expression Mapping | Used By |
 |------|------------|-------------------|---------|
-| **Pad** | 4x4 scale-locked notes | X=engine blend, Y=expression | OddfeliX/OddOscar, XOppossum, XOdyssey, XOblong |
+| **Pad** | 4x4 scale-locked notes | X=engine blend, Y=expression | OddfeliX/OddOscar, XOverbite, XOdyssey, XOblong |
 | **Fretless** | Continuous pitch strip | X=pitch, Y=expression | XOverdub, XObese |
 | **Drum** | 8-pad kit layout | X=blend per voice, Y=decay | XOnset |
 
@@ -255,7 +255,7 @@ Engines are wrapped in order of integration difficulty (easiest first) and strat
 | **1** | OddfeliX/OddOscar (EngineX + EngineO) | Low | Already has dual-engine coupling. Extract `EngineX` and `EngineO` as separate `SynthEngine` implementations. `CouplingMatrix` becomes the template for all coupling pairs. |
 | **2** | XOverdub | Low | 38 parameters, simplest signal path (voice -> send VCA -> drive -> delay -> reverb -> return). The send/return architecture maps naturally to `ownsEffects() = true`. |
 | **3** | XObese | Medium | Already has a `SynthEngine` class in `xobese::` namespace. Needs adapter to match the `xo::SynthEngine` interface. 13-osc "fat" engine + Mojo parameter are unique -- worth preserving. |
-| **4** | XOppossum | Medium | Also has a `SynthEngine` class. Bass-forward character with Belly/Bite macros. 122 parameters need careful namespacing (`opossum_` prefix). |
+| **4** | XOverbite | Medium | Also has a `SynthEngine` class. Bass-forward character with Belly/Bite macros. 122 parameters need careful namespacing (`poss_` prefix). |
 | **5** | XOdyssey | High | Monolithic processor, ~130 parameters, complex Climax system. Needs most refactoring to extract engine from processor. Worth it for the psychedelic pad sound. |
 | **6** | XOblong | High | Also monolithic processor. 167 presets need migration to namespaced format. Character engine with PlaySurface already built. |
 | **7** | XOnset | Built fresh | Does not exist yet. Built from day 1 against the `SynthEngine` interface per `xonset_percussive_engine_spec.md`. 8-voice drum engine with Circuit/Algorithm blend. |
@@ -339,7 +339,7 @@ Every parameter ID gets an engine prefix. Existing standalone builds use un-pref
 | OddfeliX/OddOscar EngineO | `oddo_` | `oFilterCutoff` | `oddo_filterCutoff` |
 | XOverdub | `dub_` | `sendAmount` | `dub_sendAmount` |
 | XObese | `obese_` | `mojo` | `obese_mojo` |
-| XOppossum | `opossum_` | `belly` | `opossum_belly` |
+| XOverbite | `poss_` | `belly` | `poss_belly` |
 | XOdyssey | `odyssey_` | `journey` | `odyssey_journey` |
 | XOblong | `bob_` | `warmth` | `bob_warmth` |
 | XOnset | `onset_` | `v1_blend` | `onset_v1_blend` |
@@ -400,7 +400,7 @@ Every engine pair gets a default coupling that "just works" musically, following
 | OddfeliX/OddOscar EngineO | OddfeliX/OddOscar EngineX | LFOToPitch | 30% | Pitch drift (existing) |
 | XOnset (kick) | Any pad engine | AmpToFilter | 20% | Kick ducks pad brightness |
 | Any pad engine | XOverdub | EnvToMorph | 15% | Pad dynamics drive delay send |
-| XObese | XOppossum | AudioToRing | 0% | Off by default (destructive) |
+| XObese | XOverbite | AudioToRing | 0% | Off by default (destructive) |
 | XOdyssey | XOnset | LFOToPitch | 10% | Pad LFO subtly detunes drums |
 
 All defaults can be overridden or disconnected by the user.
@@ -499,7 +499,7 @@ Toggle between modes with a single button. The default is Intuitive.
 | OddfeliX/OddOscar factory | 114 | Auto-wrap as single-engine `.xomega` |
 | XOverdub factory | 40 | Auto-wrap as single-engine `.xomega` |
 | XObese factory | ~99 | Auto-wrap as single-engine `.xomega` |
-| XOppossum factory | TBD | Auto-wrap as single-engine `.xomega` |
+| XOverbite factory | TBD | Auto-wrap as single-engine `.xomega` |
 | XOdyssey hero presets | 10 | Auto-wrap as single-engine `.xomega` |
 | XOblong factory | 167 | Auto-wrap as single-engine `.xomega` |
 | New chained presets | 50-100 | Built from scratch for mega-tool |
@@ -525,7 +525,7 @@ Bundle options exposed in the UI:
 
 | Action | Target | Rationale |
 |--------|--------|-----------|
-| **Let current tasks finish** | All projects | Do not interrupt in-flight work. XOppossum Phase 7 (UI polish), XOverdub smoke testing, XOblong preset listening pass -- all should complete. |
+| **Let current tasks finish** | All projects | Do not interrupt in-flight work. XOverbite Phase 7 (UI polish), XOverdub smoke testing, XOblong preset listening pass -- all should complete. |
 | **Stop new independent features** | All projects | After current phase completes, no new features (new oscillator modes, new FX, new UI widgets) should be built outside the mega-tool context. |
 | **Start SynthEngine adapter work** | OddfeliX/OddOscar, XOverdub | These two are the MVP engines. Adapter classes should be written first. |
 | **Freeze parameter IDs** | All projects | Every project should document its final parameter ID list. No new parameters added without `engine_` prefix. |
@@ -537,7 +537,7 @@ Bundle options exposed in the UI:
 | OddfeliX/OddOscar agent | Core complete | Write `SynthEngine` interface + adapter for EngineX and EngineO |
 | XOverdub agent | Smoke testing | Write `XOverdubAdapter` (simplest adapter, template for others) |
 | XObese agent | Build complete | Write `XObeseAdapter`, migrate `xobese::SynthEngine` to `xo::SynthEngine` |
-| XOppossum agent | Phase 7 UI polish | Finish Phase 7, then write `XOpossumAdapter` |
+| XOverbite agent | Phase 7 UI polish | Finish Phase 7, then write `XOverbiteAdapter` |
 | XOdyssey agent | v0.7 complete | Extract engine from monolithic processor into adapter |
 | XOblong agent | Preset listening | Finish listening pass, then write adapter |
 | New agent | -- | Build XOnset from scratch against `xo::SynthEngine` interface |
@@ -648,7 +648,7 @@ That is the XO_OX brand promise made real: **two engines, one conversation, infi
 | OddfeliX/OddOscar O | `~/Documents/GitHub/OddfeliX/OddOscar/Source/Engines/EngineO.h` | `XO::` | `OddfeliX/OddOscarProcessor` | `EngineO` | ~20 (of 52 shared) | 16 | Processor | Low -- extract from processor |
 | XOverdub | `~/Documents/GitHub/XOverdub/src/engine/VoiceEngine.h` | `xoverdub::` | `XOverdubProcessor` | `VoiceEngine` + FX | 38 | 8 | Engine (send/return) | Low -- clean separation already |
 | XObese | `~/Documents/GitHub/XObese/Source/DSP/SynthEngine.h` | `xobese::` | `XObeseProcessor` | `SynthEngine` | 45 | 13-osc unison | Engine (`FXChain`) | Medium -- existing SynthEngine needs interface alignment |
-| XOppossum | `~/Documents/GitHub/XOppossum/Source/Engine/SynthEngine.h` | (none) | `PluginProcessor` | `SynthEngine` | 122 | VoiceManager | Engine (full chain) | Medium -- largest param set, needs prefix |
+| XOverbite | `~/Documents/GitHub/XOverbite/Source/Engine/SynthEngine.h` | (none) | `PluginProcessor` | `SynthEngine` | 122 | VoiceManager | Engine (full chain) | Medium -- largest param set, needs prefix |
 | XOdyssey | `~/Documents/GitHub/XOdyssey/Source/` (monolithic) | (none) | monolithic | (inline in processor) | ~130 | 24 | Processor | High -- must extract engine from processor |
 | XOblong | `~/Documents/GitHub/XOblong/Source/` (monolithic) | (none) | monolithic | (inline in processor) | large | varies | Processor | High -- must extract engine, 167 presets to migrate |
 | XOnset | Does not exist yet | `xonset::` | N/A | Built fresh | ~110 | 8 (drum) | Configurable | N/A -- built to interface |
@@ -661,7 +661,7 @@ All measurements at 44.1 kHz, 512-sample buffer, Apple M-series:
 |--------------|---------|---------|----------|----------|-------|
 | MVP (OddfeliX/OddOscar + XOverdub) | ~20% (both X+O) | ~8% | ~3% | ~6% | **~37%** |
 | OddfeliX/OddOscar + XOnset | ~20% | ~12% | ~3% | ~6% | **~41%** |
-| XObese + XOppossum | ~10% | ~15% | ~3% | ~6% | **~34%** |
+| XObese + XOverbite | ~10% | ~15% | ~3% | ~6% | **~34%** |
 | XOdyssey + XOverdub + XOnset | ~15% | ~8% + ~12% | ~6% (3 pairs) | ~8% | **~49%** |
 | 4 engines (max) | varies | varies | ~9% (6 pairs) | ~8% | **< 55%** |
 
@@ -669,7 +669,7 @@ All measurements at 44.1 kHz, 512-sample buffer, Apple M-series:
 
 ```
 Week  1-2:   Phase 1 -- Interface definition + shared UI components
-Week  3-6:   Phase 2 -- Engine compliance (OddfeliX/OddOscar, XOverdub, XObese, XOppossum)
+Week  3-6:   Phase 2 -- Engine compliance (OddfeliX/OddOscar, XOverdub, XObese, XOverbite)
 Week  7-10:  Phase 3 -- Coupling matrix extension + routing defaults + patch cable UI
 Week  11-14: Phase 4 -- Hub shell assembly + preset library + MVP testing
 Week  15+:   Post-MVP -- XOdyssey adapter, XOblong adapter, XOnset fresh build,

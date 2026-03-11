@@ -11,7 +11,7 @@ namespace xomnibus {
 // MorphOscillator — Built-in wavetable morph: sine → saw → square → noise.
 //
 // Morph parameter (0.0–3.0) crossfades between four timbres stored in
-// pre-built 2048-sample wavetables. This is specific to the MORPH engine —
+// pre-built 2048-sample wavetables. This is specific to the ODDOSCAR engine —
 // the shared WavetableOscillator is for loading external wavetable files.
 //==============================================================================
 class MorphOscillator
@@ -110,7 +110,7 @@ private:
 //==============================================================================
 // MoogLadder — 4-pole non-linear ladder filter (Moog style).
 //
-// The resonant warmth of this filter is central to the MORPH engine's character.
+// The resonant warmth of this filter is central to the ODDOSCAR engine's character.
 // Embedded here rather than in the shared DSP library because it's
 // architecturally distinct from the general-purpose CytomicSVF.
 //==============================================================================
@@ -167,7 +167,7 @@ private:
 };
 
 //==============================================================================
-// MorphVoice — per-voice state for the MORPH (pad) engine.
+// MorphVoice — per-voice state for the ODDOSCAR (pad) engine.
 //==============================================================================
 struct MorphVoice
 {
@@ -491,13 +491,13 @@ public:
                 break;
 
             default:
-                break; // Other coupling types not supported by MORPH
+                break; // Other coupling types not supported by ODDOSCAR
         }
     }
 
     //-- Parameters ------------------------------------------------------------
 
-    // Static helper: add MORPH parameters to a shared vector (used by processor).
+    // Static helper: add ODDOSCAR parameters to a shared vector (used by processor).
     static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         addParametersImpl (params);

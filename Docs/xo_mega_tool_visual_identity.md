@@ -21,7 +21,7 @@ The XO_OX Mega-Tool hosts 7+ distinct synth modules, each born from a standalone
 | Pillar | Mechanism | Effect |
 |--------|-----------|--------|
 | **Light Canvas** | Clean light base (#F0F0F5) shared across all views | Striking, bright, legible — the primary design target |
-| **Glass Structure** | Frosted glass panels, specular highlights, translucent borders | Common material language adapted from XOblong, XObese, and XOppossum glass aesthetics |
+| **Glass Structure** | Frosted glass panels, specular highlights, translucent borders | Common material language adapted from XOblong, XObese, and XOverbite glass aesthetics |
 | **Accent Personality** | Each engine owns a primary accent color that fills knob arcs, glows, headers, and active states | Identity without structural divergence |
 
 **Design direction note:** While five of six existing standalone XO_OX instruments use near-black backgrounds, the mega-tool breaks from this convention intentionally. The light canvas is more striking, cleaner, and more legible — qualities that matter for an instrument with this many parameters. Accent colors pop against light backgrounds with a different energy: bold and confident rather than ambient and moody. The existing dark aesthetics are preserved as a dark mode option (Section 10), but all primary design decisions target the light interface first. XOdyssey's light-based aesthetic validates this direction within the existing portfolio.
@@ -57,7 +57,7 @@ The shell is the host frame surrounding engine panels — navigation bars, engin
 
 ### 2.2 Glass Panel Rendering
 
-Every content panel in the mega-tool uses a shared frosted glass material. This is the structural DNA inherited from XOblong, XObese, and XOppossum.
+Every content panel in the mega-tool uses a shared frosted glass material. This is the structural DNA inherited from XOblong, XObese, and XOverbite.
 
 | Property | Value | Notes |
 |----------|-------|-------|
@@ -97,13 +97,13 @@ Each engine module is assigned a definitive accent palette. These colors derive 
 
 | Module Name | Engine Source | Primary Accent | Hex | Secondary Accent | Hex | Glow Color | Hex + Alpha | Sonic Identity |
 |-------------|-------------|---------------|-----|-----------------|-----|------------|-------------|----------------|
-| **FAT** | XObese | Pink | `#E06090` | Yellow | `#E8C84A` | Pink glow | `#E06090` @ 40% | Warm, playful, massive |
-| **BITE** | XOppossum | Rust | `#C47040` | Acid Lime | `#88CC44` | Rust glow | `#C47040` @ 40% | Shadowy, moody, bass-weight |
-| **SNAP** | OddfeliX/OddOscar X | Terracotta | `#00A6D6` | — | — | Terracotta glow | `#00A6D6` @ 40% | Punchy, rhythmic, percussive |
-| **MORPH** | OddfeliX/OddOscar O | Teal | `#E8839B` | — | — | Teal glow | `#E8839B` @ 40% | Lush, evolving, cool |
-| **DUB** | XOverdub | Dub Green | `#00FF88` | Amber | `#FFAA00` | Green glow | `#00FF88` @ 35% | Raw, direct, dub-pressure |
-| **DRIFT** | XOdyssey | Psychedelic Purple | `#9B59B6` | Shimmer Gold | `#F0C040` | Purple glow | `#9B59B6` @ 40% | Ethereal, cosmic, voyager |
-| **PLUSH** | XOblong | Amber | `#F5C97A` | — | — | Amber glow | `#F5C97A` @ 40% | Warm, character, glass |
+| **OBESE** | XObese | Pink | `#E06090` | Yellow | `#E8C84A` | Pink glow | `#E06090` @ 40% | Warm, playful, massive |
+| **OVERBITE** | XOverbite | Fang White | `#F0EDE8` | Acid Lime | `#88CC44` | Fang White glow | `#F0EDE8` @ 40% | Shadowy, moody, bass-weight |
+| **ODDFELIX** | OddfeliX/OddOscar X | Terracotta | `#00A6D6` | — | — | Terracotta glow | `#00A6D6` @ 40% | Punchy, rhythmic, percussive |
+| **ODDOSCAR** | OddfeliX/OddOscar O | Teal | `#E8839B` | — | — | Teal glow | `#E8839B` @ 40% | Lush, evolving, cool |
+| **OVERDUB** | XOverdub | Dub Green | `#00FF88` | Amber | `#FFAA00` | Green glow | `#00FF88` @ 35% | Raw, direct, dub-pressure |
+| **ODYSSEY** | XOdyssey | Psychedelic Purple | `#9B59B6` | Shimmer Gold | `#F0C040` | Purple glow | `#9B59B6` @ 40% | Ethereal, cosmic, voyager |
+| **OBLONG** | XOblong | Amber | `#F5C97A` | — | — | Amber glow | `#F5C97A` @ 40% | Warm, character, glass |
 | **ONSET** | XOnset | Gradient blend | — | Terracotta-to-Teal | `#00A6D6` to `#E8839B` | Gradient glow | Blend @ 40% | Morphing, rhythmic, percussive |
 
 ### 3.2 Engine Color Profile Struct
@@ -118,7 +118,7 @@ struct EngineColorProfile
     juce::Colour glowColor;           // Halo/glow around active elements
     float glowAlpha = 0.40f;          // Default glow intensity
     juce::Colour panelTint;           // Subtle tint applied to glass panels (primaryAccent @ 3%)
-    juce::String moduleName;          // Display name ("FAT", "DUB", etc.)
+    juce::String moduleName;          // Display name ("OBESE", "OVERDUB", etc.)
 };
 ```
 
@@ -271,10 +271,10 @@ Every UI component adapts to the active engine's `EngineColorProfile`. The compo
 When 2 or more engines are active simultaneously, the UI divides into per-engine panels. Each panel renders its controls using its own engine's accent color.
 
 ```
-2-Engine Layout (e.g., SNAP + DUB):
+2-Engine Layout (e.g., ODDFELIX + OVERDUB):
 ┌──────────────────────┬────────┬──────────────────────┐
-│   SNAP Panel         │ Gold   │   DUB Panel          │
-│   (Terracotta)       │Coupling│   (Dub Green)        │
+│   ODDFELIX Panel     │ Gold   │   OVERDUB Panel      │
+│   (Neon Tetra Blue)  │Coupling│   (Olive)            │
 │                      │ Strip  │                      │
 │   Knobs: terra arcs  │  48px  │   Knobs: green arcs  │
 │   Headers: terra     │  wide  │   Headers: green     │
@@ -420,12 +420,12 @@ All engines share the same animation timing for visual consistency. These values
 
 ### 7.2 Engine Transition Animation
 
-When the user switches the active engine (e.g., from SNAP to DUB), accent colors do not snap — they morph over 200ms.
+When the user switches the active engine (e.g., from ODDFELIX to OVERDUB), accent colors do not snap — they morph over 200ms.
 
 ```
-Frame 0:   primaryAccent = Terracotta #C8553D (SNAP)
+Frame 0:   primaryAccent = Neon Tetra Blue #00A6D6 (ODDFELIX)
 Frame 1-6: primaryAccent = interpolated blend (200ms / 33.3ms per frame = 6 frames)
-Frame 6:   primaryAccent = Dub Green #00FF88 (DUB)
+Frame 6:   primaryAccent = Olive #6B7B3A (OVERDUB)
 ```
 
 Interpolation uses HSL color space to avoid muddy intermediate values. The hue, saturation, and lightness channels interpolate independently.
@@ -472,7 +472,7 @@ All animations target 30fps rendering. At 30fps, each frame has 33.3ms of budget
 ### 8.3 Typography Rules
 
 1. **All labels are uppercase.** No exceptions. Uppercase compact text at small sizes provides legibility on dark backgrounds and aligns with hardware synthesizer conventions.
-2. **Engine names are always accent-colored.** The module name ("FAT", "DUB", "SNAP") renders in the engine's `primaryAccent` wherever it appears.
+2. **Engine names are always accent-colored.** The module name ("OBESE", "OVERDUB", "ODDFELIX") renders in the engine's `primaryAccent` wherever it appears.
 3. **Parameter labels are always neutral.** Labels like "CUTOFF", "RESONANCE", "ATTACK" render in white/gray regardless of engine. This prevents visual noise when accent colors are bright (e.g., Dub Green `#00FF88`).
 4. **Values are slightly dimmer than labels.** This creates visual hierarchy: the parameter name draws the eye first, the value is available on closer inspection.
 5. **Numerical values use monospace.** This prevents layout shifting when values change (e.g., "1.00" to "10.0" maintains the same text width).
@@ -487,13 +487,13 @@ Each engine has a simple geometric icon used in the engine selector tabs and pre
 
 | Module | Icon Shape | Description |
 |--------|-----------|-------------|
-| FAT (XObese) | Circle with 3 concentric rings | Mass, layers, saturation |
-| BITE (XOppossum) | Triangle with serrated edge | Sharp attack, feral energy |
-| SNAP (OddfeliX/OddOscar X) | Square with diagonal crack | Percussive hit, impact |
-| MORPH (OddfeliX/OddOscar O) | Flowing wave with morph inflection | Pad evolution, wavetable |
-| DUB (XOverdub) | Echo ripples (3 arcs) | Delay, space, dub |
-| DRIFT (XOdyssey) | Spiral nebula | Psychedelic journey, cosmic |
-| PLUSH (XOblong) | Rounded rectangle with specular dot | Glass, warmth, character |
+| OBESE (XObese) | Circle with 3 concentric rings | Mass, layers, saturation |
+| OVERBITE (XOverbite) | Triangle with serrated edge | Sharp attack, feral energy |
+| ODDFELIX (OddfeliX/OddOscar X) | Square with diagonal crack | Percussive hit, impact |
+| ODDOSCAR (OddfeliX/OddOscar O) | Flowing wave with morph inflection | Pad evolution, wavetable |
+| OVERDUB (XOverdub) | Echo ripples (3 arcs) | Delay, space, dub |
+| ODYSSEY (XOdyssey) | Spiral nebula | Psychedelic journey, cosmic |
+| OBLONG (XOblong) | Rounded rectangle with specular dot | Glass, warmth, character |
 | ONSET (XOnset) | Vertical impact line with decay tail | Transient, percussive onset |
 
 ### 9.2 PlaySurface Mode Icons
@@ -599,7 +599,7 @@ Dark mode preserves the aesthetic familiar to standalone XO_OX instrument users.
 
 | Measurement | Value | Notes |
 |-------------|-------|-------|
-| Base window size | 1060 x 640px | Matches XOblong and XOppossum |
+| Base window size | 1060 x 640px | Matches XOblong and XOverbite |
 | Minimum window size | 848 x 512px (80% scale) | Smallest usable size |
 | Maximum window size | 1590 x 960px (150% scale) | Largest standard scale |
 | Aspect ratio | 1.656:1 (approx. 5:3) | Maintained across all scales |
@@ -678,13 +678,13 @@ struct EngineColorProfile
 enum class EngineType
 {
     None,       // Shell default — gold accents
-    FAT,        // XObese
-    BITE,       // XOppossum
-    SNAP,       // OddfeliX
-    MORPH,      // OddOscar
-    DUB,        // XOverdub
-    DRIFT,      // XOdyssey
-    PLUSH,      // XOblong
+    OBESE,      // XObese
+    OVERBITE,   // XOverbite
+    ODDFELIX,   // OddfeliX
+    ODDOSCAR,   // OddOscar
+    OVERDUB,    // XOverdub
+    ODYSSEY,    // XOdyssey
+    OBLONG,     // XOblong
     ONSET       // XOnset
 };
 
@@ -838,33 +838,33 @@ EngineColorProfile XOMegaLookAndFeel::getBuiltInProfile(EngineType type)
         case EngineType::None:
             return { juce::Colour(0xFFE9C46A), {}, juce::Colour(0xFFE9C46A), 0.40f, "---" };
 
-        case EngineType::FAT:
+        case EngineType::OBESE:
             return { juce::Colour(0xFFE06090), juce::Colour(0xFFE8C84A),
-                     juce::Colour(0xFFE06090), 0.40f, "FAT" };
+                     juce::Colour(0xFFE06090), 0.40f, "OBESE" };
 
-        case EngineType::BITE:
-            return { juce::Colour(0xFFC47040), juce::Colour(0xFF88CC44),
-                     juce::Colour(0xFFC47040), 0.40f, "BITE" };
+        case EngineType::OVERBITE:
+            return { juce::Colour(0xFFF0EDE8), juce::Colour(0xFF88CC44),
+                     juce::Colour(0xFFF0EDE8), 0.40f, "OVERBITE" };
 
-        case EngineType::SNAP:
+        case EngineType::ODDFELIX:
             return { juce::Colour(0xFFC8553D), {},
-                     juce::Colour(0xFFC8553D), 0.40f, "SNAP" };
+                     juce::Colour(0xFFC8553D), 0.40f, "ODDFELIX" };
 
-        case EngineType::MORPH:
+        case EngineType::ODDOSCAR:
             return { juce::Colour(0xFF2A9D8F), {},
-                     juce::Colour(0xFF2A9D8F), 0.40f, "MORPH" };
+                     juce::Colour(0xFF2A9D8F), 0.40f, "ODDOSCAR" };
 
-        case EngineType::DUB:
+        case EngineType::OVERDUB:
             return { juce::Colour(0xFF00FF88), juce::Colour(0xFFFFAA00),
-                     juce::Colour(0xFF00FF88), 0.35f, "DUB" };
+                     juce::Colour(0xFF00FF88), 0.35f, "OVERDUB" };
 
-        case EngineType::DRIFT:
+        case EngineType::ODYSSEY:
             return { juce::Colour(0xFF9B59B6), juce::Colour(0xFFF0C040),
-                     juce::Colour(0xFF9B59B6), 0.40f, "DRIFT" };
+                     juce::Colour(0xFF9B59B6), 0.40f, "ODYSSEY" };
 
-        case EngineType::PLUSH:
+        case EngineType::OBLONG:
             return { juce::Colour(0xFFF5C97A), {},
-                     juce::Colour(0xFFF5C97A), 0.40f, "PLUSH" };
+                     juce::Colour(0xFFF5C97A), 0.40f, "OBLONG" };
 
         case EngineType::ONSET:
             return { juce::Colour(0xFFC8553D), juce::Colour(0xFF2A9D8F),
@@ -965,24 +965,24 @@ void XOMegaLookAndFeel::drawSpecularEdge(juce::Graphics& g,
 
 | Engine | Token | Hex | ARGB |
 |--------|-------|-----|------|
-| FAT | `fat.primary` | `#E06090` | `0xFFE06090` |
-| FAT | `fat.secondary` | `#E8C84A` | `0xFFE8C84A` |
-| FAT | `fat.glow` | `#E06090` @ 40% | `0x66E06090` |
-| BITE | `bite.primary` | `#C47040` | `0xFFC47040` |
-| BITE | `bite.secondary` | `#88CC44` | `0xFF88CC44` |
-| BITE | `bite.glow` | `#C47040` @ 40% | `0x66C47040` |
-| SNAP | `snap.primary` | `#00A6D6` | `0xFFC8553D` |
-| SNAP | `snap.glow` | `#00A6D6` @ 40% | `0x66C8553D` |
-| MORPH | `morph.primary` | `#E8839B` | `0xFF2A9D8F` |
-| MORPH | `morph.glow` | `#E8839B` @ 40% | `0x662A9D8F` |
-| DUB | `dub.primary` | `#00FF88` | `0xFF00FF88` |
-| DUB | `dub.secondary` | `#FFAA00` | `0xFFFFAA00` |
-| DUB | `dub.glow` | `#00FF88` @ 35% | `0x5900FF88` |
-| DRIFT | `drift.primary` | `#9B59B6` | `0xFF9B59B6` |
-| DRIFT | `drift.secondary` | `#F0C040` | `0xFFF0C040` |
-| DRIFT | `drift.glow` | `#9B59B6` @ 40% | `0x669B59B6` |
-| PLUSH | `plush.primary` | `#F5C97A` | `0xFFF5C97A` |
-| PLUSH | `plush.glow` | `#F5C97A` @ 40% | `0x66F5C97A` |
+| OBESE | `fat.primary` | `#E06090` | `0xFFE06090` |
+| OBESE | `fat.secondary` | `#E8C84A` | `0xFFE8C84A` |
+| OBESE | `fat.glow` | `#E06090` @ 40% | `0x66E06090` |
+| OVERBITE | `bite.primary` | `#F0EDE8` | `0xFFF0EDE8` |
+| OVERBITE | `bite.secondary` | `#88CC44` | `0xFF88CC44` |
+| OVERBITE | `bite.glow` | `#F0EDE8` @ 40% | `0x66F0EDE8` |
+| ODDFELIX | `snap.primary` | `#00A6D6` | `0xFFC8553D` |
+| ODDFELIX | `snap.glow` | `#00A6D6` @ 40% | `0x66C8553D` |
+| ODDOSCAR | `morph.primary` | `#E8839B` | `0xFF2A9D8F` |
+| ODDOSCAR | `morph.glow` | `#E8839B` @ 40% | `0x662A9D8F` |
+| OVERDUB | `dub.primary` | `#00FF88` | `0xFF00FF88` |
+| OVERDUB | `dub.secondary` | `#FFAA00` | `0xFFFFAA00` |
+| OVERDUB | `dub.glow` | `#00FF88` @ 35% | `0x5900FF88` |
+| ODYSSEY | `drift.primary` | `#9B59B6` | `0xFF9B59B6` |
+| ODYSSEY | `drift.secondary` | `#F0C040` | `0xFFF0C040` |
+| ODYSSEY | `drift.glow` | `#9B59B6` @ 40% | `0x669B59B6` |
+| OBLONG | `plush.primary` | `#F5C97A` | `0xFFF5C97A` |
+| OBLONG | `plush.glow` | `#F5C97A` @ 40% | `0x66F5C97A` |
 | ONSET | `onset.primary` | `#00A6D6` | `0xFFC8553D` |
 | ONSET | `onset.secondary` | `#E8839B` | `0xFF2A9D8F` |
 | ONSET | `onset.glow` | `#00A6D6` @ 40% | `0x66C8553D` |
@@ -995,13 +995,13 @@ This table maps each engine's mega-tool visual treatment back to its standalone 
 
 | Engine | Standalone Background | Mega-Tool Background | Standalone Panel Style | Mega-Tool Panel Style | Preserved | Normalized |
 |--------|----------------------|---------------------|----------------------|----------------------|-----------|------------|
-| FAT (XObese) | `#0D0D12` | `#0B0B12` | visionOS glass, specular | Shared glass | Pink/Yellow accents, glass metaphor | Background shifted 2 values |
-| BITE (XOppossum) | `#0E0E11` | `#0B0B12` | Spatial glass, vertical gradient | Shared glass | Rust/Acid palette, frosted borders | Gradient direction standardized |
-| SNAP (OddfeliX/OddOscar X) | `#1A1A1A` | `#0B0B12` | Solid panels, `#2D2D2D` surface | Shared glass | Terracotta accent, percussive identity | Background darkened, glass added |
-| MORPH (OddfeliX/OddOscar O) | `#1A1A1A` | `#0B0B12` | Solid panels, `#2D2D2D` surface | Shared glass | Teal accent, lush identity | Background darkened, glass added |
-| DUB (XOverdub) | `#0A0A0A` | `#0B0B12` | Solid dark, `#1A1A1A` surfaces | Shared glass | Green/Amber/Cyan accents, brutalist density | Glass replaces solid panels |
-| DRIFT (XOdyssey) | Light base | `#0B0B12` | Custom light LookAndFeel | Shared glass (dark) | Psychedelic accent philosophy | Full inversion to dark; light mode preserves original |
-| PLUSH (XOblong) | `#08080F` | `#0B0B12` | Apple Liquid Glass, 14% white | Shared glass | Amber accent, glass dome knobs, specular edge | Glass spec IS the shared spec (origin) |
+| OBESE (XObese) | `#0D0D12` | `#0B0B12` | visionOS glass, specular | Shared glass | Pink/Yellow accents, glass metaphor | Background shifted 2 values |
+| OVERBITE (XOverbite) | `#0E0E11` | `#0B0B12` | Spatial glass, vertical gradient | Shared glass | Fang White/Acid palette, frosted borders | Gradient direction standardized |
+| ODDFELIX (OddfeliX/OddOscar X) | `#1A1A1A` | `#0B0B12` | Solid panels, `#2D2D2D` surface | Shared glass | Terracotta accent, percussive identity | Background darkened, glass added |
+| ODDOSCAR (OddfeliX/OddOscar O) | `#1A1A1A` | `#0B0B12` | Solid panels, `#2D2D2D` surface | Shared glass | Teal accent, lush identity | Background darkened, glass added |
+| OVERDUB (XOverdub) | `#0A0A0A` | `#0B0B12` | Solid dark, `#1A1A1A` surfaces | Shared glass | Green/Amber/Cyan accents, brutalist density | Glass replaces solid panels |
+| ODYSSEY (XOdyssey) | Light base | `#0B0B12` | Custom light LookAndFeel | Shared glass (dark) | Psychedelic accent philosophy | Full inversion to dark; light mode preserves original |
+| OBLONG (XOblong) | `#08080F` | `#0B0B12` | Apple Liquid Glass, 14% white | Shared glass | Amber accent, glass dome knobs, specular edge | Glass spec IS the shared spec (origin) |
 | ONSET (XOnset) | N/A (new) | `#0B0B12` | N/A | Shared glass | Built to spec from day 1 | N/A |
 
 ---
@@ -1014,9 +1014,9 @@ The engine accent palette was designed to remain distinguishable under the three
 
 | Engine Pair | Protanopia (no red) | Deuteranopia (no green) | Tritanopia (no blue) |
 |-------------|-------------------|----------------------|---------------------|
-| FAT vs SNAP | Pink reads as gray-blue; Terracotta reads as dark yellow. Distinguishable by lightness. | Similar concern. Secondary accent (Yellow vs none) resolves ambiguity. | Both remain warm-toned. Lightness difference sufficient. |
-| DUB vs MORPH | Green shifts to yellow; Teal shifts to gray-blue. Distinguishable. | Green shifts to amber; Teal remains blue-leaning. Distinguishable. | Both shift warm. Name labels resolve. |
-| BITE vs SNAP | Rust and Terracotta are close. Acid lime secondary resolves BITE. | Similar. Secondary accent is the differentiator. | Distinguishable by lightness. |
+| OBESE vs ODDFELIX | Pink reads as gray-blue; Terracotta reads as dark yellow. Distinguishable by lightness. | Similar concern. Secondary accent (Yellow vs none) resolves ambiguity. | Both remain warm-toned. Lightness difference sufficient. |
+| OVERDUB vs ODDOSCAR | Green shifts to yellow; Teal shifts to gray-blue. Distinguishable. | Green shifts to amber; Teal remains blue-leaning. Distinguishable. | Both shift warm. Name labels resolve. |
+| OVERBITE vs ODDFELIX | Fang White and Terracotta are distinct. Acid lime secondary resolves OVERBITE. | Similar. Secondary accent is the differentiator. | Distinguishable by lightness. |
 
 **Mitigation strategies (all versions):**
 
@@ -1064,13 +1064,13 @@ For integration with design tools (Figma, Sketch) and CSS-based prototypes, all 
             "panicRed": "#FF3333"
         },
         "engines": {
-            "FAT":   { "primary": "#E06090", "secondary": "#E8C84A", "glowAlpha": 0.40 },
-            "BITE":  { "primary": "#C47040", "secondary": "#88CC44", "glowAlpha": 0.40 },
-            "SNAP":  { "primary": "#C8553D", "secondary": null,      "glowAlpha": 0.40 },
-            "MORPH": { "primary": "#2A9D8F", "secondary": null,      "glowAlpha": 0.40 },
-            "DUB":   { "primary": "#00FF88", "secondary": "#FFAA00", "glowAlpha": 0.35 },
-            "DRIFT": { "primary": "#9B59B6", "secondary": "#F0C040", "glowAlpha": 0.40 },
-            "PLUSH": { "primary": "#F5C97A", "secondary": null,      "glowAlpha": 0.40 },
+            "OBESE":    { "primary": "#E06090", "secondary": "#E8C84A", "glowAlpha": 0.40 },
+            "OVERBITE": { "primary": "#F0EDE8", "secondary": "#88CC44", "glowAlpha": 0.40 },
+            "ODDFELIX": { "primary": "#C8553D", "secondary": null,      "glowAlpha": 0.40 },
+            "ODDOSCAR": { "primary": "#2A9D8F", "secondary": null,      "glowAlpha": 0.40 },
+            "OVERDUB":  { "primary": "#00FF88", "secondary": "#FFAA00", "glowAlpha": 0.35 },
+            "ODYSSEY":  { "primary": "#9B59B6", "secondary": "#F0C040", "glowAlpha": 0.40 },
+            "OBLONG":   { "primary": "#F5C97A", "secondary": null,      "glowAlpha": 0.40 },
             "ONSET": { "primary": "#C8553D", "secondary": "#2A9D8F", "glowAlpha": 0.40 }
         },
         "typography": {

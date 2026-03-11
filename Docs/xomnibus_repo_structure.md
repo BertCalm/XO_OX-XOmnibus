@@ -62,7 +62,7 @@ XOmnibus/
 │   │   │   ├── FatVoice.h
 │   │   │   ├── FatOscillator.h
 │   │   │   └── FatParameters.h
-│   │   ├── Bite/                      # XOppossum engine — bass-forward, feral
+│   │   ├── Bite/                      # XOverbite engine — bass-forward, feral
 │   │   │   ├── BiteEngine.h/.cpp
 │   │   │   ├── BiteVoice.h
 │   │   │   └── BiteParameters.h
@@ -410,7 +410,7 @@ unified preset system.
 | Engine | Module Dir | Origin | Identity |
 |--------|-----------|--------|----------|
 | Fat | Source/Engines/Fat/ | XObese | Bold, industrial, high-contrast |
-| Bite | Source/Engines/Bite/ | XOppossum | Bass-forward, plush weight + feral bite |
+| Bite | Source/Engines/Bite/ | XOverbite | Bass-forward, plush weight + feral bite |
 | Snap | Source/Engines/Snap/ | OddfeliX | Percussive (PolyBLEP, FM, Karplus-Strong) |
 | Morph | Source/Engines/Morph/ | OddOscar | Pad/lush (wavetable morph, ladder filter) |
 | Dub | Source/Engines/Dub/ | XOverdub | Dub-focused synth + performance FX |
@@ -568,7 +568,7 @@ Migrate one engine at a time. For each engine, follow this sequence:
 | 1 | Snap + Morph | OddfeliX/OddOscar | Already coupled, coupling logic ports directly |
 | 2 | Dub | XOverdub | Simplest standalone engine, good early validation |
 | 3 | Fat | XObese | Build complete, straightforward migration |
-| 4 | Bite | XOppossum | Phase 7, may need minor completion |
+| 4 | Bite | XOverbite | Phase 7, may need minor completion |
 | 5 | Drift | XOdyssey | Most complex engine (Climax system, journey macro) |
 | 6 | Onset | Spec only | New build from XOnset spec — no migration, fresh code |
 
@@ -577,7 +577,7 @@ Migrate one engine at a time. For each engine, follow this sequence:
 | Engine | Source Repo | Source Dir | Key Classes to Rename |
 |--------|-------------|-----------|----------------------|
 | Fat | XObese | `Source/` | PluginProcessor -> FatEngine |
-| Bite | XOppossum | `Source/` | PluginProcessor -> BiteEngine |
+| Bite | XOverbite | `Source/` | PluginProcessor -> BiteEngine |
 | Snap | OddfeliX/OddOscar | `Source/Engines/EngineX.h` | EngineX -> SnapEngine |
 | Morph | OddfeliX/OddOscar | `Source/Engines/EngineO.h` | EngineO -> MorphEngine |
 | Dub | XOverdub | `src/` | PluginProcessor -> DubEngine |
@@ -643,7 +643,7 @@ After migration is complete and XOmnibus is building with all engines validated:
 | Repo | Location | Archive Tag |
 |------|----------|-------------|
 | XObese | ~/Documents/GitHub/XObese/ | `v1.0-standalone-archive` |
-| XOppossum | ~/Documents/GitHub/XOppossum/ | `v1.0-standalone-archive` |
+| XOverbite | ~/Documents/GitHub/XOverbite/ | `v1.0-standalone-archive` |
 | OddfeliX/OddOscar | ~/Documents/GitHub/OddfeliX/OddOscar/ | `v1.0-standalone-archive` |
 | XOverdub | ~/Documents/GitHub/XOverdub/ | `v1.0-standalone-archive` |
 | XOdyssey | ~/Documents/GitHub/XOdyssey/ | `v1.0-standalone-archive` |

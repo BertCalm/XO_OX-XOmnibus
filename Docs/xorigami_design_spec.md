@@ -21,7 +21,7 @@
 
 **Personality in 3 words:** Kaleidoscopic, geometric, alive.
 
-**Gallery gap filled:** No existing engine manipulates sound in the spectral domain. MORPH morphs wavetables (time domain). OPAL scatters grains (time domain). ORBITAL stacks partials (frequency domain, but additive — constructive only). ORIGAMI is the first *transformative* spectral engine — it takes existing spectral content and geometrically reshapes it.
+**Gallery gap filled:** No existing engine manipulates sound in the spectral domain. ODDOSCAR morphs wavetables (time domain). OPAL scatters grains (time domain). ORBITAL stacks partials (frequency domain, but additive — constructive only). ORIGAMI is the first *transformative* spectral engine — it takes existing spectral content and geometrically reshapes it.
 
 ---
 
@@ -86,7 +86,7 @@ ORIGAMI needs spectral content to fold. Two sources:
 
 **Internal Oscillator Bank:** A simple 3-oscillator mixer (sawtooth, square, filtered noise) provides harmonically rich source material for standalone use. The saw provides a full harmonic series. The square provides odd harmonics. The noise provides broadband content for textural folds. Oscillator mix is parameterized — the user can select the spectral "paper" before folding it.
 
-**Coupling Input:** When receiving audio from the MegaCouplingMatrix, the coupling input replaces or blends with the internal oscillators. This is ORIGAMI's primary mode of creative interaction — fold another engine's spectral output. DRIFT's Climax bloom, spectrally folded. FAT's 13-oscillator stack, spectrally mirrored. OBSIDIAN's crystalline harmonics, spectrally rotated.
+**Coupling Input:** When receiving audio from the MegaCouplingMatrix, the coupling input replaces or blends with the internal oscillators. This is ORIGAMI's primary mode of creative interaction — fold another engine's spectral output. ODYSSEY's Climax bloom, spectrally folded. OBESE's 13-oscillator stack, spectrally mirrored. OBSIDIAN's crystalline harmonics, spectrally rotated.
 
 ### 2.2 STFT Analysis
 
@@ -323,7 +323,7 @@ Maximum fold cascade with LFO-animated fold point. The spectrum continuously ref
 ### 7.3 Frozen Bloom
 `foldPoint=0.4, foldDepth=0.6, foldCount=2, operation=MIRROR, rotate=0.0, stretch=0.0, freeze=1 (triggered), source=0 (coupling input)`
 
-Spectral freeze captures a moment of coupled audio (e.g., DRIFT's Climax bloom), then mirror-folds the frozen spectrum. The result is a sustained, symmetric spectral drone — a captured moment sculpted into geometric perfection.
+Spectral freeze captures a moment of coupled audio (e.g., ODYSSEY's Climax bloom), then mirror-folds the frozen spectrum. The result is a sustained, symmetric spectral drone — a captured moment sculpted into geometric perfection.
 
 ### 7.4 Ring Shift
 `foldPoint=0.0, foldDepth=0.0, foldCount=1, operation=ROTATE, rotate=0.35, stretch=0.0, freeze=0, source=0 (saw)`

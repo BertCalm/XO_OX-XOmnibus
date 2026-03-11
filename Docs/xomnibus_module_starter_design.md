@@ -35,7 +35,7 @@ Each engine designates **one** preset as its Module Starter by including `"start
   "mood": "Foundation",
   "engines": ["XOdyssey"],
   "tags": ["pad", "warm", "evolving", "starter"],
-  "starterFor": "Drift",
+  "starterFor": "Odyssey",
   ...
 }
 ```
@@ -43,7 +43,7 @@ Each engine designates **one** preset as its Module Starter by including `"start
 **Rules:**
 - Exactly one starter per engine (enforced by tooling, not schema)
 - Starter presets live in their natural mood category, not a special directory
-- The `"starterFor"` field names the engine's short name (Snap, Morph, Dub, Drift, Bob, Fat, Onset, Overworld, Opal, Organon, Ouroboros)
+- The `"starterFor"` field names the engine's short name (OddfeliX, OddOscar, Overdub, Odyssey, Oblong, Obese, Overbite, Onset, Overworld, Opal, Organon, Ouroboros)
 - Starters must be Foundation or Prism mood — approachable, not experimental
 - Macro M1-M4 must all produce obvious audible change (the golden rule)
 - The preset should sound good dry (before effects) — first impressions matter
@@ -56,7 +56,7 @@ Add one optional field to `xometa_schema.json`:
 "starterFor": {
   "type": "string",
   "description": "If present, designates this preset as the Module Starter for the named engine. Exactly one preset per engine should have this field.",
-  "enum": ["Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Onset", "Overworld", "Opal", "Organon", "Ouroboros"]
+  "enum": ["OddfeliX", "OddOscar", "Overdub", "Odyssey", "Oblong", "Obese", "Overbite", "Onset", "Overworld", "Opal", "Organon", "Ouroboros"]
 }
 ```
 
@@ -79,12 +79,12 @@ Each starter preset should showcase the engine's **core identity** — the thing
 
 | Engine | Starter Identity | Suggested Mood |
 |--------|-----------------|----------------|
-| SNAP | Punchy pluck with filter sweep | Foundation |
-| MORPH | Blooming pad that evolves with macro | Prism |
-| DUB | Warm delay wash — play a note and hear the space | Foundation |
-| DRIFT | Mid-journey Climax position, half-alien | Prism |
-| BOB | Tactile, fuzzy lead with curiosity | Foundation |
-| FAT | Thick stacked unison, filter opening | Foundation |
+| ODDFELIX | Punchy pluck with filter sweep | Foundation |
+| ODDOSCAR | Blooming pad that evolves with macro | Prism |
+| OVERDUB | Warm delay wash — play a note and hear the space | Foundation |
+| ODYSSEY | Mid-journey Climax position, half-alien | Prism |
+| OBLONG | Tactile, fuzzy lead with curiosity | Foundation |
+| OBESE | Thick stacked unison, filter opening | Foundation |
 | ONSET | Punchy 808 kit, circuit side | Foundation |
 | OVERWORLD | Classic NES square-wave pulse melody | Prism |
 | OPAL | Granular cloud from a simple tone | Prism |

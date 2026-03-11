@@ -493,7 +493,7 @@ private:
 };
 
 //==============================================================================
-// DriftVoice — Per-voice state for the DRIFT engine.
+// DriftVoice — Per-voice state for the ODYSSEY engine.
 // Each voice has dual multi-mode oscillators (Classic/Supersaw/FM),
 // sub, noise, Haze saturation, dual filters (LP + Formant),
 // Prism Shimmer, Voyager Drift, ADSR, and glide.

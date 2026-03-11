@@ -581,12 +581,12 @@ static void testEngineRendering()
     // Create and test each engine. All engines handle null APVTS params gracefully
     // by using default values when parameter pointers are null.
 
-    testEngineStability("Snap", std::make_unique<SnapEngine>());
-    testEngineStability("Morph", std::make_unique<MorphEngine>());
-    testEngineStability("Dub", std::make_unique<DubEngine>());
-    testEngineStability("Drift", std::make_unique<DriftEngine>());
-    testEngineStability("Bob", std::make_unique<BobEngine>());
-    testEngineStability("Fat", std::make_unique<FatEngine>());
+    testEngineStability("OddfeliX", std::make_unique<SnapEngine>());
+    testEngineStability("OddOscar", std::make_unique<MorphEngine>());
+    testEngineStability("Overdub", std::make_unique<DubEngine>());
+    testEngineStability("Odyssey", std::make_unique<DriftEngine>());
+    testEngineStability("Oblong", std::make_unique<BobEngine>());
+    testEngineStability("Obese", std::make_unique<FatEngine>());
     testEngineStability("Onset", std::make_unique<OnsetEngine>());
     testEngineStability("Overworld", std::make_unique<OverworldEngine>());
 }

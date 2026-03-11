@@ -971,7 +971,7 @@ private:
 };
 
 //==============================================================================
-// BobVoice — Per-voice state for the BOB engine.
+// BobVoice — Per-voice state for the OBLONG engine.
 //==============================================================================
 struct BobVoice
 {

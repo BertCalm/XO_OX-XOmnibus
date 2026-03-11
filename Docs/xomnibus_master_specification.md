@@ -148,12 +148,12 @@ Toggle between modes at any time. Preset data is identical — only UI visibilit
 
 | Short Name | Source | Sonic Role | Voices | CPU Est. | Accent Color |
 |-----------|--------|-----------|--------|----------|-------------|
-| **SNAP** | OddfeliX | Percussive (PolyBLEP, FM, K-S) | 8 | ~15% | Neon Tetra Blue `#00A6D6` |
-| **MORPH** | OddOscar | Pad (wavetable morph, Moog ladder) | 16 | ~15% | Axolotl Gill Pink `#E8839B` |
-| **DUB** | XOverdub | Dub mixing desk (send/return FX) | 8 | ~10% | Olive `#6B7B3A` |
-| **DRIFT** | XOdyssey | Psychedelic pad (Familiar→Alien) | 24 | ~20% | Violet `#7B2D8B` |
-| **BOB** | XOblong | Warm character (fuzzy, curious motion) | 16 | ~15% | Amber `#E9A84A` |
-| **FAT** | XObese | Character-driven sampler | 8 | ~8% | Hot Pink `#FF1493` |
+| **ODDFELIX** | OddfeliX | Percussive (PolyBLEP, FM, K-S) | 8 | ~15% | Neon Tetra Blue `#00A6D6` |
+| **ODDOSCAR** | OddOscar | Pad (wavetable morph, Moog ladder) | 16 | ~15% | Axolotl Gill Pink `#E8839B` |
+| **OVERDUB** | XOverdub | Dub mixing desk (send/return FX) | 8 | ~10% | Olive `#6B7B3A` |
+| **ODYSSEY** | XOdyssey | Psychedelic pad (Familiar→Alien) | 24 | ~20% | Violet `#7B2D8B` |
+| **OBLONG** | XOblong | Warm character (fuzzy, curious motion) | 16 | ~15% | Amber `#E9A84A` |
+| **OBESE** | XObese | Character-driven sampler | 8 | ~8% | Hot Pink `#FF1493` |
 | **ONSET** | XOnset (new) | Percussive synthesis (Circuit↔Algorithm) | 8 | ~12% | Electric Blue `#0066FF` |
 
 ### 3.2 Engine Visual Identity
@@ -162,32 +162,32 @@ Each engine is an "exhibition" within the gallery. Its accent color fills the ac
 
 | Engine | Visual Character | Material/Texture |
 |--------|-----------------|-----------------|
-| SNAP + MORPH | Dual-tone panels, coupling visualization | Brushed metal |
-| DUB | Vintage mixing desk, VU meters, tape reels | Worn wood grain |
-| DRIFT | Psychedelic gradients, journey visualization | Holographic sheen |
-| BOB | Rounded corners, soft shadows, tactile | Apple Liquid Glass |
-| FAT | Bold ALL_CAPS, high contrast, industrial | Concrete |
+| ODDFELIX + ODDOSCAR | Dual-tone panels, coupling visualization | Brushed metal |
+| OVERDUB | Vintage mixing desk, VU meters, tape reels | Worn wood grain |
+| ODYSSEY | Psychedelic gradients, journey visualization | Holographic sheen |
+| OBLONG | Rounded corners, soft shadows, tactile | Apple Liquid Glass |
+| OBESE | Bold ALL_CAPS, high contrast, industrial | Concrete |
 | ONSET | Grid precision, circuit traces, LED indicators | PCB green |
 
 ### 3.3 Engine Pairing Synergies (Top 15)
 
 | Pair | Coupling Type | What Happens |
 |------|--------------|-------------|
-| SNAP + MORPH | Amp→Filter, Pitch Drift | The original OddfeliX/OddOscar — percussion carves pads |
-| ONSET + DUB | Amp→Choke, Audio→FM | Drum kit through dub FX chain |
-| DRIFT + BOB | Env→Morph, LFO→Pitch | Odyssey aliens meet Bob warmth |
-| FAT + ONSET | Audio→Ring, Amp→Choke | Industrial sample-mangling percussion |
-| SNAP + ONSET | Rhythm→Blend, Amp→Choke | Dual percussive engines, layered attacks |
-| DUB + DRIFT | Filter→Filter, Audio→FM | Dub delays modulating psychedelic pads |
-| BOB + FAT | LFO→Pitch, Env→Morph | Warm character meets heavyweight sampling |
-| MORPH + DUB | Amp→Filter, Audio→FM | Lush pads through dub processing |
-| SNAP + DUB | Amp→Filter, Amp→Choke | Percussive hits into dub echo chamber |
-| DRIFT + FAT | Audio→Ring, Env→Morph | Alien textures from fat samples |
-| BOB + ONSET | Env→Decay, Rhythm→Blend | Warm melodics triggered by drum patterns |
-| MORPH + DRIFT | Filter→Filter, LFO→Pitch | Two pad engines creating shifting landscapes |
-| FAT + DUB | Audio→FM, Amp→Filter | Heavy samples through vintage dub FX |
-| SNAP + FAT | Amp→Choke, Audio→Ring | Percussive synthesis meets sampling |
-| ONSET + DRIFT | Rhythm→Blend, Audio→FM | Drums driving psychedelic textures |
+| ODDFELIX + ODDOSCAR | Amp→Filter, Pitch Drift | The original OddfeliX/OddOscar — percussion carves pads |
+| ONSET + OVERDUB | Amp→Choke, Audio→FM | Drum kit through dub FX chain |
+| ODYSSEY + OBLONG | Env→Morph, LFO→Pitch | Odyssey aliens meet Oblong warmth |
+| OBESE + ONSET | Audio→Ring, Amp→Choke | Industrial sample-mangling percussion |
+| ODDFELIX + ONSET | Rhythm→Blend, Amp→Choke | Dual percussive engines, layered attacks |
+| OVERDUB + ODYSSEY | Filter→Filter, Audio→FM | Dub delays modulating psychedelic pads |
+| OBLONG + OBESE | LFO→Pitch, Env→Morph | Warm character meets heavyweight sampling |
+| ODDOSCAR + OVERDUB | Amp→Filter, Audio→FM | Lush pads through dub processing |
+| ODDFELIX + OVERDUB | Amp→Filter, Amp→Choke | Percussive hits into dub echo chamber |
+| ODYSSEY + OBESE | Audio→Ring, Env→Morph | Alien textures from fat samples |
+| OBLONG + ONSET | Env→Decay, Rhythm→Blend | Warm melodics triggered by drum patterns |
+| ODDOSCAR + ODYSSEY | Filter→Filter, LFO→Pitch | Two pad engines creating shifting landscapes |
+| OBESE + OVERDUB | Audio→FM, Amp→Filter | Heavy samples through vintage dub FX |
+| ODDFELIX + OBESE | Amp→Choke, Audio→Ring | Percussive synthesis meets sampling |
+| ONSET + ODYSSEY | Rhythm→Blend, Audio→FM | Drums driving psychedelic textures |
 
 ### 3.4 CPU Budgets
 
@@ -203,12 +203,12 @@ Each engine is an "exhibition" within the gallery. Its accent color fills the ac
 Each engine prefixes its APVTS parameter IDs to avoid collisions:
 
 ```
-snap_filterCutoff      // SNAP engine
-morph_wavePosition     // MORPH engine
-dub_sendAmount         // DUB engine
-drift_journey          // DRIFT engine
-bob_curiosity          // BOB engine
-fat_mojo               // FAT engine
+snap_filterCutoff      // ODDFELIX engine
+morph_wavePosition     // ODDOSCAR engine
+dub_sendAmount         // OVERDUB engine
+drift_journey          // ODYSSEY engine
+bob_curiosity          // OBLONG engine
+fat_mojo               // OBESE engine
 onset_blend            // ONSET engine
 ```
 
@@ -613,11 +613,11 @@ Single source of truth. JSON files replacing all per-engine C++ presets and `.xo
 
 **Per-engine macro targets:**
 
-| Macro | SNAP+MORPH | DUB | DRIFT | BOB | FAT | ONSET |
+| Macro | ODDFELIX+ODDOSCAR | OVERDUB | ODYSSEY | OBLONG | OBESE | ONSET |
 |-------|-----------|-----|-------|-----|-----|-------|
-| M1 | Snap+Morph | Send Level | JOURNEY | Curiosity | MOJO | MACHINE |
-| M2 | Bloom | Drive | BREATHE | Bob Mode | BELLY | PUNCH |
-| M3 | Coupling | Delay FB | BLOOM | Smear Mix | BITE | SPACE |
+| M1 | OddfeliX+OddOscar | Send Level | JOURNEY | Curiosity | MOJO | MACHINE |
+| M2 | Bloom | Drive | BREATHE | Oblong Mode | BELLY | PUNCH |
+| M3 | Coupling | Delay FB | BLOOM | Smear Mix | OVERBITE | SPACE |
 | M4 | Delay+Rev | Reverb Mix | FRACTURE | Space Mix | GROWL | MUTATE |
 
 **Golden rule:** Every macro must produce an audible change across its full range in every preset.
@@ -663,7 +663,7 @@ Every preset carries a 6-dimensional vector for similarity search, morphing, and
 - No technical jargon ("Amber Tide" not "LP Filter Pad")
 - No numbers ("Sub Pressure" not "Bass 3")
 - No duplicates across entire library
-- Cross-engine names hint at both worlds ("Velvet Cosmos" = BOB warmth + DRIFT space)
+- Cross-engine names hint at both worlds ("Velvet Cosmos" = OBLONG warmth + ODYSSEY space)
 - Lexicon: Nature, Sensation, Science, Culture, Objects
 
 ### 8.8 Quality Standards
@@ -966,9 +966,9 @@ cmake --build build-ios --config Release
 | Phase | Action | Duration |
 |-------|--------|----------|
 | 1 | Create XOmnibus repo, scaffold structure, copy shared DSP | Week 1 |
-| 2 | Implement SynthEngine interface, wrap OddfeliX/OddOscar (SNAP+MORPH) | Weeks 2-4 |
-| 3 | Wrap XOverdub (DUB), implement MegaCouplingMatrix | Weeks 5-7 |
-| 4 | Wrap remaining engines (DRIFT, BOB, FAT) | Weeks 8-11 |
+| 2 | Implement SynthEngine interface, wrap OddfeliX/OddOscar (ODDFELIX+ODDOSCAR) | Weeks 2-4 |
+| 3 | Wrap XOverdub (OVERDUB), implement MegaCouplingMatrix | Weeks 5-7 |
+| 4 | Wrap remaining engines (ODYSSEY, OBLONG, OBESE) | Weeks 8-11 |
 | 5 | Build ONSET, PlaySurface, preset browser, mobile layouts | Weeks 12-14 |
 
 **Existing repos are archived, not deleted.** Each becomes read-only with a README pointing to XOmnibus.
@@ -982,7 +982,7 @@ cmake --build build-ios --config Release
 ### 12.1 MVP Definition (Week 14)
 
 The MVP ships with:
-- 2 engines: SNAP + MORPH (OddfeliX/OddOscar) + DUB (XOverdub)
+- 2 engines: ODDFELIX + ODDOSCAR (OddfeliX/OddOscar) + OVERDUB (XOverdub)
 - MegaCouplingMatrix with 3 coupling types
 - PlaySurface (Pad mode only)
 - Preset browser with mood tabs
@@ -1006,7 +1006,7 @@ The MVP ships with:
 
 - VST3 format
 - Community preset sharing
-- Wavetable file loading for DRIFT engine
+- Wavetable file loading for ODYSSEY engine
 - Windows port
 - Additional engine modules
 
@@ -1018,14 +1018,14 @@ Modules used by multiple engines, extracted to `Source/DSP/`:
 
 | Module | Used By | Purpose |
 |--------|---------|---------|
-| `CytomicSVF.h` | SNAP, MORPH, DRIFT, BOB, FAT | State-variable filter (LP/HP/BP) |
-| `PolyBLEP.h` | SNAP, ONSET | Band-limited oscillators |
+| `CytomicSVF.h` | ODDFELIX, ODDOSCAR, ODYSSEY, OBLONG, OBESE | State-variable filter (LP/HP/BP) |
+| `PolyBLEP.h` | ODDFELIX, ONSET | Band-limited oscillators |
 | `FastMath.h` | All | Fast exp, tanh, sin approximations |
-| `WavetableOscillator.h` | MORPH, DRIFT, BOB | Wavetable rendering |
-| `DubDelay.h` | DUB, SNAP+MORPH | Ping-pong delay with feedback |
-| `LushReverb.h` | DUB, DRIFT | Algorithmic reverb |
-| `Compressor.h` | DUB, FAT | Dynamics processing |
-| `Saturator.h` | FAT, DRIFT, DUB | Tube/tape/digital saturation |
+| `WavetableOscillator.h` | ODDOSCAR, ODYSSEY, OBLONG | Wavetable rendering |
+| `DubDelay.h` | OVERDUB, ODDFELIX+ODDOSCAR | Ping-pong delay with feedback |
+| `LushReverb.h` | OVERDUB, ODYSSEY | Algorithmic reverb |
+| `Compressor.h` | OVERDUB, OBESE | Dynamics processing |
+| `Saturator.h` | OBESE, ODYSSEY, OVERDUB | Tube/tape/digital saturation |
 
 ---
 

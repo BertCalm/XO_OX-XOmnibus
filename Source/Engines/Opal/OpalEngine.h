@@ -36,7 +36,7 @@ namespace xomnibus {
 //   LFOToPitch       → offsets pitch scatter (cross-engine scatter modulation)
 //
 // Coupling output:
-//   getSampleForCoupling() → post-filter cloud stereo, feeds DUB / MORPH / BITE
+//   getSampleForCoupling() → post-filter cloud stereo, feeds OVERDUB / ODDOSCAR / OVERBITE
 //
 class OpalEngine : public SynthEngine
 {

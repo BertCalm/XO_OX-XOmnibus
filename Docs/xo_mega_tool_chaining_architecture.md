@@ -117,7 +117,7 @@ enum class CouplingType
     TriggerToReset,  // Source note trigger → target phase/envelope reset (sync)
 
     // FX routes
-    SendToFX,        // Source output → DUB engine send input (dub FX throw)
+    SendToFX,        // Source output → OVERDUB engine send input (dub FX throw)
 
     NUM_TYPES        // Sentinel for iteration
 };
@@ -257,7 +257,7 @@ public:
     // Identity
     //==================================================================
 
-    /// Human-readable name (e.g., "FAT", "BITE", "SNAP")
+    /// Human-readable name (e.g., "OBESE", "OVERBITE", "ODDFELIX")
     virtual juce::String getModuleName() const = 0;
 
     /// Machine-readable identifier (e.g., "fat", "bite", "snap").
@@ -297,7 +297,7 @@ public:
 
     /// Whether this engine manages its own FX chain. If true, the
     /// engine's output bypasses the shared FX rack. Default: false.
-    /// Engines like DUB (XOverdub) override this to true because
+    /// Engines like OVERDUB (XOverdub) override this to true because
     /// their FX architecture IS the instrument.
     virtual bool ownsEffects() const { return false; }
 
@@ -328,7 +328,7 @@ class EngineRegistry
 {
 public:
     /// Register an engine factory by module ID.
-    /// @param moduleID   Unique identifier (e.g., "fat", "bite", "snap")
+    /// @param moduleID   Unique identifier (e.g., "Obese", "Overbite", "OddfeliX")
     /// @param factory    Function that creates a new instance of the engine
     void registerEngine(const juce::String& moduleID, EngineFactory factory)
     {
@@ -393,7 +393,7 @@ The mega-tool has 4 engine slots. Each slot can hold any registered engine or re
 ┌──────────────────────────────────────────────────────────┐
 │  Slot A        Slot B        Slot C        Slot D        │
 │  ┌──────┐     ┌──────┐     ┌──────┐     ┌──────┐       │
-│  │ FAT  │     │ BITE │     │ DUB  │     │(empty)│       │
+│  │OBESE │     │OVRBIT│     │OVRDUB│     │(empty)│       │
 │  │      │     │      │     │      │     │      │       │
 │  │ 12%  │     │ 10%  │     │  8%  │     │  0%  │       │
 │  └──────┘     └──────┘     └──────┘     └──────┘       │
@@ -408,7 +408,7 @@ The mega-tool has 4 engine slots. Each slot can hold any registered engine or re
 |------|--------|
 | Max 4 active | Hard limit. UI greys out the "add engine" button at 4. |
 | Empty = 0 CPU | No rendering, no parameter snapshotting, no coupling processing. |
-| Any engine in any slot | Slot A can hold ONSET, Slot D can hold FAT. Order affects chain routing only. |
+| Any engine in any slot | Slot A can hold ONSET, Slot D can hold OBESE. Order affects chain routing only. |
 | No duplicate engines | Each engine type can occupy at most one slot. |
 | Slot order = chain order | In Chain routing mode, audio flows A→B→C→D. |
 
@@ -771,7 +771,7 @@ private:
 
             case CouplingType::SendToFX:
             {
-                // Direct audio send to DUB engine's FX input.
+                // Direct audio send to OVERDUB engine's FX input.
                 // Scaled by amount (acts as send level).
                 return srcSample * amount;
             }
@@ -795,7 +795,7 @@ private:
 
         std::vector<CouplingRoute> routes;
 
-        // SNAP + MORPH (OddfeliX/OddOscar legacy coupling)
+        // ODDFELIX + ODDOSCAR (OddfeliX/OddOscar legacy coupling)
         if ((idA == "snap" && idB == "morph")
          || (idA == "morph" && idB == "snap"))
         {
@@ -810,20 +810,20 @@ private:
             routes.push_back({ CouplingType::AmpToFilter, 0.15f,
                                true, true, false });
         }
-        // FAT + BITE
+        // OBESE + OVERBITE
         else if ((idA == "fat" && idB == "bite")
               || (idA == "bite" && idB == "fat"))
         {
             routes.push_back({ CouplingType::FilterToFilter, 0.0f,
                                false, true, false }); // chain mode default off
         }
-        // Any + DUB
+        // Any + OVERDUB
         else if (idA == "dub" || idB == "dub")
         {
             routes.push_back({ CouplingType::SendToFX, 0.0f,
                                false, true, false }); // user-activated
         }
-        // DRIFT + any
+        // ODYSSEY + any
         else if (idA == "drift" || idB == "drift")
         {
             routes.push_back({ CouplingType::LFOToPitch, 0.10f,
@@ -979,7 +979,7 @@ Slot A ─→ Slot B's filter/character ─→ Slot C's FX chain ─→ Slot D �
 ```
 
 - **CPU cost:** Moderate (engines process sequentially, not in parallel).
-- **Use case:** FAT → BITE (13-osc width through character stages). Any source → DUB (through tape delay + spring reverb).
+- **Use case:** OBESE → OVERBITE (13-osc width through character stages). Any source → OVERDUB (through tape delay + spring reverb).
 - **Constraint:** Per-sample rendering only (block-level coupling is incompatible with chaining). Chain order = slot order (A→B→C→D). Empty slots are skipped.
 
 **Chain mode requires an additional interface method:**
@@ -1419,12 +1419,12 @@ Every parameter in the mega-tool follows this pattern:
 
 | Prefix | Engine | Example |
 |--------|--------|---------|
-| `fat` | FAT (XObese) | `fat_mojo`, `fat_morphPosition`, `fat_filterCutoff` |
-| `bite` | BITE (XOppossum) | `bite_belly`, `bite_gnash`, `bite_filterMode` |
-| `snap` | SNAP (OddfeliX/OddOscar EngX) | `snap_attack`, `snap_filterCutoff`, `snap_decay` |
-| `morph` | MORPH (OddfeliX/OddOscar EngO) | `morph_position`, `morph_bloom`, `morph_filterCutoff` |
-| `dub` | DUB (XOverdub) | `dub_sendAmount`, `dub_delayTime`, `dub_delayFeedback` |
-| `drift` | DRIFT (XOdyssey) | `drift_journey`, `drift_shimmer`, `drift_formantVowel` |
+| `fat` | OBESE (XObese) | `fat_mojo`, `fat_morphPosition`, `fat_filterCutoff` |
+| `bite` | OVERBITE (XOverbite) | `bite_belly`, `bite_gnash`, `bite_filterMode` |
+| `snap` | ODDFELIX (OddfeliX/OddOscar EngX) | `snap_attack`, `snap_filterCutoff`, `snap_decay` |
+| `morph` | ODDOSCAR (OddfeliX/OddOscar EngO) | `morph_position`, `morph_bloom`, `morph_filterCutoff` |
+| `dub` | OVERDUB (XOverdub) | `dub_sendAmount`, `dub_delayTime`, `dub_delayFeedback` |
+| `drift` | ODYSSEY (XOdyssey) | `drift_journey`, `drift_shimmer`, `drift_formantVowel` |
 | `onset` | ONSET (XOnset) | `onset_v1Blend`, `onset_v1Pitch`, `onset_v1Decay` |
 
 ### 7.2 Coupling Parameters
@@ -1483,12 +1483,12 @@ master_{parameterName}
 
 | Category | Count | Notes |
 |----------|-------|-------|
-| Engine FAT | 45 | Prefixed `fat_` |
-| Engine BITE | 122 | Prefixed `bite_` |
-| Engine SNAP | 26 | Prefixed `snap_` |
-| Engine MORPH | 26 | Prefixed `morph_` |
-| Engine DUB | 38 | Prefixed `dub_` |
-| Engine DRIFT | 130 | Prefixed `drift_` |
+| Engine OBESE | 45 | Prefixed `fat_` |
+| Engine OVERBITE | 122 | Prefixed `bite_` |
+| Engine ODDFELIX | 26 | Prefixed `snap_` |
+| Engine ODDOSCAR | 26 | Prefixed `morph_` |
+| Engine OVERDUB | 38 | Prefixed `dub_` |
+| Engine ODYSSEY | 130 | Prefixed `drift_` |
 | Engine ONSET | 110 | Prefixed `onset_` |
 | **Subtotal engines** | **497** | Only active engines consume APVTS memory |
 | Coupling (6 pairs × 12 routes + 6 masters) | 78 | `coupling_*` |
@@ -1509,29 +1509,29 @@ These are the pre-wired connections active by default for every common engine pa
 
 | Pair | Default Route | Amount | Direction | Musical Purpose |
 |------|--------------|--------|-----------|-----------------|
-| **SNAP + MORPH** | AmpToFilter | 30% | SNAP→MORPH | Dub pump — percussive hits duck pad filter |
-| **SNAP + MORPH** | LFOToPitch | 15% | MORPH→SNAP | Organic drift — pad LFO wobbles pluck pitch |
-| **ONSET + MORPH** | AmpToFilter | 15% | ONSET→MORPH | Kick pumps pad brightness |
-| **ONSET + SNAP** | AmpToFilter | 10% | ONSET→SNAP | Rhythmic filtering on plucks |
-| **ONSET + DRIFT** | LFOToPitch | 10% | DRIFT→ONSET | Pad LFO subtly detunes drums |
-| **ONSET + DUB** | SendToFX | 0% | ONSET→DUB | User-activated: drums through dub FX |
-| **FAT + BITE** | FilterToFilter | 0% | FAT→BITE | User-activated: width through character (chain mode) |
-| **FAT + MORPH** | EnvToMorph | 15% | FAT→MORPH | FAT dynamics drive pad morph position |
-| **FAT + DUB** | SendToFX | 0% | FAT→DUB | User-activated: massive osc through tape delay |
-| **BITE + ONSET** | AmpToFilter | 15% | BITE→ONSET | Bass hits pump drum filter — locked groove |
-| **BITE + DUB** | SendToFX | 0% | BITE→DUB | User-activated: bass through dub FX |
-| **MORPH + DUB** | EnvToMorph | 15% | MORPH→DUB | Pad dynamics drive delay send level |
-| **MORPH + DRIFT** | LFOToPitch | 10% | Bidirectional | Both pads drift against each other |
-| **DRIFT + FAT** | EnvToMorph | 15% | DRIFT→FAT | Journey drives FAT morph position |
-| **DRIFT + DUB** | SendToFX | 0% | DRIFT→DUB | User-activated: psychedelic pads through tape delay |
-| **SNAP + DUB** | SendToFX | 0% | SNAP→DUB | User-activated: percussive hits through dub FX |
-| **Any + DUB** | SendToFX | 0% | Any→DUB | All DUB sends start at 0 — user activates the "throw" |
+| **ODDFELIX + ODDOSCAR** | AmpToFilter | 30% | ODDFELIX→ODDOSCAR | Dub pump — percussive hits duck pad filter |
+| **ODDFELIX + ODDOSCAR** | LFOToPitch | 15% | ODDOSCAR→ODDFELIX | Organic drift — pad LFO wobbles pluck pitch |
+| **ONSET + ODDOSCAR** | AmpToFilter | 15% | ONSET→ODDOSCAR | Kick pumps pad brightness |
+| **ONSET + ODDFELIX** | AmpToFilter | 10% | ONSET→ODDFELIX | Rhythmic filtering on plucks |
+| **ONSET + ODYSSEY** | LFOToPitch | 10% | ODYSSEY→ONSET | Pad LFO subtly detunes drums |
+| **ONSET + OVERDUB** | SendToFX | 0% | ONSET→OVERDUB | User-activated: drums through dub FX |
+| **OBESE + OVERBITE** | FilterToFilter | 0% | OBESE→OVERBITE | User-activated: width through character (chain mode) |
+| **OBESE + ODDOSCAR** | EnvToMorph | 15% | OBESE→ODDOSCAR | OBESE dynamics drive pad morph position |
+| **OBESE + OVERDUB** | SendToFX | 0% | OBESE→OVERDUB | User-activated: massive osc through tape delay |
+| **OVERBITE + ONSET** | AmpToFilter | 15% | OVERBITE→ONSET | Bass hits pump drum filter — locked groove |
+| **OVERBITE + OVERDUB** | SendToFX | 0% | OVERBITE→OVERDUB | User-activated: bass through dub FX |
+| **ODDOSCAR + OVERDUB** | EnvToMorph | 15% | ODDOSCAR→OVERDUB | Pad dynamics drive delay send level |
+| **ODDOSCAR + ODYSSEY** | LFOToPitch | 10% | Bidirectional | Both pads drift against each other |
+| **ODYSSEY + OBESE** | EnvToMorph | 15% | ODYSSEY→OBESE | Journey drives OBESE morph position |
+| **ODYSSEY + OVERDUB** | SendToFX | 0% | ODYSSEY→OVERDUB | User-activated: psychedelic pads through tape delay |
+| **ODDFELIX + OVERDUB** | SendToFX | 0% | ODDFELIX→OVERDUB | User-activated: percussive hits through dub FX |
+| **Any + OVERDUB** | SendToFX | 0% | Any→OVERDUB | All OVERDUB sends start at 0 — user activates the "throw" |
 
 ### 8.2 Default Route Design Principles
 
-1. **Coupling that adds rhythm is normalled on.** AmpToFilter between percussive and melodic engines (SNAP→MORPH, ONSET→melodic) creates rhythmic pumping that sounds musical immediately.
+1. **Coupling that adds rhythm is normalled on.** AmpToFilter between percussive and melodic engines (ODDFELIX→ODDOSCAR, ONSET→melodic) creates rhythmic pumping that sounds musical immediately.
 
-2. **DUB sends are normalled off.** The DUB engine's send/return FX are a conscious performance decision — the "throw" gesture. Normalling them on would create muddy output. Users activate sends deliberately.
+2. **OVERDUB sends are normalled off.** The OVERDUB engine's send/return FX are a conscious performance decision — the "throw" gesture. Normalling them on would create muddy output. Users activate sends deliberately.
 
 3. **Destructive routes are normalled off.** AudioToRing, AudioToFM, and FilterToFilter (chain mode) produce aggressive, often dissonant results. They are registered as available routes but start at 0%.
 
@@ -1548,7 +1548,7 @@ These are the pre-wired connections active by default for every common engine pa
 Each engine slot is rendered as a panel with labeled input/output jacks. Cable connections are drawn as Bezier curves between jacks. The panel is hidden in Intuitive Mode and revealed in Advanced Mode.
 
 ```
-┌─ SNAP ─────────────────────┐     ┌─ MORPH ────────────────────┐
+┌─ ODDFELIX ──────────────────┐     ┌─ ODDOSCAR ─────────────────┐
 │ ┌──────────────────────────┐│     │┌──────────────────────────┐│
 │ │       Terracotta         ││     ││         Teal             ││
 │ │       Module Panel       ││     ││       Module Panel       ││
@@ -1640,11 +1640,11 @@ Legend:
 ┌───────────────────────────────────────────────────────┐
 │  ┌─────────────────┐  ┌─────────────────────────────┐│
 │  │  Engine Selector │  │        Preset Browser       ││
-│  │  [SNAP ▼] + [MORPH ▼]  │  "Dub Pressure"         ││
+│  │  [ODDFELIX ▼] + [ODDOSCAR ▼]  │  "Dub Pressure" ││
 │  └─────────────────┘  └─────────────────────────────┘│
 │                                                       │
 │  ┌──── Macros ───────────────────────────────────────┐│
-│  │  [SNAP]  [BLOOM]  [BLEND]  [FX MIX]             ││
+│  │  [ODDFELIX]  [BLOOM]  [BLEND]  [FX MIX]         ││
 │  │   ◉        ◉        ◉        ◉                  ││
 │  └───────────────────────────────────────────────────┘│
 │                                                       │
@@ -1671,14 +1671,14 @@ Legend:
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │  ┌────┐ ┌────┐ ┌────┐ ┌────┐                                  │
-│  │SNAP│ │MORPH│ │DUB │ │ +  │   Engine Slots (click to edit)   │
+│  │ODFX│ │ODOC│ │OVDB│ │ +  │   Engine Slots (click to edit)   │
 │  └────┘ └────┘ └────┘ └────┘                                  │
 │                                                                 │
 │  ┌──── Coupling Matrix ────────────────────────────────────────┐│
-│  │           SNAP    MORPH    DUB                              ││
-│  │  SNAP      --     [AB]    [AC]                              ││
-│  │  MORPH    [BA]     --     [BC]                              ││
-│  │  DUB      [CA]    [CB]    --                                ││
+│  │           ODDFELIX ODDOSCAR OVERDUB                         ││
+│  │  ODDFELIX   --     [AB]    [AC]                             ││
+│  │  ODDOSCAR  [BA]     --     [BC]                             ││
+│  │  OVERDUB   [CA]    [CB]    --                               ││
 │  │                                                             ││
 │  │  [AB] AmpToFilter: ◉ 0.30                                  ││
 │  │  [AB] LFOToPitch:  ◉ 0.15                                  ││
@@ -1686,9 +1686,9 @@ Legend:
 │  └─────────────────────────────────────────────────────────────┘│
 │                                                                 │
 │  ┌── Patch Cable Overlay ──┐  ┌── Engine Parameters ──────────┐│
-│  │  [Toggle Cables]        │  │  SNAP: Attack, Decay, Snap... ││
-│  │  [Clear All]            │  │  MORPH: Position, Bloom, Filt.││
-│  │  [Reset Defaults]       │  │  DUB: Send, Delay, Feedback...││
+│  │  [Toggle Cables]        │  │  ODDFELIX: Attack, Decay...   ││
+│  │  [Clear All]            │  │  ODDOSCAR: Position, Bloom... ││
+│  │  [Reset Defaults]       │  │  OVERDUB: Send, Delay, Fb... ││
 │  └─────────────────────────┘  └────────────────────────────────┘│
 │                                                                 │
 │  ┌── Routing ─┐  ┌── PlaySurface ──────────────────────────────┐│
@@ -1716,7 +1716,7 @@ The user's mode preference is stored per-preset. A preset designed in Advanced M
 | Mode | Behavior | Use Case |
 |------|----------|----------|
 | **All** | All engines receive all MIDI events | Default. Play the same notes on all engines for layered sound. |
-| **Split Keyboard** | Each engine assigned a key zone (e.g., BITE below C3, SNAP above C3) | Bass + lead setup. Live performance split. |
+| **Split Keyboard** | Each engine assigned a key zone (e.g., OVERBITE below C3, ODDFELIX above C3) | Bass + lead setup. Live performance split. |
 | **Channel-Based** | Each engine listens on a specific MIDI channel (1-4) | External sequencer driving different engines independently. |
 
 ### 11.2 MIDI Split Implementation
@@ -1823,7 +1823,7 @@ Multi-engine presets use the `.xomega` JSON format defined in the dev strategy d
     "ui_mode": "intuitive",
     "engines": [
         {
-            "engine_id": "snap",
+            "engine_id": "OddfeliX",
             "slot": 0,
             "active": true,
             "max_voices": 8,
@@ -1835,7 +1835,7 @@ Multi-engine presets use the `.xomega` JSON format defined in the dev strategy d
             }
         },
         {
-            "engine_id": "morph",
+            "engine_id": "OddOscar",
             "slot": 1,
             "active": true,
             "max_voices": 16,
@@ -1918,7 +1918,7 @@ Presets from standalone XO_OX instruments (`.xocmeta`, `.xopmeta`, etc.) are imp
     "preset_name": "Imported: Terracotta Hit",
     "engines": [
         {
-            "engine_id": "snap",
+            "engine_id": "OddfeliX",
             "slot": 0,
             "active": true,
             "parameters": { /* mapped from .xocmeta with prefix */ }
@@ -1943,8 +1943,8 @@ When multiple engines are active, the hub automatically reduces per-engine voice
 |---------------|----------------------|----------------|-----------|
 | 1 | Full (per engine) | Full | 0% |
 | 2 | Full | Full | 0% |
-| 3 | FAT: 5, BITE: 16, SNAP: 8, MORPH: 16, DUB: 8, DRIFT: 24, ONSET: 8 | FAT: 3, BITE: 8, SNAP: 6, MORPH: 8, DUB: 6, DRIFT: 12, ONSET: 8 | ~40-50% |
-| 4 | (as above) | FAT: 2, BITE: 4, SNAP: 4, MORPH: 4, DUB: 4, DRIFT: 8, ONSET: 8 | ~50-67% |
+| 3 | OBESE: 5, OVERBITE: 16, ODDFELIX: 8, ODDOSCAR: 16, OVERDUB: 8, ODYSSEY: 24, ONSET: 8 | OBESE: 3, OVERBITE: 8, ODDFELIX: 6, ODDOSCAR: 8, OVERDUB: 6, ODYSSEY: 12, ONSET: 8 | ~40-50% |
+| 4 | (as above) | OBESE: 2, OVERBITE: 4, ODDFELIX: 4, ODDOSCAR: 4, OVERDUB: 4, ODYSSEY: 8, ONSET: 8 | ~50-67% |
 
 ONSET always retains 8 voices because drum engines need dedicated per-voice playback. Other engines reduce proportionally.
 
@@ -1976,14 +1976,14 @@ The Advanced Mode UI displays a real-time CPU meter showing:
 
 ```
 ┌── CPU Monitor ──────────────────────────────┐
-│  SNAP:     [████░░░░░░░░]   8%              │
-│  MORPH:    [██████░░░░░░]  12%              │
+│  ODDFELIX: [████░░░░░░░░]   8%              │
+│  ODDOSCAR: [██████░░░░░░]  12%              │
 │  Coupling: [██░░░░░░░░░░]   2%              │
 │  FX:       [████░░░░░░░░]   6%              │
 │  ─────────────────────────────              │
 │  Total:    [████████░░░░]  28%   OK         │
 │                                              │
-│  Voice Count: SNAP 5/8  MORPH 12/16         │
+│  Voice Count: ODDFELIX 5/8  ODDOSCAR 12/16  │
 └──────────────────────────────────────────────┘
 ```
 
@@ -2024,7 +2024,7 @@ struct FatParamSnapshot
     float filterCutoff;
     float filterRes;
     float attack, decay, sustain, release;
-    // ... all 45 FAT parameters
+    // ... all 45 OBESE parameters
 };
 
 /// In the engine's snapshotParameters() method:

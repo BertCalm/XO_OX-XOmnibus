@@ -21,7 +21,7 @@
 
 **Personality in 3 words:** Emergent, collective, oceanic.
 
-**Gallery gap filled:** FAT stacks oscillators at fixed detuning intervals — deterministic architecture, predictable result. OPAL scatters grains on a schedule — top-down decomposition of existing sound. OCEANIC's particles are autonomous agents whose relationships evolve continuously. The sound is an emergent property of collective behavior — it cannot be predicted from any individual particle's state, only from the statistical dynamics of the whole flock.
+**Gallery gap filled:** OBESE stacks oscillators at fixed detuning intervals — deterministic architecture, predictable result. OPAL scatters grains on a schedule — top-down decomposition of existing sound. OCEANIC's particles are autonomous agents whose relationships evolve continuously. The sound is an emergent property of collective behavior — it cannot be predicted from any individual particle's state, only from the statistical dynamics of the whole flock.
 
 ---
 

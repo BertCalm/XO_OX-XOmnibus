@@ -254,12 +254,12 @@ void applyCouplingInput(CouplingType type, float amount,
 ## 6. Voice Architecture
 
 - **Max voices:** 4
-- **Voice stealing:** Oldest voice (LRU), consistent with SNAP/DUB
+- **Voice stealing:** Oldest voice (LRU), consistent with ODDFELIX/OVERDUB
 - **Legato mode:** Yes — in legato, a new note inherits the existing organism's Free Energy Pool (the organism "migrates" rather than dying and restarting)
 - **Note-on behavior:** New voice starts with `freeEnergy = 0.0`. The organism must metabolize input before producing full harmonics. Velocity maps to initial `catalystDrive` boost (higher velocity = faster initial bloom).
 - **Note-off behavior:** Metabolic rate increases 4x on release (organism "starves"), causing natural harmonic thinning and decay. Damping Coefficient controls how long this takes.
 - **Per-voice state:** Each voice maintains independent `freeEnergy`, mode states (32 x/v pairs), and ingestion history. Voices do NOT share metabolic state.
-- **Crossfade on steal:** 5ms crossfade (consistent with SNAP engine).
+- **Crossfade on steal:** 5ms crossfade (consistent with ODDFELIX engine).
 
 ---
 
@@ -492,10 +492,10 @@ VFE = precision_weighted_surprise + complexity_penalty
 
 | Partner Engine | Coupling Route | Musical Effect |
 |---|---|---|
-| SNAP | SNAP → Organon via `AudioToFM` | Percussive hits "feed" the organism bursts of energy, creating rhythmic harmonic blooms |
-| MORPH | MORPH → Organon via `AudioToWavetable` | Lush wavetable pads become the "diet" — Organon reconstructs them as metabolized harmonics |
-| DRIFT | DRIFT → Organon via `EnvToMorph` | Drift's long envelopes sweep Organon's Isotope Balance — spectral co-evolution |
-| DUB | DUB → Organon via `AudioToFM` | Dub's delay tails become recycled nutrients — feedback ecology |
+| ODDFELIX | ODDFELIX → Organon via `AudioToFM` | Percussive hits "feed" the organism bursts of energy, creating rhythmic harmonic blooms |
+| ODDOSCAR | ODDOSCAR → Organon via `AudioToWavetable` | Lush wavetable pads become the "diet" — Organon reconstructs them as metabolized harmonics |
+| ODYSSEY | ODYSSEY → Organon via `EnvToMorph` | Odyssey's long envelopes sweep Organon's Isotope Balance — spectral co-evolution |
+| OVERDUB | OVERDUB → Organon via `AudioToFM` | Overdub's delay tails become recycled nutrients — feedback ecology |
 | ONSET | ONSET → Organon via `AudioToFM` | Drum hits trigger metabolic spikes — organic percussion-to-pad coupling |
 
 ---

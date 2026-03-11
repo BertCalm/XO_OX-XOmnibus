@@ -258,7 +258,7 @@ Every `.xomega` file contains all information needed to reconstruct the sound. N
 | `oddo` | OddOscar | `oddo_` | OddfeliX/OddOscar | ~20 |
 | `dub` | XOverdub | `dub_` | XOverdub | 38 |
 | `fat` | XObese | `fat_` | XObese | 45 |
-| `bite` | XOppossum | `bite_` | XOppossum | 122 |
+| `bite` | XOverbite | `bite_` | XOverbite | 122 |
 | `drift` | XOdyssey | `drift_` | XOdyssey | ~130 |
 | `bob` | XOblong | `bob_` | XOblong | ~50 |
 | `onset` | XOnset | `onset_` (alias: `perc_`) | XOnset | ~110 |
@@ -384,7 +384,7 @@ Migration is **read-only wrapping**, never format conversion. The original prese
 | `oPolyphony` | `oddo` | `oddo_polyphony` | |
 | `couplingAmount` | coupling | Stored in `coupling.pairs[0].amount` | Maps to the X-to-O coupling pair |
 | `masterBalance` | top-level | Stored as engine level ratio | Negative = X-heavy, positive = O-heavy |
-| `macro1` | top-level | Mapped to macro_labels context | Snap + Morph |
+| `macro1` | top-level | Mapped to macro_labels context | OddfeliX + OddOscar |
 | `macro2` | top-level | Mapped to macro_labels context | Bloom |
 | `macro3` | top-level | Mapped to macro_labels context | Coupling |
 | `macro4` | top-level | Mapped to macro_labels context | Delay + Reverb |
@@ -535,7 +535,7 @@ If `couplingAmount` is 0, the `coupling` field is omitted.
 | Rhythmic | Grounded |
 | Init | Grounded |
 
-#### XOppossum (JSON with schema_version) to .xomega
+#### XOverbite (JSON with schema_version) to .xomega
 
 **Source format:** JSON with `schema_version`, 122 parameters.
 
@@ -563,7 +563,7 @@ If `couplingAmount` is 0, the `coupling` field is omitted.
 | `lfo1Depth` | `bite_lfo1Depth` | |
 | `masterLevel` | `bite_masterLevel` | |
 
-**Mood mapping:** XOppossum organizes by character spectrum (Plush to Aggressive). Map based on sonic role:
+**Mood mapping:** XOverbite organizes by character spectrum (Plush to Aggressive). Map based on sonic role:
 - Bass-forward presets -> `"Grounded"`
 - Pad/texture presets -> `"Floating"`
 - Aggressive/bitey presets -> `"Broken"` or `"Sharp"`
@@ -671,7 +671,7 @@ Location: `~/Documents/GitHub/OddfeliX/OddOscar/tools/preset_migrator/migrate.py
 Usage: python migrate.py --source <path> --format <xocmeta|json> --engine <module_id> --output <dir>
 ```
 
-Handles: `.xocmeta` (OddfeliX/OddOscar), JSON (XOverdub, XObese, XOppossum, XOdyssey)
+Handles: `.xocmeta` (OddfeliX/OddOscar), JSON (XOverdub, XObese, XOverbite, XOdyssey)
 
 **Path B: C++ migration utility** (for JUCE binary state)
 
@@ -885,7 +885,7 @@ The `tags` array can contain any lowercase alphanumeric string (plus hyphens). T
 #### Top Bar: Search & Filters
 
 - **Search field:** Full-text search across name, description, tags, author. Results ranked by relevance. Minimum 2 characters to trigger search.
-- **Engine dropdown:** Filter by module ID. Options: All, OddfeliX/OddOscar, XOverdub, XObese, XOppossum, XOdyssey, XOblong, XOnset, Multi-Engine
+- **Engine dropdown:** Filter by module ID. Options: All, OddfeliX/OddOscar, XOverdub, XObese, XOverbite, XOdyssey, XOblong, XOnset, Multi-Engine
 - **Vibe dropdown:** Filter by vibe tag. Options: All, plus all 15 vibe values
 - **Type dropdown:** Filter by instrument_type. Options: All, plus all 12 type values
 - **Complexity dropdown:** Filter by complexity tag. Options: All, Single-Engine, Dual-Engine, Multi-Engine, Coupled
@@ -1101,7 +1101,7 @@ These categories exist ONLY through engine chaining and coupling. They represent
 |----------|-----------------|----------|-------------|-----------------|
 | **Pumped Pads** | Any melodic + `dub` | Amplitude sidechain from `dub` send/return | Melodic engine breathes with dub delay pump. The classic dub pad. | "Dub Pressure", "Breathing Reverb Pad" |
 | **Morphing Drums** | `onset` + any melodic | `onset` amplitude -> melodic filter cutoff | Drum hits sculpt the pad's tonal character. Each kick brightens or darkens the pad. | "Neural Rhythm", "Membrane Choir" |
-| **Fat Bite Bass** | `fat` + `bite` | `fat` 13-osc width feeds `bite` character stages | Massive unison width from XObese processed through XOppossum's Belly/Bite saturation. Sub-weight meets aggressive harmonics. | "Fat Bite Bass", "Obese Teeth" |
+| **Fat Bite Bass** | `fat` + `bite` | `fat` 13-osc width feeds `bite` character stages | Massive unison width from XObese processed through XOverbite's Belly/Bite saturation. Sub-weight meets aggressive harmonics. | "Fat Bite Bass", "Obese Teeth" |
 | **Psychedelic Rhythm** | `drift` + `onset` | `drift` Climax system triggers on `onset` pattern | XOdyssey's JOURNEY macro blooms on drum accents. The Climax effect is rhythmically triggered by percussion. | "Climax on the Beat", "Alien Drum Ritual" |
 | **Dub Techno** | `oddx` (or `onset`) + `dub` | Percussive trigger -> delay feedback boost | Short percussive hits feed into XOverdub's tape delay at high feedback. Classic dub techno chord stab into infinite echo. | "Dub Techno Machine", "Infinite Chord" |
 | **Alien Orchestra** | `drift` + any other + coupling | High bidirectional coupling between `drift` and target | XOdyssey's psychedelic modulation infects the target engine's parameters. Both engines drift in tandem. | "Third Mind Drift", "Alien Conversation" |
@@ -1274,7 +1274,7 @@ When exporting a multi-engine (coupled) preset to XPN:
 │   │   ├── Sharp/
 │   │   ├── Floating/
 │   │   └── Broken/
-│   ├── bite/                   # XOppossum presets (single-engine)
+│   ├── bite/                   # XOverbite presets (single-engine)
 │   │   ├── Grounded/
 │   │   ├── Sharp/
 │   │   ├── Floating/
@@ -1899,7 +1899,7 @@ On other platforms, fall back to periodic polling (every 5 seconds) or manual "R
 - [ ] Map `couplingAmount` to `coupling.pairs[0]`
 - [ ] Map `category` to `mood` (Grounded, Floating, Entangled, Deep Space -> Ritual)
 - [ ] Preserve existing `tags`, `description`, `engineBalance`, `couplingIntensity`
-- [ ] Set `macro_labels` to `["Snap+Morph", "Bloom", "Coupling", "Delay+Reverb"]`
+- [ ] Set `macro_labels` to `["OddfeliX+OddOscar", "Bloom", "Coupling", "Delay+Reverb"]`
 - [ ] Validate round-trip: load migrated preset, compare parameter values against original
 - [ ] Audio null test: render 4 bars, diff against standalone render
 
@@ -1924,7 +1924,7 @@ On other platforms, fall back to periodic polling (every 5 seconds) or manual "R
 - [ ] Note: XObese is a sampled instrument -- verify parameter semantics apply
 - [ ] Validate and test
 
-### XOppossum (~15 presets)
+### XOverbite (~15 presets)
 
 - [ ] Parse JSON preset files with `schema_version`
 - [ ] Wrap each as single-engine `.xomega` with module `"bite"`
@@ -1970,7 +1970,7 @@ On other platforms, fall back to periodic polling (every 5 seconds) or manual "R
 | OddfeliX/OddOscar | 114 | -- | 114 |
 | XOverdub | 40 | -- | 40 |
 | XObese | 52 | -- | 52 |
-| XOppossum | ~15 | -- | ~15 |
+| XOverbite | ~15 | -- | ~15 |
 | XOdyssey | 198 | -- | 198 |
 | XOblong | 167 | -- | 167 |
 | XOnset (planned) | 85 | -- | 85 |

@@ -735,7 +735,7 @@ float getSampleForCoupling(int channel, int sampleIndex) const override
 }
 ```
 
-Uses `outputCacheL/R` vector pattern (like SNAP), written per-sample in the render loop. Enables tight per-sample coupling for AudioToFM and AudioToRing routes.
+Uses `outputCacheL/R` vector pattern (like ODDFELIX), written per-sample in the render loop. Enables tight per-sample coupling for AudioToFM and AudioToRing routes.
 
 ---
 
@@ -1006,7 +1006,7 @@ Trivial. Well within any platform's constraints.
 
 ## 13. Voice Stealing
 
-Oldest-note stealing with 5ms crossfade (matching SNAP's pattern):
+Oldest-note stealing with 5ms crossfade (matching ODDFELIX's pattern):
 
 ```cpp
 int findFreeVoice()
@@ -1112,7 +1112,7 @@ Output (stereo)
 inline const juce::StringArray validEngineNames {
     "OddfeliX/OddOscar", "XOverdub", "XOdyssey", "XOblong", "XObese", "XOnset",
     "Overworld", "Opal", "Orbital", "XOrbital",  // ← ADD
-    "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Onset"
+    "OddfeliX", "OddOscar", "Overdub", "Odyssey", "Oblong", "Obese", "Overbite", "Onset"
 };
 ```
 

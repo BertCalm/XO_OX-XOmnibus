@@ -11,29 +11,31 @@
 #include "Engines/Opal/OpalEngine.h"
 #include "Engines/Organon/OrganonEngine.h"
 
-// Register engines with their canonical IDs (matching getEngineId() return values)
-static bool registered_Snap = xomnibus::EngineRegistry::instance().registerEngine(
-    "Snap", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+// Register engines with their canonical IDs (matching getEngineId() return values).
+// These MUST match the string returned by each engine's getEngineId().
+// Legacy names ("Snap", "Morph", etc.) are resolved by resolveEngineAlias() in PresetManager.h.
+static bool registered_OddfeliX = xomnibus::EngineRegistry::instance().registerEngine(
+    "OddfeliX", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::SnapEngine>();
     });
-static bool registered_Morph = xomnibus::EngineRegistry::instance().registerEngine(
-    "Morph", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+static bool registered_OddOscar = xomnibus::EngineRegistry::instance().registerEngine(
+    "OddOscar", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::MorphEngine>();
     });
-static bool registered_Dub = xomnibus::EngineRegistry::instance().registerEngine(
-    "Dub", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+static bool registered_Overdub = xomnibus::EngineRegistry::instance().registerEngine(
+    "Overdub", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::DubEngine>();
     });
-static bool registered_Drift = xomnibus::EngineRegistry::instance().registerEngine(
-    "Drift", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+static bool registered_Odyssey = xomnibus::EngineRegistry::instance().registerEngine(
+    "Odyssey", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::DriftEngine>();
     });
-static bool registered_Bob = xomnibus::EngineRegistry::instance().registerEngine(
-    "Bob", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+static bool registered_Oblong = xomnibus::EngineRegistry::instance().registerEngine(
+    "Oblong", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::BobEngine>();
     });
-static bool registered_Fat = xomnibus::EngineRegistry::instance().registerEngine(
-    "Fat", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+static bool registered_Obese = xomnibus::EngineRegistry::instance().registerEngine(
+    "Obese", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::FatEngine>();
     });
 static bool registered_Onset = xomnibus::EngineRegistry::instance().registerEngine(

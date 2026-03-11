@@ -39,6 +39,12 @@ static void reportTest(const char* name, bool passed)
 
 //==============================================================================
 // Valid test JSON strings
+//
+// NOTE: These JSON presets intentionally use legacy engine names (Snap, Morph,
+// Dub, etc.) to verify backward compatibility. The PresetManager's
+// resolveEngineAlias() must resolve these to canonical O-prefix names
+// (OddfeliX, OddOscar, Overdub, etc.) on load. Do NOT update the engine
+// names inside these JSON strings.
 //==============================================================================
 
 static const char* kValidPresetJSON = R"({
@@ -110,7 +116,7 @@ static void testParsing()
             const auto& p = pm.getCurrentPreset();
             reportTest("Parse: name correct", p.name == "Test Preset");
             reportTest("Parse: mood correct", p.mood == "Foundation");
-            reportTest("Parse: engines correct", p.engines.size() == 1 && p.engines[0] == "Snap");
+            reportTest("Parse: engines correct", p.engines.size() == 1 && p.engines[0] == "OddfeliX");
             reportTest("Parse: author correct", p.author == "TestAuthor");
             reportTest("Parse: version correct", p.version == "1.0.0");
             reportTest("Parse: description correct", p.description == "A test preset for unit testing.");
@@ -124,12 +130,12 @@ static void testParsing()
             reportTest("Parse: DNA density", std::abs(p.dna.density - 0.8f) < 0.01f);
             reportTest("Parse: DNA space", std::abs(p.dna.space - 0.2f) < 0.01f);
             reportTest("Parse: DNA aggression", std::abs(p.dna.aggression - 0.1f) < 0.01f);
-            reportTest("Parse: parameters has Snap engine",
-                       p.parametersByEngine.count("Snap") > 0);
+            reportTest("Parse: parameters has OddfeliX engine",
+                       p.parametersByEngine.count("OddfeliX") > 0);
             reportTest("Parse: coupling pairs correct",
                        p.couplingPairs.size() == 1
-                       && p.couplingPairs[0].engineA == "Snap"
-                       && p.couplingPairs[0].engineB == "Morph"
+                       && p.couplingPairs[0].engineA == "OddfeliX"
+                       && p.couplingPairs[0].engineB == "OddOscar"
                        && p.couplingPairs[0].type == "Amp->Filter"
                        && std::abs(p.couplingPairs[0].amount - 0.6f) < 0.01f);
         }
@@ -273,7 +279,7 @@ static void testValidation()
         {
             const auto& engines = pm.getCurrentPreset().engines;
             bool noInvalid = !engines.contains("NotAnEngine");
-            bool hasValid = engines.contains("Snap") && engines.contains("Morph");
+            bool hasValid = engines.contains("OddfeliX") && engines.contains("OddOscar");
             reportTest("Invalid engine names: filtered out", noInvalid && hasValid);
         }
     }

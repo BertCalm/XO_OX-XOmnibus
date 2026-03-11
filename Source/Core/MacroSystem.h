@@ -12,7 +12,7 @@ namespace xomnibus {
 // The `inverted` flag flips the mapping so macro-at-max yields minValue.
 //
 struct MacroTarget {
-    juce::String engineId;           // Which engine this targets (e.g., "Snap", "Dub")
+    juce::String engineId;           // Which engine this targets (e.g., "OddfeliX", "Overdub")
     juce::String parameterId;        // The APVTS parameter to modulate
     float minValue = 0.0f;           // Macro at 0 → this value
     float maxValue = 1.0f;           // Macro at 1 → this value
@@ -36,7 +36,7 @@ struct MacroTarget {
 //
 // Usage:
 //   MacroSystem macros(apvts);
-//   macros.setTargets(0, { {"Snap", "snap_morphPosition", 0.0f, 1.0f} });
+//   macros.setTargets(0, { {"OddfeliX", "snap_morphPosition", 0.0f, 1.0f} });
 //   // In processBlock:
 //   macros.processBlock();
 //
@@ -246,7 +246,7 @@ public:
     // macroTargetsVar: JSON array of target objects (from "macroTargets" in .xometa)
     //
     // Each target object in the JSON array:
-    //   { "macro": 1, "engineId": "Snap", "parameterId": "snap_morph",
+    //   { "macro": 1, "engineId": "OddfeliX", "parameterId": "snap_morph",
     //     "min": 0.0, "max": 1.0, "inverted": false }
     //
     void loadFromPreset(const juce::StringArray& macroLabels,

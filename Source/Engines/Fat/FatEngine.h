@@ -1,6 +1,6 @@
 #pragma once
 //==============================================================================
-// FatEngine — FAT multi-oscillator synth adapted from XObese.
+// FatEngine — OBESE multi-oscillator synth adapted from XObese.
 //
 // 13 oscillators per voice: 1 sub + 4 groups of 3 (root, +12st, -12st).
 // Each group → ZDF Ladder Filter → Stereo Pan → Amp Envelope → Output.
