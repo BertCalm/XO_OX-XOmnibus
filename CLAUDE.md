@@ -37,17 +37,23 @@ and mutate into sounds impossible with any single synth.
 
 | Short Name | Source Instrument | Accent Color |
 |-----------|------------------|-------------|
-| SNAP | XOddCouple Engine X | Terracotta `#C8553D` |
-| MORPH | XOddCouple Engine O | Teal `#2A9D8F` |
+| SNAP | OddfeliX (feliX the neon tetra) | Neon Tetra Blue `#00A6D6` |
+| MORPH | OddOscar (Oscar the axolotl) | Axolotl Gill Pink `#E8839B` |
 | DUB | XOverdub | Olive `#6B7B3A` |
 | DRIFT | XOdyssey | Violet `#7B2D8B` |
-| BOB | XOblongBob | Amber `#E9A84A` |
+| BOB | XOblong | Amber `#E9A84A` |
 | FAT | XObese | Hot Pink `#FF1493` |
 | ONSET | XOnset | Electric Blue `#0066FF` |
 | OVERWORLD | XOverworld | Neon Green `#39FF14` |
 | OPAL | XOpal | Lavender `#A78BFA` |
 | ORGANON | XOrganon | Bioluminescent Cyan `#00CED1` |
 | OUROBOROS | XOuroboros | Strange Attractor Red `#FF2D2D` |
+| OBSIDIAN | XObsidian | Crystal White `#E8E0D8` |
+| ORIGAMI | XOrigami | Vermillion Fold `#E63946` |
+| ORACLE | XOracle | Prophecy Indigo `#4B0082` |
+| OBSCURA | XObscura | Daguerreotype Silver `#8A9BA8` |
+| OCEANIC | XOceanic | Phosphorescent Teal `#00B4A0` |
+| BITE | XObite | Fang White `#F0EDE8` |
 
 ## Key Files
 

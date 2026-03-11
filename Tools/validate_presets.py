@@ -36,7 +36,9 @@ PRESET_DIR = Path(__file__).parent.parent / "Presets" / "XOmnibus"
 VALID_MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "User"}
 
 VALID_ENGINES = {
-    "XOddCouple", "XOverdub", "XOdyssey", "XOblongBob", "XObese", "XOnset",
+    "OddfeliX", "OddOscar", "XOddCouple",  # Legacy alias
+    "XOverdub", "XOdyssey", "XOblong", "XOblongBob",  # Legacy alias
+    "XObese", "XOnset",
     "Overworld", "Opal", "Orbital", "XOrbital",
     "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Onset",
     "Organon", "XOrganon", "Ouroboros", "XOuroboros",

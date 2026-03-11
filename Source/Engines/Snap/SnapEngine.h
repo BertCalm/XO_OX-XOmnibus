@@ -118,7 +118,7 @@ struct SnapVoice
 };
 
 //==============================================================================
-// SnapEngine — Percussive, transient-rich synthesis (from XOddCouple Engine X).
+// SnapEngine — Percussive, transient-rich synthesis (OddfeliX — the neon tetra).
 //
 // Features:
 //   - 3 oscillator modes: Sine+Noise, FM, Karplus-Strong
@@ -505,7 +505,7 @@ public:
     //-- Identity --------------------------------------------------------------
 
     juce::String getEngineId() const override { return "Snap"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFFC8553D); }
+    juce::Colour getAccentColour() const override { return juce::Colour (0xFF00A6D6); } // Neon Tetra Blue
     int getMaxVoices() const override { return kMaxVoices; }
 
 private:

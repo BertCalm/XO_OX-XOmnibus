@@ -998,7 +998,7 @@ struct BobVoice
 };
 
 //==============================================================================
-// BobEngine — Warm, character-driven synthesizer adapted from XOblongBob.
+// BobEngine — Warm, character-driven synthesizer adapted from XOblong.
 //
 // Signal chain per voice:
 //   OscA + OscB (w/ sync + FM) + Texture → SnoutFilter (4 modes w/ character)

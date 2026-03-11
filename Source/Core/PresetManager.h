@@ -10,7 +10,11 @@ namespace xomnibus {
 //==============================================================================
 // Valid engine names — all registered XOmnibus engines.
 inline const juce::StringArray validEngineNames {
-    "XOddCouple", "XOverdub", "XOdyssey", "XOblongBob", "XObese", "XOnset",
+    "OddfeliX", "OddOscar",  // Mascots: feliX the neon tetra, Oscar the axolotl
+    "XOddCouple",             // Legacy alias (original paired instrument)
+    "XOverdub", "XOdyssey", "XOblong",
+    "XOblongBob",             // Legacy alias
+    "XObese", "XOnset",
     "Overworld", "Opal", "Orbital", "XOrbital",
     // Short-form aliases used by engine IDs directly
     "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Onset",

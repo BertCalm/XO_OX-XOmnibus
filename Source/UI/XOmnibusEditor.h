@@ -20,8 +20,8 @@ namespace GalleryColors {
 
     inline juce::Colour accentForEngine(const juce::String& id)
     {
-        if (id == "Snap")      return juce::Colour(0xFFC8553D);
-        if (id == "Morph")     return juce::Colour(0xFF2A9D8F);
+        if (id == "Snap")      return juce::Colour(0xFF00A6D6); // Neon Tetra Blue (OddfeliX)
+        if (id == "Morph")     return juce::Colour(0xFFE8839B); // Axolotl Gill Pink (OddOscar)
         if (id == "Dub")       return juce::Colour(0xFF6B7B3A);
         if (id == "Drift")     return juce::Colour(0xFF7B2D8B);
         if (id == "Bob")       return juce::Colour(0xFFE9A84A);
@@ -1036,8 +1036,8 @@ public:
 
         // Mood accent dot
         static const juce::Colour moodColors[] = {
-            juce::Colour(0xFFC8553D), // Foundation → Snap/Terracotta
-            juce::Colour(0xFF2A9D8F), // Atmosphere → Morph/Teal
+            juce::Colour(0xFF00A6D6), // Foundation → OddfeliX/Neon Tetra Blue
+            juce::Colour(0xFFE8839B), // Atmosphere → OddOscar/Axolotl Gill Pink
             juce::Colour(0xFF7B2D8B), // Entangled  → Drift/Violet
             juce::Colour(0xFF0066FF), // Prism      → Onset/Blue
             juce::Colour(0xFFE9A84A), // Flux       → Bob/Amber

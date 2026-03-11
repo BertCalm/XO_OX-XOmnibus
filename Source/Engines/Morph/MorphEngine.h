@@ -198,7 +198,7 @@ struct MorphVoice
 };
 
 //==============================================================================
-// MorphEngine — Lush, evolving pad synthesis (from XOddCouple Engine O).
+// MorphEngine — Lush, evolving pad synthesis (OddOscar — the axolotl).
 //
 // Features:
 //   - Wavetable morph oscillator: sine → saw → square → noise (0.0–3.0)
@@ -582,7 +582,7 @@ public:
     //-- Identity --------------------------------------------------------------
 
     juce::String getEngineId() const override { return "Morph"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFF2A9D8F); }
+    juce::Colour getAccentColour() const override { return juce::Colour (0xFFE8839B); } // Axolotl Gill Pink
     int getMaxVoices() const override { return kMaxVoices; }
 
 private:
