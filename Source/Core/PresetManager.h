@@ -11,9 +11,11 @@ namespace xomnibus {
 // Valid engine names — all registered XOmnibus engines.
 inline const juce::StringArray validEngineNames {
     "XOddCouple", "XOverdub", "XOdyssey", "XOblongBob", "XObese", "XOnset",
-    "Overworld", "Opal", "Orbital", "XOrbital",
+    "Overworld", "Opal", "Orbital", "XOrbital", "XOpal", "XOpossum",
+    "XOrganon", "XOuroboros",
     // Short-form aliases used by engine IDs directly
-    "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Onset"
+    "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Onset",
+    "Bite", "Organon", "Ouroboros"
 };
 
 // Valid moods — the 6 browsing categories plus User.

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Climax Particles",
+  "mood": "Entangled",
+  "engines": ["XOdyssey", "XOpal"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "DRIFT's Climax bloom granulated mid-bloom. Psychedelic pad frozen into luminous particles.",
+  "tags": ["climax", "particles", "psychedelic", "frozen"],
+  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "created": "2026-03-11",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "XOpal": {
+      "opal_source": 5,
+      "opal_grainSize": 200.0,
+      "opal_density": 18.0,
+      "opal_position": 0.4,
+      "opal_posScatter": 0.25,
+      "opal_pitchScatter": 3.0,
+      "opal_panScatter": 0.7,
+      "opal_window": 1,
+      "opal_freeze": 0.3,
+      "opal_couplingLevel": 0.9,
+      "opal_pulseWidth": 0.5,
+      "opal_detuneCents": 5.0,
+      "opal_filterCutoff": 6000.0,
+      "opal_filterReso": 0.25,
+      "opal_filterMode": 0,
+      "opal_shimmer": 0.25,
+      "opal_frost": 0.1,
+      "opal_smear": 0.35,
+      "opal_reverbMix": 0.5,
+      "opal_ampAttack": 1.0,
+      "opal_ampDecay": 1.0,
+      "opal_ampSustain": 0.75,
+      "opal_ampRelease": 3.0,
+      "opal_masterVolume": 0.75
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {"source": "XOdyssey", "target": "XOpal", "type": "AudioToWavetable", "amount": 0.9}
+    ]
+  },
+  "sequencer": null,
+  "dna": {"brightness": 0.55, "warmth": 0.45, "movement": 0.5, "density": 0.5, "space": 0.7, "aggression": 0.05}
+}

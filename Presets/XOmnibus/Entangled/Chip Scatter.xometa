@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Chip Scatter",
+  "mood": "Entangled",
+  "engines": ["XOverworld", "XOpal"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "NES pulse waves granulated into time clouds. Chip audio scattered through 300ms grains with pitch scatter.",
+  "tags": ["chip", "granular", "scatter", "retro"],
+  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "created": "2026-03-11",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "XOpal": {
+      "opal_source": 5,
+      "opal_grainSize": 300.0,
+      "opal_density": 25.0,
+      "opal_position": 0.5,
+      "opal_posScatter": 0.3,
+      "opal_pitchScatter": 5.0,
+      "opal_panScatter": 0.6,
+      "opal_window": 0,
+      "opal_freeze": 0.0,
+      "opal_couplingLevel": 0.85,
+      "opal_pulseWidth": 0.5,
+      "opal_detuneCents": 7.0,
+      "opal_filterCutoff": 8000.0,
+      "opal_filterReso": 0.2,
+      "opal_filterMode": 0,
+      "opal_shimmer": 0.15,
+      "opal_frost": 0.0,
+      "opal_smear": 0.1,
+      "opal_reverbMix": 0.3,
+      "opal_ampAttack": 0.1,
+      "opal_ampDecay": 0.3,
+      "opal_ampSustain": 0.8,
+      "opal_ampRelease": 1.0,
+      "opal_masterVolume": 0.8
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {"source": "XOverworld", "target": "XOpal", "type": "AudioToWavetable", "amount": 0.85}
+    ]
+  },
+  "sequencer": null,
+  "dna": {"brightness": 0.65, "warmth": 0.2, "movement": 0.6, "density": 0.55, "space": 0.4, "aggression": 0.15}
+}
