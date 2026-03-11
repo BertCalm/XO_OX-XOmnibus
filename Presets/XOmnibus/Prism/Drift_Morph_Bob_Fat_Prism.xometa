@@ -3,10 +3,10 @@
   "name": "Drift_Morph_Bob_Fat_Prism",
   "mood": "Prism",
   "engines": [
-    "Drift",
-    "Morph",
-    "Bob",
-    "Fat"
+    "Odyssey",
+    "OddOscar",
+    "Oblong",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -37,7 +37,7 @@
     "aggression": 0.38
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -77,7 +77,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.72,
       "morph_bloom": 0.78,
       "morph_decay": 2.5,
@@ -91,7 +91,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -134,7 +134,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.88,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.08,
@@ -171,20 +171,20 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Bob",
+        "engineA": "OddfeliX",
+        "engineB": "Oblong",
         "type": "Audio->Ring",
         "amount": 0.38
       },
       {
-        "engineA": "Morph",
-        "engineB": "Drift",
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.3
       },
       {
-        "engineA": "Bob",
-        "engineB": "Fat",
+        "engineA": "Oblong",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.4
       }

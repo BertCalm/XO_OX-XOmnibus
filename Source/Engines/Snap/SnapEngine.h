@@ -504,7 +504,7 @@ public:
 
     //-- Identity --------------------------------------------------------------
 
-    juce::String getEngineId() const override { return "Snap"; }
+    juce::String getEngineId() const override { return "OddfeliX"; }
     juce::Colour getAccentColour() const override { return juce::Colour (0xFF00A6D6); } // Neon Tetra Blue
     int getMaxVoices() const override { return kMaxVoices; }
 

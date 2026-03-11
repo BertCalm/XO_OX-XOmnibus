@@ -17,7 +17,7 @@
   "name": "Wood Grain",
   "mood": "Atmosphere",
   "engines": [
-    "Snap"
+    "OddfeliX"
   ],
   "description": "Organic wooden snap \u2014 knuckle on hollow wood, natural resonance.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.1
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": -7.0,
       "snap_oscShape": 0.35,

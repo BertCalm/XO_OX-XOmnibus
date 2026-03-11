@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Glitch Bounce",
   "mood": "Flux",
-  "engines": ["Fat"],
+  "engines": ["Obese"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Random arp pattern with bitcrusher and square morph. Glitchy, bouncing rhythmic texture.",
@@ -19,7 +19,7 @@
     "aggression": 0.5
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.6,
       "fat_mojo": 0.6,
       "fat_subLevel": 0.0,

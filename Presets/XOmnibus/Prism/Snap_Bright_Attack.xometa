@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Snap Bright Attack",
   "mood": "Prism",
-  "engines": ["Snap"],
+  "engines": ["OddfeliX"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "SNAP at maximum brightness — high filter, sharp transient, no sustain. Pure attack energy as a tonal accent. Plays across the keyboard for metallic pitched hits.",
@@ -19,7 +19,7 @@
     "aggression": 0.65
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_snap": 0.7,
       "snap_decay": 0.2,

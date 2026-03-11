@@ -3,8 +3,8 @@
   "name": "Sidechain Breathe",
   "mood": "Entangled",
   "engines": [
-    "Snap",
-    "Dub"
+    "OddfeliX",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -34,7 +34,7 @@
     "aggression": 0.5
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_snap": 0.75,
       "snap_decay": 0.18,
@@ -46,7 +46,7 @@
       "snap_unison": 0,
       "snap_polyphony": 1
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -88,8 +88,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Dub",
+        "engineA": "OddfeliX",
+        "engineB": "Overdub",
         "type": "Amp->Filter",
         "amount": 0.72
       }

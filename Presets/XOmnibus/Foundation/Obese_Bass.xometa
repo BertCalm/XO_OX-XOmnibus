@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Obese Bass",
   "mood": "Foundation",
-  "engines": ["Fat"],
+  "engines": ["Obese"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Thick mono bass with all 13 oscillators detuned for maximum weight. Driven ladder filter.",
@@ -19,7 +19,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.33,
       "fat_mojo": 0.3,
       "fat_subLevel": 0.7,

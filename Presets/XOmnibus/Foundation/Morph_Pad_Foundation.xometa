@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Morph Pad Foundation",
   "mood": "Foundation",
-  "engines": ["Morph"],
+  "engines": ["OddOscar"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "MORPH's wavetable pad at its most accessible. Medium morph, slow attack, blooming sustain. The starting point for any evolving texture in MORPH.",
@@ -19,7 +19,7 @@
     "aggression": 0.05
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.4,
       "morph_bloom": 0.55,
       "morph_decay": 2.5,

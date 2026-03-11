@@ -3,8 +3,8 @@
   "name": "Snap Choke",
   "mood": "Entangled",
   "engines": [
-    "Snap",
-    "Fat"
+    "OddfeliX",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.6
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 0,
       "snap_snap": 0.8,
       "snap_decay": 0.15,
@@ -47,7 +47,7 @@
       "snap_unison": 0,
       "snap_polyphony": 1
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.35,
       "fat_mojo": 0.5,
       "fat_subLevel": 0.4,
@@ -84,8 +84,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Fat",
+        "engineA": "OddfeliX",
+        "engineB": "Obese",
         "type": "Amp->Choke",
         "amount": 0.8
       }

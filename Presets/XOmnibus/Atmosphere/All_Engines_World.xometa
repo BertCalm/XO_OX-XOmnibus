@@ -3,12 +3,12 @@
   "name": "All_Engines_World",
   "mood": "Atmosphere",
   "engines": [
-    "Snap",
-    "Morph",
-    "Dub",
-    "Drift",
-    "Bob",
-    "Fat"
+    "OddfeliX",
+    "OddOscar",
+    "Overdub",
+    "Odyssey",
+    "Oblong",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -43,7 +43,7 @@
     "aggression": 0.06
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -56,7 +56,7 @@
       "snap_release": 0.1,
       "snap_level": 0.3
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.48,
       "morph_bloom": 0.78,
       "morph_decay": 7.0,
@@ -70,7 +70,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -108,7 +108,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 0
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -148,7 +148,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -191,7 +191,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.38,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.42,
@@ -228,20 +228,20 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Dub",
+        "engineA": "Obese",
+        "engineB": "Overdub",
         "type": "Amp->Filter",
         "amount": 0.18
       },
       {
-        "engineA": "Dub",
-        "engineB": "Bob",
+        "engineA": "Overdub",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.18
       },
       {
-        "engineA": "Bob",
-        "engineB": "Drift",
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.18
       }

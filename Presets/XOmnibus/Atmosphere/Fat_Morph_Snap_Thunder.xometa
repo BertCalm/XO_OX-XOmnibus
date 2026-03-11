@@ -3,9 +3,9 @@
   "name": "Fat_Morph_Snap_Thunder",
   "mood": "Atmosphere",
   "engines": [
-    "Fat",
-    "Morph",
-    "Snap"
+    "Obese",
+    "OddOscar",
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.4,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.48,
@@ -68,7 +68,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.78,
       "morph_decay": 6.0,
@@ -82,7 +82,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 0,
       "snap_oscTune": -12.0,
       "snap_oscShape": 0.5,
@@ -99,14 +99,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Fat",
+        "engineA": "OddfeliX",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.35
       },
       {
-        "engineA": "Fat",
-        "engineB": "Morph",
+        "engineA": "Obese",
+        "engineB": "OddOscar",
         "type": "Amp->Filter",
         "amount": 0.28
       }

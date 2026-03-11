@@ -3,9 +3,9 @@
   "name": "Snap_Bob_Morph_Trigger",
   "mood": "Flux",
   "engines": [
-    "Snap",
-    "Bob",
-    "Morph"
+    "OddfeliX",
+    "Oblong",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.55
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -48,7 +48,7 @@
       "snap_release": 0.1,
       "snap_level": 0.75
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -91,7 +91,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.45,
       "morph_bloom": 0.8,
       "morph_decay": 1.5,
@@ -109,14 +109,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Bob",
+        "engineA": "OddfeliX",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.55
       },
       {
-        "engineA": "Bob",
-        "engineB": "Morph",
+        "engineA": "Oblong",
+        "engineB": "OddOscar",
         "type": "Env->Morph",
         "amount": 0.6
       }

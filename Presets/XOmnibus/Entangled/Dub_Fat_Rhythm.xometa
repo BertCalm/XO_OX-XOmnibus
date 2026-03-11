@@ -3,8 +3,8 @@
   "name": "Dub_Fat_Rhythm",
   "mood": "Entangled",
   "engines": [
-    "Dub",
-    "Fat"
+    "Overdub",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.45
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -73,7 +73,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 0
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.5,
       "fat_subLevel": 0.4,
@@ -110,8 +110,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Fat",
+        "engineA": "Overdub",
+        "engineB": "Obese",
         "type": "Rhythm->Blend",
         "amount": 0.6
       }

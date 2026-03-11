@@ -3,9 +3,9 @@
   "name": "Bob_Morph_Fat_Aether",
   "mood": "Aether",
   "engines": [
-    "Bob",
-    "Morph",
-    "Fat"
+    "Oblong",
+    "OddOscar",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.03
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -78,7 +78,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.35,
       "morph_bloom": 0.92,
       "morph_decay": 9.5,
@@ -92,7 +92,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.5,
@@ -129,14 +129,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Morph",
+        "engineA": "Obese",
+        "engineB": "OddOscar",
         "type": "Amp->Filter",
         "amount": 0.18
       },
       {
-        "engineA": "Morph",
-        "engineB": "Bob",
+        "engineA": "OddOscar",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.15
       }

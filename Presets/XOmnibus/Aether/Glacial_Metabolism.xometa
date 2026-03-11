@@ -3,7 +3,7 @@
   "name": "Glacial Metabolism",
   "mood": "Aether",
   "engines": [
-    "Morph",
+    "OddOscar",
     "XOrganon"
   ],
   "author": "XO_OX",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_waveA": 0,
       "morph_waveB": 1,
       "morph_position": 0.2,
@@ -58,7 +58,7 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
+        "engineA": "OddOscar",
         "engineB": "XOrganon",
         "type": "Audio->FM",
         "amount": 0.3

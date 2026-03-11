@@ -3,7 +3,7 @@
   "name": "Morph_Resonant_Pad",
   "mood": "Foundation",
   "engines": [
-    "Morph"
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -32,7 +32,7 @@
     "aggression": 0.18
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.52,
       "morph_bloom": 0.68,
       "morph_decay": 3.5,

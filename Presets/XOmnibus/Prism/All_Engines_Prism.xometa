@@ -3,12 +3,12 @@
   "name": "All_Engines_Prism",
   "mood": "Prism",
   "engines": [
-    "Snap",
-    "Morph",
-    "Dub",
-    "Drift",
-    "Bob",
-    "Fat"
+    "OddfeliX",
+    "OddOscar",
+    "Overdub",
+    "Odyssey",
+    "Oblong",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -42,7 +42,7 @@
     "aggression": 0.42
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -55,7 +55,7 @@
       "snap_release": 0.1,
       "snap_level": 0.62
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.72,
       "morph_bloom": 0.78,
       "morph_decay": 2.0,
@@ -69,7 +69,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -107,7 +107,7 @@
       "dub_glide": 0.06,
       "dub_polyphony": 0
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -147,7 +147,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -190,7 +190,7 @@
       "bob_glide": 0.05,
       "bob_polyphony": 0
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.88,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.08,
@@ -227,20 +227,20 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Morph",
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
         "type": "Env->Morph",
         "amount": 0.62
       },
       {
-        "engineA": "Morph",
-        "engineB": "Fat",
+        "engineA": "OddOscar",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.4
       },
       {
-        "engineA": "Bob",
-        "engineB": "Drift",
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
         "type": "Pitch->Pitch",
         "amount": 0.42
       }

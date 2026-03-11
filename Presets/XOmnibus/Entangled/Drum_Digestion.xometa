@@ -3,7 +3,7 @@
   "name": "Drum Digestion",
   "mood": "Entangled",
   "engines": [
-    "Snap",
+    "OddfeliX",
     "XOrganon"
   ],
   "author": "XO_OX",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 0,
       "snap_filterCutoff": 2000.0,
       "snap_resonance": 0.5,
@@ -57,7 +57,7 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
+        "engineA": "OddfeliX",
         "engineB": "XOrganon",
         "type": "Audio->FM",
         "amount": 0.5

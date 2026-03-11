@@ -3,8 +3,8 @@
   "name": "Morph_Dub_Classic_Bass",
   "mood": "Foundation",
   "engines": [
-    "Morph",
-    "Dub"
+    "OddOscar",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -33,7 +33,7 @@
     "aggression": 0.28
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.55,
       "morph_decay": 1.5,
@@ -47,7 +47,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,

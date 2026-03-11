@@ -3,8 +3,8 @@
   "name": "Morph Fat Sync",
   "mood": "Entangled",
   "engines": [
-    "Morph",
-    "Fat"
+    "OddOscar",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.15
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.3,
       "morph_bloom": 0.7,
       "morph_decay": 3.5,
@@ -49,7 +49,7 @@
       "morph_level": 0.68,
       "morph_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.4,
       "fat_mojo": 0.45,
       "fat_subLevel": 0.4,
@@ -86,8 +86,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Fat",
+        "engineA": "OddOscar",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.5
       }

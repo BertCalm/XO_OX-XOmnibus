@@ -3,7 +3,7 @@
   "name": "Evolutionary Sweep",
   "mood": "Entangled",
   "engines": [
-    "Drift",
+    "Odyssey",
     "XOrganon"
   ],
   "author": "XO_OX",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_osc_a_mode": 1,
       "drift_osc_b_mode": 2,
       "drift_haze_amount": 0.3,
@@ -55,7 +55,7 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
+        "engineA": "Odyssey",
         "engineB": "XOrganon",
         "type": "Env->Morph",
         "amount": 0.6

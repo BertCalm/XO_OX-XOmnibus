@@ -3,7 +3,7 @@
   "name": "Dub_Square_Bass",
   "mood": "Foundation",
   "engines": [
-    "Dub"
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -32,7 +32,7 @@
     "aggression": 0.5
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 3,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,

@@ -3,7 +3,7 @@
   "name": "Morph_Filter_Breathe",
   "mood": "Flux",
   "engines": [
-    "Morph"
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -32,7 +32,7 @@
     "aggression": 0.15
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.7,
       "morph_decay": 4.0,

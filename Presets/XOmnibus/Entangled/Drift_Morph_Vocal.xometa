@@ -3,8 +3,8 @@
   "name": "Drift Morph Vocal",
   "mood": "Entangled",
   "engines": [
-    "Drift",
-    "Morph"
+    "Odyssey",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -33,7 +33,7 @@
     "aggression": 0.15
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 1,
       "drift_oscA_tune": 0.0,

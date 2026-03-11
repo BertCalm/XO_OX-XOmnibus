@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Morph Keys",
   "mood": "Foundation",
-  "engines": ["Morph"],
+  "engines": ["OddOscar"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "MORPH set up as a keyboard instrument — medium attack, medium decay, zero sustain. Like a softsynth electric piano that slowly morphs through timbres as you play.",
@@ -19,7 +19,7 @@
     "aggression": 0.15
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.4,
       "morph_decay": 0.8,

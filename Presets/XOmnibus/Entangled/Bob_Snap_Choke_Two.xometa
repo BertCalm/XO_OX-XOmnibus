@@ -3,8 +3,8 @@
   "name": "Bob_Snap_Choke_Two",
   "mood": "Entangled",
   "engines": [
-    "Bob",
-    "Snap"
+    "Oblong",
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -33,7 +33,7 @@
     "aggression": 0.52
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -76,7 +76,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -93,8 +93,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "Snap",
+        "engineA": "Oblong",
+        "engineB": "OddfeliX",
         "type": "Amp->Choke",
         "amount": 0.7
       }

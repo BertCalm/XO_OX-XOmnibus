@@ -3,8 +3,8 @@
   "name": "Fat_Morph_Wavetable",
   "mood": "Entangled",
   "engines": [
-    "Fat",
-    "Morph"
+    "Obese",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.35,
@@ -68,7 +68,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.3,
       "morph_bloom": 0.85,
       "morph_decay": 3.5,
@@ -86,8 +86,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Morph",
+        "engineA": "Obese",
+        "engineB": "OddOscar",
         "type": "Audio->Wavetable",
         "amount": 0.65
       }

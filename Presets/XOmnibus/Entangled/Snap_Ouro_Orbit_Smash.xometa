@@ -3,7 +3,7 @@
   "name": "Orbit Smash",
   "mood": "Entangled",
   "engines": [
-    "Snap",
+    "OddfeliX",
     "XOuroboros"
   ],
   "author": "XO_OX",
@@ -30,7 +30,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 0,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -59,7 +59,7 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
+        "engineA": "OddfeliX",
         "engineB": "XOuroboros",
         "type": "Audio->FM",
         "amount": 0.65

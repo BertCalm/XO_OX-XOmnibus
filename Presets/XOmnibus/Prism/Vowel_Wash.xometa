@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Vowel Wash",
   "mood": "Prism",
-  "engines": ["Drift"],
+  "engines": ["Odyssey"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Supersaw through formant filter with LFO sweeping vowels. Psychedelic vocal texture.",
@@ -19,7 +19,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 1,
       "drift_oscA_shape": 1,
       "drift_oscA_tune": 0.0,

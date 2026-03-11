@@ -20,15 +20,24 @@ namespace GalleryColors {
 
     inline juce::Colour accentForEngine(const juce::String& id)
     {
-        if (id == "Snap")      return juce::Colour(0xFF00A6D6); // Neon Tetra Blue (OddfeliX)
-        if (id == "Morph")     return juce::Colour(0xFFE8839B); // Axolotl Gill Pink (OddOscar)
-        if (id == "Dub")       return juce::Colour(0xFF6B7B3A);
-        if (id == "Drift")     return juce::Colour(0xFF7B2D8B);
-        if (id == "Bob")       return juce::Colour(0xFFE9A84A);
-        if (id == "Fat")       return juce::Colour(0xFFFF1493);
-        if (id == "Onset")     return juce::Colour(0xFF0066FF);
-        if (id == "Overworld") return juce::Colour(0xFF39FF14);
-        if (id == "Opal")      return juce::Colour(0xFFA78BFA);
+        if (id == "OddfeliX")  return juce::Colour(0xFF00A6D6); // Neon Tetra Blue
+        if (id == "OddOscar")  return juce::Colour(0xFFE8839B); // Axolotl Gill Pink
+        if (id == "Overdub")   return juce::Colour(0xFF6B7B3A); // Olive
+        if (id == "Odyssey")   return juce::Colour(0xFF7B2D8B); // Violet
+        if (id == "Oblong")    return juce::Colour(0xFFE9A84A); // Amber
+        if (id == "Obese")     return juce::Colour(0xFFFF1493); // Hot Pink
+        if (id == "Onset")     return juce::Colour(0xFF0066FF); // Electric Blue
+        if (id == "Overworld") return juce::Colour(0xFF39FF14); // Neon Green
+        if (id == "Opal")      return juce::Colour(0xFFA78BFA); // Lavender
+        if (id == "Orbital")   return juce::Colour(0xFFFFD700); // Gold
+        if (id == "Organon")   return juce::Colour(0xFF00CED1); // Bioluminescent Cyan
+        if (id == "Ouroboros") return juce::Colour(0xFFFF2D2D); // Strange Attractor Red
+        if (id == "Obsidian")  return juce::Colour(0xFFE8E0D8); // Crystal White
+        if (id == "Overbite")  return juce::Colour(0xFFF0EDE8); // Fang White
+        if (id == "Origami")   return juce::Colour(0xFFE63946); // Vermillion Fold
+        if (id == "Oracle")    return juce::Colour(0xFF4B0082); // Prophecy Indigo
+        if (id == "Obscura")   return juce::Colour(0xFF8A9BA8); // Daguerreotype Silver
+        if (id == "Oceanic")   return juce::Colour(0xFF00B4A0); // Phosphorescent Teal
         return get(borderGray);
     }
 

@@ -3,7 +3,7 @@
   "name": "Analog Nutrition",
   "mood": "Entangled",
   "engines": [
-    "Bob",
+    "Oblong",
     "XOrganon"
   ],
   "author": "XO_OX",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_drift": 0.15,
@@ -63,7 +63,7 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
+        "engineA": "Oblong",
         "engineB": "XOrganon",
         "type": "Audio->FM",
         "amount": 0.55

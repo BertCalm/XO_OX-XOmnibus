@@ -3,9 +3,9 @@
   "name": "Snap_Bob_Fat_Environment",
   "mood": "Atmosphere",
   "engines": [
-    "Snap",
-    "Bob",
-    "Fat"
+    "OddfeliX",
+    "Oblong",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.12
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -48,7 +48,7 @@
       "snap_release": 0.1,
       "snap_level": 0.38
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -91,7 +91,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.38,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.42,
@@ -128,14 +128,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Bob",
+        "engineA": "OddfeliX",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.2
       },
       {
-        "engineA": "Fat",
-        "engineB": "Bob",
+        "engineA": "Obese",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.18
       }

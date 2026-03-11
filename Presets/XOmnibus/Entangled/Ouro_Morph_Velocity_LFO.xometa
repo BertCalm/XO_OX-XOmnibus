@@ -4,7 +4,7 @@
   "mood": "Entangled",
   "engines": [
     "XOuroboros",
-    "Morph"
+    "OddOscar"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -40,7 +40,7 @@
       "ouro_damping": 0.2,
       "ouro_injection": 0.0
     },
-    "Morph": {
+    "OddOscar": {
       "morph_oscA_wave": 0,
       "morph_oscA_shape": 0.5,
       "morph_oscA_tune": 0.0,
@@ -63,7 +63,7 @@
     "pairs": [
       {
         "engineA": "XOuroboros",
-        "engineB": "Morph",
+        "engineB": "OddOscar",
         "type": "LFO->Pitch",
         "amount": 0.4
       }

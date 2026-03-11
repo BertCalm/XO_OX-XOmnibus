@@ -3,8 +3,8 @@
   "name": "Cathedral Breath",
   "mood": "Entangled",
   "engines": [
-    "Dub",
-    "Drift"
+    "Overdub",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.0
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 0,
       "dub_oscOctave": 1,
       "dub_oscTune": 0.0,
@@ -73,7 +73,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 12.0,
@@ -117,8 +117,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Drift",
+        "engineA": "Overdub",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.4
       }

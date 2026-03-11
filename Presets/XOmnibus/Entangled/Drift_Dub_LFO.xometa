@@ -3,8 +3,8 @@
   "name": "Drift_Dub_LFO",
   "mood": "Entangled",
   "engines": [
-    "Drift",
-    "Dub"
+    "Odyssey",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -75,7 +75,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -117,8 +117,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
-        "engineB": "Dub",
+        "engineA": "Odyssey",
+        "engineB": "Overdub",
         "type": "LFO->Pitch",
         "amount": 0.3
       }

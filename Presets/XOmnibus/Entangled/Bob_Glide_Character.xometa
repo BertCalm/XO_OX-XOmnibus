@@ -3,8 +3,8 @@
   "name": "Bob Glide Character",
   "mood": "Entangled",
   "engines": [
-    "Bob",
-    "Snap"
+    "Oblong",
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -36,7 +36,7 @@
     "aggression": 0.4
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 1,
       "bob_oscA_shape": 0.65,
       "bob_oscA_tune": 0.0,
@@ -79,7 +79,7 @@
       "bob_glide": 0.2,
       "bob_polyphony": 0
     },
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 0,
       "snap_snap": 0.5,
       "snap_decay": 0.25,
@@ -95,8 +95,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "Snap",
+        "engineA": "Oblong",
+        "engineB": "OddfeliX",
         "type": "Amp->Pitch",
         "amount": 0.25
       }

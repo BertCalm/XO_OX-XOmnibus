@@ -3,7 +3,7 @@
   "name": "Symbiotic Cathedral",
   "mood": "Atmosphere",
   "engines": [
-    "Drift",
+    "Odyssey",
     "XOrganon"
   ],
   "author": "XO_OX",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_osc_a_mode": 0,
       "drift_haze_amount": 0.6,
       "drift_reverb_size": 0.95,
@@ -53,7 +53,7 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
+        "engineA": "Odyssey",
         "engineB": "XOrganon",
         "type": "Audio->FM",
         "amount": 0.35

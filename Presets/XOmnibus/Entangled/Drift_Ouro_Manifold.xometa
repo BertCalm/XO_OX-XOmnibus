@@ -3,7 +3,7 @@
   "name": "Manifold Drift",
   "mood": "Entangled",
   "engines": [
-    "Drift",
+    "Odyssey",
     "XOuroboros"
   ],
   "author": "XO_OX",
@@ -30,7 +30,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -84,7 +84,7 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
+        "engineA": "Odyssey",
         "engineB": "XOuroboros",
         "type": "Env->Morph",
         "amount": 0.5

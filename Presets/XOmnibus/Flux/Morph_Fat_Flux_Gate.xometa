@@ -3,8 +3,8 @@
   "name": "Morph_Fat_Flux_Gate",
   "mood": "Flux",
   "engines": [
-    "Morph",
-    "Fat"
+    "OddOscar",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -33,7 +33,7 @@
     "aggression": 0.38
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.55,
       "morph_bloom": 0.78,
       "morph_decay": 1.5,
@@ -47,7 +47,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.35,
@@ -84,8 +84,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Fat",
+        "engineA": "OddOscar",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.55
       }

@@ -3,10 +3,10 @@
   "name": "Dub_Bob_Fat_Drift_Full",
   "mood": "Entangled",
   "engines": [
-    "Dub",
-    "Bob",
-    "Fat",
-    "Drift"
+    "Overdub",
+    "Oblong",
+    "Obese",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -37,7 +37,7 @@
     "aggression": 0.32
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -75,7 +75,7 @@
       "dub_glide": 0.06,
       "dub_polyphony": 0
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -118,7 +118,7 @@
       "bob_glide": 0.1,
       "bob_polyphony": 0
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.48,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.32,
@@ -151,7 +151,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -195,20 +195,20 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Bob",
+        "engineA": "Overdub",
+        "engineB": "Oblong",
         "type": "Rhythm->Blend",
         "amount": 0.42
       },
       {
-        "engineA": "Bob",
-        "engineB": "Fat",
+        "engineA": "Oblong",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.42
       },
       {
-        "engineA": "Fat",
-        "engineB": "Drift",
+        "engineA": "Obese",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.28
       }

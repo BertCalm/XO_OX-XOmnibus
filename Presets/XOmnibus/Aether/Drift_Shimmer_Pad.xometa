@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Drift Shimmer Pad",
   "mood": "Aether",
-  "engines": ["Drift"],
+  "engines": ["Odyssey"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT shimmer at maximum with ultra-slow drift. A pad that feels like looking at stars — never quite still, never quite solid, impossibly beautiful.",
@@ -19,7 +19,7 @@
     "aggression": 0.0
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 12.0,

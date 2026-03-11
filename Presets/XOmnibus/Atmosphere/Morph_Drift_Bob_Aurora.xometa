@@ -3,9 +3,9 @@
   "name": "Morph_Drift_Bob_Aurora",
   "mood": "Atmosphere",
   "engines": [
-    "Morph",
-    "Drift",
-    "Bob"
+    "OddOscar",
+    "Odyssey",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.06
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.82,
       "morph_decay": 6.5,
@@ -49,7 +49,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -89,7 +89,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -136,14 +136,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Drift",
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
         "type": "Audio->Wavetable",
         "amount": 0.45
       },
       {
-        "engineA": "Bob",
-        "engineB": "Drift",
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.2
       }

@@ -3,7 +3,7 @@
   "name": "Wavetable Diet",
   "mood": "Entangled",
   "engines": [
-    "Morph",
+    "OddOscar",
     "XOrganon"
   ],
   "author": "XO_OX",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_waveA": 0,
       "morph_waveB": 2,
       "morph_position": 0.3,
@@ -60,7 +60,7 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
+        "engineA": "OddOscar",
         "engineB": "XOrganon",
         "type": "Audio->FM",
         "amount": 0.65

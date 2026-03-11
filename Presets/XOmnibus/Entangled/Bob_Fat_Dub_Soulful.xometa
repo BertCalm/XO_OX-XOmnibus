@@ -3,9 +3,9 @@
   "name": "Bob_Fat_Dub_Soulful",
   "mood": "Entangled",
   "engines": [
-    "Bob",
-    "Fat",
-    "Dub"
+    "Oblong",
+    "Obese",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -36,7 +36,7 @@
     "aggression": 0.3
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -79,7 +79,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.35,
@@ -112,7 +112,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -154,14 +154,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "Fat",
+        "engineA": "Oblong",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.45
       },
       {
-        "engineA": "Dub",
-        "engineB": "Bob",
+        "engineA": "Overdub",
+        "engineB": "Oblong",
         "type": "Rhythm->Blend",
         "amount": 0.4
       }

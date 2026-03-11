@@ -17,7 +17,7 @@
   "name": "Pure Resonance",
   "mood": "Prism",
   "engines": [
-    "Morph"
+    "OddOscar"
   ],
   "description": "High resonance in mid-morph position \u2014 where the two states agree on one tone.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.25
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.2,
       "morph_decay": 0.5,

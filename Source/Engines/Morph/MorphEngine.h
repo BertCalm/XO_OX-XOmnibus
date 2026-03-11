@@ -581,7 +581,7 @@ public:
 
     //-- Identity --------------------------------------------------------------
 
-    juce::String getEngineId() const override { return "Morph"; }
+    juce::String getEngineId() const override { return "OddOscar"; }
     juce::Colour getAccentColour() const override { return juce::Colour (0xFFE8839B); } // Axolotl Gill Pink
     int getMaxVoices() const override { return kMaxVoices; }
 

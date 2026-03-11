@@ -3,8 +3,8 @@
   "name": "Snap_Morph_Env",
   "mood": "Entangled",
   "engines": [
-    "Snap",
-    "Morph"
+    "OddfeliX",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.55
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -48,7 +48,7 @@
       "snap_release": 0.1,
       "snap_level": 0.75
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.2,
       "morph_bloom": 0.8,
       "morph_decay": 2.5,
@@ -66,8 +66,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Morph",
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
         "type": "Env->Morph",
         "amount": 0.7
       }

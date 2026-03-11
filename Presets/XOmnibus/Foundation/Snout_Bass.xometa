@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Snout Bass",
   "mood": "Foundation",
-  "engines": ["Bob"],
+  "engines": ["Oblong"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Punchy mono bass with Velvet Saw through driven Snout LP. Quick attack, tight decay.",
@@ -19,7 +19,7 @@
     "aggression": 0.3
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 2,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,

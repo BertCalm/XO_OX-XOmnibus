@@ -17,7 +17,7 @@
   "name": "Chromatic Dub",
   "mood": "Prism",
   "engines": [
-    "Dub"
+    "Overdub"
   ],
   "description": "Chromatic sub-bass walk in a filtered dub space \u2014 each note a prismatic shift.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 0,
       "dub_oscOctave": -1,
       "dub_oscTune": 0.0,

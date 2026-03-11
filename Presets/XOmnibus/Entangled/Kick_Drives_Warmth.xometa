@@ -14,7 +14,7 @@
     "pairs": [
       {
         "engineA": "Onset",
-        "engineB": "Bob",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.7
       }
@@ -25,7 +25,7 @@
   "mood": "Entangled",
   "engines": [
     "Onset",
-    "Bob"
+    "Oblong"
   ],
   "description": "Kick amplitude from ONSET sweeps BOB's filter — the bass breathes with the beat.",
   "tags": [
@@ -56,7 +56,7 @@
       "perc_macro_punch": 0.6,
       "perc_macro_machine": 0.3
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_drift": 0.08,

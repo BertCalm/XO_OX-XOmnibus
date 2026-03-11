@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Dub Siren",
   "mood": "Foundation",
-  "engines": ["Dub"],
+  "engines": ["Overdub"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Classic dub siren with LFO-modulated pitch. Wailing police siren for drops and transitions.",
@@ -19,7 +19,7 @@
     "aggression": 0.5
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 0,
       "dub_oscOctave": 3,
       "dub_oscTune": 0.0,

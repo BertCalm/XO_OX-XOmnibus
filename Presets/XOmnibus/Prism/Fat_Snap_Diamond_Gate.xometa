@@ -3,8 +3,8 @@
   "name": "Fat_Snap_Diamond_Gate",
   "mood": "Prism",
   "engines": [
-    "Fat",
-    "Snap"
+    "Obese",
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -33,7 +33,7 @@
     "aggression": 0.62
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -46,7 +46,7 @@
       "snap_release": 0.1,
       "snap_level": 0.75
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.88,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.08,
@@ -83,8 +83,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Fat",
+        "engineA": "OddfeliX",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.75
       }

@@ -3,7 +3,7 @@
   "name": "Curious Machine",
   "mood": "Entangled",
   "engines": [
-    "Bob",
+    "Oblong",
     "XOrganon"
   ],
   "author": "XO_OX",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 2,
       "bob_oscA_shape": 0.3,
       "bob_oscB_wave": 0,
@@ -62,14 +62,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
+        "engineA": "Oblong",
         "engineB": "XOrganon",
         "type": "Audio->FM",
         "amount": 0.45
       },
       {
         "engineA": "XOrganon",
-        "engineB": "Bob",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.3
       }

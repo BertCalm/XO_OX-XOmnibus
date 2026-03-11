@@ -3,8 +3,8 @@
   "name": "LFO Entangle",
   "mood": "Entangled",
   "engines": [
-    "Dub",
-    "Morph"
+    "Overdub",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -34,7 +34,7 @@
     "aggression": 0.15
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 1,
       "dub_oscOctave": 1,
       "dub_oscTune": 0.0,
@@ -72,7 +72,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 3
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.55,
       "morph_decay": 2.0,
@@ -90,8 +90,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Morph",
+        "engineA": "Overdub",
+        "engineB": "OddOscar",
         "type": "LFO->Pitch",
         "amount": 0.3
       }

@@ -17,7 +17,7 @@
   "name": "Prism Stab",
   "mood": "Prism",
   "engines": [
-    "Dub"
+    "Overdub"
   ],
   "description": "Hard dub stab \u2014 no sustain, maximum attack, reverb throws it into space.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.5
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 1,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,

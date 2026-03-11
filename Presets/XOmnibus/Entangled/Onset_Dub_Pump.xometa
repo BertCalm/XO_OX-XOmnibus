@@ -4,7 +4,7 @@
   "mood": "Entangled",
   "engines": [
     "Onset",
-    "Dub"
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -118,7 +118,7 @@
       "perc_drive": 0.05,
       "perc_masterTone": 0.45
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscMode": 1,
       "dub_oscTune": 0.0,
       "dub_oscShape": 0.5,
@@ -143,7 +143,7 @@
     "routes": [
       {
         "source": "Onset",
-        "dest": "Dub",
+        "dest": "Overdub",
         "type": "AmpToFilter",
         "amount": 0.35
       }

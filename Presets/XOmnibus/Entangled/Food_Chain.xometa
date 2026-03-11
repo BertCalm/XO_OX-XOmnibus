@@ -3,8 +3,8 @@
   "name": "Food Chain",
   "mood": "Entangled",
   "engines": [
-    "Snap",
-    "Bob",
+    "OddfeliX",
+    "Oblong",
     "XOrganon"
   ],
   "author": "XO_OX",
@@ -32,14 +32,14 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_filterCutoff": 3000.0,
       "snap_attack": 0.001,
       "snap_decay": 0.1,
       "snap_level": 0.7
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.4,
       "bob_fltCutoff": 1500.0,
@@ -66,13 +66,13 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Bob",
+        "engineA": "OddfeliX",
+        "engineB": "Oblong",
         "type": "Audio->FM",
         "amount": 0.4
       },
       {
-        "engineA": "Bob",
+        "engineA": "Oblong",
         "engineB": "XOrganon",
         "type": "Audio->FM",
         "amount": 0.6

@@ -10,19 +10,40 @@ namespace xomnibus {
 //==============================================================================
 // Valid engine names — all registered XOmnibus engines.
 inline const juce::StringArray validEngineNames {
+    // All engine IDs start with O (brand convention)
     "OddfeliX", "OddOscar",  // Mascots: feliX the neon tetra, Oscar the axolotl
-    "XOddCouple",             // Legacy alias (original paired instrument)
-    "XOverdub", "XOdyssey", "XOblong",
-    "XOblongBob",             // Legacy alias
-    "XObese", "XOnset",
-    "Overworld", "Opal", "Orbital", "XOrbital",
-    // Short-form aliases used by engine IDs directly
-    "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Onset",
-    // V2 engines
-    "Organon", "XOrganon", "Ouroboros", "XOuroboros",
-    // V3 engines
-    "Obsidian", "Bite", "Origami", "Oracle", "Obscura", "Oceanic"
+    "Overdub", "Odyssey", "Oblong", "Obese", "Onset",
+    "Overworld", "Opal", "Orbital",
+    "Organon", "Ouroboros",
+    "Obsidian", "Overbite", "Origami", "Oracle", "Obscura", "Oceanic",
+    // Legacy aliases (kept for backward preset compatibility)
+    "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
+    "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
+    "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Bite"
 };
+
+// Resolve legacy engine name aliases to current canonical IDs.
+// Returns the input unchanged if it's already a current ID or unrecognized.
+inline juce::String resolveEngineAlias(const juce::String& name)
+{
+    static const std::map<juce::String, juce::String> aliases {
+        { "Snap",        "OddfeliX"  },
+        { "Morph",       "OddOscar"  },
+        { "Dub",         "Overdub"   },
+        { "Drift",       "Odyssey"   },
+        { "Bob",         "Oblong"    },
+        { "Fat",         "Obese"     },
+        { "Bite",        "Overbite"  },
+        { "XOddCouple",  "OddfeliX" },  // v0 name for Snap/feliX
+        { "XOverdub",    "Overdub"   },
+        { "XOdyssey",    "Odyssey"   },
+        { "XOblong",     "Oblong"    },
+        { "XOblongBob",  "Oblong"    },
+        { "XObese",      "Obese"     },
+    };
+    auto it = aliases.find(name);
+    return (it != aliases.end()) ? it->second : name;
+}
 
 // Valid moods — the 6 browsing categories plus User.
 inline const juce::StringArray validMoods {
@@ -472,7 +493,7 @@ private:
         out.engines.clear();
         for (const auto& e : *enginesVar.getArray())
         {
-            auto engineName = e.toString();
+            auto engineName = resolveEngineAlias(e.toString());
             if (validEngineNames.contains(engineName))
                 out.engines.add(engineName);
         }
@@ -503,7 +524,7 @@ private:
             {
                 for (const auto& prop : paramsObj->getProperties())
                 {
-                    auto engineName = prop.name.toString();
+                    auto engineName = resolveEngineAlias(prop.name.toString());
                     if (validEngineNames.contains(engineName))
                         out.parametersByEngine[engineName] = prop.value;
                 }
@@ -598,8 +619,8 @@ private:
                                 continue;
 
                             CouplingPair cp;
-                            cp.engineA = pairObj->getProperty("engineA").toString();
-                            cp.engineB = pairObj->getProperty("engineB").toString();
+                            cp.engineA = resolveEngineAlias(pairObj->getProperty("engineA").toString());
+                            cp.engineB = resolveEngineAlias(pairObj->getProperty("engineB").toString());
                             cp.type    = pairObj->getProperty("type").toString();
                             cp.amount  = static_cast<float>(pairObj->getProperty("amount"));
 

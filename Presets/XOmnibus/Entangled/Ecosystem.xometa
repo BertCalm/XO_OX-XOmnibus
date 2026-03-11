@@ -3,8 +3,8 @@
   "name": "Ecosystem",
   "mood": "Entangled",
   "engines": [
-    "Dub",
-    "Morph",
+    "Overdub",
+    "OddOscar",
     "XOrganon"
   ],
   "author": "XO_OX",
@@ -32,7 +32,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 1,
       "dub_level": 0.5,
       "dub_filterCutoff": 1200.0,
@@ -46,7 +46,7 @@
       "dub_sustain": 0.5,
       "dub_release": 1.5
     },
-    "Morph": {
+    "OddOscar": {
       "morph_waveA": 0,
       "morph_waveB": 2,
       "morph_position": 0.4,
@@ -71,20 +71,20 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
+        "engineA": "Overdub",
         "engineB": "XOrganon",
         "type": "Audio->FM",
         "amount": 0.4
       },
       {
-        "engineA": "Morph",
+        "engineA": "OddOscar",
         "engineB": "XOrganon",
         "type": "Audio->FM",
         "amount": 0.35
       },
       {
         "engineA": "XOrganon",
-        "engineB": "Morph",
+        "engineB": "OddOscar",
         "type": "Env->Morph",
         "amount": 0.2
       }

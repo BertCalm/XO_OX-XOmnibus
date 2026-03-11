@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Fat Bright Chord",
   "mood": "Prism",
-  "engines": ["Fat"],
+  "engines": ["Obese"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FAT's oscillator stack tuned for brightness — filter wide open, high morph for bright timbres, wide detune for spectral richness. Strum it for massive bright chord bursts.",
@@ -19,7 +19,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.75,
       "fat_mojo": 0.35,
       "fat_subLevel": 0.15,

@@ -3,9 +3,9 @@
   "name": "Morph_Fat_Drift_Full",
   "mood": "Entangled",
   "engines": [
-    "Morph",
-    "Fat",
-    "Drift"
+    "OddOscar",
+    "Obese",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.18
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.52,
       "morph_bloom": 0.72,
       "morph_decay": 3.5,
@@ -49,7 +49,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.45,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.38,
@@ -82,7 +82,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -126,14 +126,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Morph",
+        "engineA": "Obese",
+        "engineB": "OddOscar",
         "type": "Amp->Filter",
         "amount": 0.35
       },
       {
-        "engineA": "Morph",
-        "engineB": "Drift",
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
         "type": "Audio->Wavetable",
         "amount": 0.48
       }

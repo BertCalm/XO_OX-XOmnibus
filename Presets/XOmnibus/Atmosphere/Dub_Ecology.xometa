@@ -3,7 +3,7 @@
   "name": "Dub Ecology",
   "mood": "Atmosphere",
   "engines": [
-    "Dub",
+    "Overdub",
     "XOrganon"
   ],
   "author": "XO_OX",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_level": 0.5,
       "dub_filterCutoff": 800.0,
@@ -63,14 +63,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
+        "engineA": "Overdub",
         "engineB": "XOrganon",
         "type": "Audio->FM",
         "amount": 0.5
       },
       {
         "engineA": "XOrganon",
-        "engineB": "Dub",
+        "engineB": "Overdub",
         "type": "Env->Morph",
         "amount": 0.3
       }

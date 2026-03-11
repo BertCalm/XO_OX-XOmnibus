@@ -1119,7 +1119,7 @@ public:
 
     //-- Identity --------------------------------------------------------------
 
-    juce::String getEngineId() const override { return "Dub"; }
+    juce::String getEngineId() const override { return "Overdub"; }
     juce::Colour getAccentColour() const override { return juce::Colour (0xFF6B7B3A); }
     int getMaxVoices() const override { return kMaxVoices; }
 

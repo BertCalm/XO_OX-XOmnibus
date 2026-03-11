@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Morph Scan",
   "mood": "Flux",
-  "engines": ["Morph"],
+  "engines": ["OddOscar"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "MORPH scanning rapidly through the wavetable at high drift — a constantly mutating texture that never settles. Fast modulation, medium filter, the sound of impermanence.",
@@ -19,7 +19,7 @@
     "aggression": 0.25
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.1,
       "morph_bloom": 1.0,
       "morph_decay": 1.5,

@@ -3,8 +3,8 @@
   "name": "Drift_Snap_Gate",
   "mood": "Entangled",
   "engines": [
-    "Drift",
-    "Snap"
+    "Odyssey",
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.4
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -75,7 +75,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -92,8 +92,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
-        "engineB": "Snap",
+        "engineA": "Odyssey",
+        "engineB": "OddfeliX",
         "type": "Amp->Filter",
         "amount": 0.45
       }

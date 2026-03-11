@@ -3,7 +3,7 @@
   "name": "Bob_Pad_Lush",
   "mood": "Foundation",
   "engines": [
-    "Bob"
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -32,7 +32,7 @@
     "aggression": 0.1
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,

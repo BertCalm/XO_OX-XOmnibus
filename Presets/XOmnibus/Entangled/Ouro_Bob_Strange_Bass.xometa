@@ -4,7 +4,7 @@
   "mood": "Entangled",
   "engines": [
     "XOuroboros",
-    "Bob"
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -40,7 +40,7 @@
       "ouro_damping": 0.6,
       "ouro_injection": 0.0
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.3,
       "bob_oscA_tune": 0.0,
@@ -88,7 +88,7 @@
     "pairs": [
       {
         "engineA": "XOuroboros",
-        "engineB": "Bob",
+        "engineB": "Oblong",
         "type": "Env->Morph",
         "amount": 0.35
       }

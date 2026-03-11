@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Tape Chaos",
   "mood": "Flux",
-  "engines": ["Dub"],
+  "engines": ["Overdub"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Self-oscillating delay with maximum feedback and drive. Controlled chaos — the Lee Perry zone.",
@@ -19,7 +19,7 @@
     "aggression": 0.8
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 2,
       "dub_oscTune": 0.0,

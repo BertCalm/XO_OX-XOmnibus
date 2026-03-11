@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Haze Cloud",
   "mood": "Atmosphere",
-  "engines": ["Drift"],
+  "engines": ["Odyssey"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dense, saturated pad cloud. Heavy Haze saturation through low filter creates a warm fog of sound.",
@@ -19,7 +19,7 @@
     "aggression": 0.25
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 1,
       "drift_oscA_shape": 1,
       "drift_oscA_tune": 0.0,

@@ -3,9 +3,9 @@
   "name": "Morph_Drift_Fat_Warmth",
   "mood": "Foundation",
   "engines": [
-    "Morph",
-    "Drift",
-    "Fat"
+    "OddOscar",
+    "Odyssey",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.08
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.65,
       "morph_decay": 4.0,
@@ -49,7 +49,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -89,7 +89,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.4,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.32,

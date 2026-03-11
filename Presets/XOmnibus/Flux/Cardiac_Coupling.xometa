@@ -3,7 +3,7 @@
   "name": "Cardiac Coupling",
   "mood": "Flux",
   "engines": [
-    "Bob",
+    "Oblong",
     "XOrganon"
   ],
   "author": "XO_OX",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.4,
       "bob_oscA_drift": 0.1,
@@ -61,13 +61,13 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
+        "engineA": "Oblong",
         "engineB": "XOrganon",
         "type": "Audio->FM",
         "amount": 0.4
       },
       {
-        "engineA": "Bob",
+        "engineA": "Oblong",
         "engineB": "XOrganon",
         "type": "Rhythm->Blend",
         "amount": 0.5

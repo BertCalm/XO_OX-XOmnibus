@@ -17,7 +17,7 @@
   "name": "Signal Decay",
   "mood": "Aether",
   "engines": [
-    "Drift"
+    "Odyssey"
   ],
   "description": "Radio transmission dissolving into noise \u2014 the signal wants to survive.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_level": 0.4,
       "drift_oscA_detune": 0.3,

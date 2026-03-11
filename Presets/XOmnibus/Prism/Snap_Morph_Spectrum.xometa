@@ -3,8 +3,8 @@
   "name": "Snap Morph Spectrum",
   "mood": "Prism",
   "engines": [
-    "Snap",
-    "Morph"
+    "OddfeliX",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.4
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_snap": 0.6,
       "snap_decay": 0.25,
@@ -47,7 +47,7 @@
       "snap_unison": 0,
       "snap_polyphony": 2
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.7,
       "morph_bloom": 0.7,
       "morph_decay": 2.5,
@@ -65,8 +65,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Morph",
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
         "type": "Amp->Filter",
         "amount": 0.6
       }

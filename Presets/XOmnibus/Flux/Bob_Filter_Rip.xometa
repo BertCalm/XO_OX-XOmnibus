@@ -3,7 +3,7 @@
   "name": "Bob_Filter_Rip",
   "mood": "Flux",
   "engines": [
-    "Bob"
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -32,7 +32,7 @@
     "aggression": 0.6
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,

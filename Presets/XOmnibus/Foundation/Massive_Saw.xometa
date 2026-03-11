@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Massive Saw",
   "mood": "Foundation",
-  "engines": ["Fat"],
+  "engines": ["Obese"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Classic fat supersaw. 13 oscillators detuned across 4 stereo groups. Pure analog character.",
@@ -19,7 +19,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.33,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.3,

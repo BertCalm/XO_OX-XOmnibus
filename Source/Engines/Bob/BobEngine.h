@@ -1566,7 +1566,7 @@ public:
 
     //-- Identity --------------------------------------------------------------
 
-    juce::String getEngineId() const override { return "Bob"; }
+    juce::String getEngineId() const override { return "Oblong"; }
     juce::Colour getAccentColour() const override { return juce::Colour (0xFFE9A84A); }
     int getMaxVoices() const override { return kMaxVoices; }
 

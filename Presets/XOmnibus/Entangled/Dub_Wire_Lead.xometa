@@ -3,8 +3,8 @@
   "name": "Dub Wire Lead",
   "mood": "Entangled",
   "engines": [
-    "Dub",
-    "Drift"
+    "Overdub",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.45
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 1,
       "dub_oscTune": 0.0,
@@ -73,7 +73,7 @@
       "dub_glide": 0.18,
       "dub_polyphony": 0
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 1,
       "drift_oscA_tune": 12.0,
@@ -117,8 +117,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Drift",
+        "engineA": "Overdub",
+        "engineB": "Odyssey",
         "type": "LFO->Pitch",
         "amount": 0.15
       }

@@ -3,8 +3,8 @@
   "name": "Drift_Bob_Particle_Field",
   "mood": "Aether",
   "engines": [
-    "Drift",
-    "Bob"
+    "Odyssey",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -33,7 +33,7 @@
     "aggression": 0.04
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -73,7 +73,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -120,8 +120,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
-        "engineB": "Bob",
+        "engineA": "Odyssey",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.15
       }

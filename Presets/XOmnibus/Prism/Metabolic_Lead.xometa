@@ -3,7 +3,7 @@
   "name": "Metabolic Lead",
   "mood": "Prism",
   "engines": [
-    "Snap",
+    "OddfeliX",
     "XOrganon"
   ],
   "author": "XO_OX",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 3,
       "snap_filterCutoff": 6000.0,
       "snap_resonance": 0.4,
@@ -55,7 +55,7 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
+        "engineA": "OddfeliX",
         "engineB": "XOrganon",
         "type": "Audio->FM",
         "amount": 0.8

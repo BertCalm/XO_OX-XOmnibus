@@ -3,8 +3,8 @@
   "name": "Drift_Morph_Spectral_Layer",
   "mood": "Prism",
   "engines": [
-    "Drift",
-    "Morph"
+    "Odyssey",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -33,7 +33,7 @@
     "aggression": 0.18
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -73,7 +73,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.68,
       "morph_bloom": 0.78,
       "morph_decay": 2.5,
@@ -91,8 +91,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Drift",
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.32
       }

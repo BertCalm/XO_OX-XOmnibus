@@ -17,7 +17,7 @@
   "name": "Spectral Bass",
   "mood": "Prism",
   "engines": [
-    "Dub"
+    "Overdub"
   ],
   "description": "Extended range bass using overtone shaping \u2014 from sub to presence.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 1,
       "dub_oscOctave": -1,
       "dub_oscTune": 0.0,

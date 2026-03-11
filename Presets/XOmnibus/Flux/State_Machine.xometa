@@ -17,7 +17,7 @@
   "name": "State Machine",
   "mood": "Flux",
   "engines": [
-    "Morph"
+    "OddOscar"
   ],
   "description": "Discrete morph states cycling \u2014 feels like digital state machine oscillating.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.4
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.75,
       "morph_bloom": 0.35,
       "morph_decay": 0.5,

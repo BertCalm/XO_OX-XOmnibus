@@ -1230,7 +1230,7 @@ public:
 
     //-- Identity --------------------------------------------------------------
 
-    juce::String getEngineId() const override { return "Drift"; }
+    juce::String getEngineId() const override { return "Odyssey"; }
     juce::Colour getAccentColour() const override { return juce::Colour (0xFF7B2D8B); }
     int getMaxVoices() const override { return kMaxVoices; }
 

@@ -3,8 +3,8 @@
   "name": "Drift_Morph_Flux_LFO",
   "mood": "Flux",
   "engines": [
-    "Drift",
-    "Morph"
+    "Odyssey",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -33,7 +33,7 @@
     "aggression": 0.22
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -73,7 +73,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.52,
       "morph_bloom": 0.72,
       "morph_decay": 2.5,
@@ -91,8 +91,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
-        "engineB": "Morph",
+        "engineA": "Odyssey",
+        "engineB": "OddOscar",
         "type": "LFO->Pitch",
         "amount": 0.35
       }

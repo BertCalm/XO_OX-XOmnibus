@@ -3,8 +3,8 @@
   "name": "Bob_Fat_Decay",
   "mood": "Entangled",
   "engines": [
-    "Bob",
-    "Fat"
+    "Oblong",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -33,7 +33,7 @@
     "aggression": 0.28
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -76,7 +76,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.48,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.32,
@@ -113,8 +113,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "Fat",
+        "engineA": "Oblong",
+        "engineB": "Obese",
         "type": "Env->Decay",
         "amount": 0.5
       }

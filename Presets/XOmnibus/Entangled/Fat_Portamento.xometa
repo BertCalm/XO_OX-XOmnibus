@@ -3,8 +3,8 @@
   "name": "Fat Portamento",
   "mood": "Entangled",
   "engines": [
-    "Fat",
-    "Dub"
+    "Obese",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -36,7 +36,7 @@
     "aggression": 0.45
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.45,
       "fat_mojo": 0.6,
       "fat_subLevel": 0.35,
@@ -69,7 +69,7 @@
       "fat_glide": 0.3,
       "fat_polyphony": 0
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 1,
       "dub_oscOctave": 1,
       "dub_oscTune": 0.0,
@@ -111,8 +111,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Dub",
+        "engineA": "Obese",
+        "engineB": "Overdub",
         "type": "Amp->Filter",
         "amount": 0.45
       }

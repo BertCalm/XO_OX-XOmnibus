@@ -3,8 +3,8 @@
   "name": "Morph_Bob_Ghost_Layer",
   "mood": "Aether",
   "engines": [
-    "Morph",
-    "Bob"
+    "OddOscar",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -33,7 +33,7 @@
     "aggression": 0.04
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.4,
       "morph_bloom": 0.88,
       "morph_decay": 7.0,
@@ -47,7 +47,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -94,8 +94,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Bob",
+        "engineA": "OddOscar",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.2
       }

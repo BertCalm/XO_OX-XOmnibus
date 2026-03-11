@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Snap Pitch",
   "mood": "Foundation",
-  "engines": ["Snap"],
+  "engines": ["OddfeliX"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "SNAP as a melodic pitched transient — follows note pitch with envelope decay. Pluck attack, instant character, usable as a tonal accent in any arrangement.",
@@ -19,7 +19,7 @@
     "aggression": 0.55
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 0,
       "snap_snap": 0.6,
       "snap_decay": 0.3,

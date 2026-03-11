@@ -3,9 +3,9 @@
   "name": "Fat_Drift_Bob_Three",
   "mood": "Entangled",
   "engines": [
-    "Fat",
-    "Drift",
-    "Bob"
+    "Obese",
+    "Odyssey",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.18
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.42,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.38,
@@ -68,7 +68,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -108,7 +108,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -155,14 +155,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Drift",
+        "engineA": "Obese",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.28
       },
       {
-        "engineA": "Bob",
-        "engineB": "Fat",
+        "engineA": "Oblong",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.42
       }

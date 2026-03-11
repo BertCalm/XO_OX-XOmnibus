@@ -3,9 +3,9 @@
   "name": "Fat_Morph_Dub_Trio",
   "mood": "Foundation",
   "engines": [
-    "Fat",
-    "Morph",
-    "Dub"
+    "Obese",
+    "OddOscar",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.22
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.42,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.3,
@@ -68,7 +68,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.62,
       "morph_decay": 2.0,
@@ -82,7 +82,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,

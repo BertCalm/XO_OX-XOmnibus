@@ -3,9 +3,9 @@
   "name": "Drift_Fat_Bob_Coupled",
   "mood": "Entangled",
   "engines": [
-    "Drift",
-    "Fat",
-    "Bob"
+    "Odyssey",
+    "Obese",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.22
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -75,7 +75,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.48,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.35,
@@ -108,7 +108,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -155,14 +155,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
-        "engineB": "Fat",
+        "engineA": "Odyssey",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.35
       },
       {
-        "engineA": "Fat",
-        "engineB": "Bob",
+        "engineA": "Obese",
+        "engineB": "Oblong",
         "type": "Pitch->Pitch",
         "amount": 0.48
       }

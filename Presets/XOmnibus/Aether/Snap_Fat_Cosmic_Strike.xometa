@@ -3,8 +3,8 @@
   "name": "Snap_Fat_Cosmic_Strike",
   "mood": "Aether",
   "engines": [
-    "Snap",
-    "Fat"
+    "OddfeliX",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -33,7 +33,7 @@
     "aggression": 0.08
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -46,7 +46,7 @@
       "snap_release": 0.1,
       "snap_level": 0.3
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.45,
@@ -83,8 +83,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Fat",
+        "engineA": "OddfeliX",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.15
       }

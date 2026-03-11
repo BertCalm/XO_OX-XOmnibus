@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Arp Cascade",
   "mood": "Flux",
-  "engines": ["Fat"],
+  "engines": ["Obese"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rising 3-octave arpeggio with 1/16 rate. Fat multi-osc stabs cascading upward.",
@@ -19,7 +19,7 @@
     "aggression": 0.25
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.33,
       "fat_mojo": 0.5,
       "fat_subLevel": 0.0,

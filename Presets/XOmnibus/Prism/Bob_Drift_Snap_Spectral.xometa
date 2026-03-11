@@ -3,9 +3,9 @@
   "name": "Bob_Drift_Snap_Spectral",
   "mood": "Prism",
   "engines": [
-    "Bob",
-    "Drift",
-    "Snap"
+    "Oblong",
+    "Odyssey",
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.42
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -78,7 +78,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -118,7 +118,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -135,14 +135,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Bob",
+        "engineA": "OddfeliX",
+        "engineB": "Oblong",
         "type": "Audio->Ring",
         "amount": 0.38
       },
       {
-        "engineA": "Bob",
-        "engineB": "Drift",
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.3
       }

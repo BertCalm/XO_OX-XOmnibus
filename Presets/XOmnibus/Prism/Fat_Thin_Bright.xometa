@@ -3,7 +3,7 @@
   "name": "Fat_Thin_Bright",
   "mood": "Prism",
   "engines": [
-    "Fat"
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -32,7 +32,7 @@
     "aggression": 0.32
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.92,
       "fat_mojo": 0.25,
       "fat_subLevel": 0.05,

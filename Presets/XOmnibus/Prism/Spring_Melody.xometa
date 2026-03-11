@@ -17,7 +17,7 @@
   "name": "Spring Melody",
   "mood": "Prism",
   "engines": [
-    "Dub"
+    "Overdub"
   ],
   "description": "Melodic line through a spring reverb \u2014 notes bloom into tonal clouds.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.1
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,

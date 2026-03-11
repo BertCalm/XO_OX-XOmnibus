@@ -3,8 +3,8 @@
   "name": "Snap Drift Bell",
   "mood": "Prism",
   "engines": [
-    "Snap",
-    "Drift"
+    "OddfeliX",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -36,7 +36,7 @@
     "aggression": 0.4
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_snap": 0.65,
       "snap_decay": 0.4,
@@ -48,7 +48,7 @@
       "snap_unison": 0,
       "snap_polyphony": 2
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 2,
       "drift_oscA_tune": 12.0,
@@ -92,8 +92,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Drift",
+        "engineA": "OddfeliX",
+        "engineB": "Odyssey",
         "type": "Audio->Ring",
         "amount": 0.45
       }

@@ -13,8 +13,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "Drift",
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.4
       }
@@ -24,8 +24,8 @@
   "name": "Drift Bob Orbit",
   "mood": "Entangled",
   "engines": [
-    "Drift",
-    "Bob"
+    "Odyssey",
+    "Oblong"
   ],
   "description": "BOB's warmth orbits DRIFT's alien core \u2014 familiar and strange in balance.",
   "tags": [
@@ -44,7 +44,7 @@
     "aggression": 0.12
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 1,
       "drift_oscA_level": 0.5,
       "drift_oscA_detune": 0.4,
@@ -58,7 +58,7 @@
       "drift_level": 0.6,
       "drift_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_drift": 0.12,

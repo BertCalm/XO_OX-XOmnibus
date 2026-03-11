@@ -3,8 +3,8 @@
   "name": "Bob Drift Weave",
   "mood": "Entangled",
   "engines": [
-    "Bob",
-    "Drift"
+    "Oblong",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -33,7 +33,7 @@
     "aggression": 0.05
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.55,
       "bob_oscA_tune": 0.0,
@@ -76,7 +76,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 3
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 12.0,
@@ -120,8 +120,8 @@
   "coupling": {
     "routes": [
       {
-        "source": "Drift",
-        "dest": "Bob",
+        "source": "Odyssey",
+        "dest": "Oblong",
         "type": "AmpToFilter",
         "amount": 0.45
       }

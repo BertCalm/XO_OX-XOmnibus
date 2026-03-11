@@ -3,7 +3,7 @@
   "name": "Recycled Echoes",
   "mood": "Entangled",
   "engines": [
-    "Dub",
+    "Overdub",
     "XOrganon"
   ],
   "author": "XO_OX",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 1,
       "dub_level": 0.6,
       "dub_filterCutoff": 1500.0,
@@ -63,7 +63,7 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
+        "engineA": "Overdub",
         "engineB": "XOrganon",
         "type": "Audio->FM",
         "amount": 0.6

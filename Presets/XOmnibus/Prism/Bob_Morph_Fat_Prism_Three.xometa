@@ -3,9 +3,9 @@
   "name": "Bob_Morph_Fat_Prism_Three",
   "mood": "Prism",
   "engines": [
-    "Bob",
-    "Morph",
-    "Fat"
+    "Oblong",
+    "OddOscar",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.38
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -78,7 +78,7 @@
       "bob_glide": 0.05,
       "bob_polyphony": 0
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.72,
       "morph_bloom": 0.8,
       "morph_decay": 2.0,
@@ -92,7 +92,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.88,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.08,
@@ -129,14 +129,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Fat",
+        "engineA": "OddOscar",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.42
       },
       {
-        "engineA": "Bob",
-        "engineB": "Morph",
+        "engineA": "Oblong",
+        "engineB": "OddOscar",
         "type": "Filter->Filter",
         "amount": 0.42
       }

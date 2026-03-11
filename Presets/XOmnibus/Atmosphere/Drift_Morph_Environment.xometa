@@ -3,8 +3,8 @@
   "name": "Drift Morph Environment",
   "mood": "Atmosphere",
   "engines": [
-    "Drift",
-    "Morph"
+    "Odyssey",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -34,7 +34,7 @@
     "aggression": 0.0
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 12.0,
@@ -74,7 +74,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.1,
       "morph_bloom": 0.85,
       "morph_decay": 6.0,
@@ -92,8 +92,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Drift",
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
         "type": "Env->Morph",
         "amount": 0.4
       }

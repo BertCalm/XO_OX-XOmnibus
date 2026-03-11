@@ -3,9 +3,9 @@
   "name": "Fat_Bob_Dub_Three",
   "mood": "Entangled",
   "engines": [
-    "Fat",
-    "Bob",
-    "Dub"
+    "Obese",
+    "Oblong",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -34,7 +34,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.45,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.35,
@@ -67,7 +67,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -110,7 +110,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -152,14 +152,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Bob",
+        "engineA": "Obese",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.42
       },
       {
-        "engineA": "Bob",
-        "engineB": "Dub",
+        "engineA": "Oblong",
+        "engineB": "Overdub",
         "type": "Rhythm->Blend",
         "amount": 0.42
       }

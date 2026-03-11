@@ -3,9 +3,9 @@
   "name": "Fat_Morph_Snap_Prism",
   "mood": "Prism",
   "engines": [
-    "Fat",
-    "Morph",
-    "Snap"
+    "Obese",
+    "OddOscar",
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.45
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.82,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.12,
@@ -68,7 +68,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.65,
       "morph_bloom": 0.75,
       "morph_decay": 2.0,
@@ -82,7 +82,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -99,14 +99,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Morph",
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
         "type": "Env->Morph",
         "amount": 0.62
       },
       {
-        "engineA": "Morph",
-        "engineB": "Fat",
+        "engineA": "OddOscar",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.42
       }

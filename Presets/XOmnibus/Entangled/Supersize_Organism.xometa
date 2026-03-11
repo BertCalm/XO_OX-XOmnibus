@@ -3,7 +3,7 @@
   "name": "Supersize Organism",
   "mood": "Entangled",
   "engines": [
-    "Fat",
+    "Obese",
     "XOrganon"
   ],
   "author": "XO_OX",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_oscMode": 1,
       "fat_unisonVoices": 7,
       "fat_detune": 0.3,
@@ -59,7 +59,7 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
+        "engineA": "Obese",
         "engineB": "XOrganon",
         "type": "Audio->FM",
         "amount": 0.7

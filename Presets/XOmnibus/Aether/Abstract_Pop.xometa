@@ -17,7 +17,7 @@
   "name": "Abstract Pop",
   "mood": "Aether",
   "engines": [
-    "Snap"
+    "OddfeliX"
   ],
   "description": "Detuned abstract snap \u2014 no sonic reference point, pure transient concept.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.25
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 7.0,
       "snap_oscShape": 0.7,
