@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Host Response",
+  "mood": "Entangled",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The organism's immune response to foreign audio input.",
+  "tags": [
+    "immune",
+    "response",
+    "foreign",
+    "reactive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 3.0,
+      "organon_enzymeSelect": 2000.0,
+      "organon_catalystDrive": 0.8,
+      "organon_dampingCoeff": 0.25,
+      "organon_signalFlux": 0.85,
+      "organon_phasonShift": 0.2,
+      "organon_isotopeBalance": 0.55,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.2,
+      "organon_noiseColor": 0.55
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.4,
+    "movement": 0.5,
+    "density": 0.55,
+    "space": 0.2,
+    "aggression": 0.35
+  }
+}

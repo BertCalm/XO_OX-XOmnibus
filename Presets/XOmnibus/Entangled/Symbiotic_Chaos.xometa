@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "name": "Symbiotic Chaos",
+  "mood": "Entangled",
+  "engines": ["XOuroboros"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Lorenz attractor with moderate injection and loose leash. Two engines feeding each other in mutual chaotic symbiosis.",
+  "tags": ["coupled", "evolving", "chaotic", "medium"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "XOuroboros": {
+      "ouro_topology": 0,
+      "ouro_rate": 147.0,
+      "ouro_chaosIndex": 0.45,
+      "ouro_leash": 0.3,
+      "ouro_theta": 0.7,
+      "ouro_phi": 0.3,
+      "ouro_damping": 0.35,
+      "ouro_injection": 0.6
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.4,
+    "movement": 0.7,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.4
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Deep Hibernation",
+  "mood": "Aether",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Organism in suspended animation. Barely alive.",
+  "tags": [
+    "hibernation",
+    "suspended",
+    "minimal",
+    "barely"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 0.1,
+      "organon_enzymeSelect": 800.0,
+      "organon_catalystDrive": 0.2,
+      "organon_dampingCoeff": 0.03,
+      "organon_signalFlux": 0.2,
+      "organon_phasonShift": 0.0,
+      "organon_isotopeBalance": 0.4,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.5,
+      "organon_noiseColor": 0.4
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.5,
+    "movement": 0.05,
+    "density": 0.15,
+    "space": 0.5,
+    "aggression": 0.02
+  }
+}

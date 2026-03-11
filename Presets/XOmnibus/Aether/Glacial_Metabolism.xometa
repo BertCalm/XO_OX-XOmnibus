@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Glacial Metabolism",
+  "mood": "Aether",
+  "engines": [
+    "Morph",
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-slow Organon fed by MORPH's glacial wavetable. Minutes-long evolution.",
+  "tags": [
+    "morph",
+    "organon",
+    "glacial",
+    "ultra-slow",
+    "minutes"
+  ],
+  "macroLabels": [
+    "MORPH WAVE",
+    "GLACIAL",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Morph": {
+      "morph_waveA": 0,
+      "morph_waveB": 1,
+      "morph_position": 0.2,
+      "morph_filterCutoff": 1500.0,
+      "morph_attack": 3.0,
+      "morph_decay": 10.0,
+      "morph_sustain": 0.8,
+      "morph_release": 5.0,
+      "morph_level": 0.4
+    },
+    "XOrganon": {
+      "organon_metabolicRate": 0.1,
+      "organon_enzymeSelect": 800.0,
+      "organon_catalystDrive": 0.35,
+      "organon_dampingCoeff": 0.04,
+      "organon_signalFlux": 0.5,
+      "organon_phasonShift": 0.0,
+      "organon_isotopeBalance": 0.4,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.55,
+      "organon_noiseColor": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Morph",
+        "engineB": "XOrganon",
+        "type": "Audio->FM",
+        "amount": 0.3
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.55,
+    "movement": 0.2,
+    "density": 0.35,
+    "space": 0.55,
+    "aggression": 0.03
+  }
+}

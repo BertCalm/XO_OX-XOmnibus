@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Pond Floor",
+  "mood": "Foundation",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Still, deep pad with occasional harmonic bubbles.",
+  "tags": [
+    "still",
+    "deep",
+    "pond",
+    "meditative"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 0.35,
+      "organon_enzymeSelect": 500.0,
+      "organon_catalystDrive": 0.5,
+      "organon_dampingCoeff": 0.15,
+      "organon_signalFlux": 0.6,
+      "organon_phasonShift": 0.08,
+      "organon_isotopeBalance": 0.22,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.2,
+      "organon_noiseColor": 0.3
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.7,
+    "movement": 0.15,
+    "density": 0.4,
+    "space": 0.2,
+    "aggression": 0.05
+  }
+}

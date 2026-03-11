@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Dew Point",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Condensing atmosphere. Harmonics collect and drip.",
+  "tags": [
+    "condensing",
+    "dripping",
+    "delicate",
+    "collecting"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 0.9,
+      "organon_enzymeSelect": 3500.0,
+      "organon_catalystDrive": 0.3,
+      "organon_dampingCoeff": 0.15,
+      "organon_signalFlux": 0.4,
+      "organon_phasonShift": 0.05,
+      "organon_isotopeBalance": 0.65,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.45,
+      "organon_noiseColor": 0.7
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.45,
+    "movement": 0.25,
+    "density": 0.25,
+    "space": 0.45,
+    "aggression": 0.05
+  }
+}

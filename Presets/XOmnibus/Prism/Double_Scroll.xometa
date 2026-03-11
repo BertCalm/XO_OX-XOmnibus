@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "name": "Double Scroll",
+  "mood": "Prism",
+  "engines": ["XOuroboros"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Chua circuit at mid chaos with projection offsets revealing the double-scroll signature. Complex, folding timbre.",
+  "tags": ["complex", "textural", "bright", "experimental"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "XOuroboros": {
+      "ouro_topology": 2,
+      "ouro_rate": 247.0,
+      "ouro_chaosIndex": 0.6,
+      "ouro_leash": 0.3,
+      "ouro_theta": 1.0,
+      "ouro_phi": 0.8,
+      "ouro_damping": 0.15,
+      "ouro_injection": 0.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.2,
+    "movement": 0.6,
+    "density": 0.65,
+    "space": 0.25,
+    "aggression": 0.55
+  }
+}

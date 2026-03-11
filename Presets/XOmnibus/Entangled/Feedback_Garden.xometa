@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Feedback Garden",
+  "mood": "Entangled",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Self-reinforcing coupling loop. Harmonics bloom endlessly.",
+  "tags": [
+    "feedback",
+    "loop",
+    "blooming",
+    "garden"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 0.8,
+      "organon_enzymeSelect": 1500.0,
+      "organon_catalystDrive": 0.6,
+      "organon_dampingCoeff": 0.08,
+      "organon_signalFlux": 0.8,
+      "organon_phasonShift": 0.15,
+      "organon_isotopeBalance": 0.55,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.4,
+      "organon_noiseColor": 0.55
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.4,
+    "density": 0.55,
+    "space": 0.4,
+    "aggression": 0.15
+  }
+}

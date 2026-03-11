@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Endosymbiont",
+  "mood": "Entangled",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Lives inside another engine. Deeply integrated coupling.",
+  "tags": [
+    "endo",
+    "deep",
+    "integrated",
+    "symbiont"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 0.5,
+      "organon_enzymeSelect": 1000.0,
+      "organon_catalystDrive": 0.5,
+      "organon_dampingCoeff": 0.1,
+      "organon_signalFlux": 0.9,
+      "organon_phasonShift": 0.05,
+      "organon_isotopeBalance": 0.48,
+      "organon_lockIn": 0.4,
+      "organon_membrane": 0.3,
+      "organon_noiseColor": 0.48
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.55,
+    "movement": 0.35,
+    "density": 0.55,
+    "space": 0.3,
+    "aggression": 0.12
+  }
+}

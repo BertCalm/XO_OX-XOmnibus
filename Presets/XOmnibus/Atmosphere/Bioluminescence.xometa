@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Bioluminescence",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Glowing deep-sea atmosphere with cyan radiance.",
+  "tags": [
+    "glowing",
+    "deep-sea",
+    "bioluminescent",
+    "radiant"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 0.6,
+      "organon_enzymeSelect": 2000.0,
+      "organon_catalystDrive": 0.5,
+      "organon_dampingCoeff": 0.08,
+      "organon_signalFlux": 0.55,
+      "organon_phasonShift": 0.1,
+      "organon_isotopeBalance": 0.58,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.5,
+      "organon_noiseColor": 0.6
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.3,
+    "density": 0.4,
+    "space": 0.5,
+    "aggression": 0.08
+  }
+}

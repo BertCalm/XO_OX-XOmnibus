@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Cell Wall",
+  "mood": "Foundation",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Firm, defined pad with clear harmonic edges.",
+  "tags": [
+    "firm",
+    "defined",
+    "clear",
+    "structural"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 0.7,
+      "organon_enzymeSelect": 2000.0,
+      "organon_catalystDrive": 0.65,
+      "organon_dampingCoeff": 0.25,
+      "organon_signalFlux": 0.5,
+      "organon_phasonShift": 0.0,
+      "organon_isotopeBalance": 0.55,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.15,
+      "organon_noiseColor": 0.55
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.15,
+    "density": 0.5,
+    "space": 0.15,
+    "aggression": 0.2
+  }
+}

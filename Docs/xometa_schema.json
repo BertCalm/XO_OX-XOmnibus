@@ -24,7 +24,7 @@
       "type": "array",
       "items": {
         "type": "string",
-        "enum": ["XOddCouple", "XOverdub", "XOdyssey", "XOblongBob", "XObese", "XOnset"]
+        "enum": ["XOddCouple", "XOverdub", "XOdyssey", "XOblongBob", "XObese", "XOnset", "XOrganon"]
       },
       "minItems": 1,
       "maxItems": 3,
@@ -99,7 +99,7 @@
       "type": "object",
       "description": "Per-engine parameter maps. Keys are engine names, values are {paramID: rawValue} objects. Only non-default values need to be stored.",
       "patternProperties": {
-        "^(XOddCouple|XOverdub|XOdyssey|XOblongBob|XObese|XOnset)$": {
+        "^(XOddCouple|XOverdub|XOdyssey|XOblongBob|XObese|XOnset|XOrganon)$": {
           "type": "object",
           "description": "Parameter overrides for this engine — keys are APVTS parameter IDs, values are raw parameter values"
         }
@@ -168,6 +168,24 @@
       },
       "required": ["brightness", "warmth", "movement", "density", "space", "aggression"],
       "additionalProperties": false
+    },
+
+    "starterFor": {
+      "type": "string",
+      "enum": ["Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Onset", "Overworld", "Opal", "Organon", "Ouroboros"],
+      "description": "Designates this preset as the Module Starter for the named engine. Exactly one preset per engine should have this field. Auto-loaded when user adds this engine to an empty slot."
+    },
+
+    "recipe": {
+      "type": "string",
+      "maxLength": 25,
+      "description": "Soft reference to the recipe this preset was built on. Enables 'show presets for this recipe' filtering. Not a dependency — preset loads independently if recipe is missing."
+    },
+
+    "parentPreset": {
+      "type": "string",
+      "maxLength": 30,
+      "description": "Name of the factory preset this was derived from. Enables lineage tracking and 'show variants' browsing. Flat lineage: variants of variants still point to the original factory preset."
     },
 
     "sequencer": {

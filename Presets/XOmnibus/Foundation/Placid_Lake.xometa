@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Placid Lake",
+  "mood": "Foundation",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Mirror-smooth pad. Calm, reflective, spacious.",
+  "tags": [
+    "calm",
+    "smooth",
+    "reflective",
+    "spacious"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 0.3,
+      "organon_enzymeSelect": 1800.0,
+      "organon_catalystDrive": 0.35,
+      "organon_dampingCoeff": 0.08,
+      "organon_signalFlux": 0.45,
+      "organon_phasonShift": 0.0,
+      "organon_isotopeBalance": 0.55,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.45,
+      "organon_noiseColor": 0.6
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.1,
+    "density": 0.25,
+    "space": 0.45,
+    "aggression": 0.03
+  }
+}

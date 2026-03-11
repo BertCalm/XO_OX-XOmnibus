@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Aurora Wash",
+  "mood": "Atmosphere",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Shimmering curtains of harmonic light overhead.",
+  "tags": [
+    "aurora",
+    "shimmer",
+    "curtains",
+    "celestial"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 0.8,
+      "organon_enzymeSelect": 4000.0,
+      "organon_catalystDrive": 0.35,
+      "organon_dampingCoeff": 0.08,
+      "organon_signalFlux": 0.45,
+      "organon_phasonShift": 0.15,
+      "organon_isotopeBalance": 0.72,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.6,
+      "organon_noiseColor": 0.75
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.4,
+    "movement": 0.4,
+    "density": 0.3,
+    "space": 0.6,
+    "aggression": 0.05
+  }
+}

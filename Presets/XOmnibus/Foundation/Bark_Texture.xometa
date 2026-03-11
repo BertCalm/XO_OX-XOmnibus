@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Bark Texture",
+  "mood": "Foundation",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Rough, woody pad with natural grain.",
+  "tags": [
+    "rough",
+    "woody",
+    "texture",
+    "natural"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 0.7,
+      "organon_enzymeSelect": 700.0,
+      "organon_catalystDrive": 0.65,
+      "organon_dampingCoeff": 0.28,
+      "organon_signalFlux": 0.6,
+      "organon_phasonShift": 0.0,
+      "organon_isotopeBalance": 0.3,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.1,
+      "organon_noiseColor": 0.35
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.65,
+    "movement": 0.15,
+    "density": 0.55,
+    "space": 0.1,
+    "aggression": 0.3
+  }
+}

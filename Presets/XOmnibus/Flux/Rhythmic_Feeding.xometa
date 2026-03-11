@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Rhythmic Feeding",
+  "mood": "Flux",
+  "engines": [
+    "Onset",
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ONSET provides rhythmic nutrients. Organon locked to groove tempo.",
+  "tags": [
+    "onset",
+    "organon",
+    "rhythm",
+    "tempo",
+    "feeding"
+  ],
+  "macroLabels": [
+    "DRUM FEED",
+    "METABOLISM",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": 120,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Onset": {
+      "onset_drumKit": 1,
+      "onset_level": 0.7,
+      "onset_attack": 0.001,
+      "onset_decay": 0.15
+    },
+    "XOrganon": {
+      "organon_metabolicRate": 2.0,
+      "organon_enzymeSelect": 1500.0,
+      "organon_catalystDrive": 0.7,
+      "organon_dampingCoeff": 0.25,
+      "organon_signalFlux": 0.8,
+      "organon_phasonShift": 0.3,
+      "organon_isotopeBalance": 0.5,
+      "organon_lockIn": 0.7,
+      "organon_membrane": 0.2,
+      "organon_noiseColor": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "XOrganon",
+        "type": "Audio->FM",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Onset",
+        "engineB": "XOrganon",
+        "type": "Rhythm->Blend",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.4,
+    "movement": 0.7,
+    "density": 0.5,
+    "space": 0.2,
+    "aggression": 0.3
+  }
+}

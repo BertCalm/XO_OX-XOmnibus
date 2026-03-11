@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Entropy Flux",
+  "mood": "Flux",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Chaotic entropy fluctuations creating glitchy rhythm.",
+  "tags": [
+    "entropy",
+    "chaotic",
+    "glitchy",
+    "fluctuating"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 6.0,
+      "organon_enzymeSelect": 4000.0,
+      "organon_catalystDrive": 0.9,
+      "organon_dampingCoeff": 0.35,
+      "organon_signalFlux": 0.8,
+      "organon_phasonShift": 0.7,
+      "organon_isotopeBalance": 0.7,
+      "organon_lockIn": 0.3,
+      "organon_membrane": 0.1,
+      "organon_noiseColor": 0.7
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.25,
+    "movement": 0.8,
+    "density": 0.5,
+    "space": 0.1,
+    "aggression": 0.45
+  }
+}

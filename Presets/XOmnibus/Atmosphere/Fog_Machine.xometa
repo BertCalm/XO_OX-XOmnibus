@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "name": "Fog Machine",
+  "mood": "Atmosphere",
+  "engines": ["XOuroboros"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Rössler attractor with heavy damping and moderate leash. Washy, diffuse atmosphere like sound dissolving into mist.",
+  "tags": ["pad", "ambient", "washy", "diffuse"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "XOuroboros": {
+      "ouro_topology": 1,
+      "ouro_rate": 130.0,
+      "ouro_chaosIndex": 0.2,
+      "ouro_leash": 0.5,
+      "ouro_theta": 0.0,
+      "ouro_phi": 0.7,
+      "ouro_damping": 0.8,
+      "ouro_injection": 0.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.6,
+    "movement": 0.3,
+    "density": 0.25,
+    "space": 0.85,
+    "aggression": 0.0
+  }
+}

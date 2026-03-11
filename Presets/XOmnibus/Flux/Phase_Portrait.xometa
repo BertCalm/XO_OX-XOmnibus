@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "name": "Phase Portrait",
+  "mood": "Flux",
+  "engines": ["XOuroboros"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Aizawa attractor with mid leash and interesting projection offsets. Rhythmic, shifting harmonic portrait that breathes.",
+  "tags": ["rhythmic", "shifting", "evolving", "animated"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "XOuroboros": {
+      "ouro_topology": 3,
+      "ouro_rate": 175.0,
+      "ouro_chaosIndex": 0.6,
+      "ouro_leash": 0.5,
+      "ouro_theta": 1.57,
+      "ouro_phi": -1.05,
+      "ouro_damping": 0.3,
+      "ouro_injection": 0.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.45,
+    "movement": 0.8,
+    "density": 0.5,
+    "space": 0.35,
+    "aggression": 0.3
+  }
+}

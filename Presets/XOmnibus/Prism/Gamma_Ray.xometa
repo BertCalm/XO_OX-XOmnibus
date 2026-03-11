@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Gamma Ray",
+  "mood": "Prism",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "High-energy burst with extreme upper partial content.",
+  "tags": [
+    "gamma",
+    "high-energy",
+    "extreme",
+    "burst"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 10.0,
+      "organon_enzymeSelect": 10000.0,
+      "organon_catalystDrive": 1.5,
+      "organon_dampingCoeff": 0.5,
+      "organon_signalFlux": 0.75,
+      "organon_phasonShift": 0.0,
+      "organon_isotopeBalance": 0.95,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.05,
+      "organon_noiseColor": 0.95
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.05,
+    "movement": 0.4,
+    "density": 0.5,
+    "space": 0.05,
+    "aggression": 0.65
+  }
+}

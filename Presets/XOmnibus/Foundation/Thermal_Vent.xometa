@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Thermal Vent",
+  "mood": "Foundation",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Warm upwelling of harmonics from deep sub-bass.",
+  "tags": [
+    "thermal",
+    "warm",
+    "upwelling",
+    "sub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 0.5,
+      "organon_enzymeSelect": 350.0,
+      "organon_catalystDrive": 0.7,
+      "organon_dampingCoeff": 0.15,
+      "organon_signalFlux": 0.8,
+      "organon_phasonShift": 0.1,
+      "organon_isotopeBalance": 0.15,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.15,
+      "organon_noiseColor": 0.25
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.8,
+    "movement": 0.3,
+    "density": 0.55,
+    "space": 0.15,
+    "aggression": 0.2
+  }
+}

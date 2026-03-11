@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Drum Digestion",
+  "mood": "Entangled",
+  "engines": [
+    "Snap",
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Organon slowly digests SNAP hits into evolving pad harmonics.",
+  "tags": [
+    "drum",
+    "digest",
+    "snap",
+    "organon",
+    "slow"
+  ],
+  "macroLabels": [
+    "PERCUSS",
+    "DIGEST",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Snap": {
+      "snap_oscMode": 0,
+      "snap_filterCutoff": 2000.0,
+      "snap_resonance": 0.5,
+      "snap_attack": 0.001,
+      "snap_decay": 0.3,
+      "snap_sustain": 0.0,
+      "snap_release": 0.2,
+      "snap_level": 0.7
+    },
+    "XOrganon": {
+      "organon_metabolicRate": 0.5,
+      "organon_enzymeSelect": 800.0,
+      "organon_catalystDrive": 0.6,
+      "organon_dampingCoeff": 0.1,
+      "organon_signalFlux": 0.8,
+      "organon_phasonShift": 0.0,
+      "organon_isotopeBalance": 0.35,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.4,
+      "organon_noiseColor": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Snap",
+        "engineB": "XOrganon",
+        "type": "Audio->FM",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.45,
+    "space": 0.4,
+    "aggression": 0.15
+  }
+}

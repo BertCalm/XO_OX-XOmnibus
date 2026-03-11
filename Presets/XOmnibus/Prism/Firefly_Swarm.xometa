@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Firefly Swarm",
+  "mood": "Prism",
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Rapid tiny harmonic bursts like a cloud of fireflies.",
+  "tags": [
+    "firefly",
+    "swarm",
+    "rapid",
+    "bursts"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "XOrganon": {
+      "organon_metabolicRate": 6.0,
+      "organon_enzymeSelect": 4500.0,
+      "organon_catalystDrive": 0.5,
+      "organon_dampingCoeff": 0.35,
+      "organon_signalFlux": 0.55,
+      "organon_phasonShift": 0.4,
+      "organon_isotopeBalance": 0.72,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.25,
+      "organon_noiseColor": 0.72
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.3,
+    "movement": 0.65,
+    "density": 0.35,
+    "space": 0.25,
+    "aggression": 0.2
+  }
+}
