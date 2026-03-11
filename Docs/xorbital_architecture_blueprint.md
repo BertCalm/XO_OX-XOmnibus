@@ -1110,7 +1110,7 @@ Output (stereo)
 ```cpp
 // In PresetManager.h, line 12-17:
 inline const juce::StringArray validEngineNames {
-    "XOddCouple", "XOverdub", "XOdyssey", "XOblongBob", "XObese", "XOnset",
+    "OddfeliX/OddOscar", "XOverdub", "XOdyssey", "XOblong", "XObese", "XOnset",
     "Overworld", "Opal", "Orbital", "XOrbital",  // ← ADD
     "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Onset"
 };

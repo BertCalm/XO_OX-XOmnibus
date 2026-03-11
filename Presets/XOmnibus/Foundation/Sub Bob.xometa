@@ -3,7 +3,7 @@
   "name": "Sub Bob",
   "mood": "Foundation",
   "engines": [
-    "XOblongBob"
+    "XOblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -23,12 +23,12 @@
   "tempo": null,
   "created": "2026-03-08",
   "legacy": {
-    "sourceInstrument": "XOblongBob",
+    "sourceInstrument": "XOblong",
     "sourceCategory": "Warm Bass",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOblongBob": {
+    "XOblong": {
       "oscA_wave": 0.0,
       "oscA_tune": -12.0,
       "oscA_shape": 0.2,

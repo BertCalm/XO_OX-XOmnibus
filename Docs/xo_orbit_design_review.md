@@ -18,7 +18,7 @@ The codebase already contains `OrbitalEngine` — a **64-partial additive synthe
 - Distinct from every other engine name — no possible confusion with Orbital.
 - The "Leash" mechanic literally controls how tightly the serpent bites its own tail (100% = closed loop = repeating waveform, 0% = open trajectory = pure chaos).
 - Parameter prefix: `ouro_` (short, distinctive, no collision).
-- Accent color suggestion: **Strange Attractor Red** `#FF2D2D` — hot, volatile, distinct from Orbital's coral `#FF6B6B` and Snap's terracotta `#C8553D`.
+- Accent color suggestion: **Strange Attractor Red** `#FF2D2D` — hot, volatile, distinct from Orbital's coral `#FF6B6B` and Snap's terracotta `#00A6D6`.
 
 ### Alternatives considered:
 - **XOmen** — evocative but tonally dark/negative for a creative tool.
@@ -242,7 +242,7 @@ Matching Orbital's 6 voices. Chaotic attractors are computationally lighter per-
 
 Evokes heat, energy, volatility. Distinct from:
 - Orbital's coral `#FF6B6B`
-- Snap's terracotta `#C8553D`
+- Snap's terracotta `#00A6D6`
 - Fat's hot pink `#FF1493`
 
 ---

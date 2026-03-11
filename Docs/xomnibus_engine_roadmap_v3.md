@@ -10,11 +10,11 @@
 
 | Code | Source | Role | Status |
 |------|--------|------|--------|
-| SNAP | XOddCouple X | Percussive / rhythmic | Integrated |
-| MORPH | XOddCouple O | Wavetable pads | Integrated |
+| SNAP | OddfeliX/OddOscar X | Percussive / rhythmic | Integrated |
+| MORPH | OddfeliX/OddOscar O | Wavetable pads | Integrated |
 | DUB | XOverdub | FX send / return bus | Integrated |
 | DRIFT | XOdyssey | Psychedelic pads, Climax | Integrated |
-| BOB | XOblongBob | Warm fuzzy textures | Integrated |
+| BOB | XOblong | Warm fuzzy textures | Integrated |
 | FAT | XObese | Width / thickness, 13-osc | Integrated |
 | ONSET | XOnset | Dedicated drums | Integrated |
 | OVERWORLD | XOverworld | Chip synthesis, 6 engines | Integrated |

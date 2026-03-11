@@ -16,7 +16,7 @@ XOnset fills the only remaining gap in the mega-tool's engine catalog: percussio
 
 **Key integration facts:**
 
-- **Built from scratch** against the `SynthEngine` interface. No legacy wrapping or adapter pattern needed. Every other engine (FAT wraps XOblongBob, SNAP/MORPH wrap XOddCouple, DUB wraps XOverdub) requires an adapter layer. ONSET is native.
+- **Built from scratch** against the `SynthEngine` interface. No legacy wrapping or adapter pattern needed. Every other engine (FAT wraps XOblong, SNAP/MORPH wrap OddfeliX/OddOscar, DUB wraps XOverdub) requires an adapter layer. ONSET is native.
 - **Unique architectural challenge:** XOnset has its own internal 8x8 cross-voice coupling matrix (kick chokes hat, kick ducks snare filter, etc.) that must coexist with the mega-tool's `MegaCouplingMatrix` for cross-engine coupling. No other engine has this dual-matrix situation.
 - **Fixed 8-voice architecture.** Unlike melodic engines where `setMaxVoices()` throttles polyphony under CPU pressure, ONSET always runs 8 dedicated drum voices. Voice reduction does not apply -- you cannot have a kit without a kick.
 
@@ -252,7 +252,7 @@ A potential feedback loop: mega-tool coupling modulates ONSET's kick decay -> ki
 
 ### 4.1 The Sync Problem
 
-XOnset has a built-in 16-step sequencer with per-step parameter locks (blend, pitch, decay, snap per step). The mega-tool's XOddCouple-derived architecture includes a 64-step pattern sequencer for melodic engines.
+XOnset has a built-in 16-step sequencer with per-step parameter locks (blend, pitch, decay, snap per step). The mega-tool's OddfeliX/OddOscar-derived architecture includes a 64-step pattern sequencer for melodic engines.
 
 These must not fight over transport control.
 
@@ -628,7 +628,7 @@ The `xpn_export.py` tool generates the `.xpm` program file. Key settings for dru
 **Goal:** 8 working drum voices with Layer X (circuit topologies) only.
 
 1. Define `xonset` namespace + `Parameters.h` with all ~110 parameter IDs using `perc_` prefix
-2. Implement `ParamSnapshot` for XOnset parameters (reuse pattern from XOddCouple)
+2. Implement `ParamSnapshot` for XOnset parameters (reuse pattern from OddfeliX/OddOscar)
 3. Implement `DrumVoice` base with 4 circuit topologies:
    - Bridged-T kick (V1, V6)
    - Noise-burst snare (V2, V5)

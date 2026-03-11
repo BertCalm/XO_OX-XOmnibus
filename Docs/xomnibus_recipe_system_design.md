@@ -45,7 +45,7 @@ The word "Module" replaces "Engine" in all user-facing UI strings. Users see "Mo
 
 ### Recipe Naming Convention
 
-Modules follow the **XO + O-word** pattern (XOddCouple, XObese, etc.). Recipes should NOT follow this pattern — they are not instruments, they are configurations. Recipe names should be:
+Modules follow the **XO + O-word** pattern (OddfeliX/OddOscar, XObese, etc.). Recipes should NOT follow this pattern — they are not instruments, they are configurations. Recipe names should be:
 
 - **Two words, evocative, lowercase-friendly** — matching the preset naming spirit
 - **Descriptive of sonic result**, not engine contents

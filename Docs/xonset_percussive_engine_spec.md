@@ -365,7 +365,7 @@ This creates **evolving drum patterns** where the synthesis method itself change
 
 ### 6.1 The XO_OX Signature Applied to Drums
 
-Just as XOddCouple couples Engine X and Engine O, XOnset couples drum voices with each other. This is what makes it an XO_OX instrument rather than just another drum synth.
+Just as OddfeliX/OddOscar couples Engine X and Engine O, XOnset couples drum voices with each other. This is what makes it an XO_OX instrument rather than just another drum synth.
 
 ```
 ┌─────────────────────────────────────────┐
@@ -512,7 +512,7 @@ This means every finger drum hit can have a different synthesis character based 
 
 ### 8.1 Four Performance Macros (Gold Knobs)
 
-Following the XOddCouple pattern of 4 macros on the header bar:
+Following the OddfeliX/OddOscar pattern of 4 macros on the header bar:
 
 | Macro | Name | What It Controls | Musical Intent |
 |-------|------|-----------------|---------------|
@@ -523,7 +523,7 @@ Following the XOddCouple pattern of 4 macros on the header bar:
 
 ### 8.2 MACHINE Macro — The Signature Control
 
-The MACHINE macro is XOnset's equivalent of XOddCouple's Coupling Amount knob — the single control that defines the instrument's identity.
+The MACHINE macro is XOnset's equivalent of OddfeliX/OddOscar's Coupling Amount knob — the single control that defines the instrument's identity.
 
 ```
 MACHINE = 0.0        MACHINE = 0.5          MACHINE = 1.0
@@ -564,7 +564,7 @@ Each step can override any voice parameter (Elektron-style):
 
 ### 9.3 Probability + Condition Triggers
 
-Borrowed from XOddCouple's sequencer:
+Borrowed from OddfeliX/OddOscar's sequencer:
 
 - Per-step probability (0-100%)
 - Condition triggers: "play every 2nd time", "play only if previous step played"
@@ -595,7 +595,7 @@ Borrowed from XOddCouple's sequencer:
 | **Quantum Kit** | Hybrid | Blend at 0.5 for every voice — sounds unlike any analog or digital drum machine |
 | **Living Machine** | Coupled | Kick↔Snare coupling at 40%, hat↔tom at 25% — the kit breathes and interacts |
 | **Time Stretch** | Morphing | 16-step pattern where blend sweeps from 0→1 across the bar — kit evolves in real time |
-| **Dub Pressure** | XO Fusion | Designed to couple with XOddCouple's Engine O — drum hits pump the pad engine |
+| **Dub Pressure** | XO Fusion | Designed to couple with OddfeliX/OddOscar's Engine O — drum hits pump the pad engine |
 | **Future 909** | Hybrid | 909-inspired architecture but with FM metallic hats and modal toms |
 | **Particle Drums** | Algorithm | Karplus-Strong + Phase Distortion — crystalline, icy, microscopic |
 | **Analog Heart** | Circuit | Self-oscillating filter kicks, noise-burst snares, pure circuit character |
@@ -662,7 +662,7 @@ Borrowed from XOddCouple's sequencer:
 26. Implement cross-engine coupling inputs (external mod → XOnset params)
 27. Implement XO Pad drum mode (pad layout + blend-on-X-axis)
 28. Implement shared FX routing (use mega-tool FX rack when available)
-29. **Test:** XOnset couples with XOddCouple — drum hits pump pad engine
+29. **Test:** XOnset couples with OddfeliX/OddOscar — drum hits pump pad engine
 
 ### Phase 5: Polish + Presets
 

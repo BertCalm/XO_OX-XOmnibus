@@ -44,7 +44,7 @@ Every XO_OX instrument must pass three questions:
 
 1. **What's the XO word?** (XO + O-word naming convention)
    - The name should hint at the instrument's character
-   - Examples: XOddCouple (duality), XOverdub (layering), XOdyssey (journey), XOblongBob (shape/warmth), XObese (weight), XOnset (attack)
+   - Examples: OddfeliX/OddOscar (duality), XOverdub (layering), XOdyssey (journey), XOblong (shape/warmth), XObese (weight), XOnset (attack)
 
 2. **What's the one-sentence thesis?**
    - "XO_____ is a _____ synth that _____"
@@ -62,11 +62,11 @@ Before building, verify the new engine adds something the gallery doesn't have:
 
 | Existing Exhibition | Sonic Territory |
 |---------------------|-----------------|
-| SNAP (XOddCouple X) | Percussive attacks, FM, Karplus-Strong |
-| MORPH (XOddCouple O) | Wavetable pads, Moog ladder warmth |
+| SNAP (OddfeliX/OddOscar X) | Percussive attacks, FM, Karplus-Strong |
+| MORPH (OddfeliX/OddOscar O) | Wavetable pads, Moog ladder warmth |
 | DUB (XOverdub) | Dub delays, send/return FX, tape character |
 | DRIFT (XOdyssey) | Psychedelic pads, formant filters, long journeys |
-| BOB (XOblongBob) | Warm fuzzy textures, curious motion, tactile |
+| BOB (XOblong) | Warm fuzzy textures, curious motion, tactile |
 | FAT (XObese) | Heavy sampler, bold industrial character |
 | ONSET (XOnset) | Percussive synthesis, circuit precision |
 

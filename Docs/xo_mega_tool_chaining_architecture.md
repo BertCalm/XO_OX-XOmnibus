@@ -170,7 +170,7 @@ struct EngineColorProfile
 namespace xo {
 
 /// The contract every engine module must implement to participate in the
-/// XO_OX Mega-Tool. This interface formalizes what XOddCouple's EngineX
+/// XO_OX Mega-Tool. This interface formalizes what OddfeliX/OddOscar's EngineX
 /// and EngineO already do informally.
 ///
 /// Design principles:
@@ -795,7 +795,7 @@ private:
 
         std::vector<CouplingRoute> routes;
 
-        // SNAP + MORPH (XOddCouple legacy coupling)
+        // SNAP + MORPH (OddfeliX/OddOscar legacy coupling)
         if ((idA == "snap" && idB == "morph")
          || (idA == "morph" && idB == "snap"))
         {
@@ -1421,8 +1421,8 @@ Every parameter in the mega-tool follows this pattern:
 |--------|--------|---------|
 | `fat` | FAT (XObese) | `fat_mojo`, `fat_morphPosition`, `fat_filterCutoff` |
 | `bite` | BITE (XOppossum) | `bite_belly`, `bite_gnash`, `bite_filterMode` |
-| `snap` | SNAP (XOddCouple EngX) | `snap_attack`, `snap_filterCutoff`, `snap_decay` |
-| `morph` | MORPH (XOddCouple EngO) | `morph_position`, `morph_bloom`, `morph_filterCutoff` |
+| `snap` | SNAP (OddfeliX/OddOscar EngX) | `snap_attack`, `snap_filterCutoff`, `snap_decay` |
+| `morph` | MORPH (OddfeliX/OddOscar EngO) | `morph_position`, `morph_bloom`, `morph_filterCutoff` |
 | `dub` | DUB (XOverdub) | `dub_sendAmount`, `dub_delayTime`, `dub_delayFeedback` |
 | `drift` | DRIFT (XOdyssey) | `drift_journey`, `drift_shimmer`, `drift_formantVowel` |
 | `onset` | ONSET (XOnset) | `onset_v1Blend`, `onset_v1Pitch`, `onset_v1Decay` |

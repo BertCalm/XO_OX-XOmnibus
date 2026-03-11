@@ -55,7 +55,7 @@ This master spec consolidates 15 foundation documents. When conflicts exist betw
 ### 1.3 Naming Convention
 
 All XO_OX instruments follow the **XO + O-word** pattern:
-- XOddCouple, XOverdub, XOdyssey, XOblongBob, XObese, XOnset
+- OddfeliX/OddOscar, XOverdub, XOdyssey, XOblong, XObese, XOnset
 - XOmnibus continues the pattern as the platform instrument
 
 **Detail:** `xomnibus_brand_identity_and_launch.md`
@@ -68,7 +68,7 @@ All XO_OX instruments follow the **XO + O-word** pattern:
 
 The `SynthEngine` interface is defined now. Each existing instrument wraps its internals behind this interface via a thin adapter layer. Standalone products continue shipping independently. The XOmnibus merge is a mechanical integration step, not a rewrite.
 
-**Core insight:** XOddCouple is already a miniature XOmnibus — two engines, a coupling matrix, shared FX. XOmnibus generalizes that pattern from 2 engines to N.
+**Core insight:** OddfeliX/OddOscar is already a miniature XOmnibus — two engines, a coupling matrix, shared FX. XOmnibus generalizes that pattern from 2 engines to N.
 
 ### 2.2 The SynthEngine Interface
 
@@ -148,11 +148,11 @@ Toggle between modes at any time. Preset data is identical — only UI visibilit
 
 | Short Name | Source | Sonic Role | Voices | CPU Est. | Accent Color |
 |-----------|--------|-----------|--------|----------|-------------|
-| **SNAP** | XOddCouple Engine X | Percussive (PolyBLEP, FM, K-S) | 8 | ~15% | Terracotta `#C8553D` |
-| **MORPH** | XOddCouple Engine O | Pad (wavetable morph, Moog ladder) | 16 | ~15% | Teal `#2A9D8F` |
+| **SNAP** | OddfeliX | Percussive (PolyBLEP, FM, K-S) | 8 | ~15% | Neon Tetra Blue `#00A6D6` |
+| **MORPH** | OddOscar | Pad (wavetable morph, Moog ladder) | 16 | ~15% | Axolotl Gill Pink `#E8839B` |
 | **DUB** | XOverdub | Dub mixing desk (send/return FX) | 8 | ~10% | Olive `#6B7B3A` |
 | **DRIFT** | XOdyssey | Psychedelic pad (Familiar→Alien) | 24 | ~20% | Violet `#7B2D8B` |
-| **BOB** | XOblongBob | Warm character (fuzzy, curious motion) | 16 | ~15% | Amber `#E9A84A` |
+| **BOB** | XOblong | Warm character (fuzzy, curious motion) | 16 | ~15% | Amber `#E9A84A` |
 | **FAT** | XObese | Character-driven sampler | 8 | ~8% | Hot Pink `#FF1493` |
 | **ONSET** | XOnset (new) | Percussive synthesis (Circuit↔Algorithm) | 8 | ~12% | Electric Blue `#0066FF` |
 
@@ -173,7 +173,7 @@ Each engine is an "exhibition" within the gallery. Its accent color fills the ac
 
 | Pair | Coupling Type | What Happens |
 |------|--------------|-------------|
-| SNAP + MORPH | Amp→Filter, Pitch Drift | The original XOddCouple — percussion carves pads |
+| SNAP + MORPH | Amp→Filter, Pitch Drift | The original OddfeliX/OddOscar — percussion carves pads |
 | ONSET + DUB | Amp→Choke, Audio→FM | Drum kit through dub FX chain |
 | DRIFT + BOB | Env→Morph, LFO→Pitch | Odyssey aliens meet Bob warmth |
 | FAT + ONSET | Audio→Ring, Amp→Choke | Industrial sample-mangling percussion |
@@ -406,7 +406,7 @@ Mood Badges:     Inter Semi-Bold, 10px, UPPERCASE, letter-spacing 1.5px
 - Parameter labels: sentence case ("Filter cutoff")
 - Macro labels: UPPERCASE ("CHARACTER", "MOVEMENT")
 - Preset names: title case ("Velvet Morning")
-- Engine names: exact brand spelling ("XOblongBob")
+- Engine names: exact brand spelling ("XOblong")
 
 ### 6.7 Layout Architecture
 
@@ -546,7 +546,7 @@ Single source of truth. JSON files replacing all per-engine C++ presets and `.xo
   "schema_version": 1,
   "name": "Dub Pressure Machine",
   "mood": "Entangled",
-  "engines": ["XOddCouple", "XOnset"],
+  "engines": ["OddfeliX/OddOscar", "XOnset"],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Kick pumps the pad engine, snare brightens the filter.",
@@ -560,17 +560,17 @@ Single source of truth. JSON files replacing all per-engine C++ presets and `.xo
     "space": 0.35, "aggression": 0.08
   },
   "legacy": {
-    "sourceInstrument": "XOddCouple",
+    "sourceInstrument": "OddfeliX/OddOscar",
     "sourceCategory": "Entangled",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOddCouple": { "xFilterCutoff": 3000, "couplingAmount": 0.8 },
+    "OddfeliX/OddOscar": { "xFilterCutoff": 3000, "couplingAmount": 0.8 },
     "XOnset": { "kickDecay": 0.3, "blend": 0.5 }
   },
   "coupling": {
     "pairs": [{
-      "engineA": "XOddCouple", "engineB": "XOnset",
+      "engineA": "OddfeliX/OddOscar", "engineB": "XOnset",
       "type": "Amp->Filter", "amount": 0.4
     }]
   },
@@ -595,8 +595,8 @@ Single source of truth. JSON files replacing all per-engine C++ presets and `.xo
 
 | Mood | Intent | UI Color |
 |------|--------|----------|
-| **Foundation** | Bass, drums, rhythmic anchors | Terracotta `#C8553D` |
-| **Atmosphere** | Pads, drones, washes, textures | Teal `#2A9D8F` |
+| **Foundation** | Bass, drums, rhythmic anchors | Neon Tetra Blue `#00A6D6` |
+| **Atmosphere** | Pads, drones, washes, textures | Axolotl Gill Pink `#E8839B` |
 | **Entangled** | Cross-coupled, reactive — the XOmnibus signature | Gold `#E9C46A` |
 | **Prism** | Leads, keys, bells, melodic, articulate | Silver `#B8C4CC` |
 | **Flux** | Glitchy, unstable, experimental, lo-fi | Crimson `#C0392B` |
@@ -688,7 +688,7 @@ Cross-engine presets additionally:
 ```
 [Mood tabs: Foundation | Atmosphere | Entangled | Prism | Flux | Aether]
     ↓
-[Engine filter: All | XOddCouple | XOverdub | XOdyssey | XOblongBob | XOnset | Multi]
+[Engine filter: All | OddfeliX/OddOscar | XOverdub | XOdyssey | XOblong | XOnset | Multi]
     ↓
 [Search bar + tag filter]
     ↓
@@ -711,10 +711,10 @@ Cross-engine presets additionally:
 
 | Source | Presets | Status | Tool |
 |--------|---------|--------|------|
-| XOddCouple | 114 | Done | `migrate_xocmeta_to_xometa.py` |
+| OddfeliX/OddOscar | 114 | Done | `migrate_xocmeta_to_xometa.py` |
 | XOverdub | 40 | Done | `extract_cpp_presets.py` |
 | XOdyssey | 198 | Done | `extract_cpp_presets.py` |
-| XOblongBob | 167 | Done | `extract_cpp_presets.py` |
+| XOblong | 167 | Done | `extract_cpp_presets.py` |
 | XObese | 52 | Pending | Manual export + migration |
 | XOnset | 85 | Spec only | N/A |
 | **Total in .xometa** | **519** | **All fingerprinted with DNA** | |
@@ -760,7 +760,7 @@ Users choose how to organize their expansion packs:
 | Axis | Example Packs |
 |------|--------------|
 | **By Mood** | Foundation Pack, Atmosphere Pack, Flux Pack |
-| **By Engine** | XOddCouple Essentials, XOnset Drums |
+| **By Engine** | OddfeliX/OddOscar Essentials, XOnset Drums |
 | **By Instrument Type** | Bass Collection, Pad Collection, Lead Collection |
 | **By Vibe** | Lo-Fi Sessions, Dub Pressure, Ambient Worlds |
 | **By Genre** | Hip-Hop Kit, Techno Machines, Ambient Tools |
@@ -900,11 +900,11 @@ XOmnibus/
 │   │   ├── MacroSystem.h         # 4 unified macros
 │   │   └── SharedTransport.h     # Clock sync for sequencers
 │   ├── Engines/
-│   │   ├── Snap/                 # XOddCouple Engine X adapter
-│   │   ├── Morph/                # XOddCouple Engine O adapter
+│   │   ├── Snap/                 # OddfeliX adapter
+│   │   ├── Morph/                # OddOscar adapter
 │   │   ├── Dub/                  # XOverdub adapter
 │   │   ├── Drift/                # XOdyssey adapter
-│   │   ├── Bob/                  # XOblongBob adapter
+│   │   ├── Bob/                  # XOblong adapter
 │   │   ├── Fat/                  # XObese adapter
 │   │   └── Onset/                # XOnset adapter
 │   ├── DSP/
@@ -966,7 +966,7 @@ cmake --build build-ios --config Release
 | Phase | Action | Duration |
 |-------|--------|----------|
 | 1 | Create XOmnibus repo, scaffold structure, copy shared DSP | Week 1 |
-| 2 | Implement SynthEngine interface, wrap XOddCouple (SNAP+MORPH) | Weeks 2-4 |
+| 2 | Implement SynthEngine interface, wrap OddfeliX/OddOscar (SNAP+MORPH) | Weeks 2-4 |
 | 3 | Wrap XOverdub (DUB), implement MegaCouplingMatrix | Weeks 5-7 |
 | 4 | Wrap remaining engines (DRIFT, BOB, FAT) | Weeks 8-11 |
 | 5 | Build ONSET, PlaySurface, preset browser, mobile layouts | Weeks 12-14 |
@@ -982,11 +982,11 @@ cmake --build build-ios --config Release
 ### 12.1 MVP Definition (Week 14)
 
 The MVP ships with:
-- 2 engines: SNAP + MORPH (XOddCouple) + DUB (XOverdub)
+- 2 engines: SNAP + MORPH (OddfeliX/OddOscar) + DUB (XOverdub)
 - MegaCouplingMatrix with 3 coupling types
 - PlaySurface (Pad mode only)
 - Preset browser with mood tabs
-- 154 migrated presets (114 XOddCouple + 40 XOverdub)
+- 154 migrated presets (114 OddfeliX/OddOscar + 40 XOverdub)
 - macOS AU + Standalone
 - Light mode UI with Gallery Model
 
@@ -1077,7 +1077,7 @@ Modules used by multiple engines, extracted to `Source/DSP/`:
 |------|------|
 | DNA fingerprint generator | `tools/compute_preset_dna.py` |
 | Preset breeding | `tools/breed_presets.py` |
-| XOddCouple migrator | `tools/migrate_xocmeta_to_xometa.py` |
+| OddfeliX/OddOscar migrator | `tools/migrate_xocmeta_to_xometa.py` |
 | C++ preset extractor | `tools/extract_cpp_presets.py` |
 | XPM fixer | `tools/fix_xobese_xpms.py` |
 | XPN packager | `tools/xpn_export.py` (from XOdyssey, needs update) |

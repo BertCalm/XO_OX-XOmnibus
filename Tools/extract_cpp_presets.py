@@ -2,13 +2,13 @@
 """
 Universal C++ → .xometa Preset Extractor
 
-Extracts factory presets from XOverdub, XOdyssey, and XOblongBob C++ source
+Extracts factory presets from XOverdub, XOdyssey, and XOblong C++ source
 files and converts them to the unified .xometa format for XOmnibus.
 
 Each engine uses a different C++ pattern:
   - XOverdub:   setParam(a, paramId, value) inside lambdas
   - XOdyssey:   {"param_id", value} pairs in vectors
-  - XOblongBob: ParamOverride { "param_id", value } in static array
+  - XOblong: ParamOverride { "param_id", value } in static array
 
 Usage:
     python3 extract_cpp_presets.py [--engine xoverdub|xodyssey|xoblongbob|all] [--dry-run]
@@ -32,14 +32,14 @@ TODAY = date.today().isoformat()
 ENGINE_SOURCES = {
     "XOverdub": Path.home() / "Documents" / "GitHub" / "XOverdub" / "src" / "PluginProcessor.cpp",
     "XOdyssey": Path.home() / "Documents" / "GitHub" / "XOdyssey" / "src" / "preset",
-    "XOblongBob": Path.home() / "Documents" / "GitHub" / "XOblongBob" / "src" / "FactoryPresets.h",
+    "XOblong": Path.home() / "Documents" / "GitHub" / "XOblong" / "src" / "FactoryPresets.h",
 }
 
 # Engine-specific macro labels
 MACRO_LABELS = {
     "XOverdub":   ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
     "XOdyssey":   ["JOURNEY", "BREATHE", "BLOOM", "FRACTURE"],
-    "XOblongBob": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+    "XOblong": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
 }
 
 # Category → XOmnibus mood mapping (from mega_tool_preset_philosophy.md)
@@ -59,7 +59,7 @@ MOOD_MAP = {
     "Keys":      "Prism",
     "Bass":      "Foundation",
     "Textures":  "Atmosphere",
-    # XOblongBob
+    # XOblong
     "WarmPads":        "Atmosphere",
     "DreamPads":       "Aether",
     "CuriousMotion":   "Entangled",
@@ -73,7 +73,7 @@ MOOD_MAP = {
     "Living":          "Entangled",
 }
 
-# XOblongBob PresetCategory enum → string name
+# XOblong PresetCategory enum → string name
 BOB_CATEGORY_ENUM = {
     "PresetCategory::WarmPads":        "WarmPads",
     "PresetCategory::DreamPads":       "DreamPads",
@@ -190,7 +190,7 @@ def analyze_params_for_tags(params: dict, engine: str) -> list:
         if params.get("env_amp_attack", 0) > 200:
             tags.append("slow-attack")
 
-    elif engine == "XOblongBob":
+    elif engine == "XOblong":
         if params.get("oscA_drift", 0) > 0.2:
             tags.append("drifty")
         if params.get("space_mix", 0) > 0.3:
@@ -245,7 +245,7 @@ def guess_character(params: dict, engine: str) -> str:
         if params.get("fracture_enable", 0) > 0:
             traits.append("glitch fracture")
 
-    elif engine == "XOblongBob":
+    elif engine == "XOblong":
         if params.get("bob_mode", 0) > 0.2:
             traits.append("bob character")
         if params.get("oscA_drift", 0) > 0.2:
@@ -350,7 +350,7 @@ def extract_xodyssey(preset_dir: Path) -> list:
 
 
 def extract_xoblongbob(source_path: Path) -> list:
-    """Extract presets from XOblongBob FactoryPresets.h."""
+    """Extract presets from XOblong FactoryPresets.h."""
     text = source_path.read_text()
 
     presets = []
@@ -517,7 +517,7 @@ def process_engine(engine: str, dry_run: bool) -> dict:
         raw_presets = extract_xoverdub(source)
     elif engine == "XOdyssey":
         raw_presets = extract_xodyssey(source)
-    elif engine == "XOblongBob":
+    elif engine == "XOblong":
         raw_presets = extract_xoblongbob(source)
     else:
         print(f"  ERROR: Unknown engine: {engine}")
@@ -556,7 +556,7 @@ def process_engine(engine: str, dry_run: bool) -> dict:
             mood_dir.mkdir(parents=True, exist_ok=True)
             out_path = mood_dir / f"{xometa['name']}.xometa"
 
-            # Avoid overwriting XOddCouple presets
+            # Avoid overwriting OddfeliX presets
             if out_path.exists():
                 # Check if it's from a different engine
                 try:
@@ -596,7 +596,7 @@ def main():
     dry_run = "--dry-run" in sys.argv
 
     # Parse engine filter
-    engines_to_run = ["XOverdub", "XOdyssey", "XOblongBob"]
+    engines_to_run = ["XOverdub", "XOdyssey", "XOblong"]
     if "--engine" in sys.argv:
         idx = sys.argv.index("--engine")
         if idx + 1 < len(sys.argv):
@@ -604,7 +604,7 @@ def main():
             engine_map = {
                 "xoverdub": ["XOverdub"],
                 "xodyssey": ["XOdyssey"],
-                "xoblongbob": ["XOblongBob"],
+                "xoblongbob": ["XOblong"],
                 "all": engines_to_run,
             }
             engines_to_run = engine_map.get(engine_arg, engines_to_run)

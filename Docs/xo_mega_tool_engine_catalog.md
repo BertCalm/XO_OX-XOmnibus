@@ -31,8 +31,8 @@ This document catalogs every synth engine module available for the XO_OX Mega-To
 |--------|--------|-----------|-----------|--------|--------|--------|----------|----------------|
 | **FAT** | XObese | Width / thickness | 13-osc stacked (morph: sine→saw→sq→noise) | 4× ZDF Ladder (4-pole LP) | 5 (65 osc) | 45 | <12% | Makes anything massive |
 | **BITE** | XOppossum | Bass / character | OscA (warm, 4 waves) + OscB (harsh, 5 waves) | Cytomic SVF (4 voiced modes) | up to 16 | 122 | <10% | Grit, weight, attitude |
-| **SNAP** | XOddCouple EngX | Percussive / rhythmic | PolyBLEP, FM, Karplus-Strong | Cytomic SVF | 8 | ~26 | <8% | Attacks, plucks, rhythm |
-| **MORPH** | XOddCouple EngO | Pads / lush | Wavetable morph (2048 frames) | Moog Ladder (4-pole LP) | 16 | ~26 | <12% | Atmospheres, evolving pads |
+| **SNAP** | OddfeliX/OddOscar EngX | Percussive / rhythmic | PolyBLEP, FM, Karplus-Strong | Cytomic SVF | 8 | ~26 | <8% | Attacks, plucks, rhythm |
+| **MORPH** | OddfeliX/OddOscar EngO | Pads / lush | Wavetable morph (2048 frames) | Moog Ladder (4-pole LP) | 16 | ~26 | <12% | Atmospheres, evolving pads |
 | **DUB** | XOverdub | FX architecture | Basic osc + filter + env | Per-voice SVF | 8 | 38 | <8% | Send/return FX routing |
 | **DRIFT** | XOdyssey | Psychedelic pads | OscA/B × 4 modes (classic, WT, supersaw, FM) | Dual: SVF LP + 3-band formant | 24 | ~130 | <15% | Journey engine, Climax |
 | **ONSET** | XOnset (spec) | Drums / percussion | Circuit (808/909) + Algorithm (FM, Modal, K-S, PD) | Per-voice Cytomic SVF | 8 dedicated | ~110 | <15.5% | Drum synthesis + morphing |
@@ -209,7 +209,7 @@ Pre-filter drive (tanh), resonance 0–1 (Q=2 to self-oscillation), keytracking 
 
 ---
 
-### 3.3 SNAP (XOddCouple Engine X) — Percussive & Rhythmic
+### 3.3 SNAP (OddfeliX) — Percussive & Rhythmic
 
 **Sonic Identity:** Punchy, snappy, rhythmic. Built for percussive attacks and plucked textures. The terracotta engine — warm but sharp, like struck clay.
 
@@ -237,7 +237,7 @@ MIDI Note → Oscillator (PolyBLEP / FM / Karplus-Strong)
 - Designed specifically for percussive/rhythmic playing — fast envelopes, punchy attacks
 - Coupling output: amplitude envelope drives Engine O's filter cutoff (dub pump effect)
 
-**Parameters:** ~26 (part of XOddCouple's 52 total) | **CPU:** <8% | **Voices:** 8
+**Parameters:** ~26 (part of OddfeliX/OddOscar's 52 total) | **CPU:** <8% | **Voices:** 8
 
 **Color Identity:** Terracotta #C8553D
 
@@ -247,7 +247,7 @@ MIDI Note → Oscillator (PolyBLEP / FM / Karplus-Strong)
 
 ---
 
-### 3.4 MORPH (XOddCouple Engine O) — Pads & Lush
+### 3.4 MORPH (OddOscar) — Pads & Lush
 
 **Sonic Identity:** Blooming, evolving, ethereal. Wavetable morphing through rich timbral landscapes. The teal engine — cool, deep, oceanic.
 
@@ -275,7 +275,7 @@ MIDI Note → Wavetable Oscillator (2048-frame morph)
 - Wavetable morph provides evolving timbral character over sustained notes
 - Coupling output: LFO modulates Engine X's pitch ±0.5 semitones (organic drift)
 
-**Parameters:** ~26 (part of XOddCouple's 52 total) | **CPU:** <12% | **Voices:** 16
+**Parameters:** ~26 (part of OddfeliX/OddOscar's 52 total) | **CPU:** <12% | **Voices:** 16
 
 **Color Identity:** Teal #2A9D8F
 
@@ -527,7 +527,7 @@ Components appearing in 3+ engines that should become shared code:
 | Component | Used In | Implementation | Notes |
 |-----------|---------|---------------|-------|
 | **Cytomic SVF** | BITE, SNAP, ONSET, DRIFT | Topology-preserving transform (Andy Simper) | Reference: XOppossum FilterBlock.h |
-| **PolyBLEP** | FAT, SNAP, DRIFT, ONSET | Band-limited oscillator transitions | Reference: XOddCouple Oscillators.h |
+| **PolyBLEP** | FAT, SNAP, DRIFT, ONSET | Band-limited oscillator transitions | Reference: OddfeliX/OddOscar Oscillators.h |
 | **ParamSnapshot** | All engines | Cache all param pointers once per block | Zero-cost per-sample access |
 | **FastMath** | BITE, FAT, ONSET | fastSin, fastTanh, fastExp2, fastAtan, fastIsFinite | Chebyshev/rational approximations |
 | **ADSR Envelope** | All engines | Attack-Decay-Sustain-Release with optional AHD/AD modes | Shared base class, per-engine extensions |
@@ -605,7 +605,7 @@ Ordered by integration value ÷ implementation effort:
 
 | Priority | Module | Rationale | Effort | Value |
 |----------|--------|-----------|--------|-------|
-| **1** | SNAP + MORPH | Already coupled in XOddCouple — wrap existing code behind SynthEngine interface | Low | High (proves architecture) |
+| **1** | SNAP + MORPH | Already coupled in OddfeliX/OddOscar — wrap existing code behind SynthEngine interface | Low | High (proves architecture) |
 | **2** | DUB | Simplest engine (38 params), unique as shared FX module | Low | High (every engine benefits) |
 | **3** | FAT | Complete engine, unique width character, straightforward wrapping | Medium | High (flagship sound) |
 | **4** | BITE | Most parameters (122) but clean architecture, strong bass identity | Medium | High (fills bass gap) |

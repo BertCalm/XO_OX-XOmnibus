@@ -21,7 +21,7 @@ The XO_OX Mega-Tool hosts 7+ distinct synth modules, each born from a standalone
 | Pillar | Mechanism | Effect |
 |--------|-----------|--------|
 | **Light Canvas** | Clean light base (#F0F0F5) shared across all views | Striking, bright, legible — the primary design target |
-| **Glass Structure** | Frosted glass panels, specular highlights, translucent borders | Common material language adapted from XOblongBob, XObese, and XOppossum glass aesthetics |
+| **Glass Structure** | Frosted glass panels, specular highlights, translucent borders | Common material language adapted from XOblong, XObese, and XOppossum glass aesthetics |
 | **Accent Personality** | Each engine owns a primary accent color that fills knob arcs, glows, headers, and active states | Identity without structural divergence |
 
 **Design direction note:** While five of six existing standalone XO_OX instruments use near-black backgrounds, the mega-tool breaks from this convention intentionally. The light canvas is more striking, cleaner, and more legible — qualities that matter for an instrument with this many parameters. Accent colors pop against light backgrounds with a different energy: bold and confident rather than ambient and moody. The existing dark aesthetics are preserved as a dark mode option (Section 10), but all primary design decisions target the light interface first. XOdyssey's light-based aesthetic validates this direction within the existing portfolio.
@@ -57,7 +57,7 @@ The shell is the host frame surrounding engine panels — navigation bars, engin
 
 ### 2.2 Glass Panel Rendering
 
-Every content panel in the mega-tool uses a shared frosted glass material. This is the structural DNA inherited from XOblongBob, XObese, and XOppossum.
+Every content panel in the mega-tool uses a shared frosted glass material. This is the structural DNA inherited from XOblong, XObese, and XOppossum.
 
 | Property | Value | Notes |
 |----------|-------|-------|
@@ -99,12 +99,12 @@ Each engine module is assigned a definitive accent palette. These colors derive 
 |-------------|-------------|---------------|-----|-----------------|-----|------------|-------------|----------------|
 | **FAT** | XObese | Pink | `#E06090` | Yellow | `#E8C84A` | Pink glow | `#E06090` @ 40% | Warm, playful, massive |
 | **BITE** | XOppossum | Rust | `#C47040` | Acid Lime | `#88CC44` | Rust glow | `#C47040` @ 40% | Shadowy, moody, bass-weight |
-| **SNAP** | XOddCouple X | Terracotta | `#C8553D` | — | — | Terracotta glow | `#C8553D` @ 40% | Punchy, rhythmic, percussive |
-| **MORPH** | XOddCouple O | Teal | `#2A9D8F` | — | — | Teal glow | `#2A9D8F` @ 40% | Lush, evolving, cool |
+| **SNAP** | OddfeliX/OddOscar X | Terracotta | `#00A6D6` | — | — | Terracotta glow | `#00A6D6` @ 40% | Punchy, rhythmic, percussive |
+| **MORPH** | OddfeliX/OddOscar O | Teal | `#E8839B` | — | — | Teal glow | `#E8839B` @ 40% | Lush, evolving, cool |
 | **DUB** | XOverdub | Dub Green | `#00FF88` | Amber | `#FFAA00` | Green glow | `#00FF88` @ 35% | Raw, direct, dub-pressure |
 | **DRIFT** | XOdyssey | Psychedelic Purple | `#9B59B6` | Shimmer Gold | `#F0C040` | Purple glow | `#9B59B6` @ 40% | Ethereal, cosmic, voyager |
-| **PLUSH** | XOblongBob | Amber | `#F5C97A` | — | — | Amber glow | `#F5C97A` @ 40% | Warm, character, glass |
-| **ONSET** | XOnset | Gradient blend | — | Terracotta-to-Teal | `#C8553D` to `#2A9D8F` | Gradient glow | Blend @ 40% | Morphing, rhythmic, percussive |
+| **PLUSH** | XOblong | Amber | `#F5C97A` | — | — | Amber glow | `#F5C97A` @ 40% | Warm, character, glass |
+| **ONSET** | XOnset | Gradient blend | — | Terracotta-to-Teal | `#00A6D6` to `#E8839B` | Gradient glow | Blend @ 40% | Morphing, rhythmic, percussive |
 
 ### 3.2 Engine Color Profile Struct
 
@@ -130,8 +130,8 @@ All accent colors have been verified for minimum contrast against the shell back
 |-------|------------------------------|-----------------|
 | Pink `#E06090` | 5.2:1 | Pass |
 | Rust `#C47040` | 4.8:1 | Pass |
-| Terracotta `#C8553D` | 4.6:1 | Pass |
-| Teal `#2A9D8F` | 5.7:1 | Pass |
+| Neon Tetra Blue `#00A6D6` | 4.6:1 | Pass |
+| Axolotl Gill Pink `#E8839B` | 5.7:1 | Pass |
 | Dub Green `#00FF88` | 10.3:1 | Pass |
 | Purple `#9B59B6` | 4.5:1 | Pass (borderline) |
 | Amber `#F5C97A` | 8.1:1 | Pass |
@@ -147,7 +147,7 @@ All accent colors have been verified for minimum contrast against the shell back
 | Brand logo | Gold | `#E9C46A` | XO_OX logo in nav bar |
 | Panic button | Red | `#FF3333` | Emergency all-notes-off, always red regardless of engine |
 
-Gold is the XO_OX brand coupling color. It appears in every standalone product (XOddCouple's coupling knob, XOblongBob's macro ring, XObese's FX ring) and carries forward as the mega-tool's shared-element accent.
+Gold is the XO_OX brand coupling color. It appears in every standalone product (OddfeliX/OddOscar's coupling knob, XOblong's macro ring, XObese's FX ring) and carries forward as the mega-tool's shared-element accent.
 
 ---
 
@@ -209,7 +209,7 @@ Every UI component adapts to the active engine's `EngineColorProfile`. The compo
 | Pressed | `primaryAccent` @ 30% | `primaryAccent` @ 80%, 1px | `primaryAccent` @ 100% | Momentary feedback |
 | Disabled | `#FFFFFF` @ 3% | `#FFFFFF` @ 6%, 1px | `#FFFFFF` @ 20% | Clearly unavailable |
 
-**Specular edge:** All buttons carry a 1px top-edge highlight at `#FFFFFF` @ 20% — the shared glass specular inherited from XOblongBob.
+**Specular edge:** All buttons carry a 1px top-edge highlight at `#FFFFFF` @ 20% — the shared glass specular inherited from XOblong.
 
 **Button Sizes:**
 
@@ -402,7 +402,7 @@ Designed for sound designers. Structural chrome is visible; the engine's persona
 
 ### 7.1 Shared Timing Constants
 
-All engines share the same animation timing for visual consistency. These values are inherited from the XOblongBob PlaySurface implementation.
+All engines share the same animation timing for visual consistency. These values are inherited from the XOblong PlaySurface implementation.
 
 | Animation | Duration / Rate | Curve | Notes |
 |-----------|----------------|-------|-------|
@@ -489,11 +489,11 @@ Each engine has a simple geometric icon used in the engine selector tabs and pre
 |--------|-----------|-------------|
 | FAT (XObese) | Circle with 3 concentric rings | Mass, layers, saturation |
 | BITE (XOppossum) | Triangle with serrated edge | Sharp attack, feral energy |
-| SNAP (XOddCouple X) | Square with diagonal crack | Percussive hit, impact |
-| MORPH (XOddCouple O) | Flowing wave with morph inflection | Pad evolution, wavetable |
+| SNAP (OddfeliX/OddOscar X) | Square with diagonal crack | Percussive hit, impact |
+| MORPH (OddfeliX/OddOscar O) | Flowing wave with morph inflection | Pad evolution, wavetable |
 | DUB (XOverdub) | Echo ripples (3 arcs) | Delay, space, dub |
 | DRIFT (XOdyssey) | Spiral nebula | Psychedelic journey, cosmic |
-| PLUSH (XOblongBob) | Rounded rectangle with specular dot | Glass, warmth, character |
+| PLUSH (XOblong) | Rounded rectangle with specular dot | Glass, warmth, character |
 | ONSET (XOnset) | Vertical impact line with decay tail | Transient, percussive onset |
 
 ### 9.2 PlaySurface Mode Icons
@@ -599,7 +599,7 @@ Dark mode preserves the aesthetic familiar to standalone XO_OX instrument users.
 
 | Measurement | Value | Notes |
 |-------------|-------|-------|
-| Base window size | 1060 x 640px | Matches XOblongBob and XOppossum |
+| Base window size | 1060 x 640px | Matches XOblong and XOppossum |
 | Minimum window size | 848 x 512px (80% scale) | Smallest usable size |
 | Maximum window size | 1590 x 960px (150% scale) | Largest standard scale |
 | Aspect ratio | 1.656:1 (approx. 5:3) | Maintained across all scales |
@@ -680,11 +680,11 @@ enum class EngineType
     None,       // Shell default — gold accents
     FAT,        // XObese
     BITE,       // XOppossum
-    SNAP,       // XOddCouple Engine X
-    MORPH,      // XOddCouple Engine O
+    SNAP,       // OddfeliX
+    MORPH,      // OddOscar
     DUB,        // XOverdub
     DRIFT,      // XOdyssey
-    PLUSH,      // XOblongBob
+    PLUSH,      // XOblong
     ONSET       // XOnset
 };
 
@@ -971,10 +971,10 @@ void XOMegaLookAndFeel::drawSpecularEdge(juce::Graphics& g,
 | BITE | `bite.primary` | `#C47040` | `0xFFC47040` |
 | BITE | `bite.secondary` | `#88CC44` | `0xFF88CC44` |
 | BITE | `bite.glow` | `#C47040` @ 40% | `0x66C47040` |
-| SNAP | `snap.primary` | `#C8553D` | `0xFFC8553D` |
-| SNAP | `snap.glow` | `#C8553D` @ 40% | `0x66C8553D` |
-| MORPH | `morph.primary` | `#2A9D8F` | `0xFF2A9D8F` |
-| MORPH | `morph.glow` | `#2A9D8F` @ 40% | `0x662A9D8F` |
+| SNAP | `snap.primary` | `#00A6D6` | `0xFFC8553D` |
+| SNAP | `snap.glow` | `#00A6D6` @ 40% | `0x66C8553D` |
+| MORPH | `morph.primary` | `#E8839B` | `0xFF2A9D8F` |
+| MORPH | `morph.glow` | `#E8839B` @ 40% | `0x662A9D8F` |
 | DUB | `dub.primary` | `#00FF88` | `0xFF00FF88` |
 | DUB | `dub.secondary` | `#FFAA00` | `0xFFFFAA00` |
 | DUB | `dub.glow` | `#00FF88` @ 35% | `0x5900FF88` |
@@ -983,9 +983,9 @@ void XOMegaLookAndFeel::drawSpecularEdge(juce::Graphics& g,
 | DRIFT | `drift.glow` | `#9B59B6` @ 40% | `0x669B59B6` |
 | PLUSH | `plush.primary` | `#F5C97A` | `0xFFF5C97A` |
 | PLUSH | `plush.glow` | `#F5C97A` @ 40% | `0x66F5C97A` |
-| ONSET | `onset.primary` | `#C8553D` | `0xFFC8553D` |
-| ONSET | `onset.secondary` | `#2A9D8F` | `0xFF2A9D8F` |
-| ONSET | `onset.glow` | `#C8553D` @ 40% | `0x66C8553D` |
+| ONSET | `onset.primary` | `#00A6D6` | `0xFFC8553D` |
+| ONSET | `onset.secondary` | `#E8839B` | `0xFF2A9D8F` |
+| ONSET | `onset.glow` | `#00A6D6` @ 40% | `0x66C8553D` |
 
 ---
 
@@ -997,11 +997,11 @@ This table maps each engine's mega-tool visual treatment back to its standalone 
 |--------|----------------------|---------------------|----------------------|----------------------|-----------|------------|
 | FAT (XObese) | `#0D0D12` | `#0B0B12` | visionOS glass, specular | Shared glass | Pink/Yellow accents, glass metaphor | Background shifted 2 values |
 | BITE (XOppossum) | `#0E0E11` | `#0B0B12` | Spatial glass, vertical gradient | Shared glass | Rust/Acid palette, frosted borders | Gradient direction standardized |
-| SNAP (XOddCouple X) | `#1A1A1A` | `#0B0B12` | Solid panels, `#2D2D2D` surface | Shared glass | Terracotta accent, percussive identity | Background darkened, glass added |
-| MORPH (XOddCouple O) | `#1A1A1A` | `#0B0B12` | Solid panels, `#2D2D2D` surface | Shared glass | Teal accent, lush identity | Background darkened, glass added |
+| SNAP (OddfeliX/OddOscar X) | `#1A1A1A` | `#0B0B12` | Solid panels, `#2D2D2D` surface | Shared glass | Terracotta accent, percussive identity | Background darkened, glass added |
+| MORPH (OddfeliX/OddOscar O) | `#1A1A1A` | `#0B0B12` | Solid panels, `#2D2D2D` surface | Shared glass | Teal accent, lush identity | Background darkened, glass added |
 | DUB (XOverdub) | `#0A0A0A` | `#0B0B12` | Solid dark, `#1A1A1A` surfaces | Shared glass | Green/Amber/Cyan accents, brutalist density | Glass replaces solid panels |
 | DRIFT (XOdyssey) | Light base | `#0B0B12` | Custom light LookAndFeel | Shared glass (dark) | Psychedelic accent philosophy | Full inversion to dark; light mode preserves original |
-| PLUSH (XOblongBob) | `#08080F` | `#0B0B12` | Apple Liquid Glass, 14% white | Shared glass | Amber accent, glass dome knobs, specular edge | Glass spec IS the shared spec (origin) |
+| PLUSH (XOblong) | `#08080F` | `#0B0B12` | Apple Liquid Glass, 14% white | Shared glass | Amber accent, glass dome knobs, specular edge | Glass spec IS the shared spec (origin) |
 | ONSET (XOnset) | N/A (new) | `#0B0B12` | N/A | Shared glass | Built to spec from day 1 | N/A |
 
 ---

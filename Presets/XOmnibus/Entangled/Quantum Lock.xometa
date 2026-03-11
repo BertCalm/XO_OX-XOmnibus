@@ -3,7 +3,7 @@
   "name": "Quantum Lock",
   "mood": "Entangled",
   "engines": [
-    "XOddCouple"
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -25,12 +25,12 @@
   "tempo": 128,
   "created": "2026-03-05",
   "legacy": {
-    "sourceInstrument": "XOddCouple",
+    "sourceInstrument": "OddfeliX",
     "sourceCategory": "Entangled",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOddCouple": {
+    "OddfeliX": {
       "couplingAmount": 0.815,
       "masterBalance": 0.019,
       "xOscMode": 1,

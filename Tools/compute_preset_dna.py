@@ -50,7 +50,7 @@ def softmax(*values, scale=1.0):
 # ---------------------------------------------------------------------------
 
 def dna_xoddcouple(p: dict) -> dict:
-    """Compute DNA for XOddCouple presets."""
+    """Compute DNA for OddfeliX presets."""
     # Brightness: filter cutoffs, presence of high modes
     x_cut = norm_freq(p.get("xFilterCutoff", 5000))
     o_cut = norm_freq(p.get("oFilterCutoff", 4000))
@@ -209,7 +209,7 @@ def dna_xodyssey(p: dict) -> dict:
 
 
 def dna_xoblongbob(p: dict) -> dict:
-    """Compute DNA for XOblongBob presets."""
+    """Compute DNA for XOblong presets."""
     # Brightness: filter cutoff, character
     cut = norm_freq(p.get("flt_cutoff", 3000))
     char = p.get("flt_character", 0)
@@ -263,10 +263,10 @@ def dna_xoblongbob(p: dict) -> dict:
 
 # Engine dispatcher
 DNA_FUNCTIONS = {
-    "XOddCouple": dna_xoddcouple,
+    "OddfeliX": dna_xoddcouple,
     "XOverdub":   dna_xoverdub,
     "XOdyssey":   dna_xodyssey,
-    "XOblongBob": dna_xoblongbob,
+    "XOblong": dna_xoblongbob,
 }
 
 

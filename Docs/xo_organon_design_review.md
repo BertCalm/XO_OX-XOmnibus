@@ -159,8 +159,8 @@ The document never assigns Organon an accent color. Every XOmnibus engine has on
 
 | Engine | Color |
 |---|---|
-| SNAP | Terracotta `#C8553D` |
-| MORPH | Teal `#2A9D8F` |
+| SNAP | Neon Tetra Blue `#00A6D6` |
+| MORPH | Axolotl Gill Pink `#E8839B` |
 | DUB | Olive `#6B7B3A` |
 | DRIFT | Violet `#7B2D8B` |
 | BOB | Amber `#E9A84A` |

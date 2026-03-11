@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Glass Shimmer",
   "mood": "Atmosphere",
-  "engines": ["XOddCouple"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bright, crystalline pad with resonant filter bloom. Like light through stained glass.",
-  "tags": ["glass", "shimmer", "bright", "crystalline"],
-  "macroLabels": ["BRILLIANCE", "BLOOM", "COUPLING", "SPACE"],
+  "tags": [
+    "glass",
+    "shimmer",
+    "bright",
+    "crystalline"
+  ],
+  "macroLabels": [
+    "BRILLIANCE",
+    "BLOOM",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -19,7 +31,7 @@
     "aggression": 0.1
   },
   "parameters": {
-    "XOddCouple": {
+    "OddfeliX": {
       "morph_morph": 1.3,
       "morph_bloom": 2.0,
       "morph_decay": 3.0,
