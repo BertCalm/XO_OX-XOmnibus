@@ -67,6 +67,7 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Onset/OnsetEngine.h
     Source/Engines/Overworld/OverworldEngine.h
     Source/Engines/Opal/OpalEngine.h
+    Source/Engines/Opal/OpalEngine.cpp
     Source/Engines/Organon/OrganonEngine.h
     Source/Engines/Ouroboros/OuroborosEngine.h
     Source/Engines/Ouroboros/OuroborosEngine.cpp
@@ -88,10 +89,8 @@ target_sources(XOmnibus PRIVATE
 )
 
 # XOverworld DSP headers — included by OverworldEngine adapter
-# XOpal DSP headers — included by OpalEngine adapter
 target_include_directories(XOmnibus PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/../XOverworld/src"
-    "${CMAKE_CURRENT_SOURCE_DIR}/../XOpal"
 )
 
 target_compile_definitions(XOmnibus PUBLIC
@@ -127,7 +126,6 @@ add_executable(XOmnibusTests
 target_include_directories(XOmnibusTests PRIVATE
     Source
     "${CMAKE_CURRENT_SOURCE_DIR}/../XOverworld/src"
-    "${CMAKE_CURRENT_SOURCE_DIR}/../XOpal"
 )
 
 target_link_libraries(XOmnibusTests PRIVATE
