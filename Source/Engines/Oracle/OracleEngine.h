@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
 #include <array>
 #include <cmath>
@@ -10,79 +11,111 @@ namespace xomnibus {
 //==============================================================================
 // OracleEngine — Stochastic GENDY + Maqam Microtonal Synthesis.
 //
-// Combines Xenakis-inspired GENDY stochastic waveform generation with an
-// authentic maqam microtonal tuning system. N breakpoints define one waveform
-// cycle; each cycle, a random walk perturbs both time offsets and amplitudes
-// using a blendable Cauchy/Logistic distribution. Mirror barriers with
-// configurable elasticity keep values bounded. Cubic Hermite spline
-// interpolation produces smooth audio-rate readout.
-//
-// The maqam system provides 8 Arabic maqamat with quarter-tone intervals,
-// blendable between 12-TET and maqam-correct tuning via the gravity parameter.
+// Fuses Xenakis's GENDY stochastic waveform generation with Middle-Eastern
+// maqam microtonal tuning systems. Breakpoints define a single waveform cycle
+// and undergo random walks each cycle, producing constantly evolving timbres
+// that range from smooth undulations to chaotic noise sculptures.
 //
 // Features:
-//   - GENDY breakpoint engine (8-32 breakpoints per cycle)
-//   - Cauchy (heavy-tailed) and Logistic (smooth) distribution blend
-//   - Mirror barrier reflection with configurable elasticity
-//   - Cubic Hermite spline interpolation between breakpoints
-//   - 8 maqamat + 12-TET mode with gravity blend
-//   - Stochastic envelope (ADSR modulating random walk step sizes)
-//   - DC blocker (5Hz HPF) + soft limiter post-processing
+//   - N breakpoints (8-32) per waveform cycle with stochastic random walk
+//   - Two morphable distributions: Cauchy (heavy-tailed) and Logistic (smooth)
+//   - Mirror barrier reflection on breakpoint boundaries
+//   - Cubic Hermite interpolation between breakpoints (per-sample)
+//   - 8 maqamat with quarter-tone microtonal tuning
+//   - Gravity parameter blends 12-TET and maqam tuning
+//   - DC blocker (5Hz first-order HPF) + soft limiter post-processing
 //   - Mono/Legato/Poly4/Poly8 voice modes with LRU stealing + 5ms crossfade
 //   - 2 LFOs (Sine/Tri/Saw/Square/S&H)
 //   - Full XOmnibus coupling support
 //
 // Coupling:
-//   - Output: post-limiter stereo audio via getSampleForCoupling
-//   - Input: AudioToFM (perturb breakpoint amplitudes), AmpToFilter (modulate
-//            barrier positions), EnvToMorph (drive distribution morph)
+//   - Output: post-processing stereo audio via getSampleForCoupling
+//   - Input: AudioToFM (perturb breakpoint amplitudes),
+//            AmpToFilter (modulate barrier positions),
+//            EnvToMorph (drive distribution morph)
+//
+// Macro Labels: PROPHECY, EVOLUTION, GRAVITY, DRIFT
 //
 //==============================================================================
 
 //==============================================================================
-// Constants
+// Maqam tuning tables — cent offsets from 12-TET for each scale degree.
+// Each maqam has 7 intervals (8 notes including octave).
+// Cents are relative to the scale root (degree 0 = 0 cents).
+// Quarter-tone = 50 cents. Standard semitone = 100 cents.
 //==============================================================================
-static constexpr int kOracleMaxBreakpoints = 32;
-static constexpr float kOraclePI = 3.14159265358979323846f;
-static constexpr float kOracleTwoPi = 6.28318530717958647692f;
+struct MaqamTable
+{
+    // Cent offsets for degrees 0-7 (octave at index 7 = 1200).
+    float cents[8];
+};
+
+static constexpr int kNumMaqamat = 8;
+
+// The 8 maqamat: Rast, Bayati, Saba, Hijaz, Sikah, Nahawand, Kurd, Ajam
+static const MaqamTable kMaqamat[kNumMaqamat] = {
+    // 0: Rast — C D Ed F G A Bd C (Ed = E half-flat, Bd = B half-flat)
+    {{ 0.0f, 200.0f, 350.0f, 500.0f, 700.0f, 900.0f, 1050.0f, 1200.0f }},
+    // 1: Bayati — D Ed F G A Bb C D
+    {{ 0.0f, 150.0f, 300.0f, 500.0f, 700.0f, 800.0f, 1000.0f, 1200.0f }},
+    // 2: Saba — D Ed F Gb A Bb C D
+    {{ 0.0f, 150.0f, 300.0f, 400.0f, 700.0f, 800.0f, 1000.0f, 1200.0f }},
+    // 3: Hijaz — D Eb F# G A Bb C D (augmented second)
+    {{ 0.0f, 100.0f, 400.0f, 500.0f, 700.0f, 800.0f, 1000.0f, 1200.0f }},
+    // 4: Sikah — Ed F G Ab Bd C D Ed
+    {{ 0.0f, 150.0f, 350.0f, 450.0f, 650.0f, 850.0f, 1050.0f, 1200.0f }},
+    // 5: Nahawand — C D Eb F G Ab Bb C (harmonic minor variant)
+    {{ 0.0f, 200.0f, 300.0f, 500.0f, 700.0f, 800.0f, 1000.0f, 1200.0f }},
+    // 6: Kurd — D Eb F G A Bb C D (Phrygian-like)
+    {{ 0.0f, 100.0f, 300.0f, 500.0f, 700.0f, 800.0f, 1000.0f, 1200.0f }},
+    // 7: Ajam — C D E F G A B C (major / Ionian)
+    {{ 0.0f, 200.0f, 400.0f, 500.0f, 700.0f, 900.0f, 1100.0f, 1200.0f }}
+};
 
 //==============================================================================
-// Maqam tuning tables — cent offsets from 12-TET per scale degree.
-// Each row: 12 entries mapping chromatic degrees 0-11 to cent offsets.
-// Mode 0 = 12-TET (all zeros). Modes 1-8 = maqamat.
+// xorshift64 PRNG — fast, per-voice, deterministic from seed.
 //==============================================================================
-static constexpr int kNumMaqamat = 9; // 0=12-TET + 8 maqamat
-static constexpr int kMaqamDegrees = 12;
+struct Xorshift64
+{
+    uint64_t state = 1;
 
-// Cent offsets from 12-TET for each scale degree.
-// For degrees not in the scale, use nearest 12-TET (0 offset).
-static constexpr float kMaqamCents[kNumMaqamat][kMaqamDegrees] = {
-    // 0: 12-TET (no offsets)
-    { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f },
-    // 1: Rast — [0, 200, 350, 500, 700, 900, 1050, 1200]
-    //    degree 3 (E) = 350 cents vs 400 = -50; degree 10 (Bb) = 1050 vs 1000 = +50
-    { 0.0f, 0.0f, 0.0f, -50.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 50.0f, 0.0f },
-    // 2: Bayati — [0, 150, 300, 500, 700, 850, 1000, 1200]
-    //    degree 1 (Db) = 150 vs 100 = +50; degree 8 (Ab) = 850 vs 800 = +50
-    { 0.0f, 50.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 50.0f, 0.0f, 0.0f, 0.0f },
-    // 3: Saba — [0, 150, 300, 400, 500, 700, 850, 1000]
-    //    degree 1 = +50, degree 3 (E) = 400 vs 400 = 0, degree 8 (Ab) = 850 vs 800 = +50
-    { 0.0f, 50.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 50.0f, 0.0f, 0.0f, 0.0f },
-    // 4: Hijaz — [0, 100, 400, 500, 700, 900, 1000, 1200]
-    //    All degrees at standard 12-TET positions for this layout
-    { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f },
-    // 5: Sikah — [0, 150, 350, 500, 650, 850, 1000, 1200]
-    //    degree 1 = +50, degree 3 (E) = 350 vs 400 = -50, degree 5 (F#) = 650 vs 600 = +50, degree 8 = +50
-    { 0.0f, 50.0f, 0.0f, -50.0f, 0.0f, 50.0f, 0.0f, 0.0f, 50.0f, 0.0f, 0.0f, 0.0f },
-    // 6: Nahawand — [0, 200, 300, 500, 700, 800, 1100, 1200]
-    //    Standard minor-like. All at 12-TET positions.
-    { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f },
-    // 7: Kurd — [0, 100, 300, 500, 700, 800, 1000, 1200]
-    //    Phrygian-like. All at 12-TET positions.
-    { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f },
-    // 8: Ajam — [0, 200, 400, 500, 700, 900, 1100, 1200]
-    //    Major scale. All at 12-TET positions.
-    { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f }
+    void seed (uint64_t s) noexcept
+    {
+        state = (s == 0) ? 1 : s;
+    }
+
+    uint64_t next() noexcept
+    {
+        uint64_t x = state;
+        x ^= x << 13;
+        x ^= x >> 7;
+        x ^= x << 17;
+        state = x;
+        return x;
+    }
+
+    // Uniform float in [0, 1)
+    float uniform() noexcept
+    {
+        return static_cast<float> (next() & 0xFFFFFFFF) / 4294967296.0f;
+    }
+
+    // Uniform float in [-1, 1)
+    float uniformBipolar() noexcept
+    {
+        return uniform() * 2.0f - 1.0f;
+    }
+};
+
+//==============================================================================
+// GENDY Breakpoint
+//==============================================================================
+static constexpr int kMaxBreakpoints = 32;
+
+struct GENDYBreakpoint
+{
+    float timeOffset = 0.0f;   // [0, 1]
+    float amplitude  = 0.0f;   // [-1, 1]
 };
 
 //==============================================================================
@@ -109,7 +142,10 @@ struct OracleADSR
         releaseRate = (releaseSec > 0.001f) ? (1.0f / (releaseSec * sr)) : 1.0f;
     }
 
-    void noteOn() noexcept { stage = Stage::Attack; }
+    void noteOn() noexcept
+    {
+        stage = Stage::Attack;
+    }
 
     void noteOff() noexcept
     {
@@ -196,7 +232,7 @@ struct OracleLFO
         switch (shape)
         {
             case Shape::Sine:
-                out = fastSin (phase * kOracleTwoPi);
+                out = fastSin (phase * 6.28318530718f);
                 break;
             case Shape::Triangle:
                 out = 4.0f * std::fabs (phase - 0.5f) - 1.0f;
@@ -235,16 +271,41 @@ struct OracleLFO
 };
 
 //==============================================================================
-// GENDY Breakpoint — (timeOffset, amplitude) pair for one waveform cycle.
+// DC Blocker — first-order HPF at ~5Hz.
+// y[n] = x[n] - x[n-1] + R * y[n-1], where R = 1 - (2*pi*fc/sr)
 //==============================================================================
-struct GendyBreakpoint
+struct DCBlocker
 {
-    float time = 0.0f;   // [0, 1] — position within one cycle
-    float amp  = 0.0f;   // [-1, 1] — waveform amplitude at this point
+    float x1 = 0.0f;
+    float y1 = 0.0f;
+    float R  = 0.9999f;
+
+    void prepare (float sampleRate) noexcept
+    {
+        constexpr float fc = 5.0f;
+        constexpr float twoPi = 6.28318530718f;
+        R = 1.0f - (twoPi * fc / std::max (1.0f, sampleRate));
+        if (R < 0.9f) R = 0.9f;
+        if (R > 0.9999f) R = 0.9999f;
+    }
+
+    float process (float x) noexcept
+    {
+        float y = x - x1 + R * y1;
+        x1 = x;
+        y1 = flushDenormal (y);
+        return y1;
+    }
+
+    void reset() noexcept
+    {
+        x1 = 0.0f;
+        y1 = 0.0f;
+    }
 };
 
 //==============================================================================
-// OracleVoice — per-voice state including GENDY breakpoints and DC blocker.
+// OracleVoice — per-voice state.
 //==============================================================================
 struct OracleVoice
 {
@@ -253,65 +314,91 @@ struct OracleVoice
     float velocity = 0.0f;
     uint64_t startTime = 0;
 
-    // GENDY breakpoints — current cycle and next cycle (for crossfade)
-    std::array<GendyBreakpoint, kOracleMaxBreakpoints> breakpoints {};
+    // GENDY breakpoints (current cycle waveform)
+    GENDYBreakpoint breakpoints[kMaxBreakpoints];
     int numBreakpoints = 16;
 
-    // Phase accumulator — progress through current waveform cycle [0, 1)
-    float phase = 0.0f;
-    float phaseInc = 0.0f;
-    bool cycleComplete = false;
+    // Waveform phase: tracks position within current cycle [0, 1)
+    float wavePhase = 0.0f;
+    float wavePhaseInc = 0.0f;  // freq / sampleRate
 
-    // Frequency / glide
+    // Frequency
     float currentFreq = 440.0f;
-    float targetFreq = 440.0f;
-    float glideCoeff = 1.0f;
+    float targetFreq  = 440.0f;
+    float glideCoeff  = 1.0f;
 
-    // Per-voice xorshift64 PRNG
-    uint64_t prngState = 0xDEADBEEFCAFEBABEULL;
+    // Per-voice PRNG
+    Xorshift64 rng;
 
     // Envelopes
     OracleADSR ampEnv;
-    OracleADSR stochEnv;  // Modulates stochastic walk step sizes
+    OracleADSR stochEnv;  // modulates stochastic evolution depth
 
     // LFOs
     OracleLFO lfo1;
     OracleLFO lfo2;
 
-    // DC blocker state: y[n] = x[n] - x[n-1] + 0.995 * y[n-1]
-    float dcX1 = 0.0f;  // previous input
-    float dcY1 = 0.0f;  // previous output
+    // DC blocker (stereo)
+    DCBlocker dcBlockerL;
+    DCBlocker dcBlockerR;
 
     // Voice stealing crossfade
     float fadeGain = 1.0f;
     bool fadingOut = false;
+
+    // Cached last output for stereo spread
+    float lastOutputL = 0.0f;
+    float lastOutputR = 0.0f;
+
+    // Previous cycle output for crossfade smoothing at cycle boundary
+    float prevCycleLastSample = 0.0f;
+    int cycleBlendCounter = 0;
+    static constexpr int kCycleBlendSamples = 64;
 
     void reset() noexcept
     {
         active = false;
         noteNumber = -1;
         velocity = 0.0f;
-        phase = 0.0f;
-        phaseInc = 0.0f;
-        cycleComplete = false;
+        wavePhase = 0.0f;
+        wavePhaseInc = 0.0f;
         currentFreq = 440.0f;
         targetFreq = 440.0f;
         fadeGain = 1.0f;
         fadingOut = false;
+        lastOutputL = 0.0f;
+        lastOutputR = 0.0f;
+        prevCycleLastSample = 0.0f;
+        cycleBlendCounter = 0;
         ampEnv.reset();
         stochEnv.reset();
         lfo1.reset();
         lfo2.reset();
-        dcX1 = 0.0f;
-        dcY1 = 0.0f;
-        prngState = 0xDEADBEEFCAFEBABEULL;
+        dcBlockerL.reset();
+        dcBlockerR.reset();
+        rng.seed (1);
 
-        // Initialize breakpoints to a sine-like default
-        for (int i = 0; i < kOracleMaxBreakpoints; ++i)
+        // Initialize breakpoints to a sine-like shape
+        for (int i = 0; i < kMaxBreakpoints; ++i)
         {
-            float t = static_cast<float> (i) / static_cast<float> (kOracleMaxBreakpoints);
-            breakpoints[static_cast<size_t> (i)].time = t;
-            breakpoints[static_cast<size_t> (i)].amp = std::sin (kOracleTwoPi * t);
+            float t = static_cast<float> (i) / static_cast<float> (kMaxBreakpoints);
+            breakpoints[i].timeOffset = t;
+            breakpoints[i].amplitude = std::sin (t * 6.28318530718f);
+        }
+    }
+
+    //--------------------------------------------------------------------------
+    // Initialize breakpoints for a given count — distribute evenly with
+    // a sine-like amplitude shape for a clean starting waveform.
+    //--------------------------------------------------------------------------
+    void initBreakpoints (int count) noexcept
+    {
+        numBreakpoints = std::max (8, std::min (kMaxBreakpoints, count));
+        for (int i = 0; i < numBreakpoints; ++i)
+        {
+            float t = static_cast<float> (i) / static_cast<float> (numBreakpoints);
+            breakpoints[i].timeOffset = t;
+            breakpoints[i].amplitude = std::sin (t * 6.28318530718f);
         }
     }
 };
@@ -323,6 +410,8 @@ class OracleEngine : public SynthEngine
 {
 public:
     static constexpr int kMaxVoices = 8;
+    static constexpr float kPI = 3.14159265358979323846f;
+    static constexpr float kTwoPi = 6.28318530717958647692f;
 
     //==========================================================================
     // SynthEngine interface — Lifecycle
@@ -333,10 +422,10 @@ public:
         sr = sampleRate;
         srf = static_cast<float> (sr);
 
-        // Pre-compute smoothing coefficient (5ms time constant)
-        smoothCoeff = 1.0f - std::exp (-kOracleTwoPi * (1.0f / 0.005f) / srf);
+        // Smoothing coefficient (5ms time constant)
+        smoothCoeff = 1.0f - std::exp (-kTwoPi * (1.0f / 0.005f) / srf);
 
-        // Pre-compute crossfade rate (5ms)
+        // Crossfade rate (5ms)
         crossfadeRate = 1.0f / (0.005f * srf);
 
         // Allocate output cache for coupling reads
@@ -345,7 +434,11 @@ public:
 
         // Initialize voices
         for (auto& v : voices)
+        {
             v.reset();
+            v.dcBlockerL.prepare (srf);
+            v.dcBlockerR.prepare (srf);
+        }
     }
 
     void releaseResources() override {}
@@ -358,7 +451,7 @@ public:
         envelopeOutput = 0.0f;
         couplingBreakpointMod = 0.0f;
         couplingBarrierMod = 0.0f;
-        couplingDistribMod = 0.0f;
+        couplingDistributionMod = 0.0f;
 
         smoothedTimeStep = 0.3f;
         smoothedAmpStep = 0.3f;
@@ -378,39 +471,39 @@ public:
         if (numSamples <= 0) return;
 
         // --- ParamSnapshot: read all parameters once per block ---
-        const int   pBreakpointsVal   = static_cast<int> (loadParam (pBreakpoints, 16.0f));
-        const float pTimeStepVal      = loadParam (pTimeStep, 0.3f);
-        const float pAmpStepVal       = loadParam (pAmpStep, 0.3f);
-        const float pDistributionVal  = loadParam (pDistribution, 0.5f);
-        const float pBarrierVal       = loadParam (pBarrierElasticity, 0.5f);
-        const int   pMaqamVal         = static_cast<int> (loadParam (pMaqam, 0.0f));
-        const float pGravityVal       = loadParam (pGravity, 0.0f);
-        const float pDriftVal         = loadParam (pDrift, 0.0f);
-        const float pLevelVal         = loadParam (pLevel, 0.8f);
+        const int   pBpCount      = static_cast<int> (loadParam (pBreakpoints, 16.0f));
+        const float pTimeStepVal  = loadParam (pTimeStep, 0.3f);
+        const float pAmpStepVal   = loadParam (pAmpStep, 0.3f);
+        const float pDistVal      = loadParam (pDistribution, 0.5f);
+        const float pElasticVal   = loadParam (pBarrierElasticity, 0.5f);
+        const int   pMaqamIdx     = static_cast<int> (loadParam (pMaqam, 0.0f));
+        const float pGravityVal   = loadParam (pGravity, 0.0f);
+        const float pDriftVal     = loadParam (pDrift, 0.3f);
+        const float pLevelVal     = loadParam (pLevel, 0.8f);
 
-        const float pAmpA             = loadParam (pAmpAttack, 0.01f);
-        const float pAmpD             = loadParam (pAmpDecay, 0.1f);
-        const float pAmpS             = loadParam (pAmpSustain, 0.8f);
-        const float pAmpR             = loadParam (pAmpRelease, 0.3f);
-        const float pStochA           = loadParam (pStochEnvAttack, 0.05f);
-        const float pStochD           = loadParam (pStochEnvDecay, 0.2f);
-        const float pStochS           = loadParam (pStochEnvSustain, 0.6f);
-        const float pStochR           = loadParam (pStochEnvRelease, 0.5f);
+        const float pAmpA         = loadParam (pAmpAttack, 0.01f);
+        const float pAmpD         = loadParam (pAmpDecay, 0.1f);
+        const float pAmpS         = loadParam (pAmpSustain, 0.8f);
+        const float pAmpR         = loadParam (pAmpRelease, 0.3f);
+        const float pStochA       = loadParam (pStochEnvAttack, 0.05f);
+        const float pStochD       = loadParam (pStochEnvDecay, 0.3f);
+        const float pStochS       = loadParam (pStochEnvSustain, 0.7f);
+        const float pStochR       = loadParam (pStochEnvRelease, 0.5f);
 
-        const float pLfo1R            = loadParam (pLfo1Rate, 1.0f);
-        const float pLfo1D            = loadParam (pLfo1Depth, 0.0f);
-        const int   pLfo1S            = static_cast<int> (loadParam (pLfo1Shape, 0.0f));
-        const float pLfo2R            = loadParam (pLfo2Rate, 1.0f);
-        const float pLfo2D            = loadParam (pLfo2Depth, 0.0f);
-        const int   pLfo2S            = static_cast<int> (loadParam (pLfo2Shape, 0.0f));
+        const float pLfo1R        = loadParam (pLfo1Rate, 1.0f);
+        const float pLfo1D        = loadParam (pLfo1Depth, 0.0f);
+        const int   pLfo1S        = static_cast<int> (loadParam (pLfo1Shape, 0.0f));
+        const float pLfo2R        = loadParam (pLfo2Rate, 1.0f);
+        const float pLfo2D        = loadParam (pLfo2Depth, 0.0f);
+        const int   pLfo2S        = static_cast<int> (loadParam (pLfo2Shape, 0.0f));
 
-        const int   voiceModeIdx      = static_cast<int> (loadParam (pVoiceMode, 2.0f));
-        const float glideTime         = loadParam (pGlide, 0.0f);
+        const int   voiceModeIdx  = static_cast<int> (loadParam (pVoiceMode, 2.0f));
+        const float glideTime     = loadParam (pGlide, 0.0f);
 
-        const float macroChar         = loadParam (pMacroCharacter, 0.0f);
-        const float macroMove         = loadParam (pMacroMovement, 0.0f);
-        const float macroCoup         = loadParam (pMacroCoupling, 0.0f);
-        const float macroSpace        = loadParam (pMacroSpace, 0.0f);
+        const float macroProphecy  = loadParam (pMacroProphecy, 0.0f);
+        const float macroEvolution = loadParam (pMacroEvolution, 0.0f);
+        const float macroGravity   = loadParam (pMacroGravity, 0.0f);
+        const float macroDrift     = loadParam (pMacroDrift, 0.0f);
 
         // Determine max polyphony from voice mode
         int maxPoly = kMaxVoices;
@@ -418,47 +511,43 @@ public:
         bool legatoMode = false;
         switch (voiceModeIdx)
         {
-            case 0: maxPoly = 1; monoMode = true; break;          // Mono
+            case 0: maxPoly = 1; monoMode = true; break;           // Mono
             case 1: maxPoly = 1; monoMode = true; legatoMode = true; break; // Legato
-            case 2: maxPoly = 4; break;                            // Poly4
-            case 3: maxPoly = 8; break;                            // Poly8
+            case 2: maxPoly = 4; break;                              // Poly4
+            case 3: maxPoly = 8; break;                              // Poly8
             default: maxPoly = 4; break;
         }
 
         // Glide coefficient
-        float glideCoeffVal = 1.0f;
+        float glideCoeffCalc = 1.0f;
         if (glideTime > 0.001f)
-            glideCoeffVal = 1.0f - std::exp (-1.0f / (glideTime * srf));
+            glideCoeffCalc = 1.0f - std::exp (-1.0f / (glideTime * srf));
 
-        // Apply macro offsets to effective parameters
-        // M1 CHARACTER: breakpoints + distribution
-        int effectiveBreakpoints = clampI (pBreakpointsVal + static_cast<int> (macroChar * 12.0f), 8, 32);
-        float effectiveDistribution = clamp (pDistributionVal + macroChar * 0.4f + couplingDistribMod, 0.0f, 1.0f);
+        // Apply macro and coupling offsets to effective parameters
+        float effectiveTimeStep = clamp (pTimeStepVal + macroEvolution * 0.4f
+                                         + macroDrift * 0.2f, 0.0f, 1.0f);
+        float effectiveAmpStep  = clamp (pAmpStepVal + macroEvolution * 0.3f
+                                         + macroProphecy * 0.2f, 0.0f, 1.0f);
+        float effectiveDist     = clamp (pDistVal + couplingDistributionMod
+                                         + macroProphecy * 0.3f, 0.0f, 1.0f);
+        float effectiveElastic  = clamp (pElasticVal + couplingBarrierMod, 0.0f, 1.0f);
+        float effectiveGravity  = clamp (pGravityVal + macroGravity * 0.5f, 0.0f, 1.0f);
+        float effectiveDrift    = clamp (pDriftVal + macroDrift * 0.3f, 0.0f, 1.0f);
+        int   effectiveMaqam    = std::max (0, std::min (kNumMaqamat, pMaqamIdx));
 
-        // M2 MOVEMENT: ampStep + timeStep
-        float effectiveAmpStep  = clamp (pAmpStepVal + macroMove * 0.4f, 0.0f, 1.0f);
-        float effectiveTimeStep = clamp (pTimeStepVal + macroMove * 0.3f, 0.0f, 1.0f);
-
-        // M3 COUPLING: gravity + coupling input gain
-        float effectiveGravity = clamp (pGravityVal + macroCoup * 0.5f, 0.0f, 1.0f);
-        int effectiveMaqam = clampI (pMaqamVal, 0, kNumMaqamat - 1);
-
-        // M4 SPACE: drift + barrierElasticity
-        float effectiveDrift   = clamp (pDriftVal + macroSpace * 0.4f, 0.0f, 1.0f);
-        float effectiveBarrier = clamp (pBarrierVal + macroSpace * 0.3f + couplingBarrierMod, 0.0f, 1.0f);
-
-        // Reset coupling accumulators
+        // Reset coupling accumulators for next block
         couplingBreakpointMod = 0.0f;
         couplingBarrierMod = 0.0f;
-        couplingDistribMod = 0.0f;
+        couplingDistributionMod = 0.0f;
 
         // --- Process MIDI events ---
         for (const auto metadata : midi)
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
-                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), maxPoly, monoMode, legatoMode,
-                        glideCoeffVal, effectiveBreakpoints, effectiveMaqam, effectiveGravity,
+                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
+                        maxPoly, monoMode, legatoMode, glideCoeffCalc,
+                        pBpCount, effectiveMaqam, effectiveGravity,
                         pAmpA, pAmpD, pAmpS, pAmpR,
                         pStochA, pStochD, pStochS, pStochR,
                         pLfo1R, pLfo1D, pLfo1S, pLfo2R, pLfo2D, pLfo2S);
@@ -473,10 +562,10 @@ public:
         // --- Render sample loop ---
         for (int sample = 0; sample < numSamples; ++sample)
         {
-            // Smooth control-rate parameters (5ms)
+            // Smooth stochastic parameters toward their targets
             smoothedTimeStep     += (effectiveTimeStep - smoothedTimeStep) * smoothCoeff;
             smoothedAmpStep      += (effectiveAmpStep - smoothedAmpStep) * smoothCoeff;
-            smoothedDistribution += (effectiveDistribution - smoothedDistribution) * smoothCoeff;
+            smoothedDistribution += (effectiveDist - smoothedDistribution) * smoothCoeff;
 
             float mixL = 0.0f, mixR = 0.0f;
 
@@ -497,7 +586,8 @@ public:
                 }
 
                 // --- Glide (portamento) ---
-                voice.currentFreq += (voice.targetFreq - voice.currentFreq) * voice.glideCoeff;
+                voice.currentFreq += (voice.targetFreq - voice.currentFreq)
+                                   * voice.glideCoeff;
 
                 // --- Envelopes ---
                 float ampLevel   = voice.ampEnv.process();
@@ -514,71 +604,83 @@ public:
                 float lfo2Val = voice.lfo2.process() * pLfo2D;
 
                 // LFO1 -> time step modulation, LFO2 -> amp step modulation
-                float modTimeStep = clamp (smoothedTimeStep + lfo1Val * 0.3f, 0.0f, 1.0f);
-                float modAmpStep  = clamp (smoothedAmpStep + lfo2Val * 0.3f, 0.0f, 1.0f);
+                float modTimeStep = clamp (smoothedTimeStep + lfo1Val * 0.3f,
+                                           0.0f, 1.0f);
+                float modAmpStep  = clamp (smoothedAmpStep + lfo2Val * 0.3f,
+                                           0.0f, 1.0f);
 
-                // Scale stochastic steps by stochastic envelope
-                float scaledTimeStep = modTimeStep * stochLevel;
-                float scaledAmpStep  = modAmpStep * stochLevel;
+                // Scale stochastic depth by stoch envelope and drift
+                float stochDepth = stochLevel * effectiveDrift;
 
-                // --- Phase increment (with maqam tuning) ---
+                // --- Phase increment ---
                 float freq = voice.currentFreq;
-                // Apply drift: slow random pitch wander
-                if (effectiveDrift > 0.001f)
+                voice.wavePhaseInc = freq / srf;
+
+                // --- Advance waveform phase ---
+                voice.wavePhase += voice.wavePhaseInc;
+
+                // --- Check for cycle completion: evolve breakpoints ---
+                if (voice.wavePhase >= 1.0f)
                 {
-                    float driftAmount = (uniformRandom (voice.prngState) - 0.5f) * 2.0f;
-                    driftAmount *= effectiveDrift * 0.005f; // max ~0.5% pitch drift
-                    freq *= (1.0f + driftAmount);
+                    voice.wavePhase -= 1.0f;
+
+                    // Save last sample of previous cycle for crossfade
+                    voice.prevCycleLastSample = voice.lastOutputL;
+                    voice.cycleBlendCounter = OracleVoice::kCycleBlendSamples;
+
+                    // Evolve breakpoints via stochastic random walk
+                    evolveBreakpoints (voice,
+                                       modTimeStep * stochDepth,
+                                       modAmpStep * stochDepth,
+                                       smoothedDistribution,
+                                       effectiveElastic,
+                                       couplingBreakpointMod);
                 }
 
-                voice.phaseInc = freq / srf;
+                // --- Cubic Hermite interpolation across breakpoints ---
+                float rawSample = interpolateBreakpoints (voice, voice.wavePhase);
 
-                // Advance phase
-                float prevPhase = voice.phase;
-                voice.phase += voice.phaseInc;
-
-                // Check for cycle completion
-                if (voice.phase >= 1.0f)
+                // --- Cycle boundary crossfade (prevent clicks) ---
+                if (voice.cycleBlendCounter > 0)
                 {
-                    voice.phase -= 1.0f;
-                    // --- GENDY: update breakpoints once per cycle ---
-                    updateBreakpoints (voice, effectiveBreakpoints, scaledTimeStep,
-                                       scaledAmpStep, smoothedDistribution,
-                                       effectiveBarrier, couplingBreakpointMod);
+                    float blendT = static_cast<float> (voice.cycleBlendCounter)
+                                 / static_cast<float> (OracleVoice::kCycleBlendSamples);
+                    rawSample = rawSample * (1.0f - blendT)
+                              + voice.prevCycleLastSample * blendT;
+                    --voice.cycleBlendCounter;
                 }
 
-                // --- Waveform readout: cubic Hermite interpolation ---
-                float out = readWaveform (voice, voice.phase);
+                // --- DC blocker (L channel) ---
+                float outL = voice.dcBlockerL.process (rawSample);
 
-                // --- DC blocker: y[n] = x[n] - x[n-1] + 0.995 * y[n-1] ---
-                float dcOut = out - voice.dcX1 + 0.995f * voice.dcY1;
-                dcOut = flushDenormal (dcOut);
-                voice.dcX1 = out;
-                voice.dcY1 = dcOut;
-                out = dcOut;
+                // --- Stereo decorrelation: R channel uses slight phase offset ---
+                float phaseR = voice.wavePhase + 0.01f;
+                if (phaseR >= 1.0f) phaseR -= 1.0f;
+                float rawSampleR = interpolateBreakpoints (voice, phaseR);
+                if (voice.cycleBlendCounter > 0)
+                {
+                    float blendT = static_cast<float> (voice.cycleBlendCounter + 1)
+                                 / static_cast<float> (OracleVoice::kCycleBlendSamples);
+                    rawSampleR = rawSampleR * (1.0f - blendT)
+                               + voice.prevCycleLastSample * blendT;
+                }
+                float outR = voice.dcBlockerR.process (rawSampleR);
 
-                // --- Soft limiter: tanh(x * 0.7) / 0.7 ---
-                out = fastTanh (out * 0.7f) / 0.7f;
+                // --- Soft limiter (tanh saturation) ---
+                outL = fastTanh (outL);
+                outR = fastTanh (outR);
 
                 // --- Apply amplitude envelope, velocity, and crossfade ---
                 float gain = ampLevel * voice.velocity * voice.fadeGain;
-                float outL = out * gain;
-                float outR = out * gain;
+                outL *= gain;
+                outR *= gain;
 
-                // Slight stereo spread from drift (L/R phase offset)
-                if (effectiveDrift > 0.01f)
-                {
-                    float phaseR = voice.phase + effectiveDrift * 0.02f;
-                    if (phaseR >= 1.0f) phaseR -= 1.0f;
-                    float outRaw = readWaveform (voice, phaseR);
-                    // DC block the R channel variant
-                    outRaw = fastTanh (outRaw * 0.7f) / 0.7f;
-                    outR = outRaw * gain;
-                }
-
-                // Denormal protection
+                // Denormal protection on outputs
                 outL = flushDenormal (outL);
                 outR = flushDenormal (outR);
+
+                voice.lastOutputL = outL;
+                voice.lastOutputR = outR;
 
                 mixL += outL;
                 mixR += outR;
@@ -611,7 +713,7 @@ public:
 
         envelopeOutput = peakEnv;
 
-        // Update active voice count
+        // Update active voice count (safe for UI thread reads)
         int count = 0;
         for (const auto& v : voices)
             if (v.active) ++count;
@@ -648,12 +750,7 @@ public:
 
             case CouplingType::EnvToMorph:
                 // External envelope drives distribution morph
-                couplingDistribMod += amount * 0.4f;
-                break;
-
-            case CouplingType::RhythmToBlend:
-                // Rhythm pattern modulates stochastic step sizes via breakpoint mod
-                couplingBreakpointMod += amount * 0.3f;
+                couplingDistributionMod += amount * 0.4f;
                 break;
 
             default:
@@ -700,19 +797,20 @@ public:
             juce::ParameterID { "oracle_barrierElasticity", 1 }, "Oracle Barrier Elasticity",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.5f));
 
-        // --- Maqam Tuning ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+        // --- Maqam Parameters ---
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
             juce::ParameterID { "oracle_maqam", 1 }, "Oracle Maqam",
-            juce::NormalisableRange<float> (0.0f, 8.0f, 1.0f), 0.0f));
+            juce::StringArray { "12-TET", "Rast", "Bayati", "Saba", "Hijaz",
+                                "Sikah", "Nahawand", "Kurd", "Ajam" }, 0));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "oracle_gravity", 1 }, "Oracle Gravity",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.0f));
 
-        // --- Drift ---
+        // --- Evolution ---
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "oracle_drift", 1 }, "Oracle Drift",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.0f));
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.3f));
 
         // --- Level ---
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
@@ -743,11 +841,11 @@ public:
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "oracle_stochEnvDecay", 1 }, "Oracle Stoch Decay",
-            juce::NormalisableRange<float> (0.0f, 10.0f, 0.001f, 0.3f), 0.2f));
+            juce::NormalisableRange<float> (0.0f, 10.0f, 0.001f, 0.3f), 0.3f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "oracle_stochEnvSustain", 1 }, "Oracle Stoch Sustain",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.6f));
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.7f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "oracle_stochEnvRelease", 1 }, "Oracle Stoch Release",
@@ -790,19 +888,19 @@ public:
 
         // --- Macros ---
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "oracle_macroCharacter", 1 }, "Oracle Macro CHARACTER",
+            juce::ParameterID { "oracle_macroProphecy", 1 }, "Oracle Macro PROPHECY",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "oracle_macroMovement", 1 }, "Oracle Macro MOVEMENT",
+            juce::ParameterID { "oracle_macroEvolution", 1 }, "Oracle Macro EVOLUTION",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "oracle_macroCoupling", 1 }, "Oracle Macro COUPLING",
+            juce::ParameterID { "oracle_macroGravity", 1 }, "Oracle Macro GRAVITY",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "oracle_macroSpace", 1 }, "Oracle Macro SPACE",
+            juce::ParameterID { "oracle_macroDrift", 1 }, "Oracle Macro DRIFT",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
     }
 
@@ -838,10 +936,10 @@ public:
         pVoiceMode          = apvts.getRawParameterValue ("oracle_voiceMode");
         pGlide              = apvts.getRawParameterValue ("oracle_glide");
 
-        pMacroCharacter     = apvts.getRawParameterValue ("oracle_macroCharacter");
-        pMacroMovement      = apvts.getRawParameterValue ("oracle_macroMovement");
-        pMacroCoupling      = apvts.getRawParameterValue ("oracle_macroCoupling");
-        pMacroSpace         = apvts.getRawParameterValue ("oracle_macroSpace");
+        pMacroProphecy      = apvts.getRawParameterValue ("oracle_macroProphecy");
+        pMacroEvolution     = apvts.getRawParameterValue ("oracle_macroEvolution");
+        pMacroGravity       = apvts.getRawParameterValue ("oracle_macroGravity");
+        pMacroDrift         = apvts.getRawParameterValue ("oracle_macroDrift");
     }
 
     //==========================================================================
@@ -850,7 +948,10 @@ public:
 
     juce::String getEngineId() const override { return "Oracle"; }
 
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFF4B0082); }
+    juce::Colour getAccentColour() const override
+    {
+        return juce::Colour (0xFF4B0082);  // Prophecy Indigo
+    }
 
     int getMaxVoices() const override { return kMaxVoices; }
 
@@ -866,232 +967,300 @@ private:
         return (p != nullptr) ? p->load() : fallback;
     }
 
-    static int clampI (int x, int lo, int hi) noexcept
-    {
-        return (x < lo) ? lo : ((x > hi) ? hi : x);
-    }
-
     //==========================================================================
-    // xorshift64 PRNG — fast, per-voice, deterministic.
-    //==========================================================================
-
-    static uint64_t xorshift64 (uint64_t& state) noexcept
-    {
-        state ^= state << 13;
-        state ^= state >> 7;
-        state ^= state << 17;
-        return state;
-    }
-
-    // Uniform random in (0, 1)
-    static float uniformRandom (uint64_t& state) noexcept
-    {
-        uint64_t x = xorshift64 (state);
-        // Use upper 32 bits for better distribution
-        return (static_cast<float> (x >> 32) + 1.0f) / 4294967298.0f; // (0, 1) exclusive
-    }
-
-    // Cauchy distribution sample — heavy-tailed, dramatic jumps
-    static float cauchySample (uint64_t& state) noexcept
-    {
-        float u = uniformRandom (state);
-        // Clamp away from 0 and 1 to avoid infinities
-        u = clamp (u, 0.01f, 0.99f);
-        return std::tan (kOraclePI * (u - 0.5f));
-    }
-
-    // Logistic distribution sample — smooth, gradual changes
-    static float logisticSample (uint64_t& state) noexcept
-    {
-        float u = uniformRandom (state);
-        // Clamp away from 0 and 1 to avoid infinities
-        u = clamp (u, 0.01f, 0.99f);
-        return std::log (u / (1.0f - u));
-    }
-
-    // Blended stochastic sample: distribution [0,1] blends Cauchy <-> Logistic
-    static float stochasticSample (uint64_t& state, float distribution) noexcept
-    {
-        float c = cauchySample (state);
-        float l = logisticSample (state);
-        // distribution 0 = pure Cauchy, 1 = pure Logistic
-        return c * (1.0f - distribution) + l * distribution;
-    }
-
-    //==========================================================================
-    // Mirror barrier reflection — elastic boundaries.
+    // Maqam tuning — compute frequency for a MIDI note given maqam + gravity.
+    //
+    // When maqam is 0 (12-TET) or gravity is 0, returns standard 12-TET.
+    // Otherwise, maps each chromatic note to its maqam-adjusted frequency
+    // and blends between 12-TET and maqam based on gravity [0,1].
     //==========================================================================
 
-    static float mirrorBarrier (float val, float lo, float hi, float elasticity) noexcept
+    static float computeMaqamFreq (int midiNote, int maqamIdx, float gravity) noexcept
     {
-        // Elasticity controls how much energy is preserved on reflection.
-        // 1.0 = perfect elastic, 0.0 = hard clamp (no bounce).
-        int maxIter = 8; // Prevent infinite loop
-        while ((val < lo || val > hi) && maxIter-- > 0)
+        // 12-TET frequency
+        float tetFreq = 440.0f * std::pow (2.0f,
+            (static_cast<float> (midiNote) - 69.0f) / 12.0f);
+
+        // If maqam is 0 (12-TET) or gravity is zero, use standard tuning
+        if (maqamIdx <= 0 || maqamIdx > kNumMaqamat || gravity <= 0.0001f)
+            return tetFreq;
+
+        const auto& maq = kMaqamat[maqamIdx - 1];
+
+        // Determine note position within octave
+        // Use C as the maqam root (MIDI 60 = C4)
+        int noteInOctave = ((midiNote % 12) + 12) % 12;  // 0-11
+        int octave = (midiNote / 12) - 1;
+
+        // Convert chromatic position to cents from root
+        float chromaticCents = static_cast<float> (noteInOctave) * 100.0f;
+
+        // Find the maqam cent offset by interpolating between degrees
+        float maqamCentOffset = chromaticCents;  // default: same as 12-TET
+        for (int d = 0; d < 7; ++d)
         {
-            if (val < lo)
+            if (chromaticCents >= maq.cents[d] - 0.01f
+                && chromaticCents <= maq.cents[d + 1] + 0.01f)
             {
-                float overshoot = lo - val;
-                val = lo + overshoot * elasticity;
-            }
-            if (val > hi)
-            {
-                float overshoot = val - hi;
-                val = hi - overshoot * elasticity;
+                float range = maq.cents[d + 1] - maq.cents[d];
+                float pos   = chromaticCents - maq.cents[d];
+                if (range > 0.001f)
+                {
+                    float t = pos / range;
+                    maqamCentOffset = maq.cents[d]
+                                    + t * (maq.cents[d + 1] - maq.cents[d]);
+                }
+                else
+                {
+                    maqamCentOffset = maq.cents[d];
+                }
+                break;
             }
         }
-        // Final hard clamp as safety
-        return clamp (val, lo, hi);
+
+        // Compute maqam frequency from the C root of the same octave
+        int rootMidi = (octave + 1) * 12;  // C of this octave
+        float rootFreq = 440.0f * std::pow (2.0f,
+            (static_cast<float> (rootMidi) - 69.0f) / 12.0f);
+        float maqamFreq = rootFreq * std::pow (2.0f, maqamCentOffset / 1200.0f);
+
+        // Blend between 12-TET and maqam tuning via gravity
+        return tetFreq + gravity * (maqamFreq - tetFreq);
     }
 
     //==========================================================================
-    // GENDY: Update breakpoints — called once per waveform cycle.
+    // Distribution sampling — morphable Cauchy/Logistic blend.
+    //
+    // distribution = 0.0 -> pure Cauchy (heavy-tailed, erratic)
+    // distribution = 1.0 -> pure Logistic (smooth, predictable)
     //==========================================================================
 
-    void updateBreakpoints (OracleVoice& voice, int numBP, float timeStepSize,
-                            float ampStepSize, float distribution, float elasticity,
-                            float couplingAmpMod) noexcept
+    static float sampleDistribution (Xorshift64& rng, float distribution) noexcept
     {
-        int n = clampI (numBP, 8, kOracleMaxBreakpoints);
-        voice.numBreakpoints = n;
+        float u = rng.uniform();
 
-        // Scale step sizes: map [0,1] to useful stochastic ranges
-        // timeStepSize controls maximum time perturbation per cycle
-        float timeScale = timeStepSize * 0.15f;  // max 15% of cycle span
-        // ampStepSize controls maximum amplitude perturbation per cycle
-        float ampScale  = ampStepSize * 0.4f;    // max 40% of amplitude range
+        // Clamp to avoid singularities at 0 and 1
+        u = std::max (0.001f, std::min (0.999f, u));
+
+        // Cauchy: tan(pi * (u - 0.5)) — heavy-tailed distribution
+        float cauchy = std::tan (kPI * (u - 0.5f));
+        // Clamp and normalize to roughly [-1, 1]
+        cauchy = std::max (-10.0f, std::min (10.0f, cauchy));
+        cauchy *= 0.1f;
+
+        // Logistic: log(u / (1 - u)) — smooth sigmoid-like tails
+        float logistic = std::log (u / (1.0f - u));
+        // Normalize to roughly [-1, 1]
+        logistic *= 0.15f;
+
+        // Morph between the two distributions
+        return cauchy * (1.0f - distribution) + logistic * distribution;
+    }
+
+    //==========================================================================
+    // Mirror barrier — elastic reflection at boundaries.
+    //
+    // When a value exceeds [lo, hi], it reflects back like a billiard ball.
+    // Elasticity controls how much of the overshoot energy is preserved:
+    //   0 = hard clamp (no reflection)
+    //   1 = full elastic reflection
+    //==========================================================================
+
+    static float mirrorBarrier (float value, float lo, float hi,
+                                float elasticity) noexcept
+    {
+        float range = hi - lo;
+        if (range <= 0.0001f) return (lo + hi) * 0.5f;
+
+        int iterations = 0;
+        while ((value < lo || value > hi) && iterations < 8)
+        {
+            if (value < lo)
+            {
+                float overshoot = lo - value;
+                value = lo + overshoot * elasticity;
+            }
+            else if (value > hi)
+            {
+                float overshoot = value - hi;
+                value = hi - overshoot * elasticity;
+            }
+            ++iterations;
+        }
+
+        // Final hard clamp as safety net
+        return std::max (lo, std::min (hi, value));
+    }
+
+    //==========================================================================
+    // Evolve breakpoints — stochastic random walk, once per waveform cycle.
+    //
+    // Each breakpoint's time and amplitude are perturbed by samples from
+    // the morphable Cauchy/Logistic distribution, then reflected via mirror
+    // barriers. After perturbation, breakpoints are sorted by time and the
+    // time span is normalized to [0, 1].
+    //==========================================================================
+
+    void evolveBreakpoints (OracleVoice& voice, float timeStep, float ampStep,
+                            float distribution, float elasticity,
+                            float bpMod) noexcept
+    {
+        int n = voice.numBreakpoints;
+
+        // Quadratic scaling for gradual onset of chaos
+        float tStep = timeStep * timeStep * 0.15f;
+        float aStep = ampStep * ampStep * 0.3f;
 
         for (int i = 0; i < n; ++i)
         {
-            auto& bp = voice.breakpoints[static_cast<size_t> (i)];
+            auto& bp = voice.breakpoints[i];
 
             // Random walk on time offset
-            float timeDelta = stochasticSample (voice.prngState, distribution) * timeScale;
-            bp.time += timeDelta;
+            float timeDelta = sampleDistribution (voice.rng, distribution) * tStep;
+            bp.timeOffset += timeDelta;
 
             // Random walk on amplitude
-            float ampDelta = stochasticSample (voice.prngState, distribution) * ampScale;
-            // Apply coupling modulation to amplitude perturbation
-            ampDelta += couplingAmpMod * 0.1f;
-            bp.amp += ampDelta;
+            float ampDelta = sampleDistribution (voice.rng, distribution) * aStep;
+            bp.amplitude += ampDelta;
 
-            // Mirror barrier reflection
-            bp.time = mirrorBarrier (bp.time, 0.0f, 1.0f, elasticity);
-            bp.amp  = mirrorBarrier (bp.amp, -1.0f, 1.0f, elasticity);
+            // Apply coupling modulation to amplitude
+            bp.amplitude += bpMod * 0.05f;
+
+            // Mirror barrier for time [0, 1]
+            bp.timeOffset = mirrorBarrier (bp.timeOffset, 0.0f, 1.0f, elasticity);
+
+            // Mirror barrier for amplitude [-1, 1]
+            bp.amplitude = mirrorBarrier (bp.amplitude, -1.0f, 1.0f, elasticity);
         }
 
-        // Sort breakpoints by time to maintain valid waveform ordering
-        std::sort (voice.breakpoints.begin(),
-                   voice.breakpoints.begin() + n,
-                   [] (const GendyBreakpoint& a, const GendyBreakpoint& b) {
-                       return a.time < b.time;
+        // Sort breakpoints by time offset to maintain waveform ordering
+        std::sort (voice.breakpoints, voice.breakpoints + n,
+                   [] (const GENDYBreakpoint& a, const GENDYBreakpoint& b) {
+                       return a.timeOffset < b.timeOffset;
                    });
 
-        // Normalize time span: first breakpoint at 0, last at 1
+        // Normalize time span: first breakpoint at 0, last at ~1
         if (n >= 2)
         {
-            float tMin = voice.breakpoints[0].time;
-            float tMax = voice.breakpoints[static_cast<size_t> (n - 1)].time;
+            float tMin = voice.breakpoints[0].timeOffset;
+            float tMax = voice.breakpoints[n - 1].timeOffset;
             float span = tMax - tMin;
-            if (span < 0.001f) span = 0.001f;
 
-            for (int i = 0; i < n; ++i)
+            if (span > 0.001f)
             {
-                voice.breakpoints[static_cast<size_t> (i)].time =
-                    (voice.breakpoints[static_cast<size_t> (i)].time - tMin) / span;
+                for (int i = 0; i < n; ++i)
+                {
+                    voice.breakpoints[i].timeOffset =
+                        (voice.breakpoints[i].timeOffset - tMin) / span;
+                }
+            }
+            else
+            {
+                // Degenerate case: redistribute evenly
+                for (int i = 0; i < n; ++i)
+                {
+                    voice.breakpoints[i].timeOffset =
+                        static_cast<float> (i) / static_cast<float> (n - 1);
+                }
             }
         }
 
-        // Ensure endpoints
-        voice.breakpoints[0].time = 0.0f;
-        voice.breakpoints[static_cast<size_t> (n - 1)].time = 1.0f;
+        // Smoothing for high breakpoint counts (> 20): apply a small
+        // low-pass average to neighboring amplitudes to reduce aliasing
+        if (n > 20)
+        {
+            float prevAmp = voice.breakpoints[0].amplitude;
+            for (int i = 1; i < n - 1; ++i)
+            {
+                float cur  = voice.breakpoints[i].amplitude;
+                float next = voice.breakpoints[i + 1].amplitude;
+                float smoothed = prevAmp * 0.25f + cur * 0.5f + next * 0.25f;
+                prevAmp = cur;
+                voice.breakpoints[i].amplitude = smoothed;
+            }
+        }
     }
 
     //==========================================================================
-    // Cubic Hermite spline interpolation between breakpoints.
+    // Cubic Hermite interpolation between breakpoints.
+    //
+    // Uses Catmull-Rom tangent estimation for smooth interpolation.
+    // Runs per-sample — this is the inner-loop hot path.
     //==========================================================================
 
-    float readWaveform (const OracleVoice& voice, float phase) const noexcept
+    float interpolateBreakpoints (const OracleVoice& voice,
+                                  float phase) const noexcept
     {
         int n = voice.numBreakpoints;
         if (n < 2) return 0.0f;
 
-        // Wrap phase to [0, 1)
-        phase = phase - static_cast<float> (static_cast<int> (phase));
-        if (phase < 0.0f) phase += 1.0f;
+        // Clamp phase to [0, 1)
+        phase = std::max (0.0f, std::min (0.99999f, phase));
 
-        // Find the segment: breakpoints[i].time <= phase < breakpoints[i+1].time
-        int seg = 0;
+        // Find the segment: breakpoint[i] <= phase < breakpoint[i+1]
+        int segIdx = n - 2;  // default to last segment
         for (int i = 0; i < n - 1; ++i)
         {
-            if (phase >= voice.breakpoints[static_cast<size_t> (i)].time)
-                seg = i;
+            if (phase < voice.breakpoints[i + 1].timeOffset)
+            {
+                segIdx = i;
+                break;
+            }
         }
 
-        int i0 = seg;
-        int i1 = std::min (seg + 1, n - 1);
+        // Get 4 control points for cubic Hermite (Catmull-Rom)
+        int i0 = std::max (0, segIdx - 1);
+        int i1 = segIdx;
+        int i2 = std::min (n - 1, segIdx + 1);
+        int i3 = std::min (n - 1, segIdx + 2);
 
-        float t0 = voice.breakpoints[static_cast<size_t> (i0)].time;
-        float t1 = voice.breakpoints[static_cast<size_t> (i1)].time;
-        float a0 = voice.breakpoints[static_cast<size_t> (i0)].amp;
-        float a1 = voice.breakpoints[static_cast<size_t> (i1)].amp;
+        float t1 = voice.breakpoints[i1].timeOffset;
+        float t2 = voice.breakpoints[i2].timeOffset;
 
-        float dt = t1 - t0;
-        if (dt < 0.0001f) return a0;
+        float a0 = voice.breakpoints[i0].amplitude;
+        float a1 = voice.breakpoints[i1].amplitude;
+        float a2 = voice.breakpoints[i2].amplitude;
+        float a3 = voice.breakpoints[i3].amplitude;
 
-        float t = (phase - t0) / dt; // Local interpolation parameter [0, 1]
+        // Local parameter t within segment [t1, t2]
+        float segLen = t2 - t1;
+        float t = (segLen > 0.00001f) ? (phase - t1) / segLen : 0.0f;
+        t = std::max (0.0f, std::min (1.0f, t));
 
-        // Get neighboring points for tangent calculation
-        int iPrev = (i0 > 0) ? i0 - 1 : n - 1;
-        int iNext = (i1 < n - 1) ? i1 + 1 : 0;
+        // Catmull-Rom tangent estimation
+        float t0v = voice.breakpoints[i0].timeOffset;
+        float t3v = voice.breakpoints[i3].timeOffset;
 
-        float aPrev = voice.breakpoints[static_cast<size_t> (iPrev)].amp;
-        float aNext = voice.breakpoints[static_cast<size_t> (iNext)].amp;
+        float m1 = 0.0f;
+        float m2 = 0.0f;
 
-        // Catmull-Rom tangents (finite difference)
-        float m0 = (a1 - aPrev) * 0.5f;
-        float m1 = (aNext - a0) * 0.5f;
+        // Tangent at p1
+        {
+            float dt = t2 - t0v;
+            if (dt > 0.00001f)
+                m1 = (a2 - a0) / dt * segLen;
+        }
 
-        // Cubic Hermite basis functions
-        float t2 = t * t;
-        float t3 = t2 * t;
-        float h00 = 2.0f * t3 - 3.0f * t2 + 1.0f;
-        float h10 = t3 - 2.0f * t2 + t;
-        float h01 = -2.0f * t3 + 3.0f * t2;
-        float h11 = t3 - t2;
+        // Tangent at p2
+        {
+            float dt = t3v - t1;
+            if (dt > 0.00001f)
+                m2 = (a3 - a1) / dt * segLen;
+        }
 
-        float result = h00 * a0 + h10 * m0 + h01 * a1 + h11 * m1;
+        // Hermite basis functions
+        float t2_ = t * t;
+        float t3_ = t2_ * t;
 
-        // Clamp output to [-1, 1] for safety
-        return clamp (result, -1.2f, 1.2f);
-    }
+        float h00 =  2.0f * t3_ - 3.0f * t2_ + 1.0f;
+        float h10 =         t3_ - 2.0f * t2_ + t;
+        float h01 = -2.0f * t3_ + 3.0f * t2_;
+        float h11 =         t3_ -        t2_;
 
-    //==========================================================================
-    // Maqam tuning: convert MIDI note to frequency with maqam offsets.
-    //==========================================================================
+        float result = h00 * a1 + h10 * m1 + h01 * a2 + h11 * m2;
 
-    float maqamMidiToHz (int noteNumber, int maqamIdx, float gravity) const noexcept
-    {
-        // Base 12-TET frequency
-        float baseFreq = 440.0f * std::pow (2.0f, (static_cast<float> (noteNumber) - 69.0f) / 12.0f);
-
-        if (maqamIdx <= 0 || maqamIdx >= kNumMaqamat || gravity < 0.001f)
-            return baseFreq;
-
-        // Get the chromatic degree (0-11) within the octave
-        int degree = noteNumber % 12;
-        if (degree < 0) degree += 12;
-
-        // Look up cent offset for this maqam and degree
-        float centOffset = kMaqamCents[maqamIdx][degree];
-
-        // Apply gravity: 0 = 12-TET, 1 = full maqam tuning
-        float effectiveCents = centOffset * gravity;
-
-        // Convert cent offset to frequency ratio: ratio = 2^(cents/1200)
-        float ratio = std::pow (2.0f, effectiveCents / 1200.0f);
-
-        return baseFreq * ratio;
+        // Clamp output to prevent wild overshoots from interpolation
+        return std::max (-1.5f, std::min (1.5f, result));
     }
 
     //==========================================================================
@@ -1100,13 +1269,13 @@ private:
 
     void noteOn (int noteNumber, float velocity, int maxPoly,
                  bool monoMode, bool legatoMode, float glideCoeffVal,
-                 int numBreakpoints, int maqamIdx, float gravity,
+                 int bpCount, int maqamIdx, float gravity,
                  float ampA, float ampD, float ampS, float ampR,
                  float stochA, float stochD, float stochS, float stochR,
                  float lfo1Rate, float lfo1Depth, int lfo1Shape,
                  float lfo2Rate, float lfo2Depth, int lfo2Shape)
     {
-        float freq = maqamMidiToHz (noteNumber, maqamIdx, gravity);
+        float freq = computeMaqamFreq (noteNumber, maqamIdx, gravity);
 
         if (monoMode)
         {
@@ -1117,7 +1286,7 @@ private:
 
             if (legatoMode && wasActive)
             {
-                // Legato: don't retrigger envelopes, just glide
+                // Legato: glide to new note without retriggering envelopes
                 voice.glideCoeff = glideCoeffVal;
                 voice.noteNumber = noteNumber;
                 voice.velocity = velocity;
@@ -1130,19 +1299,16 @@ private:
                 voice.startTime = voiceCounter++;
                 voice.currentFreq = freq;
                 voice.glideCoeff = glideCoeffVal;
-                voice.phase = 0.0f;
+                voice.wavePhase = 0.0f;
                 voice.fadingOut = false;
                 voice.fadeGain = 1.0f;
-                voice.dcX1 = 0.0f;
-                voice.dcY1 = 0.0f;
+                voice.cycleBlendCounter = 0;
 
-                // Seed PRNG from note number + velocity for deterministic character
-                voice.prngState = static_cast<uint64_t> (noteNumber) * 2654435761ULL
-                                + static_cast<uint64_t> (velocity * 1000.0f) * 40503ULL
-                                + 0xDEADBEEFCAFEBABEULL;
+                // Seed PRNG from note number for deterministic variation
+                voice.rng.seed (static_cast<uint64_t> (noteNumber)
+                              * 2654435761ULL + 1);
 
-                // Initialize breakpoints to a sine-like starting shape
-                initBreakpoints (voice, numBreakpoints);
+                voice.initBreakpoints (bpCount);
 
                 voice.ampEnv.setParams (ampA, ampD, ampS, ampR, srf);
                 voice.ampEnv.noteOn();
@@ -1153,6 +1319,11 @@ private:
                 voice.lfo1.setShape (lfo1Shape);
                 voice.lfo2.setRate (lfo2Rate, srf);
                 voice.lfo2.setShape (lfo2Shape);
+
+                voice.dcBlockerL.prepare (srf);
+                voice.dcBlockerL.reset();
+                voice.dcBlockerR.prepare (srf);
+                voice.dcBlockerR.reset();
             }
             return;
         }
@@ -1174,20 +1345,17 @@ private:
         voice.startTime = voiceCounter++;
         voice.currentFreq = freq;
         voice.targetFreq = freq;
-        voice.glideCoeff = 1.0f;
-        voice.phase = 0.0f;
+        voice.glideCoeff = 1.0f;  // No glide in poly mode
+        voice.wavePhase = 0.0f;
         voice.fadingOut = false;
         voice.fadeGain = 1.0f;
-        voice.dcX1 = 0.0f;
-        voice.dcY1 = 0.0f;
+        voice.cycleBlendCounter = 0;
 
-        // Seed PRNG
-        voice.prngState = static_cast<uint64_t> (noteNumber) * 2654435761ULL
-                        + static_cast<uint64_t> (velocity * 1000.0f) * 40503ULL
-                        + voiceCounter * 6364136223846793005ULL
-                        + 0xDEADBEEFCAFEBABEULL;
+        // Seed PRNG from note number + voice counter for unique variation
+        voice.rng.seed (static_cast<uint64_t> (noteNumber)
+                      * 2654435761ULL + voiceCounter);
 
-        initBreakpoints (voice, numBreakpoints);
+        voice.initBreakpoints (bpCount);
 
         voice.ampEnv.setParams (ampA, ampD, ampS, ampR, srf);
         voice.ampEnv.noteOn();
@@ -1200,53 +1368,25 @@ private:
         voice.lfo2.setRate (lfo2Rate, srf);
         voice.lfo2.setShape (lfo2Shape);
         voice.lfo2.reset();
+
+        voice.dcBlockerL.prepare (srf);
+        voice.dcBlockerL.reset();
+        voice.dcBlockerR.prepare (srf);
+        voice.dcBlockerR.reset();
     }
 
     void noteOff (int noteNumber)
     {
         for (auto& voice : voices)
         {
-            if (voice.active && voice.noteNumber == noteNumber && !voice.fadingOut)
+            if (voice.active && voice.noteNumber == noteNumber
+                && !voice.fadingOut)
             {
                 voice.ampEnv.noteOff();
                 voice.stochEnv.noteOff();
             }
         }
     }
-
-    //==========================================================================
-    // Initialize breakpoints to a sine-like shape.
-    //==========================================================================
-
-    void initBreakpoints (OracleVoice& voice, int numBP) noexcept
-    {
-        int n = clampI (numBP, 8, kOracleMaxBreakpoints);
-        voice.numBreakpoints = n;
-
-        for (int i = 0; i < n; ++i)
-        {
-            float t = static_cast<float> (i) / static_cast<float> (n);
-            voice.breakpoints[static_cast<size_t> (i)].time = t;
-            voice.breakpoints[static_cast<size_t> (i)].amp = std::sin (kOracleTwoPi * t);
-        }
-
-        // Add slight per-voice randomization so simultaneous notes don't sound identical
-        for (int i = 0; i < n; ++i)
-        {
-            float r = (uniformRandom (voice.prngState) - 0.5f) * 0.1f;
-            voice.breakpoints[static_cast<size_t> (i)].amp += r;
-            voice.breakpoints[static_cast<size_t> (i)].amp =
-                clamp (voice.breakpoints[static_cast<size_t> (i)].amp, -1.0f, 1.0f);
-        }
-
-        // Ensure endpoints
-        voice.breakpoints[0].time = 0.0f;
-        voice.breakpoints[static_cast<size_t> (n - 1)].time = 1.0f;
-    }
-
-    //==========================================================================
-    // LRU voice finding.
-    //==========================================================================
 
     int findFreeVoice (int maxPoly) const
     {
@@ -1257,7 +1397,7 @@ private:
             if (!voices[static_cast<size_t> (i)].active)
                 return i;
 
-        // LRU voice stealing — find oldest voice
+        // LRU voice stealing — find oldest active voice
         int oldest = 0;
         uint64_t oldestTime = UINT64_MAX;
         for (int i = 0; i < poly; ++i)
@@ -1291,49 +1431,49 @@ private:
 
     // Coupling accumulators
     float envelopeOutput = 0.0f;
-    float couplingBreakpointMod = 0.0f;  // AudioToFM -> breakpoint amplitude perturbation
-    float couplingBarrierMod = 0.0f;     // AmpToFilter -> barrier position modulation
-    float couplingDistribMod = 0.0f;     // EnvToMorph -> distribution blend modulation
+    float couplingBreakpointMod = 0.0f;   // AudioToFM -> breakpoint perturbation
+    float couplingBarrierMod = 0.0f;       // AmpToFilter -> barrier modulation
+    float couplingDistributionMod = 0.0f;  // EnvToMorph -> distribution morph
 
     // Output cache for coupling reads
     std::vector<float> outputCacheL;
     std::vector<float> outputCacheR;
 
-    // Cached APVTS parameter pointers
-    std::atomic<float>* pBreakpoints = nullptr;
-    std::atomic<float>* pTimeStep = nullptr;
-    std::atomic<float>* pAmpStep = nullptr;
-    std::atomic<float>* pDistribution = nullptr;
+    // Cached APVTS parameter pointers (ParamSnapshot pattern)
+    std::atomic<float>* pBreakpoints       = nullptr;
+    std::atomic<float>* pTimeStep          = nullptr;
+    std::atomic<float>* pAmpStep           = nullptr;
+    std::atomic<float>* pDistribution      = nullptr;
     std::atomic<float>* pBarrierElasticity = nullptr;
-    std::atomic<float>* pMaqam = nullptr;
-    std::atomic<float>* pGravity = nullptr;
-    std::atomic<float>* pDrift = nullptr;
-    std::atomic<float>* pLevel = nullptr;
+    std::atomic<float>* pMaqam             = nullptr;
+    std::atomic<float>* pGravity           = nullptr;
+    std::atomic<float>* pDrift             = nullptr;
+    std::atomic<float>* pLevel             = nullptr;
 
-    std::atomic<float>* pAmpAttack = nullptr;
-    std::atomic<float>* pAmpDecay = nullptr;
-    std::atomic<float>* pAmpSustain = nullptr;
-    std::atomic<float>* pAmpRelease = nullptr;
+    std::atomic<float>* pAmpAttack         = nullptr;
+    std::atomic<float>* pAmpDecay          = nullptr;
+    std::atomic<float>* pAmpSustain        = nullptr;
+    std::atomic<float>* pAmpRelease        = nullptr;
 
-    std::atomic<float>* pStochEnvAttack = nullptr;
-    std::atomic<float>* pStochEnvDecay = nullptr;
-    std::atomic<float>* pStochEnvSustain = nullptr;
-    std::atomic<float>* pStochEnvRelease = nullptr;
+    std::atomic<float>* pStochEnvAttack    = nullptr;
+    std::atomic<float>* pStochEnvDecay     = nullptr;
+    std::atomic<float>* pStochEnvSustain   = nullptr;
+    std::atomic<float>* pStochEnvRelease   = nullptr;
 
-    std::atomic<float>* pLfo1Rate = nullptr;
-    std::atomic<float>* pLfo1Depth = nullptr;
-    std::atomic<float>* pLfo1Shape = nullptr;
-    std::atomic<float>* pLfo2Rate = nullptr;
-    std::atomic<float>* pLfo2Depth = nullptr;
-    std::atomic<float>* pLfo2Shape = nullptr;
+    std::atomic<float>* pLfo1Rate          = nullptr;
+    std::atomic<float>* pLfo1Depth         = nullptr;
+    std::atomic<float>* pLfo1Shape         = nullptr;
+    std::atomic<float>* pLfo2Rate          = nullptr;
+    std::atomic<float>* pLfo2Depth         = nullptr;
+    std::atomic<float>* pLfo2Shape         = nullptr;
 
-    std::atomic<float>* pVoiceMode = nullptr;
-    std::atomic<float>* pGlide = nullptr;
+    std::atomic<float>* pVoiceMode         = nullptr;
+    std::atomic<float>* pGlide             = nullptr;
 
-    std::atomic<float>* pMacroCharacter = nullptr;
-    std::atomic<float>* pMacroMovement = nullptr;
-    std::atomic<float>* pMacroCoupling = nullptr;
-    std::atomic<float>* pMacroSpace = nullptr;
+    std::atomic<float>* pMacroProphecy     = nullptr;
+    std::atomic<float>* pMacroEvolution    = nullptr;
+    std::atomic<float>* pMacroGravity      = nullptr;
+    std::atomic<float>* pMacroDrift        = nullptr;
 };
 
 } // namespace xomnibus
