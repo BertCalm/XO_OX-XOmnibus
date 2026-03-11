@@ -1,6 +1,6 @@
 # XOmnibus — Engine Expansion Roadmap
-*Next 2 Gallery Additions: BITE (XOpossum) + OPAL (XOpal)*
-*Document version: 1.0 | March 2026*
+*Gallery Additions: BITE (XOpossum) + OPAL (XOpal) → then Volume 2 engines*
+*Document version: 2.0 | March 2026*
 
 ---
 
@@ -214,6 +214,40 @@ Q1 2027
 │ BITE Gallery Install  ██                                  │
 │ OPAL Phase 3-4   ████████████                            │
 │ OPAL Gallery Install          ████                       │
+│ XOscillum Phase 0-1              ████████                 │
+└─────────────────────────────────────────────────────────┘
+
+Q2 2027
+┌─────────────────────────────────────────────────────────┐
+│ XOscillum Phase 2  ████████████████                       │
+│ XObliqua Phase 0-1             ████████                   │
+└─────────────────────────────────────────────────────────┘
+
+Q3 2027
+┌─────────────────────────────────────────────────────────┐
+│ XOscillum Phase 3-4  ████████                             │
+│ XObliqua Phase 2        ████████████████                  │
+│ XOccult Phase 0-1                   ████████              │
+└─────────────────────────────────────────────────────────┘
+
+Q4 2027
+┌─────────────────────────────────────────────────────────┐
+│ XOscillum Gallery Install  ██                             │
+│ XObliqua Phase 3-4    ████████                            │
+│ XOccult Phase 2           ████████████████                │
+│ OUROBOROS v2 planning (absorb XOBSESSION concepts)  ████ │
+└─────────────────────────────────────────────────────────┘
+
+Q1 2028
+┌─────────────────────────────────────────────────────────┐
+│ XObliqua Gallery Install  ██                              │
+│ XOccult Phase 3-4    ████████                             │
+│ XOccult Gallery Install       ████                        │
+└─────────────────────────────────────────────────────────┘
+
+Q2 2028+
+┌─────────────────────────────────────────────────────────┐
+│ XOntara Phase 0-4 (if pipeline proven)  ████████████████ │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -245,6 +279,41 @@ When both engines are installed, these are the priority cross-engine presets:
 5. **OVERWORLD × BITE** — Chip Bass — FM chip audio FM-modulating the bass
 6. **OPAL × DUB** — Granular Dub — grain cloud through tape echo + spring
 7. **ONSET × BITE** — Living Texture — snare envelope driving Bite macro
+
+---
+
+## Volume 2 Engines (Post BITE + OPAL)
+
+*Source: `Docs/XOmnibus_Master_Architecture- Volume 2.md.txt`*
+*Review: `Docs/xomnibus_volume2_review.md`*
+
+### Adopted — Build Queue
+
+| # | Vol 2 Name | XO Name | Short Code | Core Concept | Est. CPU | Status |
+|---|---|---|---|---|---|---|
+| 1 | XOSCILLUM | **XOscillum** | OSCIL | Psychoacoustic residue pitch — phantom fundamentals | <12% | Phase 1 spec ready |
+| 2 | XOBLICUA | **XObliqua** | OBLIQ | Kinematic phase-time — clave attractors as waveshaping | <15% | Concept only |
+| 3 | XOMATON | **XOccult** | OCCULT | 1D cellular automata — Wolfram rules as audio | <5% | Concept only |
+| 4 | XOTARA | **XOntara** | ONTAR | Topological sympathetic resonance — 64-voice modal bank | <20% | Concept only (deferred to 2028+) |
+
+### Merged — OUROBOROS v2
+
+XOBSESSION's best ideas (Mandelbrot c-plane navigation, Julia mode, DIVE parameter, Riemann sheet rotation) will be absorbed into a future OUROBOROS version update. See `Docs/xomnibus_volume2_review.md` Section F for merge plan.
+
+### Killed
+
+XOBOLIC — duplicate of ORGANON (metabolic/informational dissipative synthesis already implemented).
+
+### Parked — Future Research
+
+| Engine | Concept | Why Parked |
+|---|---|---|
+| XOMEMBRA | 2D wave interference mesh → emergent polyrhythm | CPU-heavy 2D waveguide, research-grade DSP |
+| XOGRAMA | 720-voice optical sine bank with laser aperture | 720 simultaneous oscillators, extreme engineering |
+| XOSMOSIS | 1D computational fluid dynamics (Burgers' equation) | Document flags "CRITICAL CPU BOTTLENECK" |
+| XOFERRO | Electromagnetic hysteresis (Jiles-Atherton model) | ODE solver + LUT pre-computation, moderate complexity |
+
+These concepts are preserved in the Volume 2 source document for future consideration after the first 3 adopted engines prove the expansion pipeline.
 
 ---
 
