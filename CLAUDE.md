@@ -55,6 +55,25 @@ and mutate into sounds impossible with any single synth.
 | OCEANIC | XOceanic | Phosphorescent Teal `#00B4A0` |
 | OVERBITE | XOverbite | Fang White `#F0EDE8` |
 
+### Engine ID vs Parameter Prefix
+
+Engine IDs (used in preset `"engines"` arrays, `"parameters"` keys, UI, and coupling routes)
+were renamed to O-prefix convention. **Parameter prefixes are frozen and never change:**
+
+| Engine ID | Parameter Prefix | Example |
+|-----------|-----------------|---------|
+| OddfeliX | `snap_` | `snap_filterCutoff` |
+| OddOscar | `morph_` | `morph_scanPos` |
+| Overdub | `dub_` | `dub_sendAmount` |
+| Odyssey | `odyssey_` | `odyssey_detune` |
+| Oblong | `bob_` | `bob_fltCutoff` |
+| Obese | `fat_` | `fat_satDrive` |
+| Overbite | `poss_` | `poss_biteDepth` |
+| Onset | `onset_` | `onset_noiseLevel` |
+
+Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
+are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
+
 ## Key Files
 
 | Path | Purpose |
