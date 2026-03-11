@@ -421,8 +421,8 @@ public:
         const int   voiceModeIdx  = static_cast<int> (loadParam (pVoiceMode, 2.0f));
         const float glideTime     = loadParam (pGlide, 0.0f);
 
-        const float macroChar     = loadParam (pMacroCharacter, 0.0f);
-        const float macroMove     = loadParam (pMacroMovement, 0.0f);
+        const float macroChar     = loadParam (pMacroFold, 0.0f);
+        const float macroMove     = loadParam (pMacroMotion, 0.0f);
         const float macroCoup     = loadParam (pMacroCoupling, 0.0f);
         const float macroSpace    = loadParam (pMacroSpace, 0.0f);
 
@@ -836,11 +836,11 @@ public:
 
         // --- Macros ---
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "origami_macroCharacter", 1 }, "Origami Macro CHARACTER",
+            juce::ParameterID { "origami_macroFold", 1 }, "Origami Macro FOLD",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "origami_macroMovement", 1 }, "Origami Macro MOVEMENT",
+            juce::ParameterID { "origami_macroMotion", 1 }, "Origami Macro MOTION",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
@@ -885,8 +885,8 @@ public:
         pVoiceMode         = apvts.getRawParameterValue ("origami_voiceMode");
         pGlide             = apvts.getRawParameterValue ("origami_glide");
 
-        pMacroCharacter    = apvts.getRawParameterValue ("origami_macroCharacter");
-        pMacroMovement     = apvts.getRawParameterValue ("origami_macroMovement");
+        pMacroFold         = apvts.getRawParameterValue ("origami_macroFold");
+        pMacroMotion       = apvts.getRawParameterValue ("origami_macroMotion");
         pMacroCoupling     = apvts.getRawParameterValue ("origami_macroCoupling");
         pMacroSpace        = apvts.getRawParameterValue ("origami_macroSpace");
     }
@@ -1583,8 +1583,8 @@ private:
     std::atomic<float>* pVoiceMode = nullptr;
     std::atomic<float>* pGlide = nullptr;
 
-    std::atomic<float>* pMacroCharacter = nullptr;
-    std::atomic<float>* pMacroMovement = nullptr;
+    std::atomic<float>* pMacroFold = nullptr;
+    std::atomic<float>* pMacroMotion = nullptr;
     std::atomic<float>* pMacroCoupling = nullptr;
     std::atomic<float>* pMacroSpace = nullptr;
 };
