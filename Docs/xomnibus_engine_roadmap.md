@@ -53,13 +53,16 @@ Planning done. Design doc at `~/Documents/GitHub/XOverbite/docs/plans/2026-03-06
 - Hero preset: `Presets/XOmnibus/Foundation/Belly_Growl.xometa` (122 params, round-trip verified)
 - **Gate:** compiles, save→load round-trips ✓
 
-#### Phase 2 — Core Voice Engine
-- OscA (4 belly waveforms), OscB (5 bite waveforms)
-- Weight/Sub engine with low-band compensation
-- NoiseSource (5 types + routing modes)
-- Voice pool: mono/legato/duo/poly4/unison
-- Amp envelope
-- **Gate:** audible tone, voice modes work, low end holds
+#### Phase 2 — Core Voice Engine: COMPLETE
+- OscA shape parameter + analog drift; OscB shape + instability
+- Weight engine (5 shapes, 3 octaves, fine tune)
+- NoiseSource (5 types: White/Pink/Brown/Crackle/Hiss, 4 routing modes)
+- Osc Interaction (4 modes: Soft Sync, Low FM, Phase Push, Grit Multiply)
+- 3 LFOs (7 shapes each: +Random, +Stepped), Mod envelope (3rd ADSR)
+- Voice: glide (Legato/Always), velocity sensitivity, pan
+- Macro 5 (Play Dead): release extend, level duck, filter close
+- Filter key tracking + pre-filter drive
+- **Gate:** audible tone, voice modes work, low end holds ✓
 
 #### Phase 3 — Filter + Character Stages
 - FilterBlock: Burrow LP / Snarl BP / Wire HP / Hollow Notch
