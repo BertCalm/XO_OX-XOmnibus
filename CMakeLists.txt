@@ -74,6 +74,10 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Orbital/OrbitalEngine.cpp
     Source/Engines/Obsidian/ObsidianEngine.h
     Source/Engines/Bite/BiteEngine.h
+    Source/Engines/Origami/OrigamiEngine.h
+    Source/Engines/Oracle/OracleEngine.h
+    Source/Engines/Obscura/ObscuraEngine.h
+    Source/Engines/Oceanic/OceanicEngine.h
 
     # UI (Gallery Model)
     Source/UI/XOmnibusEditor.h

@@ -17,7 +17,7 @@ inline const juce::StringArray validEngineNames {
     // V2 engines
     "Organon", "XOrganon", "Ouroboros", "XOuroboros",
     // V3 engines
-    "Obsidian", "Bite"
+    "Obsidian", "Bite", "Origami", "Oracle", "Obscura", "Oceanic"
 };
 
 // Valid moods — the 6 browsing categories plus User.

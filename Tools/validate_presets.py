@@ -40,7 +40,7 @@ VALID_ENGINES = {
     "Overworld", "Opal", "Orbital", "XOrbital",
     "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Onset",
     "Organon", "XOrganon", "Ouroboros", "XOuroboros",
-    "Obsidian", "Bite",
+    "Obsidian", "Bite", "Origami", "Oracle", "Obscura", "Oceanic",
 }
 
 # Map non-standard coupling intensities to valid ones
