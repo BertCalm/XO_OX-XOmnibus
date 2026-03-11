@@ -394,14 +394,12 @@ public:
     {
         phase = startPhase;
         randomValue = 0.0f;
-        steppedValue = 0.0f;
     }
 
     void reset() noexcept
     {
         phase = 0.0f;
         randomValue = 0.0f;
-        steppedValue = 0.0f;
     }
 
     // Returns bipolar [-1, 1]
@@ -451,7 +449,6 @@ private:
     double sr = 44100.0;
     float phase = 0.0f;
     float randomValue = 0.0f;
-    float steppedValue = 0.0f;
 };
 
 //==============================================================================
@@ -662,7 +659,9 @@ struct OpalCloudVoice
     void noteOn (int note, float vel, double sr, float attack, float decay,
                  float sustain, float release, float filterA, float filterD,
                  float filterS, float filterR_,
-                 float prevFreq, float glideTime, bool legatoActive) noexcept
+                 float prevFreq, float glideTime, bool legatoActive,
+                 bool lfo1Retrig, float lfo1StartPhase,
+                 bool lfo2Retrig, float lfo2StartPhase) noexcept
     {
         active = true;
         noteNumber = note;
@@ -695,6 +694,10 @@ struct OpalCloudVoice
             filterL.reset();
             filterR.reset();
         }
+
+        // LFO retrigger on noteOn (per-voice phase reset)
+        if (lfo1Retrig) lfo1.retrigger (lfo1StartPhase);
+        if (lfo2Retrig) lfo2.retrigger (lfo2StartPhase);
 
         rng.seed (static_cast<uint32_t> (note * 137 + voiceIndex * 31 + 42));
         osc1.reset();
@@ -1016,8 +1019,6 @@ public:
         // Pre-allocate work buffers
         workBufL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         workBufR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
-        fxBufL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
-        fxBufR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         couplingBufL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         couplingBufR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
 
@@ -1594,6 +1595,11 @@ public:
         float filterDecay   = safeLoadF (pFilterDecay, 0.8f);
         float filterSustain = safeLoadF (pFilterSustain, 0.3f);
         float filterRelease = safeLoadF (pFilterRelease, 1.0f);
+        bool  lfo1Retrig    = safeLoad (pLfo1Retrigger, 0) > 0;
+        float lfo1StartPh  = safeLoadF (pLfo1Phase, 0.0f);
+        bool  lfo2Retrig    = safeLoad (pLfo2Retrigger, 0) > 0;
+        float lfo2StartPh  = safeLoadF (pLfo2Phase, 0.0f);
+        float freezeRegion  = safeLoadF (pFreezeSize, 0.25f);
         int   lfo1Shape     = safeLoad (pLfo1Shape, 0);
         float lfo1Rate      = safeLoadF (pLfo1Rate, 0.5f);
         float lfo1Depth     = safeLoadF (pLfo1Depth, 0.0f);
@@ -1657,7 +1663,9 @@ public:
                                       ampAttack, ampDecay, ampSustain, ampRelease,
                                       filterAttack, filterDecay, filterSustain, filterRelease,
                                       prevFreq, glideTime,
-                                      legato && legatoGlide);
+                                      legato && legatoGlide,
+                                      lfo1Retrig, lfo1StartPh,
+                                      lfo2Retrig, lfo2StartPh);
                     voices[0].birthOrder = ++voiceBirthCounter;
                 }
                 else
@@ -1672,7 +1680,9 @@ public:
                     v.noteOn (m.getNoteNumber(), m.getFloatVelocity(), sr,
                               ampAttack, ampDecay, ampSustain, ampRelease,
                               filterAttack, filterDecay, filterSustain, filterRelease,
-                              prevFreq, glideTime, false);
+                              prevFreq, glideTime, false,
+                              lfo1Retrig, lfo1StartPh,
+                              lfo2Retrig, lfo2StartPh);
                     v.birthOrder = ++voiceBirthCounter;
                 }
             }
@@ -1753,7 +1763,7 @@ public:
                     v.triggerAccum -= triggerInterval;
                     spawnGrainForVoice (v, position, posScatter, pitchShift,
                                         pitchScatter, panScatter, grainSizeMs,
-                                        windowShape, masterPan);
+                                        windowShape, masterPan, frozen, freezeRegion);
                 }
             }
         }
@@ -1838,7 +1848,19 @@ public:
             applyModMatrix (modOffsets, lfo1Val, lfo2Val, filterEnvSum, envSum, activeCount);
 
             // Filter with key tracking + filter envelope + drive
-            float effCutoff = filterCutoff + filterEnvAmt * filterEnvSum * 10000.0f
+            // Key tracking: shift cutoff based on average active note vs middle C (60)
+            float keyTrackOffset = 0.0f;
+            if (filterKeyTrack > 0.001f && activeCount > 0)
+            {
+                float avgNote = 0.0f;
+                for (const auto& v : voices)
+                    if (v.active) avgNote += static_cast<float> (v.noteNumber);
+                avgNote /= static_cast<float> (activeCount);
+                // Each semitone above middle C shifts cutoff up proportionally
+                keyTrackOffset = filterKeyTrack * (avgNote - 60.0f) * (filterCutoff / 60.0f);
+            }
+            float effCutoff = filterCutoff + keyTrackOffset
+                            + filterEnvAmt * filterEnvSum * 10000.0f
                             + modOffsets[6] * 5000.0f; // mod dest 6 = FilterCutoff
             effCutoff = clamp (effCutoff, 20.0f, 20000.0f);
 
@@ -1900,7 +1922,6 @@ public:
         {
             for (int n = 0; n < numSamples; ++n)
             {
-                float dry = outL[n];
                 // Smear approximation: feedback low-pass smoothing
                 smearStateL = flushDenormal (smearStateL + (outL[n] - smearStateL)
                               * (0.01f + 0.1f * (1.0f - fxSmearAmt)));
@@ -1998,14 +2019,17 @@ private:
 
     void spawnGrainForVoice (OpalCloudVoice& v, float position, float posScatter,
                               float pitchShift, float pitchScatter, float panScatter,
-                              float grainSizeMs, int windowShape, float basePan) noexcept
+                              float grainSizeMs, int windowShape, float basePan,
+                              bool frozen, float freezeRegion) noexcept
     {
         int bufSize = grainBuffer.getBufferSize();
         int writeHead = grainBuffer.getWriteHead();
 
         // Read position relative to write head
         float basePos = static_cast<float> (writeHead) - position * static_cast<float> (bufSize);
-        float scatter = v.rng.nextRange (-1.0f, 1.0f) * posScatter * static_cast<float> (bufSize);
+        float scatterRange = frozen ? (freezeRegion * static_cast<float> (bufSize))
+                                    : static_cast<float> (bufSize);
+        float scatter = v.rng.nextRange (-1.0f, 1.0f) * posScatter * scatterRange;
         float readPos = basePos + scatter;
 
         // Pitch
@@ -2176,7 +2200,6 @@ private:
 
     // Work buffers (pre-allocated in prepare)
     std::vector<float> workBufL, workBufR;
-    std::vector<float> fxBufL, fxBufR;
     std::vector<float> couplingBufL, couplingBufR;
 
     // Coupling modulation accumulators (reset each block)
