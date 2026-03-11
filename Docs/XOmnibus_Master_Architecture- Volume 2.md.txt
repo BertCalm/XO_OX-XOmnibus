@@ -1,0 +1,504 @@
+﻿XOMNIBUS: MASTER DSP ARCHITECTURE & DEVELOPMENT SEQUENCE
+Role: Senior DSP Engineer and C++ Audio Developer.
+Objective: Implement 10 radically experimental, highly optimized synthesis engines for the XOmnibus platform.
+Strict DSP Rules:
+1. Zero heap allocation on the audio thread.
+2. Zero blocking I/O or mutex locks on the audio thread.
+3. Heavy use of SIMD vectorization for oscillator banks.
+4. Parameters must have stable, persistent IDs (0-7 for core params, plus 4 Macros).
+5. All engines communicate via the MegaCouplingMatrix (passing audio/control-rate floats) and receive input from a continuous XYZ PlaySurface.
+PART 1: THE SEQUENCED DEVELOPMENT ROADMAP
+PHASE 0: The XOmnibus Foundation API
+Before writing a single oscillator, establish the rigid C++/Rust/DSP framework that all engines will plug into.
+* Audio-Thread Safety: Strict rules—no heap allocation, no locks, no blocking I/O.
+* MegaCouplingMatrix API: Define the struct/interface for the coupling buses (passing floats at control or audio rate between engines).
+* PlaySurface API: Define the XYZ continuous expression inputs.
+* Parameter Registry: Establish the stable ID system for the 8 core parameters and 4 Macros per engine.
+PHASE 1: Logic & Bitwise Infrastructure (Lowest CPU Load)
+Goal: Validate the audio engine, PlaySurface integration, and basic MegaCouplingMatrix triggers using mathematically cheap bitwise operations.
+ENGINE 1: XOMATON (The Logic-Gate Automaton)
+* The Vibe: Detroit Electro, Ghettotech, ruthless machine soul. Pitch and rhythm are the exact same process running at different clock speeds.
+* Historical Nods: EDP Wasp, Triadex Muse, Boss DR-660.
+* Core DSP Principle: 1D Cellular Automata (Boolean Pulse Emergence). High-speed digital shift-register evaluated by Wolfram rules. 1-bit states read as audio stream through simulated CMOS DAC.
+* Parameter Taxonomy: Automaton_Rule, Master_Clock_Div, Muse_Seed, Register_Width, Circuit_Bend, Sub_Register, Wasp_Cutoff, CMOS_Drive.
+* Macros: Character (Automaton_Rule), Movement (Circuit_Bend), Coupling (Grid_Injection), Space (Register_Width).
+* Coupling: Accepts: BIT_FLIP_INJECTION | Emits: LOGIC_GATE
+* PlaySurface (Pad): X = Master_Clock_Div, Y = Wasp_Cutoff, Pressure = Muse_Seed.
+* Dev Note: Bitwise operations are virtually free on modern CPUs. Focus on anti-aliasing of the 1-bit pulses before the filter.
+PHASE 2: Phase Manipulation & Solvers (Low/Moderate CPU)
+Goal: Introduce complex phase accumulators, control-rate solvers, and SIMD sine-banks.
+ENGINE 2: XOBLICUA (The Kinematic Phase Engine)
+* The Vibe: Afro-Cuban Clave, Latin micro-timing, elastic time. Syncopation is the wavefolder.
+* Historical Nods: Casio CZ Series, Akai MPC60, Buchla 252e.
+* Core DSP Principle: Kinematic Phase-Time Synthesis. The phase accumulator orbits a rhythmic attractor (the Clave). Syncopated notes mathematically accelerate/decelerate the phase to "catch up", resulting in violent phase-distortion.
+* Parameter Taxonomy: Attractor_Pattern, Slingshot_Tension, Tumbao, Base_Contour, Kinematic_Decay, Asymmetry, Inertia, Percussive_Snap.
+* Macros: Character (Slingshot_Tension), Movement (Tumbao), Coupling (Attractor_Pull), Space (Inertia).
+* Coupling: Accepts: TEMPORAL_DISPLACEMENT | Emits: MICRO_TIMING
+* PlaySurface (Fretless): X = Tumbao, Y = Slingshot_Tension, Pressure = Percussive_Snap.
+* Dev Note: Extreme phase acceleration causes aliasing. Implement oversampling or band-limited phase reading.
+ENGINE 3: XOSCILLUM (The Psychoacoustic Engine)
+* The Vibe: Brain-hacking, pure math, mixing via auditory illusion.
+* Historical Nods: Kawai K5000, Max Mathews MUSIC V.
+* Core DSP Principle: Phantom Pitch / Residue Pitch Hallucination. Calculates and emits only specific upper partials to force the human auditory cortex to hallucinate a missing fundamental. Introduces Tartini difference-tones for physical presence.
+* Parameter Taxonomy: Phantom_Target, Residue_Density, Odd_Even_Skew, Inharmonicity, Tartini_Drive, Formant_Anchor, Neural_Decay, Blur.
+* Macros: Character (Tartini_Drive), Movement (Inharmonicity), Coupling (Phantom_Root_Emission), Space (Formant_Anchor).
+* Coupling: Accepts: CROSS_FM | Emits: PHANTOM_PITCH
+* PlaySurface (Pad): X = Formant_Anchor, Y = Inharmonicity, Pressure = Tartini_Drive.
+* Dev Note: Solver runs at control rate. Harmonic generation must be a strictly SIMD-vectorized sine bank.
+PHASE 3: Non-Linear ODEs & State Management (Moderate CPU)
+Goal: Implement differential equation solvers and interdependent voice allocation.
+ENGINE 4: XOBOLIC (The Metabolic State-Space Engine)
+* The Vibe: Nocturnal ecosystems, bioluminescence, breathing terrariums.
+* Historical Nods: SOMA Lyra-8, Korg PS-3300, 1960s analog bio-computers.
+* Core DSP Principle: Coupled Oscillator Networks. Oscillators governed by Kuramoto model (phase synchronization) and Lotka-Volterra equations (upper harmonics "prey" on lower harmonics).
+* Parameter Taxonomy: Metabolism, Tidal_Lock, Apex_Prey_Ratio, Lunar_Phase, Nyctinasty, Bioluminescence, Respiration, Atrophy.
+* Macros: Character (Lunar_Phase), Movement (Respiration), Coupling (Tidal_Lock), Space (Bioluminescence).
+* Coupling: Accepts: ENVIRONMENTAL_STRESS | Emits: BIOLOGICAL_CLOCK
+* PlaySurface (Pad): X = Lunar_Phase, Y = Tidal_Lock, Pressure = Nutrient Injection.
+* Dev Note: Run ecosystem math at high control rate (RK4 solver), smoothing outputs to audio-rate swarm (16 operators max).
+PHASE 4: Physics & Topologies (High CPU Optimization)
+Goal: Implement Modal synthesis and physical modeling equivalents safely.
+ENGINE 5: XOTARA (The Gravitational Pitch Engine)
+* The Vibe: Indian Classical music, physical momentum, deep spiritual drones.
+* Historical Nods: Ondes Martenot Palme Speaker, Motorola Scalatron, Trautonium.
+* Core DSP Principle: Topological Sympathetic Resonance. Pitch exists on a microtonal 2D gravity map. A sliding bowed exciter resists movement out of these "wells," waking up a 64-voice Sympathetic Modal Resonator bank.
+* Parameter Taxonomy: Topology, Gravitational_Pull, Gamak_Mass, Sympathetic_Width, Vadi_Anchor, Friction, Resonator_Material, Spectral_Bleed.
+* Macros: Character (Friction), Movement (Gamak_Mass), Coupling (Pitch_Gravity), Space (Sympathetic_Width).
+* Coupling: Accepts: KINETIC_IMPACT | Emits: PITCH_GRAVITY
+* PlaySurface (Fretless): X = Continuous Pitch (Mandatory), Y = Sympathetic_Width, Pressure = Friction.
+* Dev Note: Do NOT use 64 physical waveguides. Implement Modal Synthesis (tuned bandpass arrays) using SIMD.
+ENGINE 6: XOMEMBRA (The Emergent Polyrhythm Engine)
+* The Vibe: West African fractal rhythms, sacred Mbira buzz, acoustic wave collisions.
+* Historical Nods: The Rhythmicon, Shona Mbira.
+* Core DSP Principle: 2D Wave Interference Mesh. Rhythm generated by injecting energy at edges of a 2D skin. Constructive interference creates amplitude spikes (beats). Non-linear nodes create "buzz".
+* Parameter Taxonomy: Membrane_Topology, Surface_Tension, Rhythmicon_Ratio, Injection_Mass, Wave_Friction, Buzz_Threshold, Mirliton_Timbre, Edge_Damping.
+* Macros: Character (Mirliton_Timbre), Movement (Membrane_Topology), Coupling (Surface_Tension), Space (Wave_Friction).
+* Coupling: Accepts: TENSION_MODULATION | Emits: INTERFERENCE_SPIKE
+* PlaySurface (Drum): X = Surface_Tension, Y = Buzz_Threshold, Pressure = Injection_Mass.
+* Dev Note: Use highly optimized Banded Waveguides/Sparse Mesh to simulate 2D physics.
+PHASE 5: The Capstone (Massive Polyphony)
+Goal: Dynamic voice allocation across hundreds of microtonal oscillators.
+ENGINE 7: XOGRAMA (The Opto-Kinetic Engine)
+* The Vibe: Unfinished 20th-century visions, optical film strips, eerie Soviet glass clusters.
+* Historical Nods: Evgeny Murzin’s ANS Synthesizer, Daphne Oram’s Oramics, Percy Grainger.
+* Core DSP Principle: Opto-Kinetic Holography. A 720-voice microtonal sine bank exists in the dark. The PlaySurface fires a virtual "laser." Only the oscillators illuminated by the beam's Aperture and Diffraction generate sound.
+* Parameter Taxonomy: Aperture_Width, Focal_Blur, Prismatic_Scatter, Plate_Speed, Celluloid_Wear, Grainger_Inertia, Etching_Density, Phosphor_Exposure.
+* Macros: Character (Celluloid_Wear), Movement (Plate_Speed), Coupling (Prismatic_Scatter), Space (Phosphor_Exposure).
+* Coupling: Accepts: ILLUMINATION | Emits: OPTICAL_FOCUS
+* PlaySurface (Fretless): X = Grainger_Inertia, Y = Aperture_Width, Pressure = Prismatic_Scatter.
+* Dev Note: Requires ultra-strict voice allocation. Dormant oscillators (in the dark) must consume zero CPU cycles.
+PHASE 6: Non-Newtonian Physics & Electromagnetism (Extreme CPU/Math)
+Goal: Execute complex wave-steepening, advection math, fractal orbit synthesis, and hysteresis safely on the audio thread.
+ENGINE 8: XOSMOSIS (The Fluid Dynamics Engine)
+* The Vibe: Hostile, sputtering, non-Newtonian, choking liquid.
+* Historical Nods: Metasonix S-1000 Wretch Machine, Yamaha VL1, EMS Synthi AKS.
+* Core DSP Principle: 1D Computational Fluid Dynamics (CFD). Uses finite difference method to solve Burgers' Equation across a 4-to-8 node micro-lattice. Laminar flow breaks down into chaotic turbulence via Reynolds number threshold.
+* Parameter Taxonomy: Flow_Pressure, Viscosity, Shear_Thickening, Aperture_Width, Turb_Threshold, Turb_Rate, Cavitation, Chamber_Size.
+* Macros: Character (Shear_Thickening), Movement (Flow_Pressure), Coupling (Aperture_Width), Space (Viscosity).
+* Coupling: Accepts: HYDRODYNAMIC_PRESSURE | Emits: TURBULENCE_STATE
+* PlaySurface (Pad/Fretless): X = Chamber_Size, Y = Viscosity, Pressure = Flow_Pressure.
+* Dev Note: CRITICAL CPU BOTTLENECK. Advection Solver must run at 4x oversampling. Hyperbolic tangent (tanh) soft-clipper mandatory before output to prevent NaN explosions.
+ENGINE 9: XOBSESSION (The Mathematical Obsession Engine)
+* The Vibe: Deterministic inevitability, fractal boundary tension, a mind circling a problem that never resolves.
+* Historical Nods: Don Buchla's 259 Complex Waveform Generator, Lorenz Strange Attractor synthesizers, Gaston Julia & Pierre Fatou.
+* Core DSP Principle: Complex Orbit Synthesis. Iterates   . Re(z) outputs to Left, Im(z) to Right. Uses the Mandelbrot c-plane as a navigable musical geography (stable interiors = drones, boundary = bounded chaos, exterior = metallic transients). DIVE zooms continuously from Mandelbrot to Julia sets.
+* Parameter Taxonomy: Charfield, Depth, Degree, Orbit_Count, Drift_Rate, Drift_Radius, Sheet, Dive.
+* Macros: Character (Charfield + Degree), Movement (Drift_Rate + Drift_Radius), Coupling (Orbit_Count), Space (Depth / Im(c)).
+* Coupling: Accepts: PHANTOM_PITCH, PITCH_MOD, AMPLITUDE_FIELD, CHAOS_SIGNAL, SPECTRAL_PRESSURE | Emits: ORBIT_FIELD, LYAPUNOV_SIGNAL, BIFURCATION_EDGE, DIVE_DEPTH, JULIA_TOPOLOGY, FRACTAL_DIMENSION, SHEET_INDEX.
+* PlaySurface (Pad - Mandelbrot): X = Charfield, Y = Depth, Pressure = Dive. (See detailed PlaySurface mapping in Part 2).
+* Dev Note: Inner loop is exactly 4 real multiplications + 4 additions per orbit step at    (Textbook SIMD). Block-rate updates for Lyapunov and topological evaluation. Zero dynamic allocation on the DSP thread.
+ENGINE 10: XOFERRO (The Electromagnetic Hysteresis Engine)
+   * The Vibe: Massive industrial momentum, weeping tube-saturation, screaming magnetic feedback.
+   * Historical Nods: Telharmonium, Hammond Novachord, EBow / Fernandez Sustainer.
+   * Core DSP Principle: Ferromagnetic Hysteresis & Barkhausen Noise. Simulates spinning kinetic mass moving through digital magnetic field. Uses Jiles-Atherton model of hysteresis to calculate "drag" of virtual transformer core.
+   * Parameter Taxonomy: Flux_Density, Rotor_Mass, Core_Material, Barkhausen, Coil_Turns, Eddy_Currents, Flux_Feedback, Air_Gap.
+   * Macros: Character (Core_Material), Movement (Air_Gap), Coupling (Flux_Density), Space (Rotor_Mass).
+   * Coupling: Accepts: DC_BIAS_INJECTION | Emits: FLUX_LEAKAGE
+   * PlaySurface (Fretless/Ribbon): X = Rotor_Mass, Y = Flux_Feedback, Pressure = Flux_Density.
+   * Dev Note: Jiles-Atherton ODEs will tank CPU. Pre-compute core hysteresis shapes into 2D lookup tables (LUTs). Mask Barkhausen noise by the derivative of the flux.
+PART 2: FULL ENGINE DESIGN SPECIFICATIONS
+1. XOMATON (The Logic-Gate Automaton)
+The Ghosts in XOMATON
+1. The EDP Wasp (1978) — The Logic Gate Oscillator
+Built using cheap CMOS digital logic inverters pushed into analog operation. XOMATON uses binary logic gates to scream out audio waveforms and uses resistive touch-plate interaction.
+2. The Triadex Muse (1971) — The Algorithmic Shift-Register
+A digital sequencer using logic gates and shift registers to generate pseudo-random binary patterns. This is the literal godfather of XOMATON’s cellular automata grid.
+3. The Boss DR-660 & Circuit Bending — The Ghettotech Soul
+Pushed past its limits, circuit-bent logic ROM chips create sputtering, randomized digital noise exactly like XOMATON's Data Corruption parameter.
+The Mathematical Core & Synthesis Principle
+Boolean Pulse Automata (1-Bit Emergence). Evaluates a grid of bits (0s and 1s) at clock speed. The state of any cell    at time    is strictly defined by its neighborhood at time    via a selected logic rule:
+  
+When read out as an audio stream through a simulated CMOS inverter, these 1-bit states create aggressive, syncopated pulse waves or mutating sub-audio rhythms.
+Signal Flow Architecture
+[PlaySurface Note / Sync Data]    [Minsky Shift-Register Grid]    [Automaton ALU]    [CMOS DAC Stage]    [Wasp-State Filter]    [Output]
+Parameter Taxonomy (Core 8)
+   1. Automaton Rule (0-255): Selects the core cellular algorithm (Rule 30, Rule 90, Rule 110).
+   2. Master Clock Div: Scales calculation from pure audio rate (Hz) down to tempo-synced subdivisions.
+   3. Muse Seed (Density): How many "1s" are injected into the grid when a note is struck.
+   4. Register Width: Length of the binary string before it loops.
+   5. Circuit Bend (Corruption): Probability of a bit flipping incorrectly (digital saturation).
+   6. Sub-Register (Octave): Secondary tap from the grid running at exactly half the clock speed.
+   7. Wasp Cutoff: Unstable, plastic-sounding low-pass filter response.
+   8. CMOS Drive: Pushes 1-bit pulses hard against virtual rails for analog distortion.
+XOmnibus Integration
+   * Macros: CHARACTER: Automaton Rule | MOVEMENT: Circuit Bend | COUPLING: Grid Injection | SPACE: Register Width
+   * Accepts: BIT_FLIP_INJECTION (Audio digitized and written into cellular grid).
+   * Emits: LOGIC_GATE (Outputs 1-bit state as raw generative control signal).
+   * PlaySurface: X = Master Clock Div, Y = Wasp Cutoff, Pressure = Muse Seed.
+2. XOBLICUA (The Kinematic Phase Engine)
+The Ghosts in XOBLICUA
+1. The Casio CZ Series (1984) — Phase Distortion Pioneer
+Dynamically alters the speed at which it reads a simple sine wave to warp it into saws and squares. XOBLICUA steals this math but drives it via rhythmic syncopation.
+2. The Akai MPC60 — The Invention of "Swing"
+Roger Linn applied swing to MIDI triggers. XOBLICUA applies swing directly to an oscillator's phase accumulator at audio rate.
+3. The Buchla 252e — Circular Time
+Visualizes and generates rhythms as intersecting circles and orbits, informing XOBLICUA's Clave attractor geometry.
+The Mathematical Core & Synthesis Principle
+Kinematic Phase-Time Synthesis.
+Time and Timbre are the exact same mathematical dimension. The phase accumulator is locked in a gravitational orbit around a rhythmic attractor (the Clave). Playing off the grid stretches the phase reader, forcing it to "slingshot" and dramatically accelerate to stay in orbit, physically warping the waveform.
+Signal Flow Architecture
+[PlaySurface Trigger Data]    [Clave Attractor]    [Kinematic Phase Accumulator]    [Oblique Wave-Shaper]    [Transient Snap-Gate]    [Output]
+Parameter Taxonomy (Core 8)
+   1. Attractor Pattern: Selects foundational rhythmic gravity (Son Clave, Rumba, Straight 16ths).
+   2. Slingshot Tension: How violently phase reader snaps back to the attractor.
+   3. Tumbao (Micro-Shift): Pushes internal grid ahead/behind master clock.
+   4. Base Contour: Underlying shape (Sine, Triangle, Saw).
+   5. Kinematic Decay: How quickly temporal distortion settles into stable waveform.
+   6. Asymmetry: Differentiates harmonic distortion for playing "early" vs "late".
+   7. Inertia: Adds heavy trailing sub-oscillator that drags behind main phase.
+   8. Percussive Snap: High-frequency energy burst exactly when phase aligns with Clave.
+XOmnibus Integration
+   * Macros: CHARACTER: Slingshot Tension | MOVEMENT: Tumbao | COUPLING: Attractor Pull | SPACE: Inertia
+   * Accepts: TEMPORAL_DISPLACEMENT (Audio knocks XOBLICUA off Clave axis, forcing compensatory phase-distortion).
+   * Emits: MICRO_TIMING (Broadcasts elastic time-grid, forcing other engines to swing).
+   * PlaySurface: X = Tumbao, Y = Slingshot Tension, Pressure = Percussive Snap.
+3. XOSCILLUM (The Psychoacoustic Engine)
+The Ghosts in XOSCILLUM
+1. Kawai K5000 (1996) — Additive Synthesis King
+Controlled 64 individual harmonics per voice. XOSCILLUM uses this power but acts as a "smart" additive synth solving math for human perceptual targets.
+2. Max Mathews & Bell Labs (1950s) — Computer Psychoacoustics
+Obsessed with how the computer could bypass acoustic physics to directly stimulate the ear.
+The Mathematical Core & Synthesis Principle
+Residue Pitch Hallucination. Generates no fundamental frequency. Dynamically solves and outputs a precise, shifting partial series forcing the brain to hallucinate a bass pitch that physically does not exist. A Tartini Intermodulator stage generates physical difference tones within the inner ear to cement the illusion.
+Signal Flow Architecture
+[PlaySurface Note]    [Residue Pitch Solver]    [SIMD Harmonic Bank]    [Tartini Intermodulator]    [Output]
+Parameter Taxonomy (Core 8)
+   1. Phantom Target: Root note requested.
+   2. Residue Density: Number of upper partials generated to create illusion.
+   3. Odd/Even Skew: Biases harmonic solver for square-like or saw-like timbre.
+   4. Inharmonicity: Gradually detunes partial series, shattering illusion into metallic bells.
+   5. Tartini Drive: Intermodulation pushing difference tones for physical "bite".
+   6. Formant Anchor: Shifts amplitude peak of partial series up or down.
+   7. Neural Decay: Envelope specifically for lower partials to fade illusion smoothly.
+   8. Blur: Audio-rate jitter on partial phases.
+XOmnibus Integration
+   * Macros: CHARACTER: Tartini Drive | MOVEMENT: Inharmonicity LFO | COUPLING: Phantom Root Emission | SPACE: Formant Anchor
+   * Accepts: CROSS_FM (Audio FM-modulates the upper partials, tearing apart harmonic relationships).
+   * Emits: PHANTOM_PITCH (Anchors other engines to a root note that XOSCILLUM isn't actually playing).
+   * PlaySurface: X = Formant Anchor, Y = Inharmonicity, Pressure = Tartini Drive.
+4. XOBOLIC (The Metabolic State-Space Engine)
+The Ghosts in XOBOLIC
+1. SOMA Laboratory Lyra-8 (2016) — Organismic Synthesis
+Oscillators bleed into each other, creating untamed nonlinear feedback.
+2. 1960s Analog Bio-Computers
+Used analog voltage to model biological systems like squid neurons.
+3. Korg PS-3300 (1977) — Breathing Polyphony
+Independent resonators per key gave it a massive, heaving ensemble sound.
+The Mathematical Core & Synthesis Principle
+Coupled Oscillator Networks. Sound generators governed by Kuramoto model (phase synchronization) and Lotka-Volterra equations (predator-prey). Triggering a key injects "nutrients" into a dark ecosystem. Oscillators feed, reproduce, consume each other, and synchronize.
+    Signal Flow Architecture
+[PlaySurface Energy Injection]    [Metabolic Core (Lotka-Volterra)]    [Kuramoto Oscillator Bank]    [Nyctinastic Filter]    [Output]
+Parameter Taxonomy (Core 8)
+   1. Metabolism (BMR): Speed of biological clock.
+   2. Tidal Lock (Kuramoto K): Pulls chaotic oscillators into unified phase.
+   3. Apex / Prey Ratio: Balance of Lotka-Volterra (high apex = tearing sweeps).
+   4. Lunar Phase: Asymmetry macro (waxing bright to waning hollow).
+   5. Nyctinasty: LPF/Folder that "closes up" like a flower as energy decays.
+   6. Bioluminescence: Injects high-frequency noise spikes during mathematical stress.
+   7. Respiration: Depth of inherent breathing/heaving.
+   8. Atrophy: Biological decay rate (Release).
+XOmnibus Integration
+   * Macros: CHARACTER: Lunar Phase | MOVEMENT: Respiration | COUPLING: Tidal Lock | SPACE: Bioluminescence
+   * Accepts: ENVIRONMENTAL_STRESS (External modulation acts as invasive species, scattering oscillators).
+   * Emits: BIOLOGICAL_CLOCK (Broadcasts nonlinear breathing heartbeat to other engines).
+   * PlaySurface: X = Lunar Phase, Y = Tidal Lock, Pressure = Energy Injection.
+5. XOTARA (The Gravitational Pitch Engine)
+The Ghosts in XOTARA
+1. Ondes Martenot Palme Speakers (1928)
+Speaker strung with physical strings to create sympathetic halos.
+2. Motorola Scalatron (1974)
+Broke free from Western 12-tone temperament with complex microtonal math.
+3. Trautonium (1929)
+Used a continuous resistor wire creating physical friction for pitch bending.
+The Mathematical Core & Synthesis Principle
+Topological Sympathetic Resonance. Pitch calculated on a 2D topology warped by gravity. Sliding pitch resists movement out of gravity wells, snapping and slingshotting. The moving exciter routes into a Sympathetic Modal Bank of 64 mathematical resonators tuned to exact micro-frequencies.
+Signal Flow Architecture
+[PlaySurface Pitch Data]    [Topological Pitch Solver]    [Bowed Exciter]    [64-Voice Modal Resonator Bank]    [Material Damping Stage]    [Output]
+Parameter Taxonomy (Core 8)
+   1. Topology: Selects gravitational map (Ragas, Just Intonation).
+   2. Gravitational Pull: Depth of pitch-wells (resistance to bending).
+   3. Gamak Mass (Inertia): Physical weight of exciter (sluggish/overshooting).
+   4. Sympathetic Width: How easily unplayed 64 modal strings wake up.
+   5. Vadi Anchor: Gravity bias toward fundamental root note.
+   6. Friction: Aggressiveness of Bowed Exciter (scraping vs smooth).
+   7. Resonator Material: Damping calculation (metallic wire to nylon).
+   8. Spectral Bleed: Allows dissonant excitation outside the scale.
+XOmnibus Integration
+   * Macros: CHARACTER: Friction | MOVEMENT: Gamak Mass | COUPLING: Pitch Gravity | SPACE: Sympathetic Width
+   * Accepts: KINETIC_IMPACT (Transients crash into strings, making drone bloom).
+   * Emits: PITCH_GRAVITY (Forces other engines into its microtonal orbit).
+   * PlaySurface: X = Continuous Pitch, Y = Sympathetic Width, Pressure = Friction.
+6. XOMEMBRA (The Emergent Polyrhythm Engine)
+The Ghosts in XOMEMBRA
+1. The Rhythmicon (1931) — Mathematical Polyrhythm
+Generated rhythms based strictly on the harmonic overtone series ratios.
+2. African Lamellophone (Mbira) — The Sacred Buzz
+Pure tone is incomplete; metallic noise (mirliton) is introduced at amplitude thresholds to fill the space.
+The Mathematical Core & Synthesis Principle
+2D Wave Interference & Fractal Membrane Waveguides. Rhythm generated by injecting energy at edges of a 2D skin. Where waves perfectly intersect, constructive interference creates amplitude spikes (the beat). Poly-rhythms emerge entirely from wave-interference physics.
+Signal Flow Architecture
+[PlaySurface Triggers]    [Rhythmicon Ratio Injectors]    [2D Waveguide Mesh]    [Constructive Interference Detector]    [Sympathetic Buzz Nodes]    [Output]
+Parameter Taxonomy (Core 8)
+   1. Membrane Topology: Shape of drum (Circular, Fractal) altering wave reflection logic.
+   2. Surface Tension: Pitch/tightness of skin (speeds up polyrhythm).
+   3. Rhythmicon Ratio: Mathematical relationship of energy injectors.
+   4. Injection Mass: Weight of energy hitting skin (slow tidal wave vs fast ripple).
+   5. Wave Friction: Decay time of ripples.
+   6. Buzz Threshold: Amplitude required for waves to trigger nonlinear distortion.
+   7. Mirliton Timbre: Morphs buzz from woody rattle to metallic tear.
+   8. Edge Damping: Softens walls of membrane.
+XOmnibus Integration
+   * Macros: CHARACTER: Mirliton Timbre | MOVEMENT: Membrane Topology | COUPLING: Surface Tension | SPACE: Wave Friction
+   * Accepts: TENSION_MODULATION (External audio literally stretches the drum skin, dropping pitch and time).
+   * Emits: INTERFERENCE_SPIKE (Broadcasts exact moments of wave collisions).
+   * PlaySurface: X = Surface Tension, Y = Buzz Threshold, Pressure = Injection Mass.
+7. XOGRAMA (The Opto-Kinetic Engine)
+The Ghosts in XOGRAMA
+1. Evgeny Murzin’s ANS Synthesizer (1958) — Optical Glass Plate
+Generated sound via light shining through etched glass plates onto photo-electric cells.
+2. Daphne Oram’s Oramics (1957) — Drawn Film Strip
+Generating music by painting waveforms directly onto clear 35mm film.
+3. Percy Grainger’s Free Music Machine — Continuous Glide
+Music that glided continuously, fighting the grid.
+The Mathematical Core & Synthesis Principle
+Opto-Kinetic Holography. Treats the audio buffer as a 2D optical plane. PlaySurface fires a virtual laser beam at an active 720-voice microtonal sine-wave bank. The sound is determined entirely by the optics (Aperture, Diffraction) illuminating adjacent microtonal oscillators.
+Signal Flow Architecture
+[PlaySurface Target Pitch]    [Optical Emitter]    [720-Voice ANS Micro-Plate]    [Phosphor Decay Stage]    [Oramics Celluloid Drive]    [Output]
+Parameter Taxonomy (Core 8)
+   1. Aperture Width: Diameter of light beam (pure sine vs microtonal cluster).
+   2. Focal Blur: Softens hard edges of beam for smooth fading pads.
+   3. Prismatic Scatter: Splinters light beam into harmonic overtones.
+   4. Plate Speed: Kinetic movement of "glass" underneath light.
+   5. Celluloid Wear: Simulates physical film wear, dust, wow/flutter.
+   6. Grainger Inertia: Heavy, pendulum-like portamento.
+   7. Etching Density: Limits light penetration (ghostly textures).
+   8. Phosphor Exposure: Afterglow/Release envelope of the glass.
+XOmnibus Integration
+   * Macros: CHARACTER: Celluloid Wear | MOVEMENT: Plate Speed | COUPLING: Prismatic Scatter | SPACE: Phosphor Exposure
+   * Accepts: ILLUMINATION (External audio acts as a strobe light flashing behind the ANS plate).
+   * Emits: OPTICAL_FOCUS (Broadcasts aperture width to external filters).
+   * PlaySurface: X = Grainger Inertia, Y = Aperture Width, Pressure = Prismatic Scatter.
+8. XOSMOSIS (The Fluid Dynamics Engine)
+The Ghosts in XOSMOSIS
+1. Metasonix S-1000 Wretch Machine (2003) — Boiling Vacuum Tubes
+Hostile, sputtering, unstable industrial current simulation.
+2. Yamaha VL1 (1994) — Computational Acoustic Pipe
+Pinnacle of physical modeling, retrofitted from air to viscous liquid mercury.
+3. EMS Synthi AKS (1972) — Faulty Plumbing Matrix
+Wrestling with unstable pressure routing rather than clean audio.
+The Mathematical Core & Synthesis Principle
+1D Computational Fluid Dynamics (CFD). Uses finite difference method to solve Burgers' Equation across a 4-to-8 node micro-lattice. Models viscous fluid pushed through a pipe.
+  
+When velocity crosses the Reynolds number threshold, laminar flow breaks into chaotic turbulence.
+Signal Flow Architecture
+[PlaySurface Pressure]    [The Pump (Exciter)]    [The Lattice (Waveguide)]    [Advection Solver (4x OS)]    [Aperture Choke]    [Turbulence Injector]    [Clamp & Exhaust]    [Output]
+Parameter Taxonomy (Core 8)
+   1. Flow Pressure: Driving force    (Amplitude).
+   2. Viscosity: Fluid thickness (dynamic low-pass diffusion).
+   3. Shear Thickening: Advection multiplier (wave squaring/breaking).
+   4. Aperture Width: Physical constriction of the pipe.
+   5. Turbulence Threshold: Reynolds number trigger where flow becomes chaotic.
+   6. Turbulence Rate: Pitch/frequency of chaotic vortices.
+   7. Cavitation: Probability of injecting 1-sample Dirac impulses.
+   8. Chamber Size: Lattice delay time (defines fundamental pitch).
+XOmnibus Integration
+      * Macros: CHARACTER: Shear Thickening | MOVEMENT: Flow Pressure | COUPLING: Aperture Width | SPACE: Viscosity
+      * Accepts: HYDRODYNAMIC_PRESSURE (External audio blasts into pump, forcing immediate cavitation).
+      * Emits: TURBULENCE_STATE (Broadcasts Reynolds breakdown).
+      * PlaySurface: X = Chamber Size, Y = Viscosity, Pressure = Flow Pressure.
+9. XOBSESSION (The Mathematical Obsession Engine)
+The Ghosts in XOBSESSION
+1. Buchla 259 Complex Waveform Generator — The Circuit That Thought For Itself
+      * The Vibe: Alive. Nonlinear. Mathematically inevitable.
+      * The Nod: The 259 used a modulator oscillator feeding back into a principal oscillator through a wavefolder, producing waveforms with nonlinear spectral behavior that no filter-based architecture could replicate. Musicians described patches as "alive." It was the first production synthesizer where the waveform's own computational process was the source of musical complexity — not the modulation patched onto it from outside. Buchla's insight: complexity of the generator itself is more musical than complexity imposed on a simple generator.
+      * How it lives in XObsession: The 259's philosophy is XObsession's founding premise — the oscillator's own mathematics is the voice. Complexity is not imposed; it is inherent in the iteration. ORBIT_FIELD (Re(z) and Im(z) as modulation channels) is the 259's cross-modulation output evolved: a signal whose complexity is mathematically determined by the current orbital regime, not by patch design. Where Buchla built the feedback into the circuit, XObsession builds it into the equation.
+2. Lorenz Strange Attractor Synthesizers — The Chaos Machine
+      * The Vibe: Deterministic. Bounded. Never repeating.
+      * The Nod: Several researchers in the 1990s and 2000s applied Lorenz-type ODE systems directly as audio oscillators — the x, y, z components of the strange attractor as waveform outputs. These are XObsession's closest existing relatives: genuinely aperiodic, bounded signals with rich spectral content. Most implementations stalled at demonstration — the Lorenz attractor's parameter space has no musical geography, making it difficult to navigate intentionally. Interesting mathematics that was hard to play.
+      * How it lives in XObsession: XObsession inherits the insight — use a dynamical system directly as an oscillator — and solves the musicality problem through the Mandelbrot set's structure. The c-plane has known geography: stable interiors, period-doubling bulbs, fractal boundaries, exterior escape regions. A musician can learn to navigate it. LYAPUNOV_SIGNAL is a direct descendant of chaos theory's central diagnostic — Lorenz's own tool for measuring sensitivity to initial conditions, now broadcast as modulation data to every connected engine in the system.
+3. Gaston Julia & Pierre Fatou — The Unrendered Mathematicians
+      * The Vibe: Visionary. Unrendered. Sixty years early.
+      * The Nod: Julia and Fatou independently developed the complete theory of complex iteration in 1918 — Julia while recovering from facial wounds at Verdun, Fatou working in Paris under bombardment. They described the sets that bear their names in exhaustive mathematical detail without ever seeing them visualized. The fractal geometry they proved existed had to wait sixty years for computers capable of rendering it. Julia spent decades promoting his work, watched it sink into obscurity, grew bitter, and died before Mandelbrot's 1980 paper restored his prominence. He never heard what his equations sounded like.
+      * How it lives in XObsession: XObsession is the instrument Julia never heard. Julia mode — where c is fixed and z₀ navigates the set he described from a hospital bed near the Western Front — carries his name as the primary performance mode. The DIVE parameter enacts the continuous zoom from Mandelbrot to Julia, tracing the mathematical correspondence between two theories both men were approaching from different directions without knowing the other. The engine honors them by doing what neither could have imagined: making those sets playable in real time, and giving a musician a way to inhabit the geometry they described in pure thought, in 1918, with no picture and no sound.
+The Mathematical Core & Synthesis Principle
+Complex Orbit Synthesis. XObsession generates audio by sonifying the trajectory of a complex number iterating through a single algebraic rule at audio rate. There is no oscillator, no filter, no wavetable. At each sample, a complex number    is raised to polynomial degree   , added to a complex constant   , and the result becomes the new   . The real part of the current orbit state outputs to the left audio channel; the imaginary part to the right. This iteration — and nothing else — is the synthesis engine.
+The engine operates in two mathematically dual modes unified by a single parameter, DIVE:
+      * Mandelbrot Mode (DIVE = 0.0):    is fixed at 0. The musician navigates    through the Mandelbrot parameter plane. Each    position selects a distinct mathematical world with its own orbital character: stable drone, rich periodic harmonics, quasi-periodic texture, boundary chaos, or escaping metallic transient.
+      * Julia Mode (DIVE = 1.0):    is locked. The musician navigates    — the starting position — through the resulting Julia set   . Position within the world determines timbre.
+      * DIVE (0    1): A continuous transition along the Mandelbrot-Julia correspondence theorem.    progressively locks while    migrates from 0 toward the Julia boundary. Not a crossfade — a mathematically coherent zoom.
+Escaping orbits (where   ) are bounded by Böttcher normalization:   , which maps diverging trajectories to a finite, musically usable signal with smooth gradient character.
+Governing Equation:
+
+
+  
+Where   
+Signal Flow Architecture
+[PlaySurface — XY pad = c-plane (Mandelbrot) / z₀-plane (Julia) · MIDI pitch = iteration rate · Pressure Z = DIVE]
+  
+
+[Stage 1: Complex Parameter Generator] (Translates MIDI note to iteration rate via Temporal Scale factor. Converts pad XY position to    = (CHARFIELD, DEPTH) in Mandelbrot mode or    = (Re, Im) in Julia mode. DIVE parameter interpolates   -lock and    migration simultaneously.)
+  
+
+[Stage 2: Orbit Bank — z_(n+1) = z_n^d + c, N parallel orbits at audio rate] (Iterates N complex orbits simultaneously. Running Lyapunov exponent    is estimated per block and used to weight orbit contributions before summing. Escaping orbits are normalized via Böttcher coordinates.)
+  
+
+[Stage 3: Riemann Sheet Rotation + Branch Cut Smoother] (Applies complex log branch offset    to rotate the orbit's harmonic phase structure. Branch cut detector identifies Riemann surface discontinuity crossings for smooth crossfades or phase-flips. N Lyapunov-weighted orbit streams are summed to stereo L/R.)
+  
+
+[Output & DC-Blocking] (First-order IIR highpass filter removes DC offset produced by converging orbits.   ,   . Modulation signals extracted and broadcast to the MegaCouplingMatrix.)
+Parameter Taxonomy (Core 8)
+Parameter ID
+	DSP Target
+	Range / Unit
+	Mapping Curve
+	Rate
+	Description
+	XOB_P01
+	  
+
+	−2.5 to +1.0
+	Linear
+	Audio
+	Charfield. Primary horizontal navigation of the Mandelbrot   -plane. Left: deep stable interior (drone). Center: period-doubling bulbs. Right: fractal boundary then exterior escape. In Julia mode: defines    of the locked world. CHARACTER macro target.
+	XOB_P02
+	  
+
+	−1.5 to +1.5
+	Linear
+	Audio
+	Depth. Vertical navigation of the   -plane. At zero: orbit is real-valued, mono-compatible. Non-zero: L and R channels diverge as    and    become genuinely independent — stereo width produced mathematically. In Julia mode: defines    for the locked world. SPACE macro target.
+	XOB_P03
+	Exponent   
+	2, 3, 4, 5
+	Stepped
+	Control
+	Degree. Polynomial degree of the iteration. Each integer is a categorically distinct mathematical universe (e.g.,   : Mandelbrot,   : Multibrot). Polyphony is automatically capped at   .
+	XOB_P04
+	Parallel Orbits
+	1 to 32
+	Linear
+	Control
+	Orbit Count. Number of simultaneously iterated complex orbits summed to output. 1: single-orbit purity. 32: maximum harmonic mass. Orbits are Lyapunov-weighted before summing. Primary CPU budget control. COUPLING macro density target.
+	XOB_P05
+	Drift Speed
+	0.01 to 8 Hz
+	Log
+	Control
+	Drift Rate. Speed of autonomous   -plane wandering, driven by a slower secondary meta-orbit. High: continuous traversal across Mandelbrot bulb boundaries — structural timbral mutation per note. MOVEMENT macro primary target.
+	XOB_P06
+	Drift Excursion
+	0.0 to 0.5
+	Exp
+	Control
+	Drift Radius. Maximum distance the autonomous drift wanders from the set    value. Small: subtle harmonic shimmer. Large: drifts across bulb boundaries. At maximum, the engine continuously self-explores its mathematical neighborhood.
+	XOB_P07
+	Branch Index   
+	0, 1, 2, 3
+	Stepped
+	Control
+	Sheet. Selects the Riemann sheet of the complex logarithm used in orbit normalization. Adds    full phase rotations (  ) to the imaginary component of   , rotating the orbit's harmonic phase structure without changing pitch.
+	XOB_P08
+	Interpolation
+	0.0 to 1.0
+	Linear
+	Audio
+	Dive. The Mandelbrot-to-Julia zoom parameter. 0.0: pure Mandelbrot —    free,   . 1.0: pure Julia —    locked,    is the performance parameter navigating   . Emitted as DIVE_DEPTH coupling signal to the MegaCouplingMatrix.
+	XOmnibus Integration
+A. Macro Mapping
+         * CHARACTER: XOB_P01 + XOB_P03 (Charfield sweeps    along the Mandelbrot cardioid from the resolved stable interior through the period-doubling cascade to the fractal boundary. Degree steps between integer polynomial universes.)
+         * MOVEMENT: XOB_P05 + XOB_P06 (Drift Rate and Drift Radius together define the engine's autonomous temporal behavior. The drift path is itself a meta-orbit, giving the movement fractal self-similarity.)
+         * COUPLING: XOB_P04 broadcast depth (Controls how aggressively XObsession contributes to the MegaCouplingMatrix. At maximum: XObsession becomes the mathematical engine of the entire system.)
+         * SPACE: XOB_P02 (Depth /   ) (Controls stereo geometry by separating    and    orbital paths. Stereo width emerges from the equation's internal geometry, not from panning.)
+B. MegaCouplingMatrix Compatibility
+            * Emits:
+            * ORBIT_FIELD — The raw    and    orbit values as two continuous modulation channels with fractal fine structure.
+            * LYAPUNOV_SIGNAL — The running Lyapunov exponent    normalized to [0, 1]. The most mathematically precise "chaos level" signal emitted by any synthesizer.
+            * BIFURCATION_EDGE — A gate/trigger that fires when the    trajectory crosses a period-doubling bifurcation boundary.
+            * DIVE_DEPTH — Current DIVE value (0$\rightarrow$1) as a continuous modulation signal.
+            * JULIA_TOPOLOGY (Julia mode only) — Discrete signal: 0=connected, 1=Cantor dust, 2=dendrite, 3=Siegel disk.
+            * FRACTAL_DIMENSION (Julia mode only) — Estimated Hausdorff dimension of the current Julia boundary (~1.0 to ~2.0).
+            * SHEET_INDEX — Current SHEET value (0–3) as a discrete mod source.
+               * Accepts:
+               * PHANTOM_PITCH — From XOscillum. XObsession uses this to tune its Temporal Scale so the orbit period aligns with a pitch neither engine physically emits.
+               * PITCH_MOD — Standard XOmnibus pitch modulation. Shifts Temporal Scale.
+               * AMPLITUDE_FIELD — Applied to the Lyapunov-weighted mix gain pre-output.
+               * CHAOS_SIGNAL — Perturbs the current    position.
+               * SPECTRAL_PRESSURE — From XOscillum's spectral mask output. Applies frequency-domain emphasis to XObsession's summed output.
+C. PlaySurface Interaction Model
+                  * Interaction Mode: Pad (Mandelbrot Mode)
+                  * X-axis: XOB_P01 — Charfield (Horizontal navigation of the   -plane. The pad surface is the Mandelbrot parameter plane.)
+                  * Y-axis: XOB_P02 — Depth (Vertical navigation of   .)
+                  * Pressure (Z): XOB_P08 — Dive (Pressing into the pad initiates the Mandelbrot-to-Julia zoom. The pad is a pressure-sensitive mathematical telescope.)
+                     * Interaction Mode: Pad (Julia Mode)
+                     * X-axis:    Real (Horizontal navigation of the    plane within   . The pad surface is the Julia set itself.)
+                     * Y-axis:    Imaginary (Vertical navigation moving outward from center approaches the Julia boundary.)
+                     * Pressure (Z): Boundary Proximity (Pressing harder biases every    position closer to the fractal boundary regardless of pad coordinates.)
+                        * Interaction Mode: Fretless
+                        * X-axis: XOB_P01 — Charfield (Horizontal slide navigates the   -plane during sustained notes.)
+                        * Y-axis: MIDI Pitch    Temporal Scale (Moving along the string changes orbit speed.)
+                        * Pressure (Z): XOB_P06 — Drift Radius (Pressing into a sustained note expands autonomous drift range.)
+                           * Interaction Mode: Drum
+                           * X-axis: Pad assignment by Feigenbaum cascade (A percussion kit organized by the mathematics of period-doubling.)
+                           * Y-axis: XOB_P04 — Orbit Count (Vertical position within a pad zone scales parallel orbits.)
+                           * Pressure (Z): XOB_P08 — Dive (Hard velocity initiates a brief Julia mode dive for that    value.)
+Example Preset Archetypes
+                              1. The Proof (P01=−0.3, P02=0.0, P03=d2, P04=4 orbits, P05=0.02Hz, P06=0.02, P07=Sheet 0, P08=0.0): Deep inside the main Mandelbrot cardioid at the period-1 attractor. Orbit converges to a fixed point — a mathematically stable drone with imperceptible oscillation. Not a synthesized tone: a mathematical fixed-point expressed as sound. Sounds like certainty.
+                              2. Three-Body (P01=−0.123, P02=+0.745, P03=d2, P04=8 orbits, P05=0.05Hz, P06=0.03, P07=Sheet 1, P08=0.0): The period-3 bulb — Douady's Rabbit region. Orbit repeats every three iterations. L and R channels maintain a specific three-way phase relationship producing a sound like three instruments in alien agreement.
+                              3. The Obsession (P01=−0.737, P02=+0.188, P03=d2, P04=16 orbits, P05=0.1Hz, P06=0.08, P07=Sheet 0, P08=0.0): Near the Mandelbrot boundary. Orbit is chaotic but bounded — Lyapunov exponent near zero, maximum spectral density. Near-critical slowing-down: the system perpetually approaches a decision between stability and escape without making it.
+                              4. Two Minds (Julia Mode, Basilica topology): Two-lobed, bilateral symmetry. Boundary Path mode maps keyboard notes to positions along the Julia set boundary. Playing a melody geometrically crosses the Basilica's pinch point; that crossing is audible as a timbral discontinuity. The interval structure of a scale has spatial meaning in this world.
+                              5. The Irrational Temperament (Julia Mode, Siegel disk topology):    placed on the Siegel disk boundary where orbits rotate with an irrational rotation number. Navigating the boundary produces intervals corresponding to irrational rotations. A temperament from pure mathematics that has never been heard before.
+                              6. The Zoom ("The Obsession" with DIVE live-mapped to the mod wheel): Starting in Mandelbrot mode: searching, unresolved, boundary character. As the wheel rises,    locks and    activates — the engine zooms into the Julia set for that exact    value. "Searching for a world" becomes "moving through one."
+CPU Risk Assessment & Mitigation
+Low – Moderate. The core iteration (  ) is 4 real multiplications and 4 additions per complex squaring step at    — an exceptionally cheap inner loop. Total cost scales linearly with Orbit Count × Voice Count × Degree. There are no ODEs to solve, no 2D meshes, no convolution. The bottleneck is raw arithmetic throughput — which is the most SIMD-optimizable workload available in DSP.
+The primary bottleneck is the Orbit Bank inner loop: at maximum configuration (32 orbits, 16 voices, d=3, 48kHz) the engine requires approximately 23 billion complex multiplications per second. This is feasible on Apple M-series with SIMD vectorization, not without it.
+Required C++ optimization strategies:
+                                 * SIMD vectorization (primary): Complex multiplication maps directly to vDSP_zvmul (Apple Accelerate) or _mm256_mul_ps (AVX2 on x86). Processing 4–8 orbits simultaneously in SIMD registers yields a 4–8× throughput improvement over scalar.
+                                 * Downshift secondary solvers to control rate: Lyapunov exponent estimation, Böttcher normalization, branch cut detection, DIVE interpolation, and Julia topology classification all run at block rate (~94Hz at 512-sample / 48kHz buffer).
+                                 * Degree gating: Automatically cap polyphony to 8 voices at   , 4 voices at   . Enforce a combined Orbit Count × Voice Count ceiling per degree.
+                                 * No dynamic allocation on the DSP thread: All orbit state arrays pre-allocated at voice initialization. Branch cut detector uses a lookup table updated at block rate. The audio thread calls no allocators, mutexes, or blocking operations.
+10. XOFERRO (The Electromagnetic Hysteresis Engine)
+The Ghosts in XOFERRO
+1. The Telharmonium (1897) — The 200-Ton Dynamo
+Massive kinetic tonewheels generating raw AC voltage.
+2. The Hammond Novachord (1939) — The Saturated Core
+Weeping tube-and-transformer saturation from struggling magnetic cores.
+3. The EBow — The Infinite Flux Loop
+Screaming, uncontrolled magnetic feedback.
+The Mathematical Core & Synthesis Principle
+Ferromagnetic Hysteresis & Barkhausen Noise. Simulates a spinning tonewheel moving through a digital magnetic field. Uses a real-time approximation of the Jiles-Atherton model to calculate magnetic memory/drag. Pushing flux too hard causes domains to snap violently, generating audio-rate electrical crackle (Barkhausen Noise).
+Signal Flow Architecture
+[PlaySurface Velocity/Flux]    [Kinetic Tonewheel]    [Jiles-Atherton Core Solver]    [Barkhausen Domain Snapper]    [Inductive Coil Filter]    [Flux Feedback Loop]    [Output]
+Parameter Taxonomy (Core 8)
+                                    1. Flux Density: Raw power of the magnet (thick saturation).
+                                    2. Rotor Mass: Inertia/Glide (physical kinetic weight).
+                                    3. Core Material: Hysteresis Width (Soft Iron to Steel).
+                                    4. Barkhausen: Domain snap noise threshold (electrical crackle).
+                                    5. Coil Turns: LPF Cutoff / Inductance (higher = darker).
+                                    6. Eddy Currents: Resonance / Damping (parasitic electrical metallic damping).
+                                    7. Flux Feedback: Self-Oscillation multiplier.
+                                    8. Air Gap: High-Pass / Choke (distance between rotor and pickup).
+XOmnibus Integration
+                                    * Macros: CHARACTER: Core Material | MOVEMENT: Air Gap | COUPLING: Flux Density | SPACE: Rotor Mass
+                                    * Accepts: DC_BIAS_INJECTION (External audio magnetizes core in one direction for asymmetrical clipping).
+                                    * Emits: FLUX_LEAKAGE (Broadcasts Barkhausen noise spikes).
+                                    * PlaySurface: X = Rotor Mass, Y = Flux Feedback, Pressure = Flux Density.

@@ -41,6 +41,7 @@ target_sources(XOmnibus PRIVATE
     Source/Core/MegaCouplingMatrix.h
     Source/Core/MasterFXChain.h
     Source/Core/PresetManager.h
+    Source/Core/ChordMachine.h
     Source/Core/MacroSystem.h
     Source/Core/SharedTransport.h
 

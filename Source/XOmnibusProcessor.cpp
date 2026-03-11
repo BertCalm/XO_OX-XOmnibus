@@ -95,6 +95,54 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     OverworldEngine::addParameters(params);
     OpalEngine::addParameters(params);
 
+    // Chord Machine parameters
+    params.push_back(std::make_unique<juce::AudioParameterBool>(
+        juce::ParameterID("cm_enabled", 1), "Chord Machine",
+        false));
+    params.push_back(std::make_unique<juce::AudioParameterChoice>(
+        juce::ParameterID("cm_palette", 1), "CM Palette",
+        juce::StringArray{ "WARM", "BRIGHT", "TENSION", "OPEN",
+                           "DARK", "SWEET", "COMPLEX", "RAW" },
+        0));
+    params.push_back(std::make_unique<juce::AudioParameterChoice>(
+        juce::ParameterID("cm_voicing", 1), "CM Voicing",
+        juce::StringArray{ "ROOT-SPREAD", "DROP-2", "QUARTAL",
+                           "UPPER STRUCT", "UNISON" },
+        0));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("cm_spread", 1), "CM Spread",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.75f));
+    params.push_back(std::make_unique<juce::AudioParameterBool>(
+        juce::ParameterID("cm_seq_running", 1), "CM Sequencer",
+        false));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("cm_seq_bpm", 1), "CM BPM",
+        juce::NormalisableRange<float>(30.0f, 300.0f, 0.1f), 122.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("cm_seq_swing", 1), "CM Swing",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("cm_seq_gate", 1), "CM Gate",
+        juce::NormalisableRange<float>(0.01f, 1.0f), 0.75f));
+    params.push_back(std::make_unique<juce::AudioParameterChoice>(
+        juce::ParameterID("cm_seq_pattern", 1), "CM Pattern",
+        juce::StringArray{ "FOUR", "OFF-BEAT", "SYNCO", "STAB",
+                           "GATE", "PULSE", "BROKEN", "REST" },
+        1));
+    params.push_back(std::make_unique<juce::AudioParameterChoice>(
+        juce::ParameterID("cm_vel_curve", 1), "CM Velocity Curve",
+        juce::StringArray{ "EQUAL", "ROOT HEAVY", "TOP BRIGHT", "V-SHAPE" },
+        1));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("cm_humanize", 1), "CM Humanize",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("cm_sidechain_duck", 1), "CM Sidechain Duck",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterBool>(
+        juce::ParameterID("cm_eno_mode", 1), "CM Eno Mode",
+        false));
+
     // Master FX parameters
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_satDrive", 1), "Master Sat Drive",
@@ -127,6 +175,7 @@ void XOmnibusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     currentBlockSize = samplesPerBlock;
 
     couplingMatrix.prepare(samplesPerBlock);
+    chordMachine.prepare(sampleRate, samplesPerBlock);
     masterFX.prepare(sampleRate, samplesPerBlock, apvts);
 
     for (auto& buf : engineBuffers)
@@ -179,14 +228,52 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
 
     couplingMatrix.setEngines(enginePtrs);
 
-    // Render each active engine into its own buffer
+    // Sync Chord Machine state from APVTS (block-constant reads)
+    chordMachine.setEnabled(apvts.getRawParameterValue("cm_enabled")->load() >= 0.5f);
+    chordMachine.setPalette(static_cast<PaletteType>(
+        static_cast<int>(apvts.getRawParameterValue("cm_palette")->load())));
+    chordMachine.setVoicing(static_cast<VoicingMode>(
+        static_cast<int>(apvts.getRawParameterValue("cm_voicing")->load())));
+    chordMachine.setSpread(apvts.getRawParameterValue("cm_spread")->load());
+    chordMachine.setSequencerRunning(apvts.getRawParameterValue("cm_seq_running")->load() >= 0.5f);
+    chordMachine.setBPM(apvts.getRawParameterValue("cm_seq_bpm")->load());
+    chordMachine.setSwing(apvts.getRawParameterValue("cm_seq_swing")->load());
+    chordMachine.setGlobalGate(apvts.getRawParameterValue("cm_seq_gate")->load());
+    chordMachine.setVelocityCurve(static_cast<VelocityCurve>(
+        static_cast<int>(apvts.getRawParameterValue("cm_vel_curve")->load())));
+    chordMachine.setHumanize(apvts.getRawParameterValue("cm_humanize")->load());
+    chordMachine.setSidechainDuck(apvts.getRawParameterValue("cm_sidechain_duck")->load());
+    chordMachine.setEnoMode(apvts.getRawParameterValue("cm_eno_mode")->load() >= 0.5f);
+
+    // DAW host transport sync
+    if (auto* playHead = getPlayHead())
+    {
+        if (auto pos = playHead->getPosition())
+        {
+            if (auto ppq = pos->getPpqPosition())
+            {
+                double hostBPM = 122.0;
+                if (auto bpmOpt = pos->getBpm())
+                    hostBPM = *bpmOpt;
+                bool hostPlaying = pos->getIsPlaying();
+                chordMachine.syncToHost(*ppq, hostBPM, hostPlaying);
+            }
+        }
+    }
+
+    // Route MIDI through ChordMachine → 4 per-slot MidiBuffers.
+    // When disabled, each slot gets a copy of the input MIDI (previous behavior).
+    // When enabled, each slot gets its own chord-distributed note.
+    chordMachine.processBlock(midi, slotMidi, numSamples);
+
+    // Render each active engine into its own buffer using slot-specific MIDI
     for (int i = 0; i < MaxSlots; ++i)
     {
         if (!enginePtrs[i])
             continue;
 
         engineBuffers[i].clear();
-        enginePtrs[i]->renderBlock(engineBuffers[i], midi, numSamples);
+        enginePtrs[i]->renderBlock(engineBuffers[i], slotMidi[i], numSamples);
     }
 
     // Apply coupling matrix between engines.
@@ -359,6 +446,37 @@ void XOmnibusProcessor::applyPreset(const PresetData& preset)
                 p->setValueNotifyingHost(p->convertTo0to1(val));
             }
         }
+    }
+
+    // Restore Chord Machine state if present in the preset.
+    // The chordMachine data is stored in the sequencerData field (raw JSON var).
+    if (!preset.sequencerData.isVoid() && preset.sequencerData.isObject())
+    {
+        chordMachine.restoreState(preset.sequencerData);
+
+        // Sync the restored CM state back to APVTS so the UI reflects it
+        auto syncParam = [&](const char* id, float val) {
+            if (auto* p = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter(id)))
+                p->setValueNotifyingHost(p->convertTo0to1(val));
+        };
+        auto syncBool = [&](const char* id, bool val) {
+            if (auto* p = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter(id)))
+                p->setValueNotifyingHost(val ? 1.0f : 0.0f);
+        };
+
+        syncBool("cm_enabled", chordMachine.isEnabled());
+        syncParam("cm_palette", static_cast<float>(chordMachine.getPalette()));
+        syncParam("cm_voicing", static_cast<float>(chordMachine.getVoicing()));
+        syncParam("cm_spread", chordMachine.getSpread());
+        syncBool("cm_seq_running", chordMachine.isSequencerRunning());
+        syncParam("cm_seq_bpm", chordMachine.getBPM());
+        syncParam("cm_seq_swing", chordMachine.getSwing());
+        syncParam("cm_seq_gate", chordMachine.getGlobalGate());
+        syncParam("cm_seq_pattern", static_cast<float>(chordMachine.getPattern()));
+        syncParam("cm_vel_curve", static_cast<float>(chordMachine.getVelocityCurve()));
+        syncParam("cm_humanize", chordMachine.getHumanize());
+        syncParam("cm_sidechain_duck", chordMachine.getSidechainDuck());
+        syncBool("cm_eno_mode", chordMachine.isEnoMode());
     }
 }
 

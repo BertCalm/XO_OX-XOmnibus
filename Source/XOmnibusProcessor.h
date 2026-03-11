@@ -4,6 +4,7 @@
 #include "Core/EngineRegistry.h"
 #include "Core/MegaCouplingMatrix.h"
 #include "Core/MasterFXChain.h"
+#include "Core/ChordMachine.h"
 #include "Core/PresetManager.h"
 #include <atomic>
 #include <memory>
@@ -59,12 +60,16 @@ public:
     void addCouplingRoute(MegaCouplingMatrix::CouplingRoute route) { couplingMatrix.addRoute(route); }
     void removeCouplingRoute(int srcSlot, int dstSlot, CouplingType type) { couplingMatrix.removeUserRoute(srcSlot, dstSlot, type); }
 
+    // Chord Machine — read access for UI, state control from message thread
+    ChordMachine& getChordMachine() { return chordMachine; }
+
 private:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
 
     juce::AudioProcessorValueTreeState apvts;
     MegaCouplingMatrix couplingMatrix;
     MasterFXChain masterFX;
+    ChordMachine chordMachine;
     PresetManager presetManager;
 
     // Engine slots — shared_ptr for atomic swap between message and audio threads.
@@ -84,6 +89,7 @@ private:
 
     std::array<juce::AudioBuffer<float>, MaxSlots> engineBuffers;
     juce::AudioBuffer<float> crossfadeBuffer;
+    std::array<juce::MidiBuffer, MaxSlots> slotMidi;  // per-slot MIDI from ChordMachine
 
     double currentSampleRate = 44100.0;
     int currentBlockSize = 512;
