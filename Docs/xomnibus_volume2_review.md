@@ -54,7 +54,7 @@
 | XOGRAMA (720-voice optical) | 4 | 2 | 5 | 3 | **14** | DEFER — 720-voice bank is an extreme engineering challenge for mobile |
 | XOBSESSION (Mandelbrot orbits) | 3 | 3 | 4 | 3 | **13** | **MERGE** into OUROBOROS — overlaps existing chaos engine, best ideas absorbed |
 | XOSMOSIS (fluid dynamics) | 4 | 1 | 5 | 3 | **13** | DEFER — Document itself flags "CRITICAL CPU BOTTLENECK" |
-| XOFERRO (electromagnetic) | 4 | 2 | 4 | 3 | **13** | DEFER — Jiles-Atherton ODEs need LUT pre-computation, cool but not urgent |
+| XOFERRO → **XOblivion** (electromagnetic) | 4 | 5 | 3 | 4 | **16** | **ADOPT (upgraded)** — Replace ODE solver with pre-computed 2D LUTs. <10% CPU. Hysteresis memory is genuinely unique. |
 | XOBOLIC (metabolic) | 2 | 3 | 4 | 3 | **12** | **KILL** — Duplicate of ORGANON |
 
 ### Summary Decision Matrix
@@ -62,10 +62,11 @@
 | Action | Engines | Count |
 |--------|---------|-------|
 | **ADOPT (rename + build)** | XOSCILLUM, XOBLICUA, XOMATON | 3 |
+| **ADOPT (upgraded + build)** | XOFERRO → XOblivion (LUT-based hysteresis, <10% CPU) | 1 |
 | **ADOPT (deferred to 2028+)** | XOTARA | 1 |
 | **MERGE into existing engine** | XOBSESSION → OUROBOROS v2 update | 1 |
 | **KILL (duplicate)** | XOBOLIC (covered by ORGANON) | 1 |
-| **PARK for future research** | XOMEMBRA, XOGRAMA, XOSMOSIS, XOFERRO | 4 |
+| **PARK for future research** | XOMEMBRA, XOGRAMA, XOSMOSIS | 3 |
 
 ---
 
@@ -111,6 +112,7 @@
 | XOBLICUA | **XObliqua** | Obliqua | OBLIQ | Oblique, slanted — kinematic phase distortion |
 | XOSCILLUM | **XOscillum** | Oscillum | OSCIL | Latin "little face/mask" — masks the fundamental |
 | XOTARA | **XOntara** | Ontara | ONTAR | Riff on tanpura/tara — sympathetic resonance |
+| XOFERRO | **XOblivion** | Oblivion | OBLIV | Forgetting and remembering — hysteresis memory between notes |
 
 *Names are proposals — require approval before use.*
 
@@ -135,8 +137,11 @@
 2027 Q3:    XObliqua Phase 3-4, XOccult Phase 0-1
 2027 Q4:    XOccult Phase 2-4 (Gallery Install)
 2027 Q4:    OUROBOROS v2 planning (absorb XOBSESSION concepts)
+2028 Q1:    XOblivion Phase 0-1 (Ideation + Architecture)
+2028 Q2:    XOblivion Phase 2 (Sandbox Build — LUT pre-computation + audio engine)
+2028 Q3:    XOblivion Phase 3-4 (Gallery Install)
 
-2028 Q1+:   XOntara Phase 0-4 (if adopted after first 3 Vol 2 engines prove pipeline)
+2028 Q4+:   XOntara Phase 0-4 (if adopted after first 4 Vol 2 engines prove pipeline)
 ```
 
 ### Build Order Rationale
@@ -147,7 +152,9 @@
 
 3. **XOccult** (cellular automata) — Cheapest CPU, fastest to build. But sonically narrower (aggressive digital textures = niche). Best added after the gallery has enough mature engines that a "weird" addition is welcome rather than distracting.
 
-4. **XOntara** (gravitational pitch) — Extraordinary concept but needs the most R&D on SIMD-optimized 64-voice modal synthesis to hit mobile CPU budgets. Defer until proven pipeline.
+4. **XOblivion** (electromagnetic hysteresis) — Upgraded from XOFERRO. Replacing the Jiles-Atherton ODE solver with pre-computed 2D hysteresis LUTs drops CPU from research-grade to <10%. The unique capability — magnetic memory between notes, where identical inputs produce different outputs based on performance history — fills a gap no existing engine covers. The 3 historical ghosts (Telharmonium, Hammond Novachord, EBow) give it deep character lineage. Builds after the first 3 Vol 2 engines prove the pipeline.
+
+5. **XOntara** (gravitational pitch) — Extraordinary concept but needs the most R&D on SIMD-optimized 64-voice modal synthesis to hit mobile CPU budgets. Defer until proven pipeline.
 
 ---
 
@@ -176,7 +183,8 @@ The following engines are parked for future consideration. Their design concepts
 | XOMEMBRA | 2D wave interference mesh → emergent polyrhythm | CPU: 2D waveguide meshes are computationally expensive. Implementation: sparse mesh optimization is research-grade DSP | After SIMD sine bank (from XOscillum) proves the vectorized DSP pipeline |
 | XOGRAMA | 720-voice optical sine bank with laser aperture | CPU: 720 simultaneous oscillators even with zero-cost dormant voices. Engineering: voice allocation system unlike anything in the codebase | If XOscillum's 32-partial sine bank works well, scale-up feasibility becomes clearer |
 | XOSMOSIS | 1D CFD solving Burgers' equation | CPU: Document flags "CRITICAL CPU BOTTLENECK." 4x oversampled advection solver. Risk of NaN explosions requiring defensive tanh clamping | When mobile CPU budgets double (2028+?) |
-| XOFERRO | Electromagnetic hysteresis via Jiles-Atherton model | CPU: ODE solver for hysteresis + Barkhausen noise generation. Needs pre-computed 2D LUTs. Moderate complexity but not urgent | After ODE solver expertise from OUROBOROS v2 matures |
+
+*Note: XOFERRO has been upgraded and adopted as **XOblivion** (engine #4 in build queue). See build order rationale above.*
 
 ---
 

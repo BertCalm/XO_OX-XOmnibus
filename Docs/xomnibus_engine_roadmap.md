@@ -243,9 +243,21 @@ Q1 2028
 │ XObliqua Gallery Install  ██                              │
 │ XOccult Phase 3-4    ████████                             │
 │ XOccult Gallery Install       ████                        │
+│ XOblivion Phase 0-1               ████████                │
 └─────────────────────────────────────────────────────────┘
 
-Q2 2028+
+Q2 2028
+┌─────────────────────────────────────────────────────────┐
+│ XOblivion Phase 2  ████████████████                       │
+└─────────────────────────────────────────────────────────┘
+
+Q3 2028
+┌─────────────────────────────────────────────────────────┐
+│ XOblivion Phase 3-4  ████████                             │
+│ XOblivion Gallery Install     ████                        │
+└─────────────────────────────────────────────────────────┘
+
+Q4 2028+
 ┌─────────────────────────────────────────────────────────┐
 │ XOntara Phase 0-4 (if pipeline proven)  ████████████████ │
 └─────────────────────────────────────────────────────────┘
@@ -294,7 +306,8 @@ When both engines are installed, these are the priority cross-engine presets:
 | 1 | XOSCILLUM | **XOscillum** | OSCIL | Psychoacoustic residue pitch — phantom fundamentals | <12% | Phase 1 spec ready |
 | 2 | XOBLICUA | **XObliqua** | OBLIQ | Kinematic phase-time — clave attractors as waveshaping | <15% | Concept only |
 | 3 | XOMATON | **XOccult** | OCCULT | 1D cellular automata — Wolfram rules as audio | <5% | Concept only |
-| 4 | XOTARA | **XOntara** | ONTAR | Topological sympathetic resonance — 64-voice modal bank | <20% | Concept only (deferred to 2028+) |
+| 4 | XOFERRO (upgraded) | **XOblivion** | OBLIV | Electromagnetic hysteresis via pre-computed LUTs — magnetic memory, kinetic mass, Barkhausen crackle | <10% | Concept only |
+| 5 | XOTARA | **XOntara** | ONTAR | Topological sympathetic resonance — 64-voice modal bank | <20% | Concept only (deferred to 2028+) |
 
 ### Merged — OUROBOROS v2
 
@@ -311,9 +324,10 @@ XOBOLIC — duplicate of ORGANON (metabolic/informational dissipative synthesis 
 | XOMEMBRA | 2D wave interference mesh → emergent polyrhythm | CPU-heavy 2D waveguide, research-grade DSP |
 | XOGRAMA | 720-voice optical sine bank with laser aperture | 720 simultaneous oscillators, extreme engineering |
 | XOSMOSIS | 1D computational fluid dynamics (Burgers' equation) | Document flags "CRITICAL CPU BOTTLENECK" |
-| XOFERRO | Electromagnetic hysteresis (Jiles-Atherton model) | ODE solver + LUT pre-computation, moderate complexity |
 
-These concepts are preserved in the Volume 2 source document for future consideration after the first 3 adopted engines prove the expansion pipeline.
+XOFERRO has been upgraded and adopted as **XOblivion** (engine #4 in build queue). The key change: replace the Jiles-Atherton ODE solver with pre-computed 2D hysteresis LUTs, dropping CPU from research-grade bottleneck to <10%.
+
+Remaining parked concepts are preserved in the Volume 2 source document for future consideration.
 
 ---
 
