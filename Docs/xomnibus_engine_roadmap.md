@@ -46,10 +46,12 @@ The gallery has width (OBESE), pads (ODDOSCAR, ODYSSEY), character texture (OBLO
 #### Phase 0: COMPLETE
 Planning done. Design doc at `~/Documents/GitHub/XOverbite/docs/plans/2026-03-06-xoverbite-design.md`.
 
-#### Phase 1 — Parameter Architecture
+#### Phase 1 — Parameter Architecture: COMPLETE
 - All 122 canonical parameter IDs locked with `poss_` prefix
 - `AppState` JSON schema, `PresetManager` scaffold
-- **Gate:** compiles, save→load round-trips
+- Reference: `Docs/xoverbite_parameter_architecture.md`
+- Hero preset: `Presets/XOmnibus/Foundation/Belly_Growl.xometa` (122 params, round-trip verified)
+- **Gate:** compiles, save→load round-trips ✓
 
 #### Phase 2 — Core Voice Engine
 - OscA (4 belly waveforms), OscB (5 bite waveforms)

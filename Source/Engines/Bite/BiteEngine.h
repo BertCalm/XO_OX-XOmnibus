@@ -978,19 +978,69 @@ public:
 
     static void addParametersImpl (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
-        // --- Oscillators ---
+        // Mod matrix choice arrays (shared across 8 slots)
+        static const juce::StringArray modSources {
+            "Off", "LFO 1", "LFO 2", "LFO 3", "Amp Env", "Filter Env", "Mod Env",
+            "Velocity", "Note", "Aftertouch", "Mod Wheel",
+            "Macro Belly", "Macro Bite", "Macro Scurry", "Macro Trash", "Macro Play Dead"
+        };
+        static const juce::StringArray modDests {
+            "Off", "OscA Shape", "OscA Drift", "OscB Shape", "OscB Instability",
+            "Osc Mix", "Osc Interact", "Sub Level", "Weight Level", "Noise Level",
+            "Filter Cutoff", "Filter Reso", "Filter Drive", "Fur", "Chew", "Drive",
+            "Gnash", "Trash", "Amp Level", "Pan",
+            "FX Motion Rate", "FX Motion Depth", "FX Echo Time", "FX Echo Feedback",
+            "FX Space Size", "FX Space Decay"
+        };
+
+        //======================================================================
+        // 1. OSCILLATOR A — Belly
+        //======================================================================
         params.push_back (std::make_unique<juce::AudioParameterChoice> (
             juce::ParameterID { "poss_oscAWaveform", 1 }, "Bite Osc A Waveform",
             juce::StringArray { "Sine", "Triangle", "Saw", "Cushion Pulse" }, 0));
 
-        params.push_back (std::make_unique<juce::AudioParameterChoice> (
-            juce::ParameterID { "poss_oscBWaveform", 1 }, "Bite Osc B Waveform",
-            juce::StringArray { "Hard Sync Saw", "FM", "Ring Mod", "Noise", "Grit" }, 0));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_oscAShape", 1 }, "Bite Osc A Shape",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_oscADrift", 1 }, "Bite Osc A Drift",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.05f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_oscMix", 1 }, "Bite Osc Mix",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.3f));
 
+        //======================================================================
+        // 2. OSCILLATOR B — Bite
+        //======================================================================
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_oscBWaveform", 1 }, "Bite Osc B Waveform",
+            juce::StringArray { "Hard Sync Saw", "FM", "Ring Mod", "Noise", "Grit" }, 0));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_oscBShape", 1 }, "Bite Osc B Shape",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_oscBInstability", 1 }, "Bite Osc B Instability",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        //======================================================================
+        // 3. OSCILLATOR INTERACTION
+        //======================================================================
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_oscInteractMode", 1 }, "Bite Osc Interact Mode",
+            juce::StringArray { "Off", "Soft Sync", "Low FM", "Phase Push", "Grit Multiply" }, 0));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_oscInteractAmount", 1 }, "Bite Osc Interact Amount",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        //======================================================================
+        // 4. SUB OSCILLATOR
+        //======================================================================
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_subLevel", 1 }, "Bite Sub Level",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.3f));
@@ -999,7 +1049,47 @@ public:
             juce::ParameterID { "poss_subOctave", 1 }, "Bite Sub Octave",
             juce::StringArray { "-1 Oct", "-2 Oct" }, 0));
 
-        // --- Filter ---
+        //======================================================================
+        // 5. WEIGHT ENGINE
+        //======================================================================
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_weightShape", 1 }, "Bite Weight Shape",
+            juce::StringArray { "Sine", "Triangle", "Saw", "Square", "Pulse" }, 0));
+
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_weightOctave", 1 }, "Bite Weight Octave",
+            juce::StringArray { "-1 Oct", "-2 Oct", "-3 Oct" }, 1));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_weightLevel", 1 }, "Bite Weight Level",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_weightTune", 1 }, "Bite Weight Tune",
+            juce::NormalisableRange<float> (-100.0f, 100.0f, 0.1f), 0.0f));
+
+        //======================================================================
+        // 6. NOISE SOURCE
+        //======================================================================
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_noiseType", 1 }, "Bite Noise Type",
+            juce::StringArray { "White", "Pink", "Brown", "Crackle", "Hiss" }, 0));
+
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_noiseRouting", 1 }, "Bite Noise Routing",
+            juce::StringArray { "Pre-Filter", "Post-Filter", "Parallel", "Sidechain" }, 0));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_noiseLevel", 1 }, "Bite Noise Level",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_noiseDecay", 1 }, "Bite Noise Decay",
+            juce::NormalisableRange<float> (0.001f, 2.0f, 0.001f, 0.4f), 0.1f));
+
+        //======================================================================
+        // 7. FILTER BLOCK
+        //======================================================================
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_filterCutoff", 1 }, "Bite Filter Cutoff",
             juce::NormalisableRange<float> (20.0f, 20000.0f, 0.1f, 0.3f), 2000.0f));
@@ -1012,10 +1102,40 @@ public:
             juce::ParameterID { "poss_filterMode", 1 }, "Bite Filter Mode",
             juce::StringArray { "Burrow LP", "Snarl BP", "Wire HP", "Hollow Notch" }, 0));
 
-        // --- Character stages ---
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_filterKeyTrack", 1 }, "Bite Filter Key Track",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_filterDrive", 1 }, "Bite Filter Drive",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        //======================================================================
+        // 8. CHARACTER STAGES
+        //======================================================================
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_furAmount", 1 }, "Bite Fur Amount",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_chewAmount", 1 }, "Bite Chew Amount",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_chewFreq", 1 }, "Bite Chew Freq",
+            juce::NormalisableRange<float> (100.0f, 8000.0f, 0.1f, 0.3f), 1000.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_chewMix", 1 }, "Bite Chew Mix",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_driveAmount", 1 }, "Bite Drive Amount",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_driveType", 1 }, "Bite Drive Type",
+            juce::StringArray { "Warm", "Grit", "Clip", "Tube" }, 0));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_gnashAmount", 1 }, "Bite Gnash Amount",
@@ -1029,35 +1149,43 @@ public:
             juce::ParameterID { "poss_trashAmount", 1 }, "Bite Trash Amount",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
 
-        // --- Amp Envelope ---
+        //======================================================================
+        // 9. AMP ENVELOPE
+        //======================================================================
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_ampAttack", 1 }, "Bite Amp Attack",
-            juce::NormalisableRange<float> (0.001f, 10.0f, 0.001f, 0.3f), 0.01f));
+            juce::NormalisableRange<float> (0.001f, 5.0f, 0.001f, 0.4f), 0.005f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_ampDecay", 1 }, "Bite Amp Decay",
-            juce::NormalisableRange<float> (0.001f, 10.0f, 0.001f, 0.3f), 0.3f));
+            juce::NormalisableRange<float> (0.001f, 5.0f, 0.001f, 0.4f), 0.3f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_ampSustain", 1 }, "Bite Amp Sustain",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.7f));
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.8f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_ampRelease", 1 }, "Bite Amp Release",
-            juce::NormalisableRange<float> (0.001f, 20.0f, 0.001f, 0.3f), 0.5f));
+            juce::NormalisableRange<float> (0.001f, 10.0f, 0.001f, 0.4f), 0.3f));
 
-        // --- Filter Envelope ---
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_ampVelSens", 1 }, "Bite Amp Vel Sens",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.7f));
+
+        //======================================================================
+        // 10. FILTER ENVELOPE
+        //======================================================================
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_filterEnvAmount", 1 }, "Bite Filter Env Amount",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.3f));
+            juce::NormalisableRange<float> (-1.0f, 1.0f, 0.01f), 0.3f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_filterAttack", 1 }, "Bite Filter Attack",
-            juce::NormalisableRange<float> (0.001f, 10.0f, 0.001f, 0.3f), 0.01f));
+            juce::NormalisableRange<float> (0.001f, 5.0f, 0.001f, 0.4f), 0.005f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_filterDecay", 1 }, "Bite Filter Decay",
-            juce::NormalisableRange<float> (0.001f, 10.0f, 0.001f, 0.3f), 0.3f));
+            juce::NormalisableRange<float> (0.001f, 5.0f, 0.001f, 0.4f), 0.3f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_filterSustain", 1 }, "Bite Filter Sustain",
@@ -1065,19 +1193,187 @@ public:
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_filterRelease", 1 }, "Bite Filter Release",
-            juce::NormalisableRange<float> (0.001f, 10.0f, 0.001f, 0.3f), 0.3f));
+            juce::NormalisableRange<float> (0.001f, 10.0f, 0.001f, 0.4f), 0.3f));
 
-        // --- Level ---
+        //======================================================================
+        // 11. MOD ENVELOPE
+        //======================================================================
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "poss_level", 1 }, "Bite Level",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.8f));
+            juce::ParameterID { "poss_modEnvAmount", 1 }, "Bite Mod Env Amount",
+            juce::NormalisableRange<float> (-1.0f, 1.0f, 0.01f), 0.0f));
 
-        // --- Polyphony ---
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_modAttack", 1 }, "Bite Mod Attack",
+            juce::NormalisableRange<float> (0.001f, 5.0f, 0.001f, 0.4f), 0.01f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_modDecay", 1 }, "Bite Mod Decay",
+            juce::NormalisableRange<float> (0.001f, 5.0f, 0.001f, 0.4f), 0.5f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_modSustain", 1 }, "Bite Mod Sustain",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_modRelease", 1 }, "Bite Mod Release",
+            juce::NormalisableRange<float> (0.001f, 10.0f, 0.001f, 0.4f), 0.5f));
+
         params.push_back (std::make_unique<juce::AudioParameterChoice> (
-            juce::ParameterID { "poss_polyphony", 1 }, "Bite Polyphony",
-            juce::StringArray { "1", "2", "4", "8", "16" }, 3));
+            juce::ParameterID { "poss_modEnvDest", 1 }, "Bite Mod Env Dest",
+            juce::StringArray { "OscA Shape", "OscB Shape", "Filter Cutoff", "Fur",
+                                "Gnash", "Trash", "Osc Mix", "Weight Level" }, 2));
 
-        // --- Macros ---
+        //======================================================================
+        // 12. LFO 1
+        //======================================================================
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_lfo1Shape", 1 }, "Bite LFO 1 Shape",
+            juce::StringArray { "Sine", "Triangle", "Saw", "Square", "S&H", "Random", "Stepped" }, 0));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_lfo1Rate", 1 }, "Bite LFO 1 Rate",
+            juce::NormalisableRange<float> (0.01f, 50.0f, 0.01f, 0.3f), 1.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_lfo1Depth", 1 }, "Bite LFO 1 Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_lfo1Sync", 1 }, "Bite LFO 1 Sync",
+            juce::StringArray { "Off", "On" }, 0));
+
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_lfo1Retrigger", 1 }, "Bite LFO 1 Retrigger",
+            juce::StringArray { "Off", "On" }, 0));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_lfo1Phase", 1 }, "Bite LFO 1 Phase",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        //======================================================================
+        // 13. LFO 2
+        //======================================================================
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_lfo2Shape", 1 }, "Bite LFO 2 Shape",
+            juce::StringArray { "Sine", "Triangle", "Saw", "Square", "S&H", "Random", "Stepped" }, 0));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_lfo2Rate", 1 }, "Bite LFO 2 Rate",
+            juce::NormalisableRange<float> (0.01f, 50.0f, 0.01f, 0.3f), 2.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_lfo2Depth", 1 }, "Bite LFO 2 Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_lfo2Sync", 1 }, "Bite LFO 2 Sync",
+            juce::StringArray { "Off", "On" }, 0));
+
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_lfo2Retrigger", 1 }, "Bite LFO 2 Retrigger",
+            juce::StringArray { "Off", "On" }, 0));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_lfo2Phase", 1 }, "Bite LFO 2 Phase",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        //======================================================================
+        // 14. LFO 3
+        //======================================================================
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_lfo3Shape", 1 }, "Bite LFO 3 Shape",
+            juce::StringArray { "Sine", "Triangle", "Saw", "Square", "S&H", "Random", "Stepped" }, 0));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_lfo3Rate", 1 }, "Bite LFO 3 Rate",
+            juce::NormalisableRange<float> (0.01f, 50.0f, 0.01f, 0.3f), 0.5f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_lfo3Depth", 1 }, "Bite LFO 3 Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_lfo3Sync", 1 }, "Bite LFO 3 Sync",
+            juce::StringArray { "Off", "On" }, 0));
+
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_lfo3Retrigger", 1 }, "Bite LFO 3 Retrigger",
+            juce::StringArray { "Off", "On" }, 0));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_lfo3Phase", 1 }, "Bite LFO 3 Phase",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        //======================================================================
+        // 15. MOD MATRIX — 8 slots
+        //======================================================================
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_modSlot1Src", 1 }, "Bite Mod 1 Src", modSources, 0));
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_modSlot1Dst", 1 }, "Bite Mod 1 Dst", modDests, 0));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_modSlot1Amt", 1 }, "Bite Mod 1 Amt",
+            juce::NormalisableRange<float> (-1.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_modSlot2Src", 1 }, "Bite Mod 2 Src", modSources, 0));
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_modSlot2Dst", 1 }, "Bite Mod 2 Dst", modDests, 0));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_modSlot2Amt", 1 }, "Bite Mod 2 Amt",
+            juce::NormalisableRange<float> (-1.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_modSlot3Src", 1 }, "Bite Mod 3 Src", modSources, 0));
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_modSlot3Dst", 1 }, "Bite Mod 3 Dst", modDests, 0));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_modSlot3Amt", 1 }, "Bite Mod 3 Amt",
+            juce::NormalisableRange<float> (-1.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_modSlot4Src", 1 }, "Bite Mod 4 Src", modSources, 0));
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_modSlot4Dst", 1 }, "Bite Mod 4 Dst", modDests, 0));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_modSlot4Amt", 1 }, "Bite Mod 4 Amt",
+            juce::NormalisableRange<float> (-1.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_modSlot5Src", 1 }, "Bite Mod 5 Src", modSources, 0));
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_modSlot5Dst", 1 }, "Bite Mod 5 Dst", modDests, 0));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_modSlot5Amt", 1 }, "Bite Mod 5 Amt",
+            juce::NormalisableRange<float> (-1.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_modSlot6Src", 1 }, "Bite Mod 6 Src", modSources, 0));
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_modSlot6Dst", 1 }, "Bite Mod 6 Dst", modDests, 0));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_modSlot6Amt", 1 }, "Bite Mod 6 Amt",
+            juce::NormalisableRange<float> (-1.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_modSlot7Src", 1 }, "Bite Mod 7 Src", modSources, 0));
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_modSlot7Dst", 1 }, "Bite Mod 7 Dst", modDests, 0));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_modSlot7Amt", 1 }, "Bite Mod 7 Amt",
+            juce::NormalisableRange<float> (-1.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_modSlot8Src", 1 }, "Bite Mod 8 Src", modSources, 0));
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_modSlot8Dst", 1 }, "Bite Mod 8 Dst", modDests, 0));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_modSlot8Amt", 1 }, "Bite Mod 8 Amt",
+            juce::NormalisableRange<float> (-1.0f, 1.0f, 0.01f), 0.0f));
+
+        //======================================================================
+        // 16. MACROS — 5
+        //======================================================================
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_macroBelly", 1 }, "Bite Macro Belly",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
@@ -1093,44 +1389,287 @@ public:
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_macroTrash", 1 }, "Bite Macro Trash",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_macroPlayDead", 1 }, "Bite Macro Play Dead",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        //======================================================================
+        // 17. FX: MOTION
+        //======================================================================
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_fxMotionType", 1 }, "Bite FX Motion Type",
+            juce::StringArray { "Plush Chorus", "Uneasy Doubler", "Oil Flange" }, 0));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_fxMotionRate", 1 }, "Bite FX Motion Rate",
+            juce::NormalisableRange<float> (0.01f, 10.0f, 0.01f, 0.3f), 0.5f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_fxMotionDepth", 1 }, "Bite FX Motion Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_fxMotionMix", 1 }, "Bite FX Motion Mix",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        //======================================================================
+        // 18. FX: ECHO
+        //======================================================================
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_fxEchoType", 1 }, "Bite FX Echo Type",
+            juce::StringArray { "Dark Tape", "Murky Digital", "Short Slap", "Ping" }, 0));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_fxEchoTime", 1 }, "Bite FX Echo Time",
+            juce::NormalisableRange<float> (0.01f, 2.0f, 0.001f, 0.5f), 0.3f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_fxEchoFeedback", 1 }, "Bite FX Echo Feedback",
+            juce::NormalisableRange<float> (0.0f, 0.95f, 0.01f), 0.3f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_fxEchoMix", 1 }, "Bite FX Echo Mix",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_fxEchoSync", 1 }, "Bite FX Echo Sync",
+            juce::StringArray { "Off", "On" }, 0));
+
+        //======================================================================
+        // 19. FX: SPACE
+        //======================================================================
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_fxSpaceType", 1 }, "Bite FX Space Type",
+            juce::StringArray { "Burrow Room", "Fog Chamber", "Drain Hall" }, 0));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_fxSpaceSize", 1 }, "Bite FX Space Size",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.3f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_fxSpaceDecay", 1 }, "Bite FX Space Decay",
+            juce::NormalisableRange<float> (0.1f, 20.0f, 0.01f, 0.3f), 1.5f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_fxSpaceDamping", 1 }, "Bite FX Space Damping",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_fxSpaceMix", 1 }, "Bite FX Space Mix",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        //======================================================================
+        // 20. FX: FINISH
+        //======================================================================
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_fxFinishGlue", 1 }, "Bite FX Finish Glue",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_fxFinishClip", 1 }, "Bite FX Finish Clip",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_fxFinishWidth", 1 }, "Bite FX Finish Width",
+            juce::NormalisableRange<float> (0.0f, 2.0f, 0.01f), 1.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_fxFinishLowMono", 1 }, "Bite FX Finish Low Mono",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        //======================================================================
+        // 21. VOICE CONTROL
+        //======================================================================
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_polyphony", 1 }, "Bite Polyphony",
+            juce::StringArray { "1", "2", "4", "8", "16" }, 3));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_glideTime", 1 }, "Bite Glide Time",
+            juce::NormalisableRange<float> (0.0f, 2.0f, 0.001f, 0.5f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_glideMode", 1 }, "Bite Glide Mode",
+            juce::StringArray { "Off", "Legato", "Always" }, 0));
+
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "poss_unisonVoices", 1 }, "Bite Unison Voices",
+            juce::StringArray { "1", "2", "3", "4", "5", "6", "7" }, 0));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_unisonDetune", 1 }, "Bite Unison Detune",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.2f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_unisonSpread", 1 }, "Bite Unison Spread",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
+
+        //======================================================================
+        // 22. OUTPUT
+        //======================================================================
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_level", 1 }, "Bite Level",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.7f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "poss_pan", 1 }, "Bite Pan",
+            juce::NormalisableRange<float> (-1.0f, 1.0f, 0.01f), 0.0f));
     }
 
 public:
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
     {
-        pOscAWaveform     = apvts.getRawParameterValue ("poss_oscAWaveform");
-        pOscBWaveform     = apvts.getRawParameterValue ("poss_oscBWaveform");
-        pOscMix           = apvts.getRawParameterValue ("poss_oscMix");
-        pSubLevel         = apvts.getRawParameterValue ("poss_subLevel");
-        pSubOctave        = apvts.getRawParameterValue ("poss_subOctave");
-        pFilterCutoff     = apvts.getRawParameterValue ("poss_filterCutoff");
-        pFilterReso       = apvts.getRawParameterValue ("poss_filterReso");
-        pFilterMode       = apvts.getRawParameterValue ("poss_filterMode");
-        pFurAmount        = apvts.getRawParameterValue ("poss_furAmount");
-        pGnashAmount      = apvts.getRawParameterValue ("poss_gnashAmount");
-        pTrashMode        = apvts.getRawParameterValue ("poss_trashMode");
-        pTrashAmount      = apvts.getRawParameterValue ("poss_trashAmount");
-        pAmpAttack        = apvts.getRawParameterValue ("poss_ampAttack");
-        pAmpDecay         = apvts.getRawParameterValue ("poss_ampDecay");
-        pAmpSustain       = apvts.getRawParameterValue ("poss_ampSustain");
-        pAmpRelease       = apvts.getRawParameterValue ("poss_ampRelease");
-        pFilterEnvAmount  = apvts.getRawParameterValue ("poss_filterEnvAmount");
-        pFilterAttack     = apvts.getRawParameterValue ("poss_filterAttack");
-        pFilterDecay      = apvts.getRawParameterValue ("poss_filterDecay");
-        pFilterSustain    = apvts.getRawParameterValue ("poss_filterSustain");
-        pFilterRelease    = apvts.getRawParameterValue ("poss_filterRelease");
-        pLevel            = apvts.getRawParameterValue ("poss_level");
-        pPolyphony        = apvts.getRawParameterValue ("poss_polyphony");
-        pMacroBelly       = apvts.getRawParameterValue ("poss_macroBelly");
-        pMacroBite        = apvts.getRawParameterValue ("poss_macroBite");
-        pMacroScurry      = apvts.getRawParameterValue ("poss_macroScurry");
-        pMacroTrash       = apvts.getRawParameterValue ("poss_macroTrash");
+        // Oscillator A
+        pOscAWaveform       = apvts.getRawParameterValue ("poss_oscAWaveform");
+        pOscAShape          = apvts.getRawParameterValue ("poss_oscAShape");
+        pOscADrift          = apvts.getRawParameterValue ("poss_oscADrift");
+        pOscMix             = apvts.getRawParameterValue ("poss_oscMix");
+        // Oscillator B
+        pOscBWaveform       = apvts.getRawParameterValue ("poss_oscBWaveform");
+        pOscBShape          = apvts.getRawParameterValue ("poss_oscBShape");
+        pOscBInstability    = apvts.getRawParameterValue ("poss_oscBInstability");
+        // Osc Interaction
+        pOscInteractMode    = apvts.getRawParameterValue ("poss_oscInteractMode");
+        pOscInteractAmount  = apvts.getRawParameterValue ("poss_oscInteractAmount");
+        // Sub
+        pSubLevel           = apvts.getRawParameterValue ("poss_subLevel");
+        pSubOctave          = apvts.getRawParameterValue ("poss_subOctave");
+        // Weight Engine
+        pWeightShape        = apvts.getRawParameterValue ("poss_weightShape");
+        pWeightOctave       = apvts.getRawParameterValue ("poss_weightOctave");
+        pWeightLevel        = apvts.getRawParameterValue ("poss_weightLevel");
+        pWeightTune         = apvts.getRawParameterValue ("poss_weightTune");
+        // Noise
+        pNoiseType          = apvts.getRawParameterValue ("poss_noiseType");
+        pNoiseRouting       = apvts.getRawParameterValue ("poss_noiseRouting");
+        pNoiseLevel         = apvts.getRawParameterValue ("poss_noiseLevel");
+        pNoiseDecay         = apvts.getRawParameterValue ("poss_noiseDecay");
+        // Filter
+        pFilterCutoff       = apvts.getRawParameterValue ("poss_filterCutoff");
+        pFilterReso         = apvts.getRawParameterValue ("poss_filterReso");
+        pFilterMode         = apvts.getRawParameterValue ("poss_filterMode");
+        pFilterKeyTrack     = apvts.getRawParameterValue ("poss_filterKeyTrack");
+        pFilterDrive        = apvts.getRawParameterValue ("poss_filterDrive");
+        // Character stages
+        pFurAmount          = apvts.getRawParameterValue ("poss_furAmount");
+        pChewAmount         = apvts.getRawParameterValue ("poss_chewAmount");
+        pChewFreq           = apvts.getRawParameterValue ("poss_chewFreq");
+        pChewMix            = apvts.getRawParameterValue ("poss_chewMix");
+        pDriveAmount        = apvts.getRawParameterValue ("poss_driveAmount");
+        pDriveType          = apvts.getRawParameterValue ("poss_driveType");
+        pGnashAmount        = apvts.getRawParameterValue ("poss_gnashAmount");
+        pTrashMode          = apvts.getRawParameterValue ("poss_trashMode");
+        pTrashAmount        = apvts.getRawParameterValue ("poss_trashAmount");
+        // Amp Envelope
+        pAmpAttack          = apvts.getRawParameterValue ("poss_ampAttack");
+        pAmpDecay           = apvts.getRawParameterValue ("poss_ampDecay");
+        pAmpSustain         = apvts.getRawParameterValue ("poss_ampSustain");
+        pAmpRelease         = apvts.getRawParameterValue ("poss_ampRelease");
+        pAmpVelSens         = apvts.getRawParameterValue ("poss_ampVelSens");
+        // Filter Envelope
+        pFilterEnvAmount    = apvts.getRawParameterValue ("poss_filterEnvAmount");
+        pFilterAttack       = apvts.getRawParameterValue ("poss_filterAttack");
+        pFilterDecay        = apvts.getRawParameterValue ("poss_filterDecay");
+        pFilterSustain      = apvts.getRawParameterValue ("poss_filterSustain");
+        pFilterRelease      = apvts.getRawParameterValue ("poss_filterRelease");
+        // Mod Envelope
+        pModEnvAmount       = apvts.getRawParameterValue ("poss_modEnvAmount");
+        pModAttack          = apvts.getRawParameterValue ("poss_modAttack");
+        pModDecay           = apvts.getRawParameterValue ("poss_modDecay");
+        pModSustain         = apvts.getRawParameterValue ("poss_modSustain");
+        pModRelease         = apvts.getRawParameterValue ("poss_modRelease");
+        pModEnvDest         = apvts.getRawParameterValue ("poss_modEnvDest");
+        // LFO 1
+        pLfo1Shape          = apvts.getRawParameterValue ("poss_lfo1Shape");
+        pLfo1Rate           = apvts.getRawParameterValue ("poss_lfo1Rate");
+        pLfo1Depth          = apvts.getRawParameterValue ("poss_lfo1Depth");
+        pLfo1Sync           = apvts.getRawParameterValue ("poss_lfo1Sync");
+        pLfo1Retrigger      = apvts.getRawParameterValue ("poss_lfo1Retrigger");
+        pLfo1Phase          = apvts.getRawParameterValue ("poss_lfo1Phase");
+        // LFO 2
+        pLfo2Shape          = apvts.getRawParameterValue ("poss_lfo2Shape");
+        pLfo2Rate           = apvts.getRawParameterValue ("poss_lfo2Rate");
+        pLfo2Depth          = apvts.getRawParameterValue ("poss_lfo2Depth");
+        pLfo2Sync           = apvts.getRawParameterValue ("poss_lfo2Sync");
+        pLfo2Retrigger      = apvts.getRawParameterValue ("poss_lfo2Retrigger");
+        pLfo2Phase          = apvts.getRawParameterValue ("poss_lfo2Phase");
+        // LFO 3
+        pLfo3Shape          = apvts.getRawParameterValue ("poss_lfo3Shape");
+        pLfo3Rate           = apvts.getRawParameterValue ("poss_lfo3Rate");
+        pLfo3Depth          = apvts.getRawParameterValue ("poss_lfo3Depth");
+        pLfo3Sync           = apvts.getRawParameterValue ("poss_lfo3Sync");
+        pLfo3Retrigger      = apvts.getRawParameterValue ("poss_lfo3Retrigger");
+        pLfo3Phase          = apvts.getRawParameterValue ("poss_lfo3Phase");
+        // Mod Matrix (8 slots × 3)
+        pModSlot1Src        = apvts.getRawParameterValue ("poss_modSlot1Src");
+        pModSlot1Dst        = apvts.getRawParameterValue ("poss_modSlot1Dst");
+        pModSlot1Amt        = apvts.getRawParameterValue ("poss_modSlot1Amt");
+        pModSlot2Src        = apvts.getRawParameterValue ("poss_modSlot2Src");
+        pModSlot2Dst        = apvts.getRawParameterValue ("poss_modSlot2Dst");
+        pModSlot2Amt        = apvts.getRawParameterValue ("poss_modSlot2Amt");
+        pModSlot3Src        = apvts.getRawParameterValue ("poss_modSlot3Src");
+        pModSlot3Dst        = apvts.getRawParameterValue ("poss_modSlot3Dst");
+        pModSlot3Amt        = apvts.getRawParameterValue ("poss_modSlot3Amt");
+        pModSlot4Src        = apvts.getRawParameterValue ("poss_modSlot4Src");
+        pModSlot4Dst        = apvts.getRawParameterValue ("poss_modSlot4Dst");
+        pModSlot4Amt        = apvts.getRawParameterValue ("poss_modSlot4Amt");
+        pModSlot5Src        = apvts.getRawParameterValue ("poss_modSlot5Src");
+        pModSlot5Dst        = apvts.getRawParameterValue ("poss_modSlot5Dst");
+        pModSlot5Amt        = apvts.getRawParameterValue ("poss_modSlot5Amt");
+        pModSlot6Src        = apvts.getRawParameterValue ("poss_modSlot6Src");
+        pModSlot6Dst        = apvts.getRawParameterValue ("poss_modSlot6Dst");
+        pModSlot6Amt        = apvts.getRawParameterValue ("poss_modSlot6Amt");
+        pModSlot7Src        = apvts.getRawParameterValue ("poss_modSlot7Src");
+        pModSlot7Dst        = apvts.getRawParameterValue ("poss_modSlot7Dst");
+        pModSlot7Amt        = apvts.getRawParameterValue ("poss_modSlot7Amt");
+        pModSlot8Src        = apvts.getRawParameterValue ("poss_modSlot8Src");
+        pModSlot8Dst        = apvts.getRawParameterValue ("poss_modSlot8Dst");
+        pModSlot8Amt        = apvts.getRawParameterValue ("poss_modSlot8Amt");
+        // Macros
+        pMacroBelly         = apvts.getRawParameterValue ("poss_macroBelly");
+        pMacroBite          = apvts.getRawParameterValue ("poss_macroBite");
+        pMacroScurry        = apvts.getRawParameterValue ("poss_macroScurry");
+        pMacroTrash         = apvts.getRawParameterValue ("poss_macroTrash");
+        pMacroPlayDead      = apvts.getRawParameterValue ("poss_macroPlayDead");
+        // FX: Motion
+        pFxMotionType       = apvts.getRawParameterValue ("poss_fxMotionType");
+        pFxMotionRate       = apvts.getRawParameterValue ("poss_fxMotionRate");
+        pFxMotionDepth      = apvts.getRawParameterValue ("poss_fxMotionDepth");
+        pFxMotionMix        = apvts.getRawParameterValue ("poss_fxMotionMix");
+        // FX: Echo
+        pFxEchoType         = apvts.getRawParameterValue ("poss_fxEchoType");
+        pFxEchoTime         = apvts.getRawParameterValue ("poss_fxEchoTime");
+        pFxEchoFeedback     = apvts.getRawParameterValue ("poss_fxEchoFeedback");
+        pFxEchoMix          = apvts.getRawParameterValue ("poss_fxEchoMix");
+        pFxEchoSync         = apvts.getRawParameterValue ("poss_fxEchoSync");
+        // FX: Space
+        pFxSpaceType        = apvts.getRawParameterValue ("poss_fxSpaceType");
+        pFxSpaceSize        = apvts.getRawParameterValue ("poss_fxSpaceSize");
+        pFxSpaceDecay       = apvts.getRawParameterValue ("poss_fxSpaceDecay");
+        pFxSpaceDamping     = apvts.getRawParameterValue ("poss_fxSpaceDamping");
+        pFxSpaceMix         = apvts.getRawParameterValue ("poss_fxSpaceMix");
+        // FX: Finish
+        pFxFinishGlue       = apvts.getRawParameterValue ("poss_fxFinishGlue");
+        pFxFinishClip       = apvts.getRawParameterValue ("poss_fxFinishClip");
+        pFxFinishWidth      = apvts.getRawParameterValue ("poss_fxFinishWidth");
+        pFxFinishLowMono    = apvts.getRawParameterValue ("poss_fxFinishLowMono");
+        // Voice
+        pPolyphony          = apvts.getRawParameterValue ("poss_polyphony");
+        pGlideTime          = apvts.getRawParameterValue ("poss_glideTime");
+        pGlideMode          = apvts.getRawParameterValue ("poss_glideMode");
+        pUnisonVoices       = apvts.getRawParameterValue ("poss_unisonVoices");
+        pUnisonDetune       = apvts.getRawParameterValue ("poss_unisonDetune");
+        pUnisonSpread       = apvts.getRawParameterValue ("poss_unisonSpread");
+        // Output
+        pLevel              = apvts.getRawParameterValue ("poss_level");
+        pPan                = apvts.getRawParameterValue ("poss_pan");
     }
 
     //-- Identity --------------------------------------------------------------
 
     juce::String getEngineId() const override { return "Overbite"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFF4A7C59); }
+    juce::Colour getAccentColour() const override { return juce::Colour (0xFFF0EDE8); }
     int getMaxVoices() const override { return kMaxVoices; }
 
     int getActiveVoiceCount() const override
@@ -1246,34 +1785,151 @@ private:
     std::vector<float> outputCacheL;
     std::vector<float> outputCacheR;
 
-    // Cached APVTS parameter pointers
+    // Cached APVTS parameter pointers — 122 total, frozen IDs
+    // Oscillator A
     std::atomic<float>* pOscAWaveform = nullptr;
-    std::atomic<float>* pOscBWaveform = nullptr;
+    std::atomic<float>* pOscAShape = nullptr;
+    std::atomic<float>* pOscADrift = nullptr;
     std::atomic<float>* pOscMix = nullptr;
+    // Oscillator B
+    std::atomic<float>* pOscBWaveform = nullptr;
+    std::atomic<float>* pOscBShape = nullptr;
+    std::atomic<float>* pOscBInstability = nullptr;
+    // Osc Interaction
+    std::atomic<float>* pOscInteractMode = nullptr;
+    std::atomic<float>* pOscInteractAmount = nullptr;
+    // Sub
     std::atomic<float>* pSubLevel = nullptr;
     std::atomic<float>* pSubOctave = nullptr;
+    // Weight Engine
+    std::atomic<float>* pWeightShape = nullptr;
+    std::atomic<float>* pWeightOctave = nullptr;
+    std::atomic<float>* pWeightLevel = nullptr;
+    std::atomic<float>* pWeightTune = nullptr;
+    // Noise
+    std::atomic<float>* pNoiseType = nullptr;
+    std::atomic<float>* pNoiseRouting = nullptr;
+    std::atomic<float>* pNoiseLevel = nullptr;
+    std::atomic<float>* pNoiseDecay = nullptr;
+    // Filter
     std::atomic<float>* pFilterCutoff = nullptr;
     std::atomic<float>* pFilterReso = nullptr;
     std::atomic<float>* pFilterMode = nullptr;
+    std::atomic<float>* pFilterKeyTrack = nullptr;
+    std::atomic<float>* pFilterDrive = nullptr;
+    // Character stages
     std::atomic<float>* pFurAmount = nullptr;
+    std::atomic<float>* pChewAmount = nullptr;
+    std::atomic<float>* pChewFreq = nullptr;
+    std::atomic<float>* pChewMix = nullptr;
+    std::atomic<float>* pDriveAmount = nullptr;
+    std::atomic<float>* pDriveType = nullptr;
     std::atomic<float>* pGnashAmount = nullptr;
     std::atomic<float>* pTrashMode = nullptr;
     std::atomic<float>* pTrashAmount = nullptr;
+    // Amp Envelope
     std::atomic<float>* pAmpAttack = nullptr;
     std::atomic<float>* pAmpDecay = nullptr;
     std::atomic<float>* pAmpSustain = nullptr;
     std::atomic<float>* pAmpRelease = nullptr;
+    std::atomic<float>* pAmpVelSens = nullptr;
+    // Filter Envelope
     std::atomic<float>* pFilterEnvAmount = nullptr;
     std::atomic<float>* pFilterAttack = nullptr;
     std::atomic<float>* pFilterDecay = nullptr;
     std::atomic<float>* pFilterSustain = nullptr;
     std::atomic<float>* pFilterRelease = nullptr;
-    std::atomic<float>* pLevel = nullptr;
-    std::atomic<float>* pPolyphony = nullptr;
+    // Mod Envelope
+    std::atomic<float>* pModEnvAmount = nullptr;
+    std::atomic<float>* pModAttack = nullptr;
+    std::atomic<float>* pModDecay = nullptr;
+    std::atomic<float>* pModSustain = nullptr;
+    std::atomic<float>* pModRelease = nullptr;
+    std::atomic<float>* pModEnvDest = nullptr;
+    // LFO 1
+    std::atomic<float>* pLfo1Shape = nullptr;
+    std::atomic<float>* pLfo1Rate = nullptr;
+    std::atomic<float>* pLfo1Depth = nullptr;
+    std::atomic<float>* pLfo1Sync = nullptr;
+    std::atomic<float>* pLfo1Retrigger = nullptr;
+    std::atomic<float>* pLfo1Phase = nullptr;
+    // LFO 2
+    std::atomic<float>* pLfo2Shape = nullptr;
+    std::atomic<float>* pLfo2Rate = nullptr;
+    std::atomic<float>* pLfo2Depth = nullptr;
+    std::atomic<float>* pLfo2Sync = nullptr;
+    std::atomic<float>* pLfo2Retrigger = nullptr;
+    std::atomic<float>* pLfo2Phase = nullptr;
+    // LFO 3
+    std::atomic<float>* pLfo3Shape = nullptr;
+    std::atomic<float>* pLfo3Rate = nullptr;
+    std::atomic<float>* pLfo3Depth = nullptr;
+    std::atomic<float>* pLfo3Sync = nullptr;
+    std::atomic<float>* pLfo3Retrigger = nullptr;
+    std::atomic<float>* pLfo3Phase = nullptr;
+    // Mod Matrix (8 slots)
+    std::atomic<float>* pModSlot1Src = nullptr;
+    std::atomic<float>* pModSlot1Dst = nullptr;
+    std::atomic<float>* pModSlot1Amt = nullptr;
+    std::atomic<float>* pModSlot2Src = nullptr;
+    std::atomic<float>* pModSlot2Dst = nullptr;
+    std::atomic<float>* pModSlot2Amt = nullptr;
+    std::atomic<float>* pModSlot3Src = nullptr;
+    std::atomic<float>* pModSlot3Dst = nullptr;
+    std::atomic<float>* pModSlot3Amt = nullptr;
+    std::atomic<float>* pModSlot4Src = nullptr;
+    std::atomic<float>* pModSlot4Dst = nullptr;
+    std::atomic<float>* pModSlot4Amt = nullptr;
+    std::atomic<float>* pModSlot5Src = nullptr;
+    std::atomic<float>* pModSlot5Dst = nullptr;
+    std::atomic<float>* pModSlot5Amt = nullptr;
+    std::atomic<float>* pModSlot6Src = nullptr;
+    std::atomic<float>* pModSlot6Dst = nullptr;
+    std::atomic<float>* pModSlot6Amt = nullptr;
+    std::atomic<float>* pModSlot7Src = nullptr;
+    std::atomic<float>* pModSlot7Dst = nullptr;
+    std::atomic<float>* pModSlot7Amt = nullptr;
+    std::atomic<float>* pModSlot8Src = nullptr;
+    std::atomic<float>* pModSlot8Dst = nullptr;
+    std::atomic<float>* pModSlot8Amt = nullptr;
+    // Macros
     std::atomic<float>* pMacroBelly = nullptr;
     std::atomic<float>* pMacroBite = nullptr;
     std::atomic<float>* pMacroScurry = nullptr;
     std::atomic<float>* pMacroTrash = nullptr;
+    std::atomic<float>* pMacroPlayDead = nullptr;
+    // FX: Motion
+    std::atomic<float>* pFxMotionType = nullptr;
+    std::atomic<float>* pFxMotionRate = nullptr;
+    std::atomic<float>* pFxMotionDepth = nullptr;
+    std::atomic<float>* pFxMotionMix = nullptr;
+    // FX: Echo
+    std::atomic<float>* pFxEchoType = nullptr;
+    std::atomic<float>* pFxEchoTime = nullptr;
+    std::atomic<float>* pFxEchoFeedback = nullptr;
+    std::atomic<float>* pFxEchoMix = nullptr;
+    std::atomic<float>* pFxEchoSync = nullptr;
+    // FX: Space
+    std::atomic<float>* pFxSpaceType = nullptr;
+    std::atomic<float>* pFxSpaceSize = nullptr;
+    std::atomic<float>* pFxSpaceDecay = nullptr;
+    std::atomic<float>* pFxSpaceDamping = nullptr;
+    std::atomic<float>* pFxSpaceMix = nullptr;
+    // FX: Finish
+    std::atomic<float>* pFxFinishGlue = nullptr;
+    std::atomic<float>* pFxFinishClip = nullptr;
+    std::atomic<float>* pFxFinishWidth = nullptr;
+    std::atomic<float>* pFxFinishLowMono = nullptr;
+    // Voice
+    std::atomic<float>* pPolyphony = nullptr;
+    std::atomic<float>* pGlideTime = nullptr;
+    std::atomic<float>* pGlideMode = nullptr;
+    std::atomic<float>* pUnisonVoices = nullptr;
+    std::atomic<float>* pUnisonDetune = nullptr;
+    std::atomic<float>* pUnisonSpread = nullptr;
+    // Output
+    std::atomic<float>* pLevel = nullptr;
+    std::atomic<float>* pPan = nullptr;
 };
 
 } // namespace xomnibus
