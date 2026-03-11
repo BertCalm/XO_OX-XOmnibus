@@ -445,10 +445,10 @@ public:
             glideCoeff = 1.0f - std::exp (-1.0f / (glideTime * srf));
 
         // Apply macro and coupling offsets
-        // M1 CHARACTER: foldPoint + foldDepth
+        // M1 FOLD: foldPoint + foldDepth
         float effectiveFoldPoint = clamp (pFoldPt + macroChar * 0.4f + couplingFoldPointMod, 0.0f, 1.0f);
         float effectiveFoldDepth = clamp (pFoldDp + macroChar * 0.3f + couplingFoldDepthMod, 0.0f, 1.0f);
-        // M2 MOVEMENT: rotate + LFO1->foldPoint modulation depth
+        // M2 MOTION: rotate + LFO1->foldPoint modulation depth
         float effectiveRotate    = clamp (pRot + macroMove * 0.5f, -1.0f, 1.0f);
         float lfo1DepthMod       = pLfo1D + macroMove * 0.3f;
         // M3 COUPLING: source + coupling gain
@@ -1590,3 +1590,5 @@ private:
 };
 
 } // namespace xomnibus
+
+// REGISTER_ENGINE("Origami", OrigamiEngine)
