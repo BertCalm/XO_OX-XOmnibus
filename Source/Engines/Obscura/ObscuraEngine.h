@@ -333,7 +333,7 @@ struct ObscuraVoice
         for (int i = 1; i < kChainSize - 1; ++i)
         {
             float dist = static_cast<float> (i) - center;
-            float gauss = amplitude * std::exp (-dist * dist * invSigma2);
+            float gauss = amplitude * fastExp (-dist * dist * invSigma2);
             chain[i] += gauss;
         }
     }
@@ -643,7 +643,7 @@ public:
                         for (int i = 1; i < kChainSize - 1; ++i)
                         {
                             float dist = static_cast<float> (i) - center;
-                            float gauss = forceAmt * std::exp (-dist * dist * invSigma2);
+                            float gauss = forceAmt * fastExp (-dist * dist * invSigma2);
                             voice.chain[i] += gauss;
                         }
                     }

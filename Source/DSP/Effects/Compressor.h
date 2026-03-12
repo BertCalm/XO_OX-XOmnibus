@@ -165,9 +165,10 @@ private:
     /// @return Linear gain to apply to the audio signal.
     float computeGain (float detectLevel)
     {
-        // Convert detection level to dB
+        // Convert detection level to dB using fast log2
+        // 20*log10(x) = 6.0206*log2(x) — avoids std::log10 per sample
         float detectDb = (detectLevel > 1e-10f)
-            ? 20.0f * std::log10 (detectLevel)
+            ? 6.0205999f * fastLog2 (detectLevel)
             : -200.0f;
 
         // Compute gain reduction with soft knee

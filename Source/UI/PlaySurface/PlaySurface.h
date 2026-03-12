@@ -414,6 +414,8 @@ public:
     // Called at 30fps
     void tick()
     {
+        float prevX = posX, prevY = posY;
+
         if (!dragging)
         {
             switch (physMode)
@@ -441,7 +443,10 @@ public:
         if (onPositionChanged)
             onPositionChanged((posX + 1.0f) * 0.5f, (posY + 1.0f) * 0.5f);
 
-        repaint();
+        // Only repaint when position actually moved (avoids idle redraws in Lock mode)
+        bool moved = std::fabs(posX - prevX) > 0.0001f || std::fabs(posY - prevY) > 0.0001f;
+        if (moved || dragging)
+            repaint();
     }
 
 private:
@@ -578,6 +583,8 @@ public:
 
     void tick()
     {
+        float prevX = stripX, prevY = stripY;
+
         if (!touching)
         {
             // Spring-back
@@ -588,13 +595,20 @@ public:
         }
 
         // Age trail
+        bool hasActiveTrail = false;
         for (auto& pt : stripTrail)
+        {
             pt.age += 1.0f / 30.0f;
+            if (pt.age < PS::kWarmMemoryDur) hasActiveTrail = true;
+        }
 
         if (onPositionChanged)
             onPositionChanged(stripX, stripY);
 
-        repaint();
+        // Only repaint when position moved or trails are still fading
+        bool moved = std::fabs(stripX - prevX) > 0.0001f || std::fabs(stripY - prevY) > 0.0001f;
+        if (moved || touching || hasActiveTrail)
+            repaint();
     }
 
 private:

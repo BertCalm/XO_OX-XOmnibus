@@ -146,12 +146,13 @@ public:
         double fb = resonance * 4.0 * (1.0 - 0.15 * f * f);
 
         double inp = static_cast<double> (input) - fb * delay[3];
-        inp = std::tanh (inp);
+        inp = static_cast<double> (fastTanh (static_cast<float> (inp)));
 
         for (int i = 0; i < 4; ++i)
         {
             double s = (i == 0) ? inp : stage[i - 1];
-            stage[i] = delay[i] + f * (std::tanh (s) - std::tanh (delay[i]));
+            stage[i] = delay[i] + f * (static_cast<double> (fastTanh (static_cast<float> (s)))
+                                      - static_cast<double> (fastTanh (static_cast<float> (delay[i]))));
             delay[i] = stage[i];
             // Prevent denormals in the 4-pole feedback chain
             if (std::fabs (delay[i]) < 1.0e-18) delay[i] = 0.0;

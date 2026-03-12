@@ -1357,7 +1357,7 @@ private:
     static float midiToFreqTune (int midiNote, float tuneSemitones) noexcept
     {
         float n = static_cast<float> (midiNote) + tuneSemitones;
-        return 440.0f * std::pow (2.0f, (n - 69.0f) / 12.0f);
+        return 440.0f * fastPow2 ((n - 69.0f) * (1.0f / 12.0f));
     }
 
     static PolyBLEP::Waveform mapWaveform (int shapeIdx) noexcept

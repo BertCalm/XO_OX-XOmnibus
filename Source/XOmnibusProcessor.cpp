@@ -67,9 +67,28 @@ XOmnibusProcessor::XOmnibusProcessor()
                      .withOutput("Output", juce::AudioChannelSet::stereo(), true)),
       apvts(*this, nullptr, "XOmnibusParams", createParameterLayout())
 {
+    cacheParameterPointers();
 }
 
 XOmnibusProcessor::~XOmnibusProcessor() = default;
+
+void XOmnibusProcessor::cacheParameterPointers()
+{
+    cachedParams.masterVolume    = apvts.getRawParameterValue("masterVolume");
+    cachedParams.cmEnabled       = apvts.getRawParameterValue("cm_enabled");
+    cachedParams.cmPalette       = apvts.getRawParameterValue("cm_palette");
+    cachedParams.cmVoicing       = apvts.getRawParameterValue("cm_voicing");
+    cachedParams.cmSpread        = apvts.getRawParameterValue("cm_spread");
+    cachedParams.cmSeqRunning    = apvts.getRawParameterValue("cm_seq_running");
+    cachedParams.cmSeqBpm        = apvts.getRawParameterValue("cm_seq_bpm");
+    cachedParams.cmSeqSwing      = apvts.getRawParameterValue("cm_seq_swing");
+    cachedParams.cmSeqGate       = apvts.getRawParameterValue("cm_seq_gate");
+    cachedParams.cmSeqPattern    = apvts.getRawParameterValue("cm_seq_pattern");
+    cachedParams.cmVelCurve      = apvts.getRawParameterValue("cm_vel_curve");
+    cachedParams.cmHumanize      = apvts.getRawParameterValue("cm_humanize");
+    cachedParams.cmSidechainDuck = apvts.getRawParameterValue("cm_sidechain_duck");
+    cachedParams.cmEnoMode       = apvts.getRawParameterValue("cm_eno_mode");
+}
 
 juce::AudioProcessorValueTreeState::ParameterLayout
     XOmnibusProcessor::createParameterLayout()
@@ -242,22 +261,22 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
 
     couplingMatrix.setEngines(enginePtrs);
 
-    // Sync Chord Machine state from APVTS (block-constant reads)
-    chordMachine.setEnabled(apvts.getRawParameterValue("cm_enabled")->load() >= 0.5f);
+    // Sync Chord Machine state from cached parameter pointers (no hash lookups)
+    chordMachine.setEnabled(cachedParams.cmEnabled->load() >= 0.5f);
     chordMachine.setPalette(static_cast<PaletteType>(
-        static_cast<int>(apvts.getRawParameterValue("cm_palette")->load())));
+        static_cast<int>(cachedParams.cmPalette->load())));
     chordMachine.setVoicing(static_cast<VoicingMode>(
-        static_cast<int>(apvts.getRawParameterValue("cm_voicing")->load())));
-    chordMachine.setSpread(apvts.getRawParameterValue("cm_spread")->load());
-    chordMachine.setSequencerRunning(apvts.getRawParameterValue("cm_seq_running")->load() >= 0.5f);
-    chordMachine.setBPM(apvts.getRawParameterValue("cm_seq_bpm")->load());
-    chordMachine.setSwing(apvts.getRawParameterValue("cm_seq_swing")->load());
-    chordMachine.setGlobalGate(apvts.getRawParameterValue("cm_seq_gate")->load());
+        static_cast<int>(cachedParams.cmVoicing->load())));
+    chordMachine.setSpread(cachedParams.cmSpread->load());
+    chordMachine.setSequencerRunning(cachedParams.cmSeqRunning->load() >= 0.5f);
+    chordMachine.setBPM(cachedParams.cmSeqBpm->load());
+    chordMachine.setSwing(cachedParams.cmSeqSwing->load());
+    chordMachine.setGlobalGate(cachedParams.cmSeqGate->load());
     chordMachine.setVelocityCurve(static_cast<VelocityCurve>(
-        static_cast<int>(apvts.getRawParameterValue("cm_vel_curve")->load())));
-    chordMachine.setHumanize(apvts.getRawParameterValue("cm_humanize")->load());
-    chordMachine.setSidechainDuck(apvts.getRawParameterValue("cm_sidechain_duck")->load());
-    chordMachine.setEnoMode(apvts.getRawParameterValue("cm_eno_mode")->load() >= 0.5f);
+        static_cast<int>(cachedParams.cmVelCurve->load())));
+    chordMachine.setHumanize(cachedParams.cmHumanize->load());
+    chordMachine.setSidechainDuck(cachedParams.cmSidechainDuck->load());
+    chordMachine.setEnoMode(cachedParams.cmEnoMode->load() >= 0.5f);
 
     // DAW host transport sync
     if (auto* playHead = getPlayHead())
@@ -297,7 +316,7 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     couplingMatrix.processBlock(numSamples, couplingRoutes);
 
     // Mix all engine outputs to master
-    const float masterVol = apvts.getRawParameterValue("masterVolume")->load();
+    const float masterVol = cachedParams.masterVolume->load();
 
     for (int i = 0; i < MaxSlots; ++i)
     {

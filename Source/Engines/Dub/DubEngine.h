@@ -1240,7 +1240,7 @@ private:
         float n = static_cast<float> (midiNote)
                 + static_cast<float> (octaveOffset) * 12.0f
                 + tuneCents / 100.0f;
-        return 440.0f * std::pow (2.0f, (n - 69.0f) / 12.0f);
+        return 440.0f * fastPow2 ((n - 69.0f) * (1.0f / 12.0f));
     }
 
     //--------------------------------------------------------------------------

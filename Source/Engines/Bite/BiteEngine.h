@@ -2133,7 +2133,7 @@ private:
 
     static float midiToFreq (int note) noexcept
     {
-        return 440.0f * std::pow (2.0f, (static_cast<float> (note) - 69.0f) / 12.0f);
+        return 440.0f * fastPow2 ((static_cast<float> (note) - 69.0f) * (1.0f / 12.0f));
     }
 
     //--------------------------------------------------------------------------

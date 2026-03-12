@@ -83,6 +83,8 @@ namespace GalleryColors {
         if (id == "Oracle")    return juce::Colour(0xFF4B0082); // Prophecy Indigo
         if (id == "Obscura")   return juce::Colour(0xFF8A9BA8); // Daguerreotype Silver
         if (id == "Oceanic")   return juce::Colour(0xFF00B4A0); // Phosphorescent Teal
+        if (id == "Optic")     return juce::Colour(0xFF00FF41); // Phosphor Green
+        if (id == "Oblique")   return juce::Colour(0xFFBF40FF); // Prism Violet
         return get(borderGray());
     }
 
