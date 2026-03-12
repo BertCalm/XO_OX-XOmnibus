@@ -3,6 +3,7 @@
 #include "../Core/PresetManager.h"
 #include "../Core/EngineRegistry.h"
 #include "../Core/MegaCouplingMatrix.h"
+#include "XPNCoverArt.h"
 
 namespace xomnibus {
 
@@ -44,7 +45,9 @@ public:
         juce::String version      = "1.0.0";
         juce::String bundleId;                 // e.g. "com.xo-ox.xomnibus.foundation"
         juce::String description;
+        juce::String coverEngine;              // Engine ID for cover art style (e.g. "ONSET")
         juce::File   outputDir;
+        int          coverSeed    = 0;         // RNG seed for reproducible artwork
     };
 
     //==========================================================================
@@ -141,6 +144,21 @@ public:
 
             result.presetsExported++;
         }
+
+        // Generate cover art (procedural, engine-specific)
+        auto coverEngine = config.coverEngine.isNotEmpty()
+            ? config.coverEngine
+            : (presets.empty() ? juce::String("DEFAULT")
+               : (presets[0].engines.empty() ? juce::String("DEFAULT")
+                  : presets[0].engines[0]));
+
+        auto coverResult = XPNCoverArt::generate(
+            coverEngine, config.name, bundleDir,
+            result.presetsExported, config.version, config.coverSeed);
+
+        // Copy 1000x1000 as Preview.png (MPC convention)
+        if (coverResult.success)
+            coverResult.cover1000.copyFileTo(bundleDir.getChildFile("Preview.png"));
 
         // Write bundle manifest
         writeManifest(bundleDir, config, result.presetsExported);

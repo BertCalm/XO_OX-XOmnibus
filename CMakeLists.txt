@@ -96,6 +96,7 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Oceanic/OceanicEngine.cpp
 
     # Export pipeline
+    Source/Export/XPNCoverArt.h
     Source/Export/XPNExporter.h
 
     # UI (Gallery Model)
