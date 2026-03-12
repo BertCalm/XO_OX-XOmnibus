@@ -14,7 +14,8 @@
     "mine-skills",
     "meta-mine",
     "discover-skills",
-    "optimize-chains"
+    "optimize-chains",
+    "toolbox"
   ],
   "context": [
     "skill-mining",
