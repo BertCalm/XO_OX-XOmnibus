@@ -316,7 +316,9 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         int fadeSamples = std::min(numSamples, cf.fadeSamplesRemaining);
         if (fadeSamples <= 0)
             continue;
-        float fadeStep = cf.fadeGain / static_cast<float>(fadeSamples);
+        // Distribute fade over ALL remaining samples, not just this block,
+        // so the crossfade takes the full 50ms regardless of block size.
+        float fadeStep = cf.fadeGain / static_cast<float>(cf.fadeSamplesRemaining);
 
         for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
         {

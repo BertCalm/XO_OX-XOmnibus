@@ -509,7 +509,7 @@ public:
         : processor(proc), slot(slotIndex)
     {
         refresh();
-        startTimerHz(20); // poll voice count at 20Hz
+        startTimerHz(10); // poll voice count at 10Hz (sufficient for visual feedback)
     }
 
     ~CompactEngineTile() override { stopTimer(); }
@@ -1424,7 +1424,7 @@ public:
                 p->setValueNotifyingHost (enoBtn.getToggleState() ? 1.0f : 0.0f);
         };
 
-        startTimerHz (15);
+        startTimerHz (10);  // Reduced from 15Hz — sufficient for step highlighting
     }
 
     ~ChordMachinePanel() override { stopTimer(); }
@@ -1585,7 +1585,17 @@ public:
     }
 
 private:
-    void timerCallback() override { repaint(); }
+    void timerCallback() override
+    {
+        // Only repaint when sequencer step changes (avoids full redraw at 10Hz)
+        int step = processor.getChordMachine().getCurrentStep();
+        if (step != lastPaintedStep)
+        {
+            lastPaintedStep = step;
+            repaint();
+        }
+    }
+    int lastPaintedStep = -1;
 
     static constexpr int kTopBarH = 30;
     static constexpr int kStripH  = 80;
@@ -1811,22 +1821,27 @@ private:
 
         auto& anim = juce::Desktop::getInstance().getAnimator();
 
+        // SafePointer prevents crash if editor is destroyed during animation
+        juce::Component::SafePointer<XOmnibusEditor> safeThis(this);
+
         if (detail.isVisible())
         {
             // Cross-fade: fade out → swap → fade in
             anim.fadeOut(&detail, kFadeMs);
-            juce::Timer::callAfterDelay(kFadeMs, [this, slot]
+            juce::Timer::callAfterDelay(kFadeMs, [safeThis, slot]
             {
-                if (detail.loadSlot(slot))
+                if (safeThis == nullptr) return;
+                auto& self = *safeThis;
+                if (self.detail.loadSlot(slot))
                 {
-                    overview.setVisible(false);
-                    detail.setAlpha(0.0f);
-                    detail.setVisible(true);
-                    juce::Desktop::getInstance().getAnimator().fadeIn(&detail, kFadeMs);
+                    self.overview.setVisible(false);
+                    self.detail.setAlpha(0.0f);
+                    self.detail.setVisible(true);
+                    juce::Desktop::getInstance().getAnimator().fadeIn(&self.detail, kFadeMs);
                 }
                 else
                 {
-                    showOverview();
+                    self.showOverview();
                 }
             });
         }
@@ -1834,19 +1849,21 @@ private:
         {
             // Fade out overview, fade in detail
             anim.fadeOut(&overview, kFadeMs);
-            juce::Timer::callAfterDelay(kFadeMs, [this, slot]
+            juce::Timer::callAfterDelay(kFadeMs, [safeThis, slot]
             {
-                if (detail.loadSlot(slot))
+                if (safeThis == nullptr) return;
+                auto& self = *safeThis;
+                if (self.detail.loadSlot(slot))
                 {
-                    overview.setVisible(false);
-                    detail.setAlpha(0.0f);
-                    detail.setVisible(true);
-                    juce::Desktop::getInstance().getAnimator().fadeIn(&detail, kFadeMs);
+                    self.overview.setVisible(false);
+                    self.detail.setAlpha(0.0f);
+                    self.detail.setVisible(true);
+                    juce::Desktop::getInstance().getAnimator().fadeIn(&self.detail, kFadeMs);
                 }
                 else
                 {
-                    overview.setAlpha(1.0f);
-                    overview.setVisible(true);
+                    self.overview.setAlpha(1.0f);
+                    self.overview.setVisible(true);
                 }
             });
         }
@@ -1865,13 +1882,16 @@ private:
                                   : nullptr;
         if (outgoing)
         {
+            juce::Component::SafePointer<XOmnibusEditor> safeThis(this);
+            juce::Component::SafePointer<juce::Component> safeOutgoing(outgoing);
             anim.fadeOut(outgoing, kFadeMs);
-            juce::Timer::callAfterDelay(kFadeMs, [this, outgoing]
+            juce::Timer::callAfterDelay(kFadeMs, [safeThis, safeOutgoing]
             {
-                outgoing->setVisible(false);
-                overview.setAlpha(0.0f);
-                overview.setVisible(true);
-                juce::Desktop::getInstance().getAnimator().fadeIn(&overview, kFadeMs);
+                if (safeThis == nullptr) return;
+                if (safeOutgoing != nullptr) safeOutgoing->setVisible(false);
+                safeThis->overview.setAlpha(0.0f);
+                safeThis->overview.setVisible(true);
+                juce::Desktop::getInstance().getAnimator().fadeIn(&safeThis->overview, kFadeMs);
             });
         }
     }
@@ -1888,13 +1908,16 @@ private:
                                   : nullptr;
         if (outgoing)
         {
+            juce::Component::SafePointer<XOmnibusEditor> safeThis(this);
+            juce::Component::SafePointer<juce::Component> safeOutgoing(outgoing);
             anim.fadeOut(outgoing, kFadeMs);
-            juce::Timer::callAfterDelay(kFadeMs, [this, outgoing]
+            juce::Timer::callAfterDelay(kFadeMs, [safeThis, safeOutgoing]
             {
-                outgoing->setVisible(false);
-                chordPanel.setAlpha(0.0f);
-                chordPanel.setVisible(true);
-                juce::Desktop::getInstance().getAnimator().fadeIn(&chordPanel, kFadeMs);
+                if (safeThis == nullptr) return;
+                if (safeOutgoing != nullptr) safeOutgoing->setVisible(false);
+                safeThis->chordPanel.setAlpha(0.0f);
+                safeThis->chordPanel.setVisible(true);
+                juce::Desktop::getInstance().getAnimator().fadeIn(&safeThis->chordPanel, kFadeMs);
             });
         }
         else
