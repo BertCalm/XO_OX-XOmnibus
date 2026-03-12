@@ -32,7 +32,7 @@ namespace GalleryColors {
     namespace Dark {
         constexpr uint32_t shellWhite = 0xFF1A1A1A;    // near-black background
         constexpr uint32_t textDark   = 0xFFEEEEEE;    // off-white primary text
-        constexpr uint32_t textMid    = 0xFFB0B0B0;    // secondary text
+        constexpr uint32_t textMid    = 0xFFC8C8C8;    // secondary text (raised for WCAG AA on dark bg)
         constexpr uint32_t borderGray = 0xFF4A4A4A;    // borders
         constexpr uint32_t slotBg     = 0xFF2D2D2D;    // cards/panels
         constexpr uint32_t emptySlot  = 0xFF363636;    // empty slot background
@@ -416,6 +416,12 @@ public:
     // Avoids calling getRoutes() (which copies a vector) inside paint().
     void refresh()
     {
+        cachedActiveEngines.clear();
+        for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
+        {
+            auto* eng = processor.getEngine(i);
+            if (eng) cachedActiveEngines.push_back({eng->getEngineId(), eng->getAccentColour()});
+        }
         cachedRoutes = processor.getCouplingMatrix().getRoutes();
         repaint();
     }
@@ -448,13 +454,8 @@ public:
                    b.withY(instrY).withHeight(20.0f).toNearestInt(),
                    juce::Justification::centred);
 
-        // Active engine chain
-        std::vector<std::pair<juce::String, juce::Colour>> active;
-        for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
-        {
-            auto* eng = processor.getEngine(i);
-            if (eng) active.push_back({eng->getEngineId(), eng->getAccentColour()});
-        }
+        // Active engine chain (cached in refresh() — no allocation in paint())
+        const auto& active = cachedActiveEngines;
 
         if (active.empty())
         {
@@ -577,7 +578,8 @@ public:
 
 private:
     XOmnibusProcessor& processor;
-    // Cached coupling routes — updated in refresh(), never in paint()
+    // Cached state — updated in refresh(), never in paint()
+    std::vector<std::pair<juce::String, juce::Colour>> cachedActiveEngines;
     std::vector<MegaCouplingMatrix::CouplingRoute> cachedRoutes;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OverviewPanel)
 };
@@ -1029,7 +1031,7 @@ private:
         juce::CallOutBox::launchAsynchronously(
             std::make_unique<AdvancedFXPanel>(myApvts),
             advBtn.getScreenBounds(),
-            nullptr);
+            getTopLevelComponent());
     }
 
     juce::AudioProcessorValueTreeState& myApvts;
@@ -1393,7 +1395,7 @@ private:
         juce::CallOutBox::launchAsynchronously(
             std::make_unique<PresetBrowserPanel>(pm, std::move(onSelect)),
             browseBtn.getScreenBounds(),
-            nullptr);
+            getTopLevelComponent());
     }
 
     XOmnibusProcessor& processor;

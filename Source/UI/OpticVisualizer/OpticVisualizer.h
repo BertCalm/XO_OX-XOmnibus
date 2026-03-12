@@ -321,8 +321,8 @@ private:
             {
                 float burstAngle = std::atan2 (p.y - cy, p.x - cx);
                 float burstForce = f.pulse * 3.0f;
-                p.vx += std::cos (burstAngle) * burstForce;
-                p.vy += std::sin (burstAngle) * burstForce;
+                p.vx += fastCos (burstAngle) * burstForce;
+                p.vy += fastSin (burstAngle) * burstForce;
             }
 
             // Friction
@@ -404,14 +404,20 @@ private:
 
     void resetParticles()
     {
-        // Seed particles in a centered cluster
+        // Seed particles in a centered cluster relative to component bounds
+        auto b = getLocalBounds().toFloat();
+        float cx = b.getWidth()  > 0 ? b.getCentreX() : 400.0f;
+        float cy = b.getHeight() > 0 ? b.getCentreY() : 200.0f;
+        float hw = b.getWidth()  > 0 ? b.getWidth()  * 0.25f : 200.0f;
+        float hh = b.getHeight() > 0 ? b.getHeight() * 0.25f : 100.0f;
+
         uint32_t seed = 12345;
         for (auto& p : particles)
         {
             seed ^= seed << 13; seed ^= seed >> 17; seed ^= seed << 5;
-            p.x = 200.0f + (float)(seed % 400);
+            p.x = cx - hw + (float)(seed % (uint32_t)(hw * 2.0f + 1.0f));
             seed ^= seed << 13; seed ^= seed >> 17; seed ^= seed << 5;
-            p.y = 100.0f + (float)(seed % 200);
+            p.y = cy - hh + (float)(seed % (uint32_t)(hh * 2.0f + 1.0f));
             p.vx = 0.0f;
             p.vy = 0.0f;
             seed ^= seed << 13; seed ^= seed >> 17; seed ^= seed << 5;
