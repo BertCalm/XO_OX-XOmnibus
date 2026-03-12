@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "name": "Velvet Engine",
+  "author": "XO_OX",
+  "description": "Warm analog-feel poly synth. OddOscar morphing oscillators paired with Overdub's tape character. Gentle Vibe sweetening, transient softening, and psychoacoustic width for a sound that feels like a classic being played through the best gear.",
+  "mood": "Foundation",
+  "tags": ["poly", "warm", "analog", "keys", "classic"],
+  "created": "2026-03-12",
+  "suggestedBPM": 0,
+  "engines": [
+    {
+      "id": "OddOscar",
+      "parameters": {
+        "morph_scanPos": 0.35,
+        "morph_waveBlend": 0.5,
+        "morph_subLevel": 0.3,
+        "morph_filterCutoff": 3500.0,
+        "morph_filterRes": 0.2,
+        "morph_filterEnvAmount": 0.4,
+        "morph_envFilterDecay": 500.0,
+        "morph_ampAttack": 8.0,
+        "morph_ampDecay": 800.0,
+        "morph_ampSustain": 0.75,
+        "morph_ampRelease": 400.0
+      }
+    },
+    {
+      "id": "Overdub",
+      "parameters": {
+        "dub_sendAmount": 0.3,
+        "dub_tapeSpeed": 0.5,
+        "dub_tapeWobble": 0.15,
+        "dub_filterCutoff": 4000.0,
+        "dub_saturation": 0.2,
+        "dub_ampAttack": 10.0,
+        "dub_ampSustain": 0.7,
+        "dub_ampRelease": 500.0
+      }
+    }
+  ],
+  "coupling": [
+    {
+      "sourceSlot": 0,
+      "destSlot": 1,
+      "type": "WaveInject",
+      "intensity": 0.2,
+      "params": {
+        "injectBlend": 0.3
+      }
+    }
+  ],
+  "masterFX": {
+    "master_vibeAmount": -0.35,
+    "master_tiltAmount": -0.1,
+    "master_tdAttack": -0.2,
+    "master_tdSustain": 0.15,
+    "master_tdMix": 0.4,
+    "master_reverbSize": 0.35,
+    "master_reverbMix": 0.15,
+    "master_modRate": 0.6,
+    "master_modDepth": 0.15,
+    "master_modMix": 0.3,
+    "master_modMode": 3,
+    "master_sculLowWidth": 0.0,
+    "master_sculMidWidth": 1.1,
+    "master_sculHighWidth": 1.4,
+    "master_sculMix": 0.5,
+    "master_pwidthAmount": 0.2,
+    "master_pwidthHaas": 12.0,
+    "master_pwidthMix": 0.35,
+    "master_compRatio": 2.5,
+    "master_compAttack": 15.0,
+    "master_compRelease": 120.0,
+    "master_compMix": 0.4
+  },
+  "macros": [
+    {
+      "label": "CHARACTER",
+      "targets": ["morph_scanPos", "morph_waveBlend", "master_vibeAmount"],
+      "ranges": [0.4, 0.3, -0.3]
+    },
+    {
+      "label": "WARMTH",
+      "targets": ["master_tiltAmount", "dub_saturation", "master_vibeAmount"],
+      "ranges": [-0.3, 0.3, -0.2]
+    },
+    {
+      "label": "TAPE",
+      "targets": ["dub_sendAmount", "dub_tapeWobble", "dub_saturation"],
+      "ranges": [0.4, 0.2, 0.3]
+    },
+    {
+      "label": "SPACE",
+      "targets": ["master_reverbMix", "master_pwidthAmount", "master_sculMix"],
+      "ranges": [0.3, 0.3, 0.3]
+    }
+  ],
+  "variationAxis": {
+    "label": "Vintage",
+    "targets": ["master_vibeAmount", "dub_tapeWobble", "master_tiltAmount"],
+    "minValues": [-0.1, 0.05, 0.0],
+    "maxValues": [-0.6, 0.4, -0.3]
+  },
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.85,
+    "movement": 0.3,
+    "density": 0.5,
+    "space": 0.4,
+    "aggression": 0.05
+  },
+  "extensions": []
+}

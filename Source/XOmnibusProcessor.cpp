@@ -326,10 +326,10 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_seqTarget1", 1), "Master Seq Target 1",
-        juce::NormalisableRange<float>(0.0f, 14.0f, 1.0f), 0.0f));
+        juce::NormalisableRange<float>(0.0f, 15.0f, 1.0f), 0.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_seqTarget2", 1), "Master Seq Target 2",
-        juce::NormalisableRange<float>(0.0f, 14.0f, 1.0f), 0.0f));
+        juce::NormalisableRange<float>(0.0f, 15.0f, 1.0f), 0.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_seqPattern", 1), "Master Seq Pattern",
         juce::NormalisableRange<float>(0.0f, 7.0f, 1.0f), 0.0f));
@@ -340,7 +340,12 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         juce::ParameterID("master_seqEnvAmount", 1), "Master Seq Env Amount",
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
-    // Stage 3: Spectral Tilt
+    // Stage 3: Vibe Knob (bipolar: -1 sweet, +1 grit)
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_vibeAmount", 1), "Master Vibe",
+        juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
+
+    // Stage 4: Spectral Tilt
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_tiltAmount", 1), "Master Tilt Amount",
         juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));

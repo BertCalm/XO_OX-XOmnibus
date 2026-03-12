@@ -71,6 +71,7 @@ public:
         ExciterDrive,      // Harmonic exciter drive
         StereoWidth,       // Stereo sculptor mid width
         PsychoWidth,       // Psychoacoustic widener width
+        VibeKnob,          // Vibe knob (bipolar grit/sweet)
         NumTargets
     };
 

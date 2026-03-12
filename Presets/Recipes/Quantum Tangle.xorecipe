@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "name": "Quantum Tangle",
+  "author": "XO_OX",
+  "description": "Four engines deeply cross-modulated into something none of them could produce alone. OddfeliX and Oblong ring-mod through Oceanic spectral processing, with Orbital additive partials providing harmonic scaffolding. The sequencer rhythmically sweeps coupling intensity for evolving entanglement.",
+  "mood": "Entangled",
+  "tags": ["experimental", "complex", "evolving", "deep", "generative"],
+  "created": "2026-03-12",
+  "suggestedBPM": 100,
+  "engines": [
+    {
+      "id": "OddfeliX",
+      "parameters": {
+        "snap_filterCutoff": 2000.0,
+        "snap_filterRes": 0.35,
+        "snap_oscShape": 0.4,
+        "snap_ampAttack": 50.0,
+        "snap_ampDecay": 1000.0,
+        "snap_ampSustain": 0.6,
+        "snap_ampRelease": 1500.0
+      }
+    },
+    {
+      "id": "Oblong",
+      "parameters": {
+        "bob_fltCutoff": 1500.0,
+        "bob_fltRes": 0.4,
+        "bob_oscDetune": 0.12,
+        "bob_ampAttack": 100.0,
+        "bob_ampDecay": 800.0,
+        "bob_ampSustain": 0.5,
+        "bob_ampRelease": 1200.0
+      }
+    },
+    {
+      "id": "Oceanic",
+      "parameters": {
+        "oceanic_separation": 0.5,
+        "oceanic_spectralShift": 0.3,
+        "oceanic_filterCutoff": 4000.0,
+        "oceanic_ampAttack": 200.0,
+        "oceanic_ampSustain": 0.7,
+        "oceanic_ampRelease": 2000.0
+      }
+    },
+    {
+      "id": "Orbital",
+      "parameters": {
+        "orbital_partialTilt": 0.4,
+        "orbital_partialCount": 12,
+        "orbital_partialSpread": 0.6,
+        "orbital_filterCutoff": 5000.0,
+        "orbital_ampAttack": 300.0,
+        "orbital_ampSustain": 0.6,
+        "orbital_ampRelease": 2500.0
+      }
+    }
+  ],
+  "coupling": [
+    {
+      "sourceSlot": 0,
+      "destSlot": 1,
+      "type": "RingMod",
+      "intensity": 0.35,
+      "params": {}
+    },
+    {
+      "sourceSlot": 1,
+      "destSlot": 2,
+      "type": "WaveInject",
+      "intensity": 0.3,
+      "params": {}
+    },
+    {
+      "sourceSlot": 2,
+      "destSlot": 0,
+      "type": "FilterMod",
+      "intensity": 0.25,
+      "params": {}
+    },
+    {
+      "sourceSlot": 3,
+      "destSlot": 0,
+      "type": "PitchMod",
+      "intensity": 0.1,
+      "params": {}
+    },
+    {
+      "sourceSlot": 3,
+      "destSlot": 2,
+      "type": "AmpMod",
+      "intensity": 0.15,
+      "params": {}
+    }
+  ],
+  "masterFX": {
+    "master_vibeAmount": 0.15,
+    "master_tiltAmount": 0.1,
+    "master_fshiftHz": 3.5,
+    "master_fshiftMix": 0.2,
+    "master_fshiftMode": 0,
+    "master_combMix": 0.15,
+    "master_combFreq": 330.0,
+    "master_combFeedback": 0.7,
+    "master_combDamping": 0.4,
+    "master_reverbSize": 0.5,
+    "master_reverbMix": 0.25,
+    "master_modRate": 0.4,
+    "master_modDepth": 0.25,
+    "master_modMix": 0.35,
+    "master_sculMix": 0.6,
+    "master_sculLowWidth": 0.3,
+    "master_sculMidWidth": 1.5,
+    "master_sculHighWidth": 1.7,
+    "master_smearAmount": 0.1,
+    "master_smearMix": 0.2,
+    "master_seqEnabled": 1.0,
+    "master_seqRate": 2,
+    "master_seqSteps": 12,
+    "master_seqDepth": 0.4,
+    "master_seqSmooth": 0.5,
+    "master_seqTarget1": 3,
+    "master_seqTarget2": 5,
+    "master_seqPattern": 3
+  },
+  "macros": [
+    {
+      "label": "ENTANGLE",
+      "targets": ["master_seqDepth", "master_fshiftHz", "master_combMix"],
+      "ranges": [0.4, 8.0, 0.3]
+    },
+    {
+      "label": "MORPH",
+      "targets": ["snap_oscShape", "bob_oscDetune", "oceanic_spectralShift"],
+      "ranges": [0.5, 0.15, 0.4]
+    },
+    {
+      "label": "ORBIT",
+      "targets": ["orbital_partialTilt", "orbital_partialSpread", "master_modDepth"],
+      "ranges": [0.4, 0.3, 0.4]
+    },
+    {
+      "label": "DISSOLVE",
+      "targets": ["master_smearAmount", "master_reverbMix", "master_smearMix"],
+      "ranges": [0.5, 0.4, 0.4]
+    }
+  ],
+  "variationAxis": {
+    "label": "Entanglement",
+    "targets": ["master_seqDepth", "master_fshiftMix", "master_combMix"],
+    "minValues": [0.1, 0.05, 0.0],
+    "maxValues": [0.8, 0.5, 0.4]
+  },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.4,
+    "movement": 0.85,
+    "density": 0.7,
+    "space": 0.5,
+    "aggression": 0.35
+  },
+  "extensions": []
+}

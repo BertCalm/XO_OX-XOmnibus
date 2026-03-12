@@ -1,6 +1,7 @@
 #pragma once
 #include "../DSP/Effects/Saturator.h"
 #include "../DSP/Effects/Corroder.h"
+#include "../DSP/Effects/VibeKnob.h"
 #include "../DSP/Effects/SpectralTilt.h"
 #include "../DSP/Effects/TransientDesigner.h"
 #include "../DSP/Effects/MasterDelay.h"
@@ -24,27 +25,28 @@ namespace xomnibus {
 //==============================================================================
 // MasterFXChain — Post-mix master effects for XOmnibus.
 //
-// Signal chain (17 stages, fixed order):
+// Signal chain (18 stages, fixed order):
 //   1.  Saturation        — Tape/Tube/Digital/FoldBack via Saturator (mode select)
 //   2.  Corroder          — Digital erosion: bitcrush + SR reduce + FM distortion
-//   3.  Spectral Tilt     — Cascaded shelving: shift spectral energy up/down
-//   4.  Transient Designer— Attack/sustain shaping via envelope followers
-//   5.  Stereo Delay      — Spatial echo with diffusion, autoclear, tape feedback
-//   6.  Combulator        — Tuned comb bank with noise exciter (pitched resonance)
-//   7.  Doppler           — Distance-based filtering + pitch micro-shift + level
-//   8.  Space Reverb      — Algorithmic reverb (Schroeder-Moorer)
-//   9.  Freq Shifter      — Hilbert transform frequency shifter (metallic/alien)
-//   10. Modulation FX     — Chorus/Flanger/Ensemble/Drift
-//   11. Granular Smear    — Micro-granular buffer: transients → texture
-//   12. Harmonic Exciter  — Parallel HF saturation for air & presence
-//   13. Stereo Sculptor   — M/S frequency-dependent stereo field shaping
-//   14. Psychoacoustic Width — Haas + complementary comb decorrelation
-//   15. Multiband OTT     — 3-band upward+downward compression
-//   16. Bus Compressor    — Single-band output glue (parallel blend)
-//   17. Sequenced Mod     — Rhythmic parameter animation (non-audio)
+//   3.  Vibe Knob         — Bipolar character: GRIT(+) ←→ SWEET(−) in one dial
+//   4.  Spectral Tilt     — Cascaded shelving: shift spectral energy up/down
+//   5.  Transient Designer— Attack/sustain shaping via envelope followers
+//   6.  Stereo Delay      — Spatial echo with diffusion, autoclear, tape feedback
+//   7.  Combulator        — Tuned comb bank with noise exciter (pitched resonance)
+//   8.  Doppler           — Distance-based filtering + pitch micro-shift + level
+//   9.  Space Reverb      — Algorithmic reverb (Schroeder-Moorer)
+//   10. Freq Shifter      — Hilbert transform frequency shifter (metallic/alien)
+//   11. Modulation FX     — Chorus/Flanger/Ensemble/Drift
+//   12. Granular Smear    — Micro-granular buffer: transients → texture
+//   13. Harmonic Exciter  — Parallel HF saturation for air & presence
+//   14. Stereo Sculptor   — M/S frequency-dependent stereo field shaping
+//   15. Psychoacoustic Width — Haas + complementary comb decorrelation
+//   16. Multiband OTT     — 3-band upward+downward compression
+//   17. Bus Compressor    — Single-band output glue (parallel blend)
+//   18. Sequenced Mod     — Rhythmic parameter animation (non-audio)
 //
 // All stages bypass at zero CPU when their mix/depth/enable = 0.
-// Sequencer modulates stages 1-16 parameters rhythmically (14 targets).
+// Sequencer modulates stages 1-17 parameters rhythmically (15 targets).
 //==============================================================================
 class MasterFXChain
 {
@@ -66,7 +68,10 @@ public:
         // Stage 2: Corroder
         corroder.prepare (sampleRate);
 
-        // Stage 3: Spectral Tilt
+        // Stage 3: Vibe Knob
+        vibeKnob.prepare (sampleRate);
+
+        // Stage 4: Spectral Tilt
         spectralTilt.prepare (sampleRate);
 
         // Stage 4: Transient Designer
@@ -146,7 +151,10 @@ public:
         const float corrFM       = pCorrFM       ? pCorrFM->load()       : 0.0f;
         const float corrTone     = pCorrTone     ? pCorrTone->load()     : 1.0f;
 
-        // Stage 3: Spectral Tilt
+        // Stage 3: Vibe Knob
+        const float vibeAmount   = pVibeAmount   ? pVibeAmount->load()   : 0.0f;
+
+        // Stage 4: Spectral Tilt
         const float tiltAmount   = pTiltAmount   ? pTiltAmount->load()   : 0.0f;
         const float tiltMix      = pTiltMix      ? pTiltMix->load()      : 1.0f;
 
@@ -331,7 +339,26 @@ public:
         }
 
         // ====================================================================
-        // Stage 3: Spectral Tilt
+        // Stage 3: Vibe Knob (GRIT ←→ SWEET)
+        // ====================================================================
+        float effectiveVibe = vibeAmount;
+        {
+            float vibeOffset = 0.0f;
+            if (sequencer.getTarget1() == MasterFXSequencer::Target::VibeKnob)
+                vibeOffset += seqMod1;
+            if (sequencer.getTarget2() == MasterFXSequencer::Target::VibeKnob)
+                vibeOffset += seqMod2;
+            effectiveVibe = clamp (vibeAmount + vibeOffset * 0.8f, -1.0f, 1.0f);
+        }
+
+        if (std::abs (effectiveVibe) > 0.001f)
+        {
+            vibeKnob.setVibe (effectiveVibe);
+            vibeKnob.processBlock (L, R, numSamples);
+        }
+
+        // ====================================================================
+        // Stage 4: Spectral Tilt
         // ====================================================================
         float effectiveTilt = applySeqModBipolar (tiltAmount,
             MasterFXSequencer::Target::SpectralTilt, 0.8f);
@@ -588,6 +615,7 @@ public:
     {
         saturator.reset();
         corroder.reset();
+        vibeKnob.reset();
         spectralTilt.reset();
         transientDesigner.reset();
         delay.reset();
@@ -619,7 +647,10 @@ private:
         pCorrFM       = apvts.getRawParameterValue ("master_corrFM");
         pCorrTone     = apvts.getRawParameterValue ("master_corrTone");
 
-        // Stage 3: Spectral Tilt
+        // Stage 3: Vibe Knob
+        pVibeAmount   = apvts.getRawParameterValue ("master_vibeAmount");
+
+        // Stage 4: Spectral Tilt
         pTiltAmount   = apvts.getRawParameterValue ("master_tiltAmount");
         pTiltMix      = apvts.getRawParameterValue ("master_tiltMix");
 
@@ -723,7 +754,8 @@ private:
     // DSP processors (17 stages)
     Saturator            saturator;          // 1
     Corroder             corroder;           // 2
-    SpectralTilt         spectralTilt;       // 3
+    VibeKnob             vibeKnob;           // 3
+    SpectralTilt         spectralTilt;       // 4
     TransientDesigner    transientDesigner;  // 4
     MasterDelay          delay;              // 5
     Combulator           combulator;         // 6
@@ -753,7 +785,9 @@ private:
     std::atomic<float>* pCorrSR      = nullptr;
     std::atomic<float>* pCorrFM      = nullptr;
     std::atomic<float>* pCorrTone    = nullptr;
-    // Stage 3: Spectral Tilt
+    // Stage 3: Vibe Knob
+    std::atomic<float>* pVibeAmount  = nullptr;
+    // Stage 4: Spectral Tilt
     std::atomic<float>* pTiltAmount  = nullptr;
     std::atomic<float>* pTiltMix     = nullptr;
     // Stage 4: Transient Designer
