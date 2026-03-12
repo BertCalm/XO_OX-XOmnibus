@@ -535,7 +535,7 @@ public:
 
         if (active.empty())
         {
-            g.setColour(get(textMid()).withAlpha(0.35f));
+            g.setColour(get(textMid()).withAlpha(0.55f));
             g.setFont(GalleryFonts::body(10.0f));
             g.drawText("No engines loaded — use the tiles on the left",
                        b.withY(b.getHeight() * 0.65f).withHeight(20.0f).toNearestInt(),
@@ -631,7 +631,7 @@ public:
                             if (r2.active && &r2 > &route) ++remaining;
                         if (remaining > 0)
                         {
-                            g.setColour(get(textMid()).withAlpha(0.35f));
+                            g.setColour(get(textMid()).withAlpha(0.55f));
                             g.setFont(GalleryFonts::label(8.5f));
                             g.drawText("+ " + juce::String(remaining) + " more route" + (remaining > 1 ? "s" : ""),
                                        b.withY(matY).withHeight(14.0f).toNearestInt(),
@@ -643,7 +643,7 @@ public:
             }
             else
             {
-                g.setColour(get(textMid()).withAlpha(0.3f));
+                g.setColour(get(textMid()).withAlpha(0.55f));
                 g.setFont(GalleryFonts::body(9.0f));
                 g.drawText("No active coupling routes",
                            b.withY(chainY + pillH * 0.5f + 10.0f).withHeight(16.0f).toNearestInt(),
@@ -761,7 +761,7 @@ public:
         }
         else
         {
-            g.setColour(get(textMid()).withAlpha(0.3f));
+            g.setColour(get(textMid()).withAlpha(0.55f));
             g.setFont(GalleryFonts::body(9.0f));
             g.drawText("SLOT " + juce::String(slot + 1) + " — empty",
                        b.toNearestInt(), juce::Justification::centred);
@@ -1269,7 +1269,7 @@ public:
         if (!preset.engines.isEmpty() && preset.engines[0].isNotEmpty())
         {
             auto tag = preset.engines[0].substring(0, juce::jmin(3, preset.engines[0].length())).toUpperCase();
-            g.setColour(get(textMid()).withAlpha(0.30f));
+            g.setColour(get(textMid()).withAlpha(0.50f));
             g.setFont(GalleryFonts::label(7.5f));
             g.drawText(tag, w - 28, 0, 26, h, juce::Justification::centredRight);
         }
