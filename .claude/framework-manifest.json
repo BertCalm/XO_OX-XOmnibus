@@ -13,7 +13,8 @@
     "log-session",
     "mine-skills",
     "meta-mine",
-    "discover-skills"
+    "discover-skills",
+    "optimize-chains"
   ],
   "context": [
     "skill-mining",

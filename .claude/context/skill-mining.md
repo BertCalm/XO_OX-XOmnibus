@@ -29,6 +29,7 @@ A three-layer system for externalizing development expertise into callable, reus
 | `/mine-skills` | Analyze journal for framework candidates | Periodic (weekly or 10+ entries) |
 | `/meta-mine` | Cross-repo pattern analysis | 2+ projects with journals |
 | `/discover-skills` | Surface adjacent skills you might need | During or before a task |
+| `/optimize-chains` | Find chain opportunities and improvements | After mining or monthly review |
 
 ## Available Primitives
 
