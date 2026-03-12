@@ -1,6 +1,7 @@
 #pragma once
 #include <juce_gui_extra/juce_gui_extra.h>
 #include "../../Engines/Optic/OpticEngine.h"
+#include "../../DSP/FastMath.h"
 #include <array>
 #include <cmath>
 
@@ -160,7 +161,7 @@ private:
                 float yPos = cy + val * h * (0.5f + f.energy * 0.5f);
 
                 // Add Lissajous-like wobble
-                float wobble = std::sin (t * 6.28f * (1.0f + f.centroid * 2.0f)
+                float wobble = fastSin (t * 6.28f * (1.0f + f.centroid * 2.0f)
                                         + frameCount * speed * 0.05f) * h * 0.1f * f.energy;
                 yPos += wobble;
 
@@ -257,9 +258,9 @@ private:
             {
                 float u = (float)i / pts * 6.283f;
                 float r = radius * energyScale
-                         * (0.6f + 0.4f * std::sin (u * 3.0f + t * 0.5f));
-                float x = cx + r * std::sin (aFreq * u + phase);
-                float y = cy + r * std::cos (bFreq * u + phase * 0.7f);
+                         * (0.6f + 0.4f * fastSin (u * 3.0f + t * 0.5f));
+                float x = cx + r * fastSin (aFreq * u + phase);
+                float y = cy + r * fastCos (bFreq * u + phase * 0.7f);
 
                 if (i == 0) curve.startNewSubPath (x, y);
                 else curve.lineTo (x, y);
@@ -283,8 +284,8 @@ private:
             {
                 float angle = (float)i / nBurst * 6.283f + t;
                 float dist = radius * 0.3f * (0.5f + f.energy) * ((frameCount * 7 + i) % 3 * 0.3f + 0.3f);
-                float px = cx + dist * std::cos (angle);
-                float py = cy + dist * std::sin (angle);
+                float px = cx + dist * fastCos (angle);
+                float py = cy + dist * fastSin (angle);
                 float sz = 2.0f + f.pulse * 4.0f;
                 g.setColour (juce::Colour (kPhosphorGreen).withAlpha (intensity * 0.6f));
                 g.fillEllipse (px - sz * 0.5f, py - sz * 0.5f, sz, sz);
