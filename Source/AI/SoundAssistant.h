@@ -551,8 +551,25 @@ private:
     juce::String buildTextToRecipePrompt (const juce::String& description,
                                          const SynthContext& context) const
     {
+        // Detect mood hint from description for targeted few-shot examples
+        juce::String moodHint;
+        auto descLower = description.toLowerCase();
+        if (descLower.contains ("pad") || descLower.contains ("ambient") || descLower.contains ("atmosphere"))
+            moodHint = "Atmosphere";
+        else if (descLower.contains ("bass") || descLower.contains ("kick") || descLower.contains ("solid"))
+            moodHint = "Foundation";
+        else if (descLower.contains ("chaotic") || descLower.contains ("complex") || descLower.contains ("tangle"))
+            moodHint = "Entangled";
+        else if (descLower.contains ("bright") || descLower.contains ("crystal") || descLower.contains ("prism"))
+            moodHint = "Prism";
+        else if (descLower.contains ("morph") || descLower.contains ("evolv") || descLower.contains ("flux"))
+            moodHint = "Flux";
+        else if (descLower.contains ("ethereal") || descLower.contains ("otherworld") || descLower.contains ("transcend"))
+            moodHint = "Aether";
+
         return buildSystemContext() + "\n\n"
                + buildSchemaContext (context) + "\n\n"
+               + schema.generateFewShotContext (moodHint) + "\n\n"
                + contextToString (context) + "\n\n"
                "User request: \"" + description + "\"\n\n"
                "Generate a complete XOmnibus recipe as JSON with these EXACT fields:\n"
@@ -845,7 +862,7 @@ private:
             result.recipe.dna.aggression  = clampDNA (dnaObj->getProperty ("aggression"));
         }
 
-        // --- Cross-parameter safety rules ---
+        // --- Cross-parameter safety rules (Phase 2) ---
         std::map<juce::String, float> allParams;
         for (const auto& slot : result.recipe.engines)
             for (const auto& [k, v] : slot.parameters)
@@ -864,6 +881,57 @@ private:
                 if (it != safetyResult.correctedParams.end())
                     value = it->second;
             }
+        }
+
+        // --- Silent patch detection (Phase 3 — research Layer 1) ---
+        auto silentCheck = schema.checkSilentPatch (allParams);
+        if (silentCheck.isSilent)
+        {
+            for (const auto& r : silentCheck.reasons)
+                result.validationWarnings.add ("Silent patch: " + r);
+
+            // Auto-fix: set the first engine's level to default
+            if (! result.recipe.engines.empty())
+            {
+                auto* profile = schema.getEngine (result.recipe.engines[0].engineId);
+                if (profile != nullptr)
+                {
+                    for (const auto& p : profile->parameters)
+                    {
+                        if (p.role == AIParamRole::Level)
+                        {
+                            result.recipe.engines[0].parameters[p.paramId] = p.defaultValue;
+                            result.validationWarnings.add (
+                                "Auto-fixed: set " + p.paramId + " to "
+                                + juce::String (p.defaultValue, 2) + " to prevent silent output.");
+                            result.parametersCorrected++;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        // --- DNA vs mood coherence (Phase 4 — research Section 6) ---
+        auto dnaCheck = AIParameterSchema::validateDNAForMood (result.recipe.dna, result.recipe.mood);
+        if (dnaCheck.adjusted)
+        {
+            result.recipe.dna = dnaCheck.correctedDNA;
+            for (const auto& w : dnaCheck.warnings)
+                result.validationWarnings.add (w);
+        }
+
+        // --- Macro target validation (Phase 5 — research: verify macro audibility) ---
+        for (size_t i = 0; i < result.recipe.macros.size(); ++i)
+        {
+            const auto& macro = result.recipe.macros[i];
+            if (macro.label.isEmpty()) continue;
+
+            auto macroCheck = schema.validateMacroTargets (
+                macro.label, macro.targets, macro.ranges, allParams);
+
+            for (const auto& w : macroCheck.warnings)
+                result.validationWarnings.add (w);
         }
 
         result.success = result.recipe.isValid();
@@ -996,6 +1064,131 @@ public:
         if (rawData && len > 0)
             std::memset (rawData, 0, len);
         str = juce::String();
+    }
+};
+
+
+//==============================================================================
+// SmoothedRecipeApplicator — Click-free recipe application.
+//
+// Research Layer 4: "Never apply AI-suggested parameters instantaneously.
+// For parameter jumps > threshold, apply exponential slew with 5-20ms."
+//
+// When the AI generates a recipe and the user hits "Apply", this applies
+// all parameter changes smoothly over a short crossfade to prevent clicks,
+// pops, and zipper noise. Works with the existing 50ms engine hot-swap
+// crossfade for engine changes, and adds parameter-level smoothing for
+// parameter-only changes within the same engine configuration.
+//
+// Usage:
+//   SmoothedRecipeApplicator applicator;
+//   applicator.applySmoothed (recipe, apvts, callbacks, sampleRate);
+//==============================================================================
+class SmoothedRecipeApplicator
+{
+public:
+    /// Crossfade duration in ms for parameter changes
+    static constexpr float kParamCrossfadeMs = 20.0f;
+
+    /// Threshold: jumps smaller than this are applied instantly (no slew needed)
+    static constexpr float kInstantThreshold = 0.05f;
+
+    /// Apply a recipe with smoothed parameter transitions.
+    /// For engine swaps, relies on the existing 50ms crossfade in EngineRegistry.
+    /// For parameter-only changes, applies an exponential ramp on the message thread.
+    static void applySmoothed (const RecipeEngine::Recipe& recipe,
+                                juce::AudioProcessorValueTreeState& apvts,
+                                const RecipeEngine::ApplyCallbacks& callbacks,
+                                const RecipeEngine& recipeEngine,
+                                double sampleRate)
+    {
+        // 1. Capture current values for all parameters that will change
+        std::vector<ParameterTransition> transitions;
+
+        for (const auto& slot : recipe.engines)
+        {
+            for (const auto& [paramId, targetValue] : slot.parameters)
+            {
+                auto* param = apvts.getRawParameterValue (paramId);
+                if (param == nullptr) continue;
+
+                float currentValue = param->load();
+                float delta = std::abs (targetValue - currentValue);
+
+                if (delta < kInstantThreshold)
+                {
+                    // Small change — apply instantly
+                    param->store (targetValue);
+                }
+                else
+                {
+                    // Large change — schedule for smoothed transition
+                    transitions.push_back ({ paramId, param, currentValue, targetValue });
+                }
+            }
+        }
+
+        // 2. Apply engine loading, coupling, and macros via RecipeEngine
+        //    (engine swaps use their own 50ms crossfade)
+        recipeEngine.applyRecipe (recipe, apvts, callbacks);
+
+        // 3. Smooth the large parameter jumps over kParamCrossfadeMs
+        if (! transitions.empty())
+        {
+            int steps = static_cast<int> (kParamCrossfadeMs * sampleRate / 1000.0);
+            steps = juce::jlimit (1, 2048, steps);
+
+            // Use a timer to apply the ramp across multiple message-thread callbacks
+            // Each step moves closer to the target
+            auto transitionsCopy = std::make_shared<std::vector<ParameterTransition>> (
+                std::move (transitions));
+            auto stepRef = std::make_shared<int> (0);
+            int totalSteps = steps;
+
+            // Schedule parameter ramp via callAsync (runs on message thread)
+            rampParameters (transitionsCopy, stepRef, totalSteps, 0);
+        }
+    }
+
+private:
+    struct ParameterTransition
+    {
+        juce::String paramId;
+        std::atomic<float>* paramPtr;
+        float startValue;
+        float endValue;
+    };
+
+    static void rampParameters (std::shared_ptr<std::vector<ParameterTransition>> transitions,
+                                 std::shared_ptr<int> currentStep,
+                                 int totalSteps,
+                                 int step)
+    {
+        if (step >= totalSteps)
+        {
+            // Final step: set exact target values
+            for (auto& t : *transitions)
+                t.paramPtr->store (t.endValue);
+            return;
+        }
+
+        // Exponential ease-out curve for natural-feeling parameter movement
+        float progress = static_cast<float> (step + 1) / static_cast<float> (totalSteps);
+        float eased = 1.0f - std::pow (1.0f - progress, 3.0f); // Cubic ease-out
+
+        for (auto& t : *transitions)
+        {
+            float value = t.startValue + (t.endValue - t.startValue) * eased;
+            t.paramPtr->store (value);
+        }
+
+        // Schedule next step (~1ms per step)
+        int nextStep = step + 1;
+        juce::MessageManager::callAsync (
+            [transitions, currentStep, totalSteps, nextStep]()
+            {
+                rampParameters (transitions, currentStep, totalSteps, nextStep);
+            });
     }
 };
 

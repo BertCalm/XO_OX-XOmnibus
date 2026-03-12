@@ -401,6 +401,252 @@ public:
     }
 
     //--------------------------------------------------------------------------
+    // Advanced validation (research-backed)
+
+    /// Check for "silent patch" — a preset that produces no audible output.
+    /// Research Layer 1: detect zero-output configurations before they reach audio.
+    struct SilentPatchCheck
+    {
+        bool isSilent = false;
+        juce::StringArray reasons;
+    };
+
+    SilentPatchCheck checkSilentPatch (const std::map<juce::String, float>& params) const
+    {
+        SilentPatchCheck result;
+
+        // Check all engines for zero level
+        bool anyEngineAudible = false;
+        for (const auto& [engineId, profile] : engineProfiles)
+        {
+            for (const auto& p : profile.parameters)
+            {
+                if (p.role == AIParamRole::Level)
+                {
+                    auto it = params.find (p.paramId);
+                    if (it != params.end() && it->second > 0.01f)
+                    {
+                        anyEngineAudible = true;
+                        break;
+                    }
+                }
+            }
+            if (anyEngineAudible) break;
+        }
+
+        if (! anyEngineAudible && ! params.empty())
+        {
+            // Check if any level-like params were set at all
+            bool hasLevelParams = false;
+            for (const auto& [id, profile] : engineProfiles)
+                for (const auto& p : profile.parameters)
+                    if (p.role == AIParamRole::Level)
+                        if (params.count (p.paramId))
+                            hasLevelParams = true;
+
+            if (hasLevelParams)
+            {
+                result.isSilent = true;
+                result.reasons.add ("All engine output levels are at or near zero.");
+            }
+        }
+
+        return result;
+    }
+
+    /// Validate Sonic DNA matches the described intent.
+    /// Research Section 6: "if user asks for warm, constrain brightness"
+    /// Returns warnings if DNA values contradict the mood category.
+    struct DNAValidation
+    {
+        bool adjusted = false;
+        RecipeEngine::Recipe::SonicDNA correctedDNA;
+        juce::StringArray warnings;
+    };
+
+    static DNAValidation validateDNAForMood (const RecipeEngine::Recipe::SonicDNA& dna,
+                                              const juce::String& mood)
+    {
+        DNAValidation result;
+        result.correctedDNA = dna;
+
+        // Mood-appropriate DNA bounds (research: constrain perceptual space by intent)
+        // These are soft guidelines — warn but don't hard-override
+        struct DNABounds
+        {
+            float minBrightness = 0, maxBrightness = 1;
+            float minWarmth = 0, maxWarmth = 1;
+            float minMovement = 0, maxMovement = 1;
+            float minDensity = 0, maxDensity = 1;
+            float minSpace = 0, maxSpace = 1;
+            float minAggression = 0, maxAggression = 1;
+        };
+
+        DNABounds bounds;
+
+        if (mood == "Foundation")
+        {
+            // Foundation = solid, grounded, reliable
+            bounds.minWarmth = 0.3f;
+            bounds.maxAggression = 0.5f;
+            bounds.maxMovement = 0.6f;
+        }
+        else if (mood == "Atmosphere")
+        {
+            // Atmosphere = spacious, evolving, ambient
+            bounds.minSpace = 0.4f;
+            bounds.minMovement = 0.2f;
+            bounds.maxAggression = 0.4f;
+        }
+        else if (mood == "Entangled")
+        {
+            // Entangled = complex, interwoven, dense
+            bounds.minDensity = 0.4f;
+            bounds.minMovement = 0.3f;
+        }
+        else if (mood == "Prism")
+        {
+            // Prism = bright, colorful, refractive
+            bounds.minBrightness = 0.4f;
+        }
+        else if (mood == "Flux")
+        {
+            // Flux = changing, dynamic, restless
+            bounds.minMovement = 0.5f;
+        }
+        else if (mood == "Aether")
+        {
+            // Aether = ethereal, otherworldly, transcendent
+            bounds.minSpace = 0.5f;
+            bounds.maxAggression = 0.3f;
+        }
+
+        auto check = [&] (float& val, float minV, float maxV, const char* name)
+        {
+            if (val < minV)
+            {
+                result.warnings.add (juce::String ("DNA ") + name + " (" + juce::String (val, 2)
+                                     + ") is low for mood '" + mood + "' — expected >= "
+                                     + juce::String (minV, 2) + ". Nudging up.");
+                val = minV;
+                result.adjusted = true;
+            }
+            if (val > maxV)
+            {
+                result.warnings.add (juce::String ("DNA ") + name + " (" + juce::String (val, 2)
+                                     + ") is high for mood '" + mood + "' — expected <= "
+                                     + juce::String (maxV, 2) + ". Nudging down.");
+                val = maxV;
+                result.adjusted = true;
+            }
+        };
+
+        check (result.correctedDNA.brightness, bounds.minBrightness, bounds.maxBrightness, "brightness");
+        check (result.correctedDNA.warmth, bounds.minWarmth, bounds.maxWarmth, "warmth");
+        check (result.correctedDNA.movement, bounds.minMovement, bounds.maxMovement, "movement");
+        check (result.correctedDNA.density, bounds.minDensity, bounds.maxDensity, "density");
+        check (result.correctedDNA.space, bounds.minSpace, bounds.maxSpace, "space");
+        check (result.correctedDNA.aggression, bounds.minAggression, bounds.maxAggression, "aggression");
+
+        return result;
+    }
+
+    /// Verify macro targets are valid continuous parameters (not choices/toggles)
+    /// and that macro range + base value stays within parameter bounds.
+    struct MacroValidation
+    {
+        bool valid = true;
+        juce::StringArray warnings;
+        juce::StringArray droppedTargets;
+    };
+
+    MacroValidation validateMacroTargets (const juce::String& macroLabel,
+                                           const std::vector<juce::String>& targets,
+                                           const std::vector<float>& ranges,
+                                           const std::map<juce::String, float>& currentParams) const
+    {
+        MacroValidation result;
+
+        for (size_t i = 0; i < targets.size(); ++i)
+        {
+            auto* def = getParam (targets[i]);
+            if (def == nullptr) continue;  // Unknown param — can't validate
+
+            // Macros shouldn't target discrete params
+            if (def->type == AIParamType::Choice || def->type == AIParamType::Toggle)
+            {
+                result.warnings.add ("Macro " + macroLabel + " targets '"
+                                     + targets[i] + "' which is a " +
+                                     (def->type == AIParamType::Choice ? "choice" : "toggle")
+                                     + " parameter — macros should target continuous params.");
+                result.droppedTargets.add (targets[i]);
+                result.valid = false;
+            }
+
+            // Check that base value + range doesn't go out of bounds
+            if (i < ranges.size())
+            {
+                float range = ranges[i];
+                auto it = currentParams.find (targets[i]);
+                if (it != currentParams.end())
+                {
+                    float base = it->second;
+                    float atMin = base - std::abs (range) * (def->maxValue - def->minValue);
+                    float atMax = base + std::abs (range) * (def->maxValue - def->minValue);
+
+                    if (atMin < def->minValue || atMax > def->maxValue)
+                    {
+                        result.warnings.add ("Macro " + macroLabel + " range on '"
+                                             + targets[i] + "' may exceed parameter bounds at extremes.");
+                    }
+                }
+            }
+        }
+
+        return result;
+    }
+
+    //--------------------------------------------------------------------------
+    // Few-shot factory preset examples for AI prompts
+    // Research (LLM2Fx): 5-10 examples per mood dramatically improve output quality
+
+    struct FewShotExample
+    {
+        juce::String mood;
+        juce::String description;
+        juce::String recipeSnippet;  // Compact JSON showing engines + key params
+    };
+
+    void addFewShotExample (FewShotExample example)
+    {
+        fewShotExamples.push_back (std::move (example));
+    }
+
+    /// Generate few-shot examples section for a given mood (or all moods if empty)
+    juce::String generateFewShotContext (const juce::String& targetMood = {}) const
+    {
+        juce::String ctx;
+        ctx += "\n=== EXAMPLE RECIPES (follow this style) ===\n";
+
+        int count = 0;
+        for (const auto& ex : fewShotExamples)
+        {
+            if (targetMood.isNotEmpty() && ex.mood != targetMood)
+                continue;
+
+            ctx += "\nExample (" + ex.mood + "): \"" + ex.description + "\"\n";
+            ctx += ex.recipeSnippet + "\n";
+
+            if (++count >= 3) break;  // Max 3 examples to control prompt size
+        }
+
+        if (count == 0)
+            ctx += "(No examples available for this mood.)\n";
+
+        return ctx;
+    }
+
+    //--------------------------------------------------------------------------
     // Prompt generation — structured context for the AI
 
     /// Generate a compact parameter reference for active engines only.
@@ -564,6 +810,7 @@ private:
     std::map<juce::String, AIEngineProfile> engineProfiles;
     std::map<juce::String, AICouplingConstraint> couplingConstraints;
     std::vector<AISafetyRule> safetyRules;
+    std::vector<FewShotExample> fewShotExamples;
 };
 
 
@@ -822,6 +1069,72 @@ inline AIParameterSchema buildDefaultSchema()
                   { "rhythmic modulation", "visual sync", "pulsing textures", "light patterns" });
     registerStub ("Oblique", "oblq_", "Prismatic bounce synthesis — RTJ x Funk x Tame Impala",
                   { "prismatic delays", "bouncing echoes", "funk bass", "psychedelic", "rhythmic" });
+
+    //--------------------------------------------------------------------------
+    // Few-shot examples (research: LLM2Fx found 5+ examples dramatically improve output)
+    // One per mood category — shows the AI what a good recipe looks like
+
+    schema.addFewShotExample ({
+        "Foundation",
+        "Tight punchy kick with analog warmth",
+        R"({"engines":[{"id":"OddfeliX","parameters":{"snap_oscMode":0,"snap_snap":0.8,"snap_decay":0.15,)"
+        R"("snap_filterCutoff":400,"snap_filterReso":0.2,"snap_level":0.85,"snap_pitchLock":1}}],)"
+        R"("coupling":[],"macros":[{"label":"PUNCH","targets":["snap_snap","snap_decay"],"ranges":[0.3,-0.2]}],)"
+        R"("dna":{"brightness":0.2,"warmth":0.7,"movement":0.1,"density":0.5,"space":0.1,"aggression":0.3}})"
+    });
+
+    schema.addFewShotExample ({
+        "Atmosphere",
+        "Warm evolving pad with slow drift and shimmer",
+        R"({"engines":[{"id":"OddOscar","parameters":{"morph_scanPos":0.3,"morph_filterCutoff":3000,)"
+        R"("morph_filterReso":0.35,"morph_drift":0.25,"morph_subLevel":0.4}},)"
+        R"({"id":"Opal","parameters":{"opal_grainSize":200,"opal_density":15,"opal_shimmer":0.6}}],)"
+        R"("coupling":[{"sourceSlot":0,"destSlot":1,"type":"LFOToPitch","intensity":0.15}],)"
+        R"("macros":[{"label":"DRIFT","targets":["morph_drift","morph_scanPos"],"ranges":[0.4,0.3]},)"
+        R"({"label":"SHIMMER","targets":["opal_shimmer","morph_filterCutoff"],"ranges":[0.5,0.3]}],)"
+        R"("dna":{"brightness":0.4,"warmth":0.7,"movement":0.6,"density":0.4,"space":0.7,"aggression":0.1}})"
+    });
+
+    schema.addFewShotExample ({
+        "Entangled",
+        "Two engines feeding back into each other with chaotic FM",
+        R"({"engines":[{"id":"Ouroboros","parameters":{"ouroboros_feedback":0.6}},)"
+        R"({"id":"Origami","parameters":{"origami_foldPoint":0.4}}],)"
+        R"("coupling":[{"sourceSlot":0,"destSlot":1,"type":"AudioToFM","intensity":0.35},)"
+        R"({"sourceSlot":1,"destSlot":0,"type":"AudioToRing","intensity":0.25}],)"
+        R"("macros":[{"label":"CHAOS","targets":["ouroboros_feedback","origami_foldPoint"],"ranges":[0.3,0.4]}],)"
+        R"("dna":{"brightness":0.5,"warmth":0.3,"movement":0.8,"density":0.7,"space":0.3,"aggression":0.6}})"
+    });
+
+    schema.addFewShotExample ({
+        "Prism",
+        "Bright crystalline bell with spectral shimmer",
+        R"({"engines":[{"id":"Obsidian","parameters":{"obsidian_pdDepth":0.4}},)"
+        R"({"id":"Orbital","parameters":{"orbital_partialTilt":0.6}}],)"
+        R"("coupling":[{"sourceSlot":0,"destSlot":1,"type":"FilterToFilter","intensity":0.3}],)"
+        R"("macros":[{"label":"CRYSTAL","targets":["obsidian_pdDepth","orbital_partialTilt"],"ranges":[0.3,0.4]}],)"
+        R"("dna":{"brightness":0.8,"warmth":0.3,"movement":0.4,"density":0.5,"space":0.5,"aggression":0.2}})"
+    });
+
+    schema.addFewShotExample ({
+        "Flux",
+        "Restless morphing bass that never sits still",
+        R"({"engines":[{"id":"Obese","parameters":{"fat_satDrive":0.5}},)"
+        R"({"id":"Oblong","parameters":{"bob_fltCutoff":1200}}],)"
+        R"("coupling":[{"sourceSlot":0,"destSlot":1,"type":"RhythmToBlend","intensity":0.5}],)"
+        R"("macros":[{"label":"MORPH","targets":["fat_satDrive","bob_fltCutoff"],"ranges":[0.4,0.5]}],)"
+        R"("dna":{"brightness":0.4,"warmth":0.5,"movement":0.8,"density":0.6,"space":0.2,"aggression":0.5}})"
+    });
+
+    schema.addFewShotExample ({
+        "Aether",
+        "Ethereal otherworldly texture floating in space",
+        R"({"engines":[{"id":"Opal","parameters":{"opal_grainSize":400,"opal_density":8,"opal_shimmer":0.7}},)"
+        R"({"id":"Oceanic","parameters":{"oceanic_separation":0.6}}],)"
+        R"("coupling":[{"sourceSlot":0,"destSlot":1,"type":"AudioToWavetable","intensity":0.3}],)"
+        R"("macros":[{"label":"FLOAT","targets":["opal_grainSize","oceanic_separation"],"ranges":[0.5,0.3]}],)"
+        R"("dna":{"brightness":0.5,"warmth":0.4,"movement":0.5,"density":0.3,"space":0.9,"aggression":0.0}})"
+    });
 
     return schema;
 }
