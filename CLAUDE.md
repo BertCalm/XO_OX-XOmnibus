@@ -6,7 +6,7 @@ XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by
 It merges 9 character instruments into one unified creative environment where engines couple, collide,
 and mutate into sounds impossible with any single synth.
 
-- **Engine modules:** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, + more in development
+- **Engine modules:** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OPTIC, OBLIQUE
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** 1000 factory presets in `.xometa` format, 6 mood categories, 6D Sonic DNA
