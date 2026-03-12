@@ -68,6 +68,8 @@ public:
             return { juce::Colour(0xFF00B4A0), juce::Colour(0xFF000E0C), "wave_morph", "OCEANIC" };
         if (id == "OPTIC"    || id == "XOPTIC")
             return { juce::Colour(0xFF00FF41), juce::Colour(0xFF000A00), "particle_scatter", "OPTIC" };
+        if (id == "OBLIQUE"  || id == "XOBLIQUE")
+            return { juce::Colour(0xFFBF40FF), juce::Colour(0xFF0A0014), "prism_fractal", "OBLIQUE" };
 
         // Default: XO Gold
         return { juce::Colour(0xFFE9C46A), juce::Colour(0xFF0C0A08), "freq_bands", "XO_OX" };

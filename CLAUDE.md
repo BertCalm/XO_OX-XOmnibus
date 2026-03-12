@@ -55,6 +55,7 @@ and mutate into sounds impossible with any single synth.
 | OCEANIC | XOceanic | Phosphorescent Teal `#00B4A0` |
 | OVERBITE | XOverbite | Fang White `#F0EDE8` |
 | OPTIC | XOptic | Phosphor Green `#00FF41` |
+| OBLIQUE | XOblique | Prism Violet `#BF40FF` |
 
 ### Engine ID vs Parameter Prefix
 
@@ -72,6 +73,7 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Overbite | `poss_` | `poss_biteDepth` |
 | Onset | `onset_` | `onset_noiseLevel` |
 | Optic | `optic_` | `optic_pulseRate` |
+| Oblique | `oblq_` | `oblq_prismColor` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.

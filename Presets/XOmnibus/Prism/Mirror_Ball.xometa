@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Mirror Ball",
+  "mood": "Prism",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Disco mirror ball — saw stabs through full prism spread. Each note fires bouncing percussive clicks that ricochet across the stereo field. Phaser adds Tame Impala swirl.",
+  "tags": [
+    "disco",
+    "funk",
+    "stab",
+    "bouncy",
+    "prism"
+  ],
+  "macroLabels": [
+    "GRIT",
+    "BOUNCE",
+    "PRISM",
+    "SWIRL"
+  ],
+  "couplingIntensity": "None",
+  "tempo": 120,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.5,
+    "movement": 0.85,
+    "density": 0.6,
+    "space": 0.65,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_oscWave": 1,
+      "oblq_oscFold": 0.25,
+      "oblq_oscDetune": 10.0,
+      "oblq_level": 0.75,
+      "oblq_glide": 0.0,
+      "oblq_percClick": 0.65,
+      "oblq_percDecay": 0.003,
+      "oblq_bounceRate": 90.0,
+      "oblq_bounceGravity": 0.72,
+      "oblq_bounceDamp": 0.78,
+      "oblq_bounceCnt": 8.0,
+      "oblq_bounceSwing": 0.18,
+      "oblq_clickTone": 4000.0,
+      "oblq_filterCut": 6000.0,
+      "oblq_filterRes": 0.3,
+      "oblq_attack": 0.003,
+      "oblq_decay": 0.25,
+      "oblq_sustain": 0.6,
+      "oblq_release": 0.15,
+      "oblq_prismDelay": 75.0,
+      "oblq_prismSpread": 0.65,
+      "oblq_prismColor": 0.75,
+      "oblq_prismWidth": 0.85,
+      "oblq_prismFeedback": 0.4,
+      "oblq_prismMix": 0.5,
+      "oblq_prismDamp": 0.25,
+      "oblq_phaserRate": 0.4,
+      "oblq_phaserDepth": 0.55,
+      "oblq_phaserFeedback": 0.35,
+      "oblq_phaserMix": 0.4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

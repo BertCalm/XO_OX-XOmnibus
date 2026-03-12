@@ -96,6 +96,8 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Oceanic/OceanicEngine.cpp
     Source/Engines/Optic/OpticEngine.h
     Source/Engines/Optic/OpticEngine.cpp
+    Source/Engines/Oblique/ObliqueEngine.h
+    Source/Engines/Oblique/ObliqueEngine.cpp
 
     # Export pipeline
     Source/Export/XPNCoverArt.h

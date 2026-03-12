@@ -16,6 +16,7 @@ inline const juce::StringArray validEngineNames {
     "Overworld", "Opal", "Orbital",
     "Organon", "Ouroboros",
     "Obsidian", "Overbite", "Origami", "Oracle", "Obscura", "Oceanic",
+    "Optic", "Oblique",
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
     "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
