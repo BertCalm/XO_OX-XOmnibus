@@ -15,7 +15,16 @@
     "meta-mine",
     "discover-skills",
     "optimize-chains",
-    "toolbox"
+    "toolbox",
+    "build",
+    "test",
+    "lint",
+    "benchmark",
+    "preflight",
+    "preset-qa",
+    "review",
+    "new-xo-engine",
+    "debug-audio"
   ],
   "context": [
     "skill-mining",
