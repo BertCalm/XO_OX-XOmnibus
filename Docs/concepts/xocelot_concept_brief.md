@@ -179,6 +179,48 @@ Each cross-feed has a bipolar amount knob (-1 to +1). At 0, layers are independe
 
 ---
 
+## Biome System — DKC-Inspired Environmental Transformation
+
+The `ocelot_biome` parameter fundamentally transforms how all four strata behave — not just filtering or EQ, but changing the physical models, mangler character, pad behavior, and creature types. Inspired by how Donkey Kong Country's David Wise created entirely different sonic worlds for jungle, underwater, and snow levels using the same SNES BRR architecture.
+
+### Biome: Jungle (Default)
+The core XOcelot identity — warm, dense, rhythmic, alive.
+- **Floor:** Berimbau, cuica, agogo, kalimba, pandeiro, log drum (full percussion palette)
+- **Understory:** Standard chop + bit-crush + tape warp. SP-1200 grit, warm dust.
+- **Canopy:** Dense spectral pads, thick wavefold, active shimmer. Sunlight through leaves.
+- **Emergent:** Tropical bird trill, primate howl, insect drone, frog chirp.
+- **FX character:** Dense diffuse reverb (forest canopy), warm tape delay.
+- **Humidity:** Saturation + analog warmth.
+
+### Biome: Underwater
+*"Aquatic Ambiance" territory.* Everything slows down, gets filtered, becomes deep and weightless. The ocelot dives beneath the surface.
+- **Floor:** Percussion becomes muffled and submerged — low-pass filtered strikes, longer decays, water-logged resonance. Kalimba becomes glass marimba (pitched water drops). Log drum becomes deep oceanic thud. Cuica becomes sonar ping.
+- **Understory:** Tape speed halved — extreme slow-motion wobble. Bit-crush softened (higher bit depth). Chops stretch and blur. Everything moves through viscous liquid. Nod to the slow, warped quality of sound underwater.
+- **Canopy:** Pads become deep, dark, oceanic. Spectral filter shifts low — rolling, subaquatic movement. Shimmer becomes bioluminescent — subtle, cold, beautiful. Wavefold softens into gentle wave motion. Long, slow breathe parameter (tidal).
+- **Emergent:** Creature calls transform — whale song (deep formant sweeps), dolphin clicks (rapid high-pitched chirps), bubble streams (noise bursts through resonant filter), deep current hum (sub-bass formant drone).
+- **FX character:** Massive reverb (ocean cavern), long delay with heavy filtering (echoes through water). Reverb pre-delay increases (sound travels slower underwater).
+- **Humidity:** Becomes "depth" — low-pass filter + subtle chorus (the acoustic distortion of deep water).
+
+### Biome: Winter
+*"In a Snow-Bound Land" territory.* Sparse, crystalline, cold, hauntingly beautiful. The jungle stripped bare by ice.
+- **Floor:** Percussion becomes crystalline and fragile. Kalimba becomes ice chimes (higher pitch, longer ring, no damping). Agogo becomes sleigh bell (brighter, thinner). Log drum becomes frozen wood crack. Berimbau becomes bowed icicle (long, singing, cold). Strike character shifts from warm thud to brittle crack.
+- **Understory:** Tape speed fluctuates (cold warps the mechanism). Higher tape age = more dropouts (frozen tape sticking). Bit-crush becomes colder — the digital artifacts sound like ice crystals. Chop rate slows. Dust becomes gentle snowfall (softer, higher-frequency noise).
+- **Canopy:** Pads become sparse and wide. Fewer partials, more space between them. High shimmer (ice crystals catching light). Breathe parameter becomes wind gusts — irregular, cold, sweeping. Spectral filter opens wide (cold air is transparent). Detuning increases subtly (things contract in the cold).
+- **Emergent:** Creature calls transform — distant wolf howl (low formant, long decay, reverb-heavy), winter bird call (sparse, high, plaintive), wind through branches (noise + resonant comb filter), cracking ice (impulse through tuned resonator).
+- **FX character:** Wide, cold reverb (snow absorbs close reflections, emphasizes distance). Delay becomes sparser, cleaner (sound carries far in cold air). Crystal clear high end.
+- **Humidity:** Becomes "frost" — the saturation character shifts from warm tape to cold digital clarity with subtle high-frequency sparkle.
+
+### Biome as Preset Tool
+The biome is stored per-preset in `.xometa`. A producer can:
+- Build a jungle groove in Jungle biome
+- Duplicate the preset, switch to Underwater, and have an instant DKC water-level version
+- The same strata balance, ecosystem depth, and macro mappings apply — but the *character* of every layer transforms
+
+### Biome Transitions
+When `ocelot_biome` is automated or coupled, transitions between biomes use 200ms crossfade on all transformed parameters — smooth enough for real-time morphing. Sweeping from Jungle through Underwater to Winter in a single performance is a valid musical gesture (seasons changing, diving and surfacing, altitude shift).
+
+---
+
 ## Parameter Namespace
 
 All parameter IDs use `ocelot_` prefix. Key parameters:
@@ -186,6 +228,7 @@ All parameter IDs use `ocelot_` prefix. Key parameters:
 ### Global
 | ID | Range | Description |
 |----|-------|-------------|
+| `ocelot_biome` | 0-2 | Biome mode: Jungle (0) / Underwater (1) / Winter (2) — transforms all four strata character |
 | `ocelot_strataBalance` | 0-1 | Blend between lower (Floor/Understory) and upper (Canopy/Emergent) strata |
 | `ocelot_ecosystemDepth` | 0-1 | Master cross-feed intensity (0 = independent layers, 1 = full ecosystem) |
 | `ocelot_humidity` | 0-1 | Global saturation/tape warmth (the air in the jungle) |
@@ -344,29 +387,36 @@ These instruments and synths informed XOcelot's design. Each nod is baked into a
 | Entangled | **High** | The ecosystem cross-feed IS entanglement. Coupling-focused presets showcase layers driving each other. |
 | Prism | Medium | Bright kalimba leads and agogo melodies can be prismatic, but this isn't the engine's primary territory. |
 | Flux | Medium | High ecosystem depth + high density creates unpredictable, evolving textures. |
-| Aether | Low-Medium | Sparse canopy + slow creature calls can go ethereal, but XOcelot's heart is warmth, not cold space. |
+| Aether | **High** | The Underwater and Winter biomes unlock XOcelot's ethereal side — oceanic depths (whale song, bioluminescent shimmer, subaquatic pads) and frozen landscapes (ice chimes, wind howl, crystalline space). David Wise proved this territory is gold. |
 
-Primary moods: Foundation, Atmosphere, Entangled.
+Primary moods: Foundation, Atmosphere, Entangled, Aether.
 
 ---
 
 ## Preset Strategy (Phase 0 sketch)
 
-**100 presets at v1.0:**
+**120 presets at v1.0:**
 
-| Category | Count | Character |
-|----------|-------|-----------|
-| Jungle Floor Grooves | 20 | Berimbau, cuica, kalimba-driven rhythmic patterns. Funky, organic, Foundation mood. The peanut butter. |
-| Canopy Atmospheres | 15 | Lush spectral pads with creature calls emerging. Atmospheric, dense, humid. |
-| Dusty Chops | 20 | Understory-heavy — chopped, bit-crushed, tape-warped textures. Aesop Rock territory. SP-1200 grit. |
-| Ecosystem Evolvers | 15 | High cross-feed depth — layers driving each other into emergent behavior. Entangled mood. |
-| Tropicalia Fusion | 15 | Physical percussion + spectral pads + lo-fi warmth. The Tropicalia sweet spot. Spacey. |
-| Coupling Showcases | 15 | Designed for use with specific engine pairs (DUB x OCELOT, ONSET x OCELOT, OPAL x OCELOT, etc.) |
+| Category | Count | Biome | Character |
+|----------|-------|-------|-----------|
+| Jungle Floor Grooves | 18 | Jungle | Berimbau, cuica, kalimba-driven rhythmic patterns. Funky, organic, Foundation mood. The peanut butter. |
+| Canopy Atmospheres | 12 | Jungle | Lush spectral pads with creature calls emerging. Atmospheric, dense, humid. |
+| Dusty Chops | 18 | Jungle | Understory-heavy — chopped, bit-crushed, tape-warped textures. Aesop Rock territory. SP-1200 grit. |
+| Ecosystem Evolvers | 12 | Jungle | High cross-feed depth — layers driving each other into emergent behavior. Entangled mood. |
+| Tropicalia Fusion | 12 | Jungle | Physical percussion + spectral pads + lo-fi warmth. The Tropicalia sweet spot. Spacey. |
+| Underwater Depths | 15 | Underwater | David Wise-inspired oceanic pads, subaquatic percussion, whale song, bioluminescent shimmer. Aether/Atmosphere mood. The "Aquatic Ambiance" zone. |
+| Winter Stillness | 13 | Winter | Ice chimes, frozen wood, wind howl, crystalline sparse pads, distant wolf calls. Aether mood. The "Snow-Bound Land" zone. |
+| Biome Morphs | 5 | Cross-biome | Presets designed for real-time biome sweeping — Jungle to Underwater, Winter to Jungle, full seasonal cycles. Entangled/Flux mood. |
+| Coupling Showcases | 15 | Mixed | Designed for use with specific engine pairs (DUB x OCELOT, ONSET x OCELOT, OPAL x OCELOT, etc.) |
 
 ### Naming Style
-Evocative, nature-adjacent, 2-3 words. Nods to jungle ecology, Tropicalia, and hip-hop production without jargon:
+Evocative, nature-adjacent, 2-3 words. Nods to jungle ecology, DKC levels, Tropicalia, and hip-hop production without jargon:
 
-*Example names:* "Tawny Prowl", "Humid Groove", "Canopy Drip", "Berimbau Dawn", "Dusty Kalimba", "Cuica Conversation", "Foliage Thick", "Vine Swing", "Peanut Butter Strut", "Dappled Light", "Monsoon Tape", "Root System", "Howler Dub", "Understory Chop", "Ocelot Stalk", "Tropical Crackle", "Frog Chorus", "Golden Paw", "Night Canopy", "Slow Prowl"
+**Jungle examples:** "Tawny Prowl", "Humid Groove", "Canopy Drip", "Berimbau Dawn", "Dusty Kalimba", "Cuica Conversation", "Foliage Thick", "Vine Swing", "Peanut Butter Strut", "Dappled Light", "Monsoon Tape", "Root System", "Howler Dub", "Understory Chop", "Ocelot Stalk", "Tropical Crackle", "Frog Chorus", "Golden Paw", "Night Canopy", "Slow Prowl"
+
+**Underwater examples:** "Coral Cathedral", "Abyssal Hum", "Kelp Sway", "Deep Current", "Whale Hymn", "Sunken Temple", "Pressure Drop", "Bioluminous", "Reef Pulse", "Tide Memory", "Sonar Lullaby", "Glass Marimba", "Ocean Floor", "Bubble Rise", "Subaquatic Dawn"
+
+**Winter examples:** "Frozen Canopy", "Ice Kalimba", "Snowbound", "Crystal Crack", "Wolf Distance", "Pine Shatter", "Frost Chime", "White Silence", "Cold Ember", "Bare Branch", "Glacier Hymn", "Powder Drift", "Winter Ocelot"
 
 ---
 
