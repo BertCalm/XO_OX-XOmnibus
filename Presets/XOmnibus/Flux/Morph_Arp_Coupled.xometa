@@ -3,12 +3,12 @@
   "name": "Morph_Arp_Coupled",
   "mood": "Flux",
   "engines": [
-    "Morph",
-    "Drift"
+    "OddOscar",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH arp scan with DRIFT shimmer trail \u2014 each arpeggiated position leaves a shimmer echo.",
+  "description": "MORPH arp scan with DRIFT shimmer trail — each arpeggiated position leaves a shimmer echo.",
   "tags": [
     "morph",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "RATE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.58,
@@ -33,7 +33,7 @@
     "aggression": 0.28
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.85,
       "morph_decay": 0.8,
@@ -47,7 +47,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 1
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -91,8 +91,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Drift",
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.35
       }

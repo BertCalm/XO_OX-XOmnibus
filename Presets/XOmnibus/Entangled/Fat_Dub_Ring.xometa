@@ -3,12 +3,12 @@
   "name": "Fat_Dub_Ring",
   "mood": "Entangled",
   "engines": [
-    "Fat",
-    "Dub"
+    "Obese",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT dense oscillators ring-modulate DUB bass \u2014 harmonic density creates bass inharmonicity.",
+  "description": "FAT dense oscillators ring-modulate DUB bass — harmonic density creates bass inharmonicity.",
   "tags": [
     "fat",
     "dub",
@@ -22,7 +22,7 @@
     "MODULATION",
     "BASS"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.42,
@@ -33,7 +33,7 @@
     "aggression": 0.55
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.55,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.35,
@@ -66,7 +66,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -108,8 +108,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Dub",
+        "engineA": "Obese",
+        "engineB": "Overdub",
         "type": "Audio->Ring",
         "amount": 0.45
       }

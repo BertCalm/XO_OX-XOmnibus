@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Fat Chaos",
+  "mood": "Entangled",
+  "engines": [
+    "Obese",
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Obese drives Ouroboros injection. Heavy signal perturbs the attractor.",
+  "tags": [
+    "coupling",
+    "obese",
+    "ouroboros",
+    "heavy"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.35,
+    "movement": 0.7,
+    "density": 0.55,
+    "space": 0.1,
+    "aggression": 0.5
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Ouroboros",
+        "type": "Audio->FM",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null
+}

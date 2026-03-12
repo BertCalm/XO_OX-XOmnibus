@@ -3,14 +3,14 @@
   "name": "Dub_Bob_Morph_Snap_Four",
   "mood": "Entangled",
   "engines": [
-    "Dub",
-    "Bob",
-    "Morph",
-    "Snap"
+    "Overdub",
+    "Oblong",
+    "OddOscar",
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Four-engine depth \u2014 DUB bass, BOB warmth, MORPH spectral, SNAP punctuation. Maximum coupling.",
+  "description": "Four-engine depth — DUB bass, BOB warmth, MORPH spectral, SNAP punctuation. Maximum coupling.",
   "tags": [
     "dub",
     "bob",
@@ -26,7 +26,7 @@
     "MORPH SPECTRAL",
     "SNAP HIT"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -37,7 +37,7 @@
     "aggression": 0.42
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -75,7 +75,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 0
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -118,7 +118,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.75,
       "morph_decay": 2.5,
@@ -132,7 +132,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -149,20 +149,20 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Dub",
+        "engineA": "OddfeliX",
+        "engineB": "Overdub",
         "type": "Amp->Filter",
         "amount": 0.58
       },
       {
-        "engineA": "Bob",
-        "engineB": "Morph",
+        "engineA": "Oblong",
+        "engineB": "OddOscar",
         "type": "Env->Morph",
         "amount": 0.52
       },
       {
-        "engineA": "Dub",
-        "engineB": "Bob",
+        "engineA": "Overdub",
+        "engineB": "Oblong",
         "type": "Rhythm->Blend",
         "amount": 0.38
       }

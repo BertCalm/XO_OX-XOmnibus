@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Morph Gnash",
+  "mood": "Entangled",
+  "engines": [
+    "OddOscar",
+    "Overbite"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddOscar morph drives Overbite gnash amount. Wavetable controls distortion.",
+  "tags": [
+    "coupling",
+    "oddoscar",
+    "overbite",
+    "morph"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.4,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.1,
+    "aggression": 0.4
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Overbite",
+        "type": "Env->Morph",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null
+}

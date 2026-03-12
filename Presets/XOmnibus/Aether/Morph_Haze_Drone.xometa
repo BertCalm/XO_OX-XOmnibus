@@ -3,7 +3,7 @@
   "name": "Morph_Haze_Drone",
   "mood": "Aether",
   "engines": [
-    "Morph"
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -32,7 +32,7 @@
     "aggression": 0.04
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.1,
       "morph_bloom": 0.9,
       "morph_decay": 9.0,

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Fat Bass",
   "mood": "Foundation",
-  "engines": ["Fat"],
+  "engines": ["Obese"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FAT configured as a pure bass instrument — sub octave loud, filter closed low, short attack, punchy decay. Maximum low end density without the pad spread.",
@@ -19,7 +19,7 @@
     "aggression": 0.55
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.2,
       "fat_mojo": 0.55,
       "fat_subLevel": 0.7,

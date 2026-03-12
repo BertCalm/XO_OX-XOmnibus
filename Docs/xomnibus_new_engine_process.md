@@ -44,13 +44,13 @@ Every XO_OX instrument must pass three questions:
 
 1. **What's the XO word?** (XO + O-word naming convention)
    - The name should hint at the instrument's character
-   - Examples: XOddCouple (duality), XOverdub (layering), XOdyssey (journey), XOblongBob (shape/warmth), XObese (weight), XOnset (attack)
+   - Examples: OddfeliX/OddOscar (duality), XOverdub (layering), XOdyssey (journey), XOblong (shape/warmth), XObese (weight), XOnset (attack)
 
 2. **What's the one-sentence thesis?**
    - "XO_____ is a _____ synth that _____"
    - Must be specific enough that you could explain it to a producer in 10 seconds
    - Bad: "XOpus is a versatile synth" (says nothing)
-   - Good: "XOpossum is a bass synth where plush weight meets feral bite"
+   - Good: "XOverbite is a bass synth where plush weight meets feral bite"
 
 3. **What sound can ONLY this instrument make?**
    - If the answer is "nothing unique," the concept needs work
@@ -62,12 +62,12 @@ Before building, verify the new engine adds something the gallery doesn't have:
 
 | Existing Exhibition | Sonic Territory |
 |---------------------|-----------------|
-| SNAP (XOddCouple X) | Percussive attacks, FM, Karplus-Strong |
-| MORPH (XOddCouple O) | Wavetable pads, Moog ladder warmth |
-| DUB (XOverdub) | Dub delays, send/return FX, tape character |
-| DRIFT (XOdyssey) | Psychedelic pads, formant filters, long journeys |
-| BOB (XOblongBob) | Warm fuzzy textures, curious motion, tactile |
-| FAT (XObese) | Heavy sampler, bold industrial character |
+| ODDFELIX (OddfeliX/OddOscar X) | Percussive attacks, FM, Karplus-Strong |
+| ODDOSCAR (OddfeliX/OddOscar O) | Wavetable pads, Moog ladder warmth |
+| OVERDUB (XOverdub) | Dub delays, send/return FX, tape character |
+| ODYSSEY (XOdyssey) | Psychedelic pads, formant filters, long journeys |
+| OBLONG (XOblong) | Warm fuzzy textures, curious motion, tactile |
+| OBESE (XObese) | Heavy sampler, bold industrial character |
 | ONSET (XOnset) | Percussive synthesis, circuit precision |
 
 **Ask:** What sonic territory is unoccupied? What coupling possibilities would a new engine open?
@@ -92,8 +92,8 @@ Before building, verify the new engine adds something the gallery doesn't have:
 - **Sonic gap it fills:** What territory is currently empty?
 - **Best coupling partners:** Which existing engines would this pair well with?
 - **Coupling types it would use:**
-  - As source (sending to other engines): [e.g., "Envelope → Morph on DRIFT pads"]
-  - As target (receiving from other engines): [e.g., "Audio FM from SNAP percussion"]
+  - As source (sending to other engines): [e.g., "Envelope → Morph on ODYSSEY pads"]
+  - As target (receiving from other engines): [e.g., "Audio FM from ODDFELIX percussion"]
 
 ## Visual Identity (First Instinct)
 - **Accent color idea:** [hex or description]

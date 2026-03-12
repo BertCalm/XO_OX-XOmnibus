@@ -3,12 +3,12 @@
   "name": "Morph_Drift_Ring",
   "mood": "Entangled",
   "engines": [
-    "Morph",
-    "Drift"
+    "OddOscar",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH wavetable ring-modulates DRIFT shimmer \u2014 spectral content of wavetable creates complex inharmonic shimmer patterns. Alien texture.",
+  "description": "MORPH wavetable ring-modulates DRIFT shimmer — spectral content of wavetable creates complex inharmonic shimmer patterns. Alien texture.",
   "tags": [
     "morph",
     "drift",
@@ -24,7 +24,7 @@
     "MODULATION",
     "SHIMMER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.6,
@@ -35,7 +35,7 @@
     "aggression": 0.45
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.7,
       "morph_bloom": 0.75,
       "morph_decay": 3.0,
@@ -49,7 +49,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -93,8 +93,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Drift",
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
         "type": "Audio->Ring",
         "amount": 0.55
       }

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Torus Knot",
+  "mood": "Prism",
+  "engines": [
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "R\u00f6ssler quasi-periodic orbit. Interleaving patterns.",
+  "tags": [
+    "chaos",
+    "rossler",
+    "pattern",
+    "quasi-periodic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.35,
+    "movement": 0.5,
+    "density": 0.4,
+    "space": 0.1,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 1,
+      "ouro_rate": 280.0,
+      "ouro_chaosIndex": 0.38,
+      "ouro_leash": 0.55,
+      "ouro_theta": 0.0,
+      "ouro_phi": 1.0,
+      "ouro_damping": 0.35,
+      "ouro_injection": 0.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

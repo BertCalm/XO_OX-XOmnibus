@@ -17,7 +17,7 @@
   "name": "Modal Pressure",
   "mood": "Prism",
   "engines": [
-    "Dub"
+    "Overdub"
   ],
   "description": "Modal bass drone \u2014 one note, many harmonic overtones, deep dub pressure.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.3
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": -1,
       "dub_oscTune": 0.0,

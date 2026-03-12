@@ -195,19 +195,19 @@ Voice 8 ──┘                                    FX Rack ──► Master Ou
 | Target | Type | Musical Effect |
 |--------|------|----------------|
 | Any melodic | `AmpToFilter` | Kick envelope → melodic filter cutoff (dub pump) |
-| DUB | Audio send | Master output → DUB send/return chain |
-| DRIFT | `AmpToFilter` | Hat triggers → Prism Shimmer depth |
-| SNAP | Trigger reset | Kick trigger → SNAP envelope reset (locked groove) |
+| OVERDUB | Audio send | Master output → OVERDUB send/return chain |
+| ODYSSEY | `AmpToFilter` | Hat triggers → Prism Shimmer depth |
+| ODDFELIX | Trigger reset | Kick trigger → ODDFELIX envelope reset (locked groove) |
 
 ### ONSET as Target (other engines → ONSET)
 
 | Source | Type | What ONSET Does |
 |--------|------|-----------------|
 | Any | `AmpToFilter` | Accumulates into `couplingFilterMod` → all voice tone params |
-| MORPH | `EnvToDecay` | Accumulates into `couplingDecayMod` → all voice decay params |
-| BITE | `RhythmToBlend` | Accumulates into `couplingBlendMod` → all voice blend params |
+| ODDOSCAR | `EnvToDecay` | Accumulates into `couplingDecayMod` → all voice decay params |
+| OVERBITE | `RhythmToBlend` | Accumulates into `couplingBlendMod` → all voice blend params |
 | Any | `AmpToChoke` | If >0.5, chokes all voices (panic) |
-| FAT | `LFOToPitch` | Adds pitch mod to all voices |
+| OBESE | `LFOToPitch` | Adds pitch mod to all voices |
 
 ### Types ONSET should NOT receive
 
@@ -271,11 +271,11 @@ Add to `OnsetEngine.h`:
 ### Phase 4 — FX + Character Stage
 
 4. **Character stage** — post-mixer, pre-FX
-   - `perc_char_grit`: soft tanh saturation (reuse pattern from BITE's FurStage)
+   - `perc_char_grit`: soft tanh saturation (reuse pattern from OVERBITE's FurStage)
    - `perc_char_warmth`: one-pole LP on saturated signal
 
 5. **FX rack** — serial: Delay → Reverb → LoFi
-   - Delay: dark tape echo (similar to DUB's architecture)
+   - Delay: dark tape echo (similar to OVERDUB's architecture)
    - Reverb: tight room (drums don't need hall — max 0.8s decay)
    - LoFi: bitcrush + sample rate reduction
    - All with mix controls, default 0 (dry)
@@ -292,7 +292,7 @@ Add to `OnsetEngine.h`:
    - Quantum Kit (max blend — both layers audible)
    - Living Machine (MACHINE macro sweep from analog to digital)
    - Time Stretch (K-S heavy, metallic sustain)
-   - Dub Pressure (coupled with DUB engine — echo throws)
+   - Dub Pressure (coupled with OVERDUB engine — echo throws)
    - Future 909 (blend 0.5 on snare/hat — hybrid)
    - Particle Drums (OPAL granulates ONSET output)
    - Analog Heart (all blend=0 — pure circuit)

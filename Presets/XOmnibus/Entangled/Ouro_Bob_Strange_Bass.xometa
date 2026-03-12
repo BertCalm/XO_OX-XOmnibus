@@ -2,18 +2,35 @@
   "schema_version": 1,
   "name": "Strange Bass",
   "mood": "Entangled",
-  "engines": ["XOuroboros", "Bob"],
+  "engines": [
+    "Ouroboros",
+    "Oblong"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Ouroboros velocity vectors as non-repeating morph source for BOB. A bass that never repeats exactly the same way twice.",
-  "tags": ["coupled", "bass", "evolving", "warm"],
-  "macroLabels": ["ATTRACTOR", "BOB WARMTH", "MORPH DEPTH", "SPACE"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "coupled",
+    "bass",
+    "evolving",
+    "warm"
+  ],
+  "macroLabels": [
+    "ATTRACTOR",
+    "BOB WARMTH",
+    "MORPH DEPTH",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "created": "2026-03-10",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 1,
       "ouro_rate": 65.0,
       "ouro_chaosIndex": 0.25,
@@ -23,7 +40,7 @@
       "ouro_damping": 0.6,
       "ouro_injection": 0.0
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.3,
       "bob_oscA_tune": 0.0,
@@ -70,8 +87,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "XOuroboros",
-        "engineB": "Bob",
+        "engineA": "Ouroboros",
+        "engineB": "Oblong",
         "type": "Env->Morph",
         "amount": 0.35
       }

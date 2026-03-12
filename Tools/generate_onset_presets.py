@@ -1230,7 +1230,7 @@ COUPLING_PRESETS = [
 
     make_preset(
         "Snap Locked", "Entangled",
-        "ONSET x SNAP coupling. XOddCouple's percussive side locks into drum patterns. Tight interlocking groove.",
+        "ONSET x SNAP coupling. OddfeliX's percussive side locks into drum patterns. Tight interlocking groove.",
         ["coupling", "snap", "locked", "groove", "percussive"],
         make_params(
             voice_overrides={

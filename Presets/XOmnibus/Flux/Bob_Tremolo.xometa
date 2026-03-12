@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Bob Tremolo",
   "mood": "Flux",
-  "engines": ["Bob"],
+  "engines": ["Oblong"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BOB with deep tremolo from the LFO targeting amplitude. Warm character oscillating rapidly — vintage amp tremolo effect. Rate and depth create rhythmic texture.",
@@ -19,7 +19,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,

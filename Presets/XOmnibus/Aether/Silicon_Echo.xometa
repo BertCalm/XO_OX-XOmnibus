@@ -17,7 +17,7 @@
   "name": "Silicon Echo",
   "mood": "Aether",
   "engines": [
-    "Snap"
+    "OddfeliX"
   ],
   "description": "Crisp digital snap thrown into infinite reverb \u2014 silicon signal lost in space.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.6,

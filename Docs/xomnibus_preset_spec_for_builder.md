@@ -19,10 +19,10 @@ This document contains every decision the builder needs to implement the XOmnibu
 
 | Engine | Identity | Params | Presets (migrated) |
 |--------|----------|--------|--------------------|
-| XOddCouple | Dual-engine coupled synth (Percussive X + Pad O) | 52 | 114 |
+| OddfeliX/OddOscar | Dual-engine coupled synth (Percussive X + Pad O) | 52 | 114 |
 | XOverdub | Dub mixing desk (send/return FX chain) | 38 | 40 |
 | XOdyssey | Psychedelic pad synth (Familiar→Alien journey) | ~130 | 198 |
-| XOblongBob | Warm character synth (fuzzy textures, curious motion) | ~50 | 167 |
+| XOblong | Warm character synth (fuzzy textures, curious motion) | ~50 | 167 |
 | XObese | Character-driven sampler engine | ~30 | 52 (pending) |
 | XOnset | Percussive synthesis (Circuit↔Algorithm blend) | ~110 | 85 (planned) |
 
@@ -41,7 +41,7 @@ Single source of truth. JSON files replacing all per-engine C++ presets and `.xo
   "schema_version": 1,
   "name": "Dub Pressure Machine",       // max 30 chars, unique across library
   "mood": "Entangled",                   // enum: Foundation|Atmosphere|Entangled|Prism|Flux|Aether|User
-  "engines": ["XOddCouple", "XOnset"],   // 1-3 engines
+  "engines": ["OddfeliX/OddOscar", "XOnset"],   // 1-3 engines
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Kick pumps the pad engine, snare brightens the filter.",
@@ -55,17 +55,17 @@ Single source of truth. JSON files replacing all per-engine C++ presets and `.xo
     "space": 0.35, "aggression": 0.08
   },
   "legacy": {                            // migration tracking
-    "sourceInstrument": "XOddCouple",
+    "sourceInstrument": "OddfeliX/OddOscar",
     "sourceCategory": "Entangled",
     "sourcePresetName": null
   },
   "parameters": {                        // engine-keyed param overrides
-    "XOddCouple": { "xFilterCutoff": 3000, "couplingAmount": 0.8 },
+    "OddfeliX/OddOscar": { "xFilterCutoff": 3000, "couplingAmount": 0.8 },
     "XOnset": { "kickDecay": 0.3, "blend": 0.5 }
   },
   "coupling": {                          // cross-engine mod routing
     "pairs": [{
-      "engineA": "XOddCouple", "engineB": "XOnset",
+      "engineA": "OddfeliX/OddOscar", "engineB": "XOnset",
       "type": "Amp->Filter", "amount": 0.4
     }]
   },
@@ -114,7 +114,7 @@ Single source of truth. JSON files replacing all per-engine C++ presets and `.xo
 
 **Per-engine macro targets:**
 
-| Macro | XOddCouple | XOverdub | XOdyssey | XOblongBob | XOnset |
+| Macro | OddfeliX/OddOscar | XOverdub | XOdyssey | XOblong | XOnset |
 |-------|-----------|----------|----------|------------|--------|
 | M1 | Snap+Morph | Send Level | JOURNEY | Curiosity | MACHINE |
 | M2 | Bloom | Drive | BREATHE | Bob Mode | PUNCH |
@@ -183,7 +183,7 @@ For each engine in "engines":
 ```
 [Mood tabs: Foundation | Atmosphere | Entangled | Prism | Flux | Aether]
     ↓
-[Engine filter: All | XOddCouple | XOverdub | XOdyssey | XOblongBob | XOnset | Multi-Engine]
+[Engine filter: All | OddfeliX/OddOscar | XOverdub | XOdyssey | XOblong | XOnset | Multi-Engine]
     ↓
 [Search bar + tag filter]
     ↓
@@ -257,10 +257,10 @@ For MPC integration, XOmnibus renders presets as multi-sampled keygroup programs
 
 | Source | Presets | Status | Tool |
 |--------|---------|--------|------|
-| XOddCouple | 114 | Done | `migrate_xocmeta_to_xometa.py` |
+| OddfeliX/OddOscar | 114 | Done | `migrate_xocmeta_to_xometa.py` |
 | XOverdub | 40 | Done | `extract_cpp_presets.py` |
 | XOdyssey | 198 | Done | `extract_cpp_presets.py` |
-| XOblongBob | 167 | Done | `extract_cpp_presets.py` |
+| XOblong | 167 | Done | `extract_cpp_presets.py` |
 | XObese | 52 | Pending | Manual export + migration |
 | XOnset | 85 | Spec only | N/A |
 | **Total in .xometa** | **519** | **All fingerprinted with DNA** | |
@@ -277,6 +277,6 @@ For MPC integration, XOmnibus renders presets as multi-sampled keygroup programs
 | DNA generator | `tools/compute_preset_dna.py` |
 | Preset breeder | `tools/breed_presets.py` |
 | C++ extractor | `tools/extract_cpp_presets.py` |
-| XOddCouple migrator | `tools/migrate_xocmeta_to_xometa.py` |
+| OddfeliX/OddOscar migrator | `tools/migrate_xocmeta_to_xometa.py` |
 | XPM fixer | `tools/fix_xobese_xpms.py` |
 | TODO tracker | `synth_playbook/docs/mega_tool_preset_todo.md` |

@@ -3,14 +3,13 @@
   "name": "Dub Wire",
   "mood": "Prism",
   "engines": [
-    "XOverdub"
+    "Overdub"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Focused dub leads tone with warm character.",
   "tags": [
     "saw",
-    "verdub",
     "verdub"
   ],
   "macroLabels": [
@@ -23,12 +22,12 @@
   "tempo": null,
   "created": "2026-03-08",
   "legacy": {
-    "sourceInstrument": "XOverdub",
+    "sourceInstrument": "Overdub",
     "sourceCategory": "Dub Leads",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOverdub": {
+    "Overdub": {
       "osc_wave": 2.0,
       "osc_octave": 3.0,
       "filter_cutoff": 2500.0,

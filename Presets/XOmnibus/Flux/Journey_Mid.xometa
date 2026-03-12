@@ -17,7 +17,7 @@
   "name": "Journey Mid",
   "mood": "Flux",
   "engines": [
-    "Drift"
+    "Odyssey"
   ],
   "description": "Familiar to alien \u2014 this is the midpoint, both at once.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.25
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_level": 0.5,
       "drift_oscA_detune": 0.35,

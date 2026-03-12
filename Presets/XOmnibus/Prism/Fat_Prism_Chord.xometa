@@ -3,7 +3,7 @@
   "name": "Fat_Prism_Chord",
   "mood": "Prism",
   "engines": [
-    "Fat"
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -32,7 +32,7 @@
     "aggression": 0.28
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.85,
       "fat_mojo": 0.3,
       "fat_subLevel": 0.1,

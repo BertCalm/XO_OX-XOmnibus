@@ -2,13 +2,28 @@
   "schema_version": 1,
   "name": "Sidechain Breathe",
   "mood": "Entangled",
-  "engines": ["Snap", "Dub"],
+  "engines": [
+    "OddfeliX",
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "SNAP's tight percussive hits duck the DUB bass through Amp->Filter coupling. Every snap pumps the low end open — classic dub sidechain breathing.",
-  "tags": ["sidechain", "pump", "dub", "percussive", "movement", "entangled"],
-  "macroLabels": ["SNAP CRACK", "PUMP DEPTH", "COUPLING", "DUB SPACE"],
-  "couplingIntensity": "Strong",
+  "tags": [
+    "sidechain",
+    "pump",
+    "dub",
+    "percussive",
+    "movement",
+    "entangled"
+  ],
+  "macroLabels": [
+    "SNAP CRACK",
+    "PUMP DEPTH",
+    "COUPLING",
+    "DUB SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
@@ -19,7 +34,7 @@
     "aggression": 0.5
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_snap": 0.75,
       "snap_decay": 0.18,
@@ -31,7 +46,7 @@
       "snap_unison": 0,
       "snap_polyphony": 1
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -73,8 +88,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Dub",
+        "engineA": "OddfeliX",
+        "engineB": "Overdub",
         "type": "Amp->Filter",
         "amount": 0.72
       }

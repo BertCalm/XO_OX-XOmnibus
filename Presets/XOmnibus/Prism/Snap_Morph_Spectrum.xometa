@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Snap Morph Spectrum",
   "mood": "Prism",
-  "engines": ["Snap", "Morph"],
+  "engines": [
+    "OddfeliX",
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "SNAP's bright transient triggers MORPH's evolving spectral pad. The snap attack opens MORPH's filter — percussive spectral gate on a harmonic wavetable.",
-  "tags": ["prism", "snap", "morph", "spectral", "bright", "harmonic", "coupled"],
-  "macroLabels": ["SNAP BITE", "MORPH SPECTRUM", "COUPLING", "BLOOM"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "prism",
+    "snap",
+    "morph",
+    "spectral",
+    "bright",
+    "harmonic",
+    "coupled"
+  ],
+  "macroLabels": [
+    "SNAP BITE",
+    "MORPH SPECTRUM",
+    "COUPLING",
+    "BLOOM"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.8,
@@ -19,7 +35,7 @@
     "aggression": 0.4
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_snap": 0.6,
       "snap_decay": 0.25,
@@ -31,7 +47,7 @@
       "snap_unison": 0,
       "snap_polyphony": 2
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.7,
       "morph_bloom": 0.7,
       "morph_decay": 2.5,
@@ -49,8 +65,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Morph",
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
         "type": "Amp->Filter",
         "amount": 0.6
       }

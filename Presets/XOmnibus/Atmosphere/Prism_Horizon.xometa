@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Prism Horizon",
   "mood": "Atmosphere",
-  "engines": ["Drift"],
+  "engines": ["Odyssey"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Shimmering harmonic pad with Prism overtones and slow drift. Like light refracting through crystal.",
@@ -19,7 +19,7 @@
     "aggression": 0.1
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 3,
       "drift_oscA_tune": 0.0,

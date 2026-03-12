@@ -17,7 +17,7 @@
   "name": "Tidal Sweep",
   "mood": "Flux",
   "engines": [
-    "Drift"
+    "Odyssey"
   ],
   "description": "Tidal pulse driving filter sweep in waves \u2014 ocean of sound.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_level": 0.6,
       "drift_oscA_detune": 0.3,

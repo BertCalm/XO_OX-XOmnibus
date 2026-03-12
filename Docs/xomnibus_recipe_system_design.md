@@ -11,13 +11,13 @@
 A **Recipe** is a curated multi-engine configuration: which engines load into which slots, how they couple, and what the macros control. It is not a preset. It is a *starting point* — a wired-up instrument configuration that a user (or a preset designer) builds sounds on top of.
 
 Think of it this way:
-- A **Module** is a single instrument (SNAP, MORPH, DUB, DRIFT, BOB, FAT, ONSET, OVERWORLD, OPAL, ORGANON, OUROBOROS).
+- A **Module** is a single instrument (ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORGANON, OUROBOROS).
 - A **Recipe** is a combination of modules with coupling routes already patched — a playable multi-engine instrument before any parameters are dialed in.
 - A **Preset** is a complete snapshot of everything: engine parameters, coupling amounts, macro mappings, DNA. A preset always *implies* a recipe (it contains the engine list and coupling data), but a recipe exists independently of any preset.
 
 The relationship: **Recipe configures the rig. Preset dials in the sound.**
 
-Recipes solve a real problem. XOmnibus has 11 engines and 12 coupling types. The combinatorial space is vast. Most users will never explore BOB + OUROBOROS with Audio->Ring coupling on their own. Recipes collapse that space into named, curated starting points that say: "try this combination — we already wired the interesting connections."
+Recipes solve a real problem. XOmnibus has 11 engines and 12 coupling types. The combinatorial space is vast. Most users will never explore OBLONG + OUROBOROS with Audio->Ring coupling on their own. Recipes collapse that space into named, curated starting points that say: "try this combination — we already wired the interesting connections."
 
 ---
 
@@ -45,7 +45,7 @@ The word "Module" replaces "Engine" in all user-facing UI strings. Users see "Mo
 
 ### Recipe Naming Convention
 
-Modules follow the **XO + O-word** pattern (XOddCouple, XObese, etc.). Recipes should NOT follow this pattern — they are not instruments, they are configurations. Recipe names should be:
+Modules follow the **XO + O-word** pattern (OddfeliX/OddOscar, XObese, etc.). Recipes should NOT follow this pattern — they are not instruments, they are configurations. Recipe names should be:
 
 - **Two words, evocative, lowercase-friendly** — matching the preset naming spirit
 - **Descriptive of sonic result**, not engine contents
@@ -65,28 +65,28 @@ Recipes get their own file format (`.xorecipe`) rather than extending `.xometa`.
 {
   "schema_version": 1,
   "name": "Bass Station",
-  "description": "Warm analog bass with dub echo processing. BOB provides the fundamental, DUB adds space.",
+  "description": "Warm analog bass with dub echo processing. OBLONG provides the fundamental, OVERDUB adds space.",
   "author": "XO_OX Designs",
   "tags": ["bass", "dub", "warm", "analog"],
   "category": "Bass & Keys",
 
   "slots": [
-    { "slot": 0, "engine": "Bob" },
-    { "slot": 1, "engine": "Dub" }
+    { "slot": 0, "engine": "Oblong" },
+    { "slot": 1, "engine": "Overdub" }
   ],
 
   "coupling": {
     "routingMode": "Independent",
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "Dub",
+        "engineA": "Oblong",
+        "engineB": "Overdub",
         "type": "Amp->Filter",
         "amount": 0.35
       },
       {
-        "engineA": "Dub",
-        "engineB": "Bob",
+        "engineA": "Overdub",
+        "engineB": "Oblong",
         "type": "Filter->Filter",
         "amount": 0.2
       }
@@ -147,11 +147,11 @@ Recipes get their own file format (`.xorecipe`) rather than extending `.xometa`.
 ## 4. Example Recipes
 
 ### 4.1 Bass Station
-- **Slots:** BOB (1) + DUB (2)
-- **Coupling:** BOB Amp->Filter DUB (0.35), DUB Filter->Filter BOB (0.2)
+- **Slots:** OBLONG (1) + OVERDUB (2)
+- **Coupling:** OBLONG Amp->Filter OVERDUB (0.35), OVERDUB Filter->Filter OBLONG (0.2)
 - **Routing:** Independent
 - **Macros:** WARMTH, ECHO DEPTH, COUPLING, SPACE
-- **Idea:** BOB's warm oscillators through DUB's echo/delay processing. The coupling makes the bass pump through the delay — louder notes push the delay filter open.
+- **Idea:** OBLONG's warm oscillators through OVERDUB's echo/delay processing. The coupling makes the bass pump through the delay — louder notes push the delay filter open.
 
 ### 4.2 Chaos Feeder
 - **Slots:** OUROBOROS (1) + ORGANON (2) + ONSET (3)
@@ -161,32 +161,32 @@ Recipes get their own file format (`.xorecipe`) rather than extending `.xometa`.
 - **Idea:** A three-way feedback loop. OUROBOROS feeds its self-modulating audio into ORGANON's living oscillators. ORGANON's envelopes shape ONSET's decay. ONSET's rhythmic patterns modulate OUROBOROS's blend. Turn up all macros and hold on.
 
 ### 4.3 Ghost Orchestra
-- **Slots:** MORPH (1) + DRIFT (2) + OPAL (3)
-- **Coupling:** MORPH Env->Morph DRIFT (0.3), DRIFT LFO->Pitch OPAL (0.15), OPAL Filter->Filter MORPH (0.2)
+- **Slots:** ODDOSCAR (1) + ODYSSEY (2) + OPAL (3)
+- **Coupling:** ODDOSCAR Env->Morph ODYSSEY (0.3), ODYSSEY LFO->Pitch OPAL (0.15), OPAL Filter->Filter ODDOSCAR (0.2)
 - **Routing:** Shared
 - **Macros:** SHIMMER, ALIEN, CRYSTAL, SPACE
-- **Idea:** Three pad engines creating shifting harmonic landscapes. MORPH's wavetable envelopes morph DRIFT's position. DRIFT's slow LFO detunes OPAL. OPAL's filter feeds back into MORPH. The result is a self-evolving orchestral texture.
+- **Idea:** Three pad engines creating shifting harmonic landscapes. ODDOSCAR's wavetable envelopes morph ODYSSEY's position. ODYSSEY's slow LFO detunes OPAL. OPAL's filter feeds back into ODDOSCAR. The result is a self-evolving orchestral texture.
 
 ### 4.4 Industrial Press
-- **Slots:** FAT (1) + ONSET (2) + SNAP (3)
-- **Coupling:** FAT Audio->Ring ONSET (0.5), ONSET Amp->Choke SNAP (0.7), SNAP Amp->Filter FAT (0.4)
+- **Slots:** OBESE (1) + ONSET (2) + ODDFELIX (3)
+- **Coupling:** OBESE Audio->Ring ONSET (0.5), ONSET Amp->Choke ODDFELIX (0.7), ODDFELIX Amp->Filter OBESE (0.4)
 - **Routing:** Independent
 - **Macros:** WEIGHT, IMPACT, CHOKE, GRIT
-- **Idea:** FAT's heavy samples ring-modulate ONSET's percussion. ONSET's hits choke SNAP. SNAP's amplitude drives FAT's filter. Three engines fighting for space — the result sounds like a factory floor.
+- **Idea:** OBESE's heavy samples ring-modulate ONSET's percussion. ONSET's hits choke ODDFELIX. ODDFELIX's amplitude drives OBESE's filter. Three engines fighting for space — the result sounds like a factory floor.
 
 ### 4.5 Liquid Keys
-- **Slots:** BOB (1) + MORPH (2)
-- **Coupling:** BOB LFO->Pitch MORPH (0.1), MORPH Env->Morph BOB (0.25)
+- **Slots:** OBLONG (1) + ODDOSCAR (2)
+- **Coupling:** OBLONG LFO->Pitch ODDOSCAR (0.1), ODDOSCAR Env->Morph OBLONG (0.25)
 - **Routing:** Independent
 - **Macros:** CHARACTER, MOVEMENT, COUPLING, SPACE
-- **Idea:** BOB's warm character with MORPH's wavetable shimmer. BOB's curiosity LFO gently detunes MORPH. MORPH's envelope morphs BOB's texture. Playable, expressive, usable on every track.
+- **Idea:** OBLONG's warm character with ODDOSCAR's wavetable shimmer. OBLONG's curiosity LFO gently detunes ODDOSCAR. ODDOSCAR's envelope morphs OBLONG's texture. Playable, expressive, usable on every track.
 
 ### 4.6 Dub Laboratory
-- **Slots:** DUB (1) + SNAP (2) + DRIFT (3)
-- **Coupling:** SNAP Amp->Filter DUB (0.5), DUB Audio->FM DRIFT (0.15), DRIFT Filter->Filter DUB (0.3)
+- **Slots:** OVERDUB (1) + ODDFELIX (2) + ODYSSEY (3)
+- **Coupling:** ODDFELIX Amp->Filter OVERDUB (0.5), OVERDUB Audio->FM ODYSSEY (0.15), ODYSSEY Filter->Filter OVERDUB (0.3)
 - **Routing:** Chain
 - **Macros:** HITS, ECHO, ALIEN, SPACE
-- **Idea:** SNAP fires percussive hits into DUB's mixing desk. DUB's echoes FM-modulate DRIFT's pads. DRIFT's filter feeds back into DUB. Classic dub production topology with a psychedelic twist.
+- **Idea:** ODDFELIX fires percussive hits into OVERDUB's mixing desk. OVERDUB's echoes FM-modulate ODYSSEY's pads. ODYSSEY's filter feeds back into OVERDUB. Classic dub production topology with a psychedelic twist.
 
 ---
 
@@ -258,9 +258,9 @@ Clicking `[x]` clears the recipe context but keeps the current engine/coupling s
 ### Workflow
 
 1. User browses recipes, picks "Bass Station"
-2. BOB loads in slot 1, DUB loads in slot 2, coupling routes engage
-3. User hears init-state BOB + DUB with coupling active
-4. User browses presets filtered to BOB+DUB combinations
+2. OBLONG loads in slot 1, OVERDUB loads in slot 2, coupling routes engage
+3. User hears init-state OBLONG + OVERDUB with coupling active
+4. User browses presets filtered to OBLONG+OVERDUB combinations
 5. User loads "Submarine Echo" preset — parameters fill in, coupling amounts adjust
 6. User tweaks, saves as new preset — the `.xometa` captures everything
 7. The saved preset stands alone. It does not reference the recipe.
@@ -289,7 +289,7 @@ namespace xomnibus {
 
 struct RecipeSlot {
     int slotIndex;           // 0-3
-    juce::String engineId;   // e.g. "Bob", "Dub"
+    juce::String engineId;   // e.g. "Oblong", "Overdub"
 };
 
 struct RecipeMacroMapping {

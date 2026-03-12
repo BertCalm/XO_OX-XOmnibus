@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Plush Weight",
   "mood": "Foundation",
-  "engines": ["XOpossum"],
+  "engines": ["Overbite"],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Clean warm bass. Sine belly with sub octave. Soft fur saturation. The anchor.",
@@ -13,7 +13,7 @@
   "created": "2026-03-11",
   "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
   "parameters": {
-    "XOpossum": {
+    "Overbite": {
       "poss_oscAWave": 0,
       "poss_oscALevel": 0.85,
       "poss_oscAPulseWidth": 0.5,

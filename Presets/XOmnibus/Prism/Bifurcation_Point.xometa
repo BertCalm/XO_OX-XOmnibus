@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Bifurcation Point",
   "mood": "Prism",
-  "engines": ["XOuroboros"],
+  "engines": ["Ouroboros"],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Lorenz attractor balanced exactly at the edge of chaos. Unpredictable shifts between order and turbulence.",
@@ -13,7 +13,7 @@
   "created": "2026-03-10",
   "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
   "parameters": {
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 0,
       "ouro_rate": 294.0,
       "ouro_chaosIndex": 0.5,

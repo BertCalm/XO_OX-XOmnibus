@@ -3,12 +3,12 @@
   "name": "Fat_Morph_Env",
   "mood": "Entangled",
   "engines": [
-    "Fat",
-    "Morph"
+    "Obese",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT's amp envelope scans MORPH's wavetable \u2014 the pad swell becomes a wavetable sweep. Dense layering that evolves on every note.",
+  "description": "FAT's amp envelope scans MORPH's wavetable — the pad swell becomes a wavetable sweep. Dense layering that evolves on every note.",
   "tags": [
     "fat",
     "morph",
@@ -24,7 +24,7 @@
     "SCAN DEPTH",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -35,7 +35,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.3,
@@ -68,7 +68,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.3,
       "morph_bloom": 0.7,
       "morph_decay": 3.0,
@@ -86,8 +86,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Morph",
+        "engineA": "Obese",
+        "engineB": "OddOscar",
         "type": "Env->Morph",
         "amount": 0.55
       }

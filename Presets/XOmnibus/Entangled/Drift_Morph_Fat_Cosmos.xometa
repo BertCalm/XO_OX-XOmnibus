@@ -3,13 +3,13 @@
   "name": "Drift_Morph_Fat_Cosmos",
   "mood": "Entangled",
   "engines": [
-    "Drift",
-    "Morph",
-    "Fat"
+    "Odyssey",
+    "OddOscar",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine cosmos \u2014 DRIFT shimmer sky, MORPH evolving middle, FAT earthen density. MORPH scans via DRIFT signal, FAT grounds it all.",
+  "description": "Three-engine cosmos — DRIFT shimmer sky, MORPH evolving middle, FAT earthen density. MORPH scans via DRIFT signal, FAT grounds it all.",
   "tags": [
     "drift",
     "morph",
@@ -25,7 +25,7 @@
     "FAT EARTH",
     "COUPLING"
   ],
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -36,7 +36,7 @@
     "aggression": 0.1
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -76,7 +76,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.8,
       "morph_decay": 5.0,
@@ -90,7 +90,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.5,
@@ -127,14 +127,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
-        "engineB": "Morph",
+        "engineA": "Odyssey",
+        "engineB": "OddOscar",
         "type": "Audio->Wavetable",
         "amount": 0.5
       },
       {
-        "engineA": "Fat",
-        "engineB": "Morph",
+        "engineA": "Obese",
+        "engineB": "OddOscar",
         "type": "Amp->Filter",
         "amount": 0.3
       }

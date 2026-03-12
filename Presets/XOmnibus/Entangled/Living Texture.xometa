@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Living Texture",
   "mood": "Entangled",
-  "engines": ["XOnset", "XOpossum"],
+  "engines": ["Onset", "Overbite"],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "ONSET snare envelope drives BITE's filter. Every drum hit makes the bass snarl.",
@@ -13,7 +13,7 @@
   "created": "2026-03-11",
   "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
   "parameters": {
-    "XOpossum": {
+    "Overbite": {
       "poss_oscAWave": 0,
       "poss_oscALevel": 0.6,
       "poss_oscAPulseWidth": 0.5,
@@ -45,7 +45,7 @@
   },
   "coupling": {
     "pairs": [
-      {"source": "XOnset", "target": "XOpossum", "type": "AmpToFilter", "amount": 0.7}
+      {"source": "Onset", "target": "Overbite", "type": "AmpToFilter", "amount": 0.7}
     ]
   },
   "sequencer": null,

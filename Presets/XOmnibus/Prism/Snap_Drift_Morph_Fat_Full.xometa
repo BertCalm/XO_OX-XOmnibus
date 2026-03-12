@@ -3,14 +3,14 @@
   "name": "Snap_Drift_Morph_Fat_Full",
   "mood": "Prism",
   "engines": [
-    "Snap",
-    "Drift",
-    "Morph",
-    "Fat"
+    "OddfeliX",
+    "Odyssey",
+    "OddOscar",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Four-engine prism tower \u2014 SNAP crystal, DRIFT shimmer, MORPH spectral, FAT dense base. Maximum.",
+  "description": "Four-engine prism tower — SNAP crystal, DRIFT shimmer, MORPH spectral, FAT dense base. Maximum.",
   "tags": [
     "snap",
     "drift",
@@ -26,7 +26,7 @@
     "MORPH MIDDLE",
     "FAT BASE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.85,
@@ -37,7 +37,7 @@
     "aggression": 0.52
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -50,7 +50,7 @@
       "snap_release": 0.1,
       "snap_level": 0.65
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -90,7 +90,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.72,
       "morph_bloom": 0.8,
       "morph_decay": 2.5,
@@ -104,7 +104,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.88,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.08,
@@ -141,20 +141,20 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Morph",
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
         "type": "Env->Morph",
         "amount": 0.62
       },
       {
-        "engineA": "Morph",
-        "engineB": "Fat",
+        "engineA": "OddOscar",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.42
       },
       {
-        "engineA": "Morph",
-        "engineB": "Drift",
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.3
       }

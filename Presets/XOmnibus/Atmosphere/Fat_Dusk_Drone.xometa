@@ -3,7 +3,7 @@
   "name": "Fat_Dusk_Drone",
   "mood": "Atmosphere",
   "engines": [
-    "Fat"
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -32,7 +32,7 @@
     "aggression": 0.06
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.38,
       "fat_mojo": 0.5,
       "fat_subLevel": 0.42,

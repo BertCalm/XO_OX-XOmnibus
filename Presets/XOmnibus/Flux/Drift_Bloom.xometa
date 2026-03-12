@@ -17,7 +17,7 @@
   "name": "Drift Bloom",
   "mood": "Flux",
   "engines": [
-    "Morph"
+    "OddOscar"
   ],
   "description": "Drift modulation on maximum \u2014 each note drifts into its own version of the patch.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.15
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.6,
       "morph_decay": 0.9,

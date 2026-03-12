@@ -2,7 +2,7 @@
   "schema_version": 1,
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "macroLabels": [
     "CHARACTER",
@@ -14,7 +14,7 @@
     "pairs": [
       {
         "engineA": "Onset",
-        "engineB": "Fat",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.65
       }
@@ -25,9 +25,9 @@
   "mood": "Entangled",
   "engines": [
     "Onset",
-    "Fat"
+    "Obese"
   ],
-  "description": "Kick energy from ONSET pumps FAT's density \u2014 classic sidechain feel, synthesized.",
+  "description": "Kick energy from ONSET pumps FAT's density — classic sidechain feel, synthesized.",
   "tags": [
     "onset",
     "fat",
@@ -55,7 +55,7 @@
       "perc_macro_punch": 0.65,
       "perc_macro_machine": 0.2
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.55,
       "fat_subLevel": 0.4,

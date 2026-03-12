@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Fat Stack",
   "mood": "Foundation",
-  "engines": ["Fat"],
+  "engines": ["Obese"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FAT's 12-oscillator foundation at its most direct. Maximum density, wide stereo, deep sub. The wall-of-sound basis for heavy production.",
@@ -19,7 +19,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.35,
       "fat_mojo": 0.5,
       "fat_subLevel": 0.5,

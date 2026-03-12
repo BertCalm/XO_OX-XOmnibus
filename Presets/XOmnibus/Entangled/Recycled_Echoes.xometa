@@ -3,8 +3,8 @@
   "name": "Recycled Echoes",
   "mood": "Entangled",
   "engines": [
-    "Dub",
-    "XOrganon"
+    "Overdub",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 1,
       "dub_level": 0.6,
       "dub_filterCutoff": 1500.0,
@@ -47,7 +47,7 @@
       "dub_reverbSize": 0.7,
       "dub_reverbMix": 0.3
     },
-    "XOrganon": {
+    "Organon": {
       "organon_metabolicRate": 0.6,
       "organon_enzymeSelect": 1200.0,
       "organon_catalystDrive": 0.5,
@@ -63,8 +63,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "XOrganon",
+        "engineA": "Overdub",
+        "engineB": "Organon",
         "type": "Audio->FM",
         "amount": 0.6
       }

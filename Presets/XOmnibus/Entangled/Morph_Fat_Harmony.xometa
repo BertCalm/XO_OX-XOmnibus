@@ -3,12 +3,12 @@
   "name": "Morph_Fat_Harmony",
   "mood": "Entangled",
   "engines": [
-    "Morph",
-    "Fat"
+    "OddOscar",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH pitch tracks into FAT \u2014 wavetable melody harmonizes the dense pad layer. Every note creates a rich, thick harmony.",
+  "description": "MORPH pitch tracks into FAT — wavetable melody harmonizes the dense pad layer. Every note creates a rich, thick harmony.",
   "tags": [
     "morph",
     "fat",
@@ -24,7 +24,7 @@
     "INTERVAL",
     "DENSITY"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -35,7 +35,7 @@
     "aggression": 0.25
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.7,
       "morph_decay": 3.0,
@@ -49,7 +49,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.35,
@@ -86,8 +86,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Fat",
+        "engineA": "OddOscar",
+        "engineB": "Obese",
         "type": "Pitch->Pitch",
         "amount": 0.55
       }

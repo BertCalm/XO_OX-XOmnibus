@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Talking Drums",
   "mood": "Entangled",
-  "engines": ["XOddCouple"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "MORPH's internal LFO drifts SNAP's pitch while SNAP's envelope pumps MORPH's filter. Organic, conversational percussion over evolving texture.",
-  "tags": ["talking", "drums", "coupled", "organic", "percussive"],
-  "macroLabels": ["SNAP DEPTH", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "talking",
+    "drums",
+    "coupled",
+    "organic",
+    "percussive"
+  ],
+  "macroLabels": [
+    "SNAP DEPTH",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
@@ -19,7 +32,7 @@
     "aggression": 0.6
   },
   "parameters": {
-    "XOddCouple": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_snap": 0.7,
       "snap_decay": 0.8,
@@ -47,14 +60,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "XOddCouple",
-        "engineB": "XOddCouple",
+        "engineA": "OddfeliX",
+        "engineB": "OddfeliX",
         "type": "Amp->Filter",
         "amount": 0.8
       },
       {
-        "engineA": "XOddCouple",
-        "engineB": "XOddCouple",
+        "engineA": "OddfeliX",
+        "engineB": "OddfeliX",
         "type": "LFO->Pitch",
         "amount": 0.5
       }

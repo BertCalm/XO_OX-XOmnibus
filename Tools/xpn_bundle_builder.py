@@ -54,7 +54,7 @@ Bundle Profile Format:
         "presets": [
             {"engine": "Onset", "name": "808 Reborn"},
             {"engine": "Onset", "name": "Boom Bap OG"},
-            {"engine": "Fat",   "name": "Deep Sub Bass"},
+            {"engine": "Obese",   "name": "Deep Sub Bass"},
             ...
         ]
     }
@@ -88,21 +88,21 @@ PROFILES_DIR = REPO_ROOT / "Tools" / "bundle_profiles"
 DRUM_ENGINES = {"onset", "Onset", "ONSET"}
 
 # XO_OX engine colors for mixed-engine pack cover
-ENGINE_ORDER = ["ONSET", "OVERWORLD", "SNAP", "MORPH", "DUB", "DRIFT", "BOB", "FAT", "OPAL"]
+ENGINE_ORDER = ["ONSET", "OVERWORLD", "ODDFELIX", "ODDOSCAR", "OVERDUB", "ODYSSEY", "OBLONG", "OBESE", "OPAL"]
 
 # Canonical engine name aliases — maps legacy/long names to XOmnibus short names
 ENGINE_ALIASES: dict[str, str] = {
-    "xoblongbob":  "Bob",
-    "bob":         "Bob",
-    "xodyssey":    "Drift",
-    "drift":       "Drift",
-    "xoverdub":    "Dub",
-    "dub":         "Dub",
-    "xobese":      "Fat",
-    "fat":         "Fat",
-    "xoddcouple":  "Morph",  # multi-engine — keep as-is for display, alias to first-listed
-    "snap":        "Snap",
-    "morph":       "Morph",
+    "xoblongbob":  "Oblong",
+    "bob":         "Oblong",
+    "xodyssey":    "Odyssey",
+    "drift":       "Odyssey",
+    "xoverdub":    "Overdub",
+    "dub":         "Overdub",
+    "xobese":      "Obese",
+    "fat":         "Obese",
+    "xoddcouple":  "OddOscar",  # multi-engine — keep as-is for display, alias to first-listed
+    "snap":        "OddfeliX",
+    "morph":       "OddOscar",
     "onset":       "Onset",
     "overworld":   "Overworld",
     "opal":        "Opal",
@@ -537,7 +537,7 @@ PREDEFINED_PROFILES = {
     "ambient": {
         "name": "Ambient Textures",
         "description": "Atmospheric and spatial percussion for cinematic production",
-        "cover_engine": "DRIFT",
+        "cover_engine": "ODYSSEY",
         "mood_filter": "Atmosphere",
         "max_count": 20,
     },

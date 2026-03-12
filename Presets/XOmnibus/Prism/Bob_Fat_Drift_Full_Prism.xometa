@@ -3,13 +3,13 @@
   "name": "Bob_Fat_Drift_Full_Prism",
   "mood": "Prism",
   "engines": [
-    "Bob",
-    "Fat",
-    "Drift"
+    "Oblong",
+    "Obese",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine full prism \u2014 BOB melody, FAT spectral depth, DRIFT shimmer. Complete prism.",
+  "description": "Three-engine full prism — BOB melody, FAT spectral depth, DRIFT shimmer. Complete prism.",
   "tags": [
     "bob",
     "fat",
@@ -24,7 +24,7 @@
     "DRIFT SHIMMER",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.78,
@@ -35,7 +35,7 @@
     "aggression": 0.3
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -78,7 +78,7 @@
       "bob_glide": 0.05,
       "bob_polyphony": 0
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.85,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.08,
@@ -111,7 +111,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -155,14 +155,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "Drift",
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
         "type": "Pitch->Pitch",
         "amount": 0.5
       },
       {
-        "engineA": "Fat",
-        "engineB": "Drift",
+        "engineA": "Obese",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.3
       }

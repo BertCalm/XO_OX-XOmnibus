@@ -17,7 +17,7 @@
   "name": "Rain Tap",
   "mood": "Atmosphere",
   "engines": [
-    "Snap"
+    "OddfeliX"
   ],
   "description": "Single raindrop \u2014 snapping against glass in slow irregular rhythm.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.05
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 0,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.4,

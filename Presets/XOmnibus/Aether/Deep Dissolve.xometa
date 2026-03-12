@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Deep Dissolve",
   "mood": "Aether",
-  "engines": ["XOpal"],
+  "engines": ["Opal"],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Maximum scatter, position wander. Sound dissolves into pure space. Generative ambient.",
@@ -13,7 +13,7 @@
   "created": "2026-03-11",
   "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
   "parameters": {
-    "XOpal": {
+    "Opal": {
       "opal_source": 4,
       "opal_grainSize": 700.0,
       "opal_density": 3.0,

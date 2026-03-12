@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Double Scroll",
   "mood": "Prism",
-  "engines": ["XOuroboros"],
+  "engines": ["Ouroboros"],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Chua circuit at mid chaos with projection offsets revealing the double-scroll signature. Complex, folding timbre.",
@@ -13,7 +13,7 @@
   "created": "2026-03-10",
   "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
   "parameters": {
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 2,
       "ouro_rate": 247.0,
       "ouro_chaosIndex": 0.6,

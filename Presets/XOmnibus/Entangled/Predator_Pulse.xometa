@@ -3,7 +3,7 @@
   "name": "Predator Pulse",
   "mood": "Entangled",
   "engines": [
-    "XOrganon"
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -29,7 +29,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "XOrganon": {
+    "Organon": {
       "organon_metabolicRate": 5.0,
       "organon_enzymeSelect": 2000.0,
       "organon_catalystDrive": 1.0,

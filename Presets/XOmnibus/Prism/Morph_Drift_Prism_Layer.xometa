@@ -3,12 +3,12 @@
   "name": "Morph_Drift_Prism_Layer",
   "mood": "Prism",
   "engines": [
-    "Morph",
-    "Drift"
+    "OddOscar",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH wavetable prism over DRIFT shimmer field \u2014 two spectral layers in radiant combination.",
+  "description": "MORPH wavetable prism over DRIFT shimmer field — two spectral layers in radiant combination.",
   "tags": [
     "morph",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.68,
@@ -33,7 +33,7 @@
     "aggression": 0.15
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.65,
       "morph_bloom": 0.75,
       "morph_decay": 3.0,
@@ -47,7 +47,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -91,8 +91,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Drift",
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.3
       }

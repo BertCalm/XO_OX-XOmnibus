@@ -3,12 +3,12 @@
   "name": "Fat_Morph_Cloudscape",
   "mood": "Atmosphere",
   "engines": [
-    "Fat",
-    "Morph"
+    "Obese",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT massive cloud layer with MORPH scanning above \u2014 cloudscape of harmonic density.",
+  "description": "FAT massive cloud layer with MORPH scanning above — cloudscape of harmonic density.",
   "tags": [
     "fat",
     "morph",
@@ -22,7 +22,7 @@
     "COUPLING",
     "DEPTH"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
@@ -33,7 +33,7 @@
     "aggression": 0.06
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.4,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.35,
@@ -66,7 +66,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.8,
       "morph_decay": 6.0,
@@ -84,8 +84,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Morph",
+        "engineA": "Obese",
+        "engineB": "OddOscar",
         "type": "Amp->Filter",
         "amount": 0.3
       }

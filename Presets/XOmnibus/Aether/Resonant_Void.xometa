@@ -17,7 +17,7 @@
   "name": "Resonant Void",
   "mood": "Aether",
   "engines": [
-    "Snap"
+    "OddfeliX"
   ],
   "description": "High-resonance snap with nothing beneath \u2014 resonance as sculpture.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.3
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 0,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,

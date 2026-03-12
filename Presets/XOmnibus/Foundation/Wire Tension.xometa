@@ -3,7 +3,7 @@
   "name": "Wire Tension",
   "mood": "Foundation",
   "engines": [
-    "XOddCouple"
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -25,12 +25,12 @@
   "tempo": 150,
   "created": "2026-03-05",
   "legacy": {
-    "sourceInstrument": "XOddCouple",
+    "sourceInstrument": "OddfeliX",
     "sourceCategory": "Grounded",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOddCouple": {
+    "OddfeliX": {
       "couplingAmount": 0.0,
       "masterBalance": -0.341,
       "xOscMode": 1,

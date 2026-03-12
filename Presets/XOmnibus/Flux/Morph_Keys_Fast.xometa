@@ -3,7 +3,7 @@
   "name": "Morph_Keys_Fast",
   "mood": "Flux",
   "engines": [
-    "Morph"
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -32,7 +32,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.5,
       "morph_decay": 0.7,

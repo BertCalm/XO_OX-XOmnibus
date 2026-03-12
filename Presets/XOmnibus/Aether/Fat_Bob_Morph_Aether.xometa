@@ -3,13 +3,13 @@
   "name": "Fat_Bob_Morph_Aether",
   "mood": "Aether",
   "engines": [
-    "Fat",
-    "Bob",
-    "Morph"
+    "Obese",
+    "Oblong",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine density aether \u2014 FAT void, BOB vapor, MORPH ghost scan. Maximum density-space.",
+  "description": "Three-engine density aether — FAT void, BOB vapor, MORPH ghost scan. Maximum density-space.",
   "tags": [
     "fat",
     "bob",
@@ -24,7 +24,7 @@
     "MORPH GHOST",
     "COUPLING"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.42,
@@ -35,7 +35,7 @@
     "aggression": 0.03
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.48,
@@ -68,7 +68,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -111,7 +111,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.35,
       "morph_bloom": 0.92,
       "morph_decay": 9.5,
@@ -129,14 +129,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Bob",
+        "engineA": "Obese",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.14
       },
       {
-        "engineA": "Fat",
-        "engineB": "Morph",
+        "engineA": "Obese",
+        "engineB": "OddOscar",
         "type": "Amp->Filter",
         "amount": 0.18
       }

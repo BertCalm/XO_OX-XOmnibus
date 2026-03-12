@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Fat Drift Landscape",
   "mood": "Atmosphere",
-  "engines": ["Fat", "Drift"],
+  "engines": [
+    "Obese",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FAT's massive drone providing the earth, DRIFT's shimmer providing the sky. FAT amplitude shapes DRIFT's filter — the landscape breathes slowly between dense ground and open shimmer.",
-  "tags": ["atmosphere", "fat", "drift", "landscape", "drone", "shimmer", "ambient"],
-  "macroLabels": ["FAT EARTH", "DRIFT SKY", "COUPLING", "BREATH"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "atmosphere",
+    "fat",
+    "drift",
+    "landscape",
+    "drone",
+    "shimmer",
+    "ambient"
+  ],
+  "macroLabels": [
+    "FAT EARTH",
+    "DRIFT SKY",
+    "COUPLING",
+    "BREATH"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
@@ -19,7 +35,7 @@
     "aggression": 0.02
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.3,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.45,
@@ -52,7 +68,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 2
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 1,
       "drift_oscA_tune": 12.0,
@@ -96,8 +112,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Drift",
+        "engineA": "Obese",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.3
       }

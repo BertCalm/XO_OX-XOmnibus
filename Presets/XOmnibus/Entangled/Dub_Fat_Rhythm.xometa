@@ -3,12 +3,12 @@
   "name": "Dub_Fat_Rhythm",
   "mood": "Entangled",
   "engines": [
-    "Dub",
-    "Fat"
+    "Overdub",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB rhythmic pulse blends FAT's oscillator mix \u2014 the bass groove literally rewrites the harmonic content of the pad on every hit. Rhythm becomes timbre.",
+  "description": "DUB rhythmic pulse blends FAT's oscillator mix — the bass groove literally rewrites the harmonic content of the pad on every hit. Rhythm becomes timbre.",
   "tags": [
     "rhythm",
     "blend",
@@ -24,7 +24,7 @@
     "RHYTHM DEPTH",
     "FILTER"
   ],
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.4,
@@ -35,7 +35,7 @@
     "aggression": 0.45
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -73,7 +73,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 0
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.5,
       "fat_subLevel": 0.4,
@@ -110,8 +110,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Fat",
+        "engineA": "Overdub",
+        "engineB": "Obese",
         "type": "Rhythm->Blend",
         "amount": 0.6
       }

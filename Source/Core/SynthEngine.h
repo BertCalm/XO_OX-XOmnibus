@@ -24,7 +24,7 @@ enum class CouplingType {
 //==============================================================================
 // The SynthEngine interface.
 //
-// Every engine module (SNAP, MORPH, DUB, DRIFT, BOB, FAT, ONSET) implements
+// Every engine module (ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, etc.) implements
 // this interface. The XOmnibusProcessor holds up to 4 active engines and
 // connects them through the MegaCouplingMatrix.
 //
@@ -77,7 +77,7 @@ public:
     //-- Parameters ------------------------------------------------------------
 
     // Return the engine's parameter layout with namespaced IDs.
-    // Example: SNAP engine returns "snap_filterCutoff", "snap_resonance", etc.
+    // Example: ODDFELIX engine returns "snap_filterCutoff", "snap_resonance", etc.
     virtual juce::AudioProcessorValueTreeState::ParameterLayout
         createParameterLayout() = 0;
 
@@ -88,7 +88,7 @@ public:
 
     //-- Identity --------------------------------------------------------------
 
-    // Return the engine's unique identifier (e.g., "Snap", "Morph", "Dub").
+    // Return the engine's unique identifier (e.g., "OddfeliX", "OddOscar", "Overdub").
     virtual juce::String getEngineId() const = 0;
 
     // Return the engine's accent colour for UI theming.

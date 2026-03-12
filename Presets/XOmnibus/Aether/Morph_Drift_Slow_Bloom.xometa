@@ -3,12 +3,12 @@
   "name": "Morph_Drift_Slow_Bloom",
   "mood": "Aether",
   "engines": [
-    "Morph",
-    "Drift"
+    "OddOscar",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH bloom at slowest rate with DRIFT shimmer \u2014 the bloom takes minutes to complete.",
+  "description": "MORPH bloom at slowest rate with DRIFT shimmer — the bloom takes minutes to complete.",
   "tags": [
     "morph",
     "drift",
@@ -22,7 +22,7 @@
     "BLOOM RATE",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.48,
@@ -33,7 +33,7 @@
     "aggression": 0.04
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.3,
       "morph_bloom": 0.98,
       "morph_decay": 10.0,
@@ -47,7 +47,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -91,8 +91,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Drift",
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
         "type": "Env->Morph",
         "amount": 0.55
       }

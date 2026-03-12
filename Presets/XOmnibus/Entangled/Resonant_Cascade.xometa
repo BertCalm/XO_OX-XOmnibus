@@ -2,13 +2,28 @@
   "schema_version": 1,
   "name": "Resonant Cascade",
   "mood": "Entangled",
-  "engines": ["Drift", "Morph"],
+  "engines": [
+    "Odyssey",
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT's amplitude sweeps MORPH's filter in cascading waves. Psychedelic shimmer and evolving wavetable in perpetual conversation — each engine feeding the other's texture.",
-  "tags": ["cascade", "shimmer", "morph", "movement", "filter", "entangled"],
-  "macroLabels": ["DRIFT SHIMMER", "MORPH RATE", "COUPLING", "RESONANCE"],
-  "couplingIntensity": "Strong",
+  "tags": [
+    "cascade",
+    "shimmer",
+    "morph",
+    "movement",
+    "filter",
+    "entangled"
+  ],
+  "macroLabels": [
+    "DRIFT SHIMMER",
+    "MORPH RATE",
+    "COUPLING",
+    "RESONANCE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.65,
@@ -19,7 +34,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 3,
       "drift_oscA_tune": 0.0,
@@ -59,7 +74,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.55,
       "morph_bloom": 0.6,
       "morph_decay": 2.8,
@@ -77,8 +92,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
-        "engineB": "Morph",
+        "engineA": "Odyssey",
+        "engineB": "OddOscar",
         "type": "Amp->Filter",
         "amount": 0.6
       }

@@ -3,11 +3,11 @@
   "name": "Magnetar Burst",
   "mood": "Aether",
   "engines": [
-    "XOddCouple"
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Intense magnetic star burst \u2014 bright transient explosion feeding into cascading delay and reverb. Cinematic impact.",
+  "description": "Intense magnetic star burst — bright transient explosion feeding into cascading delay and reverb. Cinematic impact.",
   "tags": [
     "burst",
     "cinematic",
@@ -25,12 +25,12 @@
   "tempo": null,
   "created": "2026-03-05",
   "legacy": {
-    "sourceInstrument": "XOddCouple",
+    "sourceInstrument": "OddfeliX",
     "sourceCategory": "Deep Space",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOddCouple": {
+    "OddfeliX": {
       "couplingAmount": 0.833,
       "masterBalance": 0.044,
       "xOscMode": 2,

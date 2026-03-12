@@ -3,13 +3,13 @@
   "name": "Morph_Dub_Bob_Trio",
   "mood": "Entangled",
   "engines": [
-    "Morph",
-    "Dub",
-    "Bob"
+    "OddOscar",
+    "Overdub",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine melodic trio \u2014 MORPH spectral middle, DUB bass anchor, BOB character lead.",
+  "description": "Three-engine melodic trio — MORPH spectral middle, DUB bass anchor, BOB character lead.",
   "tags": [
     "morph",
     "dub",
@@ -24,7 +24,7 @@
     "BOB LEAD",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -35,7 +35,7 @@
     "aggression": 0.32
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.52,
       "morph_bloom": 0.72,
       "morph_decay": 3.0,
@@ -49,7 +49,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -87,7 +87,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 0
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -134,14 +134,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Morph",
+        "engineA": "Overdub",
+        "engineB": "OddOscar",
         "type": "Rhythm->Blend",
         "amount": 0.48
       },
       {
-        "engineA": "Morph",
-        "engineB": "Bob",
+        "engineA": "OddOscar",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.42
       }

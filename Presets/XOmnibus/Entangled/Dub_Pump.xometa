@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Dub Pump",
   "mood": "Entangled",
-  "engines": ["XOddCouple"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The signature XOddCouple sound: SNAP hits duck MORPH's filter in classic dub sidechain pump. Play percussive hits over evolving pads.",
-  "tags": ["dub", "pump", "coupled", "sidechain", "signature"],
-  "macroLabels": ["SNAP DEPTH", "BLOOM", "COUPLING", "SPACE"],
+  "description": "The signature OddfeliX sound: SNAP hits duck MORPH's filter in classic dub sidechain pump. Play percussive hits over evolving pads.",
+  "tags": [
+    "dub",
+    "pump",
+    "coupled",
+    "sidechain",
+    "signature"
+  ],
+  "macroLabels": [
+    "SNAP DEPTH",
+    "BLOOM",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
@@ -19,7 +32,7 @@
     "aggression": 0.5
   },
   "parameters": {
-    "XOddCouple": {
+    "OddfeliX": {
       "snap_oscMode": 0,
       "snap_snap": 0.5,
       "snap_decay": 0.4,
@@ -47,14 +60,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "XOddCouple",
-        "engineB": "XOddCouple",
+        "engineA": "OddfeliX",
+        "engineB": "OddfeliX",
         "type": "Amp->Filter",
         "amount": 0.6
       },
       {
-        "engineA": "XOddCouple",
-        "engineB": "XOddCouple",
+        "engineA": "OddfeliX",
+        "engineB": "OddfeliX",
         "type": "LFO->Pitch",
         "amount": 0.3
       }

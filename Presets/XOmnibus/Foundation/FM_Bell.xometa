@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "FM Bell",
   "mood": "Foundation",
-  "engines": ["XOddCouple"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bright FM bell tone with moderate snap for metallic attack.",
-  "tags": ["bell", "FM", "metallic", "bright"],
-  "macroLabels": ["BRILLIANCE", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "bell",
+    "FM",
+    "metallic",
+    "bright"
+  ],
+  "macroLabels": [
+    "BRILLIANCE",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -19,7 +31,7 @@
     "aggression": 0.4
   },
   "parameters": {
-    "XOddCouple": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_snap": 0.45,
       "snap_decay": 1.8,

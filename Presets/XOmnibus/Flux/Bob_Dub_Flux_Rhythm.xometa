@@ -3,12 +3,12 @@
   "name": "Bob_Dub_Flux_Rhythm",
   "mood": "Flux",
   "engines": [
-    "Bob",
-    "Dub"
+    "Oblong",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB rhythm drives DUB blend \u2014 character stabs shape the bass timbre in real time.",
+  "description": "BOB rhythm drives DUB blend — character stabs shape the bass timbre in real time.",
   "tags": [
     "bob",
     "dub",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.48,
@@ -33,7 +33,7 @@
     "aggression": 0.45
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -76,7 +76,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -118,8 +118,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "Dub",
+        "engineA": "Oblong",
+        "engineB": "Overdub",
         "type": "Rhythm->Blend",
         "amount": 0.52
       }

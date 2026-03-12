@@ -3,14 +3,14 @@
   "name": "Snap_Bob_Fat_Dub_Groove",
   "mood": "Flux",
   "engines": [
-    "Snap",
-    "Bob",
-    "Fat",
-    "Dub"
+    "OddfeliX",
+    "Oblong",
+    "Obese",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Four-engine groove \u2014 SNAP clock, BOB melody, FAT density, DUB bass. Maximum flux.",
+  "description": "Four-engine groove — SNAP clock, BOB melody, FAT density, DUB bass. Maximum flux.",
   "tags": [
     "snap",
     "bob",
@@ -26,7 +26,7 @@
     "FAT DENSITY",
     "DUB BASS"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.52,
@@ -37,7 +37,7 @@
     "aggression": 0.52
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -50,7 +50,7 @@
       "snap_release": 0.1,
       "snap_level": 0.68
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -93,7 +93,7 @@
       "bob_glide": 0.1,
       "bob_polyphony": 0
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.3,
@@ -126,7 +126,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -168,20 +168,20 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Fat",
+        "engineA": "OddfeliX",
+        "engineB": "Obese",
         "type": "Rhythm->Blend",
         "amount": 0.52
       },
       {
-        "engineA": "Fat",
-        "engineB": "Bob",
+        "engineA": "Obese",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.42
       },
       {
-        "engineA": "Snap",
-        "engineB": "Dub",
+        "engineA": "OddfeliX",
+        "engineB": "Overdub",
         "type": "Amp->Filter",
         "amount": 0.58
       }

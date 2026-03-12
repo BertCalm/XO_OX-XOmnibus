@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Morning Haze",
   "mood": "Atmosphere",
-  "engines": ["XOpal"],
+  "engines": ["Opal"],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Soft sine grain clouds with gentle position drift. Warm foggy texture.",
@@ -13,7 +13,7 @@
   "created": "2026-03-11",
   "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
   "parameters": {
-    "XOpal": {
+    "Opal": {
       "opal_source": 0,
       "opal_grainSize": 300.0,
       "opal_density": 15.0,

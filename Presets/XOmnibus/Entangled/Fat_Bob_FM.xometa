@@ -3,12 +3,12 @@
   "name": "Fat_Bob_FM",
   "mood": "Entangled",
   "engines": [
-    "Fat",
-    "Bob"
+    "Obese",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT modulates BOB with FM \u2014 the dense oscillator stack injects FM inharmonicity into the warm character voice. Thick tonal instability.",
+  "description": "FAT modulates BOB with FM — the dense oscillator stack injects FM inharmonicity into the warm character voice. Thick tonal instability.",
   "tags": [
     "fat",
     "bob",
@@ -24,7 +24,7 @@
     "FM DEPTH",
     "CHARACTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -35,7 +35,7 @@
     "aggression": 0.45
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.55,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.35,
@@ -68,7 +68,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -115,8 +115,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Bob",
+        "engineA": "Obese",
+        "engineB": "Oblong",
         "type": "Audio->FM",
         "amount": 0.4
       }

@@ -3,13 +3,13 @@
   "name": "Snap_Fat_Drift_Aether",
   "mood": "Aether",
   "engines": [
-    "Snap",
-    "Fat",
-    "Drift"
+    "OddfeliX",
+    "Obese",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine cosmic aether \u2014 SNAP rare event, FAT void, DRIFT shimmer. Universe in miniature.",
+  "description": "Three-engine cosmic aether — SNAP rare event, FAT void, DRIFT shimmer. Universe in miniature.",
   "tags": [
     "snap",
     "fat",
@@ -24,7 +24,7 @@
     "DRIFT SHIMMER",
     "COUPLING"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
@@ -35,7 +35,7 @@
     "aggression": 0.06
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -48,7 +48,7 @@
       "snap_release": 0.1,
       "snap_level": 0.28
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.48,
@@ -81,7 +81,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -125,14 +125,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Drift",
+        "engineA": "OddfeliX",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.14
       },
       {
-        "engineA": "Fat",
-        "engineB": "Drift",
+        "engineA": "Obese",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.18
       }

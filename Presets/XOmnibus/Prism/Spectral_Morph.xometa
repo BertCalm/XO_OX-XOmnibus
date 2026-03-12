@@ -17,7 +17,7 @@
   "name": "Spectral Morph",
   "mood": "Prism",
   "engines": [
-    "Morph"
+    "OddOscar"
   ],
   "description": "Morph reveals harmonic structure \u2014 each position is a different spectral fingerprint.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.3,
       "morph_decay": 0.6,

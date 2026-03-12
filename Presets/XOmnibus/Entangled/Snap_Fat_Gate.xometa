@@ -3,12 +3,12 @@
   "name": "Snap_Fat_Gate",
   "mood": "Entangled",
   "engines": [
-    "Snap",
-    "Fat"
+    "OddfeliX",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP percussion gates FAT's massive filter \u2014 every hit opens the dense pad with a bright filter flash. Classic but with maximum density.",
+  "description": "SNAP percussion gates FAT's massive filter — every hit opens the dense pad with a bright filter flash. Classic but with maximum density.",
   "tags": [
     "snap",
     "fat",
@@ -24,7 +24,7 @@
     "GATE DEPTH",
     "FILTER OPEN"
   ],
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.6,
@@ -35,7 +35,7 @@
     "aggression": 0.6
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -48,7 +48,7 @@
       "snap_release": 0.1,
       "snap_level": 0.75
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.45,
@@ -85,8 +85,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Fat",
+        "engineA": "OddfeliX",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.7
       }

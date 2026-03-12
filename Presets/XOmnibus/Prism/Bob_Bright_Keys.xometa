@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Bob Bright Keys",
   "mood": "Prism",
-  "engines": ["Bob"],
+  "engines": ["Oblong"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BOB's character at high brightness — wide filter open, oscillator B sync adding sparkle, short decay for keyboard playing. Warm character with spectral presence.",
@@ -19,7 +19,7 @@
     "aggression": 0.3
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 1,
       "bob_oscA_shape": 0.6,
       "bob_oscA_tune": 0.0,

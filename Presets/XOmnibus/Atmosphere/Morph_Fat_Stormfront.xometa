@@ -3,12 +3,12 @@
   "name": "Morph_Fat_Stormfront",
   "mood": "Atmosphere",
   "engines": [
-    "Morph",
-    "Fat"
+    "OddOscar",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH evolving above FAT dense foundation \u2014 a gathering stormfront, tension building slowly.",
+  "description": "MORPH evolving above FAT dense foundation — a gathering stormfront, tension building slowly.",
   "tags": [
     "morph",
     "fat",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.4,
@@ -33,7 +33,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.75,
       "morph_decay": 5.0,
@@ -47,7 +47,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.4,
@@ -84,8 +84,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Fat",
+        "engineA": "OddOscar",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.35
       }

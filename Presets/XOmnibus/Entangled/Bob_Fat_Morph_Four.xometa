@@ -3,13 +3,13 @@
   "name": "Bob_Fat_Morph_Four",
   "mood": "Entangled",
   "engines": [
-    "Bob",
-    "Fat",
-    "Morph"
+    "Oblong",
+    "Obese",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine melodic density \u2014 BOB character, FAT harmonic foundation, MORPH spectral evolution.",
+  "description": "Three-engine melodic density — BOB character, FAT harmonic foundation, MORPH spectral evolution.",
   "tags": [
     "bob",
     "fat",
@@ -24,7 +24,7 @@
     "MORPH EVOLVE",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.52,
@@ -35,7 +35,7 @@
     "aggression": 0.22
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -78,7 +78,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.48,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.32,
@@ -111,7 +111,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.52,
       "morph_bloom": 0.72,
       "morph_decay": 3.0,
@@ -129,14 +129,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "Morph",
+        "engineA": "Oblong",
+        "engineB": "OddOscar",
         "type": "Env->Morph",
         "amount": 0.52
       },
       {
-        "engineA": "Morph",
-        "engineB": "Fat",
+        "engineA": "OddOscar",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.38
       }

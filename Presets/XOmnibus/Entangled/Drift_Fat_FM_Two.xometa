@@ -3,12 +3,12 @@
   "name": "Drift_Fat_FM_Two",
   "mood": "Entangled",
   "engines": [
-    "Drift",
-    "Fat"
+    "Odyssey",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT FM-modulates FAT \u2014 shimmer creates FM inharmonicity in the massive density layer.",
+  "description": "DRIFT FM-modulates FAT — shimmer creates FM inharmonicity in the massive density layer.",
   "tags": [
     "drift",
     "fat",
@@ -22,7 +22,7 @@
     "FM DEPTH",
     "DENSITY"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.52,
@@ -33,7 +33,7 @@
     "aggression": 0.38
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -73,7 +73,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.52,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.32,
@@ -110,8 +110,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
-        "engineB": "Fat",
+        "engineA": "Odyssey",
+        "engineB": "Obese",
         "type": "Audio->FM",
         "amount": 0.42
       }

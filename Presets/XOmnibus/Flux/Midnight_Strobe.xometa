@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "name": "Midnight Strobe",
+  "mood": "Flux",
+  "engines": [
+    "Optic",
+    "Obese"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Hard-hitting AutoPulse strobe — sharp kick-shaped modulation drives Obese's saturated bass at 16th-note subdivision. Club-ready without touching a key.",
+  "tags": [
+    "trance",
+    "autopulse",
+    "club",
+    "hard",
+    "strobe"
+  ],
+  "macroLabels": [
+    "PULSE RATE",
+    "SHAPE",
+    "DRIVE",
+    "EVOLVE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": 145,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.55,
+    "movement": 0.95,
+    "density": 0.85,
+    "space": 0.2,
+    "aggression": 0.8
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.9,
+      "optic_inputGain": 2.0,
+      "optic_autoPulse": 1,
+      "optic_pulseRate": 2.4,
+      "optic_pulseShape": 0.05,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseEvolve": 0.4,
+      "optic_pulseSubdiv": 0.7,
+      "optic_pulseAccent": 0.95,
+      "optic_modDepth": 0.85,
+      "optic_modMixPulse": 0.9,
+      "optic_modMixSpec": 0.2,
+      "optic_vizMode": 2,
+      "optic_vizFeedback": 0.85,
+      "optic_vizSpeed": 1.5,
+      "optic_vizIntensity": 0.95
+    },
+    "Obese": {
+      "fat_satDrive": 6.0,
+      "fat_filterCutoff": 800.0,
+      "fat_filterReso": 0.4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Obese",
+        "type": "AmpToFilter",
+        "amount": 0.85
+      },
+      {
+        "engineA": "Optic",
+        "engineB": "Obese",
+        "type": "AmpToChoke",
+        "amount": 0.3
+      },
+      {
+        "engineA": "Obese",
+        "engineB": "Optic",
+        "type": "AudioToFM",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null
+}

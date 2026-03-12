@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Drift Ocean",
   "mood": "Atmosphere",
-  "engines": ["XOddCouple"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slowly evolving pad with maximum drift. Waves of timbre shift like ocean currents.",
-  "tags": ["ambient", "drift", "evolving", "ocean"],
-  "macroLabels": ["DEPTH", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "ambient",
+    "drift",
+    "evolving",
+    "ocean"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -19,7 +31,7 @@
     "aggression": 0.05
   },
   "parameters": {
-    "XOddCouple": {
+    "OddfeliX": {
       "morph_morph": 0.4,
       "morph_bloom": 4.0,
       "morph_decay": 5.0,

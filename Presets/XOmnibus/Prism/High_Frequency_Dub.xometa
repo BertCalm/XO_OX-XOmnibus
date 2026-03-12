@@ -17,7 +17,7 @@
   "name": "High Frequency Dub",
   "mood": "Prism",
   "engines": [
-    "Dub"
+    "Overdub"
   ],
   "description": "Bright open-filter dub tone \u2014 the upper register explored.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.28
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 1,
       "dub_oscTune": 0.0,

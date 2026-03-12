@@ -3,7 +3,7 @@
   "name": "Fat_Fast_Stab",
   "mood": "Flux",
   "engines": [
-    "Fat"
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -32,7 +32,7 @@
     "aggression": 0.58
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.55,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.3,

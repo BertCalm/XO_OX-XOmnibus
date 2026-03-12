@@ -3,13 +3,13 @@
   "name": "Fat_Bob_Morph_Groove",
   "mood": "Flux",
   "engines": [
-    "Fat",
-    "Bob",
-    "Morph"
+    "Obese",
+    "Oblong",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine groove \u2014 FAT arp, BOB stab, MORPH scan. Dynamic three-way flux.",
+  "description": "Three-engine groove — FAT arp, BOB stab, MORPH scan. Dynamic three-way flux.",
   "tags": [
     "fat",
     "bob",
@@ -24,7 +24,7 @@
     "MORPH SCAN",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -35,7 +35,7 @@
     "aggression": 0.45
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.52,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.3,
@@ -68,7 +68,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -111,7 +111,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.52,
       "morph_bloom": 0.78,
       "morph_decay": 1.5,
@@ -129,14 +129,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Morph",
+        "engineA": "Obese",
+        "engineB": "OddOscar",
         "type": "Rhythm->Blend",
         "amount": 0.52
       },
       {
-        "engineA": "Bob",
-        "engineB": "Morph",
+        "engineA": "Oblong",
+        "engineB": "OddOscar",
         "type": "Env->Morph",
         "amount": 0.6
       }

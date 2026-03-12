@@ -17,7 +17,7 @@
   "name": "Dub Organ",
   "mood": "Prism",
   "engines": [
-    "Dub"
+    "Overdub"
   ],
   "description": "Hammond-flavored dub organ \u2014 rotary cabinet through tape delay.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 3,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,

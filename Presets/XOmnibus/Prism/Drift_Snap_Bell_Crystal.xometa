@@ -3,12 +3,12 @@
   "name": "Drift_Snap_Bell_Crystal",
   "mood": "Prism",
   "engines": [
-    "Drift",
-    "Snap"
+    "Odyssey",
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT shimmer with SNAP crystal bell \u2014 ultra-bright bell tones in a shimmer field.",
+  "description": "DRIFT shimmer with SNAP crystal bell — ultra-bright bell tones in a shimmer field.",
   "tags": [
     "drift",
     "snap",
@@ -22,7 +22,7 @@
     "COUPLING",
     "RESONANCE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.78,
@@ -33,7 +33,7 @@
     "aggression": 0.45
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -73,7 +73,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -90,8 +90,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Drift",
+        "engineA": "OddfeliX",
+        "engineB": "Odyssey",
         "type": "Audio->Ring",
         "amount": 0.4
       }

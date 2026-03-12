@@ -3,14 +3,13 @@
   "name": "Synced Stepper",
   "mood": "Prism",
   "engines": [
-    "XOverdub"
+    "Overdub"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Expressive dub chords voice with deep dub echo.",
   "tags": [
     "square",
-    "verdub",
     "verdub"
   ],
   "macroLabels": [
@@ -23,12 +22,12 @@
   "tempo": null,
   "created": "2026-03-08",
   "legacy": {
-    "sourceInstrument": "XOverdub",
+    "sourceInstrument": "Overdub",
     "sourceCategory": "Dub Chords",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOverdub": {
+    "Overdub": {
       "osc_wave": 3.0,
       "osc_pwm": 0.35,
       "filter_cutoff": 3000.0,

@@ -3,13 +3,13 @@
   "name": "Fat_Dub_Snap_Power",
   "mood": "Entangled",
   "engines": [
-    "Fat",
-    "Dub",
-    "Snap"
+    "Obese",
+    "Overdub",
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine power \u2014 FAT density, DUB bass, SNAP punch. Maximum low-end coupling.",
+  "description": "Three-engine power — FAT density, DUB bass, SNAP punch. Maximum low-end coupling.",
   "tags": [
     "fat",
     "dub",
@@ -24,7 +24,7 @@
     "SNAP PUNCH",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.42,
@@ -35,7 +35,7 @@
     "aggression": 0.58
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.45,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.42,
@@ -68,7 +68,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -106,7 +106,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 0
     },
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -123,14 +123,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Fat",
+        "engineA": "OddfeliX",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.65
       },
       {
-        "engineA": "Snap",
-        "engineB": "Dub",
+        "engineA": "OddfeliX",
+        "engineB": "Overdub",
         "type": "Amp->Filter",
         "amount": 0.58
       }

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Velvet Drift",
   "mood": "Atmosphere",
-  "engines": ["XOpal"],
+  "engines": ["Opal"],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Dense micro-grains create a smooth velvet texture that drifts across the stereo field.",
@@ -13,7 +13,7 @@
   "created": "2026-03-11",
   "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
   "parameters": {
-    "XOpal": {
+    "Opal": {
       "opal_source": 1,
       "opal_grainSize": 40.0,
       "opal_density": 90.0,

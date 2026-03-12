@@ -155,8 +155,8 @@ private:
         // Envelope follower coefficients: coeff = exp(-1 / (time_seconds * sampleRate))
         // Using 1 - exp(-1/(t*sr)) as the "approach" coefficient
         float srF = static_cast<float> (sr);
-        attackCoeff  = 1.0f - std::exp (-1.0f / (attackMs * 0.001f * srF));
-        releaseCoeff = 1.0f - std::exp (-1.0f / (releaseMs * 0.001f * srF));
+        attackCoeff  = flushDenormal (1.0f - std::exp (-1.0f / (attackMs * 0.001f * srF)));
+        releaseCoeff = flushDenormal (1.0f - std::exp (-1.0f / (releaseMs * 0.001f * srF)));
     }
 
     //--------------------------------------------------------------------------
@@ -165,9 +165,10 @@ private:
     /// @return Linear gain to apply to the audio signal.
     float computeGain (float detectLevel)
     {
-        // Convert detection level to dB
+        // Convert detection level to dB using fast log2
+        // 20*log10(x) = 6.0206*log2(x) — avoids std::log10 per sample
         float detectDb = (detectLevel > 1e-10f)
-            ? 20.0f * std::log10 (detectLevel)
+            ? 6.0205999f * fastLog2 (detectLevel)
             : -200.0f;
 
         // Compute gain reduction with soft knee

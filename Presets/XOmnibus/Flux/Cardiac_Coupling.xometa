@@ -3,8 +3,8 @@
   "name": "Cardiac Coupling",
   "mood": "Flux",
   "engines": [
-    "Bob",
-    "XOrganon"
+    "Oblong",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.4,
       "bob_oscA_drift": 0.1,
@@ -45,7 +45,7 @@
       "bob_lfo1Rate": 1.0,
       "bob_lfo1Depth": 0.2
     },
-    "XOrganon": {
+    "Organon": {
       "organon_metabolicRate": 1.2,
       "organon_enzymeSelect": 800.0,
       "organon_catalystDrive": 0.5,
@@ -61,14 +61,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "XOrganon",
+        "engineA": "Oblong",
+        "engineB": "Organon",
         "type": "Audio->FM",
         "amount": 0.4
       },
       {
-        "engineA": "Bob",
-        "engineB": "XOrganon",
+        "engineA": "Oblong",
+        "engineB": "Organon",
         "type": "Rhythm->Blend",
         "amount": 0.5
       }

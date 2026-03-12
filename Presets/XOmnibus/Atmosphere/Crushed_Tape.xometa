@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Crushed Tape",
   "mood": "Atmosphere",
-  "engines": ["Fat"],
+  "engines": ["Obese"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Lo-fi crushed atmosphere with bitcrusher reducing to 8-bit at half sample rate. Warm saturation.",
@@ -19,7 +19,7 @@
     "aggression": 0.15
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.4,
       "fat_mojo": 0.2,
       "fat_subLevel": 0.2,

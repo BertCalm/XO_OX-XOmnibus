@@ -3,7 +3,7 @@
   "name": "Convulsion Engine",
   "mood": "Entangled",
   "engines": [
-    "XOddCouple"
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -25,12 +25,12 @@
   "tempo": 160,
   "created": "2026-03-05",
   "legacy": {
-    "sourceInstrument": "XOddCouple",
+    "sourceInstrument": "OddfeliX",
     "sourceCategory": "Entangled",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOddCouple": {
+    "OddfeliX": {
       "couplingAmount": 0.862,
       "masterBalance": 0.083,
       "xOscMode": 2,
@@ -91,7 +91,7 @@
     "swing": 0.183,
     "tracks": [
       {
-        "engine": "XOddCouple",
+        "engine": "OddfeliX",
         "length": 16,
         "muted": false,
         "steps": [
@@ -126,7 +126,7 @@
         ]
       },
       {
-        "engine": "XOddCouple",
+        "engine": "OddfeliX",
         "length": 16,
         "muted": false,
         "steps": [
@@ -147,13 +147,13 @@
         ]
       },
       {
-        "engine": "XOddCouple",
+        "engine": "OddfeliX",
         "length": 16,
         "muted": false,
         "steps": []
       },
       {
-        "engine": "XOddCouple",
+        "engine": "OddfeliX",
         "length": 16,
         "muted": false,
         "steps": [

@@ -3,8 +3,8 @@
   "name": "Evolutionary Sweep",
   "mood": "Entangled",
   "engines": [
-    "Drift",
-    "XOrganon"
+    "Odyssey",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_osc_a_mode": 1,
       "drift_osc_b_mode": 2,
       "drift_haze_amount": 0.3,
@@ -39,7 +39,7 @@
       "drift_reverb_size": 0.7,
       "drift_master_gain": -3.0
     },
-    "XOrganon": {
+    "Organon": {
       "organon_metabolicRate": 0.4,
       "organon_enzymeSelect": 1000.0,
       "organon_catalystDrive": 0.45,
@@ -55,8 +55,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
-        "engineB": "XOrganon",
+        "engineA": "Odyssey",
+        "engineB": "Organon",
         "type": "Env->Morph",
         "amount": 0.6
       }

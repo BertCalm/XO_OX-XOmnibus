@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Feral Snarl",
   "mood": "Prism",
-  "engines": ["XOpossum"],
+  "engines": ["Overbite"],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Aggressive bass with Snarl BP filter and Gnash asymmetric bite. Shows its teeth.",
@@ -13,7 +13,7 @@
   "created": "2026-03-11",
   "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
   "parameters": {
-    "XOpossum": {
+    "Overbite": {
       "poss_oscAWave": 2,
       "poss_oscALevel": 0.6,
       "poss_oscAPulseWidth": 0.5,

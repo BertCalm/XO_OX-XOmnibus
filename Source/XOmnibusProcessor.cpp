@@ -12,29 +12,31 @@
 #include "Engines/Bite/BiteEngine.h"
 #include "Engines/Organon/OrganonEngine.h"
 
-// Register engines with their canonical IDs (matching getEngineId() return values)
-static bool registered_Snap = xomnibus::EngineRegistry::instance().registerEngine(
-    "Snap", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+// Register engines with their canonical IDs (matching getEngineId() return values).
+// These MUST match the string returned by each engine's getEngineId().
+// Legacy names ("Snap", "Morph", etc.) are resolved by resolveEngineAlias() in PresetManager.h.
+static bool registered_OddfeliX = xomnibus::EngineRegistry::instance().registerEngine(
+    "OddfeliX", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::SnapEngine>();
     });
-static bool registered_Morph = xomnibus::EngineRegistry::instance().registerEngine(
-    "Morph", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+static bool registered_OddOscar = xomnibus::EngineRegistry::instance().registerEngine(
+    "OddOscar", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::MorphEngine>();
     });
-static bool registered_Dub = xomnibus::EngineRegistry::instance().registerEngine(
-    "Dub", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+static bool registered_Overdub = xomnibus::EngineRegistry::instance().registerEngine(
+    "Overdub", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::DubEngine>();
     });
-static bool registered_Drift = xomnibus::EngineRegistry::instance().registerEngine(
-    "Drift", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+static bool registered_Odyssey = xomnibus::EngineRegistry::instance().registerEngine(
+    "Odyssey", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::DriftEngine>();
     });
-static bool registered_Bob = xomnibus::EngineRegistry::instance().registerEngine(
-    "Bob", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+static bool registered_Oblong = xomnibus::EngineRegistry::instance().registerEngine(
+    "Oblong", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::BobEngine>();
     });
-static bool registered_Fat = xomnibus::EngineRegistry::instance().registerEngine(
-    "Fat", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+static bool registered_Obese = xomnibus::EngineRegistry::instance().registerEngine(
+    "Obese", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::FatEngine>();
     });
 static bool registered_Onset = xomnibus::EngineRegistry::instance().registerEngine(
@@ -65,9 +67,28 @@ XOmnibusProcessor::XOmnibusProcessor()
                      .withOutput("Output", juce::AudioChannelSet::stereo(), true)),
       apvts(*this, nullptr, "XOmnibusParams", createParameterLayout())
 {
+    cacheParameterPointers();
 }
 
 XOmnibusProcessor::~XOmnibusProcessor() = default;
+
+void XOmnibusProcessor::cacheParameterPointers()
+{
+    cachedParams.masterVolume    = apvts.getRawParameterValue("masterVolume");
+    cachedParams.cmEnabled       = apvts.getRawParameterValue("cm_enabled");
+    cachedParams.cmPalette       = apvts.getRawParameterValue("cm_palette");
+    cachedParams.cmVoicing       = apvts.getRawParameterValue("cm_voicing");
+    cachedParams.cmSpread        = apvts.getRawParameterValue("cm_spread");
+    cachedParams.cmSeqRunning    = apvts.getRawParameterValue("cm_seq_running");
+    cachedParams.cmSeqBpm        = apvts.getRawParameterValue("cm_seq_bpm");
+    cachedParams.cmSeqSwing      = apvts.getRawParameterValue("cm_seq_swing");
+    cachedParams.cmSeqGate       = apvts.getRawParameterValue("cm_seq_gate");
+    cachedParams.cmSeqPattern    = apvts.getRawParameterValue("cm_seq_pattern");
+    cachedParams.cmVelCurve      = apvts.getRawParameterValue("cm_vel_curve");
+    cachedParams.cmHumanize      = apvts.getRawParameterValue("cm_humanize");
+    cachedParams.cmSidechainDuck = apvts.getRawParameterValue("cm_sidechain_duck");
+    cachedParams.cmEnoMode       = apvts.getRawParameterValue("cm_eno_mode");
+}
 
 juce::AudioProcessorValueTreeState::ParameterLayout
     XOmnibusProcessor::createParameterLayout()
@@ -240,22 +261,22 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
 
     couplingMatrix.setEngines(enginePtrs);
 
-    // Sync Chord Machine state from APVTS (block-constant reads)
-    chordMachine.setEnabled(apvts.getRawParameterValue("cm_enabled")->load() >= 0.5f);
+    // Sync Chord Machine state from cached parameter pointers (no hash lookups)
+    chordMachine.setEnabled(cachedParams.cmEnabled->load() >= 0.5f);
     chordMachine.setPalette(static_cast<PaletteType>(
-        static_cast<int>(apvts.getRawParameterValue("cm_palette")->load())));
+        static_cast<int>(cachedParams.cmPalette->load())));
     chordMachine.setVoicing(static_cast<VoicingMode>(
-        static_cast<int>(apvts.getRawParameterValue("cm_voicing")->load())));
-    chordMachine.setSpread(apvts.getRawParameterValue("cm_spread")->load());
-    chordMachine.setSequencerRunning(apvts.getRawParameterValue("cm_seq_running")->load() >= 0.5f);
-    chordMachine.setBPM(apvts.getRawParameterValue("cm_seq_bpm")->load());
-    chordMachine.setSwing(apvts.getRawParameterValue("cm_seq_swing")->load());
-    chordMachine.setGlobalGate(apvts.getRawParameterValue("cm_seq_gate")->load());
+        static_cast<int>(cachedParams.cmVoicing->load())));
+    chordMachine.setSpread(cachedParams.cmSpread->load());
+    chordMachine.setSequencerRunning(cachedParams.cmSeqRunning->load() >= 0.5f);
+    chordMachine.setBPM(cachedParams.cmSeqBpm->load());
+    chordMachine.setSwing(cachedParams.cmSeqSwing->load());
+    chordMachine.setGlobalGate(cachedParams.cmSeqGate->load());
     chordMachine.setVelocityCurve(static_cast<VelocityCurve>(
-        static_cast<int>(apvts.getRawParameterValue("cm_vel_curve")->load())));
-    chordMachine.setHumanize(apvts.getRawParameterValue("cm_humanize")->load());
-    chordMachine.setSidechainDuck(apvts.getRawParameterValue("cm_sidechain_duck")->load());
-    chordMachine.setEnoMode(apvts.getRawParameterValue("cm_eno_mode")->load() >= 0.5f);
+        static_cast<int>(cachedParams.cmVelCurve->load())));
+    chordMachine.setHumanize(cachedParams.cmHumanize->load());
+    chordMachine.setSidechainDuck(cachedParams.cmSidechainDuck->load());
+    chordMachine.setEnoMode(cachedParams.cmEnoMode->load() >= 0.5f);
 
     // DAW host transport sync
     if (auto* playHead = getPlayHead())
@@ -295,7 +316,7 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     couplingMatrix.processBlock(numSamples, couplingRoutes);
 
     // Mix all engine outputs to master
-    const float masterVol = apvts.getRawParameterValue("masterVolume")->load();
+    const float masterVol = cachedParams.masterVolume->load();
 
     for (int i = 0; i < MaxSlots; ++i)
     {
@@ -320,7 +341,9 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         int fadeSamples = std::min(numSamples, cf.fadeSamplesRemaining);
         if (fadeSamples <= 0)
             continue;
-        float fadeStep = cf.fadeGain / static_cast<float>(fadeSamples);
+        // Distribute fade over ALL remaining samples, not just this block,
+        // so the crossfade takes the full 50ms regardless of block size.
+        float fadeStep = cf.fadeGain / static_cast<float>(cf.fadeSamplesRemaining);
 
         for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
         {

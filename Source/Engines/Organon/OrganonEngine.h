@@ -222,17 +222,17 @@ public:
         predictedEntropy = clamp (predictedEntropy, 0.0f, 1.0f);
 
         // Track belief change rate (for complexity penalty)
-        beliefRate = beliefRate * 0.95f + std::fabs (beliefDelta) * 0.05f;
+        beliefRate = flushDenormal (beliefRate * 0.95f + std::fabs (beliefDelta) * 0.05f);
 
         // 5. Update variance estimate (how uncertain the organism is)
         //    Exponential moving average of squared prediction errors
-        entropyVariance = entropyVariance * 0.98f + surprise * 0.02f;
+        entropyVariance = flushDenormal (entropyVariance * 0.98f + surprise * 0.02f);
         entropyVariance = clamp (entropyVariance, 0.001f, 1.0f);
 
         // 6. Adaptation gain: high VFE → organism adapts faster (more responsive)
         //    low VFE → organism is settled (more stable, richer harmonics)
         float targetAdaptation = clamp (1.0f - vfe * 2.0f, 0.2f, 1.0f);
-        adaptationGain = adaptationGain * 0.97f + targetAdaptation * 0.03f;
+        adaptationGain = flushDenormal (adaptationGain * 0.97f + targetAdaptation * 0.03f);
 
         // === METABOLIC ECONOMY (now modulated by VFE) ===
 
@@ -852,6 +852,7 @@ public:
                 if (voice.stealFadeStep > 0.0f)
                 {
                     voice.stealFadeGain -= voice.stealFadeStep;
+                    voice.stealFadeGain = flushDenormal (voice.stealFadeGain);
                     if (voice.stealFadeGain <= 0.0f)
                     {
                         voice.active = false;

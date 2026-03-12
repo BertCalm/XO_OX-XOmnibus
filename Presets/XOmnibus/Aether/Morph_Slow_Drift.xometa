@@ -3,7 +3,7 @@
   "name": "Morph_Slow_Drift",
   "mood": "Aether",
   "engines": [
-    "Morph"
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -32,7 +32,7 @@
     "aggression": 0.03
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.45,
       "morph_bloom": 0.95,
       "morph_decay": 10.0,

@@ -3,13 +3,13 @@
   "name": "Snap_Drift_Bob_Mist",
   "mood": "Atmosphere",
   "engines": [
-    "Snap",
-    "Drift",
-    "Bob"
+    "OddfeliX",
+    "Odyssey",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine mist \u2014 SNAP rare ticks, DRIFT shimmer mist, BOB warm presence. Misty morning.",
+  "description": "Three-engine mist — SNAP rare ticks, DRIFT shimmer mist, BOB warm presence. Misty morning.",
   "tags": [
     "snap",
     "drift",
@@ -24,7 +24,7 @@
     "BOB WARMTH",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -35,7 +35,7 @@
     "aggression": 0.08
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -48,7 +48,7 @@
       "snap_release": 0.1,
       "snap_level": 0.3
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -88,7 +88,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -135,14 +135,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Drift",
+        "engineA": "OddfeliX",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.15
       },
       {
-        "engineA": "Bob",
-        "engineB": "Drift",
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.2
       }

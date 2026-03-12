@@ -3,12 +3,12 @@
   "name": "Dub_Morph_Reverb_Scan",
   "mood": "Aether",
   "engines": [
-    "Dub",
-    "Morph"
+    "Overdub",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB reverb tail scans MORPH wavetable \u2014 echo decay maps spectral position.",
+  "description": "DUB reverb tail scans MORPH wavetable — echo decay maps spectral position.",
   "tags": [
     "dub",
     "morph",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.38,
@@ -33,7 +33,7 @@
     "aggression": 0.06
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -71,7 +71,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 0
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.35,
       "morph_bloom": 0.92,
       "morph_decay": 9.0,
@@ -89,8 +89,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Morph",
+        "engineA": "Overdub",
+        "engineB": "OddOscar",
         "type": "Audio->Wavetable",
         "amount": 0.52
       }

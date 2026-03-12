@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Belly Drone",
   "mood": "Atmosphere",
-  "engines": ["XOpossum"],
+  "engines": ["Overbite"],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Deep droning bass pad. Slow attack, long release, soft fur warmth. The floor beneath the clouds.",
@@ -13,7 +13,7 @@
   "created": "2026-03-11",
   "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
   "parameters": {
-    "XOpossum": {
+    "Overbite": {
       "poss_oscAWave": 0,
       "poss_oscALevel": 0.8,
       "poss_oscAPulseWidth": 0.5,

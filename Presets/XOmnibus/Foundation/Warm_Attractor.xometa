@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Warm Attractor",
   "mood": "Foundation",
-  "engines": ["XOuroboros"],
+  "engines": ["Ouroboros"],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Aizawa attractor with gentle chaos and heavy damping. Warm analog-like pad with smooth, rounded character.",
@@ -13,7 +13,7 @@
   "created": "2026-03-10",
   "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
   "parameters": {
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 3,
       "ouro_rate": 196.0,
       "ouro_chaosIndex": 0.2,

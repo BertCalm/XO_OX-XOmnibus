@@ -3,7 +3,7 @@
   "name": "Basement Stomp",
   "mood": "Foundation",
   "engines": [
-    "XOddCouple"
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -25,12 +25,12 @@
   "tempo": 138,
   "created": "2026-03-05",
   "legacy": {
-    "sourceInstrument": "XOddCouple",
+    "sourceInstrument": "OddfeliX",
     "sourceCategory": "Grounded",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOddCouple": {
+    "OddfeliX": {
       "couplingAmount": 0.028,
       "masterBalance": -0.505,
       "xOscMode": 2,
@@ -91,7 +91,7 @@
     "swing": 0.137,
     "tracks": [
       {
-        "engine": "XOddCouple",
+        "engine": "OddfeliX",
         "length": 16,
         "muted": false,
         "steps": [
@@ -126,7 +126,7 @@
         ]
       },
       {
-        "engine": "XOddCouple",
+        "engine": "OddfeliX",
         "length": 16,
         "muted": false,
         "steps": [
@@ -147,7 +147,7 @@
         ]
       },
       {
-        "engine": "XOddCouple",
+        "engine": "OddfeliX",
         "length": 16,
         "muted": false,
         "steps": [
@@ -210,7 +210,7 @@
         ]
       },
       {
-        "engine": "XOddCouple",
+        "engine": "OddfeliX",
         "length": 16,
         "muted": false,
         "steps": [

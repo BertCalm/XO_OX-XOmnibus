@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Elephant Phase",
+  "mood": "Prism",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Tame Impala heavy phaser — saw wave through deep 6-stage phaser sweep with long prism reflections. Hypnotic, driving, psychedelic. Named after the Tame Impala track.",
+  "tags": [
+    "psychedelic",
+    "phaser",
+    "driving",
+    "hypnotic",
+    "rock"
+  ],
+  "macroLabels": [
+    "DRIVE",
+    "PHASE",
+    "PRISM",
+    "WIDTH"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.55,
+    "movement": 0.9,
+    "density": 0.55,
+    "space": 0.7,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_oscWave": 1,
+      "oblq_oscFold": 0.2,
+      "oblq_oscDetune": 12.0,
+      "oblq_level": 0.8,
+      "oblq_glide": 0.15,
+      "oblq_percClick": 0.3,
+      "oblq_percDecay": 0.004,
+      "oblq_bounceRate": 120.0,
+      "oblq_bounceGravity": 0.8,
+      "oblq_bounceDamp": 0.85,
+      "oblq_bounceCnt": 4.0,
+      "oblq_bounceSwing": 0.0,
+      "oblq_clickTone": 2000.0,
+      "oblq_filterCut": 8000.0,
+      "oblq_filterRes": 0.25,
+      "oblq_attack": 0.01,
+      "oblq_decay": 0.4,
+      "oblq_sustain": 0.75,
+      "oblq_release": 0.35,
+      "oblq_prismDelay": 150.0,
+      "oblq_prismSpread": 0.7,
+      "oblq_prismColor": 0.6,
+      "oblq_prismWidth": 0.9,
+      "oblq_prismFeedback": 0.5,
+      "oblq_prismMix": 0.45,
+      "oblq_prismDamp": 0.35,
+      "oblq_phaserRate": 0.35,
+      "oblq_phaserDepth": 0.85,
+      "oblq_phaserFeedback": 0.6,
+      "oblq_phaserMix": 0.7
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -3,12 +3,12 @@
   "name": "Fat_Bob_Atmosphere_Deep",
   "mood": "Aether",
   "engines": [
-    "Fat",
-    "Bob"
+    "Obese",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT drone with BOB vapor layer \u2014 deep harmonic density with dusty presence above.",
+  "description": "FAT drone with BOB vapor layer — deep harmonic density with dusty presence above.",
   "tags": [
     "fat",
     "bob",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.4,
@@ -33,7 +33,7 @@
     "aggression": 0.05
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.5,
@@ -66,7 +66,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -113,8 +113,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Bob",
+        "engineA": "Obese",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.2
       }

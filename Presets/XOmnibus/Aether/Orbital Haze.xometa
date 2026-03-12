@@ -3,7 +3,7 @@
   "name": "Orbital Haze",
   "mood": "Aether",
   "engines": [
-    "XOddCouple"
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -26,12 +26,12 @@
   "tempo": null,
   "created": "2026-03-05",
   "legacy": {
-    "sourceInstrument": "XOddCouple",
+    "sourceInstrument": "OddfeliX",
     "sourceCategory": "Deep Space",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOddCouple": {
+    "OddfeliX": {
       "couplingAmount": 0.142,
       "masterBalance": -0.058,
       "xOscMode": 0,

@@ -3,7 +3,7 @@
   "name": "Woody Thwack",
   "mood": "Foundation",
   "engines": [
-    "XOverdub"
+    "Overdub"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -19,16 +19,16 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "created": "2026-03-08",
   "legacy": {
-    "sourceInstrument": "XOverdub",
+    "sourceInstrument": "Overdub",
     "sourceCategory": "Log Drums",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOverdub": {
+    "Overdub": {
       "osc_wave": 1.0,
       "pitch_env_depth": 24.0,
       "pitch_env_decay": 0.02,

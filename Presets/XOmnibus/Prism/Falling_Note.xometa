@@ -17,7 +17,7 @@
   "name": "Falling Note",
   "mood": "Prism",
   "engines": [
-    "Dub"
+    "Overdub"
   ],
   "description": "Pitch envelope plummet into bass territory \u2014 the classic falling dub note.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,

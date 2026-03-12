@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Drift Morph Vocal",
   "mood": "Entangled",
-  "engines": ["Drift", "Morph"],
+  "engines": [
+    "Odyssey",
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT formant pad coupled with MORPH wavetable. MORPH envelope sweeps DRIFT vowel position for vocal morphing.",
-  "tags": ["pad", "vocal", "coupled", "morph", "formant"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "pad",
+    "vocal",
+    "coupled",
+    "morph",
+    "formant"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -19,7 +33,7 @@
     "aggression": 0.15
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 1,
       "drift_oscA_tune": 0.0,

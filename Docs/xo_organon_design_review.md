@@ -71,7 +71,7 @@ If new types are genuinely needed, they must be added to the enum, the matrix `p
 
 ### What works
 
-- 10 parameters is a reasonable count (SNAP has ~12, DUB has ~14, ONSET has ~15).
+- 10 parameters is a reasonable count (ODDFELIX has ~12, OVERDUB has ~14, ONSET has ~15).
 - The parameter names are evocative and map clearly to DSP functions.
 - The macro mapping to CHARACTER/MOVEMENT/COUPLING/SPACE is well-thought-out.
 
@@ -126,7 +126,7 @@ The three-mode mapping (Pad/Fretless/Drum) is well-considered and follows the ex
 
 ### Gaps
 
-**6a. No CPU budget target.** Existing engines specify their budgets: SNAP ~15%, DUB ~10%, ONSET ~12%. Organon needs a target. Given the RK4 solver + entropy analysis + 32 modal oscillators, a realistic estimate is 20-25% of a single core. This should be stated and validated in Phase 1.
+**6a. No CPU budget target.** Existing engines specify their budgets: ODDFELIX ~15%, OVERDUB ~10%, ONSET ~12%. Organon needs a target. Given the RK4 solver + entropy analysis + 32 modal oscillators, a realistic estimate is 20-25% of a single core. This should be stated and validated in Phase 1.
 
 **6b. No voice count specified.** Every engine declares `getMaxVoices()`. Is Organon monophonic (one metabolic organism) or polyphonic (multiple organisms)? The biological metaphor strongly suggests monophonic or 2-4 voice, since each "organism" maintains independent state. This has major CPU implications — 32 modes × 8 voices = 256 simultaneous ODE systems.
 
@@ -159,12 +159,12 @@ The document never assigns Organon an accent color. Every XOmnibus engine has on
 
 | Engine | Color |
 |---|---|
-| SNAP | Terracotta `#C8553D` |
-| MORPH | Teal `#2A9D8F` |
-| DUB | Olive `#6B7B3A` |
-| DRIFT | Violet `#7B2D8B` |
-| BOB | Amber `#E9A84A` |
-| FAT | Hot Pink `#FF1493` |
+| ODDFELIX | Neon Tetra Blue `#00A6D6` |
+| ODDOSCAR | Axolotl Gill Pink `#E8839B` |
+| OVERDUB | Olive `#6B7B3A` |
+| ODYSSEY | Violet `#7B2D8B` |
+| OBLONG | Amber `#E9A84A` |
+| OBESE | Hot Pink `#FF1493` |
 | ONSET | Electric Blue `#0066FF` |
 | OVERWORLD | Neon Green `#39FF14` |
 | OPAL | Lavender `#A78BFA` |
@@ -235,4 +235,4 @@ The concept is genuinely innovative and aligns with XOmnibus's identity. The gap
 
 ---
 
-*Reviewed against XOmnibus master specification v1, SynthEngine interface, MegaCouplingMatrix (12 coupling types), and existing engine implementations (SNAP, DUB, ONSET).*
+*Reviewed against XOmnibus master specification v1, SynthEngine interface, MegaCouplingMatrix (12 coupling types), and existing engine implementations (ODDFELIX, OVERDUB, ONSET).*

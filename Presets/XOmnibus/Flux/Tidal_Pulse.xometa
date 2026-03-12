@@ -3,7 +3,7 @@
   "name": "Tidal Pulse",
   "mood": "Flux",
   "engines": [
-    "XOrganon"
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -29,7 +29,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "XOrganon": {
+    "Organon": {
       "organon_metabolicRate": 0.8,
       "organon_enzymeSelect": 800.0,
       "organon_catalystDrive": 0.5,

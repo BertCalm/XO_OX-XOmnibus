@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "name": "Kaleidoscope Funk",
+  "mood": "Prism",
+  "engines": [
+    "Oblique",
+    "Overdub"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Funk machine — Oblique's bouncing clicks ride over Overdub's deep sub bass. Square wave stabs with heavy wavefold grit, wide prism delay, punchy bounce with swing.",
+  "tags": [
+    "funk",
+    "bass",
+    "percussive",
+    "bouncy",
+    "layered"
+  ],
+  "macroLabels": [
+    "GRIT",
+    "BOUNCE",
+    "BASS",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": 110,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.65,
+    "movement": 0.8,
+    "density": 0.75,
+    "space": 0.5,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_oscWave": 2,
+      "oblq_oscFold": 0.45,
+      "oblq_oscDetune": 6.0,
+      "oblq_level": 0.7,
+      "oblq_glide": 0.0,
+      "oblq_percClick": 0.75,
+      "oblq_percDecay": 0.004,
+      "oblq_bounceRate": 65.0,
+      "oblq_bounceGravity": 0.68,
+      "oblq_bounceDamp": 0.72,
+      "oblq_bounceCnt": 10.0,
+      "oblq_bounceSwing": 0.25,
+      "oblq_clickTone": 3500.0,
+      "oblq_filterCut": 5000.0,
+      "oblq_filterRes": 0.4,
+      "oblq_attack": 0.002,
+      "oblq_decay": 0.2,
+      "oblq_sustain": 0.5,
+      "oblq_release": 0.12,
+      "oblq_prismDelay": 60.0,
+      "oblq_prismSpread": 0.55,
+      "oblq_prismColor": 0.8,
+      "oblq_prismWidth": 0.9,
+      "oblq_prismFeedback": 0.35,
+      "oblq_prismMix": 0.4,
+      "oblq_prismDamp": 0.2,
+      "oblq_phaserRate": 0.3,
+      "oblq_phaserDepth": 0.4,
+      "oblq_phaserFeedback": 0.2,
+      "oblq_phaserMix": 0.3
+    },
+    "Overdub": {
+      "dub_oscWave": 0,
+      "dub_oscOctave": 0,
+      "dub_level": 0.8,
+      "dub_filterCutoff": 500.0,
+      "dub_filterReso": 0.2,
+      "dub_subLevel": 0.8,
+      "dub_attack": 0.003,
+      "dub_decay": 0.4,
+      "dub_sustain": 0.6,
+      "dub_release": 0.2,
+      "dub_voiceMode": 1,
+      "dub_driveAmount": 2.0,
+      "dub_delayMix": 0.08,
+      "dub_reverbMix": 0.05
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Overdub",
+        "type": "AmpToFilter",
+        "amount": 0.45
+      },
+      {
+        "engineA": "Overdub",
+        "engineB": "Oblique",
+        "type": "AmpToFilter",
+        "amount": 0.3
+      }
+    ]
+  },
+  "sequencer": null
+}

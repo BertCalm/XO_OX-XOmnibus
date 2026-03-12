@@ -3,12 +3,12 @@
   "name": "Bob_Snap_Rhythm",
   "mood": "Entangled",
   "engines": [
-    "Bob",
-    "Snap"
+    "Oblong",
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB warm chord stabs drive SNAP's blend \u2014 the character of the lead literally shapes the percussive transient coloring.",
+  "description": "BOB warm chord stabs drive SNAP's blend — the character of the lead literally shapes the percussive transient coloring.",
   "tags": [
     "rhythm",
     "blend",
@@ -24,7 +24,7 @@
     "RHYTHM DEPTH",
     "TONE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -35,7 +35,7 @@
     "aggression": 0.55
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 1,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -78,7 +78,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -95,8 +95,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "Snap",
+        "engineA": "Oblong",
+        "engineB": "OddfeliX",
         "type": "Rhythm->Blend",
         "amount": 0.5
       }

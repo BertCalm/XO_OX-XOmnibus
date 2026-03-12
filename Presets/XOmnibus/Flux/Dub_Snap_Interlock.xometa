@@ -3,12 +3,12 @@
   "name": "Dub_Snap_Interlock",
   "mood": "Flux",
   "engines": [
-    "Dub",
-    "Snap"
+    "Overdub",
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB and SNAP interlocked \u2014 DUB LFO syncs SNAP through coupling for rhythmic interlock.",
+  "description": "DUB and SNAP interlocked — DUB LFO syncs SNAP through coupling for rhythmic interlock.",
   "tags": [
     "dub",
     "snap",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
@@ -33,7 +33,7 @@
     "aggression": 0.6
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -71,7 +71,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 0
     },
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -88,8 +88,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Snap",
+        "engineA": "Overdub",
+        "engineB": "OddfeliX",
         "type": "Rhythm->Blend",
         "amount": 0.55
       }

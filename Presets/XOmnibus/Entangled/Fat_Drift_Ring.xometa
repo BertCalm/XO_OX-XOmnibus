@@ -3,12 +3,12 @@
   "name": "Fat_Drift_Ring",
   "mood": "Entangled",
   "engines": [
-    "Fat",
-    "Drift"
+    "Obese",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT audio ring-modulates DRIFT \u2014 massive density creates metallic inharmonicity in the shimmer. Thunderstorm crystalline texture.",
+  "description": "FAT audio ring-modulates DRIFT — massive density creates metallic inharmonicity in the shimmer. Thunderstorm crystalline texture.",
   "tags": [
     "fat",
     "drift",
@@ -24,7 +24,7 @@
     "MODULATION",
     "TONE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.65,
@@ -35,7 +35,7 @@
     "aggression": 0.5
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.6,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.3,
@@ -68,7 +68,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -112,8 +112,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Drift",
+        "engineA": "Obese",
+        "engineB": "Odyssey",
         "type": "Audio->Ring",
         "amount": 0.45
       }

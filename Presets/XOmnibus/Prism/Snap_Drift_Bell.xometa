@@ -2,13 +2,30 @@
   "schema_version": 1,
   "name": "Snap Drift Bell",
   "mood": "Prism",
-  "engines": ["Snap", "Drift"],
+  "engines": [
+    "OddfeliX",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "SNAP's transient attack coupled with DRIFT's shimmer shimmer resonance creates metallic bell tones. SNAP amplitude drives DRIFT as Audio->Ring coupling — spectral bell overtones from percussive hits.",
-  "tags": ["bell", "prism", "snap", "drift", "metallic", "spectral", "ring", "coupled"],
-  "macroLabels": ["SNAP STRIKE", "BELL SHIMMER", "COUPLING", "RESONANCE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "bell",
+    "prism",
+    "snap",
+    "drift",
+    "metallic",
+    "spectral",
+    "ring",
+    "coupled"
+  ],
+  "macroLabels": [
+    "SNAP STRIKE",
+    "BELL SHIMMER",
+    "COUPLING",
+    "RESONANCE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.75,
@@ -19,7 +36,7 @@
     "aggression": 0.4
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_snap": 0.65,
       "snap_decay": 0.4,
@@ -31,7 +48,7 @@
       "snap_unison": 0,
       "snap_polyphony": 2
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 2,
       "drift_oscA_tune": 12.0,
@@ -75,8 +92,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Drift",
+        "engineA": "OddfeliX",
+        "engineB": "Odyssey",
         "type": "Audio->Ring",
         "amount": 0.45
       }

@@ -96,8 +96,8 @@ The glitch system creates unique coupling possibilities:
 
 | Coupling Route | Effect |
 |---------------|--------|
-| **External engine → XOverworld glitch amount** | Other engines' dynamics drive glitch intensity. ONSET kick hits increase glitch. DRIFT Climax triggers glitch cascade. |
-| **XOverworld glitch output → external engine** | Glitch events modulate other engines' parameters. A Missingno burst opens MORPH's filter. A Sprite Flicker gates FAT's output. |
+| **External engine → XOverworld glitch amount** | Other engines' dynamics drive glitch intensity. ONSET kick hits increase glitch. ODYSSEY Climax triggers glitch cascade. |
+| **XOverworld glitch output → external engine** | Glitch events modulate other engines' parameters. A Missingno burst opens ODDOSCAR's filter. A Sprite Flicker gates OBESE's output. |
 | **Glitch as mod source** | The glitch event itself becomes a modulation source in XOmnibus's coupling matrix — `GlitchToFilter`, `GlitchToMorph`, `GlitchToPitch`. |
 
 ### Glitch Design Philosophy
@@ -154,38 +154,38 @@ Each voice has a toggle: **MELODIC** or **PERC**
 
 ## Gallery Role
 - **Sonic gap it fills:** Chip/retro synthesis — completely unoccupied. No engine recreates console-era sound architecture.
-- **Differentiation from FAT's bitcrusher:** FAT applies bit reduction as a post-effect. XOverworld builds from chip architecture up — the synthesis method itself produces the character, not a filter applied after.
+- **Differentiation from OBESE's bitcrusher:** OBESE applies bit reduction as a post-effect. XOverworld builds from chip architecture up — the synthesis method itself produces the character, not a filter applied after.
 - **Differentiation from ONSET drums:** ONSET has dedicated voice roles (kick, snare, hat). XOverworld's voices are fluid — any can be melodic or percussive, reflecting how the original hardware worked.
 
 ## Coupling Partners
 
-### Best Pairing: XOverworld + DUB
-- **Route:** XOverworld output → DUB send chain (tape delay + spring reverb)
+### Best Pairing: XOverworld + OVERDUB
+- **Route:** XOverworld output → OVERDUB send chain (tape delay + spring reverb)
 - **Musical effect:** 8-bit melodies through analog dub FX — lo-fi meets lo-fi in completely different dimensions
-- **Why it's special:** NES sounds are dry and direct. DUB's tape delay adds warmth and space that the original hardware couldn't produce. The contrast is striking.
+- **Why it's special:** NES sounds are dry and direct. OVERDUB's tape delay adds warmth and space that the original hardware couldn't produce. The contrast is striking.
 
 ### Strong Pairing: XOverworld + ONSET
 - **Route:** ONSET drum triggers → XOverworld pitch/trigger
 - **Musical effect:** Real synthesized drums driving chip melody triggers — modern rhythm section with retro melodic response
 - **Coupling type:** RhythmToBlend (ONSET pattern drives XOverworld era blend — drums morph the console generation)
 
-### Strong Pairing: XOverworld + DRIFT
-- **Route:** DRIFT Climax system → XOverworld era blend + FM algorithm
+### Strong Pairing: XOverworld + ODYSSEY
+- **Route:** ODYSSEY Climax system → XOverworld era blend + FM algorithm
 - **Musical effect:** As the JOURNEY macro builds, chip sounds evolve from simple NES pulses to complex Genesis FM to cinematic SNES samples — a journey through gaming history
-- **Coupling type:** EnvToMorph (DRIFT envelope → XOverworld era position)
+- **Coupling type:** EnvToMorph (ODYSSEY envelope → XOverworld era position)
 
-### Interesting Pairing: XOverworld + FAT
-- **Route:** XOverworld pulse waves → FAT's 13-oscillator stack
+### Interesting Pairing: XOverworld + OBESE
+- **Route:** XOverworld pulse waves → OBESE's 13-oscillator stack
 - **Musical effect:** Chip melodies exploded into massive stereo width — "what if the NES had 65 oscillators?"
-- **Coupling type:** AudioToFM (chip audio as FM source into FAT's oscillator bank)
+- **Coupling type:** AudioToFM (chip audio as FM source into OBESE's oscillator bank)
 
-### Interesting Pairing: XOverworld + BOB
-- **Route:** BOB's warm character stages → XOverworld
-- **Musical effect:** The soft, fuzzy warmth of BOB applied to crisp chip sounds — nostalgic warmth amplified
+### Interesting Pairing: XOverworld + OBLONG
+- **Route:** OBLONG's warm character stages → XOverworld
+- **Musical effect:** The soft, fuzzy warmth of OBLONG applied to crisp chip sounds — nostalgic warmth amplified
 
 ### Glitch-Specific Coupling: XOverworld Glitch → Any Engine
 - **Route:** XOverworld's glitch events as modulation source → external engine parameters
-- **Musical effect:** Game glitches corrupt other engines. A Missingno burst opens DRIFT's filter. Sprite Flicker gates FAT's 13 oscillators. Echo Overflow drives BOB's smear mix. The glitch becomes a rhythmic/textural controller for the entire gallery.
+- **Musical effect:** Game glitches corrupt other engines. A Missingno burst opens ODYSSEY's filter. Sprite Flicker gates OBESE's 13 oscillators. Echo Overflow drives OBLONG's smear mix. The glitch becomes a rhythmic/textural controller for the entire gallery.
 - **Coupling type:** New type — `GlitchToParam` — XOverworld's glitch event output (0 when clean, 1 during glitch event) routes to any target parameter
 - **Why this matters:** No other engine has a "controlled chaos" output. This makes XOverworld uniquely valuable as a coupling source — even without playing notes, its glitch system can animate other engines.
 
@@ -244,7 +244,7 @@ A producer building a Genesis-style track might use "Hedgehog" blue for their FM
 |------|----------|-----|
 | Foundation | Strong | Chip drums, bass lines — the rhythmic foundation of game music |
 | Atmosphere | Moderate | SNES-era ambient pads (DKC water levels, Metroid) |
-| Entangled | Strong | Coupled with ONSET or DUB, chip sounds become something new |
+| Entangled | Strong | Coupled with ONSET or OVERDUB, chip sounds become something new |
 | Prism | Very strong | Chip melodies ARE prismatic — bright, clear, articulate, melodic |
 | Flux | Moderate | Glitchy chip artifacts, noise mode, DPCM crunch |
 | Aether | Low-Moderate | SNES reverb can go cinematic, but this isn't the engine's primary territory |

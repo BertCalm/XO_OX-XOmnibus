@@ -3,13 +3,13 @@
   "name": "Snap_Morph_Bob_Prism",
   "mood": "Prism",
   "engines": [
-    "Snap",
-    "Morph",
-    "Bob"
+    "OddfeliX",
+    "OddOscar",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine attack prism \u2014 SNAP crystal, MORPH spectral bloom, BOB sync sustain.",
+  "description": "Three-engine attack prism — SNAP crystal, MORPH spectral bloom, BOB sync sustain.",
   "tags": [
     "snap",
     "morph",
@@ -24,7 +24,7 @@
     "BOB SUSTAIN",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.8,
@@ -35,7 +35,7 @@
     "aggression": 0.52
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -48,7 +48,7 @@
       "snap_release": 0.1,
       "snap_level": 0.65
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.68,
       "morph_bloom": 0.8,
       "morph_decay": 2.0,
@@ -62,7 +62,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -109,14 +109,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Morph",
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
         "type": "Env->Morph",
         "amount": 0.65
       },
       {
-        "engineA": "Morph",
-        "engineB": "Bob",
+        "engineA": "OddOscar",
+        "engineB": "Oblong",
         "type": "Filter->Filter",
         "amount": 0.42
       }

@@ -3,13 +3,13 @@
   "name": "Dub_Drift_Morph_Flux",
   "mood": "Flux",
   "engines": [
-    "Dub",
-    "Drift",
-    "Morph"
+    "Overdub",
+    "Odyssey",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine flux groove \u2014 DUB bass drives DRIFT while MORPH scans above.",
+  "description": "Three-engine flux groove — DUB bass drives DRIFT while MORPH scans above.",
   "tags": [
     "dub",
     "drift",
@@ -24,7 +24,7 @@
     "MORPH SCAN",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.48,
@@ -35,7 +35,7 @@
     "aggression": 0.38
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -73,7 +73,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 0
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -113,7 +113,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.52,
       "morph_bloom": 0.78,
       "morph_decay": 2.0,
@@ -131,14 +131,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Drift",
+        "engineA": "Overdub",
+        "engineB": "Odyssey",
         "type": "Rhythm->Blend",
         "amount": 0.52
       },
       {
-        "engineA": "Drift",
-        "engineB": "Morph",
+        "engineA": "Odyssey",
+        "engineB": "OddOscar",
         "type": "Audio->Wavetable",
         "amount": 0.48
       }

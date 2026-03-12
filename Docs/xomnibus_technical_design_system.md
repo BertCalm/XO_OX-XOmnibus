@@ -13,7 +13,7 @@
 
 XOmnibus is a **gallery**. Each engine is an **exhibition**.
 
-The platform provides a clean, neutral space — warm white walls, consistent typography, predictable navigation — that frames whatever art is on display. When a producer loads the XOddCouple engine, the gallery fills with terracotta and teal. Switch to XOdyssey, and violet gradients take over. Couple two engines, and their colors meet in the coupling strip like two exhibitions connected by a golden corridor.
+The platform provides a clean, neutral space — warm white walls, consistent typography, predictable navigation — that frames whatever art is on display. When a producer loads the OddfeliX/OddOscar engine, the gallery fills with terracotta and teal. Switch to XOdyssey, and violet gradients take over. Couple two engines, and their colors meet in the coupling strip like two exhibitions connected by a golden corridor.
 
 This metaphor drives every design decision:
 - **The gallery walls (shell)** never change — they're always warm white, always the same layout
@@ -34,10 +34,10 @@ Every XO_OX instrument has had its own personality. XOmnibus doesn't flatten the
 
 | Engine (Exhibition) | Visual Character | Palette | Material/Texture |
 |-----------|-----------|-------|----------|
-| XOddCouple | Dual-tone panels, coupling visualization | Terracotta `#C8553D` + Teal `#2A9D8F` | Brushed metal |
+| OddfeliX/OddOscar | Dual-tone panels, coupling visualization | Neon Tetra Blue `#00A6D6` + Axolotl Gill Pink `#E8839B` | Brushed metal |
 | XOverdub | Vintage mixing desk, VU meters, tape reels | Warm Cream `#F5E6D0` + Olive `#6B7B3A` | Worn wood grain |
 | XOdyssey | Psychedelic gradients, journey visualization | Violet `#7B2D8B` + Cyan `#00BCD4` | Holographic sheen |
-| XOblongBob | Rounded corners, soft shadows, tactile | Amber `#E9A84A` + Soft White `#F0EDE8` | Apple Liquid Glass |
+| XOblong | Rounded corners, soft shadows, tactile | Amber `#E9A84A` + Soft White `#F0EDE8` | Apple Liquid Glass |
 | XObese | Bold ALL_CAPS, high contrast, industrial | Black `#0A0A0A` + Hot Pink `#FF1493` | Concrete |
 | XOnset | Grid precision, circuit traces, LED indicators | Electric Blue `#0066FF` + Steel `#B8C4CC` | PCB green |
 
@@ -90,10 +90,10 @@ Aether:             #4A3680   (Indigo)
 Each engine panel uses its accent as the knob fill, active indicator, and section header:
 
 ```
-XOddCouple:    #C8553D (terracotta) + #2A9D8F (teal) — dual-panel split
+OddfeliX/OddOscar:    #C8553D (terracotta) + #2A9D8F (teal) — dual-panel split
 XOverdub:      #6B7B3A (olive)
 XOdyssey:      #7B2D8B (violet)
-XOblongBob:    #E9A84A (amber)
+XOblong:    #E9A84A (amber)
 XObese:        #FF1493 (hot pink)
 XOnset:        #0066FF (electric blue)
 ```
@@ -145,7 +145,7 @@ Micro:      9px  / 12px             (mood badges, engine tags)
 - All parameter labels: sentence case ("Filter cutoff" not "FILTER CUTOFF")
 - Macro labels: UPPERCASE (they're physical controls — "CHARACTER", "MOVEMENT")
 - Preset names: title case as designed ("Velvet Morning", "Tape Chaos")
-- Engine names: exact brand spelling ("XOblongBob" not "Xoblongbob")
+- Engine names: exact brand spelling ("XOblong" not "Xoblongbob")
 
 ---
 
@@ -348,10 +348,10 @@ Each engine has a minimal icon (16×16, 24×24, 32×32) for use in preset browse
 
 | Engine | Icon Concept |
 |--------|-------------|
-| XOddCouple | Two interlocking circles (X and O) |
+| OddfeliX/OddOscar | Two interlocking circles (X and O) |
 | XOverdub | Tape reel (single circle with inner hub) |
 | XOdyssey | Spiral/journey path |
-| XOblongBob | Rounded rectangle (the "oblong") |
+| XOblong | Rounded rectangle (the "oblong") |
 | XObese | Bold square with weight |
 | XOnset | Grid/matrix of dots |
 

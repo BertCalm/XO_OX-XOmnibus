@@ -94,6 +94,27 @@ private:
     double currentSampleRate = 44100.0;
     int currentBlockSize = 512;
 
+    // Cached raw parameter pointers — resolved once in prepareToPlay, read per-block.
+    // Eliminates string-based hash map lookups from the audio thread.
+    struct CachedParams {
+        std::atomic<float>* masterVolume = nullptr;
+        std::atomic<float>* cmEnabled = nullptr;
+        std::atomic<float>* cmPalette = nullptr;
+        std::atomic<float>* cmVoicing = nullptr;
+        std::atomic<float>* cmSpread = nullptr;
+        std::atomic<float>* cmSeqRunning = nullptr;
+        std::atomic<float>* cmSeqBpm = nullptr;
+        std::atomic<float>* cmSeqSwing = nullptr;
+        std::atomic<float>* cmSeqGate = nullptr;
+        std::atomic<float>* cmSeqPattern = nullptr;
+        std::atomic<float>* cmVelCurve = nullptr;
+        std::atomic<float>* cmHumanize = nullptr;
+        std::atomic<float>* cmSidechainDuck = nullptr;
+        std::atomic<float>* cmEnoMode = nullptr;
+    } cachedParams;
+
+    void cacheParameterPointers();
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOmnibusProcessor)
 };
 

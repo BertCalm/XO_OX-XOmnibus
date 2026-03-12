@@ -3,8 +3,8 @@
   "name": "Drum Digestion",
   "mood": "Entangled",
   "engines": [
-    "Snap",
-    "XOrganon"
+    "OddfeliX",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 0,
       "snap_filterCutoff": 2000.0,
       "snap_resonance": 0.5,
@@ -41,7 +41,7 @@
       "snap_release": 0.2,
       "snap_level": 0.7
     },
-    "XOrganon": {
+    "Organon": {
       "organon_metabolicRate": 0.5,
       "organon_enzymeSelect": 800.0,
       "organon_catalystDrive": 0.6,
@@ -57,8 +57,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "XOrganon",
+        "engineA": "OddfeliX",
+        "engineB": "Organon",
         "type": "Audio->FM",
         "amount": 0.5
       }

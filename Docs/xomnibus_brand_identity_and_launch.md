@@ -51,7 +51,7 @@ XOmnibus is a free, open-source multi-engine synthesizer platform that combines 
 The name carries three meanings:
 1. **Omnibus = "for all"** — open source, community-focused
 2. **Omnibus = a collection** — 6 instruments in one platform
-3. **XO** prefix — maintains the XO_OX naming convention (XOddCouple, XOverdub, XOdyssey, XOblongBob, XObese, XOnset)
+3. **XO** prefix — maintains the XO_OX naming convention (OddfeliX/OddOscar, XOverdub, XOdyssey, XOblong, XObese, XOnset)
 
 ### 2.2 Wordmark Treatment
 
@@ -93,10 +93,10 @@ Each engine gets a minimal icon that lives inside its panel and appears in prese
 
 | Engine | Icon | Visual | Color |
 |--------|------|--------|-------|
-| XOddCouple | Two interlocking circles | The original XO coupling | Terracotta + Teal |
+| OddfeliX/OddOscar | Two interlocking circles | The original XO coupling | Terracotta + Teal |
 | XOverdub | Tape reel | Single circle with inner hub, tape threading | Olive |
 | XOdyssey | Spiral path | Journey from center outward | Violet |
-| XOblongBob | Rounded rectangle | The "oblong" — soft, tactile | Amber |
+| XOblong | Rounded rectangle | The "oblong" — soft, tactile | Amber |
 | XObese | Bold square | Heavy, industrial weight | Hot Pink |
 | XOnset | Dot grid | Circuit/matrix precision | Electric Blue |
 
@@ -172,7 +172,7 @@ This model scales from the plugin UI to the website to social media to documenta
 
 Since XOmnibus is software, "photography" means:
 - **Screenshots:** Always light mode, retina resolution, showing a cross-engine preset with coupling active
-- **Abstract textures:** Engine-colored gradients used as backgrounds for social posts (terracotta→teal for XOddCouple content, violet→cyan for XOdyssey content)
+- **Abstract textures:** Engine-colored gradients used as backgrounds for social posts (terracotta→teal for OddfeliX/OddOscar content, violet→cyan for XOdyssey content)
 - **Waveform art:** Actual audio renders from XOmnibus presets, visualized as waveforms or spectrograms, used as hero images
 - **No stock photos.** Everything is generated from the tool itself or designed from the brand palette.
 
@@ -333,9 +333,9 @@ Each week spotlights one engine — an "opening night" for that exhibition:
 
 | Week | Exhibition | Content |
 |------|-----------|---------|
-| 1 | XOddCouple | "The Original Coupling" — how X and O started it all |
+| 1 | OddfeliX/OddOscar | "The Original Coupling" — how X and O started it all |
 | 2 | XOdyssey | "The Journey" — Familiar → Alien, the JOURNEY macro |
-| 3 | XOblongBob | "Warm Curiosity" — fuzzy textures, tactile exploration |
+| 3 | XOblong | "Warm Curiosity" — fuzzy textures, tactile exploration |
 | 4 | XOverdub | "The Dub Engine" — send/return, tape delay, spring reverb |
 | 5 | XObese | "Heavy Character" — bold sounds, industrial weight |
 | 6 | XOnset | "Circuit Percussion" — precise, electronic, alive |
@@ -471,7 +471,7 @@ Monthly community events framed as exhibitions:
 
 | Exhibition Type | Example |
 |----------------|---------|
-| **Mood exhibition** | "Flux Gallery: 5 presets using only XOnset + XOblongBob — unstable, glitchy, alive" |
+| **Mood exhibition** | "Flux Gallery: 5 presets using only XOnset + XOblong — unstable, glitchy, alive" |
 | **Corridor exhibition** | "Create a preset where the coupling strip IS the instrument — decoupling kills it" |
 | **Breeding exhibition** | "DNA Lab: breed two presets from different moods — exhibit the offspring" |
 | **Solo show** | "One-macro show: M1 (CHARACTER) tells a complete story from 0 to 1" |
@@ -527,7 +527,7 @@ Product:        XOmnibus
 Developer:      XO_OX Designs
 Price:          Free (open source, GPLv3)
 Platforms:      macOS (AU, VST3, Standalone)
-Engines:        6 (XOddCouple, XOverdub, XOdyssey, XOblongBob, XObese, XOnset)
+Engines:        6 (OddfeliX/OddOscar, XOverdub, XOdyssey, XOblong, XObese, XOnset)
 Factory Presets: 1000
 Preset Format:  .xometa (JSON, open spec)
 Unique Feature: Cross-engine coupling with Sonic DNA fingerprinting
@@ -563,10 +563,10 @@ Each engine was designed as a standalone instrument with its own visual identity
 
 | Engine | Preserved Character | Adapted to Platform |
 |--------|--------------------|--------------------|
-| **XOddCouple** | Dual-panel split (X and O sides), coupling visualization | Split becomes left/right within the engine frame |
+| **OddfeliX/OddOscar** | Dual-panel split (X and O sides), coupling visualization | Split becomes left/right within the engine frame |
 | **XOverdub** | Warm analog feel, VU meter aesthetic | VU meters become subtle level indicators, cream tones in panel |
 | **XOdyssey** | Psychedelic gradients, journey feel | Gradient appears as panel header accent, journey slider prominent |
-| **XOblongBob** | Soft rounded corners, tactile warmth | Slightly more rounded controls within the engine panel |
+| **XOblong** | Soft rounded corners, tactile warmth | Slightly more rounded controls within the engine panel |
 | **XObese** | Bold, industrial, high contrast | Bolder labels, higher contrast within panel, concrete texture |
 | **XOnset** | Grid precision, circuit traces | Grid-aligned controls, LED-style indicators |
 
@@ -585,10 +585,10 @@ When an engine loads, its panel should feel like stepping into that engine's wor
 ```
 XO_OX Designs          — The studio/creator
     └── XOmnibus       — The platform product
-        ├── XOddCouple — Engine (percussive + pad coupling)
+        ├── OddfeliX/OddOscar — Engine (percussive + pad coupling)
         ├── XOverdub   — Engine (dub mixing desk)
         ├── XOdyssey   — Engine (psychedelic pads)
-        ├── XOblongBob — Engine (warm character)
+        ├── XOblong — Engine (warm character)
         ├── XObese     — Engine (bold sampler)
         └── XOnset     — Engine (percussive synthesis)
 ```
@@ -597,7 +597,7 @@ XO_OX Designs          — The studio/creator
 
 - The platform is always "XOmnibus" — never "XO Omnibus" or "Xomnibus"
 - Engines keep their exact original names — never simplified
-- In running text: "the XOddCouple engine" (lowercase "the")
+- In running text: "the OddfeliX/OddOscar engine" (lowercase "the")
 - The brand is "XO_OX" with underscore — never "XOOX" or "XO-OX"
 - Mood names are always capitalized: "Foundation" not "foundation"
 

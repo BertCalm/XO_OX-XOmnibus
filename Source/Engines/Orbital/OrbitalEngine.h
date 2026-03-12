@@ -138,6 +138,7 @@ class OrbitalEngine : public SynthEngine
 public:
     static constexpr int kMaxVoices  = 6;
     static constexpr int kNumPartials = 64;
+    static constexpr float kInvPartialCount = 1.0f / static_cast<float> (kNumPartials - 1);
 
     //-- Identity ---------------------------------------------------------------
     juce::String getEngineId()     const override { return "Orbital"; }
@@ -409,7 +410,7 @@ public:
             rms = juce::jlimit (0.0f, 1.0f, rms);
             for (int k = 0; k < kNumPartials; ++k)
             {
-                float w = static_cast<float> (k) / static_cast<float> (kNumPartials - 1);
+                float w = static_cast<float> (k) * kInvPartialCount;
                 spectralCouplingOffset[k] = rms * w * 0.3f;   // subtle additive lift on uppers
             }
             couplingAudioBuf.clear();
@@ -499,12 +500,14 @@ public:
                         break;
                     case OrbitalVoice::EnvStage::Decay:
                         v.envLevel -= v.envDecayCoeff;
+                        v.envLevel = flushDenormal (v.envLevel);
                         if (v.envLevel <= v.envSustain) { v.envLevel = v.envSustain; v.envStage = OrbitalVoice::EnvStage::Sustain; }
                         break;
                     case OrbitalVoice::EnvStage::Sustain:
                         break;
                     case OrbitalVoice::EnvStage::Release:
                         v.envLevel -= v.envReleaseCoeff;
+                        v.envLevel = flushDenormal (v.envLevel);
                         if (v.envLevel <= 0.0f)
                         {
                             v.envLevel = 0.0f;
@@ -533,6 +536,7 @@ public:
                             break;
                         case OrbitalVoice::GroupEnvStage::Decay:
                             v.groupEnvLevel[g] -= v.groupDecayCoeff[g];
+                            v.groupEnvLevel[g] = flushDenormal (v.groupEnvLevel[g]);
                             if (v.groupEnvLevel[g] <= kGroupFloor[g])
                             {
                                 v.groupEnvLevel[g] = kGroupFloor[g];
@@ -585,6 +589,7 @@ public:
                 if (v.fadeOutLevel > 0.0f)
                 {
                     v.fadeOutLevel -= fadeOutStep;
+                    v.fadeOutLevel = flushDenormal (v.fadeOutLevel);
                     if (v.fadeOutLevel < 0.0f) v.fadeOutLevel = 0.0f;
                     stealFade = 1.0f - v.fadeOutLevel;
                 }
@@ -682,11 +687,11 @@ private:
         // Per-partial stereo pan (constant-power spread)
         for (int k = 0; k < kNumPartials; ++k)
         {
-            float spread = stereoSpread * static_cast<float> (k) / static_cast<float> (kNumPartials - 1);
+            float spread = stereoSpread * static_cast<float> (k) * kInvPartialCount;
             float pan    = 0.5f + ((k % 2 == 0) ? -spread : spread) * 0.5f;
             pan = juce::jlimit (0.0f, 1.0f, pan);
-            v.panL[k] = std::cos (pan * 1.5707963f);
-            v.panR[k] = std::sin (pan * 1.5707963f);
+            v.panL[k] = fastCos (pan * 1.5707963f);
+            v.panR[k] = fastSin (pan * 1.5707963f);
         }
 
         // Global ADSR coefficients

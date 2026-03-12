@@ -971,7 +971,7 @@ private:
 };
 
 //==============================================================================
-// BobVoice — Per-voice state for the BOB engine.
+// BobVoice — Per-voice state for the OBLONG engine.
 //==============================================================================
 struct BobVoice
 {
@@ -998,7 +998,7 @@ struct BobVoice
 };
 
 //==============================================================================
-// BobEngine — Warm, character-driven synthesizer adapted from XOblongBob.
+// BobEngine — Warm, character-driven synthesizer adapted from XOblong.
 //
 // Signal chain per voice:
 //   OscA + OscB (w/ sync + FM) + Texture → SnoutFilter (4 modes w/ character)
@@ -1566,7 +1566,7 @@ public:
 
     //-- Identity --------------------------------------------------------------
 
-    juce::String getEngineId() const override { return "Bob"; }
+    juce::String getEngineId() const override { return "Oblong"; }
     juce::Colour getAccentColour() const override { return juce::Colour (0xFFE9A84A); }
     int getMaxVoices() const override { return kMaxVoices; }
 
@@ -1677,7 +1677,7 @@ private:
 
     static float midiToFreq (int note) noexcept
     {
-        return 440.0f * std::pow (2.0f, (static_cast<float> (note) - 69.0f) / 12.0f);
+        return 440.0f * fastPow2 ((static_cast<float> (note) - 69.0f) * (1.0f / 12.0f));
     }
 
     //--------------------------------------------------------------------------

@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Bob Drift Weave",
   "mood": "Entangled",
-  "engines": ["Bob", "Drift"],
+  "engines": [
+    "Oblong",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BOB's warm character coupled with DRIFT's psychedelic shimmer. Drift envelope modulates Bob's filter.",
-  "tags": ["coupled", "warm", "shimmer", "evolving", "entangled"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "coupled",
+    "warm",
+    "shimmer",
+    "evolving",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
@@ -19,7 +33,7 @@
     "aggression": 0.05
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.55,
       "bob_oscA_tune": 0.0,
@@ -62,7 +76,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 3
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 12.0,
@@ -106,8 +120,8 @@
   "coupling": {
     "routes": [
       {
-        "source": "Drift",
-        "dest": "Bob",
+        "source": "Odyssey",
+        "dest": "Oblong",
         "type": "AmpToFilter",
         "amount": 0.45
       }

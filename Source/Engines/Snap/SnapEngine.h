@@ -9,7 +9,7 @@
 namespace xomnibus {
 
 //==============================================================================
-// Karplus-Strong string model — embedded in SNAP engine.
+// Karplus-Strong string model — embedded in ODDFELIX engine.
 // Delay-line excitation with damped feedback, used for KarplusStrong osc mode.
 //==============================================================================
 class KarplusStrongOsc
@@ -82,7 +82,7 @@ private:
 };
 
 //==============================================================================
-// SnapVoice — per-voice state for the SNAP (percussive) engine.
+// SnapVoice — per-voice state for the ODDFELIX (percussive) engine.
 //==============================================================================
 struct SnapVoice
 {
@@ -118,7 +118,7 @@ struct SnapVoice
 };
 
 //==============================================================================
-// SnapEngine — Percussive, transient-rich synthesis (from XOddCouple Engine X).
+// SnapEngine — Percussive, transient-rich synthesis (OddfeliX — the neon tetra).
 //
 // Features:
 //   - 3 oscillator modes: Sine+Noise, FM, Karplus-Strong
@@ -257,6 +257,7 @@ public:
                 float decayRate = (decay > 0.001f)
                     ? 1.0f / (decay * srf) : 1.0f;
                 voice.envLevel -= decayRate;
+                voice.envLevel = flushDenormal (voice.envLevel);
                 if (voice.envLevel <= 0.0f)
                 {
                     voice.envLevel = 0.0f;
@@ -269,6 +270,7 @@ public:
                 if (voice.fadeOutLevel > 0.0f)
                 {
                     voice.fadeOutLevel -= 1.0f / (0.005f * srf);
+                    voice.fadeOutLevel = flushDenormal (voice.fadeOutLevel);
                     if (voice.fadeOutLevel <= 0.0f)
                         voice.fadeOutLevel = 0.0f;
                     stealFade = 1.0f - voice.fadeOutLevel;
@@ -426,13 +428,13 @@ public:
                 break;
 
             default:
-                break; // Other coupling types not supported by SNAP
+                break; // Other coupling types not supported by ODDFELIX
         }
     }
 
     //-- Parameters ------------------------------------------------------------
 
-    // Static helper: add SNAP parameters to a shared vector (used by processor).
+    // Static helper: add ODDFELIX parameters to a shared vector (used by processor).
     static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         addParametersImpl (params);
@@ -504,8 +506,8 @@ public:
 
     //-- Identity --------------------------------------------------------------
 
-    juce::String getEngineId() const override { return "Snap"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFFC8553D); }
+    juce::String getEngineId() const override { return "OddfeliX"; }
+    juce::Colour getAccentColour() const override { return juce::Colour (0xFF00A6D6); } // Neon Tetra Blue
     int getMaxVoices() const override { return kMaxVoices; }
 
 private:

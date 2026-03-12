@@ -3,13 +3,13 @@
   "name": "Snap_Bob_Drift_Ghost",
   "mood": "Aether",
   "engines": [
-    "Snap",
-    "Bob",
-    "Drift"
+    "OddfeliX",
+    "Oblong",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine ghost \u2014 SNAP rare ticks, BOB dusty presence, DRIFT infinite shimmer. Haunting.",
+  "description": "Three-engine ghost — SNAP rare ticks, BOB dusty presence, DRIFT infinite shimmer. Haunting.",
   "tags": [
     "snap",
     "bob",
@@ -24,7 +24,7 @@
     "DRIFT SHIMMER",
     "COUPLING"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.52,
@@ -35,7 +35,7 @@
     "aggression": 0.06
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -48,7 +48,7 @@
       "snap_release": 0.1,
       "snap_level": 0.25
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -91,7 +91,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -135,14 +135,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Drift",
+        "engineA": "OddfeliX",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.12
       },
       {
-        "engineA": "Bob",
-        "engineB": "Drift",
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.18
       }

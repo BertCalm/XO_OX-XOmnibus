@@ -2,13 +2,28 @@
   "schema_version": 1,
   "name": "Drift Morph Environment",
   "mood": "Atmosphere",
-  "engines": ["Drift", "Morph"],
+  "engines": [
+    "Odyssey",
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT shimmer and MORPH bloom creating environmental texture together. Neither is a melody, neither is percussion — together they become a place. MORPH bloom sweeps DRIFT into evolving landscapes.",
-  "tags": ["atmosphere", "drift", "morph", "environment", "evolving", "ambient"],
-  "macroLabels": ["DRIFT SHIMMER", "MORPH BLOOM", "COUPLING", "SPACE DEPTH"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "atmosphere",
+    "drift",
+    "morph",
+    "environment",
+    "evolving",
+    "ambient"
+  ],
+  "macroLabels": [
+    "DRIFT SHIMMER",
+    "MORPH BLOOM",
+    "COUPLING",
+    "SPACE DEPTH"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -19,7 +34,7 @@
     "aggression": 0.0
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 12.0,
@@ -59,7 +74,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.1,
       "morph_bloom": 0.85,
       "morph_decay": 6.0,
@@ -77,8 +92,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Drift",
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
         "type": "Env->Morph",
         "amount": 0.4
       }

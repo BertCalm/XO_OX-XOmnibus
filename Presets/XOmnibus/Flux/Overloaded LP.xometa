@@ -3,7 +3,7 @@
   "name": "Overloaded LP",
   "mood": "Flux",
   "engines": [
-    "XOblongBob"
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -23,12 +23,12 @@
   "tempo": null,
   "created": "2026-03-08",
   "legacy": {
-    "sourceInstrument": "XOblongBob",
+    "sourceInstrument": "Oblong",
     "sourceCategory": "Oddball",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOblongBob": {
+    "Oblong": {
       "oscA_wave": 2.0,
       "oscA_shape": 0.9,
       "oscA_drift": 0.2,

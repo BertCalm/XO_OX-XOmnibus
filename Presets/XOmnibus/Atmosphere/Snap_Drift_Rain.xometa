@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Snap Drift Rain",
   "mood": "Atmosphere",
-  "engines": ["Snap", "Drift"],
+  "engines": [
+    "OddfeliX",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Soft SNAP transients scattered across a DRIFT shimmer pad — like rain on a surface of light. SNAP amplitude gently disturbs DRIFT's filter, each drop a different ripple.",
-  "tags": ["atmosphere", "rain", "snap", "drift", "shimmer", "ambient", "gentle"],
-  "macroLabels": ["SNAP RAIN", "DRIFT SHIMMER", "COUPLING", "SPACE"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "atmosphere",
+    "rain",
+    "snap",
+    "drift",
+    "shimmer",
+    "ambient",
+    "gentle"
+  ],
+  "macroLabels": [
+    "SNAP RAIN",
+    "DRIFT SHIMMER",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -19,7 +35,7 @@
     "aggression": 0.05
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 0,
       "snap_snap": 0.35,
       "snap_decay": 0.5,
@@ -31,7 +47,7 @@
       "snap_unison": 1,
       "snap_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 12.0,
@@ -75,8 +91,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Drift",
+        "engineA": "OddfeliX",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.2
       }

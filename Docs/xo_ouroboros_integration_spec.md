@@ -103,12 +103,12 @@ Source/Engines/Ouroboros/OuroborosEngine.cpp
 
 | Partner | Route | Musical Effect |
 |---------|-------|----------------|
-| SNAP | SNAP → Ouroboros via `AudioToFM` | Percussive hits knock the orbit into new trajectories |
+| ODDFELIX | ODDFELIX → Ouroboros via `AudioToFM` | Percussive hits knock the orbit into new trajectories |
 | ORGANON | Ouroboros → Organon via `AudioToFM` | Chaotic audio feeds the metabolic organism |
-| DRIFT | DRIFT → Ouroboros via `EnvToMorph` | Long envelopes slowly rotate projection angle |
-| MORPH | Ouroboros → Morph via ch2/3 `LFOToPitch` | Velocity vectors as complex LFOs for wavetable |
+| ODYSSEY | ODYSSEY → Ouroboros via `EnvToMorph` | Long envelopes slowly rotate projection angle |
+| ODDOSCAR | Ouroboros → OddOscar via ch2/3 `LFOToPitch` | Velocity vectors as complex LFOs for wavetable |
 | ONSET | ONSET → Ouroboros via `AudioToFM` | Drum patterns as physical forces on the orbit |
-| BOB | Ouroboros → Bob via ch2/3 `EnvToMorph` | Chaotic velocity vectors as non-repeating morph source |
+| OBLONG | Ouroboros → Oblong via ch2/3 `EnvToMorph` | Chaotic velocity vectors as non-repeating morph source |
 
 ## Integration Checklist
 - [x] Engine implements `SynthEngine` interface

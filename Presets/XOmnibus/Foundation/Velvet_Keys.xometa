@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Velvet Keys",
   "mood": "Foundation",
-  "engines": ["Bob"],
+  "engines": ["Oblong"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Soft, percussive keys with the Velvet Saw. Snappy decay, warm filter character.",
@@ -19,7 +19,7 @@
     "aggression": 0.1
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 2,
       "bob_oscA_shape": 0.4,
       "bob_oscA_tune": 0.0,

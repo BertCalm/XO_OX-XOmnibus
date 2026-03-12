@@ -3,12 +3,12 @@
   "name": "Drift_Fat_Spectral_Two",
   "mood": "Prism",
   "engines": [
-    "Drift",
-    "Fat"
+    "Odyssey",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT formant over FAT bright morph \u2014 vowel-like spectral interest over dense brightness.",
+  "description": "DRIFT formant over FAT bright morph — vowel-like spectral interest over dense brightness.",
   "tags": [
     "drift",
     "fat",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.78,
@@ -33,7 +33,7 @@
     "aggression": 0.28
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -73,7 +73,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.82,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.08,
@@ -110,8 +110,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
-        "engineB": "Fat",
+        "engineA": "Odyssey",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.32
       }

@@ -3,12 +3,12 @@
   "name": "Snap_Drift_Thunder",
   "mood": "Atmosphere",
   "engines": [
-    "Snap",
-    "Drift"
+    "OddfeliX",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP as distant thunder with DRIFT shimmer atmosphere \u2014 storm approaching.",
+  "description": "SNAP as distant thunder with DRIFT shimmer atmosphere — storm approaching.",
   "tags": [
     "snap",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.42,
@@ -33,7 +33,7 @@
     "aggression": 0.28
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 0,
       "snap_oscTune": -12.0,
       "snap_oscShape": 0.5,
@@ -46,7 +46,7 @@
       "snap_release": 0.4,
       "snap_level": 0.55
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -90,8 +90,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Drift",
+        "engineA": "OddfeliX",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.3
       }

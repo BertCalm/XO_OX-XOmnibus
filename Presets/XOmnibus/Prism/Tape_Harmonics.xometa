@@ -17,7 +17,7 @@
   "name": "Tape Harmonics",
   "mood": "Prism",
   "engines": [
-    "Dub"
+    "Overdub"
   ],
   "description": "Warm tape saturation breathing life into upper harmonic content.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.15
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 0,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,

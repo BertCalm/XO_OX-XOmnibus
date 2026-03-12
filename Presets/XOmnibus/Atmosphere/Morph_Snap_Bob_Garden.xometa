@@ -3,13 +3,13 @@
   "name": "Morph_Snap_Bob_Garden",
   "mood": "Atmosphere",
   "engines": [
-    "Morph",
-    "Snap",
-    "Bob"
+    "OddOscar",
+    "OddfeliX",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine garden \u2014 MORPH harmonic flowers, SNAP natural ticks, BOB warm air.",
+  "description": "Three-engine garden — MORPH harmonic flowers, SNAP natural ticks, BOB warm air.",
   "tags": [
     "morph",
     "snap",
@@ -24,7 +24,7 @@
     "BOB WARMTH",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -35,7 +35,7 @@
     "aggression": 0.08
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.78,
       "morph_decay": 6.5,
@@ -49,7 +49,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -62,7 +62,7 @@
       "snap_release": 0.1,
       "snap_level": 0.35
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -109,14 +109,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Morph",
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
         "type": "Amp->Filter",
         "amount": 0.2
       },
       {
-        "engineA": "Bob",
-        "engineB": "Morph",
+        "engineA": "Oblong",
+        "engineB": "OddOscar",
         "type": "Amp->Filter",
         "amount": 0.18
       }

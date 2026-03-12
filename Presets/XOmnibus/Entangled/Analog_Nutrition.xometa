@@ -3,8 +3,8 @@
   "name": "Analog Nutrition",
   "mood": "Entangled",
   "engines": [
-    "Bob",
-    "XOrganon"
+    "Oblong",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_drift": 0.15,
@@ -47,7 +47,7 @@
       "bob_ampRelease": 0.8,
       "bob_level": 0.6
     },
-    "XOrganon": {
+    "Organon": {
       "organon_metabolicRate": 0.7,
       "organon_enzymeSelect": 1000.0,
       "organon_catalystDrive": 0.55,
@@ -63,8 +63,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "XOrganon",
+        "engineA": "Oblong",
+        "engineB": "Organon",
         "type": "Audio->FM",
         "amount": 0.55
       }

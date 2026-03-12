@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Noise Fog",
   "mood": "Atmosphere",
-  "engines": ["XOddCouple"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Morphed into noise territory with heavy filtering. Textural fog that breathes.",
-  "tags": ["noise", "texture", "fog", "dark"],
-  "macroLabels": ["DENSITY", "BLOOM", "COUPLING", "SPACE"],
+  "tags": [
+    "noise",
+    "texture",
+    "fog",
+    "dark"
+  ],
+  "macroLabels": [
+    "DENSITY",
+    "BLOOM",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -19,7 +31,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "XOddCouple": {
+    "OddfeliX": {
       "morph_morph": 2.7,
       "morph_bloom": 3.5,
       "morph_decay": 4.0,

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Velvet Sub",
   "mood": "Foundation",
-  "engines": ["XOpossum"],
+  "engines": ["Overbite"],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Deep sub bass with triangle belly. Minimal processing, maximum low-end weight.",
@@ -13,7 +13,7 @@
   "created": "2026-03-11",
   "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
   "parameters": {
-    "XOpossum": {
+    "Overbite": {
       "poss_oscAWave": 1,
       "poss_oscALevel": 0.7,
       "poss_oscAPulseWidth": 0.5,

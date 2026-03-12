@@ -3,7 +3,7 @@
   "name": "Tape Meditation",
   "mood": "Atmosphere",
   "engines": [
-    "XOverdub"
+    "Overdub"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -24,12 +24,12 @@
   "tempo": null,
   "created": "2026-03-08",
   "legacy": {
-    "sourceInstrument": "XOverdub",
+    "sourceInstrument": "Overdub",
     "sourceCategory": "Dub Atmospheres",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOverdub": {
+    "Overdub": {
       "osc_wave": 1.0,
       "osc_drift": 0.2,
       "filter_cutoff": 1500.0,

@@ -11,7 +11,7 @@
 
 This document evaluates the feasibility of merging multiple XO_OX synth projects into a single "mega-tool" that allows switching between instruments, blending them, and creating new sounds through cross-engine connections — like patching Moog semi-modular synths together.
 
-**Verdict: Feasible, with a phased approach.** The existing XOddCouple dual-engine architecture is already a miniature version of this concept. Expanding it requires careful planning around parameter namespacing, CPU budgets, and routing flexibility, but the JUCE framework provides the necessary building blocks.
+**Verdict: Feasible, with a phased approach.** The existing OddfeliX/OddOscar dual-engine architecture is already a miniature version of this concept. Expanding it requires careful planning around parameter namespacing, CPU budgets, and routing flexibility, but the JUCE framework provides the necessary building blocks.
 
 ---
 
@@ -112,7 +112,7 @@ Decompose sounds into frequency-domain representations, then interpolate individ
 
 ### 3.4 The XO_OX Opportunity: Coupling Morphing
 
-XOddCouple already has a unique morphing mechanism: the **Coupling Matrix.** X→O filter ducking and O→X pitch drift create emergent sonic behavior neither engine produces alone.
+OddfeliX/OddOscar already has a unique morphing mechanism: the **Coupling Matrix.** X→O filter ducking and O→X pitch drift create emergent sonic behavior neither engine produces alone.
 
 This coupling concept could be the XO_OX brand's morphing signature:
 
@@ -222,12 +222,12 @@ class MegaToolProcessor : public juce::AudioProcessor {
 - **Pro:** Clean separation, engines can be added/removed at runtime
 - **Con:** Graph rebuild has latency cost; per-sample cross-modulation requires buffer-level workarounds
 
-#### Option 2: Monolithic Processor with Engine Delegates (Current XOddCouple Pattern)
+#### Option 2: Monolithic Processor with Engine Delegates (Current OddfeliX/OddOscar Pattern)
 
 Single `AudioProcessor` calls each engine's render method directly. Cross-engine modulation happens inline at the sample level.
 
 ```cpp
-// Current XOddCouple pattern, extended
+// Current OddfeliX/OddOscar pattern, extended
 class MegaToolProcessor : public juce::AudioProcessor {
     std::unique_ptr<SynthEngine> engines[kMaxEngines];
     CouplingMatrix couplingMatrices[kMaxCouplingPairs];
@@ -243,7 +243,7 @@ class MegaToolProcessor : public juce::AudioProcessor {
 };
 ```
 
-- **Pro:** Tightest inter-engine coupling, per-sample modulation, XOddCouple already works this way
+- **Pro:** Tightest inter-engine coupling, per-sample modulation, OddfeliX/OddOscar already works this way
 - **Con:** Less modular, harder to add engines dynamically
 
 #### Option 3: Hybrid (Recommended)
@@ -273,7 +273,7 @@ The critical constraint from CLAUDE.md: **"Never rename stable parameter IDs aft
 
 **Namespacing strategy:**
 ```
-// Current XOddCouple parameters (52 total)
+// Current OddfeliX/OddOscar parameters (52 total)
 xFilterCutoff, xFilterRes, xSnap, xDecay...
 oFilterCutoff, oFilterRes, oMorph, oBloom...
 couplingAmount, masterBalance...
@@ -296,7 +296,7 @@ coupling_O3_amount...
 
 ### 5.3 CPU Budget
 
-At 44.1kHz / 512 buffer, current XOddCouple targets < 28% total CPU:
+At 44.1kHz / 512 buffer, current OddfeliX/OddOscar targets < 28% total CPU:
 
 | Component | Current Budget | Mega-Tool Budget |
 |-----------|---------------|-----------------|
@@ -372,7 +372,7 @@ This is computationally trivial (just parameter manipulation) but could produce 
 2. Implement engine registration system
 3. Design parameter namespacing strategy
 4. Extend CouplingMatrix to support arbitrary engine pairs
-5. **Deliverable:** XOddCouple works unchanged, but internal architecture supports adding engines
+5. **Deliverable:** OddfeliX/OddOscar works unchanged, but internal architecture supports adding engines
 
 ### Phase 2: Second Instrument
 

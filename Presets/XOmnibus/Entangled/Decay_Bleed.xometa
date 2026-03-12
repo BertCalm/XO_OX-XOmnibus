@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Decay Bleed",
   "mood": "Entangled",
-  "engines": ["Drift", "Dub"],
+  "engines": [
+    "Odyssey",
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT's amplitude envelope modulates DUB's decay time via Env->Decay coupling. As DRIFT swells and falls, DUB's echo trail gets longer or shorter — the decay time breathes with the envelope.",
-  "tags": ["decay", "bleed", "drift", "dub", "envelope", "dynamic", "entangled"],
-  "macroLabels": ["DRIFT ENVELOPE", "DUB DECAY", "COUPLING", "ECHO SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "decay",
+    "bleed",
+    "drift",
+    "dub",
+    "envelope",
+    "dynamic",
+    "entangled"
+  ],
+  "macroLabels": [
+    "DRIFT ENVELOPE",
+    "DUB DECAY",
+    "COUPLING",
+    "ECHO SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
@@ -19,7 +35,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 1,
       "drift_oscA_tune": 12.0,
@@ -59,7 +75,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -101,8 +117,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
-        "engineB": "Dub",
+        "engineA": "Odyssey",
+        "engineB": "Overdub",
         "type": "Env->Decay",
         "amount": 0.5
       }

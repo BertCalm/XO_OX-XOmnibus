@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Harmonic Lock",
   "mood": "Entangled",
-  "engines": ["Dub", "Drift"],
+  "engines": [
+    "Overdub",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DUB's pitch drives DRIFT's pitch via Pitch->Pitch coupling — they are harmonically locked. When DUB bends or glides, DRIFT follows. Two engines become one perfectly-tuned detuned voice.",
-  "tags": ["harmonic", "pitch", "lock", "dub", "drift", "glide", "entangled"],
-  "macroLabels": ["DUB BASS", "DRIFT SHIMMER", "HARMONIC AMOUNT", "SPACE"],
-  "couplingIntensity": "Strong",
+  "tags": [
+    "harmonic",
+    "pitch",
+    "lock",
+    "dub",
+    "drift",
+    "glide",
+    "entangled"
+  ],
+  "macroLabels": [
+    "DUB BASS",
+    "DRIFT SHIMMER",
+    "HARMONIC AMOUNT",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -19,7 +35,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 1,
       "dub_oscTune": 0.0,
@@ -57,7 +73,7 @@
       "dub_glide": 0.15,
       "dub_polyphony": 0
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 1,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -101,8 +117,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Drift",
+        "engineA": "Overdub",
+        "engineB": "Odyssey",
         "type": "Pitch->Pitch",
         "amount": 0.7
       }

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Resonant Morph",
   "mood": "Prism",
-  "engines": ["Fat"],
+  "engines": ["Obese"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High-resonance lead morphing from sine to square. Self-oscillating ladder filter at the edge.",
@@ -19,7 +19,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.5,
       "fat_subLevel": 0.0,

@@ -3,12 +3,12 @@
   "name": "Bob_Drift_Glide_Lead",
   "mood": "Entangled",
   "engines": [
-    "Bob",
-    "Drift"
+    "Oblong",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB mono glide lead with DRIFT shimmer halo \u2014 portamento melodies leave a glowing shimmer trail. Lead-with-atmosphere architecture.",
+  "description": "BOB mono glide lead with DRIFT shimmer halo — portamento melodies leave a glowing shimmer trail. Lead-with-atmosphere architecture.",
   "tags": [
     "bob",
     "drift",
@@ -24,7 +24,7 @@
     "COUPLING",
     "SHIMMER MIX"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.6,
@@ -35,7 +35,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -78,7 +78,7 @@
       "bob_glide": 0.15,
       "bob_polyphony": 0
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -122,8 +122,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "Drift",
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.35
       }

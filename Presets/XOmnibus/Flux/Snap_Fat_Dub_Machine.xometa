@@ -3,13 +3,13 @@
   "name": "Snap_Fat_Dub_Machine",
   "mood": "Flux",
   "engines": [
-    "Snap",
-    "Fat",
-    "Dub"
+    "OddfeliX",
+    "Obese",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine machine \u2014 SNAP rhythm, FAT arp, DUB bass. Rhythmic machine groove.",
+  "description": "Three-engine machine — SNAP rhythm, FAT arp, DUB bass. Rhythmic machine groove.",
   "tags": [
     "snap",
     "fat",
@@ -24,7 +24,7 @@
     "DUB BASS",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -35,7 +35,7 @@
     "aggression": 0.52
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -48,7 +48,7 @@
       "snap_release": 0.1,
       "snap_level": 0.68
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.3,
@@ -81,7 +81,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -123,14 +123,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Fat",
+        "engineA": "OddfeliX",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.62
       },
       {
-        "engineA": "Snap",
-        "engineB": "Dub",
+        "engineA": "OddfeliX",
+        "engineB": "Overdub",
         "type": "Rhythm->Blend",
         "amount": 0.48
       }

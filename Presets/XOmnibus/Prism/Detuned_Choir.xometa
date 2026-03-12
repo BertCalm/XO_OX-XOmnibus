@@ -17,7 +17,7 @@
   "name": "Detuned Choir",
   "mood": "Prism",
   "engines": [
-    "Dub"
+    "Overdub"
   ],
   "description": "Detuned oscillator choir filtered through rising envelope \u2014 vocal dub harmonics.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.1
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 0,
       "dub_oscOctave": 0,
       "dub_oscTune": 7.0,

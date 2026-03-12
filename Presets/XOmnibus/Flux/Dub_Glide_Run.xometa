@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Dub Glide Run",
   "mood": "Flux",
-  "engines": ["Dub"],
+  "engines": ["Overdub"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DUB mono with glide optimized for fast melodic runs — moderate glide time so fast notes catch, slow notes melt. The LFO adds pitch expression mid-run. Classic reggae keyboard solo tone.",
@@ -19,7 +19,7 @@
     "aggression": 0.5
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 1,
       "dub_oscTune": 0.0,

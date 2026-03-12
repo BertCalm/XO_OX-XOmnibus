@@ -9,7 +9,7 @@ namespace xomnibus {
 // SharedTransport — Unified timing/transport for all engines.
 //
 // Provides a single clock that engines read during renderBlock().
-// Engines with sequencers (ONSET) and tempo-synced LFOs (DRIFT, BOB)
+// Engines with sequencers (ONSET) and tempo-synced LFOs (ODYSSEY, OBLONG)
 // consume beat position and phase from this shared source.
 //
 // Thread safety:

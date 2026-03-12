@@ -17,7 +17,7 @@
   "name": "Resonant Column",
   "mood": "Prism",
   "engines": [
-    "Dub"
+    "Overdub"
   ],
   "description": "High-resonance self-oscillating filter \u2014 a column of pure frequency standing in space.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.4
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 0,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,

@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Pressure Drop Pad",
   "mood": "Entangled",
-  "engines": ["Fat", "Bob"],
+  "engines": [
+    "Obese",
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FAT's massive 12-oscillator foundation with BOB's warm character underneath. FAT amplitude shapes BOB's filter — density and character, pressure and warmth together.",
-  "tags": ["pad", "fat", "bob", "dense", "warm", "massive", "entangled"],
-  "macroLabels": ["FAT DENSITY", "BOB CHARACTER", "COUPLING", "DEPTH"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "pad",
+    "fat",
+    "bob",
+    "dense",
+    "warm",
+    "massive",
+    "entangled"
+  ],
+  "macroLabels": [
+    "FAT DENSITY",
+    "BOB CHARACTER",
+    "COUPLING",
+    "DEPTH"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.4,
@@ -19,7 +35,7 @@
     "aggression": 0.05
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.3,
       "fat_mojo": 0.45,
       "fat_subLevel": 0.4,
@@ -52,7 +68,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 3
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -99,8 +115,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Bob",
+        "engineA": "Obese",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.4
       }

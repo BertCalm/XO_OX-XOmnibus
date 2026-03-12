@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Gentle Attractor",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Aizawa with heavy damping. Soft, breathing tone.",
+  "tags": [
+    "chaos",
+    "gentle",
+    "soft",
+    "breathing"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.75,
+    "movement": 0.25,
+    "density": 0.2,
+    "space": 0.2,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 3,
+      "ouro_rate": 165.0,
+      "ouro_chaosIndex": 0.15,
+      "ouro_leash": 0.6,
+      "ouro_theta": 0.0,
+      "ouro_phi": 0.3,
+      "ouro_damping": 0.85,
+      "ouro_injection": 0.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

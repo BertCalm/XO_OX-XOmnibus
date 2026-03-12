@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Drift Prism",
   "mood": "Prism",
-  "engines": ["Drift"],
+  "engines": ["Odyssey"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT's formant filter catching light from every angle — the shimmer, FM harmonics, and formant morph creating a prismatic spectral spread. Pure DRIFT at its most crystalline.",
@@ -19,7 +19,7 @@
     "aggression": 0.1
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 2,
       "drift_oscA_tune": 0.0,

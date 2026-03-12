@@ -493,7 +493,7 @@ private:
 };
 
 //==============================================================================
-// DriftVoice — Per-voice state for the DRIFT engine.
+// DriftVoice — Per-voice state for the ODYSSEY engine.
 // Each voice has dual multi-mode oscillators (Classic/Supersaw/FM),
 // sub, noise, Haze saturation, dual filters (LP + Formant),
 // Prism Shimmer, Voyager Drift, ADSR, and glide.
@@ -784,8 +784,9 @@ public:
                 if (!voice.active) continue;
                 ++voice.age;
 
-                // Update envelope params
-                voice.ampEnv.setParams (attack, decay, sustain, release);
+                // Update envelope params (cached per-block, not per-sample)
+                if (sample == 0)
+                    voice.ampEnv.setParams (attack, decay, sustain, release);
 
                 // --- Glide ---
                 float baseFreqA = voice.cachedBaseFreqA;
@@ -1230,7 +1231,7 @@ public:
 
     //-- Identity --------------------------------------------------------------
 
-    juce::String getEngineId() const override { return "Drift"; }
+    juce::String getEngineId() const override { return "Odyssey"; }
     juce::Colour getAccentColour() const override { return juce::Colour (0xFF7B2D8B); }
     int getMaxVoices() const override { return kMaxVoices; }
 
@@ -1356,7 +1357,7 @@ private:
     static float midiToFreqTune (int midiNote, float tuneSemitones) noexcept
     {
         float n = static_cast<float> (midiNote) + tuneSemitones;
-        return 440.0f * std::pow (2.0f, (n - 69.0f) / 12.0f);
+        return 440.0f * fastPow2 ((n - 69.0f) * (1.0f / 12.0f));
     }
 
     static PolyBLEP::Waveform mapWaveform (int shapeIdx) noexcept

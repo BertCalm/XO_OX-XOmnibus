@@ -3,8 +3,8 @@
   "name": "Dub Ecology",
   "mood": "Atmosphere",
   "engines": [
-    "Dub",
-    "XOrganon"
+    "Overdub",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_level": 0.5,
       "dub_filterCutoff": 800.0,
@@ -47,7 +47,7 @@
       "dub_reverbSize": 0.85,
       "dub_reverbMix": 0.5
     },
-    "XOrganon": {
+    "Organon": {
       "organon_metabolicRate": 0.3,
       "organon_enzymeSelect": 600.0,
       "organon_catalystDrive": 0.4,
@@ -63,14 +63,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "XOrganon",
+        "engineA": "Overdub",
+        "engineB": "Organon",
         "type": "Audio->FM",
         "amount": 0.5
       },
       {
-        "engineA": "XOrganon",
-        "engineB": "Dub",
+        "engineA": "Organon",
+        "engineB": "Overdub",
         "type": "Env->Morph",
         "amount": 0.3
       }
