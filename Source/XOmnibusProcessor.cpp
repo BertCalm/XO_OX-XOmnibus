@@ -326,10 +326,10 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_seqTarget1", 1), "Master Seq Target 1",
-        juce::NormalisableRange<float>(0.0f, 7.0f, 1.0f), 0.0f));
+        juce::NormalisableRange<float>(0.0f, 14.0f, 1.0f), 0.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_seqTarget2", 1), "Master Seq Target 2",
-        juce::NormalisableRange<float>(0.0f, 7.0f, 1.0f), 0.0f));
+        juce::NormalisableRange<float>(0.0f, 14.0f, 1.0f), 0.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_seqPattern", 1), "Master Seq Pattern",
         juce::NormalisableRange<float>(0.0f, 7.0f, 1.0f), 0.0f));
@@ -339,6 +339,101 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_seqEnvAmount", 1), "Master Seq Env Amount",
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+
+    // Stage 3: Spectral Tilt
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_tiltAmount", 1), "Master Tilt Amount",
+        juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_tiltMix", 1), "Master Tilt Mix",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 1.0f));
+
+    // Stage 4: Transient Designer
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_tdAttack", 1), "Master TD Attack",
+        juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_tdSustain", 1), "Master TD Sustain",
+        juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_tdMix", 1), "Master TD Mix",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+
+    // Stage 7: Doppler Effect
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_dopplerDist", 1), "Master Doppler Distance",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_dopplerSpeed", 1), "Master Doppler Speed",
+        juce::NormalisableRange<float>(0.01f, 1.0f), 0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_dopplerMix", 1), "Master Doppler Mix",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+
+    // Stage 11: Granular Smear
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_smearAmount", 1), "Master Smear Amount",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_smearGrainSize", 1), "Master Smear Grain Size",
+        juce::NormalisableRange<float>(10.0f, 200.0f, 0.0f, 0.5f), 60.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_smearDensity", 1), "Master Smear Density",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_smearMix", 1), "Master Smear Mix",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+
+    // Stage 12: Harmonic Exciter
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_excDrive", 1), "Master Exciter Drive",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_excFreq", 1), "Master Exciter Freq",
+        juce::NormalisableRange<float>(1000.0f, 12000.0f, 0.0f, 0.3f), 3500.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_excTone", 1), "Master Exciter Tone",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.7f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_excMix", 1), "Master Exciter Mix",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+
+    // Stage 13: Stereo Sculptor
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_sculLowWidth", 1), "Master Sculptor Low Width",
+        juce::NormalisableRange<float>(0.0f, 2.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_sculMidWidth", 1), "Master Sculptor Mid Width",
+        juce::NormalisableRange<float>(0.0f, 2.0f), 1.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_sculHighWidth", 1), "Master Sculptor High Width",
+        juce::NormalisableRange<float>(0.0f, 2.0f), 1.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_sculLowCross", 1), "Master Sculptor Low Crossover",
+        juce::NormalisableRange<float>(60.0f, 500.0f, 0.0f, 0.4f), 200.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_sculHighCross", 1), "Master Sculptor High Crossover",
+        juce::NormalisableRange<float>(2000.0f, 12000.0f, 0.0f, 0.4f), 4000.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_sculMix", 1), "Master Sculptor Mix",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+
+    // Stage 14: Psychoacoustic Width
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_pwidthAmount", 1), "Master PWidth Amount",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_pwidthHaas", 1), "Master PWidth Haas",
+        juce::NormalisableRange<float>(0.1f, 30.0f, 0.0f, 0.4f), 8.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_pwidthComb", 1), "Master PWidth Comb Freq",
+        juce::NormalisableRange<float>(200.0f, 2000.0f, 0.0f, 0.4f), 600.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_pwidthMono", 1), "Master PWidth Mono Safe",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_pwidthMix", 1), "Master PWidth Mix",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
     return { params.begin(), params.end() };
 }

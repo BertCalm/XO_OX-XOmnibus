@@ -64,6 +64,13 @@ public:
         ModDepth,
         ModRate,
         CompMix,
+        SpectralTilt,      // Spectral tilt amount
+        TransientAttack,   // Transient designer attack
+        DopplerDistance,    // Doppler distance
+        GranularSmear,     // Granular smear amount
+        ExciterDrive,      // Harmonic exciter drive
+        StereoWidth,       // Stereo sculptor mid width
+        PsychoWidth,       // Psychoacoustic widener width
         NumTargets
     };
 
