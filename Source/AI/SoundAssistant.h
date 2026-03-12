@@ -1,5 +1,6 @@
 #pragma once
 #include "SecureKeyStore.h"
+#include "AIParameterSchema.h"
 #include "../Core/RecipeEngine.h"
 #include <juce_core/juce_core.h>
 #include <functional>
@@ -54,6 +55,11 @@ public:
         RecipeEngine::Recipe recipe;
         juce::String explanation;    // AI's reasoning for the choices
         juce::String errorMessage;
+
+        // Validation info — tells the user what was adjusted
+        juce::StringArray validationWarnings;
+        int parametersCorrected = 0;
+        int unknownParametersDropped = 0;
     };
 
     struct CouplingAdvice
@@ -126,7 +132,12 @@ public:
 
     //--------------------------------------------------------------------------
 
-    SoundAssistant() = default;
+    SoundAssistant()
+        : schema (buildDefaultSchema())
+    {}
+
+    /// Access the schema (for UI display of parameter info, debugging, etc.)
+    const AIParameterSchema& getSchema() const { return schema; }
 
     /// Set the preferred AI provider. Falls back to next available if no key.
     void setPreferredProvider (SecureKeyStore::Provider p) { preferredProvider = p; }
@@ -152,7 +163,7 @@ public:
         if (!checkRateLimit()) { callbackError (callback, "Rate limit exceeded. Please wait."); return; }
 
         auto prompt = buildTextToRecipePrompt (description, context);
-        sendRequest (prompt, [callback = std::move (callback)] (const juce::String& response, const juce::String& error)
+        sendRequest (prompt, [this, callback = std::move (callback)] (const juce::String& response, const juce::String& error)
         {
             if (error.isNotEmpty())
             {
@@ -174,7 +185,7 @@ public:
         if (!checkRateLimit()) { callbackError (callback, "Rate limit exceeded."); return; }
 
         auto prompt = buildCouplingPrompt (context);
-        sendRequest (prompt, [callback = std::move (callback)] (const juce::String& response, const juce::String& error)
+        sendRequest (prompt, [this, callback = std::move (callback)] (const juce::String& response, const juce::String& error)
         {
             if (error.isNotEmpty())
             {
@@ -196,7 +207,7 @@ public:
         if (!checkRateLimit()) { callbackError (callback, "Rate limit exceeded."); return; }
 
         auto prompt = buildMacroPrompt (context);
-        sendRequest (prompt, [callback = std::move (callback)] (const juce::String& response, const juce::String& error)
+        sendRequest (prompt, [this, callback = std::move (callback)] (const juce::String& response, const juce::String& error)
         {
             if (error.isNotEmpty())
             {
@@ -218,7 +229,7 @@ public:
         if (!checkRateLimit()) { callbackError (callback, "Rate limit exceeded."); return; }
 
         auto prompt = buildNamingPrompt (context);
-        sendRequest (prompt, [callback = std::move (callback)] (const juce::String& response, const juce::String& error)
+        sendRequest (prompt, [this, callback = std::move (callback)] (const juce::String& response, const juce::String& error)
         {
             if (error.isNotEmpty())
             {
@@ -241,7 +252,7 @@ public:
         if (!checkRateLimit()) { callbackError (callback, "Rate limit exceeded."); return; }
 
         auto prompt = buildExplanationPrompt (context, userQuestion);
-        sendRequest (prompt, [callback = std::move (callback)] (const juce::String& response, const juce::String& error)
+        sendRequest (prompt, [this, callback = std::move (callback)] (const juce::String& response, const juce::String& error)
         {
             if (error.isNotEmpty())
             {
@@ -258,6 +269,7 @@ public:
 
 private:
     SecureKeyStore keyStore;
+    AIParameterSchema schema;
     SecureKeyStore::Provider preferredProvider = SecureKeyStore::Provider::Anthropic;
 
     // Rate limiting: max 10 requests per minute
@@ -438,9 +450,14 @@ private:
                     root->setProperty ("messages", messages);
 
                     root->setProperty ("system",
-                        "You are a sound design assistant for XOmnibus, a multi-engine "
-                        "synthesizer. Respond with valid JSON only. No markdown, no explanation "
-                        "outside the JSON structure.");
+                        "You are XOmnibus Sound Architect, an expert sound design assistant for "
+                        "XOmnibus, a multi-engine synthesizer with 20 engines and 12 coupling types. "
+                        "RESPOND WITH VALID JSON ONLY. No markdown code fences, no explanation text "
+                        "outside the JSON. The user prompt contains a PARAMETER REFERENCE section — "
+                        "use ONLY the parameter IDs listed there. Every value you return will be "
+                        "validated against the parameter schema: out-of-range values will be clamped, "
+                        "unknown parameter IDs will be flagged. Prefer sweet-spot values over extremes "
+                        "unless the user explicitly asks for extreme sounds.");
                     break;
                 }
                 case SecureKeyStore::Provider::OpenAI:
@@ -451,8 +468,10 @@ private:
                     auto* sysMsg = new juce::DynamicObject();
                     sysMsg->setProperty ("role", "system");
                     sysMsg->setProperty ("content",
-                        "You are a sound design assistant for XOmnibus, a multi-engine "
-                        "synthesizer. Respond with valid JSON only.");
+                        "You are XOmnibus Sound Architect, an expert sound design assistant. "
+                        "RESPOND WITH VALID JSON ONLY — no markdown, no text outside JSON. "
+                        "Use ONLY parameter IDs from the PARAMETER REFERENCE in the user prompt. "
+                        "Prefer sweet-spot values. All values will be validated against the schema.");
                     auto* userMsg = new juce::DynamicObject();
                     userMsg->setProperty ("role", "user");
                     userMsg->setProperty ("content", prompt_);
@@ -489,14 +508,9 @@ private:
 
     static juce::String buildSystemContext()
     {
-        return "XOmnibus is a multi-engine synthesizer with 21 engines, 12 coupling types, "
-               "an 18-stage master FX chain, and 4 macros. "
-               "Engines: OddfeliX, OddOscar, Overdub, Odyssey, Oblong, Obese, Onset, "
-               "Overworld, Opal, Orbital, Organon, Ouroboros, Obsidian, Overbite, "
-               "Origami, Oracle, Obscura, Oceanic, Optic, Oblique. "
-               "Coupling types: AmpToFilter, AmpToPitch, LFOToPitch, EnvToMorph, "
-               "AudioToFM, AudioToRing, FilterToFilter, AmpToChoke, RhythmToBlend, "
-               "EnvToDecay, PitchToPitch, AudioToWavetable. "
+        return "XOmnibus is a multi-engine synthesizer with 20 engines, 12 coupling types, "
+               "an 18-stage master FX chain, and 4 macros (M1=CHARACTER, M2=MOVEMENT, "
+               "M3=COUPLING, M4=SPACE). "
                "Master FX stages: Saturator, Corroder, VibeKnob(-1=sweet,+1=grit), "
                "SpectralTilt, TransientDesigner, Delay, Combulator, Doppler, "
                "Reverb, FreqShifter, Modulation, GranularSmear, HarmonicExciter, "
@@ -505,6 +519,14 @@ private:
                "Moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether. "
                "Sonic DNA: brightness(0-1), warmth(0-1), movement(0-1), "
                "density(0-1), space(0-1), aggression(0-1). ";
+    }
+
+    /// Generate schema-enriched context for the specific engines in play.
+    /// This gives the AI exact parameter IDs, ranges, sweet spots, and safety rules.
+    juce::String buildSchemaContext (const SynthContext& context) const
+    {
+        return schema.generatePromptContext (context.activeEngines)
+               + schema.generateSafetyPrompt();
     }
 
     static juce::String contextToString (const SynthContext& ctx)
@@ -526,94 +548,332 @@ private:
         return s;
     }
 
-    static juce::String buildTextToRecipePrompt (const juce::String& description,
-                                                  const SynthContext& context)
+    juce::String buildTextToRecipePrompt (const juce::String& description,
+                                         const SynthContext& context) const
     {
         return buildSystemContext() + "\n\n"
+               + buildSchemaContext (context) + "\n\n"
                + contextToString (context) + "\n\n"
                "User request: \"" + description + "\"\n\n"
-               "Generate a complete XOmnibus recipe as JSON with these fields: "
-               "name(string), mood(string), description(string), "
-               "engines(array of {id, parameters:{}}), "
-               "coupling(array of {sourceSlot, destSlot, type, intensity}), "
-               "masterFX({paramId: value}), "
-               "macros(array of 4 {label, targets:[], ranges:[]}), "
-               "variationAxis({label, targets:[], minValues:[], maxValues:[]}), "
-               "dna({brightness,warmth,movement,density,space,aggression}). "
-               "Choose 2-4 engines that best serve the description. "
-               "Use parameter IDs with correct engine prefixes.";
+               "Generate a complete XOmnibus recipe as JSON with these EXACT fields:\n"
+               "{\n"
+               "  \"name\": \"2-3 word evocative name, max 30 chars\",\n"
+               "  \"mood\": \"Foundation|Atmosphere|Entangled|Prism|Flux|Aether\",\n"
+               "  \"description\": \"One sentence describing the sound\",\n"
+               "  \"explanation\": \"Why you chose these engines and settings\",\n"
+               "  \"engines\": [{\"id\": \"EngineId\", \"parameters\": {\"prefix_param\": value}}],\n"
+               "  \"coupling\": [{\"sourceSlot\": 0, \"destSlot\": 1, \"type\": \"CouplingType\", \"intensity\": 0.3}],\n"
+               "  \"masterFX\": {\"fx_paramId\": value},\n"
+               "  \"macros\": [{\"label\": \"WORD\", \"targets\": [\"paramId\"], \"ranges\": [0.5]}],\n"
+               "  \"variationAxis\": {\"label\": \"Name\", \"targets\": [\"paramId\"], \"minValues\": [0.0], \"maxValues\": [1.0]},\n"
+               "  \"dna\": {\"brightness\": 0.5, \"warmth\": 0.5, \"movement\": 0.5, \"density\": 0.5, \"space\": 0.5, \"aggression\": 0.5}\n"
+               "}\n\n"
+               "CRITICAL RULES:\n"
+               "- Choose 2-4 engines from the PARAMETER REFERENCE above.\n"
+               "- Use ONLY the parameter IDs listed in the reference. Do NOT invent IDs.\n"
+               "- Keep values within [min, max] ranges. Prefer sweet spot ranges.\n"
+               "- For Choice params, use the integer index (0-based).\n"
+               "- Each macro should target 2-4 parameters and produce audible change.\n"
+               "- M1=CHARACTER, M2=MOVEMENT, M3=COUPLING, M4=SPACE.\n"
+               "- Variation axis should be a single expressive dimension to explore.\n"
+               "- DNA values must be 0.0-1.0 and match what the sound actually is.\n"
+               "- Dry patch (before FX) must sound compelling on its own.\n";
     }
 
-    static juce::String buildCouplingPrompt (const SynthContext& context)
+    juce::String buildCouplingPrompt (const SynthContext& context) const
+    {
+        return buildSystemContext() + "\n\n"
+               + buildSchemaContext (context) + "\n\n"
+               + contextToString (context) + "\n\n"
+               "Suggest 2-4 coupling routes for these engines.\n"
+               "Return JSON: {\"suggestions\": [{\"sourceEngine\": \"Id\", \"destEngine\": \"Id\", "
+               "\"couplingType\": \"TypeName\", \"suggestedIntensity\": 0.3, \"reasoning\": \"why\"}]}\n\n"
+               "RULES:\n"
+               "- Use ONLY coupling types from the COUPLING TYPES reference above.\n"
+               "- Respect the max safe intensity for each type.\n"
+               "- Consider what the source engine sends and what the dest receives.\n"
+               "- Lower intensities (0.1-0.4) are usually more musical than extremes.\n"
+               "- Avoid AudioToFM + PitchToPitch on the same pair (conflicts).\n";
+    }
+
+    juce::String buildMacroPrompt (const SynthContext& context) const
+    {
+        return buildSystemContext() + "\n\n"
+               + buildSchemaContext (context) + "\n\n"
+               + contextToString (context) + "\n\n"
+               "Suggest 4 macro assignments for this configuration.\n"
+               "Return JSON: {\"macros\": [{\"label\": \"WORD\", \"description\": \"what it does\", "
+               "\"targets\": [\"paramId\", ...], \"ranges\": [0.5, ...]}]}\n\n"
+               "RULES:\n"
+               "- Labels must be 1 word, evocative, ALL CAPS (e.g., SHIMMER, GRIT, DRIFT).\n"
+               "- Target ONLY parameter IDs from the reference above.\n"
+               "- Each macro should control 2-5 parameters for complex movement.\n"
+               "- Ranges are -1.0 to +1.0 (bipolar modulation depth).\n"
+               "- M1=CHARACTER (timbre/tone), M2=MOVEMENT (animation/LFO), "
+               "M3=COUPLING (cross-engine), M4=SPACE (reverb/delay/width).\n"
+               "- Every macro must produce an audible change at full throw.\n"
+               "- Don't target Choice or Toggle params with macros.\n";
+    }
+
+    juce::String buildNamingPrompt (const SynthContext& context) const
     {
         return buildSystemContext() + "\n\n"
                + contextToString (context) + "\n\n"
-               "Suggest 2-4 coupling routes for these engines. "
-               "Return JSON: {suggestions: [{sourceEngine, destEngine, "
-               "couplingType, suggestedIntensity(0-1), reasoning}]}. "
-               "Consider what sounds musically interesting and complementary.";
+               "Name this sound. Return JSON: {\"name\": \"2-3 words, evocative, "
+               "max 30 chars\", \"description\": \"1 sentence\", \"mood\": \"one of 6 moods\", "
+               "\"tags\": [\"tag1\", \"tag2\", \"tag3\", \"tag4\", \"tag5\"]}.\n\n"
+               "RULES:\n"
+               "- No synth jargon in the name (no 'FM', 'LFO', 'wavetable').\n"
+               "- Name should evoke what the sound FEELS like, not what makes it.\n"
+               "- Mood must be exactly one of: Foundation, Atmosphere, Entangled, Prism, Flux, Aether.\n"
+               "- Tags should be useful for search (instrument type, genre, mood, texture).\n";
     }
 
-    static juce::String buildMacroPrompt (const SynthContext& context)
+    juce::String buildExplanationPrompt (const SynthContext& context,
+                                          const juce::String& question) const
     {
         return buildSystemContext() + "\n\n"
-               + contextToString (context) + "\n\n"
-               "Suggest 4 macro assignments for this configuration. "
-               "Return JSON: {macros: [{label(1 word, evocative, ALL CAPS), "
-               "description, targets:[paramId,...], ranges:[float,...]}]}. "
-               "Each macro should produce a meaningful sonic change.";
-    }
-
-    static juce::String buildNamingPrompt (const SynthContext& context)
-    {
-        return buildSystemContext() + "\n\n"
-               + contextToString (context) + "\n\n"
-               "Name this sound. Return JSON: {name(2-3 words, evocative, "
-               "max 30 chars), description(1 sentence), mood(one of the 6 moods), "
-               "tags:[5 relevant tags]}. No jargon in the name.";
-    }
-
-    static juce::String buildExplanationPrompt (const SynthContext& context,
-                                                 const juce::String& question)
-    {
-        return buildSystemContext() + "\n\n"
+               + buildSchemaContext (context) + "\n\n"
                + contextToString (context) + "\n\n"
                "User asks: \"" + question + "\"\n\n"
-               "Return JSON: {description(plain English description of current sound), "
-               "suggestions(actionable tips to achieve what the user wants)}. "
-               "Be specific about which parameters to adjust and by how much.";
+               "Return JSON: {\"description\": \"plain English description of current sound\", "
+               "\"suggestions\": \"actionable tips using specific parameter IDs and values\"}\n\n"
+               "RULES:\n"
+               "- Be specific: name exact parameter IDs and target values.\n"
+               "- Reference the sweet spots from the parameter reference.\n"
+               "- Suggest changes as relative adjustments when possible.\n"
+               "- If the user wants something this engine can't do, say so and suggest a different engine.\n";
     }
 
     //--------------------------------------------------------------------------
     // Response parsers
 
-    static RecipeResult parseRecipeResponse (const juce::String& response)
+    RecipeResult parseRecipeResponse (const juce::String& response) const
     {
         RecipeResult result;
         auto json = extractJSON (response);
-        if (json.isObject())
+
+        auto* obj = json.getDynamicObject();
+        if (obj == nullptr)
         {
-            // Parse into RecipeEngine::Recipe format
-            // (simplified — full parser would mirror RecipeEngine::loadRecipe)
-            result.success = true;
-            auto* obj = json.getDynamicObject();
-            if (obj)
+            result.errorMessage = "Could not parse AI response as recipe JSON";
+            return result;
+        }
+
+        // --- Identity ---
+        result.recipe.name        = obj->getProperty ("name").toString();
+        result.recipe.mood        = obj->getProperty ("mood").toString();
+        result.recipe.description = obj->getProperty ("description").toString();
+        result.explanation        = obj->getProperty ("explanation").toString();
+
+        // Validate mood
+        static const juce::StringArray validMoods {
+            "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether" };
+        if (! validMoods.contains (result.recipe.mood))
+        {
+            result.validationWarnings.add ("Mood '" + result.recipe.mood
+                                           + "' is not valid. Defaulting to Atmosphere.");
+            result.recipe.mood = "Atmosphere";
+        }
+
+        // --- Engines + Parameters (with schema validation) ---
+        if (auto* enginesArr = obj->getProperty ("engines").getArray())
+        {
+            int engineCount = juce::jmin (4, enginesArr->size());
+            for (int i = 0; i < engineCount; ++i)
             {
-                result.recipe.name = obj->getProperty ("name").toString();
-                result.recipe.mood = obj->getProperty ("mood").toString();
-                result.recipe.description = obj->getProperty ("description").toString();
-                result.explanation = obj->getProperty ("explanation").toString();
-                // Full recipe parsing delegated to RecipeEngine
+                auto* engObj = (*enginesArr)[i].getDynamicObject();
+                if (engObj == nullptr) continue;
+
+                RecipeEngine::EngineSlot slot;
+                slot.engineId = engObj->getProperty ("id").toString();
+
+                // Validate engine ID exists in schema
+                auto* engineProfile = schema.getEngine (slot.engineId);
+                if (engineProfile == nullptr)
+                {
+                    result.validationWarnings.add ("Unknown engine '" + slot.engineId
+                                                   + "' — included but parameters cannot be validated.");
+                }
+
+                // Parse and validate parameters
+                if (auto* paramsObj = engObj->getProperty ("parameters").getDynamicObject())
+                {
+                    for (const auto& prop : paramsObj->getProperties())
+                    {
+                        juce::String paramId = prop.name.toString();
+                        float rawValue = static_cast<float> (prop.value);
+
+                        auto* paramDef = schema.getParam (paramId);
+                        if (paramDef != nullptr)
+                        {
+                            float validated = paramDef->validate (rawValue);
+                            slot.parameters[paramId] = validated;
+
+                            if (std::abs (validated - rawValue) > 0.001f)
+                            {
+                                result.parametersCorrected++;
+                                result.validationWarnings.add (
+                                    paramId + ": AI suggested " + juce::String (rawValue, 3)
+                                    + ", corrected to " + juce::String (validated, 3));
+                            }
+                        }
+                        else
+                        {
+                            // Unknown parameter — could be from an engine we don't have
+                            // full schema for yet. Include it but warn.
+                            slot.parameters[paramId] = rawValue;
+                            result.unknownParametersDropped++;
+                            result.validationWarnings.add (
+                                "Parameter '" + paramId + "' not in schema — included unchecked.");
+                        }
+                    }
+                }
+
+                result.recipe.engines.push_back (std::move (slot));
             }
         }
-        else
+
+        // --- Coupling (with schema validation) ---
+        if (auto* couplingArr = obj->getProperty ("coupling").getArray())
         {
-            result.errorMessage = "Could not parse AI response as recipe";
+            for (const auto& c : *couplingArr)
+            {
+                auto* cObj = c.getDynamicObject();
+                if (cObj == nullptr) continue;
+
+                RecipeEngine::CouplingRoute route;
+                route.sourceSlot   = juce::jlimit (0, 3, static_cast<int> (cObj->getProperty ("sourceSlot")));
+                route.destSlot     = juce::jlimit (0, 3, static_cast<int> (cObj->getProperty ("destSlot")));
+                route.couplingType = cObj->getProperty ("type").toString();
+                float rawIntensity = static_cast<float> (cObj->getProperty ("intensity"));
+
+                // Validate through schema
+                auto couplingValidation = schema.validateCoupling (route.couplingType, rawIntensity);
+                route.intensity = couplingValidation.correctedParams.count ("intensity")
+                    ? couplingValidation.correctedParams.at ("intensity")
+                    : juce::jlimit (0.0f, 1.0f, rawIntensity);
+
+                for (const auto& w : couplingValidation.warnings)
+                    result.validationWarnings.add (w);
+
+                // Prevent self-coupling
+                if (route.sourceSlot == route.destSlot)
+                {
+                    result.validationWarnings.add ("Coupling source=dest (slot "
+                        + juce::String (route.sourceSlot) + ") — skipped.");
+                    continue;
+                }
+
+                result.recipe.coupling.push_back (std::move (route));
+            }
         }
+
+        // --- Master FX ---
+        if (auto* fxObj = obj->getProperty ("masterFX").getDynamicObject())
+        {
+            for (const auto& prop : fxObj->getProperties())
+                result.recipe.masterFX[prop.name.toString()] = static_cast<float> (prop.value);
+        }
+
+        // --- Macros (with parameter existence validation) ---
+        if (auto* macrosArr = obj->getProperty ("macros").getArray())
+        {
+            for (int i = 0; i < juce::jmin (4, macrosArr->size()); ++i)
+            {
+                auto* mObj = (*macrosArr)[i].getDynamicObject();
+                if (mObj == nullptr) continue;
+
+                auto& macro = result.recipe.macros[static_cast<size_t> (i)];
+                macro.label = mObj->getProperty ("label").toString().toUpperCase();
+
+                if (auto* targets = mObj->getProperty ("targets").getArray())
+                {
+                    for (const auto& t : *targets)
+                    {
+                        juce::String targetId = t.toString();
+                        // Validate target exists
+                        if (schema.getParam (targetId) != nullptr)
+                        {
+                            macro.targets.push_back (targetId);
+                        }
+                        else
+                        {
+                            // Include it anyway (might be an FX param or future param)
+                            macro.targets.push_back (targetId);
+                            result.validationWarnings.add (
+                                "Macro " + macro.label + " target '" + targetId
+                                + "' not in engine schema — included unchecked.");
+                        }
+                    }
+                }
+
+                if (auto* ranges = mObj->getProperty ("ranges").getArray())
+                    for (const auto& r : *ranges)
+                        macro.ranges.push_back (juce::jlimit (-1.0f, 1.0f, static_cast<float> (r)));
+            }
+        }
+
+        // --- Variation Axis ---
+        if (auto* vaObj = obj->getProperty ("variationAxis").getDynamicObject())
+        {
+            RecipeEngine::VariationAxis va;
+            va.label = vaObj->getProperty ("label").toString();
+
+            if (auto* targets = vaObj->getProperty ("targets").getArray())
+                for (const auto& t : *targets) va.targets.push_back (t.toString());
+            if (auto* mins = vaObj->getProperty ("minValues").getArray())
+                for (const auto& v : *mins) va.minValues.push_back (static_cast<float> (v));
+            if (auto* maxs = vaObj->getProperty ("maxValues").getArray())
+                for (const auto& v : *maxs) va.maxValues.push_back (static_cast<float> (v));
+
+            if (! va.targets.empty())
+                result.recipe.variationAxis = std::move (va);
+        }
+
+        // --- DNA (clamp to valid range) ---
+        if (auto* dnaObj = obj->getProperty ("dna").getDynamicObject())
+        {
+            auto clampDNA = [] (const juce::var& v) {
+                return juce::jlimit (0.0f, 1.0f, static_cast<float> (v));
+            };
+            result.recipe.dna.brightness  = clampDNA (dnaObj->getProperty ("brightness"));
+            result.recipe.dna.warmth      = clampDNA (dnaObj->getProperty ("warmth"));
+            result.recipe.dna.movement    = clampDNA (dnaObj->getProperty ("movement"));
+            result.recipe.dna.density     = clampDNA (dnaObj->getProperty ("density"));
+            result.recipe.dna.space       = clampDNA (dnaObj->getProperty ("space"));
+            result.recipe.dna.aggression  = clampDNA (dnaObj->getProperty ("aggression"));
+        }
+
+        // --- Cross-parameter safety rules ---
+        std::map<juce::String, float> allParams;
+        for (const auto& slot : result.recipe.engines)
+            for (const auto& [k, v] : slot.parameters)
+                allParams[k] = v;
+
+        auto safetyResult = schema.validateParameters (allParams);
+        for (const auto& w : safetyResult.warnings)
+            result.validationWarnings.add ("Safety: " + w);
+
+        // Apply corrections from safety rules back to engine slots
+        for (auto& slot : result.recipe.engines)
+        {
+            for (auto& [paramId, value] : slot.parameters)
+            {
+                auto it = safetyResult.correctedParams.find (paramId);
+                if (it != safetyResult.correctedParams.end())
+                    value = it->second;
+            }
+        }
+
+        result.success = result.recipe.isValid();
+        if (! result.success)
+            result.errorMessage = "Recipe is invalid (missing name or engines)";
+
         return result;
     }
 
-    static CouplingAdvice parseCouplingResponse (const juce::String& response)
+    CouplingAdvice parseCouplingResponse (const juce::String& response) const
     {
         CouplingAdvice result;
         auto json = extractJSON (response);
@@ -630,8 +890,15 @@ private:
                         suggestion.sourceEngine = sObj->getProperty ("sourceEngine").toString();
                         suggestion.destEngine = sObj->getProperty ("destEngine").toString();
                         suggestion.couplingType = sObj->getProperty ("couplingType").toString();
-                        suggestion.suggestedIntensity = static_cast<float> (sObj->getProperty ("suggestedIntensity"));
+                        float rawIntensity = static_cast<float> (sObj->getProperty ("suggestedIntensity"));
                         suggestion.reasoning = sObj->getProperty ("reasoning").toString();
+
+                        // Validate intensity through schema
+                        auto validation = schema.validateCoupling (suggestion.couplingType, rawIntensity);
+                        suggestion.suggestedIntensity = validation.correctedParams.count ("intensity")
+                            ? validation.correctedParams.at ("intensity")
+                            : juce::jlimit (0.0f, 1.0f, rawIntensity);
+
                         result.suggestions.push_back (std::move (suggestion));
                     }
                 }
@@ -642,7 +909,7 @@ private:
         return result;
     }
 
-    static MacroSuggestion parseMacroResponse (const juce::String& response)
+    MacroSuggestion parseMacroResponse (const juce::String& response) const
     {
         MacroSuggestion result;
         auto json = extractJSON (response);
@@ -666,7 +933,7 @@ private:
         return result;
     }
 
-    static NamingSuggestion parseNamingResponse (const juce::String& response)
+    NamingSuggestion parseNamingResponse (const juce::String& response) const
     {
         NamingSuggestion result;
         auto json = extractJSON (response);
@@ -682,7 +949,7 @@ private:
         return result;
     }
 
-    static SoundExplanation parseExplanationResponse (const juce::String& response)
+    SoundExplanation parseExplanationResponse (const juce::String& response) const
     {
         SoundExplanation result;
         auto json = extractJSON (response);
