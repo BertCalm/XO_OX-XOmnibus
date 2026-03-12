@@ -59,7 +59,9 @@ public:
             float lo = (i == 0) ? 20.0f : crossovers[i - 1];
             float hi = (i == kNumBands - 1) ? 20000.0f : crossovers[i];
             float center = std::sqrt (lo * hi);
-            float q = center / (hi - lo);
+            float denom = hi - lo;
+            if (denom < 1.0f) denom = 1.0f;
+            float q = center / denom;
 
             bandFilters[i].setMode (CytomicSVF::Mode::BandPass);
             bandFilters[i].setCoefficients (center, clamp (q * 0.5f, 0.1f, 0.9f),
@@ -105,7 +107,7 @@ public:
             float weightedSum = 0.0f;
             for (int i = 0; i < kNumBands; ++i)
                 weightedSum += bandEnergy[i] * static_cast<float> (i);
-            spectralCentroid = weightedSum / (totalEnergy * (kNumBands - 1));
+            spectralCentroid = flushDenormal (weightedSum / (totalEnergy * (kNumBands - 1)));
         }
         else
         {
@@ -276,7 +278,7 @@ private:
 
         float decaySamples = decayMs * 0.001f * static_cast<float> (sr);
         if (decaySamples < 1.0f) return 0.0f;
-        return std::pow (0.001f, 1.0f / decaySamples);  // -60dB decay time
+        return flushDenormal (std::pow (0.001f, 1.0f / decaySamples));  // -60dB decay time
     }
 };
 
@@ -536,7 +538,7 @@ public:
             case CouplingType::FilterToFilter:
             {
                 // Sum the incoming audio for spectrum analysis
-                if (numSamples > 0)
+                if (numSamples > 0 && sourceBuffer != nullptr)
                 {
                     float sum = 0.0f;
                     for (int i = 0; i < numSamples; ++i)

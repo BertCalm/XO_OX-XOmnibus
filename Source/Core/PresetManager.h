@@ -41,6 +41,10 @@ inline juce::String resolveEngineAlias(const juce::String& name)
         { "XOblong",     "Oblong"    },
         { "XOblongBob",  "Oblong"    },
         { "XObese",      "Obese"     },
+        { "XOnset",      "Onset"     },
+        { "XOrbital",    "Orbital"   },
+        { "XOrganon",    "Organon"   },
+        { "XOuroboros",  "Ouroboros" },
     };
     auto it = aliases.find(name);
     return (it != aliases.end()) ? it->second : name;
@@ -53,12 +57,19 @@ inline const juce::StringArray validMoods {
 
 // Valid coupling intensity levels.
 inline const juce::StringArray validCouplingIntensities {
-    "None", "Subtle", "Moderate", "Deep"
+    "None", "Low", "Medium", "High",
+    // Legacy aliases (kept for backward preset compatibility)
+    "Subtle", "Moderate", "Deep"
 };
 
 // Valid coupling pair types (string form as they appear in .xometa JSON).
 // Must match the CouplingType enum in SynthEngine.h 1:1.
+// Accepts both CamelCase (AmpToFilter) and arrow (Amp->Filter) formats.
 inline const juce::StringArray validCouplingTypes {
+    "AmpToFilter", "AmpToPitch", "LFOToPitch", "EnvToMorph",
+    "AudioToFM", "AudioToRing", "FilterToFilter", "AmpToChoke",
+    "RhythmToBlend", "EnvToDecay", "PitchToPitch", "AudioToWavetable",
+    // Legacy arrow-notation aliases
     "Amp->Filter", "Amp->Pitch", "LFO->Pitch", "Env->Morph",
     "Audio->FM", "Audio->Ring", "Filter->Filter", "Amp->Choke",
     "Rhythm->Blend", "Env->Decay", "Pitch->Pitch", "Audio->Wavetable"

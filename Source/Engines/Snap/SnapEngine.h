@@ -257,6 +257,7 @@ public:
                 float decayRate = (decay > 0.001f)
                     ? 1.0f / (decay * srf) : 1.0f;
                 voice.envLevel -= decayRate;
+                voice.envLevel = flushDenormal (voice.envLevel);
                 if (voice.envLevel <= 0.0f)
                 {
                     voice.envLevel = 0.0f;
@@ -269,6 +270,7 @@ public:
                 if (voice.fadeOutLevel > 0.0f)
                 {
                     voice.fadeOutLevel -= 1.0f / (0.005f * srf);
+                    voice.fadeOutLevel = flushDenormal (voice.fadeOutLevel);
                     if (voice.fadeOutLevel <= 0.0f)
                         voice.fadeOutLevel = 0.0f;
                     stealFade = 1.0f - voice.fadeOutLevel;

@@ -466,6 +466,7 @@ public:
                 if (voice.fadingOut)
                 {
                     voice.fadeGain -= crossfadeRate;
+                    voice.fadeGain = flushDenormal (voice.fadeGain);
                     if (voice.fadeGain <= 0.0f)
                     {
                         voice.fadeGain = 0.0f;
@@ -476,6 +477,7 @@ public:
 
                 // --- Glide (portamento) ---
                 voice.currentFreq += (voice.targetFreq - voice.currentFreq) * voice.glideCoeff;
+                voice.currentFreq = flushDenormal (voice.currentFreq);
 
                 // --- Envelopes ---
                 float ampLevel = voice.ampEnv.process();

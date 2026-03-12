@@ -499,12 +499,14 @@ public:
                         break;
                     case OrbitalVoice::EnvStage::Decay:
                         v.envLevel -= v.envDecayCoeff;
+                        v.envLevel = flushDenormal (v.envLevel);
                         if (v.envLevel <= v.envSustain) { v.envLevel = v.envSustain; v.envStage = OrbitalVoice::EnvStage::Sustain; }
                         break;
                     case OrbitalVoice::EnvStage::Sustain:
                         break;
                     case OrbitalVoice::EnvStage::Release:
                         v.envLevel -= v.envReleaseCoeff;
+                        v.envLevel = flushDenormal (v.envLevel);
                         if (v.envLevel <= 0.0f)
                         {
                             v.envLevel = 0.0f;
@@ -533,6 +535,7 @@ public:
                             break;
                         case OrbitalVoice::GroupEnvStage::Decay:
                             v.groupEnvLevel[g] -= v.groupDecayCoeff[g];
+                            v.groupEnvLevel[g] = flushDenormal (v.groupEnvLevel[g]);
                             if (v.groupEnvLevel[g] <= kGroupFloor[g])
                             {
                                 v.groupEnvLevel[g] = kGroupFloor[g];
@@ -585,6 +588,7 @@ public:
                 if (v.fadeOutLevel > 0.0f)
                 {
                     v.fadeOutLevel -= fadeOutStep;
+                    v.fadeOutLevel = flushDenormal (v.fadeOutLevel);
                     if (v.fadeOutLevel < 0.0f) v.fadeOutLevel = 0.0f;
                     stealFade = 1.0f - v.fadeOutLevel;
                 }

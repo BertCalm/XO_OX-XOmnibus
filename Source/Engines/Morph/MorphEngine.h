@@ -153,6 +153,8 @@ public:
             double s = (i == 0) ? inp : stage[i - 1];
             stage[i] = delay[i] + f * (std::tanh (s) - std::tanh (delay[i]));
             delay[i] = stage[i];
+            // Prevent denormals in the 4-pole feedback chain
+            if (std::fabs (delay[i]) < 1.0e-18) delay[i] = 0.0;
         }
 
         return static_cast<float> (stage[3]);
@@ -422,6 +424,7 @@ public:
                 if (voice.fadeOutLevel > 0.0f)
                 {
                     voice.fadeOutLevel -= 1.0f / (0.005f * srf);
+                    voice.fadeOutLevel = flushDenormal (voice.fadeOutLevel);
                     if (voice.fadeOutLevel <= 0.0f)
                         voice.fadeOutLevel = 0.0f;
                     stealFade = 1.0f - voice.fadeOutLevel;
@@ -664,6 +667,7 @@ private:
             {
                 float rate = 1.0f / (std::max (0.01f, decayTime) * srf);
                 voice.envLevel -= rate;
+                voice.envLevel = flushDenormal (voice.envLevel);
                 if (voice.envLevel <= sustainLvl)
                 {
                     voice.envLevel = sustainLvl;
@@ -684,6 +688,7 @@ private:
             {
                 float rate = 1.0f / (std::max (0.01f, relTime) * srf);
                 voice.envLevel -= rate;
+                voice.envLevel = flushDenormal (voice.envLevel);
                 if (voice.envLevel <= 0.0f)
                 {
                     voice.envLevel = 0.0f;

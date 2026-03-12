@@ -149,7 +149,7 @@ private:
         clickLevel = clamp (velocity, 0.0f, 1.0f);
         clickPhase = 0.0f;
         // Quick exponential decay: ~3ms at 44.1kHz
-        float decaySamples = static_cast<float> (sr) * 0.003f;
+        float decaySamples = std::max (1.0f, static_cast<float> (sr) * 0.003f);
         clickDecayRate = std::pow (0.001f, 1.0f / decaySamples);
     }
 };
@@ -301,7 +301,7 @@ public:
         }
 
         // Store feedback for next sample
-        feedbackSample = fbAccum / static_cast<float> (kNumFacets);
+        feedbackSample = flushDenormal (fbAccum / static_cast<float> (kNumFacets));
 
         // Advance write position
         writePos = (writePos + 1) % kMaxDelaySamples;
