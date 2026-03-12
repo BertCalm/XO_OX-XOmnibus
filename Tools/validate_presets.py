@@ -40,14 +40,15 @@ PRESET_DIR = Path(__file__).parent.parent / "Presets" / "XOmnibus"
 VALID_MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "User"}
 
 VALID_ENGINES = {
-    "OddfeliX", "OddOscar", "XOddCouple",  # Legacy alias
-    "XOverdub", "XOdyssey", "XOblong", "XOblongBob",  # Legacy alias
-    "XObese", "XOnset",
-    "Overworld", "Opal", "Orbital", "XOrbital",
-    "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Onset",
-    "Overdub", "Odyssey", "Oblong", "Obese", "Overbite",
-    "Organon", "XOrganon", "Ouroboros", "XOuroboros",
-    "Obsidian", "Bite", "Origami", "Oracle", "Obscura", "Oceanic",
+    # Canonical O-prefix engine IDs (all 20)
+    "OddfeliX", "OddOscar", "Overdub", "Odyssey", "Oblong",
+    "Obese", "Onset", "Overworld", "Opal", "Orbital",
+    "Organon", "Ouroboros", "Obsidian", "Overbite", "Origami",
+    "Oracle", "Obscura", "Oceanic", "Optic", "Oblique",
+    # Legacy aliases (resolved by PresetManager::resolveEngineAlias)
+    "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Bite",
+    "XOverdub", "XOdyssey", "XOblong", "XObese", "XOnset",
+    "XOpal", "XOrbital", "XOrganon", "XOuroboros",
 }
 
 # Map non-standard coupling intensities to valid ones
@@ -80,18 +81,24 @@ JARGON_WORDS = {
     "additive", "modular", "parameter", "param",
 }
 
-# Known engine parameter prefixes for cross-checking
+# Known engine parameter prefixes for cross-checking (frozen — never change)
 ENGINE_PARAM_PREFIXES = {
     "OddfeliX": "snap_", "OddOscar": "morph_", "Overdub": "dub_",
     "Odyssey": "odyssey_", "Oblong": "bob_", "Obese": "fat_",
-    "Overbite": "poss_", "Onset": "perc_", "Opal": "opal_",
-    "Overworld": "ow_", "Organon": "org_", "Ouroboros": "ouro_",
+    "Overbite": "poss_", "Onset": "onset_", "Opal": "opal_",
+    "Overworld": "era_", "Orbital": "orbital_",
+    "Organon": "organon_", "Ouroboros": "ouroboros_",
+    "Obsidian": "obsidian_", "Origami": "origami_", "Oracle": "oracle_",
+    "Obscura": "obscura_", "Oceanic": "oceanic_", "Optic": "optic_",
+    "Oblique": "oblq_",
 }
 
 # Core engines that should have coupling presets with each other
 CORE_ENGINES = [
     "OddfeliX", "OddOscar", "Overdub", "Odyssey", "Oblong",
     "Obese", "Overbite", "Onset", "Opal", "Overworld", "Organon", "Ouroboros",
+    "Obsidian", "Origami", "Oracle", "Obscura", "Oceanic", "Optic", "Oblique",
+    "Orbital",
 ]
 
 # ---------------------------------------------------------------------------
@@ -264,13 +271,24 @@ def validate_preset(filepath: Path, do_fix: bool = False) -> ValidationResult:
     # --- Coupling intensity ---
     ci = data.get("couplingIntensity")
     if ci is not None and ci not in VALID_COUPLING_INTENSITIES:
-        if ci in COUPLING_INTENSITY_ALIASES:
+        # Case-insensitive alias lookup
+        ci_title = ci.strip().title() if isinstance(ci, str) else ci
+        alias_lookup = {k.lower(): v for k, v in COUPLING_INTENSITY_ALIASES.items()}
+        if ci_title in VALID_COUPLING_INTENSITIES:
             if do_fix:
-                data["couplingIntensity"] = COUPLING_INTENSITY_ALIASES[ci]
-                result.fix(f"Fixed couplingIntensity '{ci}' → '{COUPLING_INTENSITY_ALIASES[ci]}'")
+                data["couplingIntensity"] = ci_title
+                result.fix(f"Fixed couplingIntensity casing '{ci}' → '{ci_title}'")
                 modified = True
             else:
-                result.warn(f"Invalid couplingIntensity: '{ci}' (use --fix to correct to '{COUPLING_INTENSITY_ALIASES[ci]}')")
+                result.warn(f"couplingIntensity casing: '{ci}' (use --fix to correct to '{ci_title}')")
+        elif ci.lower() in alias_lookup:
+            resolved = alias_lookup[ci.lower()]
+            if do_fix:
+                data["couplingIntensity"] = resolved
+                result.fix(f"Fixed couplingIntensity '{ci}' → '{resolved}'")
+                modified = True
+            else:
+                result.warn(f"Invalid couplingIntensity: '{ci}' (use --fix to correct to '{resolved}')")
         else:
             result.warn(f"Invalid couplingIntensity: '{ci}'")
 

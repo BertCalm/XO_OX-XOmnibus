@@ -1161,9 +1161,9 @@ public:
                    juce::Justification::centredLeft, true);
 
         // Engine tag if multi-engine
-        if (!preset.engines.isEmpty())
+        if (!preset.engines.isEmpty() && preset.engines[0].isNotEmpty())
         {
-            auto tag = preset.engines[0].substring(0, 3).toUpperCase();
+            auto tag = preset.engines[0].substring(0, juce::jmin(3, preset.engines[0].length())).toUpperCase();
             g.setColour(get(textMid()).withAlpha(0.30f));
             g.setFont(GalleryFonts::label(7.5f));
             g.drawText(tag, w - 28, 0, 26, h, juce::Justification::centredRight);
