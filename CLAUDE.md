@@ -54,6 +54,7 @@ and mutate into sounds impossible with any single synth.
 | OBSCURA | XObscura | Daguerreotype Silver `#8A9BA8` |
 | OCEANIC | XOceanic | Phosphorescent Teal `#00B4A0` |
 | OVERBITE | XOverbite | Fang White `#F0EDE8` |
+| ORBITAL | XOrbital | Warm Red `#FF6B6B` |
 | OPTIC | XOptic | Phosphor Green `#00FF41` |
 | OBLIQUE | XOblique | Prism Violet `#BF40FF` |
 
@@ -72,6 +73,16 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Obese | `fat_` | `fat_satDrive` |
 | Overbite | `poss_` | `poss_biteDepth` |
 | Onset | `onset_` | `onset_noiseLevel` |
+| Overworld | `era_` | `era_engineA` |
+| Opal | `opal_` | `opal_grainSize` |
+| Orbital | `orbital_` | `orbital_partialTilt` |
+| Organon | `organon_` | `organon_entropy` |
+| Ouroboros | `ouroboros_` | `ouroboros_feedback` |
+| Obsidian | `obsidian_` | `obsidian_pdDepth` |
+| Origami | `origami_` | `origami_foldPoint` |
+| Oracle | `oracle_` | `oracle_breakpoints` |
+| Obscura | `obscura_` | `obscura_stiffness` |
+| Oceanic | `oceanic_` | `oceanic_separation` |
 | Optic | `optic_` | `optic_pulseRate` |
 | Oblique | `oblq_` | `oblq_prismColor` |
 
@@ -91,7 +102,9 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Core/PresetManager.h` | .xometa loading/saving |
 | `Source/Engines/*/` | Engine adapter modules |
 | `Source/Engines/Optic/OpticEngine.h` | Visual modulation engine + AutoPulse |
+| `Source/Engines/Oblique/ObliqueEngine.h` | Prismatic bounce engine (RTJ x Funk x Tame Impala) |
 | `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
+| `Docs/xomnibus_sound_design_guides.md` | Sound design guide for all 20 engines |
 | `Source/DSP/` | Shared DSP library |
 | `Source/UI/` | Gallery Model UI components |
 | `Source/Export/` | XPN export pipeline |
