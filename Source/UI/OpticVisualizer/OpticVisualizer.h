@@ -38,13 +38,29 @@ public:
         : engineRef (engine)
     {
         setOpaque (true);
+        setTitle ("Optic Visualizer");
+        setDescription ("Audio-reactive visualization display. "
+                        "Shows waveform, spectrum, or particle animation driven by the Optic engine.");
         resetParticles();
     }
 
     void setEngine (OpticEngine* engine) { engineRef = engine; }
 
-    void start() { startTimerHz (30); }
+    void start() { startTimerHz (reducedMotion ? 10 : 30); }
     void stop()  { stopTimer(); }
+
+    /// Enable reduced motion mode (WCAG 2.3.3 Animation from Interactions).
+    /// Falls back to Scope mode and reduces frame rate.
+    void setReducedMotion (bool enabled)
+    {
+        reducedMotion = enabled;
+        if (reducedMotion && (vizMode == Mode::Milkdrop || vizMode == Mode::Particles))
+            vizMode = Mode::Scope;
+        if (isTimerRunning())
+            start(); // re-start at appropriate frame rate
+    }
+
+    bool isReducedMotion() const { return reducedMotion; }
 
     //--------------------------------------------------------------------------
     // Component
@@ -96,7 +112,13 @@ public:
 
     enum class Mode { Scope, Spectrum, Milkdrop, Particles };
 
-    void setMode (Mode m) { vizMode = m; }
+    void setMode (Mode m)
+    {
+        // WCAG 2.3.3: don't allow high-motion modes when reduced motion is active
+        if (reducedMotion && (m == Mode::Milkdrop || m == Mode::Particles))
+            m = Mode::Scope;
+        vizMode = m;
+    }
     Mode getMode() const { return vizMode; }
 
     void setFeedback (float f)  { feedback = juce::jlimit (0.0f, 1.0f, f); }
@@ -431,6 +453,7 @@ private:
 
     OpticEngine* engineRef = nullptr;
     Mode vizMode = Mode::Milkdrop;
+    bool reducedMotion = false;
     float feedback = 0.6f;
     float speed = 1.0f;
     float intensity = 0.7f;

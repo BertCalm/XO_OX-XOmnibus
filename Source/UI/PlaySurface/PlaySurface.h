@@ -755,6 +755,20 @@ class PlaySurface : public juce::Component, private juce::Timer
 public:
     PlaySurface()
     {
+        setTitle ("PlaySurface");
+        setDescription ("4-zone performance interface: note input, orbit path, performance strip, and drum pads");
+        setWantsKeyboardFocus (true);
+
+        noteInput.setTitle ("Note Input Zone");
+        noteInput.setDescription ("Pad grid or fretless strip for note input");
+        orbitPath.setTitle ("Orbit Path");
+        orbitPath.setDescription ("XY controller with orbit physics for continuous modulation");
+        strip.setTitle ("Performance Strip");
+        strip.setDescription ("Touch strip for filter sweeps, coupling, and dub effects");
+        perfPads.setTitle ("Performance Pads");
+        perfPads.setDescription ("4 trigger pads with keyboard shortcuts Z, X, C, V");
+        perfPads.setWantsKeyboardFocus (true);
+
         addAndMakeVisible(noteInput);
         addAndMakeVisible(orbitPath);
         addAndMakeVisible(strip);
