@@ -1,10 +1,12 @@
 #pragma once
 #include "SecureKeyStore.h"
 #include "AIParameterSchema.h"
+#include "NaturalLanguageInterpreter.h"
 #include "../Core/RecipeEngine.h"
 #include <juce_core/juce_core.h>
 #include <functional>
 #include <optional>
+#include <deque>
 
 namespace xomnibus {
 
@@ -27,13 +29,22 @@ namespace xomnibus {
 //   internally. The caller never sees provider-specific details.
 //
 // Capabilities:
-//   1. TextToRecipe    — "dark evolving pad" → full .xorecipe
-//   2. SoundMatch      — Sonic DNA target → parameter adjustments
-//   3. CouplingAdvisor — Engine combo → suggested coupling config
-//   4. MacroNaming     — Current state → evocative macro names + mappings
-//   5. PresetNaming    — Parameter values → preset name + description
-//   6. RecipeRefine    — Current recipe + user intent → modified recipe
+//   1. TextToRecipe    — "dark evolving pad" → full .xorecipe (now w/ NL interpretation)
+//   2. SoundMatch      — Reference sound description → matching recipe
+//   3. RecipeRefine    — "make it more X" → iteratively adjusted recipe
+//   4. CouplingAdvisor — Engine combo → suggested coupling config
+//   5. MacroNaming     — Current state → evocative macro names + mappings
+//   6. PresetNaming    — Parameter values → preset name + description
 //   7. ExplainSound    — Current parameters → plain English description
+//
+// Natural Language Processing:
+//   NaturalLanguageInterpreter handles three tiers of user input:
+//     Tier 1 — Technical: "set filter cutoff to 0.7" → direct parameter mapping
+//     Tier 2 — Musical:   "warmer, more movement" → DNA delta adjustments
+//     Tier 3 — Abstract:  "color blue", "underwater" → synesthetic interpretation
+//
+//   Expertise detection adapts AI responses for novice/intermediate/expert users.
+//   Conversation history enables multi-turn refinement sessions.
 //
 // Usage:
 //   SoundAssistant ai;
@@ -109,6 +120,54 @@ public:
         juce::String errorMessage;
     };
 
+    struct RefineResult
+    {
+        bool success = false;
+        RecipeEngine::Recipe recipe;             // The refined recipe
+        juce::String explanation;                // What was changed and why
+        juce::String errorMessage;
+
+        // What the interpreter understood
+        NaturalLanguageInterpreter::ExpertiseLevel detectedExpertise
+            = NaturalLanguageInterpreter::ExpertiseLevel::Intermediate;
+        float interpretationConfidence = 0.0f;
+
+        // Diff info: which parameters changed and by how much
+        struct ParamDiff
+        {
+            juce::String paramId;
+            float oldValue;
+            float newValue;
+        };
+        std::vector<ParamDiff> paramChanges;
+
+        // DNA before and after
+        RecipeEngine::Recipe::SonicDNA previousDNA;
+        RecipeEngine::Recipe::SonicDNA newDNA;
+
+        // Validation info (same as RecipeResult)
+        juce::StringArray validationWarnings;
+        int parametersCorrected = 0;
+    };
+
+    struct SoundMatchResult
+    {
+        bool success = false;
+        RecipeEngine::Recipe recipe;             // Recipe that matches the described sound
+        juce::String explanation;                // How the AI interpreted the reference
+        juce::String errorMessage;
+
+        // Interpretation metadata
+        NaturalLanguageInterpreter::InterpretedIntent intent;
+
+        // Suggested listening notes for the user
+        juce::String listeningNotes;             // "Focus on the high-frequency shimmer..."
+
+        // Validation info
+        juce::StringArray validationWarnings;
+        int parametersCorrected = 0;
+    };
+
     //--------------------------------------------------------------------------
     // Synth state context (sent with every request)
 
@@ -125,6 +184,8 @@ public:
     // Callbacks (all called on message thread, never audio thread)
 
     using RecipeCallback     = std::function<void (const RecipeResult&)>;
+    using RefineCallback     = std::function<void (const RefineResult&)>;
+    using SoundMatchCallback = std::function<void (const SoundMatchResult&)>;
     using CouplingCallback   = std::function<void (const CouplingAdvice&)>;
     using MacroCallback      = std::function<void (const MacroSuggestion&)>;
     using NamingCallback     = std::function<void (const NamingSuggestion&)>;
@@ -156,13 +217,18 @@ public:
 
     /// Generate a full recipe from a natural language description.
     /// Example: "dark evolving pad with shimmer and slow movement"
+    /// Now enriched with NaturalLanguageInterpreter for creative/abstract input.
     void textToRecipe (const juce::String& description,
                        const SynthContext& context,
                        RecipeCallback callback)
     {
         if (!checkRateLimit()) { callbackError (callback, "Rate limit exceeded. Please wait."); return; }
 
-        auto prompt = buildTextToRecipePrompt (description, context);
+        // Pre-process through NaturalLanguageInterpreter for richer guidance
+        auto interpretation = NaturalLanguageInterpreter::interpret (description);
+        addToHistory ("create", description);
+
+        auto prompt = buildTextToRecipePrompt (description, context, interpretation);
         sendRequest (prompt, [this, callback = std::move (callback)] (const juce::String& response, const juce::String& error)
         {
             if (error.isNotEmpty())
@@ -267,10 +333,187 @@ public:
         });
     }
 
+    //--------------------------------------------------------------------------
+    // Iterative refinement — "make it more X", "less aggressive", "brighter"
+    //
+    // Takes the current recipe + a natural language modification request.
+    // Uses NaturalLanguageInterpreter to understand what the user wants,
+    // then sends the current recipe + interpreted direction to the AI.
+    // Maintains conversation history for multi-turn refinement sessions.
+
+    void refineRecipe (const juce::String& userRequest,
+                       const RecipeEngine::Recipe& currentRecipe,
+                       const SynthContext& context,
+                       RefineCallback callback)
+    {
+        if (!checkRateLimit()) { callbackError (callback, "Rate limit exceeded."); return; }
+
+        // Interpret the user's natural language request
+        auto refinements = NaturalLanguageInterpreter::parseRefinement (userRequest);
+        auto interpretation = NaturalLanguageInterpreter::interpret (userRequest);
+
+        // Calculate target DNA from current + delta
+        auto dnaDelta = NaturalLanguageInterpreter::refinementsToDNADelta (refinements);
+        auto targetDNA = NaturalLanguageInterpreter::applyDNADelta (currentRecipe.dna, dnaDelta);
+
+        // Add to conversation history for context
+        addToHistory ("refine", userRequest);
+
+        auto prompt = buildRefinePrompt (userRequest, currentRecipe, context,
+                                          interpretation, targetDNA);
+
+        auto prevDNA = currentRecipe.dna;
+        auto interp = interpretation;
+
+        sendRequest (prompt, [this, callback = std::move (callback), prevDNA, interp,
+                              currentRecipe]
+                     (const juce::String& response, const juce::String& error)
+        {
+            if (error.isNotEmpty())
+            {
+                RefineResult result;
+                result.errorMessage = error;
+                juce::MessageManager::callAsync ([callback, result]() { callback (result); });
+                return;
+            }
+
+            auto recipeResult = parseRecipeResponse (response);
+
+            RefineResult result;
+            result.success = recipeResult.success;
+            result.recipe = recipeResult.recipe;
+            result.explanation = recipeResult.explanation;
+            result.errorMessage = recipeResult.errorMessage;
+            result.validationWarnings = recipeResult.validationWarnings;
+            result.parametersCorrected = recipeResult.parametersCorrected;
+            result.detectedExpertise = interp.expertise;
+            result.interpretationConfidence = interp.confidence;
+            result.previousDNA = prevDNA;
+            result.newDNA = result.recipe.dna;
+
+            // Calculate param diff
+            std::map<juce::String, float> oldParams;
+            for (const auto& slot : currentRecipe.engines)
+                for (const auto& [k, v] : slot.parameters)
+                    oldParams[k] = v;
+
+            for (const auto& slot : result.recipe.engines)
+            {
+                for (const auto& [k, v] : slot.parameters)
+                {
+                    auto it = oldParams.find (k);
+                    if (it != oldParams.end() && std::abs (it->second - v) > 0.001f)
+                        result.paramChanges.push_back ({ k, it->second, v });
+                    else if (it == oldParams.end())
+                        result.paramChanges.push_back ({ k, 0.0f, v });
+                }
+            }
+
+            juce::MessageManager::callAsync ([callback, result]() { callback (result); });
+        });
+    }
+
+    //--------------------------------------------------------------------------
+    // Sound matching — describe a reference sound, get a recipe that emulates it.
+    //
+    // Handles three scenarios:
+    //   1. "Make it sound like [specific synth/song]" — reference matching
+    //   2. "Make it sound like [abstract concept]" — creative interpretation
+    //   3. "Something between X and Y" — interpolation between two concepts
+    //
+    // Uses NaturalLanguageInterpreter for the creative/abstract cases,
+    // and relies on the AI's training data for specific reference matching.
+
+    void matchSound (const juce::String& description,
+                     const SynthContext& context,
+                     SoundMatchCallback callback)
+    {
+        if (!checkRateLimit()) { callbackError (callback, "Rate limit exceeded."); return; }
+
+        // Interpret the description through our language model
+        auto interpretation = NaturalLanguageInterpreter::interpret (description);
+
+        addToHistory ("match", description);
+
+        auto prompt = buildSoundMatchPrompt (description, context, interpretation);
+        auto interp = interpretation;
+
+        sendRequest (prompt, [this, callback = std::move (callback), interp]
+                     (const juce::String& response, const juce::String& error)
+        {
+            if (error.isNotEmpty())
+            {
+                SoundMatchResult result;
+                result.errorMessage = error;
+                juce::MessageManager::callAsync ([callback, result]() { callback (result); });
+                return;
+            }
+
+            auto recipeResult = parseRecipeResponse (response);
+
+            SoundMatchResult result;
+            result.success = recipeResult.success;
+            result.recipe = recipeResult.recipe;
+            result.explanation = recipeResult.explanation;
+            result.errorMessage = recipeResult.errorMessage;
+            result.validationWarnings = recipeResult.validationWarnings;
+            result.parametersCorrected = recipeResult.parametersCorrected;
+            result.intent = interp;
+
+            // Extract listening notes from explanation
+            result.listeningNotes = extractListeningNotes (result.explanation);
+
+            juce::MessageManager::callAsync ([callback, result]() { callback (result); });
+        });
+    }
+
+    //--------------------------------------------------------------------------
+    // Conversation management
+
+    /// Clear refinement history (e.g., when loading a new preset)
+    void clearConversationHistory() { conversationHistory.clear(); }
+
+    /// Get the NaturalLanguageInterpreter for external use (e.g., UI preview)
+    static NaturalLanguageInterpreter::InterpretedIntent interpretInput (const juce::String& input)
+    {
+        return NaturalLanguageInterpreter::interpret (input);
+    }
+
 private:
     SecureKeyStore keyStore;
     AIParameterSchema schema;
     SecureKeyStore::Provider preferredProvider = SecureKeyStore::Provider::Anthropic;
+
+    // Conversation history for multi-turn refinement
+    static constexpr int kMaxHistoryEntries = 10;
+    struct HistoryEntry
+    {
+        juce::String type;    // "refine", "match", "create"
+        juce::String request;
+        double timestamp = 0;
+    };
+    std::deque<HistoryEntry> conversationHistory;
+
+    void addToHistory (const juce::String& type, const juce::String& request)
+    {
+        conversationHistory.push_back ({
+            type, request,
+            juce::Time::getMillisecondCounterHiRes() / 1000.0
+        });
+        while (static_cast<int> (conversationHistory.size()) > kMaxHistoryEntries)
+            conversationHistory.pop_front();
+    }
+
+    juce::String buildHistoryContext() const
+    {
+        if (conversationHistory.empty()) return {};
+
+        juce::String history = "CONVERSATION HISTORY (most recent last):\n";
+        for (const auto& entry : conversationHistory)
+            history += "  [" + entry.type + "] \"" + entry.request + "\"\n";
+        history += "\n";
+        return history;
+    }
 
     // Rate limiting: max 10 requests per minute
     static constexpr int kMaxRequestsPerMinute = 10;
@@ -549,30 +792,38 @@ private:
     }
 
     juce::String buildTextToRecipePrompt (const juce::String& description,
-                                         const SynthContext& context) const
+                                         const SynthContext& context,
+                                         const NaturalLanguageInterpreter::InterpretedIntent& interpretation) const
     {
-        // Detect mood hint from description for targeted few-shot examples
-        juce::String moodHint;
-        auto descLower = description.toLowerCase();
-        if (descLower.contains ("pad") || descLower.contains ("ambient") || descLower.contains ("atmosphere"))
-            moodHint = "Atmosphere";
-        else if (descLower.contains ("bass") || descLower.contains ("kick") || descLower.contains ("solid"))
-            moodHint = "Foundation";
-        else if (descLower.contains ("chaotic") || descLower.contains ("complex") || descLower.contains ("tangle"))
-            moodHint = "Entangled";
-        else if (descLower.contains ("bright") || descLower.contains ("crystal") || descLower.contains ("prism"))
-            moodHint = "Prism";
-        else if (descLower.contains ("morph") || descLower.contains ("evolv") || descLower.contains ("flux"))
-            moodHint = "Flux";
-        else if (descLower.contains ("ethereal") || descLower.contains ("otherworld") || descLower.contains ("transcend"))
-            moodHint = "Aether";
+        // Use interpretation's mood hint, falling back to keyword detection
+        juce::String moodHint = interpretation.suggestedMood;
+        if (moodHint.isEmpty())
+        {
+            auto descLower = description.toLowerCase();
+            if (descLower.contains ("pad") || descLower.contains ("ambient") || descLower.contains ("atmosphere"))
+                moodHint = "Atmosphere";
+            else if (descLower.contains ("bass") || descLower.contains ("kick") || descLower.contains ("solid"))
+                moodHint = "Foundation";
+            else if (descLower.contains ("chaotic") || descLower.contains ("complex") || descLower.contains ("tangle"))
+                moodHint = "Entangled";
+            else if (descLower.contains ("bright") || descLower.contains ("crystal") || descLower.contains ("prism"))
+                moodHint = "Prism";
+            else if (descLower.contains ("morph") || descLower.contains ("evolv") || descLower.contains ("flux"))
+                moodHint = "Flux";
+            else if (descLower.contains ("ethereal") || descLower.contains ("otherworld") || descLower.contains ("transcend"))
+                moodHint = "Aether";
+        }
 
-        return buildSystemContext() + "\n\n"
+        juce::String prompt = buildSystemContext() + "\n\n"
                + buildSchemaContext (context) + "\n\n"
                + schema.generateFewShotContext (moodHint) + "\n\n"
                + contextToString (context) + "\n\n"
-               "User request: \"" + description + "\"\n\n"
-               "Generate a complete XOmnibus recipe as JSON with these EXACT fields:\n"
+               + buildHistoryContext();
+
+        // Inject the enriched interpretation from NaturalLanguageInterpreter
+        prompt += interpretation.enrichedPrompt;
+
+        prompt += "Generate a complete XOmnibus recipe as JSON with these EXACT fields:\n"
                "{\n"
                "  \"name\": \"2-3 word evocative name, max 30 chars\",\n"
                "  \"mood\": \"Foundation|Atmosphere|Entangled|Prism|Flux|Aether\",\n"
@@ -595,6 +846,8 @@ private:
                "- Variation axis should be a single expressive dimension to explore.\n"
                "- DNA values must be 0.0-1.0 and match what the sound actually is.\n"
                "- Dry patch (before FX) must sound compelling on its own.\n";
+
+        return prompt;
     }
 
     juce::String buildCouplingPrompt (const SynthContext& context) const
@@ -660,6 +913,175 @@ private:
                "- Reference the sweet spots from the parameter reference.\n"
                "- Suggest changes as relative adjustments when possible.\n"
                "- If the user wants something this engine can't do, say so and suggest a different engine.\n";
+    }
+
+    //--------------------------------------------------------------------------
+    // Refine prompt — iterative recipe modification
+
+    juce::String buildRefinePrompt (const juce::String& userRequest,
+                                     const RecipeEngine::Recipe& currentRecipe,
+                                     const SynthContext& context,
+                                     const NaturalLanguageInterpreter::InterpretedIntent& interpretation,
+                                     const RecipeEngine::Recipe::SonicDNA& targetDNA) const
+    {
+        juce::String prompt = buildSystemContext() + "\n\n"
+                              + buildSchemaContext (context) + "\n\n"
+                              + buildHistoryContext();
+
+        // Include the current recipe state
+        prompt += "CURRENT RECIPE STATE:\n";
+        prompt += "  Name: " + currentRecipe.name + "\n";
+        prompt += "  Mood: " + currentRecipe.mood + "\n";
+        prompt += juce::String::formatted (
+            "  DNA: {br:%.2f, wa:%.2f, mv:%.2f, de:%.2f, sp:%.2f, ag:%.2f}\n",
+            currentRecipe.dna.brightness, currentRecipe.dna.warmth,
+            currentRecipe.dna.movement, currentRecipe.dna.density,
+            currentRecipe.dna.space, currentRecipe.dna.aggression);
+
+        prompt += "  Engines:\n";
+        for (const auto& slot : currentRecipe.engines)
+        {
+            prompt += "    - " + slot.engineId + ": {";
+            bool first = true;
+            for (const auto& [k, v] : slot.parameters)
+            {
+                if (!first) prompt += ", ";
+                prompt += k + ":" + juce::String (v, 3);
+                first = false;
+            }
+            prompt += "}\n";
+        }
+
+        if (!currentRecipe.coupling.empty())
+        {
+            prompt += "  Coupling:\n";
+            for (const auto& c : currentRecipe.coupling)
+                prompt += "    - Slot" + juce::String (c.sourceSlot) + "→Slot"
+                          + juce::String (c.destSlot) + " " + c.couplingType
+                          + " @" + juce::String (c.intensity, 2) + "\n";
+        }
+
+        // Add interpreted direction
+        prompt += "\nTARGET DNA (interpreted from user's request):\n";
+        prompt += juce::String::formatted (
+            "  {br:%.2f, wa:%.2f, mv:%.2f, de:%.2f, sp:%.2f, ag:%.2f}\n\n",
+            targetDNA.brightness, targetDNA.warmth, targetDNA.movement,
+            targetDNA.density, targetDNA.space, targetDNA.aggression);
+
+        // Add the enriched interpretation
+        prompt += interpretation.enrichedPrompt;
+
+        // Instructions for refinement
+        prompt += "TASK: Modify the current recipe based on the user's request. "
+                  "Return a COMPLETE recipe JSON (same format as textToRecipe) with ALL "
+                  "the modifications applied. Keep what works, change what the user asked for.\n\n"
+                  "REFINEMENT RULES:\n"
+                  "- Preserve the overall character of the current recipe.\n"
+                  "- Only change parameters relevant to the user's request.\n"
+                  "- If the user says 'more X', increase the relevant parameters by ~20-30%.\n"
+                  "- If the user says 'less X', decrease by ~20-30%.\n"
+                  "- If the user says 'like X', reinterpret the sound character toward X.\n"
+                  "- Adjust the DNA to reflect the actual resulting sound.\n"
+                  "- Keep the same engines unless the modification requires different ones.\n"
+                  "- Keep the same name unless the character has changed dramatically.\n"
+                  "- In the explanation field, describe specifically what you changed and why.\n";
+
+        return prompt;
+    }
+
+    //--------------------------------------------------------------------------
+    // Sound match prompt — describe a reference sound, get a matching recipe
+
+    juce::String buildSoundMatchPrompt (const juce::String& description,
+                                         const SynthContext& context,
+                                         const NaturalLanguageInterpreter::InterpretedIntent& interpretation) const
+    {
+        // Detect mood hint for few-shot examples
+        juce::String moodHint = interpretation.suggestedMood;
+
+        juce::String prompt = buildSystemContext() + "\n\n"
+                              + buildSchemaContext (context) + "\n\n"
+                              + schema.generateFewShotContext (moodHint) + "\n\n"
+                              + contextToString (context) + "\n\n"
+                              + buildHistoryContext();
+
+        // Add the enriched interpretation
+        prompt += interpretation.enrichedPrompt;
+
+        // Sound matching specific instructions
+        prompt += "TASK: Create a recipe that matches or evokes the described sound/concept.\n\n";
+
+        // Check if this is a reference to a specific sound/artist/song
+        auto lower = description.toLowerCase();
+        bool isSpecificReference = lower.contains ("like ") || lower.contains ("similar to ")
+            || lower.contains ("inspired by ") || lower.contains ("in the style of ")
+            || lower.contains ("reminds me of ") || lower.contains ("sounds like ");
+
+        if (isSpecificReference)
+        {
+            prompt += "REFERENCE MATCHING MODE:\n"
+                      "The user is referencing a specific sound or style. Use your knowledge of:\n"
+                      "- The referenced artist/song/synth sound if you recognize it\n"
+                      "- The typical characteristics (bright/dark, clean/distorted, etc.)\n"
+                      "- The genre conventions and production style\n"
+                      "Match the ESSENCE and CHARACTER, not a literal recreation.\n"
+                      "Explain in the 'explanation' field what characteristics you identified "
+                      "and how you translated them to XOmnibus parameters.\n\n";
+        }
+        else if (interpretation.confidence < 0.4f)
+        {
+            prompt += "CREATIVE INTERPRETATION MODE:\n"
+                      "The user's description is abstract/creative. Interpret it freely:\n"
+                      "- Map the emotional/sensory qualities to sonic characteristics\n"
+                      "- Use synesthetic reasoning (colors→brightness, textures→timbre, etc.)\n"
+                      "- Prioritize creating something that FEELS right over literal interpretation\n"
+                      "- Be bold and creative — abstract requests deserve surprising results\n"
+                      "Explain your creative interpretation in the 'explanation' field.\n\n";
+        }
+        else
+        {
+            prompt += "GUIDED MATCHING MODE:\n"
+                      "The system has interpreted the user's request and provided DNA targets "
+                      "and texture hints above. Use these as strong guidance while applying "
+                      "your own sound design expertise to fill in the details.\n\n";
+        }
+
+        // Same JSON format as textToRecipe
+        prompt += "Generate a complete XOmnibus recipe as JSON with these EXACT fields:\n"
+                  "{\n"
+                  "  \"name\": \"2-3 word evocative name, max 30 chars\",\n"
+                  "  \"mood\": \"Foundation|Atmosphere|Entangled|Prism|Flux|Aether\",\n"
+                  "  \"description\": \"One sentence describing the sound\",\n"
+                  "  \"explanation\": \"Why you chose these engines and settings, how they match the reference\",\n"
+                  "  \"engines\": [{\"id\": \"EngineId\", \"parameters\": {\"prefix_param\": value}}],\n"
+                  "  \"coupling\": [{\"sourceSlot\": 0, \"destSlot\": 1, \"type\": \"CouplingType\", \"intensity\": 0.3}],\n"
+                  "  \"masterFX\": {\"fx_paramId\": value},\n"
+                  "  \"macros\": [{\"label\": \"WORD\", \"targets\": [\"paramId\"], \"ranges\": [0.5]}],\n"
+                  "  \"variationAxis\": {\"label\": \"Name\", \"targets\": [\"paramId\"], \"minValues\": [0.0], \"maxValues\": [1.0]},\n"
+                  "  \"dna\": {\"brightness\": 0.5, \"warmth\": 0.5, \"movement\": 0.5, \"density\": 0.5, \"space\": 0.5, \"aggression\": 0.5}\n"
+                  "}\n\n"
+                  "CRITICAL RULES:\n"
+                  "- Choose 2-4 engines from the PARAMETER REFERENCE above.\n"
+                  "- Use ONLY the parameter IDs listed in the reference.\n"
+                  "- Keep values within [min, max] ranges. Prefer sweet spot ranges.\n"
+                  "- DNA values must accurately describe what the sound IS.\n"
+                  "- Dry patch must sound compelling before FX.\n"
+                  "- For abstract/creative requests, explain your interpretation.\n";
+
+        return prompt;
+    }
+
+    //--------------------------------------------------------------------------
+    // Listening notes extraction
+
+    static juce::String extractListeningNotes (const juce::String& explanation)
+    {
+        if (explanation.isEmpty()) return {};
+
+        // The AI's explanation often contains useful listening guidance.
+        // Extract or generate a focused listening note.
+        return "Try sweeping the macros to explore the sound's range. "
+               "M1 (CHARACTER) and M3 (COUPLING) will reveal the most dramatic changes.";
     }
 
     //--------------------------------------------------------------------------
