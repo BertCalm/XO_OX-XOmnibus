@@ -784,8 +784,9 @@ public:
                 if (!voice.active) continue;
                 ++voice.age;
 
-                // Update envelope params
-                voice.ampEnv.setParams (attack, decay, sustain, release);
+                // Update envelope params (cached per-block, not per-sample)
+                if (sample == 0)
+                    voice.ampEnv.setParams (attack, decay, sustain, release);
 
                 // --- Glide ---
                 float baseFreqA = voice.cachedBaseFreqA;
