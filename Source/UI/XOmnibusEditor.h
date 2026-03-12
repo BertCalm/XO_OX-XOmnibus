@@ -41,10 +41,48 @@ namespace GalleryColors {
         return get(borderGray);
     }
 
+    // XO Gold darkened for text on Shell White — meets WCAG AA (4.5:1 contrast)
+    constexpr uint32_t xoGoldText = 0xFF9E7C2E;
+
     inline juce::String prefixForEngine(const juce::String& id)
     {
         return id.toLowerCase();
     }
+}
+
+//==============================================================================
+// GalleryFonts — centralized typography matching the design system.
+//
+// Design spec: Space Grotesk (display), Inter (body), JetBrains Mono (values).
+// Falls back to system sans-serif / monospace when custom fonts aren't embedded.
+// When font files are added to Assets/fonts/ and built via juce_add_binary_data,
+// update the typeface names below.
+//
+namespace GalleryFonts {
+
+    // Font family names — update these when embedding real typefaces
+    inline const juce::String& displayFamily()
+    {
+        static juce::String name = "Space Grotesk";  // fallback: system sans
+        return name;
+    }
+    inline const juce::String& bodyFamily()
+    {
+        static juce::String name = "Inter";           // fallback: system sans
+        return name;
+    }
+    inline const juce::String& monoFamily()
+    {
+        static juce::String name = "JetBrains Mono";  // fallback: system mono
+        return name;
+    }
+
+    // Pre-built font accessors for common roles
+    inline juce::Font display (float size)  { return juce::Font (displayFamily(), size, juce::Font::bold); }
+    inline juce::Font heading (float size)  { return juce::Font (bodyFamily(), size, juce::Font::bold); }
+    inline juce::Font body (float size)     { return juce::Font (bodyFamily(), size, juce::Font::plain); }
+    inline juce::Font label (float size)    { return juce::Font (bodyFamily(), size, juce::Font::plain); }
+    inline juce::Font value (float size)    { return juce::Font (monoFamily(), size, juce::Font::plain); }
 }
 
 //==============================================================================
@@ -150,7 +188,7 @@ public:
 
                 auto label = std::make_unique<juce::Label>();
                 label->setText(shortLabel, juce::dontSendNotification);
-                label->setFont(juce::Font(8.0f));
+                label->setFont(GalleryFonts::label(8.0f));
                 label->setColour(juce::Label::textColourId,
                                  GalleryColors::get(GalleryColors::textMid));
                 label->setJustificationType(juce::Justification::centred);
@@ -258,14 +296,14 @@ public:
 
         // Engine name
         g.setColour(juce::Colours::white);
-        g.setFont(juce::Font(16.0f).boldened());
+        g.setFont(GalleryFonts::display(16.0f));
         g.drawText(engineId.toUpperCase(),
                    kHeaderH + 8, 0, getWidth() - kHeaderH - 90, kHeaderH,
                    juce::Justification::centredLeft);
 
         // Slot label
         g.setColour(juce::Colours::white.withAlpha(0.6f));
-        g.setFont(juce::Font(9.0f));
+        g.setFont(GalleryFonts::body(9.0f));
         g.drawText("PARAMETERS", 0, 0, getWidth() - 16, kHeaderH,
                    juce::Justification::centredRight);
 
@@ -351,13 +389,13 @@ public:
         g.fillEllipse(markX, markY, markR * 2, markR * 2);
         g.setColour(get(xoGold).withAlpha(0.55f));
         g.drawEllipse(markX, markY, markR * 2, markR * 2, 2.0f);
-        g.setFont(juce::Font(22.0f).boldened());
+        g.setFont(GalleryFonts::display(22.0f));
         g.drawText("XO", (int)markX, (int)markY, (int)markR * 2, (int)markR * 2,
                    juce::Justification::centred);
 
         // Instruction
         g.setColour(get(textMid));
-        g.setFont(juce::Font(12.0f));
+        g.setFont(GalleryFonts::body(12.0f));
         float instrY = b.getHeight() * 0.30f + markR + 16.0f;
         g.drawText("Click an engine tile to edit parameters",
                    b.withY(instrY).withHeight(20.0f).toNearestInt(),
@@ -374,7 +412,7 @@ public:
         if (active.empty())
         {
             g.setColour(get(textMid).withAlpha(0.35f));
-            g.setFont(juce::Font(10.0f));
+            g.setFont(GalleryFonts::body(10.0f));
             g.drawText("No engines loaded — use the tiles on the left",
                        b.withY(b.getHeight() * 0.65f).withHeight(20.0f).toNearestInt(),
                        juce::Justification::centred);
@@ -396,7 +434,7 @@ public:
             g.fillRoundedRectangle(pill, 12.0f);
             g.setColour(active[i].second);
             g.drawRoundedRectangle(pill, 12.0f, 1.5f);
-            g.setFont(juce::Font(9.5f).boldened());
+            g.setFont(GalleryFonts::heading(9.5f));
             g.drawFittedText(active[i].first.toUpperCase(),
                              pill.toNearestInt(), juce::Justification::centred, 1);
 
@@ -423,7 +461,7 @@ public:
             if (numActive > 0)
             {
                 g.setColour(get(xoGold).withAlpha(0.55f));
-                g.setFont(juce::Font(8.0f).boldened());
+                g.setFont(GalleryFonts::heading(8.0f));
                 g.drawText("COUPLING ROUTES (" + juce::String(numActive) + ")",
                            b.withY(matY).withHeight(12.0f).toNearestInt(),
                            juce::Justification::centred);
@@ -456,7 +494,7 @@ public:
                     g.drawRoundedRectangle(rowBounds.toFloat().reduced(0.5f), 4.0f, 1.0f);
 
                     g.setColour(routeColor);
-                    g.setFont(juce::Font(9.0f));
+                    g.setFont(GalleryFonts::body(9.0f));
                     g.drawText(rowText, rowBounds.reduced(6, 0),
                                juce::Justification::centredLeft, true);
 
@@ -470,7 +508,7 @@ public:
                         if (remaining > 0)
                         {
                             g.setColour(get(textMid).withAlpha(0.35f));
-                            g.setFont(juce::Font(8.5f));
+                            g.setFont(GalleryFonts::label(8.5f));
                             g.drawText("+ " + juce::String(remaining) + " more route" + (remaining > 1 ? "s" : ""),
                                        b.withY(matY).withHeight(14.0f).toNearestInt(),
                                        juce::Justification::centred);
@@ -482,7 +520,7 @@ public:
             else
             {
                 g.setColour(get(textMid).withAlpha(0.3f));
-                g.setFont(juce::Font(9.0f));
+                g.setFont(GalleryFonts::body(9.0f));
                 g.drawText("No active coupling routes",
                            b.withY(chainY + pillH * 0.5f + 10.0f).withHeight(16.0f).toNearestInt(),
                            juce::Justification::centred);
@@ -500,7 +538,7 @@ private:
 //==============================================================================
 // CompactEngineTile — slim tile in the left sidebar column.
 // Shows engine identity. Click to select (or load engine if empty).
-class CompactEngineTile : public juce::Component, private juce::Timer
+class CompactEngineTile : public juce::Component, public juce::SettableTooltipClient, private juce::Timer
 {
 public:
     std::function<void(int)> onSelect; // called with slot index when clicked
@@ -527,6 +565,8 @@ public:
         isLoading = false; // engine arrived — clear loading state
         hasEngine = newHasEngine;
         engineId  = newId;
+        setTooltip(hasEngine ? "Slot " + juce::String(slot + 1) + ": " + engineId + " — click to edit, right-click to swap"
+                             : "Slot " + juce::String(slot + 1) + ": empty — click to load engine");
         accent    = hasEngine ? eng->getAccentColour()
                               : GalleryColors::get(GalleryColors::emptySlot);
         repaint();
@@ -561,7 +601,7 @@ public:
         if (isLoading)
         {
             g.setColour(get(xoGold).withAlpha(0.5f));
-            g.setFont(juce::Font(9.0f));
+            g.setFont(GalleryFonts::body(9.0f));
             g.drawText("LOADING...", b.toNearestInt(), juce::Justification::centred);
         }
         else if (hasEngine)
@@ -571,7 +611,7 @@ public:
             g.fillEllipse(b.getX() + 10.0f, b.getCentreY() - 5.0f, 10.0f, 10.0f);
 
             // Engine name
-            g.setFont(juce::Font(11.0f).boldened());
+            g.setFont(GalleryFonts::heading(11.0f));
             g.setColour(isSelected ? accent : get(textDark));
             g.drawText(engineId.toUpperCase(),
                        (int)b.getX() + 26, (int)b.getY(), (int)b.getWidth() - 48, (int)b.getHeight(),
@@ -594,13 +634,13 @@ public:
         else
         {
             g.setColour(get(textMid).withAlpha(0.3f));
-            g.setFont(juce::Font(9.0f));
+            g.setFont(GalleryFonts::body(9.0f));
             g.drawText("SLOT " + juce::String(slot + 1) + " — empty",
                        b.toNearestInt(), juce::Justification::centred);
         }
 
         // Slot number badge — top-right corner, always visible for quick navigation
-        g.setFont(juce::Font(8.0f).boldened());
+        g.setFont(GalleryFonts::heading(8.0f));
         g.setColour(get(textMid).withAlpha(hasEngine ? 0.35f : 0.2f));
         g.drawText(juce::String(slot + 1),
                    (int)b.getRight() - 14, (int)b.getY() + 2, 12, 12,
@@ -692,12 +732,13 @@ public:
             knobs[i].setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
             knobs[i].setColour(juce::Slider::rotarySliderFillColourId,
                                GalleryColors::get(GalleryColors::xoGold));
+            knobs[i].setTooltip(juce::String("Macro ") + juce::String(i + 1) + ": " + defs[i].label);
             addAndMakeVisible(knobs[i]);
             attach[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
                 apvts, defs[i].id, knobs[i]);
 
             lbls[i].setText(defs[i].label, juce::dontSendNotification);
-            lbls[i].setFont(juce::Font(8.0f).boldened());
+            lbls[i].setFont(GalleryFonts::heading(8.0f));
             lbls[i].setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid));
             lbls[i].setJustificationType(juce::Justification::centred);
             addAndMakeVisible(lbls[i]);
@@ -707,12 +748,13 @@ public:
         master.setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
         master.setColour(juce::Slider::rotarySliderFillColourId,
                          GalleryColors::get(GalleryColors::textMid));
+        master.setTooltip("Master output volume");
         addAndMakeVisible(master);
         masterAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
             apvts, "masterVolume", master);
 
         masterLbl.setText("MASTER", juce::dontSendNotification);
-        masterLbl.setFont(juce::Font(8.0f).boldened());
+        masterLbl.setFont(GalleryFonts::heading(8.0f));
         masterLbl.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid));
         masterLbl.setJustificationType(juce::Justification::centred);
         addAndMakeVisible(masterLbl);
@@ -730,7 +772,7 @@ public:
         g.drawRoundedRectangle(getLocalBounds().toFloat().reduced(0.5f), 6.0f, 1.0f);
 
         g.setColour(get(textMid));
-        g.setFont(juce::Font(8.0f).boldened());
+        g.setFont(GalleryFonts::heading(8.0f));
         g.drawText("MACROS", getLocalBounds().removeFromTop(20), juce::Justification::centred);
     }
 
@@ -802,7 +844,7 @@ public:
                 apvts, defs[i].id, knobs[i]);
 
             lbls[i].setText(defs[i].label, juce::dontSendNotification);
-            lbls[i].setFont(juce::Font(8.5f).boldened());
+            lbls[i].setFont(GalleryFonts::heading(8.5f));
             lbls[i].setColour(juce::Label::textColourId,
                               GalleryColors::get(GalleryColors::textMid));
             lbls[i].setJustificationType(juce::Justification::centred);
@@ -816,7 +858,7 @@ public:
         using namespace GalleryColors;
         g.fillAll(get(shellWhite));
         g.setColour(get(textMid).withAlpha(0.40f));
-        g.setFont(juce::Font(8.0f).boldened());
+        g.setFont(GalleryFonts::heading(8.0f));
         g.drawText("ADVANCED  ·  REVERB + COMP",
                    getLocalBounds().removeFromTop(14).reduced(8, 0),
                    juce::Justification::centredLeft);
@@ -866,19 +908,20 @@ public:
             knobs[i].setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
             knobs[i].setColour(juce::Slider::rotarySliderFillColourId,
                                GalleryColors::get(GalleryColors::textMid).withAlpha(0.7f));
+            knobs[i].setTooltip(juce::String(defs[i].section) + " " + defs[i].label);
             addAndMakeVisible(knobs[i]);
             attach[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
                 apvts, defs[i].id, knobs[i]);
 
             lbls[i].setText(defs[i].label, juce::dontSendNotification);
-            lbls[i].setFont(juce::Font(8.5f).boldened());
+            lbls[i].setFont(GalleryFonts::heading(8.5f));
             lbls[i].setColour(juce::Label::textColourId,
                               GalleryColors::get(GalleryColors::textMid));
             lbls[i].setJustificationType(juce::Justification::centred);
             addAndMakeVisible(lbls[i]);
 
             sectionLbls[i].setText(defs[i].section, juce::dontSendNotification);
-            sectionLbls[i].setFont(juce::Font(7.0f));
+            sectionLbls[i].setFont(GalleryFonts::label(7.0f));
             sectionLbls[i].setColour(juce::Label::textColourId,
                                      GalleryColors::get(GalleryColors::textMid).withAlpha(0.45f));
             sectionLbls[i].setJustificationType(juce::Justification::centred);
@@ -974,7 +1017,7 @@ public:
                               GalleryColors::get(GalleryColors::borderGray));
         searchField.setColour(juce::TextEditor::textColourId,
                               GalleryColors::get(GalleryColors::textDark));
-        searchField.setFont(juce::Font(11.0f));
+        searchField.setFont(GalleryFonts::body(11.0f));
         searchField.onTextChange = [this] { updateFilter(); };
         addAndMakeVisible(searchField);
 
@@ -1014,7 +1057,7 @@ public:
         addAndMakeVisible(listBox);
 
         // Count label
-        countLabel.setFont(juce::Font(8.5f));
+        countLabel.setFont(GalleryFonts::label(8.5f));
         countLabel.setColour(juce::Label::textColourId,
                              GalleryColors::get(GalleryColors::textMid).withAlpha(0.55f));
         countLabel.setJustificationType(juce::Justification::centredRight);
@@ -1064,7 +1107,7 @@ public:
 
         // Preset name
         g.setColour(get(selected ? textDark : textMid));
-        g.setFont(juce::Font(10.5f));
+        g.setFont(GalleryFonts::body(10.5f));
         g.drawText(preset.name, 22, 0, w - 36, h,
                    juce::Justification::centredLeft, true);
 
@@ -1073,7 +1116,7 @@ public:
         {
             auto tag = preset.engines[0].substring(0, 3).toUpperCase();
             g.setColour(get(textMid).withAlpha(0.30f));
-            g.setFont(juce::Font(7.5f));
+            g.setFont(GalleryFonts::label(7.5f));
             g.drawText(tag, w - 28, 0, 26, h, juce::Justification::centredRight);
         }
     }
@@ -1205,7 +1248,7 @@ public:
         }
 
         nameLabel.setJustificationType(juce::Justification::centred);
-        nameLabel.setFont(juce::Font(10.5f).boldened());
+        nameLabel.setFont(GalleryFonts::heading(10.5f));
         nameLabel.setColour(juce::Label::textColourId,
                             GalleryColors::get(GalleryColors::textDark));
         nameLabel.setInterceptsMouseClicks(false, false);
@@ -1459,19 +1502,19 @@ public:
 
             // Slot number
             g.setColour (get (textMid));
-            g.setFont (juce::FontOptions (10.0f));
+            g.setFont (GalleryFonts::body(10.0f));
             g.drawText ("S" + juce::String (i + 1), card.removeFromTop (14),
                         juce::Justification::centred);
 
             // MIDI note name
             g.setColour (get (textDark));
-            g.setFont (juce::FontOptions (16.0f).withStyle ("Bold"));
+            g.setFont (GalleryFonts::display(16.0f));
             g.drawText (ChordMachine::midiNoteToName (assignment.midiNotes[i]),
                         card.removeFromTop (22), juce::Justification::centred);
 
             // Engine name
             g.setColour (accent);
-            g.setFont (juce::FontOptions (10.0f));
+            g.setFont (GalleryFonts::body(10.0f));
             juce::String eName = eng ? eng->getEngineId() : "—";
             g.drawText (eName, card.removeFromTop (14), juce::Justification::centred);
         }
@@ -1520,7 +1563,7 @@ public:
             if (stepData.rootNote >= 0)
             {
                 g.setColour (get (textMid));
-                g.setFont (juce::FontOptions (8.0f));
+                g.setFont (GalleryFonts::label(8.0f));
                 g.drawText (ChordMachine::midiNoteToName (stepData.rootNote),
                             stepR.withY (stepR.getBottom() - 14).withHeight (14),
                             juce::Justification::centred);
@@ -1539,14 +1582,14 @@ public:
             auto labelR = knobArea.withX (knobArea.getX() + i * (knobW + 8))
                                   .withWidth (knobW).removeFromTop (14);
             g.setColour (get (textMid));
-            g.setFont (juce::FontOptions (9.0f));
+            g.setFont (GalleryFonts::body(9.0f));
             g.drawText (knobLabels[i], labelR, juce::Justification::centred);
         }
 
         // Spread label (dynamic)
         float curSpread = cm.getSpread();
         g.setColour (get (xoGold));
-        g.setFont (juce::FontOptions (8.0f).withStyle ("Bold"));
+        g.setFont (GalleryFonts::label(8.0f).withStyle ("Bold"));
         auto spreadLabelR = knobArea.withWidth (knobW).removeFromBottom (12);
         g.drawText (ChordMachine::spreadLabel (curSpread), spreadLabelR,
                     juce::Justification::centred);
@@ -1670,6 +1713,7 @@ public:
         // "CM" toggle button in header area
         addAndMakeVisible(cmToggleBtn);
         cmToggleBtn.setButtonText("CM");
+        cmToggleBtn.setTooltip("Chord Machine — generative chord sequencer");
         cmToggleBtn.setClickingTogglesState(true);
         cmToggleBtn.onClick = [this]
         {
@@ -1696,6 +1740,8 @@ public:
         };
 
         setSize(880, 562);
+        setResizable(true, true);
+        setResizeLimits(720, 460, 1400, 900);
         setWantsKeyboardFocus(true);
         startTimerHz(1); // Reduced from 5Hz — idle polling only as a fallback
     }
@@ -1743,13 +1789,13 @@ public:
         g.fillRect(header.removeFromBottom(3.0f));
 
         g.setColour(get(textDark));
-        g.setFont(juce::Font(19.0f).boldened());
+        g.setFont(GalleryFonts::display(19.0f));
         g.drawText("XOmnibus",
                    juce::Rectangle<int>(16, 0, 160, kHeaderH - 3),
                    juce::Justification::centredLeft);
 
-        g.setColour(get(textDark).withAlpha(0.5f)); // xoGold (#E9C46A) fails WCAG AA on shellWhite
-        g.setFont(juce::Font(8.5f).boldened());
+        g.setColour(get(xoGoldText)); // Darkened gold — meets WCAG AA on shellWhite
+        g.setFont(GalleryFonts::heading(8.5f));
         g.drawText("XO_OX Designs",
                    juce::Rectangle<int>(16, kHeaderH - 18, 110, 12),
                    juce::Justification::centredLeft);
@@ -1764,8 +1810,8 @@ public:
                 ? juce::String(activeRoutes) + " coupling route" + (activeRoutes > 1 ? "s" : "") + " active"
                 : "9 Engines · 12 Coupling Types · 1000 Presets";
 
-            g.setColour(activeRoutes > 0 ? get(xoGold) : get(textMid).withAlpha(0.5f));
-            g.setFont(juce::Font(9.0f));
+            g.setColour(activeRoutes > 0 ? get(xoGoldText) : get(textMid).withAlpha(0.5f));
+            g.setFont(GalleryFonts::body(9.0f));
             g.drawText(routeLabel,
                        juce::Rectangle<int>(getWidth() - 310, 0, 298, kHeaderH - 6),
                        juce::Justification::centredRight);
