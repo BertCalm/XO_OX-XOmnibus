@@ -97,6 +97,8 @@ target_sources(XOmnibus PRIVATE
 
     # UI (Gallery Model)
     Source/UI/XOmnibusEditor.h
+    Source/UI/PlaySurface/PlaySurface.h
+    Source/UI/CouplingStrip/CouplingStripEditor.h
 
     # Main processor
     Source/XOmnibusProcessor.h
