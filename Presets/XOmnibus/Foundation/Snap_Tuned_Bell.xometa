@@ -3,7 +3,7 @@
   "name": "Snap_Tuned_Bell",
   "mood": "Foundation",
   "engines": [
-    "Snap"
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -32,7 +32,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,

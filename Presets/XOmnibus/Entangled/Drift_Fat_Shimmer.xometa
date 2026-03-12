@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Drift Fat Shimmer",
   "mood": "Entangled",
-  "engines": ["Fat", "Drift"],
+  "engines": [
+    "Obese",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FAT's massive sine pad with DRIFT's shimmer and formant layered on top. Psychedelic weight.",
-  "tags": ["coupled", "pad", "shimmer", "massive", "psychedelic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "coupled",
+    "pad",
+    "shimmer",
+    "massive",
+    "psychedelic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
@@ -19,7 +33,7 @@
     "aggression": 0.0
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.1,
       "fat_mojo": 0.15,
       "fat_subLevel": 0.2,
@@ -52,7 +66,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 3
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 12.0,
@@ -96,8 +110,8 @@
   "coupling": {
     "routes": [
       {
-        "source": "Drift",
-        "dest": "Fat",
+        "source": "Odyssey",
+        "dest": "Obese",
         "type": "AmpToFilter",
         "amount": 0.2
       }

@@ -3,12 +3,12 @@
   "name": "Bob_Drift_Spectral_Chord",
   "mood": "Prism",
   "engines": [
-    "Bob",
-    "Drift"
+    "Oblong",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB sync chord with DRIFT shimmer \u2014 spectral sync harmonics meet shimmer for chordal prism.",
+  "description": "BOB sync chord with DRIFT shimmer — spectral sync harmonics meet shimmer for chordal prism.",
   "tags": [
     "bob",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.75,
@@ -33,7 +33,7 @@
     "aggression": 0.32
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -76,7 +76,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -120,8 +120,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "Drift",
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.32
       }

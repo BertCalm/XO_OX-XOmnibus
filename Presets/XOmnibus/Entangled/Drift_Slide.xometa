@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Drift Slide",
   "mood": "Entangled",
-  "engines": ["Drift", "Bob"],
+  "engines": [
+    "Odyssey",
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT mono psychedelic lead with heavy portamento glide. BOB provides a warm ambient pad below. Play melodic lines slowly and let the notes melt into each other.",
-  "tags": ["lead", "glide", "mono", "drift", "psychedelic", "portamento", "entangled"],
-  "macroLabels": ["DRIFT TONE", "SLIDE DEPTH", "COUPLING", "BOB PAD"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "lead",
+    "glide",
+    "mono",
+    "drift",
+    "psychedelic",
+    "portamento",
+    "entangled"
+  ],
+  "macroLabels": [
+    "DRIFT TONE",
+    "SLIDE DEPTH",
+    "COUPLING",
+    "BOB PAD"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.6,
@@ -19,7 +35,7 @@
     "aggression": 0.25
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 2,
       "drift_oscA_tune": 0.0,
@@ -59,7 +75,7 @@
       "drift_glide": 0.25,
       "drift_polyphony": 0
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -106,8 +122,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
-        "engineB": "Bob",
+        "engineA": "Odyssey",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.3
       }

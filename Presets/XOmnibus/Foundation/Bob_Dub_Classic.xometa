@@ -3,8 +3,8 @@
   "name": "Bob_Dub_Classic",
   "mood": "Foundation",
   "engines": [
-    "Bob",
-    "Dub"
+    "Oblong",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -34,7 +34,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -77,7 +77,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,

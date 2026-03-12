@@ -17,7 +17,7 @@
   "name": "Dub Piano",
   "mood": "Prism",
   "engines": [
-    "Dub"
+    "Overdub"
   ],
   "description": "Plucked decay with tape echo \u2014 a roots dub piano tone.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.1
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 3,
       "dub_oscOctave": 1,
       "dub_oscTune": 0.0,

@@ -2,18 +2,34 @@
   "schema_version": 1,
   "name": "Perturbation Engine",
   "mood": "Entangled",
-  "engines": ["XOuroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Rössler attractor at full injection with mid chaos. External hits knock the orbit into wild new trajectories.",
-  "tags": ["coupled", "percussive", "reactive", "heavy"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Heavy",
+  "tags": [
+    "coupled",
+    "percussive",
+    "reactive",
+    "heavy"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-10",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 1,
       "ouro_rate": 261.0,
       "ouro_chaosIndex": 0.5,

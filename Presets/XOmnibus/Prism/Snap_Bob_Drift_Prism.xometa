@@ -3,13 +3,13 @@
   "name": "Snap_Bob_Drift_Prism",
   "mood": "Prism",
   "engines": [
-    "Snap",
-    "Bob",
-    "Drift"
+    "OddfeliX",
+    "Oblong",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine prism \u2014 SNAP crystal, BOB spectral, DRIFT shimmer. Complete bright architecture.",
+  "description": "Three-engine prism — SNAP crystal, BOB spectral, DRIFT shimmer. Complete bright architecture.",
   "tags": [
     "snap",
     "bob",
@@ -24,7 +24,7 @@
     "DRIFT SHIMMER",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.78,
@@ -35,7 +35,7 @@
     "aggression": 0.48
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -48,7 +48,7 @@
       "snap_release": 0.1,
       "snap_level": 0.65
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -91,7 +91,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -135,14 +135,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Bob",
+        "engineA": "OddfeliX",
+        "engineB": "Oblong",
         "type": "Audio->Ring",
         "amount": 0.42
       },
       {
-        "engineA": "Bob",
-        "engineB": "Drift",
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.32
       }

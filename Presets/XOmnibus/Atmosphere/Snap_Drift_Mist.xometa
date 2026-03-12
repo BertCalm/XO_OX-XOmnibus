@@ -3,12 +3,12 @@
   "name": "Snap_Drift_Mist",
   "mood": "Atmosphere",
   "engines": [
-    "Snap",
-    "Drift"
+    "OddfeliX",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP rare gentle ticks through DRIFT mist \u2014 the occasional transient in an infinite shimmer fog.",
+  "description": "SNAP rare gentle ticks through DRIFT mist — the occasional transient in an infinite shimmer fog.",
   "tags": [
     "snap",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -33,7 +33,7 @@
     "aggression": 0.1
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -46,7 +46,7 @@
       "snap_release": 0.1,
       "snap_level": 0.35
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -90,8 +90,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Drift",
+        "engineA": "OddfeliX",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.15
       }

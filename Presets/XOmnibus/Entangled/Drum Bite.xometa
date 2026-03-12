@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Drum Bite",
+  "mood": "Entangled",
+  "engines": [
+    "Onset",
+    "Overbite"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Onset rhythm gates Overbite filter. Percussive bass textures.",
+  "tags": [
+    "coupling",
+    "onset",
+    "overbite",
+    "rhythm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.4,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.1,
+    "aggression": 0.4
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Overbite",
+        "type": "Rhythm->Blend",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null
+}

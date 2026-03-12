@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "FM Injection",
   "mood": "Entangled",
-  "engines": ["Bob", "Drift"],
+  "engines": [
+    "Oblong",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BOB's warm analog waveform directly injected into DRIFT's FM modulator via Audio->FM coupling. BOB's tone becomes DRIFT's inharmonicity — warmth becoming metallic complexity.",
-  "tags": ["fm", "inject", "bob", "drift", "metallic", "complex", "entangled"],
-  "macroLabels": ["BOB TONE", "DRIFT FM DEPTH", "COUPLING", "HARMONICS"],
-  "couplingIntensity": "Strong",
+  "tags": [
+    "fm",
+    "inject",
+    "bob",
+    "drift",
+    "metallic",
+    "complex",
+    "entangled"
+  ],
+  "macroLabels": [
+    "BOB TONE",
+    "DRIFT FM DEPTH",
+    "COUPLING",
+    "HARMONICS"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.6,
@@ -19,7 +35,7 @@
     "aggression": 0.4
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 1,
       "bob_oscA_shape": 0.6,
       "bob_oscA_tune": 0.0,
@@ -62,7 +78,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 2,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -106,8 +122,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "Drift",
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
         "type": "Audio->FM",
         "amount": 0.55
       }

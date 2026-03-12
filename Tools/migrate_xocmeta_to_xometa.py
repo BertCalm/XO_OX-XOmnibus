@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-XOddCouple .xocmeta → XOmnibus .xometa Migration Script
+OddfeliX .xocmeta → XOmnibus .xometa Migration Script
 
-Converts all 114 XOddCouple factory presets from .xocmeta format
+Converts all 114 OddfeliX factory presets from .xocmeta format
 to the unified .xometa format for XOmnibus.
 
 Usage:
@@ -21,7 +21,7 @@ from pathlib import Path
 FACTORY_DIR = Path(__file__).parent.parent / "Presets" / "Factory"
 OUTPUT_DIR = Path(__file__).parent.parent / "Presets" / "XOmnibus"
 
-# XOddCouple category → XOmnibus mood
+# OddfeliX category → XOmnibus mood
 MOOD_MAP = {
     "Grounded": "Foundation",
     "Floating": "Atmosphere",
@@ -29,7 +29,7 @@ MOOD_MAP = {
     "Deep Space": "Aether",
 }
 
-# XOddCouple macro labels (hardcoded in the engine)
+# OddfeliX macro labels (hardcoded in the engine)
 MACRO_LABELS = ["Snap+Morph", "Bloom", "Coupling", "Space"]
 
 # ---------------------------------------------------------------------------
@@ -53,7 +53,7 @@ def migrate_preset(xocmeta: dict) -> dict:
         }
         for track in seq_src.get("tracks", []):
             new_track = {
-                "engine": "XOddCouple",
+                "engine": "OddfeliX",
                 "length": track.get("length", 16),
                 "muted": track.get("muted", False),
                 "steps": [],
@@ -79,7 +79,7 @@ def migrate_preset(xocmeta: dict) -> dict:
         "schema_version": 1,
         "name": xocmeta["name"],
         "mood": mood,
-        "engines": ["XOddCouple"],
+        "engines": ["OddfeliX"],
         "author": xocmeta.get("author", "XO_OX Designs"),
         "version": xocmeta.get("version", "1.0.0"),
         "description": xocmeta.get("description", ""),
@@ -89,12 +89,12 @@ def migrate_preset(xocmeta: dict) -> dict:
         "tempo": xocmeta.get("tempo"),
         "created": xocmeta.get("created", "2026-03-08"),
         "legacy": {
-            "sourceInstrument": "XOddCouple",
+            "sourceInstrument": "OddfeliX",
             "sourceCategory": category,
             "sourcePresetName": None,
         },
         "parameters": {
-            "XOddCouple": params,
+            "OddfeliX": params,
         },
         "coupling": None,
         "sequencer": sequencer,

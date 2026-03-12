@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Bob Pluck",
   "mood": "Foundation",
-  "engines": ["Bob"],
+  "engines": ["Oblong"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BOB tuned for a short plucked instrument — fast attack, short decay, no sustain. Analog warmth with a definite physical attack. Versatile for melodic rhythmic playing.",
@@ -19,7 +19,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 1,
       "bob_oscA_shape": 0.6,
       "bob_oscA_tune": 0.0,

@@ -2,16 +2,33 @@
   "schema_version": 1,
   "name": "Beat Force",
   "mood": "Entangled",
-  "engines": ["Onset", "XOuroboros"],
+  "engines": [
+    "Onset",
+    "Ouroboros"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "ONSET drum patterns as physical forces — the Chua orbit dances to the beat, creating rhythmic chaotic textures.",
-  "tags": ["coupled", "rhythmic", "percussive", "chaotic"],
-  "macroLabels": ["DRUM CHARACTER", "ORBIT CHAOS", "FORCE", "SPACE"],
-  "couplingIntensity": "Heavy",
+  "tags": [
+    "coupled",
+    "rhythmic",
+    "percussive",
+    "chaotic"
+  ],
+  "macroLabels": [
+    "DRUM CHARACTER",
+    "ORBIT CHAOS",
+    "FORCE",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": 120,
   "created": "2026-03-10",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Onset": {
       "onset_kitSelect": 0,
@@ -23,7 +40,7 @@
       "onset_body": 0.5,
       "onset_level": 0.7
     },
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 2,
       "ouro_rate": 200.0,
       "ouro_chaosIndex": 0.6,
@@ -38,7 +55,7 @@
     "pairs": [
       {
         "engineA": "Onset",
-        "engineB": "XOuroboros",
+        "engineB": "Ouroboros",
         "type": "Audio->FM",
         "amount": 0.7
       }

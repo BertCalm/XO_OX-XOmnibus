@@ -3,7 +3,7 @@
   "name": "Dub_Deep_Foundation",
   "mood": "Foundation",
   "engines": [
-    "Dub"
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -31,7 +31,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": -1,
       "dub_oscTune": 0.0,

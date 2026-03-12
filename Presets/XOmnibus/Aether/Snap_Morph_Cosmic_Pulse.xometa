@@ -3,12 +3,12 @@
   "name": "Snap_Morph_Cosmic_Pulse",
   "mood": "Aether",
   "engines": [
-    "Snap",
-    "Morph"
+    "OddfeliX",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP cosmic pulses scan MORPH wavetable \u2014 the occasional tick opens spectral gateways.",
+  "description": "SNAP cosmic pulses scan MORPH wavetable — the occasional tick opens spectral gateways.",
   "tags": [
     "snap",
     "morph",
@@ -22,7 +22,7 @@
     "COUPLING",
     "BLOOM"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -33,7 +33,7 @@
     "aggression": 0.08
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -46,7 +46,7 @@
       "snap_release": 0.1,
       "snap_level": 0.3
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.3,
       "morph_bloom": 0.95,
       "morph_decay": 9.0,
@@ -64,8 +64,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Morph",
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
         "type": "Env->Morph",
         "amount": 0.65
       }

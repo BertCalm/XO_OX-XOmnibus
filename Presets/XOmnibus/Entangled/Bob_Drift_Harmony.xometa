@@ -3,12 +3,12 @@
   "name": "Bob_Drift_Harmony",
   "mood": "Entangled",
   "engines": [
-    "Bob",
-    "Drift"
+    "Oblong",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB pitch locks DRIFT's pitch \u2014 lead melody creates a fixed harmony in the shimmer. Real-time harmonization with atmospheric tail.",
+  "description": "BOB pitch locks DRIFT's pitch — lead melody creates a fixed harmony in the shimmer. Real-time harmonization with atmospheric tail.",
   "tags": [
     "bob",
     "drift",
@@ -24,7 +24,7 @@
     "INTERVAL",
     "SHIMMER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.6,
@@ -35,7 +35,7 @@
     "aggression": 0.3
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -78,7 +78,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -122,8 +122,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "Drift",
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
         "type": "Pitch->Pitch",
         "amount": 0.5
       }

@@ -3,12 +3,12 @@
   "name": "Bob_Fat_Deep_Aether",
   "mood": "Aether",
   "engines": [
-    "Bob",
-    "Fat"
+    "Oblong",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB slow presence above FAT massive drone \u2014 warm vapor over a dense, immovable foundation.",
+  "description": "BOB slow presence above FAT massive drone — warm vapor over a dense, immovable foundation.",
   "tags": [
     "bob",
     "fat",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.4,
@@ -33,7 +33,7 @@
     "aggression": 0.03
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -76,7 +76,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.5,
@@ -113,8 +113,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Bob",
+        "engineA": "Obese",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.15
       }

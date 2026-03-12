@@ -3,7 +3,7 @@
   "name": "Fat_Prism_Lead",
   "mood": "Prism",
   "engines": [
-    "Fat"
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -32,7 +32,7 @@
     "aggression": 0.32
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.88,
       "fat_mojo": 0.28,
       "fat_subLevel": 0.08,

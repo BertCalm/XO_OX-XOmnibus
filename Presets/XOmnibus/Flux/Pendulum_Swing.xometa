@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Pendulum Swing",
   "mood": "Flux",
-  "engines": ["XOuroboros"],
+  "engines": ["Ouroboros"],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Rössler attractor with low chaos and high leash. Predictable, rhythmic, warm swinging motion like a driven pendulum.",
@@ -13,7 +13,7 @@
   "created": "2026-03-10",
   "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
   "parameters": {
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 1,
       "ouro_rate": 156.0,
       "ouro_chaosIndex": 0.2,

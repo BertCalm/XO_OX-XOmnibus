@@ -3,14 +3,14 @@
   "name": "Bob_Fat_Drift_Snap_Four",
   "mood": "Entangled",
   "engines": [
-    "Bob",
-    "Fat",
-    "Drift",
-    "Snap"
+    "Oblong",
+    "Obese",
+    "Odyssey",
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Four-engine full spectrum \u2014 BOB lead, FAT density, DRIFT shimmer, SNAP rhythm. Complete.",
+  "description": "Four-engine full spectrum — BOB lead, FAT density, DRIFT shimmer, SNAP rhythm. Complete.",
   "tags": [
     "bob",
     "fat",
@@ -26,7 +26,7 @@
     "DRIFT SHIMMER",
     "SNAP RHYTHM"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -37,7 +37,7 @@
     "aggression": 0.38
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -80,7 +80,7 @@
       "bob_glide": 0.1,
       "bob_polyphony": 0
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.48,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.35,
@@ -113,7 +113,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -153,7 +153,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -170,20 +170,20 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Fat",
+        "engineA": "OddfeliX",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.52
       },
       {
-        "engineA": "Bob",
-        "engineB": "Drift",
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
         "type": "Pitch->Pitch",
         "amount": 0.38
       },
       {
-        "engineA": "Fat",
-        "engineB": "Drift",
+        "engineA": "Obese",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.25
       }

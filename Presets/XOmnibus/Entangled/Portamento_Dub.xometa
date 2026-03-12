@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Portamento Dub",
   "mood": "Entangled",
-  "engines": ["Dub", "Drift"],
+  "engines": [
+    "Overdub",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Deep DUB mono portamento bass lead with long glide time for slow, weighted note slides. DRIFT sparkle pad underneath. Play slow bass lines with legato for maximum portamento effect.",
-  "tags": ["portamento", "bass", "lead", "mono", "glide", "deep", "entangled"],
-  "macroLabels": ["BASS TONE", "PORTAMENTO", "COUPLING", "DRIFT SPACE"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "portamento",
+    "bass",
+    "lead",
+    "mono",
+    "glide",
+    "deep",
+    "entangled"
+  ],
+  "macroLabels": [
+    "BASS TONE",
+    "PORTAMENTO",
+    "COUPLING",
+    "DRIFT SPACE"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.35,
@@ -19,7 +35,7 @@
     "aggression": 0.4
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 3,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -57,7 +73,7 @@
       "dub_glide": 0.28,
       "dub_polyphony": 0
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 1,
       "drift_oscA_tune": 24.0,
@@ -101,8 +117,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Drift",
+        "engineA": "Overdub",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.3
       }

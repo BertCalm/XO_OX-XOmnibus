@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Morph Drift Ascent",
   "mood": "Aether",
-  "engines": ["Morph", "Drift"],
+  "engines": [
+    "OddOscar",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "MORPH's bloom and DRIFT's shimmer ascending together. MORPH envelope sweeps DRIFT into ever-higher ethereal territory. Hold notes long and ride the ascent.",
-  "tags": ["pad", "ascent", "ethereal", "morph", "drift", "shimmer", "aether"],
-  "macroLabels": ["MORPH BLOOM", "DRIFT SHIMMER", "COUPLING", "ASCENT"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "pad",
+    "ascent",
+    "ethereal",
+    "morph",
+    "drift",
+    "shimmer",
+    "aether"
+  ],
+  "macroLabels": [
+    "MORPH BLOOM",
+    "DRIFT SHIMMER",
+    "COUPLING",
+    "ASCENT"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.65,
@@ -19,7 +35,7 @@
     "aggression": 0.0
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.2,
       "morph_bloom": 0.8,
       "morph_decay": 5.0,
@@ -33,7 +49,7 @@
       "morph_level": 0.65,
       "morph_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 1,
       "drift_oscA_tune": 12.0,
@@ -77,8 +93,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Drift",
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
         "type": "Env->Morph",
         "amount": 0.5
       }

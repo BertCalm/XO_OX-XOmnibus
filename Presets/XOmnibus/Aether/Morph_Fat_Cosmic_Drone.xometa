@@ -3,12 +3,12 @@
   "name": "Morph_Fat_Cosmic_Drone",
   "mood": "Aether",
   "engines": [
-    "Morph",
-    "Fat"
+    "OddOscar",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH ghost scan above FAT harmonic void \u2014 the full spectrum of cosmic density.",
+  "description": "MORPH ghost scan above FAT harmonic void — the full spectrum of cosmic density.",
   "tags": [
     "morph",
     "fat",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.4,
@@ -33,7 +33,7 @@
     "aggression": 0.03
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.35,
       "morph_bloom": 0.92,
       "morph_decay": 9.0,
@@ -47,7 +47,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.3,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.5,
@@ -84,8 +84,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Morph",
+        "engineA": "Obese",
+        "engineB": "OddOscar",
         "type": "Amp->Filter",
         "amount": 0.18
       }

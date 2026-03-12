@@ -13,8 +13,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Drift",
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
         "type": "Env->Morph",
         "amount": 0.55
       }
@@ -24,8 +24,8 @@
   "name": "FM Drift",
   "mood": "Entangled",
   "engines": [
-    "Drift",
-    "Morph"
+    "Odyssey",
+    "OddOscar"
   ],
   "description": "MORPH's morphing engine modulates DRIFT's FM depth \u2014 texture multiplied.",
   "tags": [
@@ -44,7 +44,7 @@
     "aggression": 0.3
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 3,
       "drift_oscA_level": 0.55,
       "drift_oscA_detune": 0.35,
@@ -59,7 +59,7 @@
       "drift_level": 0.62,
       "drift_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.4,
       "morph_decay": 0.8,

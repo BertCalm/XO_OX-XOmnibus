@@ -3,7 +3,7 @@
   "name": "Quasar Pulse",
   "mood": "Aether",
   "engines": [
-    "XOddCouple"
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -26,12 +26,12 @@
   "tempo": 72,
   "created": "2026-03-05",
   "legacy": {
-    "sourceInstrument": "XOddCouple",
+    "sourceInstrument": "OddfeliX",
     "sourceCategory": "Deep Space",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOddCouple": {
+    "OddfeliX": {
       "couplingAmount": 0.791,
       "masterBalance": -0.012,
       "xOscMode": 0,

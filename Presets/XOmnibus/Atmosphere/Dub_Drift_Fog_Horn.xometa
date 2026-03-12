@@ -3,12 +3,12 @@
   "name": "Dub_Drift_Fog_Horn",
   "mood": "Atmosphere",
   "engines": [
-    "Dub",
-    "Drift"
+    "Overdub",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB sub-bass fog horn with DRIFT shimmer mist \u2014 maritime atmosphere, low and high.",
+  "description": "DUB sub-bass fog horn with DRIFT shimmer mist — maritime atmosphere, low and high.",
   "tags": [
     "dub",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "ECHO"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.3,
@@ -33,7 +33,7 @@
     "aggression": 0.1
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -71,7 +71,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 0
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -115,8 +115,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Drift",
+        "engineA": "Overdub",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.2
       }

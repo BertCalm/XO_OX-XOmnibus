@@ -17,7 +17,7 @@
   "name": "Event Horizon",
   "mood": "Aether",
   "engines": [
-    "Drift"
+    "Odyssey"
   ],
   "description": "Deep space pad \u2014 past the point of return, only shimmer remains.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.05
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_level": 0.5,
       "drift_oscA_detune": 0.45,

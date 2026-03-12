@@ -3,12 +3,12 @@
   "name": "Dub_Bob_Harmony",
   "mood": "Entangled",
   "engines": [
-    "Dub",
-    "Bob"
+    "Overdub",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB pitch tracks into BOB \u2014 bass melody creates harmonic counterpoint in the character voice. Classic two-voice counterpoint.",
+  "description": "DUB pitch tracks into BOB — bass melody creates harmonic counterpoint in the character voice. Classic two-voice counterpoint.",
   "tags": [
     "dub",
     "bob",
@@ -24,7 +24,7 @@
     "INTERVAL",
     "CHARACTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -35,7 +35,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -73,7 +73,7 @@
       "dub_glide": 0.1,
       "dub_polyphony": 0
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -120,8 +120,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Bob",
+        "engineA": "Overdub",
+        "engineB": "Oblong",
         "type": "Pitch->Pitch",
         "amount": 0.6
       }

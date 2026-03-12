@@ -3,12 +3,12 @@
   "name": "Fat_Drift_Flux_Motion",
   "mood": "Flux",
   "engines": [
-    "Fat",
-    "Drift"
+    "Obese",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT amplitude motion modulates DRIFT filter \u2014 the dense swell creates filter movement in the shimmer.",
+  "description": "FAT amplitude motion modulates DRIFT filter — the dense swell creates filter movement in the shimmer.",
   "tags": [
     "fat",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SHIMMER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -33,7 +33,7 @@
     "aggression": 0.25
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.3,
@@ -66,7 +66,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -110,8 +110,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Drift",
+        "engineA": "Obese",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.48
       }

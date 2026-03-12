@@ -144,12 +144,14 @@ public:
             out = sampleA + frameFrac * (sampleB - sampleA);
         }
 
-        // Advance phase through the frame
+        // Advance phase through the frame (bounded wrap to prevent runaway loops)
         phase += phaseIncrement;
-        while (phase >= static_cast<float> (frameSize))
-            phase -= static_cast<float> (frameSize);
-        while (phase < 0.0f)
-            phase += static_cast<float> (frameSize);
+        float fs = static_cast<float> (frameSize);
+        if (fs > 0.0f)
+        {
+            phase = std::fmod (phase, fs);
+            if (phase < 0.0f) phase += fs;
+        }
 
         return out;
     }
@@ -164,10 +166,16 @@ public:
     /// Set the phase directly. Value is in samples within the frame [0, frameSize).
     void setPhase (float p) noexcept
     {
-        phase = p;
         float fs = static_cast<float> (frameSize);
-        while (phase >= fs) phase -= fs;
-        while (phase < 0.0f) phase += fs;
+        if (fs > 0.0f)
+        {
+            phase = std::fmod (p, fs);
+            if (phase < 0.0f) phase += fs;
+        }
+        else
+        {
+            phase = 0.0f;
+        }
     }
 
     //--------------------------------------------------------------------------
@@ -196,6 +204,10 @@ private:
     /// phase position (in samples, not normalized).
     float readFrame (int frameIndex, float samplePos) const noexcept
     {
+        // Bounds-check frame index to prevent buffer overrun
+        if (frameIndex < 0 || frameIndex >= numFrames)
+            return 0.0f;
+
         int offset = frameIndex * frameSize;
 
         // Compute integer and fractional parts of sample position
@@ -207,6 +219,11 @@ private:
         int mask = frameSize - 1;  // works for power-of-2 frame sizes
         idx0 &= mask;
         idx1 &= mask;
+
+        // Final safety check against total table size
+        int accessMax = offset + std::max (idx0, idx1);
+        if (accessMax >= kMaxTableSize)
+            return 0.0f;
 
         // Linear interpolation between adjacent samples
         float s0 = table[offset + idx0];

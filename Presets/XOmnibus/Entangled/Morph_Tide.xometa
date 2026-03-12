@@ -2,13 +2,28 @@
   "schema_version": 1,
   "name": "Morph Tide",
   "mood": "Entangled",
-  "engines": ["Morph", "Drift"],
+  "engines": [
+    "OddOscar",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "MORPH's amplitude breathes DRIFT's filter open and shut like ocean tides. Slow morphing wavetable meets psychedelic shimmer — perpetual motion pad.",
-  "tags": ["movement", "oceanic", "pad", "filter", "breathe", "entangled"],
-  "macroLabels": ["MORPH DEPTH", "TIDE RATE", "COUPLING", "SHIMMER"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "movement",
+    "oceanic",
+    "pad",
+    "filter",
+    "breathe",
+    "entangled"
+  ],
+  "macroLabels": [
+    "MORPH DEPTH",
+    "TIDE RATE",
+    "COUPLING",
+    "SHIMMER"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -19,7 +34,7 @@
     "aggression": 0.05
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.35,
       "morph_bloom": 0.5,
       "morph_decay": 2.5,
@@ -33,7 +48,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 1,
       "drift_oscA_tune": 12.0,
@@ -77,8 +92,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Drift",
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.55
       }

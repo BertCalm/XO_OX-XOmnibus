@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Odyssey Fang",
+  "mood": "Entangled",
+  "engines": [
+    "Odyssey",
+    "Overbite"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Odyssey pad amplitude opens Overbite filter. Lush meets aggressive.",
+  "tags": [
+    "coupling",
+    "odyssey",
+    "overbite",
+    "pad"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.5,
+    "movement": 0.4,
+    "density": 0.5,
+    "space": 0.3,
+    "aggression": 0.3
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Overbite",
+        "type": "Amp->Filter",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null
+}

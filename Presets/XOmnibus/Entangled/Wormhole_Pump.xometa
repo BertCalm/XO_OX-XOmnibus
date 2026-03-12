@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Wormhole Pump",
   "mood": "Entangled",
-  "engines": ["Fat", "Dub"],
+  "engines": [
+    "Obese",
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FAT's massive oscillator stack pumps DUB's tape delay filter. Dense bass frequency breathing — every note bends spacetime through the dub echo chamber.",
-  "tags": ["fat", "dub", "pump", "bass", "massive", "entangled", "movement"],
-  "macroLabels": ["FAT DENSITY", "PUMP DEPTH", "COUPLING", "ECHO SPACE"],
-  "couplingIntensity": "Strong",
+  "tags": [
+    "fat",
+    "dub",
+    "pump",
+    "bass",
+    "massive",
+    "entangled",
+    "movement"
+  ],
+  "macroLabels": [
+    "FAT DENSITY",
+    "PUMP DEPTH",
+    "COUPLING",
+    "ECHO SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.35,
@@ -19,7 +35,7 @@
     "aggression": 0.4
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.25,
       "fat_mojo": 0.55,
       "fat_subLevel": 0.5,
@@ -52,7 +68,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 3
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 1,
       "dub_oscTune": 0.0,
@@ -94,8 +110,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Dub",
+        "engineA": "Obese",
+        "engineB": "Overdub",
         "type": "Amp->Filter",
         "amount": 0.6
       }

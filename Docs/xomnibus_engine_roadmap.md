@@ -1,5 +1,5 @@
 # XOmnibus — Engine Expansion Roadmap
-*Gallery Additions: BITE (XOpossum) + OPAL (XOpal) → then Volume 2 engines*
+*Gallery Additions: OVERBITE (XOverbite) + OPAL (XOpal) → then Volume 2 engines*
 *Document version: 2.0 | March 2026*
 
 ---
@@ -8,56 +8,61 @@
 
 | Code | Source | Role | Status |
 |------|--------|------|--------|
-| SNAP | XOddCouple X | Percussive/rhythmic | Integrated |
-| MORPH | XOddCouple O | Wavetable pads | Integrated |
-| DUB | XOverdub | FX send/return bus | Integrated |
-| DRIFT | XOdyssey | Psychedelic pads, Climax | Integrated |
-| BOB | XOblongBob | Warm fuzzy textures | Integrated |
-| FAT | XObese | Width/thickness, 13-osc | Integrated |
+| ODDFELIX | OddfeliX | Percussive/rhythmic | Integrated |
+| ODDOSCAR | OddOscar | Wavetable pads | Integrated |
+| OVERDUB | XOverdub | FX send/return bus | Integrated |
+| ODYSSEY | XOdyssey | Psychedelic pads, Climax | Integrated |
+| OBLONG | XOblong | Warm fuzzy textures | Integrated |
+| OBESE | XObese | Width/thickness, 13-osc | Integrated |
 | ONSET | XOnset (spec) | Dedicated drums | Not built |
 | OVERWORLD | XOverworld | Chip synthesis, 6 engines | Integration ready |
 
 **Gaps being filled:**
-- No bass-character engine (BITE fills this)
+- No bass-character engine (OVERBITE fills this)
 - No time/granular synthesis (OPAL fills this)
 
 ---
 
-## Engine 1: BITE — XOpossum
+## Engine 1: OVERBITE — XOverbite
 
 ### Identity
-- **Gallery code:** BITE
-- **Source instrument:** XOpossum
-- **Accent color:** Moss Green `#4A7C59` (plush + feral duality)
+- **Gallery code:** OVERBITE
+- **Source instrument:** XOverbite
+- **Accent color:** Fang White `#F0EDE8`
 - **Thesis:** Bass-forward character synth where plush weight meets feral bite
 - **Parameter prefix:** `poss_`
 - **Max voices:** 16
 - **CPU budget:** <10% (single engine)
 
-### Why BITE Next
-The gallery has width (FAT), pads (MORPH, DRIFT), character texture (BOB), percussion (SNAP), and FX routing (DUB). It has no dedicated bass voice with character stages. BITE fills the bottom of the frequency spectrum with something that has *personality* — not just a subtractive bass but a living one.
+### Why OVERBITE Next
+The gallery has width (OBESE), pads (ODDOSCAR, ODYSSEY), character texture (OBLONG), percussion (ODDFELIX), and FX routing (OVERDUB). It has no dedicated bass voice with character stages. OVERBITE fills the bottom of the frequency spectrum with something that has *personality* — not just a subtractive bass but a living one.
 
 **Key coupling route unlocked:**
-> **FAT → BITE** — 13 oscillators stacked through XOpossum's Fur→Gnash→Trash character stages. The widest bass in the gallery.
-> **ONSET → BITE** — Snare envelope drives the Bite macro. Every drum hit makes the bass snarl.
+> **OBESE → OVERBITE** — 13 oscillators stacked through XOverbite's Fur→Gnash→Trash character stages. The widest bass in the gallery.
+> **ONSET → OVERBITE** — Snare envelope drives the Bite macro. Every drum hit makes the bass snarl.
 
 ### Build Phases
 
 #### Phase 0: COMPLETE
-Planning done. Design doc at `~/Documents/GitHub/XOppossum/docs/plans/2026-03-06-xopossum-design.md`.
+Planning done. Design doc at `~/Documents/GitHub/XOverbite/docs/plans/2026-03-06-xoverbite-design.md`.
 
-#### Phase 1 — Parameter Architecture
+#### Phase 1 — Parameter Architecture: COMPLETE
 - All 122 canonical parameter IDs locked with `poss_` prefix
 - `AppState` JSON schema, `PresetManager` scaffold
-- **Gate:** compiles, save→load round-trips
+- Reference: `Docs/xoverbite_parameter_architecture.md`
+- Hero preset: `Presets/XOmnibus/Foundation/Belly_Growl.xometa` (122 params, round-trip verified)
+- **Gate:** compiles, save→load round-trips ✓
 
-#### Phase 2 — Core Voice Engine
-- OscA (4 belly waveforms), OscB (5 bite waveforms)
-- Weight/Sub engine with low-band compensation
-- NoiseSource (5 types + routing modes)
-- Voice pool: mono/legato/duo/poly4/unison
-- Amp envelope
-- **Gate:** audible tone, voice modes work, low end holds
+#### Phase 2 — Core Voice Engine: COMPLETE
+- OscA shape parameter + analog drift; OscB shape + instability
+- Weight engine (5 shapes, 3 octaves, fine tune)
+- NoiseSource (5 types: White/Pink/Brown/Crackle/Hiss, 4 routing modes)
+- Osc Interaction (4 modes: Soft Sync, Low FM, Phase Push, Grit Multiply)
+- 3 LFOs (7 shapes each: +Random, +Stepped), Mod envelope (3rd ADSR)
+- Voice: glide (Legato/Always), velocity sensitivity, pan
+- Macro 5 (Play Dead): release extend, level duck, filter close
+- Filter key tracking + pre-filter drive
+- **Gate:** audible tone, voice modes work, low end holds ✓
 
 #### Phase 3 — Filter + Character Stages
 - FilterBlock: Burrow LP / Snarl BP / Wire HP / Hollow Notch
@@ -95,32 +100,32 @@ Planning done. Design doc at `~/Documents/GitHub/XOppossum/docs/plans/2026-03-06
 
 #### Phase 3.X — XOmnibus Integration Prep
 *After Phase 7*
-- Write `src/adapter/XOpossum Adapter.h` against SynthEngine interface
+- Write `src/adapter/XOverbiteAdapter.h` against SynthEngine interface
 - Verify coupling: AmpToFilter, AudioToFM, AmpToChoke supported
 - Write integration spec (`docs/xomnibus_integration_spec.md`)
-- Test coupling routes with FAT, ONSET, SNAP locally
+- Test coupling routes with OBESE, ONSET, ODDFELIX locally
 
 #### Phase 4.X — Gallery Install
-- Copy DSP headers to `XO_OX-XOmnibus/Source/Engines/BITE/`
-- `REGISTER_ENGINE(XOpossumAdapter)`
+- Copy DSP headers to `XO_OX-XOmnibus/Source/Engines/Overbite/`
+- `REGISTER_ENGINE(XOverbiteAdapter)`
 - Copy presets to XOmnibus Presets directory
 - Run `compute_preset_dna.py`
 - Design 10 cross-engine Entangled presets
 - Update gallery docs
 
-### Coupling Matrix (BITE)
+### Coupling Matrix (OVERBITE)
 
 | As Target | Source Engine | Type | Musical Effect |
 |-----------|--------------|------|----------------|
-| BITE receives | FAT | AmpToFilter | 13-osc width drives filter — massive animated bass |
-| BITE receives | ONSET | AmpToFilter | Drum hits pump the Bite macro — snare makes bass snarl |
-| BITE receives | SNAP | AudioToFM | Karplus-Strong pluck FM-modulates the bass |
-| BITE receives | OVERWORLD | AudioToFM | Chip audio frequency-modulates bass operators |
+| OVERBITE receives | OBESE | AmpToFilter | 13-osc width drives filter — massive animated bass |
+| OVERBITE receives | ONSET | AmpToFilter | Drum hits pump the Bite macro — snare makes bass snarl |
+| OVERBITE receives | ODDFELIX | AudioToFM | Karplus-Strong pluck FM-modulates the bass |
+| OVERBITE receives | OVERWORLD | AudioToFM | Chip audio frequency-modulates bass operators |
 
 | As Source | Target Engine | Type | Musical Effect |
 |-----------|--------------|------|----------------|
-| BITE sends | DUB | getSample | Bass through dub echo/spring chain |
-| BITE sends | FAT | getSample | Bass amplitude modulates FAT width |
+| OVERBITE sends | OVERDUB | getSample | Bass through dub echo/spring chain |
+| OVERBITE sends | OBESE | getSample | Bass amplitude modulates OBESE width |
 
 ---
 
@@ -140,17 +145,24 @@ Every existing XOmnibus engine synthesizes *harmonically* — oscillators, wavet
 
 **Key coupling route unlocked:**
 > **OVERWORLD → OPAL** — Chip audio (NES pulses, FM operators, SNES samples) enters the OPAL grain buffer. Real-time granulation of retro synthesis. This coupling doesn't exist anywhere else.
-> **DRIFT → OPAL** — The Climax bloom granulated into a cloud. Psychedelic pads fragmented.
-> **OPAL → DUB** — The grain cloud through the dub echo/spring chain. Granular dub.
+> **ODYSSEY → OPAL** — The Climax bloom granulated into a cloud. Psychedelic pads fragmented.
+> **OPAL → OVERDUB** — The grain cloud through the dub echo/spring chain. Granular dub.
 
 ### Build Phases
 
 #### Phase 0 — Ideation: COMPLETE (this document)
 Concept brief at `Docs/concepts/xopal_concept_brief.md`.
 
-#### Phase 1 — Architecture: To Do
-Full architecture spec, parameter list, signal flow design.
-Run Synth Architect Protocol via `/new-xo-engine phase=1`.
+#### Phase 1 — Architecture: COMPLETE
+- 86 frozen `opal_` parameter IDs across 16 categories
+- Full signal flow: grain buffer → scheduler → 32-grain pool → filter → character → FX
+- Grain scheduler algorithm with deterministic PRNG
+- Coupling interface: `AudioToWavetable` primary, 6 supported types
+- 10 preset archetypes with DNA values, "Glass Cloud" first-encounter preset
+- 4 macros: SCATTER, DRIFT, COUPLING, SPACE
+- CPU verified at <1.1% worst case (well under 12% budget)
+- Reference: `Docs/xopal_phase1_architecture.md`
+- **Gate:** all params frozen, coupling defined, signal flow complete ✓
 
 #### Phase 2 — Scaffold + Build
 - `/new-xo-project name=XOpal identity="..." code=XOpl`
@@ -174,16 +186,16 @@ Run Synth Architect Protocol via `/new-xo-engine phase=1`.
 | As Target | Source Engine | Type | Musical Effect |
 |-----------|--------------|------|----------------|
 | OPAL receives | OVERWORLD | AudioToWavetable | Chip audio → grain buffer. NES/FM/SNES fragmented into time clouds. |
-| OPAL receives | DRIFT | AudioToWavetable | Psychedelic pads granulated — Climax bloom frozen into particles |
-| OPAL receives | BOB | AudioToWavetable | Warm fuzzy textures scattered through time |
-| OPAL receives | SNAP | AudioToWavetable | Karplus-Strong pluck granulated — reverb made of its own attack |
-| OPAL receives | FAT | AmpToFilter | 13-osc amplitude modulates grain density |
+| OPAL receives | ODYSSEY | AudioToWavetable | Psychedelic pads granulated — Climax bloom frozen into particles |
+| OPAL receives | OBLONG | AudioToWavetable | Warm fuzzy textures scattered through time |
+| OPAL receives | ODDFELIX | AudioToWavetable | Karplus-Strong pluck granulated — reverb made of its own attack |
+| OPAL receives | OBESE | AmpToFilter | 13-osc amplitude modulates grain density |
 
 | As Source | Target Engine | Type | Musical Effect |
 |-----------|--------------|------|----------------|
-| OPAL sends | DUB | getSample | Grain cloud through dub echo/spring |
-| OPAL sends | MORPH | EnvToMorph | Grain envelope drives wavetable morph position |
-| OPAL sends | BITE | AmpToFilter | Cloud density drives bass filter — breathing bass |
+| OPAL sends | OVERDUB | getSample | Grain cloud through dub echo/spring |
+| OPAL sends | ODDOSCAR | EnvToMorph | Grain envelope drives wavetable morph position |
+| OPAL sends | OVERBITE | AmpToFilter | Cloud density drives bass filter — breathing bass |
 
 ---
 
@@ -192,26 +204,26 @@ Run Synth Architect Protocol via `/new-xo-engine phase=1`.
 ```
 Q2 2026
 ┌─────────────────────────────────────────────────────────┐
-│ BITE Phase 1-2  ████████                                 │
+│ OVERBITE Phase 1-2  ████████                                 │
 │ OPAL Phase 0-1      ████████                             │
 └─────────────────────────────────────────────────────────┘
 
 Q3 2026
 ┌─────────────────────────────────────────────────────────┐
-│ BITE Phase 3-5  ████████████                             │
+│ OVERBITE Phase 3-5  ████████████                             │
 │ OPAL Phase 2         ████████████████                    │
 └─────────────────────────────────────────────────────────┘
 
 Q4 2026
 ┌─────────────────────────────────────────────────────────┐
-│ BITE Phase 6-7  ████████                                 │
-│ BITE Integration        ████                             │
+│ OVERBITE Phase 6-7  ████████                                 │
+│ OVERBITE Integration        ████                             │
 │ OPAL Phase 2 (cont.)   ████████████                     │
 └─────────────────────────────────────────────────────────┘
 
 Q1 2027
 ┌─────────────────────────────────────────────────────────┐
-│ BITE Gallery Install  ██                                  │
+│ OVERBITE Gallery Install  ██                                  │
 │ OPAL Phase 3-4   ████████████                            │
 │ OPAL Gallery Install          ████                       │
 │ XOscillum Phase 0-1              ████████                 │
@@ -270,11 +282,11 @@ Q4 2028+
 | Configuration | Engines | Est. CPU |
 |---------------|---------|----------|
 | Current gallery max | 3 engines | ~47.5% |
-| + BITE | 4 engines | ~55% (voice reduce) |
+| + OVERBITE | 4 engines | ~55% (voice reduce) |
 | + OPAL | 4 engines | ~57% (voice reduce) |
-| BITE + OPAL pair | 2 engines | ~22% |
+| OVERBITE + OPAL pair | 2 engines | ~22% |
 | OVERWORLD + OPAL | 2 engines | ~27% (heaviest pair) |
-| All 4 (BITE+OPAL+OVERWORLD+DUB) | 4 engines | ~49% with mitigation |
+| All 4 (OVERBITE+OPAL+OVERWORLD+OVERDUB) | 4 engines | ~49% with mitigation |
 
 OPAL is granular — at 12 grain cloud voices, CPU is variable by density parameter. Eco mode recommendation: cap grain density at 30/sec in 4-engine configs.
 
@@ -285,16 +297,16 @@ OPAL is granular — at 12 grain cloud voices, CPU is variable by density parame
 When both engines are installed, these are the priority cross-engine presets:
 
 1. **OVERWORLD × OPAL** — Chip Scatter — NES audio granulated into time cloud
-2. **BITE × OPAL** — Bass Breath — grain density pumping the bass filter
-3. **DRIFT × OPAL** — Climax Particles — Climax bloom frozen mid-bloom
-4. **FAT × BITE** — Maximum Gravity — 13 oscillators through feral character
-5. **OVERWORLD × BITE** — Chip Bass — FM chip audio FM-modulating the bass
-6. **OPAL × DUB** — Granular Dub — grain cloud through tape echo + spring
-7. **ONSET × BITE** — Living Texture — snare envelope driving Bite macro
+2. **OVERBITE × OPAL** — Bass Breath — grain density pumping the bass filter
+3. **ODYSSEY × OPAL** — Climax Particles — Climax bloom frozen mid-bloom
+4. **OBESE × OVERBITE** — Maximum Gravity — 13 oscillators through feral character
+5. **OVERWORLD × OVERBITE** — Chip Bass — FM chip audio FM-modulating the bass
+6. **OPAL × OVERDUB** — Granular Dub — grain cloud through tape echo + spring
+7. **ONSET × OVERBITE** — Living Texture — snare envelope driving Bite macro
 
 ---
 
-## Volume 2 Engines (Post BITE + OPAL)
+## Volume 2 Engines (Post OVERBITE + OPAL)
 
 *Source: `Docs/XOmnibus_Master_Architecture- Volume 2.md.txt`*
 *Review: `Docs/xomnibus_volume2_review.md`*
@@ -331,4 +343,4 @@ Remaining parked concepts are preserved in the Volume 2 source document for futu
 
 ---
 
-*Roadmap owner: XO_OX Designs | Process: `/new-xo-engine` skill | Next action: Begin BITE Phase 1*
+*Roadmap owner: XO_OX Designs | Process: `/new-xo-engine` skill | Next action: Begin OVERBITE Phase 1*

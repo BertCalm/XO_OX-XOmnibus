@@ -3,12 +3,12 @@
   "name": "Dub_Morph_Flux",
   "mood": "Flux",
   "engines": [
-    "Dub",
-    "Morph"
+    "Overdub",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB rhythm controls MORPH wavetable scan \u2014 bass groove sculpts spectral content in real time.",
+  "description": "DUB rhythm controls MORPH wavetable scan — bass groove sculpts spectral content in real time.",
   "tags": [
     "dub",
     "morph",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -33,7 +33,7 @@
     "aggression": 0.4
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -71,7 +71,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 0
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.4,
       "morph_bloom": 0.8,
       "morph_decay": 2.5,
@@ -89,8 +89,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Morph",
+        "engineA": "Overdub",
+        "engineB": "OddOscar",
         "type": "Rhythm->Blend",
         "amount": 0.55
       }

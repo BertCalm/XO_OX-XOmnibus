@@ -3,12 +3,12 @@
   "name": "Morph_Drift_Breeze",
   "mood": "Atmosphere",
   "engines": [
-    "Morph",
-    "Drift"
+    "OddOscar",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH wind with DRIFT shimmer breeze \u2014 two atmospheric textures as weather.",
+  "description": "MORPH wind with DRIFT shimmer breeze — two atmospheric textures as weather.",
   "tags": [
     "morph",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.52,
@@ -33,7 +33,7 @@
     "aggression": 0.06
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.48,
       "morph_bloom": 0.82,
       "morph_decay": 6.0,
@@ -47,7 +47,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -91,8 +91,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Drift",
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
         "type": "Env->Morph",
         "amount": 0.45
       }

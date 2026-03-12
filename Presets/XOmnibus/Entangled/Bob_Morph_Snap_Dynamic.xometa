@@ -3,13 +3,13 @@
   "name": "Bob_Morph_Snap_Dynamic",
   "mood": "Entangled",
   "engines": [
-    "Bob",
-    "Morph",
-    "Snap"
+    "Oblong",
+    "OddOscar",
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine dynamic \u2014 BOB lead, MORPH scan, SNAP accent. Every element in motion.",
+  "description": "Three-engine dynamic — BOB lead, MORPH scan, SNAP accent. Every element in motion.",
   "tags": [
     "bob",
     "morph",
@@ -24,7 +24,7 @@
     "SNAP ACCENT",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.58,
@@ -35,7 +35,7 @@
     "aggression": 0.48
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -78,7 +78,7 @@
       "bob_glide": 0.12,
       "bob_polyphony": 0
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.52,
       "morph_bloom": 0.78,
       "morph_decay": 2.5,
@@ -92,7 +92,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -109,14 +109,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Morph",
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
         "type": "Env->Morph",
         "amount": 0.62
       },
       {
-        "engineA": "Bob",
-        "engineB": "Morph",
+        "engineA": "Oblong",
+        "engineB": "OddOscar",
         "type": "Filter->Filter",
         "amount": 0.42
       }

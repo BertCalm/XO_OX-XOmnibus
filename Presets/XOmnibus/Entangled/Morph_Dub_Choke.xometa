@@ -3,12 +3,12 @@
   "name": "Morph_Dub_Choke",
   "mood": "Entangled",
   "engines": [
-    "Morph",
-    "Dub"
+    "OddOscar",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH chokes DUB \u2014 wavetable pad gates the bass on each sustained note. Dynamic architecture.",
+  "description": "MORPH chokes DUB — wavetable pad gates the bass on each sustained note. Dynamic architecture.",
   "tags": [
     "morph",
     "dub",
@@ -22,7 +22,7 @@
     "CHOKE SPEED",
     "WAVETABLE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
@@ -33,7 +33,7 @@
     "aggression": 0.42
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.52,
       "morph_bloom": 0.68,
       "morph_decay": 2.5,
@@ -47,7 +47,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -89,8 +89,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Dub",
+        "engineA": "OddOscar",
+        "engineB": "Overdub",
         "type": "Amp->Choke",
         "amount": 0.65
       }

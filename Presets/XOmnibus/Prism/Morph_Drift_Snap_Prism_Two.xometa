@@ -3,13 +3,13 @@
   "name": "Morph_Drift_Snap_Prism_Two",
   "mood": "Prism",
   "engines": [
-    "Morph",
-    "Drift",
-    "Snap"
+    "OddOscar",
+    "Odyssey",
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine prism \u2014 MORPH spectral, DRIFT shimmer, SNAP crystal accent. Rainbow.",
+  "description": "Three-engine prism — MORPH spectral, DRIFT shimmer, SNAP crystal accent. Rainbow.",
   "tags": [
     "morph",
     "drift",
@@ -24,7 +24,7 @@
     "SNAP CRYSTAL",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.78,
@@ -35,7 +35,7 @@
     "aggression": 0.45
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.72,
       "morph_bloom": 0.78,
       "morph_decay": 2.0,
@@ -49,7 +49,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -89,7 +89,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -106,14 +106,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Morph",
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
         "type": "Env->Morph",
         "amount": 0.62
       },
       {
-        "engineA": "Morph",
-        "engineB": "Drift",
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.32
       }

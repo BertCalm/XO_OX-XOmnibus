@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Morph Spectral",
   "mood": "Prism",
-  "engines": ["Morph"],
+  "engines": ["OddOscar"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "MORPH tuned for maximum spectral brightness — high filter, bright wavetable position, active bloom. Harmonic overtones evolving through the spectrum.",
@@ -19,7 +19,7 @@
     "aggression": 0.1
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.75,
       "morph_bloom": 0.65,
       "morph_decay": 2.0,

@@ -3,12 +3,12 @@
   "name": "Bob_Morph_Filter_Mirror",
   "mood": "Entangled",
   "engines": [
-    "Bob",
-    "Morph"
+    "Oblong",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB filter mirrors into MORPH filter \u2014 the character lead's tonal sweep is replicated in the wavetable pad. Synchronized brightness.",
+  "description": "BOB filter mirrors into MORPH filter — the character lead's tonal sweep is replicated in the wavetable pad. Synchronized brightness.",
   "tags": [
     "bob",
     "morph",
@@ -24,7 +24,7 @@
     "LINK DEPTH",
     "RESONANCE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -35,7 +35,7 @@
     "aggression": 0.25
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -78,7 +78,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.55,
       "morph_bloom": 0.65,
       "morph_decay": 2.5,
@@ -96,8 +96,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "Morph",
+        "engineA": "Oblong",
+        "engineB": "OddOscar",
         "type": "Filter->Filter",
         "amount": 0.45
       }

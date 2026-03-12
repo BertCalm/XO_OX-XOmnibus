@@ -3,7 +3,7 @@
   "name": "Velvet Haze",
   "mood": "Atmosphere",
   "engines": [
-    "XOddCouple"
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -25,12 +25,12 @@
   "tempo": null,
   "created": "2026-03-05",
   "legacy": {
-    "sourceInstrument": "XOddCouple",
+    "sourceInstrument": "OddfeliX",
     "sourceCategory": "Floating",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOddCouple": {
+    "OddfeliX": {
       "couplingAmount": 0.215,
       "masterBalance": 0.48,
       "xOscMode": 0,

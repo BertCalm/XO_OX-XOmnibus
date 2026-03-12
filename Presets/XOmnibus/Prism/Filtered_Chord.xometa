@@ -17,7 +17,7 @@
   "name": "Filtered Chord",
   "mood": "Prism",
   "engines": [
-    "Dub"
+    "Overdub"
   ],
   "description": "Dub chord stab through a resonant filter \u2014 the harmonic dub tradition.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.25
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 1,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,

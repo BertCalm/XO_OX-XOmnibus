@@ -249,8 +249,8 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            eraSmooth  += portaCoeff * (targetEra  - eraSmooth);
-            eraYSmooth += portaCoeff * (targetEraY - eraYSmooth);
+            eraSmooth  = flushDenormal (eraSmooth  + portaCoeff * (targetEra  - eraSmooth));
+            eraYSmooth = flushDenormal (eraYSmooth + portaCoeff * (targetEraY - eraYSmooth));
 
             float sample = voicePool.process(eraSmooth, eraYSmooth,
                                              ghostEra, ghostEraY,

@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Square Choir",
   "mood": "Foundation",
-  "engines": ["XOddCouple"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Hollow square wave choir with slow bloom and heavy sub. Rich and commanding.",
-  "tags": ["square", "choir", "hollow", "organ"],
-  "macroLabels": ["CHARACTER", "BLOOM", "COUPLING", "SPACE"],
+  "tags": [
+    "square",
+    "choir",
+    "hollow",
+    "organ"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "BLOOM",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -19,7 +31,7 @@
     "aggression": 0.3
   },
   "parameters": {
-    "XOddCouple": {
+    "OddfeliX": {
       "morph_morph": 2.0,
       "morph_bloom": 2.5,
       "morph_decay": 3.0,

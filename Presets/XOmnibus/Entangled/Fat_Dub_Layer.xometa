@@ -2,13 +2,27 @@
   "schema_version": 1,
   "name": "Fat Dub Layer",
   "mood": "Entangled",
-  "engines": ["Fat", "Dub"],
+  "engines": [
+    "Obese",
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FAT's massive oscillator stack coupled with DUB's delay and spring reverb. DUB envelope drives FAT filter.",
-  "tags": ["coupled", "fat", "dub", "massive", "spacious"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "coupled",
+    "fat",
+    "dub",
+    "massive",
+    "spacious"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -19,7 +33,7 @@
     "aggression": 0.1
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.33,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.3,
@@ -52,7 +66,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 2
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscMode": 1,
       "dub_oscTune": 0.0,
       "dub_oscShape": 0.5,
@@ -76,8 +90,8 @@
   "coupling": {
     "routes": [
       {
-        "source": "Dub",
-        "dest": "Fat",
+        "source": "Overdub",
+        "dest": "Obese",
         "type": "AmpToFilter",
         "amount": 0.35
       }

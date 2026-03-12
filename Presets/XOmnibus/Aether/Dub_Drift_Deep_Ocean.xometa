@@ -3,12 +3,12 @@
   "name": "Dub_Drift_Deep_Ocean",
   "mood": "Aether",
   "engines": [
-    "Dub",
-    "Drift"
+    "Overdub",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB sub reverb ocean floor with DRIFT shimmer above the surface \u2014 complete ocean depth.",
+  "description": "DUB sub reverb ocean floor with DRIFT shimmer above the surface — complete ocean depth.",
   "tags": [
     "dub",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.35,
@@ -33,7 +33,7 @@
     "aggression": 0.06
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -71,7 +71,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 0
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -115,8 +115,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Drift",
+        "engineA": "Overdub",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.2
       }

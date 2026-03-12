@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Void Membrane",
   "mood": "Entangled",
-  "engines": ["Dub", "Bob"],
+  "engines": [
+    "Overdub",
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DUB bass reverb sustain pad interlocked with BOB's dusty textured layer. DUB spring reverb creates the void — BOB adds grain and breath. DUB amplitude opens BOB's filter.",
-  "tags": ["pad", "dub", "bob", "reverb", "texture", "dark", "entangled"],
-  "macroLabels": ["DUB REVERB", "BOB TEXTURE", "COUPLING", "DARKNESS"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "pad",
+    "dub",
+    "bob",
+    "reverb",
+    "texture",
+    "dark",
+    "entangled"
+  ],
+  "macroLabels": [
+    "DUB REVERB",
+    "BOB TEXTURE",
+    "COUPLING",
+    "DARKNESS"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.3,
@@ -19,7 +35,7 @@
     "aggression": 0.08
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 0,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -57,7 +73,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.45,
       "bob_oscA_tune": 0.0,
@@ -104,8 +120,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Bob",
+        "engineA": "Overdub",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.45
       }

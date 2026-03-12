@@ -62,15 +62,15 @@ XOmnibus/
 │   │   │   ├── FatVoice.h
 │   │   │   ├── FatOscillator.h
 │   │   │   └── FatParameters.h
-│   │   ├── Bite/                      # XOppossum engine — bass-forward, feral
+│   │   ├── Bite/                      # XOverbite engine — bass-forward, feral
 │   │   │   ├── BiteEngine.h/.cpp
 │   │   │   ├── BiteVoice.h
 │   │   │   └── BiteParameters.h
-│   │   ├── Snap/                      # XOddCouple Engine X — percussive
+│   │   ├── Snap/                      # OddfeliX — percussive
 │   │   │   ├── SnapEngine.h/.cpp
 │   │   │   ├── SnapVoice.h
 │   │   │   └── SnapParameters.h
-│   │   ├── Morph/                     # XOddCouple Engine O — pad/lush
+│   │   ├── Morph/                     # OddOscar — pad/lush
 │   │   │   ├── MorphEngine.h/.cpp
 │   │   │   ├── MorphVoice.h
 │   │   │   └── MorphParameters.h
@@ -128,7 +128,7 @@ XOmnibus/
 │   ├── compute_preset_dna.py          # Sonic DNA fingerprinting
 │   ├── breed_presets.py               # Preset breeding/crossover
 │   ├── extract_cpp_presets.py         # C++ preset extraction utility
-│   ├── migrate_xocmeta_to_xometa.py  # XOddCouple format migration
+│   ├── migrate_xocmeta_to_xometa.py  # OddfeliX/OddOscar format migration
 │   ├── fix_xobese_xpms.py            # XPM format fixer
 │   └── xpn_exporter/
 │       └── xpn_export.py             # MPC .xpn pack builder
@@ -410,9 +410,9 @@ unified preset system.
 | Engine | Module Dir | Origin | Identity |
 |--------|-----------|--------|----------|
 | Fat | Source/Engines/Fat/ | XObese | Bold, industrial, high-contrast |
-| Bite | Source/Engines/Bite/ | XOppossum | Bass-forward, plush weight + feral bite |
-| Snap | Source/Engines/Snap/ | XOddCouple Engine X | Percussive (PolyBLEP, FM, Karplus-Strong) |
-| Morph | Source/Engines/Morph/ | XOddCouple Engine O | Pad/lush (wavetable morph, ladder filter) |
+| Bite | Source/Engines/Bite/ | XOverbite | Bass-forward, plush weight + feral bite |
+| Snap | Source/Engines/Snap/ | OddfeliX | Percussive (PolyBLEP, FM, Karplus-Strong) |
+| Morph | Source/Engines/Morph/ | OddOscar | Pad/lush (wavetable morph, ladder filter) |
 | Dub | Source/Engines/Dub/ | XOverdub | Dub-focused synth + performance FX |
 | Drift | Source/Engines/Drift/ | XOdyssey | Psychedelic pads, Climax system, journey |
 | Onset | Source/Engines/Onset/ | New build | Percussive synthesis, transient design |
@@ -541,10 +541,10 @@ See `Docs/xomnibus_technical_design_system.md` for the full visual specification
 
 | Module | Source Location |
 |--------|----------------|
-| CytomicSVF.h | XOddCouple `Source/DSP/Filters.h` (extract SVF) |
-| PolyBLEP.h | XOddCouple `Source/DSP/Oscillators.h` (extract PolyBLEP) |
+| CytomicSVF.h | OddfeliX/OddOscar `Source/DSP/Filters.h` (extract SVF) |
+| PolyBLEP.h | OddfeliX/OddOscar `Source/DSP/Oscillators.h` (extract PolyBLEP) |
 | FastMath.h | XOverdub `src/` or XOdyssey `Source/DSP/` |
-| ADSR.h | XOddCouple `Source/DSP/` or XOdyssey `Source/DSP/` |
+| ADSR.h | OddfeliX/OddOscar `Source/DSP/` or XOdyssey `Source/DSP/` |
 | Wavetable.h | XOdyssey `Source/DSP/` |
 | ReverbDSP.h | XOverdub `src/` (spring reverb) or XOdyssey `Source/DSP/` |
 | DCBlocker.h | XOverdub `src/` |
@@ -565,10 +565,10 @@ Migrate one engine at a time. For each engine, follow this sequence:
 
 | Priority | Engine(s) | Source Repo | Rationale |
 |----------|-----------|-------------|-----------|
-| 1 | Snap + Morph | XOddCouple | Already coupled, coupling logic ports directly |
+| 1 | Snap + Morph | OddfeliX/OddOscar | Already coupled, coupling logic ports directly |
 | 2 | Dub | XOverdub | Simplest standalone engine, good early validation |
 | 3 | Fat | XObese | Build complete, straightforward migration |
-| 4 | Bite | XOppossum | Phase 7, may need minor completion |
+| 4 | Bite | XOverbite | Phase 7, may need minor completion |
 | 5 | Drift | XOdyssey | Most complex engine (Climax system, journey macro) |
 | 6 | Onset | Spec only | New build from XOnset spec — no migration, fresh code |
 
@@ -577,9 +577,9 @@ Migrate one engine at a time. For each engine, follow this sequence:
 | Engine | Source Repo | Source Dir | Key Classes to Rename |
 |--------|-------------|-----------|----------------------|
 | Fat | XObese | `Source/` | PluginProcessor -> FatEngine |
-| Bite | XOppossum | `Source/` | PluginProcessor -> BiteEngine |
-| Snap | XOddCouple | `Source/Engines/EngineX.h` | EngineX -> SnapEngine |
-| Morph | XOddCouple | `Source/Engines/EngineO.h` | EngineO -> MorphEngine |
+| Bite | XOverbite | `Source/` | PluginProcessor -> BiteEngine |
+| Snap | OddfeliX/OddOscar | `Source/Engines/EngineX.h` | EngineX -> SnapEngine |
+| Morph | OddfeliX/OddOscar | `Source/Engines/EngineO.h` | EngineO -> MorphEngine |
 | Dub | XOverdub | `src/` | PluginProcessor -> DubEngine |
 | Drift | XOdyssey | `Source/` | PluginProcessor -> DriftEngine |
 | Onset | N/A | N/A | New build from spec |
@@ -590,11 +590,11 @@ After at least 2 engines are migrated and building:
 
 | Step | System | Description |
 |------|--------|-------------|
-| 3.1 | PlaySurface | Port XOblongBob's PlaySurface into `Source/Surface/`, generalize for multi-engine use |
+| 3.1 | PlaySurface | Port XOblong's PlaySurface into `Source/Surface/`, generalize for multi-engine use |
 | 3.2 | PresetManager | Implement `.xometa` JSON loading/saving with mood categorization in `Source/Core/` |
 | 3.3 | PresetBrowser | Build card grid UI with mood tabs, search, DNA sparklines in `Source/UI/` |
 | 3.4 | XOmnibusLookAndFeel | Implement gallery shell (warm white frame, per-engine accent panels, light/dark toggle) per design system |
-| 3.5 | CouplingMatrix | Port from XOddCouple, generalize to arbitrary engine pairs |
+| 3.5 | CouplingMatrix | Port from OddfeliX/OddOscar, generalize to arbitrary engine pairs |
 | 3.6 | SharedTransport | Global BPM, sync, clock shared across all engines |
 | 3.7 | SonicDNA | Port `compute_preset_dna.py` logic into C++ for real-time DNA display |
 | 3.8 | ThemeManager | Light/dark mode toggle, engine accent color registration |
@@ -643,13 +643,13 @@ After migration is complete and XOmnibus is building with all engines validated:
 | Repo | Location | Archive Tag |
 |------|----------|-------------|
 | XObese | ~/Documents/GitHub/XObese/ | `v1.0-standalone-archive` |
-| XOppossum | ~/Documents/GitHub/XOppossum/ | `v1.0-standalone-archive` |
-| XOddCouple | ~/Documents/GitHub/XOddCouple/ | `v1.0-standalone-archive` |
+| XOverbite | ~/Documents/GitHub/XOverbite/ | `v1.0-standalone-archive` |
+| OddfeliX/OddOscar | ~/Documents/GitHub/OddfeliX/OddOscar/ | `v1.0-standalone-archive` |
 | XOverdub | ~/Documents/GitHub/XOverdub/ | `v1.0-standalone-archive` |
 | XOdyssey | ~/Documents/GitHub/XOdyssey/ | `v1.0-standalone-archive` |
-| XOblongBob | ~/Documents/GitHub/XOblongBob/ | `v1.0-standalone-archive` |
+| XOblong | ~/Documents/GitHub/XOblong/ | `v1.0-standalone-archive` |
 
-Note: XOnset has no existing repo (spec only, lives in XOddCouple docs) — no archive needed.
+Note: XOnset has no existing repo (spec only, lives in OddfeliX/OddOscar docs) — no archive needed.
 
 ---
 

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Steady State",
   "mood": "Foundation",
-  "engines": ["XOuroboros"],
+  "engines": ["Ouroboros"],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Lorenz attractor with minimal chaos and tight leash. Clean, static wavetable-like tone with complex harmonic content.",
@@ -13,7 +13,7 @@
   "created": "2026-03-10",
   "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
   "parameters": {
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 0,
       "ouro_rate": 440.0,
       "ouro_chaosIndex": 0.1,

@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Warm Pad",
   "mood": "Foundation",
-  "engines": ["XOddCouple"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Classic warm pad with gentle morph and Moog ladder warmth. The MORPH engine at its most inviting.",
-  "tags": ["pad", "warm", "lush", "analog"],
-  "macroLabels": ["CHARACTER", "BLOOM", "COUPLING", "SPACE"],
+  "tags": [
+    "pad",
+    "warm",
+    "lush",
+    "analog"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "BLOOM",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -19,7 +31,7 @@
     "aggression": 0.1
   },
   "parameters": {
-    "XOddCouple": {
+    "OddfeliX": {
       "morph_morph": 0.8,
       "morph_bloom": 1.5,
       "morph_decay": 2.0,

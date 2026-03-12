@@ -11,7 +11,7 @@ namespace xomnibus {
 // MorphOscillator — Built-in wavetable morph: sine → saw → square → noise.
 //
 // Morph parameter (0.0–3.0) crossfades between four timbres stored in
-// pre-built 2048-sample wavetables. This is specific to the MORPH engine —
+// pre-built 2048-sample wavetables. This is specific to the ODDOSCAR engine —
 // the shared WavetableOscillator is for loading external wavetable files.
 //==============================================================================
 class MorphOscillator
@@ -110,7 +110,7 @@ private:
 //==============================================================================
 // MoogLadder — 4-pole non-linear ladder filter (Moog style).
 //
-// The resonant warmth of this filter is central to the MORPH engine's character.
+// The resonant warmth of this filter is central to the ODDOSCAR engine's character.
 // Embedded here rather than in the shared DSP library because it's
 // architecturally distinct from the general-purpose CytomicSVF.
 //==============================================================================
@@ -146,13 +146,16 @@ public:
         double fb = resonance * 4.0 * (1.0 - 0.15 * f * f);
 
         double inp = static_cast<double> (input) - fb * delay[3];
-        inp = std::tanh (inp);
+        inp = static_cast<double> (fastTanh (static_cast<float> (inp)));
 
         for (int i = 0; i < 4; ++i)
         {
             double s = (i == 0) ? inp : stage[i - 1];
-            stage[i] = delay[i] + f * (std::tanh (s) - std::tanh (delay[i]));
+            stage[i] = delay[i] + f * (static_cast<double> (fastTanh (static_cast<float> (s)))
+                                      - static_cast<double> (fastTanh (static_cast<float> (delay[i]))));
             delay[i] = stage[i];
+            // Prevent denormals in the 4-pole feedback chain
+            if (std::fabs (delay[i]) < 1.0e-18) delay[i] = 0.0;
         }
 
         return static_cast<float> (stage[3]);
@@ -167,7 +170,7 @@ private:
 };
 
 //==============================================================================
-// MorphVoice — per-voice state for the MORPH (pad) engine.
+// MorphVoice — per-voice state for the ODDOSCAR (pad) engine.
 //==============================================================================
 struct MorphVoice
 {
@@ -198,7 +201,7 @@ struct MorphVoice
 };
 
 //==============================================================================
-// MorphEngine — Lush, evolving pad synthesis (from XOddCouple Engine O).
+// MorphEngine — Lush, evolving pad synthesis (OddOscar — the axolotl).
 //
 // Features:
 //   - Wavetable morph oscillator: sine → saw → square → noise (0.0–3.0)
@@ -408,13 +411,16 @@ public:
                 float raw = oscMix + sub;
 
                 // Apply filter with coupling modulation.
-                // Note: filterCutoffMod is applied per-sample in the render loop,
-                // not at NoteOn — this is intentional. Coupling should continuously
-                // modulate running voices, not just stamp initial filter state.
-                float modCutoff = cutoff + filterCutoffMod * 2000.0f;
-                modCutoff = std::max (20.0f, std::min (20000.0f, modCutoff));
-                voice.filter.setCutoff (modCutoff);
-                voice.filter.setResonance (reso);
+                // Coefficients are block-constant (filterCutoffMod set by
+                // applyCouplingInput before renderBlock), so update once on
+                // first sample to avoid per-sample trig recomputation.
+                if (sample == 0)
+                {
+                    float modCutoff = cutoff + filterCutoffMod * 2000.0f;
+                    modCutoff = std::max (20.0f, std::min (20000.0f, modCutoff));
+                    voice.filter.setCutoff (modCutoff);
+                    voice.filter.setResonance (reso);
+                }
                 float filtered = voice.filter.processSample (raw);
 
                 // Voice-stealing crossfade (5ms)
@@ -422,6 +428,7 @@ public:
                 if (voice.fadeOutLevel > 0.0f)
                 {
                     voice.fadeOutLevel -= 1.0f / (0.005f * srf);
+                    voice.fadeOutLevel = flushDenormal (voice.fadeOutLevel);
                     if (voice.fadeOutLevel <= 0.0f)
                         voice.fadeOutLevel = 0.0f;
                     stealFade = 1.0f - voice.fadeOutLevel;
@@ -491,13 +498,13 @@ public:
                 break;
 
             default:
-                break; // Other coupling types not supported by MORPH
+                break; // Other coupling types not supported by ODDOSCAR
         }
     }
 
     //-- Parameters ------------------------------------------------------------
 
-    // Static helper: add MORPH parameters to a shared vector (used by processor).
+    // Static helper: add ODDOSCAR parameters to a shared vector (used by processor).
     static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         addParametersImpl (params);
@@ -581,8 +588,8 @@ public:
 
     //-- Identity --------------------------------------------------------------
 
-    juce::String getEngineId() const override { return "Morph"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFF2A9D8F); }
+    juce::String getEngineId() const override { return "OddOscar"; }
+    juce::Colour getAccentColour() const override { return juce::Colour (0xFFE8839B); } // Axolotl Gill Pink
     int getMaxVoices() const override { return kMaxVoices; }
 
 private:
@@ -664,6 +671,7 @@ private:
             {
                 float rate = 1.0f / (std::max (0.01f, decayTime) * srf);
                 voice.envLevel -= rate;
+                voice.envLevel = flushDenormal (voice.envLevel);
                 if (voice.envLevel <= sustainLvl)
                 {
                     voice.envLevel = sustainLvl;
@@ -684,6 +692,7 @@ private:
             {
                 float rate = 1.0f / (std::max (0.01f, relTime) * srf);
                 voice.envLevel -= rate;
+                voice.envLevel = flushDenormal (voice.envLevel);
                 if (voice.envLevel <= 0.0f)
                 {
                     voice.envLevel = 0.0f;

@@ -3,12 +3,12 @@
   "name": "Fat_Bob_Flux_Lead",
   "mood": "Flux",
   "engines": [
-    "Fat",
-    "Bob"
+    "Obese",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT arp drives BOB with Rhythm->Blend \u2014 the arpeggiated pattern changes BOB's oscillator blend on each note.",
+  "description": "FAT arp drives BOB with Rhythm->Blend — the arpeggiated pattern changes BOB's oscillator blend on each note.",
   "tags": [
     "fat",
     "bob",
@@ -22,7 +22,7 @@
     "RHYTHM DEPTH",
     "CHARACTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -33,7 +33,7 @@
     "aggression": 0.4
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.3,
@@ -66,7 +66,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -113,8 +113,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Bob",
+        "engineA": "Obese",
+        "engineB": "Oblong",
         "type": "Rhythm->Blend",
         "amount": 0.5
       }

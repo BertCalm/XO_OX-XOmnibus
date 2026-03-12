@@ -3,7 +3,7 @@
   "name": "Morph_Bright_Lead",
   "mood": "Prism",
   "engines": [
-    "Morph"
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -32,7 +32,7 @@
     "aggression": 0.32
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.88,
       "morph_bloom": 0.72,
       "morph_decay": 1.5,

@@ -3,7 +3,7 @@
   "name": "Morph_Wind_Pad",
   "mood": "Atmosphere",
   "engines": [
-    "Morph"
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -32,7 +32,7 @@
     "aggression": 0.08
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.48,
       "morph_bloom": 0.8,
       "morph_decay": 5.5,

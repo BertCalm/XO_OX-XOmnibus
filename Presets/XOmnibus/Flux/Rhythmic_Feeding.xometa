@@ -4,7 +4,7 @@
   "mood": "Flux",
   "engines": [
     "Onset",
-    "XOrganon"
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -37,7 +37,7 @@
       "onset_attack": 0.001,
       "onset_decay": 0.15
     },
-    "XOrganon": {
+    "Organon": {
       "organon_metabolicRate": 2.0,
       "organon_enzymeSelect": 1500.0,
       "organon_catalystDrive": 0.7,
@@ -54,13 +54,13 @@
     "pairs": [
       {
         "engineA": "Onset",
-        "engineB": "XOrganon",
+        "engineB": "Organon",
         "type": "Audio->FM",
         "amount": 0.6
       },
       {
         "engineA": "Onset",
-        "engineB": "XOrganon",
+        "engineB": "Organon",
         "type": "Rhythm->Blend",
         "amount": 0.5
       }

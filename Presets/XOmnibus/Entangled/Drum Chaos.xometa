@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Drum Chaos",
+  "mood": "Entangled",
+  "engines": [
+    "Onset",
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Onset rhythm modulates Ouroboros chaos index. Beat-synced bifurcation.",
+  "tags": [
+    "coupling",
+    "onset",
+    "ouroboros",
+    "rhythm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.35,
+    "movement": 0.75,
+    "density": 0.5,
+    "space": 0.1,
+    "aggression": 0.4
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Ouroboros",
+        "type": "Rhythm->Blend",
+        "amount": 0.6
+      }
+    ]
+  },
+  "sequencer": null
+}

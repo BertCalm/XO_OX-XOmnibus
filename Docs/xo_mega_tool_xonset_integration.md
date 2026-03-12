@@ -12,11 +12,11 @@
 
 ## 1. Overview
 
-XOnset fills the only remaining gap in the mega-tool's engine catalog: percussion synthesis. No other module -- FAT, BITE, SNAP, MORPH, DUB, or DRIFT -- provides drum sounds. Without ONSET, the mega-tool requires external drum sources or samples.
+XOnset fills the only remaining gap in the mega-tool's engine catalog: percussion synthesis. No other module -- OBESE, OVERBITE, ODDFELIX, ODDOSCAR, OVERDUB, or ODYSSEY -- provides drum sounds. Without ONSET, the mega-tool requires external drum sources or samples.
 
 **Key integration facts:**
 
-- **Built from scratch** against the `SynthEngine` interface. No legacy wrapping or adapter pattern needed. Every other engine (FAT wraps XOblongBob, SNAP/MORPH wrap XOddCouple, DUB wraps XOverdub) requires an adapter layer. ONSET is native.
+- **Built from scratch** against the `SynthEngine` interface. No legacy wrapping or adapter pattern needed. Every other engine (OBESE wraps XOblong, ODDFELIX/ODDOSCAR wrap OddfeliX/OddOscar, OVERDUB wraps XOverdub) requires an adapter layer. ONSET is native.
 - **Unique architectural challenge:** XOnset has its own internal 8x8 cross-voice coupling matrix (kick chokes hat, kick ducks snare filter, etc.) that must coexist with the mega-tool's `MegaCouplingMatrix` for cross-engine coupling. No other engine has this dual-matrix situation.
 - **Fixed 8-voice architecture.** Unlike melodic engines where `setMaxVoices()` throttles polyphony under CPU pressure, ONSET always runs 8 dedicated drum voices. Voice reduction does not apply -- you cannot have a kit without a kick.
 
@@ -209,7 +209,7 @@ These extension methods are not part of the `SynthEngine` interface. The `MegaCo
 
 XOnset has an internal `CrossVoiceCouplingMatrix` -- an 8x8 matrix where drum voices modulate each other (kick amplitude ducks snare filter, closed hat chokes open hat, snare tightens hat decay). This is fundamental to making the kit sound cohesive.
 
-The mega-tool has the `MegaCouplingMatrix` -- an N-slot matrix where engines modulate each other (ONSET kick amplitude ducks FAT pad filter, MORPH LFO modulates ONSET kick decay).
+The mega-tool has the `MegaCouplingMatrix` -- an N-slot matrix where engines modulate each other (ONSET kick amplitude ducks OBESE pad filter, ODDOSCAR LFO modulates ONSET kick decay).
 
 Both matrices must operate simultaneously without parameter collisions, processing order conflicts, or feedback loops.
 
@@ -252,7 +252,7 @@ A potential feedback loop: mega-tool coupling modulates ONSET's kick decay -> ki
 
 ### 4.1 The Sync Problem
 
-XOnset has a built-in 16-step sequencer with per-step parameter locks (blend, pitch, decay, snap per step). The mega-tool's XOddCouple-derived architecture includes a 64-step pattern sequencer for melodic engines.
+XOnset has a built-in 16-step sequencer with per-step parameter locks (blend, pitch, decay, snap per step). The mega-tool's OddfeliX/OddOscar-derived architecture includes a 64-step pattern sequencer for melodic engines.
 
 These must not fight over transport control.
 
@@ -393,12 +393,12 @@ This provides a subtle dub pump: ONSET's kick transients duck the melodic engine
 | Scenario | Route Type | Signal Path | Implementation Detail |
 |---|---|---|---|
 | ONSET -> any melodic | `AmpToFilter` | Kick envelope follower -> melodic filter cutoff | `getSampleForCoupling()` returns master output; `computeModulation()` uses `AmpToFilter` inversion for pump effect |
-| ONSET -> DUB | `SendToFX` | Master output -> DUB send input | Audio routing through DUB's send/return chain. Amount = send level |
-| MORPH -> ONSET | `EnvToDecay` | Pad LFO -> kick decay time | `applyCouplingInput(lfoValue, EnvToDecay)` modulates `perc_v1_decay` via `externalDecayMod` accumulator |
-| BITE -> ONSET | `RhythmToBlend` | Bass amplitude -> snare blend | `applyCouplingInput(ampValue, RhythmToBlend)` modulates `perc_v2_blend` via `externalBlendMod` accumulator |
-| ONSET -> DRIFT | `AmpToFilter` | Hat pattern triggers -> shimmer depth | Per-voice trigger output via `getVoiceTriggerState(3)` -> DRIFT's Prism Shimmer depth. Requires `dynamic_cast` for per-voice access |
-| FAT -> ONSET | `LFOToPitch` | FAT pad LFO -> tom pitch | `applyCouplingInput(lfoValue, LFOToPitch)` adds pitch drift to V6 (tom) |
-| ONSET -> SNAP | `TriggerToReset` | Kick trigger -> SNAP envelope reset | Kick hit resets SNAP's oscillator phase and envelope -- creates locked groove |
+| ONSET -> OVERDUB | `SendToFX` | Master output -> OVERDUB send input | Audio routing through OVERDUB's send/return chain. Amount = send level |
+| ODDOSCAR -> ONSET | `EnvToDecay` | Pad LFO -> kick decay time | `applyCouplingInput(lfoValue, EnvToDecay)` modulates `perc_v1_decay` via `externalDecayMod` accumulator |
+| OVERBITE -> ONSET | `RhythmToBlend` | Bass amplitude -> snare blend | `applyCouplingInput(ampValue, RhythmToBlend)` modulates `perc_v2_blend` via `externalBlendMod` accumulator |
+| ONSET -> ODYSSEY | `AmpToFilter` | Hat pattern triggers -> shimmer depth | Per-voice trigger output via `getVoiceTriggerState(3)` -> ODYSSEY's Prism Shimmer depth. Requires `dynamic_cast` for per-voice access |
+| OBESE -> ONSET | `LFOToPitch` | OBESE pad LFO -> tom pitch | `applyCouplingInput(lfoValue, LFOToPitch)` adds pitch drift to V6 (tom) |
+| ONSET -> ODDFELIX | `TriggerToReset` | Kick trigger -> ODDFELIX envelope reset | Kick hit resets ODDFELIX's oscillator phase and envelope -- creates locked groove |
 
 ### 6.3 applyCouplingInput Implementation
 
@@ -462,7 +462,7 @@ void XOnsetEngine::applyCouplingInput(float value, CouplingType type)
 **Advanced Mode (full coupling matrix):**
 
 - All 4 macros are accessible on ONSET's parameter page
-- MACHINE position can be used as a coupling source: "MACHINE -> FAT filter cutoff" means turning MACHINE from analog to digital also opens the pad engine's filter
+- MACHINE position can be used as a coupling source: "MACHINE -> OBESE filter cutoff" means turning MACHINE from analog to digital also opens the pad engine's filter
 - Each macro is exposed as a modulatable parameter: `perc_macro_machine`, `perc_macro_punch`, `perc_macro_space`, `perc_macro_mutate`
 
 ### 7.3 MACHINE as Coupling Source
@@ -628,7 +628,7 @@ The `xpn_export.py` tool generates the `.xpm` program file. Key settings for dru
 **Goal:** 8 working drum voices with Layer X (circuit topologies) only.
 
 1. Define `xonset` namespace + `Parameters.h` with all ~110 parameter IDs using `perc_` prefix
-2. Implement `ParamSnapshot` for XOnset parameters (reuse pattern from XOddCouple)
+2. Implement `ParamSnapshot` for XOnset parameters (reuse pattern from OddfeliX/OddOscar)
 3. Implement `DrumVoice` base with 4 circuit topologies:
    - Bridged-T kick (V1, V6)
    - Noise-burst snare (V2, V5)
@@ -690,7 +690,7 @@ The `xpn_export.py` tool generates the `.xpm` program file. Key settings for dru
 35. auval validation
 36. **Gate:** All presets load/save correctly in .xomega format. CPU stays under 15% at 44.1kHz/512.
 
-**Estimated timeline:** 4-6 weeks, parallelizable with other engine wrapping work (FAT, BITE, DUB adapters).
+**Estimated timeline:** 4-6 weeks, parallelizable with other engine wrapping work (OBESE, OVERBITE, OVERDUB adapters).
 
 ---
 

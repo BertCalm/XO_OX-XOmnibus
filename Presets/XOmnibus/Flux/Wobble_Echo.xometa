@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Wobble Echo",
   "mood": "Flux",
-  "engines": ["Dub"],
+  "engines": ["Overdub"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Modulated delay with LFO on filter cutoff. Each echo shifts tone as the tape wobbles.",
@@ -19,7 +19,7 @@
     "aggression": 0.3
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 2,
       "dub_oscTune": 0.0,

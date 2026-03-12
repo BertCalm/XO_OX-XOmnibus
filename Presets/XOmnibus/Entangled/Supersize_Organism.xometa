@@ -3,8 +3,8 @@
   "name": "Supersize Organism",
   "mood": "Entangled",
   "engines": [
-    "Fat",
-    "XOrganon"
+    "Obese",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_oscMode": 1,
       "fat_unisonVoices": 7,
       "fat_detune": 0.3,
@@ -43,7 +43,7 @@
       "fat_release": 1.0,
       "fat_level": 0.6
     },
-    "XOrganon": {
+    "Organon": {
       "organon_metabolicRate": 1.5,
       "organon_enzymeSelect": 2000.0,
       "organon_catalystDrive": 0.8,
@@ -59,8 +59,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "XOrganon",
+        "engineA": "Obese",
+        "engineB": "Organon",
         "type": "Audio->FM",
         "amount": 0.7
       }

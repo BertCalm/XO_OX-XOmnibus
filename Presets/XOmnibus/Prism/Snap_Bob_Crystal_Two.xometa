@@ -3,12 +3,12 @@
   "name": "Snap_Bob_Crystal_Two",
   "mood": "Prism",
   "engines": [
-    "Snap",
-    "Bob"
+    "OddfeliX",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP crystal and BOB spectral sync \u2014 dual spectral attack architecture.",
+  "description": "SNAP crystal and BOB spectral sync — dual spectral attack architecture.",
   "tags": [
     "snap",
     "bob",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.8,
@@ -33,7 +33,7 @@
     "aggression": 0.52
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -46,7 +46,7 @@
       "snap_release": 0.1,
       "snap_level": 0.75
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -93,8 +93,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Bob",
+        "engineA": "OddfeliX",
+        "engineB": "Oblong",
         "type": "Audio->Ring",
         "amount": 0.45
       }

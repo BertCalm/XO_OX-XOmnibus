@@ -17,7 +17,7 @@
   "name": "Fracture Point",
   "mood": "Flux",
   "engines": [
-    "Drift"
+    "Odyssey"
   ],
   "description": "Harmonic stability breaking apart \u2014 the moment before chaos.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.55
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 1,
       "drift_oscA_level": 0.55,
       "drift_oscA_detune": 0.55,

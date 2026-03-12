@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Chaos Dub",
+  "mood": "Entangled",
+  "engines": [
+    "Ouroboros",
+    "Overdub"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ouroboros chaos audio feeds Overdub echo chain. Strange attractor reverb.",
+  "tags": [
+    "coupling",
+    "ouroboros",
+    "overdub",
+    "echo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.45,
+    "movement": 0.6,
+    "density": 0.4,
+    "space": 0.5,
+    "aggression": 0.2
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Overdub",
+        "type": "Audio->Wavetable",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null
+}

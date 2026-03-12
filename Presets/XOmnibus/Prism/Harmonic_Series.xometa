@@ -17,7 +17,7 @@
   "name": "Harmonic Series",
   "mood": "Prism",
   "engines": [
-    "Morph"
+    "OddOscar"
   ],
   "description": "Morph sweeps through the harmonic series \u2014 tuned, purposeful, spectral.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.18
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.3,
       "morph_bloom": 0.25,
       "morph_decay": 0.7,

@@ -3,9 +3,9 @@
   "name": "Snap_Fat_Morph_Kit",
   "mood": "Foundation",
   "engines": [
-    "Snap",
-    "Fat",
-    "Morph"
+    "OddfeliX",
+    "Obese",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -35,7 +35,7 @@
     "aggression": 0.38
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -48,7 +48,7 @@
       "snap_release": 0.1,
       "snap_level": 0.72
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.42,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.3,
@@ -81,7 +81,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.62,
       "morph_decay": 1.5,

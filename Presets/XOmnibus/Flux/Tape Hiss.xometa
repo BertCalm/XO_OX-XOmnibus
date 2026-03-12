@@ -3,7 +3,7 @@
   "name": "Tape Hiss",
   "mood": "Flux",
   "engines": [
-    "XOverdub"
+    "Overdub"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -26,12 +26,12 @@
   "tempo": null,
   "created": "2026-03-08",
   "legacy": {
-    "sourceInstrument": "XOverdub",
+    "sourceInstrument": "Overdub",
     "sourceCategory": "Tape Chaos",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOverdub": {
+    "Overdub": {
       "osc_wave": 0.0,
       "osc_noise_level": 0.5,
       "osc_level": 0.3,

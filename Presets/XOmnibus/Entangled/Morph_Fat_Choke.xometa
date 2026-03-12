@@ -3,12 +3,12 @@
   "name": "Morph_Fat_Choke",
   "mood": "Entangled",
   "engines": [
-    "Morph",
-    "Fat"
+    "OddOscar",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH chokes FAT when the wavetable pad is active \u2014 pad gates the massive density layer for dramatic volume sculpting.",
+  "description": "MORPH chokes FAT when the wavetable pad is active — pad gates the massive density layer for dramatic volume sculpting.",
   "tags": [
     "morph",
     "fat",
@@ -24,7 +24,7 @@
     "CHOKE SPEED",
     "DENSITY"
   ],
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
@@ -35,7 +35,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.6,
       "morph_bloom": 0.65,
       "morph_decay": 2.0,
@@ -49,7 +49,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.45,
@@ -86,8 +86,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Fat",
+        "engineA": "OddOscar",
+        "engineB": "Obese",
         "type": "Amp->Choke",
         "amount": 0.7
       }

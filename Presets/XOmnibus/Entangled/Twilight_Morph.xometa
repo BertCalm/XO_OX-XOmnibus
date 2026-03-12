@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Twilight Morph",
   "mood": "Entangled",
-  "engines": ["Morph", "Bob"],
+  "engines": [
+    "OddOscar",
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "MORPH's evolving wavetable pad coupled with BOB's analog warmth. BOB's envelope sweeps MORPH's wavetable position — the sound morphs through timbres as notes sustain.",
-  "tags": ["pad", "morph", "evolving", "wavetable", "warm", "lush", "entangled"],
-  "macroLabels": ["MORPH POSITION", "BOB WARMTH", "COUPLING", "BLOOM"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "pad",
+    "morph",
+    "evolving",
+    "wavetable",
+    "warm",
+    "lush",
+    "entangled"
+  ],
+  "macroLabels": [
+    "MORPH POSITION",
+    "BOB WARMTH",
+    "COUPLING",
+    "BLOOM"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -19,7 +35,7 @@
     "aggression": 0.03
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.3,
       "morph_bloom": 0.7,
       "morph_decay": 4.0,
@@ -33,7 +49,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.55,
       "bob_oscA_tune": 0.0,
@@ -80,8 +96,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "Morph",
+        "engineA": "Oblong",
+        "engineB": "OddOscar",
         "type": "Env->Morph",
         "amount": 0.45
       }

@@ -3,7 +3,7 @@
   "name": "Drift_Lead_Classic",
   "mood": "Foundation",
   "engines": [
-    "Drift"
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -32,7 +32,7 @@
     "aggression": 0.4
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 1,
       "drift_oscA_tune": 0.0,

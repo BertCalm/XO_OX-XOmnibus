@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Snap Knock",
   "mood": "Foundation",
-  "engines": ["XOddCouple"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Punchy percussive knock with pitch snap sweep. Classic Engine X character.",
-  "tags": ["percussive", "snap", "pluck", "drum"],
-  "macroLabels": ["SNAP DEPTH", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "percussive",
+    "snap",
+    "pluck",
+    "drum"
+  ],
+  "macroLabels": [
+    "SNAP DEPTH",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -19,7 +31,7 @@
     "aggression": 0.7
   },
   "parameters": {
-    "XOddCouple": {
+    "OddfeliX": {
       "snap_oscMode": 0,
       "snap_snap": 0.6,
       "snap_decay": 0.35,

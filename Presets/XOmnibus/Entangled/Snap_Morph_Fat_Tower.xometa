@@ -3,13 +3,13 @@
   "name": "Snap_Morph_Fat_Tower",
   "mood": "Entangled",
   "engines": [
-    "Snap",
-    "Morph",
-    "Fat"
+    "OddfeliX",
+    "OddOscar",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine tower \u2014 SNAP percussion triggers MORPH wavetable scan while FAT provides harmonic foundation. Percussive spectral architecture.",
+  "description": "Three-engine tower — SNAP percussion triggers MORPH wavetable scan while FAT provides harmonic foundation. Percussive spectral architecture.",
   "tags": [
     "snap",
     "morph",
@@ -25,7 +25,7 @@
     "FAT FOUNDATION",
     "COUPLING"
   ],
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -36,7 +36,7 @@
     "aggression": 0.55
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -49,7 +49,7 @@
       "snap_release": 0.1,
       "snap_level": 0.75
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.4,
       "morph_bloom": 0.8,
       "morph_decay": 3.0,
@@ -63,7 +63,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.4,
@@ -100,14 +100,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Morph",
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
         "type": "Env->Morph",
         "amount": 0.65
       },
       {
-        "engineA": "Morph",
-        "engineB": "Fat",
+        "engineA": "OddOscar",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.4
       }

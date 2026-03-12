@@ -17,7 +17,7 @@
   "name": "Thermal Gradient",
   "mood": "Aether",
   "engines": [
-    "Drift"
+    "Odyssey"
   ],
   "description": "Slow temperature shift of a pad \u2014 warm to cold over minutes.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.08
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_level": 0.55,
       "drift_oscA_detune": 0.35,

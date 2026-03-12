@@ -3,12 +3,12 @@
   "name": "Dub_Fat_Filter_Mirror",
   "mood": "Entangled",
   "engines": [
-    "Dub",
-    "Fat"
+    "Overdub",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB filter state mirrors into FAT \u2014 as the bass filter sweeps with the envelope, the massive pad's filter tracks the same movement.",
+  "description": "DUB filter state mirrors into FAT — as the bass filter sweeps with the envelope, the massive pad's filter tracks the same movement.",
   "tags": [
     "dub",
     "fat",
@@ -24,7 +24,7 @@
     "LINK DEPTH",
     "RESONANCE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
@@ -35,7 +35,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -73,7 +73,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 0
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.4,
@@ -110,8 +110,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Fat",
+        "engineA": "Overdub",
+        "engineB": "Obese",
         "type": "Filter->Filter",
         "amount": 0.5
       }

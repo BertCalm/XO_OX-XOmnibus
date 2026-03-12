@@ -3,12 +3,12 @@
   "name": "Snap_Dub_Rhythm_Gate",
   "mood": "Flux",
   "engines": [
-    "Snap",
-    "Dub"
+    "OddfeliX",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP rhythmic gates DUB's filter \u2014 creates syncopated filtered bass rhythm from coupling.",
+  "description": "SNAP rhythmic gates DUB's filter — creates syncopated filtered bass rhythm from coupling.",
   "tags": [
     "snap",
     "dub",
@@ -22,7 +22,7 @@
     "COUPLING",
     "ECHO"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
@@ -33,7 +33,7 @@
     "aggression": 0.55
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 0,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -46,7 +46,7 @@
       "snap_release": 0.1,
       "snap_level": 0.75
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -88,8 +88,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Dub",
+        "engineA": "OddfeliX",
+        "engineB": "Overdub",
         "type": "Amp->Filter",
         "amount": 0.65
       }

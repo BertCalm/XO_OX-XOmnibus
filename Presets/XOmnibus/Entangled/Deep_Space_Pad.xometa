@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Deep Space Pad",
   "mood": "Entangled",
-  "engines": ["Drift", "Fat"],
+  "engines": [
+    "Odyssey",
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT ethereal shimmer floating over FAT's dense oscillator foundation. Cosmic, breathable, impossibly wide. DRIFT amplitude gently opens FAT's filter as the shimmer builds.",
-  "tags": ["pad", "cosmic", "dense", "shimmer", "space", "evolving", "entangled"],
-  "macroLabels": ["DRIFT SHIMMER", "FAT DENSITY", "COUPLING", "SPACE"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "pad",
+    "cosmic",
+    "dense",
+    "shimmer",
+    "space",
+    "evolving",
+    "entangled"
+  ],
+  "macroLabels": [
+    "DRIFT SHIMMER",
+    "FAT DENSITY",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -19,7 +35,7 @@
     "aggression": 0.05
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 1,
       "drift_oscA_tune": 12.0,
@@ -59,7 +75,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.4,
       "fat_mojo": 0.35,
       "fat_subLevel": 0.45,
@@ -96,8 +112,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
-        "engineB": "Fat",
+        "engineA": "Odyssey",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.35
       }

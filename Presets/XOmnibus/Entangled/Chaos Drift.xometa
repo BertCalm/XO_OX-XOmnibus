@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Chaos Drift",
+  "mood": "Entangled",
+  "engines": [
+    "Odyssey",
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Odyssey tidal depth modulates Ouroboros chaos index. Waves of chaos.",
+  "tags": [
+    "coupling",
+    "odyssey",
+    "ouroboros",
+    "tidal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.45,
+    "movement": 0.65,
+    "density": 0.4,
+    "space": 0.25,
+    "aggression": 0.25
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Ouroboros",
+        "type": "Env->Decay",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null
+}

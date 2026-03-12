@@ -3,12 +3,12 @@
   "name": "Snap_Bob_LFO",
   "mood": "Entangled",
   "engines": [
-    "Snap",
-    "Bob"
+    "OddfeliX",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP's LFO rate drives BOB's pitch wobble \u2014 the percussive engine's oscillation modulates the lead. Cross-engine vibrato sync.",
+  "description": "SNAP's LFO rate drives BOB's pitch wobble — the percussive engine's oscillation modulates the lead. Cross-engine vibrato sync.",
   "tags": [
     "snap",
     "bob",
@@ -24,7 +24,7 @@
     "WOBBLE RATE",
     "DEPTH"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -35,7 +35,7 @@
     "aggression": 0.45
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 0,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -48,7 +48,7 @@
       "snap_release": 0.1,
       "snap_level": 0.75
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -95,8 +95,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Bob",
+        "engineA": "OddfeliX",
+        "engineB": "Oblong",
         "type": "LFO->Pitch",
         "amount": 0.2
       }

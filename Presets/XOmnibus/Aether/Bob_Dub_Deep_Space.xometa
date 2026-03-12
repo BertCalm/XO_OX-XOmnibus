@@ -3,12 +3,12 @@
   "name": "Bob_Dub_Deep_Space",
   "mood": "Aether",
   "engines": [
-    "Bob",
-    "Dub"
+    "Oblong",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB dusty presence with DUB reverb drone \u2014 deep space acoustic, barely there.",
+  "description": "BOB dusty presence with DUB reverb drone — deep space acoustic, barely there.",
   "tags": [
     "bob",
     "dub",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.32,
@@ -33,7 +33,7 @@
     "aggression": 0.04
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -76,7 +76,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -118,8 +118,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Bob",
+        "engineA": "Overdub",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.15
       }

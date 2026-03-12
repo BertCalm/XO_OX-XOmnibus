@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Dub Wobble",
   "mood": "Flux",
-  "engines": ["Dub"],
+  "engines": ["Overdub"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DUB's LFO filter wobble at full intensity. Classic dub wobble bass — the LFO rate controls the rhythm of the filter sweep, tape delay compounds the movement.",
@@ -19,7 +19,7 @@
     "aggression": 0.4
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 1,
       "dub_oscTune": 0.0,

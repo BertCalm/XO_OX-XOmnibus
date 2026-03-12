@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Analog Cloud",
   "mood": "Atmosphere",
-  "engines": ["Fat"],
+  "engines": ["Obese"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow-attack pad with maximum Mojo drift and wide stereo. 13 oscillators drifting like analog fog.",
@@ -19,7 +19,7 @@
     "aggression": 0.0
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.2,
       "fat_mojo": 0.05,
       "fat_subLevel": 0.15,

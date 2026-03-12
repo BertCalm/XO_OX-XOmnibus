@@ -3,13 +3,13 @@
   "name": "Dub_Morph_Drift_Space",
   "mood": "Atmosphere",
   "engines": [
-    "Dub",
-    "Morph",
-    "Drift"
+    "Overdub",
+    "OddOscar",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine space atmosphere \u2014 DUB gravity, MORPH spectral mist, DRIFT shimmer sky.",
+  "description": "Three-engine space atmosphere — DUB gravity, MORPH spectral mist, DRIFT shimmer sky.",
   "tags": [
     "dub",
     "morph",
@@ -24,7 +24,7 @@
     "DRIFT SKY",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
@@ -35,7 +35,7 @@
     "aggression": 0.06
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -73,7 +73,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 0
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.48,
       "morph_bloom": 0.78,
       "morph_decay": 7.0,
@@ -87,7 +87,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -131,14 +131,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Morph",
+        "engineA": "Overdub",
+        "engineB": "OddOscar",
         "type": "Amp->Filter",
         "amount": 0.22
       },
       {
-        "engineA": "Morph",
-        "engineB": "Drift",
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
         "type": "Env->Morph",
         "amount": 0.42
       }

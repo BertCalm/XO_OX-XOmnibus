@@ -3,12 +3,12 @@
   "name": "Morph_Dub_Rhythm",
   "mood": "Entangled",
   "engines": [
-    "Morph",
-    "Dub"
+    "OddOscar",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH wavetable position controls DUB's oscillator blend \u2014 as the wavetable scans, the bass character shifts between timbres in real-time.",
+  "description": "MORPH wavetable position controls DUB's oscillator blend — as the wavetable scans, the bass character shifts between timbres in real-time.",
   "tags": [
     "rhythm",
     "blend",
@@ -24,7 +24,7 @@
     "BLEND DEPTH",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -35,7 +35,7 @@
     "aggression": 0.3
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.4,
       "morph_bloom": 0.75,
       "morph_decay": 3.5,
@@ -49,7 +49,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -91,8 +91,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Dub",
+        "engineA": "OddOscar",
+        "engineB": "Overdub",
         "type": "Rhythm->Blend",
         "amount": 0.55
       }

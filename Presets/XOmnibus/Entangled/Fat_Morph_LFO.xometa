@@ -3,12 +3,12 @@
   "name": "Fat_Morph_LFO",
   "mood": "Entangled",
   "engines": [
-    "Fat",
-    "Morph"
+    "Obese",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT LFO rate modulates MORPH pitch \u2014 dense oscillator oscillation creates slow pitch waves in the wavetable.",
+  "description": "FAT LFO rate modulates MORPH pitch — dense oscillator oscillation creates slow pitch waves in the wavetable.",
   "tags": [
     "fat",
     "morph",
@@ -22,7 +22,7 @@
     "COUPLING",
     "RATE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -33,7 +33,7 @@
     "aggression": 0.22
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.35,
@@ -66,7 +66,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.72,
       "morph_decay": 3.0,
@@ -84,8 +84,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Morph",
+        "engineA": "Obese",
+        "engineB": "OddOscar",
         "type": "LFO->Pitch",
         "amount": 0.3
       }

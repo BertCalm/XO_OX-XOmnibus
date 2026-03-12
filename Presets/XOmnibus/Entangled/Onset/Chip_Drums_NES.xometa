@@ -21,11 +21,11 @@
     "SPACE",
     "MUTATE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "created": "2026-03-10",
   "legacy": {
-    "sourceInstrument": "XOnset",
+    "sourceInstrument": "Onset",
     "sourceCategory": "Entangled",
     "sourcePresetName": null
   },

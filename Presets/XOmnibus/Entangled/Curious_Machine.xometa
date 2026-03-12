@@ -3,8 +3,8 @@
   "name": "Curious Machine",
   "mood": "Entangled",
   "engines": [
-    "Bob",
-    "XOrganon"
+    "Oblong",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 2,
       "bob_oscA_shape": 0.3,
       "bob_oscB_wave": 0,
@@ -46,7 +46,7 @@
       "bob_curAmount": 0.5,
       "bob_level": 0.55
     },
-    "XOrganon": {
+    "Organon": {
       "organon_metabolicRate": 1.5,
       "organon_enzymeSelect": 2000.0,
       "organon_catalystDrive": 0.6,
@@ -62,14 +62,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "XOrganon",
+        "engineA": "Oblong",
+        "engineB": "Organon",
         "type": "Audio->FM",
         "amount": 0.45
       },
       {
-        "engineA": "XOrganon",
-        "engineB": "Bob",
+        "engineA": "Organon",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.3
       }

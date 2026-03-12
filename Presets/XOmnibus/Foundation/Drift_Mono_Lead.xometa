@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Drift Mono Lead",
   "mood": "Foundation",
-  "engines": ["Drift"],
+  "engines": ["Odyssey"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT mono lead — filtered, characterful, slightly unstable. The drift oscillator makes every note feel slightly alive. Play legato for gentle pitch drift between notes.",
@@ -19,7 +19,7 @@
     "aggression": 0.3
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 2,
       "drift_oscA_tune": 0.0,

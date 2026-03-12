@@ -2,13 +2,28 @@
   "schema_version": 1,
   "name": "Ring Circuit",
   "mood": "Entangled",
-  "engines": ["Snap", "Drift"],
+  "engines": [
+    "OddfeliX",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "SNAP's amplitude drives DRIFT as Audio->Ring modulation. Each percussive hit creates metallic harmonic sidebands in the psychedelic shimmer — bell-like with unpredictable overtone movement.",
-  "tags": ["ring", "metallic", "percussive", "shimmer", "movement", "entangled"],
-  "macroLabels": ["SNAP RING", "DRIFT TEXTURE", "COUPLING", "METALLIC"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "ring",
+    "metallic",
+    "percussive",
+    "shimmer",
+    "movement",
+    "entangled"
+  ],
+  "macroLabels": [
+    "SNAP RING",
+    "DRIFT TEXTURE",
+    "COUPLING",
+    "METALLIC"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.7,
@@ -19,7 +34,7 @@
     "aggression": 0.5
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_snap": 0.55,
       "snap_decay": 0.35,
@@ -31,7 +46,7 @@
       "snap_unison": 0,
       "snap_polyphony": 2
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 2,
       "drift_oscA_tune": 0.0,
@@ -75,8 +90,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Drift",
+        "engineA": "OddfeliX",
+        "engineB": "Odyssey",
         "type": "Audio->Ring",
         "amount": 0.5
       }

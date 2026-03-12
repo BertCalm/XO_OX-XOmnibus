@@ -3,12 +3,12 @@
   "name": "Fat_Morph_Harmonic_Field",
   "mood": "Aether",
   "engines": [
-    "Fat",
-    "Morph"
+    "Obese",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT and MORPH creating a shared harmonic field \u2014 density and wavetable locked in slow mutual evolution.",
+  "description": "FAT and MORPH creating a shared harmonic field — density and wavetable locked in slow mutual evolution.",
   "tags": [
     "fat",
     "morph",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.42,
@@ -33,7 +33,7 @@
     "aggression": 0.04
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.4,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.35,
@@ -66,7 +66,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.4,
       "morph_bloom": 0.9,
       "morph_decay": 9.0,
@@ -84,8 +84,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Morph",
+        "engineA": "Obese",
+        "engineB": "OddOscar",
         "type": "Audio->Wavetable",
         "amount": 0.5
       }

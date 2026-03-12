@@ -14,7 +14,7 @@
     "pairs": [
       {
         "engineA": "Onset",
-        "engineB": "Drift",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.55
       }
@@ -25,7 +25,7 @@
   "mood": "Entangled",
   "engines": [
     "Onset",
-    "Drift"
+    "Odyssey"
   ],
   "description": "Each drum hit triggers Drift shimmer burst \u2014 percussion creates harmonic halos.",
   "tags": [
@@ -55,7 +55,7 @@
       "perc_macro_punch": 0.45,
       "perc_macro_space": 0.5
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 2,
       "drift_oscA_level": 0.45,
       "drift_oscA_detune": 0.4,

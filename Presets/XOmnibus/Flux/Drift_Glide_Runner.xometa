@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Drift Glide Runner",
   "mood": "Flux",
-  "engines": ["Drift"],
+  "engines": ["Odyssey"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT mono with aggressive portamento glide for fast pitch slides. Play chromatic runs slowly and let each note waterfall into the next. Great for leads with maximum expressiveness.",
@@ -19,7 +19,7 @@
     "aggression": 0.4
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 1,
       "drift_oscA_tune": 0.0,

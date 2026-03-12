@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Echo Snap",
   "mood": "Entangled",
-  "engines": ["Dub", "Snap"],
+  "engines": ["Overdub", "OddfeliX"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "SNAP's envelope modulates DUB's filter — percussive hits duck the dub bass through the echo chamber. Classic sidechain dub.",
@@ -19,7 +19,7 @@
     "aggression": 0.5
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 1,
       "dub_oscTune": 0.0,
@@ -57,7 +57,7 @@
       "dub_glide": 0.15,
       "dub_polyphony": 0
     },
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 0,
       "snap_snap": 0.6,
       "snap_decay": 0.3,
@@ -73,8 +73,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Dub",
+        "engineA": "OddfeliX",
+        "engineB": "Overdub",
         "type": "Amp->Filter",
         "amount": 0.6
       }

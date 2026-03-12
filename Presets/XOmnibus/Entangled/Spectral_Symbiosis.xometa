@@ -3,8 +3,8 @@
   "name": "Spectral Symbiosis",
   "mood": "Entangled",
   "engines": [
-    "Morph",
-    "XOrganon"
+    "OddOscar",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_waveA": 1,
       "morph_waveB": 3,
       "morph_position": 0.5,
@@ -44,7 +44,7 @@
       "morph_release": 2.0,
       "morph_level": 0.55
     },
-    "XOrganon": {
+    "Organon": {
       "organon_metabolicRate": 0.5,
       "organon_enzymeSelect": 2000.0,
       "organon_catalystDrive": 0.5,
@@ -60,14 +60,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "XOrganon",
+        "engineA": "OddOscar",
+        "engineB": "Organon",
         "type": "Audio->FM",
         "amount": 0.5
       },
       {
-        "engineA": "XOrganon",
-        "engineB": "Morph",
+        "engineA": "Organon",
+        "engineB": "OddOscar",
         "type": "Env->Morph",
         "amount": 0.25
       }

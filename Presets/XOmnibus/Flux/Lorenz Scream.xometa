@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Lorenz Scream",
+  "mood": "Flux",
+  "engines": [
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum Lorenz chaos. Unleashed, raw, screaming.",
+  "tags": [
+    "chaos",
+    "extreme",
+    "lorenz",
+    "scream"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.1,
+    "movement": 0.9,
+    "density": 0.7,
+    "space": 0.0,
+    "aggression": 0.9
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0,
+      "ouro_rate": 300.0,
+      "ouro_chaosIndex": 0.9,
+      "ouro_leash": 0.1,
+      "ouro_theta": 0.0,
+      "ouro_phi": 0.0,
+      "ouro_damping": 0.1,
+      "ouro_injection": 0.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

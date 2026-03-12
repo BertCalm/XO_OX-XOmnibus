@@ -17,7 +17,7 @@
   "name": "Minor Third Bass",
   "mood": "Prism",
   "engines": [
-    "Dub"
+    "Overdub"
   ],
   "description": "Interval-aware dub bass \u2014 every note implies its minor third partner.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.22
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 1,
       "dub_oscOctave": -1,
       "dub_oscTune": 0.0,

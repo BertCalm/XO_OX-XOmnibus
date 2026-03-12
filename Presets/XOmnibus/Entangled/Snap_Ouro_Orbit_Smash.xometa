@@ -2,18 +2,35 @@
   "schema_version": 1,
   "name": "Orbit Smash",
   "mood": "Entangled",
-  "engines": ["Snap", "XOuroboros"],
+  "engines": [
+    "OddfeliX",
+    "Ouroboros"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "SNAP percussive hits knock the Lorenz orbit into new trajectories. Each strike is a gravitational event.",
-  "tags": ["coupled", "percussive", "chaotic", "rhythmic"],
-  "macroLabels": ["SNAP BITE", "ORBIT CHAOS", "IMPACT", "SPACE"],
-  "couplingIntensity": "Heavy",
+  "tags": [
+    "coupled",
+    "percussive",
+    "chaotic",
+    "rhythmic"
+  ],
+  "macroLabels": [
+    "SNAP BITE",
+    "ORBIT CHAOS",
+    "IMPACT",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-10",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 0,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -28,7 +45,7 @@
       "snap_snapTone": 0.6,
       "snap_level": 0.75
     },
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 0,
       "ouro_rate": 130.0,
       "ouro_chaosIndex": 0.45,
@@ -42,8 +59,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "XOuroboros",
+        "engineA": "OddfeliX",
+        "engineB": "Ouroboros",
         "type": "Audio->FM",
         "amount": 0.65
       }

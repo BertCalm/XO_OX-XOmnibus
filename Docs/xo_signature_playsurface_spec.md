@@ -22,7 +22,7 @@ The XO Signature PlaySurface is the single, unified interaction layer for every 
 
 ### 1.2 One Surface, All Instruments
 
-The PlaySurface presents the same spatial layout, the same interaction model, and the same visual language across every XO_OX product. An artist who learns the surface on XOblongBob can sit down at XOnset, XOverdub, or the Mega-Tool and immediately perform. The zones adapt their parameter mappings per instrument, but the gestural vocabulary is universal.
+The PlaySurface presents the same spatial layout, the same interaction model, and the same visual language across every XO_OX product. An artist who learns the surface on XOblong can sit down at XOnset, XOverdub, or the Mega-Tool and immediately perform. The zones adapt their parameter mappings per instrument, but the gestural vocabulary is universal.
 
 ### 1.3 Progressive Disclosure
 
@@ -38,11 +38,11 @@ The surface satisfies three user tiers without compromise:
 
 This specification unifies interaction patterns proven across five XO_OX projects:
 
-- **XOblongBob** PlaySurface: 4x4 pad grid, Scale Lock, Chord Mode, Velocity Heatmap, Warm Memory ghost traces
-- **XOblongBob** Orbit Path design: circular XY with physics, configurable axis mapping, orbit recipes
+- **XOblong** PlaySurface: 4x4 pad grid, Scale Lock, Chord Mode, Velocity Heatmap, Warm Memory ghost traces
+- **XOblong** Orbit Path design: circular XY with physics, configurable axis mapping, orbit recipes
 - **XOverdub** PadEngine: FIRE, XOSEND, ECHO CUT, PANIC performance pads with keyboard shortcuts
-- **XOddCouple** Performance Strip: 4-mode XY strip with spring-back, gesture trail, Dub Siren
-- **XOddCouple** XO Pad: per-pad engine blend (terracotta/gold/teal gradient)
+- **OddfeliX/OddOscar** Performance Strip: 4-mode XY strip with spring-back, gesture trail, Dub Siren
+- **OddfeliX/OddOscar** XO Pad: per-pad engine blend (terracotta/gold/teal gradient)
 - **XObese** NotePad: fretless continuous pitch, magnetic scale snapping, glide/portamento, X-axis mod routing
 - **XObese** FXPad: dual-axis assignable XY, glow rings on touch
 - **XOnset** Drum Engine: 8-voice percussive synthesis with per-pad Circuit/Algorithm blend
@@ -210,9 +210,9 @@ In the XO_OX Mega-Tool, each pad's horizontal touch position controls the blend 
 | Right edge | 1.0 | Engine B only (e.g., EngineO — pad/lush) |
 
 **Visual**: Per-pad horizontal gradient reflecting blend position:
-- Left zone: terracotta `#C8553D`
+- Left zone: terracotta `#00A6D6`
 - Center zone: gold `#F5C97A`
-- Right zone: teal `#2A9D8F`
+- Right zone: teal `#E8839B`
 
 In single-engine instruments, the X-axis is assignable (default: filter cutoff modulation, matching XObese NotePad behavior).
 
@@ -398,9 +398,9 @@ Each pad's horizontal touch position controls the XOnset `v{n}_blend` parameter 
 
 | Blend Region | Color |
 |-------------|-------|
-| Circuit dominant (0.0-0.3) | Terracotta `#C8553D` |
+| Circuit dominant (0.0-0.3) | Neon Tetra Blue `#00A6D6` |
 | Hybrid zone (0.3-0.7) | Gold `#F5C97A` |
-| Algorithm dominant (0.7-1.0) | Teal `#2A9D8F` |
+| Algorithm dominant (0.7-1.0) | Axolotl Gill Pink `#E8839B` |
 
 ### 5.4 Per-Pad Y-Axis: Decay Time
 
@@ -540,7 +540,7 @@ In Mega-Tool context, axes can additionally map to cross-engine coupling paramet
 | `blend` | ENGINE BLEND | Global balance between Engine A and Engine B |
 | `machine` | MACHINE | XOnset: all-voice blend (analog → digital) |
 
-Each instrument extends the parameter list with its own targets (e.g., XOverdub adds `tape_wow`, XOblongBob adds `curiosity_depth`).
+Each instrument extends the parameter list with its own targets (e.g., XOverdub adds `tape_wow`, XOblong adds `curiosity_depth`).
 
 ### 6.7 Orbit Recipes (Axis Presets)
 
@@ -548,7 +548,7 @@ Pre-configured X/Y combinations for common use cases:
 
 | Recipe | X Axis | Y Axis | Default For |
 |--------|--------|--------|-------------|
-| **FILTER SWEEP** | Cutoff | Resonance | XOblongBob, XOdyssey |
+| **FILTER SWEEP** | Cutoff | Resonance | XOblong, XOdyssey |
 | **SPACE DUB** | FX Send | Delay Time | XOverdub |
 | **DRIFT** | Detune | Stereo | General |
 | **GRIT** | Drive | Cutoff | General |
@@ -807,7 +807,7 @@ The Performance Pads follow a 2+2 pattern: FIRE and PANIC are universal; XOSEND 
 | Instrument | Pad 2 | Pad 3 |
 |-----------|-------|-------|
 | **XOverdub** (default) | XOSEND (send VCA gate) | ECHO CUT (kill delay feedback) |
-| **XOblongBob** | REPEAT (note repeat) | CURIOSITY (cycle CuriosityEngine mode) |
+| **XOblong** | REPEAT (note repeat) | CURIOSITY (cycle CuriosityEngine mode) |
 | **XOdyssey** | REPEAT (note repeat) | CLIMAX (trigger Climax bloom) |
 | **XOnset** | REPEAT (note repeat) | CHAOS (random Orbit launch) |
 | **Mega-Tool** | XOSEND | ECHO CUT |
@@ -847,9 +847,9 @@ When using keyboard shortcuts, the pad's `setPressedState(true/false)` is called
 | Glass border (inactive) | White | `#FFFFFF` | 0.12 (12%) |
 | Glass border (active) | White | `#FFFFFF` | 0.20 (20%) |
 | Amber accent (primary) | Warm amber | `#F5C97A` | varies |
-| Terracotta (Engine X) | Terracotta | `#C8553D` | varies |
+| Terracotta (Engine X) | Terracotta | `#00A6D6` | varies |
 | Gold (Coupled/center) | Gold | `#F5C97A` | varies |
-| Teal (Engine O) | Teal | `#2A9D8F` | varies |
+| Teal (Engine O) | Teal | `#E8839B` | varies |
 | FIRE pad | Green | `#4ADE80` | varies |
 | XOSEND pad | Amber | `#F5C97A` | varies |
 | ECHO CUT pad | Amber | `#F5C97A` | varies |
@@ -874,8 +874,8 @@ When multiple engines are available in the Mega-Tool, the active engine's accent
 
 | Active Engine | Accent Color |
 |--------------|-------------|
-| Engine X / Percussive | Terracotta `#C8553D` |
-| Engine O / Pad | Teal `#2A9D8F` |
+| Engine X / Percussive | Neon Tetra Blue `#00A6D6` |
+| Engine O / Pad | Axolotl Gill Pink `#E8839B` |
 | Both / Coupled | Gold `#F5C97A` |
 | Drum (XOnset) | Amber `#F5C97A` |
 
@@ -955,7 +955,7 @@ When multiple engines are available in the Mega-Tool, the active engine's accent
 
 When the PlaySurface is used in the Mega-Tool context with multiple engines active:
 
-| Surface Output | Engine A (e.g., XOddCouple EngineX) | Engine B (e.g., XOddCouple EngineO) | Drum Engine (XOnset) |
+| Surface Output | Engine A (e.g., OddfeliX/OddOscar EngineX) | Engine B (e.g., OddfeliX/OddOscar EngineO) | Drum Engine (XOnset) |
 |---------------|--------------------------------------|--------------------------------------|---------------------|
 | Pad X-axis blend | `masterBalance` per-note | (inverse of A) | `v{n}_blend` per-voice |
 | Pad Y-axis | Assignable (velocity default) | Assignable | Decay time |
@@ -1075,7 +1075,7 @@ Default: GM Drum Map (notes 35-81). Customizable per-voice via MIDI Learn or con
 
 ### 13.1 Timer Architecture
 
-A single 30fps timer drives all visual animations across all zones. This follows the proven XOblongBob pattern.
+A single 30fps timer drives all visual animations across all zones. This follows the proven XOblong pattern.
 
 ```cpp
 void XOSignaturePlaySurface::timerCallback()

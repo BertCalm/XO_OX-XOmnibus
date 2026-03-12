@@ -3,7 +3,7 @@
   "name": "Snap_Wood_Block",
   "mood": "Foundation",
   "engines": [
-    "Snap"
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
@@ -32,7 +32,7 @@
     "aggression": 0.5
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": -5.0,
       "snap_oscShape": 0.5,

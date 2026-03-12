@@ -3,12 +3,12 @@
   "name": "Dub_Fat_Coupled_Bass",
   "mood": "Entangled",
   "engines": [
-    "Dub",
-    "Fat"
+    "Overdub",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB and FAT bass both coupled \u2014 DUB filter tracks FAT amp for maximum bass entanglement.",
+  "description": "DUB and FAT bass both coupled — DUB filter tracks FAT amp for maximum bass entanglement.",
   "tags": [
     "dub",
     "fat",
@@ -22,7 +22,7 @@
     "COUPLING",
     "DEPTH"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.32,
@@ -33,7 +33,7 @@
     "aggression": 0.42
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -71,7 +71,7 @@
       "dub_glide": 0.08,
       "dub_polyphony": 0
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.35,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.52,
@@ -108,8 +108,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Dub",
+        "engineA": "Obese",
+        "engineB": "Overdub",
         "type": "Amp->Filter",
         "amount": 0.52
       }

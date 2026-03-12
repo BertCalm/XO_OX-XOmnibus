@@ -2,18 +2,35 @@
   "schema_version": 1,
   "name": "Manifold Drift",
   "mood": "Entangled",
-  "engines": ["Drift", "XOuroboros"],
+  "engines": [
+    "Odyssey",
+    "Ouroboros"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "DRIFT's long envelopes slowly rotate the Ouroboros projection angle. Evolving harmonic architecture over glacial timescales.",
-  "tags": ["coupled", "evolving", "pad", "ethereal"],
-  "macroLabels": ["DRIFT HAZE", "ROTATION", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "coupled",
+    "evolving",
+    "pad",
+    "ethereal"
+  ],
+  "macroLabels": [
+    "DRIFT HAZE",
+    "ROTATION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "created": "2026-03-10",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -53,7 +70,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 3,
       "ouro_rate": 110.0,
       "ouro_chaosIndex": 0.35,
@@ -67,8 +84,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
-        "engineB": "XOuroboros",
+        "engineA": "Odyssey",
+        "engineB": "Ouroboros",
         "type": "Env->Morph",
         "amount": 0.5
       }

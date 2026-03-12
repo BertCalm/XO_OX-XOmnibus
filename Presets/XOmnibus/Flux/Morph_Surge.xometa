@@ -17,7 +17,7 @@
   "name": "Morph Surge",
   "mood": "Flux",
   "engines": [
-    "Morph"
+    "OddOscar"
   ],
   "description": "Morph parameter surging forward \u2014 a slow-motion wave of tonal transformation.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.3
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.6,
       "morph_bloom": 0.5,
       "morph_decay": 0.8,

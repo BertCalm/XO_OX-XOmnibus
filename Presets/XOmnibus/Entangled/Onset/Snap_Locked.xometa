@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ONSET x SNAP coupling. XOddCouple's percussive side locks into drum patterns. Tight interlocking groove.",
+  "description": "ONSET x SNAP coupling. OddfeliX's percussive side locks into drum patterns. Tight interlocking groove.",
   "tags": [
     "coupling",
     "snap",
@@ -21,11 +21,11 @@
     "SPACE",
     "MUTATE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "created": "2026-03-10",
   "legacy": {
-    "sourceInstrument": "XOnset",
+    "sourceInstrument": "Onset",
     "sourceCategory": "Entangled",
     "sourcePresetName": null
   },

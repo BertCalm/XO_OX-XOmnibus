@@ -10,13 +10,46 @@ namespace xomnibus {
 //==============================================================================
 // Valid engine names — all registered XOmnibus engines.
 inline const juce::StringArray validEngineNames {
-    "XOddCouple", "XOverdub", "XOdyssey", "XOblongBob", "XObese", "XOnset",
-    "Overworld", "Opal", "Orbital", "XOrbital", "XOpal", "XOpossum",
-    "XOrganon", "XOuroboros",
-    // Short-form aliases used by engine IDs directly
-    "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Onset",
-    "Bite", "Organon", "Ouroboros"
+    // All engine IDs start with O (brand convention)
+    "OddfeliX", "OddOscar",  // Mascots: feliX the neon tetra, Oscar the axolotl
+    "Overdub", "Odyssey", "Oblong", "Obese", "Onset",
+    "Overworld", "Opal", "Orbital",
+    "Organon", "Ouroboros",
+    "Obsidian", "Overbite", "Origami", "Oracle", "Obscura", "Oceanic",
+    "Optic", "Oblique",
+    // Legacy aliases (kept for backward preset compatibility)
+    "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
+    "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
+    "XOpal", "XOpossum",
+    "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Bite"
 };
+
+// Resolve legacy engine name aliases to current canonical IDs.
+// Returns the input unchanged if it's already a current ID or unrecognized.
+inline juce::String resolveEngineAlias(const juce::String& name)
+{
+    static const std::map<juce::String, juce::String> aliases {
+        { "Snap",        "OddfeliX"  },
+        { "Morph",       "OddOscar"  },
+        { "Dub",         "Overdub"   },
+        { "Drift",       "Odyssey"   },
+        { "Bob",         "Oblong"    },
+        { "Fat",         "Obese"     },
+        { "Bite",        "Overbite"  },
+        { "XOddCouple",  "OddfeliX" },  // v0 name for Snap/feliX
+        { "XOverdub",    "Overdub"   },
+        { "XOdyssey",    "Odyssey"   },
+        { "XOblong",     "Oblong"    },
+        { "XOblongBob",  "Oblong"    },
+        { "XObese",      "Obese"     },
+        { "XOnset",      "Onset"     },
+        { "XOrbital",    "Orbital"   },
+        { "XOrganon",    "Organon"   },
+        { "XOuroboros",  "Ouroboros" },
+    };
+    auto it = aliases.find(name);
+    return (it != aliases.end()) ? it->second : name;
+}
 
 // Valid moods — the 6 browsing categories plus User.
 inline const juce::StringArray validMoods {
@@ -25,12 +58,19 @@ inline const juce::StringArray validMoods {
 
 // Valid coupling intensity levels.
 inline const juce::StringArray validCouplingIntensities {
-    "None", "Subtle", "Moderate", "Deep"
+    "None", "Low", "Medium", "High",
+    // Legacy aliases (kept for backward preset compatibility)
+    "Subtle", "Moderate", "Deep"
 };
 
 // Valid coupling pair types (string form as they appear in .xometa JSON).
 // Must match the CouplingType enum in SynthEngine.h 1:1.
+// Accepts both CamelCase (AmpToFilter) and arrow (Amp->Filter) formats.
 inline const juce::StringArray validCouplingTypes {
+    "AmpToFilter", "AmpToPitch", "LFOToPitch", "EnvToMorph",
+    "AudioToFM", "AudioToRing", "FilterToFilter", "AmpToChoke",
+    "RhythmToBlend", "EnvToDecay", "PitchToPitch", "AudioToWavetable",
+    // Legacy arrow-notation aliases
     "Amp->Filter", "Amp->Pitch", "LFO->Pitch", "Env->Morph",
     "Audio->FM", "Audio->Ring", "Filter->Filter", "Amp->Choke",
     "Rhythm->Blend", "Env->Decay", "Pitch->Pitch", "Audio->Wavetable"
@@ -466,7 +506,7 @@ private:
         out.engines.clear();
         for (const auto& e : *enginesVar.getArray())
         {
-            auto engineName = e.toString();
+            auto engineName = resolveEngineAlias(e.toString());
             if (validEngineNames.contains(engineName))
                 out.engines.add(engineName);
         }
@@ -497,7 +537,7 @@ private:
             {
                 for (const auto& prop : paramsObj->getProperties())
                 {
-                    auto engineName = prop.name.toString();
+                    auto engineName = resolveEngineAlias(prop.name.toString());
                     if (validEngineNames.contains(engineName))
                         out.parametersByEngine[engineName] = prop.value;
                 }
@@ -592,8 +632,8 @@ private:
                                 continue;
 
                             CouplingPair cp;
-                            cp.engineA = pairObj->getProperty("engineA").toString();
-                            cp.engineB = pairObj->getProperty("engineB").toString();
+                            cp.engineA = resolveEngineAlias(pairObj->getProperty("engineA").toString());
+                            cp.engineB = resolveEngineAlias(pairObj->getProperty("engineB").toString());
                             cp.type    = pairObj->getProperty("type").toString();
                             cp.amount  = static_cast<float>(pairObj->getProperty("amount"));
 

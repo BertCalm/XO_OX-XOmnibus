@@ -23,7 +23,7 @@
 - **Why granular serves the character:**
   An opal shifts color depending on how you look at it — the same light, scattered differently. Granular synthesis does exactly this to sound: the same audio fragment, scattered across pitch, time, and space. The character isn't in the oscillators; it's in the *scattering*.
 - **The coupling thesis:**
-  Alone, XOpal has its own oscillator bank as grain source. But its real voice is as a *transformer* — it takes a living engine's output (OVERWORLD, DRIFT, BOB) and applies time to it. Every XOmnibus engine becomes richer when it can be scattered.
+  Alone, XOpal has its own oscillator bank as grain source. But its real voice is as a *transformer* — it takes a living engine's output (OVERWORLD, ODYSSEY, OBLONG) and applies time to it. Every XOmnibus engine becomes richer when it can be scattered.
 
 ---
 
@@ -39,8 +39,8 @@
 
 | Existing engines | Synthesis dimension |
 |-----------------|---------------------|
-| SNAP, MORPH, DRIFT, BOB, FAT, BITE, OVERWORLD | Harmonic (oscillators, wavetables, FM, samples) |
-| DUB | Temporal (delays, tape echo) |
+| ODDFELIX, ODDOSCAR, ODYSSEY, OBLONG, OBESE, OVERBITE, OVERWORLD | Harmonic (oscillators, wavetables, FM, samples) |
+| OVERDUB | Temporal (delays, tape echo) |
 | **OPAL** | **Granular time — the missing dimension** |
 
 No current engine manipulates *time* as its primary synthesis mechanism. OPAL introduces freeze, stretch, scatter, and cloud density as musical parameters rather than effects.
@@ -160,9 +160,9 @@ All 4 macros produce audible, significant change at every point in their range i
 `getSampleForCoupling()` returns: post-filter cloud output, stereo, normalized ±1.
 
 Good receiving engines:
-- **DUB** — grain cloud through dub echo. Granular dub.
-- **MORPH** — cloud amplitude modulates wavetable morph position
-- **BITE** — cloud density drives filter cutoff. Breathing bass.
+- **OVERDUB** — grain cloud through dub echo. Granular dub.
+- **ODDOSCAR** — cloud amplitude modulates wavetable morph position
+- **OVERBITE** — cloud density drives filter cutoff. Breathing bass.
 
 ### Coupling types OPAL should NOT receive
 - `AmpToChoke` — choking a cloud kills the entire texture (no musical use)
@@ -173,7 +173,7 @@ Good receiving engines:
 ## Visual Identity
 
 - **Accent color:** Iridescent Lavender `#A78BFA`
-  - Distinguishes from DRIFT's dark violet `#7B2D8B`
+  - Distinguishes from ODYSSEY's dark violet `#7B2D8B`
   - Suggests precious stone quality, light refraction, crystalline
 - **Material/texture:** Thin slices of precious opal — the layered mineral structure, the fire inside
 - **Gallery panel character:** Translucent layers. The panel surface should feel like looking through glass at depth behind it. Subtle parallax if animation budget allows.
@@ -206,7 +206,7 @@ Primary moods: Atmosphere, Entangled, Flux, Aether.
 | Shimmer Textures | 20 | Small grains, high density, bright airy shimmer |
 | Frozen Moments | 15 | High freeze, slow movement, suspended pads |
 | Scattered Glass | 15 | High pitch scatter, rhythmic density, percussive texture |
-| Coupling Showcases | 20 | Designed for use with specific engine pairs (OVERWORLD×OPAL, DRIFT×OPAL, etc.) |
+| Coupling Showcases | 20 | Designed for use with specific engine pairs (OVERWORLD×OPAL, ODYSSEY×OPAL, etc.) |
 | Deep Drift | 10 | Max scatter, position wander, generative/ambient |
 
 ---
@@ -216,7 +216,7 @@ Primary moods: Atmosphere, Entangled, Flux, Aether.
 - [x] Concept brief written
 - [x] XO word feels right (XOpal — opal metaphor is authentic to the sound)
 - [x] Gallery gap is clear (no time-domain synthesis engine exists)
-- [x] At least 2 coupling partner ideas exist (OVERWORLD, DRIFT, BITE, DUB)
+- [x] At least 2 coupling partner ideas exist (OVERWORLD, ODYSSEY, OVERBITE, OVERDUB)
 - [x] Excited about the sound
 - [x] Unique capability defined (chip audio granulation)
 

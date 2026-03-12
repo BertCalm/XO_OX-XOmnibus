@@ -100,7 +100,7 @@ private:
     static float gaussian(float p) noexcept
     {
         float x = (p - 0.5f) * 2.8f; // sigma ~ 0.35
-        return std::exp(-0.5f * x * x);
+        return fastExp(-0.5f * x * x);
     }
 
     static float tukey(float p) noexcept

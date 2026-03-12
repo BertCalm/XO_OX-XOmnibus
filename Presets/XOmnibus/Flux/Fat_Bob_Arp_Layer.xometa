@@ -3,12 +3,12 @@
   "name": "Fat_Bob_Arp_Layer",
   "mood": "Flux",
   "engines": [
-    "Fat",
-    "Bob"
+    "Obese",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT arp with BOB melodic counter \u2014 arpeggiated density with character melody on top.",
+  "description": "FAT arp with BOB melodic counter — arpeggiated density with character melody on top.",
   "tags": [
     "fat",
     "bob",
@@ -22,7 +22,7 @@
     "COUPLING",
     "RATE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -33,7 +33,7 @@
     "aggression": 0.38
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.3,
@@ -66,7 +66,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -113,8 +113,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Bob",
+        "engineA": "Obese",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.4
       }

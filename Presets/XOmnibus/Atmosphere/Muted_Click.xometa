@@ -17,7 +17,7 @@
   "name": "Muted Click",
   "mood": "Atmosphere",
   "engines": [
-    "Snap"
+    "OddfeliX"
   ],
   "description": "Cloth-muted snap \u2014 intimate, close-mic'd, present but gentle.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.12
   },
   "parameters": {
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 0,
       "snap_oscTune": -3.0,
       "snap_oscShape": 0.25,

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Dub Lead Glide",
   "mood": "Foundation",
-  "engines": ["Dub"],
+  "engines": ["Overdub"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mono DUB lead with portamento glide. Bright filtered square wave slides between notes — classic Jamaican dub lead runs. Hold notes for full glide.",
@@ -19,7 +19,7 @@
     "aggression": 0.5
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 1,
       "dub_oscTune": 0.0,

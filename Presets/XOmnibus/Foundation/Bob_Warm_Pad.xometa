@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Bob Warm Pad",
   "mood": "Foundation",
-  "engines": ["Bob"],
+  "engines": ["Oblong"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BOB's most essential pad tone — slow attack, sustained warmth, gentle motion envelope. The analog foundation for any chord progression.",
@@ -19,7 +19,7 @@
     "aggression": 0.0
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,

@@ -17,7 +17,7 @@
   "name": "Climax Wave",
   "mood": "Flux",
   "engines": [
-    "Drift"
+    "Odyssey"
   ],
   "description": "Building tension \u2014 the Climax threshold is tuned for maximum dramatic impact.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.45
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_level": 0.65,
       "drift_oscA_detune": 0.4,

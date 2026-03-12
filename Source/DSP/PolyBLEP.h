@@ -129,10 +129,10 @@ public:
             }
         }
 
-        // Advance phase
+        // Advance phase (bounded wrap — prevents runaway loop on corrupted increment)
         phase += phaseIncrement;
-        while (phase >= 1.0f) phase -= 1.0f;
-        while (phase < 0.0f)  phase += 1.0f;
+        phase = std::fmod (phase, 1.0f);
+        if (phase < 0.0f) phase += 1.0f;
 
         return out;
     }

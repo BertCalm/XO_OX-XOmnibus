@@ -3,12 +3,12 @@
   "name": "Bob_Dub_Decay",
   "mood": "Entangled",
   "engines": [
-    "Bob",
-    "Dub"
+    "Oblong",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB envelope controls DUB delay decay time \u2014 the lead melody's sustain literally extends or shortens the echo tail. Performance-coupled delay.",
+  "description": "BOB envelope controls DUB delay decay time — the lead melody's sustain literally extends or shortens the echo tail. Performance-coupled delay.",
   "tags": [
     "bob",
     "dub",
@@ -24,7 +24,7 @@
     "DECAY DEPTH",
     "ECHO"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -35,7 +35,7 @@
     "aggression": 0.3
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -78,7 +78,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -120,8 +120,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "Dub",
+        "engineA": "Oblong",
+        "engineB": "Overdub",
         "type": "Env->Decay",
         "amount": 0.55
       }

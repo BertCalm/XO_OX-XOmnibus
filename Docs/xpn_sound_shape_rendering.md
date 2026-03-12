@@ -25,12 +25,12 @@ Every XOmnibus preset is assigned one of six Sound Shapes. The shape is stored i
 
 | Shape | Character | Typical Duration | Engines |
 |-------|-----------|-----------------|---------|
-| **Transient** | Percussive attack, rapid decay | < 2s | SNAP, ONSET, BOB (pluck patches) |
-| **Sustained** | Stable tone with clear attack/sustain/release | 2–6s | BOB, FAT, MORPH, ONSET (tonal) |
-| **Evolving** | Timbral movement over time, no stable sustain | 4–15s | DRIFT, ORGANON, MORPH (wavetable sweeps) |
-| **Bass** | Low-frequency focus, tight response | 1–4s | FAT, DUB, BOB (sub patches) |
+| **Transient** | Percussive attack, rapid decay | < 2s | ODDFELIX, ONSET, OBLONG (pluck patches) |
+| **Sustained** | Stable tone with clear attack/sustain/release | 2–6s | OBLONG, OBESE, ODDOSCAR, ONSET (tonal) |
+| **Evolving** | Timbral movement over time, no stable sustain | 4–15s | ODYSSEY, ORGANON, ODDOSCAR (wavetable sweeps) |
+| **Bass** | Low-frequency focus, tight response | 1–4s | OBESE, OVERDUB, OBLONG (sub patches) |
 | **Texture** | Ambient, non-melodic, atmospheric | 6–20s | OVERWORLD, OPAL, ORGANON (atmospheric) |
-| **Rhythmic** | Tempo-locked pulsing or sequenced | 2–8 bars | ONSET, DUB (delay rhythms), ORGANON (lock-in) |
+| **Rhythmic** | Tempo-locked pulsing or sequenced | 2–8 bars | ONSET, OVERDUB (delay rhythms), ORGANON (lock-in) |
 
 ### 2.1 Shape Assignment
 

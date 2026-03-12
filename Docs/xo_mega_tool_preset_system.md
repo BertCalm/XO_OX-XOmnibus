@@ -20,7 +20,7 @@ The `.xomega` format supports an arbitrary number of engine entries in its `engi
 
 ### 1.3 Universal Browser
 
-One preset browser interface discovers every sound in the library regardless of which engine(s) produced it. A user searching for "dub bass" finds results from XOverdub, XOddCouple, XObese, and any cross-engine presets tagged accordingly. The browser never requires the user to know which engine a preset belongs to.
+One preset browser interface discovers every sound in the library regardless of which engine(s) produced it. A user searching for "dub bass" finds results from XOverdub, OddfeliX/OddOscar, XObese, and any cross-engine presets tagged accordingly. The browser never requires the user to know which engine a preset belongs to.
 
 ### 1.4 Export Flexibility
 
@@ -245,7 +245,7 @@ Every `.xomega` file contains all information needed to reconstruct the sound. N
 | Field | Type | Required | Default | Description | Constraints |
 |-------|------|----------|---------|-------------|-------------|
 | `legacy` | object | NO | `null` | Only present on migrated presets | -- |
-| `legacy.source_instrument` | string | NO | `null` | Original instrument name | e.g., `"XOddCouple"`, `"XOverdub"` |
+| `legacy.source_instrument` | string | NO | `null` | Original instrument name | e.g., `"OddfeliX/OddOscar"`, `"XOverdub"` |
 | `legacy.source_preset_name` | string | NO | `null` | Original preset name (if renamed) | -- |
 | `legacy.source_format` | string | NO | `null` | Original file format | One of: `"xocmeta"`, `"json"`, `"juce_binary"` |
 | `legacy.migration_version` | string | NO | `null` | Migration script version that created this file | Semantic version |
@@ -254,13 +254,13 @@ Every `.xomega` file contains all information needed to reconstruct the sound. N
 
 | Module ID | Engine | Namespace Prefix | Source Project | Param Count |
 |-----------|--------|-----------------|----------------|-------------|
-| `oddx` | XOddCouple Engine X | `oddx_` | XOddCouple | ~24 |
-| `oddo` | XOddCouple Engine O | `oddo_` | XOddCouple | ~20 |
+| `oddx` | OddfeliX | `oddx_` | OddfeliX/OddOscar | ~24 |
+| `oddo` | OddOscar | `oddo_` | OddfeliX/OddOscar | ~20 |
 | `dub` | XOverdub | `dub_` | XOverdub | 38 |
 | `fat` | XObese | `fat_` | XObese | 45 |
-| `bite` | XOppossum | `bite_` | XOppossum | 122 |
+| `bite` | XOverbite | `bite_` | XOverbite | 122 |
 | `drift` | XOdyssey | `drift_` | XOdyssey | ~130 |
-| `bob` | XOblongBob | `bob_` | XOblongBob | ~50 |
+| `bob` | XOblong | `bob_` | XOblong | ~50 |
 | `onset` | XOnset | `onset_` (alias: `perc_`) | XOnset | ~110 |
 
 **Rule:** The module ID is the canonical key. The namespace prefix is `moduleID_` prepended to each internal parameter ID at the adapter boundary. Internal engine code never changes its parameter names.
@@ -350,11 +350,11 @@ Migration is **read-only wrapping**, never format conversion. The original prese
 
 ### 3.2 Migration Pipeline Per Engine
 
-#### XOddCouple (.xocmeta) to .xomega
+#### OddfeliX/OddOscar (.xocmeta) to .xomega
 
 **Source format:** JSON with `parameters` object containing 52 un-prefixed parameter IDs.
 
-**Strategy:** XOddCouple is a dual-engine instrument. Each `.xocmeta` preset maps to a two-engine `.xomega` with `oddx` and `oddo` modules. Shared parameters (macros, effects, coupling, sequencer) are distributed to the appropriate section.
+**Strategy:** OddfeliX/OddOscar is a dual-engine instrument. Each `.xocmeta` preset maps to a two-engine `.xomega` with `oddx` and `oddo` modules. Shared parameters (macros, effects, coupling, sequencer) are distributed to the appropriate section.
 
 **Parameter Mapping Table:**
 
@@ -384,7 +384,7 @@ Migration is **read-only wrapping**, never format conversion. The original prese
 | `oPolyphony` | `oddo` | `oddo_polyphony` | |
 | `couplingAmount` | coupling | Stored in `coupling.pairs[0].amount` | Maps to the X-to-O coupling pair |
 | `masterBalance` | top-level | Stored as engine level ratio | Negative = X-heavy, positive = O-heavy |
-| `macro1` | top-level | Mapped to macro_labels context | Snap + Morph |
+| `macro1` | top-level | Mapped to macro_labels context | OddfeliX + OddOscar |
 | `macro2` | top-level | Mapped to macro_labels context | Bloom |
 | `macro3` | top-level | Mapped to macro_labels context | Coupling |
 | `macro4` | top-level | Mapped to macro_labels context | Delay + Reverb |
@@ -535,7 +535,7 @@ If `couplingAmount` is 0, the `coupling` field is omitted.
 | Rhythmic | Grounded |
 | Init | Grounded |
 
-#### XOppossum (JSON with schema_version) to .xomega
+#### XOverbite (JSON with schema_version) to .xomega
 
 **Source format:** JSON with `schema_version`, 122 parameters.
 
@@ -563,7 +563,7 @@ If `couplingAmount` is 0, the `coupling` field is omitted.
 | `lfo1Depth` | `bite_lfo1Depth` | |
 | `masterLevel` | `bite_masterLevel` | |
 
-**Mood mapping:** XOppossum organizes by character spectrum (Plush to Aggressive). Map based on sonic role:
+**Mood mapping:** XOverbite organizes by character spectrum (Plush to Aggressive). Map based on sonic role:
 - Bass-forward presets -> `"Grounded"`
 - Pad/texture presets -> `"Floating"`
 - Aggressive/bitey presets -> `"Broken"` or `"Sharp"`
@@ -613,14 +613,14 @@ If `couplingAmount` is 0, the `coupling` field is omitted.
 | Bass | Grounded |
 | Textures | Floating or Broken (split by character) |
 
-#### XOblongBob (JUCE binary state) to .xomega
+#### XOblong (JUCE binary state) to .xomega
 
 **Source format:** JUCE `MemoryBlock` binary state via `getStateInformation()` / `setStateInformation()`.
 
 **Strategy:** Load binary state into a temporary JUCE `AudioProcessorValueTreeState`, extract parameter values programmatically, write as `.xomega` with module ID `bob` and `bob_` prefix.
 
 **This requires a C++ migration utility** since the binary state cannot be parsed outside of JUCE. The utility:
-1. Instantiates `XOblongBobProcessor` headlessly
+1. Instantiates `XOblongProcessor` headlessly
 2. Calls `setStateInformation()` with the binary data
 3. Reads all APVTS parameter values
 4. Writes the `.xomega` JSON with `bob_` prefixed IDs
@@ -643,9 +643,9 @@ If `couplingAmount` is 0, the `coupling` field is omitted.
 | `envRelease` | `bob_envRelease` | |
 | `masterLevel` | `bob_masterLevel` | |
 
-**Mood mapping from XOblongBob categories:**
+**Mood mapping from XOblong categories:**
 
-| XOblongBob Category | Mega-Tool Mood |
+| XOblong Category | Mega-Tool Mood |
 |---------------------|----------------|
 | WarmPads | Floating |
 | DreamPads | Ritual |
@@ -665,19 +665,19 @@ Two migration paths are provided:
 
 **Path A: Python migration script** (for JSON-based formats)
 
-Location: `~/Documents/GitHub/XOddCouple/tools/preset_migrator/migrate.py`
+Location: `~/Documents/GitHub/OddfeliX/OddOscar/tools/preset_migrator/migrate.py`
 
 ```
 Usage: python migrate.py --source <path> --format <xocmeta|json> --engine <module_id> --output <dir>
 ```
 
-Handles: `.xocmeta` (XOddCouple), JSON (XOverdub, XObese, XOppossum, XOdyssey)
+Handles: `.xocmeta` (OddfeliX/OddOscar), JSON (XOverdub, XObese, XOverbite, XOdyssey)
 
 **Path B: C++ migration utility** (for JUCE binary state)
 
-Location: `~/Documents/GitHub/XOddCouple/tools/preset_migrator/BinaryMigrator.cpp`
+Location: `~/Documents/GitHub/OddfeliX/OddOscar/tools/preset_migrator/BinaryMigrator.cpp`
 
-Handles: XOblongBob binary presets
+Handles: XOblong binary presets
 
 Compiled as a JUCE console application that links against the target instrument's processor class headlessly.
 
@@ -885,7 +885,7 @@ The `tags` array can contain any lowercase alphanumeric string (plus hyphens). T
 #### Top Bar: Search & Filters
 
 - **Search field:** Full-text search across name, description, tags, author. Results ranked by relevance. Minimum 2 characters to trigger search.
-- **Engine dropdown:** Filter by module ID. Options: All, XOddCouple, XOverdub, XObese, XOppossum, XOdyssey, XOblongBob, XOnset, Multi-Engine
+- **Engine dropdown:** Filter by module ID. Options: All, OddfeliX/OddOscar, XOverdub, XObese, XOverbite, XOdyssey, XOblong, XOnset, Multi-Engine
 - **Vibe dropdown:** Filter by vibe tag. Options: All, plus all 15 vibe values
 - **Type dropdown:** Filter by instrument_type. Options: All, plus all 12 type values
 - **Complexity dropdown:** Filter by complexity tag. Options: All, Single-Engine, Dual-Engine, Multi-Engine, Coupled
@@ -1101,7 +1101,7 @@ These categories exist ONLY through engine chaining and coupling. They represent
 |----------|-----------------|----------|-------------|-----------------|
 | **Pumped Pads** | Any melodic + `dub` | Amplitude sidechain from `dub` send/return | Melodic engine breathes with dub delay pump. The classic dub pad. | "Dub Pressure", "Breathing Reverb Pad" |
 | **Morphing Drums** | `onset` + any melodic | `onset` amplitude -> melodic filter cutoff | Drum hits sculpt the pad's tonal character. Each kick brightens or darkens the pad. | "Neural Rhythm", "Membrane Choir" |
-| **Fat Bite Bass** | `fat` + `bite` | `fat` 13-osc width feeds `bite` character stages | Massive unison width from XObese processed through XOppossum's Belly/Bite saturation. Sub-weight meets aggressive harmonics. | "Fat Bite Bass", "Obese Teeth" |
+| **Fat Bite Bass** | `fat` + `bite` | `fat` 13-osc width feeds `bite` character stages | Massive unison width from XObese processed through XOverbite's Belly/Bite saturation. Sub-weight meets aggressive harmonics. | "Fat Bite Bass", "Obese Teeth" |
 | **Psychedelic Rhythm** | `drift` + `onset` | `drift` Climax system triggers on `onset` pattern | XOdyssey's JOURNEY macro blooms on drum accents. The Climax effect is rhythmically triggered by percussion. | "Climax on the Beat", "Alien Drum Ritual" |
 | **Dub Techno** | `oddx` (or `onset`) + `dub` | Percussive trigger -> delay feedback boost | Short percussive hits feed into XOverdub's tape delay at high feedback. Classic dub techno chord stab into infinite echo. | "Dub Techno Machine", "Infinite Chord" |
 | **Alien Orchestra** | `drift` + any other + coupling | High bidirectional coupling between `drift` and target | XOdyssey's psychedelic modulation infects the target engine's parameters. Both engines drift in tandem. | "Third Mind Drift", "Alien Conversation" |
@@ -1255,7 +1255,7 @@ When exporting a multi-engine (coupled) preset to XPN:
 ```
 ~/Library/Application Support/XO_OX/MegaTool/
 ├── Factory/
-│   ├── oddx_oddo/              # XOddCouple presets (always paired as 2-engine)
+│   ├── oddx_oddo/              # OddfeliX/OddOscar presets (always paired as 2-engine)
 │   │   ├── Grounded/
 │   │   │   ├── Amen Shatter.xomega
 │   │   │   ├── Basement Stomp.xomega
@@ -1274,7 +1274,7 @@ When exporting a multi-engine (coupled) preset to XPN:
 │   │   ├── Sharp/
 │   │   ├── Floating/
 │   │   └── Broken/
-│   ├── bite/                   # XOppossum presets (single-engine)
+│   ├── bite/                   # XOverbite presets (single-engine)
 │   │   ├── Grounded/
 │   │   ├── Sharp/
 │   │   ├── Floating/
@@ -1284,7 +1284,7 @@ When exporting a multi-engine (coupled) preset to XPN:
 │   │   ├── Floating/
 │   │   ├── Sharp/
 │   │   └── Ritual/
-│   ├── bob/                    # XOblongBob presets (single-engine)
+│   ├── bob/                    # XOblong presets (single-engine)
 │   │   ├── Floating/
 │   │   ├── Ritual/
 │   │   ├── Entangled/
@@ -1374,8 +1374,8 @@ Each engine entry has its own `version` field tracking parameter schema changes 
 | `dub` | `"1.0"` | Initial 38 parameters | N/A |
 | `dub` | `"1.1"` (future) | Example: add `dub_reverbPreDelay` | Set `dub_reverbPreDelay` to default 0.0 |
 | `onset` | `"1.0"` | Initial ~110 parameters | N/A |
-| `oddx` | `"1.0"` | Initial ~24 parameters (mapped from XOddCouple) | N/A |
-| `oddo` | `"1.0"` | Initial ~20 parameters (mapped from XOddCouple) | N/A |
+| `oddx` | `"1.0"` | Initial ~24 parameters (mapped from OddfeliX/OddOscar) | N/A |
+| `oddo` | `"1.0"` | Initial ~20 parameters (mapped from OddfeliX/OddOscar) | N/A |
 
 **Engine migration rule:** If a preset's engine version is less than the current engine version, the engine-specific migration chain executes before the parameters are applied. New parameters receive their compiled default values. Removed parameters (if ever necessary) are silently ignored.
 
@@ -1405,7 +1405,7 @@ Each engine entry has its own `version` field tracking parameter schema changes 
 
 ### 11.1 PresetManager Class
 
-Location: `~/Documents/GitHub/XOddCouple/Source/Shared/Presets/PresetManager.h`
+Location: `~/Documents/GitHub/OddfeliX/OddOscar/Source/Shared/Presets/PresetManager.h`
 
 ```cpp
 namespace xo {
@@ -1889,9 +1889,9 @@ On other platforms, fall back to periodic polling (every 5 seconds) or manual "R
 
 ## Appendix B: Migration Checklist Per Engine
 
-### XOddCouple (114 presets)
+### OddfeliX/OddOscar (114 presets)
 
-- [ ] Parse all 114 `.xocmeta` files from `~/Documents/GitHub/XOddCouple/Presets/Factory/`
+- [ ] Parse all 114 `.xocmeta` files from `~/Documents/GitHub/OddfeliX/OddOscar/Presets/Factory/`
 - [ ] Split into `oddx` and `oddo` engine entries per preset
 - [ ] Map `x`-prefixed parameters to `oddx_` namespace
 - [ ] Map `o`-prefixed parameters to `oddo_` namespace
@@ -1899,7 +1899,7 @@ On other platforms, fall back to periodic polling (every 5 seconds) or manual "R
 - [ ] Map `couplingAmount` to `coupling.pairs[0]`
 - [ ] Map `category` to `mood` (Grounded, Floating, Entangled, Deep Space -> Ritual)
 - [ ] Preserve existing `tags`, `description`, `engineBalance`, `couplingIntensity`
-- [ ] Set `macro_labels` to `["Snap+Morph", "Bloom", "Coupling", "Delay+Reverb"]`
+- [ ] Set `macro_labels` to `["OddfeliX+OddOscar", "Bloom", "Coupling", "Delay+Reverb"]`
 - [ ] Validate round-trip: load migrated preset, compare parameter values against original
 - [ ] Audio null test: render 4 bars, diff against standalone render
 
@@ -1924,7 +1924,7 @@ On other platforms, fall back to periodic polling (every 5 seconds) or manual "R
 - [ ] Note: XObese is a sampled instrument -- verify parameter semantics apply
 - [ ] Validate and test
 
-### XOppossum (~15 presets)
+### XOverbite (~15 presets)
 
 - [ ] Parse JSON preset files with `schema_version`
 - [ ] Wrap each as single-engine `.xomega` with module `"bite"`
@@ -1943,14 +1943,14 @@ On other platforms, fall back to periodic polling (every 5 seconds) or manual "R
 - [ ] Write descriptions and tags for all 198 presets
 - [ ] Validate and test
 
-### XOblongBob (167 presets)
+### XOblong (167 presets)
 
 - [ ] Build C++ migration utility (BinaryMigrator)
 - [ ] Load each binary state into headless processor
 - [ ] Extract all APVTS parameter values
 - [ ] Wrap each as single-engine `.xomega` with module `"bob"`
 - [ ] Apply `bob_` prefix to all parameter IDs
-- [ ] Assign mood tags based on XOblongBob category (11 categories)
+- [ ] Assign mood tags based on XOblong category (11 categories)
 - [ ] Write descriptions and tags for all 167 presets
 - [ ] Validate and test
 
@@ -1967,12 +1967,12 @@ On other platforms, fall back to periodic polling (every 5 seconds) or manual "R
 
 | Source | Single-Engine | Multi-Engine (New) | Total |
 |--------|--------------|-------------------|-------|
-| XOddCouple | 114 | -- | 114 |
+| OddfeliX/OddOscar | 114 | -- | 114 |
 | XOverdub | 40 | -- | 40 |
 | XObese | 52 | -- | 52 |
-| XOppossum | ~15 | -- | ~15 |
+| XOverbite | ~15 | -- | ~15 |
 | XOdyssey | 198 | -- | 198 |
-| XOblongBob | 167 | -- | 167 |
+| XOblong | 167 | -- | 167 |
 | XOnset (planned) | 85 | -- | 85 |
 | Chained presets (new) | -- | 85 | 85 |
 | **Total** | **~671** | **85** | **~756** |

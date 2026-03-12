@@ -17,7 +17,7 @@
   "name": "Alien Choir",
   "mood": "Aether",
   "engines": [
-    "Drift"
+    "Odyssey"
   ],
   "description": "Formant choir resonating in vacuum \u2014 human voices from another dimension.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.1
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 1,
       "drift_oscA_level": 0.5,
       "drift_oscA_detune": 0.4,

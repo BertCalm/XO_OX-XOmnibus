@@ -3,12 +3,12 @@
   "name": "Drift_Snap_Gate",
   "mood": "Entangled",
   "engines": [
-    "Drift",
-    "Snap"
+    "Odyssey",
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT shimmer gates SNAP's filter \u2014 the shimmer envelope creates slow filter undulations in the percussive engine. Reversed-feel gating.",
+  "description": "DRIFT shimmer gates SNAP's filter — the shimmer envelope creates slow filter undulations in the percussive engine. Reversed-feel gating.",
   "tags": [
     "drift",
     "snap",
@@ -24,7 +24,7 @@
     "GATE DEPTH",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.6,
@@ -35,7 +35,7 @@
     "aggression": 0.4
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -75,7 +75,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 1,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -92,8 +92,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
-        "engineB": "Snap",
+        "engineA": "Odyssey",
+        "engineB": "OddfeliX",
         "type": "Amp->Filter",
         "amount": 0.45
       }

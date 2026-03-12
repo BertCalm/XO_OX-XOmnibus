@@ -1,10 +1,10 @@
 [
   {
-    "_comment": "Example 1: Single-engine preset migrated from XOddCouple",
+    "_comment": "Example 1: Single-engine preset migrated from OddfeliX",
     "schema_version": 1,
     "name": "Spooky Action",
     "mood": "Entangled",
-    "engines": ["XOddCouple"],
+    "engines": ["OddfeliX"],
     "author": "XO_OX Designs",
     "version": "1.0.0",
     "description": "Cross-coupled engines with ghostly pitch drift. Dub pump at moderate depth.",
@@ -14,12 +14,12 @@
     "tempo": null,
     "created": "2026-03-08",
     "legacy": {
-      "sourceInstrument": "XOddCouple",
+      "sourceInstrument": "OddfeliX",
       "sourceCategory": "Entangled",
       "sourcePresetName": null
     },
     "parameters": {
-      "XOddCouple": {
+      "OddfeliX": {
         "xFilterCutoff": 2400.0,
         "xFilterRes": 0.35,
         "xSnap": 0.6,
@@ -41,7 +41,7 @@
     "schema_version": 1,
     "name": "Dub Pressure Machine",
     "mood": "Entangled",
-    "engines": ["XOddCouple", "XOnset"],
+    "engines": ["OddfeliX", "XOnset"],
     "author": "XO_OX Designs",
     "version": "1.0.0",
     "description": "Kick pumps the pad engine, snare brightens the filter. Living rhythm.",
@@ -56,7 +56,7 @@
       "sourcePresetName": null
     },
     "parameters": {
-      "XOddCouple": {
+      "OddfeliX": {
         "oFilterCutoff": 1800.0,
         "oMorph": 0.3,
         "oBloom": 0.8,
@@ -77,13 +77,13 @@
       "pairs": [
         {
           "engineA": "XOnset",
-          "engineB": "XOddCouple",
+          "engineB": "OddfeliX",
           "type": "Amp->Filter",
           "amount": 0.4
         },
         {
           "engineA": "XOnset",
-          "engineB": "XOddCouple",
+          "engineB": "OddfeliX",
           "type": "Amp->Pitch",
           "amount": 0.15
         }

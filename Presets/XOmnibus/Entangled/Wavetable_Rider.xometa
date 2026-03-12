@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Wavetable Rider",
   "mood": "Entangled",
-  "engines": ["Drift", "Morph"],
+  "engines": [
+    "Odyssey",
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DRIFT's audio signal drives MORPH's wavetable position in real time via Audio->Wavetable coupling. DRIFT's shimmer and pitch movement scans through MORPH timbres continuously — unpredictable, alive, and unique.",
-  "tags": ["wavetable", "rider", "drift", "morph", "psychedelic", "movement", "entangled"],
-  "macroLabels": ["DRIFT LEVEL", "MORPH RANGE", "COUPLING", "FILTER"],
-  "couplingIntensity": "Strong",
+  "tags": [
+    "wavetable",
+    "rider",
+    "drift",
+    "morph",
+    "psychedelic",
+    "movement",
+    "entangled"
+  ],
+  "macroLabels": [
+    "DRIFT LEVEL",
+    "MORPH RANGE",
+    "COUPLING",
+    "FILTER"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.65,
@@ -19,7 +35,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 2,
       "drift_oscA_tune": 0.0,
@@ -59,7 +75,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.1,
       "morph_bloom": 0.5,
       "morph_decay": 3.0,
@@ -77,8 +93,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
-        "engineB": "Morph",
+        "engineA": "Odyssey",
+        "engineB": "OddOscar",
         "type": "Audio->Wavetable",
         "amount": 0.6
       }

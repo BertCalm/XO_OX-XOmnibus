@@ -3,12 +3,12 @@
   "name": "Morph_Drift_Pulse_Two",
   "mood": "Flux",
   "engines": [
-    "Morph",
-    "Drift"
+    "OddOscar",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH fast bloom creates pitch pulses in DRIFT \u2014 spectral rhythm meets shimmer.",
+  "description": "MORPH fast bloom creates pitch pulses in DRIFT — spectral rhythm meets shimmer.",
   "tags": [
     "morph",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "RATE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -33,7 +33,7 @@
     "aggression": 0.28
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.58,
       "morph_bloom": 0.82,
       "morph_decay": 1.2,
@@ -47,7 +47,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -91,8 +91,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Drift",
+        "engineA": "OddOscar",
+        "engineB": "Odyssey",
         "type": "Amp->Pitch",
         "amount": 0.28
       }

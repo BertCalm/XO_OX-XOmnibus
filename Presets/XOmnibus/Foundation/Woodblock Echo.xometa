@@ -3,7 +3,7 @@
   "name": "Woodblock Echo",
   "mood": "Foundation",
   "engines": [
-    "XOddCouple"
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -25,12 +25,12 @@
   "tempo": 115,
   "created": "2026-03-05",
   "legacy": {
-    "sourceInstrument": "XOddCouple",
+    "sourceInstrument": "OddfeliX",
     "sourceCategory": "Grounded",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOddCouple": {
+    "OddfeliX": {
       "couplingAmount": 0.0,
       "masterBalance": -0.425,
       "xOscMode": 1,
@@ -91,7 +91,7 @@
     "swing": 0.084,
     "tracks": [
       {
-        "engine": "XOddCouple",
+        "engine": "OddfeliX",
         "length": 8,
         "muted": false,
         "steps": [
@@ -126,19 +126,19 @@
         ]
       },
       {
-        "engine": "XOddCouple",
+        "engine": "OddfeliX",
         "length": 8,
         "muted": false,
         "steps": []
       },
       {
-        "engine": "XOddCouple",
+        "engine": "OddfeliX",
         "length": 8,
         "muted": false,
         "steps": []
       },
       {
-        "engine": "XOddCouple",
+        "engine": "OddfeliX",
         "length": 8,
         "muted": true,
         "steps": [

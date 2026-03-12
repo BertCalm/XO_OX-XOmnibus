@@ -2,7 +2,7 @@
   "schema_version": 1,
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "macroLabels": [
     "CHARACTER",
@@ -14,7 +14,7 @@
     "pairs": [
       {
         "engineA": "Onset",
-        "engineB": "Morph",
+        "engineB": "OddOscar",
         "type": "Rhythm->Blend",
         "amount": 0.65
       }
@@ -25,14 +25,13 @@
   "mood": "Entangled",
   "engines": [
     "Onset",
-    "Morph"
+    "OddOscar"
   ],
-  "description": "Snare from ONSET drives MORPH's morph parameter \u2014 rhythm shapes synthesis.",
+  "description": "Snare from ONSET drives MORPH's morph parameter — rhythm shapes synthesis.",
   "tags": [
     "onset",
     "morph",
     "snare",
-    "morph",
     "coupling",
     "rhythm"
   ],
@@ -58,7 +57,7 @@
       "perc_macro_punch": 0.5,
       "perc_macro_mutate": 0.25
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.4,
       "morph_bloom": 0.5,
       "morph_decay": 0.7,

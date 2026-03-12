@@ -3,14 +3,13 @@
   "name": "Legato Flute",
   "mood": "Prism",
   "engines": [
-    "XOverdub"
+    "Overdub"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Bright dub leads character with warm character.",
   "tags": [
     "triangle",
-    "verdub",
     "verdub"
   ],
   "macroLabels": [
@@ -23,12 +22,12 @@
   "tempo": null,
   "created": "2026-03-08",
   "legacy": {
-    "sourceInstrument": "XOverdub",
+    "sourceInstrument": "Overdub",
     "sourceCategory": "Dub Leads",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOverdub": {
+    "Overdub": {
       "osc_wave": 1.0,
       "filter_cutoff": 6000.0,
       "filter_resonance": 0.1,

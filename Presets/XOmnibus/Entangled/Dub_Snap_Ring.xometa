@@ -3,12 +3,12 @@
   "name": "Dub_Snap_Ring",
   "mood": "Entangled",
   "engines": [
-    "Dub",
-    "Snap"
+    "Overdub",
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB bass ring-modulates SNAP \u2014 bass harmonics create metallic sidebands in the transient voice.",
+  "description": "DUB bass ring-modulates SNAP — bass harmonics create metallic sidebands in the transient voice.",
   "tags": [
     "dub",
     "snap",
@@ -22,7 +22,7 @@
     "MODULATION",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.52,
@@ -33,7 +33,7 @@
     "aggression": 0.6
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -71,7 +71,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 0
     },
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -88,8 +88,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Snap",
+        "engineA": "Overdub",
+        "engineB": "OddfeliX",
         "type": "Audio->Ring",
         "amount": 0.48
       }

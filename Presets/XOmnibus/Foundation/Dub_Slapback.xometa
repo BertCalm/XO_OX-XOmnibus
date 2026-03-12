@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Dub Slapback",
   "mood": "Foundation",
-  "engines": ["Dub"],
+  "engines": ["Overdub"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DUB's tape echo configured for fast slapback — very short delay time, single repeat. Classic rockabilly/classic dub one-repeat echo. The ghost behind every note.",
@@ -19,7 +19,7 @@
     "aggression": 0.4
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 1,
       "dub_oscOctave": 1,
       "dub_oscTune": 0.0,

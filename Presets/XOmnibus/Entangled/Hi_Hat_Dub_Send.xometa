@@ -14,7 +14,7 @@
     "pairs": [
       {
         "engineA": "Onset",
-        "engineB": "Dub",
+        "engineB": "Overdub",
         "type": "Amp->Filter",
         "amount": 0.5
       }
@@ -25,7 +25,7 @@
   "mood": "Entangled",
   "engines": [
     "Onset",
-    "Dub"
+    "Overdub"
   ],
   "description": "Hi-hats from ONSET control DUB's send amount \u2014 cymbals mix into echo.",
   "tags": [
@@ -58,7 +58,7 @@
       "perc_v4_level": 0.55,
       "perc_macro_space": 0.55
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_filterCutoff": 1500.0,

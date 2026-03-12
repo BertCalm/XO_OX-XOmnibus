@@ -3,12 +3,12 @@
   "name": "Drift_Morph_Celestial_Scan",
   "mood": "Aether",
   "engines": [
-    "Drift",
-    "Morph"
+    "Odyssey",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT shimmer drives MORPH wavetable position \u2014 shimmer amplitude maps spectral space across the wavetable.",
+  "description": "DRIFT shimmer drives MORPH wavetable position — shimmer amplitude maps spectral space across the wavetable.",
   "tags": [
     "drift",
     "morph",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SHIMMER"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.52,
@@ -33,7 +33,7 @@
     "aggression": 0.05
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -73,7 +73,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.3,
       "morph_bloom": 0.9,
       "morph_decay": 7.0,
@@ -91,8 +91,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
-        "engineB": "Morph",
+        "engineA": "Odyssey",
+        "engineB": "OddOscar",
         "type": "Audio->Wavetable",
         "amount": 0.55
       }

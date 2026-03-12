@@ -29,15 +29,15 @@ This document catalogs every synth engine module available for the XO_OX Mega-To
 
 | Module | Source | Sonic Role | Osc Types | Filter | Voices | Params | CPU Est. | Mega-Tool Role |
 |--------|--------|-----------|-----------|--------|--------|--------|----------|----------------|
-| **FAT** | XObese | Width / thickness | 13-osc stacked (morph: sine→saw→sq→noise) | 4× ZDF Ladder (4-pole LP) | 5 (65 osc) | 45 | <12% | Makes anything massive |
-| **BITE** | XOppossum | Bass / character | OscA (warm, 4 waves) + OscB (harsh, 5 waves) | Cytomic SVF (4 voiced modes) | up to 16 | 122 | <10% | Grit, weight, attitude |
-| **SNAP** | XOddCouple EngX | Percussive / rhythmic | PolyBLEP, FM, Karplus-Strong | Cytomic SVF | 8 | ~26 | <8% | Attacks, plucks, rhythm |
-| **MORPH** | XOddCouple EngO | Pads / lush | Wavetable morph (2048 frames) | Moog Ladder (4-pole LP) | 16 | ~26 | <12% | Atmospheres, evolving pads |
-| **DUB** | XOverdub | FX architecture | Basic osc + filter + env | Per-voice SVF | 8 | 38 | <8% | Send/return FX routing |
-| **DRIFT** | XOdyssey | Psychedelic pads | OscA/B × 4 modes (classic, WT, supersaw, FM) | Dual: SVF LP + 3-band formant | 24 | ~130 | <15% | Journey engine, Climax |
+| **OBESE** | XObese | Width / thickness | 13-osc stacked (morph: sine→saw→sq→noise) | 4× ZDF Ladder (4-pole LP) | 5 (65 osc) | 45 | <12% | Makes anything massive |
+| **OVERBITE** | XOverbite | Bass / character | OscA (warm, 4 waves) + OscB (harsh, 5 waves) | Cytomic SVF (4 voiced modes) | up to 16 | 122 | <10% | Grit, weight, attitude |
+| **ODDFELIX** | OddfeliX/OddOscar EngX | Percussive / rhythmic | PolyBLEP, FM, Karplus-Strong | Cytomic SVF | 8 | ~26 | <8% | Attacks, plucks, rhythm |
+| **ODDOSCAR** | OddfeliX/OddOscar EngO | Pads / lush | Wavetable morph (2048 frames) | Moog Ladder (4-pole LP) | 16 | ~26 | <12% | Atmospheres, evolving pads |
+| **OVERDUB** | XOverdub | FX architecture | Basic osc + filter + env | Per-voice SVF | 8 | 38 | <8% | Send/return FX routing |
+| **ODYSSEY** | XOdyssey | Psychedelic pads | OscA/B × 4 modes (classic, WT, supersaw, FM) | Dual: SVF LP + 3-band formant | 24 | ~130 | <15% | Journey engine, Climax |
 | **ONSET** | XOnset (spec) | Drums / percussion | Circuit (808/909) + Algorithm (FM, Modal, K-S, PD) | Per-voice Cytomic SVF | 8 dedicated | ~110 | <15.5% | Drum synthesis + morphing |
 
-**Note on XOzone:** The XO_OX-XOzone-Instrument project is the rebranded Instability Synth (originally at `~/Desktop/synth-plugin`). Its DSP concepts (Cytomic SVF, PolyBLEP, ParamSnapshot) were absorbed into XObese and XOppossum during their development. It does not represent a separate module — its legacy lives on through the FAT and BITE engines.
+**Note on XOzone:** The XO_OX-XOzone-Instrument project is the rebranded Instability Synth (originally at `~/Desktop/synth-plugin`). Its DSP concepts (Cytomic SVF, PolyBLEP, ParamSnapshot) were absorbed into XObese and XOverbite during their development. It does not represent a separate module — its legacy lives on through the OBESE and OVERBITE engines.
 
 ---
 
@@ -45,7 +45,7 @@ This document catalogs every synth engine module available for the XO_OX Mega-To
 
 ---
 
-### 3.1 FAT (XObese) — Width & Weight
+### 3.1 OBESE (XObese) — Width & Weight
 
 **Sonic Identity:** Instant stereo width through 13-oscillator stacking with independent pan/detune per group. The Mojo Engine provides a unique analog↔digital blend axis — warm drifting chaos at one end, pristine wavetable precision at the other. Even single notes feel enormous.
 
@@ -121,7 +121,7 @@ Saturation → Bitcrusher → Chorus → Ping-Pong Delay → Dattorro Reverb →
 
 ---
 
-### 3.2 BITE (XOppossum) — Bass & Character
+### 3.2 OVERBITE (XOverbite) — Bass & Character
 
 **Sonic Identity:** Two-pole character engine where Belly (warm, weighted) and Bite (aggressive, sharp) define the instrument's personality. Four per-voice character stages (Fur, Chew, Gnash, Trash) color the sound at the DSP level — not post-FX. The Weight Engine guarantees bass integrity even under extreme drive.
 
@@ -209,7 +209,7 @@ Pre-filter drive (tanh), resonance 0–1 (Q=2 to self-oscillation), keytracking 
 
 ---
 
-### 3.3 SNAP (XOddCouple Engine X) — Percussive & Rhythmic
+### 3.3 ODDFELIX (OddfeliX) — Percussive & Rhythmic
 
 **Sonic Identity:** Punchy, snappy, rhythmic. Built for percussive attacks and plucked textures. The terracotta engine — warm but sharp, like struck clay.
 
@@ -237,7 +237,7 @@ MIDI Note → Oscillator (PolyBLEP / FM / Karplus-Strong)
 - Designed specifically for percussive/rhythmic playing — fast envelopes, punchy attacks
 - Coupling output: amplitude envelope drives Engine O's filter cutoff (dub pump effect)
 
-**Parameters:** ~26 (part of XOddCouple's 52 total) | **CPU:** <8% | **Voices:** 8
+**Parameters:** ~26 (part of OddfeliX/OddOscar's 52 total) | **CPU:** <8% | **Voices:** 8
 
 **Color Identity:** Terracotta #C8553D
 
@@ -247,7 +247,7 @@ MIDI Note → Oscillator (PolyBLEP / FM / Karplus-Strong)
 
 ---
 
-### 3.4 MORPH (XOddCouple Engine O) — Pads & Lush
+### 3.4 ODDOSCAR (OddOscar) — Pads & Lush
 
 **Sonic Identity:** Blooming, evolving, ethereal. Wavetable morphing through rich timbral landscapes. The teal engine — cool, deep, oceanic.
 
@@ -275,7 +275,7 @@ MIDI Note → Wavetable Oscillator (2048-frame morph)
 - Wavetable morph provides evolving timbral character over sustained notes
 - Coupling output: LFO modulates Engine X's pitch ±0.5 semitones (organic drift)
 
-**Parameters:** ~26 (part of XOddCouple's 52 total) | **CPU:** <12% | **Voices:** 16
+**Parameters:** ~26 (part of OddfeliX/OddOscar's 52 total) | **CPU:** <12% | **Voices:** 16
 
 **Color Identity:** Teal #2A9D8F
 
@@ -285,7 +285,7 @@ MIDI Note → Wavetable Oscillator (2048-frame morph)
 
 ---
 
-### 3.5 DUB (XOverdub) — FX Architecture
+### 3.5 OVERDUB (XOverdub) — FX Architecture
 
 **Sonic Identity:** The dub engineer's toolkit as a synth engine. Not primarily about the voice — it's about what happens to sound when you throw it through drive, tape delay, and spring reverb via a gated send bus. The performance pads (FIRE, XOSEND, ECHO CUT, PANIC) turn mixing into playing.
 
@@ -320,7 +320,7 @@ Performance Pads:
 
 **Unique Features:**
 - Performance pads as core interaction (not just a synth with FX — the FX ARE the instrument)
-- Send/return architecture allows any external engine to route through DUB's FX chain
+- Send/return architecture allows any external engine to route through OVERDUB's FX chain
 - Self-oscillating tape delay creates drone/texture beds from any input
 - The "throw" gesture (XOSEND) is a signature dub production technique made playable
 
@@ -330,12 +330,12 @@ Performance Pads:
 
 **SynthEngine Mapping:**
 - `getSampleForCoupling()`: post-limiter master output (full wet+dry mix)
-- `applyCouplingInput()`: send VCA level (external engines can "throw" themselves into DUB's FX), delay time, feedback amount
-- **Special role:** DUB can function as a shared FX module — other engines route audio through its send/return chain without using DUB's own voice engine
+- `applyCouplingInput()`: send VCA level (external engines can "throw" themselves into OVERDUB's FX), delay time, feedback amount
+- **Special role:** OVERDUB can function as a shared FX module — other engines route audio through its send/return chain without using OVERDUB's own voice engine
 
 ---
 
-### 3.6 DRIFT (XOdyssey) — Psychedelic Pads
+### 3.6 ODYSSEY (XOdyssey) — Psychedelic Pads
 
 **Sonic Identity:** The journey engine. Starts familiar, evolves toward alien. The Climax system is the signature feature — when the JOURNEY macro crosses a per-preset threshold, the instrument blooms across filter, shimmer, reverb, and width in a 1-3 second S-curve. Psychedelic pad architecture with dual filters (standard LP + formant vowel filter).
 
@@ -502,21 +502,21 @@ What happens when modules are chained through the coupling matrix:
 
 | Pairing | Coupling Route | Musical Outcome | Category |
 |---------|---------------|----------------|----------|
-| **SNAP → MORPH** | X amplitude → O filter cutoff | Classic dub pump — pads breathe with percussive hits | Pumped Pads |
-| **MORPH → SNAP** | O LFO → X pitch | Organic pitch drift on percussive engine — alive, breathing plucks | Living Plucks |
-| **FAT → BITE** | FAT output → BITE filter input | 13-oscillator width through Gnash/Trash character stages — massive aggressive bass | Fat Bite Bass |
-| **BITE → FAT** | BITE Belly macro → FAT Mojo | Character-driven analog drift — BITE's warmth softens FAT's precision | Warm Width |
-| **ONSET → MORPH** | Kick amplitude → pad filter cutoff | Drum hits pump the pad engine — classic dub techno | Pumped Pads |
-| **ONSET → DUB** | Drum output → DUB send input | Drums through tape delay + spring reverb — dub percussion | Dub Drums |
-| **DRIFT → MORPH** | JOURNEY/Climax → morph position | Climax system drives wavetable morphing — psychedelic evolution | Alien Orchestra |
-| **FAT → DUB** | FAT output → DUB send chain | 13 oscillators through self-oscillating tape delay — massive dub drones | Dub Drones |
-| **BITE → ONSET** | Bass amplitude → kick decay | When bass hits, kick shortens — tight locked groove | Lock Groove |
-| **ONSET → DRIFT** | Hat pattern triggers → DRIFT shimmer | Hat rhythm modulates psychedelic shimmer — textural rhythm | Psychedelic Rhythm |
-| **SNAP → DUB** | Percussive hits → DUB send/return | Short plucks through runaway delay — dub techno stabs | Dub Techno |
-| **DRIFT → FAT** | Drift mod source → FAT morph position | Voyager Drift applied to 65 oscillators — massive evolving pad | Drifting Width |
-| **FAT + BITE + DUB** | FAT→BITE character, sum→DUB FX | Triple-chained: width + character + dub FX architecture | Mega Bass |
-| **ONSET → BITE** | Snare amplitude → BITE gnash amount | Snare hits increase bass aggression — interactive rhythm+bass | Living Texture |
-| **MORPH → DRIFT** | Morph LFO → DRIFT JOURNEY macro | Slow wavetable LFO drives the Climax system — auto-journey | Auto Journey |
+| **ODDFELIX → ODDOSCAR** | X amplitude → O filter cutoff | Classic dub pump — pads breathe with percussive hits | Pumped Pads |
+| **ODDOSCAR → ODDFELIX** | O LFO → X pitch | Organic pitch drift on percussive engine — alive, breathing plucks | Living Plucks |
+| **OBESE → OVERBITE** | OBESE output → OVERBITE filter input | 13-oscillator width through Gnash/Trash character stages — massive aggressive bass | Fat Bite Bass |
+| **OVERBITE → OBESE** | OVERBITE Belly macro → OBESE Mojo | Character-driven analog drift — OVERBITE's warmth softens OBESE's precision | Warm Width |
+| **ONSET → ODDOSCAR** | Kick amplitude → pad filter cutoff | Drum hits pump the pad engine — classic dub techno | Pumped Pads |
+| **ONSET → OVERDUB** | Drum output → OVERDUB send input | Drums through tape delay + spring reverb — dub percussion | Dub Drums |
+| **ODYSSEY → ODDOSCAR** | JOURNEY/Climax → morph position | Climax system drives wavetable morphing — psychedelic evolution | Alien Orchestra |
+| **OBESE → OVERDUB** | OBESE output → OVERDUB send chain | 13 oscillators through self-oscillating tape delay — massive dub drones | Dub Drones |
+| **OVERBITE → ONSET** | Bass amplitude → kick decay | When bass hits, kick shortens — tight locked groove | Lock Groove |
+| **ONSET → ODYSSEY** | Hat pattern triggers → ODYSSEY shimmer | Hat rhythm modulates psychedelic shimmer — textural rhythm | Psychedelic Rhythm |
+| **ODDFELIX → OVERDUB** | Percussive hits → OVERDUB send/return | Short plucks through runaway delay — dub techno stabs | Dub Techno |
+| **ODYSSEY → OBESE** | Drift mod source → OBESE morph position | Voyager Drift applied to 65 oscillators — massive evolving pad | Drifting Width |
+| **OBESE + OVERBITE + OVERDUB** | OBESE→OVERBITE character, sum→OVERDUB FX | Triple-chained: width + character + dub FX architecture | Mega Bass |
+| **ONSET → OVERBITE** | Snare amplitude → OVERBITE gnash amount | Snare hits increase bass aggression — interactive rhythm+bass | Living Texture |
+| **ODDOSCAR → ODYSSEY** | Morph LFO → ODYSSEY JOURNEY macro | Slow wavetable LFO drives the Climax system — auto-journey | Auto Journey |
 
 ---
 
@@ -526,15 +526,15 @@ Components appearing in 3+ engines that should become shared code:
 
 | Component | Used In | Implementation | Notes |
 |-----------|---------|---------------|-------|
-| **Cytomic SVF** | BITE, SNAP, ONSET, DRIFT | Topology-preserving transform (Andy Simper) | Reference: XOppossum FilterBlock.h |
-| **PolyBLEP** | FAT, SNAP, DRIFT, ONSET | Band-limited oscillator transitions | Reference: XOddCouple Oscillators.h |
+| **Cytomic SVF** | OVERBITE, ODDFELIX, ONSET, ODYSSEY | Topology-preserving transform (Andy Simper) | Reference: XOverbite FilterBlock.h |
+| **PolyBLEP** | OBESE, ODDFELIX, ODYSSEY, ONSET | Band-limited oscillator transitions | Reference: OddfeliX/OddOscar Oscillators.h |
 | **ParamSnapshot** | All engines | Cache all param pointers once per block | Zero-cost per-sample access |
-| **FastMath** | BITE, FAT, ONSET | fastSin, fastTanh, fastExp2, fastAtan, fastIsFinite | Chebyshev/rational approximations |
+| **FastMath** | OVERBITE, OBESE, ONSET | fastSin, fastTanh, fastExp2, fastAtan, fastIsFinite | Chebyshev/rational approximations |
 | **ADSR Envelope** | All engines | Attack-Decay-Sustain-Release with optional AHD/AD modes | Shared base class, per-engine extensions |
-| **tanh Saturation** | FAT, BITE, DUB, ONSET | Waveshaping for drive/warmth | Single shared function |
-| **DC Blocker** | BITE, ONSET, DUB | `y[n] = x[n] - x[n-1] + R × y[n-1]` | Required after asymmetric saturation |
-| **Wavetable Reader** | FAT, MORPH, DRIFT | 2048-sample frames, linear interpolation, mip-mapping | Shared loader + playback |
-| **Dattorro Reverb** | FAT, (potential shared FX) | Plate reverb algorithm | Could become shared FX rack reverb |
+| **tanh Saturation** | OBESE, OVERBITE, OVERDUB, ONSET | Waveshaping for drive/warmth | Single shared function |
+| **DC Blocker** | OVERBITE, ONSET, OVERDUB | `y[n] = x[n] - x[n-1] + R × y[n-1]` | Required after asymmetric saturation |
+| **Wavetable Reader** | OBESE, ODDOSCAR, ODYSSEY | 2048-sample frames, linear interpolation, mip-mapping | Shared loader + playback |
+| **Dattorro Reverb** | OBESE, (potential shared FX) | Plate reverb algorithm | Could become shared FX rack reverb |
 
 **Recommendation:** Extract these into a `Shared/DSP/` directory. Each engine links against the shared library. Reduces code duplication and ensures bug fixes propagate.
 
@@ -547,17 +547,17 @@ Sounds that are **only possible** through module coupling — impossible with an
 | Category | Engine Combo | Why It's New | Example Preset |
 |----------|-------------|-------------|----------------|
 | **Pumped Pads** | ONSET + any melodic | Drum synthesis drives pad dynamics in real-time | "Breathing Cathedral" |
-| **Fat Bite Bass** | FAT + BITE | 13-osc width through per-voice character stages | "Earthquake Sub" |
-| **Dub Drones** | Any + DUB | Self-oscillating tape delay creates drone beds from any source | "Tape Meditation" |
-| **Psychedelic Rhythm** | DRIFT + ONSET | Climax system modulated by drum patterns | "Journey Drums" |
+| **Fat Bite Bass** | OBESE + OVERBITE | 13-osc width through per-voice character stages | "Earthquake Sub" |
+| **Dub Drones** | Any + OVERDUB | Self-oscillating tape delay creates drone beds from any source | "Tape Meditation" |
+| **Psychedelic Rhythm** | ODYSSEY + ONSET | Climax system modulated by drum patterns | "Journey Drums" |
 | **Living Texture** | 3+ engines light coupling | Emergent organic movement from multiple interactions | "Symbiosis" |
-| **Morphing Drums** | ONSET + MORPH | Wavetable position driven by drum amplitude | "Evolving Kit" |
-| **Dub Techno** | SNAP + DUB | Percussive plucks through runaway delay | "Chord Stab Echo" |
-| **Lock Groove** | BITE + ONSET | Bass and drums dynamically interact (amplitude↔decay) | "Locked In" |
-| **Auto Journey** | MORPH + DRIFT | LFO-driven Climax system — plays itself | "Autopilot" |
-| **Alien Orchestra** | DRIFT + FAT + MORPH | Voyager Drift across 65 oscillators + wavetable morph | "First Contact" |
-| **Character Width** | FAT + BITE | Mojo warmth applied through Belly↔Bite character axis | "Warm Expanse" |
-| **Siren Pad** | DUB + DRIFT | Dub siren voice through psychedelic trait processing | "Siren Shimmer" |
+| **Morphing Drums** | ONSET + ODDOSCAR | Wavetable position driven by drum amplitude | "Evolving Kit" |
+| **Dub Techno** | ODDFELIX + OVERDUB | Percussive plucks through runaway delay | "Chord Stab Echo" |
+| **Lock Groove** | OVERBITE + ONSET | Bass and drums dynamically interact (amplitude↔decay) | "Locked In" |
+| **Auto Journey** | ODDOSCAR + ODYSSEY | LFO-driven Climax system — plays itself | "Autopilot" |
+| **Alien Orchestra** | ODYSSEY + OBESE + ODDOSCAR | Voyager Drift across 65 oscillators + wavetable morph | "First Contact" |
+| **Character Width** | OBESE + OVERBITE | Mojo warmth applied through Belly↔Bite character axis | "Warm Expanse" |
+| **Siren Pad** | OVERDUB + ODYSSEY | Dub siren voice through psychedelic trait processing | "Siren Shimmer" |
 
 **Estimated new chained presets:** 85 (across all categories)
 
@@ -569,19 +569,19 @@ Sounds that are **only possible** through module coupling — impossible with an
 
 | Pairing | Engine A | Engine B | Coupling | Shared FX | Total |
 |---------|----------|----------|----------|-----------|-------|
-| SNAP + MORPH | 8% | 12% | 2% | 6% | **28%** |
-| FAT + BITE | 12% | 10% | 2% | 6% | **30%** |
-| ONSET + DUB | 15.5% | 8% | 2% | 0% (DUB IS FX) | **25.5%** |
-| FAT + DUB | 12% | 8% | 2% | 0% | **22%** |
-| DRIFT + MORPH | 15% | 12% | 2% | 6% | **35%** |
+| ODDFELIX + ODDOSCAR | 8% | 12% | 2% | 6% | **28%** |
+| OBESE + OVERBITE | 12% | 10% | 2% | 6% | **30%** |
+| ONSET + OVERDUB | 15.5% | 8% | 2% | 0% (OVERDUB IS FX) | **25.5%** |
+| OBESE + OVERDUB | 12% | 8% | 2% | 0% | **22%** |
+| ODYSSEY + ODDOSCAR | 15% | 12% | 2% | 6% | **35%** |
 
 ### Three-Engine Configurations (Expanded)
 
 | Config | Engines | Couplings (×3 pairs) | Shared FX | Total | Voice Reduction |
 |--------|---------|---------------------|-----------|-------|-----------------|
-| FAT + BITE + DUB | 12+10+8 | 6% | 0% | **36%** | FAT: 5→3 voices |
-| SNAP + MORPH + ONSET | 8+12+15.5 | 6% | 6% | **47.5%** | MORPH: 16→8 voices |
-| DRIFT + FAT + DUB | 15+12+8 | 6% | 0% | **41%** | DRIFT: 24→12 voices |
+| OBESE + OVERBITE + OVERDUB | 12+10+8 | 6% | 0% | **36%** | OBESE: 5→3 voices |
+| ODDFELIX + ODDOSCAR + ONSET | 8+12+15.5 | 6% | 6% | **47.5%** | ODDOSCAR: 16→8 voices |
+| ODYSSEY + OBESE + OVERDUB | 15+12+8 | 6% | 0% | **41%** | ODYSSEY: 24→12 voices |
 
 ### Four-Engine Configurations (Maximum)
 
@@ -605,14 +605,14 @@ Ordered by integration value ÷ implementation effort:
 
 | Priority | Module | Rationale | Effort | Value |
 |----------|--------|-----------|--------|-------|
-| **1** | SNAP + MORPH | Already coupled in XOddCouple — wrap existing code behind SynthEngine interface | Low | High (proves architecture) |
-| **2** | DUB | Simplest engine (38 params), unique as shared FX module | Low | High (every engine benefits) |
-| **3** | FAT | Complete engine, unique width character, straightforward wrapping | Medium | High (flagship sound) |
-| **4** | BITE | Most parameters (122) but clean architecture, strong bass identity | Medium | High (fills bass gap) |
-| **5** | DRIFT | Complex (130 params, 7 traits, Climax), but powerful sonic payoff | High | High (unique journey concept) |
+| **1** | ODDFELIX + ODDOSCAR | Already coupled in OddfeliX/OddOscar — wrap existing code behind SynthEngine interface | Low | High (proves architecture) |
+| **2** | OVERDUB | Simplest engine (38 params), unique as shared FX module | Low | High (every engine benefits) |
+| **3** | OBESE | Complete engine, unique width character, straightforward wrapping | Medium | High (flagship sound) |
+| **4** | OVERBITE | Most parameters (122) but clean architecture, strong bass identity | Medium | High (fills bass gap) |
+| **5** | ODYSSEY | Complex (130 params, 7 traits, Climax), but powerful sonic payoff | High | High (unique journey concept) |
 | **6** | ONSET | Not yet built — full implementation required from spec | High | High (completes the platform with drums) |
 
-**MVP:** SNAP + MORPH + DUB (priorities 1-2). This gives: dual melodic engines with coupling + dub FX architecture + PlaySurface. Proves the mega-tool concept with minimal new code.
+**MVP:** ODDFELIX + ODDOSCAR + OVERDUB (priorities 1-2). This gives: dual melodic engines with coupling + dub FX architecture + PlaySurface. Proves the mega-tool concept with minimal new code.
 
 ---
 

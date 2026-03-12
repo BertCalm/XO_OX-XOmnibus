@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Bob Mono Glide",
   "mood": "Foundation",
-  "engines": ["Bob"],
+  "engines": ["Oblong"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BOB mono lead with portamento. Warm character, silky glide between notes. Perfect for soul, R&B, and dub lines that need character and movement.",
@@ -19,7 +19,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 1,
       "bob_oscA_shape": 0.6,
       "bob_oscA_tune": 0.0,

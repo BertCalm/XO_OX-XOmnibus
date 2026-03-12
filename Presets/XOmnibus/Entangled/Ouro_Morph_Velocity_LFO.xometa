@@ -2,18 +2,35 @@
   "schema_version": 1,
   "name": "Velocity Morph",
   "mood": "Entangled",
-  "engines": ["XOuroboros", "Morph"],
+  "engines": [
+    "Ouroboros",
+    "OddOscar"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Ouroboros velocity vectors drive MORPH's wavetable position via channels 2/3. Non-repeating complex modulation from the attractor.",
-  "tags": ["coupled", "morphing", "complex", "wavetable"],
-  "macroLabels": ["ATTRACTOR", "MORPH SWEEP", "VELOCITY DEPTH", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "coupled",
+    "morphing",
+    "complex",
+    "wavetable"
+  ],
+  "macroLabels": [
+    "ATTRACTOR",
+    "MORPH SWEEP",
+    "VELOCITY DEPTH",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "created": "2026-03-10",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 0,
       "ouro_rate": 130.0,
       "ouro_chaosIndex": 0.4,
@@ -23,7 +40,7 @@
       "ouro_damping": 0.2,
       "ouro_injection": 0.0
     },
-    "Morph": {
+    "OddOscar": {
       "morph_oscA_wave": 0,
       "morph_oscA_shape": 0.5,
       "morph_oscA_tune": 0.0,
@@ -45,8 +62,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "XOuroboros",
-        "engineB": "Morph",
+        "engineA": "Ouroboros",
+        "engineB": "OddOscar",
         "type": "LFO->Pitch",
         "amount": 0.4
       }

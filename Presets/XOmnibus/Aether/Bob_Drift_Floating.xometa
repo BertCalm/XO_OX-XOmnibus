@@ -3,12 +3,12 @@
   "name": "Bob_Drift_Floating",
   "mood": "Aether",
   "engines": [
-    "Bob",
-    "Drift"
+    "Oblong",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB floating warmth above DRIFT infinite shimmer \u2014 no floor, no ceiling, just air.",
+  "description": "BOB floating warmth above DRIFT infinite shimmer — no floor, no ceiling, just air.",
   "tags": [
     "bob",
     "drift",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -33,7 +33,7 @@
     "aggression": 0.04
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -76,7 +76,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -120,8 +120,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Bob",
-        "engineB": "Drift",
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.2
       }

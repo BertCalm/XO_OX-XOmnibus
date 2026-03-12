@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Bob Warm Lead",
   "mood": "Foundation",
-  "engines": ["Bob"],
+  "engines": ["Oblong"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BOB's warm analog character at its most essential. Smooth filter, gentle vibrato, the sound that wraps around a melody line.",
@@ -19,7 +19,7 @@
     "aggression": 0.1
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.55,
       "bob_oscA_tune": 0.0,

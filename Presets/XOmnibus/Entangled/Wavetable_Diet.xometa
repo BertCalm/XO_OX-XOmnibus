@@ -3,8 +3,8 @@
   "name": "Wavetable Diet",
   "mood": "Entangled",
   "engines": [
-    "Morph",
-    "XOrganon"
+    "OddOscar",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -31,7 +31,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_waveA": 0,
       "morph_waveB": 2,
       "morph_position": 0.3,
@@ -44,7 +44,7 @@
       "morph_release": 1.5,
       "morph_level": 0.6
     },
-    "XOrganon": {
+    "Organon": {
       "organon_metabolicRate": 0.8,
       "organon_enzymeSelect": 1500.0,
       "organon_catalystDrive": 0.6,
@@ -60,8 +60,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "XOrganon",
+        "engineA": "OddOscar",
+        "engineB": "Organon",
         "type": "Audio->FM",
         "amount": 0.65
       }

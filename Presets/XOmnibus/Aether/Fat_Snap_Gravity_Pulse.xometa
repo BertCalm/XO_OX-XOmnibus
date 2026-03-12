@@ -3,12 +3,12 @@
   "name": "Fat_Snap_Gravity_Pulse",
   "mood": "Aether",
   "engines": [
-    "Fat",
-    "Snap"
+    "Obese",
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT massive void with SNAP rare gravity pulses \u2014 density interrupted by distant events.",
+  "description": "FAT massive void with SNAP rare gravity pulses — density interrupted by distant events.",
   "tags": [
     "fat",
     "snap",
@@ -22,7 +22,7 @@
     "COUPLING",
     "DENSITY"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.42,
@@ -33,7 +33,7 @@
     "aggression": 0.06
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.5,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.5,
@@ -66,7 +66,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 0,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -83,8 +83,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Fat",
+        "engineA": "OddfeliX",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.18
       }

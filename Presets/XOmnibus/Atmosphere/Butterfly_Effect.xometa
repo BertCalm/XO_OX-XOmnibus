@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Butterfly Effect",
   "mood": "Atmosphere",
-  "engines": ["XOuroboros"],
+  "engines": ["Ouroboros"],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Lorenz attractor with moderate chaos on a loose leash. Evolving pad with chaotic micro-movements that never repeat.",
@@ -13,7 +13,7 @@
   "created": "2026-03-10",
   "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
   "parameters": {
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 0,
       "ouro_rate": 165.0,
       "ouro_chaosIndex": 0.45,

@@ -3,12 +3,12 @@
   "name": "Dub_Bob_Ring",
   "mood": "Entangled",
   "engines": [
-    "Dub",
-    "Bob"
+    "Overdub",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB bass ring-modulates BOB \u2014 bass harmonics interact with lead timbre for dissonant metallic textures. Aggressive grit.",
+  "description": "DUB bass ring-modulates BOB — bass harmonics interact with lead timbre for dissonant metallic textures. Aggressive grit.",
   "tags": [
     "dub",
     "bob",
@@ -24,7 +24,7 @@
     "MODULATION",
     "CHARACTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -35,7 +35,7 @@
     "aggression": 0.65
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -73,7 +73,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 0
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -120,8 +120,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Bob",
+        "engineA": "Overdub",
+        "engineB": "Oblong",
         "type": "Audio->Ring",
         "amount": 0.5
       }

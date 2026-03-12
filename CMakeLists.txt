@@ -57,24 +57,58 @@ target_sources(XOmnibus PRIVATE
     Source/DSP/Effects/Saturator.h
     Source/DSP/Effects/Compressor.h
 
-    # Engine adapters
+    # Engine adapters (DSP in .h, registration stubs in .cpp)
     Source/Engines/Snap/SnapEngine.h
+    Source/Engines/Snap/SnapEngine.cpp
     Source/Engines/Morph/MorphEngine.h
+    Source/Engines/Morph/MorphEngine.cpp
     Source/Engines/Dub/DubEngine.h
+    Source/Engines/Dub/DubEngine.cpp
     Source/Engines/Drift/DriftEngine.h
+    Source/Engines/Drift/DriftEngine.cpp
     Source/Engines/Bob/BobEngine.h
+    Source/Engines/Bob/BobEngine.cpp
     Source/Engines/Fat/FatEngine.h
+    Source/Engines/Fat/FatEngine.cpp
     Source/Engines/Onset/OnsetEngine.h
+    Source/Engines/Onset/OnsetEngine.cpp
     Source/Engines/Overworld/OverworldEngine.h
-    Source/Engines/Bite/BiteEngine.h
+    Source/Engines/Overworld/OverworldEngine.cpp
     Source/Engines/Opal/OpalDSP.h
     Source/Engines/Opal/OpalEngine.h
+    Source/Engines/Opal/OpalEngine.cpp
     Source/Engines/Organon/OrganonEngine.h
+    Source/Engines/Organon/OrganonEngine.cpp
     Source/Engines/Ouroboros/OuroborosEngine.h
     Source/Engines/Ouroboros/OuroborosEngine.cpp
+    Source/Engines/Orbital/OrbitalEngine.h
+    Source/Engines/Orbital/OrbitalEngine.cpp
+    Source/Engines/Obsidian/ObsidianEngine.h
+    Source/Engines/Obsidian/ObsidianEngine.cpp
+    Source/Engines/Bite/BiteEngine.h
+    Source/Engines/Bite/BiteEngine.cpp
+    Source/Engines/Origami/OrigamiEngine.h
+    Source/Engines/Origami/OrigamiEngine.cpp
+    Source/Engines/Oracle/OracleEngine.h
+    Source/Engines/Oracle/OracleEngine.cpp
+    Source/Engines/Obscura/ObscuraEngine.h
+    Source/Engines/Obscura/ObscuraEngine.cpp
+    Source/Engines/Oceanic/OceanicEngine.h
+    Source/Engines/Oceanic/OceanicEngine.cpp
+    Source/Engines/Optic/OpticEngine.h
+    Source/Engines/Optic/OpticEngine.cpp
+    Source/Engines/Oblique/ObliqueEngine.h
+    Source/Engines/Oblique/ObliqueEngine.cpp
+
+    # Export pipeline
+    Source/Export/XPNCoverArt.h
+    Source/Export/XPNExporter.h
 
     # UI (Gallery Model)
     Source/UI/XOmnibusEditor.h
+    Source/UI/PlaySurface/PlaySurface.h
+    Source/UI/CouplingStrip/CouplingStripEditor.h
+    Source/UI/OpticVisualizer/OpticVisualizer.h
 
     # Main processor
     Source/XOmnibusProcessor.h
@@ -105,3 +139,31 @@ if(XO_MOBILE)
         juce::juce_audio_plugin_client
     )
 endif()
+
+# ==============================================================================
+# Tests (standalone console application, no audio device or GUI required)
+# ==============================================================================
+add_executable(XOmnibusTests
+    Tests/run_tests.cpp
+    Tests/DSPTests/DSPStabilityTests.cpp
+    Tests/CouplingTests/CouplingMatrixTests.cpp
+    Tests/PresetTests/PresetRoundTripTests.cpp
+)
+
+target_include_directories(XOmnibusTests PRIVATE
+    Source
+    "${CMAKE_CURRENT_SOURCE_DIR}/../XOverworld/src"
+)
+
+target_link_libraries(XOmnibusTests PRIVATE
+    juce::juce_core
+    juce::juce_audio_basics
+    juce::juce_audio_processors
+)
+
+target_compile_definitions(XOmnibusTests PRIVATE
+    JUCE_STANDALONE_APPLICATION=1
+    JUCE_WEB_BROWSER=0
+    JUCE_USE_CURL=0
+    JUCE_DISPLAY_SPLASH_SCREEN=0
+)

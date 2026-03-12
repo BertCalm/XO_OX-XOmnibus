@@ -10,7 +10,7 @@
 
 > **The XO Chord Machine distributes chord voicings across XOmnibus's 4 engine slots, so each tone in a harmony is shaped by a different synthesis character. You play one key — four engines voice the chord.**
 
-No other instrument does this. Divisimate distributes MIDI across *instances* of the same plugin. The NDLR generates patterns across *identical* outputs. Ableton's Chord device stacks intervals on *one* synth. The XO Chord Machine is the first instrument where the **timbral identity of each chord tone is a creative parameter** — where the root is a warm analog bass (BOB), the fifth is a gritty bitcrushed snarl (FAT), the seventh is a drifting pad (DRIFT), and the octave is chip arpeggiation (OVERWORLD). And all four are coupled through the MegaCouplingMatrix while they voice the harmony.
+No other instrument does this. Divisimate distributes MIDI across *instances* of the same plugin. The NDLR generates patterns across *identical* outputs. Ableton's Chord device stacks intervals on *one* synth. The XO Chord Machine is the first instrument where the **timbral identity of each chord tone is a creative parameter** — where the root is a warm analog bass (OBLONG), the fifth is a gritty bitcrushed snarl (OBESE), the seventh is a drifting pad (ODYSSEY), and the octave is chip arpeggiation (OVERWORLD). And all four are coupled through the MegaCouplingMatrix while they voice the harmony.
 
 This is the feature that makes XOmnibus's 4-slot architecture musically inevitable, not just technically interesting.
 
@@ -45,7 +45,7 @@ Every great house producer already does timbral chord distribution — they just
 
 > "The best instruments make you feel like you're discovering music rather than constructing it."
 
-The Chord Machine should feel like exploration, not programming. You load four engines, enable a chord mode, play a single note — and the harmonic texture that emerges feels discovered, not assembled. The coupling matrix ensures that these voices don't just coexist — they interact. DRIFT's LFO modulates FAT's filter. BOB's amplitude shapes OPAL's grain density. The harmony isn't four isolated tones. It's an ecosystem.
+The Chord Machine should feel like exploration, not programming. You load four engines, enable a chord mode, play a single note — and the harmonic texture that emerges feels discovered, not assembled. The coupling matrix ensures that these voices don't just coexist — they interact. ODYSSEY's LFO modulates OBESE's filter. OBLONG's amplitude shapes OPAL's grain density. The harmony isn't four isolated tones. It's an ecosystem.
 
 ---
 
@@ -57,12 +57,12 @@ Traditional voicing theory distributes notes across a pitch range. **Timbral voi
 
 | Voicing Role | Traditional | Timbral (XO Chord Machine) |
 |-------------|-------------|---------------------------|
-| Root | Low octave | Slot 1 — warm, grounding engine (BOB, BITE) |
-| Color | 3rd/7th | Slot 2 — expressive, morphing engine (DRIFT, MORPH) |
+| Root | Low octave | Slot 1 — warm, grounding engine (OBLONG, OVERBITE) |
+| Color | 3rd/7th | Slot 2 — expressive, morphing engine (ODYSSEY, ODDOSCAR) |
 | Tension | Extensions (9th, 11th, 13th) | Slot 3 — textural, unusual engine (OPAL, OVERWORLD) |
-| Sparkle | Upper octave/doubling | Slot 4 — bright, animating engine (SNAP, FAT) |
+| Sparkle | Upper octave/doubling | Slot 4 — bright, animating engine (ODDFELIX, OBESE) |
 
-The engine assignment IS the voicing decision. Loading DUB in Slot 1 instead of BOB doesn't just change the tone — it changes the entire harmonic character because DUB's tape echo smears the root, creating a fundamentally different foundation.
+The engine assignment IS the voicing decision. Loading OVERDUB in Slot 1 instead of OBLONG doesn't just change the tone — it changes the entire harmonic character because OVERDUB's tape echo smears the root, creating a fundamentally different foundation.
 
 ### 3.2 Intelligent Distribution Modes
 
@@ -234,27 +234,27 @@ Without coupling, the Chord Machine is a fancy MIDI distributor. With coupling, 
 
 **Scenario:** A Cm7 chord across four engines.
 ```
-Slot 1: BOB  → C3 (root — warm analog bass)
-Slot 2: DRIFT → Eb4 (3rd — pad with Voyage Drift LFO)
-Slot 3: OPAL  → G4 (5th — frozen grain cloud)
-Slot 4: SNAP  → Bb4 (7th — percussive pluck)
+Slot 1: OBLONG  → C3 (root — warm analog bass)
+Slot 2: ODYSSEY → Eb4 (3rd — pad with Voyage Drift LFO)
+Slot 3: OPAL    → G4 (5th — frozen grain cloud)
+Slot 4: ODDFELIX  → Bb4 (7th — percussive pluck)
 ```
 
 Now add coupling routes:
 ```
-BOB (root) → AmpToFilter → DRIFT (3rd)
+OBLONG (root) → AmpToFilter → ODYSSEY (3rd)
   Effect: The bass pulse opens the pad's filter on each note attack.
   Musical: The chord "breathes" — the 3rd brightens when the root hits.
 
-DRIFT (3rd) → LFOToPitch → OPAL (5th)
-  Effect: DRIFT's slow LFO gently detunes OPAL's grain pitch.
+ODYSSEY (3rd) → LFOToPitch → OPAL (5th)
+  Effect: ODYSSEY's slow LFO gently detunes OPAL's grain pitch.
   Musical: The 5th drifts microtonally, creating beating/chorus.
 
-SNAP (7th) → AmpToChoke → nothing (reserved)
+ODDFELIX (7th) → AmpToChoke → nothing (reserved)
   Effect: Available for user routing.
 
-OPAL (5th) → AudioToWavetable → DRIFT (3rd)
-  Effect: OPAL's grain output feeds back into DRIFT's wavetable.
+OPAL (5th) → AudioToWavetable → ODYSSEY (3rd)
+  Effect: OPAL's grain output feeds back into ODYSSEY's wavetable.
   Musical: The 3rd's timbre is colored by the 5th's grain texture.
 ```
 
@@ -307,7 +307,7 @@ The Chord Machine UI is a **new panel** that replaces the engine detail view whe
 │  │  ┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐                │   │
 │  │  │ S1  │ │ S2  │ │ S3  │ │ S4  │                │   │
 │  │  │ C3  │ │ Eb4 │ │ G4  │ │ Bb4 │                │   │
-│  │  │ BOB │ │DRIFT│ │OPAL │ │SNAP │                │   │
+│  │  │OBLNG│ │ODYSS│ │OPAL │ │ODDFX│                │   │
 │  │  │ ██  │ │ ██  │ │ ██  │ │ ██  │  ← accent bars │   │
 │  │  └─────┘ └─────┘ └─────┘ └─────┘                │   │
 │  │                                                   │   │
@@ -489,16 +489,16 @@ A dedicated preset category for Chord Machine configurations:
 
 | Preset Name | Engines | Palette | Voicing | Pattern | Character |
 |-------------|---------|---------|---------|---------|-----------|
-| "Midnight Keys" | BOB+DRIFT+OPAL+SNAP | WARM | DROP-2 | OFF | Deep house Rhodes |
-| "Stab Protocol" | SNAP+FAT+ONSET+MORPH | TENSION | ROOT-SPREAD | CHORD-STAB | Classic house stab |
-| "Quartal Dawn" | DRIFT+DRIFT+OPAL+OPAL | OPEN | QUARTAL | GATE | Ambient pad |
-| "Acid Memory" | FAT+FAT+SNAP+OVERWORLD | TENSION | ROOT-SPREAD | SYNCO | Acid house |
+| "Midnight Keys" | OBLONG+ODYSSEY+OPAL+ODDFELIX | WARM | DROP-2 | OFF | Deep house Rhodes |
+| "Stab Protocol" | ODDFELIX+OBESE+ONSET+ODDOSCAR | TENSION | ROOT-SPREAD | CHORD-STAB | Classic house stab |
+| "Quartal Dawn" | ODYSSEY+ODYSSEY+OPAL+OPAL | OPEN | QUARTAL | GATE | Ambient pad |
+| "Acid Memory" | OBESE+OBESE+ODDFELIX+OVERWORLD | TENSION | ROOT-SPREAD | SYNCO | Acid house |
 | "Chip Hymn" | OVERWORLD×4 | SWEET | DROP-2 | FOUR | NES church organ |
-| "Grain Cathedral" | OPAL+OPAL+DRIFT+BOB | DARK | QUARTAL | GATE | Granular pad |
-| "Dub Chords" | DUB+BOB+MORPH+SNAP | WARM | ROOT-SPREAD | OFF | Dub house |
-| "Call & Response" | SNAP+MORPH+SNAP+MORPH | BRIGHT | DROP-2 | BROKEN | UK garage |
-| "Eno Drift" | DRIFT+OPAL+BOB+MORPH | WARM | QUARTAL | GATE | Generative ambient (Eno on) |
-| "Machine Funk" | FAT+ONSET+SNAP+OVERWORLD | RAW | ROOT-SPREAD | SYNCO | Industrial |
+| "Grain Cathedral" | OPAL+OPAL+ODYSSEY+OBLONG | DARK | QUARTAL | GATE | Granular pad |
+| "Dub Chords" | OVERDUB+OBLONG+ODDOSCAR+ODDFELIX | WARM | ROOT-SPREAD | OFF | Dub house |
+| "Call & Response" | ODDFELIX+ODDOSCAR+ODDFELIX+ODDOSCAR | BRIGHT | DROP-2 | BROKEN | UK garage |
+| "Eno Drift" | ODYSSEY+OPAL+OBLONG+ODDOSCAR | WARM | QUARTAL | GATE | Generative ambient (Eno on) |
+| "Machine Funk" | OBESE+ONSET+ODDFELIX+OVERWORLD | RAW | ROOT-SPREAD | SYNCO | Industrial |
 
 ---
 
@@ -815,10 +815,10 @@ This is the classic technique Disclosure, Kerri Chandler, and Julio Bashmore use
 Each engine gets its own **Euclidean rhythm pattern** on its chord tone:
 
 ```
-Slot 1 (BOB, root):     Euclidean(8, 3)  = X . . X . . X .    (sparse bass)
-Slot 2 (DRIFT, 3rd):    Euclidean(8, 5)  = X . X X . X X .    (denser mid)
+Slot 1 (OBLONG, root):     Euclidean(8, 3)  = X . . X . . X .    (sparse bass)
+Slot 2 (ODYSSEY, 3rd):    Euclidean(8, 5)  = X . X X . X X .    (denser mid)
 Slot 3 (OPAL, 5th):     Euclidean(8, 7)  = X X X . X X X .    (near-constant)
-Slot 4 (SNAP, 7th):     Euclidean(8, 2)  = X . . . X . . .    (sparse accent)
+Slot 4 (ODDFELIX, 7th):     Euclidean(8, 2)  = X . . . X . . .    (sparse accent)
 ```
 
 All engines share the same chord but fire independently. The interlocking rhythms create complex textures from a single harmony — what modular synth composers call "polymetric chord decomposition." Different loop lengths per engine (4, 6, 8, 12 steps) create phase relationships that evolve over time.

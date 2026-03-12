@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Final Orbit",
   "mood": "Aether",
-  "engines": ["XOuroboros"],
+  "engines": ["Ouroboros"],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Maximum chaos, maximum damping, glacial rate. A distant, smoothed rumble of mathematical entropy.",
@@ -13,7 +13,7 @@
   "created": "2026-03-10",
   "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
   "parameters": {
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 1,
       "ouro_rate": 40.0,
       "ouro_chaosIndex": 0.8,

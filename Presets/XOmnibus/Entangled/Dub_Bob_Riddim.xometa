@@ -2,13 +2,29 @@
   "schema_version": 1,
   "name": "Dub Bob Riddim",
   "mood": "Entangled",
-  "engines": ["Dub", "Bob"],
+  "engines": [
+    "Overdub",
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "DUB rhythm bass and BOB warm lead playing in the same space. DUB amplitude gates BOB's filter — the bass line literally shapes the lead tone through coupling. Classic riddim architecture.",
-  "tags": ["riddim", "dub", "bob", "rhythm", "bass", "lead", "entangled"],
-  "macroLabels": ["DUB BASS", "BOB LEAD", "COUPLING DEPTH", "ECHO"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "riddim",
+    "dub",
+    "bob",
+    "rhythm",
+    "bass",
+    "lead",
+    "entangled"
+  ],
+  "macroLabels": [
+    "DUB BASS",
+    "BOB LEAD",
+    "COUPLING DEPTH",
+    "ECHO"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -19,7 +35,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -57,7 +73,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 0
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.55,
       "bob_oscA_tune": 0.0,
@@ -104,8 +120,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Bob",
+        "engineA": "Overdub",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.5
       }

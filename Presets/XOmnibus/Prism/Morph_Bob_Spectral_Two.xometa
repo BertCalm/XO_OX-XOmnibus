@@ -3,12 +3,12 @@
   "name": "Morph_Bob_Spectral_Two",
   "mood": "Prism",
   "engines": [
-    "Morph",
-    "Bob"
+    "OddOscar",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH bright scan over BOB sync lead \u2014 wavetable spectral motion above sync richness.",
+  "description": "MORPH bright scan over BOB sync lead — wavetable spectral motion above sync richness.",
   "tags": [
     "morph",
     "bob",
@@ -22,7 +22,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.78,
@@ -33,7 +33,7 @@
     "aggression": 0.38
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.72,
       "morph_bloom": 0.8,
       "morph_decay": 2.0,
@@ -47,7 +47,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -94,8 +94,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Bob",
+        "engineA": "OddOscar",
+        "engineB": "Oblong",
         "type": "Env->Morph",
         "amount": 0.55
       }

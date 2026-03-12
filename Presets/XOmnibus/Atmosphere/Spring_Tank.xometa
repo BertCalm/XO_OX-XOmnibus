@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Spring Tank",
   "mood": "Atmosphere",
-  "engines": ["Dub"],
+  "engines": ["Overdub"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Atmospheric pad drenched in spring reverb. Metallic shimmer and warm drift.",
@@ -19,7 +19,7 @@
     "aggression": 0.1
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 2,
       "dub_oscTune": 0.0,

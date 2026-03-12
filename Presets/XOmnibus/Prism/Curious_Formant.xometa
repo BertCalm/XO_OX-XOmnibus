@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Curious Formant",
   "mood": "Prism",
-  "engines": ["Bob"],
+  "engines": ["Oblong"],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Vowel-like textures from Snout Form filter with Investigate curiosity. Playful, evolving timbres.",
@@ -19,7 +19,7 @@
     "aggression": 0.15
   },
   "parameters": {
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 2,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,

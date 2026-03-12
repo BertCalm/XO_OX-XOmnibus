@@ -10,7 +10,7 @@
 
 ## 1. Executive Summary
 
-**Recommendation: Option C -- Interface-First Hybrid Approach.** Define the `SynthEngine` interface and shared systems immediately, then retrofit each existing XO_OX instrument to comply with that interface while continuing independent development. This is the only path that lets individual synths ship as standalone products on their own timelines while making the eventual mega-tool merge a mechanical integration step rather than a rewrite. The mega-tool MVP ships with 2 engines (XOddCouple + XOverdub), a shared PlaySurface, and the coupling matrix -- delivering the "preset monster, multi synth concept tool" vision in 14 weeks.
+**Recommendation: Option C -- Interface-First Hybrid Approach.** Define the `SynthEngine` interface and shared systems immediately, then retrofit each existing XO_OX instrument to comply with that interface while continuing independent development. This is the only path that lets individual synths ship as standalone products on their own timelines while making the eventual mega-tool merge a mechanical integration step rather than a rewrite. The mega-tool MVP ships with 2 engines (OddfeliX/OddOscar + XOverdub), a shared PlaySurface, and the coupling matrix -- delivering the "preset monster, multi synth concept tool" vision in 14 weeks.
 
 ---
 
@@ -24,16 +24,16 @@ Three options were evaluated. Here is why two of them lose.
 
 | Project | Engine Class | Namespace | Param Pattern | FX Ownership |
 |---------|-------------|-----------|---------------|-------------|
-| XOddCouple | `EngineX` / `EngineO` | `XO::` | APVTS direct | Processor owns FX |
+| OddfeliX/OddOscar | `EngineX` / `EngineO` | `XO::` | APVTS direct | Processor owns FX |
 | XOverdub | `VoiceEngine` | `xoverdub::` | `ParamSnapshot` struct | Processor owns send/return FX |
 | XObese | `SynthEngine` | `xobese::` | `SynthParams` struct | Engine owns `FXChain` |
-| XOppossum | `SynthEngine` | (none / global) | `Params::ParamSnapshot` | Engine owns FX chain |
+| XOverbite | `SynthEngine` | (none / global) | `Params::ParamSnapshot` | Engine owns FX chain |
 | XOdyssey | (monolithic processor) | (none) | APVTS + `ParamSnapshot` | Processor owns FX |
-| XOblongBob | (monolithic processor) | (none) | APVTS direct | Processor owns FX |
+| XOblong | (monolithic processor) | (none) | APVTS direct | Processor owns FX |
 
 Six different architectural patterns across seven projects. Each month of parallel development adds new divergence. Merging six divergent codebases after they all reach v1.0 is a rewrite, not an integration.
 
-**Option B (Merge now) fails** because it blocks all individual product shipments. XOverdub is protocols-complete. XOddCouple has 114 factory presets. XObese has a build. None of these should wait for a unified codebase before reaching users. Blocking shipping products to build infrastructure is how projects die.
+**Option B (Merge now) fails** because it blocks all individual product shipments. XOverdub is protocols-complete. OddfeliX/OddOscar has 114 factory presets. XObese has a build. None of these should wait for a unified codebase before reaching users. Blocking shipping products to build infrastructure is how projects die.
 
 **Option C (Interface-first hybrid) wins** because it captures the benefits of both:
 
@@ -44,13 +44,13 @@ Six different architectural patterns across seven projects. Each month of parall
 
 ### 2.2 The Core Insight
 
-The existing XOddCouple architecture is already a miniature mega-tool. It has:
+The existing OddfeliX/OddOscar architecture is already a miniature mega-tool. It has:
 - Two engines (`EngineX`, `EngineO`) with independent voice management
 - A coupling matrix (`CouplingMatrix`) for cross-engine modulation
 - A shared FX rack (DubDelay, LushReverb, Phaser, LoFi, MasterCompressor)
 - A monolithic processor that calls each engine inline
 
-The mega-tool is XOddCouple's architecture scaled to N engines. The `SynthEngine` interface formalizes what `EngineX` and `EngineO` already do informally.
+The mega-tool is OddfeliX/OddOscar's architecture scaled to N engines. The `SynthEngine` interface formalizes what `EngineX` and `EngineO` already do informally.
 
 ---
 
@@ -60,7 +60,7 @@ The mega-tool is XOddCouple's architecture scaled to N engines. The `SynthEngine
 
 Create the canonical interface at:
 ```
-~/Documents/GitHub/XOddCouple/Source/Shared/SynthEngine.h
+~/Documents/GitHub/OddfeliX/OddOscar/Source/Shared/SynthEngine.h
 ```
 
 ```cpp
@@ -154,13 +154,13 @@ public:
 
 ### 3.2 Build Shared PlaySurface Component
 
-Location: `~/Documents/GitHub/XOddCouple/Source/Shared/UI/PlaySurface.h`
+Location: `~/Documents/GitHub/OddfeliX/OddOscar/Source/Shared/UI/PlaySurface.h`
 
 The PlaySurface is the unified playing interface described in `xo_pad_surface_spec.md`, extended with three modes:
 
 | Mode | Grid Layout | Expression Mapping | Used By |
 |------|------------|-------------------|---------|
-| **Pad** | 4x4 scale-locked notes | X=engine blend, Y=expression | XOddCouple, XOppossum, XOdyssey, XOblongBob |
+| **Pad** | 4x4 scale-locked notes | X=engine blend, Y=expression | OddfeliX/OddOscar, XOverbite, XOdyssey, XOblong |
 | **Fretless** | Continuous pitch strip | X=pitch, Y=expression | XOverdub, XObese |
 | **Drum** | 8-pad kit layout | X=blend per voice, Y=decay | XOnset |
 
@@ -173,7 +173,7 @@ Each engine interprets these through its own mapping table.
 
 ### 3.3 Build Shared Preset Browser Shell
 
-Location: `~/Documents/GitHub/XOddCouple/Source/Shared/UI/PresetBrowser.h`
+Location: `~/Documents/GitHub/OddfeliX/OddOscar/Source/Shared/UI/PresetBrowser.h`
 
 Unified preset format (`.xomega` JSON):
 
@@ -229,7 +229,7 @@ The browser supports three views:
 
 ### 3.4 Build Shared XPN Exporter with Flexible Bundling
 
-Location: `~/Documents/GitHub/XOddCouple/Source/Shared/Export/XPNExporter.h`
+Location: `~/Documents/GitHub/OddfeliX/OddOscar/Source/Shared/Export/XPNExporter.h`
 
 Extends the existing `xpn_exporter` tool (`~/Documents/GitHub/XOdyssey/tools/xpn_exporter/xpn_export.py`) with:
 
@@ -252,12 +252,12 @@ Engines are wrapped in order of integration difficulty (easiest first) and strat
 
 | Priority | Engine | Effort | Rationale |
 |----------|--------|--------|-----------|
-| **1** | XOddCouple (EngineX + EngineO) | Low | Already has dual-engine coupling. Extract `EngineX` and `EngineO` as separate `SynthEngine` implementations. `CouplingMatrix` becomes the template for all coupling pairs. |
+| **1** | OddfeliX/OddOscar (EngineX + EngineO) | Low | Already has dual-engine coupling. Extract `EngineX` and `EngineO` as separate `SynthEngine` implementations. `CouplingMatrix` becomes the template for all coupling pairs. |
 | **2** | XOverdub | Low | 38 parameters, simplest signal path (voice -> send VCA -> drive -> delay -> reverb -> return). The send/return architecture maps naturally to `ownsEffects() = true`. |
 | **3** | XObese | Medium | Already has a `SynthEngine` class in `xobese::` namespace. Needs adapter to match the `xo::SynthEngine` interface. 13-osc "fat" engine + Mojo parameter are unique -- worth preserving. |
-| **4** | XOppossum | Medium | Also has a `SynthEngine` class. Bass-forward character with Belly/Bite macros. 122 parameters need careful namespacing (`opossum_` prefix). |
+| **4** | XOverbite | Medium | Also has a `SynthEngine` class. Bass-forward character with Belly/Bite macros. 122 parameters need careful namespacing (`poss_` prefix). |
 | **5** | XOdyssey | High | Monolithic processor, ~130 parameters, complex Climax system. Needs most refactoring to extract engine from processor. Worth it for the psychedelic pad sound. |
-| **6** | XOblongBob | High | Also monolithic processor. 167 presets need migration to namespaced format. Character engine with PlaySurface already built. |
+| **6** | XOblong | High | Also monolithic processor. 167 presets need migration to namespaced format. Character engine with PlaySurface already built. |
 | **7** | XOnset | Built fresh | Does not exist yet. Built from day 1 against the `SynthEngine` interface per `xonset_percussive_engine_spec.md`. 8-voice drum engine with Circuit/Algorithm blend. |
 
 ### 4.2 Wrapping Strategy Per Engine
@@ -335,13 +335,13 @@ Every parameter ID gets an engine prefix. Existing standalone builds use un-pref
 
 | Engine | Prefix | Example Internal ID | Example Mega-Tool ID |
 |--------|--------|--------------------|--------------------|
-| XOddCouple EngineX | `oddx_` | `xFilterCutoff` | `oddx_filterCutoff` |
-| XOddCouple EngineO | `oddo_` | `oFilterCutoff` | `oddo_filterCutoff` |
+| OddfeliX/OddOscar EngineX | `oddx_` | `xFilterCutoff` | `oddx_filterCutoff` |
+| OddfeliX/OddOscar EngineO | `oddo_` | `oFilterCutoff` | `oddo_filterCutoff` |
 | XOverdub | `dub_` | `sendAmount` | `dub_sendAmount` |
 | XObese | `obese_` | `mojo` | `obese_mojo` |
-| XOppossum | `opossum_` | `belly` | `opossum_belly` |
+| XOverbite | `poss_` | `belly` | `poss_belly` |
 | XOdyssey | `odyssey_` | `journey` | `odyssey_journey` |
-| XOblongBob | `bob_` | `warmth` | `bob_warmth` |
+| XOblong | `bob_` | `warmth` | `bob_warmth` |
 | XOnset | `onset_` | `v1_blend` | `onset_v1_blend` |
 
 **Rule: The adapter class handles the mapping. Internal engine code never changes its parameter IDs.** This preserves preset compatibility for standalone builds and obeys the CLAUDE.md rule: "Never rename stable parameter IDs after release."
@@ -362,7 +362,7 @@ cd ~/Documents/GitHub/XOverdub
 cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release && cmake --build build
 
 # Mega-tool build (new)
-cd ~/Documents/GitHub/XOddCouple
+cd ~/Documents/GitHub/OddfeliX/OddOscar
 cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DXO_MEGA_TOOL=ON && cmake --build build
 ```
 
@@ -374,7 +374,7 @@ cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DXO_MEGA_TOOL=ON && cmake --
 
 The existing `XO::CouplingMatrix` handles one pair: X-to-O and O-to-X. The extended `CouplingMatrixN` handles arbitrary engine pairs.
 
-Location: `~/Documents/GitHub/XOddCouple/Source/Shared/Coupling/CouplingMatrixN.h`
+Location: `~/Documents/GitHub/OddfeliX/OddOscar/Source/Shared/Coupling/CouplingMatrixN.h`
 
 For N active engines, there are N*(N-1)/2 possible coupling pairs:
 
@@ -396,18 +396,18 @@ Every engine pair gets a default coupling that "just works" musically, following
 
 | Source Engine | Target Engine | Default Coupling | Amount | Musical Effect |
 |--------------|--------------|-----------------|--------|---------------|
-| XOddCouple EngineX | XOddCouple EngineO | AmpToFilter | 30% | Dub pump (existing) |
-| XOddCouple EngineO | XOddCouple EngineX | LFOToPitch | 30% | Pitch drift (existing) |
+| OddfeliX/OddOscar EngineX | OddfeliX/OddOscar EngineO | AmpToFilter | 30% | Dub pump (existing) |
+| OddfeliX/OddOscar EngineO | OddfeliX/OddOscar EngineX | LFOToPitch | 30% | Pitch drift (existing) |
 | XOnset (kick) | Any pad engine | AmpToFilter | 20% | Kick ducks pad brightness |
 | Any pad engine | XOverdub | EnvToMorph | 15% | Pad dynamics drive delay send |
-| XObese | XOppossum | AudioToRing | 0% | Off by default (destructive) |
+| XObese | XOverbite | AudioToRing | 0% | Off by default (destructive) |
 | XOdyssey | XOnset | LFOToPitch | 10% | Pad LFO subtly detunes drums |
 
 All defaults can be overridden or disconnected by the user.
 
 ### 5.3 Patch Cable UI (Advanced Mode)
 
-Location: `~/Documents/GitHub/XOddCouple/Source/Shared/UI/PatchPanel.h`
+Location: `~/Documents/GitHub/OddfeliX/OddOscar/Source/Shared/UI/PatchPanel.h`
 
 The patch panel is hidden by default. It appears in Advanced Mode and shows:
 - Each engine as a module with labeled I/O jacks
@@ -417,7 +417,7 @@ The patch panel is hidden by default. It appears in Advanced Mode and shows:
 - "Clear All" and "Reset to Defaults" buttons
 
 ```
-+-- Engine A (XOddCouple X) ----+     +-- Engine B (XOverdub) --------+
++-- Engine A (OddfeliX/OddOscar X) ----+     +-- Engine B (XOverdub) --------+
 |                                |     |                                |
 |  [Osc Out]    o============o [FM In]                                 |
 |  [Filter Out] o            o [Filter In]                             |
@@ -438,7 +438,7 @@ Multi-engine presets bundle the state of all active engines plus their coupling 
 
 ### 6.1 Hub Shell with Engine Selector
 
-Location: `~/Documents/GitHub/XOddCouple/Source/Hub/`
+Location: `~/Documents/GitHub/OddfeliX/OddOscar/Source/Hub/`
 
 The hub shell is the top-level `AudioProcessor` that owns:
 - An array of registered `SynthEngine` instances (max 4 active)
@@ -496,12 +496,12 @@ Toggle between modes with a single button. The default is Intuitive.
 
 | Source | Preset Count | Migration Path |
 |--------|-------------|---------------|
-| XOddCouple factory | 114 | Auto-wrap as single-engine `.xomega` |
+| OddfeliX/OddOscar factory | 114 | Auto-wrap as single-engine `.xomega` |
 | XOverdub factory | 40 | Auto-wrap as single-engine `.xomega` |
 | XObese factory | ~99 | Auto-wrap as single-engine `.xomega` |
-| XOppossum factory | TBD | Auto-wrap as single-engine `.xomega` |
+| XOverbite factory | TBD | Auto-wrap as single-engine `.xomega` |
 | XOdyssey hero presets | 10 | Auto-wrap as single-engine `.xomega` |
-| XOblongBob factory | 167 | Auto-wrap as single-engine `.xomega` |
+| XOblong factory | 167 | Auto-wrap as single-engine `.xomega` |
 | New chained presets | 50-100 | Built from scratch for mega-tool |
 | **Total** | **480-530+** | |
 
@@ -525,29 +525,29 @@ Bundle options exposed in the UI:
 
 | Action | Target | Rationale |
 |--------|--------|-----------|
-| **Let current tasks finish** | All projects | Do not interrupt in-flight work. XOppossum Phase 7 (UI polish), XOverdub smoke testing, XOblongBob preset listening pass -- all should complete. |
+| **Let current tasks finish** | All projects | Do not interrupt in-flight work. XOverbite Phase 7 (UI polish), XOverdub smoke testing, XOblong preset listening pass -- all should complete. |
 | **Stop new independent features** | All projects | After current phase completes, no new features (new oscillator modes, new FX, new UI widgets) should be built outside the mega-tool context. |
-| **Start SynthEngine adapter work** | XOddCouple, XOverdub | These two are the MVP engines. Adapter classes should be written first. |
+| **Start SynthEngine adapter work** | OddfeliX/OddOscar, XOverdub | These two are the MVP engines. Adapter classes should be written first. |
 | **Freeze parameter IDs** | All projects | Every project should document its final parameter ID list. No new parameters added without `engine_` prefix. |
 
 ### 7.2 Agent Task Allocation
 
 | Agent / Worker | Current Task | Next Task (After Current Completes) |
 |---------------|-------------|--------------------------------------|
-| XOddCouple agent | Core complete | Write `SynthEngine` interface + adapter for EngineX and EngineO |
+| OddfeliX/OddOscar agent | Core complete | Write `SynthEngine` interface + adapter for EngineX and EngineO |
 | XOverdub agent | Smoke testing | Write `XOverdubAdapter` (simplest adapter, template for others) |
 | XObese agent | Build complete | Write `XObeseAdapter`, migrate `xobese::SynthEngine` to `xo::SynthEngine` |
-| XOppossum agent | Phase 7 UI polish | Finish Phase 7, then write `XOpossumAdapter` |
+| XOverbite agent | Phase 7 UI polish | Finish Phase 7, then write `XOverbiteAdapter` |
 | XOdyssey agent | v0.7 complete | Extract engine from monolithic processor into adapter |
-| XOblongBob agent | Preset listening | Finish listening pass, then write adapter |
+| XOblong agent | Preset listening | Finish listening pass, then write adapter |
 | New agent | -- | Build XOnset from scratch against `xo::SynthEngine` interface |
 
 ### 7.3 Shared Code Repository Strategy
 
-The `SynthEngine` interface and shared components live in the XOddCouple repo (since XOddCouple is the seed project for the mega-tool). Other projects reference it via git submodule or source copy.
+The `SynthEngine` interface and shared components live in the OddfeliX/OddOscar repo (since OddfeliX/OddOscar is the seed project for the mega-tool). Other projects reference it via git submodule or source copy.
 
 ```
-~/Documents/GitHub/XOddCouple/
+~/Documents/GitHub/OddfeliX/OddOscar/
     Source/
         Shared/                    <-- NEW: shared mega-tool code
             SynthEngine.h          <-- The interface
@@ -562,10 +562,10 @@ The `SynthEngine` interface and shared components live in the XOddCouple repo (s
         Hub/                       <-- NEW: mega-tool shell
             MegaToolProcessor.h
             MegaToolEditor.h
-        Engines/                   <-- Existing XOddCouple engines
+        Engines/                   <-- Existing OddfeliX/OddOscar engines
             EngineX.h
             EngineO.h
-        ...existing XOddCouple code...
+        ...existing OddfeliX/OddOscar code...
 ```
 
 ---
@@ -578,30 +578,30 @@ The MVP must prove the concept with minimal scope. It answers one question: **"C
 
 | Component | MVP Scope | NOT in MVP |
 |-----------|----------|-----------|
-| Engines | 2 active (XOddCouple + XOverdub) | 3+ engines, XOnset, XOdyssey |
+| Engines | 2 active (OddfeliX/OddOscar + XOverdub) | 3+ engines, XOnset, XOdyssey |
 | PlaySurface | Pad mode (4x4, scale-locked) | Fretless mode, Drum mode |
 | Coupling | 1 pair, 2 coupling types (AmpToFilter, LFOToPitch) | Full CouplingMatrixN, patch cable UI |
-| Presets | 154 (114 XOddCouple + 40 XOverdub, auto-wrapped) + 10 new chained | Full 500+ library |
-| FX | XOddCouple shared rack + XOverdub send/return | Shared FX rack selection |
+| Presets | 154 (114 OddfeliX/OddOscar + 40 XOverdub, auto-wrapped) + 10 new chained | Full 500+ library |
+| FX | OddfeliX/OddOscar shared rack + XOverdub send/return | Shared FX rack selection |
 | UI Mode | Intuitive only | Advanced mode, patch panel |
 | Export | Single-engine XPN | Multi-engine bundling |
 | Formats | AU + Standalone (macOS) | VST3, iOS |
 
 ### 8.2 Why These Two Engines First
 
-**XOddCouple** is the seed. Its dual-engine coupling matrix is the architectural blueprint. Its EngineX (percussive) and EngineO (pad) cover the two most important sonic territories. 114 factory presets provide immediate content.
+**OddfeliX/OddOscar** is the seed. Its dual-engine coupling matrix is the architectural blueprint. Its EngineX (percussive) and EngineO (pad) cover the two most important sonic territories. 114 factory presets provide immediate content.
 
-**XOverdub** is the simplest engine to wrap (38 parameters, clean signal path) and its send/return FX architecture is sonically complementary -- it adds dub delay and spring reverb to XOddCouple's percussive hits. The coupling scenario (XOddCouple envelope pumping XOverdub's delay send) is immediately musical and demonstrates the mega-tool concept viscerally.
+**XOverdub** is the simplest engine to wrap (38 parameters, clean signal path) and its send/return FX architecture is sonically complementary -- it adds dub delay and spring reverb to OddfeliX/OddOscar's percussive hits. The coupling scenario (OddfeliX/OddOscar envelope pumping XOverdub's delay send) is immediately musical and demonstrates the mega-tool concept viscerally.
 
 ### 8.3 MVP Build Command
 
 ```bash
-cd ~/Documents/GitHub/XOddCouple
+cd ~/Documents/GitHub/OddfeliX/OddOscar
 cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DXO_MEGA_TOOL=ON
 cmake --build build
 ```
 
-The `XO_MEGA_TOOL` CMake flag conditionally includes the hub shell, adapter classes, and shared components. Without the flag, the build produces the standard XOddCouple standalone plugin.
+The `XO_MEGA_TOOL` CMake flag conditionally includes the hub shell, adapter classes, and shared components. Without the flag, the build produces the standard OddfeliX/OddOscar standalone plugin.
 
 ---
 
@@ -628,8 +628,8 @@ The `XO_MEGA_TOOL` CMake flag conditionally includes the hub shell, adapter clas
 | Phase | Gate | Measured By |
 |-------|------|------------|
 | **Phase 1** (Weeks 1-2) | `SynthEngine` interface compiles. PlaySurface renders pad grid with scale lock. Preset browser lists presets from JSON directory. | Unit tests pass. Visual inspection of PlaySurface prototype. |
-| **Phase 2** (Weeks 3-6) | XOddCouple EngineX and EngineO each pass through `SynthEngine` interface and produce identical audio output to their standalone versions. XOverdub adapter produces identical audio. | A/B null test: standalone output minus adapter output = silence (within floating-point tolerance). |
-| **Phase 3** (Weeks 7-10) | XOddCouple EngineX coupled to XOverdub via AmpToFilter produces audible dub pump effect. Coupling amount of 0.0 produces no modulation. | Listening test by Joshua. CPU measurement < 35% at 44.1kHz/512 buffer. |
+| **Phase 2** (Weeks 3-6) | OddfeliX/OddOscar EngineX and EngineO each pass through `SynthEngine` interface and produce identical audio output to their standalone versions. XOverdub adapter produces identical audio. | A/B null test: standalone output minus adapter output = silence (within floating-point tolerance). |
+| **Phase 3** (Weeks 7-10) | OddfeliX/OddOscar EngineX coupled to XOverdub via AmpToFilter produces audible dub pump effect. Coupling amount of 0.0 produces no modulation. | Listening test by Joshua. CPU measurement < 35% at 44.1kHz/512 buffer. |
 | **Phase 4** (Weeks 11-14) | MVP builds and runs as AU + Standalone on macOS. Preset browser loads all 154+ presets. PlaySurface triggers notes on both engines. At least 10 chained presets sound compelling without explanation. | auval passes. Joshua plays it for 30 minutes and wants to keep going. |
 
 ### 10.2 Ultimate Success Metric
@@ -644,13 +644,13 @@ That is the XO_OX brand promise made real: **two engines, one conversation, infi
 
 | Engine | Source Location | Namespace | Processor Class | Engine Class(es) | Param Count | Voice Count | FX Ownership | Adapter Effort |
 |--------|----------------|-----------|----------------|-------------------|-------------|-------------|-------------|---------------|
-| XOddCouple X | `~/Documents/GitHub/XOddCouple/Source/Engines/EngineX.h` | `XO::` | `XOddCoupleProcessor` | `EngineX` | ~24 (of 52 shared) | 8 | Processor | Low -- extract from processor |
-| XOddCouple O | `~/Documents/GitHub/XOddCouple/Source/Engines/EngineO.h` | `XO::` | `XOddCoupleProcessor` | `EngineO` | ~20 (of 52 shared) | 16 | Processor | Low -- extract from processor |
+| OddfeliX/OddOscar X | `~/Documents/GitHub/OddfeliX/OddOscar/Source/Engines/EngineX.h` | `XO::` | `OddfeliX/OddOscarProcessor` | `EngineX` | ~24 (of 52 shared) | 8 | Processor | Low -- extract from processor |
+| OddfeliX/OddOscar O | `~/Documents/GitHub/OddfeliX/OddOscar/Source/Engines/EngineO.h` | `XO::` | `OddfeliX/OddOscarProcessor` | `EngineO` | ~20 (of 52 shared) | 16 | Processor | Low -- extract from processor |
 | XOverdub | `~/Documents/GitHub/XOverdub/src/engine/VoiceEngine.h` | `xoverdub::` | `XOverdubProcessor` | `VoiceEngine` + FX | 38 | 8 | Engine (send/return) | Low -- clean separation already |
 | XObese | `~/Documents/GitHub/XObese/Source/DSP/SynthEngine.h` | `xobese::` | `XObeseProcessor` | `SynthEngine` | 45 | 13-osc unison | Engine (`FXChain`) | Medium -- existing SynthEngine needs interface alignment |
-| XOppossum | `~/Documents/GitHub/XOppossum/Source/Engine/SynthEngine.h` | (none) | `PluginProcessor` | `SynthEngine` | 122 | VoiceManager | Engine (full chain) | Medium -- largest param set, needs prefix |
+| XOverbite | `~/Documents/GitHub/XOverbite/Source/Engine/SynthEngine.h` | (none) | `PluginProcessor` | `SynthEngine` | 122 | VoiceManager | Engine (full chain) | Medium -- largest param set, needs prefix |
 | XOdyssey | `~/Documents/GitHub/XOdyssey/Source/` (monolithic) | (none) | monolithic | (inline in processor) | ~130 | 24 | Processor | High -- must extract engine from processor |
-| XOblongBob | `~/Documents/GitHub/XOblongBob/Source/` (monolithic) | (none) | monolithic | (inline in processor) | large | varies | Processor | High -- must extract engine, 167 presets to migrate |
+| XOblong | `~/Documents/GitHub/XOblong/Source/` (monolithic) | (none) | monolithic | (inline in processor) | large | varies | Processor | High -- must extract engine, 167 presets to migrate |
 | XOnset | Does not exist yet | `xonset::` | N/A | Built fresh | ~110 | 8 (drum) | Configurable | N/A -- built to interface |
 
 ## Appendix B: CPU Budget Projections
@@ -659,9 +659,9 @@ All measurements at 44.1 kHz, 512-sample buffer, Apple M-series:
 
 | Configuration | Engine A | Engine B | Coupling | Shared FX | Total |
 |--------------|---------|---------|----------|----------|-------|
-| MVP (XOddCouple + XOverdub) | ~20% (both X+O) | ~8% | ~3% | ~6% | **~37%** |
-| XOddCouple + XOnset | ~20% | ~12% | ~3% | ~6% | **~41%** |
-| XObese + XOppossum | ~10% | ~15% | ~3% | ~6% | **~34%** |
+| MVP (OddfeliX/OddOscar + XOverdub) | ~20% (both X+O) | ~8% | ~3% | ~6% | **~37%** |
+| OddfeliX/OddOscar + XOnset | ~20% | ~12% | ~3% | ~6% | **~41%** |
+| XObese + XOverbite | ~10% | ~15% | ~3% | ~6% | **~34%** |
 | XOdyssey + XOverdub + XOnset | ~15% | ~8% + ~12% | ~6% (3 pairs) | ~8% | **~49%** |
 | 4 engines (max) | varies | varies | ~9% (6 pairs) | ~8% | **< 55%** |
 
@@ -669,10 +669,10 @@ All measurements at 44.1 kHz, 512-sample buffer, Apple M-series:
 
 ```
 Week  1-2:   Phase 1 -- Interface definition + shared UI components
-Week  3-6:   Phase 2 -- Engine compliance (XOddCouple, XOverdub, XObese, XOppossum)
+Week  3-6:   Phase 2 -- Engine compliance (OddfeliX/OddOscar, XOverdub, XObese, XOverbite)
 Week  7-10:  Phase 3 -- Coupling matrix extension + routing defaults + patch cable UI
 Week  11-14: Phase 4 -- Hub shell assembly + preset library + MVP testing
-Week  15+:   Post-MVP -- XOdyssey adapter, XOblongBob adapter, XOnset fresh build,
+Week  15+:   Post-MVP -- XOdyssey adapter, XOblong adapter, XOnset fresh build,
                          Advanced mode UI, multi-engine XPN export, iOS port
 ```
 

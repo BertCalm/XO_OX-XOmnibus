@@ -3,13 +3,13 @@
   "name": "Drift_Bob_Morph_Flux",
   "mood": "Flux",
   "engines": [
-    "Drift",
-    "Bob",
-    "Morph"
+    "Odyssey",
+    "Oblong",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine melodic flux \u2014 DRIFT modulates BOB pitch while BOB scans MORPH spectral.",
+  "description": "Three-engine melodic flux — DRIFT modulates BOB pitch while BOB scans MORPH spectral.",
   "tags": [
     "drift",
     "bob",
@@ -24,7 +24,7 @@
     "MORPH SCAN",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.58,
@@ -35,7 +35,7 @@
     "aggression": 0.3
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -75,7 +75,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -118,7 +118,7 @@
       "bob_glide": 0.1,
       "bob_polyphony": 0
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.52,
       "morph_bloom": 0.75,
       "morph_decay": 2.0,
@@ -136,14 +136,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
-        "engineB": "Bob",
+        "engineA": "Odyssey",
+        "engineB": "Oblong",
         "type": "LFO->Pitch",
         "amount": 0.32
       },
       {
-        "engineA": "Bob",
-        "engineB": "Morph",
+        "engineA": "Oblong",
+        "engineB": "OddOscar",
         "type": "Env->Morph",
         "amount": 0.58
       }

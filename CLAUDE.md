@@ -6,7 +6,7 @@ XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by
 It merges 9 character instruments into one unified creative environment where engines couple, collide,
 and mutate into sounds impossible with any single synth.
 
-- **12 engine modules:** SNAP, MORPH, DUB, DRIFT, BOB, FAT, ONSET, OVERWORLD, OPAL, BITE, ORGANON, OUROBOROS
+- **Engine modules:** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OPTIC, OBLIQUE
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** 1000 factory presets in `.xometa` format, 6 mood categories, 6D Sonic DNA
@@ -37,29 +37,75 @@ and mutate into sounds impossible with any single synth.
 
 | Short Name | Source Instrument | Accent Color |
 |-----------|------------------|-------------|
-| SNAP | XOddCouple Engine X | Terracotta `#C8553D` |
-| MORPH | XOddCouple Engine O | Teal `#2A9D8F` |
-| DUB | XOverdub | Olive `#6B7B3A` |
-| DRIFT | XOdyssey | Violet `#7B2D8B` |
-| BOB | XOblongBob | Amber `#E9A84A` |
-| FAT | XObese | Hot Pink `#FF1493` |
+| ODDFELIX | OddfeliX (feliX the neon tetra) | Neon Tetra Blue `#00A6D6` |
+| ODDOSCAR | OddOscar (Oscar the axolotl) | Axolotl Gill Pink `#E8839B` |
+| OVERDUB | XOverdub | Olive `#6B7B3A` |
+| ODYSSEY | XOdyssey | Violet `#7B2D8B` |
+| OBLONG | XOblong | Amber `#E9A84A` |
+| OBESE | XObese | Hot Pink `#FF1493` |
 | ONSET | XOnset | Electric Blue `#0066FF` |
 | OVERWORLD | XOverworld | Neon Green `#39FF14` |
 | OPAL | XOpal | Lavender `#A78BFA` |
 | BITE | XOpossum | Moss Green `#4A7C59` |
 | ORGANON | XOrganon | Bioluminescent Cyan `#00CED1` |
 | OUROBOROS | XOuroboros | Strange Attractor Red `#FF2D2D` |
+| OBSIDIAN | XObsidian | Crystal White `#E8E0D8` |
+| ORIGAMI | XOrigami | Vermillion Fold `#E63946` |
+| ORACLE | XOracle | Prophecy Indigo `#4B0082` |
+| OBSCURA | XObscura | Daguerreotype Silver `#8A9BA8` |
+| OCEANIC | XOceanic | Phosphorescent Teal `#00B4A0` |
+| OVERBITE | XOverbite | Fang White `#F0EDE8` |
+| ORBITAL | XOrbital | Warm Red `#FF6B6B` |
+| OPTIC | XOptic | Phosphor Green `#00FF41` |
+| OBLIQUE | XOblique | Prism Violet `#BF40FF` |
+
+### Engine ID vs Parameter Prefix
+
+Engine IDs (used in preset `"engines"` arrays, `"parameters"` keys, UI, and coupling routes)
+were renamed to O-prefix convention. **Parameter prefixes are frozen and never change:**
+
+| Engine ID | Parameter Prefix | Example |
+|-----------|-----------------|---------|
+| OddfeliX | `snap_` | `snap_filterCutoff` |
+| OddOscar | `morph_` | `morph_scanPos` |
+| Overdub | `dub_` | `dub_sendAmount` |
+| Odyssey | `odyssey_` | `odyssey_detune` |
+| Oblong | `bob_` | `bob_fltCutoff` |
+| Obese | `fat_` | `fat_satDrive` |
+| Overbite | `poss_` | `poss_biteDepth` |
+| Onset | `onset_` | `onset_noiseLevel` |
+| Overworld | `era_` | `era_engineA` |
+| Opal | `opal_` | `opal_grainSize` |
+| Orbital | `orbital_` | `orbital_partialTilt` |
+| Organon | `organon_` | `organon_entropy` |
+| Ouroboros | `ouroboros_` | `ouroboros_feedback` |
+| Obsidian | `obsidian_` | `obsidian_pdDepth` |
+| Origami | `origami_` | `origami_foldPoint` |
+| Oracle | `oracle_` | `oracle_breakpoints` |
+| Obscura | `obscura_` | `obscura_stiffness` |
+| Oceanic | `oceanic_` | `oceanic_separation` |
+| Optic | `optic_` | `optic_pulseRate` |
+| Oblique | `oblq_` | `oblq_prismColor` |
+
+Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
+are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
+See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas.
 
 ## Key Files
 
 | Path | Purpose |
 |------|---------|
 | `Docs/xomnibus_master_specification.md` | **THE** single source of truth |
+| `Docs/xomnibus_name_migration_reference.md` | Legacy → canonical engine name mapping |
 | `Source/Core/SynthEngine.h` | Engine interface (all engines implement this) |
 | `Source/Core/EngineRegistry.h` | Factory + 4-slot management |
 | `Source/Core/MegaCouplingMatrix.h` | Cross-engine modulation |
 | `Source/Core/PresetManager.h` | .xometa loading/saving |
 | `Source/Engines/*/` | Engine adapter modules |
+| `Source/Engines/Optic/OpticEngine.h` | Visual modulation engine + AutoPulse |
+| `Source/Engines/Oblique/ObliqueEngine.h` | Prismatic bounce engine (RTJ x Funk x Tame Impala) |
+| `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
+| `Docs/xomnibus_sound_design_guides.md` | Sound design guide for all 20 engines |
 | `Source/DSP/` | Shared DSP library |
 | `Source/UI/` | Gallery Model UI components |
 | `Source/Export/` | XPN export pipeline |

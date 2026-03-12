@@ -3,13 +3,13 @@
   "name": "Dub_Bob_Drift_Riddim",
   "mood": "Entangled",
   "engines": [
-    "Dub",
-    "Bob",
-    "Drift"
+    "Overdub",
+    "Oblong",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-way reggae architecture \u2014 DUB bass, BOB lead, DRIFT shimmer. DUB gates BOB filter while DRIFT drifts free above. Full band in a preset.",
+  "description": "Three-way reggae architecture — DUB bass, BOB lead, DRIFT shimmer. DUB gates BOB filter while DRIFT drifts free above. Full band in a preset.",
   "tags": [
     "dub",
     "bob",
@@ -25,7 +25,7 @@
     "DRIFT SKY",
     "COUPLING"
   ],
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -36,7 +36,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -74,7 +74,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 0
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -117,7 +117,7 @@
       "bob_glide": 0.0,
       "bob_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -161,14 +161,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Bob",
+        "engineA": "Overdub",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.5
       },
       {
-        "engineA": "Bob",
-        "engineB": "Drift",
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.25
       }

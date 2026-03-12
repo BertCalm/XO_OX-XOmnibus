@@ -2,13 +2,30 @@
   "schema_version": 1,
   "name": "Fat Portamento",
   "mood": "Entangled",
-  "engines": ["Fat", "Dub"],
+  "engines": [
+    "Obese",
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FAT mono portamento lead — massive detuned oscillators sliding between notes with heavy glide. DUB echo follows the lead with tape-saturated repeats. Play single note lines slowly.",
-  "tags": ["lead", "fat", "portamento", "glide", "mono", "dub", "echo", "entangled"],
-  "macroLabels": ["FAT CHARACTER", "PORTAMENTO", "COUPLING", "ECHO TAIL"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "lead",
+    "fat",
+    "portamento",
+    "glide",
+    "mono",
+    "dub",
+    "echo",
+    "entangled"
+  ],
+  "macroLabels": [
+    "FAT CHARACTER",
+    "PORTAMENTO",
+    "COUPLING",
+    "ECHO TAIL"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
@@ -19,7 +36,7 @@
     "aggression": 0.45
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.45,
       "fat_mojo": 0.6,
       "fat_subLevel": 0.35,
@@ -52,7 +69,7 @@
       "fat_glide": 0.3,
       "fat_polyphony": 0
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 1,
       "dub_oscOctave": 1,
       "dub_oscTune": 0.0,
@@ -94,8 +111,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Fat",
-        "engineB": "Dub",
+        "engineA": "Obese",
+        "engineB": "Overdub",
         "type": "Amp->Filter",
         "amount": 0.45
       }

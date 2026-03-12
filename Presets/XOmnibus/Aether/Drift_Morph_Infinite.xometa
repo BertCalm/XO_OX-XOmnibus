@@ -3,12 +3,12 @@
   "name": "Drift_Morph_Infinite",
   "mood": "Aether",
   "engines": [
-    "Drift",
-    "Morph"
+    "Odyssey",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT and MORPH both at maximum slowness \u2014 infinite spectral evolution with shimmer.",
+  "description": "DRIFT and MORPH both at maximum slowness — infinite spectral evolution with shimmer.",
   "tags": [
     "drift",
     "morph",
@@ -22,7 +22,7 @@
     "COUPLING",
     "BLOOM"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.5,
@@ -33,7 +33,7 @@
     "aggression": 0.04
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -73,7 +73,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.4,
       "morph_bloom": 0.95,
       "morph_decay": 9.0,
@@ -91,8 +91,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Drift",
-        "engineB": "Morph",
+        "engineA": "Odyssey",
+        "engineB": "OddOscar",
         "type": "Audio->Wavetable",
         "amount": 0.5
       }

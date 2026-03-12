@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Fold Crawl",
   "mood": "Flux",
-  "engines": ["XOpossum"],
+  "engines": ["Overbite"],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Wavefolder trash on detuned saws. Crawling harmonics that shift with velocity.",
@@ -13,7 +13,7 @@
   "created": "2026-03-11",
   "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
   "parameters": {
-    "XOpossum": {
+    "Overbite": {
       "poss_oscAWave": 2,
       "poss_oscALevel": 0.6,
       "poss_oscAPulseWidth": 0.5,

@@ -3,12 +3,12 @@
   "name": "Dub_Morph_Glide",
   "mood": "Entangled",
   "engines": [
-    "Dub",
-    "Morph"
+    "Overdub",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB mono glide bass under MORPH evolving pad \u2014 portamento bass slides beneath a morphing harmonic landscape. Soulful foundation.",
+  "description": "DUB mono glide bass under MORPH evolving pad — portamento bass slides beneath a morphing harmonic landscape. Soulful foundation.",
   "tags": [
     "dub",
     "morph",
@@ -24,7 +24,7 @@
     "COUPLING",
     "FILTER"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.45,
@@ -35,7 +35,7 @@
     "aggression": 0.3
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -73,7 +73,7 @@
       "dub_glide": 0.22,
       "dub_polyphony": 0
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.5,
       "morph_bloom": 0.7,
       "morph_decay": 4.0,
@@ -91,8 +91,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Morph",
+        "engineA": "Overdub",
+        "engineB": "OddOscar",
         "type": "Amp->Filter",
         "amount": 0.45
       }

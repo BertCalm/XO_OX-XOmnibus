@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Fat Chip",
+  "mood": "Entangled",
+  "engines": [
+    "Obese",
+    "Overworld"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Obese amplitude drives Overworld filter. Fat rhythmic chiptune.",
+  "tags": [
+    "coupling",
+    "obese",
+    "overworld",
+    "rhythm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.4,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.15,
+    "aggression": 0.35
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Overworld",
+        "type": "Amp->Filter",
+        "amount": 0.6
+      }
+    ]
+  },
+  "sequencer": null
+}

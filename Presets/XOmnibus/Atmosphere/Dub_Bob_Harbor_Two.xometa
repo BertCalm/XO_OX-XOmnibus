@@ -3,12 +3,12 @@
   "name": "Dub_Bob_Harbor_Two",
   "mood": "Atmosphere",
   "engines": [
-    "Dub",
-    "Bob"
+    "Overdub",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB harbor echo with BOB warm presence \u2014 harbor sounds, warmth through the salt air.",
+  "description": "DUB harbor echo with BOB warm presence — harbor sounds, warmth through the salt air.",
   "tags": [
     "dub",
     "bob",
@@ -22,7 +22,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.42,
@@ -33,7 +33,7 @@
     "aggression": 0.08
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -71,7 +71,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 0
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -118,8 +118,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Bob",
+        "engineA": "Overdub",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.22
       }

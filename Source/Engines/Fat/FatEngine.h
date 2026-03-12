@@ -1,6 +1,6 @@
 #pragma once
 //==============================================================================
-// FatEngine — FAT multi-oscillator synth adapted from XObese.
+// FatEngine — OBESE multi-oscillator synth adapted from XObese.
 //
 // 13 oscillators per voice: 1 sub + 4 groups of 3 (root, +12st, -12st).
 // Each group → ZDF Ladder Filter → Stereo Pan → Amp Envelope → Output.
@@ -708,7 +708,7 @@ public:
     static constexpr int kMaxVoices = 6;
 
     //-- Identity ---------------------------------------------------------------
-    juce::String getEngineId() const override { return "Fat"; }
+    juce::String getEngineId() const override { return "Obese"; }
     juce::Colour getAccentColour() const override { return juce::Colour (0xFFFF1493); }
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load (std::memory_order_relaxed); }
@@ -1435,7 +1435,7 @@ private:
 
     static float midiToFreq (int note) noexcept
     {
-        return 440.0f * std::pow (2.0f, (static_cast<float> (note) - 69.0f) / 12.0f);
+        return 440.0f * fastPow2 ((static_cast<float> (note) - 69.0f) * (1.0f / 12.0f));
     }
 
     //--------------------------------------------------------------------------

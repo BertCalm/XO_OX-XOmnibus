@@ -3,14 +3,13 @@
   "name": "Dub Siren",
   "mood": "Prism",
   "engines": [
-    "XOverdub"
+    "Overdub"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Focused dub leads tone with deep dub echo.",
   "tags": [
     "sine",
-    "verdub",
     "verdub"
   ],
   "macroLabels": [
@@ -23,12 +22,12 @@
   "tempo": null,
   "created": "2026-03-08",
   "legacy": {
-    "sourceInstrument": "XOverdub",
+    "sourceInstrument": "Overdub",
     "sourceCategory": "Dub Leads",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOverdub": {
+    "Overdub": {
       "osc_wave": 0.0,
       "lfo_rate": 3.0,
       "lfo_depth": 0.8,

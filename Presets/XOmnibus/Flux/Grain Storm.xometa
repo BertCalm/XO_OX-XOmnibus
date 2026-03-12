@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Grain Storm",
   "mood": "Flux",
-  "engines": ["XOpal"],
+  "engines": ["Opal"],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Maximum density noise grains with full scatter. Chaotic granular texture storm.",
@@ -13,7 +13,7 @@
   "created": "2026-03-11",
   "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
   "parameters": {
-    "XOpal": {
+    "Opal": {
       "opal_source": 3,
       "opal_grainSize": 30.0,
       "opal_density": 120.0,

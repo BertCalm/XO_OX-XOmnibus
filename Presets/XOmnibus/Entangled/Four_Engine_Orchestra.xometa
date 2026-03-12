@@ -2,7 +2,7 @@
   "schema_version": 1,
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "tempo": null,
   "macroLabels": [
     "CHARACTER",
@@ -14,19 +14,19 @@
     "pairs": [
       {
         "engineA": "Onset",
-        "engineB": "Bob",
+        "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.55
       },
       {
-        "engineA": "Bob",
-        "engineB": "Drift",
+        "engineA": "Oblong",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.4
       },
       {
         "engineA": "Onset",
-        "engineB": "Dub",
+        "engineB": "Overdub",
         "type": "Rhythm->Blend",
         "amount": 0.45
       }
@@ -37,11 +37,11 @@
   "mood": "Entangled",
   "engines": [
     "Onset",
-    "Bob",
-    "Drift",
-    "Dub"
+    "Oblong",
+    "Odyssey",
+    "Overdub"
   ],
-  "description": "All four engines locked together \u2014 percussive drives melodic drives harmonic drives space.",
+  "description": "All four engines locked together — percussive drives melodic drives harmonic drives space.",
   "tags": [
     "onset",
     "bob",
@@ -69,7 +69,7 @@
       "perc_v2_level": 0.65,
       "perc_macro_punch": 0.55
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_drift": 0.1,
       "bob_fltCutoff": 2000.0,
@@ -80,7 +80,7 @@
       "bob_level": 0.65,
       "bob_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_level": 0.5,
       "drift_filterCutoff": 5500.0,
@@ -91,7 +91,7 @@
       "drift_level": 0.55,
       "drift_polyphony": 4
     },
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": -1,
       "dub_subLevel": 0.55,

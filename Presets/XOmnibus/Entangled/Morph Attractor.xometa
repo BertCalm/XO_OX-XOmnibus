@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Morph Attractor",
+  "mood": "Entangled",
+  "engines": [
+    "OddOscar",
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddOscar morph drives Ouroboros projection theta. Wavetable rotates chaos.",
+  "tags": [
+    "coupling",
+    "oddoscar",
+    "ouroboros",
+    "morph"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.4,
+    "movement": 0.65,
+    "density": 0.4,
+    "space": 0.15,
+    "aggression": 0.25
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Ouroboros",
+        "type": "Env->Morph",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null
+}

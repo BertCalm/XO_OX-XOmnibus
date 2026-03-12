@@ -3,13 +3,13 @@
   "name": "Dub_Morph_Drift_Void",
   "mood": "Aether",
   "engines": [
-    "Dub",
-    "Morph",
-    "Drift"
+    "Overdub",
+    "OddOscar",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine void \u2014 DUB sub reverb, MORPH ghost scan, DRIFT shimmer sky. Maximum space.",
+  "description": "Three-engine void — DUB sub reverb, MORPH ghost scan, DRIFT shimmer sky. Maximum space.",
   "tags": [
     "dub",
     "morph",
@@ -24,7 +24,7 @@
     "DRIFT SKY",
     "COUPLING"
   ],
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.4,
@@ -35,7 +35,7 @@
     "aggression": 0.03
   },
   "parameters": {
-    "Dub": {
+    "Overdub": {
       "dub_oscWave": 2,
       "dub_oscOctave": 0,
       "dub_oscTune": 0.0,
@@ -73,7 +73,7 @@
       "dub_glide": 0.0,
       "dub_polyphony": 0
     },
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.35,
       "morph_bloom": 0.92,
       "morph_decay": 9.0,
@@ -87,7 +87,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_shape": 0,
       "drift_oscA_tune": 0.0,
@@ -131,14 +131,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Dub",
-        "engineB": "Morph",
+        "engineA": "Overdub",
+        "engineB": "OddOscar",
         "type": "Amp->Filter",
         "amount": 0.15
       },
       {
-        "engineA": "Drift",
-        "engineB": "Morph",
+        "engineA": "Odyssey",
+        "engineB": "OddOscar",
         "type": "Audio->Wavetable",
         "amount": 0.45
       }

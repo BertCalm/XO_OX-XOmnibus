@@ -3,12 +3,12 @@
   "name": "Morph_Fat_Ring_Two",
   "mood": "Entangled",
   "engines": [
-    "Morph",
-    "Fat"
+    "OddOscar",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH ring-modulates FAT \u2014 wavetable creates complex inharmonic interaction with dense oscillators.",
+  "description": "MORPH ring-modulates FAT — wavetable creates complex inharmonic interaction with dense oscillators.",
   "tags": [
     "morph",
     "fat",
@@ -22,7 +22,7 @@
     "MODULATION",
     "DENSITY"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.62,
@@ -33,7 +33,7 @@
     "aggression": 0.45
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.65,
       "morph_bloom": 0.72,
       "morph_decay": 2.5,
@@ -47,7 +47,7 @@
       "morph_level": 0.7,
       "morph_polyphony": 4
     },
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.55,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.22,
@@ -84,8 +84,8 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Morph",
-        "engineB": "Fat",
+        "engineA": "OddOscar",
+        "engineB": "Obese",
         "type": "Audio->Ring",
         "amount": 0.5
       }

@@ -52,13 +52,13 @@ ENGINE_DEFS = {
         "label":    "OVERWORLD",
     },
     "SNAP": {
-        "accent":   (200,  85,  61),     # Terracotta
+        "accent":   (0,  166, 214),     # Neon Tetra Blue
         "bg_base":  (20,    8,   5),
         "style":    "angular_cuts",
         "label":    "SNAP",
     },
     "MORPH": {
-        "accent":   (42,  157, 143),     # Teal
+        "accent":   (232, 131, 155),     # Axolotl Gill Pink
         "bg_base":  (0,   12,  12),
         "style":    "wave_morph",
         "label":    "MORPH",

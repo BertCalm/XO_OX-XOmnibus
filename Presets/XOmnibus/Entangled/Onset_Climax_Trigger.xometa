@@ -14,7 +14,7 @@
     "pairs": [
       {
         "engineA": "Onset",
-        "engineB": "Drift",
+        "engineB": "Odyssey",
         "type": "Amp->Filter",
         "amount": 0.6
       }
@@ -24,7 +24,7 @@
   "name": "Onset Climax Trigger",
   "mood": "Entangled",
   "engines": [
-    "Drift",
+    "Odyssey",
     "Onset"
   ],
   "description": "Drum hits from ONSET trigger Drift's Climax bloom \u2014 cinema percussion.",
@@ -44,7 +44,7 @@
     "aggression": 0.45
   },
   "parameters": {
-    "Drift": {
+    "Odyssey": {
       "drift_oscA_mode": 0,
       "drift_oscA_level": 0.6,
       "drift_oscA_detune": 0.4,

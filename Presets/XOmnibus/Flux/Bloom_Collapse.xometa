@@ -17,7 +17,7 @@
   "name": "Bloom Collapse",
   "mood": "Flux",
   "engines": [
-    "Morph"
+    "OddOscar"
   ],
   "description": "Bloom opens, then collapses under its own weight \u2014 a cycle of expansion.",
   "tags": [
@@ -36,7 +36,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "Morph": {
+    "OddOscar": {
       "morph_morph": 0.35,
       "morph_bloom": 0.75,
       "morph_decay": 1.0,

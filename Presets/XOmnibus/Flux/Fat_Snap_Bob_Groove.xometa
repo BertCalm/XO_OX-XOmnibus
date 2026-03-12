@@ -3,13 +3,13 @@
   "name": "Fat_Snap_Bob_Groove",
   "mood": "Flux",
   "engines": [
-    "Fat",
-    "Snap",
-    "Bob"
+    "Obese",
+    "OddfeliX",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine groove \u2014 FAT dense bed, SNAP rhythmic gate, BOB melodic lead.",
+  "description": "Three-engine groove — FAT dense bed, SNAP rhythmic gate, BOB melodic lead.",
   "tags": [
     "fat",
     "snap",
@@ -24,7 +24,7 @@
     "BOB LEAD",
     "COUPLING"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
     "brightness": 0.55,
@@ -35,7 +35,7 @@
     "aggression": 0.48
   },
   "parameters": {
-    "Fat": {
+    "Obese": {
       "fat_morph": 0.48,
       "fat_mojo": 0.4,
       "fat_subLevel": 0.35,
@@ -68,7 +68,7 @@
       "fat_glide": 0.0,
       "fat_polyphony": 4
     },
-    "Snap": {
+    "OddfeliX": {
       "snap_oscMode": 2,
       "snap_oscTune": 0.0,
       "snap_oscShape": 0.5,
@@ -81,7 +81,7 @@
       "snap_release": 0.1,
       "snap_level": 0.68
     },
-    "Bob": {
+    "Oblong": {
       "bob_oscA_wave": 0,
       "bob_oscA_shape": 0.5,
       "bob_oscA_tune": 0.0,
@@ -128,14 +128,14 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "Snap",
-        "engineB": "Fat",
+        "engineA": "OddfeliX",
+        "engineB": "Obese",
         "type": "Amp->Filter",
         "amount": 0.62
       },
       {
-        "engineA": "Fat",
-        "engineB": "Bob",
+        "engineA": "Obese",
+        "engineB": "Oblong",
         "type": "Pitch->Pitch",
         "amount": 0.42
       }

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Bite World",
+  "mood": "Entangled",
+  "engines": [
+    "Overbite",
+    "Overworld"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Overbite bass processed through Overworld chip filter. Dark retro growl.",
+  "tags": [
+    "coupling",
+    "overbite",
+    "overworld",
+    "dark"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.45,
+    "movement": 0.4,
+    "density": 0.5,
+    "space": 0.15,
+    "aggression": 0.45
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Overworld",
+        "type": "Audio->Wavetable",
+        "amount": 0.6
+      }
+    ]
+  },
+  "sequencer": null
+}
