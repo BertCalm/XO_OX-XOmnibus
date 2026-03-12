@@ -94,6 +94,8 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Obscura/ObscuraEngine.cpp
     Source/Engines/Oceanic/OceanicEngine.h
     Source/Engines/Oceanic/OceanicEngine.cpp
+    Source/Engines/Optic/OpticEngine.h
+    Source/Engines/Optic/OpticEngine.cpp
 
     # Export pipeline
     Source/Export/XPNCoverArt.h
@@ -103,6 +105,7 @@ target_sources(XOmnibus PRIVATE
     Source/UI/XOmnibusEditor.h
     Source/UI/PlaySurface/PlaySurface.h
     Source/UI/CouplingStrip/CouplingStripEditor.h
+    Source/UI/OpticVisualizer/OpticVisualizer.h
 
     # Main processor
     Source/XOmnibusProcessor.h

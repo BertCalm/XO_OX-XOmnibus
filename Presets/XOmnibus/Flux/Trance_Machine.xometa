@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "name": "Trance Machine",
+  "mood": "Flux",
+  "engines": [
+    "Optic",
+    "Oblong",
+    "Odyssey"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "AutoPulse 16th-note trance engine — OPTIC's rhythmic pulse drives Oblong's filter and Odyssey's pitch for classic trance arpeggiation without MIDI.",
+  "tags": [
+    "trance",
+    "autopulse",
+    "arpeggio",
+    "evolving",
+    "autoplay"
+  ],
+  "macroLabels": [
+    "PULSE RATE",
+    "MOVEMENT",
+    "FILTER SWEEP",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": 140,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.5,
+    "movement": 0.95,
+    "density": 0.7,
+    "space": 0.55,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.75,
+      "optic_inputGain": 1.2,
+      "optic_autoPulse": 1,
+      "optic_pulseRate": 4.0,
+      "optic_pulseShape": 0.35,
+      "optic_pulseSwing": 0.12,
+      "optic_pulseEvolve": 0.7,
+      "optic_pulseSubdiv": 0.7,
+      "optic_pulseAccent": 0.8,
+      "optic_modDepth": 0.65,
+      "optic_modMixPulse": 0.7,
+      "optic_modMixSpec": 0.4,
+      "optic_vizMode": 2,
+      "optic_vizFeedback": 0.75,
+      "optic_vizSpeed": 1.4,
+      "optic_vizIntensity": 0.85
+    },
+    "Oblong": {
+      "bob_fltCutoff": 2000.0,
+      "bob_fltReso": 0.6
+    },
+    "Odyssey": {
+      "odyssey_detune": 0.15
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Oblong",
+        "type": "AmpToFilter",
+        "amount": 0.75
+      },
+      {
+        "engineA": "Optic",
+        "engineB": "Odyssey",
+        "type": "AmpToPitch",
+        "amount": 0.3
+      },
+      {
+        "engineA": "Oblong",
+        "engineB": "Optic",
+        "type": "AudioToFM",
+        "amount": 0.4
+      }
+    ]
+  },
+  "sequencer": null
+}

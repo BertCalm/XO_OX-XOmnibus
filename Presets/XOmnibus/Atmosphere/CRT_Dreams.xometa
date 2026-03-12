@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "name": "CRT Dreams",
+  "mood": "Atmosphere",
+  "engines": [
+    "Optic",
+    "Odyssey"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Slow-evolving ambient — OPTIC's spectrum analysis gently modulates Odyssey's drift pad. Milkdrop visualization creates organic movement over minutes, not seconds.",
+  "tags": [
+    "ambient",
+    "evolving",
+    "spectral",
+    "pad",
+    "slow"
+  ],
+  "macroLabels": [
+    "REACTIVITY",
+    "DRIFT",
+    "SPACE",
+    "INTENSITY"
+  ],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.7,
+    "movement": 0.6,
+    "density": 0.3,
+    "space": 0.9,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.5,
+      "optic_inputGain": 0.8,
+      "optic_autoPulse": 0,
+      "optic_pulseRate": 0.5,
+      "optic_pulseShape": 0.8,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseEvolve": 0.3,
+      "optic_pulseSubdiv": 0.0,
+      "optic_pulseAccent": 0.3,
+      "optic_modDepth": 0.35,
+      "optic_modMixPulse": 0.0,
+      "optic_modMixSpec": 0.8,
+      "optic_vizMode": 2,
+      "optic_vizFeedback": 0.9,
+      "optic_vizSpeed": 0.3,
+      "optic_vizIntensity": 0.5
+    },
+    "Odyssey": {
+      "odyssey_detune": 0.12
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Optic",
+        "type": "AudioToFM",
+        "amount": 0.5
+      },
+      {
+        "engineA": "Optic",
+        "engineB": "Odyssey",
+        "type": "AmpToFilter",
+        "amount": 0.3
+      },
+      {
+        "engineA": "Optic",
+        "engineB": "Odyssey",
+        "type": "LFOToPitch",
+        "amount": 0.15
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "name": "Phosphor Pulse",
+  "mood": "Flux",
+  "engines": [
+    "Optic",
+    "Overdub"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "AutoPulse trance throb — OPTIC drives a deep Overdub sub bass with evolving kick-like modulation. Turn on and let it breathe.",
+  "tags": [
+    "trance",
+    "autopulse",
+    "evolving",
+    "bass",
+    "rhythmic"
+  ],
+  "macroLabels": [
+    "PULSE RATE",
+    "EVOLVE",
+    "BASS DEPTH",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": 138,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.75,
+    "movement": 0.9,
+    "density": 0.65,
+    "space": 0.4,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.8,
+      "optic_inputGain": 1.5,
+      "optic_autoPulse": 1,
+      "optic_pulseRate": 2.3,
+      "optic_pulseShape": 0.15,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseEvolve": 0.6,
+      "optic_pulseSubdiv": 0.0,
+      "optic_pulseAccent": 0.85,
+      "optic_modDepth": 0.7,
+      "optic_modMixPulse": 0.8,
+      "optic_modMixSpec": 0.3,
+      "optic_vizMode": 2,
+      "optic_vizFeedback": 0.7,
+      "optic_vizSpeed": 1.0,
+      "optic_vizIntensity": 0.8
+    },
+    "Overdub": {
+      "dub_oscWave": 0,
+      "dub_oscOctave": 0,
+      "dub_oscTune": 0.0,
+      "dub_oscPwm": 0.5,
+      "dub_subLevel": 0.85,
+      "dub_noiseLevel": 0.0,
+      "dub_drift": 0.03,
+      "dub_level": 0.8,
+      "dub_filterMode": 0,
+      "dub_filterCutoff": 400.0,
+      "dub_filterReso": 0.25,
+      "dub_filterEnvAmt": 0.5,
+      "dub_attack": 0.003,
+      "dub_decay": 0.4,
+      "dub_sustain": 0.5,
+      "dub_release": 0.2,
+      "dub_pitchEnvDepth": 12.0,
+      "dub_pitchEnvDecay": 0.02,
+      "dub_lfoRate": 0.5,
+      "dub_lfoDepth": 0.0,
+      "dub_lfoDest": 0,
+      "dub_sendLevel": 0.3,
+      "dub_returnLevel": 0.4,
+      "dub_dryLevel": 0.9,
+      "dub_driveAmount": 2.5,
+      "dub_delayTime": 0.375,
+      "dub_delayFeedback": 0.35,
+      "dub_delayWear": 0.2,
+      "dub_delayWow": 0.08,
+      "dub_delayMix": 0.15,
+      "dub_reverbSize": 0.25,
+      "dub_reverbDamp": 0.6,
+      "dub_reverbMix": 0.1,
+      "dub_voiceMode": 1,
+      "dub_glide": 0.0,
+      "dub_polyphony": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Overdub",
+        "type": "AmpToFilter",
+        "amount": 0.65
+      },
+      {
+        "engineA": "Optic",
+        "engineB": "Overdub",
+        "type": "RhythmToBlend",
+        "amount": 0.4
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -54,6 +54,7 @@ and mutate into sounds impossible with any single synth.
 | OBSCURA | XObscura | Daguerreotype Silver `#8A9BA8` |
 | OCEANIC | XOceanic | Phosphorescent Teal `#00B4A0` |
 | OVERBITE | XOverbite | Fang White `#F0EDE8` |
+| OPTIC | XOptic | Phosphor Green `#00FF41` |
 
 ### Engine ID vs Parameter Prefix
 
@@ -70,6 +71,7 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Obese | `fat_` | `fat_satDrive` |
 | Overbite | `poss_` | `poss_biteDepth` |
 | Onset | `onset_` | `onset_noiseLevel` |
+| Optic | `optic_` | `optic_pulseRate` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
@@ -86,6 +88,8 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Core/MegaCouplingMatrix.h` | Cross-engine modulation |
 | `Source/Core/PresetManager.h` | .xometa loading/saving |
 | `Source/Engines/*/` | Engine adapter modules |
+| `Source/Engines/Optic/OpticEngine.h` | Visual modulation engine + AutoPulse |
+| `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
 | `Source/DSP/` | Shared DSP library |
 | `Source/UI/` | Gallery Model UI components |
 | `Source/Export/` | XPN export pipeline |
