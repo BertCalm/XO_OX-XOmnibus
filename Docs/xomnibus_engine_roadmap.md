@@ -1,6 +1,6 @@
 # XOmnibus — Engine Expansion Roadmap
 *Gallery Additions: OVERBITE (XOverbite) + OPAL (XOpal) → then Volume 2 engines*
-*Document version: 2.0 | March 2026*
+*Document version: 2.1 | March 2026 — Added XOcelot (OCELOT) to Volume 2 queue*
 
 ---
 
@@ -261,16 +261,25 @@ Q1 2028
 Q2 2028
 ┌─────────────────────────────────────────────────────────┐
 │ XOblivion Phase 2  ████████████████                       │
+│ XOcelot Phase 0-1              ████████                   │
 └─────────────────────────────────────────────────────────┘
 
 Q3 2028
 ┌─────────────────────────────────────────────────────────┐
 │ XOblivion Phase 3-4  ████████                             │
 │ XOblivion Gallery Install     ████                        │
+│ XOcelot Phase 2          ████████████████                  │
 └─────────────────────────────────────────────────────────┘
 
-Q4 2028+
+Q4 2028
 ┌─────────────────────────────────────────────────────────┐
+│ XOcelot Phase 2 (cont.)  ████████                         │
+│ XOcelot Phase 3-4            ████████████                  │
+└─────────────────────────────────────────────────────────┘
+
+Q1 2029
+┌─────────────────────────────────────────────────────────┐
+│ XOcelot Gallery Install  ████                             │
 │ XOntara Phase 0-4 (if pipeline proven)  ████████████████ │
 └─────────────────────────────────────────────────────────┘
 ```
@@ -303,6 +312,10 @@ When both engines are installed, these are the priority cross-engine presets:
 5. **OVERWORLD × OVERBITE** — Chip Bass — FM chip audio FM-modulating the bass
 6. **OPAL × OVERDUB** — Granular Dub — grain cloud through tape echo + spring
 7. **ONSET × OVERBITE** — Living Texture — snare envelope driving Bite macro
+8. **OCELOT × OVERDUB** — Tropical Dub — ecosystem output through tape echo/spring chain
+9. **ONSET × OCELOT** — Jungle Pulse — drum hits driving canopy filter + strata balance
+10. **OCELOT × OPAL** — Canopy Particles — kalimba/berimbau textures granulated into clouds
+11. **OVERWORLD × OCELOT** — Chip Chop — chip audio bit-crushed through SP-1200 mangler
 
 ---
 
@@ -319,7 +332,40 @@ When both engines are installed, these are the priority cross-engine presets:
 | 2 | XOBLICUA | **XObliqua** | OBLIQ | Kinematic phase-time — clave attractors as waveshaping | <15% | Concept only |
 | 3 | XOMATON | **XOccult** | OCCULT | 1D cellular automata — Wolfram rules as audio | <5% | Concept only |
 | 4 | XOFERRO (upgraded) | **XOblivion** | OBLIV | Electromagnetic hysteresis via pre-computed LUTs — magnetic memory, kinetic mass, Barkhausen crackle | <10% | Concept only |
-| 5 | XOTARA | **XOntara** | ONTAR | Topological sympathetic resonance — 64-voice modal bank | <20% | Concept only (deferred to 2028+) |
+| 5 | — | **XOcelot** | OCELOT | Canopy-layered ecosystem synth — 4-strata cross-feeding (physical percussion + sample mangler + spectral pads + formant creatures) with biome system (Jungle/Underwater/Winter). Aesop Rock × Tropicália × rainforest. | <14% | Phase 0 concept brief |
+| 6 | XOTARA | **XOntara** | ONTAR | Topological sympathetic resonance — 64-voice modal bank | <20% | Concept only (deferred to 2028+) |
+
+### XOcelot Details
+
+- **Gallery code:** OCELOT
+- **Source instrument:** XOcelot (new — not yet built)
+- **Accent color:** Ocelot Tawny `#C5832B`
+- **Thesis:** Canopy-layered ecosystem synth — 4 interacting strata (Floor/Understory/Canopy/Emergent) with biome transformations
+- **Parameter prefix:** `ocelot_`
+- **Max voices:** 8
+- **CPU budget:** <14% (4-strata synthesis + cross-feed matrix + biome transforms)
+- **Concept brief:** `Docs/concepts/xocelot_concept_brief.md`
+
+**Why OCELOT belongs in the queue:**
+No engine models *interaction between internal synthesis layers* as the primary instrument. OCELOT fills the ecosystem/organic groove gap — physical-modeled Tropicália percussion, Aesop Rock-style sample mangling, spectral pads, and formant creature calls, all cross-feeding. The biome system (Jungle/Underwater/Winter) unlocks DKC-inspired Aether territory. High coupling potential with every existing engine.
+
+**Coupling Matrix (OCELOT)**
+
+| As Target | Source Engine | Type | Musical Effect |
+|-----------|--------------|------|----------------|
+| OCELOT receives | DUB | AudioToWavetable | Dub delay output chopped into Understory — dub meets hip-hop chop |
+| OCELOT receives | ONSET | AmpToFilter | Drum hits open Canopy spectral filter — rhythmic brightness |
+| OCELOT receives | ONSET | RhythmToBlend | Kick pattern shifts strata balance — jungle breathes with the beat |
+| OCELOT receives | BOB | AudioToWavetable | Warm fuzzy textures fed into Understory chop buffer — dusty warmth |
+| OCELOT receives | DRIFT | AudioToFM | Psychedelic sweeps FM-modulate Canopy oscillator |
+| OCELOT receives | OVERWORLD | AudioToWavetable | Chip audio chopped and bit-crushed through SP-1200 mangler |
+
+| As Source | Target Engine | Type | Musical Effect |
+|-----------|--------------|------|----------------|
+| OCELOT sends | DUB | getSample | Ecosystem output through dub echo — tropical dub |
+| OCELOT sends | OPAL | AudioToWavetable | Percussion textures granulated into clouds — kalimba particles |
+| OCELOT sends | FAT | getSample | Creature calls fattened into massive formant stacks |
+| OCELOT sends | DRIFT | getSample | Ecosystem as starting point for DRIFT's journey |
 
 ### Merged — OUROBOROS v2
 
