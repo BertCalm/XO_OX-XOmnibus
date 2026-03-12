@@ -24,7 +24,10 @@
     "preset-qa",
     "review",
     "new-xo-engine",
-    "debug-audio"
+    "debug-audio",
+    "research",
+    "feature-review",
+    "recommend"
   ],
   "context": [
     "skill-mining",
