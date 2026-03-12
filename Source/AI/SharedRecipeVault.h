@@ -103,9 +103,10 @@ public:
 
     struct VaultConfig
     {
-        juce::String apiBaseUrl;        // e.g. "https://api.xomnibus.com/vault/v1"
+        juce::String supabaseUrl;       // e.g. "https://abcdefg.supabase.co"
+        juce::String supabaseAnonKey;   // Supabase anon/public key
         juce::String displayName = "Anonymous";
-        juce::String userToken;         // Auth token (from optional XO account)
+        juce::String authorToken;       // Hashed token for delete rights (device-derived)
         int timeoutMs = 15000;
     };
 
@@ -130,7 +131,7 @@ public:
     bool isConfigured() const
     {
         std::lock_guard<std::mutex> lock (configMutex);
-        return cfg.apiBaseUrl.isNotEmpty();
+        return cfg.supabaseUrl.isNotEmpty() && cfg.supabaseAnonKey.isNotEmpty();
     }
 
     //--------------------------------------------------------------------------
@@ -151,54 +152,67 @@ public:
             localCfg = cfg;
         }
 
-        if (localCfg.apiBaseUrl.isEmpty())
+        if (localCfg.supabaseUrl.isEmpty())
             return { false, {}, "Vault not configured" };
 
-        // Parse recipe to extract metadata
+        // Parse recipe to extract metadata for the row
         auto recipe = juce::JSON::parse (recipeJSON);
         if (! recipe.isObject())
             return { false, {}, "Invalid recipe JSON" };
 
-        // Build share payload
-        auto payload = std::make_unique<juce::DynamicObject>();
-        payload->setProperty ("recipe", recipe);
-        payload->setProperty ("description", description);
-        payload->setProperty ("authorName", localCfg.displayName);
+        // Extract title, mood, engines from recipe content
+        auto title = recipe.getProperty ("name", "Untitled").toString();
+        auto mood = recipe.getProperty ("mood", "").toString();
 
-        juce::Array<juce::var> tagArray;
+        juce::Array<juce::var> enginesArray;
+        if (auto* engArr = recipe.getProperty ("engines", {}).getArray())
+            for (const auto& e : *engArr)
+                enginesArray.add (e.getProperty ("engineId", "").toString());
+
+        juce::Array<juce::var> tagsArray;
         for (const auto& tag : tags)
-            tagArray.add (tag);
-        payload->setProperty ("tags", tagArray);
+            tagsArray.add (tag);
 
-        payload->setProperty ("appVersion", "1.0.0");
-        payload->setProperty ("timestamp", juce::Time::currentTimeMillis());
+        // Build PostgREST row
+        auto row = std::make_unique<juce::DynamicObject>();
+        row->setProperty ("title", title);
+        row->setProperty ("description", description);
+        row->setProperty ("author_name", localCfg.displayName);
+        row->setProperty ("author_token", localCfg.authorToken);
+        row->setProperty ("mood", mood);
+        row->setProperty ("engines", enginesArray);
+        row->setProperty ("tags", tagsArray);
+        row->setProperty ("app_version", "1.0.0");
+        row->setProperty ("recipe_json", recipe);
 
-        juce::String jsonBody = juce::JSON::toString (juce::var (payload.release()));
+        juce::String jsonBody = juce::JSON::toString (juce::var (row.release()));
 
-        // Send
-        juce::String endpoint = localCfg.apiBaseUrl + "/recipes";
+        // POST to Supabase PostgREST
+        juce::String endpoint = localCfg.supabaseUrl + "/rest/v1/shared_recipes";
         juce::URL url (endpoint);
         url = url.withPOSTData (jsonBody);
 
-        auto headers = buildHeaders (localCfg);
-
         auto options = juce::URL::InputStreamOptions (juce::URL::ParameterHandling::inPostBody)
                            .withConnectionTimeoutMs (localCfg.timeoutMs)
-                           .withExtraHeaders (headers);
+                           .withExtraHeaders (supabaseHeaders (localCfg)
+                                              + "Prefer: return=representation\r\n");
 
         auto stream = url.createInputStream (options);
-
         if (stream == nullptr)
             return { false, {}, "Connection failed" };
 
         auto response = stream->readEntireStreamAsString();
         auto responseJSON = juce::JSON::parse (response);
 
-        if (responseJSON.isObject())
+        // PostgREST returns an array with the inserted row
+        if (auto* arr = responseJSON.getArray())
         {
-            auto id = responseJSON.getProperty ("recipeId", "").toString();
-            if (id.isNotEmpty())
-                return { true, id, {} };
+            if (arr->size() > 0)
+            {
+                auto id = (*arr)[0].getProperty ("recipe_id", "").toString();
+                if (id.isNotEmpty())
+                    return { true, id, {} };
+            }
         }
 
         return { false, {}, "Server error: " + response.substring (0, 200) };
@@ -206,6 +220,7 @@ public:
 
     //--------------------------------------------------------------------------
     // Browse community recipes (background thread)
+    // Uses the vault-search Edge Function for full-text search + pagination
 
     BrowseResult browse (const BrowseFilter& filter)
     {
@@ -215,11 +230,11 @@ public:
             localCfg = cfg;
         }
 
-        if (localCfg.apiBaseUrl.isEmpty())
+        if (localCfg.supabaseUrl.isEmpty())
             return { {}, 0, 0, false, "Vault not configured" };
 
-        // Build query URL
-        juce::String endpoint = localCfg.apiBaseUrl + "/recipes?";
+        // Call the vault-search Edge Function
+        juce::String endpoint = localCfg.supabaseUrl + "/functions/v1/vault-search?";
         endpoint += "page=" + juce::String (filter.page);
         endpoint += "&pageSize=" + juce::String (filter.pageSize);
 
@@ -242,7 +257,7 @@ public:
         juce::URL url (endpoint);
         auto options = juce::URL::InputStreamOptions (juce::URL::ParameterHandling::inAddress)
                            .withConnectionTimeoutMs (localCfg.timeoutMs)
-                           .withExtraHeaders (buildHeaders (localCfg));
+                           .withExtraHeaders (supabaseHeaders (localCfg));
 
         auto stream = url.createInputStream (options);
         if (stream == nullptr)
@@ -270,6 +285,7 @@ public:
 
     //--------------------------------------------------------------------------
     // Download a specific recipe (background thread)
+    // Uses PostgREST direct query
 
     DownloadResult downloadRecipe (const juce::String& recipeId)
     {
@@ -279,16 +295,18 @@ public:
             localCfg = cfg;
         }
 
-        if (localCfg.apiBaseUrl.isEmpty())
+        if (localCfg.supabaseUrl.isEmpty())
             return { false, {}, {}, "Vault not configured" };
 
-        juce::String endpoint = localCfg.apiBaseUrl + "/recipes/"
-                                + juce::URL::addEscapeChars (recipeId, true);
+        // PostgREST query: select single row by recipe_id
+        juce::String endpoint = localCfg.supabaseUrl + "/rest/v1/shared_recipes"
+                                "?recipe_id=eq." + juce::URL::addEscapeChars (recipeId, true)
+                                + "&select=*";
 
         juce::URL url (endpoint);
         auto options = juce::URL::InputStreamOptions (juce::URL::ParameterHandling::inAddress)
                            .withConnectionTimeoutMs (localCfg.timeoutMs)
-                           .withExtraHeaders (buildHeaders (localCfg));
+                           .withExtraHeaders (supabaseHeaders (localCfg));
 
         auto stream = url.createInputStream (options);
         if (stream == nullptr)
@@ -297,23 +315,26 @@ public:
         auto response = stream->readEntireStreamAsString();
         auto json = juce::JSON::parse (response);
 
-        if (! json.isObject())
-            return { false, {}, {}, "Invalid response" };
+        // PostgREST returns an array
+        auto* arr = json.getArray();
+        if (arr == nullptr || arr->size() == 0)
+            return { false, {}, {}, "Recipe not found" };
+
+        auto row = (*arr)[0];
 
         DownloadResult result;
         result.success = true;
-        result.metadata = parseMetadata (json.getProperty ("metadata", {}));
-
-        auto recipeData = json.getProperty ("recipe", {});
-        result.recipeJSON = juce::JSON::toString (recipeData);
+        result.metadata = parseMetadataFromRow (row);
+        result.recipeJSON = juce::JSON::toString (row.getProperty ("recipe_json", {}));
 
         return result;
     }
 
     //--------------------------------------------------------------------------
     // Thumbs up (background thread)
+    // Uses the vault-thumbsup Edge Function for dedup
 
-    bool thumbsUp (const juce::String& recipeId)
+    bool thumbsUp (const juce::String& recipeId, const juce::String& voterHash)
     {
         VaultConfig localCfg;
         {
@@ -321,18 +342,21 @@ public:
             localCfg = cfg;
         }
 
-        if (localCfg.apiBaseUrl.isEmpty()) return false;
+        if (localCfg.supabaseUrl.isEmpty()) return false;
 
-        juce::String endpoint = localCfg.apiBaseUrl + "/recipes/"
-                                + juce::URL::addEscapeChars (recipeId, true)
-                                + "/thumbsup";
+        auto body = std::make_unique<juce::DynamicObject>();
+        body->setProperty ("recipeId", recipeId);
+        body->setProperty ("voterHash", voterHash);
 
+        juce::String jsonBody = juce::JSON::toString (juce::var (body.release()));
+
+        juce::String endpoint = localCfg.supabaseUrl + "/functions/v1/vault-thumbsup";
         juce::URL url (endpoint);
-        url = url.withPOSTData ("{}");
+        url = url.withPOSTData (jsonBody);
 
         auto options = juce::URL::InputStreamOptions (juce::URL::ParameterHandling::inPostBody)
                            .withConnectionTimeoutMs (localCfg.timeoutMs)
-                           .withExtraHeaders (buildHeaders (localCfg));
+                           .withExtraHeaders (supabaseHeaders (localCfg));
 
         auto stream = url.createInputStream (options);
         return stream != nullptr;
@@ -340,6 +364,7 @@ public:
 
     //--------------------------------------------------------------------------
     // Delete own recipe (background thread)
+    // Uses PostgREST with author_token match via RLS
 
     bool deleteOwnRecipe (const juce::String& recipeId)
     {
@@ -349,20 +374,21 @@ public:
             localCfg = cfg;
         }
 
-        if (localCfg.apiBaseUrl.isEmpty() || localCfg.userToken.isEmpty())
+        if (localCfg.supabaseUrl.isEmpty() || localCfg.authorToken.isEmpty())
             return false;
 
-        // DELETE requires auth token — only works for user's own recipes
-        juce::String endpoint = localCfg.apiBaseUrl + "/recipes/"
-                                + juce::URL::addEscapeChars (recipeId, true);
+        // PostgREST DELETE with filter
+        juce::String endpoint = localCfg.supabaseUrl + "/rest/v1/shared_recipes"
+                                "?recipe_id=eq." + juce::URL::addEscapeChars (recipeId, true);
 
         juce::URL url (endpoint);
 
-        // Use custom header to signal DELETE (JUCE URL doesn't have native DELETE)
+        // Pass author token via header for RLS policy check
         auto options = juce::URL::InputStreamOptions (juce::URL::ParameterHandling::inAddress)
                            .withConnectionTimeoutMs (localCfg.timeoutMs)
-                           .withExtraHeaders (buildHeaders (localCfg)
-                                              + "X-HTTP-Method-Override: DELETE\r\n");
+                           .withExtraHeaders (supabaseHeaders (localCfg)
+                                              + "X-HTTP-Method-Override: DELETE\r\n"
+                                              + "x-author-token: " + localCfg.authorToken + "\r\n");
 
         auto stream = url.createInputStream (options);
         return stream != nullptr;
@@ -395,16 +421,16 @@ private:
     mutable std::mutex configMutex;
     VaultConfig cfg;
 
-    static juce::String buildHeaders (const VaultConfig& c)
+    static juce::String supabaseHeaders (const VaultConfig& c)
     {
         juce::String headers;
         headers += "Content-Type: application/json\r\n";
-        headers += "X-XOmnibus-Vault: v1\r\n";
-        if (c.userToken.isNotEmpty())
-            headers += "Authorization: Bearer " + c.userToken + "\r\n";
+        headers += "apikey: " + c.supabaseAnonKey + "\r\n";
+        headers += "Authorization: Bearer " + c.supabaseAnonKey + "\r\n";
         return headers;
     }
 
+    /// Parse metadata from Edge Function response (camelCase keys)
     static RecipeMetadata parseMetadata (const juce::var& json)
     {
         RecipeMetadata m;
@@ -425,6 +451,34 @@ private:
                 m.engines.add (e.toString());
 
         if (auto* arr = json.getProperty ("tags", {}).getArray())
+            for (const auto& t : *arr)
+                m.tags.add (t.toString());
+
+        return m;
+    }
+
+    /// Parse metadata from PostgREST row (snake_case keys)
+    static RecipeMetadata parseMetadataFromRow (const juce::var& row)
+    {
+        RecipeMetadata m;
+        m.recipeId        = row.getProperty ("recipe_id", "").toString();
+        m.title           = row.getProperty ("title", "").toString();
+        m.description     = row.getProperty ("description", "").toString();
+        m.authorName      = row.getProperty ("author_name", "Anonymous").toString();
+        m.mood            = row.getProperty ("mood", "").toString();
+        m.thumbsUp        = static_cast<int> (row.getProperty ("thumbs_up", 0));
+        m.isStaffPick     = static_cast<bool> (row.getProperty ("is_staff_pick", false));
+        m.isRemix         = static_cast<bool> (row.getProperty ("is_remix", false));
+        m.remixOfId       = row.getProperty ("remix_of_id", "").toString();
+        m.appVersion      = row.getProperty ("app_version", "").toString();
+        m.sharedTimestamp  = static_cast<int64_t> (juce::Time::fromISO8601 (
+            row.getProperty ("shared_at", "").toString()).toMilliseconds());
+
+        if (auto* arr = row.getProperty ("engines", {}).getArray())
+            for (const auto& e : *arr)
+                m.engines.add (e.toString());
+
+        if (auto* arr = row.getProperty ("tags", {}).getArray())
             for (const auto& t : *arr)
                 m.tags.add (t.toString());
 

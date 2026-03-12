@@ -334,27 +334,50 @@ public:
         juce::String message;
     };
 
-    /// Send batch to insights endpoint.
-    /// MUST be called from a background thread — never from audio or UI thread.
-    TransmitResult transmitBatch (const InsightsBatch& batch,
-                                  const juce::String& endpointUrl) const
+    /// Supabase connection config
+    struct SupabaseConfig
     {
-        if (endpointUrl.isEmpty())
-            return { false, "No endpoint configured" };
+        juce::String projectUrl;   // e.g. "https://abcdefg.supabase.co"
+        juce::String anonKey;      // Supabase anon/public key
+    };
+
+    void setSupabaseConfig (SupabaseConfig config)
+    {
+        std::lock_guard<std::mutex> lock (dataMutex);
+        supabase = std::move (config);
+    }
+
+    /// Send batch to Supabase PostgREST endpoint.
+    /// MUST be called from a background thread — never from audio or UI thread.
+    TransmitResult transmitBatch (const InsightsBatch& batch) const
+    {
+        SupabaseConfig cfg;
+        {
+            std::lock_guard<std::mutex> lock (dataMutex);
+            cfg = supabase;
+        }
+
+        if (cfg.projectUrl.isEmpty() || cfg.anonKey.isEmpty())
+            return { false, "Supabase not configured" };
 
         // TLS only
-        if (! endpointUrl.startsWith ("https://"))
-            return { false, "HTTPS required for telemetry" };
+        if (! cfg.projectUrl.startsWith ("https://"))
+            return { false, "HTTPS required" };
 
-        juce::String jsonBody = batchToJSON (batch);
+        // Format as Supabase PostgREST row insert
+        juce::String jsonBody = batchToSupabaseRow (batch);
 
-        juce::URL url (endpointUrl);
+        juce::String endpoint = cfg.projectUrl + "/rest/v1/insight_batches";
+        juce::URL url (endpoint);
         url = url.withPOSTData (jsonBody);
 
         auto options = juce::URL::InputStreamOptions (juce::URL::ParameterHandling::inPostBody)
                            .withConnectionTimeoutMs (10000)
-                           .withExtraHeaders ("Content-Type: application/json\r\n"
-                                              "X-XOmnibus-Insights: v1\r\n");
+                           .withExtraHeaders (
+                               "Content-Type: application/json\r\n"
+                               "apikey: " + cfg.anonKey + "\r\n"
+                               "Authorization: Bearer " + cfg.anonKey + "\r\n"
+                               "Prefer: return=minimal\r\n");
 
         auto stream = url.createInputStream (options);
 
@@ -367,11 +390,75 @@ public:
 
 private:
     PrivacyConfig privacy;
+    SupabaseConfig supabase;
     mutable std::mutex dataMutex;
     InsightsBatch currentBatch;
 
     //--------------------------------------------------------------------------
-    // JSON serialization
+    // Supabase PostgREST row format (flat columns, Postgres arrays)
+
+    static juce::String batchToSupabaseRow (const InsightsBatch& b)
+    {
+        auto obj = std::make_unique<juce::DynamicObject>();
+
+        obj->setProperty ("batch_id", b.batchId);
+        obj->setProperty ("app_version", b.appVersion);
+        obj->setProperty ("platform", b.platform);
+
+        // Postgres INT[] as JSON arrays
+        auto toIntArray = [] (const auto& arr, int count)
+        {
+            juce::Array<juce::var> result;
+            for (int i = 0; i < count; ++i)
+                result.add (arr[static_cast<size_t> (i)]);
+            return result;
+        };
+
+        // Engine usage
+        obj->setProperty ("engine_slot_counts", toIntArray (b.engines.engineSlotCounts, 21));
+        obj->setProperty ("engine_primary_counts", toIntArray (b.engines.enginePrimaryCounts, 21));
+        obj->setProperty ("total_sessions", b.engines.totalSessions);
+
+        // Coupling
+        obj->setProperty ("coupling_type_counts", toIntArray (b.coupling.couplingTypeCounts, 12));
+        obj->setProperty ("coupling_total_routes", b.coupling.totalCouplingRoutes);
+
+        // DNA histograms
+        obj->setProperty ("dna_brightness", toIntArray (b.dna.brightness, 5));
+        obj->setProperty ("dna_warmth", toIntArray (b.dna.warmth, 5));
+        obj->setProperty ("dna_movement", toIntArray (b.dna.movement, 5));
+        obj->setProperty ("dna_density", toIntArray (b.dna.density, 5));
+        obj->setProperty ("dna_space", toIntArray (b.dna.space, 5));
+        obj->setProperty ("dna_aggression", toIntArray (b.dna.aggression, 5));
+        obj->setProperty ("dna_presets_saved", b.dna.totalPresetsSaved);
+
+        // Recipes
+        obj->setProperty ("recipe_mood_counts", toIntArray (b.recipes.moodCounts, 6));
+        obj->setProperty ("recipe_factory_loaded", b.recipes.factoryRecipesLoaded);
+        obj->setProperty ("recipe_user_created", b.recipes.userRecipesCreated);
+        obj->setProperty ("recipe_modified_after_load", b.recipes.recipesModifiedAfterLoad);
+
+        // AI themes
+        obj->setProperty ("ai_bass", b.aiThemes.bassQueries);
+        obj->setProperty ("ai_pad", b.aiThemes.padQueries);
+        obj->setProperty ("ai_lead", b.aiThemes.leadQueries);
+        obj->setProperty ("ai_fx", b.aiThemes.fxQueries);
+        obj->setProperty ("ai_percussion", b.aiThemes.percussionQueries);
+        obj->setProperty ("ai_ambient", b.aiThemes.ambientQueries);
+        obj->setProperty ("ai_aggressive", b.aiThemes.aggressiveQueries);
+        obj->setProperty ("ai_experimental", b.aiThemes.experimentalQueries);
+        obj->setProperty ("ai_total", b.aiThemes.totalQueries);
+
+        // FX
+        obj->setProperty ("fx_stage_counts", toIntArray (b.fx.fxStageCounts, 18));
+        obj->setProperty ("fx_vibe_sweet", b.fx.vibeKnobSweetCount);
+        obj->setProperty ("fx_vibe_grit", b.fx.vibeKnobGritCount);
+
+        return juce::JSON::toString (juce::var (obj.release()));
+    }
+
+    //--------------------------------------------------------------------------
+    // JSON serialization (preview/persistence format — nested for readability)
 
     static juce::String batchToJSON (const InsightsBatch& b)
     {
