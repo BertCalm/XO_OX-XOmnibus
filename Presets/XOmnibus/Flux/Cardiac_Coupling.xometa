@@ -4,7 +4,7 @@
   "mood": "Flux",
   "engines": [
     "Oblong",
-    "XOrganon"
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,7 +45,7 @@
       "bob_lfo1Rate": 1.0,
       "bob_lfo1Depth": 0.2
     },
-    "XOrganon": {
+    "Organon": {
       "organon_metabolicRate": 1.2,
       "organon_enzymeSelect": 800.0,
       "organon_catalystDrive": 0.5,
@@ -62,13 +62,13 @@
     "pairs": [
       {
         "engineA": "Oblong",
-        "engineB": "XOrganon",
+        "engineB": "Organon",
         "type": "Audio->FM",
         "amount": 0.4
       },
       {
         "engineA": "Oblong",
-        "engineB": "XOrganon",
+        "engineB": "Organon",
         "type": "Rhythm->Blend",
         "amount": 0.5
       }

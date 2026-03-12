@@ -4,7 +4,7 @@
   "mood": "Atmosphere",
   "engines": [
     "Odyssey",
-    "XOrganon"
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -37,7 +37,7 @@
       "drift_reverb_size": 0.85,
       "drift_master_gain": -4.0
     },
-    "XOrganon": {
+    "Organon": {
       "organon_metabolicRate": 0.3,
       "organon_enzymeSelect": 800.0,
       "organon_catalystDrive": 0.4,
@@ -54,13 +54,13 @@
     "pairs": [
       {
         "engineA": "Odyssey",
-        "engineB": "XOrganon",
+        "engineB": "Organon",
         "type": "Audio->FM",
         "amount": 0.4
       },
       {
         "engineA": "Odyssey",
-        "engineB": "XOrganon",
+        "engineB": "Organon",
         "type": "Env->Morph",
         "amount": 0.3
       }

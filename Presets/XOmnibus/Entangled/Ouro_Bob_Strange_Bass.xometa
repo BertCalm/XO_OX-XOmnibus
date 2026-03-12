@@ -3,7 +3,7 @@
   "name": "Strange Bass",
   "mood": "Entangled",
   "engines": [
-    "XOuroboros",
+    "Ouroboros",
     "Oblong"
   ],
   "author": "XO_OX",
@@ -30,7 +30,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 1,
       "ouro_rate": 65.0,
       "ouro_chaosIndex": 0.25,
@@ -87,7 +87,7 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "XOuroboros",
+        "engineA": "Ouroboros",
         "engineB": "Oblong",
         "type": "Env->Morph",
         "amount": 0.35

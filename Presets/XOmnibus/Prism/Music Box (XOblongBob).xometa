@@ -3,7 +3,7 @@
   "name": "Music Box",
   "mood": "Prism",
   "engines": [
-    "XOblong"
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -23,12 +23,12 @@
   "tempo": null,
   "created": "2026-03-08",
   "legacy": {
-    "sourceInstrument": "XOblong",
+    "sourceInstrument": "Oblong",
     "sourceCategory": "Keys & Bells",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOblong": {
+    "Oblong": {
       "oscA_wave": 1.0,
       "oscA_shape": 0.5,
       "oscA_drift": 0.06,

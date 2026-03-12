@@ -4,7 +4,7 @@
   "mood": "Entangled",
   "engines": [
     "Obese",
-    "XOrganon"
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -43,7 +43,7 @@
       "fat_release": 1.0,
       "fat_level": 0.6
     },
-    "XOrganon": {
+    "Organon": {
       "organon_metabolicRate": 1.5,
       "organon_enzymeSelect": 2000.0,
       "organon_catalystDrive": 0.8,
@@ -60,7 +60,7 @@
     "pairs": [
       {
         "engineA": "Obese",
-        "engineB": "XOrganon",
+        "engineB": "Organon",
         "type": "Audio->FM",
         "amount": 0.7
       }

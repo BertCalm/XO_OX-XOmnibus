@@ -3,7 +3,7 @@
   "name": "Opal Sheen",
   "mood": "Prism",
   "engines": [
-    "XOpal"
+    "Opal"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -29,7 +29,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "XOpal": {
+    "Opal": {
       "opal_source": 0,
       "opal_grainSize": 25.0,
       "opal_density": 80.0,

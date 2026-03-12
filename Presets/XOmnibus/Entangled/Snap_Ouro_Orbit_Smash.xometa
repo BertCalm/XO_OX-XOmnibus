@@ -4,7 +4,7 @@
   "mood": "Entangled",
   "engines": [
     "OddfeliX",
-    "XOuroboros"
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,7 +45,7 @@
       "snap_snapTone": 0.6,
       "snap_level": 0.75
     },
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 0,
       "ouro_rate": 130.0,
       "ouro_chaosIndex": 0.45,
@@ -60,7 +60,7 @@
     "pairs": [
       {
         "engineA": "OddfeliX",
-        "engineB": "XOuroboros",
+        "engineB": "Ouroboros",
         "type": "Audio->FM",
         "amount": 0.65
       }

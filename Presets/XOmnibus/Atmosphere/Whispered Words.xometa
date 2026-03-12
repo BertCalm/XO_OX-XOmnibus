@@ -3,7 +3,7 @@
   "name": "Whispered Words",
   "mood": "Atmosphere",
   "engines": [
-    "XOdyssey"
+    "Odyssey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -24,12 +24,12 @@
   "tempo": null,
   "created": "2026-03-08",
   "legacy": {
-    "sourceInstrument": "XOdyssey",
+    "sourceInstrument": "Odyssey",
     "sourceCategory": "Textures",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOdyssey": {
+    "Odyssey": {
       "noise_level": 0.3,
       "noise_type": 1.0,
       "osc_a_mode": 0.0,

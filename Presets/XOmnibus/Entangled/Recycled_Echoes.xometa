@@ -4,7 +4,7 @@
   "mood": "Entangled",
   "engines": [
     "Overdub",
-    "XOrganon"
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
       "dub_reverbSize": 0.7,
       "dub_reverbMix": 0.3
     },
-    "XOrganon": {
+    "Organon": {
       "organon_metabolicRate": 0.6,
       "organon_enzymeSelect": 1200.0,
       "organon_catalystDrive": 0.5,
@@ -64,7 +64,7 @@
     "pairs": [
       {
         "engineA": "Overdub",
-        "engineB": "XOrganon",
+        "engineB": "Organon",
         "type": "Audio->FM",
         "amount": 0.6
       }

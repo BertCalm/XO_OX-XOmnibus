@@ -3,7 +3,7 @@
   "name": "Perturbation Engine",
   "mood": "Entangled",
   "engines": [
-    "XOuroboros"
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -29,7 +29,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 1,
       "ouro_rate": 261.0,
       "ouro_chaosIndex": 0.5,

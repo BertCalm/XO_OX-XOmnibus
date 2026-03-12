@@ -3,7 +3,7 @@
   "name": "Growl Box",
   "mood": "Foundation",
   "engines": [
-    "XOblong"
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -23,12 +23,12 @@
   "tempo": null,
   "created": "2026-03-08",
   "legacy": {
-    "sourceInstrument": "XOblong",
+    "sourceInstrument": "Oblong",
     "sourceCategory": "Warm Bass",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOblong": {
+    "Oblong": {
       "oscA_wave": 3.0,
       "oscA_tune": -12.0,
       "oscA_shape": 0.65,

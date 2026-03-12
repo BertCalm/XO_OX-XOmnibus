@@ -4,7 +4,7 @@
   "mood": "Entangled",
   "engines": [
     "Odyssey",
-    "XOrganon"
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -39,7 +39,7 @@
       "drift_reverb_size": 0.7,
       "drift_master_gain": -3.0
     },
-    "XOrganon": {
+    "Organon": {
       "organon_metabolicRate": 0.4,
       "organon_enzymeSelect": 1000.0,
       "organon_catalystDrive": 0.45,
@@ -56,7 +56,7 @@
     "pairs": [
       {
         "engineA": "Odyssey",
-        "engineB": "XOrganon",
+        "engineB": "Organon",
         "type": "Env->Morph",
         "amount": 0.6
       }

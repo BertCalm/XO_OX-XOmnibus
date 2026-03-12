@@ -5,7 +5,7 @@
   "engines": [
     "OddfeliX",
     "Oblong",
-    "XOrganon"
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -50,7 +50,7 @@
       "bob_ampRelease": 0.5,
       "bob_level": 0.5
     },
-    "XOrganon": {
+    "Organon": {
       "organon_metabolicRate": 0.8,
       "organon_enzymeSelect": 1200.0,
       "organon_catalystDrive": 0.6,
@@ -73,7 +73,7 @@
       },
       {
         "engineA": "Oblong",
-        "engineB": "XOrganon",
+        "engineB": "Organon",
         "type": "Audio->FM",
         "amount": 0.6
       }

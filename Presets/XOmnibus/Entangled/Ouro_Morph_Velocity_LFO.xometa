@@ -3,7 +3,7 @@
   "name": "Velocity Morph",
   "mood": "Entangled",
   "engines": [
-    "XOuroboros",
+    "Ouroboros",
     "OddOscar"
   ],
   "author": "XO_OX",
@@ -30,7 +30,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 0,
       "ouro_rate": 130.0,
       "ouro_chaosIndex": 0.4,
@@ -62,7 +62,7 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "XOuroboros",
+        "engineA": "Ouroboros",
         "engineB": "OddOscar",
         "type": "LFO->Pitch",
         "amount": 0.4

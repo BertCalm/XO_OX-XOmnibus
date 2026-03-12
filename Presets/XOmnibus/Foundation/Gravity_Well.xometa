@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Gravity Well",
   "mood": "Foundation",
-  "engines": ["XOuroboros"],
+  "engines": ["Ouroboros"],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Rössler attractor pulled deep into sub territory. Heavy, grounded, slowly orbiting bass.",
@@ -13,7 +13,7 @@
   "created": "2026-03-10",
   "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
   "parameters": {
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 1,
       "ouro_rate": 65.0,
       "ouro_chaosIndex": 0.15,

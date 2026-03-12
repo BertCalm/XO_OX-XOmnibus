@@ -3,7 +3,7 @@
   "name": "Amber Haze",
   "mood": "Aether",
   "engines": [
-    "XOblong"
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -23,12 +23,12 @@
   "tempo": null,
   "created": "2026-03-08",
   "legacy": {
-    "sourceInstrument": "XOblong",
+    "sourceInstrument": "Oblong",
     "sourceCategory": "Dream Pads",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOblong": {
+    "Oblong": {
       "oscA_wave": 3.0,
       "oscA_drift": 0.38,
       "oscA_shape": 0.5,

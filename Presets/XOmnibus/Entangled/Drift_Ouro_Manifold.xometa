@@ -4,7 +4,7 @@
   "mood": "Entangled",
   "engines": [
     "Odyssey",
-    "XOuroboros"
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -70,7 +70,7 @@
       "drift_glide": 0.0,
       "drift_polyphony": 4
     },
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 3,
       "ouro_rate": 110.0,
       "ouro_chaosIndex": 0.35,
@@ -85,7 +85,7 @@
     "pairs": [
       {
         "engineA": "Odyssey",
-        "engineB": "XOuroboros",
+        "engineB": "Ouroboros",
         "type": "Env->Morph",
         "amount": 0.5
       }

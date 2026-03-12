@@ -3,7 +3,7 @@
   "name": "Chaos Metabolism",
   "mood": "Entangled",
   "engines": [
-    "XOuroboros",
+    "Ouroboros",
     "Organon"
   ],
   "author": "XO_OX",
@@ -30,7 +30,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 1,
       "ouro_rate": 95.0,
       "ouro_chaosIndex": 0.5,
@@ -54,7 +54,7 @@
   "coupling": {
     "pairs": [
       {
-        "engineA": "XOuroboros",
+        "engineA": "Ouroboros",
         "engineB": "Organon",
         "type": "Audio->FM",
         "amount": 0.55

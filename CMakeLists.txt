@@ -74,7 +74,6 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Onset/OnsetEngine.cpp
     Source/Engines/Overworld/OverworldEngine.h
     Source/Engines/Overworld/OverworldEngine.cpp
-    Source/Engines/Bite/BiteEngine.h
     Source/Engines/Opal/OpalDSP.h
     Source/Engines/Opal/OpalEngine.h
     Source/Engines/Opal/OpalEngine.cpp

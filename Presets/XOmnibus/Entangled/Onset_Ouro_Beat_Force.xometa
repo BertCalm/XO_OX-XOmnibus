@@ -4,7 +4,7 @@
   "mood": "Entangled",
   "engines": [
     "Onset",
-    "XOuroboros"
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -40,7 +40,7 @@
       "onset_body": 0.5,
       "onset_level": 0.7
     },
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 2,
       "ouro_rate": 200.0,
       "ouro_chaosIndex": 0.6,
@@ -55,7 +55,7 @@
     "pairs": [
       {
         "engineA": "Onset",
-        "engineB": "XOuroboros",
+        "engineB": "Ouroboros",
         "type": "Audio->FM",
         "amount": 0.7
       }

@@ -4,7 +4,7 @@
   "mood": "Entangled",
   "engines": [
     "Oblong",
-    "XOrganon"
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -46,7 +46,7 @@
       "bob_curAmount": 0.5,
       "bob_level": 0.55
     },
-    "XOrganon": {
+    "Organon": {
       "organon_metabolicRate": 1.5,
       "organon_enzymeSelect": 2000.0,
       "organon_catalystDrive": 0.6,
@@ -63,12 +63,12 @@
     "pairs": [
       {
         "engineA": "Oblong",
-        "engineB": "XOrganon",
+        "engineB": "Organon",
         "type": "Audio->FM",
         "amount": 0.45
       },
       {
-        "engineA": "XOrganon",
+        "engineA": "Organon",
         "engineB": "Oblong",
         "type": "Amp->Filter",
         "amount": 0.3

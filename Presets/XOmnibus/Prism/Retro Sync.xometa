@@ -3,7 +3,7 @@
   "name": "Retro Sync",
   "mood": "Prism",
   "engines": [
-    "XOdyssey"
+    "Odyssey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -22,12 +22,12 @@
   "tempo": null,
   "created": "2026-03-08",
   "legacy": {
-    "sourceInstrument": "XOdyssey",
+    "sourceInstrument": "Odyssey",
     "sourceCategory": "Leads",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOdyssey": {
+    "Odyssey": {
       "osc_a_mode": 0.0,
       "osc_a_shape": 0.0,
       "osc_a_level": 0.85,

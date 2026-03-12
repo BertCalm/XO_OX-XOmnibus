@@ -110,6 +110,7 @@ public:
                        float* leftOut, float* rightOut, int numSamples)
     {
         // Guard: if prepare() hasn't been called, pass audio through unchanged
+        jassert (bufferSize > 0);  // processBlock called before prepare()
         if (bufferSize <= 0)
         {
             if (leftIn != leftOut)
@@ -195,7 +196,7 @@ private:
         constexpr float twoPi = 6.28318530718f;
         float rc = 1.0f / (twoPi * hpFreq);
         float dt = 1.0f / static_cast<float> (sr);
-        hpCoeff = rc / (rc + dt);
+        hpCoeff = flushDenormal (rc / (rc + dt));
     }
 
     double sr = 44100.0;

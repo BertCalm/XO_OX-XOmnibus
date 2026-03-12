@@ -2,7 +2,7 @@
   "schema_version": 1,
   "name": "Strange Attractor",
   "mood": "Aether",
-  "engines": ["XOuroboros"],
+  "engines": ["Ouroboros"],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Lorenz attractor at default rate with high chaos, loose leash, and both projections at pi/4. The pure mathematical object, raw and alien.",
@@ -13,7 +13,7 @@
   "created": "2026-03-10",
   "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
   "parameters": {
-    "XOuroboros": {
+    "Ouroboros": {
       "ouro_topology": 0,
       "ouro_rate": 130.0,
       "ouro_chaosIndex": 0.7,

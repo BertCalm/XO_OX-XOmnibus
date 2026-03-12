@@ -3,7 +3,7 @@
   "name": "Warm Crackle",
   "mood": "Flux",
   "engines": [
-    "XOblong"
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -23,12 +23,12 @@
   "tempo": null,
   "created": "2026-03-08",
   "legacy": {
-    "sourceInstrument": "XOblong",
+    "sourceInstrument": "Oblong",
     "sourceCategory": "Lo-Fi Atmospheres",
     "sourcePresetName": null
   },
   "parameters": {
-    "XOblong": {
+    "Oblong": {
       "oscA_wave": 0.0,
       "oscA_drift": 0.3,
       "oscA_shape": 0.2,
