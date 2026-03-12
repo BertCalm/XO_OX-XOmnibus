@@ -46,6 +46,7 @@ and mutate into sounds impossible with any single synth.
 | ONSET | XOnset | Electric Blue `#0066FF` |
 | OVERWORLD | XOverworld | Neon Green `#39FF14` |
 | OPAL | XOpal | Lavender `#A78BFA` |
+| BITE | XOpossum | Moss Green `#4A7C59` |
 | ORGANON | XOrganon | Bioluminescent Cyan `#00CED1` |
 | OUROBOROS | XOuroboros | Strange Attractor Red `#FF2D2D` |
 | OBSIDIAN | XObsidian | Crystal White `#E8E0D8` |

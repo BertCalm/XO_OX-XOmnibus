@@ -20,6 +20,7 @@ inline const juce::StringArray validEngineNames {
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
     "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
+    "XOpal", "XOpossum",
     "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Bite"
 };
 
