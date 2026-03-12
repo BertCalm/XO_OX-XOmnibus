@@ -1,0 +1,24 @@
+{
+  "framework_version": "0.1.0",
+  "project": "XOmnibus",
+  "project_type": "synth-engine",
+  "primitives": [
+    "validate-fix-loop",
+    "scaffold-and-register",
+    "bulk-transform",
+    "chain-pipeline",
+    "cross-repo-sync"
+  ],
+  "skills": [
+    "log-session",
+    "mine-skills",
+    "meta-mine",
+    "discover-skills"
+  ],
+  "context": [
+    "skill-mining",
+    "framework-levels"
+  ],
+  "last_sync": null,
+  "framework_home": null
+}

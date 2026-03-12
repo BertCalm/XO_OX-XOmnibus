@@ -46,5 +46,6 @@ __pycache__/
 *.pyc
 .venv/
 
-# Claude Code
-.claude/
+# Claude Code (settings excluded, framework tracked)
+.claude/settings*
+!.claude/
