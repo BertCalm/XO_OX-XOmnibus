@@ -971,21 +971,20 @@ private:
 };
 
 //==============================================================================
-// AdvancedFXPanel — shown in a CallOutBox for secondary FX parameters.
-// Hosts 4 knobs: reverb size, comp ratio, comp attack, comp release.
+// AdvancedFXPanel — generic advanced parameter popup for any FX section.
+// Takes an array of parameter ID/label pairs and displays them as rotary knobs.
 class AdvancedFXPanel : public juce::Component
 {
 public:
-    explicit AdvancedFXPanel(juce::AudioProcessorValueTreeState& apvts)
+    AdvancedFXPanel(juce::AudioProcessorValueTreeState& apvts,
+                    const juce::String& title,
+                    const std::vector<std::pair<juce::String, juce::String>>& paramDefs)
     {
-        struct Def { const char* id; const char* label; };
-        static constexpr Def defs[4] = {
-            {"master_reverbSize",  "SIZE"},
-            {"master_compRatio",   "RATIO"},
-            {"master_compAttack",  "ATTACK"},
-            {"master_compRelease", "RELEASE"},
-        };
-        for (int i = 0; i < 4; ++i)
+        titleText = title;
+        int count = juce::jmin(static_cast<int>(paramDefs.size()), kMaxKnobs);
+        numKnobs = count;
+
+        for (int i = 0; i < count; ++i)
         {
             knobs[i].setSliderStyle(juce::Slider::RotaryVerticalDrag);
             knobs[i].setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
@@ -993,16 +992,16 @@ public:
                                GalleryColors::get(GalleryColors::textMid()).withAlpha(0.75f));
             addAndMakeVisible(knobs[i]);
             attach[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-                apvts, defs[i].id, knobs[i]);
+                apvts, paramDefs[static_cast<size_t>(i)].first, knobs[i]);
 
-            lbls[i].setText(defs[i].label, juce::dontSendNotification);
+            lbls[i].setText(paramDefs[static_cast<size_t>(i)].second, juce::dontSendNotification);
             lbls[i].setFont(GalleryFonts::heading(8.5f));
             lbls[i].setColour(juce::Label::textColourId,
                               GalleryColors::get(GalleryColors::textMid()));
             lbls[i].setJustificationType(juce::Justification::centred);
             addAndMakeVisible(lbls[i]);
         }
-        setSize(256, 96);
+        setSize(64 * count + 16, 96);
     }
 
     void paint(juce::Graphics& g) override
@@ -1011,8 +1010,7 @@ public:
         g.fillAll(get(shellWhite()));
         g.setColour(get(textMid()).withAlpha(0.40f));
         g.setFont(GalleryFonts::heading(8.0f));
-        g.drawText("ADVANCED  ·  REVERB + COMP",
-                   getLocalBounds().removeFromTop(14).reduced(8, 0),
+        g.drawText(titleText, getLocalBounds().removeFromTop(14).reduced(8, 0),
                    juce::Justification::centredLeft);
     }
 
@@ -1020,8 +1018,8 @@ public:
     {
         auto b = getLocalBounds().reduced(8, 4);
         b.removeFromTop(14);
-        int cw = b.getWidth() / 4;
-        for (int i = 0; i < 4; ++i)
+        int cw = numKnobs > 0 ? b.getWidth() / numKnobs : b.getWidth();
+        for (int i = 0; i < numKnobs; ++i)
         {
             auto col = b.removeFromLeft(cw);
             int kh = 44;
@@ -1032,64 +1030,148 @@ public:
     }
 
 private:
-    std::array<juce::Slider, 4> knobs;
-    std::array<juce::Label, 4>  lbls;
-    std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>, 4> attach;
+    static constexpr int kMaxKnobs = 8;
+    juce::String titleText;
+    int numKnobs = 0;
+    std::array<juce::Slider, kMaxKnobs> knobs;
+    std::array<juce::Label, kMaxKnobs>  lbls;
+    std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>, kMaxKnobs> attach;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AdvancedFXPanel)
 };
 
 //==============================================================================
-// MasterFXSection — 3 primary knobs (SAT DRIVE, REVERB MIX, COMP GLUE) +
-// ADV button that opens a CallOutBox for the 4 secondary parameters.
-// Always visible at the bottom of the Gallery Model.
+// MasterFXSection — 6-section FX strip with primary knobs per section +
+// ADV buttons for deeper parameters. Always visible at bottom of Gallery Model.
+//
+// Layout: SAT | DELAY | REVERB | MOD | COMP | SEQ
 class MasterFXSection : public juce::Component
 {
 public:
     explicit MasterFXSection(juce::AudioProcessorValueTreeState& apvts) : myApvts(apvts)
     {
+        // Primary knob definitions: { paramID, knobLabel, sectionLabel }
         struct Def { const char* id; const char* label; const char* section; };
-        static constexpr Def defs[3] = {
-            {"master_satDrive",  "DRIVE", "SAT"},
-            {"master_reverbMix", "MIX",   "REVERB"},
-            {"master_compMix",   "GLUE",  "COMP"},
+        static constexpr Def defs[kNumPrimaryKnobs] = {
+            {"master_satDrive",      "DRIVE",  "SAT"},
+            {"master_delayMix",      "MIX",    "DELAY"},
+            {"master_delayFeedback", "FB",     ""},
+            {"master_reverbMix",     "MIX",    "REVERB"},
+            {"master_modDepth",      "DEPTH",  "MOD"},
+            {"master_compMix",       "GLUE",   "COMP"},
         };
-        for (int i = 0; i < 3; ++i)
+
+        for (int i = 0; i < kNumPrimaryKnobs; ++i)
         {
             knobs[i].setSliderStyle(juce::Slider::RotaryVerticalDrag);
             knobs[i].setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
             knobs[i].setColour(juce::Slider::rotarySliderFillColourId,
                                GalleryColors::get(GalleryColors::textMid()).withAlpha(0.7f));
             knobs[i].setTooltip(juce::String(defs[i].section) + " " + defs[i].label);
-            A11y::setup (knobs[i], juce::String ("Master FX ") + defs[i].section + " " + defs[i].label);
+            A11y::setup(knobs[i], juce::String("Master FX ") + defs[i].section + " " + defs[i].label);
             addAndMakeVisible(knobs[i]);
             attach[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
                 apvts, defs[i].id, knobs[i]);
 
             lbls[i].setText(defs[i].label, juce::dontSendNotification);
-            lbls[i].setFont(GalleryFonts::heading(8.5f));
+            lbls[i].setFont(GalleryFonts::heading(7.5f));
             lbls[i].setColour(juce::Label::textColourId,
                               GalleryColors::get(GalleryColors::textMid()));
             lbls[i].setJustificationType(juce::Justification::centred);
             addAndMakeVisible(lbls[i]);
-
-            sectionLbls[i].setText(defs[i].section, juce::dontSendNotification);
-            sectionLbls[i].setFont(GalleryFonts::label(7.0f));
-            sectionLbls[i].setColour(juce::Label::textColourId,
-                                     GalleryColors::get(GalleryColors::textMid()).withAlpha(0.45f));
-            sectionLbls[i].setJustificationType(juce::Justification::centred);
-            addAndMakeVisible(sectionLbls[i]);
         }
 
-        advBtn.setButtonText("ADV");
-        advBtn.setTooltip("Reverb Size \xc2\xb7 Comp Ratio, Attack, Release");
-        A11y::setup (advBtn, "Advanced Master FX", "Open advanced reverb and compressor settings");
-        advBtn.setColour(juce::TextButton::buttonColourId,
-                         GalleryColors::get(GalleryColors::shellWhite()));
-        advBtn.setColour(juce::TextButton::textColourOffId,
-                         GalleryColors::get(GalleryColors::textMid()));
-        advBtn.onClick = [this] { showAdvanced(); };
-        addAndMakeVisible(advBtn);
+        // Section header labels
+        static const char* sectionNames[kNumSections] = {"SAT", "DELAY", "REVERB", "MOD", "COMP", "SEQ"};
+        for (int i = 0; i < kNumSections; ++i)
+        {
+            sectionHdrs[i].setText(sectionNames[i], juce::dontSendNotification);
+            sectionHdrs[i].setFont(GalleryFonts::label(7.0f));
+            sectionHdrs[i].setColour(juce::Label::textColourId,
+                                     GalleryColors::get(GalleryColors::textMid()).withAlpha(0.50f));
+            sectionHdrs[i].setJustificationType(juce::Justification::centred);
+            addAndMakeVisible(sectionHdrs[i]);
+        }
+
+        // ADV buttons for each section
+        auto makeAdvBtn = [&](juce::TextButton& btn, const juce::String& tip, const juce::String& a11y) {
+            btn.setButtonText("ADV");
+            btn.setTooltip(tip);
+            A11y::setup(btn, a11y, "Open advanced settings");
+            btn.setColour(juce::TextButton::buttonColourId,
+                          GalleryColors::get(GalleryColors::shellWhite()));
+            btn.setColour(juce::TextButton::textColourOffId,
+                          GalleryColors::get(GalleryColors::textMid()).withAlpha(0.6f));
+            addAndMakeVisible(btn);
+        };
+
+        makeAdvBtn(advBtnDelay, "Delay Time, Ping Pong, Damping, Diffusion, Sync", "Advanced Delay");
+        advBtnDelay.onClick = [this] {
+            showAdvancedPanel(advBtnDelay, "DELAY ADVANCED", {
+                {"master_delayTime",     "TIME"},
+                {"master_delayPingPong", "P.PONG"},
+                {"master_delayDamping",  "DAMP"},
+                {"master_delayDiffusion","DIFF"},
+                {"master_delaySync",     "SYNC"},
+            });
+        };
+
+        makeAdvBtn(advBtnReverb, "Reverb Size", "Advanced Reverb");
+        advBtnReverb.onClick = [this] {
+            showAdvancedPanel(advBtnReverb, "REVERB ADVANCED", {
+                {"master_reverbSize", "SIZE"},
+            });
+        };
+
+        makeAdvBtn(advBtnMod, "Mod Rate, Mode, Feedback", "Advanced Modulation");
+        advBtnMod.onClick = [this] {
+            showAdvancedPanel(advBtnMod, "MOD ADVANCED", {
+                {"master_modRate",     "RATE"},
+                {"master_modMix",      "MIX"},
+                {"master_modMode",     "MODE"},
+                {"master_modFeedback", "FB"},
+            });
+        };
+
+        makeAdvBtn(advBtnComp, "Comp Ratio, Attack, Release", "Advanced Compressor");
+        advBtnComp.onClick = [this] {
+            showAdvancedPanel(advBtnComp, "COMP ADVANCED", {
+                {"master_compRatio",   "RATIO"},
+                {"master_compAttack",  "ATTACK"},
+                {"master_compRelease", "RELEASE"},
+            });
+        };
+
+        // SEQ section: enable toggle + ADV
+        seqToggle.setButtonText("SEQ");
+        seqToggle.setTooltip("Enable Master FX Sequencer");
+        A11y::setup(seqToggle, "Sequencer Enable", "Toggle the Master FX step sequencer");
+        seqToggle.setColour(juce::TextButton::buttonColourId,
+                            GalleryColors::get(GalleryColors::shellWhite()));
+        seqToggle.setColour(juce::TextButton::buttonOnColourId,
+                            GalleryColors::get(GalleryColors::xoGold()));
+        seqToggle.setColour(juce::TextButton::textColourOffId,
+                            GalleryColors::get(GalleryColors::textMid()));
+        seqToggle.setColour(juce::TextButton::textColourOnId,
+                            GalleryColors::get(GalleryColors::textDark()));
+        seqToggle.setClickingTogglesState(true);
+        seqAttach = std::make_unique<juce::AudioProcessorValueTreeState::ButtonAttachment>(
+            apvts, "master_seqEnabled", seqToggle);
+        addAndMakeVisible(seqToggle);
+
+        makeAdvBtn(advBtnSeq, "Seq Rate, Steps, Depth, Smooth, Pattern, Targets", "Advanced Sequencer");
+        advBtnSeq.onClick = [this] {
+            showAdvancedPanel(advBtnSeq, "SEQUENCER", {
+                {"master_seqRate",      "RATE"},
+                {"master_seqSteps",     "STEPS"},
+                {"master_seqDepth",     "DEPTH"},
+                {"master_seqSmooth",    "SMOOTH"},
+                {"master_seqPattern",   "PATTERN"},
+                {"master_seqTarget1",   "TGT 1"},
+                {"master_seqTarget2",   "TGT 2"},
+                {"master_seqEnvAmount", "ENV"},
+            });
+        };
     }
 
     void paint(juce::Graphics& g) override
@@ -1101,51 +1183,134 @@ public:
         g.setColour(get(borderGray()));
         g.drawRoundedRectangle(b.reduced(0.5f), 6.0f, 1.0f);
 
-        // Subtle dividers between the three sections (drawn only after first resized())
+        // Dividers between sections
         g.setColour(get(borderGray()).withAlpha(0.5f));
-        if (divX[0] > 0 && divX[1] > 0)
+        for (int i = 0; i < kNumSections - 1; ++i)
         {
-            g.drawLine((float)divX[0], 8.0f, (float)divX[0], (float)getHeight() - 8, 1.0f);
-            g.drawLine((float)divX[1], 8.0f, (float)divX[1], (float)getHeight() - 8, 1.0f);
+            if (divX[i] > 0)
+                g.drawLine(static_cast<float>(divX[i]), 8.0f,
+                           static_cast<float>(divX[i]), static_cast<float>(getHeight()) - 8, 1.0f);
         }
     }
 
     void resized() override
     {
-        auto b = getLocalBounds().reduced(6, 4);
-        advBtn.setBounds(b.removeFromRight(38).withSizeKeepingCentre(36, 20));
+        auto b = getLocalBounds().reduced(4, 3);
 
-        int cw = b.getWidth() / 3;
-        divX[0] = b.getX() + cw;
-        divX[1] = b.getX() + 2 * cw;
+        // Section widths: proportional based on knob count
+        // SAT(1 knob) : DELAY(2) : REVERB(1) : MOD(1) : COMP(1) : SEQ(toggle+adv)
+        // Weights:  2 : 3 : 2 : 2 : 2 : 2  = 13 total
+        static constexpr int weights[kNumSections] = {2, 3, 2, 2, 2, 2};
+        static constexpr int totalWeight = 13;
+        int totalW = b.getWidth();
 
-        for (int i = 0; i < 3; ++i)
+        int sectionX[kNumSections + 1];
+        sectionX[0] = b.getX();
+        for (int i = 0; i < kNumSections; ++i)
+            sectionX[i + 1] = sectionX[i] + (totalW * weights[i]) / totalWeight;
+
+        // Record divider positions
+        for (int i = 0; i < kNumSections - 1; ++i)
+            divX[i] = sectionX[i + 1];
+
+        int topY = b.getY();
+        int h = b.getHeight();
+
+        // Helper: lay out knobs in a section
+        auto layoutKnob = [&](int knobIdx, int sx, int sw) {
+            int kh = 36, lh = 10;
+            int ky = topY + 10 + (h - 10 - kh - lh) / 2;
+            knobs[knobIdx].setBounds(sx + (sw - kh) / 2, ky, kh, kh);
+            lbls[knobIdx].setBounds(sx, ky + kh + 1, sw, lh);
+        };
+
+        auto layoutAdvBtn = [&](juce::TextButton& btn, int sx, int sw, int topOff) {
+            btn.setBounds(sx + (sw - 28) / 2, topY + h - 16 + topOff, 28, 13);
+        };
+
+        // Section 0: SAT — 1 knob (DRIVE)
         {
-            auto col = b.removeFromLeft(cw);
-            int kh = 44, lh = 12, sh = 10;
-            int ky = col.getCentreY() - (kh + lh) / 2;
-            knobs[i].setBounds(col.getCentreX() - kh / 2, ky, kh, kh);
-            lbls[i].setBounds(col.getX(), ky + kh + 2, col.getWidth(), lh);
-            sectionLbls[i].setBounds(col.getX(), col.getY() + 2, col.getWidth(), sh);
+            int sx = sectionX[0], sw = sectionX[1] - sectionX[0];
+            sectionHdrs[0].setBounds(sx, topY, sw, 10);
+            layoutKnob(0, sx, sw);
+        }
+
+        // Section 1: DELAY — 2 knobs (MIX, FB) + ADV
+        {
+            int sx = sectionX[1], sw = sectionX[2] - sectionX[1];
+            sectionHdrs[1].setBounds(sx, topY, sw, 10);
+            int halfW = sw / 2;
+            layoutKnob(1, sx, halfW);
+            layoutKnob(2, sx + halfW, halfW);
+            layoutAdvBtn(advBtnDelay, sx, sw, 0);
+        }
+
+        // Section 2: REVERB — 1 knob (MIX) + ADV
+        {
+            int sx = sectionX[2], sw = sectionX[3] - sectionX[2];
+            sectionHdrs[2].setBounds(sx, topY, sw, 10);
+            layoutKnob(3, sx, sw);
+            layoutAdvBtn(advBtnReverb, sx, sw, 0);
+        }
+
+        // Section 3: MOD — 1 knob (DEPTH) + ADV
+        {
+            int sx = sectionX[3], sw = sectionX[4] - sectionX[3];
+            sectionHdrs[3].setBounds(sx, topY, sw, 10);
+            layoutKnob(4, sx, sw);
+            layoutAdvBtn(advBtnMod, sx, sw, 0);
+        }
+
+        // Section 4: COMP — 1 knob (GLUE) + ADV
+        {
+            int sx = sectionX[4], sw = sectionX[5] - sectionX[4];
+            sectionHdrs[4].setBounds(sx, topY, sw, 10);
+            layoutKnob(5, sx, sw);
+            layoutAdvBtn(advBtnComp, sx, sw, 0);
+        }
+
+        // Section 5: SEQ — toggle + ADV
+        {
+            int sx = sectionX[5], sw = sectionX[6] - sectionX[5];
+            sectionHdrs[5].setBounds(sx, topY, sw, 10);
+            int btnW = juce::jmin(sw - 4, 36);
+            seqToggle.setBounds(sx + (sw - btnW) / 2, topY + 14, btnW, 22);
+            layoutAdvBtn(advBtnSeq, sx, sw, 0);
         }
     }
 
 private:
-    void showAdvanced()
+    void showAdvancedPanel(juce::TextButton& btn, const juce::String& title,
+                           const std::vector<std::pair<juce::String, juce::String>>& params)
     {
         juce::CallOutBox::launchAsynchronously(
-            std::make_unique<AdvancedFXPanel>(myApvts),
-            advBtn.getScreenBounds(),
+            std::make_unique<AdvancedFXPanel>(myApvts, title, params),
+            btn.getScreenBounds(),
             getTopLevelComponent());
     }
 
+    static constexpr int kNumPrimaryKnobs = 6;
+    static constexpr int kNumSections = 6;
+
     juce::AudioProcessorValueTreeState& myApvts;
-    std::array<juce::Slider, 3> knobs;
-    std::array<juce::Label, 3>  lbls;
-    std::array<juce::Label, 3>  sectionLbls;
-    std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>, 3> attach;
-    juce::TextButton advBtn;
-    int divX[2] = {0, 0};
+
+    // Primary knobs
+    std::array<juce::Slider, kNumPrimaryKnobs> knobs;
+    std::array<juce::Label, kNumPrimaryKnobs>  lbls;
+    std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>, kNumPrimaryKnobs> attach;
+
+    // Section headers
+    std::array<juce::Label, kNumSections> sectionHdrs;
+
+    // ADV buttons per section
+    juce::TextButton advBtnDelay, advBtnReverb, advBtnMod, advBtnComp, advBtnSeq;
+
+    // SEQ toggle
+    juce::TextButton seqToggle;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment> seqAttach;
+
+    // Divider X positions
+    int divX[kNumSections - 1] = {};
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MasterFXSection)
 };

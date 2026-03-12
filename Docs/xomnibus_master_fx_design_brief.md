@@ -1,6 +1,6 @@
 # XOmnibus Master FX Tract — Design Brief
 
-**Status:** Design Phase
+**Status:** Implemented
 **Author:** Claude Code
 **Date:** 2026-03-12
 
@@ -492,3 +492,57 @@ The bottom strip grows from 3 knobs to a **scrollable/tabbed FX strip** with 6 s
 | Sequencer | **movement**, aggression | Pumping sidechain, filter sweeps, rhythmic FX throws |
 
 Together with the existing stages (saturation → warmth/aggression, reverb → space, compressor → density/glue), the expanded chain covers all 6 Sonic DNA dimensions.
+
+---
+
+## 15. V2 Features (Implemented)
+
+These features from the hardware research were incorporated directly into the v1 implementation:
+
+### 15.1 Diffusion (MasterDelay)
+**Source:** AIR Delay Pro — continuous control that smears delay taps into reverb territory.
+**Implementation:** 4 series allpass filters (prime-length delays: 113, 167, 229, 313 samples) applied to the wet delay signal. `master_delayDiffusion` parameter [0..1] controls allpass feedback gain. At 0 = clean discrete echoes. At 1 = delay washes into reverb-like smear.
+
+### 15.2 Autoclear (MasterDelay)
+**Source:** AIR Delay Pro — delay tails clear on new note onset.
+**Implementation:** `MasterDelay::triggerAutoclear()` called from note-on handler. Performs a 5ms fade-out on the most recent portion of the delay buffer, preventing buildup between phrases. Essential for synth use where massive delay settings can pile up.
+
+### 15.3 Tape Saturation in Feedback (MasterDelay)
+**Source:** Meris Delay Pro, DubDelay heritage — each repeat gets darker and more saturated.
+**Implementation:** Feedback path includes: HP filter (60Hz) → one-pole LP damping → Saturator (Tape mode, low drive 0.15). Each echo iteration accumulates subtle harmonic warmth while losing high-frequency content. Classic dub delay character.
+
+### 15.4 Drift Mode (MasterModulation)
+**Source:** Chase Bliss Warped Vinyl — analog tape wow/flutter via random walk LFO.
+**Implementation:** `Mode::Drift` uses a smoothed random walk LFO instead of periodic sine/triangle. New random targets are generated at intervals scaled by rate. One-pole smoothing creates organic, non-repeating pitch drift. BBD lowpass (8kHz) adds analog character.
+
+### 15.5 Envelope Follower (MasterFXSequencer)
+**Source:** Torso S-4, AIR Sprite — input dynamics drive parameter modulation.
+**Implementation:** `master_seqEnvFollow` enables an envelope follower (50ms attack, 200ms release) that tracks input RMS. The follower output cross-modulates the sequencer depth — louder playing increases modulation intensity. `master_seqEnvAmount` [0..1] controls how much the envelope affects depth.
+
+### 15.6 Cross-Modulation via Sequencer Targets (MasterFXSequencer)
+**Source:** Torso S-4 — modulators modulating each other's parameters.
+**Implementation:** The sequencer can target any Master FX parameter (saturation drive, delay feedback/mix, reverb mix, modulation depth/rate, compressor mix). With envelope follower enabled, the input dynamics modulate the sequencer depth, which modulates the target parameter — creating a 2-level modulation chain. This is the simplest form of cross-modulation that delivers the most musical result.
+
+### 15.7 Total Parameter Count
+
+With v2 features, the final count is **28 parameters** (7 original + 21 new):
+- Stage 1 (Saturation): 1 param
+- Stage 2 (Delay): 7 params (time, feedback, mix, ping-pong, damping, diffusion, sync)
+- Stage 3 (Reverb): 2 params
+- Stage 4 (Modulation): 5 params (rate, depth, mix, mode, feedback)
+- Stage 5 (Compressor): 4 params
+- Stage 6 (Sequencer): 9 params (enabled, rate, steps, depth, smooth, target1, target2, pattern, envFollow, envAmount)
+
+---
+
+## 16. Implementation Status
+
+| Component | File | Status |
+|-----------|------|--------|
+| MasterDelay DSP | `Source/DSP/Effects/MasterDelay.h` | **COMPLETE** |
+| MasterModulation DSP | `Source/DSP/Effects/MasterModulation.h` | **COMPLETE** |
+| MasterFXSequencer | `Source/Core/MasterFXSequencer.h` | **COMPLETE** |
+| MasterFXChain (6-stage) | `Source/Core/MasterFXChain.h` | **COMPLETE** |
+| APVTS Parameters (28) | `Source/XOmnibusProcessor.cpp` | **COMPLETE** |
+| Transport sync (PPQ/BPM) | `Source/XOmnibusProcessor.cpp` | **COMPLETE** |
+| UI (6-section strip) | `Source/UI/XOmnibusEditor.h` | **COMPLETE** |
