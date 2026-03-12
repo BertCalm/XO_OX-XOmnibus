@@ -138,6 +138,7 @@ class OrbitalEngine : public SynthEngine
 public:
     static constexpr int kMaxVoices  = 6;
     static constexpr int kNumPartials = 64;
+    static constexpr float kInvPartialCount = 1.0f / static_cast<float> (kNumPartials - 1);
 
     //-- Identity ---------------------------------------------------------------
     juce::String getEngineId()     const override { return "Orbital"; }
@@ -409,7 +410,7 @@ public:
             rms = juce::jlimit (0.0f, 1.0f, rms);
             for (int k = 0; k < kNumPartials; ++k)
             {
-                float w = static_cast<float> (k) / static_cast<float> (kNumPartials - 1);
+                float w = static_cast<float> (k) * kInvPartialCount;
                 spectralCouplingOffset[k] = rms * w * 0.3f;   // subtle additive lift on uppers
             }
             couplingAudioBuf.clear();
@@ -686,11 +687,11 @@ private:
         // Per-partial stereo pan (constant-power spread)
         for (int k = 0; k < kNumPartials; ++k)
         {
-            float spread = stereoSpread * static_cast<float> (k) / static_cast<float> (kNumPartials - 1);
+            float spread = stereoSpread * static_cast<float> (k) * kInvPartialCount;
             float pan    = 0.5f + ((k % 2 == 0) ? -spread : spread) * 0.5f;
             pan = juce::jlimit (0.0f, 1.0f, pan);
-            v.panL[k] = std::cos (pan * 1.5707963f);
-            v.panR[k] = std::sin (pan * 1.5707963f);
+            v.panL[k] = fastCos (pan * 1.5707963f);
+            v.panR[k] = fastSin (pan * 1.5707963f);
         }
 
         // Global ADSR coefficients

@@ -80,6 +80,8 @@ public:
         bounceIdx = 0;
         sampleCounter = 0;
         initialVelocity = velocity;
+        cachedGravityPow = 1.0f;   // gravity^0 = 1
+        cachedDampingPow = 1.0f;   // damping^0 = 1
         fireClick (velocity);
     }
 
@@ -98,8 +100,8 @@ public:
         // Count samples to next bounce
         sampleCounter++;
 
-        // Compute interval for current bounce
-        float intervalMs = p.rate * std::pow (p.gravity, static_cast<float> (bounceIdx));
+        // Use cached pow — only recomputed when bounceIdx changes
+        float intervalMs = p.rate * cachedGravityPow;
 
         // Apply swing to even-numbered bounces
         if (bounceIdx % 2 == 1)
@@ -113,14 +115,18 @@ public:
             sampleCounter = 0;
             bounceIdx++;
 
+            // Update cached pow values incrementally: pow(x, n+1) = pow(x, n) * x
+            cachedGravityPow *= p.gravity;
+            cachedDampingPow *= p.damping;
+
             if (bounceIdx >= p.maxBounces || intervalMs < 5.0f)
             {
                 active = false;
                 return out;
             }
 
-            // Fire next bounce click
-            float vel = initialVelocity * std::pow (p.damping, static_cast<float> (bounceIdx));
+            // Fire next bounce click using cached damping pow
+            float vel = initialVelocity * cachedDampingPow;
             clickPhaseInc = p.clickTone * 6.28318530718f / static_cast<float> (sr);
             fireClick (vel);
         }
@@ -137,6 +143,8 @@ private:
     int sampleCounter = 0;
     int currentInterval = 0;
     float initialVelocity = 1.0f;
+    float cachedGravityPow = 1.0f;   // gravity^bounceIdx, updated incrementally
+    float cachedDampingPow = 1.0f;   // damping^bounceIdx, updated incrementally
 
     // Click state
     float clickLevel = 0.0f;

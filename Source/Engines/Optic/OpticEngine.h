@@ -278,7 +278,8 @@ private:
 
         float decaySamples = decayMs * 0.001f * static_cast<float> (sr);
         if (decaySamples < 1.0f) return 0.0f;
-        return flushDenormal (std::pow (0.001f, 1.0f / decaySamples));  // -60dB decay time
+        // -60dB decay: 0.001^(1/n) = exp(-6.9078/n), using fastExp for speed
+        return flushDenormal (fastExp (-6.9078f / decaySamples));
     }
 };
 

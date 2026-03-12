@@ -411,13 +411,16 @@ public:
                 float raw = oscMix + sub;
 
                 // Apply filter with coupling modulation.
-                // Note: filterCutoffMod is applied per-sample in the render loop,
-                // not at NoteOn — this is intentional. Coupling should continuously
-                // modulate running voices, not just stamp initial filter state.
-                float modCutoff = cutoff + filterCutoffMod * 2000.0f;
-                modCutoff = std::max (20.0f, std::min (20000.0f, modCutoff));
-                voice.filter.setCutoff (modCutoff);
-                voice.filter.setResonance (reso);
+                // Coefficients are block-constant (filterCutoffMod set by
+                // applyCouplingInput before renderBlock), so update once on
+                // first sample to avoid per-sample trig recomputation.
+                if (sample == 0)
+                {
+                    float modCutoff = cutoff + filterCutoffMod * 2000.0f;
+                    modCutoff = std::max (20.0f, std::min (20000.0f, modCutoff));
+                    voice.filter.setCutoff (modCutoff);
+                    voice.filter.setResonance (reso);
+                }
                 float filtered = voice.filter.processSample (raw);
 
                 // Voice-stealing crossfade (5ms)
