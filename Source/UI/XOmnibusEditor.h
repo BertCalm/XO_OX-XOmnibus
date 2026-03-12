@@ -6,15 +6,60 @@
 namespace xomnibus {
 
 //==============================================================================
-// Gallery Model — color constants
+// Gallery Model — color constants with light/dark theme support.
+// Light mode is the primary presentation (brand rule). Dark mode is a toggle.
 namespace GalleryColors {
-    constexpr uint32_t shellWhite = 0xFFF8F6F3;
+
+    // Theme state — light by default (brand rule)
+    inline bool& darkMode()
+    {
+        static bool dark = false;
+        return dark;
+    }
+
+    // Light palette
+    namespace Light {
+        constexpr uint32_t shellWhite = 0xFFF8F6F3;
+        constexpr uint32_t textDark   = 0xFF1A1A1A;
+        constexpr uint32_t textMid    = 0xFF777570;
+        constexpr uint32_t borderGray = 0xFFDDDAD5;
+        constexpr uint32_t slotBg     = 0xFFFCFBF9;
+        constexpr uint32_t emptySlot  = 0xFFEAE8E4;
+        constexpr uint32_t xoGoldText = 0xFF9E7C2E;   // WCAG AA on shellWhite
+    }
+
+    // Dark palette (from master spec section 6.2–6.4)
+    namespace Dark {
+        constexpr uint32_t shellWhite = 0xFF1A1A1A;    // near-black background
+        constexpr uint32_t textDark   = 0xFFEEEEEE;    // off-white primary text
+        constexpr uint32_t textMid    = 0xFFB0B0B0;    // secondary text
+        constexpr uint32_t borderGray = 0xFF4A4A4A;    // borders
+        constexpr uint32_t slotBg     = 0xFF2D2D2D;    // cards/panels
+        constexpr uint32_t emptySlot  = 0xFF363636;    // empty slot background
+        constexpr uint32_t xoGoldText = 0xFFE9C46A;    // Gold reads well on dark
+    }
+
+    // Brand constants — unchanged between modes
     constexpr uint32_t xoGold     = 0xFFE9C46A;
-    constexpr uint32_t textDark   = 0xFF1A1A1A;
-    constexpr uint32_t textMid    = 0xFF777570;
-    constexpr uint32_t borderGray = 0xFFDDDAD5;
-    constexpr uint32_t slotBg     = 0xFFFCFBF9;
-    constexpr uint32_t emptySlot  = 0xFFEAE8E4;
+
+    // Theme-aware accessors
+    inline uint32_t shellWhite() { return darkMode() ? Dark::shellWhite : Light::shellWhite; }
+    inline uint32_t textDark()   { return darkMode() ? Dark::textDark   : Light::textDark; }
+    inline uint32_t textMid()    { return darkMode() ? Dark::textMid    : Light::textMid; }
+    inline uint32_t borderGray() { return darkMode() ? Dark::borderGray : Light::borderGray; }
+    inline uint32_t slotBg()     { return darkMode() ? Dark::slotBg     : Light::slotBg; }
+    inline uint32_t emptySlot()  { return darkMode() ? Dark::emptySlot  : Light::emptySlot; }
+    inline uint32_t xoGoldText() { return darkMode() ? Dark::xoGoldText : Light::xoGoldText; }
+
+    // Backward compatibility: constant names used as values throughout the UI.
+    // These remain as constexpr for code that already references them directly.
+    // New code should prefer the function accessors above.
+    constexpr uint32_t shellWhite_v = 0xFFF8F6F3;
+    constexpr uint32_t textDark_v   = 0xFF1A1A1A;
+    constexpr uint32_t textMid_v    = 0xFF777570;
+    constexpr uint32_t borderGray_v = 0xFFDDDAD5;
+    constexpr uint32_t slotBg_v     = 0xFFFCFBF9;
+    constexpr uint32_t emptySlot_v  = 0xFFEAE8E4;
 
     inline juce::Colour get(uint32_t hex) { return juce::Colour(hex); }
 
@@ -38,11 +83,8 @@ namespace GalleryColors {
         if (id == "Oracle")    return juce::Colour(0xFF4B0082); // Prophecy Indigo
         if (id == "Obscura")   return juce::Colour(0xFF8A9BA8); // Daguerreotype Silver
         if (id == "Oceanic")   return juce::Colour(0xFF00B4A0); // Phosphorescent Teal
-        return get(borderGray);
+        return get(borderGray());
     }
-
-    // XO Gold darkened for text on Shell White — meets WCAG AA (4.5:1 contrast)
-    constexpr uint32_t xoGoldText = 0xFF9E7C2E;
 
     inline juce::String prefixForEngine(const juce::String& id)
     {
@@ -90,24 +132,27 @@ namespace GalleryFonts {
 class GalleryLookAndFeel : public juce::LookAndFeel_V4
 {
 public:
-    GalleryLookAndFeel()
+    GalleryLookAndFeel() { applyTheme(); }
+
+    // Re-apply all theme colors — call after toggling GalleryColors::darkMode().
+    void applyTheme()
     {
         using namespace GalleryColors;
         setColour(juce::Slider::rotarySliderFillColourId,        get(xoGold));
-        setColour(juce::Slider::rotarySliderOutlineColourId,     get(borderGray));
-        setColour(juce::Slider::textBoxTextColourId,             get(textMid));
+        setColour(juce::Slider::rotarySliderOutlineColourId,     get(borderGray()));
+        setColour(juce::Slider::textBoxTextColourId,             get(textMid()));
         setColour(juce::Slider::textBoxBackgroundColourId,       juce::Colours::transparentBlack);
         setColour(juce::Slider::textBoxOutlineColourId,          juce::Colours::transparentBlack);
-        setColour(juce::TextButton::buttonColourId,              get(shellWhite));
+        setColour(juce::TextButton::buttonColourId,              get(shellWhite()));
         setColour(juce::TextButton::buttonOnColourId,            get(xoGold));
-        setColour(juce::TextButton::textColourOffId,             get(textDark));
-        setColour(juce::ComboBox::backgroundColourId,            get(shellWhite));
-        setColour(juce::ComboBox::outlineColourId,               get(borderGray));
-        setColour(juce::PopupMenu::backgroundColourId,           get(shellWhite));
-        setColour(juce::PopupMenu::textColourId,                 get(textDark));
+        setColour(juce::TextButton::textColourOffId,             get(textDark()));
+        setColour(juce::ComboBox::backgroundColourId,            get(shellWhite()));
+        setColour(juce::ComboBox::outlineColourId,               get(borderGray()));
+        setColour(juce::PopupMenu::backgroundColourId,           get(shellWhite()));
+        setColour(juce::PopupMenu::textColourId,                 get(textDark()));
         setColour(juce::PopupMenu::highlightedBackgroundColourId,get(xoGold).withAlpha(0.25f));
-        setColour(juce::ScrollBar::thumbColourId,                get(borderGray));
-        setColour(juce::Label::textColourId,                     get(textDark));
+        setColour(juce::ScrollBar::thumbColourId,                get(borderGray()));
+        setColour(juce::Label::textColourId,                     get(textDark()));
     }
 
     void drawRotarySlider(juce::Graphics& g, int x, int y, int w, int h,
@@ -121,7 +166,7 @@ public:
 
         juce::Path track;
         track.addCentredArc(cx, cy, r - 2, r - 2, 0, startAngle, endAngle, true);
-        g.setColour(GalleryColors::get(GalleryColors::borderGray));
+        g.setColour(GalleryColors::get(GalleryColors::borderGray()));
         g.strokePath(track, juce::PathStrokeType(2.5f, juce::PathStrokeType::curved,
                                                   juce::PathStrokeType::rounded));
 
@@ -136,9 +181,9 @@ public:
         float ty = cy - (r - 6.0f) * std::cos(fillAngle);
         g.fillEllipse(tx - 3.5f, ty - 3.5f, 7.0f, 7.0f);
 
-        g.setColour(GalleryColors::get(GalleryColors::shellWhite));
+        g.setColour(GalleryColors::get(GalleryColors::shellWhite()));
         g.fillEllipse(cx - r * 0.46f, cy - r * 0.46f, r * 0.92f, r * 0.92f);
-        g.setColour(GalleryColors::get(GalleryColors::borderGray).withAlpha(0.5f));
+        g.setColour(GalleryColors::get(GalleryColors::borderGray()).withAlpha(0.5f));
         g.drawEllipse(cx - r * 0.46f, cy - r * 0.46f, r * 0.92f, r * 0.92f, 1.0f);
     }
 
@@ -149,7 +194,7 @@ public:
         g.setColour(down ? GalleryColors::get(GalleryColors::xoGold)
                          : highlighted ? bg.brighter(0.06f) : bg);
         g.fillRoundedRectangle(b, 5.0f);
-        g.setColour(GalleryColors::get(GalleryColors::borderGray));
+        g.setColour(GalleryColors::get(GalleryColors::borderGray()));
         g.drawRoundedRectangle(b, 5.0f, 1.0f);
     }
 };
@@ -190,7 +235,7 @@ public:
                 label->setText(shortLabel, juce::dontSendNotification);
                 label->setFont(GalleryFonts::label(8.0f));
                 label->setColour(juce::Label::textColourId,
-                                 GalleryColors::get(GalleryColors::textMid));
+                                 GalleryColors::get(GalleryColors::textMid()));
                 label->setJustificationType(juce::Justification::centred);
                 label->setInterceptsMouseClicks(false, false);
                 addAndMakeVisible(*label);
@@ -288,7 +333,7 @@ public:
     void paint(juce::Graphics& g) override
     {
         using namespace GalleryColors;
-        g.fillAll(get(slotBg));
+        g.fillAll(get(slotBg()));
 
         // Accent header bar
         g.setColour(accentColour);
@@ -308,7 +353,7 @@ public:
                    juce::Justification::centredRight);
 
         // Subtle separator below header
-        g.setColour(get(borderGray));
+        g.setColour(get(borderGray()));
         g.drawHorizontalLine(kHeaderH, 0.0f, (float)getWidth());
     }
 
@@ -332,7 +377,7 @@ private:
     XOmnibusProcessor& processor;
     juce::Viewport     viewport;
     juce::String       engineId  { "—" };
-    juce::Colour       accentColour { GalleryColors::get(GalleryColors::borderGray) };
+    juce::Colour       accentColour { GalleryColors::get(GalleryColors::borderGray()) };
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(EngineDetailPanel)
 };
@@ -376,7 +421,7 @@ public:
     void paint(juce::Graphics& g) override
     {
         using namespace GalleryColors;
-        g.fillAll(get(slotBg));
+        g.fillAll(get(slotBg()));
 
         // Centre content
         auto b = getLocalBounds().toFloat();
@@ -394,7 +439,7 @@ public:
                    juce::Justification::centred);
 
         // Instruction
-        g.setColour(get(textMid));
+        g.setColour(get(textMid()));
         g.setFont(GalleryFonts::body(12.0f));
         float instrY = b.getHeight() * 0.30f + markR + 16.0f;
         g.drawText("Click an engine tile to edit parameters",
@@ -411,7 +456,7 @@ public:
 
         if (active.empty())
         {
-            g.setColour(get(textMid).withAlpha(0.35f));
+            g.setColour(get(textMid()).withAlpha(0.35f));
             g.setFont(GalleryFonts::body(10.0f));
             g.drawText("No engines loaded — use the tiles on the left",
                        b.withY(b.getHeight() * 0.65f).withHeight(20.0f).toNearestInt(),
@@ -485,7 +530,7 @@ public:
                                         .withWidth((int)(cellW * 2.8f));
 
                     juce::Colour routeColor = route.isNormalled
-                        ? get(borderGray).darker(0.1f)
+                        ? get(borderGray()).darker(0.1f)
                         : get(xoGold).withAlpha(0.8f);
 
                     g.setColour(routeColor.withAlpha(0.12f));
@@ -507,7 +552,7 @@ public:
                             if (r2.active && &r2 > &route) ++remaining;
                         if (remaining > 0)
                         {
-                            g.setColour(get(textMid).withAlpha(0.35f));
+                            g.setColour(get(textMid()).withAlpha(0.35f));
                             g.setFont(GalleryFonts::label(8.5f));
                             g.drawText("+ " + juce::String(remaining) + " more route" + (remaining > 1 ? "s" : ""),
                                        b.withY(matY).withHeight(14.0f).toNearestInt(),
@@ -519,7 +564,7 @@ public:
             }
             else
             {
-                g.setColour(get(textMid).withAlpha(0.3f));
+                g.setColour(get(textMid()).withAlpha(0.3f));
                 g.setFont(GalleryFonts::body(9.0f));
                 g.drawText("No active coupling routes",
                            b.withY(chainY + pillH * 0.5f + 10.0f).withHeight(16.0f).toNearestInt(),
@@ -568,7 +613,7 @@ public:
         setTooltip(hasEngine ? "Slot " + juce::String(slot + 1) + ": " + engineId + " — click to edit, right-click to swap"
                              : "Slot " + juce::String(slot + 1) + ": empty — click to load engine");
         accent    = hasEngine ? eng->getAccentColour()
-                              : GalleryColors::get(GalleryColors::emptySlot);
+                              : GalleryColors::get(GalleryColors::emptySlot());
         repaint();
     }
 
@@ -591,11 +636,11 @@ public:
         bool hovered = isMouseOver();
 
         g.setColour(isSelected ? accent.withAlpha(0.12f)
-                               : hovered ? get(slotBg).brighter(0.02f)
-                               : get(slotBg));
+                               : hovered ? get(slotBg()).brighter(0.02f)
+                               : get(slotBg()));
         g.fillRoundedRectangle(b, 8.0f);
 
-        g.setColour(isSelected ? accent : (hovered ? accent.withAlpha(0.4f) : get(borderGray)));
+        g.setColour(isSelected ? accent : (hovered ? accent.withAlpha(0.4f) : get(borderGray())));
         g.drawRoundedRectangle(b, 8.0f, isSelected ? 2.5f : 1.0f);
 
         if (isLoading)
@@ -612,7 +657,7 @@ public:
 
             // Engine name
             g.setFont(GalleryFonts::heading(11.0f));
-            g.setColour(isSelected ? accent : get(textDark));
+            g.setColour(isSelected ? accent : get(textDark()));
             g.drawText(engineId.toUpperCase(),
                        (int)b.getX() + 26, (int)b.getY(), (int)b.getWidth() - 48, (int)b.getHeight(),
                        juce::Justification::centredLeft);
@@ -633,7 +678,7 @@ public:
         }
         else
         {
-            g.setColour(get(textMid).withAlpha(0.3f));
+            g.setColour(get(textMid()).withAlpha(0.3f));
             g.setFont(GalleryFonts::body(9.0f));
             g.drawText("SLOT " + juce::String(slot + 1) + " — empty",
                        b.toNearestInt(), juce::Justification::centred);
@@ -641,7 +686,7 @@ public:
 
         // Slot number badge — top-right corner, always visible for quick navigation
         g.setFont(GalleryFonts::heading(8.0f));
-        g.setColour(get(textMid).withAlpha(hasEngine ? 0.35f : 0.2f));
+        g.setColour(get(textMid()).withAlpha(hasEngine ? 0.35f : 0.2f));
         g.drawText(juce::String(slot + 1),
                    (int)b.getRight() - 14, (int)b.getY() + 2, 12, 12,
                    juce::Justification::centredRight);
@@ -739,7 +784,7 @@ public:
 
             lbls[i].setText(defs[i].label, juce::dontSendNotification);
             lbls[i].setFont(GalleryFonts::heading(8.0f));
-            lbls[i].setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid));
+            lbls[i].setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
             lbls[i].setJustificationType(juce::Justification::centred);
             addAndMakeVisible(lbls[i]);
         }
@@ -747,7 +792,7 @@ public:
         master.setSliderStyle(juce::Slider::RotaryVerticalDrag);
         master.setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
         master.setColour(juce::Slider::rotarySliderFillColourId,
-                         GalleryColors::get(GalleryColors::textMid));
+                         GalleryColors::get(GalleryColors::textMid()));
         master.setTooltip("Master output volume");
         addAndMakeVisible(master);
         masterAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
@@ -755,7 +800,7 @@ public:
 
         masterLbl.setText("MASTER", juce::dontSendNotification);
         masterLbl.setFont(GalleryFonts::heading(8.0f));
-        masterLbl.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid));
+        masterLbl.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         masterLbl.setJustificationType(juce::Justification::centred);
         addAndMakeVisible(masterLbl);
     }
@@ -764,14 +809,14 @@ public:
     {
         using namespace GalleryColors;
         auto b = getLocalBounds().toFloat();
-        g.setColour(get(shellWhite));
+        g.setColour(get(shellWhite()));
         g.fillRoundedRectangle(b, 6.0f);
         g.setColour(get(xoGold));
         g.fillRoundedRectangle(b.removeFromTop(3.0f), 0.0f);
-        g.setColour(get(borderGray));
+        g.setColour(get(borderGray()));
         g.drawRoundedRectangle(getLocalBounds().toFloat().reduced(0.5f), 6.0f, 1.0f);
 
-        g.setColour(get(textMid));
+        g.setColour(get(textMid()));
         g.setFont(GalleryFonts::heading(8.0f));
         g.drawText("MACROS", getLocalBounds().removeFromTop(20), juce::Justification::centred);
     }
@@ -838,7 +883,7 @@ public:
             knobs[i].setSliderStyle(juce::Slider::RotaryVerticalDrag);
             knobs[i].setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
             knobs[i].setColour(juce::Slider::rotarySliderFillColourId,
-                               GalleryColors::get(GalleryColors::textMid).withAlpha(0.75f));
+                               GalleryColors::get(GalleryColors::textMid()).withAlpha(0.75f));
             addAndMakeVisible(knobs[i]);
             attach[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
                 apvts, defs[i].id, knobs[i]);
@@ -846,7 +891,7 @@ public:
             lbls[i].setText(defs[i].label, juce::dontSendNotification);
             lbls[i].setFont(GalleryFonts::heading(8.5f));
             lbls[i].setColour(juce::Label::textColourId,
-                              GalleryColors::get(GalleryColors::textMid));
+                              GalleryColors::get(GalleryColors::textMid()));
             lbls[i].setJustificationType(juce::Justification::centred);
             addAndMakeVisible(lbls[i]);
         }
@@ -856,8 +901,8 @@ public:
     void paint(juce::Graphics& g) override
     {
         using namespace GalleryColors;
-        g.fillAll(get(shellWhite));
-        g.setColour(get(textMid).withAlpha(0.40f));
+        g.fillAll(get(shellWhite()));
+        g.setColour(get(textMid()).withAlpha(0.40f));
         g.setFont(GalleryFonts::heading(8.0f));
         g.drawText("ADVANCED  ·  REVERB + COMP",
                    getLocalBounds().removeFromTop(14).reduced(8, 0),
@@ -907,7 +952,7 @@ public:
             knobs[i].setSliderStyle(juce::Slider::RotaryVerticalDrag);
             knobs[i].setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
             knobs[i].setColour(juce::Slider::rotarySliderFillColourId,
-                               GalleryColors::get(GalleryColors::textMid).withAlpha(0.7f));
+                               GalleryColors::get(GalleryColors::textMid()).withAlpha(0.7f));
             knobs[i].setTooltip(juce::String(defs[i].section) + " " + defs[i].label);
             addAndMakeVisible(knobs[i]);
             attach[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
@@ -916,14 +961,14 @@ public:
             lbls[i].setText(defs[i].label, juce::dontSendNotification);
             lbls[i].setFont(GalleryFonts::heading(8.5f));
             lbls[i].setColour(juce::Label::textColourId,
-                              GalleryColors::get(GalleryColors::textMid));
+                              GalleryColors::get(GalleryColors::textMid()));
             lbls[i].setJustificationType(juce::Justification::centred);
             addAndMakeVisible(lbls[i]);
 
             sectionLbls[i].setText(defs[i].section, juce::dontSendNotification);
             sectionLbls[i].setFont(GalleryFonts::label(7.0f));
             sectionLbls[i].setColour(juce::Label::textColourId,
-                                     GalleryColors::get(GalleryColors::textMid).withAlpha(0.45f));
+                                     GalleryColors::get(GalleryColors::textMid()).withAlpha(0.45f));
             sectionLbls[i].setJustificationType(juce::Justification::centred);
             addAndMakeVisible(sectionLbls[i]);
         }
@@ -931,9 +976,9 @@ public:
         advBtn.setButtonText("ADV");
         advBtn.setTooltip("Reverb Size \xc2\xb7 Comp Ratio, Attack, Release");
         advBtn.setColour(juce::TextButton::buttonColourId,
-                         GalleryColors::get(GalleryColors::shellWhite));
+                         GalleryColors::get(GalleryColors::shellWhite()));
         advBtn.setColour(juce::TextButton::textColourOffId,
-                         GalleryColors::get(GalleryColors::textMid));
+                         GalleryColors::get(GalleryColors::textMid()));
         advBtn.onClick = [this] { showAdvanced(); };
         addAndMakeVisible(advBtn);
     }
@@ -942,13 +987,13 @@ public:
     {
         using namespace GalleryColors;
         auto b = getLocalBounds().toFloat();
-        g.setColour(get(shellWhite).darker(0.03f));
+        g.setColour(get(shellWhite()).darker(0.03f));
         g.fillRoundedRectangle(b, 6.0f);
-        g.setColour(get(borderGray));
+        g.setColour(get(borderGray()));
         g.drawRoundedRectangle(b.reduced(0.5f), 6.0f, 1.0f);
 
         // Subtle dividers between the three sections (drawn only after first resized())
-        g.setColour(get(borderGray).withAlpha(0.5f));
+        g.setColour(get(borderGray()).withAlpha(0.5f));
         if (divX[0] > 0 && divX[1] > 0)
         {
             g.drawLine((float)divX[0], 8.0f, (float)divX[0], (float)getHeight() - 8, 1.0f);
@@ -1010,13 +1055,13 @@ public:
     {
         // Search field
         searchField.setTextToShowWhenEmpty("Search presets\xe2\x80\xa6",
-                                           GalleryColors::get(GalleryColors::textMid).withAlpha(0.4f));
+                                           GalleryColors::get(GalleryColors::textMid()).withAlpha(0.4f));
         searchField.setColour(juce::TextEditor::backgroundColourId,
-                              GalleryColors::get(GalleryColors::slotBg));
+                              GalleryColors::get(GalleryColors::slotBg()));
         searchField.setColour(juce::TextEditor::outlineColourId,
-                              GalleryColors::get(GalleryColors::borderGray));
+                              GalleryColors::get(GalleryColors::borderGray()));
         searchField.setColour(juce::TextEditor::textColourId,
-                              GalleryColors::get(GalleryColors::textDark));
+                              GalleryColors::get(GalleryColors::textDark()));
         searchField.setFont(GalleryFonts::body(11.0f));
         searchField.onTextChange = [this] { updateFilter(); };
         addAndMakeVisible(searchField);
@@ -1030,9 +1075,9 @@ public:
             moodBtns[i].setButtonText(moodLabels[i]);
             moodBtns[i].setClickingTogglesState(false);
             moodBtns[i].setColour(juce::TextButton::buttonColourId,
-                                  GalleryColors::get(GalleryColors::shellWhite));
+                                  GalleryColors::get(GalleryColors::shellWhite()));
             moodBtns[i].setColour(juce::TextButton::textColourOffId,
-                                  GalleryColors::get(GalleryColors::textMid));
+                                  GalleryColors::get(GalleryColors::textMid()));
             moodBtns[i].setColour(juce::TextButton::buttonOnColourId,
                                   GalleryColors::get(GalleryColors::xoGold).withAlpha(0.2f));
             moodBtns[i].onClick = [this, i]
@@ -1050,16 +1095,16 @@ public:
         listBox.setModel(this);
         listBox.setRowHeight(24);
         listBox.setColour(juce::ListBox::backgroundColourId,
-                          GalleryColors::get(GalleryColors::slotBg));
+                          GalleryColors::get(GalleryColors::slotBg()));
         listBox.setColour(juce::ListBox::outlineColourId,
-                          GalleryColors::get(GalleryColors::borderGray));
+                          GalleryColors::get(GalleryColors::borderGray()));
         listBox.setOutlineThickness(1);
         addAndMakeVisible(listBox);
 
         // Count label
         countLabel.setFont(GalleryFonts::label(8.5f));
         countLabel.setColour(juce::Label::textColourId,
-                             GalleryColors::get(GalleryColors::textMid).withAlpha(0.55f));
+                             GalleryColors::get(GalleryColors::textMid()).withAlpha(0.55f));
         countLabel.setJustificationType(juce::Justification::centredRight);
         addAndMakeVisible(countLabel);
 
@@ -1082,9 +1127,9 @@ public:
         if (selected)
             g.fillAll(get(xoGold).withAlpha(0.22f));
         else if (row % 2 == 0)
-            g.fillAll(get(shellWhite));
+            g.fillAll(get(shellWhite()));
         else
-            g.fillAll(get(slotBg));
+            g.fillAll(get(slotBg()));
 
         // Mood accent dot
         static const juce::Colour moodColors[] = {
@@ -1098,7 +1143,7 @@ public:
         static const char* moodIds[] = {
             "Foundation","Atmosphere","Entangled","Prism","Flux","Aether"
         };
-        juce::Colour dot = get(borderGray);
+        juce::Colour dot = get(borderGray());
         for (int mi = 0; mi < 6; ++mi)
             if (preset.mood == moodIds[mi]) { dot = moodColors[mi]; break; }
 
@@ -1115,7 +1160,7 @@ public:
         if (!preset.engines.isEmpty())
         {
             auto tag = preset.engines[0].substring(0, 3).toUpperCase();
-            g.setColour(get(textMid).withAlpha(0.30f));
+            g.setColour(get(textMid()).withAlpha(0.30f));
             g.setFont(GalleryFonts::label(7.5f));
             g.drawText(tag, w - 28, 0, 26, h, juce::Justification::centredRight);
         }
@@ -1140,7 +1185,7 @@ public:
     void paint(juce::Graphics& g) override
     {
         using namespace GalleryColors;
-        g.fillAll(get(shellWhite));
+        g.fillAll(get(shellWhite()));
     }
 
     void resized() override
@@ -1241,16 +1286,16 @@ public:
         for (auto* btn : {&prevBtn, &nextBtn, &browseBtn})
         {
             btn->setColour(juce::TextButton::buttonColourId,
-                           GalleryColors::get(GalleryColors::shellWhite));
+                           GalleryColors::get(GalleryColors::shellWhite()));
             btn->setColour(juce::TextButton::textColourOffId,
-                           GalleryColors::get(GalleryColors::textMid));
+                           GalleryColors::get(GalleryColors::textMid()));
             addAndMakeVisible(*btn);
         }
 
         nameLabel.setJustificationType(juce::Justification::centred);
         nameLabel.setFont(GalleryFonts::heading(10.5f));
         nameLabel.setColour(juce::Label::textColourId,
-                            GalleryColors::get(GalleryColors::textDark));
+                            GalleryColors::get(GalleryColors::textDark()));
         nameLabel.setInterceptsMouseClicks(false, false);
         addAndMakeVisible(nameLabel);
 
@@ -1723,6 +1768,26 @@ public:
                 showOverview();
         };
 
+        // Dark mode toggle — light is default (brand rule)
+        addAndMakeVisible(themeToggleBtn);
+        themeToggleBtn.setButtonText("D");
+        themeToggleBtn.setTooltip("Toggle dark mode");
+        themeToggleBtn.setClickingTogglesState(true);
+        themeToggleBtn.onClick = [this]
+        {
+            GalleryColors::darkMode() = themeToggleBtn.getToggleState();
+            laf->applyTheme();
+            repaint();
+            for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
+                tiles[i]->repaint();
+            overview.repaint();
+            detail.repaint();
+            chordPanel.repaint();
+            macros.repaint();
+            masterFXStrip.repaint();
+            presetBrowser.repaint();
+        };
+
         // Scan factory preset directory
         auto presetDir = juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory)
                              .getChildFile("Application Support/XO_OX/XOmnibus/Presets");
@@ -1777,24 +1842,24 @@ public:
     void paint(juce::Graphics& g) override
     {
         using namespace GalleryColors;
-        g.fillAll(get(shellWhite));
+        g.fillAll(get(shellWhite()));
 
         // Header area
         auto header = getLocalBounds().removeFromTop(kHeaderH).toFloat();
-        g.setColour(get(shellWhite));
+        g.setColour(get(shellWhite()));
         g.fillRect(header);
 
         // XO Gold stripe
         g.setColour(get(xoGold));
         g.fillRect(header.removeFromBottom(3.0f));
 
-        g.setColour(get(textDark));
+        g.setColour(get(textDark()));
         g.setFont(GalleryFonts::display(19.0f));
         g.drawText("XOmnibus",
                    juce::Rectangle<int>(16, 0, 160, kHeaderH - 3),
                    juce::Justification::centredLeft);
 
-        g.setColour(get(xoGoldText)); // Darkened gold — meets WCAG AA on shellWhite
+        g.setColour(get(xoGoldText())); // Darkened gold — meets WCAG AA on shellWhite
         g.setFont(GalleryFonts::heading(8.5f));
         g.drawText("XO_OX Designs",
                    juce::Rectangle<int>(16, kHeaderH - 18, 110, 12),
@@ -1810,7 +1875,7 @@ public:
                 ? juce::String(activeRoutes) + " coupling route" + (activeRoutes > 1 ? "s" : "") + " active"
                 : "9 Engines · 12 Coupling Types · 1000 Presets";
 
-            g.setColour(activeRoutes > 0 ? get(xoGoldText) : get(textMid).withAlpha(0.5f));
+            g.setColour(activeRoutes > 0 ? get(xoGoldText()) : get(textMid()).withAlpha(0.5f));
             g.setFont(GalleryFonts::body(9.0f));
             g.drawText(routeLabel,
                        juce::Rectangle<int>(getWidth() - 310, 0, 298, kHeaderH - 6),
@@ -1819,7 +1884,7 @@ public:
 
         // Sidebar separator
         int sepX = kSidebarW;
-        g.setColour(get(borderGray));
+        g.setColour(get(borderGray()));
         g.drawVerticalLine(sepX, (float)kHeaderH, (float)(getHeight() - kMacroH));
     }
 
@@ -1830,6 +1895,7 @@ public:
         // Header: reserve space for CM button and preset browser (right side)
         auto header = area.removeFromTop(kHeaderH);
         presetBrowser.setBounds(header.removeFromRight(220).reduced(4, 10));
+        themeToggleBtn.setBounds(header.removeFromRight(32).reduced(2, 12));
         cmToggleBtn.setBounds(header.removeFromRight(42).reduced(4, 12));
 
         // Bottom strips (from bottom up)
@@ -1999,6 +2065,7 @@ private:
     MasterFXSection    masterFXStrip;
     PresetBrowserStrip presetBrowser;
     juce::TextButton   cmToggleBtn;
+    juce::TextButton   themeToggleBtn;
 
     int selectedSlot = -1;
 

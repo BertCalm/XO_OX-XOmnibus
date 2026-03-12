@@ -57,28 +57,43 @@ target_sources(XOmnibus PRIVATE
     Source/DSP/Effects/Saturator.h
     Source/DSP/Effects/Compressor.h
 
-    # Engine adapters
+    # Engine adapters (DSP in .h, registration stubs in .cpp)
     Source/Engines/Snap/SnapEngine.h
+    Source/Engines/Snap/SnapEngine.cpp
     Source/Engines/Morph/MorphEngine.h
+    Source/Engines/Morph/MorphEngine.cpp
     Source/Engines/Dub/DubEngine.h
+    Source/Engines/Dub/DubEngine.cpp
     Source/Engines/Drift/DriftEngine.h
+    Source/Engines/Drift/DriftEngine.cpp
     Source/Engines/Bob/BobEngine.h
+    Source/Engines/Bob/BobEngine.cpp
     Source/Engines/Fat/FatEngine.h
+    Source/Engines/Fat/FatEngine.cpp
     Source/Engines/Onset/OnsetEngine.h
+    Source/Engines/Onset/OnsetEngine.cpp
     Source/Engines/Overworld/OverworldEngine.h
+    Source/Engines/Overworld/OverworldEngine.cpp
     Source/Engines/Opal/OpalEngine.h
     Source/Engines/Opal/OpalEngine.cpp
     Source/Engines/Organon/OrganonEngine.h
+    Source/Engines/Organon/OrganonEngine.cpp
     Source/Engines/Ouroboros/OuroborosEngine.h
     Source/Engines/Ouroboros/OuroborosEngine.cpp
     Source/Engines/Orbital/OrbitalEngine.h
     Source/Engines/Orbital/OrbitalEngine.cpp
     Source/Engines/Obsidian/ObsidianEngine.h
+    Source/Engines/Obsidian/ObsidianEngine.cpp
     Source/Engines/Bite/BiteEngine.h
+    Source/Engines/Bite/BiteEngine.cpp
     Source/Engines/Origami/OrigamiEngine.h
+    Source/Engines/Origami/OrigamiEngine.cpp
     Source/Engines/Oracle/OracleEngine.h
+    Source/Engines/Oracle/OracleEngine.cpp
     Source/Engines/Obscura/ObscuraEngine.h
+    Source/Engines/Obscura/ObscuraEngine.cpp
     Source/Engines/Oceanic/OceanicEngine.h
+    Source/Engines/Oceanic/OceanicEngine.cpp
 
     # UI (Gallery Model)
     Source/UI/XOmnibusEditor.h
