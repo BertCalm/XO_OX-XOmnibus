@@ -63,24 +63,37 @@ Sea State Controller
 └── Depth: subsurface vs. surface energy ratio
         │
         ▼
+Shore Selector (osprey_shore)
+├── Atlantic: long rolling swells, guitarra/kora/uilleann resonators
+├── Nordic: deep slow waves, hardingfele/langspil resonators
+├── Mediterranean: short choppy seas, bouzouki/oud/ney resonators
+├── Pacific: vast gentle swells, koto/conch/singing bowl resonators
+└── Southern: warm rolling rhythm, cavaquinho/valiha/gamelan resonators
+        │
+        ▼
 Fluid Energy Model (simplified turbulent flow)
 ├── Laminar mode: correlated sinusoidal energy curves
 ├── Transitional: periodic + noise injection
 ├── Turbulent: Perlin noise + spectral cascade
+├── Shore-specific: swell shape, chop frequency, depth profile
 └── Output: N energy streams (amplitude, frequency mod, phase perturbation)
         │
         ├──────────────────────┐
         ▼                      ▼
 Resonator Bank               Creature Voice Generator
-(Folk Instrument Partials)    (Formant Gesture System)
-├── 16 tuned resonators       ├── Gull: sharp formant sweep (2-6kHz, fast)
-├── Instrument models:        ├── Whale: slow deep formant arc (50-800Hz)
-│   ├── Guitarra (shimmer)    ├── Wind: broadband filtered noise gesture
-│   ├── Hardingfele (sympathy)├── Bell: harbor buoy, ship bell partials
-│   ├── Uilleann drone        └── Custom: user-defined formant path
-│   ├── Kora (rolling arps)         │
-│   ├── Rebab (bowed string)        │
-│   └── Singing bowl (metallic)     │
+(Shore-Selected Partials)     (Shore-Selected Formants)
+├── 16 tuned resonators       ├── Gull/Tern/Petrel: sharp formant sweeps
+├── Shore selects model set:  ├── Whale species: slow deep formant arcs
+│   ├── Atlantic: guitarra,   ├── Wind character: per-shore spectral shape
+│   │   kora, uilleann        ├── Bell: harbor buoy, ship bell, temple bell
+│   ├── Nordic: hardingfele,  └── Custom: user-defined formant path
+│   │   langspil, kulning           │
+│   ├── Mediterranean:              │
+│   │   bouzouki, oud, ney          │
+│   ├── Pacific: koto,              │
+│   │   conch, singing bowl         │
+│   └── Southern: cavaquinho,       │
+│       valiha, gamelan             │
 ├── Excitation: fluid energy        │
 ├── Damping: sea state modulated    │
 └── Coupling: partials decorrelate  │
@@ -114,7 +127,9 @@ Resonator Bank               Creature Voice Generator
 
 **Voice model:** Each MIDI note tunes the resonator bank to that pitch. The fluid model runs globally (shared across voices). Up to 8 simultaneous voices. Legato mode available (smooth sea state transitions between notes).
 
-**CPU strategy:** The fluid energy model is lightweight (Perlin noise + spectral shaping, not actual Navier-Stokes). The resonators are modal filters (cheap per-sample). Creature voices are formant filters with envelope-driven sweeps. Estimated <10% CPU single-engine at 44.1kHz / 512 block on M1.
+**Shore system:** `osprey_shore` is a continuous parameter (0.0–4.0), not a discrete switch. Integer values are pure shores; fractional values crossfade between adjacent shore models — resonator partials morph, creature voices blend, fluid character interpolates. This means you can "sail" from the Atlantic to the Mediterranean in a single macro sweep, or automate the shore parameter for presets that journey between coastlines.
+
+**CPU strategy:** The fluid energy model is lightweight (Perlin noise + spectral shaping, not actual Navier-Stokes). The resonators are modal filters (cheap per-sample). Creature voices are formant filters with envelope-driven sweeps. Shore morphing uses crossfaded coefficient sets (no extra oscillators). Estimated <10% CPU single-engine at 44.1kHz / 512 block on M1.
 
 ---
 
@@ -124,11 +139,12 @@ All parameter IDs use `osprey_` prefix. Key parameters:
 
 | ID | Range | Description |
 |----|-------|-------------|
+| `osprey_shore` | 0-4 | Coastline region: Atlantic / Nordic / Mediterranean / Pacific / Southern. Selects resonator model family, creature voice set, and fluid character (swell shape, chop frequency, depth profile). Morphable — intermediate values blend adjacent shores. |
 | `osprey_seaState` | 0.0-1.0 | Master calm→storm control. THE parameter. |
 | `osprey_swellPeriod` | 0.5-30s | Wave rhythm — modulates resonator energy cyclically |
 | `osprey_windDir` | 0-360° | Spectral tilt bias (which resonators receive more energy) |
 | `osprey_depth` | 0.0-1.0 | Surface vs. subsurface energy balance |
-| `osprey_resonatorModel` | 0-5 | Folk instrument model selection |
+| `osprey_resonatorModel` | 0-5 | Folk instrument within current shore (overrides shore default) |
 | `osprey_resonatorBright` | 0.0-1.0 | Resonator high partial emphasis |
 | `osprey_resonatorDecay` | 0.01-8s | How long resonators ring |
 | `osprey_sympathyAmount` | 0.0-1.0 | Cross-resonator sympathetic coupling (hardingfele-inspired) |
@@ -184,6 +200,22 @@ XOsprey draws from maritime folk traditions worldwide — not as a sampler of wo
 **West African Kora** — The 21-string bridge harp of the Mandé people. Kora arpeggios have a rolling, wave-like quality — the two hand planes create interlocking patterns that suggest the rise and fall of ocean swells. Toumani Diabaté's solo recordings sound like the ocean playing itself.
 
 **East Asian Singing Bowls & Gamelan** — Metallic resonance traditions from Tibet, Nepal, Java, Bali. Struck metal resonators produce complex inharmonic spectra that evolve over long decays — physical objects ringing in response to impulse excitation. This IS scanned resonance, and it maps directly to XOsprey's resonator bank being excited by fluid energy impulses.
+
+### The Shore System — Coastlines as Synthesis Regions
+
+The `osprey_shore` parameter isn't a preset selector — it's a continuous synthesis dimension. Each shore defines a complete sonic ecosystem:
+
+| Shore | Value | Swell Character | Resonator Family | Creature Voices | Emotional Quality |
+|-------|-------|----------------|-----------------|----------------|-------------------|
+| **Atlantic** | 0.0 | Long, rolling, powerful swells. Deep troughs. | Guitarra portuguesa (shimmer), kora (rolling arps), uilleann pipes (drone + chanter) | Humpback whale (deep melodic arcs), Atlantic storm petrel (sharp cries), harbor foghorn | Saudade — vast longing, the sailor's departure |
+| **Nordic** | 1.0 | Deep, slow, heavy waves. Fjord reflections. | Hardingfele (sympathetic strings), langspil (bowed drone), kulning (herding call formants) | Beluga whale (high chirps), Arctic tern (piercing cry), ice cracking (impulse) | Stark beauty — midnight sun on still fjord water |
+| **Mediterranean** | 2.0 | Short, choppy, bright seas. Quick energy. | Bouzouki (metallic shimmer), oud (warm pluck), ney flute (breathy resonance) | Mediterranean gull (laughing call), dolphin clicks (rapid impulses), cicada drone (summer texture) | Warm melancholy — Aegean blue, ancient harbors |
+| **Pacific** | 3.0 | Vast, gentle, immense swells. Slow period. | Koto (precise harmonics), conch shell (horn resonance), singing bowl (metallic sustain) | Pacific humpback (longest whale songs), albatross (low soaring call), reef crackling (biophonic texture) | Oceanic vastness — horizon in every direction |
+| **Southern** | 4.0 | Warm rolling rhythm. Trade wind consistency. | Cavaquinho (bright attack), valiha (bamboo tube resonance), gamelan (inharmonic metallic partials) | Southern right whale (deep boom), tropicbird (sharp descending cry), tropical rain (broadband patter) | Equatorial warmth — Cesária Évora's barefoot melancholy |
+
+**Morphing between shores:** At `osprey_shore` = 1.5, you're halfway between Nordic and Mediterranean — hardingfele sympathetic strings blending with bouzouki metallics, beluga chirps morphing into dolphin clicks, deep fjord swells shortening into Aegean chop. This creates thousands of hybrid coastlines that exist nowhere on Earth but feel geographically coherent.
+
+**Shore as coupling target:** When another engine modulates `osprey_shore` via coupling, the coastline itself becomes a dynamic parameter. OUROBOROS chaos slowly drifting the shore value creates a boat lost at sea, passing through unfamiliar waters. OVERWORLD's chip LFO rapidly switching shores creates a radio scanning between coastal stations.
 
 ### Instrument Heritage
 
