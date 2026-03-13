@@ -1258,7 +1258,7 @@ private:
     // MIDI note handling
     //==========================================================================
 
-    void noteOn (int noteNumber, float velocity, int maxPoly,
+    void noteOn (int noteNumber, float velocity, int midiChannel, int maxPoly,
                  bool monoMode, bool legatoMode, float glideCoeff,
                  float ampA, float ampD, float ampS, float ampR,
                  float modA, float modD, float modS, float modR,
@@ -1301,6 +1301,12 @@ private:
             voice.fadingOut = false;
             voice.fadeGain = 1.0f;
             voice.startTime = ++voiceCounter;
+
+            // Initialize MPE expression for this voice's channel
+            voice.mpeExpression.reset();
+            voice.mpeExpression.midiChannel = midiChannel;
+            if (mpeManager != nullptr)
+                mpeManager->updateVoiceExpression(voice.mpeExpression);
 
             // Add random microtonal offset per note (shapeshifter)
             voice.driftRng = voice.driftRng * 1664525u + 1013904223u;
@@ -1367,6 +1373,12 @@ private:
         voice.startTime = ++voiceCounter;
         voice.driftRng = static_cast<uint32_t> (slot * 777 + noteNumber * 31 + voiceCounter);
 
+        // Initialize MPE expression for this voice's channel
+        voice.mpeExpression.reset();
+        voice.mpeExpression.midiChannel = midiChannel;
+        if (mpeManager != nullptr)
+            mpeManager->updateVoiceExpression(voice.mpeExpression);
+
         // Random microtonal offset per note
         voice.driftRng = voice.driftRng * 1664525u + 1013904223u;
         voice.microtonalOffset = microOffset + (static_cast<float> (voice.driftRng & 0xFFFF) / 65536.0f - 0.5f) * 10.0f;
@@ -1407,12 +1419,17 @@ private:
         }
     }
 
-    void noteOff (int noteNumber)
+    void noteOff (int noteNumber, int midiChannel = 0)
     {
         for (auto& voice : voices)
         {
             if (voice.active && voice.noteNumber == noteNumber && !voice.fadingOut)
             {
+                // In MPE mode, match by channel too
+                if (midiChannel > 0 && voice.mpeExpression.midiChannel > 0
+                    && voice.mpeExpression.midiChannel != midiChannel)
+                    continue;
+
                 voice.ampEnv.noteOff();
                 voice.modEnv.noteOff();
             }
