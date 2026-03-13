@@ -1,6 +1,6 @@
 # XOmnibus — Engine Expansion Roadmap
 
-*Document version: 3.0 | March 2026 — Full audit: 20 engines integrated, XOstinato designed, XOcelot scaffolded*
+*Document version: 3.1 | March 2026 — Full audit: 20 engines integrated, XOstinato + XOuïe designed, XOcelot scaffolded*
 
 ---
 
@@ -122,6 +122,7 @@ These are the full standalone instruments (AU + Standalone builds) that exist al
 
 **Coupling Matrix (OSTINATO)**
 
+
 | As Target | Source Engine | Type | Musical Effect |
 |-----------|--------------|------|----------------|
 | OSTINATO receives | BITE | AmpToFilter | Bass amplitude opens Fire Stage — bass makes circle roar |
@@ -137,6 +138,48 @@ These are the full standalone instruments (AU + Standalone builds) that exist al
 | OSTINATO sends | OPAL | AudioToWavetable | Drum hits scattered into grain clouds |
 | OSTINATO sends | DRIFT | AmpToFilter | Circle energy drives pad filter |
 | OSTINATO sends | BOB | AmpToFilter | Drum dynamics shape warm texture |
+
+### Engine: OUIE — XOuïe
+
+- **Gallery code:** OUIE
+- **Accent color:** Hammerhead Steel `#708090`
+- **Parameter prefix:** `ouie_`
+- **Thesis:** Duophonic synthesis — two voices with selectable algorithms (8 options each), STRIFE↔LOVE bipolar interaction axis. The hammerhead shark at the thermocline.
+- **Max voices:** 2 (duophonic) + 4 unison per voice = 8 oscillators max
+- **CPU budget:** <8%
+- **Concept brief:** `Docs/concepts/xouie_concept_brief.md` ✅
+- **Standalone repo:** Not yet created
+
+**Key architecture decisions:**
+- 2 voices, each selects from 8 algorithms in smooth/rough clusters
+- Smooth: VA, Wavetable, FM, Additive | Rough: Phase Dist, Wavefolder, KS, Noise
+- HAMMER macro: bipolar STRIFE↔LOVE interaction axis (signature feature)
+- Voice modes: Split (low/high), Layer (both on every note), Duo (true duophonic)
+- 4 macros: HAMMER (interaction), AMPULLAE (sensitivity), CARTILAGE (flexibility), CURRENT (environment)
+- ~65 canonical parameters, 80 factory presets
+- Inspired by Arturia MiniFreak/MicroFreak architecture
+
+**Current status:** Phase 0 complete — design approved. Ready for Phase 1 architecture.
+
+**Invoke Phase 1:** `/new-xo-engine phase=1 name=XOuïe identity="Duophonic synthesis — two voices, two algorithms, one predator. Brotherly love and brotherly strife at the thermocline." code=XOui`
+
+**Coupling Matrix (OUIE)**
+
+| As Target | Source Engine | Type | Musical Effect |
+|-----------|--------------|------|----------------|
+| OUIE receives | DRIFT | EnvToMorph | Climax bloom sweeps HAMMER — journey destabilizes the brothers |
+| OUIE receives | ONSET | AmpToFilter | Drum hits modulate filter — rhythmic predator |
+| OUIE receives | FAT | AmpToFilter | Whale mass drives filter depth |
+| OUIE receives | OPAL | AudioToFM | Grain particles FM-modulate Voice B |
+| OUIE receives | OCEANIC | EnvToMorph | Spectral separation drives algorithm morph |
+
+| As Source | Target Engine | Type | Musical Effect |
+|-----------|--------------|------|----------------|
+| OUIE sends | DUB | getSample | Duophonic output through dub echo |
+| OUIE sends | OPAL | AudioToWavetable | Two-voice texture granulated into particles |
+| OUIE sends | BITE | AmpToFilter | Shark's attack drives anglerfish's bite |
+| OUIE sends | OCEANIC | getSample | Two-voice output spectrally separated |
+| OUIE sends | DRIFT | getSample | Duophonic texture as Odyssey's starting point |
 
 ---
 
@@ -217,6 +260,7 @@ NOW
 ├── XOstinato — Phase 1 architecture (design approved)
 │
 NEXT
+├── XOuïe — Phase 1 architecture (concept brief done)
 ├── XOpenSky — Phase 1 architecture (concept brief done)
 ├── XOceanDeep — Phase 1 architecture (concept brief done)
 ├── XOstinato — Phase 2-7 build
@@ -252,6 +296,10 @@ Priority coupling showcase presets for newly added engines:
 15. **OCEANDEEP × OVERDUB** — The Deepest Dub — abyssal sub through dub delay
 16. **OPENSKY × OPAL** — Light Particles — shimmer granulated into suspended crystals
 17. **OCEANDEEP × ONSET** — Pressure Drums — 808 sub shaking the percussion from below
+18. **OUIE × OCEANDEEP** — Apex Dive — duophonic leads over abyssal 808
+19. **OUIE × OPENSKY** — Thermal Rising — two-voice texture erupting into euphoric shimmer
+20. **OUIE × DUB** — Brothers Echo — duophonic argument echoing through dub tape delay
+21. **OUIE × BITE** — Predator Meets Predator — hammerhead driving anglerfish's bite filter
 
 ---
 

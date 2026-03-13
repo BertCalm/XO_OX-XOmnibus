@@ -50,6 +50,7 @@ The XO_OX universe is a vertical cross-section of water — from open sky above 
 │
 │   THERMOCLINE — where warm meets cold
 │   XOverdub           echo and reverb — sound bouncing through temperature layers
+│   XOuïe              the hammerhead shark — two voices patrolling the boundary
 │   XOpal              scattered light — particles suspended in the water column
 │   XOcelot            the ecosystem itself — strata interacting
 │
@@ -82,7 +83,7 @@ Every engine has a polarity — its position on the vertical axis between feliX'
 | **feliX-leaning** | Bright character with depth underneath | XOblique, XOptic, XOrigami |
 | **The Reef** | Oscar's home but feliX visits — warmth with curiosity | OddOscar, XOblongBob, XOracle |
 | **Open Water** | The vast middle — neither surface nor deep | XOdyssey, XOrbital, XOstinato, XObese |
-| **Thermocline** | The boundary where warm meets cold — transformation | XOverdub, XOpal, XOcelot |
+| **Thermocline** | The boundary where warm meets cold — transformation | XOverdub, XOuïe, XOpal, XOcelot |
 | **Oscar-leaning** | Deep character with surface flash | XOverbite, XObsidian, XOscillum, XOrganon |
 | **Pure Oscar** | Sustained, deep, massive, pressure, ancient | XOuroboros, XObscura, XOccult, XOblivion, XOceanDeep |
 
@@ -118,6 +119,7 @@ Species finding unexplored territory in the water column.
 - **XOpal** — Light scattered through Oscar's water column. Particles suspended in time.
 - **XOrbital** — feliX's harmonic overtones circling like a school of fish.
 - **XOstinato** — The tidal pulse. The repeating rhythm that connects all depths. The drum circle of the sea.
+- **XOuïe** — The hammerhead shark. Two sensory platforms fused into one predator. Duophonic. Patrols the thermocline.
 
 ### Fourth Generation — Deep Evolution
 Species adapting to extreme environments.

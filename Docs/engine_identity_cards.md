@@ -346,8 +346,28 @@ Oblique gives colored, refracted output — sounds with unexpected harmonic cont
 
 ---
 
+## XOuïe — OUIE
+
+**Gallery code:** OUIE | **Accent:** Hammerhead Steel `#708090` | **Prefix:** `ouie_`
+**Thesis:** Duophonic synthesis — two voices, two algorithms, one predator. Brotherly love and brotherly strife at the thermocline.
+**Personality:** Predatory, Dual, Boundary
+**Polarity:** Dead Center (The Thermocline, 50/50)
+
+### Aquatic Identity
+The hammerhead shark. A predator whose cephalofoil — that impossibly wide T-shaped head — is two separate sensory platforms fused into one animal. Each eye sees a different angle. Each nostril tracks a different scent gradient. The ampullae of Lorenzini on that wide head detect the faintest electrical fields. XOuïe is duophonic because the hammerhead is duophonic: two independent sensor arrays that evolved to work as one. The HAMMER macro is the cephalofoil itself — at STRIFE, the two halves disagree (cross-FM, ring mod, phase cancellation); at LOVE, they fuse (spectral blend, harmonic lock, unison). The hammerhead patrols the thermocline, the boundary between feliX's warm surface and Oscar's cold deep — the only engine at dead-center polarity.
+
+### Coupling Thesis
+XOuïe gives duophonic texture — two-algorithm output that is harmonically richer and more complex than any single-algorithm engine. He receives envelope coupling that sweeps his HAMMER macro, destabilizing or harmonizing the brothers from outside. Pair him with engines at extreme polarity (OPENSKY, OCEANDEEP) to hear the thermocline stretched between sky and floor. He is the boundary hunter. He sees both sides.
+
+### Mood Affinity
+| Foundation | Atmosphere | Entangled | Prism | Flux | Aether |
+|-----------|-----------|-----------|-------|------|--------|
+| Medium | Medium | High | Medium | High | Medium |
+
+---
+
 *All engines reference the unified mythology in `Docs/xo_ox_aquatic_mythology.md`.*
-*Engines with full Phase 0 concept briefs: XOpal, XOcelot, XOrbital, XOverworld, XOstinato, XOpenSky, XOceanDeep.*
+*Engines with full Phase 0 concept briefs: XOpal, XOcelot, XOrbital, XOverworld, XOstinato, XOpenSky, XOceanDeep, XOuïe.*
 
 ---
 

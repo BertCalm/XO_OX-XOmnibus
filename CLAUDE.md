@@ -61,6 +61,7 @@ and mutate into sounds impossible with any single synth.
 | OSTINATO | XOstinato | Firelight Orange `#E8701A` |
 | OPENSKY | XOpenSky | Sunburst `#FF8C00` |
 | OCEANDEEP | XOceanDeep | Trench Violet `#2D0A4E` |
+| OUIE | XOuïe | Hammerhead Steel `#708090` |
 
 ### Engine ID vs Parameter Prefix
 
@@ -92,6 +93,7 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Ostinato | `osti_` | `osti_seatN_instrument` |
 | OpenSky | `sky_` | `sky_shimmerAmount` |
 | OceanDeep | `deep_` | `deep_pressure` |
+| Ouïe | `ouie_` | `ouie_hammer` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
