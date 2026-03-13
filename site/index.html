@@ -2633,16 +2633,28 @@ function drawWaveform(time) {
 }
 drawWaveform(0);
 
-// Pause animations when not visible
+// Pause hero animations when not visible or off-screen
+let heroVisible = true;
+function startHeroAnimations() {
+  if (!heroVisible) return;
+  drawWaveform(performance.now());
+  animateParticles();
+}
+function stopHeroAnimations() {
+  cancelAnimationFrame(animId);
+  cancelAnimationFrame(particleAnimId);
+}
+
 document.addEventListener('visibilitychange', () => {
-  if (document.hidden) {
-    cancelAnimationFrame(animId);
-    cancelAnimationFrame(particleAnimId);
-  } else {
-    drawWaveform(performance.now());
-    animateParticles();
-  }
+  if (document.hidden) { stopHeroAnimations(); }
+  else if (heroVisible) { startHeroAnimations(); }
 });
+
+new IntersectionObserver(([entry]) => {
+  heroVisible = entry.isIntersecting;
+  if (heroVisible) { startHeroAnimations(); }
+  else { stopHeroAnimations(); }
+}, { threshold: 0 }).observe(document.getElementById('hero'));
 
 // ═══════════ CHORD MACHINE DEMO ═══════════
 const CM_STEPS = 16;
@@ -3142,17 +3154,27 @@ function animateBubbles() {
   }
   bubbleAnimId = requestAnimationFrame(animateBubbles);
 }
-animateBubbles();
 
-// Pause bubble animation when hidden
-const origVisChange = document.onvisibilitychange;
+// Pause bubble animation when hidden or off-screen
+let aquariumVisible = false;
+function startBubbleAnimation() {
+  if (!aquariumVisible) return;
+  animateBubbles();
+}
+function stopBubbleAnimation() {
+  cancelAnimationFrame(bubbleAnimId);
+}
+
 document.addEventListener('visibilitychange', () => {
-  if (document.hidden) {
-    cancelAnimationFrame(bubbleAnimId);
-  } else {
-    animateBubbles();
-  }
+  if (document.hidden) { stopBubbleAnimation(); }
+  else if (aquariumVisible) { startBubbleAnimation(); }
 });
+
+new IntersectionObserver(([entry]) => {
+  aquariumVisible = entry.isIntersecting;
+  if (aquariumVisible) { startBubbleAnimation(); }
+  else { stopBubbleAnimation(); }
+}, { threshold: 0 }).observe(document.getElementById('aquarium'));
 
 // ═══════════ AQUATIC PAGE TRANSITIONS ═══════════
 const pageTransition = document.getElementById('pageTransition');
