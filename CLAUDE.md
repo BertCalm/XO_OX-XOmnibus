@@ -85,7 +85,7 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Origami | `origami_` | `origami_foldPoint` |
 | Oracle | `oracle_` | `oracle_breakpoints` |
 | Obscura | `obscura_` | `obscura_stiffness` |
-| Oceanic | `oceanic_` | `oceanic_separation` |
+| Oceanic | `ocean_` | `ocean_separation` |
 | Optic | `optic_` | `optic_pulseRate` |
 | Oblique | `oblq_` | `oblq_prismColor` |
 | Orca | `orca_` | `orca_huntMacro` |
