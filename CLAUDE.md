@@ -7,7 +7,7 @@ It merges character instruments into one unified creative environment where engi
 and mutate into sounds impossible with any single synth. 22 engines are integrated with DSP code;
 4 more are in concept phase — 26 total across the full roadmap (see engine table below).
 
-- **Engine modules:** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSTINATO, OPENSKY, OCEANDEEP, OWLFISH, OUIE
+- **Engine modules:** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OSTINATO, OPENSKY, OCEANDEEP, OWLFISH, OUIE
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** 1,610 factory presets in `.xometa` format, 6 mood categories, 6D Sonic DNA
@@ -59,6 +59,8 @@ and mutate into sounds impossible with any single synth. 22 engines are integrat
 | ORBITAL | XOrbital | Warm Red `#FF6B6B` |
 | OPTIC | XOptic | Phosphor Green `#00FF41` |
 | OBLIQUE | XOblique | Prism Violet `#BF40FF` |
+| OSPREY | XOsprey | Azulejo Blue `#1B4F8A` |
+| OSTERIA | XOsteria | Porto Wine `#722F37` |
 | OSTINATO | XOstinato | Firelight Orange `#E8701A` |
 | OPENSKY | XOpenSky | Sunburst `#FF8C00` |
 | OCEANDEEP | XOceanDeep | Trench Violet `#2D0A4E` |
@@ -93,6 +95,8 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Ocelot | `ocelot_` | `ocelot_biome` |
 | Optic | `optic_` | `optic_pulseRate` |
 | Oblique | `oblq_` | `oblq_prismColor` |
+| Osprey | `osprey_` | `osprey_shore` |
+| Osteria | `osteria_` | `osteria_grainSize` |
 | Ostinato | `osti_` | `osti_seatN_instrument` |
 | OpenSky | `sky_` | `sky_shimmerAmount` |
 | OceanDeep | `deep_` | `deep_pressure` |

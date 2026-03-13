@@ -4,6 +4,7 @@
 #include "../../DSP/FastMath.h"
 #include "../../DSP/ShoreSystem/ShoreSystem.h"
 #include <array>
+#include <atomic>
 #include <cmath>
 #include <algorithm>
 
@@ -1019,6 +1020,12 @@ public:
                 mixR = lerp (mixR, tapeState[1] + tapeNoise * 0.003f, pTape);
             }
 
+            // Final soft limiter (prevents clipping on multi-voice sum)
+            mixL = fastTanh (mixL);
+            mixR = fastTanh (mixR);
+            mixL = flushDenormal (mixL);
+            mixR = flushDenormal (mixR);
+
             // Write output
             if (buffer.getNumChannels() >= 2)
             {
@@ -1434,7 +1441,7 @@ private:
 
     std::array<OsteriaVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
-    int activeVoices = 0;
+    std::atomic<int> activeVoices { 0 };
 
     // Coupling accumulators
     float envelopeOutput = 0.0f;
