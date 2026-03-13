@@ -1,5 +1,6 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
+#include "MPEManager.h"
 
 namespace xomnibus {
 
@@ -102,6 +103,18 @@ public:
     // Safe to call from the message thread — implementations must use an atomic
     // or just return a cached counter updated at the end of each renderBlock().
     virtual int getActiveVoiceCount() const { return 0; }
+
+    //-- MPE Expression --------------------------------------------------------
+
+    // Set the MPE manager reference for per-note expression queries.
+    // Called once during engine setup. Engines use this to look up per-channel
+    // pitch bend, pressure, and slide values in their renderBlock().
+    virtual void setMPEManager(MPEManager* manager) { mpeManager = manager; }
+
+protected:
+    // Engines access this to query per-channel expression state.
+    // nullptr when MPE is disabled (engines should check before use).
+    MPEManager* mpeManager = nullptr;
 };
 
 } // namespace xomnibus

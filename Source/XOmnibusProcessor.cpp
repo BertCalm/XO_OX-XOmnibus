@@ -88,6 +88,12 @@ void XOmnibusProcessor::cacheParameterPointers()
     cachedParams.cmHumanize      = apvts.getRawParameterValue("cm_humanize");
     cachedParams.cmSidechainDuck = apvts.getRawParameterValue("cm_sidechain_duck");
     cachedParams.cmEnoMode       = apvts.getRawParameterValue("cm_eno_mode");
+
+    cachedParams.mpeEnabled        = apvts.getRawParameterValue("mpe_enabled");
+    cachedParams.mpeZone           = apvts.getRawParameterValue("mpe_zone");
+    cachedParams.mpePitchBendRange = apvts.getRawParameterValue("mpe_pitchBendRange");
+    cachedParams.mpePressureTarget = apvts.getRawParameterValue("mpe_pressureTarget");
+    cachedParams.mpeSlideTarget    = apvts.getRawParameterValue("mpe_slideTarget");
 }
 
 juce::AudioProcessorValueTreeState::ParameterLayout
@@ -176,6 +182,28 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         juce::ParameterID("cm_eno_mode", 1), "CM Eno Mode",
         false));
 
+    // MPE parameters
+    params.push_back(std::make_unique<juce::AudioParameterBool>(
+        juce::ParameterID("mpe_enabled", 1), "MPE Enabled",
+        false));
+    params.push_back(std::make_unique<juce::AudioParameterChoice>(
+        juce::ParameterID("mpe_zone", 1), "MPE Zone",
+        juce::StringArray{ "Off", "Lower", "Upper", "Both" },
+        1)); // Default: Lower zone (Roli Seaboard default)
+    params.push_back(std::make_unique<juce::AudioParameterInt>(
+        juce::ParameterID("mpe_pitchBendRange", 1), "MPE Pitch Bend Range",
+        1, 96, 48)); // Default: 48 semitones (Roli Seaboard default)
+    params.push_back(std::make_unique<juce::AudioParameterChoice>(
+        juce::ParameterID("mpe_pressureTarget", 1), "MPE Pressure Target",
+        juce::StringArray{ "Filter Cutoff", "Volume", "Wavetable Pos",
+                           "FX Send", "CHARACTER", "MOVEMENT" },
+        0)); // Default: Filter Cutoff
+    params.push_back(std::make_unique<juce::AudioParameterChoice>(
+        juce::ParameterID("mpe_slideTarget", 1), "MPE Slide Target",
+        juce::StringArray{ "Filter Cutoff", "Volume", "Wavetable Pos",
+                           "FX Send", "CHARACTER", "MOVEMENT" },
+        0)); // Default: Filter Cutoff
+
     // Master FX parameters
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_satDrive", 1), "Master Sat Drive",
@@ -209,6 +237,7 @@ void XOmnibusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 
     couplingMatrix.prepare(samplesPerBlock);
     chordMachine.prepare(sampleRate, samplesPerBlock);
+    mpeManager.prepare(sampleRate, samplesPerBlock);
     masterFX.prepare(sampleRate, samplesPerBlock, apvts);
 
     for (auto& buf : engineBuffers)
@@ -294,10 +323,27 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         }
     }
 
+    // Sync MPE config from cached parameter pointers (no hash lookups)
+    {
+        const bool mpe = cachedParams.mpeEnabled->load() >= 0.5f;
+        mpeManager.setMPEEnabled(mpe);
+        mpeManager.setZoneLayout(static_cast<MPEZoneLayout>(
+            static_cast<int>(cachedParams.mpeZone->load())));
+        mpeManager.setPitchBendRange(static_cast<int>(cachedParams.mpePitchBendRange->load()));
+        mpeManager.setPressureTarget(static_cast<MPEManager::ExpressionTarget>(
+            static_cast<int>(cachedParams.mpePressureTarget->load())));
+        mpeManager.setSlideTarget(static_cast<MPEManager::ExpressionTarget>(
+            static_cast<int>(cachedParams.mpeSlideTarget->load())));
+    }
+
+    // Process MIDI through MPE manager (extracts per-channel expression,
+    // passes note-on/off and CCs through to engines)
+    mpeManager.processBlock(midi, mpeMidiBuffer);
+
     // Route MIDI through ChordMachine → 4 per-slot MidiBuffers.
     // When disabled, each slot gets a copy of the input MIDI (previous behavior).
     // When enabled, each slot gets its own chord-distributed note.
-    chordMachine.processBlock(midi, slotMidi, numSamples);
+    chordMachine.processBlock(mpeMidiBuffer, slotMidi, numSamples);
 
     // Render each active engine into its own buffer using slot-specific MIDI
     for (int i = 0; i < MaxSlots; ++i)
@@ -381,6 +427,7 @@ void XOmnibusProcessor::loadEngine(int slot, const std::string& engineId)
         return;
 
     newEngine->attachParameters(apvts);
+    newEngine->setMPEManager(&mpeManager);
     newEngine->prepare(currentSampleRate, currentBlockSize);
 
     // Move the old engine to crossfade-out state

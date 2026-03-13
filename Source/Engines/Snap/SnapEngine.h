@@ -91,6 +91,9 @@ struct SnapVoice
     float velocity = 0.0f;
     uint64_t startTime = 0;
 
+    // MPE per-voice expression state
+    MPEVoiceExpression mpeExpression;
+
     // Oscillators
     PolyBLEP sineOsc;
     PolyBLEP noiseOsc;
@@ -216,11 +219,22 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
-                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), snap, pitchLocked, detuneCents, unisonCount, cutoff, reso, maxPoly, oscModeIdx);
+                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel(),
+                        snap, pitchLocked, detuneCents, unisonCount, cutoff, reso, maxPoly, oscModeIdx);
             else if (msg.isNoteOff())
-                noteOff (msg.getNoteNumber());
+                noteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
+        }
+
+        // --- Update per-voice MPE expression from MPEManager ---
+        if (mpeManager != nullptr)
+        {
+            for (auto& voice : voices)
+            {
+                if (!voice.active) continue;
+                mpeManager->updateVoiceExpression(voice.mpeExpression);
+            }
         }
 
         // Consume coupling accumulators (reset after use, per contract)
@@ -238,11 +252,21 @@ public:
         // Hoist block-constant filter coefficient updates outside the sample loop.
         // cutoff/reso/srf are block-constant; computing coefficients once per block
         // avoids repeated trig (tan) inside the per-sample, per-voice loop.
+        // MPE pressure and slide modulate cutoff per-voice (±2 octaves max).
         for (auto& voice : voices)
         {
             if (!voice.active) continue;
-            voice.hpf.setCoefficients (cutoff, reso, srf);
-            voice.bpf.setCoefficients (cutoff, reso, srf);
+            float voiceCutoff = cutoff;
+
+            // MPE expression → filter cutoff modulation
+            // Pressure: bipolar modulation centered on preset cutoff (up to ±2 octaves)
+            voiceCutoff *= std::pow(2.0f, voice.mpeExpression.pressure * 2.0f);
+            // Slide (CC74): additive modulation on top of pressure
+            voiceCutoff *= std::pow(2.0f, (voice.mpeExpression.slide - 0.5f) * 2.0f);
+            voiceCutoff = juce::jlimit(20.0f, 20000.0f, voiceCutoff);
+
+            voice.hpf.setCoefficients (voiceCutoff, reso, srf);
+            voice.bpf.setCoefficients (voiceCutoff, reso, srf);
         }
 
         for (int sample = 0; sample < numSamples; ++sample)
@@ -282,6 +306,9 @@ public:
                 float currentMidi = voice.currentPitch * (1.0f - sweepMix)
                                   + voice.targetPitch * sweepMix;
                 currentMidi += pitchMod;
+
+                // MPE per-note pitch bend (from Seaboard X-axis, etc.)
+                currentMidi += voice.mpeExpression.pitchBendSemitones;
 
                 float freq = midiToHz (currentMidi);
 
@@ -512,7 +539,7 @@ public:
 
 private:
     //--------------------------------------------------------------------------
-    void noteOn (int noteNumber, float velocity, float snap, bool pitchLocked,
+    void noteOn (int noteNumber, float velocity, int midiChannel, float snap, bool pitchLocked,
                  float detuneCents, int unisonCount, float cutoff, float reso,
                  int maxPoly, int oscModeIdx)
     {
@@ -529,6 +556,12 @@ private:
         voice.noteNumber = noteNumber;
         voice.velocity = velocity;
         voice.startTime = voiceCounter++;
+
+        // Initialize MPE expression for this voice's channel
+        voice.mpeExpression.reset();
+        voice.mpeExpression.midiChannel = midiChannel;
+        if (mpeManager != nullptr)
+            mpeManager->updateVoiceExpression(voice.mpeExpression);
         voice.envLevel = 1.0f;
 
         float baseMidi = pitchLocked ? 60.0f : static_cast<float> (noteNumber);
@@ -570,11 +603,27 @@ private:
         voice.bpf.setCoefficients (cutoff, reso, srf);
     }
 
-    void noteOff (int noteNumber)
+    void noteOff (int noteNumber, int midiChannel = 0)
     {
         for (auto& voice : voices)
-            if (voice.active && voice.noteNumber == noteNumber)
-                voice.envLevel = std::min (voice.envLevel, 0.01f); // quick fade for percussive
+        {
+            if (!voice.active || voice.noteNumber != noteNumber)
+                continue;
+
+            // In MPE mode, match by channel too (each finger has its own channel)
+            if (midiChannel > 0 && voice.mpeExpression.midiChannel > 0
+                && voice.mpeExpression.midiChannel != midiChannel)
+                continue;
+
+            // If sustain pedal is held, defer the note-off
+            if (voice.mpeExpression.sustainHeld)
+            {
+                voice.noteNumber = -1; // Mark for release when sustain lifts
+                continue;
+            }
+
+            voice.envLevel = std::min (voice.envLevel, 0.01f); // quick fade for percussive
+        }
     }
 
     int findFreeVoice (int maxPoly)
