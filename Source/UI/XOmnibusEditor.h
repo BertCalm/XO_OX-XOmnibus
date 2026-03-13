@@ -90,7 +90,7 @@ namespace GalleryColors {
 
     inline juce::String prefixForEngine(const juce::String& id)
     {
-        return id.toLowerCase();
+        return frozenPrefixForEngine(id);
     }
 }
 

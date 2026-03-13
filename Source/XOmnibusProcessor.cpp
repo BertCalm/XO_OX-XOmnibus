@@ -569,14 +569,14 @@ void XOmnibusProcessor::applyPreset(const PresetData& preset)
 {
     // Each engine's params are stored under its engine name key.
     // Inner param names may be full APVTS IDs (e.g. "opal_source") or
-    // unprefixed names (e.g. "source") — try both.
+    // unprefixed names (e.g. "source") — try both using the frozen prefix.
     for (const auto& [engineName, paramsVar] : preset.parametersByEngine)
     {
         auto* obj = paramsVar.getDynamicObject();
         if (!obj)
             continue;
 
-        juce::String prefix = engineName.toLowerCase() + "_";
+        juce::String prefix = frozenPrefixForEngine(resolveEngineAlias(engineName)) + "_";
 
         for (const auto& prop : obj->getProperties())
         {

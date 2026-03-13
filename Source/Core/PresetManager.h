@@ -66,6 +66,39 @@ inline juce::String resolveEngineAlias(const juce::String& name)
     return (it != aliases.end()) ? it->second : name;
 }
 
+// Frozen parameter prefix for each canonical engine ID.
+// These NEVER change — parameter IDs are stable across releases.
+// Returns the prefix WITHOUT trailing underscore (e.g. "snap", "morph").
+inline juce::String frozenPrefixForEngine(const juce::String& engineId)
+{
+    static const std::map<juce::String, juce::String> prefixes {
+        { "OddfeliX",   "snap"    },
+        { "OddOscar",   "morph"   },
+        { "Overdub",     "dub"     },
+        { "Odyssey",     "drift"   },
+        { "Oblong",      "bob"     },
+        { "Obese",       "fat"     },
+        { "Overbite",    "poss"    },
+        { "Onset",       "perc"    },
+        { "Overworld",   "ow"      },
+        { "Opal",        "opal"    },
+        { "Orbital",     "orb"     },
+        { "Organon",     "organon" },
+        { "Ouroboros",   "ouro"    },
+        { "Obsidian",    "obsidian"},
+        { "Origami",     "origami" },
+        { "Oracle",      "oracle"  },
+        { "Obscura",     "obscura" },
+        { "Oceanic",     "ocean"   },
+        { "Optic",       "optic"   },
+        { "Oblique",     "oblq"    },
+        { "Orca",        "orca"    },
+        { "Octopus",     "octo"    },
+    };
+    auto it = prefixes.find(engineId);
+    return (it != prefixes.end()) ? it->second : engineId.toLowerCase();
+}
+
 // Valid moods — the 6 browsing categories plus User.
 inline const juce::StringArray validMoods {
     "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "User"
