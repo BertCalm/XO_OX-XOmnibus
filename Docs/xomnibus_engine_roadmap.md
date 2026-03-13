@@ -1,371 +1,161 @@
 # XOmnibus — Engine Expansion Roadmap
-*Gallery Additions: OVERBITE (XOverbite) + OPAL (XOpal) → then Volume 2 engines*
-*Document version: 2.1 | March 2026 — Added XOcelot (OCELOT) to Volume 2 queue*
+
+*Document version: 3.0 | March 2026 — Full audit: 20 engines integrated, XOstinato designed, XOcelot scaffolded*
 
 ---
 
-## Gallery State at Roadmap Start
+## Current Gallery State (March 2026)
 
-| Code | Source | Role | Status |
-|------|--------|------|--------|
-| ODDFELIX | OddfeliX | Percussive/rhythmic | Integrated |
-| ODDOSCAR | OddOscar | Wavetable pads | Integrated |
-| OVERDUB | XOverdub | FX send/return bus | Integrated |
-| ODYSSEY | XOdyssey | Psychedelic pads, Climax | Integrated |
-| OBLONG | XOblong | Warm fuzzy textures | Integrated |
-| OBESE | XObese | Width/thickness, 13-osc | Integrated |
-| ONSET | XOnset (spec) | Dedicated drums | Not built |
-| OVERWORLD | XOverworld | Chip synthesis, 6 engines | Integration ready |
+**20 engines integrated** in `Source/Engines/`, all with SynthEngine adapters. 1,595 factory presets across 6 moods.
 
-**Gaps being filled:**
-- No bass-character engine (OVERBITE fills this)
-- No time/granular synthesis (OPAL fills this)
+### Volume 1 — Core Engines (Original Instruments)
 
----
+| Code | Engine Dir | Source Instrument | Role | Lines | Status |
+|------|-----------|------------------|------|-------|--------|
+| SNAP | Snap | OddfeliX | Percussive/rhythmic Karplus-Strong | 635 | ✅ Integrated |
+| MORPH | Morph | OddOscar | Wavetable pads | 795 | ✅ Integrated |
+| DUB | Dub | XOverdub | FX send/return dub bus | 1,310 | ✅ Integrated |
+| DRIFT | Drift | XOdyssey | Psychedelic pads, Climax | 1,435 | ✅ Integrated |
+| BOB | Bob | XOblongBob | Warm fuzzy textures | 1,739 | ✅ Integrated |
+| FAT | Fat | XObese | Width/thickness, 13-osc | 1,496 | ✅ Integrated |
+| ONSET | Onset | XOnset | Algorithmic drum synthesis | 1,581 | ✅ Integrated |
+| OVERWORLD | Overworld | XOverworld | Chip synthesis (NES/Genesis/SNES) | 509 | ✅ Integrated |
+| OPAL | Opal | XOpal | Granular time-scatter | 3,095 | ✅ Integrated |
+| BITE | Bite | XOpossum | Bass-forward character synth | 2,388 | ✅ Integrated |
 
-## Engine 1: OVERBITE — XOverbite
+### Volume 1.5 — Expansion Engines (Integrated)
 
-### Identity
-- **Gallery code:** OVERBITE
-- **Source instrument:** XOverbite
-- **Accent color:** Fang White `#F0EDE8`
-- **Thesis:** Bass-forward character synth where plush weight meets feral bite
-- **Parameter prefix:** `poss_`
-- **Max voices:** 16
-- **CPU budget:** <10% (single engine)
-
-### Why OVERBITE Next
-The gallery has width (OBESE), pads (ODDOSCAR, ODYSSEY), character texture (OBLONG), percussion (ODDFELIX), and FX routing (OVERDUB). It has no dedicated bass voice with character stages. OVERBITE fills the bottom of the frequency spectrum with something that has *personality* — not just a subtractive bass but a living one.
-
-**Key coupling route unlocked:**
-> **OBESE → OVERBITE** — 13 oscillators stacked through XOverbite's Fur→Gnash→Trash character stages. The widest bass in the gallery.
-> **ONSET → OVERBITE** — Snare envelope drives the Bite macro. Every drum hit makes the bass snarl.
-
-### Build Phases
-
-#### Phase 0: COMPLETE
-Planning done. Design doc at `~/Documents/GitHub/XOverbite/docs/plans/2026-03-06-xoverbite-design.md`.
-
-#### Phase 1 — Parameter Architecture: COMPLETE
-- All 122 canonical parameter IDs locked with `poss_` prefix
-- `AppState` JSON schema, `PresetManager` scaffold
-- Reference: `Docs/xoverbite_parameter_architecture.md`
-- Hero preset: `Presets/XOmnibus/Foundation/Belly_Growl.xometa` (122 params, round-trip verified)
-- **Gate:** compiles, save→load round-trips ✓
-
-#### Phase 2 — Core Voice Engine: COMPLETE
-- OscA shape parameter + analog drift; OscB shape + instability
-- Weight engine (5 shapes, 3 octaves, fine tune)
-- NoiseSource (5 types: White/Pink/Brown/Crackle/Hiss, 4 routing modes)
-- Osc Interaction (4 modes: Soft Sync, Low FM, Phase Push, Grit Multiply)
-- 3 LFOs (7 shapes each: +Random, +Stepped), Mod envelope (3rd ADSR)
-- Voice: glide (Legato/Always), velocity sensitivity, pan
-- Macro 5 (Play Dead): release extend, level duck, filter close
-- Filter key tracking + pre-filter drive
-- **Gate:** audible tone, voice modes work, low end holds ✓
-
-#### Phase 3 — Filter + Character Stages
-- FilterBlock: Burrow LP / Snarl BP / Wire HP / Hollow Notch
-- Chew (post-filter contour), Drive (internal overdrive)
-- Fur (pre-filter soft saturation)
-- Gnash (post-filter asymmetric bite)
-- Trash (dirt modes: rust / splatter / fold / crushed)
-- **Gate:** plush-to-feral sweep audible, low end holds under drive
-
-#### Phase 4 — Modulation + Macros
-- Filter envelope, mod envelope, LFO1, LFO2
-- 8-slot mod matrix
-- 5 macros: Belly, Bite, Scurry, Trash, Play Dead (with easing curves)
-- OscInteraction: soft sync, low FM, phase push, grit multiply
-- **Gate:** macros produce layered tonal movement
-
-#### Phase 5 — FX Chain
-- Motion: plush chorus / uneasy doubler / oil flange
-- Echo: dark tape / murky digital / short slap / ping
-- Space: burrow room / fog chamber / drain hall
-- Finish: glue / clip / width / low mono focus
-- **Gate:** bass integrity preserved through entire FX chain
-
-#### Phase 6 — Presets
-- 10 hero presets first (one per macro combo extreme)
-- Fill to 150 presets in `.xometa` format
-- Category: Foundation (40), Atmosphere (25), Entangled (20), Prism (25), Flux (25), Aether (15)
-- **Gate:** all macros respond, deterministic load, DNA computed
-
-#### Phase 7 — UI + Polish
-- Dark charcoal base, cream/moss/olive, selective rust/acid accents
-- 5 pages: Main / Osc+Filter / Mod / FX / Browser
-- Full QA pass
-- **Gate:** spec Section 21 Definition of Done criteria met
-
-#### Phase 3.X — XOmnibus Integration Prep
-*After Phase 7*
-- Write `src/adapter/XOverbiteAdapter.h` against SynthEngine interface
-- Verify coupling: AmpToFilter, AudioToFM, AmpToChoke supported
-- Write integration spec (`docs/xomnibus_integration_spec.md`)
-- Test coupling routes with OBESE, ONSET, ODDFELIX locally
-
-#### Phase 4.X — Gallery Install
-- Copy DSP headers to `XO_OX-XOmnibus/Source/Engines/Overbite/`
-- `REGISTER_ENGINE(XOverbiteAdapter)`
-- Copy presets to XOmnibus Presets directory
-- Run `compute_preset_dna.py`
-- Design 10 cross-engine Entangled presets
-- Update gallery docs
-
-### Coupling Matrix (OVERBITE)
-
-| As Target | Source Engine | Type | Musical Effect |
-|-----------|--------------|------|----------------|
-| OVERBITE receives | OBESE | AmpToFilter | 13-osc width drives filter — massive animated bass |
-| OVERBITE receives | ONSET | AmpToFilter | Drum hits pump the Bite macro — snare makes bass snarl |
-| OVERBITE receives | ODDFELIX | AudioToFM | Karplus-Strong pluck FM-modulates the bass |
-| OVERBITE receives | OVERWORLD | AudioToFM | Chip audio frequency-modulates bass operators |
-
-| As Source | Target Engine | Type | Musical Effect |
-|-----------|--------------|------|----------------|
-| OVERBITE sends | OVERDUB | getSample | Bass through dub echo/spring chain |
-| OVERBITE sends | OBESE | getSample | Bass amplitude modulates OBESE width |
+| Code | Engine Dir | Source Instrument | Role | Lines | Status |
+|------|-----------|------------------|------|-------|--------|
+| ORBITAL | Orbital | XOrbital | Additive harmonic partials | 1,109 | ✅ Integrated |
+| ORGANON | Organon | XOrganon | Metabolic/dissipative synthesis | 1,160 | ✅ Integrated |
+| OUROBOROS | Ouroboros | XOuroboros | Self-feeding recursive synthesis | 1,095 | ✅ Integrated |
+| OBSIDIAN | Obsidian | XObsidian | Phase distortion synthesis | 1,304 | ✅ Integrated |
+| ORIGAMI | Origami | XOrigami | Fold dynamics / waveshaping | 1,594 | ✅ Integrated |
+| ORACLE | Oracle | XOracle | Breakpoint function synthesis | 1,479 | ✅ Integrated |
+| OBSCURA | Obscura | XObscura | Stiffness / physical string modeling | 1,393 | ✅ Integrated |
+| OCEANIC | Oceanic | XOceanic | Wavetable/FM spectral separation | 1,424 | ✅ Integrated |
+| OPTIC | Optic | XOptic | Visual modulation + AutoPulse | 732 | ✅ Integrated |
+| OBLIQUE | Oblique | XOblique | Prismatic bounce / RTJ × Funk × Tame Impala | 1,146 | ✅ Integrated |
 
 ---
 
-## Engine 2: OPAL — XOpal
+## Standalone Instrument Status
 
-### Identity
-- **Gallery code:** OPAL
-- **Source instrument:** XOpal (new — not yet built)
-- **Accent color:** Iridescent Lavender `#A78BFA`
-- **Thesis:** Granular synthesis engine that fragments any sound into time-scattered particles — from smooth stretched clouds to shattered glass
-- **Parameter prefix:** `opal_`
-- **Max voices:** 12 grain clouds (polyphonic — each note = one cloud)
-- **CPU budget:** <12%
+These are the full standalone instruments (AU + Standalone builds) that exist alongside their XOmnibus adapters:
 
-### Why OPAL Second
-Every existing XOmnibus engine synthesizes *harmonically* — oscillators, wavetables, FM operators. None synthesizes in the *time domain*. OPAL introduces a fundamentally new synthesis dimension: granular time manipulation.
-
-**Key coupling route unlocked:**
-> **OVERWORLD → OPAL** — Chip audio (NES pulses, FM operators, SNES samples) enters the OPAL grain buffer. Real-time granulation of retro synthesis. This coupling doesn't exist anywhere else.
-> **ODYSSEY → OPAL** — The Climax bloom granulated into a cloud. Psychedelic pads fragmented.
-> **OPAL → OVERDUB** — The grain cloud through the dub echo/spring chain. Granular dub.
-
-### Build Phases
-
-#### Phase 0 — Ideation: COMPLETE (this document)
-Concept brief at `Docs/concepts/xopal_concept_brief.md`.
-
-#### Phase 1 — Architecture: COMPLETE
-- 86 frozen `opal_` parameter IDs across 16 categories
-- Full signal flow: grain buffer → scheduler → 32-grain pool → filter → character → FX
-- Grain scheduler algorithm with deterministic PRNG
-- Coupling interface: `AudioToWavetable` primary, 6 supported types
-- 10 preset archetypes with DNA values, "Glass Cloud" first-encounter preset
-- 4 macros: SCATTER, DRIFT, COUPLING, SPACE
-- CPU verified at <1.1% worst case (well under 12% budget)
-- Reference: `Docs/xopal_phase1_architecture.md`
-- **Gate:** all params frozen, coupling defined, signal flow complete ✓
-
-#### Phase 2 — Scaffold + Build
-- `/new-xo-project name=XOpal identity="..." code=XOpl`
-- 5 build phases (see XOpal Architecture Doc for detail)
-- Coupling input from day one — `opal_couplingLevel` routes external audio into grain buffer
-- All params `opal_` prefixed
-- Presets in `.xometa` from day one
-
-#### Phase 3.X — XOmnibus Integration
-- Adapter implementing `AudioToWavetable` coupling type (external audio → grain buffer)
-- Test OVERWORLD → OPAL coupling specifically
-- Integration spec at `docs/xomnibus_integration_spec.md`
-
-#### Phase 4.X — Gallery Install
-- Copy to `XO_OX-XOmnibus/Source/Engines/OPAL/`
-- 10 coupling-showcase Entangled presets (especially OVERWORLD×OPAL)
-- Update gallery docs
-
-### Coupling Matrix (OPAL)
-
-| As Target | Source Engine | Type | Musical Effect |
-|-----------|--------------|------|----------------|
-| OPAL receives | OVERWORLD | AudioToWavetable | Chip audio → grain buffer. NES/FM/SNES fragmented into time clouds. |
-| OPAL receives | ODYSSEY | AudioToWavetable | Psychedelic pads granulated — Climax bloom frozen into particles |
-| OPAL receives | OBLONG | AudioToWavetable | Warm fuzzy textures scattered through time |
-| OPAL receives | ODDFELIX | AudioToWavetable | Karplus-Strong pluck granulated — reverb made of its own attack |
-| OPAL receives | OBESE | AmpToFilter | 13-osc amplitude modulates grain density |
-
-| As Source | Target Engine | Type | Musical Effect |
-|-----------|--------------|------|----------------|
-| OPAL sends | OVERDUB | getSample | Grain cloud through dub echo/spring |
-| OPAL sends | ODDOSCAR | EnvToMorph | Grain envelope drives wavetable morph position |
-| OPAL sends | OVERBITE | AmpToFilter | Cloud density drives bass filter — breathing bass |
+| Instrument | Repo | Status | Files | Presets |
+|-----------|------|--------|-------|---------|
+| XOverdub | `~/Documents/GitHub/XOverdub/` | ✅ All protocols complete, auval passes | — | 40 |
+| XOdyssey | `~/Documents/GitHub/XOdyssey/` | ✅ All 9 phases complete | 34 files | 10 hero |
+| XOblongBob | `~/Documents/GitHub/XOblongBob/` | ✅ Build complete, auval passes | 72 files | 167 |
+| XOverworld | `~/Documents/GitHub/XOverworld/` | ✅ DSP + UI complete, auval passes | 18 files | expanding to 120 |
+| XOpossum | `~/Documents/GitHub/XOppossum/` | ✅ All 7 phases complete, auval passes | 53 files | 342 |
+| XOpal | `~/Documents/GitHub/XOpal/` | 🔨 In progress (scaffold + Phase 1 arch) | 10 files | 100 target |
+| XOcelot | `~/Documents/GitHub/XOcelot/` | 🔨 Scaffolded (Phase 1 arch complete) | 17 files | — |
 
 ---
 
-## Combined Timeline
+## Engines In Development
 
-```
-Q2 2026
-┌─────────────────────────────────────────────────────────┐
-│ OVERBITE Phase 1-2  ████████                                 │
-│ OPAL Phase 0-1      ████████                             │
-└─────────────────────────────────────────────────────────┘
-
-Q3 2026
-┌─────────────────────────────────────────────────────────┐
-│ OVERBITE Phase 3-5  ████████████                             │
-│ OPAL Phase 2         ████████████████                    │
-└─────────────────────────────────────────────────────────┘
-
-Q4 2026
-┌─────────────────────────────────────────────────────────┐
-│ OVERBITE Phase 6-7  ████████                                 │
-│ OVERBITE Integration        ████                             │
-│ OPAL Phase 2 (cont.)   ████████████                     │
-└─────────────────────────────────────────────────────────┘
-
-Q1 2027
-┌─────────────────────────────────────────────────────────┐
-│ OVERBITE Gallery Install  ██                                  │
-│ OPAL Phase 3-4   ████████████                            │
-│ OPAL Gallery Install          ████                       │
-│ XOscillum Phase 0-1              ████████                 │
-└─────────────────────────────────────────────────────────┘
-
-Q2 2027
-┌─────────────────────────────────────────────────────────┐
-│ XOscillum Phase 2  ████████████████                       │
-│ XObliqua Phase 0-1             ████████                   │
-└─────────────────────────────────────────────────────────┘
-
-Q3 2027
-┌─────────────────────────────────────────────────────────┐
-│ XOscillum Phase 3-4  ████████                             │
-│ XObliqua Phase 2        ████████████████                  │
-│ XOccult Phase 0-1                   ████████              │
-└─────────────────────────────────────────────────────────┘
-
-Q4 2027
-┌─────────────────────────────────────────────────────────┐
-│ XOscillum Gallery Install  ██                             │
-│ XObliqua Phase 3-4    ████████                            │
-│ XOccult Phase 2           ████████████████                │
-│ OUROBOROS v2 planning (absorb XOBSESSION concepts)  ████ │
-└─────────────────────────────────────────────────────────┘
-
-Q1 2028
-┌─────────────────────────────────────────────────────────┐
-│ XObliqua Gallery Install  ██                              │
-│ XOccult Phase 3-4    ████████                             │
-│ XOccult Gallery Install       ████                        │
-│ XOblivion Phase 0-1               ████████                │
-└─────────────────────────────────────────────────────────┘
-
-Q2 2028
-┌─────────────────────────────────────────────────────────┐
-│ XOblivion Phase 2  ████████████████                       │
-│ XOcelot Phase 0-1              ████████                   │
-└─────────────────────────────────────────────────────────┘
-
-Q3 2028
-┌─────────────────────────────────────────────────────────┐
-│ XOblivion Phase 3-4  ████████                             │
-│ XOblivion Gallery Install     ████                        │
-│ XOcelot Phase 2          ████████████████                  │
-└─────────────────────────────────────────────────────────┘
-
-Q4 2028
-┌─────────────────────────────────────────────────────────┐
-│ XOcelot Phase 2 (cont.)  ████████                         │
-│ XOcelot Phase 3-4            ████████████                  │
-└─────────────────────────────────────────────────────────┘
-
-Q1 2029
-┌─────────────────────────────────────────────────────────┐
-│ XOcelot Gallery Install  ████                             │
-│ XOntara Phase 0-4 (if pipeline proven)  ████████████████ │
-└─────────────────────────────────────────────────────────┘
-```
-
----
-
-## CPU Budget With Both Added
-
-| Configuration | Engines | Est. CPU |
-|---------------|---------|----------|
-| Current gallery max | 3 engines | ~47.5% |
-| + OVERBITE | 4 engines | ~55% (voice reduce) |
-| + OPAL | 4 engines | ~57% (voice reduce) |
-| OVERBITE + OPAL pair | 2 engines | ~22% |
-| OVERWORLD + OPAL | 2 engines | ~27% (heaviest pair) |
-| All 4 (OVERBITE+OPAL+OVERWORLD+OVERDUB) | 4 engines | ~49% with mitigation |
-
-OPAL is granular — at 12 grain cloud voices, CPU is variable by density parameter. Eco mode recommendation: cap grain density at 30/sec in 4-engine configs.
-
----
-
-## Cross-Engine Preset Priority (Gallery Opening)
-
-When both engines are installed, these are the priority cross-engine presets:
-
-1. **OVERWORLD × OPAL** — Chip Scatter — NES audio granulated into time cloud
-2. **OVERBITE × OPAL** — Bass Breath — grain density pumping the bass filter
-3. **ODYSSEY × OPAL** — Climax Particles — Climax bloom frozen mid-bloom
-4. **OBESE × OVERBITE** — Maximum Gravity — 13 oscillators through feral character
-5. **OVERWORLD × OVERBITE** — Chip Bass — FM chip audio FM-modulating the bass
-6. **OPAL × OVERDUB** — Granular Dub — grain cloud through tape echo + spring
-7. **ONSET × OVERBITE** — Living Texture — snare envelope driving Bite macro
-8. **OCELOT × OVERDUB** — Tropical Dub — ecosystem output through tape echo/spring chain
-9. **ONSET × OCELOT** — Jungle Pulse — drum hits driving canopy filter + strata balance
-10. **OCELOT × OPAL** — Canopy Particles — kalimba/berimbau textures granulated into clouds
-11. **OVERWORLD × OCELOT** — Chip Chop — chip audio bit-crushed through SP-1200 mangler
-
----
-
-## Volume 2 Engines (Post OVERBITE + OPAL)
-
-*Source: `Docs/XOmnibus_Master_Architecture- Volume 2.md.txt`*
-*Review: `Docs/xomnibus_volume2_review.md`*
-
-### Adopted — Build Queue
-
-| # | Vol 2 Name | XO Name | Short Code | Core Concept | Est. CPU | Status |
-|---|---|---|---|---|---|---|
-| 1 | XOSCILLUM | **XOscillum** | OSCIL | Psychoacoustic residue pitch — phantom fundamentals | <12% | Phase 1 spec ready |
-| 2 | XOBLICUA | **XObliqua** | OBLIQ | Kinematic phase-time — clave attractors as waveshaping | <15% | Concept only |
-| 3 | XOMATON | **XOccult** | OCCULT | 1D cellular automata — Wolfram rules as audio | <5% | Concept only |
-| 4 | XOFERRO (upgraded) | **XOblivion** | OBLIV | Electromagnetic hysteresis via pre-computed LUTs — magnetic memory, kinetic mass, Barkhausen crackle | <10% | Concept only |
-| 5 | — | **XOcelot** | OCELOT | Canopy-layered ecosystem synth — 4-strata cross-feeding (physical percussion + sample mangler + spectral pads + formant creatures) with biome system (Jungle/Underwater/Winter). Aesop Rock × Tropicália × rainforest. | <14% | Phase 0 concept brief |
-| 6 | XOTARA | **XOntara** | ONTAR | Topological sympathetic resonance — 64-voice modal bank | <20% | Concept only (deferred to 2028+) |
-
-### XOcelot Details
+### Engine: OCELOT — XOcelot
 
 - **Gallery code:** OCELOT
-- **Source instrument:** XOcelot (new — not yet built)
 - **Accent color:** Ocelot Tawny `#C5832B`
-- **Thesis:** Canopy-layered ecosystem synth — 4 interacting strata (Floor/Understory/Canopy/Emergent) with biome transformations
 - **Parameter prefix:** `ocelot_`
+- **Thesis:** Canopy-layered ecosystem synth — 4 interacting strata (Floor/Understory/Canopy/Emergent) with biome transformations (Jungle/Underwater/Winter)
 - **Max voices:** 8
-- **CPU budget:** <14% (4-strata synthesis + cross-feed matrix + biome transforms)
-- **Concept brief:** `Docs/concepts/xocelot_concept_brief.md`
+- **CPU budget:** <14%
+- **Phase 1 architecture:** `Docs/xocelot_phase1_architecture.md` ✅
+- **Concept brief:** `Docs/concepts/xocelot_concept_brief.md` ✅
+- **Standalone repo:** `~/Documents/GitHub/XOcelot/` — 17 source files, ~1,853 lines (scaffold)
+- **XOmnibus integration:** Engine dir exists but not yet wired to scaffold
 
-**Why OCELOT belongs in the queue:**
-No engine models *interaction between internal synthesis layers* as the primary instrument. OCELOT fills the ecosystem/organic groove gap — physical-modeled Tropicália percussion, Aesop Rock-style sample mangling, spectral pads, and formant creature calls, all cross-feeding. The biome system (Jungle/Underwater/Winter) unlocks DKC-inspired Aether territory. High coupling potential with every existing engine.
+**Current status:** Phase 1 architecture complete, standalone scaffold started. Needs Phase 2 (core DSP implementation).
 
 **Coupling Matrix (OCELOT)**
 
 | As Target | Source Engine | Type | Musical Effect |
 |-----------|--------------|------|----------------|
-| OCELOT receives | DUB | AudioToWavetable | Dub delay output chopped into Understory — dub meets hip-hop chop |
-| OCELOT receives | ONSET | AmpToFilter | Drum hits open Canopy spectral filter — rhythmic brightness |
-| OCELOT receives | ONSET | RhythmToBlend | Kick pattern shifts strata balance — jungle breathes with the beat |
-| OCELOT receives | BOB | AudioToWavetable | Warm fuzzy textures fed into Understory chop buffer — dusty warmth |
+| OCELOT receives | DUB | AudioToWavetable | Dub delay output chopped into Understory |
+| OCELOT receives | ONSET | AmpToFilter | Drum hits open Canopy spectral filter |
+| OCELOT receives | ONSET | RhythmToBlend | Kick pattern shifts strata balance |
+| OCELOT receives | BOB | AudioToWavetable | Warm textures fed into Understory chop buffer |
 | OCELOT receives | DRIFT | AudioToFM | Psychedelic sweeps FM-modulate Canopy oscillator |
-| OCELOT receives | OVERWORLD | AudioToWavetable | Chip audio chopped and bit-crushed through SP-1200 mangler |
+| OCELOT receives | OVERWORLD | AudioToWavetable | Chip audio chopped through SP-1200 mangler |
 
 | As Source | Target Engine | Type | Musical Effect |
 |-----------|--------------|------|----------------|
 | OCELOT sends | DUB | getSample | Ecosystem output through dub echo — tropical dub |
-| OCELOT sends | OPAL | AudioToWavetable | Percussion textures granulated into clouds — kalimba particles |
+| OCELOT sends | OPAL | AudioToWavetable | Percussion textures granulated into clouds |
 | OCELOT sends | FAT | getSample | Creature calls fattened into massive formant stacks |
 | OCELOT sends | DRIFT | getSample | Ecosystem as starting point for DRIFT's journey |
+
+---
+
+## Engines Designed (Ready for Architecture/Build)
+
+### Engine: OSTINATO — XOstinato
+
+- **Gallery code:** OSTINATO
+- **Accent color:** Firelight Orange `#E8701A`
+- **Parameter prefix:** `osti_`
+- **Thesis:** Communal drum circle engine — 8 seats, 12 world percussion instruments, hybrid physical modeling. The fire at the center of the circle. Multiculturalism, peace, unity, love, community, family.
+- **Max voices:** 16 (2 per seat)
+- **CPU budget:** <25%
+- **Design doc:** `Docs/plans/2026-03-12-xostinato-design.md` ✅
+- **Concept brief:** `Docs/concepts/xostinato_concept_brief.md` ✅
+- **Standalone repo:** Not yet created
+
+**Key architecture decisions:**
+- 8 seats in a circle, any instrument in any seat (no tradition restrictions)
+- 12 instruments × 3-4 articulations (48 total): Djembe, Dundun, Conga, Bongos, Cajón, Taiko, Tabla, Doumbek, Frame Drum, Surdo, Tongue Drum, Beatbox
+- Hybrid synthesis: Exciter → Modal Membrane (6-8 resonators) → Waveguide Body → Radiation Filter
+- Pattern system: 96 authentic patterns + live MIDI override with fade-back
+- 4 macros: GATHER (sync), FIRE (energy), CIRCLE (inter-seat interaction), SPACE (environment)
+- FX: Circle Spatial Engine → Fire Stage → Gathering Reverb → Pulse Compressor
+- ~140 canonical parameters, 120 factory presets
+
+**Current status:** Phase 0 complete — design approved. Ready for Phase 1 architecture.
+
+**Invoke Phase 1:** `/new-xo-engine phase=1 name=XOstinato identity="Communal drum circle engine — 8 seats, 12 world percussion instruments, hybrid physical modeling" code=XOst`
+
+**Coupling Matrix (OSTINATO)**
+
+| As Target | Source Engine | Type | Musical Effect |
+|-----------|--------------|------|----------------|
+| OSTINATO receives | BITE | AmpToFilter | Bass amplitude opens Fire Stage — bass makes circle roar |
+| OSTINATO receives | DRIFT | EnvToMorph | Climax bloom sweeps GATHER macro |
+| OSTINATO receives | OVERWORLD | AudioToFM | Chip audio FM-modulates drum exciters — 8-bit percussion |
+| OSTINATO receives | OPAL | AmpToFilter | Grain density modulates pattern density |
+| OSTINATO receives | FAT | AmpToFilter | 13-osc amplitude drives FIRE macro |
+
+| As Source | Target Engine | Type | Musical Effect |
+|-----------|--------------|------|----------------|
+| OSTINATO sends | DUB | getSample | Drum circle through dub tape echo — world dub |
+| OSTINATO sends | BITE | AmpToFilter | Drum accents pump bass filter — rhythmic snarl |
+| OSTINATO sends | OPAL | AudioToWavetable | Drum hits scattered into grain clouds |
+| OSTINATO sends | DRIFT | AmpToFilter | Circle energy drives pad filter |
+| OSTINATO sends | BOB | AmpToFilter | Drum dynamics shape warm texture |
+
+---
+
+## Volume 2 Engines (Future — Not Yet Started)
+
+*Source: `Docs/XOmnibus_Master_Architecture- Volume 2.md.txt`*
+*Review: `Docs/xomnibus_volume2_review.md`*
+
+### Build Queue
+
+| # | XO Name | Short Code | Core Concept | Est. CPU | Status |
+|---|---------|------------|--------------|----------|--------|
+| 1 | **XOscillum** | OSCIL | Psychoacoustic residue pitch — phantom fundamentals | <12% | Phase 1 spec ready |
+| 2 | **XObliqua** | OBLIQ | Kinematic phase-time — clave attractors as waveshaping | <15% | Concept only |
+| 3 | **XOccult** | OCCULT | 1D cellular automata — Wolfram rules as audio | <5% | Concept only |
+| 4 | **XOblivion** | OBLIV | Electromagnetic hysteresis via pre-computed LUTs — magnetic memory, kinetic mass, Barkhausen crackle | <10% | Concept only |
+| 5 | **XOntara** | ONTAR | Topological sympathetic resonance — 64-voice modal bank | <20% | Concept only (deferred) |
+
+**Note:** XObliqua (OBLIQ, kinematic phase-time) is a different engine from XOblique (OBLIQUE, prismatic bounce) which is already integrated.
 
 ### Merged — OUROBOROS v2
 
@@ -378,15 +168,67 @@ XOBOLIC — duplicate of ORGANON (metabolic/informational dissipative synthesis 
 ### Parked — Future Research
 
 | Engine | Concept | Why Parked |
-|---|---|---|
+|--------|---------|------------|
 | XOMEMBRA | 2D wave interference mesh → emergent polyrhythm | CPU-heavy 2D waveguide, research-grade DSP |
 | XOGRAMA | 720-voice optical sine bank with laser aperture | 720 simultaneous oscillators, extreme engineering |
 | XOSMOSIS | 1D computational fluid dynamics (Burgers' equation) | Document flags "CRITICAL CPU BOTTLENECK" |
 
 XOFERRO has been upgraded and adopted as **XOblivion** (engine #4 in build queue). The key change: replace the Jiles-Atherton ODE solver with pre-computed 2D hysteresis LUTs, dropping CPU from research-grade bottleneck to <10%.
 
-Remaining parked concepts are preserved in the Volume 2 source document for future consideration.
+---
+
+## Build Priority (as of March 2026)
+
+```
+NOW
+├── XOcelot — Phase 2 build (scaffold exists, arch done)
+├── XOstinato — Phase 1 architecture (design approved)
+│
+NEXT
+├── XOstinato — Phase 2-7 build
+├── XOscillum — Phase 0-1 (spec ready)
+│
+LATER
+├── XObliqua — Phase 0+
+├── XOccult — Phase 0+
+├── XOblivion — Phase 0+
+├── XOntara — Phase 0+ (deferred)
+```
 
 ---
 
-*Roadmap owner: XO_OX Designs | Process: `/new-xo-engine` skill | Next action: Begin OVERBITE Phase 1*
+## Cross-Engine Preset Priority
+
+Priority coupling showcase presets for newly added engines:
+
+1. **OSTINATO × DUB** — World Dub — entire drum circle through Jamaican dub FX
+2. **OSTINATO × OPAL** — Scattered Gathering — drum hits granulated into particle clouds
+3. **ONSET × OSTINATO** — Machine Meets Human — algorithmic drums alongside physical circle
+4. **OVERWORLD × OPAL** — Chip Scatter — NES audio granulated into time cloud
+5. **BITE × OPAL** — Bass Breath — grain density pumping the bass filter
+6. **DRIFT × OPAL** — Climax Particles — Climax bloom frozen mid-bloom
+7. **OCELOT × DUB** — Tropical Dub — ecosystem output through tape echo/spring chain
+8. **ONSET × OCELOT** — Jungle Pulse — drum hits driving canopy filter + strata balance
+9. **OCELOT × OPAL** — Canopy Particles — kalimba/berimbau textures granulated into clouds
+10. **OVERWORLD × OCELOT** — Chip Chop — chip audio bit-crushed through SP-1200 mangler
+11. **OSTINATO × BITE** — Rhythm & Bass — drum circle accents pumping the bass filter
+12. **OSTINATO × DRIFT** — Ceremony — circle energy breathing the psychedelic pads
+
+---
+
+## CPU Budget Estimates
+
+| Configuration | Engines | Est. CPU |
+|---------------|---------|----------|
+| Current gallery max | 3 engines | ~47.5% |
+| + OSTINATO | 4 engines | ~60% (voice reduce) |
+| OSTINATO + DUB pair | 2 engines | ~30% |
+| OSTINATO + OPAL | 2 engines | ~35% |
+| OCELOT + OPAL | 2 engines | ~27% |
+| OSTINATO solo | 1 engine | ~20-25% (8 seats active) |
+
+OSTINATO is the heaviest single engine due to 8 simultaneous physical models. Eco mode recommendation: reduce to 1 voice per seat in 4-engine configs.
+
+---
+
+*Roadmap owner: XO_OX Designs | Process: `/new-xo-engine` skill | Next action: XOcelot Phase 2 or XOstinato Phase 1*
