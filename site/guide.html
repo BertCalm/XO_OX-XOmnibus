@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The XO_OX Field Guide — Character Synthesis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-deep:    #060A10;
+  --bg-warm:    #0A1018;
+  --bg-card:    #0E1620;
+  --bg-surface: #131D28;
+  --gold:       #E9C46A;
+  --gold-dim:   #C4A44E;
+  --gold-glow:  rgba(233, 196, 106, 0.12);
+  --cream:      #E4EAF0;
+  --text:       #B0BEC8;
+  --text-dim:   #6B7F8E;
+  --text-faint: #3A5060;
+  --border:     #152330;
+  --teal:       #2AA19B;
+  --coral:      #C4636E;
+}
+
+html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--border) var(--bg-deep); }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse at 15% 85%, rgba(42, 161, 155, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 15%, rgba(196, 99, 110, 0.02) 0%, transparent 45%);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--teal); color: var(--bg-deep); }
+
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Subtle deep-water ambience */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 80%, rgba(42, 161, 155, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 20%, rgba(196, 99, 110, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 40, 70, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 9998;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══════════ NAV ═══════════ */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6, 10, 16, 0.9);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+  text-decoration: none;
+}
+.nav-logo .gold { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--teal);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--cream); }
+
+/* ═══════════ HERO ═══════════ */
+.guide-hero {
+  padding: clamp(8rem, 15vw, 12rem) clamp(1.5rem, 5vw, 6rem) clamp(3rem, 6vw, 5rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.guide-hero-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.guide-hero-label::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--teal);
+  opacity: 0.6;
+}
+
+.guide-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+.guide-hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.guide-hero-text {
+  max-width: 620px;
+  font-weight: 300;
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.8;
+}
+
+.guide-hero-lore {
+  max-width: 620px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.9;
+  margin-top: 1.5rem;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--teal);
+}
+
+.guide-hero-lore .felix { color: #00A6D6; font-style: normal; font-weight: 400; }
+.guide-hero-lore .oscar { color: #E8839B; font-style: normal; font-weight: 400; }
+
+.guide-stats {
+  display: flex;
+  gap: 3rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.guide-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.guide-stat-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.guide-stat-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* ═══════════ POST GRID ═══════════ */
+.posts-section {
+  padding: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 5vw, 6rem);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-divider {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-divider::before {
+  content: '';
+  width: 16px;
+  height: 1px;
+  background: var(--teal);
+  opacity: 0.6;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-bottom: 4rem;
+}
+
+.post-card {
+  background: var(--bg-card);
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 0;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.4s;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.post-card:hover {
+  background: var(--bg-surface);
+}
+
+/* Accent stripe on left */
+.post-accent {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  position: relative;
+}
+
+.post-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  opacity: 0.4;
+  transition: opacity 0.4s;
+}
+
+.post-card:hover .post-accent::before {
+  opacity: 1;
+}
+
+.post-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-faint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.4s;
+}
+
+.post-card:hover .post-number {
+  color: var(--text-dim);
+}
+
+.post-body {
+  padding: 1.5rem 2rem 1.5rem 0;
+}
+
+.post-engine {
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+  transition: color 0.4s;
+}
+
+.post-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  transition: color 0.4s;
+}
+
+.post-card:hover .post-title {
+  color: var(--cream);
+}
+
+.post-excerpt {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.7;
+  max-width: 700px;
+}
+
+.post-meta {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.6rem;
+}
+
+.post-tag {
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--text-faint);
+  transition: border-color 0.3s;
+}
+
+.post-card:hover .post-tag {
+  border-color: var(--text-faint);
+}
+
+/* ═══════════ COMING SOON ═══════════ */
+.coming-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-bottom: 4rem;
+}
+
+.coming-card {
+  background: var(--bg-card);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.coming-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  opacity: 0.3;
+}
+
+.coming-card-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--text-faint);
+  margin-bottom: 0.3rem;
+}
+
+.coming-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--text-dim);
+  margin-bottom: 0.3rem;
+}
+
+.coming-card-desc {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--text-faint);
+  line-height: 1.6;
+}
+
+.coming-badge {
+  font-size: 0.5rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-top: 0.8rem;
+}
+
+/* ═══════════ FOOTER ═══════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem clamp(1.5rem, 5vw, 6rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-links a {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover { color: var(--teal); }
+
+.footer-copy {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 768px) {
+  .post-card { grid-template-columns: 40px 1fr; }
+  .post-number { font-size: 1rem; }
+  .post-title { font-size: 1.2rem; }
+  .post-body { padding: 1.2rem 1.2rem 1.2rem 0; }
+  .guide-stats { gap: 1.5rem; flex-wrap: wrap; }
+  .coming-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+  .nav-links { gap: 1.5rem; }
+  .nav-links a { font-size: 0.6rem; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <div class="nav-links">
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html" class="active">Field Guide</a>
+    <a href="index.html#aquarium">Aquarium</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus">GitHub</a>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="guide-hero">
+  <div class="guide-hero-label">The XO_OX Field Guide</div>
+  <h1>Sound design, synthesis history,<br>and the machines that made<br>music <em>weird.</em></h1>
+  <p class="guide-hero-text">
+    Long-form essays on every engine in XOmnibus — how they work, why they exist,
+    and the real history of the synthesis techniques behind them. Each post is a
+    rabbit hole. Bring headphones.
+  </p>
+  <p class="guide-hero-lore">
+    This is the story of <span class="felix">feliX</span> and <span class="oscar">Oscar</span> —
+    a neon tetra and an axolotl who became twenty instruments, a thousand presets,
+    and one very strange aquarium.
+  </p>
+
+  <div class="guide-stats">
+    <div class="guide-stat">
+      <div class="guide-stat-value">13</div>
+      <div class="guide-stat-label">Published Posts</div>
+    </div>
+    <div class="guide-stat">
+      <div class="guide-stat-value">42k</div>
+      <div class="guide-stat-label">Words</div>
+    </div>
+    <div class="guide-stat">
+      <div class="guide-stat-value">9</div>
+      <div class="guide-stat-label">Engines Covered</div>
+    </div>
+    <div class="guide-stat">
+      <div class="guide-stat-value">17</div>
+      <div class="guide-stat-label">Coming Soon</div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════ ENGINE POSTS (Published) ═══════════ -->
+<section class="posts-section">
+  <div class="section-divider">Engine Posts</div>
+  <div class="post-list" id="enginePosts"></div>
+
+  <div class="section-divider">Architecture &amp; Philosophy</div>
+  <div class="post-list" id="archPosts"></div>
+
+  <div class="section-divider">Coming Soon</div>
+  <div class="coming-grid" id="comingGrid"></div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-logo">XO_OX</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus">GitHub</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
+</footer>
+
+<script>
+// ═══════════ POST DATA ═══════════
+const enginePosts = [
+  {
+    num: "00",
+    title: "What Is XOmnibus?",
+    subtitle: "Preface",
+    engine: "Series Introduction",
+    color: "#E9C46A",
+    excerpt: "There is a recurring problem with synthesizers: the more powerful they become, the less they sound like anything in particular.",
+    tags: ["Preface", "Philosophy"],
+  },
+  {
+    num: "01",
+    title: "The Art of the Transient",
+    subtitle: "OddfeliX",
+    engine: "OddfeliX — Snapshot Synthesis",
+    color: "#00A6D6",
+    excerpt: "Every sound begins in the same way: something moves.",
+    tags: ["Engine", "Percussion", "History"],
+  },
+  {
+    num: "02",
+    title: "The Shape of Sound",
+    subtitle: "OddOscar",
+    engine: "OddOscar — Morphing Wavetable",
+    color: "#E8839B",
+    excerpt: "A sine wave is a perfect thing. One frequency, no harmonics, the purest possible oscillation.",
+    tags: ["Engine", "Wavetable", "History"],
+  },
+  {
+    num: "03",
+    title: "Delay, Decay, and the Birth of Space",
+    subtitle: "Overdub",
+    engine: "Overdub — Dub Performance Engine",
+    color: "#6B7B3A",
+    excerpt: "There is a difference between a sound and a sound in a room.",
+    tags: ["Engine", "Dub", "King Tubby"],
+  },
+  {
+    num: "04",
+    title: "Between Familiar and Alien",
+    subtitle: "Odyssey",
+    engine: "Odyssey — Psychedelic Pad Synthesizer",
+    color: "#7B2D8B",
+    excerpt: "In 1972, Alan R. Pearlman released the ARP Odyssey. It had two oscillators instead of one.",
+    tags: ["Engine", "Pads", "ARP"],
+  },
+  {
+    num: "05",
+    title: "The Warmth of Imperfection",
+    subtitle: "Oblong",
+    engine: "Oblong — Analog Modeling",
+    color: "#E9A84A",
+    excerpt: "There is a theory of warmth in music, and it has nothing to do with temperature.",
+    tags: ["Engine", "Analog", "Bob Moog"],
+  },
+  {
+    num: "06",
+    title: "Maximum Density",
+    subtitle: "Obese",
+    engine: "Obese — Saturation Synthesis",
+    color: "#FF1493",
+    excerpt: "There is a school of thought in audio engineering that equates quality with restraint.",
+    tags: ["Engine", "Saturation", "Loudness"],
+  },
+  {
+    num: "07",
+    title: "The Moment Before",
+    subtitle: "Onset",
+    engine: "Onset — Algorithmic Drum Synthesis",
+    color: "#0066FF",
+    excerpt: "You can tell what instrument you are hearing in the first thirty milliseconds.",
+    tags: ["Engine", "Drums", "Physics"],
+  },
+  {
+    num: "08",
+    title: "Three Chips, Three Worlds",
+    subtitle: "Overworld",
+    engine: "Overworld — Chip Synthesis",
+    color: "#39FF14",
+    excerpt: "In 1983, two things happened. Yamaha shipped the DX7, the digital synthesizer that would define a decade.",
+    tags: ["Engine", "Chip", "Gaming"],
+  },
+  {
+    num: "09",
+    title: "Time in Fragments",
+    subtitle: "Opal",
+    engine: "Opal — Granular Synthesis",
+    color: "#A78BFA",
+    excerpt: "In 1947, a Hungarian-British physicist named Dennis Gabor published a paper in the Journal of the IEE.",
+    tags: ["Engine", "Granular", "History"],
+  },
+];
+
+const archPosts = [
+  {
+    num: "10",
+    title: "When Engines Talk",
+    subtitle: "The Coupling System",
+    engine: "Architecture — MegaCouplingMatrix",
+    color: "#E9C46A",
+    excerpt: "There is a photograph from around 1968 of the Buchla 100 Series modular synthesizer.",
+    tags: ["Architecture", "Coupling", "Buchla"],
+  },
+  {
+    num: "11",
+    title: "The Space Between Notes",
+    subtitle: "Effects",
+    engine: "Shared DSP — Delay, Reverb, Filter, Saturation",
+    color: "#E9C46A",
+    excerpt: "In 1952, EMI engineers at Abbey Road Studios in London faced a problem that seems almost quaint today.",
+    tags: ["DSP", "Reverb", "Abbey Road"],
+  },
+  {
+    num: "12",
+    title: "Presets Are the Product",
+    subtitle: "Philosophy",
+    engine: "Preset Design — Sonic DNA, Mood Taxonomy",
+    color: "#E9C46A",
+    excerpt: "In 1983, Gary Leuenberger was contracted by Yamaha to program factory presets for a new synthesizer.",
+    tags: ["Philosophy", "Presets", "DX7"],
+  },
+];
+
+const comingPosts = [
+  { num: "13", title: "The Weight Below", engine: "Overbite", color: "#F0EDE8", desc: "Bass synthesis — TB-303 to Reese to dubstep" },
+  { num: "14", title: "The Sum of All Waves", engine: "Orbital", color: "#FF6B6B", desc: "Additive synthesis — Fourier's theorem made audible" },
+  { num: "15", title: "The Casio Heresy", engine: "Obsidian", color: "#E8E0D8", desc: "Phase distortion — Casio CZ vs Yamaha DX" },
+  { num: "16", title: "Folding the West Coast", engine: "Origami", color: "#E63946", desc: "Wavefolding — Buchla, Serge, and counterculture synthesis" },
+  { num: "17", title: "Bodies That Ring", engine: "Obscura", color: "#8A9BA8", desc: "Physical modeling — Karplus-Strong and the dream of virtual instruments" },
+  { num: "18", title: "The Voice Inside the Machine", engine: "Oracle", color: "#4B0082", desc: "Vocoders, envelope followers, and Kraftwerk's speech" },
+  { num: "19", title: "When Circuits Breathe", engine: "Organon", color: "#00CED1", desc: "Bio-algorithmic synthesis — emergence and living systems" },
+  { num: "20", title: "The Sound That Eats Itself", engine: "Ouroboros", color: "#FF2D2D", desc: "Feedback systems — chaos theory and Steve Reich's tape loops" },
+  { num: "21", title: "The Tidal Score", engine: "Oceanic", color: "#00B4A0", desc: "Spectral processing — Risset, IRCAM, and the physics of water" },
+  { num: "22", title: "Seeing Sound", engine: "Optic", color: "#00FF41", desc: "Synesthesia — Scriabin's color organ to AutoPulse" },
+  { num: "23", title: "The Strategy of Surprise", engine: "Oblique", color: "#BF40FF", desc: "Brian Eno's Oblique Strategies meets funk synthesis" },
+  { num: "24", title: "A New Way to Touch Sound", engine: "PlaySurface", color: "#E9C46A", desc: "Chord Machine, performance modes, and scale-aware playing" },
+  { num: "25", title: "Why White Space Matters", engine: "Gallery Model", color: "#E9C46A", desc: "UI philosophy — how visual design shapes sonic perception" },
+  { num: "26", title: "From Plugin to Pack", engine: "XPN Pipeline", color: "#E9C46A", desc: "The bridge between software synth and hardware sampler" },
+  { num: "27", title: "Mapping the Genome of a Preset", engine: "Sonic DNA", color: "#E9C46A", desc: "6D fingerprinting, mood taxonomy, and preset breeding" },
+  { num: "28", title: "Six Ways to Drown Your Sound", engine: "The Aquarium", color: "#0077B6", desc: "Aquatic master FX — where brand identity becomes audible" },
+  { num: "29", title: "What Comes Next", engine: "Roadmap", color: "#E9C46A", desc: "VST3, iOS, new engines, community presets, and the open-source future" },
+];
+
+// ═══════════ RENDER POST CARDS ═══════════
+function renderPostCard(post, container) {
+  const card = document.createElement('div');
+  card.className = 'post-card reveal';
+
+  card.innerHTML = `
+    <div class="post-accent">
+      <div class="post-number">${post.num}</div>
+    </div>
+    <div class="post-body">
+      <div class="post-engine" style="color:${post.color}">${post.engine}</div>
+      <div class="post-title">${post.subtitle ? post.subtitle + ': ' : ''}${post.title}</div>
+      <div class="post-excerpt">${post.excerpt}</div>
+      <div class="post-meta">
+        ${post.tags.map(t => `<span class="post-tag">${t}</span>`).join('')}
+      </div>
+    </div>
+  `;
+
+  // Set accent stripe color
+  card.querySelector('.post-accent').style.setProperty('--stripe-color', post.color);
+  card.querySelector('.post-accent::before') || null;
+  const accent = card.querySelector('.post-accent');
+  accent.innerHTML = `
+    <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:${post.color};opacity:0.4;transition:opacity 0.4s;"></div>
+    <div class="post-number">${post.num}</div>
+  `;
+
+  card.addEventListener('mouseenter', () => {
+    accent.firstElementChild.style.opacity = '1';
+  });
+  card.addEventListener('mouseleave', () => {
+    accent.firstElementChild.style.opacity = '0.4';
+  });
+
+  container.appendChild(card);
+}
+
+function renderComingCard(post, container) {
+  const card = document.createElement('div');
+  card.className = 'coming-card reveal';
+
+  card.innerHTML = `
+    <div style="position:absolute;top:0;left:0;right:0;height:2px;background:${post.color};opacity:0.3;"></div>
+    <div class="coming-card-number">${post.num}</div>
+    <div class="coming-card-title" style="color:${post.color === '#E9C46A' ? 'var(--cream)' : post.color}">${post.title}</div>
+    <div class="coming-card-desc">${post.engine} — ${post.desc}</div>
+    <div class="coming-badge">Coming Soon</div>
+  `;
+
+  container.appendChild(card);
+}
+
+// Render
+const engineList = document.getElementById('enginePosts');
+const archList = document.getElementById('archPosts');
+const comingGrid = document.getElementById('comingGrid');
+
+enginePosts.forEach(p => renderPostCard(p, engineList));
+archPosts.forEach(p => renderPostCard(p, archList));
+comingPosts.forEach(p => renderComingCard(p, comingGrid));
+
+// ═══════════ SCROLL REVEAL ═══════════
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

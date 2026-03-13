@@ -1,8 +1,8 @@
 # XOcelot — Concept Brief
 
 **Date:** March 2026
-**Phase:** 0 — Ideation complete
-**Status:** Ready for Phase 1 architecture
+**Phase:** 1 — Architecture complete
+**Status:** Ready for Phase 2 scaffold + build
 
 ---
 
@@ -429,7 +429,7 @@ Evocative, nature-adjacent, 2-3 words. Nods to jungle ecology, DKC levels, Tropi
 
 ---
 
-## Decision Gate: Phase 0 -> Phase 1
+## Decision Gate: Phase 0 -> Phase 1 ✅ COMPLETE
 
 - [x] Concept brief written
 - [x] XO word feels right (XOcelot — ocelot as jungle prowler, stealthy, beautiful, moving between strata)
@@ -440,8 +440,22 @@ Evocative, nature-adjacent, 2-3 words. Nods to jungle ecology, DKC levels, Tropi
 - [x] Inspirational lineage clear (Aesop Rock + Tropicalia + rainforest ecology)
 - [x] Instrument nods documented (berimbau, cuica, SP-1200, Mellotron, Buchla, EMS Synthi, Ondes Martenot)
 
-**-> Proceed to Phase 1: Architect**
-*Invoke: `/new-xo-engine phase=1 name=XOcelot identity="Canopy-layered sample-mangling synthesizer that builds living soundscapes from four interacting strata" code=OCELOT`*
+## Decision Gate: Phase 1 -> Phase 2 ✅ COMPLETE
+
+Architecture spec: `Docs/xocelot_phase1_architecture.md`
+
+- [x] 62 parameter IDs frozen with `ocelot_` prefix
+- [x] Cross-feed matrix typed (12 routes, 3 route types, negative-amount semantics locked)
+- [x] Macro mapping defined (PROWL / FOLIAGE / ECOSYSTEM / CANOPY)
+- [x] Coupling interface designed (7 supported, 4 unsupported with reasons)
+- [x] Signal flow complete (4-strata → ecosystem mixer → humidity → amp env → FX)
+- [x] Voice architecture defined (8 voices, quietest-stealing, legato)
+- [x] CPU budget verified (<13% single, <28% dual-engine)
+- [x] Hero preset archetypes defined (8 presets, DNA values assigned)
+- [x] Biome system architecture defined (BiomeMorph, 200ms crossfade, compile-time profiles)
+
+**-> Proceed to Phase 2: Scaffold + Build**
+*Invoke: `/new-xo-project name=XOcelot identity="Canopy-layered sample-mangling synthesizer — four interacting strata with biome system" code=XOcl`*
 
 ---
 

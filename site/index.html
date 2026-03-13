@@ -1,0 +1,2834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XO_OX Designs — Character Synthesis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   XO_OX Designs — Brand Site
+   Aesthetic: Deep Gallery — ocean midnight blues, golden light
+   filtering from the surface, bioluminescent accents,
+   coral peeking through the shadowy depths.
+   ═══════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-deep:    #060A10;
+  --bg-warm:    #0A1018;
+  --bg-card:    #0E1620;
+  --bg-surface: #131D28;
+  --gold:       #E9C46A;
+  --gold-dim:   #C4A44E;
+  --gold-glow:  rgba(233, 196, 106, 0.12);
+  --cream:      #E4EAF0;
+  --text:       #B0BEC8;
+  --text-dim:   #6B7F8E;
+  --text-faint: #3A5060;
+  --shell:      #E4EAF0;
+  --border:     #152330;
+  --teal:       #2AA19B;
+  --teal-glow:  rgba(42, 161, 155, 0.08);
+  --coral:      #C4636E;
+  --coral-glow: rgba(196, 99, 110, 0.06);
+  --depth:      0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--bg-deep);
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse at 15% 85%, rgba(42, 161, 155, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 15%, rgba(196, 99, 110, 0.03) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 40, 70, 0.15) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--teal);
+  color: var(--bg-deep);
+}
+
+/* ── Noise texture overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── Depth submersion overlay — gets more blue as you scroll ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%,
+    transparent 30%,
+    rgba(0, 40, 80, var(--depth)) 100%);
+  pointer-events: none;
+  z-index: 9998;
+  transition: opacity 0.3s;
+}
+
+/* ── Depth indicator in nav ── */
+.depth-gauge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  transition: color 0.5s;
+}
+
+.depth-gauge-bar {
+  width: 40px;
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.depth-gauge-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), #00A6D6);
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+
+/* ── Aquatic page transition ── */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.page-transition.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.page-transition-wave {
+  position: absolute;
+  bottom: 0;
+  left: -5%;
+  width: 110%;
+  height: 0%;
+  background: linear-gradient(180deg, rgba(0, 119, 182, 0.9) 0%, #040D14 60%);
+  border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+  transition: height 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.page-transition.active .page-transition-wave {
+  height: 120%;
+}
+
+/* ── Bubble particles (appear in deeper sections) ── */
+.bubble-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9997;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+/* ── Ambient deep-water caustic shimmer (whole page) ── */
+@keyframes ambient-caustic {
+  0%   { background-position: 0% 50%, 100% 50%; }
+  50%  { background-position: 100% 30%, 0% 70%; }
+  100% { background-position: 0% 50%, 100% 50%; }
+}
+
+body::marker { display: none; }
+
+/* subtle teal+coral light play fixed behind everything */
+.ambient-shimmer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(600px circle at 20% 80%, rgba(42, 161, 155, 0.035) 0%, transparent 100%),
+    radial-gradient(500px circle at 80% 20%, rgba(196, 99, 110, 0.025) 0%, transparent 100%);
+  background-size: 200% 200%, 200% 200%;
+  animation: ambient-caustic 20s ease-in-out infinite;
+}
+
+/* ── Scroll reveal animation ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════ STICKY NAV ═══════════ */
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6, 10, 16, 0.88);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid transparent;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.5s;
+}
+
+.sticky-nav.visible {
+  transform: translateY(0);
+  opacity: 1;
+  border-bottom-color: var(--border);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+  text-decoration: none;
+  user-select: none;
+}
+
+.nav-logo .gold { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--teal);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-links a:hover {
+  color: var(--cream);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ═══════════ HERO ═══════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dual glow — gold sunlight from surface, teal bioluminescence beneath */
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background:
+    radial-gradient(circle at 50% 40%, var(--gold-glow) 0%, transparent 55%),
+    radial-gradient(circle at 50% 65%, var(--teal-glow) 0%, transparent 50%);
+  border-radius: 50%;
+  animation: breathe 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50%      { transform: scale(1.15); opacity: 1; }
+}
+
+/* Particle canvas behind hero */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Waveform canvas behind hero */
+.hero-waveform {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.hero-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 12vw, 10rem);
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: var(--cream);
+  position: relative;
+  z-index: 1;
+  user-select: none;
+}
+
+.hero-logo span.gold {
+  color: var(--gold);
+}
+
+.hero-logo span.underscore {
+  color: var(--text-faint);
+  font-weight: 200;
+}
+
+/* Mirror reflection under logo */
+.hero-logo-reflection {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 12vw, 10rem);
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: var(--cream);
+  position: relative;
+  z-index: 1;
+  transform: scaleY(-1);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, transparent 60%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, transparent 60%);
+  pointer-events: none;
+  user-select: none;
+  margin-top: -0.3em;
+}
+
+.hero-tagline {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-faint);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  animation: float 2.5s ease-in-out infinite;
+}
+
+.hero-scroll::after {
+  content: '';
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--teal), transparent);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(8px); }
+}
+
+/* ═══════════ SECTION LAYOUT ═══════════ */
+section {
+  padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 6rem);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-label::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--teal);
+  opacity: 0.6;
+}
+
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+h2 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.section-text {
+  max-width: 620px;
+  font-weight: 300;
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.8;
+}
+
+/* ═══════════ PHILOSOPHY ═══════════ */
+.philosophy {
+  border-top: 1px solid var(--border);
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.principle {
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: var(--bg-card);
+  transition: border-color 0.4s, background 0.4s, transform 0.4s;
+}
+
+.principle:hover {
+  border-color: rgba(42, 161, 155, 0.3);
+  background: var(--bg-surface);
+  transform: translateY(-4px);
+}
+
+.principle-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.principle h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--cream);
+  margin-bottom: 0.75rem;
+}
+
+.principle p {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+/* ═══════════ INSTRUMENTS ═══════════ */
+.instruments {
+  border-top: 1px solid var(--border);
+}
+
+.instrument-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1px;
+  margin-top: 3rem;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.instrument-card {
+  background: var(--bg-card);
+  padding: 1.8rem 1.4rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background 0.4s;
+}
+
+.instrument-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.instrument-card:hover::before {
+  transform: scaleX(1);
+}
+
+.instrument-card:hover {
+  background: var(--bg-surface);
+}
+
+/* Glow on hover */
+.instrument-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, var(--accent-glow), transparent);
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+
+.instrument-card:hover::after {
+  opacity: 1;
+}
+
+.instrument-waveform-wrap {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 50px;
+  opacity: 0.15;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+
+.instrument-card:hover .instrument-waveform-wrap {
+  opacity: 0.4;
+}
+
+.instrument-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.instrument-code {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+.instrument-desc {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* Audio preview indicator */
+.instrument-card .preview-hint {
+  position: absolute;
+  bottom: 0.8rem;
+  right: 0.8rem;
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: 1;
+}
+
+.instrument-card:hover .preview-hint {
+  opacity: 0.6;
+}
+
+.instrument-card.playing .preview-hint {
+  opacity: 1;
+  animation: pulse-text 1s ease-in-out infinite;
+}
+
+@keyframes pulse-text {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ═══════════ CHORD MACHINE DEMO ═══════════ */
+.chord-demo {
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+.chord-machine-wrap {
+  margin-top: 3rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.chord-machine-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.chord-machine-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.chord-machine-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.cm-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 2px;
+}
+
+.cm-btn:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+.cm-btn.active {
+  background: var(--teal);
+  color: var(--bg-deep);
+  border-color: var(--teal);
+}
+
+.cm-bpm {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+.cm-bpm span {
+  color: var(--teal);
+  font-weight: 500;
+}
+
+.chord-machine-body {
+  padding: 2rem 1.8rem;
+}
+
+/* Engine lane labels */
+.cm-lanes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cm-lane {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.cm-lane-label {
+  width: 70px;
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.cm-steps {
+  display: flex;
+  gap: 3px;
+  flex: 1;
+}
+
+.cm-step {
+  flex: 1;
+  height: 28px;
+  background: var(--bg-surface);
+  border-radius: 2px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+  overflow: hidden;
+}
+
+.cm-step:hover {
+  background: #1A2830;
+}
+
+.cm-step.active {
+  transform: scaleY(1.15);
+}
+
+.cm-step.active .cm-step-fill {
+  opacity: 1;
+}
+
+.cm-step-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+/* Playhead */
+.cm-step.current {
+  box-shadow: 0 0 8px rgba(42, 161, 155, 0.4);
+}
+
+.cm-step.current::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--teal);
+}
+
+/* Beat markers (every 4th) */
+.cm-steps .cm-step:nth-child(4n+1) {
+  border-left: 1px solid var(--border);
+}
+
+/* ENO indicator */
+.cm-eno-indicator {
+  padding: 1rem 1.8rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.65rem;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+}
+
+.cm-eno-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-faint);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.cm-eno-dot.active {
+  background: var(--teal);
+  box-shadow: 0 0 8px var(--teal-glow);
+  animation: eno-pulse 2s ease-in-out infinite;
+}
+
+@keyframes eno-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ═══════════ XOMNIBUS HERO ═══════════ */
+.omnibus-section {
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+.omnibus-feature-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.omnibus-feature {
+  padding: 1.5rem;
+  border-left: 2px solid var(--teal);
+  opacity: 0.85;
+  transition: border-color 0.4s, transform 0.4s, opacity 0.4s;
+}
+
+.omnibus-feature:hover {
+  border-left-color: var(--gold);
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+.omnibus-feature h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.omnibus-feature p {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+/* ═══════════ THE AQUARIUM (Master FX) ═══════════ */
+.aquarium {
+  border-top: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Water caustic overlay — teal + coral + deep blue shimmer */
+.aquarium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(42, 161, 155, 0.07) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 30%, rgba(196, 99, 110, 0.05) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 80%, rgba(0, 80, 120, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 65% 60%, rgba(42, 161, 155, 0.04) 0%, transparent 40%);
+  pointer-events: none;
+  animation: caustic-drift 12s ease-in-out infinite alternate;
+}
+
+@keyframes caustic-drift {
+  0%   { opacity: 0.6; transform: translateY(0); }
+  100% { opacity: 1; transform: translateY(-10px); }
+}
+
+.aquarium-intro {
+  max-width: 680px;
+  margin-bottom: 3rem;
+}
+
+.aquarium-lore {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.9;
+  margin-top: 1.5rem;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--teal);
+}
+
+.aquarium-lore .felix {
+  color: #00A6D6;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.aquarium-lore .oscar {
+  color: #E8839B;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.aquarium-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-top: 2rem;
+}
+
+.aqua-fx-card {
+  background: var(--bg-card);
+  padding: 2rem 1.6rem;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.4s;
+}
+
+.aqua-fx-card:hover {
+  background: var(--bg-surface);
+}
+
+.aqua-fx-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.aqua-fx-card:hover::before {
+  transform: scaleX(1);
+}
+
+.aqua-fx-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  filter: grayscale(0.3);
+  transition: filter 0.4s;
+}
+
+.aqua-fx-card:hover .aqua-fx-icon {
+  filter: grayscale(0);
+}
+
+.aqua-fx-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.2rem;
+}
+
+.aqua-fx-phenomenon {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.aqua-fx-desc {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+.aqua-fx-character {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  transition: border-color 0.3s;
+}
+
+.aqua-fx-card:hover .aqua-fx-character {
+  border-color: var(--text-faint);
+}
+
+.aqua-pairs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.aqua-pair {
+  text-align: center;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: var(--bg-card);
+}
+
+.aqua-pair-axis {
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 0.5rem;
+}
+
+.aqua-pair-names {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--cream);
+}
+
+.aqua-pair-names span {
+  color: var(--text-faint);
+  margin: 0 0.5rem;
+}
+
+/* ═══════════ OPEN SOURCE ═══════════ */
+.opensource {
+  border-top: 1px solid var(--border);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.opensource .section-label {
+  justify-content: center;
+}
+
+.opensource .section-label::before { display: none; }
+
+.opensource h2 {
+  max-width: 700px;
+}
+
+.opensource .section-text {
+  text-align: center;
+  max-width: 540px;
+}
+
+.cta-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 2rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--teal);
+  color: var(--teal);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.cta-btn:hover {
+  background: var(--teal);
+  color: var(--bg-deep);
+  border-color: var(--teal);
+}
+
+.cta-btn.primary {
+  background: var(--gold);
+  color: var(--bg-deep);
+  border-color: var(--gold);
+}
+
+.cta-btn.primary:hover {
+  background: var(--cream);
+  border-color: var(--cream);
+}
+
+/* ═══════════ ACCENT SPECTRUM ═══════════ */
+.spectrum-bar {
+  width: 100%;
+  height: 3px;
+  margin: 4rem auto 0;
+  display: flex;
+  max-width: 1400px;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+}
+
+.spectrum-bar .seg {
+  flex: 1;
+  transition: flex 0.4s, opacity 0.4s;
+  opacity: 0.7;
+}
+
+.spectrum-bar:hover .seg {
+  opacity: 1;
+}
+
+.spectrum-bar .seg:hover {
+  flex: 3;
+}
+
+/* ═══════════ FOOTER ═══════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem clamp(1.5rem, 5vw, 6rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-links a {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--teal);
+}
+
+.footer-copy {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ═══════════ ENGINE DETAIL MODAL ═══════════ */
+.engine-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 10, 16, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.engine-modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.engine-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(520px, 90vw);
+  height: 100vh;
+  background: var(--bg-warm);
+  border-left: 1px solid var(--border);
+  z-index: 2001;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-faint) var(--bg-warm);
+}
+
+.engine-modal.open {
+  transform: translateX(0);
+}
+
+.engine-modal-accent {
+  height: 3px;
+  width: 100%;
+}
+
+.engine-modal-header {
+  padding: 2.5rem 2.5rem 0;
+  position: relative;
+}
+
+.engine-modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--text-dim);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.engine-modal-close:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+.engine-modal-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.1;
+}
+
+.engine-modal-code {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+
+.engine-modal-tagline {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.7;
+  margin-top: 1rem;
+}
+
+.engine-modal-body {
+  padding: 2rem 2.5rem 3rem;
+}
+
+.engine-modal-section {
+  margin-bottom: 2rem;
+}
+
+.engine-modal-section-title {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.engine-modal-section-title::before {
+  content: '';
+  width: 16px;
+  height: 1px;
+  background: var(--teal);
+  opacity: 0.6;
+}
+
+.engine-modal-synth-type {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+
+.engine-modal-text {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+.engine-modal-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.engine-modal-features li {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text);
+  padding-left: 1.2rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+.engine-modal-features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.engine-modal-coupling {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.coupling-tag {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--text-dim);
+  transition: all 0.3s;
+}
+
+.coupling-tag:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+.engine-modal-listen-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.5rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  background: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 2px;
+}
+
+.engine-modal-listen-btn:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+.engine-modal-listen-btn.playing {
+  border-color: var(--teal);
+  color: var(--teal);
+  animation: pulse-text 1s ease-in-out infinite;
+}
+
+.engine-modal-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 1.2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+}
+
+.engine-modal-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.engine-modal-meta-label {
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.engine-modal-meta-value {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--cream);
+}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 768px) {
+  .instrument-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+  .nav-links { gap: 1.5rem; }
+  .nav-links a { font-size: 0.6rem; }
+  .cm-lane-label { width: 50px; font-size: 0.5rem; }
+  .cm-step { height: 22px; }
+  .engine-modal { width: 100vw; }
+  .engine-modal-header { padding: 2rem 1.5rem 0; }
+  .engine-modal-body { padding: 1.5rem 1.5rem 2rem; }
+  .engine-modal-name { font-size: 2.2rem; }
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ AMBIENT DEEP-WATER SHIMMER ═══════════ -->
+<div class="ambient-shimmer"></div>
+
+<!-- ═══════════ AQUATIC PAGE TRANSITION ═══════════ -->
+<div class="page-transition" id="pageTransition">
+  <div class="page-transition-wave"></div>
+</div>
+
+<!-- ═══════════ BUBBLE CANVAS (depth particles) ═══════════ -->
+<canvas class="bubble-canvas" id="bubbleCanvas"></canvas>
+
+<!-- ═══════════ STICKY NAV ═══════════ -->
+<nav class="sticky-nav" id="stickyNav">
+  <a href="#" class="nav-logo"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <div class="nav-links">
+    <a href="#philosophy">Philosophy</a>
+    <a href="#instruments">Instruments</a>
+    <a href="#chord-machine">Chord Machine</a>
+    <a href="#platform">Platform</a>
+    <a href="#aquarium">Aquarium</a>
+    <a href="packs.html" class="aquatic-link">Sound Packs</a>
+    <a href="guide.html" class="aquatic-link">Field Guide</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus">GitHub</a>
+    <div class="depth-gauge" id="depthGauge">
+      <div class="depth-gauge-bar"><div class="depth-gauge-fill" id="depthFill"></div></div>
+      <span id="depthLabel">Surface</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero" id="hero">
+  <canvas class="hero-particles" id="particleCanvas"></canvas>
+  <canvas class="hero-waveform" id="waveformCanvas"></canvas>
+  <div class="hero-logo" aria-label="XO_OX Designs">
+    <span class="gold">X</span>O<span class="underscore">_</span>O<span class="gold">X</span>
+  </div>
+  <div class="hero-logo-reflection" aria-hidden="true">
+    <span style="color:var(--gold)">X</span>O<span style="color:var(--text-faint)">_</span>O<span style="color:var(--gold)">X</span>
+  </div>
+  <p class="hero-tagline">Character Synthesis</p>
+  <div class="hero-scroll">Scroll<br></div>
+</section>
+
+<!-- ═══════════ PHILOSOPHY ═══════════ -->
+<section class="philosophy reveal" id="philosophy">
+  <div class="section-label">Philosophy</div>
+  <h2>Every instrument has a <em>voice.</em><br>We give it <em>character.</em></h2>
+  <p class="section-text">
+    XO_OX Designs builds synthesizers where sonic identity comes first. Not feature lists. Not spec sheets.
+    Character — the quality that makes you reach for one instrument over another, the thing that makes a sound <em>yours</em>.
+  </p>
+  <p class="section-text" style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-dim);">
+    It started with two creatures: <span style="color:#00A6D6; font-weight:400;">feliX</span> the neon tetra — bright, darting, electric — and <span style="color:#E8839B; font-weight:400;">Oscar</span> the axolotl — patient, morphing, regenerative.
+    The <span style="color:var(--gold);">X</span> and the <span style="color:var(--gold);">O</span>. The snap and the sustain. Every engine carries DNA from both.
+  </p>
+
+  <div class="philosophy-grid" style="margin-top: 3rem;">
+    <div class="principle reveal">
+      <div class="principle-number">01</div>
+      <h3>Character Over Feature Count</h3>
+      <p>Every parameter must serve a sonic pillar. If it doesn't make the instrument sound more like itself, it doesn't exist.</p>
+    </div>
+    <div class="principle reveal">
+      <div class="principle-number">02</div>
+      <h3>Dry Patches Must Sing</h3>
+      <p>Before effects, before processing — the raw sound must be compelling. Effects enhance character; they never create it.</p>
+    </div>
+    <div class="principle reveal">
+      <div class="principle-number">03</div>
+      <h3>Presets Are Product</h3>
+      <p>Factory presets aren't afterthoughts. They're the first experience. Every preset demonstrates the instrument's reason to exist.</p>
+    </div>
+    <div class="principle reveal">
+      <div class="principle-number">04</div>
+      <h3>Coupling Creates Life</h3>
+      <p>Instruments don't just coexist — they interact. Cross-engine modulation means the whole is always more than the sum.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ INSTRUMENTS ═══════════ -->
+<section class="instruments reveal" id="instruments">
+  <div class="section-label">The Instruments</div>
+  <h2>Twenty engines.<br>Twenty <em>characters.</em></h2>
+  <p class="section-text">
+    Each began as a standalone instrument with its own identity, voice, and reason to exist.
+    Together in XOmnibus, they couple, collide, and mutate into sounds impossible with any single synth.
+    <span style="display:block; margin-top:0.5rem; font-size:0.8rem; color:var(--text-faint);">Click any engine to hear its voice.</span>
+  </p>
+
+  <div class="instrument-grid" id="instrumentGrid"></div>
+</section>
+
+<!-- ═══════════ CHORD MACHINE ═══════════ -->
+<section class="chord-demo reveal" id="chord-machine">
+  <div class="section-label">Interactive</div>
+  <h2>The <em>Chord Machine.</em></h2>
+  <p class="section-text">
+    One note in, four voices out. Each chord tone is synthesized through a different engine —
+    timbral chord distribution that makes house music's stab heritage sing with twenty characters at once.
+    <span style="display:block; margin-top:0.8rem; font-size:0.8rem; color:var(--text-faint);">Visual illustration — the real Chord Machine synthesizes each voice through a full engine.</span>
+  </p>
+
+  <div class="chord-machine-wrap">
+    <div class="chord-machine-header">
+      <div class="chord-machine-title">Chord Machine</div>
+      <div class="chord-machine-controls">
+        <span class="cm-bpm">BPM <span id="cmBpmVal">128</span></span>
+        <button class="cm-btn" id="cmPlayBtn">Play</button>
+        <button class="cm-btn" id="cmEnoBtn">Eno</button>
+        <button class="cm-btn" id="cmRandomBtn">Random</button>
+      </div>
+    </div>
+    <div class="chord-machine-body">
+      <div class="cm-lanes" id="cmLanes"></div>
+    </div>
+    <div class="cm-eno-indicator">
+      <div class="cm-eno-dot" id="cmEnoDot"></div>
+      <span id="cmEnoLabel">Eno mode — generative mutations at cycle boundaries</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ XOMNIBUS ═══════════ -->
+<section class="omnibus-section reveal" id="platform">
+  <div class="section-label">The Platform</div>
+  <h2>XOmnibus<br><em>"for all"</em></h2>
+  <p class="section-text">
+    The collected works of XO_OX Designs, unified in a single creative environment.
+    Four engine slots. Twelve coupling types. One thousand presets.
+    The architecture becomes the instrument.
+  </p>
+
+  <div class="omnibus-feature-row">
+    <div class="omnibus-feature reveal">
+      <h3>Gallery Model</h3>
+      <p>A warm white shell frames each engine's accent color. Light mode default. The UI gets out of the way so the sound takes center stage.</p>
+    </div>
+    <div class="omnibus-feature reveal">
+      <h3>Mega Coupling</h3>
+      <p>12 cross-engine modulation types. One engine's amplitude shapes another's filter. LFOs cross boundaries. The coupling matrix makes harmony interactive.</p>
+    </div>
+    <div class="omnibus-feature reveal">
+      <h3>Chord Machine</h3>
+      <p>One note in, four voices out. Timbral chord distribution across engines — every chord tone synthesized through a different character. House music DNA.</p>
+    </div>
+    <div class="omnibus-feature reveal">
+      <h3>Sonic DNA</h3>
+      <p>Six-dimensional fingerprinting: brightness, warmth, movement, density, space, aggression. Find similar sounds. Discover opposites. Navigate by feel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ THE AQUARIUM ═══════════ -->
+<section class="aquarium reveal" id="aquarium">
+  <div class="section-label">The Aquarium</div>
+  <h2>Six ways to <em>drown</em> your sound.</h2>
+
+  <div class="aquarium-intro">
+    <p class="section-text">
+      Every engine in XOmnibus passes through the same water on the way out. Six master effects — each named for a water phenomenon — create the sonic environment where all twenty characters live. The aquarium is where brand identity becomes audible.
+    </p>
+    <p class="aquarium-lore">
+      <span class="felix">feliX</span> lives near the surface — bright, darting, neon-electric. <span class="oscar">Oscar</span> lives in the depths — patient, regenerative, still. The Aquarium is the water between them. Every sound passes through both worlds.
+    </p>
+  </div>
+
+  <div class="aquarium-grid" id="aquariumGrid"></div>
+
+  <div class="aqua-pairs">
+    <div class="aqua-pair reveal">
+      <div class="aqua-pair-axis">Depth Axis</div>
+      <div class="aqua-pair-names">Fathom <span>&harr;</span> Surface</div>
+    </div>
+    <div class="aqua-pair reveal">
+      <div class="aqua-pair-axis">Motion Axis</div>
+      <div class="aqua-pair-names">Drift <span>&harr;</span> Tide</div>
+    </div>
+    <div class="aqua-pair reveal">
+      <div class="aqua-pair-axis">Color Axis</div>
+      <div class="aqua-pair-names">Reef <span>&harr;</span> Biolume</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ OPEN SOURCE ═══════════ -->
+<section class="opensource reveal">
+  <div class="section-label">Open Source</div>
+  <h2>Free. Forever.<br>Because sound belongs to <em>everyone.</em></h2>
+  <p class="section-text">
+    Every XO_OX instrument is free and open-source. No subscriptions. No dongles. No artificial scarcity.
+    Just instruments built with character, given to the community that inspires them.
+  </p>
+  <div class="cta-row">
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" class="cta-btn primary">GitHub</a>
+    <a href="#instruments" class="cta-btn">Explore Engines</a>
+  </div>
+</section>
+
+<!-- ═══════════ ENGINE DETAIL MODAL ═══════════ -->
+<div class="engine-modal-overlay" id="engineOverlay"></div>
+<div class="engine-modal" id="engineModal">
+  <div class="engine-modal-accent" id="modalAccent"></div>
+  <div class="engine-modal-header">
+    <button class="engine-modal-close" id="modalClose">&times;</button>
+    <div class="engine-modal-name" id="modalName"></div>
+    <div class="engine-modal-code" id="modalCode"></div>
+    <p class="engine-modal-tagline" id="modalTagline"></p>
+  </div>
+  <div class="engine-modal-body" id="modalBody"></div>
+</div>
+
+<!-- ═══════════ SPECTRUM BAR ═══════════ -->
+<div class="spectrum-bar" id="spectrumBar"></div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-logo">XO_OX</div>
+  <div class="footer-links">
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus">GitHub</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="#instruments">Instruments</a>
+    <a href="#chord-machine">Chord Machine</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
+</footer>
+
+<script>
+// ═══════════ ENGINE DATA ═══════════
+const engines = [
+  { name: "OddfeliX", code: "ODDFELIX", color: "#00A6D6",
+    desc: "The neon tetra — bright, darting, electric. The X in XO_OX.",
+    wave: "fm", freq: 440, fm: 3.2, fmAmt: 120,
+    synthType: "Snapshot Synthesis",
+    tagline: "Named after feliX the neon tetra — a synth that darts between sonic snapshots with the speed and precision of a tropical fish. Sharp filter sweeps, crystalline attacks, and a restless energy that never stays still.",
+    features: ["Instant parameter snapshots with morphable transitions", "Razor-sharp filter sweeps and resonance peaks", "Designed for leads, arpeggios, and percussive textures", "Neon-bright character that cuts through any mix"],
+    coupling: ["ONSET", "OPAL", "OBLONG"],
+    prefix: "snap_", format: "AU / Standalone" },
+  { name: "OddOscar", code: "ODDOSCAR", color: "#E8839B",
+    desc: "The axolotl — soft, morphing, regenerative. The O in XO_OX.",
+    wave: "sine", freq: 220, fm: 0, fmAmt: 0,
+    synthType: "Morphing Wavetable",
+    tagline: "Oscar the axolotl — a creature that regenerates, transforms, and never quite settles into one shape. Smooth wavetable morphing creates evolving textures that breathe and shift like a living organism.",
+    features: ["Continuous wavetable morphing between timbres", "Soft, organic tonal character with natural movement", "Ideal for pads, evolving textures, and ambient beds", "Regenerative modulation — sounds that heal themselves"],
+    coupling: ["ODYSSEY", "OPAL", "OCEANIC"],
+    prefix: "morph_", format: "AU / Standalone" },
+  { name: "Overdub", code: "OVERDUB", color: "#6B7B3A",
+    desc: "Dub tape echo — warm, spatial, rhythmic",
+    wave: "sawtooth", freq: 165, fm: 0, fmAmt: 0,
+    synthType: "Dub Performance Engine",
+    tagline: "A synth built around the send/return paradigm of dub music. Voice engine feeds through drive, tape delay, and spring reverb — with four performance pads for real-time dub manipulation.",
+    features: ["Send/return architecture: Voice → Drive → Tape Delay → Spring Reverb", "4 performance pads: FIRE, XOSEND, ECHO CUT, PANIC", "Tape delay with wow, flutter, and saturation modeling", "Spring reverb with drip and tank resonance"],
+    coupling: ["OBLONG", "OPAL", "OVERBITE"],
+    prefix: "dub_", format: "AU / Standalone" },
+  { name: "Odyssey", code: "ODYSSEY", color: "#7B2D8B",
+    desc: "Psychedelic pads — familiar to alien",
+    wave: "sine", freq: 196, fm: 1.5, fmAmt: 60,
+    synthType: "Psychedelic Pad Synthesizer",
+    tagline: "A journey from Familiar to Alien. The JOURNEY macro pushes sound through increasingly psychedelic territory, culminating in Climax — a per-preset bloom threshold that transforms everything at once.",
+    features: ["Climax system: per-preset JOURNEY threshold triggers S-curve bloom", "7 signature traits: Voyager Drift, Prism Shimmer, Haze Saturation, Tidal Pulse, Bloom Attack, Fracture", "Dual filter: Cytomic SVF + 3-band formant", "Classic, wavetable, supersaw, and FM oscillator modes"],
+    coupling: ["OPAL", "OBLONG", "OVERDUB"],
+    prefix: "odyssey_", format: "AU / Standalone" },
+  { name: "Oblong", code: "OBLONG", color: "#E9A84A",
+    desc: "Analog character — fuzzy, evolving warmth",
+    wave: "sawtooth", freq: 131, fm: 0, fmAmt: 0,
+    synthType: "Analog Modeling",
+    tagline: "Warm, character-driven synthesis that wraps you in fuzzy atmospheres and playful analog movement. Detuned oscillators, resonant filters, and a PlaySurface that turns performance into sound design.",
+    features: ["Rich detuned oscillator stacking with analog drift", "Resonant filter with multiple topology modes", "PlaySurface with chord and scale modes for expressive performance", "167 factory presets across 11 categories"],
+    coupling: ["ODDFELIX", "OBESE", "OVERDUB"],
+    prefix: "bob_", format: "AU / VST3 / Standalone" },
+  { name: "Obese", code: "OBESE", color: "#FF1493",
+    desc: "Maximum weight — fat, saturated, massive",
+    wave: "sawtooth", freq: 82, fm: 0, fmAmt: 0,
+    synthType: "Saturation Synthesis",
+    tagline: "Pure weight. Multi-stage saturation pushes oscillators through drive stages until they become something new — thick, saturated, and unapologetically massive. The sound of gravity.",
+    features: ["Multi-stage saturation and drive chain", "Sub-oscillator for foundational low-end weight", "Designed for bass, leads, and anything that needs to be felt physically", "99 MPC expansion presets available"],
+    coupling: ["OVERBITE", "ONSET", "OBLONG"],
+    prefix: "fat_", format: "AU / Standalone" },
+  { name: "Onset", code: "ONSET", color: "#0066FF",
+    desc: "Drum synthesis — eight algorithmic voices",
+    wave: "noise", freq: 200, fm: 0, fmAmt: 0,
+    synthType: "Algorithmic Drum Synthesis",
+    tagline: "Eight voices, four algorithms, infinite drums. FM, Modal, Karplus-Strong, and Phase Distortion synthesis create everything from pristine 808s to otherworldly percussion. Cross-Voice Coupling makes the kit a living instrument.",
+    features: ["8 voices: Kick, Snare, CHat, OHat, Clap, Tom, Perc, FX", "4 synthesis algorithms: FM, Modal, Karplus-Strong, Phase Distortion", "XVC: Cross-Voice Coupling — 8x8 internal modulation matrix", "4 macros: MACHINE, PUNCH, SPACE, MUTATE"],
+    coupling: ["OBESE", "ODDFELIX", "OVERDUB"],
+    prefix: "onset_", format: "XOmnibus native" },
+  { name: "Overworld", code: "OVERWORLD", color: "#39FF14",
+    desc: "Chip synthesis — NES, Genesis, SNES",
+    wave: "square", freq: 330, fm: 0, fmAmt: 0,
+    synthType: "Chip Synthesis (NES / Genesis / SNES)",
+    tagline: "Three eras of gaming audio in one engine. NES pulse and triangle, Genesis YM2612 FM, and SNES SPC700 sample playback — crossfaded through the ERA control from 8-bit to 16-bit and beyond.",
+    features: ["NES 2A03: Pulse with sweep, triangle, noise", "Genesis YM2612: 4-operator FM with per-op envelopes and hardware LFO", "SNES SPC700: BRR decoding with Gaussian interpolation and hardware ADSR", "ERA crossfade: NES→Genesis→SNES morphing + 13 glitch types"],
+    coupling: ["OPAL", "ODDFELIX", "ONSET"],
+    prefix: "era_", format: "AU / Standalone" },
+  { name: "Opal", code: "OPAL", color: "#A78BFA",
+    desc: "Granular — time-scattered particles",
+    wave: "grain", freq: 440, fm: 0, fmAmt: 0,
+    synthType: "Granular Synthesis",
+    tagline: "Fragments any sound into time-scattered particles. Clouds of tiny grains swirl and recombine, transforming familiar sources into iridescent textures that shimmer like light through crystal.",
+    features: ["Grain cloud engine with density, size, and scatter controls", "Position scanning through source material", "Freeze and time-stretch capabilities", "100 factory presets in 6 categories"],
+    coupling: ["ODYSSEY", "OVERWORLD", "OVERDUB"],
+    prefix: "opal_", format: "AU / Standalone" },
+  { name: "Overbite", code: "OVERBITE", color: "#F0EDE8",
+    desc: "Bass-forward — plush weight, feral bite",
+    wave: "sawtooth", freq: 65, fm: 0, fmAmt: 0,
+    synthType: "Bass Character Synthesis",
+    tagline: "Two sides of bass: the plush, pillowy weight of the belly, and the feral, distorted bite of the teeth. Five macros shape the balance between comfort and aggression.",
+    features: ["Dual oscillator: 4 belly waves + 5 bite waves", "WeightEngine for sub-bass layering and presence", "FurStage, ChewStage, GnashStage, TrashStage processing", "5 macros: BELLY, BITE, SCURRY, TRASH, PLAY DEAD"],
+    coupling: ["OBESE", "ONSET", "OVERDUB"],
+    prefix: "poss_", format: "AU / Standalone" },
+  { name: "Orbital", code: "ORBITAL", color: "#FF6B6B",
+    desc: "Additive — spectral sculpting, partials",
+    wave: "additive", freq: 220, fm: 0, fmAmt: 0,
+    synthType: "Additive Synthesis",
+    tagline: "Sound built from individual harmonic partials — sculpted one frequency at a time. Spectral tilting, partial manipulation, and harmonic morphing create timbres impossible with subtractive synthesis.",
+    features: ["Individual partial amplitude and frequency control", "Spectral tilt for brightness shaping", "Harmonic morphing between partial configurations", "Pristine, aliasing-free synthesis at any frequency"],
+    coupling: ["OCEANIC", "ORIGAMI", "ORACLE"],
+    prefix: "orbital_", format: "XOmnibus native" },
+  { name: "Organon", code: "ORGANON", color: "#00CED1",
+    desc: "Bio-algorithmic — entropy-driven life",
+    wave: "fm", freq: 165, fm: 5.0, fmAmt: 200,
+    synthType: "Bio-Algorithmic Synthesis",
+    tagline: "Synthesis that evolves like a living system. Entropy parameters introduce controlled chaos — sounds that grow, mutate, and develop over time following algorithmic rules inspired by biological processes.",
+    features: ["Entropy-driven parameter evolution", "Algorithmic growth and mutation rules", "Self-organizing timbral structures", "Sounds that are never quite the same twice"],
+    coupling: ["OUROBOROS", "OPAL", "ODYSSEY"],
+    prefix: "organon_", format: "XOmnibus native" },
+  { name: "Ouroboros", code: "OUROBOROS", color: "#FF2D2D",
+    desc: "Self-feeding — recursive, chaotic, alive",
+    wave: "fm", freq: 110, fm: 7.0, fmAmt: 400,
+    synthType: "Recursive Feedback Synthesis",
+    tagline: "The snake eating its own tail. Output feeds back into input through configurable feedback paths, creating sounds that consume and regenerate themselves in unpredictable, chaotic patterns.",
+    features: ["Configurable feedback routing paths", "Chaos control from gentle self-modulation to full recursion", "Strange attractor-inspired parameter space", "Sounds that exist at the edge of stability"],
+    coupling: ["ORGANON", "OBSIDIAN", "ONSET"],
+    prefix: "ouroboros_", format: "XOmnibus native" },
+  { name: "Obsidian", code: "OBSIDIAN", color: "#E8E0D8",
+    desc: "Phase distortion — volcanic glass edge",
+    wave: "fm", freq: 196, fm: 2.0, fmAmt: 180,
+    synthType: "Phase Distortion Synthesis",
+    tagline: "Volcanic glass — smooth on the surface, razor-sharp at the edge. Phase distortion warps waveshape timing to create harmonically rich timbres that transition from crystalline purity to cutting aggression.",
+    features: ["Phase distortion depth and waveshape control", "Smooth-to-sharp timbral transitions", "Harmonically rich without traditional filtering", "Inspired by Casio CZ-series phase distortion heritage"],
+    coupling: ["OUROBOROS", "ORIGAMI", "ODDFELIX"],
+    prefix: "obsidian_", format: "XOmnibus native" },
+  { name: "Origami", code: "ORIGAMI", color: "#E63946",
+    desc: "Wavefolder — geometric sonic sculpture",
+    wave: "triangle", freq: 220, fm: 0, fmAmt: 0,
+    synthType: "Wavefolding Synthesis",
+    tagline: "Sound folded like paper — simple waves transformed into complex harmonic structures through geometric wavefolding. Each fold adds new harmonics, creating timbres that unfold with mathematical precision.",
+    features: ["Multi-stage wavefolding with fold point control", "Geometric harmonic generation from simple sources", "Fold symmetry and bias shaping", "From sine purity to dense harmonic complexity in one parameter"],
+    coupling: ["ORBITAL", "OBSIDIAN", "OBLONG"],
+    prefix: "origami_", format: "XOmnibus native" },
+  { name: "Oracle", code: "ORACLE", color: "#4B0082",
+    desc: "Breakpoint — prophetic envelope shapes",
+    wave: "sine", freq: 330, fm: 1.0, fmAmt: 40,
+    synthType: "Breakpoint Envelope Synthesis",
+    tagline: "Prophecy through shape. Complex multi-segment envelopes drive every parameter simultaneously — pitch, timbre, amplitude, and modulation all following intricate, hand-drawn temporal paths.",
+    features: ["Multi-segment breakpoint envelopes as primary sound source", "Complex temporal evolution beyond ADSR", "Envelope-driven pitch, filter, and amplitude simultaneously", "Predictive parameter trajectories that reveal sound over time"],
+    coupling: ["ODYSSEY", "ORGANON", "ORIGAMI"],
+    prefix: "oracle_", format: "XOmnibus native" },
+  { name: "Obscura", code: "OBSCURA", color: "#8A9BA8",
+    desc: "Physical modeling — stiffness and resonance",
+    wave: "noise-tuned", freq: 196, fm: 0, fmAmt: 0,
+    synthType: "Physical Modeling",
+    tagline: "Like a daguerreotype captures light on silver, Obscura captures the physics of vibration. Stiffness, damping, and resonance parameters model physical objects that exist only in imagination.",
+    features: ["Stiffness and damping parameters for material simulation", "Resonant body modeling with configurable geometry", "Exciter types: pluck, bow, strike, breath", "Sounds that behave like real objects but couldn't exist physically"],
+    coupling: ["OVERBITE", "ORBITAL", "OCEANIC"],
+    prefix: "obscura_", format: "XOmnibus native" },
+  { name: "Oceanic", code: "OCEANIC", color: "#00B4A0",
+    desc: "Spectral ocean — tidal harmonic motion",
+    wave: "additive", freq: 110, fm: 0, fmAmt: 0,
+    synthType: "Spectral Tidal Synthesis",
+    tagline: "Harmonics that move like ocean currents — rising, falling, and separating in tidal patterns. Spectral components drift apart and recombine, creating sounds with the vast, breathing quality of the sea.",
+    features: ["Tidal harmonic motion with separation control", "Spectral current modeling — harmonics that flow", "Depth and pressure parameters for deep-ocean textures", "Phosphorescent timbral glow at harmonic peaks"],
+    coupling: ["OPAL", "ODYSSEY", "OBSCURA"],
+    prefix: "oceanic_", format: "XOmnibus native" },
+  { name: "Optic", code: "OPTIC", color: "#00FF41",
+    desc: "Visual modulation — light-driven synthesis",
+    wave: "fm", freq: 440, fm: 4.0, fmAmt: 100,
+    synthType: "Visual Modulation Synthesis",
+    tagline: "Sound driven by light. AutoPulse generates modulation from visual patterns — strobes, waves, and flickers become amplitude, filter, and pitch modulation. A Winamp-style visualizer shows the sound reacting to itself.",
+    features: ["AutoPulse: visual pattern-to-modulation engine", "Pulse rate, depth, and shape controls", "Audio-reactive Winamp-style visualizer", "Light patterns that drive synthesis parameters"],
+    coupling: ["ODDFELIX", "OVERWORLD", "OBLIQUE"],
+    prefix: "optic_", format: "XOmnibus native" },
+  { name: "Oblique", code: "OBLIQUE", color: "#BF40FF",
+    desc: "Prismatic bounce — refracted funk",
+    wave: "square", freq: 196, fm: 0, fmAmt: 0,
+    synthType: "Prismatic Bounce Synthesis",
+    tagline: "Sound refracted through a prism — a single input split into spectral components that bounce and recombine at oblique angles. The intersection of RTJ aggression, funk groove, and Tame Impala psychedelia.",
+    features: ["Prismatic spectral splitting and recombination", "Bounce dynamics with angle and energy controls", "Prism color parameter for spectral tilt", "Funk-forward rhythmic character with psychedelic edge"],
+    coupling: ["OPTIC", "ONSET", "OBESE"],
+    prefix: "oblq_", format: "XOmnibus native" },
+];
+
+// ═══════════ ENGINE AUDIO PREVIEW SYSTEM ═══════════
+// Tries real samples first (site/audio/{engine}.mp3), falls back to Web Audio
+let audioCtx = null;
+let activePreview = null;
+const sampleCache = {};  // engine name → AudioBuffer
+const sampleChecked = {}; // engine name → true (already attempted fetch)
+
+function getAudioCtx() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  return audioCtx;
+}
+
+// Precheck which samples exist (non-blocking)
+async function probeSamples() {
+  const checks = engines.map(async (eng) => {
+    const name = eng.name.toLowerCase();
+    try {
+      const resp = await fetch(`audio/${name}.mp3`, { method: 'HEAD' });
+      if (resp.ok) {
+        sampleChecked[name] = 'available';
+      } else {
+        sampleChecked[name] = 'missing';
+      }
+    } catch {
+      sampleChecked[name] = 'missing';
+    }
+  });
+  await Promise.all(checks);
+}
+probeSamples();
+
+async function loadSample(engineName) {
+  const name = engineName.toLowerCase();
+  if (sampleCache[name]) return sampleCache[name];
+
+  const ctx = getAudioCtx();
+  // Try MP3 first, then OGG
+  for (const ext of ['mp3', 'ogg']) {
+    try {
+      const resp = await fetch(`audio/${name}.${ext}`);
+      if (!resp.ok) continue;
+      const arrayBuf = await resp.arrayBuffer();
+      const audioBuf = await ctx.decodeAudioData(arrayBuf);
+      sampleCache[name] = audioBuf;
+      return audioBuf;
+    } catch { continue; }
+  }
+  return null;
+}
+
+function playSamplePreview(buffer, cardEl) {
+  const ctx = getAudioCtx();
+  if (ctx.state === 'suspended') ctx.resume();
+  const now = ctx.currentTime;
+
+  const src = ctx.createBufferSource();
+  src.buffer = buffer;
+
+  const gain = ctx.createGain();
+  gain.gain.setValueAtTime(0.3, now);
+  // Fade out at the end
+  const fadeStart = Math.max(0, buffer.duration - 0.4);
+  gain.gain.setValueAtTime(0.3, now + fadeStart);
+  gain.gain.linearRampToValueAtTime(0, now + buffer.duration);
+
+  src.connect(gain);
+  gain.connect(ctx.destination);
+  src.start(now);
+
+  cardEl.classList.add('playing');
+
+  activePreview = {
+    stop: () => { try { src.stop(); } catch(e) {} },
+    cardEl,
+    timeout: setTimeout(() => {
+      cardEl.classList.remove('playing');
+      activePreview = null;
+    }, buffer.duration * 1000)
+  };
+}
+
+function playWebAudioFallback(eng, cardEl) {
+  const ctx = getAudioCtx();
+  if (ctx.state === 'suspended') ctx.resume();
+  const now = ctx.currentTime;
+  const dur = 1.5;
+
+  const master = ctx.createGain();
+  master.gain.setValueAtTime(0, now);
+  master.gain.linearRampToValueAtTime(0.15, now + 0.05);
+  master.gain.setValueAtTime(0.15, now + dur - 0.3);
+  master.gain.linearRampToValueAtTime(0, now + dur);
+  master.connect(ctx.destination);
+
+  const filt = ctx.createBiquadFilter();
+  filt.type = 'lowpass';
+  filt.frequency.value = 2000;
+  filt.Q.value = 1;
+  filt.connect(master);
+
+  let nodes = [];
+
+  if (eng.wave === 'noise' || eng.wave === 'noise-tuned') {
+    const bufSize = ctx.sampleRate * dur;
+    const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+    const data = buf.getChannelData(0);
+    for (let i = 0; i < bufSize; i++) data[i] = Math.random() * 2 - 1;
+    const src = ctx.createBufferSource();
+    src.buffer = buf;
+    if (eng.wave === 'noise-tuned') {
+      const bp = ctx.createBiquadFilter();
+      bp.type = 'bandpass'; bp.frequency.value = eng.freq; bp.Q.value = 12;
+      src.connect(bp); bp.connect(filt);
+    } else {
+      const bp = ctx.createBiquadFilter();
+      bp.type = 'bandpass';
+      bp.frequency.setValueAtTime(eng.freq * 4, now);
+      bp.frequency.exponentialRampToValueAtTime(eng.freq * 0.5, now + 0.3);
+      bp.Q.value = 5;
+      src.connect(bp); bp.connect(filt);
+    }
+    src.start(now); src.stop(now + dur); nodes.push(src);
+  } else if (eng.wave === 'fm') {
+    const carrier = ctx.createOscillator();
+    carrier.type = 'sine'; carrier.frequency.value = eng.freq;
+    const mod = ctx.createOscillator();
+    mod.type = 'sine'; mod.frequency.value = eng.freq * eng.fm;
+    const modGain = ctx.createGain(); modGain.gain.value = eng.fmAmt;
+    mod.connect(modGain); modGain.connect(carrier.frequency);
+    carrier.connect(filt);
+    carrier.start(now); carrier.stop(now + dur);
+    mod.start(now); mod.stop(now + dur);
+    nodes.push(carrier, mod);
+  } else if (eng.wave === 'additive') {
+    for (let p = 1; p <= 8; p++) {
+      const osc = ctx.createOscillator();
+      osc.type = 'sine'; osc.frequency.value = eng.freq * p;
+      const g = ctx.createGain(); g.gain.value = 0.3 / (p * p);
+      osc.connect(g); g.connect(filt);
+      osc.start(now); osc.stop(now + dur); nodes.push(osc);
+    }
+  } else if (eng.wave === 'grain') {
+    for (let g = 0; g < 20; g++) {
+      const osc = ctx.createOscillator();
+      osc.type = 'sine'; osc.frequency.value = eng.freq * (0.8 + Math.random() * 0.4);
+      const gGain = ctx.createGain();
+      const t = now + (g / 20) * dur;
+      const gDur = 0.04 + Math.random() * 0.06;
+      gGain.gain.setValueAtTime(0, t);
+      gGain.gain.linearRampToValueAtTime(0.2, t + gDur * 0.3);
+      gGain.gain.linearRampToValueAtTime(0, t + gDur);
+      osc.connect(gGain); gGain.connect(filt);
+      osc.start(t); osc.stop(t + gDur); nodes.push(osc);
+    }
+  } else {
+    const osc = ctx.createOscillator();
+    osc.type = eng.wave; osc.frequency.value = eng.freq;
+    osc.connect(filt);
+    osc.start(now); osc.stop(now + dur); nodes.push(osc);
+  }
+
+  cardEl.classList.add('playing');
+  activePreview = {
+    stop: () => { nodes.forEach(n => { try { n.stop(); } catch(e) {} }); },
+    cardEl,
+    timeout: setTimeout(() => {
+      cardEl.classList.remove('playing');
+      activePreview = null;
+    }, dur * 1000)
+  };
+}
+
+async function playEnginePreview(eng, cardEl) {
+  // Stop any current preview
+  if (activePreview) {
+    activePreview.stop();
+    clearTimeout(activePreview.timeout);
+    if (activePreview.cardEl) activePreview.cardEl.classList.remove('playing');
+    activePreview = null;
+  }
+
+  // Try real sample first
+  const name = eng.name.toLowerCase();
+  if (sampleChecked[name] === 'available') {
+    const buffer = await loadSample(name);
+    if (buffer) {
+      playSamplePreview(buffer, cardEl);
+      return;
+    }
+  }
+
+  // Fall back to Web Audio synthesis
+  playWebAudioFallback(eng, cardEl);
+}
+
+// ═══════════ RENDER INSTRUMENT GRID ═══════════
+const grid = document.getElementById('instrumentGrid');
+engines.forEach((eng, i) => {
+  const card = document.createElement('div');
+  card.className = 'instrument-card';
+  card.style.setProperty('--accent', eng.color);
+  card.style.setProperty('--accent-glow', eng.color + '15');
+  card.style.animationDelay = `${i * 0.03}s`;
+
+  // Mini waveform canvas
+  const waveWrap = document.createElement('div');
+  waveWrap.className = 'instrument-waveform-wrap';
+  const miniCanvas = document.createElement('canvas');
+  miniCanvas.width = 100;
+  miniCanvas.height = 50;
+  waveWrap.appendChild(miniCanvas);
+
+  const hintId = `hint-${eng.name.toLowerCase()}`;
+  card.innerHTML = `
+    <div class="instrument-name">${eng.name}</div>
+    <div class="instrument-code" style="color:${eng.color}">${eng.code}</div>
+    <div class="instrument-desc">${eng.desc}</div>
+    <div class="preview-hint" id="${hintId}">Click to preview</div>
+  `;
+  card.appendChild(waveWrap);
+
+  // Show "real sample" badge if sample exists
+  const name = eng.name.toLowerCase();
+  if (sampleChecked[name] === 'available') {
+    document.getElementById(hintId).textContent = 'Click to hear';
+  }
+
+  // Draw characteristic waveform thumbnail
+  drawMiniWaveform(miniCanvas, eng);
+
+  // Click to open detail modal
+  card.addEventListener('click', () => openEngineModal(eng));
+
+  grid.appendChild(card);
+});
+
+function drawMiniWaveform(canvas, eng) {
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width, h = canvas.height;
+  ctx.clearRect(0, 0, w, h);
+  ctx.beginPath();
+  ctx.strokeStyle = eng.color;
+  ctx.lineWidth = 1.5;
+  ctx.globalAlpha = 0.8;
+
+  for (let x = 0; x < w; x++) {
+    const t = x / w;
+    let y = 0;
+    switch (eng.wave) {
+      case 'sine':
+        y = Math.sin(t * Math.PI * 6);
+        break;
+      case 'sawtooth':
+        y = ((t * 3) % 1) * 2 - 1;
+        break;
+      case 'square':
+        y = Math.sin(t * Math.PI * 6) > 0 ? 0.8 : -0.8;
+        break;
+      case 'triangle':
+        y = Math.abs(((t * 3) % 1) * 2 - 1) * 2 - 1;
+        break;
+      case 'fm':
+        y = Math.sin(t * Math.PI * 6 + Math.sin(t * Math.PI * 6 * eng.fm) * (eng.fmAmt / 100));
+        break;
+      case 'noise':
+        y = (Math.random() * 2 - 1) * (1 - t * 0.5);
+        break;
+      case 'noise-tuned':
+        y = Math.sin(t * Math.PI * 8) * (Math.random() * 0.5 + 0.5);
+        break;
+      case 'grain':
+        y = Math.sin(t * Math.PI * 20) * (Math.random() > 0.7 ? 1 : 0.1);
+        break;
+      case 'additive':
+        for (let p = 1; p <= 6; p++) y += Math.sin(t * Math.PI * 6 * p) / (p * p);
+        y *= 1.5;
+        break;
+      default:
+        y = Math.sin(t * Math.PI * 6);
+    }
+    const py = h / 2 + y * (h * 0.35);
+    if (x === 0) ctx.moveTo(x, py);
+    else ctx.lineTo(x, py);
+  }
+  ctx.stroke();
+}
+
+// ═══════════ RENDER SPECTRUM BAR ═══════════
+const bar = document.getElementById('spectrumBar');
+engines.forEach(eng => {
+  const seg = document.createElement('div');
+  seg.className = 'seg';
+  seg.style.background = eng.color;
+  seg.title = eng.name;
+  bar.appendChild(seg);
+});
+
+// ═══════════ STICKY NAV ═══════════
+const stickyNav = document.getElementById('stickyNav');
+const heroSection = document.getElementById('hero');
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      stickyNav.classList.remove('visible');
+    } else {
+      stickyNav.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+navObserver.observe(heroSection);
+
+// ═══════════ SCROLL REVEAL ═══════════
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ═══════════ GOLDEN PARTICLE SYSTEM ═══════════
+const particleCanvas = document.getElementById('particleCanvas');
+const pCtx = particleCanvas.getContext('2d');
+const particles = [];
+const PARTICLE_COUNT = 60;
+
+function resizeParticleCanvas() {
+  particleCanvas.width = window.innerWidth;
+  particleCanvas.height = window.innerHeight;
+}
+resizeParticleCanvas();
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * particleCanvas.width;
+    this.y = Math.random() * particleCanvas.height;
+    this.size = Math.random() * 2 + 0.5;
+    this.speedX = (Math.random() - 0.5) * 0.3;
+    this.speedY = (Math.random() - 0.5) * 0.3 - 0.1;
+    this.opacity = Math.random() * 0.4 + 0.1;
+    this.life = Math.random();
+    this.decay = 0.001 + Math.random() * 0.002;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.life -= this.decay;
+    if (this.life <= 0 || this.x < -20 || this.x > particleCanvas.width + 20 ||
+        this.y < -20 || this.y > particleCanvas.height + 20) {
+      this.reset();
+    }
+  }
+  draw() {
+    pCtx.beginPath();
+    pCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    pCtx.fillStyle = `rgba(233, 196, 106, ${this.opacity * this.life})`;
+    pCtx.fill();
+  }
+}
+
+for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
+
+let particleAnimId;
+function animateParticles() {
+  pCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+
+  // Connection lines between nearby particles
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        pCtx.beginPath();
+        pCtx.strokeStyle = `rgba(233, 196, 106, ${0.06 * (1 - dist / 120)})`;
+        pCtx.lineWidth = 0.5;
+        pCtx.moveTo(particles[i].x, particles[i].y);
+        pCtx.lineTo(particles[j].x, particles[j].y);
+        pCtx.stroke();
+      }
+    }
+  }
+  particleAnimId = requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// ═══════════ HERO WAVEFORM CANVAS ═══════════
+const canvas = document.getElementById('waveformCanvas');
+const ctx = canvas.getContext('2d');
+let animId;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+
+window.addEventListener('resize', () => {
+  resizeCanvas();
+  resizeParticleCanvas();
+});
+
+function drawWaveform(time) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const cy = canvas.height / 2;
+  const numWaves = 5;
+
+  for (let w = 0; w < numWaves; w++) {
+    ctx.beginPath();
+    const freq = 0.002 + w * 0.001;
+    const amp = 30 + w * 15;
+    const speed = 0.0003 + w * 0.0001;
+    const alpha = 0.15 - w * 0.025;
+
+    ctx.strokeStyle = `rgba(233, 196, 106, ${alpha})`;
+    ctx.lineWidth = 1;
+
+    for (let x = 0; x < canvas.width; x += 2) {
+      const y = cy + Math.sin(x * freq + time * speed) * amp
+                    + Math.sin(x * freq * 1.5 + time * speed * 0.7) * amp * 0.3;
+      if (x === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  }
+
+  animId = requestAnimationFrame(drawWaveform);
+}
+drawWaveform(0);
+
+// Pause animations when not visible
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    cancelAnimationFrame(animId);
+    cancelAnimationFrame(particleAnimId);
+  } else {
+    drawWaveform(performance.now());
+    animateParticles();
+  }
+});
+
+// ═══════════ CHORD MACHINE DEMO ═══════════
+const CM_STEPS = 16;
+const CM_ENGINES = [
+  { name: "OBLONG",    color: "#E9A84A", freq: 131 },
+  { name: "ODYSSEY",   color: "#7B2D8B", freq: 196 },
+  { name: "OPAL",      color: "#A78BFA", freq: 330 },
+  { name: "ODDFELIX",  color: "#00A6D6", freq: 440 },
+];
+
+let cmStepData = [];
+let cmPlaying = false;
+let cmCurrentStep = -1;
+let cmEnoMode = false;
+let cmIntervalId = null;
+let cmBpm = 128;
+
+// Initialize step data
+for (let lane = 0; lane < CM_ENGINES.length; lane++) {
+  cmStepData[lane] = [];
+  for (let s = 0; s < CM_STEPS; s++) {
+    // Default pattern: "Stab Protocol" feel
+    const hit = (s % 4 === 0) || (s === 6) || (s === 10) || (s === 13);
+    cmStepData[lane][s] = { active: hit && (Math.random() > 0.3), velocity: 0.7 + Math.random() * 0.3 };
+  }
+}
+
+// Render lanes
+const lanesContainer = document.getElementById('cmLanes');
+CM_ENGINES.forEach((eng, laneIdx) => {
+  const lane = document.createElement('div');
+  lane.className = 'cm-lane';
+
+  const label = document.createElement('div');
+  label.className = 'cm-lane-label';
+  label.style.color = eng.color;
+  label.textContent = eng.name;
+  lane.appendChild(label);
+
+  const stepsWrap = document.createElement('div');
+  stepsWrap.className = 'cm-steps';
+
+  for (let s = 0; s < CM_STEPS; s++) {
+    const step = document.createElement('div');
+    step.className = 'cm-step';
+    step.dataset.lane = laneIdx;
+    step.dataset.step = s;
+
+    const fill = document.createElement('div');
+    fill.className = 'cm-step-fill';
+    fill.style.background = eng.color;
+    step.appendChild(fill);
+
+    if (cmStepData[laneIdx][s].active) {
+      step.classList.add('active');
+      fill.style.opacity = cmStepData[laneIdx][s].velocity;
+    }
+
+    step.addEventListener('click', () => {
+      cmStepData[laneIdx][s].active = !cmStepData[laneIdx][s].active;
+      if (cmStepData[laneIdx][s].active) {
+        cmStepData[laneIdx][s].velocity = 0.7 + Math.random() * 0.3;
+        step.classList.add('active');
+        fill.style.opacity = cmStepData[laneIdx][s].velocity;
+      } else {
+        step.classList.remove('active');
+      }
+    });
+
+    stepsWrap.appendChild(step);
+  }
+
+  lane.appendChild(stepsWrap);
+  lanesContainer.appendChild(lane);
+});
+
+// Play button
+const playBtn = document.getElementById('cmPlayBtn');
+playBtn.addEventListener('click', () => {
+  cmPlaying = !cmPlaying;
+  playBtn.textContent = cmPlaying ? 'Stop' : 'Play';
+  playBtn.classList.toggle('active', cmPlaying);
+
+  if (cmPlaying) {
+    cmCurrentStep = -1;
+    const stepMs = (60000 / cmBpm) / 4;
+    cmIntervalId = setInterval(cmTick, stepMs);
+  } else {
+    clearInterval(cmIntervalId);
+    cmCurrentStep = -1;
+    document.querySelectorAll('.cm-step.current').forEach(el => el.classList.remove('current'));
+  }
+});
+
+function cmTick() {
+  // Clear previous playhead
+  document.querySelectorAll('.cm-step.current').forEach(el => el.classList.remove('current'));
+
+  cmCurrentStep = (cmCurrentStep + 1) % CM_STEPS;
+
+  // Set new playhead
+  document.querySelectorAll(`.cm-step[data-step="${cmCurrentStep}"]`).forEach(el => {
+    el.classList.add('current');
+  });
+
+  // Visual-only — no audio (real Chord Machine requires full engine synthesis)
+
+  // Eno mutations at cycle boundary
+  if (cmEnoMode && cmCurrentStep === 0) {
+    applyEnoMutations();
+  }
+}
+
+function applyEnoMutations() {
+  for (let lane = 0; lane < CM_ENGINES.length; lane++) {
+    for (let s = 0; s < CM_STEPS; s++) {
+      // Rest injection ~8%
+      if (cmStepData[lane][s].active && Math.random() < 0.08) {
+        cmStepData[lane][s].active = false;
+        const stepEl = document.querySelector(`.cm-step[data-lane="${lane}"][data-step="${s}"]`);
+        if (stepEl) stepEl.classList.remove('active');
+      }
+      // Rest recovery ~12%
+      if (!cmStepData[lane][s].active && Math.random() < 0.12) {
+        cmStepData[lane][s].active = true;
+        cmStepData[lane][s].velocity = 0.5 + Math.random() * 0.5;
+        const stepEl = document.querySelector(`.cm-step[data-lane="${lane}"][data-step="${s}"]`);
+        if (stepEl) {
+          stepEl.classList.add('active');
+          const fill = stepEl.querySelector('.cm-step-fill');
+          if (fill) fill.style.opacity = cmStepData[lane][s].velocity;
+        }
+      }
+      // Velocity drift ~15%
+      if (cmStepData[lane][s].active && Math.random() < 0.15) {
+        cmStepData[lane][s].velocity = Math.max(0.3, Math.min(1.0,
+          cmStepData[lane][s].velocity + (Math.random() - 0.5) * 0.1));
+        const stepEl = document.querySelector(`.cm-step[data-lane="${lane}"][data-step="${s}"]`);
+        if (stepEl) {
+          const fill = stepEl.querySelector('.cm-step-fill');
+          if (fill) fill.style.opacity = cmStepData[lane][s].velocity;
+        }
+      }
+    }
+  }
+  // Flash the Eno dot
+  const dot = document.getElementById('cmEnoDot');
+  dot.style.background = '#fff';
+  setTimeout(() => { dot.style.background = ''; }, 200);
+}
+
+// Eno button
+const enoBtn = document.getElementById('cmEnoBtn');
+const enoDot = document.getElementById('cmEnoDot');
+enoBtn.addEventListener('click', () => {
+  cmEnoMode = !cmEnoMode;
+  enoBtn.classList.toggle('active', cmEnoMode);
+  enoDot.classList.toggle('active', cmEnoMode);
+});
+
+// Random button
+document.getElementById('cmRandomBtn').addEventListener('click', () => {
+  for (let lane = 0; lane < CM_ENGINES.length; lane++) {
+    for (let s = 0; s < CM_STEPS; s++) {
+      cmStepData[lane][s].active = Math.random() > 0.55;
+      cmStepData[lane][s].velocity = 0.5 + Math.random() * 0.5;
+      const stepEl = document.querySelector(`.cm-step[data-lane="${lane}"][data-step="${s}"]`);
+      if (stepEl) {
+        stepEl.classList.toggle('active', cmStepData[lane][s].active);
+        const fill = stepEl.querySelector('.cm-step-fill');
+        if (fill) fill.style.opacity = cmStepData[lane][s].active ? cmStepData[lane][s].velocity : 0;
+      }
+    }
+  }
+});
+
+// ═══════════ ENGINE DETAIL MODAL ═══════════
+const modalOverlay = document.getElementById('engineOverlay');
+const modal = document.getElementById('engineModal');
+const modalClose = document.getElementById('modalClose');
+
+function openEngineModal(eng) {
+  document.getElementById('modalAccent').style.background = eng.color;
+  document.getElementById('modalName').textContent = eng.name;
+  const codeEl = document.getElementById('modalCode');
+  codeEl.textContent = eng.code;
+  codeEl.style.color = eng.color;
+  document.getElementById('modalTagline').textContent = eng.tagline;
+
+  const body = document.getElementById('modalBody');
+  body.innerHTML = '';
+
+  // Synthesis type
+  const synthSec = makeSection('Synthesis');
+  const st = document.createElement('div');
+  st.className = 'engine-modal-synth-type';
+  st.textContent = eng.synthType;
+  synthSec.appendChild(st);
+  body.appendChild(synthSec);
+
+  // Key features
+  const featSec = makeSection('Key Features');
+  const ul = document.createElement('ul');
+  ul.className = 'engine-modal-features';
+  eng.features.forEach(f => {
+    const li = document.createElement('li');
+    li.textContent = f;
+    li.style.setProperty('--dot-color', eng.color);
+    li.querySelector || null; // no-op
+    // Set bullet color via inline
+    li.innerHTML = `<span style="position:absolute;left:0;top:0.55em;width:5px;height:5px;border-radius:50%;background:${eng.color}"></span>${f}`;
+    ul.appendChild(li);
+  });
+  featSec.appendChild(ul);
+  body.appendChild(featSec);
+
+  // Listen button
+  const listenSec = makeSection('Preview');
+  const listenBtn = document.createElement('button');
+  listenBtn.className = 'engine-modal-listen-btn';
+  listenBtn.innerHTML = `&#9654;&nbsp; Listen to ${eng.name}`;
+  listenBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    playEnginePreview(eng, listenBtn);
+  });
+  listenSec.appendChild(listenBtn);
+  body.appendChild(listenSec);
+
+  // Coupling
+  if (eng.coupling && eng.coupling.length > 0) {
+    const coupSec = makeSection('Couples With');
+    const tags = document.createElement('div');
+    tags.className = 'engine-modal-coupling';
+    eng.coupling.forEach(c => {
+      const tag = document.createElement('span');
+      tag.className = 'coupling-tag';
+      tag.textContent = c;
+      // Find the coupling engine's color
+      const cEng = engines.find(e => e.code === c || e.name.toUpperCase() === c);
+      if (cEng) tag.style.borderColor = cEng.color + '60';
+      tag.addEventListener('click', () => {
+        if (cEng) openEngineModal(cEng);
+      });
+      tag.style.cursor = 'pointer';
+      tags.appendChild(tag);
+    });
+    coupSec.appendChild(tags);
+    body.appendChild(coupSec);
+  }
+
+  // Technical metadata
+  const metaSec = makeSection('Technical');
+  const metaGrid = document.createElement('div');
+  metaGrid.className = 'engine-modal-meta';
+  metaGrid.innerHTML = `
+    <div class="engine-modal-meta-item">
+      <span class="engine-modal-meta-label">Param Prefix</span>
+      <span class="engine-modal-meta-value">${eng.prefix}</span>
+    </div>
+    <div class="engine-modal-meta-item">
+      <span class="engine-modal-meta-label">Format</span>
+      <span class="engine-modal-meta-value">${eng.format}</span>
+    </div>
+    <div class="engine-modal-meta-item">
+      <span class="engine-modal-meta-label">Accent</span>
+      <span class="engine-modal-meta-value" style="color:${eng.color}">${eng.color}</span>
+    </div>
+    <div class="engine-modal-meta-item">
+      <span class="engine-modal-meta-label">Gallery ID</span>
+      <span class="engine-modal-meta-value">${eng.code}</span>
+    </div>
+  `;
+  metaSec.appendChild(metaGrid);
+  body.appendChild(metaSec);
+
+  // Open
+  modalOverlay.classList.add('open');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function makeSection(title) {
+  const sec = document.createElement('div');
+  sec.className = 'engine-modal-section';
+  const t = document.createElement('div');
+  t.className = 'engine-modal-section-title';
+  t.textContent = title;
+  sec.appendChild(t);
+  return sec;
+}
+
+function closeEngineModal() {
+  modalOverlay.classList.remove('open');
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+modalOverlay.addEventListener('click', closeEngineModal);
+modalClose.addEventListener('click', closeEngineModal);
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeEngineModal();
+});
+
+// ═══════════ AQUARIUM FX CARDS ═══════════
+const aquaFx = [
+  {
+    name: "Fathom",
+    icon: "🌊",
+    phenomenon: "Hydrostatic Pressure",
+    color: "#0077B6",
+    desc: "The deeper you push, the more submerged — highs attenuate, lows gain mass, transients soften. Like sinking through dark water.",
+    character: "Oscar",
+    charColor: "#E8839B"
+  },
+  {
+    name: "Drift",
+    icon: "🌿",
+    phenomenon: "Ocean Currents",
+    color: "#00B4A0",
+    desc: "Brownian chorus — sound drifts like kelp in a current. Never the same path twice. Subtle at low mix, swaying and hypnotic at full.",
+    character: "Oscar",
+    charColor: "#E8839B"
+  },
+  {
+    name: "Tide",
+    icon: "🌙",
+    phenomenon: "Tidal Rhythm",
+    color: "#00A6D6",
+    desc: "Slow, breathing modulation synced to tempo or free-running at geological speeds. The inhale and exhale of the mix.",
+    character: "feliX",
+    charColor: "#00A6D6"
+  },
+  {
+    name: "Reef",
+    icon: "🪸",
+    phenomenon: "Enclosed Underwater Space",
+    color: "#E9A84A",
+    desc: "Short, dense, colorful reverb — sound bouncing inside a coral structure. LP-filtered tails simulate water absorbing high frequencies.",
+    character: "Oscar",
+    charColor: "#E8839B"
+  },
+  {
+    name: "Surface",
+    icon: "✦",
+    phenomenon: "The Air-Water Boundary",
+    color: "#C4A44E",
+    desc: "One knob sweeps from submerged warmth to bright air. Below: muffled and soft. Above: crisp and electric. Where feliX and Oscar meet.",
+    character: "feliX + Oscar",
+    charColor: "#E9C46A"
+  },
+  {
+    name: "Biolume",
+    icon: "💠",
+    phenomenon: "Bioluminescence",
+    color: "#A78BFA",
+    desc: "Spectral exciter that adds luminous overtones — harmonics that weren't there, like deep-sea creatures generating their own light.",
+    character: "feliX",
+    charColor: "#00A6D6"
+  }
+];
+
+const aquaGrid = document.getElementById('aquariumGrid');
+aquaFx.forEach(fx => {
+  const card = document.createElement('div');
+  card.className = 'aqua-fx-card';
+  card.style.setProperty('--fx-color', fx.color);
+
+  card.innerHTML = `
+    <div style="position:absolute;top:0;left:0;right:0;height:2px;background:${fx.color};transform:scaleX(0);transform-origin:left;transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);"></div>
+    <div class="aqua-fx-icon">${fx.icon}</div>
+    <div class="aqua-fx-name">${fx.name}</div>
+    <div class="aqua-fx-phenomenon" style="color:${fx.color}">${fx.phenomenon}</div>
+    <div class="aqua-fx-desc">${fx.desc}</div>
+    <div class="aqua-fx-character" style="color:${fx.charColor}">${fx.character}</div>
+  `;
+
+  // Animate the top bar on hover
+  card.addEventListener('mouseenter', () => {
+    card.firstElementChild.style.transform = 'scaleX(1)';
+  });
+  card.addEventListener('mouseleave', () => {
+    card.firstElementChild.style.transform = 'scaleX(0)';
+  });
+
+  aquaGrid.appendChild(card);
+});
+
+// Re-observe new reveal elements
+document.querySelectorAll('.aquarium .reveal, .aqua-pair.reveal').forEach(el => observer.observe(el));
+
+// ═══════════ DEPTH SUBMERSION SYSTEM ═══════════
+// Scroll position maps to depth: hero=surface, aquarium=deep, footer=abyss
+const depthFill = document.getElementById('depthFill');
+const depthLabel = document.getElementById('depthLabel');
+const bubbleCanvas = document.getElementById('bubbleCanvas');
+const bCtx = bubbleCanvas.getContext('2d');
+const bubbles = [];
+
+function resizeBubbleCanvas() {
+  bubbleCanvas.width = window.innerWidth;
+  bubbleCanvas.height = window.innerHeight;
+}
+resizeBubbleCanvas();
+window.addEventListener('resize', resizeBubbleCanvas);
+
+// Depth zones mapped to scroll position
+const depthZones = [
+  { label: 'Surface',   maxDepth: 0.05 },
+  { label: 'Shallows',  maxDepth: 0.25 },
+  { label: 'Twilight',  maxDepth: 0.50 },
+  { label: 'Midnight',  maxDepth: 0.75 },
+  { label: 'Abyss',     maxDepth: 1.00 },
+];
+
+let currentDepth = 0;
+
+function updateDepth() {
+  const scrollMax = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollRatio = Math.min(1, Math.max(0, window.scrollY / scrollMax));
+  currentDepth = scrollRatio;
+
+  // Update CSS variable for the blue vignette overlay
+  const vignetteIntensity = Math.min(0.25, scrollRatio * 0.3);
+  document.documentElement.style.setProperty('--depth', vignetteIntensity.toFixed(3));
+
+  // Update depth gauge
+  if (depthFill) depthFill.style.width = (scrollRatio * 100) + '%';
+
+  // Update depth label
+  const zone = depthZones.find(z => scrollRatio <= z.maxDepth) || depthZones[depthZones.length - 1];
+  if (depthLabel) depthLabel.textContent = zone.label;
+
+  // Show bubbles when past the instruments section (~30% scroll)
+  if (bubbleCanvas) {
+    bubbleCanvas.style.opacity = scrollRatio > 0.3 ? Math.min(1, (scrollRatio - 0.3) * 2) : 0;
+  }
+}
+
+// Throttled scroll listener
+let depthTicking = false;
+window.addEventListener('scroll', () => {
+  if (!depthTicking) {
+    requestAnimationFrame(() => {
+      updateDepth();
+      depthTicking = false;
+    });
+    depthTicking = true;
+  }
+}, { passive: true });
+
+updateDepth(); // initial
+
+// ── Bubble particle system ──
+class Bubble {
+  constructor() { this.reset(true); }
+  reset(initial) {
+    this.x = Math.random() * bubbleCanvas.width;
+    this.y = initial ? Math.random() * bubbleCanvas.height : bubbleCanvas.height + 20;
+    this.size = 1 + Math.random() * 3;
+    this.speed = 0.3 + Math.random() * 0.8;
+    this.wobble = Math.random() * Math.PI * 2;
+    this.wobbleSpeed = 0.01 + Math.random() * 0.02;
+    this.wobbleAmt = 0.3 + Math.random() * 0.5;
+    this.opacity = 0.1 + Math.random() * 0.2;
+  }
+  update() {
+    this.y -= this.speed;
+    this.wobble += this.wobbleSpeed;
+    this.x += Math.sin(this.wobble) * this.wobbleAmt;
+    if (this.y < -20) this.reset(false);
+  }
+  draw() {
+    // Tint bubbles based on depth: gold at surface → blue at depth
+    const t = currentDepth;
+    const r = Math.round(233 * (1 - t) + 0 * t);
+    const g = Math.round(196 * (1 - t) + 166 * t);
+    const b = Math.round(106 * (1 - t) + 214 * t);
+    bCtx.beginPath();
+    bCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    bCtx.fillStyle = `rgba(${r}, ${g}, ${b}, ${this.opacity})`;
+    bCtx.fill();
+    // Tiny highlight
+    bCtx.beginPath();
+    bCtx.arc(this.x - this.size * 0.3, this.y - this.size * 0.3, this.size * 0.3, 0, Math.PI * 2);
+    bCtx.fillStyle = `rgba(255, 255, 255, ${this.opacity * 0.4})`;
+    bCtx.fill();
+  }
+}
+
+for (let i = 0; i < 30; i++) bubbles.push(new Bubble());
+
+let bubbleAnimId;
+function animateBubbles() {
+  bCtx.clearRect(0, 0, bubbleCanvas.width, bubbleCanvas.height);
+  if (currentDepth > 0.3) {
+    bubbles.forEach(b => { b.update(); b.draw(); });
+  }
+  bubbleAnimId = requestAnimationFrame(animateBubbles);
+}
+animateBubbles();
+
+// Pause bubble animation when hidden
+const origVisChange = document.onvisibilitychange;
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    cancelAnimationFrame(bubbleAnimId);
+  } else {
+    animateBubbles();
+  }
+});
+
+// ═══════════ AQUATIC PAGE TRANSITIONS ═══════════
+const pageTransition = document.getElementById('pageTransition');
+
+document.querySelectorAll('.aquatic-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const href = link.getAttribute('href');
+
+    // Activate the wave transition
+    pageTransition.classList.add('active');
+
+    // Navigate after the wave fills
+    setTimeout(() => {
+      window.location.href = href;
+    }, 700);
+  });
+});
+
+// On page load, check if we arrived via aquatic transition (reverse the wave)
+if (document.referrer && document.referrer.includes('xo-ox') || sessionStorage.getItem('aquaticNav')) {
+  sessionStorage.removeItem('aquaticNav');
+}
+</script>
+
+</body>
+</html>
