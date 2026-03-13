@@ -187,6 +187,7 @@ NOW
 NEXT
 ├── XOstinato — Phase 2-7 build
 ├── XOscillum — Phase 0-1 (spec ready)
+├── Overworld MPE — per-note expression support (requires XOverworld DSP changes)
 │
 LATER
 ├── XObliqua — Phase 0+
@@ -194,6 +195,32 @@ LATER
 ├── XOblivion — Phase 0+
 ├── XOntara — Phase 0+ (deferred)
 ```
+
+---
+
+## Engine Enhancement: Overworld MPE Support
+
+**Status:** Roadmapped (NEXT) | **Dependency:** XOverworld standalone repo DSP changes
+
+**Context:** The XOmnibus `MPEManager` infrastructure is production-ready (per-note pitch bend, pressure, slide). Overworld is the only integrated engine that doesn't query `mpeManager` — currently by design, since chip synth pitch is quantized to hardware-accurate resolutions.
+
+**Why it matters:** MPE controllers (Seaboard, Linnstrument) playing chip sounds is a compelling use case — pitch slides between NES square wave notes, pressure-driven PWM, slide-mapped FM depth. The quantized pitch grid actually *adds* character with MPE expression.
+
+**What's needed:**
+
+1. **XOverworld DSP changes (upstream dependency)**
+   - Per-voice pitch bend support in each chip engine (NES, FM, SNES, GB, PCE, Neo Geo)
+   - Per-voice pressure routing (→ pulse width, FM operator level, noise mix)
+   - Per-voice slide routing (→ filter cutoff, bit depth, ERA blend)
+   - Decision: quantize MPE pitch to chip-accurate steps, or allow smooth glides?
+
+2. **XOmnibus adapter changes (this repo)**
+   - Wire `mpeManager` queries into `OverworldEngine::renderBlock()` per-voice loop
+   - Add `ow_mpePitchQuant` parameter (smooth vs stepped pitch bend)
+   - Add `ow_mpePressureTarget` / `ow_mpeSlideTarget` routing parameters
+   - Include `MPEManager.h` in OverworldEngine.h
+
+**Design question:** Should MPE pitch bend snap to chip-accurate pitch steps (authentic) or allow smooth glides (expressive)? Recommendation: make it a parameter — both modes are musically valid.
 
 ---
 
