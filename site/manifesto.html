@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manifesto — XO_OX Designs</title>
+<meta name="description" content="The XO_OX Designs manifesto — why we build character-driven synthesizers, give them away free, and believe sound belongs to everyone.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── Skip link (accessibility) ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100000;
+  padding: 0.75rem 1.5rem;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+:root {
+  --bg-deep:    #060A10;
+  --bg-warm:    #0A1018;
+  --bg-card:    #0E1620;
+  --bg-surface: #131D28;
+  --gold:       #E9C46A;
+  --gold-dim:   #C4A44E;
+  --gold-glow:  rgba(233, 196, 106, 0.12);
+  --cream:      #E4EAF0;
+  --text:       #B0BEC8;
+  --text-dim:   #6B7F8E;
+  --text-faint: #4A6878;
+  --border:     #152330;
+  --teal:       #2AA19B;
+  --coral:      #C4636E;
+}
+
+html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--border) var(--bg-deep); }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse at 15% 85%, rgba(42, 161, 155, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 15%, rgba(196, 99, 110, 0.02) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 40, 70, 0.12) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--teal); color: var(--bg-deep); }
+
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ═══════════ NAV ═══════════ */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6, 10, 16, 0.9);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+  text-decoration: none;
+}
+.nav-logo .gold { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--teal);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--cream); }
+
+/* ═══════════ MANIFESTO ═══════════ */
+.manifesto {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: clamp(8rem, 15vw, 12rem) clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem);
+}
+
+.manifesto-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.manifesto-label::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--teal);
+  opacity: 0.6;
+}
+
+/* The opening line */
+.manifesto-opening {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.2;
+  margin-bottom: 4rem;
+}
+.manifesto-opening em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* Belief blocks */
+.belief {
+  margin-bottom: 3.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.belief.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.belief-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+.belief-heading em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.belief p {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.9;
+  max-width: 640px;
+}
+
+.belief p + p {
+  margin-top: 1rem;
+}
+
+.belief-accent {
+  color: var(--teal);
+  font-weight: 400;
+}
+
+/* Divider */
+.manifesto-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--teal), transparent);
+  margin: 4rem 0;
+  opacity: 0;
+  transition: opacity 1s;
+}
+.manifesto-divider.visible { opacity: 1; }
+
+/* The origin story */
+.origin {
+  margin: 4rem 0;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--teal);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.origin.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.origin p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 2;
+}
+.origin p + p { margin-top: 1rem; }
+.origin .felix { color: #00A6D6; font-style: normal; font-weight: 400; }
+.origin .oscar { color: #E8839B; font-style: normal; font-weight: 400; }
+
+/* The rejection */
+.rejection {
+  margin: 4rem 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.rejection.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.rejection-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.rejection-list li {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.6;
+  padding-left: 1.6rem;
+  position: relative;
+}
+
+.rejection-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--coral);
+}
+
+/* The closing */
+.manifesto-closing {
+  margin-top: 5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.manifesto-closing.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.manifesto-closing-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.4;
+  margin-bottom: 2rem;
+}
+.manifesto-closing-text em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.manifesto-sig {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.manifesto-sig-line {
+  width: 40px;
+  height: 1px;
+  background: var(--gold-dim);
+}
+
+.manifesto-sig-text {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* CTA */
+.manifesto-cta {
+  margin-top: 4rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.manifesto-cta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.8rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.manifesto-cta a:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+/* ═══════════ FOOTER ═══════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem clamp(1.5rem, 5vw, 6rem);
+  max-width: 780px;
+  margin: 4rem auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+.footer-links a {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--teal); }
+.footer-copy {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+</style>
+</head>
+<body>
+
+<a href="#manifesto" class="skip-link">Skip to manifesto</a>
+
+<nav class="site-nav" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="XO_OX Designs home"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <div class="nav-links">
+    <a href="manifesto.html" class="active">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="index.html#aquarium">Aquarium</a>
+    <a href="index.html#community">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</nav>
+
+<article class="manifesto" id="manifesto">
+
+  <div class="manifesto-label">Manifesto</div>
+
+  <h1 class="manifesto-opening">
+    We build instruments that sound like <em>something.</em>
+  </h1>
+
+  <!-- ── BELIEF 1 ── -->
+  <div class="belief">
+    <h2 class="belief-heading">Sound has <em>character.</em></h2>
+    <p>
+      Not features. Not specifications. Not oscillator counts or filter slopes or modulation depth.
+      Character — the unnamed quality that makes you reach for one instrument and ignore twenty others.
+      The thing that makes a sound <em>yours</em> before you've touched a single knob.
+    </p>
+    <p>
+      We build for that. Everything else is in service of it.
+    </p>
+  </div>
+
+  <!-- ── BELIEF 2 ── -->
+  <div class="belief">
+    <h2 class="belief-heading">The raw sound must <em>sing.</em></h2>
+    <p>
+      Before reverb. Before delay. Before saturation. If the dry oscillator doesn't make you
+      lean forward, no amount of processing will save it. Effects enhance character.
+      They never create it.
+    </p>
+    <p>
+      When you initialize an XO_OX preset, the first thing you hear should be compelling.
+      Not a blank canvas. Not a starting point. A <em>statement.</em>
+    </p>
+  </div>
+
+  <!-- ── BELIEF 3 ── -->
+  <div class="belief">
+    <h2 class="belief-heading">Presets are the <em>product.</em></h2>
+    <p>
+      Not afterthoughts. Not demo filler. Not the thing you scroll past on the way to init.
+      The factory presets are the first experience a musician has with an instrument — and for most,
+      the only experience. They must demonstrate the instrument's reason to exist.
+    </p>
+    <p>
+      One thousand presets ship with XOmnibus. Every one was shaped to make you hear
+      something the engine was born to do. Not filler. Not padding. A library that
+      rewards browsing.
+    </p>
+  </div>
+
+  <!-- ── BELIEF 4 ── -->
+  <div class="belief">
+    <h2 class="belief-heading">Instruments should <em>talk to each other.</em></h2>
+    <p>
+      A synth alone is a voice. Two synths listening to each other are a conversation.
+      Twenty synths modulating each other in real time are an ecosystem — unpredictable,
+      alive, capable of sounds no single instrument could produce.
+    </p>
+    <p>
+      Coupling is the difference between a rack of instruments and a living system.
+      We chose the living system.
+    </p>
+  </div>
+
+  <div class="manifesto-divider"></div>
+
+  <!-- ── THE ORIGIN ── -->
+  <div class="origin">
+    <p>
+      It started with two creatures.
+    </p>
+    <p>
+      <span class="felix">feliX</span> the neon tetra — bright, darting, electric.
+      The snap of a transient. The flash of a note attack. The X.
+    </p>
+    <p>
+      <span class="oscar">Oscar</span> the axolotl — patient, morphing, regenerative.
+      The sustain of a held chord. The slow bloom of a pad. The O.
+    </p>
+    <p>
+      Every engine in XOmnibus carries DNA from both. The interplay between snap and sustain,
+      between surface and depth, between the bright dart and the slow bloom — that tension
+      is the source of character. Not one or the other. Both.
+    </p>
+    <p>
+      They live in the same water. That water is the Aquarium — six master effects named
+      for ocean phenomena, the sonic environment where every engine's voice passes through
+      on its way to your speakers. <span class="felix">feliX</span> near the surface.
+      <span class="oscar">Oscar</span> in the depths. The music happens in between.
+    </p>
+  </div>
+
+  <div class="manifesto-divider"></div>
+
+  <!-- ── BELIEF 5 ── -->
+  <div class="belief">
+    <h2 class="belief-heading">Sound belongs to <em>everyone.</em></h2>
+    <p>
+      Every XO_OX instrument is free. Open source. No subscriptions. No dongles.
+      No email gates. No "free tier" with a ceiling you'll hit next Tuesday.
+      No artificial scarcity for something that costs nothing to copy.
+    </p>
+    <p>
+      This is not a business model. This is a belief. If you make something that matters,
+      you give it to the people who need it. The music comes first. Always.
+    </p>
+  </div>
+
+  <!-- ── THE REJECTION ── -->
+  <div class="rejection">
+    <h2 class="belief-heading">What we reject.</h2>
+    <ul class="rejection-list">
+      <li>Feature lists as identity. More oscillators do not make a better instrument.</li>
+      <li>Spec sheet worship. No one ever cried because of a filter slope.</li>
+      <li>Blank-canvas design. An init patch is a failure of imagination.</li>
+      <li>The preset tax. Factory sounds are not a teaser for a paid expansion.</li>
+      <li>Artificial scarcity. Digital goods that cost nothing to copy should cost nothing to own.</li>
+      <li>The loudness arms race. Louder is not better. Louder is just louder.</li>
+      <li>Swiss-army-knife synthesis. An instrument that does everything sounds like nothing.</li>
+    </ul>
+  </div>
+
+  <div class="manifesto-divider"></div>
+
+  <!-- ── BELIEF 6 ── -->
+  <div class="belief">
+    <h2 class="belief-heading">One person. One AI. <em>No limits.</em></h2>
+    <p>
+      XO_OX Designs is one musician building synthesizers in partnership with AI.
+      Not a company. Not a startup. Not a brand looking for market fit.
+      A person who wanted instruments with character and couldn't find enough of them
+      in the world — and found a collaborator that removed every technical ceiling
+      between imagination and implementation.
+    </p>
+    <p>
+      Twenty engines. A thousand presets. Tens of thousands of lines of DSP code. A brand site,
+      a field guide, an aquatic mythology, an entire sonic universe — built by one creative vision
+      amplified by AI. The ideas, the taste, the decisions about what sounds right and what doesn't —
+      those are human. The ability to execute at this scale without compromise — that's the partnership.
+    </p>
+    <p>
+      This is what happens when you remove the bottleneck between what a musician
+      can imagine and what they can build. Not AI replacing creativity.
+      AI <em>enabling</em> it.
+    </p>
+  </div>
+
+  <!-- ── CLOSING ── -->
+  <div class="manifesto-closing">
+    <div class="manifesto-closing-text">
+      We make instruments that sound like <em>themselves.</em><br>
+      We give them away because we <em>mean it.</em><br>
+      We build without limits because we <em>found a way.</em><br>
+      We build character because the world has enough <em>features.</em>
+    </div>
+
+    <div class="manifesto-sig">
+      <div class="manifesto-sig-line"></div>
+      <div class="manifesto-sig-text">XO_OX Designs, 2026</div>
+    </div>
+
+    <div class="manifesto-cta">
+      <a href="index.html#instruments">Hear the instruments</a>
+      <a href="guide.html">Read the Field Guide</a>
+      <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">View the source</a>
+    </div>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-logo">XO_OX</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="index.html#community">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.belief, .origin, .rejection, .manifesto-closing, .manifesto-divider').forEach(el => {
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>

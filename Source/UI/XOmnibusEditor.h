@@ -1994,7 +1994,7 @@ public:
 
             juce::String routeLabel = (activeRoutes > 0)
                 ? juce::String(activeRoutes) + " coupling route" + (activeRoutes > 1 ? "s" : "") + " active"
-                : "9 Engines · 12 Coupling Types · 1000 Presets";
+                : "21 Engines · 12 Coupling Types · 1600+ Presets";
 
             g.setColour(activeRoutes > 0 ? get(xoGoldText()) : get(textMid()).withAlpha(0.5f));
             g.setFont(GalleryFonts::body(9.0f));

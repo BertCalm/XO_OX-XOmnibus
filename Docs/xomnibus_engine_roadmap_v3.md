@@ -72,14 +72,14 @@ Volume 3 fills the final conceptual gaps in XOmnibus with five engines drawn fro
 2. **ORIGAMI** — Spectral Folding (geometric spectral transformation in FFT domain)
 3. **ORACLE** — Stochastic GENDY Synthesis (Xenakis's algorithmic waveform construction + maqam microtonality)
 4. **OBSCURA** — Scanned Synthesis (Verlet-integrated mass-spring network read by a moving scanner)
-5. **OCEANIC** — Swarm Particle Synthesis (autonomous boid-flocking oscillators with emergent collective behavior)
+5. **OCEANIC** — Paraphonic String Ensemble + Chromatophore Pedalboard (divide-down oscillators, triple-BBD chorus, 5 serial effects revealing hidden harmonics)
 
 **Design principles for all V3 engines:**
 - Each engine introduces a synthesis paradigm not represented anywhere in the existing gallery or V1/V2 pipeline
 - Cultural lens: every engine is grounded in a specific world music tradition that shares structural DNA with its synthesis method
 - Instrument heritage: every engine honors forgotten, obscure, or underappreciated instruments and inventors
 - CPU budget enforced: no engine exceeds 15% single-engine at 44.1kHz / 512 block on M1
-- Parameter prefix locked from day one: `obsidian_`, `origami_`, `oracle_`, `obscura_`, `ocean_`
+- Parameter prefix locked from day one: `obsidian_`, `origami_`, `oracle_`, `obscura_`, `oceanic_`
 - Presets in `.xometa` JSON from day one
 - DSP in inline `.h` headers — portable, testable in isolation
 - M1–M4 macros produce audible change in every preset
@@ -92,7 +92,7 @@ Volume 3 fills the final conceptual gaps in XOmnibus with five engines drawn fro
 | No spectral-domain transformation engine | ORIGAMI | All existing engines work in the time domain. ORIGAMI operates entirely in the frequency domain via real-time FFT, applying geometric transformations (fold, mirror, rotate, stretch) to spectral content. A fundamentally different way to think about timbre. |
 | No stochastic/algorithmic waveform construction | ORACLE | Every engine uses deterministic oscillators or physical models. ORACLE uses Xenakis's GENDY algorithm — stochastic breakpoint interpolation — to *construct* waveforms from probability distributions. The waveform itself is composed by chance within constraints. |
 | No physical-simulation-to-wavetable engine | OBSCURA | Physical modeling engines (XOntara, ORGANON) simulate resonance. OBSCURA simulates a physical *object* — a chain of masses and springs — and reads its shape as a waveform. The physical simulation IS the oscillator. |
-| No emergent/swarm synthesis | OCEANIC | All engines are "top-down" — the system schedules every oscillator. OCEANIC is "bottom-up" — 128 autonomous oscillator-particles follow flocking rules, and the collective behavior produces the sound. Emergence, not arrangement. |
+| No paraphonic string ensemble | OCEANIC | All engines are polyphonic or monophonic with per-voice processing. OCEANIC is paraphonic — 128 notes share ONE filter and amp envelope, producing warm vintage string ensemble textures with a chromatophore pedalboard that reveals hidden spectral content. The creature and the eyes that see it. |
 
 ---
 
@@ -114,9 +114,9 @@ Volume 3 fills the final conceptual gaps in XOmnibus with five engines drawn fro
 
 **Why fourth:** OBSCURA requires Verlet physics integration and real-time mass-spring simulation — the heaviest per-sample math in V3 (though still <12% CPU). Building it fourth means the physics infrastructure benefits from lessons learned in ORACLE's stochastic math and ORIGAMI's buffer management. OBSCURA's cinematic, evolving timbres provide the atmospheric layer that bridges the melodic engines (OBSIDIAN, ORIGAMI) and the experimental engines (ORACLE, OCEANIC).
 
-### Engine 5: OCEANIC — XOceanic (Swarm Particle Synthesis)
+### Engine 5: OCEANIC — XOceanic (Paraphonic String Ensemble)
 
-**Why last:** OCEANIC is the most emergent and least predictable engine — 128 autonomous particles with boid dynamics producing sound through collective behavior. It benefits from being built last because: (a) all four other V3 engines exist as coupling partners for testing swarm interaction, (b) the particle system's musical utility is most apparent when evaluated against a complete V3 palette, (c) preset design for an emergent engine requires the most iteration and benefits from a mature creative context. Peak CPU (~15%).
+**Status: COMPLETE.** XOceanic is built, AU validates, 34 factory presets. Paraphonic architecture with divide-down oscillator bank, 6 registration stops, triple-BBD ensemble chorus, and 5-pedal chromatophore chain (FREEZE, SCATTER, TIDE, ABYSS, MIRROR). Lightest CPU engine in V3 (~6% single).
 
 ---
 
@@ -137,7 +137,7 @@ Volume 3 fills the final conceptual gaps in XOmnibus with five engines drawn fro
 The gallery has texture (OBLONG), width (OBESE), chaos (OUROBOROS), granular (OPAL), drums (ONSET), and metabolic evolution (ORGANON). It has no engine specifically optimized to be the *peak melodic voice* — the sound that carries the melody, the lead that cuts glass, the pad that shimmers. OBSIDIAN fills this gap with a synthesis method that produces inherently coherent harmonic evolution: all partials derive from a single phase-warping operation, so they move together as a unified musical voice.
 
 **Key coupling routes unlocked:**
-> **OBSIDIAN → OCEANIC** — Crystalline phase distortion drives swarm attractor position. The crystal herds the flock.
+> **OBSIDIAN → OCEANIC** — Crystalline phase distortion feeds into chromatophore pedalboard. Crystal through bioluminescent processing.
 > **OBSCURA → OBSIDIAN** — Scanned synthesis mass positions modulate stiffness parameter. Physical simulation shapes the crystal's inharmonicity.
 > **ORIGAMI → OBSIDIAN** — Spectrally folded output becomes the phase distortion function. Folded spectra AS waveshaping.
 
@@ -224,12 +224,12 @@ Design spec at `Docs/xobsidian_design_spec.md`.
 | OBSIDIAN receives | OBSCURA | AmpToFilter | Scanned mass positions modulate stiffness — physical sim shapes crystal inharmonicity |
 | OBSIDIAN receives | ORIGAMI | AudioToFM | Spectrally folded output becomes PD distortion function — folded spectra AS waveshaping |
 | OBSIDIAN receives | ORACLE | AudioToFM | Stochastic GENDY curves replace smooth distortion functions — crystal with cracks |
-| OBSIDIAN receives | OCEANIC | AmpToFilter | Swarm density modulates formant intensity — flock makes the crystal sing |
+| OBSIDIAN receives | OCEANIC | AmpToFilter | String ensemble amplitude modulates formant intensity — strings make the crystal sing |
 | OBSIDIAN receives | OBESE | AmpToFilter | 13-osc amplitude drives distortion depth — massive harmonics through PD cascade |
 
 | As Source | Target Engine | Type | Musical Effect |
 |-----------|-------------|------|----------------|
-| OBSIDIAN sends | OCEANIC | AudioToFM | Crystal tone drives swarm attractor — the lead herds the flock |
+| OBSIDIAN sends | OCEANIC | AudioToWavetable | Crystal tone feeds into chromatophore pedalboard — PD through bioluminescent processing |
 | OBSIDIAN sends | OVERDUB | getSample | Crystalline output through dub echo/spring chain |
 | OBSIDIAN sends | OPAL | AudioToWavetable | PD harmonics granulated — crystal shattered into time particles |
 
@@ -427,7 +427,7 @@ Physical modeling engines simulate resonant bodies (XOntara, ORGANON). OBSCURA s
 
 **Key coupling routes unlocked:**
 > **OBSCURA → OBSIDIAN** — Mass-spring displacement drives PD stiffness parameter. Physics shapes crystal.
-> **OBSCURA → OCEANIC** — Scanner position modulates swarm attractor. The physical simulation herds the flock.
+> **OBSCURA → OCEANIC** — Scanner output feeds into chromatophore pedalboard. Physical simulation through bioluminescent processing.
 > **OBSIDIAN → OBSCURA** — Crystal harmonics excite the mass-spring chain. PD output as physical force.
 
 ### Cultural Lens
@@ -490,7 +490,7 @@ Design spec at `Docs/xobscura_design_spec.md`.
 | As Source | Target Engine | Type | Musical Effect |
 |-----------|-------------|------|----------------|
 | OBSCURA sends | OBSIDIAN | AmpToFilter | Mass displacement drives PD stiffness — physics shapes crystal |
-| OBSCURA sends | OCEANIC | AudioToFM | Scanner output modulates swarm attractor — physical sim herds the flock |
+| OBSCURA sends | OCEANIC | AudioToWavetable | Scanner output into chromatophore pedalboard — physics through bioluminescent processing |
 | OBSCURA sends | OVERDUB | getSample | Scanned output through dub effects chain |
 | OBSCURA sends | OPAL | AudioToWavetable | Scanned waveform granulated — physics shattered into time particles |
 
@@ -503,89 +503,54 @@ Design spec at `Docs/xobscura_design_spec.md`.
 - **Gallery code:** OCEANIC
 - **Source instrument:** XOceanic
 - **Accent color:** Phosphorescent Teal `#00B4A0`
-- **Thesis:** Swarm particle synthesis — 128 autonomous oscillator-particles with boid flocking dynamics producing emergent collective timbre
-- **Parameter prefix:** `ocean_`
-- **Max voices:** 4 (each voice is an independent swarm of 128 particles)
-- **CPU budget:** <15%
+- **Thesis:** Paraphonic string ensemble synth with bioluminescent chromatophore pedalboard — the strings provide warmth and body, the pedalboard reveals colors hiding inside them that you need *different eyes* to see.
+- **Parameter prefix:** `oceanic_`
+- **Max voices:** 1 (paraphonic — one shared voice path, unlimited simultaneous notes)
+- **CPU budget:** <6% single, <21% dual-engine config
+- **Standalone repo:** `~/Documents/GitHub/XOceanic/`
+- **Status:** ✅ COMPLETE — AU + Standalone builds, auval passes, 34 factory presets
 
-### Why OCEANIC Last
+### Synthesis Architecture
 
-OCEANIC is the most emergent engine in V3 — its sound arises from the collective behavior of 128 autonomous particles following simple flocking rules. The output is inherently unpredictable (in a bounded, musical way). Building it last ensures: (a) all four other V3 engines exist as coupling partners for swarm interaction testing, (b) the preset designers have a complete V3 palette to evaluate swarm contributions against, (c) the most iteration-dependent engine gets the most accumulated development experience.
+Inspired by the ARP Solina String Ensemble (1972) + Chase Bliss experimental effects:
 
-**Key coupling routes unlocked:**
-> **OBSIDIAN → OCEANIC** — Crystal tone drives swarm attractor position. The lead herds the flock.
-> **OCEANIC → ORIGAMI** — Swarm output enters FFT for spectral folding. Emergent kaleidoscope.
-> **OCEANIC × ORGANON** — Swarm density feeds metabolic rate. More particles = faster metabolism.
+```
+MIDI → Note Gate Table (128 entries)
+     → Divide-Down Oscillator Bank (6 registration stops, PolyBLEP)
+       Violin 8', Viola 8', Cello 8', Bass 16', Contrabass 32', Horn 8'
+     → Brightness Control
+     → Triple Ensemble Chorus (3 BBD lines: 0.63, 0.95, 1.40 Hz)
+     → Paraphonic SVF Filter (Cytomic: LP/BP/HP)
+     → Paraphonic Amp Envelope (shared ADSR)
+     → Chromatophore Pedalboard:
+         FREEZE → SCATTER → TIDE → ABYSS → MIRROR
+     → Chromatophore Modulator (organic pulsing)
+     → Dry/Wet → Width → Volume → Soft Limiter
+```
 
-### Cultural Lens
-
-**Salegy** (Madagascar), **Kompa** (Haiti), and **Chutney Soca** (Trinidad & Tobago) — three traditions where interlocking autonomous musical agents create emergent collective groove.
-
-*Salegy:* Each musician (accordion, guitar, bass, percussion) plays a simple independent figure with no conductor. The resulting 6/8 polyrhythm is emergent — separation (each instrument in its own frequency/rhythmic space), alignment (everyone drifts in the same tempo direction), cohesion (all patterns orbit the tonal center). Boid dynamics in acoustic form.
-
-*Kompa:* Layers of tanbou, guitar skank, bass ostinato, and horn stabs create the *gouyad* groove — a rolling, hip-driven feel that emerges from autonomous layer interaction. Kompa musicians describe the groove as something that "arrives" during performance, not something they play.
-
-*Chutney Soca:* Indian musical traditions (dholak, tassa, film-song melody) and Afro-Caribbean traditions (soca rhythm, calypso melody, steelpan) coexist as autonomous agents. Neither tradition dissolves; both maintain identity while producing emergent hybrid forms. Boid dynamics with two sub-flocks.
+**Paraphonic key detail:** All pressed notes share ONE filter and ONE amp envelope. Chords *blend* rather than stack. CPU is constant regardless of note count.
 
 ### Instrument Heritage
 
-- **Swarmatron** (Dewanatron, designed by Leon & Brian Dewan, 2004) — eight analog oscillators with swarming behavior. Used by Trent Reznor/Alessandro Cortini. Proved that flocking oscillators produce sounds no other method can.
-- **Verbos Harmonic Oscillator** (Mark Verbos, 2014) — eurorack module allowing real-time rebalancing of harmonic partials. Demonstrated that controlling many simultaneous oscillators produces extraordinary timbres.
-- **Cristián Vogel's Buchla "flock" patches** (2000s) — cross-patched 200e oscillators through feedback networks. Unrepeatable emergent performances.
-
-### Build Phases
-
-#### Phase 0: COMPLETE (this document)
-Design spec at `Docs/xoceanic_design_spec.md`.
-
-#### Phase 1 — Parameter Architecture + Boid Core
-- 128-particle pool: each with frequency, amplitude, pan, velocity vector
-- Boid force evaluation: separation, alignment, cohesion in 3D (freq/amp/pan)
-- MIDI attractor (tether to note frequency)
-- All parameter IDs locked with `ocean_` prefix
-- **Gate:** particles self-organize visibly, boid rules produce stable flocking
-
-#### Phase 2 — Audio Output + Particle Oscillators
-- 128 PolyBLEP oscillators (one per particle)
-- Waveform selection per particle (sine/saw/pulse/noise)
-- Particle amplitude weighted by distance from swarm centroid
-- Note-on perturbation (velocity impulse scatters swarm)
-- **Gate:** pitched, evolving swarm tone responds to MIDI, note-on scatter audible
-
-#### Phase 3 — Sub-Flocks + Advanced Dynamics
-- Sub-flock system (1–4 independent sub-swarms with separate attractors)
-- Murmuration trigger (cascading reorganization wave through swarm)
-- Damping control (velocity decay rate)
-- LFO, envelope, mod matrix
-- 4 macros: CHARACTER, MOVEMENT, COUPLING, SPACE
-- **Gate:** sub-flocks orbit independently, murmuration produces dramatic timbral shift
-
-#### Phase 4 — FX + Presets
-- FX chain (swarm chorus, delay, reverb, spatial enhancement)
-- 150 presets in `.xometa` format
-- **Gate:** all macros respond, deterministic load, DNA computed
-
-#### Phase 5 — UI + Polish
-- Phosphorescent teal UI with real-time particle visualization (2D frequency/pan plot)
-- Particle trails showing recent movement
-- Full QA pass
-- **Gate:** Definition of Done criteria met
+- **ARP Solina String Ensemble** (1972) — divide-down oscillator bank + BBD ensemble chorus. The warm, living string pad that defined an era.
+- **Chase Bliss Mood/Blooper** — experimental effects pedals designed to reveal hidden spectral content, not just process signal.
+- **Stars of the Lid**, **Grouper**, **Tim Hecker** — processed strings as ambient music, reverb as instrument, spectral manipulation of harmonic sources.
 
 ### Coupling Matrix (OCEANIC)
 
 | As Target | Source Engine | Type | Musical Effect |
 |-----------|-------------|------|----------------|
-| OCEANIC receives | OBSIDIAN | AudioToFM | Crystal harmonics drive swarm attractor — the lead herds the flock |
-| OCEANIC receives | OBSCURA | AudioToFM | Scanned output modulates particle velocities — physics perturbs swarm |
-| OCEANIC receives | ONSET | RhythmToBlend | Drum hits trigger murmuration — percussion startles the flock |
-| OCEANIC receives | ORGANON | AmpToFilter | Metabolic breathing modulates cohesion — organism breathes the swarm |
+| OCEANIC receives | ANY | AudioToWavetable | External audio enters chromatophore pedalboard — **THE killer coupling** |
+| OCEANIC receives | ONSET, BITE | AmpToFilter | Source amplitude sweeps paraphonic string filter |
+| OCEANIC receives | ODYSSEY, ODDOSCAR | EnvToMorph | External crescendos intensify ensemble shimmer |
+| OCEANIC receives | ODDOSCAR, OBLONG | LFOToPitch | Cross-engine organic pitch wander |
 
 | As Source | Target Engine | Type | Musical Effect |
 |-----------|-------------|------|----------------|
-| OCEANIC sends | ORIGAMI | AudioToWavetable | Swarm output enters FFT for spectral folding — emergent kaleidoscope |
-| OCEANIC sends | OBSIDIAN | AmpToFilter | Swarm density modulates formant intensity — flock makes crystal sing |
-| OCEANIC sends | OVERDUB | getSample | Swarm output through dub effects chain |
-| OCEANIC sends | OPAL | AudioToWavetable | Swarm audio granulated — flock shattered into time particles |
+| OCEANIC sends | OVERDUB | getSample | Shimmer strings through dub tape delay |
+| OCEANIC sends | OPAL | AudioToWavetable | String output granulated into time cloud |
+| OCEANIC sends | ODYSSEY | AmpToFilter | String amplitude modulates JOURNEY filter |
+| OCEANIC sends | OBESE | EnvToMorph | String envelope controls Mojo blend |
 
 ---
 
@@ -602,7 +567,7 @@ Design spec at `Docs/xoceanic_design_spec.md`.
 | All five V3 (theoretical) | All V3 engines | ~57% with voice reduction |
 | V3 + V1 showcase | OBSIDIAN + OCEANIC + OVERBITE + OPAL | ~45% |
 
-OCEANIC is the heaviest V3 engine (128 PolyBLEP oscillators per voice × 4 voices). Eco mode recommendation: cap particles at 64 in 4-engine configs.
+OCEANIC is the lightest V3 engine (~6% CPU due to paraphonic architecture — constant CPU regardless of note count).
 
 ---
 
@@ -610,16 +575,16 @@ OCEANIC is the heaviest V3 engine (128 PolyBLEP oscillators per voice × 4 voice
 
 When all five V3 engines are installed, these are the priority cross-engine presets:
 
-1. **OBSIDIAN × OCEANIC** — *Crystal Flock* — PD crystal herds swarm particles into formation
+1. **OBSIDIAN × OCEANIC** — *Crystal Strings* — PD crystal harmonics sweep through string ensemble filter
 2. **OBSCURA × OBSIDIAN** — *Glass Physics* — scanned mass-spring drives PD stiffness in real-time
 3. **ORIGAMI × ORACLE** — *Stochastic Kaleidoscope* — GENDY waveforms spectrally folded
 4. **ORACLE × ORGANON** — *Random Nutrients* — stochastic audio feeds metabolic engine
-5. **OCEANIC × ORIGAMI** — *Emergent Geometry* — swarm output spectrally folded into evolving patterns
+5. **OCEANIC × ORIGAMI** — *Folded Strings* — string ensemble output spectrally folded through chromatophore chain
 6. **OBSIDIAN × ORIGAMI** — *Folded Crystal* — PD harmonics geometrically transformed
-7. **OBSCURA × OCEANIC** — *Physics Herds Flock* — scanner output drives swarm attractor
+7. **OBSCURA × OCEANIC** — *Physics Strings* — physical model output processed through chromatophore pedalboard
 8. **ALL V3** — *The Synthesis Lab* — 4-slot config cycling all five engines in coupled pairs
 9. **OBSIDIAN × ODYSSEY** — *Crystal Bloom* — PD lead through Climax psychedelic bloom
-10. **OCEANIC × OPAL** — *Swarm Scatter* — swarm output granulated into time-scattered particles
+10. **OCEANIC × OPAL** — *String Scatter* — string ensemble output granulated into time-scattered particles
 
 ---
 

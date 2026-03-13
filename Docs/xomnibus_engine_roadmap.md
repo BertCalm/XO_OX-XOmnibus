@@ -1,27 +1,27 @@
 # XOmnibus — Engine Expansion Roadmap
 
-*Document version: 3.1 | March 2026 — Full audit: 20 engines integrated, XOstinato + XOuïe designed, XOcelot scaffolded*
+*Document version: 3.2 | March 2026 — Full audit: 21 engines integrated, XOstinato + XOuïe designed*
 
 ---
 
 ## Current Gallery State (March 2026)
 
-**20 engines integrated** in `Source/Engines/`, all with SynthEngine adapters. 1,595 factory presets across 6 moods.
+**21 engines integrated** in `Source/Engines/`, all with SynthEngine adapters. 1,610 factory presets across 6 moods.
 
 ### Volume 1 — Core Engines (Original Instruments)
 
 | Code | Engine Dir | Source Instrument | Role | Lines | Status |
 |------|-----------|------------------|------|-------|--------|
-| SNAP | Snap | OddfeliX | Percussive/rhythmic Karplus-Strong | 635 | ✅ Integrated |
-| MORPH | Morph | OddOscar | Wavetable pads | 795 | ✅ Integrated |
-| DUB | Dub | XOverdub | FX send/return dub bus | 1,310 | ✅ Integrated |
-| DRIFT | Drift | XOdyssey | Psychedelic pads, Climax | 1,435 | ✅ Integrated |
-| BOB | Bob | XOblongBob | Warm fuzzy textures | 1,739 | ✅ Integrated |
-| FAT | Fat | XObese | Width/thickness, 13-osc | 1,496 | ✅ Integrated |
+| ODDFELIX | Snap | OddfeliX | Percussive/rhythmic Karplus-Strong | 635 | ✅ Integrated |
+| ODDOSCAR | Morph | OddOscar | Wavetable pads | 795 | ✅ Integrated |
+| OVERDUB | Dub | XOverdub | FX send/return dub bus | 1,310 | ✅ Integrated |
+| ODYSSEY | Drift | XOdyssey | Psychedelic pads, Climax | 1,435 | ✅ Integrated |
+| OBLONG | Bob | XOblongBob | Warm fuzzy textures | 1,739 | ✅ Integrated |
+| OBESE | Fat | XObese | Width/thickness, 13-osc | 1,496 | ✅ Integrated |
 | ONSET | Onset | XOnset | Algorithmic drum synthesis | 1,581 | ✅ Integrated |
 | OVERWORLD | Overworld | XOverworld | Chip synthesis (NES/Genesis/SNES) | 509 | ✅ Integrated |
 | OPAL | Opal | XOpal | Granular time-scatter | 3,095 | ✅ Integrated |
-| BITE | Bite | XOpossum | Bass-forward character synth | 2,388 | ✅ Integrated |
+| OVERBITE | Bite | XOverbite (was XOpossum) | Bass-forward character synth | 2,388 | ✅ Integrated |
 
 ### Volume 1.5 — Expansion Engines (Integrated)
 
@@ -34,9 +34,10 @@
 | ORIGAMI | Origami | XOrigami | Fold dynamics / waveshaping | 1,594 | ✅ Integrated |
 | ORACLE | Oracle | XOracle | Breakpoint function synthesis | 1,479 | ✅ Integrated |
 | OBSCURA | Obscura | XObscura | Stiffness / physical string modeling | 1,393 | ✅ Integrated |
-| OCEANIC | Oceanic | XOceanic | Wavetable/FM spectral separation | 1,424 | ✅ Integrated |
+| OCEANIC | Oceanic | XOceanic | Paraphonic string ensemble + chromatophore pedalboard | 1,424 | ✅ Integrated |
 | OPTIC | Optic | XOptic | Visual modulation + AutoPulse | 732 | ✅ Integrated |
 | OBLIQUE | Oblique | XOblique | Prismatic bounce / RTJ × Funk × Tame Impala | 1,146 | ✅ Integrated |
+| OCELOT | Ocelot | XOcelot | Canopy-layered ecosystem / sample mangling | 3,010 | ✅ Integrated |
 
 ---
 
@@ -58,20 +59,16 @@ These are the full standalone instruments (AU + Standalone builds) that exist al
 
 ## Engines In Development
 
-### Engine: OCELOT — XOcelot
+### Engine: OCELOT — XOcelot ✅ Integrated
 
 - **Gallery code:** OCELOT
 - **Accent color:** Ocelot Tawny `#C5832B`
 - **Parameter prefix:** `ocelot_`
 - **Thesis:** Canopy-layered ecosystem synth — 4 interacting strata (Floor/Understory/Canopy/Emergent) with biome transformations (Jungle/Underwater/Winter)
 - **Max voices:** 8
-- **CPU budget:** <14%
-- **Phase 1 architecture:** `Docs/xocelot_phase1_architecture.md` ✅
-- **Concept brief:** `Docs/concepts/xocelot_concept_brief.md` ✅
-- **Standalone repo:** `~/Documents/GitHub/XOcelot/` — 17 source files, ~1,853 lines (scaffold)
-- **XOmnibus integration:** Engine dir exists but not yet wired to scaffold
-
-**Current status:** Phase 1 architecture complete, standalone scaffold started. Needs Phase 2 (core DSP implementation).
+- **XOmnibus integration:** 3,010 lines in `Source/Engines/Ocelot/`
+- **Standalone repo:** `~/Documents/GitHub/XOcelot/` — scaffold with Phase 1 architecture
+- **Sound design guide:** Section not yet written (add to `xomnibus_sound_design_guides.md`)
 
 **Coupling Matrix (OCELOT)**
 

@@ -25,12 +25,12 @@ for preset compatibility.
 | FAT | OBESE | Fat | Obese | XObese | `fat_` |
 | BITE | OVERBITE | Bite | Overbite | XOverbite (was XOpossum) | `poss_` |
 | — | ONSET | Onset | Onset | XOnset | `onset_` |
-| — | OVERWORLD | Overworld | Overworld | XOverworld | `overworld_` |
+| — | OVERWORLD | Overworld | Overworld | XOverworld | `ow_` |
 
 ### Engines that did NOT change
 These were already O-prefix from birth:
 - ONSET, OVERWORLD, OPAL, ORGANON, OUROBOROS, ORBITAL
-- OBSIDIAN, ORIGAMI, ORACLE, OBSCURA, OCEANIC
+- OBSIDIAN, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT
 
 ---
 
@@ -93,3 +93,5 @@ saved states that reference old engine names.
 - `poss_` parameters belong to **Overbite** (not "Bite" or "XOpossum")
 - The word "dub" as a music genre (dub echo, dub space) is NOT an engine reference — don't change it
 - `bite_` as a parameter prefix in some early docs was a mistake — the actual frozen prefix is `poss_`
+- `ow_` parameters belong to **Overworld** (not "era_" or "overworld_" — both appeared in early docs)
+- `oceanic_` parameters belong to **Oceanic** (not "ocean_" — typo in early roadmap drafts)

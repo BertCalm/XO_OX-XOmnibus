@@ -1,6 +1,11 @@
-# XO-Oceanic — Phase 1 Architecture Specification
+# ⚠️ SUPERSEDED — XO-Oceanic Swarm Particle Concept (Abandoned)
 
-**Engine:** XO-Oceanic (Swarm Particle Synthesis)
+> **This document describes an abandoned concept.** XOceanic was originally envisioned as a
+> swarm particle synthesis engine using boid flocking dynamics. The actual built engine is a
+> **paraphonic string ensemble with chromatophore pedalboard**. See the authoritative spec:
+> `concepts/xoceanic_master_spec.md` and `concepts/xoceanic_integration_spec.md`.
+
+**Engine:** XO-Oceanic (Swarm Particle Synthesis — NOT BUILT)
 **Short Name:** OCEANIC
 **Engine ID:** `"Oceanic"`
 **Parameter Prefix:** `ocean_`
