@@ -58,6 +58,9 @@ and mutate into sounds impossible with any single synth.
 | ORBITAL | XOrbital | Warm Red `#FF6B6B` |
 | OPTIC | XOptic | Phosphor Green `#00FF41` |
 | OBLIQUE | XOblique | Prism Violet `#BF40FF` |
+| OSTINATO | XOstinato | Firelight Orange `#E8701A` |
+| OPENSKY | XOpenSky | Sunburst `#FF8C00` |
+| OCEANDEEP | XOceanDeep | Trench Violet `#2D0A4E` |
 
 ### Engine ID vs Parameter Prefix
 
@@ -86,6 +89,9 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Oceanic | `oceanic_` | `oceanic_separation` |
 | Optic | `optic_` | `optic_pulseRate` |
 | Oblique | `oblq_` | `oblq_prismColor` |
+| Ostinato | `osti_` | `osti_seatN_instrument` |
+| OpenSky | `sky_` | `sky_shimmerAmount` |
+| OceanDeep | `deep_` | `deep_pressure` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.

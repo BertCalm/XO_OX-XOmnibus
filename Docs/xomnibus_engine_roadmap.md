@@ -177,6 +177,38 @@ XOFERRO has been upgraded and adopted as **XOblivion** (engine #4 in build queue
 
 ---
 
+## Mythology Engines (The Bookends)
+
+These two engines complete the XO_OX Aquatic Mythology — the top and bottom of the water column.
+See `Docs/xo_ox_aquatic_mythology.md` for the full mythology.
+
+### OPENSKY — XOpenSky
+
+- **Gallery code:** OPENSKY
+- **Accent color:** Sunburst `#FF8C00`
+- **Parameter prefix:** `sky_`
+- **Thesis:** Euphoric shimmer synth — supersaw anthems, crystalline pads, the soaring high above the water. Van Halen's jump, Vangelis's heaven.
+- **Polarity:** Pure feliX — above the surface entirely
+- **Max voices:** 16 | **CPU budget:** <10%
+- **Concept brief:** `Docs/concepts/xopensky_concept_brief.md` ✅
+- **Status:** Phase 0 complete — design approved
+
+### OCEANDEEP — XOceanDeep
+
+- **Gallery code:** OCEANDEEP
+- **Accent color:** Trench Violet `#2D0A4E`
+- **Parameter prefix:** `deep_`
+- **Thesis:** Abyssal bass engine — 808 pressure, bioluminescent creatures, sunken treasure at 10,000 leagues under the sea.
+- **Polarity:** Pure Oscar — the absolute ocean floor
+- **Max voices:** 8 | **CPU budget:** <12%
+- **Concept brief:** `Docs/concepts/xoceandeep_concept_brief.md` ✅
+- **Status:** Phase 0 complete — design approved
+
+### The Full Column Coupling
+> **OPENSKY × OCEANDEEP** — The entire XO_OX mythology in one patch. feliX's sky over Oscar's floor. Euphoric shimmer over abyssal 808. The coupling that completes the universe.
+
+---
+
 ## Build Priority (as of March 2026)
 
 ```
@@ -185,10 +217,12 @@ NOW
 ├── XOstinato — Phase 1 architecture (design approved)
 │
 NEXT
+├── XOpenSky — Phase 1 architecture (concept brief done)
+├── XOceanDeep — Phase 1 architecture (concept brief done)
 ├── XOstinato — Phase 2-7 build
-├── XOscillum — Phase 0-1 (spec ready)
 │
 LATER
+├── XOscillum — Phase 0-1 (spec ready)
 ├── XObliqua — Phase 0+
 ├── XOccult — Phase 0+
 ├── XOblivion — Phase 0+
@@ -213,6 +247,11 @@ Priority coupling showcase presets for newly added engines:
 10. **OVERWORLD × OCELOT** — Chip Chop — chip audio bit-crushed through SP-1200 mangler
 11. **OSTINATO × BITE** — Rhythm & Bass — drum circle accents pumping the bass filter
 12. **OSTINATO × DRIFT** — Ceremony — circle energy breathing the psychedelic pads
+13. **OPENSKY × OCEANDEEP** — The Full Column — feliX's sky over Oscar's floor, the entire mythology
+14. **OPENSKY × OVERDUB** — Heavenly Dub — euphoric leads through Jamaican tape echo
+15. **OCEANDEEP × OVERDUB** — The Deepest Dub — abyssal sub through dub delay
+16. **OPENSKY × OPAL** — Light Particles — shimmer granulated into suspended crystals
+17. **OCEANDEEP × ONSET** — Pressure Drums — 808 sub shaking the percussion from below
 
 ---
 
