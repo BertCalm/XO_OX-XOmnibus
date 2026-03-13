@@ -44,12 +44,14 @@ target_sources(XOmnibus PRIVATE
     Source/Core/ChordMachine.h
     Source/Core/MacroSystem.h
     Source/Core/SharedTransport.h
+    Source/Core/MPEManager.h
 
     # DSP (shared, pure C++)
     Source/DSP/FastMath.h
     Source/DSP/CytomicSVF.h
     Source/DSP/PolyBLEP.h
     Source/DSP/WavetableOscillator.h
+    Source/DSP/EngineProfiler.h
 
     # Effects (shared, pure C++)
     Source/DSP/Effects/DubDelay.h

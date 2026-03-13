@@ -920,7 +920,7 @@ public:
 
     juce::String getEngineId() const override { return "Obsidian"; }
 
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFF8B5CF6); }
+    juce::Colour getAccentColour() const override { return juce::Colour (0xFFE8E0D8); }
 
     int getMaxVoices() const override { return kMaxVoices; }
 

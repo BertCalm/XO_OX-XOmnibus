@@ -16,11 +16,11 @@ inline const juce::StringArray validEngineNames {
     "Overworld", "Opal", "Orbital",
     "Organon", "Ouroboros",
     "Obsidian", "Overbite", "Origami", "Oracle", "Obscura", "Oceanic",
-    "Optic", "Oblique",
+    "Optic", "Oblique", "Orca", "Octopus",
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
     "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
-    "XOpal", "XOpossum",
+    "XOpal", "XOpossum", "XOrca", "XOctopus",
     "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Bite"
 };
 
@@ -46,6 +46,7 @@ inline juce::String resolveEngineAlias(const juce::String& name)
         { "XOrbital",    "Orbital"   },
         { "XOrganon",    "Organon"   },
         { "XOuroboros",  "Ouroboros" },
+        { "XOrca",      "Orca"     },
         { "XOctopus",   "Octopus"  },
     };
     auto it = aliases.find(name);
