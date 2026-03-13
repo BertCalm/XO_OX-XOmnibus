@@ -69,19 +69,19 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Engine ID | Parameter Prefix | Example |
 |-----------|-----------------|---------|
 | OddfeliX | `snap_` | `snap_filterCutoff` |
-| OddOscar | `morph_` | `morph_scanPos` |
-| Overdub | `dub_` | `dub_sendAmount` |
+| OddOscar | `morph_` | `morph_morph` |
+| Overdub | `dub_` | `dub_oscWave` |
 | Odyssey | `drift_` | `drift_oscA_mode` |
 | Oblong | `bob_` | `bob_fltCutoff` |
 | Obese | `fat_` | `fat_satDrive` |
-| Overbite | `poss_` | `poss_biteDepth` |
-| Onset | `perc_` | `perc_decay` |
-| Overworld | `ow_` | `ow_eraX` |
+| Overbite | `poss_` | `poss_oscAWaveform` |
+| Onset | `perc_` | `perc_level` |
+| Overworld | `ow_` | `ow_echoFir0` |
 | Opal | `opal_` | `opal_grainSize` |
-| Orbital | `orbital_` | `orbital_partialTilt` |
-| Organon | `organon_` | `organon_entropy` |
-| Ouroboros | `ouro_` | `ouro_feedback` |
-| Obsidian | `obsidian_` | `obsidian_pdDepth` |
+| Orbital | `orb_` | `orb_brightness` |
+| Organon | `organon_` | `organon_metabolicRate` |
+| Ouroboros | `ouro_` | `ouro_topology` |
+| Obsidian | `obsidian_` | `obsidian_depth` |
 | Origami | `origami_` | `origami_foldPoint` |
 | Oracle | `oracle_` | `oracle_breakpoints` |
 | Obscura | `obscura_` | `obscura_stiffness` |
