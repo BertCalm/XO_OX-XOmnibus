@@ -118,6 +118,20 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Ocelot/TapeWarp.h
     Source/Engines/Ocelot/WaveFolder.h
 
+    Source/Engines/Owlfish/OwlfishEngine.h
+    Source/Engines/Owlfish/OwlfishEngine.cpp
+    Source/Engines/Owlfish/OwlfishParameters.h
+    Source/Engines/Owlfish/OwlfishParamSnapshot.h
+    Source/Engines/Owlfish/OwlfishVoice.h
+    Source/Engines/Owlfish/OwlfishAmpEnvelope.h
+    Source/Engines/Owlfish/SubharmonicOsc.h
+    Source/Engines/Owlfish/OwlfishCompressor.h
+    Source/Engines/Owlfish/MicroGranular.h
+    Source/Engines/Owlfish/ArmorBuffer.h
+    Source/Engines/Owlfish/AbyssReverb.h
+    Source/Engines/Owlfish/OwlfishCytomicSVF.h
+    Source/Engines/Owlfish/OwlfishFastMath.h
+
     # Export pipeline
     Source/Export/XPNCoverArt.h
     Source/Export/XPNExporter.h

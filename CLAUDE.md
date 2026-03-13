@@ -3,13 +3,14 @@
 ## Product Identity
 
 XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
-It merges 9 character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth.
+It merges character instruments into one unified creative environment where engines couple, collide,
+and mutate into sounds impossible with any single synth. 22 engines are integrated with DSP code;
+4 more are in concept phase — 26 total across the full roadmap (see engine table below).
 
-- **Engine modules:** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OPTIC, OBLIQUE
+- **Engine modules:** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSTINATO, OPENSKY, OCEANDEEP, OWLFISH, OUIE
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
-- **Presets:** 1000 factory presets in `.xometa` format, 6 mood categories, 6D Sonic DNA
+- **Presets:** 1,610 factory presets in `.xometa` format, 6 mood categories, 6D Sonic DNA
 - **Formats:** AU, Standalone (macOS); AUv3, Standalone (iOS); VST3 (v2)
 - **Design:** Gallery Model — warm white shell frames engine accent colors. Light mode default.
 
@@ -46,7 +47,6 @@ and mutate into sounds impossible with any single synth.
 | ONSET | XOnset | Electric Blue `#0066FF` |
 | OVERWORLD | XOverworld | Neon Green `#39FF14` |
 | OPAL | XOpal | Lavender `#A78BFA` |
-| BITE | XOpossum | Moss Green `#4A7C59` |
 | ORGANON | XOrganon | Bioluminescent Cyan `#00CED1` |
 | OUROBOROS | XOuroboros | Strange Attractor Red `#FF2D2D` |
 | OBSIDIAN | XObsidian | Crystal White `#E8E0D8` |
@@ -54,6 +54,7 @@ and mutate into sounds impossible with any single synth.
 | ORACLE | XOracle | Prophecy Indigo `#4B0082` |
 | OBSCURA | XObscura | Daguerreotype Silver `#8A9BA8` |
 | OCEANIC | XOceanic | Phosphorescent Teal `#00B4A0` |
+| OCELOT | XOcelot | Ocelot Tawny `#C5832B` |
 | OVERBITE | XOverbite | Fang White `#F0EDE8` |
 | ORBITAL | XOrbital | Warm Red `#FF6B6B` |
 | OPTIC | XOptic | Phosphor Green `#00FF41` |
@@ -61,6 +62,7 @@ and mutate into sounds impossible with any single synth.
 | OSTINATO | XOstinato | Firelight Orange `#E8701A` |
 | OPENSKY | XOpenSky | Sunburst `#FF8C00` |
 | OCEANDEEP | XOceanDeep | Trench Violet `#2D0A4E` |
+| OWLFISH | XOwlfish | Abyssal Gold `#B8860B` |
 | OUIE | XOuïe | Hammerhead Steel `#708090` |
 
 ### Engine ID vs Parameter Prefix
@@ -78,7 +80,7 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Obese | `fat_` | `fat_satDrive` |
 | Overbite | `poss_` | `poss_biteDepth` |
 | Onset | `onset_` | `onset_noiseLevel` |
-| Overworld | `era_` | `era_engineA` |
+| Overworld | `ow_` | `ow_era` |
 | Opal | `opal_` | `opal_grainSize` |
 | Orbital | `orbital_` | `orbital_partialTilt` |
 | Organon | `organon_` | `organon_entropy` |
@@ -88,11 +90,13 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Oracle | `oracle_` | `oracle_breakpoints` |
 | Obscura | `obscura_` | `obscura_stiffness` |
 | Oceanic | `oceanic_` | `oceanic_separation` |
+| Ocelot | `ocelot_` | `ocelot_biome` |
 | Optic | `optic_` | `optic_pulseRate` |
 | Oblique | `oblq_` | `oblq_prismColor` |
 | Ostinato | `osti_` | `osti_seatN_instrument` |
 | OpenSky | `sky_` | `sky_shimmerAmount` |
 | OceanDeep | `deep_` | `deep_pressure` |
+| Owlfish | `owl_` | `owl_filterCutoff` |
 | Ouïe | `ouie_` | `ouie_hammer` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
@@ -113,7 +117,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Engines/Optic/OpticEngine.h` | Visual modulation engine + AutoPulse |
 | `Source/Engines/Oblique/ObliqueEngine.h` | Prismatic bounce engine (RTJ x Funk x Tame Impala) |
 | `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
-| `Docs/xomnibus_sound_design_guides.md` | Sound design guide for all 20 engines |
+| `Docs/xomnibus_sound_design_guides.md` | Sound design guide (20 of 25 engines covered) |
 | `Source/DSP/` | Shared DSP library |
 | `Source/UI/` | Gallery Model UI components |
 | `Source/Export/` | XPN export pipeline |
