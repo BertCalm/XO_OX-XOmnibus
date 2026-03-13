@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "name": "Neon Predator",
+  "author": "XO_OX",
+  "description": "Aggressive rhythmic bass. Odyssey analog detune meets Ouroboros feedback chaos, FM-coupled for metallic edge. Sequencer pumps the compressor and corroder for sidechain-style movement.",
+  "mood": "Flux",
+  "tags": ["bass", "aggressive", "rhythmic", "electronic", "dubstep"],
+  "created": "2026-03-12",
+  "suggestedBPM": 140,
+  "engines": [
+    {
+      "id": "Odyssey",
+      "parameters": {
+        "odyssey_oscAShape": 2.0,
+        "odyssey_oscBShape": 1.0,
+        "odyssey_detune": 0.08,
+        "odyssey_filterCutoff": 800.0,
+        "odyssey_filterRes": 0.45,
+        "odyssey_filterEnvAmount": 0.7,
+        "odyssey_envFilterDecay": 250.0,
+        "odyssey_ampAttack": 1.0,
+        "odyssey_ampDecay": 300.0,
+        "odyssey_ampSustain": 0.7,
+        "odyssey_ampRelease": 80.0
+      }
+    },
+    {
+      "id": "Ouroboros",
+      "parameters": {
+        "ouroboros_feedback": 0.6,
+        "ouroboros_foldAmount": 0.4,
+        "ouroboros_filterCutoff": 1200.0,
+        "ouroboros_chaosAmount": 0.3,
+        "ouroboros_ampAttack": 2.0,
+        "ouroboros_ampDecay": 200.0,
+        "ouroboros_ampSustain": 0.6,
+        "ouroboros_ampRelease": 100.0
+      }
+    }
+  ],
+  "coupling": [
+    {
+      "sourceSlot": 0,
+      "destSlot": 1,
+      "type": "FMCross",
+      "intensity": 0.45,
+      "params": {
+        "fmRatio": 2.0,
+        "fmDepthMod": 0.3
+      }
+    },
+    {
+      "sourceSlot": 1,
+      "destSlot": 0,
+      "type": "FilterMod",
+      "intensity": 0.25,
+      "params": {}
+    }
+  ],
+  "masterFX": {
+    "master_vibeAmount": 0.4,
+    "master_satDrive": 0.3,
+    "master_satMode": 1,
+    "master_corrMix": 0.15,
+    "master_corrBits": 12.0,
+    "master_corrSR": 22050.0,
+    "master_tdAttack": 0.5,
+    "master_tdMix": 0.6,
+    "master_compRatio": 4.0,
+    "master_compAttack": 5.0,
+    "master_compRelease": 80.0,
+    "master_compMix": 0.7,
+    "master_sculLowWidth": 0.0,
+    "master_sculMidWidth": 0.8,
+    "master_sculMix": 0.5,
+    "master_seqEnabled": 1.0,
+    "master_seqRate": 3,
+    "master_seqSteps": 8,
+    "master_seqDepth": 0.6,
+    "master_seqSmooth": 0.15,
+    "master_seqTarget1": 7,
+    "master_seqTarget2": 1,
+    "master_seqPattern": 0
+  },
+  "macros": [
+    {
+      "label": "GRIT",
+      "targets": ["master_vibeAmount", "master_satDrive", "master_corrMix"],
+      "ranges": [0.5, 0.4, 0.3]
+    },
+    {
+      "label": "CHAOS",
+      "targets": ["ouroboros_feedback", "ouroboros_chaosAmount", "master_seqDepth"],
+      "ranges": [0.3, 0.5, 0.3]
+    },
+    {
+      "label": "FILTER",
+      "targets": ["odyssey_filterCutoff", "odyssey_filterRes"],
+      "ranges": [4000.0, 0.3]
+    },
+    {
+      "label": "PUNCH",
+      "targets": ["master_tdAttack", "master_compRatio", "master_compMix"],
+      "ranges": [0.4, 4.0, 0.2]
+    }
+  ],
+  "variationAxis": {
+    "label": "Aggression",
+    "targets": ["master_vibeAmount", "master_corrMix", "ouroboros_feedback"],
+    "minValues": [0.1, 0.0, 0.3],
+    "maxValues": [0.8, 0.4, 0.85]
+  },
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.35,
+    "movement": 0.8,
+    "density": 0.75,
+    "space": 0.15,
+    "aggression": 0.85
+  },
+  "extensions": []
+}

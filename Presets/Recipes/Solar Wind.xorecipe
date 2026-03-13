@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "name": "Solar Wind",
+  "author": "XO_OX",
+  "description": "Ethereal granular textures dissolving into infinite space. Opal grain clouds feed through Obscura physical modeling strings, creating bowed-glass overtones. Doppler effect simulates cosmic movement, granular smear turns everything to stardust.",
+  "mood": "Aether",
+  "tags": ["ethereal", "granular", "cinematic", "cosmic", "meditation"],
+  "created": "2026-03-12",
+  "suggestedBPM": 0,
+  "engines": [
+    {
+      "id": "Opal",
+      "parameters": {
+        "opal_grainSize": 150.0,
+        "opal_grainDensity": 0.5,
+        "opal_grainSpray": 0.7,
+        "opal_grainPitch": 0.0,
+        "opal_filterCutoff": 8000.0,
+        "opal_filterRes": 0.1,
+        "opal_ampAttack": 2000.0,
+        "opal_ampSustain": 0.9,
+        "opal_ampRelease": 6000.0
+      }
+    },
+    {
+      "id": "Obscura",
+      "parameters": {
+        "obscura_stiffness": 0.3,
+        "obscura_damping": 0.4,
+        "obscura_brightness": 0.6,
+        "obscura_filterCutoff": 5000.0,
+        "obscura_ampAttack": 3000.0,
+        "obscura_ampSustain": 0.8,
+        "obscura_ampRelease": 8000.0
+      }
+    }
+  ],
+  "coupling": [
+    {
+      "sourceSlot": 0,
+      "destSlot": 1,
+      "type": "WaveInject",
+      "intensity": 0.3,
+      "params": {
+        "injectBlend": 0.4
+      }
+    }
+  ],
+  "masterFX": {
+    "master_vibeAmount": -0.4,
+    "master_tiltAmount": -0.2,
+    "master_dopplerDist": 0.4,
+    "master_dopplerSpeed": 0.08,
+    "master_dopplerMix": 0.5,
+    "master_reverbSize": 0.95,
+    "master_reverbMix": 0.55,
+    "master_smearAmount": 0.4,
+    "master_smearGrainSize": 180.0,
+    "master_smearDensity": 0.7,
+    "master_smearMix": 0.45,
+    "master_modRate": 0.15,
+    "master_modDepth": 0.3,
+    "master_modMix": 0.4,
+    "master_modMode": 3,
+    "master_sculLowWidth": 0.0,
+    "master_sculMidWidth": 1.6,
+    "master_sculHighWidth": 2.0,
+    "master_sculMix": 0.8,
+    "master_pwidthAmount": 0.4,
+    "master_pwidthMix": 0.5,
+    "master_excDrive": 0.15,
+    "master_excFreq": 6000.0,
+    "master_excMix": 0.2
+  },
+  "macros": [
+    {
+      "label": "DISTANCE",
+      "targets": ["master_dopplerDist", "master_reverbMix", "master_smearAmount"],
+      "ranges": [0.5, 0.3, 0.3]
+    },
+    {
+      "label": "DISSOLVE",
+      "targets": ["master_smearAmount", "master_smearMix", "opal_grainSpray"],
+      "ranges": [0.4, 0.3, 0.2]
+    },
+    {
+      "label": "STRINGS",
+      "targets": ["obscura_stiffness", "obscura_brightness", "obscura_damping"],
+      "ranges": [0.4, 0.3, -0.2]
+    },
+    {
+      "label": "SHIMMER",
+      "targets": ["master_excMix", "master_tiltAmount", "opal_grainPitch"],
+      "ranges": [0.3, 0.4, 12.0]
+    }
+  ],
+  "variationAxis": {
+    "label": "Cosmic Distance",
+    "targets": ["master_dopplerDist", "master_smearAmount", "master_reverbSize"],
+    "minValues": [0.05, 0.1, 0.4],
+    "maxValues": [0.9, 0.8, 1.0]
+  },
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.65,
+    "movement": 0.7,
+    "density": 0.3,
+    "space": 0.95,
+    "aggression": 0.0
+  },
+  "extensions": []
+}

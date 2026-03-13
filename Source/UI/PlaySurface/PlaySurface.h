@@ -20,7 +20,7 @@ namespace PS {
     // Layout
     static constexpr int kDesktopW     = 1060;
     static constexpr int kDesktopH     = 344;
-    static constexpr int kHeaderH      = 24;
+    static constexpr int kHeaderH      = 32;  // WCAG 2.5.5: minimum 24px touch targets after padding
     static constexpr int kZone1W       = 480;
     static constexpr int kZone2W       = 200;
     static constexpr int kZone4W       = 100;
@@ -857,9 +857,9 @@ public:
         for (int i = 0; i < 3; ++i)
             modeButtons[i].setBounds(header.removeFromLeft(btnW).reduced(2));
         header.removeFromLeft(10);
-        octDownBtn.setBounds(header.removeFromLeft(24).reduced(2));
+        octDownBtn.setBounds(header.removeFromLeft(32).reduced(2));
         octLabel.setBounds(header.removeFromLeft(44).reduced(2));
-        octUpBtn.setBounds(header.removeFromLeft(24).reduced(2));
+        octUpBtn.setBounds(header.removeFromLeft(32).reduced(2));
 
         // Strip mode buttons at right of header
         for (int i = 3; i >= 0; --i)

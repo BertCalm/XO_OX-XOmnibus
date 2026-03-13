@@ -22,6 +22,10 @@ public:
           getSlotName(std::move(slotNameFn)),
           getSlotColor(std::move(slotColorFn))
     {
+        setTitle ("Coupling Matrix");
+        setDescription ("Visual editor for cross-engine modulation routes. "
+                        "Shows engine nodes with coupling arcs between them.");
+        setWantsKeyboardFocus (true);
     }
 
     void refresh()
@@ -79,7 +83,7 @@ public:
             }
             else
             {
-                g.setColour(juce::Colour(0xFF666666));
+                g.setColour(juce::Colour(0xFF999999));  // Raised from #666 for WCAG contrast on #1E1E1E
                 g.setFont(juce::Font(8.0f));
                 g.drawText("empty", cx - nodeRadius, cy - 5, nodeRadius * 2, 10,
                            juce::Justification::centred);
@@ -124,12 +128,12 @@ public:
                              dstPos.y - nodeRadius - arrowSize * 0.5f,
                              arrowSize, arrowSize);
 
-                // Type label at midpoint
+                // Type label at midpoint (WCAG: min 8pt for readability)
                 float midX = (srcPos.x + dstPos.x) * 0.5f;
                 float midY = (srcPos.y + dstPos.y) * 0.5f + yOff * 1.5f - nodeRadius;
-                g.setFont(juce::Font(7.0f));
+                g.setFont(juce::Font(8.0f).boldened());
                 g.drawText(couplingTypeShortLabel(route.type),
-                          (int)(midX - 20), (int)(midY - 5), 40, 10,
+                          (int)(midX - 24), (int)(midY - 6), 48, 12,
                           juce::Justification::centred);
             }
         }
@@ -140,8 +144,8 @@ public:
             for (const auto& r : *cachedRoutes)
                 if (r.active && r.amount >= 0.001f) ++activeCount;
 
-        g.setColour(juce::Colour(0xFF888888));
-        g.setFont(juce::Font(7.0f));
+        g.setColour(juce::Colour(0xFFAAAAAA));  // Raised for WCAG contrast on dark bg
+        g.setFont(juce::Font(8.0f));
         g.drawText(juce::String(activeCount) + " active route" + (activeCount != 1 ? "s" : ""),
                    getLocalBounds().removeFromBottom(14).toFloat(),
                    juce::Justification::centred);

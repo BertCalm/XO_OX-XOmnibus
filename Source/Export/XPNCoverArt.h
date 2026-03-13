@@ -173,6 +173,7 @@ private:
         if (s == "freq_bands")        { styleFreqBands(g, size, accent, rng); return; }
         if (s == "dense_blocks")      { styleDenseBlocks(g, size, accent, rng); return; }
         if (s == "particle_scatter")  { styleParticleScatter(g, size, accent, rng); return; }
+        if (s == "prism_fractal")    { stylePrismFractal(g, size, accent, rng); return; }
         // Fallback
         styleFreqBands(g, size, accent, rng);
     }
@@ -484,6 +485,97 @@ private:
 
             g.setColour(accent.withAlpha(brightness));
             g.fillEllipse(x - radius, y - radius, radius * 2, radius * 2);
+        }
+    }
+
+    //==========================================================================
+    // Style: Prism Fractal (OBLIQUE)
+    // Refractive prismatic geometry — angular shards with spectral color shifts.
+    //==========================================================================
+
+    static void stylePrismFractal(juce::Graphics& g, int size, juce::Colour accent,
+                                  std::mt19937& rng)
+    {
+        float cx = size * 0.5f, cy = size * 0.5f;
+
+        // Spectral palette derived from accent via hue rotation
+        float hue, sat, bri;
+        accent.getHSB(hue, sat, bri);
+
+        // Layer 1: Large prismatic shards radiating from center
+        for (int i = 0; i < 12; ++i)
+        {
+            float angle = (float)i / 12.0f * juce::MathConstants<float>::twoPi
+                        + randFloat(rng, -0.15f, 0.15f);
+            float length = randFloat(rng, size * 0.3f, size * 0.7f);
+            float spread = randFloat(rng, 0.08f, 0.25f);
+
+            // Each shard gets a hue-shifted variant of the accent
+            float shardHue = std::fmod(hue + (float)i / 12.0f * 0.4f, 1.0f);
+            auto shardColour = juce::Colour::fromHSV(shardHue, sat * 0.8f, bri, 1.0f);
+            float alpha = randFloat(rng, 0.12f, 0.35f);
+
+            juce::Path shard;
+            shard.startNewSubPath(cx, cy);
+            shard.lineTo(cx + std::cos(angle - spread) * length,
+                        cy + std::sin(angle - spread) * length);
+            shard.lineTo(cx + std::cos(angle + spread) * length * 0.85f,
+                        cy + std::sin(angle + spread) * length * 0.85f);
+            shard.closeSubPath();
+
+            g.setColour(shardColour.withAlpha(alpha));
+            g.fillPath(shard);
+
+            // Edge highlight
+            g.setColour(shardColour.brighter(0.3f).withAlpha(alpha * 0.6f));
+            g.strokePath(shard, juce::PathStrokeType(1.5f));
+        }
+
+        // Layer 2: Smaller refractive triangles scattered across the canvas
+        for (int i = 0; i < 40; ++i)
+        {
+            float x = randFloat(rng, 0.0f, (float)size);
+            float y = randFloat(rng, 0.0f, (float)size);
+            float triSize = randFloat(rng, size * 0.02f, size * 0.08f);
+            float rotation = randFloat(rng, 0.0f, juce::MathConstants<float>::twoPi);
+            float triHue = std::fmod(hue + randFloat(rng, -0.2f, 0.2f) + 1.0f, 1.0f);
+            float alpha = randFloat(rng, 0.08f, 0.3f);
+
+            juce::Path tri;
+            for (int v = 0; v < 3; ++v)
+            {
+                float a = rotation + (float)v * juce::MathConstants<float>::twoPi / 3.0f;
+                float px = x + std::cos(a) * triSize;
+                float py = y + std::sin(a) * triSize;
+                if (v == 0) tri.startNewSubPath(px, py);
+                else tri.lineTo(px, py);
+            }
+            tri.closeSubPath();
+
+            g.setColour(juce::Colour::fromHSV(triHue, sat, bri * 0.9f, 1.0f).withAlpha(alpha));
+            g.fillPath(tri);
+        }
+
+        // Layer 3: Spectral dispersion lines — light passing through a prism
+        for (int i = 0; i < 7; ++i)
+        {
+            float bandHue = std::fmod(hue + (float)i / 7.0f * 0.6f, 1.0f);
+            auto bandColour = juce::Colour::fromHSV(bandHue, 0.9f, 0.9f, 1.0f);
+            float yOffset = cy + (i - 3) * size * 0.04f + randFloat(rng, -10.0f, 10.0f);
+
+            juce::Path band;
+            band.startNewSubPath(0, yOffset + randFloat(rng, -20.0f, 20.0f));
+            for (int x = 0; x <= size; x += 40)
+            {
+                float wave = std::sin((float)x / size * juce::MathConstants<float>::pi * 3.0f
+                                     + (float)i * 0.8f) * size * 0.03f;
+                band.lineTo((float)x, yOffset + wave);
+            }
+
+            g.setColour(bandColour.withAlpha(randFloat(rng, 0.06f, 0.18f)));
+            g.strokePath(band, juce::PathStrokeType(randFloat(rng, 2.0f, 6.0f),
+                                                     juce::PathStrokeType::curved,
+                                                     juce::PathStrokeType::rounded));
         }
     }
 
