@@ -367,8 +367,8 @@ XOuïe gives duophonic texture — two-algorithm output that is harmonically ric
 ---
 
 *All engines reference the unified mythology in `Docs/xo_ox_aquatic_mythology.md`.*
-*Engines with full Phase 0 concept briefs: XOpal, XOcelot, XOrbital, XOverworld, XOstinato, XOpenSky, XOceanDeep, XOuïe.*
+*Every engine now has a full concept brief in `Docs/concepts/`. The aquatic refresh is complete.*
 
 ---
 
-*XO_OX Designs | Engine Identity Cards v1.0 | feliX + Oscar — the primordial coupling*
+*XO_OX Designs | Engine Identity Cards v1.1 | feliX + Oscar — the primordial coupling*
