@@ -652,10 +652,11 @@ public:
                 voice.currentFreq += (voice.targetFreq - voice.currentFreq) * voice.glideCoeff;
                 voice.currentFreq = flushDenormal (voice.currentFreq);
 
-                // Apply microtonal offset + arm pitch modulation + coupling pitch
+                // Apply microtonal offset + arm pitch modulation + coupling pitch + MPE pitch bend
                 float pitchCents = pShiftMicro + voice.microtonalOffset
                                  + armMods[ArmPitch] * 50.0f  // arm 3 modulates pitch +/-50 cents
-                                 + couplingPitchMod * 100.0f;
+                                 + couplingPitchMod * 100.0f
+                                 + voice.mpeExpression.pitchBendSemitones * 100.0f;  // MPE pitch bend in cents
                 float freqMod = voice.currentFreq * fastPow2 (pitchCents / 1200.0f);
 
                 // --- Envelopes ---
