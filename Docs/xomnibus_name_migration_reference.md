@@ -20,12 +20,12 @@ for preset compatibility.
 | SNAP | ODDFELIX | Snap | OddfeliX | OddfeliX (feliX the neon tetra) | `snap_` |
 | MORPH | ODDOSCAR | Morph | OddOscar | OddOscar (Oscar the axolotl) | `morph_` |
 | DUB | OVERDUB | Dub | Overdub | XOverdub | `dub_` |
-| DRIFT | ODYSSEY | Drift | Odyssey | XOdyssey | `odyssey_` |
+| DRIFT | ODYSSEY | Drift | Odyssey | XOdyssey | `drift_` |
 | BOB | OBLONG | Bob | Oblong | XOblong | `bob_` |
 | FAT | OBESE | Fat | Obese | XObese | `fat_` |
 | BITE | OVERBITE | Bite | Overbite | XOverbite (was XOpossum) | `poss_` |
-| — | ONSET | Onset | Onset | XOnset | `onset_` |
-| — | OVERWORLD | Overworld | Overworld | XOverworld | `overworld_` |
+| — | ONSET | Onset | Onset | XOnset | `perc_` |
+| — | OVERWORLD | Overworld | Overworld | XOverworld | `ow_` |
 
 ### Engines that did NOT change
 These were already O-prefix from birth:
@@ -68,6 +68,23 @@ saved states that reference old engine names.
 { "XOblong",     "Oblong"    }
 { "XOblongBob",  "Oblong"    }
 { "XObese",      "Obese"     }
+{ "XOnset",      "Onset"     }
+{ "XOrbital",    "Orbital"   }
+{ "XOrganon",    "Organon"   }
+{ "XOuroboros",  "Ouroboros" }
+{ "XOpal",       "Opal"      }
+{ "XOpossum",    "Overbite"  }
+{ "XOverbite",   "Overbite"  }
+{ "XObsidian",   "Obsidian"  }
+{ "XOrigami",    "Origami"   }
+{ "XOracle",     "Oracle"    }
+{ "XObscura",    "Obscura"   }
+{ "XOceanic",    "Oceanic"   }
+{ "XOptic",      "Optic"     }
+{ "XOblique",    "Oblique"   }
+{ "XOverworld",  "Overworld" }
+{ "XOrca",       "Orca"      }
+{ "XOctopus",    "Octopus"   }
 ```
 
 ---
@@ -91,5 +108,8 @@ saved states that reference old engine names.
 - `snap_` parameters belong to **OddfeliX** (not "Snap")
 - `fat_` parameters belong to **Obese** (not "Fat")
 - `poss_` parameters belong to **Overbite** (not "Bite" or "XOpossum")
+- `drift_` parameters belong to **Odyssey** (not `odyssey_` — the prefix predates the rename)
+- `perc_` parameters belong to **Onset** (not `onset_`)
+- `ow_` parameters belong to **Overworld** (not `overworld_`)
 - The word "dub" as a music genre (dub echo, dub space) is NOT an engine reference — don't change it
 - `bite_` as a parameter prefix in some early docs was a mistake — the actual frozen prefix is `poss_`
