@@ -136,11 +136,23 @@ target_sources(XOmnibus PRIVATE
     Source/Export/XPNCoverArt.h
     Source/Export/XPNExporter.h
 
+    # Core (MIDI Learn — shared across platforms)
+    Source/Core/MIDILearnManager.h
+
     # UI (Gallery Model)
     Source/UI/XOmnibusEditor.h
     Source/UI/PlaySurface/PlaySurface.h
     Source/UI/CouplingStrip/CouplingStripEditor.h
     Source/UI/OpticVisualizer/OpticVisualizer.h
+
+    # UI (Mobile — compiled on all platforms, gated by XO_MOBILE)
+    Source/UI/Mobile/MobileTouchHandler.h
+    Source/UI/Mobile/SensorManager.h
+    Source/UI/Mobile/HapticEngine.h
+    Source/UI/Mobile/MobileLayoutManager.h
+    Source/UI/Mobile/CPUMonitor.h
+    Source/UI/Mobile/MobilePlaySurface.h
+    Source/UI/Mobile/ParameterDrawer.h
 
     # Main processor
     Source/XOmnibusProcessor.h
