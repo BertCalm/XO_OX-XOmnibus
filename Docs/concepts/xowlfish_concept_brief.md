@@ -93,7 +93,7 @@ For XOwlfish, subharmonic synthesis means the engine generates frequencies that 
 | OBESE | Massive poly (weight, width) |
 | OVERBITE | Bass character (belly/bite duality) |
 | ORBITAL | Additive (partials going UP from fundamental) |
-| OCELOT | Ecosystem (multi-strata cross-feeding) |
+| OCELOT *(in progress)* | Ecosystem (multi-strata cross-feeding) |
 | OCEANIC | Paraphonic string ensemble + spectral FX |
 | ORGANON | Metabolic (self-evolving harmonic structures) |
 | **OWLFISH** | **Subharmonic mono (going DOWN, organism model)** |
@@ -207,7 +207,7 @@ The perceptual system. The owl's eyes don't create light — they amplify the fa
   - Threshold: -60dB to 0dB (can compress extremely quiet signals)
   - Attack: 0.1ms to 100ms
   - Release: 10ms to 1000ms
-  - Makeup gain: auto or manual
+  - Makeup gain: automatic (computed from ratio + threshold — no user parameter needed)
   - At extreme settings, this reveals micro-details in the subharmonic output that would normally be inaudible — the owlfish seeing individual photons
 - **Resonant lowpass filter:**
   - CytomicSVF-based (consistent with XOmnibus DSP library)
@@ -342,13 +342,19 @@ All parameter IDs use `owl_` prefix. Estimated total: ~50 parameters.
 | `owl_defense` | 0-1 | M3: DEFENSE macro |
 | `owl_pressure` | 0-1 | M4: PRESSURE macro |
 
+### Output
+| ID | Range | Description |
+|----|-------|-------------|
+| `owl_outputLevel` | 0-1 | Master output level |
+| `owl_outputPan` | -1 to 1 | Stereo pan position |
+
 ### Coupling
 | ID | Range | Description |
 |----|-------|-------------|
 | `owl_couplingLevel` | 0-1 | Coupling send level |
 | `owl_couplingBus` | 0-3 | Coupling bus assignment |
 
-**Total: 50 parameters** (3 voice + 14 oscillator + 7 dynamics + 5 granular + 5 armor + 4 reverb + 4 envelope + 4 macros + 2 coupling + 2 output = 50)
+**Total: 50 parameters** (3 voice + 14 oscillator + 7 dynamics + 5 granular + 5 armor + 4 reverb + 4 envelope + 4 macros + 2 output + 2 coupling = 50)
 
 ---
 
@@ -358,7 +364,7 @@ All parameter IDs use `owl_` prefix. Estimated total: ~50 parameters.
 |-------|-------|----------|----------|
 | M1 | DEPTH | `owl_subMix` + `owl_bodyLevel` + `owl_reverbDamp` | How deep is the creature. 0 = surface (fundamental only, bright filter, dry). 1 = bathypelagic (pure subharmonics, dark, massive reverb, heavy damping). The vertical axis of the ocean. |
 | M2 | FEEDING | `owl_grainDensity` + `owl_grainMix` + `owl_feedRate` | Metabolic activity. 0 = dormant (clean signal, no granular processing). 1 = feeding frenzy (dense micro-granular texture consuming everything, voracious appetite). |
-| M3 | DEFENSE | `owl_armorThreshold` + coupling amount when coupled | The stress response dial. In standalone: how sensitive is the armor trigger (low = triggers easily, high = only hardest strikes). Coupled: how much external signal enters the organism. |
+| M3 | DEFENSE | `owl_armorThreshold` + `owl_filterReso` + coupling amount when coupled | The stress response dial. Controls armor sensitivity AND filter resonance (the creature tensing up). 0 = relaxed (high armor threshold, low resonance, smooth). 1 = maximum alert (armor triggers on lightest touch, high resonance = tense, singing filter, full coupling). Always audible via filter resonance even when playing softly. |
 | M4 | PRESSURE | `owl_compRatio` + `owl_filterCutoff` + `owl_reverbSize` | Atmospheric pressure. 0 = surface (no compression, open filter, small reverb). 1 = crushing depth (extreme compression pulling everything into audibility, closed filter, infinite reverb). 300 atmospheres rendered as parameters. |
 
 All 4 macros produce audible, significant change at every point in their range in every preset.
@@ -376,6 +382,8 @@ All 4 macros produce audible, significant change at every point in their range i
 | `AmpToFilter` | Source amplitude drives Owl Optics filter cutoff | Drum hits open the creature's eyes — rhythmic brightness from darkness. |
 | `RhythmToBlend` | Source rhythm pattern drives sub/fundamental mix | External rhythm shifts between surface and deep — the creature dives and surfaces with the beat. |
 | `EnvToDecay` | Source envelope controls armor decay time | External dynamics control how long shed armor persists — cross-engine stress response. |
+| `EnvToMorph` | Source envelope drives Mixtur blend (`owl_mixtur`) | External dynamics control subharmonic interaction — crescendos in other engines make the creature's voice growl and thicken. |
+| `LFOToPitch` | Source LFO modulates fundamental pitch (subharmonics follow) | Cross-engine vibrato. Subharmonic ratios are preserved because they track the fundamental — the whole creature wobbles together. |
 
 **Primary coupling:** `AudioToWavetable` — feeding other engines' audio into the micro-granular Diet stage. ORBITAL's bright additive partials consumed as prey and re-synthesized as deep, granular texture. OCELOT's ecosystem output eaten and digested. ODDFELIX's FM percussion ground into copepod-sized grains. The owlfish is the apex predator of the coupling matrix.
 
