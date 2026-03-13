@@ -14,12 +14,12 @@ namespace xowlfish {
 //   2. Call updateFrom() at the top of each processBlock, before any DSP
 struct OwlfishParamSnapshot
 {
-    // -- Solitary Genus --
+    // ── Solitary Genus ──────────────────────────────
     float portamento   = 0.1f;
     int   legatoMode   = 1;     // 1 = Legato (default)
     float morphGlide   = 0.5f;
 
-    // -- Abyss Habitat --
+    // ── Abyss Habitat ──────────────────────────────
     float subMix       = 0.5f;
     int   subDiv1      = 1;     // 1:2
     int   subDiv2      = 2;     // 1:3
@@ -35,7 +35,7 @@ struct OwlfishParamSnapshot
     float bodyFreq     = 40.0f;
     float bodyLevel    = 0.3f;
 
-    // -- Owl Optics --
+    // ── Owl Optics ─────────────────────────────────
     float compRatio     = 0.4f;
     float compThreshold = 0.5f;
     float compAttack    = 0.2f;
@@ -44,43 +44,43 @@ struct OwlfishParamSnapshot
     float filterReso    = 0.3f;
     float filterTrack   = 0.5f;
 
-    // -- Diet --
+    // ── Diet ────────────────────────────────────────
     float grainSize    = 0.3f;
     float grainDensity = 0.5f;
     float grainPitch   = 0.5f;
     float grainMix     = 0.0f;
     float feedRate     = 0.3f;
 
-    // -- Sacrificial Armor --
+    // ── Sacrificial Armor ──────────────────────────
     float armorThreshold = 0.5f;
     float armorDecay     = 0.4f;
     float armorScatter   = 0.2f;
     float armorDuck      = 0.3f;
     float armorDelay     = 0.2f;
 
-    // -- Abyss Reverb --
+    // ── Abyss Reverb ───────────────────────────────
     float reverbSize     = 0.6f;
     float reverbDamp     = 0.4f;
     float reverbPreDelay = 0.1f;
     float reverbMix      = 0.2f;
 
-    // -- Amp Envelope --
+    // ── Amp Envelope ───────────────────────────────
     float ampAttack    = 10.0f;
     float ampDecay     = 300.0f;
     float ampSustain   = 0.8f;
     float ampRelease   = 600.0f;
 
-    // -- Macros --
+    // ── Macros ─────────────────────────────────────
     float macroDepth    = 0.0f;
     float macroFeeding  = 0.0f;
     float macroDefense  = 0.0f;
     float macroPressure = 0.0f;
 
-    // -- Output --
+    // ── Output ─────────────────────────────────────
     float outputLevel  = 0.8f;
     float outputPan    = 0.0f;
 
-    // -- Coupling --
+    // ── Coupling ───────────────────────────────────
     float couplingLevel = 0.0f;
     int   couplingBus   = 0;
 
@@ -213,10 +213,57 @@ struct OwlfishParamSnapshot
 
         couplingLevel  = pCouplingLevel->load();
         couplingBus    = static_cast<int>(pCouplingBus->load());
+
+        // ── Macro Routing ─────────────────────────────────
+        // Macros add bipolar modulation to their target parameters.
+        // Each macro maps 0-1 to a ±range offset on its targets.
+        // M1 DEPTH:    subMix ↑, bodyLevel ↑, reverbDamp ↑
+        // M2 FEEDING:  grainDensity ↑, grainMix ↑, feedRate ↑
+        // M3 DEFENSE:  armorThreshold ↓ (easier trigger), filterReso ↑
+        // M4 PRESSURE: compRatio ↑, filterCutoff ↓ (darker), reverbSize ↑
+        applyMacros();
+    }
+
+    /// Clamp a value to [0, 1].
+    static float clamp01 (float x) { return x < 0.0f ? 0.0f : (x > 1.0f ? 1.0f : x); }
+
+    /// Apply macro modulation to target parameters after raw load.
+    void applyMacros()
+    {
+        // M1 DEPTH — deeper subharmonic presence
+        if (macroDepth > 0.001f)
+        {
+            subMix    = clamp01 (subMix    + macroDepth * 0.4f);
+            bodyLevel = clamp01 (bodyLevel + macroDepth * 0.5f);
+            reverbDamp = clamp01 (reverbDamp + macroDepth * 0.3f);
+        }
+
+        // M2 FEEDING — activate predatory grain processing
+        if (macroFeeding > 0.001f)
+        {
+            grainDensity = clamp01 (grainDensity + macroFeeding * 0.6f);
+            grainMix     = clamp01 (grainMix     + macroFeeding * 0.7f);
+            feedRate     = clamp01 (feedRate      + macroFeeding * 0.5f);
+        }
+
+        // M3 DEFENSE — lower armor threshold + increase filter resonance
+        if (macroDefense > 0.001f)
+        {
+            armorThreshold = clamp01 (armorThreshold - macroDefense * 0.5f);
+            filterReso     = clamp01 (filterReso     + macroDefense * 0.4f);
+        }
+
+        // M4 PRESSURE — compress harder, darken filter, expand space
+        if (macroPressure > 0.001f)
+        {
+            compRatio    = clamp01 (compRatio    + macroPressure * 0.5f);
+            filterCutoff = clamp01 (filterCutoff - macroPressure * 0.3f);
+            reverbSize   = clamp01 (reverbSize   + macroPressure * 0.4f);
+        }
     }
 
 private:
-    // -- Cached atomic pointers (set once by attachTo) --
+    // ── Cached atomic pointers (set once by attachTo) ──
     std::atomic<float>* pPortamento     = nullptr;
     std::atomic<float>* pLegatoMode     = nullptr;
     std::atomic<float>* pMorphGlide     = nullptr;
