@@ -5,7 +5,97 @@
 #include "../Core/MegaCouplingMatrix.h"
 #include "XPNCoverArt.h"
 
+#include <atomic>
+#include <cmath>
+#include <thread>
+#include <mutex>
+#include <future>
+
 namespace xomnibus {
+
+//==============================================================================
+// SoundShapeClassifier — Analyzes preset DNA + engines to determine optimal
+// render settings per the Sound Shape system (xpn_sound_shape_rendering.md).
+//
+// 6 shapes: Transient, Sustained, Evolving, Bass, Texture, Rhythmic
+// Each shape maps to specific render durations, note strategies, and vel layers.
+//
+struct SoundShape {
+    enum class Type { Transient, Sustained, Evolving, Bass, Texture, Rhythmic };
+
+    Type  type           = Type::Sustained;
+    float holdSeconds    = 4.0f;
+    float tailSeconds    = 2.0f;
+    int   velocityLayers = 1;
+    const char* label    = "Sustained";
+};
+
+class SoundShapeClassifier {
+public:
+    static SoundShape classify(const PresetData& preset)
+    {
+        SoundShape shape;
+        const auto& dna = preset.dna;
+
+        // Check for ONSET engine → always Rhythmic
+        for (const auto& eng : preset.engines)
+        {
+            auto upper = eng.toUpperCase();
+            if (upper == "ONSET" || upper == "XONSET")
+                return rhythmic();
+        }
+
+        // High aggression + low space + high density → Transient
+        if (dna.aggression > 0.6f && dna.space < 0.3f && dna.density > 0.5f)
+            return transient();
+
+        // Low brightness + high warmth + low movement → Bass
+        if (dna.brightness < 0.35f && dna.warmth > 0.5f && dna.movement < 0.4f)
+            return bass();
+
+        // High movement + high space → Evolving
+        if (dna.movement > 0.65f && dna.space > 0.5f)
+            return evolving();
+
+        // High density + low movement → Texture
+        if (dna.density > 0.7f && dna.movement < 0.35f)
+            return texture();
+
+        // Default → Sustained
+        return sustained();
+    }
+
+private:
+    static SoundShape transient()
+    {
+        return { SoundShape::Type::Transient, 1.0f, 0.5f, 3, "Transient" };
+    }
+
+    static SoundShape sustained()
+    {
+        return { SoundShape::Type::Sustained, 4.0f, 2.0f, 1, "Sustained" };
+    }
+
+    static SoundShape evolving()
+    {
+        return { SoundShape::Type::Evolving, 6.0f, 3.0f, 1, "Evolving" };
+    }
+
+    static SoundShape bass()
+    {
+        return { SoundShape::Type::Bass, 3.0f, 1.5f, 2, "Bass" };
+    }
+
+    static SoundShape texture()
+    {
+        return { SoundShape::Type::Texture, 5.0f, 2.5f, 1, "Texture" };
+    }
+
+    static SoundShape rhythmic()
+    {
+        return { SoundShape::Type::Rhythmic, 0.5f, 0.3f, 3, "Rhythmic" };
+    }
+};
 
 //==============================================================================
 // XPNExporter — Renders XOmnibus presets to WAV samples and packages them
@@ -33,6 +123,7 @@ public:
         float  tailSeconds   = 2.0f;           // after noteOff
         float  normCeiling   = -0.3f;          // dBFS normalization target
         int    velocityLayers = 1;             // 1-3
+        bool   useSoundShapes = false;         // auto-adjust per preset via SoundShapeClassifier
 
         // Note sampling strategy
         enum class NoteStrategy { EveryMinor3rd, Chromatic, EveryFifth, OctavesOnly };
@@ -60,11 +151,42 @@ public:
         int    currentNote   = 0;
         int    totalNotes    = 0;
         juce::String presetName;
-        float  overallProgress = 0.0f; // 0-1
+        juce::String soundShapeLabel;          // Sound Shape classification
+        float  overallProgress = 0.0f;         // 0-1
         bool   cancelled = false;
     };
 
-    using ProgressCallback = std::function<void(const Progress&)>;
+    using ProgressCallback = std::function<void(Progress&)>;
+
+    //==========================================================================
+    // Size estimation — call before export to inform the user
+    //==========================================================================
+
+    struct SizeEstimate {
+        int64_t totalBytes       = 0;
+        int     totalWavFiles    = 0;
+        int     notesPerPreset   = 0;
+        int     samplesPerNote   = 0;
+        double  durationPerNote  = 0.0;        // seconds
+    };
+
+    static SizeEstimate estimateExportSize(const RenderSettings& settings, int presetCount)
+    {
+        SizeEstimate est;
+        auto notes = getNotesToRender(settings);
+        est.notesPerPreset = (int)notes.size();
+        est.totalWavFiles = est.notesPerPreset * settings.velocityLayers * presetCount;
+        est.durationPerNote = (double)(settings.renderSeconds + settings.tailSeconds);
+        est.samplesPerNote = (int)(est.durationPerNote * settings.sampleRate);
+
+        // WAV size: header(44) + samples * channels * bytesPerSample
+        int bytesPerSample = settings.bitDepth / 8;
+        int64_t wavBodySize = (int64_t)est.samplesPerNote * 2 * bytesPerSample;
+        int64_t wavFileSize = 44 + wavBodySize;
+
+        est.totalBytes = wavFileSize * est.totalWavFiles;
+        return est;
+    }
 
     //==========================================================================
     // Export entry point — call from worker thread
@@ -95,76 +217,224 @@ public:
             return result;
         }
 
-        // Create output directory structure
-        auto bundleDir = config.outputDir.getChildFile(config.name.replace(" ", "_"));
-        bundleDir.createDirectory();
-        auto keyGroupDir = bundleDir.getChildFile("Keygroups");
-        keyGroupDir.createDirectory();
+        // Atomic export: write to temp dir first, rename on success
+        auto finalBundleDir = config.outputDir.getChildFile(config.name.replace(" ", "_"));
+        auto tempBundleDir = config.outputDir.getChildFile(
+            "." + config.name.replace(" ", "_") + "_tmp_" +
+            juce::String(juce::Time::currentTimeMillis()));
 
-        for (int pi = 0; pi < (int)presets.size(); ++pi)
+        if (!tempBundleDir.createDirectory())
+        {
+            result.errorMessage = "Failed to create temp directory: " + tempBundleDir.getFullPathName();
+            return result;
+        }
+
+        auto keyGroupDir = tempBundleDir.getChildFile("Keygroups");
+        if (!keyGroupDir.createDirectory())
+        {
+            tempBundleDir.deleteRecursively();
+            result.errorMessage = "Failed to create Keygroups directory";
+            return result;
+        }
+
+        bool cancelled = false;
+
+        for (int pi = 0; pi < (int)presets.size() && !cancelled; ++pi)
         {
             const auto& preset = presets[(size_t)pi];
             progress.currentPreset = pi + 1;
             progress.presetName = preset.name;
-            progress.overallProgress = (float)pi / (float)presets.size();
 
-            if (progressCb)
+            // Sound Shape classification
+            RenderSettings effectiveSettings = settings;
+            if (settings.useSoundShapes)
             {
-                progressCb(progress);
-                if (progress.cancelled) break;
+                auto shape = SoundShapeClassifier::classify(preset);
+                effectiveSettings.renderSeconds = shape.holdSeconds;
+                effectiveSettings.tailSeconds = shape.tailSeconds;
+                effectiveSettings.velocityLayers = shape.velocityLayers;
+                progress.soundShapeLabel = shape.label;
             }
 
             // Render preset to WAV files
             auto presetDir = keyGroupDir.getChildFile(sanitizeFilename(preset.name));
-            presetDir.createDirectory();
-
-            auto notes = getNotesToRender(settings);
-            progress.totalNotes = (int)notes.size() * settings.velocityLayers;
-            int noteIdx = 0;
-
-            for (int note : notes)
+            if (!presetDir.createDirectory())
             {
-                for (int vel = 0; vel < settings.velocityLayers; ++vel)
+                result.errorMessage = "Failed to create preset directory: " + preset.name;
+                tempBundleDir.deleteRecursively();
+                return result;
+            }
+
+            auto notes = getNotesToRender(effectiveSettings);
+            int totalNotesForPreset = (int)notes.size() * effectiveSettings.velocityLayers;
+            progress.totalNotes = totalNotesForPreset;
+
+            // Build work items for parallel rendering
+            struct RenderJob {
+                int note;
+                int velLayer;
+                float velocity;
+                juce::File wavFile;
+            };
+            std::vector<RenderJob> jobs;
+            jobs.reserve((size_t)totalNotesForPreset);
+
+            for (int ni = 0; ni < (int)notes.size(); ++ni)
+            {
+                int note = notes[(size_t)ni];
+                for (int vel = 0; vel < effectiveSettings.velocityLayers; ++vel)
                 {
-                    progress.currentNote = ++noteIdx;
-                    float velocity = velocityForLayer(vel, settings.velocityLayers);
-
-                    auto wavFile = presetDir.getChildFile(
-                        wavFilename(preset.name, note, vel));
-
-                    renderNoteToWav(preset, note, velocity, settings, wavFile);
-                    result.samplesRendered++;
-                    result.totalSizeBytes += wavFile.getSize();
+                    jobs.push_back({
+                        note, vel,
+                        velocityForLayer(vel, effectiveSettings.velocityLayers),
+                        presetDir.getChildFile(wavFilename(preset.name, note, vel))
+                    });
                 }
             }
 
-            // Generate XPM keygroup program
-            auto xpmFile = keyGroupDir.getChildFile(sanitizeFilename(preset.name) + ".xpm");
-            writeXPM(xpmFile, preset, notes, settings);
+            // Parallel rendering with thread pool
+            unsigned int numWorkers = juce::jmax(1u, std::thread::hardware_concurrency() - 1);
+            std::atomic<int> completedJobs { 0 };
+            std::atomic<bool> renderError { false };
+            juce::String firstError;
+            std::mutex errorMutex;
 
-            result.presetsExported++;
+            auto renderBatch = [&](size_t startIdx, size_t endIdx)
+            {
+                for (size_t j = startIdx; j < endIdx && !cancelled && !renderError.load(); ++j)
+                {
+                    const auto& job = jobs[j];
+                    auto wavResult = renderNoteToWav(preset, job.note, job.velocity,
+                                                     effectiveSettings, job.wavFile);
+                    if (!wavResult.success)
+                    {
+                        std::lock_guard<std::mutex> lock(errorMutex);
+                        if (!renderError.load())
+                        {
+                            renderError.store(true);
+                            firstError = wavResult.error;
+                        }
+                        return;
+                    }
+
+                    int done = completedJobs.fetch_add(1) + 1;
+
+                    // Progress update from first thread only (avoid lock contention)
+                    if (progressCb && (done % juce::jmax(1, (int)numWorkers) == 0 || done == (int)jobs.size()))
+                    {
+                        progress.currentNote = done;
+                        float presetFrac = (float)pi / (float)presets.size();
+                        float noteFrac = (float)done / (float)totalNotesForPreset;
+                        progress.overallProgress = presetFrac + noteFrac / (float)presets.size();
+                        progressCb(progress);
+                        if (progress.cancelled)
+                            cancelled = true;
+                    }
+                }
+            };
+
+            if (numWorkers <= 1 || jobs.size() <= 4)
+            {
+                // Small batch: run sequentially
+                renderBatch(0, jobs.size());
+            }
+            else
+            {
+                // Partition jobs across worker threads
+                std::vector<std::future<void>> futures;
+                size_t chunkSize = (jobs.size() + numWorkers - 1) / numWorkers;
+
+                for (unsigned int w = 0; w < numWorkers && w * chunkSize < jobs.size(); ++w)
+                {
+                    size_t start = w * chunkSize;
+                    size_t end = juce::jmin(start + chunkSize, jobs.size());
+                    futures.push_back(std::async(std::launch::async, renderBatch, start, end));
+                }
+
+                for (auto& f : futures)
+                    f.get();
+            }
+
+            if (renderError.load())
+            {
+                result.errorMessage = "WAV render failed for " + preset.name + ": " + firstError;
+                tempBundleDir.deleteRecursively();
+                return result;
+            }
+
+            // Tally results
+            for (const auto& job : jobs)
+            {
+                result.samplesRendered++;
+                result.totalSizeBytes += job.wavFile.getSize();
+            }
+
+            if (!cancelled)
+            {
+                // Generate XPM keygroup program
+                auto xpmFile = keyGroupDir.getChildFile(sanitizeFilename(preset.name) + ".xpm");
+                auto xpmResult = writeXPM(xpmFile, preset, notes, effectiveSettings);
+                if (!xpmResult.success)
+                {
+                    result.errorMessage = "XPM write failed for " + preset.name + ": " + xpmResult.error;
+                    tempBundleDir.deleteRecursively();
+                    return result;
+                }
+
+                result.presetsExported++;
+            }
+        }
+
+        if (cancelled)
+        {
+            tempBundleDir.deleteRecursively();
+            result.errorMessage = "Export cancelled by user";
+            return result;
         }
 
         // Generate cover art (procedural, engine-specific)
         auto coverEngine = config.coverEngine.isNotEmpty()
             ? config.coverEngine
-            : (presets.empty() ? juce::String("DEFAULT")
-               : (presets[0].engines.empty() ? juce::String("DEFAULT")
-                  : presets[0].engines[0]));
+            : (presets[0].engines.empty() ? juce::String("DEFAULT")
+               : presets[0].engines[0]);
 
         auto coverResult = XPNCoverArt::generate(
-            coverEngine, config.name, bundleDir,
+            coverEngine, config.name, tempBundleDir,
             result.presetsExported, config.version, config.coverSeed);
 
         // Copy 1000x1000 as Preview.png (MPC convention)
         if (coverResult.success)
-            coverResult.cover1000.copyFileTo(bundleDir.getChildFile("Preview.png"));
+            coverResult.cover1000.copyFileTo(tempBundleDir.getChildFile("Preview.png"));
 
         // Write bundle manifest
-        writeManifest(bundleDir, config, result.presetsExported);
+        auto manifestResult = writeManifest(tempBundleDir, config, result.presetsExported);
+        if (!manifestResult.success)
+        {
+            result.errorMessage = "Manifest write failed: " + manifestResult.error;
+            tempBundleDir.deleteRecursively();
+            return result;
+        }
 
-        result.success = !progress.cancelled;
-        result.outputFile = bundleDir;
+        // Atomic swap: remove old bundle dir if it exists, rename temp to final
+        if (finalBundleDir.exists())
+            finalBundleDir.deleteRecursively();
+
+        if (!tempBundleDir.moveFileTo(finalBundleDir))
+        {
+            // Fallback: if rename fails (e.g., cross-device), try copy
+            if (tempBundleDir.copyDirectoryTo(finalBundleDir))
+            {
+                tempBundleDir.deleteRecursively();
+            }
+            else
+            {
+                result.errorMessage = "Failed to finalize bundle directory";
+                return result;
+            }
+        }
+
+        result.success = true;
+        result.outputFile = finalBundleDir;
         return result;
     }
 
@@ -205,9 +475,9 @@ public:
         checkDNA(preset.dna.aggression,  "aggression");
 
         // Coupling validation
-        for (const auto& cp : preset.coupling)
+        for (const auto& cp : preset.couplingPairs)
         {
-            if (cp.amount < 0.0f || cp.amount > 1.0f)
+            if (cp.amount < -1.0f || cp.amount > 1.0f)
                 result.warnings.add("Coupling amount out of range: " + juce::String(cp.amount));
         }
 
@@ -247,6 +517,15 @@ private:
     static constexpr int  EMPTY_VEL_START = 0;
 
     //==========================================================================
+    // Internal result types for error propagation
+    //==========================================================================
+
+    struct IOResult {
+        bool success = true;
+        juce::String error;
+    };
+
+    //==========================================================================
     // Note strategy
     //==========================================================================
 
@@ -281,11 +560,35 @@ private:
     }
 
     //==========================================================================
+    // Normalization — peak-scan + gain to target ceiling
+    //==========================================================================
+
+    static void normalizeBuffer(juce::AudioBuffer<float>& buffer, float ceilingDb)
+    {
+        float peak = 0.0f;
+        for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
+        {
+            auto range = buffer.findMinMax(ch, 0, buffer.getNumSamples());
+            float chPeak = juce::jmax(std::abs(range.getStart()), std::abs(range.getEnd()));
+            if (chPeak > peak) peak = chPeak;
+        }
+
+        if (peak < 1e-8f) return; // silence, nothing to normalize
+
+        float targetGain = std::pow(10.0f, ceilingDb / 20.0f);
+        float gain = targetGain / peak;
+
+        // Only attenuate or boost to ceiling — never amplify silence
+        for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
+            buffer.applyGain(ch, 0, buffer.getNumSamples(), gain);
+    }
+
+    //==========================================================================
     // WAV rendering (offline, worker thread)
     //==========================================================================
 
-    void renderNoteToWav(const PresetData& /*preset*/, int note, float velocity,
-                         const RenderSettings& settings, const juce::File& outputFile)
+    IOResult renderNoteToWav(const PresetData& /*preset*/, int note, float velocity,
+                             const RenderSettings& settings, const juce::File& outputFile)
     {
         // Calculate total samples
         int totalSamples = (int)((settings.renderSeconds + settings.tailSeconds) * settings.sampleRate);
@@ -311,32 +614,41 @@ private:
         (void)velocity;
         (void)holdSamples;
 
+        // Apply normalization
+        normalizeBuffer(buffer, settings.normCeiling);
+
         // Write WAV
-        writeWav(outputFile, buffer, settings.sampleRate, settings.bitDepth);
+        return writeWav(outputFile, buffer, settings.sampleRate, settings.bitDepth);
     }
 
-    static void writeWav(const juce::File& file, const juce::AudioBuffer<float>& buffer,
-                         double sampleRate, int bitDepth)
+    static IOResult writeWav(const juce::File& file, const juce::AudioBuffer<float>& buffer,
+                             double sampleRate, int bitDepth)
     {
         file.deleteFile();
         auto stream = file.createOutputStream();
-        if (!stream) return;
+        if (!stream)
+            return { false, "Cannot create output stream: " + file.getFullPathName() };
 
         juce::WavAudioFormat wav;
         auto writer = std::unique_ptr<juce::AudioFormatWriter>(
             wav.createWriterFor(stream.release(), sampleRate,
                                (unsigned int)buffer.getNumChannels(),
                                bitDepth, {}, 0));
-        if (writer)
-            writer->writeFromAudioSampleBuffer(buffer, 0, buffer.getNumSamples());
+        if (!writer)
+            return { false, "Cannot create WAV writer for: " + file.getFullPathName() };
+
+        if (!writer->writeFromAudioSampleBuffer(buffer, 0, buffer.getNumSamples()))
+            return { false, "Failed to write audio data: " + file.getFullPathName() };
+
+        return { true, {} };
     }
 
     //==========================================================================
     // XPM generation (keygroup program XML)
     //==========================================================================
 
-    void writeXPM(const juce::File& file, const PresetData& preset,
-                  const std::vector<int>& notes, const RenderSettings& settings)
+    IOResult writeXPM(const juce::File& file, const PresetData& preset,
+                      const std::vector<int>& notes, const RenderSettings& settings)
     {
         juce::XmlElement root("Keygroup");
 
@@ -386,15 +698,18 @@ private:
             }
         }
 
-        root.writeTo(file);
+        if (!root.writeTo(file))
+            return { false, "Failed to write XPM: " + file.getFullPathName() };
+
+        return { true, {} };
     }
 
     //==========================================================================
     // Manifest
     //==========================================================================
 
-    static void writeManifest(const juce::File& bundleDir,
-                              const BundleConfig& config, int presetCount)
+    static IOResult writeManifest(const juce::File& bundleDir,
+                                  const BundleConfig& config, int presetCount)
     {
         juce::XmlElement manifest("Expansion");
         manifest.setAttribute("Name", config.name);
@@ -404,7 +719,11 @@ private:
         manifest.setAttribute("Description", config.description);
         manifest.setAttribute("PresetCount", presetCount);
 
-        manifest.writeTo(bundleDir.getChildFile("Manifest.xml"));
+        auto manifestFile = bundleDir.getChildFile("Manifest.xml");
+        if (!manifest.writeTo(manifestFile))
+            return { false, "Failed to write Manifest.xml" };
+
+        return { true, {} };
     }
 
     //==========================================================================

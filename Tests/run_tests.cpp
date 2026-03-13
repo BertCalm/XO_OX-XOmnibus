@@ -8,6 +8,7 @@
 #include "DSPTests/DSPStabilityTests.h"
 #include "CouplingTests/CouplingMatrixTests.h"
 #include "PresetTests/PresetRoundTripTests.h"
+#include "ExportTests/XPNExportTests.h"
 
 #include <juce_core/juce_core.h>
 #include <iostream>
@@ -27,6 +28,7 @@ int main()
     totalFailures += dsp_tests::runAll();
     totalFailures += coupling_tests::runAll();
     totalFailures += preset_tests::runAll();
+    totalFailures += export_tests::runAll();
 
     std::cout << "\n##################################################\n";
     if (totalFailures == 0)
