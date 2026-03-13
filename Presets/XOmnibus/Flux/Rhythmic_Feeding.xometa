@@ -32,10 +32,10 @@
   },
   "parameters": {
     "Onset": {
-      "onset_drumKit": 1,
-      "onset_level": 0.7,
-      "onset_attack": 0.001,
-      "onset_decay": 0.15
+      "perc_v1_decay": 0.15,
+      "perc_v1_tone": 0.5,
+      "perc_level": 0.7,
+      "perc_drive": 0.0
     },
     "Organon": {
       "organon_metabolicRate": 2.0,

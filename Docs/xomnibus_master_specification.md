@@ -204,12 +204,12 @@ Each engine prefixes its APVTS parameter IDs to avoid collisions:
 
 ```
 snap_filterCutoff      // ODDFELIX engine
-morph_wavePosition     // ODDOSCAR engine
-dub_sendAmount         // OVERDUB engine
-drift_journey          // ODYSSEY engine
-bob_curiosity          // OBLONG engine
+morph_morph            // ODDOSCAR engine
+dub_oscWave            // OVERDUB engine
+drift_oscA_mode        // ODYSSEY engine
+bob_fltCutoff          // OBLONG engine
 fat_mojo               // OBESE engine
-onset_blend            // ONSET engine
+perc_level             // ONSET engine
 ```
 
 **Detail:** `xo_mega_tool_engine_catalog.md`

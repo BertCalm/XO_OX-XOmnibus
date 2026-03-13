@@ -64,11 +64,11 @@ Rich, evolving pads with continuous morphing between Sine→Saw→Square→Noise
 ### Key Parameters
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
-| `morph_scanPos` | 0–1 | 0.2–0.6 | Wavetable morph position. 0=Sine, 0.33=Saw, 0.66=Square, 1=Noise |
+| `morph_morph` | 0–1 | 0.2–0.6 | Wavetable morph position. 0=Sine, 0.33=Saw, 0.66=Square, 1=Noise |
 | `morph_filterCutoff` | 20–20kHz | 2–6 kHz | Moog ladder filter cutoff |
 | `morph_filterReso` | 0–1 | 0.3–0.6 | Self-oscillates above 0.9 |
 | `morph_drift` | 0–1 | 0.1–0.3 | Perlin noise pitch drift. Analog warmth. |
-| `morph_subLevel` | 0–1 | 0.3–0.5 | Sub oscillator level (one octave below) |
+| `morph_sub` | 0–1 | 0.3–0.5 | Sub oscillator level (one octave below) |
 
 ### Coupling
 - **Sends:** Slow 0.3Hz LFO sine (ch2) — organic modulation source
@@ -127,7 +127,7 @@ The workhorse. A complete dub production engine: oscillator → filter → tape 
 ## 4. ODYSSEY (Odyssey)
 *Evolving pad synthesis with smooth random drift*
 
-**Accent:** Violet `#7B2D8B` | **Prefix:** `odyssey_` | **Voices:** 8
+**Accent:** Violet `#7B2D8B` | **Prefix:** `drift_` | **Voices:** 8
 
 ### What It Does
 Alive, breathing pads that never sit still. The Voyager-style drift engine adds smooth random walk to pitch and filter, making every note feel slightly different. Dual oscillators with detuning create wide, cinematic textures.
@@ -135,11 +135,11 @@ Alive, breathing pads that never sit still. The Voyager-style drift engine adds 
 ### Key Parameters
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
-| `odyssey_detune` | 0–50 cents | 8–15 | Oscillator detuning. Width control. |
-| `odyssey_drift` | 0–1 | 0.15–0.35 | Random walk amount. The "alive" factor. |
-| `odyssey_filterCutoff` | 20–20kHz | 1.5–5 kHz | LP filter cutoff |
-| `odyssey_attack` | 0.001–2s | 0.05–0.3 | Slow attacks for cinematic swells |
-| `odyssey_release` | 0.001–5s | 0.5–2 | Long release for pad tails |
+| `drift_oscA_detune` | 0–50 cents | 8–15 | Oscillator detuning. Width control. |
+| `drift_driftDepth` | 0–1 | 0.15–0.35 | Random walk amount. The "alive" factor. |
+| `drift_filterCutoff` | 20–20kHz | 1.5–5 kHz | LP filter cutoff |
+| `drift_attack` | 0.001–2s | 0.05–0.3 | Slow attacks for cinematic swells |
+| `drift_release` | 0.001–5s | 0.5–2 | Long release for pad tails |
 
 ### Coupling
 - **Sends:** Filter envelope (ch2) — good for modulating other engines
@@ -171,8 +171,8 @@ Quirky, harmonically rich sounds built on a "curiosity" parameter that introduce
 |-----------|-------|------------|-------------|
 | `bob_fltCutoff` | 20–20kHz | 1–4 kHz | Main filter cutoff |
 | `bob_fltReso` | 0–1 | 0.3–0.6 | Resonance — self-oscillates at high values |
-| `bob_curiosity` | 0–1 | 0.2–0.5 | Harmonic unpredictability. Higher = weirder. |
-| `bob_drift` | 0–1 | 0.1–0.2 | Per-oscillator analog instability |
+| `bob_curAmount` | 0–1 | 0.2–0.5 | Curiosity amount. Harmonic unpredictability. Higher = weirder. |
+| `bob_oscA_drift` | 0–1 | 0.1–0.2 | Per-oscillator analog instability |
 
 ### Coupling
 - **Sends:** Stereo audio (ch0/1)
@@ -203,9 +203,9 @@ Massive. 13 oscillators per voice (1 sub + 4 groups of 3 octave variants). ZDF l
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
 | `fat_satDrive` | 0–1 | 0.3–0.7 | Saturation amount. Subtle warmth to aggressive crunch. |
-| `fat_filterCutoff` | 20–20kHz | 800–4000 | ZDF ladder filter |
-| `fat_filterReso` | 0–1 | 0.3–0.6 | Resonance with smooth self-oscillation |
-| `fat_unisonSpread` | 0–1 | 0.3–0.6 | Detune spread across 13 oscillators |
+| `fat_fltCutoff` | 20–20kHz | 800–4000 | ZDF ladder filter |
+| `fat_fltReso` | 0–1 | 0.3–0.6 | Resonance with smooth self-oscillation |
+| `fat_stereoWidth` | 0–1 | 0.3–0.6 | Stereo spread across oscillator stack |
 | `fat_mojo` | 0–1 | 0.2–0.4 | The Mojo system — adds analog character |
 
 ### Coupling
@@ -236,10 +236,10 @@ The most parameter-rich engine (122 params). Dual oscillators with formant reson
 ### Key Parameters
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
-| `poss_biteDepth` | 0–1 | 0.3–0.7 | Formant intensity. Higher = more vocal character. |
-| `poss_formantMode` | vowels | A/E/I | Which vowel shape the formant filter targets |
-| `poss_oscAWave` | multiple | — | Primary oscillator waveform |
-| `poss_modDepth` | 0–1 | 0.2–0.5 | Modulation matrix depth |
+| `poss_oscAWaveform` | multiple | — | Primary oscillator waveform |
+| `poss_oscAShape` | 0–1 | 0.3–0.7 | Oscillator A waveshape. Higher = more harmonic character. |
+| `poss_oscMix` | 0–1 | 0.3–0.6 | Balance between Osc A and Osc B |
+| `poss_modEnvAmount` | 0–1 | 0.2–0.5 | Modulation envelope depth |
 
 ### Coupling
 - **Sends:** Stereo audio (ch0/1)
@@ -261,7 +261,7 @@ The most parameter-rich engine (122 params). Dual oscillators with formant reson
 ## 8. ONSET (Onset)
 *Percussion and drum synthesis*
 
-**Accent:** Electric Blue `#0066FF` | **Prefix:** `onset_` | **Voices:** 8
+**Accent:** Electric Blue `#0066FF` | **Prefix:** `perc_` | **Voices:** 8
 
 ### What It Does
 Purpose-built drum synthesizer with multiple envelope shapes (AD, AHD, ADSR) and noise-based excitation. Designed for electronic percussion from crisp hi-hats to booming kicks.
@@ -269,10 +269,10 @@ Purpose-built drum synthesizer with multiple envelope shapes (AD, AHD, ADSR) and
 ### Key Parameters
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
-| `onset_noiseLevel` | 0–1 | 0.3–0.6 | Noise component. Higher = more hi-hat/snare character. |
-| `onset_envShape` | AD/AHD/ADSR | AD | Envelope type. AD for percussion, ADSR for tonal. |
-| `onset_pitch` | Hz | 60–200 | Base pitch. Lower = kick, higher = tom/conga. |
-| `onset_decay` | ms | 50–300 | Envelope decay. Tight for clicks, longer for toms. |
+| `perc_level` | 0–1 | 0.6–0.9 | Master percussion level |
+| `perc_drive` | 0–1 | 0.2–0.5 | Saturation drive. Adds crunch and punch. |
+| `perc_masterTone` | 0–1 | 0.3–0.7 | Global tone control. Lower = darker, higher = brighter. |
+| `perc_macro_machine` | 0–1 | varies | Machine macro — morphs percussion character. |
 
 ### Coupling
 - **Sends:** Stereo audio (ch0/1)
@@ -294,7 +294,7 @@ Purpose-built drum synthesizer with multiple envelope shapes (AD, AHD, ADSR) and
 ## 9. OVERWORLD (Overworld)
 *Chip synthesis — NES/Genesis/SNES/GameBoy*
 
-**Accent:** Neon Green `#39FF14` | **Prefix:** `era_` | **Voices:** 8
+**Accent:** Neon Green `#39FF14` | **Prefix:** `ow_` | **Voices:** 8
 
 ### What It Does
 A time machine for video game sound. 6 chip engines (NES, FM, SNES, GameBoy, PCE, Neo Geo) with ERA triangle-pad blending between 3 engines simultaneously. Bit crusher, glitch engine, and FIR echo add authentic retro processing.
@@ -302,10 +302,10 @@ A time machine for video game sound. 6 chip engines (NES, FM, SNES, GameBoy, PCE
 ### Key Parameters
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
-| `era_engineA/B/C` | chip select | NES/FM/SNES | Which chip engines sit at the triangle vertices |
-| `era_blendX/Y` | 0–1 | varies | Barycentric position on the ERA triangle pad |
-| `era_bitDepth` | 1–16 bits | 4–8 | Bit crusher depth. Lower = crunchier. |
-| `era_glitchRate` | 0–1 | 0.1–0.3 | Glitch engine intensity |
+| `ow_era` | 0–1 | varies | ERA triangle pad X position — blends between 3 chip engines |
+| `ow_eraY` | 0–1 | varies | ERA triangle pad Y position — barycentric blend coordinate |
+| `ow_bitCrush` | 1–16 bits | 4–8 | Bit crusher depth. Lower = crunchier. |
+| `ow_glitchRate` | 0–1 | 0.1–0.3 | Glitch engine intensity |
 
 ### Coupling
 - **Sends:** Chip synthesis output
@@ -335,8 +335,8 @@ A time machine for video game sound. 6 chip engines (NES, FM, SNES, GameBoy, PCE
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
 | `opal_grainSize` | 1–500 ms | 20–80 | Individual grain length. Shorter = more granular texture. |
-| `opal_grainDensity` | 1–32 | 8–16 | Grains per cloud. Higher = denser, more continuous. |
-| `opal_positionScatter` | 0–1 | 0.1–0.4 | Randomize grain read position. Higher = more chaotic. |
+| `opal_density` | 1–32 | 8–16 | Grains per cloud. Higher = denser, more continuous. |
+| `opal_posScatter` | 0–1 | 0.1–0.4 | Randomize grain read position. Higher = more chaotic. |
 | `opal_pitchScatter` | 0–24 st | 2–7 | Random pitch offset per grain. Creates shimmer. |
 | `opal_freeze` | on/off | — | Freeze current grain buffer. Infinite sustain. |
 | `opal_panScatter` | 0–1 | 0.3–0.6 | Stereo spread of grains. Wide = immersive. |
@@ -361,7 +361,7 @@ A time machine for video game sound. 6 chip engines (NES, FM, SNES, GameBoy, PCE
 ## 11. ORBITAL (Orbital)
 *64-partial additive synthesis with formant shaping*
 
-**Accent:** Warm Red `#FF6B6B` | **Prefix:** `orbital_` | **Voices:** 6
+**Accent:** Warm Red `#FF6B6B` | **Prefix:** `orb_` | **Voices:** 6
 
 ### What It Does
 Pure additive synthesis: 64 harmonic partials per voice, each with independent amplitude. Formant filter shapes the partial envelope with spectral tilt and vowel modes. Clean, precise, and endlessly sculptable.
@@ -369,10 +369,10 @@ Pure additive synthesis: 64 harmonic partials per voice, each with independent a
 ### Key Parameters
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
-| `orbital_partialTilt` | -1 to +1 | -0.3 to +0.3 | Spectral tilt. Negative = dark, positive = bright. |
-| `orbital_oddEven` | 0–1 | 0.5 | Balance between odd and even harmonics |
-| `orbital_formantMode` | tilt/vowels | — | Spectral shaping mode |
-| `orbital_partialCount` | 1–64 | 16–48 | How many partials are active |
+| `orb_brightness` | 0–1 | 0.5–0.8 | Spectral brightness. Higher = more upper partials. |
+| `orb_oddEven` | 0–1 | 0.5 | Balance between odd and even harmonics |
+| `orb_formantShape` | Off/A/E/I/O/U | — | Spectral shaping mode (vowel formants) |
+| `orb_inharm` | 0–1 | 0.0–0.3 | Inharmonicity. Makes partials non-integer → bells. |
 
 ### Coupling
 - **Sends:** Stereo audio (ch0/1)
@@ -402,10 +402,10 @@ A 32-mode resonator network that feeds back into itself. Shannon entropy analysi
 ### Key Parameters
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
-| `organon_entropy` | 0–1 | 0.3–0.6 | How much entropy analysis affects modal behavior |
-| `organon_modeSpread` | 0–1 | 0.4–0.7 | Frequency spread across 32 modes |
-| `organon_feedback` | 0–1 | 0.3–0.6 | Self-feeding intensity. Higher = more alive. |
-| `organon_damping` | 0–1 | 0.2–0.5 | How quickly modes decay |
+| `organon_metabolicRate` | 0–1 | 0.3–0.6 | How fast the system processes input — drives modal mutation rate |
+| `organon_catalystDrive` | 0–1 | 0.4–0.7 | Excitation intensity into the resonator network |
+| `organon_signalFlux` | 0–1 | 0.3–0.6 | Self-feeding intensity. Higher = more alive. |
+| `organon_dampingCoeff` | 0–1 | 0.2–0.5 | How quickly modes decay |
 
 ### Coupling
 - **Sends:** Modal synthesis output (ch0/1)
@@ -427,7 +427,7 @@ A 32-mode resonator network that feeds back into itself. Shannon entropy analysi
 ## 13. OUROBOROS (Ouroboros)
 *Delay-line feedback synthesis — the strange attractor*
 
-**Accent:** Strange Attractor Red `#FF2D2D` | **Prefix:** `ouroboros_` | **Voices:** 6
+**Accent:** Strange Attractor Red `#FF2D2D` | **Prefix:** `ouro_` | **Voices:** 6
 
 ### What It Does
 A 12-tap delay line that feeds back into itself with nonlinear waveshaping. The ouroboros (snake eating its tail) topology creates sounds from nowhere — internal oscillation, ring modulation, and strange attractor behavior. Chaotic but musical.
@@ -435,10 +435,10 @@ A 12-tap delay line that feeds back into itself with nonlinear waveshaping. The 
 ### Key Parameters
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
-| `ouroboros_feedback` | 0–1 | 0.4–0.7 | Feedback amount. >0.7 = self-oscillation territory. |
-| `ouroboros_tapSpread` | 0–1 | 0.3–0.6 | Spread of 12 delay taps |
-| `ouroboros_nonlinearity` | 0–1 | 0.2–0.5 | Waveshaping in the feedback path |
-| `ouroboros_modDepth` | 0–1 | 0.2–0.4 | Ring modulation depth |
+| `ouro_chaosIndex` | 0–1 | 0.4–0.7 | Chaos amount. >0.7 = strange attractor territory. |
+| `ouro_theta` | 0–1 | 0.3–0.6 | Theta angle — phase space rotation |
+| `ouro_injection` | 0–1 | 0.2–0.5 | Signal injection into the feedback loop |
+| `ouro_damping` | 0–1 | 0.2–0.4 | Energy dissipation rate |
 
 ### Coupling
 - **Sends:** Feedback output (ch0/1) — chaotic, harmonically rich
@@ -468,9 +468,9 @@ Casio CZ-series phase distortion with modern enhancements. A 32×32 LUT for 2D p
 ### Key Parameters
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
-| `obsidian_pdDepth` | 0–1 | 0.3–0.7 | Phase distortion depth. Higher = more harmonics. |
-| `obsidian_density` | 0–1 | 0.3–0.6 | PD LUT X axis. Controls harmonic density. |
-| `obsidian_tilt` | 0–1 | 0.4–0.6 | PD LUT Y axis. Spectral tilt. |
+| `obsidian_depth` | 0–1 | 0.3–0.7 | Phase distortion depth. Higher = more harmonics. |
+| `obsidian_densityX` | 0–1 | 0.3–0.6 | PD LUT X axis. Controls harmonic density. |
+| `obsidian_tiltY` | 0–1 | 0.4–0.6 | PD LUT Y axis. Spectral tilt. |
 | `obsidian_stiffness` | 0–1 | 0.1–0.4 | Inharmonicity. Makes partials non-integer → bells. |
 
 ### Coupling
@@ -535,9 +535,9 @@ Iannis Xenakis' GENDY algorithm: stochastic breakpoint waveforms where 8-32 brea
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
 | `oracle_breakpoints` | 8–32 | 12–20 | Breakpoints per cycle. More = more complex. |
-| `oracle_walkRange` | 0–1 | 0.2–0.5 | Random walk magnitude. Higher = wilder. |
-| `oracle_maqamScale` | 0–7 | — | Which Maqam scale (Rast, Bayati, Saba, etc.) |
-| `oracle_maqamGravity` | 0–1 | 0.3–0.7 | Blend between 12-TET and Maqam tuning |
+| `oracle_ampStep` | 0–1 | 0.2–0.5 | Random walk amplitude step size. Higher = wilder. |
+| `oracle_maqam` | 0–7 | — | Which Maqam scale (Rast, Bayati, Saba, etc.) |
+| `oracle_gravity` | 0–1 | 0.3–0.7 | Blend between 12-TET and Maqam tuning |
 | `oracle_distribution` | Cauchy/Logistic | Cauchy | Random walk distribution shape |
 
 ### Coupling
@@ -570,9 +570,9 @@ A 128-mass spring chain simulated with Verlet integration. Excite the chain with
 |-----------|-------|------------|-------------|
 | `obscura_stiffness` | 0–1 | 0.3–0.6 | Spring stiffness. Higher = brighter, metallic. |
 | `obscura_damping` | 0–1 | 0.1–0.3 | Energy dissipation. Lower = longer sustain. |
-| `obscura_nonlinearity` | 0–1 | 0.1–0.3 | Spring nonlinearity. Adds chaos. |
+| `obscura_nonlinear` | 0–1 | 0.1–0.3 | Spring nonlinearity. Adds chaos. |
 | `obscura_boundary` | Fixed/Free/Periodic | Fixed | Boundary conditions at chain ends |
-| `obscura_excitation` | Impulse/Bow | Impulse | How the chain is excited |
+| `obscura_excitePos` | 0–1 | 0.3–0.7 | Excitation position along the spring chain |
 
 ### Coupling
 - **Sends:** Stereo scan output (ch0/1) — forward scan L, backward scan R
@@ -594,7 +594,7 @@ A 128-mass spring chain simulated with Verlet integration. Excite the chain with
 ## 18. OCEANIC (Oceanic)
 *Swarm particle synthesis — boid flocking*
 
-**Accent:** Phosphorescent Teal `#00B4A0` | **Prefix:** `oceanic_` | **Voices:** 4
+**Accent:** Phosphorescent Teal `#00B4A0` | **Prefix:** `ocean_` | **Voices:** 4
 
 ### What It Does
 128 particles per voice, each an oscillator with independent frequency/amplitude/pan. Craig Reynolds' boid rules (separation, alignment, cohesion) govern their behavior. 4 sub-flocks at different frequency ratios (1×, 2×, 1.5×, 3×) create harmonic structure from emergent movement. Murmuration triggers cascade the flock into new formations.
@@ -602,11 +602,11 @@ A 128-mass spring chain simulated with Verlet integration. Excite the chain with
 ### Key Parameters
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
-| `oceanic_separation` | 0–1 | 0.3–0.5 | How much particles repel. Higher = wider frequency spread. |
-| `oceanic_cohesion` | 0–1 | 0.3–0.5 | How much particles attract. Higher = more unison-like. |
-| `oceanic_alignment` | 0–1 | 0.4–0.6 | How much particles match neighbors. Affects timbre smoothness. |
-| `oceanic_murmuration` | trigger | — | Cascade flock reorganization. Like a starling murmuration. |
-| `oceanic_particleWave` | Sine/Saw/Pulse/Noise | Sine | Individual particle waveform |
+| `ocean_separation` | 0–1 | 0.3–0.5 | How much particles repel. Higher = wider frequency spread. |
+| `ocean_cohesion` | 0–1 | 0.3–0.5 | How much particles attract. Higher = more unison-like. |
+| `ocean_alignment` | 0–1 | 0.4–0.6 | How much particles match neighbors. Affects timbre smoothness. |
+| `ocean_scatter` | 0–1 | 0.2–0.5 | Scatter amount — randomizes flock positions. |
+| `ocean_waveform` | Sine/Saw/Pulse/Noise | Sine | Individual particle waveform |
 
 ### Coupling
 - **Sends:** Stereo swarm audio (ch0/1)

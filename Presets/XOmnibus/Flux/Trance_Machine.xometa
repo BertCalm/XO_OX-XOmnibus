@@ -57,7 +57,7 @@
       "bob_fltReso": 0.6
     },
     "Odyssey": {
-      "odyssey_detune": 0.15
+      "drift_oscA_detune": 0.15
     }
   },
   "coupling": {

@@ -52,7 +52,7 @@
       "optic_vizIntensity": 0.5
     },
     "Odyssey": {
-      "odyssey_detune": 0.12
+      "drift_oscA_detune": 0.12
     }
   },
   "coupling": {
