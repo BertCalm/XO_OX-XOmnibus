@@ -144,17 +144,32 @@ Toggle between modes at any time. Preset data is identical — only UI visibilit
 
 ## 3. Engine Modules
 
-### 3.1 The Seven Engines
+### 3.1 Engine Roster (22 Engines)
 
-| Short Name | Source | Sonic Role | Voices | CPU Est. | Accent Color |
-|-----------|--------|-----------|--------|----------|-------------|
-| **ODDFELIX** | OddfeliX | Percussive (PolyBLEP, FM, K-S) | 8 | ~15% | Neon Tetra Blue `#00A6D6` |
-| **ODDOSCAR** | OddOscar | Pad (wavetable morph, Moog ladder) | 16 | ~15% | Axolotl Gill Pink `#E8839B` |
-| **OVERDUB** | XOverdub | Dub mixing desk (send/return FX) | 8 | ~10% | Olive `#6B7B3A` |
-| **ODYSSEY** | XOdyssey | Psychedelic pad (Familiar→Alien) | 24 | ~20% | Violet `#7B2D8B` |
-| **OBLONG** | XOblong | Warm character (fuzzy, curious motion) | 16 | ~15% | Amber `#E9A84A` |
-| **OBESE** | XObese | Character-driven sampler | 8 | ~8% | Hot Pink `#FF1493` |
-| **ONSET** | XOnset (new) | Percussive synthesis (Circuit↔Algorithm) | 8 | ~12% | Electric Blue `#0066FF` |
+| Short Name | Source | Sonic Role | Voices | Accent Color |
+|-----------|--------|-----------|--------|-------------|
+| **ODDFELIX** | OddfeliX | Percussive (PolyBLEP, FM, K-S) | 8 | Neon Tetra Blue `#00A6D6` |
+| **ODDOSCAR** | OddOscar | Pad (wavetable morph, Moog ladder) | 16 | Axolotl Gill Pink `#E8839B` |
+| **OVERDUB** | XOverdub | Dub mixing desk (send/return FX) | 8 | Olive `#6B7B3A` |
+| **ODYSSEY** | XOdyssey | Psychedelic pad (Familiar→Alien) | 24 | Violet `#7B2D8B` |
+| **OBLONG** | XOblong | Warm character (fuzzy, curious motion) | 16 | Amber `#E9A84A` |
+| **OBESE** | XObese | Character-driven sampler | 8 | Hot Pink `#FF1493` |
+| **ONSET** | XOnset | Percussive synthesis (Circuit↔Algorithm) | 8 | Electric Blue `#0066FF` |
+| **OVERWORLD** | XOverworld | Chip synthesis (NES/FM/SNES) ERA blend | 8 | Neon Green `#39FF14` |
+| **OPAL** | XOpal | Granular time-scatter | 12 | Lavender `#A78BFA` |
+| **OVERBITE** | XOverbite | Bass-forward character synth | 16 | Fang White `#F0EDE8` |
+| **ORBITAL** | XOrbital | 64-partial additive synthesis | 6 | Warm Red `#FF6B6B` |
+| **ORGANON** | XOrganon | Entropy-driven modal resonator | 4 | Bioluminescent Cyan `#00CED1` |
+| **OUROBOROS** | XOuroboros | Chaotic strange attractor synthesis | 6 | Strange Attractor Red `#FF2D2D` |
+| **OBSIDIAN** | XObsidian | Phase distortion (CZ-style 2D PD) | 16 | Crystal White `#E8E0D8` |
+| **ORIGAMI** | XOrigami | Spectral folding synthesis | 8 | Vermillion Fold `#E63946` |
+| **ORACLE** | XOracle | Stochastic breakpoint synthesis | 8 | Prophecy Indigo `#4B0082` |
+| **OBSCURA** | XObscura | Spring chain physical modeling | 8 | Daguerreotype Silver `#8A9BA8` |
+| **OCEANIC** | XOceanic | Particle flock (boids) synthesis | 4 | Phosphorescent Teal `#00B4A0` |
+| **OPTIC** | XOptic | Visual modulation engine + AutoPulse | 0 | Phosphor Green `#00FF41` |
+| **OBLIQUE** | XOblique | Prismatic bounce (RTJ × Funk × Tame Impala) | 8 | Prism Violet `#BF40FF` |
+| **ORCA** | XOrca | Apex predator (wavetable + echolocation) | 8 | Deep Ocean `#1B2838` |
+| **OCTOPUS** | XOctopus | Decentralized modulation (arms + chromatophores) | 8 | Chromatophore Magenta `#E040FB` |
 
 ### 3.2 Engine Visual Identity
 
@@ -168,6 +183,21 @@ Each engine is an "exhibition" within the gallery. Its accent color fills the ac
 | OBLONG | Rounded corners, soft shadows, tactile | Apple Liquid Glass |
 | OBESE | Bold ALL_CAPS, high contrast, industrial | Concrete |
 | ONSET | Grid precision, circuit traces, LED indicators | PCB green |
+| OVERWORLD | Pixel art, CRT glow, retro chip aesthetic | Pixel grid |
+| OPAL | Floating particles, cloud scatter | Frosted glass |
+| OVERBITE | Heavy, grounded, bass-forward panels | Brushed steel |
+| ORBITAL | Harmonic rings, additive spectrum display | Polished chrome |
+| ORGANON | Bio-organic, metabolic flow visualization | Living membrane |
+| OUROBOROS | Strange attractor phase plots, feedback loops | Dark matter |
+| OBSIDIAN | Volcanic glass, crystalline fracture patterns | Obsidian glass |
+| ORIGAMI | Paper fold lines, geometric crease patterns | Folded paper |
+| ORACLE | Mystical geometry, breakpoint constellation | Aged parchment |
+| OBSCURA | Daguerreotype tonality, spring chain viz | Tarnished silver |
+| OCEANIC | Particle swarm, boids flow visualization | Deep water |
+| OPTIC | Winamp-style visualizer, spectrum analysis | Phosphor screen |
+| OBLIQUE | Prismatic refractions, bounce trajectories | Cut crystal |
+| ORCA | Deep ocean predator aesthetic, sonar rings | Abyssal black |
+| OCTOPUS | Tentacle arms, chromatophore color shifts | Iridescent skin |
 
 ### 3.3 Engine Pairing Synergies (Top 15)
 
@@ -203,13 +233,17 @@ Each engine is an "exhibition" within the gallery. Its accent color fills the ac
 Each engine prefixes its APVTS parameter IDs to avoid collisions:
 
 ```
-snap_filterCutoff      // ODDFELIX engine
-morph_morph            // ODDOSCAR engine
-dub_oscWave            // OVERDUB engine
-drift_oscA_mode        // ODYSSEY engine
-bob_fltCutoff          // OBLONG engine
-fat_mojo               // OBESE engine
-perc_level             // ONSET engine
+snap_filterCutoff      // ODDFELIX       morph_morph          // ODDOSCAR
+dub_oscWave            // OVERDUB        drift_oscA_mode      // ODYSSEY
+bob_fltCutoff          // OBLONG         fat_mojo             // OBESE
+perc_level             // ONSET          ow_echoFir0          // OVERWORLD
+opal_grainSize         // OPAL           poss_oscAWaveform    // OVERBITE
+orb_brightness         // ORBITAL        organon_metabolicRate// ORGANON
+ouro_topology          // OUROBOROS      obsidian_depth       // OBSIDIAN
+origami_foldPoint      // ORIGAMI        oracle_breakpoints   // ORACLE
+obscura_stiffness      // OBSCURA        ocean_separation     // OCEANIC
+optic_pulseRate        // OPTIC          oblq_prismColor      // OBLIQUE
+orca_huntMacro         // ORCA           octo_armDepth        // OCTOPUS
 ```
 
 **Detail:** `xo_mega_tool_engine_catalog.md`
