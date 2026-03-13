@@ -12,7 +12,7 @@
 - **Gallery code:** OSPREY
 - **Thesis:** XOsprey is a turbulence-modulated resonator engine that transforms the open ocean into an instrument — from glassy calm harbors to thunderous gales — where folk resonances, creature voices, and fluid dynamics collide into sounds impossible with any other synthesis method.
 - **Sound family:** Texture / Pad / Ambient / Cinematic / Hybrid
-- **Unique capability:** A fluid energy model where sea state IS the core synthesis parameter, a shore system where coastlines are timbral regions, a tavern layer where the ocean meets human warmth, and a jazz quartet that stretches across shores absorbing local character through elastic rubber-band coupling. No other engine models an environment as the instrument — every other engine is a sound source *in* a space; XOsprey makes the space itself the source, and populates it with human souls.
+- **Unique capability:** A fluid energy model where sea state IS the core synthesis parameter, a shore system where coastlines are timbral regions, and creature voices that emerge from the turbulence. No other engine models an environment as the instrument — every other engine is a sound source *in* a space; XOsprey makes the space itself the source.
 
 ---
 
@@ -116,25 +116,6 @@ Resonator Bank               Creature Voice Generator
               └── Hull: cabinet/body resonance (the boat)
                      │
                      ▼
-              Tavern Layer (osprey_tavernMix)
-              ├── Room model: small warm space (early reflections, wood absorption)
-              ├── Human murmur: low-level broadband texture (conversation, laughter)
-              ├── Micro-transients: glass clinks, chair scrapes, fire crackle
-              └── Warmth filter: proximity EQ (nearfield intimacy)
-                     │
-                     ▼
-              The Quartet (4 independent voice channels)
-              ├── Bass: low voice — absorbs local bass instrument character
-              ├── Harmony: mid voice — absorbs local chordal instrument
-              ├── Melody: lead voice — absorbs local melodic instrument
-              └── Rhythm: percussion voice — absorbs local rhythmic character
-              Each voice has independent shore position (osprey_q*Shore)
-              ├── Elastic coupling: voices pull toward ensemble centroid
-              ├── Stretch: distance between voices = harmonic tension
-              ├── Snap-back: configurable rubber band strength
-              └── Cross-pollination: borrowed influences persist after return
-                     │
-                     ▼
               FX Chain
               ├── Tide Delay: tempo-synced delay with swell-modulated time
               ├── Harbor Reverb: large diffuse space with ocean-floor reflections
@@ -144,15 +125,11 @@ Resonator Bank               Creature Voice Generator
               Output (stereo)
 ```
 
-**Voice model:** Each MIDI note tunes the resonator bank to that pitch. The fluid model runs globally (shared across voices). Up to 8 simultaneous resonator voices. The quartet runs as 4 additional dedicated voice channels with independent shore positions. Legato mode available (smooth sea state transitions between notes).
+**Voice model:** Each MIDI note tunes the resonator bank to that pitch. The fluid model runs globally (shared across voices). Up to 8 simultaneous voices. Legato mode available (smooth sea state transitions between notes).
 
 **Shore system:** `osprey_shore` is a continuous parameter (0.0–4.0), not a discrete switch. Integer values are pure shores; fractional values crossfade between adjacent shore models — resonator partials morph, creature voices blend, fluid character interpolates. This means you can "sail" from the Atlantic to the Mediterranean in a single macro sweep, or automate the shore parameter for presets that journey between coastlines.
 
-**Tavern system:** `osprey_tavernMix` crossfades from open ocean to pub interior. The room model, murmur texture, and micro-transients are all shore-specific — every coastline has its own tavern character.
-
-**Quartet system:** 4 voice channels (bass, harmony, melody, rhythm) each with independent `osprey_q*Shore` positions. Elastic coupling pulls voices toward ensemble centroid. `osprey_qMemory` controls how much borrowed shore character persists after a voice returns. The quartet can play in tight unison at one shore, or stretch across multiple coastlines connected by rubber-band tension.
-
-**CPU strategy:** The fluid energy model is lightweight (Perlin noise + spectral shaping, not actual Navier-Stokes). The resonators are modal filters (cheap per-sample). Creature voices are formant filters with envelope-driven sweeps. Shore morphing uses crossfaded coefficient sets (no extra oscillators). The quartet adds 4 resonator voice channels but reuses the same modal filter infrastructure. Tavern layer is a simple room model + noise texture. Estimated <12% CPU single-engine at 44.1kHz / 512 block on M1.
+**CPU strategy:** The fluid energy model is lightweight (Perlin noise + spectral shaping, not actual Navier-Stokes). The resonators are modal filters (cheap per-sample). Creature voices are formant filters with envelope-driven sweeps. Shore morphing uses crossfaded coefficient sets (no extra oscillators). Estimated <10% CPU single-engine at 44.1kHz / 512 block on M1.
 
 ---
 
@@ -179,20 +156,6 @@ All parameter IDs use `osprey_` prefix. Key parameters:
 | `osprey_brine` | 0.0-1.0 | Subtle degradation (salt crystal granularity) |
 | `osprey_hull` | 0.0-1.0 | Body resonance amount (the boat) |
 | `osprey_filterTilt` | -1.0-1.0 | Water absorption EQ (negative=dark/deep, positive=bright/surface) |
-| | | **— Tavern Layer —** |
-| `osprey_tavernMix` | 0.0-1.0 | Crossfade from open ocean (0) to seaside pub interior (1). Introduces room model, human murmur, micro-transients, warmth. |
-| `osprey_tavernMurmur` | 0.0-1.0 | Conversation/laughter texture level. Broadband with formant clusters. |
-| `osprey_tavernWarmth` | 0.0-1.0 | Proximity EQ — nearfield intimacy, wood absorption, fireplace glow |
-| | | **— The Quartet —** |
-| `osprey_quartetMix` | 0.0-1.0 | Quartet presence (0=ocean/resonators only, 1=quartet prominent) |
-| `osprey_qBassShore` | 0.0-4.0 | Bass voice's independent shore position |
-| `osprey_qHarmShore` | 0.0-4.0 | Harmony voice's independent shore position |
-| `osprey_qMelShore` | 0.0-4.0 | Melody voice's independent shore position |
-| `osprey_qRhythmShore` | 0.0-4.0 | Rhythm voice's independent shore position |
-| `osprey_qElastic` | 0.0-1.0 | Rubber band strength. 0=voices drift freely across shores. 1=tight ensemble, voices snap together. |
-| `osprey_qStretch` | 0.0-1.0 | Maximum shore distance between any two voices before elastic pull increases. Controls the harmonic tension of being in two places at once. |
-| `osprey_qMemory` | 0.0-1.0 | Cross-pollination persistence. How much borrowed shore influence a voice retains after snapping back. 0=clean return. 1=permanently stained by every shore visited. |
-| | | **— FX —** |
 | `osprey_tideDelay` | 0.0-1.0 | Swell-synced delay mix |
 | `osprey_harborVerb` | 0.0-1.0 | Large space reverb mix |
 | `osprey_fog` | 0.0-1.0 | HF rolloff + stereo smear |
@@ -253,61 +216,6 @@ The `osprey_shore` parameter isn't a preset selector — it's a continuous synth
 **Morphing between shores:** At `osprey_shore` = 1.5, you're halfway between Nordic and Mediterranean — hardingfele sympathetic strings blending with bouzouki metallics, beluga chirps morphing into dolphin clicks, deep fjord swells shortening into Aegean chop. This creates thousands of hybrid coastlines that exist nowhere on Earth but feel geographically coherent.
 
 **Shore as coupling target:** When another engine modulates `osprey_shore` via coupling, the coastline itself becomes a dynamic parameter. OUROBOROS chaos slowly drifting the shore value creates a boat lost at sea, passing through unfamiliar waters. OVERWORLD's chip LFO rapidly switching shores creates a radio scanning between coastal stations.
-
-### The Tavern Layer — Where the Land Meets the Sea
-
-The ocean is the force. The shore is the geography. **The tavern is the soul.**
-
-Every maritime culture has the same place: the seaside pub where fishermen gather after the catch. Alfama's fado houses. Galway's singing pubs. Piraeus's rembetika dens. Dakar's mbalax clubs. The tavern is the human counterweight to the ocean's inhuman vastness — warmth against cold, intimacy against infinity, community against solitude.
-
-`osprey_tavernMix` is a crossfade between two worlds:
-
-| Value | Environment | Character |
-|-------|-------------|-----------|
-| 0.0 | Open ocean | Raw fluid dynamics, creature voices, vast reverb, no human presence |
-| 0.3 | Approaching harbor | Distant shore sounds, foghorn, first hints of land |
-| 0.5 | The dock | Ocean and tavern balanced — you can hear both the waves and the music inside |
-| 0.7 | Tavern doorway | Music spills out, warm light, conversation audible, ocean receding |
-| 1.0 | Inside the pub | Intimate room, warm wood absorption, murmur of voices, fire crackle, the ocean is a memory |
-
-The tavern isn't a reverb preset — it's a synthesis layer. The room model changes per shore (Atlantic taverns have stone walls and low ceilings; Mediterranean taverns are open-air with tile floors; Nordic taverns are wood-paneled with deep insulation). The human murmur texture is shore-specific (language cadence, laughter character, singing style). The micro-transients change (Portuguese wine glasses vs. Nordic beer steins vs. Japanese ceramic cups).
-
-**The tavern as emotional anchor:** When the storm rages (`osprey_seaState` = 1.0) but the tavern is present (`osprey_tavernMix` > 0), you get the most powerful emotional combination — the terror of the sea heard from the safety of the hearth. The fisherman's wife listening to the gale outside. Saudade incarnate.
-
-### The Quartet — Jazz Stretched Across Shores
-
-A jazz quartet lives inside XOsprey — four voices (bass, harmony, melody, rhythm) that don't just play music: they **absorb the local character of whatever shore they're on**, and they can each be on a *different* shore simultaneously.
-
-**The four voices:**
-
-| Voice | Role | What It Absorbs Per Shore |
-|-------|------|--------------------------|
-| **Bass** (`osprey_qBassShore`) | Low foundation | Atlantic: guitarra bass strings. Nordic: langspil drone. Mediterranean: oud bass courses. Pacific: taiko resonance. Southern: berimbau fundamental. |
-| **Harmony** (`osprey_qHarmShore`) | Chordal texture | Atlantic: kora arpeggios. Nordic: hardingfele sympathetics. Mediterranean: bouzouki chords. Pacific: koto harmonics. Southern: gamelan interlocking. |
-| **Melody** (`osprey_qMelShore`) | Lead voice | Atlantic: uilleann chanter. Nordic: kulning call. Mediterranean: ney flute. Pacific: shakuhachi breath. Southern: valiha melody. |
-| **Rhythm** (`osprey_qRhythmShore`) | Percussive pulse | Atlantic: bodhran roll. Nordic: Sámi frame drum. Mediterranean: darbuka pattern. Pacific: taiko strike. Southern: djembe + shaker. |
-
-**The rubber band model:**
-
-Each voice has its own `osprey_q*Shore` parameter (0.0–4.0). When all four voices are at the same shore value, the quartet plays in tight, coherent style — a unified folk ensemble absorbing the local tradition. As voices drift to different shores, three things happen:
-
-1. **Timbral stretching** — each voice takes on the resonator character of its current shore position. The bass player is in Lisbon while the melody player is in Osaka. You hear both simultaneously.
-
-2. **Harmonic tension** — the further apart the voices are, the more the tuning systems diverge. Atlantic temperament vs. Pacific intonation creates beautiful, strange intervals that exist in no single tradition.
-
-3. **Elastic pull** — `osprey_qElastic` controls how strongly the voices are coupled. High elasticity: they drift apart briefly but snap back, like a band playing rubato. Low elasticity: they can settle on distant shores and stay there, creating a permanently stretched ensemble spanning multiple coastlines.
-
-**Cross-pollination (`osprey_qMemory`):**
-
-When a voice visits a shore and returns, it doesn't come back unchanged. `osprey_qMemory` controls how much borrowed influence persists. At 0, the voice returns clean. At 1, every shore visited permanently stains the voice's character — the bass player who spent time on the Mediterranean coast now plays Atlantic fado with a hint of oud warmth that never quite fades. Over time, the quartet accumulates a history of everywhere they've been. The music becomes a living map.
-
-**The temporal stretch:**
-
-The quartet doesn't teleport between shores — it *stretches through temporal space*. When `osprey_qMelShore` begins moving from 0.0 (Atlantic) to 2.0 (Mediterranean), the melody voice passes through Nordic territory on the way. For those moments, the melody carries traces of hardingfele — a shimmer that wasn't there before and won't be there after. The journey between shores IS a sound. The rubber bands connecting the voices across the ocean are audible as harmonic tension, timbral blur, and the ghost resonances of coastlines passed through but never quite arrived at.
-
-**Quartet + Tavern interaction:**
-
-When `osprey_tavernMix` is high and the quartet is active, the four voices are playing *in* the pub. The room model wraps around them. The conversation murmur sits beneath them. They're performers in a space. When `osprey_tavernMix` is low and the quartet is active, the four voices are playing *on the open ocean* — spread across vast distances, connected only by elastic rubber bands, their music carried by wind and current. Same notes, utterly different meaning.
 
 ### Instrument Heritage
 
@@ -386,20 +294,16 @@ Primary moods: Atmosphere, Entangled, Flux, Aether.
 
 ## Preset Strategy (Phase 0 Sketch)
 
-**200 presets at v1.0:**
+**150 presets at v1.0:**
 
 | Category | Count | Character |
 |----------|-------|-----------|
-| Harbor Dawn | 15 | Calm, shimmering folk resonances. Guitarra shimmer, kora arpeggiation, singing bowl overtones. Foundation/Atmosphere. |
-| Open Water | 15 | Moderate swell, rolling motion. Hardingfele sympathetic halos, uilleann drone. Movement without violence. Atmosphere/Flux. |
-| Storm Wall | 15 | Full turbulence. Decorrelated resonators, spectral spray, roaring foam. Thunder creature voices. Flux. |
-| Creature Choir | 15 | Whale calls, gull cries, wind voices prominent. Deep formant arcs. Aether/Atmosphere. |
-| The Crossing | 15 | Full calm-to-storm-to-calm arc via M1. Narrative presets designed to be performed. Flux/Prism. |
-| Submerged | 10 | Underwater perspective. Heavy depth parameter, muffled resonators, slow deep swell. Aether. |
-| **Tavern Sessions** | 25 | The quartet playing inside shore-specific pubs. High tavernMix, warm room, intimate. Each shore gets 5 presets capturing the local pub atmosphere. Foundation/Atmosphere. |
-| **Stretched Quartet** | 25 | The quartet with voices on different shores. Low-medium elasticity, high memory. Harmonic tension of being in two places at once. Timbral cross-pollination. Entangled/Prism. |
-| **Rubber Band Journeys** | 15 | Quartet voices slowly drifting between shores via automation. The sound of traveling. Memory accumulates. Each journey preset is a narrative. Flux/Aether. |
-| **Ocean to Hearth** | 15 | tavernMix sweeps — designed to transition from open ocean to pub interior (or vice versa). The fisherman coming home. Atmosphere/Foundation. |
+| Harbor Dawn | 20 | Calm, shimmering folk resonances. Guitarra shimmer, kora arpeggiation, singing bowl overtones. Foundation/Atmosphere. |
+| Open Water | 20 | Moderate swell, rolling motion. Hardingfele sympathetic halos, uilleann drone. Movement without violence. Atmosphere/Flux. |
+| Storm Wall | 20 | Full turbulence. Decorrelated resonators, spectral spray, roaring foam. Thunder creature voices. Flux. |
+| Creature Choir | 20 | Whale calls, gull cries, wind voices prominent. Deep formant arcs. Aether/Atmosphere. |
+| The Crossing | 20 | Full calm-to-storm-to-calm arc via M1. Narrative presets designed to be performed. Flux/Prism. |
+| Submerged | 15 | Underwater perspective. Heavy depth parameter, muffled resonators, slow deep swell. Aether. |
 | Coupling Showcases | 20 | Designed for specific engine pairs: OBSIDIAN×OSPREY (crystal sea), ONSET×OSPREY (thunder drums), ORIGAMI×OSPREY (folded waves), etc. Entangled. |
 | Maritime Folk | 15 | Closest to traditional instrument sound. Specific resonator models prominent. Clean, playable, melodic. Foundation/Prism. |
 
