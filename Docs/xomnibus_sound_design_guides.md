@@ -831,3 +831,75 @@ Orca biology mapped to synthesis. 5 biological DSP subsystems work together: POD
 **Apex Bass:** voiceMode=Mono, huntMacro=0.5, breachSub=0.8, breachRatio=12, crushMix=0.3, crushBits=8
 **Countershade Texture:** voiceMode=Poly8, crushMix=0.8, crushBits=6, crushSplitFreq=800, wtPos=0.6, formantIntensity=0.4
 **Full Pack Hunt:** huntMacro automated 0→1 over 8 bars, all subsystems engaged, every parameter in motion
+
+---
+
+## OCTOPUS — Decentralized Alien Intelligence
+
+**Engine ID:** Octopus | **Parameter Prefix:** `octo_` | **Accent:** Chromatophore Magenta `#E040FB`
+
+The octopus is the ultimate alien intelligence of the sea — decentralized, formless, and highly reactive to its environment. XOctopus translates this biology directly into synthesizer architecture: generative polyrhythmic modulation (arms that think independently), adaptive timbral camouflage (chromatophore envelope following), explosive noise freeze (ink cloud), boneless microtonal pitch (shapeshifter), and suction-cup transient design (suckers).
+
+**Inspirations:** Tiptop Audio OCTOPUS (8 independent channels), Moog Labyrinth (generative sequencing), OBNE Procession (sci-fi reverb), Chromaplane (spatial morphing), Home Bake CHAOS (shift register randomness)
+
+### Sonic Pillars
+
+1. **ARMS** — 8 independent LFOs at prime-ratio-related rates (1, φ, √5, π, 1/√2, √2, √7, 1−1/φ), each targeting a different parameter dimension (filter, wavetable, pitch, pan, chroma freq, sucker freq, level, formant). `armSpread` controls rate divergence; at 0 all arms pulse together, at 1 they achieve maximum polyrhythmic independence. The patch practically plays itself.
+
+2. **CHROMATOPHORES** — Envelope follower tracks input amplitude and maps it to a continuously blending filter topology (LP → BP → HP → Notch via `chromaMorph`). `chromaSens` scales the envelope follower response; `chromaSpeed` controls adaptation rate. The synth actively "camouflages" itself, mutating its timbre to match the sonic environment.
+
+3. **INK CLOUD** — When velocity exceeds `inkThreshold`, a dense noise burst fills a freeze buffer. The dry signal mutes (the escape) and a massive wall of dark, saturated noise erupts in the stereo field, slowly dissolving over `inkDecay` seconds. Like a real octopus ink cloud — a blinding sonic smokescreen.
+
+4. **SHAPESHIFTER** — Microtonal detuning (`shiftMicro`, ±100 cents), extreme portamento (`shiftGlide`, up to 10 seconds), and random pitch drift (`shiftDrift`). The synth refuses to lock to standard Western notes, continuously squeezing and slithering through the frequencies between keys. Boneless pitch for a boneless creature.
+
+5. **SUCKERS** — Ultra-fast (~1ms attack) filter envelope driving a high-resonance bandpass filter. Creates a distinct "plonk" — a sticky, wet, bubbling transient that mimics the suction and release of tentacle suckers gripping the audio spectrum. `suckerReso` controls the Q factor; `suckerFreq` targets the bandpass center.
+
+### Macro Mapping (M1–M4)
+| Macro | Target | Effect |
+|-------|--------|--------|
+| M1 CHARACTER | Arm depth, sucker mix, filter cutoff | Calm octopus → agitated alien |
+| M2 MOVEMENT | Arm rate, chroma speed, wavetable scan | Still → frantically morphing |
+| M3 COUPLING | Chroma depth, ink sensitivity | Isolated → fully coupled/reactive |
+| M4 SPACE | Ink decay, pitch drift | Tight → vast, dissolving, formless |
+
+### Key Parameters
+| Parameter | Range | Sweet Spots | Purpose |
+|-----------|-------|-------------|---------|
+| `octo_armCount` | 1–8 | 4–6 for musical, 8 for chaos | Number of active modulation arms |
+| `octo_armSpread` | 0–1 | 0.3–0.7 | How different arm rates are from each other |
+| `octo_armBaseRate` | 0.05–20 Hz | 0.5–3 musical, 8+ chaotic | Fundamental arm modulation rate |
+| `octo_armDepth` | 0–1 | 0.3–0.6 | Overall arm modulation intensity |
+| `octo_chromaSens` | 0–1 | 0.4–0.7 | Envelope follower sensitivity |
+| `octo_chromaSpeed` | 0–1 | 0.2–0.5 slow adapt, 0.8+ fast react | Adaptation rate |
+| `octo_chromaMorph` | 0–1 | 0=LP, 0.33=BP, 0.66=HP, 1=Notch | Filter type morphing |
+| `octo_chromaDepth` | 0–1 | 0.3–0.6 | Chromatophore effect intensity |
+| `octo_chromaFreq` | 100–16000 Hz | 1000–4000 | Chromatophore center frequency |
+| `octo_inkThreshold` | 0–1 | 0.85–0.95 dramatic, 0.3–0.5 frequent | Velocity threshold to trigger ink |
+| `octo_inkDensity` | 0–1 | 0.6–0.9 | Noise burst density/darkness |
+| `octo_inkDecay` | 0.5–30 sec | 3–8 dramatic, 15+ cinematic | How long the ink cloud persists |
+| `octo_inkMix` | 0–1 | 0.5–0.8 | Ink cloud wet/dry blend |
+| `octo_shiftMicro` | -100–100 cents | ±10–30 subtle, ±50+ alien | Fixed microtonal offset from standard |
+| `octo_shiftGlide` | 0–10 sec | 0.5–2 musical, 5+ boneless | Portamento time |
+| `octo_shiftDrift` | 0–1 | 0.1–0.3 subtle, 0.7+ chaotic | Random pitch drift intensity |
+| `octo_suckerReso` | 0–0.995 | 0.8–0.95 | Sucker bandpass resonance (Q) |
+| `octo_suckerFreq` | 200–8000 Hz | 1000–4000 | Sucker bandpass center frequency |
+| `octo_suckerDecay` | 0.005–0.5 sec | 0.02–0.1 | Sucker transient decay time |
+| `octo_suckerMix` | 0–1 | 0.3–0.7 | Sucker transient blend |
+
+### Coupling
+- **Sends:** Post-filter stereo audio (ch0/ch1), envelope level (ch2)
+- **Receives:** AudioToFM (→ wavetable position), AmpToFilter (→ chromatophore sensitivity), EnvToMorph (→ arm rate modulation), AudioToRing (ring mod), LFOToPitch (→ shapeshifter pitch)
+- **Best as source for:** EnvToMorph (polyrhythmic envelope output as morph source), AudioToFM (complex generative wavetable as FM modulator)
+
+### Recommended Pairings
+- **+ Orca:** Octopus's generative arms over Orca's predator architecture = predator-prey ecosystem. Orca AmpToChoke gates Octopus ink clouds.
+- **+ Oceanic:** Octopus chromatophores adapt to Oceanic's boid swarm. AudioToFM both ways = living reef.
+- **+ Organon:** Organon's entropy feeds Octopus arm rates via EnvToMorph. Bio-computational chaos.
+- **+ Oblique:** Oblique's prismatic bounces trigger Octopus pitch bends via LFOToPitch. Alien rainbow slither.
+
+### Starter Recipes
+**Tentacle Bass:** voiceMode=Mono, suckerMix=0.7, suckerReso=0.9, suckerFreq=1500, filterCutoff=3000, armCount=1, inkMix=0
+**Camouflage Pad:** voiceMode=Poly8, chromaDepth=0.7, chromaSens=0.6, chromaSpeed=0.3, chromaMorph=0.5, release=4.0, armCount=4
+**Eight-Arm Groove:** voiceMode=Poly8, armCount=8, armSpread=0.8, armBaseRate=2.0, armDepth=0.7, suckerMix=0.3
+**Ink Storm:** voiceMode=Poly8, inkThreshold=0.6, inkDensity=0.9, inkDecay=8, inkMix=0.8, armCount=6
+**Boneless Lead:** voiceMode=Legato, shiftGlide=5.0, shiftDrift=0.5, shiftMicro=25, chromaDepth=0.4, suckerMix=0.4

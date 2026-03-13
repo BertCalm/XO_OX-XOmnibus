@@ -101,6 +101,8 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Oblique/ObliqueEngine.cpp
     Source/Engines/Orca/OrcaEngine.h
     Source/Engines/Orca/OrcaEngine.cpp
+    Source/Engines/Octopus/OctopusEngine.h
+    Source/Engines/Octopus/OctopusEngine.cpp
 
     # Export pipeline
     Source/Export/XPNCoverArt.h

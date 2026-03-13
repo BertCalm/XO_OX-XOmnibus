@@ -46,6 +46,7 @@ inline juce::String resolveEngineAlias(const juce::String& name)
         { "XOrbital",    "Orbital"   },
         { "XOrganon",    "Organon"   },
         { "XOuroboros",  "Ouroboros" },
+        { "XOctopus",   "Octopus"  },
     };
     auto it = aliases.find(name);
     return (it != aliases.end()) ? it->second : name;
