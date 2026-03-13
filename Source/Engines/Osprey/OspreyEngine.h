@@ -4,6 +4,7 @@
 #include "../../DSP/FastMath.h"
 #include "../../DSP/ShoreSystem/ShoreSystem.h"
 #include <array>
+#include <atomic>
 #include <cmath>
 #include <algorithm>
 
@@ -126,74 +127,6 @@ struct OspreyADSR
     {
         stage = Stage::Idle;
         level = 0.0f;
-    }
-};
-
-//==============================================================================
-// LFO with multiple shapes.
-//==============================================================================
-struct OspreyLFO
-{
-    enum class Shape { Sine, Triangle, Saw, Square, SandH };
-
-    float phase = 0.0f;
-    float phaseInc = 0.0f;
-    Shape shape = Shape::Sine;
-    float holdValue = 0.0f;
-    uint32_t sampleCounter = 0;
-
-    void setRate (float hz, float sampleRate) noexcept
-    {
-        phaseInc = hz / std::max (1.0f, sampleRate);
-    }
-
-    void setShape (int idx) noexcept
-    {
-        shape = static_cast<Shape> (std::min (4, std::max (0, idx)));
-    }
-
-    float process() noexcept
-    {
-        float out = 0.0f;
-
-        switch (shape)
-        {
-            case Shape::Sine:
-                out = fastSin (phase * 6.28318530718f);
-                break;
-            case Shape::Triangle:
-                out = 4.0f * std::fabs (phase - 0.5f) - 1.0f;
-                break;
-            case Shape::Saw:
-                out = 2.0f * phase - 1.0f;
-                break;
-            case Shape::Square:
-                out = (phase < 0.5f) ? 1.0f : -1.0f;
-                break;
-            case Shape::SandH:
-            {
-                float prevPhase = phase - phaseInc;
-                if (prevPhase < 0.0f || phase < prevPhase)
-                {
-                    sampleCounter = sampleCounter * 1664525u + 1013904223u;
-                    holdValue = static_cast<float> (sampleCounter & 0xFFFF) / 32768.0f - 1.0f;
-                }
-                out = holdValue;
-                break;
-            }
-        }
-
-        phase += phaseInc;
-        if (phase >= 1.0f) phase -= 1.0f;
-
-        return out;
-    }
-
-    void reset() noexcept
-    {
-        phase = 0.0f;
-        holdValue = 0.0f;
-        sampleCounter = 12345u;
     }
 };
 
@@ -461,11 +394,8 @@ struct AllpassDelay
         if (readPos < 0) readPos += kMaxDelay;
 
         float delayed = buffer[readPos];
-        float out = -feedback * input + delayed + feedback * delayed;
-        // Correct allpass: out = delayed - g * input, buffer stores: input + g * delayed
-        // More standard form:
         float bufVal = input + feedback * delayed;
-        out = delayed - feedback * bufVal;
+        float out = delayed - feedback * bufVal;
         buffer[writePos] = flushDenormal (bufVal);
 
         writePos++;
@@ -516,7 +446,6 @@ struct OspreyVoice
 
     // DC blocker state
     float dcPrevInL = 0.0f, dcPrevOutL = 0.0f;
-    float dcPrevInR = 0.0f, dcPrevOutR = 0.0f;
 
     // Per-voice coherence phase offset tracking
     float coherencePhases[16] = {};
@@ -547,8 +476,6 @@ struct OspreyVoice
         rng = 12345u;
         dcPrevInL = 0.0f;
         dcPrevOutL = 0.0f;
-        dcPrevInR = 0.0f;
-        dcPrevOutR = 0.0f;
         ampEnv.reset();
 
         for (auto& r : resonators)
@@ -1064,6 +991,10 @@ public:
                 mixR = mixR * (1.0f - effectiveVerb) + finalVerbR * effectiveVerb;
             }
 
+            // Final soft limiter (prevents clipping on multi-voice sum)
+            mixL = fastTanh (mixL);
+            mixR = fastTanh (mixR);
+
             // Final denormal protection
             mixL = flushDenormal (mixL);
             mixR = flushDenormal (mixR);
@@ -1389,8 +1320,6 @@ private:
         // DC blocker state
         voice.dcPrevInL = 0.0f;
         voice.dcPrevOutL = 0.0f;
-        voice.dcPrevInR = 0.0f;
-        voice.dcPrevOutR = 0.0f;
 
         // Initialize PRNG with note-dependent seed
         voice.rng = static_cast<uint32_t> (noteNumber * 7919 + voiceCounter * 104729);
@@ -1506,7 +1435,7 @@ private:
 
     std::array<OspreyVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
-    int activeVoices = 0;
+    std::atomic<int> activeVoices { 0 };
 
     // Global fluid energy model
     FluidEnergyModel fluidModel;
