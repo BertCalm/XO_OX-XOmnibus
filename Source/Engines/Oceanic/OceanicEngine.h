@@ -242,6 +242,9 @@ struct OceanicVoice
     float velocity = 0.0f;
     uint64_t startTime = 0;
 
+    // MPE per-voice expression state
+    MPEVoiceExpression mpeExpression;
+
     // Target frequency from MIDI note
     float targetFreq = 440.0f;
 
@@ -450,16 +453,26 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
-                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), maxPoly, monoMode,
+                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel(), maxPoly, monoMode,
                         glideCoeff, effectiveFlocks,
                         pAmpA, pAmpD, pAmpS, pAmpR,
                         pSwmA, pSwmD, pSwmS, pSwmR,
                         pLfo1R, pLfo1D, pLfo1S, pLfo2R, pLfo2D, pLfo2S,
                         pScat);
             else if (msg.isNoteOff())
-                noteOff (msg.getNoteNumber());
+                noteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
+        }
+
+        // --- Update per-voice MPE expression from MPEManager ---
+        if (mpeManager != nullptr)
+        {
+            for (auto& voice : voices)
+            {
+                if (!voice.active) continue;
+                mpeManager->updateVoiceExpression(voice.mpeExpression);
+            }
         }
 
         // Apply murmuration trigger to all active voices
@@ -595,12 +608,13 @@ public:
                         }
                     }
 
-                    // Attractor targets: MIDI note * sub-flock ratio
+                    // Attractor targets: MIDI note * sub-flock ratio (with MPE pitch bend)
+                    float mpeFreq = voice.currentTargetFreq * std::pow (2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
                     float attractorLogFreq[4];
                     for (int f = 0; f < 4; ++f)
                     {
                         float ratio = kSubFlockRatios[f];
-                        attractorLogFreq[f] = fastLog2 (std::max (kMinFreqHz, voice.currentTargetFreq * ratio));
+                        attractorLogFreq[f] = fastLog2 (std::max (kMinFreqHz, mpeFreq * ratio));
                     }
 
                     // Boid rule radii (in log-freq octaves)
@@ -1170,7 +1184,7 @@ private:
     // MIDI note handling.
     //==========================================================================
 
-    void noteOn (int noteNumber, float velocity, int maxPoly, bool monoMode,
+    void noteOn (int noteNumber, float velocity, int midiChannel, int maxPoly, bool monoMode,
                  float glideCoeff, int numSubflocks,
                  float ampA, float ampD, float ampS, float ampR,
                  float swmA, float swmD, float swmS, float swmR,
@@ -1194,6 +1208,12 @@ private:
                 voice.noteNumber = noteNumber;
                 voice.velocity = velocity;
 
+                // Initialize MPE expression for this voice's channel
+                voice.mpeExpression.reset();
+                voice.mpeExpression.midiChannel = midiChannel;
+                if (mpeManager != nullptr)
+                    mpeManager->updateVoiceExpression(voice.mpeExpression);
+
                 // Retrigger envelopes
                 voice.ampEnv.setParams (ampA, ampD, ampS, ampR, srf);
                 voice.ampEnv.noteOn();
@@ -1205,7 +1225,7 @@ private:
             }
             else
             {
-                initVoice (voice, noteNumber, velocity, freq, glideCoeff, numSubflocks,
+                initVoice (voice, noteNumber, velocity, midiChannel, freq, glideCoeff, numSubflocks,
                            ampA, ampD, ampS, ampR, swmA, swmD, swmS, swmR,
                            lfo1Rate, lfo1Depth, lfo1Shape,
                            lfo2Rate, lfo2Depth, lfo2Shape,
@@ -1225,14 +1245,14 @@ private:
             voice.fadeGain = std::min (voice.fadeGain, 0.5f);
         }
 
-        initVoice (voice, noteNumber, velocity, freq, 1.0f, numSubflocks,
+        initVoice (voice, noteNumber, velocity, midiChannel, freq, 1.0f, numSubflocks,
                    ampA, ampD, ampS, ampR, swmA, swmD, swmS, swmR,
                    lfo1Rate, lfo1Depth, lfo1Shape,
                    lfo2Rate, lfo2Depth, lfo2Shape,
                    scatterAmount);
     }
 
-    void initVoice (OceanicVoice& voice, int noteNumber, float velocity, float freq,
+    void initVoice (OceanicVoice& voice, int noteNumber, float velocity, int midiChannel, float freq,
                     float glideCoeff, int numSubflocks,
                     float ampA, float ampD, float ampS, float ampR,
                     float swmA, float swmD, float swmS, float swmR,
@@ -1244,6 +1264,12 @@ private:
         voice.noteNumber = noteNumber;
         voice.velocity = velocity;
         voice.startTime = voiceCounter++;
+
+        // Initialize MPE expression for this voice's channel
+        voice.mpeExpression.reset();
+        voice.mpeExpression.midiChannel = midiChannel;
+        if (mpeManager != nullptr)
+            mpeManager->updateVoiceExpression(voice.mpeExpression);
         voice.targetFreq = freq;
         voice.currentTargetFreq = freq;
         voice.glideCoeff = glideCoeff;
@@ -1318,12 +1344,17 @@ private:
         }
     }
 
-    void noteOff (int noteNumber)
+    void noteOff (int noteNumber, int midiChannel = 0)
     {
         for (auto& voice : voices)
         {
             if (voice.active && voice.noteNumber == noteNumber && !voice.fadingOut)
             {
+                // In MPE mode, match by channel too
+                if (midiChannel > 0 && voice.mpeExpression.midiChannel > 0
+                    && voice.mpeExpression.midiChannel != midiChannel)
+                    continue;
+
                 voice.ampEnv.noteOff();
                 voice.swarmEnv.noteOff();
             }

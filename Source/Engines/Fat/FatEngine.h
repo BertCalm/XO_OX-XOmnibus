@@ -697,6 +697,9 @@ struct FatVoice
 
     // Sustain pedal hold: voice stays active while CC64 is down
     bool sustainHeld = false;
+
+    // MPE per-voice expression state
+    MPEVoiceExpression mpeExpression;
 };
 
 //==============================================================================
@@ -891,10 +894,10 @@ public:
             {
                 const auto msg = metadata.getMessage();
                 if (msg.isNoteOn())
-                    noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
+                    noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel(),
                             glideAmt, voiceMode, maxPoly);
                 else if (msg.isNoteOff())
-                    noteOff (msg.getNoteNumber());
+                    noteOff (msg.getNoteNumber(), msg.getChannel());
                 else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                     allVoicesOff();
                 else if (msg.isController() && msg.getControllerNumber() == 64)
@@ -914,6 +917,16 @@ public:
                         }
                     }
                 }
+            }
+        }
+
+        // --- Update per-voice MPE expression from MPEManager ---
+        if (mpeManager != nullptr)
+        {
+            for (auto& voice : voices)
+            {
+                if (!voice.active) continue;
+                mpeManager->updateVoiceExpression(voice.mpeExpression);
             }
         }
 
@@ -972,8 +985,8 @@ public:
                     baseFreq = voice.glideSourceFreq;
                 }
 
-                // Pitch mod (coupling)
-                float freq = baseFreq * fastExp (pitchMod * (0.693147f / 12.0f));
+                // Pitch mod (coupling + MPE)
+                float freq = baseFreq * fastExp ((pitchMod + voice.mpeExpression.pitchBendSemitones) * (0.693147f / 12.0f));
 
                 // Filter envelope
                 float fltEnvVal = voice.filterEnv.process();
@@ -1326,7 +1339,7 @@ public:
 private:
     //-- Voice management -------------------------------------------------------
 
-    void noteOn (int noteNumber, float velocity, float glideAmt, int voiceMode, int maxPoly)
+    void noteOn (int noteNumber, float velocity, int midiChannel, float glideAmt, int voiceMode, int maxPoly)
     {
         if (voiceMode == 2) // Legato
         {
@@ -1342,6 +1355,12 @@ private:
                     v.noteNumber = noteNumber;
                     v.cachedBaseFreq = midiToFreq (noteNumber);
                     v.velocity = velocity;
+
+                    // Initialize MPE expression for this voice's channel
+                    v.mpeExpression.reset();
+                    v.mpeExpression.midiChannel = midiChannel;
+                    if (mpeManager != nullptr)
+                        mpeManager->updateVoiceExpression(v.mpeExpression);
                     return;
                 }
             }
@@ -1362,6 +1381,12 @@ private:
         voice.age = 0;
         voice.cachedBaseFreq = midiToFreq (noteNumber);
 
+        // Initialize MPE expression for this voice's channel
+        voice.mpeExpression.reset();
+        voice.mpeExpression.midiChannel = midiChannel;
+        if (mpeManager != nullptr)
+            mpeManager->updateVoiceExpression(voice.mpeExpression);
+
         // Reset oscillator/filter/FX state to prevent clicks from stolen voices
         voice.subOsc.reset();
         voice.subDrift.reset();
@@ -1379,11 +1404,17 @@ private:
         voice.filterEnv.noteOn();
     }
 
-    void noteOff (int noteNumber)
+    void noteOff (int noteNumber, int midiChannel = 0)
     {
         for (auto& v : voices)
+        {
             if (v.active && v.noteNumber == noteNumber)
             {
+                // In MPE mode, match by channel too
+                if (midiChannel > 0 && v.mpeExpression.midiChannel > 0
+                    && v.mpeExpression.midiChannel != midiChannel)
+                    continue;
+
                 if (sustainPedalDown)
                     v.sustainHeld = true; // hold until pedal released
                 else
@@ -1392,6 +1423,7 @@ private:
                     v.filterEnv.noteOff();
                 }
             }
+        }
     }
 
     void allVoicesOff()

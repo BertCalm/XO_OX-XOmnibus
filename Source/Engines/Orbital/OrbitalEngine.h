@@ -117,6 +117,9 @@ struct OrbitalVoice
     EnvStage envStage = EnvStage::Off;
 
     float fadeOutLevel = 0.0f;  // voice-steal crossfade
+
+    // MPE per-voice expression state
+    MPEVoiceExpression mpeExpression;
 };
 
 //==============================================================================
@@ -438,14 +441,24 @@ public:
         {
             auto m = meta.getMessage();
             if (m.isNoteOn())
-                triggerVoice (m.getNoteNumber(), m.getFloatVelocity(),
+                triggerVoice (m.getNoteNumber(), m.getFloatVelocity(), m.getChannel(),
                               inharm, fmRatio, stereoSpread,
                               ampAttack, ampDecay, ampSustain, ampRelease,
                               grpAtk, grpDec);
             else if (m.isNoteOff())
-                noteOff (m.getNoteNumber());
+                noteOff (m.getNoteNumber(), m.getChannel());
             else if (m.isAllNotesOff() || m.isAllSoundOff())
                 for (auto& v : voices) { v.active = false; v.envStage = OrbitalVoice::EnvStage::Off; }
+        }
+
+        // --- Update per-voice MPE expression from MPEManager ---
+        if (mpeManager != nullptr)
+        {
+            for (auto& v : voices)
+            {
+                if (!v.active) continue;
+                mpeManager->updateVoiceExpression(v.mpeExpression);
+            }
         }
 
         //-- Cache filter coefficients once per block ---------------------------
@@ -556,6 +569,7 @@ public:
 
                 //-- 64-partial synthesis --------------------------------------
                 float voiceL = 0.0f, voiceR = 0.0f;
+                const float mpePitchRatio = std::pow(2.0f, v.mpeExpression.pitchBendSemitones / 12.0f);
 
                 for (int k = 0; k < kNumPartials; ++k)
                 {
@@ -571,12 +585,12 @@ public:
                         float fmMod = extFmSample;
                         if (fmActive)
                             fmMod += fmIndex * fastSin (static_cast<float> (v.fmPhase[k]));
-                        v.phase[k]   += static_cast<double> (v.phaseIncF[k] * pitchRatio * (1.0f + fmMod));
+                        v.phase[k]   += static_cast<double> (v.phaseIncF[k] * pitchRatio * mpePitchRatio * (1.0f + fmMod));
                         v.fmPhase[k] += static_cast<double> (v.fmPhaseInc[k]);
                     }
                     else
                     {
-                        v.phase[k] += static_cast<double> (v.phaseIncF[k] * pitchRatio);
+                        v.phase[k] += static_cast<double> (v.phaseIncF[k] * pitchRatio * mpePitchRatio);
                     }
 
                     const float s = amp * fastSin (static_cast<float> (v.phase[k]));
@@ -650,7 +664,7 @@ public:
 
 private:
     //-- triggerVoice ----------------------------------------------------------
-    void triggerVoice (int note, float vel,
+    void triggerVoice (int note, float vel, int midiChannel,
                        float inharm, float fmRatio, float stereoSpread,
                        float attackS, float decayS, float sustainLvl, float releaseS,
                        const float grpAtk[4], const float grpDec[4])
@@ -663,6 +677,12 @@ private:
         v.noteNumber   = note;
         v.velocity     = vel;
         v.startTime    = voiceCounter++;
+
+        // Initialize MPE expression for this voice's channel
+        v.mpeExpression.reset();
+        v.mpeExpression.midiChannel = midiChannel;
+        if (mpeManager != nullptr)
+            mpeManager->updateVoiceExpression(v.mpeExpression);
         v.fundamentalHz = midiToFreq (note);
 
         lastFundamentalHz = v.fundamentalHz;
@@ -712,7 +732,7 @@ private:
         }
     }
 
-    void noteOff (int noteNumber)
+    void noteOff (int noteNumber, int midiChannel = 0)
     {
         for (auto& v : voices)
         {
@@ -720,6 +740,11 @@ private:
                 && v.envStage != OrbitalVoice::EnvStage::Release
                 && v.envStage != OrbitalVoice::EnvStage::Off)
             {
+                // In MPE mode, match by channel too
+                if (midiChannel > 0 && v.mpeExpression.midiChannel > 0
+                    && v.mpeExpression.midiChannel != midiChannel)
+                    continue;
+
                 v.envStage = OrbitalVoice::EnvStage::Release;
             }
         }

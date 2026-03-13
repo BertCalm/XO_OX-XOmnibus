@@ -881,6 +881,9 @@ struct BiteVoice
 
     // Cached per-block
     float cachedBaseFreq = 261.63f;
+
+    // MPE per-voice expression state
+    MPEVoiceExpression mpeExpression;
 };
 
 //==============================================================================
@@ -1105,11 +1108,21 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
-                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), maxPoly);
+                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel(), maxPoly);
             else if (msg.isNoteOff())
-                noteOff (msg.getNoteNumber());
+                noteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 allVoicesOff();
+        }
+
+        // --- Update per-voice MPE expression from MPEManager ---
+        if (mpeManager != nullptr)
+        {
+            for (auto& voice : voices)
+            {
+                if (!voice.active) continue;
+                mpeManager->updateVoiceExpression(voice.mpeExpression);
+            }
         }
 
         // Consume coupling accumulators
@@ -1148,6 +1161,8 @@ public:
             voice.modEnv.setParams (modA, modD, modS, modR);
 
             float targetFreq = midiToFreq (voice.noteNumber);
+            // MPE pitch bend
+            targetFreq *= std::pow(2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
             // Glide
             if (glideMode > 0 && glideCoeff > 0.0f && voice.hasPlayedBefore)
             {
@@ -2137,7 +2152,7 @@ private:
     }
 
     //--------------------------------------------------------------------------
-    void noteOn (int noteNumber, float velocity, int maxPoly)
+    void noteOn (int noteNumber, float velocity, int midiChannel, int maxPoly)
     {
         int idx = findFreeVoice (maxPoly);
         auto& v = voices[static_cast<size_t> (idx)];
@@ -2149,6 +2164,12 @@ private:
         v.noteNumber = noteNumber;
         v.velocity = velocity;
         v.age = 0;
+
+        // Initialize MPE expression for this voice's channel
+        v.mpeExpression.reset();
+        v.mpeExpression.midiChannel = midiChannel;
+        if (mpeManager != nullptr)
+            mpeManager->updateVoiceExpression(v.mpeExpression);
 
         float freq = midiToFreq (noteNumber);
         v.oscA.reset();
@@ -2175,12 +2196,17 @@ private:
         v.modEnv.noteOn();
     }
 
-    void noteOff (int noteNumber)
+    void noteOff (int noteNumber, int midiChannel = 0)
     {
         for (auto& v : voices)
         {
             if (v.active && v.noteNumber == noteNumber)
             {
+                // In MPE mode, match by channel too
+                if (midiChannel > 0 && v.mpeExpression.midiChannel > 0
+                    && v.mpeExpression.midiChannel != midiChannel)
+                    continue;
+
                 v.ampEnv.noteOff();
                 v.filterEnv.noteOff();
                 v.modEnv.noteOff();

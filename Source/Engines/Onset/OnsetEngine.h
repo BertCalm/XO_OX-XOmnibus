@@ -837,6 +837,9 @@ struct OnsetVoice
     float velocity = 1.0f;
     bool triggeredThisBlock = false;
 
+    // MPE per-voice expression state
+    MPEVoiceExpression mpeExpression;
+
     void prepare (double sampleRate)
     {
         sr = static_cast<float> (sampleRate);
@@ -861,7 +864,7 @@ struct OnsetVoice
         active = true;
         triggeredThisBlock = true;
 
-        float freq = baseFreq * fastExp (pitch * (0.693147f / 12.0f));
+        float freq = baseFreq * fastExp ((pitch + mpeExpression.pitchBendSemitones) * (0.693147f / 12.0f));
 
         // Trigger Layer X
         switch (circuitType)
@@ -1162,6 +1165,13 @@ public:
                 if (voiceIdx == 2 && hatChokeEnabled) voices[3].choke();
 
                 float vel = msg.getFloatVelocity();
+
+                // Initialize MPE expression for this voice's channel (before trigger, which reads pitch bend)
+                voices[voiceIdx].mpeExpression.reset();
+                voices[voiceIdx].mpeExpression.midiChannel = msg.getChannel();
+                if (mpeManager != nullptr)
+                    mpeManager->updateVoiceExpression(voices[voiceIdx].mpeExpression);
+
                 voices[voiceIdx].triggerVoice (vel, vBlend[voiceIdx], vAlgo[voiceIdx],
                     vPitch[voiceIdx], vDecay[voiceIdx], vTone[voiceIdx],
                     vSnap[voiceIdx], vBody[voiceIdx], vChar[voiceIdx],
@@ -1171,6 +1181,16 @@ public:
             {
                 int voiceIdx = noteToVoice (msg.getNoteNumber());
                 if (voiceIdx >= 0) voices[voiceIdx].releaseVoice();
+            }
+        }
+
+        // --- Update per-voice MPE expression from MPEManager ---
+        if (mpeManager != nullptr)
+        {
+            for (int v = 0; v < kNumVoices; ++v)
+            {
+                if (!voices[v].active) continue;
+                mpeManager->updateVoiceExpression(voices[v].mpeExpression);
             }
         }
 

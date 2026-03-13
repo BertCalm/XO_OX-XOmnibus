@@ -274,6 +274,9 @@ struct OrigamiVoice
     float fadeGain = 1.0f;
     bool fadingOut = false;
 
+    // MPE per-voice expression state
+    MPEVoiceExpression mpeExpression;
+
     void reset() noexcept
     {
         active = false;
@@ -471,13 +474,23 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
-                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), maxPoly, monoMode, legatoMode, glideCoeff,
+                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel(), maxPoly, monoMode, legatoMode, glideCoeff,
                         pAmpA, pAmpD, pAmpS, pAmpR, pFoldA, pFoldD, pFoldS, pFoldR,
                         pLfo1R, pLfo1D, pLfo1S, pLfo2R, pLfo2D, pLfo2S);
             else if (msg.isNoteOff())
-                noteOff (msg.getNoteNumber());
+                noteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
+        }
+
+        // --- Update per-voice MPE expression from MPEManager ---
+        if (mpeManager != nullptr)
+        {
+            for (auto& voice : voices)
+            {
+                if (!voice.active) continue;
+                mpeManager->updateVoiceExpression(voice.mpeExpression);
+            }
         }
 
         float peakEnv = 0.0f;
@@ -535,6 +548,7 @@ public:
 
                 // --- Generate source signal ---
                 float freq = voice.currentFreq;
+                freq *= std::pow(2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
                 float phaseInc = freq / srf;
 
                 // Saw oscillator (naive, anti-aliased by FFT process)
@@ -1373,7 +1387,7 @@ private:
     // MIDI note handling.
     //==========================================================================
 
-    void noteOn (int noteNumber, float velocity, int maxPoly,
+    void noteOn (int noteNumber, float velocity, int midiChannel, int maxPoly,
                  bool monoMode, bool legatoMode, float glideCoeff,
                  float ampA, float ampD, float ampS, float ampR,
                  float foldA, float foldD, float foldS, float foldR,
@@ -1419,6 +1433,12 @@ private:
                 voice.lfo2.setRate (lfo2Rate, srf);
                 voice.lfo2.setShape (lfo2Shape);
             }
+
+            // Initialize MPE expression for this voice's channel
+            voice.mpeExpression.reset();
+            voice.mpeExpression.midiChannel = midiChannel;
+            if (mpeManager != nullptr)
+                mpeManager->updateVoiceExpression(voice.mpeExpression);
             return;
         }
 
@@ -1447,6 +1467,12 @@ private:
         voice.hopCounter = 0;
         voice.hasFrozenFrame = false;
 
+        // Initialize MPE expression for this voice's channel
+        voice.mpeExpression.reset();
+        voice.mpeExpression.midiChannel = midiChannel;
+        if (mpeManager != nullptr)
+            mpeManager->updateVoiceExpression(voice.mpeExpression);
+
         // Clear STFT buffers for clean start
         voice.inputRing.fill (0.0f);
         voice.outputAccum.fill (0.0f);
@@ -1469,12 +1495,17 @@ private:
         voice.postFilter.setCoefficients (18000.0f, 0.1f, srf);
     }
 
-    void noteOff (int noteNumber)
+    void noteOff (int noteNumber, int midiChannel = 0)
     {
         for (auto& voice : voices)
         {
             if (voice.active && voice.noteNumber == noteNumber && !voice.fadingOut)
             {
+                // In MPE mode, match by channel too
+                if (midiChannel > 0 && voice.mpeExpression.midiChannel > 0
+                    && voice.mpeExpression.midiChannel != midiChannel)
+                    continue;
+
                 voice.ampEnv.noteOff();
                 voice.foldEnv.noteOff();
             }

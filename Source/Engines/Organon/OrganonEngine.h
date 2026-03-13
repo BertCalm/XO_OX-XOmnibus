@@ -482,6 +482,9 @@ struct OrganonVoice
     // Phason shift: per-voice phase offset for metabolic control-rate stagger
     int phasonOffset = 0;
 
+    // MPE per-voice expression state
+    MPEVoiceExpression mpeExpression;
+
     void noteOn (int note, float vel, uint64_t time, double sampleRate) noexcept
     {
         active = true;
@@ -653,13 +656,23 @@ public:
         {
             auto msg = metadata.getMessage();
             if (msg.isNoteOn())
-                handleNoteOn (msg.getNoteNumber(), msg.getFloatVelocity());
+                handleNoteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel());
             else if (msg.isNoteOff())
-                handleNoteOff (msg.getNoteNumber());
+                handleNoteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
             {
                 for (auto& voice : voices)
                     voice.resetVoice();
+            }
+        }
+
+        // --- Update per-voice MPE expression from MPEManager ---
+        if (mpeManager != nullptr)
+        {
+            for (auto& voice : voices)
+            {
+                if (!voice.active) continue;
+                mpeManager->updateVoiceExpression(voice.mpeExpression);
             }
         }
 
@@ -822,8 +835,9 @@ public:
                 }
 
                 // --- ANABOLISM ---
-                float fundamental = midiToFreq (voice.noteNumber) +
-                                    externalPitchMod * 20.0f; // ±10 semitones at mod=±0.5
+                float fundamental = midiToFreq (voice.noteNumber)
+                                    * std::pow(2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f)
+                                    + externalPitchMod * 20.0f; // ±10 semitones at mod=±0.5
                 if (fundamental < 20.0f) fundamental = 20.0f;
 
                 // VFE modulates isotope balance: surprise shifts spectral character
@@ -1064,7 +1078,7 @@ private:
 
     //-- Voice management ------------------------------------------------------
 
-    void handleNoteOn (int note, float velocity) noexcept
+    void handleNoteOn (int note, float velocity, int midiChannel = 0) noexcept
     {
         ++noteCounter;
 
@@ -1097,14 +1111,25 @@ private:
         }
 
         voices[freeSlot].noteOn (note, velocity, noteCounter, sr);
+
+        // Initialize MPE expression for this voice's channel
+        voices[freeSlot].mpeExpression.reset();
+        voices[freeSlot].mpeExpression.midiChannel = midiChannel;
+        if (mpeManager != nullptr)
+            mpeManager->updateVoiceExpression(voices[freeSlot].mpeExpression);
     }
 
-    void handleNoteOff (int note) noexcept
+    void handleNoteOff (int note, int midiChannel = 0) noexcept
     {
         for (auto& voice : voices)
         {
             if (voice.active && !voice.released && voice.noteNumber == note)
             {
+                // In MPE mode, match by channel too
+                if (midiChannel > 0 && voice.mpeExpression.midiChannel > 0
+                    && voice.mpeExpression.midiChannel != midiChannel)
+                    continue;
+
                 voice.noteOff();
                 break; // release only one voice per note-off
             }

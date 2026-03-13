@@ -198,6 +198,9 @@ struct MorphVoice
     // Drift (Perlin-like smooth noise)
     float driftPhase = 0.0f;
     float driftValue = 0.0f;
+
+    // MPE per-voice expression state
+    MPEVoiceExpression mpeExpression;
 };
 
 //==============================================================================
@@ -303,11 +306,11 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
-                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), detuneCts, effectiveMorph, cutoff, reso, maxPoly);
+                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel(), detuneCts, effectiveMorph, cutoff, reso, maxPoly);
             else if (msg.isNoteOff())
             {
                 if (!sustainPedalDown)
-                    noteOff (msg.getNoteNumber());
+                    noteOff (msg.getNoteNumber(), msg.getChannel());
             }
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
             {
@@ -336,6 +339,16 @@ public:
                     // CC1 modwheel → sweep morph position (0→no change, 1→morph+=3)
                     modWheelMorph = static_cast<float> (msg.getControllerValue()) / 127.0f * 3.0f;
                 }
+            }
+        }
+
+        // --- Update per-voice MPE expression from MPEManager ---
+        if (mpeManager != nullptr)
+        {
+            for (auto& voice : voices)
+            {
+                if (!voice.active) continue;
+                mpeManager->updateVoiceExpression(voice.mpeExpression);
             }
         }
 
@@ -392,7 +405,8 @@ public:
                 // Generate oscillator mix (3 detuned oscillators)
                 float oscMix = 0.0f;
                 float detuneSpread[3] = { -detuneCts, 0.0f, detuneCts };
-                float baseFreq = midiToHz (static_cast<float> (voice.noteNumber));
+                float baseMidi = static_cast<float> (voice.noteNumber) + voice.mpeExpression.pitchBendSemitones;
+                float baseFreq = midiToHz (baseMidi);
 
                 for (int i = 0; i < 3; ++i)
                 {
@@ -594,7 +608,7 @@ public:
 
 private:
     //--------------------------------------------------------------------------
-    void noteOn (int noteNumber, float velocity, float detuneCents,
+    void noteOn (int noteNumber, float velocity, int midiChannel, float detuneCents,
                  float morphPos, float cutoff, float reso, int maxPoly)
     {
         int idx = findFreeVoice (maxPoly);
@@ -610,6 +624,12 @@ private:
         voice.noteNumber = noteNumber;
         voice.velocity = velocity;
         voice.startTime = voiceCounter++;
+
+        // Initialize MPE expression for this voice's channel
+        voice.mpeExpression.reset();
+        voice.mpeExpression.midiChannel = midiChannel;
+        if (mpeManager != nullptr)
+            mpeManager->updateVoiceExpression(voice.mpeExpression);
         voice.envStage = MorphVoice::Attack;
         voice.envLevel = 0.0f;
 
@@ -639,12 +659,17 @@ private:
         voice.driftPhase = rng.nextFloat();
     }
 
-    void noteOff (int noteNumber)
+    void noteOff (int noteNumber, int midiChannel = 0)
     {
         for (auto& voice : voices)
         {
             if (voice.active && !voice.releasing && voice.noteNumber == noteNumber)
             {
+                // In MPE mode, match by channel too
+                if (midiChannel > 0 && voice.mpeExpression.midiChannel > 0
+                    && voice.mpeExpression.midiChannel != midiChannel)
+                    continue;
+
                 voice.releasing = true;
                 voice.envStage = MorphVoice::Release;
             }

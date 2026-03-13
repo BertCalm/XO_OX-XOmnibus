@@ -350,6 +350,9 @@ struct OracleVoice
     float lastOutputL = 0.0f;
     float lastOutputR = 0.0f;
 
+    // MPE per-voice expression state
+    MPEVoiceExpression mpeExpression;
+
     // Previous cycle output for crossfade smoothing at cycle boundary
     float prevCycleLastSample = 0.0f;
     int cycleBlendCounter = 0;
@@ -545,16 +548,26 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
-                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
+                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel(),
                         maxPoly, monoMode, legatoMode, glideCoeffCalc,
                         pBpCount, effectiveMaqam, effectiveGravity,
                         pAmpA, pAmpD, pAmpS, pAmpR,
                         pStochA, pStochD, pStochS, pStochR,
                         pLfo1R, pLfo1D, pLfo1S, pLfo2R, pLfo2D, pLfo2S);
             else if (msg.isNoteOff())
-                noteOff (msg.getNoteNumber());
+                noteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
+        }
+
+        // --- Update per-voice MPE expression from MPEManager ---
+        if (mpeManager != nullptr)
+        {
+            for (auto& voice : voices)
+            {
+                if (!voice.active) continue;
+                mpeManager->updateVoiceExpression(voice.mpeExpression);
+            }
         }
 
         float peakEnv = 0.0f;
@@ -614,6 +627,7 @@ public:
 
                 // --- Phase increment ---
                 float freq = voice.currentFreq;
+                freq *= std::pow(2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
                 voice.wavePhaseInc = freq / srf;
 
                 // --- Advance waveform phase ---
@@ -1267,7 +1281,7 @@ private:
     // MIDI note handling.
     //==========================================================================
 
-    void noteOn (int noteNumber, float velocity, int maxPoly,
+    void noteOn (int noteNumber, float velocity, int midiChannel, int maxPoly,
                  bool monoMode, bool legatoMode, float glideCoeffVal,
                  int bpCount, int maqamIdx, float gravity,
                  float ampA, float ampD, float ampS, float ampR,
@@ -1325,6 +1339,12 @@ private:
                 voice.dcBlockerR.prepare (srf);
                 voice.dcBlockerR.reset();
             }
+
+            // Initialize MPE expression for this voice's channel
+            voice.mpeExpression.reset();
+            voice.mpeExpression.midiChannel = midiChannel;
+            if (mpeManager != nullptr)
+                mpeManager->updateVoiceExpression(voice.mpeExpression);
             return;
         }
 
@@ -1351,6 +1371,12 @@ private:
         voice.fadeGain = 1.0f;
         voice.cycleBlendCounter = 0;
 
+        // Initialize MPE expression for this voice's channel
+        voice.mpeExpression.reset();
+        voice.mpeExpression.midiChannel = midiChannel;
+        if (mpeManager != nullptr)
+            mpeManager->updateVoiceExpression(voice.mpeExpression);
+
         // Seed PRNG from note number + voice counter for unique variation
         voice.rng.seed (static_cast<uint64_t> (noteNumber)
                       * 2654435761ULL + voiceCounter);
@@ -1375,13 +1401,18 @@ private:
         voice.dcBlockerR.reset();
     }
 
-    void noteOff (int noteNumber)
+    void noteOff (int noteNumber, int midiChannel = 0)
     {
         for (auto& voice : voices)
         {
             if (voice.active && voice.noteNumber == noteNumber
                 && !voice.fadingOut)
             {
+                // In MPE mode, match by channel too
+                if (midiChannel > 0 && voice.mpeExpression.midiChannel > 0
+                    && voice.mpeExpression.midiChannel != midiChannel)
+                    continue;
+
                 voice.ampEnv.noteOff();
                 voice.stochEnv.noteOff();
             }

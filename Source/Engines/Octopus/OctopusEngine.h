@@ -263,6 +263,9 @@ struct OctoVoice
     float velocity = 0.0f;
     uint64_t startTime = 0;
 
+    // MPE per-voice expression state
+    MPEVoiceExpression mpeExpression;
+
     // Shapeshifter — boneless pitch
     float currentFreq = 440.0f;
     float targetFreq = 440.0f;
@@ -545,7 +548,7 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
-                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), maxPoly, monoMode, legatoMode, glideCoeff,
+                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel(), maxPoly, monoMode, legatoMode, glideCoeff,
                         pAmpA, pAmpD, pAmpS, pAmpR, pModA, pModD, pModS, pModR,
                         pSuckerDecay,
                         pLfo1Rate, pLfo1Depth, pLfo1Shape, pLfo2Rate, pLfo2Depth, pLfo2Shape,
@@ -553,9 +556,19 @@ public:
                         pInkThreshold, pInkDensity, effectiveInkDecay,
                         pShiftMicro);
             else if (msg.isNoteOff())
-                noteOff (msg.getNoteNumber());
+                noteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
+        }
+
+        // --- Update per-voice MPE expression from MPEManager ---
+        if (mpeManager != nullptr)
+        {
+            for (auto& voice : voices)
+            {
+                if (!voice.active) continue;
+                mpeManager->updateVoiceExpression(voice.mpeExpression);
+            }
         }
 
         // --- Update per-voice filter coefficients once per block ---

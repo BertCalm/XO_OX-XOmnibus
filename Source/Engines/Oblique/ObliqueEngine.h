@@ -434,6 +434,9 @@ struct ObliqueVoice
     float velocity = 0.0f;
     uint64_t startTime = 0;
 
+    // MPE per-voice expression state
+    MPEVoiceExpression mpeExpression;
+
     // Oscillators — dual osc for body + color
     PolyBLEP oscA;       // Primary body (Saw/Square/Pulse)
     PolyBLEP oscB;       // Secondary color (detuned for width)
@@ -580,12 +583,22 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
-                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
+                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel(),
                         oscWaveIdx, oscDetune, glide, bounceRate, clickTone);
             else if (msg.isNoteOff())
-                noteOff (msg.getNoteNumber());
+                noteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
+        }
+
+        // --- Update per-voice MPE expression from MPEManager ---
+        if (mpeManager != nullptr)
+        {
+            for (auto& v : voices)
+            {
+                if (!v.active) continue;
+                mpeManager->updateVoiceExpression(v.mpeExpression);
+            }
         }
 
         // Consume coupling
@@ -677,7 +690,7 @@ public:
                 {
                     v.currentFreq = v.targetFreq;
                 }
-                float freq = v.currentFreq * std::pow (2.0f, pitchMod);
+                float freq = v.currentFreq * std::pow (2.0f, pitchMod + v.mpeExpression.pitchBendSemitones / 12.0f);
 
                 // ---- Dual Oscillator ----
                 v.oscA.setFrequency (freq, srf);
@@ -1026,7 +1039,7 @@ private:
     // MIDI handlers
     //--------------------------------------------------------------------------
 
-    void noteOn (int noteNumber, float velocity, int oscWaveIdx, float detuneCents,
+    void noteOn (int noteNumber, float velocity, int midiChannel, int oscWaveIdx, float detuneCents,
                  float glide, float bounceRate, float clickTone) noexcept
     {
         // Find free voice or steal oldest
@@ -1063,6 +1076,12 @@ private:
         v.envStage = 0.0f;
         v.envLevel = 0.0f;
 
+        // Initialize MPE expression for this voice's channel
+        v.mpeExpression.reset();
+        v.mpeExpression.midiChannel = midiChannel;
+        if (mpeManager != nullptr)
+            mpeManager->updateVoiceExpression(v.mpeExpression);
+
         // Set oscillator waveform
         PolyBLEP::Waveform wf;
         switch (oscWaveIdx)
@@ -1096,12 +1115,17 @@ private:
         v.filter.setMode (CytomicSVF::Mode::LowPass);
     }
 
-    void noteOff (int noteNumber) noexcept
+    void noteOff (int noteNumber, int midiChannel = 0) noexcept
     {
         for (auto& v : voices)
         {
             if (v.active && v.noteNumber == noteNumber && !v.releasing)
             {
+                // In MPE mode, match by channel too
+                if (midiChannel > 0 && v.mpeExpression.midiChannel > 0
+                    && v.mpeExpression.midiChannel != midiChannel)
+                    continue;
+
                 v.releasing = true;
                 break;
             }

@@ -317,6 +317,9 @@ struct OuroborosVoice
     float injectionBoost = 0.0f;
     float injectionBoostDecay = 0.0f;
 
+    // MPE per-voice expression state
+    MPEVoiceExpression mpeExpression;
+
     void prepare (double sampleRate) noexcept
     {
         dcBlockerL.prepare (sampleRate);
@@ -578,13 +581,23 @@ public:
         {
             auto msg = metadata.getMessage();
             if (msg.isNoteOn())
-                handleNoteOn (msg.getNoteNumber(), msg.getFloatVelocity());
+                handleNoteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel());
             else if (msg.isNoteOff())
-                handleNoteOff (msg.getNoteNumber());
+                handleNoteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
             {
                 for (auto& voice : voices)
                     voice.resetVoice();
+            }
+        }
+
+        // --- Update per-voice MPE expression from MPEManager ---
+        if (mpeManager != nullptr)
+        {
+            for (auto& voice : voices)
+            {
+                if (!voice.active) continue;
+                mpeManager->updateVoiceExpression(voice.mpeExpression);
             }
         }
 
@@ -623,6 +636,7 @@ public:
                 // If noteNumber is valid, use MIDI pitch; otherwise fall back to rate param (drone mode)
                 float targetFreq = (voice.noteNumber >= 0)
                     ? midiToFreq (voice.noteNumber)
+                      * std::pow(2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f)
                     : rate;
                 targetFreq += externalPitchMod * 20.0f;
                 if (targetFreq < 20.0f) targetFreq = 20.0f;
@@ -999,7 +1013,7 @@ private:
 
     //-- Voice management ------------------------------------------------------
 
-    void handleNoteOn (int note, float velocity) noexcept
+    void handleNoteOn (int note, float velocity, int midiChannel = 0) noexcept
     {
         ++noteCounter;
 
@@ -1035,14 +1049,25 @@ private:
         voices[freeSlot].syncedAttractor.topology = currentTopology;
 
         voices[freeSlot].noteOn (note, velocity, noteCounter, sr);
+
+        // Initialize MPE expression for this voice's channel
+        voices[freeSlot].mpeExpression.reset();
+        voices[freeSlot].mpeExpression.midiChannel = midiChannel;
+        if (mpeManager != nullptr)
+            mpeManager->updateVoiceExpression(voices[freeSlot].mpeExpression);
     }
 
-    void handleNoteOff (int note) noexcept
+    void handleNoteOff (int note, int midiChannel = 0) noexcept
     {
         for (auto& voice : voices)
         {
             if (voice.active && !voice.released && voice.noteNumber == note)
             {
+                // In MPE mode, match by channel too
+                if (midiChannel > 0 && voice.mpeExpression.midiChannel > 0
+                    && voice.mpeExpression.midiChannel != midiChannel)
+                    continue;
+
                 voice.noteOff();
                 break;
             }

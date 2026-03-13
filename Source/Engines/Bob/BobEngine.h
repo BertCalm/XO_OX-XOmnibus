@@ -995,6 +995,9 @@ struct BobVoice
 
     // Cached per-block (avoids std::pow in inner loop)
     float cachedBaseFreq = 261.63f;
+
+    // MPE per-voice expression state
+    MPEVoiceExpression mpeExpression;
 };
 
 //==============================================================================
@@ -1142,12 +1145,22 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
-                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
+                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel(),
                         glideAmt, voiceMode, maxPoly);
             else if (msg.isNoteOff())
-                noteOff (msg.getNoteNumber());
+                noteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 allVoicesOff();
+        }
+
+        // --- Update per-voice MPE expression from MPEManager ---
+        if (mpeManager != nullptr)
+        {
+            for (auto& voice : voices)
+            {
+                if (!voice.active) continue;
+                mpeManager->updateVoiceExpression(voice.mpeExpression);
+            }
         }
 
         // Consume coupling accumulators
@@ -1220,8 +1233,9 @@ public:
                 // Curiosity modulates filter cutoff
                 lfoCutoffMod += curOut.curiosity * 0.5f;
 
-                // Apply pitch modulation (fastExp avoids std::pow per sample)
-                float totalPitch = lfoPitchMod * 2.0f + pitchMod;
+                // Apply pitch modulation (fastExp avoids std::pow per sample) + MPE
+                float totalPitch = lfoPitchMod * 2.0f + pitchMod
+                                 + voice.mpeExpression.pitchBendSemitones;
                 float freq = baseFreq * fastExp (totalPitch * (0.693147f / 12.0f));
 
                 // OscA
@@ -1572,7 +1586,7 @@ public:
 
 private:
     //--------------------------------------------------------------------------
-    void noteOn (int noteNumber, float velocity, float glideAmt,
+    void noteOn (int noteNumber, float velocity, int midiChannel, float glideAmt,
                  int voiceMode, int maxPoly)
     {
         if (voiceMode == 1 || voiceMode == 2)
@@ -1594,6 +1608,12 @@ private:
             v.noteNumber = noteNumber;
             v.velocity = velocity;
             v.age = 0;
+
+            // Initialize MPE expression for this voice's channel
+            v.mpeExpression.reset();
+            v.mpeExpression.midiChannel = midiChannel;
+            if (mpeManager != nullptr)
+                mpeManager->updateVoiceExpression(v.mpeExpression);
 
             if (legatoRetrigger)
             {
@@ -1620,6 +1640,13 @@ private:
         v.noteNumber = noteNumber;
         v.velocity = velocity;
         v.age = 0;
+
+        // Initialize MPE expression for this voice's channel
+        v.mpeExpression.reset();
+        v.mpeExpression.midiChannel = midiChannel;
+        if (mpeManager != nullptr)
+            mpeManager->updateVoiceExpression(v.mpeExpression);
+
         v.ampEnv.noteOn();
         v.motionEnv.noteOn();
         v.curiosity.reset();
@@ -1630,14 +1657,21 @@ private:
         v.dustTape.reset();
     }
 
-    void noteOff (int noteNumber)
+    void noteOff (int noteNumber, int midiChannel = 0)
     {
         for (auto& v : voices)
+        {
             if (v.active && v.noteNumber == noteNumber)
             {
+                // In MPE mode, match by channel too
+                if (midiChannel > 0 && v.mpeExpression.midiChannel > 0
+                    && v.mpeExpression.midiChannel != midiChannel)
+                    continue;
+
                 v.ampEnv.noteOff();
                 v.motionEnv.noteOff();
             }
+        }
     }
 
     void allVoicesOff()

@@ -495,6 +495,9 @@ struct DubVoice
     float currentFreq = 261.63f;
     float glideSourceFreq = 261.63f;
     bool glideActive = false;
+
+    // MPE per-voice expression state
+    MPEVoiceExpression mpeExpression;
 };
 
 //==============================================================================
@@ -667,12 +670,22 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
-                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
+                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel(),
                         oscOctaveIdx, oscTune, glideAmt, voiceMode, maxPoly);
             else if (msg.isNoteOff())
-                noteOff (msg.getNoteNumber());
+                noteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 allVoicesOff();
+        }
+
+        // --- Update per-voice MPE expression from MPEManager ---
+        if (mpeManager != nullptr)
+        {
+            for (auto& voice : voices)
+            {
+                if (!voice.active) continue;
+                mpeManager->updateVoiceExpression(voice.mpeExpression);
+            }
         }
 
         // Consume coupling accumulators
@@ -734,11 +747,12 @@ public:
                     baseFreq = voice.glideSourceFreq;
                 }
 
-                // Pitch modulation: pitch env + drift + LFO + coupling
+                // Pitch modulation: pitch env + drift + LFO + coupling + MPE
                 float pitchOffset = voice.pitchEnv.process();
                 float driftCents = voice.drift.process (driftAmt);
                 float totalSemitones = pitchOffset + driftCents / 100.0f
-                                     + lfoPitchMod * 2.0f + pitchMod;
+                                     + lfoPitchMod * 2.0f + pitchMod
+                                     + voice.mpeExpression.pitchBendSemitones;
                 float freq = baseFreq * fastExp (totalSemitones * (0.693147f / 12.0f));
 
                 // Generate oscillators
@@ -1125,7 +1139,7 @@ public:
 
 private:
     //--------------------------------------------------------------------------
-    void noteOn (int noteNumber, float velocity,
+    void noteOn (int noteNumber, float velocity, int midiChannel,
                  int oscOctaveIdx, float oscTune, float glideAmt,
                  int voiceMode, int maxPoly)
     {
@@ -1154,6 +1168,12 @@ private:
             v.velocity = velocity;
             v.age = 0;
 
+            // Initialize MPE expression for this voice's channel
+            v.mpeExpression.reset();
+            v.mpeExpression.midiChannel = midiChannel;
+            if (mpeManager != nullptr)
+                mpeManager->updateVoiceExpression(v.mpeExpression);
+
             if (legatoRetrigger)
             {
                 v.ampEnv.noteOn();
@@ -1181,6 +1201,13 @@ private:
         v.noteNumber = noteNumber;
         v.velocity = velocity;
         v.age = 0;
+
+        // Initialize MPE expression for this voice's channel
+        v.mpeExpression.reset();
+        v.mpeExpression.midiChannel = midiChannel;
+        if (mpeManager != nullptr)
+            mpeManager->updateVoiceExpression(v.mpeExpression);
+
         v.ampEnv.noteOn();
         v.pitchEnv.trigger();
         v.mainOsc.reset();
@@ -1188,11 +1215,20 @@ private:
         v.filter.reset();
     }
 
-    void noteOff (int noteNumber)
+    void noteOff (int noteNumber, int midiChannel = 0)
     {
         for (auto& v : voices)
+        {
             if (v.active && v.noteNumber == noteNumber)
+            {
+                // In MPE mode, match by channel too
+                if (midiChannel > 0 && v.mpeExpression.midiChannel > 0
+                    && v.mpeExpression.midiChannel != midiChannel)
+                    continue;
+
                 v.ampEnv.noteOff();
+            }
+        }
     }
 
     // Lightweight voice kill — no FX buffer clearing (FX tails persist, dub behavior).

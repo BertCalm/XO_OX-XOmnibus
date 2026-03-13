@@ -235,6 +235,9 @@ struct ObscuraVoice
     float velocity = 0.0f;
     uint64_t startTime = 0;
 
+    // MPE per-voice expression state
+    MPEVoiceExpression mpeExpression;
+
     // Mass-spring chain state (Verlet integration needs current + previous)
     float chain[kChainSize] = {};
     float chainPrev[kChainSize] = {};
@@ -547,16 +550,26 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
-                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), maxPoly,
+                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel(), maxPoly,
                         monoMode, legatoMode, glideCoeff,
                         pAmpA, pAmpD, pAmpS, pAmpR,
                         pPhysA, pPhysD, pPhysS, pPhysR,
                         pLfo1R, pLfo1D, pLfo1S, pLfo2R, pLfo2D, pLfo2S,
                         initShapeIdx, pExcPosVal, pExcWidthVal);
             else if (msg.isNoteOff())
-                noteOff (msg.getNoteNumber());
+                noteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
+        }
+
+        // --- Update per-voice MPE expression from MPEManager ---
+        if (mpeManager != nullptr)
+        {
+            for (auto& voice : voices)
+            {
+                if (!voice.active) continue;
+                mpeManager->updateVoiceExpression(voice.mpeExpression);
+            }
         }
 
         // If coupling triggered an impulse, apply to all active voices
@@ -690,7 +703,8 @@ public:
                 interpFrac = clamp (interpFrac, 0.0f, 1.0f);
 
                 // --- Scanner: sweep across chain at MIDI note frequency ---
-                float scanInc = voice.currentFreq / srf;
+                float scanFreq = voice.currentFreq * std::pow (2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
+                float scanInc = scanFreq / srf;
 
                 // Forward scan (L channel)
                 float scanPosL = voice.scanPhase;
@@ -1173,7 +1187,7 @@ private:
     // MIDI note handling.
     //==========================================================================
 
-    void noteOn (int noteNumber, float velocity, int maxPoly,
+    void noteOn (int noteNumber, float velocity, int midiChannel, int maxPoly,
                  bool monoMode, bool legatoMode, float glideCoeff,
                  float ampA, float ampD, float ampS, float ampR,
                  float physA, float physD, float physS, float physR,
@@ -1197,6 +1211,12 @@ private:
                 voice.noteNumber = noteNumber;
                 voice.velocity = velocity;
 
+                // Initialize MPE expression for this voice's channel
+                voice.mpeExpression.reset();
+                voice.mpeExpression.midiChannel = midiChannel;
+                if (mpeManager != nullptr)
+                    mpeManager->updateVoiceExpression(voice.mpeExpression);
+
                 // Re-excite chain gently on legato retrigger
                 voice.applyImpulse (excitePos, exciteWidth, 0.05f);
             }
@@ -1212,6 +1232,12 @@ private:
                 voice.controlPhaseAcc = 0.0f;
                 voice.fadingOut = false;
                 voice.fadeGain = 1.0f;
+
+                // Initialize MPE expression for this voice's channel
+                voice.mpeExpression.reset();
+                voice.mpeExpression.midiChannel = midiChannel;
+                if (mpeManager != nullptr)
+                    mpeManager->updateVoiceExpression(voice.mpeExpression);
 
                 voice.ampEnv.setParams (ampA, ampD, ampS, ampR, srf);
                 voice.ampEnv.noteOn();
@@ -1258,6 +1284,12 @@ private:
         voice.fadingOut = false;
         voice.fadeGain = 1.0f;
 
+        // Initialize MPE expression for this voice's channel
+        voice.mpeExpression.reset();
+        voice.mpeExpression.midiChannel = midiChannel;
+        if (mpeManager != nullptr)
+            mpeManager->updateVoiceExpression(voice.mpeExpression);
+
         voice.ampEnv.setParams (ampA, ampD, ampS, ampR, srf);
         voice.ampEnv.noteOn();
         voice.physEnv.setParams (physA, physD, physS, physR, srf);
@@ -1280,12 +1312,17 @@ private:
         voice.initChainShape (initShapeIdx, excitePos, exciteWidth);
     }
 
-    void noteOff (int noteNumber)
+    void noteOff (int noteNumber, int midiChannel = 0)
     {
         for (auto& voice : voices)
         {
             if (voice.active && voice.noteNumber == noteNumber && !voice.fadingOut)
             {
+                // In MPE mode, match by channel too
+                if (midiChannel > 0 && voice.mpeExpression.midiChannel > 0
+                    && voice.mpeExpression.midiChannel != midiChannel)
+                    continue;
+
                 voice.ampEnv.noteOff();
                 voice.physEnv.noteOff();
             }

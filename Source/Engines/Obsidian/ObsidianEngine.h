@@ -235,6 +235,9 @@ struct ObsidianVoice
     // Stiffness: cached partial frequency ratios (first 16 partials)
     float partialRatios[16] = {};
 
+    // MPE per-voice expression state
+    MPEVoiceExpression mpeExpression;
+
     void reset() noexcept
     {
         active = false;
@@ -422,14 +425,24 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
-                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), maxPoly, monoMode, legatoMode, glideCoeff,
+                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel(), maxPoly, monoMode, legatoMode, glideCoeff,
                         pAmpA, pAmpD, pAmpS, pAmpR, pPdA, pPdD, pPdS, pPdR,
                         pLfo1R, pLfo1D, pLfo1S, pLfo2R, pLfo2D, pLfo2S,
                         effectiveCutoff, pResoVal, B);
             else if (msg.isNoteOff())
-                noteOff (msg.getNoteNumber());
+                noteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
+        }
+
+        // --- Update per-voice MPE expression from MPEManager ---
+        if (mpeManager != nullptr)
+        {
+            for (auto& voice : voices)
+            {
+                if (!voice.active) continue;
+                mpeManager->updateVoiceExpression(voice.mpeExpression);
+            }
         }
 
         // --- Update per-voice filter coefficients once per block ---
@@ -499,6 +512,7 @@ public:
 
                 // --- Phase increment ---
                 float freq = voice.currentFreq;
+                freq *= std::pow(2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
                 float phaseInc = freq / srf;
 
                 // --- PD Stage 1 (L channel) ---
@@ -1080,7 +1094,7 @@ private:
     // MIDI note handling.
     //==========================================================================
 
-    void noteOn (int noteNumber, float velocity, int maxPoly,
+    void noteOn (int noteNumber, float velocity, int midiChannel, int maxPoly,
                  bool monoMode, bool legatoMode, float glideCoeff,
                  float ampA, float ampD, float ampS, float ampR,
                  float pdA, float pdD, float pdS, float pdR,
@@ -1129,6 +1143,12 @@ private:
 
                 setupVoiceFilters (voice, cutoff, reso, stiffnessB);
             }
+
+            // Initialize MPE expression for this voice's channel
+            voice.mpeExpression.reset();
+            voice.mpeExpression.midiChannel = midiChannel;
+            if (mpeManager != nullptr)
+                mpeManager->updateVoiceExpression(voice.mpeExpression);
             return;
         }
 
@@ -1155,6 +1175,12 @@ private:
         voice.fadingOut = false;
         voice.fadeGain = 1.0f;
 
+        // Initialize MPE expression for this voice's channel
+        voice.mpeExpression.reset();
+        voice.mpeExpression.midiChannel = midiChannel;
+        if (mpeManager != nullptr)
+            mpeManager->updateVoiceExpression(voice.mpeExpression);
+
         voice.ampEnv.setParams (ampA, ampD, ampS, ampR, srf);
         voice.ampEnv.noteOn();
         voice.pdEnv.setParams (pdA, pdD, pdS, pdR, srf);
@@ -1170,12 +1196,17 @@ private:
         setupVoiceFilters (voice, cutoff, reso, stiffnessB);
     }
 
-    void noteOff (int noteNumber)
+    void noteOff (int noteNumber, int midiChannel = 0)
     {
         for (auto& voice : voices)
         {
             if (voice.active && voice.noteNumber == noteNumber && !voice.fadingOut)
             {
+                // In MPE mode, match by channel too
+                if (midiChannel > 0 && voice.mpeExpression.midiChannel > 0
+                    && voice.mpeExpression.midiChannel != midiChannel)
+                    continue;
+
                 voice.ampEnv.noteOff();
                 voice.pdEnv.noteOff();
             }
