@@ -626,6 +626,7 @@ static void testCoverArtRegression()
         { "OCEANIC",   "OCEANIC" },
         { "OPTIC",     "OPTIC" },
         { "OBLIQUE",   "OBLIQUE" },
+        { "ORBITAL",   "ORBITAL" },
     };
 
     for (auto& e : engines)

@@ -1,4 +1,5 @@
 #pragma once
+#include <mutex>
 #include <juce_gui_basics/juce_gui_basics.h>
 #include <juce_audio_formats/juce_audio_formats.h>
 #include "../../Export/XPNExporter.h"
@@ -466,36 +467,54 @@ private:
 
         startTimerHz(15); // UI refresh for progress
 
+        // Capture UI state on the message thread before launching worker
+        auto capturedSettings = getCurrentSettings();
+        juce::String capturedName = bundleNameField.getText().trim();
+        juce::String capturedCoverEngine;
+        if (coverEngineBox.getSelectedId() > 1)
+            capturedCoverEngine = coverEngineBox.getText();
+
         // Export runs on a worker thread
         struct ExportThread : public juce::Thread
         {
-            ExportThread(ExportDialog& d) : juce::Thread("XPN-Export"), dialog(d) {}
+            ExportThread(ExportDialog& d,
+                         XPNExporter::RenderSettings s,
+                         juce::String name,
+                         juce::String coverEng)
+                : juce::Thread("XPN-Export"), dialog(d),
+                  settings(std::move(s)), bundleName(std::move(name)),
+                  coverEngine(std::move(coverEng)) {}
 
             void run() override
             {
                 XPNExporter exporter;
 
                 XPNExporter::BundleConfig config;
-                config.name = dialog.bundleNameField.getText().trim();
+                config.name = bundleName;
                 config.bundleId = "com.xo-ox.xomnibus." + config.name.toLowerCase().replace(" ", "-");
                 config.outputDir = juce::File::getSpecialLocation(
                     juce::File::userDesktopDirectory).getChildFile("XPN_Exports");
                 config.outputDir.createDirectory();
 
-                if (dialog.coverEngineBox.getSelectedId() > 1)
-                    config.coverEngine = dialog.coverEngineBox.getText();
+                if (coverEngine.isNotEmpty())
+                    config.coverEngine = coverEngine;
 
-                auto settings = dialog.getCurrentSettings();
                 auto& presets = dialog.presetManager.library;
 
                 auto result = exporter.exportBundle(config, settings, presets,
-                    [this, &presets](XPNExporter::Progress& p)
+                    [this](XPNExporter::Progress& p)
                     {
                         dialog.progressValue = (double)p.overallProgress;
-                        dialog.lastProgressText = p.presetName + " — note "
+
+                        auto text = p.presetName + " — note "
                             + juce::String(p.currentNote) + "/" + juce::String(p.totalNotes)
                             + " (" + juce::String(p.currentPreset) + "/"
                             + juce::String(p.totalPresets) + ")";
+
+                        {
+                            std::lock_guard<std::mutex> lock(dialog.progressTextMutex);
+                            dialog.lastProgressText = text;
+                        }
 
                         if (dialog.shouldCancel.load())
                             p.cancelled = true;
@@ -506,9 +525,13 @@ private:
             }
 
             ExportDialog& dialog;
+            XPNExporter::RenderSettings settings;
+            juce::String bundleName;
+            juce::String coverEngine;
         };
 
-        exportThread = std::make_unique<ExportThread>(*this);
+        exportThread = std::make_unique<ExportThread>(*this, capturedSettings,
+                                                         capturedName, capturedCoverEngine);
         exportThread->startThread();
     }
 
@@ -522,7 +545,10 @@ private:
     // Timer callback for UI updates during export
     void timerCallback() override
     {
-        progressLabel.setText(lastProgressText, juce::dontSendNotification);
+        {
+            std::lock_guard<std::mutex> lock(progressTextMutex);
+            progressLabel.setText(lastProgressText, juce::dontSendNotification);
+        }
 
         if (exportFinished.load())
         {
@@ -576,6 +602,7 @@ private:
     }
 
     // Shared state between export thread and UI
+    std::mutex progressTextMutex;
     juce::String lastProgressText;
     std::atomic<bool> exportFinished { false };
     XPNExporter::ExportResult exportResult;

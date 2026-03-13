@@ -34,7 +34,6 @@ class SoundShapeClassifier {
 public:
     static SoundShape classify(const PresetData& preset)
     {
-        SoundShape shape;
         const auto& dna = preset.dna;
 
         // Check for ONSET engine → always Rhythmic
@@ -237,9 +236,9 @@ public:
             return result;
         }
 
-        bool cancelled = false;
+        std::atomic<bool> cancelled { false };
 
-        for (int pi = 0; pi < (int)presets.size() && !cancelled; ++pi)
+        for (int pi = 0; pi < (int)presets.size() && !cancelled.load(); ++pi)
         {
             const auto& preset = presets[(size_t)pi];
             progress.currentPreset = pi + 1;
@@ -298,10 +297,11 @@ public:
             std::atomic<bool> renderError { false };
             juce::String firstError;
             std::mutex errorMutex;
+            std::mutex progressMutex;
 
             auto renderBatch = [&](size_t startIdx, size_t endIdx)
             {
-                for (size_t j = startIdx; j < endIdx && !cancelled && !renderError.load(); ++j)
+                for (size_t j = startIdx; j < endIdx && !cancelled.load() && !renderError.load(); ++j)
                 {
                     const auto& job = jobs[j];
                     auto wavResult = renderNoteToWav(preset, job.note, job.velocity,
@@ -319,16 +319,17 @@ public:
 
                     int done = completedJobs.fetch_add(1) + 1;
 
-                    // Progress update from first thread only (avoid lock contention)
+                    // Progress update — serialized via mutex to avoid data races
                     if (progressCb && (done % juce::jmax(1, (int)numWorkers) == 0 || done == (int)jobs.size()))
                     {
+                        std::lock_guard<std::mutex> lock(progressMutex);
                         progress.currentNote = done;
                         float presetFrac = (float)pi / (float)presets.size();
                         float noteFrac = (float)done / (float)totalNotesForPreset;
                         progress.overallProgress = presetFrac + noteFrac / (float)presets.size();
                         progressCb(progress);
                         if (progress.cancelled)
-                            cancelled = true;
+                            cancelled.store(true);
                     }
                 }
             };
