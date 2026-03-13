@@ -31,6 +31,7 @@ for preset compatibility.
 These were already O-prefix from birth:
 - ONSET, OVERWORLD, OPAL, ORGANON, OUROBOROS, ORBITAL
 - OBSIDIAN, ORIGAMI, ORACLE, OBSCURA, OCEANIC
+- OPTIC, OBLIQUE, ORCA, OCTOPUS
 
 ---
 
