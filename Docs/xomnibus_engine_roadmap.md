@@ -21,7 +21,7 @@
 | ONSET | Onset | XOnset | Algorithmic drum synthesis | 1,581 | ✅ Integrated |
 | OVERWORLD | Overworld | XOverworld | Chip synthesis (NES/Genesis/SNES) | 509 | ✅ Integrated |
 | OPAL | Opal | XOpal | Granular time-scatter | 3,095 | ✅ Integrated |
-| BITE | Bite | XOpossum | Bass-forward character synth | 2,388 | ✅ Integrated |
+| OVERBITE | Overbite | XOverbite | Bass-forward character synth | 2,388 | ✅ Integrated |
 
 ### Volume 1.5 — Expansion Engines (Integrated)
 
@@ -50,7 +50,7 @@ These are the full standalone instruments (AU + Standalone builds) that exist al
 | XOdyssey | `~/Documents/GitHub/XOdyssey/` | ✅ All 9 phases complete | 34 files | 10 hero |
 | XOblongBob | `~/Documents/GitHub/XOblongBob/` | ✅ Build complete, auval passes | 72 files | 167 |
 | XOverworld | `~/Documents/GitHub/XOverworld/` | ✅ DSP + UI complete, auval passes | 18 files | expanding to 120 |
-| XOpossum | `~/Documents/GitHub/XOppossum/` | ✅ All 7 phases complete, auval passes | 53 files | 342 |
+| XOverbite (was XOpossum) | `~/Documents/GitHub/XOppossum/` | ✅ All 7 phases complete, auval passes | 53 files | 342 |
 | XOpal | `~/Documents/GitHub/XOpal/` | 🔨 In progress (scaffold + Phase 1 arch) | 10 files | 100 target |
 | XOcelot | `~/Documents/GitHub/XOcelot/` | 🔨 Scaffolded (Phase 1 arch complete) | 17 files | — |
 
