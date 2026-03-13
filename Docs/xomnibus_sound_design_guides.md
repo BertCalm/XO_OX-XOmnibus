@@ -781,3 +781,53 @@ AutoPulse trance modulation, prismatic bounce, massive bass, drum synthesis. Dan
 ### Film Score
 `ODYSSEY + OPAL + OCEANIC + OBSCURA`
 Drift pad, granular shimmer, swarm ambience, bowed strings. Cinematic texture.
+
+---
+
+## 21. ORCA (Orca)
+*Apex predator synthesis — wavetable whale calls, sonar clicks, pack-hunt modulation*
+
+**Accent:** Deep Ocean `#1B2838` | **Prefix:** `orca_` | **Voices:** 8
+
+### What It Does
+Orca biology mapped to synthesis. 5 biological DSP subsystems work together: POD DIALECT generates wavetable whale calls through formant filtering, ECHOLOCATION pings resonant comb filters with microscopic noise bursts, APEX HUNT sweeps all subsystems through a single coordinated macro, BREACH displaces sub-bass with sidechain pumping, and COUNTERSHADING splits the spectrum — clean lows, crushed highs. From haunting whale song leads to devastating bass, Orca is a predator engine.
+
+### Key Parameters
+| Parameter | Range | Sweet Spot | What It Does |
+|-----------|-------|------------|-------------|
+| `orca_wtPosition` | 0–1 | 0.2–0.5 vocal, 0.7+ metallic | Wavetable morph across 64 frames. Sine → metallic inharmonic. |
+| `orca_wtScanRate` | 0–1 | varies | Automatic wavetable scan speed |
+| `orca_formantIntensity` | 0–1 | 0.3–0.7 | 5-band formant filter depth (270/730/2300/3500/4500 Hz) |
+| `orca_formantShift` | 0–1 | 0.3–0.7 | Shifts all formant center frequencies. Realistic in mid-range. |
+| `orca_glide` | 0–5s | 1.0–2.0 | Portamento time. Heavy glide for whale song bending. |
+| `orca_echoRate` | 0.5–40 Hz | 3–8 rhythmic, 15+ pitched | Click rate. Low = sonar rhythm, high = pitched ringing. |
+| `orca_echoReso` | 0–0.995 | 0.85–0.95 | Comb filter resonance. Near 1.0 = self-oscillation. |
+| `orca_echoDamp` | 0–1 | 0.3–0.5 | Comb filter high-frequency damping |
+| `orca_echoMix` | 0–1 | 0.3–0.6 | Echolocation subsystem mix level |
+| `orca_huntMacro` | 0–1 | full sweep | Single macro controlling all subsystems. 0=hum, 0.3=stalk, 0.7=attack, 1.0=devastation. |
+| `orca_breachSub` | 0–1 | 0.5 | Sub-bass level (one octave below lowest voice) |
+| `orca_breachShape` | Sine/Tri | Sine | Sub-bass waveform |
+| `orca_breachThreshold` | dB | -18 dB | Internal compressor threshold for pumping |
+| `orca_breachRatio` | ratio | 8–12 | Compressor ratio. Higher = heavier pump. |
+| `orca_crushBits` | 1–16 | 6–10 gritty, 2–4 destruction | Bit depth reduction on high band |
+| `orca_crushDownsample` | 1–64× | 4–16 | Sample rate reduction on high band |
+| `orca_crushMix` | 0–1 | 0.3–0.6 | Countershading bitcrusher mix |
+| `orca_crushSplitFreq` | 100–4000 Hz | 600–1200 | Band split frequency. Below = clean, above = crushed. |
+
+### Coupling
+- **Sends:** Post-filter stereo audio (ch0/ch1), envelope level (ch2)
+- **Receives:** AudioToFM (→ wavetable position), AmpToFilter (→ formant intensity), AmpToChoke (→ breach trigger), EnvToMorph (→ echolocation rate), AudioToRing (ring mod), LFOToPitch (→ echo rate)
+- **Best as source for:** AudioToFM (formant-rich wavetable output as FM source), AmpToChoke (breach pump ducking other engines)
+
+### Recommended Pairings
+- **+ Oceanic:** Orca's whale calls over Oceanic's boid swarm = deep underwater world. Couple AudioToFM both directions.
+- **+ Obsidian:** Metallic PD + metallic wavetable = crystalline predator. Obsidian EnvToMorph → Orca WT position.
+- **+ Onset:** Onset percussion triggers Orca's breach via AmpToChoke. Percussive sub-bass pump.
+- **+ Obese:** Layer Orca's breach sub with Fat's 13 oscillators = seismic low end. Devastating bass stacks.
+
+### Starter Recipes
+**Whale Song Lead:** voiceMode=Legato, glide=2.0, wtPos=0.3, formantIntensity=0.7, formantShift=0.5, echoMix=0, crushMix=0
+**Sonar Pad:** voiceMode=Poly8, echoRate=3, echoReso=0.92, echoMix=0.6, formantIntensity=0.3, release=3.0
+**Apex Bass:** voiceMode=Mono, huntMacro=0.5, breachSub=0.8, breachRatio=12, crushMix=0.3, crushBits=8
+**Countershade Texture:** voiceMode=Poly8, crushMix=0.8, crushBits=6, crushSplitFreq=800, wtPos=0.6, formantIntensity=0.4
+**Full Pack Hunt:** huntMacro automated 0→1 over 8 bars, all subsystems engaged, every parameter in motion
