@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "name": "Playing Dead",
+  "mood": "Aether",
+  "engines": ["Overbite"],
+  "author": "Guru Bin — OVERBITE Awakening",
+  "version": "1.0.0",
+  "description": "Play Dead at 0.7. The creature collapses: pitch sags, teeth retract (Gnash reduced internally), oscillators dim, release extends. Not silence \u2014 the metabolic aftermath of aggression being dismantled from within. Scurry at 0.2 adds the muscle twitch of a body that hasn't quite stopped fighting.",
+  "tags": ["collapse", "ethereal", "sag", "still", "aftermath", "awakening"],
+  "macroLabels": ["BELLY", "BITE", "SCURRY", "PLAY DEAD"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "dna": {"brightness": 0.2, "warmth": 0.6, "movement": 0.25, "density": 0.3, "space": 0.4, "aggression": 0.05},
+  "parameters": {
+    "Overbite": {
+      "poss_oscAWave": 0, "poss_oscALevel": 0.6, "poss_oscAShape": 0.5,
+      "poss_oscBWave": 2, "poss_oscBLevel": 0.2, "poss_oscBDetune": 3.0,
+      "poss_subLevel": 0.55, "poss_subShape": 0, "poss_subOct": -1,
+      "poss_noiseLevel": 0.03, "poss_noiseType": 0, "poss_noiseRouting": 3,
+      "poss_filterMode": 0, "poss_filterCutoff": 600.0, "poss_filterReso": 0.2,
+      "poss_filterEnvAmt": 0.1,
+      "poss_fur": 0.2, "poss_chew": 0.0, "poss_gnash": 0.15,
+      "poss_trashMode": 0, "poss_trashAmount": 0.0,
+      "poss_ampAttack": 0.15, "poss_ampDecay": 1.5, "poss_ampSustain": 0.5, "poss_ampRelease": 2.618,
+      "poss_filtEnvAttack": 0.1, "poss_filtEnvDecay": 1.0, "poss_filtEnvSustain": 0.2, "poss_filtEnvRelease": 1.618,
+      "poss_macroScurry": 0.2, "poss_macroPlayDead": 0.7,
+      "poss_fxSpaceMix": 0.3, "poss_fxSpaceSize": 0.6, "poss_fxSpaceDecay": 0.5,
+      "poss_weightAmt": 0.1,
+      "poss_masterVolume": 0.65
+    }
+  },
+  "coupling": null, "sequencer": null
+}

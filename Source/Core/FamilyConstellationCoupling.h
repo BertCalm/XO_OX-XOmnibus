@@ -8,23 +8,23 @@
 namespace xomnibus {
 
 //==============================================================================
-// FamilyPentagonCoupling
+// FamilyConstellationCoupling
 //
 // Named relationship routes + cross-engine macro bleed for the XOrphica
-// Family Pentagon (Ohm, Orphica, Obbligato, Ottoni, Ole).
+// Family Constellation (Ohm, Orphica, Obbligato, Ottoni, Ole).
 //
 // Two systems:
 //   1. Family Coupling Routes — pre-wired normalled routes based on family
 //      relationships (marriage, parent-child, siblings, cousins, in-laws).
-//   2. Macro Bleed — when 2+ pentagon engines are loaded, their signature
+//   2. Macro Bleed — when 2+ constellation engines are loaded, their signature
 //      macros subtly influence each other (±10-15% nudge).
 //
 // Install: call installFamilyRoutes() after engines are loaded into slots.
 // Process: call processBleed() once per block before engine rendering.
 //==============================================================================
-class FamilyPentagonCoupling {
+class FamilyConstellationCoupling {
 public:
-    // Pentagon engine IDs
+    // Constellation engine IDs
     static constexpr const char* kOhm       = "Ohm";
     static constexpr const char* kOrphica   = "Orphica";
     static constexpr const char* kObbligato = "Obbligato";
@@ -34,7 +34,7 @@ public:
     //--------------------------------------------------------------------------
     // Family Coupling Route Definitions
     //
-    // Each pentagon edge maps to a specific CouplingType with a descriptive name.
+    // Each constellation edge maps to a specific CouplingType with a descriptive name.
     // These are installed as normalled routes in the MegaCouplingMatrix.
     //--------------------------------------------------------------------------
     struct FamilyRoute {
@@ -45,9 +45,9 @@ public:
         float defaultAmount;         // 0.0-1.0, typically 0.15-0.35
     };
 
-    // The 6 pentagon edges + 5 diagonals = 11 family routes (bidirectional = 11 more)
+    // The 6 constellation edges + 5 diagonals = 11 family routes (bidirectional = 11 more)
     static inline const FamilyRoute kFamilyRoutes[] = {
-        // Pentagon Edges
+        // Constellation Edges
         {"Resonance Sympathy",  kOrphica, kOhm,       CouplingType::PitchToPitch,    0.20f},
         {"Resonance Sympathy",  kOhm,     kOrphica,   CouplingType::PitchToPitch,    0.20f},
         {"Harmonic Argument",   kOrphica, kOle,        CouplingType::AmpToFilter,     0.25f},
@@ -57,7 +57,7 @@ public:
         {"Age Teaches Fire",    kOttoni,  kOle,        CouplingType::AmpToFilter,     0.15f},
         {"Drama Bleeds",        kOle,     kOhm,        CouplingType::EnvToMorph,      0.20f},
 
-        // Pentagon Diagonals
+        // Constellation Diagonals
         {"Surface Current",     kOrphica, kOttoni,     CouplingType::AmpToPitch,      0.10f},
         {"Divine Inheritance",  kOrphica, kObbligato,  CouplingType::EnvToDecay,      0.12f},
         {"Warmth Thaw",         kOhm,     kOttoni,     CouplingType::AmpToFilter,     0.12f},
@@ -69,7 +69,7 @@ public:
 
     //--------------------------------------------------------------------------
     // Install family routes into the MegaCouplingMatrix.
-    // Call after loading pentagon engines into slots.
+    // Call after loading constellation engines into slots.
     // engineSlots: map of engine ID → slot index (0-3)
     //--------------------------------------------------------------------------
     static void installFamilyRoutes (
@@ -100,14 +100,14 @@ public:
     //--------------------------------------------------------------------------
     // Macro Bleed System
     //
-    // When 2+ pentagon engines are active, their signature macros influence
+    // When 2+ constellation engines are active, their signature macros influence
     // each other with a ±10-15% nudge. The COMMUNE macro is special —
     // it dampens ALL other family stress.
     //
     // Call once per block, passing current macro values and receiving
     // the bleed-adjusted values back.
     //--------------------------------------------------------------------------
-    struct PentagonMacroState {
+    struct ConstellationMacroState {
         float jam       = 0.5f;  // Ohm M1
         float meddling  = 0.0f;  // Ohm M2
         float commune   = 0.0f;  // Ohm M3
@@ -132,7 +132,7 @@ public:
 
     // Apply macro bleed. Modifies state in-place.
     // bleedAmount: 0.0 (no family interaction) to 1.0 (full 15% bleed)
-    static void processBleed (PentagonMacroState& s, float bleedAmount = 1.0f)
+    static void processBleed (ConstellationMacroState& s, float bleedAmount = 1.0f)
     {
         float k = bleedAmount * 0.15f; // max ±15% nudge
 
@@ -160,7 +160,7 @@ public:
         s.grow += (std::abs (s.surface - 0.5f)) * k * 0.5f;
 
         // --- THE COMMUNE DAMPER ---
-        // COMMUNE dampens ALL family stress. Dad's peace heals the pentagon.
+        // COMMUNE dampens ALL family stress. Dad's peace heals the constellation.
         float communeDamp = s.commune * k * 2.0f;
         s.drama    -= communeDamp;
         s.meddling -= communeDamp;
@@ -175,9 +175,9 @@ public:
     }
 
     //--------------------------------------------------------------------------
-    // Utility: check if an engine ID belongs to the Pentagon family.
+    // Utility: check if an engine ID belongs to the Constellation family.
     //--------------------------------------------------------------------------
-    static bool isPentagonEngine (const std::string& engineId)
+    static bool isConstellationEngine (const std::string& engineId)
     {
         return engineId == kOhm || engineId == kOrphica
             || engineId == kObbligato || engineId == kOttoni
@@ -185,14 +185,14 @@ public:
     }
 
     //--------------------------------------------------------------------------
-    // Count how many pentagon engines are in the active slots.
+    // Count how many constellation engines are in the active slots.
     //--------------------------------------------------------------------------
-    static int countPentagonEngines (
+    static int countConstellationEngines (
         const std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots>& engines)
     {
         int count = 0;
         for (auto* e : engines)
-            if (e && isPentagonEngine (e->getEngineId().toStdString()))
+            if (e && isConstellationEngine (e->getEngineId().toStdString()))
                 ++count;
         return count;
     }

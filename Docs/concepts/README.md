@@ -93,7 +93,7 @@ Retroactive mythology applied to the founding feliX-Oscar polarity that underlie
 |------|---------|-------------|
 | `aquatic_master_fx_concept.md` | Aquatic Master FX Suite ("The Aquarium") | Six master effects themed around water phenomena — the sonic environment all XOmnibus engines pass through. Concept approved, pending DSP implementation. |
 | `xo_chord_machine_design.md` | XO Chord Machine | World-class design for distributing chord voicings across XOmnibus's 4 engine slots — each chord tone shaped by a different synthesis character. The feature that makes 4-slot architecture musically inevitable. |
-| `xorphica_family_pentagon_ecosystem.md` | XOrphica Family Pentagon | Five engines. Five splits. Five macros. Five species. One family system — ecosystem design for the ORPHICA engine cluster. |
+| `xorphica_family_constellation_ecosystem.md` | XOrphica Family Constellation | Five engines. Five splits. Five macros. Five species. One family system — ecosystem design for the ORPHICA engine cluster. |
 
 ---
 

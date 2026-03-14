@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Signal — the XO_OX update feed. New engines, features, presets, and the stories behind them.">
+<meta property="og:title" content="Signal — XO_OX Update Feed">
+<meta property="og:description" content="Signal — the XO_OX update feed. New engines, features, presets, and the stories behind them.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://xo-ox.org/updates">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Signal — XO_OX Update Feed">
+<meta name="twitter:description" content="What's new, what's next, and why it matters.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='4' y='24' font-size='24' fill='%23E9C46A'>X</text></svg>">
+<title>Signal — XO_OX Update Feed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   Signal — XO_OX Update Feed
+   Aesthetic: Deep Gallery — ocean midnight blues, golden light
+   ═══════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── Skip link (accessibility) ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100000;
+  padding: 0.75rem 1.5rem;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+:root {
+  --bg-deep:    #060A10;
+  --bg-warm:    #0A1018;
+  --bg-card:    #0E1620;
+  --bg-surface: #131D28;
+  --gold:       #E9C46A;
+  --gold-dim:   #C4A44E;
+  --gold-glow:  rgba(233, 196, 106, 0.12);
+  --cream:      #E4EAF0;
+  --text:       #B0BEC8;
+  --text-dim:   #6B7F8E;
+  --text-faint: #4A6878;
+  --shell:      #E4EAF0;
+  --border:     #152330;
+  --teal:       #2AA19B;
+  --teal-glow:  rgba(42, 161, 155, 0.08);
+  --coral:      #C4636E;
+  --coral-glow: rgba(196, 99, 110, 0.06);
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--bg-deep);
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse at 15% 85%, rgba(42, 161, 155, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 15%, rgba(196, 99, 110, 0.03) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 40, 70, 0.15) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--teal);
+  color: var(--bg-deep);
+}
+
+/* ── Noise texture overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── Ambient deep-water caustic shimmer ── */
+@keyframes ambient-caustic {
+  0%   { background-position: 0% 50%, 100% 50%; }
+  50%  { background-position: 100% 30%, 0% 70%; }
+  100% { background-position: 0% 50%, 100% 50%; }
+}
+
+.ambient-shimmer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(600px circle at 20% 80%, rgba(42, 161, 155, 0.035) 0%, transparent 100%),
+    radial-gradient(500px circle at 80% 20%, rgba(196, 99, 110, 0.025) 0%, transparent 100%);
+  background-size: 200% 200%, 200% 200%;
+  animation: ambient-caustic 20s ease-in-out infinite;
+}
+
+/* ── Aquatic page transition ── */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.page-transition.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.page-transition-wave {
+  position: absolute;
+  bottom: 0;
+  left: -5%;
+  width: 110%;
+  height: 0%;
+  background: linear-gradient(180deg, rgba(0, 119, 182, 0.9) 0%, #040D14 60%);
+  border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+  transition: height 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.page-transition.active .page-transition-wave {
+  height: 120%;
+}
+
+/* ── Scroll reveal animation ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════ STICKY NAV ═══════════ */
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6, 10, 16, 0.88);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+  text-decoration: none;
+  user-select: none;
+}
+
+.nav-logo .gold { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--teal);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-links a:hover {
+  color: var(--cream);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a.active {
+  color: var(--gold);
+}
+
+.nav-links a.active::after {
+  width: 100%;
+  background: var(--gold);
+}
+
+/* ═══════════ SIGNAL HERO ═══════════ */
+.signal-hero {
+  padding: 10rem clamp(1.5rem, 5vw, 6rem) 4rem;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+.signal-hero::before {
+  content: '';
+  position: absolute;
+  top: 6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 500px;
+  background:
+    radial-gradient(circle at 50% 40%, var(--gold-glow) 0%, transparent 55%),
+    radial-gradient(circle at 50% 65%, var(--teal-glow) 0%, transparent 50%);
+  border-radius: 50%;
+  animation: breathe 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.5; }
+  50%      { transform: translateX(-50%) scale(1.12); opacity: 0.8; }
+}
+
+.signal-label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.signal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: var(--cream);
+  line-height: 1.1;
+  position: relative;
+  z-index: 1;
+}
+
+.signal-subtitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-weight: 300;
+  color: var(--text-dim);
+  margin-top: 1.5rem;
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 1;
+}
+
+.signal-subscribe {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2.5rem;
+  padding: 0.7rem 1.8rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(233, 196, 106, 0.3);
+  border-radius: 2rem;
+  text-decoration: none;
+  transition: all 0.3s;
+  position: relative;
+  z-index: 1;
+}
+
+.signal-subscribe:hover {
+  background: rgba(233, 196, 106, 0.08);
+  border-color: var(--gold);
+  color: var(--cream);
+}
+
+.signal-subscribe svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* ═══════════ UPDATE FEED ═══════════ */
+.feed {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem clamp(1.5rem, 5vw, 6rem) 6rem;
+}
+
+.feed-year {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  margin-bottom: 2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Post card ── */
+.post {
+  position: relative;
+  padding: 2.5rem 2.5rem 2.5rem 3rem;
+  margin-bottom: 2.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  border-left: 3px solid var(--gold);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.post:hover {
+  border-color: rgba(233, 196, 106, 0.25);
+  border-left-color: var(--gold);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25),
+              inset 0 1px 0 rgba(233, 196, 106, 0.05);
+}
+
+.post-date {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 0.75rem;
+}
+
+.post-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.25;
+  margin-bottom: 1.25rem;
+}
+
+.post-body {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+.post-body p {
+  margin-bottom: 1rem;
+}
+
+.post-body p:last-child {
+  margin-bottom: 0;
+}
+
+.post-body em {
+  font-style: italic;
+  color: var(--cream);
+}
+
+.post-body strong {
+  font-weight: 500;
+  color: var(--cream);
+}
+
+.post-body .stat {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  background: rgba(233, 196, 106, 0.08);
+  border: 1px solid rgba(233, 196, 106, 0.15);
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+  margin: 0.15rem 0.15rem;
+}
+
+.post-body .highlight {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.post-body a {
+  color: var(--teal);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(42, 161, 155, 0.3);
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.post-body a:hover {
+  color: var(--cream);
+  border-bottom-color: var(--cream);
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.post-tag {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.7rem;
+  border-radius: 2px;
+  background: rgba(42, 161, 155, 0.08);
+  color: var(--teal);
+  border: 1px solid rgba(42, 161, 155, 0.15);
+}
+
+/* ── Vertical timeline connector ── */
+.post::after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  bottom: -2.5rem;
+  width: 1px;
+  height: 2.5rem;
+  background: linear-gradient(180deg, var(--gold-dim), transparent);
+}
+
+.post:last-child::after {
+  display: none;
+}
+
+/* ── Post number badge ── */
+.post-number {
+  position: absolute;
+  top: -0.7rem;
+  left: 1.5rem;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bg-card);
+  background: var(--gold);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+}
+
+/* ═══════════ FOOTER ═══════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem clamp(1.5rem, 5vw, 6rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-links a {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--teal);
+}
+
+.footer-copy {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 768px) {
+  .nav-links { gap: 1.5rem; }
+  .nav-links a { font-size: 0.6rem; }
+  .signal-hero { padding-top: 7rem; }
+  .post { padding: 2rem 1.5rem 2rem 2rem; }
+  .post-number { left: 1rem; }
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links { gap: 1rem; }
+  .signal-title { letter-spacing: 0.03em; }
+  .post { padding: 1.5rem 1.25rem 1.5rem 1.5rem; margin-bottom: 2rem; }
+  .post::after { height: 2rem; bottom: -2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ AMBIENT DEEP-WATER SHIMMER ═══════════ -->
+<div class="ambient-shimmer"></div>
+
+<!-- ═══════════ AQUATIC PAGE TRANSITION ═══════════ -->
+<div class="page-transition" id="pageTransition">
+  <div class="page-transition-wave"></div>
+</div>
+
+<!-- Skip navigation for accessibility -->
+<a href="#feed" class="skip-link">Skip to updates</a>
+
+<!-- ═══════════ STICKY NAV ═══════════ -->
+<nav class="sticky-nav" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <div class="nav-links">
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="aquarium.html">Aquarium</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="updates.html" class="active">Signal</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</nav>
+
+<!-- ═══════════ SIGNAL HERO ═══════════ -->
+<section class="signal-hero">
+  <div class="signal-label">The XO_OX Update Feed</div>
+  <h1 class="signal-title">Signal</h1>
+  <p class="signal-subtitle">What's new, what's next, and why it matters.</p>
+  <a href="https://github.com/BertCalm/XO_OX-XOmnibus/releases" target="_blank" rel="noopener" class="signal-subscribe">
+    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 2a6 6 0 0 0-1.9 11.69c.3.05.41-.13.41-.29v-1.02c-1.68.37-2.03-.81-2.03-.81-.27-.7-.67-.88-.67-.88-.55-.38.04-.37.04-.37.61.04.93.63.93.63.54.92 1.42.66 1.76.5.06-.39.21-.66.39-.81-1.34-.15-2.75-.67-2.75-2.99 0-.66.24-1.2.63-1.62-.06-.15-.27-.77.06-1.6 0 0 .51-.16 1.67.62a5.8 5.8 0 0 1 3.04 0c1.16-.78 1.67-.62 1.67-.62.33.83.12 1.45.06 1.6.39.42.62.96.62 1.62 0 2.33-1.41 2.84-2.76 2.99.22.19.41.56.41 1.13v1.67c0 .16.11.35.41.29A6 6 0 0 0 8 2z"/></svg>
+    Watch Releases
+  </a>
+</section>
+
+<!-- ═══════════ UPDATE FEED ═══════════ -->
+<section class="feed" id="feed">
+
+  <div class="feed-year">2026</div>
+
+  <!-- ── POST 1: Pi Day Theorem ── -->
+  <article class="post reveal">
+    <div class="post-number">Signal 005</div>
+    <div class="post-date">March 14, 2026</div>
+    <h2 class="post-title">Pi Day Theorem: Three New Concepts</h2>
+    <div class="post-body">
+      <p>
+        It's Pi Day, and the Theorem mathematical oracle has been busy. Today we approved three new XO_OX engine concepts for development, each born from the intersection of mathematics and sound.
+      </p>
+      <p>
+        <strong>XOvertone</strong> takes continued fractions -- the same structures that define the golden ratio and the most irrational numbers -- and maps them into spectral space. Instead of integer harmonics, XOvertone builds timbres from convergent rational approximations. The result is a sound that hovers between harmonic and inharmonic, familiar and alien, with a mathematical inevitability that you can hear.
+      </p>
+      <p>
+        <strong>Knot Coupling</strong> reimagines our cross-engine modulation through the lens of topology. Where current coupling routes are point-to-point, Knot Coupling introduces bidirectional signal paths that can twist, link, and form stable topological structures. Two engines knotted together can't be separated without changing both -- coupling becomes a structural commitment, not just a patch cable.
+      </p>
+      <p>
+        <strong>XOrganism</strong> applies cellular automata to generative synthesis. Think Conway's Game of Life, but each cell is an oscillator, and the rules of life and death govern amplitude, frequency, and timbre. Patterns emerge, stabilize, collapse, and regenerate. You don't play XOrganism so much as cultivate it.
+      </p>
+      <p>
+        All three concepts passed the Theorem's consistency gate and have been approved for development. The math is sound. Now we make it sing.
+      </p>
+    </div>
+    <div class="post-tags">
+      <span class="post-tag">New Concepts</span>
+      <span class="post-tag">Theorem</span>
+      <span class="post-tag">Pi Day</span>
+    </div>
+  </article>
+
+  <!-- ── POST 2: Oracle Field Guide ── -->
+  <article class="post reveal">
+    <div class="post-number">Signal 004</div>
+    <div class="post-date">March 14, 2026</div>
+    <h2 class="post-title">Oracle: The Reef That Remembers</h2>
+    <div class="post-body">
+      <p>
+        Field Guide post #18 is live: a deep dive into <strong>Oracle</strong>, the engine built on GENDY stochastic synthesis and Maqam modal frameworks. We believe it's the first commercial implementation of Iannis Xenakis's GENDY algorithm in a real-time synthesizer.
+      </p>
+      <p>
+        GENDY -- Generative Dynamic Stochastic Synthesis -- doesn't use oscillators in any conventional sense. Instead, it walks a waveform through probability space, each cycle slightly different from the last, creating timbres that are perpetually evolving and fundamentally unpredictable. Oracle takes this radical foundation and grounds it in the Maqam system: the melodic modes of Arabic, Turkish, and Persian music, with their microtonal intervals and characteristic ascending and descending patterns.
+      </p>
+      <p>
+        The result is something strange and beautiful. Sounds that remember where they've been. Melodies that curve through quarter-tone spaces. Timbres that breathe with the organic unpredictability of a coral reef filtering ocean currents.
+      </p>
+      <p>
+        During the seance reviews, Don Buchla gave Oracle a <span class="highlight">perfect 10/10</span> -- the only engine in the fleet to receive that score from any ghost. His note: <em>"This is what I was trying to do. You found a way."</em>
+      </p>
+      <p>
+        Read the full guide at <a href="guide-oracle.html">Field Guide: Oracle</a>.
+      </p>
+    </div>
+    <div class="post-tags">
+      <span class="post-tag">Field Guide</span>
+      <span class="post-tag">Oracle</span>
+      <span class="post-tag">GENDY</span>
+      <span class="post-tag">Maqam</span>
+    </div>
+  </article>
+
+  <!-- ── POST 3: Aquarium Opens ── -->
+  <article class="post reveal">
+    <div class="post-number">Signal 003</div>
+    <div class="post-date">March 14, 2026</div>
+    <h2 class="post-title">The Aquarium Opens</h2>
+    <div class="post-body">
+      <p>
+        Every XO_OX engine is a creature, and every creature has a depth. Today we open the <strong>Aquarium</strong> -- the water column atlas that maps all twenty-six engines to their mythological position in the ocean.
+      </p>
+      <p>
+        The concept is simple but it shapes everything: the XO_OX ecosystem is an ocean. Near the surface, where sunlight penetrates, you find <strong>feliX</strong> -- the neon tetra, all bright darts and electric flashes. In the twilight zone, <strong>Oscar</strong> the axolotl morphs and regenerates in the filtered light. Further down, bioluminescent creatures pulse with their own strange logic. At the abyssal floor, pressure and darkness create sounds that couldn't exist anywhere else.
+      </p>
+      <p>
+        This isn't just metaphor. The <strong>feliX-Oscar polarity</strong> -- the tension between snap and sustain, between brightness and depth, between the X and the O -- is the organizing principle of the entire platform. Every engine sits somewhere on this axis. Every coupling route is a current between depths.
+      </p>
+      <p>
+        The Aquarium page visualizes the full water column: surface engines like OddfeliX and Onset at the top, mid-depth engines like Odyssey and Opal in the twilight, deep engines like Organon and Obscura in the midnight zone, and the truly abyssal creatures -- OceanDeep and Owlfish -- at the bottom. Each engine card shows its depth, its creature identity, and its polarity.
+      </p>
+      <p>
+        Dive in at <a href="aquarium.html">the Aquarium</a>.
+      </p>
+    </div>
+    <div class="post-tags">
+      <span class="post-tag">Aquarium</span>
+      <span class="post-tag">Brand</span>
+      <span class="post-tag">Water Column</span>
+    </div>
+  </article>
+
+  <!-- ── POST 4: Twenty-Four Seances ── -->
+  <article class="post reveal">
+    <div class="post-number">Signal 002</div>
+    <div class="post-date">March 14, 2026</div>
+    <h2 class="post-title">Twenty-Four Seances: What the Ghosts Said</h2>
+    <div class="post-body">
+      <p>
+        We did something unusual. We submitted every engine in the XOmnibus fleet to a panel of eight legendary synthesizer pioneers -- Moog, Buchla, Smith, Kakehashi, Pearlman, Vangelis, Schulze, and Tomita -- and asked them to judge our work against their standards. Not our standards. Theirs.
+      </p>
+      <p>
+        Twenty-four seances. Every engine reviewed. The results were humbling, instructive, and occasionally surprising.
+      </p>
+      <p>
+        The ghosts identified <span class="stat">15 blessings</span> -- features or approaches they found genuinely novel or worthy of praise. Orbital's group envelope system was crowned by Moog and Smith. Onset's Cross-Voice Coupling was called "three to five years ahead" by the full panel. Organon's variational free energy metabolism received a unanimous 8/8 PASS and was flagged as publishable academic work.
+      </p>
+      <p>
+        They also codified <span class="stat">6 doctrines</span> -- non-negotiable standards that every engine must meet. Velocity must shape timbre, not just amplitude. Every declared parameter must affect audio output. An engine that cannot breathe is a photograph. Expression input is not optional. These became our engineering commandments.
+      </p>
+      <p>
+        And they surfaced <span class="stat">4 ongoing debates</span> -- tensions that remain productively unresolved. Should effects be mutually exclusive or chainable? Is silence a valid paradigm? Should init patches be immediately beautiful or blank canvases? The ghosts disagreed with each other, and we think that's the point.
+      </p>
+      <p>
+        We hold ourselves to impossible standards because the alternative is holding ourselves to possible ones. And possible is never enough.
+      </p>
+    </div>
+    <div class="post-tags">
+      <span class="post-tag">Seances</span>
+      <span class="post-tag">Quality</span>
+      <span class="post-tag">Doctrines</span>
+    </div>
+  </article>
+
+  <!-- ── POST 5: Prism Sweep ── -->
+  <article class="post reveal">
+    <div class="post-number">Signal 001</div>
+    <div class="post-date">March 14, 2026</div>
+    <h2 class="post-title">The Prism Sweep: Ten Rounds of Making It Right</h2>
+    <div class="post-body">
+      <p>
+        Shipping a synthesizer with twenty-two engines and eighteen hundred presets is an act of ambition. Making sure every one of those engines actually works -- properly, expressively, without broken promises -- is an act of discipline. That's what the Prism Sweep has been.
+      </p>
+      <p>
+        Over twelve rounds of progressive quality fixes, we've touched every engine in the fleet. Not adding features. Fixing the ones we already had.
+      </p>
+      <p>
+        <span class="stat">5 P0 bugs fixed</span> -- the kind that cause silence, wrong channels, or crashes. Obsidian's right channel was dead. Origami's STFT transform had no overflow guard. Overworld's coupling output was disconnected. These are the bugs that make an instrument untrustworthy, and we found them all.
+      </p>
+      <p>
+        <span class="stat">All D004 dead parameters wired</span> -- every parameter that was declared in the UI but did nothing has been connected to real DSP. Snap's macroDepth. Owlfish's morphGlide. Oblique's percDecay. A parameter that doesn't work is a broken promise, and we don't ship broken promises.
+      </p>
+      <p>
+        <span class="stat">All D005 LFO breathing resolved</span> -- every engine now has autonomous modulation with a rate floor at or below 0.01 Hz. A synth that can't breathe on its own is a photograph of a sound, not a living one. Snap got a 0.15 Hz bandpass drift. Orbital got a 0.03 Hz morph drift. Overworld got an ERA drift rate. They all breathe now.
+      </p>
+      <p>
+        <span class="stat">D001 filter envelopes resolved fleet-wide</span> -- velocity doesn't just control volume anymore. It shapes timbre across every engine. Harder notes are brighter. Softer notes are darker. This is how real instruments work, and now every XO_OX engine works this way too.
+      </p>
+      <p>
+        <span class="stat">Aftertouch on 22 of 23 engines</span> -- the only exemption is Optic, which is a visual engine with no audio output. Everything else responds to the pressure of your fingers after the note lands. Because expression doesn't stop at the attack.
+      </p>
+      <p>
+        Quality is a process, not a destination. The Prism Sweep isn't done because we ran out of things to fix. It's done because we ran out of things that are broken.
+      </p>
+    </div>
+    <div class="post-tags">
+      <span class="post-tag">Prism Sweep</span>
+      <span class="post-tag">Quality</span>
+      <span class="post-tag">Fleet-Wide</span>
+    </div>
+  </article>
+
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-logo">XO_OX</div>
+  <div class="footer-links">
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="aquarium.html">Aquarium</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="updates.html">Signal</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
+</footer>
+
+<script>
+// ═══════════ SCROLL REVEAL ═══════════
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ═══════════ AQUATIC PAGE TRANSITIONS ═══════════
+document.querySelectorAll('a[href$=".html"]').forEach(link => {
+  if (link.hostname === location.hostname || !link.hostname) {
+    link.addEventListener('click', (e) => {
+      // Don't intercept active page links or external
+      if (link.getAttribute('href') === 'updates.html') return;
+      if (link.target === '_blank') return;
+      e.preventDefault();
+      const dest = link.href;
+      const transition = document.getElementById('pageTransition');
+      transition.classList.add('active');
+      setTimeout(() => { window.location.href = dest; }, 600);
+    });
+  }
+});
+</script>
+
+</body>
+</html>

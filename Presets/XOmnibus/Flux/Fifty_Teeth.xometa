@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "name": "Fifty Teeth",
+  "mood": "Flux",
+  "engines": ["Overbite"],
+  "author": "Guru Bin — OVERBITE Awakening",
+  "version": "1.0.0",
+  "description": "The full arsenal. All five character stages engaged, all five macros at their starting positions, ready for the player to ride. BELLY for warmth, BITE for aggression, SCURRY for chaos, TRASH for destruction, PLAY DEAD for collapse. Fifty teeth bared \u2014 the opossum's full threat display. Every macro changes the creature's survival strategy in real time.",
+  "tags": ["full", "arsenal", "macro", "performance", "creature", "awakening"],
+  "macroLabels": ["BELLY", "BITE", "SCURRY", "PLAY DEAD"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "dna": {"brightness": 0.45, "warmth": 0.55, "movement": 0.5, "density": 0.65, "space": 0.15, "aggression": 0.5},
+  "parameters": {
+    "Overbite": {
+      "poss_oscAWave": 2, "poss_oscALevel": 0.6, "poss_oscAShape": 0.45,
+      "poss_oscBWave": 1, "poss_oscBLevel": 0.5, "poss_oscBDetune": 7.0,
+      "poss_oscBInstability": 0.15, "poss_oscBAsymmetry": 0.25,
+      "poss_oscInteractionMode": 3, "poss_oscInteractionAmt": 0.12,
+      "poss_subLevel": 0.5, "poss_subShape": 2, "poss_subOct": -1,
+      "poss_noiseLevel": 0.04, "poss_noiseType": 4, "poss_noiseRouting": 2, "poss_noiseTransient": 0.4,
+      "poss_filterMode": 0, "poss_filterCutoff": 1500.0, "poss_filterReso": 0.3,
+      "poss_filterEnvAmt": 0.45, "poss_filtEnvVelScale": 0.5,
+      "poss_fur": 0.2, "poss_chew": 0.2, "poss_gnash": 0.25,
+      "poss_trashMode": 0, "poss_trashAmount": 0.1,
+      "poss_ampAttack": 0.005, "poss_ampDecay": 0.35, "poss_ampSustain": 0.7, "poss_ampRelease": 0.382,
+      "poss_filtEnvAttack": 0.003, "poss_filtEnvDecay": 0.18, "poss_filtEnvSustain": 0.15, "poss_filtEnvRelease": 0.12,
+      "poss_weightAmt": 0.2,
+      "poss_glide": 0.05, "poss_masterVolume": 0.75
+    }
+  },
+  "coupling": null, "sequencer": null
+}

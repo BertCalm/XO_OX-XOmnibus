@@ -13,6 +13,26 @@
 <meta name="twitter:description" content="Twenty-six synth engines. Sixteen hundred presets. Free & open-source.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='4' y='24' font-size='24' fill='%23E9C46A'>X</text></svg>">
 <title>XO_OX Designs — Character Synthesis</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "XOmnibus",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "macOS",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "XO_OX Designs",
+    "url": "https://xo-ox.org"
+  },
+  "description": "Multi-engine character synthesizer with twenty-six engines, over sixteen hundred presets, and cross-engine coupling. Free and open-source."
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -193,8 +213,6 @@ body::after {
   100% { background-position: 0% 50%, 100% 50%; }
 }
 
-body::marker { display: none; }
-
 /* subtle teal+coral light play fixed behind everything */
 .ambient-shimmer {
   position: fixed;
@@ -295,6 +313,78 @@ body::marker { display: none; }
 
 .nav-links a:hover::after {
   width: 100%;
+}
+
+/* ── Download CTA in nav ── */
+.nav-download-btn {
+  background: var(--gold) !important;
+  color: var(--bg-deep) !important;
+  padding: 0.4rem 1.1rem;
+  border-radius: 2px;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  transition: background 0.3s, color 0.3s;
+}
+.nav-download-btn::after { display: none !important; }
+.nav-download-btn:hover {
+  background: var(--cream) !important;
+  color: var(--bg-deep) !important;
+}
+
+/* ── Hamburger menu (mobile) ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 1001;
+}
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--cream);
+  border-radius: 1px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .sticky-nav .nav-links,
+  .site-nav .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(6, 10, 16, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 1.5rem clamp(1.5rem, 5vw, 6rem);
+    gap: 1.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .sticky-nav .nav-links.mobile-open,
+  .site-nav .nav-links.mobile-open {
+    display: flex;
+  }
+  .nav-links a { font-size: 0.75rem !important; }
+  .nav-download-btn {
+    display: inline-block;
+    text-align: center;
+    width: auto;
+    align-self: flex-start;
+  }
 }
 
 /* ═══════════ HERO ═══════════ */
@@ -1382,6 +1472,199 @@ h2 em {
   border-color: var(--cream);
 }
 
+/* ═══════════ DOWNLOAD SECTION ═══════════ */
+.download-section {
+  border-top: 1px solid var(--border);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.download-section .section-label {
+  justify-content: center;
+}
+.download-section .section-label::before { display: none; }
+
+.download-section h2 {
+  max-width: 700px;
+}
+
+.download-section .section-text {
+  text-align: center;
+  max-width: 560px;
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2.8rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--gold);
+  color: var(--bg-deep);
+  border: 2px solid var(--gold);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.4s;
+  margin-top: 2rem;
+}
+
+.download-btn:hover {
+  background: var(--cream);
+  border-color: var(--cream);
+}
+
+.patreon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 2.2rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: transparent;
+  color: #FF424D;
+  border: 1px solid rgba(255, 66, 77, 0.4);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.4s;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.patreon-btn:hover {
+  background: rgba(255, 66, 77, 0.1);
+  border-color: #FF424D;
+  color: #FF424D;
+}
+
+.download-requirements {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.download-req {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+.download-req strong {
+  color: var(--cream);
+  font-weight: 500;
+}
+
+.quickstart {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  max-width: 800px;
+  width: 100%;
+}
+
+.quickstart-step {
+  text-align: left;
+  padding: 1.2rem 1.5rem;
+  border-left: 2px solid var(--teal);
+}
+
+.quickstart-step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.quickstart-step p {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* ═══════════ BUILT FOR MPC ═══════════ */
+.mpc-section {
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+.mpc-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.3;
+}
+
+.mpc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.mpc-card {
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: var(--bg-card);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s, transform 0.4s;
+}
+
+.mpc-card:hover {
+  border-color: rgba(233, 196, 106, 0.3);
+  transform: translateY(-3px);
+}
+
+.mpc-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gold);
+  opacity: 0.4;
+}
+
+.mpc-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+
+.mpc-card p {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
 /* ═══════════ ACCENT SPECTRUM ═══════════ */
 .spectrum-bar {
   width: 100%;
@@ -1460,13 +1743,22 @@ footer {
 .engine-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(6, 10, 16, 0.75);
+  background: rgba(6, 10, 16, 0.85);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   z-index: 2000;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#engineVizCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 .engine-modal-overlay.open {
@@ -1745,7 +2037,10 @@ footer {
 <!-- ═══════════ STICKY NAV ═══════════ -->
 <nav class="sticky-nav" id="stickyNav" aria-label="Main navigation">
   <a href="#" class="nav-logo"><span class="gold">X</span>O_O<span class="gold">X</span></a>
-  <div class="nav-links">
+  <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
     <a href="manifesto.html">Manifesto</a>
     <a href="#instruments">Instruments</a>
     <a href="#chord-machine">Chord Machine</a>
@@ -1753,8 +2048,10 @@ footer {
     <a href="#aquarium">Aquarium</a>
     <a href="packs.html" class="aquatic-link">Sound Packs</a>
     <a href="guide.html" class="aquatic-link">Field Guide</a>
+    <a href="updates.html" class="aquatic-link">Signal</a>
     <a href="#community">Community</a>
     <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
+    <a href="#download" class="nav-download-btn">Download</a>
     <div class="depth-gauge" id="depthGauge">
       <div class="depth-gauge-bar"><div class="depth-gauge-fill" id="depthFill"></div></div>
       <span id="depthLabel">Surface</span>
@@ -1945,7 +2242,7 @@ footer {
       <span class="community-icon" aria-hidden="true">&#127925;</span>
       <h3>Share Your Sound</h3>
       <p>Upload your tracks, preset packs, or experiments. Show the world what these engines can do when given to the right hands.</p>
-      <a href="#showcase">Browse creations &rarr;</a>
+      <a href="https://github.com/BertCalm/XO_OX-XOmnibus/discussions" target="_blank" rel="noopener">Join the discussion &rarr;</a>
     </div>
     <div class="community-card">
       <span class="community-icon" aria-hidden="true">&#128172;</span>
@@ -1961,58 +2258,19 @@ footer {
     </div>
   </div>
 
-  <div class="showcase-wall" id="showcase">
-    <h3>Made With XO_OX</h3>
-    <p>A growing gallery of tracks and preset packs created by the community. Your work could be featured here.</p>
-    <div class="showcase-grid">
-      <div class="showcase-card">
-        <div class="showcase-artist">Placeholder</div>
-        <div class="showcase-title">Midnight Architecture</div>
-        <div class="showcase-engines">
-          <span>OddfeliX</span>
-          <span>Odyssey</span>
-          <span>Overdub</span>
-        </div>
-      </div>
-      <div class="showcase-card">
-        <div class="showcase-artist">Placeholder</div>
-        <div class="showcase-title">Tidal Memory</div>
-        <div class="showcase-engines">
-          <span>Oceanic</span>
-          <span>Opal</span>
-        </div>
-      </div>
-      <div class="showcase-card">
-        <div class="showcase-artist">Placeholder</div>
-        <div class="showcase-title">Pixel Dreams Vol. 1</div>
-        <div class="showcase-engines">
-          <span>Overworld</span>
-          <span>Onset</span>
-        </div>
-      </div>
-      <div class="showcase-card">
-        <div class="showcase-artist">Placeholder</div>
-        <div class="showcase-title">Formant Studies</div>
-        <div class="showcase-engines">
-          <span>Odyssey</span>
-          <span>Oblong</span>
-        </div>
-      </div>
+  <div class="showcase-wall" id="showcase" style="text-align: center;">
+    <h3>Join the Conversation</h3>
+    <p>Share your tracks, preset packs, and experiments. Ask questions. Report bugs. Request features. The community is where these instruments come alive.</p>
+    <div class="cta-row" style="margin-top: 1.5rem; justify-content: center;">
+      <a href="https://github.com/BertCalm/XO_OX-XOmnibus/discussions" class="cta-btn" target="_blank" rel="noopener">GitHub Discussions</a>
     </div>
-  </div>
-
-  <div class="submit-cta">
-    <p>Want to be featured? Share a link to your track or preset pack and tell us which engines you used.</p>
-    <form class="submit-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent = 'Submitted!'; this.querySelector('button').disabled = true; setTimeout(() => { this.querySelector('button').textContent = 'Submit'; this.querySelector('button').disabled = false; }, 2000);">
-      <input type="text" placeholder="Your name or artist handle" aria-label="Artist name" required>
-      <input type="url" placeholder="Link to your track or pack" aria-label="Link to your creation" required>
-      <button type="submit">Submit</button>
-    </form>
   </div>
 </section>
 
 <!-- ═══════════ ENGINE DETAIL MODAL ═══════════ -->
-<div class="engine-modal-overlay" id="engineOverlay"></div>
+<div class="engine-modal-overlay" id="engineOverlay">
+  <canvas id="engineVizCanvas"></canvas>
+</div>
 <div class="engine-modal" id="engineModal">
   <div class="engine-modal-accent" id="modalAccent"></div>
   <div class="engine-modal-header">
@@ -2023,6 +2281,63 @@ footer {
   </div>
   <div class="engine-modal-body" id="modalBody"></div>
 </div>
+
+<!-- ═══════════ BUILT FOR MPC ═══════════ -->
+<section class="mpc-section reveal" id="mpc">
+  <div class="section-label">Hardware Ready</div>
+  <h2>Built for <em>MPC.</em></h2>
+  <p class="section-text">
+    XOmnibus includes XPN export — render any preset or coupling recipe as an MPC-ready keygroup or drum program. Drag-and-drop into your MPC workflow. No conversion, no workarounds.
+  </p>
+  <div class="mpc-grid">
+    <div class="mpc-card">
+      <h3>XPN Export</h3>
+      <p>Render presets as multi-sampled keygroup programs. Every note, every velocity layer, every articulation preserved in MPC-native format.</p>
+    </div>
+    <div class="mpc-card">
+      <h3>Drum Kits</h3>
+      <p>Export ONSET drum voices as individual .wav samples with XPM mapping. 808s, metallic hats, noise snares — all algorithmic, all yours.</p>
+    </div>
+    <div class="mpc-card">
+      <h3>Sound Packs</h3>
+      <p>Curated .xpn bundles ready for MPC import. Drop a pack onto your SD card, load it, and play. No DAW required.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ GET XOMNIBUS (Download) ═══════════ -->
+<section class="download-section reveal" id="download">
+  <div class="section-label">Download</div>
+  <h2>Get <em>XOmnibus.</em></h2>
+  <p class="section-text">
+    Free. Open-source. No accounts, no paywalls.
+  </p>
+  <a href="https://github.com/BertCalm/XO_OX-XOmnibus/releases" class="download-btn" target="_blank" rel="noopener">Download Latest Release</a>
+  <a href="https://patreon.com/xoox" class="patreon-btn" target="_blank" rel="noopener">Support on Patreon</a>
+  <div class="download-requirements">
+    <div class="download-req"><strong>macOS</strong> 11+</div>
+    <div class="download-req"><strong>Formats:</strong> AU / VST3 / Standalone</div>
+    <div class="download-req"><strong>Size:</strong> ~200MB</div>
+  </div>
+  <div class="quickstart">
+    <div class="quickstart-step">
+      <div class="quickstart-step-num">1</div>
+      <p>Download the latest release</p>
+    </div>
+    <div class="quickstart-step">
+      <div class="quickstart-step-num">2</div>
+      <p>Run the installer</p>
+    </div>
+    <div class="quickstart-step">
+      <div class="quickstart-step-num">3</div>
+      <p>Open in your DAW or standalone</p>
+    </div>
+    <div class="quickstart-step">
+      <div class="quickstart-step-num">4</div>
+      <p>Explore the preset browser</p>
+    </div>
+  </div>
+</section>
 
 <!-- ═══════════ SPECTRUM BAR ═══════════ -->
 <div class="spectrum-bar" id="spectrumBar"></div>
@@ -2035,8 +2350,10 @@ footer {
     <a href="#instruments">Instruments</a>
     <a href="guide.html">Field Guide</a>
     <a href="packs.html">Sound Packs</a>
+    <a href="updates.html">Signal</a>
     <a href="#community">Community</a>
     <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://patreon.com/xoox" target="_blank" rel="noopener">Patreon</a>
   </div>
   <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
 </footer>
@@ -2113,7 +2430,7 @@ const engines = [
     wave: "grain", freq: 440, fm: 0, fmAmt: 0,
     synthType: "Granular Synthesis",
     tagline: "Fragments any sound into time-scattered particles. Clouds of tiny grains swirl and recombine, transforming familiar sources into iridescent textures that shimmer like light through crystal.",
-    features: ["Grain cloud engine with density, size, and scatter controls", "Position scanning through source material", "Freeze and time-stretch capabilities", "100 factory presets in 6 categories"],
+    features: ["Grain cloud engine with density, size, and scatter controls", "Position scanning through source material", "Freeze and time-stretch capabilities", "150 factory presets in 6 categories"],
     coupling: ["ODYSSEY", "OVERWORLD", "OVERDUB"],
     prefix: "opal_", format: "AU / Standalone" },
   { name: "Overbite", code: "OVERBITE", color: "#F0EDE8",
@@ -2979,6 +3296,7 @@ function openEngineModal(eng) {
   modalOverlay.classList.add('open');
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
+  startEngineViz(eng.color, eng.name);
 }
 
 function makeSection(title) {
@@ -2995,6 +3313,7 @@ function closeEngineModal() {
   modalOverlay.classList.remove('open');
   modal.classList.remove('open');
   document.body.style.overflow = '';
+  stopEngineViz();
 }
 
 modalOverlay.addEventListener('click', closeEngineModal);
@@ -3232,6 +3551,156 @@ document.querySelectorAll('.aquatic-link').forEach(link => {
 // On page load, check if we arrived via aquatic transition (reverse the wave)
 if (document.referrer && document.referrer.includes('xo-ox') || sessionStorage.getItem('aquaticNav')) {
   sessionStorage.removeItem('aquaticNav');
+}
+
+// ═══════════ HAMBURGER MENU ═══════════
+(function() {
+  const btn = document.getElementById('hamburgerBtn');
+  const nav = document.getElementById('navLinks');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function() {
+    const open = nav.classList.toggle('mobile-open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      nav.classList.remove('mobile-open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
+// ═══════════ ENGINE DETAIL VISUALIZATION ═══════════
+let vizRAF = null;
+let vizParticles = [];
+
+function startEngineViz(color, name) {
+  const canvas = document.getElementById('engineVizCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = window.innerWidth * dpr;
+  canvas.height = window.innerHeight * dpr;
+  ctx.scale(dpr, dpr);
+  const W = window.innerWidth;
+  const H = window.innerHeight;
+
+  // Parse hex color to RGB
+  const r = parseInt(color.slice(1, 3), 16);
+  const g = parseInt(color.slice(3, 5), 16);
+  const b = parseInt(color.slice(5, 7), 16);
+
+  // Create particles — orbital paths in the engine's color
+  vizParticles = [];
+  const count = 80;
+  for (let i = 0; i < count; i++) {
+    const centerX = W * 0.28;
+    const centerY = H * 0.5;
+    const orbitRx = 40 + Math.random() * (W * 0.22);
+    const orbitRy = 30 + Math.random() * (H * 0.35);
+    vizParticles.push({
+      cx: centerX + (Math.random() - 0.5) * 60,
+      cy: centerY + (Math.random() - 0.5) * 60,
+      rx: orbitRx,
+      ry: orbitRy,
+      angle: Math.random() * Math.PI * 2,
+      speed: (0.002 + Math.random() * 0.008) * (Math.random() > 0.5 ? 1 : -1),
+      size: 1 + Math.random() * 3,
+      alpha: 0.1 + Math.random() * 0.6,
+      drift: Math.random() * 0.001,
+      phase: Math.random() * Math.PI * 2,
+    });
+  }
+
+  // Add a few large glowing orbs
+  for (let i = 0; i < 5; i++) {
+    vizParticles.push({
+      cx: W * (0.1 + Math.random() * 0.35),
+      cy: H * (0.15 + Math.random() * 0.7),
+      rx: 0, ry: 0,
+      angle: 0,
+      speed: 0,
+      size: 60 + Math.random() * 100,
+      alpha: 0.03 + Math.random() * 0.05,
+      drift: 0.0005 + Math.random() * 0.001,
+      phase: Math.random() * Math.PI * 2,
+      isOrb: true,
+    });
+  }
+
+  let t = 0;
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    t += 0.016;
+
+    // Draw connecting lines between nearby orbital particles
+    for (let i = 0; i < count; i++) {
+      const p = vizParticles[i];
+      const px = p.cx + Math.cos(p.angle) * p.rx;
+      const py = p.cy + Math.sin(p.angle) * p.ry;
+      for (let j = i + 1; j < count; j++) {
+        const q = vizParticles[j];
+        const qx = q.cx + Math.cos(q.angle) * q.rx;
+        const qy = q.cy + Math.sin(q.angle) * q.ry;
+        const dist = Math.hypot(px - qx, py - qy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(px, py);
+          ctx.lineTo(qx, qy);
+          ctx.strokeStyle = `rgba(${r},${g},${b},${0.08 * (1 - dist / 120)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Draw glowing orbs
+    vizParticles.forEach(p => {
+      if (p.isOrb) {
+        const pulse = 1 + Math.sin(t * 0.5 + p.phase) * 0.3;
+        const ox = p.cx + Math.sin(t * p.drift * 100 + p.phase) * 30;
+        const oy = p.cy + Math.cos(t * p.drift * 80 + p.phase) * 20;
+        const grad = ctx.createRadialGradient(ox, oy, 0, ox, oy, p.size * pulse);
+        grad.addColorStop(0, `rgba(${r},${g},${b},${p.alpha})`);
+        grad.addColorStop(0.5, `rgba(${r},${g},${b},${p.alpha * 0.3})`);
+        grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(ox, oy, p.size * pulse, 0, Math.PI * 2);
+        ctx.fill();
+        return;
+      }
+
+      // Update orbital particles
+      p.angle += p.speed;
+      p.rx += Math.sin(t + p.phase) * p.drift * 10;
+      const x = p.cx + Math.cos(p.angle) * p.rx;
+      const y = p.cy + Math.sin(p.angle) * p.ry;
+      const pulse = 0.7 + Math.sin(t * 2 + p.phase) * 0.3;
+
+      ctx.beginPath();
+      ctx.arc(x, y, p.size * pulse, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${r},${g},${b},${p.alpha * pulse})`;
+      ctx.fill();
+    });
+
+    vizRAF = requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+function stopEngineViz() {
+  if (vizRAF) {
+    cancelAnimationFrame(vizRAF);
+    vizRAF = null;
+  }
+  const canvas = document.getElementById('engineVizCanvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
 }
 </script>
 

@@ -132,7 +132,7 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Owlfish/OwlfishCytomicSVF.h
     Source/Engines/Owlfish/OwlfishFastMath.h
 
-    # Pentagon Family Engines (SP7)
+    # Constellation Family Engines (SP7)
     Source/Engines/Ohm/OhmEngine.h
     Source/Engines/Ohm/OhmEngine.cpp
     Source/Engines/Orphica/OrphicaEngine.h

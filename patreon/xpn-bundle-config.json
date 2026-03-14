@@ -1,0 +1,47 @@
+{
+  "name": "Founder's Signature Vol. 1",
+  "description": "5 hand-crafted presets from XO_OX's founder — demonstrating coupling, character engines, and the XOmnibus philosophy. Free forever.",
+  "cover_engine": "ONSET",
+  "version": "1.0",
+  "pack_id": "com.xo-ox.bundle.founders-signature-vol1",
+  "presets": [
+    {
+      "engine": "Onset",
+      "name": "Coupled Bounce",
+      "notes": "Week 1 — ONSET + OVERBITE entangled. Rhythm->Blend + Amp->Filter coupling. One-finger trap beat."
+    },
+    {
+      "engine": "Overbite",
+      "name": "Belly to Bite",
+      "notes": "Week 2 — OVERBITE solo. 5-macro demonstration. Foundation bass for all genres."
+    },
+    {
+      "engine": "Oblong",
+      "name": "Coral Investigations",
+      "notes": "Week 3 — OBLONG solo. CuriosityEngine Investigate mode. Behavioral LFO exploration."
+    },
+    {
+      "engine": "Overdub",
+      "name": "Thermocline Dispatch",
+      "notes": "Week 4 — OVERDUB + ODYSSEY entangled. Tape delay + psychedelic drift. Dub atmosphere."
+    },
+    {
+      "engine": "Onset",
+      "name": "Tidal Dialogue",
+      "notes": "Week 5 — ONSET + ODYSSEY entangled. Amp->Filter + Amp->Pitch coupling. Per-sample emotional interaction."
+    }
+  ],
+  "metadata": {
+    "series": "Founder's Frequency",
+    "season": 1,
+    "tier": "free",
+    "platform": "Patreon",
+    "release_schedule": [
+      { "week": 1, "preset": "Coupled Bounce", "genre_target": "trap / hip-hop" },
+      { "week": 2, "preset": "Belly to Bite", "genre_target": "bass / all genres" },
+      { "week": 3, "preset": "Coral Investigations", "genre_target": "keys / ambient" },
+      { "week": 4, "preset": "Thermocline Dispatch", "genre_target": "dub / ambient" },
+      { "week": 5, "preset": "Tidal Dialogue", "genre_target": "cinematic / world" }
+    ]
+  }
+}

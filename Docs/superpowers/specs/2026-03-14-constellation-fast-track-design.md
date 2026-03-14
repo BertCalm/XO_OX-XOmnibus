@@ -1,4 +1,4 @@
-# XOrphica Family Pentagon — Fast Track Build Specification
+# XOrphica Family Constellation — Fast Track Build Specification
 
 **Date:** 2026-03-14
 **Status:** Approved
@@ -8,7 +8,7 @@
 
 ## Goal
 
-Build all 5 XOrphica Family Pentagon engines (XOhm, XOrphica, XObbligato, XOttoni, XOlé) as standalone instruments, integrate them into XOmnibus, implement the family ecosystem features (macro bleed, family coupling, Family Dinner presets, Obed easter egg), and deliver production-quality documentation and QA.
+Build all 5 XOrphica Family Constellation engines (XOhm, XOrphica, XObbligato, XOttoni, XOlé) as standalone instruments, integrate them into XOmnibus, implement the family ecosystem features (macro bleed, family coupling, Family Dinner presets, Obed easter egg), and deliver production-quality documentation and QA.
 
 ## Architecture
 
@@ -169,7 +169,7 @@ All 5 engines share a `FamilyWaveguide.h` DSP core (delay line + damping + body 
 
 ---
 
-### SP7: Pentagon Integration into XOmnibus
+### SP7: Constellation Integration into XOmnibus
 
 **Location:** `~/Documents/GitHub/XO_OX-XOmnibus/`
 **Dependencies:** SP1-SP6 all complete

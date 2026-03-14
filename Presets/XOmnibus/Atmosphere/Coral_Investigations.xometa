@@ -29,7 +29,7 @@
       "bob_oscB_detune": 3.0,
       "bob_oscB_blend": 0.35,
       "bob_oscB_sync": 0,
-      "bob_oscB_fm": 0.0,
+      "bob_oscB_fm": 0.09,
       "bob_texMode": 0,
       "bob_texLevel": 0.0,
       "bob_texTone": 0.5,
@@ -56,12 +56,12 @@
       "bob_curMode": 2,
       "bob_curAmount": 0.55,
       "bob_bobMode": 0.35,
-      "bob_dustAmount": 0.12,
+      "bob_dustAmount": 0.08,
       "bob_dustTone": 0.45,
       "bob_level": 0.72,
       "bob_voiceMode": 0,
       "bob_glide": 0.0,
-      "bob_polyphony": 6
+      "bob_polyphony": 4
     }
   },
   "coupling": null,

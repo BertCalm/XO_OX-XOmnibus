@@ -139,6 +139,71 @@ body::before {
 .nav-links a:hover::after { width: 100%; }
 .nav-links a.active { color: var(--cream); }
 
+/* ── Download CTA in nav ── */
+.nav-download-btn {
+  background: var(--gold) !important;
+  color: var(--bg-deep) !important;
+  padding: 0.4rem 1.1rem;
+  border-radius: 2px;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  transition: background 0.3s, color 0.3s;
+}
+.nav-download-btn::after { display: none !important; }
+.nav-download-btn:hover {
+  background: var(--cream) !important;
+  color: var(--bg-deep) !important;
+}
+
+/* ── Hamburger menu (mobile) ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 1001;
+}
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--cream);
+  border-radius: 1px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .site-nav .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(6, 10, 16, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 1.5rem clamp(1.5rem, 5vw, 6rem);
+    gap: 1.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .site-nav .nav-links.mobile-open { display: flex; }
+  .nav-links a { font-size: 0.75rem !important; }
+  .nav-download-btn { display: inline-block; text-align: center; align-self: flex-start; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+
 /* ═══════════ MANIFESTO ═══════════ */
 .manifesto {
   max-width: 780px;
@@ -422,14 +487,19 @@ footer {
 
 <nav class="site-nav" aria-label="Main navigation">
   <a href="index.html" class="nav-logo" aria-label="XO_OX Designs home"><span class="gold">X</span>O_O<span class="gold">X</span></a>
-  <div class="nav-links">
+  <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
     <a href="manifesto.html" class="active">Manifesto</a>
     <a href="index.html#instruments">Instruments</a>
     <a href="packs.html">Sound Packs</a>
     <a href="guide.html">Field Guide</a>
+    <a href="updates.html">Signal</a>
     <a href="index.html#aquarium">Aquarium</a>
     <a href="index.html#community">Community</a>
     <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
+    <a href="index.html#download" class="nav-download-btn">Download</a>
   </div>
 </nav>
 
@@ -610,6 +680,7 @@ footer {
     <a href="index.html#instruments">Instruments</a>
     <a href="guide.html">Field Guide</a>
     <a href="packs.html">Sound Packs</a>
+    <a href="updates.html">Signal</a>
     <a href="index.html#community">Community</a>
     <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
   </div>
@@ -629,6 +700,25 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.belief, .origin, .rejection, .manifesto-closing, .manifesto-divider').forEach(el => {
   observer.observe(el);
 });
+
+// ═══════════ HAMBURGER MENU ═══════════
+(function() {
+  const btn = document.getElementById('hamburgerBtn');
+  const nav = document.getElementById('navLinks');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function() {
+    const open = nav.classList.toggle('mobile-open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      nav.classList.remove('mobile-open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
 </script>
 
 </body>

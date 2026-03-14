@@ -18,7 +18,7 @@
 
 **Sound family:** Hybrid — acoustic folk-world textures / spectral interference / FM intrusion / organic-vs-analytical instrument
 
-**Unique capability:** Asymmetric voice architecture — the Dad is the SIGNAL, the in-laws and Obed are INTERFERENCE. No other engine treats voices as fundamentally unequal in this way. The other four pentagon engines split between equal voices. XOhm has one core voice that external forces try to disrupt, and a macro (COMMUNE) that transforms disruption into inclusion. Three completely different synthesis methods (physical modeling, spectral/granular, FM) coexist and collide. The two-axis MEDDLING × COMMUNE system creates four quadrants of family dynamics, from peaceful solo jam to the miraculous moment when even the in-laws start tapping their feet.
+**Unique capability:** Asymmetric voice architecture — the Dad is the SIGNAL, the in-laws and Obed are INTERFERENCE. No other engine treats voices as fundamentally unequal in this way. The other four constellation engines split between equal voices. XOhm has one core voice that external forces try to disrupt, and a macro (COMMUNE) that transforms disruption into inclusion. Three completely different synthesis methods (physical modeling, spectral/granular, FM) coexist and collide. The two-axis MEDDLING × COMMUNE system creates four quadrants of family dynamics, from peaceful solo jam to the miraculous moment when even the in-laws start tapping their feet.
 
 ---
 
@@ -55,14 +55,14 @@ The Sage accent is the color of the meadow where the jam circle happens — warm
 
 **Generation:** Second Generation — but arrived through marriage rather than evolution. The manatee drifted into the siphonophore's territory from a distant warm current. He didn't evolve in this column. He chose it. Because she was here.
 
-**The Family Architecture — The Pentagon:**
+**The Family Architecture — The Constellation:**
 - **XOrphica** (mother): splits by REGISTER (2 paths). Signature: SURFACE.
 - **XObbligato** (sons): splits by PERSONALITY (2 paths). Signature: BOND.
 - **XOttoni** (cousins): splits by MATURITY (3 paths). Signature: GROW.
 - **XOlé** (aunts): splits by ALLIANCE (3→6 paths). Signature: DRAMA.
 - **XOhm** (dad + in-laws + Obed): splits by PHILOSOPHY (1 core + interference). Signature: MEDDLING.
 
-Each pentagon point has a unique split topology. The progression:
+Each constellation point has a unique split topology. The progression:
 1. Equal binary (2 balanced paths)
 2. Dynamic binary (2 shifting paths)
 3. Progressive ternary (3 graded paths)
@@ -314,7 +314,7 @@ COMMUNE works orthogonally to MEDDLING. It controls how much the Dad's organic w
 | | COMMUNE Low (cold separation) | COMMUNE High (warm absorption) |
 |---|---|---|
 | **MEDDLING Low** | Pure Dad jam — simple, warm, peaceful. A manatee floating alone, playing banjo. The happiest sound. | The Dad at his most communal — inviting the wind, the water, the grass into the jam. Everything resonates. |
-| **MEDDLING High** | In-laws winning — cold spectral analysis dominates, Obed's FM is clinically perfect, the Dad is overwhelmed. The saddest sound. | **THE MIRACLE** — everyone is jamming. The in-laws are improvising. Obed is feeling it. The Dad absorbed all the interference and turned it into music. The most complex, most beautiful sound in the entire pentagon. |
+| **MEDDLING High** | In-laws winning — cold spectral analysis dominates, Obed's FM is clinically perfect, the Dad is overwhelmed. The saddest sound. | **THE MIRACLE** — everyone is jamming. The in-laws are improvising. Obed is feeling it. The Dad absorbed all the interference and turned it into music. The most complex, most beautiful sound in the entire constellation. |
 
 ---
 
@@ -329,7 +329,7 @@ COMMUNE works orthogonally to MEDDLING. It controls how much the Dad's organic w
 
 ## Coupling Thesis
 
-XOhm is the warm center of the family pentagon. He couples with every other family engine through relationship rather than technical routing.
+XOhm is the warm center of the family constellation. He couples with every other family engine through relationship rather than technical routing.
 
 ### As Coupling Source (XOhm → others)
 
@@ -359,7 +359,7 @@ XOhm is the warm center of the family pentagon. He couples with every other fami
 | **OHM × OTTONI** | "Uncle & Cousins" | The Dad jams with the visiting cousins from the Great Lakes planet. His warmth thaws their cold-water brass. The toddler loves him immediately. |
 | **OHM vs OHM** | "Obed's Dilemma" | Two instances — one pure Dad, one high-MEDDLING with Obed dominant. The rivalry made into a duet. At high COMMUNE on both, they merge into something neither could make alone. |
 
-### The Pentagon Coupling — All Five Family Engines
+### The Constellation Coupling — All Five Family Engines
 
 | Coupling | Relationship | Musical Effect |
 |----------|-------------|---------------|
@@ -429,7 +429,7 @@ That's the Dad.
 
 ---
 
-## The Pentagon — Complete Family System
+## The Constellation — Complete Family System
 
 ```
                     XOrphica
@@ -462,14 +462,14 @@ That's the Dad.
 | 4 | **XOlé** | Aunts | Alliance | 3→6 | DRAMA | Family dynamics | Parrotfish | Tropical (crystal clear) |
 | 5 | **XOhm** | Dad + in-laws | Philosophy | 1+mod | MEDDLING | Peace vs interference | Manatee | Ocean (warm salt) |
 
-**Instrument coverage across the pentagon:**
+**Instrument coverage across the constellation:**
 - XOrphica: Harp (plucked strings — divine)
 - XObbligato: Flutes + reeds (blown winds — bright + dark)
 - XOttoni: Brass + sax (lip-buzz winds — toddler to teen)
 - XOlé: Strummed strings (tres, berimbau, charango, oud, bouzouki, pin)
 - XOhm: Acoustic folk-world (banjo, guitar, fiddle, sitar, djembe, kalimba) + spectral + FM
 
-**Together, the pentagon covers:** plucked strings, strummed strings, bowed strings, blown flute-winds, blown reed-winds, brass, saxophone, acoustic percussion, electronic FM, spectral analysis, granular synthesis, and physical modeling. A complete orchestra distributed across a family tree.
+**Together, the constellation covers:** plucked strings, strummed strings, bowed strings, blown flute-winds, blown reed-winds, brass, saxophone, acoustic percussion, electronic FM, spectral analysis, granular synthesis, and physical modeling. A complete orchestra distributed across a family tree.
 
 ---
 

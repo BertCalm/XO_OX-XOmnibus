@@ -38,15 +38,15 @@
       "drift_attack": 2.0,
       "drift_decay": 5.0,
       "drift_sustain": 0.65,
-      "drift_release": 4.5,
+      "drift_release": 4.236,
       "drift_driftDepth": 0.4,
       "drift_driftRate": 0.03,
-      "drift_lfoRate": 0.08,
-      "drift_lfoDepth": 0.15,
+      "drift_lfoRate": 0.067,
+      "drift_lfoDepth": 0.12,
       "drift_lfoDest": 1,
       "drift_level": 0.6,
       "drift_voiceMode": 0,
-      "drift_polyphony": 6
+      "drift_polyphony": 4
     },
     "Overdub": {
       "dub_oscMode": 0,
@@ -68,7 +68,7 @@
         "engineA": "Odyssey",
         "engineB": "Overdub",
         "type": "Audio->FM",
-        "amount": 0.15
+        "amount": 0.09
       },
       {
         "engineA": "Overdub",

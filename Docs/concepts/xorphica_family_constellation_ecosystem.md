@@ -1,11 +1,11 @@
-# The XOrphica Family Pentagon — Ecosystem Design
+# The XOrphica Family Constellation — Ecosystem Design
 
 *Phase 0 | March 2026 | XO_OX Designs*
 *Five engines. Five splits. Five macros. Five species. One family system.*
 
 ---
 
-## The Pentagon
+## The Constellation
 
 ```
                     XOrphica
@@ -48,7 +48,7 @@
 
 ## 2. Instrument Coverage
 
-The pentagon distributes a complete orchestral+world palette across a family tree:
+The constellation distributes a complete orchestral+world palette across a family tree:
 
 | Engine | Instrument Family | Synthesis | Traditions |
 |--------|------------------|-----------|-----------|
@@ -64,9 +64,9 @@ The pentagon distributes a complete orchestral+world palette across a family tre
 
 ## 3. Family Coupling Matrix — Named Relationship Routes
 
-Every pentagon edge has a specific, named coupling route that reflects the family relationship. These go beyond generic XOmnibus coupling types — they're family-specific interactions.
+Every constellation edge has a specific, named coupling route that reflects the family relationship. These go beyond generic XOmnibus coupling types — they're family-specific interactions.
 
-### Pentagon Edges (adjacent pairs)
+### Constellation Edges (adjacent pairs)
 
 | Edge | Relationship | Unique Coupling | Musical Effect |
 |------|-------------|----------------|----------------|
@@ -77,7 +77,7 @@ Every pentagon edge has a specific, named coupling route that reflects the famil
 | **OTTONI ↔ OLÉ** | Extended Family | **Age Teaches Fire** — GROW state modulates how fierce the aunts' strumming gets. The teen cousin's virtuosity eggs the aunts on. | The teen's complex brass makes the aunts play harder. The toddler's simple blasts make them laugh and soften. |
 | **OLÉ ↔ OHM** | In-Laws / Brother-in-law | **Drama Bleeds** — aunts' DRAMA level leaks into Dad's MEDDLING intensity. When the sisters fight, the in-laws get energized. | Family stress cascades. The aunts' argument wakes the in-laws up, who then interfere with the Dad, who then needs more COMMUNE to absorb it. |
 
-### Pentagon Diagonals (non-adjacent pairs)
+### Constellation Diagonals (non-adjacent pairs)
 
 | Diagonal | Relationship | Coupling | Musical Effect |
 |----------|-------------|----------|----------------|
@@ -91,7 +91,7 @@ Every pentagon edge has a specific, named coupling route that reflects the famil
 
 ## 4. Cross-Engine Macro Bleed
 
-When 2+ pentagon engines are loaded in XOmnibus, their signature macros subtly influence each other. The influence is ±10-15% parameter nudge — felt but not overpowering. Because that's what families do.
+When 2+ constellation engines are loaded in XOmnibus, their signature macros subtly influence each other. The influence is ±10-15% parameter nudge — felt but not overpowering. Because that's what families do.
 
 ### Bleed Routes
 
@@ -132,13 +132,13 @@ COMMUNE is special — it's the only macro that **dampens** all other family str
 - SURFACE settles (wife is at peace)
 - GROW proceeds naturally (cousins grow without pressure)
 
-**COMMUNE is the family's emotional immune system.** The Dad's peace heals the whole pentagon.
+**COMMUNE is the family's emotional immune system.** The Dad's peace heals the whole constellation.
 
 ---
 
 ## 5. Shared Waveguide DNA — Family Physics Engine
 
-The pentagon shares a common waveguide core. Family shares DNA.
+The constellation shares a common waveguide core. Family shares DNA.
 
 ### `FamilyWaveguide.h` — Shared DSP Module
 
@@ -187,7 +187,7 @@ Engine-Specific Exciters (NOT shared):
 
 ## 6. "Family Dinner" Preset Category
 
-A unique preset sub-category within Entangled that requires 2+ pentagon engines loaded simultaneously. These presets tell family stories through coupling.
+A unique preset sub-category within Entangled that requires 2+ constellation engines loaded simultaneously. These presets tell family stories through coupling.
 
 ### Core Family Presets
 
@@ -207,7 +207,7 @@ A unique preset sub-category within Entangled that requires 2+ pentagon engines 
 |------------|---------|-------|
 | **"Thanksgiving"** | OLÉ × OHM × OTTONI | Aunts arguing (DRAMA=0.7), Dad jamming (COMMUNE=0.6), cousins visiting (GROW=0.5). The food is getting cold. Someone knocked over a glass. |
 | **"Christmas Morning"** | All 5 | Everyone peaceful. DRAMA=0.1, BOND=0.0, MEDDLING=0.1, GROW=0.3 (toddler opening presents), SURFACE settled. A rare moment of total family harmony. |
-| **"The Reunion"** | All 5 | Full pentagon active. Moderate everything. Every family dynamic interacting. The macro bleed system at its most complex. The sound of a family that loves each other imperfectly. |
+| **"The Reunion"** | All 5 | Full constellation active. Moderate everything. Every family dynamic interacting. The macro bleed system at its most complex. The sound of a family that loves each other imperfectly. |
 | **"Summer Cookout"** | OHM × OBBLIGATO × OLÉ | Dad on guitar, sons on flutes, aunts on tres and charango. The husbands (oud, bouzouki, pin) quietly join. Warm evening. Fireflies. COMMUNE=0.8. |
 | **"Airport Goodbye"** | OTTONI × OBBLIGATO | Cousins leaving. GROW=0.9 (the teen plays a farewell). BOND at its most tender. Temperature Exchange in reverse — the warmth leaving with the cold. Sad and beautiful. |
 
@@ -215,7 +215,7 @@ A unique preset sub-category within Entangled that requires 2+ pentagon engines 
 
 ## 7. The Family Portrait — Visual Easter Egg
 
-When all 5 pentagon engines are loaded simultaneously in XOmnibus, the Gallery UI reveals a hidden **Family Portrait** animation:
+When all 5 constellation engines are loaded simultaneously in XOmnibus, the Gallery UI reveals a hidden **Family Portrait** animation:
 
 **The scene:** A cross-section of the water column. Five aquatic species at their correct depths:
 
@@ -277,11 +277,11 @@ When all 5 pentagon engines are loaded simultaneously in XOmnibus, the Gallery U
 
 ---
 
-## 9. The Pentagon as Product Feature
+## 9. The Constellation as Product Feature
 
 ### Marketing Angle
 
-The pentagon is not just 5 more engines — it's a **family system**. A synthesizer that models human relationships through DSP. No other product has ever done this:
+The constellation is not just 5 more engines — it's a **family system**. A synthesizer that models human relationships through DSP. No other product has ever done this:
 
 - **SURFACE** = how environment shapes us
 - **BOND** = how siblings relate
@@ -289,15 +289,15 @@ The pentagon is not just 5 more engines — it's a **family system**. A synthesi
 - **DRAMA** = how families fight and love
 - **MEDDLING** = how we resist and absorb external pressure
 
-These aren't synthesis parameters. They're **human experiences encoded as modulation**. The pentagon turns a synthesizer into a story engine.
+These aren't synthesis parameters. They're **human experiences encoded as modulation**. The constellation turns a synthesizer into a story engine.
 
 ### Preset Library Target
 
 | Category | Count | Description |
 |----------|-------|-------------|
 | Solo presets (per engine) | 50 × 5 = 250 | Each engine's standalone presets across 6 moods |
-| Family Dinner presets | 30 | Multi-engine presets requiring 2+ pentagon engines |
-| Holiday presets | 10 | Named family events requiring 3+ pentagon engines |
+| Family Dinner presets | 30 | Multi-engine presets requiring 2+ constellation engines |
+| Holiday presets | 10 | Named family events requiring 3+ constellation engines |
 | The Reunion | 5 | All-5 presets — the full family system |
 | **Total** | **295** | |
 
@@ -305,7 +305,7 @@ These aren't synthesis parameters. They're **human experiences encoded as modula
 
 ## 10. Build Sequence
 
-Recommended order for developing the pentagon engines:
+Recommended order for developing the constellation engines:
 
 | Phase | Engine | Rationale |
 |-------|--------|-----------|
@@ -330,4 +330,4 @@ Recommended order for developing the pentagon engines:
 
 ---
 
-*XO_OX Designs | The XOrphica Family Pentagon — five engines, five stories, one family that loves imperfectly and sounds beautiful doing it*
+*XO_OX Designs | The XOrphica Family Constellation — five engines, five stories, one family that loves imperfectly and sounds beautiful doing it*

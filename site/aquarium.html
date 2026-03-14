@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Aquarium — XO_OX Water Column Atlas</title>
+<meta name="description" content="The Aquarium — XO_OX Water Column Atlas. Every engine is a creature. Twenty-six species in one ecosystem.">
+<meta property="og:title" content="The Aquarium — XO_OX Water Column Atlas">
+<meta property="og:description" content="Every engine is a creature. Twenty-six species in one ecosystem. Dive through the water column from Open Sky to Ocean Floor.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://xo-ox.org/aquarium.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Aquarium — XO_OX Water Column Atlas">
+<meta name="twitter:description" content="Every engine is a creature. The water column is their world.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='4' y='24' font-size='24' fill='%23E9C46A'>X</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   The Aquarium — XO_OX Water Column Atlas
+   A vertical dive from Open Sky to Ocean Floor.
+   Every engine is a creature. Every depth tells a story.
+   ═══════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── Skip link ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100000;
+  padding: 0.75rem 1.5rem;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+:root {
+  --bg-deep:    #060A10;
+  --bg-warm:    #0A1018;
+  --bg-card:    #0E1620;
+  --bg-surface: #131D28;
+  --gold:       #E9C46A;
+  --gold-dim:   #C4A44E;
+  --gold-glow:  rgba(233, 196, 106, 0.12);
+  --cream:      #E4EAF0;
+  --text:       #B0BEC8;
+  --text-dim:   #6B7F8E;
+  --text-faint: #4A6878;
+  --border:     #152330;
+  --teal:       #2AA19B;
+  --teal-glow:  rgba(42, 161, 155, 0.08);
+  --coral:      #C4636E;
+  --coral-glow: rgba(196, 99, 110, 0.06);
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--bg-deep);
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg-deep);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--teal); color: var(--bg-deep); }
+
+/* ── Noise overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ═══════════ NAV ═══════════ */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6, 10, 16, 0.9);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+  text-decoration: none;
+}
+.nav-logo .gold { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--teal);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--cream); }
+
+/* ── Download CTA in nav ── */
+.nav-download-btn {
+  background: var(--gold) !important;
+  color: var(--bg-deep) !important;
+  padding: 0.4rem 1.1rem;
+  border-radius: 2px;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  transition: background 0.3s, color 0.3s;
+}
+.nav-download-btn::after { display: none !important; }
+.nav-download-btn:hover {
+  background: var(--cream) !important;
+  color: var(--bg-deep) !important;
+}
+
+/* ── Hamburger menu (mobile) ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 1001;
+}
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--cream);
+  border-radius: 1px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Depth gauge in nav ── */
+.depth-gauge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  transition: color 0.5s;
+}
+.depth-gauge-bar {
+  width: 40px;
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+.depth-gauge-fill {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), #2D0A4E);
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+
+/* ═══════════ HERO ═══════════ */
+.aquarium-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      180deg,
+      #1a3a5c 0%,
+      #0d2847 15%,
+      #091e38 30%,
+      #071828 50%,
+      #06102a 70%,
+      #08082e 85%,
+      #0a0428 95%,
+      #060A10 100%
+    );
+}
+
+/* Sunlight rays from top */
+.aquarium-hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150%;
+  height: 60%;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(233, 196, 106, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 30% 10%, rgba(0, 166, 214, 0.04) 0%, transparent 40%),
+    radial-gradient(ellipse at 70% 10%, rgba(42, 161, 155, 0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* Caustic light patterns */
+.aquarium-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 25% 30%, rgba(42, 161, 155, 0.03) 0%, transparent 30%),
+    radial-gradient(ellipse at 75% 40%, rgba(0, 166, 214, 0.02) 0%, transparent 30%),
+    radial-gradient(ellipse at 50% 60%, rgba(45, 10, 78, 0.04) 0%, transparent 30%);
+  animation: caustic-shift 12s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes caustic-shift {
+  0%   { opacity: 0.5; transform: scale(1); }
+  50%  { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 0.6; transform: scale(0.98); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-weight: 300;
+  color: var(--cream);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  margin-bottom: 0.3em;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-subtitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(0.85rem, 2vw, 1.15rem);
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hero-subtitle-secondary {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-faint);
+  margin-top: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-faint);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  animation: float 2.5s ease-in-out infinite;
+  z-index: 1;
+}
+.hero-scroll::after {
+  content: '';
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--teal), transparent);
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(8px); }
+}
+
+/* Bubble particles */
+.bubble-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.06);
+  animation: rise linear infinite;
+}
+@keyframes rise {
+  0%   { transform: translateY(100vh) translateX(0) scale(1); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-10vh) translateX(20px) scale(0.5); opacity: 0; }
+}
+
+/* ═══════════ SCROLL REVEAL ═══════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════ SECTIONS ═══════════ */
+.aq-section {
+  padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 6rem);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.section-label::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--teal);
+  opacity: 0.6;
+}
+
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+h2 em { font-style: italic; color: var(--gold); }
+
+.section-text {
+  max-width: 680px;
+  font-weight: 300;
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.9;
+}
+
+.section-text p {
+  margin-bottom: 1.5rem;
+}
+
+.section-text em {
+  color: var(--cream);
+  font-style: italic;
+}
+
+.section-text strong {
+  color: var(--cream);
+  font-weight: 500;
+}
+
+/* ═══════════ ORIGIN STORY ═══════════ */
+.origin-section {
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+.origin-creatures {
+  display: flex;
+  gap: 3rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.creature-card {
+  flex: 1;
+  min-width: 260px;
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: var(--bg-card);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s, transform 0.4s;
+}
+
+.creature-card:hover {
+  transform: translateY(-4px);
+}
+
+.creature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+.creature-card.felix::before {
+  background: linear-gradient(90deg, #00A6D6, #00A6D6 50%, transparent);
+}
+.creature-card.felix { border-color: rgba(0, 166, 214, 0.2); }
+.creature-card.felix:hover { border-color: rgba(0, 166, 214, 0.4); }
+
+.creature-card.oscar::before {
+  background: linear-gradient(90deg, transparent, #E8839B 50%, #E8839B);
+}
+.creature-card.oscar { border-color: rgba(232, 131, 155, 0.2); }
+.creature-card.oscar:hover { border-color: rgba(232, 131, 155, 0.4); }
+
+.creature-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+
+.creature-card.felix .creature-name { color: #00A6D6; }
+.creature-card.oscar .creature-name { color: #E8839B; }
+
+.creature-species {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 1rem;
+}
+
+.creature-desc {
+  font-weight: 300;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+/* ═══════════ THE WATER COLUMN ═══════════ */
+.water-column-section {
+  padding: clamp(4rem, 10vw, 8rem) 0;
+  position: relative;
+}
+
+.water-column-header {
+  text-align: center;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  max-width: 1000px;
+  margin: 0 auto 4rem;
+}
+
+.water-column {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 3rem);
+}
+
+/* The vertical gradient background */
+.water-column-bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    #FF8C00 0%,
+    #00A6D6 8%,
+    #0088AA 18%,
+    #006688 28%,
+    #005577 38%,
+    #004466 48%,
+    #003355 58%,
+    #002244 68%,
+    #001133 78%,
+    #0A0428 88%,
+    #2D0A4E 100%
+  );
+  border-radius: 2px;
+  opacity: 0.5;
+}
+
+/* Zone labels along the column */
+.zone-marker {
+  position: relative;
+  text-align: center;
+  padding: 2rem 0;
+  z-index: 1;
+}
+
+.zone-label {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  padding: 0.4rem 1.5rem;
+  border-radius: 1px;
+  position: relative;
+}
+
+.zone-line {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  height: 1px;
+  margin: 0 auto 0.75rem;
+  opacity: 0.3;
+}
+
+/* Zone color theming */
+.zone-sky .zone-label   { color: #FF8C00; border: 1px solid rgba(255, 140, 0, 0.15); background: rgba(255, 140, 0, 0.04); }
+.zone-sky .zone-line    { background: linear-gradient(90deg, transparent, #FF8C00, transparent); }
+
+.zone-surface .zone-label { color: #00A6D6; border: 1px solid rgba(0, 166, 214, 0.15); background: rgba(0, 166, 214, 0.04); }
+.zone-surface .zone-line  { background: linear-gradient(90deg, transparent, #00A6D6, transparent); }
+
+.zone-shallows .zone-label { color: #40C4AA; border: 1px solid rgba(64, 196, 170, 0.15); background: rgba(64, 196, 170, 0.04); }
+.zone-shallows .zone-line  { background: linear-gradient(90deg, transparent, #40C4AA, transparent); }
+
+.zone-reef .zone-label  { color: #E8839B; border: 1px solid rgba(232, 131, 155, 0.15); background: rgba(232, 131, 155, 0.04); }
+.zone-reef .zone-line   { background: linear-gradient(90deg, transparent, #E8839B, transparent); }
+
+.zone-open .zone-label  { color: #7B8DAA; border: 1px solid rgba(123, 141, 170, 0.15); background: rgba(123, 141, 170, 0.04); }
+.zone-open .zone-line   { background: linear-gradient(90deg, transparent, #7B8DAA, transparent); }
+
+.zone-thermo .zone-label { color: #6B7B3A; border: 1px solid rgba(107, 123, 58, 0.15); background: rgba(107, 123, 58, 0.04); }
+.zone-thermo .zone-line  { background: linear-gradient(90deg, transparent, #6B7B3A, transparent); }
+
+.zone-deep .zone-label  { color: #00CED1; border: 1px solid rgba(0, 206, 209, 0.15); background: rgba(0, 206, 209, 0.04); }
+.zone-deep .zone-line   { background: linear-gradient(90deg, transparent, #00CED1, transparent); }
+
+.zone-abyss .zone-label { color: #FF2D2D; border: 1px solid rgba(255, 45, 45, 0.12); background: rgba(255, 45, 45, 0.03); }
+.zone-abyss .zone-line  { background: linear-gradient(90deg, transparent, #FF2D2D, transparent); }
+
+.zone-floor .zone-label { color: #7B68EE; border: 1px solid rgba(123, 104, 238, 0.15); background: rgba(123, 104, 238, 0.04); }
+.zone-floor .zone-line  { background: linear-gradient(90deg, transparent, #7B68EE, transparent); }
+
+/* ── Engine cards in the column ── */
+.engine-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.75rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.engine-row.left {
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-right: calc(50% + 2rem);
+}
+
+.engine-row.right {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  padding-left: calc(50% + 2rem);
+}
+
+.engine-node {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: 0 0 12px 2px currentColor;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.engine-row:hover .engine-node {
+  transform: scale(1.3);
+  box-shadow: 0 0 20px 4px currentColor;
+}
+
+.engine-card {
+  padding: 1.2rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: var(--bg-card);
+  max-width: 340px;
+  min-width: 220px;
+  transition: border-color 0.4s, background 0.4s, transform 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.engine-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  transition: opacity 0.3s;
+}
+
+.engine-row:hover .engine-card {
+  background: var(--bg-surface);
+  transform: translateY(-2px);
+}
+
+.engine-card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 0.15rem;
+  transition: color 0.3s;
+}
+
+.engine-card-creature {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.6rem;
+}
+
+.engine-card-identity {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Polarity indicator */
+.polarity-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.polarity-track {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #00A6D6, #E8839B);
+  border-radius: 2px;
+  position: relative;
+}
+
+.polarity-marker {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 1px solid rgba(0,0,0,0.3);
+  box-shadow: 0 0 4px rgba(228, 234, 240, 0.4);
+}
+
+.polarity-label {
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* ═══════════ COUPLING ═══════════ */
+.coupling-section {
+  border-top: 1px solid var(--border);
+}
+
+.coupling-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.coupling-card {
+  padding: 1.8rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: var(--bg-card);
+  transition: border-color 0.4s, transform 0.4s;
+}
+
+.coupling-card:hover {
+  border-color: rgba(42, 161, 155, 0.3);
+  transform: translateY(-3px);
+}
+
+.coupling-type {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+}
+
+.coupling-bio {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+
+.coupling-desc {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.coupling-example {
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--teal);
+  font-style: italic;
+}
+
+/* ═══════════ BOOKENDS ═══════════ */
+.bookends-section {
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+.bookend-pair {
+  display: flex;
+  gap: 0;
+  margin-top: 3rem;
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.bookend {
+  flex: 1;
+  padding: 3rem 2.5rem;
+  position: relative;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bookend-sky {
+  background: linear-gradient(180deg,
+    rgba(255, 140, 0, 0.06) 0%,
+    var(--bg-card) 100%
+  );
+  border-right: 1px solid var(--border);
+}
+
+.bookend-floor {
+  background: linear-gradient(180deg,
+    var(--bg-card) 0%,
+    rgba(45, 10, 78, 0.08) 100%
+  );
+}
+
+.bookend-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 300;
+  margin-bottom: 0.3rem;
+}
+
+.bookend-sky .bookend-name { color: #FF8C00; }
+.bookend-floor .bookend-name { color: #7B68EE; }
+
+.bookend-creature {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 1rem;
+}
+
+.bookend-text {
+  font-weight: 300;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.full-column {
+  margin-top: 3rem;
+  padding: 2.5rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: var(--bg-card);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.full-column::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #FF8C00, var(--gold), #2D0A4E);
+}
+
+.full-column-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+
+.full-column-subtitle {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.full-column-text {
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.8;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ═══════════ LINEAGE ═══════════ */
+.lineage-section {
+  border-top: 1px solid var(--border);
+}
+
+.lineage-gen {
+  margin-top: 2.5rem;
+  padding: 1.5rem 2rem;
+  border-left: 2px solid var(--border);
+  position: relative;
+}
+
+.lineage-gen::before {
+  content: '';
+  position: absolute;
+  top: 1.5rem;
+  left: -6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: var(--bg-deep);
+}
+
+.lineage-gen-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+}
+
+.lineage-gen-sub {
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  margin-bottom: 1rem;
+}
+
+.lineage-species {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.lineage-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 1px;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text);
+  background: var(--bg-card);
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.lineage-tag:hover {
+  transform: translateY(-2px);
+}
+
+.lineage-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ═══════════ FOOTER ═══════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem clamp(1.5rem, 5vw, 6rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-links a {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover { color: var(--teal); }
+
+.footer-copy {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .site-nav .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(6, 10, 16, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 1.5rem clamp(1.5rem, 5vw, 6rem);
+    gap: 1.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .site-nav .nav-links.mobile-open { display: flex; }
+  .nav-links a { font-size: 0.75rem !important; }
+  .nav-download-btn { display: inline-block; text-align: center; align-self: flex-start; }
+
+  .origin-creatures {
+    flex-direction: column;
+  }
+
+  .engine-row.left,
+  .engine-row.right {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 2rem;
+    padding-right: 1rem;
+  }
+
+  .water-column-bg {
+    left: 1rem;
+    transform: none;
+  }
+
+  .engine-card {
+    min-width: 0;
+    max-width: none;
+    flex: 1;
+  }
+
+  .bookend-pair {
+    flex-direction: column;
+  }
+
+  .bookend-sky {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .coupling-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .zone-marker {
+    text-align: left;
+    padding-left: 2rem;
+  }
+  .zone-line {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 0.55rem; letter-spacing: 0.1em; }
+  .depth-gauge { display: none; }
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="site-nav" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="XO_OX Designs home"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="updates.html">Signal</a>
+    <a href="aquarium.html" class="active">Aquarium</a>
+    <a href="index.html#community">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
+    <a href="index.html#download" class="nav-download-btn">Download</a>
+    <div class="depth-gauge" id="depthGauge">
+      <div class="depth-gauge-bar"><div class="depth-gauge-fill" id="depthFill"></div></div>
+      <span id="depthLabel">Surface</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="aquarium-hero" id="hero">
+  <div class="bubble-field" aria-hidden="true" id="bubbleField"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">The <em>Aquarium</em></h1>
+    <p class="hero-subtitle">A Water Column Atlas</p>
+    <p class="hero-subtitle-secondary">Every engine is a creature. The water column is their world.</p>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">Descend</div>
+</section>
+
+<!-- ═══════════ ORIGIN STORY ═══════════ -->
+<section class="aq-section origin-section" id="main">
+  <div class="reveal">
+    <div class="section-label">The Origin</div>
+    <h2>The <em>Primordial</em> Coupling</h2>
+    <div class="section-text">
+      <p>In the beginning there were two: <strong>feliX</strong> the neon tetra and <strong>Oscar</strong> the axolotl.</p>
+      <p>feliX is X &mdash; surface, transient, bright, rhythmic, electric. A flash of neon scales darting through sunlit shallows. He lives in the moment. Every note is an arrival. He is the snap of a tail changing direction, the crack of a wave breaking, the first millisecond of a sound before it knows what it will become.</p>
+      <p>Oscar is O &mdash; depth, sustain, warm, patient, regenerative. Pink gills breathing slowly in a deep cave. He lives in duration. Every note is a journey. He is the slow inhale of a tide, the geological patience of a reef growing one polyp at a time, the long tail of a sound after its origin is forgotten.</p>
+      <p>When feliX and Oscar coupled for the first time &mdash; X met O, transient met sustain, surface met depth &mdash; the <em>XO_OX universe</em> was born. Every engine that followed is a species that evolved from that primordial coupling. Every sound in XOmnibus lives somewhere in the water column between feliX's sky and Oscar's floor.</p>
+      <p>The brand mark &mdash; <strong>XO_OX</strong> &mdash; is their names interleaved. X and O, forever coupled. The underscore is the surface of the water: everything above it belongs to feliX, everything below to Oscar, and the most alive sounds exist in both places at once.</p>
+    </div>
+  </div>
+
+  <div class="origin-creatures reveal">
+    <div class="creature-card felix">
+      <div class="creature-name">feliX</div>
+      <div class="creature-species">The Neon Tetra &mdash; X</div>
+      <div class="creature-desc">Surface, transient, bright, rhythmic, electric. A flash of iridescent blue darting through sunlit shallows. He is the initiator. He strikes first. Every note begins with a pitch sweep downward: the snap of a tail changing direction.</div>
+    </div>
+    <div class="creature-card oscar">
+      <div class="creature-name">Oscar</div>
+      <div class="creature-species">The Axolotl &mdash; O</div>
+      <div class="creature-desc">Depth, sustain, warm, patient, regenerative. Pink gills breathing slowly in a coral cave, regenerating, evolving, never rushing. He is the responder. He sustains. He absorbs the energy of other species and transforms it into warmth.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ THE WATER COLUMN ═══════════ -->
+<section class="water-column-section" id="water-column">
+  <div class="water-column-header reveal">
+    <div class="section-label" style="justify-content: center;">The Water Column</div>
+    <h2>Twenty-Six Species, <em>One Ecosystem</em></h2>
+    <p class="section-text" style="margin: 0 auto; text-align: center;">From open sky above the surface to the abyssal ocean floor. Every engine lives at a specific depth based on its feliX-Oscar polarity &mdash; its position on the vertical axis between light and dark, transient and sustain, surface and deep.</p>
+  </div>
+
+  <div class="water-column" id="waterColumn">
+    <div class="water-column-bg" aria-hidden="true"></div>
+
+    <!-- ── OPEN SKY ── -->
+    <div class="zone-marker zone-sky reveal">
+      <div class="zone-line"></div>
+      <span class="zone-label">Open Sky</span>
+    </div>
+
+    <div class="engine-row right reveal" data-engine="opensky">
+      <div class="engine-node" style="color: #FF8C00; background: #FF8C00;"></div>
+      <div class="engine-card" style="border-color: rgba(255,140,0,0.2);">
+        <div class="engine-card-name" style="color: #FF8C00;">XOpenSky</div>
+        <div class="engine-card-creature">Pure Light &mdash; The Sunburst</div>
+        <div class="engine-card-identity">feliX ascends above the water entirely. Pure light, pure air, pure euphoria. Shimmer synthesis at the edge of the atmosphere.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 0%;"></div></div><span class="polarity-label">Pure feliX</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#FF8C00;"></div>
+      </div>
+    </div>
+
+    <!-- ── THE SURFACE ── -->
+    <div class="zone-marker zone-surface reveal">
+      <div class="zone-line"></div>
+      <span class="zone-label">The Surface</span>
+    </div>
+
+    <div class="engine-row left reveal" data-engine="oddfelix">
+      <div class="engine-node" style="color: #00A6D6; background: #00A6D6;"></div>
+      <div class="engine-card" style="border-color: rgba(0,166,214,0.2);">
+        <div class="engine-card-name" style="color: #00A6D6;">OddfeliX</div>
+        <div class="engine-card-creature">The Neon Tetra &mdash; Darting, Electric</div>
+        <div class="engine-card-identity">feliX himself. A flash of iridescent blue darting through sunlit shallows. Percussive transient synthesis &mdash; the snap, the click, the dart of neon through water.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 5%;"></div></div><span class="polarity-label">Pure feliX</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#00A6D6;"></div>
+      </div>
+    </div>
+
+    <div class="engine-row right reveal" data-engine="onset">
+      <div class="engine-node" style="color: #0066FF; background: #0066FF;"></div>
+      <div class="engine-card" style="border-color: rgba(0,102,255,0.2);">
+        <div class="engine-card-name" style="color: #0066FF;">XOnset</div>
+        <div class="engine-card-creature">Surface Splashes &mdash; Precise, Kinetic</div>
+        <div class="engine-card-identity">Splashes on the surface. The sharp percussion of water breaking &mdash; a fish leaping, a tail slapping, rain hitting the ocean. Eight algorithmic drum voices.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 8%;"></div></div><span class="polarity-label">Pure feliX</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#0066FF;"></div>
+      </div>
+    </div>
+
+    <!-- ── SUNLIT SHALLOWS ── -->
+    <div class="zone-marker zone-shallows reveal">
+      <div class="zone-line"></div>
+      <span class="zone-label">Sunlit Shallows</span>
+    </div>
+
+    <div class="engine-row left reveal" data-engine="oblique">
+      <div class="engine-node" style="color: #BF40FF; background: #BF40FF;"></div>
+      <div class="engine-card" style="border-color: rgba(191,64,255,0.2);">
+        <div class="engine-card-name" style="color: #BF40FF;">XOblique</div>
+        <div class="engine-card-creature">Prismatic Refraction &mdash; Bouncing, Bold</div>
+        <div class="engine-card-identity">Light hitting water at an angle. Sound entering at one angle, bouncing off internal surfaces, emerging as something more colorful than what went in.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 18%;"></div></div><span class="polarity-label">feliX-leaning</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#BF40FF;"></div>
+      </div>
+    </div>
+
+    <div class="engine-row right reveal" data-engine="optic">
+      <div class="engine-node" style="color: #00FF41; background: #00FF41;"></div>
+      <div class="engine-card" style="border-color: rgba(0,255,65,0.2);">
+        <div class="engine-card-name" style="color: #00FF41;">XOptic</div>
+        <div class="engine-card-creature">Bioluminescent Plankton &mdash; Pulsing, Visual</div>
+        <div class="engine-card-identity">Bioluminescent plankton at the surface. A million tiny organisms pulsing in response to movement. Light as rhythm. The synesthete &mdash; hearing light, seeing sound.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 20%;"></div></div><span class="polarity-label">feliX-leaning</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#00FF41;"></div>
+      </div>
+    </div>
+
+    <div class="engine-row left reveal" data-engine="origami">
+      <div class="engine-node" style="color: #E63946; background: #E63946;"></div>
+      <div class="engine-card" style="border-color: rgba(230,57,70,0.2);">
+        <div class="engine-card-name" style="color: #E63946;">XOrigami</div>
+        <div class="engine-card-creature">Surface Tension &mdash; Precise, Delicate</div>
+        <div class="engine-card-identity">The invisible membrane where water meets air. Waveshaping that folds the waveform the way water folds at its surface: precisely, with sharp creases that create unexpected harmonics.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 22%;"></div></div><span class="polarity-label">feliX-leaning</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#E63946;"></div>
+      </div>
+    </div>
+
+    <div class="engine-row right reveal" data-engine="overworld">
+      <div class="engine-node" style="color: #39FF14; background: #39FF14;"></div>
+      <div class="engine-card" style="border-color: rgba(57,255,20,0.2);">
+        <div class="engine-card-name" style="color: #39FF14;">XOverworld</div>
+        <div class="engine-card-creature">The Digital Reef &mdash; Fossilized Chip Sounds</div>
+        <div class="engine-card-identity">feliX's memory of ancient waters. Fossilized chip sounds from a digital reef &mdash; NES, Genesis, SNES eras crossfading. A CRT glow near the surface.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 25%;"></div></div><span class="polarity-label">feliX-leaning</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#39FF14;"></div>
+      </div>
+    </div>
+
+    <!-- ── THE REEF ── -->
+    <div class="zone-marker zone-reef reveal">
+      <div class="zone-line"></div>
+      <span class="zone-label">The Reef</span>
+    </div>
+
+    <div class="engine-row left reveal" data-engine="oddoscar">
+      <div class="engine-node" style="color: #E8839B; background: #E8839B;"></div>
+      <div class="engine-card" style="border-color: rgba(232,131,155,0.2);">
+        <div class="engine-card-name" style="color: #E8839B;">OddOscar</div>
+        <div class="engine-card-creature">The Axolotl &mdash; Patient, Regenerative</div>
+        <div class="engine-card-identity">Oscar himself. Pink gills breathing slowly in a coral cave. Continuous wavetable morphing mirrors the axolotl's metamorphic ability &mdash; the same creature, continuously transforming.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 35%;"></div></div><span class="polarity-label">The Reef</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#E8839B;"></div>
+      </div>
+    </div>
+
+    <div class="engine-row right reveal" data-engine="oblong">
+      <div class="engine-node" style="color: #E9A84A; background: #E9A84A;"></div>
+      <div class="engine-card" style="border-color: rgba(233,168,74,0.2);">
+        <div class="engine-card-name" style="color: #E9A84A;">XOblongBob</div>
+        <div class="engine-card-creature">Living Coral &mdash; Warm, Tactile, Curious</div>
+        <div class="engine-card-identity">Soft, warm, tactile reef structure. Not rock &mdash; living tissue. Fuzzy textures like the felt surface of a sea anemone. Touch it and it responds.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 38%;"></div></div><span class="polarity-label">The Reef</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#E9A84A;"></div>
+      </div>
+    </div>
+
+    <div class="engine-row left reveal" data-engine="oracle">
+      <div class="engine-node" style="color: #9B59B6; background: #9B59B6;"></div>
+      <div class="engine-card" style="border-color: rgba(75,0,130,0.2);">
+        <div class="engine-card-name" style="color: #9B59B6;">XOracle</div>
+        <div class="engine-card-creature">Ancient Reef Formations &mdash; Layered, Prophetic</div>
+        <div class="engine-card-identity">The oldest living structures in the ocean. Coral that has been building for thousands of years, each layer a record of the water that flowed over it. Breakpoint functions as geological strata.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 40%;"></div></div><span class="polarity-label">The Reef</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#4B0082;"></div>
+      </div>
+    </div>
+
+    <!-- ── OPEN WATER ── -->
+    <div class="zone-marker zone-open reveal">
+      <div class="zone-line"></div>
+      <span class="zone-label">Open Water</span>
+    </div>
+
+    <div class="engine-row right reveal" data-engine="odyssey">
+      <div class="engine-node" style="color: #7B2D8B; background: #7B2D8B;"></div>
+      <div class="engine-card" style="border-color: rgba(123,45,139,0.2);">
+        <div class="engine-card-name" style="color: #9B4DAB;">XOdyssey</div>
+        <div class="engine-card-creature">The Open Ocean &mdash; Journeying, Vast</div>
+        <div class="engine-card-identity">No reef, no shore, no floor visible. The vast middle water where currents carry you from the familiar into the unknown. The Voyager drift is the current &mdash; you never swim the same path twice.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 45%;"></div></div><span class="polarity-label">Open Water</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#7B2D8B;"></div>
+      </div>
+    </div>
+
+    <div class="engine-row left reveal" data-engine="orbital">
+      <div class="engine-node" style="color: #FF6B6B; background: #FF6B6B;"></div>
+      <div class="engine-card" style="border-color: rgba(255,107,107,0.2);">
+        <div class="engine-card-name" style="color: #FF6B6B;">XOrbital</div>
+        <div class="engine-card-creature">Circling Currents &mdash; Harmonic Overtones</div>
+        <div class="engine-card-identity">A school of fish circling in harmonic overtone series. Additive synthesis where each partial is a fish in the school &mdash; individually simple, collectively complex.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 47%;"></div></div><span class="polarity-label">Open Water</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#FF6B6B;"></div>
+      </div>
+    </div>
+
+    <div class="engine-row right reveal" data-engine="ostinato">
+      <div class="engine-node" style="color: #E8701A; background: #E8701A;"></div>
+      <div class="engine-card" style="border-color: rgba(232,112,26,0.2);">
+        <div class="engine-card-name" style="color: #E8701A;">XOstinato</div>
+        <div class="engine-card-creature">The Tidal Pulse &mdash; Rhythmic, Communal</div>
+        <div class="engine-card-identity">The repeating rhythm that connects all depths. A drum circle of the sea &mdash; the tidal pulse, the inhale and exhale of the ocean itself.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 48%;"></div></div><span class="polarity-label">Open Water</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#E8701A;"></div>
+      </div>
+    </div>
+
+    <div class="engine-row left reveal" data-engine="obese">
+      <div class="engine-node" style="color: #FF1493; background: #FF1493;"></div>
+      <div class="engine-card" style="border-color: rgba(255,20,147,0.2);">
+        <div class="engine-card-name" style="color: #FF1493;">XObese</div>
+        <div class="engine-card-creature">The Whale &mdash; Massive, Commanding</div>
+        <div class="engine-card-identity">The largest creature in the water column. Thirteen oscillators are thirteen harmonics of whale song, stacked into a wall that travels for miles underwater. When XObese sounds, everything else gets out of the way.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 50%;"></div></div><span class="polarity-label">Open Water</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#FF1493;"></div>
+      </div>
+    </div>
+
+    <div class="engine-row right reveal" data-engine="oceanic">
+      <div class="engine-node" style="color: #00B4A0; background: #00B4A0;"></div>
+      <div class="engine-card" style="border-color: rgba(0,180,160,0.2);">
+        <div class="engine-card-name" style="color: #00B4A0;">XOceanic</div>
+        <div class="engine-card-creature">Spectral Layers &mdash; The Deep Prism</div>
+        <div class="engine-card-identity">The ocean's spectral layers. Sunlight entering water is separated by depth &mdash; red disappears first, then orange, yellow, green, and finally blue. XOceanic does this to sound.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 48%;"></div></div><span class="polarity-label">Open Water</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#00B4A0;"></div>
+      </div>
+    </div>
+
+    <!-- ── THE THERMOCLINE ── -->
+    <div class="zone-marker zone-thermo reveal">
+      <div class="zone-line"></div>
+      <span class="zone-label">The Thermocline</span>
+    </div>
+
+    <div class="engine-row left reveal" data-engine="overdub">
+      <div class="engine-node" style="color: #6B7B3A; background: #6B7B3A;"></div>
+      <div class="engine-card" style="border-color: rgba(107,123,58,0.2);">
+        <div class="engine-card-name" style="color: #8B9B5A;">XOverdub</div>
+        <div class="engine-card-creature">The Thermocline &mdash; Echoing, Deep</div>
+        <div class="engine-card-identity">The invisible boundary where warm surface water meets cold deep water. Sound bends, echoes, bounces between layers. The tape delay is sound traveling through water. Dub music was always underwater music.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 52%;"></div></div><span class="polarity-label">Thermocline</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#6B7B3A;"></div>
+      </div>
+    </div>
+
+    <div class="engine-row right reveal" data-engine="ouie">
+      <div class="engine-node" style="color: #708090; background: #708090;"></div>
+      <div class="engine-card" style="border-color: rgba(112,128,144,0.2);">
+        <div class="engine-card-name" style="color: #8898A8;">XOu&iuml;e</div>
+        <div class="engine-card-creature">The Hammerhead &mdash; Dual, Predatory</div>
+        <div class="engine-card-identity">A predator whose cephalofoil is two separate sensory platforms fused into one animal. Duophonic because the hammerhead is duophonic. At STRIFE, the two halves disagree. At LOVE, they fuse.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 50%;"></div></div><span class="polarity-label">Dead Center</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#708090;"></div>
+      </div>
+    </div>
+
+    <div class="engine-row left reveal" data-engine="opal">
+      <div class="engine-node" style="color: #A78BFA; background: #A78BFA;"></div>
+      <div class="engine-card" style="border-color: rgba(167,139,250,0.2);">
+        <div class="engine-card-name" style="color: #A78BFA;">XOpal</div>
+        <div class="engine-card-creature">Scattered Light &mdash; Particles Suspended</div>
+        <div class="engine-card-identity">Light scattered through the water column. Particles suspended in time &mdash; granular synthesis as the physics of light passing through deep water. Each grain is a photon.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 55%;"></div></div><span class="polarity-label">Thermocline</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#A78BFA;"></div>
+      </div>
+    </div>
+
+    <div class="engine-row right reveal" data-engine="ocelot">
+      <div class="engine-node" style="color: #C5832B; background: #C5832B;"></div>
+      <div class="engine-card" style="border-color: rgba(197,131,43,0.2);">
+        <div class="engine-card-name" style="color: #C5832B;">XOcelot</div>
+        <div class="engine-card-creature">The Ecosystem &mdash; Strata Interacting</div>
+        <div class="engine-card-identity">The ecosystem itself. Not a single creature but the interaction between strata &mdash; when the layers of the water column talk to each other. Multi-engine, multi-strata synthesis.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 55%;"></div></div><span class="polarity-label">Thermocline</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#C5832B;"></div>
+      </div>
+    </div>
+
+    <div class="engine-row left reveal" data-engine="owlfish">
+      <div class="engine-node" style="color: #B8860B; background: #B8860B;"></div>
+      <div class="engine-card" style="border-color: rgba(184,134,11,0.2);">
+        <div class="engine-card-name" style="color: #B8860B;">XOwlfish</div>
+        <div class="engine-card-creature">The Mixtur-Trautonium &mdash; Deep-Water Organist</div>
+        <div class="engine-card-identity">The owlfish &mdash; a deep-sea creature with enormous eyes and a resonant body. Mixtur-Trautonium oscillator synthesis, praised as genuinely novel. Subharmonics in the twilight zone.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 58%;"></div></div><span class="polarity-label">Thermocline</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#B8860B;"></div>
+      </div>
+    </div>
+
+    <!-- ── THE DEEP ── -->
+    <div class="zone-marker zone-deep reveal">
+      <div class="zone-line"></div>
+      <span class="zone-label">The Deep</span>
+    </div>
+
+    <div class="engine-row right reveal" data-engine="overbite">
+      <div class="engine-node" style="color: #F0EDE8; background: #F0EDE8;"></div>
+      <div class="engine-card" style="border-color: rgba(240,237,232,0.15);">
+        <div class="engine-card-name" style="color: #F0EDE8;">XOverbite</div>
+        <div class="engine-card-creature">The Anglerfish &mdash; Feral, Plush</div>
+        <div class="engine-card-identity">A plush bioluminescent lure hiding fangs. The Belly macro is the lure: warm, round, soft sub bass. The Bite macro is the jaw. Five character stages are the anatomy of a creature built for ambush.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 65%;"></div></div><span class="polarity-label">Oscar-leaning</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#F0EDE8;"></div>
+      </div>
+    </div>
+
+    <div class="engine-row left reveal" data-engine="obsidian">
+      <div class="engine-node" style="color: #E8E0D8; background: #E8E0D8;"></div>
+      <div class="engine-card" style="border-color: rgba(232,224,216,0.15);">
+        <div class="engine-card-name" style="color: #E8E0D8;">XObsidian</div>
+        <div class="engine-card-creature">Volcanic Glass &mdash; Crystalline, Dangerous</div>
+        <div class="engine-card-identity">Formed when molten rock meets deep ocean water. Instant crystallization under extreme pressure. The surface is smooth, reflective, beautiful. The edge is the sharpest thing in nature.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 68%;"></div></div><span class="polarity-label">Oscar-leaning</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#E8E0D8;"></div>
+      </div>
+    </div>
+
+    <div class="engine-row right reveal" data-engine="oscillum">
+      <div class="engine-node" style="color: #6699AA; background: #6699AA;"></div>
+      <div class="engine-card" style="border-color: rgba(102,153,170,0.2);">
+        <div class="engine-card-name" style="color: #6699AA;">XOscillum</div>
+        <div class="engine-card-creature">Phantom Sounds &mdash; Residue Pitch</div>
+        <div class="engine-card-identity">Phantom sounds &mdash; the residue pitch echoing in the deep. Sounds that exist only as afterimages of other sounds. The memory of a frequency after the source is gone.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 70%;"></div></div><span class="polarity-label">Oscar-leaning</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#6699AA;"></div>
+      </div>
+    </div>
+
+    <div class="engine-row left reveal" data-engine="organon">
+      <div class="engine-node" style="color: #00CED1; background: #00CED1;"></div>
+      <div class="engine-card" style="border-color: rgba(0,206,209,0.2);">
+        <div class="engine-card-name" style="color: #00CED1;">XOrganon</div>
+        <div class="engine-card-creature">Deep-Sea Biology &mdash; Alien, Metabolic</div>
+        <div class="engine-card-identity">The slow chemical reactions that sustain life where sunlight never reaches. Chemosynthesis, bioluminescent signaling, alien metabolism. Life sustained not by light but by chemistry.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 72%;"></div></div><span class="polarity-label">Oscar-leaning</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#00CED1;"></div>
+      </div>
+    </div>
+
+    <!-- ── THE ABYSS ── -->
+    <div class="zone-marker zone-abyss reveal">
+      <div class="zone-line"></div>
+      <span class="zone-label">The Abyss</span>
+    </div>
+
+    <div class="engine-row right reveal" data-engine="ouroboros">
+      <div class="engine-node" style="color: #FF2D2D; background: #FF2D2D;"></div>
+      <div class="engine-card" style="border-color: rgba(255,45,45,0.15);">
+        <div class="engine-card-name" style="color: #FF2D2D;">XOuroboros</div>
+        <div class="engine-card-creature">Hydrothermal Vent &mdash; Recursive, Primordial</div>
+        <div class="engine-card-identity">Superheated water erupting from the ocean floor, cycling through minerals, sustaining entire ecosystems with no sunlight. The feedback loop that feeds itself. Life on Earth may have begun here.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 80%;"></div></div><span class="polarity-label">Pure Oscar</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#FF2D2D;"></div>
+      </div>
+    </div>
+
+    <div class="engine-row left reveal" data-engine="obscura">
+      <div class="engine-node" style="color: #8A9BA8; background: #8A9BA8;"></div>
+      <div class="engine-card" style="border-color: rgba(138,155,168,0.15);">
+        <div class="engine-card-name" style="color: #8A9BA8;">XObscura</div>
+        <div class="engine-card-creature">The Giant Squid &mdash; Stiff, Resonant</div>
+        <div class="engine-card-identity">For centuries, a myth. Then a reality more alien than the myth. Massive, stiff, resonant &mdash; a creature whose body is an instrument. Physical string modeling from the deep.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 83%;"></div></div><span class="polarity-label">Pure Oscar</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#8A9BA8;"></div>
+      </div>
+    </div>
+
+    <div class="engine-row right reveal" data-engine="occult">
+      <div class="engine-node" style="color: #556B7A; background: #556B7A;"></div>
+      <div class="engine-card" style="border-color: rgba(85,107,122,0.15);">
+        <div class="engine-card-name" style="color: #7B8B9A;">XOccult</div>
+        <div class="engine-card-creature">Pattern Creatures &mdash; Cellular Automata</div>
+        <div class="engine-card-identity">Cellular automata shells. Life as algorithm. Creatures whose spiral geometry follows mathematical rules invisible to the eye &mdash; but audible through XOccult's pattern synthesis.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 85%;"></div></div><span class="polarity-label">Pure Oscar</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#556B7A;"></div>
+      </div>
+    </div>
+
+    <div class="engine-row left reveal" data-engine="oblivion">
+      <div class="engine-node" style="color: #3A2A5A; background: #5A4A7A;"></div>
+      <div class="engine-card" style="border-color: rgba(90,74,122,0.15);">
+        <div class="engine-card-name" style="color: #7A6A9A;">XOblivion</div>
+        <div class="engine-card-creature">Magnetic Fields &mdash; The Earth's Core</div>
+        <div class="engine-card-identity">The force beneath the ocean floor. The magnetic core pulling from below. The gravitational bass that holds the entire water column in place. Sound at the edge of frequency.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 90%;"></div></div><span class="polarity-label">Pure Oscar</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#5A4A7A;"></div>
+      </div>
+    </div>
+
+    <!-- ── OCEAN FLOOR ── -->
+    <div class="zone-marker zone-floor reveal">
+      <div class="zone-line"></div>
+      <span class="zone-label">Ocean Floor</span>
+    </div>
+
+    <div class="engine-row right reveal" data-engine="oceandeep">
+      <div class="engine-node" style="color: #7B68EE; background: #7B68EE;"></div>
+      <div class="engine-card" style="border-color: rgba(45,10,78,0.3);">
+        <div class="engine-card-name" style="color: #7B68EE;">XOceanDeep</div>
+        <div class="engine-card-creature">Pure Pressure &mdash; The Abyssal Floor</div>
+        <div class="engine-card-identity">Oscar descends to the absolute floor. Pure pressure, pure dark, pure bass. 808 rumble, bioluminescent creatures, sunken treasure. The lowest note in the water column.</div>
+        <div class="polarity-bar"><div class="polarity-track"><div class="polarity-marker" style="left: 100%;"></div></div><span class="polarity-label">Pure Oscar</span></div>
+        <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:#2D0A4E;"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ COUPLING AS SYMBIOSIS ═══════════ -->
+<section class="aq-section coupling-section" id="coupling">
+  <div class="reveal">
+    <div class="section-label">Coupling as Symbiosis</div>
+    <h2>How <em>Species</em> Interact</h2>
+    <p class="section-text" style="margin-bottom: 0;">In the XO_OX ecosystem, coupling is not a technical feature &mdash; it is how species interact. The most interesting sounds couple engines from different depths. A surface species driving a deep species creates vertical tension: the sound spans the entire water column.</p>
+  </div>
+
+  <div class="coupling-grid reveal">
+    <div class="coupling-card">
+      <div class="coupling-type">AmpToFilter</div>
+      <div class="coupling-bio">Predator-Prey</div>
+      <div class="coupling-desc">One drives the other. The amplitude of the predator opens the filter of the prey &mdash; louder the strike, wider the jaws.</div>
+      <div class="coupling-example">ONSET &rarr; OVERBITE: drum hit makes bass snarl</div>
+    </div>
+    <div class="coupling-card">
+      <div class="coupling-type">AudioToFM</div>
+      <div class="coupling-bio">Parasitic Modulation</div>
+      <div class="coupling-desc">One lives inside the other. Audio from the parasite modulates the carrier frequency of the host, creating timbres neither could produce alone.</div>
+      <div class="coupling-example">OVERWORLD &rarr; OPAL: chip audio inside grain buffer</div>
+    </div>
+    <div class="coupling-card">
+      <div class="coupling-type">AudioToWavetable</div>
+      <div class="coupling-bio">Symbiotic Feeding</div>
+      <div class="coupling-desc">One nourishes the other. Audio output becomes the raw material for new synthesis &mdash; a living sound fed into a living process.</div>
+      <div class="coupling-example">ODYSSEY &rarr; OPAL: pad output becomes grain source</div>
+    </div>
+    <div class="coupling-card">
+      <div class="coupling-type">EnvToMorph</div>
+      <div class="coupling-bio">Mimicry</div>
+      <div class="coupling-desc">One shapes itself to match the other. The envelope of the mimic drives the morph position of the model &mdash; becoming what it observes.</div>
+      <div class="coupling-example">ODYSSEY &rarr; OCELOT: Climax bloom drives strata balance</div>
+    </div>
+    <div class="coupling-card">
+      <div class="coupling-type">getSample</div>
+      <div class="coupling-bio">Commensalism</div>
+      <div class="coupling-desc">One passes through the other. The commensal benefits from the environment without affecting it &mdash; sound colored by the space it travels through.</div>
+      <div class="coupling-example">OSTINATO &rarr; OVERDUB: drum circle through dub FX</div>
+    </div>
+    <div class="coupling-card">
+      <div class="coupling-type">AmpToChoke</div>
+      <div class="coupling-bio">Territorial</div>
+      <div class="coupling-desc">One silences the other. Territorial exclusion &mdash; when one species sounds, the other retreats. Used sparingly. Most species coexist.</div>
+      <div class="coupling-example">Reserved for special dramatic moments</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ THE BOOKENDS ═══════════ -->
+<section class="aq-section bookends-section" id="bookends">
+  <div class="reveal">
+    <div class="section-label">The Bookends</div>
+    <h2>Where <em>Sky Meets Floor</em></h2>
+    <p class="section-text">The final species. The ones that went all the way. XOpenSky ascended above the water entirely. XOceanDeep descended to the absolute floor. Together, they are the full vertical span of the XO_OX universe &mdash; light touching dark, transient meeting sustain, feliX reaching down for Oscar while Oscar reaches up for feliX.</p>
+  </div>
+
+  <div class="bookend-pair reveal">
+    <div class="bookend bookend-sky">
+      <div class="bookend-name">XOpenSky</div>
+      <div class="bookend-creature">Pure feliX &mdash; the sunburst</div>
+      <p class="bookend-text">feliX ascends above the water entirely. Pure light, pure air, pure euphoria. Shimmer synthesis at the top of the world &mdash; the sound of atmosphere dissolving into sunlight. The highest point in the water column, where sound becomes light.</p>
+    </div>
+    <div class="bookend bookend-floor">
+      <div class="bookend-name">XOceanDeep</div>
+      <div class="bookend-creature">Pure Oscar &mdash; the abyssal floor</div>
+      <p class="bookend-text">Oscar descends to the absolute floor. Pure pressure, pure dark, pure bass. 808 rumble in bioluminescent darkness, sunken treasure in the sediment. The lowest point in the water column, where sound becomes vibration you feel in your chest.</p>
+    </div>
+  </div>
+
+  <div class="full-column reveal">
+    <div class="full-column-title">The Full Column</div>
+    <div class="full-column-subtitle">OPENSKY &times; OCEANDEEP</div>
+    <p class="full-column-text">When the top couples with the bottom, the sound spans the entire mythology. Shimmer and sub-bass. Light and pressure. The neon tetra's sky and the axolotl's floor, interleaved. The full column is the ultimate coupling &mdash; every depth present in a single voice. It is the XO_OX brand mark made audible.</p>
+  </div>
+</section>
+
+<!-- ═══════════ EVOLUTIONARY LINEAGE ═══════════ -->
+<section class="aq-section lineage-section" id="lineage">
+  <div class="reveal">
+    <div class="section-label">The Lineage</div>
+    <h2>How the <em>Ecosystem</em> Evolved</h2>
+    <p class="section-text" style="margin-bottom: 0;">Each generation represents a wave of speciation from the primordial coupling. feliX and Oscar touched &mdash; and the water column filled with life.</p>
+  </div>
+
+  <div class="reveal">
+    <div class="lineage-gen">
+      <div class="lineage-gen-title">The Primordial Coupling</div>
+      <div class="lineage-gen-sub">X and O meet. Everything flows from this moment.</div>
+      <div class="lineage-species">
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#00A6D6;"></span> OddfeliX</span>
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#E8839B;"></span> OddOscar</span>
+      </div>
+    </div>
+
+    <div class="lineage-gen">
+      <div class="lineage-gen-title">First Generation</div>
+      <div class="lineage-gen-sub">The direct offspring. Equal parts of both parents.</div>
+      <div class="lineage-species">
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#6B7B3A;"></span> XOverdub</span>
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#7B2D8B;"></span> XOdyssey</span>
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#E9A84A;"></span> XOblongBob</span>
+      </div>
+    </div>
+
+    <div class="lineage-gen">
+      <div class="lineage-gen-title">Second Generation</div>
+      <div class="lineage-gen-sub">Specialization. One parent's traits amplified.</div>
+      <div class="lineage-species">
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#FF1493;"></span> XObese</span>
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#0066FF;"></span> XOnset</span>
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#39FF14;"></span> XOverworld</span>
+      </div>
+    </div>
+
+    <div class="lineage-gen">
+      <div class="lineage-gen-title">Third Generation</div>
+      <div class="lineage-gen-sub">New niches. Unexplored territory in the water column.</div>
+      <div class="lineage-species">
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#F0EDE8;"></span> XOverbite</span>
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#A78BFA;"></span> XOpal</span>
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#FF6B6B;"></span> XOrbital</span>
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#E8701A;"></span> XOstinato</span>
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#708090;"></span> XOu&iuml;e</span>
+      </div>
+    </div>
+
+    <div class="lineage-gen">
+      <div class="lineage-gen-title">Fourth Generation</div>
+      <div class="lineage-gen-sub">Deep evolution. Adapting to extreme environments.</div>
+      <div class="lineage-species">
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#00CED1;"></span> XOrganon</span>
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#FF2D2D;"></span> XOuroboros</span>
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#E8E0D8;"></span> XObsidian</span>
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#E63946;"></span> XOrigami</span>
+      </div>
+    </div>
+
+    <div class="lineage-gen">
+      <div class="lineage-gen-title">Fifth Generation</div>
+      <div class="lineage-gen-sub">Extremophiles. Species at the edges of what is possible.</div>
+      <div class="lineage-species">
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#4B0082;"></span> XOracle</span>
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#8A9BA8;"></span> XObscura</span>
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#556B7A;"></span> XOccult</span>
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#5A4A7A;"></span> XOblivion</span>
+      </div>
+    </div>
+
+    <div class="lineage-gen">
+      <div class="lineage-gen-title">The Bookends</div>
+      <div class="lineage-gen-sub">Completing the column. The ones that went all the way.</div>
+      <div class="lineage-species">
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#FF8C00;"></span> XOpenSky</span>
+        <span class="lineage-tag"><span class="lineage-dot" style="background:#2D0A4E; border: 1px solid #7B68EE;"></span> XOceanDeep</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CLOSING ═══════════ -->
+<section class="aq-section" style="text-align: center; border-top: 1px solid var(--border);">
+  <div class="reveal">
+    <p class="section-text" style="max-width: 560px; margin: 0 auto; font-style: italic; color: var(--text-dim);">
+      The water column keeps growing. There is always more depth to explore.
+    </p>
+    <p style="margin-top: 2rem; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: var(--gold); letter-spacing: 0.05em;">
+      feliX + Oscar &mdash; the primordial coupling
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-logo">XO_OX</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="updates.html">Signal</a>
+    <a href="index.html#community">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
+</footer>
+
+<script>
+// ═══════════ SCROLL REVEAL ═══════════
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ═══════════ DEPTH GAUGE ═══════════
+const depthFill = document.getElementById('depthFill');
+const depthLabel = document.getElementById('depthLabel');
+const zones = [
+  { pct: 0,   label: 'Surface' },
+  { pct: 12,  label: 'Shallows' },
+  { pct: 25,  label: 'Reef' },
+  { pct: 38,  label: 'Open Water' },
+  { pct: 52,  label: 'Thermocline' },
+  { pct: 68,  label: 'The Deep' },
+  { pct: 82,  label: 'Abyss' },
+  { pct: 92,  label: 'Ocean Floor' }
+];
+
+function updateDepth() {
+  const scrollPct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  depthFill.style.width = Math.min(scrollPct, 100) + '%';
+
+  let currentZone = zones[0];
+  for (let i = zones.length - 1; i >= 0; i--) {
+    if (scrollPct >= zones[i].pct) {
+      currentZone = zones[i];
+      break;
+    }
+  }
+  depthLabel.textContent = currentZone.label;
+}
+
+window.addEventListener('scroll', updateDepth, { passive: true });
+updateDepth();
+
+// ═══════════ HERO BUBBLES ═══════════
+const bubbleField = document.getElementById('bubbleField');
+function createBubbles() {
+  const count = Math.min(15, Math.floor(window.innerWidth / 80));
+  for (let i = 0; i < count; i++) {
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble';
+    const size = 4 + Math.random() * 12;
+    bubble.style.width = size + 'px';
+    bubble.style.height = size + 'px';
+    bubble.style.left = (5 + Math.random() * 90) + '%';
+    bubble.style.animationDuration = (8 + Math.random() * 12) + 's';
+    bubble.style.animationDelay = (Math.random() * 10) + 's';
+    bubbleField.appendChild(bubble);
+  }
+}
+createBubbles();
+
+// ═══════════ ENGINE CARD HOVER — accent glow ═══════════
+document.querySelectorAll('.engine-row').forEach(row => {
+  const node = row.querySelector('.engine-node');
+  const card = row.querySelector('.engine-card');
+  if (!node || !card) return;
+
+  const color = node.style.color;
+
+  row.addEventListener('mouseenter', () => {
+    card.style.borderColor = color;
+    card.style.boxShadow = `0 4px 30px ${color}22, inset 0 1px 0 ${color}11`;
+  });
+
+  row.addEventListener('mouseleave', () => {
+    card.style.borderColor = '';
+    card.style.boxShadow = '';
+  });
+});
+
+// ═══════════ HAMBURGER MENU ═══════════
+(function() {
+  const btn = document.getElementById('hamburgerBtn');
+  const nav = document.getElementById('navLinks');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function() {
+    const open = nav.classList.toggle('mobile-open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      nav.classList.remove('mobile-open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+</script>
+</body>
+</html>

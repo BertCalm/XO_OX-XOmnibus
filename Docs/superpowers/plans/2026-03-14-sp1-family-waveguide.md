@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED: Use superpowers:subagent-driven-development (if subagents available) or superpowers:executing-plans to implement this plan. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build the shared physical-modeling DSP library (`Source/DSP/FamilyWaveguide.h`) that all 5 XOrphica Family Pentagon engines (XOhm, XOrphica, XObbligato, XOttoni, XOlé) will use.
+**Goal:** Build the shared physical-modeling DSP library (`Source/DSP/FamilyWaveguide.h`) that all 5 XOrphica Family Constellation engines (XOhm, XOrphica, XObbligato, XOttoni, XOlé) will use.
 
 **Architecture:** All components are header-only, allocation-free, namespace `xomnibus`. FamilyWaveguide.h contains 5 waveguide primitives (delay line, damping filter, body resonance, sympathetic bank, organic drift) plus 7 engine-specific exciters. Every exciter seeds a FamilyDelayLine; the delay line + FamilyDampingFilter in the feedback path forms the Karplus-Strong resonator core. FamilyBodyResonance and FamilySympatheticBank add timbral richness post-resonator.
 
@@ -44,7 +44,7 @@
 namespace xomnibus {
 
 //==============================================================================
-// FamilyWaveguide — Shared physical-modeling DSP for the XOrphica Family Pentagon.
+// FamilyWaveguide — Shared physical-modeling DSP for the XOrphica Family Constellation.
 //
 // Five waveguide primitives + seven exciters. All components are:
 //   - Header-only, no memory allocation in process path
@@ -1160,7 +1160,7 @@ Expected output:
 ```bash
 cd ~/Documents/GitHub/XO_OX-XOmnibus
 git add Source/DSP/FamilyWaveguide.h Tests/FamilyWaveguideTest.cpp Tests/CMakeLists.txt
-git commit -m "feat(SP1): add FamilyWaveguide.h — shared physical modeling DSP for XOrphica Pentagon
+git commit -m "feat(SP1): add FamilyWaveguide.h — shared physical modeling DSP for XOrphica Constellation
 
 5 waveguide primitives: FamilyDelayLine (Lagrange interp), FamilyDampingFilter (1-pole LP),
 FamilyBodyResonance (biquad), FamilySympatheticBank (8 comb filters), FamilyOrganicDrift (dual-LFO wander).
@@ -1180,6 +1180,6 @@ After SP1 is complete, the build sequence continues:
 - **SP2 + SP3 in parallel:** XOhm and XOrphica standalone instruments (both use FamilyWaveguide.h)
 - **SP4 + SP5 in parallel:** XObbligato and XOttoni standalone instruments
 - **SP6:** XOlé standalone instrument (most complex — benefits from prior learning)
-- **SP7:** Pentagon XOmnibus integration (5 adapters, macro bleed, Family Dinner presets, Obed easter egg)
+- **SP7:** Constellation XOmnibus integration (5 adapters, macro bleed, Family Dinner presets, Obed easter egg)
 
 Each engine follows the pattern: `/new-xo-project` scaffold → Parameters.h → FamilyWaveguide integration → voice architecture → FX chains → macros → UI → 50 presets → auval + QA → commit.

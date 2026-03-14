@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "name": "Serial Whisper",
+  "mood": "Foundation",
+  "engines": ["Overbite"],
+  "author": "Guru Bin — OVERBITE Awakening",
+  "version": "1.0.0",
+  "description": "All four character stages at 0.1 each. The Serial Chain Compound \u2014 four whispers that together create a voice warmer than any single stage at 0.4. Velocity at 0.6 opens the filter dramatically. The proof that subtlety compounds.",
+  "tags": ["subtle", "warm", "compound", "serial", "character", "awakening"],
+  "macroLabels": ["BELLY", "BITE", "SCURRY", "PLAY DEAD"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "dna": {"brightness": 0.35, "warmth": 0.75, "movement": 0.2, "density": 0.5, "space": 0.1, "aggression": 0.15},
+  "parameters": {
+    "Overbite": {
+      "poss_oscAWave": 0, "poss_oscALevel": 0.75, "poss_oscAShape": 0.5,
+      "poss_oscBWave": 2, "poss_oscBLevel": 0.25, "poss_oscBDetune": 7.0,
+      "poss_subLevel": 0.5, "poss_subShape": 0, "poss_subOct": -1,
+      "poss_noiseLevel": 0.0,
+      "poss_filterMode": 0, "poss_filterCutoff": 1200.0, "poss_filterReso": 0.28,
+      "poss_filterEnvAmt": 0.35, "poss_filtEnvVelScale": 0.6,
+      "poss_fur": 0.1, "poss_chew": 0.1, "poss_gnash": 0.1,
+      "poss_trashMode": 0, "poss_trashAmount": 0.1,
+      "poss_ampAttack": 0.005, "poss_ampDecay": 0.4, "poss_ampSustain": 0.75, "poss_ampRelease": 0.382,
+      "poss_filtEnvAttack": 0.003, "poss_filtEnvDecay": 0.2, "poss_filtEnvSustain": 0.15, "poss_filtEnvRelease": 0.15,
+      "poss_weightAmt": 0.15,
+      "poss_glide": 0.04, "poss_masterVolume": 0.75
+    }
+  },
+  "coupling": null, "sequencer": null
+}

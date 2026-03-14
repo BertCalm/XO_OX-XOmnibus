@@ -9,7 +9,7 @@
 namespace xomnibus {
 
 //==============================================================================
-// FamilyWaveguide — Shared physical-modeling DSP for the XOrphica Family Pentagon.
+// FamilyWaveguide — Shared physical-modeling DSP for the XOrphica Family Constellation.
 //
 // Five waveguide primitives + seven exciters used by:
 //   XOrphica (ORPHICA) — microsound harp
