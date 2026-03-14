@@ -41,13 +41,26 @@ public:
         for(const auto m:midi){
             auto msg=m.getMessage();
             if(msg.isNoteOn()){
-                int t=-1;for(int i=0;i<kV;++i)if(!voices[i].active){t=i;break;}
-                if(t<0)t=nv%kV;nv=(t+1)%kV;
-                voices[t].auntIdx=t%3; voices[t].isHusband=(t>=12);
+                // Prefer free aunt slots (0-11); steal from aunt pool only on overflow.
+                // Husband slots (12-17) are reserved exclusively for DRAMA≥0.7 voices.
+                int t=-1;for(int i=0;i<12;++i)if(!voices[i].active){t=i;break;}
+                if(t<0){t=nv%12;} // steal from aunt pool, never from husband pool
+                nv=(t+1)%12;
+                voices[t].auntIdx=t%3; voices[t].isHusband=false;
                 if(voices[t].isHusband) voices[t].husbandType=t%3;
                 voices[t].noteOn(msg.getNoteNumber(),msg.getVelocity()/127.f);
             }else if(msg.isNoteOff())
                 for(auto&v:voices)if(v.active&&v.note==msg.getNoteNumber())v.noteOff();
+            else if (msg.isChannelPressure()) {
+                float atPressure = (float)msg.getChannelPressureValue() / 127.f;
+                for (auto& v : voices)
+                    if (v.active) v.vel = juce::jmax(v.vel, atPressure);
+            }
+            else if (msg.isController() && msg.getControllerNumber() == 1) {
+                float modWheel = (float)msg.getControllerValue() / 127.f;
+                for (auto& v : voices)
+                    if (v.active) v.vel = juce::jmax(v.vel, modWheel * 0.7f);
+            }
         }
 
         // ---- Read ALL parameters ----
@@ -150,15 +163,17 @@ public:
                 float out=v.dl.read(dlen);
 
                 // ---- Excitation: per-aunt strum rate + FUEGO intensity ----
+                float velIntens = 0.5f + v.vel * 0.5f; // velocity 0→1 maps to 0.5→1.0x intensity
+                float effIntens = extIntens * velIntens;
                 float exc;
                 if (v.isHusband) {
-                    exc = v.pluck.tick(voiceBright * 0.6f) * extIntens;
+                    exc = v.pluck.tick(voiceBright * 0.6f) * effIntens;
                 } else if (v.auntIdx == 0) {
                     // Aunt 1 (Tres Cubano): uses strum rate param
                     // Re-trigger strum on note-on handled in noteOn; strumRate affects brightness/energy
-                    exc = v.strum.tick(voiceBright * pFu) * extIntens;
+                    exc = v.strum.tick(voiceBright * pFu) * effIntens;
                 } else {
-                    exc = v.strum.tick(voiceBright * pFu) * extIntens;
+                    exc = v.strum.tick(voiceBright * pFu) * effIntens;
                 }
 
                 // ---- Aunt 2: Gourd body resonance ----
@@ -251,7 +266,7 @@ public:
         // Shared waveguide
         p.push_back(std::make_unique<F>("ole_damping","Damping",N{0.8f,0.999f},0.995f));
         p.push_back(std::make_unique<F>("ole_sympatheticAmt","Sympathetic",N{0,1},0.3f));
-        p.push_back(std::make_unique<F>("ole_driftRate","Drift Rate",N{0.05f,0.5f},0.1f));
+        p.push_back(std::make_unique<F>("ole_driftRate","Drift Rate",N{0.005f,0.5f},0.1f));
         p.push_back(std::make_unique<F>("ole_driftDepth","Drift Depth",N{0,20},3.0f));
         // Alliance
         p.push_back(std::make_unique<C>("ole_allianceConfig","Alliance",juce::StringArray{"1 vs 2+3","2 vs 1+3","3 vs 1+2"},0));

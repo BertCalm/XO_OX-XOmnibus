@@ -264,6 +264,16 @@ public:
             } else if(msg.isNoteOff()){
                 for(auto&v:voices)if(v.active&&v.note==msg.getNoteNumber())v.noteOff();
             }
+            else if (msg.isChannelPressure()) {
+                float atPressure = (float)msg.getChannelPressureValue() / 127.f;
+                for (auto& v : voices)
+                    if (v.active) v.vel = juce::jmax(v.vel, atPressure);
+            }
+            else if (msg.isController() && msg.getControllerNumber() == 1) {
+                float modWheel = (float)msg.getControllerValue() / 127.f;
+                for (auto& v : voices)
+                    if (v.active) v.vel = juce::jmax(v.vel, modWheel * 0.7f);
+            }
         }
 
         // ------- Param reads (all 33 ohm_ params) -------
@@ -345,7 +355,9 @@ public:
                 float df=v.freq*std::pow(2.f,(ds+extPitchMod)/12.f);
                 float dlen=v.sr/std::max(df,20.f);
                 float out=v.dl.read(dlen);
-                float exc=(v.bowed?v.bow.tick(pBowP,pBowS,v.lastOut):v.pick.tick(pBright))*extIntens;
+                float velIntens = 0.5f + v.vel * 0.5f; // velocity 0→1 maps to 0.5→1.0x intensity
+                float effIntens = extIntens * velIntens;
+                float exc=(v.bowed?v.bow.tick(pBowP,pBowS,v.lastOut):v.pick.tick(pBright))*effIntens;
                 float damped=v.df.process(out+exc*0.3f,std::clamp(pDamp+extDampMod,0.f,1.f));
                 v.dl.write(damped);
                 float bo=out+v.body.process(out)*0.25f;
@@ -425,7 +437,7 @@ public:
         p.push_back(std::make_unique<C>("ohm_bodyMaterial","Body Material",
             juce::StringArray{"Wood","Metal","Gourd","Air"},0));
         p.push_back(std::make_unique<F>("ohm_sympatheticAmt","Sympathetic",N{0.0f,1.0f},0.3f));
-        p.push_back(std::make_unique<F>("ohm_driftRate","Drift Rate",N{0.05f,0.5f},0.1f));
+        p.push_back(std::make_unique<F>("ohm_driftRate","Drift Rate",N{0.005f,0.5f},0.1f));
         p.push_back(std::make_unique<F>("ohm_driftDepth","Drift Depth",N{0.0f,20.0f},3.0f));
         p.push_back(std::make_unique<F>("ohm_damping","Damping",N{0.8f,0.999f},0.995f));
 

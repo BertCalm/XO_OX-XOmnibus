@@ -64,6 +64,16 @@ public:
                 }
             }else if(msg.isNoteOff())
                 for(auto&v:voices)if(v.active&&v.note==msg.getNoteNumber())v.noteOff();
+            else if (msg.isChannelPressure()) {
+                float atPressure = (float)msg.getChannelPressureValue() / 127.f;
+                for (auto& v : voices)
+                    if (v.active) v.vel = juce::jmax(v.vel, atPressure);
+            }
+            else if (msg.isController() && msg.getControllerNumber() == 1) {
+                float modWheel = (float)msg.getControllerValue() / 127.f;
+                for (auto& v : voices)
+                    if (v.active) v.vel = juce::jmax(v.vel, modWheel * 0.7f);
+            }
         }
 
         // --- Read all parameter values once per block ---
@@ -176,15 +186,17 @@ public:
                 float out=v.dl.read(dlen);
 
                 // Exciter: Brother A (air jet) or Brother B (reed)
+                float velIntens = 0.5f + v.vel * 0.5f; // velocity 0→1 maps to 0.5→1.0x intensity
+                float effIntens = extIntens * velIntens;
                 float exc;
                 if(v.isBroA){
                     // Air flutter modulates breath pressure for flute vibrato
                     float flutterMod = pFlutterA * 0.15f * std::sin(v.drift.tick(5.0f, 1.0f) * 20.0f);
-                    exc=v.airJet.tick(std::clamp(effBreathA + flutterMod * pEmbA, 0.0f, 1.0f), v.freq)*extIntens;
+                    exc=v.airJet.tick(std::clamp(effBreathA + flutterMod * pEmbA, 0.0f, 1.0f), v.freq)*effIntens;
                 }else{
                     // Reed bite adds harmonic edge on top of stiffness
                     float effStiff = std::clamp(pStiff + pBite * 0.3f, 0.0f, 1.0f);
-                    exc=v.reed.tick(effBreathB, effStiff)*extIntens;
+                    exc=v.reed.tick(effBreathB, effStiff)*effIntens;
                 }
 
                 float damped=v.df.process(out+exc*0.3f,std::clamp(pDa+extDampMod,0.f,1.f));
@@ -336,7 +348,7 @@ public:
         p.push_back(std::make_unique<C>("obbl_voiceRouting","Voice Routing",juce::StringArray{"Alternate","Split","Layer","Round Robin","Velocity"},0));
         p.push_back(std::make_unique<F>("obbl_damping","Damping",N{0.8f,0.999f},0.995f));
         p.push_back(std::make_unique<F>("obbl_sympatheticAmt","Sympathetic",N{0,1},0.3f));
-        p.push_back(std::make_unique<F>("obbl_driftRate","Drift Rate",N{0.05f,0.5f},0.1f));
+        p.push_back(std::make_unique<F>("obbl_driftRate","Drift Rate",N{0.005f,0.5f},0.1f));
         p.push_back(std::make_unique<F>("obbl_driftDepth","Drift Depth",N{0,20},3.0f));
 
         // Section D: BOND interaction
