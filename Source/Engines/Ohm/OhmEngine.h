@@ -268,6 +268,7 @@ public:
                 float atPressure = (float)msg.getChannelPressureValue() / 127.f;
                 for (auto& v : voices)
                     if (v.active) v.vel = juce::jmax(v.vel, atPressure);
+                atCommune = atPressure; // V010: leaning in pushes COMMUNE upward
             }
             else if (msg.isController() && msg.getControllerNumber() == 1) {
                 float modWheel = (float)msg.getControllerValue() / 127.f;
@@ -319,8 +320,8 @@ public:
         float pCommune    = mCommune  ? mCommune->load()  : 0.0f;
         float pMeadow     = mMeadow   ? mMeadow->load()  : 0.3f;
 
-        // Combine commune macro with commune absorb for the interaction axis
-        float communeTotal = std::min(1.0f, pCommune + pCommAbsorb * 0.5f);
+        // Combine commune macro with commune absorb + aftertouch (V010)
+        float communeTotal = std::min(1.0f, pCommune + pCommAbsorb * 0.5f + atCommune * 0.4f);
 
         // Body material shapes body resonance Q and frequency scaling
         // 0=Wood(warm,low Q), 1=Metal(bright,high Q), 2=Gourd(mid bloom), 3=Air(airy,diffuse)
@@ -388,7 +389,14 @@ public:
                 float interference=(inlawSig+obedSig)*(1-communeTotal);
                 float jammed=dad+dad*communeTotal*(inlawSig+obedSig)*0.2f;
                 float sig=(jammed+interference)*v.ampEnv*0.35f;
-                sL+=sig;sR+=sig;
+                // V009: per-instrument spatial pan (Tomita — Dad's instruments have positions)
+                // Pan table: 0=banjo(L) 1=guitar(C) 2=mandolin(R) 3=dobro(L) 4=fiddle(R)
+                //            5=harmonica(C) 6=djembe(L) 7=kalimba(R) 8=sitar(C) 9=ukulele(R)
+                static constexpr float kDadPan[]={0.25f,0.5f,0.75f,0.3f,0.7f,0.5f,0.28f,0.72f,0.5f,0.68f};
+                int instIdx=std::clamp((int)pDadInst,0,9);
+                float pan=kDadPan[instIdx];
+                sL+=sig*(1.f-pan)*2.f;
+                sR+=sig*pan*2.f;
             }
 
             // Master FX: reverb then delay (meadow macro scales both)
@@ -536,6 +544,9 @@ private:
     float extPitchMod = 0.f;   // semitones from LFOToPitch
     float extDampMod  = 0.f;   // 0–1 from AmpToFilter
     float extIntens   = 1.f;   // multiplier from EnvToMorph
+
+    // V010: aftertouch → COMMUNE (leaning into the note merges the family)
+    float atCommune = 0.f;
 
     // Master FX
     OhmDelay delay;

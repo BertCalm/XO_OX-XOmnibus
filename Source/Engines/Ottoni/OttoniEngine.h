@@ -252,10 +252,13 @@ public:
             // --- Delay (stereo ping-pong style) ---
             float delL=0,delR=0;
             if(effDelMix>0.001f){
-                int delTime=(int)(0.25f*(float)sr); // 250ms delay
+                // V011: LAKE scales delay 250ms→2000ms (Schulze's mountain)
+                float delTimeSec = 0.25f + pML * 1.75f;
+                int delTime = std::min((int)(delTimeSec*(float)sr), kDelMax-1);
                 int rdIdx=((delWr-delTime)%kDelMax+kDelMax)%kDelMax;
-                delL=delBufL[rdIdx]*0.6f;
-                delR=delBufR[rdIdx]*0.6f;
+                float fb = 0.6f - pML * 0.15f; // soften feedback at long times (avoid infinite sustain)
+                delL=delBufL[rdIdx]*fb;
+                delR=delBufR[rdIdx]*fb;
             }
             delBufL[delWr]=sL+delR*0.4f; // cross-feed for ping-pong
             delBufR[delWr]=sR+delL*0.4f;
@@ -436,7 +439,7 @@ private:
     // Chorus phase
     float choPhase=0;
     // Delay buffer (stereo, ~1s at 48kHz)
-    static constexpr int kDelMax=48000;
+    static constexpr int kDelMax=96000; // V011: extended for 2000ms at 48kHz
     float delBufL[kDelMax]={};
     float delBufR[kDelMax]={};
     int   delWr=0;
