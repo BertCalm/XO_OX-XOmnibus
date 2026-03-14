@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Fat_Stab",
+  "name": "Vent Pulse",
   "mood": "Foundation",
   "engines": [
     "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT stab \u2014 short attack, short decay, no sustain. Maximum density for a minimum duration.",
+  "description": "FAT stab — short attack, short decay, no sustain. Maximum density for a minimum duration.",
   "tags": [
     "fat",
     "stab",

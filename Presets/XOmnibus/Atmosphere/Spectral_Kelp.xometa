@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Kelp",
+  "mood": "Atmosphere",
+  "engines": ["Optic", "Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPTIC spectral analysis feeds Organon like a slow kelp forest current. Pure spectrum-reactive modulation, no pulse. Organon's metabolic filter sways with the spectral weather of its own output.",
+  "tags": ["optic", "atmosphere", "spectral", "organon-pair", "kelp", "current", "feedback"],
+  "macroLabels": ["REACTIVITY", "METABOLISM", "SPACE", "TONE"],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.55,
+      "optic_inputGain": 0.85,
+      "optic_autoPulse": 0,
+      "optic_pulseRate": 0.5,
+      "optic_pulseShape": 0.7,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseEvolve": 0.4,
+      "optic_pulseSubdiv": 0.0,
+      "optic_pulseAccent": 0.3,
+      "optic_modDepth": 0.4,
+      "optic_modMixPulse": 0.1,
+      "optic_modMixSpec": 0.9,
+      "optic_vizMode": 3,
+      "optic_vizFeedback": 0.75,
+      "optic_vizSpeed": 0.25,
+      "optic_vizIntensity": 0.55
+    },
+    "Organon": {
+      "organon_metabolicRate": 2.5,
+      "organon_enzymeSelect": 1400.0,
+      "organon_catalystDrive": 0.5,
+      "organon_dampingCoeff": 0.22,
+      "organon_signalFlux": 0.6,
+      "organon_phasonShift": 0.45,
+      "organon_isotopeBalance": 0.5,
+      "organon_lockIn": 0.45,
+      "organon_membrane": 0.28,
+      "organon_noiseColor": 0.48
+    }
+  },
+  "coupling": {
+    "pairs": [
+      { "engineA": "Organon", "engineB": "Optic", "type": "AudioToFM", "amount": 0.4 },
+      { "engineA": "Optic", "engineB": "Organon", "type": "AmpToFilter", "amount": 0.35 }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.6,
+    "movement": 0.5,
+    "density": 0.55,
+    "space": 0.75,
+    "aggression": 0.1
+  }
+}

@@ -18,7 +18,12 @@ enum class CouplingType {
     RhythmToBlend,     // Engine A rhythm pattern → Engine B blend parameter
     EnvToDecay,        // Engine A envelope → Engine B decay time
     PitchToPitch,      // Engine A pitch → Engine B pitch (harmony)
-    AudioToWavetable   // Engine A audio → Engine B wavetable source
+    AudioToWavetable,  // Engine A audio → Engine B wavetable source
+    AudioToBuffer      // Engine A audio → Engine B ring buffer (continuous stereo streaming)
+                       // Designed for OPAL's grain buffer — the "Time Telescope" coupling type.
+                       // Unlike AudioToWavetable (periodic snapshots), AudioToBuffer streams
+                       // every block into a pre-allocated circular buffer with freeze support.
+                       // See Docs/xopal_phase1_architecture.md §15 for the full design.
 };
 
 //==============================================================================

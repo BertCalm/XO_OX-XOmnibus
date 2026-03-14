@@ -29,14 +29,14 @@
   },
   "parameters": {
     "Overdub": {
-      "osc_wave": 0.0,
-      "osc_octave": 0.0,
-      "osc_sub_level": 1.0,
-      "filter_cutoff": 300.0,
-      "env_attack": 0.01,
-      "env_decay": 0.8,
-      "env_sustain": 0.3,
-      "env_release": 0.5
+      "dub_oscWave": 0.0,
+      "dub_oscOctave": 0.0,
+      "dub_subLevel": 1.0,
+      "dub_filterCutoff": 300.0,
+      "dub_attack": 0.01,
+      "dub_decay": 0.8,
+      "dub_sustain": 0.3,
+      "dub_release": 0.5
     }
   },
   "coupling": null,

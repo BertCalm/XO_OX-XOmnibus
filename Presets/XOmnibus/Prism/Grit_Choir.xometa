@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Grit Choir",
+  "mood": "Prism",
+  "engines": [
+    "Oblong"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Layered crunch \u2014 8-voice poly stack with wide detune and high drive. Every note is a cluster of distorted saws grinding together.",
+  "tags": [
+    "bob",
+    "crunch",
+    "layer",
+    "distortion",
+    "poly",
+    "prism"
+  ],
+  "macroLabels": [
+    "CRUNCH",
+    "SPREAD",
+    "FILTER BITE",
+    "DENSITY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.32,
+    "movement": 0.5,
+    "density": 0.88,
+    "space": 0.3,
+    "aggression": 0.88
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_oscA_wave": 2,
+      "bob_oscA_shape": 0.85,
+      "bob_oscA_tune": 0.0,
+      "bob_oscA_drift": 0.12,
+      "bob_oscB_wave": 0,
+      "bob_oscB_detune": 22.0,
+      "bob_oscB_blend": 0.7,
+      "bob_oscB_sync": 0,
+      "bob_oscB_fm": 0.0,
+      "bob_texMode": 2,
+      "bob_texLevel": 0.22,
+      "bob_texTone": 0.75,
+      "bob_texWidth": 1.0,
+      "bob_fltMode": 0,
+      "bob_fltCutoff": 4000.0,
+      "bob_fltReso": 0.65,
+      "bob_fltChar": 0.9,
+      "bob_fltDrive": 0.88,
+      "bob_fltEnvAmt": 0.35,
+      "bob_ampAttack": 0.015,
+      "bob_ampDecay": 0.5,
+      "bob_ampSustain": 0.68,
+      "bob_ampRelease": 0.35,
+      "bob_motAttack": 0.02,
+      "bob_motDecay": 0.35,
+      "bob_motSustain": 0.5,
+      "bob_motRelease": 0.3,
+      "bob_motDepth": 0.55,
+      "bob_lfo1Rate": 0.5,
+      "bob_lfo1Depth": 0.1,
+      "bob_lfo1Shape": 3,
+      "bob_lfo1Target": 0,
+      "bob_curMode": 1,
+      "bob_curAmount": 0.4,
+      "bob_bobMode": 0.75,
+      "bob_dustAmount": 0.45,
+      "bob_dustTone": 0.7,
+      "bob_level": 0.65,
+      "bob_voiceMode": 0,
+      "bob_glide": 0.0,
+      "bob_polyphony": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

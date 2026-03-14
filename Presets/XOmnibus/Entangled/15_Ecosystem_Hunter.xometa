@@ -2,12 +2,32 @@
   "schema_version": 1,
   "name": "Ecosystem Hunter",
   "mood": "Entangled",
-  "engines": ["XOwlfish"],
+  "sonic_dna": {
+    "brightness": 0.4,
+    "warmth": 0.75,
+    "aggression": 0.65,
+    "movement": 0.7,
+    "density": 1.0,
+    "space": 0.6
+  },
+  "engines": [
+    "XOwlfish"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Designed for multi-engine coupling — aggressive subharmonics with high coupling level for ecosystem entanglement",
-  "tags": ["coupling", "entangled", "ecosystem", "predator"],
-  "macroLabels": ["DEPTH", "FEEDING", "DEFENSE", "PRESSURE"],
+  "tags": [
+    "coupling",
+    "entangled",
+    "ecosystem",
+    "predator"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "FEEDING",
+    "DEFENSE",
+    "PRESSURE"
+  ],
   "couplingIntensity": "Heavy",
   "parameters": {
     "XOwlfish": {
@@ -63,5 +83,7 @@
       "owl_couplingBus": 1
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

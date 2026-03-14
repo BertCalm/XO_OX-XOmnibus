@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "FM Bell",
+  "name": "Operator Bell",
   "mood": "Prism",
   "engines": [
     "Odyssey"
@@ -27,21 +27,17 @@
   },
   "parameters": {
     "Odyssey": {
-      "osc_a_mode": 3.0,
-      "osc_a_level": 0.8,
-      "osc_a_fm_ratio": 3.0,
-      "osc_a_fm_depth": 0.4,
-      "filt_a_cutoff": 12000.0,
-      "filt_a_reso": 0.05,
-      "env_amp_attack": 1.0,
-      "env_amp_decay": 1500.0,
-      "env_amp_sustain": 0.0,
-      "env_amp_release": 1000.0,
-      "shimmer_amount": 0.15,
-      "reverb_enable": 1.0,
-      "reverb_size": 0.6,
-      "reverb_mix": 0.3,
-      "master_gain": -3.0
+      "drift_oscA_mode": 3.0,
+      "drift_oscA_level": 0.8,
+      "drift_oscA_fmDepth": 0.4,
+      "drift_filterCutoff": 12000.0,
+      "drift_filterReso": 0.05,
+      "drift_attack": 1.0,
+      "drift_decay": 1500.0,
+      "drift_sustain": 0.0,
+      "drift_release": 1000.0,
+      "drift_shimmerAmount": 0.15,
+      "drift_level": -3.0
     }
   },
   "coupling": null,

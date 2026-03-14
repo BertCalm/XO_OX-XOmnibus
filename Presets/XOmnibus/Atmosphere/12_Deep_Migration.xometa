@@ -2,12 +2,32 @@
   "schema_version": 1,
   "name": "Deep Migration",
   "mood": "Atmosphere",
-  "engines": ["XOwlfish"],
+  "sonic_dna": {
+    "brightness": 0.0,
+    "warmth": 0.65,
+    "aggression": 0.05,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 1.0
+  },
+  "engines": [
+    "XOwlfish"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Long portamento glides in legato mode with full morphGlide — organs morph as the creature moves",
-  "tags": ["glide", "legato", "organic", "evolving"],
-  "macroLabels": ["DEPTH", "FEEDING", "DEFENSE", "PRESSURE"],
+  "tags": [
+    "glide",
+    "legato",
+    "organic",
+    "evolving"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "FEEDING",
+    "DEFENSE",
+    "PRESSURE"
+  ],
   "couplingIntensity": "None",
   "parameters": {
     "XOwlfish": {
@@ -63,5 +83,7 @@
       "owl_couplingBus": 0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

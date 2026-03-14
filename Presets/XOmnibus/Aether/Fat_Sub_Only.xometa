@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Fat_Sub_Only",
+  "name": "Midnight Zone",
   "mood": "Aether",
   "engines": [
     "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT with filter nearly closed, sub octave dominant \u2014 pure sub-bass aether presence.",
+  "description": "FAT with filter nearly closed, sub octave dominant — pure sub-bass aether presence.",
   "tags": [
     "fat",
     "sub",

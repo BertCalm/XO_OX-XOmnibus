@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Morph_Bright_Lead",
+  "name": "Spectral Crest",
   "mood": "Prism",
   "engines": [
     "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH at maximum spectral position \u2014 bright harmonic wavetable lead voice.",
+  "description": "MORPH at maximum spectral position — bright harmonic wavetable lead voice.",
   "tags": [
     "morph",
     "bright",

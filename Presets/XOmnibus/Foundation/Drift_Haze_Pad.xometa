@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Drift_Haze_Pad",
+  "name": "Saturation Bloom",
   "mood": "Foundation",
   "engines": [
     "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT with hazeAmount at maximum \u2014 the haze saturation colors the pad with warm density.",
+  "description": "DRIFT with hazeAmount at maximum — the haze saturation colors the pad with warm density.",
   "tags": [
     "drift",
     "haze",

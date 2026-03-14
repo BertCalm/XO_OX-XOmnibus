@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Bob_Slow_Pad",
+  "name": "Tide Margin",
   "mood": "Aether",
   "engines": [
     "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB as a slow, barely-audible pad \u2014 presence without intrusion.",
+  "description": "BOB as a slow, barely-audible pad — presence without intrusion.",
   "tags": [
     "bob",
     "slow",

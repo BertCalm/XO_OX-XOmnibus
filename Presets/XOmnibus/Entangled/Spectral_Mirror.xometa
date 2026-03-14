@@ -53,7 +53,7 @@
       "optic_vizIntensity": 0.7
     },
     "Odyssey": {
-      "odyssey_detune": 0.08
+      "drift_oscA_detune": 0.08
     },
     "Opal": {
       "opal_filterCutoff": 3000.0

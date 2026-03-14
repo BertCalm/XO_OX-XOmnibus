@@ -7,7 +7,7 @@
 **Accent Color:** Iridescent Lavender `#A78BFA`
 **Max Voices:** 12 grain clouds (polyphonic — each note = one cloud)
 **CPU Budget:** <12% single-engine
-**Date:** 2026-03-11
+**Date:** 2026-03-11 (revised 2026-03-14 — V008 AudioToBuffer integration)
 
 ---
 
@@ -17,7 +17,9 @@
 
 **Sound family:** Texture / Pad / Ambient / FX hybrid
 
-**Unique capability:** Real-time granulation of the XOmnibus coupling bus — any other engine's audio can enter XOpal's grain buffer and be scattered through time. NES pulses fragmented. Climax blooms frozen. Bass clouds sustained. This coupling doesn't exist anywhere else.
+**Unique capability:** Real-time granulation of the XOmnibus coupling bus — any other engine's audio can enter XOpal's grain buffer and be scattered through time. NES pulses fragmented. Climax blooms frozen. Bass clouds sustained. This coupling doesn't exist anywhere else. OPAL is the first engine to use coupling for *audio-level transformation* rather than parameter modulation — an entirely new tier of engine interaction.
+
+**V008 Vision (Time Telescope):** OPAL is a universal transformer. Any engine's audio stream enters its grain buffer continuously and is reconstituted as something new. FREEZE (momentary hold, not toggle) allows the performer to capture a specific moment from the coupled stream and hold it — becoming a curator of temporal moments. The coupling mechanism that enables this is `AudioToBuffer`: a new coupling type distinct from `AudioToWavetable`, designed for continuous stereo audio streaming between engines.
 
 **Personality in 3 words:** Iridescent, Fragmented, Suspended
 
@@ -165,7 +167,7 @@ When source mode is not "coupling", a simple oscillator bank feeds the grain buf
 - **Source 2 — Pulse:** Variable width for hollow/reedy grain character.
 - **Source 3 — Noise:** White noise source for texture-only clouds (no pitch content).
 - **Source 4 — Two-Osc:** Osc1 + Osc2 mixed. Detuned pair for richer source material.
-- **Source 5 — Coupling:** External engine audio via `AudioToWavetable` coupling.
+- **Source 5 — Coupling:** External engine audio via `AudioToBuffer` coupling (see Section 15).
 
 The oscillator runs at the MIDI note frequency, writing continuously into the grain buffer. This means granulating a saw wave at C3 produces different results than granulating the same saw at C5 — the buffer content is pitch-dependent, and grain pitch scatter operates on top of that.
 
@@ -525,7 +527,8 @@ void spawnGrain() {
 
 | CouplingType | OPAL Behavior | Musical Effect |
 |---|---|---|
-| `AudioToWavetable` | Writes source audio into grain buffer (replaces/mixes with internal osc) | **Primary coupling.** Any engine's sound becomes OPAL's grain source. |
+| `AudioToBuffer` | Streams source stereo audio continuously into grain ring buffer (mixes with or replaces internal osc) | **Primary coupling. The Time Telescope.** Any engine's sound becomes OPAL's grain source. See Section 15 for full design. |
+| `AudioToWavetable` | Treated as alias for `AudioToBuffer` at OPAL's `applyCouplingInput` handler — both route to grain buffer write | Legacy compatibility. New routes should use `AudioToBuffer`. |
 | `AmpToFilter` | Source amplitude → filter cutoff modulation | Drum hits open OPAL's filter — rhythmic cloud filtering |
 | `EnvToMorph` | Source envelope → grain size modulation | Attack shapes → grain size variation. Short envelopes = tiny grains. |
 | `LFOToPitch` | Source LFO → pitch scatter depth | Cross-engine modulation of the scatter width |
@@ -744,10 +747,10 @@ void spawnGrain() {
 
 | Partner | Route | Musical Effect |
 |---|---|---|
-| **OVERWORLD** | OVERWORLD → OPAL via `AudioToWavetable` | **The killer coupling.** NES pulses, FM operators, SNES samples scattered through time clouds. Chip audio granulated. |
-| **ODYSSEY** | ODYSSEY → OPAL via `AudioToWavetable` | Psychedelic pads granulated — Climax bloom frozen into particles |
-| **OBLONG** | OBLONG → OPAL via `AudioToWavetable` | Warm fuzzy textures scattered through time — organic cloud material |
-| **ODDFELIX** | ODDFELIX → OPAL via `AudioToWavetable` | Karplus-Strong pluck granulated — reverb made of its own attack |
+| **OVERWORLD** | OVERWORLD → OPAL via `AudioToBuffer` | **The killer coupling.** NES pulses, FM operators, SNES samples scattered through time clouds. Chip audio granulated. |
+| **ODYSSEY** | ODYSSEY → OPAL via `AudioToBuffer` | Psychedelic pads granulated — Climax bloom FREEZE-captured mid-bloom and held as particle field. |
+| **OBLONG** | OBLONG → OPAL via `AudioToBuffer` | Warm fuzzy textures scattered through time — organic cloud material |
+| **ODDFELIX** | ODDFELIX → OPAL via `AudioToBuffer` | Karplus-Strong pluck granulated — reverb made of its own attack |
 | **OBESE** | OBESE → OPAL via `AmpToFilter` | 13-osc amplitude modulates cloud filter — rhythmic brightness |
 | **OVERDUB** | OPAL → OVERDUB via `getSample` | Grain cloud through dub echo/spring chain — granular dub |
 | **ODDOSCAR** | OPAL → ODDOSCAR via `EnvToMorph` | Cloud envelope drives wavetable morph position — cloud-reactive wavetable |
@@ -798,10 +801,16 @@ Well within the 12% single-engine budget. The variable cost is grain count — a
 
 - [x] Naming confirmed: XOpal, `opal_` prefix, `#A78BFA`, Engine ID `"Opal"`
 - [x] 86 parameters defined with `opal_` namespace IDs — all frozen
-- [x] Coupling maps to existing `CouplingType` enum (no new types needed)
-- [x] Primary coupling type identified: `AudioToWavetable` (the reason OPAL exists)
+- [x] New `AudioToBuffer` coupling type designed (Section 15) — requires addition to `CouplingType` enum
+- [x] Primary coupling type identified: `AudioToBuffer` (the Time Telescope — reason OPAL exists)
+- [x] `AudioToWavetable` handled as alias at `applyCouplingInput` for legacy compatibility
+- [x] `AudioToBuffer` data structure: stereo `AudioRingBuffer` (pre-allocated, lock-free, audio-thread safe)
+- [x] Push model chosen: source engine writes to OPAL's ring buffer; OPAL reads on its own schedule
+- [x] Feedback loop safety: engine registry cycle detection prevents OPAL→Engine→OPAL chains
+- [x] Buffer sizing: 4s at sample rate, pre-allocated in `prepare()`, no audio-thread allocation
+- [x] FREEZE gesture: momentary hold (not toggle), latch mode via double-tap, hardware-mapped to Z-pressure
 - [x] Voice count = 12, CPU budget verified at <1.1% worst case (well under 12%)
-- [x] Memory budget verified at ~900KB total
+- [x] Memory budget verified at ~900KB + 688KB per AudioToBuffer source (up to 4 sources)
 - [x] Grain scheduler algorithm specified with deterministic PRNG
 - [x] Grain budget scaling for multi-engine configs (32/24/16 grains)
 - [x] 4 window shapes defined (Hann/Gaussian/Tukey/Rectangular)
@@ -814,12 +823,405 @@ Well within the 12% single-engine budget. The variable cost is grain count — a
 - [x] PlaySurface mapping for all 3 modes
 - [x] 10 preset archetypes with mood assignments and DNA values
 - [x] "Glass Cloud" first-encounter preset fully specified with all 86 params
-- [x] Coupling interface: 6 supported types, 5 rejected with reasons
+- [x] Coupling interface: 7 supported types, 5 rejected with reasons
 - [x] Coupling source output: 2-channel stereo post-filter
 - [x] .xometa JSON structure verified with all 86 parameters
 - [x] Mod matrix: 6 slots, 8 sources, 12 destinations
-- [x] Freeze system: write-head deceleration + region size control
+- [x] Freeze system: write-head deceleration + region size + momentary/latch gesture
 - [x] UI page structure: 5 pages
+- [ ] `AudioToBuffer` enum value added to `Source/Core/SynthEngine.h` CouplingType enum (Phase 2 gate)
+
+---
+
+## 15. AudioToBuffer Coupling Type — Full Design
+
+*V008 implementation spec. This section defines both the new `CouplingType` enum value and the complete data pathway from source engine audio output to OPAL's grain buffer.*
+
+---
+
+### 15.1 Why a New Coupling Type
+
+The existing audio coupling types (`AudioToWavetable`, `AudioToFM`, `AudioToRing`) pass audio through the `MegaCouplingMatrix`'s mono scratch buffer (`couplingBuffer`), mixing L+R to mono in-place:
+
+```cpp
+// Current MegaCouplingMatrix::processBlock() — audio routes
+couplingBuffer[i] = (source->getSampleForCoupling(0, i)
+                   + source->getSampleForCoupling(1, i)) * 0.5f;
+```
+
+This is sufficient for FM carrier and ring modulation — both are mono multiplication operations. It is *not* sufficient for OPAL's grain buffer, which needs:
+
+1. **Stereo audio** — grains should preserve L/R spatial character of the source engine
+2. **Continuous streaming** — the grain buffer is a 4-second history; every block must write, not just when coupling fires
+3. **Variable write rate** — OPAL may freeze the write head (FREEZE gesture) while the source continues writing to a shadow buffer
+4. **Low-latency random access** — OPAL reads arbitrary positions in the buffer; random access must be O(1)
+
+`AudioToWavetable` was designed to periodically copy an audio snapshot into a wavetable — a different paradigm. `AudioToBuffer` is specifically designed for continuous streaming into a pre-allocated circular buffer.
+
+---
+
+### 15.2 CouplingType Enum Addition
+
+In `Source/Core/SynthEngine.h`, add to the `CouplingType` enum:
+
+```cpp
+enum class CouplingType {
+    AmpToFilter,
+    AmpToPitch,
+    LFOToPitch,
+    EnvToMorph,
+    AudioToFM,
+    AudioToRing,
+    FilterToFilter,
+    AmpToChoke,
+    RhythmToBlend,
+    EnvToDecay,
+    PitchToPitch,
+    AudioToWavetable,
+    AudioToBuffer       // NEW — continuous stereo audio stream into target's ring buffer
+};
+```
+
+In `MegaCouplingMatrix::processBlock()`, add `AudioToBuffer` to the `isAudioRoute` detection:
+
+```cpp
+const bool isAudioRoute =
+    route.type == CouplingType::AudioToWavetable
+ || route.type == CouplingType::AudioToFM
+ || route.type == CouplingType::AudioToRing
+ || route.type == CouplingType::AudioToBuffer;  // ADD THIS LINE
+```
+
+For `AudioToBuffer` routes, bypass the mono mixdown and pass stereo directly — see Section 15.4 for the extended `processBlock` logic.
+
+---
+
+### 15.3 AudioRingBuffer Data Structure
+
+OPAL owns its grain ring buffer. For coupled audio sources, it allocates one additional `AudioRingBuffer` per active `AudioToBuffer` source in `prepare()`:
+
+```cpp
+// OpalEngine.h — pre-allocated in prepare(), not on audio thread
+struct AudioRingBuffer {
+    static constexpr int kChannels = 2;
+
+    std::vector<float> data[kChannels];   // [L][...], [R][...] — interleaved by channel
+    int capacity = 0;                     // bufferSize in samples
+    std::atomic<int> writeHead{0};        // written by coupling push (audio thread)
+    std::atomic<int> shadowWriteHead{0};  // tracks pre-freeze write position
+    std::atomic<bool> frozen{false};      // FREEZE state
+
+    void prepare(int sampleRate, float durationSeconds)
+    {
+        capacity = static_cast<int>(sampleRate * durationSeconds);
+        for (int ch = 0; ch < kChannels; ++ch)
+            data[ch].assign(static_cast<size_t>(capacity), 0.0f);
+        writeHead.store(0, std::memory_order_relaxed);
+        shadowWriteHead.store(0, std::memory_order_relaxed);
+        frozen.store(false, std::memory_order_relaxed);
+    }
+
+    // Called from MegaCouplingMatrix::processBlock() on audio thread
+    void pushBlock(const float* srcL, const float* srcR, int numSamples, float level)
+    {
+        const bool isFrozen = frozen.load(std::memory_order_acquire);
+        int head = writeHead.load(std::memory_order_relaxed);
+        int shadowHead = shadowWriteHead.load(std::memory_order_relaxed);
+
+        for (int i = 0; i < numSamples; ++i)
+        {
+            // Shadow head always advances — records pre-freeze history
+            int s = shadowHead % capacity;
+            // Only write to main buffer if not frozen
+            if (!isFrozen)
+            {
+                int w = head % capacity;
+                data[0][static_cast<size_t>(w)] = srcL[i] * level;
+                data[1][static_cast<size_t>(w)] = srcR[i] * level;
+                ++head;
+            }
+            ++shadowHead;
+        }
+
+        writeHead.store(head, std::memory_order_release);
+        shadowWriteHead.store(shadowHead, std::memory_order_release);
+    }
+
+    // Called from grain scheduler — O(1), read-only
+    float readAt(int channel, float fractionalOffset) const
+    {
+        int head = writeHead.load(std::memory_order_acquire);
+        // fractionalOffset: 0.0 = most recent, 1.0 = capacity samples ago
+        float rawPos = static_cast<float>(head) - fractionalOffset * static_cast<float>(capacity);
+        int base = static_cast<int>(rawPos);
+        float frac = rawPos - static_cast<float>(base);
+
+        int i0 = ((base % capacity) + capacity) % capacity;
+        int i1 = ((base + 1) % capacity + capacity) % capacity;
+
+        const float* ch = data[static_cast<size_t>(channel)].data();
+        return ch[i0] + frac * (ch[i1] - ch[i0]);  // linear interpolation
+    }
+};
+```
+
+**Memory cost:** 2 channels × 4 sec × 44100 samples × 4 bytes = **~688KB per source engine**. For a 4-engine config with 3 sources feeding OPAL, worst case is ~2MB additional — still negligible.
+
+**Thread safety contract:**
+- `pushBlock()` is called on the audio thread from `MegaCouplingMatrix::processBlock()`. It uses atomic write head — no locks.
+- `readAt()` is called on the audio thread from the grain scheduler. It uses `memory_order_acquire` to see the latest `writeHead`. No locks.
+- `frozen` flag is set from the FREEZE gesture handler on the audio thread (parameter change driven) — `memory_order_acquire/release` pair guarantees visibility.
+
+---
+
+### 15.4 Push vs Pull Model
+
+**Decision: Push model.** The source engine does not know about OPAL. The `MegaCouplingMatrix` pushes source audio into OPAL's `AudioRingBuffer` each block — this is consistent with the existing coupling architecture where the matrix mediates all engine interaction.
+
+**Sequence per block:**
+
+```
+1. MegaCouplingMatrix::processBlock() iterates routes
+2. For AudioToBuffer routes:
+   a. Get source L/R from source->getSampleForCoupling(0, i) and (1, i)
+   b. Call dest->getGrainBuffer(sourceSlot)->pushBlock(srcL, srcR, numSamples, route.amount)
+3. OpalEngine::renderBlock() runs after all coupling pushes complete
+4. Grain scheduler calls grainBuffer.readAt(channel, position) — reads the now-updated buffer
+```
+
+This requires OpalEngine to expose its `AudioRingBuffer` by source slot:
+
+```cpp
+// OpalEngine.h
+AudioRingBuffer* getGrainBuffer(int sourceSlot)
+{
+    if (sourceSlot < 0 || sourceSlot >= MaxSlots) return nullptr;
+    return &coupledBuffers[static_cast<size_t>(sourceSlot)];
+}
+
+private:
+    std::array<AudioRingBuffer, MaxSlots> coupledBuffers;
+    // Each slot corresponds to a MegaCouplingMatrix source slot (0-3)
+```
+
+**Extended MegaCouplingMatrix::processBlock() for AudioToBuffer:**
+
+```cpp
+if (route.type == CouplingType::AudioToBuffer)
+{
+    // Direct stereo push — bypass mono scratch buffer
+    auto* opalDest = dynamic_cast<OpalEngine*>(dest);
+    if (!opalDest) continue;  // Safety: AudioToBuffer only valid for OpalEngine
+
+    AudioRingBuffer* rb = opalDest->getGrainBuffer(route.sourceSlot);
+    if (!rb) continue;
+
+    // Build temp stereo arrays from per-sample coupling cache
+    // (Uses the existing couplingBuffer for L and a second scratch buffer for R)
+    for (int i = 0; i < limit; ++i)
+        couplingBufferL[i] = source->getSampleForCoupling(0, i);
+    for (int i = 0; i < limit; ++i)
+        couplingBufferR[i] = source->getSampleForCoupling(1, i);
+
+    rb->pushBlock(couplingBufferL.data(), couplingBufferR.data(), limit, route.amount);
+    continue;  // Skip dest->applyCouplingInput() — grain buffer handles it directly
+}
+```
+
+This requires a second scratch buffer `couplingBufferR` in `MegaCouplingMatrix`. Add alongside `couplingBuffer` in `prepare()`:
+
+```cpp
+// MegaCouplingMatrix.h
+void prepare(int maxBlockSize)
+{
+    couplingBuffer.resize(static_cast<size_t>(maxBlockSize), 0.0f);
+    couplingBufferR.resize(static_cast<size_t>(maxBlockSize), 0.0f);  // ADD
+}
+
+private:
+    std::vector<float> couplingBuffer;   // L or mono scratch
+    std::vector<float> couplingBufferR;  // R scratch for AudioToBuffer
+```
+
+---
+
+### 15.5 Feedback Loop Safety
+
+A cycle OPAL→Engine→OPAL is conceivable: OPAL's granulated output feeds Engine X (via `AmpToFilter` or `getSampleForCoupling`), and Engine X also feeds OPAL (via `AudioToBuffer`). This is not catastrophically dangerous (no positive feedback on the coupling bus since each engine processes at most once per block), but it is musically confusing and creates a one-block latency circular dependency.
+
+**Detection:** The `EngineRegistry` should detect cycles at route-add time (message thread) using a depth-first search over the route graph:
+
+```cpp
+// EngineRegistry.h — call this before adding a route
+bool wouldCreateCycle(int sourceSlot, int destSlot,
+                      const std::vector<CouplingRoute>& existingRoutes)
+{
+    // DFS from destSlot — can we reach sourceSlot?
+    std::array<bool, MaxSlots> visited = {};
+    std::function<bool(int)> dfs = [&](int node) -> bool {
+        if (node == sourceSlot) return true;
+        if (visited[node]) return false;
+        visited[node] = true;
+        for (const auto& r : existingRoutes)
+            if (r.sourceSlot == node && dfs(r.destSlot))
+                return true;
+        return false;
+    };
+    return dfs(destSlot);
+}
+```
+
+**Policy:** If `wouldCreateCycle()` returns true for an `AudioToBuffer` route, reject it and log a warning. For other coupling types, a cycle is less dangerous (scalar modulation doesn't accumulate exponentially), so it is permitted but warned.
+
+**Runtime guard (audio thread):** Even if a cycle slips through (e.g., preset loaded with pre-existing cycle), OPAL's `coupledBuffers` contain audio from the *previous* block — the dependency is always one block old. No real-time deadlock is possible.
+
+---
+
+### 15.6 Buffer Sizing and Allocation Rules
+
+| Decision | Rationale |
+|---|---|
+| Buffer size: 4 seconds | Long enough for meaningful freeze windows at any tempo. At 120 BPM, 4 seconds = 8 bars. |
+| Allocated in `prepare()` | Never on audio thread. `OpalEngine::prepare()` calls `coupledBuffers[i].prepare(sampleRate, 4.0f)` for each slot. |
+| Fixed capacity | No resize on sample-rate change — call `prepare()` again on SR change (same as all other engines). |
+| Mono source handled | If source engine is mono (`getSampleForCoupling(1, i)` returns same as channel 0), the buffer stores identical L+R. No special case needed. |
+| Stale buffers | If no `AudioToBuffer` push arrives for a slot in N blocks, the buffer fills with stale audio. The grain scheduler reads old material — this is musically valid (FREEZE-like). No zeroing required. |
+
+**Memory budget addendum (updates Section 13):**
+- Coupled grain buffers: 4 slots × 2 channels × 44100 × 4 × 4 bytes = **~2.75MB worst case** (all 4 slots in use)
+- Typical case: 1-2 active sources = **~688KB–1.38MB**
+- MegaCouplingMatrix second scratch buffer: 1024 samples × 4 bytes = **~4KB**
+
+---
+
+### 15.7 FREEZE Gesture Specification
+
+FREEZE is OPAL's most expressive performance control. V008 specifies it as a **momentary hold** (not a toggle), with optional latch mode.
+
+#### Momentary Mode (default)
+
+```
+Performer action:    Press                   Hold              Release
+Buffer write head:   ──────────────────────  STOPPED ─────────  RESUMED
+Grain reads from:    Normal sliding window   Frozen region      Normal again
+opal_freeze value:   0.0          ramps to    1.0    ramps to    0.0
+```
+
+The write head deceleration is gradual (10ms ramp from the current `opal_freeze` value to 1.0 on press, reverse on release). This prevents grain read heads from suddenly racing ahead of the write position, which would cause buffer wrap artifacts.
+
+#### Latch Mode (opal_freezeLatch = 1)
+
+Double-tap the FREEZE button (or the Z-pressure trigger) within 300ms to latch. In latch mode:
+- First tap: freeze engages (momentary hold)
+- Second tap within 300ms: converts to latch (freeze stays on after release)
+- Third tap while latched: releases latch, write head resumes
+
+```cpp
+// OpalEngine.h — FREEZE gesture state machine
+enum class FreezeState { Off, MomentaryHold, Latched };
+
+void handleFreezePress()
+{
+    const auto now = juce::Time::currentTimeMillis();
+    if (freezeState == FreezeState::Latched) {
+        freezeState = FreezeState::Off;  // unlatch
+    } else if (now - lastFreezeReleaseTime < 300) {
+        freezeState = FreezeState::Latched;  // double-tap → latch
+    } else {
+        freezeState = FreezeState::MomentaryHold;
+    }
+    // Set frozen flag on all active coupled AudioRingBuffers
+    for (auto& rb : coupledBuffers)
+        rb.frozen.store(freezeState != FreezeState::Off, std::memory_order_release);
+}
+
+void handleFreezeRelease()
+{
+    lastFreezeReleaseTime = juce::Time::currentTimeMillis();
+    if (freezeState == FreezeState::MomentaryHold) {
+        freezeState = FreezeState::Off;
+        for (auto& rb : coupledBuffers)
+            rb.frozen.store(false, std::memory_order_release);
+    }
+    // If Latched, do nothing — stays frozen
+}
+```
+
+#### PlaySurface Mapping
+
+| Surface | FREEZE Action |
+|---|---|
+| Z-axis pressure (Pad mode) | Momentary hold — pressure above 0.7 freezes, releasing unfreezes |
+| Long-press Z | Converts to latch |
+| Dedicated FREEZE button (UI) | Click = momentary, double-click = latch |
+
+#### Coupled Source Behavior During FREEZE
+
+When OPAL's write head is frozen, the *source engine keeps playing normally* — its audio continues to be pushed into the shadow write head but not the main buffer. On unfreeze, the main write head jumps to the shadow position, meaning OPAL immediately resumes reading current audio — no discontinuity.
+
+This is the crucial design choice: FREEZE captures a window, not an infinite loop. The shadow buffer ensures OPAL rejoins the live audio stream seamlessly on release.
+
+---
+
+### 15.8 getSampleForCoupling — What OPAL Exports
+
+OPAL's coupling output is its granulated audio, ready to feed downstream engines:
+
+```cpp
+// OpalEngine.h — per-sample coupling cache (written at end of each renderBlock)
+std::array<std::vector<float>, 2> couplingOutputCache;  // [channel][sample]
+
+float getSampleForCoupling(int channel, int sampleIndex) const override
+{
+    if (channel < 0 || channel > 1) return 0.0f;
+    if (sampleIndex < 0 || sampleIndex >= static_cast<int>(couplingOutputCache[0].size()))
+        return 0.0f;
+    return couplingOutputCache[static_cast<size_t>(channel)][static_cast<size_t>(sampleIndex)];
+}
+```
+
+The cache is written at the end of `renderBlock()` from the final stereo output (post-FX, post-finish). This is the same pattern used by all XOmnibus engines.
+
+**Signal point:** Post-filter, post-character stages, post-FX chain, pre-level. Amplitude is normalized ±1.
+
+**Downstream engines and their use of OPAL's output:**
+
+| Downstream Engine | Coupling Type Received | What They Do With It |
+|---|---|---|
+| OVERDUB | `AudioToBuffer` or `AudioToFM` | Grain cloud enters dub echo/spring reverb chain |
+| ODDOSCAR | `EnvToMorph` (uses cloud amplitude) | Cloud amplitude envelope drives wavetable morph position |
+| OVERBITE | `AmpToFilter` | Cloud RMS drives bass filter cutoff — breathing bass |
+| ORACLE | `AudioToBuffer` | Cloud input into stochastic synthesis engine |
+
+---
+
+### 15.9 Integration with MegaCouplingMatrix — Route Registration
+
+To register an `AudioToBuffer` coupling route in the normalled defaults:
+
+```cpp
+// Example: OVERWORLD → OPAL as primary default route
+matrix.addRoute({
+    .sourceSlot = kOverworldSlot,
+    .destSlot   = kOpalSlot,
+    .type       = CouplingType::AudioToBuffer,
+    .amount     = 0.0f,        // default off — user turns it up via opal_couplingLevel
+    .isNormalled = true,
+    .active     = true
+});
+```
+
+The `amount` field scales how loudly the source audio is written into OPAL's grain buffer. At `amount = 0`, nothing is written. At `amount = 1.0`, source audio is written at full level. The `opal_couplingLevel` parameter provides additional per-preset control on top of the route amount.
+
+**Route validation at load time:** When a preset is loaded with `AudioToBuffer` routes, `EngineRegistry::wouldCreateCycle()` is called for each route. Invalid routes are silently skipped — never block preset load.
+
+---
+
+### 15.10 Coupling Type Precedence for OPAL
+
+When multiple `AudioToBuffer` sources are active simultaneously (e.g., OVERWORLD in slot 0 and ODDFELIX in slot 1 both routing to OPAL), each fills its own `coupledBuffers[slotN]` independently. OPAL's grain scheduler reads from the buffer with the highest `opal_couplingLevel` (or a mix, per future parameter expansion).
+
+In Phase 2, only one external source is read at a time — determined by `opal_source == 5` and whichever slot has a non-zero `AudioToBuffer` route. Multi-source grain mixing is deferred to Phase 5.
 
 ---
 
@@ -827,14 +1229,14 @@ Well within the 12% single-engine budget. The variable cost is grain count — a
 
 | Phase | Content | Gate |
 |---|---|---|
-| **Phase 1 (this doc)** | Architecture, parameter taxonomy, signal flow | All 86 params frozen, coupling defined |
-| **Phase 2** | Scaffold project, grain buffer, scheduler, basic oscillator, coupling input | Audible grain cloud from oscillator source |
+| **Phase 1 (this doc)** | Architecture, parameter taxonomy, signal flow, `AudioToBuffer` design | All 86 params frozen, `AudioToBuffer` spec complete |
+| **Phase 2** | Scaffold project, grain buffer, `AudioRingBuffer`, grain scheduler, built-in oscillator, `AudioToBuffer` coupling input | Audible grain cloud from oscillator + first coupled source |
 | **Phase 3** | Filter, character stages, envelopes, LFOs, mod matrix | Full modulation working |
 | **Phase 4** | FX chain (smear, reverb, delay, finish) | Cloud integrity through FX |
-| **Phase 5** | Macros, coupling output, integration adapter | Macros audible, coupling routes verified |
+| **Phase 5** | Macros, coupling output, FREEZE gesture, multi-source grain mixing, integration adapter | Macros audible, FREEZE gesture confirmed, coupling routes verified |
 | **Phase 6** | 100 presets in `.xometa`, DNA computed | All presets pass macro QA |
 | **Phase 7** | UI, polish, QA | Definition of Done met |
 
 ---
 
-*XO_OX Designs | Engine: OPAL | Accent: #A78BFA | Prefix: opal_ | 86 parameters frozen*
+*XO_OX Designs | Engine: OPAL | Accent: #A78BFA | Prefix: opal_ | 86 parameters frozen | AudioToBuffer: V008*

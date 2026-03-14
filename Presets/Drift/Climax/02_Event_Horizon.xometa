@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "name": "Event Horizon",
+  "mood": "Aether",
+  "engines": ["Odyssey"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A slowly orbiting supersaw that warps and stretches as JOURNEY approaches 0.68. Past that point, the FM layer ignites and formants pull the vowel spectrum apart — the sound crosses into territory it cannot return from. Like a signal at the edge of a black hole: stretched, redshifted, then silent in a new way.",
+  "tags": ["climax", "demo", "supersaw", "fm", "dark", "dense", "journey", "event-horizon", "alien"],
+  "macroLabels": ["JOURNEY", "BREATHE", "BLOOM", "FRACTURE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "macroJourney": 0.42,
+  "climaxThreshold": 0.68,
+  "bloomTime": 2.5,
+  "modRouting": [
+    {
+      "source": "aftertouch",
+      "destination": "macroJourney",
+      "amount": 0.58,
+      "curve": "exponential",
+      "note": "Exponential curve means light pressure keeps you near familiar — you must commit fully to reach the horizon"
+    }
+  ],
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 2,
+      "drift_oscA_shape": 1,
+      "drift_oscA_tune": 0.0,
+      "drift_oscA_level": 0.7,
+      "drift_oscA_detune": 0.45,
+      "drift_oscA_pw": 0.5,
+      "drift_oscA_fmDepth": 0.0,
+      "drift_oscB_mode": 3,
+      "drift_oscB_shape": 1,
+      "drift_oscB_tune": -12.0,
+      "drift_oscB_level": 0.35,
+      "drift_oscB_detune": 0.2,
+      "drift_oscB_pw": 0.5,
+      "drift_oscB_fmDepth": 0.55,
+      "drift_subLevel": 0.4,
+      "drift_noiseLevel": 0.05,
+      "drift_hazeAmount": 0.35,
+      "drift_filterCutoff": 2800.0,
+      "drift_filterReso": 0.25,
+      "drift_filterSlope": 1,
+      "drift_filterEnvAmt": 0.1,
+      "drift_formantMorph": 0.3,
+      "drift_formantMix": 0.15,
+      "drift_shimmerAmount": 0.25,
+      "drift_shimmerTone": 0.45,
+      "drift_attack": 2.5,
+      "drift_decay": 6.0,
+      "drift_sustain": 0.65,
+      "drift_release": 5.0,
+      "drift_lfoRate": 0.04,
+      "drift_lfoDepth": 0.08,
+      "drift_lfoDest": 0,
+      "drift_driftDepth": 0.35,
+      "drift_driftRate": 0.04,
+      "drift_level": 0.7,
+      "drift_voiceMode": 0,
+      "drift_glide": 0.0,
+      "drift_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.5,
+    "movement": 0.4,
+    "density": 0.75,
+    "space": 0.6,
+    "aggression": 0.35
+  }
+}

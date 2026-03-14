@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Morph_Bright_Pluck",
+  "name": "Dissolution Strike",
   "mood": "Foundation",
   "engines": [
     "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH bright pluck \u2014 high morph for spectral richness, short decay, no sustain.",
+  "description": "MORPH bright pluck — high morph for spectral richness, short decay, no sustain.",
   "tags": [
     "morph",
     "pluck",

@@ -160,6 +160,12 @@ public:
         // Add key tracking: offset by fundamental frequency * tracking amount
         if (currentNote >= 0)
             cutoffHz += midiToFreq (currentNote) * snap.filterTrack;
+        // D001: filter envelope depth — amp envelope level × velocity sweeps cutoff.
+        // kOwlFilterEnvMaxHz = 5500 Hz: maps the 0-1 normalized cutoff parameter space.
+        // At default depth 0.25, full velocity at attack peak adds +1375 Hz of brightness.
+        static constexpr float kOwlFilterEnvMaxHz = 5500.0f;
+        cutoffHz += snap.filterEnvDepth * ampEnv.getLevel() * lastVelocity * kOwlFilterEnvMaxHz;
+        cutoffHz = std::max (20.0f, std::min (20000.0f, cutoffHz));
         opticsFilter.setCoefficients (cutoffHz, snap.filterReso,
                                       static_cast<float> (sampleRate));
 

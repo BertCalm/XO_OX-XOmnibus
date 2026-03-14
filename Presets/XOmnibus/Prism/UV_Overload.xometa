@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "name": "UV Overload",
+  "mood": "Prism",
+  "engines": [
+    "Optic",
+    "OddfeliX"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPTIC cranked to maximum brightness and aggression — fast strobe at extreme accent depth drives OddfeliX's snappy transients into overloaded territory. Harsh, blinding, aggressive. DNA gap-fill: HIGH brightness + HIGH aggression corner for Optic.",
+  "tags": [
+    "bright",
+    "aggressive",
+    "strobe",
+    "harsh",
+    "autopulse"
+  ],
+  "macroLabels": [
+    "STROBE RATE",
+    "OVERLOAD",
+    "SNAP",
+    "FILTER"
+  ],
+  "couplingIntensity": "High",
+  "tempo": 150,
+  "dna": {
+    "brightness": 0.93,
+    "warmth": 0.10,
+    "movement": 0.90,
+    "density": 0.78,
+    "space": 0.25,
+    "aggression": 0.92
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 1.0,
+      "optic_inputGain": 3.0,
+      "optic_autoPulse": 1,
+      "optic_pulseRate": 4.0,
+      "optic_pulseShape": 0.02,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseEvolve": 0.2,
+      "optic_pulseSubdiv": 1.0,
+      "optic_pulseAccent": 1.0,
+      "optic_modDepth": 0.95,
+      "optic_modMixPulse": 1.0,
+      "optic_modMixSpec": 0.1,
+      "optic_vizMode": 1,
+      "optic_vizFeedback": 0.95,
+      "optic_vizSpeed": 2.5,
+      "optic_vizIntensity": 1.0
+    },
+    "OddfeliX": {
+      "snap_snap": 0.95,
+      "snap_decay": 0.04,
+      "snap_filterCutoff": 14000.0,
+      "snap_filterReso": 0.8,
+      "snap_level": 0.85
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "OddfeliX",
+        "type": "AmpToFilter",
+        "amount": 0.9
+      },
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Optic",
+        "type": "AudioToFM",
+        "amount": 0.6
+      }
+    ]
+  },
+  "sequencer": null
+}

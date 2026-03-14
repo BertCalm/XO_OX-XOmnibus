@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/FastMath.h"
 #include <array>
@@ -1026,6 +1027,8 @@ public:
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
 
+        aftertouch.prepare (sampleRate);
+
         for (int i = 0; i < kMaxVoices; ++i)
         {
             auto& v = voices[static_cast<size_t> (i)];
@@ -1127,12 +1130,17 @@ public:
         const int maxPoly          = (pPolyphony != nullptr)
             ? (1 << std::min (3, static_cast<int> (pPolyphony->load()))) : 8;
 
+        // D006: smooth aftertouch pressure and compute modulation value
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);
+
         // Compute BobMode macro targets
         BobModeTargets bob = computeBobMode (bobModeVal);
 
         // Effective values (user params + bob macro additive)
         float effDrift = clamp (oscA_drift + bob.oscDrift, 0.0f, 1.0f);
-        float effChar = clamp (fltChar + bob.filterChar, 0.0f, 1.0f);
+        // D006: aftertouch adds up to +0.3 filter character/warmth (sensitivity 0.3)
+        float effChar = clamp (fltChar + bob.filterChar + atPressure * 0.3f, 0.0f, 1.0f);
         float effTexLevel = clamp (texLevel + bob.texLevel, 0.0f, 1.0f);
         float effLfoDepth = clamp (lfo1Depth + bob.modDepth * 0.3f, 0.0f, 1.0f);
         float effDustAmt = clamp (dustAmount + bob.fxDepth * 0.3f, 0.0f, 1.0f);
@@ -1148,6 +1156,9 @@ public:
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 allVoicesOff();
+            // D006: channel pressure → aftertouch (applied to filter character below)
+            else if (msg.isChannelPressure())
+                aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
         }
 
         // Consume coupling accumulators
@@ -1688,6 +1699,9 @@ private:
     float envelopeOutput = 0.0f;
     float externalPitchMod = 0.0f;
     float externalFilterMod = 0.0f;
+
+    // ---- D006 Aftertouch — pressure adds warmth/character on Snout filter ----
+    PolyAftertouch aftertouch;
 
     std::vector<float> outputCacheL;
     std::vector<float> outputCacheR;

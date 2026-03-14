@@ -1,13 +1,27 @@
 {
   "schema_version": 1,
-  "name": "Fat Bass",
+  "name": "Hadal Pressure",
   "mood": "Foundation",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FAT configured as a pure bass instrument — sub octave loud, filter closed low, short attack, punchy decay. Maximum low end density without the pad spread.",
-  "tags": ["bass", "fat", "sub", "punchy", "dense", "foundation"],
-  "macroLabels": ["SUB LEVEL", "FILTER CUTOFF", "MORPH", "DRIVE"],
+  "tags": [
+    "bass",
+    "fat",
+    "sub",
+    "punchy",
+    "dense",
+    "foundation"
+  ],
+  "macroLabels": [
+    "SUB LEVEL",
+    "FILTER CUTOFF",
+    "MORPH",
+    "DRIVE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

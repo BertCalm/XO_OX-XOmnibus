@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Boomy Sub",
+  "name": "Deep Resonance",
   "mood": "Foundation",
   "engines": [
     "Odyssey"
@@ -27,21 +27,19 @@
   },
   "parameters": {
     "Odyssey": {
-      "osc_a_mode": 0.0,
-      "osc_a_shape": 3.0,
-      "osc_a_level": 0.9,
-      "sub_level": 0.7,
-      "sub_shape": 0.0,
-      "haze_amount": 0.15,
-      "filt_a_cutoff": 600.0,
-      "filt_a_reso": 0.2,
-      "filt_a_slope": 1.0,
-      "filt_a_drive": 0.15,
-      "env_amp_attack": 5.0,
-      "env_amp_decay": 500.0,
-      "env_amp_sustain": 0.4,
-      "env_amp_release": 250.0,
-      "master_gain": -1.0
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 3.0,
+      "drift_oscA_level": 0.9,
+      "drift_subLevel": 0.7,
+      "drift_hazeAmount": 0.15,
+      "drift_filterCutoff": 600.0,
+      "drift_filterReso": 0.2,
+      "drift_filterSlope": 1.0,
+      "drift_attack": 5.0,
+      "drift_decay": 500.0,
+      "drift_sustain": 0.4,
+      "drift_release": 250.0,
+      "drift_level": -1.0
     }
   },
   "coupling": null,

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Obsidian Eruption",
+  "mood": "Flux",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Evolving and unstable — LFO1 at mid-rate sweeping PD depth, LFO2 at slow rate shifting density. PD depth envelope has a long attack that blooms into harmonic complexity mid-note. CHARACTER macro pushes the instability further.",
+  "tags": [
+    "evolving",
+    "unstable",
+    "eruption",
+    "morphing",
+    "LFO",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": {
+    "sourceInstrument": "Obsidian",
+    "sourceCategory": "Flux",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_densityX": 0.5,
+      "obsidian_tiltY": 0.5,
+      "obsidian_depth": 0.5,
+      "obsidian_stiffness": 0.12,
+      "obsidian_cascadeBlend": 0.25,
+      "obsidian_crossModDepth": 0.35,
+      "obsidian_formantIntensity": 0.4,
+      "obsidian_stereoWidth": 0.5,
+      "obsidian_filterCutoff": 7500.0,
+      "obsidian_filterReso": 0.12,
+      "obsidian_level": 0.78,
+      "obsidian_ampAttack": 0.05,
+      "obsidian_ampDecay": 0.6,
+      "obsidian_ampSustain": 0.75,
+      "obsidian_ampRelease": 1.5,
+      "obsidian_depthAttack": 1.5,
+      "obsidian_depthDecay": 0.8,
+      "obsidian_depthSustain": 0.6,
+      "obsidian_depthRelease": 1.2,
+      "obsidian_lfo1Rate": 0.4,
+      "obsidian_lfo1Depth": 0.55,
+      "obsidian_lfo1Shape": 0,
+      "obsidian_lfo2Rate": 0.15,
+      "obsidian_lfo2Depth": 0.4,
+      "obsidian_lfo2Shape": 1,
+      "obsidian_polyphony": 2,
+      "obsidian_glide": 0.0,
+      "obsidian_macroCharacter": 0.45,
+      "obsidian_macroMovement": 0.55,
+      "obsidian_macroCoupling": 0.0,
+      "obsidian_macroSpace": 0.3
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.42,
+    "movement": 0.75,
+    "density": 0.55,
+    "space": 0.4,
+    "aggression": 0.5
+  }
+}

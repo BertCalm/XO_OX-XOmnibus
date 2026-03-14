@@ -29,23 +29,16 @@
   },
   "parameters": {
     "Odyssey": {
-      "noise_level": 0.4,
-      "noise_type": 1.0,
-      "osc_a_mode": 0.0,
-      "osc_a_shape": 0.0,
-      "osc_a_level": 0.25,
-      "filt_a_cutoff": 2500.0,
-      "filt_a_reso": 0.2,
-      "tidal_depth": 0.5,
-      "tidal_rate": 0.08,
-      "env_amp_attack": 1000.0,
-      "env_amp_sustain": 0.5,
-      "env_amp_release": 3000.0,
-      "reverb_enable": 1.0,
-      "reverb_size": 0.9,
-      "reverb_damping": 0.5,
-      "reverb_mix": 0.5,
-      "master_gain": -5.0
+      "drift_noiseLevel": 0.4,
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_oscA_level": 0.25,
+      "drift_filterCutoff": 2500.0,
+      "drift_filterReso": 0.2,
+      "drift_attack": 1000.0,
+      "drift_sustain": 0.5,
+      "drift_release": 3000.0,
+      "drift_level": -5.0
     }
   },
   "coupling": null,

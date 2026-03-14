@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Morph_Mono_Lead",
+  "name": "Littoral Migration",
   "mood": "Foundation",
   "engines": [
     "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH mono lead \u2014 medium morph, portamento enabled, musical glide rate.",
+  "description": "MORPH mono lead — medium morph, portamento enabled, musical glide rate.",
   "tags": [
     "morph",
     "lead",

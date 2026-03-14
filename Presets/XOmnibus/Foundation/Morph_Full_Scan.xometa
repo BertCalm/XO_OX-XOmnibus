@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Morph_Full_Scan",
+  "name": "Tidal Traverse",
   "mood": "Foundation",
   "engines": [
     "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH at mid-point with fast bloom \u2014 the wavetable actively scans through its positions.",
+  "description": "MORPH at mid-point with fast bloom — the wavetable actively scans through its positions.",
   "tags": [
     "morph",
     "scan",

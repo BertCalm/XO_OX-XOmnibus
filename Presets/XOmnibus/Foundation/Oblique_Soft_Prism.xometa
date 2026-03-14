@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Soft Prism",
+  "mood": "Foundation",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oblique at its most approachable — triangle wave, gentle fold, light prism delay, slow phaser. Works as a pad foundation for chord work. Velocity-to-fold is audible here: soft playing stays clean, harder hits add harmonic grit. Good for layering under melodic content. No macros active; FOLD is the first thing to reach for.",
+  "tags": [
+    "foundation",
+    "gentle",
+    "pad",
+    "triangle",
+    "layering"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "BOUNCE",
+    "COLOR",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.62,
+    "movement": 0.38,
+    "density": 0.40,
+    "space": 0.55,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_oscWave": 4,
+      "oblq_oscFold": 0.18,
+      "oblq_oscDetune": 8.0,
+      "oblq_level": 0.75,
+      "oblq_glide": 0.0,
+      "oblq_percClick": 0.35,
+      "oblq_percDecay": 0.003,
+      "oblq_bounceRate": 120.0,
+      "oblq_bounceGravity": 0.78,
+      "oblq_bounceDamp": 0.82,
+      "oblq_bounceCnt": 5.0,
+      "oblq_bounceSwing": 0.15,
+      "oblq_clickTone": 1800.0,
+      "oblq_filterCut": 3500.0,
+      "oblq_filterRes": 0.28,
+      "oblq_filterEnvDepth": 0.30,
+      "oblq_attack": 0.025,
+      "oblq_decay": 0.35,
+      "oblq_sustain": 0.75,
+      "oblq_release": 0.45,
+      "oblq_prismDelay": 120.0,
+      "oblq_prismSpread": 0.50,
+      "oblq_prismColor": 0.40,
+      "oblq_prismWidth": 0.70,
+      "oblq_prismFeedback": 0.30,
+      "oblq_prismMix": 0.38,
+      "oblq_prismDamp": 0.35,
+      "oblq_phaserRate": 0.35,
+      "oblq_phaserDepth": 0.45,
+      "oblq_phaserFeedback": 0.20,
+      "oblq_phaserMix": 0.30,
+      "oblq_macroFold": 0.0,
+      "oblq_macroBounce": 0.0,
+      "oblq_macroColor": 0.0,
+      "oblq_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

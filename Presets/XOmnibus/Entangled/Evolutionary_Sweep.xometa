@@ -32,12 +32,11 @@
   },
   "parameters": {
     "Odyssey": {
-      "drift_osc_a_mode": 1,
+      "drift_oscA_mode": 1,
       "drift_osc_b_mode": 2,
-      "drift_haze_amount": 0.3,
+      "drift_hazeAmount": 0.3,
       "drift_delay_enable": 1.0,
-      "drift_reverb_size": 0.7,
-      "drift_master_gain": -3.0
+      "drift_level": -3.0
     },
     "Organon": {
       "organon_metabolicRate": 0.4,

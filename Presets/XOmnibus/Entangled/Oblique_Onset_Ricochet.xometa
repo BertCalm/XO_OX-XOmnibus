@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "name": "Onset Ricochet",
+  "mood": "Entangled",
+  "engines": [
+    "Oblique",
+    "Onset"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ONSET drum hits trigger Oblique's bounce cascade via AmpToFilter coupling — every kick and snare fires a prismatic ricochet sequence. The bounce gravity and count shape the tail. Classic electronic drums plus spectral echo.",
+  "tags": [
+    "drums",
+    "coupled",
+    "bounce",
+    "rhythmic",
+    "entangled"
+  ],
+  "macroLabels": [
+    "GRIT",
+    "BOUNCE",
+    "PRISM",
+    "DRUMS"
+  ],
+  "couplingIntensity": "High",
+  "tempo": 120,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.45,
+    "movement": 0.85,
+    "density": 0.7,
+    "space": 0.5,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_oscWave": 1,
+      "oblq_oscFold": 0.4,
+      "oblq_oscDetune": 5.0,
+      "oblq_level": 0.65,
+      "oblq_glide": 0.0,
+      "oblq_percClick": 0.8,
+      "oblq_percDecay": 0.003,
+      "oblq_bounceRate": 60.0,
+      "oblq_bounceGravity": 0.6,
+      "oblq_bounceDamp": 0.7,
+      "oblq_bounceCnt": 10.0,
+      "oblq_bounceSwing": 0.15,
+      "oblq_clickTone": 4000.0,
+      "oblq_filterCut": 5500.0,
+      "oblq_filterRes": 0.4,
+      "oblq_attack": 0.001,
+      "oblq_decay": 0.25,
+      "oblq_sustain": 0.4,
+      "oblq_release": 0.15,
+      "oblq_prismDelay": 90.0,
+      "oblq_prismSpread": 0.55,
+      "oblq_prismColor": 0.65,
+      "oblq_prismWidth": 0.8,
+      "oblq_prismFeedback": 0.35,
+      "oblq_prismMix": 0.4,
+      "oblq_prismDamp": 0.25,
+      "oblq_phaserRate": 0.8,
+      "oblq_phaserDepth": 0.35,
+      "oblq_phaserFeedback": 0.2,
+      "oblq_phaserMix": 0.2
+    },
+    "Onset": {
+      "onset_v1_level": 0.85,
+      "onset_v1_tune": 0.0,
+      "onset_v1_decay": 0.5,
+      "onset_v2_level": 0.75,
+      "onset_v2_tune": 0.0,
+      "onset_v2_decay": 0.3,
+      "onset_v3_level": 0.6,
+      "onset_v4_level": 0.5,
+      "onset_macro_punch": 0.6,
+      "onset_macro_space": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Oblique",
+        "type": "AmpToFilter",
+        "amount": 0.7
+      },
+      {
+        "engineA": "Onset",
+        "engineB": "Oblique",
+        "type": "RhythmToBlend",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null
+}

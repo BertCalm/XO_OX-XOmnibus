@@ -11,6 +11,7 @@
 //==============================================================================
 
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/FastMath.h"
 #include <array>
 #include <vector>
@@ -724,6 +725,7 @@ public:
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
 
         arp.prepare (sampleRate);
+        aftertouch.prepare (sampleRate);  // D006: 5ms attack / 20ms release smoothing
 
         for (int v = 0; v < kMaxVoices; ++v)
         {
@@ -825,7 +827,8 @@ public:
         const float subSemitones = static_cast<float> ((subOct - 2) * 12); // index 0=-24, 1=-12, 2=0
 
         // Analog amount: mojo=0 → digital, mojo=1 → full analog drift
-        const float analogAmount = mojo;
+        // D006: non-const so aftertouch boost (computed post-MIDI-loop) can update it
+        float analogAmount = mojo;
 
         // Precompute group pan gains (constant-power)
         const float g2Pan = -0.3f * stereoWidth * 2.0f;
@@ -868,6 +871,9 @@ public:
                     arp.noteOff (msg.getNoteNumber());
                 else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                     arp.reset();
+                // D006: CC1 mod wheel → Mojo boost (classic Moog expression axis; sensitivity 0.5)
+                else if (msg.isController() && msg.getControllerNumber() == 1)
+                    modWheelValue = msg.getControllerValue() / 127.0f;
             }
 
             // Get arp events for this block
@@ -914,8 +920,25 @@ public:
                         }
                     }
                 }
+                // D006: channel pressure → aftertouch (applied to mojo control below)
+                else if (msg.isChannelPressure())
+                    aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
+                // D006: CC1 mod wheel → Mojo boost (classic Moog expression axis; sensitivity 0.5)
+                else if (msg.isController() && msg.getControllerNumber() == 1)
+                    modWheelValue = msg.getControllerValue() / 127.0f;
             }
         }
+
+        // D006: smooth aftertouch pressure and compute modulation value
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);  // channel-mode: voice 0 holds global value
+
+        // D006: aftertouch pushes mojo toward analog end of spectrum (sensitivity 0.3).
+        // Higher pressure = more analog drift + soft-clip saturation on all oscillators.
+        // This is Blessing B015 in action: the Mojo orthogonal axis becomes touch-sensitive.
+        // D006: mod wheel also boosts mojo up to +0.5 at full wheel (classic Moog expression; sensitivity 0.5)
+        const float effectiveMojo = clamp (mojo + atPressure * 0.3f + modWheelValue * 0.5f, 0.0f, 1.0f);
+        analogAmount = effectiveMojo;  // update after MIDI loop once atPressure is known
 
         // Consume coupling accumulators
         float pitchMod = externalPitchMod;
@@ -1446,6 +1469,12 @@ private:
     bool sustainPedalDown = false;
 
     FatArpeggiator arp;
+
+    // D006: CS-80-inspired poly aftertouch (channel pressure → mojo control)
+    PolyAftertouch aftertouch;
+
+    // D006: mod wheel — CC1 boosts Mojo (more analog drift + saturation with wheel; sensitivity 0.5)
+    float modWheelValue = 0.0f;
 
     float envelopeOutput = 0.0f;
     float externalPitchMod = 0.0f;

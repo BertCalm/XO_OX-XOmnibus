@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Velvet Slab",
+  "mood": "Flux",
+  "engines": [
+    "Oblong"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sub-heavy fuzz bass \u2014 Velvet Saw plus Sub Harmonic through full drive, LP filter half-open. Wall of fuzzy low-end.",
+  "tags": [
+    "bob",
+    "fuzz",
+    "bass",
+    "sub",
+    "distortion",
+    "flux"
+  ],
+  "macroLabels": [
+    "FUZZ DEPTH",
+    "SUB LEVEL",
+    "CUTOFF",
+    "GROWL"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.72,
+    "movement": 0.35,
+    "density": 0.55,
+    "space": 0.2,
+    "aggression": 0.87
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_oscA_wave": 2,
+      "bob_oscA_shape": 0.72,
+      "bob_oscA_tune": 0.0,
+      "bob_oscA_drift": 0.08,
+      "bob_oscB_wave": 3,
+      "bob_oscB_detune": 0.0,
+      "bob_oscB_blend": 0.75,
+      "bob_oscB_sync": 0,
+      "bob_oscB_fm": 0.0,
+      "bob_texMode": 1,
+      "bob_texLevel": 0.18,
+      "bob_texTone": 0.3,
+      "bob_texWidth": 0.5,
+      "bob_fltMode": 0,
+      "bob_fltCutoff": 1800.0,
+      "bob_fltReso": 0.68,
+      "bob_fltChar": 0.95,
+      "bob_fltDrive": 0.92,
+      "bob_fltEnvAmt": 0.4,
+      "bob_ampAttack": 0.005,
+      "bob_ampDecay": 0.45,
+      "bob_ampSustain": 0.72,
+      "bob_ampRelease": 0.35,
+      "bob_motAttack": 0.008,
+      "bob_motDecay": 0.25,
+      "bob_motSustain": 0.55,
+      "bob_motRelease": 0.3,
+      "bob_motDepth": 0.65,
+      "bob_lfo1Rate": 0.8,
+      "bob_lfo1Depth": 0.12,
+      "bob_lfo1Shape": 0,
+      "bob_lfo1Target": 0,
+      "bob_curMode": 1,
+      "bob_curAmount": 0.3,
+      "bob_bobMode": 0.65,
+      "bob_dustAmount": 0.62,
+      "bob_dustTone": 0.4,
+      "bob_level": 0.72,
+      "bob_voiceMode": 1,
+      "bob_glide": 0.08,
+      "bob_polyphony": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

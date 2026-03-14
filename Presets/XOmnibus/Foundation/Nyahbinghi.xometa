@@ -30,19 +30,19 @@
   },
   "parameters": {
     "Overdub": {
-      "osc_wave": 0.0,
-      "pitch_env_depth": 30.0,
-      "pitch_env_decay": 0.015,
-      "osc_sub_level": 0.5,
-      "filter_cutoff": 3000.0,
-      "env_attack": 0.001,
-      "env_decay": 0.3,
-      "env_sustain": 0.0,
-      "env_release": 0.15,
-      "reverb_size": 0.7,
-      "reverb_mix": 0.4,
-      "send_level": 0.6,
-      "return_level": 0.7
+      "dub_oscWave": 0.0,
+      "dub_pitchEnvDepth": 30.0,
+      "dub_pitchEnvDecay": 0.015,
+      "dub_subLevel": 0.5,
+      "dub_filterCutoff": 3000.0,
+      "dub_attack": 0.001,
+      "dub_decay": 0.3,
+      "dub_sustain": 0.0,
+      "dub_release": 0.15,
+      "dub_reverbSize": 0.7,
+      "dub_reverbMix": 0.4,
+      "dub_sendLevel": 0.6,
+      "dub_returnLevel": 0.7
     }
   },
   "coupling": null,

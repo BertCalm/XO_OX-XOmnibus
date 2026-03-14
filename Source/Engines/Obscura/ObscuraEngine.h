@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
 #include <array>
@@ -629,6 +630,7 @@ public:
         // Allocate output cache for coupling reads
         outputCacheLeft.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheRight.resize (static_cast<size_t> (maxBlockSize), 0.0f);
+        aftertouch.prepare (sampleRate);
 
         // Initialize all voices
         for (auto& voice : voices)
@@ -785,6 +787,7 @@ public:
         // Spring constant: quadratic mapping [0,1] -> [0, 0.95].
         // Quadratic curve gives finer control at low stiffness values,
         // where the timbral change is most audible.
+        // D006: may be recomputed below after MIDI loop if aftertouch is active.
         float springConstant = effectiveStiffness * effectiveStiffness
                              * kMaxSpringConstant;
 
@@ -837,6 +840,22 @@ public:
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
+            // D006: channel pressure → aftertouch (applied to spring stiffness below)
+            else if (msg.isChannelPressure())
+                aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
+        }
+
+        // D006: smooth aftertouch pressure and compute modulation value
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);
+
+        // D006: aftertouch adds up to +0.25 spring stiffness (sensitivity 0.25).
+        // Pressing harder increases stiffness — brighter timbre, shorter decay.
+        // springConstant must be recomputed here after atPressure is available.
+        if (atPressure > 0.001f)
+        {
+            effectiveStiffness = clamp (effectiveStiffness + atPressure * 0.25f, 0.0f, 1.0f);
+            springConstant = effectiveStiffness * effectiveStiffness * kMaxSpringConstant;
         }
 
         //----------------------------------------------------------------------
@@ -1818,6 +1837,9 @@ private:
     //-- Output cache for coupling reads ---------------------------------------
     std::vector<float> outputCacheLeft;
     std::vector<float> outputCacheRight;
+
+    // ---- D006 Aftertouch — pressure increases spring stiffness (physics coupling) ----
+    PolyAftertouch aftertouch;
 
     //-- Cached APVTS parameter pointers (ParamSnapshot pattern) ---------------
     // Core physics

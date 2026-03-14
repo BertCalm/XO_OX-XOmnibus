@@ -46,6 +46,7 @@
 //==============================================================================
 
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../Core/SharedTransport.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/EngineProfiler.h"
@@ -815,6 +816,7 @@ public:
 
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
+        aftertouch.prepare (sampleRate);
 
         profiler.prepare (sampleRate, maxBlockSize);
         profiler.setCpuBudgetFraction (0.22f); // Organon's 22% CPU budget allocation
@@ -857,11 +859,13 @@ public:
         // ---- ParamSnapshot: read all parameters once per block ----
         // This pattern (cache atomic loads at block boundaries) eliminates
         // per-sample atomic reads and ensures parameter coherence within a block.
-        const float metabolicRate    = paramMetabolicRate    ? paramMetabolicRate->load()    : 1.0f;
+        // (non-const: aftertouch will boost metabolicRate via lockedMetabolicRate below,
+        //  and signalFlux via D006 entropy acceleration below)
+        float metabolicRate          = paramMetabolicRate    ? paramMetabolicRate->load()    : 1.0f;
         const float enzymeSelectivity = paramEnzymeSelect   ? paramEnzymeSelect->load()     : 1000.0f;
         const float catalystDrive    = paramCatalystDrive    ? paramCatalystDrive->load()    : 0.5f;
         const float dampingParameter = paramDampingCoeff     ? paramDampingCoeff->load()     : 0.3f;
-        const float signalFlux       = paramSignalFlux       ? paramSignalFlux->load()       : 0.5f;
+        float signalFlux             = paramSignalFlux       ? paramSignalFlux->load()       : 0.5f;
         const float phasonShift      = paramPhasonShift      ? paramPhasonShift->load()      : 0.0f;
         const float isotopeBalance   = paramIsotopeBalance   ? paramIsotopeBalance->load()   : 0.5f;
         const float lockIn           = paramLockIn           ? paramLockIn->load()           : 0.0f;
@@ -881,7 +885,14 @@ public:
                 for (auto& voice : voices)
                     voice.resetVoice();
             }
+            // D006: channel pressure → aftertouch (applied to metabolic rate below)
+            else if (message.isChannelPressure())
+                aftertouch.setChannelPressure (message.getChannelPressureValue() / 127.0f);
         }
+
+        // D006: smooth aftertouch pressure and compute modulation value
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);
 
         // ---- LOCK-IN: Sync metabolic rate to SharedTransport tempo ----
         // lockIn 0.0 = free-running metabolic rate (the organism breathes at its own pace).
@@ -889,6 +900,19 @@ public:
         //              pulses in sync with the DAW tempo — useful for rhythmic textures).
         // We find the tempo subdivision closest to the current metabolic rate and
         // crossfade between the free rate and the quantized rate.
+        // D006: aftertouch accelerates metabolic rate — sensitivity 0.25 × range 9.9
+        // Full pressure adds up to +2.5 Hz metabolic rate (from 1.0 Hz default toward faster feeding)
+        metabolicRate = std::clamp (metabolicRate + atPressure * 0.25f * 9.9f, 0.1f, 10.0f);
+
+        // D006: aftertouch increases entropic free energy — sensitivity 0.2
+        // Channel pressure increases the signal flux feeding the EntropyAnalyzer: the organism
+        // ingests more signal per cycle, its observed entropy rises above what it predicted,
+        // prediction error grows, and the VFE metabolism accelerates its belief updates.
+        // Semantically: the organism feels more uncertain, its predictions fail more often,
+        // and it generates more surprise. The metabolism accelerates.
+        // At default signalFlux 0.5, full pressure reaches 0.7 — well within the [0,1] range.
+        signalFlux = std::clamp (signalFlux + atPressure * 0.2f, 0.0f, 1.0f);
+
         float lockedMetabolicRate = metabolicRate;
         float lockInTransportPhase = 0.0f;
         if (lockIn > 0.001f && sharedTransport != nullptr)
@@ -1445,6 +1469,12 @@ private:
 
     // Performance profiler
     EngineProfiler profiler;
+
+    // ---- D006 Aftertouch — dual application: metabolic rate + entropy (signal flux) ----
+    // 1. metabolicRate: sensitivity 0.25 × 9.9 Hz — organism feeds faster under pressure
+    // 2. signalFlux: sensitivity 0.2 — more signal enters catabolism, entropy rises,
+    //    prediction error increases, VFE surprise accelerates belief updates
+    PolyAftertouch aftertouch;
 
     // Cached parameter pointers (set by attachParameters, read per block)
     std::atomic<float>* paramMetabolicRate    = nullptr;

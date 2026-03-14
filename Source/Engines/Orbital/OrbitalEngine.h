@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/Effects/Saturator.h"
@@ -260,6 +261,8 @@ public:
         outputCacheL.assign (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.assign (static_cast<size_t> (maxBlockSize), 0.0f);
 
+        aftertouch.prepare (sampleRate);
+
         couplingAudioBuffer.setSize (2, maxBlockSize, false, true, false);
         couplingRingBuffer .setSize (2, maxBlockSize, false, true, false);
 
@@ -359,6 +362,7 @@ public:
         p_filterCutoff       = apvts.getRawParameterValue ("orb_filterCutoff");
         p_filterResonance    = apvts.getRawParameterValue ("orb_filterReso");
         p_filterType         = apvts.getRawParameterValue ("orb_filterType");
+        p_filterEnvDepth     = apvts.getRawParameterValue ("orb_filterEnvDepth");
         p_stereoSpread       = apvts.getRawParameterValue ("orb_stereoSpread");
         p_saturation         = apvts.getRawParameterValue ("orb_saturation");
         p_ampAttack          = apvts.getRawParameterValue ("orb_ampAttack");
@@ -370,6 +374,7 @@ public:
         p_macroEvolve        = apvts.getRawParameterValue ("orb_macroEvolve");
         p_macroCoupling      = apvts.getRawParameterValue ("orb_macroCoupling");
         p_macroSpace         = apvts.getRawParameterValue ("orb_macroSpace");
+        p_voiceMode          = apvts.getRawParameterValue ("orb_voiceMode");
     }
 
 
@@ -517,6 +522,9 @@ public:
         const float ampSustain        = p_ampSustain->load();
         const float ampRelease        = p_ampRelease->load();
         const float volume            = p_volume->load();
+        // Round 11D: voice mode (0=Poly, 1=Mono, 2=Legato)
+        const int   voiceMode         = (p_voiceMode != nullptr)
+                                        ? static_cast<int> (p_voiceMode->load()) : 0;
 
         //-- Apply macros -------------------------------------------------------
         applyMacros (brightness, oddEven, morphPosition, stereoSpread,
@@ -580,22 +588,73 @@ public:
         externalFmMod = externalDecayMod = externalBlendMod = 0.0f;
 
         // D005 fix: minimal LFO added — 0.03 Hz spectral morph breathing (±0.05)
-        spectralDriftPhase += (0.03 * juce::MathConstants<double>::twoPi) / cachedSampleRate;
+        // D006: mod wheel increases drift rate up to +0.3 Hz at full wheel (sensitivity 0.3)
+        const double spectralDriftRate = 0.03 + modWheelValue * 0.3;
+        spectralDriftPhase += (spectralDriftRate * juce::MathConstants<double>::twoPi) / cachedSampleRate;
         if (spectralDriftPhase >= juce::MathConstants<double>::twoPi) spectralDriftPhase -= juce::MathConstants<double>::twoPi;
-        const float effectiveMorph  = juce::jlimit (0.0f, 1.0f,
+        // D006: aftertouch added below — atPressure resolved after MIDI loop
+        float effectiveMorph  = juce::jlimit (0.0f, 1.0f,
             morphPosition + morphOffset + 0.05f * (float)std::sin(spectralDriftPhase));
+        // D001: compute peak velocity × envLevel across all active voices this block.
+        // The post-mix SVF filter receives a boost proportional to how hard the notes
+        // are playing — louder/harder hits open the filter, satisfying D001 (velocity
+        // must shape timbre). kFilterEnvMaxHz = 7000 Hz sweep range.
+        static constexpr float kFilterEnvMaxHz = 7000.0f;
+        const float filterEnvDepth = (p_filterEnvDepth != nullptr) ? p_filterEnvDepth->load() : 0.25f;
+        float peakVelEnv = 0.0f;
+        for (const auto& voice : voices)
+        {
+            if (voice.active)
+                peakVelEnv = std::max (peakVelEnv, voice.envLevel * voice.velocity);
+        }
+        const float filterEnvBoost = filterEnvDepth * peakVelEnv * kFilterEnvMaxHz;
+
         const float effectiveCutoff = juce::jlimit (20.0f, 20000.0f,
-                                                    filterCutoff + filterOffset);
+                                                    filterCutoff + filterOffset + filterEnvBoost);
 
         //-- Process MIDI -------------------------------------------------------
         for (const auto& meta : midi)
         {
             auto message = meta.getMessage();
             if (message.isNoteOn())
-                triggerVoice (message.getNoteNumber(), message.getFloatVelocity(),
-                              inharmonicity, fmRatio, stereoSpread,
-                              ampAttack, ampDecay, ampSustain, ampRelease,
-                              groupAttackTimes, groupDecayTimes);
+            {
+                // Round 11D: Legato mode — if a voice is gate-open (active and not
+                // in release), slide its pitch to the new note without retriggering
+                // the envelope. This preserves the spectral bloom during legato lines.
+                // In Poly (0) or Mono (1), always retrigger (triggerVoice path).
+                // In Legato (2), retrigger only if no gate-open voice exists.
+                if (voiceMode == 2) // Legato
+                {
+                    bool legatoHandled = false;
+                    for (auto& voice : voices)
+                    {
+                        if (voice.active
+                            && voice.envStage != OrbitalVoice::EnvStage::Release
+                            && voice.envStage != OrbitalVoice::EnvStage::Off)
+                        {
+                            // Slide pitch: recompute phase increments for new note.
+                            // Phase accumulators are preserved — no reset — so the
+                            // partial waves continue unbroken (legato character).
+                            legatoSlideVoice (voice, message.getNoteNumber(),
+                                              inharmonicity, fmRatio);
+                            legatoHandled = true;
+                            break;
+                        }
+                    }
+                    if (!legatoHandled)
+                        triggerVoice (message.getNoteNumber(), message.getFloatVelocity(),
+                                      inharmonicity, fmRatio, stereoSpread,
+                                      ampAttack, ampDecay, ampSustain, ampRelease,
+                                      groupAttackTimes, groupDecayTimes);
+                }
+                else
+                {
+                    triggerVoice (message.getNoteNumber(), message.getFloatVelocity(),
+                                  inharmonicity, fmRatio, stereoSpread,
+                                  ampAttack, ampDecay, ampSustain, ampRelease,
+                                  groupAttackTimes, groupDecayTimes);
+                }
+            }
             else if (message.isNoteOff())
                 noteOff (message.getNoteNumber());
             else if (message.isAllNotesOff() || message.isAllSoundOff())
@@ -604,7 +663,19 @@ public:
                     voice.active   = false;
                     voice.envStage = OrbitalVoice::EnvStage::Off;
                 }
+            // D006: channel pressure → aftertouch (applied to morph position below)
+            else if (message.isChannelPressure())
+                aftertouch.setChannelPressure (message.getChannelPressureValue() / 127.0f);
+            // D006: CC1 mod wheel → spectral morph drift rate (faster drift with wheel; sensitivity 0.3)
+            else if (message.isController() && message.getControllerNumber() == 1)
+                modWheelValue = message.getControllerValue() / 127.0f;
         }
+
+        // D006: smooth aftertouch and apply to morph — pressure pushes toward profile B
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);
+        // Sensitivity 0.3: full pressure moves morph up to +0.3 toward profile B
+        effectiveMorph = juce::jlimit (0.0f, 1.0f, effectiveMorph + atPressure * 0.3f);
 
         //-- Cache filter coefficients once per block ---------------------------
         // Computing filter coefficients per block (not per sample) saves ~3%
@@ -990,6 +1061,46 @@ private:
         }
     }
 
+    // Round 11D: legatoSlideVoice — retarget pitch without envelope retrigger.
+    //
+    // Updates fundamentalHz and recomputes all 64 phase increments for the new note.
+    // Phase accumulators are deliberately NOT reset — the partial waves continue
+    // unbroken, creating a smooth "glide" from one pitch to another rather than
+    // a percussive attack. This is the additive synthesis equivalent of portamento:
+    // the spectrum transforms continuously rather than snapping.
+    //
+    // The inharmonicity and fmRatio values are unchanged (inherited from the
+    // previous renderBlock ParamSnapshot), keeping the spectral character stable.
+    void legatoSlideVoice (OrbitalVoice& voice, int newNote,
+                           float inharmonicity, float fmRatio) noexcept
+    {
+        voice.noteNumber    = newNote;
+        voice.fundamentalHz = midiToFreq (newNote);
+        lastFundamentalHz   = voice.fundamentalHz;
+        formantDirty        = true;   // rebuild formant for new fundamental
+
+        const float stiffnessCoeff = inharmonicity * 0.001f;
+        constexpr double twoPi = 6.283185307179586;
+        const double inverseSampleRate = 1.0 / cachedSampleRate;
+
+        for (int partialIdx = 0; partialIdx < kNumPartials; ++partialIdx)
+        {
+            const float partialNumber = static_cast<float> (partialIdx + 1);
+            const float inharmonicRatio = std::sqrt (1.0f + stiffnessCoeff
+                                                           * partialNumber
+                                                           * partialNumber);
+            const double partialFreq = static_cast<double> (voice.fundamentalHz
+                                                           * partialNumber
+                                                           * inharmonicRatio);
+            voice.phaseIncrement[partialIdx]   = static_cast<float> (
+                partialFreq * twoPi * inverseSampleRate);
+            voice.fmPhaseIncrement[partialIdx] = static_cast<float> (
+                partialFreq * static_cast<double> (fmRatio) * twoPi * inverseSampleRate);
+            // NOTE: voice.phase[partialIdx] and voice.fmPhase[partialIdx] are intentionally
+            // left unchanged — continuous phase = smooth legato slide, no click.
+        }
+    }
+
     int findFreeVoice()
     {
         // First pass: find an inactive voice
@@ -1327,6 +1438,13 @@ private:
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             P { "orb_filterCutoff", 1 }, "Orbital Filter Cutoff",
             NR (20.0f, 20000.0f, 0.1f, 0.3f), 20000.0f));
+        // D001: filter envelope depth — velocity × envelope level sweeps filter cutoff.
+        // Default 0.25: at full velocity and attack peak, adds +1750 Hz above base cutoff.
+        // Connects Orbital's group-envelope system to spectral brightness: harder hits
+        // open the post-SVF filter, mapping touch dynamics to timbral character.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            P { "orb_filterEnvDepth", 1 }, "Orbital Filter Env Depth",
+            NR (0.0f, 1.0f, 0.01f), 0.25f));
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             P { "orb_filterReso", 1 }, "Orbital Filter Reso",
             NR (0.0f, 1.0f, 0.01f), 0.0f));
@@ -1360,6 +1478,16 @@ private:
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             P { "orb_volume", 1 }, "Orbital Volume",
             NR (0.0f, 1.0f, 0.01f), 0.8f));
+
+        //-- Voice mode --------------------------------------------------------
+        // Round 11D: voice mode for legato playing.
+        // 0=Poly (default — always retrigger envelope, full polyphony),
+        // 1=Mono (single voice, always retrigger),
+        // 2=Legato (single voice, suppress retrigger when gate open — slide pitch).
+        // Default Poly preserves existing behavior for all existing presets.
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            P { "orb_voiceMode", 1 }, "Orbital Voice Mode",
+            juce::StringArray { "Poly", "Mono", "Legato" }, 0));
 
         //-- Macros (4 performance knobs) ---------------------------------------
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
@@ -1396,6 +1524,12 @@ private:
     //==========================================================================
     //  DSP STATE
     //==========================================================================
+
+    // D006: aftertouch — pressure increases morph position (push toward state B)
+    PolyAftertouch aftertouch;
+
+    // D006: mod wheel — CC1 increases spectral morph drift rate (faster animated texture; sensitivity 0.3)
+    float modWheelValue = 0.0f;
 
     //-- Sample rate (cached at prepare()) --------------------------------------
     double cachedSampleRate      = 44100.0;
@@ -1465,6 +1599,7 @@ private:
     std::atomic<float>* p_filterCutoff    = nullptr;
     std::atomic<float>* p_filterResonance = nullptr;
     std::atomic<float>* p_filterType      = nullptr;
+    std::atomic<float>* p_filterEnvDepth  = nullptr;   // D001: filter env depth (orb_filterEnvDepth)
     std::atomic<float>* p_stereoSpread    = nullptr;
     std::atomic<float>* p_saturation      = nullptr;
     std::atomic<float>* p_ampAttack       = nullptr;
@@ -1476,6 +1611,8 @@ private:
     std::atomic<float>* p_macroEvolve     = nullptr;
     std::atomic<float>* p_macroCoupling   = nullptr;
     std::atomic<float>* p_macroSpace      = nullptr;
+    // Round 11D: voice mode (0=Poly, 1=Mono, 2=Legato)
+    std::atomic<float>* p_voiceMode       = nullptr;
 };
 
 } // namespace xomnibus

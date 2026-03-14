@@ -1,17 +1,33 @@
 {
   "schema_version": 1,
-  "name": "Velvet Sub",
+  "name": "Triangle Abyss",
   "mood": "Foundation",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Deep sub bass with triangle belly. Minimal processing, maximum low-end weight.",
-  "tags": ["sub", "deep", "clean", "weight"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "SPACE"],
+  "tags": [
+    "sub",
+    "deep",
+    "clean",
+    "weight"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-11",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overbite": {
       "poss_oscAWave": 1,
@@ -45,5 +61,12 @@
   },
   "coupling": null,
   "sequencer": null,
-  "dna": {"brightness": 0.05, "warmth": 0.85, "movement": 0.0, "density": 0.7, "space": 0.05, "aggression": 0.0}
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.85,
+    "movement": 0.0,
+    "density": 0.7,
+    "space": 0.05,
+    "aggression": 0.0
+  }
 }

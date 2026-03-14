@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Bob_Duo_Chord",
+  "name": "Two Currents Meeting",
   "mood": "Foundation",
   "engines": [
     "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB duo chord \u2014 two oscillators perfectly detuned for warmth. Foundation chord voice.",
+  "description": "BOB duo chord — two oscillators perfectly detuned for warmth. Foundation chord voice.",
   "tags": [
     "bob",
     "duo",

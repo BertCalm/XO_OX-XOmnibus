@@ -28,16 +28,16 @@
   },
   "parameters": {
     "Overdub": {
-      "osc_wave": 0.0,
-      "lfo_rate": 3.0,
-      "lfo_depth": 0.8,
-      "lfo_dest": 0.0,
-      "filter_cutoff": 6000.0,
-      "env_attack": 0.01,
-      "env_sustain": 1.0,
-      "delay_time": 0.25,
-      "delay_feedback": 0.7,
-      "send_level": 0.5
+      "dub_oscWave": 0.0,
+      "dub_lfoRate": 3.0,
+      "dub_lfoDepth": 0.8,
+      "dub_lfoDest": 0.0,
+      "dub_filterCutoff": 6000.0,
+      "dub_attack": 0.01,
+      "dub_sustain": 1.0,
+      "dub_delayTime": 0.25,
+      "dub_delayFeedback": 0.7,
+      "dub_sendLevel": 0.5
     }
   },
   "coupling": null,

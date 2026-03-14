@@ -396,7 +396,7 @@ public:
         // Generate cover art (procedural, engine-specific)
         auto coverEngine = config.coverEngine.isNotEmpty()
             ? config.coverEngine
-            : (presets[0].engines.empty() ? juce::String("DEFAULT")
+            : (presets[0].engines.isEmpty() ? juce::String("DEFAULT")
                : presets[0].engines[0]);
 
         auto coverResult = XPNCoverArt::generate(
@@ -457,7 +457,7 @@ public:
             result.errors.add("Preset name is empty");
         if (preset.name.length() > 30)
             result.warnings.add("Preset name exceeds 30 chars: " + preset.name);
-        if (preset.engines.empty())
+        if (preset.engines.isEmpty())
             result.errors.add("No engines specified");
         if (preset.mood.isEmpty())
             result.warnings.add("No mood category set");

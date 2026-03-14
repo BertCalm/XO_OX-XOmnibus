@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "name": "Oblique Maximum State",
+  "mood": "Entangled",
+  "engines": [
+    "Oblique",
+    "OddfeliX",
+    "Overdub"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oblique at total saturation — full wavefold, maximum prism feedback, aggressive bounce clicks, OddfeliX transient snap, Overdub dub reverb tail. Every DNA dimension pushed toward maximum simultaneously. DNA gap-fill: MAX EVERYTHING corner for Oblique.",
+  "tags": [
+    "maximal",
+    "entangled",
+    "full",
+    "aggressive",
+    "saturated"
+  ],
+  "macroLabels": [
+    "PRISM FIRE",
+    "BOUNCE",
+    "SNAP",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": 110,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.82,
+    "movement": 0.92,
+    "density": 0.90,
+    "space": 0.88,
+    "aggression": 0.90
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_oscWave": 3,
+      "oblq_oscFold": 0.82,
+      "oblq_oscDetune": 18.0,
+      "oblq_level": 0.80,
+      "oblq_glide": 0.08,
+      "oblq_percClick": 0.88,
+      "oblq_percDecay": 0.002,
+      "oblq_bounceRate": 55.0,
+      "oblq_bounceGravity": 0.75,
+      "oblq_bounceDamp": 0.55,
+      "oblq_bounceCnt": 14.0,
+      "oblq_bounceSwing": 0.12,
+      "oblq_clickTone": 7000.0,
+      "oblq_filterCut": 9000.0,
+      "oblq_filterRes": 0.62,
+      "oblq_attack": 0.001,
+      "oblq_decay": 0.2,
+      "oblq_sustain": 0.55,
+      "oblq_release": 0.25,
+      "oblq_prismDelay": 65.0,
+      "oblq_prismSpread": 0.88,
+      "oblq_prismColor": 0.88,
+      "oblq_prismWidth": 0.95,
+      "oblq_prismFeedback": 0.80,
+      "oblq_prismMix": 0.60,
+      "oblq_prismDamp": 0.12,
+      "oblq_phaserRate": 1.8,
+      "oblq_phaserDepth": 0.75,
+      "oblq_phaserFeedback": 0.55,
+      "oblq_phaserMix": 0.5
+    },
+    "OddfeliX": {
+      "snap_snap": 0.90,
+      "snap_decay": 0.10,
+      "snap_filterCutoff": 8000.0,
+      "snap_filterReso": 0.6,
+      "snap_level": 0.72
+    },
+    "Overdub": {
+      "dub_oscWave": 1,
+      "dub_oscOctave": -1,
+      "dub_oscTune": 0.0,
+      "dub_oscPwm": 0.5,
+      "dub_subLevel": 0.75,
+      "dub_noiseLevel": 0.0,
+      "dub_drift": 0.05,
+      "dub_level": 0.72,
+      "dub_filterMode": 0,
+      "dub_filterCutoff": 600.0,
+      "dub_filterReso": 0.3,
+      "dub_filterEnvAmt": 0.4,
+      "dub_attack": 0.005,
+      "dub_decay": 0.5,
+      "dub_sustain": 0.65,
+      "dub_release": 0.4,
+      "dub_pitchEnvDepth": 5.0,
+      "dub_pitchEnvDecay": 0.03,
+      "dub_lfoRate": 0.8,
+      "dub_lfoDepth": 0.2,
+      "dub_lfoDest": 1,
+      "dub_sendLevel": 0.75,
+      "dub_returnLevel": 0.80,
+      "dub_dryLevel": 0.7,
+      "dub_driveAmount": 3.5,
+      "dub_delayTime": 0.5,
+      "dub_delayFeedback": 0.60,
+      "dub_delayWear": 0.4,
+      "dub_delayWow": 0.12,
+      "dub_delayMix": 0.45,
+      "dub_reverbSize": 0.85,
+      "dub_reverbDamp": 0.35,
+      "dub_reverbMix": 0.55,
+      "dub_voiceMode": 0,
+      "dub_glide": 0.0,
+      "dub_polyphony": 2
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oblique",
+        "type": "AmpToFilter",
+        "amount": 0.65
+      },
+      {
+        "engineA": "Oblique",
+        "engineB": "Overdub",
+        "type": "AudioToFM",
+        "amount": 0.4
+      },
+      {
+        "engineA": "Overdub",
+        "engineB": "OddfeliX",
+        "type": "RhythmToBlend",
+        "amount": 0.3
+      },
+      {
+        "engineA": "Oblique",
+        "engineB": "OddfeliX",
+        "type": "RhythmToBlend",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null
+}

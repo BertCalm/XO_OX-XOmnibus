@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Drift_Lead_Classic",
+  "name": "Voyager Signal",
   "mood": "Foundation",
   "engines": [
     "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT classic analog lead \u2014 simple waveforms, filter envelope, vibrato. Musical.",
+  "description": "DRIFT classic analog lead — simple waveforms, filter envelope, vibrato. Musical.",
   "tags": [
     "drift",
     "lead",

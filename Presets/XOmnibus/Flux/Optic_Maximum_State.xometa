@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "name": "Optic Maximum State",
+  "mood": "Flux",
+  "engines": [
+    "Optic",
+    "Overdub",
+    "OddfeliX"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPTIC at full power — maximum reactivity, full brightness, extreme density through 3-engine stack. AutoPulse drives Overdub's deep dub bass while OddfeliX fires rapid-fire snap transients. Every DNA dimension pushed high simultaneously. DNA gap-fill: MAX EVERYTHING corner for Optic.",
+  "tags": [
+    "maximal",
+    "bright",
+    "dense",
+    "aggressive",
+    "autopulse"
+  ],
+  "macroLabels": [
+    "PULSE RATE",
+    "BRIGHTNESS",
+    "DENSITY",
+    "AGGRESSION"
+  ],
+  "couplingIntensity": "High",
+  "tempo": 135,
+  "dna": {
+    "brightness": 0.87,
+    "warmth": 0.85,
+    "movement": 0.93,
+    "density": 0.90,
+    "space": 0.86,
+    "aggression": 0.88
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 1.0,
+      "optic_inputGain": 2.5,
+      "optic_autoPulse": 1,
+      "optic_pulseRate": 3.2,
+      "optic_pulseShape": 0.1,
+      "optic_pulseSwing": 0.2,
+      "optic_pulseEvolve": 0.85,
+      "optic_pulseSubdiv": 0.8,
+      "optic_pulseAccent": 0.95,
+      "optic_modDepth": 0.9,
+      "optic_modMixPulse": 0.85,
+      "optic_modMixSpec": 0.7,
+      "optic_vizMode": 2,
+      "optic_vizFeedback": 0.9,
+      "optic_vizSpeed": 2.0,
+      "optic_vizIntensity": 1.0
+    },
+    "Overdub": {
+      "dub_oscWave": 2,
+      "dub_oscOctave": -1,
+      "dub_oscTune": 0.0,
+      "dub_oscPwm": 0.7,
+      "dub_subLevel": 0.9,
+      "dub_noiseLevel": 0.15,
+      "dub_drift": 0.08,
+      "dub_level": 0.85,
+      "dub_filterMode": 0,
+      "dub_filterCutoff": 1200.0,
+      "dub_filterReso": 0.55,
+      "dub_filterEnvAmt": 0.6,
+      "dub_attack": 0.002,
+      "dub_decay": 0.35,
+      "dub_sustain": 0.6,
+      "dub_release": 0.3,
+      "dub_pitchEnvDepth": 8.0,
+      "dub_pitchEnvDecay": 0.025,
+      "dub_lfoRate": 1.2,
+      "dub_lfoDepth": 0.35,
+      "dub_lfoDest": 1,
+      "dub_sendLevel": 0.65,
+      "dub_returnLevel": 0.7,
+      "dub_dryLevel": 0.8,
+      "dub_driveAmount": 4.5,
+      "dub_delayTime": 0.333,
+      "dub_delayFeedback": 0.55,
+      "dub_delayWear": 0.35,
+      "dub_delayWow": 0.15,
+      "dub_delayMix": 0.4,
+      "dub_reverbSize": 0.75,
+      "dub_reverbDamp": 0.4,
+      "dub_reverbMix": 0.5,
+      "dub_voiceMode": 1,
+      "dub_glide": 0.0,
+      "dub_polyphony": 0
+    },
+    "OddfeliX": {
+      "snap_snap": 0.88,
+      "snap_decay": 0.08,
+      "snap_filterCutoff": 10000.0,
+      "snap_filterReso": 0.65,
+      "snap_level": 0.75
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Overdub",
+        "type": "AmpToFilter",
+        "amount": 0.75
+      },
+      {
+        "engineA": "Optic",
+        "engineB": "OddfeliX",
+        "type": "RhythmToBlend",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Overdub",
+        "engineB": "Optic",
+        "type": "AudioToFM",
+        "amount": 0.45
+      },
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Overdub",
+        "type": "AmpToFilter",
+        "amount": 0.4
+      }
+    ]
+  },
+  "sequencer": null
+}

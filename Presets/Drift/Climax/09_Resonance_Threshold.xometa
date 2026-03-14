@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "name": "Resonance Threshold",
+  "mood": "Prism",
+  "engines": ["Odyssey"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Built around the filter's self-oscillation edge — resonance sits at 0.62, just below the feedback threshold, giving the pad a singing quality that borders on instability. At JOURNEY 0.43 this is already vivid and present. The Climax at 0.7 nudges the resonance past the edge: the filter begins to sing on its own, harmonics compound, and the 2-second bloom transforms a controlled sound into pure resonant fever.",
+  "tags": ["climax", "demo", "resonant", "filter", "self-oscillation", "journey", "threshold", "prism", "harmonic", "intense"],
+  "macroLabels": ["JOURNEY", "BREATHE", "BLOOM", "FRACTURE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "macroJourney": 0.43,
+  "climaxThreshold": 0.7,
+  "bloomTime": 2.0,
+  "modRouting": [
+    {
+      "source": "aftertouch",
+      "destination": "macroJourney",
+      "amount": 0.63,
+      "curve": "exponential",
+      "note": "Exponential curve keeps the resonance manageable until you commit — then it accelerates toward the edge quickly"
+    }
+  ],
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 0,
+      "drift_oscA_shape": 2,
+      "drift_oscA_tune": 0.0,
+      "drift_oscA_level": 0.55,
+      "drift_oscA_detune": 0.2,
+      "drift_oscA_pw": 0.4,
+      "drift_oscA_fmDepth": 0.0,
+      "drift_oscB_mode": 0,
+      "drift_oscB_shape": 1,
+      "drift_oscB_tune": -7.0,
+      "drift_oscB_level": 0.35,
+      "drift_oscB_detune": 0.25,
+      "drift_oscB_pw": 0.5,
+      "drift_oscB_fmDepth": 0.0,
+      "drift_subLevel": 0.15,
+      "drift_noiseLevel": 0.05,
+      "drift_hazeAmount": 0.22,
+      "drift_filterCutoff": 2500.0,
+      "drift_filterReso": 0.62,
+      "drift_filterSlope": 0,
+      "drift_filterEnvAmt": 0.15,
+      "drift_formantMorph": 0.5,
+      "drift_formantMix": 0.0,
+      "drift_shimmerAmount": 0.3,
+      "drift_shimmerTone": 0.5,
+      "drift_attack": 0.3,
+      "drift_decay": 2.5,
+      "drift_sustain": 0.65,
+      "drift_release": 2.0,
+      "drift_lfoRate": 0.25,
+      "drift_lfoDepth": 0.1,
+      "drift_lfoDest": 1,
+      "drift_driftDepth": 0.28,
+      "drift_driftRate": 0.1,
+      "drift_level": 0.68,
+      "drift_voiceMode": 0,
+      "drift_glide": 0.0,
+      "drift_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.4,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.45
+  }
+}

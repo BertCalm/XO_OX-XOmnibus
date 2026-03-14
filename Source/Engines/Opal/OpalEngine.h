@@ -1,5 +1,7 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../Core/AudioRingBuffer.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/FastMath.h"
@@ -32,6 +34,7 @@ namespace OpalParam {
     inline constexpr const char* OSC2_MIX        = "opal_osc2Mix";
     inline constexpr const char* OSC2_DETUNE     = "opal_osc2Detune";
     inline constexpr const char* COUPLING_LEVEL  = "opal_couplingLevel";
+    inline constexpr const char* EXTERNAL_MIX    = "opal_externalMix";  // 0=internal only, 1=external AudioToBuffer only
     // Grain Scheduler (7-14)
     inline constexpr const char* GRAIN_SIZE      = "opal_grainSize";
     inline constexpr const char* DENSITY         = "opal_density";
@@ -1015,15 +1018,28 @@ public:
         scatterReverb.prepare (sampleRate);
         stereoDelay.prepare (sampleRate);
         finish.reset();
+        aftertouch.prepare (sampleRate);
 
         // Pre-allocate work buffers
         workBufL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         workBufR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         couplingBufL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         couplingBufR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
+        outputCacheLeft.resize (static_cast<size_t> (maxBlockSize), 0.0f);
+        outputCacheRight.resize (static_cast<size_t> (maxBlockSize), 0.0f);
 
         for (auto& s : couplingBufL) s = 0.0f;
         for (auto& s : couplingBufR) s = 0.0f;
+
+        // AudioToBuffer: 4 per-slot ring buffers (~186ms each at 44.1kHz).
+        // Using kOpalExternalBufferSeconds (not kOpalBufferSeconds) so external
+        // inputs get a smaller dedicated window separate from the 4s grain buffer.
+        for (auto& rb : inputBuffers)
+            rb.prepare (static_cast<int> (sampleRate), kOpalExternalBufferSeconds);
+
+        // Per-block external audio cache (blended in renderBlock grain source path)
+        extAudioBufL.assign (static_cast<size_t> (maxBlockSize), 0.0f);
+        extAudioBufR.assign (static_cast<size_t> (maxBlockSize), 0.0f);
     }
 
     void releaseResources() override
@@ -1049,6 +1065,8 @@ public:
         extFreezeMod = 0.0f;
         lastSampleL = 0.0f;
         lastSampleR = 0.0f;
+        for (auto& s : extAudioBufL) s = 0.0f;
+        for (auto& s : extAudioBufR) s = 0.0f;
     }
 
     //-- Parameters ------------------------------------------------------------
@@ -1106,6 +1124,13 @@ public:
 
         params.push_back (std::make_unique<FloatParam> (
             PID { OpalParam::COUPLING_LEVEL, 1 }, "Opal Coupling Level",
+            NR (0.0f, 1.0f, 0.01f), 0.0f));
+
+        // External mix: blend between internal grain source and AudioToBuffer input.
+        // 0.0 = internal oscillator/coupling only; 1.0 = external ring buffer only.
+        // Blends continuously so presets can automate the cross-fade.
+        params.push_back (std::make_unique<FloatParam> (
+            PID { OpalParam::EXTERNAL_MIX, 1 }, "Opal External Mix",
             NR (0.0f, 1.0f, 0.01f), 0.0f));
 
         //==== 2. GRAIN SCHEDULER ====
@@ -1402,6 +1427,7 @@ public:
         pOsc2Mix        = apvts.getRawParameterValue (OpalParam::OSC2_MIX);
         pOsc2Detune     = apvts.getRawParameterValue (OpalParam::OSC2_DETUNE);
         pCouplingLevel  = apvts.getRawParameterValue (OpalParam::COUPLING_LEVEL);
+        pExternalMix    = apvts.getRawParameterValue (OpalParam::EXTERNAL_MIX);
         // Grain Scheduler
         pGrainSize      = apvts.getRawParameterValue (OpalParam::GRAIN_SIZE);
         pDensity        = apvts.getRawParameterValue (OpalParam::DENSITY);
@@ -1501,8 +1527,17 @@ public:
 
     //-- Coupling --------------------------------------------------------------
 
-    float getSampleForCoupling (int channel, int /*sampleIndex*/) const override
+    float getSampleForCoupling (int channel, int sampleIndex) const override
     {
+        // Return the per-sample cached output so tight coupling (AudioToFM,
+        // AudioToRing, etc.) sees the correct per-position value, not a stale
+        // end-of-block scalar.
+        auto idx = static_cast<size_t> (sampleIndex);
+        if (channel == 0 && idx < outputCacheLeft.size())
+            return outputCacheLeft[idx];
+        if (channel == 1 && idx < outputCacheRight.size())
+            return outputCacheRight[idx];
+        // Fallback: honest scalar — last rendered sample (e.g. block-level coupling)
         return (channel == 0) ? lastSampleL : lastSampleR;
     }
 
@@ -1547,6 +1582,61 @@ public:
         }
     }
 
+    //-- AudioToBuffer public API ----------------------------------------------
+    //
+    // getGrainBuffer(slot) — called by MegaCouplingMatrix::processAudioRoute()
+    // to obtain the per-slot ring buffer into which it will push audio.
+    // slot 0–3 correspond to MegaCouplingMatrix::MaxSlots source positions.
+    // Returns nullptr if slot is out of range (defensive guard).
+    //
+    AudioRingBuffer* getGrainBuffer (int slot) noexcept
+    {
+        if (slot < 0 || slot >= kOpalInputSlots) return nullptr;
+        return &inputBuffers[static_cast<size_t>(slot)];
+    }
+
+    // receiveAudioBuffer — called by any subsystem that has already filled an
+    // AudioRingBuffer and wants OPAL to adopt its content directly. Reads a full
+    // block of stereo samples from `src` (most-recent numSamples samples) and
+    // blends them into the internal grain source buffer at the externalMix ratio.
+    //
+    // Blending rule:
+    //   grainBuffer ← (1 - mix) * internal + mix * external
+    // where `internal` is the mono sample generated by generateOscSample() and
+    // `external` is the L+R average read from the ring buffer.
+    //
+    // Called during renderBlock() — must be real-time safe.
+    // `mix` is pre-read from pExternalMix by the caller to avoid double-load.
+    //
+    void receiveAudioBuffer (const AudioRingBuffer& src, int numSamples,
+                             float mix, bool frozen) noexcept
+    {
+        if (mix < 0.001f) return;          // external mix off — fast path
+        if (src.capacity <= 0)  return;
+
+        for (int n = 0; n < numSamples; ++n)
+        {
+            // Sample age: n=0 is most recent, n=numSamples-1 is oldest in this block.
+            // We map sample n to a fractionalOffset such that 0 = latest write, and
+            // the step per sample is 1/capacity (one sample per capacity units).
+            float frac = static_cast<float>(numSamples - 1 - n)
+                       / static_cast<float>(src.capacity);
+            float extL = src.readAt (0, frac);
+            float extR = src.readAt (1, frac);
+            float extMono = (extL + extR) * 0.5f;
+
+            // Accumulate into the per-block cache. renderBlock() reads this
+            // cache in the grain-source write loop and blends it with the
+            // internal oscillator sample using the (1-mix)/mix cross-fade.
+            // Use += so multiple simultaneous slots accumulate correctly.
+            if (static_cast<size_t>(n) < extAudioBufL.size())
+            {
+                extAudioBufL[static_cast<size_t>(n)] += extMono * mix;
+                extAudioBufR[static_cast<size_t>(n)] += extMono * mix;
+            }
+        }
+    }
+
     //-- Audio Rendering -------------------------------------------------------
 
     void renderBlock (juce::AudioBuffer<float>& buffer,
@@ -1561,6 +1651,10 @@ public:
         float* outL = buffer.getWritePointer (0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer (1) : outL;
 
+        // D006: smooth aftertouch pressure and compute modulation value
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);
+
         // ---- Snapshot all parameters (once per block) ----
         int   sourceMode    = safeLoad (pSource, 1);
         float oscShape      = safeLoadF (pOscShape, 0.5f);
@@ -1568,12 +1662,19 @@ public:
         float osc2Mix       = safeLoadF (pOsc2Mix, 0.5f);
         float osc2Detune    = safeLoadF (pOsc2Detune, 0.1f);
         float couplingLevel = safeLoadF (pCouplingLevel, 0.0f);
+        float externalMix   = safeLoadF (pExternalMix, 0.0f);
         float grainSizeMs   = safeLoadF (pGrainSize, 120.0f);
         float density       = safeLoadF (pDensity, 20.0f);
         float position      = safeLoadF (pPosition, 0.0f) + extPosMod;
         float posScatter    = safeLoadF (pPosScatter, 0.1f);
+        // D006: aftertouch adds up to +0.3 grain scatter (sensitivity 0.3) — grains spread more under pressure
+        posScatter = clamp (posScatter + atPressure * 0.3f, 0.0f, 1.0f);
+        // D006: mod wheel adds up to +0.35 posScatter (sensitivity 0.35) — wheel opens time scatter
+        posScatter = clamp (posScatter + modWheelAmount * 0.35f, 0.0f, 1.0f);
         float pitchShift    = safeLoadF (pPitchShift, 0.0f);
         float pitchScatter  = safeLoadF (pPitchScatter, 0.0f) + extPitchMod;
+        // D006: mod wheel adds up to +0.25 pitchScatter (sensitivity 0.25) — wheel widens pitch cloud
+        pitchScatter = clamp (pitchScatter + modWheelAmount * 0.25f, 0.0f, 1.0f);
         float panScatter    = safeLoadF (pPanScatter, 0.3f);
         int   windowShape   = safeLoad (pWindow, 0);
         float freezeAmt     = safeLoadF (pFreeze, 0.0f) + extFreezeMod;
@@ -1710,10 +1811,36 @@ public:
                         if (v.active && v.ampEnv.getStage() == OpalADSR::Sustain)
                             v.noteOff();
             }
+            // D006: channel pressure → aftertouch (applied to grain scatter below)
+            else if (m.isChannelPressure())
+                aftertouch.setChannelPressure (m.getChannelPressureValue() / 127.0f);
+            // D006: mod wheel (CC#1) → grain density scatter
+            // Wheel up = wider position + pitch scatter: grains spread further in
+            // time (posScatter +0.35) and pitch (pitchScatter +0.25) at full wheel,
+            // producing a diffuse, shimmering iridescent cloud.
+            else if (m.isController() && m.getControllerNumber() == 1)
+                modWheelAmount = m.getControllerValue() / 127.0f;
         }
 
         // ---- Per-sample: write grain source + tick schedulers ----
         bool isCouplingSource = (sourceMode == 5);
+
+        // Build the external audio blend cache from all active AudioToBuffer slots.
+        // inputBuffers[] were pushed by MegaCouplingMatrix::processAudioRoute() before
+        // this renderBlock() call, so they hold the current block's source audio.
+        if (externalMix > 0.001f)
+        {
+            for (auto& s : extAudioBufL) s = 0.0f;
+            for (auto& s : extAudioBufR) s = 0.0f;
+            for (int slot = 0; slot < kOpalInputSlots; ++slot)
+            {
+                const auto& rb = inputBuffers[static_cast<size_t>(slot)];
+                if (rb.capacity <= 0) continue;
+                receiveAudioBuffer (rb, numSamples,
+                                    externalMix / static_cast<float>(kOpalInputSlots),
+                                    frozen);
+            }
+        }
 
         for (int n = 0; n < numSamples; ++n)
         {
@@ -1730,6 +1857,18 @@ public:
                 srcSample = generateOscSample (sourceMode, oscShape, osc2Shape,
                                                osc2Mix, osc2Detune);
             }
+
+            // Blend in external AudioToBuffer content.
+            // externalMix = 0 → pure internal; externalMix = 1 → pure external.
+            // extAudioBufL cache was populated above; the per-slot contribution is
+            // already pre-scaled by (externalMix / kOpalInputSlots) inside
+            // receiveAudioBuffer(), so summing all slots gives the full externalMix level.
+            if (externalMix > 0.001f && static_cast<size_t>(n) < extAudioBufL.size())
+            {
+                float extSample = extAudioBufL[static_cast<size_t>(n)];
+                srcSample = srcSample * (1.0f - externalMix) + extSample;
+            }
+
             grainBuffer.write (srcSample, frozen);
 
             // Tick grain schedulers for each active voice
@@ -1976,7 +2115,19 @@ public:
             outR[n] *= masterLevel * fxFinishLevel;
         }
 
-        // ---- Cache last sample for coupling output ----
+        // ---- Cache per-sample output for coupling reads ----
+        // getSampleForCoupling() uses outputCacheLeft/Right so that tight coupling
+        // (AudioToFM, AudioToRing) sees the correct value at each sample index
+        // instead of a stale end-of-block scalar.
+        for (int n = 0; n < numSamples; ++n)
+        {
+            auto idx = static_cast<size_t> (n);
+            if (idx < outputCacheLeft.size())
+            {
+                outputCacheLeft[idx]  = outL[n];
+                outputCacheRight[idx] = outR[n];
+            }
+        }
         if (numSamples > 0)
         {
             lastSampleL = outL[numSamples - 1];
@@ -2202,6 +2353,10 @@ private:
     std::vector<float> workBufL, workBufR;
     std::vector<float> couplingBufL, couplingBufR;
 
+    // Per-sample output cache for coupling reads (getSampleForCoupling uses these)
+    std::vector<float> outputCacheLeft;
+    std::vector<float> outputCacheRight;
+
     // Coupling modulation accumulators (reset each block)
     float extFilterMod  = 0.0f;
     float extPosMod     = 0.0f;
@@ -2209,11 +2364,34 @@ private:
     float extDensityMod = 0.0f;
     float extFreezeMod  = 0.0f;
 
-    // Cached coupling output
+    // ---- D006 Aftertouch — pressure increases grain position scatter ----
+    PolyAftertouch aftertouch;
+
+    // Cached coupling output (scalar fallback for block-level coupling)
     float lastSampleL = 0.0f;
     float lastSampleR = 0.0f;
 
-    //-- Parameter pointers (86 total) -----------------------------------------
+    // ---- AudioToBuffer Phase 2 ---------------------------------------------------
+    //
+    // 4 per-slot stereo ring buffers. MegaCouplingMatrix::processAudioRoute() holds a
+    // pointer to the slot-matching buffer and calls pushBlock() before renderBlock().
+    // Each buffer is ~186ms at 44.1kHz (kOpalExternalBufferSeconds = 8192 / 44100).
+    //
+    // Slot assignment mirrors MegaCouplingMatrix source slot indices (0–3).
+    // A source in slot 2 pushes into inputBuffers[2]; OpalEngine blends [0..3] in
+    // receiveAudioBuffer(), summing contributions before writing to grainBuffer.
+    //
+    static constexpr int   kOpalInputSlots          = 4;
+    static constexpr float kOpalExternalBufferSeconds = 8192.0f / 44100.0f; // ~186ms
+
+    std::array<AudioRingBuffer, kOpalInputSlots> inputBuffers;
+
+    // Per-block mono blend cache for external audio (populated in renderBlock
+    // from inputBuffers[], consumed in the grain-source write loop).
+    std::vector<float> extAudioBufL;
+    std::vector<float> extAudioBufR;
+
+    //-- Parameter pointers (87 total, opal_externalMix added Phase 2) ----------
 
     // Grain Source
     std::atomic<float>* pSource         = nullptr;
@@ -2222,6 +2400,7 @@ private:
     std::atomic<float>* pOsc2Mix        = nullptr;
     std::atomic<float>* pOsc2Detune     = nullptr;
     std::atomic<float>* pCouplingLevel  = nullptr;
+    std::atomic<float>* pExternalMix    = nullptr;  // AudioToBuffer blend (Phase 2)
     // Grain Scheduler
     std::atomic<float>* pGrainSize      = nullptr;
     std::atomic<float>* pDensity        = nullptr;

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "OwlfishVoice.h"
 #include "OwlfishParamSnapshot.h"
 #include "OwlfishParameters.h"
@@ -41,6 +42,7 @@ public:
         sr = sampleRate;
         maxBlock = maxBlockSize;
         voice.prepare (sampleRate);
+        aftertouch.prepare (sampleRate);
         outputCacheL.assign (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.assign (static_cast<size_t> (maxBlockSize), 0.0f);
         lastNoteOn = -1;
@@ -94,7 +96,17 @@ public:
                 voice.noteOff();
                 lastNoteOn = -1;
             }
+            else if (msg.isChannelPressure())
+                aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
         }
+
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);
+
+        // D006: aftertouch increases grain density — denser predatory grain cloud on pressure
+        // (sensitivity 0.25). Full pressure adds up to +0.25 to grainDensity (range 0–1),
+        // raising cloud from ~10 grains/sec toward ~200 grains/sec. The owlfish hunts harder.
+        snapshot.grainDensity = std::clamp (snapshot.grainDensity + atPressure * 0.25f, 0.0f, 1.0f);
 
         // Render the organism
         buffer.clear();
@@ -165,9 +177,10 @@ public:
     int getActiveVoiceCount() const override { return voice.isActive() ? 1 : 0; }
 
 private:
-    OwlfishVoice         voice;
-    OwlfishParamSnapshot snapshot;
-    std::vector<float>   outputCacheL, outputCacheR;
+    OwlfishVoice               voice;
+    OwlfishParamSnapshot       snapshot;
+    xomnibus::PolyAftertouch   aftertouch;
+    std::vector<float>         outputCacheL, outputCacheR;
 
     int    lastNoteOn = -1;
     double sr         = 44100.0;

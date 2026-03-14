@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
@@ -216,7 +217,8 @@ struct SnapVoice
 //
 //  Coupling:
 //    Output: envelope level (ch2) for AmpToFilter/AmpToPitch on partner engines
-//    Input:  AmpToPitch, LFOToPitch, PitchToPitch — pitch modulation from
+//    Input:  AmpToFilter  — partner amplitude multiplies BPF center (clamped [0.1, 2.0])
+//            AmpToPitch, LFOToPitch, PitchToPitch — pitch modulation from
 //            partner engines (max +/-0.5 semitones at amount=1.0)
 //
 //  Macros:
@@ -244,6 +246,8 @@ public:
         // Other engines read our output via getSampleForCoupling().
         outputCacheLeft.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheRight.resize (static_cast<size_t> (maxBlockSize), 0.0f);
+
+        aftertouch.prepare (newSampleRate);
 
         for (auto& voice : voices)
         {
@@ -313,11 +317,16 @@ public:
             ? static_cast<int> (pOscMode->load()) : 0;
         const float snapAmount     = (pSnap != nullptr) ? pSnap->load() : 0.4f;
         const float decayTime      = (pDecay != nullptr) ? pDecay->load() : 0.5f;
-        const float filterCutoff   = (pFilterCutoff != nullptr) ? pFilterCutoff->load() : 2000.0f;
-        const float filterResonance = (pFilterReso != nullptr) ? pFilterReso->load() : 0.3f;
+        const float filterCutoff      = (pFilterCutoff    != nullptr) ? pFilterCutoff->load()    : 2000.0f;
+        const float filterResonance   = (pFilterReso      != nullptr) ? pFilterReso->load()      : 0.3f;
+        const float filterEnvDepth    = (pFilterEnvDepth  != nullptr) ? pFilterEnvDepth->load()  : 0.3f;
         const float detuneCents    = (pDetune != nullptr) ? pDetune->load() : 10.0f;
         const float outputLevel    = (pLevel != nullptr) ? pLevel->load() : 0.8f;
-        const bool pitchLocked     = (pPitchLock != nullptr) && (pPitchLock->load() >= 0.5f);
+        const bool pitchLocked        = (pPitchLock != nullptr) && (pPitchLock->load() >= 0.5f);
+
+        // Sweep direction: -1.0 = classic downward sweep, +1.0 = upward sweep.
+        // Default -1.0 keeps legacy preset behaviour unchanged.
+        const float sweepDirection = (pSweepDirection != nullptr) ? pSweepDirection->load() : -1.0f;
 
         // Unison count: parameter values 0/1/2 map to 1/2/4 sub-voices via bit shift
         const int unisonCount = (pUnison != nullptr)
@@ -361,7 +370,7 @@ public:
             if (message.isNoteOn())
             {
                 noteOn (message.getNoteNumber(), message.getFloatVelocity(),
-                        effectiveSnap, pitchLocked, effectiveDetune, unisonCount,
+                        effectiveSnap, pitchLocked, sweepDirection, effectiveDetune, unisonCount,
                         effectiveCutoff, effectiveResonance, maxPolyphony,
                         oscillatorModeIndex);
             }
@@ -373,7 +382,21 @@ public:
             {
                 reset();
             }
+            // D006: channel pressure → aftertouch (applied to BPF cutoff below)
+            else if (message.isChannelPressure())
+            {
+                aftertouch.setChannelPressure (message.getChannelPressureValue() / 127.0f);
+            }
+            // D006: CC1 mod wheel → BPF resonance (more ring/peak with wheel; sensitivity 0.4)
+            else if (message.isController() && message.getControllerNumber() == 1)
+            {
+                modWheelValue = message.getControllerValue() / 127.0f;
+            }
         }
+
+        // D006: smooth aftertouch pressure and compute modulation values
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);  // Channel-mode: voice 0 holds the global value
 
         // Consume coupling pitch modulation (reset after use per coupling contract)
         float pitchModulation = externalPitchModulation;
@@ -401,15 +424,28 @@ public:
         if (lfoPhase >= juce::MathConstants<double>::twoPi) lfoPhase -= juce::MathConstants<double>::twoPi;
         // AmpToFilter coupling multiplier applied here — partner engine amplitude
         // opens/closes feliX's BPF center in tandem with the LFO wobble.
-        const float effectiveBpfCenter = effectiveCutoff
-                                         * (1.0f + 0.08f * (float)std::sin(lfoPhase))
-                                         * cutoffMod;
+        // D006: aftertouch adds up to +6kHz brightness on full pressure (sensitivity 0.3)
+        const float effectiveBpfCenter = std::max (20.0f, std::min (20000.0f,
+                                             effectiveCutoff
+                                             * (1.0f + 0.08f * (float)std::sin(lfoPhase))
+                                             * cutoffMod
+                                             + atPressure * 0.3f * 6000.0f));
 
+        // D006: mod wheel adds up to +0.4 resonance — more ring/peak with wheel (sensitivity 0.4)
+        const float modWheelResonance = std::min (1.0f, effectiveResonance + modWheelValue * 0.4f);
+
+        // D001: Filter envelope depth — per-voice BPF center scaled by envelope × velocity.
+        // A higher velocity hit opens the filter wider at the transient peak; the center
+        // falls back toward effectiveBpfCenter as the decay envelope decays.
+        // Max additional sweep: filterEnvDepth × velocity × 8000 Hz.
+        static constexpr float kFilterEnvMaxSweep = 8000.0f;
         for (auto& voice : voices)
         {
             if (!voice.active) continue;
-            voice.highPassFilter.setCoefficients (effectiveBpfCenter, effectiveResonance, sampleRateFloat);
-            voice.bandPassFilter.setCoefficients (effectiveBpfCenter, effectiveResonance, sampleRateFloat);
+            float envVelBoost = filterEnvDepth * voice.velocity * voice.envelopeLevel * kFilterEnvMaxSweep;
+            float voiceCutoff = std::max (20.0f, std::min (20000.0f, effectiveBpfCenter + envVelBoost));
+            voice.highPassFilter.setCoefficients (voiceCutoff, modWheelResonance, sampleRateFloat);
+            voice.bandPassFilter.setCoefficients (voiceCutoff, modWheelResonance, sampleRateFloat);
         }
 
         // ---- Per-sample rendering -------------------------------------------
@@ -670,6 +706,17 @@ public:
     {
         switch (type)
         {
+            case CouplingType::AmpToFilter:
+                // Partner engine amplitude (ch2 "hit signal") modulates feliX's
+                // BPF center frequency. Amount is a multiplier in [0, 2]:
+                //   amount = 0   → cutoff fully closed (silence-gate effect)
+                //   amount = 1   → no change (unity)
+                //   amount > 1   → cutoff boosted (brightness coupling)
+                // Clamp to [0.1, 2.0] to avoid fully closing the filter or
+                // aliasing from extreme cutoff boost.
+                couplingCutoffMod = std::max (0.1f, std::min (2.0f, amount));
+                break;
+
             case CouplingType::AmpToPitch:
             case CouplingType::LFOToPitch:
             case CouplingType::PitchToPitch:
@@ -715,7 +762,7 @@ public:
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "snap_decay", 1 }, "Snap Decay",
-            juce::NormalisableRange<float> (0.0f, 8.0f, 0.01f), 0.5f));
+            juce::NormalisableRange<float> (0.0f, 8.0f, 0.001f, 0.3f), 0.5f));
 
         // ---- Filter ----
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
@@ -724,6 +771,15 @@ public:
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "snap_filterReso", 1 }, "Snap Filter Resonance",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.3f));
+
+        // D001: Filter envelope depth — scales how much the decay envelope opens
+        // the BPF center on each hit. Velocity × envLevel × depth pushes the
+        // filter open at the transient peak and closes it as the note decays.
+        // Default 0.3 gives a noticeable velocity-to-brightness response without
+        // overwhelming the base cutoff setting.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "snap_filterEnvDepth", 1 }, "Snap Filter Env Depth",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.3f));
 
         // ---- Unison & tuning ----
@@ -737,6 +793,14 @@ public:
 
         params.push_back (std::make_unique<juce::AudioParameterBool> (
             juce::ParameterID { "snap_pitchLock", 1 }, "Snap Pitch Lock", false));
+
+        // ---- Pitch sweep direction ------------------------------------------
+        // Controls whether the pitch snap sweeps downward (classic drum synth
+        // behaviour, -1.0) or upward (+1.0 for effect snares / pitched toms),
+        // or any blend between the two.  Default -1.0 preserves legacy presets.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "snap_sweepDirection", 1 }, "Snap Sweep Direction",
+            juce::NormalisableRange<float> (-1.0f, 1.0f, 0.01f), -1.0f));
 
         params.push_back (std::make_unique<juce::AudioParameterChoice> (
             juce::ParameterID { "snap_unison", 1 }, "Snap Unison",
@@ -774,12 +838,14 @@ public:
         pOscMode      = apvts.getRawParameterValue ("snap_oscMode");
         pSnap         = apvts.getRawParameterValue ("snap_snap");
         pDecay        = apvts.getRawParameterValue ("snap_decay");
-        pFilterCutoff = apvts.getRawParameterValue ("snap_filterCutoff");
-        pFilterReso   = apvts.getRawParameterValue ("snap_filterReso");
+        pFilterCutoff     = apvts.getRawParameterValue ("snap_filterCutoff");
+        pFilterReso       = apvts.getRawParameterValue ("snap_filterReso");
+        pFilterEnvDepth   = apvts.getRawParameterValue ("snap_filterEnvDepth");
         pDetune       = apvts.getRawParameterValue ("snap_detune");
         pLevel        = apvts.getRawParameterValue ("snap_level");
-        pPitchLock    = apvts.getRawParameterValue ("snap_pitchLock");
-        pUnison       = apvts.getRawParameterValue ("snap_unison");
+        pPitchLock       = apvts.getRawParameterValue ("snap_pitchLock");
+        pSweepDirection  = apvts.getRawParameterValue ("snap_sweepDirection");
+        pUnison          = apvts.getRawParameterValue ("snap_unison");
         pPolyphony    = apvts.getRawParameterValue ("snap_polyphony");
         pMacroDart    = apvts.getRawParameterValue ("snap_macroDart");
         pMacroSchool  = apvts.getRawParameterValue ("snap_macroSchool");
@@ -806,7 +872,7 @@ private:
     //==========================================================================
 
     void noteOn (int noteNumber, float velocity, float snapAmount, bool pitchLocked,
-                 float detuneCents, int unisonCount, float cutoffFrequency,
+                 float sweepDir, float detuneCents, int unisonCount, float cutoffFrequency,
                  float resonance, int maxPolyphony, int oscillatorModeIndex)
     {
         int voiceIndex = findFreeVoice (maxPolyphony);
@@ -824,13 +890,18 @@ private:
         voice.startTime = voiceCounter++;
         voice.envelopeLevel = 1.0f;
 
-        // Set up pitch snap sweep: start high, sweep down to target.
-        // +24 semitones * snapAmount = the "dart" distance. At snap=0,
-        // no sweep. At snap=1, the note attacks from 2 octaves above.
+        // Set up pitch snap sweep: start offset from target, sweep toward it.
+        // sweepDir = -1.0 → classic downward sweep (starts 2 octaves above).
+        // sweepDir = +1.0 → upward sweep (starts 2 octaves below — effect snares,
+        //                    pitched toms, riser transients).
+        // The sweep distance scales with snapAmount; at snap=0 there is no sweep
+        // regardless of direction.
         static constexpr float kMaxPitchSweepSemitones = 24.0f;
 
         float baseMidiNote = pitchLocked ? 60.0f : static_cast<float> (noteNumber);
-        voice.currentPitch = baseMidiNote + kMaxPitchSweepSemitones * snapAmount;
+        // Negate sweepDir: direction = -1 means start ABOVE (positive offset),
+        // direction = +1 means start BELOW (negative offset).
+        voice.currentPitch = baseMidiNote - sweepDir * kMaxPitchSweepSemitones * snapAmount;
         voice.targetPitch = baseMidiNote;
         voice.pitchSweepPhase = 0.0f;
 
@@ -941,9 +1012,16 @@ private:
     // D005 fix: minimal LFO added
     double lfoPhase = 0.0;  // BPF center drift accumulator (0.15 Hz)
 
+    // ---- D006 Aftertouch — pressure opens BPF cutoff for brightness on pressure ----
+    PolyAftertouch aftertouch;
+
+    // ---- D006 Mod wheel — CC1 increases BPF resonance (more ring/peak; sensitivity 0.4) ----
+    float modWheelValue = 0.0f;
+
     // ---- Coupling state ----
     float envelopeOutput = 0.0f;           // Peak envelope for coupling channel 2
     float externalPitchModulation = 0.0f;  // Accumulated pitch mod from partner engines
+    float couplingCutoffMod = 1.0f;        // AmpToFilter multiplier for BPF center (unity = 1.0)
 
     // ---- Output cache for coupling reads ----
     std::vector<float> outputCacheLeft;
@@ -953,12 +1031,14 @@ private:
     std::atomic<float>* pOscMode      = nullptr;
     std::atomic<float>* pSnap         = nullptr;
     std::atomic<float>* pDecay        = nullptr;
-    std::atomic<float>* pFilterCutoff = nullptr;
-    std::atomic<float>* pFilterReso   = nullptr;
+    std::atomic<float>* pFilterCutoff    = nullptr;
+    std::atomic<float>* pFilterReso      = nullptr;
+    std::atomic<float>* pFilterEnvDepth  = nullptr;
     std::atomic<float>* pDetune       = nullptr;
     std::atomic<float>* pLevel        = nullptr;
-    std::atomic<float>* pPitchLock    = nullptr;
-    std::atomic<float>* pUnison       = nullptr;
+    std::atomic<float>* pPitchLock       = nullptr;
+    std::atomic<float>* pSweepDirection  = nullptr;
+    std::atomic<float>* pUnison          = nullptr;
     std::atomic<float>* pPolyphony    = nullptr;
     std::atomic<float>* pMacroDart    = nullptr;
     std::atomic<float>* pMacroSchool  = nullptr;

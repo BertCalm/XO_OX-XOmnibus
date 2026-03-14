@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
 #include <array>
@@ -623,6 +624,8 @@ public:
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
 
+        aftertouch.prepare (sampleRate);
+
         // Initialize all voices
         for (auto& voice : voices)
         {
@@ -737,6 +740,8 @@ public:
                                          + macroProphecy * 0.3f, 0.0f, 1.0f);            // PROPHECY macro shifts toward Cauchy (erratic)
         float effectiveElasticity   = clamp (barrierElasticity + couplingBarrierMod, 0.0f, 1.0f);
         float effectiveGravity      = clamp (gravityAmount + macroGravity * 0.5f, 0.0f, 1.0f);  // GRAVITY macro pulls toward maqam tuning
+        // D006: mod wheel increases gravity below after MIDI loop — atPressure and modWheelValue resolved there
+        // D006: aftertouch added below — atPressure resolved after MIDI loop
         float effectiveDrift        = clamp (driftAmount + macroDrift * 0.3f, 0.0f, 1.0f);
         int   effectiveMaqam        = std::max (0, std::min (kNumMaqamat, maqamIndex));
 
@@ -761,7 +766,21 @@ public:
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
+            // D006: channel pressure → aftertouch (applied to GENDY drift below)
+            else if (msg.isChannelPressure())
+                aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
+            // D006: CC1 mod wheel → Maqam gravity (stronger scale attraction with wheel; sensitivity 0.4)
+            else if (msg.isController() && msg.getControllerNumber() == 1)
+                modWheelValue = msg.getControllerValue() / 127.0f;
         }
+
+        // D006: smooth aftertouch and apply to drift — pressure increases stochastic chaos
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);
+        // Sensitivity 0.15: drift is a powerful param — lighter touch to avoid instability
+        effectiveDrift = clamp (effectiveDrift + atPressure * 0.15f, 0.0f, 1.0f);
+        // D006: mod wheel adds up to +0.4 maqam gravity at full wheel (stronger scale attraction; sensitivity 0.4)
+        effectiveGravity = clamp (effectiveGravity + modWheelValue * 0.4f, 0.0f, 1.0f);
 
         float peakEnvelopeLevel = 0.0f;
 
@@ -1729,6 +1748,12 @@ private:
     float smoothedTimeStep      = 0.3f;   // Smoothed time step amount
     float smoothedAmpStep       = 0.3f;   // Smoothed amplitude step amount
     float smoothedDistribution  = 0.5f;   // Smoothed Cauchy/Logistic morph position
+
+    // D006: aftertouch — pressure increases GENDY drift (more stochastic chaos on pressure)
+    PolyAftertouch aftertouch;
+
+    // D006: mod wheel — CC1 increases Maqam gravity (stronger scale attraction with wheel; sensitivity 0.4)
+    float modWheelValue = 0.0f;
 
     // --- Coupling accumulators (reset each block) ---
     float envelopeOutput            = 0.0f;   // Peak envelope for sidechain coupling

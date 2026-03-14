@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Oblique Bounce Pluck",
+  "mood": "Foundation",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Saw wave with the bounce engine fully exposed — medium gravity, slow decay taps, light fold. The rhythmic bounce click cascade is the melody. Great for basslines and arpeggiated leads.",
+  "tags": [
+    "pluck",
+    "bouncy",
+    "rhythmic",
+    "saw",
+    "foundation"
+  ],
+  "macroLabels": [
+    "GRIT",
+    "BOUNCE",
+    "PRISM",
+    "SWIRL"
+  ],
+  "couplingIntensity": "None",
+  "tempo": 100,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.45,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.25,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_oscWave": 1,
+      "oblq_oscFold": 0.15,
+      "oblq_oscDetune": 3.0,
+      "oblq_level": 0.8,
+      "oblq_glide": 0.0,
+      "oblq_percClick": 0.55,
+      "oblq_percDecay": 0.003,
+      "oblq_bounceRate": 180.0,
+      "oblq_bounceGravity": 0.65,
+      "oblq_bounceDamp": 0.7,
+      "oblq_bounceCnt": 6.0,
+      "oblq_bounceSwing": 0.0,
+      "oblq_clickTone": 2500.0,
+      "oblq_filterCut": 4500.0,
+      "oblq_filterRes": 0.25,
+      "oblq_attack": 0.001,
+      "oblq_decay": 0.5,
+      "oblq_sustain": 0.0,
+      "oblq_release": 0.15,
+      "oblq_prismDelay": 45.0,
+      "oblq_prismSpread": 0.2,
+      "oblq_prismColor": 0.3,
+      "oblq_prismWidth": 0.4,
+      "oblq_prismFeedback": 0.1,
+      "oblq_prismMix": 0.15,
+      "oblq_prismDamp": 0.1,
+      "oblq_phaserRate": 0.2,
+      "oblq_phaserDepth": 0.1,
+      "oblq_phaserFeedback": 0.05,
+      "oblq_phaserMix": 0.05
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

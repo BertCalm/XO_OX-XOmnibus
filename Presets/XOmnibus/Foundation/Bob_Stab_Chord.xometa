@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Bob_Stab_Chord",
+  "name": "Pressure Burst",
   "mood": "Foundation",
   "engines": [
     "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB chord stab \u2014 short decay, punchy filter envelope. Essential for rhythmic chord work.",
+  "description": "BOB chord stab — short decay, punchy filter envelope. Essential for rhythmic chord work.",
   "tags": [
     "bob",
     "stab",

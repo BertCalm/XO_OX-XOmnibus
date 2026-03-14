@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Dissolve",
+  "mood": "Aether",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "SPACE macro at 0.75 pre-baked — phaser and prism feedback already deep when the preset loads. Triangle wave with slow attack and long release. Notes dissolve into a prismatic cloud that lingers after key-release. The prism LFO slowly rotates the spectral color of the dissolving fragments. Pure Aether: presence without weight.",
+  "tags": [
+    "aether",
+    "dissolve",
+    "ambient",
+    "spectral",
+    "space",
+    "macro"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "BOUNCE",
+    "COLOR",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.48,
+    "movement": 0.42,
+    "density": 0.35,
+    "space": 0.95,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_oscWave": 4,
+      "oblq_oscFold": 0.15,
+      "oblq_oscDetune": 12.0,
+      "oblq_level": 0.68,
+      "oblq_glide": 0.18,
+      "oblq_percClick": 0.12,
+      "oblq_percDecay": 0.001,
+      "oblq_bounceRate": 300.0,
+      "oblq_bounceGravity": 0.90,
+      "oblq_bounceDamp": 0.92,
+      "oblq_bounceCnt": 3.0,
+      "oblq_bounceSwing": 0.0,
+      "oblq_clickTone": 600.0,
+      "oblq_filterCut": 4500.0,
+      "oblq_filterRes": 0.18,
+      "oblq_filterEnvDepth": 0.20,
+      "oblq_attack": 1.2,
+      "oblq_decay": 2.0,
+      "oblq_sustain": 0.80,
+      "oblq_release": 3.5,
+      "oblq_prismDelay": 380.0,
+      "oblq_prismSpread": 0.80,
+      "oblq_prismColor": 0.55,
+      "oblq_prismWidth": 1.0,
+      "oblq_prismFeedback": 0.38,
+      "oblq_prismMix": 0.65,
+      "oblq_prismDamp": 0.60,
+      "oblq_phaserRate": 0.12,
+      "oblq_phaserDepth": 0.75,
+      "oblq_phaserFeedback": 0.40,
+      "oblq_phaserMix": 0.25,
+      "oblq_macroFold": 0.0,
+      "oblq_macroBounce": 0.0,
+      "oblq_macroColor": 0.0,
+      "oblq_macroSpace": 0.75
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

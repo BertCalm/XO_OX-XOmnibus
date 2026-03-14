@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "name": "Chaos Ingested",
+  "mood": "Entangled",
+  "engines": ["Oracle", "Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "GENDY fully possesses Organon — stochastic audio replaces metabolic input, envelope seizes filter and morph. The organism has consumed the oracle; it now speaks in prophecy.",
+  "tags": ["coupling", "Oracle-pair", "stochastic", "organic", "possession", "extreme", "chaos"],
+  "macroLabels": ["PROPHECY", "METABOLISM", "COUPLING", "SPACE"],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_breakpoints": 24,
+      "oracle_timeStep": 0.4,
+      "oracle_ampStep": 0.38,
+      "oracle_distribution": 0.15,
+      "oracle_barrierElasticity": 0.3,
+      "oracle_maqam": 4,
+      "oracle_gravity": 0.5,
+      "oracle_drift": 0.7,
+      "oracle_ampAttack": 0.15,
+      "oracle_ampDecay": 0.4,
+      "oracle_ampSustain": 0.65,
+      "oracle_ampRelease": 0.9,
+      "oracle_voiceMode": 3,
+      "oracle_glide": 0.0,
+      "oracle_lfo1Rate": 0.08,
+      "oracle_lfo1Depth": 0.4,
+      "oracle_lfo1Shape": 2,
+      "oracle_lfo2Rate": 0.35,
+      "oracle_lfo2Depth": 0.3,
+      "oracle_lfo2Shape": 0
+    },
+    "Organon": {
+      "organon_metabolicRate": 5.5,
+      "organon_enzymeSelect": 1800.0,
+      "organon_catalystDrive": 0.7,
+      "organon_dampingCoeff": 0.28,
+      "organon_signalFlux": 0.75,
+      "organon_phasonShift": 0.55,
+      "organon_isotopeBalance": 0.45,
+      "organon_lockIn": 0.35,
+      "organon_membrane": 0.45,
+      "organon_noiseColor": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Organon",
+        "type": "Audio->FM",
+        "amount": 0.8
+      },
+      {
+        "engineA": "Oracle",
+        "engineB": "Organon",
+        "type": "Amp->Filter",
+        "amount": 0.55
+      },
+      {
+        "engineA": "Oracle",
+        "engineB": "Organon",
+        "type": "Env->Morph",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.45,
+    "movement": 0.85,
+    "density": 0.65,
+    "space": 0.55,
+    "aggression": 0.5
+  }
+}

@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
@@ -560,6 +561,7 @@ public:
         lfo.prepare (sr);
         tapeDelay.prepare (sr);
         springReverb.prepare (sr);
+        aftertouch.prepare (sr);  // D006: 5ms attack / 20ms release smoothing
     }
 
     void releaseResources() override {}
@@ -673,7 +675,14 @@ public:
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 allVoicesOff();
+            // D006: channel pressure → aftertouch (applied to send VCA level below)
+            else if (msg.isChannelPressure())
+                aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
         }
+
+        // D006: smooth aftertouch pressure and compute modulation value
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);  // channel-mode: voice 0 holds global value
 
         // Consume coupling accumulators
         float pitchMod = externalPitchMod;
@@ -800,9 +809,14 @@ public:
             }
 
             // --- Send/Return FX chain ---
-            // Send bus: voice output × sendLevel
-            sendBufL[static_cast<size_t> (sample)] = mixL * sendLvl;
-            sendBufR[static_cast<size_t> (sample)] = mixR * sendLvl;
+            // D006: aftertouch boosts send VCA level (more dub send on pressure).
+            // Sensitivity 0.3: full pressure adds up to +30% more signal into
+            // the tape delay / spring reverb send chain — classic dub technique of
+            // pressing a key harder to push more signal into the echo returns.
+            const float effectiveSendLvl = std::min (1.0f, sendLvl + atPressure * 0.3f);
+            // Send bus: voice output × effective send level
+            sendBufL[static_cast<size_t> (sample)] = mixL * effectiveSendLvl;
+            sendBufR[static_cast<size_t> (sample)] = mixR * effectiveSendLvl;
 
             // Dry path
             float dryL = mixL * dryLvl;
@@ -967,9 +981,12 @@ public:
             juce::ParameterID { "dub_filterReso", 1 }, "Dub Filter Resonance",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
 
+        // D001: default raised from 0.0 to 0.25 so filter envelope is active
+        // on every new patch. The existing DSP (envVal × velocity × 10000 Hz sweep)
+        // is already D001-compliant; this default ensures it ships audibly active.
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "dub_filterEnvAmt", 1 }, "Dub Filter Env Amt",
-            juce::NormalisableRange<float> (-1.0f, 1.0f, 0.01f), 0.0f));
+            juce::NormalisableRange<float> (-1.0f, 1.0f, 0.01f), 0.25f));
 
         // Amp Envelope
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
@@ -1254,6 +1271,9 @@ private:
     // FX chain
     DubTapeDelay tapeDelay;
     DubSpringReverb springReverb;
+
+    // D006: CS-80-inspired poly aftertouch (channel pressure → send VCA level)
+    PolyAftertouch aftertouch;
 
     // Coupling state
     float envelopeOutput = 0.0f;

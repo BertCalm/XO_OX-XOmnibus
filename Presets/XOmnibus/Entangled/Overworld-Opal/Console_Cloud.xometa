@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "name": "Console Cloud",
+  "mood": "Entangled",
+  "engines": ["Overworld", "Opal"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "NES and FM chip energy co-drive Opal's grain position and filter — a particle cloud sculpted by retro synthesis, each grain carrying the ghost of a console.",
+  "tags": ["coupling", "Overworld-pair", "chip", "granular", "dialogue", "retro", "FM"],
+  "macroLabels": ["ERA", "GLITCH", "COUPLING", "SPACE"],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_era": 0.5,
+      "ow_eraY": 0.2,
+      "ow_voiceMode": 0,
+      "ow_masterVol": 0.7,
+      "ow_masterTune": 0.0,
+      "ow_pulseDuty": 0.5,
+      "ow_pulseSweep": 0.05,
+      "ow_triEnable": 1,
+      "ow_noiseMode": 0,
+      "ow_noisePeriod": 6,
+      "ow_dpcmEnable": 0,
+      "ow_nesMix": 0.6,
+      "ow_fmAlgorithm": 2,
+      "ow_fmFeedback": 0.3,
+      "ow_fmOp1Level": 0.9,
+      "ow_fmOp2Level": 0.6,
+      "ow_fmOp3Level": 0.5,
+      "ow_fmOp4Level": 0.4,
+      "ow_snesAdsr": 1,
+      "ow_ampAttack": 0.008,
+      "ow_ampDecay": 0.4,
+      "ow_ampSustain": 0.65,
+      "ow_ampRelease": 0.5,
+      "ow_reverbMix": 0.15
+    },
+    "Opal": {
+      "opal_source": 0,
+      "opal_grainSize": 140,
+      "opal_density": 24,
+      "opal_position": 0.45,
+      "opal_posScatter": 0.22,
+      "opal_pitchShift": 0.0,
+      "opal_pitchScatter": 2.0,
+      "opal_panScatter": 0.65,
+      "opal_window": 1,
+      "opal_freeze": 0.0,
+      "opal_filterCutoff": 8500.0,
+      "opal_filterReso": 0.15,
+      "opal_shimmer": 0.3,
+      "opal_frost": 0.05,
+      "opal_ampAttack": 0.8,
+      "opal_ampDecay": 0.55,
+      "opal_ampSustain": 0.6,
+      "opal_ampRelease": 1.8,
+      "opal_ampVelSens": 0.35,
+      "opal_fxReverbSize": 0.5,
+      "opal_fxReverbMix": 0.35,
+      "opal_fxDelayTime": 0.35,
+      "opal_fxDelayMix": 0.1,
+      "opal_fxFinishLevel": 0.76,
+      "opal_level": 0.65
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Opal",
+        "type": "Env->Morph",
+        "amount": 0.48
+      },
+      {
+        "engineA": "Overworld",
+        "engineB": "Opal",
+        "type": "Amp->Filter",
+        "amount": 0.3
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.4,
+    "movement": 0.55,
+    "density": 0.55,
+    "space": 0.7,
+    "aggression": 0.2
+  }
+}

@@ -80,6 +80,9 @@ struct OcelotParamSnapshot
     float delayFeedback    = 0.35f;
     float delayMix         = 0.2f;
 
+    // ── Filter Envelope ──────────────────────────
+    float filterEnvDepth   = 0.25f;  // D001: velocity × envLevel sweeps canopy spectral filter
+
     // ── Amp Envelope ─────────────────────────────
     float ampAttack        = 10.0f;
     float ampDecay         = 300.0f;
@@ -173,6 +176,8 @@ struct OcelotParamSnapshot
         delayTime       = g(P::delayTime);
         delayFeedback   = g(P::delayFeedback);
         delayMix        = g(P::delayMix);
+
+        filterEnvDepth  = g(P::filterEnvDepth);
 
         ampAttack       = g(P::ampAttack);
         ampDecay        = g(P::ampDecay);

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Oblique Velvet Prism",
+  "mood": "Foundation",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oblique with warmth cranked to maximum — sine wave through low filter, heavy glide, prism softened to butter spread. Low bounce count creates a smooth pad-like character, minimal aggression. DNA gap-fill: HIGH warmth + LOW density corner for Oblique.",
+  "tags": [
+    "warm",
+    "smooth",
+    "foundation",
+    "sine",
+    "pad"
+  ],
+  "macroLabels": [
+    "WARMTH",
+    "GLIDE",
+    "PRISM SPREAD",
+    "FILTER"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.88,
+    "movement": 0.35,
+    "density": 0.22,
+    "space": 0.65,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_oscWave": 4,
+      "oblq_oscFold": 0.05,
+      "oblq_oscDetune": 6.0,
+      "oblq_level": 0.70,
+      "oblq_glide": 0.45,
+      "oblq_percClick": 0.0,
+      "oblq_percDecay": 0.008,
+      "oblq_bounceRate": 300.0,
+      "oblq_bounceGravity": 0.5,
+      "oblq_bounceDamp": 0.98,
+      "oblq_bounceCnt": 1.0,
+      "oblq_bounceSwing": 0.0,
+      "oblq_clickTone": 500.0,
+      "oblq_filterCut": 800.0,
+      "oblq_filterRes": 0.05,
+      "oblq_attack": 0.2,
+      "oblq_decay": 1.5,
+      "oblq_sustain": 0.85,
+      "oblq_release": 2.0,
+      "oblq_prismDelay": 120.0,
+      "oblq_prismSpread": 0.45,
+      "oblq_prismColor": 0.3,
+      "oblq_prismWidth": 0.6,
+      "oblq_prismFeedback": 0.3,
+      "oblq_prismMix": 0.4,
+      "oblq_prismDamp": 0.75,
+      "oblq_phaserRate": 0.08,
+      "oblq_phaserDepth": 0.35,
+      "oblq_phaserFeedback": 0.15,
+      "oblq_phaserMix": 0.25
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

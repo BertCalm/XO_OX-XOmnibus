@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Morph Deep Void",
+  "mood": "Atmosphere",
+  "engines": [
+    "OddOscar"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Wavetable suspended in maximum reverberant space — zero movement, near-zero drift. A single spectral chord frozen in a vast room. DNA gap-fill: HIGH space + LOW movement corner.",
+  "tags": [
+    "ambient",
+    "still",
+    "space",
+    "pad",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "MORPH",
+    "ROOM SIZE",
+    "FILTER",
+    "BRIGHTNESS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.55,
+    "movement": 0.04,
+    "density": 0.52,
+    "space": 0.96,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.35,
+      "morph_bloom": 0.88,
+      "morph_decay": 8.0,
+      "morph_sustain": 0.90,
+      "morph_release": 10.0,
+      "morph_filterCutoff": 3800.0,
+      "morph_filterReso": 0.08,
+      "morph_drift": 0.02,
+      "morph_sub": 0.15,
+      "morph_detune": 4.0,
+      "morph_level": 0.62,
+      "morph_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

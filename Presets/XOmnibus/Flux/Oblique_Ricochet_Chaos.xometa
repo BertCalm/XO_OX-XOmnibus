@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Ricochet Chaos",
+  "mood": "Flux",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "FOLD macro at 0.8 and BOUNCE macro at 0.7 pre-loaded — wavefold at near-maximum grit, bounce clicks firing dense fast cascades. Saw wave driven hard. The fold and bounce macros push parameters into their extreme ranges simultaneously. Every note is an aggressive spectral detonation. Performance tip: reduce FOLD to ease back from maximum chaos.",
+  "tags": [
+    "chaos",
+    "aggressive",
+    "macro",
+    "flux",
+    "fold",
+    "bounce"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "BOUNCE",
+    "COLOR",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.25,
+    "movement": 0.88,
+    "density": 0.82,
+    "space": 0.40,
+    "aggression": 0.88
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_oscWave": 1,
+      "oblq_oscFold": 0.30,
+      "oblq_oscDetune": 14.0,
+      "oblq_level": 0.80,
+      "oblq_glide": 0.0,
+      "oblq_percClick": 0.85,
+      "oblq_percDecay": 0.008,
+      "oblq_bounceRate": 40.0,
+      "oblq_bounceGravity": 0.55,
+      "oblq_bounceDamp": 0.60,
+      "oblq_bounceCnt": 12.0,
+      "oblq_bounceSwing": 0.25,
+      "oblq_clickTone": 5500.0,
+      "oblq_filterCut": 10000.0,
+      "oblq_filterRes": 0.50,
+      "oblq_filterEnvDepth": 0.55,
+      "oblq_attack": 0.001,
+      "oblq_decay": 0.15,
+      "oblq_sustain": 0.45,
+      "oblq_release": 0.12,
+      "oblq_prismDelay": 45.0,
+      "oblq_prismSpread": 0.75,
+      "oblq_prismColor": 0.70,
+      "oblq_prismWidth": 0.88,
+      "oblq_prismFeedback": 0.58,
+      "oblq_prismMix": 0.50,
+      "oblq_prismDamp": 0.10,
+      "oblq_phaserRate": 2.8,
+      "oblq_phaserDepth": 0.70,
+      "oblq_phaserFeedback": 0.48,
+      "oblq_phaserMix": 0.40,
+      "oblq_macroFold": 0.80,
+      "oblq_macroBounce": 0.70,
+      "oblq_macroColor": 0.0,
+      "oblq_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

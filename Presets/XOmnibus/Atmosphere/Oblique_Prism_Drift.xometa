@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Prism Drift",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Triangle wave held long through deep prism reflections and slow phaser swell. Clicks are minimal — the texture lives in the 6-facet spectral delay opening slowly outward. Ambient meditation.",
+  "tags": [
+    "ambient",
+    "atmospheric",
+    "long",
+    "spectral",
+    "slow"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "SPACE",
+    "COLOR",
+    "PHASE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.6,
+    "movement": 0.5,
+    "density": 0.35,
+    "space": 0.85,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_oscWave": 4,
+      "oblq_oscFold": 0.08,
+      "oblq_oscDetune": 8.0,
+      "oblq_level": 0.7,
+      "oblq_glide": 0.35,
+      "oblq_percClick": 0.05,
+      "oblq_percDecay": 0.006,
+      "oblq_bounceRate": 400.0,
+      "oblq_bounceGravity": 0.95,
+      "oblq_bounceDamp": 0.95,
+      "oblq_bounceCnt": 2.0,
+      "oblq_bounceSwing": 0.0,
+      "oblq_clickTone": 800.0,
+      "oblq_filterCut": 10000.0,
+      "oblq_filterRes": 0.1,
+      "oblq_attack": 0.08,
+      "oblq_decay": 1.2,
+      "oblq_sustain": 0.85,
+      "oblq_release": 0.8,
+      "oblq_prismDelay": 320.0,
+      "oblq_prismSpread": 0.75,
+      "oblq_prismColor": 0.5,
+      "oblq_prismWidth": 0.95,
+      "oblq_prismFeedback": 0.65,
+      "oblq_prismMix": 0.6,
+      "oblq_prismDamp": 0.55,
+      "oblq_phaserRate": 0.08,
+      "oblq_phaserDepth": 0.7,
+      "oblq_phaserFeedback": 0.45,
+      "oblq_phaserMix": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

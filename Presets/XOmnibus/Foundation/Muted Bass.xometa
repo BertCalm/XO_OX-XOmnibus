@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Muted Bass",
+  "name": "Sediment Filter",
   "mood": "Foundation",
   "engines": [
     "Odyssey"
@@ -27,22 +27,19 @@
   },
   "parameters": {
     "Odyssey": {
-      "osc_a_mode": 0.0,
-      "osc_a_shape": 0.0,
-      "osc_a_level": 0.8,
-      "sub_level": 0.5,
-      "filt_a_cutoff": 600.0,
-      "filt_a_reso": 0.1,
-      "filt_a_slope": 1.0,
-      "env_amp_attack": 2.0,
-      "env_amp_decay": 250.0,
-      "env_amp_sustain": 0.3,
-      "env_amp_release": 180.0,
-      "env_filter_attack": 1.0,
-      "env_filter_decay": 200.0,
-      "env_filter_sustain": 0.05,
-      "filt_a_env_amt": 0.3,
-      "master_gain": -2.0
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_oscA_level": 0.8,
+      "drift_subLevel": 0.5,
+      "drift_filterCutoff": 600.0,
+      "drift_filterReso": 0.1,
+      "drift_filterSlope": 1.0,
+      "drift_attack": 2.0,
+      "drift_decay": 250.0,
+      "drift_sustain": 0.3,
+      "drift_release": 180.0,
+      "drift_filterEnvAmt": 0.3,
+      "drift_level": -2.0
     }
   },
   "coupling": null,

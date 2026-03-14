@@ -228,11 +228,59 @@ New engines are designed as standalone instruments first, then integrated into X
 
 ### Critical Fleet-Wide Findings
 
-- **10 engines have zero LFOs** (D005 violation): Snap, Morph, Obese, Owlfish, Oblique, Orbital, Organon, Onset, Overworld adapter, Osprey (dead code)
-- **Only OVERBITE has aftertouch** — fleet-wide D006 gap
-- **4 P0 audio bugs**: Obsidian R channel filter bypass, Osteria warmth L-only, Obsidian formant ID collision, Origami STFT race condition
-- **11 engines have 0 or 1 preset** in XOmnibus
-- **Seance score range**: 5.9/10 (OBLIQUE) to 8/8 PASS + 8.6/10 (ORGANON, ORACLE)
+- **Seance score range**: 7.2/10 est. (OBLIQUE, recovered) to 8/8 PASS + 8.6/10 (ORGANON, ORACLE)
+- **Preset expansion ongoing**: all engines now have at least 1 preset; thin coverage engines expanded in Rounds 8–9
+- **D006 aftertouch coverage**: 21/23 engines now have aftertouch (batch 1–4 complete); Ouroboros + Obscura pending Round 11A
+- **D006 mod wheel coverage**: ~9/23 engines have mod wheel (Round 7A); ~14 remain (Round 11 target)
+- **D001 filter envelopes**: RESOLVED — all engines fleet-wide have velocity-scaled filter envelopes (Round 9E)
+- **D004 dead params**: RESOLVED — all declared parameters wired to DSP (Round 3B)
+- **D005 LFO breathing**: RESOLVED — all engines have autonomous modulation with rate floor ≤ 0.01 Hz (Round 5A + engine recoveries)
+
+### Prism Sweep Status (2026-03-14)
+
+The Prism Sweep is a 12-round progressive quality pass initiated after all 24 seances. **10 rounds complete.** Master index: `Docs/prism_sweep_index.md`
+
+**Completed fixes (Rounds 1–7):**
+- ✅ **5 P0 bugs fixed** (Obsidian R-channel, Obsidian formant ID, Osteria warmth L-only, Origami STFT guard, Overworld coupling output) — `Docs/p0_fixes_applied.md`
+- ✅ **5 D004 dead params wired** (Snap macroDepth, Owlfish morphGlide, Oblique percDecay, Ocelot 4 macros, Osprey dead LFO) — `Docs/d004_fixes_applied.md`
+- ✅ **D005 count 4→0** (Snap 0.15Hz BPF drift, Orbital 0.03Hz morph drift, Overworld ERA drift via eraDriftRate, Owlfish 0.05Hz grain LFO) — `Docs/d005_fixes_applied.md`
+- ✅ **2 coupling bugs fixed** (Snap AmpToFilter handler, OPAL per-sample output cache) — `Docs/coupling_fixes_5c.md`
+- ✅ **Preset schema migration**: 450+ presets updated across Drift/Bob/Dub/Overworld — `Docs/preset_schema_migration_5e.md`
+- ✅ **V007 Climax proven**: 10 Journey Demo presets in `Presets/Drift/Climax/` — `Docs/v007_journey_demo_report.md`
+- ✅ **74 preset names elevated** to evocative/poetic vocabulary across 8 engines — `Docs/preset_naming_elevation.md`
+- ✅ **3 zero-macro engines recovered** (Overworld, Morph, Oblique — each 0/10 → 8/10) — `Docs/macro_audit.md`
+- ✅ **4 filter envelopes added** (Snap, Morph, Oblique new params; Dub default raised) — `Docs/filter_envelope_audit.md`
+- ✅ **D006 aftertouch: 10/23 engines** (5 Round 5D + 5 Round 6) — `Docs/d006_aftertouch_fixes.md`
+- ✅ **D006 mod wheel: ~9/23 engines** (7 newly wired in Round 7A) — `Docs/d006_modwheel_fixes.md`
+- ✅ **AudioToBuffer coupling type** added to core + `AudioRingBuffer.h` implemented — `Docs/audio_to_buffer_implementation.md`
+- ✅ **ShoreSystem formally spec'd** (5-coastline shared cultural data, OSPREY+OSTERIA) — `Docs/shore_system_spec.md`
+- ✅ **8 major guides/specs written** (Oracle, Organon, ShoreSystem, naming, mod wheel, filter envelopes, macros, AudioToBuffer, sonic DNA)
+- ✅ **12 Sonic DNA gap-fill presets** (Optic all 3 gaps resolved, Oblique all 3 gaps resolved) — `Docs/sonic_dna_audit.md`
+
+**Completed fixes (Round 8):**
+- ✅ **OBLIQUE deep recovery** (score 5.9→7.2 est.): second D005 LFO added, D001 velocity→fold wiring, preset count 6→20 — `Docs/oblique_deep_recovery.md`
+- ✅ **OCELOT deep recovery**: Ecosystem Matrix documented, D005 LFO added, preset count 4→12+ — `Docs/ocelot_deep_recovery.md`
+- ✅ **Coupling preset library**: 18 new coupling presets across 6 engine pairs × 3 intensity levels (ONSET→OVERBITE, OPAL→OVERDUB, ODYSSEY→OPAL, OVERWORLD→OPAL, ORACLE→ORGANON, OUROBOROS→ONSET) — `Docs/coupling_preset_library.md`
+- ✅ **Init patch improvements**: 4 init patches created (Overworld, Ocelot, Obsidian, Origami) — `Docs/init_patch_improvements.md`
+- ✅ **Sonic DNA backfill**: 15 XOwlfish presets received DNA blocks; fleet 1,679/1,679 (100%) — `Docs/sonic_dna_backfill.md`
+- ✅ **Build verification**: Main XOmnibus build PASS; 4 XPNExporter pre-existing errors noted — `Docs/build_verification_8h.md`
+
+**Completed fixes (Round 9):**
+- ✅ **OBSIDIAN deep recovery** (score 6.6→8.2 est.): formant breathing LFO (0.1Hz), velocity→PD depth, 8 inaugural presets (first-ever OBSIDIAN presets in fleet) — `Docs/obsidian_deep_recovery.md`
+- ✅ **XPNExporter build fix**: `StringArray.isEmpty()` API corrected, test target link libraries fixed — 4 pre-existing errors resolved — `Docs/build_verification_8h.md`
+- ✅ **Prefix audit**: 1 rogue `org_` preset corrected to `organon_`; fleet 100% compliant — `Docs/organon_prefix_audit.md`
+- ✅ **Voice management audit**: Morph Poly/Mono/Legato + glide added, Overworld 5ms crossfade on steal, Ocelot click-on-steal fix — `Docs/voice_management_audit.md`
+- ✅ **Filter envelopes fleet-wide** (6 more engines): Orbital, Owlfish, Overworld, Ocelot, Osteria, Osprey — D001 RESOLVED for entire fleet — `Docs/filter_envelope_expansion_9e.md`
+- ✅ **D006 aftertouch batch 3** (Overworld, Owlfish, Ocelot, Osprey, Osteria → 15/23 total) — `Docs/d006_aftertouch_fixes.md`
+- ✅ **Preset expansion**: Oracle/Overworld/OCELOT/Optic +40 presets; OBSIDIAN 0→8 (last zero-preset engine closed) — `Docs/preset_expansion_9g.md`
+- ✅ **Parameter curves**: skewFactor fixes for Snap decay, Morph decay, Ocelot creature envelopes — `Docs/parameter_curve_audit.md`
+
+**Completed fixes (Round 10):**
+- ✅ **Deep documentation**: Obscura synthesis guide (46k), Optic synthesis guide (33k), Ouroboros guide (30k) — `Docs/obscura_synthesis_guide.md`, `Docs/optic_synthesis_guide.md`, `Docs/ouroboros_guide.md`
+- ✅ **XVC demo presets**: 11 ONSET drum kits demonstrating Cross-Voice Coupling — `Docs/onset_xvc_demo_guide.md`
+- ✅ **Bob aggression expansion**: 10 new high-drive presets closing Oblong aggression gap — `Docs/bob_aggression_expansion.md`
+- ✅ **Drift FX gap analysis**: Architectural debt documented — 1,353 standalone FX params not exposed in DriftEngine adapter — `Docs/drift_fx_gap_analysis.md`
+- ✅ **D006 aftertouch batch 4** (Bob, Bite, Drift, Onset, Opal → 21/23 total) — `Docs/d006_aftertouch_fixes.md`
 
 ---
 

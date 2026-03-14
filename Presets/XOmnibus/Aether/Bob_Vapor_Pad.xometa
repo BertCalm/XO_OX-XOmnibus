@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Bob_Vapor_Pad",
+  "name": "Evaporation Zone",
   "mood": "Aether",
   "engines": [
     "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB with very slow attack and dusty texture \u2014 vaporous and barely-there, like sound evaporating.",
+  "description": "BOB with very slow attack and dusty texture — vaporous and barely-there, like sound evaporating.",
   "tags": [
     "bob",
     "vapor",

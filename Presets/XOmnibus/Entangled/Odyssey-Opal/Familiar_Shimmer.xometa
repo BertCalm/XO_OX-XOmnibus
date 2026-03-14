@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "name": "Familiar Shimmer",
+  "mood": "Entangled",
+  "engines": ["Odyssey", "Opal"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Drift's pad envelope barely stirs Opal's grain position — the psychedelic shimmer fractionally shifts its reading point, as if the sound is gently breathing.",
+  "tags": ["coupling", "Odyssey-pair", "granular", "pad", "whisper", "evolving"],
+  "macroLabels": ["JOURNEY", "BREATHE", "COUPLING", "SPACE"],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 0,
+      "drift_oscA_level": 0.65,
+      "drift_oscA_detune": 0.15,
+      "drift_filterCutoff": 6000.0,
+      "drift_filterReso": 0.08,
+      "drift_shimmerAmount": 0.35,
+      "drift_attack": 2.0,
+      "drift_decay": 1.0,
+      "drift_sustain": 0.6,
+      "drift_release": 3.0,
+      "drift_driftDepth": 0.3,
+      "drift_level": 0.65,
+      "drift_polyphony": 4
+    },
+    "Opal": {
+      "opal_source": 0,
+      "opal_grainSize": 250,
+      "opal_density": 12,
+      "opal_position": 0.35,
+      "opal_posScatter": 0.1,
+      "opal_pitchShift": 0.0,
+      "opal_pitchScatter": 0.8,
+      "opal_panScatter": 0.45,
+      "opal_window": 0,
+      "opal_freeze": 0.0,
+      "opal_filterCutoff": 9000.0,
+      "opal_filterReso": 0.1,
+      "opal_shimmer": 0.35,
+      "opal_frost": 0.0,
+      "opal_ampAttack": 1.8,
+      "opal_ampDecay": 0.7,
+      "opal_ampSustain": 0.65,
+      "opal_ampRelease": 2.8,
+      "opal_ampVelSens": 0.3,
+      "opal_fxReverbSize": 0.55,
+      "opal_fxReverbMix": 0.4,
+      "opal_fxFinishLevel": 0.75,
+      "opal_level": 0.6
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Opal",
+        "type": "Env->Morph",
+        "amount": 0.22
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.6,
+    "movement": 0.35,
+    "density": 0.45,
+    "space": 0.8,
+    "aggression": 0.05
+  }
+}

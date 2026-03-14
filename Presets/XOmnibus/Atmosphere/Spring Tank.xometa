@@ -29,17 +29,17 @@
   },
   "parameters": {
     "Overdub": {
-      "osc_wave": 0.0,
-      "filter_cutoff": 5000.0,
-      "env_attack": 0.1,
-      "env_decay": 1.0,
-      "env_sustain": 0.3,
-      "env_release": 1.5,
-      "reverb_size": 0.85,
-      "reverb_damp": 0.3,
-      "reverb_mix": 0.7,
-      "send_level": 0.8,
-      "return_level": 0.9
+      "dub_oscWave": 0.0,
+      "dub_filterCutoff": 5000.0,
+      "dub_attack": 0.1,
+      "dub_decay": 1.0,
+      "dub_sustain": 0.3,
+      "dub_release": 1.5,
+      "dub_reverbSize": 0.85,
+      "dub_reverbDamp": 0.3,
+      "dub_reverbMix": 0.7,
+      "dub_sendLevel": 0.8,
+      "dub_returnLevel": 0.9
     }
   },
   "coupling": null,

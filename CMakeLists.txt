@@ -191,6 +191,7 @@ target_include_directories(XOmnibusTests PRIVATE
 target_link_libraries(XOmnibusTests PRIVATE
     juce::juce_core
     juce::juce_audio_basics
+    juce::juce_audio_formats
     juce::juce_audio_processors
     juce::juce_gui_basics
 )

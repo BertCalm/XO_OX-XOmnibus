@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Noise Bed",
+  "name": "Static Plankton",
   "mood": "Aether",
   "engines": [
     "Overbite"

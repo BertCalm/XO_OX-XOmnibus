@@ -79,6 +79,10 @@ constexpr const char* delayTime       = "ocelot_delayTime";
 constexpr const char* delayFeedback   = "ocelot_delayFeedback";
 constexpr const char* delayMix        = "ocelot_delayMix";
 
+// ── Filter Envelope ───────────────────────────────
+// D001: canopy spectral filter env depth — velocity × envelope level × depth.
+constexpr const char* filterEnvDepth  = "ocelot_filterEnvDepth";
+
 // ── Amp Envelope ─────────────────────────────────
 constexpr const char* ampAttack       = "ocelot_ampAttack";
 constexpr const char* ampDecay        = "ocelot_ampDecay";
@@ -199,8 +203,8 @@ inline void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParamete
     F(creatureSpread,  "Creature Spread",  0.0f, 1.0f,  0.4f);
     C(creatureTrigger, "Creature Trigger", Enums::creatureTrigger, 0);
     F(creatureLevel,   "Creature Level",   0.0f, 1.0f,  0.4f);
-    F(creatureAttack,  "Creature Attack",  0.0f, 1.0f,  0.3f);
-    F(creatureDecay,   "Creature Decay",   0.0f, 1.0f,  0.5f);
+    F(creatureAttack,  "Creature Attack",  0.0f, 1.0f,  0.3f, 0.3f);
+    F(creatureDecay,   "Creature Decay",   0.0f, 1.0f,  0.5f, 0.3f);
 
     // ── FX ────────────────────────────────────────
     F(reverbSize,    "Reverb Size",     0.0f, 1.0f,   0.6f);
@@ -208,6 +212,13 @@ inline void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParamete
     F(delayTime,     "Delay Time",      0.0f, 1.0f,   0.4f);
     F(delayFeedback, "Delay Feedback",  0.0f, 0.92f,  0.35f);
     F(delayMix,      "Delay Mix",       0.0f, 1.0f,   0.2f);
+
+    // ── Filter Envelope ──────────────────────────
+    // D001: spectral LP cutoff boost = depth × velocity × ampEnvLevel.
+    // Default 0.25: at full velocity and attack peak, spectral filter position
+    // moves up by +0.075 (about +1500 Hz in the 200-20kHz log range at mid position),
+    // brightening hard hits through the canopy's partial LP filter.
+    F(filterEnvDepth, "Filter Env Depth", 0.0f, 1.0f, 0.25f);
 
     // ── Amp Envelope ─────────────────────────────
     F(ampAttack,  "Amp Attack",  0.001f, 8000.0f,  10.0f,  0.3f);

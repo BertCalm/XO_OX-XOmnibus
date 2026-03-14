@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Analog Warmth",
+  "name": "Temperate Drift",
   "mood": "Atmosphere",
   "engines": [
     "Oblong"
@@ -29,23 +29,21 @@
   },
   "parameters": {
     "Oblong": {
-      "oscA_wave": 2.0,
-      "oscA_shape": 0.65,
-      "oscA_drift": 0.28,
-      "oscB_wave": 0.0,
-      "oscB_blend": 0.5,
-      "oscB_detune": -7.0,
-      "flt_mode": 0.0,
-      "flt_cutoff": 3200.0,
-      "flt_resonance": 0.28,
-      "flt_drive": 0.15,
-      "env_attack": 0.5,
-      "env_decay": 1.0,
-      "env_sustain": 0.78,
-      "env_release": 1.5,
-      "smear_depth": 0.3,
-      "smear_mix": 0.28,
-      "bob_mode": 0.18
+      "bob_oscA_wave": 2.0,
+      "bob_oscA_shape": 0.65,
+      "bob_oscA_drift": 0.28,
+      "bob_oscB_wave": 0.0,
+      "bob_oscB_blend": 0.5,
+      "bob_oscB_detune": -7.0,
+      "bob_fltMode": 0.0,
+      "bob_fltCutoff": 3200.0,
+      "bob_fltReso": 0.28,
+      "bob_fltDrive": 0.15,
+      "bob_ampAttack": 0.5,
+      "bob_ampDecay": 1.0,
+      "bob_ampSustain": 0.78,
+      "bob_ampRelease": 1.5,
+      "bob_bobMode": 0.18
     }
   },
   "coupling": null,

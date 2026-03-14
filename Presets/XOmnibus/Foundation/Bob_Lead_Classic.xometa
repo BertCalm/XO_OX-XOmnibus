@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Bob_Lead_Classic",
+  "name": "Coral Antenna",
   "mood": "Foundation",
   "engines": [
     "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB classic lead tone \u2014 bright saw, medium filter, light vibrato. The universal lead.",
+  "description": "BOB classic lead tone — bright saw, medium filter, light vibrato. The universal lead.",
   "tags": [
     "bob",
     "lead",

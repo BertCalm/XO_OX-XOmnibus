@@ -2,12 +2,32 @@
   "schema_version": 1,
   "name": "Bathyal Floor",
   "mood": "Foundation",
-  "engines": ["XOwlfish"],
+  "sonic_dna": {
+    "brightness": 0.1,
+    "warmth": 0.95,
+    "aggression": 0.15,
+    "movement": 0.2,
+    "density": 0.5,
+    "space": 0.7
+  },
+  "engines": [
+    "XOwlfish"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Pure subharmonic bass — 1:2 and 1:3 divisions with heavy body sine and clean Mixtur layering",
-  "tags": ["bass", "sub", "abyssal", "foundation"],
-  "macroLabels": ["DEPTH", "FEEDING", "DEFENSE", "PRESSURE"],
+  "tags": [
+    "bass",
+    "sub",
+    "abyssal",
+    "foundation"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "FEEDING",
+    "DEFENSE",
+    "PRESSURE"
+  ],
   "couplingIntensity": "None",
   "parameters": {
     "XOwlfish": {
@@ -63,5 +83,7 @@
       "owl_couplingBus": 0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

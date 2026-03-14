@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Oblique Solar Flare",
+  "mood": "Prism",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oblique pushed into maximum brightness + aggression — wavefold at full drive on a sawtooth at 16kHz filter ceiling. Prism feedback at breaking point, hard bounce clicks at top speed. No warmth. DNA gap-fill: HIGH brightness + HIGH aggression corner for Oblique.",
+  "tags": [
+    "bright",
+    "aggressive",
+    "prism",
+    "overdriven",
+    "industrial"
+  ],
+  "macroLabels": [
+    "FOLD DRIVE",
+    "BOUNCE",
+    "PRISM BLAZE",
+    "FILTER"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.15,
+    "movement": 0.80,
+    "density": 0.72,
+    "space": 0.45,
+    "aggression": 0.93
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_oscWave": 1,
+      "oblq_oscFold": 0.95,
+      "oblq_oscDetune": 2.0,
+      "oblq_level": 0.85,
+      "oblq_glide": 0.0,
+      "oblq_percClick": 0.95,
+      "oblq_percDecay": 0.001,
+      "oblq_bounceRate": 20.0,
+      "oblq_bounceGravity": 0.95,
+      "oblq_bounceDamp": 0.2,
+      "oblq_bounceCnt": 18.0,
+      "oblq_bounceSwing": 0.0,
+      "oblq_clickTone": 12000.0,
+      "oblq_filterCut": 16000.0,
+      "oblq_filterRes": 0.72,
+      "oblq_attack": 0.001,
+      "oblq_decay": 0.06,
+      "oblq_sustain": 0.4,
+      "oblq_release": 0.05,
+      "oblq_prismDelay": 15.0,
+      "oblq_prismSpread": 0.85,
+      "oblq_prismColor": 0.95,
+      "oblq_prismWidth": 0.9,
+      "oblq_prismFeedback": 0.75,
+      "oblq_prismMix": 0.55,
+      "oblq_prismDamp": 0.05,
+      "oblq_phaserRate": 3.5,
+      "oblq_phaserDepth": 0.6,
+      "oblq_phaserFeedback": 0.45,
+      "oblq_phaserMix": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

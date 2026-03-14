@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Drift_Pad_Wide",
+  "name": "Superposed Horizon",
   "mood": "Foundation",
   "engines": [
     "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT wide stereo pad \u2014 supersaw mode both oscillators, heavy detune. Foundational width.",
+  "description": "DRIFT wide stereo pad — supersaw mode both oscillators, heavy detune. Foundational width.",
   "tags": [
     "drift",
     "pad",

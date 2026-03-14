@@ -34,6 +34,7 @@ constexpr const char* compRelease    = "owl_compRelease";
 constexpr const char* filterCutoff   = "owl_filterCutoff";
 constexpr const char* filterReso     = "owl_filterReso";
 constexpr const char* filterTrack    = "owl_filterTrack";
+constexpr const char* filterEnvDepth = "owl_filterEnvDepth";
 
 // -- Diet (5) --
 constexpr const char* grainSize      = "owl_grainSize";
@@ -137,9 +138,13 @@ inline void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParamete
     F(compThreshold, "Comp Threshold", 0.0f, 1.0f, 0.5f);
     F(compAttack,    "Comp Attack",    0.0f, 1.0f, 0.2f);
     F(compRelease,   "Comp Release",   0.0f, 1.0f, 0.4f);
-    F(filterCutoff,  "Filter Cutoff",  0.0f, 1.0f, 0.6f);
-    F(filterReso,    "Filter Reso",    0.0f, 1.0f, 0.3f);
-    F(filterTrack,   "Filter Track",   0.0f, 1.0f, 0.5f);
+    F(filterCutoff,   "Filter Cutoff",   0.0f, 1.0f, 0.6f);
+    F(filterReso,     "Filter Reso",     0.0f, 1.0f, 0.3f);
+    F(filterTrack,    "Filter Track",    0.0f, 1.0f, 0.5f);
+    // D001: filter envelope depth — amp envelope level × velocity boosts LP cutoff.
+    // Default 0.25: at full velocity and attack peak, adds +1375 Hz via the amp
+    // envelope signal, making harder hits brighter through the organism's optics.
+    F(filterEnvDepth, "Filter Env Depth", 0.0f, 1.0f, 0.25f);
 
     // -- Diet (5) --
     F(grainSize,    "Grain Size",    0.0f, 1.0f, 0.3f);

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "name": "Orbit Crystal",
+  "mood": "Aether",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Aizawa at moderate chaos with both theta and phi swept to a revealing angle — the compact torus viewed from its most complex cross-section. Bright, crystalline orbital character. Each note shimmers differently.",
+  "tags": ["aizawa", "bright", "crystalline", "spatial", "orbital", "pitched"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 3,
+      "ouro_rate": 261.6,
+      "ouro_chaosIndex": 0.70,
+      "ouro_leash": 0.75,
+      "ouro_theta": 1.05,
+      "ouro_phi": 0.65,
+      "ouro_damping": 0.10,
+      "ouro_injection": 0.0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.22,
+    "movement": 0.60,
+    "density": 0.50,
+    "space": 0.82,
+    "aggression": 0.32
+  }
+}

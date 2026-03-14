@@ -157,6 +157,9 @@ public:
     /// Returns false only when in Idle state (voice can be freed).
     bool isActive() const { return state != State::Idle; }
 
+    /// Get current envelope level (0–1). Read at block rate for filter env modulation.
+    float getLevel() const { return level; }
+
     /// Get current envelope state.
     State getState() const { return state; }
 

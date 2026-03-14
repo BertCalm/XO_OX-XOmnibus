@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Luminous Metabolism",
+  "mood": "Entangled",
+  "engines": ["Optic", "Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Full bidirectional coupling — Organon's metabolic audio feeds OPTIC's spectral analysis, OPTIC's luminous pulses modulate Organon's enzyme filter and membrane. The organism and the light source are one.",
+  "tags": ["coupling", "optic", "organon-pair", "metabolic", "luminous", "bidirectional", "deep"],
+  "macroLabels": ["LIGHT", "METABOLISM", "COUPLING", "SPACE"],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.75,
+      "optic_inputGain": 0.85,
+      "optic_autoPulse": 1,
+      "optic_pulseRate": 0.35,
+      "optic_pulseShape": 0.7,
+      "optic_pulseSwing": 0.1,
+      "optic_pulseEvolve": 0.55,
+      "optic_pulseSubdiv": 0.25,
+      "optic_pulseAccent": 0.55,
+      "optic_modDepth": 0.6,
+      "optic_modMixPulse": 0.4,
+      "optic_modMixSpec": 0.6,
+      "optic_vizMode": 2,
+      "optic_vizFeedback": 0.75,
+      "optic_vizSpeed": 0.4,
+      "optic_vizIntensity": 0.7
+    },
+    "Organon": {
+      "organon_metabolicRate": 3.8,
+      "organon_enzymeSelect": 1700.0,
+      "organon_catalystDrive": 0.6,
+      "organon_dampingCoeff": 0.25,
+      "organon_signalFlux": 0.65,
+      "organon_phasonShift": 0.5,
+      "organon_isotopeBalance": 0.5,
+      "organon_lockIn": 0.45,
+      "organon_membrane": 0.4,
+      "organon_noiseColor": 0.52
+    }
+  },
+  "coupling": {
+    "pairs": [
+      { "engineA": "Organon", "engineB": "Optic", "type": "AudioToFM", "amount": 0.55 },
+      { "engineA": "Optic", "engineB": "Organon", "type": "AmpToFilter", "amount": 0.55 },
+      { "engineA": "Optic", "engineB": "Organon", "type": "EnvToMorph", "amount": 0.3 }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.55,
+    "movement": 0.7,
+    "density": 0.6,
+    "space": 0.55,
+    "aggression": 0.35
+  }
+}

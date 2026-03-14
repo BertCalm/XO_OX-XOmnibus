@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Gravity Flux",
+  "mood": "Flux",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum bounce count with extreme gravity (fast acceleration) and medium damping — each note triggers a dense cascade that accelerates rapidly toward silence. Unstable, unpredictable, like a ball caught in shifting gravity. Glide adds chaos between notes.",
+  "tags": [
+    "evolving",
+    "unstable",
+    "percussive",
+    "chaos",
+    "flux"
+  ],
+  "macroLabels": [
+    "GRIT",
+    "GRAVITY",
+    "FEEDBACK",
+    "PHASE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": 130,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.4,
+    "movement": 0.95,
+    "density": 0.75,
+    "space": 0.4,
+    "aggression": 0.7
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_oscWave": 1,
+      "oblq_oscFold": 0.5,
+      "oblq_oscDetune": 7.0,
+      "oblq_level": 0.75,
+      "oblq_glide": 0.08,
+      "oblq_percClick": 0.9,
+      "oblq_percDecay": 0.002,
+      "oblq_bounceRate": 25.0,
+      "oblq_bounceGravity": 0.35,
+      "oblq_bounceDamp": 0.6,
+      "oblq_bounceCnt": 16.0,
+      "oblq_bounceSwing": 0.4,
+      "oblq_clickTone": 4500.0,
+      "oblq_filterCut": 6000.0,
+      "oblq_filterRes": 0.6,
+      "oblq_attack": 0.001,
+      "oblq_decay": 0.08,
+      "oblq_sustain": 0.0,
+      "oblq_release": 0.06,
+      "oblq_prismDelay": 35.0,
+      "oblq_prismSpread": 0.45,
+      "oblq_prismColor": 0.6,
+      "oblq_prismWidth": 0.75,
+      "oblq_prismFeedback": 0.5,
+      "oblq_prismMix": 0.3,
+      "oblq_prismDamp": 0.1,
+      "oblq_phaserRate": 3.5,
+      "oblq_phaserDepth": 0.65,
+      "oblq_phaserFeedback": 0.4,
+      "oblq_phaserMix": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

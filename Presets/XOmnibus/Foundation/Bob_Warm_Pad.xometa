@@ -1,13 +1,27 @@
 {
   "schema_version": 1,
-  "name": "Bob Warm Pad",
+  "name": "Hearthside Current",
   "mood": "Foundation",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "BOB's most essential pad tone — slow attack, sustained warmth, gentle motion envelope. The analog foundation for any chord progression.",
-  "tags": ["pad", "warm", "bob", "analog", "sustained", "foundation"],
-  "macroLabels": ["CHARACTER", "ATTACK", "MOTION", "SPACE"],
+  "tags": [
+    "pad",
+    "warm",
+    "bob",
+    "analog",
+    "sustained",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "ATTACK",
+    "MOTION",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

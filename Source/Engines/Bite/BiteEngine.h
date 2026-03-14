@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
@@ -920,6 +921,8 @@ public:
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
 
+        aftertouch.prepare (sampleRate);
+
         for (int i = 0; i < kMaxVoices; ++i)
         {
             auto& v = voices[static_cast<size_t> (i)];
@@ -1073,10 +1076,16 @@ public:
         const float effWeightLvl  = clamp (weightLevel + macroBelly * 0.3f, 0.0f, 1.0f);
         const float bellyCutoffMod = -macroBelly * 3000.0f;
 
+        // D006: smooth aftertouch pressure and compute modulation value
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);
+
         // M2 BITE: feral aggression
-        const float biteOscMix        = clamp (effOscMix + macroBite * 0.4f, 0.0f, 1.0f);
-        const float effGnashAmount    = clamp (gnashAmount + macroBite * 0.6f, 0.0f, 1.0f);
-        const float biteResoMod       = macroBite * 0.3f;
+        // D006: aftertouch adds up to +0.3 to BITE macro intensity (sensitivity 0.3)
+        const float effectiveBite     = clamp (macroBite + atPressure * 0.3f, 0.0f, 1.0f);
+        const float biteOscMix        = clamp (effOscMix + effectiveBite * 0.4f, 0.0f, 1.0f);
+        const float effGnashAmount    = clamp (gnashAmount + effectiveBite * 0.6f, 0.0f, 1.0f);
+        const float biteResoMod       = effectiveBite * 0.3f;
 
         // M3 SCURRY: nervous energy
         const float scurryLfoMul  = 1.0f + macroScurry * 4.0f;
@@ -1110,6 +1119,9 @@ public:
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 allVoicesOff();
+            // D006: channel pressure → aftertouch (applied to BITE macro below)
+            else if (msg.isChannelPressure())
+                aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
         }
 
         // Consume coupling accumulators
@@ -2233,6 +2245,9 @@ private:
     const float* externalFMBuffer = nullptr;
     int externalFMSamples = 0;
     float externalFMAmount = 0.0f;
+
+    // ---- D006 Aftertouch — pressure intensifies BITE macro (feral aggression) ----
+    PolyAftertouch aftertouch;
 
     // Output cache for coupling reads
     std::vector<float> outputCacheL;

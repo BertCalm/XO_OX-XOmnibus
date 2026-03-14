@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Morph Digital Lattice",
+  "mood": "Foundation",
+  "engines": [
+    "OddOscar"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Cold crystalline wavetable — digital gloss with no organic warmth. Dense harmonic lattice from heavy polyphonic stacking and wide detune. No sub, no bloom, no drift. DNA gap-fill: LOW warmth + HIGH density corner.",
+  "tags": [
+    "cold",
+    "digital",
+    "dense",
+    "poly",
+    "foundation"
+  ],
+  "macroLabels": [
+    "MORPH",
+    "DENSITY",
+    "FILTER",
+    "WIDTH"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.08,
+    "movement": 0.45,
+    "density": 0.92,
+    "space": 0.40,
+    "aggression": 0.48
+  },
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.52,
+      "morph_bloom": 0.05,
+      "morph_decay": 0.5,
+      "morph_sustain": 0.82,
+      "morph_release": 0.3,
+      "morph_filterCutoff": 6500.0,
+      "morph_filterReso": 0.35,
+      "morph_drift": 0.0,
+      "morph_sub": 0.0,
+      "morph_detune": 22.0,
+      "morph_level": 0.78,
+      "morph_polyphony": 8
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

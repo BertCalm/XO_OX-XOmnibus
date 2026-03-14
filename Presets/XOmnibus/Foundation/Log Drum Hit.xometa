@@ -29,16 +29,16 @@
   },
   "parameters": {
     "Overdub": {
-      "osc_wave": 0.0,
-      "osc_octave": 2.0,
-      "pitch_env_depth": 36.0,
-      "pitch_env_decay": 0.012,
-      "filter_cutoff": 2000.0,
-      "env_attack": 0.001,
-      "env_decay": 0.25,
-      "env_sustain": 0.0,
-      "env_release": 0.2,
-      "osc_sub_level": 0.4
+      "dub_oscWave": 0.0,
+      "dub_oscOctave": 2.0,
+      "dub_pitchEnvDepth": 36.0,
+      "dub_pitchEnvDecay": 0.012,
+      "dub_filterCutoff": 2000.0,
+      "dub_attack": 0.001,
+      "dub_decay": 0.25,
+      "dub_sustain": 0.0,
+      "dub_release": 0.2,
+      "dub_subLevel": 0.4
     }
   },
   "coupling": null,

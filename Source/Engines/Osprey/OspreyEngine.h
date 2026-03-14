@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/ShoreSystem/ShoreSystem.h"
@@ -882,6 +883,8 @@ public:
         tiltFilterL.reset();   tiltFilterR.reset();
         fogFilterL.reset();    fogFilterR.reset();
         hullFilterL.reset();   hullFilterR.reset();
+
+        aftertouch.prepare (sampleRate);
     }
 
     void releaseResources() override {}
@@ -969,6 +972,11 @@ public:
         const float pAmpSustain        = loadParam (paramAmpSustain, 0.7f);
         const float pAmpRelease        = loadParam (paramAmpRelease, 2.0f);
 
+        // --- Voice mode and glide (Round 10F) ---
+        // 0=Poly (all notes independent), 1=Mono (retrigger), 2=Legato (slide, no retrigger).
+        const int   pVoiceMode         = static_cast<int> (loadParam (paramVoiceMode, 0.0f));
+        const float pGlideTime         = loadParam (paramGlideTime, 0.0f);
+
         // --- Macros (M1-M4) ---
         const float macroCharacter     = loadParam (paramMacroCharacter, 0.0f);
         const float macroMovement      = loadParam (paramMacroMovement, 0.0f);
@@ -1042,13 +1050,30 @@ public:
         //  Configure post-processing filters for this block
         // =================================================================
 
+        // D001: filter envelope — velocity × envelope level boosts LP cutoff brightness.
+        // Only applied in LP mode (pFilterTilt < 0.5); HP mode opens up as tilt decreases,
+        // so boosting cutoff in HP would darken rather than brighten — wrong direction.
+        // kMaxHz=5500 gives an audible sweep across most of the 200-8200 LP range.
+        {
+            static constexpr float kOspreyFilterEnvMaxHz = 5500.0f;
+            const float filterEnvDepth = loadParam (paramFilterEnvDepth, 0.25f);
+            float peakVelEnv = 0.0f;
+            for (const auto& v : voices)
+            {
+                if (v.active)
+                    peakVelEnv = std::max (peakVelEnv, v.velocity * v.amplitudeEnvelope.level);
+            }
+            filterEnvBoost = filterEnvDepth * peakVelEnv * kOspreyFilterEnvMaxHz;
+        }
+
         // Tilt filter: spectral balance control.
         // At 0.0 (dark): lowpass sweeps 200-8200 Hz
         // At 0.5 (neutral): wide open
         // At 1.0 (bright): highpass sweeps 8200-400 Hz
         if (pFilterTilt < 0.5f)
         {
-            float cutoff = 200.0f + (pFilterTilt * 2.0f) * 8000.0f;
+            float cutoff = 200.0f + (pFilterTilt * 2.0f) * 8000.0f + filterEnvBoost;
+            cutoff = juce::jlimit (200.0f, 20000.0f, cutoff);
             tiltFilterL.setMode (CytomicSVF::Mode::LowPass);
             tiltFilterR.setMode (CytomicSVF::Mode::LowPass);
             tiltFilterL.setCoefficients (cutoff, 0.3f, sampleRateFloat);
@@ -1101,7 +1126,7 @@ public:
                               pAmpAttack, pAmpDecay, pAmpSustain, pAmpRelease,
                               morphedResonators, morphedCreatures, morphedFluid,
                               effectiveSeaState, pResonatorBright, pResonatorDecay,
-                              pCreatureRate);
+                              pCreatureRate, pVoiceMode, pGlideTime);
             }
             else if (msg.isNoteOff())
             {
@@ -1111,6 +1136,27 @@ public:
             {
                 reset();
             }
+            else if (msg.isChannelPressure())
+                aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
+        }
+
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);
+
+        // D006: aftertouch shifts shore blend position — pressing harder moves toward
+        // the next coastline (sensitivity 0.25). Shore range is 0–4 (5 coastlines),
+        // so +0.25 nudges toward the next coastal character (~1/4 of a full region step).
+        // Re-decompose shore with aftertouch offset so resonator profiles update.
+        float effectiveShore = clamp (pShore + atPressure * 0.25f * 4.0f, 0.0f, 4.0f);
+        if (atPressure > 0.001f)
+        {
+            ShoreMorphState atShoreState = decomposeShore (effectiveShore);
+            for (int i = 0; i < 3; ++i)
+            {
+                morphedResonators[i] = morphResonator (atShoreState, i);
+                morphedCreatures[i]  = morphCreature  (atShoreState, i);
+            }
+            morphedFluid = morphFluid (atShoreState);
         }
 
         float blockPeakEnvelope = 0.0f;
@@ -1669,6 +1715,11 @@ public:
             juce::ParameterID { "osprey_filterTilt", 1 }, "Osprey Filter Tilt",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.5f));
 
+        // D001: velocity × envelope level sweeps the tilt LP cutoff upward on hard attacks.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "osprey_filterEnvDepth", 1 }, "Osprey Filter Env Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.25f));
+
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "osprey_harborVerb", 1 }, "Osprey Harbor Verb",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.2f));
@@ -1693,6 +1744,22 @@ public:
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "osprey_ampRelease", 1 }, "Osprey Amp Release",
             juce::NormalisableRange<float> (0.05f, 12.0f, 0.001f, 0.3f), 2.0f));
+
+        // --- Voice mode and glide (Round 10F) ---
+        // osprey_voiceMode:
+        //   0=Poly  — every note spawns its own voice (original behaviour, default)
+        //   1=Mono  — retriggered single voice (useful for leads with portamento)
+        //   2=Legato — new note while gate open slides pitch, skips envelope retrigger
+        // osprey_glide: portamento time 0–2 s.  When > 0, glideCoefficient is computed
+        //   as 1 - exp(-1/(glideTime * sampleRate)) and applied per-sample in the
+        //   render loop (IIR exponential approach).
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "osprey_voiceMode", 1 }, "Osprey Voice Mode",
+            juce::StringArray { "Poly", "Mono", "Legato" }, 0));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "osprey_glide", 1 }, "Osprey Glide",
+            juce::NormalisableRange<float> (0.0f, 2.0f, 0.001f, 0.3f), 0.0f));
 
         // --- Macros ---
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
@@ -1729,6 +1796,7 @@ public:
         paramBrine             = apvts.getRawParameterValue ("osprey_brine");
         paramHull              = apvts.getRawParameterValue ("osprey_hull");
         paramFilterTilt        = apvts.getRawParameterValue ("osprey_filterTilt");
+        paramFilterEnvDepth    = apvts.getRawParameterValue ("osprey_filterEnvDepth");
         paramHarborVerb        = apvts.getRawParameterValue ("osprey_harborVerb");
         paramFog               = apvts.getRawParameterValue ("osprey_fog");
         paramAmpAttack         = apvts.getRawParameterValue ("osprey_ampAttack");
@@ -1739,6 +1807,9 @@ public:
         paramMacroMovement     = apvts.getRawParameterValue ("osprey_macroMovement");
         paramMacroCoupling     = apvts.getRawParameterValue ("osprey_macroCoupling");
         paramMacroSpace        = apvts.getRawParameterValue ("osprey_macroSpace");
+        // Round 10F: voice mode and glide
+        paramVoiceMode         = apvts.getRawParameterValue ("osprey_voiceMode");
+        paramGlideTime         = apvts.getRawParameterValue ("osprey_glide");
     }
 
     //==========================================================================
@@ -1775,9 +1846,61 @@ private:
                        const CreatureVoice* morphedCreatures,
                        const FluidCharacter& morphedFluid,
                        float seaState, float resonatorBrightness, float resonatorDecay,
-                       float creatureRate)
+                       float creatureRate,
+                       int voiceMode, float glideTimeSec)
     {
         float frequency = midiNoteToHz (static_cast<float> (noteNumber));
+
+        // -----------------------------------------------------------------------
+        // Legato detection (voiceMode == 2)
+        //
+        // If a voice is currently gate-open (active and NOT fading/releasing),
+        // slide its pitch to the new frequency without retriggering the envelope.
+        // The glide coefficient controls the speed of the pitch slide:
+        //   glideCoeff = exp(-1/(glideTime * sampleRate))
+        //   glideCoeff = 1.0 means instant (no portamento effect within the glide)
+        // The coefficient is applied per-sample in the render loop:
+        //   currentFrequency += (target - current) * (1 - glideCoeff)
+        // which is an exponential approach converging to target in ~glideTime seconds.
+        //
+        // This is the wire-up described in Round 9D: the glideCoefficient field in
+        // OspreyVoice has always been present and used in the render loop, but
+        // initializeVoice() always set it to 1.0 (instant), and there was no
+        // voice-mode parameter to control legato behaviour.
+        // -----------------------------------------------------------------------
+        if (voiceMode == 2)
+        {
+            for (int i = 0; i < kMaxVoices; ++i)
+            {
+                auto& v = voices[static_cast<size_t> (i)];
+                // Gate open: active voice that has NOT started fading out and whose
+                // amplitude envelope is NOT in Release or Idle
+                if (v.active && !v.fadingOut
+                    && v.amplitudeEnvelope.stage != OspreyADSR::Stage::Release
+                    && v.amplitudeEnvelope.stage != OspreyADSR::Stage::Idle)
+                {
+                    v.noteNumber = noteNumber;
+                    v.velocity   = velocity;
+                    v.targetFrequency = frequency;
+
+                    // Compute glide coefficient from user glide time.
+                    // If glideTime==0 (or very small), snap immediately to
+                    // prevent a detached-pitch artefact between notes.
+                    static constexpr float kMinGlideSec = 0.001f;
+                    if (glideTimeSec > kMinGlideSec)
+                        // Exponential IIR coefficient: approaches target at ~63% per glideTime sec.
+                        v.glideCoefficient = 1.0f - std::exp (-1.0f / (glideTimeSec * sampleRateFloat));
+                    else
+                        v.currentGlideFrequency = frequency;  // snap
+
+                    return;  // legato: no retrigger, no new voice allocation
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------
+        // Normal (Poly / Mono) voice allocation
+        // -----------------------------------------------------------------------
 
         // Find a free voice or steal the oldest (LRU)
         int voiceIndex = findFreeVoice();
@@ -1794,7 +1917,7 @@ private:
                          ampAttack, ampDecay, ampSustain, ampRelease,
                          morphedResonators, morphedCreatures, morphedFluid,
                          seaState, resonatorBrightness, resonatorDecay,
-                         creatureRate);
+                         creatureRate, glideTimeSec);
     }
 
     void initializeVoice (OspreyVoice& voice, int noteNumber, float velocity, float frequency,
@@ -1803,7 +1926,7 @@ private:
                           const CreatureVoice* morphedCreatures,
                           const FluidCharacter& /*morphedFluid*/,
                           float /*seaState*/, float resonatorBrightness, float resonatorDecay,
-                          float creatureRate)
+                          float creatureRate, float glideTimeSec = 0.0f)
     {
         // --- Voice lifecycle ---
         voice.active                = true;
@@ -1811,8 +1934,24 @@ private:
         voice.velocity              = velocity;
         voice.startTimestamp         = voiceCounter++;
         voice.targetFrequency       = frequency;
-        voice.currentGlideFrequency = frequency;
-        voice.glideCoefficient      = 1.0f;  // 1.0 = instant (no glide)
+
+        // Round 10F: Wire glideCoefficient from osprey_glide parameter.
+        // Previously hardcoded to 1.0 (instant). Now:
+        //   glideTime == 0  -> coefficient = 1.0 (snap, currentGlideFrequency = target)
+        //   glideTime >  0  -> coefficient = 1 - exp(-1/(glideTime * sampleRate))
+        // The coefficient drives the per-sample IIR in the render loop:
+        //   currentFrequency += (target - current) * coefficient
+        static constexpr float kMinGlideSec = 0.001f;
+        if (glideTimeSec > kMinGlideSec && voice.currentGlideFrequency > 10.0f)
+        {
+            // Glide from previous position to new target
+            voice.glideCoefficient = 1.0f - std::exp (-1.0f / (glideTimeSec * sampleRateFloat));
+        }
+        else
+        {
+            voice.currentGlideFrequency = frequency;
+            voice.glideCoefficient      = 1.0f;  // instant: reaches target next sample
+        }
         voice.fadingOut              = false;
         voice.fadeGain               = 1.0f;
         voice.controlCounter         = 0;
@@ -1951,6 +2090,9 @@ private:
     // --- Global fluid energy model (shared by all voices) ---
     FluidEnergyModel fluidModel;
 
+    // D006: aftertouch handler — CS-80-style channel pressure → shore blend shift
+    PolyAftertouch aftertouch;
+
     // D005/D004 fix: OspreyLFO instance to modulate sea state (amplitude breathing).
     // OspreyLFO was fully implemented (Section 2) but never instantiated as a member.
     // Route: LFO output -> effectiveSeaState modulation (low-frequency wave energy swell).
@@ -2006,6 +2148,8 @@ private:
 
     // Filter & space
     std::atomic<float>* paramFilterTilt        = nullptr;
+    std::atomic<float>* paramFilterEnvDepth    = nullptr;  // D001: velocity → tilt LP cutoff
+    float               filterEnvBoost         = 0.0f;    // computed block-rate, LP branch only
     std::atomic<float>* paramHarborVerb        = nullptr;
     std::atomic<float>* paramFog               = nullptr;
 
@@ -2020,6 +2164,10 @@ private:
     std::atomic<float>* paramMacroMovement     = nullptr;
     std::atomic<float>* paramMacroCoupling     = nullptr;
     std::atomic<float>* paramMacroSpace        = nullptr;
+
+    // Round 10F: voice mode and glide (osprey_voiceMode, osprey_glide)
+    std::atomic<float>* paramVoiceMode         = nullptr;  // 0=Poly, 1=Mono, 2=Legato
+    std::atomic<float>* paramGlideTime         = nullptr;  // portamento time 0–2s
 };
 
 } // namespace xomnibus

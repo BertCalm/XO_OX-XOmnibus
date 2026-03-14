@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Bob_Pad_Lush",
+  "name": "Sargasso Drift",
   "mood": "Foundation",
   "engines": [
     "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB slow lush pad \u2014 wide detune, slow attack, sustained presence. Foundational warm pad.",
+  "description": "BOB slow lush pad — wide detune, slow attack, sustained presence. Foundational warm pad.",
   "tags": [
     "bob",
     "pad",

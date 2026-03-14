@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Detune Bass",
+  "name": "Thermocline Beating",
   "mood": "Foundation",
   "engines": [
     "Odyssey"
@@ -27,25 +27,21 @@
   },
   "parameters": {
     "Odyssey": {
-      "osc_a_mode": 0.0,
-      "osc_a_shape": 0.0,
-      "osc_a_level": 0.85,
-      "osc_b_mode": 0.0,
-      "osc_b_shape": 0.0,
-      "osc_b_level": 0.75,
-      "osc_b_fine": 8.0,
-      "filt_a_cutoff": 2000.0,
-      "filt_a_reso": 0.15,
-      "filt_a_slope": 1.0,
-      "env_amp_attack": 3.0,
-      "env_amp_decay": 350.0,
-      "env_amp_sustain": 0.6,
-      "env_amp_release": 200.0,
-      "env_filter_attack": 3.0,
-      "env_filter_decay": 250.0,
-      "env_filter_sustain": 0.2,
-      "filt_a_env_amt": 0.4,
-      "master_gain": -2.0
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_oscA_level": 0.85,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_shape": 0.0,
+      "drift_oscB_level": 0.75,
+      "drift_filterCutoff": 2000.0,
+      "drift_filterReso": 0.15,
+      "drift_filterSlope": 1.0,
+      "drift_attack": 3.0,
+      "drift_decay": 350.0,
+      "drift_sustain": 0.6,
+      "drift_release": 200.0,
+      "drift_filterEnvAmt": 0.4,
+      "drift_level": -2.0
     }
   },
   "coupling": null,

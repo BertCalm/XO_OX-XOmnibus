@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
 #include <array>
@@ -350,6 +351,8 @@ public:
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
 
+        aftertouch.prepare (sampleRate);  // D006: 5ms attack / 20ms release smoothing
+
         // Initialize voices
         for (auto& v : voices)
             v.reset();
@@ -431,6 +434,10 @@ public:
             glideCoeff = 1.0f - std::exp (-1.0f / (glideTime * srf));
 
         // Apply macro offsets to boid parameters
+        // D006: aftertouch boosts scatter (sensitivity 0.25) — pressing harder accelerates
+        // particle scatter, modelling the chromatophore rate speeding up under pressure.
+        // atPressure is computed after the MIDI loop so we use a forward-read pattern:
+        // scatter is a block-constant, so we compute it after updateBlock() below.
         float effectiveSep    = clamp (pSep + macroChar * 0.3f, 0.0f, 1.0f);
         float effectiveAlign  = clamp (pAlign + macroMove * 0.3f, 0.0f, 1.0f);
         float effectiveCoh    = clamp (pCoh + couplingCohesionMod + macroCoup * 0.3f, 0.0f, 1.0f);
@@ -460,7 +467,20 @@ public:
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
+            // D006: channel pressure → aftertouch (applied to particle scatter rate below)
+            else if (msg.isChannelPressure())
+                aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
         }
+
+        // D006: smooth aftertouch pressure — models the chromatophore rate response.
+        // Pressing harder causes faster particle scatter (color shift), exactly like
+        // an octopus accelerating its chromatophore cycles under stress or excitement.
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);  // channel-mode: voice 0 holds global value
+
+        // D006: aftertouch boosts separation (scatter) — sensitivity 0.25.
+        // Higher pressure = particles scatter further from their neighbors = faster color shift.
+        effectiveSep = clamp (effectiveSep + atPressure * 0.25f, 0.0f, 1.0f);
 
         // Apply murmuration trigger to all active voices
         if (trigMurmuration)
@@ -1380,6 +1400,9 @@ private:
     float couplingVelocityMod = 0.0f;
     float couplingCohesionMod = 0.0f;
     bool couplingMurmurationTrig = false;
+
+    // D006: CS-80-inspired poly aftertouch (channel pressure → particle scatter rate)
+    PolyAftertouch aftertouch;
 
     // Output cache for coupling reads
     std::vector<float> outputCacheL;

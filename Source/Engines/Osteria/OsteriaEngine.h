@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/ShoreSystem/ShoreSystem.h"
@@ -662,6 +663,8 @@ public:
             for (int s = 0; s < kHallDelayMax; ++s)
                 hallBuf[i][s] = 0.0f;
         }
+
+        aftertouch.prepare (sampleRate);
     }
 
     void releaseResources() override {}
@@ -824,8 +827,28 @@ public:
         TavernCharacter tc = morphTavern (tavernMorph);
         tavernRoom.setCharacter (tc, effectiveTavern, srf);
 
+        // D001: filter envelope — compute peak velocity × ampLevel across active voices.
+        // This is the primary mechanism for D001 compliance in Osteria: harder/fresher
+        // hits open the smoke filter upward, making the ensemble brighter on attack.
+        // kOsteriaFilterEnvMaxHz = 6000 Hz: at depth=0.25, full vel+env adds +1500 Hz.
+        {
+            static constexpr float kOsteriaFilterEnvMaxHz = 6000.0f;
+            const float filterEnvDepth = loadParam (paramFilterEnvDepth, 0.25f);
+            float peakVelEnv = 0.0f;
+            for (const auto& voice : voices)
+            {
+                if (voice.active)
+                {
+                    float velEnv = voice.velocity * voice.ampEnv.level;
+                    peakVelEnv = std::max (peakVelEnv, velEnv);
+                }
+            }
+            filterEnvBoost = filterEnvDepth * peakVelEnv * kOsteriaFilterEnvMaxHz;
+        }
+
         // Setup smoke filter
-        float smokeCutoff = lerp (18000.0f, 3000.0f, pSmoke);
+        float smokeCutoff = lerp (18000.0f, 3000.0f, pSmoke) + filterEnvBoost;
+        smokeCutoff = std::max (200.0f, std::min (20000.0f, smokeCutoff));
         smokeFilter.setCoefficients (smokeCutoff, 0.0f, srf);
 
         // Setup warmth filter
@@ -858,7 +881,18 @@ public:
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
+            else if (msg.isChannelPressure())
+                aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
         }
+
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);
+
+        // D006: aftertouch deepens tavern mix — more rhythmic folk character on pressure
+        // (sensitivity 0.25). Full pressure adds up to +0.25 to effectiveTavern, pulling
+        // the ensemble deeper into the FDN tavern room — the ensemble absorbs into the pub.
+        effectiveTavern = clamp (effectiveTavern + atPressure * 0.25f, 0.0f, 1.0f);
+        tavernRoom.setCharacter (tc, effectiveTavern, srf);
 
         float peakEnv = 0.0f;
 
@@ -1500,6 +1534,12 @@ public:
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "osteria_smoke", 1 }, "Osteria Smoke",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.1f));
+        // D001: filter envelope depth — peak voice velocity × ampLevel boosts smoke cutoff.
+        // The smokeFilter LPF (3kHz–18kHz) brightens on harder hits, satisfying D001.
+        // Default 0.25: at full velocity and attack peak, adds +3750 Hz above smoke cutoff.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "osteria_filterEnvDepth", 1 }, "Osteria Filter Env Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.25f));
 
         // --- Envelope ---
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
@@ -1568,9 +1608,10 @@ public:
         paramWarmth         = apvts.getRawParameterValue ("osteria_warmth");
         paramOceanBleed     = apvts.getRawParameterValue ("osteria_oceanBleed");
 
-        paramPatina         = apvts.getRawParameterValue ("osteria_patina");
-        paramPorto          = apvts.getRawParameterValue ("osteria_porto");
-        paramSmoke          = apvts.getRawParameterValue ("osteria_smoke");
+        paramPatina          = apvts.getRawParameterValue ("osteria_patina");
+        paramPorto           = apvts.getRawParameterValue ("osteria_porto");
+        paramSmoke           = apvts.getRawParameterValue ("osteria_smoke");
+        paramFilterEnvDepth  = apvts.getRawParameterValue ("osteria_filterEnvDepth");
 
         paramAttack         = apvts.getRawParameterValue ("osteria_attack");
         paramDecay          = apvts.getRawParameterValue ("osteria_decay");
@@ -1797,6 +1838,9 @@ private:
     uint64_t voiceCounter = 0;         // Monotonic counter for LRU voice stealing
     int activeVoices = 0;              // Current active voice count (reported to UI)
 
+    // D006: aftertouch handler — CS-80-style channel pressure → tavern mix depth
+    PolyAftertouch aftertouch;
+
     // --- Coupling accumulators ---
     // These accumulate coupling input between renderBlock calls and are
     // consumed (reset to 0) at the start of each block.
@@ -1893,6 +1937,10 @@ private:
     std::atomic<float>* paramMacroMovement = nullptr;
     std::atomic<float>* paramMacroCoupling = nullptr;
     std::atomic<float>* paramMacroSpace = nullptr;
+
+    // D001: filter envelope depth + per-block boost (Hz, applied to smoke filter)
+    std::atomic<float>* paramFilterEnvDepth = nullptr;
+    float filterEnvBoost = 0.0f;
 };
 
 } // namespace xomnibus

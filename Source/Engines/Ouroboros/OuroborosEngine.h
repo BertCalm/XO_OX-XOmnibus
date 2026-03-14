@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/EngineProfiler.h"
 #include "../../DSP/FastMath.h"
 #include <array>
@@ -790,6 +791,7 @@ public:
 
         profiler.prepare (sampleRate, maxBlockSize);
         profiler.setCpuBudgetFraction (0.22f);  // 22% CPU budget — generous for RK4 at 4x oversample
+        aftertouch.prepare (sampleRate);
     }
 
     void releaseResources() override
@@ -850,9 +852,36 @@ public:
             currentTopology = newTopology;
 
         //----------------------------------------------------------------------
+        // Handle MIDI events
+        //----------------------------------------------------------------------
+        for (const auto metadata : midi)
+        {
+            auto message = metadata.getMessage();
+            if (message.isNoteOn())
+                handleNoteOn (message.getNoteNumber(), message.getFloatVelocity());
+            else if (message.isNoteOff())
+                handleNoteOff (message.getNoteNumber());
+            else if (message.isAllNotesOff() || message.isAllSoundOff())
+            {
+                for (auto& voice : voices)
+                    voice.resetVoice();
+            }
+            // D006: channel pressure → aftertouch (applied to leash/chaos below)
+            else if (message.isChannelPressure())
+                aftertouch.setChannelPressure (message.getChannelPressureValue() / 127.0f);
+        }
+
+        // D006: smooth aftertouch pressure and compute modulation value
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);
+
+        //----------------------------------------------------------------------
         // Apply coupling modulation to chaos index
         //----------------------------------------------------------------------
-        float effectiveChaos = clamp (chaosIndex + couplingChaosModulation, 0.0f, 1.0f);
+        // D006: aftertouch deepens chaos (sensitivity 0.3) and loosens the leash
+        // Full pressure adds up to +0.3 chaos and reduces leash by up to -0.3
+        float effectiveChaos = clamp (chaosIndex + couplingChaosModulation + atPressure * 0.3f, 0.0f, 1.0f);
+        float effectiveLeash = clamp (leashAmount - atPressure * 0.3f, 0.0f, 1.0f);
 
         //----------------------------------------------------------------------
         // Precompute 3D-to-stereo projection rotation matrix.
@@ -873,23 +902,6 @@ public:
         //----------------------------------------------------------------------
         float dampAlpha = 1.0f - (dampingAmount + couplingDampingModulation) * 0.95f;
         dampAlpha = clamp (dampAlpha, 0.05f, 1.0f);
-
-        //----------------------------------------------------------------------
-        // Handle MIDI events
-        //----------------------------------------------------------------------
-        for (const auto metadata : midi)
-        {
-            auto message = metadata.getMessage();
-            if (message.isNoteOn())
-                handleNoteOn (message.getNoteNumber(), message.getFloatVelocity());
-            else if (message.isNoteOff())
-                handleNoteOff (message.getNoteNumber());
-            else if (message.isAllNotesOff() || message.isAllSoundOff())
-            {
-                for (auto& voice : voices)
-                    voice.resetVoice();
-            }
-        }
 
         //----------------------------------------------------------------------
         // Per-sample rendering loop
@@ -986,7 +998,7 @@ public:
                     // FREE-RUNNING PATH: attractor evolves without pitch lock.
                     // Pure chaos — the vent's raw thermodynamic output.
                     //----------------------------------------------------------
-                    if (leashAmount < 0.99f)
+                    if (effectiveLeash < 0.99f)
                     {
                         AttractorState& freeState = voice.crossfading ? voice.attractorB : voice.attractorA;
                         float stepSize = freeState.computeStepSize (targetFrequency, effectiveChaos);
@@ -1011,7 +1023,7 @@ public:
                     // frequency. The chaos still evolves between resets,
                     // producing rich harmonics above the forced fundamental.
                     //----------------------------------------------------------
-                    if (leashAmount > 0.01f)
+                    if (effectiveLeash > 0.01f)
                     {
                         // Advance leash phasor at oversampled rate
                         voice.leashPhasorPhase += voice.leashPhasorIncrement / static_cast<double> (kOversample);
@@ -1049,31 +1061,31 @@ public:
                     // perfectly tethered to MIDI pitch.
                     //----------------------------------------------------------
                     float blendedX, blendedY, blendedZ, velocityOutX, velocityOutY;
-                    if (leashAmount <= 0.01f)
+                    if (effectiveLeash <= 0.01f)
                     {
                         blendedX = freeRunX; blendedY = freeRunY; blendedZ = freeRunZ;
                         velocityOutX = freeRunVelocityX; velocityOutY = freeRunVelocityY;
                     }
-                    else if (leashAmount >= 0.99f)
+                    else if (effectiveLeash >= 0.99f)
                     {
                         blendedX = syncedX; blendedY = syncedY; blendedZ = syncedZ;
                         velocityOutX = syncedVelocityX; velocityOutY = syncedVelocityY;
                     }
                     else
                     {
-                        float freeWeight = 1.0f - leashAmount;
-                        blendedX = freeWeight * freeRunX + leashAmount * syncedX;
-                        blendedY = freeWeight * freeRunY + leashAmount * syncedY;
-                        blendedZ = freeWeight * freeRunZ + leashAmount * syncedZ;
-                        velocityOutX = freeWeight * freeRunVelocityX + leashAmount * syncedVelocityX;
-                        velocityOutY = freeWeight * freeRunVelocityY + leashAmount * syncedVelocityY;
+                        float freeWeight = 1.0f - effectiveLeash;
+                        blendedX = freeWeight * freeRunX + effectiveLeash * syncedX;
+                        blendedY = freeWeight * freeRunY + effectiveLeash * syncedY;
+                        blendedZ = freeWeight * freeRunZ + effectiveLeash * syncedZ;
+                        velocityOutX = freeWeight * freeRunVelocityX + effectiveLeash * syncedVelocityX;
+                        velocityOutY = freeWeight * freeRunVelocityY + effectiveLeash * syncedVelocityY;
                     }
 
                     //----------------------------------------------------------
                     // TOPOLOGY CROSSFADE: blend between old (A) and new (B)
                     // topology states during a 50ms transition.
                     //----------------------------------------------------------
-                    if (voice.crossfading && leashAmount < 0.99f)
+                    if (voice.crossfading && effectiveLeash < 0.99f)
                     {
                         float oldX = voice.attractorA.x;
                         float oldY = voice.attractorA.y;
@@ -1492,6 +1504,9 @@ private:
 
     //-- Performance profiler --------------------------------------------------
     EngineProfiler profiler;
+
+    // ---- D006 Aftertouch — pressure loosens the leash (more chaos depth) ----
+    PolyAftertouch aftertouch;
 
     //-- Cached parameter pointers (attached once, read per-block) -------------
     std::atomic<float>* paramTopology   = nullptr;

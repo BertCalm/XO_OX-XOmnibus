@@ -36,13 +36,14 @@ struct OwlfishParamSnapshot
     float bodyLevel    = 0.3f;
 
     // ── Owl Optics ─────────────────────────────────
-    float compRatio     = 0.4f;
-    float compThreshold = 0.5f;
-    float compAttack    = 0.2f;
-    float compRelease   = 0.4f;
-    float filterCutoff  = 0.6f;
-    float filterReso    = 0.3f;
-    float filterTrack   = 0.5f;
+    float compRatio      = 0.4f;
+    float compThreshold  = 0.5f;
+    float compAttack     = 0.2f;
+    float compRelease    = 0.4f;
+    float filterCutoff   = 0.6f;
+    float filterReso     = 0.3f;
+    float filterTrack    = 0.5f;
+    float filterEnvDepth = 0.25f;   // D001: filter env depth (owl_filterEnvDepth)
 
     // ── Diet ────────────────────────────────────────
     float grainSize    = 0.3f;
@@ -113,9 +114,10 @@ struct OwlfishParamSnapshot
         pCompThreshold  = apvts.getRawParameterValue(P::compThreshold);
         pCompAttack     = apvts.getRawParameterValue(P::compAttack);
         pCompRelease    = apvts.getRawParameterValue(P::compRelease);
-        pFilterCutoff   = apvts.getRawParameterValue(P::filterCutoff);
-        pFilterReso     = apvts.getRawParameterValue(P::filterReso);
-        pFilterTrack    = apvts.getRawParameterValue(P::filterTrack);
+        pFilterCutoff    = apvts.getRawParameterValue(P::filterCutoff);
+        pFilterReso      = apvts.getRawParameterValue(P::filterReso);
+        pFilterTrack     = apvts.getRawParameterValue(P::filterTrack);
+        pFilterEnvDepth  = apvts.getRawParameterValue(P::filterEnvDepth);
 
         pGrainSize      = apvts.getRawParameterValue(P::grainSize);
         pGrainDensity   = apvts.getRawParameterValue(P::grainDensity);
@@ -177,9 +179,10 @@ struct OwlfishParamSnapshot
         compThreshold  = pCompThreshold->load();
         compAttack     = pCompAttack->load();
         compRelease    = pCompRelease->load();
-        filterCutoff   = pFilterCutoff->load();
-        filterReso     = pFilterReso->load();
-        filterTrack    = pFilterTrack->load();
+        filterCutoff    = pFilterCutoff->load();
+        filterReso      = pFilterReso->load();
+        filterTrack     = pFilterTrack->load();
+        filterEnvDepth  = pFilterEnvDepth->load();
 
         grainSize      = pGrainSize->load();
         grainDensity   = pGrainDensity->load();
@@ -287,9 +290,10 @@ private:
     std::atomic<float>* pCompThreshold  = nullptr;
     std::atomic<float>* pCompAttack     = nullptr;
     std::atomic<float>* pCompRelease    = nullptr;
-    std::atomic<float>* pFilterCutoff   = nullptr;
-    std::atomic<float>* pFilterReso     = nullptr;
-    std::atomic<float>* pFilterTrack    = nullptr;
+    std::atomic<float>* pFilterCutoff    = nullptr;
+    std::atomic<float>* pFilterReso      = nullptr;
+    std::atomic<float>* pFilterTrack     = nullptr;
+    std::atomic<float>* pFilterEnvDepth  = nullptr;
 
     std::atomic<float>* pGrainSize      = nullptr;
     std::atomic<float>* pGrainDensity   = nullptr;

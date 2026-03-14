@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "name": "The Moment Before",
+  "mood": "Atmosphere",
+  "engines": ["Odyssey"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Starts at JOURNEY 0.48 — you are already halfway between familiar and alien, and the Climax threshold at 0.78 is reachable but not immediate. A triangle-wave pad breathing slowly with Tidal Pulse; hold a note and push into aftertouch and the shimmer begins its 1.5-second bloom. This is the anticipatory patch — the intake of breath before something irreversible.",
+  "tags": ["climax", "demo", "pad", "tidal", "atmospheric", "journey", "breath", "anticipation", "familiar"],
+  "macroLabels": ["JOURNEY", "BREATHE", "BLOOM", "FRACTURE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "macroJourney": 0.48,
+  "climaxThreshold": 0.78,
+  "bloomTime": 1.5,
+  "modRouting": [
+    {
+      "source": "aftertouch",
+      "destination": "macroJourney",
+      "amount": 0.52,
+      "curve": "linear",
+      "note": "Gentle enough that you have to consciously press past the threshold — the bloom requires intention"
+    }
+  ],
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 0,
+      "drift_oscA_shape": 3,
+      "drift_oscA_tune": 0.0,
+      "drift_oscA_level": 0.6,
+      "drift_oscA_detune": 0.2,
+      "drift_oscA_pw": 0.5,
+      "drift_oscA_fmDepth": 0.0,
+      "drift_oscB_mode": 0,
+      "drift_oscB_shape": 3,
+      "drift_oscB_tune": 12.0,
+      "drift_oscB_level": 0.35,
+      "drift_oscB_detune": 0.15,
+      "drift_oscB_pw": 0.5,
+      "drift_oscB_fmDepth": 0.0,
+      "drift_subLevel": 0.15,
+      "drift_noiseLevel": 0.0,
+      "drift_hazeAmount": 0.1,
+      "drift_filterCutoff": 4500.0,
+      "drift_filterReso": 0.08,
+      "drift_filterSlope": 0,
+      "drift_filterEnvAmt": 0.05,
+      "drift_formantMorph": 0.5,
+      "drift_formantMix": 0.05,
+      "drift_shimmerAmount": 0.1,
+      "drift_shimmerTone": 0.7,
+      "drift_attack": 1.2,
+      "drift_decay": 4.0,
+      "drift_sustain": 0.8,
+      "drift_release": 3.5,
+      "drift_lfoRate": 0.12,
+      "drift_lfoDepth": 0.06,
+      "drift_lfoDest": 0,
+      "drift_driftDepth": 0.15,
+      "drift_driftRate": 0.08,
+      "drift_level": 0.68,
+      "drift_voiceMode": 0,
+      "drift_glide": 0.0,
+      "drift_polyphony": 6
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.7,
+    "movement": 0.35,
+    "density": 0.45,
+    "space": 0.75,
+    "aggression": 0.0
+  }
+}

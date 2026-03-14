@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Ice Lattice Pulse",
+  "mood": "Flux",
+  "engines": [
+    "Optic",
+    "Oblong"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPTIC drives Oblong's dense detuned stack with cold, clinical precision. No warmth — pure crystal rhythmic machinery. Complex polyrhythmic subdivision, dense oscillator mass, zero organic heat. DNA gap-fill: LOW warmth + HIGH density corner for Optic.",
+  "tags": [
+    "cold",
+    "complex",
+    "dense",
+    "rhythmic",
+    "autopulse"
+  ],
+  "macroLabels": [
+    "PULSE GRID",
+    "DENSITY",
+    "FILTER",
+    "EVOLVE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": 130,
+  "dna": {
+    "brightness": 0.70,
+    "warmth": 0.08,
+    "movement": 0.88,
+    "density": 0.91,
+    "space": 0.35,
+    "aggression": 0.60
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.85,
+      "optic_inputGain": 1.8,
+      "optic_autoPulse": 1,
+      "optic_pulseRate": 3.5,
+      "optic_pulseShape": 0.08,
+      "optic_pulseSwing": 0.05,
+      "optic_pulseEvolve": 0.45,
+      "optic_pulseSubdiv": 0.85,
+      "optic_pulseAccent": 0.9,
+      "optic_modDepth": 0.8,
+      "optic_modMixPulse": 0.85,
+      "optic_modMixSpec": 0.5,
+      "optic_vizMode": 0,
+      "optic_vizFeedback": 0.6,
+      "optic_vizSpeed": 1.8,
+      "optic_vizIntensity": 0.9
+    },
+    "Oblong": {
+      "bob_fltCutoff": 7500.0,
+      "bob_fltReso": 0.5,
+      "bob_fltDrive": 0.4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Oblong",
+        "type": "AmpToFilter",
+        "amount": 0.7
+      },
+      {
+        "engineA": "Optic",
+        "engineB": "Oblong",
+        "type": "RhythmToBlend",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -54,6 +54,7 @@
 //==============================================================================
 
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
 #include <array>
@@ -1539,6 +1540,7 @@ public:
         characterStage.prepare (sampleRate);
         fxDelay.prepare (sampleRate);
         fxReverb.prepare (sampleRate);
+        aftertouch.prepare (sampleRate);
 
         for (int v = 0; v < kNumVoices; ++v)
         {
@@ -1610,7 +1612,13 @@ public:
         for (int v = 0; v < kNumVoices; ++v)
             vBlend[v] = clamp (vBlend[v] + machineBias, 0.0f, 1.0f);
 
+        // D006: smooth aftertouch pressure and compute modulation value
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);
+
         // M2 PUNCH: bias snap and body (0=soft, 1=aggressive)
+        // D006: aftertouch adds up to +0.3 to PUNCH macro (sensitivity 0.3)
+        mPunch = clamp (mPunch + atPressure * 0.3f, 0.0f, 1.0f);
         float punchBias = (mPunch - 0.5f) * 0.6f;
         for (int v = 0; v < kNumVoices; ++v)
         {
@@ -1619,6 +1627,9 @@ public:
         }
 
         // M4 MUTATE: per-block random drift on blend + character
+        // D006: mod wheel scales MUTATE depth — wheel at max doubles drift range.
+        // Sensitivity: +1.0 additive multiplier at full wheel (0.0–1.0 → ×1.0–×2.0).
+        mMutate = clamp (mMutate * (1.0f + modWheelAmount), 0.0f, 1.0f);
         if (mMutate > 0.01f)
         {
             for (int v = 0; v < kNumVoices; ++v)
@@ -1717,6 +1728,15 @@ public:
                 int voiceIdx = noteToVoice (msg.getNoteNumber());
                 if (voiceIdx >= 0) voices[voiceIdx].releaseVoice();
             }
+            // D006: channel pressure → aftertouch (applied to PUNCH macro below)
+            else if (msg.isChannelPressure())
+                aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
+            // D006: mod wheel (CC#1) → MUTATE macro depth scale
+            // Wheel up = more per-hit random drift in blend + character. Full wheel
+            // doubles the effective MUTATE depth — the kit personality becomes
+            // increasingly unpredictable with each trigger.
+            else if (msg.isController() && msg.getControllerNumber() == 1)
+                modWheelAmount = msg.getControllerValue() / 127.0f;
         }
 
         // ---- 3. Precompute block-constant voice gains ----
@@ -1929,6 +1949,9 @@ private:
     std::atomic<float>* macroSpace   = nullptr;
     std::atomic<float>* macroMutate  = nullptr;
 
+    // ---- D006 Aftertouch — pressure boosts PUNCH macro (snap+body aggression) ----
+    PolyAftertouch aftertouch;
+
     // Cross-Voice Coupling (XVC) parameter pointers
     std::atomic<float>* xvcKickSnareFilter = nullptr;
     std::atomic<float>* xvcSnareHatDecay   = nullptr;
@@ -1956,6 +1979,9 @@ private:
 
     // MUTATE macro RNG
     OnsetNoiseGen mutateRng;
+
+    // D006: mod wheel (CC#1) — scales MUTATE macro depth
+    float modWheelAmount = 0.0f;
 
     //-- MIDI note to voice mapping ----------------------------------------------
     // Maps incoming MIDI notes to voice indices using the GM drum map.

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Formant Bass",
+  "name": "Vowel Depth",
   "mood": "Foundation",
   "engines": [
     "Oblong"
@@ -29,21 +29,21 @@
   },
   "parameters": {
     "Oblong": {
-      "oscA_wave": 0.0,
-      "oscA_tune": -12.0,
-      "oscA_shape": 0.4,
-      "oscA_drift": 0.12,
-      "oscB_wave": 0.0,
-      "oscB_blend": 0.58,
-      "oscB_detune": -3.0,
-      "flt_mode": 2.0,
-      "flt_cutoff": 700.0,
-      "flt_character": 0.55,
-      "env_attack": 0.01,
-      "env_decay": 0.45,
-      "env_sustain": 0.6,
-      "env_release": 0.45,
-      "bob_mode": 0.1
+      "bob_oscA_wave": 0.0,
+      "bob_oscA_tune": -12.0,
+      "bob_oscA_shape": 0.4,
+      "bob_oscA_drift": 0.12,
+      "bob_oscB_wave": 0.0,
+      "bob_oscB_blend": 0.58,
+      "bob_oscB_detune": -3.0,
+      "bob_fltMode": 2.0,
+      "bob_fltCutoff": 700.0,
+      "bob_fltChar": 0.55,
+      "bob_ampAttack": 0.01,
+      "bob_ampDecay": 0.45,
+      "bob_ampSustain": 0.6,
+      "bob_ampRelease": 0.45,
+      "bob_bobMode": 0.1
     }
   },
   "coupling": null,

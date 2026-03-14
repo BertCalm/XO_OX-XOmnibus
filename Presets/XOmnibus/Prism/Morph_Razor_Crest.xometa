@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Morph Razor Crest",
+  "mood": "Prism",
+  "engines": [
+    "OddOscar"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Wavetable at peak spectral position with full resonant bite — ultra-bright harmonic crest, aggressive resonance spike, zero warmth padding. DNA gap-fill: HIGH brightness + HIGH aggression corner.",
+  "tags": [
+    "bright",
+    "aggressive",
+    "spectral",
+    "razor",
+    "lead"
+  ],
+  "macroLabels": [
+    "MORPH",
+    "BITE",
+    "RESONANCE",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.18,
+    "movement": 0.55,
+    "density": 0.70,
+    "space": 0.30,
+    "aggression": 0.91
+  },
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.98,
+      "morph_bloom": 0.15,
+      "morph_decay": 0.08,
+      "morph_sustain": 0.72,
+      "morph_release": 0.12,
+      "morph_filterCutoff": 14000.0,
+      "morph_filterReso": 0.88,
+      "morph_drift": 0.05,
+      "morph_sub": 0.0,
+      "morph_detune": 2.0,
+      "morph_level": 0.82,
+      "morph_polyphony": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

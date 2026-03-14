@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/FastMath.h"
 
 // XOverworld DSP — included via target_include_directories in CMakeLists.txt
@@ -50,6 +51,7 @@ public:
         glitch.prepare(sr);
         echo.prepare(sr);
         crusher.reset();
+        aftertouch.prepare(sampleRate);
         eraSmooth  = 0.0f;
         eraYSmooth = 0.0f;
         // P0-05 fix: allocate per-sample output cache for coupling reads
@@ -75,6 +77,38 @@ public:
     static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         xoverworld::addParameters(params); // delegates to Parameters.h
+
+        // XOmnibus standard macros — added here (not in standalone Parameters.h)
+        // to preserve standalone XOverworld preset compatibility.
+        // All default to 0.0 so existing presets are unaffected.
+        //
+        // M1 ERA: sweeps ERA X-axis (0→1), cross-fading the chip engine mix.
+        //         At max: full ERA X traversal — NES→FM character shift.
+        // M2 CRUSH: increases BitCrusher mix (0→0.85) — lo-fi degradation.
+        //         At max: heavy 8-bit crunch imposed over the chip sound.
+        // M3 GLITCH: increases GlitchEngine amount (0→0.9) and mix (0→0.8).
+        //         At max: extreme glitch artefacts dominate the texture.
+        // M4 SPACE: increases FIREcho mix (0→0.7) — deep echo tail.
+        //         At max: long reverberant echo fills the stereo field.
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID { "ow_macroEra",   1 }, "Overworld ERA",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID { "ow_macroCrush", 1 }, "Overworld Crush",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID { "ow_macroGlitch", 1 }, "Overworld Glitch",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID { "ow_macroSpace",  1 }, "Overworld Space",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
+
+        // D001: filter envelope depth — note-on velocity × decaying envelope boosts
+        // the master SVF cutoff. Default 0.25: at full velocity (1.0) and attack peak,
+        // adds +2000 Hz above the static filter cutoff, mapping touch to brightness.
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID { "ow_filterEnvDepth", 1 }, "Overworld Filter Env Depth",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.25f));
     }
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
@@ -183,6 +217,15 @@ public:
         p_gbWaveSlot    = apvts.getRawParameterValue(PID::GB_WAVE_SLOT);
         p_gbPulseDuty   = apvts.getRawParameterValue(PID::GB_PULSE_DUTY);
         p_pceWaveSlot   = apvts.getRawParameterValue(PID::PCE_WAVE_SLOT);
+
+        // XOmnibus macros (declared above in addParameters)
+        p_macroEra      = apvts.getRawParameterValue("ow_macroEra");
+        p_macroCrush    = apvts.getRawParameterValue("ow_macroCrush");
+        p_macroGlitch   = apvts.getRawParameterValue("ow_macroGlitch");
+        p_macroSpace    = apvts.getRawParameterValue("ow_macroSpace");
+
+        // D001: filter envelope depth
+        p_filterEnvDepth = apvts.getRawParameterValue("ow_filterEnvDepth");
     }
 
     //-- Audio -----------------------------------------------------------------
@@ -199,25 +242,69 @@ public:
         // Build ParamSnapshot from cached atomics
         auto snap = buildSnapshot();
 
-        // Update FX units from snapshot (cheap, param-only, no alloc)
-        filter.setMode  (snap.filterType);
-        filter.setCutoff(juce::jlimit(20.0f, 20000.0f,
-                         snap.filterCutoff + externalFilterMod));
-        filter.setResonance(snap.filterReso);
+        // -- Apply XOmnibus macros -------------------------------------------
+        // M1 ERA: sweep ERA X-axis by up to 1.0 (full chip engine cross-fade).
+        // M2 CRUSH: increase BitCrusher wet mix up to 0.85 (heavy lo-fi crunch).
+        // M3 GLITCH: increase glitch amount up to 0.9 and mix up to 0.8.
+        // M4 SPACE: increase FIREcho mix up to 0.7 (deep echo tail).
+        // All macros default to 0.0, so existing presets are unchanged.
+        const float macEra    = (p_macroEra    != nullptr) ? p_macroEra->load()    : 0.0f;
+        const float macCrush  = (p_macroCrush  != nullptr) ? p_macroCrush->load()  : 0.0f;
+        const float macGlitch = (p_macroGlitch != nullptr) ? p_macroGlitch->load() : 0.0f;
+        const float macSpace  = (p_macroSpace  != nullptr) ? p_macroSpace->load()  : 0.0f;
 
-        glitch.setAmount(snap.glitchAmount);
+        // Apply macro offsets (additive, clamped to valid ranges)
+        if (macEra > 0.001f)
+            externalEraMod += macEra;   // ERA X offset: sweeps chip mix toward vertex B
+
+        const float effectiveCrushMix  = juce::jlimit(0.0f, 1.0f, snap.crushMix  + macCrush  * 0.85f);
+        const float effectiveGlitchAmt = juce::jlimit(0.0f, 1.0f, snap.glitchAmount + macGlitch * 0.9f);
+        const float effectiveGlitchMix = juce::jlimit(0.0f, 1.0f, snap.glitchMix   + macGlitch * 0.8f);
+        const float effectiveEchoMix   = juce::jlimit(0.0f, 1.0f, snap.echoMix     + macSpace  * 0.7f);
+
+        // D001: filter envelope — simple one-pole decay tracks note-on velocity.
+        // filterEnvLevel is set to lastNoteOnVelocity on noteOn (detected below),
+        // then decays per-block at a fixed rate (~400ms half-life at typical block sizes).
+        // kOwFilterEnvDecay = 0.9975 per sample ≈ 200ms at 44.1kHz/128 block.
+        // kOwFilterEnvMaxHz = 8000 Hz sweep range for the master SVF cutoff.
+        {
+            static constexpr float kOwFilterEnvMaxHz = 8000.0f;
+            const float filterEnvDepth = (p_filterEnvDepth != nullptr) ? p_filterEnvDepth->load() : 0.25f;
+
+            // Scan MIDI for incoming noteOn to update velocity target
+            for (const auto meta : midi)
+            {
+                const auto msg = meta.getMessage();
+                if (msg.isNoteOn())
+                    filterEnvLevel = msg.getFloatVelocity();
+            }
+            // Decay: one-pole, coefficient chosen so envelope halves in ~200ms
+            const float decayCoeff = std::exp(-1.0f / (0.2f * sr));
+            filterEnvLevel *= decayCoeff;
+
+            const float filterEnvBoost = filterEnvDepth * filterEnvLevel * kOwFilterEnvMaxHz;
+
+            // Update FX units from snapshot (cheap, param-only, no alloc)
+            filter.setMode  (snap.filterType);
+            filter.setCutoff(juce::jlimit(20.0f, 20000.0f,
+                             snap.filterCutoff + externalFilterMod + filterEnvBoost));
+            filter.setResonance(snap.filterReso);
+        }
+
+        glitch.setAmount(effectiveGlitchAmt);
         glitch.setType  (snap.glitchType);
         glitch.setRate  (snap.glitchRate);
         glitch.setDepth (snap.glitchDepth);
-        glitch.setMix   (snap.glitchMix);
+        glitch.setMix   (effectiveGlitchMix);
 
         echo.setDelay   (snap.echoDelay);
         echo.setFeedback(snap.echoFeedback);
-        echo.setMix     (snap.echoMix);
+        echo.setMix     (effectiveEchoMix);
         echo.setFIRCoefficients(snap.echoFir);
 
         crusher.setBits       (snap.crushBits);
         crusher.setRateDivider(snap.crushRate);
+        crusher.setMix        (effectiveCrushMix);
 
         voicePool.applyParams(snap);
 
@@ -231,7 +318,17 @@ public:
                 voicePool.noteOff(msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 voicePool.allNotesOff();
+            else if (msg.isChannelPressure())
+                aftertouch.setChannelPressure(msg.getChannelPressureValue() / 127.0f);
         }
+
+        aftertouch.updateBlock(numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure(0);
+
+        // D006: aftertouch raises ERA Y — more SNES chip character under pressure (sensitivity 0.2).
+        // ERA Y drives the SNES vertex weight in the 3-chip barycentric blend.
+        // Full pressure adds up to +0.2 to targetEraY, nudging the triangle toward SNES.
+        // Clamped to [0.0, 1.0] so it never exceeds valid ERA range.
 
         // D005 fix: minimal LFO added — advance ERA drift phase and apply
         if (snap.eraDriftRate > 0.001f)
@@ -245,7 +342,8 @@ public:
                                         snap.era + externalEraMod
                                         + snap.eraDriftDepth * 0.35f * std::sin(eraPhase * juce::MathConstants<float>::twoPi));
         float targetEraY = juce::jlimit(0.0f, 1.0f,
-                                        snap.eraY + externalEraYMod);
+                                        snap.eraY + externalEraYMod
+                                        + atPressure * 0.2f);
 
         float portaCoeff = 1.0f;
         if (snap.eraPortaTime > 0.001f)
@@ -430,6 +528,7 @@ private:
     xoverworld::GlitchEngine glitch;
     xoverworld::FIREcho     echo;
     xoverworld::BitCrusher  crusher;
+    PolyAftertouch          aftertouch;
 
     float sr         = 44100.0f;
     float eraSmooth  = 0.0f;
@@ -532,6 +631,16 @@ private:
     std::atomic<float>* p_gbWaveSlot   = nullptr;
     std::atomic<float>* p_gbPulseDuty  = nullptr;
     std::atomic<float>* p_pceWaveSlot  = nullptr;
+
+    // XOmnibus macros (registered in addParameters, attached in attachParameters)
+    std::atomic<float>* p_macroEra      = nullptr;
+    std::atomic<float>* p_macroCrush    = nullptr;
+    std::atomic<float>* p_macroGlitch   = nullptr;
+    std::atomic<float>* p_macroSpace    = nullptr;
+
+    // D001: filter envelope depth + per-block envelope level tracker
+    std::atomic<float>* p_filterEnvDepth = nullptr;
+    float filterEnvLevel = 0.0f;   // decays per-block, set to velocity on noteOn
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OverworldEngine)
 };

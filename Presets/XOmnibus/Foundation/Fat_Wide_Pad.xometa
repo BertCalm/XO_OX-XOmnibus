@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Fat_Wide_Pad",
+  "name": "Abyssal Horizon",
   "mood": "Foundation",
   "engines": [
     "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT with maximum stereo width and full detune \u2014 the widest pad achievable.",
+  "description": "FAT with maximum stereo width and full detune — the widest pad achievable.",
   "tags": [
     "fat",
     "wide",

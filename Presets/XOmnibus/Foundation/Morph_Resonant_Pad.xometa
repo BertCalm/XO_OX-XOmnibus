@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Morph_Resonant_Pad",
+  "name": "Eigenfrequency",
   "mood": "Foundation",
   "engines": [
     "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH with medium filter resonance \u2014 the wavetable pad with a hint of self-resonance for character.",
+  "description": "MORPH with medium filter resonance — the wavetable pad with a hint of self-resonance for character.",
   "tags": [
     "morph",
     "resonant",

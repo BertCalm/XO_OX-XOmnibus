@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "OcelotVoicePool.h"
 #include "OcelotParamSnapshot.h"
 #include "OcelotParameters.h"
@@ -19,6 +20,7 @@ public:
         sr = sampleRate;
         maxBlock = maxBlockSize;
         voicePool.prepare(sampleRate);
+        aftertouch.prepare(sampleRate);
         outputCacheL.assign(static_cast<size_t>(maxBlockSize), 0.0f);
         outputCacheR.assign(static_cast<size_t>(maxBlockSize), 0.0f);
         snapshot = {};
@@ -53,7 +55,17 @@ public:
                 voicePool.noteOff(msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 voicePool.allNotesOff();
+            else if (msg.isChannelPressure())
+                aftertouch.setChannelPressure(msg.getChannelPressureValue() / 127.0f);
         }
+
+        aftertouch.updateBlock(numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure(0);
+
+        // D006: aftertouch increases ecosystem depth — more cross-stratum coupling under pressure
+        // (sensitivity 0.3). Full pressure adds up to +0.3 to ecosystemDepth, thickening the
+        // 12-route EcosystemMatrix cross-feed between ocelot habitat strata.
+        snapshot.ecosystemDepth = std::clamp(snapshot.ecosystemDepth + atPressure * 0.3f, 0.0f, 1.0f);
 
         // 3. Clear buffer and render
         buffer.clear();
@@ -112,6 +124,7 @@ public:
 private:
     OcelotVoicePool voicePool;
     OcelotParamSnapshot snapshot;
+    xomnibus::PolyAftertouch aftertouch;
     std::vector<float> outputCacheL, outputCacheR;
     juce::AudioProcessorValueTreeState* apvtsRef = nullptr;
     double sr = 44100.0;

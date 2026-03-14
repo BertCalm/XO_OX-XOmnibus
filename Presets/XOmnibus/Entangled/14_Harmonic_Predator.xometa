@@ -2,12 +2,32 @@
   "schema_version": 1,
   "name": "Harmonic Predator",
   "mood": "Entangled",
-  "engines": ["XOwlfish"],
+  "sonic_dna": {
+    "brightness": 0.4,
+    "warmth": 0.75,
+    "aggression": 0.65,
+    "movement": 0.7,
+    "density": 1.0,
+    "space": 0.6
+  },
+  "engines": [
+    "XOwlfish"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Designed for ORBITAL coupling — balanced subharmonics ready to entangle with additive partials",
-  "tags": ["coupling", "entangled", "orbital", "harmonic"],
-  "macroLabels": ["DEPTH", "FEEDING", "DEFENSE", "PRESSURE"],
+  "tags": [
+    "coupling",
+    "entangled",
+    "orbital",
+    "harmonic"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "FEEDING",
+    "DEFENSE",
+    "PRESSURE"
+  ],
   "couplingIntensity": "Medium",
   "parameters": {
     "XOwlfish": {
@@ -63,5 +83,7 @@
       "owl_couplingBus": 0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

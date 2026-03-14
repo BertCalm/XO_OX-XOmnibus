@@ -119,9 +119,7 @@
       "perc_masterTone": 0.45
     },
     "Overdub": {
-      "dub_oscMode": 1,
       "dub_oscTune": 0.0,
-      "dub_oscShape": 0.5,
       "dub_subLevel": 0.3,
       "dub_noiseLevel": 0.0,
       "dub_filterCutoff": 3000.0,
@@ -131,7 +129,7 @@
       "dub_decay": 0.8,
       "dub_sustain": 0.5,
       "dub_release": 0.6,
-      "dub_sendAmount": 0.45,
+      "dub_sendLevel": 0.45,
       "dub_delayTime": 0.375,
       "dub_delayFeedback": 0.4,
       "dub_reverbMix": 0.35,

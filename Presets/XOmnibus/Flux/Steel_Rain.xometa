@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Steel Rain",
+  "mood": "Flux",
+  "engines": [
+    "Oblong"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Hard metallic clank \u2014 Cushion Pulse through max drive, BP filter at high resonance. Each hit is a steel beam dropping.",
+  "tags": [
+    "bob",
+    "industrial",
+    "clank",
+    "metallic",
+    "hard",
+    "flux"
+  ],
+  "macroLabels": [
+    "CLANK RATE",
+    "METAL BITE",
+    "DRIVE",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.15,
+    "movement": 0.55,
+    "density": 0.45,
+    "space": 0.2,
+    "aggression": 0.9
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_oscA_wave": 3,
+      "bob_oscA_shape": 0.82,
+      "bob_oscA_tune": 0.0,
+      "bob_oscA_drift": 0.04,
+      "bob_oscB_wave": 1,
+      "bob_oscB_detune": 12.0,
+      "bob_oscB_blend": 0.55,
+      "bob_oscB_sync": 1,
+      "bob_oscB_fm": 0.0,
+      "bob_texMode": 2,
+      "bob_texLevel": 0.35,
+      "bob_texTone": 0.85,
+      "bob_texWidth": 0.8,
+      "bob_fltMode": 1,
+      "bob_fltCutoff": 3200.0,
+      "bob_fltReso": 0.82,
+      "bob_fltChar": 0.92,
+      "bob_fltDrive": 0.88,
+      "bob_fltEnvAmt": 0.75,
+      "bob_ampAttack": 0.001,
+      "bob_ampDecay": 0.18,
+      "bob_ampSustain": 0.0,
+      "bob_ampRelease": 0.12,
+      "bob_motAttack": 0.001,
+      "bob_motDecay": 0.08,
+      "bob_motSustain": 0.0,
+      "bob_motRelease": 0.08,
+      "bob_motDepth": 0.85,
+      "bob_lfo1Rate": 0.5,
+      "bob_lfo1Depth": 0.0,
+      "bob_lfo1Shape": 0,
+      "bob_lfo1Target": 0,
+      "bob_curMode": 0,
+      "bob_curAmount": 0.2,
+      "bob_bobMode": 0.7,
+      "bob_dustAmount": 0.55,
+      "bob_dustTone": 0.9,
+      "bob_level": 0.75,
+      "bob_voiceMode": 0,
+      "bob_glide": 0.0,
+      "bob_polyphony": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

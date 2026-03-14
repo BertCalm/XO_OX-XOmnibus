@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
 #include <array>
@@ -480,6 +481,8 @@ public:
         outputCacheLeft.resize (static_cast<size_t> (safeBlockSize), 0.0f);
         outputCacheRight.resize (static_cast<size_t> (safeBlockSize), 0.0f);
 
+        aftertouch.prepare (sampleRate);
+
         // Coupling input buffer for receiving external audio
         couplingInputBuffer.resize (static_cast<size_t> (safeBlockSize), 0.0f);
 
@@ -614,6 +617,7 @@ public:
         // M1 FOLD: adds 40% of macro range to fold point, 30% to fold depth.
         // These scaling factors are tuned so that macro at 100% produces a
         // dramatic but not extreme spectral transformation.
+        // D006: aftertouch added below — atPressure resolved after MIDI loop
         float effectiveFoldPoint = clamp (paramFoldPoint + macroFold * 0.4f + couplingFoldPointModulation, 0.0f, 1.0f);
         float effectiveFoldDepth = clamp (paramFoldDepth + macroFold * 0.3f + couplingFoldDepthModulation, 0.0f, 1.0f);
 
@@ -655,7 +659,20 @@ public:
                 handleNoteOff (message.getNoteNumber());
             else if (message.isAllNotesOff() || message.isAllSoundOff())
                 reset();
+            // D006: channel pressure → aftertouch (applied to fold depth below)
+            else if (message.isChannelPressure())
+                aftertouch.setChannelPressure (message.getChannelPressureValue() / 127.0f);
+            // D006: CC1 mod wheel → STFT fold depth (more spectral processing with wheel; sensitivity 0.3)
+            else if (message.isController() && message.getControllerNumber() == 1)
+                modWheelValue = message.getControllerValue() / 127.0f;
         }
+
+        // D006: smooth aftertouch and apply to fold depth (more spectral shimmer on pressure)
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);
+        // Sensitivity 0.3: full pressure adds up to +0.3 fold depth (denser spectral folding)
+        // D006: mod wheel also adds up to +0.3 fold depth (sensitivity 0.3)
+        effectiveFoldDepth = clamp (effectiveFoldDepth + atPressure * 0.3f + modWheelValue * 0.3f, 0.0f, 1.0f);
 
         float peakEnvelopeLevel = 0.0f;
 
@@ -1852,6 +1869,12 @@ private:
     float smoothedFoldDepth = 0.5f;
     float smoothedRotate = 0.0f;
     float smoothedStretch = 0.0f;
+
+    // D006: aftertouch — pressure increases fold depth (more spectral shimmer on pressure)
+    PolyAftertouch aftertouch;
+
+    // D006: mod wheel — CC1 increases STFT fold depth (more spectral processing with wheel; sensitivity 0.3)
+    float modWheelValue = 0.0f;
 
     // ---- Coupling State ----
     float envelopeOutput = 0.0f;                      // Peak envelope level for amplitude coupling output

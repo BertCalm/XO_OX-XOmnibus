@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Obsidian Vowels",
+  "mood": "Atmosphere",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "High formant resonance with slow cascade blend. The 0.1 Hz stone breathing LFO shifts the vowel character across notes. The PD depth envelope keeps the attack harmonic-free then blooms into complexity.",
+  "tags": [
+    "vowel",
+    "formant",
+    "slow",
+    "hypnotic",
+    "cascade",
+    "atmospheric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": {
+    "sourceInstrument": "Obsidian",
+    "sourceCategory": "Atmosphere",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_densityX": 0.4,
+      "obsidian_tiltY": 0.55,
+      "obsidian_depth": 0.45,
+      "obsidian_stiffness": 0.0,
+      "obsidian_cascadeBlend": 0.2,
+      "obsidian_crossModDepth": 0.1,
+      "obsidian_formantIntensity": 0.75,
+      "obsidian_stereoWidth": 0.5,
+      "obsidian_filterCutoff": 6000.0,
+      "obsidian_filterReso": 0.18,
+      "obsidian_level": 0.72,
+      "obsidian_ampAttack": 1.2,
+      "obsidian_ampDecay": 0.8,
+      "obsidian_ampSustain": 0.85,
+      "obsidian_ampRelease": 3.0,
+      "obsidian_depthAttack": 2.0,
+      "obsidian_depthDecay": 0.6,
+      "obsidian_depthSustain": 0.5,
+      "obsidian_depthRelease": 2.5,
+      "obsidian_lfo1Rate": 0.06,
+      "obsidian_lfo1Depth": 0.22,
+      "obsidian_lfo1Shape": 0,
+      "obsidian_lfo2Rate": 0.1,
+      "obsidian_lfo2Depth": 0.15,
+      "obsidian_lfo2Shape": 1,
+      "obsidian_polyphony": 3,
+      "obsidian_glide": 0.0,
+      "obsidian_macroCharacter": 0.2,
+      "obsidian_macroMovement": 0.25,
+      "obsidian_macroCoupling": 0.0,
+      "obsidian_macroSpace": 0.35
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.44,
+    "warmth": 0.56,
+    "movement": 0.62,
+    "density": 0.38,
+    "space": 0.58,
+    "aggression": 0.18
+  }
+}

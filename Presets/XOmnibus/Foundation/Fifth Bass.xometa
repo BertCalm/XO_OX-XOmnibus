@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Fifth Bass",
+  "name": "Interval Drop",
   "mood": "Foundation",
   "engines": [
     "Odyssey"
@@ -27,23 +27,23 @@
   },
   "parameters": {
     "Odyssey": {
-      "osc_a_mode": 0.0,
-      "osc_a_shape": 0.0,
-      "osc_a_level": 0.85,
-      "osc_b_mode": 0.0,
-      "osc_b_shape": 0.0,
-      "osc_b_level": 0.55,
-      "osc_b_tune": 7.0,
-      "sub_level": 0.4,
-      "filt_a_cutoff": 1500.0,
-      "filt_a_reso": 0.2,
-      "filt_a_slope": 1.0,
-      "haze_amount": 0.2,
-      "env_amp_attack": 2.0,
-      "env_amp_decay": 300.0,
-      "env_amp_sustain": 0.55,
-      "env_amp_release": 180.0,
-      "master_gain": -2.0
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_oscA_level": 0.85,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_shape": 0.0,
+      "drift_oscB_level": 0.55,
+      "drift_oscB_tune": 7.0,
+      "drift_subLevel": 0.4,
+      "drift_filterCutoff": 1500.0,
+      "drift_filterReso": 0.2,
+      "drift_filterSlope": 1.0,
+      "drift_hazeAmount": 0.2,
+      "drift_attack": 2.0,
+      "drift_decay": 300.0,
+      "drift_sustain": 0.55,
+      "drift_release": 180.0,
+      "drift_level": -2.0
     }
   },
   "coupling": null,

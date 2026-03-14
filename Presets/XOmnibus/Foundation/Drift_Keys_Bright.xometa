@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Drift_Keys_Bright",
+  "name": "Littoral Flash",
   "mood": "Foundation",
   "engines": [
     "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT bright keys \u2014 high filter, short decay, shimmer at minimum. Clean and present.",
+  "description": "DRIFT bright keys — high filter, short decay, shimmer at minimum. Clean and present.",
   "tags": [
     "drift",
     "keys",

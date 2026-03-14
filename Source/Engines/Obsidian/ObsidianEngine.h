@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
 #include <array>
@@ -390,6 +391,8 @@ public:
         outputCacheLeft.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheRight.resize (static_cast<size_t> (maxBlockSize), 0.0f);
 
+        aftertouch.prepare (sampleRate);
+
         // Build the 2D phase distortion lookup table (~2 MB, one-time cost)
         buildDistortionLUT();
 
@@ -431,6 +434,9 @@ public:
         smoothedDensity = 0.0f;
         smoothedTilt = 0.0f;
         smoothedDepth = 0.0f;
+
+        // D005: reset the engine-level formant LFO phase
+        obsidianLfoPhase = 0.0;
 
         std::fill (outputCacheLeft.begin(), outputCacheLeft.end(), 0.0f);
         std::fill (outputCacheRight.begin(), outputCacheRight.end(), 0.0f);
@@ -530,7 +536,10 @@ public:
         float effectiveStiff    = clamp (paramStiffness + macroSpace * 0.4f, 0.0f, 1.0f);
         float effectiveStereo   = clamp (paramStereoWidth + macroSpace * 0.3f, 0.0f, 1.0f);
         float effectiveCascade  = clamp (paramCascadeBlend + macroCoupling * 0.3f, 0.0f, 1.0f);
-        float effectiveCutoff   = clamp (paramFilterCutoff + couplingFilterCutoffMod * 4000.0f, 20.0f, 20000.0f);
+        // D006: mod wheel adds up to +10kHz filter brightening at full wheel (sensitivity 0.5)
+        float effectiveCutoff   = clamp (paramFilterCutoff + couplingFilterCutoffMod * 4000.0f
+                                       + modWheelValue * 0.5f * 10000.0f, 20.0f, 20000.0f);
+        // D006: aftertouch added below — atPressure resolved after MIDI loop
         float effectiveFormant  = clamp (paramFormantBlend + paramFormantIntensity, 0.0f, 1.0f);
 
         // Reset coupling accumulators for next block
@@ -565,7 +574,34 @@ public:
                 noteOff (message.getNoteNumber());
             else if (message.isAllNotesOff() || message.isAllSoundOff())
                 reset();
+            // D006: channel pressure → aftertouch (applied to formant intensity below)
+            else if (message.isChannelPressure())
+                aftertouch.setChannelPressure (message.getChannelPressureValue() / 127.0f);
+            // D006: CC1 mod wheel → filter cutoff brightening (classic brightness control; sensitivity 0.5)
+            else if (message.isController() && message.getControllerNumber() == 1)
+                modWheelValue = message.getControllerValue() / 127.0f;
         }
+
+        // D006: smooth aftertouch and apply to formant intensity (more vowel on pressure)
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);
+        // Sensitivity 0.3: full pressure adds up to +0.3 formant intensity
+        effectiveFormant = clamp (effectiveFormant + atPressure * 0.3f, 0.0f, 1.0f);
+
+        // D005: engine-level "stone breathing" formant LFO — 0.1 Hz sine, ±15% formant blend.
+        // This creates a slow vowel drift (A→E→O cycle) across the polyphonic field —
+        // the "obsidian glass hypnotic quality" described in the aquatic identity.
+        // Runs at engine level (not per-voice) so all voices share the same vowel position,
+        // creating a unified organic movement rather than individual voice chaos.
+        // Phase increments by (0.1 Hz / sampleRate) per sample; we advance by block center.
+        const double obsidianLfoHz = 0.1;
+        const double obsidianLfoIncrement = obsidianLfoHz / static_cast<double> (sampleRateFloat);
+        // Advance LFO phase by the block center position (mid-block approximation)
+        obsidianLfoPhase += obsidianLfoIncrement * static_cast<double> (numSamples);
+        if (obsidianLfoPhase >= 1.0) obsidianLfoPhase -= 1.0;
+        const float obsidianLfoValue = std::sin (static_cast<float> (obsidianLfoPhase) * kTwoPi);
+        // ±15% formant blend depth: full modulation = ±0.15 on the [0,1] formant range
+        effectiveFormant = clamp (effectiveFormant + obsidianLfoValue * 0.15f, 0.0f, 1.0f);
 
 
         // ---- Update per-voice filter coefficients once per block ----
@@ -703,7 +739,14 @@ public:
                 // PD depth envelope modulates how much phase distortion is applied.
                 // At pdEnvelopeLevel=0, output is a pure cosine (no harmonics).
                 // At pdEnvelopeLevel=1 with full depth, maximum harmonic complexity.
-                float depthEnvelopeAmount = pdEnvelopeLevel * modulatedDepth;
+                //
+                // D001 fix: velocity shapes timbre, not just amplitude.
+                // Harder hits push the PD depth deeper — more harmonic complexity on attack.
+                // Sensitivity +0.2: a velocity of 1.0 adds +0.2 to PD depth before clamping.
+                // This means soft playing sounds hollow/pure; hard playing sounds complex/edgy —
+                // exactly the character of obsidian glass under percussion.
+                float velocityPDBoost = voice.velocity * 0.2f;
+                float depthEnvelopeAmount = pdEnvelopeLevel * clamp (modulatedDepth + velocityPDBoost, 0.0f, 1.0f);
 
                 // Look up the distorted phase from the 2D LUT for L and R channels
                 float distortedPhaseLeft  = lookupDistortion (densityLeft, tiltLeft, voice.phaseStage1);
@@ -1498,6 +1541,18 @@ private:
     float smoothedDensity = 0.5f;
     float smoothedTilt = 0.5f;
     float smoothedDepth = 0.5f;
+
+    // D005: engine-level formant LFO — "stone breathing" at 0.1 Hz.
+    // Modulates formant vowel blend position ±15% across the polyphonic field.
+    // Shared by all voices so they move in unison like one living instrument.
+    // Advances by block in renderBlock; phase range [0, 1).
+    double obsidianLfoPhase = 0.0;
+
+    // D006: aftertouch — pressure increases formant intensity (more vowel character)
+    PolyAftertouch aftertouch;
+
+    // D006: mod wheel — CC1 brightens filter cutoff (classic brightness expression; sensitivity 0.5)
+    float modWheelValue = 0.0f;
 
     // ---- Coupling accumulators ----
     // Reset to zero each block; other engines add their modulation contributions.

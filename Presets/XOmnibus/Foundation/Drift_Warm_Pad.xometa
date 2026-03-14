@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Drift_Warm_Pad",
+  "name": "Haze Thermocline",
   "mood": "Foundation",
   "engines": [
     "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT with haze saturation adding warmth \u2014 the shimmer synth in its warmest mode.",
+  "description": "DRIFT with haze saturation adding warmth — the shimmer synth in its warmest mode.",
   "tags": [
     "drift",
     "warm",

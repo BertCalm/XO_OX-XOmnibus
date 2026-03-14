@@ -28,17 +28,17 @@
   },
   "parameters": {
     "Overdub": {
-      "osc_wave": 3.0,
-      "osc_pwm": 0.5,
-      "filter_cutoff": 3500.0,
-      "filter_env_amt": -0.3,
-      "env_attack": 0.001,
-      "env_decay": 0.08,
-      "env_sustain": 0.0,
-      "env_release": 0.05,
-      "delay_time": 0.1875,
-      "delay_feedback": 0.35,
-      "send_level": 0.25
+      "dub_oscWave": 3.0,
+      "dub_oscPwm": 0.5,
+      "dub_filterCutoff": 3500.0,
+      "dub_filterEnvAmt": -0.3,
+      "dub_attack": 0.001,
+      "dub_decay": 0.08,
+      "dub_sustain": 0.0,
+      "dub_release": 0.05,
+      "dub_delayTime": 0.1875,
+      "dub_delayFeedback": 0.35,
+      "dub_sendLevel": 0.25
     }
   },
   "coupling": null,

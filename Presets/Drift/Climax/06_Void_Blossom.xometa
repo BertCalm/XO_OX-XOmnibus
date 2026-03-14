@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "name": "Void Blossom",
+  "mood": "Aether",
+  "engines": ["Odyssey"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Starts in near-silence — a very dark pad with sub-bass emphasis and extreme low-pass filtering. JOURNEY 0.3 keeps it sub-aquatic, almost inaudible in the upper registers. The Climax at 0.62 is the closest threshold of all ten patches — a gentle bloom over 2.5 seconds opens the filter, ignites shimmer, and reveals a vast reverberant space that was always there, just... waiting. Dark becomes luminous from within.",
+  "tags": ["climax", "demo", "dark", "sub", "evolving", "journey", "void", "bloom", "deep", "aether", "minimal"],
+  "macroLabels": ["JOURNEY", "BREATHE", "BLOOM", "FRACTURE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "macroJourney": 0.3,
+  "climaxThreshold": 0.62,
+  "bloomTime": 2.5,
+  "modRouting": [
+    {
+      "source": "aftertouch",
+      "destination": "macroJourney",
+      "amount": 0.75,
+      "curve": "linear",
+      "note": "High routing amount because the void needs a decisive push — hesitant pressure keeps you in the dark"
+    }
+  ],
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 0,
+      "drift_oscA_shape": 0,
+      "drift_oscA_tune": -12.0,
+      "drift_oscA_level": 0.5,
+      "drift_oscA_detune": 0.4,
+      "drift_oscA_pw": 0.5,
+      "drift_oscA_fmDepth": 0.0,
+      "drift_oscB_mode": 0,
+      "drift_oscB_shape": 0,
+      "drift_oscB_tune": -12.0,
+      "drift_oscB_level": 0.3,
+      "drift_oscB_detune": 0.5,
+      "drift_oscB_pw": 0.5,
+      "drift_oscB_fmDepth": 0.0,
+      "drift_subLevel": 0.55,
+      "drift_noiseLevel": 0.0,
+      "drift_hazeAmount": 0.3,
+      "drift_filterCutoff": 1200.0,
+      "drift_filterReso": 0.08,
+      "drift_filterSlope": 1,
+      "drift_filterEnvAmt": 0.0,
+      "drift_formantMorph": 0.5,
+      "drift_formantMix": 0.0,
+      "drift_shimmerAmount": 0.05,
+      "drift_shimmerTone": 0.4,
+      "drift_attack": 3.5,
+      "drift_decay": 8.0,
+      "drift_sustain": 0.7,
+      "drift_release": 6.0,
+      "drift_lfoRate": 0.04,
+      "drift_lfoDepth": 0.03,
+      "drift_lfoDest": 0,
+      "drift_driftDepth": 0.45,
+      "drift_driftRate": 0.03,
+      "drift_level": 0.65,
+      "drift_voiceMode": 0,
+      "drift_glide": 0.0,
+      "drift_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.6,
+    "movement": 0.2,
+    "density": 0.5,
+    "space": 0.85,
+    "aggression": 0.0
+  }
+}

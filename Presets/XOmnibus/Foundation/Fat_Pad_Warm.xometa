@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Fat_Pad_Warm",
+  "name": "Mesopelagic Bloom",
   "mood": "Foundation",
   "engines": [
     "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT warm pad \u2014 medium morph, heavy detune, slow attack. The quintessential thick pad.",
+  "description": "FAT warm pad — medium morph, heavy detune, slow attack. The quintessential thick pad.",
   "tags": [
     "fat",
     "pad",

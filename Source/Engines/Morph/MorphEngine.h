@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/FastMath.h"
 #include <array>
@@ -292,6 +293,11 @@ struct MorphVoice
     //-- Drift modulation ------------------------------------------------------
     float driftPhase = 0.0f;             // Perlin noise phase (randomized per note)
     float driftValue = 0.0f;             // current drift output (stereo spread + FM)
+
+    //-- Portamento/legato pitch tracking --------------------------------------
+    float currentFrequency = 440.0f;     // instantaneous (gliding) frequency in Hz
+    float targetFrequency  = 440.0f;     // destination frequency set on noteOn
+    float glideCoefficient = 1.0f;       // per-sample IIR coefficient (1.0 = instant)
 };
 
 
@@ -347,6 +353,8 @@ public:
         cachedSampleRateFloat = static_cast<float> (cachedSampleRate);
         lfoPhase = 0.0;
 
+        aftertouch.prepare (sampleRate);  // D006: 5ms attack / 20ms release smoothing
+
         outputCacheLeft.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheRight.resize (static_cast<size_t> (maxBlockSize), 0.0f);
 
@@ -358,6 +366,9 @@ public:
             voice.envelopeLevel = 0.0f;
             voice.stealFadeLevel = 0.0f;
             voice.driftPhase = 0.0f;
+            voice.currentFrequency = 440.0f;
+            voice.targetFrequency  = 440.0f;
+            voice.glideCoefficient = 1.0f;
 
             for (auto& osc : voice.oscillators)
                 osc.reset();
@@ -377,6 +388,9 @@ public:
             voice.envelopeStage = MorphVoice::Off;
             voice.envelopeLevel = 0.0f;
             voice.stealFadeLevel = 0.0f;
+            voice.currentFrequency = 440.0f;
+            voice.targetFrequency  = 440.0f;
+            voice.glideCoefficient = 1.0f;
             for (auto& osc : voice.oscillators)
                 osc.reset();
             voice.subOscillator.reset();
@@ -408,8 +422,9 @@ public:
         const float decayTime         = (paramDecay != nullptr) ? paramDecay->load() : 2.0f;
         const float sustainLevel      = (paramSustain != nullptr) ? paramSustain->load() : 0.7f;
         const float releaseTime       = (paramRelease != nullptr) ? paramRelease->load() : 1.5f;
-        const float filterCutoff      = (paramFilterCutoff != nullptr) ? paramFilterCutoff->load() : 1200.0f;
+        const float filterCutoff      = (paramFilterCutoff    != nullptr) ? paramFilterCutoff->load()    : 1200.0f;
         const float filterResonance   = (paramFilterResonance != nullptr) ? paramFilterResonance->load() : 0.4f;
+        const float filterEnvDepth    = (paramFilterEnvDepth  != nullptr) ? paramFilterEnvDepth->load()  : 0.25f;
         const float driftAmount       = (paramDrift != nullptr) ? paramDrift->load() : 0.3f;
         const float subLevel          = (paramSubLevel != nullptr) ? paramSubLevel->load() : 0.5f;
         const float detuneCents       = (paramDetune != nullptr) ? paramDetune->load() : 12.0f;
@@ -420,9 +435,40 @@ public:
         const int maxPolyphony = (paramPolyphony != nullptr)
             ? (1 << std::min (4, static_cast<int> (paramPolyphony->load()))) : 8;
 
-        // Effective morph position includes coupling modulation + CC1 (mod wheel)
+        // Voice mode: 0=Poly, 1=Mono, 2=Legato
+        const int voiceModeIndex = (paramVoiceMode != nullptr)
+            ? static_cast<int> (paramVoiceMode->load()) : 0;
+        bool monoMode   = (voiceModeIndex == 1);
+        bool legatoMode = (voiceModeIndex == 2);
+        // In Mono or Legato mode, restrict to a single voice
+        const int effectivePolyphony = (monoMode || legatoMode) ? 1 : maxPolyphony;
+
+        // Glide time: exponential-approach coefficient per sample
+        // 0.0 glideTime → coefficient = 1.0 (instant; no glide)
+        const float glideTimeSeconds = (paramGlide != nullptr) ? paramGlide->load() : 0.0f;
+        float glideCoefficient = 1.0f;
+        if (glideTimeSeconds > 0.001f)
+            glideCoefficient = 1.0f - std::exp (-1.0f / (glideTimeSeconds * cachedSampleRateFloat));
+
+        // -- XOmnibus macros (CHARACTER, MOVEMENT, COUPLING, SPACE) ------------
+        // Loaded once per block; defaults to 0.0 so existing presets are unaffected.
+        const float macroBloom = (paramMacroBloom != nullptr) ? paramMacroBloom->load() : 0.0f;
+        const float macroDrift = (paramMacroDrift != nullptr) ? paramMacroDrift->load() : 0.0f;
+        const float macroDepth = (paramMacroDepth != nullptr) ? paramMacroDepth->load() : 0.0f;
+        const float macroSpace = (paramMacroSpace != nullptr) ? paramMacroSpace->load() : 0.0f;
+
+        // Apply macro offsets to DSP parameters:
+        //   BLOOM: shifts morph position up to +1.5 (sine→square character sweep).
+        //   DRIFT: widens detune spread up to +30 cents (animated chorus shimmer).
+        //   DEPTH: opens filter cutoff up to +6000 Hz (surface from the deep).
+        //   SPACE: multiplies attack time by 1× to 4× (slow atmospheric bloom).
+        const float effectiveDetune  = detuneCents + macroDrift * 30.0f;
+        const float effectiveCutoff  = std::min (20000.0f, filterCutoff + macroDepth * 6000.0f);
+        const float effectiveAttack  = attackTime  * (1.0f + macroSpace * 3.0f);
+
+        // Effective morph position includes macroBloom + coupling modulation + CC1 (mod wheel)
         float effectiveMorph = std::max (0.0f, std::min (3.0f,
-            morphPosition + morphModulation + modWheelMorphOffset));
+            morphPosition + morphModulation + modWheelMorphOffset + macroBloom * 1.5f));
 
         //----------------------------------------------------------------------
         // MIDI event processing
@@ -433,7 +479,8 @@ public:
             if (msg.isNoteOn())
             {
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
-                        detuneCents, effectiveMorph, filterCutoff, filterResonance, maxPolyphony);
+                        effectiveDetune, effectiveMorph, effectiveCutoff, filterResonance,
+                        effectivePolyphony, monoMode, legatoMode, glideCoefficient);
             }
             else if (msg.isNoteOff())
             {
@@ -444,6 +491,11 @@ public:
             {
                 reset();
                 sustainPedalDown = false;
+            }
+            // D006: channel pressure → aftertouch (applied to filter cutoff below)
+            else if (msg.isChannelPressure())
+            {
+                aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
             }
             else if (msg.isController())
             {
@@ -474,6 +526,12 @@ public:
         }
 
         //----------------------------------------------------------------------
+        // D006: smooth aftertouch pressure and compute modulation value
+        //----------------------------------------------------------------------
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);  // channel-mode: voice 0 holds global value
+
+        //----------------------------------------------------------------------
         // Reset coupling accumulators (consumed this block, accumulated fresh
         // by applyCouplingInput before next renderBlock call)
         //----------------------------------------------------------------------
@@ -483,7 +541,7 @@ public:
         //----------------------------------------------------------------------
         // Deactivate voices beyond current polyphony limit
         //----------------------------------------------------------------------
-        for (int i = maxPolyphony; i < kMaxVoices; ++i)
+        for (int i = effectivePolyphony; i < kMaxVoices; ++i)
         {
             auto& voice = voices[static_cast<size_t> (i)];
             if (voice.active)
@@ -515,7 +573,7 @@ public:
                 if (!voice.active) continue;
 
                 //-- Envelope --------------------------------------------------
-                updateEnvelope (voice, attackTime, decayTime, sustainLevel, releaseTime);
+                updateEnvelope (voice, effectiveAttack, decayTime, sustainLevel, releaseTime);
 
                 if (voice.envelopeStage == MorphVoice::Off)
                 {
@@ -527,6 +585,12 @@ public:
                 for (auto& osc : voice.oscillators)
                     osc.setMorph (effectiveMorph);
 
+                //-- Portamento/glide: smooth currentFrequency toward targetFrequency ----
+                // In Poly mode, glideCoefficient is 1.0 (instant — no per-voice glide).
+                // In Mono/Legato mode, coefficient <1.0 produces exponential-approach glide.
+                voice.currentFrequency += (voice.targetFrequency - voice.currentFrequency)
+                                        * voice.glideCoefficient;
+
                 //-- Drift modulation (Perlin-like smooth noise) ---------------
                 // 0.1 Hz drift rate: Oscar's slow, meditative movement.
                 // The low rate creates gentle organic pitch wander and stereo
@@ -537,8 +601,11 @@ public:
 
                 //-- Oscillator mix (3 detuned oscillators for chorus width) ---
                 float oscillatorMix = 0.0f;
-                float detuneSpread[3] = { -detuneCents, 0.0f, detuneCents };
-                float baseFrequency = midiNoteToFrequency (static_cast<float> (voice.noteNumber));
+                float detuneSpread[3] = { -effectiveDetune, 0.0f, effectiveDetune };
+                // Use currentFrequency (glide-smoothed) instead of raw MIDI note.
+                // In Poly mode with glideCoefficient=1.0, currentFrequency == targetFrequency
+                // so behavior is identical to the previous per-sample noteNumber lookup.
+                float baseFrequency = voice.currentFrequency;
 
                 for (int i = 0; i < 3; ++i)
                 {
@@ -573,7 +640,16 @@ public:
                     // centered on the cutoff — musically useful range for the
                     // dub pump effect)
                     constexpr float kCouplingCutoffRange = 2000.0f; // Hz range for coupling filter sweep
-                    float modulatedCutoff = filterCutoff + filterCutoffModulation * kCouplingCutoffRange;
+                    float modulatedCutoff = effectiveCutoff + filterCutoffModulation * kCouplingCutoffRange;
+                    // D006: aftertouch adds up to +7000 Hz brightness (sensitivity 0.35)
+                    // Classic application: press harder → Oscar's pad brightens, opening the warm
+                    // Moog ladder filter for more harmonic content.
+                    modulatedCutoff += atPressure * 0.35f * 7000.0f;
+                    // D001: velocity × envelope sweeps the ladder cutoff open.
+                    // Harder hits push the filter wider at the attack peak, then decay back.
+                    // Max sweep: filterEnvDepth × velocity × 6000 Hz.
+                    constexpr float kFilterEnvMaxSweep = 6000.0f;
+                    modulatedCutoff += filterEnvDepth * voice.velocity * voice.envelopeLevel * kFilterEnvMaxSweep;
                     modulatedCutoff = std::max (20.0f, std::min (20000.0f, modulatedCutoff));
                     voice.filter.setCutoff (modulatedCutoff);
                     voice.filter.setResonance (filterResonance);
@@ -709,7 +785,7 @@ private:
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "morph_decay", 1 }, "Morph Decay",
-            juce::NormalisableRange<float> (0.01f, 8.0f, 0.01f), 2.0f));
+            juce::NormalisableRange<float> (0.01f, 8.0f, 0.001f, 0.4f), 2.0f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "morph_sustain", 1 }, "Morph Sustain",
@@ -729,6 +805,15 @@ private:
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "morph_filterReso", 1 }, "Morph Filter Resonance",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.4f));
+
+        // D001: Filter envelope depth — velocity × amplitude envelope sweeps the
+        // Moog ladder cutoff open from the base cutoff by up to depth × 6000 Hz.
+        // Harder hits open the filter wider and decay back toward base cutoff as the
+        // note fades, giving Oscar's pads their D001-compliant velocity expressiveness.
+        // Default 0.25: gentle brightness tracking, not overwhelming.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "morph_filterEnvDepth", 1 }, "Morph Filter Env Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.25f));
 
         // Drift: Oscar's organic movement — pitch wander + stereo spread
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
@@ -754,6 +839,44 @@ private:
         params.push_back (std::make_unique<juce::AudioParameterChoice> (
             juce::ParameterID { "morph_polyphony", 1 }, "Morph Polyphony",
             juce::StringArray { "1", "2", "4", "8", "16" }, 3));
+
+        // Voice mode: Poly (default), Mono, Legato
+        // Poly   — standard polyphony (maxPolyphony voices, LRU stealing)
+        // Mono   — single voice, always retriggered (snap-attack pads, punchy leads)
+        // Legato — single voice, pitch glides when gate is already open (smooth lead lines)
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "morph_voiceMode", 1 }, "Morph Voice Mode",
+            juce::StringArray { "Poly", "Mono", "Legato" }, 0));
+
+        // Portamento glide time (seconds). Only audible in Mono and Legato modes.
+        // 0 = instant (no glide). 2s maximum covers all musical tempos.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "morph_glide", 1 }, "Morph Glide",
+            juce::NormalisableRange<float> (0.0f, 2.0f, 0.001f, 0.5f), 0.0f));
+
+        // XOmnibus standard macros (CHARACTER, MOVEMENT, COUPLING, SPACE)
+        // All default to 0.0 — existing presets are unaffected.
+        //
+        // M1 BLOOM (CHARACTER): shifts morph position +1.5 — unfurls gills from sine to square.
+        //   At max: effectiveMorph += 1.5 — 50% more harmonic content.
+        // M2 DRIFT (MOVEMENT): adds +30 cents to detune — wider chorus animation.
+        //   At max: detune spread = base + 30 cents — Oscar churns through the reef.
+        // M3 DEPTH (COUPLING): opens filter cutoff +6000 Hz — brighter, airier.
+        //   At max: +6000 Hz offset on filterCutoff — axolotl surfaces from cave.
+        // M4 SPACE (SPACE): multiplies attack time by up to 4× — slow atmospheric bloom.
+        //   At max: attack ×4 — Oscar takes a very long, meditative breath.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "morph_macroBloom", 1 }, "Morph BLOOM",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "morph_macroDrift", 1 }, "Morph DRIFT",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "morph_macroDepth", 1 }, "Morph DEPTH",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "morph_macroSpace", 1 }, "Morph SPACE",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
     }
 
 public:
@@ -766,11 +889,19 @@ public:
         paramRelease         = apvts.getRawParameterValue ("morph_release");
         paramFilterCutoff    = apvts.getRawParameterValue ("morph_filterCutoff");
         paramFilterResonance = apvts.getRawParameterValue ("morph_filterReso");
+        paramFilterEnvDepth  = apvts.getRawParameterValue ("morph_filterEnvDepth");
         paramDrift           = apvts.getRawParameterValue ("morph_drift");
         paramSubLevel        = apvts.getRawParameterValue ("morph_sub");
         paramDetune          = apvts.getRawParameterValue ("morph_detune");
         paramLevel           = apvts.getRawParameterValue ("morph_level");
         paramPolyphony       = apvts.getRawParameterValue ("morph_polyphony");
+        paramVoiceMode       = apvts.getRawParameterValue ("morph_voiceMode");
+        paramGlide           = apvts.getRawParameterValue ("morph_glide");
+        // XOmnibus macros
+        paramMacroBloom      = apvts.getRawParameterValue ("morph_macroBloom");
+        paramMacroDrift      = apvts.getRawParameterValue ("morph_macroDrift");
+        paramMacroDepth      = apvts.getRawParameterValue ("morph_macroDepth");
+        paramMacroSpace      = apvts.getRawParameterValue ("morph_macroSpace");
     }
 
     //==========================================================================
@@ -787,8 +918,63 @@ private:
     //==========================================================================
 
     void noteOn (int noteNumber, float velocity, float detuneCents,
-                 float morphPosition, float cutoff, float resonance, int maxPolyphony)
+                 float morphPosition, float cutoff, float resonance, int maxPolyphony,
+                 bool monoMode = false, bool legatoMode = false, float glideCoeff = 1.0f)
     {
+        float frequency = midiNoteToFrequency (static_cast<float> (noteNumber));
+
+        // ---- Mono / Legato mode ----
+        // Both modes force voice[0]. Legato additionally skips envelope retrigger
+        // and begins a pitch glide when the gate is already open.
+        if (monoMode || legatoMode)
+        {
+            auto& voice = voices[0];
+            bool wasActive = voice.active;
+
+            voice.targetFrequency = frequency;
+
+            if (legatoMode && wasActive)
+            {
+                // Legato: glide to new pitch without retriggering envelope.
+                // Oscar's pad continues to bloom; only pitch slides.
+                voice.glideCoefficient = glideCoeff;
+                voice.noteNumber = noteNumber;
+                voice.velocity = velocity;
+                return;
+            }
+
+            // Mono retrigger — or Legato first note (voice was silent)
+            voice.stealFadeLevel = voice.active ? voice.envelopeLevel : 0.0f;
+            voice.active = true;
+            voice.releasing = false;
+            voice.noteNumber = noteNumber;
+            voice.velocity = velocity;
+            voice.startTime = voiceCounter++;
+            voice.envelopeStage = MorphVoice::Attack;
+            voice.envelopeLevel = 0.0f;
+            voice.currentFrequency = frequency;
+            voice.glideCoefficient = glideCoeff;
+
+            // Initialize oscillators at the new frequency immediately
+            float detuneSpread[3] = { -detuneCents, 0.0f, detuneCents };
+            for (int i = 0; i < 3; ++i)
+            {
+                float detunedFrequency = frequency * std::pow (2.0f, detuneSpread[i] / 1200.0f);
+                voice.oscillators[i].setFrequency (detunedFrequency, cachedSampleRateFloat);
+                voice.oscillators[i].setMorph (morphPosition);
+                voice.oscillators[i].reset();
+            }
+            voice.subOscillator.reset();
+            voice.subOscillator.setFrequency (frequency * 0.5f, cachedSampleRateFloat);
+            voice.subOscillator.setWaveform (PolyBLEP::Waveform::Sine);
+            voice.filter.reset();
+            voice.filter.setCutoff (cutoff);
+            voice.filter.setResonance (resonance);
+            voice.driftPhase = driftPhaseRandomizer.nextFloat();
+            return;
+        }
+
+        // ---- Polyphonic mode ----
         int voiceIndex = findFreeVoice (maxPolyphony);
         auto& voice = voices[static_cast<size_t> (voiceIndex)];
 
@@ -805,8 +991,9 @@ private:
         voice.startTime = voiceCounter++;
         voice.envelopeStage = MorphVoice::Attack;
         voice.envelopeLevel = 0.0f;
-
-        float frequency = midiNoteToFrequency (static_cast<float> (noteNumber));
+        voice.currentFrequency = frequency;
+        voice.targetFrequency  = frequency;
+        voice.glideCoefficient = 1.0f;  // No glide in poly mode (instant pitch)
 
         // Initialize 3 detuned oscillators (center, -N cents, +N cents)
         float detuneSpread[3] = { -detuneCents, 0.0f, detuneCents };
@@ -998,6 +1185,9 @@ private:
     float filterCutoffModulation = 0.0f;        // accumulated filter mod from AmpToFilter coupling
     float morphModulation = 0.0f;               // accumulated morph mod from EnvToMorph coupling
 
+    //-- D006: CS-80-inspired poly aftertouch (channel pressure → filter cutoff) --
+    PolyAftertouch aftertouch;
+
     //-- MIDI performance state ------------------------------------------------
     bool sustainPedalDown = false;              // CC64 sustain pedal state
     float modWheelMorphOffset = 0.0f;           // CC1 mod wheel [0, 3.0] — sweeps morph position
@@ -1017,11 +1207,19 @@ private:
     std::atomic<float>* paramRelease         = nullptr;
     std::atomic<float>* paramFilterCutoff    = nullptr;
     std::atomic<float>* paramFilterResonance = nullptr;
+    std::atomic<float>* paramFilterEnvDepth  = nullptr;
     std::atomic<float>* paramDrift           = nullptr;
     std::atomic<float>* paramSubLevel        = nullptr;
     std::atomic<float>* paramDetune          = nullptr;
     std::atomic<float>* paramLevel           = nullptr;
     std::atomic<float>* paramPolyphony       = nullptr;
+    std::atomic<float>* paramVoiceMode       = nullptr;
+    std::atomic<float>* paramGlide           = nullptr;
+    // XOmnibus macros
+    std::atomic<float>* paramMacroBloom      = nullptr;
+    std::atomic<float>* paramMacroDrift      = nullptr;
+    std::atomic<float>* paramMacroDepth      = nullptr;
+    std::atomic<float>* paramMacroSpace      = nullptr;
 };
 
 } // namespace xomnibus

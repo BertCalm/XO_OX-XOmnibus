@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
@@ -362,6 +363,254 @@ private:
 };
 
 //==============================================================================
+// DriftTidalPulse — sin² breathing LFO for the BREATHE macro.
+// Ported from XOdyssey's TidalPulse.
+//
+// Unlike a standard sine LFO (bipolar, equal positive/negative excursion),
+// TidalPulse produces a unipolar [0,1] output with soft peaks and gentle
+// valleys — closer to the rhythm of actual breathing. Applied as amplitude
+// modulation so the sound swells and recedes rather than oscillates.
+//
+// Rate range: 0.05–2.0 Hz (one breath every 0.5s to 20s).
+// Depth range: 0.0–1.0 (depth=0 disables entirely).
+//==============================================================================
+class DriftTidalPulse
+{
+public:
+    void prepare (double sampleRate) noexcept
+    {
+        sr = sampleRate;
+        phase = 0.0;
+    }
+
+    void reset() noexcept { phase = 0.0; }
+
+    // Returns unipolar output [0, 1] — the breath cycle.
+    // Returns 0.0 when depth is negligible (early-out).
+    float process (float rate, float depth) noexcept
+    {
+        if (depth < 0.0001f) return 0.0f;
+
+        double inc = static_cast<double> (rate) / sr;
+        phase += inc;
+        if (phase >= 1.0) phase -= 1.0;
+
+        // sin² shaping: always positive [0,1], soft peaks, no sharp zero-crossings.
+        // Mathematically equivalent to (1 - cos(2π·phase)) / 2, but computed as
+        // sine squared for clarity and consistency with XOdyssey's implementation.
+        constexpr double twoPi = 6.28318530717958647692;
+        float s = static_cast<float> (std::sin (phase * twoPi));
+        float breathCycle = s * s;   // unipolar [0, 1]
+
+        return breathCycle * depth;
+    }
+
+private:
+    double sr = 44100.0;
+    double phase = 0.0;
+};
+
+//==============================================================================
+// DriftFracture — circular-buffer stutter glitch.
+// Ported from XOdyssey's Fracture (named Signature Trait in the XOdyssey spec).
+//
+// Captures audio into a 4096-sample fixed circular buffer (~93ms at 44.1kHz)
+// and probabilistically replays fragments, creating stutter / granular-like
+// effects. Each voice has its own independent Fracture instance.
+//
+// Buffer is a std::array (pre-allocated, zero heap on the audio thread).
+// The FRACTURE macro directly maps to drift_fractureIntensity.
+//==============================================================================
+class DriftFracture
+{
+public:
+    static constexpr int kBufferSize = 4096;  // ~93ms at 44100 Hz
+
+    void prepare (double sampleRate) noexcept
+    {
+        sr = sampleRate;
+        reset();
+    }
+
+    void reset() noexcept
+    {
+        buffer.fill (0.0f);
+        writePos = 0;
+        readPos = 0;
+        stutterCounter = 0;
+        stuttering = false;
+        currentStutterLen = 512;
+        stutterPlayPos = 0;
+    }
+
+    // enable:    on/off gate
+    // intensity: 0.0–1.0 — probability and wet/dry mix of the glitch
+    // rate:      0.0–1.0 — stutter speed (higher = shorter, faster repeats)
+    float process (float input, bool enable, float intensity, float rate) noexcept
+    {
+        if (!enable || intensity < 0.0001f) return input;
+
+        // Write to circular buffer
+        buffer[static_cast<size_t> (writePos)] = input;
+        writePos = (writePos + 1) % kBufferSize;
+
+        // Stutter length determined by rate: high rate → short grains
+        int stutterLen = static_cast<int> ((1.0f - rate * 0.8f) * static_cast<float> (kBufferSize) * 0.5f);
+        stutterLen = std::max (stutterLen, 64);
+
+        if (!stuttering)
+        {
+            ++stutterCounter;
+            // Trigger interval: shorter at higher intensity
+            int triggerInterval = static_cast<int> (static_cast<float> (sr)
+                * (0.05f + (1.0f - intensity) * 0.4f));
+            if (stutterCounter >= triggerInterval)
+            {
+                stuttering = true;
+                stutterCounter = 0;
+                readPos = (writePos - stutterLen + kBufferSize) % kBufferSize;
+                currentStutterLen = stutterLen;
+                stutterPlayPos = 0;
+            }
+            else
+            {
+                return input;
+            }
+        }
+
+        float stuttered = buffer[static_cast<size_t> (readPos)];
+        readPos = (readPos + 1) % kBufferSize;
+        ++stutterPlayPos;
+
+        if (stutterPlayPos >= currentStutterLen)
+        {
+            stuttering = false;
+            stutterPlayPos = 0;
+        }
+
+        return input * (1.0f - intensity) + stuttered * intensity;
+    }
+
+private:
+    double sr = 44100.0;
+    std::array<float, kBufferSize> buffer {};
+    int writePos = 0;
+    int readPos = 0;
+    int stutterCounter = 0;
+    bool stuttering = false;
+    int currentStutterLen = 512;
+    int stutterPlayPos = 0;
+};
+
+//==============================================================================
+// DriftReverb — Schroeder reverb for per-engine spatial depth.
+// Ported from XOdyssey's ReverbFX.
+//
+// 4 parallel comb filters (mutually-prime delay times: 29.7, 37.1, 41.1,
+// 43.7 ms) + 2 series allpass filters. One-pole lowpass damping in the
+// feedback path simulates high-frequency absorption of real spaces.
+//
+// Buffers are pre-allocated in prepare() via std::vector::assign() —
+// NO heap allocation in processStereo(). This is safe for the audio thread.
+// The DriftEngine allocates one DriftReverb instance (not per-voice).
+//==============================================================================
+class DriftReverb
+{
+public:
+    void prepare (double sampleRate)
+    {
+        sr = sampleRate;
+
+        // Comb filter delay times (ms) — mutually prime to avoid flutter echo
+        static constexpr float combTimesMs[] = { 29.7f, 37.1f, 41.1f, 43.7f };
+        for (size_t c = 0; c < 4; ++c)
+        {
+            size_t len = static_cast<size_t> (sr * combTimesMs[c] * 0.001);
+            combBuffers[c].assign (len, 0.0f);
+            combSizes[c] = len;
+            combPos[c] = 0;
+        }
+
+        // Allpass delay times
+        static constexpr float apTimesMs[] = { 5.0f, 1.7f };
+        for (size_t a = 0; a < 2; ++a)
+        {
+            size_t len = static_cast<size_t> (sr * apTimesMs[a] * 0.001);
+            apBuffers[a].assign (len, 0.0f);
+            apSizes[a] = len;
+            apPos[a] = 0;
+        }
+
+        combFilterState.fill (0.0f);
+    }
+
+    void reset()
+    {
+        for (auto& buf : combBuffers) std::fill (buf.begin(), buf.end(), 0.0f);
+        for (auto& buf : apBuffers)   std::fill (buf.begin(), buf.end(), 0.0f);
+        for (auto& p : combPos) p = 0;
+        for (auto& p : apPos)   p = 0;
+        combFilterState.fill (0.0f);
+    }
+
+    // Stereo in-place processing. mix=0 → bypass. size controls feedback (room scale).
+    // damping is hardwired to 0.5 (natural sounding default for pads).
+    void processStereo (float* left, float* right, int numSamples,
+                        float size, float mix) noexcept
+    {
+        if (mix < 0.0001f || combSizes[0] == 0) return;
+
+        const float feedback = 0.5f + size * 0.45f;   // [0.50, 0.95]
+        constexpr float damping = 0.5f;                // fixed — natural pad damping
+
+        for (int i = 0; i < numSamples; ++i)
+        {
+            float input = (left[i] + right[i]) * 0.5f;
+
+            // 4 parallel comb filters with lowpass damping in feedback
+            float combSum = 0.0f;
+            for (size_t c = 0; c < 4; ++c)
+            {
+                float delayed = combBuffers[c][combPos[c]];
+                combFilterState[c] = delayed * (1.0f - damping) + combFilterState[c] * damping;
+                // Denormal flush — prevents CPU load from subnormal feedback values
+                if (std::abs (combFilterState[c]) < 1.0e-15f) combFilterState[c] = 0.0f;
+                combBuffers[c][combPos[c]] = input + combFilterState[c] * feedback;
+                combPos[c] = (combPos[c] + 1) % combSizes[c];
+                combSum += delayed;
+            }
+            combSum *= 0.25f;
+
+            // 2 series allpass filters
+            float ap = combSum;
+            for (size_t a = 0; a < 2; ++a)
+            {
+                float delayed = apBuffers[a][apPos[a]];
+                constexpr float apCoeff = 0.5f;
+                float out = -ap * apCoeff + delayed;
+                apBuffers[a][apPos[a]] = ap + delayed * apCoeff;
+                apPos[a] = (apPos[a] + 1) % apSizes[a];
+                ap = out;
+            }
+
+            float wet = ap;
+            left[i]  = left[i]  * (1.0f - mix) + wet * mix;
+            right[i] = right[i] * (1.0f - mix) + wet * mix * 0.95f;  // slight R attenuation for width
+        }
+    }
+
+private:
+    double sr = 44100.0;
+    std::array<std::vector<float>, 4> combBuffers;
+    std::array<size_t, 4> combSizes {};
+    std::array<size_t, 4> combPos {};
+    std::array<float, 4> combFilterState {};
+    std::array<std::vector<float>, 2> apBuffers;
+    std::array<size_t, 2> apSizes {};
+    std::array<size_t, 2> apPos {};
+};
+
+//==============================================================================
 // DriftAdsrEnvelope — ADSR with exponential decay/release.
 // Same pattern as DubAdsrEnvelope for consistency across XOmnibus engines.
 //==============================================================================
@@ -524,6 +773,8 @@ struct DriftVoice
     // Character stages
     DriftHazeSaturation haze;
     DriftPrismShimmer shimmer;
+    DriftTidalPulse tidal;   // BREATHE macro engine (Option B: drift_tidalDepth/Rate)
+    DriftFracture fracture;  // FRACTURE macro engine (Option B: drift_fracture*)
 
     // Filters
     CytomicSVF filterA1;         // Primary LP filter
@@ -546,11 +797,18 @@ struct DriftVoice
 //==============================================================================
 // DriftEngine — Psychedelic pad synthesizer adapted from XOdyssey.
 //
-// Signal chain per voice:
+// Signal chain per voice (Option B extended — 45 params, up from 38):
 //   OscA + OscB + Sub + Noise → Mix → Haze Saturation → FilterA (LP 12/24)
-//   → FilterB (Formant) → Prism Shimmer → Amp Envelope → Output
+//   → FilterB (Formant) → Fracture (stutter glitch) → Prism Shimmer
+//   → Amp Envelope × TidalPulse (breath) → Output
+//   [Post-mix engine-level: Reverb]
 //
-// Signature traits (from XOdyssey):
+// Signature traits ported in Option B pass (Round 11B):
+//   - TidalPulse: sin² breathing LFO → BREATHE macro now has DSP backing
+//   - Fracture: circular-buffer stutter glitch → FRACTURE macro now has DSP
+//   - Reverb: Schroeder 4-comb+2-allpass spatial tail (engine-level, stereo)
+//
+// All previously-ported signature traits:
 //   - Voyager Drift: per-voice smooth random walk on pitch/filter
 //   - Haze Saturation: pre-filter soft tanh warmth
 //   - Prism Shimmer: post-filter harmonic overtones
@@ -561,6 +819,7 @@ struct DriftVoice
 //   Output: envelope level (ch2) for AmpToFilter/AmpToPitch
 //   Input:  AmpToFilter, LFOToPitch, AmpToPitch, EnvToMorph
 //
+// Parameter count: 45 (was 38 — +7 from Option B)
 //==============================================================================
 class DriftEngine : public SynthEngine
 {
@@ -577,6 +836,8 @@ public:
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
 
+        aftertouch.prepare (sampleRate);
+
         for (int i = 0; i < kMaxVoices; ++i)
         {
             auto& v = voices[static_cast<size_t> (i)];
@@ -591,6 +852,8 @@ public:
             v.noise.seed (static_cast<uint32_t> (i * 7331 + 5));
             v.haze = DriftHazeSaturation {};
             v.shimmer.prepare (sr);
+            v.tidal.prepare (sr);
+            v.fracture.prepare (sr);
             v.filterA1.reset();
             v.filterA1.setMode (CytomicSVF::Mode::LowPass);
             v.filterA2.reset();
@@ -603,6 +866,7 @@ public:
         }
 
         lfo.prepare (sr);
+        reverb.prepare (sr);
     }
 
     void releaseResources() override {}
@@ -620,6 +884,8 @@ public:
             v.oscB_fm.reset();
             v.subOsc.reset();
             v.shimmer.reset();
+            v.tidal.reset();
+            v.fracture.reset();
             v.filterA1.reset();
             v.filterA2.reset();
             v.filterB.reset();
@@ -628,6 +894,7 @@ public:
             v.glideActive = false;
         }
         lfo.reset();
+        reverb.reset();
         envelopeOutput = 0.0f;
         externalPitchMod = 0.0f;
         externalFilterMod = 0.0f;
@@ -678,8 +945,8 @@ public:
         const float formantMorph   = (pFormantMorph != nullptr) ? pFormantMorph->load() : 0.5f;
         const float formantMix     = (pFormantMix != nullptr) ? pFormantMix->load() : 0.0f;
 
-        // Shimmer
-        const float shimmerAmt     = (pShimmerAmount != nullptr) ? pShimmerAmount->load() : 0.0f;
+        // Shimmer (non-const: aftertouch boosts Prism Shimmer depth below)
+        float shimmerAmt           = (pShimmerAmount != nullptr) ? pShimmerAmount->load() : 0.0f;
         const float shimmerTone    = (pShimmerTone != nullptr) ? pShimmerTone->load() : 0.5f;
 
         // Amp Envelope
@@ -696,6 +963,19 @@ public:
         // Drift
         const float driftDepth     = (pDriftDepth != nullptr) ? pDriftDepth->load() : 0.3f;
         const float driftRate      = (pDriftRate != nullptr) ? pDriftRate->load() : 0.2f;
+
+        // Tidal Pulse (BREATHE macro engine — Option B)
+        const float tidalDepth     = (pTidalDepth != nullptr) ? pTidalDepth->load() : 0.0f;
+        const float tidalRate      = (pTidalRate != nullptr) ? pTidalRate->load() : 0.15f;
+
+        // Fracture glitch (FRACTURE macro engine — Option B)
+        const bool fractureEnable      = (pFractureEnable != nullptr) ? (pFractureEnable->load() >= 0.5f) : false;
+        const float fractureIntensity  = (pFractureIntensity != nullptr) ? pFractureIntensity->load() : 0.0f;
+        const float fractureRate       = (pFractureRate != nullptr) ? pFractureRate->load() : 0.5f;
+
+        // Reverb (engine-level spatial tail — Option B)
+        const float reverbMix      = (pReverbMix != nullptr) ? pReverbMix->load() : 0.0f;
+        const float reverbSize     = (pReverbSize != nullptr) ? pReverbSize->load() : 0.5f;
 
         // Level
         const float level          = (pLevel != nullptr) ? pLevel->load() : 0.8f;
@@ -732,7 +1012,14 @@ public:
                 allVoicesOff();
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = static_cast<float> (msg.getControllerValue()) / 127.0f;
+            // D006: channel pressure → aftertouch (applied to Prism Shimmer below)
+            else if (msg.isChannelPressure())
+                aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
         }
+
+        // D006: smooth aftertouch pressure and compute modulation value
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);
 
         // Consume coupling accumulators
         float pitchMod = externalPitchMod;
@@ -741,6 +1028,10 @@ public:
         externalFilterMod = 0.0f;
         float morphMod = externalMorphMod;
         externalMorphMod = 0.0f;
+
+        // D006: aftertouch pushes Prism Shimmer deeper — sensitivity 0.35
+        // Full pressure adds up to +0.35 shimmer (the JOURNEY macro analog: more shimmer = more Alien)
+        shimmerAmt = clamp (shimmerAmt + atPressure * 0.35f, 0.0f, 1.0f);
 
         // Setup LFO
         lfo.setRate (lfoRate);
@@ -918,7 +1209,13 @@ public:
                 voice.filterB.updateCoefficients (effectiveMorph, 0.5f, srf);
                 filtered = voice.filterB.process (filtered, formantMix);
 
-                // --- Prism Shimmer (post-filter) ---
+                // --- Fracture glitch (post-filter, pre-envelope — FRACTURE macro) ---
+                // Applied in mono before envelope so the stutter texture is shaped by
+                // the amp envelope's natural decay — glitch grains feel musically timed.
+                if (fractureEnable && fractureIntensity > 0.0001f)
+                    filtered = voice.fracture.process (filtered, true, fractureIntensity, fractureRate);
+
+                // --- Prism Shimmer (post-filter, post-Fracture) ---
                 filtered = voice.shimmer.process (filtered, shimmerAmt, shimmerTone);
 
                 // --- Apply envelope and velocity ---
@@ -929,6 +1226,20 @@ public:
                 {
                     float ampMod = 1.0f + lfoAmpMod * 0.5f;
                     out *= std::max (0.0f, ampMod);
+                }
+
+                // --- TidalPulse amplitude modulation (BREATHE macro) ---
+                // sin² breathing shape modulates output amplitude by up to (1 - tidalDepth).
+                // At tidalDepth=0.0 → no modulation. At tidalDepth=1.0 → output reaches 0
+                // at the trough of the breath cycle (full swell/recede). Applied post-envelope
+                // so the breathing sits on top of the note's natural ADSR shape.
+                if (tidalDepth > 0.0001f)
+                {
+                    float breathVal = voice.tidal.process (tidalRate, tidalDepth);
+                    // breathVal in [0, tidalDepth]. 1.0 - breathVal scales amplitude: swell at 0,
+                    // recede at peak. Inverted: sound is loudest during trough → unipolar "inhale".
+                    // Use 1.0 - breathVal so amplitude = 1.0 at breathVal=0 (silence = exhale).
+                    out *= (1.0f - breathVal);
                 }
 
                 if (!voice.ampEnv.isActive())
@@ -955,9 +1266,25 @@ public:
             outL = fastTanh (outL);
             outR = fastTanh (outR);
 
-            // Update output cache for coupling reads
+            // Store into output cache — coupling reads dry (pre-reverb) signal.
+            // Reverb is applied in a block-level pass below before writing to buffer.
             outputCacheL[static_cast<size_t> (sample)] = outL;
             outputCacheR[static_cast<size_t> (sample)] = outR;
+        }
+
+        // --- Reverb (engine-level, block-pass — BREATHE / spatial Option B) ---
+        // Applied to the full block after the per-sample voice loop. The reverb
+        // processStereo() call is in-place on the outputCache arrays, which were
+        // pre-allocated in prepare(). No heap allocation occurs here.
+        if (reverbMix > 0.0001f)
+            reverb.processStereo (outputCacheL.data(), outputCacheR.data(),
+                                  numSamples, reverbSize, reverbMix);
+
+        // Write output cache to shared mix buffer
+        for (int sample = 0; sample < numSamples; ++sample)
+        {
+            float outL = outputCacheL[static_cast<size_t> (sample)];
+            float outR = outputCacheR[static_cast<size_t> (sample)];
 
             if (buffer.getNumChannels() >= 2)
             {
@@ -1167,6 +1494,42 @@ public:
             juce::ParameterID { "drift_driftRate", 1 }, "Drift Drift Rate",
             juce::NormalisableRange<float> (0.05f, 2.0f, 0.01f), 0.2f));
 
+        // --- Tidal Pulse — BREATHE macro engine (Option B, Round 11B) ---
+        // sin² breathing LFO applied as amplitude modulation. Default off (depth=0).
+        // Rate range matches one full breath per 20s (0.05 Hz) to 2 breaths/second (2.0 Hz).
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "drift_tidalDepth", 1 }, "Drift Tidal Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "drift_tidalRate", 1 }, "Drift Tidal Rate",
+            juce::NormalisableRange<float> (0.05f, 2.0f, 0.01f, 0.5f), 0.15f));
+
+        // --- Fracture — FRACTURE macro engine (Option B, Round 11B) ---
+        // Circular-buffer stutter glitch. Default off (enable=false, intensity=0).
+        params.push_back (std::make_unique<juce::AudioParameterBool> (
+            juce::ParameterID { "drift_fractureEnable", 1 }, "Drift Fracture Enable",
+            false));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "drift_fractureIntensity", 1 }, "Drift Fracture Intensity",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "drift_fractureRate", 1 }, "Drift Fracture Rate",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
+
+        // --- Reverb — engine-level spatial tail (Option B, Round 11B) ---
+        // Schroeder 4-comb + 2-allpass reverb. Default off (mix=0).
+        // Size controls room scale (feedback 0.50–0.95). Mix is wet/dry.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "drift_reverbMix", 1 }, "Drift Reverb Mix",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "drift_reverbSize", 1 }, "Drift Reverb Size",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
+
         // --- Level ---
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "drift_level", 1 }, "Drift Level",
@@ -1221,9 +1584,16 @@ public:
         pLfoRate       = apvts.getRawParameterValue ("drift_lfoRate");
         pLfoDepth      = apvts.getRawParameterValue ("drift_lfoDepth");
         pLfoDest       = apvts.getRawParameterValue ("drift_lfoDest");
-        pDriftDepth    = apvts.getRawParameterValue ("drift_driftDepth");
-        pDriftRate     = apvts.getRawParameterValue ("drift_driftRate");
-        pLevel         = apvts.getRawParameterValue ("drift_level");
+        pDriftDepth        = apvts.getRawParameterValue ("drift_driftDepth");
+        pDriftRate         = apvts.getRawParameterValue ("drift_driftRate");
+        pTidalDepth        = apvts.getRawParameterValue ("drift_tidalDepth");
+        pTidalRate         = apvts.getRawParameterValue ("drift_tidalRate");
+        pFractureEnable    = apvts.getRawParameterValue ("drift_fractureEnable");
+        pFractureIntensity = apvts.getRawParameterValue ("drift_fractureIntensity");
+        pFractureRate      = apvts.getRawParameterValue ("drift_fractureRate");
+        pReverbMix         = apvts.getRawParameterValue ("drift_reverbMix");
+        pReverbSize        = apvts.getRawParameterValue ("drift_reverbSize");
+        pLevel             = apvts.getRawParameterValue ("drift_level");
         pVoiceMode     = apvts.getRawParameterValue ("drift_voiceMode");
         pGlide         = apvts.getRawParameterValue ("drift_glide");
         pPolyphony     = apvts.getRawParameterValue ("drift_polyphony");
@@ -1297,6 +1667,8 @@ private:
         v.filterA2.reset();
         v.filterB.reset();
         v.shimmer.reset();
+        v.fracture.reset();  // clear any stutter buffer from previous note
+        v.tidal.reset();     // restart breath phase on new note
     }
 
     void noteOff (int noteNumber)
@@ -1380,6 +1752,10 @@ private:
     // LFO (global, not per-voice — XOdyssey LFO1 is global)
     DriftLFO lfo;
 
+    // Reverb — engine-level, not per-voice (Option B, Round 11B)
+    // Buffers pre-allocated in prepare(); safe on audio thread.
+    DriftReverb reverb;
+
     // Coupling state
     float envelopeOutput = 0.0f;
     float externalPitchMod = 0.0f;
@@ -1387,11 +1763,14 @@ private:
     float externalMorphMod = 0.0f;
     float modWheelAmount = 0.0f; // CC1 [0,1]
 
+    // ---- D006 Aftertouch — pressure deepens Prism Shimmer (JOURNEY analog) ----
+    PolyAftertouch aftertouch;
+
     // Output cache for coupling reads
     std::vector<float> outputCacheL;
     std::vector<float> outputCacheR;
 
-    // Cached APVTS parameter pointers (38 params)
+    // Cached APVTS parameter pointers (45 params — 38 original + 7 Option B)
     std::atomic<float>* pOscA_mode = nullptr;
     std::atomic<float>* pOscA_shape = nullptr;
     std::atomic<float>* pOscA_tune = nullptr;
@@ -1426,6 +1805,14 @@ private:
     std::atomic<float>* pLfoDest = nullptr;
     std::atomic<float>* pDriftDepth = nullptr;
     std::atomic<float>* pDriftRate = nullptr;
+    // Option B — Round 11B (7 new params)
+    std::atomic<float>* pTidalDepth = nullptr;
+    std::atomic<float>* pTidalRate = nullptr;
+    std::atomic<float>* pFractureEnable = nullptr;
+    std::atomic<float>* pFractureIntensity = nullptr;
+    std::atomic<float>* pFractureRate = nullptr;
+    std::atomic<float>* pReverbMix = nullptr;
+    std::atomic<float>* pReverbSize = nullptr;
     std::atomic<float>* pLevel = nullptr;
     std::atomic<float>* pVoiceMode = nullptr;
     std::atomic<float>* pGlide = nullptr;

@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Volcanic Glass",
+  "mood": "Foundation",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dark, warm, immediate. The obsidian stone character — low PD density, moderate depth, slow formant LFO breathing. Hits with weight and clarity. Hard velocity brings harmonic edge.",
+  "tags": [
+    "dark",
+    "warm",
+    "percussive",
+    "volcanic",
+    "immediate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": {
+    "sourceInstrument": "Obsidian",
+    "sourceCategory": "Foundation",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_densityX": 0.25,
+      "obsidian_tiltY": 0.35,
+      "obsidian_depth": 0.55,
+      "obsidian_stiffness": 0.05,
+      "obsidian_cascadeBlend": 0.0,
+      "obsidian_crossModDepth": 0.0,
+      "obsidian_formantIntensity": 0.2,
+      "obsidian_stereoWidth": 0.3,
+      "obsidian_filterCutoff": 4800.0,
+      "obsidian_filterReso": 0.05,
+      "obsidian_level": 0.82,
+      "obsidian_ampAttack": 0.005,
+      "obsidian_ampDecay": 0.4,
+      "obsidian_ampSustain": 0.7,
+      "obsidian_ampRelease": 0.5,
+      "obsidian_depthAttack": 0.005,
+      "obsidian_depthDecay": 0.3,
+      "obsidian_depthSustain": 0.4,
+      "obsidian_depthRelease": 0.4,
+      "obsidian_lfo1Rate": 0.1,
+      "obsidian_lfo1Depth": 0.0,
+      "obsidian_lfo1Shape": 0,
+      "obsidian_lfo2Rate": 0.5,
+      "obsidian_lfo2Depth": 0.0,
+      "obsidian_lfo2Shape": 0,
+      "obsidian_polyphony": 2,
+      "obsidian_glide": 0.0,
+      "obsidian_macroCharacter": 0.3,
+      "obsidian_macroMovement": 0.0,
+      "obsidian_macroCoupling": 0.0,
+      "obsidian_macroSpace": 0.15
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.72,
+    "movement": 0.18,
+    "density": 0.38,
+    "space": 0.25,
+    "aggression": 0.35
+  }
+}

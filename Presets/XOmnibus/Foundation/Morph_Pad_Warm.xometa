@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Morph_Pad_Warm",
+  "name": "Transitional Membrane",
   "mood": "Foundation",
   "engines": [
     "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH warm pad \u2014 low morph position for fundamental-heavy tone, slow bloom.",
+  "description": "MORPH warm pad — low morph position for fundamental-heavy tone, slow bloom.",
   "tags": [
     "morph",
     "pad",

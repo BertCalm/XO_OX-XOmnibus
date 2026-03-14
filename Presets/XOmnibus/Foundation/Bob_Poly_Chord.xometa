@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Bob_Poly_Chord",
+  "name": "Reef Chorus",
   "mood": "Foundation",
   "engines": [
     "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB full polyphony chord voice \u2014 all voices active for lush harmonic chording.",
+  "description": "BOB full polyphony chord voice — all voices active for lush harmonic chording.",
   "tags": [
     "bob",
     "poly",

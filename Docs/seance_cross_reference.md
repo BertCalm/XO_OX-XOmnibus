@@ -11,7 +11,7 @@
 | Engine | Gallery Code | Score | Key Blessing | P0 Bugs | D-Violations | Key Ghost Quote |
 |--------|-------------|-------|--------------|---------|--------------|-----------------|
 | XOblongBob | OBLONG | 7.x/10 | None designated | None | D006: no aftertouch; CuriosityEngine unresponsive to touch | "The CuriosityEngine is the soul but it does not respond to the player's hand." |
-| XObscura | OBSCURA | High / unanimous | — (D003 compliant) | None | None | "The physics IS the synthesis — this is the only engine where the algorithm is the character." |
+| XObscura | OBSCURA | High / unanimous | — (D003 compliant) | None | None | "The physics IS the synthesis — this is the only engine where the algorithm is the character." | **Deep documentation: `Docs/obscura_synthesis_guide.md`** |
 | XOcelot | OCELOT | 6.4/10 | None | None | D004: macro_1–4 all dead | "The EcosystemMatrix is the most novel DSP concept in the fleet and it is completely inaccessible." |
 | XOrigami | ORIGAMI | Not formally scored | None | P0-03: STFT race condition if blockSize < 512 | None confirmed | "The instantaneousFreq variable is a spectral compass that no preset has ever used." |
 | XOrbital | ORBITAL | APPROVED | B001 Group Envelope System | None | D005: zero LFOs in adapter | "The group envelope is a crown jewel — but without an LFO the jewel sits in a still room." |
@@ -28,7 +28,7 @@
 | XOpal | OPAL | Concept reviewed | V008 Time-Telescope | None | D004: opal_smear declared, no DSP | "XOpal is the universal transformer — every other engine becomes different when viewed through its lens." |
 | OddfeliX (Snap) | ODDFELIX | ~C+ | None | None | D004: snap_macroDepth void-cast; D005: zero LFOs | "M4 DEPTH is the most prominent knob on the macro row and it is a void cast." |
 | OddOscar (Morph) | ODDOSCAR | 6.9/10 | None | None | D002 + D005: zero LFOs, no aftertouch | "The Moog ladder is excellent — and then the note ends and nothing ever changes again." |
-| XOblique | OBLIQUE | 5.9/10 (lowest) | None | None | D004: oblq_percDecay discarded; D005: zero LFOs | "Six presets for the engine with the most interesting conceptual premise in the gallery." |
+| XOblique | OBLIQUE | 5.9/10 → 7.2/10 est. (Round 8A) | None | None | D004 fixed (R3B); D001 enhanced (R7B+R8A); D005 fixed (R8A); D006 fixed (R7F) | "Six presets for the engine with the most interesting conceptual premise in the gallery." → 22 presets, all doctrines addressed. |
 | XObsidian | OBSIDIAN | 6.6/10 | None | P0-01: R channel filter bypass; P0-04: formant pFormantResonance + pFormantIntensity share same param ID | D001: velocity amplitude only | "The right channel has never heard one of the two filters." |
 | XOracle | ORACLE | 8.6/10 | B010 GENDY + Maqam | None | None (D003 compliant) | "Buchla said 10 out of 10 — and there are zero presets to prove it." |
 | XOrganon | ORGANON | 8/8 PASS | B011 Variational Free Energy | None | D005: no standard LFO | "The VFE implementation is publishable as an academic paper — but it needs a sine wave." |
@@ -62,7 +62,7 @@
 | 14 | OCELOT | 6.4/10 |
 | 15 | OBSCURA | High (unscored) |
 | 16 | ODDFELIX | ~C+ |
-| 17 | OBLIQUE | 5.9/10 (lowest) |
+| 17 | OBLIQUE | 5.9/10 → 7.2/10 est. (Round 8A complete) |
 
 ---
 
@@ -87,6 +87,101 @@
 | P0-02 | OSTERIA | Warmth filter L-only — `mixR` never passed through warmthFilter | `OsteriaEngine.h` line ~1227, add `mixR = warmthFilter.processSample(mixR)` |
 | P0-03 | ORIGAMI | STFT race condition — hopSampleCounter + overlap-add accumulator not serialized for blockSize < 512 | `OrigamiEngine.h` kHopSize=512 |
 | P0-04 | OBSIDIAN | `pFormantResonance` + `pFormantIntensity` share same parameter ID — formant resonance uncontrollable | `ObsidianEngine.h` parameter attachment |
+
+---
+
+## Prism Sweep Fixes — Post-Seance
+
+*Initiated: 2026-03-14 | Status: Rounds 1–5 complete*
+
+These fixes were applied after the 24 seances concluded. The ghosts delivered verdicts; the Prism Sweep executed them.
+
+### D004 Dead Parameters — All 5 Violations Resolved (Round 3B)
+
+| Engine | Dead Param | Fix Applied |
+|--------|-----------|-------------|
+| OddfeliX (Snap) | `snap_macroDepth` void-cast | Wired to `panSpread` (0.3 + macroDepth × 0.7) |
+| XOwlfish | `owl_morphGlide` never read | Wired to mixtur swell during portamento |
+| XOblique | `oblq_percDecay` discarded | Passed to BounceOscillator decay computation |
+| XOcelot | macro_1–4 all dead | Wired to DSP in OcelotParamSnapshot |
+| XOsprey | Dead `OspreyLFO` struct | Instantiated; breathing LFO applied to signal |
+
+### D005 Engines Must Breathe — All 4 Violations Resolved (Round 5A)
+
+| Engine | LFO Installed | Rate | Destination |
+|--------|--------------|------|-------------|
+| OddfeliX (Snap) | `double lfoPhase` | 0.15 Hz | BPF center ±8% |
+| XOrbital | `double spectralDriftPhase` | 0.03 Hz | Morph position ±0.05 (33-second cycle) |
+| XOverworld | `float eraPhase` via `ow_eraDriftRate` | 0–4 Hz | ERA crossfade position |
+| XOwlfish | `float grainLfoPhase` | 0.05 Hz | Grain size ±12% (20-second cycle) |
+
+**D005 FAIL count: 4 → 0.**
+
+### D006 Expression — 5 of 23 Engines Now Have Aftertouch (Round 5D)
+
+| Engine | Aftertouch Wired To | Sensitivity |
+|--------|-------------------|-------------|
+| OddfeliX (Snap) | BPF cutoff (+0–6000 Hz) | 0.3 |
+| XOrbital | Morph (+0–0.3 toward Profile B) | 0.3 |
+| XObsidian | Formant intensity (+0–0.3 vowel shift) | 0.3 |
+| XOrigami | Fold depth (+0–0.3 shimmer) | 0.3 |
+| XOracle | GENDY drift (+0–0.15 chaos) | 0.15 |
+
+Remaining: 18 engines still have no aftertouch wiring. XOdyssey's aftertouch mod source is allocated and routed in Journey Demo presets but is never fed live MIDI data in PluginProcessor — it remains a ghost of a gesture.
+
+### P0 Bugs — All 5 Fixed (Round 3A)
+
+| Bug | Engine | Fix |
+|-----|--------|-----|
+| R-channel filter bypass | Obsidian | Both channels now call `voice.mainFilter.processSample()` |
+| Formant ID collision | Obsidian | pFormantResonance points to `obsidian_formantResonance` |
+| Warmth filter L-only | Osteria | `warmthFilter.processSample(mixR)` added |
+| STFT block size crash | Origami | Block size guard added |
+| Coupling output zero | Overworld | Output cache vectors added; per-sample index supported |
+
+*Full fix log: `Docs/prism_sweep_index.md` | Doctrine updates: `~/.claude/skills/synth-seance/knowledge/doctrines/`*
+
+---
+
+### OBLIQUE Deep Recovery — Round 8A (2026-03-14)
+
+OBLIQUE was the fleet's lowest scorer at 5.9/10. Rounds 3B, 7B, 7C, 7D, 7F addressed individual issues.
+Round 8A addresses the remaining doctrine gaps: D005 (no LFO) and strengthening D001 (velocity-to-timbre).
+
+| Fix | Round | What Changed |
+|-----|-------|-------------|
+| D004: `oblq_percDecay` discarded | 3B | `clickDecay` now passed to `ObliqueBounce::fireClick()` — click burst duration controllable 1–30ms |
+| D001: Filter envelope added | 7B | `oblq_filterEnvDepth` parameter added; velocity × envelope sweeps SVF cutoff by up to +7000 Hz |
+| Preset expansion 6→16 | 7C | 10 new presets covering Foundation, Atmosphere, Prism, Flux, Entangled moods |
+| Macros wired: FOLD, BOUNCE, COLOR, SPACE | 7D | All 4 XOmnibus standard macros produce audible change |
+| D006: Aftertouch + Mod Wheel | 7F | Channel pressure → prism mix depth (+0.3); CC1 mod wheel → prism color spread (+0.3) |
+| D005: Prism LFO | 8A | `obliqueLfoPhase` double accumulator; 0.2 Hz sine modulates `prismColor` ±0.15 — engine now breathes |
+| D001: Velocity-to-fold | 8A | `velocityFoldAmount = effectiveOscFold + velocity × 0.25` — harder hits produce +25% fold depth |
+| Preset expansion 16→22 | 8A | 6 new presets: 2 Aether (opens that mood for first time), 2 Prism, 1 Flux, 1 Foundation; 2 presets have non-zero macros baked in |
+
+**Post-Round-8A OBLIQUE doctrine status:**
+- D001: PASS — velocity affects both amplitude, filter envelope, and wavefold depth
+- D002: PARTIAL — phaser has internal LFO; prism LFO added; no user-controllable LFO rate param yet
+- D004: PASS — all declared parameters affect audio
+- D005: PASS — 0.2 Hz prism color LFO always running
+- D006: PASS — aftertouch (prism mix) + mod wheel (prism color) both wired
+
+**Full recovery log:** `Docs/oblique_deep_recovery.md`
+
+---
+
+---
+
+### Deep Documentation — Post-Seance Synthesis Guides
+
+Comprehensive synthesis guides have been written for engines with complex or unique synthesis methods:
+
+| Engine | Guide | Notes |
+|--------|-------|-------|
+| OBSCURA | `Docs/obscura_synthesis_guide.md` | Scanned synthesis, Verlet physics, full D003 treatment |
+| ORACLE | `Docs/oracle_synthesis_guide.md` | GENDY stochastic synthesis, Maqam tuning |
+| ORGANON | `Docs/organon_vfe_guide.md` | Variational Free Energy metabolism |
+| OSPREY + OSTERIA | `Docs/shore_system_spec.md` | ShoreSystem shared cultural data |
 
 ---
 

@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "name": "Attractor Tap",
+  "mood": "Entangled",
+  "engines": ["Ouroboros", "Onset"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The strange attractor barely influences Onset's filter envelope — chaotic amplitude gently modulates drum decay, like a trembling hand on the snare drum.",
+  "tags": ["coupling", "Ouroboros-pair", "chaos", "drums", "whisper", "attractor"],
+  "macroLabels": ["CHAOS", "PUNCH", "COUPLING", "SPACE"],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 1,
+      "ouro_rate": 145.0,
+      "ouro_chaosIndex": 0.3,
+      "ouro_leash": 0.75,
+      "ouro_theta": 0.2,
+      "ouro_phi": 0.1,
+      "ouro_damping": 0.45,
+      "ouro_injection": 0.0
+    },
+    "Onset": {
+      "perc_v1_blend": 0.2,
+      "perc_v1_algoMode": 1,
+      "perc_v1_pitch": -1.5,
+      "perc_v1_decay": 0.45,
+      "perc_v1_tone": 0.35,
+      "perc_v1_snap": 0.4,
+      "perc_v1_body": 0.85,
+      "perc_v1_character": 0.15,
+      "perc_v1_level": 0.8,
+      "perc_v1_pan": 0.0,
+      "perc_v2_blend": 0.45,
+      "perc_v2_algoMode": 0,
+      "perc_v2_pitch": 0.0,
+      "perc_v2_decay": 0.22,
+      "perc_v2_tone": 0.5,
+      "perc_v2_snap": 0.5,
+      "perc_v2_body": 0.35,
+      "perc_v2_character": 0.1,
+      "perc_v2_level": 0.65,
+      "perc_v2_pan": 0.0,
+      "perc_v3_blend": 0.55,
+      "perc_v3_algoMode": 0,
+      "perc_v3_pitch": 0.0,
+      "perc_v3_decay": 0.04,
+      "perc_v3_tone": 0.55,
+      "perc_v3_snap": 0.3,
+      "perc_v3_body": 0.1,
+      "perc_v3_character": 0.0,
+      "perc_v3_level": 0.55,
+      "perc_v3_pan": 0.0,
+      "perc_level": 0.8,
+      "perc_drive": 0.0,
+      "perc_masterTone": 0.5,
+      "perc_macro_machine": 0.5,
+      "perc_macro_punch": 0.5,
+      "perc_macro_space": 0.05,
+      "perc_macro_mutate": 0.0,
+      "perc_xvc_hat_choke": 1.0,
+      "perc_xvc_global_amount": 0.4,
+      "perc_char_warmth": 0.5,
+      "perc_char_grit": 0.05,
+      "perc_fx_reverb_mix": 0.1,
+      "perc_fx_lofi_mix": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Onset",
+        "type": "Amp->Filter",
+        "amount": 0.18
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.55,
+    "density": 0.5,
+    "space": 0.25,
+    "aggression": 0.3
+  }
+}

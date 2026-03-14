@@ -36,6 +36,7 @@
 //==============================================================================
 
 #include "../../Core/SynthEngine.h"
+#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
@@ -633,6 +634,12 @@ struct ObliqueVoice
     // --- Portamento/glide ---
     float currentFrequency = 440.0f;
     float targetFrequency = 440.0f;
+
+    // --- Legato detection ---
+    // True when the voice was in attack/decay/sustain (gate open) at the time
+    // a new note arrives. Used in Legato mode to skip envelope retrigger and
+    // instead glide pitch smoothly to the new target.
+    bool wasLegatoActive = false;
 };
 
 //==============================================================================
@@ -678,6 +685,7 @@ public:
 
         prismDelay.prepare (hostSampleRate);
         phaserEffect.prepare (hostSampleRate);
+        aftertouch.prepare (hostSampleRate);  // D006: 5ms attack / 20ms release smoothing
 
         couplingCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         couplingCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
@@ -717,6 +725,7 @@ public:
         envelopeFollowerOutput = 0.0f;
         externalPitchModulation = 0.0f;
         externalFilterModulation = 0.0f;
+        obliqueLfoPhase = 0.0;
         std::fill (couplingCacheL.begin(), couplingCacheL.end(), 0.0f);
         std::fill (couplingCacheR.begin(), couplingCacheR.end(), 0.0f);
     }
@@ -737,11 +746,14 @@ public:
         // ======================================================================
 
         // --- Oscillator parameters ---
-        const int oscWaveIndex        = (pOscWave   != nullptr) ? static_cast<int> (pOscWave->load())   : 1;
-        const float oscFoldAmount     = (pOscFold   != nullptr) ? pOscFold->load()   : 0.3f;
-        const float oscDetuneCents    = (pOscDetune != nullptr) ? pOscDetune->load() : 8.0f;
-        const float masterLevel       = (pLevel     != nullptr) ? pLevel->load()     : 0.8f;
-        const float glideTime         = (pGlide     != nullptr) ? pGlide->load()     : 0.0f;
+        const int oscWaveIndex        = (pOscWave     != nullptr) ? static_cast<int> (pOscWave->load())     : 1;
+        const float oscFoldAmount     = (pOscFold     != nullptr) ? pOscFold->load()     : 0.3f;
+        const float oscDetuneCents    = (pOscDetune   != nullptr) ? pOscDetune->load()   : 8.0f;
+        const float masterLevel       = (pLevel       != nullptr) ? pLevel->load()       : 0.8f;
+        const float glideTime         = (pGlide       != nullptr) ? pGlide->load()       : 0.0f;
+        // Voice mode: 0=Poly (always retrigger), 1=Mono, 2=Legato (no retrigger when gate open).
+        // Default Poly (0) preserves existing behaviour for all existing presets.
+        const int   voiceMode         = (pVoiceMode   != nullptr) ? static_cast<int> (pVoiceMode->load()) : 0;
 
         // --- Bounce (percussive ricochet) parameters ---
         const float bounceClickLevel  = (pPercClick != nullptr) ? pPercClick->load() : 0.6f;
@@ -754,8 +766,9 @@ public:
         const float bounceClickTone   = (pClickTone     != nullptr) ? pClickTone->load()     : 3000.0f;
 
         // --- Filter parameters ---
-        const float filterCutoff      = (pFilterCut != nullptr) ? pFilterCut->load() : 4000.0f;
-        const float filterResonance   = (pFilterRes != nullptr) ? pFilterRes->load() : 0.35f;
+        const float filterCutoff      = (pFilterCut       != nullptr) ? pFilterCut->load()       : 4000.0f;
+        const float filterResonance   = (pFilterRes       != nullptr) ? pFilterRes->load()       : 0.35f;
+        const float filterEnvDepth    = (pFilterEnvDepth  != nullptr) ? pFilterEnvDepth->load()  : 0.3f;
 
         // --- Envelope parameters ---
         const float attackTime        = (pAttack    != nullptr) ? pAttack->load()    : 0.005f;
@@ -778,6 +791,26 @@ public:
         const float phaserFeedback    = (pPhaserFeedback != nullptr) ? pPhaserFeedback->load() : 0.3f;
         const float phaserMixAmount   = (pPhaserMix      != nullptr) ? pPhaserMix->load()      : 0.4f;
 
+        // -- XOmnibus macros (CHARACTER, MOVEMENT, COUPLING, SPACE) ------------
+        // Loaded once per block; defaults to 0.0 so existing presets are unaffected.
+        const float macroFold   = (pMacroFold   != nullptr) ? pMacroFold->load()   : 0.0f;
+        const float macroBounce = (pMacroBounce != nullptr) ? pMacroBounce->load() : 0.0f;
+        const float macroColor  = (pMacroColor  != nullptr) ? pMacroColor->load()  : 0.0f;
+        const float macroSpace  = (pMacroSpace  != nullptr) ? pMacroSpace->load()  : 0.0f;
+
+        // Apply macro offsets to DSP parameters (additive, clamped to valid ranges):
+        //   FOLD:   oscFoldAmount + 0.7 — harmonic grit (wavefold depth)
+        //   BOUNCE: bounceRateMs + 220ms, bounceGravity + 0.2 — punchier ricochets
+        //   COLOR:  prismColorSpread + 0.5, prismMixAmount + 0.35 — more spectral fragments
+        //   SPACE:  phaserMixAmount + 0.5, prismFeedback + 0.3 — wider psychedelic swirl
+        const float effectiveOscFold    = clamp (oscFoldAmount   + macroFold   * 0.7f,  0.0f,  1.0f);
+        const float effectiveBounceRate = clamp (bounceRateMs    + macroBounce * 220.0f, 20.0f, 500.0f);
+        const float effectiveBounceGrav = clamp (bounceGravity   + macroBounce * 0.2f,  0.3f,  0.95f);
+        const float effectivePrismColor = clamp (prismColorSpread + macroColor * 0.5f,  0.0f,  1.0f);
+        const float macroPrismMixBase   = clamp (prismMixAmount   + macroColor * 0.35f, 0.0f,  1.0f);
+        const float effectivePhaserMix  = clamp (phaserMixAmount  + macroSpace * 0.5f,  0.0f,  1.0f);
+        const float effectivePrismFb    = clamp (prismFeedback    + macroSpace * 0.3f,  0.0f,  0.95f);
+
         // ======================================================================
         // MIDI processing
         // ======================================================================
@@ -787,12 +820,29 @@ public:
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
-                        oscWaveIndex, oscDetuneCents, glideTime, bounceRateMs, bounceClickTone);
+                        oscWaveIndex, oscDetuneCents, glideTime, effectiveBounceRate, bounceClickTone,
+                        voiceMode);
             else if (msg.isNoteOff())
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
+            // D006: CC1 mod wheel → prism color spread (more spectral color with wheel; sensitivity 0.3)
+            else if (msg.isController() && msg.getControllerNumber() == 1)
+                modWheelValue = msg.getControllerValue() / 127.0f;
+            // D006: channel pressure → aftertouch (applied to prism mix depth below)
+            else if (msg.isChannelPressure())
+                aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
         }
+
+        // D006: smooth aftertouch pressure and compute modulation value
+        aftertouch.updateBlock (numSamples);
+        const float atPressure = aftertouch.getSmoothedPressure (0);  // channel-mode: voice 0 holds global value
+
+        // D006: aftertouch deepens prism mix (sensitivity 0.3).
+        // Pressing harder pushes more signal through the 6-facet spectral delay —
+        // the light bends further, more colour, more shimmer.
+        // Macro-modulated base + aftertouch: both increase prism mix depth.
+        const float effectivePrismMix = clamp (macroPrismMixBase + atPressure * 0.3f, 0.0f, 1.0f);
 
         // ======================================================================
         // Coupling input — consume accumulated external modulation
@@ -807,13 +857,19 @@ public:
         // Filter coefficients only need recalculating once per block
         // (parameter changes are block-rate, not sample-rate).
         static constexpr float kCouplingFilterModRange = 4000.0f;  // max coupling offset in Hz
-        float modulatedCutoff = filterCutoff + couplingFilterMod * kCouplingFilterModRange;
-        modulatedCutoff = clamp (modulatedCutoff, 20.0f, 20000.0f);
+        float baseCutoff = filterCutoff + couplingFilterMod * kCouplingFilterModRange;
+        baseCutoff = clamp (baseCutoff, 20.0f, 20000.0f);
 
+        // D001: per-voice filter envelope depth — velocity × envelopeLevel sweeps
+        // the SVF cutoff open at the attack peak and decays with the amplitude.
+        // Max additional sweep: filterEnvDepth × velocity × 7000 Hz.
+        static constexpr float kFilterEnvMaxSweep = 7000.0f;
         for (auto& voice : voices)
         {
             if (!voice.active) continue;
-            voice.voiceFilter.setCoefficients (modulatedCutoff, filterResonance, sampleRateFloat);
+            float envVelBoost = filterEnvDepth * voice.velocity * voice.envelopeLevel * kFilterEnvMaxSweep;
+            float voiceCutoff = clamp (baseCutoff + envVelBoost, 20.0f, 20000.0f);
+            voice.voiceFilter.setCoefficients (voiceCutoff, filterResonance, sampleRateFloat);
         }
 
         // ======================================================================
@@ -930,7 +986,15 @@ public:
                                        + voice.oscillatorSecondary.processSample() * kSecondaryMixLevel;
 
                 // --- Wavefolder (Buchla-inspired harmonic grit) ---
-                oscillatorOutput = wavefolder.process (oscillatorOutput, oscFoldAmount);
+                // D001 enhancement: velocity scales fold depth.
+                // Harder hits push the waveform through more folding stages,
+                // adding harmonic complexity. At velocity=1.0: +0.25 fold boost.
+                // At velocity=0.2 (soft): +0.05 — gentle warmth, no grit.
+                // This maps directly to the prism-fish character: hard throws of
+                // the ball scatter more spectral fragments; soft ones glow steadily.
+                static constexpr float kVelocityFoldBoost = 0.25f;
+                float velocityFoldAmount = clamp (effectiveOscFold + voice.velocity * kVelocityFoldBoost, 0.0f, 1.0f);
+                oscillatorOutput = wavefolder.process (oscillatorOutput, velocityFoldAmount);
 
                 // --- Voice filter (Cytomic SVF lowpass) ---
                 oscillatorOutput = voice.voiceFilter.processSample (oscillatorOutput);
@@ -941,8 +1005,8 @@ public:
 
                 // --- Bounce clicks (per-voice percussive ricochets) ---
                 ObliqueBounce::Params bounceParams;
-                bounceParams.rate = bounceRateMs;
-                bounceParams.gravity = bounceGravity;
+                bounceParams.rate = effectiveBounceRate;
+                bounceParams.gravity = effectiveBounceGrav;
                 bounceParams.damping = bounceDamping;
                 bounceParams.maxBounces = bounceCount;
                 bounceParams.swing = bounceSwing;
@@ -983,14 +1047,30 @@ public:
             // Post-voice FX chain
             // ================================================================
 
+            // --- D005: Prism LFO accumulation ---
+            // 0.2 Hz autonomous sine LFO modulates prism color spread ±0.15.
+            // kLfoRate is compile-time constant: no parameter load on audio thread.
+            // Double precision phase prevents drift over long performance sessions.
+            static constexpr double kLfoRate = 0.2;    // Hz — one sweep per 5 seconds
+            static constexpr double kTwoPiD  = 6.28318530718;
+            obliqueLfoPhase += kLfoRate / hostSampleRate;
+            if (obliqueLfoPhase >= 1.0) obliqueLfoPhase -= 1.0;
+            float obliqueLfoValue = fastSin (static_cast<float> (obliqueLfoPhase * kTwoPiD));
+            // ±0.15 spectral spread depth: enough to be audible without being
+            // distracting. The prism fish catches a slowly rotating light beam.
+            static constexpr float kLfoDepth = 0.15f;
+            float lfoColorMod = obliqueLfoValue * kLfoDepth;
+
             // --- Prism Delay (6-facet spectral delay — the prismatic core) ---
+            // D006: mod wheel increases prism color spread up to +0.3 at full wheel (sensitivity 0.3)
+            // D005: prism LFO adds ±0.15 autonomous spectral breathing
             ObliquePrism::Params prismParams;
             prismParams.baseDelay = prismDelayMs;
             prismParams.spread = prismSpread;
-            prismParams.colorSpread = prismColorSpread;
+            prismParams.colorSpread = clamp (effectivePrismColor + modWheelValue * 0.3f + lfoColorMod, 0.0f, 1.0f);
             prismParams.stereoWidth = prismStereoWidth;
-            prismParams.feedback = prismFeedback;
-            prismParams.mix = prismMixAmount;
+            prismParams.feedback = effectivePrismFb;
+            prismParams.mix = effectivePrismMix;
             prismParams.damping = prismDamping;
 
             float postPrismL = 0.0f, postPrismR = 0.0f;
@@ -1001,7 +1081,7 @@ public:
             phaserParams.rate = phaserRate;
             phaserParams.depth = phaserDepth;
             phaserParams.feedback = phaserFeedback;
-            phaserParams.mix = phaserMixAmount;
+            phaserParams.mix = effectivePhaserMix;
             phaserEffect.process (postPrismL, postPrismR, phaserParams);
 
             // --- Master output ---
@@ -1129,6 +1209,15 @@ public:
             juce::ParameterID { "oblq_glide", 1 }, "Oblique Glide",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
 
+        // Round 10F: Voice mode for legato detection.
+        // 0=Poly (always retrigger — default, existing behaviour preserved),
+        // 1=Mono (retrigger on every new note, single voice),
+        // 2=Legato (new note while gate open: slide pitch, skip retrigger + bounce).
+        // This is the `wasActive` check that was missing from the Round 9D audit.
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "oblq_voiceMode", 1 }, "Oblique Voice Mode",
+            juce::StringArray { "Poly", "Mono", "Legato" }, 0));
+
         // --- Bounce (percussive ricochet) ---
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "oblq_percClick", 1 }, "Oblique Click Level",
@@ -1170,6 +1259,15 @@ public:
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "oblq_filterRes", 1 }, "Oblique Filter Resonance",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.35f));
+
+        // D001: Filter envelope depth — velocity × ADSR envelope sweeps the SVF
+        // cutoff open at the attack peak, then falls back toward the base cutoff
+        // as the note decays. This makes harder velocity hits brighter and gives
+        // Oblique's prismatic lines D001-compliant timbre response.
+        // Default 0.3: audible brightness sweep without overwhelming the base tone.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "oblq_filterEnvDepth", 1 }, "Oblique Filter Env Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.3f));
 
         // --- Envelope ---
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
@@ -1233,6 +1331,30 @@ public:
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "oblq_phaserMix", 1 }, "Oblique Phaser Mix",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.4f));
+
+        // XOmnibus standard macros (CHARACTER, MOVEMENT, COUPLING, SPACE)
+        // All default to 0.0 — existing presets are unaffected.
+        //
+        // M1 FOLD (CHARACTER): increases wavefold amount by up to +0.7 — harmonic grit.
+        //   At max: oscFold + 0.7 (clamped to 1.0) — the prism fish refracts hard.
+        // M2 BOUNCE (MOVEMENT): increases bounce rate by up to +220ms and gravity by +0.2.
+        //   At max: bounceRateMs + 220ms, bounceGravity + 0.2 — faster, punchier ricochets.
+        // M3 COLOR (COUPLING): increases prism color spread +0.5 and prism mix +0.35.
+        //   At max: prismColor + 0.5, prismMix + 0.35 — spectral fragments multiply.
+        // M4 SPACE (SPACE): increases phaser mix +0.5 and prism feedback +0.3.
+        //   At max: phaserMix + 0.5, prismFeedback + 0.3 — wide psychedelic swirl.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "oblq_macroFold",   1 }, "Oblique FOLD",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "oblq_macroBounce", 1 }, "Oblique BOUNCE",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "oblq_macroColor",  1 }, "Oblique COLOR",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "oblq_macroSpace",  1 }, "Oblique SPACE",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
     }
 
 public:
@@ -1243,6 +1365,7 @@ public:
         pOscDetune      = apvts.getRawParameterValue ("oblq_oscDetune");
         pLevel          = apvts.getRawParameterValue ("oblq_level");
         pGlide          = apvts.getRawParameterValue ("oblq_glide");
+        pVoiceMode      = apvts.getRawParameterValue ("oblq_voiceMode");
         pPercClick      = apvts.getRawParameterValue ("oblq_percClick");
         pPercDecay      = apvts.getRawParameterValue ("oblq_percDecay");
         pBounceRate     = apvts.getRawParameterValue ("oblq_bounceRate");
@@ -1251,8 +1374,9 @@ public:
         pBounceCnt      = apvts.getRawParameterValue ("oblq_bounceCnt");
         pBounceSwing    = apvts.getRawParameterValue ("oblq_bounceSwing");
         pClickTone      = apvts.getRawParameterValue ("oblq_clickTone");
-        pFilterCut      = apvts.getRawParameterValue ("oblq_filterCut");
-        pFilterRes      = apvts.getRawParameterValue ("oblq_filterRes");
+        pFilterCut        = apvts.getRawParameterValue ("oblq_filterCut");
+        pFilterRes        = apvts.getRawParameterValue ("oblq_filterRes");
+        pFilterEnvDepth   = apvts.getRawParameterValue ("oblq_filterEnvDepth");
         pAttack         = apvts.getRawParameterValue ("oblq_attack");
         pDecay          = apvts.getRawParameterValue ("oblq_decay");
         pSustain        = apvts.getRawParameterValue ("oblq_sustain");
@@ -1268,6 +1392,11 @@ public:
         pPhaserDepth    = apvts.getRawParameterValue ("oblq_phaserDepth");
         pPhaserFeedback = apvts.getRawParameterValue ("oblq_phaserFeedback");
         pPhaserMix      = apvts.getRawParameterValue ("oblq_phaserMix");
+        // XOmnibus macros
+        pMacroFold      = apvts.getRawParameterValue ("oblq_macroFold");
+        pMacroBounce    = apvts.getRawParameterValue ("oblq_macroBounce");
+        pMacroColor     = apvts.getRawParameterValue ("oblq_macroColor");
+        pMacroSpace     = apvts.getRawParameterValue ("oblq_macroSpace");
     }
 
     //--------------------------------------------------------------------------
@@ -1309,6 +1438,18 @@ private:
     ObliquePrism prismDelay;          // 6-facet spectral delay (the prismatic core)
     ObliquePhaser phaserEffect;       // 6-stage allpass psychedelic swirl
 
+    // D006: mod wheel — CC1 increases prism color spread (more spectral color with wheel; sensitivity 0.3)
+    float modWheelValue = 0.0f;
+
+    // D005: Prism LFO — autonomous spectral modulation (D005 compliance).
+    // A slow sine LFO at 0.2 Hz modulates prism color spread ±0.15, making the
+    // spectral rainbow breathe and shift without any user interaction. This is
+    // the "prism fish catching the light" — sunlight angle always changing.
+    // Double precision phase accumulator prevents drift over long sessions.
+    // Rate 0.2 Hz = one full spectral sweep every 5 seconds. Depth ±0.15 is
+    // perceptible but not distracting — the sound lives and moves.
+    double obliqueLfoPhase = 0.0;
+
     //--------------------------------------------------------------------------
     // Coupling state — accumulated between blocks, consumed in renderBlock
     //--------------------------------------------------------------------------
@@ -1316,6 +1457,9 @@ private:
     float envelopeFollowerOutput = 0.0f;      // peak envelope for coupling channel 2
     float externalPitchModulation = 0.0f;     // accumulated pitch mod from other engines
     float externalFilterModulation = 0.0f;    // accumulated filter mod from other engines
+
+    // D006: CS-80-inspired poly aftertouch (channel pressure → prism mix depth)
+    PolyAftertouch aftertouch;
 
     //--------------------------------------------------------------------------
     // Output cache — stores per-sample output for getSampleForCoupling() reads.
@@ -1330,9 +1474,48 @@ private:
     //--------------------------------------------------------------------------
 
     void noteOn (int noteNumber, float velocity, int oscWaveIndex, float detuneCents,
-                 float glideTime, float bounceRateMs, float bounceClickTone) noexcept
+                 float glideTime, float bounceRateMs, float bounceClickTone,
+                 int voiceMode) noexcept
     {
-        // --- Voice allocation: find free voice or steal oldest ---
+        // -----------------------------------------------------------------------
+        // Legato detection (voiceMode == 2)
+        //
+        // In Legato mode, if ANY voice is currently gate-open (active and not
+        // releasing) we treat this as a legato note — slide its pitch to the
+        // new target without retriggering the envelope or the bounce sequence.
+        // This is the same "wasActive" check used by Origami, Oracle, and Morph.
+        //
+        // In Poly (0) or Mono (1) mode (or when no gate-open voice exists),
+        // fall through to normal voice allocation below.
+        // -----------------------------------------------------------------------
+        static constexpr float kMinGlideTime = 0.001f;
+        static constexpr float kMinFrequencyForGlide = 10.0f;
+
+        if (voiceMode == 2)  // Legato
+        {
+            for (int i = 0; i < kMaxVoices; ++i)
+            {
+                auto& v = voices[static_cast<size_t> (i)];
+                // Gate is open: active voice that has NOT yet entered release
+                if (v.active && !v.releasing)
+                {
+                    // Slide pitch to new target — keep the running envelope intact
+                    float noteFrequency = midiToFreq (noteNumber);
+                    v.noteNumber = noteNumber;
+                    v.velocity   = velocity;
+                    v.targetFrequency = noteFrequency;
+                    // If no glide time, snap immediately to prevent pitch jump
+                    if (glideTime <= kMinGlideTime)
+                        v.currentFrequency = noteFrequency;
+                    v.wasLegatoActive = true;
+                    return;  // legato: no retrigger, no bounce, no new voice
+                }
+            }
+        }
+
+        // -----------------------------------------------------------------------
+        // Normal (Poly / Mono) voice allocation: find free voice or steal oldest
+        // -----------------------------------------------------------------------
         int selectedVoiceIndex = -1;
         uint64_t oldestStartTime = UINT64_MAX;
         int oldestVoiceIndex = 0;
@@ -1359,6 +1542,16 @@ private:
         }
 
         auto& voice = voices[static_cast<size_t> (selectedVoiceIndex)];
+
+        // --- Capture legato glide intent BEFORE resetting voice state ---
+        // wasAlreadyActive: true only when this voice was previously playing
+        // (either still sustaining or being stolen). Only in this case do we
+        // allow portamento — connecting the outgoing note's pitch to the new one.
+        // If the voice was idle (freshly allocated), the pitch jumps immediately
+        // even when glide > 0, preventing unintended portamento in staccato play.
+        // This mirrors the Origami/Morph pattern from Round 11D.
+        const bool wasAlreadyActive = voice.active && voice.currentFrequency > kMinFrequencyForGlide;
+
         voice.active = true;
         voice.noteNumber = noteNumber;
         voice.velocity = velocity;
@@ -1366,6 +1559,7 @@ private:
         voice.releasing = false;
         voice.envelopeStage = 0.0f;
         voice.envelopeLevel = 0.0f;
+        voice.wasLegatoActive = false;
 
         // --- Set oscillator waveform ---
         PolyBLEP::Waveform waveform;
@@ -1381,13 +1575,12 @@ private:
         voice.oscillatorPrimary.setWaveform (waveform);
         voice.oscillatorSecondary.setWaveform (waveform);
 
-        // --- Set frequency (with optional glide) ---
+        // --- Set frequency (with conditional portamento glide) ---
+        // Glide only applies when a voice was already playing (wasAlreadyActive).
+        // Freshly allocated idle voices always jump immediately, so staccato
+        // playing never produces unintended portamento — only connected notes do.
         float noteFrequency = midiToFreq (noteNumber);
-        // If glide is enabled and the voice was previously active at a valid
-        // frequency, glide from current position. Otherwise jump immediately.
-        static constexpr float kMinGlideTime = 0.001f;
-        static constexpr float kMinFrequencyForGlide = 10.0f;
-        if (glideTime > kMinGlideTime && voice.currentFrequency > kMinFrequencyForGlide)
+        if (wasAlreadyActive && glideTime > kMinGlideTime)
             voice.targetFrequency = noteFrequency;
         else
         {
@@ -1434,6 +1627,8 @@ private:
     std::atomic<float>* pOscDetune      = nullptr;
     std::atomic<float>* pLevel          = nullptr;
     std::atomic<float>* pGlide          = nullptr;
+    // Round 10F: voice mode (0=Poly, 1=Mono, 2=Legato)
+    std::atomic<float>* pVoiceMode      = nullptr;
 
     // Bounce (percussive ricochet)
     std::atomic<float>* pPercClick      = nullptr;
@@ -1446,8 +1641,9 @@ private:
     std::atomic<float>* pClickTone      = nullptr;
 
     // Filter
-    std::atomic<float>* pFilterCut      = nullptr;
-    std::atomic<float>* pFilterRes      = nullptr;
+    std::atomic<float>* pFilterCut        = nullptr;
+    std::atomic<float>* pFilterRes        = nullptr;
+    std::atomic<float>* pFilterEnvDepth   = nullptr;
 
     // Envelope (ADSR)
     std::atomic<float>* pAttack         = nullptr;
@@ -1469,6 +1665,11 @@ private:
     std::atomic<float>* pPhaserDepth    = nullptr;
     std::atomic<float>* pPhaserFeedback = nullptr;
     std::atomic<float>* pPhaserMix      = nullptr;
+    // XOmnibus macros
+    std::atomic<float>* pMacroFold      = nullptr;
+    std::atomic<float>* pMacroBounce    = nullptr;
+    std::atomic<float>* pMacroColor     = nullptr;
+    std::atomic<float>* pMacroSpace     = nullptr;
 };
 
 } // namespace xomnibus
