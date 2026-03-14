@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Thread Trumpet",
+  "mood": "Entangled",
+  "engines": [
+    "Ottoni"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "brass",
+    "sax",
+    "entangled",
+    "coupled",
+    "entangled"
+  ],
+  "macroLabels": [
+    "EMBOUCHURE",
+    "GROW",
+    "FOREIGN",
+    "LAKE"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.49,
+    "warmth": 0.59,
+    "movement": 0.56,
+    "density": 0.64,
+    "space": 0.3,
+    "aggression": 0.24
+  },
+  "parameters": {
+    "Ottoni": {
+      "otto_toddlerLevel": 0.505,
+      "otto_toddlerPressure": 0.155,
+      "otto_toddlerInst": 5,
+      "otto_tweenLevel": 0.475,
+      "otto_tweenEmbouchure": 0.313,
+      "otto_tweenValve": 0.502,
+      "otto_tweenInst": 5,
+      "otto_teenLevel": 0.619,
+      "otto_teenEmbouchure": 0.787,
+      "otto_teenBore": 0.497,
+      "otto_teenInst": 1,
+      "otto_teenVibratoRate": 1.0,
+      "otto_teenVibratoDepth": 0.34,
+      "otto_damping": 0.995,
+      "otto_sympatheticAmt": 0.313,
+      "otto_driftRate": 0.138,
+      "otto_driftDepth": 1.0,
+      "otto_foreignStretch": 0.01,
+      "otto_foreignDrift": 0.06,
+      "otto_foreignCold": 0.104,
+      "otto_reverbSize": 0.076,
+      "otto_chorusRate": 1.0,
+      "otto_driveAmount": 0.022,
+      "otto_delayMix": 0.398,
+      "otto_macroEmbouchure": 0.601,
+      "otto_macroGrow": 0.66,
+      "otto_macroForeign": 0.0,
+      "otto_macroLake": 0.133
+    }
+  },
+  "coupling": null
+}

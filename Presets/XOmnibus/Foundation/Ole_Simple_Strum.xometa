@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Simple Strum",
+  "mood": "Foundation",
+  "engines": [
+    "Ole"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "latin",
+    "strummed",
+    "foundation",
+    "clean",
+    "foundation"
+  ],
+  "macroLabels": [
+    "FUEGO",
+    "DRAMA",
+    "SIDES",
+    "ISLA"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.73,
+    "movement": 0.23,
+    "density": 0.43,
+    "space": 0.17,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Ole": {
+      "ole_aunt1Level": 0.73,
+      "ole_aunt1StrumRate": 1.0,
+      "ole_aunt1Brightness": 0.514,
+      "ole_aunt2Level": 0.58,
+      "ole_aunt2CoinPress": 0.0,
+      "ole_aunt2GourdSize": 0.585,
+      "ole_aunt3Level": 0.683,
+      "ole_aunt3Tremolo": 1.0,
+      "ole_aunt3Brightness": 0.465,
+      "ole_damping": 0.995,
+      "ole_sympatheticAmt": 0.276,
+      "ole_driftRate": 0.103,
+      "ole_driftDepth": 1.0,
+      "ole_allianceConfig": 0,
+      "ole_allianceBlend": 0.653,
+      "ole_husbandOudLevel": 0.0,
+      "ole_husbandBouzLevel": 0.0,
+      "ole_husbandPinLevel": 0.0,
+      "ole_macroFuego": 0.497,
+      "ole_macroDrama": 0.274,
+      "ole_macroSides": 0.01,
+      "ole_macroIsla": 0.147
+    }
+  },
+  "coupling": null
+}

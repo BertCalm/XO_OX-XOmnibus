@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Morph Wind",
+  "mood": "Flux",
+  "engines": [
+    "Obbligato"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "wind",
+    "flute",
+    "flux",
+    "movement",
+    "flux"
+  ],
+  "macroLabels": [
+    "BREATH",
+    "BOND",
+    "MISCHIEF",
+    "WIND"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.49,
+    "movement": 0.78,
+    "density": 0.56,
+    "space": 0.26,
+    "aggression": 0.36
+  },
+  "parameters": {
+    "Obbligato": {
+      "obbl_breathA": 0.84,
+      "obbl_embouchureA": 0.441,
+      "obbl_airFlutterA": 0.106,
+      "obbl_instrumentA": 0,
+      "obbl_bodySizeA": 0.372,
+      "obbl_breathB": 0.647,
+      "obbl_reedStiffness": 0.616,
+      "obbl_reedBite": 0.257,
+      "obbl_instrumentB": 0,
+      "obbl_bodySizeB": 0.329,
+      "obbl_voiceRouting": 2,
+      "obbl_damping": 0.995,
+      "obbl_sympatheticAmt": 0.324,
+      "obbl_driftRate": 0.122,
+      "obbl_driftDepth": 1.0,
+      "obbl_bondStage": 0.391,
+      "obbl_bondIntensity": 0.304,
+      "obbl_bondRate": 0.166,
+      "obbl_fxAChorus": 0.29,
+      "obbl_fxABrightDelay": 0.259,
+      "obbl_fxAPlate": 0.23,
+      "obbl_fxAExciter": 0.11,
+      "obbl_fxBPhaser": 0.177,
+      "obbl_fxBDarkDelay": 0.331,
+      "obbl_fxBSpring": 0.205,
+      "obbl_fxBTapeSat": 0.036,
+      "obbl_macroBreath": 0.411,
+      "obbl_macroBond": 0.565,
+      "obbl_macroMischief": 0.415,
+      "obbl_macroWind": 0.308
+    }
+  },
+  "coupling": null
+}

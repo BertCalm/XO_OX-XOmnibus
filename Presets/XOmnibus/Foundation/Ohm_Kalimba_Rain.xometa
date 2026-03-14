@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Kalimba Rain",
+  "mood": "Foundation",
+  "engines": [
+    "Ohm"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "physical-modeling",
+    "folk",
+    "foundation",
+    "clean",
+    "foundation"
+  ],
+  "macroLabels": [
+    "JAM",
+    "MEDDLING",
+    "COMMUNE",
+    "MEADOW"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.62,
+    "movement": 0.26,
+    "density": 0.3,
+    "space": 0.12,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_dadInstrument": 6,
+      "ohm_dadLevel": 0.894,
+      "ohm_pluckBrightness": 0.528,
+      "ohm_bowPressure": 0.0,
+      "ohm_bowSpeed": 0.5,
+      "ohm_bodyMaterial": 2,
+      "ohm_sympatheticAmt": 0.32,
+      "ohm_driftRate": 0.087,
+      "ohm_driftDepth": 1.0,
+      "ohm_damping": 0.991,
+      "ohm_inlawLevel": 0.0,
+      "ohm_thereminScale": 0.735,
+      "ohm_thereminWobble": 0.264,
+      "ohm_glassBrightness": 0.694,
+      "ohm_spectralFreeze": 0.0,
+      "ohm_grainSize": 1.0,
+      "ohm_grainDensity": 1.0,
+      "ohm_grainScatter": 0.277,
+      "ohm_obedLevel": 0.183,
+      "ohm_fmRatioPreset": 6,
+      "ohm_fmIndex": 1.0,
+      "ohm_fmAttack": 0.011,
+      "ohm_fmDecay": 0.366,
+      "ohm_meddlingThresh": 0.396,
+      "ohm_communeAbsorb": 0.419,
+      "ohm_reverbMix": 0.244,
+      "ohm_delayTime": 0.432,
+      "ohm_delayFeedback": 0.363,
+      "ohm_macroJam": 0.599,
+      "ohm_macroMeddling": 0.0,
+      "ohm_macroCommune": 0.234,
+      "ohm_macroMeadow": 0.201
+    }
+  },
+  "coupling": null
+}

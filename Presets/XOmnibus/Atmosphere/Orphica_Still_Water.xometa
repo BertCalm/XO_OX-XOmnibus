@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Still Water",
+  "mood": "Atmosphere",
+  "engines": [
+    "Orphica"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "harp",
+    "microsound",
+    "atmosphere",
+    "pad",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "FRACTURE",
+    "SURFACE",
+    "DIVINE"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.64,
+    "movement": 0.34,
+    "density": 0.25,
+    "space": 0.74,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_stringMaterial": 2,
+      "orph_pluckBrightness": 0.321,
+      "orph_pluckPosition": 0.365,
+      "orph_stringCount": 1,
+      "orph_bodySize": 0.427,
+      "orph_sympatheticAmt": 0.358,
+      "orph_damping": 0.993,
+      "orph_driftRate": 0.112,
+      "orph_driftDepth": 1.0,
+      "orph_microMode": 2,
+      "orph_microRate": 1.0,
+      "orph_microSize": 1.0,
+      "orph_microDensity": 1.0,
+      "orph_microScatter": 0.226,
+      "orph_microMix": 0.186,
+      "orph_crossoverNote": 1,
+      "orph_crossoverBlend": 1,
+      "orph_lowLevel": 0.705,
+      "orph_highLevel": 0.846,
+      "orph_subAmount": 0.032,
+      "orph_tapeSat": 0.238,
+      "orph_darkDelayTime": 0.48,
+      "orph_darkDelayFb": 0.174,
+      "orph_deepPlateMix": 0.233,
+      "orph_shimmerMix": 0.0,
+      "orph_microDelayTime": 1.0,
+      "orph_spectralSmear": 0.414,
+      "orph_crystalChorusRate": 1.0,
+      "orph_crystalChorusDpth": 0.158,
+      "orph_macroPluck": 0.459,
+      "orph_macroFracture": 0.106,
+      "orph_macroSurface": 0.333,
+      "orph_macroDivine": 0.405
+    }
+  },
+  "coupling": null
+}

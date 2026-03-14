@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Mountain Mist",
+  "mood": "Atmosphere",
+  "engines": [
+    "Obbligato"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "wind",
+    "flute",
+    "atmosphere",
+    "pad",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "BREATH",
+    "BOND",
+    "MISCHIEF",
+    "WIND"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.33,
+    "warmth": 0.64,
+    "movement": 0.3,
+    "density": 0.33,
+    "space": 0.74,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Obbligato": {
+      "obbl_breathA": 0.828,
+      "obbl_embouchureA": 0.676,
+      "obbl_airFlutterA": 0.294,
+      "obbl_instrumentA": 3,
+      "obbl_bodySizeA": 0.449,
+      "obbl_breathB": 0.697,
+      "obbl_reedStiffness": 0.556,
+      "obbl_reedBite": 0.326,
+      "obbl_instrumentB": 3,
+      "obbl_bodySizeB": 0.464,
+      "obbl_voiceRouting": 2,
+      "obbl_damping": 0.991,
+      "obbl_sympatheticAmt": 0.434,
+      "obbl_driftRate": 0.091,
+      "obbl_driftDepth": 1.0,
+      "obbl_bondStage": 0.0,
+      "obbl_bondIntensity": 0.475,
+      "obbl_bondRate": 0.151,
+      "obbl_fxAChorus": 0.424,
+      "obbl_fxABrightDelay": 0.244,
+      "obbl_fxAPlate": 0.302,
+      "obbl_fxAExciter": 0.098,
+      "obbl_fxBPhaser": 0.238,
+      "obbl_fxBDarkDelay": 0.359,
+      "obbl_fxBSpring": 0.23,
+      "obbl_fxBTapeSat": 0.168,
+      "obbl_macroBreath": 0.594,
+      "obbl_macroBond": 0.0,
+      "obbl_macroMischief": 0.0,
+      "obbl_macroWind": 0.494
+    }
+  },
+  "coupling": null
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Obed Transcends",
+  "mood": "Aether",
+  "engines": [
+    "Ohm"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "physical-modeling",
+    "folk",
+    "aether",
+    "experimental",
+    "aether"
+  ],
+  "macroLabels": [
+    "JAM",
+    "MEDDLING",
+    "COMMUNE",
+    "MEADOW"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.67,
+    "warmth": 0.55,
+    "movement": 0.66,
+    "density": 0.66,
+    "space": 0.65,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_dadInstrument": 2,
+      "ohm_dadLevel": 0.87,
+      "ohm_pluckBrightness": 0.468,
+      "ohm_bowPressure": 0.0,
+      "ohm_bowSpeed": 0.5,
+      "ohm_bodyMaterial": 3,
+      "ohm_sympatheticAmt": 0.321,
+      "ohm_driftRate": 0.123,
+      "ohm_driftDepth": 1.0,
+      "ohm_damping": 0.993,
+      "ohm_inlawLevel": 0.324,
+      "ohm_thereminScale": 1.0,
+      "ohm_thereminWobble": 0.363,
+      "ohm_glassBrightness": 0.337,
+      "ohm_spectralFreeze": 0.526,
+      "ohm_grainSize": 1.0,
+      "ohm_grainDensity": 1.0,
+      "ohm_grainScatter": 0.36,
+      "ohm_obedLevel": 0.349,
+      "ohm_fmRatioPreset": 3,
+      "ohm_fmIndex": 1.0,
+      "ohm_fmAttack": 0.006,
+      "ohm_fmDecay": 0.179,
+      "ohm_meddlingThresh": 0.39,
+      "ohm_communeAbsorb": 0.628,
+      "ohm_reverbMix": 0.315,
+      "ohm_delayTime": 0.427,
+      "ohm_delayFeedback": 0.33,
+      "ohm_macroJam": 0.686,
+      "ohm_macroMeddling": 0.395,
+      "ohm_macroCommune": 0.404,
+      "ohm_macroMeadow": 0.445
+    }
+  },
+  "coupling": null
+}

@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "name": "Mother Prayer",
+  "mood": "Flux",
+  "engines": [
+    "Orphica",
+    "Ole"
+  ],
+  "author": "Exo Meta \u2014 Family Dinner",
+  "version": "1.0.0",
+  "tags": [
+    "family",
+    "dinner",
+    "constellation",
+    "multi-engine",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.44,
+    "movement": 0.77,
+    "density": 0.38,
+    "space": 0.36,
+    "aggression": 0.41
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_stringMaterial": 0,
+      "orph_pluckBrightness": 0.345,
+      "orph_pluckPosition": 0.661,
+      "orph_stringCount": 1,
+      "orph_bodySize": 0.457,
+      "orph_sympatheticAmt": 0.194,
+      "orph_damping": 0.992,
+      "orph_driftRate": 0.134,
+      "orph_driftDepth": 1.0,
+      "orph_microMode": 0,
+      "orph_microRate": 1.0,
+      "orph_microSize": 1.0,
+      "orph_microDensity": 1.0,
+      "orph_microScatter": 0.387,
+      "orph_microMix": 0.602,
+      "orph_crossoverNote": 1,
+      "orph_crossoverBlend": 1,
+      "orph_lowLevel": 0.896,
+      "orph_highLevel": 0.79,
+      "orph_subAmount": 0.071,
+      "orph_tapeSat": 0.222,
+      "orph_darkDelayTime": 0.235,
+      "orph_darkDelayFb": 0.328,
+      "orph_deepPlateMix": 0.119,
+      "orph_shimmerMix": 0.077,
+      "orph_microDelayTime": 1.0,
+      "orph_spectralSmear": 0.0,
+      "orph_crystalChorusRate": 1.0,
+      "orph_crystalChorusDpth": 0.222,
+      "orph_macroPluck": 0.568,
+      "orph_macroFracture": 0.653,
+      "orph_macroSurface": 0.619,
+      "orph_macroDivine": 0.304
+    },
+    "Ole": {
+      "ole_aunt1Level": 0.592,
+      "ole_aunt1StrumRate": 1.0,
+      "ole_aunt1Brightness": 0.606,
+      "ole_aunt2Level": 0.573,
+      "ole_aunt2CoinPress": 0.189,
+      "ole_aunt2GourdSize": 0.485,
+      "ole_aunt3Level": 0.557,
+      "ole_aunt3Tremolo": 1.0,
+      "ole_aunt3Brightness": 0.35,
+      "ole_damping": 0.994,
+      "ole_sympatheticAmt": 0.218,
+      "ole_driftRate": 0.088,
+      "ole_driftDepth": 1.0,
+      "ole_allianceConfig": 1,
+      "ole_allianceBlend": 0.585,
+      "ole_husbandOudLevel": 0.42,
+      "ole_husbandBouzLevel": 0.172,
+      "ole_husbandPinLevel": 0.273,
+      "ole_macroFuego": 0.683,
+      "ole_macroDrama": 0.259,
+      "ole_macroSides": 0.418,
+      "ole_macroIsla": 0.268
+    }
+  },
+  "coupling": [
+    {
+      "source": "Orphica",
+      "destination": "Ole",
+      "type": "PitchToPitch",
+      "amount": 0.3
+    }
+  ]
+}

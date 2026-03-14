@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Dream Brass",
+  "mood": "Aether",
+  "engines": [
+    "Ottoni"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "brass",
+    "sax",
+    "aether",
+    "experimental",
+    "aether"
+  ],
+  "macroLabels": [
+    "EMBOUCHURE",
+    "GROW",
+    "FOREIGN",
+    "LAKE"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.59,
+    "warmth": 0.55,
+    "movement": 0.71,
+    "density": 0.6,
+    "space": 0.67,
+    "aggression": 0.33
+  },
+  "parameters": {
+    "Ottoni": {
+      "otto_toddlerLevel": 0.504,
+      "otto_toddlerPressure": 0.243,
+      "otto_toddlerInst": 4,
+      "otto_tweenLevel": 0.387,
+      "otto_tweenEmbouchure": 0.372,
+      "otto_tweenValve": 0.434,
+      "otto_tweenInst": 4,
+      "otto_teenLevel": 0.5,
+      "otto_teenEmbouchure": 0.766,
+      "otto_teenBore": 0.588,
+      "otto_teenInst": 8,
+      "otto_teenVibratoRate": 1.0,
+      "otto_teenVibratoDepth": 0.267,
+      "otto_damping": 0.996,
+      "otto_sympatheticAmt": 0.384,
+      "otto_driftRate": 0.098,
+      "otto_driftDepth": 1.0,
+      "otto_foreignStretch": 0.389,
+      "otto_foreignDrift": 0.233,
+      "otto_foreignCold": 0.431,
+      "otto_reverbSize": 0.273,
+      "otto_chorusRate": 0.607,
+      "otto_driveAmount": 0.05,
+      "otto_delayMix": 0.109,
+      "otto_macroEmbouchure": 0.32,
+      "otto_macroGrow": 0.207,
+      "otto_macroForeign": 0.31,
+      "otto_macroLake": 0.25
+    }
+  },
+  "coupling": null
+}

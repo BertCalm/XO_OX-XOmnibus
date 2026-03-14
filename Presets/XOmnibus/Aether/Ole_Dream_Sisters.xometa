@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Dream Sisters",
+  "mood": "Aether",
+  "engines": [
+    "Ole"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "latin",
+    "strummed",
+    "aether",
+    "experimental",
+    "aether"
+  ],
+  "macroLabels": [
+    "FUEGO",
+    "DRAMA",
+    "SIDES",
+    "ISLA"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.63,
+    "warmth": 0.56,
+    "movement": 0.69,
+    "density": 0.81,
+    "space": 0.76,
+    "aggression": 0.37
+  },
+  "parameters": {
+    "Ole": {
+      "ole_aunt1Level": 0.769,
+      "ole_aunt1StrumRate": 1.0,
+      "ole_aunt1Brightness": 0.615,
+      "ole_aunt2Level": 0.604,
+      "ole_aunt2CoinPress": 0.182,
+      "ole_aunt2GourdSize": 0.348,
+      "ole_aunt3Level": 0.691,
+      "ole_aunt3Tremolo": 1.0,
+      "ole_aunt3Brightness": 0.556,
+      "ole_damping": 0.992,
+      "ole_sympatheticAmt": 0.357,
+      "ole_driftRate": 0.118,
+      "ole_driftDepth": 1.0,
+      "ole_allianceConfig": 1,
+      "ole_allianceBlend": 0.562,
+      "ole_husbandOudLevel": 0.587,
+      "ole_husbandBouzLevel": 0.483,
+      "ole_husbandPinLevel": 0.47,
+      "ole_macroFuego": 0.43,
+      "ole_macroDrama": 0.304,
+      "ole_macroSides": 0.331,
+      "ole_macroIsla": 0.42
+    }
+  },
+  "coupling": null
+}

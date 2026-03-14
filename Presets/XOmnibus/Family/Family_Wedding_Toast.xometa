@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "name": "Wedding Toast",
+  "mood": "Foundation",
+  "engines": [
+    "Ole",
+    "Ottoni"
+  ],
+  "author": "Exo Meta \u2014 Family Dinner",
+  "version": "1.0.0",
+  "tags": [
+    "family",
+    "dinner",
+    "constellation",
+    "multi-engine",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.47,
+    "warmth": 0.74,
+    "movement": 0.14,
+    "density": 0.32,
+    "space": 0.09,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Ole": {
+      "ole_aunt1Level": 0.609,
+      "ole_aunt1StrumRate": 1.0,
+      "ole_aunt1Brightness": 0.586,
+      "ole_aunt2Level": 0.624,
+      "ole_aunt2CoinPress": 0.0,
+      "ole_aunt2GourdSize": 0.392,
+      "ole_aunt3Level": 0.574,
+      "ole_aunt3Tremolo": 1.0,
+      "ole_aunt3Brightness": 0.611,
+      "ole_damping": 0.993,
+      "ole_sympatheticAmt": 0.306,
+      "ole_driftRate": 0.082,
+      "ole_driftDepth": 1.0,
+      "ole_allianceConfig": 0,
+      "ole_allianceBlend": 0.62,
+      "ole_husbandOudLevel": 0.0,
+      "ole_husbandBouzLevel": 0.0,
+      "ole_husbandPinLevel": 0.0,
+      "ole_macroFuego": 0.37,
+      "ole_macroDrama": 0.222,
+      "ole_macroSides": 0.0,
+      "ole_macroIsla": 0.22
+    },
+    "Ottoni": {
+      "otto_toddlerLevel": 0.373,
+      "otto_toddlerPressure": 0.31,
+      "otto_toddlerInst": 0,
+      "otto_tweenLevel": 0.511,
+      "otto_tweenEmbouchure": 0.442,
+      "otto_tweenValve": 0.47,
+      "otto_tweenInst": 0,
+      "otto_teenLevel": 0.472,
+      "otto_teenEmbouchure": 0.626,
+      "otto_teenBore": 0.312,
+      "otto_teenInst": 0,
+      "otto_teenVibratoRate": 1.0,
+      "otto_teenVibratoDepth": 0.152,
+      "otto_damping": 0.992,
+      "otto_sympatheticAmt": 0.334,
+      "otto_driftRate": 0.13,
+      "otto_driftDepth": 1.0,
+      "otto_foreignStretch": 0.0,
+      "otto_foreignDrift": 0.065,
+      "otto_foreignCold": 0.126,
+      "otto_reverbSize": 0.182,
+      "otto_chorusRate": 0.754,
+      "otto_driveAmount": 0.0,
+      "otto_delayMix": 0.218,
+      "otto_macroEmbouchure": 0.629,
+      "otto_macroGrow": 0.247,
+      "otto_macroForeign": 0.034,
+      "otto_macroLake": 0.207
+    }
+  },
+  "coupling": [
+    {
+      "source": "Ole",
+      "destination": "Ottoni",
+      "type": "AmpToFilter",
+      "amount": 0.5
+    }
+  ]
+}

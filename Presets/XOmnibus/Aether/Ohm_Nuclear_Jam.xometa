@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Nuclear Jam",
+  "mood": "Aether",
+  "engines": [
+    "Ohm"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "physical-modeling",
+    "folk",
+    "aether",
+    "experimental",
+    "aether"
+  ],
+  "macroLabels": [
+    "JAM",
+    "MEDDLING",
+    "COMMUNE",
+    "MEADOW"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.55,
+    "movement": 0.55,
+    "density": 0.6,
+    "space": 0.67,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_dadInstrument": 0,
+      "ohm_dadLevel": 0.842,
+      "ohm_pluckBrightness": 0.423,
+      "ohm_bowPressure": 0.0,
+      "ohm_bowSpeed": 0.5,
+      "ohm_bodyMaterial": 1,
+      "ohm_sympatheticAmt": 0.315,
+      "ohm_driftRate": 0.116,
+      "ohm_driftDepth": 1.0,
+      "ohm_damping": 0.993,
+      "ohm_inlawLevel": 0.527,
+      "ohm_thereminScale": 0.921,
+      "ohm_thereminWobble": 0.227,
+      "ohm_glassBrightness": 0.341,
+      "ohm_spectralFreeze": 0.422,
+      "ohm_grainSize": 1.0,
+      "ohm_grainDensity": 1.0,
+      "ohm_grainScatter": 0.303,
+      "ohm_obedLevel": 0.218,
+      "ohm_fmRatioPreset": 1,
+      "ohm_fmIndex": 1.0,
+      "ohm_fmAttack": 0.007,
+      "ohm_fmDecay": 0.292,
+      "ohm_meddlingThresh": 0.465,
+      "ohm_communeAbsorb": 0.36,
+      "ohm_reverbMix": 0.486,
+      "ohm_delayTime": 0.543,
+      "ohm_delayFeedback": 0.366,
+      "ohm_macroJam": 0.666,
+      "ohm_macroMeddling": 0.596,
+      "ohm_macroCommune": 0.468,
+      "ohm_macroMeadow": 0.447
+    }
+  },
+  "coupling": null
+}

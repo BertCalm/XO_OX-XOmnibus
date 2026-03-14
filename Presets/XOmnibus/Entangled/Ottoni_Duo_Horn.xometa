@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Duo Horn",
+  "mood": "Entangled",
+  "engines": [
+    "Ottoni"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "brass",
+    "sax",
+    "entangled",
+    "coupled",
+    "entangled"
+  ],
+  "macroLabels": [
+    "EMBOUCHURE",
+    "GROW",
+    "FOREIGN",
+    "LAKE"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.6,
+    "movement": 0.39,
+    "density": 0.7,
+    "space": 0.37,
+    "aggression": 0.09
+  },
+  "parameters": {
+    "Ottoni": {
+      "otto_toddlerLevel": 0.599,
+      "otto_toddlerPressure": 0.406,
+      "otto_toddlerInst": 5,
+      "otto_tweenLevel": 0.379,
+      "otto_tweenEmbouchure": 0.388,
+      "otto_tweenValve": 0.352,
+      "otto_tweenInst": 5,
+      "otto_teenLevel": 0.677,
+      "otto_teenEmbouchure": 0.618,
+      "otto_teenBore": 0.333,
+      "otto_teenInst": 7,
+      "otto_teenVibratoRate": 1.0,
+      "otto_teenVibratoDepth": 0.271,
+      "otto_damping": 0.996,
+      "otto_sympatheticAmt": 0.221,
+      "otto_driftRate": 0.078,
+      "otto_driftDepth": 1.0,
+      "otto_foreignStretch": 0.048,
+      "otto_foreignDrift": 0.0,
+      "otto_foreignCold": 0.142,
+      "otto_reverbSize": 0.251,
+      "otto_chorusRate": 1.0,
+      "otto_driveAmount": 0.015,
+      "otto_delayMix": 0.365,
+      "otto_macroEmbouchure": 0.604,
+      "otto_macroGrow": 0.279,
+      "otto_macroForeign": 0.0,
+      "otto_macroLake": 0.248
+    }
+  },
+  "coupling": null
+}

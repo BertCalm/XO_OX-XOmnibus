@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Gentle Tres",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ole"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "latin",
+    "strummed",
+    "atmosphere",
+    "pad",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "FUEGO",
+    "DRAMA",
+    "SIDES",
+    "ISLA"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.63,
+    "movement": 0.32,
+    "density": 0.29,
+    "space": 0.89,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Ole": {
+      "ole_aunt1Level": 0.748,
+      "ole_aunt1StrumRate": 1.0,
+      "ole_aunt1Brightness": 0.601,
+      "ole_aunt2Level": 0.709,
+      "ole_aunt2CoinPress": 0.117,
+      "ole_aunt2GourdSize": 0.697,
+      "ole_aunt3Level": 0.734,
+      "ole_aunt3Tremolo": 1.0,
+      "ole_aunt3Brightness": 0.48,
+      "ole_damping": 0.997,
+      "ole_sympatheticAmt": 0.36,
+      "ole_driftRate": 0.096,
+      "ole_driftDepth": 1.0,
+      "ole_allianceConfig": 1,
+      "ole_allianceBlend": 0.519,
+      "ole_husbandOudLevel": 0.0,
+      "ole_husbandBouzLevel": 0.0,
+      "ole_husbandPinLevel": 0.0,
+      "ole_macroFuego": 0.516,
+      "ole_macroDrama": 0.253,
+      "ole_macroSides": 0.0,
+      "ole_macroIsla": 0.35
+    }
+  },
+  "coupling": null
+}

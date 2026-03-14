@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Resonance Wed",
+  "mood": "Entangled",
+  "engines": [
+    "Ohm"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "physical-modeling",
+    "folk",
+    "entangled",
+    "coupled",
+    "entangled"
+  ],
+  "macroLabels": [
+    "JAM",
+    "MEDDLING",
+    "COMMUNE",
+    "MEADOW"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.48,
+    "movement": 0.41,
+    "density": 0.49,
+    "space": 0.36,
+    "aggression": 0.27
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_dadInstrument": 8,
+      "ohm_dadLevel": 0.797,
+      "ohm_pluckBrightness": 0.45,
+      "ohm_bowPressure": 0.0,
+      "ohm_bowSpeed": 0.5,
+      "ohm_bodyMaterial": 3,
+      "ohm_sympatheticAmt": 0.159,
+      "ohm_driftRate": 0.11,
+      "ohm_driftDepth": 1.0,
+      "ohm_damping": 0.99,
+      "ohm_inlawLevel": 0.0,
+      "ohm_thereminScale": 0.827,
+      "ohm_thereminWobble": 0.191,
+      "ohm_glassBrightness": 0.402,
+      "ohm_spectralFreeze": 0.0,
+      "ohm_grainSize": 1.0,
+      "ohm_grainDensity": 1.0,
+      "ohm_grainScatter": 0.203,
+      "ohm_obedLevel": 0.0,
+      "ohm_fmRatioPreset": 3,
+      "ohm_fmIndex": 1.0,
+      "ohm_fmAttack": 0.01,
+      "ohm_fmDecay": 0.4,
+      "ohm_meddlingThresh": 0.592,
+      "ohm_communeAbsorb": 0.329,
+      "ohm_reverbMix": 0.222,
+      "ohm_delayTime": 0.217,
+      "ohm_delayFeedback": 0.206,
+      "ohm_macroJam": 0.668,
+      "ohm_macroMeddling": 0.245,
+      "ohm_macroCommune": 0.23,
+      "ohm_macroMeadow": 0.222
+    }
+  },
+  "coupling": null
+}

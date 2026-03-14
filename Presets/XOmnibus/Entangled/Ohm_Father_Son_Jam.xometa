@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Father Son Jam",
+  "mood": "Entangled",
+  "engines": [
+    "Ohm"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "physical-modeling",
+    "folk",
+    "entangled",
+    "coupled",
+    "entangled"
+  ],
+  "macroLabels": [
+    "JAM",
+    "MEDDLING",
+    "COMMUNE",
+    "MEADOW"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.57,
+    "warmth": 0.54,
+    "movement": 0.46,
+    "density": 0.59,
+    "space": 0.32,
+    "aggression": 0.09
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_dadInstrument": 1,
+      "ohm_dadLevel": 0.885,
+      "ohm_pluckBrightness": 0.419,
+      "ohm_bowPressure": 0.0,
+      "ohm_bowSpeed": 0.5,
+      "ohm_bodyMaterial": 1,
+      "ohm_sympatheticAmt": 0.277,
+      "ohm_driftRate": 0.132,
+      "ohm_driftDepth": 1.0,
+      "ohm_damping": 0.994,
+      "ohm_inlawLevel": 0.0,
+      "ohm_thereminScale": 0.741,
+      "ohm_thereminWobble": 0.283,
+      "ohm_glassBrightness": 0.421,
+      "ohm_spectralFreeze": 0.0,
+      "ohm_grainSize": 1.0,
+      "ohm_grainDensity": 1.0,
+      "ohm_grainScatter": 0.243,
+      "ohm_obedLevel": 0.0,
+      "ohm_fmRatioPreset": 5,
+      "ohm_fmIndex": 0.671,
+      "ohm_fmAttack": 0.013,
+      "ohm_fmDecay": 0.173,
+      "ohm_meddlingThresh": 0.609,
+      "ohm_communeAbsorb": 0.642,
+      "ohm_reverbMix": 0.173,
+      "ohm_delayTime": 0.403,
+      "ohm_delayFeedback": 0.339,
+      "ohm_macroJam": 0.522,
+      "ohm_macroMeddling": 0.217,
+      "ohm_macroCommune": 0.358,
+      "ohm_macroMeadow": 0.185
+    }
+  },
+  "coupling": null
+}

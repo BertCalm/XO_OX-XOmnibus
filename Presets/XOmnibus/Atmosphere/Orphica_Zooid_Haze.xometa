@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Zooid Haze",
+  "mood": "Atmosphere",
+  "engines": [
+    "Orphica"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "harp",
+    "microsound",
+    "atmosphere",
+    "pad",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "FRACTURE",
+    "SURFACE",
+    "DIVINE"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.41,
+    "warmth": 0.65,
+    "movement": 0.24,
+    "density": 0.35,
+    "space": 0.68,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_stringMaterial": 3,
+      "orph_pluckBrightness": 0.375,
+      "orph_pluckPosition": 0.547,
+      "orph_stringCount": 1,
+      "orph_bodySize": 0.343,
+      "orph_sympatheticAmt": 0.484,
+      "orph_damping": 0.995,
+      "orph_driftRate": 0.113,
+      "orph_driftDepth": 1.0,
+      "orph_microMode": 3,
+      "orph_microRate": 1.0,
+      "orph_microSize": 1.0,
+      "orph_microDensity": 1.0,
+      "orph_microScatter": 0.195,
+      "orph_microMix": 0.048,
+      "orph_crossoverNote": 1,
+      "orph_crossoverBlend": 1,
+      "orph_lowLevel": 0.879,
+      "orph_highLevel": 0.874,
+      "orph_subAmount": 0.0,
+      "orph_tapeSat": 0.247,
+      "orph_darkDelayTime": 0.566,
+      "orph_darkDelayFb": 0.234,
+      "orph_deepPlateMix": 0.244,
+      "orph_shimmerMix": 0.123,
+      "orph_microDelayTime": 1.0,
+      "orph_spectralSmear": 0.39,
+      "orph_crystalChorusRate": 0.978,
+      "orph_crystalChorusDpth": 0.312,
+      "orph_macroPluck": 0.501,
+      "orph_macroFracture": 0.0,
+      "orph_macroSurface": 0.575,
+      "orph_macroDivine": 0.37
+    }
+  },
+  "coupling": null
+}

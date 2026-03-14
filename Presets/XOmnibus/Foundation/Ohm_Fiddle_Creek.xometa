@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Fiddle Creek",
+  "mood": "Foundation",
+  "engines": [
+    "Ohm"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "physical-modeling",
+    "folk",
+    "foundation",
+    "clean",
+    "foundation"
+  ],
+  "macroLabels": [
+    "JAM",
+    "MEDDLING",
+    "COMMUNE",
+    "MEADOW"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.43,
+    "warmth": 0.63,
+    "movement": 0.25,
+    "density": 0.49,
+    "space": 0.1,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_dadInstrument": 4,
+      "ohm_dadLevel": 0.876,
+      "ohm_pluckBrightness": 0.534,
+      "ohm_bowPressure": 0.434,
+      "ohm_bowSpeed": 0.494,
+      "ohm_bodyMaterial": 0,
+      "ohm_sympatheticAmt": 0.164,
+      "ohm_driftRate": 0.146,
+      "ohm_driftDepth": 1.0,
+      "ohm_damping": 0.991,
+      "ohm_inlawLevel": 0.0,
+      "ohm_thereminScale": 1.0,
+      "ohm_thereminWobble": 0.23,
+      "ohm_glassBrightness": 0.649,
+      "ohm_spectralFreeze": 0.0,
+      "ohm_grainSize": 1.0,
+      "ohm_grainDensity": 1.0,
+      "ohm_grainScatter": 0.369,
+      "ohm_obedLevel": 0.0,
+      "ohm_fmRatioPreset": 4,
+      "ohm_fmIndex": 1.0,
+      "ohm_fmAttack": 0.015,
+      "ohm_fmDecay": 0.345,
+      "ohm_meddlingThresh": 0.481,
+      "ohm_communeAbsorb": 0.507,
+      "ohm_reverbMix": 0.074,
+      "ohm_delayTime": 0.29,
+      "ohm_delayFeedback": 0.301,
+      "ohm_macroJam": 0.535,
+      "ohm_macroMeddling": 0.0,
+      "ohm_macroCommune": 0.088,
+      "ohm_macroMeadow": 0.071
+    }
+  },
+  "coupling": null
+}

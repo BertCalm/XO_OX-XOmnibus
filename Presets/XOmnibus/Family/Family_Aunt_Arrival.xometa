@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "name": "Aunt Arrival",
+  "mood": "Foundation",
+  "engines": [
+    "Ole",
+    "Orphica"
+  ],
+  "author": "Exo Meta \u2014 Family Dinner",
+  "version": "1.0.0",
+  "tags": [
+    "family",
+    "dinner",
+    "constellation",
+    "multi-engine",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.62,
+    "movement": 0.09,
+    "density": 0.39,
+    "space": 0.1,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Ole": {
+      "ole_aunt1Level": 0.552,
+      "ole_aunt1StrumRate": 1.0,
+      "ole_aunt1Brightness": 0.686,
+      "ole_aunt2Level": 0.833,
+      "ole_aunt2CoinPress": 0.042,
+      "ole_aunt2GourdSize": 0.601,
+      "ole_aunt3Level": 0.568,
+      "ole_aunt3Tremolo": 1.0,
+      "ole_aunt3Brightness": 0.462,
+      "ole_damping": 0.991,
+      "ole_sympatheticAmt": 0.236,
+      "ole_driftRate": 0.097,
+      "ole_driftDepth": 1.0,
+      "ole_allianceConfig": 0,
+      "ole_allianceBlend": 0.692,
+      "ole_husbandOudLevel": 0.0,
+      "ole_husbandBouzLevel": 0.0,
+      "ole_husbandPinLevel": 0.0,
+      "ole_macroFuego": 0.563,
+      "ole_macroDrama": 0.0,
+      "ole_macroSides": 0.0,
+      "ole_macroIsla": 0.274
+    },
+    "Orphica": {
+      "orph_stringMaterial": 0,
+      "orph_pluckBrightness": 0.313,
+      "orph_pluckPosition": 0.445,
+      "orph_stringCount": 1,
+      "orph_bodySize": 0.645,
+      "orph_sympatheticAmt": 0.238,
+      "orph_damping": 0.996,
+      "orph_driftRate": 0.071,
+      "orph_driftDepth": 1.0,
+      "orph_microMode": 0,
+      "orph_microRate": 1.0,
+      "orph_microSize": 1.0,
+      "orph_microDensity": 1.0,
+      "orph_microScatter": 0.254,
+      "orph_microMix": 0.0,
+      "orph_crossoverNote": 1,
+      "orph_crossoverBlend": 1,
+      "orph_lowLevel": 0.866,
+      "orph_highLevel": 0.831,
+      "orph_subAmount": 0.275,
+      "orph_tapeSat": 0.165,
+      "orph_darkDelayTime": 0.325,
+      "orph_darkDelayFb": 0.363,
+      "orph_deepPlateMix": 0.14,
+      "orph_shimmerMix": 0.018,
+      "orph_microDelayTime": 1.0,
+      "orph_spectralSmear": 0.089,
+      "orph_crystalChorusRate": 1.0,
+      "orph_crystalChorusDpth": 0.274,
+      "orph_macroPluck": 0.522,
+      "orph_macroFracture": 0.0,
+      "orph_macroSurface": 0.643,
+      "orph_macroDivine": 0.088
+    }
+  },
+  "coupling": [
+    {
+      "source": "Ole",
+      "destination": "Orphica",
+      "type": "FilterToFilter",
+      "amount": 0.43
+    }
+  ]
+}

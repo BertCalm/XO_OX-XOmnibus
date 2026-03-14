@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Pin Whisper",
+  "mood": "Flux",
+  "engines": [
+    "Ole"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "latin",
+    "strummed",
+    "flux",
+    "movement",
+    "flux"
+  ],
+  "macroLabels": [
+    "FUEGO",
+    "DRAMA",
+    "SIDES",
+    "ISLA"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.59,
+    "warmth": 0.35,
+    "movement": 0.69,
+    "density": 0.58,
+    "space": 0.28,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Ole": {
+      "ole_aunt1Level": 0.599,
+      "ole_aunt1StrumRate": 1.0,
+      "ole_aunt1Brightness": 0.516,
+      "ole_aunt2Level": 0.677,
+      "ole_aunt2CoinPress": 0.298,
+      "ole_aunt2GourdSize": 0.692,
+      "ole_aunt3Level": 0.645,
+      "ole_aunt3Tremolo": 1.0,
+      "ole_aunt3Brightness": 0.514,
+      "ole_damping": 0.997,
+      "ole_sympatheticAmt": 0.275,
+      "ole_driftRate": 0.075,
+      "ole_driftDepth": 1.0,
+      "ole_allianceConfig": 2,
+      "ole_allianceBlend": 0.657,
+      "ole_husbandOudLevel": 0.418,
+      "ole_husbandBouzLevel": 0.223,
+      "ole_husbandPinLevel": 0.337,
+      "ole_macroFuego": 0.59,
+      "ole_macroDrama": 0.301,
+      "ole_macroSides": 0.332,
+      "ole_macroIsla": 0.064
+    }
+  },
+  "coupling": null
+}

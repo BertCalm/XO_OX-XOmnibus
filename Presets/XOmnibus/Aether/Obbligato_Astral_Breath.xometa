@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Astral Breath",
+  "mood": "Aether",
+  "engines": [
+    "Obbligato"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "wind",
+    "flute",
+    "aether",
+    "experimental",
+    "aether"
+  ],
+  "macroLabels": [
+    "BREATH",
+    "BOND",
+    "MISCHIEF",
+    "WIND"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.61,
+    "movement": 0.49,
+    "density": 0.59,
+    "space": 0.77,
+    "aggression": 0.37
+  },
+  "parameters": {
+    "Obbligato": {
+      "obbl_breathA": 0.592,
+      "obbl_embouchureA": 0.519,
+      "obbl_airFlutterA": 0.247,
+      "obbl_instrumentA": 2,
+      "obbl_bodySizeA": 0.67,
+      "obbl_breathB": 0.749,
+      "obbl_reedStiffness": 0.651,
+      "obbl_reedBite": 0.221,
+      "obbl_instrumentB": 2,
+      "obbl_bodySizeB": 0.329,
+      "obbl_voiceRouting": 0,
+      "obbl_damping": 0.997,
+      "obbl_sympatheticAmt": 0.431,
+      "obbl_driftRate": 0.116,
+      "obbl_driftDepth": 1.0,
+      "obbl_bondStage": 0.221,
+      "obbl_bondIntensity": 0.692,
+      "obbl_bondRate": 0.29,
+      "obbl_fxAChorus": 0.329,
+      "obbl_fxABrightDelay": 0.222,
+      "obbl_fxAPlate": 0.216,
+      "obbl_fxAExciter": 0.108,
+      "obbl_fxBPhaser": 0.289,
+      "obbl_fxBDarkDelay": 0.231,
+      "obbl_fxBSpring": 0.108,
+      "obbl_fxBTapeSat": 0.026,
+      "obbl_macroBreath": 0.503,
+      "obbl_macroBond": 0.59,
+      "obbl_macroMischief": 0.279,
+      "obbl_macroWind": 0.341
+    }
+  },
+  "coupling": null
+}

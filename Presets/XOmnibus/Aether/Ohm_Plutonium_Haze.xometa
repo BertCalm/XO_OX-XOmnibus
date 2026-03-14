@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Plutonium Haze",
+  "mood": "Aether",
+  "engines": [
+    "Ohm"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "physical-modeling",
+    "folk",
+    "aether",
+    "experimental",
+    "aether"
+  ],
+  "macroLabels": [
+    "JAM",
+    "MEDDLING",
+    "COMMUNE",
+    "MEADOW"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.71,
+    "warmth": 0.55,
+    "movement": 0.7,
+    "density": 0.77,
+    "space": 0.63,
+    "aggression": 0.32
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_dadInstrument": 7,
+      "ohm_dadLevel": 0.7,
+      "ohm_pluckBrightness": 0.525,
+      "ohm_bowPressure": 0.0,
+      "ohm_bowSpeed": 0.5,
+      "ohm_bodyMaterial": 0,
+      "ohm_sympatheticAmt": 0.34,
+      "ohm_driftRate": 0.083,
+      "ohm_driftDepth": 1.0,
+      "ohm_damping": 0.996,
+      "ohm_inlawLevel": 0.638,
+      "ohm_thereminScale": 0.894,
+      "ohm_thereminWobble": 0.157,
+      "ohm_glassBrightness": 0.535,
+      "ohm_spectralFreeze": 0.525,
+      "ohm_grainSize": 1.0,
+      "ohm_grainDensity": 1.0,
+      "ohm_grainScatter": 0.408,
+      "ohm_obedLevel": 0.584,
+      "ohm_fmRatioPreset": 0,
+      "ohm_fmIndex": 1.0,
+      "ohm_fmAttack": 0.014,
+      "ohm_fmDecay": 0.269,
+      "ohm_meddlingThresh": 0.38,
+      "ohm_communeAbsorb": 0.421,
+      "ohm_reverbMix": 0.327,
+      "ohm_delayTime": 0.263,
+      "ohm_delayFeedback": 0.485,
+      "ohm_macroJam": 0.617,
+      "ohm_macroMeddling": 0.684,
+      "ohm_macroCommune": 0.56,
+      "ohm_macroMeadow": 0.402
+    }
+  },
+  "coupling": null
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Twilight Hum",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ohm"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "physical-modeling",
+    "folk",
+    "atmosphere",
+    "pad",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "JAM",
+    "MEDDLING",
+    "COMMUNE",
+    "MEADOW"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.34,
+    "warmth": 0.6,
+    "movement": 0.35,
+    "density": 0.2,
+    "space": 0.7,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_dadInstrument": 4,
+      "ohm_dadLevel": 0.726,
+      "ohm_pluckBrightness": 0.325,
+      "ohm_bowPressure": 0.47,
+      "ohm_bowSpeed": 0.564,
+      "ohm_bodyMaterial": 3,
+      "ohm_sympatheticAmt": 0.305,
+      "ohm_driftRate": 0.071,
+      "ohm_driftDepth": 1.0,
+      "ohm_damping": 0.991,
+      "ohm_inlawLevel": 0.0,
+      "ohm_thereminScale": 0.805,
+      "ohm_thereminWobble": 0.166,
+      "ohm_glassBrightness": 0.597,
+      "ohm_spectralFreeze": 0.408,
+      "ohm_grainSize": 1.0,
+      "ohm_grainDensity": 1.0,
+      "ohm_grainScatter": 0.383,
+      "ohm_obedLevel": 0.005,
+      "ohm_fmRatioPreset": 7,
+      "ohm_fmIndex": 0.827,
+      "ohm_fmAttack": 0.01,
+      "ohm_fmDecay": 0.434,
+      "ohm_meddlingThresh": 0.363,
+      "ohm_communeAbsorb": 0.613,
+      "ohm_reverbMix": 0.473,
+      "ohm_delayTime": 0.409,
+      "ohm_delayFeedback": 0.337,
+      "ohm_macroJam": 0.686,
+      "ohm_macroMeddling": 0.0,
+      "ohm_macroCommune": 0.492,
+      "ohm_macroMeadow": 0.47
+    }
+  },
+  "coupling": null
+}

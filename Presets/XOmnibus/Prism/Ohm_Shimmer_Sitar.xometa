@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Shimmer Sitar",
+  "mood": "Prism",
+  "engines": [
+    "Ohm"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "physical-modeling",
+    "folk",
+    "prism",
+    "bright",
+    "prism"
+  ],
+  "macroLabels": [
+    "JAM",
+    "MEDDLING",
+    "COMMUNE",
+    "MEADOW"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.26,
+    "movement": 0.32,
+    "density": 0.42,
+    "space": 0.55,
+    "aggression": 0.13
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_dadInstrument": 7,
+      "ohm_dadLevel": 0.817,
+      "ohm_pluckBrightness": 0.501,
+      "ohm_bowPressure": 0.0,
+      "ohm_bowSpeed": 0.5,
+      "ohm_bodyMaterial": 0,
+      "ohm_sympatheticAmt": 0.276,
+      "ohm_driftRate": 0.132,
+      "ohm_driftDepth": 1.0,
+      "ohm_damping": 0.991,
+      "ohm_inlawLevel": 0.072,
+      "ohm_thereminScale": 0.719,
+      "ohm_thereminWobble": 0.434,
+      "ohm_glassBrightness": 0.344,
+      "ohm_spectralFreeze": 0.0,
+      "ohm_grainSize": 1.0,
+      "ohm_grainDensity": 1.0,
+      "ohm_grainScatter": 0.357,
+      "ohm_obedLevel": 0.0,
+      "ohm_fmRatioPreset": 4,
+      "ohm_fmIndex": 1.0,
+      "ohm_fmAttack": 0.014,
+      "ohm_fmDecay": 0.412,
+      "ohm_meddlingThresh": 0.571,
+      "ohm_communeAbsorb": 0.325,
+      "ohm_reverbMix": 0.078,
+      "ohm_delayTime": 0.283,
+      "ohm_delayFeedback": 0.298,
+      "ohm_macroJam": 0.565,
+      "ohm_macroMeddling": 0.11,
+      "ohm_macroCommune": 0.126,
+      "ohm_macroMeadow": 0.102
+    }
+  },
+  "coupling": null
+}

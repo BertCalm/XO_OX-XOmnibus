@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "name": "Birthday Song",
+  "mood": "Flux",
+  "engines": [
+    "Ole",
+    "Obbligato"
+  ],
+  "author": "Exo Meta \u2014 Family Dinner",
+  "version": "1.0.0",
+  "tags": [
+    "family",
+    "dinner",
+    "constellation",
+    "multi-engine",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.39,
+    "warmth": 0.34,
+    "movement": 0.81,
+    "density": 0.4,
+    "space": 0.26,
+    "aggression": 0.48
+  },
+  "parameters": {
+    "Ole": {
+      "ole_aunt1Level": 0.775,
+      "ole_aunt1StrumRate": 1.0,
+      "ole_aunt1Brightness": 0.529,
+      "ole_aunt2Level": 0.735,
+      "ole_aunt2CoinPress": 0.179,
+      "ole_aunt2GourdSize": 0.56,
+      "ole_aunt3Level": 0.812,
+      "ole_aunt3Tremolo": 1.0,
+      "ole_aunt3Brightness": 0.432,
+      "ole_damping": 0.996,
+      "ole_sympatheticAmt": 0.283,
+      "ole_driftRate": 0.128,
+      "ole_driftDepth": 1.0,
+      "ole_allianceConfig": 1,
+      "ole_allianceBlend": 0.596,
+      "ole_husbandOudLevel": 0.559,
+      "ole_husbandBouzLevel": 0.473,
+      "ole_husbandPinLevel": 0.126,
+      "ole_macroFuego": 0.506,
+      "ole_macroDrama": 0.62,
+      "ole_macroSides": 0.338,
+      "ole_macroIsla": 0.222
+    },
+    "Obbligato": {
+      "obbl_breathA": 0.714,
+      "obbl_embouchureA": 0.317,
+      "obbl_airFlutterA": 0.208,
+      "obbl_instrumentA": 4,
+      "obbl_bodySizeA": 0.663,
+      "obbl_breathB": 0.551,
+      "obbl_reedStiffness": 0.46,
+      "obbl_reedBite": 0.4,
+      "obbl_instrumentB": 4,
+      "obbl_bodySizeB": 0.358,
+      "obbl_voiceRouting": 4,
+      "obbl_damping": 0.993,
+      "obbl_sympatheticAmt": 0.339,
+      "obbl_driftRate": 0.093,
+      "obbl_driftDepth": 1.0,
+      "obbl_bondStage": 0.263,
+      "obbl_bondIntensity": 0.391,
+      "obbl_bondRate": 0.165,
+      "obbl_fxAChorus": 0.205,
+      "obbl_fxABrightDelay": 0.179,
+      "obbl_fxAPlate": 0.125,
+      "obbl_fxAExciter": 0.062,
+      "obbl_fxBPhaser": 0.184,
+      "obbl_fxBDarkDelay": 0.349,
+      "obbl_fxBSpring": 0.223,
+      "obbl_fxBTapeSat": 0.166,
+      "obbl_macroBreath": 0.58,
+      "obbl_macroBond": 0.549,
+      "obbl_macroMischief": 0.359,
+      "obbl_macroWind": 0.215
+    }
+  },
+  "coupling": [
+    {
+      "source": "Ole",
+      "destination": "Obbligato",
+      "type": "EnvToMorph",
+      "amount": 0.34
+    }
+  ]
+}

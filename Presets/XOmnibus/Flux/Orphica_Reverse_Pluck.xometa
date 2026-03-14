@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Reverse Pluck",
+  "mood": "Flux",
+  "engines": [
+    "Orphica"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "harp",
+    "microsound",
+    "flux",
+    "movement",
+    "flux"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "FRACTURE",
+    "SURFACE",
+    "DIVINE"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.46,
+    "warmth": 0.44,
+    "movement": 0.76,
+    "density": 0.52,
+    "space": 0.35,
+    "aggression": 0.48
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_stringMaterial": 3,
+      "orph_pluckBrightness": 0.584,
+      "orph_pluckPosition": 0.624,
+      "orph_stringCount": 1,
+      "orph_bodySize": 0.326,
+      "orph_sympatheticAmt": 0.328,
+      "orph_damping": 0.994,
+      "orph_driftRate": 0.066,
+      "orph_driftDepth": 1.0,
+      "orph_microMode": 3,
+      "orph_microRate": 1.0,
+      "orph_microSize": 1.0,
+      "orph_microDensity": 1.0,
+      "orph_microScatter": 0.333,
+      "orph_microMix": 0.579,
+      "orph_crossoverNote": 1,
+      "orph_crossoverBlend": 1,
+      "orph_lowLevel": 0.804,
+      "orph_highLevel": 0.825,
+      "orph_subAmount": 0.0,
+      "orph_tapeSat": 0.244,
+      "orph_darkDelayTime": 0.417,
+      "orph_darkDelayFb": 0.19,
+      "orph_deepPlateMix": 0.069,
+      "orph_shimmerMix": 0.083,
+      "orph_microDelayTime": 1.0,
+      "orph_spectralSmear": 0.0,
+      "orph_crystalChorusRate": 0.563,
+      "orph_crystalChorusDpth": 0.412,
+      "orph_macroPluck": 0.393,
+      "orph_macroFracture": 0.679,
+      "orph_macroSurface": 0.558,
+      "orph_macroDivine": 0.115
+    }
+  },
+  "coupling": null
+}

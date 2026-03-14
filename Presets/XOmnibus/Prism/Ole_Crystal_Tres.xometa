@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Crystal Tres",
+  "mood": "Prism",
+  "engines": [
+    "Ole"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "latin",
+    "strummed",
+    "prism",
+    "bright",
+    "prism"
+  ],
+  "macroLabels": [
+    "FUEGO",
+    "DRAMA",
+    "SIDES",
+    "ISLA"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.19,
+    "movement": 0.39,
+    "density": 0.24,
+    "space": 0.57,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Ole": {
+      "ole_aunt1Level": 0.563,
+      "ole_aunt1StrumRate": 1.0,
+      "ole_aunt1Brightness": 0.701,
+      "ole_aunt2Level": 0.592,
+      "ole_aunt2CoinPress": 0.087,
+      "ole_aunt2GourdSize": 0.58,
+      "ole_aunt3Level": 0.577,
+      "ole_aunt3Tremolo": 1.0,
+      "ole_aunt3Brightness": 0.483,
+      "ole_damping": 0.994,
+      "ole_sympatheticAmt": 0.327,
+      "ole_driftRate": 0.066,
+      "ole_driftDepth": 1.0,
+      "ole_allianceConfig": 0,
+      "ole_allianceBlend": 0.484,
+      "ole_husbandOudLevel": 0.0,
+      "ole_husbandBouzLevel": 0.0,
+      "ole_husbandPinLevel": 0.0,
+      "ole_macroFuego": 0.573,
+      "ole_macroDrama": 0.396,
+      "ole_macroSides": 0.0,
+      "ole_macroIsla": 0.06
+    }
+  },
+  "coupling": null
+}

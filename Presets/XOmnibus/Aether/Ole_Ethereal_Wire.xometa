@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Ethereal Wire",
+  "mood": "Aether",
+  "engines": [
+    "Ole"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "latin",
+    "strummed",
+    "aether",
+    "experimental",
+    "aether"
+  ],
+  "macroLabels": [
+    "FUEGO",
+    "DRAMA",
+    "SIDES",
+    "ISLA"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.63,
+    "warmth": 0.49,
+    "movement": 0.71,
+    "density": 0.73,
+    "space": 0.62,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Ole": {
+      "ole_aunt1Level": 0.571,
+      "ole_aunt1StrumRate": 1.0,
+      "ole_aunt1Brightness": 0.552,
+      "ole_aunt2Level": 0.56,
+      "ole_aunt2CoinPress": 0.111,
+      "ole_aunt2GourdSize": 0.553,
+      "ole_aunt3Level": 0.717,
+      "ole_aunt3Tremolo": 1.0,
+      "ole_aunt3Brightness": 0.38,
+      "ole_damping": 0.993,
+      "ole_sympatheticAmt": 0.37,
+      "ole_driftRate": 0.102,
+      "ole_driftDepth": 1.0,
+      "ole_allianceConfig": 1,
+      "ole_allianceBlend": 0.535,
+      "ole_husbandOudLevel": 0.598,
+      "ole_husbandBouzLevel": 0.296,
+      "ole_husbandPinLevel": 0.3,
+      "ole_macroFuego": 0.64,
+      "ole_macroDrama": 0.794,
+      "ole_macroSides": 0.189,
+      "ole_macroIsla": 0.385
+    }
+  },
+  "coupling": null
+}

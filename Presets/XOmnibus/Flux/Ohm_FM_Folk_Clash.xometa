@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "FM Folk Clash",
+  "mood": "Flux",
+  "engines": [
+    "Ohm"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "physical-modeling",
+    "folk",
+    "flux",
+    "movement",
+    "flux"
+  ],
+  "macroLabels": [
+    "JAM",
+    "MEDDLING",
+    "COMMUNE",
+    "MEADOW"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.54,
+    "warmth": 0.37,
+    "movement": 0.84,
+    "density": 0.39,
+    "space": 0.42,
+    "aggression": 0.44
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_dadInstrument": 6,
+      "ohm_dadLevel": 0.788,
+      "ohm_pluckBrightness": 0.337,
+      "ohm_bowPressure": 0.0,
+      "ohm_bowSpeed": 0.5,
+      "ohm_bodyMaterial": 1,
+      "ohm_sympatheticAmt": 0.289,
+      "ohm_driftRate": 0.152,
+      "ohm_driftDepth": 1.0,
+      "ohm_damping": 0.992,
+      "ohm_inlawLevel": 0.5,
+      "ohm_thereminScale": 1.0,
+      "ohm_thereminWobble": 0.223,
+      "ohm_glassBrightness": 0.563,
+      "ohm_spectralFreeze": 0.065,
+      "ohm_grainSize": 1.0,
+      "ohm_grainDensity": 1.0,
+      "ohm_grainScatter": 0.447,
+      "ohm_obedLevel": 0.392,
+      "ohm_fmRatioPreset": 5,
+      "ohm_fmIndex": 1.0,
+      "ohm_fmAttack": 0.01,
+      "ohm_fmDecay": 0.426,
+      "ohm_meddlingThresh": 0.558,
+      "ohm_communeAbsorb": 0.517,
+      "ohm_reverbMix": 0.208,
+      "ohm_delayTime": 0.344,
+      "ohm_delayFeedback": 0.469,
+      "ohm_macroJam": 0.515,
+      "ohm_macroMeddling": 0.555,
+      "ohm_macroCommune": 0.034,
+      "ohm_macroMeadow": 0.281
+    }
+  },
+  "coupling": null
+}

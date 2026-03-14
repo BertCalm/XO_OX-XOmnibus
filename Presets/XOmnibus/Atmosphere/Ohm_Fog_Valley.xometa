@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Fog Valley",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ohm"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "physical-modeling",
+    "folk",
+    "atmosphere",
+    "pad",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "JAM",
+    "MEDDLING",
+    "COMMUNE",
+    "MEADOW"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.19,
+    "warmth": 0.52,
+    "movement": 0.27,
+    "density": 0.25,
+    "space": 0.92,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_dadInstrument": 1,
+      "ohm_dadLevel": 0.805,
+      "ohm_pluckBrightness": 0.335,
+      "ohm_bowPressure": 0.0,
+      "ohm_bowSpeed": 0.5,
+      "ohm_bodyMaterial": 3,
+      "ohm_sympatheticAmt": 0.32,
+      "ohm_driftRate": 0.089,
+      "ohm_driftDepth": 1.0,
+      "ohm_damping": 0.991,
+      "ohm_inlawLevel": 0.0,
+      "ohm_thereminScale": 1.0,
+      "ohm_thereminWobble": 0.232,
+      "ohm_glassBrightness": 0.69,
+      "ohm_spectralFreeze": 0.416,
+      "ohm_grainSize": 1.0,
+      "ohm_grainDensity": 1.0,
+      "ohm_grainScatter": 0.411,
+      "ohm_obedLevel": 0.0,
+      "ohm_fmRatioPreset": 3,
+      "ohm_fmIndex": 1.0,
+      "ohm_fmAttack": 0.011,
+      "ohm_fmDecay": 0.291,
+      "ohm_meddlingThresh": 0.482,
+      "ohm_communeAbsorb": 0.374,
+      "ohm_reverbMix": 0.31,
+      "ohm_delayTime": 0.576,
+      "ohm_delayFeedback": 0.343,
+      "ohm_macroJam": 0.629,
+      "ohm_macroMeddling": 0.06,
+      "ohm_macroCommune": 0.33,
+      "ohm_macroMeadow": 0.539
+    }
+  },
+  "coupling": null
+}

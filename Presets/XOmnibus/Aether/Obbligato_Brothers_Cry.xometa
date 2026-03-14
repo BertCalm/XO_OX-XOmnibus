@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Brothers Cry",
+  "mood": "Aether",
+  "engines": [
+    "Obbligato"
+  ],
+  "author": "Exo Meta \u2014 Family Constellation",
+  "version": "1.0.0",
+  "tags": [
+    "wind",
+    "flute",
+    "aether",
+    "experimental",
+    "aether"
+  ],
+  "macroLabels": [
+    "BREATH",
+    "BOND",
+    "MISCHIEF",
+    "WIND"
+  ],
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "dna": {
+    "brightness": 0.71,
+    "warmth": 0.57,
+    "movement": 0.55,
+    "density": 0.81,
+    "space": 0.7,
+    "aggression": 0.34
+  },
+  "parameters": {
+    "Obbligato": {
+      "obbl_breathA": 0.772,
+      "obbl_embouchureA": 0.689,
+      "obbl_airFlutterA": 0.172,
+      "obbl_instrumentA": 0,
+      "obbl_bodySizeA": 0.598,
+      "obbl_breathB": 0.608,
+      "obbl_reedStiffness": 0.682,
+      "obbl_reedBite": 0.342,
+      "obbl_instrumentB": 0,
+      "obbl_bodySizeB": 0.686,
+      "obbl_voiceRouting": 0,
+      "obbl_damping": 0.996,
+      "obbl_sympatheticAmt": 0.386,
+      "obbl_driftRate": 0.132,
+      "obbl_driftDepth": 1.0,
+      "obbl_bondStage": 0.775,
+      "obbl_bondIntensity": 0.511,
+      "obbl_bondRate": 0.153,
+      "obbl_fxAChorus": 0.354,
+      "obbl_fxABrightDelay": 0.278,
+      "obbl_fxAPlate": 0.278,
+      "obbl_fxAExciter": 0.087,
+      "obbl_fxBPhaser": 0.299,
+      "obbl_fxBDarkDelay": 0.243,
+      "obbl_fxBSpring": 0.108,
+      "obbl_fxBTapeSat": 0.103,
+      "obbl_macroBreath": 0.437,
+      "obbl_macroBond": 0.567,
+      "obbl_macroMischief": 0.28,
+      "obbl_macroWind": 0.387
+    }
+  },
+  "coupling": null
+}
