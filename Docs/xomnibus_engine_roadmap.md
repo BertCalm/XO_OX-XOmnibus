@@ -1,12 +1,12 @@
 # XOmnibus — Engine Expansion Roadmap
 
-*Document version: 3.2 | March 2026 — Full audit: 21 engines integrated, XOstinato + XOuïe designed*
+*Document version: 3.3 | March 2026 — 31 engines integrated (26 original + 5 Constellation: OHM/ORPHICA/OBBLIGATO/OTTONI/OLE)*
 
 ---
 
 ## Current Gallery State (March 2026)
 
-**21 engines integrated** in `Source/Engines/`, all with SynthEngine adapters. 1,610 factory presets across 6 moods.
+**31 engines integrated** in `Source/Engines/`, all with SynthEngine adapters. 2,369 factory presets across 7 moods (Foundation/Atmosphere/Entangled/Prism/Flux/Aether/Family).
 
 ### Volume 1 — Core Engines (Original Instruments)
 

@@ -15,7 +15,7 @@ namespace xomnibus {
 // Uses FamilyWaveguide primitives: PickExciter, BowExciter, DelayLine,
 // DampingFilter, BodyResonance, SympatheticBank, OrganicDrift.
 //
-// 33 canonical ohm_ parameters — matches standalone Parameters.h exactly.
+// 32 canonical ohm_ parameters — matches standalone Parameters.h exactly.
 //==============================================================================
 
 // 2-op FM for Obed
@@ -463,7 +463,7 @@ public:
         p.push_back(std::make_unique<F>("ohm_meddlingThresh","Meddling Thresh",N{0.0f,1.0f},0.5f));
         p.push_back(std::make_unique<F>("ohm_communeAbsorb","Commune Absorb",N{0.0f,1.0f},0.5f));
 
-        // Section E: FX + Macros (8 params)
+        // Section E: FX + Macros (7 params)
         p.push_back(std::make_unique<F>("ohm_reverbMix","Reverb Mix",N{0.0f,1.0f},0.2f));
         p.push_back(std::make_unique<F>("ohm_delayTime","Delay Time",N{0.05f,2.0f},0.4f));
         p.push_back(std::make_unique<F>("ohm_delayFeedback","Delay Feedback",N{0.0f,0.9f},0.35f));

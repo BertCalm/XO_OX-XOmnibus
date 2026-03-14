@@ -159,6 +159,10 @@ public:
             (kTodQ[todI]*growToddler + kTwQ[twI]*growTween + kTnQ[tnI]*growTeen) / wTot
             : kTwQ[twI];
 
+        // Pre-compute SR-scaled reverb comb lengths (once per block, not per sample)
+        int srMul=std::max(1,(int)(sr/44100.0+0.5));
+        int combLens[4]={1117*srMul,1277*srMul,1423*srMul,1559*srMul};
+
         auto*oL=buf.getWritePointer(0);auto*oR=buf.getWritePointer(1);
         for(int i=0;i<ns;++i){
             float sL=0,sR=0;
@@ -262,9 +266,7 @@ public:
             // --- Reverb (Schroeder 4-comb approximation) ---
             if(effRevSz>0.001f){
                 float revIn=(sL+sR)*0.5f;
-                // 4 comb filters with different delays for diffuse reverb
-                int srMul=std::max(1,(int)(sr/44100.0+0.5));
-                int combLens[4]={1117*srMul,1277*srMul,1423*srMul,1559*srMul};
+                // 4 comb filters (combLens pre-computed before loop)
                 float revOut=0;
                 for(int c=0;c<4;++c){
                     float fb=0.7f+effRevSz*0.28f; // feedback 0.7-0.98

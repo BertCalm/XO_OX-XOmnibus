@@ -191,7 +191,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 ## Seance Findings
 
-24 seances held 2026-03-14 (original 26 engines). 5 Constellation engines (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) added post-seance — pending their own seance round. Full data in:
+29 seances complete (2026-03-14) — all 31 engines covered (26 original + 5 Constellation). Constellation seances (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) completed same day; findings committed 836e85a. Full data in:
 - Grand Survey: `Docs/xomnibus_landscape_2026.md`
 - Knowledge tree: `~/.claude/skills/synth-seance/knowledge/index.md`
 - Cross-reference: `Docs/seance_cross_reference.md`
