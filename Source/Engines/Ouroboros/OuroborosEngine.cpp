@@ -2,4 +2,4 @@
 // All DSP is inline in OuroborosEngine.h.
 // This stub provides the translation unit required by CMake.
 
-REGISTER_ENGINE(OuroborosEngine)
+// Registration is centralized in XOmnibusProcessor.cpp.

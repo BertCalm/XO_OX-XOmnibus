@@ -2,4 +2,4 @@
 #include "../../Core/EngineRegistry.h"
 
 using xowlfish::OwlfishEngine;
-REGISTER_ENGINE(OwlfishEngine)
+// Registration is centralized in XOmnibusProcessor.cpp.

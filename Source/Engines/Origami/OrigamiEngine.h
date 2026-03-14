@@ -231,7 +231,7 @@ struct OrigamiVoice
     // Oscillator state
     float sawPhase = 0.0f;
     float sqrPhase = 0.0f;
-    float noiseState = 12345u;
+    uint32_t noiseState = 12345u;
 
     // Glide
     float currentFreq = 440.0f;

@@ -198,9 +198,9 @@ struct OspreyLFO
 };
 
 //==============================================================================
-// ModalResonator — a single tuned resonator modeled as a 2-pole resonant filter.
+// OspreyResonator — a single tuned resonator modeled as a 2-pole resonant filter.
 //==============================================================================
-struct ModalResonator
+struct OspreyResonator
 {
     float freq = 440.0f;       // center frequency
     float bandwidth = 100.0f;  // bandwidth Hz
@@ -496,7 +496,7 @@ struct OspreyVoice
     float glideCoeff = 1.0f;
 
     // 16 modal resonators (3 instrument groups x 4 formants + 4 sympathetic)
-    std::array<ModalResonator, 16> resonators;
+    std::array<OspreyResonator, 16> resonators;
 
     // 3 creature voice formant generators
     std::array<CreatureFormant, 3> creatures;

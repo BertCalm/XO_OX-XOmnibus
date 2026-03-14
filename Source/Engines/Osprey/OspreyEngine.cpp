@@ -1,5 +1,4 @@
 #include "OspreyEngine.h"
 // All DSP is inline in OspreyEngine.h.
 // This stub provides the translation unit required by CMake.
-
-REGISTER_ENGINE(OspreyEngine)
+// Registration is centralized in XOmnibusProcessor.cpp.

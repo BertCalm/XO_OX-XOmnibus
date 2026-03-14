@@ -12,6 +12,18 @@
 #include "Engines/Bite/BiteEngine.h"
 #include "Engines/Organon/OrganonEngine.h"
 #include "Engines/Ocelot/OcelotEngine.h"
+#include "Engines/Ouroboros/OuroborosEngine.h"
+#include "Engines/Obsidian/ObsidianEngine.h"
+#include "Engines/Origami/OrigamiEngine.h"
+#include "Engines/Oracle/OracleEngine.h"
+#include "Engines/Obscura/ObscuraEngine.h"
+#include "Engines/Oceanic/OceanicEngine.h"
+#include "Engines/Optic/OpticEngine.h"
+#include "Engines/Oblique/ObliqueEngine.h"
+#include "Engines/Orbital/OrbitalEngine.h"
+#include "Engines/Osprey/OspreyEngine.h"
+#include "Engines/Osteria/OsteriaEngine.h"
+#include "Engines/Owlfish/OwlfishEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -63,6 +75,54 @@ static bool registered_Organon = xomnibus::EngineRegistry::instance().registerEn
 static bool registered_Ocelot = xomnibus::EngineRegistry::instance().registerEngine(
     "Ocelot", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xocelot::OcelotEngine>();
+    });
+static bool registered_Ouroboros = xomnibus::EngineRegistry::instance().registerEngine(
+    "Ouroboros", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OuroborosEngine>();
+    });
+static bool registered_Obsidian = xomnibus::EngineRegistry::instance().registerEngine(
+    "Obsidian", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::ObsidianEngine>();
+    });
+static bool registered_Origami = xomnibus::EngineRegistry::instance().registerEngine(
+    "Origami", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OrigamiEngine>();
+    });
+static bool registered_Oracle = xomnibus::EngineRegistry::instance().registerEngine(
+    "Oracle", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OracleEngine>();
+    });
+static bool registered_Obscura = xomnibus::EngineRegistry::instance().registerEngine(
+    "Obscura", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::ObscuraEngine>();
+    });
+static bool registered_Oceanic = xomnibus::EngineRegistry::instance().registerEngine(
+    "Oceanic", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OceanicEngine>();
+    });
+static bool registered_Optic = xomnibus::EngineRegistry::instance().registerEngine(
+    "Optic", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OpticEngine>();
+    });
+static bool registered_Oblique = xomnibus::EngineRegistry::instance().registerEngine(
+    "Oblique", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::ObliqueEngine>();
+    });
+static bool registered_Orbital = xomnibus::EngineRegistry::instance().registerEngine(
+    "Orbital", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OrbitalEngine>();
+    });
+static bool registered_Osprey = xomnibus::EngineRegistry::instance().registerEngine(
+    "Osprey", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OspreyEngine>();
+    });
+static bool registered_Osteria = xomnibus::EngineRegistry::instance().registerEngine(
+    "Osteria", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OsteriaEngine>();
+    });
+static bool registered_Owlfish = xomnibus::EngineRegistry::instance().registerEngine(
+    "Owlfish", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xowlfish::OwlfishEngine>();
     });
 
 namespace xomnibus {
@@ -132,6 +192,19 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     OpalEngine::addParameters(params);
     BiteEngine::addParameters(params);
     OrganonEngine::addParameters(params);
+    OuroborosEngine::addParameters(params);
+    ObsidianEngine::addParameters(params);
+    OrigamiEngine::addParameters(params);
+    OracleEngine::addParameters(params);
+    ObscuraEngine::addParameters(params);
+    OceanicEngine::addParameters(params);
+    OpticEngine::addParameters(params);
+    ObliqueEngine::addParameters(params);
+    OrbitalEngine::addParameters(params);
+    OspreyEngine::addParameters(params);
+    OsteriaEngine::addParameters(params);
+    xocelot::addParameters(params);
+    xowlfish::addParameters(params);
 
     // Chord Machine parameters
     params.push_back(std::make_unique<juce::AudioParameterBool>(

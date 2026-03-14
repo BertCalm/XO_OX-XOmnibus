@@ -462,10 +462,10 @@ static void testDNASearch()
             return p;
         };
 
-        pm2.library.push_back(makePreset("Far", 0.0f));
-        pm2.library.push_back(makePreset("Close", 0.8f));
-        pm2.library.push_back(makePreset("Closest", 0.9f));
-        pm2.library.push_back(makePreset("Medium", 0.5f));
+        pm2.addPreset(makePreset("Far", 0.0f));
+        pm2.addPreset(makePreset("Close", 0.8f));
+        pm2.addPreset(makePreset("Closest", 0.9f));
+        pm2.addPreset(makePreset("Medium", 0.5f));
 
         PresetDNA target;
         target.brightness = 1.0f;
@@ -504,9 +504,9 @@ static void testDNASearch()
             return p;
         };
 
-        pm2.library.push_back(makePreset("Bright", 0.9f));
-        pm2.library.push_back(makePreset("Dark", 0.1f));
-        pm2.library.push_back(makePreset("Mid", 0.5f));
+        pm2.addPreset(makePreset("Bright", 0.9f));
+        pm2.addPreset(makePreset("Dark", 0.1f));
+        pm2.addPreset(makePreset("Mid", 0.5f));
 
         // Target is bright -> opposite should be dark
         PresetDNA target;

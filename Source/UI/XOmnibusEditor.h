@@ -85,6 +85,10 @@ namespace GalleryColors {
         if (id == "Oceanic")   return juce::Colour(0xFF00B4A0); // Phosphorescent Teal
         if (id == "Optic")     return juce::Colour(0xFF00FF41); // Phosphor Green
         if (id == "Oblique")   return juce::Colour(0xFFBF40FF); // Prism Violet
+        if (id == "Ocelot")    return juce::Colour(0xFFC5832B); // Ocelot Tawny
+        if (id == "Osprey")    return juce::Colour(0xFF1B4F8A); // Azulejo Blue
+        if (id == "Osteria")   return juce::Colour(0xFF722F37); // Porto Wine
+        if (id == "Owlfish")   return juce::Colour(0xFFB8860B); // Abyssal Gold
         return get(borderGray());
     }
 
@@ -1149,7 +1153,7 @@ public:
         seqToggle.setColour(juce::TextButton::buttonColourId,
                             GalleryColors::get(GalleryColors::shellWhite()));
         seqToggle.setColour(juce::TextButton::buttonOnColourId,
-                            GalleryColors::get(GalleryColors::xoGold()));
+                            GalleryColors::get(GalleryColors::xoGold));
         seqToggle.setColour(juce::TextButton::textColourOffId,
                             GalleryColors::get(GalleryColors::textMid()));
         seqToggle.setColour(juce::TextButton::textColourOnId,
@@ -1425,7 +1429,7 @@ public:
         g.fillEllipse(8.0f, h * 0.5f - 3.5f, 7.0f, 7.0f);
 
         // Preset name
-        g.setColour(get(selected ? textDark : textMid));
+        g.setColour(get(selected ? textDark() : textMid()));
         g.setFont(GalleryFonts::body(10.5f));
         g.drawText(preset.name, 22, 0, w - 36, h,
                    juce::Justification::centredLeft, true);
@@ -1814,26 +1818,26 @@ public:
             auto card = stripArea.withX (stripArea.getX() + i * (cardW + 6)).withWidth (cardW);
 
             // Card background
-            g.setColour (get (slotBg));
+            g.setColour (get (slotBg()));
             g.fillRoundedRectangle (card.toFloat(), 4.0f);
-            g.setColour (get (borderGray));
+            g.setColour (get (borderGray()));
             g.drawRoundedRectangle (card.toFloat(), 4.0f, 1.0f);
 
             // Engine accent bar at bottom
             auto* eng = processor.getEngine (i);
             juce::Colour accent = eng ? accentForEngine (eng->getEngineId())
-                                      : get (emptySlot);
+                                      : get (emptySlot());
             g.setColour (accent);
             g.fillRect (card.removeFromBottom (4).toFloat());
 
             // Slot number
-            g.setColour (get (textMid));
+            g.setColour (get (textMid()));
             g.setFont (GalleryFonts::body(10.0f));
             g.drawText ("S" + juce::String (i + 1), card.removeFromTop (14),
                         juce::Justification::centred);
 
             // MIDI note name
-            g.setColour (get (textDark));
+            g.setColour (get (textDark()));
             g.setFont (GalleryFonts::display(16.0f));
             g.drawText (ChordMachine::midiNoteToName (assignment.midiNotes[i]),
                         card.removeFromTop (22), juce::Justification::centred);
@@ -1869,26 +1873,26 @@ public:
             else if (isCurrent)
                 cellCol = get (xoGold).withAlpha (0.3f);
             else if (isActive)
-                cellCol = get (textDark).withAlpha (0.15f);
+                cellCol = get (textDark()).withAlpha (0.15f);
             else
-                cellCol = get (slotBg);
+                cellCol = get (slotBg());
 
             g.setColour (cellCol);
             g.fillRoundedRectangle (stepR.toFloat().withTrimmedBottom (16), 3.0f);
-            g.setColour (get (borderGray));
+            g.setColour (get (borderGray()));
             g.drawRoundedRectangle (stepR.toFloat().withTrimmedBottom (16), 3.0f, 0.5f);
 
             // Beat marker (steps 0, 4, 8, 12)
             if ((s & 3) == 0)
             {
-                g.setColour (get (textMid).withAlpha (0.4f));
+                g.setColour (get (textMid()).withAlpha (0.4f));
                 g.fillRect (stepR.getX(), stepR.getY() - 3, stepW, 2);
             }
 
             // Root note label below
             if (stepData.rootNote >= 0)
             {
-                g.setColour (get (textMid));
+                g.setColour (get (textMid()));
                 g.setFont (GalleryFonts::label(8.0f));
                 g.drawText (ChordMachine::midiNoteToName (stepData.rootNote),
                             stepR.withY (stepR.getBottom() - 14).withHeight (14),
@@ -1907,7 +1911,7 @@ public:
         {
             auto labelR = knobArea.withX (knobArea.getX() + i * (knobW + 8))
                                   .withWidth (knobW).removeFromTop (14);
-            g.setColour (get (textMid));
+            g.setColour (get (textMid()));
             g.setFont (GalleryFonts::body(9.0f));
             g.drawText (knobLabels[i], labelR, juce::Justification::centred);
         }
@@ -1915,7 +1919,7 @@ public:
         // Spread label (dynamic)
         float curSpread = cm.getSpread();
         g.setColour (get (xoGold));
-        g.setFont (GalleryFonts::label(8.0f).withStyle ("Bold"));
+        g.setFont (GalleryFonts::label(8.0f).withStyle (juce::Font::bold));
         auto spreadLabelR = knobArea.withWidth (knobW).removeFromBottom (12);
         g.drawText (ChordMachine::spreadLabel (curSpread), spreadLabelR,
                     juce::Justification::centred);

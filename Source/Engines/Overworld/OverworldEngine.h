@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../DSP/FastMath.h"
 
 // XOverworld DSP — included via target_include_directories in CMakeLists.txt
 #include "engine/VoicePool.h"

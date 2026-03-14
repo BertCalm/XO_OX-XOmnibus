@@ -274,7 +274,7 @@ struct OracleLFO
 // DC Blocker — first-order HPF at ~5Hz.
 // y[n] = x[n] - x[n-1] + R * y[n-1], where R = 1 - (2*pi*fc/sr)
 //==============================================================================
-struct DCBlocker
+struct OracleDCBlocker
 {
     float x1 = 0.0f;
     float y1 = 0.0f;
@@ -339,8 +339,8 @@ struct OracleVoice
     OracleLFO lfo2;
 
     // DC blocker (stereo)
-    DCBlocker dcBlockerL;
-    DCBlocker dcBlockerR;
+    OracleDCBlocker dcBlockerL;
+    OracleDCBlocker dcBlockerR;
 
     // Voice stealing crossfade
     float fadeGain = 1.0f;

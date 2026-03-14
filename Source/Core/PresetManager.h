@@ -355,6 +355,9 @@ public:
     // Return the number of presets in the library.
     int getLibrarySize() const { return static_cast<int>(library.size()); }
 
+    // Add a preset to the library (for testing and programmatic use).
+    void addPreset(PresetData preset) { library.push_back(std::move(preset)); }
+
     //==========================================================================
     // DNA-powered features
     //==========================================================================

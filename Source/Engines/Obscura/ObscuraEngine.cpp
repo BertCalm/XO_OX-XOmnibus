@@ -2,4 +2,4 @@
 // All DSP is inline in ObscuraEngine.h.
 // This stub provides the translation unit required by CMake.
 
-REGISTER_ENGINE(ObscuraEngine)
+// Registration is centralized in XOmnibusProcessor.cpp.

@@ -2,4 +2,4 @@
 // All DSP is inline in OpticEngine.h.
 // This stub provides the translation unit required by CMake.
 
-REGISTER_ENGINE(OpticEngine)
+// Registration is centralized in XOmnibusProcessor.cpp.

@@ -95,98 +95,100 @@ inline const juce::StringArray couplingBus {
 
 } // namespace Enums
 
-// -- Parameter Layout Factory --
+// -- Parameter Registration (vector-based, for XOmnibus shared APVTS) --
 
-inline juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout()
+inline void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& p)
 {
-    juce::AudioProcessorValueTreeState::ParameterLayout layout;
-
-    auto floatParam = [](const juce::String& id, const juce::String& name,
-                         float min, float max, float def, float skew = 1.0f) {
-        return std::make_unique<juce::AudioParameterFloat>(
+    auto F = [&](const char* id, const char* name, float lo, float hi, float def, float skew = 1.0f) {
+        p.push_back(std::make_unique<juce::AudioParameterFloat>(
             juce::ParameterID { id, 1 }, name,
-            juce::NormalisableRange<float>(min, max, 0.0f, skew), def);
+            juce::NormalisableRange<float>(lo, hi, 0.0f, skew), def));
     };
-
-    auto choiceParam = [](const juce::String& id, const juce::String& name,
-                          const juce::StringArray& choices, int defIndex) {
-        return std::make_unique<juce::AudioParameterChoice>(
-            juce::ParameterID { id, 1 }, name, choices, defIndex);
+    auto C = [&](const char* id, const char* name, const juce::StringArray& ch, int def) {
+        p.push_back(std::make_unique<juce::AudioParameterChoice>(
+            juce::ParameterID { id, 1 }, name, ch, def));
     };
 
     using namespace ParamIDs;
 
     // -- Solitary Genus (3) --
-    layout.add(floatParam (portamento,  "Portamento",   0.0f, 1.0f, 0.1f));
-    layout.add(choiceParam(legatoMode,  "Legato Mode",  Enums::legatoMode, 1));  // Legato default
-    layout.add(floatParam (morphGlide,  "Morph Glide",  0.0f, 1.0f, 0.5f));
+    F(portamento,  "Portamento",   0.0f, 1.0f, 0.1f);
+    C(legatoMode,  "Legato Mode",  Enums::legatoMode, 1);
+    F(morphGlide,  "Morph Glide",  0.0f, 1.0f, 0.5f);
 
     // -- Abyss Habitat (14) --
-    layout.add(floatParam (subMix,      "Sub Mix",      0.0f, 1.0f, 0.5f));
-    layout.add(choiceParam(subDiv1,     "Sub Div 1",    Enums::subDivision, 1));  // 1:2
-    layout.add(choiceParam(subDiv2,     "Sub Div 2",    Enums::subDivision, 2));  // 1:3
-    layout.add(choiceParam(subDiv3,     "Sub Div 3",    Enums::subDivision, 0));  // Off
-    layout.add(choiceParam(subDiv4,     "Sub Div 4",    Enums::subDivision, 0));  // Off
-    layout.add(floatParam (subLevel1,   "Sub Level 1",  0.0f, 1.0f, 0.8f));
-    layout.add(floatParam (subLevel2,   "Sub Level 2",  0.0f, 1.0f, 0.6f));
-    layout.add(floatParam (subLevel3,   "Sub Level 3",  0.0f, 1.0f, 0.4f));
-    layout.add(floatParam (subLevel4,   "Sub Level 4",  0.0f, 1.0f, 0.3f));
-    layout.add(floatParam (mixtur,      "Mixtur",       0.0f, 1.0f, 0.5f));
-    layout.add(floatParam (fundWave,    "Fund Wave",    0.0f, 1.0f, 0.0f));
-    layout.add(floatParam (subWave,     "Sub Wave",     0.0f, 1.0f, 0.0f));
-    layout.add(floatParam (bodyFreq,    "Body Freq",    20.0f, 80.0f, 40.0f, 0.5f));
-    layout.add(floatParam (bodyLevel,   "Body Level",   0.0f, 1.0f, 0.3f));
+    F(subMix,      "Sub Mix",      0.0f, 1.0f, 0.5f);
+    C(subDiv1,     "Sub Div 1",    Enums::subDivision, 1);
+    C(subDiv2,     "Sub Div 2",    Enums::subDivision, 2);
+    C(subDiv3,     "Sub Div 3",    Enums::subDivision, 0);
+    C(subDiv4,     "Sub Div 4",    Enums::subDivision, 0);
+    F(subLevel1,   "Sub Level 1",  0.0f, 1.0f, 0.8f);
+    F(subLevel2,   "Sub Level 2",  0.0f, 1.0f, 0.6f);
+    F(subLevel3,   "Sub Level 3",  0.0f, 1.0f, 0.4f);
+    F(subLevel4,   "Sub Level 4",  0.0f, 1.0f, 0.3f);
+    F(mixtur,      "Mixtur",       0.0f, 1.0f, 0.5f);
+    F(fundWave,    "Fund Wave",    0.0f, 1.0f, 0.0f);
+    F(subWave,     "Sub Wave",     0.0f, 1.0f, 0.0f);
+    F(bodyFreq,    "Body Freq",    20.0f, 80.0f, 40.0f, 0.5f);
+    F(bodyLevel,   "Body Level",   0.0f, 1.0f, 0.3f);
 
     // -- Owl Optics (7) --
-    layout.add(floatParam (compRatio,     "Comp Ratio",     0.0f, 1.0f, 0.4f));
-    layout.add(floatParam (compThreshold, "Comp Threshold", 0.0f, 1.0f, 0.5f));
-    layout.add(floatParam (compAttack,    "Comp Attack",    0.0f, 1.0f, 0.2f));
-    layout.add(floatParam (compRelease,   "Comp Release",   0.0f, 1.0f, 0.4f));
-    layout.add(floatParam (filterCutoff,  "Filter Cutoff",  0.0f, 1.0f, 0.6f));
-    layout.add(floatParam (filterReso,    "Filter Reso",    0.0f, 1.0f, 0.3f));
-    layout.add(floatParam (filterTrack,   "Filter Track",   0.0f, 1.0f, 0.5f));
+    F(compRatio,     "Comp Ratio",     0.0f, 1.0f, 0.4f);
+    F(compThreshold, "Comp Threshold", 0.0f, 1.0f, 0.5f);
+    F(compAttack,    "Comp Attack",    0.0f, 1.0f, 0.2f);
+    F(compRelease,   "Comp Release",   0.0f, 1.0f, 0.4f);
+    F(filterCutoff,  "Filter Cutoff",  0.0f, 1.0f, 0.6f);
+    F(filterReso,    "Filter Reso",    0.0f, 1.0f, 0.3f);
+    F(filterTrack,   "Filter Track",   0.0f, 1.0f, 0.5f);
 
     // -- Diet (5) --
-    layout.add(floatParam (grainSize,    "Grain Size",    0.0f, 1.0f, 0.3f));
-    layout.add(floatParam (grainDensity, "Grain Density", 0.0f, 1.0f, 0.5f));
-    layout.add(floatParam (grainPitch,   "Grain Pitch",   0.0f, 1.0f, 0.5f));
-    layout.add(floatParam (grainMix,     "Grain Mix",     0.0f, 1.0f, 0.0f));
-    layout.add(floatParam (feedRate,     "Feed Rate",     0.0f, 1.0f, 0.3f));
+    F(grainSize,    "Grain Size",    0.0f, 1.0f, 0.3f);
+    F(grainDensity, "Grain Density", 0.0f, 1.0f, 0.5f);
+    F(grainPitch,   "Grain Pitch",   0.0f, 1.0f, 0.5f);
+    F(grainMix,     "Grain Mix",     0.0f, 1.0f, 0.0f);
+    F(feedRate,     "Feed Rate",     0.0f, 1.0f, 0.3f);
 
     // -- Sacrificial Armor (5) --
-    layout.add(floatParam (armorThreshold, "Armor Threshold", 0.0f, 1.0f, 0.5f));
-    layout.add(floatParam (armorDecay,     "Armor Decay",     0.0f, 1.0f, 0.4f));
-    layout.add(floatParam (armorScatter,   "Armor Scatter",   0.0f, 1.0f, 0.2f));
-    layout.add(floatParam (armorDuck,      "Armor Duck",      0.0f, 1.0f, 0.3f));
-    layout.add(floatParam (armorDelay,     "Armor Delay",     0.0f, 1.0f, 0.2f));
+    F(armorThreshold, "Armor Threshold", 0.0f, 1.0f, 0.5f);
+    F(armorDecay,     "Armor Decay",     0.0f, 1.0f, 0.4f);
+    F(armorScatter,   "Armor Scatter",   0.0f, 1.0f, 0.2f);
+    F(armorDuck,      "Armor Duck",      0.0f, 1.0f, 0.3f);
+    F(armorDelay,     "Armor Delay",     0.0f, 1.0f, 0.2f);
 
     // -- Abyss Reverb (4) --
-    layout.add(floatParam (reverbSize,     "Reverb Size",      0.0f, 1.0f, 0.6f));
-    layout.add(floatParam (reverbDamp,     "Reverb Damp",      0.0f, 1.0f, 0.4f));
-    layout.add(floatParam (reverbPreDelay, "Reverb Pre-Delay", 0.0f, 1.0f, 0.1f));
-    layout.add(floatParam (reverbMix,      "Reverb Mix",       0.0f, 1.0f, 0.2f));
+    F(reverbSize,     "Reverb Size",      0.0f, 1.0f, 0.6f);
+    F(reverbDamp,     "Reverb Damp",      0.0f, 1.0f, 0.4f);
+    F(reverbPreDelay, "Reverb Pre-Delay", 0.0f, 1.0f, 0.1f);
+    F(reverbMix,      "Reverb Mix",       0.0f, 1.0f, 0.2f);
 
     // -- Amp Envelope (4) --
-    layout.add(floatParam (ampAttack,  "Amp Attack",  0.001f, 8000.0f,  10.0f,  0.3f));
-    layout.add(floatParam (ampDecay,   "Amp Decay",   50.0f,  4000.0f, 300.0f,  0.3f));
-    layout.add(floatParam (ampSustain, "Amp Sustain", 0.0f,   1.0f,     0.8f));
-    layout.add(floatParam (ampRelease, "Amp Release", 50.0f,  8000.0f, 600.0f,  0.3f));
+    F(ampAttack,  "Amp Attack",  0.001f, 8000.0f,  10.0f,  0.3f);
+    F(ampDecay,   "Amp Decay",   50.0f,  4000.0f, 300.0f,  0.3f);
+    F(ampSustain, "Amp Sustain", 0.0f,   1.0f,     0.8f);
+    F(ampRelease, "Amp Release", 50.0f,  8000.0f, 600.0f,  0.3f);
 
     // -- Macros (4) --
-    layout.add(floatParam (macroDepth,    "DEPTH",    0.0f, 1.0f, 0.0f));
-    layout.add(floatParam (macroFeeding,  "FEEDING",  0.0f, 1.0f, 0.0f));
-    layout.add(floatParam (macroDefense,  "DEFENSE",  0.0f, 1.0f, 0.0f));
-    layout.add(floatParam (macroPressure, "PRESSURE", 0.0f, 1.0f, 0.0f));
+    F(macroDepth,    "DEPTH",    0.0f, 1.0f, 0.0f);
+    F(macroFeeding,  "FEEDING",  0.0f, 1.0f, 0.0f);
+    F(macroDefense,  "DEFENSE",  0.0f, 1.0f, 0.0f);
+    F(macroPressure, "PRESSURE", 0.0f, 1.0f, 0.0f);
 
     // -- Output (2) --
-    layout.add(floatParam (outputLevel, "Output Level", 0.0f, 1.0f,  0.8f));
-    layout.add(floatParam (outputPan,   "Output Pan",  -1.0f, 1.0f,  0.0f));
+    F(outputLevel, "Output Level", 0.0f, 1.0f,  0.8f);
+    F(outputPan,   "Output Pan",  -1.0f, 1.0f,  0.0f);
 
     // -- Coupling (2) --
-    layout.add(floatParam (couplingLevel, "Coupling Level", 0.0f, 1.0f, 0.0f));
-    layout.add(choiceParam(couplingBus,   "Coupling Bus",   Enums::couplingBus, 0));
+    F(couplingLevel, "Coupling Level", 0.0f, 1.0f, 0.0f);
+    C(couplingBus,   "Coupling Bus",   Enums::couplingBus, 0);
+}
 
-    return layout;
+// -- Standalone Parameter Layout (wraps addParameters) --
+
+inline juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout()
+{
+    std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
+    addParameters(params);
+    return { params.begin(), params.end() };
 }
 
 } // namespace xowlfish

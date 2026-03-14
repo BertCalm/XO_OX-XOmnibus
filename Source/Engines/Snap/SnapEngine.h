@@ -211,12 +211,32 @@ public:
         const int maxPoly = (pPolyphony != nullptr)
             ? (1 << std::min (3, static_cast<int> (pPolyphony->load()))) : 4; // 0→1, 1→2, 2→4, 3→8
 
+        // --- Macros ---
+        const float macroDart    = (pMacroDart != nullptr) ? pMacroDart->load() : 0.0f;
+        const float macroSchool  = (pMacroSchool != nullptr) ? pMacroSchool->load() : 0.0f;
+        const float macroSurface = (pMacroSurface != nullptr) ? pMacroSurface->load() : 0.0f;
+        const float macroDepth   = (pMacroDepth != nullptr) ? pMacroDepth->load() : 0.0f;
+
+        // M1 DART: sharper transient, shorter decay
+        const float effSnap  = std::max (0.0f, std::min (1.0f, snap + macroDart * 0.4f));
+        const float effDecay = std::max (0.001f, decay - macroDart * 0.3f);
+
+        // M2 SCHOOL: more voices, wider spread
+        const float effDetune = std::max (0.0f, std::min (50.0f, detuneCents + macroSchool * 20.0f));
+
+        // M3 SURFACE: brighter, more resonant
+        const float effCutoff = std::max (20.0f, std::min (20000.0f, cutoff + macroSurface * 4000.0f));
+        const float effReso   = std::max (0.0f, std::min (1.0f, reso + macroSurface * 0.3f));
+
+        // M4 DEPTH: more echo FX presence (uses existing echo params if present)
+        (void) macroDepth; // reserved for echo/FX wiring
+
         // --- Process MIDI events ---
         for (const auto metadata : midi)
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
-                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), snap, pitchLocked, detuneCents, unisonCount, cutoff, reso, maxPoly, oscModeIdx);
+                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), effSnap, pitchLocked, effDetune, unisonCount, effCutoff, effReso, maxPoly, oscModeIdx);
             else if (msg.isNoteOff())
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
@@ -241,8 +261,8 @@ public:
         for (auto& voice : voices)
         {
             if (!voice.active) continue;
-            voice.hpf.setCoefficients (cutoff, reso, srf);
-            voice.bpf.setCoefficients (cutoff, reso, srf);
+            voice.hpf.setCoefficients (effCutoff, effReso, srf);
+            voice.bpf.setCoefficients (effCutoff, effReso, srf);
         }
 
         for (int sample = 0; sample < numSamples; ++sample)
@@ -254,8 +274,8 @@ public:
                 if (!voice.active) continue;
 
                 // Decay envelope
-                float decayRate = (decay > 0.001f)
-                    ? 1.0f / (decay * srf) : 1.0f;
+                float decayRate = (effDecay > 0.001f)
+                    ? 1.0f / (effDecay * srf) : 1.0f;
                 voice.envLevel -= decayRate;
                 voice.envLevel = flushDenormal (voice.envLevel);
                 if (voice.envLevel <= 0.0f)
@@ -304,7 +324,7 @@ public:
                             // Use high-frequency saw as noise-like source
                             voice.noiseOsc.setFrequency (srf * 0.49f, srf);
                             voice.noiseOsc.setWaveform (PolyBLEP::Waveform::Saw);
-                            float noise = voice.noiseOsc.processSample() * snap;
+                            float noise = voice.noiseOsc.processSample() * effSnap;
                             uniOut = sine + noise * 0.3f;
                             break;
                         }
@@ -312,7 +332,7 @@ public:
                         {
                             voice.fmOsc.setFrequency (detunedFreq * 2.0f, srf);
                             voice.fmOsc.setWaveform (PolyBLEP::Waveform::Sine);
-                            float mod = voice.fmOsc.processSample() * snap * 4.0f;
+                            float mod = voice.fmOsc.processSample() * effSnap * 4.0f;
                             float modFreq = detunedFreq + mod * detunedFreq;
                             if (modFreq < 0.0f) modFreq = 0.0f;
                             voice.sineOsc.setFrequency (modFreq, srf);
@@ -339,9 +359,9 @@ public:
                 voiceR /= static_cast<float> (uCount);
 
                 // Snap waveshaper (pre-filter tanh saturation)
-                if (snap > 0.0f)
+                if (effSnap > 0.0f)
                 {
-                    float drive = 1.0f + snap * 8.0f;
+                    float drive = 1.0f + effSnap * 8.0f;
                     voiceL = fastTanh (voiceL * drive);
                     voiceR = fastTanh (voiceR * drive);
                 }
@@ -487,6 +507,20 @@ public:
         params.push_back (std::make_unique<juce::AudioParameterChoice> (
             juce::ParameterID { "snap_polyphony", 1 }, "Snap Polyphony",
             juce::StringArray { "1", "2", "4", "8" }, 2));
+
+        // Macros
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "snap_macroDart", 1 }, "Snap Dart",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "snap_macroSchool", 1 }, "Snap School",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "snap_macroSurface", 1 }, "Snap Surface",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "snap_macroDepth", 1 }, "Snap Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
     }
 
 public:
@@ -502,6 +536,10 @@ public:
         pPitchLock    = apvts.getRawParameterValue ("snap_pitchLock");
         pUnison       = apvts.getRawParameterValue ("snap_unison");
         pPolyphony    = apvts.getRawParameterValue ("snap_polyphony");
+        pMacroDart    = apvts.getRawParameterValue ("snap_macroDart");
+        pMacroSchool  = apvts.getRawParameterValue ("snap_macroSchool");
+        pMacroSurface = apvts.getRawParameterValue ("snap_macroSurface");
+        pMacroDepth   = apvts.getRawParameterValue ("snap_macroDepth");
     }
 
     //-- Identity --------------------------------------------------------------
@@ -630,6 +668,10 @@ private:
     std::atomic<float>* pPitchLock = nullptr;
     std::atomic<float>* pUnison = nullptr;
     std::atomic<float>* pPolyphony = nullptr;
+    std::atomic<float>* pMacroDart = nullptr;
+    std::atomic<float>* pMacroSchool = nullptr;
+    std::atomic<float>* pMacroSurface = nullptr;
+    std::atomic<float>* pMacroDepth = nullptr;
 };
 
 } // namespace xomnibus

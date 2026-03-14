@@ -243,9 +243,9 @@ struct HalfBandFilter
 };
 
 //==============================================================================
-// DCBlocker — First-order high-pass at 5 Hz.
+// OuroborosDCBlocker — First-order high-pass at 5 Hz.
 //==============================================================================
-struct DCBlocker
+struct OuroborosDCBlocker
 {
     float x1 = 0.0f, y1 = 0.0f;
     float R = 0.9993f; // default for 44100 Hz
@@ -308,7 +308,7 @@ struct OuroborosVoice
     HalfBandFilter downsampleStage2L, downsampleStage2R;
 
     // DC blocking
-    DCBlocker dcBlockerL, dcBlockerR;
+    OuroborosDCBlocker dcBlockerL, dcBlockerR;
 
     // Damping accumulators
     float dampL = 0.0f, dampR = 0.0f;
