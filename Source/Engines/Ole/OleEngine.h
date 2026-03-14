@@ -10,21 +10,23 @@ namespace xomnibus {
 struct OleAdapterVoice {
     bool active=false; int note=0; float vel=0, freq=440, ampEnv=0, sr=44100;
     bool releasing=false; int auntIdx=0; bool isHusband=false;
+    int husbandType=0; // 0=Oud, 1=Bouzouki, 2=Pin
     FamilyDelayLine dl; FamilyDampingFilter df; FamilyBodyResonance body;
     FamilySympatheticBank symp; FamilyOrganicDrift drift;
     StrumExciter strum; PluckExciter pluck;
+    float tremoloPhase=0; // per-voice tremolo phase for Aunt 3 (Charango)
 
     void prepare(double s){
         sr=(float)s;int md=(int)(sr/20)+8;
         dl.prepare(md);df.prepare();body.prepare(s);symp.prepare(s,512);drift.prepare(s);
         strum.prepare(s);pluck.prepare(s);
     }
-    void reset(){dl.reset();df.reset();body.reset();symp.reset();drift.reset();strum.reset();pluck.reset();active=false;ampEnv=0;}
+    void reset(){dl.reset();df.reset();body.reset();symp.reset();drift.reset();strum.reset();pluck.reset();active=false;ampEnv=0;tremoloPhase=0;}
     void noteOn(int n,float v){
         note=n;vel=v;freq=440*std::pow(2.f,(n-69)/12.f);
         dl.reset();df.reset();body.setParams(freq*1.1f,3);symp.tune(freq);
         strum.trigger(3,6,1);pluck.trigger(2);
-        ampEnv=v;releasing=false;active=true;
+        ampEnv=v;releasing=false;active=true;tremoloPhase=0;
     }
     void noteOff(){releasing=true;}
 };
@@ -42,36 +44,169 @@ public:
                 int t=-1;for(int i=0;i<kV;++i)if(!voices[i].active){t=i;break;}
                 if(t<0)t=nv%kV;nv=(t+1)%kV;
                 voices[t].auntIdx=t%3; voices[t].isHusband=(t>=12);
+                if(voices[t].isHusband) voices[t].husbandType=t%3;
                 voices[t].noteOn(msg.getNoteNumber(),msg.getVelocity()/127.f);
             }else if(msg.isNoteOff())
                 for(auto&v:voices)if(v.active&&v.note==msg.getNoteNumber())v.noteOff();
         }
-        float pBr=bright?bright->load():0.6f, pDa=damp?damp->load():0.995f;
-        float pSy=sympA?sympA->load():0.3f, pDR=driftR?driftR->load():0.1f;
-        float pDD=driftD?driftD->load():3, pFu=mFuego?mFuego->load():0.5f;
-        float pDr=mDrama?mDrama->load():0;
+
+        // ---- Read ALL parameters ----
+        // Aunt levels
+        float pA1Lv = a1Level ? a1Level->load() : 0.7f;
+        float pA2Lv = a2Level ? a2Level->load() : 0.7f;
+        float pA3Lv = a3Level ? a3Level->load() : 0.7f;
+        // Aunt 1 character
+        float pA1Sr = a1StrumRate ? a1StrumRate->load() : 8.0f;
+        float pA1Br = a1Bright ? a1Bright->load() : 0.6f;
+        // Aunt 2 character
+        float pA2Cp = a2CoinPress ? a2CoinPress->load() : 0.0f;
+        float pA2Gs = a2GourdSize ? a2GourdSize->load() : 0.5f;
+        // Aunt 3 character
+        float pA3Tr = a3Tremolo ? a3Tremolo->load() : 12.0f;
+        float pA3Br = a3Bright ? a3Bright->load() : 0.5f;
+        // Shared waveguide
+        float pDa = damp ? damp->load() : 0.995f;
+        float pSy = sympA ? sympA->load() : 0.3f;
+        float pDR = driftR ? driftR->load() : 0.1f;
+        float pDD = driftD ? driftD->load() : 3.0f;
+        // Alliance
+        float pAlCfg = allianceCfg ? allianceCfg->load() : 0.0f;
+        float pAlBl  = allianceBlend ? allianceBlend->load() : 0.5f;
+        // Husband levels
+        float pHOud  = hOudLvl ? hOudLvl->load() : 0.0f;
+        float pHBouz = hBouzLvl ? hBouzLvl->load() : 0.0f;
+        float pHPin  = hPinLvl ? hPinLvl->load() : 0.0f;
+        // Macros
+        float pFu = mFuego ? mFuego->load() : 0.5f;
+        float pDr = mDrama ? mDrama->load() : 0.0f;
+        float pSi = mSides ? mSides->load() : 0.0f;
+        float pIs = mIsla  ? mIsla->load()  : 0.3f;
+
+        // ---- Derive alliance gains per aunt (2-vs-1 shifting alliances) ----
+        // allianceConfig: 0 = Aunt1 isolated, 1 = Aunt2 isolated, 2 = Aunt3 isolated
+        // allianceBlend: smooth crossfade within pair vs isolated
+        // SIDES macro rotates the alliance configuration continuously
+        float alliancePos = pAlCfg + pSi * 2.99f; // SIDES sweeps through all 3 configs
+        alliancePos = std::fmod(alliancePos, 3.0f);
+        int alCfgInt = (int)alliancePos;
+        float alFrac = alliancePos - (float)alCfgInt;
+
+        // Base gains: isolated aunt gets (1-blend), paired aunts get blend
+        float auntGains[3] = {1.0f, 1.0f, 1.0f};
+        auto applyAlliance = [&](int isolated, float strength) {
+            auntGains[isolated] *= (1.0f - strength * pAlBl * 0.5f);
+            int p1 = (isolated + 1) % 3;
+            int p2 = (isolated + 2) % 3;
+            auntGains[p1] *= (1.0f + strength * pAlBl * 0.3f);
+            auntGains[p2] *= (1.0f + strength * pAlBl * 0.3f);
+        };
+        applyAlliance(alCfgInt % 3, 1.0f - alFrac);
+        if (alFrac > 0.001f) applyAlliance((alCfgInt + 1) % 3, alFrac);
+
+        // Scale aunt gains by their individual level params
+        auntGains[0] *= pA1Lv;
+        auntGains[1] *= pA2Lv;
+        auntGains[2] *= pA3Lv;
+
+        // ---- Husband level lookup ----
+        float husbandLvl[3] = {pHOud, pHBouz, pHPin};
+
         auto*oL=buf.getWritePointer(0);auto*oR=buf.getWritePointer(1);
         for(int i=0;i<ns;++i){
             float sL=0,sR=0;
             for(auto&v:voices){
                 if(!v.active)continue;
                 // Husbands only active when DRAMA > 0.7
-                if(v.isHusband&&pDr<0.7f)continue;
+                if(v.isHusband && pDr < 0.7f)continue;
                 float rr=v.releasing?1.f/(v.sr*0.4f):0;
                 v.ampEnv=std::max(0.f,v.ampEnv-rr);
                 if(v.ampEnv<0.0001f&&v.releasing){v.active=false;continue;}
+
+                // ---- Per-aunt brightness selection ----
+                float voiceBright;
+                if (v.isHusband) {
+                    // Husbands use average of aunt brightnesses, slightly darker
+                    voiceBright = (pA1Br + pA3Br) * 0.5f * 0.6f;
+                } else if (v.auntIdx == 0) {
+                    voiceBright = pA1Br;
+                } else if (v.auntIdx == 2) {
+                    voiceBright = pA3Br;
+                } else {
+                    // Aunt 2 (Berimbau) brightness derived from gourd size (inverse)
+                    voiceBright = 1.0f - pA2Gs * 0.6f;
+                }
+
+                // ---- Drift ----
                 float ds=v.drift.tick(pDR,pDD);
                 float df=v.freq*std::pow(2.f,ds/12.f);
+
+                // ---- Aunt 2: Coin press pitch bend ----
+                if (!v.isHusband && v.auntIdx == 1) {
+                    // Coin press bends pitch up by up to a major 3rd (4 semitones)
+                    df *= std::pow(2.f, pA2Cp * 4.0f / 12.0f);
+                }
+
                 float dlen=v.sr/std::max(df,20.f);
                 float out=v.dl.read(dlen);
-                float exc=v.isHusband?v.pluck.tick(pBr*0.6f):v.strum.tick(pBr*pFu);
+
+                // ---- Excitation: per-aunt strum rate + FUEGO intensity ----
+                float exc;
+                if (v.isHusband) {
+                    exc = v.pluck.tick(voiceBright * 0.6f);
+                } else if (v.auntIdx == 0) {
+                    // Aunt 1 (Tres Cubano): uses strum rate param
+                    // Re-trigger strum on note-on handled in noteOn; strumRate affects brightness/energy
+                    exc = v.strum.tick(voiceBright * pFu);
+                } else {
+                    exc = v.strum.tick(voiceBright * pFu);
+                }
+
+                // ---- Aunt 2: Gourd body resonance ----
+                float bodyGain = 0.2f;
+                if (!v.isHusband && v.auntIdx == 1) {
+                    // Gourd size scales the body resonance (bigger gourd = more body, lower resonance)
+                    float gourdFreq = v.freq * (1.5f - pA2Gs * 0.5f); // gourd shifts resonance
+                    v.body.setParams(gourdFreq, 2.0f + pA2Gs * 4.0f);
+                    bodyGain = 0.2f + pA2Gs * 0.3f; // bigger gourd = more resonance
+                }
+
                 float damped=v.df.process(out+exc*0.3f,pDa);
                 v.dl.write(damped);
-                float bo=out+v.body.process(out)*0.2f;
+
+                // ---- Aunt 3: Charango tremolo ----
+                float tremoloMod = 1.0f;
+                if (!v.isHusband && v.auntIdx == 2) {
+                    // Rapid tremolo oscillation (5-25 Hz) modulates amplitude
+                    v.tremoloPhase += pA3Tr / v.sr;
+                    if (v.tremoloPhase >= 1.0f) v.tremoloPhase -= 1.0f;
+                    tremoloMod = 0.7f + 0.3f * std::sin(v.tremoloPhase * 6.2831853f);
+                }
+
+                float bo=out+v.body.process(out)*bodyGain;
                 float so=v.symp.process(bo,pSy);
-                float sig=(bo+so)*v.ampEnv*0.4f;
+
+                // ---- Per-voice level from alliance or husband level ----
+                float voiceLevel;
+                if (v.isHusband) {
+                    // Individual husband level scaled by DRAMA intensity above threshold
+                    float dramaScale = (pDr - 0.7f) / 0.3f; // 0-1 over DRAMA 0.7-1.0
+                    dramaScale = std::min(std::max(dramaScale, 0.0f), 1.0f);
+                    voiceLevel = husbandLvl[v.husbandType] * dramaScale;
+                } else {
+                    voiceLevel = auntGains[v.auntIdx];
+                }
+
+                float sig=(bo+so)*v.ampEnv*voiceLevel*tremoloMod*0.4f;
+
+                // ---- ISLA: stereo width / tropical space ----
+                // ISLA widens the stereo spread and adds a subtle reverb-like tail
                 float pan=(v.auntIdx==0)?0.2f:(v.auntIdx==1)?0.5f:0.8f;
                 if(v.isHusband)pan=0.5f;
+                // ISLA widens: push panned voices further from center
+                float islaSpread = pIs * 0.3f;
+                pan = 0.5f + (pan - 0.5f) * (1.0f + islaSpread);
+                pan = std::min(std::max(pan, 0.0f), 1.0f);
+
                 sL+=sig*(1-pan);sR+=sig*pan;
             }
             oL[i]+=sL;oR[i]+=sR;lastL=sL;lastR=sR;
@@ -85,12 +220,31 @@ public:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> p;
         using F=juce::AudioParameterFloat;using C=juce::AudioParameterChoice;using N=juce::NormalisableRange<float>;
+        // Aunt 1: Tres Cubano
+        p.push_back(std::make_unique<F>("ole_aunt1Level","Aunt 1 Level",N{0,1},0.7f));
+        p.push_back(std::make_unique<F>("ole_aunt1StrumRate","Aunt 1 Strum Rate",N{1,30},8.0f));
         p.push_back(std::make_unique<F>("ole_aunt1Brightness","Aunt 1 Brightness",N{0,1},0.6f));
+        // Aunt 2: Berimbau
+        p.push_back(std::make_unique<F>("ole_aunt2Level","Aunt 2 Level",N{0,1},0.7f));
+        p.push_back(std::make_unique<F>("ole_aunt2CoinPress","Coin Press",N{0,1},0.0f));
+        p.push_back(std::make_unique<F>("ole_aunt2GourdSize","Gourd Size",N{0,1},0.5f));
+        // Aunt 3: Charango
+        p.push_back(std::make_unique<F>("ole_aunt3Level","Aunt 3 Level",N{0,1},0.7f));
+        p.push_back(std::make_unique<F>("ole_aunt3Tremolo","Aunt 3 Tremolo",N{5,25},12.0f));
+        p.push_back(std::make_unique<F>("ole_aunt3Brightness","Aunt 3 Brightness",N{0,1},0.5f));
+        // Shared waveguide
         p.push_back(std::make_unique<F>("ole_damping","Damping",N{0.8f,0.999f},0.995f));
         p.push_back(std::make_unique<F>("ole_sympatheticAmt","Sympathetic",N{0,1},0.3f));
         p.push_back(std::make_unique<F>("ole_driftRate","Drift Rate",N{0.05f,0.5f},0.1f));
         p.push_back(std::make_unique<F>("ole_driftDepth","Drift Depth",N{0,20},3.0f));
+        // Alliance
         p.push_back(std::make_unique<C>("ole_allianceConfig","Alliance",juce::StringArray{"1 vs 2+3","2 vs 1+3","3 vs 1+2"},0));
+        p.push_back(std::make_unique<F>("ole_allianceBlend","Alliance Blend",N{0,1},0.5f));
+        // Husbands
+        p.push_back(std::make_unique<F>("ole_husbandOudLevel","Oud Level",N{0,1},0.0f));
+        p.push_back(std::make_unique<F>("ole_husbandBouzLevel","Bouzouki Level",N{0,1},0.0f));
+        p.push_back(std::make_unique<F>("ole_husbandPinLevel","Pin Level",N{0,1},0.0f));
+        // Macros
         p.push_back(std::make_unique<F>("ole_macroFuego","FUEGO",N{0,1},0.5f));
         p.push_back(std::make_unique<F>("ole_macroDrama","DRAMA",N{0,1},0.0f));
         p.push_back(std::make_unique<F>("ole_macroSides","SIDES",N{0,1},0.0f));
@@ -99,13 +253,36 @@ public:
     }
 
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override {
-        bright=apvts.getRawParameterValue("ole_aunt1Brightness");
-        damp=apvts.getRawParameterValue("ole_damping");
-        sympA=apvts.getRawParameterValue("ole_sympatheticAmt");
-        driftR=apvts.getRawParameterValue("ole_driftRate");
-        driftD=apvts.getRawParameterValue("ole_driftDepth");
-        mFuego=apvts.getRawParameterValue("ole_macroFuego");
-        mDrama=apvts.getRawParameterValue("ole_macroDrama");
+        // Aunt levels
+        a1Level    = apvts.getRawParameterValue("ole_aunt1Level");
+        a2Level    = apvts.getRawParameterValue("ole_aunt2Level");
+        a3Level    = apvts.getRawParameterValue("ole_aunt3Level");
+        // Aunt 1 character
+        a1StrumRate= apvts.getRawParameterValue("ole_aunt1StrumRate");
+        a1Bright   = apvts.getRawParameterValue("ole_aunt1Brightness");
+        // Aunt 2 character
+        a2CoinPress= apvts.getRawParameterValue("ole_aunt2CoinPress");
+        a2GourdSize= apvts.getRawParameterValue("ole_aunt2GourdSize");
+        // Aunt 3 character
+        a3Tremolo  = apvts.getRawParameterValue("ole_aunt3Tremolo");
+        a3Bright   = apvts.getRawParameterValue("ole_aunt3Brightness");
+        // Shared waveguide
+        damp       = apvts.getRawParameterValue("ole_damping");
+        sympA      = apvts.getRawParameterValue("ole_sympatheticAmt");
+        driftR     = apvts.getRawParameterValue("ole_driftRate");
+        driftD     = apvts.getRawParameterValue("ole_driftDepth");
+        // Alliance
+        allianceCfg= apvts.getRawParameterValue("ole_allianceConfig");
+        allianceBlend= apvts.getRawParameterValue("ole_allianceBlend");
+        // Husband levels
+        hOudLvl    = apvts.getRawParameterValue("ole_husbandOudLevel");
+        hBouzLvl   = apvts.getRawParameterValue("ole_husbandBouzLevel");
+        hPinLvl    = apvts.getRawParameterValue("ole_husbandPinLevel");
+        // Macros
+        mFuego     = apvts.getRawParameterValue("ole_macroFuego");
+        mDrama     = apvts.getRawParameterValue("ole_macroDrama");
+        mSides     = apvts.getRawParameterValue("ole_macroSides");
+        mIsla      = apvts.getRawParameterValue("ole_macroIsla");
     }
 
     juce::String getEngineId() const override {return "Ole";}
@@ -117,9 +294,24 @@ private:
     static constexpr int kV=18;
     double sr=44100; int nv=0,ac=0; float lastL=0,lastR=0;
     std::array<OleAdapterVoice,kV> voices;
-    std::atomic<float>*bright=nullptr,*damp=nullptr,*sympA=nullptr;
+    // Aunt levels
+    std::atomic<float>*a1Level=nullptr,*a2Level=nullptr,*a3Level=nullptr;
+    // Aunt 1 character
+    std::atomic<float>*a1StrumRate=nullptr,*a1Bright=nullptr;
+    // Aunt 2 character
+    std::atomic<float>*a2CoinPress=nullptr,*a2GourdSize=nullptr;
+    // Aunt 3 character
+    std::atomic<float>*a3Tremolo=nullptr,*a3Bright=nullptr;
+    // Shared waveguide
+    std::atomic<float>*damp=nullptr,*sympA=nullptr;
     std::atomic<float>*driftR=nullptr,*driftD=nullptr;
+    // Alliance
+    std::atomic<float>*allianceCfg=nullptr,*allianceBlend=nullptr;
+    // Husband levels
+    std::atomic<float>*hOudLvl=nullptr,*hBouzLvl=nullptr,*hPinLvl=nullptr;
+    // Macros
     std::atomic<float>*mFuego=nullptr,*mDrama=nullptr;
+    std::atomic<float>*mSides=nullptr,*mIsla=nullptr;
 };
 
 } // namespace xomnibus
