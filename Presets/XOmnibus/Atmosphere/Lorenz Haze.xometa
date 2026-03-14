@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Lorenz Haze",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ouroboros"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Lorenz attractor with moderate chaos on a loose leash. Evolving pad with chaotic micro-movements that never repeat.",
+  "tags": [
+    "pad",
+    "evolving",
+    "chaotic",
+    "atmospheric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-10",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0,
+      "ouro_rate": 165.0,
+      "ouro_chaosIndex": 0.45,
+      "ouro_leash": 0.25,
+      "ouro_theta": 0.5,
+      "ouro_phi": -0.3,
+      "ouro_damping": 0.4,
+      "ouro_injection": 0.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.5,
+    "movement": 0.7,
+    "density": 0.35,
+    "space": 0.65,
+    "aggression": 0.15
+  }
+}

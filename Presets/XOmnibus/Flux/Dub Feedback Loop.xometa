@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Dub Feedback Loop",
+  "mood": "Flux",
+  "engines": [
+    "Overdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Unpredictable echo fx motion with deep dub echo.",
+  "tags": [
+    "wet",
+    "triangle",
+    "verdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "Overdub",
+    "sourceCategory": "Echo FX",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overdub": {
+      "dub_oscWave": 1.0,
+      "dub_noiseLevel": 0.1,
+      "dub_filterCutoff": 3500.0,
+      "dub_filterReso": 0.15,
+      "dub_attack": 0.02,
+      "dub_sustain": 0.6,
+      "dub_release": 1.5,
+      "dub_delayFeedback": 0.75,
+      "dub_delayWear": 0.3,
+      "dub_delayWow": 0.15,
+      "dub_sendLevel": 0.65,
+      "dub_returnLevel": 0.8,
+      "dub_reverbSize": 0.5,
+      "dub_reverbMix": 0.3
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.748,
+    "warmth": 0.092,
+    "movement": 0.275,
+    "density": 0.3,
+    "space": 0.621,
+    "aggression": 0.078
+  }
+}

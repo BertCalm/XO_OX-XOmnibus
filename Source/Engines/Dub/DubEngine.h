@@ -678,6 +678,9 @@ public:
             // D006: channel pressure → aftertouch (applied to send VCA level below)
             else if (msg.isChannelPressure())
                 aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
+            // D006: CC#1 mod wheel → send VCA boost (+0–0.35, more signal into echo/reverb chain)
+            else if (msg.isController() && msg.getControllerNumber() == 1)
+                modWheelAmount = msg.getControllerValue() / 127.0f;
         }
 
         // D006: smooth aftertouch pressure and compute modulation value
@@ -813,7 +816,8 @@ public:
             // Sensitivity 0.3: full pressure adds up to +30% more signal into
             // the tape delay / spring reverb send chain — classic dub technique of
             // pressing a key harder to push more signal into the echo returns.
-            const float effectiveSendLvl = std::min (1.0f, sendLvl + atPressure * 0.3f);
+            // D006: mod wheel also boosts send VCA (+0–0.35) — performance send control.
+            const float effectiveSendLvl = std::min (1.0f, sendLvl + atPressure * 0.3f + modWheelAmount * 0.35f);
             // Send bus: voice output × effective send level
             sendBufL[static_cast<size_t> (sample)] = mixL * effectiveSendLvl;
             sendBufR[static_cast<size_t> (sample)] = mixR * effectiveSendLvl;
@@ -1274,6 +1278,9 @@ private:
 
     // D006: CS-80-inspired poly aftertouch (channel pressure → send VCA level)
     PolyAftertouch aftertouch;
+
+    // ---- D006 Mod wheel — CC#1 boosts send VCA amount (+0–0.35, more echo send) ----
+    float modWheelAmount = 0.0f;
 
     // Coupling state
     float envelopeOutput = 0.0f;

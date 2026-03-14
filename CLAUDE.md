@@ -10,7 +10,7 @@ and mutate into sounds impossible with any single synth. 22 engines are integrat
 - **Engine modules:** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSTINATO, OPENSKY, OCEANDEEP, OWLFISH, OUIE
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
-- **Presets:** 1,610 factory presets in `.xometa` format, 6 mood categories, 6D Sonic DNA
+- **Presets:** 1,839 factory presets in `.xometa` format, 6 mood categories, 6D Sonic DNA
 - **Formats:** AU, Standalone (macOS); AUv3, Standalone (iOS); VST3 (v2)
 - **Design:** Gallery Model — warm white shell frames engine accent colors. Light mode default.
 
@@ -229,16 +229,16 @@ New engines are designed as standalone instruments first, then integrated into X
 ### Critical Fleet-Wide Findings
 
 - **Seance score range**: 7.2/10 est. (OBLIQUE, recovered) to 8/8 PASS + 8.6/10 (ORGANON, ORACLE)
-- **Preset expansion ongoing**: all engines now have at least 1 preset; thin coverage engines expanded in Rounds 8–9
-- **D006 aftertouch coverage**: 21/23 engines now have aftertouch (batch 1–4 complete); Ouroboros + Obscura pending Round 11A
-- **D006 mod wheel coverage**: ~9/23 engines have mod wheel (Round 7A); ~14 remain (Round 11 target)
+- **Preset expansion ongoing**: all engines now have at least 1 preset; thin coverage engines expanded in Rounds 8–11
+- **D006 aftertouch coverage**: 22/23 engines have aftertouch (Optic exempt as visual engine)
+- **D006 mod wheel coverage**: **22/22 MIDI-capable engines — FULLY RESOLVED** (Round 12C completed the last 7 engines)
 - **D001 filter envelopes**: RESOLVED — all engines fleet-wide have velocity-scaled filter envelopes (Round 9E)
 - **D004 dead params**: RESOLVED — all declared parameters wired to DSP (Round 3B)
 - **D005 LFO breathing**: RESOLVED — all engines have autonomous modulation with rate floor ≤ 0.01 Hz (Round 5A + engine recoveries)
 
 ### Prism Sweep Status (2026-03-14)
 
-The Prism Sweep is a 12-round progressive quality pass initiated after all 24 seances. **10 rounds complete.** Master index: `Docs/prism_sweep_index.md`
+The Prism Sweep is a 12-round progressive quality pass initiated after all 24 seances. **ALL 12 ROUNDS COMPLETE.** Master index: `Docs/prism_sweep_index.md`
 
 **Completed fixes (Rounds 1–7):**
 - ✅ **5 P0 bugs fixed** (Obsidian R-channel, Obsidian formant ID, Osteria warmth L-only, Origami STFT guard, Overworld coupling output) — `Docs/p0_fixes_applied.md`
@@ -281,6 +281,31 @@ The Prism Sweep is a 12-round progressive quality pass initiated after all 24 se
 - ✅ **Bob aggression expansion**: 10 new high-drive presets closing Oblong aggression gap — `Docs/bob_aggression_expansion.md`
 - ✅ **Drift FX gap analysis**: Architectural debt documented — 1,353 standalone FX params not exposed in DriftEngine adapter — `Docs/drift_fx_gap_analysis.md`
 - ✅ **D006 aftertouch batch 4** (Bob, Bite, Drift, Onset, Opal → 21/23 total) — `Docs/d006_aftertouch_fixes.md`
+
+**Completed fixes (Round 11):**
+- ✅ **D006 aftertouch: 22/23 complete** (Ouroboros pre-wired/documented; Obscura forward-ref bug fixed) — `Docs/d006_aftertouch_fixes.md`
+- ✅ **Drift Option B**: TidalPulse + Fracture + Reverb DSP ported from XOdyssey standalone (38→45 params; BREATHE + FRACTURE macros now have real DSP) — `Docs/drift_option_b_implementation.md`
+- ✅ **AudioToBuffer Phase 2**: OpalEngine scaffold — 4 input slots, `opal_externalMix`, `processAudioRoute()` complete — `Docs/audio_to_buffer_phase2.md`
+- ✅ **Oblique legato bug fixed**: unconditional glide → proper `wasAlreadyActive` gate — `Docs/voice_mode_completion_11d.md`
+- ✅ **Orbital voiceMode added**: `orb_voiceMode` (Poly/Mono/Legato) with additive partial phase continuity in legato — `Docs/voice_mode_completion_11d.md`
+- ✅ **Mod wheel: 9→15/22 engines** (ONSET/OPAL/ORGANON/OUROBOROS/OBSCURA/OWLFISH) — `Docs/d006_modwheel_completion_11e.md`
+- ✅ **20 new presets**: 10 Ouroboros (all 4 attractor topologies) + 10 Obscura (first-ever Obscura presets in fleet) — `Docs/ouroboros_obscura_preset_expansion.md`
+- ✅ **18 preset renames**: Bob aggression names elevated (Rubber Spine, Steel Rain, Midnight Weight etc.), XVC kits renamed (Neural Storm, Solar System, Gravity Bend etc.) — `Docs/preset_quality_pass_11h.md`
+- ✅ **DNA fleet audit**: 1805 presets, 100% coverage, health score 88/100, 7 gap-fill presets for Obscura/Obsidian/Osprey — `Docs/sonic_dna_validation_11i.md`
+- ✅ **BUILD PASS + auval PASS**: 5 forward-reference bugs fixed (atPressure scope in Bob/Bite/Onset/Opal/Ouroboros) — `Docs/build_verification_11j.md`
+
+**Completed fixes (Rounds 12A–12L — final round):**
+- ✅ **DNA gap fills**: 8 gap presets for XOwlfish/Obese/OddOscar/Oracle/Osteria; health score 88→~92/100 — `Docs/dna_gap_fill_12a.md`
+- ✅ **Duplicate cleanup**: 57 duplicate names resolved + 313 underscore-field violations fixed; 1,839 presets, **0 duplicates** — `Docs/duplicate_cleanup_12b.md`
+- ✅ **D006 mod wheel: 15→22/22 engines COMPLETE** (Bob/Bite/Dub/Oceanic/Ocelot/Overworld/Osprey) — **D006 FULLY RESOLVED** — `Docs/d006_modwheel_completion_12c.md`
+- ✅ **AudioToBuffer Phase 3 spec**: `IAudioBufferSink` interface, DFS cycle detection, FREEZE state machine fully specified — `Docs/audio_to_buffer_phase3_spec.md`
+- ✅ **New coupling pairs**: OBSCURA→ORGANON, ONSET→ORGANON, OVERWORLD→OBSCURA — 6 new presets — `Docs/coupling_expansion_12e.md`
+- ✅ **Mood distribution**: zero missing engine-mood combinations across all 20 active engines — `Docs/mood_distribution_audit_12f.md`
+- ✅ **XVC advanced guide**: 6 new expert kits (17 total), architecture deep-dive — `Docs/onset_xvc_demo_guide.md` (v1.1)
+- ✅ **Knowledge tree final update**: doctrine resolution status, CTX-003, blessing implementation notes — `Docs/knowledge_tree_update_12i.md`
+- ✅ **BUILD PASS + auval PASS**: all Round 12 source changes verified clean — `Docs/build_verification_12j.md`
+- ✅ **Release readiness gate**: **READY FOR RELEASE** — 22 production engines feature-complete, doctrine-compliant — `Docs/release_readiness_12k.md`
+- ✅ **Prism Sweep final report**: ~5,500-word sweep narrative — `Docs/prism_sweep_final_report.md`
 
 ---
 

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Drift Vowel Bass",
+  "mood": "Foundation",
+  "engines": [
+    "Odyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Deep bass presence with warm character.",
+  "tags": [
+    "formant",
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "Odyssey",
+    "sourceCategory": "Bass",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_oscA_level": 0.85,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_shape": 0.0,
+      "drift_oscB_level": 0.6,
+      "drift_subLevel": 0.3,
+      "drift_filterCutoff": 5000.0,
+      "drift_filterReso": 0.05,
+      "drift_formantMorph": 0.3,
+      "drift_attack": 2.0,
+      "drift_decay": 300.0,
+      "drift_sustain": 0.5,
+      "drift_release": 180.0,
+      "drift_level": -2.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.44,
+    "warmth": 0.217,
+    "movement": 0.0,
+    "density": 0.176,
+    "space": 0.0,
+    "aggression": 0.021
+  }
+}

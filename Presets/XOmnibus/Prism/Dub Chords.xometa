@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Dub Chords",
+  "mood": "Prism",
+  "engines": [
+    "Overdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Focused dub chords tone with warm character.",
+  "tags": [
+    "subby",
+    "sine",
+    "verdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "Overdub",
+    "sourceCategory": "Dub Chords",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overdub": {
+      "dub_oscWave": 0.0,
+      "dub_subLevel": 0.5,
+      "dub_filterCutoff": 8000.0,
+      "dub_attack": 0.01,
+      "dub_sustain": 0.9,
+      "dub_release": 0.2,
+      "dub_lfoRate": 5.0,
+      "dub_lfoDepth": 0.15,
+      "dub_lfoDest": 2.0,
+      "dub_delayTime": 0.375,
+      "dub_delayFeedback": 0.4,
+      "dub_sendLevel": 0.35,
+      "dub_reverbSize": 0.5,
+      "dub_reverbMix": 0.3
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.867,
+    "warmth": 0.322,
+    "movement": 0.385,
+    "density": 0.465,
+    "space": 0.454,
+    "aggression": 0.0
+  }
+}

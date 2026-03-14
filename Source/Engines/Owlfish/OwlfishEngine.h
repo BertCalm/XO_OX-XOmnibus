@@ -98,6 +98,11 @@ public:
             }
             else if (msg.isChannelPressure())
                 aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
+            // D006: mod wheel (CC#1) → mixtur depth (Mixtur-Trautonium subharmonic presence)
+            // Wheel up = deeper subharmonic stack from the Abyss Habitat — the owlfish
+            // descends deeper, expanding its resonant body. Full wheel adds +0.45 to subMix.
+            else if (msg.isController() && msg.getControllerNumber() == 1)
+                modWheelAmount = msg.getControllerValue() / 127.0f;
         }
 
         aftertouch.updateBlock (numSamples);
@@ -107,6 +112,10 @@ public:
         // (sensitivity 0.25). Full pressure adds up to +0.25 to grainDensity (range 0–1),
         // raising cloud from ~10 grains/sec toward ~200 grains/sec. The owlfish hunts harder.
         snapshot.grainDensity = std::clamp (snapshot.grainDensity + atPressure * 0.25f, 0.0f, 1.0f);
+
+        // D006: mod wheel deepens subharmonic mix — full wheel adds +0.45 to subMix.
+        // The owlfish descends deeper into its Mixtur-Trautonium resonant abyss.
+        snapshot.subMix = std::clamp (snapshot.subMix + modWheelAmount * 0.45f, 0.0f, 1.0f);
 
         // Render the organism
         buffer.clear();
@@ -182,9 +191,12 @@ private:
     xomnibus::PolyAftertouch   aftertouch;
     std::vector<float>         outputCacheL, outputCacheR;
 
-    int    lastNoteOn = -1;
-    double sr         = 44100.0;
-    int    maxBlock   = 512;
+    int    lastNoteOn    = -1;
+    double sr            = 44100.0;
+    int    maxBlock      = 512;
+
+    // D006: mod wheel (CC#1) — deepens mixtur subharmonic mix (+0.45 at full wheel)
+    float  modWheelAmount = 0.0f;
 };
 
 } // namespace xowlfish

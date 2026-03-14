@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Snap Morph Fast Gate",
+  "mood": "Flux",
+  "engines": [
+    "OddfeliX",
+    "OddOscar"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "SNAP fast gate on MORPH — rapid transients open/close the evolving wavetable filter.",
+  "tags": [
+    "snap",
+    "morph",
+    "gate",
+    "fast",
+    "flux"
+  ],
+  "macroLabels": [
+    "SNAP RATE",
+    "MORPH FILTER",
+    "COUPLING",
+    "GATE DEPTH"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.52,
+    "movement": 0.92,
+    "density": 0.65,
+    "space": 0.42,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 2,
+      "snap_oscTune": 0.0,
+      "snap_oscShape": 0.5,
+      "snap_filterCutoff": 8500.0,
+      "snap_filterReso": 0.42,
+      "snap_filterEnvAmt": 0.5,
+      "snap_attack": 0.001,
+      "snap_decay": 0.08,
+      "snap_sustain": 0.0,
+      "snap_release": 0.1,
+      "snap_level": 0.75
+    },
+    "OddOscar": {
+      "morph_morph": 0.52,
+      "morph_bloom": 0.72,
+      "morph_decay": 1.5,
+      "morph_sustain": 0.62,
+      "morph_release": 2.0,
+      "morph_filterCutoff": 3500.0,
+      "morph_filterReso": 0.3,
+      "morph_drift": 0.42,
+      "morph_sub": 0.1,
+      "morph_detune": 8.0,
+      "morph_level": 0.7,
+      "morph_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
+        "type": "Amp->Filter",
+        "amount": 0.68
+      }
+    ]
+  },
+  "sequencer": null
+}

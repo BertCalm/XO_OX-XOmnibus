@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Snap Morph Ring",
+  "mood": "Entangled",
+  "engines": [
+    "OddfeliX",
+    "OddOscar"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "SNAP ring-modulates MORPH — transient creates metallic sidebands in the wavetable scan.",
+  "tags": [
+    "snap",
+    "morph",
+    "ring",
+    "metallic",
+    "entangled"
+  ],
+  "macroLabels": [
+    "SNAP CARRIER",
+    "MORPH RING",
+    "MODULATION",
+    "WAVETABLE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.5,
+    "movement": 0.75,
+    "density": 0.65,
+    "space": 0.45,
+    "aggression": 0.58
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 2,
+      "snap_oscTune": 0.0,
+      "snap_oscShape": 0.5,
+      "snap_filterCutoff": 8000.0,
+      "snap_filterReso": 0.45,
+      "snap_filterEnvAmt": 0.5,
+      "snap_attack": 0.001,
+      "snap_decay": 0.12,
+      "snap_sustain": 0.0,
+      "snap_release": 0.1,
+      "snap_level": 0.75
+    },
+    "OddOscar": {
+      "morph_morph": 0.52,
+      "morph_bloom": 0.75,
+      "morph_decay": 2.5,
+      "morph_sustain": 0.65,
+      "morph_release": 2.0,
+      "morph_filterCutoff": 6500.0,
+      "morph_filterReso": 0.15,
+      "morph_drift": 0.42,
+      "morph_sub": 0.1,
+      "morph_detune": 8.0,
+      "morph_level": 0.7,
+      "morph_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "OddOscar",
+        "type": "Audio->Ring",
+        "amount": 0.52
+      }
+    ]
+  },
+  "sequencer": null
+}

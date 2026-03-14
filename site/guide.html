@@ -3,8 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The XO_OX Field Guide — Deep dives into synthesis, sound design, and the aquatic mythology behind twenty-six character instruments.">
+<meta property="og:title" content="XO_OX Designs — Character Synthesis">
+<meta property="og:description" content="Twenty-six character synth engines in one free, open-source instrument. Each engine is a creature. Together they are an ecosystem.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://xo-ox.org">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="XO_OX Designs — Character Synthesis">
+<meta name="twitter:description" content="Twenty-six synth engines. Sixteen hundred presets. Free & open-source.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='4' y='24' font-size='24' fill='%23E9C46A'>X</text></svg>">
 <title>The XO_OX Field Guide — Character Synthesis</title>
-<meta name="description" content="Long-form essays on every XOmnibus engine — how they work, why they exist, and the real history of the synthesis techniques behind them.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -533,7 +541,7 @@ footer {
     <a href="guide.html" class="active">Field Guide</a>
     <a href="index.html#aquarium">Aquarium</a>
     <a href="index.html#community">Community</a>
-    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" rel="noopener">GitHub</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
   </div>
 </nav>
 
@@ -548,25 +556,25 @@ footer {
   </p>
   <p class="guide-hero-lore">
     This is the story of <span class="felix">feliX</span> and <span class="oscar">Oscar</span> —
-    a neon tetra and an axolotl who became twenty instruments, a thousand presets,
+    a neon tetra and an axolotl who became twenty-six instruments, sixteen hundred presets,
     and one very strange aquarium.
   </p>
 
   <div class="guide-stats">
     <div class="guide-stat">
-      <div class="guide-stat-value">13</div>
+      <div class="guide-stat-value">14</div>
       <div class="guide-stat-label">Published Posts</div>
     </div>
     <div class="guide-stat">
-      <div class="guide-stat-value">42k</div>
+      <div class="guide-stat-value">47k</div>
       <div class="guide-stat-label">Words</div>
     </div>
     <div class="guide-stat">
-      <div class="guide-stat-value">9</div>
+      <div class="guide-stat-value">10</div>
       <div class="guide-stat-label">Engines Covered</div>
     </div>
     <div class="guide-stat">
-      <div class="guide-stat-value">17</div>
+      <div class="guide-stat-value">16</div>
       <div class="guide-stat-label">Coming Soon</div>
     </div>
   </div>
@@ -691,6 +699,16 @@ const enginePosts = [
     excerpt: "In 1947, a Hungarian-British physicist named Dennis Gabor published a paper in the Journal of the IEE.",
     tags: ["Engine", "Granular", "History"],
   },
+  {
+    num: "18",
+    title: "The Reef That Remembers",
+    subtitle: "Oracle",
+    engine: "Oracle — Stochastic Synthesis + Maqam Tuning",
+    color: "#4B0082",
+    excerpt: "There is no other instrument like this. Not because it is complicated, but because it combines two ideas that have never shared a circuit before.",
+    tags: ["Engine", "GENDY", "Maqam", "Xenakis"],
+    url: "guide-oracle.html",
+  },
 ];
 
 const archPosts = [
@@ -729,7 +747,6 @@ const comingPosts = [
   { num: "15", title: "The Casio Heresy", engine: "Obsidian", color: "#E8E0D8", desc: "Phase distortion — Casio CZ vs Yamaha DX" },
   { num: "16", title: "Folding the West Coast", engine: "Origami", color: "#E63946", desc: "Wavefolding — Buchla, Serge, and counterculture synthesis" },
   { num: "17", title: "Bodies That Ring", engine: "Obscura", color: "#8A9BA8", desc: "Physical modeling — Karplus-Strong and the dream of virtual instruments" },
-  { num: "18", title: "The Voice Inside the Machine", engine: "Oracle", color: "#4B0082", desc: "Vocoders, envelope followers, and Kraftwerk's speech" },
   { num: "19", title: "When Circuits Breathe", engine: "Organon", color: "#00CED1", desc: "Bio-algorithmic synthesis — emergence and living systems" },
   { num: "20", title: "The Sound That Eats Itself", engine: "Ouroboros", color: "#FF2D2D", desc: "Feedback systems — chaos theory and Steve Reich's tape loops" },
   { num: "21", title: "The Tidal Score", engine: "Oceanic", color: "#00B4A0", desc: "Spectral processing — Risset, IRCAM, and the physics of water" },

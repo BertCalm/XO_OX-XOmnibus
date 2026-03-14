@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Fat Mono Run",
+  "mood": "Flux",
+  "engines": [
+    "Obese"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "FAT mono with light glide — massive single-voice lead that slides through harmonics.",
+  "tags": [
+    "fat",
+    "mono",
+    "glide",
+    "lead",
+    "flux"
+  ],
+  "macroLabels": [
+    "FILTER OPEN",
+    "GLIDE",
+    "DENSITY",
+    "MORPH"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.65,
+    "movement": 0.7,
+    "density": 0.85,
+    "space": 0.35,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Obese": {
+      "fat_morph": 0.5,
+      "fat_mojo": 0.4,
+      "fat_subLevel": 0.25,
+      "fat_subOct": 0,
+      "fat_groupMix": 0.85,
+      "fat_detune": 6.0,
+      "fat_stereoWidth": 0.65,
+      "fat_ampAttack": 0.005,
+      "fat_ampDecay": 0.6,
+      "fat_ampSustain": 0.65,
+      "fat_ampRelease": 1.0,
+      "fat_fltCutoff": 5000.0,
+      "fat_fltReso": 0.3,
+      "fat_fltDrive": 0.05,
+      "fat_fltKeyTrack": 0.4,
+      "fat_fltEnvAmt": 0.3,
+      "fat_fltEnvAttack": 0.01,
+      "fat_fltEnvDecay": 0.5,
+      "fat_satDrive": 0.08,
+      "fat_crushDepth": 16.0,
+      "fat_crushRate": 44100.0,
+      "fat_arpOn": 0,
+      "fat_arpPattern": 0,
+      "fat_arpRate": 1,
+      "fat_arpOctaves": 0,
+      "fat_arpGate": 0.5,
+      "fat_arpTempo": 120.0,
+      "fat_level": 0.72,
+      "fat_voiceMode": 1,
+      "fat_glide": 0.08,
+      "fat_polyphony": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

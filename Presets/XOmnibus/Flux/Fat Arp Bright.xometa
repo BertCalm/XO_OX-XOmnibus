@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Fat Arp Bright",
+  "mood": "Flux",
+  "engines": [
+    "Obese"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "FAT arp with bright filter wide open — spectral richness climbing through octaves.",
+  "tags": [
+    "fat",
+    "arp",
+    "bright",
+    "flux",
+    "melodic"
+  ],
+  "macroLabels": [
+    "ARP RATE",
+    "OCTAVES",
+    "MORPH",
+    "FILTER"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.5,
+    "movement": 0.85,
+    "density": 0.8,
+    "space": 0.4,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Obese": {
+      "fat_morph": 0.7,
+      "fat_mojo": 0.4,
+      "fat_subLevel": 0.3,
+      "fat_subOct": 0,
+      "fat_groupMix": 0.85,
+      "fat_detune": 10.0,
+      "fat_stereoWidth": 0.65,
+      "fat_ampAttack": 0.005,
+      "fat_ampDecay": 0.6,
+      "fat_ampSustain": 0.5,
+      "fat_ampRelease": 1.0,
+      "fat_fltCutoff": 8000.0,
+      "fat_fltReso": 0.25,
+      "fat_fltDrive": 0.05,
+      "fat_fltKeyTrack": 0.4,
+      "fat_fltEnvAmt": 0.15,
+      "fat_fltEnvAttack": 0.01,
+      "fat_fltEnvDecay": 0.5,
+      "fat_satDrive": 0.08,
+      "fat_crushDepth": 16.0,
+      "fat_crushRate": 44100.0,
+      "fat_arpOn": 1,
+      "fat_arpPattern": 0,
+      "fat_arpRate": 2,
+      "fat_arpOctaves": 1,
+      "fat_arpGate": 0.5,
+      "fat_arpTempo": 120.0,
+      "fat_level": 0.72,
+      "fat_voiceMode": 0,
+      "fat_glide": 0.0,
+      "fat_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

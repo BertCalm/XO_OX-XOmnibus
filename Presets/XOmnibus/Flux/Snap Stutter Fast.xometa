@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Snap Stutter Fast",
+  "mood": "Flux",
+  "engines": [
+    "OddfeliX"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "SNAP with very fast decay and polyphony — machine-gun transient stutter effect.",
+  "tags": [
+    "snap",
+    "stutter",
+    "fast",
+    "percussion",
+    "flux"
+  ],
+  "macroLabels": [
+    "DECAY",
+    "FILTER CUTOFF",
+    "POLYPHONY",
+    "LEVEL"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.4,
+    "movement": 0.95,
+    "density": 0.5,
+    "space": 0.3,
+    "aggression": 0.75
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 2,
+      "snap_oscTune": 0.0,
+      "snap_oscShape": 0.5,
+      "snap_filterCutoff": 8000.0,
+      "snap_filterReso": 0.4,
+      "snap_filterEnvAmt": 0.7,
+      "snap_attack": 0.0,
+      "snap_decay": 0.05,
+      "snap_sustain": 0.0,
+      "snap_release": 0.03,
+      "snap_level": 0.85
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

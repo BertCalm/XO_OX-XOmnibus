@@ -1486,6 +1486,9 @@ private:
     //    prediction error increases, VFE surprise accelerates belief updates
     PolyAftertouch aftertouch;
 
+    // D006: mod wheel (CC#1) — accelerates entropy rate (metabolicRate +3.0 Hz at full)
+    float modWheelAmount = 0.0f;
+
     // Cached parameter pointers (set by attachParameters, read per block)
     std::atomic<float>* paramMetabolicRate    = nullptr;
     std::atomic<float>* paramEnzymeSelect     = nullptr;

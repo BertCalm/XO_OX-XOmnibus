@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Morph Haze Drone",
+  "mood": "Aether",
+  "engines": [
+    "OddOscar"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MORPH at minimum position with maximum drift — harmonic haze, barely moving, always evolving.",
+  "tags": [
+    "morph",
+    "haze",
+    "drone",
+    "slow",
+    "aether"
+  ],
+  "macroLabels": [
+    "MORPH",
+    "DRIFT",
+    "FILTER",
+    "LEVEL"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.55,
+    "movement": 0.18,
+    "density": 0.65,
+    "space": 0.82,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.1,
+      "morph_bloom": 0.9,
+      "morph_decay": 9.0,
+      "morph_sustain": 0.5,
+      "morph_release": 8.0,
+      "morph_filterCutoff": 3500.0,
+      "morph_filterReso": 0.15,
+      "morph_drift": 0.8,
+      "morph_sub": 0.1,
+      "morph_detune": 12.0,
+      "morph_level": 0.7,
+      "morph_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

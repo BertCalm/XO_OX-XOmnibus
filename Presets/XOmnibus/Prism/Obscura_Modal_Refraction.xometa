@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "name": "Modal Refraction",
+  "mood": "Prism",
+  "engines": ["Obscura"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "High stiffness, low damping — the physical chain rings with pronounced modal peaks. Periodic boundary creates standing waves. Bright inharmonic partials scattered like light through a prism.",
+  "tags": ["prism", "bright", "modal", "inharmonic", "physical", "ringing"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.2,
+    "movement": 0.28,
+    "density": 0.38,
+    "space": 0.55,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_stiffness": 0.88,
+      "obscura_damping": 0.04,
+      "obscura_nonlinear": 0.08,
+      "obscura_excitePos": 0.12,
+      "obscura_exciteWidth": 0.18,
+      "obscura_scanWidth": 0.52,
+      "obscura_boundary": 2,
+      "obscura_sustain": 0.3,
+      "obscura_level": 0.8,
+      "obscura_ampAttack": 0.005,
+      "obscura_ampDecay": 0.8,
+      "obscura_ampSustain": 0.0,
+      "obscura_ampRelease": 2.5,
+      "obscura_physEnvAttack": 0.02,
+      "obscura_physEnvDecay": 1.2,
+      "obscura_physEnvSustain": 0.0,
+      "obscura_physEnvRelease": 2.0,
+      "obscura_lfo1Rate": 0.0,
+      "obscura_lfo1Depth": 0.0,
+      "obscura_lfo1Shape": 0,
+      "obscura_lfo2Rate": 0.0,
+      "obscura_lfo2Depth": 0.0,
+      "obscura_lfo2Shape": 0,
+      "obscura_voiceMode": 0,
+      "obscura_glide": 0.0,
+      "obscura_initShape": 0,
+      "obscura_macroCharacter": 0.0,
+      "obscura_macroMovement": 0.0,
+      "obscura_macroCoupling": 0.0,
+      "obscura_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

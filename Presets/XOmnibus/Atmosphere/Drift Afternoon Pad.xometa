@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "name": "Drift Afternoon Pad",
+  "mood": "Atmosphere",
+  "engines": [
+    "Odyssey"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "DRIFT in afternoon mode — warm filter, medium shimmer, gentle drift. Late sun atmosphere.",
+  "tags": [
+    "drift",
+    "afternoon",
+    "warm",
+    "ambient",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "SHIMMER",
+    "WARMTH",
+    "FILTER",
+    "DRIFT"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.7,
+    "movement": 0.3,
+    "density": 0.58,
+    "space": 0.72,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 0,
+      "drift_oscA_shape": 0,
+      "drift_oscA_tune": 0.0,
+      "drift_oscA_level": 0.7,
+      "drift_oscA_detune": 0.3,
+      "drift_oscA_pw": 0.5,
+      "drift_oscA_fmDepth": 0.0,
+      "drift_oscB_mode": 0,
+      "drift_oscB_shape": 1,
+      "drift_oscB_tune": 7.0,
+      "drift_oscB_level": 0.4,
+      "drift_oscB_detune": 0.3,
+      "drift_oscB_pw": 0.5,
+      "drift_oscB_fmDepth": 0.0,
+      "drift_subLevel": 0.0,
+      "drift_noiseLevel": 0.0,
+      "drift_hazeAmount": 0.15,
+      "drift_filterCutoff": 5500.0,
+      "drift_filterReso": 0.08,
+      "drift_filterSlope": 0,
+      "drift_filterEnvAmt": 0.0,
+      "drift_formantMorph": 0.5,
+      "drift_formantMix": 0.0,
+      "drift_shimmerAmount": 0.45,
+      "drift_shimmerTone": 0.62,
+      "drift_attack": 2.0,
+      "drift_decay": 7.0,
+      "drift_sustain": 0.62,
+      "drift_release": 5.0,
+      "drift_lfoRate": 0.055,
+      "drift_lfoDepth": 0.03,
+      "drift_lfoDest": 0,
+      "drift_driftDepth": 0.42,
+      "drift_driftRate": 0.04,
+      "drift_level": 0.6,
+      "drift_voiceMode": 0,
+      "drift_glide": 0.0,
+      "drift_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

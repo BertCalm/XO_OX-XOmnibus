@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Drift Warmth",
+  "mood": "Atmosphere",
+  "engines": [
+    "Odyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Expansive pads atmosphere with voyager drift.",
+  "tags": [
+    "drifty",
+    "saturated",
+    "chorus",
+    "slow-attack"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "Odyssey",
+    "sourceCategory": "Pads",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 1.0,
+      "drift_oscA_level": 0.6,
+      "drift_oscA_pw": 0.6,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_shape": 0.0,
+      "drift_oscB_level": 0.4,
+      "drift_oscB_tune": 7.0,
+      "drift_hazeAmount": 0.3,
+      "drift_filterCutoff": 2500.0,
+      "drift_filterReso": 0.2,
+      "drift_attack": 250.0,
+      "drift_sustain": 0.7,
+      "drift_release": 1500.0,
+      "drift_driftDepth": 0.3,
+      "drift_level": -3.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.384,
+    "warmth": 0.289,
+    "movement": 0.0,
+    "density": 0.103,
+    "space": 0.275,
+    "aggression": 0.144
+  }
+}

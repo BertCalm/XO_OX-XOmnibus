@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Snap Wood Block",
+  "mood": "Foundation",
+  "engines": [
+    "OddfeliX"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "SNAP tuned for a wooden strike — mid-range oscillator, short decay, moderate filter.",
+  "tags": [
+    "snap",
+    "wood",
+    "percussion",
+    "melodic",
+    "foundation"
+  ],
+  "macroLabels": [
+    "TUNE",
+    "FILTER",
+    "DECAY",
+    "LEVEL"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.55,
+    "movement": 0.65,
+    "density": 0.5,
+    "space": 0.3,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 1,
+      "snap_oscTune": -5.0,
+      "snap_oscShape": 0.5,
+      "snap_filterCutoff": 3000.0,
+      "snap_filterReso": 0.4,
+      "snap_filterEnvAmt": 0.55,
+      "snap_attack": 0.001,
+      "snap_decay": 0.18,
+      "snap_sustain": 0.0,
+      "snap_release": 0.1,
+      "snap_level": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

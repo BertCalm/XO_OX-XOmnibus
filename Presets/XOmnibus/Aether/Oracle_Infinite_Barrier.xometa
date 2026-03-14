@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "name": "Infinite Barrier",
+  "mood": "Aether",
+  "engines": ["Oracle"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum elasticity, minimum gravity — the stochastic barriers never collapse, holding each note in an unresolved probability cloud. Very slow time-step. A prophecy that never arrives.",
+  "tags": ["aether", "ambient", "stochastic", "drone", "slow", "evolving", "prophecy"],
+  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.5,
+    "movement": 0.18,
+    "density": 0.28,
+    "space": 0.92,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_breakpoints": 6,
+      "oracle_timeStep": 0.55,
+      "oracle_ampStep": 0.04,
+      "oracle_distribution": 0.35,
+      "oracle_barrierElasticity": 0.98,
+      "oracle_maqam": 0,
+      "oracle_gravity": 0.03,
+      "oracle_drift": 0.35,
+      "oracle_level": 0.72,
+      "oracle_ampAttack": 2.5,
+      "oracle_ampDecay": 8.0,
+      "oracle_ampSustain": 0.65,
+      "oracle_ampRelease": 6.0,
+      "oracle_stochEnvAttack": 1.5,
+      "oracle_stochEnvDecay": 5.0,
+      "oracle_stochEnvSustain": 0.7,
+      "oracle_stochEnvRelease": 4.5,
+      "oracle_lfo1Rate": 0.02,
+      "oracle_lfo1Depth": 0.12,
+      "oracle_lfo1Shape": 2,
+      "oracle_lfo2Rate": 0.008,
+      "oracle_lfo2Depth": 0.08,
+      "oracle_lfo2Shape": 2,
+      "oracle_voiceMode": 0,
+      "oracle_glide": 0.6,
+      "oracle_macroProphecy": 0.0,
+      "oracle_macroEvolution": 0.0,
+      "oracle_macroGravity": 0.0,
+      "oracle_macroDrift": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

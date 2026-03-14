@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Drift Pluck Bass",
+  "mood": "Foundation",
+  "engines": [
+    "Odyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Solid, grounding bass tone with warm character.",
+  "tags": [
+    "dyssey"
+  ],
+  "macroLabels": [
+    "JOURNEY",
+    "BREATHE",
+    "BLOOM",
+    "FRACTURE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-08",
+  "legacy": {
+    "sourceInstrument": "Odyssey",
+    "sourceCategory": "Bass",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_shape": 0.0,
+      "drift_oscA_level": 0.85,
+      "drift_subLevel": 0.3,
+      "drift_filterCutoff": 1500.0,
+      "drift_filterReso": 0.2,
+      "drift_filterSlope": 1.0,
+      "drift_attack": 1.0,
+      "drift_decay": 200.0,
+      "drift_sustain": 0.2,
+      "drift_release": 150.0,
+      "drift_filterEnvAmt": 0.5,
+      "drift_level": -2.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.344,
+    "warmth": 0.107,
+    "movement": 0.0,
+    "density": 0.096,
+    "space": 0.0,
+    "aggression": 0.083
+  }
+}

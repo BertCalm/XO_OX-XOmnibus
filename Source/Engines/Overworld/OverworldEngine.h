@@ -259,7 +259,8 @@ public:
 
         const float effectiveCrushMix  = juce::jlimit(0.0f, 1.0f, snap.crushMix  + macCrush  * 0.85f);
         const float effectiveGlitchAmt = juce::jlimit(0.0f, 1.0f, snap.glitchAmount + macGlitch * 0.9f);
-        const float effectiveGlitchMix = juce::jlimit(0.0f, 1.0f, snap.glitchMix   + macGlitch * 0.8f);
+        // D006: mod wheel adds up to +0.4 to glitch mix (CC#1 introduces chip artifacts progressively)
+        const float effectiveGlitchMix = juce::jlimit(0.0f, 1.0f, snap.glitchMix   + macGlitch * 0.8f + modWheelAmount * 0.4f);
         const float effectiveEchoMix   = juce::jlimit(0.0f, 1.0f, snap.echoMix     + macSpace  * 0.7f);
 
         // D001: filter envelope — simple one-pole decay tracks note-on velocity.
@@ -320,6 +321,9 @@ public:
                 voicePool.allNotesOff();
             else if (msg.isChannelPressure())
                 aftertouch.setChannelPressure(msg.getChannelPressureValue() / 127.0f);
+            // D006: CC#1 mod wheel → glitch mix boost (+0–0.4, introduces chip artifacts progressively)
+            else if (msg.isController() && msg.getControllerNumber() == 1)
+                modWheelAmount = msg.getControllerValue() / 127.0f;
         }
 
         aftertouch.updateBlock(numSamples);
@@ -529,6 +533,9 @@ private:
     xoverworld::FIREcho     echo;
     xoverworld::BitCrusher  crusher;
     PolyAftertouch          aftertouch;
+
+    // ---- D006 Mod wheel — CC#1 increases glitch mix (+0–0.4, chip artifacts progressively) ----
+    float modWheelAmount = 0.0f;
 
     float sr         = 44100.0f;
     float eraSmooth  = 0.0f;

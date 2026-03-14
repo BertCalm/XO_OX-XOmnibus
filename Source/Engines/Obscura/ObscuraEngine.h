@@ -777,7 +777,8 @@ public:
                                            + macroMovement * kMacroMovementToScanWidth,
                                            0.0f, 1.0f);
         float effectiveSustain     = clamp (paramSustainForce
-                                           + macroCoupling * kMacroCouplingToSustain,
+                                           + macroCoupling * kMacroCouplingToSustain
+                                           + modWheelAmount * 0.4f,  // D006: mod wheel = bow speed
                                            0.0f, 1.0f);
 
         //----------------------------------------------------------------------
@@ -843,6 +844,12 @@ public:
             // D006: channel pressure → aftertouch (applied to spring stiffness below)
             else if (msg.isChannelPressure())
                 aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
+            // D006: mod wheel (CC#1) → bow speed / excitation intensity
+            // Wheel up = greater continuous excitation force — the bow presses deeper
+            // into the string, increasing amplitude and sustain of the mass-spring chain.
+            // Full wheel adds +0.4 to sustainForce (sensitivity 0.4).
+            else if (msg.isController() && msg.getControllerNumber() == 1)
+                modWheelAmount = msg.getControllerValue() / 127.0f;
         }
 
         // D006: smooth aftertouch pressure and compute modulation value
@@ -1840,6 +1847,9 @@ private:
 
     // ---- D006 Aftertouch — pressure increases spring stiffness (physics coupling) ----
     PolyAftertouch aftertouch;
+
+    // D006: mod wheel (CC#1) — bow speed / excitation intensity (+0.4 sustainForce at full wheel)
+    float modWheelAmount = 0.0f;
 
     //-- Cached APVTS parameter pointers (ParamSnapshot pattern) ---------------
     // Core physics

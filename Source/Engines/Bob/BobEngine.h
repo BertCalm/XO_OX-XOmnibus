@@ -1159,6 +1159,9 @@ public:
             // D006: channel pressure → aftertouch (applied to filter character below)
             else if (msg.isChannelPressure())
                 aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
+            // D006: CC#1 mod wheel → filter cutoff boost (+0–4000 Hz, opens filter progressively)
+            else if (msg.isController() && msg.getControllerNumber() == 1)
+                modWheelAmount = msg.getControllerValue() / 127.0f;
         }
 
         // Consume coupling accumulators
@@ -1283,6 +1286,8 @@ public:
                 cutoffMod += lfoCutoffMod * 1000.0f;
                 // External coupling
                 cutoffMod += filterMod * 2000.0f;
+                // D006: mod wheel opens filter — CC#1 adds up to +4000 Hz (sensitivity 4000)
+                cutoffMod += modWheelAmount * 4000.0f;
                 // Velocity
                 cutoffMod = clamp (cutoffMod, 20.0f, 18000.0f);
 
@@ -1702,6 +1707,9 @@ private:
 
     // ---- D006 Aftertouch — pressure adds warmth/character on Snout filter ----
     PolyAftertouch aftertouch;
+
+    // ---- D006 Mod wheel — CC#1 opens bob_fltCutoff progressively (+0–4000 Hz) ----
+    float modWheelAmount = 0.0f;
 
     std::vector<float> outputCacheL;
     std::vector<float> outputCacheR;

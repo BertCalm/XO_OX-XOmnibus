@@ -57,6 +57,9 @@ public:
                 voicePool.allNotesOff();
             else if (msg.isChannelPressure())
                 aftertouch.setChannelPressure(msg.getChannelPressureValue() / 127.0f);
+            // D006: CC#1 mod wheel → ecosystem depth boost (+0–0.35, stronger cross-stratum modulation)
+            else if (msg.isController() && msg.getControllerNumber() == 1)
+                modWheelAmount = msg.getControllerValue() / 127.0f;
         }
 
         aftertouch.updateBlock(numSamples);
@@ -65,7 +68,8 @@ public:
         // D006: aftertouch increases ecosystem depth — more cross-stratum coupling under pressure
         // (sensitivity 0.3). Full pressure adds up to +0.3 to ecosystemDepth, thickening the
         // 12-route EcosystemMatrix cross-feed between ocelot habitat strata.
-        snapshot.ecosystemDepth = std::clamp(snapshot.ecosystemDepth + atPressure * 0.3f, 0.0f, 1.0f);
+        // D006: mod wheel also deepens ecosystem (+0–0.35) — strengthens cross-stratum pathways.
+        snapshot.ecosystemDepth = std::clamp(snapshot.ecosystemDepth + atPressure * 0.3f + modWheelAmount * 0.35f, 0.0f, 1.0f);
 
         // 3. Clear buffer and render
         buffer.clear();
@@ -129,6 +133,9 @@ private:
     juce::AudioProcessorValueTreeState* apvtsRef = nullptr;
     double sr = 44100.0;
     int maxBlock = 512;
+
+    // ---- D006 Mod wheel — CC#1 deepens ecosystem cross-stratum modulation (+0–0.35) ----
+    float modWheelAmount = 0.0f;
 };
 
 } // namespace xocelot

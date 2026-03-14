@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "name": "Dub Fat Coupled Bass",
+  "mood": "Entangled",
+  "engines": [
+    "Overdub",
+    "Obese"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "DUB and FAT bass both coupled — DUB filter tracks FAT amp for maximum bass entanglement.",
+  "tags": [
+    "dub",
+    "fat",
+    "bass",
+    "coupled",
+    "entangled"
+  ],
+  "macroLabels": [
+    "DUB FILTER",
+    "FAT AMP",
+    "COUPLING",
+    "DEPTH"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.75,
+    "movement": 0.52,
+    "density": 0.92,
+    "space": 0.42,
+    "aggression": 0.42
+  },
+  "parameters": {
+    "Overdub": {
+      "dub_oscWave": 2,
+      "dub_oscOctave": 0,
+      "dub_oscTune": 0.0,
+      "dub_oscPwm": 0.5,
+      "dub_subLevel": 0.62,
+      "dub_noiseLevel": 0.0,
+      "dub_drift": 0.04,
+      "dub_level": 0.75,
+      "dub_filterMode": 0,
+      "dub_filterCutoff": 650.0,
+      "dub_filterReso": 0.3,
+      "dub_filterEnvAmt": 0.3,
+      "dub_attack": 0.005,
+      "dub_decay": 0.45,
+      "dub_sustain": 0.62,
+      "dub_release": 0.25,
+      "dub_pitchEnvDepth": 0.05,
+      "dub_pitchEnvDecay": 0.015,
+      "dub_lfoRate": 1.0,
+      "dub_lfoDepth": 0.0,
+      "dub_lfoDest": 0,
+      "dub_sendLevel": 0.5,
+      "dub_returnLevel": 0.5,
+      "dub_dryLevel": 0.9,
+      "dub_driveAmount": 1.2,
+      "dub_delayTime": 0.375,
+      "dub_delayFeedback": 0.5,
+      "dub_delayWear": 0.25,
+      "dub_delayWow": 0.1,
+      "dub_delayMix": 0.22,
+      "dub_reverbSize": 0.3,
+      "dub_reverbDamp": 0.5,
+      "dub_reverbMix": 0.15,
+      "dub_voiceMode": 1,
+      "dub_glide": 0.08,
+      "dub_polyphony": 0
+    },
+    "Obese": {
+      "fat_morph": 0.35,
+      "fat_mojo": 0.4,
+      "fat_subLevel": 0.52,
+      "fat_subOct": 1,
+      "fat_groupMix": 0.85,
+      "fat_detune": 10.0,
+      "fat_stereoWidth": 0.65,
+      "fat_ampAttack": 0.01,
+      "fat_ampDecay": 1.0,
+      "fat_ampSustain": 0.8,
+      "fat_ampRelease": 1.0,
+      "fat_fltCutoff": 2200.0,
+      "fat_fltReso": 0.25,
+      "fat_fltDrive": 0.05,
+      "fat_fltKeyTrack": 0.4,
+      "fat_fltEnvAmt": 0.15,
+      "fat_fltEnvAttack": 0.01,
+      "fat_fltEnvDecay": 0.5,
+      "fat_satDrive": 0.08,
+      "fat_crushDepth": 16.0,
+      "fat_crushRate": 44100.0,
+      "fat_arpOn": 0,
+      "fat_arpPattern": 0,
+      "fat_arpRate": 1,
+      "fat_arpOctaves": 0,
+      "fat_arpGate": 0.5,
+      "fat_arpTempo": 120.0,
+      "fat_level": 0.72,
+      "fat_voiceMode": 0,
+      "fat_glide": 0.0,
+      "fat_polyphony": 2
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Overdub",
+        "type": "Amp->Filter",
+        "amount": 0.52
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1082,7 +1082,8 @@ public:
 
         // M2 BITE: feral aggression
         // D006: aftertouch adds up to +0.3 to BITE macro intensity (sensitivity 0.3)
-        const float effectiveBite     = clamp (macroBite + atPressure * 0.3f, 0.0f, 1.0f);
+        // D006: mod wheel adds up to +0.4 to BITE macro depth (CC#1 increases feral bite edge)
+        const float effectiveBite     = clamp (macroBite + atPressure * 0.3f + modWheelAmount * 0.4f, 0.0f, 1.0f);
         const float biteOscMix        = clamp (effOscMix + effectiveBite * 0.4f, 0.0f, 1.0f);
         const float effGnashAmount    = clamp (gnashAmount + effectiveBite * 0.6f, 0.0f, 1.0f);
         const float biteResoMod       = effectiveBite * 0.3f;
@@ -1122,6 +1123,9 @@ public:
             // D006: channel pressure → aftertouch (applied to BITE macro below)
             else if (msg.isChannelPressure())
                 aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
+            // D006: CC#1 mod wheel → BITE macro depth boost (+0–0.4, increases feral bite edge)
+            else if (msg.isController() && msg.getControllerNumber() == 1)
+                modWheelAmount = msg.getControllerValue() / 127.0f;
         }
 
         // Consume coupling accumulators
@@ -2248,6 +2252,9 @@ private:
 
     // ---- D006 Aftertouch — pressure intensifies BITE macro (feral aggression) ----
     PolyAftertouch aftertouch;
+
+    // ---- D006 Mod wheel — CC#1 adds to BITE macro depth (+0–0.4, feral bite edge) ----
+    float modWheelAmount = 0.0f;
 
     // Output cache for coupling reads
     std::vector<float> outputCacheL;

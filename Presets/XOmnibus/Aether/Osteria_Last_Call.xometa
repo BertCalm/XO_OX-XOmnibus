@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "name": "Last Call",
+  "mood": "Aether",
+  "engines": ["Osteria"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The tavern empties — maximum memory, maximum warmth, minimum rhythm and melody. The bass and harmony hold a final note while ocean bleed rises. A closing chord dissolving into the night sea.",
+  "tags": ["aether", "ambient", "tavern", "drone", "warm", "ending", "ocean"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.88,
+    "movement": 0.12,
+    "density": 0.42,
+    "space": 0.88,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_qBassShore": 0.05,
+      "osteria_qHarmShore": 0.08,
+      "osteria_qMelShore": 0.0,
+      "osteria_qRhythmShore": 0.0,
+      "osteria_qElastic": 0.15,
+      "osteria_qStretch": 0.8,
+      "osteria_qMemory": 0.95,
+      "osteria_qSympathy": 0.55,
+      "osteria_bassLevel": 0.75,
+      "osteria_harmLevel": 0.6,
+      "osteria_melLevel": 0.1,
+      "osteria_rhythmLevel": 0.0,
+      "osteria_ensWidth": 0.35,
+      "osteria_blendMode": 0.0,
+      "osteria_tavernMix": 0.12,
+      "osteria_tavernShore": 0.08,
+      "osteria_murmur": 0.05,
+      "osteria_warmth": 0.92,
+      "osteria_oceanBleed": 0.65,
+      "osteria_patina": 0.55,
+      "osteria_porto": 0.45,
+      "osteria_smoke": 0.35,
+      "osteria_filterEnvDepth": 0.08,
+      "osteria_attack": 1.5,
+      "osteria_decay": 6.0,
+      "osteria_sustain": 0.72,
+      "osteria_release": 5.0,
+      "osteria_sessionDelay": 0.35,
+      "osteria_hall": 0.75,
+      "osteria_chorus": 0.1,
+      "osteria_tape": 0.25,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

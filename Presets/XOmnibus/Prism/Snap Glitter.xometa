@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Snap Glitter",
+  "mood": "Prism",
+  "engines": [
+    "OddfeliX"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "SNAP at maximum spectral — high filter, high resonance, short decay. Pure glitter transient.",
+  "tags": [
+    "snap",
+    "glitter",
+    "spectral",
+    "bright",
+    "prism"
+  ],
+  "macroLabels": [
+    "FILTER",
+    "RESONANCE",
+    "DECAY",
+    "TONE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.3,
+    "movement": 0.75,
+    "density": 0.45,
+    "space": 0.35,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 2,
+      "snap_oscTune": 0.0,
+      "snap_oscShape": 0.5,
+      "snap_filterCutoff": 10000.0,
+      "snap_filterReso": 0.55,
+      "snap_filterEnvAmt": 0.75,
+      "snap_attack": 0.001,
+      "snap_decay": 0.08,
+      "snap_sustain": 0.0,
+      "snap_release": 0.1,
+      "snap_level": 0.8
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Snap Cosmic Tick",
+  "mood": "Aether",
+  "engines": [
+    "OddfeliX"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "SNAP at near-zero level with long decay — a cosmic tick, the sound of distant time.",
+  "tags": [
+    "snap",
+    "cosmic",
+    "rare",
+    "transient",
+    "aether"
+  ],
+  "macroLabels": [
+    "RARITY",
+    "DECAY",
+    "FILTER",
+    "LEVEL"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.3,
+    "movement": 0.15,
+    "density": 0.35,
+    "space": 0.92,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 2,
+      "snap_oscTune": 0.0,
+      "snap_oscShape": 0.5,
+      "snap_filterCutoff": 8000.0,
+      "snap_filterReso": 0.2,
+      "snap_filterEnvAmt": 0.5,
+      "snap_attack": 0.001,
+      "snap_decay": 0.2,
+      "snap_sustain": 0.0,
+      "snap_release": 0.4,
+      "snap_level": 0.25
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -869,6 +869,12 @@ public:
             // D006: channel pressure → aftertouch (applied to leash/chaos below)
             else if (message.isChannelPressure())
                 aftertouch.setChannelPressure (message.getChannelPressureValue() / 127.0f);
+            // D006: mod wheel (CC#1) → leash tension
+            // Wheel up = tighter leash on the attractor — pitch snaps closer to
+            // the played note, chaos becomes more musical and controlled.
+            // Wheel down = default free-running chaos. Full wheel adds +0.4 leash.
+            else if (message.isController() && message.getControllerNumber() == 1)
+                modWheelAmount = message.getControllerValue() / 127.0f;
         }
 
         // D006: smooth aftertouch pressure and compute modulation value
@@ -880,8 +886,10 @@ public:
         //----------------------------------------------------------------------
         // D006: aftertouch deepens chaos (sensitivity 0.3) and loosens the leash
         // Full pressure adds up to +0.3 chaos and reduces leash by up to -0.3
+        // D006: mod wheel tightens leash (sensitivity 0.4) — wheel up = more musical pitch control
+        // Wheel creates counterpoint to aftertouch: one loosens chaos, the other reins it in.
         float effectiveChaos = clamp (chaosIndex + couplingChaosModulation + atPressure * 0.3f, 0.0f, 1.0f);
-        float effectiveLeash = clamp (leashAmount - atPressure * 0.3f, 0.0f, 1.0f);
+        float effectiveLeash = clamp (leashAmount - atPressure * 0.3f + modWheelAmount * 0.4f, 0.0f, 1.0f);
 
         //----------------------------------------------------------------------
         // Precompute 3D-to-stereo projection rotation matrix.
@@ -1507,6 +1515,9 @@ private:
 
     // ---- D006 Aftertouch — pressure loosens the leash (more chaos depth) ----
     PolyAftertouch aftertouch;
+
+    // D006: mod wheel (CC#1) — tightens leash tension (+0.4 at full wheel)
+    float modWheelAmount = 0.0f;
 
     //-- Cached parameter pointers (attached once, read per-block) -------------
     std::atomic<float>* paramTopology   = nullptr;

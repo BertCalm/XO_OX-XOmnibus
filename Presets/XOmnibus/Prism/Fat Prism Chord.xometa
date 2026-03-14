@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Fat Prism Chord",
+  "mood": "Prism",
+  "engines": [
+    "Obese"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "FAT with maximum morph for spectral richness — bright chord stabs with full harmonic depth.",
+  "tags": [
+    "fat",
+    "prism",
+    "chord",
+    "bright",
+    "spectral"
+  ],
+  "macroLabels": [
+    "MORPH",
+    "DETUNE",
+    "FILTER",
+    "ATTACK"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.5,
+    "movement": 0.45,
+    "density": 0.85,
+    "space": 0.42,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Obese": {
+      "fat_morph": 0.85,
+      "fat_mojo": 0.3,
+      "fat_subLevel": 0.1,
+      "fat_subOct": 0,
+      "fat_groupMix": 0.85,
+      "fat_detune": 12.0,
+      "fat_stereoWidth": 0.82,
+      "fat_ampAttack": 0.005,
+      "fat_ampDecay": 1.5,
+      "fat_ampSustain": 0.6,
+      "fat_ampRelease": 1.0,
+      "fat_fltCutoff": 8500.0,
+      "fat_fltReso": 0.25,
+      "fat_fltDrive": 0.05,
+      "fat_fltKeyTrack": 0.4,
+      "fat_fltEnvAmt": 0.15,
+      "fat_fltEnvAttack": 0.01,
+      "fat_fltEnvDecay": 0.5,
+      "fat_satDrive": 0.08,
+      "fat_crushDepth": 16.0,
+      "fat_crushRate": 44100.0,
+      "fat_arpOn": 0,
+      "fat_arpPattern": 0,
+      "fat_arpRate": 1,
+      "fat_arpOctaves": 0,
+      "fat_arpGate": 0.5,
+      "fat_arpTempo": 120.0,
+      "fat_level": 0.72,
+      "fat_voiceMode": 0,
+      "fat_glide": 0.0,
+      "fat_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

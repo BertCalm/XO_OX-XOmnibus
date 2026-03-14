@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Morph Prism Scan",
+  "mood": "Prism",
+  "engines": [
+    "OddOscar"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MORPH scanning through the brightest wavetable positions — spectral rainbow as the wavetable moves.",
+  "tags": [
+    "morph",
+    "prism",
+    "scan",
+    "bright",
+    "spectral"
+  ],
+  "macroLabels": [
+    "MORPH",
+    "BLOOM",
+    "FILTER",
+    "DRIFT"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.45,
+    "movement": 0.65,
+    "density": 0.65,
+    "space": 0.4,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.7,
+      "morph_bloom": 0.8,
+      "morph_decay": 1.5,
+      "morph_sustain": 0.6,
+      "morph_release": 2.0,
+      "morph_filterCutoff": 8000.0,
+      "morph_filterReso": 0.2,
+      "morph_drift": 0.4,
+      "morph_sub": 0.1,
+      "morph_detune": 8.0,
+      "morph_level": 0.7,
+      "morph_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

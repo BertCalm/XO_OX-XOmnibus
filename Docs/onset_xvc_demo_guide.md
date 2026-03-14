@@ -160,6 +160,48 @@ All presets live in `Presets/XOmnibus/Flux/Onset/XVC/` except Demo 12 which is i
 
 ---
 
+## Advanced Patterns (Round 12G)
+
+Six presets exploring coupling patterns not covered in the original 12 demos. All live in `Presets/XOmnibus/Flux/Onset/XVC/`.
+
+### Advanced 1 — Tom's Heartbeat
+**File:** `Toms_Heartbeat.xometa`
+**Core route:** `kick_to_tom_pitch: 0.9`, `global_amount: 0.88`, MUTATE 0.3
+**What to listen for:** Tom (V6) sits a perfect fifth above the kick. Every kick hit subtracts up to ~4.9 semitones from the tom pitch (0.9 × 0.88 × 6.0). At full velocity the tom drops nearly five semitones in sympathy — a physical resonance between two drums sharing conceptual mass. MUTATE at 0.3 adds micro-drift to the coupling magnitude, so no two kick-tom interactions are identical. Snare and hats are recessed; the kick-tom dialogue dominates.
+**Experiment:** Raise tom pitch offset (V6) to +6 semitones and let the kick pull it to unison on hard hits — the tom effectively "tunes to" the kick under pressure.
+
+### Advanced 2 — Snare Cascade
+**File:** `Snare_Cascade.xometa`
+**Core routes:** `snare_to_hat_decay: 0.95`, `snare_to_perc_blend: 0.9`, `hat_choke: 1.0`, `global_amount: 0.85`
+**What to listen for:** Maximum snare-to-hat decay means a hard snare hit collapses the closed hat to near-zero decay (effectively muting it). Simultaneously, snare-to-perc pushes V7 (Perc A) from circuit mode (blend 0.08) toward FM algorithm. Both effects fire at the same moment — the entire upper register reshapes on every backbeat. The kit's ceiling collapses on 2 and 4.
+**The key insight:** Both routes are snare-sourced, so the snare controls the full upper layer. Kick has almost no XVC presence in this preset — unusually, the snare is the dominant modulator.
+
+### Advanced 3 — Machine Ghost
+**File:** `Machine_Ghost.xometa`
+**Core routes:** All 4 routes at 0.75–0.95, `hat_choke: 1.0`, `global_amount: 0.92`; all voice levels: 0.15–0.32
+**What to listen for:** Direct attacks are barely audible at these low output levels. What you hear is almost entirely XVC: snare_to_perc_blend pushes V7 (Perc A, blend 0.05, FM algo mode 0) hard into FM self-resonance on every snare, generating ghost events not programmed in the sequence. The kick, hats, clap — all present but recessed. Notes appear that exist only because other notes existed. Program kick, snare, and hats; hear kick, snare, hats, and ghosts.
+**The concept:** This is Machine Ghost Generator behavior (Demo 9) taken further — all voice levels suppressed simultaneously, leaving only the emergent coupling signal. Raise `perc_level` (master) to bring the direct attacks back while keeping ghosts.
+
+### Advanced 4 — Compression Ring
+**File:** `Compression_Ring.xometa`
+**Core routes:** `kick_to_snare_filter: 1.0`, `hat_choke: 1.0`, `global_amount: 0.95`; snare tone starts at 0.18
+**What to listen for:** Snare tone is preset to 0.18 — dark and compressed-sounding. Kick fires and pushes snare tone toward 0.18 + (1.0 × 0.95 × 1.0) = effectively capped at 1.0 on full kicks. The snare brightens on every kick, returning to dark between kicks. This mimics sidechain compression expressed as timbral change rather than volume change. The "pump" is spectral, not dynamic.
+**Use case:** House, techno, and any style where the kick-snare relationship should feel physically connected. The snare literally shares tonal identity with the kick's energy. Hat choke provides hardware cymbal realism on top.
+
+### Advanced 5 — Euclidean Web
+**File:** `Euclidean_Web.xometa`
+**Core routes:** `snare_to_hat_decay: 0.85`, `hat_choke: 1.0`, `global_amount: 0.82`, MUTATE 0.6
+**What to listen for:** This preset isolates the snare→hat-decay path and amplifies it through MUTATE. With MUTATE at 0.6, character and blend on every voice drift stochastically each block. The hat's output amplitude fluctuates with MUTATE, which changes the snare→hat coupling magnitude in turn (because snare peaks are also MUTATE-affected). The result is a MUTATE-mediated indirect feedback: hats influence their own decay variation through the coupling chain. Program an irregular Euclidean hat pattern and the snare timing appears to flex in response.
+**The concept:** Reverse causality via MUTATE. The usual flow is snare→hat. Here, MUTATE-driven hat fluctuation creates the appearance of hat→snare influence through the intermediary of MUTATE-scaled coupling signals. Not true bidirectional XVC — but perceptually, the hats drive the pattern.
+
+### Advanced 6 — Velocity Feedback
+**File:** `Velocity_Feedback.xometa`
+**Core routes:** All 4 routes at 0.45–0.65, `hat_choke: 1.0`, `global_amount: 0.78`, MUTATE 0.2
+**What to listen for:** Because XVC signal strength equals voice output amplitude (which scales with velocity), all coupling amounts are effectively velocity-scaled. At pp (soft): coupling near zero — clean, mechanical, isolated voices. At ff (hard): 0.65 × 0.78 × full amplitude = substantial coupling — kick brightens snare, snare tightens hats, kick bends toms, snare pulls perc toward FM. The same pattern becomes organic under pressure. Velocity IS the coupling macro.
+**Experiment:** Lock your sequencer to full velocity and notice the heavy coupling. Drop all velocities to minimum and hear the same pattern uncoupled. This is the most direct demonstration of the XVC/velocity relationship described in the Performance Tips section.
+
+---
+
 ## Performance Tips
 
 **Using MUTATE with XVC:** Start MUTATE at 0.3–0.5 when XVC is active. Full MUTATE (1.0) with full mesh XVC (all routes at 1.0) creates extremely chaotic behavior that can be hard to control in a performance. Use MUTATE as gradual texture introduction: automate it from 0 to 0.5 over 8 bars for a natural kit evolution.
@@ -213,5 +255,5 @@ When writing new presets with XVC intent, set `global_amount` first (recommend 0
 
 ---
 
-*Document version 1.0 — 2026-03-14*
-*Presets in: `Presets/XOmnibus/Flux/Onset/XVC/` (11 presets) + `Presets/XOmnibus/Entangled/Onset_XVC_Dub_Mesh.xometa` (1 preset)*
+*Document version 1.1 — 2026-03-14 (Round 12G: +6 Advanced Pattern presets)*
+*Presets in: `Presets/XOmnibus/Flux/Onset/XVC/` (17 presets) + `Presets/XOmnibus/Entangled/Onset_XVC_Dub_Mesh.xometa` (1 preset)*

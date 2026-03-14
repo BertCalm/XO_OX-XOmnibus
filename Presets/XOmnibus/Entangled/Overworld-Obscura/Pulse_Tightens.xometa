@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "name": "Pulse Tightens",
+  "mood": "Entangled",
+  "engines": ["Overworld", "Obscura"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Overworld's NES pulse wave barely stiffens Obscura's string — the 8-bit attack nudges the physical model's resonant character at the edge of perception. Each chip note arrives and the string becomes fractionally tighter, fractionally brighter.",
+  "tags": ["coupling", "Overworld-pair", "physical-model", "chip", "whisper", "subtle", "retro"],
+  "macroLabels": ["ERA", "MATERIAL", "COUPLING", "SPACE"],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_era": 0.0,
+      "ow_eraY": 0.0,
+      "ow_voiceMode": 0,
+      "ow_masterVol": 0.65,
+      "ow_masterTune": 0.0,
+      "ow_pulseDuty": 0.5,
+      "ow_pulseSweep": 0.02,
+      "ow_triEnable": 1,
+      "ow_noiseMode": 0,
+      "ow_noisePeriod": 4,
+      "ow_dpcmEnable": 0,
+      "ow_nesMix": 0.85,
+      "ow_fmAlgorithm": 0,
+      "ow_fmFeedback": 0.0,
+      "ow_fmOp1Level": 0.5,
+      "ow_fmOp2Level": 0.3,
+      "ow_fmOp3Level": 0.2,
+      "ow_fmOp4Level": 0.1,
+      "ow_snesAdsr": 0,
+      "ow_ampAttack": 0.004,
+      "ow_ampDecay": 0.3,
+      "ow_ampSustain": 0.7,
+      "ow_ampRelease": 0.4,
+      "ow_reverbMix": 0.05
+    },
+    "Obscura": {
+      "obscura_stiffness": 0.65,
+      "obscura_damping": 0.4,
+      "obscura_nonlinear": 0.1,
+      "obscura_excitePos": 0.2,
+      "obscura_exciteWidth": 0.1,
+      "obscura_scanWidth": 0.7,
+      "obscura_boundary": 0,
+      "obscura_sustain": 0.0,
+      "obscura_level": 0.6,
+      "obscura_ampAttack": 0.004,
+      "obscura_ampDecay": 0.8,
+      "obscura_ampSustain": 0.5,
+      "obscura_ampRelease": 1.5,
+      "obscura_physEnvAttack": 0.002,
+      "obscura_physEnvDecay": 0.65,
+      "obscura_physEnvSustain": 0.55,
+      "obscura_physEnvRelease": 1.2,
+      "obscura_lfo1Rate": 0.2,
+      "obscura_lfo1Depth": 0.06,
+      "obscura_lfo1Shape": 0,
+      "obscura_lfo2Rate": 0.05,
+      "obscura_lfo2Depth": 0.03,
+      "obscura_lfo2Shape": 1,
+      "obscura_voiceMode": 1,
+      "obscura_glide": 0.0,
+      "obscura_initShape": 0,
+      "obscura_macroCharacter": 0.35,
+      "obscura_macroMovement": 0.3,
+      "obscura_macroCoupling": 0.18,
+      "obscura_macroSpace": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Obscura",
+        "type": "Amp->Filter",
+        "amount": 0.2
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.45,
+    "movement": 0.35,
+    "density": 0.42,
+    "space": 0.48,
+    "aggression": 0.15
+  }
+}

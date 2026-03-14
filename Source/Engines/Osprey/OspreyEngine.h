@@ -1004,6 +1004,8 @@ public:
         float lfoOutput = seaStateLFO.process();  // [-1, +1]
         static constexpr float kLfoSeaStateDepth = 0.15f;
         effectiveSeaState = clamp (effectiveSeaState + lfoOutput * kLfoSeaStateDepth, 0.0f, 1.0f);
+        // D006: mod wheel raises sea state / turbulence intensity — CC#1 adds up to +0.4 storm energy
+        effectiveSeaState = clamp (effectiveSeaState + modWheelAmount * 0.4f, 0.0f, 1.0f);
 
         // M4 (SPACE): increases harbor verb wet mix
         float effectiveVerbAmount = clamp (pHarborVerb + macroSpace * 0.4f, 0.0f, 1.0f);
@@ -1138,6 +1140,9 @@ public:
             }
             else if (msg.isChannelPressure())
                 aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
+            // D006: CC#1 mod wheel → sea state / turbulence intensity boost (+0–0.4)
+            else if (msg.isController() && msg.getControllerNumber() == 1)
+                modWheelAmount = msg.getControllerValue() / 127.0f;
         }
 
         aftertouch.updateBlock (numSamples);
@@ -2092,6 +2097,9 @@ private:
 
     // D006: aftertouch handler — CS-80-style channel pressure → shore blend shift
     PolyAftertouch aftertouch;
+
+    // ---- D006 Mod wheel — CC#1 boosts sea state / turbulence intensity (+0–0.4) ----
+    float modWheelAmount = 0.0f;
 
     // D005/D004 fix: OspreyLFO instance to modulate sea state (amplitude breathing).
     // OspreyLFO was fully implemented (Section 2) but never instantiated as a member.

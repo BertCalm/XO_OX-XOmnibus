@@ -440,7 +440,8 @@ public:
         // scatter is a block-constant, so we compute it after updateBlock() below.
         float effectiveSep    = clamp (pSep + macroChar * 0.3f, 0.0f, 1.0f);
         float effectiveAlign  = clamp (pAlign + macroMove * 0.3f, 0.0f, 1.0f);
-        float effectiveCoh    = clamp (pCoh + couplingCohesionMod + macroCoup * 0.3f, 0.0f, 1.0f);
+        // D006: mod wheel boosts cohesion — CC#1 tightens boid school (sensitivity 0.4)
+        float effectiveCoh    = clamp (pCoh + couplingCohesionMod + macroCoup * 0.3f + modWheelAmount * 0.4f, 0.0f, 1.0f);
         float effectiveTeth   = clamp (pTeth, 0.0f, 1.0f);
         float effectiveDamp   = clamp (pDamp + macroSpace * 0.2f, 0.0f, 1.0f);
         int   effectiveFlocks = std::max (1, std::min (4, pFlocks));
@@ -470,6 +471,9 @@ public:
             // D006: channel pressure → aftertouch (applied to particle scatter rate below)
             else if (msg.isChannelPressure())
                 aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
+            // D006: CC#1 mod wheel → boid cohesion boost (+0–0.4, boids school together more)
+            else if (msg.isController() && msg.getControllerNumber() == 1)
+                modWheelAmount = msg.getControllerValue() / 127.0f;
         }
 
         // D006: smooth aftertouch pressure — models the chromatophore rate response.
@@ -1403,6 +1407,9 @@ private:
 
     // D006: CS-80-inspired poly aftertouch (channel pressure → particle scatter rate)
     PolyAftertouch aftertouch;
+
+    // ---- D006 Mod wheel — CC#1 boosts boid cohesion (+0–0.4, boids school together more) ----
+    float modWheelAmount = 0.0f;
 
     // Output cache for coupling reads
     std::vector<float> outputCacheL;

@@ -1611,6 +1611,11 @@ public:
     void receiveAudioBuffer (const AudioRingBuffer& src, int numSamples,
                              float mix, bool frozen) noexcept
     {
+        // `frozen` is reserved for Phase 3 FREEZE state machine integration.
+        // When frozen, this method will hold the blend cache at its last valid
+        // content rather than advancing through the ring. Suppress warning for now.
+        (void) frozen;
+
         if (mix < 0.001f) return;          // external mix off — fast path
         if (src.capacity <= 0)  return;
 

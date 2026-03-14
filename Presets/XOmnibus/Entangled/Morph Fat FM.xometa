@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "name": "Morph Fat FM",
+  "mood": "Entangled",
+  "engines": [
+    "OddOscar",
+    "Obese"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MORPH wavetable position FM-modulates FAT — scanning the wavetable changes the FM character of the dense oscillator stack in real time.",
+  "tags": [
+    "morph",
+    "fat",
+    "fm",
+    "wavetable",
+    "scan",
+    "dynamic",
+    "entangled"
+  ],
+  "macroLabels": [
+    "MORPH SCAN",
+    "FAT FM",
+    "FM DEPTH",
+    "DENSITY"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.7,
+    "density": 0.85,
+    "space": 0.45,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.5,
+      "morph_bloom": 0.8,
+      "morph_decay": 3.5,
+      "morph_sustain": 0.65,
+      "morph_release": 2.0,
+      "morph_filterCutoff": 6000.0,
+      "morph_filterReso": 0.15,
+      "morph_drift": 0.4,
+      "morph_sub": 0.1,
+      "morph_detune": 8.0,
+      "morph_level": 0.7,
+      "morph_polyphony": 4
+    },
+    "Obese": {
+      "fat_morph": 0.5,
+      "fat_mojo": 0.5,
+      "fat_subLevel": 0.35,
+      "fat_subOct": 0,
+      "fat_groupMix": 0.85,
+      "fat_detune": 12.0,
+      "fat_stereoWidth": 0.65,
+      "fat_ampAttack": 0.01,
+      "fat_ampDecay": 1.0,
+      "fat_ampSustain": 0.8,
+      "fat_ampRelease": 1.0,
+      "fat_fltCutoff": 3500.0,
+      "fat_fltReso": 0.2,
+      "fat_fltDrive": 0.05,
+      "fat_fltKeyTrack": 0.4,
+      "fat_fltEnvAmt": 0.15,
+      "fat_fltEnvAttack": 0.01,
+      "fat_fltEnvDecay": 0.5,
+      "fat_satDrive": 0.08,
+      "fat_crushDepth": 16.0,
+      "fat_crushRate": 44100.0,
+      "fat_arpOn": 0,
+      "fat_arpPattern": 0,
+      "fat_arpRate": 1,
+      "fat_arpOctaves": 0,
+      "fat_arpGate": 0.5,
+      "fat_arpTempo": 120.0,
+      "fat_level": 0.72,
+      "fat_voiceMode": 0,
+      "fat_glide": 0.0,
+      "fat_polyphony": 4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Obese",
+        "type": "Audio->FM",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null
+}
