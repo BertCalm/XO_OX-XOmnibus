@@ -93,6 +93,80 @@ ENGINE_DEFS = {
         "style":    "particle_scatter",
         "label":    "OPAL",
     },
+    # Canonical O-prefix engine names
+    "ODDFELIX": {
+        "accent":   (0,   166, 214),     # Neon Tetra Blue
+        "bg_base":  (0,    6,  18),
+        "style":    "angular_cuts",
+        "label":    "ODDFELIX",
+    },
+    "ODDOSCAR": {
+        "accent":   (232, 131, 155),     # Axolotl Gill Pink
+        "bg_base":  (0,   12,  12),
+        "style":    "wave_morph",
+        "label":    "ODDOSCAR",
+    },
+    "OVERDUB": {
+        "accent":   (107, 123,  58),     # Olive
+        "bg_base":  (8,   10,   2),
+        "style":    "tape_streaks",
+        "label":    "OVERDUB",
+    },
+    "ODYSSEY": {
+        "accent":   (123,  45, 139),     # Violet
+        "bg_base":  (8,    0,  18),
+        "style":    "lissajous",
+        "label":    "ODYSSEY",
+    },
+    "OBLONG": {
+        "accent":   (233, 168,  74),     # Amber
+        "bg_base":  (20,  12,   0),
+        "style":    "freq_bands",
+        "label":    "OBLONG",
+    },
+    "OBESE": {
+        "accent":   (255,  20, 147),     # Hot Pink
+        "bg_base":  (18,   0,  10),
+        "style":    "dense_blocks",
+        "label":    "OBESE",
+    },
+    "OVERBITE": {
+        "accent":   (240, 237, 232),     # Fang White
+        "bg_base":  (10,   8,   6),
+        "style":    "angular_cuts",
+        "label":    "OVERBITE",
+    },
+    # Constellation engines
+    "OHM": {
+        "accent":   (135, 174, 115),     # Sage
+        "bg_base":  (6,   12,   4),
+        "style":    "wave_morph",
+        "label":    "OHM",
+    },
+    "ORPHICA": {
+        "accent":   (127, 219, 202),     # Siren Seafoam
+        "bg_base":  (0,   12,  10),
+        "style":    "lissajous",
+        "label":    "ORPHICA",
+    },
+    "OBBLIGATO": {
+        "accent":   (255, 138, 122),     # Rascal Coral
+        "bg_base":  (18,   6,   4),
+        "style":    "freq_bands",
+        "label":    "OBBLIGATO",
+    },
+    "OTTONI": {
+        "accent":   (91,  138, 114),     # Patina
+        "bg_base":  (4,   10,   6),
+        "style":    "freq_bands",
+        "label":    "OTTONI",
+    },
+    "OLE": {
+        "accent":   (201,  55, 122),     # Hibiscus
+        "bg_base":  (14,   2,   8),
+        "style":    "angular_cuts",
+        "label":    "OLE",
+    },
     # Fallback for unknown engines
     "DEFAULT": {
         "accent":   (233, 196, 106),     # XO Gold
