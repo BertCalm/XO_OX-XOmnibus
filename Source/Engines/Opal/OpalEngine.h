@@ -2367,6 +2367,9 @@ private:
     // ---- D006 Aftertouch — pressure increases grain position scatter ----
     PolyAftertouch aftertouch;
 
+    // D006: mod wheel (CC#1) — widens posScatter + pitchScatter for iridescent grain cloud
+    float modWheelAmount = 0.0f;
+
     // Cached coupling output (scalar fallback for block-level coupling)
     float lastSampleL = 0.0f;
     float lastSampleR = 0.0f;

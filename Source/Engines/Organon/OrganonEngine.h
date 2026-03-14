@@ -888,6 +888,12 @@ public:
             // D006: channel pressure → aftertouch (applied to metabolic rate below)
             else if (message.isChannelPressure())
                 aftertouch.setChannelPressure (message.getChannelPressureValue() / 127.0f);
+            // D006: mod wheel (CC#1) → entropy rate acceleration
+            // Wheel up = faster metabolic feeding cycle — the chemotroph ingests
+            // signal more rapidly, belief updates accelerate, and the harmonic
+            // spectrum evolves at a higher rate. Full wheel adds +3.0 Hz.
+            else if (message.isController() && message.getControllerNumber() == 1)
+                modWheelAmount = message.getControllerValue() / 127.0f;
         }
 
         // D006: smooth aftertouch pressure and compute modulation value
@@ -903,6 +909,10 @@ public:
         // D006: aftertouch accelerates metabolic rate — sensitivity 0.25 × range 9.9
         // Full pressure adds up to +2.5 Hz metabolic rate (from 1.0 Hz default toward faster feeding)
         metabolicRate = std::clamp (metabolicRate + atPressure * 0.25f * 9.9f, 0.1f, 10.0f);
+        // D006: mod wheel accelerates entropy rate — sensitivity 3.0 Hz
+        // Full wheel adds +3.0 Hz to metabolicRate: organism feeds on signal faster,
+        // belief updates quicken, and harmonic spectrum evolves more rapidly.
+        metabolicRate = std::clamp (metabolicRate + modWheelAmount * 3.0f, 0.1f, 10.0f);
 
         // D006: aftertouch increases entropic free energy — sensitivity 0.2
         // Channel pressure increases the signal flux feeding the EntropyAnalyzer: the organism
