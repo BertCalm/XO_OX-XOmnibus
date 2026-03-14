@@ -54,6 +54,7 @@ ENGINES = [
     "oceanic",
     "optic",
     "oblique",
+    "ombre",
 ]
 
 ENGINE_DISPLAY = {
@@ -77,6 +78,7 @@ ENGINE_DISPLAY = {
     "oceanic": "Oceanic",
     "optic": "Optic",
     "oblique": "Oblique",
+    "ombre": "Ombre",
 }
 
 

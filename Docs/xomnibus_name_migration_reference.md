@@ -30,7 +30,7 @@ for preset compatibility.
 ### Engines that did NOT change
 These were already O-prefix from birth:
 - ONSET, OVERWORLD, OPAL, ORGANON, OUROBOROS, ORBITAL
-- OBSIDIAN, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OMBRE
+- OBSIDIAN, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OPTIC, OBLIQUE, OMBRE
 
 ---
 

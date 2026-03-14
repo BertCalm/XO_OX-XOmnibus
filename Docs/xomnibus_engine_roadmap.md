@@ -1,12 +1,12 @@
 # XOmnibus — Engine Expansion Roadmap
 
-*Document version: 3.0 | March 2026 — Full audit: 20 engines integrated, XOstinato designed, XOcelot scaffolded*
+*Document version: 3.1 | March 2026 — Full audit: 21 engines integrated, XOstinato designed, XOcelot scaffolded*
 
 ---
 
 ## Current Gallery State (March 2026)
 
-**20 engines integrated** in `Source/Engines/`, all with SynthEngine adapters. 1,595 factory presets across 6 moods.
+**21 engines integrated** in `Source/Engines/`, all with SynthEngine adapters. 1,610 factory presets across 6 moods.
 
 ### Volume 1 — Core Engines (Original Instruments)
 
@@ -37,6 +37,7 @@
 | OCEANIC | Oceanic | XOceanic | Wavetable/FM spectral separation | 1,424 | ✅ Integrated |
 | OPTIC | Optic | XOptic | Visual modulation + AutoPulse | 732 | ✅ Integrated |
 | OBLIQUE | Oblique | XOblique | Prismatic bounce / RTJ × Funk × Tame Impala | 1,146 | ✅ Integrated |
+| OMBRE | Ombre | XOmbre | Dual-narrative (memory/forgetting + perception) | ~800 | ✅ Integrated |
 
 ---
 
