@@ -53,8 +53,8 @@
     },
     "Obese": {
       "fat_satDrive": 6.0,
-      "fat_filterCutoff": 800.0,
-      "fat_filterReso": 0.4
+      "fat_fltCutoff": 800.0,
+      "fat_fltReso": 0.4
     }
   },
   "coupling": {

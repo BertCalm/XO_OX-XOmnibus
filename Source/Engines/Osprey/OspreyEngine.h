@@ -10,69 +10,127 @@
 namespace xomnibus {
 
 //==============================================================================
-// OspreyEngine — Turbulence-Modulated Resonator Synthesis.
 //
-// Transforms the open ocean into an instrument. Each voice drives a bank of
-// 16 modal resonators (3 instrument groups x 4 formants + 4 sympathetic)
-// excited by a fluid energy model that ranges from calm sinusoidal swell to
-// layered turbulent noise. Three creature voice formant generators add organic
-// life — bird calls, whale songs, ambient coastal textures — modulated by
-// sea state and shore position.
+//  XOsprey — OSPREY Engine
+//  Turbulence-Modulated Resonator Synthesis
 //
-// The ShoreSystem provides 5 coastal regions (Atlantic, Nordic, Mediterranean,
-// Pacific, Southern) with continuous morphing. Each shore defines resonator
-// spectral profiles, creature voice targets, and fluid character.
+//  Gallery code:  OSPREY
+//  Accent color:  Azulejo Blue #1B4F8A
+//  Param prefix:  osprey_
 //
-// Features:
-//   - 16 modal resonators per voice (tuned 2-pole resonant filters)
-//   - 3 creature voice formant generators (sweeping 3-band formant filters)
-//   - Fluid energy model (Perlin-inspired layered noise + swell)
-//   - Shore-morphing resonator profiles from ShoreSystem
-//   - Sympathetic resonator coupling (cross-resonator energy transfer)
-//   - Coherence control (partial phase correlation)
-//   - Foam (HF saturation), Brine (subtle bitcrushing), Hull (body resonance)
-//   - Harbor verb (lightweight 4-allpass delay network)
-//   - Fog (HF rolloff), Tilt filter (LP/HP spectral balance)
-//   - Amp ADSR + 4 macros (Sea State, Movement, Coupling, Space)
-//   - DC blocker + soft limiter on output
-//   - 8-voice polyphony with LRU stealing + 5ms crossfade
+//  -------------------------------------------------------------------------
+//  CREATURE IDENTITY (XO_OX Aquatic Mythology)
+//  -------------------------------------------------------------------------
 //
-// Coupling:
-//   - Output: post-limiter stereo audio via getSampleForCoupling
-//   - Input: AudioToFM (resonator excitation), AmpToFilter (sea state mod),
-//            EnvToMorph (swell period mod), LFOToPitch (resonator tuning),
-//            AudioToWavetable (replaces excitation source)
+//  The osprey hunts at the surface — the only raptor that plunges into water
+//  to catch fish. It lives at the boundary between air and ocean, between
+//  feliX's sky and Oscar's deep. XOsprey transforms that boundary into an
+//  instrument: the turbulent interface where wind meets wave, where resonance
+//  is born from chaos.
+//
+//  In the water column, XOsprey inhabits the Surface zone — where energy
+//  from above (wind, light, transients) excites the resonant structures
+//  below (modal bodies, creature voices, sympathetic strings). It is the
+//  meeting point between the two worlds.
+//
+//  -------------------------------------------------------------------------
+//  SYNTH LINEAGE & TECHNIQUE
+//  -------------------------------------------------------------------------
+//
+//  XOsprey channels three synthesis traditions:
+//
+//  1. MODAL SYNTHESIS (Modalys / IRCAM, 1990s)
+//     Physical models of resonant bodies — struck, bowed, plucked — reduced
+//     to banks of tuned 2-pole resonant filters. Each resonator models one
+//     partial of an acoustic instrument (guitar, kora, koto, etc.), excited
+//     by fluid energy rather than a physical gesture.
+//
+//  2. SPECTRAL PROCESSING (SPEAR / AudioSculpt)
+//     The ShoreSystem morphs between 5 coastal resonator profiles, each
+//     representing a family of acoustic instruments from that region. This
+//     is spectral morphing — the timbral DNA of a kora smoothly becoming
+//     the DNA of a koto as the Shore knob sweeps from Atlantic to Pacific.
+//
+//  3. GRANULAR / STOCHASTIC EXCITATION (Xenakis, 1960s)
+//     The FluidEnergyModel replaces traditional oscillators with a
+//     physics-inspired noise generator. At low sea states it produces
+//     smooth sinusoidal swells; at high sea states it layers 4 octaves
+//     of Perlin-style noise, modeling the energy cascade from large
+//     ocean waves down to surface chop — stochastic synthesis shaped
+//     by fluid dynamics.
+//
+//  -------------------------------------------------------------------------
+//  ARCHITECTURE OVERVIEW
+//  -------------------------------------------------------------------------
+//
+//  Signal flow:
+//
+//    FluidEnergyModel (global, 1 instance)
+//         |
+//         v
+//    Per Voice (x8 polyphonic, LRU stealing, 5ms crossfade):
+//      Excitation -> 16 Modal Resonators
+//                    [3 instrument groups x 4 formants + 4 sympathetic]
+//                 -> Creature Formant Voices (3 per voice)
+//                 -> DC Blocker -> Soft Limiter -> Amp Env -> Pan
+//         |
+//         v
+//    Stereo Mix -> Tilt Filter -> Foam -> Brine -> Hull -> Fog
+//              -> Harbor Verb (4-allpass chain)
+//              -> Output + Coupling Cache
+//
+//  The ShoreSystem provides 5 coastal regions (Atlantic, Nordic,
+//  Mediterranean, Pacific, Southern) with continuous morphing. Each shore
+//  defines resonator spectral profiles, creature voice targets, and fluid
+//  character.
+//
+//  Coupling:
+//    Output:  post-limiter stereo audio via getSampleForCoupling
+//    Input:   AudioToFM (resonator excitation), AmpToFilter (sea state),
+//             EnvToMorph (swell period), LFOToPitch (resonator tuning),
+//             AudioToWavetable (replaces excitation source)
+//
+//  Parameters: 25 (11 core + 6 character + 4 envelope + 4 macros)
+//  CPU budget: <10% single-engine @ 44100Hz, 512 block on M1
 //
 //==============================================================================
 
 //==============================================================================
-// ADSR envelope generator — lightweight, inline, no allocation.
+//  SECTION 1: ADSR Envelope Generator
+//  -------------------------------------------------------------------------
+//  Lightweight, inline, zero-allocation amplitude envelope.
+//  Linear attack, exponential-ish decay/release (one-pole tracking).
+//  The 0.0001f bias terms prevent the exponential curves from stalling
+//  at zero — without them, the multiplier (level + 0) would produce
+//  no movement once level reaches exactly 0.0, leaving the envelope
+//  stuck and the voice perpetually "active."
 //==============================================================================
 struct OspreyADSR
 {
     enum class Stage { Idle, Attack, Decay, Sustain, Release };
 
-    Stage stage = Stage::Idle;
-    float level = 0.0f;
-    float attackRate  = 0.0f;
-    float decayRate   = 0.0f;
-    float sustainLevel = 1.0f;
-    float releaseRate = 0.0f;
+    Stage  stage        = Stage::Idle;
+    float  level        = 0.0f;
+    float  attackRate   = 0.0f;   // per-sample increment toward 1.0
+    float  decayRate    = 0.0f;   // per-sample coefficient toward sustain
+    float  sustainLevel = 1.0f;
+    float  releaseRate  = 0.0f;   // per-sample coefficient toward 0.0
 
     void setParams (float attackSec, float decaySec, float sustain, float releaseSec,
                     float sampleRate) noexcept
     {
         float sr = std::max (1.0f, sampleRate);
-        attackRate  = (attackSec  > 0.001f) ? (1.0f / (attackSec  * sr)) : 1.0f;
-        decayRate   = (decaySec   > 0.001f) ? (1.0f / (decaySec   * sr)) : 1.0f;
+
+        // Convert time-in-seconds to per-sample rate.
+        // Guard: if time < 1ms, snap instantly (rate = 1.0).
+        static constexpr float kMinTimeSec = 0.001f;
+        attackRate   = (attackSec  > kMinTimeSec) ? (1.0f / (attackSec  * sr)) : 1.0f;
+        decayRate    = (decaySec   > kMinTimeSec) ? (1.0f / (decaySec   * sr)) : 1.0f;
         sustainLevel = sustain;
-        releaseRate = (releaseSec > 0.001f) ? (1.0f / (releaseSec * sr)) : 1.0f;
+        releaseRate  = (releaseSec > kMinTimeSec) ? (1.0f / (releaseSec * sr)) : 1.0f;
     }
 
-    void noteOn() noexcept
-    {
-        stage = Stage::Attack;
-    }
+    void noteOn()  noexcept { stage = Stage::Attack; }
 
     void noteOff() noexcept
     {
@@ -82,6 +140,10 @@ struct OspreyADSR
 
     float process() noexcept
     {
+        // 0.0001f = anti-stall bias. Prevents exponential curves from
+        // freezing when level is at or near zero (see header comment).
+        static constexpr float kAntiStallBias = 0.0001f;
+
         switch (stage)
         {
             case Stage::Idle:
@@ -97,8 +159,8 @@ struct OspreyADSR
                 return level;
 
             case Stage::Decay:
-                level -= decayRate * (level - sustainLevel + 0.0001f);
-                if (level <= sustainLevel + 0.0001f)
+                level -= decayRate * (level - sustainLevel + kAntiStallBias);
+                if (level <= sustainLevel + kAntiStallBias)
                 {
                     level = sustainLevel;
                     stage = Stage::Sustain;
@@ -109,8 +171,8 @@ struct OspreyADSR
                 return level;
 
             case Stage::Release:
-                level -= releaseRate * (level + 0.0001f);
-                if (level <= 0.0001f)
+                level -= releaseRate * (level + kAntiStallBias);
+                if (level <= kAntiStallBias)
                 {
                     level = 0.0f;
                     stage = Stage::Idle;
@@ -130,26 +192,31 @@ struct OspreyADSR
 };
 
 //==============================================================================
-// LFO with multiple shapes.
+//  SECTION 2: LFO — Low-Frequency Oscillator
+//  -------------------------------------------------------------------------
+//  5 waveshapes for modulation. The Sample-and-Hold mode uses a Numerical
+//  Recipes LCG (Linear Congruential Generator) — the same PRNG used
+//  throughout XOmnibus engines for deterministic, fast random values.
+//  LCG constants: multiplier 1664525, increment 1013904223 (Knuth, TAOCP).
 //==============================================================================
 struct OspreyLFO
 {
-    enum class Shape { Sine, Triangle, Saw, Square, SandH };
+    enum class Shape { Sine, Triangle, Saw, Square, SampleAndHold };
 
-    float phase = 0.0f;
-    float phaseInc = 0.0f;
-    Shape shape = Shape::Sine;
-    float holdValue = 0.0f;
-    uint32_t sampleCounter = 0;
+    float    phase            = 0.0f;
+    float    phaseIncrement   = 0.0f;
+    Shape    shape            = Shape::Sine;
+    float    holdValue        = 0.0f;
+    uint32_t randomState      = 0;      // LCG state for Sample-and-Hold
 
     void setRate (float hz, float sampleRate) noexcept
     {
-        phaseInc = hz / std::max (1.0f, sampleRate);
+        phaseIncrement = hz / std::max (1.0f, sampleRate);
     }
 
-    void setShape (int idx) noexcept
+    void setShape (int index) noexcept
     {
-        shape = static_cast<Shape> (std::min (4, std::max (0, idx)));
+        shape = static_cast<Shape> (std::min (4, std::max (0, index)));
     }
 
     float process() noexcept
@@ -159,31 +226,38 @@ struct OspreyLFO
         switch (shape)
         {
             case Shape::Sine:
-                out = fastSin (phase * 6.28318530718f);
+                out = fastSin (phase * kTwoPi);
                 break;
+
             case Shape::Triangle:
+                // Maps phase [0,1] -> output [-1,+1] via absolute-value fold
                 out = 4.0f * std::fabs (phase - 0.5f) - 1.0f;
                 break;
+
             case Shape::Saw:
                 out = 2.0f * phase - 1.0f;
                 break;
+
             case Shape::Square:
                 out = (phase < 0.5f) ? 1.0f : -1.0f;
                 break;
-            case Shape::SandH:
+
+            case Shape::SampleAndHold:
             {
-                float prevPhase = phase - phaseInc;
+                float prevPhase = phase - phaseIncrement;
+                // Detect phase wrap (new LFO cycle) -> latch a new random value
                 if (prevPhase < 0.0f || phase < prevPhase)
                 {
-                    sampleCounter = sampleCounter * 1664525u + 1013904223u;
-                    holdValue = static_cast<float> (sampleCounter & 0xFFFF) / 32768.0f - 1.0f;
+                    // LCG: Knuth TAOCP multiplier/increment (fast, deterministic)
+                    randomState = randomState * 1664525u + 1013904223u;
+                    holdValue = static_cast<float> (randomState & 0xFFFF) / 32768.0f - 1.0f;
                 }
                 out = holdValue;
                 break;
             }
         }
 
-        phase += phaseInc;
+        phase += phaseIncrement;
         if (phase >= 1.0f) phase -= 1.0f;
 
         return out;
@@ -191,237 +265,364 @@ struct OspreyLFO
 
     void reset() noexcept
     {
-        phase = 0.0f;
+        phase     = 0.0f;
         holdValue = 0.0f;
-        sampleCounter = 12345u;
+        randomState = 12345u;  // Deterministic seed for reproducible modulation
     }
+
+private:
+    static constexpr float kTwoPi = 6.28318530717958647692f;
 };
 
 //==============================================================================
-// OspreyResonator — a single tuned resonator modeled as a 2-pole resonant filter.
+//  SECTION 3: Modal Resonator
+//  -------------------------------------------------------------------------
+//  A single tuned resonator modeled as a 2-pole resonant filter — the
+//  fundamental building block of modal synthesis (IRCAM Modalys, 1990s).
+//
+//  Each resonator models one partial of an acoustic body. The filter's
+//  transfer function is:
+//
+//      y[n] = b0 * x[n] - a1 * y[n-1] - a2 * y[n-2]
+//
+//  Where:
+//      w0 = 2pi * freq / sampleRate     (normalized angular frequency)
+//      r  = exp(-pi * bw / sampleRate)   (pole radius = decay rate)
+//      a1 = -2r * cos(w0)                (resonant frequency placement)
+//      a2 = r^2                          (decay envelope)
+//      b0 = (1 - r^2) * gain             (input scaling for unity peak)
+//
+//  16 resonators per voice: 3 instrument groups x 4 formants + 4 sympathetic.
 //==============================================================================
 struct OspreyResonator
 {
-    float freq = 440.0f;       // center frequency
-    float bandwidth = 100.0f;  // bandwidth Hz
-    float gain = 1.0f;         // amplitude
-    float s1 = 0.0f, s2 = 0.0f; // state
-    float a1 = 0.0f, a2 = 0.0f, b0 = 0.0f; // coefficients
+    // --- Configuration ---
+    float centerFrequency = 440.0f;    // Hz — resonant peak frequency
+    float bandwidth       = 100.0f;    // Hz — 3dB bandwidth (controls decay time)
+    float gain            = 1.0f;      // amplitude scaling
 
-    void setCoefficients (float centerFreq, float bw, float g, float sampleRate) noexcept
+    // --- Filter state (2 delay elements) ---
+    float state1 = 0.0f;              // y[n-1]
+    float state2 = 0.0f;              // y[n-2]
+
+    // --- Filter coefficients ---
+    float coeffA1 = 0.0f;             // feedback coeff (frequency)
+    float coeffA2 = 0.0f;             // feedback coeff (decay)
+    float coeffB0 = 0.0f;             // input gain
+
+    void setCoefficients (float freq, float bw, float g, float sampleRate) noexcept
     {
-        freq = centerFreq;
+        centerFrequency = freq;
         bandwidth = bw;
         gain = g;
-        float w0 = 2.0f * 3.14159265f * centerFreq / sampleRate;
-        float r = fastExp (-3.14159265f * bw / sampleRate); // decay rate
-        a1 = -2.0f * r * fastCos (w0);
-        a2 = r * r;
-        b0 = (1.0f - r * r) * gain;
+
+        // Normalized angular frequency
+        float w0 = 2.0f * kPi * freq / sampleRate;
+
+        // Pole radius: controls how long the resonator rings.
+        // r -> 1.0 = infinite ring (narrow bandwidth),
+        // r -> 0.0 = instant decay (wide bandwidth).
+        float poleRadius = fastExp (-kPi * bw / sampleRate);
+
+        coeffA1 = -2.0f * poleRadius * fastCos (w0);
+        coeffA2 = poleRadius * poleRadius;
+
+        // Input gain normalized so peak response = gain parameter
+        coeffB0 = (1.0f - poleRadius * poleRadius) * g;
     }
 
     float process (float excitation) noexcept
     {
-        float out = b0 * excitation - a1 * s1 - a2 * s2;
-        s2 = s1;
-        s1 = flushDenormal (out);
+        float out = coeffB0 * excitation - coeffA1 * state1 - coeffA2 * state2;
+        state2 = state1;
+        // Flush denormals on state to prevent CPU spikes from subnormal
+        // float arithmetic in feedback paths. Without this, a decaying
+        // resonator can produce denormal values that are 10-100x slower
+        // to process on x86/ARM hardware.
+        state1 = flushDenormal (out);
         return out;
     }
 
-    void reset() noexcept { s1 = 0.0f; s2 = 0.0f; }
+    void reset() noexcept { state1 = 0.0f; state2 = 0.0f; }
+
+private:
+    static constexpr float kPi = 3.14159265358979323846f;
 };
 
 //==============================================================================
-// CreatureFormant — generates creature voice sounds using sweeping formant
-// filters. Three formant bands sweep from start to end frequencies.
+//  SECTION 4: Creature Formant Generator
+//  -------------------------------------------------------------------------
+//  Generates organic creature voice sounds — bird calls, whale songs,
+//  coastal ambient textures — using sweeping formant filters. Each creature
+//  voice has 3 bandpass formant bands that sweep from start to end
+//  frequencies over a configurable duration, then pause during a gap
+//  period before probabilistically re-triggering.
+//
+//  This models the vocalization patterns of marine and coastal fauna:
+//  a storm petrel's call sweeps rapidly through its formants (short
+//  sweepMs), while a humpback song glides slowly (long sweepMs) with
+//  extended pauses (long gapMs). The ShoreSystem provides regionally
+//  appropriate creature voice targets for each coastline.
 //==============================================================================
 struct CreatureFormant
 {
-    float phase = 0.0f;        // sweep phase [0,1)
-    float sweepMs = 1000.0f;
-    float gapMs = 5000.0f;
-    bool active = false;
-    float startFreqs[3] = {}, endFreqs[3] = {}, bandwidths[3] = {};
-    float amplitude = 0.5f;
-    CytomicSVF filters[3];    // 3 formant bands
-    uint32_t rng = 54321u;
+    // --- Sweep state ---
+    float  sweepPhase       = 0.0f;     // current position in formant sweep [0,1)
+    float  sweepDurationMs  = 1000.0f;  // how long one vocalization lasts
+    float  gapDurationMs    = 5000.0f;  // silence between vocalizations
+    bool   active           = false;
+    float  amplitude        = 0.5f;
 
-    // Timing state
-    float sweepPhaseInc = 0.0f;
-    float gapCounter = 0.0f;
-    float gapPhaseInc = 0.0f;
-    bool inGap = true;
+    // --- Formant frequency targets (3 bands) ---
+    float  startFrequencies[3]  = {};   // Hz — formant positions at sweep start
+    float  endFrequencies[3]    = {};   // Hz — formant positions at sweep end
+    float  formantBandwidths[3] = {};   // Hz — formant widths
+
+    // --- Filter bank (3 CytomicSVF bandpass filters) ---
+    CytomicSVF formantFilters[3];
+
+    // --- Timing ---
+    float  sweepPhaseIncrement = 0.0f;  // per-sample phase advance during sweep
+    float  gapCounter          = 0.0f;  // current position in gap [0,1)
+    float  gapPhaseIncrement   = 0.0f;  // per-sample phase advance during gap
+    bool   inGap               = true;
+
+    // --- PRNG (LCG, Knuth TAOCP constants) ---
+    uint32_t randomState = 54321u;
 
     float nextRandom() noexcept
     {
-        rng = rng * 1664525u + 1013904223u;
-        return static_cast<float> (rng & 0xFFFF) / 65536.0f;
+        randomState = randomState * 1664525u + 1013904223u;
+        return static_cast<float> (randomState & 0xFFFF) / 65536.0f;
     }
 
     void trigger (float sampleRate) noexcept
     {
         active = true;
         inGap = false;
-        phase = 0.0f;
-        sweepPhaseInc = 1000.0f / (sweepMs * sampleRate); // per-sample phase increment
-        if (sweepPhaseInc <= 0.0f) sweepPhaseInc = 0.001f;
+        sweepPhase = 0.0f;
+
+        // Convert sweep duration (ms) to per-sample phase increment:
+        // phaseInc = 1000 / (durationMs * sampleRate) so phase reaches 1.0
+        // after exactly durationMs milliseconds.
+        sweepPhaseIncrement = 1000.0f / (sweepDurationMs * sampleRate);
+        if (sweepPhaseIncrement <= 0.0f) sweepPhaseIncrement = 0.001f;
 
         for (int i = 0; i < 3; ++i)
         {
-            filters[i].setMode (CytomicSVF::Mode::BandPass);
-            filters[i].setCoefficients (startFreqs[i], 0.7f, sampleRate);
+            formantFilters[i].setMode (CytomicSVF::Mode::BandPass);
+            formantFilters[i].setCoefficients (startFrequencies[i], 0.7f, sampleRate);
         }
     }
 
-    void configure (const CreatureVoice& cv, float sampleRate) noexcept
+    void configure (const CreatureVoice& creatureVoice, float sampleRate) noexcept
     {
-        sweepMs = cv.sweepMs;
-        gapMs = cv.gapMs;
-        amplitude = cv.amplitude;
+        sweepDurationMs = creatureVoice.sweepMs;
+        gapDurationMs   = creatureVoice.gapMs;
+        amplitude       = creatureVoice.amplitude;
+
         for (int i = 0; i < 3; ++i)
         {
-            startFreqs[i] = cv.startFreqs[i];
-            endFreqs[i] = cv.endFreqs[i];
-            bandwidths[i] = cv.bandwidths[i];
+            startFrequencies[i]  = creatureVoice.startFreqs[i];
+            endFrequencies[i]    = creatureVoice.endFreqs[i];
+            formantBandwidths[i] = creatureVoice.bandwidths[i];
         }
-        gapPhaseInc = 1000.0f / (gapMs * sampleRate);
-        if (gapPhaseInc <= 0.0f) gapPhaseInc = 0.0001f;
+
+        gapPhaseIncrement = 1000.0f / (gapDurationMs * sampleRate);
+        if (gapPhaseIncrement <= 0.0f) gapPhaseIncrement = 0.0001f;
     }
 
     float process (float sampleRate, float excitation) noexcept
     {
         if (!active) return 0.0f;
 
+        // --- Gap phase: silence between vocalizations ---
         if (inGap)
         {
-            gapCounter += gapPhaseInc;
+            gapCounter += gapPhaseIncrement;
             if (gapCounter >= 1.0f)
             {
                 gapCounter = 0.0f;
-                // Random chance to re-trigger
-                if (nextRandom() < 0.7f)
-                {
+                // 70% chance to re-trigger — models the stochastic nature
+                // of animal vocalizations (not perfectly periodic)
+                static constexpr float kRetriggerProbability = 0.7f;
+                if (nextRandom() < kRetriggerProbability)
                     trigger (sampleRate);
-                }
             }
             return 0.0f;
         }
 
-        // Sweeping: interpolate formant frequencies from start to end
-        float t = phase;
-        float smoothT = t * t * (3.0f - 2.0f * t); // smoothstep
-        float out = 0.0f;
+        // --- Sweep phase: interpolate formant frequencies from start to end ---
 
+        // Smoothstep: t^2 * (3 - 2t) — eases in/out for natural vocal quality
+        float t = sweepPhase;
+        float smoothT = t * t * (3.0f - 2.0f * t);
+
+        float out = 0.0f;
         for (int i = 0; i < 3; ++i)
         {
-            float currentFreq = startFreqs[i] + smoothT * (endFreqs[i] - startFreqs[i]);
+            float currentFreq = startFrequencies[i]
+                               + smoothT * (endFrequencies[i] - startFrequencies[i]);
             currentFreq = clamp (currentFreq, 40.0f, sampleRate * 0.45f);
-            float q = currentFreq / std::max (bandwidths[i], 10.0f);
+
+            // Q derived from center-frequency / bandwidth ratio
+            float q = currentFreq / std::max (formantBandwidths[i], 10.0f);
             q = clamp (q, 0.2f, 0.95f);
-            filters[i].setCoefficients (currentFreq, q, sampleRate);
-            out += filters[i].processSample (excitation);
+
+            formantFilters[i].setCoefficients (currentFreq, q, sampleRate);
+            out += formantFilters[i].processSample (excitation);
         }
 
-        phase += sweepPhaseInc;
-        if (phase >= 1.0f)
+        sweepPhase += sweepPhaseIncrement;
+        if (sweepPhase >= 1.0f)
         {
-            // Sweep complete — enter gap
+            // Sweep complete — enter gap (silence between calls)
             inGap = true;
             gapCounter = 0.0f;
-            phase = 0.0f;
+            sweepPhase = 0.0f;
         }
 
-        return out * amplitude * (1.0f / 3.0f);
+        // Normalize by 3 formant bands to prevent amplitude growth
+        static constexpr float kFormantNormalization = 1.0f / 3.0f;
+        return out * amplitude * kFormantNormalization;
     }
 
     void reset() noexcept
     {
-        phase = 0.0f;
+        sweepPhase = 0.0f;
         active = false;
         inGap = true;
         gapCounter = 0.0f;
         for (int i = 0; i < 3; ++i)
-            filters[i].reset();
+            formantFilters[i].reset();
     }
 };
 
 //==============================================================================
-// FluidEnergyModel — Perlin-inspired noise generator that models turbulent
-// fluid energy. At low seaState produces smooth sinusoidal swell; at high
-// seaState produces layered multi-octave noise with surface chop.
+//  SECTION 5: Fluid Energy Model
+//  -------------------------------------------------------------------------
+//  The core excitation generator — replaces traditional oscillators with a
+//  physics-inspired energy source modeled on ocean fluid dynamics.
+//
+//  Inspired by Xenakis's stochastic synthesis (1960s) and Perlin noise
+//  (1983), the model layers three energy components:
+//
+//  1. SWELL: Smooth sinusoidal wave — the dominant low-frequency energy
+//     of the open ocean. Period controlled by shore character and user
+//     parameter (0.5s–60s).
+//
+//  2. CHOP: Higher-frequency surface modulation — wind-driven capillary
+//     waves riding on top of the swell. Frequency scales with sea state
+//     (more wind = faster chop).
+//
+//  3. TURBULENCE: 4-octave layered noise, modeling the Kolmogorov energy
+//     cascade — in real fluid dynamics, energy transfers from large
+//     eddies to progressively smaller scales. The 4 octaves at
+//     frequencies {0.3, 0.7, 1.5, 3.2} Hz with amplitudes
+//     {1.0, 0.5, 0.25, 0.125} approximate the -5/3 spectral slope of
+//     fully-developed turbulence. Only active above the turbulenceOnset
+//     threshold defined per shore region.
+//
+//  The fluid model runs once per sample globally (not per-voice). All
+//  voices read the same energy stream but process it through differently-
+//  tuned resonator banks, creating coherent-yet-varied timbral response.
 //==============================================================================
 struct FluidEnergyModel
 {
-    float phase = 0.0f;           // swell phase
-    float chopPhase = 0.0f;       // surface chop phase
-    float noiseState[4] = {};     // layered noise state (4 octaves)
-    uint32_t rng = 98765u;
+    // --- Phase accumulators ---
+    float swellPhase = 0.0f;          // main swell oscillator [0,1)
+    float chopPhase  = 0.0f;          // surface chop oscillator [0,1)
 
-    float nextRandom() noexcept
+    // --- Turbulence state (4 octaves of smoothed random walk) ---
+    static constexpr int kTurbulenceOctaves = 4;
+    float turbulenceState[kTurbulenceOctaves] = {};
+
+    // --- PRNG (LCG, Knuth TAOCP constants) ---
+    uint32_t randomState = 98765u;
+
+    float nextRandomBipolar() noexcept
     {
-        rng = rng * 1664525u + 1013904223u;
-        return static_cast<float> (rng & 0xFFFF) / 32768.0f - 1.0f;
+        randomState = randomState * 1664525u + 1013904223u;
+        return static_cast<float> (randomState & 0xFFFF) / 32768.0f - 1.0f;  // [-1, +1]
     }
 
-    float nextRandomUni() noexcept
+    float nextRandomUnipolar() noexcept
     {
-        rng = rng * 1664525u + 1013904223u;
-        return static_cast<float> (rng & 0xFFFF) / 65536.0f;
+        randomState = randomState * 1664525u + 1013904223u;
+        return static_cast<float> (randomState & 0xFFFF) / 65536.0f;  // [0, 1)
     }
 
     float process (float seaState, float swellPeriod, const FluidCharacter& fluid,
                    float sampleRate) noexcept
     {
-        // Effective swell period blended with shore character
+        static constexpr float kTwoPi = 6.28318530717958647692f;
+
+        // --- Swell: smooth sinusoidal ocean energy ---
+
+        // Effective swell period blends user control with shore character.
+        // Shore swellPeriodBase ranges ~4-15s; normalizing by 12.0 centers
+        // the blend so Atlantic (~8s) and Pacific (~12s) both feel natural.
         float effectivePeriod = swellPeriod * (0.5f + 0.5f * fluid.swellPeriodBase / 12.0f);
         effectivePeriod = clamp (effectivePeriod, 0.5f, 60.0f);
 
-        // Swell phase advance
-        float swellInc = 1.0f / (effectivePeriod * sampleRate);
-        phase += swellInc;
-        if (phase >= 1.0f) phase -= 1.0f;
+        float swellIncrement = 1.0f / (effectivePeriod * sampleRate);
+        swellPhase += swellIncrement;
+        if (swellPhase >= 1.0f) swellPhase -= 1.0f;
 
-        // Base swell: smooth sinusoidal
-        float swell = fastSin (phase * 6.28318530718f) * fluid.swellDepth;
+        float swell = fastSin (swellPhase * kTwoPi) * fluid.swellDepth;
 
-        // Surface chop (higher frequency modulation)
-        float chopFreq = fluid.chopFreqBase * (1.0f + seaState * 3.0f);
-        float chopInc = chopFreq / sampleRate;
-        chopPhase += chopInc;
+        // --- Chop: wind-driven surface capillary waves ---
+
+        // Chop frequency rises with sea state (more wind = faster ripples).
+        // The 3.0 multiplier gives ~4x frequency range from calm to storm.
+        float chopFrequency = fluid.chopFreqBase * (1.0f + seaState * 3.0f);
+        float chopIncrement = chopFrequency / sampleRate;
+        chopPhase += chopIncrement;
         if (chopPhase >= 1.0f) chopPhase -= 1.0f;
-        float chop = fastSin (chopPhase * 6.28318530718f) * fluid.chopAmount * seaState;
 
-        // Turbulence threshold — noise kicks in at higher sea states
+        float chop = fastSin (chopPhase * kTwoPi) * fluid.chopAmount * seaState;
+
+        // --- Turbulence: multi-octave noise (Kolmogorov cascade) ---
+
         float turbulence = 0.0f;
-        float turbulenceAmount = clamp ((seaState - fluid.turbulenceOnset) /
-                                         (1.0f - fluid.turbulenceOnset + 0.001f), 0.0f, 1.0f);
+        float turbulenceAmount = clamp (
+            (seaState - fluid.turbulenceOnset) /
+            (1.0f - fluid.turbulenceOnset + 0.001f),  // +0.001 prevents div-by-zero
+            0.0f, 1.0f);
 
         if (turbulenceAmount > 0.001f)
         {
-            // Multi-octave layered noise
-            float freqs[4] = { 0.3f, 0.7f, 1.5f, 3.2f };
-            float amps[4]  = { 1.0f, 0.5f, 0.25f, 0.125f };
+            // Octave frequencies (Hz) — ascending scale sizes in the cascade
+            static constexpr float kOctaveFrequencies[kTurbulenceOctaves] = { 0.3f, 0.7f, 1.5f, 3.2f };
+            // Octave amplitudes — approximate -5/3 spectral slope of turbulence
+            static constexpr float kOctaveAmplitudes[kTurbulenceOctaves]  = { 1.0f, 0.5f, 0.25f, 0.125f };
 
-            for (int oct = 0; oct < 4; ++oct)
+            for (int octave = 0; octave < kTurbulenceOctaves; ++octave)
             {
-                // Smooth random walk per octave
-                float target = nextRandom();
-                float rate = freqs[oct] / sampleRate;
-                noiseState[oct] += (target - noiseState[oct]) * rate;
-                noiseState[oct] = flushDenormal (noiseState[oct]);
-                turbulence += noiseState[oct] * amps[oct];
+                // Smooth random walk: one-pole lowpass on white noise
+                float target = nextRandomBipolar();
+                float smoothingRate = kOctaveFrequencies[octave] / sampleRate;
+                turbulenceState[octave] += (target - turbulenceState[octave]) * smoothingRate;
+                // Flush denormals in the random walk state to prevent CPU
+                // spikes from subnormal arithmetic in this feedback path.
+                turbulenceState[octave] = flushDenormal (turbulenceState[octave]);
+                turbulence += turbulenceState[octave] * kOctaveAmplitudes[octave];
             }
 
+            // 0.5 scaling keeps turbulence in similar range to swell+chop
             turbulence *= turbulenceAmount * 0.5f;
         }
 
-        // Depth bias: blend surface vs subsurface energy
+        // --- Combine energy sources ---
+
+        // Depth bias: subsurface energy is attenuated (water absorbs HF).
+        // At depthBias=1.0, total energy is halved.
         float depthFactor = 1.0f - fluid.depthBias * 0.5f;
 
-        // Combine all energy sources
         float energy = (swell + chop + turbulence) * depthFactor;
 
-        // Scale by sea state (calm = gentle, stormy = intense)
+        // Sea state master scaling: at seaState=0 (dead calm), only 20%
+        // of the energy passes through. At seaState=1 (full storm), 100%.
         energy *= (0.2f + seaState * 0.8f);
 
         return energy;
@@ -429,147 +630,202 @@ struct FluidEnergyModel
 
     void reset() noexcept
     {
-        phase = 0.0f;
-        chopPhase = 0.0f;
-        for (int i = 0; i < 4; ++i)
-            noiseState[i] = 0.0f;
+        swellPhase = 0.0f;
+        chopPhase  = 0.0f;
+        for (int i = 0; i < kTurbulenceOctaves; ++i)
+            turbulenceState[i] = 0.0f;
     }
 };
 
 //==============================================================================
-// AllpassDelay — simple allpass delay for harbor verb.
-// y[n] = -g*x[n] + x[n-d] + g*y[n-d]
-// Fixed max buffer size (4096 samples = ~93ms at 44.1kHz).
+//  SECTION 6: Allpass Delay — Harbor Verb Building Block
+//  -------------------------------------------------------------------------
+//  A first-order allpass delay used to build the Harbor Verb reverb.
+//  4 of these in series create a simple diffusion network reminiscent
+//  of Schroeder/Moorer reverb topology (1962/1979).
+//
+//  Transfer function (standard allpass form):
+//      buffer[n] = input + g * delayed
+//      output    = delayed - g * buffer[n]
+//
+//  This structure passes all frequencies at unity gain but scrambles
+//  their phase relationships, creating the "smeared" quality of reverb.
+//
+//  Max buffer: 4096 samples = ~93ms at 44.1kHz (adequate for small-room
+//  harbor verb character — not designed for cathedral tails).
 //==============================================================================
 struct AllpassDelay
 {
-    static constexpr int kMaxDelay = 4096;
-    float buffer[kMaxDelay] = {};
-    int writePos = 0;
-    int delaySamples = 1000;
-    float feedback = 0.5f;
+    static constexpr int kMaxBufferSize = 4096;
 
-    void setParams (int delay, float fb) noexcept
+    float  buffer[kMaxBufferSize] = {};
+    int    writePosition  = 0;
+    int    delaySamples   = 1000;
+    float  feedbackCoeff  = 0.5f;
+
+    void setParams (int delay, float feedback) noexcept
     {
-        delaySamples = clamp (delay, 1, kMaxDelay - 1);
-        feedback = fb;
+        delaySamples  = clamp (delay, 1, kMaxBufferSize - 1);
+        feedbackCoeff = feedback;
     }
 
     float process (float input) noexcept
     {
-        int readPos = writePos - delaySamples;
-        if (readPos < 0) readPos += kMaxDelay;
+        int readPosition = writePosition - delaySamples;
+        if (readPosition < 0) readPosition += kMaxBufferSize;
 
-        float delayed = buffer[readPos];
-        float out = -feedback * input + delayed + feedback * delayed;
-        // Correct allpass: out = delayed - g * input, buffer stores: input + g * delayed
-        // More standard form:
-        float bufVal = input + feedback * delayed;
-        out = delayed - feedback * bufVal;
-        buffer[writePos] = flushDenormal (bufVal);
+        float delayed = buffer[readPosition];
 
-        writePos++;
-        if (writePos >= kMaxDelay) writePos = 0;
+        // Standard allpass form (Schroeder, 1962):
+        // Store input mixed with fed-back delayed signal
+        float bufferValue = input + feedbackCoeff * delayed;
+        // Output is delayed signal minus fed-forward input
+        float out = delayed - feedbackCoeff * bufferValue;
+
+        // Flush denormals in the delay buffer to prevent CPU spikes.
+        // Reverb feedback paths are especially vulnerable — a single
+        // denormal value recirculates and multiplies through all 4
+        // allpass stages, compounding the performance hit.
+        buffer[writePosition] = flushDenormal (bufferValue);
+
+        writePosition++;
+        if (writePosition >= kMaxBufferSize) writePosition = 0;
 
         return flushDenormal (out);
     }
 
     void reset() noexcept
     {
-        for (int i = 0; i < kMaxDelay; ++i)
+        for (int i = 0; i < kMaxBufferSize; ++i)
             buffer[i] = 0.0f;
-        writePos = 0;
+        writePosition = 0;
     }
 };
 
 //==============================================================================
-// OspreyVoice — per-voice state containing resonator bank + creature voices.
+//  SECTION 7: Voice State
+//  -------------------------------------------------------------------------
+//  Per-MIDI-note state. Each voice contains:
+//    - 16 modal resonators (the acoustic "body" of this note)
+//    - 3 creature formant generators (organic life layered on top)
+//    - Amplitude envelope (ADSR)
+//    - Glide/portamento tracking
+//    - DC blocker (prevents offset buildup from asymmetric excitation)
+//    - Voice-stealing crossfade state (5ms fade for click-free stealing)
+//    - Control-rate decimation counter (coefficient updates at ~2kHz)
+//    - Coherence tracking (per-resonator phase alignment state)
 //==============================================================================
 struct OspreyVoice
 {
-    bool active = false;
-    int noteNumber = -1;
-    float velocity = 0.0f;
-    uint64_t startTime = 0;
-    float targetFreq = 440.0f;
-    float currentTargetFreq = 440.0f;
-    float glideCoeff = 1.0f;
+    // --- Voice lifecycle ---
+    bool     active           = false;
+    int      noteNumber       = -1;
+    float    velocity         = 0.0f;
+    uint64_t startTimestamp   = 0;       // monotonic counter for LRU stealing
 
-    // 16 modal resonators (3 instrument groups x 4 formants + 4 sympathetic)
-    std::array<OspreyResonator, 16> resonators;
+    // --- Pitch tracking ---
+    float    targetFrequency        = 440.0f;  // destination frequency (Hz)
+    float    currentGlideFrequency  = 440.0f;  // smoothed frequency for portamento
+    float    glideCoefficient       = 1.0f;    // 1.0 = instant, <1.0 = glide
 
-    // 3 creature voice formant generators
-    std::array<CreatureFormant, 3> creatures;
+    // --- Resonator bank ---
+    // 16 total: indices 0-3 = instrument group A (4 formants)
+    //           indices 4-7 = instrument group B (4 formants)
+    //           indices 8-11 = instrument group C (4 formants)
+    //           indices 12-15 = sympathetic resonators (harmonics 2,3,4,5)
+    static constexpr int kResonatorsPerVoice = 16;
+    std::array<OspreyResonator, kResonatorsPerVoice> resonators;
 
-    // ADSR
-    OspreyADSR ampEnv;
+    // --- Creature voice generators ---
+    // 3 per voice: typically bird, deep-sea creature, ambient texture
+    static constexpr int kCreaturesPerVoice = 3;
+    std::array<CreatureFormant, kCreaturesPerVoice> creatures;
 
-    // Voice stealing crossfade
-    float fadeGain = 1.0f;
-    bool fadingOut = false;
+    // --- Amplitude envelope ---
+    OspreyADSR amplitudeEnvelope;
 
-    // Control rate decimation
-    int controlCounter = 0;
+    // --- Voice stealing crossfade ---
+    float    fadeGain   = 1.0f;   // current crossfade level (1.0 = full, 0.0 = silent)
+    bool     fadingOut  = false;  // true when this voice is being stolen
 
-    // Per-voice PRNG
-    uint32_t rng = 12345u;
+    // --- Control-rate decimation ---
+    int      controlCounter = 0;  // counts samples between coefficient updates
 
-    // DC blocker state
-    float dcPrevInL = 0.0f, dcPrevOutL = 0.0f;
-    float dcPrevInR = 0.0f, dcPrevOutR = 0.0f;
+    // --- Per-voice PRNG (LCG, Knuth TAOCP constants) ---
+    uint32_t randomState = 12345u;
 
-    // Per-voice coherence phase offset tracking
-    float coherencePhases[16] = {};
+    // --- DC blocker state (1-pole highpass) ---
+    float    dcPreviousInputL  = 0.0f;
+    float    dcPreviousOutputL = 0.0f;
+    float    dcPreviousInputR  = 0.0f;
+    float    dcPreviousOutputR = 0.0f;
 
-    float nextRandom() noexcept
+    // --- Coherence tracking ---
+    // Per-resonator smoothed output for phase alignment control.
+    // At high coherence, resonator outputs are gently lowpassed to
+    // align their phase relationships (more tonal, less chaotic).
+    float    coherenceStates[kResonatorsPerVoice] = {};
+
+    // --- PRNG utilities ---
+
+    float nextRandomBipolar() noexcept
     {
-        rng = rng * 1664525u + 1013904223u;
-        return static_cast<float> (rng & 0xFFFF) / 32768.0f - 1.0f; // [-1, 1]
+        randomState = randomState * 1664525u + 1013904223u;
+        return static_cast<float> (randomState & 0xFFFF) / 32768.0f - 1.0f;  // [-1, +1]
     }
 
-    float nextRandomUni() noexcept
+    float nextRandomUnipolar() noexcept
     {
-        rng = rng * 1664525u + 1013904223u;
-        return static_cast<float> (rng & 0xFFFF) / 65536.0f; // [0, 1)
+        randomState = randomState * 1664525u + 1013904223u;
+        return static_cast<float> (randomState & 0xFFFF) / 65536.0f;  // [0, 1)
     }
+
+    // --- Reset ---
 
     void reset() noexcept
     {
-        active = false;
-        noteNumber = -1;
-        velocity = 0.0f;
-        targetFreq = 440.0f;
-        currentTargetFreq = 440.0f;
-        glideCoeff = 1.0f;
-        fadeGain = 1.0f;
-        fadingOut = false;
-        controlCounter = 0;
-        rng = 12345u;
-        dcPrevInL = 0.0f;
-        dcPrevOutL = 0.0f;
-        dcPrevInR = 0.0f;
-        dcPrevOutR = 0.0f;
-        ampEnv.reset();
+        active                = false;
+        noteNumber            = -1;
+        velocity              = 0.0f;
+        targetFrequency       = 440.0f;
+        currentGlideFrequency = 440.0f;
+        glideCoefficient      = 1.0f;
+        fadeGain               = 1.0f;
+        fadingOut              = false;
+        controlCounter         = 0;
+        randomState            = 12345u;
 
-        for (auto& r : resonators)
-            r.reset();
-        for (auto& c : creatures)
-            c.reset();
-        for (int i = 0; i < 16; ++i)
-            coherencePhases[i] = 0.0f;
+        dcPreviousInputL  = 0.0f;
+        dcPreviousOutputL = 0.0f;
+        dcPreviousInputR  = 0.0f;
+        dcPreviousOutputR = 0.0f;
+
+        amplitudeEnvelope.reset();
+
+        for (auto& resonator : resonators)
+            resonator.reset();
+        for (auto& creature : creatures)
+            creature.reset();
+        for (int i = 0; i < kResonatorsPerVoice; ++i)
+            coherenceStates[i] = 0.0f;
     }
 };
 
 //==============================================================================
-// OspreyEngine — the main engine class.
+//  SECTION 8: OspreyEngine — Main Engine Class
+//  -------------------------------------------------------------------------
+//  The osprey dives. Sound rises from the collision of wind and water.
+//
+//  Implements the SynthEngine interface for XOmnibus integration.
+//  All DSP is inline in this header per XO_OX architecture rules.
 //==============================================================================
 class OspreyEngine : public SynthEngine
 {
 public:
-    static constexpr int kMaxVoices = 8;
-    static constexpr float kPI = 3.14159265358979323846f;
-    static constexpr float kTwoPi = 6.28318530717958647692f;
-    static constexpr int kNumResonators = 16;
+    static constexpr int   kMaxVoices      = 8;
+    static constexpr float kPi             = 3.14159265358979323846f;
+    static constexpr float kTwoPi          = 6.28318530717958647692f;
+    static constexpr int   kNumResonators  = 16;  // per voice: 3 groups x 4 formants + 4 sympathetic
 
     //==========================================================================
     // SynthEngine interface — Lifecycle
@@ -577,83 +833,96 @@ public:
 
     void prepare (double sampleRate, int maxBlockSize) override
     {
-        sr = sampleRate;
-        srf = static_cast<float> (sr);
+        sampleRateDouble = sampleRate;
+        sampleRateFloat  = static_cast<float> (sampleRateDouble);
 
-        // Control rate decimation: ~2kHz
-        controlRateDiv = std::max (1, static_cast<int> (srf / 2000.0f));
-        controlDt = static_cast<float> (controlRateDiv) / srf;
+        // Control-rate decimation: update filter coefficients at ~2kHz
+        // instead of every sample. Saves ~80% of coefficient computation
+        // with negligible audible difference for slowly-changing parameters.
+        controlRateDivisor   = std::max (1, static_cast<int> (sampleRateFloat / 2000.0f));
+        controlRateDeltaTime = static_cast<float> (controlRateDivisor) / sampleRateFloat;
 
-        // Pre-compute crossfade rate (5ms)
-        crossfadeRate = 1.0f / (0.005f * srf);
+        // Voice-stealing crossfade: 5ms ramp prevents clicks when
+        // stealing a voice. Rate = samples needed to fade from 1.0 to 0.0.
+        static constexpr float kCrossfadeTimeSeconds = 0.005f;
+        crossfadeRate = 1.0f / (kCrossfadeTimeSeconds * sampleRateFloat);
 
-        // Allocate output cache for coupling reads
+        // Output cache for coupling reads (other engines read our output)
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
 
-        // Initialize voices
-        for (auto& v : voices)
-            v.reset();
+        // Initialize all voices
+        for (auto& voice : voices)
+            voice.reset();
 
-        // Initialize global fluid model
+        // Initialize global fluid energy model
         fluidModel.reset();
 
-        // Initialize harbor verb allpass delays with prime-number lengths
-        // Scaled for ~44.1kHz; will be rescaled in prepare based on actual SR
-        float srScale = srf / 44100.0f;
-        int delayLens[4] = {
-            static_cast<int> (1087.0f * srScale),
-            static_cast<int> (1283.0f * srScale),
-            static_cast<int> (1511.0f * srScale),
-            static_cast<int> (1777.0f * srScale)
-        };
+        // D005/D004 fix: initialize the sea state LFO (sine shape, 0.1 Hz default).
+        // This LFO modulates sea state amplitude so the sound breathes organically.
+        seaStateLFO.reset();
+        seaStateLFO.setShape (0);  // Sine shape for smooth wave-like modulation
+        seaStateLFO.setRate (0.1f, sampleRateFloat);
+
+        // Harbor verb: allpass delays with prime-number lengths.
+        // Primes {1087, 1283, 1511, 1777} chosen to avoid harmonic
+        // relationships between delay taps — this prevents comb filtering
+        // artifacts and produces smoother diffusion (Moorer, 1979).
+        // Lengths are scaled proportionally for sample rates other than 44.1kHz.
+        float sampleRateScale = sampleRateFloat / 44100.0f;
+        static constexpr int kBaseDelayLengths[4] = { 1087, 1283, 1511, 1777 };
         for (int i = 0; i < 4; ++i)
         {
-            verbAllpass[i].reset();
-            verbAllpass[i].setParams (delayLens[i], 0.5f);
+            harborVerbAllpass[i].reset();
+            int scaledLength = static_cast<int> (static_cast<float>(kBaseDelayLengths[i]) * sampleRateScale);
+            harborVerbAllpass[i].setParams (scaledLength, 0.5f);
         }
 
-        // Initialize global filters
-        tiltFilterL.reset();
-        tiltFilterR.reset();
-        fogFilterL.reset();
-        fogFilterR.reset();
-        hullFilterL.reset();
-        hullFilterR.reset();
+        // Initialize global post-processing filters
+        tiltFilterL.reset();   tiltFilterR.reset();
+        fogFilterL.reset();    fogFilterR.reset();
+        hullFilterL.reset();   hullFilterR.reset();
     }
 
     void releaseResources() override {}
 
     void reset() override
     {
-        for (auto& v : voices)
-            v.reset();
+        for (auto& voice : voices)
+            voice.reset();
 
         fluidModel.reset();
-        envelopeOutput = 0.0f;
-        couplingExcitationMod = 0.0f;
-        couplingSeaStateMod = 0.0f;
-        couplingSwellMod = 0.0f;
-        couplingPitchMod = 0.0f;
-        couplingAudioReplace = 0.0f;
-        couplingAudioReplaceActive = false;
 
+        // Reset coupling accumulators
+        peakEnvelopeOutput             = 0.0f;
+        couplingExcitationMod          = 0.0f;
+        couplingSeaStateMod            = 0.0f;
+        couplingSwellPeriodMod         = 0.0f;
+        couplingPitchMod               = 0.0f;
+        couplingAudioReplaceLevel      = 0.0f;
+        couplingAudioReplaceActive     = false;
+
+        // D005/D004 fix: reset the sea state LFO to prevent stale phase state.
+        seaStateLFO.reset();
+        seaStateLFO.setShape (0);
+        seaStateLFO.setRate (0.1f, sampleRateFloat);
+
+        // Reset harbor verb
         for (int i = 0; i < 4; ++i)
-            verbAllpass[i].reset();
+            harborVerbAllpass[i].reset();
 
-        tiltFilterL.reset();
-        tiltFilterR.reset();
-        fogFilterL.reset();
-        fogFilterR.reset();
-        hullFilterL.reset();
-        hullFilterR.reset();
+        // Reset post-processing filters
+        tiltFilterL.reset();   tiltFilterR.reset();
+        fogFilterL.reset();    fogFilterR.reset();
+        hullFilterL.reset();   hullFilterR.reset();
 
+        // Clear coupling output cache
         std::fill (outputCacheL.begin(), outputCacheL.end(), 0.0f);
         std::fill (outputCacheR.begin(), outputCacheR.end(), 0.0f);
     }
 
     //==========================================================================
-    // SynthEngine interface — Audio
+    // SynthEngine interface — Audio Rendering
     //==========================================================================
 
     void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
@@ -661,50 +930,87 @@ public:
     {
         if (numSamples <= 0) return;
 
-        // --- ParamSnapshot: read all parameters once per block ---
+        // =================================================================
+        //  ParamSnapshot: read all APVTS parameters once per block.
+        //  This is the standard XO_OX pattern — cache atomic loads at
+        //  block boundaries to avoid per-sample atomic overhead.
+        // =================================================================
+
+        // --- Core ocean parameters ---
         const float pShore             = loadParam (paramShore, 0.0f);
         const float pSeaState          = loadParam (paramSeaState, 0.2f);
         const float pSwellPeriod       = loadParam (paramSwellPeriod, 8.0f);
-        const float pWindDir           = loadParam (paramWindDir, 0.5f);
+        const float pWindDirection     = loadParam (paramWindDir, 0.5f);
         const float pDepth             = loadParam (paramDepth, 0.3f);
+
+        // --- Resonator parameters ---
         const float pResonatorBright   = loadParam (paramResonatorBright, 0.5f);
         const float pResonatorDecay    = loadParam (paramResonatorDecay, 1.0f);
         const float pSympathyAmount    = loadParam (paramSympathyAmount, 0.3f);
+
+        // --- Creature parameters ---
         const float pCreatureRate      = loadParam (paramCreatureRate, 0.2f);
         const float pCreatureDepth     = loadParam (paramCreatureDepth, 0.3f);
+
+        // --- Coherence & character ---
         const float pCoherence         = loadParam (paramCoherence, 0.7f);
         const float pFoam              = loadParam (paramFoam, 0.0f);
         const float pBrine             = loadParam (paramBrine, 0.0f);
         const float pHull              = loadParam (paramHull, 0.2f);
+
+        // --- Filter & space ---
         const float pFilterTilt        = loadParam (paramFilterTilt, 0.5f);
         const float pHarborVerb        = loadParam (paramHarborVerb, 0.2f);
         const float pFog               = loadParam (paramFog, 0.1f);
-        const float pAmpA              = loadParam (paramAmpAttack, 0.5f);
-        const float pAmpD              = loadParam (paramAmpDecay, 1.0f);
-        const float pAmpS              = loadParam (paramAmpSustain, 0.7f);
-        const float pAmpR              = loadParam (paramAmpRelease, 2.0f);
-        const float macroChar          = loadParam (paramMacroCharacter, 0.0f);
-        const float macroMove          = loadParam (paramMacroMovement, 0.0f);
-        const float macroCoup          = loadParam (paramMacroCoupling, 0.0f);
+
+        // --- Amplitude envelope ---
+        const float pAmpAttack         = loadParam (paramAmpAttack, 0.5f);
+        const float pAmpDecay          = loadParam (paramAmpDecay, 1.0f);
+        const float pAmpSustain        = loadParam (paramAmpSustain, 0.7f);
+        const float pAmpRelease        = loadParam (paramAmpRelease, 2.0f);
+
+        // --- Macros (M1-M4) ---
+        const float macroCharacter     = loadParam (paramMacroCharacter, 0.0f);
+        const float macroMovement      = loadParam (paramMacroMovement, 0.0f);
+        const float macroCoupling      = loadParam (paramMacroCoupling, 0.0f);
         const float macroSpace         = loadParam (paramMacroSpace, 0.0f);
 
-        // Compute effective sea state (base + M1 macro)
-        float effectiveSeaState = clamp (pSeaState + macroChar * 0.5f + couplingSeaStateMod, 0.0f, 1.0f);
+        // =================================================================
+        //  Compute effective (macro-modulated) parameter values
+        // =================================================================
 
-        // Effective swell period (base + coupling modulation + M2 macro)
-        float effectiveSwellPeriod = clamp (pSwellPeriod + couplingSwellMod * 5.0f
-                                            - macroMove * 4.0f, 0.5f, 30.0f);
+        // M1 (SEA STATE/CHARACTER): increases sea state and turbulence
+        float effectiveSeaState = clamp (pSeaState + macroCharacter * 0.5f
+                                         + couplingSeaStateMod, 0.0f, 1.0f);
 
-        // Effective verb amount (base + M4 macro)
-        float effectiveVerb = clamp (pHarborVerb + macroSpace * 0.4f, 0.0f, 1.0f);
+        // M2 (MOVEMENT): shortens swell period (faster wave rhythm)
+        float effectiveSwellPeriod = clamp (pSwellPeriod + couplingSwellPeriodMod * 5.0f
+                                            - macroMovement * 4.0f, 0.5f, 30.0f);
 
-        // Effective creature depth (base + coupling macro)
-        float effectiveCreatureDepth = clamp (pCreatureDepth + macroCoup * 0.3f, 0.0f, 1.0f);
+        // D005/D004 fix: advance seaStateLFO — rate scaled by M2 MOVEMENT (0.05-1.0 Hz).
+        // The LFO creates organic amplitude breathing: the sea state gently rises and falls
+        // like a slowly breathing organism at rest, or choppy waves when MOVEMENT is high.
+        // Depth is fixed at 0.15 (audible but not overwhelming — a gentle swell, not a storm).
+        float lfoRateHz = 0.05f + macroMovement * 0.95f;  // 0.05 Hz resting to 1.0 Hz active
+        seaStateLFO.setRate (lfoRateHz, sampleRateFloat);
+        float lfoOutput = seaStateLFO.process();  // [-1, +1]
+        static constexpr float kLfoSeaStateDepth = 0.15f;
+        effectiveSeaState = clamp (effectiveSeaState + lfoOutput * kLfoSeaStateDepth, 0.0f, 1.0f);
 
-        // Decompose shore for morphing
+        // M4 (SPACE): increases harbor verb wet mix
+        float effectiveVerbAmount = clamp (pHarborVerb + macroSpace * 0.4f, 0.0f, 1.0f);
+
+        // M3 (COUPLING): increases creature voice depth
+        float effectiveCreatureDepth = clamp (pCreatureDepth + macroCoupling * 0.3f, 0.0f, 1.0f);
+
+        // =================================================================
+        //  Shore morphing: decompose continuous shore position into
+        //  interpolated resonator profiles, creature voices, and
+        //  fluid character data from the ShoreSystem.
+        // =================================================================
+
         ShoreMorphState shoreState = decomposeShore (pShore);
 
-        // Morph resonator profiles, creature voices, fluid character
         ResonatorProfile morphedResonators[3];
         for (int i = 0; i < 3; ++i)
             morphedResonators[i] = morphResonator (shoreState, i);
@@ -715,86 +1021,115 @@ public:
 
         FluidCharacter morphedFluid = morphFluid (shoreState);
 
-        // Reset coupling accumulators
-        float excitationMod = couplingExcitationMod;
-        couplingExcitationMod = 0.0f;
-        couplingSeaStateMod = 0.0f;
-        couplingSwellMod = 0.0f;
-        float pitchMod = couplingPitchMod;
-        couplingPitchMod = 0.0f;
-        bool audioReplace = couplingAudioReplaceActive;
-        float audioReplaceVal = couplingAudioReplace;
-        couplingAudioReplaceActive = false;
-        couplingAudioReplace = 0.0f;
+        // =================================================================
+        //  Consume coupling accumulators (written by applyCouplingInput)
+        //  and reset for next block.
+        // =================================================================
 
-        // Update tilt filter
-        // tilt 0 = dark (low-pass at 800 Hz), tilt 1 = bright (high-pass at 800 Hz)
+        float excitationMod   = couplingExcitationMod;
+        float pitchMod        = couplingPitchMod;
+        bool  audioReplace    = couplingAudioReplaceActive;
+        float audioReplaceVal = couplingAudioReplaceLevel;
+
+        couplingExcitationMod      = 0.0f;
+        couplingSeaStateMod        = 0.0f;
+        couplingSwellPeriodMod     = 0.0f;
+        couplingPitchMod           = 0.0f;
+        couplingAudioReplaceActive = false;
+        couplingAudioReplaceLevel  = 0.0f;
+
+        // =================================================================
+        //  Configure post-processing filters for this block
+        // =================================================================
+
+        // Tilt filter: spectral balance control.
+        // At 0.0 (dark): lowpass sweeps 200-8200 Hz
+        // At 0.5 (neutral): wide open
+        // At 1.0 (bright): highpass sweeps 8200-400 Hz
         if (pFilterTilt < 0.5f)
         {
-            float cutoff = 200.0f + (pFilterTilt * 2.0f) * 8000.0f; // 200-8200 Hz LP
+            float cutoff = 200.0f + (pFilterTilt * 2.0f) * 8000.0f;
             tiltFilterL.setMode (CytomicSVF::Mode::LowPass);
             tiltFilterR.setMode (CytomicSVF::Mode::LowPass);
-            tiltFilterL.setCoefficients (cutoff, 0.3f, srf);
-            tiltFilterR.setCoefficients (cutoff, 0.3f, srf);
+            tiltFilterL.setCoefficients (cutoff, 0.3f, sampleRateFloat);
+            tiltFilterR.setCoefficients (cutoff, 0.3f, sampleRateFloat);
         }
         else
         {
-            float cutoff = 8200.0f - ((pFilterTilt - 0.5f) * 2.0f) * 7800.0f; // 8200-400 Hz HP
+            float cutoff = 8200.0f - ((pFilterTilt - 0.5f) * 2.0f) * 7800.0f;
             tiltFilterL.setMode (CytomicSVF::Mode::HighPass);
             tiltFilterR.setMode (CytomicSVF::Mode::HighPass);
-            tiltFilterL.setCoefficients (cutoff, 0.3f, srf);
-            tiltFilterR.setCoefficients (cutoff, 0.3f, srf);
+            tiltFilterL.setCoefficients (cutoff, 0.3f, sampleRateFloat);
+            tiltFilterR.setCoefficients (cutoff, 0.3f, sampleRateFloat);
         }
 
-        // Update fog filter (gentle LP)
-        float fogCutoff = 20000.0f - pFog * 16000.0f; // 20kHz -> 4kHz
+        // Fog filter: gentle lowpass HF rolloff (simulates sound in fog/mist).
+        // At pFog=0: 20kHz (transparent). At pFog=1: 4kHz (muffled).
+        float fogCutoff = 20000.0f - pFog * 16000.0f;
         fogFilterL.setMode (CytomicSVF::Mode::LowPass);
         fogFilterR.setMode (CytomicSVF::Mode::LowPass);
-        fogFilterL.setCoefficients (fogCutoff, 0.1f, srf);
-        fogFilterR.setCoefficients (fogCutoff, 0.1f, srf);
+        fogFilterL.setCoefficients (fogCutoff, 0.1f, sampleRateFloat);
+        fogFilterR.setCoefficients (fogCutoff, 0.1f, sampleRateFloat);
 
-        // Update hull filter (resonant LP for body)
-        float hullCutoff = 150.0f + pHull * 600.0f; // 150-750 Hz
-        float hullRes = 0.3f + pHull * 0.5f;
+        // Hull filter: resonant lowpass for body resonance (the boat itself).
+        // Cutoff 150-750 Hz with increasing resonance — models the wooden
+        // body of a vessel amplifying low-mid frequencies.
+        float hullCutoff    = 150.0f + pHull * 600.0f;
+        float hullResonance = 0.3f + pHull * 0.5f;
         hullFilterL.setMode (CytomicSVF::Mode::LowPass);
         hullFilterR.setMode (CytomicSVF::Mode::LowPass);
-        hullFilterL.setCoefficients (hullCutoff, hullRes, srf);
-        hullFilterR.setCoefficients (hullCutoff, hullRes, srf);
+        hullFilterL.setCoefficients (hullCutoff, hullResonance, sampleRateFloat);
+        hullFilterR.setCoefficients (hullCutoff, hullResonance, sampleRateFloat);
 
-        // Verb feedback based on verb amount
-        float verbFb = 0.3f + effectiveVerb * 0.35f; // 0.3 to 0.65
+        // Harbor verb feedback: higher verb amount = longer diffusion tail.
+        // Range 0.3-0.65 keeps the verb stable (no runaway feedback).
+        float verbFeedback = 0.3f + effectiveVerbAmount * 0.35f;
         for (int i = 0; i < 4; ++i)
-            verbAllpass[i].feedback = verbFb;
+            harborVerbAllpass[i].feedbackCoeff = verbFeedback;
 
-        // --- Process MIDI events ---
+        // =================================================================
+        //  Process MIDI events
+        // =================================================================
+
         for (const auto metadata : midi)
         {
             const auto msg = metadata.getMessage();
+
             if (msg.isNoteOn())
-                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
-                        pAmpA, pAmpD, pAmpS, pAmpR,
-                        morphedResonators, morphedCreatures, morphedFluid,
-                        effectiveSeaState, pResonatorBright, pResonatorDecay,
-                        pCreatureRate);
+            {
+                handleNoteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
+                              pAmpAttack, pAmpDecay, pAmpSustain, pAmpRelease,
+                              morphedResonators, morphedCreatures, morphedFluid,
+                              effectiveSeaState, pResonatorBright, pResonatorDecay,
+                              pCreatureRate);
+            }
             else if (msg.isNoteOff())
-                noteOff (msg.getNoteNumber());
+            {
+                handleNoteOff (msg.getNoteNumber());
+            }
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
+            {
                 reset();
+            }
         }
 
-        float peakEnv = 0.0f;
+        float blockPeakEnvelope = 0.0f;
 
-        // --- Render sample loop ---
-        for (int sample = 0; sample < numSamples; ++sample)
+        // =================================================================
+        //  Per-sample render loop
+        // =================================================================
+
+        for (int sampleIndex = 0; sampleIndex < numSamples; ++sampleIndex)
         {
-            // Global fluid energy (one instance, not per-voice)
+            // --- Global fluid energy (one instance shared by all voices) ---
             float fluidEnergy = fluidModel.process (effectiveSeaState, effectiveSwellPeriod,
-                                                     morphedFluid, srf);
+                                                     morphedFluid, sampleRateFloat);
 
-            // Apply coupling excitation modulation
+            // Add coupling excitation modulation (from external engines)
             float excitation = fluidEnergy + excitationMod * 0.3f;
 
-            // If AudioToWavetable is active, replace excitation source
+            // AudioToWavetable coupling: external audio replaces the
+            // fluid model entirely as the excitation source
             if (audioReplace)
                 excitation = audioReplaceVal;
 
@@ -804,7 +1139,7 @@ public:
             {
                 if (!voice.active) continue;
 
-                // --- Voice-stealing crossfade (5ms) ---
+                // --- Voice-stealing crossfade (5ms linear ramp) ---
                 if (voice.fadingOut)
                 {
                     voice.fadeGain -= crossfadeRate;
@@ -817,295 +1152,381 @@ public:
                 }
 
                 // --- Glide (portamento) ---
-                voice.currentTargetFreq += (voice.targetFreq - voice.currentTargetFreq)
-                                           * voice.glideCoeff;
+                voice.currentGlideFrequency += (voice.targetFrequency - voice.currentGlideFrequency)
+                                               * voice.glideCoefficient;
 
-                // --- Envelope ---
-                float ampLevel = voice.ampEnv.process();
+                // --- Amplitude envelope tick ---
+                float envelopeLevel = voice.amplitudeEnvelope.process();
 
-                if (!voice.ampEnv.isActive())
+                if (!voice.amplitudeEnvelope.isActive())
                 {
                     voice.active = false;
                     continue;
                 }
 
-                // --- Control-rate update (~2kHz) ---
+                // --- Control-rate coefficient update (~2kHz) ---
+                // Resonator coefficients only need updating when pitch or
+                // shore parameters change. At audio rate this would waste
+                // ~80% of CPU on redundant trig computations.
                 voice.controlCounter++;
-                if (voice.controlCounter >= controlRateDiv)
+                if (voice.controlCounter >= controlRateDivisor)
                 {
                     voice.controlCounter = 0;
 
-                    float baseFreq = voice.currentTargetFreq;
+                    float baseFrequency = voice.currentGlideFrequency;
 
-                    // Apply pitch coupling modulation
+                    // Apply pitch coupling modulation (+/- half octave range)
                     if (std::fabs (pitchMod) > 0.001f)
-                        baseFreq *= fastPow2 (pitchMod * 0.5f); // +/- half octave range
+                        baseFrequency *= fastPow2 (pitchMod * 0.5f);
 
-                    // Update resonator coefficients based on shore + note pitch
-                    // 3 instrument groups x 4 formants = 12 resonators
-                    for (int inst = 0; inst < 3; ++inst)
+                    // Update resonator coefficients: 3 instrument groups x 4 formants
+                    for (int instrumentGroup = 0; instrumentGroup < 3; ++instrumentGroup)
                     {
-                        const auto& profile = morphedResonators[inst];
-                        for (int f = 0; f < 4; ++f)
+                        const auto& profile = morphedResonators[instrumentGroup];
+                        for (int formantIndex = 0; formantIndex < 4; ++formantIndex)
                         {
-                            int idx = inst * 4 + f;
-                            // Scale formant frequency relative to note
-                            float freqRatio = profile.formantFreqs[f] / 440.0f;
-                            float resFreq = baseFreq * freqRatio;
-                            resFreq = clamp (resFreq, 20.0f, srf * 0.45f);
+                            int resonatorIndex = instrumentGroup * 4 + formantIndex;
 
-                            // Apply brightness: boost high formants
-                            float brightGain = profile.formantGains[f];
-                            if (f >= 2)
-                                brightGain *= (0.5f + pResonatorBright * 1.0f);
+                            // Scale formant frequency relative to MIDI note.
+                            // The profile stores absolute frequencies based on
+                            // A440 reference — divide by 440 to get the ratio,
+                            // then multiply by the note's actual frequency.
+                            float frequencyRatio = profile.formantFreqs[formantIndex] / 440.0f;
+                            float resonatorFreq = baseFrequency * frequencyRatio;
+                            resonatorFreq = clamp (resonatorFreq, 20.0f, sampleRateFloat * 0.45f);
+
+                            // Brightness: boost upper formants (indices 2,3),
+                            // slightly attenuate lower formants (indices 0,1)
+                            float formantGain = profile.formantGains[formantIndex];
+                            if (formantIndex >= 2)
+                                formantGain *= (0.5f + pResonatorBright * 1.0f);
                             else
-                                brightGain *= (1.0f - pResonatorBright * 0.3f);
+                                formantGain *= (1.0f - pResonatorBright * 0.3f);
 
-                            // Wind direction shifts energy distribution
-                            float windShift = (pWindDir - 0.5f) * 2.0f; // [-1, 1]
-                            if (f < 2)
-                                brightGain *= (1.0f - windShift * 0.3f);
+                            // Wind direction shifts spectral energy distribution.
+                            // windShift [-1,+1]: negative = energy toward low formants,
+                            // positive = energy toward high formants.
+                            float windShift = (pWindDirection - 0.5f) * 2.0f;
+                            if (formantIndex < 2)
+                                formantGain *= (1.0f - windShift * 0.3f);
                             else
-                                brightGain *= (1.0f + windShift * 0.3f);
+                                formantGain *= (1.0f + windShift * 0.3f);
 
-                            brightGain = clamp (brightGain, 0.0f, 1.5f);
+                            formantGain = clamp (formantGain, 0.0f, 1.5f);
 
-                            // Decay -> bandwidth (longer decay = narrower bandwidth)
-                            float bw = profile.formantBandwidths[f] / (0.5f + pResonatorDecay);
-                            bw = clamp (bw, 5.0f, 2000.0f);
+                            // Resonator decay controls bandwidth: longer decay =
+                            // narrower bandwidth = more tonal, ringing character.
+                            float resonatorBandwidth = profile.formantBandwidths[formantIndex]
+                                                       / (0.5f + pResonatorDecay);
+                            resonatorBandwidth = clamp (resonatorBandwidth, 5.0f, 2000.0f);
 
-                            // Depth: at high depth, attenuate surface-oriented high formants
-                            if (f >= 2)
-                                brightGain *= (1.0f - pDepth * 0.5f);
+                            // Depth: at high depth, attenuate surface-oriented
+                            // high formants (water absorbs high frequencies)
+                            if (formantIndex >= 2)
+                                formantGain *= (1.0f - pDepth * 0.5f);
 
-                            voice.resonators[static_cast<size_t>(idx)].setCoefficients (
-                                resFreq, bw, brightGain, srf);
+                            voice.resonators[static_cast<size_t>(resonatorIndex)].setCoefficients (
+                                resonatorFreq, resonatorBandwidth, formantGain, sampleRateFloat);
                         }
                     }
 
-                    // 4 sympathetic resonators (indices 12-15)
-                    // Tuned to harmonics of the fundamental
-                    float sympathyRatios[4] = { 2.0f, 3.0f, 4.0f, 5.0f };
-                    for (int s = 0; s < 4; ++s)
+                    // Sympathetic resonators (indices 12-15): tuned to
+                    // harmonics 2, 3, 4, 5 of the fundamental. These model
+                    // the sympathetic vibration of unstruck strings on
+                    // instruments like sitar, harp, and piano.
+                    static constexpr float kSympathyHarmonicRatios[4] = { 2.0f, 3.0f, 4.0f, 5.0f };
+                    for (int sympatheticIndex = 0; sympatheticIndex < 4; ++sympatheticIndex)
                     {
-                        int idx = 12 + s;
-                        float sFreq = baseFreq * sympathyRatios[s];
-                        sFreq = clamp (sFreq, 20.0f, srf * 0.45f);
-                        float sGain = pSympathyAmount * (0.5f - static_cast<float>(s) * 0.1f);
-                        sGain = clamp (sGain, 0.0f, 1.0f);
-                        float sBw = 50.0f + (1.0f - pResonatorDecay * 0.1f) * 100.0f;
-                        sBw = clamp (sBw, 10.0f, 500.0f);
-                        voice.resonators[static_cast<size_t>(idx)].setCoefficients (
-                            sFreq, sBw, sGain, srf);
+                        int resonatorIndex = 12 + sympatheticIndex;
+                        float sympatheticFreq = baseFrequency * kSympathyHarmonicRatios[sympatheticIndex];
+                        sympatheticFreq = clamp (sympatheticFreq, 20.0f, sampleRateFloat * 0.45f);
+
+                        // Higher harmonics get progressively quieter (0.5, 0.4, 0.3, 0.2)
+                        float sympatheticGain = pSympathyAmount
+                                                * (0.5f - static_cast<float>(sympatheticIndex) * 0.1f);
+                        sympatheticGain = clamp (sympatheticGain, 0.0f, 1.0f);
+
+                        float sympatheticBandwidth = 50.0f + (1.0f - pResonatorDecay * 0.1f) * 100.0f;
+                        sympatheticBandwidth = clamp (sympatheticBandwidth, 10.0f, 500.0f);
+
+                        voice.resonators[static_cast<size_t>(resonatorIndex)].setCoefficients (
+                            sympatheticFreq, sympatheticBandwidth, sympatheticGain, sampleRateFloat);
                     }
 
-                    // Update creature formant targets
-                    for (int c = 0; c < 3; ++c)
+                    // Update creature formant targets and trigger new vocalizations
+                    for (int creatureIndex = 0; creatureIndex < 3; ++creatureIndex)
                     {
-                        auto& creature = voice.creatures[static_cast<size_t>(c)];
-                        creature.configure (morphedCreatures[c], srf);
+                        auto& creature = voice.creatures[static_cast<size_t>(creatureIndex)];
+                        creature.configure (morphedCreatures[creatureIndex], sampleRateFloat);
 
-                        // Trigger creatures based on rate and sea state
+                        // Stochastic creature triggering: probability increases
+                        // with both creature rate and sea state (stormier seas
+                        // provoke more vocalizations — birds call in wind, etc.)
                         if (!creature.active)
                         {
-                            float triggerChance = pCreatureRate * effectiveSeaState *
-                                                  controlDt * 0.5f;
-                            if (voice.nextRandomUni() < triggerChance)
+                            float triggerProbability = pCreatureRate * effectiveSeaState
+                                                      * controlRateDeltaTime * 0.5f;
+                            if (voice.nextRandomUnipolar() < triggerProbability)
                             {
                                 creature.active = true;
-                                creature.trigger (srf);
+                                creature.trigger (sampleRateFloat);
                             }
                         }
                     }
                 }
 
-                // --- Audio-rate processing ---
-                float voiceOut = 0.0f;
+                // =============================================================
+                //  Audio-rate processing
+                // =============================================================
 
-                // Excite resonators with fluid energy
-                // Add per-voice noise variation for decoherence
-                float voiceExcitation = excitation + voice.nextRandom() *
-                                        (1.0f - pCoherence) * 0.1f;
+                float voiceOutput = 0.0f;
 
-                // Process all 16 resonators
+                // Per-voice noise injection for decoherence: at low coherence,
+                // each voice receives slightly different excitation, creating
+                // the scattered quality of wind-driven waves.
+                float voiceExcitation = excitation + voice.nextRandomBipolar()
+                                        * (1.0f - pCoherence) * 0.1f;
+
+                // --- Process all 16 resonators ---
                 float resonatorSum = 0.0f;
-                for (int r = 0; r < kNumResonators; ++r)
+                for (int resonatorIndex = 0; resonatorIndex < kNumResonators; ++resonatorIndex)
                 {
-                    float resOut = voice.resonators[static_cast<size_t>(r)].process (voiceExcitation);
+                    float resonatorOutput = voice.resonators[static_cast<size_t>(resonatorIndex)]
+                                            .process (voiceExcitation);
 
-                    // Coherence: at high coherence, apply phase alignment (gentle LP on output)
+                    // Coherence control: at high coherence (>0.5), gently
+                    // lowpass each resonator's output to align their phases.
+                    // This makes the sound more tonal and less chaotic —
+                    // like calm water vs. choppy surf.
                     if (pCoherence > 0.5f)
                     {
-                        float coherenceFactor = (pCoherence - 0.5f) * 2.0f; // 0-1
-                        voice.coherencePhases[r] += (resOut - voice.coherencePhases[r])
-                                                    * (0.1f + coherenceFactor * 0.4f);
-                        voice.coherencePhases[r] = flushDenormal (voice.coherencePhases[r]);
-                        resOut = lerp (resOut, voice.coherencePhases[r], coherenceFactor * 0.5f);
+                        float coherenceFactor = (pCoherence - 0.5f) * 2.0f;  // remap 0.5-1.0 -> 0.0-1.0
+                        float smoothingRate = 0.1f + coherenceFactor * 0.4f;
+
+                        voice.coherenceStates[resonatorIndex] +=
+                            (resonatorOutput - voice.coherenceStates[resonatorIndex]) * smoothingRate;
+                        // Flush denormals in coherence feedback state
+                        voice.coherenceStates[resonatorIndex] =
+                            flushDenormal (voice.coherenceStates[resonatorIndex]);
+
+                        resonatorOutput = lerp (resonatorOutput,
+                                                voice.coherenceStates[resonatorIndex],
+                                                coherenceFactor * 0.5f);
                     }
 
-                    resonatorSum += resOut;
+                    resonatorSum += resonatorOutput;
                 }
 
-                // Sympathetic coupling: feed sum back into sympathetic resonators
+                // Sympathetic coupling: feed the resonator sum back into the
+                // sympathetic resonators (indices 12-15). This models how
+                // acoustic instruments have strings that vibrate in sympathy
+                // with the played note — a piano's undamped strings ring
+                // when a chord is struck nearby.
                 if (pSympathyAmount > 0.01f)
                 {
                     float sympathyFeedback = resonatorSum * pSympathyAmount * 0.05f;
-                    for (int s = 12; s < 16; ++s)
+                    for (int sympatheticIndex = 12; sympatheticIndex < 16; ++sympatheticIndex)
                     {
-                        voice.resonators[static_cast<size_t>(s)].s1 +=
+                        voice.resonators[static_cast<size_t>(sympatheticIndex)].state1 +=
                             flushDenormal (sympathyFeedback * 0.1f);
                     }
                 }
 
-                // Normalize resonator output
-                voiceOut = resonatorSum * (1.0f / 6.0f); // ~sqrt(16) normalization
+                // Normalize resonator output. 1/6 approximates 1/sqrt(16)
+                // which is the theoretical normalization for summing 16
+                // uncorrelated signals to maintain consistent output level.
+                static constexpr float kResonatorNormalization = 1.0f / 6.0f;
+                voiceOutput = resonatorSum * kResonatorNormalization;
 
-                // Mix in creature voice formant output
-                float creatureOut = 0.0f;
-                float creatureExcitation = voice.nextRandom() * 0.5f + fluidEnergy * 0.5f;
-                for (int c = 0; c < 3; ++c)
+                // --- Mix in creature voice formant output ---
+                float creatureOutput = 0.0f;
+                float creatureExcitation = voice.nextRandomBipolar() * 0.5f + fluidEnergy * 0.5f;
+                for (int creatureIndex = 0; creatureIndex < 3; ++creatureIndex)
                 {
-                    creatureOut += voice.creatures[static_cast<size_t>(c)].process (
-                        srf, creatureExcitation);
+                    creatureOutput += voice.creatures[static_cast<size_t>(creatureIndex)].process (
+                        sampleRateFloat, creatureExcitation);
                 }
-                voiceOut += creatureOut * effectiveCreatureDepth;
+                voiceOutput += creatureOutput * effectiveCreatureDepth;
 
                 // --- DC Blocker (1-pole highpass at ~5Hz) ---
-                constexpr float dcCoeff = 0.9975f;
-                float monoIn = voiceOut;
-                float dcOutL = monoIn - voice.dcPrevInL + dcCoeff * voice.dcPrevOutL;
-                voice.dcPrevInL = monoIn;
-                voice.dcPrevOutL = flushDenormal (dcOutL);
-                voiceOut = dcOutL;
+                // Removes DC offset that can accumulate from asymmetric
+                // excitation patterns and creature formant filtering.
+                // The coefficient 0.9975 places the -3dB point at ~5Hz
+                // at 44.1kHz: f = (1-R) * sr / (2*pi) where R=0.9975.
+                static constexpr float kDcBlockerCoefficient = 0.9975f;
+                float dcInput = voiceOutput;
+                float dcOutput = dcInput - voice.dcPreviousInputL
+                                 + kDcBlockerCoefficient * voice.dcPreviousOutputL;
+                voice.dcPreviousInputL  = dcInput;
+                voice.dcPreviousOutputL = flushDenormal (dcOutput);
+                voiceOutput = dcOutput;
 
-                // --- Soft limiter (tanh) ---
-                voiceOut = fastTanh (voiceOut * 1.5f);
+                // --- Soft limiter (tanh saturation) ---
+                // 1.5x overdrive into tanh provides gentle compression.
+                // Prevents harsh digital clipping while adding warmth.
+                voiceOutput = fastTanh (voiceOutput * 1.5f);
 
                 // --- Apply amplitude envelope, velocity, and crossfade ---
-                float gain = ampLevel * voice.velocity * voice.fadeGain;
-                voiceOut *= gain;
+                float voiceGain = envelopeLevel * voice.velocity * voice.fadeGain;
+                voiceOutput *= voiceGain;
 
-                // Create stereo spread from per-voice detuning/panning
-                // Use voice index and note for consistent stereo image
-                float voicePan = static_cast<float> (voice.noteNumber % 12) / 12.0f - 0.5f;
-                voicePan *= 0.6f; // limit spread
-                float panAngle = (voicePan + 1.0f) * 0.25f * kPI;
-                float panL = std::cos (panAngle);
-                float panR = std::sin (panAngle);
+                // --- Stereo placement ---
+                // Spread voices across the stereo field based on pitch class.
+                // Each of the 12 pitch classes gets a consistent pan position,
+                // creating a natural spatial distribution without random panning.
+                float voicePanPosition = static_cast<float> (voice.noteNumber % 12) / 12.0f - 0.5f;
+                static constexpr float kMaxStereoSpread = 0.6f;  // limit to prevent hard-panning
+                voicePanPosition *= kMaxStereoSpread;
 
-                float voiceL = voiceOut * panL;
-                float voiceR = voiceOut * panR;
+                // Constant-power pan law (cos/sin)
+                float panAngle = (voicePanPosition + 1.0f) * 0.25f * kPi;
+                float panGainL = std::cos (panAngle);
+                float panGainR = std::sin (panAngle);
 
-                // Denormal protection on outputs
+                float voiceL = voiceOutput * panGainL;
+                float voiceR = voiceOutput * panGainR;
+
+                // Final per-voice denormal protection before accumulation
                 voiceL = flushDenormal (voiceL);
                 voiceR = flushDenormal (voiceR);
 
                 mixL += voiceL;
                 mixR += voiceR;
 
-                peakEnv = std::max (peakEnv, ampLevel);
+                blockPeakEnvelope = std::max (blockPeakEnvelope, envelopeLevel);
             }
 
-            // --- Post-processing (applied to stereo sum) ---
+            // =============================================================
+            //  Post-processing chain (applied to stereo voice sum)
+            //
+            //  Signal flow:
+            //    Tilt -> Foam -> Brine -> Hull -> Fog -> Harbor Verb
+            // =============================================================
 
-            // Apply tilt filter
+            // --- Tilt filter: spectral balance ---
             mixL = tiltFilterL.processSample (mixL);
             mixR = tiltFilterR.processSample (mixR);
 
-            // Apply foam (softClip with drive)
+            // --- Foam: HF saturation (whitecap spray) ---
+            // Soft-clipping with variable drive models the fizzy,
+            // airy quality of breaking wave crests.
             if (pFoam > 0.01f)
             {
-                float foamDrive = 1.0f + pFoam * 8.0f; // 1-9x drive
-                mixL = softClip (mixL * foamDrive) / foamDrive * (1.0f + pFoam * 0.5f);
-                mixR = softClip (mixR * foamDrive) / foamDrive * (1.0f + pFoam * 0.5f);
+                float foamDriveAmount = 1.0f + pFoam * 8.0f;  // 1-9x drive
+                // Drive into softClip, then normalize + slight makeup gain
+                mixL = softClip (mixL * foamDriveAmount) / foamDriveAmount * (1.0f + pFoam * 0.5f);
+                mixR = softClip (mixR * foamDriveAmount) / foamDriveAmount * (1.0f + pFoam * 0.5f);
             }
 
-            // Apply brine (subtle bit reduction)
+            // --- Brine: subtle bit reduction (salt crystal) ---
+            // Quantizes amplitude to simulate the granular quality
+            // of sound through salt-laden air.
             if (pBrine > 0.01f)
             {
-                float bitDepth = 16.0f - pBrine * 12.0f; // 16 -> 4 bit
-                float levels = fastPow2 (bitDepth);
-                float invLevels = 1.0f / levels;
-                mixL = std::floor (mixL * levels) * invLevels;
-                mixR = std::floor (mixR * levels) * invLevels;
+                float effectiveBitDepth = 16.0f - pBrine * 12.0f;  // 16-bit -> 4-bit
+                float quantizationLevels = fastPow2 (effectiveBitDepth);
+                float inverseQuantization = 1.0f / quantizationLevels;
+                mixL = std::floor (mixL * quantizationLevels) * inverseQuantization;
+                mixR = std::floor (mixR * quantizationLevels) * inverseQuantization;
             }
 
-            // Apply hull (body resonance — mix in filtered version)
+            // --- Hull: body resonance (the boat) ---
+            // Parallel mix of resonant lowpass adds wooden body character,
+            // like sound resonating inside a vessel's hull.
             if (pHull > 0.01f)
             {
-                float hullL = hullFilterL.processSample (mixL);
-                float hullR = hullFilterR.processSample (mixR);
-                mixL += hullL * pHull * 0.5f;
-                mixR += hullR * pHull * 0.5f;
+                float hullResonanceL = hullFilterL.processSample (mixL);
+                float hullResonanceR = hullFilterR.processSample (mixR);
+                mixL += hullResonanceL * pHull * 0.5f;
+                mixR += hullResonanceR * pHull * 0.5f;
             }
 
-            // Apply fog (gentle LP)
+            // --- Fog: gentle LP rolloff ---
             mixL = fogFilterL.processSample (mixL);
             mixR = fogFilterR.processSample (mixR);
 
-            // Apply harbor verb (simple allpass chain)
-            if (effectiveVerb > 0.01f)
+            // --- Harbor verb: 4-stage allpass diffusion network ---
+            if (effectiveVerbAmount > 0.01f)
             {
-                float verbInL = mixL;
-                float verbInR = mixR;
+                float verbInputL = mixL;
+                float verbInputR = mixR;
 
-                // Process through 4 allpass delays (L channel uses 0,1; R uses 2,3)
-                float verbL = verbAllpass[0].process (verbInL);
-                verbL = verbAllpass[1].process (verbL);
-                float verbR = verbAllpass[2].process (verbInR);
-                verbR = verbAllpass[3].process (verbR);
+                // L channel through allpass stages 0,1; R through 2,3
+                float verbOutputL = harborVerbAllpass[0].process (verbInputL);
+                verbOutputL = harborVerbAllpass[1].process (verbOutputL);
+                float verbOutputR = harborVerbAllpass[2].process (verbInputR);
+                verbOutputR = harborVerbAllpass[3].process (verbOutputR);
 
-                // Cross-feed for stereo width
-                float crossFeed = 0.15f;
-                float finalVerbL = verbL + verbR * crossFeed;
-                float finalVerbR = verbR + verbL * crossFeed;
+                // Cross-feed between L/R for stereo width in the verb tail.
+                // 15% creates subtle width without comb-filtering artifacts.
+                static constexpr float kVerbCrossfeedAmount = 0.15f;
+                float diffusedL = verbOutputL + verbOutputR * kVerbCrossfeedAmount;
+                float diffusedR = verbOutputR + verbOutputL * kVerbCrossfeedAmount;
 
-                mixL = mixL * (1.0f - effectiveVerb) + finalVerbL * effectiveVerb;
-                mixR = mixR * (1.0f - effectiveVerb) + finalVerbR * effectiveVerb;
+                // Wet/dry mix
+                mixL = mixL * (1.0f - effectiveVerbAmount) + diffusedL * effectiveVerbAmount;
+                mixR = mixR * (1.0f - effectiveVerbAmount) + diffusedR * effectiveVerbAmount;
             }
 
-            // Final denormal protection
+            // Final denormal protection on master output.
+            // This is the last line of defense — catches any denormals
+            // that leaked through the post-processing chain.
             mixL = flushDenormal (mixL);
             mixR = flushDenormal (mixR);
 
-            // Write to output buffer
+            // --- Write to output buffer ---
             if (buffer.getNumChannels() >= 2)
             {
-                buffer.addSample (0, sample, mixL);
-                buffer.addSample (1, sample, mixR);
+                buffer.addSample (0, sampleIndex, mixL);
+                buffer.addSample (1, sampleIndex, mixR);
             }
             else if (buffer.getNumChannels() == 1)
             {
-                buffer.addSample (0, sample, (mixL + mixR) * 0.5f);
+                buffer.addSample (0, sampleIndex, (mixL + mixR) * 0.5f);
             }
 
-            // Cache for coupling reads
-            if (sample < static_cast<int> (outputCacheL.size()))
+            // --- Cache for coupling reads (other engines read our output) ---
+            if (sampleIndex < static_cast<int> (outputCacheL.size()))
             {
-                outputCacheL[static_cast<size_t> (sample)] = mixL;
-                outputCacheR[static_cast<size_t> (sample)] = mixR;
+                outputCacheL[static_cast<size_t> (sampleIndex)] = mixL;
+                outputCacheR[static_cast<size_t> (sampleIndex)] = mixR;
             }
         }
 
-        envelopeOutput = peakEnv;
+        peakEnvelopeOutput = blockPeakEnvelope;
 
-        // Update active voice count (atomic for thread-safe read from UI)
+        // Update active voice count for UI display
         int count = 0;
-        for (const auto& v : voices)
-            if (v.active) ++count;
-        activeVoices = count;
+        for (const auto& voice : voices)
+            if (voice.active) ++count;
+        activeVoiceCount = count;
     }
 
     //==========================================================================
     // SynthEngine interface — Coupling
+    //
+    // Output channels:
+    //   0 = Left audio (post-processing)
+    //   1 = Right audio (post-processing)
+    //   2 = Peak envelope level (for amplitude-driven coupling)
+    //
+    // Input types:
+    //   AudioToFM       -> adds to resonator excitation energy
+    //   AmpToFilter     -> modulates effective sea state
+    //   EnvToMorph      -> modulates swell period
+    //   LFOToPitch      -> modulates resonator tuning (+/- semitones)
+    //   AudioToWavetable -> replaces fluid excitation with external audio
+    //
+    // Rejected: AmpToChoke (the ocean doesn't stop),
+    //           PitchToPitch (creates mud with resonator tuning)
     //==========================================================================
 
     float getSampleForCoupling (int channel, int sampleIndex) const override
     {
-        auto si = static_cast<size_t> (sampleIndex);
-        if (channel == 0 && si < outputCacheL.size()) return outputCacheL[si];
-        if (channel == 1 && si < outputCacheR.size()) return outputCacheR[si];
-        if (channel == 2) return envelopeOutput;
+        auto index = static_cast<size_t> (sampleIndex);
+        if (channel == 0 && index < outputCacheL.size()) return outputCacheL[index];
+        if (channel == 1 && index < outputCacheR.size()) return outputCacheR[index];
+        if (channel == 2) return peakEnvelopeOutput;
         return 0.0f;
     }
 
@@ -1115,41 +1536,47 @@ public:
         switch (type)
         {
             case CouplingType::AudioToFM:
-                // External audio -> add to resonator excitation energy
+                // External audio adds to resonator excitation energy.
+                // 0.5 scaling prevents overwhelming the fluid model.
                 couplingExcitationMod += amount * 0.5f;
                 break;
 
             case CouplingType::AmpToFilter:
-                // External amplitude modulates sea state
+                // External amplitude modulates sea state (louder = stormier).
+                // 0.3 scaling keeps modulation musical.
                 couplingSeaStateMod += amount * 0.3f;
                 break;
 
             case CouplingType::EnvToMorph:
-                // External envelope modulates swell period
-                couplingSwellMod += amount * 0.4f;
+                // External envelope modulates swell period (faster/slower waves).
+                couplingSwellPeriodMod += amount * 0.4f;
                 break;
 
             case CouplingType::LFOToPitch:
-                // External LFO modulates resonator tuning
+                // External LFO modulates resonator tuning offset.
+                // 0.2 scaling = max +/- ~2.4 semitones at full amount.
                 couplingPitchMod += amount * 0.2f;
                 break;
 
             case CouplingType::AudioToWavetable:
             {
-                // External audio replaces resonator excitation source
+                // External audio replaces the fluid energy model entirely
+                // as the resonator excitation source. Uses RMS of the source
+                // buffer to derive a smooth energy level.
                 couplingAudioReplaceActive = true;
                 if (sourceBuffer != nullptr && numSamples > 0)
                 {
-                    // Use RMS of source buffer as excitation level
-                    float sum = 0.0f;
-                    int n = std::min (numSamples, 64);
-                    for (int i = 0; i < n; ++i)
-                        sum += sourceBuffer[i] * sourceBuffer[i];
-                    couplingAudioReplace = std::sqrt (sum / static_cast<float> (n)) * amount;
+                    float sumOfSquares = 0.0f;
+                    int samplesToAnalyze = std::min (numSamples, 64);  // cap analysis to 64 samples
+                    for (int i = 0; i < samplesToAnalyze; ++i)
+                        sumOfSquares += sourceBuffer[i] * sourceBuffer[i];
+                    couplingAudioReplaceLevel = std::sqrt (sumOfSquares
+                                                          / static_cast<float> (samplesToAnalyze))
+                                               * amount;
                 }
                 else
                 {
-                    couplingAudioReplace = amount * 0.5f;
+                    couplingAudioReplaceLevel = amount * 0.5f;
                 }
                 break;
             }
@@ -1320,244 +1747,279 @@ public:
 
     juce::String getEngineId() const override { return "Osprey"; }
 
+    // Azulejo Blue #1B4F8A — the blue of Portuguese coastal tiles,
+    // where ocean meets architecture, nature meets craft.
     juce::Colour getAccentColour() const override { return juce::Colour (0xFF1B4F8A); }
 
     int getMaxVoices() const override { return kMaxVoices; }
 
-    int getActiveVoiceCount() const override { return activeVoices; }
+    int getActiveVoiceCount() const override { return activeVoiceCount; }
 
 private:
     //==========================================================================
-    // Helper: safe parameter load
+    // Helper: safe atomic parameter load
     //==========================================================================
 
-    static float loadParam (std::atomic<float>* p, float fallback) noexcept
+    static float loadParam (std::atomic<float>* param, float fallback) noexcept
     {
-        return (p != nullptr) ? p->load() : fallback;
+        return (param != nullptr) ? param->load() : fallback;
     }
 
     //==========================================================================
     // MIDI note handling
     //==========================================================================
 
-    void noteOn (int noteNumber, float velocity,
-                 float ampA, float ampD, float ampS, float ampR,
-                 const ResonatorProfile* morphedResonators,
-                 const CreatureVoice* morphedCreatures,
-                 const FluidCharacter& morphedFluid,
-                 float seaState, float resBright, float resDecay,
-                 float creatureRate)
+    void handleNoteOn (int noteNumber, float velocity,
+                       float ampAttack, float ampDecay, float ampSustain, float ampRelease,
+                       const ResonatorProfile* morphedResonators,
+                       const CreatureVoice* morphedCreatures,
+                       const FluidCharacter& morphedFluid,
+                       float seaState, float resonatorBrightness, float resonatorDecay,
+                       float creatureRate)
     {
-        float freq = midiToHz (static_cast<float> (noteNumber));
+        float frequency = midiNoteToHz (static_cast<float> (noteNumber));
 
-        // Find a free voice or steal the oldest
-        int idx = findFreeVoice();
-        auto& voice = voices[static_cast<size_t> (idx)];
+        // Find a free voice or steal the oldest (LRU)
+        int voiceIndex = findFreeVoice();
+        auto& voice = voices[static_cast<size_t> (voiceIndex)];
 
-        // If stealing, initiate crossfade
+        // If stealing an active voice, initiate 5ms crossfade
         if (voice.active)
         {
             voice.fadingOut = true;
             voice.fadeGain = std::min (voice.fadeGain, 0.5f);
         }
 
-        initVoice (voice, noteNumber, velocity, freq,
-                   ampA, ampD, ampS, ampR,
-                   morphedResonators, morphedCreatures, morphedFluid,
-                   seaState, resBright, resDecay, creatureRate);
+        initializeVoice (voice, noteNumber, velocity, frequency,
+                         ampAttack, ampDecay, ampSustain, ampRelease,
+                         morphedResonators, morphedCreatures, morphedFluid,
+                         seaState, resonatorBrightness, resonatorDecay,
+                         creatureRate);
     }
 
-    void initVoice (OspreyVoice& voice, int noteNumber, float velocity, float freq,
-                    float ampA, float ampD, float ampS, float ampR,
-                    const ResonatorProfile* morphedResonators,
-                    const CreatureVoice* morphedCreatures,
-                    const FluidCharacter& /*morphedFluid*/,
-                    float /*seaState*/, float resBright, float resDecay,
-                    float creatureRate)
+    void initializeVoice (OspreyVoice& voice, int noteNumber, float velocity, float frequency,
+                          float ampAttack, float ampDecay, float ampSustain, float ampRelease,
+                          const ResonatorProfile* morphedResonators,
+                          const CreatureVoice* morphedCreatures,
+                          const FluidCharacter& /*morphedFluid*/,
+                          float /*seaState*/, float resonatorBrightness, float resonatorDecay,
+                          float creatureRate)
     {
-        voice.active = true;
-        voice.noteNumber = noteNumber;
-        voice.velocity = velocity;
-        voice.startTime = voiceCounter++;
-        voice.targetFreq = freq;
-        voice.currentTargetFreq = freq;
-        voice.glideCoeff = 1.0f;
-        voice.fadingOut = false;
-        voice.fadeGain = 1.0f;
-        voice.controlCounter = 0;
+        // --- Voice lifecycle ---
+        voice.active                = true;
+        voice.noteNumber            = noteNumber;
+        voice.velocity              = velocity;
+        voice.startTimestamp         = voiceCounter++;
+        voice.targetFrequency       = frequency;
+        voice.currentGlideFrequency = frequency;
+        voice.glideCoefficient      = 1.0f;  // 1.0 = instant (no glide)
+        voice.fadingOut              = false;
+        voice.fadeGain               = 1.0f;
+        voice.controlCounter         = 0;
 
-        // DC blocker state
-        voice.dcPrevInL = 0.0f;
-        voice.dcPrevOutL = 0.0f;
-        voice.dcPrevInR = 0.0f;
-        voice.dcPrevOutR = 0.0f;
+        // --- Clear DC blocker state ---
+        voice.dcPreviousInputL  = 0.0f;
+        voice.dcPreviousOutputL = 0.0f;
+        voice.dcPreviousInputR  = 0.0f;
+        voice.dcPreviousOutputR = 0.0f;
 
-        // Initialize PRNG with note-dependent seed
-        voice.rng = static_cast<uint32_t> (noteNumber * 7919 + voiceCounter * 104729);
+        // Initialize PRNG with note-dependent seed.
+        // 7919 and 104729 are primes — multiplying by primes creates
+        // good dispersion across the LCG state space, ensuring each
+        // note+voice combination produces unique noise character.
+        voice.randomState = static_cast<uint32_t> (noteNumber * 7919 + voiceCounter * 104729);
 
-        // Set up envelope
-        voice.ampEnv.setParams (ampA, ampD, ampS, ampR, srf);
-        voice.ampEnv.noteOn();
+        // --- Amplitude envelope ---
+        voice.amplitudeEnvelope.setParams (ampAttack, ampDecay, ampSustain, ampRelease, sampleRateFloat);
+        voice.amplitudeEnvelope.noteOn();
 
-        // Initialize resonators with morphed profiles
-        for (int inst = 0; inst < 3; ++inst)
+        // --- Initialize resonators with morphed shore profiles ---
+        for (int instrumentGroup = 0; instrumentGroup < 3; ++instrumentGroup)
         {
-            const auto& profile = morphedResonators[inst];
-            for (int f = 0; f < 4; ++f)
+            const auto& profile = morphedResonators[instrumentGroup];
+            for (int formantIndex = 0; formantIndex < 4; ++formantIndex)
             {
-                int idx = inst * 4 + f;
-                auto& res = voice.resonators[static_cast<size_t>(idx)];
-                res.reset();
+                int resonatorIndex = instrumentGroup * 4 + formantIndex;
+                auto& resonator = voice.resonators[static_cast<size_t>(resonatorIndex)];
+                resonator.reset();
 
-                float freqRatio = profile.formantFreqs[f] / 440.0f;
-                float resFreq = freq * freqRatio;
-                resFreq = clamp (resFreq, 20.0f, srf * 0.45f);
+                float frequencyRatio = profile.formantFreqs[formantIndex] / 440.0f;
+                float resonatorFreq = frequency * frequencyRatio;
+                resonatorFreq = clamp (resonatorFreq, 20.0f, sampleRateFloat * 0.45f);
 
-                float brightGain = profile.formantGains[f];
-                if (f >= 2) brightGain *= (0.5f + resBright * 1.0f);
+                float formantGain = profile.formantGains[formantIndex];
+                if (formantIndex >= 2)
+                    formantGain *= (0.5f + resonatorBrightness * 1.0f);
 
-                float bw = profile.formantBandwidths[f] / (0.5f + resDecay);
-                bw = clamp (bw, 5.0f, 2000.0f);
+                float resonatorBandwidth = profile.formantBandwidths[formantIndex]
+                                           / (0.5f + resonatorDecay);
+                resonatorBandwidth = clamp (resonatorBandwidth, 5.0f, 2000.0f);
 
-                res.setCoefficients (resFreq, bw, brightGain, srf);
+                resonator.setCoefficients (resonatorFreq, resonatorBandwidth, formantGain, sampleRateFloat);
             }
         }
 
-        // Initialize sympathetic resonators
-        float sympathyRatios[4] = { 2.0f, 3.0f, 4.0f, 5.0f };
-        for (int s = 0; s < 4; ++s)
+        // --- Initialize sympathetic resonators (harmonics 2,3,4,5) ---
+        static constexpr float kSympathyHarmonicRatios[4] = { 2.0f, 3.0f, 4.0f, 5.0f };
+        for (int sympatheticIndex = 0; sympatheticIndex < 4; ++sympatheticIndex)
         {
-            int idx = 12 + s;
-            auto& res = voice.resonators[static_cast<size_t>(idx)];
-            res.reset();
-            float sFreq = freq * sympathyRatios[s];
-            sFreq = clamp (sFreq, 20.0f, srf * 0.45f);
-            res.setCoefficients (sFreq, 80.0f, 0.2f, srf);
+            int resonatorIndex = 12 + sympatheticIndex;
+            auto& resonator = voice.resonators[static_cast<size_t>(resonatorIndex)];
+            resonator.reset();
+            float sympatheticFreq = frequency * kSympathyHarmonicRatios[sympatheticIndex];
+            sympatheticFreq = clamp (sympatheticFreq, 20.0f, sampleRateFloat * 0.45f);
+            resonator.setCoefficients (sympatheticFreq, 80.0f, 0.2f, sampleRateFloat);
         }
 
-        // Initialize creature formants
-        for (int c = 0; c < 3; ++c)
+        // --- Initialize creature formant generators ---
+        for (int creatureIndex = 0; creatureIndex < 3; ++creatureIndex)
         {
-            auto& creature = voice.creatures[static_cast<size_t>(c)];
+            auto& creature = voice.creatures[static_cast<size_t>(creatureIndex)];
             creature.reset();
-            creature.configure (morphedCreatures[c], srf);
+            creature.configure (morphedCreatures[creatureIndex], sampleRateFloat);
 
-            // Stagger initial creature triggering
-            if (voice.nextRandomUni() < creatureRate * 0.5f)
+            // Stagger initial creature triggering: not all creatures
+            // vocalize immediately on note-on. This creates a more
+            // natural onset where voices emerge gradually.
+            if (voice.nextRandomUnipolar() < creatureRate * 0.5f)
             {
                 creature.active = true;
-                creature.trigger (srf);
+                creature.trigger (sampleRateFloat);
             }
         }
 
-        // Initialize coherence phases
-        for (int i = 0; i < 16; ++i)
-            voice.coherencePhases[i] = 0.0f;
+        // --- Clear coherence tracking states ---
+        for (int i = 0; i < OspreyVoice::kResonatorsPerVoice; ++i)
+            voice.coherenceStates[i] = 0.0f;
     }
 
-    void noteOff (int noteNumber)
+    void handleNoteOff (int noteNumber)
     {
         for (auto& voice : voices)
         {
             if (voice.active && voice.noteNumber == noteNumber && !voice.fadingOut)
-            {
-                voice.ampEnv.noteOff();
-            }
+                voice.amplitudeEnvelope.noteOff();
         }
     }
 
     int findFreeVoice() const
     {
-        // Find inactive voice
+        // First pass: find an inactive voice
         for (int i = 0; i < kMaxVoices; ++i)
             if (!voices[static_cast<size_t> (i)].active)
                 return i;
 
-        // LRU voice stealing — find oldest voice
-        int oldest = 0;
-        uint64_t oldestTime = UINT64_MAX;
+        // No free voice — steal the oldest (LRU policy)
+        int oldestVoice = 0;
+        uint64_t oldestTimestamp = UINT64_MAX;
         for (int i = 0; i < kMaxVoices; ++i)
         {
-            if (voices[static_cast<size_t> (i)].startTime < oldestTime)
+            if (voices[static_cast<size_t> (i)].startTimestamp < oldestTimestamp)
             {
-                oldestTime = voices[static_cast<size_t> (i)].startTime;
-                oldest = i;
+                oldestTimestamp = voices[static_cast<size_t> (i)].startTimestamp;
+                oldestVoice = i;
             }
         }
-        return oldest;
+        return oldestVoice;
     }
 
-    static float midiToHz (float midiNote) noexcept
+    static float midiNoteToHz (float midiNote) noexcept
     {
         return 440.0f * std::pow (2.0f, (midiNote - 69.0f) / 12.0f);
     }
 
     //==========================================================================
-    // Member data
+    //  Member data
     //==========================================================================
 
-    double sr = 44100.0;
-    float srf = 44100.0f;
-    float crossfadeRate = 0.01f;
+    // --- Sample rate ---
+    double sampleRateDouble   = 44100.0;
+    float  sampleRateFloat    = 44100.0f;
 
-    // Control rate decimation
-    int controlRateDiv = 22;   // ~2kHz at 44.1kHz
-    float controlDt = 0.0005f; // 1/2000
+    // --- Voice-stealing crossfade ---
+    float  crossfadeRate      = 0.01f;     // per-sample fade decrement
 
+    // --- Control-rate decimation ---
+    int    controlRateDivisor   = 22;      // ~2kHz at 44.1kHz
+    float  controlRateDeltaTime = 0.0005f; // 1/2000 seconds per control tick
+
+    // --- Voice pool ---
     std::array<OspreyVoice, kMaxVoices> voices;
-    uint64_t voiceCounter = 0;
-    int activeVoices = 0;
+    uint64_t voiceCounter    = 0;          // monotonic counter for LRU stealing
+    int      activeVoiceCount = 0;         // for UI display
 
-    // Global fluid energy model
+    // --- Global fluid energy model (shared by all voices) ---
     FluidEnergyModel fluidModel;
 
-    // Coupling accumulators
-    float envelopeOutput = 0.0f;
-    float couplingExcitationMod = 0.0f;
-    float couplingSeaStateMod = 0.0f;
-    float couplingSwellMod = 0.0f;
-    float couplingPitchMod = 0.0f;
-    float couplingAudioReplace = 0.0f;
-    bool couplingAudioReplaceActive = false;
+    // D005/D004 fix: OspreyLFO instance to modulate sea state (amplitude breathing).
+    // OspreyLFO was fully implemented (Section 2) but never instantiated as a member.
+    // Route: LFO output -> effectiveSeaState modulation (low-frequency wave energy swell).
+    // Rate is controlled by M2 MOVEMENT macro (higher MOVEMENT = faster LFO = choppier seas).
+    OspreyLFO seaStateLFO;
 
-    // Output cache for coupling reads
+    // --- Coupling accumulators ---
+    // Written by applyCouplingInput(), consumed and cleared each renderBlock()
+    float  peakEnvelopeOutput          = 0.0f;   // output: peak env for coupling reads
+    float  couplingExcitationMod       = 0.0f;   // AudioToFM: adds to excitation
+    float  couplingSeaStateMod         = 0.0f;   // AmpToFilter: modulates sea state
+    float  couplingSwellPeriodMod      = 0.0f;   // EnvToMorph: modulates swell period
+    float  couplingPitchMod            = 0.0f;   // LFOToPitch: modulates tuning
+    float  couplingAudioReplaceLevel   = 0.0f;   // AudioToWavetable: replacement level
+    bool   couplingAudioReplaceActive  = false;   // AudioToWavetable: active flag
+
+    // --- Output cache for coupling reads ---
     std::vector<float> outputCacheL;
     std::vector<float> outputCacheR;
 
-    // Harbor verb (4 allpass delays)
-    AllpassDelay verbAllpass[4];
+    // --- Harbor verb: 4-stage allpass diffusion network ---
+    AllpassDelay harborVerbAllpass[4];
 
-    // Global filters
-    CytomicSVF tiltFilterL, tiltFilterR;
-    CytomicSVF fogFilterL, fogFilterR;
-    CytomicSVF hullFilterL, hullFilterR;
+    // --- Global post-processing filters ---
+    CytomicSVF tiltFilterL, tiltFilterR;   // spectral balance (LP <-> HP)
+    CytomicSVF fogFilterL,  fogFilterR;    // HF rolloff (distance/atmosphere)
+    CytomicSVF hullFilterL, hullFilterR;   // body resonance (the vessel)
 
-    // Cached APVTS parameter pointers
-    std::atomic<float>* paramShore = nullptr;
-    std::atomic<float>* paramSeaState = nullptr;
-    std::atomic<float>* paramSwellPeriod = nullptr;
-    std::atomic<float>* paramWindDir = nullptr;
-    std::atomic<float>* paramDepth = nullptr;
-    std::atomic<float>* paramResonatorBright = nullptr;
-    std::atomic<float>* paramResonatorDecay = nullptr;
-    std::atomic<float>* paramSympathyAmount = nullptr;
-    std::atomic<float>* paramCreatureRate = nullptr;
-    std::atomic<float>* paramCreatureDepth = nullptr;
-    std::atomic<float>* paramCoherence = nullptr;
-    std::atomic<float>* paramFoam = nullptr;
-    std::atomic<float>* paramBrine = nullptr;
-    std::atomic<float>* paramHull = nullptr;
-    std::atomic<float>* paramFilterTilt = nullptr;
-    std::atomic<float>* paramHarborVerb = nullptr;
-    std::atomic<float>* paramFog = nullptr;
-    std::atomic<float>* paramAmpAttack = nullptr;
-    std::atomic<float>* paramAmpDecay = nullptr;
-    std::atomic<float>* paramAmpSustain = nullptr;
-    std::atomic<float>* paramAmpRelease = nullptr;
-    std::atomic<float>* paramMacroCharacter = nullptr;
-    std::atomic<float>* paramMacroMovement = nullptr;
-    std::atomic<float>* paramMacroCoupling = nullptr;
-    std::atomic<float>* paramMacroSpace = nullptr;
+    // --- Cached APVTS parameter pointers ---
+    // Set once in attachParameters(), read atomically each renderBlock().
+
+    // Core ocean
+    std::atomic<float>* paramShore            = nullptr;
+    std::atomic<float>* paramSeaState         = nullptr;
+    std::atomic<float>* paramSwellPeriod      = nullptr;
+    std::atomic<float>* paramWindDir          = nullptr;
+    std::atomic<float>* paramDepth            = nullptr;
+
+    // Resonator
+    std::atomic<float>* paramResonatorBright   = nullptr;
+    std::atomic<float>* paramResonatorDecay    = nullptr;
+    std::atomic<float>* paramSympathyAmount    = nullptr;
+
+    // Creature
+    std::atomic<float>* paramCreatureRate      = nullptr;
+    std::atomic<float>* paramCreatureDepth     = nullptr;
+
+    // Coherence & character
+    std::atomic<float>* paramCoherence         = nullptr;
+    std::atomic<float>* paramFoam              = nullptr;
+    std::atomic<float>* paramBrine             = nullptr;
+    std::atomic<float>* paramHull              = nullptr;
+
+    // Filter & space
+    std::atomic<float>* paramFilterTilt        = nullptr;
+    std::atomic<float>* paramHarborVerb        = nullptr;
+    std::atomic<float>* paramFog               = nullptr;
+
+    // Amplitude envelope
+    std::atomic<float>* paramAmpAttack         = nullptr;
+    std::atomic<float>* paramAmpDecay          = nullptr;
+    std::atomic<float>* paramAmpSustain        = nullptr;
+    std::atomic<float>* paramAmpRelease        = nullptr;
+
+    // Macros (M1-M4)
+    std::atomic<float>* paramMacroCharacter    = nullptr;
+    std::atomic<float>* paramMacroMovement     = nullptr;
+    std::atomic<float>* paramMacroCoupling     = nullptr;
+    std::atomic<float>* paramMacroSpace        = nullptr;
 };
 
 } // namespace xomnibus

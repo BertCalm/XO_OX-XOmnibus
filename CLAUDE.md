@@ -179,6 +179,63 @@ New engines are designed as standalone instruments first, then integrated into X
 
 **Integration path:** Write a thin adapter implementing `SynthEngine` → `REGISTER_ENGINE()` → copy presets → done.
 
+## Seance Findings
+
+24 seances held 2026-03-14. Full data in:
+- Grand Survey: `Docs/xomnibus_landscape_2026.md`
+- Knowledge tree: `~/.claude/skills/synth-seance/knowledge/index.md`
+- Cross-reference: `Docs/seance_cross_reference.md`
+
+### The 6 Doctrines
+
+| ID | Doctrine | Summary |
+|----|----------|---------|
+| D001 | Velocity Must Shape Timbre | Velocity drives filter brightness / harmonic content — not just amplitude |
+| D002 | Modulation is the Lifeblood | Min: 2 LFOs, mod wheel/aftertouch, 4 working macros, 4+ mod matrix slots |
+| D003 | The Physics IS the Synthesis | Rigor and citation required for any physically-modeled engine |
+| D004 | Dead Parameters Are Broken Promises | Every declared parameter must affect audio output |
+| D005 | An Engine That Cannot Breathe Is a Photograph | Every engine needs at least one LFO with rate floor ≤ 0.01 Hz |
+| D006 | Expression Input Is Not Optional | Velocity→timbre + at least one CC (aftertouch / mod wheel / expression) |
+
+### The 15 Blessings
+
+| ID | Blessing | Engine |
+|----|----------|--------|
+| B001 | Group Envelope System — crowned by Moog + Smith | ORBITAL |
+| B002 | XVC Cross-Voice Coupling — all 8 ghosts, 3-5 years ahead | ONSET |
+| B003 | Leash Mechanism — chaotic system with a leash | OUROBOROS |
+| B004 | Spring Reverb — Vangelis + Tomita praised the metallic splash | OVERDUB |
+| B005 | Zero-Audio Identity — synthesis without sound | OPTIC |
+| B006 | Dual-Layer Blend Architecture — Circuit + Algorithm crossfade | ONSET |
+| B007 | Velocity Coupling Outputs — velocity as coupling signal | OUROBOROS |
+| B008 | Five-Macro System (BELLY/BITE/SCURRY/TRASH/PLAY DEAD) — all 8 ghosts | OVERBITE |
+| B009 | ERA Triangle — 2D timbral crossfade, Buchla/Schulze/Vangelis/Pearlman | OVERWORLD |
+| B010 | GENDY Stochastic Synthesis + Maqam — Buchla gave 10/10 | ORACLE |
+| B011 | Variational Free Energy Metabolism — unanimous; publishable as paper | ORGANON |
+| B012 | ShoreSystem — 5-coastline cultural data shared across engines | OSPREY + OSTERIA |
+| B013 | Chromatophore Modulator — praised by Buchla, Schulze, Kakehashi, Tomita | OCEANIC |
+| B014 | Mixtur-Trautonium Oscillator — unanimous praise, genuinely novel | OWLFISH |
+| B015 | Mojo Control — orthogonal analog/digital axis | OBESE |
+
+### The 4 Ongoing Debates
+
+| ID | Tension | Status |
+|----|---------|--------|
+| DB001 | Mutual exclusivity vs. effect chaining (Buchla vs. field) | UNRESOLVED |
+| DB002 | Silence as paradigm vs. accessibility (Schulze/Buchla vs. Kakehashi/Pearlman) | UNRESOLVED |
+| DB003 | Init patch: immediate beauty vs. blank canvas (Vangelis/Kakehashi vs. Schulze) | UNRESOLVED |
+| DB004 | Expression vs. Evolution: gesture vs. temporal depth (Vangelis vs. Schulze) | UNRESOLVED |
+
+### Critical Fleet-Wide Findings
+
+- **10 engines have zero LFOs** (D005 violation): Snap, Morph, Obese, Owlfish, Oblique, Orbital, Organon, Onset, Overworld adapter, Osprey (dead code)
+- **Only OVERBITE has aftertouch** — fleet-wide D006 gap
+- **4 P0 audio bugs**: Obsidian R channel filter bypass, Osteria warmth L-only, Obsidian formant ID collision, Origami STFT race condition
+- **11 engines have 0 or 1 preset** in XOmnibus
+- **Seance score range**: 5.9/10 (OBLIQUE) to 8/8 PASS + 8.6/10 (ORGANON, ORACLE)
+
+---
+
 ## Development Workflow
 
 1. Read the master spec (`Docs/xomnibus_master_specification.md`) before making changes

@@ -1,4 +1,40 @@
 #pragma once
+//==============================================================================
+//
+//  ObliqueEngine.h — XOblique: Prismatic Bounce Engine
+//
+//  XO_OX Designs | Accent: Prism Violet #BF40FF | Param prefix: oblq_
+//
+//  AQUATIC IDENTITY — THE PRISM FISH
+//  XOblique is the prismatic light refracting through shallow water.
+//  It lives in the sunlit shallows of the XO_OX water column — feliX-leaning,
+//  bright character with depth underneath. Where sunlight hits the surface at
+//  an oblique angle and shatters into spectral fragments, each bouncing between
+//  coral walls like a ricocheting pinball of color.
+//
+//  SONIC LINEAGE
+//  Run the Jewels (El-P's aggressive wavefold production) x Funk/Disco
+//  (mirror-ball bounce, rhythmic clicks) x Tame Impala (psychedelic phaser
+//  swirl, spectral delay). The engine channels:
+//    - Buchla Music Easel: sine wavefolding as timbral control
+//    - Roland Space Echo RE-201: multi-tap delay with spectral filtering
+//    - Mu-Tron Bi-Phase: dual-sweep allpass phaser for psychedelic color
+//    - Simmons SDS-V: tuned electronic percussion clicks (the bounce engine)
+//
+//  SIGNAL FLOW
+//  MIDI -> Dual PolyBLEP Osc -> Wavefolder (harmonic grit) -> Cytomic SVF
+//       + ObliqueBounce (per-voice percussive ricochet clicks)
+//       -> Stereo Voice Mix -> ObliquePrism (6-tap spectral delay)
+//       -> ObliquePhaser (6-stage allpass swirl) -> Master Output
+//
+//  COUPLING ROLE
+//  getSampleForCoupling: post-FX stereo output + envelope follower
+//  applyCouplingInput: filter cutoff, pitch, prism modulation
+//  Best pairings: OBLIQUE -> OVERDUB (prismatic fragments through dub FX),
+//                 ONSET -> OBLIQUE (drum hits trigger bounce cascades)
+//
+//==============================================================================
+
 #include "../../Core/SynthEngine.h"
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/CytomicSVF.h"
@@ -10,340 +46,446 @@
 namespace xomnibus {
 
 //==============================================================================
-// ObliqueWavefolder — Sine wavefolder for harmonic grit.
-// At low fold, gentle saturation. At high fold, metallic overtones.
-// Run the Jewels' El-P production character: punchy but complex.
+// ObliqueWavefolder — Sine wavefolder for harmonic enrichment.
+//
+// Technique lineage: Buchla 259 Complex Waveform Generator.
+// Don Buchla pioneered wavefolding as a timbral axis — rather than filtering
+// harmonics away (subtractive), you fold the waveform back on itself to ADD
+// harmonics. El-P (Run the Jewels) uses similar aggressive waveshaping to give
+// synth lines their signature gritty-but-musical character.
+//
+// At low fold: gentle saturation (warm even harmonics).
+// At high fold: metallic overtones (dense odd+even spectrum).
+// Two-stage fold prevents aliasing by soft-clipping the output.
 //==============================================================================
 class ObliqueWavefolder
 {
 public:
     float process (float input, float foldAmount) noexcept
     {
-        // foldAmount [0, 1] maps to [1, 6] fold iterations
-        float gain = 1.0f + foldAmount * 5.0f;
-        float x = input * gain;
+        // foldAmount [0, 1] maps to gain [1, 6] — each unit of gain
+        // pushes the waveform further past the folding threshold,
+        // creating progressively denser harmonic content
+        float gain = 1.0f + foldAmount * 5.0f;  // 5.0 = max additional gain stages
+        float sample = input * gain;
 
-        // Two-stage fold: sine fold + soft clip
-        x = fastSin (x * 1.5707963f);  // pi/2 — maps [-1,1] to sine shape
+        // Stage 1: Sine fold — the core Buchla wavefolder technique.
+        // Multiplying by pi/2 maps the [-1, +1] input range onto a full
+        // sine half-cycle, so peaks fold back toward zero gracefully
+        static constexpr float kHalfPi = 1.5707963f;   // pi/2
+        static constexpr float kPi     = 3.14159265f;   // pi
+
+        sample = fastSin (sample * kHalfPi);
+
+        // Stage 2: At foldAmount > 0.3, apply a second fold pass.
+        // The 0.3 threshold prevents double-folding at gentle settings
+        // where it would just add CPU cost without audible benefit.
+        // The extra sweep from pi/2 to 3*pi/2 creates increasingly
+        // complex interference patterns — the "metallic" zone.
         if (foldAmount > 0.3f)
         {
-            // Second fold pass for extra harmonics at high settings
-            float extra = (foldAmount - 0.3f) / 0.7f;
-            x = fastSin (x * (1.5707963f + extra * 3.14159f));
+            float secondFoldDepth = (foldAmount - 0.3f) / 0.7f;  // normalize 0.3-1.0 -> 0-1
+            sample = fastSin (sample * (kHalfPi + secondFoldDepth * kPi));
         }
-        return fastTanh (x);  // soft clip output
+
+        return fastTanh (sample);  // soft clip prevents output exceeding [-1, +1]
     }
 };
 
 //==============================================================================
 // ObliqueBounce — Bouncing-ball rhythm generator.
 //
-// Models a ball dropping: each hit closer together and quieter.
-// Creates the "ricocheting" percussive quality — accelerating clicks
-// that decay like light bouncing between mirrors, losing energy
-// at each reflection.
+// Technique lineage: Simmons SDS-V electronic percussion + Buchla 266
+// Source of Uncertainty. The bouncing-ball pattern is a staple of electronic
+// music production — from 808 cowbell rolls to Aphex Twin's accelerating
+// trigger bursts. Here it models light ricocheting between mirrors in a
+// kaleidoscope: each reflection arrives sooner and dimmer than the last.
 //
-// Physics: interval[n] = initial_interval * ratio^n
-//          velocity[n] = initial_velocity * damping^n
+// Physics model:
+//   interval[n] = initial_interval * gravity^n    (intervals shrink)
+//   velocity[n] = initial_velocity * damping^n    (hits get quieter)
+//   swing offsets even-numbered bounces for groove (funk DNA)
+//
+// The click itself is a tuned sine burst with exponential decay —
+// think Simmons tom at very short decay, or a tuned impulse.
+// Each note-on fires its own independent bounce sequence so
+// polyphonic playing creates overlapping ricochet patterns.
 //==============================================================================
 class ObliqueBounce
 {
 public:
     void prepare (double sampleRate) noexcept
     {
-        sr = sampleRate;
+        hostSampleRate = sampleRate;
         reset();
     }
 
     void reset() noexcept
     {
         active = false;
-        bounceIdx = 0;
+        bounceIndex = 0;
         sampleCounter = 0;
-        currentInterval = 0;
+        currentIntervalSamples = 0;
         clickLevel = 0.0f;
         clickPhase = 0.0f;
     }
 
     struct Params {
-        float rate;       // Initial bounce interval (ms) [20-500]
-        float gravity;    // Interval shrink ratio per bounce [0.3-0.95]
-        float damping;    // Velocity decay per bounce [0.3-0.95]
-        int   maxBounces; // Max bounce count [2-16]
-        float swing;      // Swing amount [0-1] — offsets even bounces
-        float clickTone;  // Click center frequency [200-8000 Hz]
+        float rate;        // Initial bounce interval in ms [20-500]
+        float gravity;     // Interval shrink ratio per bounce [0.3-0.95] (lower = faster acceleration)
+        float damping;     // Velocity decay per bounce [0.3-0.95] (lower = quicker fadeout)
+        int   maxBounces;  // Maximum bounce count [2-16]
+        float swing;       // Swing amount [0-1] — offsets odd-indexed bounces for groove
+        float clickTone;   // Click sine burst center frequency in Hz [200-8000]
+        // D004 fix: clickDecay controls per-click burst duration (0=1ms, 1=30ms).
+        // Wired to oblq_percDecay parameter — the click envelope length is now audibly controllable.
+        float clickDecay;  // Click burst duration [0-1] maps to [1ms-30ms]
     };
 
     void trigger (float velocity) noexcept
     {
         active = true;
-        bounceIdx = 0;
+        bounceIndex = 0;
         sampleCounter = 0;
         initialVelocity = velocity;
-        cachedGravityPow = 1.0f;   // gravity^0 = 1
-        cachedDampingPow = 1.0f;   // damping^0 = 1
+        cachedGravityPow = 1.0f;   // gravity^0 = 1 (first bounce uses full interval)
+        cachedDampingPow = 1.0f;   // damping^0 = 1 (first bounce uses full velocity)
         fireClick (velocity);
     }
 
-    // Returns click output sample (0-1)
-    float process (const Params& p) noexcept
+    // Returns click output sample in range [-1, +1]
+    float process (const Params& bounceParams) noexcept
     {
         if (!active) return 0.0f;
 
-        // Advance click decay
-        clickLevel *= clickDecayRate;
+        // D004 fix: capture clickDecay from params each call so fireClick() sees the latest value.
+        currentClickDecay = bounceParams.clickDecay;
+
+        // Advance click amplitude decay (exponential)
+        clickLevel *= clickDecayCoefficient;
+        // Flush denormals: decaying exponentials approach zero asymptotically,
+        // producing subnormal floats that cause massive CPU stalls on x86/ARM
+        // when the FPU falls back to microcode handling
         clickLevel = flushDenormal (clickLevel);
-        clickPhase += clickPhaseInc;
+        clickPhase += clickPhaseIncrement;
 
-        float out = clickLevel * fastSin (clickPhase);
+        float output = clickLevel * fastSin (clickPhase);
 
-        // Count samples to next bounce
+        // Count samples toward next bounce trigger
         sampleCounter++;
 
-        // Use cached pow — only recomputed when bounceIdx changes
-        float intervalMs = p.rate * cachedGravityPow;
+        // Compute interval using cached power — avoids calling pow() every sample.
+        // interval[n] = rate * gravity^n (the core physics equation)
+        float intervalMs = bounceParams.rate * cachedGravityPow;
 
-        // Apply swing to even-numbered bounces
-        if (bounceIdx % 2 == 1)
-            intervalMs *= (1.0f + p.swing * 0.4f);
+        // Apply swing to odd-indexed bounces: stretches every other interval
+        // by up to 40% for a funk/disco groove feel
+        static constexpr float kMaxSwingStretch = 0.4f;
+        if (bounceIndex % 2 == 1)
+            intervalMs *= (1.0f + bounceParams.swing * kMaxSwingStretch);
 
-        currentInterval = static_cast<int> (intervalMs * 0.001f * static_cast<float> (sr));
-        if (currentInterval < 4) currentInterval = 4;
+        currentIntervalSamples = static_cast<int> (intervalMs * 0.001f * static_cast<float> (hostSampleRate));
+        // Minimum 4 samples between bounces to prevent audio-rate clicking
+        if (currentIntervalSamples < 4) currentIntervalSamples = 4;
 
-        if (sampleCounter >= currentInterval)
+        if (sampleCounter >= currentIntervalSamples)
         {
             sampleCounter = 0;
-            bounceIdx++;
+            bounceIndex++;
 
-            // Update cached pow values incrementally: pow(x, n+1) = pow(x, n) * x
-            cachedGravityPow *= p.gravity;
-            cachedDampingPow *= p.damping;
+            // Incremental power update: pow(x, n+1) = pow(x, n) * x
+            // Avoids expensive std::pow() call on every bounce
+            cachedGravityPow *= bounceParams.gravity;
+            cachedDampingPow *= bounceParams.damping;
 
-            if (bounceIdx >= p.maxBounces || intervalMs < 5.0f)
+            // Terminate when all bounces exhausted or interval < 5ms
+            // (below 5ms the bounces merge into a buzz, losing their identity)
+            if (bounceIndex >= bounceParams.maxBounces || intervalMs < 5.0f)
             {
                 active = false;
-                return out;
+                return output;
             }
 
-            // Fire next bounce click using cached damping pow
-            float vel = initialVelocity * cachedDampingPow;
-            clickPhaseInc = p.clickTone * 6.28318530718f / static_cast<float> (sr);
-            fireClick (vel);
+            // Fire next bounce click with velocity scaled by accumulated damping
+            float scaledVelocity = initialVelocity * cachedDampingPow;
+            static constexpr float kTwoPi = 6.28318530718f;
+            clickPhaseIncrement = bounceParams.clickTone * kTwoPi / static_cast<float> (hostSampleRate);
+            fireClick (scaledVelocity);
         }
 
-        return out;
+        return output;
     }
 
     bool isActive() const noexcept { return active; }
 
 private:
-    double sr = 44100.0;
+    double hostSampleRate = 44100.0;
     bool active = false;
-    int bounceIdx = 0;
+    int bounceIndex = 0;
     int sampleCounter = 0;
-    int currentInterval = 0;
+    int currentIntervalSamples = 0;
     float initialVelocity = 1.0f;
-    float cachedGravityPow = 1.0f;   // gravity^bounceIdx, updated incrementally
-    float cachedDampingPow = 1.0f;   // damping^bounceIdx, updated incrementally
+    float cachedGravityPow = 1.0f;   // gravity^bounceIndex — updated incrementally each bounce
+    float cachedDampingPow = 1.0f;   // damping^bounceIndex — updated incrementally each bounce
 
-    // Click state
+    // Click synthesis state (tuned sine burst with exponential decay)
     float clickLevel = 0.0f;
     float clickPhase = 0.0f;
-    float clickPhaseInc = 0.0f;
-    float clickDecayRate = 0.99f;
+    float clickPhaseIncrement = 0.0f;
+    float clickDecayCoefficient = 0.99f;
+    // D004 fix: currentClickDecay stores the latest Params.clickDecay for use in fireClick().
+    float currentClickDecay = 0.1f;  // default ~3ms (matches legacy hardcoded value)
 
     void fireClick (float velocity) noexcept
     {
         clickLevel = clamp (velocity, 0.0f, 1.0f);
         clickPhase = 0.0f;
-        // Quick exponential decay: ~3ms at 44.1kHz
-        float decaySamples = std::max (1.0f, static_cast<float> (sr) * 0.003f);
-        clickDecayRate = std::pow (0.001f, 1.0f / decaySamples);
+        // D004 fix: click duration now controlled by oblq_percDecay (currentClickDecay).
+        // currentClickDecay [0-1] maps to click duration [1ms-30ms], giving a wide
+        // range from tight snaps (1ms) to recognizable pitched transients (30ms).
+        // At currentClickDecay=0.1 (default ~0.003s), matches original 3ms behaviour.
+        static constexpr float kDecayTarget = 0.001f;  // -60dB silence threshold
+        float clickDurationMs = 1.0f + currentClickDecay * 29.0f;  // 1ms to 30ms
+        float decaySamples = std::max (1.0f, static_cast<float> (hostSampleRate) * clickDurationMs * 0.001f);
+        clickDecayCoefficient = std::pow (kDecayTarget, 1.0f / decaySamples);
     }
 };
 
 //==============================================================================
-// ObliquePrism — 6-tap spectral delay.
+// ObliquePrism — 6-facet spectral delay (the prismatic core).
 //
-// The sonic prism: splits audio into 6 "facets," each a delay tap
-// filtered at a different frequency (like a glass prism splitting
-// white light into spectrum). Each facet has its own:
-//   - Delay time (rhythmic spread)
-//   - Bandpass filter center (spectral color)
-//   - Pan position (stereo placement)
-//   - Level (decreasing with distance from center)
+// Technique lineage: Roland RE-201 Space Echo (multi-head tape delay) +
+// Eventide H3000 (spectral processing) + disco mirror ball (6 faces of light).
+//
+// The sonic metaphor: a glass prism splits white light into a rainbow.
+// Here, audio passes through 6 delay "facets," each filtered at a
+// different frequency — splitting the sound into a spectral rainbow.
+//
+// Each facet provides:
+//   - Delay time: staggered in golden-ratio proportions for rhythmic interest
+//   - Bandpass filter: tuned to a spectral color (red=bass through violet=air)
+//   - Pan position: spread across the stereo field
+//   - Level: inverse-distance rolloff (closer facets are louder)
 //
 // Feedback between facets creates kaleidoscopic multiplication —
-// sound fragments bouncing between mirrors, each reflection
-// picking up a new spectral color.
+// sound fragments bouncing between mirrors, each reflection picking up
+// a new spectral color. Like light trapped in a kaleidoscope, the
+// reflections grow increasingly complex and colorful with each pass.
+//
+// The 6 spectral colors map audio frequency to light frequency:
+//   Facet 0: Red    (100 Hz  — sub/bass warmth)
+//   Facet 1: Orange (300 Hz  — body/warmth)
+//   Facet 2: Yellow (800 Hz  — mid presence)
+//   Facet 3: Green  (2000 Hz — upper-mid bite)
+//   Facet 4: Blue   (5000 Hz — presence/air)
+//   Facet 5: Violet (12000 Hz — sparkle/brilliance)
 //==============================================================================
 class ObliquePrism
 {
 public:
     static constexpr int kNumFacets = 6;
-    static constexpr int kMaxDelaySamples = 96000; // ~2 sec at 48kHz
+    static constexpr int kMaxDelaySamples = 96000;  // ~2 seconds at 48kHz — enough for long ambient tails
 
     void prepare (double sampleRate) noexcept
     {
-        sr = sampleRate;
+        hostSampleRate = sampleRate;
         std::fill (delayBuffer.begin(), delayBuffer.end(), 0.0f);
-        writePos = 0;
+        writePosition = 0;
 
-        // Default spectral colors — maps audio spectrum to light spectrum:
-        //   Facet 0: Red    (100 Hz  — sub/bass warmth)
-        //   Facet 1: Orange (300 Hz  — body/warmth)
-        //   Facet 2: Yellow (800 Hz  — mid presence)
-        //   Facet 3: Green  (2000 Hz — upper mid bite)
-        //   Facet 4: Blue   (5000 Hz — presence/air)
-        //   Facet 5: Violet (12000 Hz — sparkle/brilliance)
-        static constexpr float defaultColors[kNumFacets] = {
+        // Spectral color frequencies — audio-to-light spectrum mapping.
+        // Chosen to span the full audible range with musically useful spacing:
+        // roughly octave-and-a-half intervals, matching how we perceive
+        // spectral "color" in both light and sound.
+        static constexpr float kDefaultColorFreqs[kNumFacets] = {
             100.0f, 300.0f, 800.0f, 2000.0f, 5000.0f, 12000.0f
         };
 
-        // Default pan positions: spread evenly L to R
-        static constexpr float defaultPan[kNumFacets] = {
+        // Default pan positions: spread evenly from hard left (0.0) to hard right (1.0)
+        static constexpr float kDefaultPanPositions[kNumFacets] = {
             0.0f, 0.2f, 0.4f, 0.6f, 0.8f, 1.0f
         };
 
-        float srf = static_cast<float> (sr);
+        float sampleRateFloat = static_cast<float> (hostSampleRate);
         for (int i = 0; i < kNumFacets; ++i)
         {
             facetFilters[i].setMode (CytomicSVF::Mode::BandPass);
-            facetFilters[i].setCoefficients (defaultColors[i], 0.4f, srf);
+            facetFilters[i].setCoefficients (kDefaultColorFreqs[i], 0.4f, sampleRateFloat);
             facetFilters[i].reset();
-            facetPan[i] = defaultPan[i];
+            facetPanPositions[i] = kDefaultPanPositions[i];
         }
 
-        feedbackFilter.setMode (CytomicSVF::Mode::LowPass);
-        feedbackFilter.setCoefficients (8000.0f, 0.0f, srf);
-        feedbackFilter.reset();
+        // Feedback damping filter — lowpass to progressively darken
+        // each feedback pass, like light losing energy with each mirror reflection
+        feedbackDampingFilter.setMode (CytomicSVF::Mode::LowPass);
+        feedbackDampingFilter.setCoefficients (8000.0f, 0.0f, sampleRateFloat);
+        feedbackDampingFilter.reset();
     }
 
     void reset() noexcept
     {
         std::fill (delayBuffer.begin(), delayBuffer.end(), 0.0f);
-        writePos = 0;
+        writePosition = 0;
         for (int i = 0; i < kNumFacets; ++i)
             facetFilters[i].reset();
-        feedbackFilter.reset();
-        feedbackSample = 0.0f;
+        feedbackDampingFilter.reset();
+        feedbackAccumulator = 0.0f;
     }
 
     struct Params {
-        float baseDelay;    // Base delay in ms [10-500]
-        float spread;       // Time spread between facets [0-1]
-        float colorSpread;  // How far apart the bandpass frequencies are [0-1]
-        float stereoWidth;  // Pan spread [0-1]
-        float feedback;     // Feedback amount [0-0.95]
+        float baseDelay;    // Base delay time in ms [10-500]
+        float spread;       // Time spread between facets [0-1] (golden-ratio stagger)
+        float colorSpread;  // Spectral separation of bandpass filters [0-1]
+        float stereoWidth;  // Pan spread across stereo field [0-1]
+        float feedback;     // Feedback amount [0-0.95] (kaleidoscopic reflections)
         float mix;          // Dry/wet mix [0-1]
-        float damping;      // Feedback HF damping [0-1] (darker with more bounces)
+        float damping;      // Feedback HF damping [0-1] (darker = more mirror absorption)
     };
 
     void process (float inputL, float inputR, float& outL, float& outR,
-                  const Params& p) noexcept
+                  const Params& prismParams) noexcept
     {
-        float srf = static_cast<float> (sr);
-        float mono = (inputL + inputR) * 0.5f;
+        float sampleRateFloat = static_cast<float> (hostSampleRate);
+        float monoInput = (inputL + inputR) * 0.5f;
 
-        // Write input + feedback into delay buffer
-        float fbSample = feedbackFilter.processSample (feedbackSample);
-        fbSample = flushDenormal (fbSample);
-        float writeVal = mono + fbSample * p.feedback;
-        writeVal = fastTanh (writeVal);  // prevent feedback runaway
+        // Write input + feedback into delay buffer.
+        // The feedback sample is filtered first to simulate energy loss
+        // at each mirror reflection (high frequencies absorb faster).
+        float dampedFeedback = feedbackDampingFilter.processSample (feedbackAccumulator);
+        // Flush denormals: the feedback path is a recursive loop where
+        // decaying signals inevitably produce subnormal floats that
+        // cause CPU stalls when processed by the FPU
+        dampedFeedback = flushDenormal (dampedFeedback);
+        float writeValue = monoInput + dampedFeedback * prismParams.feedback;
+        writeValue = fastTanh (writeValue);  // soft saturation prevents feedback runaway
 
-        delayBuffer[static_cast<size_t> (writePos)] = writeVal;
+        delayBuffer[static_cast<size_t> (writePosition)] = writeValue;
 
-        // Update filter colors based on colorSpread
-        // At spread=0, all filters converge to 1kHz
-        // At spread=1, full spectrum spread
-        static constexpr float centerFreqs[kNumFacets] = {
+        // Update bandpass filter frequencies based on colorSpread.
+        // At colorSpread=0: all 6 filters converge to 1kHz (monochrome — no spectral split)
+        // At colorSpread=1: full spectrum spread (100Hz-12kHz — full rainbow)
+        static constexpr float kColorCenterFreqs[kNumFacets] = {
             100.0f, 300.0f, 800.0f, 2000.0f, 5000.0f, 12000.0f
         };
+        static constexpr float kConvergenceFreq = 1000.0f;  // monochrome convergence point
+        // Resonance increases with color spread: narrower bands = more vivid spectral separation
+        static constexpr float kBaseResonance = 0.35f;
+        static constexpr float kResonanceRange = 0.3f;
 
         for (int i = 0; i < kNumFacets; ++i)
         {
-            float target = lerp (1000.0f, centerFreqs[i], p.colorSpread);
-            facetFilters[i].setCoefficients (target, 0.35f + p.colorSpread * 0.3f, srf);
+            float targetFreq = lerp (kConvergenceFreq, kColorCenterFreqs[i], prismParams.colorSpread);
+            float resonance = kBaseResonance + prismParams.colorSpread * kResonanceRange;
+            facetFilters[i].setCoefficients (targetFreq, resonance, sampleRateFloat);
         }
 
-        // Set feedback damping
-        float dampFreq = lerp (16000.0f, 2000.0f, p.damping);
-        feedbackFilter.setCoefficients (dampFreq, 0.0f, srf);
+        // Feedback damping: sweep lowpass from 16kHz (bright) to 2kHz (dark)
+        static constexpr float kDampBrightFreq = 16000.0f;
+        static constexpr float kDampDarkFreq = 2000.0f;
+        float dampFreq = lerp (kDampBrightFreq, kDampDarkFreq, prismParams.damping);
+        feedbackDampingFilter.setCoefficients (dampFreq, 0.0f, sampleRateFloat);
 
-        // Read from each facet tap
+        // --- Read from each facet tap ---
         float wetL = 0.0f, wetR = 0.0f;
-        float fbAccum = 0.0f;
+        float feedbackSum = 0.0f;
+
+        // Facet delay ratios: golden-ratio-inspired spacing (Fibonacci-adjacent).
+        // These ratios create rhythmically interesting tap patterns that avoid
+        // the "evenly spaced = boring" problem. The golden ratio (phi = 1.618)
+        // is nature's anti-pattern — it never repeats, never aligns, always
+        // sounds organic. Each ratio is approximately phi * n.
+        static constexpr float kFacetDelayRatios[kNumFacets] = {
+            1.0f, 1.618f, 2.0f, 2.618f, 3.236f, 4.236f
+        };
+
+        static constexpr float kHalfPi = 1.5707963f;
 
         for (int i = 0; i < kNumFacets; ++i)
         {
-            // Compute delay time for this facet
-            // Facets spread in a fibonacci-like pattern for rhythmic interest
-            static constexpr float facetRatios[kNumFacets] = {
-                1.0f, 1.618f, 2.0f, 2.618f, 3.236f, 4.236f
-            };
-            float delayMs = p.baseDelay * lerp (1.0f, facetRatios[i], p.spread);
-            int delaySamples = static_cast<int> (delayMs * 0.001f * srf);
+            // Compute delay time: base delay * ratio, modulated by spread
+            float delayMs = prismParams.baseDelay * lerp (1.0f, kFacetDelayRatios[i], prismParams.spread);
+            int delaySamples = static_cast<int> (delayMs * 0.001f * sampleRateFloat);
             delaySamples = std::min (delaySamples, kMaxDelaySamples - 1);
             if (delaySamples < 1) delaySamples = 1;
 
-            // Read from delay buffer
-            int readPos = writePos - delaySamples;
-            if (readPos < 0) readPos += kMaxDelaySamples;
+            // Read from circular delay buffer
+            int readPosition = writePosition - delaySamples;
+            if (readPosition < 0) readPosition += kMaxDelaySamples;
 
-            float tapSample = delayBuffer[static_cast<size_t> (readPos)];
+            float tapSample = delayBuffer[static_cast<size_t> (readPosition)];
 
-            // Apply spectral color filter
-            float colored = facetFilters[i].processSample (tapSample);
+            // Apply spectral color filter to this tap
+            float coloredSample = facetFilters[i].processSample (tapSample);
 
-            // Level decreases for further facets (inverse distance)
-            float facetLevel = 1.0f / (1.0f + static_cast<float> (i) * 0.3f);
+            // Inverse-distance level scaling: closer facets (lower index) are louder.
+            // The 0.3 scaling factor gives a gentle rolloff (~2.5dB per facet).
+            static constexpr float kLevelRolloffFactor = 0.3f;
+            float facetLevel = 1.0f / (1.0f + static_cast<float> (i) * kLevelRolloffFactor);
 
-            // Pan this facet
-            float pan = lerp (0.5f, facetPan[i], p.stereoWidth);
-            float panL = std::cos (pan * 1.5707963f);
-            float panR = std::sin (pan * 1.5707963f);
+            // Equal-power pan law using cos/sin (constant-power stereo placement)
+            float panPosition = lerp (0.5f, facetPanPositions[i], prismParams.stereoWidth);
+            float panGainL = std::cos (panPosition * kHalfPi);
+            float panGainR = std::sin (panPosition * kHalfPi);
 
-            wetL += colored * facetLevel * panL;
-            wetR += colored * facetLevel * panR;
-            fbAccum += colored * facetLevel;
+            wetL += coloredSample * facetLevel * panGainL;
+            wetR += coloredSample * facetLevel * panGainR;
+            feedbackSum += coloredSample * facetLevel;
         }
 
-        // Store feedback for next sample
-        feedbackSample = flushDenormal (fbAccum / static_cast<float> (kNumFacets));
+        // Average the feedback across all facets to prevent level buildup
+        feedbackAccumulator = flushDenormal (feedbackSum / static_cast<float> (kNumFacets));
 
-        // Advance write position
-        writePos = (writePos + 1) % kMaxDelaySamples;
+        // Advance circular buffer write position
+        writePosition = (writePosition + 1) % kMaxDelaySamples;
 
-        // Mix dry/wet
-        outL = inputL * (1.0f - p.mix) + wetL * p.mix;
-        outR = inputR * (1.0f - p.mix) + wetR * p.mix;
+        // Crossfade dry/wet
+        outL = inputL * (1.0f - prismParams.mix) + wetL * prismParams.mix;
+        outR = inputR * (1.0f - prismParams.mix) + wetR * prismParams.mix;
     }
 
 private:
-    double sr = 44100.0;
+    double hostSampleRate = 44100.0;
+
+    // Circular delay buffer (shared across all facets — single write, 6 reads)
     std::array<float, kMaxDelaySamples> delayBuffer {};
-    int writePos = 0;
+    int writePosition = 0;
 
+    // Per-facet bandpass filters (spectral color separation)
     CytomicSVF facetFilters[kNumFacets];
-    float facetPan[kNumFacets] = {};
+    float facetPanPositions[kNumFacets] = {};
 
-    CytomicSVF feedbackFilter;
-    float feedbackSample = 0.0f;
+    // Feedback path
+    CytomicSVF feedbackDampingFilter;
+    float feedbackAccumulator = 0.0f;
 };
 
 //==============================================================================
-// ObliquePhaser — 6-stage allpass phaser for Tame Impala psychedelic swirl.
-// LFO-modulated allpass cascade creates sweeping notches.
-// Applied post-prism for kaleidoscopic phase cancellation.
+// ObliquePhaser — 6-stage allpass phaser for psychedelic swirl.
+//
+// Technique lineage: Mu-Tron Bi-Phase (the phaser on Tame Impala's
+// "Innerspeaker" and "Lonerism") + Electro-Harmonix Small Stone.
+// Kevin Parker's guitar tone is defined by deep, slow phaser sweeps
+// that create a dreamlike, underwater quality. The allpass cascade
+// produces frequency-dependent phase shifts that, when mixed with
+// the dry signal, create sweeping notch/peak patterns.
+//
+// 6 stages = 6 notches in the frequency response, creating a rich
+// comb-like pattern. Feedback intensifies the notches, making the
+// sweep more vocal and resonant. Applied post-prism so the spectral
+// delay fragments get phase-shifted into kaleidoscopic interference.
+//
+// Stage spread (15% frequency offset per stage) prevents all notches
+// from landing at the same frequency, which would sound thin.
+// Instead, the notches fan out like fingers, creating the characteristic
+// "liquid" phaser sweep.
 //==============================================================================
 class ObliquePhaser
 {
 public:
-    static constexpr int kNumStages = 6;
+    static constexpr int kNumStages = 6;  // 6 allpass stages = 6 notches
 
     void prepare (double sampleRate) noexcept
     {
-        sr = sampleRate;
+        hostSampleRate = sampleRate;
         reset();
     }
 
@@ -351,129 +493,174 @@ public:
     {
         for (int i = 0; i < kNumStages; ++i)
         {
-            stagesL[i].reset();
-            stagesR[i].reset();
-            stagesL[i].setMode (CytomicSVF::Mode::AllPass);
-            stagesR[i].setMode (CytomicSVF::Mode::AllPass);
+            allpassStagesL[i].reset();
+            allpassStagesR[i].reset();
+            allpassStagesL[i].setMode (CytomicSVF::Mode::AllPass);
+            allpassStagesR[i].setMode (CytomicSVF::Mode::AllPass);
         }
         lfoPhase = 0.0;
     }
 
     struct Params {
-        float rate;      // LFO rate [0.05-8 Hz]
-        float depth;     // Sweep depth [0-1]
-        float feedback;  // Feedback [0-0.95]
-        float mix;       // Dry/wet [0-1]
+        float rate;      // LFO sweep rate in Hz [0.05-8]
+        float depth;     // Sweep frequency range [0-1] (wider = more dramatic)
+        float feedback;  // Notch intensity [0-0.95] (higher = more resonant)
+        float mix;       // Dry/wet mix [0-1]
     };
 
-    void process (float& inOutL, float& inOutR, const Params& p) noexcept
+    void process (float& inOutL, float& inOutR, const Params& phaserParams) noexcept
     {
-        float srf = static_cast<float> (sr);
+        float sampleRateFloat = static_cast<float> (hostSampleRate);
 
-        // LFO — sine with gentle triangle shaping for smoother sweep
-        lfoPhase += static_cast<double> (p.rate) / sr;
+        // --- LFO ---
+        // Sine LFO normalized to [0, 1] for frequency interpolation.
+        // Using double precision for phase accumulator to prevent drift
+        // over long performance durations (single float loses precision
+        // after ~3 minutes at low LFO rates).
+        static constexpr double kTwoPi = 6.28318530718;
+        lfoPhase += static_cast<double> (phaserParams.rate) / hostSampleRate;
         if (lfoPhase > 1.0) lfoPhase -= 1.0;
-        float lfo = fastSin (static_cast<float> (lfoPhase * 6.28318530718));
-        lfo = lfo * 0.5f + 0.5f;  // [0, 1]
+        float lfoValue = fastSin (static_cast<float> (lfoPhase * kTwoPi));
+        lfoValue = lfoValue * 0.5f + 0.5f;  // bipolar [-1,+1] -> unipolar [0,1]
 
-        // Sweep range: 200 Hz - 4000 Hz modulated by depth
-        float minFreq = 200.0f;
-        float maxFreq = lerp (400.0f, 4000.0f, p.depth);
-        float sweepFreq = lerp (minFreq, maxFreq, lfo);
+        // --- Sweep frequency range ---
+        // 200 Hz floor (below voice fundamental) to 4000 Hz ceiling (presence range).
+        // The depth parameter controls the ceiling: at depth=0, sweep is only
+        // 200-400 Hz (subtle bass wobble). At depth=1, full 200-4000 Hz sweep
+        // (the classic Tame Impala dramatic phaser).
+        static constexpr float kSweepFloorHz = 200.0f;
+        static constexpr float kSweepCeilingMinHz = 400.0f;
+        static constexpr float kSweepCeilingMaxHz = 4000.0f;
 
-        // Set allpass frequencies with slight spread between stages
+        float sweepCeiling = lerp (kSweepCeilingMinHz, kSweepCeilingMaxHz, phaserParams.depth);
+        float sweepFrequency = lerp (kSweepFloorHz, sweepCeiling, lfoValue);
+
+        // --- Set allpass frequencies with inter-stage spread ---
+        // Each successive stage is 15% higher in frequency than the previous,
+        // fanning the notches across the spectrum for a fuller sweep character
+        static constexpr float kInterStageSpread = 0.15f;
+        // Nyquist safety margin: 0.49 * sampleRate prevents filter instability
+        static constexpr float kNyquistSafetyFactor = 0.49f;
+
         for (int i = 0; i < kNumStages; ++i)
         {
-            float stageFreq = sweepFreq * (1.0f + static_cast<float> (i) * 0.15f);
-            stageFreq = clamp (stageFreq, 20.0f, srf * 0.49f);
-            stagesL[i].setCoefficients (stageFreq, 0.5f, srf);
-            stagesR[i].setCoefficients (stageFreq, 0.5f, srf);
+            float stageFrequency = sweepFrequency * (1.0f + static_cast<float> (i) * kInterStageSpread);
+            stageFrequency = clamp (stageFrequency, 20.0f, sampleRateFloat * kNyquistSafetyFactor);
+            allpassStagesL[i].setCoefficients (stageFrequency, 0.5f, sampleRateFloat);
+            allpassStagesR[i].setCoefficients (stageFrequency, 0.5f, sampleRateFloat);
         }
 
-        // Process through allpass cascade
-        float wetL = inOutL + phaserFeedbackL * p.feedback;
-        float wetR = inOutR + phaserFeedbackR * p.feedback;
-        wetL = fastTanh (wetL);  // prevent feedback blowup
+        // --- Process through allpass cascade with feedback ---
+        float wetL = inOutL + feedbackL * phaserParams.feedback;
+        float wetR = inOutR + feedbackR * phaserParams.feedback;
+        // Soft-clip the feedback input to prevent runaway oscillation.
+        // Without this, feedback > 0.8 can cause the cascade to blow up.
+        wetL = fastTanh (wetL);
         wetR = fastTanh (wetR);
 
         for (int i = 0; i < kNumStages; ++i)
         {
-            wetL = stagesL[i].processSample (wetL);
-            wetR = stagesR[i].processSample (wetR);
+            wetL = allpassStagesL[i].processSample (wetL);
+            wetR = allpassStagesR[i].processSample (wetR);
         }
 
-        phaserFeedbackL = flushDenormal (wetL);
-        phaserFeedbackR = flushDenormal (wetR);
+        // Store feedback for next sample.
+        // Flush denormals: the allpass cascade output decays toward zero
+        // between sweeps, producing subnormal floats that cause CPU spikes
+        feedbackL = flushDenormal (wetL);
+        feedbackR = flushDenormal (wetR);
 
-        // Mix
-        inOutL = inOutL * (1.0f - p.mix) + wetL * p.mix;
-        inOutR = inOutR * (1.0f - p.mix) + wetR * p.mix;
+        // Crossfade dry/wet
+        inOutL = inOutL * (1.0f - phaserParams.mix) + wetL * phaserParams.mix;
+        inOutR = inOutR * (1.0f - phaserParams.mix) + wetR * phaserParams.mix;
     }
 
 private:
-    double sr = 44100.0;
-    double lfoPhase = 0.0;
-    CytomicSVF stagesL[kNumStages];
-    CytomicSVF stagesR[kNumStages];
-    float phaserFeedbackL = 0.0f;
-    float phaserFeedbackR = 0.0f;
+    double hostSampleRate = 44100.0;
+    double lfoPhase = 0.0;  // double precision to prevent drift over long sessions
+
+    // Stereo allpass cascade (independent L/R for true stereo phasing)
+    CytomicSVF allpassStagesL[kNumStages];
+    CytomicSVF allpassStagesR[kNumStages];
+
+    // Per-channel feedback state
+    float feedbackL = 0.0f;
+    float feedbackR = 0.0f;
 };
 
 //==============================================================================
 // ObliqueVoice — Per-voice state.
 //
-// Each voice generates the "light beam" (sustained oscillator tone through
-// wavefolder + filter) and fires a bouncing-ball percussion burst on note-on.
+// Each voice is a "light beam" passing through the prism engine:
+//   1. Dual oscillators generate the beam (sustained tone with detuned width)
+//   2. Wavefolder adds harmonic grit (the RTJ character)
+//   3. SVF filter shapes the spectral envelope
+//   4. ADSR envelope controls amplitude
+//   5. ObliqueBounce fires percussive ricochet clicks on note-on
+//
 // The bounce clicks ride on top of the beam like percussive fragments
-// ricocheting off mirrors.
+// ricocheting off mirror surfaces — the disco/funk DNA of the engine.
+// Each voice has its own independent bounce sequence, so polyphonic
+// playing creates overlapping ricochet patterns (like multiple balls
+// bouncing in a house of mirrors simultaneously).
 //==============================================================================
 struct ObliqueVoice
 {
+    // --- Voice lifecycle ---
     bool active = false;
     int noteNumber = -1;
     float velocity = 0.0f;
-    uint64_t startTime = 0;
+    uint64_t startTime = 0;          // monotonic counter for oldest-voice stealing
 
-    // Oscillators — dual osc for body + color
-    PolyBLEP oscA;       // Primary body (Saw/Square/Pulse)
-    PolyBLEP oscB;       // Secondary color (detuned for width)
+    // --- Oscillators (dual osc for body + stereo width) ---
+    PolyBLEP oscillatorPrimary;      // Primary body tone (Saw/Square/Pulse/etc.)
+    PolyBLEP oscillatorSecondary;    // Detuned secondary for chorus-like width
 
-    // Per-voice filter
-    CytomicSVF filter;
+    // --- Per-voice filter ---
+    CytomicSVF voiceFilter;          // Cytomic SVF (topology-preserving transform)
 
-    // Envelope (ADSR)
-    float envLevel = 0.0f;
-    float envStage = 0.0f;  // 0=attack, 1=decay, 2=sustain, 3=release
+    // --- Amplitude envelope (ADSR) ---
+    float envelopeLevel = 0.0f;
+    float envelopeStage = 0.0f;      // 0=attack, 1=decay, 2=sustain, 3=release
     bool releasing = false;
 
-    // Voice stealing crossfade
-    float fadeOutLevel = 0.0f;
+    // --- Voice stealing crossfade ---
+    float stealFadeLevel = 0.0f;     // 1.0 = fading out stolen voice, 0.0 = normal
 
-    // Bounce (per-voice — each note gets its own ricochet)
+    // --- Bounce (per-voice percussive ricochet) ---
     ObliqueBounce bounce;
 
-    // Glide
-    float currentFreq = 440.0f;
-    float targetFreq = 440.0f;
+    // --- Portamento/glide ---
+    float currentFrequency = 440.0f;
+    float targetFrequency = 440.0f;
 };
 
 //==============================================================================
 // ObliqueEngine — Prismatic Bounce Engine ("XOblique")
 //
-// Run the Jewels × Funk/Disco × Tame Impala
+// CREATURE: The Prism Fish — a shallow-water species that refracts
+// sunlight into spectral fragments as it moves. feliX-leaning: bright,
+// rhythmic, percussive, but with prismatic depth underneath. Lives in
+// the sunlit shallows of the XO_OX water column, between the surface
+// flash of OddfeliX and the reef warmth of XOblongBob.
 //
-// Prismatic light bouncing off mirrors — mirror ball, house of mirrors,
-// kaleidoscope. Vibrant, ricocheting sound with hypnotic bounce.
-// Bouncy percussive tops riding on top of light beams.
+// SONIC DNA: Run the Jewels (El-P wavefold grit) x Funk/Disco (mirror-ball
+// bounce, swing clicks) x Tame Impala (psychedelic phaser, spectral delay).
 //
-// Signal flow:
-//   MIDI → Dual Oscillator → Wavefolder (grit) → Voice Filter → Envelope
-//        + Bounce Engine (percussive ricochet clicks per note)
-//        → Stereo Mix → Prism Delay (6-tap spectral split)
-//        → Phaser (psychedelic swirl) → Output
+// SIGNAL ARCHITECTURE:
+//   MIDI -> Dual PolyBLEP Oscillator (body + detuned width)
+//        -> ObliqueWavefolder (Buchla-style harmonic enrichment)
+//        -> Cytomic SVF Voice Filter (spectral shaping)
+//        -> ADSR Envelope (amplitude contour)
+//        + ObliqueBounce (per-voice percussive ricochet clicks)
+//        -> Stereo Voice Mix (body center + bounce scattered)
+//        -> ObliquePrism (6-facet spectral delay — the prismatic core)
+//        -> ObliquePhaser (6-stage allpass psychedelic swirl)
+//        -> Master Level -> Output
 //
 // Accent: Prism Violet #BF40FF
-// Param prefix: oblq_
+// Parameter prefix: oblq_
+// Max voices: 8
 //==============================================================================
 class ObliqueEngine : public SynthEngine
 {
@@ -486,52 +673,52 @@ public:
 
     void prepare (double sampleRate, int maxBlockSize) override
     {
-        sr = sampleRate;
-        srf = static_cast<float> (sr);
+        hostSampleRate = sampleRate;
+        sampleRateFloat = static_cast<float> (hostSampleRate);
 
-        prism.prepare (sr);
-        phaser.prepare (sr);
+        prismDelay.prepare (hostSampleRate);
+        phaserEffect.prepare (hostSampleRate);
 
-        outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
-        outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
+        couplingCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
+        couplingCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
 
-        for (auto& v : voices)
+        for (auto& voice : voices)
         {
-            v.active = false;
-            v.oscA.reset();
-            v.oscB.reset();
-            v.filter.reset();
-            v.filter.setMode (CytomicSVF::Mode::LowPass);
-            v.bounce.prepare (sr);
+            voice.active = false;
+            voice.oscillatorPrimary.reset();
+            voice.oscillatorSecondary.reset();
+            voice.voiceFilter.reset();
+            voice.voiceFilter.setMode (CytomicSVF::Mode::LowPass);
+            voice.bounce.prepare (hostSampleRate);
         }
     }
 
     void releaseResources() override
     {
-        outputCacheL.clear();
-        outputCacheR.clear();
+        couplingCacheL.clear();
+        couplingCacheR.clear();
     }
 
     void reset() override
     {
-        for (auto& v : voices)
+        for (auto& voice : voices)
         {
-            v.active = false;
-            v.envLevel = 0.0f;
-            v.fadeOutLevel = 0.0f;
-            v.releasing = false;
-            v.oscA.reset();
-            v.oscB.reset();
-            v.filter.reset();
-            v.bounce.reset();
+            voice.active = false;
+            voice.envelopeLevel = 0.0f;
+            voice.stealFadeLevel = 0.0f;
+            voice.releasing = false;
+            voice.oscillatorPrimary.reset();
+            voice.oscillatorSecondary.reset();
+            voice.voiceFilter.reset();
+            voice.bounce.reset();
         }
-        prism.reset();
-        phaser.reset();
-        envelopeOutput = 0.0f;
-        externalPitchMod = 0.0f;
-        externalFilterMod = 0.0f;
-        std::fill (outputCacheL.begin(), outputCacheL.end(), 0.0f);
-        std::fill (outputCacheR.begin(), outputCacheR.end(), 0.0f);
+        prismDelay.reset();
+        phaserEffect.reset();
+        envelopeFollowerOutput = 0.0f;
+        externalPitchModulation = 0.0f;
+        externalFilterModulation = 0.0f;
+        std::fill (couplingCacheL.begin(), couplingCacheL.end(), 0.0f);
+        std::fill (couplingCacheR.begin(), couplingCacheR.end(), 0.0f);
     }
 
     //--------------------------------------------------------------------------
@@ -543,239 +730,327 @@ public:
     {
         if (numSamples <= 0) return;
 
-        // ---- ParamSnapshot ----
-        const int oscWaveIdx   = (pOscWave   != nullptr) ? static_cast<int> (pOscWave->load())   : 1;
-        const float oscFold    = (pOscFold   != nullptr) ? pOscFold->load()   : 0.3f;
-        const float oscDetune  = (pOscDetune != nullptr) ? pOscDetune->load() : 8.0f;
-        const float percClick  = (pPercClick != nullptr) ? pPercClick->load() : 0.6f;
-        const float percDecay  = (pPercDecay != nullptr) ? pPercDecay->load() : 0.3f;
-        const float filterCut  = (pFilterCut != nullptr) ? pFilterCut->load() : 4000.0f;
-        const float filterRes  = (pFilterRes != nullptr) ? pFilterRes->load() : 0.35f;
-        const float attack     = (pAttack    != nullptr) ? pAttack->load()    : 0.005f;
-        const float decay      = (pDecay     != nullptr) ? pDecay->load()     : 0.3f;
-        const float sustain    = (pSustain   != nullptr) ? pSustain->load()   : 0.7f;
-        const float release    = (pRelease   != nullptr) ? pRelease->load()   : 0.2f;
-        const float bounceRate = (pBounceRate    != nullptr) ? pBounceRate->load()    : 80.0f;
-        const float bounceGrav = (pBounceGravity != nullptr) ? pBounceGravity->load() : 0.7f;
-        const float bounceDamp = (pBounceDamp    != nullptr) ? pBounceDamp->load()    : 0.75f;
-        const int   bounceCnt  = (pBounceCnt     != nullptr) ? static_cast<int> (pBounceCnt->load()) : 6;
-        const float bounceSwng = (pBounceSwing   != nullptr) ? pBounceSwing->load()   : 0.15f;
-        const float clickTone  = (pClickTone     != nullptr) ? pClickTone->load()     : 3000.0f;
-        const float prismDelay = (pPrismDelay    != nullptr) ? pPrismDelay->load()    : 80.0f;
-        const float prismSprd  = (pPrismSpread   != nullptr) ? pPrismSpread->load()   : 0.6f;
-        const float prismColor = (pPrismColor    != nullptr) ? pPrismColor->load()    : 0.7f;
-        const float prismWidth = (pPrismWidth    != nullptr) ? pPrismWidth->load()    : 0.8f;
-        const float prismFb    = (pPrismFeedback != nullptr) ? pPrismFeedback->load() : 0.4f;
-        const float prismMix   = (pPrismMix      != nullptr) ? pPrismMix->load()      : 0.45f;
-        const float prismDamp  = (pPrismDamp     != nullptr) ? pPrismDamp->load()     : 0.3f;
-        const float phasRate   = (pPhaserRate     != nullptr) ? pPhaserRate->load()     : 0.5f;
-        const float phasDepth  = (pPhaserDepth    != nullptr) ? pPhaserDepth->load()    : 0.6f;
-        const float phasFb     = (pPhaserFeedback != nullptr) ? pPhaserFeedback->load() : 0.3f;
-        const float phasMix    = (pPhaserMix      != nullptr) ? pPhaserMix->load()      : 0.4f;
-        const float level      = (pLevel != nullptr) ? pLevel->load() : 0.8f;
-        const float glide      = (pGlide != nullptr) ? pGlide->load() : 0.0f;
+        // ======================================================================
+        // ParamSnapshot — cache all parameter values once per block.
+        // This avoids atomic loads on every sample (30 params x 512 samples
+        // = 15,360 atomic reads saved per block).
+        // ======================================================================
 
-        // ---- Process MIDI ----
+        // --- Oscillator parameters ---
+        const int oscWaveIndex        = (pOscWave   != nullptr) ? static_cast<int> (pOscWave->load())   : 1;
+        const float oscFoldAmount     = (pOscFold   != nullptr) ? pOscFold->load()   : 0.3f;
+        const float oscDetuneCents    = (pOscDetune != nullptr) ? pOscDetune->load() : 8.0f;
+        const float masterLevel       = (pLevel     != nullptr) ? pLevel->load()     : 0.8f;
+        const float glideTime         = (pGlide     != nullptr) ? pGlide->load()     : 0.0f;
+
+        // --- Bounce (percussive ricochet) parameters ---
+        const float bounceClickLevel  = (pPercClick != nullptr) ? pPercClick->load() : 0.6f;
+        const float bounceClickDecay  = (pPercDecay != nullptr) ? pPercDecay->load() : 0.3f;
+        const float bounceRateMs      = (pBounceRate    != nullptr) ? pBounceRate->load()    : 80.0f;
+        const float bounceGravity     = (pBounceGravity != nullptr) ? pBounceGravity->load() : 0.7f;
+        const float bounceDamping     = (pBounceDamp    != nullptr) ? pBounceDamp->load()    : 0.75f;
+        const int   bounceCount       = (pBounceCnt     != nullptr) ? static_cast<int> (pBounceCnt->load()) : 6;
+        const float bounceSwing       = (pBounceSwing   != nullptr) ? pBounceSwing->load()   : 0.15f;
+        const float bounceClickTone   = (pClickTone     != nullptr) ? pClickTone->load()     : 3000.0f;
+
+        // --- Filter parameters ---
+        const float filterCutoff      = (pFilterCut != nullptr) ? pFilterCut->load() : 4000.0f;
+        const float filterResonance   = (pFilterRes != nullptr) ? pFilterRes->load() : 0.35f;
+
+        // --- Envelope parameters ---
+        const float attackTime        = (pAttack    != nullptr) ? pAttack->load()    : 0.005f;
+        const float decayTime         = (pDecay     != nullptr) ? pDecay->load()     : 0.3f;
+        const float sustainLevel      = (pSustain   != nullptr) ? pSustain->load()   : 0.7f;
+        const float releaseTime       = (pRelease   != nullptr) ? pRelease->load()   : 0.2f;
+
+        // --- Prism delay parameters ---
+        const float prismDelayMs      = (pPrismDelay    != nullptr) ? pPrismDelay->load()    : 80.0f;
+        const float prismSpread       = (pPrismSpread   != nullptr) ? pPrismSpread->load()   : 0.6f;
+        const float prismColorSpread  = (pPrismColor    != nullptr) ? pPrismColor->load()    : 0.7f;
+        const float prismStereoWidth  = (pPrismWidth    != nullptr) ? pPrismWidth->load()    : 0.8f;
+        const float prismFeedback     = (pPrismFeedback != nullptr) ? pPrismFeedback->load() : 0.4f;
+        const float prismMixAmount    = (pPrismMix      != nullptr) ? pPrismMix->load()      : 0.45f;
+        const float prismDamping      = (pPrismDamp     != nullptr) ? pPrismDamp->load()     : 0.3f;
+
+        // --- Phaser parameters ---
+        const float phaserRate        = (pPhaserRate     != nullptr) ? pPhaserRate->load()     : 0.5f;
+        const float phaserDepth       = (pPhaserDepth    != nullptr) ? pPhaserDepth->load()    : 0.6f;
+        const float phaserFeedback    = (pPhaserFeedback != nullptr) ? pPhaserFeedback->load() : 0.3f;
+        const float phaserMixAmount   = (pPhaserMix      != nullptr) ? pPhaserMix->load()      : 0.4f;
+
+        // ======================================================================
+        // MIDI processing
+        // ======================================================================
+
         for (const auto metadata : midi)
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
-                        oscWaveIdx, oscDetune, glide, bounceRate, clickTone);
+                        oscWaveIndex, oscDetuneCents, glideTime, bounceRateMs, bounceClickTone);
             else if (msg.isNoteOff())
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
         }
 
-        // Consume coupling
-        float pitchMod = externalPitchMod;
-        float filterMod = externalFilterMod;
-        externalPitchMod = 0.0f;
-        externalFilterMod = 0.0f;
+        // ======================================================================
+        // Coupling input — consume accumulated external modulation
+        // ======================================================================
 
-        // Hoist filter coefficient update
-        float modCutoff = filterCut + filterMod * 4000.0f;
-        modCutoff = clamp (modCutoff, 20.0f, 20000.0f);
-        for (auto& v : voices)
+        float couplingPitchMod = externalPitchModulation;
+        float couplingFilterMod = externalFilterModulation;
+        externalPitchModulation = 0.0f;
+        externalFilterModulation = 0.0f;
+
+        // Hoist filter coefficient update outside the sample loop.
+        // Filter coefficients only need recalculating once per block
+        // (parameter changes are block-rate, not sample-rate).
+        static constexpr float kCouplingFilterModRange = 4000.0f;  // max coupling offset in Hz
+        float modulatedCutoff = filterCutoff + couplingFilterMod * kCouplingFilterModRange;
+        modulatedCutoff = clamp (modulatedCutoff, 20.0f, 20000.0f);
+
+        for (auto& voice : voices)
         {
-            if (!v.active) continue;
-            v.filter.setCoefficients (modCutoff, filterRes, srf);
+            if (!voice.active) continue;
+            voice.voiceFilter.setCoefficients (modulatedCutoff, filterResonance, sampleRateFloat);
         }
 
-        // ---- Render per-sample ----
-        float peakEnv = 0.0f;
+        // ======================================================================
+        // Per-sample rendering
+        // ======================================================================
 
-        for (int s = 0; s < numSamples; ++s)
+        float peakEnvelopeLevel = 0.0f;
+
+        for (int sampleIndex = 0; sampleIndex < numSamples; ++sampleIndex)
         {
-            float mixL = 0.0f, mixR = 0.0f;
+            float voiceSumL = 0.0f, voiceSumR = 0.0f;
 
-            for (auto& v : voices)
+            for (auto& voice : voices)
             {
-                if (!v.active) continue;
+                if (!voice.active) continue;
 
-                // ---- Envelope ----
-                float envTarget = 0.0f;
-                if (!v.releasing)
+                // --- ADSR Envelope ---
+                // Minimum time threshold: 1ms. Below this, set instantaneous
+                // to avoid division-by-near-zero artifacts.
+                static constexpr float kMinEnvelopeTime = 0.001f;
+
+                if (!voice.releasing)
                 {
-                    if (v.envStage < 1.0f)
+                    if (voice.envelopeStage < 1.0f)
                     {
-                        // Attack
-                        float attackRate = (attack > 0.001f) ? 1.0f / (attack * srf) : 1.0f;
-                        v.envLevel += attackRate;
-                        if (v.envLevel >= 1.0f)
+                        // Attack phase: linear ramp from 0 to 1
+                        float attackRate = (attackTime > kMinEnvelopeTime)
+                            ? 1.0f / (attackTime * sampleRateFloat) : 1.0f;
+                        voice.envelopeLevel += attackRate;
+                        if (voice.envelopeLevel >= 1.0f)
                         {
-                            v.envLevel = 1.0f;
-                            v.envStage = 1.0f;
+                            voice.envelopeLevel = 1.0f;
+                            voice.envelopeStage = 1.0f;  // transition to decay
                         }
                     }
-                    else if (v.envStage < 2.0f)
+                    else if (voice.envelopeStage < 2.0f)
                     {
-                        // Decay → sustain
-                        float decayRate = (decay > 0.001f) ? 1.0f / (decay * srf) : 1.0f;
-                        v.envLevel -= (v.envLevel - sustain) * decayRate;
-                        v.envLevel = flushDenormal (v.envLevel);
-                        if (v.envLevel <= sustain + 0.001f)
+                        // Decay phase: exponential approach toward sustain level
+                        float decayRate = (decayTime > kMinEnvelopeTime)
+                            ? 1.0f / (decayTime * sampleRateFloat) : 1.0f;
+                        voice.envelopeLevel -= (voice.envelopeLevel - sustainLevel) * decayRate;
+                        // Flush denormals: exponential decay toward sustain
+                        // produces subnormals as the difference shrinks
+                        voice.envelopeLevel = flushDenormal (voice.envelopeLevel);
+                        // Convergence threshold: within 0.1% of sustain = close enough
+                        if (voice.envelopeLevel <= sustainLevel + 0.001f)
                         {
-                            v.envLevel = sustain;
-                            v.envStage = 2.0f;
+                            voice.envelopeLevel = sustainLevel;
+                            voice.envelopeStage = 2.0f;  // transition to sustain hold
                         }
                     }
-                    // Sustain: hold at sustain level
+                    // Stage 2.0+: sustain — hold at sustainLevel until note-off
                 }
                 else
                 {
-                    // Release
-                    float relRate = (release > 0.001f) ? 1.0f / (release * srf) : 1.0f;
-                    v.envLevel -= v.envLevel * relRate;
-                    v.envLevel = flushDenormal (v.envLevel);
-                    if (v.envLevel < 0.001f)
+                    // Release phase: exponential decay toward zero
+                    float releaseRate = (releaseTime > kMinEnvelopeTime)
+                        ? 1.0f / (releaseTime * sampleRateFloat) : 1.0f;
+                    voice.envelopeLevel -= voice.envelopeLevel * releaseRate;
+                    // Flush denormals: release decay is the most common source
+                    // of subnormals — every released note decays toward zero
+                    voice.envelopeLevel = flushDenormal (voice.envelopeLevel);
+                    // -60dB silence threshold: below this, the voice is inaudible
+                    static constexpr float kSilenceThreshold = 0.001f;
+                    if (voice.envelopeLevel < kSilenceThreshold)
                     {
-                        v.envLevel = 0.0f;
-                        v.active = false;
+                        voice.envelopeLevel = 0.0f;
+                        voice.active = false;
                         continue;
                     }
                 }
 
-                // Voice stealing crossfade
-                float stealFade = 1.0f;
-                if (v.fadeOutLevel > 0.0f)
+                // --- Voice stealing crossfade ---
+                // When a voice is stolen, it fades out over 5ms to prevent clicks.
+                // 5ms is the standard click-free crossfade duration for voice stealing.
+                float stealFadeGain = 1.0f;
+                static constexpr float kStealFadeDuration = 0.005f;  // 5ms crossfade
+                if (voice.stealFadeLevel > 0.0f)
                 {
-                    v.fadeOutLevel -= 1.0f / (0.005f * srf);
-                    if (v.fadeOutLevel <= 0.0f) v.fadeOutLevel = 0.0f;
-                    stealFade = 1.0f - v.fadeOutLevel;
+                    voice.stealFadeLevel -= 1.0f / (kStealFadeDuration * sampleRateFloat);
+                    if (voice.stealFadeLevel <= 0.0f) voice.stealFadeLevel = 0.0f;
+                    stealFadeGain = 1.0f - voice.stealFadeLevel;
                 }
 
-                // ---- Glide ----
-                if (glide > 0.001f)
+                // --- Portamento/Glide ---
+                if (glideTime > kMinEnvelopeTime)
                 {
-                    float glideRate = 1.0f / (glide * srf * 0.5f);
-                    float diff = v.targetFreq - v.currentFreq;
-                    v.currentFreq += diff * glideRate;
+                    // Glide rate: half the glide time gives a musically useful
+                    // exponential approach speed (reaches target in ~2x glide time)
+                    float glideRate = 1.0f / (glideTime * sampleRateFloat * 0.5f);
+                    float frequencyDelta = voice.targetFrequency - voice.currentFrequency;
+                    voice.currentFrequency += frequencyDelta * glideRate;
                 }
                 else
                 {
-                    v.currentFreq = v.targetFreq;
+                    voice.currentFrequency = voice.targetFrequency;
                 }
-                float freq = v.currentFreq * std::pow (2.0f, pitchMod);
+                // Apply coupling pitch modulation (in semitones, via pow2)
+                float frequency = voice.currentFrequency * std::pow (2.0f, couplingPitchMod);
 
-                // ---- Dual Oscillator ----
-                v.oscA.setFrequency (freq, srf);
-                v.oscB.setFrequency (freq * std::pow (2.0f, oscDetune / 1200.0f), srf);
+                // --- Dual Oscillator ---
+                // Primary oscillator at pitch; secondary detuned by oscDetuneCents
+                // for chorus-like stereo width. Detune is in cents (1/100 semitone),
+                // converted to frequency ratio via 2^(cents/1200).
+                voice.oscillatorPrimary.setFrequency (frequency, sampleRateFloat);
+                voice.oscillatorSecondary.setFrequency (
+                    frequency * std::pow (2.0f, oscDetuneCents / 1200.0f), sampleRateFloat);
 
-                float oscOut = v.oscA.processSample() * 0.7f
-                             + v.oscB.processSample() * 0.3f;
+                // Mix ratio: 70/30 primary/secondary. The primary carries the
+                // fundamental weight; the secondary adds shimmer without muddying.
+                static constexpr float kPrimaryMixLevel = 0.7f;
+                static constexpr float kSecondaryMixLevel = 0.3f;
+                float oscillatorOutput = voice.oscillatorPrimary.processSample() * kPrimaryMixLevel
+                                       + voice.oscillatorSecondary.processSample() * kSecondaryMixLevel;
 
-                // ---- Wavefolder (RTJ grit) ----
-                oscOut = wavefolder.process (oscOut, oscFold);
+                // --- Wavefolder (Buchla-inspired harmonic grit) ---
+                oscillatorOutput = wavefolder.process (oscillatorOutput, oscFoldAmount);
 
-                // ---- Voice filter ----
-                oscOut = v.filter.processSample (oscOut);
+                // --- Voice filter (Cytomic SVF lowpass) ---
+                oscillatorOutput = voice.voiceFilter.processSample (oscillatorOutput);
 
-                // ---- Apply envelope ----
-                float voiced = oscOut * v.envLevel * v.velocity * stealFade;
+                // --- Apply envelope + velocity + steal fade ---
+                float voicedOutput = oscillatorOutput * voice.envelopeLevel
+                                   * voice.velocity * stealFadeGain;
 
-                // ---- Bounce clicks (percussive tops) ----
-                ObliqueBounce::Params bp;
-                bp.rate = bounceRate;
-                bp.gravity = bounceGrav;
-                bp.damping = bounceDamp;
-                bp.maxBounces = bounceCnt;
-                bp.swing = bounceSwng;
-                bp.clickTone = clickTone;
+                // --- Bounce clicks (per-voice percussive ricochets) ---
+                ObliqueBounce::Params bounceParams;
+                bounceParams.rate = bounceRateMs;
+                bounceParams.gravity = bounceGravity;
+                bounceParams.damping = bounceDamping;
+                bounceParams.maxBounces = bounceCount;
+                bounceParams.swing = bounceSwing;
+                bounceParams.clickTone = bounceClickTone;
+                // D004 fix: bounceClickDecay (oblq_percDecay) now controls click burst duration.
+                bounceParams.clickDecay = bounceClickDecay;
 
-                float bounceOut = v.bounce.process (bp) * percClick * v.velocity;
+                float bounceOutput = voice.bounce.process (bounceParams)
+                                   * bounceClickLevel * voice.velocity;
 
-                // ---- Mix voice: body (center-ish) + bounce (wider) ----
-                float bodyL = voiced * 0.7f;
-                float bodyR = voiced * 0.7f;
-                // Bounce clicks get slight per-voice pan scatter
-                float bPan = 0.3f + (static_cast<float> (v.noteNumber % 7) / 7.0f) * 0.4f;
-                float bounceL = bounceOut * std::cos (bPan * 1.5707963f);
-                float bounceR = bounceOut * std::sin (bPan * 1.5707963f);
+                // --- Stereo voice mix ---
+                // Body signal panned center (equal L/R at 70% level).
+                // Bounce clicks get per-voice pan scatter based on note number
+                // for spatial interest — each note's ricochets land at a different
+                // stereo position, like reflections from different mirror facets.
+                static constexpr float kBodyPanLevel = 0.7f;
+                float bodyL = voicedOutput * kBodyPanLevel;
+                float bodyR = voicedOutput * kBodyPanLevel;
 
-                mixL += bodyL + bounceL;
-                mixR += bodyR + bounceR;
+                // Pan scatter: map note number (mod 7) to 0.3-0.7 pan range.
+                // Using mod 7 (a prime) ensures adjacent notes don't cluster.
+                static constexpr float kBouncePanBase = 0.3f;
+                static constexpr float kBouncePanRange = 0.4f;
+                static constexpr float kHalfPi = 1.5707963f;  // pi/2 for equal-power pan law
+                float bouncePan = kBouncePanBase
+                    + (static_cast<float> (voice.noteNumber % 7) / 7.0f) * kBouncePanRange;
+                float bounceL = bounceOutput * std::cos (bouncePan * kHalfPi);
+                float bounceR = bounceOutput * std::sin (bouncePan * kHalfPi);
 
-                if (v.envLevel > peakEnv) peakEnv = v.envLevel;
+                voiceSumL += bodyL + bounceL;
+                voiceSumR += bodyR + bounceR;
+
+                if (voice.envelopeLevel > peakEnvelopeLevel)
+                    peakEnvelopeLevel = voice.envelopeLevel;
             }
 
-            // ---- Prism Delay (kaleidoscopic multiplication) ----
-            ObliquePrism::Params pp;
-            pp.baseDelay = prismDelay;
-            pp.spread = prismSprd;
-            pp.colorSpread = prismColor;
-            pp.stereoWidth = prismWidth;
-            pp.feedback = prismFb;
-            pp.mix = prismMix;
-            pp.damping = prismDamp;
+            // ================================================================
+            // Post-voice FX chain
+            // ================================================================
 
-            float prismL = 0.0f, prismR = 0.0f;
-            prism.process (mixL, mixR, prismL, prismR, pp);
+            // --- Prism Delay (6-facet spectral delay — the prismatic core) ---
+            ObliquePrism::Params prismParams;
+            prismParams.baseDelay = prismDelayMs;
+            prismParams.spread = prismSpread;
+            prismParams.colorSpread = prismColorSpread;
+            prismParams.stereoWidth = prismStereoWidth;
+            prismParams.feedback = prismFeedback;
+            prismParams.mix = prismMixAmount;
+            prismParams.damping = prismDamping;
 
-            // ---- Phaser (Tame Impala swirl) ----
-            ObliquePhaser::Params php;
-            php.rate = phasRate;
-            php.depth = phasDepth;
-            php.feedback = phasFb;
-            php.mix = phasMix;
-            phaser.process (prismL, prismR, php);
+            float postPrismL = 0.0f, postPrismR = 0.0f;
+            prismDelay.process (voiceSumL, voiceSumR, postPrismL, postPrismR, prismParams);
 
-            // ---- Output ----
-            float outL = prismL * level;
-            float outR = prismR * level;
+            // --- Phaser (Tame Impala psychedelic swirl) ---
+            ObliquePhaser::Params phaserParams;
+            phaserParams.rate = phaserRate;
+            phaserParams.depth = phaserDepth;
+            phaserParams.feedback = phaserFeedback;
+            phaserParams.mix = phaserMixAmount;
+            phaserEffect.process (postPrismL, postPrismR, phaserParams);
 
-            auto si = static_cast<size_t> (s);
-            if (si < outputCacheL.size())
+            // --- Master output ---
+            float outputL = postPrismL * masterLevel;
+            float outputR = postPrismR * masterLevel;
+
+            // Store in coupling cache for getSampleForCoupling() reads
+            auto cacheIndex = static_cast<size_t> (sampleIndex);
+            if (cacheIndex < couplingCacheL.size())
             {
-                outputCacheL[si] = outL;
-                outputCacheR[si] = outR;
+                couplingCacheL[cacheIndex] = outputL;
+                couplingCacheR[cacheIndex] = outputR;
             }
 
+            // Write to output buffer (addSample for mixing with other engines)
             if (buffer.getNumChannels() >= 2)
             {
-                buffer.addSample (0, s, outL);
-                buffer.addSample (1, s, outR);
+                buffer.addSample (0, sampleIndex, outputL);
+                buffer.addSample (1, sampleIndex, outputR);
             }
             else if (buffer.getNumChannels() == 1)
             {
-                buffer.addSample (0, s, (outL + outR) * 0.5f);
+                buffer.addSample (0, sampleIndex, (outputL + outputR) * 0.5f);
             }
         }
 
-        envelopeOutput = peakEnv;
+        envelopeFollowerOutput = peakEnvelopeLevel;
     }
 
     //--------------------------------------------------------------------------
-    // Coupling
+    // Coupling — XO_OX cross-engine modulation interface.
+    //
+    // Channel 0: Left output (post-FX)
+    // Channel 1: Right output (post-FX)
+    // Channel 2: Envelope follower (peak envelope level from last block)
+    //
+    // Best coupling pairings for OBLIQUE:
+    //   OBLIQUE -> OVERDUB: prismatic fragments through dub FX chain
+    //   ONSET -> OBLIQUE: drum transients trigger bounce cascades
+    //   OBLIQUE -> ODYSSEY: prism output modulates JOURNEY macro
+    //   OBLONG -> OBLIQUE: warm coral textures refracted through prism
     //--------------------------------------------------------------------------
 
     float getSampleForCoupling (int channel, int sampleIndex) const override
     {
-        auto si = static_cast<size_t> (sampleIndex);
-        if (channel == 0 && si < outputCacheL.size()) return outputCacheL[si];
-        if (channel == 1 && si < outputCacheR.size()) return outputCacheR[si];
-        if (channel == 2) return envelopeOutput;
+        auto index = static_cast<size_t> (sampleIndex);
+        if (channel == 0 && index < couplingCacheL.size()) return couplingCacheL[index];
+        if (channel == 1 && index < couplingCacheR.size()) return couplingCacheR[index];
+        if (channel == 2) return envelopeFollowerOutput;
         return 0.0f;
     }
 
@@ -785,21 +1060,31 @@ public:
         switch (type)
         {
             case CouplingType::AmpToFilter:
-                externalFilterMod += amount;
+                // Direct filter cutoff modulation — classic ducking/pumping
+                externalFilterModulation += amount;
                 break;
+
             case CouplingType::AmpToPitch:
             case CouplingType::LFOToPitch:
             case CouplingType::PitchToPitch:
-                externalPitchMod += amount * 0.5f;
+                // Pitch modulation scaled by 0.5 to keep it musical
+                // (full range would be too extreme for melodic content)
+                externalPitchModulation += amount * 0.5f;
                 break;
+
             case CouplingType::EnvToDecay:
-                // Modulate prism feedback from external envelope
-                externalFilterMod += amount * 0.3f;
+                // External envelope modulates filter cutoff at 30% strength.
+                // This creates a subtle breathing effect where external
+                // transients "open" the prism's spectral window.
+                externalFilterModulation += amount * 0.3f;
                 break;
+
             case CouplingType::RhythmToBlend:
-                // Rhythm coupling modulates prism spread
-                externalFilterMod += amount * 0.2f;
+                // Rhythm coupling modulates filter at 20% — lighter touch
+                // for groove-locked spectral movement
+                externalFilterModulation += amount * 0.2f;
                 break;
+
             default:
                 break;
         }
@@ -986,136 +1271,171 @@ public:
     }
 
     //--------------------------------------------------------------------------
-    // Identity
+    // Identity — The Prism Fish
+    // Sunlit shallows dweller, accent Prism Violet #BF40FF
     //--------------------------------------------------------------------------
 
     juce::String getEngineId() const override { return "Oblique"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFFBF40FF); }
+    juce::Colour getAccentColour() const override { return juce::Colour (0xFFBF40FF); }  // Prism Violet
     int getMaxVoices() const override { return kMaxVoices; }
 
     int getActiveVoiceCount() const override
     {
         int count = 0;
-        for (const auto& v : voices)
-            if (v.active) ++count;
+        for (const auto& voice : voices)
+            if (voice.active) ++count;
         return count;
     }
 
 private:
-    double sr = 44100.0;
-    float srf = 44100.0f;
+    //--------------------------------------------------------------------------
+    // Core state
+    //--------------------------------------------------------------------------
 
-    // Voice management
+    double hostSampleRate = 44100.0;
+    float sampleRateFloat = 44100.0f;
+
+    //--------------------------------------------------------------------------
+    // Voice pool — 8-voice polyphony with oldest-note stealing
+    //--------------------------------------------------------------------------
+
     std::array<ObliqueVoice, kMaxVoices> voices {};
 
-    // Shared DSP
-    ObliqueWavefolder wavefolder;
-    ObliquePrism prism;
-    ObliquePhaser phaser;
+    //--------------------------------------------------------------------------
+    // Shared DSP modules (post-voice, applied to the summed voice output)
+    //--------------------------------------------------------------------------
 
-    // Coupling state
-    float envelopeOutput = 0.0f;
-    float externalPitchMod = 0.0f;
-    float externalFilterMod = 0.0f;
+    ObliqueWavefolder wavefolder;     // Per-voice, but shared instance (stateless)
+    ObliquePrism prismDelay;          // 6-facet spectral delay (the prismatic core)
+    ObliquePhaser phaserEffect;       // 6-stage allpass psychedelic swirl
 
-    // Output cache for coupling reads
-    std::vector<float> outputCacheL;
-    std::vector<float> outputCacheR;
+    //--------------------------------------------------------------------------
+    // Coupling state — accumulated between blocks, consumed in renderBlock
+    //--------------------------------------------------------------------------
+
+    float envelopeFollowerOutput = 0.0f;      // peak envelope for coupling channel 2
+    float externalPitchModulation = 0.0f;     // accumulated pitch mod from other engines
+    float externalFilterModulation = 0.0f;    // accumulated filter mod from other engines
+
+    //--------------------------------------------------------------------------
+    // Output cache — stores per-sample output for getSampleForCoupling() reads.
+    // Other engines read from this cache during the coupling phase.
+    //--------------------------------------------------------------------------
+
+    std::vector<float> couplingCacheL;
+    std::vector<float> couplingCacheR;
 
     //--------------------------------------------------------------------------
     // MIDI handlers
     //--------------------------------------------------------------------------
 
-    void noteOn (int noteNumber, float velocity, int oscWaveIdx, float detuneCents,
-                 float glide, float bounceRate, float clickTone) noexcept
+    void noteOn (int noteNumber, float velocity, int oscWaveIndex, float detuneCents,
+                 float glideTime, float bounceRateMs, float bounceClickTone) noexcept
     {
-        // Find free voice or steal oldest
-        int voiceIdx = -1;
-        uint64_t oldestTime = UINT64_MAX;
-        int oldestIdx = 0;
+        // --- Voice allocation: find free voice or steal oldest ---
+        int selectedVoiceIndex = -1;
+        uint64_t oldestStartTime = UINT64_MAX;
+        int oldestVoiceIndex = 0;
 
         for (int i = 0; i < kMaxVoices; ++i)
         {
             if (!voices[static_cast<size_t> (i)].active)
             {
-                voiceIdx = i;
+                selectedVoiceIndex = i;
                 break;
             }
-            if (voices[static_cast<size_t> (i)].startTime < oldestTime)
+            if (voices[static_cast<size_t> (i)].startTime < oldestStartTime)
             {
-                oldestTime = voices[static_cast<size_t> (i)].startTime;
-                oldestIdx = i;
+                oldestStartTime = voices[static_cast<size_t> (i)].startTime;
+                oldestVoiceIndex = i;
             }
         }
 
-        if (voiceIdx < 0)
+        // If no free voice found, steal the oldest and crossfade it out
+        if (selectedVoiceIndex < 0)
         {
-            voiceIdx = oldestIdx;
-            voices[static_cast<size_t> (voiceIdx)].fadeOutLevel = 1.0f;
+            selectedVoiceIndex = oldestVoiceIndex;
+            voices[static_cast<size_t> (selectedVoiceIndex)].stealFadeLevel = 1.0f;
         }
 
-        auto& v = voices[static_cast<size_t> (voiceIdx)];
-        v.active = true;
-        v.noteNumber = noteNumber;
-        v.velocity = velocity;
-        v.startTime = ++voiceCounter;
-        v.releasing = false;
-        v.envStage = 0.0f;
-        v.envLevel = 0.0f;
+        auto& voice = voices[static_cast<size_t> (selectedVoiceIndex)];
+        voice.active = true;
+        voice.noteNumber = noteNumber;
+        voice.velocity = velocity;
+        voice.startTime = ++voiceCounter;
+        voice.releasing = false;
+        voice.envelopeStage = 0.0f;
+        voice.envelopeLevel = 0.0f;
 
-        // Set oscillator waveform
-        PolyBLEP::Waveform wf;
-        switch (oscWaveIdx)
+        // --- Set oscillator waveform ---
+        PolyBLEP::Waveform waveform;
+        switch (oscWaveIndex)
         {
-            case 0:  wf = PolyBLEP::Waveform::Sine;     break;
-            case 1:  wf = PolyBLEP::Waveform::Saw;      break;
-            case 2:  wf = PolyBLEP::Waveform::Square;   break;
-            case 3:  wf = PolyBLEP::Waveform::Pulse;    break;
-            case 4:  wf = PolyBLEP::Waveform::Triangle; break;
-            default: wf = PolyBLEP::Waveform::Saw;      break;
+            case 0:  waveform = PolyBLEP::Waveform::Sine;     break;
+            case 1:  waveform = PolyBLEP::Waveform::Saw;      break;
+            case 2:  waveform = PolyBLEP::Waveform::Square;   break;
+            case 3:  waveform = PolyBLEP::Waveform::Pulse;    break;
+            case 4:  waveform = PolyBLEP::Waveform::Triangle; break;
+            default: waveform = PolyBLEP::Waveform::Saw;      break;
         }
-        v.oscA.setWaveform (wf);
-        v.oscB.setWaveform (wf);
+        voice.oscillatorPrimary.setWaveform (waveform);
+        voice.oscillatorSecondary.setWaveform (waveform);
 
-        // Frequency
-        float freq = midiToFreq (noteNumber);
-        if (glide > 0.001f && v.currentFreq > 10.0f)
-            v.targetFreq = freq;  // glide from current position
+        // --- Set frequency (with optional glide) ---
+        float noteFrequency = midiToFreq (noteNumber);
+        // If glide is enabled and the voice was previously active at a valid
+        // frequency, glide from current position. Otherwise jump immediately.
+        static constexpr float kMinGlideTime = 0.001f;
+        static constexpr float kMinFrequencyForGlide = 10.0f;
+        if (glideTime > kMinGlideTime && voice.currentFrequency > kMinFrequencyForGlide)
+            voice.targetFrequency = noteFrequency;
         else
         {
-            v.currentFreq = freq;
-            v.targetFreq = freq;
+            voice.currentFrequency = noteFrequency;
+            voice.targetFrequency = noteFrequency;
         }
 
-        // Trigger bounce
-        v.bounce.reset();
-        v.bounce.trigger (velocity);
+        // --- Trigger bounce (percussive ricochet on note-on) ---
+        voice.bounce.reset();
+        voice.bounce.trigger (velocity);
 
-        // Reset filter
-        v.filter.reset();
-        v.filter.setMode (CytomicSVF::Mode::LowPass);
+        // --- Reset voice filter ---
+        voice.voiceFilter.reset();
+        voice.voiceFilter.setMode (CytomicSVF::Mode::LowPass);
     }
 
     void noteOff (int noteNumber) noexcept
     {
-        for (auto& v : voices)
+        // Release the first active, non-releasing voice matching this note
+        for (auto& voice : voices)
         {
-            if (v.active && v.noteNumber == noteNumber && !v.releasing)
+            if (voice.active && voice.noteNumber == noteNumber && !voice.releasing)
             {
-                v.releasing = true;
+                voice.releasing = true;
                 break;
             }
         }
     }
 
+    //--------------------------------------------------------------------------
+    // Voice allocation counter (monotonically increasing for oldest-note steal)
+    //--------------------------------------------------------------------------
+
     uint64_t voiceCounter = 0;
 
-    // Parameter pointers
+    //--------------------------------------------------------------------------
+    // Parameter pointers — cached from APVTS in attachParameters().
+    // Grouped by function to match the ParamSnapshot layout in renderBlock.
+    //--------------------------------------------------------------------------
+
+    // Oscillator
     std::atomic<float>* pOscWave        = nullptr;
     std::atomic<float>* pOscFold        = nullptr;
     std::atomic<float>* pOscDetune      = nullptr;
     std::atomic<float>* pLevel          = nullptr;
     std::atomic<float>* pGlide          = nullptr;
+
+    // Bounce (percussive ricochet)
     std::atomic<float>* pPercClick      = nullptr;
     std::atomic<float>* pPercDecay      = nullptr;
     std::atomic<float>* pBounceRate     = nullptr;
@@ -1124,12 +1444,18 @@ private:
     std::atomic<float>* pBounceCnt      = nullptr;
     std::atomic<float>* pBounceSwing    = nullptr;
     std::atomic<float>* pClickTone      = nullptr;
+
+    // Filter
     std::atomic<float>* pFilterCut      = nullptr;
     std::atomic<float>* pFilterRes      = nullptr;
+
+    // Envelope (ADSR)
     std::atomic<float>* pAttack         = nullptr;
     std::atomic<float>* pDecay          = nullptr;
     std::atomic<float>* pSustain        = nullptr;
     std::atomic<float>* pRelease        = nullptr;
+
+    // Prism delay (6-facet spectral)
     std::atomic<float>* pPrismDelay     = nullptr;
     std::atomic<float>* pPrismSpread    = nullptr;
     std::atomic<float>* pPrismColor     = nullptr;
@@ -1137,6 +1463,8 @@ private:
     std::atomic<float>* pPrismFeedback  = nullptr;
     std::atomic<float>* pPrismMix       = nullptr;
     std::atomic<float>* pPrismDamp      = nullptr;
+
+    // Phaser (psychedelic swirl)
     std::atomic<float>* pPhaserRate     = nullptr;
     std::atomic<float>* pPhaserDepth    = nullptr;
     std::atomic<float>* pPhaserFeedback = nullptr;

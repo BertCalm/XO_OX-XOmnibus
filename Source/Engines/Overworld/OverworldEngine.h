@@ -42,7 +42,7 @@ public:
 
     //-- Lifecycle --------------------------------------------------------------
 
-    void prepare(double sampleRate, int /*maxBlockSize*/) override
+    void prepare(double sampleRate, int maxBlockSize) override
     {
         sr = static_cast<float>(sampleRate);
         voicePool.prepare(sr);
@@ -52,6 +52,9 @@ public:
         crusher.reset();
         eraSmooth  = 0.0f;
         eraYSmooth = 0.0f;
+        // P0-05 fix: allocate per-sample output cache for coupling reads
+        outputCacheLeft.assign (static_cast<size_t> (maxBlockSize), 0.0f);
+        outputCacheRight.assign (static_cast<size_t> (maxBlockSize), 0.0f);
     }
 
     void releaseResources() override
@@ -230,9 +233,17 @@ public:
                 voicePool.allNotesOff();
         }
 
+        // D005 fix: minimal LFO added — advance ERA drift phase and apply
+        if (snap.eraDriftRate > 0.001f)
+        {
+            eraPhase = std::fmod(eraPhase + snap.eraDriftRate * numSamples / sr, 1.0f);
+        }
+        if (eraPhase >= 1.0f) eraPhase -= 1.0f;
+
         // ERA portamento: one-pole IIR smoothing
         float targetEra  = juce::jlimit(0.0f, 1.0f,
-                                        snap.era + externalEraMod);
+                                        snap.era + externalEraMod
+                                        + snap.eraDriftDepth * 0.35f * std::sin(eraPhase * juce::MathConstants<float>::twoPi));
         float targetEraY = juce::jlimit(0.0f, 1.0f,
                                         snap.eraY + externalEraYMod);
 
@@ -266,6 +277,13 @@ public:
 
             L[s] = sample;
             R[s] = sample;
+
+            // P0-05 fix: cache per-sample output for getSampleForCoupling
+            if (s < static_cast<int> (outputCacheLeft.size()))
+            {
+                outputCacheLeft[static_cast<size_t> (s)]  = sample;
+                outputCacheRight[static_cast<size_t> (s)] = sample;
+            }
         }
 
         lastSample = L[numSamples - 1];
@@ -278,8 +296,12 @@ public:
 
     //-- Coupling --------------------------------------------------------------
 
-    float getSampleForCoupling(int /*channel*/, int /*sampleIndex*/) const override
+    // P0-05 fix: return proper per-sample, per-channel output from cache
+    float getSampleForCoupling(int channel, int sampleIndex) const override
     {
+        auto index = static_cast<size_t> (sampleIndex);
+        if (channel == 0 && index < outputCacheLeft.size())  return outputCacheLeft[index];
+        if (channel == 1 && index < outputCacheRight.size()) return outputCacheRight[index];
         return lastSample;
     }
 
@@ -413,6 +435,13 @@ private:
     float eraSmooth  = 0.0f;
     float eraYSmooth = 0.0f;
     float lastSample = 0.0f;
+
+    // D005 fix: minimal LFO added — ERA position drift at eraDriftRate Hz
+    float eraPhase   = 0.0f;
+
+    // P0-05 fix: per-sample output cache for getSampleForCoupling
+    std::vector<float> outputCacheLeft;
+    std::vector<float> outputCacheRight;
 
     // Per-block coupling accumulators (reset each renderBlock)
     float externalFilterMod = 0.0f;

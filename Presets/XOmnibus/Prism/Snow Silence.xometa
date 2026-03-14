@@ -52,7 +52,7 @@
     "ocelot_chopRate":           2,
     "ocelot_chopSwing":          0.0,
     "ocelot_bitDepth":           16.0,
-    "ocelot_sampleRateRed":      44100.0,
+    "ocelot_sampleRate":      44100.0,
     "ocelot_tapeWobble":         0.05,
     "ocelot_tapeAge":            0.05,
     "ocelot_dustLevel":          0.0,

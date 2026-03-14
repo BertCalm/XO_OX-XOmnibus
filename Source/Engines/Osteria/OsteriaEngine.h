@@ -10,40 +10,93 @@
 namespace xomnibus {
 
 //==============================================================================
-// OsteriaEngine — Ensemble Synthesis with Elastic Coupling & Timbral Memory.
 //
-// A jazz quartet stretches across coastal cultures, absorbing folk instrument
-// character through elastic rubber-band coupling. Four independent voice
-// channels (bass, harmony, melody, rhythm) each with their own shore position,
-// connected by spring forces. Cross-pollination memory means borrowed
-// influences persist — the quartet accumulates a living history of everywhere
-// it's been.
+//  O S T E R I A   E N G I N E
+//  Ensemble Synthesis with Elastic Coupling & Timbral Memory
 //
-// Features:
-//   - 4 quartet channels per MIDI voice (Bass, Harmony, Melody, Rhythm)
-//   - Per-channel shore position (0-4) with continuous morphing
-//   - Elastic coupling: spring-force model between channels
-//   - Timbral memory: circular buffer of shore history per channel
-//   - Tavern room model: FDN reverb per-shore acoustic character
-//   - Murmur generator: crowd/conversation texture
-//   - Character stages: Patina, Porto, Smoke
-//   - Session delay, chorus, hall, tape FX
-//   - 8-voice polyphony with LRU stealing + 5ms crossfade
+//  Gallery code: OSTERIA  |  Accent: Porto Wine #722F37
+//  Companion engine: OSPREY (the ocean; OSTERIA is the shore)
 //
-// Coupling:
-//   - Output: post-room stereo audio via getSampleForCoupling
-//   - Input: AudioToWavetable (shapes quartet character),
-//            AmpToFilter (modulates elastic tightness),
-//            AudioToFM (excites tavern room), EnvToMorph (drives shore drift)
+//  -------------------------------------------------------------------------
+//
+//  Creature Identity:
+//  In the XO_OX aquatic mythology, OSTERIA is the human answer to the
+//  ocean's inhuman vastness. It lives in the Open Water zone of the water
+//  column — the same depth as XOdyssey and XObese — but its nature is
+//  fundamentally communal. Where OSPREY hears the ocean's voice, OSTERIA
+//  hears the human voice answering it. The osteria is where the fisherman
+//  goes after the sea. Where stories become songs. Where strangers become
+//  an ensemble.
+//
+//  -------------------------------------------------------------------------
+//
+//  Synth Lineage & Technique:
+//  OSTERIA channels the ensemble-synthesis tradition: modal resonator banks
+//  (Physical Modelling Synthesis, a la Yamaha VL1 / Modartt Pianoteq) shaped
+//  by formant profiles from real folk instrument spectral analysis (Guitarra
+//  Portuguesa, Kora, Oud, Shakuhachi, Gamelan, etc.). The elastic coupling
+//  between quartet voices draws on spring-mass physics models used in
+//  physical string simulation (Julius O. Smith, Stanford CCRMA). The Tavern
+//  Room is a Feedback Delay Network (FDN) reverb in the tradition of
+//  Jot/Gerzon, with Householder-like mixing and per-shore absorption.
+//
+//  -------------------------------------------------------------------------
+//
+//  Architecture:
+//  A jazz quartet (Bass, Harmony, Melody, Rhythm) stretches across 5
+//  coastal cultures via the Shore System (Atlantic, Nordic, Mediterranean,
+//  Pacific, Southern). Each voice independently absorbs the local folk
+//  instrument character through formant resonator banks. Voices are
+//  connected by spring forces — elastic rubber-band coupling pulls them
+//  toward a shared centroid, creating tension when stretched and musical
+//  unity when tight. Cross-pollination memory means borrowed influences
+//  persist — the quartet accumulates a living history of everywhere
+//  it's been.
+//
+//  Signal chain:
+//    MIDI -> 4 Quartet Channels (excitation -> formant resonators)
+//         -> Sympathy crossfeed -> DC blocker -> Soft limiter
+//         -> Patina / Porto / Smoke character stages
+//         -> Tavern Room (FDN reverb) + Murmur (crowd texture)
+//         -> Session Delay -> Hall (allpass) -> Chorus -> Tape
+//         -> Stereo output
+//
+//  Features:
+//    - 4 quartet channels per MIDI voice (Bass, Harmony, Melody, Rhythm)
+//    - Per-channel shore position (0-4) with continuous morphing
+//    - Elastic coupling: spring-force model between channels
+//    - Timbral memory: circular buffer of shore history per channel
+//    - Tavern room model: FDN reverb with per-shore acoustic character
+//    - Murmur generator: crowd/conversation texture via filtered noise
+//    - Character stages: Patina (harmonic fold), Porto (tanh warmth),
+//      Smoke (HF haze lowpass)
+//    - Session delay, chorus, hall, tape FX
+//    - 8-voice polyphony with LRU stealing + 5ms crossfade
+//
+//  Coupling (the OSPREY x OSTERIA diptych):
+//    - Output: post-room stereo audio via getSampleForCoupling
+//    - Input: AudioToWavetable (any engine becomes a shore the quartet
+//             absorbs), AmpToFilter (external dynamics modulate elastic
+//             tightness), AudioToFM (external audio excites the tavern
+//             room), EnvToMorph (external envelope drives shore drift)
 //
 //==============================================================================
 
 //==============================================================================
 // Constants
 //==============================================================================
+
+// Maximum polyphony — 8 notes, each spawning a full 4-channel quartet
+// (= 32 active resonator channels, 128 formant filters at peak load).
 static constexpr int kOsteriaMaxVoices = 8;
+
 static constexpr float kOsteriaPI = 3.14159265358979323846f;
 static constexpr float kOsteriaTwoPi = 6.28318530717958647692f;
+
+// Timbral memory depth — each quartet channel records its last 32 shore
+// positions. At control rate (~2kHz), this captures roughly 16ms of
+// positional history, enough for the palimpsest effect where accumulated
+// travel stains the current timbre.
 static constexpr int kMemoryBufferSize = 32;
 
 //==============================================================================
@@ -52,7 +105,13 @@ static constexpr int kMemoryBufferSize = 32;
 enum class QuartetRole : int { Bass = 0, Harmony = 1, Melody = 2, Rhythm = 3 };
 
 //==============================================================================
-// OsteriaADSR — lightweight inline ADSR envelope.
+// OsteriaADSR — Lightweight inline ADSR envelope.
+//
+// Linear attack, exponential-like decay/release using multiplicative
+// coefficient approach. The 0.0001f bias terms prevent the envelope from
+// stalling at exactly zero (which would cause the multiplicative decay
+// to produce no change) — a standard technique in envelope generators
+// since the CEM 3310 analog envelope chip.
 //==============================================================================
 struct OsteriaADSR
 {
@@ -68,7 +127,12 @@ struct OsteriaADSR
     void setParams (float attackSec, float decaySec, float sustain, float releaseSec,
                     float sampleRate) noexcept
     {
+        // Guard against zero/negative sample rate
         float sr = std::max (1.0f, sampleRate);
+
+        // Convert time-in-seconds to per-sample increment.
+        // Minimum 1ms (0.001f) prevents division-by-near-zero;
+        // values below 1ms are treated as instantaneous (rate = 1.0).
         attackRate  = (attackSec  > 0.001f) ? (1.0f / (attackSec  * sr)) : 1.0f;
         decayRate   = (decaySec   > 0.001f) ? (1.0f / (decaySec   * sr)) : 1.0f;
         sustainLevel = sustain;
@@ -88,16 +152,22 @@ struct OsteriaADSR
         switch (stage)
         {
             case Stage::Idle:    return 0.0f;
+
             case Stage::Attack:
                 level += attackRate;
                 if (level >= 1.0f) { level = 1.0f; stage = Stage::Decay; }
                 return level;
+
             case Stage::Decay:
+                // 0.0001f bias prevents stall when level == sustainLevel
                 level -= decayRate * (level - sustainLevel + 0.0001f);
                 if (level <= sustainLevel + 0.0001f) { level = sustainLevel; stage = Stage::Sustain; }
                 return level;
+
             case Stage::Sustain: return level;
+
             case Stage::Release:
+                // 0.0001f bias prevents stall when level approaches zero
                 level -= releaseRate * (level + 0.0001f);
                 if (level <= 0.0001f) { level = 0.0f; stage = Stage::Idle; }
                 return level;
@@ -110,49 +180,71 @@ struct OsteriaADSR
 };
 
 //==============================================================================
-// QuartetChannel — one of four ensemble voices with shore-morphed formants.
+// QuartetChannel — One of four ensemble voices with shore-morphed formants.
+//
+// Each channel represents one member of the travelling jazz quartet:
+//   Bass    — the low-end anchor (Guitarra, Hardingfele, Bouzouki, Koto, Cavaquinho)
+//   Harmony — the chordal voice (Kora, Langspil, Oud, Conch, Valiha)
+//   Melody  — the lead voice  (Uilleann Pipes, Kulning, Ney, Singing Bowl, Gamelan)
+//   Rhythm  — the percussive pulse (Bodhran, Sami Drum, Darbuka, Taiko, Djembe)
+//
+// Each channel carries its own position on the continuous Shore axis (0.0-4.0),
+// its own formant resonator bank shaped by the local folk instrument, and its
+// own timbral memory — a palimpsest of every coastline the voice has visited.
 //==============================================================================
 struct QuartetChannel
 {
     QuartetRole role = QuartetRole::Bass;
-    float shorePos = 0.0f;
-    float targetShorePos = 0.0f;
-    float shoreVelocity = 0.0f;
 
-    // 4 formant bandpass filters
+    // --- Shore position & elastic dynamics ---
+    float shorePos = 0.0f;          // Current position on the Shore axis (0.0=Atlantic, 4.0=Southern)
+    float targetShorePos = 0.0f;    // Where the user/macro wants this voice to be
+    float shoreVelocity = 0.0f;     // Spring-mass velocity for elastic overshoot
+
+    // --- Formant resonator bank ---
+    // 4 Cytomic SVF bandpass filters model the spectral fingerprint of the
+    // current shore's folk instrument. Frequencies, gains, and bandwidths are
+    // derived from ShoreSystem.h's ResonatorProfile data — real spectral
+    // analysis of instruments like Guitarra Portuguesa, Oud, Shakuhachi, etc.
     CytomicSVF formants[4];
     float formantFreqs[4] = { 300.0f, 1200.0f, 2800.0f, 5500.0f };
     float formantGains[4] = { 1.0f, 0.7f, 0.5f, 0.3f };
     float formantBandwidths[4] = { 80.0f, 150.0f, 200.0f, 300.0f };
 
-    // Timbral memory
+    // --- Timbral memory ---
+    // Circular buffer of recent shore positions. When memory > 0, the voice
+    // blends its current formants with a weighted average of where it has been.
+    // This is the "palimpsest" effect: the oud warmth from a Mediterranean
+    // visit persists in the bass voice's timbre long after it has moved on.
     float memoryBuffer[kMemoryBufferSize] = {};
     int memoryWritePos = 0;
     float memoryCachedFormantFreqs[4] = { 300.0f, 1200.0f, 2800.0f, 5500.0f };
 
-    // Per-channel oscillator phase
-    float oscPhase = 0.0f;
-    float oscPhase2 = 0.0f; // second oscillator for shimmer/detune
-    float noiseState = 0.0f;
+    // --- Per-channel oscillators ---
+    float oscPhase = 0.0f;          // Primary oscillator phase accumulator
+    float oscPhase2 = 0.0f;         // Secondary oscillator for shimmer/detuned partials
+    float noiseState = 0.0f;        // Noise generator state
 
-    // Rhythm transient envelope
-    float transientEnv = 0.0f;
-    float transientPhase = 0.0f;
+    // --- Rhythm channel transient ---
+    float transientEnv = 0.0f;      // Sharp attack envelope for percussive bursts
+    float transientPhase = 0.0f;    // Pulse rate phase (driven by ShoreRhythm data)
 
-    // Level and pan
+    // --- Mix ---
     float level = 1.0f;
     float pan = 0.0f;
 
-    // Per-channel output (for sympathy crossfeed)
+    // --- Per-channel output (cached for sympathy crossfeed) ---
     float lastOutputL = 0.0f;
     float lastOutputR = 0.0f;
 
+    // Linear congruential generator (LCG) for per-channel random values.
+    // Constants from Numerical Recipes: multiplier 1664525, increment 1013904223.
     uint32_t rng = 22222u;
 
     float nextRandom() noexcept
     {
-        rng = rng * 1664525u + 1013904223u;
-        return static_cast<float> (rng & 0xFFFF) / 32768.0f - 1.0f;
+        rng = rng * 1664525u + 1013904223u;   // LCG (Numerical Recipes constants)
+        return static_cast<float> (rng & 0xFFFF) / 32768.0f - 1.0f;  // bipolar [-1, +1)
     }
 
     void recordShorePosition() noexcept
@@ -220,38 +312,62 @@ struct QuartetChannel
 };
 
 //==============================================================================
-// TavernRoom — FDN reverb modeling tavern acoustics.
+// TavernRoom — FDN reverb modeling seaside tavern acoustics.
+//
+// A 4-line Feedback Delay Network (FDN) in the tradition of Jot (1992) and
+// Gerzon. Each delay line represents a reflection path within the tavern
+// space. The mixing matrix is Householder-like (average minus half of self),
+// which provides energy-preserving decorrelation between lines.
+//
+// Per-shore tavern character (from ShoreSystem.h TavernCharacter data):
+//   Atlantic: stone walls, low ceiling, wood bar, fireplace
+//   Nordic:   deep timber paneling, heavy insulation, warm hearth
+//   Mediterranean: open-air terrace, tile floor, sea breeze
+//   Pacific:  paper screens, tatami absorption, garden beyond
+//   Southern: corrugated roof, open sides, tropical air
 //==============================================================================
 struct TavernRoom
 {
     static constexpr int kMaxDelay = 4096;
     float delayBuf[4][kMaxDelay] = {};
     int delayWritePos = 0;
-    int delayLengths[4] = { 337, 509, 677, 883 };
-    float feedback = 0.3f;
-    CytomicSVF absorptionFilter;
-    float warmthGain = 1.0f;
 
-    void setCharacter (const TavernCharacter& tc, float mix, float sampleRate) noexcept
+    // Base delay lengths in samples — chosen as co-prime values to minimize
+    // periodic coloration. These are the "room shape" at the reference room
+    // size, then scaled by the shore's roomSizeMs.
+    int delayLengths[4] = { 337, 509, 677, 883 };
+
+    float feedback = 0.3f;           // Derived from RT60 via Sabine-like calculation
+    CytomicSVF absorptionFilter;     // Models high-frequency air/wall absorption
+    float warmthGain = 1.0f;         // Low-frequency boost from tavern warmth
+
+    void setCharacter (const TavernCharacter& tavernCharacter, float mix, float sampleRate) noexcept
     {
-        // Scale delay lengths by room size
-        float roomScale = tc.roomSizeMs / 15.0f;
+        // Scale base delay lengths by room size ratio.
+        // Reference room size is 15ms (small pub). Larger rooms stretch all delays.
+        float roomScale = tavernCharacter.roomSizeMs / 15.0f;
         delayLengths[0] = std::max (1, std::min (kMaxDelay - 1, static_cast<int> (337.0f * roomScale)));
         delayLengths[1] = std::max (1, std::min (kMaxDelay - 1, static_cast<int> (509.0f * roomScale)));
         delayLengths[2] = std::max (1, std::min (kMaxDelay - 1, static_cast<int> (677.0f * roomScale)));
         delayLengths[3] = std::max (1, std::min (kMaxDelay - 1, static_cast<int> (883.0f * roomScale)));
 
-        // Feedback from RT60
-        float rt60Samples = tc.decayMs * 0.001f * sampleRate;
-        feedback = (rt60Samples > 0.0f) ? std::pow (0.001f, static_cast<float> (delayLengths[0]) / rt60Samples) : 0.0f;
-        feedback = clamp (feedback, 0.0f, 0.85f);
+        // Derive feedback gain from RT60 (time for reverb tail to decay by 60dB).
+        // Uses the relation: feedback = 10^(-3 * delayLength / (RT60 * sampleRate))
+        // which ensures the tail decays to -60dB in the specified time.
+        float rt60Samples = tavernCharacter.decayMs * 0.001f * sampleRate;
+        feedback = (rt60Samples > 0.0f)
+            ? std::pow (0.001f, static_cast<float> (delayLengths[0]) / rt60Samples)
+            : 0.0f;
+        feedback = clamp (feedback, 0.0f, 0.85f);   // Cap at 0.85 for stability
 
-        // Absorption filter (LP)
-        float cutoff = lerp (2000.0f, 12000.0f, 1.0f - tc.absorption);
+        // Absorption filter: lowpass that models HF energy loss per reflection.
+        // High absorption (stone, soft furnishings) = low cutoff = darker tail.
+        float cutoff = lerp (2000.0f, 12000.0f, 1.0f - tavernCharacter.absorption);
         absorptionFilter.setMode (CytomicSVF::Mode::LowPass);
         absorptionFilter.setCoefficients (cutoff, 0.0f, sampleRate);
 
-        warmthGain = 1.0f + tc.warmth * 0.5f;
+        // Warmth boost: up to +50% gain on low-frequency content.
+        warmthGain = 1.0f + tavernCharacter.warmth * 0.5f;
     }
 
     void processSample (float& inL, float& inR, float mix) noexcept
@@ -260,23 +376,29 @@ struct TavernRoom
 
         float input = (inL + inR) * 0.5f;
 
-        // Read from delays
+        // Read from each delay line
         float d0 = readDelay (0);
         float d1 = readDelay (1);
         float d2 = readDelay (2);
         float d3 = readDelay (3);
 
-        // Householder-like mixing
+        // Householder-like mixing matrix: each feedback signal is the average
+        // of all lines minus half of itself. This provides good decorrelation
+        // without requiring a full unitary matrix multiply.
         float sum = (d0 + d1 + d2 + d3) * 0.25f;
         float fb0 = sum - d0 * 0.5f;
         float fb1 = sum - d1 * 0.5f;
         float fb2 = sum - d2 * 0.5f;
         float fb3 = sum - d3 * 0.5f;
 
-        // Apply absorption
+        // Apply absorption filter to the mixed signal
         float filtered = absorptionFilter.processSample (sum);
 
-        // Write to delays with feedback
+        // Write to delays: staggered input gain (1.0, 0.7, 0.5, 0.3) creates
+        // early reflection density variation across delay lines.
+        // flushDenormal prevents feedback paths from accumulating subnormal
+        // floats, which cause severe CPU spikes on x86 (up to 100x slowdown)
+        // when the FPU falls back to microcode for denormal arithmetic.
         writeDelay (0, input + flushDenormal (fb0 * feedback));
         writeDelay (1, input * 0.7f + flushDenormal (fb1 * feedback));
         writeDelay (2, input * 0.5f + flushDenormal (fb2 * feedback));
@@ -284,7 +406,7 @@ struct TavernRoom
 
         delayWritePos = (delayWritePos + 1) % kMaxDelay;
 
-        // Mix wet signal
+        // Stereo wet signal: odd/even delay lines panned L/R
         float wetL = (d0 + d2) * 0.5f * warmthGain;
         float wetR = (d1 + d3) * 0.5f * warmthGain;
 
@@ -315,14 +437,23 @@ struct TavernRoom
 };
 
 //==============================================================================
-// MurmurGenerator — crowd/conversation texture.
+// MurmurGenerator — Crowd and conversation texture.
+//
+// Models the ambient sound of a tavern full of people: the low rumble of
+// conversation, the bright edge of laughter. Two formant bandpass filters
+// shape white noise into a vowel-like texture:
+//   Formant 1 (~350 Hz, Q=0.4): the chest resonance of voices, the hum
+//   Formant 2 (~2-4 kHz, Q=0.3): sibilance, glass clinks, laughter brightness
+//
+// A slow 0.5 Hz LFO modulates formant positions to prevent static texture,
+// simulating the natural ebb and flow of conversation volume.
 //==============================================================================
 struct MurmurGenerator
 {
-    uint32_t rng = 77777u;
-    CytomicSVF formant1;
-    CytomicSVF formant2;
-    float modPhase = 0.0f;
+    uint32_t rng = 77777u;           // LCG state (Numerical Recipes constants)
+    CytomicSVF formant1;             // Low vocal resonance band (~350 Hz)
+    CytomicSVF formant2;             // High sibilance/brightness band (~2-4 kHz)
+    float modPhase = 0.0f;           // Slow modulation LFO phase
 
     void prepare (float sampleRate) noexcept
     {
@@ -334,23 +465,30 @@ struct MurmurGenerator
 
     float process (float brightness, float sampleRate) noexcept
     {
-        // Generate noise
+        // Generate white noise via LCG
         rng = rng * 1664525u + 1013904223u;
         float noise = static_cast<float> (rng & 0xFFFF) / 32768.0f - 1.0f;
 
-        // Slow modulation of formant positions
+        // Slow 0.5 Hz modulation — the ebb and flow of tavern conversation
         modPhase += 0.5f / std::max (1.0f, sampleRate);
         if (modPhase >= 1.0f) modPhase -= 1.0f;
         float mod = fastSin (modPhase * kOsteriaTwoPi);
 
-        float f1Freq = 350.0f + mod * 50.0f;
-        float f2Freq = lerp (2000.0f, 4000.0f, brightness) + mod * 200.0f;
-        formant1.setCoefficients (f1Freq, 0.4f, sampleRate);
-        formant2.setCoefficients (f2Freq, 0.3f, sampleRate);
+        // Formant 1: vocal chest resonance, gently modulated +/- 50 Hz
+        float lowFormantFreq = 350.0f + mod * 50.0f;
+        // Formant 2: sibilance band, brightness-dependent (2-4 kHz range),
+        // modulated +/- 200 Hz for natural variation
+        float highFormantFreq = lerp (2000.0f, 4000.0f, brightness) + mod * 200.0f;
 
+        formant1.setCoefficients (lowFormantFreq, 0.4f, sampleRate);
+        formant2.setCoefficients (highFormantFreq, 0.3f, sampleRate);
+
+        // Blend: 60% low vocal body, 40% high brightness
         float out = formant1.processSample (noise) * 0.6f
                   + formant2.processSample (noise) * 0.4f;
 
+        // 0.15 scale factor keeps murmur well below instrument level —
+        // it should be felt more than heard, like real background conversation
         return out * 0.15f;
     }
 
@@ -364,36 +502,58 @@ struct MurmurGenerator
 };
 
 //==============================================================================
-// OsteriaVoice — per-MIDI-note state with quartet channels.
+// OsteriaVoice — Per-MIDI-note state containing the full quartet ensemble.
+//
+// Each MIDI note activates all 4 quartet channels simultaneously — Bass,
+// Harmony, Melody, and Rhythm all respond to the same pitch, each
+// interpreting it through their current shore's instrument character.
+// Up to 8 voices can be active; the oldest is stolen with a 5ms crossfade
+// when polyphony is exhausted.
 //==============================================================================
 struct OsteriaVoice
 {
+    // --- Voice state ---
     bool active = false;
     int noteNumber = -1;
     float velocity = 0.0f;
-    uint64_t startTime = 0;
-    float targetFreq = 440.0f;
-    float currentTargetFreq = 440.0f;
-    float glideCoeff = 1.0f;
+    uint64_t startTime = 0;         // Monotonic counter for LRU voice stealing
 
+    // --- Pitch ---
+    float targetFreq = 440.0f;      // Target frequency from MIDI note
+    float currentTargetFreq = 440.0f; // Smoothed frequency (for glide/portamento)
+    float glideCoeff = 1.0f;        // Glide smoothing coefficient (1.0 = instant)
+
+    // --- The quartet ---
     std::array<QuartetChannel, 4> quartet;
 
+    // --- Amplitude envelope ---
     OsteriaADSR ampEnv;
 
-    float fadeGain = 1.0f;
-    bool fadingOut = false;
-    int controlCounter = 0;
+    // --- Voice stealing crossfade ---
+    float fadeGain = 1.0f;          // 1.0 = full volume, fades to 0 during stealing
+    bool fadingOut = false;         // True when this voice is being stolen
+
+    // --- Control-rate decimation ---
+    int controlCounter = 0;         // Counts samples until next control-rate update
+
+    // --- Per-voice PRNG (LCG, Numerical Recipes constants) ---
     uint32_t rng = 12345u;
 
+    // --- DC blocker state ---
+    // First-order DC blocker: y[n] = x[n] - x[n-1] + R * y[n-1]
+    // Required because asymmetric saturation (Patina, Porto) and formant
+    // resonance can introduce DC offset that causes speaker excursion.
     float dcPrevInL = 0.0f, dcPrevOutL = 0.0f;
     float dcPrevInR = 0.0f, dcPrevOutR = 0.0f;
 
+    /** Bipolar random value in [-1, +1). */
     float nextRandom() noexcept
     {
         rng = rng * 1664525u + 1013904223u;
         return static_cast<float> (rng & 0xFFFF) / 32768.0f - 1.0f;
     }
 
+    /** Unipolar random value in [0, 1). Used for initial phase randomization. */
     float nextRandomUni() noexcept
     {
         rng = rng * 1664525u + 1013904223u;
@@ -420,7 +580,17 @@ struct OsteriaVoice
 };
 
 //==============================================================================
-// OsteriaEngine — the main engine class.
+// OsteriaEngine — The main engine class.
+//
+// OSTERIA is the human answer to the ocean's inhuman vastness. A travelling
+// jazz quartet that absorbs the folk instrument character of every coastline
+// it visits, connected by elastic rubber-band coupling. The tavern is the
+// room, the murmur is the crowd, the patina is the century of music
+// embedded in the wood.
+//
+// Gallery: OSTERIA | Accent: Porto Wine #722F37 | Prefix: osteria_
+// Water column: Open Water (same depth as ODYSSEY, OBESE, OSTINATO)
+// Companion: OSPREY (together they form "The Diptych" — ocean and shore)
 //==============================================================================
 class OsteriaEngine : public SynthEngine
 {
@@ -436,18 +606,22 @@ public:
         sr = sampleRate;
         srf = static_cast<float> (sr);
 
+        // Control rate: ~2 kHz. Elastic coupling, formant updates, and shore
+        // morphing run at this decimated rate to save CPU. At 44.1 kHz this
+        // yields controlRateDiv = 22, meaning one control update per 22 audio
+        // samples (~0.5 ms period).
         controlRateDiv = std::max (1, static_cast<int> (srf / 2000.0f));
         controlDt = static_cast<float> (controlRateDiv) / srf;
 
+        // Voice-stealing crossfade: 5ms to prevent clicks when the oldest
+        // voice is stolen. The rate is samples-to-silence in that window.
         crossfadeRate = 1.0f / (0.005f * srf);
 
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
 
-        // Initialize voices
+        // --- Initialize voices and assign quartet roles ---
         for (auto& v : voices) v.reset();
-
-        // Initialize quartet roles
         for (auto& v : voices)
         {
             v.quartet[0].role = QuartetRole::Bass;
@@ -456,30 +630,32 @@ public:
             v.quartet[3].role = QuartetRole::Rhythm;
         }
 
-        // Initialize tavern room and murmur
+        // --- Tavern room and murmur ---
         tavernRoom.reset();
         murmur.prepare (srf);
 
-        // Initialize post filters
+        // --- Character stage filters ---
+        // Smoke: lowpass that rolls off HF, modeling woodfire haze in the air
         smokeFilter.setMode (CytomicSVF::Mode::LowPass);
         smokeFilter.setCoefficients (8000.0f, 0.0f, srf);
+        // Warmth: low shelf boost at 300 Hz, modeling nearfield proximity effect
         warmthFilter.setMode (CytomicSVF::Mode::LowShelf);
         warmthFilter.setCoefficients (300.0f, 0.0f, srf, 3.0f);
 
-        // Session delay
+        // --- Session delay ---
         sessionDelayWritePos = 0;
         for (int c = 0; c < 2; ++c)
             for (int i = 0; i < kSessionDelayMax; ++i)
                 sessionDelayBuf[c][i] = 0.0f;
 
-        // Chorus
+        // --- Chorus ---
         chorusWritePos = 0;
         chorusPhase = 0.0f;
         for (int c = 0; c < 2; ++c)
             for (int i = 0; i < kChorusBufSize; ++i)
                 chorusBuf[c][i] = 0.0f;
 
-        // Hall (allpass)
+        // --- Hall (allpass diffusion chain) ---
         for (int i = 0; i < 4; ++i)
         {
             hallWritePos[i] = 0;
@@ -534,68 +710,96 @@ public:
     {
         if (numSamples <= 0) return;
 
-        // --- ParamSnapshot ---
+        // =====================================================================
+        // ParamSnapshot — cache all APVTS parameter values once per block.
+        // This pattern (used across all XOmnibus engines) avoids atomic loads
+        // per sample, which is critical at 128 formant filters peak load.
+        // =====================================================================
+
+        // -- Quartet shore positions (0.0=Atlantic .. 4.0=Southern) --
         const float pBassShore    = loadParam (paramBassShore, 0.0f);
         const float pHarmShore    = loadParam (paramHarmShore, 0.0f);
         const float pMelShore     = loadParam (paramMelShore, 0.0f);
         const float pRhythmShore  = loadParam (paramRhythmShore, 0.0f);
-        const float pElastic      = loadParam (paramElastic, 0.5f);
-        const float pStretch      = loadParam (paramStretch, 0.5f);
-        const float pMemory       = loadParam (paramMemory, 0.3f);
-        const float pSympathy     = loadParam (paramSympathy, 0.3f);
 
-        const float pBassLvl      = loadParam (paramBassLevel, 0.8f);
-        const float pHarmLvl      = loadParam (paramHarmLevel, 0.7f);
-        const float pMelLvl       = loadParam (paramMelLevel, 0.7f);
-        const float pRhythmLvl    = loadParam (paramRhythmLevel, 0.6f);
+        // -- Elastic coupling --
+        const float pElastic      = loadParam (paramElastic, 0.5f);   // Spring constant
+        const float pStretch      = loadParam (paramStretch, 0.5f);   // Tension threshold
+        const float pMemory       = loadParam (paramMemory, 0.3f);    // Timbral palimpsest amount
+        const float pSympathy     = loadParam (paramSympathy, 0.3f);  // Inter-voice resonance
+
+        // -- Voice balance --
+        const float pBassLevel    = loadParam (paramBassLevel, 0.8f);
+        const float pHarmonyLevel = loadParam (paramHarmLevel, 0.7f);
+        const float pMelodyLevel  = loadParam (paramMelLevel, 0.7f);
+        const float pRhythmLevel  = loadParam (paramRhythmLevel, 0.6f);
         const float pEnsWidth     = loadParam (paramEnsWidth, 0.5f);
         const float pBlend        = loadParam (paramBlendMode, 0.0f);
 
+        // -- Tavern environment --
         const float pTavernMix    = loadParam (paramTavernMix, 0.3f);
         const float pTavernShore  = loadParam (paramTavernShore, 0.0f);
         const float pMurmur       = loadParam (paramMurmur, 0.2f);
         const float pWarmth       = loadParam (paramWarmth, 0.5f);
         const float pOceanBleed   = loadParam (paramOceanBleed, 0.1f);
 
-        const float pPatina       = loadParam (paramPatina, 0.2f);
-        const float pPorto        = loadParam (paramPorto, 0.0f);
-        const float pSmoke        = loadParam (paramSmoke, 0.1f);
+        // -- Character stages --
+        const float pPatina       = loadParam (paramPatina, 0.2f);    // Harmonic aging fold
+        const float pPorto        = loadParam (paramPorto, 0.0f);     // Wine-dark saturation
+        const float pSmoke        = loadParam (paramSmoke, 0.1f);     // HF haze lowpass
 
-        const float pAmpA         = loadParam (paramAttack, 0.05f);
-        const float pAmpD         = loadParam (paramDecay, 0.3f);
-        const float pAmpS         = loadParam (paramSustain, 0.7f);
-        const float pAmpR         = loadParam (paramRelease, 1.0f);
+        // -- Amplitude envelope --
+        const float pAmpAttack    = loadParam (paramAttack, 0.05f);
+        const float pAmpDecay     = loadParam (paramDecay, 0.3f);
+        const float pAmpSustain   = loadParam (paramSustain, 0.7f);
+        const float pAmpRelease   = loadParam (paramRelease, 1.0f);
 
+        // -- FX --
         const float pDelay        = loadParam (paramSessionDelay, 0.2f);
         const float pHall         = loadParam (paramHall, 0.2f);
         const float pChorus       = loadParam (paramChorus, 0.1f);
         const float pTape         = loadParam (paramTape, 0.0f);
 
-        const float macroChar     = loadParam (paramMacroCharacter, 0.0f);
-        const float macroMove     = loadParam (paramMacroMovement, 0.0f);
-        const float macroCoup     = loadParam (paramMacroCoupling, 0.0f);
-        const float macroSpace    = loadParam (paramMacroSpace, 0.0f);
+        // -- Macros (M1-M4: CHARACTER, MOVEMENT, COUPLING, SPACE) --
+        const float macroCharacter = loadParam (paramMacroCharacter, 0.0f);
+        const float macroMovement  = loadParam (paramMacroMovement, 0.0f);
+        const float macroCoupling  = loadParam (paramMacroCoupling, 0.0f);
+        const float macroSpace     = loadParam (paramMacroSpace, 0.0f);
 
-        // --- Apply macros ---
-        float effectiveBlend   = clamp (pBlend + macroChar * 0.8f, 0.0f, 1.0f);
-        float convergence      = macroChar;
-        float effectiveElastic = clamp (pElastic - macroMove * 0.7f, 0.0f, 1.0f);
-        float effectiveStretch = clamp (pStretch + macroMove * 0.4f, 0.01f, 1.0f);
-        float effectiveSympathy = clamp (pSympathy + macroCoup * 0.5f, 0.0f, 1.0f);
-        float effectiveMemory  = clamp (pMemory + macroCoup * 0.5f, 0.0f, 1.0f);
+        // =====================================================================
+        // Apply macros — each macro modulates multiple parameters to create
+        // musically coherent sweeps across the engine's character space.
+        // =====================================================================
+
+        // M1 CHARACTER: At 0 = spread (diverse shores). At 1 = converged (unified folk ensemble).
+        float effectiveBlend   = clamp (pBlend + macroCharacter * 0.8f, 0.0f, 1.0f);
+        float convergence      = macroCharacter;
+
+        // M2 MOVEMENT: At 0 = tight ensemble. At 1 = nomadic wandering.
+        // Loosens elastic (inverse), widens stretch threshold.
+        float effectiveElastic = clamp (pElastic - macroMovement * 0.7f, 0.0f, 1.0f);
+        float effectiveStretch = clamp (pStretch + macroMovement * 0.4f, 0.01f, 1.0f);
+
+        // M3 COUPLING: At 0 = independent voices. At 1 = deep inter-voice influence + heavy memory.
+        float effectiveSympathy = clamp (pSympathy + macroCoupling * 0.5f, 0.0f, 1.0f);
+        float effectiveMemory  = clamp (pMemory + macroCoupling * 0.5f, 0.0f, 1.0f);
+
+        // M4 SPACE: At 0 = open air. At 1 = deep inside the pub (warm, intimate, sheltered).
         float effectiveTavern  = clamp (pTavernMix + macroSpace * 0.6f, 0.0f, 1.0f);
         float effectiveHall    = clamp (pHall + macroSpace * 0.5f, 0.0f, 1.0f);
         float effectiveBleed   = clamp (pOceanBleed + macroSpace * 0.5f, 0.0f, 1.0f);
 
-        // Channel levels
-        const float channelLevels[4] = { pBassLvl, pHarmLvl, pMelLvl, pRhythmLvl };
+        // Per-channel mix levels (Bass, Harmony, Melody, Rhythm)
+        const float channelLevels[4] = { pBassLevel, pHarmonyLevel, pMelodyLevel, pRhythmLevel };
 
-        // Channel pans (spread by ensWidth)
+        // Per-channel stereo pan positions, spread proportionally by ensemble width.
+        // Bass slightly left, Harmony center-left, Melody center-right, Rhythm right —
+        // mimicking a natural stage layout for a quartet.
         const float channelPans[4] = {
-            -0.3f * pEnsWidth,
-            -0.1f * pEnsWidth,
-             0.2f * pEnsWidth,
-             0.4f * pEnsWidth
+            -0.3f * pEnsWidth,   // Bass: left of center
+            -0.1f * pEnsWidth,   // Harmony: just left of center
+             0.2f * pEnsWidth,   // Melody: right of center
+             0.4f * pEnsWidth    // Rhythm: further right
         };
 
         // Shore targets per channel
@@ -649,7 +853,7 @@ public:
             if (msg.isNoteOn())
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
                         shoreTargets, channelLevels, channelPans,
-                        pAmpA, pAmpD, pAmpS, pAmpR);
+                        pAmpAttack, pAmpDecay, pAmpSustain, pAmpRelease);
             else if (msg.isNoteOff())
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
@@ -687,14 +891,23 @@ public:
                 {
                     voice.controlCounter = 0;
 
-                    // Elastic coupling: compute centroid
+                    // --- Elastic coupling (spring-mass physics) ---
+                    // Compute the ensemble centroid: the average shore position
+                    // of all four quartet voices. This is the "center of gravity"
+                    // that the rubber band pulls each voice toward.
                     float centroid = 0.0f;
                     for (int c = 0; c < 4; ++c)
                         centroid += voice.quartet[c].shorePos;
                     centroid *= 0.25f;
 
-                    // Apply spring forces
+                    // Spring constant: scales with elastic parameter.
+                    // At effectiveElastic=1.0, springK=4.0 (tight ensemble).
+                    // At effectiveElastic=0.0, springK=0.0 (voices drift freely).
                     float springK = effectiveElastic * 4.0f;
+
+                    // Stretch threshold: distance beyond which force increases
+                    // quadratically (the rubber band "tightens"). Range 0.5-2.5
+                    // shore units, controlled by the Stretch parameter.
                     float stretchThreshold = effectiveStretch * 2.0f + 0.5f;
 
                     for (int c = 0; c < 4; ++c)
@@ -702,11 +915,13 @@ public:
                         auto& ch = voice.quartet[c];
                         ch.targetShorePos = shoreTargets[c];
 
-                        // Spring toward centroid
+                        // Linear spring force toward centroid (Hooke's law: F = -kx)
                         float dist = centroid - ch.shorePos;
                         float force = springK * dist;
 
-                        // Nonlinear increase past stretch limit
+                        // Quadratic force increase beyond stretch threshold —
+                        // models the nonlinear stiffening of a real rubber band
+                        // as it approaches its elastic limit.
                         float absDist = std::fabs (dist);
                         if (absDist > stretchThreshold)
                         {
@@ -714,24 +929,34 @@ public:
                             force += (dist > 0.0f ? 1.0f : -1.0f) * excess * excess * 2.0f;
                         }
 
-                        // Also pull toward target position
+                        // Additional pull toward user-set target position.
+                        // Gain of 2.0 ensures voices converge on their targets
+                        // within a musically useful timeframe (~200ms).
                         float targetPull = (ch.targetShorePos - ch.shorePos) * 2.0f;
                         force += targetPull;
 
+                        // Integrate velocity and position (Euler integration)
                         ch.shoreVelocity += force * controlDt;
-                        ch.shoreVelocity *= 0.95f; // damping
+                        ch.shoreVelocity *= 0.95f; // Velocity damping (5% per step) prevents oscillation
                         ch.shorePos += ch.shoreVelocity * controlDt;
                         ch.shorePos = clamp (ch.shorePos, 0.0f, 4.0f);
+                        // Flush denormals in velocity to prevent CPU spikes in
+                        // the feedback loop when velocity decays toward zero.
                         ch.shoreVelocity = flushDenormal (ch.shoreVelocity);
                     }
 
-                    // Update formants per channel based on current shore
+                    // Update formant resonator coefficients per channel based
+                    // on each voice's current shore position. The ShoreSystem
+                    // provides 3 resonator slots per shore (bass/drone=0,
+                    // chordal/harmonic=1, melodic/lead=2). The Rhythm channel
+                    // (index 3) reuses the bass slot since its excitation is
+                    // noise-based — the formants add body, not pitched content.
                     for (int c = 0; c < 4; ++c)
                     {
                         auto& ch = voice.quartet[c];
                         ShoreMorphState morph = decomposeShore (ch.shorePos);
                         int slot = c;
-                        if (slot > 2) slot = 0;
+                        if (slot > 2) slot = 0;  // Rhythm channel uses bass resonator slot
                         ResonatorProfile prof = morphResonator (morph, slot);
 
                         // Scale formant frequencies relative to the note
@@ -768,7 +993,14 @@ public:
                     }
                 }
 
-                // --- Audio-rate: render quartet ---
+                // ==========================================================
+                // Audio-rate: render the four quartet channels.
+                //
+                // Each role has a distinct excitation spectrum fed into its
+                // formant resonators. The formants do the heavy timbral
+                // lifting — the excitation just provides the raw harmonic
+                // content for the resonators to shape.
+                // ==========================================================
                 float voiceL = 0.0f, voiceR = 0.0f;
                 float freq = voice.currentTargetFreq;
                 float phaseInc = freq / srf;
@@ -782,20 +1014,26 @@ public:
                     {
                         case QuartetRole::Bass:
                         {
-                            // Fundamental + sub
-                            float sin1 = fastSin (ch.oscPhase * kOsteriaTwoPi);
-                            float sin2 = fastSin (ch.oscPhase * 0.5f * kOsteriaTwoPi); // sub
-                            excitation = sin1 * 0.7f + sin2 * 0.3f;
+                            // Fundamental sine + sub-octave (0.5x frequency).
+                            // 70/30 mix favors the fundamental while the sub
+                            // adds low-end weight — like a bassist doubling
+                            // with the left hand an octave below.
+                            float fundamental = fastSin (ch.oscPhase * kOsteriaTwoPi);
+                            float subOctave   = fastSin (ch.oscPhase * 0.5f * kOsteriaTwoPi);
+                            excitation = fundamental * 0.7f + subOctave * 0.3f;
                             ch.oscPhase += phaseInc;
                             if (ch.oscPhase >= 1.0f) ch.oscPhase -= 1.0f;
                             break;
                         }
                         case QuartetRole::Harmony:
                         {
-                            // Mid partials with slight detune
-                            float sin1 = fastSin (ch.oscPhase * kOsteriaTwoPi * 1.5f);
-                            float sin2 = fastSin (ch.oscPhase2 * kOsteriaTwoPi * 2.003f); // detuned octave
-                            excitation = sin1 * 0.5f + sin2 * 0.5f;
+                            // Perfect fifth (1.5x) + slightly detuned octave (2.003x).
+                            // The 0.003 detune creates paired-string shimmer,
+                            // inspired by the Guitarra Portuguesa's paired courses
+                            // and the Hardingfele's sympathetic strings.
+                            float fifth        = fastSin (ch.oscPhase * kOsteriaTwoPi * 1.5f);
+                            float detunedOctave = fastSin (ch.oscPhase2 * kOsteriaTwoPi * 2.003f);
+                            excitation = fifth * 0.5f + detunedOctave * 0.5f;
                             ch.oscPhase += phaseInc;
                             ch.oscPhase2 += phaseInc;
                             if (ch.oscPhase >= 1.0f) ch.oscPhase -= 1.0f;
@@ -804,11 +1042,15 @@ public:
                         }
                         case QuartetRole::Melody:
                         {
-                            // Upper partials with brightness
-                            float sin1 = fastSin (ch.oscPhase * kOsteriaTwoPi * 2.0f);
-                            float sin2 = fastSin (ch.oscPhase2 * kOsteriaTwoPi * 3.01f);
-                            float sin3 = fastSin (ch.oscPhase * kOsteriaTwoPi * 4.02f);
-                            excitation = sin1 * 0.4f + sin2 * 0.35f + sin3 * 0.25f;
+                            // Upper partials: octave (2x), slightly sharp 5th+oct
+                            // (3.01x), and double octave (4.02x). The micro-sharp
+                            // detuning (0.01, 0.02) prevents phase-locked stasis
+                            // and adds the natural inharmonicity of real
+                            // instruments like Ney, Shakuhachi, and Kulning voices.
+                            float octave    = fastSin (ch.oscPhase * kOsteriaTwoPi * 2.0f);
+                            float twelfth   = fastSin (ch.oscPhase2 * kOsteriaTwoPi * 3.01f);
+                            float dblOctave = fastSin (ch.oscPhase * kOsteriaTwoPi * 4.02f);
+                            excitation = octave * 0.4f + twelfth * 0.35f + dblOctave * 0.25f;
                             ch.oscPhase += phaseInc;
                             ch.oscPhase2 += phaseInc;
                             if (ch.oscPhase >= 1.0f) ch.oscPhase -= 1.0f;
@@ -817,17 +1059,25 @@ public:
                         }
                         case QuartetRole::Rhythm:
                         {
-                            // Noise + transient at pulse rate
-                            ShoreMorphState rm = decomposeShore (ch.shorePos);
-                            ShoreRhythm rhythm = morphRhythm (rm);
+                            // Noise burst with sharp transient envelope, driven
+                            // by the shore's percussion pulse rate (Bodhran,
+                            // Sami Drum, Darbuka, Taiko, Djembe).
+                            ShoreMorphState rhythmMorph = decomposeShore (ch.shorePos);
+                            ShoreRhythm rhythm = morphRhythm (rhythmMorph);
 
                             ch.transientPhase += rhythm.pulseRate / srf;
                             if (ch.transientPhase >= 1.0f)
                             {
                                 ch.transientPhase -= 1.0f;
-                                ch.transientEnv = 1.0f;
+                                ch.transientEnv = 1.0f;  // Trigger a new transient
                             }
-                            ch.transientEnv *= (1.0f - 8.0f / srf); // fast decay
+                            // Exponential decay: ~125 us time constant at 44.1 kHz
+                            // (8.0 / srf), creating a sharp percussive attack.
+                            ch.transientEnv *= (1.0f - 8.0f / srf);
+                            // Flush denormals in the transient decay path — this
+                            // decaying exponential will produce subnormal values
+                            // as it approaches zero, causing CPU spikes without
+                            // this guard.
                             ch.transientEnv = flushDenormal (ch.transientEnv);
 
                             float noise = ch.nextRandom();
@@ -866,46 +1116,67 @@ public:
                     voiceR += chR;
                 }
 
-                // Apply sympathy crossfeed
+                // --- Sympathy crossfeed ---
+                // Models how real acoustic instruments in close proximity
+                // excite each other's resonators through air coupling (like
+                // sympathetic strings on a Hardingfele or Sitar). Each
+                // channel's output is fed into the other channels' primary
+                // formant filter, creating subtle cross-resonance.
                 if (effectiveSympathy > 0.001f)
                 {
-                    float sympGain = effectiveSympathy * 0.15f;
+                    // Scale factor keeps sympathy subtle — it should add
+                    // shimmer and life, not dominate the sound.
+                    float sympathyGain = effectiveSympathy * 0.15f;
                     for (int c = 0; c < 4; ++c)
                     {
                         auto& ch = voice.quartet[c];
-                        float sympInput = 0.0f;
+                        float sympathyInput = 0.0f;
                         for (int other = 0; other < 4; ++other)
                         {
                             if (other == c) continue;
-                            sympInput += (voice.quartet[other].lastOutputL + voice.quartet[other].lastOutputR) * 0.5f;
+                            sympathyInput += (voice.quartet[other].lastOutputL + voice.quartet[other].lastOutputR) * 0.5f;
                         }
-                        // Feed sympathy back through the first formant
-                        float sympOut = ch.formants[0].processSample (sympInput * sympGain * 0.3f);
-                        voiceL += sympOut * 0.3f;
-                        voiceR += sympOut * 0.3f;
+                        // Feed through the primary (lowest) formant — this
+                        // creates resonance at the instrument's fundamental
+                        // frequency range, like a body resonance being excited.
+                        float sympathyOut = ch.formants[0].processSample (sympathyInput * sympathyGain * 0.3f);
+                        voiceL += sympathyOut * 0.3f;
+                        voiceR += sympathyOut * 0.3f;
                     }
                 }
 
-                // DC Blocker
-                constexpr float dcCoeff = 0.9975f;
-                float dcOutL = voiceL - voice.dcPrevInL + dcCoeff * voice.dcPrevOutL;
-                float dcOutR = voiceR - voice.dcPrevInR + dcCoeff * voice.dcPrevOutR;
+                // --- DC Blocker ---
+                // First-order high-pass: y[n] = x[n] - x[n-1] + R * y[n-1]
+                // R = 0.9975 gives a -3dB point at ~17 Hz (inaudible), which
+                // removes DC offset from formant resonance and asymmetric
+                // saturation without affecting musical content.
+                constexpr float dcBlockerCoeff = 0.9975f;
+                float dcOutL = voiceL - voice.dcPrevInL + dcBlockerCoeff * voice.dcPrevOutL;
+                float dcOutR = voiceR - voice.dcPrevInR + dcBlockerCoeff * voice.dcPrevOutR;
                 voice.dcPrevInL = voiceL;
+                // Flush denormals in the DC blocker feedback path — the
+                // recursive coefficient 0.9975 creates a slowly decaying
+                // series that will produce subnormals during silence.
                 voice.dcPrevOutL = flushDenormal (dcOutL);
                 voice.dcPrevInR = voiceR;
                 voice.dcPrevOutR = flushDenormal (dcOutR);
                 voiceL = dcOutL;
                 voiceR = dcOutR;
 
-                // Soft limiter
+                // --- Soft limiter ---
+                // tanh(x * 1.5) provides gentle saturation that begins
+                // compressing at ~0.67 and hard-limits at +/-1.0. The 1.5x
+                // pre-gain pushes signal into the saturation knee, adding
+                // warmth and preventing harsh digital clipping.
                 voiceL = fastTanh (voiceL * 1.5f);
                 voiceR = fastTanh (voiceR * 1.5f);
 
-                // Apply envelope, velocity, crossfade
+                // --- Apply envelope, velocity, and crossfade gain ---
                 float gain = ampLevel * voice.velocity * voice.fadeGain;
                 voiceL *= gain;
                 voiceR *= gain;
 
+                // Final denormal flush before voice summation
                 voiceL = flushDenormal (voiceL);
                 voiceR = flushDenormal (voiceR);
 
@@ -915,82 +1186,108 @@ public:
                 peakEnv = std::max (peakEnv, ampLevel);
             }
 
-            // --- Post-voice processing ---
+            // ==========================================================
+            // Post-voice processing — Character stages, Tavern, FX
+            // ==========================================================
 
-            // Character: Patina (gentle harmonic fold)
+            // --- Character: Patina (gentle harmonic fold) ---
+            // Models the aged quality of old wood and worn strings.
+            // softClip + volume compensation (divide by drive) adds
+            // subtle even harmonics without changing perceived volume.
+            // Drive range: 1x-4x (at patina=1.0, drive=4.0).
             if (pPatina > 0.001f)
             {
-                float driveP = 1.0f + pPatina * 3.0f;
-                mixL = softClip (mixL * driveP) / driveP;
-                mixR = softClip (mixR * driveP) / driveP;
+                float patinaDrive = 1.0f + pPatina * 3.0f;
+                mixL = softClip (mixL * patinaDrive) / patinaDrive;
+                mixR = softClip (mixR * patinaDrive) / patinaDrive;
             }
 
-            // Character: Porto (warm saturation)
+            // --- Character: Porto (wine-dark warm saturation) ---
+            // tanh waveshaping with volume compensation. Adds odd
+            // harmonics for a richer, warmer drive character than
+            // Patina. Named for Port wine — deep, warm, intoxicating.
+            // Drive range: 1x-5x (at porto=1.0, drive=5.0).
             if (pPorto > 0.001f)
             {
-                float driveW = 1.0f + pPorto * 4.0f;
-                mixL = fastTanh (mixL * driveW) / driveW;
-                mixR = fastTanh (mixR * driveW) / driveW;
+                float portoDrive = 1.0f + pPorto * 4.0f;
+                mixL = fastTanh (mixL * portoDrive) / portoDrive;
+                mixR = fastTanh (mixR * portoDrive) / portoDrive;
             }
 
-            // Character: Smoke (HF haze)
+            // --- Character: Smoke (HF haze) ---
+            // Lowpass filter modeling woodfire smoke in the tavern air.
+            // At smoke=0, cutoff is 18 kHz (transparent). At smoke=1,
+            // cutoff drops to 3 kHz (deeply hazy, lo-fi warmth).
             mixL = smokeFilter.processSample (mixL);
             mixR = smokeFilter.processSample (mixR);
 
-            // Warmth
+            // --- Warmth (proximity EQ) ---
+            // Low shelf boost at 300 Hz, modeling the nearfield proximity
+            // effect of sitting close to the performers in a small room.
+            // P0-02 fix: right channel now also passes through warmth filter
             mixL = warmthFilter.processSample (mixL);
+            mixR = warmthFilter.processSample (mixR);
 
-            // Tavern room model
+            // --- Tavern room (FDN reverb) ---
             tavernRoom.processSample (mixL, mixR, effectiveTavern);
 
-            // Murmur
+            // --- Murmur (crowd texture) ---
             if (pMurmur > 0.001f)
             {
-                ShoreMorphState tmm = decomposeShore (pTavernShore);
-                TavernCharacter tcc = morphTavern (tmm);
-                float murmurSample = murmur.process (tcc.murmurBrightness, srf);
+                ShoreMorphState murmurMorph = decomposeShore (pTavernShore);
+                TavernCharacter murmurTavern = morphTavern (murmurMorph);
+                float murmurSample = murmur.process (murmurTavern.murmurBrightness, srf);
                 mixL += murmurSample * pMurmur;
-                mixR += murmurSample * pMurmur * 0.9f; // slight stereo
+                mixR += murmurSample * pMurmur * 0.9f; // 10% L/R difference for subtle stereo width
             }
 
-            // Session Delay
+            // --- Session Delay ---
+            // Short conversational echo (~150ms), like the natural slap-back
+            // in a stone-walled tavern. Feedback of 0.35 creates 2-3 audible
+            // repeats before decay — enough for rhythmic interest without wash.
             if (pDelay > 0.001f)
             {
-                int delayTime = std::max (1, std::min (kSessionDelayMax - 1,
-                    static_cast<int> (0.15f * srf))); // ~150ms
-                int readPos = sessionDelayWritePos - delayTime;
+                int delayTimeSamples = std::max (1, std::min (kSessionDelayMax - 1,
+                    static_cast<int> (0.15f * srf)));  // 150ms delay time
+                int readPos = sessionDelayWritePos - delayTimeSamples;
                 if (readPos < 0) readPos += kSessionDelayMax;
 
-                float delL = sessionDelayBuf[0][readPos];
-                float delR = sessionDelayBuf[1][readPos];
+                float delayedL = sessionDelayBuf[0][readPos];
+                float delayedR = sessionDelayBuf[1][readPos];
 
-                sessionDelayBuf[0][sessionDelayWritePos] = mixL + delL * 0.35f;
-                sessionDelayBuf[1][sessionDelayWritePos] = mixR + delR * 0.35f;
+                // 0.35 feedback: ~2-3 audible repeats before -60dB
+                sessionDelayBuf[0][sessionDelayWritePos] = mixL + delayedL * 0.35f;
+                sessionDelayBuf[1][sessionDelayWritePos] = mixR + delayedR * 0.35f;
                 sessionDelayWritePos = (sessionDelayWritePos + 1) % kSessionDelayMax;
 
-                mixL += delL * pDelay;
-                mixR += delR * pDelay;
+                mixL += delayedL * pDelay;
+                mixR += delayedR * pDelay;
             }
 
-            // Hall (simple allpass chain)
+            // --- Hall (allpass diffusion chain) ---
+            // 4-stage allpass chain creates late diffusion, scaling from
+            // intimate pub corner (low hall) to cathedral harbor wall (high hall).
             if (effectiveHall > 0.001f)
             {
-                float hallIn = (mixL + mixR) * 0.5f;
-                float hallOut = processHallAllpass (hallIn, effectiveHall);
-                mixL += hallOut * effectiveHall * 0.5f;
-                mixR += hallOut * effectiveHall * 0.5f;
+                float hallInput = (mixL + mixR) * 0.5f;
+                float hallOutput = processHallAllpass (hallInput, effectiveHall);
+                mixL += hallOutput * effectiveHall * 0.5f;
+                mixR += hallOutput * effectiveHall * 0.5f;
             }
 
-            // Chorus
+            // --- Chorus ---
+            // Modulated delay (8ms center +/- 3ms at 0.5 Hz) creates
+            // paired-string shimmer inspired by the Guitarra Portuguesa's
+            // paired courses and the Hardingfele's sympathetic strings.
             if (pChorus > 0.001f)
             {
-                chorusPhase += 0.5f / srf;
+                chorusPhase += 0.5f / srf;  // 0.5 Hz LFO rate
                 if (chorusPhase >= 1.0f) chorusPhase -= 1.0f;
-                float modMs = 8.0f + fastSin (chorusPhase * kOsteriaTwoPi) * 3.0f;
-                int modSamples = static_cast<int> (modMs * 0.001f * srf);
-                modSamples = std::max (1, std::min (kChorusBufSize - 1, modSamples));
+                float modulatedDelayMs = 8.0f + fastSin (chorusPhase * kOsteriaTwoPi) * 3.0f;
+                int modulatedDelaySamples = static_cast<int> (modulatedDelayMs * 0.001f * srf);
+                modulatedDelaySamples = std::max (1, std::min (kChorusBufSize - 1, modulatedDelaySamples));
 
-                int readPos = chorusWritePos - modSamples;
+                int readPos = chorusWritePos - modulatedDelaySamples;
                 if (readPos < 0) readPos += kChorusBufSize;
 
                 float chorusL = chorusBuf[0][readPos];
@@ -1004,19 +1301,28 @@ public:
                 mixR += chorusR * pChorus * 0.5f;
             }
 
-            // Tape (gentle LP + noise)
+            // --- Tape (lo-fi warmth) ---
+            // Models field recording character: a one-pole lowpass (coeff 0.3
+            // = ~2.1 kHz cutoff at 44.1 kHz) plus subtle noise floor (0.003
+            // amplitude = ~-50 dB, typical of portable cassette recorders).
+            // Gives the impression the session was captured on tape in the
+            // tavern, not produced in a studio.
             if (pTape > 0.001f)
             {
+                // One-pole lowpass: y[n] += (x[n] - y[n]) * alpha
+                // alpha = 0.3 gives gentle HF rolloff without resonance
                 tapeState[0] += (mixL - tapeState[0]) * 0.3f;
                 tapeState[1] += (mixR - tapeState[1]) * 0.3f;
+                // Flush denormals in the filter feedback path
                 tapeState[0] = flushDenormal (tapeState[0]);
                 tapeState[1] = flushDenormal (tapeState[1]);
 
+                // Tape hiss: subtle noise floor at -50 dB
                 murmur.rng = murmur.rng * 1664525u + 1013904223u;
-                float tapeNoise = static_cast<float> (murmur.rng & 0xFFFF) / 65536.0f - 0.5f;
+                float tapeHiss = static_cast<float> (murmur.rng & 0xFFFF) / 65536.0f - 0.5f;
 
-                mixL = lerp (mixL, tapeState[0] + tapeNoise * 0.003f, pTape);
-                mixR = lerp (mixR, tapeState[1] + tapeNoise * 0.003f, pTape);
+                mixL = lerp (mixL, tapeState[0] + tapeHiss * 0.003f, pTape);
+                mixR = lerp (mixR, tapeState[1] + tapeHiss * 0.003f, pTape);
             }
 
             // Write output
@@ -1048,13 +1354,22 @@ public:
 
     //==========================================================================
     // SynthEngine interface — Coupling
+    //
+    // OSTERIA's coupling interface implements "The Diptych" — the ocean-
+    // shore relationship with OSPREY, and the universal absorption model
+    // where any engine's output can become "the local music" of an
+    // imaginary shore.
+    //
+    // Channel 0: post-room stereo left
+    // Channel 1: post-room stereo right
+    // Channel 2: peak envelope (for amplitude-driven coupling)
     //==========================================================================
 
     float getSampleForCoupling (int channel, int sampleIndex) const override
     {
-        auto si = static_cast<size_t> (sampleIndex);
-        if (channel == 0 && si < outputCacheL.size()) return outputCacheL[si];
-        if (channel == 1 && si < outputCacheR.size()) return outputCacheR[si];
+        auto sampleIdx = static_cast<size_t> (sampleIndex);
+        if (channel == 0 && sampleIdx < outputCacheL.size()) return outputCacheL[sampleIdx];
+        if (channel == 1 && sampleIdx < outputCacheR.size()) return outputCacheR[sampleIdx];
         if (channel == 2) return envelopeOutput;
         return 0.0f;
     }
@@ -1064,18 +1379,31 @@ public:
     {
         switch (type)
         {
+            // AudioToWavetable: source audio shapes quartet excitation.
+            // Any engine becomes a shore the quartet absorbs — feed OBSIDIAN
+            // and the quartet plays crystal-inflected jazz.
             case CouplingType::AudioToWavetable:
                 couplingExcitationMod += amount * 0.5f;
                 break;
+
+            // AmpToFilter: source amplitude modulates elastic tightness.
+            // Storm (OSPREY) = frantic tight playing. Calm = relaxed session.
             case CouplingType::AmpToFilter:
                 couplingElasticMod += amount * 0.3f;
                 break;
+
+            // AudioToFM: source audio excites the tavern room model.
+            // Ocean turbulence (OSPREY) bleeds through the tavern walls.
             case CouplingType::AudioToFM:
                 couplingRoomExcitation += amount * 0.4f;
                 break;
+
+            // EnvToMorph: source envelope drives shore drift.
+            // External dynamics push voices between coastlines.
             case CouplingType::EnvToMorph:
                 couplingShoreDrift += amount * 0.5f;
                 break;
+
             default:
                 break;
         }
@@ -1265,7 +1593,7 @@ public:
     //==========================================================================
 
     juce::String getEngineId() const override { return "Osteria"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFF722F37); }
+    juce::Colour getAccentColour() const override { return juce::Colour (0xFF722F37); } // Porto Wine #722F37
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoices; }
 
@@ -1285,7 +1613,15 @@ private:
     }
 
     //==========================================================================
-    // Hall allpass processing
+    // Hall — Allpass diffusion chain.
+    //
+    // 4 cascaded allpass filters create late diffusion that scales from
+    // intimate pub corner to cathedral harbor wall. The allpass structure
+    // (Schroeder, 1962) preserves frequency balance while smearing time —
+    // ideal for creating a sense of space without coloration.
+    //
+    // Delay lengths are co-prime to minimize periodic artifacts:
+    //   1051, 1399, 1747, 2083 samples (~24ms, 32ms, 40ms, 47ms at 44.1kHz)
     //==========================================================================
 
     static constexpr int kHallDelayMax = 4096;
@@ -1293,9 +1629,11 @@ private:
 
     float processHallAllpass (float input, float feedbackAmount) noexcept
     {
-        float sig = input;
-        float g = feedbackAmount * 0.5f;
-        g = clamp (g, 0.0f, 0.7f);
+        float signal = input;
+
+        // Allpass feedback coefficient: capped at 0.7 for stability.
+        // At g > 0.7, the allpass becomes unstable and self-oscillates.
+        float allpassCoeff = clamp (feedbackAmount * 0.5f, 0.0f, 0.7f);
 
         for (int i = 0; i < 4; ++i)
         {
@@ -1303,14 +1641,15 @@ private:
             if (readPos < 0) readPos += kHallDelayMax;
 
             float delayed = hallBuf[i][readPos];
-            float writeVal = sig + delayed * g;
+            float writeVal = signal + delayed * allpassCoeff;
+            // Flush denormals in the allpass feedback path
             hallBuf[i][hallWritePos[i]] = flushDenormal (writeVal);
-            sig = delayed - sig * g;
+            signal = delayed - signal * allpassCoeff;
 
             hallWritePos[i] = (hallWritePos[i] + 1) % kHallDelayMax;
         }
 
-        return sig;
+        return signal;
     }
 
     //==========================================================================
@@ -1321,38 +1660,43 @@ private:
                  const float shoreTargets[4],
                  const float channelLevels[4],
                  const float channelPans[4],
-                 float ampA, float ampD, float ampS, float ampR)
+                 float attackSec, float decaySec, float sustainLevel, float releaseSec)
     {
         float freq = midiToHz (static_cast<float> (noteNumber));
 
-        int idx = findFreeVoice();
-        auto& voice = voices[static_cast<size_t> (idx)];
+        int voiceIndex = findFreeVoice();
+        auto& voice = voices[static_cast<size_t> (voiceIndex)];
 
+        // If stealing an active voice, initiate crossfade-out
         if (voice.active)
         {
             voice.fadingOut = true;
             voice.fadeGain = std::min (voice.fadeGain, 0.5f);
         }
 
+        // Initialize voice state
         voice.active = true;
         voice.noteNumber = noteNumber;
         voice.velocity = velocity;
         voice.startTime = voiceCounter++;
         voice.targetFreq = freq;
         voice.currentTargetFreq = freq;
-        voice.glideCoeff = 1.0f;
+        voice.glideCoeff = 1.0f;       // 1.0 = no glide (instant pitch change)
         voice.fadingOut = false;
         voice.fadeGain = 1.0f;
         voice.controlCounter = 0;
         voice.dcPrevInL = 0.0f; voice.dcPrevOutL = 0.0f;
         voice.dcPrevInR = 0.0f; voice.dcPrevOutR = 0.0f;
 
+        // Seed PRNG uniquely per note using co-prime multipliers (7919, 104729)
+        // to ensure each voice gets a different random sequence for phase
+        // initialization and noise generation.
         voice.rng = static_cast<uint32_t> (noteNumber * 7919 + voiceCounter * 104729);
 
-        voice.ampEnv.setParams (ampA, ampD, ampS, ampR, srf);
+        voice.ampEnv.setParams (attackSec, decaySec, sustainLevel, releaseSec, srf);
         voice.ampEnv.noteOn();
 
-        // Initialize quartet channels
+        // --- Initialize all four quartet channels ---
         for (int c = 0; c < 4; ++c)
         {
             auto& ch = voice.quartet[c];
@@ -1362,19 +1706,29 @@ private:
             ch.shoreVelocity = 0.0f;
             ch.level = channelLevels[c];
             ch.pan = channelPans[c];
+
+            // Randomize initial oscillator phases to prevent phase-locked
+            // unison artifacts when multiple notes trigger simultaneously
             ch.oscPhase = voice.nextRandomUni();
             ch.oscPhase2 = voice.nextRandomUni();
             ch.transientEnv = 0.0f;
             ch.transientPhase = voice.nextRandomUni();
+
+            // Per-channel PRNG seed: co-prime multipliers (7919, 31337, 54321)
+            // ensure each channel within each voice has a unique sequence
             ch.rng = static_cast<uint32_t> (noteNumber * 7919 + c * 31337 + voiceCounter * 54321);
             ch.lastOutputL = 0.0f;
             ch.lastOutputR = 0.0f;
 
-            // Initialize formants from current shore
+            // Initialize formant resonators from the channel's starting shore
             ShoreMorphState morph = decomposeShore (ch.shorePos);
             int slot = c;
-            if (slot > 2) slot = 0;
+            if (slot > 2) slot = 0;  // Rhythm -> bass resonator slot
             ResonatorProfile prof = morphResonator (morph, slot);
+
+            // Scale formant frequencies relative to the played note.
+            // Reference is A4 (440 Hz) — formant profiles are defined at
+            // this reference and scaled proportionally for other pitches.
             float noteRatio = freq / 440.0f;
 
             for (int f = 0; f < 4; ++f)
@@ -1386,7 +1740,8 @@ private:
             }
             ch.updateFormants (srf, 0.0f);
 
-            // Initialize memory buffer with current shore
+            // Pre-fill memory buffer with current shore position so the
+            // voice starts with a clean slate — no inherited travel history.
             for (int m = 0; m < kMemoryBufferSize; ++m)
                 ch.memoryBuffer[m] = ch.shorePos;
             ch.memoryWritePos = 0;
@@ -1402,78 +1757,96 @@ private:
         }
     }
 
+    /** Find an inactive voice, or steal the oldest active one (LRU). */
     int findFreeVoice() const
     {
+        // First pass: find an inactive voice
         for (int i = 0; i < kMaxVoices; ++i)
             if (!voices[static_cast<size_t> (i)].active)
                 return i;
 
-        int oldest = 0;
+        // No free voices — steal the oldest (LRU: Least Recently Used)
+        int oldestIndex = 0;
         uint64_t oldestTime = UINT64_MAX;
         for (int i = 0; i < kMaxVoices; ++i)
         {
             if (voices[static_cast<size_t> (i)].startTime < oldestTime)
             {
                 oldestTime = voices[static_cast<size_t> (i)].startTime;
-                oldest = i;
+                oldestIndex = i;
             }
         }
-        return oldest;
+        return oldestIndex;
     }
 
     //==========================================================================
     // Member data
     //==========================================================================
 
-    double sr = 44100.0;
-    float srf = 44100.0f;
-    float crossfadeRate = 0.01f;
+    // --- Audio engine state ---
+    double sr = 44100.0;               // Sample rate (double precision for accuracy)
+    float srf = 44100.0f;              // Sample rate (float, for DSP calculations)
+    float crossfadeRate = 0.01f;       // Voice-stealing crossfade: samples to silence in 5ms
 
-    int controlRateDiv = 22;
-    float controlDt = 0.0005f;
+    // --- Control rate ---
+    int controlRateDiv = 22;           // Audio samples per control update (~2 kHz)
+    float controlDt = 0.0005f;         // Control period in seconds
 
+    // --- Voice pool ---
     std::array<OsteriaVoice, kMaxVoices> voices;
-    uint64_t voiceCounter = 0;
-    int activeVoices = 0;
+    uint64_t voiceCounter = 0;         // Monotonic counter for LRU voice stealing
+    int activeVoices = 0;              // Current active voice count (reported to UI)
 
-    // Coupling accumulators
-    float envelopeOutput = 0.0f;
-    float couplingExcitationMod = 0.0f;
-    float couplingElasticMod = 0.0f;
-    float couplingRoomExcitation = 0.0f;
-    float couplingShoreDrift = 0.0f;
+    // --- Coupling accumulators ---
+    // These accumulate coupling input between renderBlock calls and are
+    // consumed (reset to 0) at the start of each block.
+    float envelopeOutput = 0.0f;              // Peak envelope for outbound coupling
+    float couplingExcitationMod = 0.0f;       // AudioToWavetable: shapes quartet excitation
+    float couplingElasticMod = 0.0f;          // AmpToFilter: modulates elastic tightness
+    float couplingRoomExcitation = 0.0f;      // AudioToFM: excites tavern room
+    float couplingShoreDrift = 0.0f;          // EnvToMorph: drives shore position drift
 
-    // Output cache
+    // --- Output cache (for coupling output) ---
     std::vector<float> outputCacheL;
     std::vector<float> outputCacheR;
 
-    // Tavern + Murmur
-    TavernRoom tavernRoom;
-    MurmurGenerator murmur;
+    // --- Tavern environment ---
+    TavernRoom tavernRoom;                    // FDN reverb modeling tavern acoustics
+    MurmurGenerator murmur;                   // Crowd/conversation noise texture
 
-    // Post filters
-    CytomicSVF smokeFilter;
-    CytomicSVF warmthFilter;
+    // --- Character stage filters ---
+    CytomicSVF smokeFilter;                   // Smoke: HF haze lowpass
+    CytomicSVF warmthFilter;                  // Warmth: low shelf proximity EQ
 
-    // Session delay
+    // --- Session Delay ---
+    // 22050 samples = 500ms at 44.1 kHz (enough headroom for the 150ms delay)
     static constexpr int kSessionDelayMax = 22050;
     float sessionDelayBuf[2][kSessionDelayMax] = {};
     int sessionDelayWritePos = 0;
 
-    // Chorus
+    // --- Chorus ---
+    // 2048 samples = ~46ms at 44.1 kHz (covers the 8ms +/- 3ms modulated range)
     static constexpr int kChorusBufSize = 2048;
     float chorusBuf[2][kChorusBufSize] = {};
     int chorusWritePos = 0;
-    float chorusPhase = 0.0f;
+    float chorusPhase = 0.0f;                 // 0.5 Hz chorus LFO phase
 
-    // Hall (allpass delays)
+    // --- Hall (allpass diffusion delays) ---
     float hallBuf[4][kHallDelayMax] = {};
     int hallWritePos[4] = {};
 
-    // Tape state
+    // --- Tape (one-pole lowpass state) ---
     float tapeState[2] = {};
 
-    // Cached APVTS parameter pointers
+    //==========================================================================
+    // Cached APVTS parameter pointers (ParamSnapshot pattern)
+    //
+    // These raw atomic pointers are set once in attachParameters() and read
+    // via loadParam() at the start of each renderBlock(). This avoids
+    // per-sample atomic loads and string lookups.
+    //==========================================================================
+
+    // -- Quartet --
     std::atomic<float>* paramBassShore = nullptr;
     std::atomic<float>* paramHarmShore = nullptr;
     std::atomic<float>* paramMelShore = nullptr;
@@ -1483,6 +1856,7 @@ private:
     std::atomic<float>* paramMemory = nullptr;
     std::atomic<float>* paramSympathy = nullptr;
 
+    // -- Voice Balance --
     std::atomic<float>* paramBassLevel = nullptr;
     std::atomic<float>* paramHarmLevel = nullptr;
     std::atomic<float>* paramMelLevel = nullptr;
@@ -1490,26 +1864,31 @@ private:
     std::atomic<float>* paramEnsWidth = nullptr;
     std::atomic<float>* paramBlendMode = nullptr;
 
+    // -- Tavern --
     std::atomic<float>* paramTavernMix = nullptr;
     std::atomic<float>* paramTavernShore = nullptr;
     std::atomic<float>* paramMurmur = nullptr;
     std::atomic<float>* paramWarmth = nullptr;
     std::atomic<float>* paramOceanBleed = nullptr;
 
+    // -- Character --
     std::atomic<float>* paramPatina = nullptr;
     std::atomic<float>* paramPorto = nullptr;
     std::atomic<float>* paramSmoke = nullptr;
 
+    // -- Envelope --
     std::atomic<float>* paramAttack = nullptr;
     std::atomic<float>* paramDecay = nullptr;
     std::atomic<float>* paramSustain = nullptr;
     std::atomic<float>* paramRelease = nullptr;
 
+    // -- FX --
     std::atomic<float>* paramSessionDelay = nullptr;
     std::atomic<float>* paramHall = nullptr;
     std::atomic<float>* paramChorus = nullptr;
     std::atomic<float>* paramTape = nullptr;
 
+    // -- Macros (M1-M4) --
     std::atomic<float>* paramMacroCharacter = nullptr;
     std::atomic<float>* paramMacroMovement = nullptr;
     std::atomic<float>* paramMacroCoupling = nullptr;

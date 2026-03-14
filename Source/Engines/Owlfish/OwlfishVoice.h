@@ -116,17 +116,34 @@ public:
             portaCoeff = std::exp (-1.0f / (portaMs * 0.001f * static_cast<float> (sampleRate)));
         }
 
+        // D004 fix: morphGlide modulates mixtur (waveshaper blend) during portamento.
+        // Compute block-rate glide progress from current pitch distance to target.
+        // glideProgress ~0 = mid-glide, ~1 = arrived at target pitch.
+        // morphGlide=0: no modulation. morphGlide=1: mixtur sweeps up to +0.5 mid-glide,
+        // creating a timbral swell as the organism glides to its new pitch.
+        float blockGlideProgress = (portaCoeff > 0.0f && targetFreq > 1.0f)
+            ? std::max (0.0f, std::min (1.0f,
+                1.0f - std::fabs (currentFreq - targetFreq) / targetFreq))
+            : 1.0f;
+        float glideModMixtur = snap.mixtur + snap.morphGlide * 0.5f * (1.0f - blockGlideProgress);
+        glideModMixtur = std::max (0.0f, std::min (1.0f, glideModMixtur));
+
         // -- Abyss Habitat (oscillator) params --
         abyssOsc.setParams (snap.subDiv1, snap.subDiv2, snap.subDiv3, snap.subDiv4,
                             snap.subLevel1, snap.subLevel2, snap.subLevel3, snap.subLevel4,
-                            snap.subMix, snap.mixtur, snap.fundWave, snap.subWave,
+                            snap.subMix, glideModMixtur, snap.fundWave, snap.subWave,
                             snap.bodyFreq, snap.bodyLevel);
 
         // -- Owl Optics (compressor) params --
         optics.setParams (snap.compRatio, snap.compThreshold, snap.compAttack, snap.compRelease);
 
+        // D005 fix: minimal LFO added — advance grain size LFO (0.05 Hz, ±12%)
+        grainLfoPhase += (0.05f * juce::MathConstants<float>::twoPi) / static_cast<float>(sampleRate);
+        if (grainLfoPhase >= juce::MathConstants<float>::twoPi) grainLfoPhase -= juce::MathConstants<float>::twoPi;
+        const float lfoGrainSize = snap.grainSize * (1.0f + 0.12f * std::sin(grainLfoPhase));
+
         // -- Diet (micro-granular) params --
-        diet.setParams (snap.grainSize, snap.grainDensity, snap.grainPitch, snap.feedRate);
+        diet.setParams (lfoGrainSize, snap.grainDensity, snap.grainPitch, snap.feedRate);
 
         // -- Sacrificial Armor params --
         armor.setParams (snap.armorDecay, snap.armorScatter, snap.armorDelay);
@@ -228,6 +245,9 @@ private:
     double sampleRate = 44100.0;
     float  lastOutL   = 0.0f;
     float  lastOutR   = 0.0f;
+
+    // D005 fix: minimal LFO added — grain size breathing at 0.05 Hz
+    float grainLfoPhase = 0.0f;
 };
 
 } // namespace xowlfish

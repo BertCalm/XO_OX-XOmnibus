@@ -8,198 +8,396 @@
 #include <atomic>
 #include <vector>
 
+//==============================================================================
+//
+//  OuroborosEngine.h — Chaotic Attractor Synthesis
+//  XO_OX Designs | Engine: OUROBOROS | Accent: Strange Attractor Red #FF2D2D
+//
+//  ---------------------------------------------------------------------------
+//
+//  AQUATIC MYTHOLOGY
+//    Creature:  The Hydrothermal Vent
+//    Depth:     The Abyss — pure Oscar polarity
+//    Identity:  Self-feeding, recursive, primordial energy. Where raw
+//               thermodynamic chaos becomes the origin of life itself.
+//    Lineage:   Fourth Generation — Deep Evolution. Born from the coupling
+//               of feliX's electric transients and Oscar's patient depth,
+//               OUROBOROS descended to where no other species survives.
+//               It feeds on its own output. It never repeats.
+//
+//  ---------------------------------------------------------------------------
+//
+//  SYNTH HERITAGE & TECHNIQUE
+//    This engine generates audio by continuously solving chaotic ordinary
+//    differential equations (ODEs), producing sounds completely alien to
+//    subtractive or wavetable synthesis.
+//
+//    The four attractor topologies are drawn from the canon of nonlinear
+//    dynamics:
+//
+//      Lorenz   — Edward Lorenz (1963). Originally a simplified atmospheric
+//                 convection model. The "butterfly effect" system. Produces
+//                 the iconic double-scroll attractor with broad harmonic
+//                 spectrum.
+//
+//      Rossler  — Otto Rossler (1976). Designed as a minimal chaotic system
+//                 with only one nonlinear term (sz * sx). Produces a
+//                 single-scroll spiral with softer, more tonal character.
+//
+//      Chua     — Leon Chua (1983). The first physical electronic circuit
+//                 proven to exhibit chaos. Uses a piecewise-linear diode
+//                 function. Produces double-scroll chaos with a distinctive
+//                 buzzy, electronic timbre.
+//
+//      Aizawa   — Yoji Aizawa (1982). A toroidal chaotic system with rich
+//                 geometric structure. Produces spiraling trajectories with
+//                 complex modulation character.
+//
+//    Integration uses the classical 4th-order Runge-Kutta method (RK4)
+//    at 4x oversampled audio rate for stability and alias suppression.
+//    Pitch tracking is achieved via Phase-Locked Chaos ("The Leash") —
+//    a master phasor that periodically resets the attractor to a Poincare
+//    section, forcing a fundamental frequency while preserving chaotic
+//    timbral evolution.
+//
+//    The 3D attractor trajectory is projected to stereo via rotation
+//    matrices (theta/phi), creating spatial movement that is intrinsic
+//    to the chaos rather than applied as a post-process.
+//
+//    Historical precedent: Chua's circuit has been built as a hardware
+//    synthesizer module. Academic work by Rodet, Bilotta, and others
+//    explored chaotic oscillators for sound synthesis in the 1990s-2000s.
+//    OUROBOROS brings these ideas to a playable instrument context with
+//    pitch control, polyphony, and real-time parameter modulation.
+//
+//  ---------------------------------------------------------------------------
+//
+//  SIGNAL FLOW
+//    Per Voice (x6 polyphonic):
+//      MIDI Note -> Leash Phasor (pitch reference)
+//                -> Attractor ODE (Lorenz/Rossler/Chua/Aizawa)
+//                -> RK4 Integration at 4x oversample
+//                -> Leash Blend (free-running <-> hard-synced)
+//                -> 3D-to-Stereo Projection (theta/phi rotation)
+//                -> Two-Stage Half-Band Decimation (4x -> 1x)
+//                -> DC Blocker (5 Hz HPF)
+//                -> Damping (LP accumulator)
+//                -> Soft Clip (tanh saturation)
+//                -> ADSR Envelope
+//                -> Voice Sum
+//                         |
+//                   Coupling Bus -> dx/dt, dy/dt velocity outputs
+//
+//  ===========================================================================
+
 namespace xomnibus {
 
 //==============================================================================
 // AttractorTopology — Enum for the four chaotic ODE systems.
+//
+// Each topology produces a qualitatively different attractor geometry and
+// therefore a different timbral character. The chaos index parameter sweeps
+// the bifurcation parameter of each system, moving from periodic orbits
+// through period-doubling cascades into full chaos.
 //==============================================================================
 enum class AttractorTopology : int
 {
-    Lorenz  = 0,
-    Rossler = 1,
-    Chua    = 2,
-    Aizawa  = 3
+    Lorenz  = 0,    // Double-scroll, broad spectrum, "butterfly" chaos
+    Rossler = 1,    // Single-scroll spiral, softer/more tonal
+    Chua    = 2,    // Electronic double-scroll, buzzy/metallic timbre
+    Aizawa  = 3     // Toroidal spiral, complex modulation character
 };
 
 //==============================================================================
 // AttractorState — State vector and RK4 integration for one attractor instance.
 //
 // Each voice holds two of these: one active, one for topology crossfade.
-// All state is pre-allocated — zero dynamic memory.
+// All state is pre-allocated — zero dynamic memory on the audio thread.
+//
+// The attractor state (x, y, z) represents a point in 3D phase space.
+// As the ODE is integrated forward in time, this point traces the chaotic
+// trajectory that becomes our audio signal after projection to stereo.
 //==============================================================================
 struct AttractorState
 {
     float x = 0.1f, y = 0.1f, z = 0.1f;
     AttractorTopology topology = AttractorTopology::Lorenz;
 
-    // Per-topology bounding boxes for normalization
-    struct BBox { float xMin, xMax, yMin, yMax, zMin, zMax; };
+    //--------------------------------------------------------------------------
+    // Per-topology bounding boxes for normalization.
+    //
+    // These define the expected range of each state variable for each topology.
+    // Derived empirically by running each attractor at maximum chaos index
+    // for extended periods and observing the attractor's basin of attraction.
+    // Used to normalize the raw ODE output to [-1, 1] for audio projection,
+    // and to constrain runaway trajectories via the soft-clip saturator.
+    //--------------------------------------------------------------------------
+    struct BoundingBox { float xMin, xMax, yMin, yMax, zMin, zMax; };
 
-    static constexpr BBox bounds[4] = {
-        { -25.0f, 25.0f, -30.0f, 30.0f,   0.0f, 55.0f },  // Lorenz
-        { -12.0f, 12.0f, -12.0f, 12.0f,   0.0f, 25.0f },  // Rössler
-        {  -3.0f,  3.0f,  -0.5f,  0.5f,  -4.0f,  4.0f },  // Chua
-        {  -1.5f,  1.5f,  -1.5f,  1.5f,  -0.5f,  2.5f }   // Aizawa
+    static constexpr BoundingBox bounds[4] = {
+        //                 X range        Y range         Z range
+        { -25.0f, 25.0f, -30.0f, 30.0f,   0.0f, 55.0f },  // Lorenz: wide X/Y wings, Z always positive
+        { -12.0f, 12.0f, -12.0f, 12.0f,   0.0f, 25.0f },  // Rossler: symmetric X/Y spiral, Z spikes
+        {  -3.0f,  3.0f,  -0.5f,  0.5f,  -4.0f,  4.0f },  // Chua: narrow Y (diode clipping), wide X/Z
+        {  -1.5f,  1.5f,  -1.5f,  1.5f,  -0.5f,  2.5f }   // Aizawa: compact toroidal envelope
     };
 
-    // Per-topology calibration for step size derivation
-    static constexpr float baseH[4]        = { 0.005f, 0.01f,  0.002f, 0.005f };
-    static constexpr float calibFreq[4]    = { 130.0f, 95.0f,  200.0f, 110.0f };
-    static constexpr float maxSafeH[4]     = { 0.02f,  0.05f,  0.008f, 0.015f };
-    static constexpr float maxVelocity[4]  = { 200.0f, 30.0f,  50.0f,  10.0f  };
+    //--------------------------------------------------------------------------
+    // Per-topology calibration constants for step size derivation.
+    //
+    // baseStepSize:       The integration step h that produces the calibration
+    //                     frequency for each topology. Tuned so that the
+    //                     attractor's fundamental orbital period matches a
+    //                     known pitch, allowing frequency-proportional scaling.
+    //
+    // calibrationFreqHz:  The pitch (Hz) at which baseStepSize was measured.
+    //                     Step size scales as (targetFreq / calibrationFreq) * baseStepSize.
+    //
+    // maxSafeStepSize:    Upper bound on h to prevent numerical instability.
+    //                     If h exceeds this, the RK4 integrator can diverge.
+    //                     Reduced further at high chaos index (more sensitive).
+    //
+    // maxVelocityNorm:    Normalization constant for coupling velocity output.
+    //                     The derivative magnitudes differ vastly between
+    //                     topologies (Lorenz peaks ~200, Aizawa ~10), so we
+    //                     normalize to [-1, 1] for consistent coupling behavior.
+    //--------------------------------------------------------------------------
+    static constexpr float baseStepSize[4]      = { 0.005f, 0.01f,  0.002f, 0.005f };
+    static constexpr float calibrationFreqHz[4] = { 130.0f, 95.0f,  200.0f, 110.0f };
+    static constexpr float maxSafeStepSize[4]   = { 0.02f,  0.05f,  0.008f, 0.015f };
+    static constexpr float maxVelocityNorm[4]   = { 200.0f, 30.0f,  50.0f,  10.0f  };
 
-    // Compute derivatives for the selected topology
-    void derivatives (float sx, float sy, float sz, float chaosIndex,
-                      float& dx, float& dy, float& dz) const noexcept
+    //--------------------------------------------------------------------------
+    // Compute derivatives for the selected topology.
+    //
+    // Each case implements the canonical ODE system with its standard
+    // parameter names from the literature. The `chaosIndex` parameter
+    // (0..1) sweeps the bifurcation parameter that controls the transition
+    // from periodic to chaotic behavior.
+    //--------------------------------------------------------------------------
+    void derivatives (float stateX, float stateY, float stateZ, float chaosIndex,
+                      float& dxdt, float& dydt, float& dzdt) const noexcept
     {
         switch (topology)
         {
             case AttractorTopology::Lorenz:
             {
-                constexpr float sigma = 10.0f;
-                constexpr float beta  = 8.0f / 3.0f;
-                float rho = 20.0f + chaosIndex * 12.0f;
-                dx = sigma * (sy - sx);
-                dy = sx * (rho - sz) - sy;
-                dz = sx * sy - beta * sz;
+                // Lorenz (1963): Atmospheric convection model.
+                // sigma = Prandtl number, rho = Rayleigh number, beta = geometric factor.
+                // Chaos onset at rho ~ 24.74 (we sweep 20..32 via chaosIndex).
+                constexpr float sigma = 10.0f;               // Prandtl number (standard value)
+                constexpr float beta  = 8.0f / 3.0f;         // Geometric factor (standard value)
+                float rho = 20.0f + chaosIndex * 12.0f;      // Rayleigh number: 20 (periodic) -> 32 (chaotic)
+                dxdt = sigma * (stateY - stateX);
+                dydt = stateX * (rho - stateZ) - stateY;
+                dzdt = stateX * stateY - beta * stateZ;
                 break;
             }
             case AttractorTopology::Rossler:
             {
-                constexpr float a = 0.2f;
-                constexpr float b = 0.2f;
-                float c = 3.0f + chaosIndex * 15.0f;
-                dx = -(sy + sz);
-                dy = sx + a * sy;
-                dz = b + sz * (sx - c);
+                // Rossler (1976): Minimal chaotic system.
+                // a, b = coupling constants, c = nonlinearity strength.
+                // Chaos onset around c ~ 5 (we sweep 3..18 via chaosIndex).
+                constexpr float a = 0.2f;                    // X-Y coupling (standard value)
+                constexpr float b = 0.2f;                    // Z offset (standard value)
+                float c = 3.0f + chaosIndex * 15.0f;         // Nonlinearity: 3 (limit cycle) -> 18 (chaotic)
+                dxdt = -(stateY + stateZ);
+                dydt = stateX + a * stateY;
+                dzdt = b + stateZ * (stateX - c);
                 break;
             }
             case AttractorTopology::Chua:
             {
-                constexpr float beta_c  = 28.0f;
-                constexpr float m0 = -1.143f;
-                constexpr float m1 = -0.714f;
-                float alpha_c = 9.0f + chaosIndex * 7.0f;
-                // Chua's diode function
-                float h_x = m1 * sx + 0.5f * (m0 - m1) * (std::fabs (sx + 1.0f) - std::fabs (sx - 1.0f));
-                dx = alpha_c * (sy - sx - h_x);
-                dy = sx - sy + sz;
-                dz = -beta_c * sy;
+                // Chua (1983): First electronic chaos circuit.
+                // alpha = main bifurcation parameter, beta_c = secondary coupling.
+                // m0, m1 = slopes of Chua's piecewise-linear diode function.
+                constexpr float betaChua  = 28.0f;           // Secondary coupling (standard value)
+                constexpr float m0 = -1.143f;                // Inner diode slope (standard value)
+                constexpr float m1 = -0.714f;                // Outer diode slope (standard value)
+                float alphaChua = 9.0f + chaosIndex * 7.0f;  // Main bifurcation: 9 (periodic) -> 16 (double-scroll)
+
+                // Chua's diode: piecewise-linear characteristic function
+                // h(x) = m1*x + 0.5*(m0-m1)*(|x+1| - |x-1|)
+                // This creates the distinctive breakpoints at x = +/-1
+                float diodeOutput = m1 * stateX
+                    + 0.5f * (m0 - m1) * (std::fabs (stateX + 1.0f) - std::fabs (stateX - 1.0f));
+                dxdt = alphaChua * (stateY - stateX - diodeOutput);
+                dydt = stateX - stateY + stateZ;
+                dzdt = -betaChua * stateY;
                 break;
             }
             case AttractorTopology::Aizawa:
             {
-                constexpr float a_ai = 0.95f, b_ai = 0.7f, g_ai = 0.6f;
-                constexpr float d_ai = 3.5f, z_ai = 0.1f;
-                float e_ai = 0.1f + chaosIndex * 0.85f;
-                dx = (sz - b_ai) * sx - d_ai * sy;
-                dy = d_ai * sx + (sz - b_ai) * sy;
-                float r2 = sx * sx + sy * sy;
-                dz = g_ai + a_ai * sz - (sz * sz * sz) / 3.0f
-                     - r2 * (1.0f + e_ai * sz) + z_ai * sz * sx * sx * sx;
+                // Aizawa (1982): Toroidal chaotic system.
+                // Parameters named per Aizawa's original paper notation.
+                constexpr float aCoeff = 0.95f;              // Linear Z growth rate
+                constexpr float bCoeff = 0.7f;               // Z offset in X/Y coupling
+                constexpr float gammaCoeff = 0.6f;           // Z constant forcing term
+                constexpr float deltaCoeff = 3.5f;           // X-Y rotation rate
+                constexpr float zetaCoeff = 0.1f;            // Cubic X-Z cross-coupling
+                float epsilonCoeff = 0.1f + chaosIndex * 0.85f; // Toroidal distortion: 0.1 (torus) -> 0.95 (chaotic)
+                dxdt = (stateZ - bCoeff) * stateX - deltaCoeff * stateY;
+                dydt = deltaCoeff * stateX + (stateZ - bCoeff) * stateY;
+                float radiusSquared = stateX * stateX + stateY * stateY;
+                dzdt = gammaCoeff + aCoeff * stateZ - (stateZ * stateZ * stateZ) / 3.0f
+                     - radiusSquared * (1.0f + epsilonCoeff * stateZ)
+                     + zetaCoeff * stateZ * stateX * stateX * stateX;
                 break;
             }
         }
     }
 
-    // Compute step size h from target pitch frequency and chaos index
+    //--------------------------------------------------------------------------
+    // Compute integration step size h from target pitch frequency.
+    //
+    // The step size is proportional to frequency: higher pitch = larger steps
+    // = faster traversal of the attractor = higher fundamental frequency.
+    // Clamped to maxSafeStepSize to prevent RK4 divergence. The safety
+    // margin tightens at high chaos index because chaotic trajectories are
+    // more sensitive to integration error.
+    //--------------------------------------------------------------------------
     float computeStepSize (float targetFreqHz, float chaosIndex) const noexcept
     {
-        int ti = static_cast<int> (topology);
-        float h = (targetFreqHz / calibFreq[ti]) * baseH[ti];
-        float safeMax = maxSafeH[ti] * (1.0f - chaosIndex * 0.3f);
-        if (h > safeMax) h = safeMax;
-        if (h < 0.0001f) h = 0.0001f;
-        return h;
+        int topologyIndex = static_cast<int> (topology);
+        float stepSize = (targetFreqHz / calibrationFreqHz[topologyIndex]) * baseStepSize[topologyIndex];
+
+        // Reduce maximum step size at high chaos (30% tighter at chaosIndex=1.0)
+        // because chaotic trajectories magnify integration errors exponentially
+        float safeMaximum = maxSafeStepSize[topologyIndex] * (1.0f - chaosIndex * 0.3f);
+
+        if (stepSize > safeMaximum) stepSize = safeMaximum;
+        if (stepSize < 0.0001f)     stepSize = 0.0001f;  // Floor: prevent stalled integration
+        return stepSize;
     }
 
-    // Single RK4 step with external velocity injection
-    void step (float h, float chaosIndex, float injDx, float injDy) noexcept
+    //--------------------------------------------------------------------------
+    // Single RK4 integration step with external velocity injection.
+    //
+    // Classical 4th-order Runge-Kutta: evaluates derivatives at 4 points
+    // per step (start, two midpoints, end) and combines them with the
+    // standard 1/6, 1/3, 1/3, 1/6 weighting for O(h^5) local error.
+    //
+    // External injection (injDx, injDy) adds a perturbation force to the
+    // derivatives, allowing coupled engines to push the attractor's
+    // trajectory without modifying the underlying ODE system.
+    //--------------------------------------------------------------------------
+    void step (float stepSize, float chaosIndex, float injectionDx, float injectionDy) noexcept
     {
         float dx1, dy1, dz1, dx2, dy2, dz2, dx3, dy3, dz3, dx4, dy4, dz4;
 
+        // k1: derivatives at current state
         derivatives (x, y, z, chaosIndex, dx1, dy1, dz1);
-        dx1 += injDx; dy1 += injDy;
+        dx1 += injectionDx; dy1 += injectionDy;
 
-        float hh = h * 0.5f;
-        derivatives (x + hh * dx1, y + hh * dy1, z + hh * dz1, chaosIndex, dx2, dy2, dz2);
-        dx2 += injDx; dy2 += injDy;
+        // k2: derivatives at midpoint using k1
+        float halfStep = stepSize * 0.5f;
+        derivatives (x + halfStep * dx1, y + halfStep * dy1, z + halfStep * dz1, chaosIndex, dx2, dy2, dz2);
+        dx2 += injectionDx; dy2 += injectionDy;
 
-        derivatives (x + hh * dx2, y + hh * dy2, z + hh * dz2, chaosIndex, dx3, dy3, dz3);
-        dx3 += injDx; dy3 += injDy;
+        // k3: derivatives at midpoint using k2
+        derivatives (x + halfStep * dx2, y + halfStep * dy2, z + halfStep * dz2, chaosIndex, dx3, dy3, dz3);
+        dx3 += injectionDx; dy3 += injectionDy;
 
-        derivatives (x + h * dx3, y + h * dy3, z + h * dz3, chaosIndex, dx4, dy4, dz4);
-        dx4 += injDx; dy4 += injDy;
+        // k4: derivatives at endpoint using k3
+        derivatives (x + stepSize * dx3, y + stepSize * dy3, z + stepSize * dz3, chaosIndex, dx4, dy4, dz4);
+        dx4 += injectionDx; dy4 += injectionDy;
 
-        float h6 = h / 6.0f;
-        x += h6 * (dx1 + 2.0f * dx2 + 2.0f * dx3 + dx4);
-        y += h6 * (dy1 + 2.0f * dy2 + 2.0f * dy3 + dy4);
-        z += h6 * (dz1 + 2.0f * dz2 + 2.0f * dz3 + dz4);
+        // Weighted combination: (k1 + 2*k2 + 2*k3 + k4) / 6
+        float weightedStep = stepSize / 6.0f;
+        x += weightedStep * (dx1 + 2.0f * dx2 + 2.0f * dx3 + dx4);
+        y += weightedStep * (dy1 + 2.0f * dy2 + 2.0f * dy3 + dy4);
+        z += weightedStep * (dz1 + 2.0f * dz2 + 2.0f * dz3 + dz4);
 
-        // Store velocities for coupling output
+        // Store velocities for coupling output (other engines can read dx/dt, dy/dt)
         lastDxDt = dx1;
         lastDyDt = dy1;
 
-        // Flush denormals
+        // Flush denormals: chaotic systems can produce extremely small values
+        // near fixed points or during transient decay. Without flushing, these
+        // subnormal floats cause 10-100x CPU spikes on x86 due to microcode
+        // assist traps in the FPU pipeline.
         x = flushDenormal (x);
         y = flushDenormal (y);
         z = flushDenormal (z);
     }
 
-    // Normalize state to [0,1]^3 using this topology's bounding box
-    void normalizeToUnit (float& nx, float& ny, float& nz) const noexcept
+    //--------------------------------------------------------------------------
+    // Normalize state to [0,1]^3 using this topology's bounding box.
+    // Used during topology crossfade to map one attractor's state into
+    // another's coordinate system via a topology-independent unit space.
+    //--------------------------------------------------------------------------
+    void normalizeToUnit (float& normalizedX, float& normalizedY, float& normalizedZ) const noexcept
     {
-        int ti = static_cast<int> (topology);
-        nx = (x - bounds[ti].xMin) / (bounds[ti].xMax - bounds[ti].xMin);
-        ny = (y - bounds[ti].yMin) / (bounds[ti].yMax - bounds[ti].yMin);
-        nz = (z - bounds[ti].zMin) / (bounds[ti].zMax - bounds[ti].zMin);
-        nx = clamp (nx, 0.0f, 1.0f);
-        ny = clamp (ny, 0.0f, 1.0f);
-        nz = clamp (nz, 0.0f, 1.0f);
+        int topologyIndex = static_cast<int> (topology);
+        normalizedX = (x - bounds[topologyIndex].xMin) / (bounds[topologyIndex].xMax - bounds[topologyIndex].xMin);
+        normalizedY = (y - bounds[topologyIndex].yMin) / (bounds[topologyIndex].yMax - bounds[topologyIndex].yMin);
+        normalizedZ = (z - bounds[topologyIndex].zMin) / (bounds[topologyIndex].zMax - bounds[topologyIndex].zMin);
+        normalizedX = clamp (normalizedX, 0.0f, 1.0f);
+        normalizedY = clamp (normalizedY, 0.0f, 1.0f);
+        normalizedZ = clamp (normalizedZ, 0.0f, 1.0f);
     }
 
-    // Initialize state from [0,1]^3 mapped to this topology's bounding box
-    void initFromUnit (float nx, float ny, float nz) noexcept
+    //--------------------------------------------------------------------------
+    // Initialize state from [0,1]^3 mapped to this topology's bounding box.
+    // Inverse of normalizeToUnit — used to seed a new topology's state from
+    // the normalized position of the previous topology during crossfade.
+    //--------------------------------------------------------------------------
+    void initFromUnit (float normalizedX, float normalizedY, float normalizedZ) noexcept
     {
-        int ti = static_cast<int> (topology);
-        x = bounds[ti].xMin + nx * (bounds[ti].xMax - bounds[ti].xMin);
-        y = bounds[ti].yMin + ny * (bounds[ti].yMax - bounds[ti].yMin);
-        z = bounds[ti].zMin + nz * (bounds[ti].zMax - bounds[ti].zMin);
+        int topologyIndex = static_cast<int> (topology);
+        x = bounds[topologyIndex].xMin + normalizedX * (bounds[topologyIndex].xMax - bounds[topologyIndex].xMin);
+        y = bounds[topologyIndex].yMin + normalizedY * (bounds[topologyIndex].yMax - bounds[topologyIndex].yMin);
+        z = bounds[topologyIndex].zMin + normalizedZ * (bounds[topologyIndex].zMax - bounds[topologyIndex].zMin);
     }
 
-    // Apply cubic saturator (Hermite soft-clip) to constrain to bounding box
+    //--------------------------------------------------------------------------
+    // Apply cubic saturator (Hermite soft-clip) to constrain state within
+    // the topology's bounding box. This prevents runaway trajectories at
+    // high chaos index or large injection forces from producing NaN/Inf,
+    // while preserving smooth waveform continuity (no hard clipping artifacts).
+    //--------------------------------------------------------------------------
     void saturate() noexcept
     {
-        int ti = static_cast<int> (topology);
-        x = softClipScaled (x, bounds[ti].xMin, bounds[ti].xMax);
-        y = softClipScaled (y, bounds[ti].yMin, bounds[ti].yMax);
-        z = softClipScaled (z, bounds[ti].zMin, bounds[ti].zMax);
+        int topologyIndex = static_cast<int> (topology);
+        x = softClipScaled (x, bounds[topologyIndex].xMin, bounds[topologyIndex].xMax);
+        y = softClipScaled (y, bounds[topologyIndex].yMin, bounds[topologyIndex].yMax);
+        z = softClipScaled (z, bounds[topologyIndex].zMin, bounds[topologyIndex].zMax);
     }
 
     void reset() noexcept
     {
+        // Initial state (0.1, 0.1, 0.1) places the point near the center of
+        // all topologies' basins of attraction, ensuring rapid convergence
+        // to the attractor rather than a long transient spiral-in.
         x = 0.1f; y = 0.1f; z = 0.1f;
         lastDxDt = 0.0f; lastDyDt = 0.0f;
     }
 
-    float lastDxDt = 0.0f;
-    float lastDyDt = 0.0f;
+    float lastDxDt = 0.0f;     // Last computed dx/dt (for coupling velocity output)
+    float lastDyDt = 0.0f;     // Last computed dy/dt (for coupling velocity output)
 
 private:
-    // Soft clip within a scaled range, then return in original scale
-    static float softClipScaled (float val, float lo, float hi) noexcept
+    //--------------------------------------------------------------------------
+    // Soft clip within a scaled range, then return in original scale.
+    // Uses the Hermite cubic saturator: f(x) = x * (1.5 - 0.5 * x^2)
+    // which has unity gain at the origin and smoothly limits to +/-1.
+    //--------------------------------------------------------------------------
+    static float softClipScaled (float value, float lowerBound, float upperBound) noexcept
     {
-        float range = hi - lo;
-        float mid = (hi + lo) * 0.5f;
+        float range = upperBound - lowerBound;
+        float midpoint = (upperBound + lowerBound) * 0.5f;
         float halfRange = range * 0.5f;
-        if (halfRange < 0.001f) return mid;
-        // Normalize to [-1, 1]
-        float norm = (val - mid) / halfRange;
-        // Cubic saturator: x * (1.5 - 0.5 * x * x)
-        if (norm > 1.0f) norm = 1.0f;
-        else if (norm < -1.0f) norm = -1.0f;
-        else norm = norm * (1.5f - 0.5f * norm * norm);
-        return mid + norm * halfRange;
+        if (halfRange < 0.001f) return midpoint;          // Degenerate range guard
+
+        // Normalize to [-1, 1] relative to the bounding box
+        float normalized = (value - midpoint) / halfRange;
+
+        // Hermite cubic saturator: smooth limiting with C1 continuity
+        if (normalized > 1.0f) normalized = 1.0f;
+        else if (normalized < -1.0f) normalized = -1.0f;
+        else normalized = normalized * (1.5f - 0.5f * normalized * normalized);
+
+        return midpoint + normalized * halfRange;
     }
 };
 
@@ -207,72 +405,106 @@ private:
 // HalfBandFilter — 12-tap half-band FIR for 2:1 downsampling.
 //
 // Half-band symmetry: every other coefficient is zero, so only 6 multiplies
-// per output sample. Used in a two-stage cascade for 4:1 downsampling.
+// per output sample instead of 12. Used in a two-stage cascade (4x -> 2x -> 1x)
+// for efficient 4:1 decimation after oversampled attractor integration.
+//
+// Coefficients designed via Parks-McClellan (Remez exchange) algorithm
+// for equiripple stopband attenuation. The center tap is always 0.5 by
+// the half-band property.
 //==============================================================================
 struct HalfBandFilter
 {
-    // 12-tap half-band FIR coefficients (Parks-McClellan optimized)
-    // Only non-zero taps stored; the zero-valued taps are implicit.
     static constexpr int kNumTaps = 12;
-    static constexpr float coeffs[6] = {
-        -0.0157914f,  0.0f,  0.0907024f,  0.0f,  -0.3135643f,  0.5f
-        // Symmetric: mirror for second half. Center tap = 0.5.
-        // Full kernel: [c0, 0, c2, 0, c4, 0.5, c4, 0, c2, 0, c0, 0]
+
+    // Non-zero Parks-McClellan half-band coefficients.
+    // Full kernel: [c0, 0, c2, 0, c4, 0.5, c4, 0, c2, 0, c0, 0]
+    // Only the 6 unique values are stored; zero-valued taps are implicit.
+    static constexpr float coefficients[6] = {
+        -0.0157914f,    // Tap 0/10: outer sidelobe suppression
+         0.0f,          // Tap 1/9:  zero (half-band property)
+         0.0907024f,    // Tap 2/8:  transition band shaping
+         0.0f,          // Tap 3/7:  zero (half-band property)
+        -0.3135643f,    // Tap 4/6:  main lobe shaping
+         0.5f           // Tap 5:    center tap (half-band identity)
     };
 
-    float delay[kNumTaps] {};
+    float delayLine[kNumTaps] {};
 
-    void reset() noexcept { std::memset (delay, 0, sizeof (delay)); }
+    void reset() noexcept { std::memset (delayLine, 0, sizeof (delayLine)); }
 
-    // Push two input samples, return one output sample (2:1 decimation)
-    float process (float in0, float in1) noexcept
+    //--------------------------------------------------------------------------
+    // Push two input samples, return one output sample (2:1 decimation).
+    // Processes a pair of samples and produces one filtered output,
+    // effectively halving the sample rate while suppressing aliases.
+    //--------------------------------------------------------------------------
+    float process (float inputEven, float inputOdd) noexcept
     {
-        // Shift delay line
+        // Shift delay line by 2 positions (we consume 2 samples per output)
         for (int i = kNumTaps - 1; i >= 2; --i)
-            delay[i] = delay[i - 2];
-        delay[1] = in1;
-        delay[0] = in0;
+            delayLine[i] = delayLine[i - 2];
+        delayLine[1] = inputOdd;
+        delayLine[0] = inputEven;
 
-        // Compute output using half-band symmetry
-        float out = delay[5] * 0.5f;  // center tap
-        out += (delay[0] + delay[10]) * coeffs[0];
-        out += (delay[2] + delay[8])  * coeffs[2];
-        out += (delay[4] + delay[6])  * coeffs[4];
-        return out;
+        // Compute output using half-band symmetry (only 3 multiplies + center)
+        float output = delayLine[5] * 0.5f;                          // Center tap
+        output += (delayLine[0] + delayLine[10]) * coefficients[0];  // Outer pair
+        output += (delayLine[2] + delayLine[8])  * coefficients[2];  // Middle pair
+        output += (delayLine[4] + delayLine[6])  * coefficients[4];  // Inner pair
+        return output;
     }
 };
 
 //==============================================================================
 // OuroborosDCBlocker — First-order high-pass at 5 Hz.
+//
+// Removes DC offset that accumulates from asymmetric attractor trajectories
+// and the soft-clip saturator. Without this, speakers would receive a
+// sustained DC component that wastes headroom and can damage monitors.
+//
+// Transfer function: H(z) = (1 - z^-1) / (1 - R * z^-1)
+// where R = 1 - 2*pi*fc/fs determines the -3dB cutoff frequency.
 //==============================================================================
 struct OuroborosDCBlocker
 {
-    float x1 = 0.0f, y1 = 0.0f;
-    float R = 0.9993f; // default for 44100 Hz
+    float previousInput = 0.0f;
+    float previousOutput = 0.0f;
+    float feedbackCoefficient = 0.9993f;    // Default for 44100 Hz, fc ~= 5 Hz
 
     void prepare (double sampleRate) noexcept
     {
+        // R = 1 - (2 * pi * cutoffHz / sampleRate)
+        // At 5 Hz cutoff: passes all audible content, blocks DC and sub-infrasonic drift.
+        // Floor at 0.9 prevents instability if sampleRate is unexpectedly low.
         constexpr double twoPi = 6.283185307179586;
-        R = static_cast<float> (1.0 - twoPi * 5.0 / sampleRate);
-        if (R < 0.9f) R = 0.9f;
+        constexpr double cutoffHz = 5.0;
+        feedbackCoefficient = static_cast<float> (1.0 - twoPi * cutoffHz / sampleRate);
+        if (feedbackCoefficient < 0.9f) feedbackCoefficient = 0.9f;
     }
 
-    void reset() noexcept { x1 = 0.0f; y1 = 0.0f; }
+    void reset() noexcept { previousInput = 0.0f; previousOutput = 0.0f; }
 
-    float process (float in) noexcept
+    float process (float input) noexcept
     {
-        float out = in - x1 + R * y1;
-        x1 = in;
-        y1 = flushDenormal (out);
-        return out;
+        float output = input - previousInput + feedbackCoefficient * previousOutput;
+        previousInput = input;
+        // Flush denormals: the feedback path (R * y[n-1]) can produce subnormal
+        // values during silence, causing CPU spikes without audible benefit.
+        previousOutput = flushDenormal (output);
+        return output;
     }
 };
 
 //==============================================================================
 // OuroborosVoice — One chaotic attractor organism.
+//
+// Each voice is a self-contained chaos engine: dual attractor states for
+// topology crossfade, a leash phasor for pitch control, ADSR envelope,
+// two-stage decimation filters, and DC blocking. The voice is the
+// hydrothermal vent — self-sustaining, recursive, alive.
 //==============================================================================
 struct OuroborosVoice
 {
+    //-- Voice State -----------------------------------------------------------
     bool active = false;
     bool released = false;
     int noteNumber = -1;
@@ -281,56 +513,74 @@ struct OuroborosVoice
     float stealFadeGain = 1.0f;
     float stealFadeStep = 0.0f;
 
-    // Dual attractor states (for topology crossfade)
+    //-- Dual Attractor States (for topology crossfade) ------------------------
+    // Two attractors allow seamless topology switching: A fades out while B
+    // fades in over 50ms, with B initialized to A's normalized position in
+    // the new topology's coordinate system.
     AttractorState attractorA;
     AttractorState attractorB;
     bool crossfading = false;
-    float crossfadeGain = 0.0f;   // 0 = full A, 1 = full B
+    float crossfadeGain = 0.0f;    // 0.0 = full A, 1.0 = full B
     float crossfadeStep = 0.0f;
 
-    // Leash: master phasor for hard-sync
-    double phasorPhase = 0.0;
-    double phasorInc = 0.0;
-    // Separate attractor for synced path
-    AttractorState syncedAttractor;
+    //-- Leash: Master Phasor for Phase-Locked Chaos ---------------------------
+    // The leash is OUROBOROS's pitch control mechanism. A simple ramp phasor
+    // at the target MIDI frequency periodically resets the synced attractor
+    // to a Poincare section, forcing a fundamental period while preserving
+    // chaotic timbral evolution above the fundamental.
+    double leashPhasorPhase = 0.0;
+    double leashPhasorIncrement = 0.0;
+    AttractorState syncedAttractor;     // Separate attractor for the leashed path
 
-    // Envelope (fixed ADSR)
-    enum class EnvStage { Attack, Decay, Sustain, Release, Off };
-    EnvStage envStage = EnvStage::Off;
-    float envLevel = 0.0f;
-    float envAttackCoeff = 0.0f;
-    float envDecayCoeff = 0.0f;
-    float envReleaseCoeff = 0.0f;
-    static constexpr float kSustainLevel = 0.8f;
+    //-- Envelope (fixed ADSR) -------------------------------------------------
+    enum class EnvelopeStage { Attack, Decay, Sustain, Release, Off };
+    EnvelopeStage envelopeStage = EnvelopeStage::Off;
+    float envelopeLevel = 0.0f;
+    float envelopeAttackCoeff = 0.0f;
+    float envelopeDecayCoeff = 0.0f;
+    float envelopeReleaseCoeff = 0.0f;
+    static constexpr float kSustainLevel = 0.8f;   // -1.9 dB sustain
 
-    // Downsampling (two-stage 2:1 for 4:1 total)
-    HalfBandFilter downsampleStage1L, downsampleStage1R;
-    HalfBandFilter downsampleStage2L, downsampleStage2R;
+    //-- Downsampling (two-stage 2:1 for 4:1 total) ----------------------------
+    HalfBandFilter decimationStage1Left,  decimationStage1Right;
+    HalfBandFilter decimationStage2Left,  decimationStage2Right;
 
-    // DC blocking
-    OuroborosDCBlocker dcBlockerL, dcBlockerR;
+    //-- DC Blocking -----------------------------------------------------------
+    OuroborosDCBlocker dcBlockerLeft, dcBlockerRight;
 
-    // Damping accumulators
-    float dampL = 0.0f, dampR = 0.0f;
+    //-- Damping Accumulators --------------------------------------------------
+    // Single-pole lowpass accumulators that smooth the raw chaotic output.
+    // The damping parameter controls how much high-frequency chaos passes
+    // through versus being absorbed into a warmer, slower-evolving texture.
+    float dampingAccumulatorLeft = 0.0f;
+    float dampingAccumulatorRight = 0.0f;
 
-    // Velocity injection transient (50ms boost on note-on)
+    //-- Velocity Injection Transient ------------------------------------------
+    // 50ms boost on note-on that kicks the attractor harder, creating a
+    // percussive onset transient proportional to velocity.
     float injectionBoost = 0.0f;
-    float injectionBoostDecay = 0.0f;
+    float injectionBoostDecayRate = 0.0f;
 
+    //--------------------------------------------------------------------------
+    // Prepare: compute time-domain coefficients from sample rate.
+    //--------------------------------------------------------------------------
     void prepare (double sampleRate) noexcept
     {
-        dcBlockerL.prepare (sampleRate);
-        dcBlockerR.prepare (sampleRate);
+        dcBlockerLeft.prepare (sampleRate);
+        dcBlockerRight.prepare (sampleRate);
 
-        // ADSR coefficients (fixed values)
-        float sr = static_cast<float> (sampleRate);
-        envAttackCoeff  = 1.0f / (0.005f * sr);  // 5ms attack
-        envDecayCoeff   = 1.0f / (0.100f * sr);  // 100ms decay
-        envReleaseCoeff = 1.0f / (0.200f * sr);  // 200ms release
+        // ADSR time constants (fixed values — these define the organism's breath)
+        float sampleRateFloat = static_cast<float> (sampleRate);
+        envelopeAttackCoeff  = 1.0f / (0.005f * sampleRateFloat);  // 5ms attack:   fast onset, snap of the vent opening
+        envelopeDecayCoeff   = 1.0f / (0.100f * sampleRateFloat);  // 100ms decay:  initial energy burst subsides
+        envelopeReleaseCoeff = 1.0f / (0.200f * sampleRateFloat);  // 200ms release: thermal dissipation tail
 
         resetVoice();
     }
 
+    //--------------------------------------------------------------------------
+    // Full voice reset — returns the organism to dormant state.
+    //--------------------------------------------------------------------------
     void resetVoice() noexcept
     {
         active = false;
@@ -342,22 +592,25 @@ struct OuroborosVoice
         crossfading = false;
         crossfadeGain = 0.0f;
         crossfadeStep = 0.0f;
-        envStage = EnvStage::Off;
-        envLevel = 0.0f;
-        phasorPhase = 0.0;
-        phasorInc = 0.0;
-        dampL = 0.0f;
-        dampR = 0.0f;
+        envelopeStage = EnvelopeStage::Off;
+        envelopeLevel = 0.0f;
+        leashPhasorPhase = 0.0;
+        leashPhasorIncrement = 0.0;
+        dampingAccumulatorLeft = 0.0f;
+        dampingAccumulatorRight = 0.0f;
         injectionBoost = 0.0f;
 
         attractorA.reset();
         attractorB.reset();
         syncedAttractor.reset();
-        downsampleStage1L.reset(); downsampleStage1R.reset();
-        downsampleStage2L.reset(); downsampleStage2R.reset();
-        dcBlockerL.reset(); dcBlockerR.reset();
+        decimationStage1Left.reset();  decimationStage1Right.reset();
+        decimationStage2Left.reset();  decimationStage2Right.reset();
+        dcBlockerLeft.reset();         dcBlockerRight.reset();
     }
 
+    //--------------------------------------------------------------------------
+    // Note on — awaken the organism.
+    //--------------------------------------------------------------------------
     void noteOn (int note, float vel, uint64_t time, double sampleRate) noexcept
     {
         active = true;
@@ -368,42 +621,57 @@ struct OuroborosVoice
         stealFadeGain = 1.0f;
         stealFadeStep = 0.0f;
 
-        // Leash phasor resets to 0 on note-on
-        float freq = midiToFreq (note);
-        phasorPhase = 0.0;
-        phasorInc = static_cast<double> (freq) / sampleRate;
+        // Leash phasor resets to 0 on note-on (new pitch cycle)
+        float frequency = midiToFreq (note);
+        leashPhasorPhase = 0.0;
+        leashPhasorIncrement = static_cast<double> (frequency) / sampleRate;
 
         // Sync attractor starts from current attractor A position
+        // (preserves timbral continuity across notes)
         syncedAttractor = attractorA;
 
-        // ADSR starts
-        envStage = EnvStage::Attack;
+        // Envelope: begin attack phase
+        envelopeStage = EnvelopeStage::Attack;
 
-        // Velocity → injection boost for 50ms transient
+        // Velocity injection: 50ms transient boost proportional to velocity.
+        // This kicks the attractor harder on strong strikes, creating a
+        // percussive onset that decays into the sustained chaos.
         injectionBoost = vel * 0.5f;
-        injectionBoostDecay = injectionBoost / (0.050f * static_cast<float> (sampleRate));
+        injectionBoostDecayRate = injectionBoost / (0.050f * static_cast<float> (sampleRate));
 
         // Reset downsampling and DC blocking for clean start
-        downsampleStage1L.reset(); downsampleStage1R.reset();
-        downsampleStage2L.reset(); downsampleStage2R.reset();
-        dcBlockerL.reset(); dcBlockerR.reset();
-        dampL = 0.0f; dampR = 0.0f;
+        // (prevents clicks from stale filter state)
+        decimationStage1Left.reset();  decimationStage1Right.reset();
+        decimationStage2Left.reset();  decimationStage2Right.reset();
+        dcBlockerLeft.reset();         dcBlockerRight.reset();
+        dampingAccumulatorLeft = 0.0f;
+        dampingAccumulatorRight = 0.0f;
     }
 
+    //--------------------------------------------------------------------------
+    // Note off — begin thermal dissipation (release phase).
+    //--------------------------------------------------------------------------
     void noteOff() noexcept
     {
         released = true;
-        envStage = EnvStage::Release;
+        envelopeStage = EnvelopeStage::Release;
     }
 
+    //--------------------------------------------------------------------------
+    // Begin voice steal fade (5ms crossfade to silence).
+    //--------------------------------------------------------------------------
     void beginStealFade (double sampleRate) noexcept
     {
-        int fadeSamples = static_cast<int> (sampleRate * 0.005); // 5ms
+        int fadeSamples = static_cast<int> (sampleRate * 0.005);  // 5ms fade
         if (fadeSamples < 1) fadeSamples = 1;
         stealFadeStep = stealFadeGain / static_cast<float> (fadeSamples);
     }
 
-    // Legato: retune without resetting attractor
+    //--------------------------------------------------------------------------
+    // Legato retrigger: retune without resetting attractor state.
+    // The organism changes pitch but its chaotic trajectory continues
+    // unbroken — preserving timbral evolution across legato passages.
+    //--------------------------------------------------------------------------
     void legatoRetrigger (int note, float vel, uint64_t time, double sampleRate) noexcept
     {
         noteNumber = note;
@@ -412,71 +680,83 @@ struct OuroborosVoice
         released = false;
 
         // Update phasor to new frequency (attractor state preserved)
-        float freq = midiToFreq (note);
-        phasorInc = static_cast<double> (freq) / sampleRate;
+        float frequency = midiToFreq (note);
+        leashPhasorIncrement = static_cast<double> (frequency) / sampleRate;
 
-        // ADSR continues from current level (no retrigger)
-        if (envStage == EnvStage::Release || envStage == EnvStage::Off)
-            envStage = EnvStage::Attack;
+        // Envelope continues from current level (no retrigger)
+        if (envelopeStage == EnvelopeStage::Release || envelopeStage == EnvelopeStage::Off)
+            envelopeStage = EnvelopeStage::Attack;
     }
 
-    // Advance ADSR one sample
+    //--------------------------------------------------------------------------
+    // Advance ADSR envelope one sample.
+    //--------------------------------------------------------------------------
     float advanceEnvelope() noexcept
     {
-        switch (envStage)
+        switch (envelopeStage)
         {
-            case EnvStage::Attack:
-                envLevel += envAttackCoeff;
-                if (envLevel >= 1.0f) { envLevel = 1.0f; envStage = EnvStage::Decay; }
+            case EnvelopeStage::Attack:
+                envelopeLevel += envelopeAttackCoeff;
+                if (envelopeLevel >= 1.0f) { envelopeLevel = 1.0f; envelopeStage = EnvelopeStage::Decay; }
                 break;
-            case EnvStage::Decay:
-                envLevel -= envDecayCoeff * (envLevel - kSustainLevel);
-                if (envLevel <= kSustainLevel + 0.001f) { envLevel = kSustainLevel; envStage = EnvStage::Sustain; }
+            case EnvelopeStage::Decay:
+                envelopeLevel -= envelopeDecayCoeff * (envelopeLevel - kSustainLevel);
+                if (envelopeLevel <= kSustainLevel + 0.001f) { envelopeLevel = kSustainLevel; envelopeStage = EnvelopeStage::Sustain; }
                 break;
-            case EnvStage::Sustain:
-                envLevel = kSustainLevel;
+            case EnvelopeStage::Sustain:
+                envelopeLevel = kSustainLevel;
                 break;
-            case EnvStage::Release:
-                envLevel -= envReleaseCoeff * envLevel;
-                if (envLevel < 0.001f) { envLevel = 0.0f; envStage = EnvStage::Off; active = false; }
+            case EnvelopeStage::Release:
+                envelopeLevel -= envelopeReleaseCoeff * envelopeLevel;
+                if (envelopeLevel < 0.001f) { envelopeLevel = 0.0f; envelopeStage = EnvelopeStage::Off; active = false; }
                 break;
-            case EnvStage::Off:
-                envLevel = 0.0f;
+            case EnvelopeStage::Off:
+                envelopeLevel = 0.0f;
                 break;
         }
-        return envLevel;
+        return envelopeLevel;
     }
 };
 
 //==============================================================================
-// OuroborosEngine — Chaotic Attractor Synthesis.
 //
-// "XO-Ouroboros generates audio by continuously solving chaotic differential
-//  equations, producing sounds completely alien to subtractive or wavetable
-//  synthesis."
+//  OuroborosEngine — Chaotic Attractor Synthesis
 //
-// Sound is produced by:
-//   1. Selecting a chaotic ODE system (Lorenz, Rössler, Chua, Aizawa)
-//   2. Integrating it with RK4 at 4x oversampled audio rate
-//   3. Taming pitch via Phase-Locked Chaos ("The Leash")
-//   4. Projecting the 3D trajectory to stereo via rotation matrix
+//  The hydrothermal vent of the XO_OX ecosystem. Living in The Abyss at
+//  pure Oscar polarity, OUROBOROS generates sound by continuously solving
+//  chaotic differential equations — producing swirling, organic,
+//  never-repeating waveforms that can be dialed from sludgy primordial
+//  chaos to perfectly pitched complex timbres.
 //
-// The result: swirling, organic, never-repeating waveforms that can be
-// dialed from sludgy chaos to perfectly pitched complex wavetables.
+//  The serpent eats its own tail: the output feeds back into the system,
+//  each cycle slightly different from the last, yet always recognizably
+//  itself. This is synthesis at the thermodynamic boundary — where
+//  mathematical chaos becomes musical order.
+//
+//  KEY PARAMETERS
+//    Topology     Selects the chaotic ODE system (Lorenz/Rossler/Chua/Aizawa)
+//    Chaos Index  Sweeps the bifurcation parameter from periodic to chaotic
+//    Leash        Blend between free-running chaos and pitch-locked chaos
+//    Theta/Phi    3D-to-stereo projection angles (spatial rotation)
+//    Damping      LP accumulator smoothing (tames high-frequency chaos)
+//    Injection    Coupling perturbation depth (how much other engines push)
+//
 //==============================================================================
 class OuroborosEngine : public SynthEngine
 {
 public:
-    static constexpr int kMaxVoices = 6;
-    static constexpr int kOversample = 4;
+    static constexpr int kMaxVoices = 6;       // 6 simultaneous chaotic organisms
+    static constexpr int kOversample = 4;      // 4x oversampling for RK4 stability + alias suppression
 
-    //-- Identity --------------------------------------------------------------
+    //==========================================================================
+    //  IDENTITY
+    //==========================================================================
 
     juce::String getEngineId() const override { return "Ouroboros"; }
 
     juce::Colour getAccentColour() const override
     {
-        return juce::Colour (0xFFFF2D2D); // Strange Attractor Red
+        return juce::Colour (0xFFFF2D2D);   // Strange Attractor Red — the glow of the hydrothermal vent
     }
 
     int getMaxVoices() const override { return kMaxVoices; }
@@ -486,36 +766,38 @@ public:
         return activeVoiceCount.load (std::memory_order_relaxed);
     }
 
-    //-- Lifecycle -------------------------------------------------------------
+    //==========================================================================
+    //  LIFECYCLE
+    //==========================================================================
 
     const EngineProfiler& getProfiler() const noexcept { return profiler; }
 
     void prepare (double sampleRate, int maxBlockSize) override
     {
-        sr = sampleRate;
-        blockSize = maxBlockSize;
+        currentSampleRate = sampleRate;
+        currentBlockSize = maxBlockSize;
         noteCounter = 0;
         currentTopology = AttractorTopology::Lorenz;
 
         for (auto& voice : voices)
             voice.prepare (sampleRate);
 
-        // 4-channel output cache: L, R, dx/dt, dy/dt
-        outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
-        outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
-        outputCacheDxDt.resize (static_cast<size_t> (maxBlockSize), 0.0f);
-        outputCacheDyDt.resize (static_cast<size_t> (maxBlockSize), 0.0f);
+        // 4-channel output cache: L audio, R audio, dx/dt velocity, dy/dt velocity
+        outputCacheLeft.resize (static_cast<size_t> (maxBlockSize), 0.0f);
+        outputCacheRight.resize (static_cast<size_t> (maxBlockSize), 0.0f);
+        outputCacheVelocityX.resize (static_cast<size_t> (maxBlockSize), 0.0f);
+        outputCacheVelocityY.resize (static_cast<size_t> (maxBlockSize), 0.0f);
 
         profiler.prepare (sampleRate, maxBlockSize);
-        profiler.setCpuBudgetFraction (0.22f);
+        profiler.setCpuBudgetFraction (0.22f);  // 22% CPU budget — generous for RK4 at 4x oversample
     }
 
     void releaseResources() override
     {
-        outputCacheL.clear();
-        outputCacheR.clear();
-        outputCacheDxDt.clear();
-        outputCacheDyDt.clear();
+        outputCacheLeft.clear();
+        outputCacheRight.clear();
+        outputCacheVelocityX.clear();
+        outputCacheVelocityY.clear();
     }
 
     void reset() override
@@ -523,19 +805,21 @@ public:
         for (auto& voice : voices)
             voice.resetVoice();
 
-        std::fill (outputCacheL.begin(), outputCacheL.end(), 0.0f);
-        std::fill (outputCacheR.begin(), outputCacheR.end(), 0.0f);
-        std::fill (outputCacheDxDt.begin(), outputCacheDxDt.end(), 0.0f);
-        std::fill (outputCacheDyDt.begin(), outputCacheDyDt.end(), 0.0f);
+        std::fill (outputCacheLeft.begin(), outputCacheLeft.end(), 0.0f);
+        std::fill (outputCacheRight.begin(), outputCacheRight.end(), 0.0f);
+        std::fill (outputCacheVelocityX.begin(), outputCacheVelocityX.end(), 0.0f);
+        std::fill (outputCacheVelocityY.begin(), outputCacheVelocityY.end(), 0.0f);
 
-        externalPitchMod = 0.0f;
-        externalDampingMod = 0.0f;
-        externalThetaMod = 0.0f;
-        externalChaosMod = 0.0f;
+        couplingPitchModulation = 0.0f;
+        couplingDampingModulation = 0.0f;
+        couplingThetaModulation = 0.0f;
+        couplingChaosModulation = 0.0f;
         couplingAudioActive = false;
     }
 
-    //-- Audio -----------------------------------------------------------------
+    //==========================================================================
+    //  AUDIO RENDERING
+    //==========================================================================
 
     void renderBlock (juce::AudioBuffer<float>& buffer,
                       juce::MidiBuffer& midi,
@@ -543,334 +827,444 @@ public:
     {
         EngineProfiler::ScopedMeasurement measurement (profiler);
 
-        // ParamSnapshot: read all parameters once per block
-        const int   topology_i    = paramTopology    ? static_cast<int> (paramTopology->load())   : 0;
-        const float rate          = paramRate         ? paramRate->load()         : 130.0f;
-        const float chaosIndex    = paramChaosIndex   ? paramChaosIndex->load()   : 0.3f;
-        const float leash         = paramLeash        ? paramLeash->load()        : 0.5f;
-        const float theta         = paramTheta        ? paramTheta->load()        : 0.0f;
-        const float phi           = paramPhi          ? paramPhi->load()          : 0.0f;
-        const float damping       = paramDamping      ? paramDamping->load()      : 0.3f;
-        const float injection     = paramInjection    ? paramInjection->load()    : 0.0f;
+        //----------------------------------------------------------------------
+        // ParamSnapshot: read all parameters once per block (zero per-sample cost)
+        //----------------------------------------------------------------------
+        const int   topologySelection = paramTopology    ? static_cast<int> (paramTopology->load())   : 0;
+        const float orbitRate         = paramRate         ? paramRate->load()         : 130.0f;
+        const float chaosIndex        = paramChaosIndex   ? paramChaosIndex->load()   : 0.3f;
+        const float leashAmount       = paramLeash        ? paramLeash->load()        : 0.5f;
+        const float projectionTheta   = paramTheta        ? paramTheta->load()        : 0.0f;
+        const float projectionPhi     = paramPhi          ? paramPhi->load()          : 0.0f;
+        const float dampingAmount     = paramDamping      ? paramDamping->load()      : 0.3f;
+        const float injectionDepth    = paramInjection    ? paramInjection->load()    : 0.0f;
 
-        const auto newTopology = static_cast<AttractorTopology> (clamp (static_cast<float> (topology_i), 0.0f, 3.0f));
+        const auto newTopology = static_cast<AttractorTopology> (
+            clamp (static_cast<float> (topologySelection), 0.0f, 3.0f));
 
-        // Detect topology change
+        //----------------------------------------------------------------------
+        // Detect topology change (triggers 50ms crossfade on all active voices)
+        //----------------------------------------------------------------------
         bool topologyChanged = (newTopology != currentTopology);
         if (topologyChanged)
             currentTopology = newTopology;
 
-        // Effective chaos index with coupling modulation
-        float effectiveChaos = clamp (chaosIndex + externalChaosMod, 0.0f, 1.0f);
+        //----------------------------------------------------------------------
+        // Apply coupling modulation to chaos index
+        //----------------------------------------------------------------------
+        float effectiveChaos = clamp (chaosIndex + couplingChaosModulation, 0.0f, 1.0f);
 
-        // Precompute projection rotation matrix
-        float cosTheta = std::cos (theta + externalThetaMod);
-        float sinTheta = std::sin (theta + externalThetaMod);
-        float cosPhi   = std::cos (phi);
-        float sinPhi   = std::sin (phi);
+        //----------------------------------------------------------------------
+        // Precompute 3D-to-stereo projection rotation matrix.
+        // Rx(theta) * Ry(phi) projects the 3D attractor trajectory to L/R.
+        // Theta rotates around X-axis (tilts Y/Z plane),
+        // Phi rotates around Y-axis (tilts X/Z plane).
+        //----------------------------------------------------------------------
+        float cosTheta = std::cos (projectionTheta + couplingThetaModulation);
+        float sinTheta = std::sin (projectionTheta + couplingThetaModulation);
+        float cosPhi   = std::cos (projectionPhi);
+        float sinPhi   = std::sin (projectionPhi);
 
-        // Damping alpha for LP accumulator
-        float dampAlpha = 1.0f - (damping + externalDampingMod) * 0.95f;
+        //----------------------------------------------------------------------
+        // Damping coefficient for LP accumulator.
+        // dampAlpha near 1.0 = no damping (raw chaos passes through).
+        // dampAlpha near 0.05 = heavy damping (only slow evolution survives).
+        // The 0.95 multiplier ensures we never reach alpha=0 (frozen state).
+        //----------------------------------------------------------------------
+        float dampAlpha = 1.0f - (dampingAmount + couplingDampingModulation) * 0.95f;
         dampAlpha = clamp (dampAlpha, 0.05f, 1.0f);
 
-        // Handle MIDI
+        //----------------------------------------------------------------------
+        // Handle MIDI events
+        //----------------------------------------------------------------------
         for (const auto metadata : midi)
         {
-            auto msg = metadata.getMessage();
-            if (msg.isNoteOn())
-                handleNoteOn (msg.getNoteNumber(), msg.getFloatVelocity());
-            else if (msg.isNoteOff())
-                handleNoteOff (msg.getNoteNumber());
-            else if (msg.isAllNotesOff() || msg.isAllSoundOff())
+            auto message = metadata.getMessage();
+            if (message.isNoteOn())
+                handleNoteOn (message.getNoteNumber(), message.getFloatVelocity());
+            else if (message.isNoteOff())
+                handleNoteOff (message.getNoteNumber());
+            else if (message.isAllNotesOff() || message.isAllSoundOff())
             {
                 for (auto& voice : voices)
                     voice.resetVoice();
             }
         }
 
-        // Process each output sample
-        for (int s = 0; s < numSamples; ++s)
+        //----------------------------------------------------------------------
+        // Per-sample rendering loop
+        //----------------------------------------------------------------------
+        for (int sampleIndex = 0; sampleIndex < numSamples; ++sampleIndex)
         {
-            float mixL = 0.0f;
-            float mixR = 0.0f;
-            float mixDxDt = 0.0f;
-            float mixDyDt = 0.0f;
+            float voiceSumLeft = 0.0f;
+            float voiceSumRight = 0.0f;
+            float voiceSumVelocityX = 0.0f;
+            float voiceSumVelocityY = 0.0f;
 
             for (auto& voice : voices)
             {
                 if (!voice.active)
                     continue;
 
-                // Handle topology crossfade initiation
-                if (topologyChanged && s == 0 && !voice.crossfading)
+                //--------------------------------------------------------------
+                // Topology crossfade initiation (50ms equal-power blend)
+                //--------------------------------------------------------------
+                if (topologyChanged && sampleIndex == 0 && !voice.crossfading)
                 {
-                    // Normalize A's state to [0,1]^3
-                    float nx, ny, nz;
-                    voice.attractorA.normalizeToUnit (nx, ny, nz);
-                    // Initialize B with new topology
+                    // Normalize A's state to topology-independent [0,1]^3
+                    float unitX, unitY, unitZ;
+                    voice.attractorA.normalizeToUnit (unitX, unitY, unitZ);
+
+                    // Initialize B with new topology at equivalent position
                     voice.attractorB.topology = newTopology;
-                    voice.attractorB.initFromUnit (nx, ny, nz);
+                    voice.attractorB.initFromUnit (unitX, unitY, unitZ);
                     voice.syncedAttractor.topology = newTopology;
-                    voice.syncedAttractor.initFromUnit (nx, ny, nz);
-                    // Start crossfade (50ms)
+                    voice.syncedAttractor.initFromUnit (unitX, unitY, unitZ);
+
+                    // Begin 50ms crossfade (smooth topology transition)
                     voice.crossfading = true;
                     voice.crossfadeGain = 0.0f;
-                    int fadeSamples = static_cast<int> (sr * 0.050);
-                    voice.crossfadeStep = 1.0f / static_cast<float> (fadeSamples);
+                    int crossfadeSamples = static_cast<int> (currentSampleRate * 0.050);
+                    voice.crossfadeStep = 1.0f / static_cast<float> (crossfadeSamples);
                 }
 
-                // Target frequency: MIDI note overrides rate parameter
-                // If noteNumber is valid, use MIDI pitch; otherwise fall back to rate param (drone mode)
-                float targetFreq = (voice.noteNumber >= 0)
+                //--------------------------------------------------------------
+                // Target frequency: MIDI note overrides orbit rate parameter.
+                // If noteNumber is valid, use MIDI pitch; otherwise fall back
+                // to the rate parameter (drone/modular mode).
+                //--------------------------------------------------------------
+                float targetFrequency = (voice.noteNumber >= 0)
                     ? midiToFreq (voice.noteNumber)
-                    : rate;
-                targetFreq += externalPitchMod * 20.0f;
-                if (targetFreq < 20.0f) targetFreq = 20.0f;
+                    : orbitRate;
+                targetFrequency += couplingPitchModulation * 20.0f;   // +/- 20 Hz pitch mod range
+                if (targetFrequency < 20.0f) targetFrequency = 20.0f; // Sub-audible floor
 
-                // Coupling injection (from external audio)
-                float injDx = 0.0f, injDy = 0.0f;
-                if (couplingAudioActive && injection > 0.001f)
+                //--------------------------------------------------------------
+                // Coupling injection (external audio perturbs the attractor)
+                //--------------------------------------------------------------
+                float injectionForceX = 0.0f, injectionForceY = 0.0f;
+                if (couplingAudioActive && injectionDepth > 0.001f)
                 {
-                    float injScale = injection;
-                    // Velocity injection boost (decays over 50ms from note-on)
+                    float injectionScale = injectionDepth;
+
+                    // Velocity injection boost: 50ms transient that decays
+                    // from note-on, adding percussive onset energy
                     if (voice.injectionBoost > 0.0f)
                     {
-                        injScale += voice.injectionBoost;
-                        voice.injectionBoost -= voice.injectionBoostDecay;
+                        injectionScale += voice.injectionBoost;
+                        voice.injectionBoost -= voice.injectionBoostDecayRate;
                         if (voice.injectionBoost < 0.0f) voice.injectionBoost = 0.0f;
                     }
-                    if (s < couplingBufferSize)
+
+                    if (sampleIndex < couplingBufferSize)
                     {
-                        injDx = couplingAudioL[s] * injScale;
-                        injDy = couplingAudioR[s] * injScale;
+                        injectionForceX = couplingAudioBufferLeft[sampleIndex] * injectionScale;
+                        injectionForceY = couplingAudioBufferRight[sampleIndex] * injectionScale;
                     }
                 }
 
-                // --- 4x OVERSAMPLED ODE INTEGRATION ---
-                // We need 4 oversampled points per output sample.
-                // Accumulate projected L/R across the 4 sub-samples,
-                // then downsample.
+                //--------------------------------------------------------------
+                // 4x OVERSAMPLED ODE INTEGRATION
+                //
+                // We compute 4 attractor steps per output sample, then
+                // decimate with the half-band FIR cascade. This serves
+                // two purposes:
+                //   1. Numerical stability: RK4 needs small step sizes
+                //   2. Anti-aliasing: chaotic signals have broadband content
+                //--------------------------------------------------------------
 
-                float osL[4], osR[4]; // oversampled L/R before downsample
+                float oversampledLeft[4], oversampledRight[4];
 
-                for (int os = 0; os < kOversample; ++os)
+                for (int oversampleIndex = 0; oversampleIndex < kOversample; ++oversampleIndex)
                 {
-                    float freeX = 0.0f, freeY = 0.0f, freeZ = 0.0f;
-                    float syncX = 0.0f, syncY = 0.0f, syncZ = 0.0f;
-                    float freeDxDt = 0.0f, freeDyDt = 0.0f;
-                    float syncDxDt = 0.0f, syncDyDt = 0.0f;
+                    float freeRunX = 0.0f, freeRunY = 0.0f, freeRunZ = 0.0f;
+                    float syncedX = 0.0f, syncedY = 0.0f, syncedZ = 0.0f;
+                    float freeRunVelocityX = 0.0f, freeRunVelocityY = 0.0f;
+                    float syncedVelocityX = 0.0f, syncedVelocityY = 0.0f;
 
-                    // --- FREE-RUNNING PATH ---
-                    if (leash < 0.99f)
+                    //----------------------------------------------------------
+                    // FREE-RUNNING PATH: attractor evolves without pitch lock.
+                    // Pure chaos — the vent's raw thermodynamic output.
+                    //----------------------------------------------------------
+                    if (leashAmount < 0.99f)
                     {
                         AttractorState& freeState = voice.crossfading ? voice.attractorB : voice.attractorA;
-                        float h = freeState.computeStepSize (targetFreq, effectiveChaos);
-                        freeState.step (h, effectiveChaos, injDx, injDy);
+                        float stepSize = freeState.computeStepSize (targetFrequency, effectiveChaos);
+                        freeState.step (stepSize, effectiveChaos, injectionForceX, injectionForceY);
                         freeState.saturate();
-                        freeX = freeState.x; freeY = freeState.y; freeZ = freeState.z;
-                        freeDxDt = freeState.lastDxDt;
-                        freeDyDt = freeState.lastDyDt;
+                        freeRunX = freeState.x; freeRunY = freeState.y; freeRunZ = freeState.z;
+                        freeRunVelocityX = freeState.lastDxDt;
+                        freeRunVelocityY = freeState.lastDyDt;
 
                         // Also step A during crossfade (fading out)
                         if (voice.crossfading)
                         {
-                            float hA = voice.attractorA.computeStepSize (targetFreq, effectiveChaos);
-                            voice.attractorA.step (hA, effectiveChaos, injDx, injDy);
+                            float stepSizeA = voice.attractorA.computeStepSize (targetFrequency, effectiveChaos);
+                            voice.attractorA.step (stepSizeA, effectiveChaos, injectionForceX, injectionForceY);
                             voice.attractorA.saturate();
                         }
                     }
 
-                    // --- HARD-SYNCED PATH ---
-                    if (leash > 0.01f)
+                    //----------------------------------------------------------
+                    // HARD-SYNCED PATH: leash phasor periodically resets the
+                    // attractor to a Poincare section, forcing a fundamental
+                    // frequency. The chaos still evolves between resets,
+                    // producing rich harmonics above the forced fundamental.
+                    //----------------------------------------------------------
+                    if (leashAmount > 0.01f)
                     {
-                        // Advance phasor (at 4x rate)
-                        voice.phasorPhase += voice.phasorInc / static_cast<double> (kOversample);
+                        // Advance leash phasor at oversampled rate
+                        voice.leashPhasorPhase += voice.leashPhasorIncrement / static_cast<double> (kOversample);
 
-                        // Poincaré reset on phasor wrap
-                        if (voice.phasorPhase >= 1.0)
+                        // Poincare reset on phasor wrap (one full cycle complete)
+                        if (voice.leashPhasorPhase >= 1.0)
                         {
-                            voice.phasorPhase -= 1.0;
-                            // Reset to Poincaré section: x = small perturbation, keep y/z normalized
-                            int ti = static_cast<int> (voice.syncedAttractor.topology);
-                            float bx = AttractorState::bounds[ti].xMin
-                                      + 0.1f * (AttractorState::bounds[ti].xMax - AttractorState::bounds[ti].xMin);
-                            voice.syncedAttractor.x = bx;
-                            // y and z continue from current position (keeps timbre variation)
+                            voice.leashPhasorPhase -= 1.0;
+
+                            // Reset X to 10% into the bounding box (small perturbation
+                            // from the boundary, ensuring the trajectory re-enters the
+                            // attractor basin rather than landing at a fixed point).
+                            // Y and Z continue from current position (preserves timbre).
+                            int topologyIndex = static_cast<int> (voice.syncedAttractor.topology);
+                            float perturbedX = AttractorState::bounds[topologyIndex].xMin
+                                + 0.1f * (AttractorState::bounds[topologyIndex].xMax
+                                         - AttractorState::bounds[topologyIndex].xMin);
+                            voice.syncedAttractor.x = perturbedX;
                         }
 
-                        float hSync = voice.syncedAttractor.computeStepSize (targetFreq, effectiveChaos);
-                        voice.syncedAttractor.step (hSync, effectiveChaos, injDx, injDy);
+                        float syncStepSize = voice.syncedAttractor.computeStepSize (targetFrequency, effectiveChaos);
+                        voice.syncedAttractor.step (syncStepSize, effectiveChaos, injectionForceX, injectionForceY);
                         voice.syncedAttractor.saturate();
-                        syncX = voice.syncedAttractor.x;
-                        syncY = voice.syncedAttractor.y;
-                        syncZ = voice.syncedAttractor.z;
-                        syncDxDt = voice.syncedAttractor.lastDxDt;
-                        syncDyDt = voice.syncedAttractor.lastDyDt;
+                        syncedX = voice.syncedAttractor.x;
+                        syncedY = voice.syncedAttractor.y;
+                        syncedZ = voice.syncedAttractor.z;
+                        syncedVelocityX = voice.syncedAttractor.lastDxDt;
+                        syncedVelocityY = voice.syncedAttractor.lastDyDt;
                     }
 
-                    // --- LEASH BLEND ---
-                    float rawX, rawY, rawZ, dxOut, dyOut;
-                    if (leash <= 0.01f)
+                    //----------------------------------------------------------
+                    // LEASH BLEND: crossfade between free-running chaos and
+                    // pitch-locked chaos. The "Leash" parameter is the
+                    // serpent's collar — at 0 it roams free, at 1 it is
+                    // perfectly tethered to MIDI pitch.
+                    //----------------------------------------------------------
+                    float blendedX, blendedY, blendedZ, velocityOutX, velocityOutY;
+                    if (leashAmount <= 0.01f)
                     {
-                        rawX = freeX; rawY = freeY; rawZ = freeZ;
-                        dxOut = freeDxDt; dyOut = freeDyDt;
+                        blendedX = freeRunX; blendedY = freeRunY; blendedZ = freeRunZ;
+                        velocityOutX = freeRunVelocityX; velocityOutY = freeRunVelocityY;
                     }
-                    else if (leash >= 0.99f)
+                    else if (leashAmount >= 0.99f)
                     {
-                        rawX = syncX; rawY = syncY; rawZ = syncZ;
-                        dxOut = syncDxDt; dyOut = syncDyDt;
+                        blendedX = syncedX; blendedY = syncedY; blendedZ = syncedZ;
+                        velocityOutX = syncedVelocityX; velocityOutY = syncedVelocityY;
                     }
                     else
                     {
-                        float il = 1.0f - leash;
-                        rawX = il * freeX + leash * syncX;
-                        rawY = il * freeY + leash * syncY;
-                        rawZ = il * freeZ + leash * syncZ;
-                        dxOut = il * freeDxDt + leash * syncDxDt;
-                        dyOut = il * freeDyDt + leash * syncDyDt;
+                        float freeWeight = 1.0f - leashAmount;
+                        blendedX = freeWeight * freeRunX + leashAmount * syncedX;
+                        blendedY = freeWeight * freeRunY + leashAmount * syncedY;
+                        blendedZ = freeWeight * freeRunZ + leashAmount * syncedZ;
+                        velocityOutX = freeWeight * freeRunVelocityX + leashAmount * syncedVelocityX;
+                        velocityOutY = freeWeight * freeRunVelocityY + leashAmount * syncedVelocityY;
                     }
 
-                    // --- TOPOLOGY CROSSFADE ---
-                    if (voice.crossfading && leash < 0.99f)
+                    //----------------------------------------------------------
+                    // TOPOLOGY CROSSFADE: blend between old (A) and new (B)
+                    // topology states during a 50ms transition.
+                    //----------------------------------------------------------
+                    if (voice.crossfading && leashAmount < 0.99f)
                     {
-                        float hA = voice.attractorA.computeStepSize (targetFreq, effectiveChaos);
-                        (void) hA; // already stepped above
-                        float aX = voice.attractorA.x, aY = voice.attractorA.y, aZ = voice.attractorA.z;
-                        float cf = voice.crossfadeGain;
-                        rawX = (1.0f - cf) * aX + cf * rawX;
-                        rawY = (1.0f - cf) * aY + cf * rawY;
-                        rawZ = (1.0f - cf) * aZ + cf * rawZ;
+                        float oldX = voice.attractorA.x;
+                        float oldY = voice.attractorA.y;
+                        float oldZ = voice.attractorA.z;
+                        float crossfadePosition = voice.crossfadeGain;
+                        blendedX = (1.0f - crossfadePosition) * oldX + crossfadePosition * blendedX;
+                        blendedY = (1.0f - crossfadePosition) * oldY + crossfadePosition * blendedY;
+                        blendedZ = (1.0f - crossfadePosition) * oldZ + crossfadePosition * blendedZ;
                     }
 
-                    // --- NORMALIZE TO [-1, 1] FOR PROJECTION ---
-                    int ti = voice.crossfading
+                    //----------------------------------------------------------
+                    // NORMALIZE TO [-1, 1] FOR STEREO PROJECTION
+                    // Map from topology-specific bounding box to centered
+                    // unit range for consistent projection behavior.
+                    //----------------------------------------------------------
+                    int activeTopologyIndex = voice.crossfading
                              ? static_cast<int> (voice.attractorB.topology)
                              : static_cast<int> (voice.attractorA.topology);
-                    float normX = (rawX - (AttractorState::bounds[ti].xMin + AttractorState::bounds[ti].xMax) * 0.5f)
-                                / ((AttractorState::bounds[ti].xMax - AttractorState::bounds[ti].xMin) * 0.5f);
-                    float normY = (rawY - (AttractorState::bounds[ti].yMin + AttractorState::bounds[ti].yMax) * 0.5f)
-                                / ((AttractorState::bounds[ti].yMax - AttractorState::bounds[ti].yMin) * 0.5f);
-                    float normZ = (rawZ - (AttractorState::bounds[ti].zMin + AttractorState::bounds[ti].zMax) * 0.5f)
-                                / ((AttractorState::bounds[ti].zMax - AttractorState::bounds[ti].zMin) * 0.5f);
+                    float normalizedX = (blendedX - (AttractorState::bounds[activeTopologyIndex].xMin + AttractorState::bounds[activeTopologyIndex].xMax) * 0.5f)
+                                / ((AttractorState::bounds[activeTopologyIndex].xMax - AttractorState::bounds[activeTopologyIndex].xMin) * 0.5f);
+                    float normalizedY = (blendedY - (AttractorState::bounds[activeTopologyIndex].yMin + AttractorState::bounds[activeTopologyIndex].yMax) * 0.5f)
+                                / ((AttractorState::bounds[activeTopologyIndex].yMax - AttractorState::bounds[activeTopologyIndex].yMin) * 0.5f);
+                    float normalizedZ = (blendedZ - (AttractorState::bounds[activeTopologyIndex].zMin + AttractorState::bounds[activeTopologyIndex].zMax) * 0.5f)
+                                / ((AttractorState::bounds[activeTopologyIndex].zMax - AttractorState::bounds[activeTopologyIndex].zMin) * 0.5f);
 
-                    // --- 3D → 2D PROJECTION (rotation matrix) ---
-                    // Rx(theta) then Ry(phi)
-                    float ry = cosTheta * normY - sinTheta * normZ;
-                    float rz = sinTheta * normY + cosTheta * normZ;
-                    float projL = cosPhi * normX + sinPhi * rz;
-                    float projR = ry;
+                    //----------------------------------------------------------
+                    // 3D-TO-STEREO PROJECTION (rotation matrix)
+                    //
+                    // Apply Rx(theta) then Ry(phi) to the normalized 3D point.
+                    // Left channel = X component after both rotations.
+                    // Right channel = Y component after X-rotation only.
+                    // This creates stereo width that is intrinsic to the
+                    // attractor's geometry rather than a post-process effect.
+                    //----------------------------------------------------------
+                    float rotatedY = cosTheta * normalizedY - sinTheta * normalizedZ;
+                    float rotatedZ = sinTheta * normalizedY + cosTheta * normalizedZ;
+                    float projectedLeft  = cosPhi * normalizedX + sinPhi * rotatedZ;
+                    float projectedRight = rotatedY;
 
-                    osL[os] = projL;
-                    osR[os] = projR;
+                    oversampledLeft[oversampleIndex]  = projectedLeft;
+                    oversampledRight[oversampleIndex] = projectedRight;
 
-                    // Store velocity for coupling output (last sub-sample)
-                    if (os == kOversample - 1)
+                    // Store velocity for coupling output (use last sub-sample only)
+                    if (oversampleIndex == kOversample - 1)
                     {
-                        int maxVelTi = static_cast<int> (voice.crossfading
+                        int velocityTopologyIndex = static_cast<int> (voice.crossfading
                                        ? voice.attractorB.topology
                                        : voice.attractorA.topology);
-                        float maxVel = AttractorState::maxVelocity[maxVelTi];
-                        mixDxDt += clamp (dxOut / maxVel, -1.0f, 1.0f);
-                        mixDyDt += clamp (dyOut / maxVel, -1.0f, 1.0f);
+                        float velocityNormFactor = AttractorState::maxVelocityNorm[velocityTopologyIndex];
+                        voiceSumVelocityX += clamp (velocityOutX / velocityNormFactor, -1.0f, 1.0f);
+                        voiceSumVelocityY += clamp (velocityOutY / velocityNormFactor, -1.0f, 1.0f);
                     }
                 }
 
-                // --- DOWNSAMPLE 4:1 (two-stage half-band) ---
-                // Stage 1: 4x → 2x (process pairs)
-                float ds1L = voice.downsampleStage1L.process (osL[0], osL[1]);
-                float ds1R = voice.downsampleStage1R.process (osR[0], osR[1]);
-                float ds2L = voice.downsampleStage1L.process (osL[2], osL[3]);
-                float ds2R = voice.downsampleStage1R.process (osR[2], osR[3]);
-                // Stage 2: 2x → 1x
-                float outL = voice.downsampleStage2L.process (ds1L, ds2L);
-                float outR = voice.downsampleStage2R.process (ds1R, ds2R);
+                //--------------------------------------------------------------
+                // DOWNSAMPLE 4:1 (two-stage half-band FIR cascade)
+                //
+                // Stage 1: 4x -> 2x (process oversampled pairs 0+1, 2+3)
+                // Stage 2: 2x -> 1x (process stage-1 outputs)
+                //--------------------------------------------------------------
+                float intermediate1Left  = voice.decimationStage1Left.process  (oversampledLeft[0],  oversampledLeft[1]);
+                float intermediate1Right = voice.decimationStage1Right.process (oversampledRight[0], oversampledRight[1]);
+                float intermediate2Left  = voice.decimationStage1Left.process  (oversampledLeft[2],  oversampledLeft[3]);
+                float intermediate2Right = voice.decimationStage1Right.process (oversampledRight[2], oversampledRight[3]);
+                float outputLeft  = voice.decimationStage2Left.process  (intermediate1Left,  intermediate2Left);
+                float outputRight = voice.decimationStage2Right.process (intermediate1Right, intermediate2Right);
 
-                // --- DC BLOCKING ---
-                outL = voice.dcBlockerL.process (outL);
-                outR = voice.dcBlockerR.process (outR);
+                //--------------------------------------------------------------
+                // DC BLOCKING
+                //--------------------------------------------------------------
+                outputLeft  = voice.dcBlockerLeft.process  (outputLeft);
+                outputRight = voice.dcBlockerRight.process (outputRight);
 
-                // --- DAMPING (LP accumulator) ---
-                voice.dampL = flushDenormal (voice.dampL * (1.0f - dampAlpha) + outL * dampAlpha);
-                voice.dampR = flushDenormal (voice.dampR * (1.0f - dampAlpha) + outR * dampAlpha);
-                outL = voice.dampL;
-                outR = voice.dampR;
+                //--------------------------------------------------------------
+                // DAMPING (single-pole LP accumulator)
+                //
+                // Flush denormals in the feedback path: during quiet passages,
+                // the accumulator value can decay into subnormal range. On x86
+                // CPUs, subnormal arithmetic triggers microcode assists that
+                // cost 10-100x normal FPU throughput — an inaudible value
+                // causing very audible CPU spikes.
+                //--------------------------------------------------------------
+                voice.dampingAccumulatorLeft  = flushDenormal (voice.dampingAccumulatorLeft  * (1.0f - dampAlpha) + outputLeft  * dampAlpha);
+                voice.dampingAccumulatorRight = flushDenormal (voice.dampingAccumulatorRight * (1.0f - dampAlpha) + outputRight * dampAlpha);
+                outputLeft  = voice.dampingAccumulatorLeft;
+                outputRight = voice.dampingAccumulatorRight;
 
-                // --- SOFT CLIP ---
-                outL = fastTanh (outL);
-                outR = fastTanh (outR);
+                //--------------------------------------------------------------
+                // SOFT CLIP (tanh saturation — prevents hard digital clipping)
+                //--------------------------------------------------------------
+                outputLeft  = fastTanh (outputLeft);
+                outputRight = fastTanh (outputRight);
 
-                // --- ENVELOPE ---
-                float env = voice.advanceEnvelope();
-                outL *= env * voice.velocity;
-                outR *= env * voice.velocity;
+                //--------------------------------------------------------------
+                // ENVELOPE
+                //--------------------------------------------------------------
+                float envelopeGain = voice.advanceEnvelope();
+                outputLeft  *= envelopeGain * voice.velocity;
+                outputRight *= envelopeGain * voice.velocity;
 
-                // --- VOICE STEAL CROSSFADE ---
+                //--------------------------------------------------------------
+                // VOICE STEAL CROSSFADE
+                //--------------------------------------------------------------
                 if (voice.stealFadeStep > 0.0f)
                 {
                     voice.stealFadeGain -= voice.stealFadeStep;
                     if (voice.stealFadeGain <= 0.0f) { voice.active = false; continue; }
-                    outL *= voice.stealFadeGain;
-                    outR *= voice.stealFadeGain;
+                    outputLeft  *= voice.stealFadeGain;
+                    outputRight *= voice.stealFadeGain;
                 }
 
-                // --- TOPOLOGY CROSSFADE ADVANCE ---
+                //--------------------------------------------------------------
+                // TOPOLOGY CROSSFADE ADVANCE
+                //--------------------------------------------------------------
                 if (voice.crossfading)
                 {
                     voice.crossfadeGain += voice.crossfadeStep;
                     if (voice.crossfadeGain >= 1.0f)
                     {
-                        // Crossfade complete: B becomes A
+                        // Crossfade complete: B becomes the new A
                         voice.attractorA = voice.attractorB;
                         voice.crossfading = false;
                         voice.crossfadeGain = 0.0f;
                     }
                 }
 
-                mixL += outL;
-                mixR += outR;
+                voiceSumLeft  += outputLeft;
+                voiceSumRight += outputRight;
             }
 
-            // Cache output for coupling
-            outputCacheL[static_cast<size_t> (s)] = mixL;
-            outputCacheR[static_cast<size_t> (s)] = mixR;
-            outputCacheDxDt[static_cast<size_t> (s)] = mixDxDt;
-            outputCacheDyDt[static_cast<size_t> (s)] = mixDyDt;
+            //------------------------------------------------------------------
+            // Cache output for coupling (4 channels: L, R, dx/dt, dy/dt)
+            //------------------------------------------------------------------
+            outputCacheLeft[static_cast<size_t> (sampleIndex)]      = voiceSumLeft;
+            outputCacheRight[static_cast<size_t> (sampleIndex)]     = voiceSumRight;
+            outputCacheVelocityX[static_cast<size_t> (sampleIndex)] = voiceSumVelocityX;
+            outputCacheVelocityY[static_cast<size_t> (sampleIndex)] = voiceSumVelocityY;
 
-            // Write to output buffer
+            //------------------------------------------------------------------
+            // Write to output buffer (additive — other engines may be summing)
+            //------------------------------------------------------------------
             if (buffer.getNumChannels() > 0)
-                buffer.getWritePointer (0)[s] += mixL;
+                buffer.getWritePointer (0)[sampleIndex] += voiceSumLeft;
             if (buffer.getNumChannels() > 1)
-                buffer.getWritePointer (1)[s] += mixR;
+                buffer.getWritePointer (1)[sampleIndex] += voiceSumRight;
         }
 
-        // Reset coupling accumulators
-        externalPitchMod = 0.0f;
-        externalDampingMod = 0.0f;
-        externalThetaMod = 0.0f;
-        externalChaosMod = 0.0f;
+        //----------------------------------------------------------------------
+        // Reset coupling accumulators for next block
+        //----------------------------------------------------------------------
+        couplingPitchModulation = 0.0f;
+        couplingDampingModulation = 0.0f;
+        couplingThetaModulation = 0.0f;
+        couplingChaosModulation = 0.0f;
         couplingAudioActive = false;
 
-        // Update active voice count
+        //----------------------------------------------------------------------
+        // Update active voice count (atomic, relaxed — UI display only)
+        //----------------------------------------------------------------------
         int count = 0;
         for (const auto& voice : voices)
             if (voice.active) ++count;
         activeVoiceCount.store (count, std::memory_order_relaxed);
     }
 
-    //-- Coupling --------------------------------------------------------------
+    //==========================================================================
+    //  COUPLING — The Symbiosis Interface
+    //
+    //  OUROBOROS provides 4 coupling output channels:
+    //    Channel 0: Left audio output
+    //    Channel 1: Right audio output
+    //    Channel 2: dx/dt (X-axis attractor velocity, normalized)
+    //    Channel 3: dy/dt (Y-axis attractor velocity, normalized)
+    //
+    //  The velocity outputs (channels 2-3) are unique to OUROBOROS and allow
+    //  other engines to be modulated by the *rate of change* of the chaos,
+    //  not just its instantaneous value.
+    //==========================================================================
 
     float getSampleForCoupling (int channel, int sampleIndex) const override
     {
-        if (sampleIndex < 0 || sampleIndex >= static_cast<int> (outputCacheL.size()))
+        if (sampleIndex < 0 || sampleIndex >= static_cast<int> (outputCacheLeft.size()))
             return 0.0f;
 
-        auto idx = static_cast<size_t> (sampleIndex);
+        auto index = static_cast<size_t> (sampleIndex);
         switch (channel)
         {
-            case 0:  return outputCacheL[idx];
-            case 1:  return outputCacheR[idx];
-            case 2:  return outputCacheDxDt[idx];
-            case 3:  return outputCacheDyDt[idx];
+            case 0:  return outputCacheLeft[index];       // Left audio
+            case 1:  return outputCacheRight[index];      // Right audio
+            case 2:  return outputCacheVelocityX[index];  // dx/dt (attractor velocity X)
+            case 3:  return outputCacheVelocityY[index];  // dy/dt (attractor velocity Y)
             default: return 0.0f;
         }
     }
@@ -882,48 +1276,56 @@ public:
         {
             case CouplingType::AudioToFM:
             {
-                // Audio injected into dx/dt (perturbation force)
+                // Audio injected into dx/dt — perturbation force along X-axis.
+                // Other engines' audio pushes the attractor sideways in phase space.
                 if (sourceBuffer != nullptr && numSamples > 0)
                 {
                     couplingBufferSize = numSamples;
                     for (int i = 0; i < numSamples && i < kMaxCouplingBuffer; ++i)
-                        couplingAudioL[i] = sourceBuffer[i] * amount;
+                        couplingAudioBufferLeft[i] = sourceBuffer[i] * amount;
                     couplingAudioActive = true;
                 }
                 break;
             }
             case CouplingType::AudioToWavetable:
             {
-                // Audio injected into dy/dt (orthogonal perturbation)
+                // Audio injected into dy/dt — orthogonal perturbation force.
+                // Combined with AudioToFM, this gives 2D steering of chaos.
                 if (sourceBuffer != nullptr && numSamples > 0)
                 {
                     couplingBufferSize = numSamples;
                     for (int i = 0; i < numSamples && i < kMaxCouplingBuffer; ++i)
-                        couplingAudioR[i] = sourceBuffer[i] * amount;
+                        couplingAudioBufferRight[i] = sourceBuffer[i] * amount;
                     couplingAudioActive = true;
                 }
                 break;
             }
             case CouplingType::RhythmToBlend:
-                externalChaosMod += amount * 0.3f;
+                // Rhythm modulates chaos index (drives bifurcation parameter)
+                couplingChaosModulation += amount * 0.3f;
                 break;
             case CouplingType::EnvToDecay:
             case CouplingType::AmpToFilter:
-                externalDampingMod += amount * 0.5f;
+                // Envelope/amplitude modulates damping (tames or unleashes chaos)
+                couplingDampingModulation += amount * 0.5f;
                 break;
             case CouplingType::EnvToMorph:
-                externalThetaMod += amount * 1.0f;
+                // Envelope modulates projection theta (rotates the stereo image)
+                couplingThetaModulation += amount * 1.0f;
                 break;
             case CouplingType::LFOToPitch:
             case CouplingType::PitchToPitch:
-                externalPitchMod += amount * 0.5f;
+                // LFO/pitch modulates orbit frequency
+                couplingPitchModulation += amount * 0.5f;
                 break;
             default:
-                break; // AudioToRing, FilterToFilter, AmpToChoke, AmpToPitch unsupported
+                break;  // AudioToRing, FilterToFilter, AmpToChoke, AmpToPitch: not applicable to chaos synthesis
         }
     }
 
-    //-- Parameters ------------------------------------------------------------
+    //==========================================================================
+    //  PARAMETERS
+    //==========================================================================
 
     static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
@@ -950,60 +1352,67 @@ public:
     }
 
 private:
-    //-- Parameter definitions -------------------------------------------------
+
+    //==========================================================================
+    //  PARAMETER DEFINITIONS
+    //==========================================================================
 
     static void addParametersImpl (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         constexpr float pi = 3.14159265358979323846f;
 
-        // 1. Topology (discrete: 0=Lorenz, 1=Rössler, 2=Chua, 3=Aizawa)
+        // 1. Topology: selects the chaotic ODE system
+        //    0=Lorenz (broad spectrum), 1=Rossler (tonal), 2=Chua (buzzy), 3=Aizawa (complex)
         params.push_back (std::make_unique<juce::AudioParameterInt> (
             juce::ParameterID ("ouro_topology", 1), "Topology",
             0, 3, 0));
 
-        // 2. Orbit Rate (target pitch frequency in Hz)
+        // 2. Orbit Rate: target pitch frequency in Hz (used in drone mode when no MIDI note active)
+        //    Skew 0.3 gives finer control in the audible range (20-2000 Hz)
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID ("ouro_rate", 1), "Orbit Rate",
             juce::NormalisableRange<float> (0.01f, 20000.0f, 0.0f, 0.3f), 130.0f));
 
-        // 3. Chaos Index (bifurcation parameter)
+        // 3. Chaos Index: sweeps the bifurcation parameter from periodic (0) to fully chaotic (1)
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID ("ouro_chaosIndex", 1), "Chaos Index",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
 
-        // 4. Leash (free-running ↔ hard-synced)
+        // 4. Leash: blend between free-running chaos (0) and hard-synced pitch-locked chaos (1)
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID ("ouro_leash", 1), "Leash",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
 
-        // 5. Theta projection (rotation X-axis)
+        // 5. Theta: 3D projection rotation around X-axis (radians, -pi to +pi)
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID ("ouro_theta", 1), "Theta",
             juce::NormalisableRange<float> (-pi, pi), 0.0f));
 
-        // 6. Phi projection (rotation Y-axis)
+        // 6. Phi: 3D projection rotation around Y-axis (radians, -pi to +pi)
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID ("ouro_phi", 1), "Phi",
             juce::NormalisableRange<float> (-pi, pi), 0.0f));
 
-        // 7. Damping (LP accumulator smoothing)
+        // 7. Damping: LP accumulator smoothing (0=raw chaos, 1=heavy smoothing)
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID ("ouro_damping", 1), "Damping",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
 
-        // 8. Injection (coupling perturbation depth)
+        // 8. Injection: coupling perturbation depth (how much external engines push the attractor)
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID ("ouro_injection", 1), "Injection",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
     }
 
-    //-- Voice management ------------------------------------------------------
+    //==========================================================================
+    //  VOICE MANAGEMENT
+    //==========================================================================
 
     void handleNoteOn (int note, float velocity) noexcept
     {
         ++noteCounter;
 
-        // Find a free voice
+        // Find a free voice slot
         int freeSlot = -1;
         for (int i = 0; i < kMaxVoices; ++i)
         {
@@ -1014,27 +1423,27 @@ private:
             }
         }
 
-        // If no free voice, steal the oldest (LRU)
+        // If no free voice, steal the oldest (LRU — least recently used)
         if (freeSlot < 0)
         {
-            uint64_t oldest = UINT64_MAX;
+            uint64_t oldestTime = UINT64_MAX;
             freeSlot = 0;
             for (int i = 0; i < kMaxVoices; ++i)
             {
-                if (voices[i].startTime < oldest)
+                if (voices[i].startTime < oldestTime)
                 {
-                    oldest = voices[i].startTime;
+                    oldestTime = voices[i].startTime;
                     freeSlot = i;
                 }
             }
-            voices[freeSlot].beginStealFade (sr);
+            voices[freeSlot].beginStealFade (currentSampleRate);
         }
 
         // Set topology on new voice
         voices[freeSlot].attractorA.topology = currentTopology;
         voices[freeSlot].syncedAttractor.topology = currentTopology;
 
-        voices[freeSlot].noteOn (note, velocity, noteCounter, sr);
+        voices[freeSlot].noteOn (note, velocity, noteCounter, currentSampleRate);
     }
 
     void handleNoteOff (int note) noexcept
@@ -1049,39 +1458,42 @@ private:
         }
     }
 
-    //-- State -----------------------------------------------------------------
+    //==========================================================================
+    //  ENGINE STATE
+    //==========================================================================
 
-    double sr = 44100.0;
-    int blockSize = 512;
+    double currentSampleRate = 44100.0;
+    int currentBlockSize = 512;
     uint64_t noteCounter = 0;
     AttractorTopology currentTopology = AttractorTopology::Lorenz;
 
+    //-- Voice pool -------------------------------------------------------------
     std::array<OuroborosVoice, kMaxVoices> voices;
     std::atomic<int> activeVoiceCount { 0 };
 
-    // 4-channel output cache for coupling
-    std::vector<float> outputCacheL;
-    std::vector<float> outputCacheR;
-    std::vector<float> outputCacheDxDt;
-    std::vector<float> outputCacheDyDt;
+    //-- Output cache for coupling (4 channels) --------------------------------
+    std::vector<float> outputCacheLeft;          // Channel 0: Left audio
+    std::vector<float> outputCacheRight;         // Channel 1: Right audio
+    std::vector<float> outputCacheVelocityX;     // Channel 2: dx/dt velocity
+    std::vector<float> outputCacheVelocityY;     // Channel 3: dy/dt velocity
 
-    // Coupling accumulators (reset per block)
-    float externalPitchMod = 0.0f;
-    float externalDampingMod = 0.0f;
-    float externalThetaMod = 0.0f;
-    float externalChaosMod = 0.0f;
+    //-- Coupling accumulators (reset per block) -------------------------------
+    float couplingPitchModulation = 0.0f;        // Accumulates LFOToPitch / PitchToPitch
+    float couplingDampingModulation = 0.0f;      // Accumulates EnvToDecay / AmpToFilter
+    float couplingThetaModulation = 0.0f;        // Accumulates EnvToMorph
+    float couplingChaosModulation = 0.0f;        // Accumulates RhythmToBlend
     bool couplingAudioActive = false;
 
-    // Coupling audio buffer (pre-allocated)
+    //-- Coupling audio buffer (pre-allocated, no heap allocation on audio thread)
     static constexpr int kMaxCouplingBuffer = 4096;
-    float couplingAudioL[kMaxCouplingBuffer] {};
-    float couplingAudioR[kMaxCouplingBuffer] {};
+    float couplingAudioBufferLeft[kMaxCouplingBuffer] {};
+    float couplingAudioBufferRight[kMaxCouplingBuffer] {};
     int couplingBufferSize = 0;
 
-    // Performance profiler
+    //-- Performance profiler --------------------------------------------------
     EngineProfiler profiler;
 
-    // Cached parameter pointers
+    //-- Cached parameter pointers (attached once, read per-block) -------------
     std::atomic<float>* paramTopology   = nullptr;
     std::atomic<float>* paramRate       = nullptr;
     std::atomic<float>* paramChaosIndex = nullptr;

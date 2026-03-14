@@ -11,44 +11,99 @@
 namespace xomnibus {
 
 //==============================================================================
-// OrigamiEngine — Spectral Folding FFT Synthesis.
 //
-// Transforms audio through a spectral origami process: sound enters the
-// frequency domain via STFT, where 4 cascaded spectral operations (FOLD,
-// MIRROR, ROTATE, STRETCH) sculpt the magnitude spectrum before resynthesis.
-// The result is a class of timbres impossible through time-domain methods —
-// spectra that fold back on themselves, creating dense metallic textures,
-// crystalline harmonics, and otherworldly inharmonic tones.
+//  ORIGAMI ENGINE -- Spectral Folding FFT Synthesis
+//  XO_OX Designs | Accent: Vermillion Fold #E63946
 //
-// Features:
-//   - Internal oscillator bank (saw + square + noise mix) + coupling input
-//   - 2048-point STFT with 4x overlap (hop=512), Hann window
-//   - 4 spectral operations: FOLD, MIRROR, ROTATE, STRETCH
-//   - Phase vocoder with instantaneous frequency tracking
-//   - Spectral freeze (hold current frame)
-//   - 3-point triangular smoothing on folded magnitude
-//   - Amp and Fold ADSR envelopes
-//   - 2 LFOs (Sine/Tri/Saw/Square/S&H)
-//   - Mono/Legato/Poly4/Poly8 voice modes with LRU stealing + 5ms crossfade
-//   - Full XOmnibus coupling support
+//  ---- Creature Identity ----
+//  ORIGAMI is paper boats folding on the current -- surface tension made
+//  audible. It lives in the Sunlit Shallows of the XO_OX water column,
+//  feliX-leaning: bright character with depth underneath. Where feliX's
+//  electric surface energy meets the spectral patience of Oscar's deep,
+//  sound folds back on itself like paper creased by water.
 //
-// Coupling:
-//   - Output: post-fold stereo audio via getSampleForCoupling
-//   - Input: AudioToWavetable (replace/blend source), AmpToFilter (amp->fold depth),
-//            EnvToMorph (envelope->fold point), RhythmToBlend (rhythm->freeze trigger)
+//  Fourth-generation species in the XO_OX lineage. Born from the same
+//  primordial coupling as all engines, ORIGAMI adapted to the shallow-
+//  water niche where light refracts through moving surfaces -- a zone
+//  shared with XOblique (prismatic bounces) and XOptic (bioluminescent
+//  flashes). Its unique adaptation: folding the frequency spectrum itself.
+//
+//  ---- Historical Synth Lineage ----
+//  ORIGAMI channels the legacy of spectral processing synthesizers:
+//    - Metasynth (1999) -- visual spectral editing as composition
+//    - Kyma (Symbolic Sound) -- arbitrary spectral transformations
+//    - Spectral Processing in Csound (pvsanal/pvsynth) -- STFT as DSP
+//    - Ircam AudioSculpt -- spectral surgery on living sound
+//    - Paulstretch -- time-stretching via frozen spectral frames
+//  Unlike those tools (which are offline or academic), ORIGAMI performs
+//  spectral folding in real time as a playable instrument, with per-voice
+//  STFT pipelines running at audio rate.
+//
+//  ---- Technical Architecture ----
+//  Sound enters the frequency domain via Short-Time Fourier Transform
+//  (STFT), where 4 cascaded spectral operations -- FOLD, MIRROR, ROTATE,
+//  STRETCH -- sculpt the magnitude spectrum before resynthesis. The result
+//  is a class of timbres impossible through time-domain methods: spectra
+//  that fold back on themselves, creating dense metallic textures,
+//  crystalline harmonics, and otherworldly inharmonic tones.
+//
+//  Signal chain per voice:
+//    Oscillator Bank (saw + square + noise mix) / Coupling Input
+//      -> STFT Analysis (2048-point, 4x overlap, Hann window)
+//      -> Spectral Operations (FOLD / MIRROR / ROTATE / STRETCH)
+//      -> Phase Vocoder (instantaneous frequency tracking)
+//      -> IFFT + Overlap-Add Resynthesis
+//      -> Post-Filter (Cytomic SVF lowpass, smoothing)
+//      -> Amp Envelope * Velocity * Crossfade
+//      -> Stereo Pan (deterministic per voice index)
+//      -> Master Level
+//
+//  Features:
+//    - Internal oscillator bank (saw + square + noise mix) + coupling input
+//    - 2048-point STFT with 4x overlap (hop = 512), Hann window
+//    - 4 spectral operations: FOLD, MIRROR, ROTATE, STRETCH
+//    - Phase vocoder with instantaneous frequency tracking
+//    - Spectral freeze (hold current frame indefinitely)
+//    - 3-point triangular smoothing on folded magnitude
+//    - Amp and Fold ADSR envelopes
+//    - 2 LFOs (Sine / Triangle / Saw / Square / S&H)
+//    - Mono / Legato / Poly4 / Poly8 voice modes with LRU stealing + 5ms crossfade
+//    - Full XOmnibus coupling support
+//
+//  Coupling:
+//    - Output: post-fold stereo audio via getSampleForCoupling
+//    - Input: AudioToWavetable (replace/blend source),
+//             AmpToFilter (amplitude -> fold depth),
+//             EnvToMorph (envelope -> fold point),
+//             RhythmToBlend (rhythm -> freeze trigger)
 //
 //==============================================================================
 
-//==============================================================================
-// FFT constants.
-//==============================================================================
-static constexpr int kFFTSize     = 2048;
-static constexpr int kFFTHalf     = kFFTSize / 2 + 1;       // 1025 bins
-static constexpr int kHopSize     = kFFTSize / 4;            // 512 (4x overlap)
-static constexpr int kOverlap     = 4;
 
 //==============================================================================
-// ADSR envelope generator — lightweight, inline, no allocation.
+// FFT Constants
+//
+// The FFT size of 2048 provides ~23ms analysis windows at 44.1kHz -- a good
+// balance between frequency resolution (~21.5 Hz per bin) and temporal
+// responsiveness. The 4x overlap (hop size = 512) ensures smooth spectral
+// transitions with the Hann window's overlap-add reconstruction property.
+//==============================================================================
+static constexpr int kFFTSize     = 2048;                   // FFT frame length in samples
+static constexpr int kFFTHalf     = kFFTSize / 2 + 1;      // 1025 positive-frequency bins (DC through Nyquist)
+static constexpr int kHopSize     = kFFTSize / 4;           // 512 samples between analysis frames (4x overlap)
+static constexpr int kOverlapFactor = 4;                    // Overlap factor: 4x for smooth Hann-window reconstruction
+
+
+//==============================================================================
+// OrigamiADSR -- Lightweight ADSR Envelope Generator
+//
+// Allocation-free, inline envelope suitable for real-time audio threads.
+// Uses exponential-approximation decay curves (multiply-accumulate on the
+// difference from target) for natural-sounding release tails.
+//
+// The 0.0001f epsilon values throughout serve as convergence thresholds --
+// they prevent the envelope from asymptotically approaching its target
+// forever (which would waste CPU) while remaining inaudible at -80dB.
 //==============================================================================
 struct OrigamiADSR
 {
@@ -56,19 +111,26 @@ struct OrigamiADSR
 
     Stage stage = Stage::Idle;
     float level = 0.0f;
+
+    // Per-sample increment/coefficient for each stage
     float attackRate  = 0.0f;
     float decayRate   = 0.0f;
     float sustainLevel = 1.0f;
     float releaseRate = 0.0f;
 
-    void setParams (float attackSec, float decaySec, float sustain, float releaseSec,
-                    float sampleRate) noexcept
+    void setParams (float attackSeconds, float decaySeconds, float sustain,
+                    float releaseSeconds, float sampleRate) noexcept
     {
-        float sr = std::max (1.0f, sampleRate);
-        attackRate  = (attackSec  > 0.001f) ? (1.0f / (attackSec  * sr)) : 1.0f;
-        decayRate   = (decaySec   > 0.001f) ? (1.0f / (decaySec   * sr)) : 1.0f;
+        float safeSampleRate = std::max (1.0f, sampleRate);
+
+        // Minimum stage time of 1ms prevents division by zero and ensures
+        // at least ~44 samples of transition at 44.1kHz
+        static constexpr float kMinStageSeconds = 0.001f;
+
+        attackRate  = (attackSeconds  > kMinStageSeconds) ? (1.0f / (attackSeconds  * safeSampleRate)) : 1.0f;
+        decayRate   = (decaySeconds   > kMinStageSeconds) ? (1.0f / (decaySeconds   * safeSampleRate)) : 1.0f;
         sustainLevel = sustain;
-        releaseRate = (releaseSec > 0.001f) ? (1.0f / (releaseSec * sr)) : 1.0f;
+        releaseRate = (releaseSeconds > kMinStageSeconds) ? (1.0f / (releaseSeconds * safeSampleRate)) : 1.0f;
     }
 
     void noteOn() noexcept
@@ -84,6 +146,10 @@ struct OrigamiADSR
 
     float process() noexcept
     {
+        // Convergence epsilon: ~-80dB below unity, inaudible but prevents
+        // infinite asymptotic decay that would waste CPU cycles
+        static constexpr float kConvergenceEpsilon = 0.0001f;
+
         switch (stage)
         {
             case Stage::Idle:
@@ -99,8 +165,10 @@ struct OrigamiADSR
                 return level;
 
             case Stage::Decay:
-                level -= decayRate * (level - sustainLevel + 0.0001f);
-                if (level <= sustainLevel + 0.0001f)
+                // Exponential-approximation curve: multiply rate by distance
+                // from sustain target for natural logarithmic decay shape
+                level -= decayRate * (level - sustainLevel + kConvergenceEpsilon);
+                if (level <= sustainLevel + kConvergenceEpsilon)
                 {
                     level = sustainLevel;
                     stage = Stage::Sustain;
@@ -111,8 +179,9 @@ struct OrigamiADSR
                 return level;
 
             case Stage::Release:
-                level -= releaseRate * (level + 0.0001f);
-                if (level <= 0.0001f)
+                // Same exponential-approximation curve toward zero
+                level -= releaseRate * (level + kConvergenceEpsilon);
+                if (level <= kConvergenceEpsilon)
                 {
                     level = 0.0f;
                     stage = Stage::Idle;
@@ -131,148 +200,190 @@ struct OrigamiADSR
     }
 };
 
+
 //==============================================================================
-// LFO with multiple shapes.
+// OrigamiLFO -- Multi-Shape Low-Frequency Oscillator
+//
+// Provides 5 waveshapes for modulation: Sine, Triangle, Saw, Square, and
+// Sample-and-Hold (S&H). The S&H mode uses a Linear Congruential Generator
+// (LCG) PRNG for deterministic pseudo-random values that trigger on each
+// new LFO cycle, producing classic stepped random modulation.
 //==============================================================================
 struct OrigamiLFO
 {
-    enum class Shape { Sine, Triangle, Saw, Square, SandH };
+    enum class Shape { Sine, Triangle, Saw, Square, SampleAndHold };
 
     float phase = 0.0f;
-    float phaseInc = 0.0f;
+    float phaseIncrement = 0.0f;
     Shape shape = Shape::Sine;
-    float holdValue = 0.0f;
-    uint32_t sampleCounter = 12345u;
+    float sampleAndHoldValue = 0.0f;
 
-    void setRate (float hz, float sampleRate) noexcept
+    // LCG PRNG state for Sample-and-Hold mode.
+    // Initial seed 12345 is arbitrary but deterministic -- ensures identical
+    // S&H sequences across instances for reproducible patch behavior.
+    uint32_t prngState = 12345u;
+
+    void setRate (float frequencyHz, float sampleRate) noexcept
     {
-        phaseInc = hz / std::max (1.0f, sampleRate);
+        phaseIncrement = frequencyHz / std::max (1.0f, sampleRate);
     }
 
-    void setShape (int idx) noexcept
+    void setShape (int shapeIndex) noexcept
     {
-        shape = static_cast<Shape> (std::min (4, std::max (0, idx)));
+        shape = static_cast<Shape> (std::min (4, std::max (0, shapeIndex)));
     }
 
     float process() noexcept
     {
-        float out = 0.0f;
+        float output = 0.0f;
 
         switch (shape)
         {
             case Shape::Sine:
-                out = fastSin (phase * 6.28318530718f);
+                // Full-cycle sine: phase [0,1] mapped to [0, 2*PI]
+                output = fastSin (phase * 6.28318530718f);
                 break;
+
             case Shape::Triangle:
-                out = 4.0f * std::fabs (phase - 0.5f) - 1.0f;
+                // Triangle from absolute-value fold: maps [0,1] phase to
+                // [-1,+1] output with linear slopes
+                output = 4.0f * std::fabs (phase - 0.5f) - 1.0f;
                 break;
+
             case Shape::Saw:
-                out = 2.0f * phase - 1.0f;
+                // Rising sawtooth: phase [0,1] mapped to [-1,+1]
+                output = 2.0f * phase - 1.0f;
                 break;
+
             case Shape::Square:
-                out = (phase < 0.5f) ? 1.0f : -1.0f;
+                // 50% duty cycle square wave
+                output = (phase < 0.5f) ? 1.0f : -1.0f;
                 break;
-            case Shape::SandH:
+
+            case Shape::SampleAndHold:
             {
-                float prevPhase = phase - phaseInc;
-                if (prevPhase < 0.0f || phase < prevPhase)
+                // Trigger a new random value at each cycle boundary.
+                // LCG constants from Numerical Recipes (Knuth):
+                //   multiplier = 1664525, increment = 1013904223
+                // These produce a full-period sequence over 2^32 values.
+                float previousPhase = phase - phaseIncrement;
+                if (previousPhase < 0.0f || phase < previousPhase)
                 {
-                    sampleCounter = sampleCounter * 1664525u + 1013904223u;
-                    holdValue = static_cast<float> (sampleCounter & 0xFFFF) / 32768.0f - 1.0f;
+                    prngState = prngState * 1664525u + 1013904223u;
+                    // Extract 16 bits and map to [-1, +1] bipolar range
+                    sampleAndHoldValue = static_cast<float> (prngState & 0xFFFF) / 32768.0f - 1.0f;
                 }
-                out = holdValue;
+                output = sampleAndHoldValue;
                 break;
             }
         }
 
-        phase += phaseInc;
+        // Advance and wrap phase
+        phase += phaseIncrement;
         if (phase >= 1.0f) phase -= 1.0f;
 
-        return out;
+        return output;
     }
 
     void reset() noexcept
     {
         phase = 0.0f;
-        holdValue = 0.0f;
-        sampleCounter = 12345u;
+        sampleAndHoldValue = 0.0f;
+        prngState = 12345u;
     }
 };
 
+
 //==============================================================================
-// Spectral frame — holds magnitude/phase for one STFT analysis frame.
+// SpectralFrame -- Holds Magnitude/Phase Data for One STFT Analysis Frame
+//
+// Each frame stores the full positive-frequency spectrum (DC through Nyquist)
+// plus the previous hop's phase data for the phase vocoder's instantaneous
+// frequency estimation.
 //==============================================================================
 struct SpectralFrame
 {
-    std::array<float, kFFTHalf> magnitude {};
-    std::array<float, kFFTHalf> phase {};
-    std::array<float, kFFTHalf> prevPhase {};      // Phase from previous hop (for vocoder)
-    std::array<float, kFFTHalf> instFreq {};       // Instantaneous frequency per bin
+    std::array<float, kFFTHalf> magnitude {};       // Magnitude per bin (linear scale)
+    std::array<float, kFFTHalf> phase {};            // Phase per bin (radians, [-PI, PI])
+    std::array<float, kFFTHalf> previousPhase {};    // Phase from the previous hop (for phase vocoder delta)
+    std::array<float, kFFTHalf> instantaneousFreq {};// True frequency per bin (Hz), accounting for phase deviation
 
     void clear() noexcept
     {
         magnitude.fill (0.0f);
         phase.fill (0.0f);
-        prevPhase.fill (0.0f);
-        instFreq.fill (0.0f);
+        previousPhase.fill (0.0f);
+        instantaneousFreq.fill (0.0f);
     }
 };
 
+
 //==============================================================================
-// OrigamiVoice — per-voice state with STFT pipeline.
+// OrigamiVoice -- Per-Voice State with Complete STFT Pipeline
+//
+// Each voice maintains its own circular input buffer, overlap-add output
+// accumulator, spectral analysis/frozen frames, and all working buffers
+// for the FFT/IFFT process. This allows true polyphonic spectral folding
+// with independent spectral states per note.
+//
+// Memory layout: ~100KB per voice (8 voices = ~800KB total). All arrays
+// are fixed-size to avoid audio-thread allocation.
 //==============================================================================
 struct OrigamiVoice
 {
     bool active = false;
     int noteNumber = -1;
     float velocity = 0.0f;
-    uint64_t startTime = 0;
+    uint64_t startTime = 0;                     // Voice allocation timestamp for LRU stealing
 
-    // Oscillator state
-    float sawPhase = 0.0f;
-    float sqrPhase = 0.0f;
-    uint32_t noiseState = 12345u;
+    // ---- Oscillator State ----
+    float sawPhase = 0.0f;                       // Sawtooth phase accumulator [0, 1)
+    float squarePhase = 0.0f;                    // Square wave phase accumulator [0, 1)
 
-    // Glide
-    float currentFreq = 440.0f;
-    float targetFreq = 440.0f;
-    float glideCoeff = 1.0f;
+    // LCG PRNG state for noise oscillator.
+    // Seed 12345 matches LFO S&H seed for consistency.
+    uint32_t noiseGeneratorState = 12345u;
 
-    // Envelopes
-    OrigamiADSR ampEnv;
-    OrigamiADSR foldEnv;
+    // ---- Portamento / Glide ----
+    float currentFrequency = 440.0f;             // Instantaneous frequency (Hz), smoothed toward target
+    float targetFrequency = 440.0f;              // Destination frequency for glide
+    float glideCoefficient = 1.0f;               // Per-sample interpolation rate (1.0 = instant)
 
-    // LFOs (per-voice for free-running independence)
-    OrigamiLFO lfo1;
-    OrigamiLFO lfo2;
+    // ---- Envelopes ----
+    OrigamiADSR ampEnvelope;                     // Controls voice amplitude
+    OrigamiADSR foldEnvelope;                    // Modulates fold depth over note duration
 
-    // STFT analysis/resynthesis state
-    std::array<float, kFFTSize> inputRing {};          // Input circular buffer
-    std::array<float, kFFTSize> outputAccum {};         // Overlap-add accumulator
-    int inputWritePos = 0;
-    int hopCounter = 0;                                  // Samples until next hop
+    // ---- LFOs (per-voice for free-running independence) ----
+    OrigamiLFO lfo1;                             // Primary LFO: default target is fold point
+    OrigamiLFO lfo2;                             // Secondary LFO: default target is rotate amount
 
-    // Spectral frames
-    SpectralFrame analysisFrame;
-    SpectralFrame frozenFrame;
-    bool hasFrozenFrame = false;
+    // ---- STFT Analysis / Resynthesis Buffers ----
+    std::array<float, kFFTSize> inputRingBuffer {};      // Circular buffer capturing oscillator output
+    std::array<float, kFFTSize> overlapAddAccumulator {}; // Overlap-add output reconstruction buffer
+    int inputWritePosition = 0;                           // Current write head in the circular input buffer
+    int hopSampleCounter = 0;                             // Samples remaining until next STFT hop
 
-    // STFT working buffers (pre-allocated)
-    std::array<float, kFFTSize> windowedInput {};
-    std::array<float, kFFTSize> fftReal {};
-    std::array<float, kFFTSize> fftImag {};
-    std::array<float, kFFTHalf> foldedMag {};
-    std::array<float, kFFTHalf> foldedPhase {};
-    std::array<float, kFFTSize> ifftReal {};
-    std::array<float, kFFTSize> ifftImag {};
-    std::array<float, kFFTSize> resynthWindow {};
+    // ---- Spectral Frames ----
+    SpectralFrame analysisFrame;                 // Most recent live analysis result
+    SpectralFrame frozenFrame;                   // Snapshot held during spectral freeze
+    bool hasFrozenFrame = false;                 // True once at least one frame has been captured for freeze
 
-    // Output filter (post-FFT smoothing)
-    CytomicSVF postFilter;
+    // ---- STFT Working Buffers (pre-allocated, reused each hop) ----
+    std::array<float, kFFTSize> windowedInput {};        // Input after Hann window multiplication
+    std::array<float, kFFTSize> fftReal {};              // Real part for forward FFT
+    std::array<float, kFFTSize> fftImaginary {};         // Imaginary part for forward FFT
+    std::array<float, kFFTHalf> foldedMagnitude {};      // Magnitude after spectral operations
+    std::array<float, kFFTHalf> foldedPhase {};          // Phase after spectral operations
+    std::array<float, kFFTSize> ifftReal {};             // Real part for inverse FFT
+    std::array<float, kFFTSize> ifftImaginary {};        // Imaginary part for inverse FFT
+    std::array<float, kFFTSize> resynthesisWindow {};    // Windowed output for overlap-add
 
-    // Voice stealing crossfade
-    float fadeGain = 1.0f;
-    bool fadingOut = false;
+    // ---- Post-FFT Smoothing Filter ----
+    CytomicSVF postFilter;                       // Lowpass at ~18kHz to tame FFT artifacts
+
+    // ---- Voice Stealing Crossfade ----
+    float crossfadeGain = 1.0f;                  // Gain ramp during steal transition
+    bool isFadingOut = false;                    // True when this voice is being stolen
 
     void reset() noexcept
     {
@@ -280,80 +391,117 @@ struct OrigamiVoice
         noteNumber = -1;
         velocity = 0.0f;
         sawPhase = 0.0f;
-        sqrPhase = 0.0f;
-        noiseState = 12345u;
-        currentFreq = 440.0f;
-        targetFreq = 440.0f;
-        fadeGain = 1.0f;
-        fadingOut = false;
-        inputWritePos = 0;
-        hopCounter = 0;
+        squarePhase = 0.0f;
+        noiseGeneratorState = 12345u;
+        currentFrequency = 440.0f;
+        targetFrequency = 440.0f;
+        crossfadeGain = 1.0f;
+        isFadingOut = false;
+        inputWritePosition = 0;
+        hopSampleCounter = 0;
         hasFrozenFrame = false;
-        ampEnv.reset();
-        foldEnv.reset();
+        ampEnvelope.reset();
+        foldEnvelope.reset();
         lfo1.reset();
         lfo2.reset();
         postFilter.reset();
-        inputRing.fill (0.0f);
-        outputAccum.fill (0.0f);
+        inputRingBuffer.fill (0.0f);
+        overlapAddAccumulator.fill (0.0f);
         analysisFrame.clear();
         frozenFrame.clear();
     }
 };
 
+
 //==============================================================================
-// OrigamiEngine — the main engine class.
+//
+//  OrigamiEngine -- The Main Engine Class
+//
+//  Spectral folding synthesizer implementing the XOmnibus SynthEngine
+//  interface. Sound is generated by an internal oscillator bank, transformed
+//  through a per-voice STFT pipeline with 4 spectral operations, then
+//  resynthesized via overlap-add.
+//
+//  The name "Origami" reflects the core metaphor: just as paper folding
+//  creates complex 3D forms from flat sheets, spectral folding creates
+//  complex timbres from simple source waveforms by creasing, mirroring,
+//  rotating, and stretching the frequency spectrum.
+//
 //==============================================================================
 class OrigamiEngine : public SynthEngine
 {
 public:
     static constexpr int kMaxVoices = 8;
-    static constexpr float kPI = 3.14159265358979323846f;
+
+    // ---- Mathematical Constants ----
+    static constexpr float kPI    = 3.14159265358979323846f;
     static constexpr float kTwoPi = 6.28318530717958647692f;
-    static constexpr float kMagFloor = 1e-15f;   // Denormal protection floor
+
+    // Magnitude floor: values below this are treated as zero.
+    // 1e-15 is well above the IEEE 754 float denormal threshold (~1.4e-45)
+    // but far below any audible signal level (~-300dB). This protects all
+    // feedback paths and filter states from denormal numbers, which cause
+    // massive CPU spikes on x86 when the FPU enters microcode-assisted
+    // denormal handling mode. Every magnitude comparison in the spectral
+    // pipeline clamps against this floor.
+    static constexpr float kMagnitudeFloor = 1e-15f;
 
     //==========================================================================
-    // SynthEngine interface — Lifecycle
+    //  SynthEngine Interface -- Lifecycle
     //==========================================================================
 
     void prepare (double sampleRate, int maxBlockSize) override
     {
-        sr = sampleRate;
-        srf = static_cast<float> (sr);
+        storedSampleRate = sampleRate;
+        sampleRateFloat = static_cast<float> (storedSampleRate);
 
-        // Pre-compute smoothing coefficient (5ms time constant)
-        smoothCoeff = 1.0f - std::exp (-kTwoPi * (1.0f / 0.005f) / srf);
+        // Smoothing coefficient for control-rate parameters.
+        // Derived from a 5ms time constant (200Hz cutoff), which prevents
+        // audible zipper noise on knob movements while remaining responsive
+        // enough for performance gestures.
+        parameterSmoothingCoefficient = 1.0f - std::exp (-kTwoPi * (1.0f / 0.005f) / sampleRateFloat);
 
-        // Pre-compute crossfade rate (5ms)
-        crossfadeRate = 1.0f / (0.005f * srf);
+        // Voice-stealing crossfade rate: 5ms linear ramp.
+        // 5ms is short enough to be imperceptible as a click but long enough
+        // to prevent discontinuity artifacts when a voice is stolen.
+        voiceCrossfadeRate = 1.0f / (0.005f * sampleRateFloat);
 
-        // Phase increment per bin for phase vocoder
-        // Expected phase advance per hop = hopSize * 2*PI * binIndex / fftSize
-        binFreqStep = srf / static_cast<float> (kFFTSize);
+        // Frequency resolution: the spacing in Hz between adjacent FFT bins.
+        // At 44100 Hz with 2048-point FFT, this is ~21.53 Hz per bin.
+        // Used by the phase vocoder to convert bin indices to frequencies.
+        frequencyPerBin = sampleRateFloat / static_cast<float> (kFFTSize);
 
-        // Allocate output cache for coupling reads
-        outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
-        outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
+        // P0-03 fix: guard against host block sizes smaller than the FFT hop size.
+        // The STFT pipeline requires at least kHopSize (512) samples of history
+        // per block to trigger a valid analysis frame. Clamp to the minimum.
+        int safeBlockSize = std::max (maxBlockSize, kHopSize);
 
-        // Coupling input buffer
-        couplingInputBuffer.resize (static_cast<size_t> (maxBlockSize), 0.0f);
+        // Allocate output cache for inter-engine coupling reads
+        outputCacheLeft.resize (static_cast<size_t> (safeBlockSize), 0.0f);
+        outputCacheRight.resize (static_cast<size_t> (safeBlockSize), 0.0f);
 
-        // Build Hann window
+        // Coupling input buffer for receiving external audio
+        couplingInputBuffer.resize (static_cast<size_t> (safeBlockSize), 0.0f);
+
+        // Build the Hann (raised-cosine) window.
+        // The Hann window is chosen because its overlap-add property with 4x
+        // overlap produces constant-sum reconstruction (COLA condition), which
+        // is essential for artifact-free STFT resynthesis.
         for (int i = 0; i < kFFTSize; ++i)
         {
             hannWindow[static_cast<size_t> (i)] =
                 0.5f * (1.0f - std::cos (kTwoPi * static_cast<float> (i) / static_cast<float> (kFFTSize)));
         }
 
-        // Build bit-reversal table for FFT
+        // Build bit-reversal table and twiddle factors for the radix-2 FFT
         buildBitReversalTable();
 
-        // Initialize voices
-        for (auto& v : voices)
+        // Initialize all voices to clean state
+        for (auto& voice : voices)
         {
-            v.reset();
-            v.postFilter.reset();
-            v.postFilter.setMode (CytomicSVF::Mode::LowPass);
+            voice.reset();
+            voice.postFilter.reset();
+            voice.postFilter.setMode (CytomicSVF::Mode::LowPass);
         }
     }
 
@@ -361,27 +509,32 @@ public:
 
     void reset() override
     {
-        for (auto& v : voices)
-            v.reset();
+        for (auto& voice : voices)
+            voice.reset();
 
+        // ---- Reset envelope output ----
         envelopeOutput = 0.0f;
-        couplingFoldDepthMod = 0.0f;
-        couplingFoldPointMod = 0.0f;
-        couplingFreezeTrigger = 0.0f;
-        couplingSourceMod = 0.0f;
 
+        // ---- Reset coupling accumulators ----
+        couplingFoldDepthModulation = 0.0f;
+        couplingFoldPointModulation = 0.0f;
+        couplingFreezeTrigger = 0.0f;
+        couplingSourceModulation = 0.0f;
+
+        // ---- Reset smoothed parameter states ----
         smoothedFoldPoint = 0.5f;
         smoothedFoldDepth = 0.5f;
         smoothedRotate = 0.0f;
         smoothedStretch = 0.0f;
 
-        std::fill (outputCacheL.begin(), outputCacheL.end(), 0.0f);
-        std::fill (outputCacheR.begin(), outputCacheR.end(), 0.0f);
+        // ---- Clear output caches ----
+        std::fill (outputCacheLeft.begin(), outputCacheLeft.end(), 0.0f);
+        std::fill (outputCacheRight.begin(), outputCacheRight.end(), 0.0f);
         std::fill (couplingInputBuffer.begin(), couplingInputBuffer.end(), 0.0f);
     }
 
     //==========================================================================
-    // SynthEngine interface — Audio
+    //  SynthEngine Interface -- Audio Rendering
     //==========================================================================
 
     void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
@@ -389,258 +542,295 @@ public:
     {
         if (numSamples <= 0) return;
 
-        // --- ParamSnapshot: read all parameters once per block ---
-        const float pFoldPt       = loadParam (pFoldPoint, 0.5f);
-        const float pFoldDp       = loadParam (pFoldDepth, 0.5f);
-        const int   pFoldCt       = static_cast<int> (loadParam (pFoldCount, 1.0f));
-        const int   pOp           = static_cast<int> (loadParam (pOperation, 0.0f));
-        const float pRot          = loadParam (pRotate, 0.0f);
-        const float pStr          = loadParam (pStretch, 0.0f);
-        const float pFrz          = loadParam (pFreeze, 0.0f);
-        const float pSrc          = loadParam (pSource, 0.0f);
-        const float pOscMx        = loadParam (pOscMix, 0.5f);
-        const float pLevelVal     = loadParam (pLevel, 0.8f);
+        // ---- ParamSnapshot: cache all parameter pointers once per block ----
+        // This pattern reads atomic parameter values exactly once at block
+        // boundaries, avoiding per-sample atomic loads and ensuring all
+        // voices in a block see consistent parameter values.
 
-        const float pAmpA         = loadParam (pAmpAttack, 0.01f);
-        const float pAmpD         = loadParam (pAmpDecay, 0.1f);
-        const float pAmpS         = loadParam (pAmpSustain, 0.8f);
-        const float pAmpR         = loadParam (pAmpRelease, 0.3f);
+        // Core spectral fold parameters
+        const float paramFoldPoint        = loadParam (pFoldPoint, 0.5f);
+        const float paramFoldDepth        = loadParam (pFoldDepth, 0.5f);
+        const int   paramFoldCount        = static_cast<int> (loadParam (pFoldCount, 1.0f));
+        const int   paramOperation        = static_cast<int> (loadParam (pOperation, 0.0f));
+        const float paramRotate           = loadParam (pRotate, 0.0f);
+        const float paramStretch          = loadParam (pStretch, 0.0f);
+        const float paramFreeze           = loadParam (pFreeze, 0.0f);
+        const float paramSource           = loadParam (pSource, 0.0f);
+        const float paramOscillatorMix    = loadParam (pOscMix, 0.5f);
+        const float paramMasterLevel      = loadParam (pLevel, 0.8f);
 
-        const float pFoldA        = loadParam (pFoldEnvAttack, 0.01f);
-        const float pFoldD        = loadParam (pFoldEnvDecay, 0.2f);
-        const float pFoldS        = loadParam (pFoldEnvSustain, 0.5f);
-        const float pFoldR        = loadParam (pFoldEnvRelease, 0.3f);
+        // Amplitude envelope ADSR
+        const float paramAmpAttack        = loadParam (pAmpAttack, 0.01f);
+        const float paramAmpDecay         = loadParam (pAmpDecay, 0.1f);
+        const float paramAmpSustain       = loadParam (pAmpSustain, 0.8f);
+        const float paramAmpRelease       = loadParam (pAmpRelease, 0.3f);
 
-        const float pLfo1R        = loadParam (pLfo1Rate, 1.0f);
-        const float pLfo1D        = loadParam (pLfo1Depth, 0.0f);
-        const int   pLfo1S        = static_cast<int> (loadParam (pLfo1Shape, 0.0f));
-        const float pLfo2R        = loadParam (pLfo2Rate, 1.0f);
-        const float pLfo2D        = loadParam (pLfo2Depth, 0.0f);
-        const int   pLfo2S        = static_cast<int> (loadParam (pLfo2Shape, 0.0f));
+        // Fold envelope ADSR
+        const float paramFoldEnvAttack    = loadParam (pFoldEnvAttack, 0.01f);
+        const float paramFoldEnvDecay     = loadParam (pFoldEnvDecay, 0.2f);
+        const float paramFoldEnvSustain   = loadParam (pFoldEnvSustain, 0.5f);
+        const float paramFoldEnvRelease   = loadParam (pFoldEnvRelease, 0.3f);
 
-        const int   voiceModeIdx  = static_cast<int> (loadParam (pVoiceMode, 2.0f));
-        const float glideTime     = loadParam (pGlide, 0.0f);
+        // LFO parameters
+        const float paramLfo1Rate         = loadParam (pLfo1Rate, 1.0f);
+        const float paramLfo1Depth        = loadParam (pLfo1Depth, 0.0f);
+        const int   paramLfo1Shape        = static_cast<int> (loadParam (pLfo1Shape, 0.0f));
+        const float paramLfo2Rate         = loadParam (pLfo2Rate, 1.0f);
+        const float paramLfo2Depth        = loadParam (pLfo2Depth, 0.0f);
+        const int   paramLfo2Shape        = static_cast<int> (loadParam (pLfo2Shape, 0.0f));
 
-        const float macroChar     = loadParam (pMacroFold, 0.0f);
-        const float macroMove     = loadParam (pMacroMotion, 0.0f);
-        const float macroCoup     = loadParam (pMacroCoupling, 0.0f);
-        const float macroSpace    = loadParam (pMacroSpace, 0.0f);
+        // Voice mode and glide
+        const int   voiceModeIndex        = static_cast<int> (loadParam (pVoiceMode, 2.0f));
+        const float glideTime             = loadParam (pGlide, 0.0f);
 
-        // Determine max polyphony from voice mode
-        int maxPoly = kMaxVoices;
+        // Macros: M1=FOLD, M2=MOTION, M3=COUPLING, M4=SPACE
+        const float macroFold             = loadParam (pMacroFold, 0.0f);
+        const float macroMotion           = loadParam (pMacroMotion, 0.0f);
+        const float macroCoupling         = loadParam (pMacroCoupling, 0.0f);
+        const float macroSpace            = loadParam (pMacroSpace, 0.0f);
+
+        // ---- Determine voice mode and polyphony ----
+        int maxPolyphony = kMaxVoices;
         bool monoMode = false;
         bool legatoMode = false;
-        switch (voiceModeIdx)
+        switch (voiceModeIndex)
         {
-            case 0: maxPoly = 1; monoMode = true; break;                        // Mono
-            case 1: maxPoly = 1; monoMode = true; legatoMode = true; break;     // Legato
-            case 2: maxPoly = 4; break;                                          // Poly4
-            case 3: maxPoly = 8; break;                                          // Poly8
-            default: maxPoly = 4; break;
+            case 0: maxPolyphony = 1; monoMode = true; break;                          // Mono
+            case 1: maxPolyphony = 1; monoMode = true; legatoMode = true; break;       // Legato
+            case 2: maxPolyphony = 4; break;                                            // Poly4
+            case 3: maxPolyphony = 8; break;                                            // Poly8
+            default: maxPolyphony = 4; break;
         }
 
-        // Glide coefficient
-        float glideCoeff = 1.0f;
+        // ---- Glide coefficient ----
+        // Exponential smoothing coefficient derived from glide time.
+        // At 0.001s minimum, glide is essentially instant.
+        float glideCoefficient = 1.0f;
         if (glideTime > 0.001f)
-            glideCoeff = 1.0f - std::exp (-1.0f / (glideTime * srf));
+            glideCoefficient = 1.0f - std::exp (-1.0f / (glideTime * sampleRateFloat));
 
-        // Apply macro and coupling offsets
-        // M1 FOLD: foldPoint + foldDepth
-        float effectiveFoldPoint = clamp (pFoldPt + macroChar * 0.4f + couplingFoldPointMod, 0.0f, 1.0f);
-        float effectiveFoldDepth = clamp (pFoldDp + macroChar * 0.3f + couplingFoldDepthMod, 0.0f, 1.0f);
-        // M2 MOTION: rotate + LFO1->foldPoint modulation depth
-        float effectiveRotate    = clamp (pRot + macroMove * 0.5f, -1.0f, 1.0f);
-        float lfo1DepthMod       = pLfo1D + macroMove * 0.3f;
-        // M3 COUPLING: source + coupling gain
-        float effectiveSource    = clamp (pSrc + macroCoup * 0.5f + couplingSourceMod, 0.0f, 1.0f);
-        // M4 SPACE: foldCount + stretch + reverb-like spectral smear
-        int effectiveFoldCount   = std::max (1, std::min (4, pFoldCt + static_cast<int> (macroSpace * 2.0f)));
-        float effectiveStretch   = clamp (pStr + macroSpace * 0.4f, -1.0f, 1.0f);
+        // ---- Apply macro and coupling modulation offsets ----
 
-        // Freeze: combine parameter + coupling rhythm trigger
-        bool freezeActive = (pFrz > 0.5f) || (couplingFreezeTrigger > 0.5f);
+        // M1 FOLD: adds 40% of macro range to fold point, 30% to fold depth.
+        // These scaling factors are tuned so that macro at 100% produces a
+        // dramatic but not extreme spectral transformation.
+        float effectiveFoldPoint = clamp (paramFoldPoint + macroFold * 0.4f + couplingFoldPointModulation, 0.0f, 1.0f);
+        float effectiveFoldDepth = clamp (paramFoldDepth + macroFold * 0.3f + couplingFoldDepthModulation, 0.0f, 1.0f);
 
-        // Reset coupling accumulators
-        couplingFoldDepthMod = 0.0f;
-        couplingFoldPointMod = 0.0f;
+        // M2 MOTION: adds 50% of macro range to rotate, 30% to LFO1 depth.
+        // Higher motion macro = more spectral movement and modulation depth.
+        float effectiveRotate    = clamp (paramRotate + macroMotion * 0.5f, -1.0f, 1.0f);
+        float lfo1EffectiveDepth = paramLfo1Depth + macroMotion * 0.3f;
+
+        // M3 COUPLING: adds 50% of macro range to source blend.
+        // Full coupling macro = half external source, still blended with internal.
+        float effectiveSource    = clamp (paramSource + macroCoupling * 0.5f + couplingSourceModulation, 0.0f, 1.0f);
+
+        // M4 SPACE: adds up to 2 extra fold cascades, 40% to stretch.
+        // More space = more spectral folding passes + frequency warping.
+        int effectiveFoldCount   = std::max (1, std::min (4, paramFoldCount + static_cast<int> (macroSpace * 2.0f)));
+        float effectiveStretch   = clamp (paramStretch + macroSpace * 0.4f, -1.0f, 1.0f);
+
+        // ---- Freeze: combine parameter toggle + coupling rhythm trigger ----
+        bool freezeActive = (paramFreeze > 0.5f) || (couplingFreezeTrigger > 0.5f);
+
+        // ---- Reset coupling accumulators for next block ----
+        couplingFoldDepthModulation = 0.0f;
+        couplingFoldPointModulation = 0.0f;
         couplingFreezeTrigger = 0.0f;
-        couplingSourceMod = 0.0f;
+        couplingSourceModulation = 0.0f;
 
-        // --- Process MIDI events ---
+        // ---- Process MIDI events ----
         for (const auto metadata : midi)
         {
-            const auto msg = metadata.getMessage();
-            if (msg.isNoteOn())
-                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), maxPoly, monoMode, legatoMode, glideCoeff,
-                        pAmpA, pAmpD, pAmpS, pAmpR, pFoldA, pFoldD, pFoldS, pFoldR,
-                        pLfo1R, pLfo1D, pLfo1S, pLfo2R, pLfo2D, pLfo2S);
-            else if (msg.isNoteOff())
-                noteOff (msg.getNoteNumber());
-            else if (msg.isAllNotesOff() || msg.isAllSoundOff())
+            const auto message = metadata.getMessage();
+            if (message.isNoteOn())
+                handleNoteOn (message.getNoteNumber(), message.getFloatVelocity(),
+                              maxPolyphony, monoMode, legatoMode, glideCoefficient,
+                              paramAmpAttack, paramAmpDecay, paramAmpSustain, paramAmpRelease,
+                              paramFoldEnvAttack, paramFoldEnvDecay, paramFoldEnvSustain, paramFoldEnvRelease,
+                              paramLfo1Rate, paramLfo1Depth, paramLfo1Shape,
+                              paramLfo2Rate, paramLfo2Depth, paramLfo2Shape);
+            else if (message.isNoteOff())
+                handleNoteOff (message.getNoteNumber());
+            else if (message.isAllNotesOff() || message.isAllSoundOff())
                 reset();
         }
 
-        float peakEnv = 0.0f;
+        float peakEnvelopeLevel = 0.0f;
 
-        // --- Render sample loop ---
-        for (int sample = 0; sample < numSamples; ++sample)
+        // ---- Per-Sample Render Loop ----
+        for (int sampleIndex = 0; sampleIndex < numSamples; ++sampleIndex)
         {
-            // Smooth control-rate parameters (5ms)
-            smoothedFoldPoint += (effectiveFoldPoint - smoothedFoldPoint) * smoothCoeff;
-            smoothedFoldDepth += (effectiveFoldDepth - smoothedFoldDepth) * smoothCoeff;
-            smoothedRotate    += (effectiveRotate    - smoothedRotate)    * smoothCoeff;
-            smoothedStretch   += (effectiveStretch   - smoothedStretch)   * smoothCoeff;
+            // Smooth control-rate parameters toward their targets (5ms time constant)
+            smoothedFoldPoint += (effectiveFoldPoint - smoothedFoldPoint) * parameterSmoothingCoefficient;
+            smoothedFoldDepth += (effectiveFoldDepth - smoothedFoldDepth) * parameterSmoothingCoefficient;
+            smoothedRotate    += (effectiveRotate    - smoothedRotate)    * parameterSmoothingCoefficient;
+            smoothedStretch   += (effectiveStretch   - smoothedStretch)   * parameterSmoothingCoefficient;
 
-            float mixL = 0.0f, mixR = 0.0f;
+            float stereoMixLeft = 0.0f, stereoMixRight = 0.0f;
 
             for (auto& voice : voices)
             {
                 if (!voice.active) continue;
 
-                // --- Voice-stealing crossfade (5ms) ---
-                if (voice.fadingOut)
+                // ---- Voice-stealing crossfade (5ms linear ramp to zero) ----
+                if (voice.isFadingOut)
                 {
-                    voice.fadeGain -= crossfadeRate;
-                    if (voice.fadeGain <= 0.0f)
+                    voice.crossfadeGain -= voiceCrossfadeRate;
+                    if (voice.crossfadeGain <= 0.0f)
                     {
-                        voice.fadeGain = 0.0f;
+                        voice.crossfadeGain = 0.0f;
                         voice.active = false;
                         continue;
                     }
                 }
 
-                // --- Glide (portamento) ---
-                voice.currentFreq += (voice.targetFreq - voice.currentFreq) * voice.glideCoeff;
+                // ---- Portamento (exponential glide toward target frequency) ----
+                voice.currentFrequency += (voice.targetFrequency - voice.currentFrequency) * voice.glideCoefficient;
 
-                // --- Envelopes ---
-                float ampLevel  = voice.ampEnv.process();
-                float foldLevel = voice.foldEnv.process();
+                // ---- Process envelopes ----
+                float amplitudeLevel = voice.ampEnvelope.process();
+                float foldEnvelopeLevel = voice.foldEnvelope.process();
 
-                if (!voice.ampEnv.isActive())
+                if (!voice.ampEnvelope.isActive())
                 {
                     voice.active = false;
                     continue;
                 }
 
-                // --- LFO modulation ---
-                float lfo1Val = voice.lfo1.process() * lfo1DepthMod;
-                float lfo2Val = voice.lfo2.process() * pLfo2D;
+                // ---- LFO modulation ----
+                float lfo1Value = voice.lfo1.process() * lfo1EffectiveDepth;
+                float lfo2Value = voice.lfo2.process() * paramLfo2Depth;
 
-                // LFO1 -> fold point, LFO2 -> rotate
-                float modFoldPoint = clamp (smoothedFoldPoint + lfo1Val * 0.3f, 0.0f, 1.0f);
-                float modRotate    = clamp (smoothedRotate + lfo2Val * 0.3f, -1.0f, 1.0f);
+                // LFO routing: LFO1 -> fold point, LFO2 -> rotate amount.
+                // 0.3f scaling factor keeps modulation musical -- full LFO depth
+                // shifts the fold point or rotation by +-30% of its range.
+                float modulatedFoldPoint = clamp (smoothedFoldPoint + lfo1Value * 0.3f, 0.0f, 1.0f);
+                float modulatedRotate    = clamp (smoothedRotate + lfo2Value * 0.3f, -1.0f, 1.0f);
 
-                // Fold depth modulated by fold envelope
-                float modFoldDepth = smoothedFoldDepth * foldLevel;
+                // Fold depth scaled by fold envelope (envelope controls intensity over time)
+                float modulatedFoldDepth = smoothedFoldDepth * foldEnvelopeLevel;
 
-                // --- Generate source signal ---
-                float freq = voice.currentFreq;
-                float phaseInc = freq / srf;
+                // ---- Generate source signal ----
+                float frequency = voice.currentFrequency;
+                float phaseIncrement = frequency / sampleRateFloat;
 
-                // Saw oscillator (naive, anti-aliased by FFT process)
-                voice.sawPhase += phaseInc;
+                // Sawtooth oscillator (naive -- anti-aliasing is handled by the
+                // FFT process itself, which naturally bandlimits to Nyquist)
+                voice.sawPhase += phaseIncrement;
                 if (voice.sawPhase >= 1.0f) voice.sawPhase -= 1.0f;
-                float saw = 2.0f * voice.sawPhase - 1.0f;
+                float sawSample = 2.0f * voice.sawPhase - 1.0f;
 
-                // Square oscillator
-                voice.sqrPhase += phaseInc;
-                if (voice.sqrPhase >= 1.0f) voice.sqrPhase -= 1.0f;
-                float sqr = (voice.sqrPhase < 0.5f) ? 1.0f : -1.0f;
+                // Square oscillator (50% duty cycle)
+                voice.squarePhase += phaseIncrement;
+                if (voice.squarePhase >= 1.0f) voice.squarePhase -= 1.0f;
+                float squareSample = (voice.squarePhase < 0.5f) ? 1.0f : -1.0f;
 
-                // Noise (LCG)
-                voice.noiseState = voice.noiseState * 1664525u + 1013904223u;
-                float noise = static_cast<float> (voice.noiseState & 0xFFFF) / 32768.0f - 1.0f;
+                // Noise oscillator (Linear Congruential Generator).
+                // Same Numerical Recipes LCG constants as the LFO S&H mode.
+                voice.noiseGeneratorState = voice.noiseGeneratorState * 1664525u + 1013904223u;
+                float noiseSample = static_cast<float> (voice.noiseGeneratorState & 0xFFFF) / 32768.0f - 1.0f;
 
-                // Mix oscillators: pOscMx maps [0, 0.5] = saw->square, [0.5, 1.0] = square->noise
-                float oscSample;
-                if (pOscMx <= 0.5f)
+                // Oscillator crossfade: oscMix maps [0, 0.5] = saw->square,
+                // [0.5, 1.0] = square->noise. This creates a continuous
+                // timbral morphing axis from harmonic (saw) through hollow
+                // (square) to noisy (white noise).
+                float oscillatorSample;
+                if (paramOscillatorMix <= 0.5f)
                 {
-                    float t = pOscMx * 2.0f;
-                    oscSample = saw * (1.0f - t) + sqr * t;
+                    float crossfade = paramOscillatorMix * 2.0f;
+                    oscillatorSample = sawSample * (1.0f - crossfade) + squareSample * crossfade;
                 }
                 else
                 {
-                    float t = (pOscMx - 0.5f) * 2.0f;
-                    oscSample = sqr * (1.0f - t) + noise * t;
+                    float crossfade = (paramOscillatorMix - 0.5f) * 2.0f;
+                    oscillatorSample = squareSample * (1.0f - crossfade) + noiseSample * crossfade;
                 }
 
-                // Blend with coupling input
-                float couplingIn = 0.0f;
-                if (sample < static_cast<int> (couplingInputBuffer.size()))
-                    couplingIn = couplingInputBuffer[static_cast<size_t> (sample)];
+                // Blend internal oscillator with external coupling input
+                float couplingInput = 0.0f;
+                if (sampleIndex < static_cast<int> (couplingInputBuffer.size()))
+                    couplingInput = couplingInputBuffer[static_cast<size_t> (sampleIndex)];
 
-                float sourceSample = oscSample * (1.0f - effectiveSource) + couplingIn * effectiveSource;
+                float sourceSample = oscillatorSample * (1.0f - effectiveSource) + couplingInput * effectiveSource;
 
-                // --- Feed into STFT input ring buffer ---
-                voice.inputRing[static_cast<size_t> (voice.inputWritePos)] = sourceSample;
-                voice.inputWritePos = (voice.inputWritePos + 1) % kFFTSize;
+                // ---- Feed source into STFT input ring buffer ----
+                voice.inputRingBuffer[static_cast<size_t> (voice.inputWritePosition)] = sourceSample;
+                voice.inputWritePosition = (voice.inputWritePosition + 1) % kFFTSize;
 
-                // --- Advance hop counter and process STFT when ready ---
-                voice.hopCounter++;
-                if (voice.hopCounter >= kHopSize)
+                // ---- Advance hop counter and trigger STFT when a full hop is ready ----
+                voice.hopSampleCounter++;
+                if (voice.hopSampleCounter >= kHopSize)
                 {
-                    voice.hopCounter = 0;
-                    processSTFT (voice, modFoldPoint, modFoldDepth, effectiveFoldCount,
-                                 pOp, modRotate, smoothedStretch, freezeActive);
+                    voice.hopSampleCounter = 0;
+                    processSTFT (voice, modulatedFoldPoint, modulatedFoldDepth, effectiveFoldCount,
+                                 paramOperation, modulatedRotate, smoothedStretch, freezeActive);
                 }
 
-                // --- Read from overlap-add output buffer ---
-                int readPos = (voice.inputWritePos) % kFFTSize;
-                float outSample = voice.outputAccum[static_cast<size_t> (readPos)];
-                // Clear the consumed sample from the accumulator
-                voice.outputAccum[static_cast<size_t> (readPos)] = 0.0f;
+                // ---- Read from overlap-add output buffer ----
+                int readPosition = (voice.inputWritePosition) % kFFTSize;
+                float outputSample = voice.overlapAddAccumulator[static_cast<size_t> (readPosition)];
+                // Clear consumed sample from the accumulator to prevent re-reading
+                voice.overlapAddAccumulator[static_cast<size_t> (readPosition)] = 0.0f;
 
-                // Denormal protection
-                outSample = flushDenormal (outSample);
+                // Denormal protection: flush sub-normal floats to zero.
+                // Without this, recursive accumulation in the overlap-add buffer
+                // can produce denormals that cause 100x CPU spikes on x86.
+                outputSample = flushDenormal (outputSample);
 
-                // --- Apply amplitude envelope, velocity, and crossfade ---
-                float gain = ampLevel * voice.velocity * voice.fadeGain;
-                outSample *= gain;
+                // ---- Apply amplitude envelope, velocity, and crossfade gain ----
+                float voiceGain = amplitudeLevel * voice.velocity * voice.crossfadeGain;
+                outputSample *= voiceGain;
 
-                // Slight stereo spread based on voice index (deterministic)
-                float pan = 0.5f;
+                // ---- Deterministic stereo spread based on voice index ----
+                // Voices are distributed across a 0.3-0.7 pan range (not hard L/R)
+                // for a natural stereo image without holes in the center.
+                float panPosition = 0.5f;
                 if (kMaxVoices > 1)
                 {
-                    int voiceIdx = static_cast<int> (&voice - &voices[0]);
-                    pan = 0.3f + 0.4f * static_cast<float> (voiceIdx) / static_cast<float> (kMaxVoices - 1);
+                    int voiceIndex = static_cast<int> (&voice - &voices[0]);
+                    panPosition = 0.3f + 0.4f * static_cast<float> (voiceIndex) / static_cast<float> (kMaxVoices - 1);
                 }
-                float panL = std::cos (pan * kPI * 0.5f);
-                float panR = std::sin (pan * kPI * 0.5f);
+                // Constant-power panning using sin/cos law
+                float panGainLeft  = std::cos (panPosition * kPI * 0.5f);
+                float panGainRight = std::sin (panPosition * kPI * 0.5f);
 
-                mixL += outSample * panL;
-                mixR += outSample * panR;
+                stereoMixLeft  += outputSample * panGainLeft;
+                stereoMixRight += outputSample * panGainRight;
 
-                peakEnv = std::max (peakEnv, ampLevel);
+                peakEnvelopeLevel = std::max (peakEnvelopeLevel, amplitudeLevel);
             }
 
-            // Apply master level
-            float finalL = mixL * pLevelVal;
-            float finalR = mixR * pLevelVal;
+            // ---- Apply master level ----
+            float finalLeft  = stereoMixLeft * paramMasterLevel;
+            float finalRight = stereoMixRight * paramMasterLevel;
 
-            // Denormal flush on output
-            finalL = flushDenormal (finalL);
-            finalR = flushDenormal (finalR);
+            // Final denormal flush on master output to protect downstream
+            // processing (other engines, DAW mixer) from denormal contamination
+            finalLeft  = flushDenormal (finalLeft);
+            finalRight = flushDenormal (finalRight);
 
-            // Write to output buffer
+            // ---- Write to output buffer ----
             if (buffer.getNumChannels() >= 2)
             {
-                buffer.addSample (0, sample, finalL);
-                buffer.addSample (1, sample, finalR);
+                buffer.addSample (0, sampleIndex, finalLeft);
+                buffer.addSample (1, sampleIndex, finalRight);
             }
             else if (buffer.getNumChannels() == 1)
             {
-                buffer.addSample (0, sample, (finalL + finalR) * 0.5f);
+                buffer.addSample (0, sampleIndex, (finalLeft + finalRight) * 0.5f);
             }
 
-            // Cache for coupling reads
-            if (sample < static_cast<int> (outputCacheL.size()))
+            // ---- Cache output for inter-engine coupling reads ----
+            if (sampleIndex < static_cast<int> (outputCacheLeft.size()))
             {
-                outputCacheL[static_cast<size_t> (sample)] = finalL;
-                outputCacheR[static_cast<size_t> (sample)] = finalR;
+                outputCacheLeft[static_cast<size_t> (sampleIndex)]  = finalLeft;
+                outputCacheRight[static_cast<size_t> (sampleIndex)] = finalRight;
             }
         }
 
-        envelopeOutput = peakEnv;
+        envelopeOutput = peakEnvelopeLevel;
 
         // Clear coupling input buffer for next block
         std::fill (couplingInputBuffer.begin(),
@@ -648,23 +838,23 @@ public:
                                                             couplingInputBuffer.size()),
                    0.0f);
 
-        // Update active voice count (atomic for thread-safe read from UI)
+        // Update active voice count (atomic-safe for UI thread reads)
         int count = 0;
-        for (const auto& v : voices)
-            if (v.active) ++count;
-        activeVoices = count;
+        for (const auto& voice : voices)
+            if (voice.active) ++count;
+        activeVoiceCount = count;
     }
 
     //==========================================================================
-    // SynthEngine interface — Coupling
+    //  SynthEngine Interface -- Coupling
     //==========================================================================
 
     float getSampleForCoupling (int channel, int sampleIndex) const override
     {
-        auto si = static_cast<size_t> (sampleIndex);
-        if (channel == 0 && si < outputCacheL.size()) return outputCacheL[si];
-        if (channel == 1 && si < outputCacheR.size()) return outputCacheR[si];
-        if (channel == 2) return envelopeOutput;
+        auto index = static_cast<size_t> (sampleIndex);
+        if (channel == 0 && index < outputCacheLeft.size())  return outputCacheLeft[index];
+        if (channel == 1 && index < outputCacheRight.size()) return outputCacheRight[index];
+        if (channel == 2) return envelopeOutput;    // Channel 2 = envelope follower for amplitude coupling
         return 0.0f;
     }
 
@@ -674,28 +864,36 @@ public:
         switch (type)
         {
             case CouplingType::AudioToWavetable:
-                // External audio replaces/blends with internal oscillator source
+                // External audio replaces/blends with internal oscillator source.
+                // The audio is written into the coupling input buffer, and the
+                // source parameter controls the wet/dry blend.
                 if (sourceBuffer != nullptr)
                 {
                     int count = std::min (numSamples, static_cast<int> (couplingInputBuffer.size()));
                     for (int i = 0; i < count; ++i)
                         couplingInputBuffer[static_cast<size_t> (i)] += sourceBuffer[i] * amount;
                 }
-                couplingSourceMod += amount * 0.3f;
+                // 0.3f scaling: coupling amount at 100% shifts source blend by 30%,
+                // preventing total override of internal oscillator
+                couplingSourceModulation += amount * 0.3f;
                 break;
 
             case CouplingType::AmpToFilter:
-                // External amplitude modulates fold depth
-                couplingFoldDepthMod += amount * 0.5f;
+                // External amplitude envelope modulates fold depth.
+                // 0.5f scaling: full coupling adds 50% fold depth offset
+                couplingFoldDepthModulation += amount * 0.5f;
                 break;
 
             case CouplingType::EnvToMorph:
-                // External envelope modulates fold point
-                couplingFoldPointMod += amount * 0.4f;
+                // External envelope modulates fold point position.
+                // 0.4f scaling: full coupling shifts fold point by 40%
+                couplingFoldPointModulation += amount * 0.4f;
                 break;
 
             case CouplingType::RhythmToBlend:
-                // Rhythm pattern triggers spectral freeze
+                // Rhythm pattern triggers spectral freeze.
+                // Binary threshold: any coupling above 0.5 activates freeze,
+                // making it work well with gate/trigger sources.
                 if (amount > 0.5f)
                     couplingFreezeTrigger = 1.0f;
                 break;
@@ -706,7 +904,7 @@ public:
     }
 
     //==========================================================================
-    // SynthEngine interface — Parameters
+    //  SynthEngine Interface -- Parameters
     //==========================================================================
 
     static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
@@ -723,7 +921,8 @@ public:
 
     static void addParametersImpl (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
-        // --- Core Spectral Fold Parameters ---
+        // ---- Core Spectral Fold Parameters ----
+
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "origami_foldPoint", 1 }, "Origami Fold Point",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.5f));
@@ -760,12 +959,14 @@ public:
             juce::ParameterID { "origami_oscMix", 1 }, "Origami Osc Mix",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.5f));
 
-        // --- Level ---
+        // ---- Master Level ----
+
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "origami_level", 1 }, "Origami Level",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.8f));
 
-        // --- Amp Envelope ---
+        // ---- Amplitude Envelope ----
+
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "origami_ampAttack", 1 }, "Origami Amp Attack",
             juce::NormalisableRange<float> (0.0f, 10.0f, 0.001f, 0.3f), 0.01f));
@@ -782,7 +983,8 @@ public:
             juce::ParameterID { "origami_ampRelease", 1 }, "Origami Amp Release",
             juce::NormalisableRange<float> (0.0f, 20.0f, 0.001f, 0.3f), 0.3f));
 
-        // --- Fold Envelope ---
+        // ---- Fold Envelope ----
+
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "origami_foldEnvAttack", 1 }, "Origami Fold Env Attack",
             juce::NormalisableRange<float> (0.0f, 10.0f, 0.001f, 0.3f), 0.01f));
@@ -799,7 +1001,8 @@ public:
             juce::ParameterID { "origami_foldEnvRelease", 1 }, "Origami Fold Env Release",
             juce::NormalisableRange<float> (0.0f, 20.0f, 0.001f, 0.3f), 0.3f));
 
-        // --- LFO 1 ---
+        // ---- LFO 1 ----
+
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "origami_lfo1Rate", 1 }, "Origami LFO1 Rate",
             juce::NormalisableRange<float> (0.01f, 30.0f, 0.01f, 0.3f), 1.0f));
@@ -812,7 +1015,8 @@ public:
             juce::ParameterID { "origami_lfo1Shape", 1 }, "Origami LFO1 Shape",
             juce::StringArray { "Sine", "Triangle", "Saw", "Square", "S&H" }, 0));
 
-        // --- LFO 2 ---
+        // ---- LFO 2 ----
+
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "origami_lfo2Rate", 1 }, "Origami LFO2 Rate",
             juce::NormalisableRange<float> (0.01f, 30.0f, 0.01f, 0.3f), 1.0f));
@@ -825,7 +1029,8 @@ public:
             juce::ParameterID { "origami_lfo2Shape", 1 }, "Origami LFO2 Shape",
             juce::StringArray { "Sine", "Triangle", "Saw", "Square", "S&H" }, 0));
 
-        // --- Voice Parameters ---
+        // ---- Voice Parameters ----
+
         params.push_back (std::make_unique<juce::AudioParameterChoice> (
             juce::ParameterID { "origami_voiceMode", 1 }, "Origami Voice Mode",
             juce::StringArray { "Mono", "Legato", "Poly4", "Poly8" }, 2));
@@ -834,7 +1039,8 @@ public:
             juce::ParameterID { "origami_glide", 1 }, "Origami Glide",
             juce::NormalisableRange<float> (0.0f, 2.0f, 0.001f, 0.5f), 0.0f));
 
-        // --- Macros ---
+        // ---- Macros ----
+
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "origami_macroFold", 1 }, "Origami Macro FOLD",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
@@ -854,6 +1060,7 @@ public:
 
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
     {
+        // ---- Core Spectral Parameters ----
         pFoldPoint         = apvts.getRawParameterValue ("origami_foldPoint");
         pFoldDepth         = apvts.getRawParameterValue ("origami_foldDepth");
         pFoldCount         = apvts.getRawParameterValue ("origami_foldCount");
@@ -865,16 +1072,19 @@ public:
         pOscMix            = apvts.getRawParameterValue ("origami_oscMix");
         pLevel             = apvts.getRawParameterValue ("origami_level");
 
+        // ---- Amplitude Envelope ----
         pAmpAttack         = apvts.getRawParameterValue ("origami_ampAttack");
         pAmpDecay          = apvts.getRawParameterValue ("origami_ampDecay");
         pAmpSustain        = apvts.getRawParameterValue ("origami_ampSustain");
         pAmpRelease        = apvts.getRawParameterValue ("origami_ampRelease");
 
+        // ---- Fold Envelope ----
         pFoldEnvAttack     = apvts.getRawParameterValue ("origami_foldEnvAttack");
         pFoldEnvDecay      = apvts.getRawParameterValue ("origami_foldEnvDecay");
         pFoldEnvSustain    = apvts.getRawParameterValue ("origami_foldEnvSustain");
         pFoldEnvRelease    = apvts.getRawParameterValue ("origami_foldEnvRelease");
 
+        // ---- LFOs ----
         pLfo1Rate          = apvts.getRawParameterValue ("origami_lfo1Rate");
         pLfo1Depth         = apvts.getRawParameterValue ("origami_lfo1Depth");
         pLfo1Shape         = apvts.getRawParameterValue ("origami_lfo1Shape");
@@ -882,9 +1092,11 @@ public:
         pLfo2Depth         = apvts.getRawParameterValue ("origami_lfo2Depth");
         pLfo2Shape         = apvts.getRawParameterValue ("origami_lfo2Shape");
 
+        // ---- Voice ----
         pVoiceMode         = apvts.getRawParameterValue ("origami_voiceMode");
         pGlide             = apvts.getRawParameterValue ("origami_glide");
 
+        // ---- Macros ----
         pMacroFold         = apvts.getRawParameterValue ("origami_macroFold");
         pMacroMotion       = apvts.getRawParameterValue ("origami_macroMotion");
         pMacroCoupling     = apvts.getRawParameterValue ("origami_macroCoupling");
@@ -892,129 +1104,165 @@ public:
     }
 
     //==========================================================================
-    // SynthEngine interface — Identity
+    //  SynthEngine Interface -- Identity
     //==========================================================================
 
     juce::String getEngineId() const override { return "Origami"; }
 
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFFE63946); }
+    juce::Colour getAccentColour() const override
+    {
+        // Vermillion Fold #E63946 -- a deep red-orange evoking the vermillion
+        // ink of traditional Japanese washi paper and the sharp crease lines
+        // of origami folds. In the water column, it's the warm flash of
+        // sunlight catching a paper boat on the surface current.
+        return juce::Colour (0xFFE63946);
+    }
 
     int getMaxVoices() const override { return kMaxVoices; }
 
-    int getActiveVoiceCount() const override { return activeVoices; }
+    int getActiveVoiceCount() const override { return activeVoiceCount; }
 
 private:
     //==========================================================================
-    // Helper: safe parameter load
+    //  Helper: Safe Parameter Load
     //==========================================================================
 
-    static float loadParam (std::atomic<float>* p, float fallback) noexcept
+    static float loadParam (std::atomic<float>* paramPointer, float fallback) noexcept
     {
-        return (p != nullptr) ? p->load() : fallback;
+        return (paramPointer != nullptr) ? paramPointer->load() : fallback;
     }
 
     //==========================================================================
-    // FFT — Radix-2 Decimation-In-Time, in-place.
+    //  FFT -- Radix-2 Decimation-In-Time, In-Place
+    //
+    //  Classic Cooley-Tukey algorithm (1965). The radix-2 DIT approach
+    //  recursively splits the N-point DFT into two N/2-point DFTs using
+    //  the even/odd index decomposition, achieving O(N log N) complexity
+    //  versus the naive O(N^2) DFT.
+    //
+    //  Pre-computed bit-reversal tables and twiddle factors avoid redundant
+    //  computation in the inner loop -- critical for real-time performance
+    //  with 8 concurrent voice FFTs.
     //==========================================================================
 
     void buildBitReversalTable()
     {
-        int n = kFFTSize;
-        int log2n = 0;
+        int fftLength = kFFTSize;
+
+        // Compute log2(N) for bit-reversal depth
+        int log2N = 0;
         {
-            int temp = n;
-            while (temp > 1) { temp >>= 1; ++log2n; }
+            int temp = fftLength;
+            while (temp > 1) { temp >>= 1; ++log2N; }
         }
 
-        for (int i = 0; i < n; ++i)
+        // Build the bit-reversal permutation table.
+        // Bit-reversal reordering is required because the DIT algorithm
+        // produces outputs in bit-reversed order of the input indices.
+        for (int i = 0; i < fftLength; ++i)
         {
             int reversed = 0;
-            int val = i;
-            for (int j = 0; j < log2n; ++j)
+            int value = i;
+            for (int bit = 0; bit < log2N; ++bit)
             {
-                reversed = (reversed << 1) | (val & 1);
-                val >>= 1;
+                reversed = (reversed << 1) | (value & 1);
+                value >>= 1;
             }
             bitReversalTable[static_cast<size_t> (i)] = reversed;
         }
 
-        // Pre-compute twiddle factors
-        for (int i = 0; i < kFFTSize / 2; ++i)
+        // Pre-compute twiddle factors (complex roots of unity).
+        // W_N^k = e^(-j * 2*PI * k / N) = cos(angle) + j*sin(angle)
+        // Only N/2 factors needed due to periodicity.
+        for (int k = 0; k < kFFTSize / 2; ++k)
         {
-            float angle = -kTwoPi * static_cast<float> (i) / static_cast<float> (kFFTSize);
-            twiddleReal[static_cast<size_t> (i)] = std::cos (angle);
-            twiddleImag[static_cast<size_t> (i)] = std::sin (angle);
+            float angle = -kTwoPi * static_cast<float> (k) / static_cast<float> (kFFTSize);
+            twiddleFactorsReal[static_cast<size_t> (k)] = std::cos (angle);
+            twiddleFactorsImaginary[static_cast<size_t> (k)] = std::sin (angle);
         }
     }
 
     // Forward FFT: time domain -> frequency domain
-    void fftForward (float* re, float* im) const noexcept
+    void fftForward (float* realPart, float* imaginaryPart) const noexcept
     {
-        int n = kFFTSize;
+        int fftLength = kFFTSize;
 
-        // Bit-reversal permutation
-        for (int i = 0; i < n; ++i)
+        // ---- Bit-reversal permutation ----
+        for (int i = 0; i < fftLength; ++i)
         {
             int j = bitReversalTable[static_cast<size_t> (i)];
             if (j > i)
             {
-                std::swap (re[i], re[j]);
-                std::swap (im[i], im[j]);
+                std::swap (realPart[i], realPart[j]);
+                std::swap (imaginaryPart[i], imaginaryPart[j]);
             }
         }
 
-        // Butterfly stages
-        for (int size = 2; size <= n; size *= 2)
+        // ---- Butterfly stages ----
+        // Each stage doubles the sub-DFT size: 2, 4, 8, ..., N
+        for (int stageSize = 2; stageSize <= fftLength; stageSize *= 2)
         {
-            int halfSize = size / 2;
-            int step = n / size;
+            int halfStage = stageSize / 2;
+            int twiddleStep = fftLength / stageSize;    // Stride through twiddle table
 
-            for (int i = 0; i < n; i += size)
+            for (int groupStart = 0; groupStart < fftLength; groupStart += stageSize)
             {
-                for (int k = 0; k < halfSize; ++k)
+                for (int butterfly = 0; butterfly < halfStage; ++butterfly)
                 {
-                    int twIdx = k * step;
-                    float wr = twiddleReal[static_cast<size_t> (twIdx)];
-                    float wi = twiddleImag[static_cast<size_t> (twIdx)];
+                    int twiddleIndex = butterfly * twiddleStep;
+                    float twiddleReal = twiddleFactorsReal[static_cast<size_t> (twiddleIndex)];
+                    float twiddleImag = twiddleFactorsImaginary[static_cast<size_t> (twiddleIndex)];
 
-                    int even = i + k;
-                    int odd  = i + k + halfSize;
+                    int evenIndex = groupStart + butterfly;
+                    int oddIndex  = groupStart + butterfly + halfStage;
 
-                    float tr = re[odd] * wr - im[odd] * wi;
-                    float ti = re[odd] * wi + im[odd] * wr;
+                    // Complex multiply: twiddle * odd element
+                    float tempReal = realPart[oddIndex] * twiddleReal - imaginaryPart[oddIndex] * twiddleImag;
+                    float tempImag = realPart[oddIndex] * twiddleImag + imaginaryPart[oddIndex] * twiddleReal;
 
-                    re[odd] = re[even] - tr;
-                    im[odd] = im[even] - ti;
-                    re[even] += tr;
-                    im[even] += ti;
+                    // Butterfly: even +/- (twiddle * odd)
+                    realPart[oddIndex]      = realPart[evenIndex] - tempReal;
+                    imaginaryPart[oddIndex] = imaginaryPart[evenIndex] - tempImag;
+                    realPart[evenIndex]      += tempReal;
+                    imaginaryPart[evenIndex] += tempImag;
                 }
             }
         }
     }
 
-    // Inverse FFT: frequency domain -> time domain
-    void fftInverse (float* re, float* im) const noexcept
+    // Inverse FFT: frequency domain -> time domain.
+    // Uses the conjugate-forward-conjugate trick: IFFT(X) = conj(FFT(conj(X))) / N
+    void fftInverse (float* realPart, float* imaginaryPart) const noexcept
     {
-        int n = kFFTSize;
+        int fftLength = kFFTSize;
 
-        // Conjugate input
-        for (int i = 0; i < n; ++i)
-            im[i] = -im[i];
+        // Conjugate input (negate imaginary part)
+        for (int i = 0; i < fftLength; ++i)
+            imaginaryPart[i] = -imaginaryPart[i];
 
-        // Forward FFT
-        fftForward (re, im);
+        // Forward FFT on conjugated input
+        fftForward (realPart, imaginaryPart);
 
-        // Conjugate and scale
-        float invN = 1.0f / static_cast<float> (n);
-        for (int i = 0; i < n; ++i)
+        // Conjugate and scale by 1/N
+        float inverseN = 1.0f / static_cast<float> (fftLength);
+        for (int i = 0; i < fftLength; ++i)
         {
-            re[i] *= invN;
-            im[i] = -im[i] * invN;
+            realPart[i] *= inverseN;
+            imaginaryPart[i] = -imaginaryPart[i] * inverseN;
         }
     }
 
     //==========================================================================
-    // STFT Processing — the heart of spectral folding.
+    //  STFT Processing -- The Heart of Spectral Folding
+    //
+    //  This is where ORIGAMI's paper-folding metaphor becomes literal DSP.
+    //  The 8-step pipeline transforms time-domain audio into the frequency
+    //  domain, applies spectral origami operations, then reconstructs the
+    //  time-domain signal via overlap-add synthesis.
+    //
+    //  The pipeline runs once per hop (every 512 samples at 44.1kHz, i.e.
+    //  ~86 times per second), making it computationally tractable even with
+    //  8 concurrent polyphonic voices.
     //==========================================================================
 
     void processSTFT (OrigamiVoice& voice, float foldPoint, float foldDepth,
@@ -1022,97 +1270,107 @@ private:
                       bool freezeActive) noexcept
     {
         // --- Step 1: Window the input ---
-        // Read kFFTSize samples ending at the current write position
+        // Extract kFFTSize samples ending at the current write position,
+        // multiplied by the Hann window for spectral leakage suppression.
         for (int i = 0; i < kFFTSize; ++i)
         {
-            int readIdx = (voice.inputWritePos - kFFTSize + i + kFFTSize) % kFFTSize;
+            int readIndex = (voice.inputWritePosition - kFFTSize + i + kFFTSize) % kFFTSize;
             voice.windowedInput[static_cast<size_t> (i)] =
-                voice.inputRing[static_cast<size_t> (readIdx)] * hannWindow[static_cast<size_t> (i)];
+                voice.inputRingBuffer[static_cast<size_t> (readIndex)] * hannWindow[static_cast<size_t> (i)];
         }
 
-        // --- Step 2: FFT ---
-        // Copy windowed input to FFT buffers
+        // --- Step 2: Forward FFT ---
+        // Copy windowed input to FFT buffers (imaginary part initialized to zero
+        // because our input is real-valued)
         for (int i = 0; i < kFFTSize; ++i)
         {
             voice.fftReal[static_cast<size_t> (i)] = voice.windowedInput[static_cast<size_t> (i)];
-            voice.fftImag[static_cast<size_t> (i)] = 0.0f;
+            voice.fftImaginary[static_cast<size_t> (i)] = 0.0f;
         }
 
-        fftForward (voice.fftReal.data(), voice.fftImag.data());
+        fftForward (voice.fftReal.data(), voice.fftImaginary.data());
 
         // --- Step 3: Extract magnitude and phase ---
         if (!freezeActive)
         {
-            // Save previous phase for phase vocoder
-            voice.analysisFrame.prevPhase = voice.analysisFrame.phase;
+            // Save previous phase for phase vocoder's inter-frame delta computation
+            voice.analysisFrame.previousPhase = voice.analysisFrame.phase;
 
             for (int bin = 0; bin < kFFTHalf; ++bin)
             {
-                float re = voice.fftReal[static_cast<size_t> (bin)];
-                float im = voice.fftImag[static_cast<size_t> (bin)];
+                float real = voice.fftReal[static_cast<size_t> (bin)];
+                float imaginary = voice.fftImaginary[static_cast<size_t> (bin)];
 
-                float mag = std::sqrt (re * re + im * im);
-                mag = std::max (mag, kMagFloor);    // Denormal protection
+                float magnitude = std::sqrt (real * real + imaginary * imaginary);
+                // Clamp magnitude to floor to prevent denormals in subsequent
+                // spectral operations that multiply/divide by magnitude values
+                magnitude = std::max (magnitude, kMagnitudeFloor);
 
-                float ph = std::atan2 (im, re);
+                float binPhase = std::atan2 (imaginary, real);
 
-                voice.analysisFrame.magnitude[static_cast<size_t> (bin)] = mag;
-                voice.analysisFrame.phase[static_cast<size_t> (bin)] = ph;
+                voice.analysisFrame.magnitude[static_cast<size_t> (bin)] = magnitude;
+                voice.analysisFrame.phase[static_cast<size_t> (bin)] = binPhase;
 
-                // Phase vocoder: compute instantaneous frequency
-                float phaseDiff = ph - voice.analysisFrame.prevPhase[static_cast<size_t> (bin)];
-                // Expected phase advance for this bin
-                float expected = kTwoPi * static_cast<float> (bin) * static_cast<float> (kHopSize)
-                                 / static_cast<float> (kFFTSize);
-                // Deviation from expected
-                float deviation = phaseDiff - expected;
-                // Wrap to [-pi, pi]
-                deviation = deviation - kTwoPi * std::round (deviation / kTwoPi);
-                // Instantaneous frequency for this bin
-                voice.analysisFrame.instFreq[static_cast<size_t> (bin)] =
-                    static_cast<float> (bin) * binFreqStep + deviation * srf / (kTwoPi * static_cast<float> (kHopSize));
+                // Phase vocoder: compute instantaneous frequency.
+                // The expected phase advance per hop for bin k is:
+                //   2*PI * k * hopSize / fftSize
+                // Any deviation from this expected advance indicates the true
+                // frequency differs from the bin center frequency.
+                float phaseDelta = binPhase - voice.analysisFrame.previousPhase[static_cast<size_t> (bin)];
+                float expectedPhaseAdvance = kTwoPi * static_cast<float> (bin) * static_cast<float> (kHopSize)
+                                             / static_cast<float> (kFFTSize);
+                float phaseDeviation = phaseDelta - expectedPhaseAdvance;
+
+                // Wrap deviation to [-PI, PI] for correct frequency estimation
+                phaseDeviation = phaseDeviation - kTwoPi * std::round (phaseDeviation / kTwoPi);
+
+                // Instantaneous frequency = bin center frequency + deviation-derived offset
+                voice.analysisFrame.instantaneousFreq[static_cast<size_t> (bin)] =
+                    static_cast<float> (bin) * frequencyPerBin
+                    + phaseDeviation * sampleRateFloat / (kTwoPi * static_cast<float> (kHopSize));
             }
 
-            // Store frozen frame for potential freeze
+            // Snapshot the current frame for potential freeze activation
             voice.frozenFrame = voice.analysisFrame;
             voice.hasFrozenFrame = true;
         }
 
-        // Use frozen frame if freeze is active
+        // Select source frame: frozen snapshot if freeze is active, else live analysis
         const SpectralFrame& sourceFrame = (freezeActive && voice.hasFrozenFrame)
                                             ? voice.frozenFrame
                                             : voice.analysisFrame;
 
         // --- Step 4: Apply spectral fold operations ---
-        // Start with a copy of the analysis magnitude/phase
+        // Start with a copy of the source frame's magnitude and phase
         for (int bin = 0; bin < kFFTHalf; ++bin)
         {
-            voice.foldedMag[static_cast<size_t> (bin)] = sourceFrame.magnitude[static_cast<size_t> (bin)];
+            voice.foldedMagnitude[static_cast<size_t> (bin)] = sourceFrame.magnitude[static_cast<size_t> (bin)];
             voice.foldedPhase[static_cast<size_t> (bin)] = sourceFrame.phase[static_cast<size_t> (bin)];
         }
 
-        // Apply the selected operation, cascaded foldCount times
-        for (int fold = 0; fold < foldCount; ++fold)
+        // Apply the selected spectral operation, cascaded foldCount times.
+        // Each cascade shifts the fold point by +10% for richer, more complex
+        // results -- like folding paper multiple times at slightly offset creases.
+        for (int cascade = 0; cascade < foldCount; ++cascade)
         {
-            // Shift fold point slightly per cascade for richer results
-            float cascadedFoldPoint = clamp (foldPoint + static_cast<float> (fold) * 0.1f, 0.0f, 0.99f);
+            float cascadedFoldPoint = clamp (foldPoint + static_cast<float> (cascade) * 0.1f, 0.0f, 0.99f);
 
             switch (operation)
             {
-                case 0:  // FOLD — reflect spectrum at fold point
-                    applySpectralFold (voice.foldedMag.data(), voice.foldedPhase.data(),
+                case 0:  // FOLD -- reflect spectrum at fold point
+                    applySpectralFold (voice.foldedMagnitude.data(), voice.foldedPhase.data(),
                                        cascadedFoldPoint, foldDepth);
                     break;
-                case 1:  // MIRROR — bilateral symmetry around fold point
-                    applySpectralMirror (voice.foldedMag.data(), voice.foldedPhase.data(),
+                case 1:  // MIRROR -- bilateral symmetry around fold point
+                    applySpectralMirror (voice.foldedMagnitude.data(), voice.foldedPhase.data(),
                                          cascadedFoldPoint, foldDepth);
                     break;
-                case 2:  // ROTATE — circular shift of magnitude
-                    applySpectralRotate (voice.foldedMag.data(), voice.foldedPhase.data(),
+                case 2:  // ROTATE -- circular shift of magnitude spectrum
+                    applySpectralRotate (voice.foldedMagnitude.data(), voice.foldedPhase.data(),
                                          rotate, foldDepth);
                     break;
-                case 3:  // STRETCH — nonlinear frequency-axis warping
-                    applySpectralStretch (voice.foldedMag.data(), voice.foldedPhase.data(),
+                case 3:  // STRETCH -- nonlinear frequency-axis warping
+                    applySpectralStretch (voice.foldedMagnitude.data(), voice.foldedPhase.data(),
                                           stretch, foldDepth);
                     break;
                 default:
@@ -1120,438 +1378,500 @@ private:
             }
         }
 
-        // --- Step 5: 3-point triangular smoothing on folded magnitude ---
-        applyTriangularSmoothing (voice.foldedMag.data());
+        // --- Step 5: Post-fold magnitude smoothing ---
+        // 3-point triangular kernel reduces harsh spectral discontinuities
+        // that the fold operations can introduce at bin boundaries.
+        applyTriangularSmoothing (voice.foldedMagnitude.data());
 
         // --- Step 6: Reconstruct complex spectrum from modified magnitude + phase ---
         for (int bin = 0; bin < kFFTHalf; ++bin)
         {
-            float mag = std::max (voice.foldedMag[static_cast<size_t> (bin)], kMagFloor);
-            float ph  = voice.foldedPhase[static_cast<size_t> (bin)];
+            float magnitude = std::max (voice.foldedMagnitude[static_cast<size_t> (bin)], kMagnitudeFloor);
+            float binPhase  = voice.foldedPhase[static_cast<size_t> (bin)];
 
-            voice.ifftReal[static_cast<size_t> (bin)] = mag * std::cos (ph);
-            voice.ifftImag[static_cast<size_t> (bin)] = mag * std::sin (ph);
+            voice.ifftReal[static_cast<size_t> (bin)] = magnitude * std::cos (binPhase);
+            voice.ifftImaginary[static_cast<size_t> (bin)] = magnitude * std::sin (binPhase);
         }
 
-        // Mirror conjugate for negative frequencies
+        // Mirror conjugate for negative frequencies.
+        // Real-valued signals have conjugate-symmetric spectra:
+        // X[N-k] = conj(X[k]), so we only need to compute the positive half.
         for (int bin = 1; bin < kFFTSize / 2; ++bin)
         {
-            int mirror = kFFTSize - bin;
-            voice.ifftReal[static_cast<size_t> (mirror)] =  voice.ifftReal[static_cast<size_t> (bin)];
-            voice.ifftImag[static_cast<size_t> (mirror)] = -voice.ifftImag[static_cast<size_t> (bin)];
+            int mirrorBin = kFFTSize - bin;
+            voice.ifftReal[static_cast<size_t> (mirrorBin)] =  voice.ifftReal[static_cast<size_t> (bin)];
+            voice.ifftImaginary[static_cast<size_t> (mirrorBin)] = -voice.ifftImaginary[static_cast<size_t> (bin)];
         }
 
         // --- Step 7: Inverse FFT ---
-        fftInverse (voice.ifftReal.data(), voice.ifftImag.data());
+        fftInverse (voice.ifftReal.data(), voice.ifftImaginary.data());
 
         // --- Step 8: Window and overlap-add ---
-        // Normalization factor for 4x overlap with Hann window
-        // Sum of Hann^2 across overlaps = 1.5, so scale by 2/3
-        constexpr float overlapNorm = 2.0f / 3.0f;
+        // Normalization factor for 4x overlap with Hann window.
+        // The sum of squared Hann windows across 4 overlapping frames = 1.5,
+        // so we scale by 2/3 to achieve unity gain in the overlap-add
+        // reconstruction (the COLA condition for Hann with 75% overlap).
+        constexpr float overlapAddNormalization = 2.0f / 3.0f;
 
         for (int i = 0; i < kFFTSize; ++i)
         {
-            float sample = voice.ifftReal[static_cast<size_t> (i)]
-                         * hannWindow[static_cast<size_t> (i)]
-                         * overlapNorm;
+            float resynthSample = voice.ifftReal[static_cast<size_t> (i)]
+                                * hannWindow[static_cast<size_t> (i)]
+                                * overlapAddNormalization;
 
-            // Add to overlap accumulator at the correct position
-            int outPos = (voice.inputWritePos + i) % kFFTSize;
-            voice.outputAccum[static_cast<size_t> (outPos)] += flushDenormal (sample);
+            // Add to overlap accumulator at the correct circular position.
+            // flushDenormal prevents accumulated near-zero values from causing
+            // CPU spikes in the ongoing overlap-add summation.
+            int outputPosition = (voice.inputWritePosition + i) % kFFTSize;
+            voice.overlapAddAccumulator[static_cast<size_t> (outputPosition)] += flushDenormal (resynthSample);
         }
     }
 
     //==========================================================================
-    // Spectral Operations
+    //  Spectral Operations -- The Four Folds
+    //
+    //  Each operation transforms the magnitude spectrum in a way that has
+    //  no time-domain equivalent, producing timbres unique to spectral
+    //  processing. The fold metaphor is deliberate: like origami, these
+    //  operations crease, mirror, rotate, and stretch the spectral "paper."
     //==========================================================================
 
     // FOLD: Reflect spectrum at the fold point.
-    // Bins above the fold point are reflected back below it, adding to existing content.
-    void applySpectralFold (float* mag, float* ph, float foldPoint, float depth) const noexcept
+    // Bins above the fold point are reflected back below it, constructively
+    // adding to existing spectral content. This creates dense, metallic
+    // timbres reminiscent of bell or gong spectra where partials pile up
+    // in the lower frequency range.
+    void applySpectralFold (float* magnitude, float* phase, float foldPoint, float depth) const noexcept
     {
         int foldBin = std::max (1, static_cast<int> (foldPoint * static_cast<float> (kFFTHalf - 1)));
 
-        // Work with a temporary copy for the folded content
-        std::array<float, kFFTHalf> tempMag {};
-        std::array<float, kFFTHalf> tempPh {};
+        // Work with temporary arrays to avoid in-place corruption
+        std::array<float, kFFTHalf> tempMagnitude {};
+        std::array<float, kFFTHalf> tempPhase {};
 
-        // Copy original below fold point
+        // Preserve original content below fold point
         for (int bin = 0; bin < foldBin && bin < kFFTHalf; ++bin)
         {
-            tempMag[static_cast<size_t> (bin)] = mag[bin];
-            tempPh[static_cast<size_t> (bin)]  = ph[bin];
+            tempMagnitude[static_cast<size_t> (bin)] = magnitude[bin];
+            tempPhase[static_cast<size_t> (bin)]     = phase[bin];
         }
 
-        // Reflect bins above fold point back below it
+        // Reflect bins above fold point back below it (the "fold" crease)
         for (int bin = foldBin; bin < kFFTHalf; ++bin)
         {
-            int distance = bin - foldBin;
-            int reflectedBin = foldBin - 1 - distance;
+            int distanceFromFold = bin - foldBin;
+            int reflectedBin = foldBin - 1 - distanceFromFold;
 
             if (reflectedBin >= 0 && reflectedBin < kFFTHalf)
             {
-                // Add reflected magnitude (constructive interference)
-                tempMag[static_cast<size_t> (reflectedBin)] += mag[bin] * depth;
-                // Average the phases for smoother result
-                tempPh[static_cast<size_t> (reflectedBin)] =
-                    tempPh[static_cast<size_t> (reflectedBin)] * 0.7f + ph[bin] * 0.3f;
+                // Constructive magnitude addition (spectral energy piles up)
+                tempMagnitude[static_cast<size_t> (reflectedBin)] += magnitude[bin] * depth;
+
+                // Phase blending: 70/30 weighted average preserves the original
+                // phase character while incorporating reflected content. Pure
+                // averaging (50/50) produces more cancellation artifacts.
+                tempPhase[static_cast<size_t> (reflectedBin)] =
+                    tempPhase[static_cast<size_t> (reflectedBin)] * 0.7f + phase[bin] * 0.3f;
             }
         }
 
-        // Zero out above fold point (all energy is now below)
+        // Attenuate content above fold point (energy has been folded below)
         for (int bin = foldBin; bin < kFFTHalf; ++bin)
         {
-            tempMag[static_cast<size_t> (bin)] = mag[bin] * (1.0f - depth);
-            tempPh[static_cast<size_t> (bin)]  = ph[bin];
+            tempMagnitude[static_cast<size_t> (bin)] = magnitude[bin] * (1.0f - depth);
+            tempPhase[static_cast<size_t> (bin)]     = phase[bin];
         }
 
-        // Write back blended with depth
+        // Write back with depth-controlled wet/dry blend
         for (int bin = 0; bin < kFFTHalf; ++bin)
         {
-            mag[bin] = lerp (mag[bin], tempMag[static_cast<size_t> (bin)], depth);
-            ph[bin]  = tempPh[static_cast<size_t> (bin)];
+            magnitude[bin] = lerp (magnitude[bin], tempMagnitude[static_cast<size_t> (bin)], depth);
+            phase[bin]     = tempPhase[static_cast<size_t> (bin)];
         }
     }
 
     // MIRROR: Create bilateral symmetry around the fold point.
-    // Replaces spectrum with a version mirrored around the fold point.
-    void applySpectralMirror (float* mag, float* ph, float foldPoint, float depth) const noexcept
+    // The spectrum below the fold point is reflected above it, creating
+    // palindromic spectral shapes. Phase inversion on the mirrored content
+    // produces interesting interference patterns and hollow, resonant tones.
+    void applySpectralMirror (float* magnitude, float* phase, float foldPoint, float depth) const noexcept
     {
         int foldBin = std::max (1, static_cast<int> (foldPoint * static_cast<float> (kFFTHalf - 1)));
 
-        std::array<float, kFFTHalf> tempMag {};
-        std::array<float, kFFTHalf> tempPh {};
+        std::array<float, kFFTHalf> tempMagnitude {};
+        std::array<float, kFFTHalf> tempPhase {};
 
-        // Below fold point: keep original
+        // Below fold point: keep original spectrum intact
         for (int bin = 0; bin < foldBin && bin < kFFTHalf; ++bin)
         {
-            tempMag[static_cast<size_t> (bin)] = mag[bin];
-            tempPh[static_cast<size_t> (bin)]  = ph[bin];
+            tempMagnitude[static_cast<size_t> (bin)] = magnitude[bin];
+            tempPhase[static_cast<size_t> (bin)]     = phase[bin];
         }
 
-        // Above fold point: mirror from below
+        // Above fold point: mirror from below (the "butterfly" fold)
         for (int bin = foldBin; bin < kFFTHalf; ++bin)
         {
-            int distance = bin - foldBin;
-            int mirrorBin = foldBin - 1 - distance;
+            int distanceFromFold = bin - foldBin;
+            int mirrorSourceBin = foldBin - 1 - distanceFromFold;
 
-            if (mirrorBin >= 0 && mirrorBin < kFFTHalf)
+            if (mirrorSourceBin >= 0 && mirrorSourceBin < kFFTHalf)
             {
-                tempMag[static_cast<size_t> (bin)] = mag[static_cast<size_t> (mirrorBin)];
-                // Invert phase for the mirrored content (creates interesting interference)
-                tempPh[static_cast<size_t> (bin)]  = -ph[static_cast<size_t> (mirrorBin)];
+                tempMagnitude[static_cast<size_t> (bin)] = magnitude[static_cast<size_t> (mirrorSourceBin)];
+                // Phase inversion creates destructive interference at the fold
+                // point, producing characteristic notches and hollow timbres
+                tempPhase[static_cast<size_t> (bin)] = -phase[static_cast<size_t> (mirrorSourceBin)];
             }
             else
             {
-                tempMag[static_cast<size_t> (bin)] = kMagFloor;
-                tempPh[static_cast<size_t> (bin)]  = 0.0f;
+                tempMagnitude[static_cast<size_t> (bin)] = kMagnitudeFloor;
+                tempPhase[static_cast<size_t> (bin)]     = 0.0f;
             }
         }
 
         // Blend with depth
         for (int bin = 0; bin < kFFTHalf; ++bin)
         {
-            mag[bin] = lerp (mag[bin], tempMag[static_cast<size_t> (bin)], depth);
-            ph[bin]  = lerp (ph[bin],  tempPh[static_cast<size_t> (bin)],  depth);
+            magnitude[bin] = lerp (magnitude[bin], tempMagnitude[static_cast<size_t> (bin)], depth);
+            phase[bin]     = lerp (phase[bin],     tempPhase[static_cast<size_t> (bin)],     depth);
         }
     }
 
     // ROTATE: Circular shift of magnitude spectrum.
-    // Shifts all bins by a frequency-proportional amount.
-    void applySpectralRotate (float* mag, float* ph, float rotateAmount, float depth) const noexcept
+    // Shifts all frequency bins by a proportional amount, wrapping around
+    // at the Nyquist boundary. This produces pitch-shifting-like effects
+    // with inharmonic overtones -- the harmonic series is translated rather
+    // than scaled, destroying the integer-ratio relationship between partials.
+    // Linear interpolation between adjacent bins prevents spectral staircasing.
+    void applySpectralRotate (float* magnitude, float* phase, float rotateAmount, float depth) const noexcept
     {
         // Map [-1, 1] to bin shift range [-kFFTHalf/2, +kFFTHalf/2]
-        float shift = rotateAmount * static_cast<float> (kFFTHalf / 2);
+        // Full rotation (amount = 1.0) shifts by half the spectrum width
+        float binShift = rotateAmount * static_cast<float> (kFFTHalf / 2);
 
-        std::array<float, kFFTHalf> tempMag {};
-        std::array<float, kFFTHalf> tempPh {};
-        tempMag.fill (kMagFloor);
-        tempPh.fill (0.0f);
+        std::array<float, kFFTHalf> tempMagnitude {};
+        std::array<float, kFFTHalf> tempPhase {};
+        tempMagnitude.fill (kMagnitudeFloor);
+        tempPhase.fill (0.0f);
 
         for (int bin = 0; bin < kFFTHalf; ++bin)
         {
-            float newBinF = static_cast<float> (bin) + shift;
-            // Circular wrap
-            while (newBinF < 0.0f) newBinF += static_cast<float> (kFFTHalf);
-            while (newBinF >= static_cast<float> (kFFTHalf)) newBinF -= static_cast<float> (kFFTHalf);
+            float destinationBin = static_cast<float> (bin) + binShift;
 
-            int newBin0 = static_cast<int> (newBinF);
-            int newBin1 = (newBin0 + 1) % kFFTHalf;
-            float frac = newBinF - static_cast<float> (newBin0);
+            // Circular wrap: bins that shift past Nyquist wrap to DC and vice versa
+            while (destinationBin < 0.0f) destinationBin += static_cast<float> (kFFTHalf);
+            while (destinationBin >= static_cast<float> (kFFTHalf)) destinationBin -= static_cast<float> (kFFTHalf);
 
-            if (newBin0 >= 0 && newBin0 < kFFTHalf)
+            // Linear interpolation between adjacent destination bins
+            int lowerBin = static_cast<int> (destinationBin);
+            int upperBin = (lowerBin + 1) % kFFTHalf;
+            float interpolationFraction = destinationBin - static_cast<float> (lowerBin);
+
+            if (lowerBin >= 0 && lowerBin < kFFTHalf)
             {
-                tempMag[static_cast<size_t> (newBin0)] += mag[bin] * (1.0f - frac);
-                tempPh[static_cast<size_t> (newBin0)]   = ph[bin];
+                tempMagnitude[static_cast<size_t> (lowerBin)] += magnitude[bin] * (1.0f - interpolationFraction);
+                tempPhase[static_cast<size_t> (lowerBin)]      = phase[bin];
             }
-            if (newBin1 >= 0 && newBin1 < kFFTHalf)
+            if (upperBin >= 0 && upperBin < kFFTHalf)
             {
-                tempMag[static_cast<size_t> (newBin1)] += mag[bin] * frac;
-                if (tempMag[static_cast<size_t> (newBin1)] < mag[bin] * frac * 1.1f)
-                    tempPh[static_cast<size_t> (newBin1)] = ph[bin];
+                tempMagnitude[static_cast<size_t> (upperBin)] += magnitude[bin] * interpolationFraction;
+                // Only overwrite phase if this bin is now the dominant contributor
+                if (tempMagnitude[static_cast<size_t> (upperBin)] < magnitude[bin] * interpolationFraction * 1.1f)
+                    tempPhase[static_cast<size_t> (upperBin)] = phase[bin];
             }
         }
 
         // Blend with depth
         for (int bin = 0; bin < kFFTHalf; ++bin)
         {
-            mag[bin] = lerp (mag[bin], std::max (tempMag[static_cast<size_t> (bin)], kMagFloor), depth);
-            ph[bin]  = lerp (ph[bin],  tempPh[static_cast<size_t> (bin)], depth);
+            magnitude[bin] = lerp (magnitude[bin], std::max (tempMagnitude[static_cast<size_t> (bin)], kMagnitudeFloor), depth);
+            phase[bin]     = lerp (phase[bin],     tempPhase[static_cast<size_t> (bin)], depth);
         }
     }
 
     // STRETCH: Nonlinear frequency-axis warping.
-    // Positive stretch expands lower frequencies (darker), negative expands upper (brighter).
-    void applySpectralStretch (float* mag, float* ph, float stretchAmount, float depth) const noexcept
+    // Applies a power-law warp to the frequency axis:
+    //   positive stretch -> exponent > 1 -> compresses upper frequencies,
+    //     expands lower frequencies -> darker timbre
+    //   negative stretch -> exponent < 1 -> compresses lower frequencies,
+    //     expands upper frequencies -> brighter timbre
+    // This is analogous to nonlinear pitch scaling in physical modeling --
+    // it changes the spacing between partials, making harmonic sounds
+    // progressively more inharmonic.
+    void applySpectralStretch (float* magnitude, float* phase, float stretchAmount, float depth) const noexcept
     {
-        std::array<float, kFFTHalf> tempMag {};
-        std::array<float, kFFTHalf> tempPh {};
-        tempMag.fill (kMagFloor);
-        tempPh.fill (0.0f);
+        std::array<float, kFFTHalf> tempMagnitude {};
+        std::array<float, kFFTHalf> tempPhase {};
+        tempMagnitude.fill (kMagnitudeFloor);
+        tempPhase.fill (0.0f);
 
-        // Map stretch [-1, 1] to warping exponent [0.5, 2.0]
-        // stretch = 0 -> exponent = 1.0 (no change)
-        // stretch > 0 -> exponent > 1.0 (compress upper, expand lower -> darker)
-        // stretch < 0 -> exponent < 1.0 (compress lower, expand upper -> brighter)
-        float exponent = std::pow (2.0f, stretchAmount);
+        // Map stretch [-1, 1] to warping exponent [0.5, 2.0] via 2^stretch.
+        // This exponential mapping ensures:
+        //   stretch =  0 -> exponent = 1.0  (identity, no change)
+        //   stretch = +1 -> exponent = 2.0  (square-law: darken)
+        //   stretch = -1 -> exponent = 0.5  (square-root: brighten)
+        float warpExponent = std::pow (2.0f, stretchAmount);
 
         for (int bin = 1; bin < kFFTHalf; ++bin)
         {
-            // Normalized frequency [0, 1]
-            float normFreq = static_cast<float> (bin) / static_cast<float> (kFFTHalf - 1);
-            // Apply nonlinear warp
-            float warpedFreq = std::pow (normFreq, exponent);
-            // Map back to bin index
-            float warpedBinF = warpedFreq * static_cast<float> (kFFTHalf - 1);
+            // Normalized frequency position [0, 1]
+            float normalizedFrequency = static_cast<float> (bin) / static_cast<float> (kFFTHalf - 1);
 
-            int wBin0 = static_cast<int> (warpedBinF);
-            int wBin1 = wBin0 + 1;
-            float frac = warpedBinF - static_cast<float> (wBin0);
+            // Apply power-law warp: f_out = f_in ^ exponent
+            float warpedFrequency = std::pow (normalizedFrequency, warpExponent);
 
-            if (wBin0 >= 0 && wBin0 < kFFTHalf)
+            // Map warped frequency back to bin index
+            float warpedBinPosition = warpedFrequency * static_cast<float> (kFFTHalf - 1);
+
+            // Linear interpolation to nearest bins
+            int lowerBin = static_cast<int> (warpedBinPosition);
+            int upperBin = lowerBin + 1;
+            float interpolationFraction = warpedBinPosition - static_cast<float> (lowerBin);
+
+            if (lowerBin >= 0 && lowerBin < kFFTHalf)
             {
-                tempMag[static_cast<size_t> (wBin0)] += mag[bin] * (1.0f - frac);
-                tempPh[static_cast<size_t> (wBin0)]   = ph[bin];
+                tempMagnitude[static_cast<size_t> (lowerBin)] += magnitude[bin] * (1.0f - interpolationFraction);
+                tempPhase[static_cast<size_t> (lowerBin)]      = phase[bin];
             }
-            if (wBin1 >= 0 && wBin1 < kFFTHalf)
+            if (upperBin >= 0 && upperBin < kFFTHalf)
             {
-                tempMag[static_cast<size_t> (wBin1)] += mag[bin] * frac;
-                tempPh[static_cast<size_t> (wBin1)]   = ph[bin];
+                tempMagnitude[static_cast<size_t> (upperBin)] += magnitude[bin] * interpolationFraction;
+                tempPhase[static_cast<size_t> (upperBin)]      = phase[bin];
             }
         }
 
-        // Preserve DC
-        tempMag[0] = mag[0];
-        tempPh[0]  = ph[0];
+        // Preserve DC bin (bin 0) unchanged
+        tempMagnitude[0] = magnitude[0];
+        tempPhase[0]     = phase[0];
 
         // Blend with depth
         for (int bin = 0; bin < kFFTHalf; ++bin)
         {
-            mag[bin] = lerp (mag[bin], std::max (tempMag[static_cast<size_t> (bin)], kMagFloor), depth);
-            ph[bin]  = lerp (ph[bin],  tempPh[static_cast<size_t> (bin)], depth);
+            magnitude[bin] = lerp (magnitude[bin], std::max (tempMagnitude[static_cast<size_t> (bin)], kMagnitudeFloor), depth);
+            phase[bin]     = lerp (phase[bin],     tempPhase[static_cast<size_t> (bin)], depth);
         }
     }
 
     //==========================================================================
-    // 3-point triangular smoothing on magnitude spectrum.
+    //  Triangular Magnitude Smoothing
+    //
+    //  3-point triangular (Bartlett) kernel: [0.25, 0.5, 0.25]
+    //  Smooths harsh spectral discontinuities introduced by the fold
+    //  operations, reducing audible artifacts at bin boundaries while
+    //  preserving the overall spectral shape. Applied in-place with a
+    //  single-pass sliding window.
     //==========================================================================
 
-    static void applyTriangularSmoothing (float* mag) noexcept
+    static void applyTriangularSmoothing (float* magnitude) noexcept
     {
-        // Weights: [0.25, 0.5, 0.25] — standard 3-point triangular kernel
-        float prev = mag[0];
+        // Triangular kernel weights: center = 0.5 (half weight),
+        // neighbors = 0.25 each (quarter weight). Sum = 1.0 (unity gain).
+        float previousBin = magnitude[0];
         for (int bin = 1; bin < kFFTHalf - 1; ++bin)
         {
-            float curr = mag[bin];
-            float smoothed = prev * 0.25f + curr * 0.5f + mag[bin + 1] * 0.25f;
-            mag[bin] = std::max (smoothed, kMagFloor);
-            prev = curr;
+            float currentBin = magnitude[bin];
+            float smoothedValue = previousBin * 0.25f + currentBin * 0.5f + magnitude[bin + 1] * 0.25f;
+            magnitude[bin] = std::max (smoothedValue, kMagnitudeFloor);
+            previousBin = currentBin;
         }
     }
 
     //==========================================================================
-    // MIDI note handling.
+    //  MIDI Note Handling
     //==========================================================================
 
-    void noteOn (int noteNumber, float velocity, int maxPoly,
-                 bool monoMode, bool legatoMode, float glideCoeff,
-                 float ampA, float ampD, float ampS, float ampR,
-                 float foldA, float foldD, float foldS, float foldR,
-                 float lfo1Rate, float lfo1Depth, int lfo1Shape,
-                 float lfo2Rate, float lfo2Depth, int lfo2Shape)
+    void handleNoteOn (int noteNumber, float velocity, int maxPolyphony,
+                       bool monoMode, bool legatoMode, float glideCoefficient,
+                       float ampAttack, float ampDecay, float ampSustain, float ampRelease,
+                       float foldAttack, float foldDecay, float foldSustain, float foldRelease,
+                       float lfo1Rate, float lfo1Depth, int lfo1Shape,
+                       float lfo2Rate, float lfo2Depth, int lfo2Shape)
     {
-        float freq = midiToHz (static_cast<float> (noteNumber));
+        float frequency = midiNoteToFrequency (static_cast<float> (noteNumber));
 
         if (monoMode)
         {
             auto& voice = voices[0];
-            bool wasActive = voice.active;
+            bool wasAlreadyActive = voice.active;
 
-            voice.targetFreq = freq;
+            voice.targetFrequency = frequency;
 
-            if (legatoMode && wasActive)
+            if (legatoMode && wasAlreadyActive)
             {
-                // Legato: don't retrigger envelopes, just glide
-                voice.glideCoeff = glideCoeff;
+                // Legato: glide to new pitch without retriggering envelopes
+                voice.glideCoefficient = glideCoefficient;
                 voice.noteNumber = noteNumber;
                 voice.velocity = velocity;
             }
             else
             {
+                // Full retrigger
                 voice.active = true;
                 voice.noteNumber = noteNumber;
                 voice.velocity = velocity;
-                voice.startTime = voiceCounter++;
-                voice.currentFreq = freq;
-                voice.glideCoeff = glideCoeff;
+                voice.startTime = voiceAllocationCounter++;
+                voice.currentFrequency = frequency;
+                voice.glideCoefficient = glideCoefficient;
                 voice.sawPhase = 0.0f;
-                voice.sqrPhase = 0.0f;
-                voice.fadingOut = false;
-                voice.fadeGain = 1.0f;
+                voice.squarePhase = 0.0f;
+                voice.isFadingOut = false;
+                voice.crossfadeGain = 1.0f;
 
-                voice.ampEnv.setParams (ampA, ampD, ampS, ampR, srf);
-                voice.ampEnv.noteOn();
-                voice.foldEnv.setParams (foldA, foldD, foldS, foldR, srf);
-                voice.foldEnv.noteOn();
+                voice.ampEnvelope.setParams (ampAttack, ampDecay, ampSustain, ampRelease, sampleRateFloat);
+                voice.ampEnvelope.noteOn();
+                voice.foldEnvelope.setParams (foldAttack, foldDecay, foldSustain, foldRelease, sampleRateFloat);
+                voice.foldEnvelope.noteOn();
 
-                voice.lfo1.setRate (lfo1Rate, srf);
+                voice.lfo1.setRate (lfo1Rate, sampleRateFloat);
                 voice.lfo1.setShape (lfo1Shape);
-                voice.lfo2.setRate (lfo2Rate, srf);
+                voice.lfo2.setRate (lfo2Rate, sampleRateFloat);
                 voice.lfo2.setShape (lfo2Shape);
             }
             return;
         }
 
-        // Polyphonic mode
-        int idx = findFreeVoice (maxPoly);
-        auto& voice = voices[static_cast<size_t> (idx)];
+        // ---- Polyphonic mode ----
+        int voiceIndex = findFreeVoice (maxPolyphony);
+        auto& voice = voices[static_cast<size_t> (voiceIndex)];
 
-        // If stealing, initiate crossfade
+        // If stealing an active voice, initiate crossfade out
         if (voice.active)
         {
-            voice.fadingOut = true;
-            voice.fadeGain = std::min (voice.fadeGain, 0.5f);
+            voice.isFadingOut = true;
+            // Cap fade gain at 0.5 to speed up the steal transition
+            voice.crossfadeGain = std::min (voice.crossfadeGain, 0.5f);
         }
 
         voice.active = true;
         voice.noteNumber = noteNumber;
         voice.velocity = velocity;
-        voice.startTime = voiceCounter++;
-        voice.currentFreq = freq;
-        voice.targetFreq = freq;
-        voice.glideCoeff = 1.0f;
+        voice.startTime = voiceAllocationCounter++;
+        voice.currentFrequency = frequency;
+        voice.targetFrequency = frequency;
+        voice.glideCoefficient = 1.0f;      // No glide in poly mode (instant pitch)
         voice.sawPhase = 0.0f;
-        voice.sqrPhase = 0.0f;
-        voice.fadingOut = false;
-        voice.fadeGain = 1.0f;
-        voice.hopCounter = 0;
+        voice.squarePhase = 0.0f;
+        voice.isFadingOut = false;
+        voice.crossfadeGain = 1.0f;
+        voice.hopSampleCounter = 0;
         voice.hasFrozenFrame = false;
 
-        // Clear STFT buffers for clean start
-        voice.inputRing.fill (0.0f);
-        voice.outputAccum.fill (0.0f);
+        // Clear STFT buffers for a clean spectral slate
+        voice.inputRingBuffer.fill (0.0f);
+        voice.overlapAddAccumulator.fill (0.0f);
         voice.analysisFrame.clear();
 
-        voice.ampEnv.setParams (ampA, ampD, ampS, ampR, srf);
-        voice.ampEnv.noteOn();
-        voice.foldEnv.setParams (foldA, foldD, foldS, foldR, srf);
-        voice.foldEnv.noteOn();
+        voice.ampEnvelope.setParams (ampAttack, ampDecay, ampSustain, ampRelease, sampleRateFloat);
+        voice.ampEnvelope.noteOn();
+        voice.foldEnvelope.setParams (foldAttack, foldDecay, foldSustain, foldRelease, sampleRateFloat);
+        voice.foldEnvelope.noteOn();
 
-        voice.lfo1.setRate (lfo1Rate, srf);
+        voice.lfo1.setRate (lfo1Rate, sampleRateFloat);
         voice.lfo1.setShape (lfo1Shape);
         voice.lfo1.reset();
-        voice.lfo2.setRate (lfo2Rate, srf);
+        voice.lfo2.setRate (lfo2Rate, sampleRateFloat);
         voice.lfo2.setShape (lfo2Shape);
         voice.lfo2.reset();
 
+        // Post-FFT smoothing filter: 18kHz lowpass at gentle Q to suppress
+        // any residual spectral artifacts above the audible range
         voice.postFilter.reset();
         voice.postFilter.setMode (CytomicSVF::Mode::LowPass);
-        voice.postFilter.setCoefficients (18000.0f, 0.1f, srf);
+        voice.postFilter.setCoefficients (18000.0f, 0.1f, storedSampleRate);
     }
 
-    void noteOff (int noteNumber)
+    void handleNoteOff (int noteNumber)
     {
         for (auto& voice : voices)
         {
-            if (voice.active && voice.noteNumber == noteNumber && !voice.fadingOut)
+            if (voice.active && voice.noteNumber == noteNumber && !voice.isFadingOut)
             {
-                voice.ampEnv.noteOff();
-                voice.foldEnv.noteOff();
+                voice.ampEnvelope.noteOff();
+                voice.foldEnvelope.noteOff();
             }
         }
     }
 
-    int findFreeVoice (int maxPoly) const
+    // Find the best voice to allocate: prefer inactive voices, then steal
+    // the oldest active voice (Least Recently Used strategy).
+    int findFreeVoice (int maxPolyphony) const
     {
-        int poly = std::min (maxPoly, kMaxVoices);
+        int polyphonyLimit = std::min (maxPolyphony, kMaxVoices);
 
-        // Find inactive voice within polyphony limit
-        for (int i = 0; i < poly; ++i)
+        // First pass: find an inactive voice within the polyphony limit
+        for (int i = 0; i < polyphonyLimit; ++i)
             if (!voices[static_cast<size_t> (i)].active)
                 return i;
 
-        // LRU voice stealing — find oldest voice
-        int oldest = 0;
-        uint64_t oldestTime = UINT64_MAX;
-        for (int i = 0; i < poly; ++i)
+        // Second pass: LRU voice stealing -- find the oldest active voice
+        int oldestVoiceIndex = 0;
+        uint64_t oldestTimestamp = UINT64_MAX;
+        for (int i = 0; i < polyphonyLimit; ++i)
         {
-            if (voices[static_cast<size_t> (i)].startTime < oldestTime)
+            if (voices[static_cast<size_t> (i)].startTime < oldestTimestamp)
             {
-                oldestTime = voices[static_cast<size_t> (i)].startTime;
-                oldest = i;
+                oldestTimestamp = voices[static_cast<size_t> (i)].startTime;
+                oldestVoiceIndex = i;
             }
         }
-        return oldest;
+        return oldestVoiceIndex;
     }
 
-    static float midiToHz (float midiNote) noexcept
+    // Standard MIDI-to-frequency conversion using equal temperament.
+    // A4 (MIDI note 69) = 440 Hz, 12 semitones per octave.
+    static float midiNoteToFrequency (float midiNote) noexcept
     {
         return 440.0f * std::pow (2.0f, (midiNote - 69.0f) / 12.0f);
     }
 
     //==========================================================================
-    // Member data
+    //  Member Data
     //==========================================================================
 
-    double sr = 44100.0;
-    float srf = 44100.0f;
-    float smoothCoeff = 0.1f;
-    float crossfadeRate = 0.01f;
-    float binFreqStep = 44100.0f / static_cast<float> (kFFTSize);
+    // ---- Sample Rate ----
+    double storedSampleRate = 44100.0;               // Full-precision sample rate for filter coefficient computation
+    float sampleRateFloat = 44100.0f;                // Float-precision sample rate for per-sample DSP
 
+    // ---- Control Smoothing ----
+    float parameterSmoothingCoefficient = 0.1f;      // Per-sample smoothing rate (5ms time constant)
+    float voiceCrossfadeRate = 0.01f;                 // Per-sample fade rate for voice stealing (5ms)
+    float frequencyPerBin = 44100.0f / static_cast<float> (kFFTSize);   // Hz per FFT bin
+
+    // ---- Voice Pool ----
     std::array<OrigamiVoice, kMaxVoices> voices;
-    uint64_t voiceCounter = 0;
-    int activeVoices = 0;
+    uint64_t voiceAllocationCounter = 0;             // Monotonic counter for LRU voice stealing
+    int activeVoiceCount = 0;                         // Current number of sounding voices
 
-    // Pre-computed Hann window
-    std::array<float, kFFTSize> hannWindow {};
+    // ---- Pre-Computed Tables ----
+    std::array<float, kFFTSize> hannWindow {};                      // Hann analysis/synthesis window
+    std::array<int, kFFTSize> bitReversalTable {};                  // FFT bit-reversal permutation indices
+    std::array<float, kFFTSize / 2> twiddleFactorsReal {};          // FFT twiddle factors (cosine)
+    std::array<float, kFFTSize / 2> twiddleFactorsImaginary {};     // FFT twiddle factors (sine)
 
-    // Pre-computed bit-reversal table and twiddle factors for FFT
-    std::array<int, kFFTSize> bitReversalTable {};
-    std::array<float, kFFTSize / 2> twiddleReal {};
-    std::array<float, kFFTSize / 2> twiddleImag {};
-
-    // Smoothed control parameters
+    // ---- Smoothed Control Parameters ----
     float smoothedFoldPoint = 0.5f;
     float smoothedFoldDepth = 0.5f;
     float smoothedRotate = 0.0f;
     float smoothedStretch = 0.0f;
 
-    // Coupling accumulators
-    float envelopeOutput = 0.0f;
-    float couplingFoldDepthMod = 0.0f;
-    float couplingFoldPointMod = 0.0f;
-    float couplingFreezeTrigger = 0.0f;
-    float couplingSourceMod = 0.0f;
+    // ---- Coupling State ----
+    float envelopeOutput = 0.0f;                      // Peak envelope level for amplitude coupling output
+    float couplingFoldDepthModulation = 0.0f;          // Accumulated fold depth offset from external engines
+    float couplingFoldPointModulation = 0.0f;          // Accumulated fold point offset from external engines
+    float couplingFreezeTrigger = 0.0f;                // Binary freeze trigger from rhythm coupling
+    float couplingSourceModulation = 0.0f;             // Source blend offset from audio coupling
 
-    // Output cache for coupling reads
-    std::vector<float> outputCacheL;
-    std::vector<float> outputCacheR;
+    // ---- Output Cache (for inter-engine coupling reads) ----
+    std::vector<float> outputCacheLeft;
+    std::vector<float> outputCacheRight;
 
-    // Coupling input audio buffer
+    // ---- Coupling Input Buffer (receives external audio) ----
     std::vector<float> couplingInputBuffer;
 
-    // Cached APVTS parameter pointers
+    // ---- Cached APVTS Parameter Pointers ----
+    // These are set once during attachParameters() and read per-block
+    // via loadParam(). nullptr until attached.
+
+    // Core spectral parameters
     std::atomic<float>* pFoldPoint = nullptr;
     std::atomic<float>* pFoldDepth = nullptr;
     std::atomic<float>* pFoldCount = nullptr;
@@ -1563,16 +1883,19 @@ private:
     std::atomic<float>* pOscMix = nullptr;
     std::atomic<float>* pLevel = nullptr;
 
+    // Amplitude envelope
     std::atomic<float>* pAmpAttack = nullptr;
     std::atomic<float>* pAmpDecay = nullptr;
     std::atomic<float>* pAmpSustain = nullptr;
     std::atomic<float>* pAmpRelease = nullptr;
 
+    // Fold envelope
     std::atomic<float>* pFoldEnvAttack = nullptr;
     std::atomic<float>* pFoldEnvDecay = nullptr;
     std::atomic<float>* pFoldEnvSustain = nullptr;
     std::atomic<float>* pFoldEnvRelease = nullptr;
 
+    // LFOs
     std::atomic<float>* pLfo1Rate = nullptr;
     std::atomic<float>* pLfo1Depth = nullptr;
     std::atomic<float>* pLfo1Shape = nullptr;
@@ -1580,9 +1903,11 @@ private:
     std::atomic<float>* pLfo2Depth = nullptr;
     std::atomic<float>* pLfo2Shape = nullptr;
 
+    // Voice parameters
     std::atomic<float>* pVoiceMode = nullptr;
     std::atomic<float>* pGlide = nullptr;
 
+    // Macros
     std::atomic<float>* pMacroFold = nullptr;
     std::atomic<float>* pMacroMotion = nullptr;
     std::atomic<float>* pMacroCoupling = nullptr;

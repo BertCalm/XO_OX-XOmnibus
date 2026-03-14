@@ -35,12 +35,12 @@
       "fat_oscMode": 1,
       "fat_unisonVoices": 7,
       "fat_detune": 0.3,
-      "fat_filterCutoff": 4000.0,
-      "fat_filterReso": 0.25,
-      "fat_attack": 0.1,
-      "fat_decay": 0.8,
-      "fat_sustain": 0.7,
-      "fat_release": 1.0,
+      "fat_fltCutoff": 4000.0,
+      "fat_fltReso": 0.25,
+      "fat_ampAttack": 0.1,
+      "fat_ampDecay": 0.8,
+      "fat_ampSustain": 0.7,
+      "fat_ampRelease": 1.0,
       "fat_level": 0.6
     },
     "Organon": {

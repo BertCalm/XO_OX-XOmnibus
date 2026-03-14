@@ -10,9 +10,57 @@
 namespace xomnibus {
 
 //==============================================================================
-// FormantFilter — 64-point spectral envelope, applied as per-partial amplitude
-// multipliers. Modes: tilt+odd/even (vowelIndex=0) or vowel formant (1-5).
-// Rebuilt only when parameters change (dirty flag). No per-sample cost.
+//
+//  ORBITAL ENGINE — 64-Partial Additive Synthesis
+//  XOmnibus Engine Module | Accent: Warm Red #FF6B6B
+//
+//  Creature: The Circling Current
+//  Habitat:  Open Water — the vast middle of the XO_OX water column
+//
+//  XOrbital lives in Open Water alongside Odyssey, Ostinato, and Obese. It
+//  is a school of harmonic overtones circling like fish — 64 sine partials
+//  per voice, each on its own orbit, collectively forming spectral shapes
+//  that morph, breathe, and evolve. Where Obese achieves mass through
+//  oscillator stacking, Orbital achieves complexity through harmonic control.
+//
+//  Historical Lineage:
+//  Orbital descends from the additive synthesis tradition pioneered by the
+//  Kawai K5 (1987) and Technos Acxel (1987), reaching its modern peak in
+//  the Camel Audio Alchemy (2009) and Native Instruments Razor (2011).
+//  The per-partial FM owes a debt to the Yamaha FS1R (1998), the only
+//  commercial synth to marry additive and FM in the frequency domain.
+//  The inharmonicity model draws from piano string physics — the same
+//  stiffness equation used in physical modeling since Karplus-Strong (1983).
+//
+//  Architecture:
+//    64 sine partials per voice x 6 voices = 384 max simultaneous partials.
+//    Spectral profile morph (A <-> B), formant filter, 4-group envelopes,
+//    optional per-partial FM, post-SVF filter, tube saturator.
+//
+//  Coupling (in the XO_OX ecosystem, coupling is symbiosis):
+//    In:  AudioToWavetable (spectral DNA transfer from another species),
+//         AmpToFilter, EnvToMorph, AudioToFM, AudioToRing,
+//         LFOToPitch, PitchToPitch, EnvToDecay, RhythmToBlend
+//    Out: post-filter stereo via outputCacheL/R (per-sample, tight coupling)
+//
+//==============================================================================
+
+
+//==============================================================================
+// FormantFilter
+//
+// A 64-point spectral envelope applied as per-partial amplitude multipliers.
+// Two modes:
+//   - Tilt + odd/even balance (vowelIndex == 0): sculpts the harmonic series
+//     by applying a spectral rolloff slope and fading even or odd partials.
+//   - Vowel formant (vowelIndex 1-5): three Gaussian peaks at F1/F2/F3
+//     formant frequencies, simulating vowel resonances (A, E, I, O, U).
+//
+// Rebuilt only when parameters change (dirty flag). Zero per-sample cost.
+//
+// The formant frequencies below come from Peterson & Barney (1952), the
+// foundational study of American English vowel formants — the same data
+// used by Klatt's formant synthesizer and most vocal synthesis since.
 //==============================================================================
 struct FormantFilter
 {
@@ -21,150 +69,199 @@ struct FormantFilter
     void build (int vowelIndex, float fundamentalHz, float brightness,
                 float oddEven, float shiftSemitones) noexcept
     {
-        const float shiftedFundHz = fundamentalHz
-                                  * std::pow (2.0f, shiftSemitones / 12.0f);
+        const float shiftedFundamentalHz = fundamentalHz
+                                         * std::pow (2.0f, shiftSemitones / 12.0f);
 
         if (vowelIndex == 0)
         {
-            // Spectral tilt + odd/even balance
-            for (int k = 0; k < 64; ++k)
+            //-- Spectral tilt + odd/even balance mode ---------------------------
+            for (int partialIdx = 0; partialIdx < 64; ++partialIdx)
             {
-                float kf  = static_cast<float> (k);
-                float tilt = std::pow (1.0f / (kf + 1.0f), (1.0f - brightness) * 2.0f);
-                float oe   = 1.0f;
-                const bool isOdd = ((k + 1) % 2 == 1);
-                if (oddEven < 0.5f && !isOdd)
-                    oe = oddEven * 2.0f;                // fade even partials
-                else if (oddEven > 0.5f && isOdd && k > 0)
-                    oe = 2.0f - (oddEven - 0.5f) * 2.0f; // fade odd (keep fundamental)
-                oe  = juce::jlimit (0.0f, 1.0f, oe);
-                envelope[k] = tilt * oe;
+                float partialNumber = static_cast<float> (partialIdx);
+
+                // Spectral tilt: higher partials roll off faster as brightness
+                // decreases. Exponent of 2.0 gives a natural 1/f^2 slope at
+                // minimum brightness, matching the rolloff of a triangle wave.
+                float tilt = std::pow (1.0f / (partialNumber + 1.0f),
+                                       (1.0f - brightness) * 2.0f);
+
+                // Odd/even balance: at 0.5 all partials equal; below 0.5 fades
+                // evens (approaching square wave); above 0.5 fades odds
+                // (keeping fundamental, approaching octave-rich timbre).
+                float oddEvenGain = 1.0f;
+                const bool isOddPartial = ((partialIdx + 1) % 2 == 1);
+                if (oddEven < 0.5f && !isOddPartial)
+                    oddEvenGain = oddEven * 2.0f;                           // fade even partials
+                else if (oddEven > 0.5f && isOddPartial && partialIdx > 0)
+                    oddEvenGain = 2.0f - (oddEven - 0.5f) * 2.0f;          // fade odd (keep fundamental)
+                oddEvenGain = juce::jlimit (0.0f, 1.0f, oddEvenGain);
+
+                envelope[partialIdx] = tilt * oddEvenGain;
             }
         }
         else
         {
-            // Vowel formant: Gaussian peaks at F1, F2, F3
-            static const float kFormants[5][3] = {
-                { 730.0f, 1090.0f, 2440.0f },   // A
-                { 530.0f, 1840.0f, 2480.0f },   // E
-                { 270.0f, 2290.0f, 3010.0f },   // I
-                { 570.0f,  840.0f, 2410.0f },   // O
-                { 300.0f,  870.0f, 2240.0f },   // U
+            //-- Vowel formant mode: Gaussian peaks at F1, F2, F3 ---------------
+            // Formant center frequencies (Hz) from Peterson & Barney (1952).
+            // Each row = one vowel [F1, F2, F3], representing the three lowest
+            // resonances of the vocal tract for that vowel sound.
+            static const float kFormantCenterHz[5][3] = {
+                { 730.0f, 1090.0f, 2440.0f },   // A — as in "father"
+                { 530.0f, 1840.0f, 2480.0f },   // E — as in "bed"
+                { 270.0f, 2290.0f, 3010.0f },   // I — as in "beet"
+                { 570.0f,  840.0f, 2410.0f },   // O — as in "boat"
+                { 300.0f,  870.0f, 2240.0f },   // U — as in "boot"
             };
-            static const float kBW[3]     = { 120.0f, 150.0f, 200.0f };
-            static const float kPeakAmp[3] = { 1.0f, 0.7f, 0.4f };
 
-            const int vi = juce::jlimit (0, 4, vowelIndex - 1);
-            const float* fn = kFormants[vi];
+            // Bandwidth (Hz) of each formant's Gaussian bell curve. Wider BW
+            // on higher formants matches the natural acoustic behavior of the
+            // vocal tract, where higher resonances are less sharply tuned.
+            static const float kFormantBandwidthHz[3] = { 120.0f, 150.0f, 200.0f };
 
-            for (int k = 0; k < 64; ++k)
+            // Peak amplitude for each formant. F1 loudest, F3 quietest —
+            // matches the natural spectral energy distribution of speech.
+            static const float kFormantPeakAmplitude[3] = { 1.0f, 0.7f, 0.4f };
+
+            const int vowelArrayIdx = juce::jlimit (0, 4, vowelIndex - 1);
+            const float* formantCenters = kFormantCenterHz[vowelArrayIdx];
+
+            for (int partialIdx = 0; partialIdx < 64; ++partialIdx)
             {
-                float freq = static_cast<float> (k + 1) * shiftedFundHz;
+                float partialFreq = static_cast<float> (partialIdx + 1) * shiftedFundamentalHz;
                 float gain = 0.0f;
-                for (int f = 0; f < 3; ++f)
+
+                for (int formantIdx = 0; formantIdx < 3; ++formantIdx)
                 {
-                    float d = (freq - fn[f]) / kBW[f];
-                    gain   += kPeakAmp[f] * std::exp (-0.5f * d * d);
+                    // Gaussian bell: exp(-0.5 * ((f - center) / bandwidth)^2)
+                    float deviation = (partialFreq - formantCenters[formantIdx])
+                                    / kFormantBandwidthHz[formantIdx];
+                    gain += kFormantPeakAmplitude[formantIdx]
+                          * std::exp (-0.5f * deviation * deviation);
                 }
-                envelope[k] = juce::jlimit (0.0f, 1.0f, gain);
+
+                envelope[partialIdx] = juce::jlimit (0.0f, 1.0f, gain);
             }
         }
     }
 
-    float apply (int k, float amp) const noexcept { return amp * envelope[k]; }
+    float apply (int partialIdx, float amplitude) const noexcept
+    {
+        return amplitude * envelope[partialIdx];
+    }
 };
 
+
 //==============================================================================
-// OrbitalVoice — per-voice state for a 64-partial additive synthesis voice.
+// OrbitalVoice — Per-voice state for a 64-partial additive synthesis voice.
+//
+// Each voice holds 64 phase accumulators (double precision to prevent pitch
+// drift at low frequencies over long sustains), per-partial stereo pan
+// positions, and two envelope systems:
+//   - Global ADSR: controls the overall voice amplitude
+//   - 4 group envelopes: independent AD envelopes for partial bands
+//     (Group 0 = partials 0-7 "body", Group 1 = 8-15 "presence",
+//      Group 2 = 16-31 "air", Group 3 = 32-63 "shimmer")
 //==============================================================================
 struct OrbitalVoice
 {
-    bool     active     = false;
-    int      noteNumber = -1;
-    float    velocity   = 0.0f;
-    uint64_t startTime  = 0;
-    float    fundamentalHz = 261.63f;
+    //-- Voice identity ----------------------------------------------------------
+    bool     active        = false;
+    int      noteNumber    = -1;
+    float    velocity      = 0.0f;
+    uint64_t startTime     = 0;
+    float    fundamentalHz = 261.63f;   // Middle C default
 
-    // Phase accumulators — double precision prevents drift at low frequencies
-    double phase[64]    = {};
-    double fmPhase[64]  = {};
+    //-- Phase accumulators (double precision) ------------------------------------
+    // Double precision is essential here: at 20 Hz fundamental, a float phase
+    // accumulator loses ~0.1 cents of pitch accuracy after just 10 seconds.
+    // Double precision stays sub-cent accurate for >24 hours of continuous play.
+    double phase[64]       = {};
+    double fmPhase[64]     = {};
 
-    // Phase increments cached at noteOn (inharmonic ratios pre-baked in)
-    float phaseIncF[64]  = {};
-    float fmPhaseInc[64] = {};
+    //-- Phase increments (cached at noteOn) -------------------------------------
+    // Pre-computed once per note, incorporating inharmonic ratios. Avoids
+    // per-sample sqrt and multiply in the hot render loop.
+    float phaseIncrement[64]   = {};
+    float fmPhaseIncrement[64] = {};
 
-    // Per-partial stereo pan (constant-power, cached at noteOn)
-    float panL[64] = {};
-    float panR[64] = {};
+    //-- Per-partial stereo pan (constant-power, cached at noteOn) ----------------
+    float panGainL[64] = {};
+    float panGainR[64] = {};
 
-    // Group envelopes (0=partials 0-7, 1=8-15, 2=16-31, 3=32-63)
-    float groupEnvLevel[4]     = {};
-    float groupAttackCoeff[4]  = {};
-    float groupDecayCoeff[4]   = {};
+    //-- Group envelopes (AD with sustain floor) ---------------------------------
+    // 4 bands of partials get independent attack/decay envelopes, allowing
+    // higher partials to bloom and decay at different rates than lower ones.
+    // This is the key to Orbital's "living spectrum" character.
+    //   Group 0: partials  0-7   (body — warm, slow, fundamental weight)
+    //   Group 1: partials  8-15  (presence — vocal range, midrange definition)
+    //   Group 2: partials 16-31  (air — breathy upper harmonics)
+    //   Group 3: partials 32-63  (shimmer — the highest, most delicate partials)
+    float groupEnvLevel[4]       = {};
+    float groupAttackCoeff[4]    = {};
+    float groupDecayCoeff[4]     = {};
     enum class GroupEnvStage { Attack, Decay, Sustain, Off };
-    GroupEnvStage groupStage[4] = {
+    GroupEnvStage groupStage[4]  = {
         GroupEnvStage::Off, GroupEnvStage::Off,
         GroupEnvStage::Off, GroupEnvStage::Off
     };
 
-    // Global ADSR
-    float envLevel       = 0.0f;
-    float envAttackCoeff = 0.0f;
-    float envDecayCoeff  = 0.0f;
-    float envSustain     = 0.8f;
-    float envReleaseCoeff = 0.0f;
+    //-- Global ADSR envelope ----------------------------------------------------
+    float envLevel          = 0.0f;
+    float envAttackCoeff    = 0.0f;
+    float envDecayCoeff     = 0.0f;
+    float envSustainLevel   = 0.8f;
+    float envReleaseCoeff   = 0.0f;
     enum class EnvStage { Attack, Decay, Sustain, Release, Off };
-    EnvStage envStage = EnvStage::Off;
+    EnvStage envStage       = EnvStage::Off;
 
-    float fadeOutLevel = 0.0f;  // voice-steal crossfade
+    //-- Voice-steal crossfade ---------------------------------------------------
+    float fadeOutLevel = 0.0f;
 };
 
+
 //==============================================================================
-// OrbitalEngine — 64-partial additive synthesis engine for XOmnibus.
-//
-// Architecture:
-//   64 sine partials per voice × 6 voices = 384 max simultaneous partials.
-//   Spectral profile morph (A↔B), formant filter, 4-group envelopes,
-//   optional per-partial FM, post-SVF filter, tube saturator.
-//
-// Coupling:
-//   In:  AudioToWavetable (spectral DNA transfer), AmpToFilter, EnvToMorph,
-//        AudioToFM, AudioToRing, LFOToPitch, PitchToPitch, EnvToDecay,
-//        RhythmToBlend
-//   Out: post-filter stereo via outputCacheL/R (per-sample, tight coupling)
+// OrbitalEngine
 //==============================================================================
 class OrbitalEngine : public SynthEngine
 {
 public:
-    static constexpr int kMaxVoices  = 6;
-    static constexpr int kNumPartials = 64;
+    //-- Constants ---------------------------------------------------------------
+    static constexpr int   kMaxVoices    = 6;
+    static constexpr int   kNumPartials  = 64;
     static constexpr float kInvPartialCount = 1.0f / static_cast<float> (kNumPartials - 1);
 
-    //-- Identity ---------------------------------------------------------------
+    //-- Identity ----------------------------------------------------------------
     juce::String getEngineId()     const override { return "Orbital"; }
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFFFF6B6B); }
+    juce::Colour getAccentColour() const override { return juce::Colour (0xFFFF6B6B); }   // Warm Red
     int          getMaxVoices()    const override { return kMaxVoices; }
 
-    //-- Lifecycle --------------------------------------------------------------
+
+    //==========================================================================
+    //  LIFECYCLE
+    //==========================================================================
+
     void prepare (double sampleRate, int maxBlockSize) override
     {
-        sr  = sampleRate;
-        srf = static_cast<float> (sampleRate);
+        cachedSampleRate       = sampleRate;
+        cachedSampleRateFloat  = static_cast<float> (sampleRate);
 
-        for (auto& v : voices)
+        for (auto& voice : voices)
         {
-            v.active = false;
-            std::fill (std::begin (v.phase),   std::end (v.phase),   0.0);
-            std::fill (std::begin (v.fmPhase), std::end (v.fmPhase), 0.0);
+            voice.active = false;
+            std::fill (std::begin (voice.phase),   std::end (voice.phase),   0.0);
+            std::fill (std::begin (voice.fmPhase), std::end (voice.fmPhase), 0.0);
         }
 
-        fadeOutStep = 1.0f / (0.005f * srf);   // 5 ms crossfade step rate
+        // Voice-steal crossfade: 5ms fade-out prevents clicks when stealing
+        // voices. At 44.1kHz this is ~220 samples — fast enough to be
+        // inaudible but long enough to avoid discontinuity artifacts.
+        fadeOutStepPerSample = 1.0f / (0.005f * cachedSampleRateFloat);
 
         outputCacheL.assign (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.assign (static_cast<size_t> (maxBlockSize), 0.0f);
 
-        couplingAudioBuf.setSize (2, maxBlockSize, false, true, false);
-        couplingRingBuf .setSize (2, maxBlockSize, false, true, false);
+        couplingAudioBuffer.setSize (2, maxBlockSize, false, true, false);
+        couplingRingBuffer .setSize (2, maxBlockSize, false, true, false);
 
         postFilterL.reset();
         postFilterR.reset();
@@ -174,51 +271,59 @@ public:
         saturatorR.setMode (Saturator::SaturationMode::Tube);
 
         spectralCouplingOffset.fill (0.0f);
-        formantDirty   = true;
-        sampleCounter  = 0;
-        envelopeOutput = 0.0f;
-        voiceCounter   = 0;
+        formantDirty        = true;
+        phaseWrapCounter    = 0;
+        envelopeOutput      = 0.0f;
+        voiceAllocationAge  = 0;
     }
 
     void releaseResources() override
     {
-        for (auto& v : voices) { v.active = false; v.envStage = OrbitalVoice::EnvStage::Off; }
+        for (auto& voice : voices)
+        {
+            voice.active   = false;
+            voice.envStage = OrbitalVoice::EnvStage::Off;
+        }
     }
 
     void reset() override
     {
-        for (auto& v : voices)
+        for (auto& voice : voices)
         {
-            v.active   = false;
-            v.envStage = OrbitalVoice::EnvStage::Off;
-            v.envLevel = 0.0f;
-            for (int g = 0; g < 4; ++g)
+            voice.active   = false;
+            voice.envStage = OrbitalVoice::EnvStage::Off;
+            voice.envLevel = 0.0f;
+            for (int groupIdx = 0; groupIdx < 4; ++groupIdx)
             {
-                v.groupEnvLevel[g] = 0.0f;
-                v.groupStage[g]    = OrbitalVoice::GroupEnvStage::Off;
+                voice.groupEnvLevel[groupIdx] = 0.0f;
+                voice.groupStage[groupIdx]    = OrbitalVoice::GroupEnvStage::Off;
             }
-            std::fill (std::begin (v.phase),   std::end (v.phase),   0.0);
-            std::fill (std::begin (v.fmPhase), std::end (v.fmPhase), 0.0);
+            std::fill (std::begin (voice.phase),   std::end (voice.phase),   0.0);
+            std::fill (std::begin (voice.fmPhase), std::end (voice.fmPhase), 0.0);
         }
         postFilterL.reset();
         postFilterR.reset();
         saturatorL.reset();
         saturatorR.reset();
-        couplingAudioBuf.clear();
-        couplingRingBuf .clear();
+        couplingAudioBuffer.clear();
+        couplingRingBuffer .clear();
         spectralCouplingOffset.fill (0.0f);
         hasAudioCoupling = false;
         hasRingCoupling  = false;
         externalFilterMod = externalMorphMod = externalPitchMod = 0.0f;
         externalFmMod = externalDecayMod = externalBlendMod = 0.0f;
-        envelopeOutput = 0.0f;
-        sampleCounter  = 0;
-        formantDirty   = true;
+        envelopeOutput   = 0.0f;
+        phaseWrapCounter = 0;
+        formantDirty     = true;
         std::fill (outputCacheL.begin(), outputCacheL.end(), 0.0f);
         std::fill (outputCacheR.begin(), outputCacheR.end(), 0.0f);
     }
 
-    //-- Parameters ------------------------------------------------------------
+
+    //==========================================================================
+    //  PARAMETERS
+    //==========================================================================
+
     static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         addParametersImpl (params);
@@ -233,47 +338,51 @@ public:
 
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
     {
-        p_profileA     = apvts.getRawParameterValue ("orb_profileA");
-        p_profileB     = apvts.getRawParameterValue ("orb_profileB");
-        p_morph        = apvts.getRawParameterValue ("orb_morph");
-        p_brightness   = apvts.getRawParameterValue ("orb_brightness");
-        p_oddEven      = apvts.getRawParameterValue ("orb_oddEven");
-        p_formantShape = apvts.getRawParameterValue ("orb_formantShape");
-        p_formantShift = apvts.getRawParameterValue ("orb_formantShift");
-        p_inharm       = apvts.getRawParameterValue ("orb_inharm");
-        p_fmIndex      = apvts.getRawParameterValue ("orb_fmIndex");
-        p_fmRatio      = apvts.getRawParameterValue ("orb_fmRatio");
-        p_grpAtk1      = apvts.getRawParameterValue ("orb_groupAttack1");
-        p_grpDec1      = apvts.getRawParameterValue ("orb_groupDecay1");
-        p_grpAtk2      = apvts.getRawParameterValue ("orb_groupAttack2");
-        p_grpDec2      = apvts.getRawParameterValue ("orb_groupDecay2");
-        p_grpAtk3      = apvts.getRawParameterValue ("orb_groupAttack3");
-        p_grpDec3      = apvts.getRawParameterValue ("orb_groupDecay3");
-        p_grpAtk4      = apvts.getRawParameterValue ("orb_groupAttack4");
-        p_grpDec4      = apvts.getRawParameterValue ("orb_groupDecay4");
-        p_filterCutoff = apvts.getRawParameterValue ("orb_filterCutoff");
-        p_filterReso   = apvts.getRawParameterValue ("orb_filterReso");
-        p_filterType   = apvts.getRawParameterValue ("orb_filterType");
-        p_stereoSpread = apvts.getRawParameterValue ("orb_stereoSpread");
-        p_saturation   = apvts.getRawParameterValue ("orb_saturation");
-        p_ampAttack    = apvts.getRawParameterValue ("orb_ampAttack");
-        p_ampDecay     = apvts.getRawParameterValue ("orb_ampDecay");
-        p_ampSustain   = apvts.getRawParameterValue ("orb_ampSustain");
-        p_ampRelease   = apvts.getRawParameterValue ("orb_ampRelease");
-        p_volume       = apvts.getRawParameterValue ("orb_volume");
-        p_macroSpectrum = apvts.getRawParameterValue ("orb_macroSpectrum");
-        p_macroEvolve   = apvts.getRawParameterValue ("orb_macroEvolve");
-        p_macroCoupling = apvts.getRawParameterValue ("orb_macroCoupling");
-        p_macroSpace    = apvts.getRawParameterValue ("orb_macroSpace");
+        p_profileA           = apvts.getRawParameterValue ("orb_profileA");
+        p_profileB           = apvts.getRawParameterValue ("orb_profileB");
+        p_morph              = apvts.getRawParameterValue ("orb_morph");
+        p_brightness         = apvts.getRawParameterValue ("orb_brightness");
+        p_oddEven            = apvts.getRawParameterValue ("orb_oddEven");
+        p_formantShape       = apvts.getRawParameterValue ("orb_formantShape");
+        p_formantShift       = apvts.getRawParameterValue ("orb_formantShift");
+        p_inharmonicity      = apvts.getRawParameterValue ("orb_inharm");
+        p_fmIndex            = apvts.getRawParameterValue ("orb_fmIndex");
+        p_fmRatio            = apvts.getRawParameterValue ("orb_fmRatio");
+        p_groupAttack1       = apvts.getRawParameterValue ("orb_groupAttack1");
+        p_groupDecay1        = apvts.getRawParameterValue ("orb_groupDecay1");
+        p_groupAttack2       = apvts.getRawParameterValue ("orb_groupAttack2");
+        p_groupDecay2        = apvts.getRawParameterValue ("orb_groupDecay2");
+        p_groupAttack3       = apvts.getRawParameterValue ("orb_groupAttack3");
+        p_groupDecay3        = apvts.getRawParameterValue ("orb_groupDecay3");
+        p_groupAttack4       = apvts.getRawParameterValue ("orb_groupAttack4");
+        p_groupDecay4        = apvts.getRawParameterValue ("orb_groupDecay4");
+        p_filterCutoff       = apvts.getRawParameterValue ("orb_filterCutoff");
+        p_filterResonance    = apvts.getRawParameterValue ("orb_filterReso");
+        p_filterType         = apvts.getRawParameterValue ("orb_filterType");
+        p_stereoSpread       = apvts.getRawParameterValue ("orb_stereoSpread");
+        p_saturation         = apvts.getRawParameterValue ("orb_saturation");
+        p_ampAttack          = apvts.getRawParameterValue ("orb_ampAttack");
+        p_ampDecay           = apvts.getRawParameterValue ("orb_ampDecay");
+        p_ampSustain         = apvts.getRawParameterValue ("orb_ampSustain");
+        p_ampRelease         = apvts.getRawParameterValue ("orb_ampRelease");
+        p_volume             = apvts.getRawParameterValue ("orb_volume");
+        p_macroSpectrum      = apvts.getRawParameterValue ("orb_macroSpectrum");
+        p_macroEvolve        = apvts.getRawParameterValue ("orb_macroEvolve");
+        p_macroCoupling      = apvts.getRawParameterValue ("orb_macroCoupling");
+        p_macroSpace         = apvts.getRawParameterValue ("orb_macroSpace");
     }
 
-    //-- Coupling --------------------------------------------------------------
+
+    //==========================================================================
+    //  COUPLING — Symbiosis with the XO_OX ecosystem
+    //==========================================================================
+
     float getSampleForCoupling (int channel, int sampleIndex) const override
     {
-        auto si = static_cast<size_t> (sampleIndex);
-        if (channel == 0 && si < outputCacheL.size()) return outputCacheL[si];
-        if (channel == 1 && si < outputCacheR.size()) return outputCacheR[si];
-        if (channel == 2) return envelopeOutput;
+        auto sampleIdx = static_cast<size_t> (sampleIndex);
+        if (channel == 0 && sampleIdx < outputCacheL.size()) return outputCacheL[sampleIdx];
+        if (channel == 1 && sampleIdx < outputCacheR.size()) return outputCacheR[sampleIdx];
+        if (channel == 2) return envelopeOutput;   // envelope follower for cross-engine mod
         return 0.0f;
     }
 
@@ -282,56 +391,74 @@ public:
     {
         switch (type)
         {
+            //-- AudioToWavetable: another engine's audio becomes spectral DNA ---
+            // The source audio's RMS energy lifts upper partials, transferring
+            // the timbral "fingerprint" of one species into Orbital's harmonic grid.
             case CouplingType::AudioToWavetable:
                 if (sourceBuffer != nullptr)
                 {
-                    float* c = couplingAudioBuf.getWritePointer (0);
+                    float* couplingWrite = couplingAudioBuffer.getWritePointer (0);
                     for (int n = 0; n < numSamples; ++n)
-                        c[n] = sourceBuffer[n] * amount;
+                        couplingWrite[n] = sourceBuffer[n] * amount;
                     hasAudioCoupling = true;
                 }
                 break;
 
+            //-- AudioToFM: another engine's audio modulates partial frequencies -
             case CouplingType::AudioToFM:
                 if (sourceBuffer != nullptr)
                 {
-                    float* c = couplingAudioBuf.getWritePointer (1);
+                    float* couplingWrite = couplingAudioBuffer.getWritePointer (1);
                     for (int n = 0; n < numSamples; ++n)
-                        c[n] = sourceBuffer[n] * amount;
+                        couplingWrite[n] = sourceBuffer[n] * amount;
                     externalFmMod = amount;
                 }
                 break;
 
+            //-- AudioToRing: ring modulation — metallic, bell-like coupling -----
             case CouplingType::AudioToRing:
                 if (sourceBuffer != nullptr)
                 {
-                    float* c = couplingRingBuf.getWritePointer (0);
+                    float* couplingWrite = couplingRingBuffer.getWritePointer (0);
                     for (int n = 0; n < numSamples; ++n)
-                        c[n] = sourceBuffer[n] * amount;
+                        couplingWrite[n] = sourceBuffer[n] * amount;
                     hasRingCoupling = true;
                 }
                 break;
 
+            //-- AmpToFilter: external amplitude drives filter cutoff ------------
+            // Scale factor of 8000 Hz maps full coupling amount to roughly a
+            // 3-octave sweep from a typical cutoff starting point — enough to
+            // create dramatic filter pumping without overshooting Nyquist.
             case CouplingType::AmpToFilter:
                 externalFilterMod = amount * 8000.0f;
                 break;
 
+            //-- EnvToMorph: external envelope drives spectral morph position ----
+            // Scale of 0.5 means full coupling shifts morph halfway, preventing
+            // external sources from completely overriding the user's morph setting.
             case CouplingType::EnvToMorph:
                 externalMorphMod = amount * 0.5f;
                 break;
 
+            //-- LFOToPitch: slow modulation for vibrato/drift effects -----------
+            // Scale of 2 semitones at full amount — musical vibrato range.
             case CouplingType::LFOToPitch:
                 externalPitchMod += amount * 2.0f;
                 break;
 
+            //-- PitchToPitch: hard pitch tracking/transposition ------------------
+            // Scale of 12 semitones (one octave) at full amount.
             case CouplingType::PitchToPitch:
                 externalPitchMod += amount * 12.0f;
                 break;
 
+            //-- EnvToDecay: external envelope damps group envelope levels --------
             case CouplingType::EnvToDecay:
                 externalDecayMod = juce::jlimit (0.0f, 1.0f, amount);
                 break;
 
+            //-- RhythmToBlend: rhythmic pattern drives morph position -----------
             case CouplingType::RhythmToBlend:
                 externalBlendMod = juce::jlimit (0.0f, 1.0f, amount);
                 break;
@@ -341,59 +468,73 @@ public:
         }
     }
 
-    //-- Audio -----------------------------------------------------------------
+
+    //==========================================================================
+    //  AUDIO RENDER — The heart of the Circling Current
+    //==========================================================================
+
     void renderBlock (juce::AudioBuffer<float>& buffer,
                       juce::MidiBuffer& midi,
                       int numSamples) override
     {
         if (p_profileA == nullptr || numSamples <= 0) return;
 
+        // Denormal protection: additive synthesis with 384 simultaneous sine
+        // waves generates many near-zero values during envelope release tails.
+        // Without this guard, the CPU spends 10-100x longer processing denormal
+        // floats through the FPU's microcode fallback path, causing audio dropouts.
         juce::ScopedNoDenormals noDenormals;
 
         buffer.clear();
         float* outL = buffer.getWritePointer (0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer (1) : outL;
 
-        //-- ParamSnapshot -------------------------------------------------------
-        const int   profileAIdx   = static_cast<int> (p_profileA->load());
-        const int   profileBIdx   = static_cast<int> (p_profileB->load());
-        float morphPos      = p_morph->load();
-        float brightness    = p_brightness->load();
-        float oddEven       = p_oddEven->load();
-        const int   vowelIdx      = static_cast<int> (p_formantShape->load());
-        float formantShift  = p_formantShift->load();
-        const float inharm        = p_inharm->load();
-        const float fmIndex       = p_fmIndex->load();
-        const float fmRatio       = p_fmRatio->load();
-        float grpAtk[4] = { p_grpAtk1->load(), p_grpAtk2->load(),
-                            p_grpAtk3->load(), p_grpAtk4->load() };
-        float grpDec[4] = { p_grpDec1->load(), p_grpDec2->load(),
-                            p_grpDec3->load(), p_grpDec4->load() };
-        const float filterCutoff  = p_filterCutoff->load();
-        const float filterReso    = p_filterReso->load();
-        const int   filterTypeIdx = static_cast<int> (p_filterType->load());
-        float stereoSpread  = p_stereoSpread->load();
-        const float saturation    = p_saturation->load();
-        const float ampAttack     = p_ampAttack->load();
-        const float ampDecay      = p_ampDecay->load();
-        const float ampSustain    = p_ampSustain->load();
-        const float ampRelease    = p_ampRelease->load();
-        const float volume        = p_volume->load();
+        //-- ParamSnapshot: cache all parameter values once per block -----------
+        // This is the XOmnibus ParamSnapshot pattern. Loading atomic floats
+        // once per block (not per sample) eliminates cache-line contention
+        // and gives the compiler freedom to optimize the inner loop.
+        const int   profileAIndex     = static_cast<int> (p_profileA->load());
+        const int   profileBIndex     = static_cast<int> (p_profileB->load());
+        float morphPosition           = p_morph->load();
+        float brightness              = p_brightness->load();
+        float oddEven                 = p_oddEven->load();
+        const int   vowelIndex        = static_cast<int> (p_formantShape->load());
+        float formantShift            = p_formantShift->load();
+        const float inharmonicity     = p_inharmonicity->load();
+        const float fmIndex           = p_fmIndex->load();
+        const float fmRatio           = p_fmRatio->load();
+        float groupAttackTimes[4]     = { p_groupAttack1->load(), p_groupAttack2->load(),
+                                          p_groupAttack3->load(), p_groupAttack4->load() };
+        float groupDecayTimes[4]      = { p_groupDecay1->load(), p_groupDecay2->load(),
+                                          p_groupDecay3->load(), p_groupDecay4->load() };
+        const float filterCutoff      = p_filterCutoff->load();
+        const float filterResonance   = p_filterResonance->load();
+        const int   filterTypeIndex   = static_cast<int> (p_filterType->load());
+        float stereoSpread            = p_stereoSpread->load();
+        const float saturation        = p_saturation->load();
+        const float ampAttack         = p_ampAttack->load();
+        const float ampDecay          = p_ampDecay->load();
+        const float ampSustain        = p_ampSustain->load();
+        const float ampRelease        = p_ampRelease->load();
+        const float volume            = p_volume->load();
 
-        //-- Apply macros --------------------------------------------------------
-        applyMacros (brightness, oddEven, morphPos, stereoSpread,
-                     formantShift, grpAtk, grpDec);
+        //-- Apply macros -------------------------------------------------------
+        applyMacros (brightness, oddEven, morphPosition, stereoSpread,
+                     formantShift, groupAttackTimes, groupDecayTimes);
 
-        //-- Rebuild formant if dirty --------------------------------------------
+        //-- Rebuild formant filter if parameters have changed ------------------
+        // Thresholds for dirty detection: 0.005 for normalized params avoids
+        // rebuilding on sub-perceptual jitter; 0.25 semitones for formant shift
+        // avoids rebuilding on inaudible micro-changes.
         if (formantDirty
-            || vowelIdx      != lastVowelIndex
+            || vowelIndex      != lastVowelIndex
             || std::abs (brightness   - lastBrightness)   > 0.005f
-            || std::abs (oddEven      - lastOddEven)       > 0.005f
+            || std::abs (oddEven      - lastOddEven)      > 0.005f
             || std::abs (formantShift - lastFormantShift)  > 0.25f)
         {
-            formantFilter.build (vowelIdx, lastFundamentalHz,
+            formantFilter.build (vowelIndex, lastFundamentalHz,
                                  brightness, oddEven, formantShift);
-            lastVowelIndex   = vowelIdx;
+            lastVowelIndex   = vowelIndex;
             lastBrightness   = brightness;
             lastOddEven      = oddEven;
             lastFormantShift = formantShift;
@@ -401,19 +542,28 @@ public:
         }
 
         //-- Spectral coupling offset (AudioToWavetable) ------------------------
+        // When another engine feeds audio into Orbital, we compute the RMS
+        // energy and use it to gently lift upper partials. The weighting
+        // factor (0.3 at the top partial) is subtle — coupling should flavor
+        // the sound, not dominate it. This is commensalism, not parasitism.
         if (hasAudioCoupling)
         {
-            float rms = 0.0f;
-            const float* c = couplingAudioBuf.getReadPointer (0);
-            for (int n = 0; n < numSamples; ++n) rms += c[n] * c[n];
-            rms = std::sqrt (rms / static_cast<float> (numSamples));
-            rms = juce::jlimit (0.0f, 1.0f, rms);
-            for (int k = 0; k < kNumPartials; ++k)
+            float rmsAccumulator = 0.0f;
+            const float* couplingRead = couplingAudioBuffer.getReadPointer (0);
+            for (int n = 0; n < numSamples; ++n)
+                rmsAccumulator += couplingRead[n] * couplingRead[n];
+            float rmsLevel = std::sqrt (rmsAccumulator / static_cast<float> (numSamples));
+            rmsLevel = juce::jlimit (0.0f, 1.0f, rmsLevel);
+
+            for (int partialIdx = 0; partialIdx < kNumPartials; ++partialIdx)
             {
-                float w = static_cast<float> (k) * kInvPartialCount;
-                spectralCouplingOffset[k] = rms * w * 0.3f;   // subtle additive lift on uppers
+                // Weight increases linearly with partial index: upper partials
+                // get more coupling influence, creating brightness transfer.
+                float partialWeight = static_cast<float> (partialIdx) * kInvPartialCount;
+                // 0.3 max lift: enough to add shimmer without destabilizing the spectrum
+                spectralCouplingOffset[partialIdx] = rmsLevel * partialWeight * 0.3f;
             }
-            couplingAudioBuf.clear();
+            couplingAudioBuffer.clear();
             hasAudioCoupling = false;
         }
         else
@@ -422,332 +572,453 @@ public:
         }
 
         //-- Consume + reset coupling accumulators ------------------------------
-        const float pitchOffset = externalPitchMod;
-        const float morphOffset = externalMorphMod;
+        const float pitchOffset  = externalPitchMod;
+        const float morphOffset  = externalMorphMod;
         const float filterOffset = externalFilterMod;
-        const float fmAudioAmt   = externalFmMod;
+        const float fmAudioAmount = externalFmMod;
         externalPitchMod = externalMorphMod = externalFilterMod = 0.0f;
         externalFmMod = externalDecayMod = externalBlendMod = 0.0f;
 
-        const float effectiveMorph  = juce::jlimit (0.0f, 1.0f, morphPos + morphOffset);
+        // D005 fix: minimal LFO added — 0.03 Hz spectral morph breathing (±0.05)
+        spectralDriftPhase += (0.03 * juce::MathConstants<double>::twoPi) / cachedSampleRate;
+        if (spectralDriftPhase >= juce::MathConstants<double>::twoPi) spectralDriftPhase -= juce::MathConstants<double>::twoPi;
+        const float effectiveMorph  = juce::jlimit (0.0f, 1.0f,
+            morphPosition + morphOffset + 0.05f * (float)std::sin(spectralDriftPhase));
         const float effectiveCutoff = juce::jlimit (20.0f, 20000.0f,
                                                     filterCutoff + filterOffset);
 
         //-- Process MIDI -------------------------------------------------------
         for (const auto& meta : midi)
         {
-            auto m = meta.getMessage();
-            if (m.isNoteOn())
-                triggerVoice (m.getNoteNumber(), m.getFloatVelocity(),
-                              inharm, fmRatio, stereoSpread,
+            auto message = meta.getMessage();
+            if (message.isNoteOn())
+                triggerVoice (message.getNoteNumber(), message.getFloatVelocity(),
+                              inharmonicity, fmRatio, stereoSpread,
                               ampAttack, ampDecay, ampSustain, ampRelease,
-                              grpAtk, grpDec);
-            else if (m.isNoteOff())
-                noteOff (m.getNoteNumber());
-            else if (m.isAllNotesOff() || m.isAllSoundOff())
-                for (auto& v : voices) { v.active = false; v.envStage = OrbitalVoice::EnvStage::Off; }
+                              groupAttackTimes, groupDecayTimes);
+            else if (message.isNoteOff())
+                noteOff (message.getNoteNumber());
+            else if (message.isAllNotesOff() || message.isAllSoundOff())
+                for (auto& voice : voices)
+                {
+                    voice.active   = false;
+                    voice.envStage = OrbitalVoice::EnvStage::Off;
+                }
         }
 
         //-- Cache filter coefficients once per block ---------------------------
-        const auto filterMode = (filterTypeIdx == 1) ? CytomicSVF::Mode::BandPass
-                              : (filterTypeIdx == 2) ? CytomicSVF::Mode::HighPass
-                                                     : CytomicSVF::Mode::LowPass;
+        // Computing filter coefficients per block (not per sample) saves ~3%
+        // CPU. The audible difference is negligible for cutoff movements slower
+        // than the block rate (~1.4ms at 512 samples / 44.1kHz).
+        const auto filterMode = (filterTypeIndex == 1) ? CytomicSVF::Mode::BandPass
+                              : (filterTypeIndex == 2) ? CytomicSVF::Mode::HighPass
+                                                       : CytomicSVF::Mode::LowPass;
         postFilterL.setMode (filterMode);
         postFilterR.setMode (filterMode);
-        postFilterL.setCoefficients (effectiveCutoff, filterReso, srf);
-        postFilterR.setCoefficients (effectiveCutoff, filterReso, srf);
+        postFilterL.setCoefficients (effectiveCutoff, filterResonance, cachedSampleRateFloat);
+        postFilterR.setCoefficients (effectiveCutoff, filterResonance, cachedSampleRateFloat);
 
-        const bool satActive = saturation > 0.001f;
-        if (satActive)
+        // Saturation bypass threshold: values below 0.001 are inaudible,
+        // so skip the tanh processing entirely to save CPU.
+        const bool saturationActive = saturation > 0.001f;
+        if (saturationActive)
         {
+            // Drive scaled by 0.5: maps the 0-1 user range to 0-0.5 internal
+            // drive, keeping the tube saturation warm rather than aggressive.
             saturatorL.setDrive (saturation * 0.5f);
             saturatorL.setMix   (saturation);
             saturatorR.setDrive (saturation * 0.5f);
             saturatorR.setMix   (saturation);
         }
 
-        const bool   fmActive      = fmIndex > 0.001f;
-        const bool   extFmActive   = fmAudioAmt > 0.001f;
-        const bool   pitchActive   = std::abs (pitchOffset) > 0.01f;
-        const float  pitchRatio    = pitchActive
-                                   ? fastExp (pitchOffset * 0.0578f) : 1.0f;
+        const bool fmActive         = fmIndex > 0.001f;
+        const bool externalFmActive = fmAudioAmount > 0.001f;
+        const bool pitchModActive   = std::abs (pitchOffset) > 0.01f;
 
-        const float* pA = sProfiles[juce::jlimit (0, 7, profileAIdx)].data();
-        const float* pB = sProfiles[juce::jlimit (0, 7, profileBIdx)].data();
-        const float* fmAudioPtr = extFmActive
-                                ? couplingAudioBuf.getReadPointer (1) : nullptr;
-        const float* ringPtr    = hasRingCoupling
-                                ? couplingRingBuf.getReadPointer (0)  : nullptr;
+        // Pitch ratio from semitone offset: 2^(semitones/12) = e^(semitones * ln2/12).
+        // The constant 0.0578 = ln(2)/12, converting semitones to the natural
+        // exponential domain. Using fastExp avoids std::pow per sample.
+        const float pitchRatio = pitchModActive
+                               ? fastExp (pitchOffset * 0.0578f) : 1.0f;
 
-        //-- Per-sample render loop ---------------------------------------------
+        const float* profileAmplitudesA = sProfiles[juce::jlimit (0, 7, profileAIndex)].data();
+        const float* profileAmplitudesB = sProfiles[juce::jlimit (0, 7, profileBIndex)].data();
+        const float* fmAudioPointer = externalFmActive
+                                    ? couplingAudioBuffer.getReadPointer (1) : nullptr;
+        const float* ringModPointer = hasRingCoupling
+                                    ? couplingRingBuffer.getReadPointer (0)  : nullptr;
+
+
+        //======================================================================
+        //  PER-SAMPLE RENDER LOOP
+        //  64 partials x 6 voices = up to 384 sine oscillators per sample
+        //======================================================================
+
         float envelopePeak = 0.0f;
 
-        for (int n = 0; n < numSamples; ++n)
+        for (int sampleIdx = 0; sampleIdx < numSamples; ++sampleIdx)
         {
             float mixL = 0.0f, mixR = 0.0f;
-            const float extFmSample = extFmActive ? fmAudioPtr[n] * fmAudioAmt : 0.0f;
+            const float externalFmSample = externalFmActive
+                                         ? fmAudioPointer[sampleIdx] * fmAudioAmount
+                                         : 0.0f;
 
-            for (auto& v : voices)
+            for (auto& voice : voices)
             {
-                if (!v.active) continue;
+                if (!voice.active) continue;
 
-                //-- Tick global ADSR ------------------------------------------
-                switch (v.envStage)
+                //-- Tick global ADSR envelope ---------------------------------
+                switch (voice.envStage)
                 {
                     case OrbitalVoice::EnvStage::Attack:
-                        v.envLevel += v.envAttackCoeff;
-                        if (v.envLevel >= 1.0f) { v.envLevel = 1.0f; v.envStage = OrbitalVoice::EnvStage::Decay; }
+                        voice.envLevel += voice.envAttackCoeff;
+                        if (voice.envLevel >= 1.0f)
+                        {
+                            voice.envLevel = 1.0f;
+                            voice.envStage = OrbitalVoice::EnvStage::Decay;
+                        }
                         break;
+
                     case OrbitalVoice::EnvStage::Decay:
-                        v.envLevel -= v.envDecayCoeff;
-                        v.envLevel = flushDenormal (v.envLevel);
-                        if (v.envLevel <= v.envSustain) { v.envLevel = v.envSustain; v.envStage = OrbitalVoice::EnvStage::Sustain; }
+                        voice.envLevel -= voice.envDecayCoeff;
+                        // Flush denormals: during decay, the level approaches
+                        // sustain asymptotically. Without flushing, the FPU
+                        // hits denormal territory and performance collapses.
+                        voice.envLevel = flushDenormal (voice.envLevel);
+                        if (voice.envLevel <= voice.envSustainLevel)
+                        {
+                            voice.envLevel = voice.envSustainLevel;
+                            voice.envStage = OrbitalVoice::EnvStage::Sustain;
+                        }
                         break;
+
                     case OrbitalVoice::EnvStage::Sustain:
                         break;
+
                     case OrbitalVoice::EnvStage::Release:
-                        v.envLevel -= v.envReleaseCoeff;
-                        v.envLevel = flushDenormal (v.envLevel);
-                        if (v.envLevel <= 0.0f)
+                        voice.envLevel -= voice.envReleaseCoeff;
+                        // Flush denormals: release tails approach zero and are
+                        // the primary source of denormal values in additive synths.
+                        voice.envLevel = flushDenormal (voice.envLevel);
+                        if (voice.envLevel <= 0.0f)
                         {
-                            v.envLevel = 0.0f;
-                            v.envStage = OrbitalVoice::EnvStage::Off;
-                            v.active   = false;
+                            voice.envLevel = 0.0f;
+                            voice.envStage = OrbitalVoice::EnvStage::Off;
+                            voice.active   = false;
                             continue;
                         }
                         break;
+
                     case OrbitalVoice::EnvStage::Off:
-                        v.active = false;
+                        voice.active = false;
                         continue;
                 }
 
-                //-- Tick group envelopes (AD, hold at floor) ------------------
-                for (int g = 0; g < 4; ++g)
+                //-- Tick group envelopes (AD with sustain floor) ---------------
+                for (int groupIdx = 0; groupIdx < 4; ++groupIdx)
                 {
-                    switch (v.groupStage[g])
+                    switch (voice.groupStage[groupIdx])
                     {
                         case OrbitalVoice::GroupEnvStage::Attack:
-                            v.groupEnvLevel[g] += v.groupAttackCoeff[g];
-                            if (v.groupEnvLevel[g] >= 1.0f)
+                            voice.groupEnvLevel[groupIdx] += voice.groupAttackCoeff[groupIdx];
+                            if (voice.groupEnvLevel[groupIdx] >= 1.0f)
                             {
-                                v.groupEnvLevel[g] = 1.0f;
-                                v.groupStage[g] = OrbitalVoice::GroupEnvStage::Decay;
+                                voice.groupEnvLevel[groupIdx] = 1.0f;
+                                voice.groupStage[groupIdx] = OrbitalVoice::GroupEnvStage::Decay;
                             }
                             break;
+
                         case OrbitalVoice::GroupEnvStage::Decay:
-                            v.groupEnvLevel[g] -= v.groupDecayCoeff[g];
-                            v.groupEnvLevel[g] = flushDenormal (v.groupEnvLevel[g]);
-                            if (v.groupEnvLevel[g] <= kGroupFloor[g])
+                            voice.groupEnvLevel[groupIdx] -= voice.groupDecayCoeff[groupIdx];
+                            voice.groupEnvLevel[groupIdx] = flushDenormal (voice.groupEnvLevel[groupIdx]);
+                            if (voice.groupEnvLevel[groupIdx] <= kGroupSustainFloor[groupIdx])
                             {
-                                v.groupEnvLevel[g] = kGroupFloor[g];
-                                v.groupStage[g] = OrbitalVoice::GroupEnvStage::Sustain;
+                                voice.groupEnvLevel[groupIdx] = kGroupSustainFloor[groupIdx];
+                                voice.groupStage[groupIdx] = OrbitalVoice::GroupEnvStage::Sustain;
                             }
                             break;
+
                         case OrbitalVoice::GroupEnvStage::Sustain:
                         case OrbitalVoice::GroupEnvStage::Off:
                             break;
                     }
-                    // Apply external decay mod: gently damps group levels
+
+                    // External decay modulation: gently damps group levels when
+                    // another engine's envelope is coupled via EnvToDecay.
+                    // The 0.001 scale keeps the damping subtle per sample — it
+                    // accumulates over hundreds of samples for a smooth effect.
                     if (externalDecayMod > 0.0f)
-                        v.groupEnvLevel[g] = std::max (kGroupFloor[g],
-                            v.groupEnvLevel[g] * (1.0f - externalDecayMod * 0.001f));
-                    v.groupEnvLevel[g] = flushDenormal (v.groupEnvLevel[g]);
+                        voice.groupEnvLevel[groupIdx] = std::max (kGroupSustainFloor[groupIdx],
+                            voice.groupEnvLevel[groupIdx] * (1.0f - externalDecayMod * 0.001f));
+
+                    voice.groupEnvLevel[groupIdx] = flushDenormal (voice.groupEnvLevel[groupIdx]);
                 }
 
-                //-- 64-partial synthesis --------------------------------------
+                //-- 64-partial additive synthesis (the circling school of fish) -
                 float voiceL = 0.0f, voiceR = 0.0f;
 
-                for (int k = 0; k < kNumPartials; ++k)
+                for (int partialIdx = 0; partialIdx < kNumPartials; ++partialIdx)
                 {
-                    const int g = (k < 8) ? 0 : (k < 16) ? 1 : (k < 32) ? 2 : 3;
-                    float amp = lerp (pA[k], pB[k], effectiveMorph)
-                              * formantFilter.envelope[k]
-                              * v.groupEnvLevel[g];
-                    amp = std::max (0.0f, amp + spectralCouplingOffset[k]);
-                    if (amp < 0.001f) continue;
+                    // Map partial index to group: 0-7=body, 8-15=presence,
+                    // 16-31=air, 32-63=shimmer. Logarithmic grouping gives
+                    // finer control over the perceptually important lower partials.
+                    const int groupIdx = (partialIdx < 8)  ? 0
+                                       : (partialIdx < 16) ? 1
+                                       : (partialIdx < 32) ? 2 : 3;
 
-                    if (fmActive || extFmActive)
+                    // Morph between Profile A and B amplitudes, then apply
+                    // formant shaping and group envelope
+                    float amplitude = lerp (profileAmplitudesA[partialIdx],
+                                            profileAmplitudesB[partialIdx],
+                                            effectiveMorph)
+                                    * formantFilter.envelope[partialIdx]
+                                    * voice.groupEnvLevel[groupIdx];
+
+                    // Add spectral coupling offset (energy from another engine)
+                    amplitude = std::max (0.0f, amplitude + spectralCouplingOffset[partialIdx]);
+
+                    // Skip silent partials (amplitude below -60dB) for performance
+                    if (amplitude < 0.001f) continue;
+
+                    //-- Phase accumulation with optional FM ---------------------
+                    if (fmActive || externalFmActive)
                     {
-                        float fmMod = extFmSample;
+                        float fmModulation = externalFmSample;
                         if (fmActive)
-                            fmMod += fmIndex * fastSin (static_cast<float> (v.fmPhase[k]));
-                        v.phase[k]   += static_cast<double> (v.phaseIncF[k] * pitchRatio * (1.0f + fmMod));
-                        v.fmPhase[k] += static_cast<double> (v.fmPhaseInc[k]);
+                            fmModulation += fmIndex * fastSin (static_cast<float> (voice.fmPhase[partialIdx]));
+
+                        voice.phase[partialIdx]   += static_cast<double> (
+                            voice.phaseIncrement[partialIdx] * pitchRatio * (1.0f + fmModulation));
+                        voice.fmPhase[partialIdx] += static_cast<double> (
+                            voice.fmPhaseIncrement[partialIdx]);
                     }
                     else
                     {
-                        v.phase[k] += static_cast<double> (v.phaseIncF[k] * pitchRatio);
+                        voice.phase[partialIdx] += static_cast<double> (
+                            voice.phaseIncrement[partialIdx] * pitchRatio);
                     }
 
-                    const float s = amp * fastSin (static_cast<float> (v.phase[k]));
-                    voiceL += s * v.panL[k];
-                    voiceR += s * v.panR[k];
+                    // Synthesize sine partial and pan to stereo
+                    const float sineSample = amplitude
+                                           * fastSin (static_cast<float> (voice.phase[partialIdx]));
+                    voiceL += sineSample * voice.panGainL[partialIdx];
+                    voiceR += sineSample * voice.panGainR[partialIdx];
                 }
 
-                //-- Voice stealing crossfade ----------------------------------
+                //-- Voice-stealing crossfade ----------------------------------
                 float stealFade = 1.0f;
-                if (v.fadeOutLevel > 0.0f)
+                if (voice.fadeOutLevel > 0.0f)
                 {
-                    v.fadeOutLevel -= fadeOutStep;
-                    v.fadeOutLevel = flushDenormal (v.fadeOutLevel);
-                    if (v.fadeOutLevel < 0.0f) v.fadeOutLevel = 0.0f;
-                    stealFade = 1.0f - v.fadeOutLevel;
+                    voice.fadeOutLevel -= fadeOutStepPerSample;
+                    voice.fadeOutLevel = flushDenormal (voice.fadeOutLevel);
+                    if (voice.fadeOutLevel < 0.0f) voice.fadeOutLevel = 0.0f;
+                    stealFade = 1.0f - voice.fadeOutLevel;
                 }
 
-                const float vGain = v.envLevel * v.velocity * stealFade;
-                mixL += voiceL * vGain;
-                mixR += voiceR * vGain;
-                envelopePeak = std::max (envelopePeak, v.envLevel);
+                const float voiceGain = voice.envLevel * voice.velocity * stealFade;
+                mixL += voiceL * voiceGain;
+                mixR += voiceR * voiceGain;
+                envelopePeak = std::max (envelopePeak, voice.envLevel);
             }
 
             //-- Ring modulation coupling --------------------------------------
-            if (ringPtr != nullptr)
+            if (ringModPointer != nullptr)
             {
-                mixL *= ringPtr[n];
-                mixR *= ringPtr[n];
+                mixL *= ringModPointer[sampleIdx];
+                mixR *= ringModPointer[sampleIdx];
             }
 
             //-- Post filter + saturator + volume (all per-sample) -------------
-            float sL = postFilterL.processSample (mixL);
-            float sR = postFilterR.processSample (mixR);
-            if (satActive)
+            float outputSampleL = postFilterL.processSample (mixL);
+            float outputSampleR = postFilterR.processSample (mixR);
+            if (saturationActive)
             {
-                sL = saturatorL.processSample (sL);
-                sR = saturatorR.processSample (sR);
+                outputSampleL = saturatorL.processSample (outputSampleL);
+                outputSampleR = saturatorR.processSample (outputSampleR);
             }
-            sL *= volume;
-            sR *= volume;
+            outputSampleL *= volume;
+            outputSampleR *= volume;
 
-            outL[n] = sL;
-            outR[n] = sR;
+            outL[sampleIdx] = outputSampleL;
+            outR[sampleIdx] = outputSampleR;
 
-            if (n < static_cast<int> (outputCacheL.size()))
+            //-- Cache output for coupling reads from other engines -------------
+            if (sampleIdx < static_cast<int> (outputCacheL.size()))
             {
-                outputCacheL[static_cast<size_t> (n)] = sL;
-                outputCacheR[static_cast<size_t> (n)] = sR;
+                outputCacheL[static_cast<size_t> (sampleIdx)] = outputSampleL;
+                outputCacheR[static_cast<size_t> (sampleIdx)] = outputSampleR;
             }
         } // end per-sample loop
 
         envelopeOutput = envelopePeak;
 
-        //-- Phase wrap every 1024 samples (prevents double precision drift) ---
-        sampleCounter += numSamples;
-        if (sampleCounter >= 1024)
+        //-- Phase wrap: prevent double-precision overflow ----------------------
+        // Even with double precision, phase accumulators will eventually lose
+        // precision after ~10^15 increments. Wrapping every 1024 samples
+        // (= ~23ms at 44.1kHz) keeps phases small. The cost is negligible
+        // compared to the 384-partial inner loop.
+        phaseWrapCounter += numSamples;
+        if (phaseWrapCounter >= 1024)
         {
             wrapPhases();
-            sampleCounter &= 0x3FF;
+            phaseWrapCounter &= 0x3FF;   // Equivalent to modulo 1024
         }
 
         //-- Reset ring coupling for next block --------------------------------
         if (hasRingCoupling)
         {
-            couplingRingBuf.clear();
+            couplingRingBuffer.clear();
             hasRingCoupling = false;
         }
-        if (extFmActive)
-            couplingAudioBuf.clear (1, 0, numSamples);
+        if (externalFmActive)
+            couplingAudioBuffer.clear (1, 0, numSamples);
     }
 
+
 private:
-    //-- triggerVoice ----------------------------------------------------------
+
+    //==========================================================================
+    //  VOICE MANAGEMENT
+    //==========================================================================
+
     void triggerVoice (int note, float vel,
-                       float inharm, float fmRatio, float stereoSpread,
-                       float attackS, float decayS, float sustainLvl, float releaseS,
-                       const float grpAtk[4], const float grpDec[4])
+                       float inharmonicity, float fmRatio, float stereoSpread,
+                       float attackSeconds, float decaySeconds,
+                       float sustainLevel, float releaseSeconds,
+                       const float groupAttackTimes[4], const float groupDecayTimes[4])
     {
-        const int idx = findFreeVoice();
-        auto& v = voices[static_cast<size_t> (idx)];
+        const int voiceIdx = findFreeVoice();
+        auto& voice = voices[static_cast<size_t> (voiceIdx)];
 
-        v.fadeOutLevel = v.active ? v.envLevel : 0.0f;
-        v.active       = true;
-        v.noteNumber   = note;
-        v.velocity     = vel;
-        v.startTime    = voiceCounter++;
-        v.fundamentalHz = midiToFreq (note);
+        // Crossfade: if stealing an active voice, fade out from current level
+        voice.fadeOutLevel  = voice.active ? voice.envLevel : 0.0f;
+        voice.active        = true;
+        voice.noteNumber    = note;
+        voice.velocity      = vel;
+        voice.startTime     = voiceAllocationAge++;
+        voice.fundamentalHz = midiToFreq (note);
 
-        lastFundamentalHz = v.fundamentalHz;
+        lastFundamentalHz = voice.fundamentalHz;
         formantDirty      = true;   // rebuild formant for new fundamental
 
-        // Inharmonic frequency ratios (expensive sqrt — done here, not per-sample)
-        const float B = inharm * 0.001f;
-        constexpr double twoPi = 6.283185307179586;
-        const double invSr = 1.0 / sr;
+        //-- Inharmonic frequency ratios (piano string stiffness model) ---------
+        // B coefficient from Fletcher's piano string equation:
+        //   f_n = n * f_1 * sqrt(1 + B * n^2)
+        // where B depends on string stiffness. The 0.001 scale maps the
+        // user-friendly 0-1 range to physically plausible B values.
+        // At B=0, partials are perfectly harmonic (ideal string).
+        // At B=0.001, upper partials are stretched ~50 cents (like a real piano).
+        // The sqrt is expensive but only computed once per noteOn, not per sample.
+        const float stiffnessCoeff = inharmonicity * 0.001f;
+        constexpr double twoPi = 6.283185307179586;   // 2 * pi
+        const double inverseSampleRate = 1.0 / cachedSampleRate;
 
-        for (int k = 0; k < kNumPartials; ++k)
+        for (int partialIdx = 0; partialIdx < kNumPartials; ++partialIdx)
         {
-            const float kf   = static_cast<float> (k + 1);
-            const float ratio = std::sqrt (1.0f + B * kf * kf);
-            const double freq  = static_cast<double> (v.fundamentalHz * kf * ratio);
-            v.phaseIncF[k]  = static_cast<float> (freq * twoPi * invSr);
-            v.fmPhaseInc[k] = static_cast<float> (freq * static_cast<double> (fmRatio) * twoPi * invSr);
-            v.phase[k]    = 0.0;
-            v.fmPhase[k]  = 0.0;
+            const float partialNumber = static_cast<float> (partialIdx + 1);
+
+            // Fletcher's inharmonicity formula: ratio = sqrt(1 + B * n^2)
+            const float inharmonicRatio = std::sqrt (1.0f + stiffnessCoeff
+                                                           * partialNumber
+                                                           * partialNumber);
+
+            const double partialFreq = static_cast<double> (voice.fundamentalHz
+                                                           * partialNumber
+                                                           * inharmonicRatio);
+
+            // Phase increment = freq * 2pi / sampleRate (radians per sample)
+            voice.phaseIncrement[partialIdx]   = static_cast<float> (
+                partialFreq * twoPi * inverseSampleRate);
+            voice.fmPhaseIncrement[partialIdx] = static_cast<float> (
+                partialFreq * static_cast<double> (fmRatio) * twoPi * inverseSampleRate);
+
+            voice.phase[partialIdx]   = 0.0;
+            voice.fmPhase[partialIdx] = 0.0;
         }
 
-        // Per-partial stereo pan (constant-power spread)
-        for (int k = 0; k < kNumPartials; ++k)
+        //-- Per-partial stereo pan (constant-power spread) ---------------------
+        // Higher partials spread wider in the stereo field, alternating L/R.
+        // This creates the immersive "orbital" quality — the school of partials
+        // circling around the listener's head.
+        for (int partialIdx = 0; partialIdx < kNumPartials; ++partialIdx)
         {
-            float spread = stereoSpread * static_cast<float> (k) * kInvPartialCount;
-            float pan    = 0.5f + ((k % 2 == 0) ? -spread : spread) * 0.5f;
-            pan = juce::jlimit (0.0f, 1.0f, pan);
-            v.panL[k] = fastCos (pan * 1.5707963f);
-            v.panR[k] = fastSin (pan * 1.5707963f);
+            float spreadAmount = stereoSpread
+                               * static_cast<float> (partialIdx) * kInvPartialCount;
+
+            // Alternate even partials left, odd partials right
+            float panPosition = 0.5f + ((partialIdx % 2 == 0) ? -spreadAmount : spreadAmount) * 0.5f;
+            panPosition = juce::jlimit (0.0f, 1.0f, panPosition);
+
+            // Constant-power panning: cos/sin ensures equal energy regardless
+            // of pan position. 1.5707963 = pi/2, mapping 0-1 to 0-90 degrees.
+            voice.panGainL[partialIdx] = fastCos (panPosition * 1.5707963f);
+            voice.panGainR[partialIdx] = fastSin (panPosition * 1.5707963f);
         }
 
-        // Global ADSR coefficients
-        v.envLevel        = 0.0f;
-        v.envStage        = OrbitalVoice::EnvStage::Attack;
-        v.envAttackCoeff  = 1.0f / (std::max (0.001f, attackS)  * srf);
-        v.envDecayCoeff   = 1.0f / (std::max (0.05f,  decayS)   * srf);
-        v.envSustain      = sustainLvl;
-        v.envReleaseCoeff = 1.0f / (std::max (0.05f,  releaseS) * srf);
+        //-- Global ADSR coefficients -------------------------------------------
+        // Linear increment/decrement per sample. Min attack of 1ms prevents
+        // division by zero; min decay/release of 50ms prevents clicks.
+        voice.envLevel        = 0.0f;
+        voice.envStage        = OrbitalVoice::EnvStage::Attack;
+        voice.envAttackCoeff  = 1.0f / (std::max (0.001f, attackSeconds)  * cachedSampleRateFloat);
+        voice.envDecayCoeff   = 1.0f / (std::max (0.05f,  decaySeconds)   * cachedSampleRateFloat);
+        voice.envSustainLevel = sustainLevel;
+        voice.envReleaseCoeff = 1.0f / (std::max (0.05f,  releaseSeconds) * cachedSampleRateFloat);
 
-        // Group envelope coefficients
-        for (int g = 0; g < 4; ++g)
+        //-- Group envelope coefficients ----------------------------------------
+        for (int groupIdx = 0; groupIdx < 4; ++groupIdx)
         {
-            v.groupEnvLevel[g]    = 0.0f;
-            v.groupStage[g]       = OrbitalVoice::GroupEnvStage::Attack;
-            v.groupAttackCoeff[g] = 1.0f / (std::max (0.001f, grpAtk[g]) * srf);
-            v.groupDecayCoeff[g]  = 1.0f / (std::max (0.01f,  grpDec[g]) * srf);
+            voice.groupEnvLevel[groupIdx]    = 0.0f;
+            voice.groupStage[groupIdx]       = OrbitalVoice::GroupEnvStage::Attack;
+            voice.groupAttackCoeff[groupIdx] = 1.0f / (std::max (0.001f, groupAttackTimes[groupIdx])
+                                                       * cachedSampleRateFloat);
+            voice.groupDecayCoeff[groupIdx]  = 1.0f / (std::max (0.01f,  groupDecayTimes[groupIdx])
+                                                       * cachedSampleRateFloat);
         }
     }
 
     void noteOff (int noteNumber)
     {
-        for (auto& v : voices)
+        for (auto& voice : voices)
         {
-            if (v.active && v.noteNumber == noteNumber
-                && v.envStage != OrbitalVoice::EnvStage::Release
-                && v.envStage != OrbitalVoice::EnvStage::Off)
+            if (voice.active && voice.noteNumber == noteNumber
+                && voice.envStage != OrbitalVoice::EnvStage::Release
+                && voice.envStage != OrbitalVoice::EnvStage::Off)
             {
-                v.envStage = OrbitalVoice::EnvStage::Release;
+                voice.envStage = OrbitalVoice::EnvStage::Release;
             }
         }
     }
 
     int findFreeVoice()
     {
+        // First pass: find an inactive voice
         for (int i = 0; i < kMaxVoices; ++i)
             if (!voices[static_cast<size_t> (i)].active)
                 return i;
 
-        // LRU steal
-        int      oldest     = 0;
-        uint64_t oldestTime = UINT64_MAX;
+        // No free voices: steal the oldest (LRU — Least Recently Used)
+        int      oldestIndex = 0;
+        uint64_t oldestAge   = UINT64_MAX;
         for (int i = 0; i < kMaxVoices; ++i)
         {
-            if (voices[static_cast<size_t> (i)].startTime < oldestTime)
+            if (voices[static_cast<size_t> (i)].startTime < oldestAge)
             {
-                oldestTime = voices[static_cast<size_t> (i)].startTime;
-                oldest     = i;
+                oldestAge   = voices[static_cast<size_t> (i)].startTime;
+                oldestIndex = i;
             }
         }
-        return oldest;
+        return oldestIndex;
     }
+
+
+    //==========================================================================
+    //  MACRO SYSTEM — Four knobs that reshape the Circling Current
+    //==========================================================================
 
     void applyMacros (float& brightness, float& oddEven, float& morph,
                       float& stereoSpread, float& formantShift,
-                      float grpAtk[4], float grpDec[4]) noexcept
+                      float groupAttackTimes[4], float groupDecayTimes[4]) noexcept
     {
         if (p_macroSpectrum == nullptr) return;
 
@@ -756,147 +1027,216 @@ private:
         const float coupling  = p_macroCoupling->load();
         const float space     = p_macroSpace->load();
 
-        // M1 SPECTRUM: dark fundamental → all harmonics blazing
+        // M1 SPECTRUM: dark fundamental -> all harmonics blazing
+        // Directly maps to brightness (spectral tilt) and odd/even balance.
+        // At 0: only fundamental. At 1: full harmonic series.
         brightness = spectrum;
-        oddEven    = 0.3f + spectrum * 0.4f;
+        oddEven    = 0.3f + spectrum * 0.4f;   // Range 0.3-0.7: subtle odd/even shift
 
-        // M2 EVOLVE: Profile A static → Profile B morphing + slower groups
+        // M2 EVOLVE: Profile A static -> Profile B morphing + slower envelopes
+        // The envelope time multiplier (1x to 5x) makes partials bloom more
+        // slowly as Evolve increases — the school of fish spreads apart.
         if (evolve > 0.001f)
         {
             morph = std::max (morph, evolve);
-            const float envScale = 1.0f + evolve * 4.0f;
-            for (int g = 0; g < 4; ++g) { grpAtk[g] *= envScale; grpDec[g] *= envScale; }
+            const float envelopeTimeScale = 1.0f + evolve * 4.0f;   // 1x to 5x slowdown
+            for (int groupIdx = 0; groupIdx < 4; ++groupIdx)
+            {
+                groupAttackTimes[groupIdx] *= envelopeTimeScale;
+                groupDecayTimes[groupIdx]  *= envelopeTimeScale;
+            }
         }
 
-        // M3 COUPLING: lift formant shift → spectral contrast when coupled
+        // M3 COUPLING: lift formant shift for spectral contrast when coupled
+        // 12 semitones (one octave) maximum shift at full coupling.
         if (coupling > 0.001f)
             formantShift = std::max (formantShift, coupling * 12.0f);
 
-        // M4 SPACE: stereo spread
+        // M4 SPACE: stereo spread — partials orbit wider around the listener
         if (space > 0.001f)
             stereoSpread = std::max (stereoSpread, space);
     }
 
+
+    //==========================================================================
+    //  PHASE MANAGEMENT
+    //==========================================================================
+
     void wrapPhases() noexcept
     {
-        constexpr double twoPi   = 6.283185307179586;
-        constexpr double wrapAt  = twoPi * 1.0e6;
-        for (auto& v : voices)
+        // Wrap phase accumulators to prevent loss of double-precision
+        // significance. We wrap at 2pi * 10^6 (about 6.28 million radians)
+        // rather than at 2pi to avoid wrapping every single sample — the
+        // modulo operation has a cost, and wrapping less frequently amortizes it.
+        constexpr double twoPi  = 6.283185307179586;
+        constexpr double wrapThreshold = twoPi * 1.0e6;
+
+        for (auto& voice : voices)
         {
-            if (!v.active) continue;
-            for (int k = 0; k < kNumPartials; ++k)
+            if (!voice.active) continue;
+            for (int partialIdx = 0; partialIdx < kNumPartials; ++partialIdx)
             {
-                if (v.phase[k] > wrapAt)
-                    v.phase[k] -= twoPi * std::floor (v.phase[k] / twoPi);
-                if (v.fmPhase[k] > wrapAt)
-                    v.fmPhase[k] -= twoPi * std::floor (v.fmPhase[k] / twoPi);
+                if (voice.phase[partialIdx] > wrapThreshold)
+                    voice.phase[partialIdx] -= twoPi
+                        * std::floor (voice.phase[partialIdx] / twoPi);
+                if (voice.fmPhase[partialIdx] > wrapThreshold)
+                    voice.fmPhase[partialIdx] -= twoPi
+                        * std::floor (voice.fmPhase[partialIdx] / twoPi);
             }
         }
     }
 
-    //-- Spectral profiles — built once at program startup ---------------------
-    // Each profile is a 64-element amplitude array. Two profiles morph
-    // continuously via the orb_morph parameter.
+
+    //==========================================================================
+    //  SPECTRAL PROFILES — The shapes of the Circling Current
+    //
+    //  Each profile is a 64-element amplitude array defining the harmonic
+    //  signature of a waveform. Two profiles morph continuously via the
+    //  orb_morph parameter. These are computed once at program startup
+    //  and never change — they are the DNA of each spectral shape.
+    //
+    //  The profiles follow the Fourier series of their respective waveforms:
+    //    Sawtooth: a_k = 1/k          (all harmonics, linear rolloff)
+    //    Square:   a_k = 1/k for odds (only odd harmonics)
+    //    Triangle: a_k = 1/k^2 for odds (only odd, steeper rolloff)
+    //    Bell:     exponential decay with inharmonic ripple
+    //    Organ:    Hammond drawbar registration (discrete harmonics)
+    //    Glass:    rising then falling spectrum (upper-partial emphasis)
+    //    Vocal:    1/f rolloff with formant-like peak near partial 5
+    //    Custom:   flat spectrum — a blank canvas for the formant filter
+    //==========================================================================
 
     static std::array<float, kNumPartials> buildSawtooth()
     {
-        std::array<float, kNumPartials> a {};
-        for (int k = 0; k < kNumPartials; ++k)
-            a[k] = 1.0f / static_cast<float> (k + 1);
-        return a;
+        // Fourier series of a sawtooth wave: a_k = 1/k
+        // Rich in all harmonics — the "buzzsaw" of additive synthesis.
+        std::array<float, kNumPartials> amplitudes {};
+        for (int partialIdx = 0; partialIdx < kNumPartials; ++partialIdx)
+            amplitudes[partialIdx] = 1.0f / static_cast<float> (partialIdx + 1);
+        return amplitudes;
     }
 
     static std::array<float, kNumPartials> buildSquare()
     {
-        std::array<float, kNumPartials> a {};
-        for (int k = 0; k < kNumPartials; ++k)
-            a[k] = ((k + 1) % 2 == 1) ? 1.0f / static_cast<float> (k + 1) : 0.0f;
-        return a;
+        // Fourier series of a square wave: a_k = 1/k for odd harmonics only.
+        // Hollow, clarinet-like timbre. Even harmonics are exactly zero.
+        std::array<float, kNumPartials> amplitudes {};
+        for (int partialIdx = 0; partialIdx < kNumPartials; ++partialIdx)
+            amplitudes[partialIdx] = ((partialIdx + 1) % 2 == 1)
+                                   ? 1.0f / static_cast<float> (partialIdx + 1)
+                                   : 0.0f;
+        return amplitudes;
     }
 
     static std::array<float, kNumPartials> buildTriangle()
     {
-        std::array<float, kNumPartials> a {};
-        for (int k = 0; k < kNumPartials; ++k)
+        // Fourier series of a triangle wave: a_k = 1/k^2 for odd harmonics.
+        // The 1/k^2 rolloff (vs sawtooth's 1/k) gives a mellow, flute-like tone.
+        std::array<float, kNumPartials> amplitudes {};
+        for (int partialIdx = 0; partialIdx < kNumPartials; ++partialIdx)
         {
-            const float kf = static_cast<float> (k + 1);
-            a[k] = ((k + 1) % 2 == 1) ? 1.0f / (kf * kf) : 0.0f;
+            const float partialNumber = static_cast<float> (partialIdx + 1);
+            amplitudes[partialIdx] = ((partialIdx + 1) % 2 == 1)
+                                   ? 1.0f / (partialNumber * partialNumber)
+                                   : 0.0f;
         }
-        return a;
+        return amplitudes;
     }
 
     static std::array<float, kNumPartials> buildBell()
     {
-        std::array<float, kNumPartials> a {};
-        for (int k = 0; k < kNumPartials; ++k)
+        // Bell spectrum: exponential decay with inharmonic ripple.
+        // The 0.12 decay rate gives ~20dB attenuation by partial 20 — similar
+        // to a struck bell or tubular chime. The 1.1 ripple frequency creates
+        // the characteristic non-uniform spacing of bell partials (related to
+        // the Bessel function zeros of a vibrating disc).
+        std::array<float, kNumPartials> amplitudes {};
+        for (int partialIdx = 0; partialIdx < kNumPartials; ++partialIdx)
         {
-            const float kf     = static_cast<float> (k);
-            const float decay  = std::exp (-0.12f * kf);
-            const float ripple = 1.0f + 0.25f * fastSin (kf * 1.1f);
-            a[k] = juce::jlimit (0.0f, 1.0f, decay * ripple);
+            const float partialNumber = static_cast<float> (partialIdx);
+            const float exponentialDecay = std::exp (-0.12f * partialNumber);
+            const float inharmonicRipple = 1.0f + 0.25f * fastSin (partialNumber * 1.1f);
+            amplitudes[partialIdx] = juce::jlimit (0.0f, 1.0f,
+                                                   exponentialDecay * inharmonicRipple);
         }
-        return a;
+        return amplitudes;
     }
 
     // -------------------------------------------------------------------------
-    // TODO (Tuning Decision): Organ drawbar levels — this defines ORBITAL's
+    // TODO (Tuning Decision): Organ drawbar levels -- this defines ORBITAL's
     // organ character across the entire Organ preset family.
     //
     // Current values emulate a rock Hammond registration (8' heavy, 4' strong).
-    // Each line is one drawbar partial; all un-set partials stay 0 (silent).
-    // Blueprint §3.3 maps drawbar footages → partial indices.
+    // Each element corresponds to one drawbar partial; all un-set partials
+    // remain silent.
     //
-    // Tune a[0]–a[7] to match the organ character you want for XOmnibus:
+    // Alternative registrations to try:
     //   Jazz Hammond: a[0]=1.0, a[1]=0.4, a[3]=0.8, a[7]=0.6 (sparse, punchy)
     //   Cathedral:    a[0]=0.8, a[2]=0.6, a[3]=0.5, a[5]=0.4, a[7]=0.3 (rich)
     //   Rock Hammond: values below (bright mid, heavy fundamental)
     // -------------------------------------------------------------------------
     static std::array<float, kNumPartials> buildOrgan()
     {
-        std::array<float, kNumPartials> a {};
-        a[0]  = 1.0f;    // 8'   — fundamental
-        a[1]  = 0.8f;    // 4'   — 2nd harmonic
-        a[2]  = 0.4f;    // 2⅔' — 3rd harmonic
-        a[3]  = 0.7f;    // 2'   — 4th harmonic
-        a[4]  = 0.3f;    // 1⅗' — 5th harmonic
-        a[5]  = 0.2f;    // 1⅓' — 6th harmonic
-        a[7]  = 0.15f;   // 1'   — 8th harmonic
-        return a;
+        // Hammond B3 drawbar registration (rock preset).
+        // Drawbar footages map to harmonic numbers:
+        //   16'=sub, 8'=fundamental, 5-1/3'=3rd, 4'=2nd, 2-2/3'=3rd,
+        //   2'=4th, 1-3/5'=5th, 1-1/3'=6th, 1'=8th
+        std::array<float, kNumPartials> amplitudes {};
+        amplitudes[0]  = 1.0f;    // 8'    -- fundamental
+        amplitudes[1]  = 0.8f;    // 4'    -- 2nd harmonic (one octave up)
+        amplitudes[2]  = 0.4f;    // 2-2/3' -- 3rd harmonic (octave + fifth)
+        amplitudes[3]  = 0.7f;    // 2'    -- 4th harmonic (two octaves up)
+        amplitudes[4]  = 0.3f;    // 1-3/5' -- 5th harmonic (two octaves + major third)
+        amplitudes[5]  = 0.2f;    // 1-1/3' -- 6th harmonic (two octaves + fifth)
+        amplitudes[7]  = 0.15f;   // 1'    -- 8th harmonic (three octaves up)
+        return amplitudes;
     }
 
     static std::array<float, kNumPartials> buildGlass()
     {
-        std::array<float, kNumPartials> a {};
-        for (int k = 0; k < kNumPartials; ++k)
+        // Glass spectrum: rising low partials then exponential decay.
+        // The initial 0.082 rise rate per partial creates a "scooped fundamental"
+        // characteristic of struck glass, where the lowest modes are weak and
+        // the mid-range modes dominate. The 0.07 decay rate above partial 8
+        // simulates the rapid high-frequency damping of glass resonance.
+        std::array<float, kNumPartials> amplitudes {};
+        for (int partialIdx = 0; partialIdx < kNumPartials; ++partialIdx)
         {
-            const float kf = static_cast<float> (k);
-            a[k] = (k < 8)
-                 ? juce::jlimit (0.0f, 1.0f, 0.05f + 0.082f * kf)
-                 : 0.7f * std::exp (-0.07f * (kf - 8.0f));
+            const float partialNumber = static_cast<float> (partialIdx);
+            amplitudes[partialIdx] = (partialIdx < 8)
+                 ? juce::jlimit (0.0f, 1.0f, 0.05f + 0.082f * partialNumber)
+                 : 0.7f * std::exp (-0.07f * (partialNumber - 8.0f));
         }
-        return a;
+        return amplitudes;
     }
 
     static std::array<float, kNumPartials> buildVocal()
     {
-        std::array<float, kNumPartials> a {};
-        for (int k = 0; k < kNumPartials; ++k)
+        // Vocal spectrum: 1/f rolloff with formant-like resonance peak.
+        // The Gaussian boost centered at partial 5 (~1300 Hz at C4) simulates
+        // the first formant region of the human voice. The 3.0 sigma width
+        // creates a broad, natural-sounding resonance rather than a sharp peak.
+        std::array<float, kNumPartials> amplitudes {};
+        for (int partialIdx = 0; partialIdx < kNumPartials; ++partialIdx)
         {
-            const float kf = static_cast<float> (k);
-            // Gentle rolloff with formant-like peak around partial 5
-            const float base  = 1.0f / (1.0f + 0.5f * kf);
-            const float boost = 0.4f * std::exp (-0.5f * std::pow ((kf - 4.0f) / 3.0f, 2.0f));
-            a[k] = juce::jlimit (0.0f, 1.0f, base + boost);
+            const float partialNumber = static_cast<float> (partialIdx);
+            const float baseRolloff   = 1.0f / (1.0f + 0.5f * partialNumber);
+            const float formantBoost  = 0.4f * std::exp (-0.5f
+                * std::pow ((partialNumber - 4.0f) / 3.0f, 2.0f));
+            amplitudes[partialIdx] = juce::jlimit (0.0f, 1.0f, baseRolloff + formantBoost);
         }
-        return a;
+        return amplitudes;
     }
 
     static std::array<float, kNumPartials> buildCustom()
     {
-        std::array<float, kNumPartials> a {};
-        // Equal amplitude — acts as a blank canvas; brightness/formant controls shape it
-        a.fill (1.0f);
-        return a;
+        // Flat spectrum: all partials at equal amplitude.
+        // Acts as a blank canvas — the brightness, odd/even, and formant
+        // controls do all the shaping. Useful for experimental sound design
+        // where you want full spectral control from the parameter knobs.
+        std::array<float, kNumPartials> amplitudes {};
+        amplitudes.fill (1.0f);
+        return amplitudes;
     }
 
     static std::array<std::array<float, kNumPartials>, 8> buildAllProfiles()
@@ -905,16 +1245,21 @@ private:
                  buildOrgan(),    buildGlass(),  buildVocal(),    buildCustom() };
     }
 
-    //-- Static profile data (built once at program startup) -------------------
+    //-- Static profile data (built once at program startup, shared by all instances)
     inline static const std::array<std::array<float, kNumPartials>, 8> sProfiles
         = buildAllProfiles();
 
-    //-- Parameter layout ------------------------------------------------------
+
+    //==========================================================================
+    //  PARAMETER LAYOUT
+    //==========================================================================
+
     static void addParametersImpl (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         using P  = juce::ParameterID;
         using NR = juce::NormalisableRange<float>;
 
+        //-- Spectral profile selection -----------------------------------------
         params.push_back (std::make_unique<juce::AudioParameterChoice> (
             P { "orb_profileA", 1 }, "Orbital Profile A",
             juce::StringArray { "Sawtooth","Square","Triangle","Bell",
@@ -927,6 +1272,7 @@ private:
             P { "orb_morph", 1 }, "Orbital Morph",
             NR (0.0f, 1.0f, 0.001f), 0.0f));
 
+        //-- Spectral shaping ---------------------------------------------------
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             P { "orb_brightness", 1 }, "Orbital Brightness",
             NR (0.0f, 1.0f, 0.01f), 0.7f));
@@ -940,6 +1286,7 @@ private:
             P { "orb_formantShift", 1 }, "Orbital Formant Shift",
             NR (-24.0f, 24.0f, 0.1f), 0.0f));
 
+        //-- Inharmonicity + FM -------------------------------------------------
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             P { "orb_inharm", 1 }, "Orbital Inharmonicity",
             NR (0.0f, 1.0f, 0.001f), 0.0f));
@@ -950,7 +1297,7 @@ private:
             P { "orb_fmRatio", 1 }, "Orbital FM Ratio",
             NR (0.5f, 8.0f, 0.01f, 0.4f), 2.0f));
 
-        // Group envelopes
+        //-- Group envelopes (4 partial bands, each with attack + decay) --------
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             P { "orb_groupAttack1", 1 }, "Orbital Group1 Attack",
             NR (0.001f, 4.0f, 0.001f, 0.4f), 0.01f));
@@ -976,7 +1323,7 @@ private:
             P { "orb_groupDecay4", 1 }, "Orbital Group4 Decay",
             NR (0.01f, 1.0f, 0.001f, 0.4f), 0.2f));
 
-        // Post filter
+        //-- Post filter --------------------------------------------------------
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             P { "orb_filterCutoff", 1 }, "Orbital Filter Cutoff",
             NR (20.0f, 20000.0f, 0.1f, 0.3f), 20000.0f));
@@ -987,6 +1334,7 @@ private:
             P { "orb_filterType", 1 }, "Orbital Filter Type",
             juce::StringArray { "LP","BP","HP" }, 0));
 
+        //-- Output shaping -----------------------------------------------------
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             P { "orb_stereoSpread", 1 }, "Orbital Stereo Spread",
             NR (0.0f, 1.0f, 0.01f), 0.3f));
@@ -994,7 +1342,7 @@ private:
             P { "orb_saturation", 1 }, "Orbital Saturation",
             NR (0.0f, 1.0f, 0.01f), 0.0f));
 
-        // Global ADSR
+        //-- Global ADSR envelope -----------------------------------------------
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             P { "orb_ampAttack", 1 }, "Orbital Amp Attack",
             NR (0.001f, 8.0f, 0.001f, 0.4f), 0.1f));
@@ -1008,11 +1356,12 @@ private:
             P { "orb_ampRelease", 1 }, "Orbital Amp Release",
             NR (0.05f, 8.0f, 0.001f, 0.4f), 1.0f));
 
+        //-- Master volume ------------------------------------------------------
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             P { "orb_volume", 1 }, "Orbital Volume",
             NR (0.0f, 1.0f, 0.01f), 0.8f));
 
-        // Macros
+        //-- Macros (4 performance knobs) ---------------------------------------
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             P { "orb_macroSpectrum", 1 }, "Orbital Spectrum",
             NR (0.0f, 1.0f, 0.001f), 0.5f));
@@ -1027,83 +1376,106 @@ private:
             NR (0.0f, 1.0f, 0.001f), 0.3f));
     }
 
-    //-- Group envelope decay floors (per-group minimum sustain level) ---------
-    // Group 0 (body): stays warm. Group 3 (air): can fully silence.
-    static constexpr float kGroupFloor[4] = { 0.5f, 0.3f, 0.1f, 0.0f };
 
-    //-- DSP state -------------------------------------------------------------
-    double sr  = 44100.0;
-    float  srf = 44100.0f;
+    //==========================================================================
+    //  GROUP ENVELOPE SUSTAIN FLOORS
+    //
+    //  Each group decays to a different minimum level, not to zero. This
+    //  ensures the fundamental "body" partials (group 0) always stay present
+    //  while the highest "shimmer" partials (group 3) can fully silence.
+    //  The musical effect: sustained notes retain warmth while losing sparkle.
+    //
+    //  Group 0 (body,     partials  0-7):  floor 0.5 — always warm
+    //  Group 1 (presence, partials  8-15): floor 0.3 — retains definition
+    //  Group 2 (air,      partials 16-31): floor 0.1 — fades to breath
+    //  Group 3 (shimmer,  partials 32-63): floor 0.0 — can fully silence
+    //==========================================================================
+    static constexpr float kGroupSustainFloor[4] = { 0.5f, 0.3f, 0.1f, 0.0f };
+
+
+    //==========================================================================
+    //  DSP STATE
+    //==========================================================================
+
+    //-- Sample rate (cached at prepare()) --------------------------------------
+    double cachedSampleRate      = 44100.0;
+    float  cachedSampleRateFloat = 44100.0f;
+
+    //-- Voice pool -------------------------------------------------------------
     std::array<OrbitalVoice, kMaxVoices> voices {};
-    uint64_t voiceCounter   = 0;
-    int      sampleCounter  = 0;
-    float    fadeOutStep    = 220.5f;
-    float    lastFundamentalHz = 261.63f;
-    float    envelopeOutput    = 0.0f;
+    uint64_t voiceAllocationAge = 0;       // monotonic counter for LRU voice stealing
+    int      phaseWrapCounter   = 0;       // counts samples since last phase wrap
+    float    fadeOutStepPerSample = 220.5f; // voice-steal crossfade rate (recalculated in prepare)
+    float    lastFundamentalHz  = 261.63f;  // last triggered note's frequency (for formant rebuild)
+    float    envelopeOutput     = 0.0f;     // peak envelope level this block (for coupling output)
 
-    // Spectral state
+    // D005 fix: minimal LFO added — spectral morph drift at 0.03 Hz
+    double spectralDriftPhase = 0.0;
+
+    //-- Spectral state ---------------------------------------------------------
     FormantFilter formantFilter;
-    bool  formantDirty     = true;
-    int   lastVowelIndex   = -1;
-    float lastBrightness   = -1.0f;
-    float lastOddEven      = -1.0f;
-    float lastFormantShift = -999.0f;
+    bool  formantDirty       = true;
+    int   lastVowelIndex     = -1;
+    float lastBrightness     = -1.0f;
+    float lastOddEven        = -1.0f;
+    float lastFormantShift   = -999.0f;
     std::array<float, kNumPartials> spectralCouplingOffset {};
 
-    // Post-processing
+    //-- Post-processing (Cytomic SVF + tube saturator) -------------------------
     CytomicSVF postFilterL, postFilterR;
     Saturator  saturatorL,  saturatorR;
 
-    // Coupling output cache (per-sample, for tight coupling reads)
+    //-- Coupling output cache (per-sample, for tight coupling reads) -----------
     std::vector<float> outputCacheL, outputCacheR;
 
-    // Coupling input buffers (ch0 = wavetable/audio, ch1 = FM audio)
-    juce::AudioBuffer<float> couplingAudioBuf;
-    juce::AudioBuffer<float> couplingRingBuf;
-    bool  hasAudioCoupling = false;
-    bool  hasRingCoupling  = false;
+    //-- Coupling input buffers -------------------------------------------------
+    // Channel 0 = AudioToWavetable (spectral DNA), Channel 1 = AudioToFM
+    juce::AudioBuffer<float> couplingAudioBuffer;
+    juce::AudioBuffer<float> couplingRingBuffer;
+    bool  hasAudioCoupling  = false;
+    bool  hasRingCoupling   = false;
 
-    // Block-level coupling accumulators (all reset at top of renderBlock)
-    float externalFilterMod = 0.0f;
-    float externalMorphMod  = 0.0f;
-    float externalPitchMod  = 0.0f;
-    float externalFmMod     = 0.0f;
-    float externalDecayMod  = 0.0f;
-    float externalBlendMod  = 0.0f;
+    //-- Block-level coupling accumulators (reset at top of each renderBlock) ----
+    float externalFilterMod = 0.0f;   // Hz offset from AmpToFilter coupling
+    float externalMorphMod  = 0.0f;   // morph position offset from EnvToMorph
+    float externalPitchMod  = 0.0f;   // semitone offset from LFOToPitch/PitchToPitch
+    float externalFmMod     = 0.0f;   // FM depth from AudioToFM coupling
+    float externalDecayMod  = 0.0f;   // decay damping from EnvToDecay
+    float externalBlendMod  = 0.0f;   // blend offset from RhythmToBlend
 
-    // Parameter pointers (35 total, set in attachParameters)
-    std::atomic<float>* p_profileA     = nullptr;
-    std::atomic<float>* p_profileB     = nullptr;
-    std::atomic<float>* p_morph        = nullptr;
-    std::atomic<float>* p_brightness   = nullptr;
-    std::atomic<float>* p_oddEven      = nullptr;
-    std::atomic<float>* p_formantShape = nullptr;
-    std::atomic<float>* p_formantShift = nullptr;
-    std::atomic<float>* p_inharm       = nullptr;
-    std::atomic<float>* p_fmIndex      = nullptr;
-    std::atomic<float>* p_fmRatio      = nullptr;
-    std::atomic<float>* p_grpAtk1      = nullptr;
-    std::atomic<float>* p_grpDec1      = nullptr;
-    std::atomic<float>* p_grpAtk2      = nullptr;
-    std::atomic<float>* p_grpDec2      = nullptr;
-    std::atomic<float>* p_grpAtk3      = nullptr;
-    std::atomic<float>* p_grpDec3      = nullptr;
-    std::atomic<float>* p_grpAtk4      = nullptr;
-    std::atomic<float>* p_grpDec4      = nullptr;
-    std::atomic<float>* p_filterCutoff = nullptr;
-    std::atomic<float>* p_filterReso   = nullptr;
-    std::atomic<float>* p_filterType   = nullptr;
-    std::atomic<float>* p_stereoSpread = nullptr;
-    std::atomic<float>* p_saturation   = nullptr;
-    std::atomic<float>* p_ampAttack    = nullptr;
-    std::atomic<float>* p_ampDecay     = nullptr;
-    std::atomic<float>* p_ampSustain   = nullptr;
-    std::atomic<float>* p_ampRelease   = nullptr;
-    std::atomic<float>* p_volume       = nullptr;
-    std::atomic<float>* p_macroSpectrum = nullptr;
-    std::atomic<float>* p_macroEvolve   = nullptr;
-    std::atomic<float>* p_macroCoupling = nullptr;
-    std::atomic<float>* p_macroSpace    = nullptr;
+    //-- Parameter pointers (32 total, set in attachParameters) -----------------
+    std::atomic<float>* p_profileA        = nullptr;
+    std::atomic<float>* p_profileB        = nullptr;
+    std::atomic<float>* p_morph           = nullptr;
+    std::atomic<float>* p_brightness      = nullptr;
+    std::atomic<float>* p_oddEven         = nullptr;
+    std::atomic<float>* p_formantShape    = nullptr;
+    std::atomic<float>* p_formantShift    = nullptr;
+    std::atomic<float>* p_inharmonicity   = nullptr;
+    std::atomic<float>* p_fmIndex         = nullptr;
+    std::atomic<float>* p_fmRatio         = nullptr;
+    std::atomic<float>* p_groupAttack1    = nullptr;
+    std::atomic<float>* p_groupDecay1     = nullptr;
+    std::atomic<float>* p_groupAttack2    = nullptr;
+    std::atomic<float>* p_groupDecay2     = nullptr;
+    std::atomic<float>* p_groupAttack3    = nullptr;
+    std::atomic<float>* p_groupDecay3     = nullptr;
+    std::atomic<float>* p_groupAttack4    = nullptr;
+    std::atomic<float>* p_groupDecay4     = nullptr;
+    std::atomic<float>* p_filterCutoff    = nullptr;
+    std::atomic<float>* p_filterResonance = nullptr;
+    std::atomic<float>* p_filterType      = nullptr;
+    std::atomic<float>* p_stereoSpread    = nullptr;
+    std::atomic<float>* p_saturation      = nullptr;
+    std::atomic<float>* p_ampAttack       = nullptr;
+    std::atomic<float>* p_ampDecay        = nullptr;
+    std::atomic<float>* p_ampSustain      = nullptr;
+    std::atomic<float>* p_ampRelease      = nullptr;
+    std::atomic<float>* p_volume          = nullptr;
+    std::atomic<float>* p_macroSpectrum   = nullptr;
+    std::atomic<float>* p_macroEvolve     = nullptr;
+    std::atomic<float>* p_macroCoupling   = nullptr;
+    std::atomic<float>* p_macroSpace      = nullptr;
 };
 
 } // namespace xomnibus

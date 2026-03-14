@@ -186,6 +186,43 @@ struct OcelotParamSnapshot
 
         couplingLevel     = g(P::couplingLevel);
         this->couplingBus = gi(P::couplingBus);
+
+        // D004 fix: apply macro modulations to DSP parameters after raw load.
+        // Each macro maps 0-1 to an audible offset on its target parameters.
+        //
+        // PROWL (hunting movement) → filter cutoff modulation via ecosystemDepth + density.
+        //   Higher PROWL = deeper filter sweep + increased density (more active, hunting).
+        if (macroProwl > 0.001f)
+        {
+            ecosystemDepth = std::clamp(ecosystemDepth + macroProwl * 0.5f,  0.0f, 1.0f);
+            density        = std::clamp(density        + macroProwl * 0.4f,  0.0f, 1.0f);
+        }
+
+        // FOLIAGE (environment depth) → reverb density via reverbSize + reverbMix.
+        //   Higher FOLIAGE = larger, lusher reverb space (denser canopy overhead).
+        if (macroFoliage > 0.001f)
+        {
+            reverbSize = std::clamp(reverbSize + macroFoliage * 0.4f, 0.0f, 1.0f);
+            reverbMix  = std::clamp(reverbMix  + macroFoliage * 0.3f, 0.0f, 1.0f);
+        }
+
+        // ECOSYSTEM (cross-voice interaction depth) → xfFloorCanopy + xfCanopyFloor + xfUnderEmerg.
+        //   Higher ECOSYSTEM = all strata interact more (the whole ecosystem comes alive).
+        if (macroEcosystem > 0.001f)
+        {
+            xfFloorCanopy = std::clamp(xfFloorCanopy + macroEcosystem * 0.5f, -1.0f, 1.0f);
+            xfCanopyFloor = std::clamp(xfCanopyFloor + macroEcosystem * 0.3f, -1.0f, 1.0f);
+            xfUnderEmerg  = std::clamp(xfUnderEmerg  + macroEcosystem * 0.4f, -1.0f, 1.0f);
+        }
+
+        // CANOPY (high-frequency content / brightness) → canopyLevel + canopyShimmer + canopySpectralFilter.
+        //   Higher CANOPY = brighter, airier top layer (more light through the canopy).
+        if (macroCanopy > 0.001f)
+        {
+            canopyLevel          = std::clamp(canopyLevel          + macroCanopy * 0.4f, 0.0f, 1.0f);
+            canopyShimmer        = std::clamp(canopyShimmer        + macroCanopy * 0.5f, 0.0f, 1.0f);
+            canopySpectralFilter = std::clamp(canopySpectralFilter + macroCanopy * 0.3f, 0.0f, 1.0f);
+        }
     }
 };
 

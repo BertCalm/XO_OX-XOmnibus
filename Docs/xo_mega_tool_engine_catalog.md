@@ -1,9 +1,9 @@
 # XO_OX Mega-Tool — Engine Module Catalog
 
-**Version:** 1.0
+**Version:** 1.1
 **Author:** XO_OX Designs
-**Date:** 2026-03-08
-**Status:** Specification Complete
+**Date:** 2026-03-08 (seance scores added 2026-03-14)
+**Status:** Specification Complete + Seance-Updated
 **Depends on:** `xo_mega_tool_feasibility.md`, `xo_mega_tool_dev_strategy.md`
 
 ---
@@ -27,15 +27,46 @@ This document catalogs every synth engine module available for the XO_OX Mega-To
 
 ## 2. Module Summary
 
-| Module | Source | Sonic Role | Osc Types | Filter | Voices | Params | CPU Est. | Mega-Tool Role |
-|--------|--------|-----------|-----------|--------|--------|--------|----------|----------------|
-| **OBESE** | XObese | Width / thickness | 13-osc stacked (morph: sine→saw→sq→noise) | 4× ZDF Ladder (4-pole LP) | 5 (65 osc) | 45 | <12% | Makes anything massive |
-| **OVERBITE** | XOverbite | Bass / character | OscA (warm, 4 waves) + OscB (harsh, 5 waves) | Cytomic SVF (4 voiced modes) | up to 16 | 122 | <10% | Grit, weight, attitude |
-| **ODDFELIX** | OddfeliX/OddOscar EngX | Percussive / rhythmic | PolyBLEP, FM, Karplus-Strong | Cytomic SVF | 8 | ~26 | <8% | Attacks, plucks, rhythm |
-| **ODDOSCAR** | OddfeliX/OddOscar EngO | Pads / lush | Wavetable morph (2048 frames) | Moog Ladder (4-pole LP) | 16 | ~26 | <12% | Atmospheres, evolving pads |
-| **OVERDUB** | XOverdub | FX architecture | Basic osc + filter + env | Per-voice SVF | 8 | 38 | <8% | Send/return FX routing |
-| **ODYSSEY** | XOdyssey | Psychedelic pads | OscA/B × 4 modes (classic, WT, supersaw, FM) | Dual: SVF LP + 3-band formant | 24 | ~130 | <15% | Journey engine, Climax |
-| **ONSET** | XOnset (spec) | Drums / percussion | Circuit (808/909) + Algorithm (FM, Modal, K-S, PD) | Per-voice Cytomic SVF | 8 dedicated | ~110 | <15.5% | Drum synthesis + morphing |
+### Original 7 Engines (Full DSP Detail Below)
+
+| Module | Source | Sonic Role | Osc Types | Filter | Voices | Params | CPU Est. | Seance Score | Key Blessing | Primary D-Violation |
+|--------|--------|-----------|-----------|--------|--------|--------|----------|--------------|--------------|---------------------|
+| **OBESE** | XObese | Width / thickness | 13-osc stacked (morph: sine→saw→sq→noise) | 4× ZDF Ladder (4-pole LP) | 5 (65 osc) | 45 | <12% | 6.6/10 | B015 (Mojo Control) | D002 + D005 (zero LFOs) |
+| **OVERBITE** | XOverbite | Bass / character | OscA (warm, 4 waves) + OscB (harsh, 5 waves) | Cytomic SVF (4 voiced modes) | up to 16 | 122 | <10% | Full approval | B008 (Five-Macro System) | None flagged |
+| **ODDFELIX** | OddfeliX/OddOscar EngX | Percussive / rhythmic | PolyBLEP, FM, Karplus-Strong | Cytomic SVF | 8 | ~26 | <8% | ~C+ | None | D004 (M4 DEPTH no-op) + D005 (zero LFOs) |
+| **ODDOSCAR** | OddfeliX/OddOscar EngO | Pads / lush | Wavetable morph (2048 frames) | Moog Ladder (4-pole LP) | 16 | ~26 | <12% | 6.9/10 | None | D002 + D005 (zero LFOs) |
+| **OVERDUB** | XOverdub | FX architecture | Basic osc + filter + env | Per-voice SVF | 8 | 38 | <8% | 7.4/10 | B004 (Spring Reverb) | D002 (single sine LFO only) |
+| **ODYSSEY** | XOdyssey | Psychedelic pads | OscA/B × 4 modes (classic, WT, supersaw, FM) | Dual: SVF LP + 3-band formant | 24 | ~130 | <15% | 7.6/10 | None (Climax is V007 vision) | D004 (crossFmDepth dead, AfterTouch unpopulated) |
+| **ONSET** | XOnset (spec) | Drums / percussion | Circuit (808/909) + Algorithm (FM, Modal, K-S, PD) | Per-voice Cytomic SVF | 8 dedicated | ~110 | <15.5% | Ahead of industry | B002 (XVC) + B006 (Dual-Layer Blend) | D005 (zero LFOs) |
+
+### All 24 Integrated Engines — Seance Summary
+
+| Engine (Gallery Code) | Status | Seance Score | Key Blessing | Primary D-Violation | P0 Bugs | Notes |
+|---|---|---|---|---|---|---|
+| ODDFELIX (Snap) | INTEGRATED | ~C+ | — | D004: `snap_macroDepth` void-cast no-op; D005: zero LFOs | — | Preset schema drift: non-existent param refs in presets |
+| ODDOSCAR (Morph) | INTEGRATED | 6.9/10 | — | D002 + D005: zero LFOs, no aftertouch | — | Preset schema drift shared with Snap |
+| OVERDUB (Dub) | INTEGRATED (standalone) | 7.4/10 | B004 Spring Reverb | D002: single sine LFO only; D006: no MIDI CC | — | Spring reverb blessed by Vangelis + Tomita |
+| ODYSSEY (Drift) | INTEGRATED (standalone) | 7.6/10 | V007 Climax Paradigm | D004: crossFmDepth/Ratio dead; AfterTouch/ModWheel allocated never fed | — | Climax never demoed in any preset |
+| OBLONG (Bob) | INTEGRATED (standalone) | 7.x/10 | — | D006: no aftertouch; CuriosityEngine under-routed | — | 5 ghosts flagged aftertouch gap |
+| OBESE (Fat) | INTEGRATED (standalone) | 6.6/10 | B015 Mojo Control | D002 + D005: zero LFOs; D006: no CC at all | — | 4-filter stereo is soul; Perlin at 0.1 Hz only |
+| ONSET | INTEGRATED (native) | Ahead / XVC praised | B002 XVC + B006 Dual-Layer Blend | D005: zero LFOs | — | XVC 3-5 years ahead of industry |
+| OVERWORLD | INTEGRATED-THIN (standalone) | 7.6/10 | B009 ERA Triangle | D001: velocity amplitude only; D005: adapter has zero LFO | — | Adapter delegates to standalone DSP; thin coupling |
+| OPAL | INTEGRATED | Concept reviewed | V008 Time-Telescope | D004: `opal_smear` declared, no DSP | — | Crown jewel is coupling potential |
+| ORGANON | INTEGRATED (native) | 8/8 PASS | B011 Variational Free Energy | D005: no standard LFO (VFE only) | — | VFE publishable as academic paper |
+| OUROBOROS | INTEGRATED (native) | Production-ready | B003 Leash + B007 Velocity Coupling | D003 compliant — best in fleet | — | Most scientifically rigorous engine |
+| OBSIDIAN | INTEGRATED (native) | 6.6/10 | — | D001: velocity amplitude only | P0-01 R channel filter bypass; P0-04 formant param ID collision | Phase distortion correct but 1 preset only |
+| ORIGAMI | INTEGRATED (native) | Not scored | — | — | P0-03 STFT race condition risk | InstantaneousFreq (V004) unused |
+| ORACLE | INTEGRATED (native) | 8.6/10 | B010 GENDY + Maqam | — (D003 compliant) | — | Buchla 10/10; no presets yet |
+| OBSCURA | INTEGRATED (native) | High / unanimous | — (D003 compliant) | — | — | Verlet mass-spring; physics IS synthesis |
+| OCEANIC | INTEGRATED (standalone) | 7.1/10 | B013 Chromatophore Modulator | D001: zero velocity response | — | Triple-BBD chorus soul; 1 XOmnibus preset |
+| OCELOT | INTEGRATED (standalone) | 6.4/10 | — | D004: macro_1–4 all dead (route nowhere) | — | EcosystemMatrix novel but inaccessible |
+| OVERBITE (Bite) | INTEGRATED (standalone) | Full approval | B008 Five-Macro System | — (best expression in fleet) | — | Only engine with aftertouch |
+| ORBITAL | INTEGRATED (native) | APPROVED | B001 Group Envelope System | D005: zero LFOs | — | Group envelopes are crown jewel; 1 preset |
+| OPTIC | INTEGRATED (native) | Revolutionary | B005 Zero-Audio Identity | — (paradigm intentional) | — | Zero-audio paradigm needs onboarding preset |
+| OBLIQUE | INTEGRATED (native) | 5.9/10 (lowest) | — | D004: `oblq_percDecay` read but discarded; D005: zero LFOs | — | 7 presets — thinnest library |
+| OSPREY | INTEGRATED (native) | APPROVE/CONDITIONAL | B012 ShoreSystem (shared) | D004 + D005: LFO struct dead code (never instantiated) | — | ShoreSystem masterwork; zero presets |
+| OSTERIA | INTEGRATED (native) | Production-grade | B012 ShoreSystem (shared) | — | P0-02 warmth filter L-only (`mixR` never processed) | Zero presets |
+| OWLFISH | INTEGRATED (standalone) | 7.1/10 | B014 Mixtur-Trautonium Oscillator | D004: `owl_morphGlide` declared, never read; D005: zero LFOs | — | Novel oscillator; 16 standalone presets only |
 
 **Note on XOzone:** The XO_OX-XOzone-Instrument project is the rebranded Instability Synth (originally at `~/Desktop/synth-plugin`). Its DSP concepts (Cytomic SVF, PolyBLEP, ParamSnapshot) were absorbed into XObese and XOverbite during their development. It does not represent a separate module — its legacy lives on through the OBESE and OVERBITE engines.
 
