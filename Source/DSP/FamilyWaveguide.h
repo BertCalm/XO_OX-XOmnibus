@@ -65,8 +65,8 @@ public:
     // Write one sample into the delay line.
     void write (float x)
     {
-        buffer[writePos % bufSize] = x;
-        ++writePos;
+        buffer[writePos] = x;
+        writePos = (writePos + 1) % bufSize; // bounded — no integer overflow
     }
 
     // Read with 4-point Lagrange interpolation.
@@ -259,7 +259,7 @@ public:
     {
         for (int i = 0; i < kNumCombs; ++i)
         {
-            float f = baseFrequency * kHarmonics[i];
+            float f = std::max (1.0f, baseFrequency * kHarmonics[i]);
             lengths[i] = std::max (sr / f, 2.0f);
         }
     }

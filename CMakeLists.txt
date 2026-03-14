@@ -132,6 +132,18 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Owlfish/OwlfishCytomicSVF.h
     Source/Engines/Owlfish/OwlfishFastMath.h
 
+    # Pentagon Family Engines (SP7)
+    Source/Engines/Ohm/OhmEngine.h
+    Source/Engines/Ohm/OhmEngine.cpp
+    Source/Engines/Orphica/OrphicaEngine.h
+    Source/Engines/Orphica/OrphicaEngine.cpp
+    Source/Engines/Obbligato/ObbligatoEngine.h
+    Source/Engines/Obbligato/ObbligatoEngine.cpp
+    Source/Engines/Ottoni/OttoniEngine.h
+    Source/Engines/Ottoni/OttoniEngine.cpp
+    Source/Engines/Ole/OleEngine.h
+    Source/Engines/Ole/OleEngine.cpp
+
     # Export pipeline
     Source/Export/XPNCoverArt.h
     Source/Export/XPNExporter.h

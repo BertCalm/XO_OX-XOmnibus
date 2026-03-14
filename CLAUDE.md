@@ -4,10 +4,10 @@
 
 XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. 22 engines are integrated with DSP code;
-4 more are in concept phase — 26 total across the full roadmap (see engine table below).
+and mutate into sounds impossible with any single synth. 27 engines are integrated with DSP code;
+4 more are in concept phase — 31 total across the full roadmap (see engine table below).
 
-- **Engine modules:** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSTINATO, OPENSKY, OCEANDEEP, OWLFISH, OUIE
+- **Engine modules:** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSTINATO, OPENSKY, OCEANDEEP, OWLFISH, OUIE, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** 1,839 factory presets in `.xometa` format, 6 mood categories, 6D Sonic DNA
@@ -64,6 +64,11 @@ and mutate into sounds impossible with any single synth. 22 engines are integrat
 | OCEANDEEP | XOceanDeep | Trench Violet `#2D0A4E` |
 | OWLFISH | XOwlfish | Abyssal Gold `#B8860B` |
 | OUIE | XOuïe | Hammerhead Steel `#708090` |
+| OHM | XOhm | Sage `#87AE73` |
+| ORPHICA | XOrphica | Siren Seafoam `#7FDBCA` |
+| OBBLIGATO | XObbligato | Rascal Coral `#FF8A7A` |
+| OTTONI | XOttoni | Patina `#5B8A72` |
+| OLE | XOlé | Hibiscus `#C9377A` |
 
 ### Engine ID vs Parameter Prefix
 
@@ -98,6 +103,11 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | OceanDeep | `deep_` | `deep_pressure` |
 | Owlfish | `owl_` | `owl_filterCutoff` |
 | Ouïe | `ouie_` | `ouie_hammer` |
+| Ohm | `ohm_` | `ohm_macroMeddling` |
+| Orphica | `orph_` | `orph_pluckBrightness` |
+| Obbligato | `obbl_` | `obbl_breathA` |
+| Ottoni | `otto_` | `otto_macroGrow` |
+| Ole | `ole_` | `ole_macroDrama` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
