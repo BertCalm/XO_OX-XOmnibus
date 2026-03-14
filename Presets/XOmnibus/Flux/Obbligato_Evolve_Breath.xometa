@@ -64,5 +64,6 @@
       "obbl_macroWind": 0.1
     }
   },
-  "coupling": null
+  "coupling": null,
+  "description": "The argument peaks and resolves. Sweep BOND through its arc and feel the narrative."
 }

@@ -67,5 +67,6 @@
       "orph_macroDivine": 0.228
     }
   },
-  "coupling": null
+  "coupling": null,
+  "description": "Fracture and resonance interlock. FRACTURE at mid-sweep \u2014 not yet noise, no longer just harp."
 }

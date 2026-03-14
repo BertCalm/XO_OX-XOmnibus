@@ -129,5 +129,6 @@
       "type": "PitchToPitch",
       "amount": 0.47
     }
-  ]
+  ],
+  "description": "Teen harmonic detail in full voice. French horn and trombone overtones stack cleanly."
 }

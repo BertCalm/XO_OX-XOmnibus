@@ -99,5 +99,6 @@
       "type": "PitchToPitch",
       "amount": 0.3
     }
-  ]
+  ],
+  "description": "Microsound triggers chase the pluck. FRACTURE sweeping opens new stutter territory."
 }

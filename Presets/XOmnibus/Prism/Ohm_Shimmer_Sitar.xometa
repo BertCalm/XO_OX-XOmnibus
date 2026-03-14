@@ -66,5 +66,6 @@
       "ohm_macroMeadow": 0.102
     }
   },
-  "coupling": null
+  "coupling": null,
+  "description": "Physical and interference layers split into prismatic bands. MEDDLING reveals the hidden overtones."
 }

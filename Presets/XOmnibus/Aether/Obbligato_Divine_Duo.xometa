@@ -64,5 +64,6 @@
       "obbl_macroWind": 0.255
     }
   },
-  "coupling": null
+  "coupling": null,
+  "description": "Resolution achieved at the edge of sound. Flute and reed merge into a single exhalation."
 }
