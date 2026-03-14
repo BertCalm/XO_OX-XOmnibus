@@ -11,6 +11,7 @@
 #include "Engines/Opal/OpalEngine.h"
 #include "Engines/Bite/BiteEngine.h"
 #include "Engines/Organon/OrganonEngine.h"
+#include "Engines/Ombre/OmbreEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -58,6 +59,10 @@ static bool registered_Bite = xomnibus::EngineRegistry::instance().registerEngin
 static bool registered_Organon = xomnibus::EngineRegistry::instance().registerEngine(
     "Organon", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OrganonEngine>();
+    });
+static bool registered_Ombre = xomnibus::EngineRegistry::instance().registerEngine(
+    "Ombre", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OmbreEngine>();
     });
 
 namespace xomnibus {
@@ -127,6 +132,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     OpalEngine::addParameters(params);
     BiteEngine::addParameters(params);
     OrganonEngine::addParameters(params);
+    OmbreEngine::addParameters(params);
 
     // Chord Machine parameters
     params.push_back(std::make_unique<juce::AudioParameterBool>(
