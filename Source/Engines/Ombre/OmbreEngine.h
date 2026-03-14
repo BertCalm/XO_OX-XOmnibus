@@ -10,12 +10,17 @@
 namespace xomnibus {
 
 //==============================================================================
-// OmbreMemoryBuffer — Circular delay-line with per-sample decay.
+// OmbreMemoryBuffer — Circular delay-line with decay-on-read.
 //
 // The heart of Oubli (forgetting). Captures audio into a buffer that gradually
 // fades. Multiple read heads at staggered positions create a granular
 // reconstruction from dissolving memories. The longer the decay, the more
 // the past persists. Short decay = fleeting traces. Long = ghost echoes.
+//
+// Decay is applied lazily at read time using age-based attenuation:
+//   amplitude = e^(-age / (decaySeconds * sampleRate))
+// This avoids traversing the full 96k buffer every block (O(N) → O(1) per
+// read head) while producing identical results.
 //
 // "Memory is not a recording; it's a reconstruction that decays."
 //==============================================================================
@@ -29,35 +34,31 @@ public:
         sr = sampleRate;
         std::fill (buffer.begin(), buffer.end(), 0.0f);
         writePos = 0;
+        totalSamplesWritten = 0;
     }
 
     void reset() noexcept
     {
         std::fill (buffer.begin(), buffer.end(), 0.0f);
         writePos = 0;
+        totalSamplesWritten = 0;
         for (auto& h : readPhases)
             h = 0.0f;
     }
 
-    // Write a sample into the memory buffer
+    // Write a sample into the memory buffer, stamped with current write time
     void writeSample (float sample) noexcept
     {
         buffer[static_cast<size_t> (writePos)] = sample;
+        writeTime[static_cast<size_t> (writePos)] = totalSamplesWritten;
         writePos = (writePos + 1) % kMaxBufferSamples;
+        ++totalSamplesWritten;
     }
 
-    // Apply per-sample decay to the entire buffer — called once per block,
-    // amortized across samples to avoid per-sample full-buffer traversal.
-    // decayPerBlock = pow(decayPerSample, numSamples)
-    void applyDecay (float decayFactor) noexcept
-    {
-        for (int i = 0; i < kMaxBufferSamples; ++i)
-            buffer[static_cast<size_t> (i)] = flushDenormal (
-                buffer[static_cast<size_t> (i)] * decayFactor);
-    }
-
-    // Read from multiple grain heads — returns blended reconstruction
-    float readGrains (float grainSizeMs, float driftAmount, float sampleRate) noexcept
+    // Read from multiple grain heads with decay-on-read — returns blended reconstruction.
+    // decayPerSample = e^(-1 / (decaySeconds * sampleRate)), precomputed by caller.
+    float readGrains (float grainSizeMs, float driftAmount, float sampleRate,
+                      float decayPerSample) noexcept
     {
         static constexpr int kNumHeads = 4;
         float grainSamples = (grainSizeMs / 1000.0f) * sampleRate;
@@ -81,8 +82,18 @@ public:
             // Linear interpolation between adjacent samples
             int readPosNext = (readPos + 1) % kMaxBufferSamples;
             float frac = (headOffset + driftOffset) - std::floor (headOffset + driftOffset);
-            float sample = buffer[static_cast<size_t> (readPos)] * (1.0f - frac)
-                         + buffer[static_cast<size_t> (readPosNext)] * frac;
+
+            float rawA = buffer[static_cast<size_t> (readPos)];
+            float rawB = buffer[static_cast<size_t> (readPosNext)];
+
+            // Decay-on-read: compute attenuation from sample age
+            uint64_t ageA = totalSamplesWritten - writeTime[static_cast<size_t> (readPos)];
+            float attenA = flushDenormal (fastExp (-static_cast<float> (ageA) * decayPerSample));
+            uint64_t ageB = totalSamplesWritten - writeTime[static_cast<size_t> (readPosNext)];
+            float attenB = flushDenormal (fastExp (-static_cast<float> (ageB) * decayPerSample));
+
+            float sample = rawA * attenA * (1.0f - frac)
+                         + rawB * attenB * frac;
 
             // Triangular window based on head position within grain
             float headPhase = static_cast<float> (h) / static_cast<float> (kNumHeads);
@@ -95,8 +106,10 @@ public:
 
 private:
     std::array<float, kMaxBufferSamples> buffer {};
+    std::array<uint64_t, kMaxBufferSamples> writeTime {}; // Sample index when each slot was written
     double sr = 44100.0;
     int writePos = 0;
+    uint64_t totalSamplesWritten = 0;
     float readPhases[4] = {};
 };
 
@@ -269,11 +282,11 @@ public:
         float memFeed = externalMemoryFeed;
         externalMemoryFeed = 0.0f;
 
-        // Memory decay factor per block (amortized)
-        // Convert seconds to per-block decay: factor = e^(-numSamples / (decay * sr))
+        // Decay-on-read rate: inverse of (decaySeconds * sampleRate).
+        // Each sample's attenuation = exp(-age * decayRate) computed at read time.
         float decayRate = (memDecaySec > 0.001f)
-            ? std::exp (-static_cast<float> (numSamples) / (memDecaySec * srf))
-            : 0.0f;
+            ? 1.0f / (memDecaySec * srf)
+            : 100.0f; // instant decay
 
         // Map waveform index
         PolyBLEP::Waveform waveform = PolyBLEP::Waveform::Saw;
@@ -294,8 +307,6 @@ public:
             if (!voice.active) continue;
             voice.lpf.setCoefficients (effectiveCutoff, reso, srf);
             voice.hpf.setCoefficients (80.0f, 0.0f, srf); // 80Hz HPF for Opsis clarity
-            // Apply memory decay (amortized per block)
-            voice.memory.applyDecay (decayRate);
         }
 
         float peakEnv = 0.0f;
@@ -415,7 +426,7 @@ public:
                     voice.memory.writeSample (feedSample);
 
                     // Read back granular reconstruction from fading memory
-                    oubliOut = voice.memory.readGrains (memGrain, memDrift, srf);
+                    oubliOut = voice.memory.readGrains (memGrain, memDrift, srf, decayRate);
                 }
 
                 // ============================================================

@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Amnesia",
+  "mood": "Entangled",
+  "engines": [
+    "Ombre",
+    "Opal"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ombre's dissolving memory feeds into Opal's granular cloud via AudioToWavetable. The ghost of every note becomes shimmer. Opal's envelope drives Ombre's filter — the louder the grain, the brighter the memory.",
+  "tags": [
+    "coupled",
+    "ambient",
+    "granular",
+    "memory"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macroTargets": [
+    { "macro": 1, "engineId": "Ombre", "parameterId": "ombre_blend", "min": 0.0, "max": 1.0 },
+    { "macro": 1, "engineId": "Ombre", "parameterId": "ombre_interference", "min": 0.0, "max": 0.8 },
+    { "macro": 2, "engineId": "Ombre", "parameterId": "ombre_memoryDrift", "min": 0.0, "max": 1.0 },
+    { "macro": 2, "engineId": "Opal", "parameterId": "opal_grainSize", "min": 10.0, "max": 300.0 },
+    { "macro": 3, "engineId": "Ombre", "parameterId": "ombre_interference", "min": 0.0, "max": 1.0 },
+    { "macro": 3, "engineId": "Ombre", "parameterId": "ombre_memoryGrain", "min": 5.0, "max": 500.0 },
+    { "macro": 4, "engineId": "Ombre", "parameterId": "ombre_memoryDecay", "min": 0.5, "max": 25.0 },
+    { "macro": 4, "engineId": "Ombre", "parameterId": "ombre_filterCutoff", "min": 200.0, "max": 12000.0 }
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": {
+    "sourceInstrument": "Ombre",
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.35,
+      "ombre_interference": 0.5,
+      "ombre_memoryDecay": 8.0,
+      "ombre_memoryGrain": 120.0,
+      "ombre_memoryDrift": 0.35,
+      "ombre_oscShape": 1.0,
+      "ombre_reactivity": 0.3,
+      "ombre_subLevel": 0.25,
+      "ombre_filterCutoff": 3500.0,
+      "ombre_filterReso": 0.3,
+      "ombre_attack": 0.4,
+      "ombre_decay": 1.0,
+      "ombre_sustain": 0.65,
+      "ombre_release": 2.5,
+      "ombre_level": 0.7
+    },
+    "Opal": {
+      "opal_grainSize": 80.0,
+      "opal_grainDensity": 0.6,
+      "opal_scatter": 0.4,
+      "opal_filterCutoff": 5000.0,
+      "opal_level": 0.6
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Ombre",
+        "type": "AmpToFilter",
+        "amount": 0.45
+      },
+      {
+        "engineA": "Ombre",
+        "engineB": "Opal",
+        "type": "AudioToWavetable",
+        "amount": 0.35
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.55,
+    "movement": 0.65,
+    "density": 0.55,
+    "space": 0.80,
+    "aggression": 0.10
+  }
+}

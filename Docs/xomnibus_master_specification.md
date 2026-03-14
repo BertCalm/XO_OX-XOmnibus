@@ -155,6 +155,7 @@ Toggle between modes at any time. Preset data is identical — only UI visibilit
 | **OBLONG** | XOblong | Warm character (fuzzy, curious motion) | 16 | ~15% | Amber `#E9A84A` |
 | **OBESE** | XObese | Character-driven sampler | 8 | ~8% | Hot Pink `#FF1493` |
 | **ONSET** | XOnset (new) | Percussive synthesis (Circuit↔Algorithm) | 8 | ~12% | Electric Blue `#0066FF` |
+| **OMBRE** | XOmbre (new) | Dual-narrative (memory/forgetting + perception) | 8 | ~12% | Shadow Mauve `#7B6B8A` |
 
 ### 3.2 Engine Visual Identity
 
@@ -168,6 +169,7 @@ Each engine is an "exhibition" within the gallery. Its accent color fills the ac
 | OBLONG | Rounded corners, soft shadows, tactile | Apple Liquid Glass |
 | OBESE | Bold ALL_CAPS, high contrast, industrial | Concrete |
 | ONSET | Grid precision, circuit traces, LED indicators | PCB green |
+| OMBRE | Duotone split panels, dissolving gradients | Watercolor wash |
 
 ### 3.3 Engine Pairing Synergies (Top 15)
 
@@ -188,6 +190,9 @@ Each engine is an "exhibition" within the gallery. Its accent color fills the ac
 | OBESE + OVERDUB | Audio→FM, Amp→Filter | Heavy samples through vintage dub FX |
 | ODDFELIX + OBESE | Amp→Choke, Audio→Ring | Percussive synthesis meets sampling |
 | ONSET + ODYSSEY | Rhythm→Blend, Audio→FM | Drums driving psychedelic textures |
+| OMBRE + OPAL | Audio→Wavetable, Amp→Filter | Dissolving memory feeds granular shimmer |
+| OMBRE + ODYSSEY | Audio→Wavetable, Amp→Pitch | Drift pad remembers its own past selves |
+| OMBRE + OBLIQUE | Audio→FM, Audio→Wavetable | Ghost echoes through prismatic delay |
 
 ### 3.4 CPU Budgets
 
@@ -210,6 +215,7 @@ drift_journey          // ODYSSEY engine
 bob_curiosity          // OBLONG engine
 fat_mojo               // OBESE engine
 onset_blend            // ONSET engine
+ombre_blend            // OMBRE engine
 ```
 
 **Detail:** `xo_mega_tool_engine_catalog.md`
@@ -613,12 +619,12 @@ Single source of truth. JSON files replacing all per-engine C++ presets and `.xo
 
 **Per-engine macro targets:**
 
-| Macro | ODDFELIX+ODDOSCAR | OVERDUB | ODYSSEY | OBLONG | OBESE | ONSET |
-|-------|-----------|-----|-------|-----|-----|-------|
-| M1 | OddfeliX+OddOscar | Send Level | JOURNEY | Curiosity | MOJO | MACHINE |
-| M2 | Bloom | Drive | BREATHE | Oblong Mode | BELLY | PUNCH |
-| M3 | Coupling | Delay FB | BLOOM | Smear Mix | OVERBITE | SPACE |
-| M4 | Delay+Rev | Reverb Mix | FRACTURE | Space Mix | GROWL | MUTATE |
+| Macro | ODDFELIX+ODDOSCAR | OVERDUB | ODYSSEY | OBLONG | OBESE | ONSET | OMBRE |
+|-------|-----------|-----|-------|-----|-----|-------|-------|
+| M1 | OddfeliX+OddOscar | Send Level | JOURNEY | Curiosity | MOJO | MACHINE | BLEND+INTERFERENCE |
+| M2 | Bloom | Drive | BREATHE | Oblong Mode | BELLY | PUNCH | DRIFT+REACTIVITY |
+| M3 | Coupling | Delay FB | BLOOM | Smear Mix | OVERBITE | SPACE | INTERFERENCE+GRAIN |
+| M4 | Delay+Rev | Reverb Mix | FRACTURE | Space Mix | GROWL | MUTATE | DECAY+FILTER |
 
 **Golden rule:** Every macro must produce an audible change across its full range in every preset.
 
@@ -1018,7 +1024,7 @@ Modules used by multiple engines, extracted to `Source/DSP/`:
 
 | Module | Used By | Purpose |
 |--------|---------|---------|
-| `CytomicSVF.h` | ODDFELIX, ODDOSCAR, ODYSSEY, OBLONG, OBESE | State-variable filter (LP/HP/BP) |
+| `CytomicSVF.h` | ODDFELIX, ODDOSCAR, ODYSSEY, OBLONG, OBESE, OMBRE | State-variable filter (LP/HP/BP) |
 | `PolyBLEP.h` | ODDFELIX, ONSET | Band-limited oscillators |
 | `FastMath.h` | All | Fast exp, tanh, sin approximations |
 | `WavetableOscillator.h` | ODDOSCAR, ODYSSEY, OBLONG | Wavetable rendering |
