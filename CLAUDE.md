@@ -4,13 +4,13 @@
 
 XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. 27 engines are integrated with DSP code;
-4 more are in concept phase — 31 total across the full roadmap (see engine table below).
+and mutate into sounds impossible with any single synth. 31 engines are integrated with DSP code
+(5 Constellation family engines added 2026-03-14) — see engine table below.
 
 - **Engine modules:** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSTINATO, OPENSKY, OCEANDEEP, OWLFISH, OUIE, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
-- **Presets:** 1,839 factory presets in `.xometa` format, 6 mood categories, 6D Sonic DNA
+- **Presets:** 2,369 factory presets in `.xometa` format, 7 mood categories (incl. Family), 6D Sonic DNA
 - **Formats:** AU, Standalone (macOS); AUv3, Standalone (iOS); VST3 (v2)
 - **Design:** Gallery Model — warm white shell frames engine accent colors. Light mode default.
 
@@ -191,7 +191,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 ## Seance Findings
 
-24 seances held 2026-03-14. Full data in:
+24 seances held 2026-03-14 (original 26 engines). 5 Constellation engines (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) added post-seance — pending their own seance round. Full data in:
 - Grand Survey: `Docs/xomnibus_landscape_2026.md`
 - Knowledge tree: `~/.claude/skills/synth-seance/knowledge/index.md`
 - Cross-reference: `Docs/seance_cross_reference.md`
