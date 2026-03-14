@@ -342,11 +342,11 @@ public:
                 v.body.setParams(v.freq * bodyFreqMul, bodyQ);
 
                 float ds=v.drift.tick(pDriftR,pDriftD);
-                float df=v.freq*std::pow(2.f,ds/12.f);
+                float df=v.freq*std::pow(2.f,(ds+extPitchMod)/12.f);
                 float dlen=v.sr/std::max(df,20.f);
                 float out=v.dl.read(dlen);
-                float exc=v.bowed?v.bow.tick(pBowP,pBowS,v.lastOut):v.pick.tick(pBright);
-                float damped=v.df.process(out+exc*0.3f,pDamp);
+                float exc=(v.bowed?v.bow.tick(pBowP,pBowS,v.lastOut):v.pick.tick(pBright))*extIntens;
+                float damped=v.df.process(out+exc*0.3f,std::clamp(pDamp+extDampMod,0.f,1.f));
                 v.dl.write(damped);
                 float bo=out+v.body.process(out)*0.25f;
                 float so=v.symp.process(bo,pSymp);
@@ -392,7 +392,23 @@ public:
 
     float getSampleForCoupling(int ch,int) const override { return ch==0?lastSampleL:lastSampleR; }
 
-    void applyCouplingInput(CouplingType,float,const float*,int) override {}
+    void applyCouplingInput(CouplingType t, float amount,
+                            const float* buf, int /*ns*/) override
+    {
+        switch (t)
+        {
+            case CouplingType::LFOToPitch:
+                extPitchMod = (buf ? buf[0] : 0.f) * amount * 2.f;
+                break;
+            case CouplingType::AmpToFilter:
+                extDampMod = amount * 0.08f;
+                break;
+            case CouplingType::EnvToMorph:
+                extIntens = 1.f + amount * 0.5f;
+                break;
+            default: break;
+        }
+    }
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> p;
@@ -503,6 +519,11 @@ private:
     int nextV=0, activeCount=0;
     float lastSampleL=0, lastSampleR=0;
     std::vector<float> couplingBuf;
+
+    // Family coupling ext mods (SP7.3)
+    float extPitchMod = 0.f;   // semitones from LFOToPitch
+    float extDampMod  = 0.f;   // 0–1 from AmpToFilter
+    float extIntens   = 1.f;   // multiplier from EnvToMorph
 
     // Master FX
     OhmDelay delay;

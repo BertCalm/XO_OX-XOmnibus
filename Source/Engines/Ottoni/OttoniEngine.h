@@ -138,7 +138,7 @@ public:
 
                 // --- Organic drift ---
                 float ds=v.drift.tick(pDR,pDD);
-                float df=v.freq*std::pow(2.f,ds/12.f);
+                float df=v.freq*std::pow(2.f,(ds+extPitchMod)/12.f);
 
                 // --- Teen vibrato ---
                 v.vibPhase+=pTnVibR/v.sr;
@@ -165,13 +165,13 @@ public:
                 // Teen: full virtuosity, bore width affects body
                 float excTeen=v.lipBuzz.tick(df, effTnEmb, ageScale)*teenMix;
 
-                float exc=(excToddler+excTween+excTeen);
+                float exc=(excToddler+excTween+excTeen)*extIntens;
 
                 // --- Waveguide feedback ---
-                float damped=v.df.process(out+exc*0.3f,pDa);
+                float damped=v.df.process(out+exc*0.3f,std::clamp(pDa+extDampMod,0.f,1.f));
 
                 // --- Bore width (teen): wider bore = lower damping, darker ---
-                float boreDamp=pDa*(1.f-pTnBore*growTeen*0.05f);
+                float boreDamp=std::clamp(pDa+extDampMod,0.f,1.f)*(1.f-pTnBore*growTeen*0.05f);
                 damped=v.df.process(out+exc*0.3f,boreDamp);
 
                 v.dl.write(damped);
@@ -252,7 +252,23 @@ public:
     }
 
     float getSampleForCoupling(int ch,int) const override {return ch==0?lastL:lastR;}
-    void applyCouplingInput(CouplingType,float,const float*,int) override {}
+    void applyCouplingInput(CouplingType t, float amount,
+                            const float* buf, int /*ns*/) override
+    {
+        switch (t)
+        {
+            case CouplingType::LFOToPitch:
+                extPitchMod = (buf ? buf[0] : 0.f) * amount * 2.f;
+                break;
+            case CouplingType::AmpToFilter:
+                extDampMod = amount * 0.08f;
+                break;
+            case CouplingType::EnvToMorph:
+                extIntens = 1.f + amount * 0.5f;
+                break;
+            default: break;
+        }
+    }
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> p;
@@ -350,6 +366,11 @@ private:
     static constexpr int kV=12;
     double sr=44100; int nv=0,ac=0; float lastL=0,lastR=0;
     std::array<OttoniAdapterVoice,kV> voices;
+
+    // Family coupling ext mods (SP7.3)
+    float extPitchMod = 0.f;   // semitones from LFOToPitch
+    float extDampMod  = 0.f;   // 0–1 from AmpToFilter
+    float extIntens   = 1.f;   // multiplier from EnvToMorph
 
     // --- Cached parameter pointers (28 total) ---
     // Section A: Toddler

@@ -138,7 +138,7 @@ public:
 
                 // ---- Drift ----
                 float ds=v.drift.tick(pDR,pDD);
-                float df=v.freq*std::pow(2.f,ds/12.f);
+                float df=v.freq*std::pow(2.f,(ds+extPitchMod)/12.f);
 
                 // ---- Aunt 2: Coin press pitch bend ----
                 if (!v.isHusband && v.auntIdx == 1) {
@@ -152,13 +152,13 @@ public:
                 // ---- Excitation: per-aunt strum rate + FUEGO intensity ----
                 float exc;
                 if (v.isHusband) {
-                    exc = v.pluck.tick(voiceBright * 0.6f);
+                    exc = v.pluck.tick(voiceBright * 0.6f) * extIntens;
                 } else if (v.auntIdx == 0) {
                     // Aunt 1 (Tres Cubano): uses strum rate param
                     // Re-trigger strum on note-on handled in noteOn; strumRate affects brightness/energy
-                    exc = v.strum.tick(voiceBright * pFu);
+                    exc = v.strum.tick(voiceBright * pFu) * extIntens;
                 } else {
-                    exc = v.strum.tick(voiceBright * pFu);
+                    exc = v.strum.tick(voiceBright * pFu) * extIntens;
                 }
 
                 // ---- Aunt 2: Gourd body resonance ----
@@ -170,7 +170,7 @@ public:
                     bodyGain = 0.2f + pA2Gs * 0.3f; // bigger gourd = more resonance
                 }
 
-                float damped=v.df.process(out+exc*0.3f,pDa);
+                float damped=v.df.process(out+exc*0.3f,std::clamp(pDa+extDampMod,0.f,1.f));
                 v.dl.write(damped);
 
                 // ---- Aunt 3: Charango tremolo ----
@@ -215,7 +215,23 @@ public:
     }
 
     float getSampleForCoupling(int ch,int) const override {return ch==0?lastL:lastR;}
-    void applyCouplingInput(CouplingType,float,const float*,int) override {}
+    void applyCouplingInput(CouplingType t, float amount,
+                            const float* buf, int /*ns*/) override
+    {
+        switch (t)
+        {
+            case CouplingType::LFOToPitch:
+                extPitchMod = (buf ? buf[0] : 0.f) * amount * 2.f;
+                break;
+            case CouplingType::AmpToFilter:
+                extDampMod = amount * 0.08f;
+                break;
+            case CouplingType::EnvToMorph:
+                extIntens = 1.f + amount * 0.5f;
+                break;
+            default: break;
+        }
+    }
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> p;
@@ -294,6 +310,11 @@ private:
     static constexpr int kV=18;
     double sr=44100; int nv=0,ac=0; float lastL=0,lastR=0;
     std::array<OleAdapterVoice,kV> voices;
+
+    // Family coupling ext mods (SP7.3)
+    float extPitchMod = 0.f;   // semitones from LFOToPitch
+    float extDampMod  = 0.f;   // 0–1 from AmpToFilter
+    float extIntens   = 1.f;   // multiplier from EnvToMorph
     // Aunt levels
     std::atomic<float>*a1Level=nullptr,*a2Level=nullptr,*a3Level=nullptr;
     // Aunt 1 character

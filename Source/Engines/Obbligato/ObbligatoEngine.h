@@ -171,7 +171,7 @@ public:
                 // Drift + BOND detune + MISCHIEF chaos
                 float mischiefOff = v.isBroA ? mischiefDetune : -mischiefDetune;
                 float ds=v.drift.tick(pDR,pDD) + bDetuneMod + mischiefOff;
-                float df=v.freq*std::pow(2.f,ds/12.f);
+                float df=v.freq*std::pow(2.f,(ds+extPitchMod)/12.f);
                 float dlen=v.sr/std::max(df,20.f);
                 float out=v.dl.read(dlen);
 
@@ -180,14 +180,14 @@ public:
                 if(v.isBroA){
                     // Air flutter modulates breath pressure for flute vibrato
                     float flutterMod = pFlutterA * 0.15f * std::sin(v.drift.tick(5.0f, 1.0f) * 20.0f);
-                    exc=v.airJet.tick(std::clamp(effBreathA + flutterMod * pEmbA, 0.0f, 1.0f), v.freq);
+                    exc=v.airJet.tick(std::clamp(effBreathA + flutterMod * pEmbA, 0.0f, 1.0f), v.freq)*extIntens;
                 }else{
                     // Reed bite adds harmonic edge on top of stiffness
                     float effStiff = std::clamp(pStiff + pBite * 0.3f, 0.0f, 1.0f);
-                    exc=v.reed.tick(effBreathB, effStiff);
+                    exc=v.reed.tick(effBreathB, effStiff)*extIntens;
                 }
 
-                float damped=v.df.process(out+exc*0.3f,pDa);
+                float damped=v.df.process(out+exc*0.3f,std::clamp(pDa+extDampMod,0.f,1.f));
                 v.dl.write(damped);
 
                 // Body resonance tuned per instrument type + body size
@@ -296,7 +296,23 @@ public:
     }
 
     float getSampleForCoupling(int ch,int) const override {return ch==0?lastL:lastR;}
-    void applyCouplingInput(CouplingType,float,const float*,int) override {}
+    void applyCouplingInput(CouplingType t, float amount,
+                            const float* buf, int /*ns*/) override
+    {
+        switch (t)
+        {
+            case CouplingType::LFOToPitch:
+                extPitchMod = (buf ? buf[0] : 0.f) * amount * 2.f;
+                break;
+            case CouplingType::AmpToFilter:
+                extDampMod = amount * 0.08f;
+                break;
+            case CouplingType::EnvToMorph:
+                extIntens = 1.f + amount * 0.5f;
+                break;
+            default: break;
+        }
+    }
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> p;
@@ -399,6 +415,11 @@ private:
     double sr=44100; int nv=0,ac=0; float lastL=0,lastR=0;
     std::array<ObbligatoAdapterVoice,kV> voices;
     int rrCounter=0; // round-robin counter for voice routing mode 3
+
+    // Family coupling ext mods (SP7.3)
+    float extPitchMod = 0.f;   // semitones from LFOToPitch
+    float extDampMod  = 0.f;   // 0–1 from AmpToFilter
+    float extIntens   = 1.f;   // multiplier from EnvToMorph
 
     // BOND smoothing state
     float bondSmoothed=0;

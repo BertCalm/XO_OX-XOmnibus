@@ -659,6 +659,9 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     auto couplingRoutes = couplingMatrix.loadRoutes();
     couplingMatrix.processBlock(numSamples, couplingRoutes);
 
+    // Apply family bleed between Constellation engines (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE)
+    processFamilyBleed(enginePtrs);
+
     // Mix all engine outputs to master
     const float masterVol = cachedParams.masterVolume->load();
 
@@ -725,6 +728,72 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         }
     }
     masterFX.processBlock(buffer, numSamples, ppqPos, bpm);
+}
+
+void XOmnibusProcessor::processFamilyBleed(std::array<SynthEngine*, MaxSlots>& enginePtrs)
+{
+    // Identify which slots hold Constellation family engines
+    static const juce::StringArray kFamilyIds = { "Ohm", "Orphica", "Obbligato", "Ottoni", "Ole" };
+
+    // Collect family engine pointers and their slot indices
+    struct FamilySlot { int slot; SynthEngine* eng; };
+    juce::Array<FamilySlot> familySlots;
+    familySlots.ensureStorageAllocated(MaxSlots);
+
+    for (int i = 0; i < MaxSlots; ++i)
+    {
+        if (!enginePtrs[i])
+            continue;
+        if (kFamilyIds.contains(enginePtrs[i]->getEngineId()))
+            familySlots.add({ i, enginePtrs[i] });
+    }
+
+    if (familySlots.size() < 2)
+        return; // nothing to bleed
+
+    // Read macro values from APVTS (these are cached atomic pointers — safe on audio thread)
+    auto* ohmCommune   = apvts.getRawParameterValue("ohm_macroCommune");
+    auto* obblBond     = apvts.getRawParameterValue("obbl_macroBond");
+    auto* oleDrama     = apvts.getRawParameterValue("ole_macroDrama");
+
+    const float communeAmt = ohmCommune ? ohmCommune->load() : 0.f;
+    const float bondAmt    = obblBond   ? obblBond->load()   : 0.f;
+    const float dramaAmt   = oleDrama   ? oleDrama->load()   : 0.f;
+
+    // For each family engine, send bleed coupling to all sibling family engines
+    for (const auto& src : familySlots)
+    {
+        const float srcSample = src.eng->getSampleForCoupling(0, 0);
+        const juce::String srcId = src.eng->getEngineId();
+
+        for (const auto& dst : familySlots)
+        {
+            if (dst.slot == src.slot)
+                continue;
+
+            // OHM COMMUNE macro → LFOToPitch to siblings
+            if (srcId == "Ohm" && communeAmt > 0.001f)
+            {
+                const float bleedBuf = srcSample * communeAmt;
+                dst.eng->applyCouplingInput(CouplingType::LFOToPitch,
+                                            communeAmt, &bleedBuf, 1);
+            }
+
+            // OBBLIGATO BOND macro → AmpToFilter to siblings
+            if (srcId == "Obbligato" && bondAmt > 0.001f)
+            {
+                dst.eng->applyCouplingInput(CouplingType::AmpToFilter,
+                                            bondAmt, nullptr, 1);
+            }
+
+            // OLE DRAMA macro → EnvToMorph to siblings
+            if (srcId == "Ole" && dramaAmt > 0.001f)
+            {
+                dst.eng->applyCouplingInput(CouplingType::EnvToMorph,
+                                            dramaAmt, nullptr, 1);
+            }
+        }
+    }
 }
 
 void XOmnibusProcessor::loadEngine(int slot, const std::string& engineId)

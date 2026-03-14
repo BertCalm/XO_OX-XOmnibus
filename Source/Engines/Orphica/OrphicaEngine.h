@@ -280,12 +280,12 @@ public:
 
         // ---- Microsound params (pre-compute in samples) -------------------------
         int miSizeSamples = std::max(1, static_cast<int>(pMiSz * 0.001f * static_cast<float>(sr)));
-        int miMode = static_cast<int>(pMiMo);
+        int microModeInt = static_cast<int>(pMiMo);
         int miDensInt = static_cast<int>(pMiDn);
 
         // ---- Configure FX LOW ---------------------------------------------------
-        tapeSat.setDrive(pTpS);
-        tapeSat.setMix(pTpS > 0.001f ? 1.0f : 0.0f);
+        tapeSatFx.setDrive(pTpS);
+        tapeSatFx.setMix(pTpS > 0.001f ? 1.0f : 0.0f);
         darkDelay.setDelayTime(pDDT * 1000.0f);  // seconds → ms
         darkDelay.setFeedback(pDDF);
         darkDelay.setMix(pDDF > 0.001f || pDDT > 0.001f ? 0.4f : 0.0f);
@@ -320,18 +320,18 @@ public:
 
                 // Organic drift
                 float ds=v.drift.tick(pDR,pDD);
-                float df=v.freq*std::pow(2.f,ds/12.f);
+                float df=v.freq*std::pow(2.f,(ds+extPitchMod)/12.f);
                 float dlen=v.sr/std::max(df,20.f);
 
                 // Waveguide read
                 float out=v.dl.read(dlen);
 
-                // Pluck exciter (position modulates burst length)
-                float burstMod = 1.0f + pPos * 3.0f;  // bridge=short, nut=longer
-                float exc=v.pluck.tick(effBright);
+                // Pluck exciter — position modulates brightness (bridge=bright, nut=dark)
+                float posBright = effBright * (1.0f - pPos * 0.4f);
+                float exc=v.pluck.tick(posBright)*extIntens;
 
                 // Damped feedback write
-                float damped=v.df.process(out+exc*pluckGain,effDamp);
+                float damped=v.df.process(out+exc*pluckGain,std::clamp(effDamp+extDampMod,0.f,1.f));
                 v.dl.write(damped);
 
                 // Body resonance (size controls frequency and Q)
@@ -346,7 +346,7 @@ public:
                 float sig=(bo+so)*v.ampEnv*0.4f;
 
                 // Per-voice microsound processing
-                sig = v.micro.process(sig, miMode, v.sr, pMiRa, miSizeSamples,
+                sig = v.micro.process(sig, microModeInt, v.sr, pMiRa, miSizeSamples,
                                       miDensInt, effMicroScatter, effMicroMix);
 
                 // Crossover split
@@ -380,8 +380,8 @@ public:
 
         // Tape saturation
         if(pTpS>0.001f){
-            tapeSat.processBlock(lowBufL,ns);
-            tapeSat.processBlock(lowBufR,ns);
+            tapeSatFx.processBlock(lowBufL,ns);
+            tapeSatFx.processBlock(lowBufR,ns);
         }
 
         // Dark delay (long, dark repeats)
@@ -416,7 +416,23 @@ public:
     }
 
     float getSampleForCoupling(int ch,int) const override {return ch==0?lastL:lastR;}
-    void applyCouplingInput(CouplingType,float,const float*,int) override {}
+    void applyCouplingInput(CouplingType t, float amount,
+                            const float* buf, int /*ns*/) override
+    {
+        switch (t)
+        {
+            case CouplingType::LFOToPitch:
+                extPitchMod = (buf ? buf[0] : 0.f) * amount * 2.f;
+                break;
+            case CouplingType::AmpToFilter:
+                extDampMod = amount * 0.08f;
+                break;
+            case CouplingType::EnvToMorph:
+                extIntens = 1.f + amount * 0.5f;
+                break;
+            default: break;
+        }
+    }
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> p;
@@ -526,6 +542,11 @@ private:
     static constexpr int kV=16;
     static constexpr int kMaxBlock=4096;
     double sr=44100; int nv=0,ac=0; float lastL=0,lastR=0;
+
+    // Family coupling ext mods (SP7.3)
+    float extPitchMod = 0.f;   // semitones from LFOToPitch
+    float extDampMod  = 0.f;   // 0–1 from AmpToFilter
+    float extIntens   = 1.f;   // multiplier from EnvToMorph
     std::array<OrphicaAdapterVoice,kV> voices;
 
     // FX LOW processors
