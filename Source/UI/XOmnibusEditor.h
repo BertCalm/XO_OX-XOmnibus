@@ -89,11 +89,38 @@ namespace GalleryColors {
         if (id == "Osprey")    return juce::Colour(0xFF1B4F8A); // Azulejo Blue
         if (id == "Osteria")   return juce::Colour(0xFF722F37); // Porto Wine
         if (id == "Owlfish")   return juce::Colour(0xFFB8860B); // Abyssal Gold
+        // Constellation family engines
+        if (id == "Ohm")       return juce::Colour(0xFF87AE73); // Sage
+        if (id == "Orphica")   return juce::Colour(0xFF7FDBCA); // Siren Seafoam
+        if (id == "Obbligato") return juce::Colour(0xFFFF8A7A); // Rascal Coral
+        if (id == "Ottoni")    return juce::Colour(0xFF5B8A72); // Patina
+        if (id == "Ole")       return juce::Colour(0xFFC9377A); // Hibiscus
         return get(borderGray());
     }
 
     inline juce::String prefixForEngine(const juce::String& id)
     {
+        // Engines whose parameter prefix differs from id.toLowerCase()
+        if (id == "OddfeliX")  return "snap";
+        if (id == "OddOscar")  return "morph";
+        if (id == "Overdub")   return "dub";
+        if (id == "Odyssey")   return "odyssey";
+        if (id == "Oblong")    return "bob";
+        if (id == "Obese")     return "fat";
+        if (id == "Onset")     return "onset";
+        if (id == "Overworld") return "ow";
+        if (id == "Opal")      return "opal";
+        if (id == "Overbite")  return "poss";
+        if (id == "Oblique")   return "oblq";
+        if (id == "Ostinato")  return "osti";
+        if (id == "OpenSky")   return "sky";
+        if (id == "OceanDeep") return "deep";
+        if (id == "Ouie")      return "ouie";
+        // Constellation engines with abbreviated prefixes
+        if (id == "Orphica")   return "orph";
+        if (id == "Obbligato") return "obbl";
+        if (id == "Ottoni")    return "otto";
+        // Remaining engines: id lowercased matches prefix
         return id.toLowerCase();
     }
 }
