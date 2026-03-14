@@ -1,27 +1,27 @@
 # XOmnibus — Engine Expansion Roadmap
 
-*Document version: 3.0 | March 2026 — Full audit: 20 engines integrated, XOstinato designed, XOcelot scaffolded*
+*Document version: 3.2 | March 2026 — Full audit: 21 engines integrated, XOstinato + XOuïe designed*
 
 ---
 
 ## Current Gallery State (March 2026)
 
-**20 engines integrated** in `Source/Engines/`, all with SynthEngine adapters. 1,595 factory presets across 6 moods.
+**21 engines integrated** in `Source/Engines/`, all with SynthEngine adapters. 1,610 factory presets across 6 moods.
 
 ### Volume 1 — Core Engines (Original Instruments)
 
 | Code | Engine Dir | Source Instrument | Role | Lines | Status |
 |------|-----------|------------------|------|-------|--------|
-| SNAP | Snap | OddfeliX | Percussive/rhythmic Karplus-Strong | 635 | ✅ Integrated |
-| MORPH | Morph | OddOscar | Wavetable pads | 795 | ✅ Integrated |
-| DUB | Dub | XOverdub | FX send/return dub bus | 1,310 | ✅ Integrated |
-| DRIFT | Drift | XOdyssey | Psychedelic pads, Climax | 1,435 | ✅ Integrated |
-| BOB | Bob | XOblongBob | Warm fuzzy textures | 1,739 | ✅ Integrated |
-| FAT | Fat | XObese | Width/thickness, 13-osc | 1,496 | ✅ Integrated |
+| ODDFELIX | Snap | OddfeliX | Percussive/rhythmic Karplus-Strong | 635 | ✅ Integrated |
+| ODDOSCAR | Morph | OddOscar | Wavetable pads | 795 | ✅ Integrated |
+| OVERDUB | Dub | XOverdub | FX send/return dub bus | 1,310 | ✅ Integrated |
+| ODYSSEY | Drift | XOdyssey | Psychedelic pads, Climax | 1,435 | ✅ Integrated |
+| OBLONG | Bob | XOblongBob | Warm fuzzy textures | 1,739 | ✅ Integrated |
+| OBESE | Fat | XObese | Width/thickness, 13-osc | 1,496 | ✅ Integrated |
 | ONSET | Onset | XOnset | Algorithmic drum synthesis | 1,581 | ✅ Integrated |
 | OVERWORLD | Overworld | XOverworld | Chip synthesis (NES/Genesis/SNES) | 509 | ✅ Integrated |
 | OPAL | Opal | XOpal | Granular time-scatter | 3,095 | ✅ Integrated |
-| BITE | Bite | XOpossum | Bass-forward character synth | 2,388 | ✅ Integrated |
+| OVERBITE | Bite | XOverbite (was XOpossum) | Bass-forward character synth | 2,388 | ✅ Integrated |
 
 ### Volume 1.5 — Expansion Engines (Integrated)
 
@@ -34,9 +34,10 @@
 | ORIGAMI | Origami | XOrigami | Fold dynamics / waveshaping | 1,594 | ✅ Integrated |
 | ORACLE | Oracle | XOracle | Breakpoint function synthesis | 1,479 | ✅ Integrated |
 | OBSCURA | Obscura | XObscura | Stiffness / physical string modeling | 1,393 | ✅ Integrated |
-| OCEANIC | Oceanic | XOceanic | Wavetable/FM spectral separation | 1,424 | ✅ Integrated |
+| OCEANIC | Oceanic | XOceanic | Paraphonic string ensemble + chromatophore pedalboard | 1,424 | ✅ Integrated |
 | OPTIC | Optic | XOptic | Visual modulation + AutoPulse | 732 | ✅ Integrated |
 | OBLIQUE | Oblique | XOblique | Prismatic bounce / RTJ × Funk × Tame Impala | 1,146 | ✅ Integrated |
+| OCELOT | Ocelot | XOcelot | Canopy-layered ecosystem / sample mangling | 3,010 | ✅ Integrated |
 
 ---
 
@@ -58,20 +59,16 @@ These are the full standalone instruments (AU + Standalone builds) that exist al
 
 ## Engines In Development
 
-### Engine: OCELOT — XOcelot
+### Engine: OCELOT — XOcelot ✅ Integrated
 
 - **Gallery code:** OCELOT
 - **Accent color:** Ocelot Tawny `#C5832B`
 - **Parameter prefix:** `ocelot_`
 - **Thesis:** Canopy-layered ecosystem synth — 4 interacting strata (Floor/Understory/Canopy/Emergent) with biome transformations (Jungle/Underwater/Winter)
 - **Max voices:** 8
-- **CPU budget:** <14%
-- **Phase 1 architecture:** `Docs/xocelot_phase1_architecture.md` ✅
-- **Concept brief:** `Docs/concepts/xocelot_concept_brief.md` ✅
-- **Standalone repo:** `~/Documents/GitHub/XOcelot/` — 17 source files, ~1,853 lines (scaffold)
-- **XOmnibus integration:** Engine dir exists but not yet wired to scaffold
-
-**Current status:** Phase 1 architecture complete, standalone scaffold started. Needs Phase 2 (core DSP implementation).
+- **XOmnibus integration:** 3,010 lines in `Source/Engines/Ocelot/`
+- **Standalone repo:** `~/Documents/GitHub/XOcelot/` — scaffold with Phase 1 architecture
+- **Sound design guide:** Section not yet written (add to `xomnibus_sound_design_guides.md`)
 
 **Coupling Matrix (OCELOT)**
 
@@ -122,6 +119,7 @@ These are the full standalone instruments (AU + Standalone builds) that exist al
 
 **Coupling Matrix (OSTINATO)**
 
+
 | As Target | Source Engine | Type | Musical Effect |
 |-----------|--------------|------|----------------|
 | OSTINATO receives | BITE | AmpToFilter | Bass amplitude opens Fire Stage — bass makes circle roar |
@@ -137,6 +135,48 @@ These are the full standalone instruments (AU + Standalone builds) that exist al
 | OSTINATO sends | OPAL | AudioToWavetable | Drum hits scattered into grain clouds |
 | OSTINATO sends | DRIFT | AmpToFilter | Circle energy drives pad filter |
 | OSTINATO sends | BOB | AmpToFilter | Drum dynamics shape warm texture |
+
+### Engine: OUIE — XOuïe
+
+- **Gallery code:** OUIE
+- **Accent color:** Hammerhead Steel `#708090`
+- **Parameter prefix:** `ouie_`
+- **Thesis:** Duophonic synthesis — two voices with selectable algorithms (8 options each), STRIFE↔LOVE bipolar interaction axis. The hammerhead shark at the thermocline.
+- **Max voices:** 2 (duophonic) + 4 unison per voice = 8 oscillators max
+- **CPU budget:** <8%
+- **Concept brief:** `Docs/concepts/xouie_concept_brief.md` ✅
+- **Standalone repo:** Not yet created
+
+**Key architecture decisions:**
+- 2 voices, each selects from 8 algorithms in smooth/rough clusters
+- Smooth: VA, Wavetable, FM, Additive | Rough: Phase Dist, Wavefolder, KS, Noise
+- HAMMER macro: bipolar STRIFE↔LOVE interaction axis (signature feature)
+- Voice modes: Split (low/high), Layer (both on every note), Duo (true duophonic)
+- 4 macros: HAMMER (interaction), AMPULLAE (sensitivity), CARTILAGE (flexibility), CURRENT (environment)
+- ~65 canonical parameters, 80 factory presets
+- Inspired by Arturia MiniFreak/MicroFreak architecture
+
+**Current status:** Phase 0 complete — design approved. Ready for Phase 1 architecture.
+
+**Invoke Phase 1:** `/new-xo-engine phase=1 name=XOuïe identity="Duophonic synthesis — two voices, two algorithms, one predator. Brotherly love and brotherly strife at the thermocline." code=XOui`
+
+**Coupling Matrix (OUIE)**
+
+| As Target | Source Engine | Type | Musical Effect |
+|-----------|--------------|------|----------------|
+| OUIE receives | DRIFT | EnvToMorph | Climax bloom sweeps HAMMER — journey destabilizes the brothers |
+| OUIE receives | ONSET | AmpToFilter | Drum hits modulate filter — rhythmic predator |
+| OUIE receives | FAT | AmpToFilter | Whale mass drives filter depth |
+| OUIE receives | OPAL | AudioToFM | Grain particles FM-modulate Voice B |
+| OUIE receives | OCEANIC | EnvToMorph | Spectral separation drives algorithm morph |
+
+| As Source | Target Engine | Type | Musical Effect |
+|-----------|--------------|------|----------------|
+| OUIE sends | DUB | getSample | Duophonic output through dub echo |
+| OUIE sends | OPAL | AudioToWavetable | Two-voice texture granulated into particles |
+| OUIE sends | BITE | AmpToFilter | Shark's attack drives anglerfish's bite |
+| OUIE sends | OCEANIC | getSample | Two-voice output spectrally separated |
+| OUIE sends | DRIFT | getSample | Duophonic texture as Odyssey's starting point |
 
 ---
 
@@ -177,6 +217,38 @@ XOFERRO has been upgraded and adopted as **XOblivion** (engine #4 in build queue
 
 ---
 
+## Mythology Engines (The Bookends)
+
+These two engines complete the XO_OX Aquatic Mythology — the top and bottom of the water column.
+See `Docs/xo_ox_aquatic_mythology.md` for the full mythology.
+
+### OPENSKY — XOpenSky
+
+- **Gallery code:** OPENSKY
+- **Accent color:** Sunburst `#FF8C00`
+- **Parameter prefix:** `sky_`
+- **Thesis:** Euphoric shimmer synth — supersaw anthems, crystalline pads, the soaring high above the water. Van Halen's jump, Vangelis's heaven.
+- **Polarity:** Pure feliX — above the surface entirely
+- **Max voices:** 16 | **CPU budget:** <10%
+- **Concept brief:** `Docs/concepts/xopensky_concept_brief.md` ✅
+- **Status:** Phase 0 complete — design approved
+
+### OCEANDEEP — XOceanDeep
+
+- **Gallery code:** OCEANDEEP
+- **Accent color:** Trench Violet `#2D0A4E`
+- **Parameter prefix:** `deep_`
+- **Thesis:** Abyssal bass engine — 808 pressure, bioluminescent creatures, sunken treasure at 10,000 leagues under the sea.
+- **Polarity:** Pure Oscar — the absolute ocean floor
+- **Max voices:** 8 | **CPU budget:** <12%
+- **Concept brief:** `Docs/concepts/xoceandeep_concept_brief.md` ✅
+- **Status:** Phase 0 complete — design approved
+
+### The Full Column Coupling
+> **OPENSKY × OCEANDEEP** — The entire XO_OX mythology in one patch. feliX's sky over Oscar's floor. Euphoric shimmer over abyssal 808. The coupling that completes the universe.
+
+---
+
 ## Build Priority (as of March 2026)
 
 ```
@@ -185,10 +257,13 @@ NOW
 ├── XOstinato — Phase 1 architecture (design approved)
 │
 NEXT
+├── XOuïe — Phase 1 architecture (concept brief done)
+├── XOpenSky — Phase 1 architecture (concept brief done)
+├── XOceanDeep — Phase 1 architecture (concept brief done)
 ├── XOstinato — Phase 2-7 build
-├── XOscillum — Phase 0-1 (spec ready)
 │
 LATER
+├── XOscillum — Phase 0-1 (spec ready)
 ├── XObliqua — Phase 0+
 ├── XOccult — Phase 0+
 ├── XOblivion — Phase 0+
@@ -213,6 +288,15 @@ Priority coupling showcase presets for newly added engines:
 10. **OVERWORLD × OCELOT** — Chip Chop — chip audio bit-crushed through SP-1200 mangler
 11. **OSTINATO × BITE** — Rhythm & Bass — drum circle accents pumping the bass filter
 12. **OSTINATO × DRIFT** — Ceremony — circle energy breathing the psychedelic pads
+13. **OPENSKY × OCEANDEEP** — The Full Column — feliX's sky over Oscar's floor, the entire mythology
+14. **OPENSKY × OVERDUB** — Heavenly Dub — euphoric leads through Jamaican tape echo
+15. **OCEANDEEP × OVERDUB** — The Deepest Dub — abyssal sub through dub delay
+16. **OPENSKY × OPAL** — Light Particles — shimmer granulated into suspended crystals
+17. **OCEANDEEP × ONSET** — Pressure Drums — 808 sub shaking the percussion from below
+18. **OUIE × OCEANDEEP** — Apex Dive — duophonic leads over abyssal 808
+19. **OUIE × OPENSKY** — Thermal Rising — two-voice texture erupting into euphoric shimmer
+20. **OUIE × DUB** — Brothers Echo — duophonic argument echoing through dub tape delay
+21. **OUIE × BITE** — Predator Meets Predator — hammerhead driving anglerfish's bite filter
 
 ---
 

@@ -17,6 +17,24 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* ── Skip link (accessibility) ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100000;
+  padding: 0.75rem 1.5rem;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
 :root {
   --bg-deep:    #060A10;
   --bg-warm:    #0A1018;
@@ -28,7 +46,7 @@
   --cream:      #E4EAF0;
   --text:       #B0BEC8;
   --text-dim:   #6B7F8E;
-  --text-faint: #3A5060;
+  --text-faint: #4A6878;
   --shell:      #E4EAF0;
   --border:     #152330;
   --teal:       #2AA19B;
@@ -1110,6 +1128,251 @@ h2 em {
   border-color: var(--cream);
 }
 
+/* ═══════════ COMMUNITY SECTION ═══════════ */
+.community {
+  border-top: 1px solid var(--border);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.community .section-label {
+  justify-content: center;
+}
+
+.community .section-label::before { display: none; }
+
+.community h2 {
+  max-width: 700px;
+}
+
+.community .section-text {
+  text-align: center;
+  max-width: 580px;
+}
+
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+  width: 100%;
+  max-width: 960px;
+}
+
+@media (max-width: 768px) {
+  .community-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.community-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.community-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--teal), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.community-card:hover {
+  border-color: var(--teal);
+  transform: translateY(-2px);
+}
+
+.community-card:hover::before {
+  opacity: 1;
+}
+
+.community-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: block;
+  line-height: 1;
+}
+
+.community-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--cream);
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+}
+
+.community-card p {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.community-card a {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: var(--teal);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.community-card a:hover {
+  color: var(--gold);
+}
+
+/* Showcase Wall */
+.showcase-wall {
+  margin-top: 3.5rem;
+  width: 100%;
+  max-width: 960px;
+}
+
+.showcase-wall h3 {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--cream);
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.showcase-wall > p {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-bottom: 1.5rem;
+}
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.showcase-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  transition: all 0.3s;
+  cursor: default;
+}
+
+.showcase-card:hover {
+  border-color: var(--gold-dim);
+}
+
+.showcase-artist {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold-dim);
+  margin-bottom: 0.25rem;
+}
+
+.showcase-title {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--cream);
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 0.4rem;
+}
+
+.showcase-engines {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+}
+
+.showcase-engines span {
+  display: inline-block;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 6px;
+  margin: 2px 2px 0 0;
+  font-size: 0.65rem;
+}
+
+/* Submit CTA */
+.submit-cta {
+  margin-top: 2.5rem;
+  padding: 1.5rem 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.submit-cta p {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+}
+
+.submit-form {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.submit-form input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.7rem 1rem;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.submit-form input:focus {
+  border-color: var(--teal);
+}
+
+.submit-form input::placeholder {
+  color: var(--text-faint);
+}
+
+.submit-form button {
+  padding: 0.7rem 1.5rem;
+  background: var(--teal);
+  color: var(--bg-deep);
+  border: 1px solid var(--teal);
+  border-radius: 6px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.submit-form button:hover {
+  background: var(--cream);
+  border-color: var(--cream);
+}
+
 /* ═══════════ ACCENT SPECTRUM ═══════════ */
 .spectrum-bar {
   width: 100%;
@@ -1465,19 +1728,23 @@ footer {
 </div>
 
 <!-- ═══════════ BUBBLE CANVAS (depth particles) ═══════════ -->
-<canvas class="bubble-canvas" id="bubbleCanvas"></canvas>
+<!-- Skip navigation for accessibility -->
+<a href="#instruments" class="skip-link">Skip to instruments</a>
+
+<canvas class="bubble-canvas" id="bubbleCanvas" role="presentation" aria-hidden="true"></canvas>
 
 <!-- ═══════════ STICKY NAV ═══════════ -->
-<nav class="sticky-nav" id="stickyNav">
+<nav class="sticky-nav" id="stickyNav" aria-label="Main navigation">
   <a href="#" class="nav-logo"><span class="gold">X</span>O_O<span class="gold">X</span></a>
   <div class="nav-links">
-    <a href="#philosophy">Philosophy</a>
+    <a href="manifesto.html">Manifesto</a>
     <a href="#instruments">Instruments</a>
     <a href="#chord-machine">Chord Machine</a>
     <a href="#platform">Platform</a>
     <a href="#aquarium">Aquarium</a>
     <a href="packs.html" class="aquatic-link">Sound Packs</a>
     <a href="guide.html" class="aquatic-link">Field Guide</a>
+    <a href="#community">Community</a>
     <a href="https://github.com/BertCalm/XO_OX-XOmnibus">GitHub</a>
     <div class="depth-gauge" id="depthGauge">
       <div class="depth-gauge-bar"><div class="depth-gauge-fill" id="depthFill"></div></div>
@@ -1488,8 +1755,8 @@ footer {
 
 <!-- ═══════════ HERO ═══════════ -->
 <section class="hero" id="hero">
-  <canvas class="hero-particles" id="particleCanvas"></canvas>
-  <canvas class="hero-waveform" id="waveformCanvas"></canvas>
+  <canvas class="hero-particles" id="particleCanvas" role="presentation" aria-hidden="true"></canvas>
+  <canvas class="hero-waveform" id="waveformCanvas" role="presentation" aria-hidden="true"></canvas>
   <div class="hero-logo" aria-label="XO_OX Designs">
     <span class="gold">X</span>O<span class="underscore">_</span>O<span class="gold">X</span>
   </div>
@@ -1656,6 +1923,85 @@ footer {
   </div>
 </section>
 
+<!-- ═══════════ COMMUNITY ═══════════ -->
+<section class="community reveal" id="community">
+  <div class="section-label">Community</div>
+  <h2>Made by one.<br>Made <em>for all.</em></h2>
+  <p class="section-text">
+    XO_OX exists because of the producers, students, experimenters, and dreamers who pick up these instruments and make something no one expected. This is your space.
+  </p>
+
+  <div class="community-grid">
+    <div class="community-card">
+      <span class="community-icon" aria-hidden="true">&#127925;</span>
+      <h3>Share Your Sound</h3>
+      <p>Upload your tracks, preset packs, or experiments. Show the world what these engines can do when given to the right hands.</p>
+      <a href="#showcase">Browse creations &rarr;</a>
+    </div>
+    <div class="community-card">
+      <span class="community-icon" aria-hidden="true">&#128172;</span>
+      <h3>Discuss &amp; Learn</h3>
+      <p>Sound design tips, feature requests, bug reports, and deep dives into DSP. Every question is welcome. Every answer builds the knowledge base.</p>
+      <a href="https://github.com/BertCalm/XO_OX-XOmnibus/discussions">GitHub Discussions &rarr;</a>
+    </div>
+    <div class="community-card">
+      <span class="community-icon" aria-hidden="true">&#128296;</span>
+      <h3>Contribute</h3>
+      <p>Build an engine. Design presets. Fix a bug. Write documentation. This is open-source — your contribution becomes part of the instrument.</p>
+      <a href="https://github.com/BertCalm/XO_OX-XOmnibus">Contribute on GitHub &rarr;</a>
+    </div>
+  </div>
+
+  <div class="showcase-wall" id="showcase">
+    <h3>Made With XO_OX</h3>
+    <p>A growing gallery of tracks and preset packs created by the community. Your work could be featured here.</p>
+    <div class="showcase-grid">
+      <div class="showcase-card">
+        <div class="showcase-artist">Placeholder</div>
+        <div class="showcase-title">Midnight Architecture</div>
+        <div class="showcase-engines">
+          <span>OddfeliX</span>
+          <span>Odyssey</span>
+          <span>Overdub</span>
+        </div>
+      </div>
+      <div class="showcase-card">
+        <div class="showcase-artist">Placeholder</div>
+        <div class="showcase-title">Tidal Memory</div>
+        <div class="showcase-engines">
+          <span>Oceanic</span>
+          <span>Opal</span>
+        </div>
+      </div>
+      <div class="showcase-card">
+        <div class="showcase-artist">Placeholder</div>
+        <div class="showcase-title">Pixel Dreams Vol. 1</div>
+        <div class="showcase-engines">
+          <span>Overworld</span>
+          <span>Onset</span>
+        </div>
+      </div>
+      <div class="showcase-card">
+        <div class="showcase-artist">Placeholder</div>
+        <div class="showcase-title">Formant Studies</div>
+        <div class="showcase-engines">
+          <span>Odyssey</span>
+          <span>Oblong</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="submit-cta">
+    <p>Want to be featured? Share a link to your track or preset pack and tell us which engines you used.</p>
+    <form class="submit-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent = 'Submitted!'; this.querySelector('button').disabled = true; setTimeout(() => { this.querySelector('button').textContent = 'Submit'; this.querySelector('button').disabled = false; }, 2000);">
+      <input type="text" placeholder="Your name or artist handle" aria-label="Artist name" required>
+      <input type="url" placeholder="Link to your track or pack" aria-label="Link to your creation" required>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</section>
+
 <!-- ═══════════ ENGINE DETAIL MODAL ═══════════ -->
 <div class="engine-modal-overlay" id="engineOverlay"></div>
 <div class="engine-modal" id="engineModal">
@@ -1676,10 +2022,12 @@ footer {
 <footer>
   <div class="footer-logo">XO_OX</div>
   <div class="footer-links">
-    <a href="https://github.com/BertCalm/XO_OX-XOmnibus">GitHub</a>
-    <a href="guide.html">Field Guide</a>
+    <a href="manifesto.html">Manifesto</a>
     <a href="#instruments">Instruments</a>
-    <a href="#chord-machine">Chord Machine</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="#community">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
   </div>
   <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
 </footer>

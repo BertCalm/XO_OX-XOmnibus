@@ -99,6 +99,38 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Optic/OpticEngine.cpp
     Source/Engines/Oblique/ObliqueEngine.h
     Source/Engines/Oblique/ObliqueEngine.cpp
+    Source/Engines/Ocelot/OcelotEngine.h
+    Source/Engines/Ocelot/OcelotEngine.cpp
+    Source/Engines/Ocelot/OcelotParameters.h
+    Source/Engines/Ocelot/OcelotParamSnapshot.h
+    Source/Engines/Ocelot/OcelotVoicePool.h
+    Source/Engines/Ocelot/OcelotVoice.h
+    Source/Engines/Ocelot/OcelotFloor.h
+    Source/Engines/Ocelot/OcelotUnderstory.h
+    Source/Engines/Ocelot/OcelotCanopy.h
+    Source/Engines/Ocelot/OcelotEmergent.h
+    Source/Engines/Ocelot/BiomeMorph.h
+    Source/Engines/Ocelot/EcosystemMatrix.h
+    Source/Engines/Ocelot/AmpEnvelope.h
+    Source/Engines/Ocelot/ModalResonator.h
+    Source/Engines/Ocelot/KarplusStrong.h
+    Source/Engines/Ocelot/BitCrusher.h
+    Source/Engines/Ocelot/TapeWarp.h
+    Source/Engines/Ocelot/WaveFolder.h
+
+    Source/Engines/Owlfish/OwlfishEngine.h
+    Source/Engines/Owlfish/OwlfishEngine.cpp
+    Source/Engines/Owlfish/OwlfishParameters.h
+    Source/Engines/Owlfish/OwlfishParamSnapshot.h
+    Source/Engines/Owlfish/OwlfishVoice.h
+    Source/Engines/Owlfish/OwlfishAmpEnvelope.h
+    Source/Engines/Owlfish/SubharmonicOsc.h
+    Source/Engines/Owlfish/OwlfishCompressor.h
+    Source/Engines/Owlfish/MicroGranular.h
+    Source/Engines/Owlfish/ArmorBuffer.h
+    Source/Engines/Owlfish/AbyssReverb.h
+    Source/Engines/Owlfish/OwlfishCytomicSVF.h
+    Source/Engines/Owlfish/OwlfishFastMath.h
 
     # Export pipeline
     Source/Export/XPNCoverArt.h
