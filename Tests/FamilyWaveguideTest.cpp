@@ -58,6 +58,32 @@ int main()
     const float  delayLen = static_cast<float> (SR) / pitch; // ~100.2 samples
 
     // -----------------------------------------------------------------------
+    // 0. FamilyDelayLine Lagrange — interpolated read is continuous (no step at integer boundaries)
+    // A correct Lagrange implementation produces smooth values as frac sweeps 0→1.
+    // A wrong formula would produce large discontinuities at integer frac values.
+    // -----------------------------------------------------------------------
+    {
+        xomnibus::FamilyDelayLine dl;
+        dl.prepare (512);
+        // Write a simple ramp so we can predict expected values
+        for (int i = 0; i < 200; ++i)
+            dl.write (static_cast<float> (i) * 0.01f);
+
+        // Read at 50.0, 50.25, 50.5, 50.75, 51.0 — values must be monotonic
+        float v0 = dl.read (50.0f);
+        float v1 = dl.read (50.25f);
+        float v2 = dl.read (50.5f);
+        float v3 = dl.read (50.75f);
+        float v4 = dl.read (51.0f);
+        bool monotonic = (v0 >= v1) && (v1 >= v2) && (v2 >= v3) && (v3 >= v4);
+        // (ramp in buffer → shorter delay = more recent = higher value → monotonic decreasing)
+        check (monotonic, "DelayLine_Lagrange_monotonic",
+               "Lagrange read not smooth across fractional range — formula incorrect");
+        check (std::isfinite(v0) && std::isfinite(v2) && std::isfinite(v4),
+               "DelayLine_Lagrange_finite", "Lagrange read returned NaN/Inf");
+    }
+
+    // -----------------------------------------------------------------------
     // 1. FamilyDelayLine — basic read is finite
     // -----------------------------------------------------------------------
     {

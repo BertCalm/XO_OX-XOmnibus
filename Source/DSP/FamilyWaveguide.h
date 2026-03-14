@@ -76,26 +76,43 @@ public:
         int d = static_cast<int> (delayLength);
         float frac = delayLength - static_cast<float> (d);
 
-        // Wrap read indices into positive range
-        auto idx = [&] (int offset) -> float {
+        // Sample taps centered on the integer delay point.
+        // After write(), most recent sample is at writePos-1.
+        // "d samples ago" = writePos - d.  frac in [0,1) interpolates between
+        // writePos-d (y1) and writePos-d+1 (y2), i.e. fractionally < d samples ago.
+        auto tap = [&] (int offset) -> float {
             int pos = writePos - d + offset;
-            // Bring into [0, bufSize) without negative modulo UB
-            pos = ((pos % bufSize) + bufSize) % bufSize;
+            pos = ((pos % bufSize) + bufSize) % bufSize; // safe unsigned wrap
             return buffer[pos];
         };
 
-        float y0 = idx (-2);
-        float y1 = idx (-1);
-        float y2 = idx ( 0);
-        float y3 = idx ( 1);
+        // Grid positions (Lagrange nodes at -1, 0, +1, +2):
+        //   y0 @ node -1 → d-1 samples back (one newer than center)
+        //   y1 @ node  0 → d   samples back (center; frac=0 returns exactly y1)
+        //   y2 @ node +1 → d+1 samples back (one older; frac→1 approaches y2)
+        //   y3 @ node +2 → d+2 samples back (two older, for curvature)
+        // Taps go in the OLDER direction as Lagrange node index increases.
+        float y0 = tap ( 1);  // d-1 samples back (newer)
+        float y1 = tap ( 0);  // d   samples back (center)
+        float y2 = tap (-1);  // d+1 samples back (older)
+        float y3 = tap (-2);  // d+2 samples back (oldest)
 
-        // 4-point Lagrange interpolation
-        float c0 =  y1;
-        float c1 =  y2 - (1.0f / 3.0f) * y0 - 0.5f * y1 - (1.0f / 6.0f) * y3;
-        float c2 =  0.5f * (y0 + y2) - y1;
-        float c3 =  (1.0f / 6.0f) * (y3 - y0) + 0.5f * (y1 - y2);
+        // Standard 4-point Lagrange basis polynomials (nodes at -1, 0, 1, 2):
+        //   L0(t) =  t(t-1)(t-2) / -6
+        //   L1(t) = (t+1)(t-1)(t-2) / 2
+        //   L2(t) = (t+1) t (t-2) / -2
+        //   L3(t) = (t+1) t (t-1) / 6
+        float t  = frac;
+        float t1 = t - 1.0f;
+        float t2 = t - 2.0f;
+        float tp = t + 1.0f;
 
-        return c0 + frac * (c1 + frac * (c2 + frac * c3));
+        float w0 =  t  * t1 * t2 * (-1.0f / 6.0f);
+        float w1 =  tp * t1 * t2 * ( 1.0f / 2.0f);
+        float w2 =  tp * t  * t2 * (-1.0f / 2.0f);
+        float w3 =  tp * t  * t1 * ( 1.0f / 6.0f);
+
+        return w0*y0 + w1*y1 + w2*y2 + w3*y3;
     }
 
 private:
@@ -288,9 +305,10 @@ private:
 // LFOs at a golden-ratio frequency ratio to avoid periodicity and produce
 // naturalistic, non-repeating pitch wander.
 //
-// Output: pitch deviation in semitone fractions.
-// Apply: newDelay = baseDelay * (1.0f + drift * 0.05946f)
-//   (0.05946 = 2^(1/12) - 1 ≈ one semitone as a linear factor)
+// Output: pitch deviation as a fraction of a semitone (±0.05 = ±5 cents).
+// Apply: newDelay = baseDelay * std::pow(2.0f, drift / 12.0f)
+//   or for small drifts (<±50 cents): newDelay = baseDelay * (1.0f + drift * 0.05776f)
+//   (0.05776 ≈ (2^(1/12) - 1), the per-semitone linear approximation)
 //==============================================================================
 class FamilyOrganicDrift {
 public:
