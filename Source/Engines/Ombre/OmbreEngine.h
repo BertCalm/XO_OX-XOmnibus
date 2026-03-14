@@ -18,9 +18,11 @@ namespace xomnibus {
 // the past persists. Short decay = fleeting traces. Long = ghost echoes.
 //
 // Decay is applied lazily at read time using age-based attenuation:
-//   amplitude = e^(-age / (decaySeconds * sampleRate))
+//   amplitude = e^(-age * decayRate)
+// where age is the circular distance from readPos to writePos.
 // This avoids traversing the full 96k buffer every block (O(N) → O(1) per
-// read head) while producing identical results.
+// read head) while producing identical results and requiring zero extra
+// memory beyond the audio buffer itself.
 //
 // "Memory is not a recording; it's a reconstruction that decays."
 //==============================================================================
@@ -34,31 +36,28 @@ public:
         sr = sampleRate;
         std::fill (buffer.begin(), buffer.end(), 0.0f);
         writePos = 0;
-        totalSamplesWritten = 0;
     }
 
     void reset() noexcept
     {
         std::fill (buffer.begin(), buffer.end(), 0.0f);
         writePos = 0;
-        totalSamplesWritten = 0;
         for (auto& h : readPhases)
             h = 0.0f;
     }
 
-    // Write a sample into the memory buffer, stamped with current write time
+    // Write a sample into the memory buffer
     void writeSample (float sample) noexcept
     {
         buffer[static_cast<size_t> (writePos)] = sample;
-        writeTime[static_cast<size_t> (writePos)] = totalSamplesWritten;
         writePos = (writePos + 1) % kMaxBufferSamples;
-        ++totalSamplesWritten;
     }
 
     // Read from multiple grain heads with decay-on-read — returns blended reconstruction.
-    // decayPerSample = e^(-1 / (decaySeconds * sampleRate)), precomputed by caller.
+    // decayRate = 1 / (decaySeconds * sampleRate), precomputed by caller.
+    // Age is derived from circular distance (writePos - readPos), no timestamps needed.
     float readGrains (float grainSizeMs, float driftAmount, float sampleRate,
-                      float decayPerSample) noexcept
+                      float decayRate) noexcept
     {
         static constexpr int kNumHeads = 4;
         float grainSamples = (grainSizeMs / 1000.0f) * sampleRate;
@@ -86,11 +85,11 @@ public:
             float rawA = buffer[static_cast<size_t> (readPos)];
             float rawB = buffer[static_cast<size_t> (readPosNext)];
 
-            // Decay-on-read: compute attenuation from sample age
-            uint64_t ageA = totalSamplesWritten - writeTime[static_cast<size_t> (readPos)];
-            float attenA = flushDenormal (fastExp (-static_cast<float> (ageA) * decayPerSample));
-            uint64_t ageB = totalSamplesWritten - writeTime[static_cast<size_t> (readPosNext)];
-            float attenB = flushDenormal (fastExp (-static_cast<float> (ageB) * decayPerSample));
+            // Decay-on-read: age = circular distance from readPos to writePos
+            int ageA = (writePos - readPos + kMaxBufferSamples) % kMaxBufferSamples;
+            float attenA = flushDenormal (fastExp (-static_cast<float> (ageA) * decayRate));
+            int ageB = (writePos - readPosNext + kMaxBufferSamples) % kMaxBufferSamples;
+            float attenB = flushDenormal (fastExp (-static_cast<float> (ageB) * decayRate));
 
             float sample = rawA * attenA * (1.0f - frac)
                          + rawB * attenB * frac;
@@ -106,10 +105,8 @@ public:
 
 private:
     std::array<float, kMaxBufferSamples> buffer {};
-    std::array<uint64_t, kMaxBufferSamples> writeTime {}; // Sample index when each slot was written
     double sr = 44100.0;
     int writePos = 0;
-    uint64_t totalSamplesWritten = 0;
     float readPhases[4] = {};
 };
 
