@@ -1,3 +1,4 @@
 #include "ObbligatoEngine.h"
-#include "../../Core/EngineRegistry.h"
-REGISTER_ENGINE(xomnibus::ObbligatoEngine);
+// All DSP is inline in the .h header.
+// This stub provides the translation unit required by CMake.
+// Registration is centralized in XOmnibusProcessor.cpp.

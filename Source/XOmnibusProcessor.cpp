@@ -24,6 +24,11 @@
 #include "Engines/Osprey/OspreyEngine.h"
 #include "Engines/Osteria/OsteriaEngine.h"
 #include "Engines/Owlfish/OwlfishEngine.h"
+#include "Engines/Ohm/OhmEngine.h"
+#include "Engines/Orphica/OrphicaEngine.h"
+#include "Engines/Obbligato/ObbligatoEngine.h"
+#include "Engines/Ottoni/OttoniEngine.h"
+#include "Engines/Ole/OleEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -123,6 +128,26 @@ static bool registered_Osteria = xomnibus::EngineRegistry::instance().registerEn
 static bool registered_Owlfish = xomnibus::EngineRegistry::instance().registerEngine(
     "Owlfish", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xowlfish::OwlfishEngine>();
+    });
+static bool registered_Ohm = xomnibus::EngineRegistry::instance().registerEngine(
+    "Ohm", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OhmEngine>();
+    });
+static bool registered_Orphica = xomnibus::EngineRegistry::instance().registerEngine(
+    "Orphica", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OrphicaEngine>();
+    });
+static bool registered_Obbligato = xomnibus::EngineRegistry::instance().registerEngine(
+    "Obbligato", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::ObbligatoEngine>();
+    });
+static bool registered_Ottoni = xomnibus::EngineRegistry::instance().registerEngine(
+    "Ottoni", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OttoniEngine>();
+    });
+static bool registered_Ole = xomnibus::EngineRegistry::instance().registerEngine(
+    "Ole", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OleEngine>();
     });
 
 namespace xomnibus {
