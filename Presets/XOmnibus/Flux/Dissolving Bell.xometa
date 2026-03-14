@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Dissolving Bell",
+  "mood": "Flux",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sine bell strikes that decay into granular memory dust. Small grains + high drift = each bell dissolves differently.",
+  "tags": [
+    "bell",
+    "percussive",
+    "granular",
+    "decay"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": {
+    "sourceInstrument": "Ombre",
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.5,
+      "ombre_interference": 0.5,
+      "ombre_memoryDecay": 5.0,
+      "ombre_memoryGrain": 25.0,
+      "ombre_memoryDrift": 0.65,
+      "ombre_oscShape": 0.0,
+      "ombre_reactivity": 0.6,
+      "ombre_subLevel": 0.15,
+      "ombre_filterCutoff": 7000.0,
+      "ombre_filterReso": 0.3,
+      "ombre_attack": 0.003,
+      "ombre_decay": 0.4,
+      "ombre_sustain": 0.3,
+      "ombre_release": 2.0,
+      "ombre_level": 0.8
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.40,
+    "movement": 0.60,
+    "density": 0.35,
+    "space": 0.55,
+    "aggression": 0.20
+  }
+}

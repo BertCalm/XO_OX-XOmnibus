@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Shadow Play",
+  "mood": "Prism",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Square wave Opsis with aggressive reactivity — hard transients that cast long memory shadows. The interference feeds square crunch into Oubli, which smooths it into warm ghosts.",
+  "tags": [
+    "square",
+    "aggressive",
+    "textural",
+    "dual"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": {
+    "sourceInstrument": "Ombre",
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.6,
+      "ombre_interference": 0.55,
+      "ombre_memoryDecay": 3.5,
+      "ombre_memoryGrain": 70.0,
+      "ombre_memoryDrift": 0.4,
+      "ombre_oscShape": 2.0,
+      "ombre_reactivity": 0.75,
+      "ombre_subLevel": 0.3,
+      "ombre_filterCutoff": 4500.0,
+      "ombre_filterReso": 0.45,
+      "ombre_attack": 0.003,
+      "ombre_decay": 0.15,
+      "ombre_sustain": 0.65,
+      "ombre_release": 0.8,
+      "ombre_level": 0.78
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.60,
+    "warmth": 0.35,
+    "movement": 0.50,
+    "density": 0.55,
+    "space": 0.40,
+    "aggression": 0.50
+  }
+}

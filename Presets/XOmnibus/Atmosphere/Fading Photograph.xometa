@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Fading Photograph",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "A pad that slowly forgets itself. Hold a chord and listen as the memory dissolves into warm grain.",
+  "tags": [
+    "pad",
+    "evolving",
+    "memory",
+    "ambient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": {
+    "sourceInstrument": "Ombre",
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.25,
+      "ombre_interference": 0.45,
+      "ombre_memoryDecay": 10.0,
+      "ombre_memoryGrain": 180.0,
+      "ombre_memoryDrift": 0.3,
+      "ombre_oscShape": 1.0,
+      "ombre_reactivity": 0.2,
+      "ombre_subLevel": 0.35,
+      "ombre_filterCutoff": 3200.0,
+      "ombre_filterReso": 0.25,
+      "ombre_attack": 0.8,
+      "ombre_decay": 1.2,
+      "ombre_sustain": 0.7,
+      "ombre_release": 3.0,
+      "ombre_level": 0.75
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.65,
+    "movement": 0.55,
+    "density": 0.40,
+    "space": 0.80,
+    "aggression": 0.10
+  }
+}

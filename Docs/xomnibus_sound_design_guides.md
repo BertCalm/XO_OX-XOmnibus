@@ -1,6 +1,6 @@
 # XOmnibus — Sound Design Guide
 *Per-engine reference for sound designers, preset builders, and performers.*
-*Covers all 20 engines: features, key parameters, coupling strategies, and recommended pairings.*
+*Covers all 21 engines: features, key parameters, coupling strategies, and recommended pairings.*
 
 ---
 
@@ -781,3 +781,48 @@ AutoPulse trance modulation, prismatic bounce, massive bass, drum synthesis. Dan
 ### Film Score
 `ODYSSEY + OPAL + OCEANIC + OBSCURA`
 Drift pad, granular shimmer, swarm ambience, bowed strings. Cinematic texture.
+
+### Memory Palace
+`OMBRE + OPAL + ODYSSEY + OPTIC`
+Dual-narrative ghosts, granular shimmer, drift pad, visual modulation. Sound that remembers and forgets.
+
+---
+
+## 21. OMBRE (XOmbre)
+*Dual-narrative synthesis — memory meets perception*
+
+**Accent:** Shadow Mauve `#7B6B8A` | **Prefix:** `ombre_` | **Voices:** 8
+
+### What It Does
+A single engine containing two cognitive halves. **Oubli** (forgetting) captures audio into a circular memory buffer that gradually decays — granular reconstruction from dissolving traces. **Opsis** (seeing) is a reactive oscillator shaped by velocity transients — immediate, present-tense sound. The `blend` parameter crossfades between them. The `interference` parameter feeds each half into the other: Opsis output becomes Oubli's memory, and Oubli's ghosts haunt Opsis's pitch.
+
+### Key Parameters
+| Parameter | Range | Sweet Spot | What It Does |
+|-----------|-------|------------|-------------|
+| `ombre_blend` | 0–1 | 0.3–0.7 | Oubli ↔ Opsis balance. 0=pure ghost, 1=pure now. |
+| `ombre_interference` | 0–1 | 0.2–0.5 | Cross-modulation between halves. Higher = more haunted. |
+| `ombre_memoryDecay` | 0.01–30s | 2–8 | How fast Oubli forgets. Long = persistent ghosts. |
+| `ombre_memoryGrain` | 5–500ms | 40–120 | Grain size for memory reconstruction. Small = glitchy, large = smeared. |
+| `ombre_memoryDrift` | 0–1 | 0.1–0.4 | Pitch/time drift in memory. Higher = more degraded recall. |
+| `ombre_oscShape` | 0/1/2/3 | — | 0=Sine, 1=Saw, 2=Square, 3=Triangle |
+| `ombre_reactivity` | 0–1 | 0.3–0.7 | How velocity shapes Opsis transient. Higher = more percussive. |
+| `ombre_subLevel` | 0–1 | 0.2–0.4 | Sub oscillator level (one octave down, sine). |
+| `ombre_filterCutoff` | 20–20kHz | 2–6 kHz | Shared LP filter cutoff. |
+
+### Coupling
+- **Sends:** Envelope level (ch2), audio (ch0-1) — full-spectrum coupling source
+- **Receives:** AmpToFilter (envelope → filter), LFOToPitch (pitch drift), AudioToFM (FM on Opsis), AudioToWavetable (external audio → Oubli memory)
+- **Best as source for:** AmpToFilter (ghostly sidechain), AudioToWavetable (feed memories to other engines)
+
+### Recommended Pairings
+- **+ Opal:** Ombre provides the dissolving memories, Opal adds granular shimmer on top. Haunted ambient.
+- **+ Odyssey:** Blend=0.7 (mostly Opsis), interference high — Drift's evolving pad feeds into Oubli's memory buffer via coupling. The pad remembers itself.
+- **+ Optic:** AutoPulse modulates Ombre's filter cutoff. Memory buffer responds to visual rhythm.
+- **+ Oblique:** Ombre's ghost output through Oblique's prism delay creates recursive memory echoes.
+- **+ Organon:** Modal resonance feeds into Oubli memory — struck bells that slowly forget their pitch.
+
+### Starter Recipes
+**Ghost Pad:** blend=0.2, memoryDecay=12, memoryGrain=200, interference=0.4, oscShape=Saw, attack=0.5, sustain=0.8, release=2.0, filterCutoff=3000
+**Reactive Lead:** blend=0.85, reactivity=0.8, oscShape=Saw, subLevel=0.4, interference=0.15, memoryDecay=1.5, attack=0.005, decay=0.2, sustain=0.7
+**Dissolving Bells:** blend=0.5, memoryDecay=6, memoryGrain=30, memoryDrift=0.6, oscShape=Sine, reactivity=0.5, interference=0.5, filterCutoff=6000
+**Memory Drone:** blend=0.1, memoryDecay=25, memoryGrain=400, memoryDrift=0.3, interference=0.6, oscShape=Triangle, attack=2.0, sustain=1.0, release=4.0

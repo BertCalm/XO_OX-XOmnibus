@@ -6,7 +6,7 @@ XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by
 It merges 9 character instruments into one unified creative environment where engines couple, collide,
 and mutate into sounds impossible with any single synth.
 
-- **Engine modules:** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OPTIC, OBLIQUE
+- **Engine modules:** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OPTIC, OBLIQUE, OMBRE
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** 1000 factory presets in `.xometa` format, 6 mood categories, 6D Sonic DNA
@@ -58,6 +58,7 @@ and mutate into sounds impossible with any single synth.
 | ORBITAL | XOrbital | Warm Red `#FF6B6B` |
 | OPTIC | XOptic | Phosphor Green `#00FF41` |
 | OBLIQUE | XOblique | Prism Violet `#BF40FF` |
+| OMBRE | XOmbre | Shadow Mauve `#7B6B8A` |
 
 ### Engine ID vs Parameter Prefix
 
@@ -86,6 +87,7 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Oceanic | `oceanic_` | `oceanic_separation` |
 | Optic | `optic_` | `optic_pulseRate` |
 | Oblique | `oblq_` | `oblq_prismColor` |
+| Ombre | `ombre_` | `ombre_blend` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
@@ -104,6 +106,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Engines/*/` | Engine adapter modules |
 | `Source/Engines/Optic/OpticEngine.h` | Visual modulation engine + AutoPulse |
 | `Source/Engines/Oblique/ObliqueEngine.h` | Prismatic bounce engine (RTJ x Funk x Tame Impala) |
+| `Source/Engines/Ombre/OmbreEngine.h` | Dual-narrative engine (memory/forgetting + perception) |
 | `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
 | `Docs/xomnibus_sound_design_guides.md` | Sound design guide for all 20 engines |
 | `Source/DSP/` | Shared DSP library |
