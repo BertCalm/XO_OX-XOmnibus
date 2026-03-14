@@ -137,6 +137,28 @@ public:
         // Compute ageScale for LipBuzz from GROW macro
         float ageScale = pMG;
 
+        // --- Instrument-specific body resonance tables (D004 fix) ---
+        // Toddler: Conch, Shofar, Didgeridoo, Alphorn, Vuvuzela, Toy Trumpet
+        static constexpr float kTodFreq[] = {0.6f, 0.7f, 0.4f, 0.5f, 0.75f, 0.9f};
+        static constexpr float kTodQ[]    = {4.f,  5.f,  3.f,  4.5f, 7.f,   3.5f};
+        // Tween: Trumpet, Alto Sax, Cornet, Flugelhorn, Trombone, Baritone Sax
+        static constexpr float kTwFreq[]  = {0.8f, 0.7f, 0.75f, 0.65f, 0.5f, 0.45f};
+        static constexpr float kTwQ[]     = {4.f,  3.f,  4.f,   3.f,   5.f,  3.f  };
+        // Teen: French Horn, Trombone, Tuba, Euphonium, Tenor Sax, Dungchen, Serpent, Ophicleide, Sackbut, Bass Sax
+        static constexpr float kTnFreq[]  = {0.6f, 0.5f, 0.4f, 0.45f, 0.65f, 0.3f, 0.35f, 0.4f, 0.55f, 0.35f};
+        static constexpr float kTnQ[]     = {5.f,  5.f,  4.f,  4.f,   3.f,   6.f,  5.f,   5.f,  5.f,   3.f  };
+        int todI = std::min((int)pTodInst, 5);
+        int twI  = std::min((int)pTwInst,  5);
+        int tnI  = std::min((int)pTnInst,  9);
+        // GROW-weighted blend of body resonance across age groups
+        float wTot = growToddler + growTween + growTeen;
+        float instrFreqMult = (wTot > 0.001f) ?
+            (kTodFreq[todI]*growToddler + kTwFreq[twI]*growTween + kTnFreq[tnI]*growTeen) / wTot
+            : kTwFreq[twI];
+        float instrQ = (wTot > 0.001f) ?
+            (kTodQ[todI]*growToddler + kTwQ[twI]*growTween + kTnQ[tnI]*growTeen) / wTot
+            : kTwQ[twI];
+
         auto*oL=buf.getWritePointer(0);auto*oR=buf.getWritePointer(1);
         for(int i=0;i<ns;++i){
             float sL=0,sR=0;
@@ -166,17 +188,19 @@ public:
 
                 float out=v.dl.read(dlen);
 
-                // --- Excitation: blended lip buzz from 3 voice sections ---
-                // Toddler: loose lips, low pressure, simple
-                float excToddler=v.lipBuzz.tick(df*0.998f, effTodPres*0.4f, 0.0f)*toddlerMix;
-                // Tween: moderate embouchure, valve modulates pitch slightly
-                float tweenPitchMod=1.f+pTwValve*0.003f*std::sin(v.vibPhase*2.1f);
-                float excTween=v.lipBuzz.tick(df*tweenPitchMod, effTwEmb*0.7f, 0.5f)*tweenMix;
-                // Teen: full virtuosity, bore width affects body
-                float excTeen=v.lipBuzz.tick(df, effTnEmb, ageScale)*teenMix;
-
+                // --- D001 spectral: velocity scales embouchure tightness (brighter at ff) ---
                 float velIntens = 0.5f + v.vel * 0.5f; // velocity 0→1 maps to 0.5→1.0x intensity
                 float effIntens = extIntens * velIntens;
+
+                // --- Excitation: blended lip buzz from 3 voice sections ---
+                // Toddler: loose lips, low pressure, simple
+                float excToddler=v.lipBuzz.tick(df*0.998f, effTodPres*0.4f*velIntens, 0.0f)*toddlerMix;
+                // Tween: moderate embouchure, valve modulates pitch slightly
+                float tweenPitchMod=1.f+pTwValve*0.003f*std::sin(v.vibPhase*2.1f);
+                float excTween=v.lipBuzz.tick(df*tweenPitchMod, effTwEmb*0.7f*velIntens, 0.5f)*tweenMix;
+                // Teen: full virtuosity, bore width affects body
+                float excTeen=v.lipBuzz.tick(df, std::min(1.f,effTnEmb*velIntens), ageScale)*teenMix;
+
                 float exc=(excToddler+excTween+excTeen)*effIntens;
 
                 // --- Waveguide feedback ---
@@ -186,9 +210,9 @@ public:
 
                 v.dl.write(damped);
 
-                // --- Body resonance with foreign cold ---
-                float bFreq=v.freq*(1+effFC*0.3f);
-                v.body.setParams(bFreq,3+effFC*4);
+                // --- Body resonance: instrument-specific freq/Q + foreign cold offset ---
+                float bFreq=v.freq*instrFreqMult*(1+effFC*0.3f);
+                v.body.setParams(bFreq, instrQ + effFC*4);
                 float bo=out+v.body.process(out)*0.2f;
 
                 // --- Sympathetic resonance ---
@@ -239,7 +263,8 @@ public:
             if(effRevSz>0.001f){
                 float revIn=(sL+sR)*0.5f;
                 // 4 comb filters with different delays for diffuse reverb
-                static constexpr int combLens[4]={1117,1277,1423,1559};
+                int srMul=std::max(1,(int)(sr/44100.0+0.5));
+                int combLens[4]={1117*srMul,1277*srMul,1423*srMul,1559*srMul};
                 float revOut=0;
                 for(int c=0;c<4;++c){
                     float fb=0.7f+effRevSz*0.28f; // feedback 0.7-0.98
@@ -322,7 +347,7 @@ public:
 
         // Section G: Macros (4 params)
         p.push_back(std::make_unique<F>("otto_macroEmbouchure","EMBOUCHURE",N{0,1},0.5f));
-        p.push_back(std::make_unique<F>("otto_macroGrow","GROW",N{0,1},0.0f));
+        p.push_back(std::make_unique<F>("otto_macroGrow","GROW",N{0,1},0.35f)); // default mid-Tween range
         p.push_back(std::make_unique<F>("otto_macroForeign","FOREIGN",N{0,1},0.0f));
         p.push_back(std::make_unique<F>("otto_macroLake","LAKE",N{0,1},0.3f));
 
@@ -402,7 +427,7 @@ private:
 
     // --- FX state (pre-allocated, no audio-thread alloc) ---
     // Reverb: 4-comb Schroeder
-    static constexpr int kRevMax=2048;
+    static constexpr int kRevMax=4096; // extended for 96kHz (max comb = 1559*2 = 3118 < 4096)
     float revComb[4][kRevMax]={};
     int   revPos[4]={};
     float revState[4]={};

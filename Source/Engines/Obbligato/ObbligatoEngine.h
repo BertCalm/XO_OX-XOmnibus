@@ -192,11 +192,11 @@ public:
                 if(v.isBroA){
                     // Air flutter modulates breath pressure for flute vibrato
                     float flutterMod = pFlutterA * 0.15f * std::sin(v.drift.tick(5.0f, 1.0f) * 20.0f);
-                    exc=v.airJet.tick(std::clamp(effBreathA + flutterMod * pEmbA, 0.0f, 1.0f), v.freq)*effIntens;
+                    exc=v.airJet.tick(std::clamp(effBreathA*velIntens + flutterMod * pEmbA, 0.0f, 1.0f), v.freq)*effIntens;
                 }else{
                     // Reed bite adds harmonic edge on top of stiffness
                     float effStiff = std::clamp(pStiff + pBite * 0.3f, 0.0f, 1.0f);
-                    exc=v.reed.tick(effBreathB, effStiff)*effIntens;
+                    exc=v.reed.tick(effBreathB*velIntens, effStiff)*effIntens;
                 }
 
                 float damped=v.df.process(out+exc*0.3f,std::clamp(pDa+extDampMod,0.f,1.f));

@@ -22,10 +22,10 @@ struct OleAdapterVoice {
         strum.prepare(s);pluck.prepare(s);
     }
     void reset(){dl.reset();df.reset();body.reset();symp.reset();drift.reset();strum.reset();pluck.reset();active=false;ampEnv=0;tremoloPhase=0;}
-    void noteOn(int n,float v){
+    void noteOn(int n,float v, float strumRateMs=8.0f){
         note=n;vel=v;freq=440*std::pow(2.f,(n-69)/12.f);
         dl.reset();df.reset();body.setParams(freq*1.1f,3);symp.tune(freq);
-        strum.trigger(3,6,1);pluck.trigger(2);
+        strum.trigger(3,strumRateMs,1);pluck.trigger(2);
         ampEnv=v;releasing=false;active=true;tremoloPhase=0;
     }
     void noteOff(){releasing=true;}
@@ -41,14 +41,22 @@ public:
         for(const auto m:midi){
             auto msg=m.getMessage();
             if(msg.isNoteOn()){
-                // Prefer free aunt slots (0-11); steal from aunt pool only on overflow.
-                // Husband slots (12-17) are reserved exclusively for DRAMA≥0.7 voices.
+                int nn=msg.getNoteNumber(); float vel=msg.getVelocity()/127.f;
+                float strumRateMs=a1StrumRate?a1StrumRate->load():8.0f;
+
+                // Aunt slot (0-11) — always
                 int t=-1;for(int i=0;i<12;++i)if(!voices[i].active){t=i;break;}
-                if(t<0){t=nv%12;} // steal from aunt pool, never from husband pool
+                if(t<0){t=nv%12;}
                 nv=(t+1)%12;
                 voices[t].auntIdx=t%3; voices[t].isHusband=false;
-                if(voices[t].isHusband) voices[t].husbandType=t%3;
-                voices[t].noteOn(msg.getNoteNumber(),msg.getVelocity()/127.f);
+                voices[t].noteOn(nn, vel, strumRateMs);
+
+                // Husband slot (12-17) — always allocated; muted in render loop when DRAMA<0.7
+                int h=-1;for(int i=12;i<kV;++i)if(!voices[i].active){h=i;break;}
+                if(h<0){h=12+nhv%6;}
+                nhv=(nhv+1)%6;
+                voices[h].isHusband=true; voices[h].husbandType=(h-12)%3;
+                voices[h].noteOn(nn, vel, strumRateMs);
             }else if(msg.isNoteOff())
                 for(auto&v:voices)if(v.active&&v.note==msg.getNoteNumber())v.noteOff();
             else if (msg.isChannelPressure()) {
@@ -323,7 +331,7 @@ public:
 
 private:
     static constexpr int kV=18;
-    double sr=44100; int nv=0,ac=0; float lastL=0,lastR=0;
+    double sr=44100; int nv=0,nhv=0,ac=0; float lastL=0,lastR=0;
     std::array<OleAdapterVoice,kV> voices;
 
     // Family coupling ext mods (SP7.3)

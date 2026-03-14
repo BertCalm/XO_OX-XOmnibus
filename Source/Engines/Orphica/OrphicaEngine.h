@@ -340,7 +340,7 @@ public:
                 float posBright = effBright * (1.0f - pPos * 0.4f);
                 float velIntens = 0.5f + v.vel * 0.5f; // velocity 0→1 maps to 0.5→1.0x intensity
                 float effIntens = extIntens * velIntens;
-                float exc=v.pluck.tick(posBright)*effIntens;
+                float exc=v.pluck.tick(posBright*velIntens)*effIntens;
 
                 // Damped feedback write
                 float damped=v.df.process(out+exc*pluckGain,std::clamp(effDamp+extDampMod,0.f,1.f));

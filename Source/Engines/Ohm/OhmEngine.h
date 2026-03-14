@@ -357,7 +357,7 @@ public:
                 float out=v.dl.read(dlen);
                 float velIntens = 0.5f + v.vel * 0.5f; // velocity 0→1 maps to 0.5→1.0x intensity
                 float effIntens = extIntens * velIntens;
-                float exc=(v.bowed?v.bow.tick(pBowP,pBowS,v.lastOut):v.pick.tick(pBright))*effIntens;
+                float exc=(v.bowed?v.bow.tick(pBowP*velIntens,pBowS,v.lastOut):v.pick.tick(pBright*velIntens))*effIntens;
                 float damped=v.df.process(out+exc*0.3f,std::clamp(pDamp+extDampMod,0.f,1.f));
                 v.dl.write(damped);
                 float bo=out+v.body.process(out)*0.25f;
