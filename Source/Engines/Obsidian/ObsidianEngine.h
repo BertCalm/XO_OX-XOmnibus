@@ -1143,7 +1143,7 @@ public:
         pVoiceMode             = apvts.getRawParameterValue ("obsidian_polyphony");
         pGlideTime             = apvts.getRawParameterValue ("obsidian_glide");
 
-        // ---- Formant intensity (note: shares parameter ID with pFormantResonance) ----
+        // ---- Formant intensity ----
         pFormantIntensity      = apvts.getRawParameterValue ("obsidian_formantIntensity");
 
         // ---- XOmnibus macros ----

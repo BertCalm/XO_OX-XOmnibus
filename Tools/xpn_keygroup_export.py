@@ -36,6 +36,7 @@ import re
 import sys
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
+from xml.sax.saxutils import escape as xml_escape
 
 
 # ---------------------------------------------------------------------------
@@ -79,7 +80,7 @@ VEL_LAYERS = {
 }
 
 # Single-layer fallback (no velocity switching)
-VEL_SINGLE = {"v1": (0, 127)}
+VEL_SINGLE = {"v1": (1, 127)}  # VelStart=1 not 0 (Rex Rule #3)
 
 
 def _vel_range(vel_tag: str, all_vel_tags: List[str]) -> Tuple[int, int]:
@@ -184,36 +185,6 @@ def _fmt(v: float) -> str:
     return f"{v:.6f}"
 
 
-def _layer_xml(stem: str, filename: str, vel_start: int, vel_end: int,
-               indent: str = "            ") -> str:
-    return (
-        f"{indent}<Layer number=\"1\">\n"
-        f"{indent}  <SampleName>{stem}</SampleName>\n"
-        f"{indent}  <SampleFile>{filename}</SampleFile>\n"
-        f"{indent}  <RootNote>0</RootNote>\n"
-        f"{indent}  <KeyTrack>True</KeyTrack>\n"
-        f"{indent}  <VolumeAttack>{_fmt(0)}</VolumeAttack>\n"
-        f"{indent}  <VolumeDecay>{_fmt(0)}</VolumeDecay>\n"
-        f"{indent}  <VolumeSustain>{_fmt(1)}</VolumeSustain>\n"
-        f"{indent}  <VolumeRelease>{_fmt(0.5)}</VolumeRelease>\n"
-        f"{indent}  <VelStart>{vel_start}</VelStart>\n"
-        f"{indent}  <VelEnd>{vel_end}</VelEnd>\n"
-        f"{indent}</Layer>\n"
-    )
-
-
-def _empty_layer_xml(layer_num: int, indent: str = "            ") -> str:
-    """Empty placeholder layer — VelStart=0 prevents ghost triggering."""
-    return (
-        f"{indent}<Layer number=\"{layer_num}\">\n"
-        f"{indent}  <SampleName></SampleName>\n"
-        f"{indent}  <SampleFile></SampleFile>\n"
-        f"{indent}  <VelStart>0</VelStart>\n"
-        f"{indent}  <VelEnd>0</VelEnd>\n"
-        f"{indent}</Layer>\n"
-    )
-
-
 def generate_keygroup_xpm(
     preset_name: str,
     engine: str,
@@ -227,7 +198,7 @@ def generate_keygroup_xpm(
     If wav_map is empty, returns a single-instrument program with no layers
     that MPC can load (though it will be silent until WAVs are present).
     """
-    prog_name = f"XO_OX-{engine}-{preset_name}"[:32]  # MPC 32-char limit
+    prog_name = xml_escape(f"XO_OX-{engine}-{preset_name}"[:32])  # MPC 32-char limit
 
     # --- Parse all stems ---------------------------------------------------
     # Group by MIDI note: {midi: {vel_tag: (stem, filename)}}
@@ -252,18 +223,33 @@ def generate_keygroup_xpm(
     for inst_idx, (low, root, high) in enumerate(zones):
         vel_layers = by_note.get(root, {})
         all_vel_tags = sorted(vel_layers.keys())
+        has_samples = bool(vel_layers)
 
         layers_xml = ""
         if vel_layers:
             for layer_num, vel_tag in enumerate(all_vel_tags, start=1):
                 stem, filename = vel_layers[vel_tag]
                 vel_start, vel_end = _vel_range(vel_tag, all_vel_tags)
+                # File path: XPN-relative (Rex Rule #5)
+                file_path = f"Samples/{prog_name}/{filename}" if filename else ""
                 layers_xml += (
                     f"            <Layer number=\"{layer_num}\">\n"
-                    f"              <SampleName>{stem}</SampleName>\n"
-                    f"              <SampleFile>{filename}</SampleFile>\n"
+                    f"              <Active>True</Active>\n"
+                    f"              <Volume>1.000000</Volume>\n"
+                    f"              <Pan>0.500000</Pan>\n"
+                    f"              <Pitch>0.000000</Pitch>\n"
+                    f"              <TuneCoarse>0</TuneCoarse>\n"
+                    f"              <TuneFine>0</TuneFine>\n"
+                    f"              <SampleName>{xml_escape(stem)}</SampleName>\n"
+                    f"              <SampleFile>{xml_escape(filename)}</SampleFile>\n"
+                    f"              <File>{xml_escape(file_path)}</File>\n"
                     f"              <RootNote>0</RootNote>\n"
                     f"              <KeyTrack>True</KeyTrack>\n"
+                    f"              <OneShot>False</OneShot>\n"
+                    f"              <Loop>False</Loop>\n"
+                    f"              <LoopStart>0</LoopStart>\n"
+                    f"              <LoopEnd>0</LoopEnd>\n"
+                    f"              <LoopXFade>0</LoopXFade>\n"
                     f"              <VolumeAttack>{_fmt(0)}</VolumeAttack>\n"
                     f"              <VolumeDecay>{_fmt(0)}</VolumeDecay>\n"
                     f"              <VolumeSustain>{_fmt(1)}</VolumeSustain>\n"
@@ -273,30 +259,75 @@ def generate_keygroup_xpm(
                     f"            </Layer>\n"
                 )
         else:
-            # No samples for this zone — empty placeholder
+            # Empty placeholder — Rex Rule #3: VelStart=0, Active=False
             layers_xml = (
                 "            <Layer number=\"1\">\n"
+                "              <Active>False</Active>\n"
                 "              <SampleName></SampleName>\n"
                 "              <SampleFile></SampleFile>\n"
+                "              <File></File>\n"
                 "              <VelStart>0</VelStart>\n"
                 "              <VelEnd>0</VelEnd>\n"
                 "            </Layer>\n"
             )
 
+        active_str = "True" if has_samples else "False"
         instruments_xml += (
             f"      <Instrument number=\"{inst_idx}\">\n"
+            f"        <Active>{active_str}</Active>\n"
+            f"        <Volume>1.000000</Volume>\n"
+            f"        <Pan>0.500000</Pan>\n"
+            f"        <Tune>0</Tune>\n"
+            f"        <Transpose>0</Transpose>\n"
             f"        <VolumeAttack>{_fmt(0)}</VolumeAttack>\n"
             f"        <VolumeHold>{_fmt(0)}</VolumeHold>\n"
             f"        <VolumeDecay>{_fmt(0)}</VolumeDecay>\n"
             f"        <VolumeSustain>{_fmt(1)}</VolumeSustain>\n"
             f"        <VolumeRelease>{_fmt(0.5)}</VolumeRelease>\n"
+            f"        <FilterType>2</FilterType>\n"
+            f"        <Cutoff>1.000000</Cutoff>\n"
+            f"        <Resonance>0.000000</Resonance>\n"
+            f"        <FilterEnvAmt>0.000000</FilterEnvAmt>\n"
             f"        <LowNote>{low}</LowNote>\n"
             f"        <HighNote>{high}</HighNote>\n"
+            f"        <RootNote>0</RootNote>\n"
+            f"        <KeyTrack>True</KeyTrack>\n"
+            f"        <OneShot>False</OneShot>\n"
             f"        <Layers>\n"
             f"{layers_xml}"
             f"        </Layers>\n"
             f"      </Instrument>\n"
         )
+
+    # Q-Link assignments for keygroup programs (Atlas bridge §9)
+    qlink_xml = (
+        '    <QLinks>\n'
+        '      <QLink number="1">\n'
+        '        <Name>TONE</Name>\n'
+        '        <Parameter>FilterCutoff</Parameter>\n'
+        '        <Min>0.200000</Min>\n'
+        '        <Max>1.000000</Max>\n'
+        '      </QLink>\n'
+        '      <QLink number="2">\n'
+        '        <Name>ATTACK</Name>\n'
+        '        <Parameter>VolumeAttack</Parameter>\n'
+        '        <Min>0.000000</Min>\n'
+        '        <Max>1.000000</Max>\n'
+        '      </QLink>\n'
+        '      <QLink number="3">\n'
+        '        <Name>RELEASE</Name>\n'
+        '        <Parameter>VolumeRelease</Parameter>\n'
+        '        <Min>0.000000</Min>\n'
+        '        <Max>2.000000</Max>\n'
+        '      </QLink>\n'
+        '      <QLink number="4">\n'
+        '        <Name>SPACE</Name>\n'
+        '        <Parameter>Send1</Parameter>\n'
+        '        <Min>0.000000</Min>\n'
+        '        <Max>0.700000</Max>\n'
+        '      </QLink>\n'
+        '    </QLinks>\n'
+    )
 
     xpm = (
         f"{_XPM_HEADER}\n"
@@ -305,6 +336,7 @@ def generate_keygroup_xpm(
         f"    <KeygroupNumKeygroups>{num_instruments}</KeygroupNumKeygroups>\n"
         f"    <KeygroupPitchBendRange>2</KeygroupPitchBendRange>\n"
         f"    <KeygroupWheelToLfo>0.000000</KeygroupWheelToLfo>\n"
+        f"{qlink_xml}"
         f"    <Instruments>\n"
         f"{instruments_xml}"
         f"    </Instruments>\n"

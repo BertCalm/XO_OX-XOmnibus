@@ -100,6 +100,7 @@ public:
                             const float* sourceBuffer,
                             int numSamples) override
     {
+        // TODO: applyCouplingInput stub — coupling is currently a no-op. Implement engine-specific modulation routing before V1 ships.
         // Translate XOmnibus CouplingType to XOcelot StrataModulation
         // These accumulate and are consumed by the next renderBlock via EcosystemMatrix
         // For now, route supported types to coupling cache

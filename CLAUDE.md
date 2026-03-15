@@ -4,10 +4,11 @@
 
 XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. 31 engines are integrated with DSP code
-(5 Constellation family engines added 2026-03-14) — see engine table below.
+and mutate into sounds impossible with any single synth. 29 engines are registered in XOmnibus
+(5 Constellation family engines added 2026-03-14; OVERLAP and OUTWIT are Phase 3 complete but
+not yet installed) — see engine table below.
 
-- **Engine modules:** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSTINATO, OPENSKY, OCEANDEEP, OWLFISH, OUIE, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE
+- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** 2,369 factory presets in `.xometa` format, 7 mood categories (incl. Family), 6D Sonic DNA
@@ -59,16 +60,26 @@ and mutate into sounds impossible with any single synth. 31 engines are integrat
 | ORBITAL | XOrbital | Warm Red `#FF6B6B` |
 | OPTIC | XOptic | Phosphor Green `#00FF41` |
 | OBLIQUE | XOblique | Prism Violet `#BF40FF` |
-| OSTINATO | XOstinato | Firelight Orange `#E8701A` |
-| OPENSKY | XOpenSky | Sunburst `#FF8C00` |
-| OCEANDEEP | XOceanDeep | Trench Violet `#2D0A4E` |
+| OSPREY | XOsprey | Azulejo Blue `#1B4F8A` |
+| OSTERIA | XOsteria | Porto Wine `#722F37` |
 | OWLFISH | XOwlfish | Abyssal Gold `#B8860B` |
-| OUIE | XOuïe | Hammerhead Steel `#708090` |
 | OHM | XOhm | Sage `#87AE73` |
 | ORPHICA | XOrphica | Siren Seafoam `#7FDBCA` |
 | OBBLIGATO | XObbligato | Rascal Coral `#FF8A7A` |
 | OTTONI | XOttoni | Patina `#5B8A72` |
 | OLE | XOlé | Hibiscus `#C9377A` |
+
+### V2 Concept Engines (no DSP yet — approved concepts only)
+
+These engines have identity cards and design specs but zero source code. They are not registered
+in XOmnibus and will not ship in V1. Do not reference them as integrated engines.
+
+| Short Name | Source Instrument | Accent Color |
+|-----------|------------------|-------------|
+| OSTINATO | XOstinato | Firelight Orange `#E8701A` |
+| OPENSKY | XOpenSky | Sunburst `#FF8C00` |
+| OCEANDEEP | XOceanDeep | Trench Violet `#2D0A4E` |
+| OUIE | XOuïe | Hammerhead Steel `#708090` |
 
 ### Engine ID vs Parameter Prefix
 
@@ -98,11 +109,9 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Ocelot | `ocelot_` | `ocelot_biome` |
 | Optic | `optic_` | `optic_pulseRate` |
 | Oblique | `oblq_` | `oblq_prismColor` |
-| Ostinato | `osti_` | `osti_seatN_instrument` |
-| OpenSky | `sky_` | `sky_shimmerAmount` |
-| OceanDeep | `deep_` | `deep_pressure` |
+| Osprey | `osprey_` | `osprey_shoreBlend` |
+| Osteria | `ost_` | `ost_shoreBlend` |
 | Owlfish | `owl_` | `owl_filterCutoff` |
-| Ouïe | `ouie_` | `ouie_hammer` |
 | Ohm | `ohm_` | `ohm_macroMeddling` |
 | Orphica | `orph_` | `orph_pluckBrightness` |
 | Obbligato | `obbl_` | `obbl_breathA` |
@@ -138,7 +147,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 ## Preset System
 
 - `.xometa` JSON files are the source of truth (version-controlled)
-- 6 moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether
+- 7 moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family
 - 4 macros: CHARACTER, MOVEMENT, COUPLING, SPACE
 - 6D Sonic DNA: brightness, warmth, movement, density, space, aggression
 - Naming: 2-3 words, evocative, max 30 chars, no duplicates, no jargon
@@ -246,76 +255,15 @@ New engines are designed as standalone instruments first, then integrated into X
 - **D004 dead params**: RESOLVED — all declared parameters wired to DSP (Round 3B)
 - **D005 LFO breathing**: RESOLVED — all engines have autonomous modulation with rate floor ≤ 0.01 Hz (Round 5A + engine recoveries)
 
-### Prism Sweep Status (2026-03-14)
+### Prism Sweep — COMPLETE (2026-03-14)
 
-The Prism Sweep is a 12-round progressive quality pass initiated after all 24 seances. **ALL 12 ROUNDS COMPLETE.** Master index: `Docs/prism_sweep_index.md`
+12-round progressive quality pass across all 26 original engines. **ALL 12 ROUNDS COMPLETE.**
 
-**Completed fixes (Rounds 1–7):**
-- ✅ **5 P0 bugs fixed** (Obsidian R-channel, Obsidian formant ID, Osteria warmth L-only, Origami STFT guard, Overworld coupling output) — `Docs/p0_fixes_applied.md`
-- ✅ **5 D004 dead params wired** (Snap macroDepth, Owlfish morphGlide, Oblique percDecay, Ocelot 4 macros, Osprey dead LFO) — `Docs/d004_fixes_applied.md`
-- ✅ **D005 count 4→0** (Snap 0.15Hz BPF drift, Orbital 0.03Hz morph drift, Overworld ERA drift via eraDriftRate, Owlfish 0.05Hz grain LFO) — `Docs/d005_fixes_applied.md`
-- ✅ **2 coupling bugs fixed** (Snap AmpToFilter handler, OPAL per-sample output cache) — `Docs/coupling_fixes_5c.md`
-- ✅ **Preset schema migration**: 450+ presets updated across Drift/Bob/Dub/Overworld — `Docs/preset_schema_migration_5e.md`
-- ✅ **V007 Climax proven**: 10 Journey Demo presets in `Presets/Drift/Climax/` — `Docs/v007_journey_demo_report.md`
-- ✅ **74 preset names elevated** to evocative/poetic vocabulary across 8 engines — `Docs/preset_naming_elevation.md`
-- ✅ **3 zero-macro engines recovered** (Overworld, Morph, Oblique — each 0/10 → 8/10) — `Docs/macro_audit.md`
-- ✅ **4 filter envelopes added** (Snap, Morph, Oblique new params; Dub default raised) — `Docs/filter_envelope_audit.md`
-- ✅ **D006 aftertouch: 10/23 engines** (5 Round 5D + 5 Round 6) — `Docs/d006_aftertouch_fixes.md`
-- ✅ **D006 mod wheel: ~9/23 engines** (7 newly wired in Round 7A) — `Docs/d006_modwheel_fixes.md`
-- ✅ **AudioToBuffer coupling type** added to core + `AudioRingBuffer.h` implemented — `Docs/audio_to_buffer_implementation.md`
-- ✅ **ShoreSystem formally spec'd** (5-coastline shared cultural data, OSPREY+OSTERIA) — `Docs/shore_system_spec.md`
-- ✅ **8 major guides/specs written** (Oracle, Organon, ShoreSystem, naming, mod wheel, filter envelopes, macros, AudioToBuffer, sonic DNA)
-- ✅ **12 Sonic DNA gap-fill presets** (Optic all 3 gaps resolved, Oblique all 3 gaps resolved) — `Docs/sonic_dna_audit.md`
-
-**Completed fixes (Round 8):**
-- ✅ **OBLIQUE deep recovery** (score 5.9→7.2 est.): second D005 LFO added, D001 velocity→fold wiring, preset count 6→20 — `Docs/oblique_deep_recovery.md`
-- ✅ **OCELOT deep recovery**: Ecosystem Matrix documented, D005 LFO added, preset count 4→12+ — `Docs/ocelot_deep_recovery.md`
-- ✅ **Coupling preset library**: 18 new coupling presets across 6 engine pairs × 3 intensity levels (ONSET→OVERBITE, OPAL→OVERDUB, ODYSSEY→OPAL, OVERWORLD→OPAL, ORACLE→ORGANON, OUROBOROS→ONSET) — `Docs/coupling_preset_library.md`
-- ✅ **Init patch improvements**: 4 init patches created (Overworld, Ocelot, Obsidian, Origami) — `Docs/init_patch_improvements.md`
-- ✅ **Sonic DNA backfill**: 15 XOwlfish presets received DNA blocks; fleet 1,679/1,679 (100%) — `Docs/sonic_dna_backfill.md`
-- ✅ **Build verification**: Main XOmnibus build PASS; 4 XPNExporter pre-existing errors noted — `Docs/build_verification_8h.md`
-
-**Completed fixes (Round 9):**
-- ✅ **OBSIDIAN deep recovery** (score 6.6→8.2 est.): formant breathing LFO (0.1Hz), velocity→PD depth, 8 inaugural presets (first-ever OBSIDIAN presets in fleet) — `Docs/obsidian_deep_recovery.md`
-- ✅ **XPNExporter build fix**: `StringArray.isEmpty()` API corrected, test target link libraries fixed — 4 pre-existing errors resolved — `Docs/build_verification_8h.md`
-- ✅ **Prefix audit**: 1 rogue `org_` preset corrected to `organon_`; fleet 100% compliant — `Docs/organon_prefix_audit.md`
-- ✅ **Voice management audit**: Morph Poly/Mono/Legato + glide added, Overworld 5ms crossfade on steal, Ocelot click-on-steal fix — `Docs/voice_management_audit.md`
-- ✅ **Filter envelopes fleet-wide** (6 more engines): Orbital, Owlfish, Overworld, Ocelot, Osteria, Osprey — D001 RESOLVED for entire fleet — `Docs/filter_envelope_expansion_9e.md`
-- ✅ **D006 aftertouch batch 3** (Overworld, Owlfish, Ocelot, Osprey, Osteria → 15/23 total) — `Docs/d006_aftertouch_fixes.md`
-- ✅ **Preset expansion**: Oracle/Overworld/OCELOT/Optic +40 presets; OBSIDIAN 0→8 (last zero-preset engine closed) — `Docs/preset_expansion_9g.md`
-- ✅ **Parameter curves**: skewFactor fixes for Snap decay, Morph decay, Ocelot creature envelopes — `Docs/parameter_curve_audit.md`
-
-**Completed fixes (Round 10):**
-- ✅ **Deep documentation**: Obscura synthesis guide (46k), Optic synthesis guide (33k), Ouroboros guide (30k) — `Docs/obscura_synthesis_guide.md`, `Docs/optic_synthesis_guide.md`, `Docs/ouroboros_guide.md`
-- ✅ **XVC demo presets**: 11 ONSET drum kits demonstrating Cross-Voice Coupling — `Docs/onset_xvc_demo_guide.md`
-- ✅ **Bob aggression expansion**: 10 new high-drive presets closing Oblong aggression gap — `Docs/bob_aggression_expansion.md`
-- ✅ **Drift FX gap analysis**: Architectural debt documented — 1,353 standalone FX params not exposed in DriftEngine adapter — `Docs/drift_fx_gap_analysis.md`
-- ✅ **D006 aftertouch batch 4** (Bob, Bite, Drift, Onset, Opal → 21/23 total) — `Docs/d006_aftertouch_fixes.md`
-
-**Completed fixes (Round 11):**
-- ✅ **D006 aftertouch: 22/23 complete** (Ouroboros pre-wired/documented; Obscura forward-ref bug fixed) — `Docs/d006_aftertouch_fixes.md`
-- ✅ **Drift Option B**: TidalPulse + Fracture + Reverb DSP ported from XOdyssey standalone (38→45 params; BREATHE + FRACTURE macros now have real DSP) — `Docs/drift_option_b_implementation.md`
-- ✅ **AudioToBuffer Phase 2**: OpalEngine scaffold — 4 input slots, `opal_externalMix`, `processAudioRoute()` complete — `Docs/audio_to_buffer_phase2.md`
-- ✅ **Oblique legato bug fixed**: unconditional glide → proper `wasAlreadyActive` gate — `Docs/voice_mode_completion_11d.md`
-- ✅ **Orbital voiceMode added**: `orb_voiceMode` (Poly/Mono/Legato) with additive partial phase continuity in legato — `Docs/voice_mode_completion_11d.md`
-- ✅ **Mod wheel: 9→15/22 engines** (ONSET/OPAL/ORGANON/OUROBOROS/OBSCURA/OWLFISH) — `Docs/d006_modwheel_completion_11e.md`
-- ✅ **20 new presets**: 10 Ouroboros (all 4 attractor topologies) + 10 Obscura (first-ever Obscura presets in fleet) — `Docs/ouroboros_obscura_preset_expansion.md`
-- ✅ **18 preset renames**: Bob aggression names elevated (Rubber Spine, Steel Rain, Midnight Weight etc.), XVC kits renamed (Neural Storm, Solar System, Gravity Bend etc.) — `Docs/preset_quality_pass_11h.md`
-- ✅ **DNA fleet audit**: 1805 presets, 100% coverage, health score 88/100, 7 gap-fill presets for Obscura/Obsidian/Osprey — `Docs/sonic_dna_validation_11i.md`
-- ✅ **BUILD PASS + auval PASS**: 5 forward-reference bugs fixed (atPressure scope in Bob/Bite/Onset/Opal/Ouroboros) — `Docs/build_verification_11j.md`
-
-**Completed fixes (Rounds 12A–12L — final round):**
-- ✅ **DNA gap fills**: 8 gap presets for XOwlfish/Obese/OddOscar/Oracle/Osteria; health score 88→~92/100 — `Docs/dna_gap_fill_12a.md`
-- ✅ **Duplicate cleanup**: 57 duplicate names resolved + 313 underscore-field violations fixed; 1,839 presets, **0 duplicates** — `Docs/duplicate_cleanup_12b.md`
-- ✅ **D006 mod wheel: 15→22/22 engines COMPLETE** (Bob/Bite/Dub/Oceanic/Ocelot/Overworld/Osprey) — **D006 FULLY RESOLVED** — `Docs/d006_modwheel_completion_12c.md`
-- ✅ **AudioToBuffer Phase 3 spec**: `IAudioBufferSink` interface, DFS cycle detection, FREEZE state machine fully specified — `Docs/audio_to_buffer_phase3_spec.md`
-- ✅ **New coupling pairs**: OBSCURA→ORGANON, ONSET→ORGANON, OVERWORLD→OBSCURA — 6 new presets — `Docs/coupling_expansion_12e.md`
-- ✅ **Mood distribution**: zero missing engine-mood combinations across all 20 active engines — `Docs/mood_distribution_audit_12f.md`
-- ✅ **XVC advanced guide**: 6 new expert kits (17 total), architecture deep-dive — `Docs/onset_xvc_demo_guide.md` (v1.1)
-- ✅ **Knowledge tree final update**: doctrine resolution status, CTX-003, blessing implementation notes — `Docs/knowledge_tree_update_12i.md`
-- ✅ **BUILD PASS + auval PASS**: all Round 12 source changes verified clean — `Docs/build_verification_12j.md`
-- ✅ **Release readiness gate**: **READY FOR RELEASE** — 22 production engines feature-complete, doctrine-compliant — `Docs/release_readiness_12k.md`
-- ✅ **Prism Sweep final report**: ~5,500-word sweep narrative — `Docs/prism_sweep_final_report.md`
+- All 6 doctrines resolved fleet-wide (D001–D006)
+- 22/22 engines with mod wheel | 22/23 engines with aftertouch (Optic exempt — visual engine)
+- 2,369 presets, 0 duplicates, 100% DNA coverage, health score ~92/100
+- Build PASS + auval PASS
+- **Full history**: `Docs/prism_sweep_final_report.md` | Master index: `Docs/prism_sweep_index.md`
 
 ---
 

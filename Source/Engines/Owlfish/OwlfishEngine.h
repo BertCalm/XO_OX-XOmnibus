@@ -150,6 +150,7 @@ public:
                              const float* sourceBuffer,
                              int numSamples) override
     {
+        // TODO: applyCouplingInput stub — coupling is currently a no-op. Implement engine-specific modulation routing before V1 ships.
         (void) type;
         (void) amount;
         (void) sourceBuffer;

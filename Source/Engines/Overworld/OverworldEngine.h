@@ -380,7 +380,12 @@ public:
             L[s] = sample;
             R[s] = sample;
 
-            // P0-05 fix: cache per-sample output for getSampleForCoupling
+            // P0-05 fix: cache per-sample output for getSampleForCoupling.
+            // OVERWORLD is mono by design — VoicePool::process() returns a single
+            // float (summed chip voices). The entire downstream chain (SVFilter,
+            // BitCrusher, GlitchEngine, FIREcho) is also mono. Both cache channels
+            // intentionally receive the same value so that coupling consumers can
+            // read either channel and receive a consistent signal.
             if (s < static_cast<int> (outputCacheLeft.size()))
             {
                 outputCacheLeft[static_cast<size_t> (s)]  = sample;

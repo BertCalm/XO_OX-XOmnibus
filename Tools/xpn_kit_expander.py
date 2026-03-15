@@ -55,7 +55,7 @@ import argparse
 import math
 import sys
 from pathlib import Path
-from typing import Optional
+from typing import List, Optional
 
 import numpy as np
 
@@ -80,7 +80,7 @@ VOICE_NAMES = [v for _, v, _, _ in PAD_MAP]
 # AUDIO I/O
 # =============================================================================
 
-def load_wav(path: Path) -> tuple[np.ndarray, int]:
+def load_wav(path: Path):
     """Load WAV → (samples float32, sample_rate). Mono or stereo."""
     if not SF_AVAILABLE:
         raise RuntimeError("soundfile required: pip install soundfile")
@@ -224,19 +224,40 @@ def soft_clip(data: np.ndarray, drive: float = 1.5) -> np.ndarray:
 def sharpen_transient(data: np.ndarray, sr: int,
                       attack_ms: float = 5.0) -> np.ndarray:
     """
-    Boost the attack transient by adding a brief gain ramp at the start.
-    Emulates the "punch" increase of a harder hit.
+    Boost the attack transient using an exponential decay curve.
+    (Guru Bin: "linear ramp doesn't exist in nature — use exponential")
     """
     attack_samples = int(attack_ms * sr / 1000.0)
     attack_samples = min(attack_samples, len(data) // 4)
     result = data.copy()
     if attack_samples > 0:
-        ramp = np.linspace(1.3, 1.0, attack_samples)
+        # Exponential decay: mirrors how acoustic energy dissipates
+        ramp = 1.0 + 0.3 * np.exp(-np.linspace(0, 4, attack_samples))
         if data.ndim == 1:
             result[:attack_samples] *= ramp
         else:
             result[:attack_samples] *= ramp[:, np.newaxis]
     return np.clip(result, -1.0, 1.0).astype(np.float32)
+
+
+def soften_attack(data: np.ndarray, sr: int,
+                  fade_ms: float = 1.5) -> np.ndarray:
+    """
+    Soften the attack transient with a brief fade-in.
+    Ghost notes have rounded transients — the pad is barely touched.
+    (Guru Bin: "a ghost note's attack is fundamentally different from
+    a hard hit that's been turned down")
+    """
+    fade_samples = int(fade_ms * sr / 1000.0)
+    fade_samples = min(fade_samples, len(data) // 4)
+    result = data.copy()
+    if fade_samples > 0:
+        ramp = np.linspace(0.0, 1.0, fade_samples) ** 0.5  # sqrt for gentle curve
+        if data.ndim == 1:
+            result[:fade_samples] *= ramp
+        else:
+            result[:fade_samples] *= ramp[:, np.newaxis]
+    return result.astype(np.float32)
 
 
 def shorten_tail(data: np.ndarray, factor: float = 0.90) -> np.ndarray:
@@ -283,7 +304,7 @@ def smear_tail(data: np.ndarray, sr: int, smear_ms: float = 8.0) -> np.ndarray:
 # =============================================================================
 
 def derive_velocity_layers(data: np.ndarray, sr: int,
-                            voice: str = "") -> dict[str, np.ndarray]:
+                            voice: str = "") -> dict:
     """
     Derive 4 velocity layers from a single source sample.
     Returns {vel_suffix: np.ndarray}.
@@ -291,17 +312,23 @@ def derive_velocity_layers(data: np.ndarray, sr: int,
     The transforms model what actually changes physically when you
     hit a drum harder: transient energy, filter brightness, and amplitude.
     """
+    # Voice-aware transient duration (Guru Bin: kicks are slower, hats are snappier)
+    attack_ms = {"kick": 8.0, "tom": 7.0, "chat": 3.0, "ohat": 4.0}.get(voice, 5.0)
+
     return {
-        "v1": lowpass(gain(micro_pitch_shift(data, sr, -2.0), -12.0),
-                      sr, 3000),
+        # v1 ghost: quiet + dark + rounded attack (Guru: "ghost transients are fundamentally different")
+        "v1": soften_attack(
+            lowpass(gain(micro_pitch_shift(data, sr, -2.0), -12.0), sr, 3000),
+            sr, fade_ms=1.5),
         "v2": lowpass(gain(data, -6.0), sr, 6000),
         "v3": gain(data, -3.0),
-        "v4": sharpen_transient(soft_clip(gain(data, 0.0), drive=1.4), sr),
+        "v4": sharpen_transient(soft_clip(gain(data, 0.0), drive=1.4), sr,
+                                attack_ms=attack_ms),
     }
 
 
 def derive_cycle_variants(data: np.ndarray, sr: int,
-                           voice: str = "") -> dict[str, np.ndarray]:
+                           voice: str = "") -> dict:
     """
     Derive 4 round-robin variants from a single source sample.
     Returns {cycle_suffix: np.ndarray}.
@@ -309,9 +336,15 @@ def derive_cycle_variants(data: np.ndarray, sr: int,
     Each variant has just enough difference that the ear doesn't detect
     the repetition pattern — without changing the essential character.
     """
+    # Vibe: skip channel_delay on kick/snare to preserve center stereo image
+    center_voices = {"kick", "snare", "tom"}
+    c2_pitch = micro_pitch_shift(data, sr, +5.0)
+    if voice not in center_voices:
+        c2_pitch = channel_delay(c2_pitch, sr, 2.0)
+
     return {
         "c1": data.copy(),
-        "c2": channel_delay(micro_pitch_shift(data, sr, +5.0), sr, 2.0),
+        "c2": c2_pitch,
         "c3": smear_tail(notch(gain(data, -1.0), sr, 800, depth_db=-2.0), sr),
         "c4": shorten_tail(micro_pitch_shift(data, sr, -4.0), 0.90),
     }
@@ -344,7 +377,7 @@ def find_voice_wav(kit_dir: Path, voice_name: str) -> Optional[Path]:
 
 def expand_voice(source: Path, voice_name: str, preset_slug: str,
                  expand_mode: str, output_dir: Path,
-                 dry_run: bool = False) -> list[str]:
+                 dry_run: bool = False) -> List[str]:
     """
     Expand a single source WAV into derived samples.
     Returns list of filenames written.

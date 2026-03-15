@@ -16,6 +16,8 @@ inline const juce::StringArray validEngineNames {
     "Overworld", "Opal", "Orbital",
     "Organon", "Ouroboros",
     "Obsidian", "Overbite", "Origami", "Oracle", "Obscura", "Oceanic",
+    "Ocelot", "Osprey", "Osteria", "Owlfish",
+    "Ohm", "Orphica", "Obbligato", "Ottoni", "Ole",
     "Optic", "Oblique",
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
@@ -53,7 +55,7 @@ inline juce::String resolveEngineAlias(const juce::String& name)
 
 // Valid moods — the 6 browsing categories plus User.
 inline const juce::StringArray validMoods {
-    "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "User"
+    "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "User"
 };
 
 // Valid coupling intensity levels.

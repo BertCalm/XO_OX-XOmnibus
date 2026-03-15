@@ -79,6 +79,8 @@ import shutil
 import sys
 from datetime import date
 from pathlib import Path
+from typing import Optional
+from xml.sax.saxutils import escape as xml_escape
 
 try:
     from xpn_cover_art import generate_cover
@@ -103,16 +105,43 @@ ZONE_PLAY = {
 }
 
 # Velocity layer definitions (mode=velocity)
-VEL_LAYERS = [
-    (0,   31,  0.35),   # ghost   (pp)
+# Even distribution — straightforward, equal-width velocity bands
+VEL_LAYERS_EVEN = [
+    (1,   31,  0.35),   # ghost   (pp) — VelStart=1 not 0 (Rex Rule #3)
     (32,  63,  0.55),   # soft    (mp)
     (64,  95,  0.75),   # medium  (mf)
     (96, 127,  0.95),   # hard    (ff)
 ]
+
+# Vibe's musical curve — ghost range is narrow (barely touching the pad),
+# mid range is wide (where most expressive playing lives), hard is responsive.
+# Feels more natural under the fingers than even splits.
+VEL_LAYERS_MUSICAL = [
+    (1,   20,  0.30),   # ghost   (15% — barely touching)
+    (21,  50,  0.55),   # light   (23% — gentle playing)
+    (51,  90,  0.75),   # mid     (31% — expressive sweet spot)
+    (91, 127,  0.95),   # hard    (29% — full force)
+]
+
+# Default: musical curve (Vibe-approved). Set --vel-curve even to use even.
+VEL_LAYERS = VEL_LAYERS_MUSICAL
+
+
+def _set_vel_curve(curve: str):
+    """Set the module-level velocity curve. Safe for CLI use."""
+    global VEL_LAYERS
+    VEL_LAYERS = VEL_LAYERS_EVEN if curve == "even" else VEL_LAYERS_MUSICAL
 VEL_SUFFIXES = ["v1", "v2", "v3", "v4"]
 
 # Cycle/random variant suffixes — all layers span full velocity range
 CYCLE_SUFFIXES = ["c1", "c2", "c3", "c4"]
+
+# CycleType values for XPM XML (Rex's bible §6)
+CYCLE_TYPE = {
+    "cycle":           "RoundRobin",
+    "random":          "Random",
+    "random-norepeat": "RandomNoRepeat",
+}
 
 # Smart mode: best ZonePlay per voice
 SMART_MODE = {
@@ -153,6 +182,13 @@ VOICE_DEFAULTS = {
         "velocity_to_pitch":  0.05,   # slight pitch follow on hard hits
         "velocity_to_filter": 0.0,
         "velocity_sensitivity": 1.0,
+        # Envelope: punchy attack, short decay, no sustain
+        "attack": 0.0, "hold": 0.0, "decay": 0.3, "sustain": 0.0, "release": 0.05,
+        # Filter: open, slight velocity tracking
+        "filter_type": 2, "cutoff": 1.0, "resonance": 0.0, "filter_env_amt": 0.0,
+        # Q-Link targets (MPC knob assignments)
+        "qlink_1": ("FilterCutoff", 0.3, 1.0),   # Q1: Tone
+        "qlink_2": ("TuneCoarse",  -12, 12),      # Q2: Pitch
     },
     "snare": {
         "mono":               True,
@@ -161,6 +197,10 @@ VOICE_DEFAULTS = {
         "velocity_to_pitch":  0.0,
         "velocity_to_filter": 0.30,   # filter opens on hard snare hits
         "velocity_sensitivity": 1.0,
+        "attack": 0.0, "hold": 0.0, "decay": 0.4, "sustain": 0.0, "release": 0.08,
+        "filter_type": 2, "cutoff": 0.9, "resonance": 0.05, "filter_env_amt": 0.1,
+        "qlink_1": ("FilterCutoff", 0.2, 1.0),
+        "qlink_2": ("TuneCoarse",  -5, 5),
     },
     "chat": {
         "mono":               True,
@@ -169,6 +209,10 @@ VOICE_DEFAULTS = {
         "velocity_to_pitch":  0.0,
         "velocity_to_filter": 0.0,
         "velocity_sensitivity": 0.85,
+        "attack": 0.0, "hold": 0.0, "decay": 0.15, "sustain": 0.0, "release": 0.02,
+        "filter_type": 2, "cutoff": 0.85, "resonance": 0.1, "filter_env_amt": 0.0,
+        "qlink_1": ("FilterCutoff", 0.3, 1.0),
+        "qlink_2": ("Volume", 0.0, 1.0),
     },
     "ohat": {
         "mono":               False,
@@ -177,6 +221,10 @@ VOICE_DEFAULTS = {
         "velocity_to_pitch":  0.0,
         "velocity_to_filter": 0.0,
         "velocity_sensitivity": 0.80,
+        "attack": 0.0, "hold": 0.0, "decay": 0.8, "sustain": 0.38, "release": 0.3,
+        "filter_type": 2, "cutoff": 0.95, "resonance": 0.0, "filter_env_amt": 0.0,
+        "qlink_1": ("FilterCutoff", 0.3, 1.0),
+        "qlink_2": ("Volume", 0.0, 1.0),
     },
     "clap": {
         "mono":               False,
@@ -185,14 +233,22 @@ VOICE_DEFAULTS = {
         "velocity_to_pitch":  0.0,
         "velocity_to_filter": 0.15,
         "velocity_sensitivity": 0.90,
+        "attack": 0.0, "hold": 0.0, "decay": 0.5, "sustain": 0.0, "release": 0.1,
+        "filter_type": 2, "cutoff": 0.95, "resonance": 0.0, "filter_env_amt": 0.05,
+        "qlink_1": ("FilterCutoff", 0.3, 1.0),
+        "qlink_2": ("Pan", 0.0, 1.0),
     },
     "tom": {
-        "mono":               True,
+        "mono":               False,   # toms sound better with slight overlap
         "polyphony":          2,
         "one_shot":           True,
         "velocity_to_pitch":  0.03,
         "velocity_to_filter": 0.10,
         "velocity_sensitivity": 1.0,
+        "attack": 0.0, "hold": 0.0, "decay": 0.5, "sustain": 0.0, "release": 0.1,
+        "filter_type": 2, "cutoff": 1.0, "resonance": 0.0, "filter_env_amt": 0.0,
+        "qlink_1": ("TuneCoarse", -12, 12),
+        "qlink_2": ("FilterCutoff", 0.3, 1.0),
     },
     "perc": {
         "mono":               False,
@@ -201,6 +257,10 @@ VOICE_DEFAULTS = {
         "velocity_to_pitch":  0.0,
         "velocity_to_filter": 0.0,
         "velocity_sensitivity": 0.90,
+        "attack": 0.0, "hold": 0.0, "decay": 0.35, "sustain": 0.0, "release": 0.08,
+        "filter_type": 2, "cutoff": 1.0, "resonance": 0.0, "filter_env_amt": 0.0,
+        "qlink_1": ("FilterCutoff", 0.3, 1.0),
+        "qlink_2": ("TuneCoarse", -5, 5),
     },
     "fx": {
         "mono":               False,
@@ -209,6 +269,10 @@ VOICE_DEFAULTS = {
         "velocity_to_pitch":  0.0,
         "velocity_to_filter": 0.0,
         "velocity_sensitivity": 0.75,
+        "attack": 0.01, "hold": 0.0, "decay": 1.0, "sustain": 0.3, "release": 0.5,
+        "filter_type": 2, "cutoff": 1.0, "resonance": 0.0, "filter_env_amt": 0.0,
+        "qlink_1": ("FilterCutoff", 0.2, 1.0),
+        "qlink_2": ("Volume", 0.0, 1.0),
     },
 }
 
@@ -216,6 +280,8 @@ _VOICE_DEFAULTS_FALLBACK = {
     "mono": True, "polyphony": 1, "one_shot": True,
     "velocity_to_pitch": 0.0, "velocity_to_filter": 0.0,
     "velocity_sensitivity": 1.0,
+    "attack": 0.0, "hold": 0.0, "decay": 0.0, "sustain": 1.0, "release": 0.0,
+    "filter_type": 2, "cutoff": 1.0, "resonance": 0.0, "filter_env_amt": 0.0,
 }
 
 
@@ -255,13 +321,24 @@ def _layers_for_voice(voice_name: str, kit_mode: str,
     for suffix in CYCLE_SUFFIXES:
         key = f"{preset_slug}_{voice_name}_{suffix}"
         name = wav_map.get(key, "")
-        layers.append((0, 127, 0.707946, name, name))
+        layers.append((1, 127, 0.707946, name, name))  # VelStart=1 (Rex Rule #3)
     return layers
 
 
 def _layer_block(number: int, vel_start: int, vel_end: int,
-                 sample_name: str, sample_file: str, volume: float) -> str:
-    active = "True"
+                 sample_name: str, sample_file: str, volume: float,
+                 program_slug: str = "",
+                 cycle_type: str = "", cycle_group: int = 0) -> str:
+    active = "True" if sample_name else "False"
+    # File path: relative from XPN root (Rex's Rule #5)
+    file_path = f"Samples/{program_slug}/{sample_file}" if (sample_file and program_slug) else sample_file
+    # CycleType/CycleGroup for round-robin (Rex's bible §6)
+    cycle_xml = ""
+    if cycle_type and sample_name:
+        cycle_xml = (
+            f'            <CycleType>{cycle_type}</CycleType>\n'
+            f'            <CycleGroup>{cycle_group}</CycleGroup>\n'
+        )
     return (
         f'          <Layer number="{number}">\n'
         f'            <Active>{active}</Active>\n'
@@ -281,8 +358,10 @@ def _layer_block(number: int, vel_start: int, vel_end: int,
         f'            <Mute>False</Mute>\n'
         f'            <RootNote>0</RootNote>\n'
         f'            <KeyTrack>False</KeyTrack>\n'
-        f'            <SampleName>{sample_name}</SampleName>\n'
-        f'            <SampleFile>{sample_file}</SampleFile>\n'
+        f'            <SampleName>{xml_escape(sample_name)}</SampleName>\n'
+        f'            <SampleFile>{xml_escape(sample_file)}</SampleFile>\n'
+        f'            <File>{xml_escape(file_path)}</File>\n'
+        f'{cycle_xml}'
         f'            <SliceIndex>128</SliceIndex>\n'
         f'            <Direction>0</Direction>\n'
         f'            <Offset>0</Offset>\n'
@@ -298,7 +377,7 @@ def _empty_layers() -> str:
     """Four silent placeholder layers for inactive instruments (VelStart=0)."""
     blocks = []
     for i in range(1, 5):
-        blocks.append(_layer_block(i, 0, 127, "", "", 0.707946))
+        blocks.append(_layer_block(i, 0, 0, "", "", 0.707946))
     return "\n".join(blocks)
 
 
@@ -317,10 +396,19 @@ def _instrument_block(instrument_num: int, voice_name: str,
     effective_mode = _resolve_mode(kit_mode, voice_name) if is_active else "velocity"
     zone_play = ZONE_PLAY.get(effective_mode, 1)
 
+    # Determine CycleType/CycleGroup for round-robin modes
+    cycle_type_str = CYCLE_TYPE.get(effective_mode, "")
+    prog_slug = f"XO_OX-{preset_slug}"[:32]
+
     if is_active:
         layer_data = _layers_for_voice(voice_name, kit_mode, wav_map, preset_slug)
         layers_xml = "\n".join(
-            _layer_block(i + 1, vs, ve, sn, sf, vol)
+            _layer_block(
+                i + 1, vs, ve, sn, sf, vol,
+                program_slug=prog_slug,
+                cycle_type=cycle_type_str if effective_mode != "velocity" else "",
+                cycle_group=instrument_num if cycle_type_str else 0,
+            )
             for i, (vs, ve, vol, sn, sf) in enumerate(layer_data)
         )
     else:
@@ -328,6 +416,19 @@ def _instrument_block(instrument_num: int, voice_name: str,
 
     mono_str     = "True" if cfg["mono"] else "False"
     oneshot_str  = "True" if cfg["one_shot"] else "False"
+
+    # Per-voice envelope defaults (Vibe's tuning)
+    vol_attack  = cfg.get("attack", 0.0)
+    vol_hold    = cfg.get("hold", 0.0)
+    vol_decay   = cfg.get("decay", 0.0)
+    vol_sustain = cfg.get("sustain", 1.0)
+    vol_release = cfg.get("release", 0.0)
+
+    # Per-voice filter defaults
+    flt_type    = cfg.get("filter_type", 2)
+    flt_cutoff  = cfg.get("cutoff", 1.0)
+    flt_reso    = cfg.get("resonance", 0.0)
+    flt_env_amt = cfg.get("filter_env_amt", 0.0)
 
     mute_xml = "\n".join(
         f"        <MuteTarget{i+1}>{t}</MuteTarget{i+1}>"
@@ -369,10 +470,10 @@ def _instrument_block(instrument_num: int, voice_name: str,
         f'        <LfoVolume>0.000000</LfoVolume>\n'
         f'        <LfoPan>0.000000</LfoPan>\n'
         f'        <OneShot>{oneshot_str}</OneShot>\n'
-        f'        <FilterType>2</FilterType>\n'
-        f'        <Cutoff>1.000000</Cutoff>\n'
-        f'        <Resonance>0.000000</Resonance>\n'
-        f'        <FilterEnvAmt>0.000000</FilterEnvAmt>\n'
+        f'        <FilterType>{flt_type}</FilterType>\n'
+        f'        <Cutoff>{flt_cutoff:.6f}</Cutoff>\n'
+        f'        <Resonance>{flt_reso:.6f}</Resonance>\n'
+        f'        <FilterEnvAmt>{flt_env_amt:.6f}</FilterEnvAmt>\n'
         f'        <AfterTouchToFilter>0.000000</AfterTouchToFilter>\n'
         f'        <VelocityToStart>0.000000</VelocityToStart>\n'
         f'        <VelocityToFilterAttack>0.000000</VelocityToFilterAttack>\n'
@@ -385,13 +486,13 @@ def _instrument_block(instrument_num: int, voice_name: str,
         f'        <FilterHold>0.000000</FilterHold>\n'
         f'        <FilterDecayType>True</FilterDecayType>\n'
         f'        <FilterADEnvelope>True</FilterADEnvelope>\n'
-        f'        <VolumeHold>0.000000</VolumeHold>\n'
+        f'        <VolumeHold>{vol_hold:.6f}</VolumeHold>\n'
         f'        <VolumeDecayType>True</VolumeDecayType>\n'
         f'        <VolumeADEnvelope>True</VolumeADEnvelope>\n'
-        f'        <VolumeAttack>0.000000</VolumeAttack>\n'
-        f'        <VolumeDecay>0.000000</VolumeDecay>\n'
-        f'        <VolumeSustain>1.000000</VolumeSustain>\n'
-        f'        <VolumeRelease>0.000000</VolumeRelease>\n'
+        f'        <VolumeAttack>{vol_attack:.6f}</VolumeAttack>\n'
+        f'        <VolumeDecay>{vol_decay:.6f}</VolumeDecay>\n'
+        f'        <VolumeSustain>{vol_sustain:.6f}</VolumeSustain>\n'
+        f'        <VolumeRelease>{vol_release:.6f}</VolumeRelease>\n'
         f'        <VelocityToPitch>{cfg["velocity_to_pitch"]:.6f}</VelocityToPitch>\n'
         f'        <VelocityToVolumeAttack>0.000000</VelocityToVolumeAttack>\n'
         f'        <VelocitySensitivity>{cfg["velocity_sensitivity"]:.6f}</VelocitySensitivity>\n'
@@ -414,11 +515,99 @@ def _instrument_block(instrument_num: int, voice_name: str,
 # XPM GENERATION
 # =============================================================================
 
+def _generate_qlink_xml() -> str:
+    """
+    Generate Q-Link knob assignments for the program level.
+
+    XOmnibus macro mapping (Atlas bridge §9):
+      Q1 → CHARACTER (Filter Cutoff / Tone)
+      Q2 → MOVEMENT  (Pitch / LFO Rate)
+      Q3 → COUPLING  (Resonance / Drive)
+      Q4 → SPACE     (Send 1 / Reverb)
+    """
+    return (
+        '    <QLinks>\n'
+        '      <QLink number="1">\n'
+        '        <Name>TONE</Name>\n'
+        '        <Parameter>FilterCutoff</Parameter>\n'
+        '        <Min>0.200000</Min>\n'
+        '        <Max>1.000000</Max>\n'
+        '      </QLink>\n'
+        '      <QLink number="2">\n'
+        '        <Name>PITCH</Name>\n'
+        '        <Parameter>TuneCoarse</Parameter>\n'
+        '        <Min>-12</Min>\n'
+        '        <Max>12</Max>\n'
+        '      </QLink>\n'
+        '      <QLink number="3">\n'
+        '        <Name>BITE</Name>\n'
+        '        <Parameter>Resonance</Parameter>\n'
+        '        <Min>0.000000</Min>\n'
+        '        <Max>0.600000</Max>\n'
+        '      </QLink>\n'
+        '      <QLink number="4">\n'
+        '        <Name>SPACE</Name>\n'
+        '        <Parameter>Send1</Parameter>\n'
+        '        <Min>0.000000</Min>\n'
+        '        <Max>0.700000</Max>\n'
+        '      </QLink>\n'
+        '    </QLinks>\n'
+    )
+
+
+def velocity_curve_from_dna(dna: Optional[dict] = None) -> list:
+    """
+    Derive velocity layer splits from Sonic DNA values (Atlas bridge §8).
+
+    High aggression → hot curve (soft hits are already loud)
+    Low aggression  → gentle curve (dynamic range is wide)
+    High warmth     → soft crossovers (gentle velocity blending)
+    High brightness → top layer is brighter (filter opens more on hard hits)
+
+    Returns list of (vel_start, vel_end, volume) tuples.
+    """
+    if not dna:
+        return list(VEL_LAYERS_MUSICAL)
+
+    aggression = dna.get("aggression", 0.5)
+    warmth     = dna.get("warmth", 0.5)
+
+    if aggression >= 0.7:
+        # Hot curve: compressed dynamics — ghost is loud, hard is unity.
+        # Aggression = bringing the soft layers UP, not pushing hard OVER.
+        # (Guru Bin: "1.10 is a rock star move the MPC's gain staging punishes")
+        return [
+            (1,   20,  0.30),
+            (21,  50,  0.55),
+            (51,  90,  0.80),
+            (91, 127,  1.00),
+        ]
+    elif aggression <= 0.3:
+        # Gentle curve: wide dynamic range, soft is genuinely soft
+        return [
+            (1,   40,  0.25),
+            (41,  80,  0.55),
+            (81, 110,  0.75),
+            (111, 127, 0.85),
+        ]
+    elif warmth >= 0.7:
+        # Warm curve: soft crossovers, gentle attack feel
+        return [
+            (1,   30,  0.35),
+            (31,  60,  0.55),
+            (61, 100,  0.75),
+            (101, 127, 0.90),
+        ]
+    else:
+        return list(VEL_LAYERS_MUSICAL)
+
+
 def generate_xpm(preset_name: str, wav_map: dict,
-                 kit_mode: str = "velocity") -> str:
+                 kit_mode: str = "velocity",
+                 dna: Optional[dict] = None) -> str:
     """Generate complete drum program XPM XML string."""
     preset_slug = preset_name.replace(" ", "_")
-    prog_name   = f"XO_OX-{preset_name}"
+    prog_name   = xml_escape(f"XO_OX-{preset_name}")
 
     note_to_pad = {note: (voice, mg, mt) for note, voice, mg, mt in PAD_MAP}
 
@@ -448,6 +637,28 @@ def generate_xpm(preset_name: str, wav_map: dict,
         separators=(",", ":"),
     )
 
+    # PadNoteMap — maps physical pad numbers to MIDI notes (Rex's bible §4)
+    pad_note_entries = []
+    for pad_idx, (note, voice, _, _) in enumerate(PAD_MAP):
+        pad_note_entries.append(
+            f'        <Pad number="{pad_idx + 1}" note="{note}"/>'
+            f'  <!-- {voice} -->'
+        )
+    pad_note_xml = "\n".join(pad_note_entries)
+
+    # PadGroupMap — mute group assignments for hat choke
+    pad_group_entries = []
+    for pad_idx, (_, voice, mg, _) in enumerate(PAD_MAP):
+        if mg > 0:
+            pad_group_entries.append(
+                f'        <Pad number="{pad_idx + 1}" group="{mg}"/>'
+                f'  <!-- {voice} -->'
+            )
+    pad_group_xml = "\n".join(pad_group_entries)
+
+    # Q-Link assignments — 4 knobs per program for macro control
+    qlink_xml = _generate_qlink_xml()
+
     return (
         '<?xml version="1.0" encoding="UTF-8"?>\n\n'
         '<MPCVObject>\n'
@@ -460,8 +671,13 @@ def generate_xpm(preset_name: str, wav_map: dict,
         '  <Program type="Drum">\n'
         f'    <Name>{prog_name}</Name>\n'
         f'    <ProgramPads>{pad_json}</ProgramPads>\n'
-        '    <PadNoteMap></PadNoteMap>\n'
-        '    <PadGroupMap></PadGroupMap>\n'
+        '    <PadNoteMap>\n'
+        f'{pad_note_xml}\n'
+        '    </PadNoteMap>\n'
+        '    <PadGroupMap>\n'
+        f'{pad_group_xml}\n'
+        '    </PadGroupMap>\n'
+        f'{qlink_xml}'
         '    <Instruments>\n'
         f'{instruments_xml}\n'
         '    </Instruments>\n'
@@ -481,14 +697,14 @@ def generate_expansion_xml(pack_name: str, pack_id: str,
         '<?xml version="1.0" encoding="UTF-8"?>\n\n'
         f'<expansion version="2.0.0.0" buildVersion="2.10.0.0">\n'
         f'  <local/>\n'
-        f'  <identifier>{pack_id}</identifier>\n'
-        f'  <title>{pack_name}</title>\n'
+        f'  <identifier>{xml_escape(pack_id)}</identifier>\n'
+        f'  <title>{xml_escape(pack_name)}</title>\n'
         f'  <manufacturer>XO_OX Designs</manufacturer>\n'
         f'  <version>{version}.0</version>\n'
         f'  <type>drum</type>\n'
         f'  <priority>50</priority>\n'
         f'  <img>artwork.png</img>\n'
-        f'  <description>{description}</description>\n'
+        f'  <description>{xml_escape(description)}</description>\n'
         f'  <separator>-</separator>\n'
         f'</expansion>\n'
     )
@@ -662,6 +878,9 @@ def main():
                         choices=["velocity", "cycle", "random",
                                  "random-norepeat", "smart"],
                         help="Layer selection mode (default: velocity)")
+    parser.add_argument("--vel-curve",  default="musical",
+                        choices=["musical", "even"],
+                        help="Velocity split curve (default: musical/Vibe-approved)")
     parser.add_argument("--wavs-dir",   help="Directory containing WAV files")
     parser.add_argument("--output-dir", default=".", help="Output directory")
     parser.add_argument("--version",    default="1.0")
@@ -678,8 +897,11 @@ def main():
     output_dir = Path(args.output_dir)
     wavs_dir   = Path(args.wavs_dir) if args.wavs_dir else None
 
+    # Apply velocity curve selection (set module-level default for this CLI run)
+    _set_vel_curve(args.vel_curve)
+
     if args.dry_run:
-        print(f"DRY RUN — mode: {args.mode}\n")
+        print(f"DRY RUN — mode: {args.mode}  vel-curve: {args.vel_curve}\n")
 
     if args.all_onset:
         build_all_onset_packs(wavs_dir, output_dir, args.version,

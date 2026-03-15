@@ -86,6 +86,12 @@ try:
 except ImportError:
     KEYGROUP_EXPORT_AVAILABLE = False
 
+try:
+    from xpn_packager import package_xpn, XPNMetadata
+    PACKAGER_AVAILABLE = True
+except ImportError:
+    PACKAGER_AVAILABLE = False
+
 REPO_ROOT  = Path(__file__).parent.parent
 PRESETS_DIR = REPO_ROOT / "Presets" / "XOmnibus"
 PROFILES_DIR = REPO_ROOT / "Tools" / "bundle_profiles"

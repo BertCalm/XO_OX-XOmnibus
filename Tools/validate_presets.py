@@ -37,7 +37,7 @@ PRESET_DIR = Path(__file__).parent.parent / "Presets" / "XOmnibus"
 # Constants
 # ---------------------------------------------------------------------------
 
-VALID_MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "User"}
+VALID_MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "User"}
 
 VALID_ENGINES = {
     # Canonical O-prefix engine IDs (all 20)
@@ -45,6 +45,8 @@ VALID_ENGINES = {
     "Obese", "Onset", "Overworld", "Opal", "Orbital",
     "Organon", "Ouroboros", "Obsidian", "Overbite", "Origami",
     "Oracle", "Obscura", "Oceanic", "Optic", "Oblique",
+    "Ocelot", "Osprey", "Osteria", "Owlfish",
+    "Ohm", "Orphica", "Obbligato", "Ottoni", "Ole",
     # Legacy aliases (resolved by PresetManager::resolveEngineAlias)
     "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Bite",
     "XOverdub", "XOdyssey", "XOblong", "XObese", "XOnset",
