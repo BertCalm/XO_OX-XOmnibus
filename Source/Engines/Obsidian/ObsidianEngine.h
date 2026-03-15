@@ -238,6 +238,10 @@ struct ObsidianVoice
     // MPE per-voice expression state
     MPEVoiceExpression mpeExpression;
 
+    // Cached per-block pitch bend ratio: std::pow(2, pitchBendSemitones/12)
+    // Updated once per block after MPE expression refresh — never compute in the sample loop.
+    float pitchBendRatio = 1.0f;
+
     void reset() noexcept
     {
         active = false;
@@ -256,6 +260,7 @@ struct ObsidianVoice
         for (auto& f : formant)
             f.reset();
         mainFilter.reset();
+        pitchBendRatio = 1.0f;
         for (int i = 0; i < 16; ++i)
             partialRatios[i] = static_cast<float> (i + 1);
     }
@@ -445,7 +450,7 @@ public:
             }
         }
 
-        // --- Update per-voice filter coefficients once per block ---
+        // --- Update per-voice filter coefficients and pitch-bend ratio once per block ---
         for (auto& voice : voices)
         {
             if (!voice.active) continue;
@@ -457,6 +462,9 @@ public:
             static constexpr float formantQ[4]     = { 0.6f, 0.5f, 0.45f, 0.4f };
             for (int f = 0; f < 4; ++f)
                 voice.formant[f].setCoefficients (formantFreqs[f], formantQ[f], srf);
+
+            // Pitch-bend ratio: hoisted from inner sample loop — pitch bend changes at block rate.
+            voice.pitchBendRatio = std::pow (2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
         }
 
         float peakEnv = 0.0f;
@@ -512,7 +520,7 @@ public:
 
                 // --- Phase increment ---
                 float freq = voice.currentFreq;
-                freq *= std::pow(2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
+                freq *= voice.pitchBendRatio;
                 float phaseInc = freq / srf;
 
                 // --- PD Stage 1 (L channel) ---
