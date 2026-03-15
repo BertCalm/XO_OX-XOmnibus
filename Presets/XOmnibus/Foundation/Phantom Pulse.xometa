@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Phantom Pulse",
+  "mood": "Foundation",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Punchy Opsis lead with ghostly Oubli sub undertow. High reactivity gives each note a transient bite that slowly dissolves into memory.",
+  "tags": [
+    "bass",
+    "lead",
+    "rhythmic",
+    "percussive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macroTargets": [
+    { "macro": 1, "engineId": "Ombre", "parameterId": "ombre_blend", "min": 0.0, "max": 1.0 },
+    { "macro": 1, "engineId": "Ombre", "parameterId": "ombre_interference", "min": 0.0, "max": 0.8 },
+    { "macro": 2, "engineId": "Ombre", "parameterId": "ombre_memoryDrift", "min": 0.0, "max": 1.0 },
+    { "macro": 2, "engineId": "Ombre", "parameterId": "ombre_reactivity", "min": 0.0, "max": 1.0 },
+    { "macro": 3, "engineId": "Ombre", "parameterId": "ombre_interference", "min": 0.0, "max": 1.0 },
+    { "macro": 3, "engineId": "Ombre", "parameterId": "ombre_memoryGrain", "min": 5.0, "max": 500.0 },
+    { "macro": 4, "engineId": "Ombre", "parameterId": "ombre_memoryDecay", "min": 0.5, "max": 25.0 },
+    { "macro": 4, "engineId": "Ombre", "parameterId": "ombre_filterCutoff", "min": 200.0, "max": 12000.0 }
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": {
+    "sourceInstrument": "Ombre",
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.8,
+      "ombre_interference": 0.2,
+      "ombre_memoryDecay": 1.5,
+      "ombre_memoryGrain": 25.0,
+      "ombre_memoryDrift": 0.1,
+      "ombre_oscShape": 1.0,
+      "ombre_reactivity": 0.85,
+      "ombre_subLevel": 0.5,
+      "ombre_filterCutoff": 2200.0,
+      "ombre_filterReso": 0.35,
+      "ombre_attack": 0.003,
+      "ombre_decay": 0.2,
+      "ombre_sustain": 0.5,
+      "ombre_release": 0.3,
+      "ombre_level": 0.85
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.40,
+    "warmth": 0.55,
+    "movement": 0.25,
+    "density": 0.35,
+    "space": 0.20,
+    "aggression": 0.50
+  }
+}

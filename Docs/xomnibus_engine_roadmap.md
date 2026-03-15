@@ -1,12 +1,12 @@
 # XOmnibus — Engine Expansion Roadmap
 
-*Document version: 3.3 | March 2026 — 29 engines registered (24 original + 5 Constellation: OHM/ORPHICA/OBBLIGATO/OTTONI/OLE); OVERLAP and OUTWIT are Phase 3 complete but not yet installed*
+*Document version: 3.3 | March 2026 — 29+ engines registered (24 original + 5 Constellation: OHM/ORPHICA/OBBLIGATO/OTTONI/OLE + OMBRE); OVERLAP and OUTWIT are Phase 3 complete but not yet installed*
 
 ---
 
 ## Current Gallery State (March 2026)
 
-**29 engines registered** in XOmnibus. **24 original engines** integrated in `Source/Engines/` with SynthEngine adapters (OSPREY, OSTERIA, and OWLFISH are registered but not listed in the volume tables below — they were added between Volume 1.5 and the Constellation wave). **5 Constellation family engines** (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) registered as stubs. **2 engines** (OVERLAP and OUTWIT) are Phase 3 complete in standalone form but not yet registered in XOmnibus. 2,369 factory presets across 7 moods (Foundation/Atmosphere/Entangled/Prism/Flux/Aether/Family).
+**29+ engines registered** in XOmnibus. **24 original engines** integrated in `Source/Engines/` with SynthEngine adapters (OSPREY, OSTERIA, and OWLFISH are registered but not listed in the volume tables below — they were added between Volume 1.5 and the Constellation wave). **5 Constellation family engines** (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) registered as stubs. **OMBRE** dual-narrative engine integrated. **2 engines** (OVERLAP and OUTWIT) are Phase 3 complete in standalone form but not yet registered in XOmnibus. 2,369+ factory presets across 7 moods (Foundation/Atmosphere/Entangled/Prism/Flux/Aether/Family).
 
 ### Volume 1 — Core Engines (Original Instruments)
 
@@ -38,6 +38,7 @@
 | OPTIC | Optic | XOptic | Visual modulation + AutoPulse | 732 | ✅ Integrated |
 | OBLIQUE | Oblique | XOblique | Prismatic bounce / RTJ × Funk × Tame Impala | 1,146 | ✅ Integrated |
 | OCELOT | Ocelot | XOcelot | Canopy-layered ecosystem / sample mangling | 3,010 | ✅ Integrated |
+| OMBRE | Ombre | XOmbre | Dual-narrative (memory/forgetting + perception) | ~800 | ✅ Integrated |
 
 ---
 

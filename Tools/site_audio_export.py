@@ -54,6 +54,7 @@ ENGINE_NAMES = [
     ("oceanic", "Oceanic"),
     ("optic", "Optic"),
     ("oblique", "Oblique"),
+    ("ombre", "Ombre"),
 ]
 
 SAMPLE_RATE = "44100"

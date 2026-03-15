@@ -32,12 +32,12 @@
   },
   "parameters": {
     "Onset": {
-      "onset_drumKit": 0,
-      "onset_level": 0.8,
-      "onset_attack": 0.001,
-      "onset_decay": 0.2,
-      "onset_filterCutoff": 5000.0,
-      "onset_filterReso": 0.3
+      "perc_v1_decay": 0.2,
+      "perc_v1_tone": 0.5,
+      "perc_v1_snap": 0.5,
+      "perc_level": 0.8,
+      "perc_drive": 0.0,
+      "perc_masterTone": 0.5
     },
     "Organon": {
       "organon_metabolicRate": 4.0,

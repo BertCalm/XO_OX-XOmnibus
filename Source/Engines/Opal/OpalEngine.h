@@ -659,6 +659,9 @@ struct OpalCloudVoice
     // Age counter for voice stealing
     uint32_t birthOrder = 0;
 
+    // MPE per-voice expression state
+    MPEVoiceExpression mpeExpression;
+
     void noteOn (int note, float vel, double sr, float attack, float decay,
                  float sustain, float release, float filterA, float filterD,
                  float filterS, float filterR_,
@@ -1773,6 +1776,12 @@ public:
                                       lfo1Retrig, lfo1StartPh,
                                       lfo2Retrig, lfo2StartPh);
                     voices[0].birthOrder = ++voiceBirthCounter;
+
+                    // Initialize MPE expression for this voice's channel
+                    voices[0].mpeExpression.reset();
+                    voices[0].mpeExpression.midiChannel = m.getChannel();
+                    if (mpeManager != nullptr)
+                        mpeManager->updateVoiceExpression(voices[0].mpeExpression);
                 }
                 else
                 {
@@ -1790,15 +1799,31 @@ public:
                               lfo1Retrig, lfo1StartPh,
                               lfo2Retrig, lfo2StartPh);
                     v.birthOrder = ++voiceBirthCounter;
+
+                    // Initialize MPE expression for this voice's channel
+                    v.mpeExpression.reset();
+                    v.mpeExpression.midiChannel = m.getChannel();
+                    if (mpeManager != nullptr)
+                        mpeManager->updateVoiceExpression(v.mpeExpression);
                 }
             }
             else if (m.isNoteOff())
             {
                 if (!sustainPedalDown)
                 {
+                    int offChannel = m.getChannel();
                     for (auto& v : voices)
+                    {
                         if (v.active && v.noteNumber == m.getNoteNumber())
+                        {
+                            // In MPE mode, match by channel too
+                            if (offChannel > 0 && v.mpeExpression.midiChannel > 0
+                                && v.mpeExpression.midiChannel != offChannel)
+                                continue;
+
                             v.noteOff();
+                        }
+                    }
                 }
             }
             else if (m.isAllNotesOff() || m.isAllSoundOff())
@@ -1825,6 +1850,16 @@ public:
             // producing a diffuse, shimmering iridescent cloud.
             else if (m.isController() && m.getControllerNumber() == 1)
                 modWheelAmount = m.getControllerValue() / 127.0f;
+        }
+
+        // --- Update per-voice MPE expression from MPEManager ---
+        if (mpeManager != nullptr)
+        {
+            for (auto& v : voices)
+            {
+                if (!v.active) continue;
+                mpeManager->updateVoiceExpression(v.mpeExpression);
+            }
         }
 
         // ---- Per-sample: write grain source + tick schedulers ----
@@ -1893,9 +1928,10 @@ public:
                     }
                 }
 
-                // Set oscillator frequencies for this voice
-                v.osc1.setFrequency (v.glideFreq, static_cast<float> (sr));
-                v.osc2.setFrequency (v.glideFreq * std::pow (2.0f, osc2Detune / 12.0f),
+                // Set oscillator frequencies for this voice (with MPE pitch bend)
+                float voiceFreq = v.glideFreq * std::pow (2.0f, v.mpeExpression.pitchBendSemitones / 12.0f);
+                v.osc1.setFrequency (voiceFreq, static_cast<float> (sr));
+                v.osc2.setFrequency (voiceFreq * std::pow (2.0f, osc2Detune / 12.0f),
                                      static_cast<float> (sr));
 
                 // Grain scheduling

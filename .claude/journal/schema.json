@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Skill Journal Entry",
+  "description": "A single logged session entry for skill mining. Append one per substantive session to skill-journal.jsonl.",
+  "type": "object",
+  "required": ["timestamp", "project", "task_type", "steps", "tools_used"],
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of session end"
+    },
+    "project": {
+      "type": "string",
+      "description": "Repository or project name (e.g., 'XOmnibus', 'OddfeliX')"
+    },
+    "project_type": {
+      "type": "string",
+      "description": "Category of project (e.g., 'synth-engine', 'web-app', 'cli-tool', 'library')"
+    },
+    "task_type": {
+      "type": "string",
+      "description": "What was done (e.g., 'new-engine', 'preset-generation', 'bug-fix', 'refactor', 'export', 'validation', 'scaffolding', 'migration')"
+    },
+    "summary": {
+      "type": "string",
+      "description": "One-line description of what was accomplished"
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["action", "target"],
+        "properties": {
+          "action": {
+            "type": "string",
+            "description": "Verb: scaffold, validate, generate, transform, register, test, document, export, migrate, review"
+          },
+          "target": {
+            "type": "string",
+            "description": "What was acted on (e.g., 'engine adapter', 'preset files', 'parameter IDs')"
+          },
+          "tool": {
+            "type": "string",
+            "description": "Tool or script used, if any (e.g., 'validate_presets.py', 'manual')"
+          },
+          "repeatable": {
+            "type": "boolean",
+            "description": "Could this step be automated or templated?"
+          }
+        }
+      },
+      "description": "Ordered list of steps taken during the session"
+    },
+    "tools_used": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Scripts, commands, or tools invoked during the session"
+    },
+    "context_loaded": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Context files, docs, or specs that were read to complete the task"
+    },
+    "context_gaps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Information you had to hunt for or re-explain. Signals missing context slices."
+    },
+    "friction_points": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Anything that slowed you down, required manual intervention, or felt repetitive"
+    },
+    "pattern_tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Freeform tags for clustering (e.g., 'scaffold-then-register', 'validate-fix-loop', 'multi-step-export')"
+    }
+  }
+}

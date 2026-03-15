@@ -242,7 +242,7 @@ public:
 
     /// Create the APVTS parameter layout for this engine. The hub
     /// merges all engine layouts into a single APVTS with namespaced
-    /// prefixes (e.g., "fat_mojo", "bite_belly").
+    /// prefixes (e.g., "fat_mojo", "poss_oscAWaveform").
     virtual juce::AudioProcessorValueTreeState::ParameterLayout
         createParameterLayout() = 0;
 
@@ -1420,7 +1420,7 @@ Every parameter in the mega-tool follows this pattern:
 | Prefix | Engine | Example |
 |--------|--------|---------|
 | `fat` | OBESE (XObese) | `fat_mojo`, `fat_morphPosition`, `fat_filterCutoff` |
-| `bite` | OVERBITE (XOverbite) | `bite_belly`, `bite_gnash`, `bite_filterMode` |
+| `poss` | OVERBITE (XOverbite) | `poss_oscAWaveform`, `poss_oscMix`, `poss_filterCutoff` |
 | `snap` | ODDFELIX (OddfeliX/OddOscar EngX) | `snap_attack`, `snap_filterCutoff`, `snap_decay` |
 | `morph` | ODDOSCAR (OddfeliX/OddOscar EngO) | `morph_position`, `morph_bloom`, `morph_filterCutoff` |
 | `dub` | OVERDUB (XOverdub) | `dub_sendAmount`, `dub_delayTime`, `dub_delayFeedback` |
@@ -1484,7 +1484,7 @@ master_{parameterName}
 | Category | Count | Notes |
 |----------|-------|-------|
 | Engine OBESE | 45 | Prefixed `fat_` |
-| Engine OVERBITE | 122 | Prefixed `bite_` |
+| Engine OVERBITE | 122 | Prefixed `poss_` |
 | Engine ODDFELIX | 26 | Prefixed `snap_` |
 | Engine ODDOSCAR | 26 | Prefixed `morph_` |
 | Engine OVERDUB | 38 | Prefixed `dub_` |

@@ -256,8 +256,8 @@ public:
         }
     }
 
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override {
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> p;
+    static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& p)
+    {
         using F=juce::AudioParameterFloat;using C=juce::AudioParameterChoice;using N=juce::NormalisableRange<float>;
         // Aunt 1: Tres Cubano
         p.push_back(std::make_unique<F>("ole_aunt1Level","Aunt 1 Level",N{0,1},0.7f));
@@ -288,6 +288,11 @@ public:
         p.push_back(std::make_unique<F>("ole_macroDrama","DRAMA",N{0,1},0.0f));
         p.push_back(std::make_unique<F>("ole_macroSides","SIDES",N{0,1},0.0f));
         p.push_back(std::make_unique<F>("ole_macroIsla","ISLA",N{0,1},0.3f));
+    }
+
+    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override {
+        std::vector<std::unique_ptr<juce::RangedAudioParameter>> p;
+        addParameters(p);
         return {p.begin(),p.end()};
     }
 

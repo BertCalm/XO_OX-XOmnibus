@@ -40,13 +40,14 @@ PRESET_DIR = Path(__file__).parent.parent / "Presets" / "XOmnibus"
 VALID_MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "User"}
 
 VALID_ENGINES = {
-    # Canonical O-prefix engine IDs (all 20)
+    # Canonical O-prefix engine IDs (all 21)
     "OddfeliX", "OddOscar", "Overdub", "Odyssey", "Oblong",
     "Obese", "Onset", "Overworld", "Opal", "Orbital",
     "Organon", "Ouroboros", "Obsidian", "Overbite", "Origami",
     "Oracle", "Obscura", "Oceanic", "Optic", "Oblique",
     "Ocelot", "Osprey", "Osteria", "Owlfish",
     "Ohm", "Orphica", "Obbligato", "Ottoni", "Ole",
+    "Ombre",
     # Legacy aliases (resolved by PresetManager::resolveEngineAlias)
     "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Bite",
     "XOverdub", "XOdyssey", "XOblong", "XObese", "XOnset",
@@ -93,6 +94,7 @@ ENGINE_PARAM_PREFIXES = {
     "Obsidian": "obsidian_", "Origami": "origami_", "Oracle": "oracle_",
     "Obscura": "obscura_", "Oceanic": "oceanic_", "Optic": "optic_",
     "Oblique": "oblq_",
+    "Ombre": "ombre_",
 }
 
 # Core engines that should have coupling presets with each other
@@ -100,7 +102,7 @@ CORE_ENGINES = [
     "OddfeliX", "OddOscar", "Overdub", "Odyssey", "Oblong",
     "Obese", "Overbite", "Onset", "Opal", "Overworld", "Organon", "Ouroboros",
     "Obsidian", "Origami", "Oracle", "Obscura", "Oceanic", "Optic", "Oblique",
-    "Orbital",
+    "Ombre", "Orbital",
 ]
 
 # ---------------------------------------------------------------------------
