@@ -367,6 +367,7 @@ body::after {
   left: 0;
   width: 3px;
   height: 100%;
+  background: var(--stripe-color, var(--gold));
   opacity: 0.4;
   transition: opacity 0.4s;
 }
@@ -843,21 +844,8 @@ function renderPostCard(post, container) {
     </div>
   `;
 
-  // Set accent stripe color
+  // Set accent stripe color via CSS custom property (::before handles the stripe)
   card.querySelector('.post-accent').style.setProperty('--stripe-color', post.color);
-  card.querySelector('.post-accent::before') || null;
-  const accent = card.querySelector('.post-accent');
-  accent.innerHTML = `
-    <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:${post.color};opacity:0.4;transition:opacity 0.4s;"></div>
-    <div class="post-number">${post.num}</div>
-  `;
-
-  card.addEventListener('mouseenter', () => {
-    accent.firstElementChild.style.opacity = '1';
-  });
-  card.addEventListener('mouseleave', () => {
-    accent.firstElementChild.style.opacity = '0.4';
-  });
 
   if (post.url) {
     card.style.cursor = 'pointer';
