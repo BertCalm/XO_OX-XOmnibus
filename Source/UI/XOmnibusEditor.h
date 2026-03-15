@@ -74,7 +74,7 @@ namespace GalleryColors {
         if (id == "Onset")     return juce::Colour(0xFF0066FF); // Electric Blue
         if (id == "Overworld") return juce::Colour(0xFF39FF14); // Neon Green
         if (id == "Opal")      return juce::Colour(0xFFA78BFA); // Lavender
-        if (id == "Orbital")   return juce::Colour(0xFFFFD700); // Gold
+        if (id == "Orbital")   return juce::Colour(0xFFFF6B6B); // Warm Red
         if (id == "Organon")   return juce::Colour(0xFF00CED1); // Bioluminescent Cyan
         if (id == "Ouroboros") return juce::Colour(0xFFFF2D2D); // Strange Attractor Red
         if (id == "Obsidian")  return juce::Colour(0xFFE8E0D8); // Crystal White

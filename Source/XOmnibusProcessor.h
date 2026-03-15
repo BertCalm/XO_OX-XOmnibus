@@ -111,6 +111,10 @@ private:
         std::atomic<float>* cmHumanize = nullptr;
         std::atomic<float>* cmSidechainDuck = nullptr;
         std::atomic<float>* cmEnoMode = nullptr;
+        // Family bleed params — cached to avoid string lookups on audio thread
+        std::atomic<float>* ohmCommune  = nullptr;
+        std::atomic<float>* obblBond    = nullptr;
+        std::atomic<float>* oleDrama    = nullptr;
     } cachedParams;
 
     void cacheParameterPointers();

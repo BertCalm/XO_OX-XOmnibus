@@ -178,6 +178,9 @@ void XOmnibusProcessor::cacheParameterPointers()
     cachedParams.cmHumanize      = apvts.getRawParameterValue("cm_humanize");
     cachedParams.cmSidechainDuck = apvts.getRawParameterValue("cm_sidechain_duck");
     cachedParams.cmEnoMode       = apvts.getRawParameterValue("cm_eno_mode");
+    cachedParams.ohmCommune      = apvts.getRawParameterValue("ohm_macroCommune");
+    cachedParams.obblBond        = apvts.getRawParameterValue("obbl_macroBond");
+    cachedParams.oleDrama        = apvts.getRawParameterValue("ole_macroDrama");
 }
 
 juce::AudioProcessorValueTreeState::ParameterLayout
@@ -230,6 +233,13 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     OsteriaEngine::addParameters(params);
     xocelot::addParameters(params);
     xowlfish::addParameters(params);
+
+    // Constellation Family Engines (SP7)
+    OhmEngine::addParameters(params);
+    OrphicaEngine::addParameters(params);
+    ObbligatoEngine::addParameters(params);
+    OttoniEngine::addParameters(params);
+    OleEngine::addParameters(params);
 
     // Chord Machine parameters
     params.push_back(std::make_unique<juce::AudioParameterBool>(
@@ -751,14 +761,10 @@ void XOmnibusProcessor::processFamilyBleed(std::array<SynthEngine*, MaxSlots>& e
     if (familySlots.size() < 2)
         return; // nothing to bleed
 
-    // Read macro values from APVTS (these are cached atomic pointers — safe on audio thread)
-    auto* ohmCommune   = apvts.getRawParameterValue("ohm_macroCommune");
-    auto* obblBond     = apvts.getRawParameterValue("obbl_macroBond");
-    auto* oleDrama     = apvts.getRawParameterValue("ole_macroDrama");
-
-    const float communeAmt = ohmCommune ? ohmCommune->load() : 0.f;
-    const float bondAmt    = obblBond   ? obblBond->load()   : 0.f;
-    const float dramaAmt   = oleDrama   ? oleDrama->load()   : 0.f;
+    // Read macro values from cached parameter pointers — safe on audio thread
+    const float communeAmt = cachedParams.ohmCommune ? cachedParams.ohmCommune->load() : 0.f;
+    const float bondAmt    = cachedParams.obblBond   ? cachedParams.obblBond->load()   : 0.f;
+    const float dramaAmt   = cachedParams.oleDrama   ? cachedParams.oleDrama->load()   : 0.f;
 
     // For each family engine, send bleed coupling to all sibling family engines
     for (const auto& src : familySlots)

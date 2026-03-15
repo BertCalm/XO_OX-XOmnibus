@@ -310,8 +310,8 @@ public:
         }
     }
 
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override {
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> p;
+    static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& p)
+    {
         using F=juce::AudioParameterFloat;using C=juce::AudioParameterChoice;using N=juce::NormalisableRange<float>;
 
         // Section A: Toddler voice (3 params)
@@ -352,10 +352,14 @@ public:
 
         // Section G: Macros (4 params)
         p.push_back(std::make_unique<F>("otto_macroEmbouchure","EMBOUCHURE",N{0,1},0.5f));
-        p.push_back(std::make_unique<F>("otto_macroGrow","GROW",N{0,1},0.35f)); // default mid-Tween range
+        p.push_back(std::make_unique<F>("otto_macroGrow","GROW",N{0,1},0.35f));
         p.push_back(std::make_unique<F>("otto_macroForeign","FOREIGN",N{0,1},0.0f));
         p.push_back(std::make_unique<F>("otto_macroLake","LAKE",N{0,1},0.3f));
+    }
 
+    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override {
+        std::vector<std::unique_ptr<juce::RangedAudioParameter>> p;
+        addParameters(p);
         return {p.begin(),p.end()};
     }
 

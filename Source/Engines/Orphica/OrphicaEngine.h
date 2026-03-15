@@ -446,8 +446,8 @@ public:
         }
     }
 
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override {
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> p;
+    static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& p)
+    {
         using F=juce::AudioParameterFloat;using C=juce::AudioParameterChoice;using N=juce::NormalisableRange<float>;
 
         // A: Harp Strings (9 params)
@@ -494,7 +494,11 @@ public:
         p.push_back(std::make_unique<F>("orph_macroFracture","FRACTURE",N{0.0f,1.0f},0.0f));
         p.push_back(std::make_unique<F>("orph_macroSurface","SURFACE",N{0.0f,1.0f},0.5f));
         p.push_back(std::make_unique<F>("orph_macroDivine","DIVINE",N{0.0f,1.0f},0.2f));
+    }
 
+    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override {
+        std::vector<std::unique_ptr<juce::RangedAudioParameter>> p;
+        addParameters(p);
         return {p.begin(),p.end()};
     }
 
