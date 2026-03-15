@@ -332,7 +332,7 @@ Every quad follows the same architecture established by the Chef Quad:
 ### What Each Axis Does
 
 - **VOICE** — The instrument variant. In Chef Quad these are organs; in Kitchen they're piano types; in Cellar they're bass modes. Locked per engine. The "ingredient."
-- **FX RECIPE** — The chef's signature processing chain. 4 per engine, regionally/thematically flavored. The "cuisine." (TBD across all quads.)
+- **FX RECIPE** — The quad's signature processing philosophy, expressed as 4 culinary techniques. Each engine in the quad interprets the same 4 recipe names through its own character. The "cuisine."
 - **WILDCARD** — A specific boutique synth company's character injected as a modulation/texture layer. 4 products per company. The "spice."
 
 ### Wildcard Philosophy
@@ -340,6 +340,173 @@ Every quad follows the same architecture established by the Chef Quad:
 The wildcard isn't a preset — it's a *coloring agent*. When you select "OP-1" as Oto's wildcard, it doesn't turn the Shō into an OP-1. It applies OP-1's *character* — its lo-fi sampling grain, its quirky sequencing artifacts, its cassette-deck warmth — as a processing and modulation layer over the organ voice. The instrument stays itself; the wildcard changes *how it's perceived*.
 
 **Each company appears exactly once across all 24 engines. No repeats.**
+
+---
+
+## FX Recipes — The Third Axis
+
+Each quad has 4 named FX recipes — culinary techniques that determine the processing chain. Every engine in the quad shares the same 4 recipe *names*, but interprets them through its own instrument character, regional identity, and wildcard coloring.
+
+The recipe is the **final stage** of the signal path:
+
+```
+VOICE (what you hear) → WILDCARD (how it's colored) → FX RECIPE (how it's processed)
+```
+
+A recipe isn't a single effect — it's a **philosophy of processing** expressed as a chain of 2-4 effects in a specific order with specific character. The same recipe name produces different results on different engines because the source material and wildcard coloring are different.
+
+---
+
+### Chef Recipes: COOKING TECHNIQUES
+
+The chef's cuisine. Four approaches to heat and preparation that define regional cooking identity.
+
+| Recipe | Technique | FX Chain | Character |
+|--------|-----------|----------|-----------|
+| **Raw** | Sashimi / crudo / tartare | Light EQ → transparent compressor → air reverb | Minimal intervention. Reveals the instrument's true voice. No hiding — every detail of the organ is exposed. The recipe that separates great voices from adequate ones. |
+| **Grilled** | Direct flame, char, Maillard | Tube saturation → cabinet simulation → short room | Direct heat. Aggressive harmonics from saturation, body from cabinet modeling, space from a tight room. Smoky, charred, decisive. The sound of commitment. |
+| **Braised** | Low heat, covered, liquid | Long warm reverb → gentle compression → low-pass filter | Slow, enveloped, patient. Everything softens and merges. The organ loses its edges and becomes part of the sauce. Sunday afternoon energy. |
+| **Fermented** | Time, culture, controlled decay | Chorus → phaser → light distortion → medium delay | Living movement. The chorus creates bacterial shimmer, the phaser adds slow cycling instability, the distortion adds acid bite, the delay adds echo-memory. Controlled rot. Kimchi, kvass, kombucha — alive and unpredictable. |
+
+**Per-chef interpretation:**
+
+| | Raw | Grilled | Braised | Fermented |
+|---|---|---|---|---|
+| **Oto** | Surgical precision. Sashimi-grade clarity. The cut is everything. | Yakitori — quick, precise char over binchotan. Clean smoke. | Ramen broth — 12-hour pork bone. Milky, deep, umami. | Miso paste — years of patience. Quiet complexity. |
+| **Octave** | Plateau de fruits de mer — pristine, arranged, classical presentation. | Steak frites — confident, no-nonsense, perfectly executed. | Cassoulet — heavy, rich, layered over hours. | Roquefort — cave-aged, pungent, refined decay. |
+| **Oleg** | Zakuski — cold table, clean, ceremonial. Vodka clarity. | Shashlik — open flame, primal, outdoor. | Borscht — beet-deep, slow, soulful. | Kvass — bread ferment, industrial-sacred, ancient process. |
+| **Otis** | Raw oyster bar — Gulf coast, lemon, nothing to hide. | Memphis BBQ — low and slow over hickory, smoke ring. | Gumbo — roux-dark, everything in the pot, hours of love. | Hot sauce — vinegar ferment, pepper mash, capsaicin burn. |
+
+---
+
+### Kitchen Recipes: HEAT METHODS
+
+How the surface is heated. Four ways energy transfers through material into sound.
+
+| Recipe | Heat Method | FX Chain | Character |
+|--------|-----------|----------|-----------|
+| **Sear** | Maximum heat, brief contact | Fast-attack limiter → hard-clip saturation → bright short reverb | Impact. All energy concentrated into the first milliseconds. The piano hammer at maximum velocity, bouncing off the surface instantly. Attack-forward, explosive decay. |
+| **Bake** | Surrounded by even, dry heat | Warm convolution reverb → gentle saturation → mid-focused EQ | Enveloped. Heat from all sides, even development, golden crust. The piano in a concert hall — surrounded by warmth, every note given time to develop evenly. |
+| **Smoke** | Indirect heat, flavored by fuel source | Convolution reverb (wood room IR) → tape saturation → gradual low-pass | Hazy. The sound arrives through a veil of smoke. Indirect, mysterious, the fuel (oak, cherry, mesquite) determines the flavor. Each surface material produces different smoke character. |
+| **Torch** | Precise, directed, crème brûlée | Narrow band-pass sweep → focused distortion → dry output | Surgical intensity. One specific frequency range caramelized while everything else stays raw. The chef's torch on the sugar crust — precision destruction that creates beauty. |
+
+**Per-surface interpretation:**
+
+| | Sear | Bake | Smoke | Torch |
+|---|---|---|---|---|
+| **XOven** (Cast Iron) | Blackened. Screaming hot iron, instant crust. Maximum Maillard. | Slow roast. Even heat radiating from massive thermal mass. | Smoked brisket. 14 hours, oak wood, bark formation. | Impossible — you don't torch cast iron. Instead: concentrated heat spot, glowing red. |
+| **XOchre** (Copper) | Flash sauté. Copper responds instantly — fastest sear possible. | Copper bake — even heat, responsive, French pastry precision. | Stovetop smoking in a copper pot. Delicate, refined smoke. | Flambé — brandy ignited in a copper pan. Dramatic, brief, transformative. |
+| **XObelisk** (Stone) | Pizza stone at 900°F. Explosive bottom-heat, leopard char. | Tandoor — clay oven, radiant stone heat, naan and tikka. | Stone pit. Polynesian imu, underground smoke. Ancient. | Lava rock grilling. Torch meets stone, sparks fly. |
+| **XOpaline** (Glass) | Glass crack. Thermal shock — beautiful and dangerous. | Kiln firing. Glass in the oven, slowly transforming. | Blown glass with smoke trapped inside. | Glass torch — lampwork. The art of melting glass into shape. |
+
+---
+
+### Fusion Recipes: SAUCE BASES
+
+What binds the fusion. Four mother-sauce philosophies that hold disparate traditions together.
+
+| Recipe | Sauce | FX Chain | Character |
+|--------|-------|----------|-----------|
+| **Dashi** | Japanese stock — kombu + bonito, invisible umami | Transparent reverb → subtle harmonic enhancer → high-pass clarity | The flavor you can't identify but miss when it's gone. Transparent depth. The FX chain that makes everything sound better without being detectable. Umami processing. |
+| **Mole** | Mexican — 30+ ingredients, days of preparation | Parallel processing: chorus ‖ phaser ‖ delay ‖ reverb, all at low wet mix | Irreducible complexity. Each effect at 15-20% creates a gestalt that's greater than its parts. You can't taste the individual chocolate, chili, cinnamon — you taste *mole*. |
+| **Jus** | French — reduced pan drippings, concentrated essence | High-ratio compression → resonant EQ boost → short tight room | Concentrated. Everything non-essential removed. What remains is the pure essence of the sound, amplified. The fond scraped from the pan and deglazed into liquid gold. |
+| **Chimichurri** | Argentine — raw herbs, oil, acid, no cooking | Flanger → bright EQ shelf → stereo widener → no reverb | Fresh, bright, raw, green. No cooking involved — just chopped and combined. The anti-reverb recipe. Immediate, present, in-your-face. Parsley-and-garlic energy. |
+
+**Per-EP interpretation:**
+
+| | Dashi | Mole | Jus | Chimichurri |
+|---|---|---|---|---|
+| **XOasis** (Rhodes) | Classic jazz Rhodes — you feel the warmth but can't locate the effect. Ghost reverb. | Neo-soul Rhodes — chorus + phaser + delay + plate, all gentle, all essential. Erykah Badu. | Funk Rhodes — compressed, EQ'd, biting. Herbie Hancock "Chameleon." | Lo-fi Rhodes — raw, detuned, no reverb, close-mic'd. Tom Misch bedroom recordings. |
+| **XOddfellow** (Wurli) | Surf Wurli — hidden spring reverb adding depth to the reedy buzz. | Psych Wurli — everything on at once, swirling, paisley. | Garage Wurli — cranked preamp, the reed IS the sound, nothing else needed. | Punk Wurli — bright, aggressive, no effects, three chords, go. |
+| **XOnkolo** (Clav) | Funk Clav — subtle wah creating invisible movement. | Dub Clav — phase + delay + spring, heavy but somehow light. | P-Funk Clav — auto-wah into compressor, Worrell's weapon. | Afrobeat Clav — dry, rhythmic, Tony Allen grooves, no space. |
+| **XOpcode** (DX EP) | City Pop DX — the 1985 Tokyo shimmer. Chorus so subtle it's just "width." | Vaporwave DX — reverb + chorus + pitch artifacts, synthetic nostalgia. | Modern R&B DX — compressed FM bells, tight, present, Disclosure. | Chiptune DX — raw FM, no effects, 4-op precision, the algorithm IS the sound. |
+
+---
+
+### Garden Recipes: PRESERVATION METHODS
+
+How ingredients are kept. Four ways to extend the life and transform the character of what the garden grows.
+
+| Recipe | Method | FX Chain | Character |
+|--------|--------|----------|-----------|
+| **Fresh** | Just picked, morning dew | Light room reverb → natural dynamics → open EQ | No processing philosophy — the anti-recipe. The string as it comes off the instrument, in a room, with air. Seasonal, ephemeral, this-moment-only. |
+| **Dried** | Sun-dried, concentrated, shelf-stable | Gentle bit reduction → warm saturation → tight bandwidth EQ | Moisture removed, flavor concentrated. The string sound with its transient bloom reduced, leaving dense harmonic core. Sun-dried tomato vs fresh tomato — same ingredient, completely different food. |
+| **Pickled** | Vinegar, acid, tang, preserved in brine | Ring modulation → comb filter → short slapback delay | Acidic, sharp, tangy. The comb filter adds metallic brine overtones, the ring mod adds acid bite, the slapback adds the jar's resonance. Preserved but transformed — you know it was a cucumber, but it's a pickle now. |
+| **Composted** | Broken down, returned to earth, feeding new growth | Granular processing → long dark reverb → heavy low-pass | Decomposition as creation. The string sound broken into grains, scattered into dark space, filtered until only the deepest frequencies remain. Humus — the rich black soil that feeds next season's garden. |
+
+**Per-string interpretation:**
+
+| | Fresh | Dried | Pickled | Composted |
+|---|---|---|---|---|
+| **XOrchard** (Orchestral) | Film score — lush section in a scoring stage. Spielberg. | Vintage vinyl strings — saturated, bandwidth-limited, warm patina. | Stravinsky — acidic orchestration, dissonant, The Rite of Spring. | Drone — orchestral strings granularized into earth-tone ambient. |
+| **XOvergrow** (Solo) | Recital — one violin in a quiet room. Every breath audible. | Dried herb bundle — concentrated solo tone, meditation bell sustain. | Extended technique — col legno, sul ponticello, scratch tone. | Pauline Oliveros — deep listening, the solo voice dissolved into space. |
+| **XOsier** (Chamber) | Salon concert — quartet in a drawing room, intimate, alive. | Preserved manuscripts — aged chamber music, warm and brittle. | Bartók quartets — folk-acid, strange intervals, Eastern European tang. | Late Feldman — chamber ensemble dissolving into near-silence over hours. |
+| **XOxalis** (Synth Strings) | Solina through a JC-120 — clean chorus, immediate, 1978. | Vangelis — compressed, saturated, Blade Runner warmth. | Boards of Canada — detuned, warped, acid-washed nostalgia. | William Basinski — loops decaying, tape disintegrating, sublime entropy. |
+
+---
+
+### Cellar Recipes: AGING METHODS
+
+How the foundation develops over time. Four stages of maturation that transform raw stock into something with depth and character.
+
+| Recipe | Method | FX Chain | Character |
+|--------|--------|----------|-----------|
+| **Green** | Young, unaged, just arrived in the cellar | Clean preamp → room mic → no coloration | What just walked in. No barrel, no time, no transformation. Raw potential. The bass sound before the cellar does its work. Bright, rough, honest. |
+| **Barrel** | Oak-aged, tannin, vanilla, oxidation | Tube saturation → warm low-shelf EQ boost → medium hall reverb | The classic. Oak imparts vanilla, tannin adds structure, controlled oxidation rounds the edges. The bass equivalent of a well-aged bourbon — smooth, warm, complex, dangerous. |
+| **Cave** | Natural cave aging, mineral, constant temperature | Convolution reverb (cave/tunnel IR) → gentle compression → resonant band-pass | Stone walls, constant humidity, mineral character. The bass sound processed through geological time. Damp, ancient, crystalline deposits forming on the surface. Roquefort's cave. Champagne's chalk tunnels. |
+| **Charred** | Charred barrel interior, caramel, smoke, carbon | Heavy distortion → speaker cabinet simulation → brick-wall limiter | The inside of the barrel burned black before the spirit goes in. Maximum transformation — the char layer filters everything through carbon, adding smoke, caramel, and intensity. The difference between bourbon and whiskey. Aggressive aging. |
+
+**Per-bass interpretation:**
+
+| | Green | Barrel | Cave | Charred |
+|---|---|---|---|---|
+| **XOgre** (Sub) | Raw sine wave. 30Hz test tone. The ingredient before aging. | Sub through warm saturation — you feel it in the floor, but it glows. | Underground — sub bass in a cavern, resonant modes of stone. | Distorted sub — EDM tearout, bass face, the ogre is ANGRY. |
+| **XOxbow** (Analog) | New Moog out of the box — that first filter sweep. | TB-303 acid — the barrel aged it into something nobody planned. Legend. | Deep house — analog bass in the tunnel, 3am, reverb from the architecture. | Industrial — analog bass through broken amps, nine inch nails. |
+| **XOaken** (Acoustic) | Fresh-strung upright — gut strings, bright, woody, alive. | Jazz bass — years of play, worn fretboard, finger-oil patina. Mingus. | Bluegrass bass — played in a barn, natural reverb, whiskey on the shelf. | Rockabilly slap — the upright pushed past its limits, percussive, aggressive. |
+| **XOmega** (FM/Digital) | Clean FM — carrier + modulator, textbook ratio, educational. | DX bass — the FM patch that became a genre. Detuned, warm, impossible. | Reese bass — the subterranean classic. Dark, moving, cavernous. | Skrillex — FM bass destroyed by distortion, rebuilt as a weapon. |
+
+---
+
+### Broth Recipes: LIQUID PREPARATIONS
+
+What the medium becomes. Four fundamental approaches to liquid that determine what everything immersed in it will taste like.
+
+| Recipe | Preparation | FX Chain | Character |
+|--------|------------|----------|-----------|
+| **Clear** | Consommé — clarified, perfectly transparent | Precision EQ (surgical cuts) → transparent compressor → pristine stereo delay | Everything unnecessary removed. The pad is there but you see right through it. No mud, no haze — pure, refined, the product of careful clarification. The broth that took all day to make and looks like it took no effort at all. |
+| **Bone** | 24-hour bone broth — collagen, gelatin, thick, nourishing | Thick plate reverb → heavy compression → warm saturation → low-pass at 4kHz | Maximum body. The pad that coats everything in richness. Collagen = harmonic density. Gelatin = the way it clings to whatever it touches. The most caloric, most nourishing, most enveloping recipe. |
+| **Bisque** | Shellfish bisque — cream, brandy, luxury | Lush chorus → warm spring reverb → soft-knee compression → gentle drive | Smooth, rich, decadent. The chorus adds cream shimmer, the spring reverb adds kitchen clatter, the compression makes it velvety, the drive adds brandy warmth. The recipe that costs $40 a bowl and earns it. |
+| **Dipping** | Fondue / hot pot — the communal dip, interactive | Sidechain ducker → resonant filter (key-tracked) → ping-pong delay | Interactive. The pad responds to what's played over it — ducking to make room, filtering to match the melody's register, echoing fragments back. The hot pot that changes flavor depending on what you dip in it. |
+
+**Per-pad interpretation:**
+
+| | Clear | Bone | Bisque | Dipping |
+|---|---|---|---|---|
+| **XOverwash** (Diffusion) | Watercolor on wet paper — transparent wash, barely there. | Thick oil paint — heavy, pigmented, covers everything. | Gouache — opaque but smooth, cream-mixed pigment. | Dip-dye — the fabric takes the color unevenly, beautifully. |
+| **XOverworn** (Erosion) | Erosion revealing clean stone — stripping to clarity over time. | Erosion into mud — thick, dark, sediment-heavy. Slow river delta. | Erosion into sand — fine-grained, warm, beach-smooth. | Tidal pool — erosion that responds to what the tide brings in. |
+| **XOverflow** (Pressure) | Pressure cooker with clear stock — clean, intense, fast. | Pressure cooker with bones — thick, dark, concentrated to maximum. | Pressure cooker with cream — dangerous (it can explode) but divine. | Fondue pot — pressure from below, you control what enters. |
+| **XOvercast** (Crystallization) | Ice — clear, geometric, pure water frozen into structure. | Frozen bone broth cubes — dense, opaque, nutritious cold blocks. | Frozen custard — smooth, rich, crystallized luxury. | Ice cream dip — the warm thing hits the cold thing, shell forms instantly. |
+
+---
+
+## FX Recipe Summary
+
+```
+CHEF (Organ)           KITCHEN (Piano)        FUSION (EP)
+├─ Raw                 ├─ Sear                ├─ Dashi
+├─ Grilled             ├─ Bake                ├─ Mole
+├─ Braised             ├─ Smoke               ├─ Jus
+└─ Fermented           └─ Torch               └─ Chimichurri
+
+GARDEN (Strings)       CELLAR (Bass)          BROTH (Pads)
+├─ Fresh               ├─ Green               ├─ Clear
+├─ Dried               ├─ Barrel              ├─ Bone
+├─ Pickled             ├─ Cave                ├─ Bisque
+└─ Composted           └─ Charred             └─ Dipping
+```
+
+**24 recipe names. Each interpreted 4 ways (per engine in quad) = 96 unique FX chains.**
+**Combined with 4 voices × 4 wildcards = 1,536 configurations per collection.**
 
 ---
 
@@ -426,7 +593,7 @@ Each company's character becomes a spice that transforms the base instrument. Th
 ## Open Questions
 
 1. **Accent colors** — Does each quad share a color family, or does each engine get its own? The culinary metaphor suggests warm palette families (copper tones for Kitchen, deep reds for Cellar, greens for Garden, etc.)
-2. **FX recipes** — The third axis of 4×4×4. Each engine needs 4 signature processing chains ("cuisines"). TBD across all quads. Chef Quad's FX recipes should be designed first as the template.
+2. **FX recipes — DSP implementation** — Recipe archetypes are designed (Raw/Grilled/Braised/Fermented etc.). Next step: translate each recipe's FX chain into specific DSP module selections, parameter ranges, and routing from the XOmnibus shared DSP library.
 3. **Aquatic identity** — Does the Culinary Collection sit within the water column mythology? If so, where? The kitchen is on land — on the shore, perhaps. The osteria at the water's edge.
 4. **Integration priority** — Which quad builds first after Chef? Kitchen (Piano) and Cellar (Bass) are the most universally needed.
 5. **XOpaline vs XOpal** — Name collision. XOpal already exists in the main engine roster. XOpaline is distinct but close. Consider alternatives: XObjet, XOrnament, XOverture.
