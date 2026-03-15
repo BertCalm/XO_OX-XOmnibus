@@ -348,6 +348,205 @@ Laboratory (future)     TBD               TBD                                 TB
 6. **Parameter prefix convention:** `ophidian_`, `opus_`, `overlord_`, `oblivion_` — follows the standard `{shortname}_{paramName}` pattern. Frozen on release.
 7. **No marketing.** Secret engines are never mentioned on the website, in press materials, or in the app store description. Users discover them. Users tell each other. The community OWNS the secret.
 
+## The Water Thread — Website Design System
+
+Water is the golden thread that connects every collection. Not literal water everywhere — that would dilute The Depths' identity. Instead, each collection lives in a **different relationship to water**, and the website transforms as you navigate between collections. The water is always present, but its form changes.
+
+### The Geography
+
+Think of XOmnibus as a place. A real place. The website IS that place, and you move through it.
+
+```
+                    ☆ CONSTELLATION
+                   (the sky reflected
+                    in still water)
+                         │
+    ═══════════════════════════════════════════ HORIZON
+                         │
+    OPENSKY ─────────── THE SHORE ──────────── THE FRONTIER
+    (atmosphere,         │                     (cliffs, rapids,
+     wind over water)    │                      waterfalls,
+                         │                      tidal bores)
+              ┌──────────┼──────────┐
+              │          │          │
+         THE ATELIER  KITCHEN    THE ARCADE
+         (the workshop  ESSENTIALS  (the arcade
+          on the quay,  (the tavern   on the pier,
+          water for     on the shore, rain on
+          quenching     cooking with  windows,
+          & developing) water,        neon in
+                        the well,     puddles)
+                        the dock)
+              │          │          │
+              └──────────┼──────────┘
+                         │
+    ═══════════════════════════════════════════ WATERLINE
+                         │
+                    THE DEPTHS
+                   (the ocean itself —
+                    underwater, always)
+                         │
+                    ┌────┴────┐
+                 CREATURES  WATERS
+                 (the fauna) (the medium)
+                         │
+                    THE LEVIATHAN
+                   (the abyss below
+                    the abyss)
+```
+
+### Collection Web Themes
+
+Each collection's section of the website has its own visual treatment, but water connects them all.
+
+---
+
+#### The Depths — Underwater
+
+**Water relationship:** You ARE in the water. Fully submerged.
+**Web treatment:**
+- Dark blue-black background with subtle caustic light patterns
+- Particles drift upward (bubbles, bioluminescent plankton)
+- Parallax scrolling creates depth — foreground elements float closer, background recedes
+- Navigation feels like diving deeper or ascending — vertical, not horizontal
+- Bioluminescent accent colors pulse slowly (`#00FFD4`, `#00CED1`)
+- Audio: ambient deep-water hum, whale-song frequencies, pressure
+
+**Water element:** The water IS the page. Everything is immersed. Text appears as if etched in coral or floating in current. Scrolling changes depth — content at the top of the page is in the shallows (lighter blue), content at the bottom is abyssal (near-black).
+
+---
+
+#### Kitchen Essentials — The Shore Tavern
+
+**Water relationship:** At the water's edge. The kitchen sits where the ocean meets the land. A tavern on the dock. Fishing boats tied up outside. The smell of salt water and roasting garlic.
+**Web treatment:**
+- Warm white backgrounds (`#F8F6F3`) — the Gallery Model warm shell
+- Copper and wood textures — the tavern's interior
+- Through the windows: you can see the water. A subtle animated ocean visible at the edges of the layout — the shore is RIGHT THERE
+- Navigation is horizontal — moving through rooms of the tavern (kitchen, cellar, garden out back, choir loft above)
+- Recipe pages have water stains, salt crystallization effects at the edges
+- The Cookbook section feels like a well-loved book left open by the window, pages ruffled by sea breeze
+
+**Water element:** Visible through windows and doorways. The ocean is always just outside. When you scroll to the Cellar section, the waterline rises — the cellar is partially below sea level. When you scroll to Broth, the recipes literally dissolve at the edges, watercolor-style.
+
+---
+
+#### The Atelier — The Workshop on the Quay
+
+**Water relationship:** Water as tool. The craftsperson's workshop sits on the quayside — stone steps leading down to the water. Water for quenching hot metal. Water for mixing mortar. Water for developing photographs. Water for smoothing stone.
+**Web treatment:**
+- Warm neutral backgrounds — stone, linen, raw paper textures
+- Work surfaces visible — scarred wooden benches, stone slabs
+- Tools arranged on walls (real physical objects, not icons)
+- Water is present as a material: puddles on the workbench, a basin for quenching, a darkroom tray
+- Navigation feels like walking through connected workshop rooms
+- Material swatches (stone grain, paper fiber, metallic sheen) as UI elements
+
+**Water element:** Functional, not decorative. A stone basin of water sits at the bottom of the page — dip into it and the color palette shifts (a dark mode toggle disguised as quenching). Rain on the skylight above the workshop — visible when you scroll to the top. Water stains on paper surfaces. The quay is visible through the workshop's open doors — boats, rope, the smell of the harbor.
+
+---
+
+#### The Arcade — The Pier
+
+**Water relationship:** Rain on windows. Neon reflected in puddles. The arcade is on a pier extending over the water. Below the floorboards, you can hear waves.
+**Web treatment:**
+- Dark backgrounds with neon accent colors (CRT phosphor palette)
+- Scanline overlay, pixel art elements, cabinet bezels
+- Rain streaks down the browser window — a subtle CSS animation
+- Neon signs reflected in wet surfaces below them
+- Through the arcade's windows: the ocean at night, moonlight on waves
+- Cabinet-style navigation — each engine/quad is an arcade machine you walk up to
+
+**Water element:** Atmospheric. The pier creaks. Rain runs down the glass. When you navigate to the Overworld section, the window reveals a pixelated ocean — 8-bit waves. The floor of the Arcade section is slightly translucent — through it, you see dark water. You're standing OVER the ocean. The Overlord's Boss Fight section: the rain intensifies, lightning illuminates waves.
+
+---
+
+#### The Frontier — The Cliff Edge
+
+**Water relationship:** Water at its most violent. Crashing waves, tidal bores, waterfalls. The Frontier sits on the cliff where the land breaks against the sea. Spray. Salt erosion. The force of water as a destructive power.
+**Web treatment:**
+- High contrast: near-black and near-white with violent color accents
+- Sharp, angular layouts — jagged like broken rock
+- Spray particles drift across the page (salt crystals, mist)
+- The cliff edge is visible — content sits on a precipice, the ocean RAGING below
+- When you scroll past the edge, you're in freefall toward the water
+- Glitch effects: visual tearing, as if the page itself is being eroded
+
+**Water element:** Aggressive. Water here is a FORCE — not gentle, not decorative, not functional. Crashing. The Force engines section shows waves driven by gravitational physics. The Edges section shows water being shattered — a waterfall hitting rocks, the spray becoming individual droplets frozen in time. XOblivion's section: a whirlpool. The water spirals inward toward the singularity. The page content literally spirals.
+
+---
+
+#### Constellation — The Still Surface (Future)
+
+**Water relationship:** Water as mirror. A perfectly still lake at night, reflecting the stars. You look up and see the sky. You look down and see the sky again. The water IS the sky.
+**Web treatment:**
+- Dark indigo background — the night sky
+- Star points as navigation elements
+- The lower half of the page is a reflection of the upper half — a still water mirror
+- Clicking a star above is the same as clicking its reflection below
+- Constellations drawn with XO Gold lines connecting star-engines
+
+**Water element:** Perfect stillness. The most serene water state in the entire site. Counterpoint to The Frontier's violence. The water doesn't move. It reflects. When you interact with the page (mouse movement, scroll), the tiniest ripple disturbs the reflection — then settles back to glass.
+
+---
+
+#### Laboratory — The Reservoir (Future)
+
+**Water relationship:** Water as universal solvent. H₂O. Phase transitions. The Laboratory sits at a reservoir — the municipal water supply. Controlled, measured, essential. Water as science.
+**Web treatment:**
+- Clean whites, graph paper grid, data visualization aesthetic
+- Beakers, graduated cylinders, pipettes as UI metaphors
+- Water in its scientific forms: molecular diagrams, phase diagrams, fluid dynamics visualizations
+- Temperature readout in the corner — showing water's current state (ice? liquid? steam?)
+
+**Water element:** Clinical. Water here is a subject of study, not a mood. Molecular structure of H₂O as a recurring design motif. Phase transition animations between sections — ice melts to liquid, liquid evaporates to steam as you scroll through temperature-increasing content.
+
+---
+
+### The Transitions
+
+When users navigate between collections, the website doesn't just page-cut — it TRAVELS through water.
+
+```
+THE DEPTHS → KITCHEN ESSENTIALS
+  You ascend. The water lightens. You break the surface. Blinking.
+  The tavern door is right there. You step inside, dripping.
+
+KITCHEN ESSENTIALS → THE ATELIER
+  You walk out the tavern's side door, along the quay.
+  The harbor water laps at the stone. You enter the workshop.
+
+KITCHEN ESSENTIALS → THE ARCADE
+  You walk out the tavern's front door, onto the pier.
+  Rain starts. Neon flickers. You push through the arcade door.
+
+THE ARCADE → THE FRONTIER
+  You walk to the end of the pier. The railing ends.
+  The cliff face rises beside you. Spray hits your face. You climb.
+
+THE FRONTIER → CONSTELLATION
+  You reach the cliff top. The wind stops. Below you, a still lake.
+  The stars are out. The water shows you the sky.
+
+ANY COLLECTION → THE DEPTHS
+  You fall into water. From wherever you are — the workshop basin,
+  the rain, the cliff edge, the still lake — you submerge.
+  The surface closes above you. You descend.
+```
+
+### Design Principles
+
+1. **Water is never forced.** It's always NATURAL to each collection's location. The workshop has a basin because workshops do. The arcade is on a pier because arcades are. It's not "we added water to every page" — it's "every place has a reason to be near water."
+2. **The Depths owns underwater.** No other collection goes fully submerged. The Depths' uniqueness is that you're INSIDE the water. Everyone else is adjacent to it.
+3. **The shore is the hub.** Kitchen Essentials (the tavern) is the central location. From the shore, you can go in any direction — into the water (Depths), along the quay (Atelier), onto the pier (Arcade), up the cliff (Frontier), up to the sky (Constellation). The tavern is home base.
+4. **Water state reflects collection energy.** Still (Constellation) → Functional (Atelier) → Ambient (Arcade rain) → Cooking (Kitchen) → Violent (Frontier) → Total (Depths). The spectrum from calm to immersive.
+5. **XO Gold appears in every collection's water.** The one constant: wherever water catches light in XOmnibus, it glints XO Gold (`#E9C46A`). Sunlight through the tavern window hitting the basin. Neon reflecting gold in puddles. The single gold star reflected in the Constellation lake. The golden thread is LITERALLY golden light on water.
+6. **Performance matters.** The ambient water effects must be GPU-efficient. No collection page should load slowly because of water animations. Fallback to static water textures on low-end devices. The experience degrades gracefully — still beautiful at every level.
+
+---
+
+## The Community Model
+
 Each Collection's community touchpoint isn't marketing — it's a **creative feedback loop** where real-world creative inputs and sound design inspire each other bidirectionally.
 
 ### Per-Collection Interaction Points
@@ -504,7 +703,8 @@ Some collections have incomplete quads — these are deliberate growth slots for
 
 1. **Organon placement** — Currently in The Depths (Waters quad). Bioluminescence bridges creature biology and ocean environment. But Organon's "entropy" parameter and biological systems focus could also argue for The Frontier (Forces). Where does it feel most at home?
 2. **Ocelot in The Depths?** — Ocelot is a jungle cat, not aquatic. It's grouped with Creatures because all animal-identity engines are there. But should Creatures be renamed to something less aquatic-specific? "Bestiary" perhaps?
-3. **Collection visual identity** — How different should collections look? Subtle (same Gallery Model, different accent palette) or dramatic (different UI shell per collection)?
+3. **Collection visual identity (plugin vs website)** — The website has distinct themed environments per collection (underwater, tavern, workshop, pier, cliff). Should the plugin UI also shift dramatically per collection, or stay in the Gallery Model with subtle accent changes? The website can be theatrical; the plugin needs to be functional.
+3b. **Water thread implementation** — WebGL? CSS animations? Three.js for 3D water? The transitions between collections need to feel like physical travel through a space. What's the tech stack for the ambient water effects?
 4. **Cross-collection coupling** — Do coupling modes change when engines from different collections interact? Or is coupling universal?
 5. **Collection pricing** — Are the four original-engine collections (Depths, Atelier, Arcade, Frontier) the free base, with Culinary and future collections as expansions? Or does everything stay free?
 6. **Growth slot engines** — The 6 slots (2 Atelier Tools, 3 Arcade Worlds, 1 Frontier Forces) should be designed TO their collection's metaphor, not just slotted in. What craft tools, retro devices, and physical forces are missing?
