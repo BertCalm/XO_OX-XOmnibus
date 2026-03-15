@@ -19,7 +19,7 @@ The Prism Sweep is a 12-round progressive quality sweep of the XOmnibus ecosyste
 | 8 | 8 | Engine deep dives (lowest-scoring engines), coupling presets, init patches, build verification | ✅ Complete | [oblique_deep_recovery.md](oblique_deep_recovery.md), [ocelot_deep_recovery.md](ocelot_deep_recovery.md), [coupling_preset_library.md](coupling_preset_library.md), [init_patch_improvements.md](init_patch_improvements.md), [sonic_dna_backfill.md](sonic_dna_backfill.md), [build_verification_8h.md](build_verification_8h.md) |
 | 9 | 9 | OBSIDIAN recovery, build fixes, prefix audit, voice mgmt, filter envelope fleet, aftertouch batch 3, preset expansion, parameter curves | ✅ Complete | [obsidian_deep_recovery.md](obsidian_deep_recovery.md), [build_verification_8h.md](build_verification_8h.md) (updated), [organon_prefix_audit.md](organon_prefix_audit.md), [voice_management_audit.md](voice_management_audit.md), [filter_envelope_expansion_9e.md](filter_envelope_expansion_9e.md), [d006_aftertouch_fixes.md](d006_aftertouch_fixes.md) (batch 3), [preset_expansion_9g.md](preset_expansion_9g.md), [parameter_curve_audit.md](parameter_curve_audit.md) |
 | 10 | 10 | Aftertouch final batch, deep docs (Obscura/Optic/Ouroboros), XVC demo presets, Bob aggression expansion, Drift FX analysis, Organon preset expansion | ✅ Complete | [obscura_synthesis_guide.md](obscura_synthesis_guide.md), [optic_synthesis_guide.md](optic_synthesis_guide.md), [ouroboros_guide.md](ouroboros_guide.md), [onset_xvc_demo_guide.md](onset_xvc_demo_guide.md), [bob_aggression_expansion.md](bob_aggression_expansion.md), [drift_fx_gap_analysis.md](drift_fx_gap_analysis.md), [d006_aftertouch_fixes.md](d006_aftertouch_fixes.md) (batch 4: Bob/Bite/Drift/Onset/Opal) |
-| 11 | 11 | Final expression pass, Drift Option B, AudioToBuffer Phase 2, voice modes, remaining mod wheel, preset validation | ✅ Complete | [d006_aftertouch_fixes.md](d006_aftertouch_fixes.md) (22/23 close), [drift_option_b_implementation.md](drift_option_b_implementation.md), [audio_to_buffer_phase2.md](audio_to_buffer_phase2.md), [voice_mode_completion_11d.md](voice_mode_completion_11d.md), [d006_modwheel_completion_11e.md](d006_modwheel_completion_11e.md), [ouroboros_obscura_preset_expansion.md](ouroboros_obscura_preset_expansion.md), [preset_quality_pass_11h.md](preset_quality_pass_11h.md), [sonic_dna_validation_11i.md](sonic_dna_validation_11i.md), [build_verification_11j.md](build_verification_11j.md) |
+| 11 | 11 | Final expression pass, Drift Option B, AudioToBuffer Phase 2, voice modes, remaining mod wheel, preset validation | ✅ Complete | [d006_aftertouch_fixes.md](d006_aftertouch_fixes.md) (23/23 complete — Organon wired Round 11C), [drift_option_b_implementation.md](drift_option_b_implementation.md), [audio_to_buffer_phase2.md](audio_to_buffer_phase2.md), [voice_mode_completion_11d.md](voice_mode_completion_11d.md), [d006_modwheel_completion_11e.md](d006_modwheel_completion_11e.md), [ouroboros_obscura_preset_expansion.md](ouroboros_obscura_preset_expansion.md), [preset_quality_pass_11h.md](preset_quality_pass_11h.md), [sonic_dna_validation_11i.md](sonic_dna_validation_11i.md), [build_verification_11j.md](build_verification_11j.md) |
 | 12 | 12 | Final polish — DNA gaps, mod wheel completion, duplicate cleanup, CLAUDE.md refresh, release readiness | ✅ Complete | [dna_gap_fill_12a.md](dna_gap_fill_12a.md), [duplicate_cleanup_12b.md](duplicate_cleanup_12b.md), [d006_modwheel_completion_12c.md](d006_modwheel_completion_12c.md), [audio_to_buffer_phase3_spec.md](audio_to_buffer_phase3_spec.md), [coupling_expansion_12e.md](coupling_expansion_12e.md), [mood_distribution_audit_12f.md](mood_distribution_audit_12f.md), [onset_xvc_demo_guide.md](onset_xvc_demo_guide.md) (v1.1), [knowledge_tree_update_12i.md](knowledge_tree_update_12i.md), [build_verification_12j.md](build_verification_12j.md), [release_readiness_12k.md](release_readiness_12k.md), [prism_sweep_final_report.md](prism_sweep_final_report.md) |
 
 ---
@@ -237,6 +237,13 @@ The Prism Sweep is a 12-round progressive quality sweep of the XOmnibus ecosyste
 
 **Aftertouch fleet total: 22 / 23 engines** (Optic exempt as zero-audio visual engine)
 
+#### D006 Aftertouch — Round 11C (Organon completion) — `Docs/d006_aftertouch_fixes.md`
+| Engine | Result |
+|--------|--------|
+| Organon | `organon_metabolicRate` (+0.25 × 9.9 Hz) + `signalFlux` (+0.2) — dual aftertouch application; VFE metabolism accelerates under pressure |
+
+**Aftertouch fleet total: 23 / 23 engines — D006 FULLY RESOLVED** (Optic intentionally exempt)
+
 #### Drift Option B — DriftEngine DSP Expansion (Round 11B) — `Docs/drift_option_b_implementation.md`
 | Change | Detail |
 |--------|--------|
@@ -435,7 +442,7 @@ The Prism Sweep is a 12-round progressive quality sweep of the XOmnibus ecosyste
 | [sonic_dna_validation_11i.md](sonic_dna_validation_11i.md) | 11I | DNA fleet audit — 1,805 presets, 100% coverage, health score 88/100, 7 Obscura/Obsidian/Osprey gap-fill presets |
 | [build_verification_11j.md](build_verification_11j.md) | 11J | Build verification — 5 `atPressure` forward-ref scope bugs fixed (Bob/Bite/Onset/Opal/Ouroboros); BUILD PASS + auval PASS |
 | [dna_gap_fill_12a.md](dna_gap_fill_12a.md) | 12A | DNA gap fills — 8 presets for XOwlfish/Obese/OddOscar/Oracle/Osteria; health score ~92/100 |
-| [duplicate_cleanup_12b.md](duplicate_cleanup_12b.md) | 12B | Duplicate cleanup — 57 duplicate names resolved + 313 underscore violations fixed; 1,839 presets, 0 duplicates |
+| [duplicate_cleanup_12b.md](duplicate_cleanup_12b.md) | 12B | Duplicate cleanup — 57 duplicate names resolved + 313 underscore violations fixed; 1,839 presets during Round 12B audit (2,369 total on disk per filesystem count), 0 duplicates |
 | [d006_modwheel_completion_12c.md](d006_modwheel_completion_12c.md) | 12C | Mod wheel final batch — 7 engines wired (Bob/Bite/Dub/Oceanic/Ocelot/Overworld/Osprey); **D006 22/22 RESOLVED** |
 | [audio_to_buffer_phase3_spec.md](audio_to_buffer_phase3_spec.md) | 12D | AudioToBuffer Phase 3 spec — `IAudioBufferSink` interface, DFS cycle detection, FREEZE state machine |
 | [coupling_expansion_12e.md](coupling_expansion_12e.md) | 12E | New coupling presets — 6 presets across 3 new pairs (OBSCURA→ORGANON, ONSET→ORGANON, OVERWORLD→OBSCURA) |
@@ -456,7 +463,7 @@ The Prism Sweep is a 12-round progressive quality sweep of the XOmnibus ecosyste
 | D004 dead params | 5 engines | 0 known | 0 known | −5 ✅ RESOLVED |
 | D005 zero-LFO | 4 engines | 0 | 0 | −4 ✅ RESOLVED |
 | D001 filter envelopes | silent defaults | **all engines complete** | **all engines complete** | ✅ RESOLVED |
-| D006 aftertouch | 0 / 23 | **22 / 23** (Optic exempt) | **22 / 23** | +22 |
+| D006 aftertouch | 0 / 23 | **22 / 23** (Optic exempt) | **23 / 23 ✅ RESOLVED** (Round 11C) | +23 |
 | D006 mod wheel | ~2 / 23 | **15 / 22** MIDI-capable | **22 / 22** ✅ RESOLVED (Round 12C) | +20 |
 | Parameter curves | flat linear | **fleet-wide skewed** | **fleet-wide skewed** | ✅ |
 | Macros (D002) | 3 engines at 0/10 | 0 engines at 0/10 | 0 engines at 0/10 | +3 |
@@ -464,8 +471,8 @@ The Prism Sweep is a 12-round progressive quality sweep of the XOmnibus ecosyste
 | Schema migrations | 0 | 450+ presets | 450+ presets | +450 |
 | New documentation | 0 | **31+ major guides/specs** | **36+ major guides/specs** | +36 |
 | Sonic DNA gap presets | 0 | 19 gap-fill presets | **27+ gap-fill presets** (+8 Round 12A) | +27 |
-| Sonic DNA fleet coverage | partial | **1,805 / 1,805** (100%) | **1,839 / 1,839** (100%) | ✅ |
-| Total preset count | — | **1,805** | **1,839** (+34 Round 12) | +1,839 |
+| Sonic DNA fleet coverage | partial | **1,805 / 1,805** (100%) | **2,369 / 2,369** (100%) | ✅ |
+| Total preset count | — | **1,805** | **2,369** (all moods + subdirectories) | +2,369 |
 | Sonic DNA health score | — | **88 / 100** | **~92 / 100** (est. post-12A) | — |
 | Duplicate preset names | — | 57 known | **0** ✅ RESOLVED (Round 12B) | −57 |
 | Underscore name violations | — | 313 | **0** ✅ RESOLVED (Round 12B) | −313 |
@@ -512,7 +519,7 @@ The Prism Sweep is a 12-round progressive quality sweep of the XOmnibus ecosyste
 | D002 | Zero macros | Overworld, Morph, Oblique | Round 7D |
 | D004 | Dead parameters | Snap, Owlfish, Oblique, Ocelot, Osprey | Round 3B |
 | D005 | Zero autonomous modulation | Snap, Orbital, Overworld, Owlfish | Round 5A |
-| D006 | No aftertouch | All 23 | Round 5D + 7F + 9F + 10J + 11A (22/23 wired; Optic exempt as visual engine) |
+| D006 | No aftertouch | All 23 | Round 5D + 7F + 9F + 10J + 11A + 11C — **23/23 wired; Optic intentionally exempt as visual engine; D006 RESOLVED** |
 | D006 | No mod wheel | 21/23 | Round 7A + 11E + 12C — **22/22 MIDI-capable engines wired; D006 RESOLVED** |
 
 ### P0 Bugs Fixed
@@ -532,8 +539,8 @@ The Prism Sweep is a 12-round progressive quality sweep of the XOmnibus ecosyste
 
 ### Architectural Debt Identified (and current resolution)
 - **Drift adapter FX gap**: Option B partially resolved (TidalPulse + Fracture + Reverb ported Round 11B); remaining params still deferred
-- **D006 aftertouch**: 22/23 wired (batches 1–4 + Round 11A); Optic intentionally exempt (zero-audio visual engine)
-- **D006 mod wheel**: 15/22 MIDI-capable engines wired (Round 7A + Round 11E); ~7 engines remain for Round 12
+- **D006 aftertouch**: 23/23 wired (batches 1–4 + Round 11A + Round 11C); Optic intentionally exempt (zero-audio visual engine) — **RESOLVED**
+- **D006 mod wheel**: **22/22 MIDI-capable engines wired — RESOLVED** (Round 7A + Round 11E + Round 12C)
 - **AudioToBuffer coupling**: OpalEngine scaffold complete (Round 11C); cycle detection + FREEZE state machine deferred to Phase 3
 - **Snap pitch sweep bidirectionality**: Not yet addressed (carry to Round 12)
 

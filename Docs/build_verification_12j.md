@@ -58,9 +58,9 @@ AU VALIDATION SUCCEEDED.
 
 | Metric | Status |
 |--------|--------|
-| D006 aftertouch | 22 / 23 (Optic exempt) |
+| D006 aftertouch | 23 / 23 (Optic intentionally exempt — visual engine) |
 | D006 mod wheel | **22 / 22 — RESOLVED** (Round 12C) |
-| Total presets | 1,839 |
+| Total presets | 2,369 (all moods including subdirectories; 1,839 was an undercount at audit time) |
 | Duplicate names | **0** (Round 12B) |
 | DNA coverage | 100% |
 | Build warnings | 7 (pre-existing) |
