@@ -7,8 +7,9 @@
 
 ## What V1 Ships
 
-31 engines, 2,369 presets, 7 moods, full doctrine compliance, all seances complete.
-The Constellation (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) is integrated, swept, and description-complete.
+29 engines registered (24 original + 5 Constellation), 2,369 presets, 7 moods, full doctrine compliance, all seances complete.
+The Constellation (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) is integrated as stubs, swept, and description-complete.
+OVERLAP and OUTWIT are Phase 3 complete in standalone form and pending XOmnibus installation.
 This document is what comes next.
 
 ---
@@ -160,7 +161,7 @@ Ongoing:
 
 ## What V2 Is NOT
 
-- A rebuild of V1. The 31 engines are complete.
+- A rebuild of V1. The 29 registered engines are complete (plus OVERLAP and OUTWIT pending installation).
 - A feature-flag system. New engines ship when they're done.
 - A V1 preset expansion. Preset expansion is continuous; it doesn't define version boundaries.
 - A JUCE version upgrade. Stick with 8.0.x for the V2 cycle.

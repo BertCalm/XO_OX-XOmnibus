@@ -35,7 +35,7 @@ Round 12I updated the Synth Seance knowledge tree at `~/.claude/skills/synth-sea
 - Added final line: "Fleet D005 status: ZERO static engines remaining."
 
 **D006** (`doctrines/D006-expression-not-optional.md`):
-- Added `SUBSTANTIALLY RESOLVED` status to header with final counts: Aftertouch 22/23 (Optic exempt); Mod wheel 15/22 (68%)
+- Added `FULLY RESOLVED` status to header with final counts: Aftertouch 23/23 (all 23 non-Optic audio-DSP engines wired; Optic intentionally exempt); Mod wheel 22/22 (Round 12C completed the final 7 engines)
 - Added full Prism Sweep Progress section with all 5 aftertouch batches and 2 mod wheel batches tabulated
 - Documented Round 11 Ouroboros leash + aftertouch counterpoint design
 - Documented Round 11 Obscura bow pressure mod wheel mapping

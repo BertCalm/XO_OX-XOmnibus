@@ -136,7 +136,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Engines/Optic/OpticEngine.h` | Visual modulation engine + AutoPulse |
 | `Source/Engines/Oblique/ObliqueEngine.h` | Prismatic bounce engine (RTJ x Funk x Tame Impala) |
 | `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
-| `Docs/xomnibus_sound_design_guides.md` | Sound design guide (20 of 25 engines covered) |
+| `Docs/xomnibus_sound_design_guides.md` | Sound design guide (20 of 29 engines in unified guide; OSPREY, OSTERIA, OWLFISH, OCELOT not yet integrated; 5 Constellation engines have dedicated guides in Docs/) |
 | `Source/DSP/` | Shared DSP library |
 | `Source/UI/` | Gallery Model UI components |
 | `Source/Export/` | XPN export pipeline |
@@ -200,7 +200,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 ## Seance Findings
 
-29 seances complete (2026-03-14) — all 31 engines covered (26 original + 5 Constellation). Constellation seances (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) completed same day; findings committed 836e85a. Full data in:
+29 seances complete (2026-03-14) — all 29 registered engines covered (24 original + 5 Constellation). Constellation seances (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) completed same day; findings committed 836e85a. Full data in:
 - Grand Survey: `Docs/xomnibus_landscape_2026.md`
 - Knowledge tree: `~/.claude/skills/synth-seance/knowledge/index.md`
 - Cross-reference: `Docs/seance_cross_reference.md`
@@ -249,7 +249,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 - **Seance score range**: 7.2/10 est. (OBLIQUE, recovered) to 8/8 PASS + 8.6/10 (ORGANON, ORACLE)
 - **Preset expansion ongoing**: all engines now have at least 1 preset; thin coverage engines expanded in Rounds 8–11
-- **D006 aftertouch coverage**: 22/23 engines have aftertouch (Optic exempt as visual engine)
+- **D006 aftertouch coverage**: 23/23 engines have aftertouch (Optic intentionally exempt — visual engine)
 - **D006 mod wheel coverage**: **22/22 MIDI-capable engines — FULLY RESOLVED** (Round 12C completed the last 7 engines)
 - **D001 filter envelopes**: RESOLVED — all engines fleet-wide have velocity-scaled filter envelopes (Round 9E)
 - **D004 dead params**: RESOLVED — all declared parameters wired to DSP (Round 3B)
@@ -260,7 +260,7 @@ New engines are designed as standalone instruments first, then integrated into X
 12-round progressive quality pass across all 26 original engines. **ALL 12 ROUNDS COMPLETE.**
 
 - All 6 doctrines resolved fleet-wide (D001–D006)
-- 22/22 engines with mod wheel | 22/23 engines with aftertouch (Optic exempt — visual engine)
+- 22/22 engines with mod wheel | 23/23 engines with aftertouch (Optic intentionally exempt — visual engine)
 - 2,369 presets, 0 duplicates, 100% DNA coverage, health score ~92/100
 - Build PASS + auval PASS
 - **Full history**: `Docs/prism_sweep_final_report.md` | Master index: `Docs/prism_sweep_index.md`
