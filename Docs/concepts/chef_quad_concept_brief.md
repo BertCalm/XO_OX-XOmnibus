@@ -36,14 +36,35 @@ Each chef is a configurable engine with three independent axes:
 **Per chef:** 4 organs × 4 FX recipes × 4 wildcards = **64 configurations**
 **Four chefs:** 256 total configurations before coupling
 
-### Organ Territory (4 per region — TBD)
+### Organ Territory (4 per region — LOCKED)
 
-| Chef | Candidate Organs |
-|------|-----------------|
-| **Oto** | Shō, Sheng, Khene, reed organ |
-| **Octave** | Pipe organ, musette accordion, harmonium, Farfisa |
-| **Oleg** | Bayan, barrel organ, pump organ, hurdy-gurdy |
-| **Otis** | Hammond B3, calliope, melodica, pump organ |
+| Chef | Organ 1 | Organ 2 | Organ 3 | Organ 4 |
+|------|---------|---------|---------|---------|
+| **Oto** | Shō (ethereal cluster sustain, 11-note aitake) | Sheng (bright, articulate, melodic) | Khene (raw buzz-drone, rhythmic) | Melodica (breath-controlled, plastic-body resonance) |
+| **Octave** | Cavaillé-Coll romantic pipe organ (dark, symphonic) | Baroque positiv organ (chiff transient, transparent) | French musette accordion (triple-reed beating) | Farfisa (transistor buzz, filtered squares) |
+| **Oleg** | Bayan (powerful cassotto resonance, clean) | Hurdy-gurdy (melody + drone + buzz bridge) | Bandoneon (bisonoric push/pull, tango) | Garmon (raw Russian diatonic accordion) |
+| **Otis** | Hammond B3 (additive + tonewheel crosstalk + Leslie) | Calliope (steam whistle, binary on/off, unhinged) | Blues harmonica (cross-harp bending, breath-driven) | Zydeco accordion (Louisiana raw, dance-driven) |
+
+**Selection rationale (March 2026 research audit):**
+- Zero overlap across all four chefs
+- Each chef's four organs span a timbral spectrum (ethereal↔raw, precise↔chaotic)
+- Melodica moved from Otis→Oto (Japanese-manufactured: Suzuki, Yamaha Pianica)
+- Barrel organ dropped from Oleg (limited timbral interest), replaced with Bandoneon (German origin, Baltic/EE folk use)
+- Pump organ removed from both Oleg and Otis (was duplicated), replaced with Garmon and Zydeco accordion
+- Blues harmonica added to Otis (quintessentially American reed instrument)
+
+### Shared Organ Parameter Vocabulary
+
+Research across all 16 organs surfaced six synthesis parameters that recur across traditions. These form the **shared DSP vocabulary** — every chef's organ gets interpreted through these axes, weighted differently per instrument:
+
+| Parameter | Source Instruments | Synthesis Role |
+|-----------|-------------------|---------------|
+| Cluster density | Shō aitake, Sheng parallel 5ths | How many voices stack in unison/near-unison |
+| Chiff transient | Baroque organ onset burst | Brief harmonic burst before steady-state tone |
+| Unison detune | Musette triple-reed interference | Beating from slightly detuned copies |
+| Buzz intensity | Hurdy-gurdy trompette, Khene raw reed | Rattle/distortion mapped to velocity/pressure |
+| Pressure instability | Calliope steam drift, bellows instruments | Irregular pitch/amplitude drift from air source |
+| Crosstalk/leakage | Hammond tonewheel bleed | Adjacent voice bleed as deliberate warmth |
 
 ### Boutique Wildcard Groups (4 per region)
 
