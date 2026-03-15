@@ -107,10 +107,10 @@ The table is where the food is served and the meal becomes an occasion. Food wit
 |--------|-----------|----------------|-----------|
 | **XOrison** | Grace / blessing | Sacred Choir | Reverent, blended, cathedral. Many voices becoming one. The prayer before the meal — gratitude made audible. From solo cantor to massed choir, the sound of devotion across every tradition. Orison = a prayer. |
 | **XOpera** | The toast | Operatic Voice | Dramatic, solo, projecting. One voice filling the room. The toast that silences the table — grand, emotional, commanding. Soprano to bass, bel canto to sprechstimme. Every emotion at full volume. |
-| **XOral** | Kitchen calls | Beatbox / Vocal Percussion | "Order up!" "Behind!" "Yes, Chef!" The rhythmic vocal percussion of a working kitchen. Mouth as instrument, body as drum. Beatbox, mouth percussion, tongue clicks, breath hits — the voice stripped of melody and rebuilt as rhythm. |
+| **XOrate** | Kitchen calls | Beatbox / Vocal Percussion | "Order up!" "Behind!" "Yes, Chef!" The rhythmic vocal percussion of a working kitchen. Mouth as instrument, body as drum. Beatbox, mouth percussion, tongue clicks, breath hits — the voice stripped of melody and rebuilt as rhythm. |
 | **XOvertone** | The hum | Throat Singing / Harmonics | The low conversation underneath everything. One voice containing multitudes — Tuvan khoomei, Sardinian tenore, Tibetan chant. The background hum of a full restaurant. Fundamentals so rich that harmonics emerge as separate melodies. |
 
-**Coupling behavior:** Conversational — when Choir engines couple, they enter dialogue. XOrison's choir responds to XOpera's solo like a congregation answering a cantor. XOral's rhythms lock to XOvertone's drone like table percussion over ambient conversation. The coupling IS dinner table conversation — voices weaving around each other, sometimes in harmony, sometimes in argument, always in relationship.
+**Coupling behavior:** Conversational — when Choir engines couple, they enter dialogue. XOrison's choir responds to XOpera's solo like a congregation answering a cantor. XOrate's rhythms lock to XOvertone's drone like table percussion over ambient conversation. The coupling IS dinner table conversation — voices weaving around each other, sometimes in harmony, sometimes in argument, always in relationship.
 
 **Shared parameter vocabulary:**
 - **Breath** — air in the voice (breathy whisper → pure tone → pressed shout)
@@ -120,7 +120,7 @@ The table is where the food is served and the meal becomes an occasion. Food wit
 - **Diction** — consonant clarity (mumbled → crisp → percussive)
 - **Register** — bass → baritone → tenor → alto → soprano (continuous, not stepped)
 
-**Prefix:** `oris_`, `opera_`, `oral_`, `overt_`
+**Prefix:** `oris_`, `opera_`, `orate_`, `overt_`
 
 ---
 
@@ -351,7 +351,7 @@ FUSION ──┤                ├── (Plate coupling to all 4)
 
 **Choir × Garden (Serenade):** Voice meets string. XOpera's operatic voice over XOrchard's orchestral strings — the oldest pairing in Western music. XOvertone's harmonics woven into XOsier's chamber texture — overtone singing becomes the viola's ghost.
 
-**Choir × Cellar (Toast):** Voice meets foundation. XOral's beatbox over XOgre's sub — mouth percussion with seismic weight. XOrison's choir over XOxbow's analog bass — hymn with analog gravity.
+**Choir × Cellar (Toast):** Voice meets foundation. XOrate's beatbox over XOgre's sub — mouth percussion with seismic weight. XOrison's choir over XOxbow's analog bass — hymn with analog gravity.
 
 **Cellar × Broth (Dissolve):** Foundation meets medium. XOgre's sub dissolved in XOvercast — sub-bass flash-frozen into crystalline structure. XOmega's FM bass reduced by XOverworn — digital precision slowly eroded into analog warmth.
 
@@ -404,7 +404,7 @@ The dinner prayer. XOrison's blended choir voice hovers over XOrchard's orchestr
 | 8 | Kitchen | XOpaline | Toy Piano / Celesta (Glass) | `opal2_` | — |
 | 9 | Choir | XOrison | Sacred Choir | `oris_` | — |
 | 10 | Choir | XOpera | Operatic Voice | `opera_` | — |
-| 11 | Choir | XOral | Beatbox / Vocal Percussion | `oral_` | — |
+| 11 | Choir | XOrate | Beatbox / Vocal Percussion | `orate_` | — |
 | 12 | Choir | XOvertone | Throat Singing / Harmonics | `overt_` | — |
 | 13 | Garden | XOrchard | Orchestral Strings | `orch_` | — |
 | 14 | Garden | XOvergrow | Solo Strings | `grow_` | — |
@@ -551,7 +551,7 @@ How the meal is presented. Four front-of-house philosophies that determine how t
 |---|---|---|---|---|
 | **XOrison** (Sacred Choir) | Chapel — small stone room, 6 monks, you sit among them. | Cathedral — Notre-Dame, 40 voices, the reverb IS the instrument. | Taizé — short repeated chants, communal, many small prayers. | Hildegard von Bingen — each chant a seasonal offering, mystical, unique. |
 | **XOpera** (Operatic) | Lieder recital — singer and piano, drawing room, 30 people. | La Scala — full production, orchestra, 2,000 seats, the big night. | Cabaret — Weill, Piaf, small stage, quick songs, cigarette smoke. | Sprechstimme — Schoenberg, each phrase its own world, unpredictable delivery. |
-| **XOral** (Beatbox) | Cypher — the circle, one beatboxer, you're in the crowd. | Stadium — Rahzel at a hip-hop arena, the mouth filling the space. | Battle — quick rounds, trading bars, response energy. | Sō Percussion — prepared-vocal, each sound a composed gesture, John Cage meets the mouth. |
+| **XOrate** (Beatbox) | Cypher — the circle, one beatboxer, you're in the crowd. | Stadium — Rahzel at a hip-hop arena, the mouth filling the space. | Battle — quick rounds, trading bars, response energy. | Sō Percussion — prepared-vocal, each sound a composed gesture, John Cage meets the mouth. |
 | **XOvertone** (Throat Singing) | Yurt — one singer, felt walls, the harmonics bounce between you. | Monastery — Tibetan chant in the great hall, walls vibrating. | Tuvan festival — singers trading techniques, competitive overtones. | Alvin Lucier — "I Am Sitting in a Room," the voice gradually becoming the space itself. |
 
 ---
@@ -697,7 +697,7 @@ SECRET: FUSION (EP) — 5th Slot
 |--------|---------|-----------------|----------|
 | **XOrison** | **Eventide** | Sacred choir needs Eventide's harmonizer heritage. H9000's pitch algorithms are practically liturgical — stacking voices in perfect intervals, creating choirs from single tones. The company that invented harmonization as an instrument. 50 years of making one voice sound like many. | H9000, H90, UltraTap, MicroPitch |
 | **XOpera** | **Hologram Electronics** | Operatic drama meets Portland's granular dreamers. Dream Sequence's textural processing turns a single voice into a spectral aria. Infinite Jets sustains vocal tones into infinity. The diva and the pedal — theatrical voice dissolved into particles, then reassembled as something larger than life. | Dream Sequence, Infinite Jets, Microcosm, Chroma Console |
-| **XOral** | **KOMA Elektronik** | Beatbox needs Berlin's physical, industrial energy. KOMA builds instruments you TOUCH — Field Kit's contact mic sampling, Kommander's gesture control. The mouth is the most physical instrument; KOMA makes electronics equally physical. Hands, lips, throat, circuits — all body. | Field Kit, Kommander, Poltergeist, RH301 |
+| **XOrate** | **KOMA Elektronik** | Beatbox needs Berlin's physical, industrial energy. KOMA builds instruments you TOUCH — Field Kit's contact mic sampling, Kommander's gesture control. The mouth is the most physical instrument; KOMA makes electronics equally physical. Hands, lips, throat, circuits — all body. | Field Kit, Kommander, Poltergeist, RH301 |
 | **XOvertone** | **Qu-Bit Electronix** | Throat singing's harmonic series meets Qu-Bit's spectral processing. Nebulae's granular sampling can isolate individual overtones. Data Bender's digital destruction reveals hidden harmonics. The voice that contains multitudes, processed by circuits that can hear each one separately. | Nebulae, Data Bender, Surface, Chord v2 |
 
 ### Secret Quad: FUSION — Electric Pianos (5th Slot Unlock)
@@ -776,4 +776,4 @@ Each company's character becomes a spice that transforms the base instrument. Th
 6. **Preset strategy** — Do Culinary Collection presets use the same 6 moods, or develop culinary-specific categories (Appetizer, Entrée, Dessert, etc.)?
 7. **5th slot architecture** — The Fusion unlock requires extending the MegaCouplingMatrix from 4×4 to 5×5 (or 4+1). How does this interact with the existing engine slot management in `EngineRegistry.h`? Does the 5th slot get its own DSP bus, or does it share with one of the Kitchen slots?
 8. **Other unlock paths?** — Currently only Full Kitchen unlocks the 5th slot. Could other full-quad loadouts (all 4 Chefs, all 4 Cellars) unlock different secret behaviors? Or is Fusion the only secret quad?
-9. **Choir voice synthesis** — What synthesis approach for vocal engines? Formant synthesis, sample-based, physical modeling of vocal tract, or hybrid? Each engine might use a different approach (XOrison = sample choir, XOral = physical model, XOvertone = additive harmonics).
+9. **Choir voice synthesis** — What synthesis approach for vocal engines? Formant synthesis, sample-based, physical modeling of vocal tract, or hybrid? Each engine might use a different approach (XOrison = sample choir, XOrate = physical model, XOvertone = additive harmonics).
