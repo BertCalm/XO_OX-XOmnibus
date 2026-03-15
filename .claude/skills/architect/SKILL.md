@@ -1,6 +1,6 @@
 ---
 name: architect
-description: Review and approve proposed code changes before implementation. Use as a quality gate before applying fixes, enhancements, refactors, or new features to prevent conflicts, regressions, and inconsistent quality across the XOmnibus codebase.
+description: Review and approve proposed code changes before implementation. Use as a quality gate before applying fixes, enhancements, refactors, or new features to prevent conflicts, regressions, and inconsistent quality across the XOmnibus codebase. Also triggered by "sisters" or "scions" (SCIONS — Sisters of Continuous Improvement and Organic Natural Simplification).
 argument-hint: [change-description e.g. "D001 velocity fix for BOB engine", "add breathing LFO to FAT"]
 ---
 
