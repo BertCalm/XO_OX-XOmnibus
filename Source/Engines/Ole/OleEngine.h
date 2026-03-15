@@ -159,12 +159,12 @@ public:
 
                 // ---- Drift ----
                 float ds=v.drift.tick(pDR,pDD);
-                float df=v.freq*std::pow(2.f,(ds+extPitchMod)/12.f);
+                float df=v.freq*fastPow2((ds+extPitchMod)/12.f);
 
                 // ---- Aunt 2: Coin press pitch bend ----
                 if (!v.isHusband && v.auntIdx == 1) {
                     // Coin press bends pitch up by up to a major 3rd (4 semitones)
-                    df *= std::pow(2.f, pA2Cp * 4.0f / 12.0f);
+                    df *= fastPow2(pA2Cp * 4.0f / 12.0f);
                 }
 
                 float dlen=v.sr/std::max(df,20.f);
@@ -194,7 +194,7 @@ public:
                 }
 
                 float damped=v.df.process(out+exc*0.3f,std::clamp(pDa+extDampMod,0.f,1.f));
-                v.dl.write(damped);
+                v.dl.write(flushDenormal(damped));
 
                 // ---- Aunt 3: Charango tremolo ----
                 float tremoloMod = 1.0f;

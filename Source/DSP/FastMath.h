@@ -105,6 +105,15 @@ inline float fastCos (float x)
 }
 
 //------------------------------------------------------------------------------
+/// Fast tan(x) via Padé [3/2] approximant. Accurate to ~0.03% for |x| < π/4
+/// (i.e. cutoff < 0.25 × sampleRate). Suitable for TPT filter prewarping.
+inline float fastTan (float x)
+{
+    float x2 = x * x;
+    return x * (15.0f - x2) / (15.0f - 6.0f * x2);
+}
+
+//------------------------------------------------------------------------------
 /// Fast 2^x using IEEE 754 bit manipulation. Accurate to ~0.1%.
 /// Critical for pitch calculations and envelope curves.
 inline float fastPow2 (float x)

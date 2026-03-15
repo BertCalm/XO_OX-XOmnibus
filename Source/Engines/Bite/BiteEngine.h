@@ -1310,8 +1310,9 @@ public:
                 float filtEnvVal = voice.filterEnv.process();
                 // Key tracking: offset cutoff based on note distance from middle C
                 float keyTrackOffset = filterKeyTrack * (static_cast<float> (voice.noteNumber) - 60.0f) * 50.0f;
+                // D001: velocity scales filter envelope depth for timbral expression
                 float modCutoff = filterCutoff
-                    + filtEnvAmt * filtEnvVal * 10000.0f
+                    + filtEnvAmt * filtEnvVal * voice.velocity * 10000.0f
                     + bellyCutoffMod + playDeadCutoff
                     + filterMod * 2000.0f
                     + lfo2val * 500.0f * macroScurry
@@ -1319,7 +1320,7 @@ public:
                     + keyTrackOffset;
                 modCutoff = clamp (modCutoff, 20.0f, 18000.0f);
 
-                voice.filter.setCoefficients (modCutoff, effFilterReso, srf);
+                voice.filter.setCoefficients_fast (modCutoff, effFilterReso, srf);
                 float filtered = voice.filter.processSample (oscOut);
 
                 // Add post-filter noise

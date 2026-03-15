@@ -1279,9 +1279,9 @@ public:
 
                 // Filter
                 float cutoffMod = fltCutoff;
-                // Motion envelope to filter
+                // Motion envelope to filter — D001: velocity scales filter envelope depth
                 if (std::abs (fltEnvAmt) > 0.001f)
-                    cutoffMod += fltEnvAmt * motMod * 5000.0f;
+                    cutoffMod += fltEnvAmt * motMod * voice.velocity * 5000.0f;
                 // LFO to filter
                 cutoffMod += lfoCutoffMod * 1000.0f;
                 // External coupling

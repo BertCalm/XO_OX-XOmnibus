@@ -330,7 +330,7 @@ public:
 
                 // Organic drift
                 float ds=v.drift.tick(pDR,pDD);
-                float df=v.freq*std::pow(2.f,(ds+extPitchMod)/12.f);
+                float df=v.freq*fastPow2((ds+extPitchMod)/12.f);
                 float dlen=v.sr/std::max(df,20.f);
 
                 // Waveguide read

@@ -1342,6 +1342,23 @@ struct OnsetVoice
     OnsetTransient transient;
     CytomicSVF voiceFilter;
 
+    // D005: Breathing LFO — continuous autonomous filter modulation
+    struct BreathingLFO
+    {
+        float phase = 0.0f;
+        float sr = 44100.0f;
+        void prepare (double sampleRate) noexcept { sr = static_cast<float> (sampleRate); }
+        void reset() noexcept { phase = 0.0f; }
+        float process (float rateHz) noexcept
+        {
+            float out = fastSin (phase * 6.28318530718f);
+            phase += rateHz / sr;
+            if (phase >= 1.0f) phase -= 1.0f;
+            return out;
+        }
+    } breathingLFO;
+    float baseCutoff = 1000.0f;  // stored at trigger for LFO modulation
+
     // State
     bool active = false;
     float lastOutput = 0.0f;
@@ -1360,6 +1377,7 @@ struct OnsetVoice
         phaseDist.prepare (sampleRate);
         ampEnv.prepare (sampleRate);
         transient.prepare (sampleRate);
+        breathingLFO.prepare (sampleRate);
         voiceFilter.setMode (CytomicSVF::Mode::LowPass);
     }
 
@@ -1404,8 +1422,9 @@ struct OnsetVoice
 
         // QA I3: Reset filter state on retrigger to prevent artifacts
         voiceFilter.reset();
-        float cutoff = 200.0f + tone * 18000.0f;
-        voiceFilter.setCoefficients (cutoff, 0.1f, sr);
+        // D001: velocity opens filter — harder hits are brighter
+        baseCutoff = 200.0f + tone * vel * 18000.0f;
+        voiceFilter.setCoefficients (baseCutoff, 0.1f, sr);
     }
 
     // QA C1: Blend gains precomputed per block, passed in to avoid per-sample trig
@@ -1445,6 +1464,11 @@ struct OnsetVoice
 
         // Add transient (pre-filter)
         blended += transient.process();
+
+        // D005: breathing LFO modulates filter cutoff continuously (0.08 Hz)
+        float breathMod = breathingLFO.process (0.08f);
+        float modCutoff = clamp (baseCutoff * (1.0f + breathMod * 0.15f), 20.0f, 18000.0f);
+        voiceFilter.setCoefficients (modCutoff, 0.1f, sr);
 
         // Voice filter
         blended = voiceFilter.processSample (blended);

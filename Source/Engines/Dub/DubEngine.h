@@ -785,7 +785,7 @@ public:
                 cutoffMod = std::max (20.0f, std::min (20000.0f, cutoffMod));
 
                 voice.filter.setMode (filterMode);
-                voice.filter.setCoefficients (cutoffMod, filterRes, srf);
+                voice.filter.setCoefficients_fast (cutoffMod, filterRes, srf);
                 float filtered = voice.filter.processSample (raw);
 
                 // Apply envelope and velocity
