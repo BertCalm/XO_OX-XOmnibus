@@ -4,11 +4,11 @@
 
 XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. 29 engines are registered in XOmnibus
-(5 Constellation family engines added 2026-03-14; OVERLAP and OUTWIT are Phase 3 complete but
-not yet installed) — see engine table below.
+and mutate into sounds impossible with any single synth. **31 engines** are registered in XOmnibus
+(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15, auval PASS)
+— see engine table below.
 
-- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE
+- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** 2,369 factory presets in `.xometa` format, 7 mood categories (incl. Family), 6D Sonic DNA

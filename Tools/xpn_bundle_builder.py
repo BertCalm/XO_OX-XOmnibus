@@ -100,7 +100,8 @@ PROFILES_DIR = REPO_ROOT / "Tools" / "bundle_profiles"
 DRUM_ENGINES = {"onset", "Onset", "ONSET"}
 
 # XO_OX engine colors for mixed-engine pack cover
-ENGINE_ORDER = ["ONSET", "OVERWORLD", "ODDFELIX", "ODDOSCAR", "OVERDUB", "ODYSSEY", "OBLONG", "OBESE", "OPAL"]
+ENGINE_ORDER = ["ONSET", "OVERWORLD", "ODDFELIX", "ODDOSCAR", "OVERDUB", "ODYSSEY", "OBLONG", "OBESE", "OPAL",
+                "OHM", "ORPHICA", "OBBLIGATO", "OTTONI", "OLE"]
 
 # Canonical engine name aliases — maps legacy/long names to XOmnibus short names
 ENGINE_ALIASES: dict[str, str] = {
@@ -118,6 +119,17 @@ ENGINE_ALIASES: dict[str, str] = {
     "onset":       "Onset",
     "overworld":   "Overworld",
     "opal":        "Opal",
+    "ohm":         "OHM",
+    "Ohm":         "OHM",
+    "orphica":     "ORPHICA",
+    "Orphica":     "ORPHICA",
+    "obbligato":   "OBBLIGATO",
+    "Obbligato":   "OBBLIGATO",
+    "ottoni":      "OTTONI",
+    "Ottoni":      "OTTONI",
+    "ole":         "OLE",
+    "Ole":         "OLE",
+    "OLE":         "OLE",
 }
 
 def normalize_engine(name: str) -> str:
@@ -511,7 +523,7 @@ def build_bundle(spec: BundleSpec, wavs_dir: Optional[Path],
     # Copy WAVs if wavs_dir provided
     if wavs_dir and not dry_run:
         copied = 0
-        for wf in (wavs_dir.glob("*.wav") if wavs_dir else []):
+        for wf in list(wavs_dir.glob("*.wav")) + list(wavs_dir.glob("*.WAV")):
             dst = pack_dir / wf.name
             if not dst.exists():
                 shutil.copy2(wf, dst)
@@ -585,6 +597,27 @@ PREDEFINED_PROFILES = {
         "mood_filter": "Foundation",
         "max_count": 50,
     },
+    # Guru Bin Founder's Signature — 5 canonical presets, one per founding engine.
+    # Each preset was selected by Guru Bin as the soul-representative of its engine.
+    # Preset names resolve to:
+    #   OVERDUB  → Foundation/Dub_Bass_Foundation.xometa  (name: "Dub Bass Foundation")
+    #   OBESE    → Foundation/Obese_Bass.xometa           (name: "Obese Bass")
+    #   ONSET    → Flux/Future_909.xometa                 (name: "Future 909")
+    #   ODYSSEY  → Flux/Drift_Glide_Runner.xometa         (name: "Drift Glide Runner")
+    #   OBLONG   → Entangled/Nervous System.xometa        (name: "Nervous System")
+    "founders-signature": {
+        "name": "Founder's Signature",
+        "description": "Five presets. Five founding engines. Guru Bin's canonical starting point for XO_OX.",
+        "cover_engine": "OVERDUB",
+        "preset_names": [
+            "Dub Bass Foundation",
+            "Obese Bass",
+            "Future 909",
+            "Drift Glide Runner",
+            "Nervous System",
+        ],
+        "max_count": 5,
+    },
 }
 
 
@@ -605,9 +638,12 @@ def build_predefined_profile(profile_key: str, index: PresetIndex,
     # Collect presets by filters
     tags_filter = tmpl.get("tags_filter", [])
     mood_filter = tmpl.get("mood_filter")
+    preset_names = tmpl.get("preset_names", [])
     max_count = tmpl.get("max_count", 50)
 
-    if tags_filter:
+    if preset_names:
+        results = index.search(preset_names=preset_names)
+    elif tags_filter:
         results = index.search(tags=tags_filter)
     elif mood_filter:
         if isinstance(mood_filter, list):

@@ -80,6 +80,10 @@ ENGINE_STRATEGIES = {
         "range": "C1-C5",
         "description": "Warm analog — close-mic rendering",
     },
+    # Guru Bin render rule: Render the saturation, not around it.
+    # The driven ladder filter is OBESE's signature character.
+    # NEVER back off drive to normalize output level.
+    # Back off gain/volume instead. The distortion IS the sound.
     "Obese": {
         "program_type": "keygroup",
         "notes": MINOR_3RD_NOTES[:9],  # C1-C3
@@ -120,6 +124,55 @@ ENGINE_STRATEGIES = {
         "vel_layers": 4,
         "range": "C1-C4",
         "description": "Bass character — low register focus",
+    },
+    "Ohm": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 2,
+        "range": "C1-C5",
+        "description": "Sage commune — render at two intensities (gentle/full commune). "
+                       "Set MEDDLING to 0.0 for calm variant, 0.7 for full commune variant. "
+                       "Capture the hum sustain, not the attack. Hold 4+ seconds.",
+        "variants": ["calm", "full"],
+    },
+    "Orphica": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES,
+        "vel_layers": 4,
+        "range": "C1-C6",
+        "description": "Siphonophore harp — pluck transient is everything. "
+                       "Render dry, let the harp tail decay naturally. "
+                       "3 second hold per note minimum.",
+    },
+    "Obbligato": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Dual wind texture — render with BOND macro at 0.0 (A only), "
+                       "0.5 (blended), and 1.0 (B only). Three variants capture the "
+                       "harmonic blend range.",
+        "variants": ["bond_a", "bond_blend", "bond_b"],
+    },
+    "Ottoni": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:13],  # C1-C4
+        "vel_layers": 4,
+        "range": "C1-C4",
+        "description": "Triple brass choir — render with GROW macro at minimum for "
+                       "intimate solo brass, maximum for full ensemble swell. "
+                       "Capture the attack transient — brass is about the slam.",
+        "variants": ["grow_solo", "grow_ensemble"],
+    },
+    "Ole": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Afro-Latin trio — render with DRAMA macro at 0.0 (restrained) "
+                       "and 1.0 (full drama). Rhythm is the identity: capture the "
+                       "attack in the first 50ms.",
+        "variants": ["calm", "drama"],
     },
 }
 

@@ -29,6 +29,8 @@
 #include "Engines/Obbligato/ObbligatoEngine.h"
 #include "Engines/Ottoni/OttoniEngine.h"
 #include "Engines/Ole/OleEngine.h"
+#include "Engines/Overlap/XOverlapAdapter.h"
+#include "Engines/Outwit/XOutwitAdapter.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -148,6 +150,14 @@ static bool registered_Ottoni = xomnibus::EngineRegistry::instance().registerEng
 static bool registered_Ole = xomnibus::EngineRegistry::instance().registerEngine(
     "Ole", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OleEngine>();
+    });
+static bool registered_XOverlap = xomnibus::EngineRegistry::instance().registerEngine(
+    "XOverlap", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::XOverlapEngine>();
+    });
+static bool registered_XOutwit = xomnibus::EngineRegistry::instance().registerEngine(
+    "XOutwit", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::XOutwitEngine>();
     });
 
 namespace xomnibus {

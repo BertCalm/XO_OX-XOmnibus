@@ -95,6 +95,9 @@ namespace GalleryColors {
         if (id == "Obbligato") return juce::Colour(0xFFFF8A7A); // Rascal Coral
         if (id == "Ottoni")    return juce::Colour(0xFF5B8A72); // Patina
         if (id == "Ole")       return juce::Colour(0xFFC9377A); // Hibiscus
+        // Standalone adapters (Phase 4)
+        if (id == "XOverlap")  return juce::Colour(0xFF00FFB4); // Bioluminescent Cyan-Green
+        if (id == "XOutwit")   return juce::Colour(0xFFCC6600); // Chromatophore Amber
         return get(borderGray());
     }
 
@@ -120,6 +123,9 @@ namespace GalleryColors {
         if (id == "Orphica")   return "orph";
         if (id == "Obbligato") return "obbl";
         if (id == "Ottoni")    return "otto";
+        // Standalone adapter engines
+        if (id == "XOverlap")  return "olap";
+        if (id == "XOutwit")   return "owit";
         // Remaining engines: id lowercased matches prefix
         return id.toLowerCase();
     }

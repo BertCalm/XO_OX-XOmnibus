@@ -58,6 +58,7 @@ class XPNMetadata:
     description: str = ""
     pack_id: str = ""
     cover_engine: str = ""
+    pack_type: str = "instrument"
 
 
 def generate_manifest(meta: XPNMetadata) -> str:
@@ -88,7 +89,7 @@ def generate_expansion_xml(meta: XPNMetadata) -> str:
         f'  <title>{xml_escape(meta.name)}</title>\n'
         f'  <manufacturer>{xml_escape(meta.author)}</manufacturer>\n'
         f'  <version>{meta.version}.0</version>\n'
-        '  <type>instrument</type>\n'
+        f'  <type>{xml_escape(meta.pack_type)}</type>\n'
         '  <priority>50</priority>\n'
         '  <img>artwork.png</img>\n'
         f'  <description>{xml_escape(meta.description)}</description>\n'
@@ -205,9 +206,13 @@ def package_xpn(
         # --- Programs/ ---
         total_samples = 0
         for prog_name, xpm_path in programs:
-            # Write the program file
+            # Rewrite SampleFile paths to XPN-relative before writing into ZIP
+            prog_slug = prog_name.replace(" ", "_")
+            raw_xpm = xpm_path.read_text(encoding="utf-8")
+            rewritten_xpm = rewrite_sample_paths(raw_xpm, prog_slug)
+            # Write the program file (rewritten content)
             arc_path = f"Programs/{xpm_path.name}"
-            zf.write(str(xpm_path), arc_path)
+            zf.writestr(arc_path, rewritten_xpm)
             if verbose:
                 print(f"  + {arc_path}")
 

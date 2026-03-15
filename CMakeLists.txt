@@ -144,6 +144,12 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Ole/OleEngine.h
     Source/Engines/Ole/OleEngine.cpp
 
+    # Concept Phase — Standalone Adapters (Phase 4)
+    Source/Engines/Overlap/XOverlapAdapter.h
+    Source/Engines/Overlap/XOverlapAdapter.cpp
+    Source/Engines/Outwit/XOutwitAdapter.h
+    Source/Engines/Outwit/XOutwitAdapter.cpp
+
     # Export pipeline
     Source/Export/XPNCoverArt.h
     Source/Export/XPNExporter.h
@@ -175,6 +181,13 @@ target_sources(XOmnibus PRIVATE
 target_include_directories(XOmnibus PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/../XOverworld/src"
 )
+
+# XOverlap and XOutwit DSP headers are resolved via relative-path symlinks:
+#   Source/Engines/Overlap/DSP/ -> ../XOverlap/Source/DSP/
+#   Source/Engines/Outwit/DSP/  -> ../XOutwit/Source/DSP/
+# The compiler resolves "DSP/Voice.h" relative to the including adapter header's
+# directory first, so each adapter finds its own DSP files without global search
+# paths and without any cross-repo name collisions.
 
 target_compile_definitions(XOmnibus PUBLIC
     JUCE_WEB_BROWSER=0

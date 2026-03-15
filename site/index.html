@@ -30,7 +30,7 @@
     "name": "XO_OX Designs",
     "url": "https://xo-ox.org"
   },
-  "description": "Multi-engine character synthesizer with twenty-nine engines, over twenty-three hundred presets, and cross-engine coupling. Free and open-source."
+  "description": "Multi-engine character synthesizer with thirty-one engines, over twenty-three hundred presets, and cross-engine coupling. Free and open-source."
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2129,7 +2129,7 @@ footer {
   <h2>The <em>Chord Machine.</em></h2>
   <p class="section-text">
     One note in, four voices out. Each chord tone is synthesized through a different engine —
-    timbral chord distribution that makes house music's stab heritage sing with twenty-nine characters at once.
+    timbral chord distribution that makes house music's stab heritage sing with thirty-one characters at once.
     <span style="display:block; margin-top:0.8rem; font-size:0.8rem; color:var(--text-faint);">Visual illustration — the real Chord Machine synthesizes each voice through a full engine.</span>
   </p>
 
@@ -2190,7 +2190,7 @@ footer {
 
   <div class="aquarium-intro">
     <p class="section-text">
-      Every engine in XOmnibus passes through the same water on the way out. Six master effects — each named for a water phenomenon — create the sonic environment where all twenty-nine characters live. The aquarium is where brand identity becomes audible.
+      Every engine in XOmnibus passes through the same water on the way out. Six master effects — each named for a water phenomenon — create the sonic environment where all thirty-one characters live. The aquarium is where brand identity becomes audible.
     </p>
     <p class="aquarium-lore">
       <span class="felix">feliX</span> lives near the surface — bright, darting, neon-electric. <span class="oscar">Oscar</span> lives in the depths — patient, regenerative, still. The Aquarium is the water between them. Every sound passes through both worlds.
@@ -2569,6 +2569,46 @@ const engines = [
     features: ["Dual-path interference with STRIFE-LOVE axis", "Twin oscillator paths with independent character", "Hammerhead spatial separation modeling", "Tension-based timbral control between opposing forces"],
     coupling: ["OUROBOROS", "ODYSSEY", "ORIGAMI"],
     prefix: "ouie_", format: "XOmnibus native" },
+  { name: "Ohm", code: "OHM", color: "#87AE73",
+    desc: "Physical modeling acoustic commune — banjo, kalimba, djembe",
+    wave: "noise-tuned", freq: 220, fm: 0, fmAmt: 0,
+    synthType: "Physical Modeling",
+    tagline: "The Commune Instrument — physical modeling of acoustic instruments gathered in a circle. Banjo, kalimba, and djembe bring the warmth of wood and skin into the synthesizer. The MEDDLING macro stirs the commune toward chaos; COMMUNE pulls it back to harmony.",
+    features: ["Physical modeling of banjo, kalimba, and djembe", "MEDDLING macro: controlled communal chaos", "COMMUNE axis: solo to ensemble timbral blend", "Warm acoustic character grounded in pluck and percussion physics"],
+    coupling: ["ORPHICA", "ONSET", "OBBLIGATO"],
+    prefix: "ohm_", format: "AU / Standalone" },
+  { name: "Orphica", code: "ORPHICA", color: "#7FDBCA",
+    desc: "Microsound harp — Karplus-Strong pluck with shimmer resonance",
+    wave: "noise-tuned", freq: 330, fm: 0, fmAmt: 0,
+    synthType: "Microsound / KS",
+    tagline: "The Siphonophore Harp — Karplus-Strong string synthesis with shimmer resonance. Like a siphonophore colony, each note is a colony event: thousands of microsound particles behaving as one iridescent, precisely tuned creature.",
+    features: ["Karplus-Strong plucked string synthesis", "Shimmer resonance layer with harmonic spread", "Microsound grain cloud for texture beneath the pluck", "Siphonophore colony model — distributed timbral intelligence"],
+    coupling: ["OHM", "OPAL", "ODYSSEY"],
+    prefix: "orph_", format: "AU / Standalone" },
+  { name: "Obbligato", code: "OBBLIGATO", color: "#FF8A7A",
+    desc: "Dual wind instruments — BOND macro blends two voices",
+    wave: "sine", freq: 261, fm: 0.5, fmAmt: 20,
+    synthType: "Dual Wind",
+    tagline: "The Bond Instrument — two wind voices in obligatory dialogue. An obbligato part cannot be removed without destroying the music. The BOND macro binds both voices closer until they breathe as one instrument, inseparable.",
+    features: ["Dual physical wind model — two independent breath voices", "BOND macro: from independent voices to unified timbre", "Breath pressure and reed characteristics per voice", "Dialogue mode: call-and-response phrasing between voices"],
+    coupling: ["OTTONI", "OHM", "OVERDUB"],
+    prefix: "obbl_", format: "AU / Standalone" },
+  { name: "Ottoni", code: "OTTONI", color: "#5B8A72",
+    desc: "Triple brass choir — GROW macro swells ensemble",
+    wave: "sawtooth", freq: 165, fm: 0, fmAmt: 0,
+    synthType: "Brass Ensemble",
+    tagline: "The Grow Instrument — three brass voices from the Italian orchestra section. The GROW macro swells the ensemble from a single horn to a full brass choir, filling the room the way brass fills a concert hall from the deepest balcony to the front row.",
+    features: ["Triple brass voice model: trumpet, trombone, tuba weighting", "GROW macro: single voice to full ensemble swell", "Ensemble spread control for tight or wide brass choir", "Harmonic overtone sculpting for vintage brass character"],
+    coupling: ["OBBLIGATO", "ORBITAL", "OBLONG"],
+    prefix: "otto_", format: "AU / Standalone" },
+  { name: "Ole", code: "OLE", color: "#C9377A",
+    desc: "Afro-Latin trio — berimbau, charango, djembe with DRAMA macro",
+    wave: "noise-tuned", freq: 196, fm: 0, fmAmt: 0,
+    synthType: "Afro-Latin Trio",
+    tagline: "The Drama Instrument — berimbau, charango, and djembe from three continents united by rhythm and drama. The DRAMA macro turns up the theatrical heat, pushing rhythmic intensity and harmonic color into territory that demands attention.",
+    features: ["Three physical instrument models: berimbau, charango, djembe", "DRAMA macro: theatrical intensity control", "Cross-continental rhythm intelligence — instruments that listen to each other", "Surface-level energy: vivid, percussive, alive"],
+    coupling: ["OHM", "ONSET", "OBBLIGATO"],
+    prefix: "ole_", format: "AU / Standalone" },
 ];
 
 // ═══════════ ENGINE AUDIO PREVIEW SYSTEM ═══════════

@@ -13,7 +13,7 @@ NOTE format: note name + octave, e.g. C2, F#3, Bb4, Eb2
 vel: v1–v4 (velocity layers, ascending velocity)
 
 Velocity layer ranges (4-layer standard):
-    v1 → 0–31    (pp)
+    v1 → 1–31    (pp)   VelStart=1 not 0 (Rex Rule #3)
     v2 → 32–63   (mp)
     v3 → 64–95   (mf)
     v4 → 96–127  (ff)
@@ -73,7 +73,7 @@ def midi_to_note_name(midi: int) -> str:
 
 # Standard 4-layer velocity map
 VEL_LAYERS = {
-    "v1": (0,   31),
+    "v1": (1,   31),   # VelStart=1 not 0 (Rex Rule #3)
     "v2": (32,  63),
     "v3": (64,  95),
     "v4": (96, 127),
@@ -199,6 +199,9 @@ def generate_keygroup_xpm(
     that MPC can load (though it will be silent until WAVs are present).
     """
     prog_name = xml_escape(f"XO_OX-{engine}-{preset_name}"[:32])  # MPC 32-char limit
+    # XPN sample subdir must match the XPM file stem (packager uses xpm.stem as dir name).
+    # The CLI writes the XPM as {preset_slug}.xpm, so the subdir is just preset_slug.
+    preset_slug = preset_name.replace(" ", "_")
 
     # --- Parse all stems ---------------------------------------------------
     # Group by MIDI note: {midi: {vel_tag: (stem, filename)}}
@@ -230,8 +233,10 @@ def generate_keygroup_xpm(
             for layer_num, vel_tag in enumerate(all_vel_tags, start=1):
                 stem, filename = vel_layers[vel_tag]
                 vel_start, vel_end = _vel_range(vel_tag, all_vel_tags)
-                # File path: XPN-relative (Rex Rule #5)
-                file_path = f"Samples/{prog_name}/{filename}" if filename else ""
+                # File path: XPN-relative (Rex Rule #5).
+                # Use preset_slug (no XML escaping, no engine prefix) — must match
+                # the XPM stem that xpn_packager uses as the Samples/ subdirectory.
+                file_path = f"Samples/{preset_slug}/{filename}" if filename else ""
                 layers_xml += (
                     f"            <Layer number=\"{layer_num}\">\n"
                     f"              <Active>True</Active>\n"

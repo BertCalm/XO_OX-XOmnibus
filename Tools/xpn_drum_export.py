@@ -79,7 +79,6 @@ import shutil
 import sys
 from datetime import date
 from pathlib import Path
-from typing import Optional
 from xml.sax.saxutils import escape as xml_escape
 
 try:
@@ -126,6 +125,11 @@ VEL_LAYERS_MUSICAL = [
 # Default: musical curve (Vibe-approved). Set --vel-curve even to use even.
 VEL_LAYERS = VEL_LAYERS_MUSICAL
 
+# Guru Bin: velocity layers at true input velocities — do not normalize layers to equal amplitude
+# The 4 render trigger velocities are: pp=20, mp=50, mf=80, ff=120
+# Record at these exact MIDI velocities. Do NOT boost quiet layers to match loud ones.
+# Dynamic range between layers IS the expression — preserve it.
+
 
 def _set_vel_curve(curve: str):
     """Set the module-level velocity curve. Safe for CLI use."""
@@ -161,15 +165,16 @@ SMART_MODE = {
 # =============================================================================
 
 # (midi_note, voice_name, mute_group, mute_targets)
+# Guru Bin canonical pad layout: A1=Kick, A2=Snare, A3=Clap, A4=CHat, B1=OHat, B2=Tom, B3=Perc, B4=FX
 PAD_MAP = [
-    (36, "kick",  0, [0, 0, 0, 0]),   # V1
-    (38, "snare", 0, [0, 0, 0, 0]),   # V2
-    (42, "chat",  1, [46, 0, 0, 0]),  # V3 Closed hat → mutes open hat (46)
-    (46, "ohat",  1, [0, 0, 0, 0]),   # V4 Open hat
-    (39, "clap",  0, [0, 0, 0, 0]),   # V5
-    (41, "tom",   0, [0, 0, 0, 0]),   # V6
-    (43, "perc",  0, [0, 0, 0, 0]),   # V7
-    (49, "fx",    0, [0, 0, 0, 0]),   # V8
+    (36, "kick",  0, [0, 0, 0, 0]),   # A1 (pad 0)
+    (38, "snare", 0, [0, 0, 0, 0]),   # A2 (pad 1)
+    (39, "clap",  0, [0, 0, 0, 0]),   # A3 (pad 2)
+    (42, "chat",  1, [46, 0, 0, 0]),  # A4 (pad 3) Closed hat → mutes open hat (46)
+    (46, "ohat",  1, [0, 0, 0, 0]),   # B1 (pad 4) Open hat
+    (41, "tom",   0, [0, 0, 0, 0]),   # B2 (pad 5)
+    (43, "perc",  0, [0, 0, 0, 0]),   # B3 (pad 6)
+    (49, "fx",    0, [0, 0, 0, 0]),   # B4 (pad 7)
 ]
 
 # Per-voice physical behavior overrides — these match the acoustic reality
@@ -398,7 +403,7 @@ def _instrument_block(instrument_num: int, voice_name: str,
 
     # Determine CycleType/CycleGroup for round-robin modes
     cycle_type_str = CYCLE_TYPE.get(effective_mode, "")
-    prog_slug = f"XO_OX-{preset_slug}"[:32]
+    prog_slug = preset_slug
 
     if is_active:
         layer_data = _layers_for_voice(voice_name, kit_mode, wav_map, preset_slug)
@@ -555,56 +560,10 @@ def _generate_qlink_xml() -> str:
     )
 
 
-def velocity_curve_from_dna(dna: Optional[dict] = None) -> list:
-    """
-    Derive velocity layer splits from Sonic DNA values (Atlas bridge §8).
-
-    High aggression → hot curve (soft hits are already loud)
-    Low aggression  → gentle curve (dynamic range is wide)
-    High warmth     → soft crossovers (gentle velocity blending)
-    High brightness → top layer is brighter (filter opens more on hard hits)
-
-    Returns list of (vel_start, vel_end, volume) tuples.
-    """
-    if not dna:
-        return list(VEL_LAYERS_MUSICAL)
-
-    aggression = dna.get("aggression", 0.5)
-    warmth     = dna.get("warmth", 0.5)
-
-    if aggression >= 0.7:
-        # Hot curve: compressed dynamics — ghost is loud, hard is unity.
-        # Aggression = bringing the soft layers UP, not pushing hard OVER.
-        # (Guru Bin: "1.10 is a rock star move the MPC's gain staging punishes")
-        return [
-            (1,   20,  0.30),
-            (21,  50,  0.55),
-            (51,  90,  0.80),
-            (91, 127,  1.00),
-        ]
-    elif aggression <= 0.3:
-        # Gentle curve: wide dynamic range, soft is genuinely soft
-        return [
-            (1,   40,  0.25),
-            (41,  80,  0.55),
-            (81, 110,  0.75),
-            (111, 127, 0.85),
-        ]
-    elif warmth >= 0.7:
-        # Warm curve: soft crossovers, gentle attack feel
-        return [
-            (1,   30,  0.35),
-            (31,  60,  0.55),
-            (61, 100,  0.75),
-            (101, 127, 0.90),
-        ]
-    else:
-        return list(VEL_LAYERS_MUSICAL)
-
+# DNA-adaptive velocity curve: see v1.1 roadmap — not implemented in MVP
 
 def generate_xpm(preset_name: str, wav_map: dict,
-                 kit_mode: str = "velocity",
-                 dna: Optional[dict] = None) -> str:
+                 kit_mode: str = "velocity") -> str:
     """Generate complete drum program XPM XML string."""
     preset_slug = preset_name.replace(" ", "_")
     prog_name   = xml_escape(f"XO_OX-{preset_name}")
@@ -826,23 +785,31 @@ def build_drum_pack(preset_name: str, wavs_dir: Path, output_dir: Path,
     return {"pack_dir": str(pack_dir), "missing_wavs": missing}
 
 
+_ONSET_ENGINE_IDS = {"Onset", "OnsetEngine"}
+
+
 def build_all_onset_packs(wavs_dir: Path, output_dir: Path,
                           version: str = "1.0", kit_mode: str = "velocity",
                           dry_run: bool = False) -> list:
     onset_presets = []
-    for mood_dir in PRESETS_DIR.iterdir():
-        if mood_dir.is_dir():
-            onset_dir = mood_dir / "Onset"
-            if onset_dir.exists():
-                for xmeta in onset_dir.glob("*.xometa"):
-                    import json as _json
-                    with open(xmeta) as f:
-                        data = _json.load(f)
-                    onset_presets.append({
-                        "name":        data["name"],
-                        "mood":        data["mood"],
-                        "description": data.get("description", ""),
-                    })
+    import json as _json
+    for xmeta in sorted(PRESETS_DIR.rglob("*.xometa")):
+        try:
+            with open(xmeta) as f:
+                data = _json.load(f)
+            engines = data.get("engines", [])
+            if isinstance(engines, str):
+                engines = [engines]
+            if not any(e in _ONSET_ENGINE_IDS for e in engines):
+                continue
+            onset_presets.append({
+                "name":        data["name"],
+                "mood":        data.get("mood", ""),
+                "description": data.get("description", ""),
+            })
+        except (KeyError, _json.JSONDecodeError, OSError) as exc:
+            print(f"  [WARN] Skipping {xmeta.name}: {exc}")
+            continue
 
     print(f"Found {len(onset_presets)} XOnset presets")
     results = []
