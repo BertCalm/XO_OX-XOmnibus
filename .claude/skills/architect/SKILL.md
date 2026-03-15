@@ -83,6 +83,37 @@ Changes should not unilaterally resolve a debate without explicit design decisio
 | DB003 | Init patch: immediate beauty vs. blank canvas | Don't change init patch philosophy without discussion |
 | DB004 | Expression vs. Evolution: gesture vs. temporal depth | Don't remove either capability |
 
+## Proactive Analysis (Do This First)
+
+Before reviewing the checklist, the architect must actively investigate the codebase to prevent rework, inconsistency, and conflicts. This is not a passive review — it requires reading code and running searches.
+
+### Rework Prevention
+
+Ask: "Will this change need to be redone?"
+
+1. **Check if a shared utility already exists.** Before approving an engine-local helper, search `Source/DSP/` for an existing implementation. If one exists, the change must use it — not reinvent it. If one doesn't exist but the pattern is needed in 3+ engines, the change should create a shared utility first.
+2. **Check if the approach matches the fleet.** Read 2-3 gold-standard engines (OPAL, OCELOT, OSPREY) to see how they solved the same problem. If the proposed approach differs, it will likely be reworked to match later — flag it now.
+3. **Check the fix scope.** If a fix applies to one engine but the same deficiency exists in others, flag the full scope. Partial fixes create rework when the remaining engines are addressed later with a different approach.
+4. **Check for upstream dependencies.** If the change relies on a specific behavior of a shared class (CytomicSVF, FastMath, MegaCouplingMatrix), verify that behavior is stable and documented — not an accident that could change.
+
+### Inconsistency Prevention
+
+Ask: "Does this create a pattern divergence?"
+
+1. **Search for the same pattern across the fleet.** Run `grep` for the pattern being modified (e.g., velocity scaling, LFO integration, filter modulation). Catalog how each engine does it. The proposed change must not introduce a third or fourth way of doing the same thing.
+2. **Check naming conventions.** New parameters, variables, structs, and methods must follow existing conventions in the target engine and across the fleet. Search for similar names to ensure consistency.
+3. **Check modulation ranges and scaling.** If adding modulation (e.g., LFO depth, velocity scaling factor), compare the ranges and scaling factors used in other engines. A velocity scale of `0.3 + 0.7 * vel` in one engine and `vel` in another creates inconsistent behavior across the fleet.
+4. **Check struct layout patterns.** If adding members to a voice struct, verify the ordering convention (oscillators → filters → envelopes → LFOs → state). Engines should be readable in the same order.
+
+### Conflict Prevention
+
+Ask: "Will this collide with other work?"
+
+1. **Check git status and recent history.** Run `git status` and `git log --oneline -10` to see if there are uncommitted changes or recent commits in the same files.
+2. **Check shared file impact radius.** If the change modifies `Source/DSP/` or `Source/Core/`, list every engine that includes the modified header. Verify the change is backward-compatible for all of them.
+3. **Check coupling dependencies.** If changing an engine's output, coupling signal, or voice structure, verify that MegaCouplingMatrix routes and any coupled engines still function.
+4. **Check for in-flight related work.** Search for TODO comments, recent branches (`git branch -a`), and open issues that may be addressing the same area. Flag potential collisions.
+
 ## Review Checklist
 
 ### 1. Architecture Compliance
@@ -152,6 +183,7 @@ For each of the 6 Doctrines, verify the change:
 
 ### APPROVE if:
 - All checklist items pass
+- Proactive analysis found no rework/inconsistency/conflict risks
 - Change is minimal and focused
 - Consistent with fleet patterns
 - Respects all governance principals
@@ -161,14 +193,18 @@ For each of the 6 Doctrines, verify the change:
 - Missing denormal protection (easy to add)
 - Could use a fast math function instead of std::
 - Blessing intact but could be better documented
+- Same fix needed in other engines — conditions include "apply to full scope"
 
 ### REQUEST CHANGES if:
 - Architecture rule violated
 - Doctrine compliance broken or degraded
 - Blessed feature at risk
-- Cross-engine inconsistency
+- Cross-engine inconsistency (different pattern than existing fleet approach)
 - Risk of preset breakage
 - Debate resolved without design discussion
+- **Rework risk:** engine-local solution exists when a shared utility should be created first
+- **Inconsistency risk:** approach diverges from how 2+ other engines solve the same problem
+- **Conflict risk:** shared file modified without verifying all dependents
 
 ### REJECT if:
 - Fundamentally wrong approach (would need to be reverted)
@@ -176,6 +212,7 @@ For each of the 6 Doctrines, verify the change:
 - Changes frozen parameter IDs
 - Breaks SynthEngine interface contract
 - Violates brand rules
+- Creates pattern fragmentation that would require fleet-wide rework to unify
 
 ## Output Format
 
@@ -183,6 +220,15 @@ For each of the 6 Doctrines, verify the change:
 ## Architect Review: {CHANGE_DESCRIPTION}
 
 ### Verdict: APPROVE / APPROVE WITH CONDITIONS / REQUEST CHANGES / REJECT
+
+### Proactive Analysis
+| Risk | Status | Detail |
+|------|--------|--------|
+| Rework | CLEAR/AT RISK | [Does a shared utility exist? Does this match fleet pattern?] |
+| Inconsistency | CLEAR/AT RISK | [How do other engines solve this? Is a new pattern being introduced?] |
+| Conflict | CLEAR/AT RISK | [Shared files affected? In-flight work in same area?] |
+
+[If any risk is AT RISK, explain why and what to do instead]
 
 ### Governance Check
 | Principal | Status | Notes |
@@ -201,11 +247,19 @@ For each of the 6 Doctrines, verify the change:
 | Performance | PASS/FAIL | ... |
 | Denormal Safety | PASS/FAIL | ... |
 
+### Fleet Pattern Survey
+[Which engines were inspected? What pattern do they use for this same concern?
+List 2-3 engines and their approach. The proposed change must match.]
+
 ### Findings
 [Specific issues with file:line references]
 
 ### Conditions / Required Changes
 [If applicable — numbered list of required modifications before merge]
+
+### Full Scope
+[If the same fix is needed in other engines, list them here.
+Partial fixes without a full scope plan will be flagged for rework risk.]
 
 ### Approved Scope
 [Exact files and line ranges approved for modification]
