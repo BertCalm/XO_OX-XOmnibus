@@ -25,6 +25,7 @@ This document contains every decision the builder needs to implement the XOmnibu
 | XOblong | Warm character synth (fuzzy textures, curious motion) | ~50 | 167 |
 | XObese | Character-driven sampler engine | ~30 | 52 (pending) |
 | XOnset | Percussive synthesis (Circuit↔Algorithm blend) | ~110 | 85 (planned) |
+| XOmbre | Dual-narrative (memory/forgetting + perception) | 15 | 15 |
 
 **Parameter namespacing:** Each engine prefixes its APVTS parameter IDs to avoid collisions. The `.xometa` format stores parameters under engine-keyed objects.
 
@@ -114,12 +115,12 @@ Single source of truth. JSON files replacing all per-engine C++ presets and `.xo
 
 **Per-engine macro targets:**
 
-| Macro | OddfeliX/OddOscar | XOverdub | XOdyssey | XOblong | XOnset |
-|-------|-----------|----------|----------|------------|--------|
-| M1 | Snap+Morph | Send Level | JOURNEY | Curiosity | MACHINE |
-| M2 | Bloom | Drive | BREATHE | Bob Mode | PUNCH |
-| M3 | Coupling | Delay FB | BLOOM | Smear Mix | SPACE |
-| M4 | Delay+Rev | Reverb Mix | FRACTURE | Space Mix | MUTATE |
+| Macro | OddfeliX/OddOscar | XOverdub | XOdyssey | XOblong | XOnset | XOmbre |
+|-------|-----------|----------|----------|------------|--------|--------|
+| M1 | Snap+Morph | Send Level | JOURNEY | Curiosity | MACHINE | BLEND+INTERFERENCE |
+| M2 | Bloom | Drive | BREATHE | Bob Mode | PUNCH | DRIFT+REACTIVITY |
+| M3 | Coupling | Delay FB | BLOOM | Smear Mix | SPACE | INTERFERENCE+GRAIN |
+| M4 | Delay+Rev | Reverb Mix | FRACTURE | Space Mix | MUTATE | DECAY+FILTER |
 
 **Golden rule:** Every macro must produce an audible change across its full range in every preset.
 

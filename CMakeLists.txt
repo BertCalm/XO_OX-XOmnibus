@@ -44,12 +44,14 @@ target_sources(XOmnibus PRIVATE
     Source/Core/ChordMachine.h
     Source/Core/MacroSystem.h
     Source/Core/SharedTransport.h
+    Source/Core/MPEManager.h
 
     # DSP (shared, pure C++)
     Source/DSP/FastMath.h
     Source/DSP/CytomicSVF.h
     Source/DSP/PolyBLEP.h
     Source/DSP/WavetableOscillator.h
+    Source/DSP/EngineProfiler.h
 
     # Effects (shared, pure C++)
     Source/DSP/Effects/DubDelay.h
@@ -149,6 +151,14 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Overlap/XOverlapAdapter.cpp
     Source/Engines/Outwit/XOutwitAdapter.h
     Source/Engines/Outwit/XOutwitAdapter.cpp
+
+    Source/Engines/Ombre/OmbreEngine.h
+    Source/Engines/Ombre/OmbreEngine.cpp
+
+    Source/Engines/Orca/OrcaEngine.h
+    Source/Engines/Orca/OrcaEngine.cpp
+    Source/Engines/Octopus/OctopusEngine.h
+    Source/Engines/Octopus/OctopusEngine.cpp
 
     # Export pipeline
     Source/Export/XPNCoverArt.h

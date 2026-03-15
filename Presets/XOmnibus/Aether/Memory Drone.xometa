@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Memory Drone",
+  "mood": "Aether",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Almost entirely Oubli. Triangle wave barely audible as source — the memory buffer IS the instrument. 25-second decay means memories persist for ages. Play one note and wait.",
+  "tags": [
+    "drone",
+    "ambient",
+    "deep",
+    "memory"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macroTargets": [
+    { "macro": 1, "engineId": "Ombre", "parameterId": "ombre_blend", "min": 0.0, "max": 1.0 },
+    { "macro": 1, "engineId": "Ombre", "parameterId": "ombre_interference", "min": 0.0, "max": 0.8 },
+    { "macro": 2, "engineId": "Ombre", "parameterId": "ombre_memoryDrift", "min": 0.0, "max": 1.0 },
+    { "macro": 2, "engineId": "Ombre", "parameterId": "ombre_reactivity", "min": 0.0, "max": 1.0 },
+    { "macro": 3, "engineId": "Ombre", "parameterId": "ombre_interference", "min": 0.0, "max": 1.0 },
+    { "macro": 3, "engineId": "Ombre", "parameterId": "ombre_memoryGrain", "min": 5.0, "max": 500.0 },
+    { "macro": 4, "engineId": "Ombre", "parameterId": "ombre_memoryDecay", "min": 0.5, "max": 25.0 },
+    { "macro": 4, "engineId": "Ombre", "parameterId": "ombre_filterCutoff", "min": 200.0, "max": 12000.0 }
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": {
+    "sourceInstrument": "Ombre",
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.1,
+      "ombre_interference": 0.6,
+      "ombre_memoryDecay": 25.0,
+      "ombre_memoryGrain": 400.0,
+      "ombre_memoryDrift": 0.3,
+      "ombre_oscShape": 3.0,
+      "ombre_reactivity": 0.15,
+      "ombre_subLevel": 0.5,
+      "ombre_filterCutoff": 2000.0,
+      "ombre_filterReso": 0.2,
+      "ombre_attack": 2.0,
+      "ombre_decay": 3.0,
+      "ombre_sustain": 1.0,
+      "ombre_release": 4.0,
+      "ombre_level": 0.85
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.20,
+    "warmth": 0.75,
+    "movement": 0.40,
+    "density": 0.60,
+    "space": 0.90,
+    "aggression": 0.05
+  }
+}

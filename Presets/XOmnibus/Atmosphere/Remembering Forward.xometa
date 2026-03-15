@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "name": "Remembering Forward",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ombre",
+    "Odyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Odyssey's evolving drift pad feeds into Ombre's Oubli memory via coupling. The pad remembers its own past selves. Ombre's envelope modulates Odyssey's pitch — the ghost of memory bends the present drift.",
+  "tags": [
+    "coupled",
+    "pad",
+    "evolving",
+    "drift"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macroTargets": [
+    { "macro": 1, "engineId": "Ombre", "parameterId": "ombre_blend", "min": 0.0, "max": 1.0 },
+    { "macro": 1, "engineId": "Ombre", "parameterId": "ombre_interference", "min": 0.0, "max": 0.8 },
+    { "macro": 2, "engineId": "Ombre", "parameterId": "ombre_memoryDrift", "min": 0.0, "max": 1.0 },
+    { "macro": 2, "engineId": "Odyssey", "parameterId": "odyssey_detune", "min": 0.0, "max": 50.0 },
+    { "macro": 3, "engineId": "Ombre", "parameterId": "ombre_interference", "min": 0.0, "max": 1.0 },
+    { "macro": 3, "engineId": "Ombre", "parameterId": "ombre_memoryGrain", "min": 5.0, "max": 500.0 },
+    { "macro": 4, "engineId": "Ombre", "parameterId": "ombre_memoryDecay", "min": 0.5, "max": 25.0 },
+    { "macro": 4, "engineId": "Ombre", "parameterId": "ombre_filterCutoff", "min": 200.0, "max": 12000.0 }
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": {
+    "sourceInstrument": "Ombre",
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.4,
+      "ombre_interference": 0.35,
+      "ombre_memoryDecay": 12.0,
+      "ombre_memoryGrain": 200.0,
+      "ombre_memoryDrift": 0.25,
+      "ombre_oscShape": 3.0,
+      "ombre_reactivity": 0.15,
+      "ombre_subLevel": 0.4,
+      "ombre_filterCutoff": 2800.0,
+      "ombre_filterReso": 0.2,
+      "ombre_attack": 1.2,
+      "ombre_decay": 2.0,
+      "ombre_sustain": 0.8,
+      "ombre_release": 3.5,
+      "ombre_level": 0.65
+    },
+    "Odyssey": {
+      "odyssey_detune": 15.0,
+      "odyssey_filterCutoff": 3000.0,
+      "odyssey_attack": 1.5,
+      "odyssey_sustain": 0.8,
+      "odyssey_release": 3.0,
+      "odyssey_level": 0.6
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Ombre",
+        "type": "AudioToWavetable",
+        "amount": 0.3
+      },
+      {
+        "engineA": "Ombre",
+        "engineB": "Odyssey",
+        "type": "AmpToPitch",
+        "amount": 0.2
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.30,
+    "warmth": 0.70,
+    "movement": 0.60,
+    "density": 0.50,
+    "space": 0.85,
+    "aggression": 0.05
+  }
+}

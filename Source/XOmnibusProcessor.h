@@ -5,6 +5,7 @@
 #include "Core/MegaCouplingMatrix.h"
 #include "Core/MasterFXChain.h"
 #include "Core/ChordMachine.h"
+#include "Core/MPEManager.h"
 #include "Core/PresetManager.h"
 #include <atomic>
 #include <memory>
@@ -63,6 +64,9 @@ public:
     // Chord Machine — read access for UI, state control from message thread
     ChordMachine& getChordMachine() { return chordMachine; }
 
+    // MPE Manager — per-note expression for Roli Seaboard, Linnstrument, Sensel, etc.
+    MPEManager& getMPEManager() { return mpeManager; }
+
 private:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
 
@@ -70,6 +74,7 @@ private:
     MegaCouplingMatrix couplingMatrix;
     MasterFXChain masterFX;
     ChordMachine chordMachine;
+    MPEManager mpeManager;
     PresetManager presetManager;
 
     // Engine slots — shared_ptr for atomic swap between message and audio threads.
@@ -111,7 +116,20 @@ private:
         std::atomic<float>* cmHumanize = nullptr;
         std::atomic<float>* cmSidechainDuck = nullptr;
         std::atomic<float>* cmEnoMode = nullptr;
+        // Family bleed params — cached to avoid string lookups on audio thread
+        std::atomic<float>* ohmCommune  = nullptr;
+        std::atomic<float>* obblBond    = nullptr;
+        std::atomic<float>* oleDrama    = nullptr;
+
+        // MPE parameters
+        std::atomic<float>* mpeEnabled = nullptr;
+        std::atomic<float>* mpeZone = nullptr;
+        std::atomic<float>* mpePitchBendRange = nullptr;
+        std::atomic<float>* mpePressureTarget = nullptr;
+        std::atomic<float>* mpeSlideTarget = nullptr;
     } cachedParams;
+
+    juce::MidiBuffer mpeMidiBuffer;  // MPE-processed MIDI (expression stripped)
 
     void cacheParameterPointers();
     void processFamilyBleed(std::array<SynthEngine*, MaxSlots>& enginePtrs);

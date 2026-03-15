@@ -74,7 +74,7 @@ namespace GalleryColors {
         if (id == "Onset")     return juce::Colour(0xFF0066FF); // Electric Blue
         if (id == "Overworld") return juce::Colour(0xFF39FF14); // Neon Green
         if (id == "Opal")      return juce::Colour(0xFFA78BFA); // Lavender
-        if (id == "Orbital")   return juce::Colour(0xFFFFD700); // Gold
+        if (id == "Orbital")   return juce::Colour(0xFFFF6B6B); // Warm Red
         if (id == "Organon")   return juce::Colour(0xFF00CED1); // Bioluminescent Cyan
         if (id == "Ouroboros") return juce::Colour(0xFFFF2D2D); // Strange Attractor Red
         if (id == "Obsidian")  return juce::Colour(0xFFE8E0D8); // Crystal White
@@ -103,31 +103,7 @@ namespace GalleryColors {
 
     inline juce::String prefixForEngine(const juce::String& id)
     {
-        // Engines whose parameter prefix differs from id.toLowerCase()
-        if (id == "OddfeliX")  return "snap";
-        if (id == "OddOscar")  return "morph";
-        if (id == "Overdub")   return "dub";
-        if (id == "Odyssey")   return "odyssey";
-        if (id == "Oblong")    return "bob";
-        if (id == "Obese")     return "fat";
-        if (id == "Onset")     return "onset";
-        if (id == "Overworld") return "ow";
-        if (id == "Opal")      return "opal";
-        if (id == "Overbite")  return "poss";
-        if (id == "Oblique")   return "oblq";
-        if (id == "Ostinato")  return "osti";
-        if (id == "OpenSky")   return "sky";
-        if (id == "OceanDeep") return "deep";
-        if (id == "Ouie")      return "ouie";
-        // Constellation engines with abbreviated prefixes
-        if (id == "Orphica")   return "orph";
-        if (id == "Obbligato") return "obbl";
-        if (id == "Ottoni")    return "otto";
-        // Standalone adapter engines
-        if (id == "XOverlap")  return "olap";
-        if (id == "XOutwit")   return "owit";
-        // Remaining engines: id lowercased matches prefix
-        return id.toLowerCase();
+        return frozenPrefixForEngine(id);
     }
 }
 

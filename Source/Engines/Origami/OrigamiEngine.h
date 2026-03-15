@@ -1939,4 +1939,3 @@ private:
 
 } // namespace xomnibus
 
-// REGISTER_ENGINE("Origami", OrigamiEngine)

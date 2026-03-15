@@ -8,7 +8,7 @@ and mutate into sounds impossible with any single synth. **31 engines** are regi
 (5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15, auval PASS)
 — see engine table below.
 
-- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT
+- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** 2,369 factory presets in `.xometa` format, 7 mood categories (incl. Family), 6D Sonic DNA
@@ -68,6 +68,9 @@ and mutate into sounds impossible with any single synth. **31 engines** are regi
 | OBBLIGATO | XObbligato | Rascal Coral `#FF8A7A` |
 | OTTONI | XOttoni | Patina `#5B8A72` |
 | OLE | XOlé | Hibiscus `#C9377A` |
+| OMBRE | XOmbre | Shadow Mauve `#7B6B8A` |
+| ORCA | XOrca | Deep Ocean `#1B2838` |
+| OCTOPUS | XOctopus | Chromatophore Magenta `#E040FB` |
 
 ### V2 Concept Engines (no DSP yet — approved concepts only)
 
@@ -89,19 +92,19 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Engine ID | Parameter Prefix | Example |
 |-----------|-----------------|---------|
 | OddfeliX | `snap_` | `snap_filterCutoff` |
-| OddOscar | `morph_` | `morph_scanPos` |
-| Overdub | `dub_` | `dub_sendAmount` |
-| Odyssey | `odyssey_` | `odyssey_detune` |
+| OddOscar | `morph_` | `morph_morph` |
+| Overdub | `dub_` | `dub_oscWave` |
+| Odyssey | `drift_` | `drift_oscA_mode` |
 | Oblong | `bob_` | `bob_fltCutoff` |
 | Obese | `fat_` | `fat_satDrive` |
 | Overbite | `poss_` | `poss_biteDepth` |
 | Onset | `onset_` | `onset_noiseLevel` |
 | Overworld | `ow_` | `ow_era` |
 | Opal | `opal_` | `opal_grainSize` |
-| Orbital | `orbital_` | `orbital_partialTilt` |
-| Organon | `organon_` | `organon_entropy` |
-| Ouroboros | `ouroboros_` | `ouroboros_feedback` |
-| Obsidian | `obsidian_` | `obsidian_pdDepth` |
+| Orbital | `orb_` | `orb_brightness` |
+| Organon | `organon_` | `organon_metabolicRate` |
+| Ouroboros | `ouro_` | `ouro_topology` |
+| Obsidian | `obsidian_` | `obsidian_depth` |
 | Origami | `origami_` | `origami_foldPoint` |
 | Oracle | `oracle_` | `oracle_breakpoints` |
 | Obscura | `obscura_` | `obscura_stiffness` |
@@ -117,6 +120,9 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Obbligato | `obbl_` | `obbl_breathA` |
 | Ottoni | `otto_` | `otto_macroGrow` |
 | Ole | `ole_` | `ole_macroDrama` |
+| Ombre | `ombre_` | `ombre_blend` |
+| Orca | `orca_` | `orca_huntMacro` |
+| Octopus | `octo_` | `octo_armDepth` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
@@ -135,6 +141,9 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Engines/*/` | Engine adapter modules |
 | `Source/Engines/Optic/OpticEngine.h` | Visual modulation engine + AutoPulse |
 | `Source/Engines/Oblique/ObliqueEngine.h` | Prismatic bounce engine (RTJ x Funk x Tame Impala) |
+| `Source/Engines/Ombre/OmbreEngine.h` | Dual-narrative engine (memory/forgetting + perception) |
+| `Source/Engines/Orca/OrcaEngine.h` | Apex predator engine (wavetable + echolocation + breach) |
+| `Source/Engines/Octopus/OctopusEngine.h` | Decentralized alien intelligence engine (arms + chromatophores + ink cloud) |
 | `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
 | `Docs/xomnibus_sound_design_guides.md` | Sound design guide (20 of 29 engines in unified guide; OSPREY, OSTERIA, OWLFISH, OCELOT not yet integrated; 5 Constellation engines have dedicated guides in Docs/) |
 | `Source/DSP/` | Shared DSP library |
@@ -264,6 +273,27 @@ New engines are designed as standalone instruments first, then integrated into X
 - 2,369 presets, 0 duplicates, 100% DNA coverage, health score ~92/100
 - Build PASS + auval PASS
 - **Full history**: `Docs/prism_sweep_final_report.md` | Master index: `Docs/prism_sweep_index.md`
+
+---
+
+## Skill Library
+
+Reusable skill guides live in `Skills/` — invoke the relevant one before starting each task type.
+
+| Skill | Invoke | When to Use |
+|-------|--------|-------------|
+| [coupling-preset-designer](Skills/coupling-preset-designer/SKILL.md) | `/coupling-preset-designer` | Creating Entangled mood presets with cross-engine coupling |
+| [coupling-interaction-cookbook](Skills/coupling-interaction-cookbook/SKILL.md) | `/coupling-interaction-cookbook` | Quick lookup: which engines pair best, what types are supported |
+| [mod-matrix-builder](Skills/mod-matrix-builder/SKILL.md) | `/mod-matrix-builder` | Adding 8-slot mod matrix to any engine (D002/D005/D006) |
+| [preset-architect](Skills/preset-architect/SKILL.md) | `/preset-architect` | Writing any new `.xometa` preset |
+| [engine-health-check](Skills/engine-health-check/SKILL.md) | `/engine-health-check` | Quick D001–D006 doctrine check on any engine |
+| [dna-designer](Skills/dna-designer/SKILL.md) | `/dna-designer` | Assigning accurate 6D Sonic DNA to presets |
+| [xpn-export-specialist](Skills/xpn-export-specialist/SKILL.md) | `/xpn-export-specialist` | Full XPN/MPC export pipeline |
+| synth-seance (`~/.claude/skills/`) | `/synth-seance` | Ghost council full engine quality evaluation |
+| post-engine-completion-checklist (`~/.claude/skills/`) | `/post-engine-completion-checklist` | 5-point post-build audit |
+| producers-guild (`~/.claude/skills/`) | `/producers-guild` | 12-specialist market/product review |
+
+Full index: `Skills/README.md`
 
 ---
 

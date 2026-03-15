@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Glitch Memoir",
+  "mood": "Flux",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Tiny grain size + fast decay = each note shatters into micro-fragments of itself. High interference creates a feedback loop between memory and perception that stutters and glitches.",
+  "tags": [
+    "glitch",
+    "experimental",
+    "lo-fi",
+    "stutter"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macroTargets": [
+    { "macro": 1, "engineId": "Ombre", "parameterId": "ombre_blend", "min": 0.0, "max": 1.0 },
+    { "macro": 1, "engineId": "Ombre", "parameterId": "ombre_interference", "min": 0.0, "max": 0.8 },
+    { "macro": 2, "engineId": "Ombre", "parameterId": "ombre_memoryDrift", "min": 0.0, "max": 1.0 },
+    { "macro": 2, "engineId": "Ombre", "parameterId": "ombre_reactivity", "min": 0.0, "max": 1.0 },
+    { "macro": 3, "engineId": "Ombre", "parameterId": "ombre_interference", "min": 0.0, "max": 1.0 },
+    { "macro": 3, "engineId": "Ombre", "parameterId": "ombre_memoryGrain", "min": 5.0, "max": 500.0 },
+    { "macro": 4, "engineId": "Ombre", "parameterId": "ombre_memoryDecay", "min": 0.5, "max": 25.0 },
+    { "macro": 4, "engineId": "Ombre", "parameterId": "ombre_filterCutoff", "min": 200.0, "max": 12000.0 }
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-14",
+  "legacy": {
+    "sourceInstrument": "Ombre",
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.45,
+      "ombre_interference": 0.75,
+      "ombre_memoryDecay": 0.5,
+      "ombre_memoryGrain": 8.0,
+      "ombre_memoryDrift": 0.8,
+      "ombre_oscShape": 2.0,
+      "ombre_reactivity": 0.9,
+      "ombre_subLevel": 0.15,
+      "ombre_filterCutoff": 6000.0,
+      "ombre_filterReso": 0.5,
+      "ombre_attack": 0.001,
+      "ombre_decay": 0.1,
+      "ombre_sustain": 0.4,
+      "ombre_release": 0.15,
+      "ombre_level": 0.75
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.60,
+    "warmth": 0.20,
+    "movement": 0.85,
+    "density": 0.45,
+    "space": 0.15,
+    "aggression": 0.65
+  }
+}

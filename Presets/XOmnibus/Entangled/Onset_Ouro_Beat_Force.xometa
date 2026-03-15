@@ -31,14 +31,13 @@
   },
   "parameters": {
     "Onset": {
-      "onset_kitSelect": 0,
-      "onset_tune": 0.0,
-      "onset_decay": 0.4,
-      "onset_tone": 0.5,
-      "onset_drive": 0.3,
-      "onset_snap": 0.6,
-      "onset_body": 0.5,
-      "onset_level": 0.7
+      "perc_v1_pitch": 0.0,
+      "perc_v1_decay": 0.4,
+      "perc_v1_tone": 0.5,
+      "perc_v1_snap": 0.6,
+      "perc_v1_body": 0.5,
+      "perc_drive": 0.3,
+      "perc_level": 0.7
     },
     "Ouroboros": {
       "ouro_topology": 2,

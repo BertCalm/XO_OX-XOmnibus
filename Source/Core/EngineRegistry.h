@@ -70,12 +70,10 @@ private:
 };
 
 //==============================================================================
-// REGISTER_ENGINE macro — call in each engine's .cpp file.
-//
-// Usage:
-//   REGISTER_ENGINE(SnapEngine)
-//
-// This creates a static bool that registers the engine factory at program start.
+// REGISTER_ENGINE macro — convenience for engines whose class name matches
+// their canonical engine ID. Currently unused: XOmnibus registers all engines
+// centrally in XOmnibusProcessor.cpp with explicit canonical IDs (e.g.
+// "OddfeliX" → SnapEngine) because class names don't match engine IDs.
 //
 #define REGISTER_ENGINE(EngineClass) \
     static bool registered_##EngineClass = \

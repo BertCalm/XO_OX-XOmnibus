@@ -326,8 +326,8 @@ public:
         }
     }
 
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override {
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> p;
+    static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& p)
+    {
         using F=juce::AudioParameterFloat;using C=juce::AudioParameterChoice;using N=juce::NormalisableRange<float>;
 
         // Section A: Brother A — Flute Family
@@ -373,7 +373,11 @@ public:
         p.push_back(std::make_unique<F>("obbl_macroBond","BOND",N{0,1},0.0f));
         p.push_back(std::make_unique<F>("obbl_macroMischief","MISCHIEF",N{0,1},0.0f));
         p.push_back(std::make_unique<F>("obbl_macroWind","WIND",N{0,1},0.3f));
+    }
 
+    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override {
+        std::vector<std::unique_ptr<juce::RangedAudioParameter>> p;
+        addParameters(p);
         return {p.begin(),p.end()};
     }
 

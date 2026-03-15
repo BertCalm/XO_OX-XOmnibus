@@ -258,10 +258,10 @@ Every `.xomega` file contains all information needed to reconstruct the sound. N
 | `oddo` | OddOscar | `oddo_` | OddfeliX/OddOscar | ~20 |
 | `dub` | XOverdub | `dub_` | XOverdub | 38 |
 | `fat` | XObese | `fat_` | XObese | 45 |
-| `bite` | XOverbite | `bite_` | XOverbite | 122 |
+| `poss` | XOverbite | `poss_` | XOverbite | 122 |
 | `drift` | XOdyssey | `drift_` | XOdyssey | ~130 |
 | `bob` | XOblong | `bob_` | XOblong | ~50 |
-| `onset` | XOnset | `onset_` (alias: `perc_`) | XOnset | ~110 |
+| `perc` | XOnset | `perc_` | XOnset | ~110 |
 
 **Rule:** The module ID is the canonical key. The namespace prefix is `moduleID_` prepended to each internal parameter ID at the adapter boundary. Internal engine code never changes its parameter names.
 
@@ -539,29 +539,29 @@ If `couplingAmount` is 0, the `coupling` field is omitted.
 
 **Source format:** JSON with `schema_version`, 122 parameters.
 
-**Strategy:** Wrap as single-engine `.xomega` with module ID `bite`. Apply `bite_` prefix.
+**Strategy:** Wrap as single-engine `.xomega` with module ID `poss`. Apply `poss_` prefix.
 
 **Representative Parameter Mapping:**
 
 | Original ID | Namespaced ID | Notes |
 |-------------|---------------|-------|
-| `belly` | `bite_belly` | Bass weight macro |
-| `bite` | `bite_bite` | Character aggression macro |
-| `filterCutoff` | `bite_filterCutoff` | |
-| `filterRes` | `bite_filterRes` | |
-| `osc1Wave` | `bite_osc1Wave` | |
-| `osc1Level` | `bite_osc1Level` | |
-| `osc2Wave` | `bite_osc2Wave` | |
-| `osc2Level` | `bite_osc2Level` | |
-| `subLevel` | `bite_subLevel` | |
-| `noiseLevel` | `bite_noiseLevel` | |
-| `envAttack` | `bite_envAttack` | |
-| `envDecay` | `bite_envDecay` | |
-| `envSustain` | `bite_envSustain` | |
-| `envRelease` | `bite_envRelease` | |
-| `lfo1Rate` | `bite_lfo1Rate` | |
-| `lfo1Depth` | `bite_lfo1Depth` | |
-| `masterLevel` | `bite_masterLevel` | |
+| `oscAWaveform` | `poss_oscAWaveform` | Primary oscillator waveform |
+| `oscAShape` | `poss_oscAShape` | Oscillator A waveshape |
+| `filterCutoff` | `poss_filterCutoff` | |
+| `filterReso` | `poss_filterReso` | |
+| `oscBWaveform` | `poss_oscBWaveform` | |
+| `oscBShape` | `poss_oscBShape` | |
+| `oscMix` | `poss_oscMix` | |
+| `subLevel` | `poss_subLevel` | |
+| `noiseLevel` | `poss_noiseLevel` | |
+| `weightShape` | `poss_weightShape` | |
+| `weightLevel` | `poss_weightLevel` | |
+| `ampAttack` | `poss_ampAttack` | |
+| `ampDecay` | `poss_ampDecay` | |
+| `ampSustain` | `poss_ampSustain` | |
+| `ampRelease` | `poss_ampRelease` | |
+| `lfo1Rate` | `poss_lfo1Rate` | |
+| `lfo1Depth` | `poss_lfo1Depth` | |
 
 **Mood mapping:** XOverbite organizes by character spectrum (Plush to Aggressive). Map based on sonic role:
 - Bass-forward presets -> `"Grounded"`
@@ -1028,12 +1028,12 @@ When Parent A and Parent B use different engines, the child inherits the engine 
 
 | Semantic Role | Example Across Engines |
 |--------------|----------------------|
-| Filter cutoff | `dub_filterCutoff`, `oddx_filterCutoff`, `bite_filterCutoff`, `drift_filterA_cutoff` |
-| Filter resonance | `dub_filterResonance`, `oddx_filterReso`, `bite_filterRes`, `drift_filterA_res` |
-| Oscillator level | `dub_oscLevel`, `oddx_level`, `fat_masterLevel` |
-| Attack time | `dub_envAttack`, `oddx_decay` (inverse mapping), `drift_env1_attack` |
-| Effect mix | `dub_delayMix`, `oddx_delayMix` (via fx_rack) |
-| Character macro | `dub_driveAmount`, `fat_mojo`, `bite_bite`, `drift_fracture` |
+| Filter cutoff | `dub_filterCutoff`, `snap_filterCutoff`, `poss_filterCutoff`, `drift_filterCutoff` |
+| Filter resonance | `dub_filterReso`, `snap_filterReso`, `poss_filterReso`, `drift_filterReso` |
+| Oscillator level | `dub_level`, `snap_level`, `fat_masterLevel` |
+| Attack time | `dub_attack`, `snap_decay` (inverse mapping), `drift_attack` |
+| Effect mix | `dub_delayMix`, `snap_delayMix` (via fx_rack) |
+| Character macro | `dub_driveAmount`, `fat_mojo`, `poss_oscAShape`, `drift_driftDepth` |
 
 2. For each analogous parameter pair, apply the secondary parent's normalized value with the configured crossover probability.
 
@@ -1927,8 +1927,8 @@ On other platforms, fall back to periodic polling (every 5 seconds) or manual "R
 ### XOverbite (~15 presets)
 
 - [ ] Parse JSON preset files with `schema_version`
-- [ ] Wrap each as single-engine `.xomega` with module `"bite"`
-- [ ] Apply `bite_` prefix to all 122 parameter IDs
+- [ ] Wrap each as single-engine `.xomega` with module `"poss"` (Overbite)
+- [ ] Apply `poss_` prefix to all 122 parameter IDs
 - [ ] Assign mood tags based on character spectrum
 - [ ] Write descriptions and tags
 - [ ] Validate and test

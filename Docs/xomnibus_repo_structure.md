@@ -454,7 +454,7 @@ Every parameter ID is prefixed with its engine name to prevent collisions:
 
 ```
 fat_osc1_shape      # Fat engine oscillator 1 shape
-bite_filter_cutoff  # Bite engine filter cutoff
+poss_filterCutoff   # Overbite engine filter cutoff
 snap_attack         # Snap engine attack
 morph_wavetable_pos # Morph engine wavetable position
 dub_delay_time      # Dub engine delay time

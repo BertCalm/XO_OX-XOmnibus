@@ -18,11 +18,13 @@ inline const juce::StringArray validEngineNames {
     "Obsidian", "Overbite", "Origami", "Oracle", "Obscura", "Oceanic",
     "Ocelot", "Osprey", "Osteria", "Owlfish",
     "Ohm", "Orphica", "Obbligato", "Ottoni", "Ole",
-    "Optic", "Oblique",
+    "Optic", "Oblique", "Ombre", "Orca", "Octopus",
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
     "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
-    "XOpal", "XOpossum",
+    "XOpal", "XOpossum", "XOverbite", "XObsidian", "XOrigami",
+    "XOracle", "XObscura", "XOceanic", "XOptic", "XOblique",
+    "XOverworld", "XOrca", "XOctopus",
     "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Bite"
 };
 
@@ -48,9 +50,55 @@ inline juce::String resolveEngineAlias(const juce::String& name)
         { "XOrbital",    "Orbital"   },
         { "XOrganon",    "Organon"   },
         { "XOuroboros",  "Ouroboros" },
+        { "XOpal",       "Opal"      },
+        { "XOpossum",    "Overbite"  },
+        { "XOverbite",   "Overbite"  },
+        { "XObsidian",   "Obsidian"  },
+        { "XOrigami",    "Origami"   },
+        { "XOracle",     "Oracle"    },
+        { "XObscura",    "Obscura"   },
+        { "XOceanic",    "Oceanic"   },
+        { "XOptic",      "Optic"     },
+        { "XOblique",    "Oblique"   },
+        { "XOverworld",  "Overworld" },
+        { "XOrca",       "Orca"      },
+        { "XOctopus",    "Octopus"   },
     };
     auto it = aliases.find(name);
     return (it != aliases.end()) ? it->second : name;
+}
+
+// Frozen parameter prefix for each canonical engine ID.
+// These NEVER change — parameter IDs are stable across releases.
+// Returns the prefix WITHOUT trailing underscore (e.g. "snap", "morph").
+inline juce::String frozenPrefixForEngine(const juce::String& engineId)
+{
+    static const std::map<juce::String, juce::String> prefixes {
+        { "OddfeliX",   "snap"    },
+        { "OddOscar",   "morph"   },
+        { "Overdub",     "dub"     },
+        { "Odyssey",     "drift"   },
+        { "Oblong",      "bob"     },
+        { "Obese",       "fat"     },
+        { "Overbite",    "poss"    },
+        { "Onset",       "perc"    },
+        { "Overworld",   "ow"      },
+        { "Opal",        "opal"    },
+        { "Orbital",     "orb"     },
+        { "Organon",     "organon" },
+        { "Ouroboros",   "ouro"    },
+        { "Obsidian",    "obsidian"},
+        { "Origami",     "origami" },
+        { "Oracle",      "oracle"  },
+        { "Obscura",     "obscura" },
+        { "Oceanic",     "ocean"   },
+        { "Optic",       "optic"   },
+        { "Oblique",     "oblq"    },
+        { "Orca",        "orca"    },
+        { "Octopus",     "octo"    },
+    };
+    auto it = prefixes.find(engineId);
+    return (it != prefixes.end()) ? it->second : engineId.toLowerCase();
 }
 
 // Valid moods — the 6 browsing categories plus User.
