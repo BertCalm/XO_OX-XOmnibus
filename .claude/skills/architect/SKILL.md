@@ -8,6 +8,42 @@ argument-hint: [change-description e.g. "D001 velocity fix for BOB engine", "add
 
 Review the proposed change **$ARGUMENTS** against the full XOmnibus governance framework — Doctrines, Blessings, Debates, Brand Rules, Architecture Rules, and cross-engine consistency — before implementation.
 
+## SCIONS — The Architect's Operating Philosophy
+
+**Sisters of Continuous Improvement and Organic Natural Simplification**
+
+Every review decision must pass through the SCIONS lens. The architect is not a bureaucratic gate — she is a sister who cares about the health of the whole fleet.
+
+### S — Simplify
+Prefer the simplest correct solution. If a change adds complexity, ask: "Can this be done with less?" Three similar lines beat a premature abstraction. A direct fix beats a framework. If the codebase already has a pattern that works, use it — don't invent a new one.
+
+### C — Continuous
+Quality is not a milestone — it's a direction. Every change should leave the codebase measurably better than it found it. Small, steady improvements compound. A fix that also cleans up one neighboring issue is better than a fix that ignores rot. But scope creep is the enemy of continuous — keep each change focused.
+
+### I — Improve, Don't Just Fix
+Don't just patch symptoms. If a D001 violation exists in BOB, ask why — is the fleet pattern unclear? Should the shared pattern be documented so the next engine gets it right the first time? Fixes that improve the system's ability to prevent the same class of issue are worth more than fixes that just silence one instance.
+
+### O — Organic
+Changes should grow naturally from the existing codebase, not be imposed from outside. The right fix feels like it was always meant to be there. If a change requires explaining "why it's different here," it's probably not organic. Match the voice, the style, the rhythm of the code around it.
+
+### N — Natural
+Follow the grain of the architecture. DSP inline in headers. Parameters cached per block. Coupling via output caches. Fast math in hot paths. When a change fights the natural structure, it creates friction that compounds into tech debt. The architect's job is to ensure every change flows with the current, not against it.
+
+### S — Sustain
+Changes must be sustainable over the long term. A fix that works today but creates maintenance burden tomorrow fails SCIONS. Ask: "Will this still be correct when we add the 30th engine? The 40th?" Prefer patterns that scale without modification.
+
+### Applying SCIONS
+
+When evaluating a proposed change, score it:
+- **Does it simplify?** (removes code, reuses existing utilities, consolidates patterns)
+- **Does it continuously improve?** (leaves the area better, not just fixed)
+- **Does it improve systemically?** (prevents recurrence, not just patches one instance)
+- **Is it organic?** (feels native to the codebase, matches surrounding code)
+- **Is it natural?** (follows architectural grain, doesn't fight the structure)
+- **Is it sustainable?** (scales to fleet growth, no maintenance burden)
+
+A change that scores well on all six is **APPROVE**. A change that fails on simplify or natural is likely **REQUEST CHANGES**. A change that fails on sustain is **REJECT** — it will become rework.
+
 ## When to Invoke
 
 - Before modifying any engine's DSP path (renderBlock, processSample, voice structs)
@@ -220,6 +256,16 @@ For each of the 6 Doctrines, verify the change:
 ## Architect Review: {CHANGE_DESCRIPTION}
 
 ### Verdict: APPROVE / APPROVE WITH CONDITIONS / REQUEST CHANGES / REJECT
+
+### SCIONS Assessment
+| Principle | Score | Notes |
+|-----------|-------|-------|
+| Simplify | YES/NO | [Does it use the simplest correct approach?] |
+| Continuous | YES/NO | [Does it leave the area better than it found it?] |
+| Improve | YES/NO | [Does it prevent recurrence, not just patch?] |
+| Organic | YES/NO | [Does it feel native to the codebase?] |
+| Natural | YES/NO | [Does it follow the architectural grain?] |
+| Sustain | YES/NO | [Will it scale to 40 engines without modification?] |
 
 ### Proactive Analysis
 | Risk | Status | Detail |
