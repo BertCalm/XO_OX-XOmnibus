@@ -352,6 +352,7 @@ struct OracleVoice
 
     // MPE per-voice expression state
     MPEVoiceExpression mpeExpression;
+    float cachedPitchRatio = 1.0f;  // precomputed per-block: pow(2, bend/12)
 
     // Previous cycle output for crossfade smoothing at cycle boundary
     float prevCycleLastSample = 0.0f;
@@ -373,6 +374,7 @@ struct OracleVoice
         lastOutputR = 0.0f;
         prevCycleLastSample = 0.0f;
         cycleBlendCounter = 0;
+        cachedPitchRatio = 1.0f;
         ampEnv.reset();
         stochEnv.reset();
         lfo1.reset();
@@ -567,6 +569,7 @@ public:
             {
                 if (!voice.active) continue;
                 mpeManager->updateVoiceExpression(voice.mpeExpression);
+                voice.cachedPitchRatio = std::pow(2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
             }
         }
 
@@ -626,8 +629,7 @@ public:
                 float stochDepth = stochLevel * effectiveDrift;
 
                 // --- Phase increment ---
-                float freq = voice.currentFreq;
-                freq *= std::pow(2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
+                float freq = voice.currentFreq * voice.cachedPitchRatio;
                 voice.wavePhaseInc = freq / srf;
 
                 // --- Advance waveform phase ---

@@ -319,6 +319,7 @@ struct OuroborosVoice
 
     // MPE per-voice expression state
     MPEVoiceExpression mpeExpression;
+    float cachedPitchRatio = 1.0f;  // precomputed per-block: pow(2, bend/12)
 
     void prepare (double sampleRate) noexcept
     {
@@ -352,6 +353,7 @@ struct OuroborosVoice
         dampL = 0.0f;
         dampR = 0.0f;
         injectionBoost = 0.0f;
+        cachedPitchRatio = 1.0f;
 
         attractorA.reset();
         attractorB.reset();
@@ -598,6 +600,7 @@ public:
             {
                 if (!voice.active) continue;
                 mpeManager->updateVoiceExpression(voice.mpeExpression);
+                voice.cachedPitchRatio = std::pow(2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
             }
         }
 
@@ -635,8 +638,7 @@ public:
                 // Target frequency: MIDI note overrides rate parameter
                 // If noteNumber is valid, use MIDI pitch; otherwise fall back to rate param (drone mode)
                 float targetFreq = (voice.noteNumber >= 0)
-                    ? midiToFreq (voice.noteNumber)
-                      * std::pow(2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f)
+                    ? midiToFreq (voice.noteNumber) * voice.cachedPitchRatio
                     : rate;
                 targetFreq += externalPitchMod * 20.0f;
                 if (targetFreq < 20.0f) targetFreq = 20.0f;

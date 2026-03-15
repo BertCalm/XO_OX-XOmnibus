@@ -237,6 +237,7 @@ struct ObsidianVoice
 
     // MPE per-voice expression state
     MPEVoiceExpression mpeExpression;
+    float cachedPitchRatio = 1.0f;  // precomputed per-block: pow(2, bend/12)
 
     void reset() noexcept
     {
@@ -258,6 +259,7 @@ struct ObsidianVoice
         mainFilter.reset();
         for (int i = 0; i < 16; ++i)
             partialRatios[i] = static_cast<float> (i + 1);
+        cachedPitchRatio = 1.0f;
     }
 };
 
@@ -442,6 +444,7 @@ public:
             {
                 if (!voice.active) continue;
                 mpeManager->updateVoiceExpression(voice.mpeExpression);
+                voice.cachedPitchRatio = std::pow(2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
             }
         }
 
@@ -511,8 +514,7 @@ public:
                 float modDensity = clamp (smoothedDensity + lfo2Val * 0.2f, 0.0f, 1.0f);
 
                 // --- Phase increment ---
-                float freq = voice.currentFreq;
-                freq *= std::pow(2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
+                float freq = voice.currentFreq * voice.cachedPitchRatio;
                 float phaseInc = freq / srf;
 
                 // --- PD Stage 1 (L channel) ---

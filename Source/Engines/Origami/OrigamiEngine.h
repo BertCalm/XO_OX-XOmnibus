@@ -276,6 +276,7 @@ struct OrigamiVoice
 
     // MPE per-voice expression state
     MPEVoiceExpression mpeExpression;
+    float cachedPitchRatio = 1.0f;  // precomputed per-block: pow(2, bend/12)
 
     void reset() noexcept
     {
@@ -292,6 +293,7 @@ struct OrigamiVoice
         inputWritePos = 0;
         hopCounter = 0;
         hasFrozenFrame = false;
+        cachedPitchRatio = 1.0f;
         ampEnv.reset();
         foldEnv.reset();
         lfo1.reset();
@@ -490,6 +492,7 @@ public:
             {
                 if (!voice.active) continue;
                 mpeManager->updateVoiceExpression(voice.mpeExpression);
+                voice.cachedPitchRatio = std::pow(2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
             }
         }
 
@@ -547,8 +550,7 @@ public:
                 float modFoldDepth = smoothedFoldDepth * foldLevel;
 
                 // --- Generate source signal ---
-                float freq = voice.currentFreq;
-                freq *= std::pow(2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
+                float freq = voice.currentFreq * voice.cachedPitchRatio;
                 float phaseInc = freq / srf;
 
                 // Saw oscillator (naive, anti-aliased by FFT process)

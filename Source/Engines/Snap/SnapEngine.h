@@ -259,8 +259,9 @@ public:
             float voiceCutoff = cutoff;
 
             // MPE expression → filter cutoff modulation
-            // Pressure: bipolar modulation centered on preset cutoff (up to ±2 octaves)
-            voiceCutoff *= std::pow(2.0f, voice.mpeExpression.pressure * 2.0f);
+            // Pressure: bipolar modulation centered on preset cutoff (±2 octaves).
+            // pressure is 0..1; subtracting 0.5 centres it, ×4 gives ±2 octaves.
+            voiceCutoff *= std::pow(2.0f, (voice.mpeExpression.pressure - 0.5f) * 4.0f);
             // Slide (CC74): additive modulation on top of pressure
             voiceCutoff *= std::pow(2.0f, (voice.mpeExpression.slide - 0.5f) * 2.0f);
             voiceCutoff = juce::jlimit(20.0f, 20000.0f, voiceCutoff);
