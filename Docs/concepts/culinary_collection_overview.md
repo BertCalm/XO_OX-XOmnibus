@@ -766,6 +766,135 @@ Each company's character becomes a spice that transforms the base instrument. Th
 
 ---
 
+## The XOmnibus Cookbook — Real Recipes for Real Presets
+
+Every preset in the Culinary Collection ships with a paired real-world recipe. Not a metaphor — an actual recipe you can cook while the preset plays. The cookbook is a living document that evolves alongside the preset library.
+
+### The Concept
+
+```
+PRESET: "Sunday Gravy"
+├── Engines: XOtis (Hammond) × XOven (Cast Iron) × XOxbow (Analog Bass) × XOverworn (Erosion)
+├── Character: Session-long reduction, dark tonewheel warmth
+├── Play time: 20+ minutes
+│
+└── PAIRED RECIPE: Nonna's Sunday Gravy (Meat Sauce)
+    ├── Ingredients: San Marzano tomatoes, pork ribs, sausage, garlic, basil, red wine
+    ├── Method: Brown meat in cast iron. Build soffritto. Add tomatoes. Simmer 4-8 hours.
+    ├── Key instruction: "Start the preset when the sauce goes on. By the time the
+    │   harmonics have fully reduced, the sauce is ready for the first taste."
+    └── Serves: 8 (plus leftovers that are better tomorrow)
+```
+
+### Format
+
+- **Digital ebook** — free download from xo-ox.com, updated with each preset release
+- **Organized by quad** — Chef recipes, Kitchen recipes, Garden recipes, etc.
+- **Cross-referenced** — each recipe page links to the preset (loadable in-app), each preset's metadata references the recipe
+- **Difficulty scaled to preset complexity** — simple presets get weeknight dinners, complex coupling presets get weekend projects
+- **Photography** — food shot + waveform/spectrogram side by side. The visual parallel between a reduction in the pan and a spectral reduction in the plugin.
+
+### The Feedback Loop
+
+```
+PRESETS inspire RECIPES → community cooks and shares photos
+RECIPES inspire PRESETS → community submits "this dish sounds like..." suggestions
+                        ↕
+            BOTH grow the library together
+```
+
+- Users submit real recipes that they think match existing presets
+- Users request presets that capture a specific dish's vibe
+- Seasonal updates: spring recipes + spring presets, holiday specials
+- Regional spotlights: a Japanese issue (XOto focus), a Southern issue (XOtis focus)
+- Guest chef collaborations: real chefs pair with sound designers
+
+### Farmers Market Expansion
+
+The cookbook extends naturally into the **Farmers Market** — two additional quads that expand the Culinary Collection's ingredient palette:
+
+**Farmers Market Quad A — Protein & Staples:**
+| Engine | Market Stall | Instrument Group (TBD) |
+|--------|-------------|----------------------|
+| **XO___** | Fishmonger | — |
+| **XO___** | Butcher | — |
+| **XO___** | Fromagerie (Cheese) | — |
+| **XO___** | Boulangerie (Bread Baker) | — |
+
+**Farmers Market Quad B — Produce & Aromatics:**
+| Engine | Market Stall | Instrument Group (TBD) |
+|--------|-------------|----------------------|
+| **XO___** | Farmer (produce) | — |
+| **XO___** | Florist | — |
+| **XO___** | Herbalist | — |
+| **XO___** | Spice Merchant | — |
+
+*Engine names, instrument groups, and O-word naming TBD. These quads would bring the Culinary Collection to 10 quads / 40+ engines (plus Fusion secret). The Farmers Market stalls supply raw ingredients that the Chef, Kitchen, and other quads transform.*
+
+Each stall brings its own cookbook chapter — the Fishmonger's recipes pair with fishmonger presets, the Bread Baker's recipes teach you to make the dough while the engine rises.
+
+---
+
+## The Synesthesia Engine — AI-Powered Cross-Domain Preset Generation
+
+What if any creative input could become a preset?
+
+### Core Idea
+
+An AI-powered feature (opt-in, on-device or cloud) that interprets non-musical creative inputs and generates XOmnibus presets from them. The Culinary Collection's recipe→preset pairing is just the first instance of a much bigger idea: **synesthesia as a product feature.**
+
+### Input Domains
+
+| Domain | Input | How AI Interprets It | Example |
+|--------|-------|---------------------|---------|
+| **Recipes** | Ingredient list + method + timing | Ingredients → timbral palette, method → FX recipe, timing → envelope/LFO | "Slow-braised short ribs" → warm, dark, long-attack pad with gradual saturation buildup |
+| **Visual Art** | Image / color palette | Color → frequency mapping, composition → spatial arrangement, texture → noise/grain | Rothko's orange/red → warm layered pad, dense, slow-moving, high saturation |
+| **Poetry** | Text | Meter → rhythm, vowels → formant shapes, imagery → timbral metaphor, line breaks → envelope | Rilke sonnet → legato strings with breath-like modulation, German Romantic reverb |
+| **Mathematics** | Equations / models | Variables → parameters, relationships → modulation routing, constants → fixed values | Lorenz attractor → three coupled oscillators with chaotic cross-modulation |
+| **Science** | Theories / phenomena | Physical properties → DSP parameters, scale → register, energy → dynamics | Bioluminescence → XOceanic preset with chromatophore pulse matching ATP reaction rates |
+| **Color Palettes** | Hex values / swatches | Hue → pitch register, saturation → harmonic density, brightness → filter cutoff | `#2D0A4E, #FF8C00, #00B4A0` → dark bass + bright lead + mid-range shimmer |
+
+### How It Works
+
+```
+USER INPUT (recipe, image, poem, equation, palette)
+         │
+         ▼
+SYNESTHESIA ENGINE (AI model)
+├── Analyzes input for: energy, texture, movement, density, warmth, space
+├── Maps to 6D Sonic DNA: brightness, warmth, movement, density, space, aggression
+├── Selects: engine(s), voice(s), FX recipe, wildcard, macro positions
+├── Generates: .xometa preset file with all parameter values
+         │
+         ▼
+PRESET (loadable in XOmnibus, editable, sharable)
+├── Metadata includes: source input, AI interpretation notes, Sonic DNA values
+├── User can tweak any parameter — the AI output is a starting point, not a cage
+└── Community can vote/rate AI-generated presets
+```
+
+### Community Integration
+
+The Synesthesia Engine is inherently social:
+- **"This tastes like..."** — share a recipe and hear what the community's AI generates
+- **"This looks like..."** — share an artwork and compare interpretations
+- **Synesthesia Challenges** — weekly prompts ("Generate a preset from this haiku")
+- **Calibration** — users rate AI presets, improving the mapping model over time
+- **Reverse synesthesia** — given a preset, the AI generates a recipe / poem / color palette that matches it
+
+### Relationship to Collections
+
+Every XOmnibus Collection gets its own synesthesia domain (see `xomnibus_collections_vision.md`):
+
+| Collection | Primary Synesthesia Domain | Community Touchpoint |
+|-----------|---------------------------|---------------------|
+| Culinary (Kitchen Essentials) | Recipes | Cookbook |
+| *(Future)* Science Collection | Theories, equations, phenomena | Research journal |
+| *(Future)* Constellation Collection | Star charts, astronomical events | Observatory log |
+| Founder's Originals | The music itself | Patch library |
+
+---
+
 ## Open Questions
 
 1. **Accent colors** — Does each quad share a color family, or does each engine get its own? The culinary metaphor suggests warm palette families (copper tones for Kitchen, deep reds for Cellar, greens for Garden, etc.). Choir might use throat/flesh tones or warm neutrals.
@@ -777,3 +906,6 @@ Each company's character becomes a spice that transforms the base instrument. Th
 7. **5th slot architecture** — The Fusion unlock requires extending the MegaCouplingMatrix from 4×4 to 5×5 (or 4+1). How does this interact with the existing engine slot management in `EngineRegistry.h`? Does the 5th slot get its own DSP bus, or does it share with one of the Kitchen slots?
 8. **Other unlock paths?** — Currently only Full Kitchen unlocks the 5th slot. Could other full-quad loadouts (all 4 Chefs, all 4 Cellars) unlock different secret behaviors? Or is Fusion the only secret quad?
 9. **Choir voice synthesis** — What synthesis approach for vocal engines? Formant synthesis, sample-based, physical modeling of vocal tract, or hybrid? Each engine might use a different approach (XOrison = sample choir, XOrate = physical model, XOvertone = additive harmonics).
+10. **Farmers Market instrument groups** — What instrument families map to the 8 market stalls? Brass? Woodwinds? Mallets? World instruments? Plucked strings? Or do we break from Western instrument taxonomy entirely and let the stall concept drive the synthesis approach?
+11. **Synesthesia Engine scope** — On-device (privacy, offline) vs cloud (more powerful model)? Or hybrid with local fast-draft + optional cloud refinement? What's the minimum viable version — recipe→preset only, or multi-domain from launch?
+12. **Cookbook logistics** — Who writes the real recipes? Partner with food bloggers/chefs? Community-sourced? AI-generated recipes to start, human-curated later? What's the legal model for community recipe submissions?
