@@ -95,13 +95,47 @@ The kitchen IS the instrument. Hammers hit strings inside resonant bodies — bu
 
 ---
 
-## Quad 3: FUSION — Electric Pianos (The Crossroads)
+## Quad 3: CHOIR — Voices (The Table)
 
 **Status:** Concept
+**Coupling mode:** Conversational — call and response, harmony, counterpoint, unison
+**Instrument group:** Voices — sacred, operatic, percussive, harmonic
+
+The table is where the food is served and the meal becomes an occasion. Food without people is inventory. People without food is just a room. The table is the human element — conversation, toasts, grace, singing, laughter, the voices that transform ingredients into memories. Voices are the most fundamental instrument. Every culture sings before it builds a piano or stretches a string. Choir is the table where the Culinary Collection gathers.
+
+| Engine | Table Role | Voice Archetype | Character |
+|--------|-----------|----------------|-----------|
+| **XOrison** | Grace / blessing | Sacred Choir | Reverent, blended, cathedral. Many voices becoming one. The prayer before the meal — gratitude made audible. From solo cantor to massed choir, the sound of devotion across every tradition. Orison = a prayer. |
+| **XOpera** | The toast | Operatic Voice | Dramatic, solo, projecting. One voice filling the room. The toast that silences the table — grand, emotional, commanding. Soprano to bass, bel canto to sprechstimme. Every emotion at full volume. |
+| **XOral** | Kitchen calls | Beatbox / Vocal Percussion | "Order up!" "Behind!" "Yes, Chef!" The rhythmic vocal percussion of a working kitchen. Mouth as instrument, body as drum. Beatbox, mouth percussion, tongue clicks, breath hits — the voice stripped of melody and rebuilt as rhythm. |
+| **XOvertone** | The hum | Throat Singing / Harmonics | The low conversation underneath everything. One voice containing multitudes — Tuvan khoomei, Sardinian tenore, Tibetan chant. The background hum of a full restaurant. Fundamentals so rich that harmonics emerge as separate melodies. |
+
+**Coupling behavior:** Conversational — when Choir engines couple, they enter dialogue. XOrison's choir responds to XOpera's solo like a congregation answering a cantor. XOral's rhythms lock to XOvertone's drone like table percussion over ambient conversation. The coupling IS dinner table conversation — voices weaving around each other, sometimes in harmony, sometimes in argument, always in relationship.
+
+**Shared parameter vocabulary:**
+- **Breath** — air in the voice (breathy whisper → pure tone → pressed shout)
+- **Vowel shape** — formant position (ah → ee → oo → oh → mm)
+- **Vibrato** — the human tremor (none → gentle → operatic → extreme)
+- **Ensemble size** — solo → quartet → choir → crowd → stadium
+- **Diction** — consonant clarity (mumbled → crisp → percussive)
+- **Register** — bass → baritone → tenor → alto → soprano (continuous, not stepped)
+
+**Prefix:** `oris_`, `opera_`, `oral_`, `overt_`
+
+---
+
+## SECRET QUAD: FUSION — Electric Pianos (The 5th Slot)
+
+**Status:** Concept — Secret unlock mechanic
 **Coupling mode:** Migratory — cultural collision, genre-crossing, hybrid identity
 **Instrument group:** Electric pianos — tine, reed, pickup, FM
+**Access:** Unlocked as a **5th engine slot** when all 4 Kitchen engines are loaded
 
 Electric pianos exist because genres collided. Jazz needed amplification. Funk needed percussive keys. Pop needed shimmer. R&B needed warmth-at-volume. Every EP is a fusion instrument — acoustic principles married to electric amplification, creating sounds that belong to no single tradition. The crossroads where blues met jazz met soul met pop met electronic.
+
+**You can't do fusion cooking without a fully equipped kitchen.** Load all 4 Kitchen surfaces (Cast Iron, Copper, Stone, Glass) into the coupling matrix and a 5th slot appears — the Fusion slot. The kitchen is complete, the chef is ready, and now fusion cuisine becomes possible. This is XOmnibus's prestige configuration: commitment to the Kitchen quad rewards you with a secret instrument group that couples with all 4 surfaces simultaneously.
+
+*(See "The 5th Slot — Fusion Unlock Mechanic" section below for full details.)*
 
 | Engine | Cuisine Influence | EP Archetype | Character |
 |--------|-------------------|-------------|-----------|
@@ -111,6 +145,8 @@ Electric pianos exist because genres collided. Jazz needed amplification. Funk n
 | **XOpcode** | Silicon Valley → Tokyo | DX / FM Electric Piano | Crystalline, digital, impossibly clean. FM synthesis creating bell-like tones that don't exist in nature. The sound of the 1980s imagining the future. Algorithm as recipe. |
 
 **Coupling behavior:** Migratory — when Fusion engines couple, sounds adopt characteristics of each other's tradition. XOasis absorbs XOnkolo's percussive attack; XOpcode inherits XOddfellow's reed warmth. The coupling is cultural exchange — each engine returns from the encounter carrying something new.
+
+**5th-slot coupling:** When loaded in the Fusion slot, the EP engine couples with ALL 4 Kitchen surfaces simultaneously. XOasis on cast iron AND copper AND stone AND glass at once. The coupling weights are controlled by the Kitchen engines' positions in the matrix — each surface contributes its character proportionally.
 
 **Shared parameter vocabulary:**
 - **Pickup position** — where the transducer sits relative to the vibrating element
@@ -213,20 +249,94 @@ The four engines map to four culinary liquid processes, each operating on a diff
 
 ---
 
+## The 5th Slot — Fusion Unlock Mechanic
+
+XOmnibus has 4 engine slots. Always has. The Culinary Collection introduces a **secret 5th slot** — the Fusion slot — that appears only under a specific condition:
+
+### How to Unlock
+
+```
+SLOT 1: XOven    (Cast Iron)    ─┐
+SLOT 2: XOchre   (Copper)       │ ALL 4 KITCHEN ENGINES LOADED
+SLOT 3: XObelisk (Stone)        │
+SLOT 4: XOpaline (Glass)        ─┘
+                                 ↓
+         ╔═══════════════════════════╗
+         ║  SLOT 5: FUSION UNLOCKED  ║
+         ║  Choose: XOasis           ║
+         ║          XOddfellow       ║
+         ║          XOnkolo          ║
+         ║          XOpcode          ║
+         ╚═══════════════════════════╝
+```
+
+**The rule:** Load all 4 Kitchen surfaces into the coupling matrix. When the last Kitchen engine drops into place, the 5th slot fades in — a new position in the UI that wasn't there before. Select one of the 4 Fusion engines to fill it.
+
+### Why This Works
+
+**Thematically:** You can't do fusion cooking without a fully equipped kitchen. Master all four surfaces — cast iron, copper, stone, glass — and you've earned the right to attempt fusion. Every great fusion chef first mastered classical technique. The 5th slot IS that mastery reward.
+
+**Musically:** The Fusion engine couples with ALL 4 Kitchen surfaces simultaneously. XOasis's Rhodes bell-tones processed through cast iron's mass AND copper's responsiveness AND stone's cold resonance AND glass's fragility at once. Five-way coupling. No other configuration in XOmnibus can do this.
+
+**As discovery mechanic:** Players who load a full Kitchen quad discover the unlock organically. No tutorial tells them. The slot just appears. Word spreads through the community: "Load all 4 Kitchen engines and see what happens." This is the XOmnibus equivalent of a fighting game's hidden character — a reward for commitment that deepens the experience for those who find it.
+
+### 5th Slot Coupling Rules
+
+- The Fusion engine occupies a new 5th position in the MegaCouplingMatrix
+- It can send/receive modulation to/from all 4 Kitchen engines
+- Coupling type with Kitchen is always **Plate** (Kitchen × Fusion's native coupling verb)
+- The Fusion engine CANNOT couple with non-Kitchen engines in this configuration (it only exists BECAUSE the Kitchen is complete)
+- All 4 Fusion FX recipes (Dashi, Mole, Jus, Chimichurri) remain available
+- Wildcards for the Fusion engine function normally
+
+### The Math
+
+Normal configuration: 4 engines × 4 voices × 4 FX × 4 wildcards = **1,024 configurations**
+Full Kitchen + Fusion: 4 Kitchen engines (locked) × 4 Fusion voices × 4 FX × 4 wildcards × 5-way coupling = **64 Fusion configurations layered over the locked Kitchen**
+
+This is the prestige mode. The reward for commitment. The secret menu.
+
+### UI Behavior
+
+- Before unlock: 4 engine slots visible, normal operation
+- During unlock: When the 4th Kitchen engine is loaded, the 5th slot animates in with a 500ms fade. A subtle XO Gold shimmer sweeps across the interface — the visual equivalent of the kitchen coming alive
+- The slot position: Below or beside the 4 standard slots (never displaces them)
+- If any Kitchen engine is removed, the 5th slot fades out (100ms). The Fusion engine is gracefully crossfaded to silence before removal
+- Preset recall: Presets that use the 5th slot auto-load all 4 Kitchen engines + the Fusion engine. The unlock is implicit in the preset — users who load a Fusion preset discover the mechanic through preset browsing
+
+---
+
 ## Cross-Quad Coupling: The Full Kitchen
 
 The Culinary Collection's power isn't in individual quads — it's in what happens when the kitchen operates as a whole. Six coupling modes create 15 unique quad-pair interactions:
 
-### Coupling Mode Matrix
+### Coupling Mode Matrix (6 Standard Quads)
 
 ```
-         CHEF    KITCHEN  FUSION   GARDEN   CELLAR   BROTH
-CHEF      —      Temper   Season   Harvest  Ferment  Poach
-KITCHEN   —       —       Plate    Press    Cure     Steam
-FUSION    —       —        —       Graft    Pickle   Marinate
+         CHEF    KITCHEN  CHOIR    GARDEN   CELLAR   BROTH
+CHEF      —      Temper   Chant    Harvest  Ferment  Poach
+KITCHEN   —       —       Announce Press    Cure     Steam
+CHOIR     —       —        —       Serenade Toast    Hymn
 GARDEN    —       —        —        —       Root     Steep
 CELLAR    —       —        —        —        —       Dissolve
 BROTH     —       —        —        —        —        —
+```
+
+**New Choir coupling verbs:**
+- **Chef × Choir (Chant):** The cook sings while cooking. Organ drones beneath choral voices — liturgical, meditative, the hum of a working kitchen.
+- **Kitchen × Choir (Announce):** "Order up!" Voice calls over piano surfaces. Percussive vocal attacks triggering surface resonances.
+- **Choir × Garden (Serenade):** Voice over strings. The most ancient pairing in music. Lieder, opera arias, folk songs — voice and string in conversation.
+- **Choir × Cellar (Toast):** Voice over bass. The toast — one voice rising over the low hum of the room. Call and response between registers.
+- **Choir × Broth (Hymn):** Voice immersed in atmosphere. Cathedral acoustics, ambient choir, the voice dissolved into reverberant space.
+
+**Fusion coupling:** When the 5th slot is active, Fusion couples with all 4 Kitchen engines via the **Plate** verb. Fusion does NOT appear in the standard matrix — it exists outside the grid, connected only through its Kitchen prerequisite.
+
+```
+         ┌─── KITCHEN ───┐
+         │  Oven  Ochre   │
+FUSION ──┤                ├── (Plate coupling to all 4)
+         │  Obelisk Opaline│
+         └────────────────┘
 ```
 
 ### Signature Cross-Quad Behaviors
@@ -239,39 +349,48 @@ BROTH     —       —        —        —        —        —
 
 **Garden × Broth (Steep):** Ingredient meets liquid. XOvergrow's raw solo string steeped in XOverworn — the vibrato erodes imperceptibly over minutes. XOxalis's synth strings infused by XOverwash — geometric patterns dissolving into organic flow.
 
-**Fusion × Garden (Graft):** Crossroads meets ingredient. XOasis's Rhodes absorbs XOrchard's orchestral lushness — the tine bell-tone develops string sustain. XOnkolo's clavinet funk grafted onto XOsier's chamber weave — percussive pluck with intimate bowed tail.
+**Choir × Garden (Serenade):** Voice meets string. XOpera's operatic voice over XOrchard's orchestral strings — the oldest pairing in Western music. XOvertone's harmonics woven into XOsier's chamber texture — overtone singing becomes the viola's ghost.
+
+**Choir × Cellar (Toast):** Voice meets foundation. XOral's beatbox over XOgre's sub — mouth percussion with seismic weight. XOrison's choir over XOxbow's analog bass — hymn with analog gravity.
 
 **Cellar × Broth (Dissolve):** Foundation meets medium. XOgre's sub dissolved in XOvercast — sub-bass flash-frozen into crystalline structure. XOmega's FM bass reduced by XOverworn — digital precision slowly eroded into analog warmth.
 
 ---
 
-## Four Signature Confluences
+## Five Signature Confluences
 
-When specific engines from different quads align, special behaviors emerge — the Culinary Collection's equivalent of the Water Quad's locked Confluences.
+When specific engines from different quads align, special behaviors emerge — the Culinary Collection's equivalent of the Water Quad's locked Confluences. Two of these (Omakase, Mole) require the 5th Slot Fusion unlock — they're prestige configurations.
 
 ### 1. "Sunday Gravy" — XOtis × XOven × XOxbow × XOverworn
 *Hammond B3 on cast iron, over analog bass, reducing all day.*
 
 Session-long preset. Starts as bright tonewheel funk over fat Moog bass. Over 20 minutes, XOverworn imperceptibly steals harmonics from both. By the end, you have a dark, thick, reduced texture that sounds nothing like where it started — but every moment of the transition was musically valid. Sunday gravy takes eight hours. This takes twenty minutes. Worth every second.
 
-### 2. "Omakase" — XOto × XOpaline × XOpcode × XOvercast
-*Shō cluster through glass, over FM bass, flash-frozen.*
+### 2. "Omakase" — XOto × XOpaline × XOpcode × XOvercast *(Requires 5th Slot)*
+*Shō cluster through glass, with FM EP shimmer, flash-frozen.*
 
-The chef's choice. Oto's 11-note aitake cluster resonates through XOpaline's crystalline body. XOpcode's FM harmonics add digital shimmer underneath. Then XOvercast triggers — everything flash-freezes. The moment captured. No two triggers sound the same because the cluster, glass resonance, and FM ratios are all in continuous motion. The chef serves what the moment demands.
+The chef's choice — and the ultimate prestige confluence. This one REQUIRES the Fusion unlock: XOpaline is one of the 4 Kitchen engines, and XOpcode is a Fusion engine in the 5th slot. But it also uses XOto (Chef) and XOvercast (Broth), which means two of the Kitchen slots are occupied by non-Kitchen engines... unless this is a special 5-engine confluence: all 4 Kitchen engines + XOpcode in slot 5, with XOto and XOvercast coupled from outside the Collection. The chef's choice indeed — the most complex configuration in the entire system. Oto's aitake cluster resonates through the full kitchen. XOpcode adds FM shimmer from the Fusion slot. XOvercast flash-freezes. No two triggers sound the same.
 
 ### 3. "Fermentation" — XOleg × XObelisk × XOaken × XOverflow
 *Bayan on stone, over upright bass, pressure building.*
 
 Oleg's bellows push air across XObelisk's cold marble. XOaken's wooden body resonates below. XOverflow seals the system — pressure builds phrase by phrase. Harmonics compress, distortion accumulates, everything gets tighter and hotter until the valve opens and the fermented release is rich, complex, and slightly dangerous. Controlled rot as art form.
 
-### 4. "Mole" — XOctave × XOchre × XOnkolo × XOxalis
+### 4. "Mole" — XOctave × XOchre × XOnkolo × XOxalis *(Requires 5th Slot)*
 *Baroque organ on copper, with clavinet funk, through synth string sauce.*
 
-Thirty ingredients. Three days. One sauce. Octave's baroque chiff transients hit XOchre's responsive copper surface. XOnkolo adds rhythmic clavinet funk from below. XOxalis wraps everything in filtered synth-string texture — the mole sauce that somehow tastes like chocolate and chili and smoke and fruit all at once. Complexity that reads as unity. The coupling that takes the longest to tune but rewards patience with sounds nothing else can produce.
+Thirty ingredients. Three days. One sauce. Another prestige confluence requiring the Fusion unlock — XOnkolo (Clavinet) lives in the 5th slot, coupled into the full Kitchen where XOchre's copper is one of the 4 loaded surfaces. Octave's baroque chiff transients hit copper's responsive surface. XOnkolo adds rhythmic clavinet funk through the Fusion slot's 5-way coupling. XOxalis wraps everything in filtered synth-string texture — the mole sauce that somehow tastes like chocolate and chili and smoke and fruit all at once. The coupling that takes the longest to tune but rewards patience with sounds nothing else can produce.
+
+### 5. "Grace" — XOrison × XOrchard × XOaken × XOverwash *(NEW — Choir Confluence)*
+*Sacred choir over orchestral strings, upright bass below, diffusion washing through.*
+
+The dinner prayer. XOrison's blended choir voice hovers over XOrchard's orchestral strings — the most ancient pairing in Western music. XOaken's upright bass provides the wooden, warm foundation (the table itself). XOverwash slowly infuses everything — the choir's vowels bleed into the strings, the strings absorb the bass's warmth, and over time the four voices become one gently pulsing atmosphere. The meal hasn't started yet. Everyone's eyes are closed. This is gratitude made audible.
 
 ---
 
 ## Engine Summary Table
+
+### Standard Engines (24 — available in normal 4-slot mode)
 
 | # | Quad | Engine | Instrument | Prefix | Accent Color (TBD) |
 |---|------|--------|-----------|--------|---------------------|
@@ -283,10 +402,10 @@ Thirty ingredients. Three days. One sauce. Octave's baroque chiff transients hit
 | 6 | Kitchen | XOchre | Upright Piano (Copper) | `ochre_` | — |
 | 7 | Kitchen | XObelisk | Prepared Piano (Stone) | `obel_` | — |
 | 8 | Kitchen | XOpaline | Toy Piano / Celesta (Glass) | `opal2_` | — |
-| 9 | Fusion | XOasis | Rhodes / Tine EP | `oasis_` | — |
-| 10 | Fusion | XOddfellow | Wurlitzer / Reed EP | `oddf_` | — |
-| 11 | Fusion | XOnkolo | Clavinet / Pickup Keys | `onko_` | — |
-| 12 | Fusion | XOpcode | DX / FM EP | `opco_` | — |
+| 9 | Choir | XOrison | Sacred Choir | `oris_` | — |
+| 10 | Choir | XOpera | Operatic Voice | `opera_` | — |
+| 11 | Choir | XOral | Beatbox / Vocal Percussion | `oral_` | — |
+| 12 | Choir | XOvertone | Throat Singing / Harmonics | `overt_` | — |
 | 13 | Garden | XOrchard | Orchestral Strings | `orch_` | — |
 | 14 | Garden | XOvergrow | Solo Strings | `grow_` | — |
 | 15 | Garden | XOsier | Chamber Strings | `osier_` | — |
@@ -300,6 +419,17 @@ Thirty ingredients. Three days. One sauce. Octave's baroque chiff transients hit
 | 23 | Broth | XOverflow | Pressure Pad | `flow_` | — |
 | 24 | Broth | XOvercast | Crystallization Pad | `cast_` | — |
 
+### Secret Engines (4 — 5th slot, requires Full Kitchen unlock)
+
+| # | Quad | Engine | Instrument | Prefix | Accent Color (TBD) |
+|---|------|--------|-----------|--------|---------------------|
+| 25 | Fusion | XOasis | Rhodes / Tine EP | `oasis_` | — |
+| 26 | Fusion | XOddfellow | Wurlitzer / Reed EP | `oddf_` | — |
+| 27 | Fusion | XOnkolo | Clavinet / Pickup Keys | `onko_` | — |
+| 28 | Fusion | XOpcode | DX / FM EP | `opco_` | — |
+
+**28 total engines: 24 standard + 4 secret.**
+
 ---
 
 ## Relationship to Existing Quads
@@ -309,6 +439,8 @@ The Culinary Collection absorbs and extends the existing quad concepts:
 - **Chef Quad** → Culinary Collection Quad 1 (unchanged, fully designed)
 - **Water Quad** → Evolves into **Broth Quad** (Quad 6). Same four engines (Overwash, Overworn, Overflow, Overcast), same time-scale framework, but now explicitly mapped to the Pad/Atmosphere instrument group and reframed as liquid cooking processes rather than raw water phenomena.
 - **Botanical Quad** (previously discussed) → The botanical concepts (ferment, reduce, infuse) are distributed across the Garden and Broth quads rather than forming a standalone quad. Growth lives in Garden (strings). Liquid transformation lives in Broth (pads). This avoids a phenomena-only quad with no instrument anchor.
+- **Fusion Quad** → Promoted from standard quad to **secret 5th-slot unlock**. EP instruments were always fusion instruments by nature — acoustic principles married to electric amplification. Making them a secret reward for committing to a full Kitchen loadout is thematically perfect: you can't do fusion cooking without mastering the fundamentals first.
+- **Choir Quad** → **NEW** — fills the voice-shaped hole in the instrument taxonomy. Organ, piano, strings, bass, pads were all covered — but no voices. The Table is where the meal becomes an occasion.
 
 The `dual_quad_relationships.md` Confluences (Crank the Serpent, Aitake Dissolves, Yellowstone Glass, Cathedral Inhales) remain valid — they describe cross-quad coupling with existing XOmnibus engines (Ouroboros, Oceanic, Obsidian, Opal). The four new Culinary Confluences (Sunday Gravy, Omakase, Fermentation, Mole) are internal to the Collection.
 
@@ -327,7 +459,8 @@ Every quad follows the same architecture established by the Chef Quad:
 
 **Per engine:** 4 voices × 4 FX recipes × 4 wildcards = **64 configurations**
 **Per quad:** 4 engines × 64 = **256 configurations**
-**Full collection:** 6 quads × 256 = **1,536 configurations before coupling**
+**Standard collection:** 6 quads × 256 = **1,536 configurations before coupling**
+**With Fusion unlock:** + 4 Fusion engines × 64 = **+256 secret configurations (1,792 total)**
 
 ### What Each Axis Does
 
@@ -339,7 +472,7 @@ Every quad follows the same architecture established by the Chef Quad:
 
 The wildcard isn't a preset — it's a *coloring agent*. When you select "OP-1" as Oto's wildcard, it doesn't turn the Shō into an OP-1. It applies OP-1's *character* — its lo-fi sampling grain, its quirky sequencing artifacts, its cassette-deck warmth — as a processing and modulation layer over the organ voice. The instrument stays itself; the wildcard changes *how it's perceived*.
 
-**Each company appears exactly once across all 24 engines. No repeats.**
+**Each company appears exactly once across all 28 engines. No repeats.**
 
 ---
 
@@ -401,7 +534,29 @@ How the surface is heated. Four ways energy transfers through material into soun
 
 ---
 
-### Fusion Recipes: SAUCE BASES
+### Choir Recipes: SERVICE STYLES
+
+How the meal is presented. Four front-of-house philosophies that determine how the voice reaches the listener.
+
+| Recipe | Service | FX Chain | Character |
+|--------|---------|----------|-----------|
+| **Tableside** | Prepared at your table, intimate, personal | Close room reverb → gentle compression → presence EQ boost | Right there. No distance. You can hear the breath, the lip sounds, the humanity. Caesar salad tossed in front of you. The voice at arm's length — intimate, unmediated, every detail audible. |
+| **Banquet** | Grand hall, formal service, silver and crystal | Large hall reverb → soft compression → warm low-mid EQ | The wedding reception. Formal, spacious, every voice echoing in the grand room. The toast that reaches 200 guests. Silver service, white tablecloths, the sound of occasion. |
+| **Tapas** | Small plates, many courses, casual, social | Short slapback delay → chorus → bright EQ → tight room | Quick, varied, social. Barcelona energy. The voice darting between conversations, picking up fragments, alive with movement. Each phrase a small plate — distinct, flavorful, gone before you're ready. |
+| **Kaiseki** | Multi-course, seasonal, each plate a poem | Granular processing → spectral freeze → evolving reverb → randomized gentle filter | You don't choose — the chef presents what the moment demands. Each note is its own course, prepared and presented with ritual precision. Unpredictable, surprising, trust-based. The recipe that changes every time because the season changed. |
+
+**Per-voice interpretation:**
+
+| | Tableside | Banquet | Tapas | Kaiseki |
+|---|---|---|---|---|
+| **XOrison** (Sacred Choir) | Chapel — small stone room, 6 monks, you sit among them. | Cathedral — Notre-Dame, 40 voices, the reverb IS the instrument. | Taizé — short repeated chants, communal, many small prayers. | Hildegard von Bingen — each chant a seasonal offering, mystical, unique. |
+| **XOpera** (Operatic) | Lieder recital — singer and piano, drawing room, 30 people. | La Scala — full production, orchestra, 2,000 seats, the big night. | Cabaret — Weill, Piaf, small stage, quick songs, cigarette smoke. | Sprechstimme — Schoenberg, each phrase its own world, unpredictable delivery. |
+| **XOral** (Beatbox) | Cypher — the circle, one beatboxer, you're in the crowd. | Stadium — Rahzel at a hip-hop arena, the mouth filling the space. | Battle — quick rounds, trading bars, response energy. | Sō Percussion — prepared-vocal, each sound a composed gesture, John Cage meets the mouth. |
+| **XOvertone** (Throat Singing) | Yurt — one singer, felt walls, the harmonics bounce between you. | Monastery — Tibetan chant in the great hall, walls vibrating. | Tuvan festival — singers trading techniques, competitive overtones. | Alvin Lucier — "I Am Sitting in a Room," the voice gradually becoming the space itself. |
+
+---
+
+### Fusion Recipes: SAUCE BASES (Secret — 5th Slot Only)
 
 What binds the fusion. Four mother-sauce philosophies that hold disparate traditions together.
 
@@ -492,21 +647,27 @@ What the medium becomes. Four fundamental approaches to liquid that determine wh
 ## FX Recipe Summary
 
 ```
-CHEF (Organ)           KITCHEN (Piano)        FUSION (EP)
-├─ Raw                 ├─ Sear                ├─ Dashi
-├─ Grilled             ├─ Bake                ├─ Mole
-├─ Braised             ├─ Smoke               ├─ Jus
-└─ Fermented           └─ Torch               └─ Chimichurri
+CHEF (Organ)           KITCHEN (Piano)        CHOIR (Voices)
+├─ Raw                 ├─ Sear                ├─ Tableside
+├─ Grilled             ├─ Bake                ├─ Banquet
+├─ Braised             ├─ Smoke               ├─ Tapas
+└─ Fermented           └─ Torch               └─ Kaiseki
 
 GARDEN (Strings)       CELLAR (Bass)          BROTH (Pads)
 ├─ Fresh               ├─ Green               ├─ Clear
 ├─ Dried               ├─ Barrel              ├─ Bone
 ├─ Pickled             ├─ Cave                ├─ Bisque
 └─ Composted           └─ Charred             └─ Dipping
+
+SECRET: FUSION (EP) — 5th Slot
+├─ Dashi
+├─ Mole
+├─ Jus
+└─ Chimichurri
 ```
 
-**24 recipe names. Each interpreted 4 ways (per engine in quad) = 96 unique FX chains.**
-**Combined with 4 voices × 4 wildcards = 1,536 configurations per collection.**
+**28 recipe names. Each interpreted 4 ways (per engine in quad) = 112 unique FX chains.**
+**Standard: 24 engines × 64 configs = 1,536. With Fusion unlock: 1,792 total.**
 
 ---
 
@@ -530,7 +691,16 @@ GARDEN (Strings)       CELLAR (Bass)          BROTH (Pads)
 | **XObelisk** | **Ciat-Lonbarde** | Stone meets Peter Blasser's tactile chaos. Banana-jack patching, hand-built wooden instruments, unpredictable circuit paths. The ultimate prepared piano wildcard — objects on strings, but the objects are alive. | Sidrax Organ, Plumbutter, Cocoquantus, Tetrax Organ |
 | **XOpaline** | **Bastl Instruments** | Glass meets Czech DIY playfulness. microGranny's lo-fi sampling, Kastle's tiny chaotic synthesis — fragile, charming, unexpectedly beautiful sounds from minimal circuits. The toy piano of the modular world. | microGranny, Kastle, Softpop, Thyme |
 
-### Quad 3: FUSION — Electric Pianos
+### Quad 3: CHOIR — Voices
+
+| Engine | Company | Why This Pairing | Products |
+|--------|---------|-----------------|----------|
+| **XOrison** | **Eventide** | Sacred choir needs Eventide's harmonizer heritage. H9000's pitch algorithms are practically liturgical — stacking voices in perfect intervals, creating choirs from single tones. The company that invented harmonization as an instrument. 50 years of making one voice sound like many. | H9000, H90, UltraTap, MicroPitch |
+| **XOpera** | **Hologram Electronics** | Operatic drama meets Portland's granular dreamers. Dream Sequence's textural processing turns a single voice into a spectral aria. Infinite Jets sustains vocal tones into infinity. The diva and the pedal — theatrical voice dissolved into particles, then reassembled as something larger than life. | Dream Sequence, Infinite Jets, Microcosm, Chroma Console |
+| **XOral** | **KOMA Elektronik** | Beatbox needs Berlin's physical, industrial energy. KOMA builds instruments you TOUCH — Field Kit's contact mic sampling, Kommander's gesture control. The mouth is the most physical instrument; KOMA makes electronics equally physical. Hands, lips, throat, circuits — all body. | Field Kit, Kommander, Poltergeist, RH301 |
+| **XOvertone** | **Qu-Bit Electronix** | Throat singing's harmonic series meets Qu-Bit's spectral processing. Nebulae's granular sampling can isolate individual overtones. Data Bender's digital destruction reveals hidden harmonics. The voice that contains multitudes, processed by circuits that can hear each one separately. | Nebulae, Data Bender, Surface, Chord v2 |
+
+### Secret Quad: FUSION — Electric Pianos (5th Slot Unlock)
 
 | Engine | Company | Why This Pairing | Products |
 |--------|---------|-----------------|----------|
@@ -568,23 +738,29 @@ GARDEN (Strings)       CELLAR (Bass)          BROTH (Pads)
 
 ---
 
-## Complete Wildcard Map (24 Companies)
+## Complete Wildcard Map (28 Companies)
 
 ```
-CHEF (Organ)         KITCHEN (Piano)       FUSION (EP)
-├─ Teenage Eng.      ├─ Moog               ├─ Chase Bliss
-├─ Arturia           ├─ Elektron           ├─ Dreadbox
-├─ Erica Synths      ├─ Ciat-Lonbarde      ├─ Gamechanger Audio
-└─ The Oddballs      └─ Bastl Instruments   └─ Waldorf
+CHEF (Organ)         KITCHEN (Piano)       CHOIR (Voices)
+├─ Teenage Eng.      ├─ Moog               ├─ Eventide
+├─ Arturia           ├─ Elektron           ├─ Hologram Electronics
+├─ Erica Synths      ├─ Ciat-Lonbarde      ├─ KOMA Elektronik
+└─ The Oddballs      └─ Bastl Instruments   └─ Qu-Bit Electronix
 
 GARDEN (Strings)     CELLAR (Bass)         BROTH (Pads)
 ├─ Sequential        ├─ Noise Engineering  ├─ Strymon
 ├─ Soma Laboratory   ├─ Make Noise         ├─ Empress Effects
 ├─ Instruo           ├─ Folktek            ├─ Endorphin.es
 └─ Mutable Inst.     └─ 4ms                └─ Polyend
+
+SECRET: FUSION (EP) — 5th Slot
+├─ Chase Bliss
+├─ Dreadbox
+├─ Gamechanger Audio
+└─ Waldorf
 ```
 
-**24 engines. 24 companies. Zero repeats.**
+**28 engines. 28 companies. Zero repeats.**
 
 Each company's character becomes a spice that transforms the base instrument. The wildcard never replaces the voice — it *seasons* it. A Shō is still a Shō with OP-1 selected as wildcard; it just gains OP-1's lo-fi cassette warmth and sequencing quirks. A concert grand is still a concert grand with Moog selected; it just gains Moog's filter resonance and analog saturation as processing layers.
 
@@ -592,9 +768,12 @@ Each company's character becomes a spice that transforms the base instrument. Th
 
 ## Open Questions
 
-1. **Accent colors** — Does each quad share a color family, or does each engine get its own? The culinary metaphor suggests warm palette families (copper tones for Kitchen, deep reds for Cellar, greens for Garden, etc.)
-2. **FX recipes — DSP implementation** — Recipe archetypes are designed (Raw/Grilled/Braised/Fermented etc.). Next step: translate each recipe's FX chain into specific DSP module selections, parameter ranges, and routing from the XOmnibus shared DSP library.
+1. **Accent colors** — Does each quad share a color family, or does each engine get its own? The culinary metaphor suggests warm palette families (copper tones for Kitchen, deep reds for Cellar, greens for Garden, etc.). Choir might use throat/flesh tones or warm neutrals.
+2. **FX recipes — DSP implementation** — Recipe archetypes are designed for all 7 quads (28 recipes total). Next step: translate each recipe's FX chain into specific DSP module selections, parameter ranges, and routing from the XOmnibus shared DSP library.
 3. **Aquatic identity** — Does the Culinary Collection sit within the water column mythology? If so, where? The kitchen is on land — on the shore, perhaps. The osteria at the water's edge.
-4. **Integration priority** — Which quad builds first after Chef? Kitchen (Piano) and Cellar (Bass) are the most universally needed.
+4. **Integration priority** — Which quad builds first after Chef? Kitchen (Piano) and Cellar (Bass) are the most universally needed. Kitchen is now even more critical since it gates the Fusion unlock.
 5. **XOpaline vs XOpal** — Name collision. XOpal already exists in the main engine roster. XOpaline is distinct but close. Consider alternatives: XObjet, XOrnament, XOverture.
 6. **Preset strategy** — Do Culinary Collection presets use the same 6 moods, or develop culinary-specific categories (Appetizer, Entrée, Dessert, etc.)?
+7. **5th slot architecture** — The Fusion unlock requires extending the MegaCouplingMatrix from 4×4 to 5×5 (or 4+1). How does this interact with the existing engine slot management in `EngineRegistry.h`? Does the 5th slot get its own DSP bus, or does it share with one of the Kitchen slots?
+8. **Other unlock paths?** — Currently only Full Kitchen unlocks the 5th slot. Could other full-quad loadouts (all 4 Chefs, all 4 Cellars) unlock different secret behaviors? Or is Fusion the only secret quad?
+9. **Choir voice synthesis** — What synthesis approach for vocal engines? Formant synthesis, sample-based, physical modeling of vocal tract, or hybrid? Each engine might use a different approach (XOrison = sample choir, XOral = physical model, XOvertone = additive harmonics).
