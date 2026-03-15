@@ -267,6 +267,27 @@ New engines are designed as standalone instruments first, then integrated into X
 
 ---
 
+## Skill Library
+
+Reusable skill guides live in `Skills/` — invoke the relevant one before starting each task type.
+
+| Skill | Invoke | When to Use |
+|-------|--------|-------------|
+| [coupling-preset-designer](Skills/coupling-preset-designer/SKILL.md) | `/coupling-preset-designer` | Creating Entangled mood presets with cross-engine coupling |
+| [coupling-interaction-cookbook](Skills/coupling-interaction-cookbook/SKILL.md) | `/coupling-interaction-cookbook` | Quick lookup: which engines pair best, what types are supported |
+| [mod-matrix-builder](Skills/mod-matrix-builder/SKILL.md) | `/mod-matrix-builder` | Adding 8-slot mod matrix to any engine (D002/D005/D006) |
+| [preset-architect](Skills/preset-architect/SKILL.md) | `/preset-architect` | Writing any new `.xometa` preset |
+| [engine-health-check](Skills/engine-health-check/SKILL.md) | `/engine-health-check` | Quick D001–D006 doctrine check on any engine |
+| [dna-designer](Skills/dna-designer/SKILL.md) | `/dna-designer` | Assigning accurate 6D Sonic DNA to presets |
+| [xpn-export-specialist](Skills/xpn-export-specialist/SKILL.md) | `/xpn-export-specialist` | Full XPN/MPC export pipeline |
+| synth-seance (`~/.claude/skills/`) | `/synth-seance` | Ghost council full engine quality evaluation |
+| post-engine-completion-checklist (`~/.claude/skills/`) | `/post-engine-completion-checklist` | 5-point post-build audit |
+| producers-guild (`~/.claude/skills/`) | `/producers-guild` | 12-specialist market/product review |
+
+Full index: `Skills/README.md`
+
+---
+
 ## Development Workflow
 
 1. Read the master spec (`Docs/xomnibus_master_specification.md`) before making changes
