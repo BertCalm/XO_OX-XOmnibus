@@ -33,23 +33,26 @@ XOMNIBUS PLATFORM
 ├── COLLECTION: The Depths (Aquatic/Creature)
 │   ├── Quad: Creatures — OddfeliX, OddOscar, Ocelot, Owlfish
 │   ├── Quad: Waters — Oceanic, OceanDeep, Organon, OpenSky
+│   ├── SECRET: The Leviathan — XOphidian (1 engine)
 │   └── Community: Marine science, underwater photography, conservation
 │
 ├── COLLECTION: The Atelier (Material/Craft)
 │   ├── Quad: Surfaces — Obsidian, Origami, Opal, Obscura
 │   ├── Quad: Tools — Oblong, Oracle, +2 future engines
+│   ├── SECRET: The Masterwork — XOpus (1 engine)
 │   └── Community: Maker culture, craftsmanship, material science, photography
 │
 ├── COLLECTION: The Arcade (Machine/Process)
 │   ├── Quad: Machines — Overdub, Onset, Ostinato, Optic
 │   ├── Quad: Worlds — Overworld, +3 future engines
+│   ├── SECRET: The Boss Fight — XOmega (1 engine)
 │   └── Community: Generative art, retro computing, gaming culture
 │
 ├── COLLECTION: The Frontier (Forces/Edge)
-│   ├── Quad: Forces — Odyssey, Orbital, Ouroboros, Organon*
+│   ├── Quad: Forces — Odyssey, Orbital, Ouroboros, +1 future engine
 │   ├── Quad: Edges — Obese, Overbite, Oblique, Ouïe
+│   ├── SECRET: The Singularity — XOblivion (1 engine)
 │   └── Community: Experimental art, extreme music, boundary-pushing
-│   (* Organon could fit in Depths or Frontier — biology bridges both)
 │
 ├── COLLECTION: Kitchen Essentials (Culinary)
 │   ├── Quad 1: Chef (Organ) — XOto, XOctave, XOleg, XOtis
@@ -65,11 +68,13 @@ XOMNIBUS PLATFORM
 ├── COLLECTION: Constellation Family (Future)
 │   ├── Quad: ??? — astronomy/space themed
 │   ├── Quad: ??? — ...
+│   ├── SECRET: ??? — TBD
 │   └── Community: Observatory log, star charts → presets
 │
 ├── COLLECTION: Laboratory (Future)
 │   ├── Quad: ??? — science/research themed
 │   ├── Quad: ??? — ...
+│   ├── SECRET: ??? — TBD
 │   └── Community: Research journal, equations → presets
 │
 └── (Future collections TBD)
@@ -157,15 +162,12 @@ XOMNIBUS PLATFORM
 
 ### Collection 5: Kitchen Essentials (Culinary)
 
----
-
-### Collection 2: Kitchen Essentials (Culinary)
-
 **Engines:** 28 standard + 4 secret + 8 Farmers Market (TBD) = up to 40 engines
 **Metaphor:** The professional kitchen — chefs, surfaces, ingredients, preservation, service
 **Visual identity:** Warm whites, copper tones, kitchen materials. Warm palette families per quad.
 **Community touchpoint:** The XOmnibus Cookbook (see `culinary_collection_overview.md`)
 **Synesthesia domain:** Real recipes → presets. Ingredients, cooking methods, and timing interpreted as sound parameters.
+**Secret engine:** Fusion (EP quad) — 4 secret engines (XOasis, XOddfellow, XOnkolo, XOpcode). Unlocked by loading all 4 Kitchen engines. The only collection with a full secret QUAD rather than a single secret engine.
 
 *Fully documented in `culinary_collection_overview.md`.*
 
@@ -209,7 +211,142 @@ XOMNIBUS PLATFORM
 
 ---
 
-## The Community Model
+## Secret Engines — One Per Collection
+
+Every collection hides a secret engine. Each one:
+- **Unlocks through mastery** of the collection — not a purchase, not a code, not random
+- **Augments the collection's identity** — the secret engine IS the collection's purest expression
+- **Occupies a special slot** — the 5th engine position, only visible when the unlock condition is met
+- **Has a name** that evokes the collection's ultimate form
+
+The unlock mechanic is always the same structural pattern — load the right combination of engines from within the collection — but the MEANING of that combination is unique to each collection's metaphor.
+
+### The Pattern
+
+```
+COLLECTION              SECRET ENGINE     UNLOCK CONDITION                    METAPHOR
+───────────────────────────────────────────────────────────────────────────────────────
+The Depths              XOphidian         Load all 4 Creatures                The sea serpent surfaces
+The Atelier             XOpus             Load all 4 Surfaces                 The masterwork emerges
+The Arcade              XOverlord         Load all 4 Machines                 The final boss appears
+The Frontier            XOblivion         Load all 4 Edges                    The singularity forms
+Kitchen Essentials      Fusion (×4)       Load all 4 Kitchen                  The kitchen comes alive
+Constellation (future)  TBD               TBD                                 TBD
+Laboratory (future)     TBD               TBD                                 TBD
+```
+
+---
+
+### SECRET 1: XOphidian — The Leviathan (The Depths)
+
+**Unlock:** Load OddfeliX + OddOscar + Ocelot + Owlfish (all 4 Creatures)
+**Name:** XOphidian — from "ophidian" (serpent-like)
+**Accent color:** Abyss Black with bioluminescent vein `#0D0D0D` with `#00FFD4` pulse
+**Synthesis:** Spectral morphing — takes the spectral fingerprints of ALL loaded creature engines and breeds them into a chimera. The Leviathan literally sounds like all four creatures fused into one impossible organism.
+
+**Character:** The thing that swims beneath all the other creatures. Not a fifth animal — the MYTH of an animal. When you load all four creatures, the water gets darker, the sonar pings stop returning, and something enormous passes beneath the hull.
+
+**What it does:**
+- Spectral analysis of each Creature engine's current timbre in real-time
+- Morphs between and combines their spectral profiles
+- A `ophidian_depth` parameter controls how deep the morph goes — at 0%, it's a gentle shimmer between timbres; at 100%, it extracts the spectral DNA of all four and creates a fifth voice that could only exist as their combination
+- Bioluminescent pulse LFO synced to the combined envelopes of all four creatures — when they breathe, the Leviathan breathes
+- Couples to all 4 Creatures via the **Swallow** verb (the Leviathan consumes their sound)
+
+**UI moment:** When the 4th Creature engine loads, the interface dims slightly. A slow pulse of `#00FFD4` light traces the edges of all four engine panels — like something massive is circling. The 5th slot rises from below with a 1000ms animation. The Leviathan has always been there. You just couldn't see it.
+
+**Preset potential:**
+- "Mariana" — all four creatures at maximum depth, Leviathan at 100%, the deepest sound in XOmnibus
+- "Surface Tension" — Leviathan at 10%, barely there, just a shadow beneath the other four
+- "Migration" — slow morph through all four creature timbres with Leviathan as the gravitational center
+
+---
+
+### SECRET 2: XOpus — The Masterwork (The Atelier)
+
+**Unlock:** Load Obsidian + Origami + Opal + Obscura (all 4 Surfaces)
+**Name:** XOpus — from "opus" (a great work of art, a masterpiece)
+**Accent color:** Kiln Gold `#B8860B` with ember glow
+**Synthesis:** Convolution + physical modeling — takes the material properties of all four Surface engines and creates a new composite material that doesn't exist in nature. Volcanic glass folded like paper with the grain of opal and the light sensitivity of silver.
+
+**Character:** Every craftsperson's secret ambition — the piece that transcends the material. When you've mastered stone, paper, mineral, and light, the Masterwork appears. It's not another material. It's what happens when craft becomes art.
+
+**What it does:**
+- Impulse response blending from all four material engines — each Surface contributes its resonant character
+- A `opus_kiln` parameter controls the "firing" process — how intensely the four materials are fused. Low values = gentle layering (you can still hear each material). High values = complete transmutation into a new substance
+- Physical modeling crossover: Obsidian's crystalline hardness + Origami's fold topology + Opal's iridescent scattering + Obscura's light-sensitive grain = a material that rings, folds, shimmers, and develops
+- `opus_patina` parameter adds aging — the Masterwork changes character over time within a single note, as if the composite material is settling into its final form
+- Couples to all 4 Surfaces via the **Anneal** verb (controlled heating/cooling that changes material properties)
+
+**UI moment:** When the 4th Surface engine loads, the panel backgrounds subtly shift — as if lit by firelight from below. Gold veins trace between the four engine panels, connecting them. The 5th slot materializes with a kiln-glow animation — molten, then cooling into solid form.
+
+**Preset potential:**
+- "Kintsugi" — the four materials broken and rejoined with gold (high kiln, maximum patina)
+- "Athanor" — alchemist's furnace, slow transmutation from base material to something luminous
+- "First Light" — Obscura's photographic sensitivity dominates, the Masterwork develops like a print
+
+---
+
+### SECRET 3: XOverlord — The Boss Fight (The Arcade)
+
+**Unlock:** Load Overdub + Onset + Ostinato + Optic (all 4 Machines)
+**Name:** XOverlord — the final boss at the end of the game
+**Accent color:** Glitch Magenta `#FF00FF` with CRT scanline flicker
+**Synthesis:** Generative/algorithmic — takes the four Machines' outputs and routes them through an AI-like pattern generator that creates evolving, unpredictable sequences. The Boss Fight doesn't just combine the machines — it plays AGAINST them.
+
+**Character:** You've mastered the delay, the drums, the sequencer, and the visualizer. Now they fight back. The Overlord is a generative adversary — it listens to what the four machines are doing and creates counter-patterns, inversions, and disruptions. It's the game that plays you.
+
+**What it does:**
+- Pattern analysis of all four Machine engines' rhythmic and melodic output
+- Generative counter-pattern algorithm: when Ostinato sequences up, Overlord sequences down. When Onset hits hard, Overlord creates negative space. When Overdub layers, Overlord strips
+- `overlord_difficulty` parameter (0-100%) — at 0%, the Overlord plays gentle complementary patterns. At 100%, it's actively adversarial, creating maximum tension against the other four
+- `overlord_phase` parameter — cycles through Boss Fight phases: "Approach" (ominous buildup), "Engage" (full confrontation), "Rage" (patterns accelerate and distort), "Defeat" (the machines win, Overlord's patterns dissolve into the combined texture)
+- Optic's visualizer reacts to the Overlord's patterns — the screen becomes the arena
+- Couples to all 4 Machines via the **Override** verb (the Overlord hijacks their parameters)
+
+**UI moment:** When the 4th Machine engine loads, all four panels flicker — a CRT glitch ripple. A health bar appears at the top of the interface (purely decorative but deeply satisfying). The 5th slot crashes in from above with a retro "READY?" flash. Pixel art. Scanlines. The arcade is ON.
+
+**Preset potential:**
+- "Continue?" — the Overlord at full difficulty, every pattern fought and countered
+- "Insert Coin" — gentle difficulty, the Overlord as a generous collaborator (the tutorial level)
+- "Kill Screen" — the patterns exceed the system's ability to resolve, intentional beautiful breakdown
+
+---
+
+### SECRET 4: XOblivion — The Singularity (The Frontier)
+
+**Unlock:** Load Obese + Overbite + Oblique + Ouïe (all 4 Edges)
+**Name:** XOblivion — the point of no return, the event horizon
+**Accent color:** Event Horizon Black `#0A0A0A` with Hawking Radiation white `#FFFFFF` corona
+**Synthesis:** Destruction synthesis — takes the aggressive character of all four Edge engines and pushes past their individual limits into a zone where the sound collapses into something new. Not louder. Not more distorted. TRANSFORMED.
+
+**Character:** Each Edge engine pushes one boundary. Obese pushes saturation. Overbite pushes bite. Oblique pushes refraction. Ouïe pushes percussive force. Load all four and you find the point where all those boundaries converge — the Singularity. Beyond it, the rules of synthesis don't apply the same way.
+
+**What it does:**
+- Feedback network between all four Edge engines — each one's output feeds into the others in a controlled cascade
+- `oblivion_mass` parameter controls the gravitational pull — how strongly the four edges are drawn toward the singularity point. Low mass = they orbit each other, exchanging energy. High mass = they collapse inward, their individual characters compressing into a single ultra-dense timbre
+- `oblivion_horizon` parameter sets the event horizon — the threshold beyond which the sound can't return to its original form. Below the horizon, release the parameter and the sound springs back. Beyond it, the transformation is permanent until the note ends
+- Hawking radiation: even at maximum density, tiny bright particles of the original four timbres escape — you can hear ghosts of the saturation, the bite, the prism, the hammer, leaking out of the compressed mass
+- Couples to all 4 Edges via the **Collapse** verb (gravitational infall toward the singularity)
+
+**UI moment:** When the 4th Edge engine loads, the four panels begin to drift toward the center of the screen — slowly, almost imperceptibly. The backgrounds darken to near-black. A white corona appears at the convergence point, and the 5th slot materializes as a circle, not a rectangle — the only circular engine panel in all of XOmnibus. The Singularity has its own geometry.
+
+**Preset potential:**
+- "Spaghettification" — high mass, extreme time-stretch, the sound elongated past recognition
+- "Hawking" — maximum compression but the radiation parameter turned up, so ghosts of each Edge engine leak through the density
+- "Ergosphere" — just outside the event horizon, the four Edges orbiting at maximum speed, chaotic but recoverable
+
+---
+
+### Design Rules for All Secret Engines
+
+1. **One per collection.** Kitchen Essentials is the exception with a full secret quad (4 engines). All other collections get ONE secret engine. This makes Kitchen's Fusion unlock feel even more special.
+2. **Unlock via quad completion.** Always "load all 4 engines from [specific quad]." Consistent, learnable, discoverable through exploration.
+3. **5th slot animation is unique per collection.** The Leviathan rises from below. The Masterwork materializes from heat. The Overlord crashes from above. The Singularity collapses inward. Each animation reflects the collection's metaphor.
+4. **Secret engines can't couple with engines outside their collection.** They exist ONLY in the context of their collection's ecosystem. This prevents them from becoming just another engine — they're the collection's capstone, not a general-purpose tool.
+5. **Secret engines have NO presets in the factory library.** Users must create their own. The secret engine is a blank canvas — the ultimate reward for mastery is the freedom to define it yourself. (Exception: 2-3 "seed" presets that demonstrate the engine's capabilities, tagged as "[SECRET]" in the browser.)
+6. **Parameter prefix convention:** `ophidian_`, `opus_`, `overlord_`, `oblivion_` — follows the standard `{shortname}_{paramName}` pattern. Frozen on release.
+7. **No marketing.** Secret engines are never mentioned on the website, in press materials, or in the app store description. Users discover them. Users tell each other. The community OWNS the secret.
 
 Each Collection's community touchpoint isn't marketing — it's a **creative feedback loop** where real-world creative inputs and sound design inspire each other bidirectionally.
 
@@ -348,18 +485,18 @@ Some collections have incomplete quads — these are deliberate growth slots for
 
 ## Scale
 
-| Collection | Quads | Original Engines | New Engines | Growth Slots | Total |
-|-----------|-------|-----------------|------------|-------------|-------|
-| The Depths | 2 | 8 | 0 | 0 | **8** |
-| The Atelier | 2 | 6 | 0 | 2 | **8** (with growth) |
-| The Arcade | 2 | 5 | 0 | 3 | **8** (with growth) |
-| The Frontier | 2 | 7 | 0 | 1 | **8** (with growth) |
-| Kitchen Essentials | 6 (+2 FM) | 0 | 24 (+8 FM) | 0 | **28-36** |
-| Constellation (future) | TBD | 0 | TBD | TBD | TBD |
-| Laboratory (future) | TBD | 0 | TBD | TBD | TBD |
-| **Current total** | **~14** | **26** | **24+** | **6** | **~62+** |
+| Collection | Quads | Standard Engines | Secret Engines | Growth Slots | Total |
+|-----------|-------|-----------------|---------------|-------------|-------|
+| The Depths | 2 | 8 | 1 (XOphidian) | 0 | **9** |
+| The Atelier | 2 | 6 | 1 (XOpus) | 2 | **9** (with growth) |
+| The Arcade | 2 | 5 | 1 (XOverlord) | 3 | **9** (with growth) |
+| The Frontier | 2 | 7 | 1 (XOblivion) | 1 | **9** (with growth) |
+| Kitchen Essentials | 6 (+2 FM) | 24 (+8 FM) | 4 (Fusion quad) | 0 | **32-40** |
+| Constellation (future) | TBD | TBD | 1 (TBD) | TBD | TBD |
+| Laboratory (future) | TBD | TBD | 1 (TBD) | TBD | TBD |
+| **Current total** | **~14** | **50+** | **8** | **6** | **~68+** |
 
-*FM = Farmers Market (concept stage). With all planned growth slots filled and future collections, XOmnibus could reach 100+ engines across 7+ Collections. Each engine is a standalone instrument integrated through the `SynthEngine` interface — the architecture scales.*
+*FM = Farmers Market (concept stage). With all planned growth slots filled and future collections, XOmnibus could reach 100+ engines across 7+ Collections. Every collection has at least one secret engine — Kitchen Essentials is unique with a full secret quad. The `SynthEngine` interface scales to any count.*
 
 ---
 
@@ -374,6 +511,9 @@ Some collections have incomplete quads — these are deliberate growth slots for
 7. **Synesthesia Engine MVP** — What's the simplest version that proves the concept? Probably: recipe text → 6D Sonic DNA → engine/preset suggestion. No parameter-level AI at first.
 8. **Constellation and Laboratory timing** — These are far future. Should they even be documented now, or does that distract from shipping Kitchen Essentials?
 9. **Collection-specific presets vs cross-collection presets** — Do presets stay within their collection, or can a preset load engines from multiple collections? If cross-collection, the browser UX needs to handle that.
+10. **Secret engine coupling isolation** — Currently specced as collection-internal only (secret engines can't couple outside their collection). Is this too restrictive? What if a user wants XOphidian + XOblivion? The Leviathan meeting the Singularity is conceptually incredible, but it breaks the "capstone" rule.
+11. **Kitchen Essentials secret asymmetry** — Kitchen gets 4 secret engines (a full quad), everyone else gets 1. Is this right? The culinary metaphor supports it (Fusion is a cooking technique, not a single dish), but it could feel unbalanced. Should other collections also get multi-engine secrets?
+12. **Secret engine discovery UX** — Should there be any hint system? Achievements panel? Or pure word-of-mouth? The "no marketing" rule is strong but risks engines going undiscovered by solo users who don't engage with community.
 
 ---
 
