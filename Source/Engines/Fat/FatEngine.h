@@ -687,6 +687,22 @@ struct FatVoice
     FatEnvelope ampEnv;
     FatEnvelope filterEnv;
 
+    // D005: Breathing LFO — autonomous filter modulation (rate floor 0.01 Hz)
+    struct BreathingLFO
+    {
+        float phase = 0.0f;
+        float sr = 44100.0f;
+        void prepare (double sampleRate) noexcept { sr = static_cast<float> (sampleRate); }
+        void reset() noexcept { phase = 0.0f; }
+        float process (float rateHz) noexcept
+        {
+            float out = fastSin (phase * 6.28318530718f);
+            phase += rateHz / sr;
+            if (phase >= 1.0f) phase -= 1.0f;
+            return out;
+        }
+    } breathingLFO;
+
     // Saturation per voice
     FatSaturation saturation;
     FatBitcrusher crusher;
@@ -748,6 +764,7 @@ public:
                 voice.filters[static_cast<size_t> (g)].prepare (sampleRate);
             voice.ampEnv.prepare (sampleRate);
             voice.filterEnv.prepare (sampleRate);
+            voice.breathingLFO.prepare (sampleRate);
             voice.saturation.prepare (sampleRate);
             voice.crusher.prepare (sampleRate);
         }
@@ -1000,10 +1017,13 @@ public:
 
                 // Filter envelope
                 float fltEnvVal = voice.filterEnv.process();
+                // D005: breathing LFO — subtle autonomous filter modulation (0.07 Hz default)
+                float breathMod = voice.breathingLFO.process (0.07f) * 2.0f;
                 float keyTrackOffset = (static_cast<float> (voice.noteNumber) - 60.0f)
                                        * fltKeyTrack;
+                // D001: velocity scales filter envelope depth for timbral expression
                 float cutoff = fltCutoff
-                    * fastExp ((fltEnvAmt * fltEnvVal * 48.0f + keyTrackOffset + filterMod * 12.0f)
+                    * fastExp ((fltEnvAmt * fltEnvVal * voice.velocity * 48.0f + keyTrackOffset + filterMod * 12.0f + breathMod)
                                * (0.693147f / 12.0f));
                 cutoff = clamp (cutoff, 20.0f, 18000.0f);
 

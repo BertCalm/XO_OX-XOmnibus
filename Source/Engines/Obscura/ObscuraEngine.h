@@ -465,11 +465,12 @@ struct ObscuraVoice
             chainPrevious[i] = displacement;
         }
 
-        // Apply initial Gaussian excitation impulse (amplitude 0.15).
-        // This "pluck" sets the chain in motion at note-on.
-        constexpr float kInitialImpulseAmplitude = 0.15f;
+        // Apply initial Gaussian excitation impulse — D001: velocity scales
+        // impulse amplitude so harder strikes excite more modes (brighter timbre).
+        constexpr float kBaseImpulseAmplitude = 0.15f;
+        float impulseAmplitude = kBaseImpulseAmplitude * (0.3f + 0.7f * velocity);
         applyImpulse (excitationPosition, excitationWidth,
-                      kInitialImpulseAmplitude);
+                      impulseAmplitude);
 
         // Copy initial state to both snapshots so audio-rate interpolation
         // starts from a consistent state (no discontinuity on first frame)

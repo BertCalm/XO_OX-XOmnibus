@@ -1193,14 +1193,14 @@ public:
                 cutoffMod = clamp (cutoffMod, 20.0f, 20000.0f);
 
                 voice.filterA1.setMode (CytomicSVF::Mode::LowPass);
-                voice.filterA1.setCoefficients (cutoffMod, filterRes, srf);
+                voice.filterA1.setCoefficients_fast (cutoffMod, filterRes, srf);
                 float filtered = voice.filterA1.processSample (raw);
 
                 // 24dB cascade: run through second SVF
                 if (filterSlope == 1)
                 {
                     voice.filterA2.setMode (CytomicSVF::Mode::LowPass);
-                    voice.filterA2.setCoefficients (cutoffMod, filterRes, srf);
+                    voice.filterA2.setCoefficients_fast (cutoffMod, filterRes, srf);
                     filtered = voice.filterA2.processSample (filtered);
                 }
 

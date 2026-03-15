@@ -90,6 +90,30 @@ public:
     }
 
     //--------------------------------------------------------------------------
+    /// Fast per-sample coefficient update using fastTan approximation.
+    /// Avoids std::tan overhead — suitable for modulated cutoff in audio loops.
+    /// Accurate to ~0.03% for cutoff < 0.25 × sampleRate.
+    void setCoefficients_fast (float cutoffHz, float resonance, float sampleRate) noexcept
+    {
+        float nyquistLimit = sampleRate * 0.49f;
+        float fc = cutoffHz;
+        if (fc < 20.0f)        fc = 20.0f;
+        if (fc > nyquistLimit) fc = nyquistLimit;
+
+        float res = resonance;
+        if (res < 0.0f) res = 0.0f;
+        if (res > 1.0f) res = 1.0f;
+
+        constexpr float pi = 3.14159265358979323846f;
+        g = fastTan (pi * fc / sampleRate);
+        k = 2.0f - 2.0f * res;
+
+        a1 = 1.0f / (1.0f + g * (g + k));
+        a2 = g * a1;
+        a3 = g * a2;
+    }
+
+    //--------------------------------------------------------------------------
     /// Process a single sample through the filter.
     /// @param input  Input sample value.
     /// @return Filtered output sample.

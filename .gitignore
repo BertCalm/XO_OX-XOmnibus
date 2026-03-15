@@ -50,5 +50,6 @@ __pycache__/
 firebase-debug.log
 firebase-debug.*.log
 
-# Claude Code
-.claude/
+# Claude Code — ignore all except skills (needed for CLI + web compatibility)
+.claude/*
+!.claude/skills/

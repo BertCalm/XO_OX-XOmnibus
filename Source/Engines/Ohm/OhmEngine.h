@@ -353,7 +353,7 @@ public:
                 v.body.setParams(v.freq * bodyFreqMul, bodyQ);
 
                 float ds=v.drift.tick(pDriftR,pDriftD);
-                float df=v.freq*std::pow(2.f,(ds+extPitchMod)/12.f);
+                float df=v.freq*fastPow2((ds+extPitchMod)/12.f);
                 float dlen=v.sr/std::max(df,20.f);
                 float out=v.dl.read(dlen);
                 float velIntens = 0.5f + v.vel * 0.5f; // velocity 0→1 maps to 0.5→1.0x intensity

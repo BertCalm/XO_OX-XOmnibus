@@ -174,13 +174,13 @@ public:
 
                 // --- Organic drift ---
                 float ds=v.drift.tick(pDR,pDD);
-                float df=v.freq*std::pow(2.f,(ds+extPitchMod)/12.f);
+                float df=v.freq*fastPow2((ds+extPitchMod)/12.f);
 
                 // --- Teen vibrato ---
                 v.vibPhase+=pTnVibR/v.sr;
                 if(v.vibPhase>=1.f)v.vibPhase-=1.f;
-                float vibrato=std::sin(v.vibPhase*6.2831853f)*pTnVibD*growTeen;
-                df*=std::pow(2.f,vibrato*0.5f/12.f); // vibrato in semitone cents
+                float vibrato=fastSin(v.vibPhase*6.2831853f)*pTnVibD*growTeen;
+                df*=fastPow2(vibrato*0.5f/12.f); // vibrato in semitone cents
 
                 // --- Foreign harmonics: overtone stretch ---
                 float stretch=1+effFS*0.1f;
@@ -212,7 +212,7 @@ public:
                 float boreDamp=std::clamp(pDa+extDampMod,0.f,1.f)*(1.f-pTnBore*growTeen*0.05f);
                 float damped=v.df.process(out+exc*0.3f,boreDamp);
 
-                v.dl.write(damped);
+                v.dl.write(flushDenormal(damped));
 
                 // --- Body resonance: instrument-specific freq/Q + foreign cold offset ---
                 float bFreq=v.freq*instrFreqMult*(1+effFC*0.3f);

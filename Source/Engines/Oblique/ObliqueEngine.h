@@ -877,6 +877,8 @@ public:
         // ======================================================================
 
         float peakEnvelopeLevel = 0.0f;
+        // Hoist block-constant detune ratio out of per-sample loop
+        const float detuneRatio = fastPow2 (oscDetuneCents / 1200.0f);
 
         for (int sampleIndex = 0; sampleIndex < numSamples; ++sampleIndex)
         {
@@ -968,15 +970,15 @@ public:
                     voice.currentFrequency = voice.targetFrequency;
                 }
                 // Apply coupling pitch modulation (in semitones, via pow2)
-                float frequency = voice.currentFrequency * std::pow (2.0f, couplingPitchMod);
+                float frequency = voice.currentFrequency * fastPow2 (couplingPitchMod);
 
                 // --- Dual Oscillator ---
                 // Primary oscillator at pitch; secondary detuned by oscDetuneCents
                 // for chorus-like stereo width. Detune is in cents (1/100 semitone),
-                // converted to frequency ratio via 2^(cents/1200).
+                // converted to frequency ratio via 2^(cents/1200) — hoisted to block level.
                 voice.oscillatorPrimary.setFrequency (frequency, sampleRateFloat);
                 voice.oscillatorSecondary.setFrequency (
-                    frequency * std::pow (2.0f, oscDetuneCents / 1200.0f), sampleRateFloat);
+                    frequency * detuneRatio, sampleRateFloat);
 
                 // Mix ratio: 70/30 primary/secondary. The primary carries the
                 // fundamental weight; the secondary adds shimmer without muddying.
