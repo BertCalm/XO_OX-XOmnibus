@@ -34,7 +34,7 @@ public:
     void prepare (double sampleRate) noexcept
     {
         sr = sampleRate;
-        std::fill (buffer.begin(), buffer.end(), 0.0f);
+        buffer.assign (kMaxBufferSamples, 0.0f);
         writePos = 0;
     }
 
@@ -94,8 +94,9 @@ public:
             float sample = rawA * attenA * (1.0f - frac)
                          + rawB * attenB * frac;
 
-            // Triangular window based on head position within grain
-            float headPhase = static_cast<float> (h) / static_cast<float> (kNumHeads);
+            // Triangular window based on head position within grain —
+            // offset by 0.5 step so all heads produce non-zero output.
+            float headPhase = (static_cast<float> (h) + 0.5f) / static_cast<float> (kNumHeads);
             float window = 1.0f - std::abs (2.0f * headPhase - 1.0f);
             output += sample * window;
         }
@@ -104,7 +105,7 @@ public:
     }
 
 private:
-    std::array<float, kMaxBufferSamples> buffer {};
+    std::vector<float> buffer;
     double sr = 44100.0;
     int writePos = 0;
     float readPhases[4] = {};
@@ -318,12 +319,10 @@ public:
                 if (!voice.active) continue;
 
                 // --- ADSR envelope ---
-                float envTarget = 0.0f;
                 float envRate = 0.0f;
                 switch (voice.envStage)
                 {
                     case OmbreVoice::EnvStage::Attack:
-                        envTarget = 1.0f;
                         envRate = (attack > 0.001f) ? (1.0f / (attack * srf)) : 1.0f;
                         voice.envLevel += envRate;
                         if (voice.envLevel >= 1.0f)

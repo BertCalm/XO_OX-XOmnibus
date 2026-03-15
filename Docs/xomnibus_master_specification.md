@@ -1025,7 +1025,7 @@ Modules used by multiple engines, extracted to `Source/DSP/`:
 | Module | Used By | Purpose |
 |--------|---------|---------|
 | `CytomicSVF.h` | ODDFELIX, ODDOSCAR, ODYSSEY, OBLONG, OBESE, OMBRE | State-variable filter (LP/HP/BP) |
-| `PolyBLEP.h` | ODDFELIX, ONSET | Band-limited oscillators |
+| `PolyBLEP.h` | ODDFELIX, ONSET, OMBRE | Band-limited oscillators |
 | `FastMath.h` | All | Fast exp, tanh, sin approximations |
 | `WavetableOscillator.h` | ODDOSCAR, ODYSSEY, OBLONG | Wavetable rendering |
 | `DubDelay.h` | OVERDUB, ODDFELIX+ODDOSCAR | Ping-pong delay with feedback |
