@@ -27,70 +27,48 @@ Options:
 """
 
 import argparse
-import os
+import shutil
 import subprocess
 import sys
 from pathlib import Path
 
-# Canonical engine names (lowercase for filenames)
-ENGINES = [
-    "oddfelix",
-    "oddoscar",
-    "overdub",
-    "odyssey",
-    "oblong",
-    "obese",
-    "onset",
-    "overworld",
-    "opal",
-    "overbite",
-    "orbital",
-    "organon",
-    "ouroboros",
-    "obsidian",
-    "origami",
-    "oracle",
-    "obscura",
-    "oceanic",
-    "optic",
-    "oblique",
+# Canonical engine names: (lowercase_key, display_name)
+ENGINE_NAMES = [
+    ("oddfelix", "OddfeliX"),
+    ("oddoscar", "OddOscar"),
+    ("overdub", "Overdub"),
+    ("odyssey", "Odyssey"),
+    ("oblong", "Oblong"),
+    ("obese", "Obese"),
+    ("onset", "Onset"),
+    ("overworld", "Overworld"),
+    ("opal", "Opal"),
+    ("overbite", "Overbite"),
+    ("orbital", "Orbital"),
+    ("organon", "Organon"),
+    ("ouroboros", "Ouroboros"),
+    ("obsidian", "Obsidian"),
+    ("origami", "Origami"),
+    ("oracle", "Oracle"),
+    ("obscura", "Obscura"),
+    ("oceanic", "Oceanic"),
+    ("optic", "Optic"),
+    ("oblique", "Oblique"),
 ]
 
-ENGINE_DISPLAY = {
-    "oddfelix": "OddfeliX",
-    "oddoscar": "OddOscar",
-    "overdub": "Overdub",
-    "odyssey": "Odyssey",
-    "oblong": "Oblong",
-    "obese": "Obese",
-    "onset": "Onset",
-    "overworld": "Overworld",
-    "opal": "Opal",
-    "overbite": "Overbite",
-    "orbital": "Orbital",
-    "organon": "Organon",
-    "ouroboros": "Ouroboros",
-    "obsidian": "Obsidian",
-    "origami": "Origami",
-    "oracle": "Oracle",
-    "obscura": "Obscura",
-    "oceanic": "Oceanic",
-    "optic": "Optic",
-    "oblique": "Oblique",
-}
+SAMPLE_RATE = "44100"
+CHANNELS = "2"
+
+# Output format configurations: (extension, codec, quality_flags)
+OUTPUT_FORMATS = [
+    ("mp3", "libmp3lame", ["-b:a", "128k"]),
+    ("ogg", "libvorbis", ["-q:a", "4"]),
+]
 
 
 def check_ffmpeg():
     """Verify ffmpeg is installed."""
-    try:
-        subprocess.run(
-            ["ffmpeg", "-version"],
-            capture_output=True,
-            check=True,
-        )
-        return True
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        return False
+    return shutil.which("ffmpeg") is not None
 
 
 def process_wav(input_path, output_dir, engine_name, args):
@@ -98,65 +76,36 @@ def process_wav(input_path, output_dir, engine_name, args):
     results = []
 
     # Build ffmpeg filter chain
-    filters = []
-
-    # Trim to max duration
-    trim = f"atrim=0:{args.duration}"
-    filters.append(trim)
-
-    # Fade in/out
+    filters = [f"atrim=0:{args.duration}"]
     if args.fade_in > 0:
         filters.append(f"afade=t=in:d={args.fade_in}")
     if args.fade_out > 0:
         filters.append(f"afade=t=out:st={args.duration - args.fade_out}:d={args.fade_out}")
-
-    # Normalize
     if args.normalize:
         filters.append("loudnorm=I=-16:TP=-1:LRA=11")
-
     filter_chain = ",".join(filters)
 
-    # MP3 output (128kbps CBR for consistent quality)
-    mp3_path = output_dir / f"{engine_name}.mp3"
-    mp3_cmd = [
-        "ffmpeg", "-y",
-        "-i", str(input_path),
-        "-af", filter_chain,
-        "-codec:a", "libmp3lame",
-        "-b:a", "128k",
-        "-ar", "44100",
-        "-ac", "2",
-        str(mp3_path),
-    ]
-
-    try:
-        subprocess.run(mp3_cmd, capture_output=True, check=True)
-        size_kb = mp3_path.stat().st_size / 1024
-        results.append(("MP3", mp3_path, size_kb))
-    except subprocess.CalledProcessError as e:
-        print(f"  ERROR (MP3): {e.stderr.decode()[-200:]}")
-        return results
-
-    # OGG output (quality 4 ≈ 128kbps)
-    if not args.skip_ogg:
-        ogg_path = output_dir / f"{engine_name}.ogg"
-        ogg_cmd = [
+    formats = OUTPUT_FORMATS if not args.skip_ogg else OUTPUT_FORMATS[:1]
+    for ext, codec, quality_flags in formats:
+        out_path = output_dir / f"{engine_name}.{ext}"
+        cmd = [
             "ffmpeg", "-y",
             "-i", str(input_path),
             "-af", filter_chain,
-            "-codec:a", "libvorbis",
-            "-q:a", "4",
-            "-ar", "44100",
-            "-ac", "2",
-            str(ogg_path),
+            "-codec:a", codec,
+            *quality_flags,
+            "-ar", SAMPLE_RATE,
+            "-ac", CHANNELS,
+            str(out_path),
         ]
-
         try:
-            subprocess.run(ogg_cmd, capture_output=True, check=True)
-            size_kb = ogg_path.stat().st_size / 1024
-            results.append(("OGG", ogg_path, size_kb))
+            subprocess.run(cmd, capture_output=True, check=True)
+            size_kb = out_path.stat().st_size / 1024
+            results.append((ext.upper(), out_path, size_kb))
         except subprocess.CalledProcessError as e:
-            print(f"  ERROR (OGG): {e.stderr.decode()[-200:]}")
+            print(f"  ERROR ({ext.upper()}): {e.stderr.decode()[-200:]}")
+            if ext == "mp3":
+                return results
 
     return results
 
@@ -221,9 +170,9 @@ def main():
 
     if args.list:
         print("Expected WAV files (place in Tools/site_audio_raw/):\n")
-        for eng in ENGINES:
-            print(f"  {eng}.wav  — {ENGINE_DISPLAY[eng]}")
-        print(f"\n{len(ENGINES)} engines total")
+        for key, display in ENGINE_NAMES:
+            print(f"  {key}.wav  — {display}")
+        print(f"\n{len(ENGINE_NAMES)} engines total")
         return
 
     # Check ffmpeg
@@ -272,8 +221,7 @@ def main():
     processed = 0
     missing = []
 
-    for eng in ENGINES:
-        display = ENGINE_DISPLAY[eng]
+    for eng, display in ENGINE_NAMES:
         if eng in found:
             print(f"  {display:12s} ", end="", flush=True)
             results = process_wav(found[eng], output_dir, eng, args)
@@ -288,7 +236,7 @@ def main():
             missing.append(display)
 
     print(f"\n{'=' * 50}")
-    print(f"Processed: {processed}/{len(ENGINES)} engines")
+    print(f"Processed: {processed}/{len(ENGINE_NAMES)} engines")
     print(f"Total size: {total_size:.0f}KB ({total_size/1024:.1f}MB)")
 
     if missing:
