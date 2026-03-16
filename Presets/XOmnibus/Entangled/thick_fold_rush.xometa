@@ -1,0 +1,51 @@
+{
+  "name": "Thick Fold Rush",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBESE",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OBESE": {
+      "macro_character": 0.5,
+      "macro_movement": 0.7,
+      "macro_coupling": 0.8,
+      "macro_space": 0.3
+    },
+    "ORIGAMI": {
+      "macro_character": 0.7,
+      "macro_movement": 0.7,
+      "macro_coupling": 0.8,
+      "macro_space": 0.3
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OBESE",
+    "target": "ORIGAMI",
+    "amount": 0.8
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.7,
+    "movement": 0.7,
+    "density": 0.7,
+    "space": 0.3,
+    "aggression": 0.6
+  },
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.8,
+    "SPACE": 0.3
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "obese",
+    "origami"
+  ],
+  "author": "XO_OX Coverage Pack 2026-03-16",
+  "created": "2026-03-16"
+}

@@ -1,0 +1,51 @@
+{
+  "name": "Bright Recursion",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBLONG",
+    "OUROBOROS"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.9,
+      "macro_movement": 0.7,
+      "macro_coupling": 0.6,
+      "macro_space": 0.8
+    },
+    "OUROBOROS": {
+      "macro_character": 0.3,
+      "macro_movement": 0.8,
+      "macro_coupling": 0.7,
+      "macro_space": 0.7
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBLONG",
+    "target": "OUROBOROS",
+    "amount": 0.6
+  },
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.3,
+    "movement": 0.7,
+    "density": 0.3,
+    "space": 0.8,
+    "aggression": 0.2
+  },
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.6,
+    "SPACE": 0.75
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "oblong",
+    "ouroboros"
+  ],
+  "author": "XO_OX Coverage Pack 2026-03-16",
+  "created": "2026-03-16"
+}

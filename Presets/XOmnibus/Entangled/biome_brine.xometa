@@ -1,0 +1,49 @@
+{
+  "name": "Biome Brine",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OCELOT",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "macro_character": 0.655,
+      "macro_movement": 0.705,
+      "macro_coupling": 0.555,
+      "macro_space": 0.455
+    },
+    "OCEANIC": {
+      "macro_character": 0.295,
+      "macro_movement": 0.345,
+      "macro_coupling": 0.445,
+      "macro_space": 0.795
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_LOCK",
+    "source": "OCELOT",
+    "target": "OCEANIC",
+    "amount": 0.601
+  },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.75,
+    "movement": 0.55,
+    "density": 0.65,
+    "space": 0.86,
+    "aggression": 0.3
+  },
+  "macros": {
+    "CHARACTER": 0.475,
+    "MOVEMENT": 0.525,
+    "COUPLING": 0.601,
+    "SPACE": 0.625
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "visual",
+    "aquatic"
+  ]
+}

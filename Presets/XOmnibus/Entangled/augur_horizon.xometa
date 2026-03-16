@@ -1,0 +1,51 @@
+{
+  "name": "Augur Horizon",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ODYSSEY",
+    "ORACLE"
+  ],
+  "parameters": {
+    "ODYSSEY": {
+      "macro_character": 0.7,
+      "macro_movement": 0.4,
+      "macro_coupling": 0.7,
+      "macro_space": 0.5
+    },
+    "ORACLE": {
+      "macro_character": 0.6,
+      "macro_movement": 0.4,
+      "macro_coupling": 0.7,
+      "macro_space": 0.5
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ODYSSEY",
+    "target": "ORACLE",
+    "amount": 0.7
+  },
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.3
+  },
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.7,
+    "SPACE": 0.5
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "odyssey",
+    "oracle"
+  ],
+  "author": "XO_OX Coverage Pack 2026-03-16",
+  "created": "2026-03-16"
+}

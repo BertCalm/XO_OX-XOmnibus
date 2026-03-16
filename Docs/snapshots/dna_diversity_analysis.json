@@ -1,0 +1,578 @@
+{
+  "generated": "2026-03-16",
+  "total_presets_with_dna": 4567,
+  "total_presets_missing_dna": 437,
+  "fleet_cosine_diversity": 0.1556,
+  "fleet_dim_stats": {
+    "brightness": {
+      "mean": 0.533,
+      "std": 0.184,
+      "pct_midrange": 73.6,
+      "pct_extreme_low": 2.7,
+      "pct_extreme_high": 6.4
+    },
+    "warmth": {
+      "mean": 0.496,
+      "std": 0.201,
+      "pct_midrange": 70.4,
+      "pct_extreme_low": 6.9,
+      "pct_extreme_high": 3.2
+    },
+    "movement": {
+      "mean": 0.49,
+      "std": 0.247,
+      "pct_midrange": 57.3,
+      "pct_extreme_low": 12.1,
+      "pct_extreme_high": 7.4
+    },
+    "density": {
+      "mean": 0.532,
+      "std": 0.205,
+      "pct_midrange": 68.2,
+      "pct_extreme_low": 5.8,
+      "pct_extreme_high": 6.7
+    },
+    "space": {
+      "mean": 0.502,
+      "std": 0.238,
+      "pct_midrange": 60.2,
+      "pct_extreme_low": 9.7,
+      "pct_extreme_high": 8.9
+    },
+    "aggression": {
+      "mean": 0.311,
+      "std": 0.223,
+      "pct_midrange": 44.6,
+      "pct_extreme_low": 32.0,
+      "pct_extreme_high": 2.7
+    }
+  },
+  "per_mood": {
+    "Foundation": {
+      "count": 559,
+      "cosine_diversity": 0.1542,
+      "dims": {
+        "brightness": {
+          "mean": 0.436,
+          "std": 0.174,
+          "pct_midrange": 75.5,
+          "pct_extreme_low": 5.5,
+          "pct_extreme_high": 3.2
+        },
+        "warmth": {
+          "mean": 0.596,
+          "std": 0.213,
+          "pct_midrange": 53.3,
+          "pct_extreme_low": 4.7,
+          "pct_extreme_high": 9.1
+        },
+        "movement": {
+          "mean": 0.27,
+          "std": 0.189,
+          "pct_midrange": 40.1,
+          "pct_extreme_low": 33.8,
+          "pct_extreme_high": 0.7
+        },
+        "density": {
+          "mean": 0.528,
+          "std": 0.222,
+          "pct_midrange": 64.2,
+          "pct_extreme_low": 4.3,
+          "pct_extreme_high": 11.4
+        },
+        "space": {
+          "mean": 0.259,
+          "std": 0.177,
+          "pct_midrange": 41.3,
+          "pct_extreme_low": 30.4,
+          "pct_extreme_high": 0.0
+        },
+        "aggression": {
+          "mean": 0.271,
+          "std": 0.219,
+          "pct_midrange": 38.5,
+          "pct_extreme_low": 41.9,
+          "pct_extreme_high": 2.7
+        }
+      }
+    },
+    "Atmosphere": {
+      "count": 470,
+      "cosine_diversity": 0.1246,
+      "dims": {
+        "brightness": {
+          "mean": 0.428,
+          "std": 0.173,
+          "pct_midrange": 72.3,
+          "pct_extreme_low": 3.2,
+          "pct_extreme_high": 2.8
+        },
+        "warmth": {
+          "mean": 0.533,
+          "std": 0.213,
+          "pct_midrange": 68.1,
+          "pct_extreme_low": 6.2,
+          "pct_extreme_high": 6.4
+        },
+        "movement": {
+          "mean": 0.293,
+          "std": 0.196,
+          "pct_midrange": 48.5,
+          "pct_extreme_low": 26.4,
+          "pct_extreme_high": 0.4
+        },
+        "density": {
+          "mean": 0.37,
+          "std": 0.203,
+          "pct_midrange": 59.6,
+          "pct_extreme_low": 17.2,
+          "pct_extreme_high": 3.2
+        },
+        "space": {
+          "mean": 0.627,
+          "std": 0.215,
+          "pct_midrange": 46.0,
+          "pct_extreme_low": 1.5,
+          "pct_extreme_high": 18.1
+        },
+        "aggression": {
+          "mean": 0.101,
+          "std": 0.095,
+          "pct_midrange": 6.2,
+          "pct_extreme_low": 81.3,
+          "pct_extreme_high": 0.0
+        }
+      }
+    },
+    "Entangled": {
+      "count": 1899,
+      "cosine_diversity": 0.0675,
+      "dims": {
+        "brightness": {
+          "mean": 0.558,
+          "std": 0.155,
+          "pct_midrange": 79.6,
+          "pct_extreme_low": 1.3,
+          "pct_extreme_high": 5.1
+        },
+        "warmth": {
+          "mean": 0.534,
+          "std": 0.151,
+          "pct_midrange": 82.3,
+          "pct_extreme_low": 0.6,
+          "pct_extreme_high": 1.7
+        },
+        "movement": {
+          "mean": 0.599,
+          "std": 0.147,
+          "pct_midrange": 76.2,
+          "pct_extreme_low": 0.7,
+          "pct_extreme_high": 4.9
+        },
+        "density": {
+          "mean": 0.602,
+          "std": 0.138,
+          "pct_midrange": 79.3,
+          "pct_extreme_low": 0.8,
+          "pct_extreme_high": 4.5
+        },
+        "space": {
+          "mean": 0.538,
+          "std": 0.165,
+          "pct_midrange": 80.5,
+          "pct_extreme_low": 3.2,
+          "pct_extreme_high": 3.6
+        },
+        "aggression": {
+          "mean": 0.386,
+          "std": 0.18,
+          "pct_midrange": 65.5,
+          "pct_extreme_low": 12.0,
+          "pct_extreme_high": 1.0
+        }
+      }
+    },
+    "Prism": {
+      "count": 568,
+      "cosine_diversity": 0.1525,
+      "dims": {
+        "brightness": {
+          "mean": 0.681,
+          "std": 0.174,
+          "pct_midrange": 49.5,
+          "pct_extreme_low": 0.4,
+          "pct_extreme_high": 22.5
+        },
+        "warmth": {
+          "mean": 0.27,
+          "std": 0.174,
+          "pct_midrange": 43.3,
+          "pct_extreme_low": 30.3,
+          "pct_extreme_high": 0.2
+        },
+        "movement": {
+          "mean": 0.361,
+          "std": 0.261,
+          "pct_midrange": 49.5,
+          "pct_extreme_low": 24.6,
+          "pct_extreme_high": 3.7
+        },
+        "density": {
+          "mean": 0.382,
+          "std": 0.207,
+          "pct_midrange": 57.6,
+          "pct_extreme_low": 16.5,
+          "pct_extreme_high": 3.0
+        },
+        "space": {
+          "mean": 0.424,
+          "std": 0.25,
+          "pct_midrange": 54.6,
+          "pct_extreme_low": 19.5,
+          "pct_extreme_high": 4.4
+        },
+        "aggression": {
+          "mean": 0.219,
+          "std": 0.196,
+          "pct_midrange": 23.1,
+          "pct_extreme_low": 50.4,
+          "pct_extreme_high": 1.4
+        }
+      }
+    },
+    "Flux": {
+      "count": 452,
+      "cosine_diversity": 0.0968,
+      "dims": {
+        "brightness": {
+          "mean": 0.565,
+          "std": 0.144,
+          "pct_midrange": 82.7,
+          "pct_extreme_low": 0.7,
+          "pct_extreme_high": 4.4
+        },
+        "warmth": {
+          "mean": 0.405,
+          "std": 0.173,
+          "pct_midrange": 73.5,
+          "pct_extreme_low": 11.1,
+          "pct_extreme_high": 0.2
+        },
+        "movement": {
+          "mean": 0.737,
+          "std": 0.228,
+          "pct_midrange": 21.2,
+          "pct_extreme_low": 4.0,
+          "pct_extreme_high": 42.7
+        },
+        "density": {
+          "mean": 0.612,
+          "std": 0.185,
+          "pct_midrange": 62.8,
+          "pct_extreme_low": 0.4,
+          "pct_extreme_high": 14.6
+        },
+        "space": {
+          "mean": 0.321,
+          "std": 0.194,
+          "pct_midrange": 48.2,
+          "pct_extreme_low": 19.7,
+          "pct_extreme_high": 0.7
+        },
+        "aggression": {
+          "mean": 0.528,
+          "std": 0.252,
+          "pct_midrange": 55.8,
+          "pct_extreme_low": 6.6,
+          "pct_extreme_high": 17.7
+        }
+      }
+    },
+    "Aether": {
+      "count": 464,
+      "cosine_diversity": 0.1265,
+      "dims": {
+        "brightness": {
+          "mean": 0.453,
+          "std": 0.21,
+          "pct_midrange": 67.0,
+          "pct_extreme_low": 10.3,
+          "pct_extreme_high": 3.4
+        },
+        "warmth": {
+          "mean": 0.51,
+          "std": 0.19,
+          "pct_midrange": 75.2,
+          "pct_extreme_low": 5.4,
+          "pct_extreme_high": 5.0
+        },
+        "movement": {
+          "mean": 0.43,
+          "std": 0.228,
+          "pct_midrange": 54.1,
+          "pct_extreme_low": 11.9,
+          "pct_extreme_high": 3.7
+        },
+        "density": {
+          "mean": 0.523,
+          "std": 0.252,
+          "pct_midrange": 49.6,
+          "pct_extreme_low": 9.9,
+          "pct_extreme_high": 12.7
+        },
+        "space": {
+          "mean": 0.756,
+          "std": 0.198,
+          "pct_midrange": 31.5,
+          "pct_extreme_low": 0.4,
+          "pct_extreme_high": 46.3
+        },
+        "aggression": {
+          "mean": 0.191,
+          "std": 0.167,
+          "pct_midrange": 26.5,
+          "pct_extreme_low": 52.2,
+          "pct_extreme_high": 0.6
+        }
+      }
+    },
+    "Family": {
+      "count": 155,
+      "cosine_diversity": 0.0844,
+      "dims": {
+        "brightness": {
+          "mean": 0.508,
+          "std": 0.152,
+          "pct_midrange": 78.1,
+          "pct_extreme_low": 0.0,
+          "pct_extreme_high": 1.3
+        },
+        "warmth": {
+          "mean": 0.607,
+          "std": 0.141,
+          "pct_midrange": 70.3,
+          "pct_extreme_low": 0.0,
+          "pct_extreme_high": 3.9
+        },
+        "movement": {
+          "mean": 0.491,
+          "std": 0.217,
+          "pct_midrange": 57.4,
+          "pct_extreme_low": 7.7,
+          "pct_extreme_high": 3.2
+        },
+        "density": {
+          "mean": 0.515,
+          "std": 0.148,
+          "pct_midrange": 81.9,
+          "pct_extreme_low": 0.0,
+          "pct_extreme_high": 0.6
+        },
+        "space": {
+          "mean": 0.601,
+          "std": 0.174,
+          "pct_midrange": 63.9,
+          "pct_extreme_low": 2.6,
+          "pct_extreme_high": 5.8
+        },
+        "aggression": {
+          "mean": 0.223,
+          "std": 0.161,
+          "pct_midrange": 27.1,
+          "pct_extreme_low": 38.7,
+          "pct_extreme_high": 0.0
+        }
+      }
+    }
+  },
+  "top_10_duplicate_clusters": [
+    {
+      "name": "Chaotic Drive",
+      "mood": "Entangled",
+      "dna": {
+        "brightness": 0.515,
+        "warmth": 0.46,
+        "movement": 0.805,
+        "density": 0.685,
+        "space": 0.445,
+        "aggression": 0.63
+      },
+      "close_neighbors": 3,
+      "neighbor_names": [
+        "Neon Attractor",
+        "Visual Chaos",
+        "Coastal Chaos"
+      ]
+    },
+    {
+      "name": "Neon Attractor",
+      "mood": "Entangled",
+      "dna": {
+        "brightness": 0.515,
+        "warmth": 0.46,
+        "movement": 0.805,
+        "density": 0.685,
+        "space": 0.445,
+        "aggression": 0.63
+      },
+      "close_neighbors": 3,
+      "neighbor_names": [
+        "Chaotic Drive",
+        "Visual Chaos",
+        "Coastal Chaos"
+      ]
+    },
+    {
+      "name": "Electric Prowl",
+      "mood": "Entangled",
+      "dna": {
+        "brightness": 0.833,
+        "warmth": 0.235,
+        "movement": 0.6,
+        "density": 0.517,
+        "space": 0.55,
+        "aggression": 0.402
+      },
+      "close_neighbors": 3,
+      "neighbor_names": [
+        "Blue Cellar Snap",
+        "Neon Porto Press",
+        "Clinical Triplet"
+      ]
+    },
+    {
+      "name": "Visual Chaos",
+      "mood": "Entangled",
+      "dna": {
+        "brightness": 0.515,
+        "warmth": 0.46,
+        "movement": 0.805,
+        "density": 0.685,
+        "space": 0.445,
+        "aggression": 0.63
+      },
+      "close_neighbors": 3,
+      "neighbor_names": [
+        "Chaotic Drive",
+        "Neon Attractor",
+        "Coastal Chaos"
+      ]
+    },
+    {
+      "name": "Coastal Chaos",
+      "mood": "Entangled",
+      "dna": {
+        "brightness": 0.515,
+        "warmth": 0.46,
+        "movement": 0.805,
+        "density": 0.685,
+        "space": 0.445,
+        "aggression": 0.63
+      },
+      "close_neighbors": 3,
+      "neighbor_names": [
+        "Chaotic Drive",
+        "Neon Attractor",
+        "Visual Chaos"
+      ]
+    },
+    {
+      "name": "Neon Scan Pulse",
+      "mood": "Entangled",
+      "dna": {
+        "brightness": 0.885,
+        "warmth": 0.183,
+        "movement": 0.652,
+        "density": 0.5,
+        "space": 0.585,
+        "aggression": 0.35
+      },
+      "close_neighbors": 2,
+      "neighbor_names": [
+        "Electric Beam Lock",
+        "Phosphor Snap"
+      ]
+    },
+    {
+      "name": "Electric Beam Lock",
+      "mood": "Entangled",
+      "dna": {
+        "brightness": 0.885,
+        "warmth": 0.183,
+        "movement": 0.652,
+        "density": 0.5,
+        "space": 0.585,
+        "aggression": 0.35
+      },
+      "close_neighbors": 2,
+      "neighbor_names": [
+        "Neon Scan Pulse",
+        "Phosphor Snap"
+      ]
+    },
+    {
+      "name": "Blue Cellar Snap",
+      "mood": "Entangled",
+      "dna": {
+        "brightness": 0.833,
+        "warmth": 0.253,
+        "movement": 0.6,
+        "density": 0.535,
+        "space": 0.55,
+        "aggression": 0.367
+      },
+      "close_neighbors": 2,
+      "neighbor_names": [
+        "Electric Prowl",
+        "Neon Porto Press"
+      ]
+    },
+    {
+      "name": "Metabolic Light",
+      "mood": "Entangled",
+      "dna": {
+        "brightness": 0.535,
+        "warmth": 0.54,
+        "movement": 0.745,
+        "density": 0.665,
+        "space": 0.505,
+        "aggression": 0.47
+      },
+      "close_neighbors": 2,
+      "neighbor_names": [
+        "Living Blur",
+        "Living Saturation"
+      ]
+    },
+    {
+      "name": "Living Blur",
+      "mood": "Entangled",
+      "dna": {
+        "brightness": 0.535,
+        "warmth": 0.54,
+        "movement": 0.745,
+        "density": 0.665,
+        "space": 0.505,
+        "aggression": 0.47
+      },
+      "close_neighbors": 2,
+      "neighbor_names": [
+        "Metabolic Light",
+        "Living Saturation"
+      ]
+    }
+  ],
+  "repair_recommendations": [
+    "[FLEET] BRIGHTNESS: midrange-heavy (73.6% in 0.3\u20130.7); very few extreme-low presets (2.7% \u2264 0.15)",
+    "[FLEET] WARMTH: midrange-heavy (70.4% in 0.3\u20130.7); very few extreme-high presets (3.2% \u2265 0.85)",
+    "[FLEET] DENSITY: midrange-heavy (68.2% in 0.3\u20130.7)",
+    "[FLEET] AGGRESSION: very few extreme-high presets (2.7% \u2265 0.85)",
+    "[MOOD:Foundation] clustered dimensions: brightness midrange=75.5%",
+    "[MOOD:Atmosphere] clustered dimensions: aggression std=0.095 (very low variance)",
+    "[MOOD:Entangled] clustered dimensions: brightness midrange=79.6%, warmth midrange=82.3%, movement midrange=76.2%, density midrange=79.3%, space midrange=80.5%",
+    "[MOOD:Flux] clustered dimensions: brightness midrange=82.7%",
+    "[MOOD:Aether] clustered dimensions: warmth midrange=75.2%",
+    "[MOOD:Family] clustered dimensions: brightness midrange=78.1%, density midrange=81.9%",
+    "[WARNING] Fleet cosine diversity score 0.1556 is below healthy threshold (\u22650.20)"
+  ]
+}

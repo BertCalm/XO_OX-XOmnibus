@@ -1,0 +1,51 @@
+{
+  "name": "Dense Fold Flux",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ODYSSEY",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "ODYSSEY": {
+      "macro_character": 0.3,
+      "macro_movement": 0.4,
+      "macro_coupling": 0.9,
+      "macro_space": 0.2
+    },
+    "ORIGAMI": {
+      "macro_character": 0.8,
+      "macro_movement": 0.4,
+      "macro_coupling": 0.8,
+      "macro_space": 0.2
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ODYSSEY",
+    "target": "ORIGAMI",
+    "amount": 0.9
+  },
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.8,
+    "movement": 0.4,
+    "density": 0.9,
+    "space": 0.2,
+    "aggression": 0.6
+  },
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.9,
+    "SPACE": 0.2
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "odyssey",
+    "origami"
+  ],
+  "author": "XO_OX Coverage Pack 2026-03-16",
+  "created": "2026-03-16"
+}
