@@ -168,8 +168,8 @@ SMART_MODE = {
 # Guru Bin canonical pad layout: A1=Kick, A2=Snare, A3=Clap, A4=CHat, B1=OHat, B2=Tom, B3=Perc, B4=FX
 PAD_MAP = [
     (36, "kick",  0, [0, 0, 0, 0]),   # A1 (pad 0)
-    (38, "snare", 0, [0, 0, 0, 0]),   # A2 (pad 1)
-    (39, "clap",  0, [0, 0, 0, 0]),   # A3 (pad 2)
+    (38, "snare", 2, [0, 0, 0, 0]),   # A2 (pad 1) MuteGroup 2
+    (39, "clap",  3, [0, 0, 0, 0]),   # A3 (pad 2) MuteGroup 3
     (42, "chat",  1, [46, 0, 0, 0]),  # A4 (pad 3) Closed hat → mutes open hat (46)
     (46, "ohat",  1, [0, 0, 0, 0]),   # B1 (pad 4) Open hat
     (41, "tom",   0, [0, 0, 0, 0]),   # B2 (pad 5)
