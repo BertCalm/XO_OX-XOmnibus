@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_DENSE_VIOLENT_FAM_AGG_5",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ORPHICA",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.426,
+      "macro_movement": 0.689,
+      "macro_coupling": 0.391,
+      "macro_space": 0.809
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.397,
+      "macro_movement": 0.661,
+      "macro_coupling": 0.428,
+      "macro_space": 0.792
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ORPHICA",
+    "target": "ODDOSCAR",
+    "amount": 0.929
+  },
+  "dna": {
+    "brightness": 0.093,
+    "warmth": 0.947,
+    "movement": 0.539,
+    "density": 0.873,
+    "space": 0.615,
+    "aggression": 0.899
+  },
+  "macros": {
+    "CHARACTER": 0.426,
+    "MOVEMENT": 0.689,
+    "COUPLING": 0.391,
+    "SPACE": 0.809
+  },
+  "tags": [
+    "family",
+    "violent",
+    "dark",
+    "hot",
+    "dense"
+  ]
+}

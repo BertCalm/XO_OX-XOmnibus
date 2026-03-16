@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT KINETIC TIGHT VIOLENT ATM AGG 3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OCEANIC",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.852,
+      "macro_movement": 0.912,
+      "macro_coupling": 0.889,
+      "macro_space": 0.125
+    },
+    "ORBITAL": {
+      "macro_character": 0.84,
+      "macro_movement": 0.888,
+      "macro_coupling": 0.86,
+      "macro_space": 0.121
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OCEANIC",
+    "target": "ORBITAL",
+    "amount": 0.885
+  },
+  "dna": {
+    "brightness": 0.903,
+    "warmth": 0.536,
+    "movement": 0.961,
+    "density": 0.539,
+    "space": 0.128,
+    "aggression": 0.97
+  },
+  "macros": {
+    "CHARACTER": 0.846,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.875,
+    "SPACE": 0.123
+  },
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "bright",
+    "kinetic",
+    "tight"
+  ]
+}

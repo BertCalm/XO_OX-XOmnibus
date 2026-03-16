@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_WARM_FROZEN_DENSE_VAST_ENT4_2",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OBBLIGATO": {
+      "macro_character": 0.988,
+      "macro_movement": 0.026,
+      "macro_coupling": 0.939,
+      "macro_space": 0.917
+    },
+    "ORGANON": {
+      "macro_character": 0.97,
+      "macro_movement": 0.033,
+      "macro_coupling": 0.914,
+      "macro_space": 0.906
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBBLIGATO",
+    "target": "ORGANON",
+    "amount": 0.727
+  },
+  "dna": {
+    "brightness": 0.974,
+    "warmth": 0.961,
+    "movement": 0.024,
+    "density": 0.921,
+    "space": 0.903,
+    "aggression": 0.386
+  },
+  "macros": {
+    "CHARACTER": 0.979,
+    "MOVEMENT": 0.029,
+    "COUPLING": 0.727,
+    "SPACE": 0.911
+  },
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "bright",
+    "warm",
+    "dense",
+    "vast"
+  ]
+}

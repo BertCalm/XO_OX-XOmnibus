@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT WARM VAST VIOLENT AET AGG 4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OSPREY",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.929,
+      "macro_movement": 0.506,
+      "macro_coupling": 0.846,
+      "macro_space": 0.918
+    },
+    "ORIGAMI": {
+      "macro_character": 0.927,
+      "macro_movement": 0.521,
+      "macro_coupling": 0.806,
+      "macro_space": 0.925
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OSPREY",
+    "target": "ORIGAMI",
+    "amount": 0.711
+  },
+  "dna": {
+    "brightness": 0.98,
+    "warmth": 0.892,
+    "movement": 0.534,
+    "density": 0.554,
+    "space": 0.929,
+    "aggression": 0.881
+  },
+  "macros": {
+    "CHARACTER": 0.928,
+    "MOVEMENT": 0.514,
+    "COUPLING": 0.826,
+    "SPACE": 0.921
+  },
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "bright",
+    "vast"
+  ]
+}

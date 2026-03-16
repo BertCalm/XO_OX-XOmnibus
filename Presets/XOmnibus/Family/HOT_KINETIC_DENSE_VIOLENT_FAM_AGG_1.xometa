@@ -1,0 +1,50 @@
+{
+  "name": "HOT_KINETIC_DENSE_VIOLENT_FAM_AGG_1",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OTTONI",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.87,
+      "macro_movement": 0.429,
+      "macro_coupling": 0.565,
+      "macro_space": 0.823
+    },
+    "ODDFELIX": {
+      "macro_character": 0.879,
+      "macro_movement": 0.381,
+      "macro_coupling": 0.542,
+      "macro_space": 0.786
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OTTONI",
+    "target": "ODDFELIX",
+    "amount": 0.853
+  },
+  "dna": {
+    "brightness": 0.411,
+    "warmth": 0.988,
+    "movement": 0.989,
+    "density": 0.935,
+    "space": 0.619,
+    "aggression": 0.883
+  },
+  "macros": {
+    "CHARACTER": 0.87,
+    "MOVEMENT": 0.429,
+    "COUPLING": 0.565,
+    "SPACE": 0.823
+  },
+  "tags": [
+    "family",
+    "violent",
+    "hot",
+    "kinetic",
+    "dense"
+  ]
+}

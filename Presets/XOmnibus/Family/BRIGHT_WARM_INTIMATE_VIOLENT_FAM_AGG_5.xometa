@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_INTIMATE_VIOLENT_FAM_AGG_5",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OLE",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.798,
+      "macro_movement": 0.455,
+      "macro_coupling": 0.429,
+      "macro_space": 0.674
+    },
+    "ODDFELIX": {
+      "macro_character": 0.845,
+      "macro_movement": 0.458,
+      "macro_coupling": 0.47,
+      "macro_space": 0.707
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OLE",
+    "target": "ODDFELIX",
+    "amount": 0.965
+  },
+  "dna": {
+    "brightness": 0.907,
+    "warmth": 0.923,
+    "movement": 0.532,
+    "density": 0.593,
+    "space": 0.03,
+    "aggression": 0.905
+  },
+  "macros": {
+    "CHARACTER": 0.798,
+    "MOVEMENT": 0.455,
+    "COUPLING": 0.429,
+    "SPACE": 0.674
+  },
+  "tags": [
+    "family",
+    "violent",
+    "bright",
+    "warm",
+    "intimate"
+  ]
+}

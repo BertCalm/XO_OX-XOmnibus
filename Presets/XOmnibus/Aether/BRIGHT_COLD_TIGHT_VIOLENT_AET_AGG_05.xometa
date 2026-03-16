@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT COLD TIGHT VIOLENT AET AGG 5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OBLIQUE",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.881,
+      "macro_movement": 0.335,
+      "macro_coupling": 0.94,
+      "macro_space": 0.027
+    },
+    "ORGANON": {
+      "macro_character": 0.916,
+      "macro_movement": 0.349,
+      "macro_coupling": 0.919,
+      "macro_space": 0.026
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OBLIQUE",
+    "target": "ORGANON",
+    "amount": 0.819
+  },
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.061,
+    "movement": 0.361,
+    "density": 0.669,
+    "space": 0.027,
+    "aggression": 0.97
+  },
+  "macros": {
+    "CHARACTER": 0.899,
+    "MOVEMENT": 0.342,
+    "COUPLING": 0.929,
+    "SPACE": 0.026
+  },
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "bright",
+    "tight"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FND_AGG_4",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ODDOSCAR",
+    "OBSIDIAN"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.604,
+      "macro_movement": 0.477,
+      "macro_coupling": 0.674,
+      "macro_space": 0.788
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.574,
+      "macro_movement": 0.458,
+      "macro_coupling": 0.724,
+      "macro_space": 0.803
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ODDOSCAR",
+    "target": "OBSIDIAN",
+    "amount": 0.961
+  },
+  "dna": {
+    "brightness": 0.962,
+    "warmth": 0.351,
+    "movement": 0.927,
+    "density": 0.936,
+    "space": 0.406,
+    "aggression": 0.975
+  },
+  "macros": {
+    "CHARACTER": 0.604,
+    "MOVEMENT": 0.477,
+    "COUPLING": 0.674,
+    "SPACE": 0.788
+  },
+  "tags": [
+    "foundation",
+    "violent",
+    "bright",
+    "kinetic",
+    "dense"
+  ]
+}

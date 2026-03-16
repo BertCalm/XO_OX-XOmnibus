@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_FLX_AGG_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ORACLE",
+    "OVERDUB"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.552,
+      "macro_movement": 0.343,
+      "macro_coupling": 0.968,
+      "macro_space": 0.088
+    },
+    "OVERDUB": {
+      "macro_character": 0.45,
+      "macro_movement": 0.362,
+      "macro_coupling": 0.928,
+      "macro_space": 0.123
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ORACLE",
+    "target": "OVERDUB",
+    "amount": 0.921
+  },
+  "dna": {
+    "brightness": 0.889,
+    "warmth": 0.051,
+    "movement": 0.384,
+    "density": 0.437,
+    "space": 0.096,
+    "aggression": 0.972
+  },
+  "macros": {
+    "CHARACTER": 0.501,
+    "MOVEMENT": 0.384,
+    "COUPLING": 0.968,
+    "SPACE": 0.096
+  },
+  "tags": [
+    "flux",
+    "violent",
+    "bright",
+    "cold",
+    "intimate"
+  ]
+}

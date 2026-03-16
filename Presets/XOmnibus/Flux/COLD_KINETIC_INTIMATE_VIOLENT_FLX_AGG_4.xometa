@@ -1,0 +1,50 @@
+{
+  "name": "COLD_KINETIC_INTIMATE_VIOLENT_FLX_AGG_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OPTIC",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.674,
+      "macro_movement": 0.891,
+      "macro_coupling": 0.77,
+      "macro_space": 0.122
+    },
+    "ODYSSEY": {
+      "macro_character": 0.73,
+      "macro_movement": 0.94,
+      "macro_coupling": 0.793,
+      "macro_space": 0.069
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OPTIC",
+    "target": "ODYSSEY",
+    "amount": 0.899
+  },
+  "dna": {
+    "brightness": 0.346,
+    "warmth": 0.027,
+    "movement": 0.929,
+    "density": 0.531,
+    "space": 0.096,
+    "aggression": 0.888
+  },
+  "macros": {
+    "CHARACTER": 0.702,
+    "MOVEMENT": 0.929,
+    "COUPLING": 0.77,
+    "SPACE": 0.096
+  },
+  "tags": [
+    "flux",
+    "violent",
+    "cold",
+    "kinetic",
+    "intimate"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "DARK KINETIC VAST VIOLENT AET AGG 4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OVERWORLD",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.025,
+      "macro_movement": 0.954,
+      "macro_coupling": 0.892,
+      "macro_space": 0.845
+    },
+    "OBLIQUE": {
+      "macro_character": 0.024,
+      "macro_movement": 0.924,
+      "macro_coupling": 0.935,
+      "macro_space": 0.907
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OVERWORLD",
+    "target": "OBLIQUE",
+    "amount": 0.729
+  },
+  "dna": {
+    "brightness": 0.025,
+    "warmth": 0.598,
+    "movement": 0.955,
+    "density": 0.625,
+    "space": 0.916,
+    "aggression": 0.95
+  },
+  "macros": {
+    "CHARACTER": 0.025,
+    "MOVEMENT": 0.939,
+    "COUPLING": 0.913,
+    "SPACE": 0.876
+  },
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "dark",
+    "kinetic",
+    "vast"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD KINETIC VIOLENT ATM AGG 2",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORACLE",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.108,
+      "macro_movement": 0.941,
+      "macro_coupling": 0.859,
+      "macro_space": 0.416
+    },
+    "ODDFELIX": {
+      "macro_character": 0.115,
+      "macro_movement": 0.924,
+      "macro_coupling": 0.794,
+      "macro_space": 0.405
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORACLE",
+    "target": "ODDFELIX",
+    "amount": 0.847
+  },
+  "dna": {
+    "brightness": 0.117,
+    "warmth": 0.103,
+    "movement": 0.962,
+    "density": 0.436,
+    "space": 0.417,
+    "aggression": 0.889
+  },
+  "macros": {
+    "CHARACTER": 0.112,
+    "MOVEMENT": 0.932,
+    "COUPLING": 0.827,
+    "SPACE": 0.41
+  },
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "dark",
+    "kinetic"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT DENSE TIGHT VIOLENT PRS AGG 5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OCELOT",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "macro_character": 0.934,
+      "macro_movement": 0.468,
+      "macro_coupling": 0.932,
+      "macro_space": 0.079
+    },
+    "OVERWORLD": {
+      "macro_character": 0.947,
+      "macro_movement": 0.472,
+      "macro_coupling": 0.905,
+      "macro_space": 0.081
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OCELOT",
+    "target": "OVERWORLD",
+    "amount": 0.784
+  },
+  "dna": {
+    "brightness": 0.955,
+    "warmth": 0.576,
+    "movement": 0.496,
+    "density": 0.928,
+    "space": 0.082,
+    "aggression": 0.982
+  },
+  "macros": {
+    "CHARACTER": 0.941,
+    "MOVEMENT": 0.47,
+    "COUPLING": 0.919,
+    "SPACE": 0.08
+  },
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "bright",
+    "dense",
+    "tight"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "DARK KINETIC DENSE VIOLENT PRS AGG 1",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OTTONI",
+    "OHM"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.118,
+      "macro_movement": 0.835,
+      "macro_coupling": 0.958,
+      "macro_space": 0.581
+    },
+    "OHM": {
+      "macro_character": 0.121,
+      "macro_movement": 0.843,
+      "macro_coupling": 0.912,
+      "macro_space": 0.577
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OTTONI",
+    "target": "OHM",
+    "amount": 0.773
+  },
+  "dna": {
+    "brightness": 0.128,
+    "warmth": 0.491,
+    "movement": 0.892,
+    "density": 0.886,
+    "space": 0.586,
+    "aggression": 0.983
+  },
+  "macros": {
+    "CHARACTER": 0.119,
+    "MOVEMENT": 0.839,
+    "COUPLING": 0.935,
+    "SPACE": 0.579
+  },
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "dark",
+    "kinetic",
+    "dense"
+  ]
+}

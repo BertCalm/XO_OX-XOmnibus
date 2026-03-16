@@ -1,0 +1,50 @@
+{
+  "name": "HOT_KINETIC_VAST_VIOLENT_ENT_AGG_3",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERWORLD",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.624,
+      "macro_movement": 0.899,
+      "macro_coupling": 0.768,
+      "macro_space": 0.926
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.469,
+      "macro_movement": 0.875,
+      "macro_coupling": 0.777,
+      "macro_space": 0.909
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OVERWORLD",
+    "target": "ODDOSCAR",
+    "amount": 0.936
+  },
+  "dna": {
+    "brightness": 0.499,
+    "warmth": 0.945,
+    "movement": 0.905,
+    "density": 0.683,
+    "space": 0.928,
+    "aggression": 0.967
+  },
+  "macros": {
+    "CHARACTER": 0.546,
+    "MOVEMENT": 0.905,
+    "COUPLING": 0.768,
+    "SPACE": 0.928
+  },
+  "tags": [
+    "entangled",
+    "violent",
+    "hot",
+    "kinetic",
+    "vast"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FLX_AGG_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ORIGAMI",
+    "ORGANON"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.519,
+      "macro_movement": 0.879,
+      "macro_coupling": 0.842,
+      "macro_space": 0.598
+    },
+    "ORGANON": {
+      "macro_character": 0.375,
+      "macro_movement": 0.912,
+      "macro_coupling": 0.803,
+      "macro_space": 0.573
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ORIGAMI",
+    "target": "ORGANON",
+    "amount": 0.93
+  },
+  "dna": {
+    "brightness": 0.931,
+    "warmth": 0.336,
+    "movement": 0.876,
+    "density": 0.883,
+    "space": 0.551,
+    "aggression": 0.965
+  },
+  "macros": {
+    "CHARACTER": 0.447,
+    "MOVEMENT": 0.876,
+    "COUPLING": 0.842,
+    "SPACE": 0.551
+  },
+  "tags": [
+    "flux",
+    "violent",
+    "kinetic",
+    "bright",
+    "dense"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "DARK WARM TIGHT VIOLENT PRS AGG 1",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OPTIC",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.063,
+      "macro_movement": 0.491,
+      "macro_coupling": 0.948,
+      "macro_space": 0.049
+    },
+    "ORPHICA": {
+      "macro_character": 0.061,
+      "macro_movement": 0.461,
+      "macro_coupling": 0.919,
+      "macro_space": 0.05
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OPTIC",
+    "target": "ORPHICA",
+    "amount": 0.799
+  },
+  "dna": {
+    "brightness": 0.066,
+    "warmth": 0.947,
+    "movement": 0.499,
+    "density": 0.551,
+    "space": 0.052,
+    "aggression": 0.985
+  },
+  "macros": {
+    "CHARACTER": 0.062,
+    "MOVEMENT": 0.476,
+    "COUPLING": 0.933,
+    "SPACE": 0.05
+  },
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "dark",
+    "tight"
+  ]
+}

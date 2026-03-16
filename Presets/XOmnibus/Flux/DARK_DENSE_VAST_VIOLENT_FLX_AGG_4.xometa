@@ -1,0 +1,50 @@
+{
+  "name": "DARK_DENSE_VAST_VIOLENT_FLX_AGG_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OPTIC",
+    "OBLONG"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.438,
+      "macro_movement": 0.457,
+      "macro_coupling": 0.855,
+      "macro_space": 0.953
+    },
+    "OBLONG": {
+      "macro_character": 0.438,
+      "macro_movement": 0.498,
+      "macro_coupling": 0.873,
+      "macro_space": 0.97
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OPTIC",
+    "target": "OBLONG",
+    "amount": 0.975
+  },
+  "dna": {
+    "brightness": 0.114,
+    "warmth": 0.681,
+    "movement": 0.468,
+    "density": 0.96,
+    "space": 0.936,
+    "aggression": 0.942
+  },
+  "macros": {
+    "CHARACTER": 0.438,
+    "MOVEMENT": 0.468,
+    "COUPLING": 0.855,
+    "SPACE": 0.936
+  },
+  "tags": [
+    "flux",
+    "violent",
+    "dark",
+    "dense",
+    "vast"
+  ]
+}

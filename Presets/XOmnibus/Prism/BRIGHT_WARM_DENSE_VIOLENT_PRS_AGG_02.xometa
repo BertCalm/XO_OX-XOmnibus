@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT WARM DENSE VIOLENT PRS AGG 2",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OBLIQUE",
+    "OWLFISH"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.871,
+      "macro_movement": 0.389,
+      "macro_coupling": 0.836,
+      "macro_space": 0.442
+    },
+    "OWLFISH": {
+      "macro_character": 0.816,
+      "macro_movement": 0.372,
+      "macro_coupling": 0.855,
+      "macro_space": 0.439
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBLIQUE",
+    "target": "OWLFISH",
+    "amount": 0.92
+  },
+  "dna": {
+    "brightness": 0.876,
+    "warmth": 0.93,
+    "movement": 0.394,
+    "density": 0.989,
+    "space": 0.45,
+    "aggression": 0.873
+  },
+  "macros": {
+    "CHARACTER": 0.843,
+    "MOVEMENT": 0.381,
+    "COUPLING": 0.845,
+    "SPACE": 0.441
+  },
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "bright",
+    "dense"
+  ]
+}

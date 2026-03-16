@@ -1,0 +1,50 @@
+{
+  "name": "COLD_KINETIC_INTIMATE_VIOLENT_FLX_AGG_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OPTIC",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.467,
+      "macro_movement": 0.915,
+      "macro_coupling": 0.903,
+      "macro_space": 0.0
+    },
+    "ORIGAMI": {
+      "macro_character": 0.728,
+      "macro_movement": 0.933,
+      "macro_coupling": 0.901,
+      "macro_space": 0.009
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OPTIC",
+    "target": "ORIGAMI",
+    "amount": 0.983
+  },
+  "dna": {
+    "brightness": 0.444,
+    "warmth": 0.053,
+    "movement": 0.955,
+    "density": 0.351,
+    "space": 0.025,
+    "aggression": 0.877
+  },
+  "macros": {
+    "CHARACTER": 0.598,
+    "MOVEMENT": 0.955,
+    "COUPLING": 0.903,
+    "SPACE": 0.025
+  },
+  "tags": [
+    "flux",
+    "violent",
+    "cold",
+    "kinetic",
+    "intimate"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD KINETIC VIOLENT ATM AGG 5",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORBITAL",
+    "ORGANON"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.064,
+      "macro_movement": 0.857,
+      "macro_coupling": 0.835,
+      "macro_space": 0.483
+    },
+    "ORGANON": {
+      "macro_character": 0.065,
+      "macro_movement": 0.831,
+      "macro_coupling": 0.886,
+      "macro_space": 0.492
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ORBITAL",
+    "target": "ORGANON",
+    "amount": 0.762
+  },
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.047,
+    "movement": 0.878,
+    "density": 0.308,
+    "space": 0.522,
+    "aggression": 0.941
+  },
+  "macros": {
+    "CHARACTER": 0.065,
+    "MOVEMENT": 0.844,
+    "COUPLING": 0.861,
+    "SPACE": 0.487
+  },
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "dark",
+    "kinetic"
+  ]
+}

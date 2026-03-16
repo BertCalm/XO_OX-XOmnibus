@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FLX_AGG_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ORACLE",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.611,
+      "macro_movement": 1.0,
+      "macro_coupling": 0.978,
+      "macro_space": 0.572
+    },
+    "ODYSSEY": {
+      "macro_character": 0.652,
+      "macro_movement": 0.964,
+      "macro_coupling": 0.976,
+      "macro_space": 0.521
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ORACLE",
+    "target": "ODYSSEY",
+    "amount": 0.98
+  },
+  "dna": {
+    "brightness": 0.872,
+    "warmth": 0.935,
+    "movement": 0.99,
+    "density": 0.44,
+    "space": 0.56,
+    "aggression": 0.964
+  },
+  "macros": {
+    "CHARACTER": 0.631,
+    "MOVEMENT": 0.99,
+    "COUPLING": 0.978,
+    "SPACE": 0.56
+  },
+  "tags": [
+    "flux",
+    "violent",
+    "bright",
+    "warm",
+    "kinetic"
+  ]
+}

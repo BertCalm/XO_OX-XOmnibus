@@ -1,0 +1,52 @@
+{
+  "name": "DARK KINETIC DENSE VIOLENT ATM AGG 4",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OPAL",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.058,
+      "macro_movement": 0.936,
+      "macro_coupling": 0.902,
+      "macro_space": 0.439
+    },
+    "OPTIC": {
+      "macro_character": 0.06,
+      "macro_movement": 0.967,
+      "macro_coupling": 0.944,
+      "macro_space": 0.416
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OPAL",
+    "target": "OPTIC",
+    "amount": 0.983
+  },
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.673,
+    "movement": 0.987,
+    "density": 0.875,
+    "space": 0.443,
+    "aggression": 0.952
+  },
+  "macros": {
+    "CHARACTER": 0.059,
+    "MOVEMENT": 0.952,
+    "COUPLING": 0.923,
+    "SPACE": 0.427
+  },
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "dark",
+    "kinetic",
+    "dense"
+  ]
+}

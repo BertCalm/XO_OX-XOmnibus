@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT DENSE VAST VIOLENT AET AGG 4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OMBRE",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "OMBRE": {
+      "macro_character": 0.871,
+      "macro_movement": 0.455,
+      "macro_coupling": 0.934,
+      "macro_space": 0.961
+    },
+    "ORBITAL": {
+      "macro_character": 0.866,
+      "macro_movement": 0.45,
+      "macro_coupling": 0.874,
+      "macro_space": 0.959
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OMBRE",
+    "target": "ORBITAL",
+    "amount": 0.885
+  },
+  "dna": {
+    "brightness": 0.873,
+    "warmth": 0.632,
+    "movement": 0.458,
+    "density": 0.871,
+    "space": 0.974,
+    "aggression": 0.963
+  },
+  "macros": {
+    "CHARACTER": 0.869,
+    "MOVEMENT": 0.453,
+    "COUPLING": 0.904,
+    "SPACE": 0.96
+  },
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "bright",
+    "dense",
+    "vast"
+  ]
+}

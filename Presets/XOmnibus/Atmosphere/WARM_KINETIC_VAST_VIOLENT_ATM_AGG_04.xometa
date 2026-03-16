@@ -1,0 +1,51 @@
+{
+  "name": "WARM KINETIC VAST VIOLENT ATM AGG 4",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OPTIC",
+    "OSPREY"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.497,
+      "macro_movement": 0.864,
+      "macro_coupling": 0.859,
+      "macro_space": 0.9
+    },
+    "OSPREY": {
+      "macro_character": 0.515,
+      "macro_movement": 0.889,
+      "macro_coupling": 0.854,
+      "macro_space": 0.871
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OPTIC",
+    "target": "OSPREY",
+    "amount": 0.893
+  },
+  "dna": {
+    "brightness": 0.519,
+    "warmth": 0.87,
+    "movement": 0.904,
+    "density": 0.472,
+    "space": 0.94,
+    "aggression": 0.949
+  },
+  "macros": {
+    "CHARACTER": 0.506,
+    "MOVEMENT": 0.877,
+    "COUPLING": 0.857,
+    "SPACE": 0.885
+  },
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "kinetic",
+    "vast"
+  ]
+}

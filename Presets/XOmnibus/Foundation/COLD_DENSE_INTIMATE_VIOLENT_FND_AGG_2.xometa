@@ -1,0 +1,50 @@
+{
+  "name": "COLD_DENSE_INTIMATE_VIOLENT_FND_AGG_2",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ORIGAMI",
+    "ONSET"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.464,
+      "macro_movement": 0.377,
+      "macro_coupling": 0.612,
+      "macro_space": 0.662
+    },
+    "ONSET": {
+      "macro_character": 0.495,
+      "macro_movement": 0.396,
+      "macro_coupling": 0.656,
+      "macro_space": 0.686
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORIGAMI",
+    "target": "ONSET",
+    "amount": 0.806
+  },
+  "dna": {
+    "brightness": 0.438,
+    "warmth": 0.107,
+    "movement": 0.475,
+    "density": 0.988,
+    "space": 0.033,
+    "aggression": 0.978
+  },
+  "macros": {
+    "CHARACTER": 0.464,
+    "MOVEMENT": 0.377,
+    "COUPLING": 0.612,
+    "SPACE": 0.662
+  },
+  "tags": [
+    "foundation",
+    "violent",
+    "cold",
+    "dense",
+    "intimate"
+  ]
+}

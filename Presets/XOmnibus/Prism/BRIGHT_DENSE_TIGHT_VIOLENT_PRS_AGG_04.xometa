@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT DENSE TIGHT VIOLENT PRS AGG 4",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OTTONI",
+    "OHM"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.916,
+      "macro_movement": 0.361,
+      "macro_coupling": 0.874,
+      "macro_space": 0.057
+    },
+    "OHM": {
+      "macro_character": 0.904,
+      "macro_movement": 0.345,
+      "macro_coupling": 0.83,
+      "macro_space": 0.056
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OTTONI",
+    "target": "OHM",
+    "amount": 0.973
+  },
+  "dna": {
+    "brightness": 0.933,
+    "warmth": 0.426,
+    "movement": 0.369,
+    "density": 0.979,
+    "space": 0.058,
+    "aggression": 0.913
+  },
+  "macros": {
+    "CHARACTER": 0.91,
+    "MOVEMENT": 0.353,
+    "COUPLING": 0.852,
+    "SPACE": 0.057
+  },
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "bright",
+    "dense",
+    "tight"
+  ]
+}

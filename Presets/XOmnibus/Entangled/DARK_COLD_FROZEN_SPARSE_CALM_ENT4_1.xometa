@@ -1,0 +1,52 @@
+{
+  "name": "DARK_COLD_FROZEN_SPARSE_CALM_ENT4_1",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OSPREY",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.09,
+      "macro_movement": 0.069,
+      "macro_coupling": 0.078,
+      "macro_space": 0.528
+    },
+    "ODDFELIX": {
+      "macro_character": 0.054,
+      "macro_movement": 0.057,
+      "macro_coupling": 0.032,
+      "macro_space": 0.551
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OSPREY",
+    "target": "ODDFELIX",
+    "amount": 0.732
+  },
+  "dna": {
+    "brightness": 0.038,
+    "warmth": 0.095,
+    "movement": 0.064,
+    "density": 0.062,
+    "space": 0.538,
+    "aggression": 0.071
+  },
+  "macros": {
+    "CHARACTER": 0.072,
+    "MOVEMENT": 0.063,
+    "COUPLING": 0.732,
+    "SPACE": 0.54
+  },
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "dark",
+    "cold",
+    "sparse",
+    "gentle"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "COLD KINETIC DENSE VIOLENT AET AGG 5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OSPREY",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.512,
+      "macro_movement": 0.873,
+      "macro_coupling": 0.849,
+      "macro_space": 0.365
+    },
+    "ORGANON": {
+      "macro_character": 0.501,
+      "macro_movement": 0.842,
+      "macro_coupling": 0.862,
+      "macro_space": 0.353
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OSPREY",
+    "target": "ORGANON",
+    "amount": 0.928
+  },
+  "dna": {
+    "brightness": 0.518,
+    "warmth": 0.128,
+    "movement": 0.913,
+    "density": 0.918,
+    "space": 0.376,
+    "aggression": 0.885
+  },
+  "macros": {
+    "CHARACTER": 0.506,
+    "MOVEMENT": 0.857,
+    "COUPLING": 0.855,
+    "SPACE": 0.359
+  },
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "kinetic",
+    "dense"
+  ]
+}

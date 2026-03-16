@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT COLD KINETIC VIOLENT PRS AGG 3",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ORIGAMI",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.84,
+      "macro_movement": 0.954,
+      "macro_coupling": 0.927,
+      "macro_space": 0.581
+    },
+    "OVERWORLD": {
+      "macro_character": 0.884,
+      "macro_movement": 0.906,
+      "macro_coupling": 0.955,
+      "macro_space": 0.597
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORIGAMI",
+    "target": "OVERWORLD",
+    "amount": 0.87
+  },
+  "dna": {
+    "brightness": 0.907,
+    "warmth": 0.13,
+    "movement": 0.956,
+    "density": 0.51,
+    "space": 0.608,
+    "aggression": 0.969
+  },
+  "macros": {
+    "CHARACTER": 0.862,
+    "MOVEMENT": 0.93,
+    "COUPLING": 0.941,
+    "SPACE": 0.589
+  },
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "bright",
+    "kinetic"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_COLD_FROZEN_DENSE_CLOSE_ENT4_1",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OCELOT",
+    "OVERBITE"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "macro_character": 0.489,
+      "macro_movement": 0.08,
+      "macro_coupling": 0.879,
+      "macro_space": 0.068
+    },
+    "OVERBITE": {
+      "macro_character": 0.495,
+      "macro_movement": 0.084,
+      "macro_coupling": 0.876,
+      "macro_space": 0.071
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OCELOT",
+    "target": "OVERBITE",
+    "amount": 0.764
+  },
+  "dna": {
+    "brightness": 0.931,
+    "warmth": 0.067,
+    "movement": 0.081,
+    "density": 0.884,
+    "space": 0.092,
+    "aggression": 0.651
+  },
+  "macros": {
+    "CHARACTER": 0.492,
+    "MOVEMENT": 0.082,
+    "COUPLING": 0.764,
+    "SPACE": 0.07
+  },
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "bright",
+    "cold",
+    "dense",
+    "close"
+  ]
+}

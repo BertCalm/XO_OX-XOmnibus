@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_DENSE_VIOLENT_ENT_AGG_1",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OPTIC",
+    "OUROBOROS"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.459,
+      "macro_movement": 0.638,
+      "macro_coupling": 0.985,
+      "macro_space": 0.575
+    },
+    "OUROBOROS": {
+      "macro_character": 0.684,
+      "macro_movement": 0.675,
+      "macro_coupling": 0.986,
+      "macro_space": 0.625
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OPTIC",
+    "target": "OUROBOROS",
+    "amount": 0.964
+  },
+  "dna": {
+    "brightness": 0.071,
+    "warmth": 0.033,
+    "movement": 0.633,
+    "density": 0.93,
+    "space": 0.587,
+    "aggression": 0.931
+  },
+  "macros": {
+    "CHARACTER": 0.572,
+    "MOVEMENT": 0.633,
+    "COUPLING": 0.985,
+    "SPACE": 0.587
+  },
+  "tags": [
+    "entangled",
+    "violent",
+    "dark",
+    "cold",
+    "dense"
+  ]
+}

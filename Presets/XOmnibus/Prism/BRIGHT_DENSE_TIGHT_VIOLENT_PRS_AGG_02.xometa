@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT DENSE TIGHT VIOLENT PRS AGG 2",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ORPHICA",
+    "OCELOT"
+  ],
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.949,
+      "macro_movement": 0.565,
+      "macro_coupling": 0.936,
+      "macro_space": 0.07
+    },
+    "OCELOT": {
+      "macro_character": 0.934,
+      "macro_movement": 0.537,
+      "macro_coupling": 0.942,
+      "macro_space": 0.07
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ORPHICA",
+    "target": "OCELOT",
+    "amount": 0.743
+  },
+  "dna": {
+    "brightness": 0.966,
+    "warmth": 0.59,
+    "movement": 0.575,
+    "density": 0.873,
+    "space": 0.072,
+    "aggression": 0.986
+  },
+  "macros": {
+    "CHARACTER": 0.942,
+    "MOVEMENT": 0.551,
+    "COUPLING": 0.939,
+    "SPACE": 0.07
+  },
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "bright",
+    "dense",
+    "tight"
+  ]
+}

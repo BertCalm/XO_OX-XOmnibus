@@ -1,0 +1,52 @@
+{
+  "name": "DARK_WARM_FROZEN_CLOSE_HARSH_ENT4_4",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OCTOPUS",
+    "OMBRE"
+  ],
+  "parameters": {
+    "OCTOPUS": {
+      "macro_character": 0.45,
+      "macro_movement": 0.015,
+      "macro_coupling": 0.624,
+      "macro_space": 0.051
+    },
+    "OMBRE": {
+      "macro_character": 0.49,
+      "macro_movement": 0.022,
+      "macro_coupling": 0.598,
+      "macro_space": 0.075
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OCTOPUS",
+    "target": "OMBRE",
+    "amount": 0.844
+  },
+  "dna": {
+    "brightness": 0.056,
+    "warmth": 0.891,
+    "movement": 0.015,
+    "density": 0.597,
+    "space": 0.078,
+    "aggression": 0.959
+  },
+  "macros": {
+    "CHARACTER": 0.47,
+    "MOVEMENT": 0.018,
+    "COUPLING": 0.844,
+    "SPACE": 0.063
+  },
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "dark",
+    "warm",
+    "close",
+    "harsh"
+  ]
+}

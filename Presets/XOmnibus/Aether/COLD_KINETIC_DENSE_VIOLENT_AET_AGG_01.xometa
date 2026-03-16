@@ -1,0 +1,51 @@
+{
+  "name": "COLD KINETIC DENSE VIOLENT AET AGG 1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OVERWORLD",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.648,
+      "macro_movement": 0.928,
+      "macro_coupling": 0.897,
+      "macro_space": 0.362
+    },
+    "ODDFELIX": {
+      "macro_character": 0.641,
+      "macro_movement": 0.89,
+      "macro_coupling": 0.871,
+      "macro_space": 0.359
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OVERWORLD",
+    "target": "ODDFELIX",
+    "amount": 0.949
+  },
+  "dna": {
+    "brightness": 0.651,
+    "warmth": 0.06,
+    "movement": 0.93,
+    "density": 0.903,
+    "space": 0.366,
+    "aggression": 0.98
+  },
+  "macros": {
+    "CHARACTER": 0.645,
+    "MOVEMENT": 0.909,
+    "COUPLING": 0.884,
+    "SPACE": 0.36
+  },
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "kinetic",
+    "dense"
+  ]
+}

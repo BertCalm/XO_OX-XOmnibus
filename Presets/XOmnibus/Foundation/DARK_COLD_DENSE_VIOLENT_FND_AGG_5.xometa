@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_DENSE_VIOLENT_FND_AGG_5",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ODDFELIX",
+    "OVERDUB"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.65,
+      "macro_movement": 0.881,
+      "macro_coupling": 0.736,
+      "macro_space": 0.436
+    },
+    "OVERDUB": {
+      "macro_character": 0.614,
+      "macro_movement": 0.905,
+      "macro_coupling": 0.74,
+      "macro_space": 0.461
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ODDFELIX",
+    "target": "OVERDUB",
+    "amount": 0.96
+  },
+  "dna": {
+    "brightness": 0.064,
+    "warmth": 0.027,
+    "movement": 0.665,
+    "density": 0.938,
+    "space": 0.587,
+    "aggression": 0.896
+  },
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.881,
+    "COUPLING": 0.736,
+    "SPACE": 0.436
+  },
+  "tags": [
+    "foundation",
+    "violent",
+    "dark",
+    "cold",
+    "dense"
+  ]
+}

@@ -32,4 +32,30 @@ Running history of key fleet metrics. Most recent entry first.
 
 ---
 
+## 2026-03-16 — Wave 94
+
+| Field | Value |
+|-------|-------|
+| **Date** | 2026-03-16 |
+| **Fleet size** | 9,395 `.xometa` presets (+819 from Wave 92) |
+| **Fleet cosine diversity score** | 0.2052 (acceptable range: 0.20–0.30) |
+| **Tools count** | 240+ Python scripts in `Tools/` |
+
+### Key milestones
+
+- **All previously critical flags RESOLVED**: Aether space-XLOW (was 4.6% → now 14.2%); Entangled movement-XLOW (was 6.8% → now 9.5%)
+- **0 CRITICAL gaps** in Wave 94; 5 WATCH flags (all minor identity asymmetries)
+- **Largest mood growth**: Aether +227 presets; Family +108; Entangled +204
+- **New flags**: Prism brightness XHIGH (33.0%), Flux movement XHIGH (40.9%), Aether space XHIGH (45.7%)
+- **Aggression-XHIGH systemic bias**: improving but still present in Atmosphere (15.3%), Aether (17.7%)
+- Full detail: `Docs/snapshots/fleet_status_wave94.md`
+
+### Notes
+
+- V1 scope: 35 engines (31 installed + OSTINATO/OPENSKY/OCEANDEEP/OUIE pending DSP)
+- OVERLAP + OUTWIT seances still pending
+- Family volume target: 600+ presets before V1
+
+---
+
 <!-- Add future snapshots above this line -->

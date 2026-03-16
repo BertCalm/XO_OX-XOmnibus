@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT DENSE VAST VIOLENT AET AGG 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORGANON",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.878,
+      "macro_movement": 0.51,
+      "macro_coupling": 0.799,
+      "macro_space": 0.884
+    },
+    "OBLIQUE": {
+      "macro_character": 0.826,
+      "macro_movement": 0.503,
+      "macro_coupling": 0.8,
+      "macro_space": 0.837
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORGANON",
+    "target": "OBLIQUE",
+    "amount": 0.961
+  },
+  "dna": {
+    "brightness": 0.887,
+    "warmth": 0.512,
+    "movement": 0.526,
+    "density": 0.965,
+    "space": 0.89,
+    "aggression": 0.879
+  },
+  "macros": {
+    "CHARACTER": 0.852,
+    "MOVEMENT": 0.506,
+    "COUPLING": 0.8,
+    "SPACE": 0.861
+  },
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "bright",
+    "dense",
+    "vast"
+  ]
+}

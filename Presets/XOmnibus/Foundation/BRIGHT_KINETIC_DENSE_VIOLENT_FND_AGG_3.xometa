@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FND_AGG_3",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBLONG",
+    "OVERDUB"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.362,
+      "macro_movement": 0.907,
+      "macro_coupling": 0.877,
+      "macro_space": 0.849
+    },
+    "OVERDUB": {
+      "macro_character": 0.343,
+      "macro_movement": 0.863,
+      "macro_coupling": 0.915,
+      "macro_space": 0.894
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OBLONG",
+    "target": "OVERDUB",
+    "amount": 0.912
+  },
+  "dna": {
+    "brightness": 0.962,
+    "warmth": 0.516,
+    "movement": 0.963,
+    "density": 0.934,
+    "space": 0.3,
+    "aggression": 0.909
+  },
+  "macros": {
+    "CHARACTER": 0.362,
+    "MOVEMENT": 0.907,
+    "COUPLING": 0.877,
+    "SPACE": 0.849
+  },
+  "tags": [
+    "foundation",
+    "violent",
+    "bright",
+    "kinetic",
+    "dense"
+  ]
+}

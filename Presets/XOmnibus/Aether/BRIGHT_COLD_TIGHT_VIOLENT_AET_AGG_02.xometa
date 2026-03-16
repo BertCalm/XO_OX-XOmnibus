@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT COLD TIGHT VIOLENT AET AGG 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORGANON",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.871,
+      "macro_movement": 0.388,
+      "macro_coupling": 0.816,
+      "macro_space": 0.064
+    },
+    "OCEANIC": {
+      "macro_character": 0.9,
+      "macro_movement": 0.381,
+      "macro_coupling": 0.843,
+      "macro_space": 0.065
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORGANON",
+    "target": "OCEANIC",
+    "amount": 0.851
+  },
+  "dna": {
+    "brightness": 0.941,
+    "warmth": 0.022,
+    "movement": 0.406,
+    "density": 0.351,
+    "space": 0.066,
+    "aggression": 0.884
+  },
+  "macros": {
+    "CHARACTER": 0.885,
+    "MOVEMENT": 0.385,
+    "COUPLING": 0.829,
+    "SPACE": 0.065
+  },
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "bright",
+    "tight"
+  ]
+}

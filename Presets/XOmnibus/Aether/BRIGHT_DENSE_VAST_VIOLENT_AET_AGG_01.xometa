@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT DENSE VAST VIOLENT AET AGG 1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORIGAMI",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.834,
+      "macro_movement": 0.512,
+      "macro_coupling": 0.918,
+      "macro_space": 0.98
+    },
+    "ODDFELIX": {
+      "macro_character": 0.835,
+      "macro_movement": 0.538,
+      "macro_coupling": 0.949,
+      "macro_space": 0.914
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORIGAMI",
+    "target": "ODDFELIX",
+    "amount": 0.785
+  },
+  "dna": {
+    "brightness": 0.874,
+    "warmth": 0.327,
+    "movement": 0.552,
+    "density": 0.981,
+    "space": 0.99,
+    "aggression": 0.96
+  },
+  "macros": {
+    "CHARACTER": 0.835,
+    "MOVEMENT": 0.525,
+    "COUPLING": 0.933,
+    "SPACE": 0.947
+  },
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "bright",
+    "dense",
+    "vast"
+  ]
+}

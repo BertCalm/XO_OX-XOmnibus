@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT KINETIC VAST VIOLENT ATM AGG 2",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORBITAL",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.846,
+      "macro_movement": 0.943,
+      "macro_coupling": 0.806,
+      "macro_space": 0.875
+    },
+    "ORIGAMI": {
+      "macro_character": 0.857,
+      "macro_movement": 0.911,
+      "macro_coupling": 0.823,
+      "macro_space": 0.851
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ORBITAL",
+    "target": "ORIGAMI",
+    "amount": 0.856
+  },
+  "dna": {
+    "brightness": 0.903,
+    "warmth": 0.648,
+    "movement": 0.961,
+    "density": 0.364,
+    "space": 0.921,
+    "aggression": 0.903
+  },
+  "macros": {
+    "CHARACTER": 0.851,
+    "MOVEMENT": 0.927,
+    "COUPLING": 0.815,
+    "SPACE": 0.863
+  },
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "bright",
+    "kinetic",
+    "vast"
+  ]
+}

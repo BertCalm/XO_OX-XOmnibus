@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_DENSE_VIOLENT_FAM_AGG_1",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ORPHICA",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.509,
+      "macro_movement": 0.825,
+      "macro_coupling": 0.704,
+      "macro_space": 0.832
+    },
+    "ODYSSEY": {
+      "macro_character": 0.479,
+      "macro_movement": 0.786,
+      "macro_coupling": 0.676,
+      "macro_space": 0.797
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ORPHICA",
+    "target": "ODYSSEY",
+    "amount": 0.94
+  },
+  "dna": {
+    "brightness": 0.874,
+    "warmth": 0.905,
+    "movement": 0.413,
+    "density": 0.973,
+    "space": 0.328,
+    "aggression": 0.898
+  },
+  "macros": {
+    "CHARACTER": 0.509,
+    "MOVEMENT": 0.825,
+    "COUPLING": 0.704,
+    "SPACE": 0.832
+  },
+  "tags": [
+    "family",
+    "violent",
+    "bright",
+    "warm",
+    "dense"
+  ]
+}

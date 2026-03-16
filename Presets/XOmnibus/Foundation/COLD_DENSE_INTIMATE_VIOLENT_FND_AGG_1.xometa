@@ -1,0 +1,50 @@
+{
+  "name": "COLD_DENSE_INTIMATE_VIOLENT_FND_AGG_1",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBESE",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OBESE": {
+      "macro_character": 0.735,
+      "macro_movement": 0.59,
+      "macro_coupling": 0.939,
+      "macro_space": 0.672
+    },
+    "ORACLE": {
+      "macro_character": 0.779,
+      "macro_movement": 0.552,
+      "macro_coupling": 0.986,
+      "macro_space": 0.64
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBESE",
+    "target": "ORACLE",
+    "amount": 0.711
+  },
+  "dna": {
+    "brightness": 0.309,
+    "warmth": 0.041,
+    "movement": 0.431,
+    "density": 0.974,
+    "space": 0.126,
+    "aggression": 0.903
+  },
+  "macros": {
+    "CHARACTER": 0.735,
+    "MOVEMENT": 0.59,
+    "COUPLING": 0.939,
+    "SPACE": 0.672
+  },
+  "tags": [
+    "foundation",
+    "violent",
+    "cold",
+    "dense",
+    "intimate"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "COLD_DENSE_INTIMATE_VIOLENT_FND_AGG_4",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBSIDIAN",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OBSIDIAN": {
+      "macro_character": 0.755,
+      "macro_movement": 0.657,
+      "macro_coupling": 0.826,
+      "macro_space": 0.926
+    },
+    "ODDFELIX": {
+      "macro_character": 0.779,
+      "macro_movement": 0.673,
+      "macro_coupling": 0.804,
+      "macro_space": 0.942
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OBSIDIAN",
+    "target": "ODDFELIX",
+    "amount": 0.797
+  },
+  "dna": {
+    "brightness": 0.422,
+    "warmth": 0.043,
+    "movement": 0.614,
+    "density": 0.943,
+    "space": 0.055,
+    "aggression": 0.923
+  },
+  "macros": {
+    "CHARACTER": 0.755,
+    "MOVEMENT": 0.657,
+    "COUPLING": 0.826,
+    "SPACE": 0.926
+  },
+  "tags": [
+    "foundation",
+    "violent",
+    "cold",
+    "dense",
+    "intimate"
+  ]
+}

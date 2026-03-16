@@ -1,0 +1,51 @@
+{
+  "name": "WARM KINETIC VAST VIOLENT ATM AGG 3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORACLE",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.65,
+      "macro_movement": 0.899,
+      "macro_coupling": 0.897,
+      "macro_space": 0.943
+    },
+    "ODDFELIX": {
+      "macro_character": 0.625,
+      "macro_movement": 0.925,
+      "macro_coupling": 0.862,
+      "macro_space": 0.958
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ORACLE",
+    "target": "ODDFELIX",
+    "amount": 0.878
+  },
+  "dna": {
+    "brightness": 0.668,
+    "warmth": 0.945,
+    "movement": 0.95,
+    "density": 0.35,
+    "space": 0.978,
+    "aggression": 0.931
+  },
+  "macros": {
+    "CHARACTER": 0.637,
+    "MOVEMENT": 0.912,
+    "COUPLING": 0.879,
+    "SPACE": 0.95
+  },
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "kinetic",
+    "vast"
+  ]
+}

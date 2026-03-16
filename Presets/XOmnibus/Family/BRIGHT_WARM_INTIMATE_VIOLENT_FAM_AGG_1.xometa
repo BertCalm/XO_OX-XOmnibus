@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_INTIMATE_VIOLENT_FAM_AGG_1",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OSPREY",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.892,
+      "macro_movement": 0.378,
+      "macro_coupling": 0.828,
+      "macro_space": 0.526
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.879,
+      "macro_movement": 0.343,
+      "macro_coupling": 0.831,
+      "macro_space": 0.533
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OSPREY",
+    "target": "ODDOSCAR",
+    "amount": 0.749
+  },
+  "dna": {
+    "brightness": 0.922,
+    "warmth": 0.882,
+    "movement": 0.553,
+    "density": 0.649,
+    "space": 0.069,
+    "aggression": 0.953
+  },
+  "macros": {
+    "CHARACTER": 0.892,
+    "MOVEMENT": 0.378,
+    "COUPLING": 0.828,
+    "SPACE": 0.526
+  },
+  "tags": [
+    "family",
+    "violent",
+    "bright",
+    "warm",
+    "intimate"
+  ]
+}

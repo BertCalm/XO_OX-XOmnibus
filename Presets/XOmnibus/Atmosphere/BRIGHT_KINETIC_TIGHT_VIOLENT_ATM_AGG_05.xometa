@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT KINETIC TIGHT VIOLENT ATM AGG 5",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORACLE",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.845,
+      "macro_movement": 0.901,
+      "macro_coupling": 0.917,
+      "macro_space": 0.045
+    },
+    "OCEANIC": {
+      "macro_character": 0.835,
+      "macro_movement": 0.914,
+      "macro_coupling": 0.889,
+      "macro_space": 0.044
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORACLE",
+    "target": "OCEANIC",
+    "amount": 0.881
+  },
+  "dna": {
+    "brightness": 0.884,
+    "warmth": 0.606,
+    "movement": 0.943,
+    "density": 0.616,
+    "space": 0.045,
+    "aggression": 0.933
+  },
+  "macros": {
+    "CHARACTER": 0.84,
+    "MOVEMENT": 0.907,
+    "COUPLING": 0.903,
+    "SPACE": 0.044
+  },
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "bright",
+    "kinetic",
+    "tight"
+  ]
+}

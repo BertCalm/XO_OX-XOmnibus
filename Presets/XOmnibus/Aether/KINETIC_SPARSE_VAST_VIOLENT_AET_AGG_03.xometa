@@ -1,0 +1,51 @@
+{
+  "name": "KINETIC SPARSE VAST VIOLENT AET AGG 3",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OSPREY",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.369,
+      "macro_movement": 0.897,
+      "macro_coupling": 0.884,
+      "macro_space": 0.932
+    },
+    "ORACLE": {
+      "macro_character": 0.367,
+      "macro_movement": 0.901,
+      "macro_coupling": 0.83,
+      "macro_space": 0.889
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OSPREY",
+    "target": "ORACLE",
+    "amount": 0.883
+  },
+  "dna": {
+    "brightness": 0.371,
+    "warmth": 0.609,
+    "movement": 0.929,
+    "density": 0.103,
+    "space": 0.961,
+    "aggression": 0.924
+  },
+  "macros": {
+    "CHARACTER": 0.368,
+    "MOVEMENT": 0.899,
+    "COUPLING": 0.857,
+    "SPACE": 0.911
+  },
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "kinetic",
+    "vast"
+  ]
+}

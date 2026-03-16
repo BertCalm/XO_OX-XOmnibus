@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_DENSE_VIOLENT_ENT_AGG_2",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OSTERIA",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OSTERIA": {
+      "macro_character": 0.582,
+      "macro_movement": 0.405,
+      "macro_coupling": 0.958,
+      "macro_space": 0.573
+    },
+    "OVERWORLD": {
+      "macro_character": 0.614,
+      "macro_movement": 0.433,
+      "macro_coupling": 0.948,
+      "macro_space": 0.633
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OSTERIA",
+    "target": "OVERWORLD",
+    "amount": 0.965
+  },
+  "dna": {
+    "brightness": 0.057,
+    "warmth": 0.107,
+    "movement": 0.407,
+    "density": 0.87,
+    "space": 0.59,
+    "aggression": 0.97
+  },
+  "macros": {
+    "CHARACTER": 0.598,
+    "MOVEMENT": 0.407,
+    "COUPLING": 0.958,
+    "SPACE": 0.59
+  },
+  "tags": [
+    "entangled",
+    "violent",
+    "dark",
+    "cold",
+    "dense"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT KINETIC TIGHT VIOLENT ATM AGG 2",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OCEANIC",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.901,
+      "macro_movement": 0.895,
+      "macro_coupling": 0.858,
+      "macro_space": 0.122
+    },
+    "OPTIC": {
+      "macro_character": 0.929,
+      "macro_movement": 0.885,
+      "macro_coupling": 0.907,
+      "macro_space": 0.129
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OCEANIC",
+    "target": "OPTIC",
+    "amount": 0.754
+  },
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.448,
+    "movement": 0.936,
+    "density": 0.438,
+    "space": 0.13,
+    "aggression": 0.936
+  },
+  "macros": {
+    "CHARACTER": 0.915,
+    "MOVEMENT": 0.89,
+    "COUPLING": 0.883,
+    "SPACE": 0.126
+  },
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "bright",
+    "kinetic",
+    "tight"
+  ]
+}

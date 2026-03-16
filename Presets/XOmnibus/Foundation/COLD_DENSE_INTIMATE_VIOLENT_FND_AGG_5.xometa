@@ -1,0 +1,50 @@
+{
+  "name": "COLD_DENSE_INTIMATE_VIOLENT_FND_AGG_5",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBESE",
+    "OVERBITE"
+  ],
+  "parameters": {
+    "OBESE": {
+      "macro_character": 0.394,
+      "macro_movement": 0.599,
+      "macro_coupling": 0.728,
+      "macro_space": 0.467
+    },
+    "OVERBITE": {
+      "macro_character": 0.414,
+      "macro_movement": 0.598,
+      "macro_coupling": 0.702,
+      "macro_space": 0.483
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBESE",
+    "target": "OVERBITE",
+    "amount": 0.959
+  },
+  "dna": {
+    "brightness": 0.39,
+    "warmth": 0.042,
+    "movement": 0.31,
+    "density": 0.899,
+    "space": 0.072,
+    "aggression": 0.972
+  },
+  "macros": {
+    "CHARACTER": 0.394,
+    "MOVEMENT": 0.599,
+    "COUPLING": 0.728,
+    "SPACE": 0.467
+  },
+  "tags": [
+    "foundation",
+    "violent",
+    "cold",
+    "dense",
+    "intimate"
+  ]
+}

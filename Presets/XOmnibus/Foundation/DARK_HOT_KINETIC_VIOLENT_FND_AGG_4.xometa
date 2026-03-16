@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_KINETIC_VIOLENT_FND_AGG_4",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OUROBOROS",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.688,
+      "macro_movement": 0.532,
+      "macro_coupling": 0.946,
+      "macro_space": 0.421
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.714,
+      "macro_movement": 0.543,
+      "macro_coupling": 0.975,
+      "macro_space": 0.394
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OUROBOROS",
+    "target": "ODDOSCAR",
+    "amount": 0.81
+  },
+  "dna": {
+    "brightness": 0.11,
+    "warmth": 0.918,
+    "movement": 0.879,
+    "density": 0.552,
+    "space": 0.321,
+    "aggression": 0.888
+  },
+  "macros": {
+    "CHARACTER": 0.688,
+    "MOVEMENT": 0.532,
+    "COUPLING": 0.946,
+    "SPACE": 0.421
+  },
+  "tags": [
+    "foundation",
+    "violent",
+    "dark",
+    "hot",
+    "kinetic"
+  ]
+}

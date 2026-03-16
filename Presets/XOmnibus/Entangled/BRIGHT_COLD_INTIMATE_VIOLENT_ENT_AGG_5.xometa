@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_ENT_AGG_5",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OHM",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.401,
+      "macro_movement": 0.375,
+      "macro_coupling": 0.977,
+      "macro_space": 0.05
+    },
+    "ODYSSEY": {
+      "macro_character": 0.631,
+      "macro_movement": 0.351,
+      "macro_coupling": 0.978,
+      "macro_space": 0.043
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OHM",
+    "target": "ODYSSEY",
+    "amount": 0.859
+  },
+  "dna": {
+    "brightness": 0.885,
+    "warmth": 0.098,
+    "movement": 0.334,
+    "density": 0.524,
+    "space": 0.091,
+    "aggression": 0.909
+  },
+  "macros": {
+    "CHARACTER": 0.516,
+    "MOVEMENT": 0.334,
+    "COUPLING": 0.977,
+    "SPACE": 0.091
+  },
+  "tags": [
+    "entangled",
+    "violent",
+    "bright",
+    "cold",
+    "intimate"
+  ]
+}

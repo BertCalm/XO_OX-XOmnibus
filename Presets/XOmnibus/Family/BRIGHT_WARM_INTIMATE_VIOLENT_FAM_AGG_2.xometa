@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_INTIMATE_VIOLENT_FAM_AGG_2",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODDOSCAR",
+    "OTTONI"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.502,
+      "macro_movement": 0.503,
+      "macro_coupling": 0.356,
+      "macro_space": 0.833
+    },
+    "OTTONI": {
+      "macro_character": 0.542,
+      "macro_movement": 0.521,
+      "macro_coupling": 0.322,
+      "macro_space": 0.827
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ODDOSCAR",
+    "target": "OTTONI",
+    "amount": 0.986
+  },
+  "dna": {
+    "brightness": 0.975,
+    "warmth": 0.944,
+    "movement": 0.396,
+    "density": 0.665,
+    "space": 0.036,
+    "aggression": 0.925
+  },
+  "macros": {
+    "CHARACTER": 0.502,
+    "MOVEMENT": 0.503,
+    "COUPLING": 0.356,
+    "SPACE": 0.833
+  },
+  "tags": [
+    "family",
+    "violent",
+    "bright",
+    "warm",
+    "intimate"
+  ]
+}

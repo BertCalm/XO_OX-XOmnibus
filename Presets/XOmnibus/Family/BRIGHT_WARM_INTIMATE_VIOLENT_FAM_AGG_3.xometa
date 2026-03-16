@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_INTIMATE_VIOLENT_FAM_AGG_3",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODYSSEY",
+    "OLE"
+  ],
+  "parameters": {
+    "ODYSSEY": {
+      "macro_character": 0.414,
+      "macro_movement": 0.579,
+      "macro_coupling": 0.565,
+      "macro_space": 0.528
+    },
+    "OLE": {
+      "macro_character": 0.434,
+      "macro_movement": 0.531,
+      "macro_coupling": 0.598,
+      "macro_space": 0.518
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ODYSSEY",
+    "target": "OLE",
+    "amount": 0.864
+  },
+  "dna": {
+    "brightness": 0.985,
+    "warmth": 0.953,
+    "movement": 0.483,
+    "density": 0.421,
+    "space": 0.13,
+    "aggression": 0.972
+  },
+  "macros": {
+    "CHARACTER": 0.414,
+    "MOVEMENT": 0.579,
+    "COUPLING": 0.565,
+    "SPACE": 0.528
+  },
+  "tags": [
+    "family",
+    "violent",
+    "bright",
+    "warm",
+    "intimate"
+  ]
+}

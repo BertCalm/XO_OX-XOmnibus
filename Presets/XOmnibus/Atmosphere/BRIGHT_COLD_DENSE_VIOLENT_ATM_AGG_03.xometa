@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT COLD DENSE VIOLENT ATM AGG 3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OCEANIC",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.86,
+      "macro_movement": 0.375,
+      "macro_coupling": 0.791,
+      "macro_space": 0.616
+    },
+    "OPTIC": {
+      "macro_character": 0.88,
+      "macro_movement": 0.373,
+      "macro_coupling": 0.824,
+      "macro_space": 0.608
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OCEANIC",
+    "target": "OPTIC",
+    "amount": 0.813
+  },
+  "dna": {
+    "brightness": 0.923,
+    "warmth": 0.098,
+    "movement": 0.394,
+    "density": 0.91,
+    "space": 0.657,
+    "aggression": 0.88
+  },
+  "macros": {
+    "CHARACTER": 0.87,
+    "MOVEMENT": 0.374,
+    "COUPLING": 0.807,
+    "SPACE": 0.612
+  },
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "bright",
+    "dense"
+  ]
+}

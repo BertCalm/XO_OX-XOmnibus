@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_DENSE_INTIMATE_VIOLENT_ENT_AGG_4",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OHM",
+    "OUTWIT"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.695,
+      "macro_movement": 0.519,
+      "macro_coupling": 0.907,
+      "macro_space": 0.085
+    },
+    "OUTWIT": {
+      "macro_character": 0.369,
+      "macro_movement": 0.479,
+      "macro_coupling": 0.902,
+      "macro_space": 0.137
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OHM",
+    "target": "OUTWIT",
+    "amount": 0.864
+  },
+  "dna": {
+    "brightness": 0.918,
+    "warmth": 0.626,
+    "movement": 0.489,
+    "density": 0.874,
+    "space": 0.091,
+    "aggression": 0.904
+  },
+  "macros": {
+    "CHARACTER": 0.532,
+    "MOVEMENT": 0.489,
+    "COUPLING": 0.907,
+    "SPACE": 0.091
+  },
+  "tags": [
+    "entangled",
+    "violent",
+    "bright",
+    "dense",
+    "intimate"
+  ]
+}

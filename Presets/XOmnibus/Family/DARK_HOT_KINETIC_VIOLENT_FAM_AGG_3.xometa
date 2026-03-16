@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_KINETIC_VIOLENT_FAM_AGG_3",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OBLONG",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.463,
+      "macro_movement": 0.768,
+      "macro_coupling": 0.693,
+      "macro_space": 0.49
+    },
+    "ORPHICA": {
+      "macro_character": 0.491,
+      "macro_movement": 0.722,
+      "macro_coupling": 0.717,
+      "macro_space": 0.511
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBLONG",
+    "target": "ORPHICA",
+    "amount": 0.812
+  },
+  "dna": {
+    "brightness": 0.079,
+    "warmth": 0.911,
+    "movement": 0.936,
+    "density": 0.517,
+    "space": 0.482,
+    "aggression": 0.909
+  },
+  "macros": {
+    "CHARACTER": 0.463,
+    "MOVEMENT": 0.768,
+    "COUPLING": 0.693,
+    "SPACE": 0.49
+  },
+  "tags": [
+    "family",
+    "violent",
+    "dark",
+    "hot",
+    "kinetic"
+  ]
+}

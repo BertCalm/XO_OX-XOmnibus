@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_DENSE_INTIMATE_VIOLENT_ENT_AGG_3",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "OBSIDIAN"
+  ],
+  "parameters": {
+    "OBBLIGATO": {
+      "macro_character": 0.628,
+      "macro_movement": 0.653,
+      "macro_coupling": 0.945,
+      "macro_space": 0.102
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.603,
+      "macro_movement": 0.604,
+      "macro_coupling": 0.909,
+      "macro_space": 0.076
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OBBLIGATO",
+    "target": "OBSIDIAN",
+    "amount": 0.808
+  },
+  "dna": {
+    "brightness": 0.875,
+    "warmth": 0.518,
+    "movement": 0.625,
+    "density": 0.891,
+    "space": 0.106,
+    "aggression": 0.926
+  },
+  "macros": {
+    "CHARACTER": 0.615,
+    "MOVEMENT": 0.625,
+    "COUPLING": 0.945,
+    "SPACE": 0.106
+  },
+  "tags": [
+    "entangled",
+    "violent",
+    "bright",
+    "dense",
+    "intimate"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_KINETIC_VIOLENT_ENT_AGG_2",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORGANON",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.511,
+      "macro_movement": 0.967,
+      "macro_coupling": 0.759,
+      "macro_space": 0.36
+    },
+    "ODYSSEY": {
+      "macro_character": 0.366,
+      "macro_movement": 0.902,
+      "macro_coupling": 0.79,
+      "macro_space": 0.322
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORGANON",
+    "target": "ODYSSEY",
+    "amount": 0.977
+  },
+  "dna": {
+    "brightness": 0.915,
+    "warmth": 0.988,
+    "movement": 0.937,
+    "density": 0.446,
+    "space": 0.358,
+    "aggression": 0.942
+  },
+  "macros": {
+    "CHARACTER": 0.439,
+    "MOVEMENT": 0.937,
+    "COUPLING": 0.759,
+    "SPACE": 0.358
+  },
+  "tags": [
+    "entangled",
+    "violent",
+    "bright",
+    "warm",
+    "kinetic"
+  ]
+}

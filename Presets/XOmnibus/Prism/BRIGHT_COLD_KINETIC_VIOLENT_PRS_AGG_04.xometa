@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT COLD KINETIC VIOLENT PRS AGG 4",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ORACLE",
+    "OWLFISH"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.925,
+      "macro_movement": 0.91,
+      "macro_coupling": 0.883,
+      "macro_space": 0.406
+    },
+    "OWLFISH": {
+      "macro_character": 0.877,
+      "macro_movement": 0.899,
+      "macro_coupling": 0.803,
+      "macro_space": 0.421
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ORACLE",
+    "target": "OWLFISH",
+    "amount": 0.736
+  },
+  "dna": {
+    "brightness": 0.93,
+    "warmth": 0.116,
+    "movement": 0.97,
+    "density": 0.507,
+    "space": 0.422,
+    "aggression": 0.889
+  },
+  "macros": {
+    "CHARACTER": 0.901,
+    "MOVEMENT": 0.905,
+    "COUPLING": 0.843,
+    "SPACE": 0.413
+  },
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "bright",
+    "kinetic"
+  ]
+}

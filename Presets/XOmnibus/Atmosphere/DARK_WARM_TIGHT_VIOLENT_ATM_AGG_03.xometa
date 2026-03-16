@@ -1,0 +1,51 @@
+{
+  "name": "DARK WARM TIGHT VIOLENT ATM AGG 3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OPTIC",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.092,
+      "macro_movement": 0.426,
+      "macro_coupling": 0.927,
+      "macro_space": 0.028
+    },
+    "ORIGAMI": {
+      "macro_character": 0.092,
+      "macro_movement": 0.427,
+      "macro_coupling": 0.951,
+      "macro_space": 0.028
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OPTIC",
+    "target": "ORIGAMI",
+    "amount": 0.854
+  },
+  "dna": {
+    "brightness": 0.095,
+    "warmth": 0.985,
+    "movement": 0.459,
+    "density": 0.586,
+    "space": 0.028,
+    "aggression": 0.953
+  },
+  "macros": {
+    "CHARACTER": 0.092,
+    "MOVEMENT": 0.426,
+    "COUPLING": 0.939,
+    "SPACE": 0.028
+  },
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "dark",
+    "tight"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_FLX_AGG_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OUROBOROS",
+    "OPAL"
+  ],
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.598,
+      "macro_movement": 0.389,
+      "macro_coupling": 0.973,
+      "macro_space": 0.148
+    },
+    "OPAL": {
+      "macro_character": 0.412,
+      "macro_movement": 0.379,
+      "macro_coupling": 0.935,
+      "macro_space": 0.141
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OUROBOROS",
+    "target": "OPAL",
+    "amount": 0.863
+  },
+  "dna": {
+    "brightness": 0.895,
+    "warmth": 0.047,
+    "movement": 0.341,
+    "density": 0.612,
+    "space": 0.117,
+    "aggression": 0.919
+  },
+  "macros": {
+    "CHARACTER": 0.505,
+    "MOVEMENT": 0.341,
+    "COUPLING": 0.973,
+    "SPACE": 0.117
+  },
+  "tags": [
+    "flux",
+    "violent",
+    "bright",
+    "cold",
+    "intimate"
+  ]
+}

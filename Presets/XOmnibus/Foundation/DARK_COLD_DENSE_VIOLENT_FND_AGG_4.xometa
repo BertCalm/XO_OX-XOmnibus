@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_DENSE_VIOLENT_FND_AGG_4",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OVERDUB",
+    "OBESE"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.497,
+      "macro_movement": 0.627,
+      "macro_coupling": 0.512,
+      "macro_space": 0.905
+    },
+    "OBESE": {
+      "macro_character": 0.516,
+      "macro_movement": 0.599,
+      "macro_coupling": 0.494,
+      "macro_space": 0.932
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OVERDUB",
+    "target": "OBESE",
+    "amount": 0.766
+  },
+  "dna": {
+    "brightness": 0.094,
+    "warmth": 0.097,
+    "movement": 0.573,
+    "density": 0.879,
+    "space": 0.554,
+    "aggression": 0.934
+  },
+  "macros": {
+    "CHARACTER": 0.497,
+    "MOVEMENT": 0.627,
+    "COUPLING": 0.512,
+    "SPACE": 0.905
+  },
+  "tags": [
+    "foundation",
+    "violent",
+    "dark",
+    "cold",
+    "dense"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "DARK_DENSE_VAST_VIOLENT_FND_AGG_1",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ODDOSCAR",
+    "ONSET"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.423,
+      "macro_movement": 0.43,
+      "macro_coupling": 0.629,
+      "macro_space": 0.669
+    },
+    "ONSET": {
+      "macro_character": 0.429,
+      "macro_movement": 0.412,
+      "macro_coupling": 0.655,
+      "macro_space": 0.663
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ODDOSCAR",
+    "target": "ONSET",
+    "amount": 0.959
+  },
+  "dna": {
+    "brightness": 0.044,
+    "warmth": 0.622,
+    "movement": 0.578,
+    "density": 0.926,
+    "space": 0.937,
+    "aggression": 0.98
+  },
+  "macros": {
+    "CHARACTER": 0.423,
+    "MOVEMENT": 0.43,
+    "COUPLING": 0.629,
+    "SPACE": 0.669
+  },
+  "tags": [
+    "foundation",
+    "violent",
+    "dark",
+    "dense",
+    "vast"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_COLD_DENSE_VIOLENT_FAM_AGG_5",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OTTONI",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.831,
+      "macro_movement": 0.433,
+      "macro_coupling": 0.5,
+      "macro_space": 0.735
+    },
+    "ORPHICA": {
+      "macro_character": 0.868,
+      "macro_movement": 0.438,
+      "macro_coupling": 0.46,
+      "macro_space": 0.77
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OTTONI",
+    "target": "ORPHICA",
+    "amount": 0.783
+  },
+  "dna": {
+    "brightness": 0.925,
+    "warmth": 0.051,
+    "movement": 0.453,
+    "density": 0.933,
+    "space": 0.687,
+    "aggression": 0.968
+  },
+  "macros": {
+    "CHARACTER": 0.831,
+    "MOVEMENT": 0.433,
+    "COUPLING": 0.5,
+    "SPACE": 0.735
+  },
+  "tags": [
+    "family",
+    "violent",
+    "bright",
+    "cold",
+    "dense"
+  ]
+}

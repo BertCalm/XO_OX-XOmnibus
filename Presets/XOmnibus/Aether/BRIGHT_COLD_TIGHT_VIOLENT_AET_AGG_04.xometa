@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT COLD TIGHT VIOLENT AET AGG 4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ODDOSCAR",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.896,
+      "macro_movement": 0.455,
+      "macro_coupling": 0.934,
+      "macro_space": 0.031
+    },
+    "ODDFELIX": {
+      "macro_character": 0.897,
+      "macro_movement": 0.45,
+      "macro_coupling": 0.929,
+      "macro_space": 0.031
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ODDOSCAR",
+    "target": "ODDFELIX",
+    "amount": 0.728
+  },
+  "dna": {
+    "brightness": 0.905,
+    "warmth": 0.076,
+    "movement": 0.472,
+    "density": 0.617,
+    "space": 0.033,
+    "aggression": 0.949
+  },
+  "macros": {
+    "CHARACTER": 0.897,
+    "MOVEMENT": 0.453,
+    "COUPLING": 0.931,
+    "SPACE": 0.031
+  },
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "bright",
+    "tight"
+  ]
+}

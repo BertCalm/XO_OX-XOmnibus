@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT WARM VAST VIOLENT PRS AGG 5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OHM",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.911,
+      "macro_movement": 0.52,
+      "macro_coupling": 0.878,
+      "macro_space": 0.834
+    },
+    "OBLIQUE": {
+      "macro_character": 0.916,
+      "macro_movement": 0.489,
+      "macro_coupling": 0.816,
+      "macro_space": 0.876
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OHM",
+    "target": "OBLIQUE",
+    "amount": 0.711
+  },
+  "dna": {
+    "brightness": 0.937,
+    "warmth": 0.986,
+    "movement": 0.523,
+    "density": 0.354,
+    "space": 0.899,
+    "aggression": 0.894
+  },
+  "macros": {
+    "CHARACTER": 0.913,
+    "MOVEMENT": 0.504,
+    "COUPLING": 0.847,
+    "SPACE": 0.855
+  },
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "bright",
+    "vast"
+  ]
+}

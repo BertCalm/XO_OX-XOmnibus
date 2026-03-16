@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD KINETIC VIOLENT PRS AGG 3",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OLE",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.027,
+      "macro_movement": 0.83,
+      "macro_coupling": 0.885,
+      "macro_space": 0.467
+    },
+    "OSTERIA": {
+      "macro_character": 0.027,
+      "macro_movement": 0.848,
+      "macro_coupling": 0.837,
+      "macro_space": 0.482
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OLE",
+    "target": "OSTERIA",
+    "amount": 0.831
+  },
+  "dna": {
+    "brightness": 0.029,
+    "warmth": 0.082,
+    "movement": 0.877,
+    "density": 0.519,
+    "space": 0.502,
+    "aggression": 0.939
+  },
+  "macros": {
+    "CHARACTER": 0.027,
+    "MOVEMENT": 0.839,
+    "COUPLING": 0.861,
+    "SPACE": 0.475
+  },
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "dark",
+    "kinetic"
+  ]
+}

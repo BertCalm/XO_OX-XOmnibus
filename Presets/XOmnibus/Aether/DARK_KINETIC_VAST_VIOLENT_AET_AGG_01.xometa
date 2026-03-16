@@ -1,0 +1,52 @@
+{
+  "name": "DARK KINETIC VAST VIOLENT AET AGG 1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORBITAL",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.111,
+      "macro_movement": 0.804,
+      "macro_coupling": 0.887,
+      "macro_space": 0.906
+    },
+    "ORIGAMI": {
+      "macro_character": 0.116,
+      "macro_movement": 0.811,
+      "macro_coupling": 0.949,
+      "macro_space": 0.939
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ORBITAL",
+    "target": "ORIGAMI",
+    "amount": 0.845
+  },
+  "dna": {
+    "brightness": 0.117,
+    "warmth": 0.494,
+    "movement": 0.873,
+    "density": 0.552,
+    "space": 0.966,
+    "aggression": 0.955
+  },
+  "macros": {
+    "CHARACTER": 0.114,
+    "MOVEMENT": 0.808,
+    "COUPLING": 0.918,
+    "SPACE": 0.922
+  },
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "dark",
+    "kinetic",
+    "vast"
+  ]
+}

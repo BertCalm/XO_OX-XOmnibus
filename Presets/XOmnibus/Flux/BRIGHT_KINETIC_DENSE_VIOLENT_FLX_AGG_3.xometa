@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FLX_AGG_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ORGANON",
+    "OVERDUB"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.495,
+      "macro_movement": 0.936,
+      "macro_coupling": 0.944,
+      "macro_space": 0.533
+    },
+    "OVERDUB": {
+      "macro_character": 0.744,
+      "macro_movement": 1.0,
+      "macro_coupling": 0.911,
+      "macro_space": 0.494
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ORGANON",
+    "target": "OVERDUB",
+    "amount": 0.813
+  },
+  "dna": {
+    "brightness": 0.984,
+    "warmth": 0.669,
+    "movement": 0.98,
+    "density": 0.942,
+    "space": 0.495,
+    "aggression": 0.883
+  },
+  "macros": {
+    "CHARACTER": 0.619,
+    "MOVEMENT": 0.98,
+    "COUPLING": 0.944,
+    "SPACE": 0.495
+  },
+  "tags": [
+    "flux",
+    "violent",
+    "kinetic",
+    "bright",
+    "dense"
+  ]
+}

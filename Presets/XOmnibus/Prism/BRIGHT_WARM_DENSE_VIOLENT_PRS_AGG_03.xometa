@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT WARM DENSE VIOLENT PRS AGG 3",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OHM",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.914,
+      "macro_movement": 0.294,
+      "macro_coupling": 0.957,
+      "macro_space": 0.338
+    },
+    "OVERWORLD": {
+      "macro_character": 0.878,
+      "macro_movement": 0.289,
+      "macro_coupling": 0.94,
+      "macro_space": 0.349
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OHM",
+    "target": "OVERWORLD",
+    "amount": 0.732
+  },
+  "dna": {
+    "brightness": 0.944,
+    "warmth": 0.979,
+    "movement": 0.308,
+    "density": 0.896,
+    "space": 0.36,
+    "aggression": 0.983
+  },
+  "macros": {
+    "CHARACTER": 0.896,
+    "MOVEMENT": 0.291,
+    "COUPLING": 0.948,
+    "SPACE": 0.344
+  },
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "bright",
+    "dense"
+  ]
+}

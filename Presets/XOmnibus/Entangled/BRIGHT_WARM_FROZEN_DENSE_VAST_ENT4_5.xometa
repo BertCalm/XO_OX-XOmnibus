@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_WARM_FROZEN_DENSE_VAST_ENT4_5",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBLIQUE",
+    "OSPREY"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.934,
+      "macro_movement": 0.043,
+      "macro_coupling": 0.99,
+      "macro_space": 0.903
+    },
+    "OSPREY": {
+      "macro_character": 0.928,
+      "macro_movement": 0.051,
+      "macro_coupling": 0.99,
+      "macro_space": 0.904
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBLIQUE",
+    "target": "OSPREY",
+    "amount": 0.82
+  },
+  "dna": {
+    "brightness": 0.908,
+    "warmth": 0.949,
+    "movement": 0.046,
+    "density": 0.98,
+    "space": 0.925,
+    "aggression": 0.406
+  },
+  "macros": {
+    "CHARACTER": 0.931,
+    "MOVEMENT": 0.047,
+    "COUPLING": 0.82,
+    "SPACE": 0.903
+  },
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "bright",
+    "warm",
+    "dense",
+    "vast"
+  ]
+}

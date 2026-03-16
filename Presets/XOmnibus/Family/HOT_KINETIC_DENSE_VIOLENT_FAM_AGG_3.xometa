@@ -1,0 +1,50 @@
+{
+  "name": "HOT_KINETIC_DENSE_VIOLENT_FAM_AGG_3",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODDOSCAR",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.725,
+      "macro_movement": 0.701,
+      "macro_coupling": 0.777,
+      "macro_space": 0.579
+    },
+    "ORPHICA": {
+      "macro_character": 0.735,
+      "macro_movement": 0.68,
+      "macro_coupling": 0.778,
+      "macro_space": 0.572
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ODDOSCAR",
+    "target": "ORPHICA",
+    "amount": 0.733
+  },
+  "dna": {
+    "brightness": 0.585,
+    "warmth": 0.923,
+    "movement": 0.978,
+    "density": 0.909,
+    "space": 0.359,
+    "aggression": 0.885
+  },
+  "macros": {
+    "CHARACTER": 0.725,
+    "MOVEMENT": 0.701,
+    "COUPLING": 0.777,
+    "SPACE": 0.579
+  },
+  "tags": [
+    "family",
+    "violent",
+    "hot",
+    "kinetic",
+    "dense"
+  ]
+}

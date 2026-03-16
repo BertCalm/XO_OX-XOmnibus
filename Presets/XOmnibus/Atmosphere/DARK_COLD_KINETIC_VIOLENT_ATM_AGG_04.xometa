@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD KINETIC VIOLENT ATM AGG 4",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORBITAL",
+    "ORACLE"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.123,
+      "macro_movement": 0.857,
+      "macro_coupling": 0.886,
+      "macro_space": 0.675
+    },
+    "ORACLE": {
+      "macro_character": 0.125,
+      "macro_movement": 0.863,
+      "macro_coupling": 0.859,
+      "macro_space": 0.646
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORBITAL",
+    "target": "ORACLE",
+    "amount": 0.888
+  },
+  "dna": {
+    "brightness": 0.128,
+    "warmth": 0.079,
+    "movement": 0.885,
+    "density": 0.564,
+    "space": 0.679,
+    "aggression": 0.89
+  },
+  "macros": {
+    "CHARACTER": 0.124,
+    "MOVEMENT": 0.86,
+    "COUPLING": 0.873,
+    "SPACE": 0.661
+  },
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "dark",
+    "kinetic"
+  ]
+}

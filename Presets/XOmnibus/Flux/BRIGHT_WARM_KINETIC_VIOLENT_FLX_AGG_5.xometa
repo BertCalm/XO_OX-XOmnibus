@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FLX_AGG_5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ODYSSEY",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "ODYSSEY": {
+      "macro_character": 0.545,
+      "macro_movement": 0.988,
+      "macro_coupling": 0.812,
+      "macro_space": 0.518
+    },
+    "ORIGAMI": {
+      "macro_character": 0.492,
+      "macro_movement": 0.928,
+      "macro_coupling": 0.773,
+      "macro_space": 0.543
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ODYSSEY",
+    "target": "ORIGAMI",
+    "amount": 0.816
+  },
+  "dna": {
+    "brightness": 0.96,
+    "warmth": 0.938,
+    "movement": 0.95,
+    "density": 0.435,
+    "space": 0.498,
+    "aggression": 0.909
+  },
+  "macros": {
+    "CHARACTER": 0.518,
+    "MOVEMENT": 0.95,
+    "COUPLING": 0.812,
+    "SPACE": 0.498
+  },
+  "tags": [
+    "flux",
+    "violent",
+    "bright",
+    "warm",
+    "kinetic"
+  ]
+}

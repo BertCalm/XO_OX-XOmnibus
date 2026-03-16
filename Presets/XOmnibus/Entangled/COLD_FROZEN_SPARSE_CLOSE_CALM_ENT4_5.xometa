@@ -1,0 +1,52 @@
+{
+  "name": "COLD_FROZEN_SPARSE_CLOSE_CALM_ENT4_5",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OSTERIA",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OSTERIA": {
+      "macro_character": 0.31,
+      "macro_movement": 0.033,
+      "macro_coupling": 0.037,
+      "macro_space": 0.032
+    },
+    "ORIGAMI": {
+      "macro_character": 0.299,
+      "macro_movement": 0.032,
+      "macro_coupling": 0.045,
+      "macro_space": 0.072
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OSTERIA",
+    "target": "ORIGAMI",
+    "amount": 0.746
+  },
+  "dna": {
+    "brightness": 0.536,
+    "warmth": 0.108,
+    "movement": 0.028,
+    "density": 0.033,
+    "space": 0.045,
+    "aggression": 0.036
+  },
+  "macros": {
+    "CHARACTER": 0.304,
+    "MOVEMENT": 0.033,
+    "COUPLING": 0.746,
+    "SPACE": 0.052
+  },
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "cold",
+    "sparse",
+    "close",
+    "gentle"
+  ]
+}

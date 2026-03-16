@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT COLD DENSE VIOLENT ATM AGG 5",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OSPREY",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.915,
+      "macro_movement": 0.586,
+      "macro_coupling": 0.94,
+      "macro_space": 0.65
+    },
+    "OBLIQUE": {
+      "macro_character": 0.88,
+      "macro_movement": 0.563,
+      "macro_coupling": 0.972,
+      "macro_space": 0.624
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OSPREY",
+    "target": "OBLIQUE",
+    "amount": 0.81
+  },
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.108,
+    "movement": 0.59,
+    "density": 0.971,
+    "space": 0.668,
+    "aggression": 0.988
+  },
+  "macros": {
+    "CHARACTER": 0.897,
+    "MOVEMENT": 0.575,
+    "COUPLING": 0.956,
+    "SPACE": 0.637
+  },
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "bright",
+    "dense"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_AGG_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OPAL",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.448,
+      "macro_movement": 0.924,
+      "macro_coupling": 0.815,
+      "macro_space": 0.536
+    },
+    "ORIGAMI": {
+      "macro_character": 0.535,
+      "macro_movement": 0.979,
+      "macro_coupling": 0.779,
+      "macro_space": 0.586
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OPAL",
+    "target": "ORIGAMI",
+    "amount": 0.953
+  },
+  "dna": {
+    "brightness": 0.094,
+    "warmth": 0.097,
+    "movement": 0.952,
+    "density": 0.329,
+    "space": 0.554,
+    "aggression": 0.934
+  },
+  "macros": {
+    "CHARACTER": 0.492,
+    "MOVEMENT": 0.952,
+    "COUPLING": 0.815,
+    "SPACE": 0.554
+  },
+  "tags": [
+    "flux",
+    "violent",
+    "kinetic",
+    "dark",
+    "cold"
+  ]
+}

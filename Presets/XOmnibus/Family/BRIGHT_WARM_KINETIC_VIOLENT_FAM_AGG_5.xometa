@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_AGG_5",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OHM",
+    "OBLONG"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.588,
+      "macro_movement": 0.795,
+      "macro_coupling": 0.612,
+      "macro_space": 0.626
+    },
+    "OBLONG": {
+      "macro_character": 0.546,
+      "macro_movement": 0.776,
+      "macro_coupling": 0.605,
+      "macro_space": 0.616
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OHM",
+    "target": "OBLONG",
+    "amount": 0.821
+  },
+  "dna": {
+    "brightness": 0.886,
+    "warmth": 0.934,
+    "movement": 0.898,
+    "density": 0.523,
+    "space": 0.567,
+    "aggression": 0.913
+  },
+  "macros": {
+    "CHARACTER": 0.588,
+    "MOVEMENT": 0.795,
+    "COUPLING": 0.612,
+    "SPACE": 0.626
+  },
+  "tags": [
+    "family",
+    "violent",
+    "bright",
+    "warm",
+    "kinetic"
+  ]
+}

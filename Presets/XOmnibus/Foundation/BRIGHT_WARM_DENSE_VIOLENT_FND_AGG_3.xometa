@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_DENSE_VIOLENT_FND_AGG_3",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OVERBITE",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OVERBITE": {
+      "macro_character": 0.607,
+      "macro_movement": 0.356,
+      "macro_coupling": 0.395,
+      "macro_space": 0.88
+    },
+    "ODDFELIX": {
+      "macro_character": 0.647,
+      "macro_movement": 0.361,
+      "macro_coupling": 0.428,
+      "macro_space": 0.888
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OVERBITE",
+    "target": "ODDFELIX",
+    "amount": 0.825
+  },
+  "dna": {
+    "brightness": 0.87,
+    "warmth": 0.963,
+    "movement": 0.555,
+    "density": 0.901,
+    "space": 0.596,
+    "aggression": 0.936
+  },
+  "macros": {
+    "CHARACTER": 0.607,
+    "MOVEMENT": 0.356,
+    "COUPLING": 0.395,
+    "SPACE": 0.88
+  },
+  "tags": [
+    "foundation",
+    "violent",
+    "bright",
+    "warm",
+    "dense"
+  ]
+}

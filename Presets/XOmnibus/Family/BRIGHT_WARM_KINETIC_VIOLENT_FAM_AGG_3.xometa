@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_AGG_3",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ORPHICA",
+    "OPAL"
+  ],
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.443,
+      "macro_movement": 0.803,
+      "macro_coupling": 0.38,
+      "macro_space": 0.399
+    },
+    "OPAL": {
+      "macro_character": 0.437,
+      "macro_movement": 0.795,
+      "macro_coupling": 0.391,
+      "macro_space": 0.39
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORPHICA",
+    "target": "OPAL",
+    "amount": 0.919
+  },
+  "dna": {
+    "brightness": 0.889,
+    "warmth": 0.907,
+    "movement": 0.909,
+    "density": 0.677,
+    "space": 0.538,
+    "aggression": 0.976
+  },
+  "macros": {
+    "CHARACTER": 0.443,
+    "MOVEMENT": 0.803,
+    "COUPLING": 0.38,
+    "SPACE": 0.399
+  },
+  "tags": [
+    "family",
+    "violent",
+    "bright",
+    "warm",
+    "kinetic"
+  ]
+}

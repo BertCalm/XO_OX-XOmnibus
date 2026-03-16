@@ -1,0 +1,52 @@
+{
+  "name": "DARK_COLD_FROZEN_VAST_HARSH_ENT4_1",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERDUB",
+    "ORCA"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.131,
+      "macro_movement": 0.018,
+      "macro_coupling": 0.508,
+      "macro_space": 0.932
+    },
+    "ORCA": {
+      "macro_character": 0.097,
+      "macro_movement": 0.019,
+      "macro_coupling": 0.513,
+      "macro_space": 0.936
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OVERDUB",
+    "target": "ORCA",
+    "amount": 0.943
+  },
+  "dna": {
+    "brightness": 0.13,
+    "warmth": 0.074,
+    "movement": 0.023,
+    "density": 0.515,
+    "space": 0.911,
+    "aggression": 0.936
+  },
+  "macros": {
+    "CHARACTER": 0.114,
+    "MOVEMENT": 0.018,
+    "COUPLING": 0.943,
+    "SPACE": 0.934
+  },
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "dark",
+    "cold",
+    "vast",
+    "harsh"
+  ]
+}

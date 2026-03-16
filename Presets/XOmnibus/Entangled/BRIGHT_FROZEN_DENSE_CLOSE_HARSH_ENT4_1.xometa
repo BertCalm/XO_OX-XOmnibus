@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_FROZEN_DENSE_CLOSE_HARSH_ENT4_1",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OCEANIC",
+    "OSPREY"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.758,
+      "macro_movement": 0.044,
+      "macro_coupling": 0.954,
+      "macro_space": 0.102
+    },
+    "OSPREY": {
+      "macro_character": 0.771,
+      "macro_movement": 0.032,
+      "macro_coupling": 0.939,
+      "macro_space": 0.103
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OCEANIC",
+    "target": "OSPREY",
+    "amount": 0.822
+  },
+  "dna": {
+    "brightness": 0.922,
+    "warmth": 0.591,
+    "movement": 0.038,
+    "density": 0.943,
+    "space": 0.076,
+    "aggression": 0.916
+  },
+  "macros": {
+    "CHARACTER": 0.764,
+    "MOVEMENT": 0.038,
+    "COUPLING": 0.822,
+    "SPACE": 0.102
+  },
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "bright",
+    "dense",
+    "close",
+    "harsh"
+  ]
+}

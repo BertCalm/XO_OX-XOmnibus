@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_KINETIC_VIOLENT_FAM_AGG_1",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OVERDUB",
+    "OBLONG"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.918,
+      "macro_movement": 0.739,
+      "macro_coupling": 0.442,
+      "macro_space": 0.91
+    },
+    "OBLONG": {
+      "macro_character": 0.897,
+      "macro_movement": 0.76,
+      "macro_coupling": 0.434,
+      "macro_space": 0.908
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OVERDUB",
+    "target": "OBLONG",
+    "amount": 0.771
+  },
+  "dna": {
+    "brightness": 0.054,
+    "warmth": 0.872,
+    "movement": 0.919,
+    "density": 0.39,
+    "space": 0.637,
+    "aggression": 0.884
+  },
+  "macros": {
+    "CHARACTER": 0.918,
+    "MOVEMENT": 0.739,
+    "COUPLING": 0.442,
+    "SPACE": 0.91
+  },
+  "tags": [
+    "family",
+    "violent",
+    "dark",
+    "hot",
+    "kinetic"
+  ]
+}

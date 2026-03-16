@@ -1,0 +1,52 @@
+{
+  "name": "COLD_FROZEN_SPARSE_CLOSE_CALM_ENT4_1",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OWLFISH",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OWLFISH": {
+      "macro_character": 0.3,
+      "macro_movement": 0.072,
+      "macro_coupling": 0.062,
+      "macro_space": 0.063
+    },
+    "ORGANON": {
+      "macro_character": 0.281,
+      "macro_movement": 0.067,
+      "macro_coupling": 0.038,
+      "macro_space": 0.112
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OWLFISH",
+    "target": "ORGANON",
+    "amount": 0.783
+  },
+  "dna": {
+    "brightness": 0.576,
+    "warmth": 0.041,
+    "movement": 0.076,
+    "density": 0.05,
+    "space": 0.085,
+    "aggression": 0.104
+  },
+  "macros": {
+    "CHARACTER": 0.29,
+    "MOVEMENT": 0.07,
+    "COUPLING": 0.783,
+    "SPACE": 0.087
+  },
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "cold",
+    "sparse",
+    "close",
+    "gentle"
+  ]
+}

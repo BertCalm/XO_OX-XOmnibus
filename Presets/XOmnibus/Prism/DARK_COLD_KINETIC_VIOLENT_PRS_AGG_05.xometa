@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD KINETIC VIOLENT PRS AGG 5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OHM",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.049,
+      "macro_movement": 0.878,
+      "macro_coupling": 0.921,
+      "macro_space": 0.588
+    },
+    "OBLIQUE": {
+      "macro_character": 0.049,
+      "macro_movement": 0.821,
+      "macro_coupling": 0.982,
+      "macro_space": 0.586
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OHM",
+    "target": "OBLIQUE",
+    "amount": 0.89
+  },
+  "dna": {
+    "brightness": 0.052,
+    "warmth": 0.04,
+    "movement": 0.886,
+    "density": 0.557,
+    "space": 0.592,
+    "aggression": 0.986
+  },
+  "macros": {
+    "CHARACTER": 0.049,
+    "MOVEMENT": 0.849,
+    "COUPLING": 0.952,
+    "SPACE": 0.587
+  },
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "dark",
+    "kinetic"
+  ]
+}

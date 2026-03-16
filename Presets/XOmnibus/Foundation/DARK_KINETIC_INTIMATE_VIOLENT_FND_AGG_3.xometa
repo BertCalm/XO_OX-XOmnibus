@@ -1,0 +1,50 @@
+{
+  "name": "DARK_KINETIC_INTIMATE_VIOLENT_FND_AGG_3",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OUROBOROS",
+    "OBESE"
+  ],
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.821,
+      "macro_movement": 0.521,
+      "macro_coupling": 0.768,
+      "macro_space": 0.788
+    },
+    "OBESE": {
+      "macro_character": 0.849,
+      "macro_movement": 0.537,
+      "macro_coupling": 0.767,
+      "macro_space": 0.757
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OUROBOROS",
+    "target": "OBESE",
+    "amount": 0.981
+  },
+  "dna": {
+    "brightness": 0.115,
+    "warmth": 0.661,
+    "movement": 0.89,
+    "density": 0.301,
+    "space": 0.063,
+    "aggression": 0.981
+  },
+  "macros": {
+    "CHARACTER": 0.821,
+    "MOVEMENT": 0.521,
+    "COUPLING": 0.768,
+    "SPACE": 0.788
+  },
+  "tags": [
+    "foundation",
+    "violent",
+    "dark",
+    "kinetic",
+    "intimate"
+  ]
+}

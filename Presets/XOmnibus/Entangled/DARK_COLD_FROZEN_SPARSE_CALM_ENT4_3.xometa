@@ -1,0 +1,52 @@
+{
+  "name": "DARK_COLD_FROZEN_SPARSE_CALM_ENT4_3",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OPAL"
+  ],
+  "parameters": {
+    "OVERLAP": {
+      "macro_character": 0.06,
+      "macro_movement": 0.018,
+      "macro_coupling": 0.144,
+      "macro_space": 0.659
+    },
+    "OPAL": {
+      "macro_character": 0.084,
+      "macro_movement": 0.017,
+      "macro_coupling": 0.145,
+      "macro_space": 0.705
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OVERLAP",
+    "target": "OPAL",
+    "amount": 0.849
+  },
+  "dna": {
+    "brightness": 0.111,
+    "warmth": 0.054,
+    "movement": 0.015,
+    "density": 0.117,
+    "space": 0.679,
+    "aggression": 0.029
+  },
+  "macros": {
+    "CHARACTER": 0.072,
+    "MOVEMENT": 0.018,
+    "COUPLING": 0.849,
+    "SPACE": 0.682
+  },
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "dark",
+    "cold",
+    "sparse",
+    "gentle"
+  ]
+}

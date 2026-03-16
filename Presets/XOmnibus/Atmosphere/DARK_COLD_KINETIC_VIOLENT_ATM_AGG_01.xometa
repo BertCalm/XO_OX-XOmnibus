@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD KINETIC VIOLENT ATM AGG 1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OSPREY",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.043,
+      "macro_movement": 0.916,
+      "macro_coupling": 0.822,
+      "macro_space": 0.295
+    },
+    "OBLIQUE": {
+      "macro_character": 0.042,
+      "macro_movement": 0.931,
+      "macro_coupling": 0.833,
+      "macro_space": 0.318
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OSPREY",
+    "target": "OBLIQUE",
+    "amount": 0.897
+  },
+  "dna": {
+    "brightness": 0.044,
+    "warmth": 0.13,
+    "movement": 0.931,
+    "density": 0.336,
+    "space": 0.319,
+    "aggression": 0.883
+  },
+  "macros": {
+    "CHARACTER": 0.042,
+    "MOVEMENT": 0.923,
+    "COUPLING": 0.827,
+    "SPACE": 0.306
+  },
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "dark",
+    "kinetic"
+  ]
+}

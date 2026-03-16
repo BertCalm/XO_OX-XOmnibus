@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_COLD_DENSE_VIOLENT_FAM_AGG_2",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OBLONG",
+    "OTTONI"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.772,
+      "macro_movement": 0.918,
+      "macro_coupling": 0.948,
+      "macro_space": 0.897
+    },
+    "OTTONI": {
+      "macro_character": 0.731,
+      "macro_movement": 0.935,
+      "macro_coupling": 0.949,
+      "macro_space": 0.849
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBLONG",
+    "target": "OTTONI",
+    "amount": 0.752
+  },
+  "dna": {
+    "brightness": 0.955,
+    "warmth": 0.029,
+    "movement": 0.524,
+    "density": 0.947,
+    "space": 0.431,
+    "aggression": 0.885
+  },
+  "macros": {
+    "CHARACTER": 0.772,
+    "MOVEMENT": 0.918,
+    "COUPLING": 0.948,
+    "SPACE": 0.897
+  },
+  "tags": [
+    "family",
+    "violent",
+    "bright",
+    "cold",
+    "dense"
+  ]
+}

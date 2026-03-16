@@ -1,0 +1,50 @@
+{
+  "name": "DARK_KINETIC_DENSE_VIOLENT_FLX_AGG_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBLONG",
+    "OUROBOROS"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.629,
+      "macro_movement": 0.882,
+      "macro_coupling": 0.938,
+      "macro_space": 0.594
+    },
+    "OUROBOROS": {
+      "macro_character": 0.642,
+      "macro_movement": 0.964,
+      "macro_coupling": 0.944,
+      "macro_space": 0.618
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBLONG",
+    "target": "OUROBOROS",
+    "amount": 0.942
+  },
+  "dna": {
+    "brightness": 0.038,
+    "warmth": 0.301,
+    "movement": 0.917,
+    "density": 0.981,
+    "space": 0.614,
+    "aggression": 0.904
+  },
+  "macros": {
+    "CHARACTER": 0.635,
+    "MOVEMENT": 0.917,
+    "COUPLING": 0.938,
+    "SPACE": 0.614
+  },
+  "tags": [
+    "flux",
+    "violent",
+    "kinetic",
+    "dark",
+    "dense"
+  ]
+}

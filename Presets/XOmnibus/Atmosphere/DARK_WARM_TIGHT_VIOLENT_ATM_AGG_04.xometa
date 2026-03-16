@@ -1,0 +1,51 @@
+{
+  "name": "DARK WARM TIGHT VIOLENT ATM AGG 4",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ODDFELIX",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.027,
+      "macro_movement": 0.302,
+      "macro_coupling": 0.862,
+      "macro_space": 0.069
+    },
+    "OBLIQUE": {
+      "macro_character": 0.026,
+      "macro_movement": 0.293,
+      "macro_coupling": 0.883,
+      "macro_space": 0.072
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ODDFELIX",
+    "target": "OBLIQUE",
+    "amount": 0.925
+  },
+  "dna": {
+    "brightness": 0.028,
+    "warmth": 0.948,
+    "movement": 0.305,
+    "density": 0.468,
+    "space": 0.074,
+    "aggression": 0.922
+  },
+  "macros": {
+    "CHARACTER": 0.026,
+    "MOVEMENT": 0.297,
+    "COUPLING": 0.873,
+    "SPACE": 0.071
+  },
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "dark",
+    "tight"
+  ]
+}

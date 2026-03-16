@@ -1,0 +1,51 @@
+{
+  "name": "KINETIC SPARSE VAST VIOLENT AET AGG 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OMBRE",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OMBRE": {
+      "macro_character": 0.382,
+      "macro_movement": 0.833,
+      "macro_coupling": 0.889,
+      "macro_space": 0.908
+    },
+    "ORGANON": {
+      "macro_character": 0.362,
+      "macro_movement": 0.816,
+      "macro_coupling": 0.813,
+      "macro_space": 0.872
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OMBRE",
+    "target": "ORGANON",
+    "amount": 0.92
+  },
+  "dna": {
+    "brightness": 0.389,
+    "warmth": 0.612,
+    "movement": 0.879,
+    "density": 0.09,
+    "space": 0.934,
+    "aggression": 0.893
+  },
+  "macros": {
+    "CHARACTER": 0.372,
+    "MOVEMENT": 0.825,
+    "COUPLING": 0.851,
+    "SPACE": 0.89
+  },
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "kinetic",
+    "vast"
+  ]
+}

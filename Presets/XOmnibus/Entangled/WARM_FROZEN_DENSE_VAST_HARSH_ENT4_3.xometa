@@ -1,0 +1,52 @@
+{
+  "name": "WARM_FROZEN_DENSE_VAST_HARSH_ENT4_3",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORCA",
+    "OVERBITE"
+  ],
+  "parameters": {
+    "ORCA": {
+      "macro_character": 0.641,
+      "macro_movement": 0.064,
+      "macro_coupling": 0.97,
+      "macro_space": 0.967
+    },
+    "OVERBITE": {
+      "macro_character": 0.649,
+      "macro_movement": 0.074,
+      "macro_coupling": 0.948,
+      "macro_space": 0.99
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ORCA",
+    "target": "OVERBITE",
+    "amount": 0.866
+  },
+  "dna": {
+    "brightness": 0.37,
+    "warmth": 0.933,
+    "movement": 0.069,
+    "density": 0.944,
+    "space": 0.98,
+    "aggression": 0.963
+  },
+  "macros": {
+    "CHARACTER": 0.645,
+    "MOVEMENT": 0.069,
+    "COUPLING": 0.866,
+    "SPACE": 0.978
+  },
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "warm",
+    "dense",
+    "vast",
+    "harsh"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT COLD KINETIC VIOLENT PRS AGG 1",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OCELOT",
+    "OHM"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "macro_character": 0.83,
+      "macro_movement": 0.89,
+      "macro_coupling": 0.856,
+      "macro_space": 0.38
+    },
+    "OHM": {
+      "macro_character": 0.882,
+      "macro_movement": 0.951,
+      "macro_coupling": 0.885,
+      "macro_space": 0.37
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OCELOT",
+    "target": "OHM",
+    "amount": 0.719
+  },
+  "dna": {
+    "brightness": 0.896,
+    "warmth": 0.087,
+    "movement": 0.953,
+    "density": 0.699,
+    "space": 0.38,
+    "aggression": 0.886
+  },
+  "macros": {
+    "CHARACTER": 0.856,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.871,
+    "SPACE": 0.375
+  },
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "bright",
+    "kinetic"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "DARK_FROZEN_DENSE_VAST_HARSH_ENT4_4",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OUTWIT",
+    "OLE"
+  ],
+  "parameters": {
+    "OUTWIT": {
+      "macro_character": 0.415,
+      "macro_movement": 0.097,
+      "macro_coupling": 0.99,
+      "macro_space": 0.863
+    },
+    "OLE": {
+      "macro_character": 0.418,
+      "macro_movement": 0.093,
+      "macro_coupling": 0.967,
+      "macro_space": 0.898
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OUTWIT",
+    "target": "OLE",
+    "amount": 0.786
+  },
+  "dna": {
+    "brightness": 0.097,
+    "warmth": 0.679,
+    "movement": 0.1,
+    "density": 0.979,
+    "space": 0.881,
+    "aggression": 0.95
+  },
+  "macros": {
+    "CHARACTER": 0.416,
+    "MOVEMENT": 0.095,
+    "COUPLING": 0.786,
+    "SPACE": 0.881
+  },
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "dark",
+    "dense",
+    "vast",
+    "harsh"
+  ]
+}

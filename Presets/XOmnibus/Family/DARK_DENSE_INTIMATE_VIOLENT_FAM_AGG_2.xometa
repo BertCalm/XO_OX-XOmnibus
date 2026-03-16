@@ -1,0 +1,50 @@
+{
+  "name": "DARK_DENSE_INTIMATE_VIOLENT_FAM_AGG_2",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODDOSCAR",
+    "OBBLIGATO"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.737,
+      "macro_movement": 0.439,
+      "macro_coupling": 0.412,
+      "macro_space": 0.504
+    },
+    "OBBLIGATO": {
+      "macro_character": 0.704,
+      "macro_movement": 0.404,
+      "macro_coupling": 0.438,
+      "macro_space": 0.462
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ODDOSCAR",
+    "target": "OBBLIGATO",
+    "amount": 0.843
+  },
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.512,
+    "movement": 0.378,
+    "density": 0.963,
+    "space": 0.059,
+    "aggression": 0.985
+  },
+  "macros": {
+    "CHARACTER": 0.737,
+    "MOVEMENT": 0.439,
+    "COUPLING": 0.412,
+    "SPACE": 0.504
+  },
+  "tags": [
+    "family",
+    "violent",
+    "dark",
+    "dense",
+    "intimate"
+  ]
+}

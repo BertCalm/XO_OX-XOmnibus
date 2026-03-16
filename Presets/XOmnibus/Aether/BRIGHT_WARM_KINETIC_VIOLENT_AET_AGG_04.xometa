@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT WARM KINETIC VIOLENT AET AGG 4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OPAL",
+    "OSPREY"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.893,
+      "macro_movement": 0.872,
+      "macro_coupling": 0.873,
+      "macro_space": 0.349
+    },
+    "OSPREY": {
+      "macro_character": 0.867,
+      "macro_movement": 0.863,
+      "macro_coupling": 0.881,
+      "macro_space": 0.349
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OPAL",
+    "target": "OSPREY",
+    "amount": 0.918
+  },
+  "dna": {
+    "brightness": 0.91,
+    "warmth": 0.962,
+    "movement": 0.886,
+    "density": 0.451,
+    "space": 0.365,
+    "aggression": 0.97
+  },
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.867,
+    "COUPLING": 0.877,
+    "SPACE": 0.349
+  },
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "bright",
+    "kinetic"
+  ]
+}

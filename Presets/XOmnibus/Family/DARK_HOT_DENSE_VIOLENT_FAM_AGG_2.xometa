@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_DENSE_VIOLENT_FAM_AGG_2",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OPAL",
+    "OLE"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.633,
+      "macro_movement": 0.722,
+      "macro_coupling": 0.916,
+      "macro_space": 0.547
+    },
+    "OLE": {
+      "macro_character": 0.644,
+      "macro_movement": 0.737,
+      "macro_coupling": 0.93,
+      "macro_space": 0.543
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OPAL",
+    "target": "OLE",
+    "amount": 0.788
+  },
+  "dna": {
+    "brightness": 0.102,
+    "warmth": 0.901,
+    "movement": 0.452,
+    "density": 0.947,
+    "space": 0.449,
+    "aggression": 0.951
+  },
+  "macros": {
+    "CHARACTER": 0.633,
+    "MOVEMENT": 0.722,
+    "COUPLING": 0.916,
+    "SPACE": 0.547
+  },
+  "tags": [
+    "family",
+    "violent",
+    "dark",
+    "hot",
+    "dense"
+  ]
+}

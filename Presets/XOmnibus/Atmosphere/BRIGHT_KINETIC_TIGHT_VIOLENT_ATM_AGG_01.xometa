@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT KINETIC TIGHT VIOLENT ATM AGG 1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OBLIQUE",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.954,
+      "macro_movement": 0.866,
+      "macro_coupling": 0.854,
+      "macro_space": 0.121
+    },
+    "OPTIC": {
+      "macro_character": 0.948,
+      "macro_movement": 0.866,
+      "macro_coupling": 0.858,
+      "macro_space": 0.115
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OBLIQUE",
+    "target": "OPTIC",
+    "amount": 0.817
+  },
+  "dna": {
+    "brightness": 0.976,
+    "warmth": 0.58,
+    "movement": 0.903,
+    "density": 0.304,
+    "space": 0.124,
+    "aggression": 0.88
+  },
+  "macros": {
+    "CHARACTER": 0.951,
+    "MOVEMENT": 0.866,
+    "COUPLING": 0.856,
+    "SPACE": 0.118
+  },
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "bright",
+    "kinetic",
+    "tight"
+  ]
+}

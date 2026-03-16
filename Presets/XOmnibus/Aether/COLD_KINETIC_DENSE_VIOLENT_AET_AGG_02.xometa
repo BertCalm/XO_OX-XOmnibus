@@ -1,0 +1,51 @@
+{
+  "name": "COLD KINETIC DENSE VIOLENT AET AGG 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OMBRE",
+    "OSPREY"
+  ],
+  "parameters": {
+    "OMBRE": {
+      "macro_character": 0.666,
+      "macro_movement": 0.925,
+      "macro_coupling": 0.838,
+      "macro_space": 0.6
+    },
+    "OSPREY": {
+      "macro_character": 0.669,
+      "macro_movement": 0.953,
+      "macro_coupling": 0.866,
+      "macro_space": 0.572
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OMBRE",
+    "target": "OSPREY",
+    "amount": 0.837
+  },
+  "dna": {
+    "brightness": 0.692,
+    "warmth": 0.126,
+    "movement": 0.967,
+    "density": 0.914,
+    "space": 0.616,
+    "aggression": 0.872
+  },
+  "macros": {
+    "CHARACTER": 0.667,
+    "MOVEMENT": 0.939,
+    "COUPLING": 0.852,
+    "SPACE": 0.586
+  },
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "kinetic",
+    "dense"
+  ]
+}

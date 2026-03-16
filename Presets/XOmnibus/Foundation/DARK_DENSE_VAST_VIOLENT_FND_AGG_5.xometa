@@ -1,0 +1,50 @@
+{
+  "name": "DARK_DENSE_VAST_VIOLENT_FND_AGG_5",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBLONG",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.87,
+      "macro_movement": 0.459,
+      "macro_coupling": 0.506,
+      "macro_space": 0.546
+    },
+    "ORIGAMI": {
+      "macro_character": 0.865,
+      "macro_movement": 0.443,
+      "macro_coupling": 0.544,
+      "macro_space": 0.524
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBLONG",
+    "target": "ORIGAMI",
+    "amount": 0.773
+  },
+  "dna": {
+    "brightness": 0.079,
+    "warmth": 0.663,
+    "movement": 0.537,
+    "density": 0.95,
+    "space": 0.88,
+    "aggression": 0.921
+  },
+  "macros": {
+    "CHARACTER": 0.87,
+    "MOVEMENT": 0.459,
+    "COUPLING": 0.506,
+    "SPACE": 0.546
+  },
+  "tags": [
+    "foundation",
+    "violent",
+    "dark",
+    "dense",
+    "vast"
+  ]
+}

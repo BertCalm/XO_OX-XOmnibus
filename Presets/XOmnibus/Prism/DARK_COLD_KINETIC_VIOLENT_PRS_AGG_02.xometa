@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD KINETIC VIOLENT PRS AGG 2",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OCELOT",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "macro_character": 0.084,
+      "macro_movement": 0.854,
+      "macro_coupling": 0.883,
+      "macro_space": 0.577
+    },
+    "OSTERIA": {
+      "macro_character": 0.086,
+      "macro_movement": 0.831,
+      "macro_coupling": 0.858,
+      "macro_space": 0.587
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OCELOT",
+    "target": "OSTERIA",
+    "amount": 0.852
+  },
+  "dna": {
+    "brightness": 0.088,
+    "warmth": 0.044,
+    "movement": 0.886,
+    "density": 0.361,
+    "space": 0.599,
+    "aggression": 0.943
+  },
+  "macros": {
+    "CHARACTER": 0.085,
+    "MOVEMENT": 0.843,
+    "COUPLING": 0.871,
+    "SPACE": 0.582
+  },
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "dark",
+    "kinetic"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "COLD DENSE VAST VIOLENT PRS AGG 2",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ORIGAMI",
+    "OWLFISH"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.403,
+      "macro_movement": 0.556,
+      "macro_coupling": 0.973,
+      "macro_space": 0.945
+    },
+    "OWLFISH": {
+      "macro_character": 0.42,
+      "macro_movement": 0.561,
+      "macro_coupling": 0.903,
+      "macro_space": 0.93
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORIGAMI",
+    "target": "OWLFISH",
+    "amount": 0.963
+  },
+  "dna": {
+    "brightness": 0.432,
+    "warmth": 0.072,
+    "movement": 0.572,
+    "density": 0.886,
+    "space": 0.986,
+    "aggression": 0.987
+  },
+  "macros": {
+    "CHARACTER": 0.411,
+    "MOVEMENT": 0.558,
+    "COUPLING": 0.938,
+    "SPACE": 0.938
+  },
+  "tags": [
+    "prism",
+    "aggressive",
+    "chromatic",
+    "violent",
+    "dense",
+    "vast"
+  ]
+}

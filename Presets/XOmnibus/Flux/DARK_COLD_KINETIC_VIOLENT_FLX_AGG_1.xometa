@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_AGG_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OCEANIC",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.385,
+      "macro_movement": 0.87,
+      "macro_coupling": 0.757,
+      "macro_space": 0.581
+    },
+    "ORACLE": {
+      "macro_character": 0.519,
+      "macro_movement": 0.903,
+      "macro_coupling": 0.774,
+      "macro_space": 0.591
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OCEANIC",
+    "target": "ORACLE",
+    "amount": 0.88
+  },
+  "dna": {
+    "brightness": 0.023,
+    "warmth": 0.05,
+    "movement": 0.897,
+    "density": 0.595,
+    "space": 0.571,
+    "aggression": 0.977
+  },
+  "macros": {
+    "CHARACTER": 0.452,
+    "MOVEMENT": 0.897,
+    "COUPLING": 0.757,
+    "SPACE": 0.571
+  },
+  "tags": [
+    "flux",
+    "violent",
+    "kinetic",
+    "dark",
+    "cold"
+  ]
+}

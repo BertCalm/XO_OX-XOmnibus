@@ -128,6 +128,12 @@ try:
 except ImportError:
     PACKAGER_AVAILABLE = False
 
+try:
+    from xpn_params_sidecar_spec import generate_sidecar
+    SIDECAR_AVAILABLE = True
+except ImportError:
+    SIDECAR_AVAILABLE = False
+
 REPO_ROOT  = Path(__file__).parent.parent
 PRESETS_DIR = REPO_ROOT / "Presets" / "XOmnibus"
 PROFILES_DIR = REPO_ROOT / "Tools" / "bundle_profiles"
@@ -1097,6 +1103,43 @@ def build_collection_subpack(
 # CLI
 # =============================================================================
 
+def emit_sidecar(pack_dir: Path, pack_name: str) -> None:
+    """
+    Emit params_sidecar.json into pack_dir when --sidecar is requested.
+
+    Searches pack_dir recursively for .xpm programs and matches them against
+    .xometa presets in PRESETS_DIR via Jaccard name similarity.  Writes the
+    sidecar at pack_dir/params_sidecar.json.  Logs a warning if no .xpm files
+    are found; writes an empty mappings array if no matches pass the threshold.
+    """
+    if not SIDECAR_AVAILABLE:
+        print("  [WARN] --sidecar requested but xpn_params_sidecar_spec.py is not importable; skipping.")
+        return
+
+    programs_dir = pack_dir
+    # Prefer the Programs/ subdirectory when it exists (collection layout)
+    if (pack_dir / "Programs").is_dir():
+        programs_dir = pack_dir / "Programs"
+
+    xpm_files = list(programs_dir.rglob("*.xpm"))
+    if not xpm_files:
+        print(f"  [WARN] --sidecar: no .xpm files found under {programs_dir}; skipping sidecar.")
+        return
+
+    sidecar_path = pack_dir / "params_sidecar.json"
+    try:
+        sidecar = generate_sidecar(
+            pack_dir=programs_dir,
+            preset_dir=PRESETS_DIR,
+            output_path=sidecar_path,
+            pack_name=pack_name,
+        )
+        count = len(sidecar.get("mappings", []))
+        print(f"  Sidecar: params_sidecar.json ({count} mapping(s))")
+    except Exception as exc:
+        print(f"  [WARN] --sidecar: generation failed — {exc}")
+
+
 def cmd_list(args, index: PresetIndex):
     results = index.search(
         engine=args.engine,
@@ -1128,7 +1171,9 @@ def cmd_build(args, index: PresetIndex):
     spec = BundleSpec.from_profile(profile_data, index)
     wavs_dir = Path(args.wavs_dir) if args.wavs_dir else None
     output_dir = Path(args.output_dir)
-    build_bundle(spec, wavs_dir, output_dir, args.dry_run)
+    result = build_bundle(spec, wavs_dir, output_dir, args.dry_run)
+    if getattr(args, "sidecar", False) and not args.dry_run:
+        emit_sidecar(Path(result["pack_dir"]), spec.name)
     return 0
 
 
@@ -1150,7 +1195,9 @@ def cmd_category(args, index: PresetIndex):
         return 1
     wavs_dir = Path(args.wavs_dir) if args.wavs_dir else None
     output_dir = Path(args.output_dir)
-    build_bundle(spec, wavs_dir, output_dir, args.dry_run)
+    result = build_bundle(spec, wavs_dir, output_dir, args.dry_run)
+    if getattr(args, "sidecar", False) and not args.dry_run:
+        emit_sidecar(Path(result["pack_dir"]), spec.name)
     return 0
 
 
@@ -1299,6 +1346,8 @@ def main():
     p_build.add_argument("--wavs-dir",   help="Directory of rendered WAVs")
     p_build.add_argument("--output-dir", required=True, help="Output directory")
     p_build.add_argument("--dry-run",    action="store_true")
+    p_build.add_argument("--sidecar",    action="store_true",
+                         help="Emit params_sidecar.json alongside the pack output")
 
     # category
     p_cat = sub.add_parser("category", help="Build pack by filter criteria")
@@ -1312,6 +1361,8 @@ def main():
     p_cat.add_argument("--wavs-dir",   help="Directory of rendered WAVs")
     p_cat.add_argument("--output-dir", required=True)
     p_cat.add_argument("--dry-run",    action="store_true")
+    p_cat.add_argument("--sidecar",    action="store_true",
+                       help="Emit params_sidecar.json alongside the pack output")
 
     # predefined
     p_pre = sub.add_parser("predefined", help="Build from a predefined pack template")

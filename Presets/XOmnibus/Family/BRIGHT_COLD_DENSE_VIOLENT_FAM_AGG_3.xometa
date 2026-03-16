@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_COLD_DENSE_VIOLENT_FAM_AGG_3",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OVERDUB",
+    "OPAL"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.411,
+      "macro_movement": 0.813,
+      "macro_coupling": 0.851,
+      "macro_space": 0.88
+    },
+    "OPAL": {
+      "macro_character": 0.365,
+      "macro_movement": 0.797,
+      "macro_coupling": 0.878,
+      "macro_space": 0.843
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OVERDUB",
+    "target": "OPAL",
+    "amount": 0.745
+  },
+  "dna": {
+    "brightness": 0.984,
+    "warmth": 0.073,
+    "movement": 0.391,
+    "density": 0.887,
+    "space": 0.331,
+    "aggression": 0.971
+  },
+  "macros": {
+    "CHARACTER": 0.411,
+    "MOVEMENT": 0.813,
+    "COUPLING": 0.851,
+    "SPACE": 0.88
+  },
+  "tags": [
+    "family",
+    "violent",
+    "bright",
+    "cold",
+    "dense"
+  ]
+}

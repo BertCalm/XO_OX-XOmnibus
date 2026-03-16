@@ -1,0 +1,51 @@
+{
+  "name": "KINETIC SPARSE VAST VIOLENT AET AGG 5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORIGAMI",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.556,
+      "macro_movement": 0.878,
+      "macro_coupling": 0.852,
+      "macro_space": 0.842
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.524,
+      "macro_movement": 0.871,
+      "macro_coupling": 0.822,
+      "macro_space": 0.838
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ORIGAMI",
+    "target": "ODDOSCAR",
+    "amount": 0.877
+  },
+  "dna": {
+    "brightness": 0.561,
+    "warmth": 0.429,
+    "movement": 0.927,
+    "density": 0.037,
+    "space": 0.877,
+    "aggression": 0.882
+  },
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.875,
+    "COUPLING": 0.837,
+    "SPACE": 0.84
+  },
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "kinetic",
+    "vast"
+  ]
+}

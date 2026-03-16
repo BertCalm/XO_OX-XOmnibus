@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_DENSE_VIOLENT_FAM_AGG_3",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODDFELIX",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.843,
+      "macro_movement": 0.696,
+      "macro_coupling": 0.808,
+      "macro_space": 0.455
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.845,
+      "macro_movement": 0.69,
+      "macro_coupling": 0.786,
+      "macro_space": 0.505
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ODDFELIX",
+    "target": "ODDOSCAR",
+    "amount": 0.884
+  },
+  "dna": {
+    "brightness": 0.897,
+    "warmth": 0.951,
+    "movement": 0.644,
+    "density": 0.94,
+    "space": 0.308,
+    "aggression": 0.962
+  },
+  "macros": {
+    "CHARACTER": 0.843,
+    "MOVEMENT": 0.696,
+    "COUPLING": 0.808,
+    "SPACE": 0.455
+  },
+  "tags": [
+    "family",
+    "violent",
+    "bright",
+    "warm",
+    "dense"
+  ]
+}

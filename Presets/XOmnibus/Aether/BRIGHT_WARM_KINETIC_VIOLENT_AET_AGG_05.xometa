@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT WARM KINETIC VIOLENT AET AGG 5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OVERWORLD",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.875,
+      "macro_movement": 0.952,
+      "macro_coupling": 0.833,
+      "macro_space": 0.65
+    },
+    "ORIGAMI": {
+      "macro_character": 0.882,
+      "macro_movement": 0.947,
+      "macro_coupling": 0.831,
+      "macro_space": 0.618
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OVERWORLD",
+    "target": "ORIGAMI",
+    "amount": 0.932
+  },
+  "dna": {
+    "brightness": 0.898,
+    "warmth": 0.899,
+    "movement": 0.986,
+    "density": 0.614,
+    "space": 0.662,
+    "aggression": 0.893
+  },
+  "macros": {
+    "CHARACTER": 0.879,
+    "MOVEMENT": 0.95,
+    "COUPLING": 0.832,
+    "SPACE": 0.634
+  },
+  "tags": [
+    "aether",
+    "aggressive",
+    "transcendent",
+    "violent",
+    "bright",
+    "kinetic"
+  ]
+}

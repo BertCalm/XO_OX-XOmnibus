@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_WARM_FROZEN_HARSH_SPARSE_ENT4_4",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ODDFELIX",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.944,
+      "macro_movement": 0.097,
+      "macro_coupling": 0.064,
+      "macro_space": 0.416
+    },
+    "OVERWORLD": {
+      "macro_character": 0.919,
+      "macro_movement": 0.102,
+      "macro_coupling": 0.088,
+      "macro_space": 0.382
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ODDFELIX",
+    "target": "OVERWORLD",
+    "amount": 0.978
+  },
+  "dna": {
+    "brightness": 0.954,
+    "warmth": 0.885,
+    "movement": 0.098,
+    "density": 0.087,
+    "space": 0.396,
+    "aggression": 0.889
+  },
+  "macros": {
+    "CHARACTER": 0.931,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.978,
+    "SPACE": 0.399
+  },
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "bright",
+    "warm",
+    "sparse",
+    "harsh"
+  ]
+}

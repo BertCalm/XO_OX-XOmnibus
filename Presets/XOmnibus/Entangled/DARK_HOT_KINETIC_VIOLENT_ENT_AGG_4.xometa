@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_KINETIC_VIOLENT_ENT_AGG_4",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OUTWIT",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OUTWIT": {
+      "macro_character": 0.516,
+      "macro_movement": 0.937,
+      "macro_coupling": 0.84,
+      "macro_space": 0.626
+    },
+    "ORIGAMI": {
+      "macro_character": 0.509,
+      "macro_movement": 0.961,
+      "macro_coupling": 0.808,
+      "macro_space": 0.675
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OUTWIT",
+    "target": "ORIGAMI",
+    "amount": 0.864
+  },
+  "dna": {
+    "brightness": 0.111,
+    "warmth": 0.881,
+    "movement": 0.979,
+    "density": 0.627,
+    "space": 0.654,
+    "aggression": 0.982
+  },
+  "macros": {
+    "CHARACTER": 0.512,
+    "MOVEMENT": 0.979,
+    "COUPLING": 0.84,
+    "SPACE": 0.654
+  },
+  "tags": [
+    "entangled",
+    "violent",
+    "dark",
+    "hot",
+    "kinetic"
+  ]
+}

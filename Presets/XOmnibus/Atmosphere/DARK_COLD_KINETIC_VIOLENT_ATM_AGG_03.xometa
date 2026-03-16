@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD KINETIC VIOLENT ATM AGG 3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OCEANIC",
+    "OBSCURA"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.059,
+      "macro_movement": 0.914,
+      "macro_coupling": 0.87,
+      "macro_space": 0.666
+    },
+    "OBSCURA": {
+      "macro_character": 0.06,
+      "macro_movement": 0.924,
+      "macro_coupling": 0.856,
+      "macro_space": 0.644
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OCEANIC",
+    "target": "OBSCURA",
+    "amount": 0.725
+  },
+  "dna": {
+    "brightness": 0.061,
+    "warmth": 0.038,
+    "movement": 0.984,
+    "density": 0.669,
+    "space": 0.667,
+    "aggression": 0.942
+  },
+  "macros": {
+    "CHARACTER": 0.059,
+    "MOVEMENT": 0.919,
+    "COUPLING": 0.863,
+    "SPACE": 0.655
+  },
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "turbulent",
+    "violent",
+    "dark",
+    "kinetic"
+  ]
+}

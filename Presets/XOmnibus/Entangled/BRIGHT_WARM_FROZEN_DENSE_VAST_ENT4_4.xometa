@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_WARM_FROZEN_DENSE_VAST_ENT4_4",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OSTERIA",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OSTERIA": {
+      "macro_character": 0.932,
+      "macro_movement": 0.062,
+      "macro_coupling": 0.906,
+      "macro_space": 0.888
+    },
+    "OPTIC": {
+      "macro_character": 0.902,
+      "macro_movement": 0.061,
+      "macro_coupling": 0.961,
+      "macro_space": 0.922
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OSTERIA",
+    "target": "OPTIC",
+    "amount": 0.936
+  },
+  "dna": {
+    "brightness": 0.952,
+    "warmth": 0.879,
+    "movement": 0.067,
+    "density": 0.934,
+    "space": 0.899,
+    "aggression": 0.485
+  },
+  "macros": {
+    "CHARACTER": 0.917,
+    "MOVEMENT": 0.061,
+    "COUPLING": 0.936,
+    "SPACE": 0.905
+  },
+  "tags": [
+    "entangled",
+    "frozen",
+    "movement-xlow",
+    "bright",
+    "warm",
+    "dense",
+    "vast"
+  ]
+}
