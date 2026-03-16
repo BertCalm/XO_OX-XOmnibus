@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Scanline Pressure",
+  "mood": "Prism",
+  "engines": ["Optic"],
+  "author": "Guru Bin — Prism Expression Pass 2026-03-16",
+  "version": "1.0.0",
+  "description": "A sustained visual event at medium density — scanlines crossing at even intervals, modulation steady. Mod wheel increases vizSpeed and pulseAccent, turning the scan from methodical sweep to rapid strobing: the horizontal hold breaks, the image tears across frequencies. Aftertouch drives vizFeedback toward maximum: the display begins sampling its own output, phosphor trails accumulating, image doubling and tripling until the CRT bleeds white at the edges. Velocity selects the initial vizMode — light touch activates mode 0 (raster), medium velocity mode 1 (vector), hard strike fires into mode 2 (spectrum analyzer), each a categorically different visual grammar. Every combination of these three gestures produces a surface that cannot be pre-programmed, only performed.",
+  "tags": ["optic", "scanline", "crt", "aftertouch", "mod-wheel", "velocity", "visual", "prism", "feedback"],
+  "macroLabels": ["PULSE RATE", "BRIGHTNESS", "DENSITY", "AGGRESSION"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "modMatrix": [
+    {"source": "modWheel", "destination": "optic_vizSpeed", "amount": 0.9},
+    {"source": "modWheel", "destination": "optic_pulseAccent", "amount": 0.7},
+    {"source": "modWheel", "destination": "optic_pulseSubdiv", "amount": 0.6},
+    {"source": "aftertouch", "destination": "optic_vizFeedback", "amount": 0.85},
+    {"source": "aftertouch", "destination": "optic_vizIntensity", "amount": 0.7},
+    {"source": "velocity", "destination": "optic_vizMode", "amount": 0.6},
+    {"source": "velocity", "destination": "optic_reactivity", "amount": 0.55}
+  ],
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.55,
+      "optic_inputGain": 1.5,
+      "optic_autoPulse": 1,
+      "optic_pulseRate": 1.0,
+      "optic_pulseShape": 0.3,
+      "optic_pulseSwing": 0.1,
+      "optic_pulseEvolve": 0.4,
+      "optic_pulseSubdiv": 0.3,
+      "optic_pulseAccent": 0.4,
+      "optic_modDepth": 0.5,
+      "optic_modMixPulse": 0.7,
+      "optic_modMixSpec": 0.5,
+      "optic_vizMode": 0,
+      "optic_vizFeedback": 0.05,
+      "optic_vizSpeed": 0.6,
+      "optic_vizIntensity": 0.45
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.2,
+    "movement": 0.65,
+    "density": 0.5,
+    "space": 0.45,
+    "aggression": 0.45
+  }
+}

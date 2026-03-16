@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Slow Descent",
+  "mood": "Aether",
+  "engines": ["OddfeliX"],
+  "author": "Guru Bin — Core Engine Deepening 2026-03-16",
+  "version": "1.0.0",
+  "description": "sweepDirection at full negative — the pitch bends slowly downward across the entire 7-second decay. With pitchLock off and minimal snap intensity, a gentle tap becomes a falling star: the tone drifts from its struck pitch toward the abyss. DEPTH macro controls how far into darkness the descent reaches. feliX at its most atmospheric.",
+  "tags": ["aether", "pitch-sweep", "falling", "slow", "decay", "atmospheric", "downward"],
+  "macroLabels": ["DART", "SCHOOL", "SURFACE", "DEPTH"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "OddfeliX": {
+      "snap_snap": 0.15,
+      "snap_decay": 7.2,
+      "snap_detune": 8.0,
+      "snap_filterCutoff": 2200.0,
+      "snap_filterReso": 0.25,
+      "snap_filterEnvDepth": 0.30,
+      "snap_unison": 2,
+      "snap_sweepDirection": -1.0,
+      "snap_pitchLock": 0,
+      "snap_macroDart": 0.08,
+      "snap_macroSchool": 0.35,
+      "snap_macroSurface": 0.40,
+      "snap_macroDepth": 0.88
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.45,
+    "movement": 0.28,
+    "density": 0.25,
+    "space": 0.92,
+    "aggression": 0.05
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "First Grain",
+  "mood": "Foundation",
+  "engines": ["Opal"],
+  "author": "Guru Bin — Engine Deepening 2026-03-16",
+  "version": "1.0.0",
+  "description": "Medium grains at medium density, low scatter — granular synthesis behaving itself. The position scatter is just enough to prevent phase locking. The pitch scatter is 0. This is what the granular voice sounds like before it learns to be strange.",
+  "tags": ["granular", "pad", "foundation", "clean", "warm", "organic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.6,
+    "movement": 0.35,
+    "density": 0.55,
+    "space": 0.5,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Opal": {
+      "opal_grainSize": 0.45,
+      "opal_density": 0.55,
+      "opal_posScatter": 0.18,
+      "opal_pitchScatter": 0.0,
+      "opal_filterCutoff": 0.6,
+      "opal_filterReso": 0.15,
+      "opal_ampAttack": 0.35,
+      "opal_ampDecay": 0.5,
+      "opal_ampSustain": 0.8,
+      "opal_ampRelease": 2.0,
+      "opal_speed": 1.0,
+      "opal_reverse": 0.0,
+      "opal_macroCharacter": 0.0,
+      "opal_macroMovement": 0.0,
+      "opal_macroCoupling": 0.0,
+      "opal_macroSpace": 0.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Resting State",
+  "mood": "Foundation",
+  "engines": ["Organon"],
+  "author": "Guru Bin — Engine Deepening 2026-03-16",
+  "version": "1.0.0",
+  "description": "Basal metabolism — the cell neither asleep nor active. Metabolic rate at biological minimum, prediction error near zero because the organism expects nothing. Enzyme activity just sufficient to maintain membrane integrity. Variational free energy minimized. The most fundamental state: alive and not yet asking anything of the world.",
+  "tags": ["resting", "basal", "foundation", "calm", "metabolism", "vfe", "organic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 0.18,
+      "organon_enzymeSelect": 900.0,
+      "organon_catalystDrive": 0.08,
+      "organon_dampingCoeff": 0.72,
+      "organon_signalFlux": 0.12,
+      "organon_phasonShift": 0.0,
+      "organon_isotopeBalance": 0.85,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.45,
+      "organon_noiseColor": 0.3
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.68,
+    "movement": 0.12,
+    "density": 0.22,
+    "space": 0.62,
+    "aggression": 0.04
+  }
+}

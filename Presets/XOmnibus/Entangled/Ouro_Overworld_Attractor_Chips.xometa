@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Attractor Chips",
+  "mood": "Entangled",
+  "engines": ["Ouroboros", "Overworld"],
+  "author": "Guru Bin — Coupling Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "The Lorenz attractor choreographs which chip voice is active at any moment — its X/Y trajectory continuously repositions Overworld's ERA triangle, making the 8-bit chips the attractor's visible output layer. Lorenz topology produces the most musical sweep: slow orbits that spend extended time in NES territory before a sudden bifurcation slings the ERA into Genesis space. The chips do not play music; they read the attractor's geometry as score. Set ouro_leash low (0.3) to let the chips drift freely across the ERA; increase toward 1.0 to constrain the attractor near a single chip vertex. The chaos IS the arrangement.",
+  "tags": ["ouroboros", "overworld", "attractor", "era", "chip", "chaos", "lorenz", "entangled", "coupled"],
+  "macroLabels": ["TOPOLOGY", "ERA RANGE", "COUPLING", "SPACE"],
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0,
+      "ouro_rate": 55.0,
+      "ouro_chaosIndex": 0.62,
+      "ouro_leash": 0.32,
+      "ouro_theta": 0.18,
+      "ouro_phi": 0.35,
+      "ouro_damping": 0.38,
+      "ouro_injection": 0.25
+    },
+    "Overworld": {
+      "ow_era": 0.33,
+      "ow_eraY": 0.5,
+      "ow_eraMemory": 0.4,
+      "ow_eraPortamento": 0.18,
+      "ow_eraDrift": 0.22,
+      "ow_filterCutoff": 0.65,
+      "ow_glitch": 0.1,
+      "ow_fmLfoRate": 0.08,
+      "ow_fmLfoDepth": 0.12
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Overworld",
+        "type": "ModToMod",
+        "amount": 0.82,
+        "direction": "A->B",
+        "notes": "Ouroboros X-axis output drives ow_era (ERA triangle horizontal position) — attractor orbit choreographs NES↔Genesis axis in real time"
+      },
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Overworld",
+        "type": "ModToMod",
+        "amount": 0.65,
+        "direction": "A->B",
+        "notes": "Ouroboros Y-axis output drives ow_eraY (ERA triangle vertical position) — attractor's second dimension selects SNES depth independently"
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.3,
+    "movement": 0.82,
+    "density": 0.45,
+    "space": 0.38,
+    "aggression": 0.55
+  }
+}

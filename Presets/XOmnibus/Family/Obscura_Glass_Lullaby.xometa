@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Glass Lullaby",
+  "mood": "Family",
+  "engines": ["Obscura"],
+  "author": "Guru Bin — Family Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Very low stiffness means the string is almost weightless — a glass filament bowed so softly that sound barely arrives before it is already fading. Nonlinearity near zero. The physical sustain carries for a full three seconds. What a music box hears from the inside.",
+  "tags": ["family", "gentle", "glass", "lullaby", "physical", "warm", "quiet"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_stiffness": 0.12,
+      "obscura_damping": 0.55,
+      "obscura_nonlinear": 0.04,
+      "obscura_excitePos": 0.5,
+      "obscura_exciteWidth": 0.18,
+      "obscura_scanWidth": 0.28,
+      "obscura_boundary": 0,
+      "obscura_sustain": 0.72,
+      "obscura_level": 0.65,
+      "obscura_ampAttack": 0.65,
+      "obscura_ampDecay": 1.0,
+      "obscura_ampSustain": 0.68,
+      "obscura_ampRelease": 3.2,
+      "obscura_physEnvAttack": 0.75,
+      "obscura_physEnvDecay": 1.2,
+      "obscura_physEnvSustain": 0.65,
+      "obscura_physEnvRelease": 3.0,
+      "obscura_lfo1Rate": 0.025,
+      "obscura_lfo1Depth": 0.06,
+      "obscura_lfo1Shape": 0,
+      "obscura_lfo2Rate": 0.014,
+      "obscura_lfo2Depth": 0.04,
+      "obscura_lfo2Shape": 0,
+      "obscura_voiceMode": 0,
+      "obscura_glide": 0.0,
+      "obscura_initShape": 0,
+      "obscura_macroCharacter": 0.0,
+      "obscura_macroMovement": 0.0,
+      "obscura_macroCoupling": 0.0,
+      "obscura_macroSpace": 0.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.72,
+    "movement": 0.14,
+    "density": 0.25,
+    "space": 0.70,
+    "aggression": 0.03
+  }
+}

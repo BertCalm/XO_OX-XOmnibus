@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Axolotl Root",
+  "mood": "Foundation",
+  "engines": ["OddOscar"],
+  "author": "Guru Bin — Core Engine Deepening 2026-03-16",
+  "version": "1.0.0",
+  "description": "Oscar as a foundational pad voice. morph_morph at 0.35 — leaning toward the warm first pole but not committed. Sub on at 0.25 anchors the low end. Filter medium-open, moderate resonance, zero drift. Long sustain, controlled release. The axolotl stationary at the tank bottom: stable, grounded, ready to support a mix. No movement, just root presence.",
+  "tags": ["foundation", "pad", "grounded", "warm", "sustain", "root", "stable"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.35,
+      "morph_bloom": 0.55,
+      "morph_decay": 1.5,
+      "morph_sustain": 0.80,
+      "morph_release": 1.8,
+      "morph_filterCutoff": 1400.0,
+      "morph_filterReso": 0.28,
+      "morph_filterEnvDepth": 0.20,
+      "morph_drift": 0.0,
+      "morph_sub": 0.25,
+      "morph_detune": 4.0,
+      "morph_level": 0.78,
+      "morph_polyphony": 4,
+      "morph_voiceMode": 2,
+      "morph_glide": 0.0,
+      "morph_macroBloom": 0.35,
+      "morph_macroDrift": 0.05,
+      "morph_macroDepth": 0.30,
+      "morph_macroSpace": 0.40
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.40,
+    "warmth": 0.72,
+    "movement": 0.08,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.12
+  }
+}

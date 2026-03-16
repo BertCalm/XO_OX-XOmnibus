@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "name": "Eight Attractors",
+  "mood": "Entangled",
+  "engines": ["Octopus", "Ouroboros"],
+  "author": "Guru Bin — Coupling Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Eight Octopus arms each feed a chaotic signal into Ouroboros' single attractor. Eight independent sources of alien intelligence converging on one strange attractor. The attractor cannot resolve eight simultaneous inputs cleanly — it fractures, bifurcates, collapses, and re-emerges in new topology. The octopus is not using the chaos engine; it is becoming it. Eight minds become one unstable mind.",
+  "tags": ["entangled", "chaos", "arms", "attractor", "octopus", "ouroboros", "bifurcation", "convergence"],
+  "macroLabels": ["CHARACTER", "CHAOS", "COUPLING", "SPACE"],
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.35,
+    "movement": 0.9,
+    "density": 0.75,
+    "space": 0.55,
+    "aggression": 0.7
+  },
+  "parameters": {
+    "Octopus": {
+      "octo_armDepth": 0.8,
+      "octo_armSpread": 0.75,
+      "octo_chromaFlash": 0.5,
+      "octo_inkCloud": 0.45,
+      "octo_armSync": 0.2,
+      "octo_tentacleRate": 0.18,
+      "octo_camouflage": 0.3,
+      "octo_ampAttack": 0.03,
+      "octo_ampDecay": 0.3,
+      "octo_ampSustain": 0.6,
+      "octo_ampRelease": 1.5,
+      "octo_filterCutoff": 0.65,
+      "octo_filterRes": 0.5,
+      "octo_lfo1Rate": 0.15,
+      "octo_lfo1Depth": 0.4,
+      "octo_lfo2Rate": 0.07,
+      "octo_lfo2Depth": 0.3,
+      "octo_macroCharacter": 0.0,
+      "octo_macroChaos": 0.0,
+      "octo_macroCoupling": 0.0,
+      "octo_macroSpace": 0.0
+    },
+    "Ouroboros": {
+      "ouro_topology": 0.75,
+      "ouro_chaosDrive": 0.8,
+      "ouro_attractorX": 0.6,
+      "ouro_attractorY": 0.55,
+      "ouro_leashAmt": 0.25,
+      "ouro_feedbackAmt": 0.65,
+      "ouro_bifurcation": 0.7,
+      "ouro_ampAttack": 0.02,
+      "ouro_ampDecay": 0.25,
+      "ouro_ampSustain": 0.55,
+      "ouro_ampRelease": 1.0,
+      "ouro_filterCutoff": 0.7,
+      "ouro_filterRes": 0.55,
+      "ouro_lfoRate": 0.2,
+      "ouro_lfoDepth": 0.4,
+      "ouro_macroCharacter": 0.0,
+      "ouro_macroChaos": 0.0,
+      "ouro_macroCoupling": 0.0,
+      "ouro_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Octopus",
+        "target": "Ouroboros",
+        "type": "ModToMod",
+        "amount": 0.85,
+        "description": "Octopus arm modulation outputs feed Ouroboros chaotic attractor — eight independent signals destabilize a single strange attractor into constant bifurcation"
+      },
+      {
+        "source": "Ouroboros",
+        "target": "Octopus",
+        "type": "LFOSync",
+        "amount": 0.55,
+        "description": "Ouroboros attractor cycle syncs Octopus arm rate — the system feeds back, arms speeding or slowing as the attractor breathes"
+      }
+    ]
+  },
+  "sequencer": null
+}

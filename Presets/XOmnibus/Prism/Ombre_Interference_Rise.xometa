@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Interference Rise",
+  "mood": "Prism",
+  "engines": ["Ombre"],
+  "author": "Guru Bin — Prism Expression Pass 2026-03-16",
+  "version": "1.0.0",
+  "description": "Blend fixed at 0.55 — perception slightly dominant, memory still audible beneath, two voices in productive tension. Mod wheel blurs the boundary: at low throw it remains a clean dual-narrative; at full throw, blend tips toward pure perception while interference rises, the two streams colliding at maximum intensity, the overtones of their disagreement becoming a third voice. This is not a crossfade — it is an argument. Aftertouch intensifies interference directly: pressing into a held chord amplifies the beating between memory and perception streams, the collision frequency shifting as you vary pressure. Each pressure plateau is a different acoustical interference pattern. Velocity controls reactivity — soft touch leaves memory stable; hard strike activates full reactivity, the memory layer instantly responding to transient content, the gap between the two narratives widening on impact.",
+  "tags": ["ombre", "interference", "memory", "perception", "aftertouch", "mod-wheel", "prism", "expression", "dual-narrative"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "modMatrix": [
+    {"source": "modWheel", "destination": "ombre_blend", "amount": 0.4},
+    {"source": "modWheel", "destination": "ombre_interference", "amount": 0.85},
+    {"source": "modWheel", "destination": "ombre_memoryDrift", "amount": 0.5},
+    {"source": "aftertouch", "destination": "ombre_interference", "amount": 0.75},
+    {"source": "aftertouch", "destination": "ombre_filterReso", "amount": 0.5},
+    {"source": "velocity", "destination": "ombre_reactivity", "amount": 0.8},
+    {"source": "velocity", "destination": "ombre_filterCutoff", "amount": 0.4}
+  ],
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.55,
+      "ombre_interference": 0.05,
+      "ombre_memoryDecay": 6.0,
+      "ombre_memoryGrain": 120.0,
+      "ombre_memoryDrift": 0.15,
+      "ombre_oscShape": 0.5,
+      "ombre_reactivity": 0.1,
+      "ombre_subLevel": 0.2,
+      "ombre_filterCutoff": 5500.0,
+      "ombre_filterReso": 0.1,
+      "ombre_attack": 0.02,
+      "ombre_decay": 0.5,
+      "ombre_sustain": 0.65,
+      "ombre_release": 2.0,
+      "ombre_level": 0.8
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.55,
+    "movement": 0.35,
+    "density": 0.45,
+    "space": 0.6,
+    "aggression": 0.15
+  }
+}

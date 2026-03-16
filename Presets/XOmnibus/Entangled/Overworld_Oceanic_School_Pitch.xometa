@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "name": "School Pitch",
+  "mood": "Entangled",
+  "engines": ["Overworld", "Oceanic"],
+  "author": "Guru Bin — Coupling Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "The NES triangle wave's pitch is the boid school's target frequency — the chip is the attractor, the boid cloud is the organism orbiting it. AudioToFM routes the chip's raw audio into Oceanic's FM carrier so the swarm literally oscillates at the chip's pitch. AmpToFilter further couples the chip's amplitude envelope to Oceanic's filter, so louder chip notes open the swarm filter and reveal more harmonic content. Play staccato chip notes: the boid cloud surges toward each note and then slowly disperses during silence. Play legato: the school locks onto the pitch and becomes a resonant shadow of the chip voice. ERA position determines which chip vertex the school is following.",
+  "tags": ["overworld", "oceanic", "boid", "school", "chip", "pitch", "swarm", "entangled", "coupled"],
+  "macroLabels": ["ERA POSITION", "SCHOOL DENSITY", "COUPLING", "SPACE"],
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "Overworld": {
+      "ow_era": 0.15,
+      "ow_eraY": 0.7,
+      "ow_eraMemory": 0.55,
+      "ow_eraPortamento": 0.08,
+      "ow_eraDrift": 0.05,
+      "ow_filterCutoff": 0.78,
+      "ow_glitch": 0.04,
+      "ow_fmLfoRate": 0.03,
+      "ow_fmLfoDepth": 0.08
+    },
+    "Oceanic": {
+      "ocean_separation": 0.42,
+      "ocean_alignment": 0.65,
+      "ocean_cohesion": 0.72,
+      "ocean_tether": 0.55,
+      "ocean_scatter": 0.18,
+      "ocean_subflocks": 1,
+      "ocean_damping": 0.4,
+      "ocean_waveform": 0,
+      "ocean_ampAttack": 0.08,
+      "ocean_ampDecay": 0.8,
+      "ocean_ampSustain": 0.65,
+      "ocean_ampRelease": 2.5,
+      "ocean_swarmEnvAttack": 0.12,
+      "ocean_swarmEnvDecay": 0.6,
+      "ocean_swarmEnvSustain": 0.7,
+      "ocean_swarmEnvRelease": 1.8,
+      "ocean_lfo1Rate": 0.04,
+      "ocean_lfo1Depth": 0.15,
+      "ocean_lfo1Shape": 0,
+      "ocean_lfo2Rate": 0.02,
+      "ocean_lfo2Depth": 0.08,
+      "ocean_lfo2Shape": 0,
+      "ocean_voiceMode": 1,
+      "ocean_glide": 0.0,
+      "ocean_macroCharacter": 0.0,
+      "ocean_macroMovement": 0.0,
+      "ocean_macroCoupling": 0.0,
+      "ocean_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Oceanic",
+        "type": "AudioToFM",
+        "amount": 0.75,
+        "direction": "A->B",
+        "notes": "NES/Genesis/SNES chip audio output FM-modulates Oceanic's boid oscillator — the school literally oscillates at chip pitch"
+      },
+      {
+        "engineA": "Overworld",
+        "engineB": "Oceanic",
+        "type": "AmpToFilter",
+        "amount": 0.58,
+        "direction": "A->B",
+        "notes": "Chip amplitude envelope opens Oceanic filter — louder chip notes reveal more harmonic content in the boid school"
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.48,
+    "movement": 0.7,
+    "density": 0.65,
+    "space": 0.58,
+    "aggression": 0.32
+  }
+}

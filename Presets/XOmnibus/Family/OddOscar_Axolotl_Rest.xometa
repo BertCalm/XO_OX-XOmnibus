@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Axolotl Rest",
+  "mood": "Family",
+  "engines": ["OddOscar"],
+  "author": "Guru Bin — Family Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Oscar sleeping in a warm current. morph_morph at 0.2 — near the first oscillator pole, barely stirring. Slow drift (0.05) like the gentle pulse of gill filaments. Long attack and release hold the note like a held breath. Filter warm and soft, resonance minimal. An axolotl at rest is not absent — it is simply very, very present.",
+  "tags": ["family", "pad", "gentle", "warm", "axolotl", "sleep", "soft", "beginner"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.2,
+      "morph_bloom": 0.62,
+      "morph_decay": 0.8,
+      "morph_sustain": 0.78,
+      "morph_release": 2.5,
+      "morph_filterCutoff": 980.0,
+      "morph_filterReso": 0.15,
+      "morph_filterEnvDepth": 0.08,
+      "morph_drift": 0.05,
+      "morph_sub": 0.18,
+      "morph_detune": 3.0,
+      "morph_level": 0.72,
+      "morph_polyphony": 4,
+      "morph_voiceMode": 2,
+      "morph_glide": 0.0,
+      "morph_macroBloom": 0.28,
+      "morph_macroDrift": 0.08,
+      "morph_macroDepth": 0.22,
+      "morph_macroSpace": 0.48
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.30,
+    "warmth": 0.72,
+    "movement": 0.12,
+    "density": 0.42,
+    "space": 0.52,
+    "aggression": 0.05
+  }
+}

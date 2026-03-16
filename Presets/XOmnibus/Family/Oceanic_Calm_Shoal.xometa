@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Calm Shoal",
+  "mood": "Family",
+  "engines": ["Oceanic"],
+  "author": "Guru Bin — Family Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "A small school of fish moves as one — not because they think, but because they trust. High cohesion draws every voice toward the centre of the flock. Scatter is nearly zero. The swarm doesn't fragment; it breathes. Safe for any age, any key, any time of day.",
+  "tags": ["family", "gentle", "swarm", "warm", "pad", "beginner", "calm"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_separation": 0.18,
+      "ocean_alignment": 0.55,
+      "ocean_cohesion": 0.82,
+      "ocean_tether": 0.72,
+      "ocean_scatter": 0.04,
+      "ocean_subflocks": 2,
+      "ocean_damping": 0.68,
+      "ocean_waveform": 0,
+      "ocean_ampAttack": 0.45,
+      "ocean_ampDecay": 0.6,
+      "ocean_ampSustain": 0.78,
+      "ocean_ampRelease": 2.8,
+      "ocean_swarmEnvAttack": 0.55,
+      "ocean_swarmEnvDecay": 0.8,
+      "ocean_swarmEnvSustain": 0.72,
+      "ocean_swarmEnvRelease": 2.2,
+      "ocean_lfo1Rate": 0.032,
+      "ocean_lfo1Depth": 0.08,
+      "ocean_lfo1Shape": 0,
+      "ocean_lfo2Rate": 0.019,
+      "ocean_lfo2Depth": 0.05,
+      "ocean_lfo2Shape": 0,
+      "ocean_voiceMode": 1,
+      "ocean_glide": 0.0,
+      "ocean_macroCharacter": 0.0,
+      "ocean_macroMovement": 0.0,
+      "ocean_macroCoupling": 0.0,
+      "ocean_macroSpace": 0.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.72,
+    "movement": 0.22,
+    "density": 0.42,
+    "space": 0.62,
+    "aggression": 0.05
+  }
+}

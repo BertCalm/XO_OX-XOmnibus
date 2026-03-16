@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Dart Formation",
+  "mood": "Flux",
+  "engines": ["OddfeliX"],
+  "author": "Guru Bin — Core Engine Deepening 2026-03-16",
+  "version": "1.0.0",
+  "description": "feliX in motion. High snap intensity, short decay, sweepDirection positive — the pitch bends sharply upward like a tetra schooling fast in response to a predator. DART macro pushed loud, SCHOOL at mid — enough voices to sound like a scattered formation but not a wall. Rhythmically played, this is percussive pluck with attitude.",
+  "tags": ["flux", "percussive", "pluck", "motion", "sharp", "bright", "formation"],
+  "macroLabels": ["DART", "SCHOOL", "SURFACE", "DEPTH"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "OddfeliX": {
+      "snap_snap": 0.85,
+      "snap_decay": 0.65,
+      "snap_detune": 14.0,
+      "snap_filterCutoff": 5500.0,
+      "snap_filterReso": 0.55,
+      "snap_filterEnvDepth": 0.60,
+      "snap_unison": 3,
+      "snap_sweepDirection": 0.75,
+      "snap_pitchLock": 1,
+      "snap_macroDart": 0.88,
+      "snap_macroSchool": 0.52,
+      "snap_macroSurface": 0.68,
+      "snap_macroDepth": 0.30
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.20,
+    "movement": 0.75,
+    "density": 0.45,
+    "space": 0.40,
+    "aggression": 0.65
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Tetra Ghost",
+  "mood": "Atmosphere",
+  "engines": ["OddfeliX"],
+  "author": "Guru Bin — Core Engine Deepening 2026-03-16",
+  "version": "1.0.0",
+  "description": "feliX stripped to near-silence. snap intensity at minimum, long decay, pitchLock on — the neon tetra holds its position in the water column. A ghost of a tone, barely audible, filter mostly closed. The school (unison) is just two voices at 6-cent detune, enough to create mild beating but not presence. Complement to OddOscar's Dark Thread and Cave Breath.",
+  "tags": ["atmosphere", "ghost", "sparse", "thin", "minimal", "sustained", "dark"],
+  "macroLabels": ["DART", "SCHOOL", "SURFACE", "DEPTH"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "OddfeliX": {
+      "snap_snap": 0.08,
+      "snap_decay": 5.5,
+      "snap_detune": 6.0,
+      "snap_filterCutoff": 680.0,
+      "snap_filterReso": 0.12,
+      "snap_filterEnvDepth": 0.04,
+      "snap_unison": 2,
+      "snap_sweepDirection": 0.0,
+      "snap_pitchLock": 1,
+      "snap_macroDart": 0.05,
+      "snap_macroSchool": 0.18,
+      "snap_macroSurface": 0.10,
+      "snap_macroDepth": 0.22
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.32,
+    "movement": 0.10,
+    "density": 0.15,
+    "space": 0.35,
+    "aggression": 0.03
+  }
+}

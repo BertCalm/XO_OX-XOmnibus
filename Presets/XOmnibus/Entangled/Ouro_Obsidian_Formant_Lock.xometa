@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "name": "Formant Lock",
+  "mood": "Entangled",
+  "engines": ["Ouroboros", "Obsidian"],
+  "author": "Guru Bin — Coupling Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Lorenz attractor selects which crystal formant resonance Obsidian locks onto — the chaotic trajectory sweeps through the formant space like a finger dragged across glass. Topology 0 (Lorenz) produces slow graceful sweeps; topology 2 (Chua) produces abrupt crystalline snaps between vowel positions. The leash value is critical: high leash = attractor hunts fast = rapid formant flutter; low leash = slow drift through harmonic space. Chaos is the sculptor; crystal is the material.",
+  "tags": ["ouroboros", "obsidian", "formant", "chaos", "attractor", "crystal", "entangled", "coupled"],
+  "macroLabels": ["TOPOLOGY", "CRYSTAL DEPTH", "COUPLING", "SPACE"],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0,
+      "ouro_rate": 48.0,
+      "ouro_chaosIndex": 0.55,
+      "ouro_leash": 0.45,
+      "ouro_theta": 0.3,
+      "ouro_phi": 0.15,
+      "ouro_damping": 0.5,
+      "ouro_injection": 0.2
+    },
+    "Obsidian": {
+      "obsidian_densityX": 0.52,
+      "obsidian_tiltY": 0.4,
+      "obsidian_depth": 0.7,
+      "obsidian_stiffness": 0.38,
+      "obsidian_cascadeBlend": 0.55,
+      "obsidian_crossModDepth": 0.35,
+      "obsidian_formantIntensity": 0.78,
+      "obsidian_stereoWidth": 0.65,
+      "obsidian_filterCutoff": 3800.0,
+      "obsidian_filterReso": 0.62,
+      "obsidian_level": 0.72,
+      "obsidian_ampAttack": 0.04,
+      "obsidian_ampDecay": 0.6,
+      "obsidian_ampSustain": 0.72,
+      "obsidian_ampRelease": 1.8,
+      "obsidian_depthAttack": 0.05,
+      "obsidian_depthDecay": 0.5,
+      "obsidian_depthSustain": 0.65,
+      "obsidian_depthRelease": 1.4,
+      "obsidian_lfo1Rate": 0.12,
+      "obsidian_lfo1Depth": 0.18,
+      "obsidian_lfo1Shape": 0,
+      "obsidian_lfo2Rate": 0.07,
+      "obsidian_lfo2Depth": 0.1,
+      "obsidian_lfo2Shape": 0,
+      "obsidian_polyphony": 3,
+      "obsidian_glide": 0.02,
+      "obsidian_macroCharacter": 0.0,
+      "obsidian_macroMovement": 0.0,
+      "obsidian_macroCoupling": 0.0,
+      "obsidian_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Obsidian",
+        "type": "Env->Morph",
+        "amount": 0.72,
+        "direction": "A->B",
+        "notes": "Ouroboros envelope trajectory sweeps Obsidian formant position — topology controls which vowel cluster the chaos hunts"
+      },
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Obsidian",
+        "type": "AudioToFM",
+        "amount": 0.28,
+        "direction": "A->B",
+        "notes": "Attractor audio output subtly FM-modulates Obsidian crystal carrier frequency — adds micro-instability to otherwise static resonance"
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.25,
+    "movement": 0.58,
+    "density": 0.5,
+    "space": 0.55,
+    "aggression": 0.4
+  }
+}
