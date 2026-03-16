@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Reed Serpent Reed",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Coral wind tangles the serpent — OBBLIGATO's dual breath couples into OUROBOROS's recursive topology.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "bond",
+    "wind",
+    "coral",
+    "ouroboros",
+    "chaotic",
+    "recursive",
+    "serpent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.732,
+    "obbl_breathB": 0.58,
+    "obbl_macroBond": 0.668,
+    "ouro_topology": 0.768,
+    "ouro_chaosLeash": 0.61
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "OUROBOROS",
+        "type": "LFO->Pitch",
+        "amount": 0.63
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.76,
+    "SPACE": 0.35
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.48,
+    "movement": 0.85,
+    "density": 0.7,
+    "space": 0.35,
+    "aggression": 0.78
+  }
+}

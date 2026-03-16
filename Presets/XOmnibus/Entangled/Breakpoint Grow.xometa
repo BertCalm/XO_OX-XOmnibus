@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Breakpoint Grow",
+  "mood": "Entangled",
+  "engines": [
+    "ORACLE",
+    "OTTONI"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Oracle breakpoints velocity-coupled to GROW \u2014 dynamic oracle reveals its brass.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "breakpoint",
+    "velocity",
+    "growth"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.68,
+    "movement": 0.62,
+    "density": 0.58,
+    "space": 0.42,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.5,
+      "macro_movement": 0.7,
+      "macro_coupling": 0.65,
+      "macro_space": 0.55
+    },
+    "OTTONI": {
+      "macro_character": 0.72,
+      "macro_movement": 0.42,
+      "macro_coupling": 0.65,
+      "macro_space": 0.32
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORACLE",
+        "engineB": "OTTONI",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.65
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.61,
+    "MOVEMENT": 0.56,
+    "COUPLING": 0.65,
+    "SPACE": 0.435
+  },
+  "sequencer": null
+}

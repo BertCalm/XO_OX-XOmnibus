@@ -1,0 +1,49 @@
+{
+  "name": "Silver Lens",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBSCURA",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.387,
+      "macro_movement": 0.287,
+      "macro_coupling": 0.587,
+      "macro_space": 0.637
+    },
+    "OPTIC": {
+      "macro_character": 0.463,
+      "macro_movement": 0.413,
+      "macro_coupling": 0.563,
+      "macro_space": 0.463
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_SHIFT",
+    "source": "OBSCURA",
+    "target": "OPTIC",
+    "amount": 0.687
+  },
+  "dna": {
+    "brightness": 0.87,
+    "warmth": 0.3,
+    "movement": 0.35,
+    "density": 0.5,
+    "space": 0.65,
+    "aggression": 0.25
+  },
+  "macros": {
+    "CHARACTER": 0.425,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.687,
+    "SPACE": 0.55
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "visual",
+    "bright"
+  ]
+}

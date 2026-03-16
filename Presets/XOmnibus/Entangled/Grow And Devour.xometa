@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Grow And Devour",
+  "mood": "Entangled",
+  "engines": [
+    "OTTONI",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "GROW macro blends timbre into Ouroboros's voracious topology \u2014 eat the brass.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "growth",
+    "devour",
+    "drama"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.44,
+    "warmth": 0.7,
+    "movement": 0.6,
+    "density": 0.62,
+    "space": 0.35,
+    "aggression": 0.58
+  },
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.72,
+      "macro_movement": 0.5,
+      "macro_coupling": 0.66,
+      "macro_space": 0.35
+    },
+    "OUROBOROS": {
+      "macro_character": 0.58,
+      "macro_movement": 0.68,
+      "macro_coupling": 0.66,
+      "macro_space": 0.44
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OTTONI",
+        "engineB": "OUROBOROS",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.66
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.59,
+    "COUPLING": 0.66,
+    "SPACE": 0.395
+  },
+  "sequencer": null
+}

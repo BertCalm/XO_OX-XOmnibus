@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "OHM Grove Cloud 3",
+  "mood": "Entangled",
+  "engines": [
+    "OHM",
+    "ORIGAMI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The commune folds itself into geometric patience — OHM's organ harmonics crease through ORIGAMI's folded architecture.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "commune",
+    "sage",
+    "drone",
+    "origami",
+    "folded",
+    "geometric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "ohm_macroMeddling": 0.76,
+    "ohm_macroCommune": 0.65,
+    "ohm_orgHarmonics": 0.676,
+    "ohm_droneFund": 0.62,
+    "origami_foldPoint": 0.68,
+    "origami_creaseDensity": 0.72
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OHM",
+        "engineB": "ORIGAMI",
+        "type": "Env->Cutoff",
+        "amount": 0.79
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.61,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.79,
+    "SPACE": 0.52
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.5,
+    "movement": 0.9,
+    "density": 0.8,
+    "space": 0.52,
+    "aggression": 0.18
+  }
+}

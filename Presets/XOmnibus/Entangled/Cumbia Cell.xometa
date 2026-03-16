@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Cumbia Cell",
+  "mood": "Entangled",
+  "engines": [
+    "ORGANON",
+    "OLE"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Organon velocity output fires OLE Afro-Latin rhythm \u2014 biological cumbia.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "cumbia",
+    "velocity",
+    "percussive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.68,
+    "movement": 0.75,
+    "density": 0.6,
+    "space": 0.38,
+    "aggression": 0.58
+  },
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.52,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.65,
+      "macro_space": 0.5
+    },
+    "OLE": {
+      "macro_character": 0.7,
+      "macro_movement": 0.6,
+      "macro_coupling": 0.65,
+      "macro_space": 0.38
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORGANON",
+        "engineB": "OLE",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.65
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.61,
+    "MOVEMENT": 0.66,
+    "COUPLING": 0.65,
+    "SPACE": 0.44
+  },
+  "sequencer": null
+}

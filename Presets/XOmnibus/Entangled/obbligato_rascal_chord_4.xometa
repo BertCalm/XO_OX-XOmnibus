@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "OBBLIGATO Rascal Chord 4",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The obligatory prophecy — OBBLIGATO's breath drives ORACLE's stochastic breakpoints into necessary patterns.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "bond",
+    "wind",
+    "coral",
+    "oracle",
+    "stochastic",
+    "prophetic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.732,
+    "obbl_breathB": 0.652,
+    "obbl_macroBond": 0.64,
+    "oracle_breakpoints": 0.725,
+    "oracle_stochasticRate": 0.74
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "ORACLE",
+        "type": "Env->Cutoff",
+        "amount": 0.79
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.49,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.814,
+    "SPACE": 0.78
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.4,
+    "movement": 0.85,
+    "density": 0.88,
+    "space": 0.78,
+    "aggression": 0.45
+  }
+}

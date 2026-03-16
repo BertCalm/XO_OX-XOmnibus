@@ -1,0 +1,49 @@
+{
+  "name": "Violet Savanna",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OCELOT",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "macro_character": 0.665,
+      "macro_movement": 0.715,
+      "macro_coupling": 0.565,
+      "macro_space": 0.465
+    },
+    "OBLIQUE": {
+      "macro_character": 0.785,
+      "macro_movement": 0.735,
+      "macro_coupling": 0.635,
+      "macro_space": 0.535
+    }
+  },
+  "coupling": {
+    "type": "TEXTURE_MORPH",
+    "source": "OCELOT",
+    "target": "OBLIQUE",
+    "amount": 0.523
+  },
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.7,
+    "movement": 0.5,
+    "density": 0.6,
+    "space": 0.75,
+    "aggression": 0.13
+  },
+  "macros": {
+    "CHARACTER": 0.725,
+    "MOVEMENT": 0.725,
+    "COUPLING": 0.523,
+    "SPACE": 0.5
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "visual",
+    "lush"
+  ]
+}

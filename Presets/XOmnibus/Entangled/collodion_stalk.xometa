@@ -1,0 +1,49 @@
+{
+  "name": "Collodion Stalk",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBSCURA",
+    "OCELOT"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.325,
+      "macro_movement": 0.225,
+      "macro_coupling": 0.525,
+      "macro_space": 0.575
+    },
+    "OCELOT": {
+      "macro_character": 0.675,
+      "macro_movement": 0.725,
+      "macro_coupling": 0.575,
+      "macro_space": 0.475
+    }
+  },
+  "coupling": {
+    "type": "MODULATION_SHARE",
+    "source": "OBSCURA",
+    "target": "OCELOT",
+    "amount": 0.445
+  },
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.6,
+    "movement": 0.55,
+    "density": 0.87,
+    "space": 0.4,
+    "aggression": 0.6
+  },
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.475,
+    "COUPLING": 0.445,
+    "SPACE": 0.525
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "visual",
+    "dense"
+  ]
+}

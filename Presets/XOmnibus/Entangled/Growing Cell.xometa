@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Growing Cell",
+  "mood": "Entangled",
+  "engines": [
+    "OTTONI",
+    "ORGANON"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "GROW macro links envelope shapes \u2014 brass swell triggers cellular expansion.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "growth",
+    "envelope",
+    "evolving"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.72,
+    "movement": 0.7,
+    "density": 0.55,
+    "space": 0.35,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.7,
+      "macro_movement": 0.45,
+      "macro_coupling": 0.65,
+      "macro_space": 0.35
+    },
+    "ORGANON": {
+      "macro_character": 0.5,
+      "macro_movement": 0.7,
+      "macro_coupling": 0.65,
+      "macro_space": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OTTONI",
+        "engineB": "ORGANON",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.65
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.575,
+    "COUPLING": 0.65,
+    "SPACE": 0.45
+  },
+  "sequencer": null
+}

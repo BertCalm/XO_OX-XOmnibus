@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Patina Culture",
+  "mood": "Entangled",
+  "engines": [
+    "OTTONI",
+    "ORGANON"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Oxidized brass spectral content morphs Organon's timbral palette.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "spectral",
+    "texture",
+    "layered"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.65,
+    "movement": 0.5,
+    "density": 0.7,
+    "space": 0.5,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.6,
+      "macro_movement": 0.5,
+      "macro_coupling": 0.58,
+      "macro_space": 0.45
+    },
+    "ORGANON": {
+      "macro_character": 0.6,
+      "macro_movement": 0.55,
+      "macro_coupling": 0.58,
+      "macro_space": 0.6
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OTTONI",
+        "engineB": "ORGANON",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.58
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.525,
+    "COUPLING": 0.58,
+    "SPACE": 0.525
+  },
+  "sequencer": null
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "GENDY Bond Breath",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The obligatory prophecy — OBBLIGATO's breath drives ORACLE's stochastic breakpoints into necessary patterns.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "bond",
+    "wind",
+    "coral",
+    "oracle",
+    "stochastic",
+    "prophetic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.755,
+    "obbl_breathB": 0.548,
+    "obbl_macroBond": 0.668,
+    "oracle_breakpoints": 0.75,
+    "oracle_stochasticRate": 0.76
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "ORACLE",
+        "type": "Spectral->Harmonic",
+        "amount": 0.87
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.565,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.736,
+    "SPACE": 0.85
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.48,
+    "movement": 0.9,
+    "density": 0.62,
+    "space": 0.85,
+    "aggression": 0.4
+  }
+}

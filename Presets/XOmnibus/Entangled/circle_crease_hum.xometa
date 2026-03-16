@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Circle Crease Hum",
+  "mood": "Entangled",
+  "engines": [
+    "OHM",
+    "ORIGAMI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The commune folds itself into geometric patience — OHM's organ harmonics crease through ORIGAMI's folded architecture.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "commune",
+    "sage",
+    "drone",
+    "origami",
+    "folded",
+    "geometric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "ohm_macroMeddling": 0.576,
+    "ohm_macroCommune": 0.665,
+    "ohm_orgHarmonics": 0.644,
+    "ohm_droneFund": 0.668,
+    "origami_foldPoint": 0.752,
+    "origami_creaseDensity": 0.768
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OHM",
+        "engineB": "ORIGAMI",
+        "type": "Filter->Filter",
+        "amount": 0.63
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.615,
+    "MOVEMENT": 0.44,
+    "COUPLING": 0.826,
+    "SPACE": 0.47
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.55,
+    "movement": 0.44,
+    "density": 0.92,
+    "space": 0.47,
+    "aggression": 0.12
+  }
+}

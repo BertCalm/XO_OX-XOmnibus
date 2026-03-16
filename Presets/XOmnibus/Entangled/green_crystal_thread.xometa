@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Green Crystal Thread",
+  "mood": "Entangled",
+  "engines": [
+    "OHM",
+    "OBSIDIAN"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sage smoke drifts through crystal fractures — OHM's communal hum resonates inside OBSIDIAN's glassy depth.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "commune",
+    "sage",
+    "drone",
+    "obsidian",
+    "crystal",
+    "glassy"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "ohm_macroMeddling": 0.544,
+    "ohm_macroCommune": 0.68,
+    "ohm_orgHarmonics": 0.436,
+    "ohm_droneFund": 0.612,
+    "obsidian_depth": 0.856,
+    "obsidian_crystalResonance": 0.51
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OHM",
+        "engineB": "OBSIDIAN",
+        "type": "Spectral->Harmonic",
+        "amount": 0.55
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.36,
+    "COUPLING": 0.784,
+    "SPACE": 0.89
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.6,
+    "movement": 0.36,
+    "density": 0.78,
+    "space": 0.89,
+    "aggression": 0.16
+  }
+}

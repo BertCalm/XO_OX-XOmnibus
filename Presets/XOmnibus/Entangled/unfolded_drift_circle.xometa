@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Unfolded Drift Circle",
+  "mood": "Entangled",
+  "engines": [
+    "OHM",
+    "ORIGAMI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The commune folds itself into geometric patience — OHM's organ harmonics crease through ORIGAMI's folded architecture.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "commune",
+    "sage",
+    "drone",
+    "origami",
+    "folded",
+    "geometric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "ohm_macroMeddling": 0.58,
+    "ohm_macroCommune": 0.695,
+    "ohm_orgHarmonics": 0.724,
+    "ohm_droneFund": 0.648,
+    "origami_foldPoint": 0.722,
+    "origami_creaseDensity": 0.748
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OHM",
+        "engineB": "ORIGAMI",
+        "type": "Pitch->Mod",
+        "amount": 0.87
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.715,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.811,
+    "SPACE": 0.55
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.65,
+    "movement": 0.45,
+    "density": 0.87,
+    "space": 0.55,
+    "aggression": 0.08
+  }
+}

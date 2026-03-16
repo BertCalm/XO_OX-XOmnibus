@@ -1,0 +1,50 @@
+{
+  "name": "RTJ Leopard",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OCELOT",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "macro_character": 0.678,
+      "macro_movement": 0.728,
+      "macro_coupling": 0.578,
+      "macro_space": 0.478
+    },
+    "OBLIQUE": {
+      "macro_character": 0.772,
+      "macro_movement": 0.722,
+      "macro_coupling": 0.622,
+      "macro_space": 0.522
+    }
+  },
+  "coupling": {
+    "type": "PITCH_WARP",
+    "source": "OCELOT",
+    "target": "OBLIQUE",
+    "amount": 0.776
+  },
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.5,
+    "movement": 0.88,
+    "density": 0.65,
+    "space": 0.35,
+    "aggression": 0.85
+  },
+  "macros": {
+    "CHARACTER": 0.725,
+    "MOVEMENT": 0.725,
+    "COUPLING": 0.776,
+    "SPACE": 0.5
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "visual",
+    "rtj",
+    "aggressive"
+  ]
+}

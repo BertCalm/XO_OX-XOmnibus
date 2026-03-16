@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Silver Seafoam",
+  "mood": "Entangled",
+  "engines": [
+    "ORPHICA",
+    "OBSCURA"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "ORPHICA microsound spatially coupled with Obscura depth \u2014 silver seafoam.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "silver",
+    "seafoam",
+    "spatial"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.4,
+    "movement": 0.5,
+    "density": 0.42,
+    "space": 0.82,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.65,
+      "macro_movement": 0.5,
+      "macro_coupling": 0.72,
+      "macro_space": 0.78
+    },
+    "OBSCURA": {
+      "macro_character": 0.52,
+      "macro_movement": 0.58,
+      "macro_coupling": 0.72,
+      "macro_space": 0.7
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORPHICA",
+        "engineB": "OBSCURA",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.72
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.585,
+    "MOVEMENT": 0.54,
+    "COUPLING": 0.72,
+    "SPACE": 0.74
+  },
+  "sequencer": null
+}

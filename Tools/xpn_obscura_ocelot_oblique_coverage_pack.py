@@ -1,532 +1,322 @@
 #!/usr/bin/env python3
 """
 xpn_obscura_ocelot_oblique_coverage_pack.py
-Deep coverage expansion for OBSCURA, OCELOT, and OBLIQUE engines.
 
-Generates:
-  - 6 three-way marquee presets (OBSCURA × OCELOT × OBLIQUE)
-  - 20 OBSCURA presets paired with new partners
-  - 20 OCELOT presets paired with same partners
-  - 20 OBLIQUE presets paired with same partners
+Generates ~66 Entangled mood .xometa presets covering new coupling pairs for
+the visual/photographic trio: OBSCURA, OCELOT, OBLIQUE.
 
-Total: ~66 presets written to Presets/XOmnibus/Entangled/
-Skips files that already exist.
+OBSCURA: daguerreotype silver, photographic, stiff strings — #8A9BA8
+OCELOT:  ocelot tawny, biome-shifting                      — #C5832B
+OBLIQUE: prism violet, RTJ×Funk×Tame Impala, bouncing prism — #BF40FF
+
+11 pairs × 6 presets = 66 total
 """
 
 import json
 import os
-import random
-import math
-from datetime import date
+import re
 
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-REPO_ROOT  = os.path.dirname(SCRIPT_DIR)
-OUTPUT_DIR = os.path.join(REPO_ROOT, "Presets", "XOmnibus", "Entangled")
+OUTPUT_DIR = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "Presets", "XOmnibus", "Entangled"
+)
 
-TODAY   = str(date.today())
-VERSION = "1.0.0"
-AUTHOR  = "XO_OX Deep Coverage Pack 2026-03-16"
-
-# ──────────────────────────────────────────────
-# Engine DNA baselines
-# ──────────────────────────────────────────────
-ENGINE_DNA = {
-    "OBSCURA":    {"brightness": 0.45, "warmth": 0.5,  "movement": 0.4,  "density": 0.6,  "space": 0.55, "aggression": 0.25},
-    "OCELOT":     {"brightness": 0.6,  "warmth": 0.65, "movement": 0.6,  "density": 0.65, "space": 0.5,  "aggression": 0.5},
-    "OBLIQUE":    {"brightness": 0.75, "warmth": 0.45, "movement": 0.8,  "density": 0.6,  "space": 0.6,  "aggression": 0.55},
-    # Partners
-    "ONSET":      {"brightness": 0.5,  "warmth": 0.4,  "movement": 0.8,  "density": 0.7,  "space": 0.4,  "aggression": 0.7},
-    "OVERWORLD":  {"brightness": 0.7,  "warmth": 0.5,  "movement": 0.6,  "density": 0.6,  "space": 0.5,  "aggression": 0.5},
-    "OPTIC":      {"brightness": 0.9,  "warmth": 0.3,  "movement": 0.8,  "density": 0.4,  "space": 0.5,  "aggression": 0.4},
-    "OSPREY":     {"brightness": 0.6,  "warmth": 0.6,  "movement": 0.6,  "density": 0.5,  "space": 0.7,  "aggression": 0.4},
-    "OSTERIA":    {"brightness": 0.5,  "warmth": 0.8,  "movement": 0.4,  "density": 0.7,  "space": 0.5,  "aggression": 0.3},
-    "OCEANIC":    {"brightness": 0.5,  "warmth": 0.6,  "movement": 0.6,  "density": 0.6,  "space": 0.8,  "aggression": 0.3},
-    "OWLFISH":    {"brightness": 0.5,  "warmth": 0.6,  "movement": 0.5,  "density": 0.6,  "space": 0.6,  "aggression": 0.4},
-    "OHM":        {"brightness": 0.5,  "warmth": 0.7,  "movement": 0.4,  "density": 0.6,  "space": 0.6,  "aggression": 0.3},
-    "ORPHICA":    {"brightness": 0.7,  "warmth": 0.5,  "movement": 0.7,  "density": 0.4,  "space": 0.7,  "aggression": 0.2},
-    "OBBLIGATO":  {"brightness": 0.5,  "warmth": 0.6,  "movement": 0.5,  "density": 0.7,  "space": 0.5,  "aggression": 0.35},
-    "OTTONI":     {"brightness": 0.6,  "warmth": 0.55, "movement": 0.5,  "density": 0.7,  "space": 0.5,  "aggression": 0.55},
-    "OLE":        {"brightness": 0.7,  "warmth": 0.7,  "movement": 0.75, "density": 0.65, "space": 0.4,  "aggression": 0.6},
-    "OMBRE":      {"brightness": 0.4,  "warmth": 0.6,  "movement": 0.5,  "density": 0.5,  "space": 0.7,  "aggression": 0.2},
-    "ORCA":       {"brightness": 0.4,  "warmth": 0.35, "movement": 0.65, "density": 0.7,  "space": 0.55, "aggression": 0.75},
-    "OCTOPUS":    {"brightness": 0.7,  "warmth": 0.4,  "movement": 0.9,  "density": 0.8,  "space": 0.5,  "aggression": 0.6},
-    "OVERLAP":    {"brightness": 0.55, "warmth": 0.5,  "movement": 0.6,  "density": 0.75, "space": 0.65, "aggression": 0.35},
-    "OUTWIT":     {"brightness": 0.65, "warmth": 0.4,  "movement": 0.85, "density": 0.7,  "space": 0.5,  "aggression": 0.65},
-    "ODDFELIX":   {"brightness": 0.8,  "warmth": 0.5,  "movement": 0.7,  "density": 0.6,  "space": 0.5,  "aggression": 0.5},
-    "ODDOSCAR":   {"brightness": 0.6,  "warmth": 0.8,  "movement": 0.6,  "density": 0.6,  "space": 0.6,  "aggression": 0.3},
-    "ODYSSEY":    {"brightness": 0.6,  "warmth": 0.5,  "movement": 0.7,  "density": 0.6,  "space": 0.6,  "aggression": 0.4},
+ENGINE_DEFAULTS = {
+    "OBSCURA": dict(macro_character=0.35, macro_movement=0.25, macro_coupling=0.55, macro_space=0.60),
+    "OCELOT":  dict(macro_character=0.65, macro_movement=0.70, macro_coupling=0.55, macro_space=0.45),
+    "OBLIQUE": dict(macro_character=0.80, macro_movement=0.75, macro_coupling=0.65, macro_space=0.55),
+    "OPTIC":   dict(macro_character=0.50, macro_movement=0.45, macro_coupling=0.60, macro_space=0.50),
+    "ORBITAL": dict(macro_character=0.40, macro_movement=0.55, macro_coupling=0.50, macro_space=0.70),
+    "OCEANIC": dict(macro_character=0.30, macro_movement=0.35, macro_coupling=0.45, macro_space=0.80),
 }
 
-COUPLING_TYPES = [
-    "HARMONIC_BLEND",
-    "FREQUENCY_MODULATION",
-    "AMPLITUDE_MODULATION",
-    "FILTER_COUPLING",
-    "ENVELOPE_SHARING",
-    "SPECTRAL_TRANSFER",
-    "RHYTHMIC_SYNC",
-    "CHAOS_INJECTION",
-    "PITCH_TRACKING",
-    "WAVETABLE_MORPH",
-    "SPATIAL_BLEND",
-    "GRANULAR_EXCHANGE",
+PRESETS = [
+    # OBSCURA x OCELOT
+    {"pair":("OBSCURA","OCELOT"),"name":"Silver Prowl","coupling_type":"TIMBRE_BLEND","coupling_amount":0.65,
+     "dna":{"brightness":0.40,"warmth":0.70,"movement":0.60,"density":0.50,"space":0.55,"aggression":0.88},
+     "tags":["entangled","coupling","visual","photographic","feral"]},
+    {"pair":("OBSCURA","OCELOT"),"name":"Daguerreotype Spotted","coupling_type":"SPECTRAL_SHIFT","coupling_amount":0.50,
+     "dna":{"brightness":0.12,"warmth":0.65,"movement":0.45,"density":0.60,"space":0.70,"aggression":0.40},
+     "tags":["entangled","coupling","visual","photographic","tawny"]},
+    {"pair":("OBSCURA","OCELOT"),"name":"Exposure Biome","coupling_type":"HARMONIC_LOCK","coupling_amount":0.72,
+     "dna":{"brightness":0.55,"warmth":0.85,"movement":0.65,"density":0.40,"space":0.50,"aggression":0.30},
+     "tags":["entangled","coupling","visual","warm"]},
+    {"pair":("OBSCURA","OCELOT"),"name":"Tarnished Savanna","coupling_type":"ENVELOPE_MIRROR","coupling_amount":0.58,
+     "dna":{"brightness":0.35,"warmth":0.75,"movement":0.88,"density":0.55,"space":0.45,"aggression":0.50},
+     "tags":["entangled","coupling","visual","movement"]},
+    {"pair":("OBSCURA","OCELOT"),"name":"Collodion Stalk","coupling_type":"MODULATION_SHARE","coupling_amount":0.45,
+     "dna":{"brightness":0.25,"warmth":0.60,"movement":0.55,"density":0.87,"space":0.40,"aggression":0.60},
+     "tags":["entangled","coupling","visual","dense"]},
+    {"pair":("OBSCURA","OCELOT"),"name":"Fixed Lens Hunter","coupling_type":"TEXTURE_MORPH","coupling_amount":0.80,
+     "dna":{"brightness":0.60,"warmth":0.55,"movement":0.70,"density":0.45,"space":0.14,"aggression":0.75},
+     "tags":["entangled","coupling","visual","intimate"]},
+
+    # OBSCURA x OBLIQUE
+    {"pair":("OBSCURA","OBLIQUE"),"name":"Prism Plate","coupling_type":"SPECTRAL_SHIFT","coupling_amount":0.70,
+     "dna":{"brightness":0.86,"warmth":0.35,"movement":0.65,"density":0.45,"space":0.60,"aggression":0.50},
+     "tags":["entangled","coupling","visual","prismatic"]},
+    {"pair":("OBSCURA","OBLIQUE"),"name":"Violet Exposure","coupling_type":"HARMONIC_LOCK","coupling_amount":0.55,
+     "dna":{"brightness":0.75,"warmth":0.25,"movement":0.80,"density":0.40,"space":0.65,"aggression":0.13},
+     "tags":["entangled","coupling","visual","delicate"]},
+    {"pair":("OBSCURA","OBLIQUE"),"name":"Refracted Silver","coupling_type":"PITCH_WARP","coupling_amount":0.62,
+     "dna":{"brightness":0.90,"warmth":0.30,"movement":0.55,"density":0.50,"space":0.70,"aggression":0.35},
+     "tags":["entangled","coupling","visual","bright"]},
+    {"pair":("OBSCURA","OBLIQUE"),"name":"Darkroom Bounce","coupling_type":"RHYTHM_SYNC","coupling_amount":0.75,
+     "dna":{"brightness":0.55,"warmth":0.20,"movement":0.88,"density":0.60,"space":0.50,"aggression":0.70},
+     "tags":["entangled","coupling","visual","rhythmic"]},
+    {"pair":("OBSCURA","OBLIQUE"),"name":"Stiff String Funk","coupling_type":"MODULATION_SHARE","coupling_amount":0.68,
+     "dna":{"brightness":0.70,"warmth":0.40,"movement":0.85,"density":0.55,"space":0.35,"aggression":0.80},
+     "tags":["entangled","coupling","visual","funk"]},
+    {"pair":("OBSCURA","OBLIQUE"),"name":"Collodion Prism","coupling_type":"SPACE_BLEND","coupling_amount":0.48,
+     "dna":{"brightness":0.80,"warmth":0.28,"movement":0.45,"density":0.35,"space":0.87,"aggression":0.25},
+     "tags":["entangled","coupling","visual","spacious"]},
+
+    # OCELOT x OBLIQUE
+    {"pair":("OCELOT","OBLIQUE"),"name":"Tawny Prism","coupling_type":"TIMBRE_BLEND","coupling_amount":0.72,
+     "dna":{"brightness":0.85,"warmth":0.75,"movement":0.80,"density":0.45,"space":0.50,"aggression":0.60},
+     "tags":["entangled","coupling","visual","vivid"]},
+    {"pair":("OCELOT","OBLIQUE"),"name":"Biome Bounce","coupling_type":"RHYTHM_SYNC","coupling_amount":0.80,
+     "dna":{"brightness":0.75,"warmth":0.65,"movement":0.90,"density":0.55,"space":0.40,"aggression":0.70},
+     "tags":["entangled","coupling","visual","rhythmic","funk"]},
+    {"pair":("OCELOT","OBLIQUE"),"name":"Spotted Spectrum","coupling_type":"SPECTRAL_SHIFT","coupling_amount":0.65,
+     "dna":{"brightness":0.88,"warmth":0.55,"movement":0.65,"density":0.40,"space":0.60,"aggression":0.45},
+     "tags":["entangled","coupling","visual","prismatic"]},
+    {"pair":("OCELOT","OBLIQUE"),"name":"Feral Impala","coupling_type":"ENVELOPE_MIRROR","coupling_amount":0.58,
+     "dna":{"brightness":0.70,"warmth":0.60,"movement":0.85,"density":0.30,"space":0.55,"aggression":0.87},
+     "tags":["entangled","coupling","visual","aggressive","tame-impala"]},
+    {"pair":("OCELOT","OBLIQUE"),"name":"Violet Savanna","coupling_type":"TEXTURE_MORPH","coupling_amount":0.52,
+     "dna":{"brightness":0.65,"warmth":0.70,"movement":0.50,"density":0.60,"space":0.75,"aggression":0.13},
+     "tags":["entangled","coupling","visual","lush"]},
+    {"pair":("OCELOT","OBLIQUE"),"name":"RTJ Leopard","coupling_type":"PITCH_WARP","coupling_amount":0.77,
+     "dna":{"brightness":0.78,"warmth":0.50,"movement":0.88,"density":0.65,"space":0.35,"aggression":0.85},
+     "tags":["entangled","coupling","visual","rtj","aggressive"]},
+
+    # OBSCURA x OPTIC
+    {"pair":("OBSCURA","OPTIC"),"name":"Aperture Study","coupling_type":"TIMBRE_BLEND","coupling_amount":0.60,
+     "dna":{"brightness":0.55,"warmth":0.35,"movement":0.40,"density":0.45,"space":0.70,"aggression":0.12},
+     "tags":["entangled","coupling","visual","optical"]},
+    {"pair":("OBSCURA","OPTIC"),"name":"Silver Lens","coupling_type":"SPECTRAL_SHIFT","coupling_amount":0.68,
+     "dna":{"brightness":0.87,"warmth":0.30,"movement":0.35,"density":0.50,"space":0.65,"aggression":0.25},
+     "tags":["entangled","coupling","visual","bright"]},
+    {"pair":("OBSCURA","OPTIC"),"name":"Long Exposure","coupling_type":"SPACE_BLEND","coupling_amount":0.75,
+     "dna":{"brightness":0.40,"warmth":0.25,"movement":0.14,"density":0.40,"space":0.88,"aggression":0.20},
+     "tags":["entangled","coupling","visual","spacious","slow"]},
+    {"pair":("OBSCURA","OPTIC"),"name":"Grain Refraction","coupling_type":"TEXTURE_MORPH","coupling_amount":0.55,
+     "dna":{"brightness":0.45,"warmth":0.40,"movement":0.50,"density":0.85,"space":0.55,"aggression":0.30},
+     "tags":["entangled","coupling","visual","textured"]},
+    {"pair":("OBSCURA","OPTIC"),"name":"Wet Plate Optic","coupling_type":"HARMONIC_LOCK","coupling_amount":0.50,
+     "dna":{"brightness":0.30,"warmth":0.45,"movement":0.55,"density":0.60,"space":0.65,"aggression":0.10},
+     "tags":["entangled","coupling","visual","subtle"]},
+    {"pair":("OBSCURA","OPTIC"),"name":"Focus Pull","coupling_type":"MODULATION_SHARE","coupling_amount":0.82,
+     "dna":{"brightness":0.65,"warmth":0.35,"movement":0.70,"density":0.45,"space":0.55,"aggression":0.88},
+     "tags":["entangled","coupling","visual","dynamic"]},
+
+    # OBSCURA x ORBITAL
+    {"pair":("OBSCURA","ORBITAL"),"name":"Celestial Plate","coupling_type":"SPACE_BLEND","coupling_amount":0.78,
+     "dna":{"brightness":0.40,"warmth":0.25,"movement":0.35,"density":0.30,"space":0.90,"aggression":0.15},
+     "tags":["entangled","coupling","visual","cosmic","spacious"]},
+    {"pair":("OBSCURA","ORBITAL"),"name":"Orbital Daguerreotype","coupling_type":"TIMBRE_BLEND","coupling_amount":0.55,
+     "dna":{"brightness":0.35,"warmth":0.30,"movement":0.45,"density":0.50,"space":0.85,"aggression":0.12},
+     "tags":["entangled","coupling","visual","cosmic"]},
+    {"pair":("OBSCURA","ORBITAL"),"name":"Stiff String Orbit","coupling_type":"HARMONIC_LOCK","coupling_amount":0.65,
+     "dna":{"brightness":0.50,"warmth":0.35,"movement":0.55,"density":0.60,"space":0.85,"aggression":0.20},
+     "tags":["entangled","coupling","visual","harmonic"]},
+    {"pair":("OBSCURA","ORBITAL"),"name":"Silver Perihelion","coupling_type":"PITCH_WARP","coupling_amount":0.70,
+     "dna":{"brightness":0.60,"warmth":0.20,"movement":0.65,"density":0.40,"space":0.85,"aggression":0.30},
+     "tags":["entangled","coupling","visual","orbital"]},
+    {"pair":("OBSCURA","ORBITAL"),"name":"Dark Matter Photo","coupling_type":"SPECTRAL_SHIFT","coupling_amount":0.48,
+     "dna":{"brightness":0.13,"warmth":0.28,"movement":0.40,"density":0.65,"space":0.88,"aggression":0.25},
+     "tags":["entangled","coupling","visual","dark","deep"]},
+    {"pair":("OBSCURA","ORBITAL"),"name":"Exposure Arc","coupling_type":"ENVELOPE_MIRROR","coupling_amount":0.62,
+     "dna":{"brightness":0.45,"warmth":0.30,"movement":0.75,"density":0.35,"space":0.87,"aggression":0.18},
+     "tags":["entangled","coupling","visual","movement"]},
+
+    # OCELOT x OPTIC
+    {"pair":("OCELOT","OPTIC"),"name":"Amber Optic","coupling_type":"TIMBRE_BLEND","coupling_amount":0.67,
+     "dna":{"brightness":0.75,"warmth":0.85,"movement":0.55,"density":0.45,"space":0.50,"aggression":0.40},
+     "tags":["entangled","coupling","visual","warm","optical"]},
+    {"pair":("OCELOT","OPTIC"),"name":"Tawny Lens","coupling_type":"SPECTRAL_SHIFT","coupling_amount":0.55,
+     "dna":{"brightness":0.80,"warmth":0.70,"movement":0.65,"density":0.50,"space":0.40,"aggression":0.13},
+     "tags":["entangled","coupling","visual","bright","warm"]},
+    {"pair":("OCELOT","OPTIC"),"name":"Biome Refraction","coupling_type":"TEXTURE_MORPH","coupling_amount":0.72,
+     "dna":{"brightness":0.65,"warmth":0.75,"movement":0.70,"density":0.88,"space":0.40,"aggression":0.50},
+     "tags":["entangled","coupling","visual","dense","textured"]},
+    {"pair":("OCELOT","OPTIC"),"name":"Spotted Focus","coupling_type":"HARMONIC_LOCK","coupling_amount":0.60,
+     "dna":{"brightness":0.86,"warmth":0.60,"movement":0.50,"density":0.55,"space":0.60,"aggression":0.35},
+     "tags":["entangled","coupling","visual"]},
+    {"pair":("OCELOT","OPTIC"),"name":"Feline Aperture","coupling_type":"MODULATION_SHARE","coupling_amount":0.78,
+     "dna":{"brightness":0.88,"warmth":0.65,"movement":0.75,"density":0.40,"space":0.45,"aggression":0.55},
+     "tags":["entangled","coupling","visual","vivid"]},
+    {"pair":("OCELOT","OPTIC"),"name":"Chromatic Predator","coupling_type":"PITCH_WARP","coupling_amount":0.68,
+     "dna":{"brightness":0.78,"warmth":0.55,"movement":0.85,"density":0.50,"space":0.35,"aggression":0.80},
+     "tags":["entangled","coupling","visual","aggressive"]},
+
+    # OCELOT x ORBITAL
+    {"pair":("OCELOT","ORBITAL"),"name":"Tawny Orbit","coupling_type":"SPACE_BLEND","coupling_amount":0.65,
+     "dna":{"brightness":0.60,"warmth":0.80,"movement":0.55,"density":0.35,"space":0.87,"aggression":0.30},
+     "tags":["entangled","coupling","visual","cosmic","warm"]},
+    {"pair":("OCELOT","ORBITAL"),"name":"Amber Perihelion","coupling_type":"TIMBRE_BLEND","coupling_amount":0.72,
+     "dna":{"brightness":0.70,"warmth":0.85,"movement":0.65,"density":0.40,"space":0.70,"aggression":0.25},
+     "tags":["entangled","coupling","visual","warm"]},
+    {"pair":("OCELOT","ORBITAL"),"name":"Biome Ellipse","coupling_type":"HARMONIC_LOCK","coupling_amount":0.58,
+     "dna":{"brightness":0.55,"warmth":0.75,"movement":0.88,"density":0.50,"space":0.65,"aggression":0.40},
+     "tags":["entangled","coupling","visual","movement"]},
+    {"pair":("OCELOT","ORBITAL"),"name":"Spotted Apogee","coupling_type":"RHYTHM_SYNC","coupling_amount":0.80,
+     "dna":{"brightness":0.65,"warmth":0.70,"movement":0.90,"density":0.45,"space":0.55,"aggression":0.60},
+     "tags":["entangled","coupling","visual","rhythmic"]},
+    {"pair":("OCELOT","ORBITAL"),"name":"Equatorial Stalk","coupling_type":"ENVELOPE_MIRROR","coupling_amount":0.62,
+     "dna":{"brightness":0.75,"warmth":0.65,"movement":0.60,"density":0.55,"space":0.60,"aggression":0.88},
+     "tags":["entangled","coupling","visual","feral"]},
+    {"pair":("OCELOT","ORBITAL"),"name":"Resonant Savanna","coupling_type":"RESONANCE_CHAIN","coupling_amount":0.55,
+     "dna":{"brightness":0.50,"warmth":0.78,"movement":0.50,"density":0.60,"space":0.80,"aggression":0.10},
+     "tags":["entangled","coupling","visual","resonant"]},
+
+    # OBLIQUE x OPTIC
+    {"pair":("OBLIQUE","OPTIC"),"name":"Prism Optic","coupling_type":"SPECTRAL_SHIFT","coupling_amount":0.82,
+     "dna":{"brightness":0.90,"warmth":0.30,"movement":0.70,"density":0.40,"space":0.60,"aggression":0.50},
+     "tags":["entangled","coupling","visual","prismatic","bright"]},
+    {"pair":("OBLIQUE","OPTIC"),"name":"Violet Aperture","coupling_type":"TIMBRE_BLEND","coupling_amount":0.68,
+     "dna":{"brightness":0.82,"warmth":0.25,"movement":0.65,"density":0.45,"space":0.65,"aggression":0.12},
+     "tags":["entangled","coupling","visual","delicate"]},
+    {"pair":("OBLIQUE","OPTIC"),"name":"Funk Focus","coupling_type":"RHYTHM_SYNC","coupling_amount":0.75,
+     "dna":{"brightness":0.70,"warmth":0.45,"movement":0.88,"density":0.60,"space":0.40,"aggression":0.78},
+     "tags":["entangled","coupling","visual","funk","rhythmic"]},
+    {"pair":("OBLIQUE","OPTIC"),"name":"Bouncing Lens","coupling_type":"PITCH_WARP","coupling_amount":0.70,
+     "dna":{"brightness":0.85,"warmth":0.35,"movement":0.80,"density":0.35,"space":0.55,"aggression":0.65},
+     "tags":["entangled","coupling","visual","dynamic"]},
+    {"pair":("OBLIQUE","OPTIC"),"name":"Spectral Skew","coupling_type":"TEXTURE_MORPH","coupling_amount":0.58,
+     "dna":{"brightness":0.75,"warmth":0.14,"movement":0.55,"density":0.70,"space":0.50,"aggression":0.40},
+     "tags":["entangled","coupling","visual","textured"]},
+    {"pair":("OBLIQUE","OPTIC"),"name":"Impala Optic","coupling_type":"MODULATION_SHARE","coupling_amount":0.85,
+     "dna":{"brightness":0.88,"warmth":0.40,"movement":0.85,"density":0.50,"space":0.45,"aggression":0.55},
+     "tags":["entangled","coupling","visual","tame-impala"]},
+
+    # OBLIQUE x ORBITAL
+    {"pair":("OBLIQUE","ORBITAL"),"name":"Violet Orbit","coupling_type":"SPACE_BLEND","coupling_amount":0.78,
+     "dna":{"brightness":0.80,"warmth":0.20,"movement":0.60,"density":0.35,"space":0.90,"aggression":0.25},
+     "tags":["entangled","coupling","visual","cosmic","violet"]},
+    {"pair":("OBLIQUE","ORBITAL"),"name":"Prism Perihelion","coupling_type":"SPECTRAL_SHIFT","coupling_amount":0.72,
+     "dna":{"brightness":0.88,"warmth":0.25,"movement":0.70,"density":0.40,"space":0.80,"aggression":0.30},
+     "tags":["entangled","coupling","visual","prismatic","orbital"]},
+    {"pair":("OBLIQUE","ORBITAL"),"name":"Bouncing Ellipse","coupling_type":"RHYTHM_SYNC","coupling_amount":0.80,
+     "dna":{"brightness":0.75,"warmth":0.30,"movement":0.90,"density":0.45,"space":0.65,"aggression":0.70},
+     "tags":["entangled","coupling","visual","rhythmic"]},
+    {"pair":("OBLIQUE","ORBITAL"),"name":"RTJ Apogee","coupling_type":"PITCH_WARP","coupling_amount":0.75,
+     "dna":{"brightness":0.70,"warmth":0.35,"movement":0.85,"density":0.55,"space":0.55,"aggression":0.88},
+     "tags":["entangled","coupling","visual","rtj","aggressive"]},
+    {"pair":("OBLIQUE","ORBITAL"),"name":"Funk Arc","coupling_type":"HARMONIC_LOCK","coupling_amount":0.62,
+     "dna":{"brightness":0.65,"warmth":0.45,"movement":0.80,"density":0.60,"space":0.50,"aggression":0.86},
+     "tags":["entangled","coupling","visual","funk"]},
+    {"pair":("OBLIQUE","ORBITAL"),"name":"Oblique Resonance","coupling_type":"RESONANCE_CHAIN","coupling_amount":0.55,
+     "dna":{"brightness":0.72,"warmth":0.30,"movement":0.50,"density":0.40,"space":0.87,"aggression":0.14},
+     "tags":["entangled","coupling","visual","resonant","spacious"]},
+
+    # OBSCURA x OCEANIC
+    {"pair":("OBSCURA","OCEANIC"),"name":"Submerged Plate","coupling_type":"SPACE_BLEND","coupling_amount":0.70,
+     "dna":{"brightness":0.20,"warmth":0.35,"movement":0.30,"density":0.55,"space":0.90,"aggression":0.10},
+     "tags":["entangled","coupling","visual","deep","aquatic"]},
+    {"pair":("OBSCURA","OCEANIC"),"name":"Silver Current","coupling_type":"TEXTURE_MORPH","coupling_amount":0.62,
+     "dna":{"brightness":0.30,"warmth":0.30,"movement":0.65,"density":0.45,"space":0.85,"aggression":0.12},
+     "tags":["entangled","coupling","visual","flowing"]},
+    {"pair":("OBSCURA","OCEANIC"),"name":"Daguerreotype Depth","coupling_type":"HARMONIC_LOCK","coupling_amount":0.55,
+     "dna":{"brightness":0.13,"warmth":0.40,"movement":0.40,"density":0.60,"space":0.88,"aggression":0.15},
+     "tags":["entangled","coupling","visual","dark","deep"]},
+    {"pair":("OBSCURA","OCEANIC"),"name":"Tidal Exposure","coupling_type":"ENVELOPE_MIRROR","coupling_amount":0.75,
+     "dna":{"brightness":0.35,"warmth":0.28,"movement":0.75,"density":0.50,"space":0.85,"aggression":0.20},
+     "tags":["entangled","coupling","visual","tidal"]},
+    {"pair":("OBSCURA","OCEANIC"),"name":"Stiff String Kelp","coupling_type":"MODULATION_SHARE","coupling_amount":0.58,
+     "dna":{"brightness":0.25,"warmth":0.45,"movement":0.55,"density":0.70,"space":0.75,"aggression":0.10},
+     "tags":["entangled","coupling","visual","aquatic","textured"]},
+    {"pair":("OBSCURA","OCEANIC"),"name":"Fixed Lens Abyss","coupling_type":"RESONANCE_CHAIN","coupling_amount":0.85,
+     "dna":{"brightness":0.10,"warmth":0.30,"movement":0.35,"density":0.65,"space":0.88,"aggression":0.08},
+     "tags":["entangled","coupling","visual","abyssal","dark"]},
+
+    # OCELOT x OCEANIC
+    {"pair":("OCELOT","OCEANIC"),"name":"Tawny Tide","coupling_type":"TIMBRE_BLEND","coupling_amount":0.65,
+     "dna":{"brightness":0.50,"warmth":0.80,"movement":0.65,"density":0.40,"space":0.85,"aggression":0.25},
+     "tags":["entangled","coupling","visual","aquatic","warm"]},
+    {"pair":("OCELOT","OCEANIC"),"name":"Spotted Current","coupling_type":"TEXTURE_MORPH","coupling_amount":0.72,
+     "dna":{"brightness":0.60,"warmth":0.70,"movement":0.80,"density":0.55,"space":0.75,"aggression":0.12},
+     "tags":["entangled","coupling","visual","flowing"]},
+    {"pair":("OCELOT","OCEANIC"),"name":"Amber Depth","coupling_type":"SPACE_BLEND","coupling_amount":0.78,
+     "dna":{"brightness":0.45,"warmth":0.85,"movement":0.45,"density":0.50,"space":0.88,"aggression":0.15},
+     "tags":["entangled","coupling","visual","deep","warm"]},
+    {"pair":("OCELOT","OCEANIC"),"name":"Biome Brine","coupling_type":"HARMONIC_LOCK","coupling_amount":0.60,
+     "dna":{"brightness":0.55,"warmth":0.75,"movement":0.55,"density":0.65,"space":0.86,"aggression":0.30},
+     "tags":["entangled","coupling","visual","aquatic"]},
+    {"pair":("OCELOT","OCEANIC"),"name":"Feline Pelagic","coupling_type":"ENVELOPE_MIRROR","coupling_amount":0.55,
+     "dna":{"brightness":0.65,"warmth":0.65,"movement":0.88,"density":0.45,"space":0.65,"aggression":0.50},
+     "tags":["entangled","coupling","visual","pelagic"]},
+    {"pair":("OCELOT","OCEANIC"),"name":"Tawny Thermocline","coupling_type":"RESONANCE_CHAIN","coupling_amount":0.68,
+     "dna":{"brightness":0.40,"warmth":0.88,"movement":0.50,"density":0.60,"space":0.80,"aggression":0.10},
+     "tags":["entangled","coupling","visual","aquatic","resonant"]},
 ]
 
-# The 20 partner engines for the solo-pair presets
-PARTNERS = [
-    "ONSET", "OVERWORLD", "OPTIC", "OSPREY", "OSTERIA",
-    "OCEANIC", "OWLFISH", "OHM", "ORPHICA", "OBBLIGATO",
-    "OTTONI", "OLE", "OMBRE", "ORCA", "OCTOPUS",
-    "OVERLAP", "OUTWIT", "ODDFELIX", "ODDOSCAR", "ODYSSEY",
-]
+def to_snake(name):
+    s = name.lower()
+    s = re.sub(r"[^a-z0-9]+", "_", s)
+    return s.strip("_")
 
-ENGINE_PREFIX = {
-    "OBSCURA":   "obscura_",
-    "OCELOT":    "ocelot_",
-    "OBLIQUE":   "oblq_",
-    "ONSET":     "perc_",
-    "OVERWORLD": "ow_",
-    "OPTIC":     "optic_",
-    "OSPREY":    "osprey_",
-    "OSTERIA":   "osteria_",
-    "OCEANIC":   "ocean_",
-    "OWLFISH":   "owl_",
-    "OHM":       "ohm_",
-    "ORPHICA":   "orph_",
-    "OBBLIGATO": "obbl_",
-    "OTTONI":    "otto_",
-    "OLE":       "ole_",
-    "OMBRE":     "ombre_",
-    "ORCA":      "orca_",
-    "OCTOPUS":   "octo_",
-    "OVERLAP":   "olap_",
-    "OUTWIT":    "owit_",
-    "ODDFELIX":  "snap_",
-    "ODDOSCAR":  "morph_",
-    "ODYSSEY":   "drift_",
-}
+def clamp(v):
+    return max(0.0, min(1.0, round(float(v), 3)))
 
-ENGINE_DISPLAY = {
-    "OBSCURA":   "Obscura",
-    "OCELOT":    "Ocelot",
-    "OBLIQUE":   "Oblique",
-    "ONSET":     "Onset",
-    "OVERWORLD": "Overworld",
-    "OPTIC":     "Optic",
-    "OSPREY":    "Osprey",
-    "OSTERIA":   "Osteria",
-    "OCEANIC":   "Oceanic",
-    "OWLFISH":   "Owlfish",
-    "OHM":       "Ohm",
-    "ORPHICA":   "Orphica",
-    "OBBLIGATO": "Obbligato",
-    "OTTONI":    "Ottoni",
-    "OLE":       "Ole",
-    "OMBRE":     "Ombre",
-    "ORCA":      "Orca",
-    "OCTOPUS":   "Octopus",
-    "OVERLAP":   "Overlap",
-    "OUTWIT":    "Outwit",
-    "ODDFELIX":  "OddfeliX",
-    "ODDOSCAR":  "OddOscar",
-    "ODYSSEY":   "Odyssey",
-}
-
-# ──────────────────────────────────────────────
-# Preset name tables
-# ──────────────────────────────────────────────
-
-# 6 three-way marquee: OBSCURA × OCELOT × OBLIQUE
-MARQUEE_NAMES = [
-    (
-        "Silver Tawny Prism",
-        "A daguerreotype of a stalking ocelot photographed through a prism — three natures "
-        "captured in one chemical-optical instant: stillness, predation, refraction.",
-    ),
-    (
-        "Biome Through Ground Glass",
-        "Jungle canopy seen through a ground-glass viewfinder while a prism splits the "
-        "light — the ocelot is a colour, the forest is silver, the angle is everything.",
-    ),
-    (
-        "Stalker In The Emulsion",
-        "Latent image of a cat mid-leap, mid-refraction, mid-disappearance — three "
-        "half-visible things asserting themselves into a single vanishing point.",
-    ),
-    (
-        "Tawny Daguerreotype Bounce",
-        "The silver plate records not the subject but the angle at which it moved — "
-        "ocelot rosettes as diffraction grating, jungle heat as developer fluid.",
-    ),
-    (
-        "Oblique Safari",
-        "An expedition conducted entirely at non-orthogonal angles: the daguerreotype "
-        "tilts, the ocelot sidesteps, the prism refracts what neither can name.",
-    ),
-    (
-        "Prism Rosette Exposure",
-        "Sunlight through a prism lands on a daguerreotype mid-exposure; the ocelot "
-        "walks through the spectrum — each spot a different wavelength of tawny.",
-    ),
-]
-
-# OBSCURA solo preset names per partner
-OBSCURA_PARTNER_NAMES = {
-    "ONSET":     ("Silver Drum Plate",       "Drum transients exposed onto a daguerreotype plate — each hit a separate latent image accumulating into density."),
-    "OVERWORLD": ("Chip Ghost Exposure",     "NES palette quantized to daguerreotype silver tones — four shades of phosphorescent memory on a pixel grid."),
-    "OPTIC":     ("Photographic Pulse",      "Optic pulses as frame-advance on a daguerreotype strip — each flash burns a slightly different stiffness onto the plate."),
-    "OSPREY":    ("Coastal Albumen",         "Shore-line salt air reacting with albumen plate — the osprey's cry develops the image from the outside in."),
-    "OSTERIA":   ("Wine-Stained Daguerreotype","Porto tannins as developer; the image blooms wine-dark out of silver — depth coming up from the bass register."),
-    "OCEANIC":   ("Bioluminescent Plate",    "Phosphorescent teal pressed into silver — an ocean creature leaving its light-signature on the collodion surface."),
-    "OWLFISH":   ("Subharmonic Exposure",    "Mixtur-Trautonium subharmonics as chemical developer — the deeper the frequency, the richer the silver tone."),
-    "OHM":       ("Commune Daguerreotype",   "A circle of people photographed in slow silver light — the sage resonance of togetherness preserved in emulsion."),
-    "ORPHICA":   ("Harp Plate",              "Each pluck a separate spark on the silver plate — the harp's decay curve tracing its own arc in daguerreotype time."),
-    "OBBLIGATO": ("Breath Exposure",         "Wind-instrument breath as bellows for the camera — pneumatic pressure determining the depth of the latent image."),
-    "OTTONI":    ("Brass Patina Plate",      "Brass oxidation and silver chemistry meeting at the surface — the trumpet's harmonics leaving a patina watermark."),
-    "OLE":       ("Drama Exposure",          "Hibiscus pigment as red-channel developer; the flamenco stomp determines the exposure time — drama measured in silver."),
-    "OMBRE":     ("Double Memory Plate",     "Two temporal states superimposed on a single plate — the obscura's latent image bleeding into the ombre's forgetting."),
-    "ORCA":      ("Apex Plate",              "Echolocation click mapped to shutter speed — the orca's hunting pulse determining how long the silver is exposed to light."),
-    "OCTOPUS":   ("Ink Cloud Exposure",      "Cephalopod ink as dark-room chemical — the cloud developing the image from the outside edges inward."),
-    "OVERLAP":   ("FDN Silver Web",          "FDN feedback mapped to developer concentration — each reflection building the daguerreotype one delay-bounce at a time."),
-    "OUTWIT":    ("Cellular Exposure",       "Wolfram CA rule applied to halftone grid — cellular automata determining which silver grains activate on the plate."),
-    "ODDFELIX":  ("Neon Tetra Plate",        "Bioluminescent tetra scales as UV light source — the school's movement burning a latent image in real time."),
-    "ODDOSCAR":  ("Gill Silver",             "Axolotl gill filaments as silver threads on the plate — regeneration leaving its map in the emulsion."),
-    "ODYSSEY":   ("Wavetable Photograph",    "Wavetable position as lens aperture — each scan position a slightly different exposure of the same daguerreotype subject."),
-}
-
-# OCELOT solo preset names per partner
-OCELOT_PARTNER_NAMES = {
-    "ONSET":     ("Savanna Drum Hunt",       "Percussion patterns mapped to ocelot stalk-rhythm — each kick a territorial marker, each snare a prey-contact reflex."),
-    "OVERWORLD": ("Chip Rosette",            "NES sprite-flicker mapped to rosette pattern shift — the ocelot's coat as a tile-map updating at 60fps."),
-    "OPTIC":     ("Phosphor Spot",           "Phosphor-green pulse triggering biome shift — the jungle flickers between forest, shore, and open savanna with each flash."),
-    "OSPREY":    ("Shore Predator",          "Osprey's coastal data feeding ocelot biome range — a predator learning the boundary between land and tide."),
-    "OSTERIA":   ("Jungle Tavern",           "Deep bass warmth of the osteria mapping to the ocelot's low-frequency rumble — two territorial resonances."),
-    "OCEANIC":   ("Biome Coast",             "Chromatophore-teal meeting rosette-tawny at the water's edge — the ocelot drinks the ocean's chemical language."),
-    "OWLFISH":   ("Subharmonic Stalk",       "Mixtur-Trautonium deep tones as ground vibration — the ocelot reads the subharmonics through its paws."),
-    "OHM":       ("Commune Predator",        "Sage commune frequency modulating ocelot territorial range — the cat circling a campfire at a respectful distance."),
-    "ORPHICA":   ("Harp Ambush",             "Orphica pluck triggering ocelot ambush macro — the microsound harp's high partials as small-prey frequency signature."),
-    "OBBLIGATO": ("Breath Stalk",            "Wind-instrument breath pacing the ocelot's stalking rhythm — inhale on approach, exhale on strike."),
-    "OTTONI":    ("Brass Roar",              "Triple brass GROW macro mapped to ocelot territorial call — the trumpet's power curve as predator assertion."),
-    "OLE":       ("Hibiscus Hunter",         "Afro-Latin rhythm as the ocelot's movement pattern — DRAMA macro determining whether the hunt is visible or hidden."),
-    "OMBRE":     ("Dusk Rosette",            "Biome-shift at the golden hour — the ocelot's coat changing pattern as light fails, ombre gradient as twilight camouflage."),
-    "ORCA":      ("Apex Exchange",           "Two apex predators exchanging hunting-frequency data — echolocation and biome-shift as parallel sensory grammars."),
-    "OCTOPUS":   ("Chromatophore Rosette",   "Ocelot rosette and octopus chromatophore as competing camouflage systems cross-coupled to a single texture output."),
-    "OVERLAP":   ("FDN Territory",           "FDN room resonance defining the ocelot's territorial range — each decay time a different jungle corridor."),
-    "OUTWIT":    ("CA Biome Map",            "Wolfram CA rule governing which biome tiles are active — the ocelot navigating a generative landscape."),
-    "ODDFELIX":  ("Neon Prey",               "Neon tetra schooling pattern as prey-movement data — the ocelot reading spectral light as motion signature."),
-    "ODDOSCAR":  ("Axolotl Encounter",       "Two biome-edge species meeting in the shallows — regeneration meeting predation in a low-aggression standoff."),
-    "ODYSSEY":   ("Drifting Territory",      "Wavetable drift slowly shifting the ocelot's biome — the territory morphing from jungle to shore to open scrub."),
-}
-
-# OBLIQUE solo preset names per partner
-OBLIQUE_PARTNER_NAMES = {
-    "ONSET":     ("Ricochet Kit",            "RTJ percussion patterns bouncing off prism walls — each drum hit refracting into three rhythmic afterimages."),
-    "OVERWORLD": ("Chip Prism",              "NES arpeggiation refracted through a prism — each semitone a different spectral band of the same chip sequence."),
-    "OPTIC":     ("Phosphor Refraction",     "Optic pulse entering the prism from an oblique angle — the refraction angle determining which harmonic exits."),
-    "OSPREY":    ("Coastal Angle",           "Shore-system harmonics arriving at non-orthogonal incidence — the prism bending the coast's musical language sideways."),
-    "OSTERIA":   ("Wine-Prism Bass",         "Porto wine bass tones refracting upward through the prism — deep warmth split into its spectral constituents."),
-    "OCEANIC":   ("Teal Refraction",         "Phosphorescent teal bioluminescence entering the prism edge-on — each wavelength exiting at a different depth."),
-    "OWLFISH":   ("Subharmonic Prism",       "Mixtur-Trautonium subharmonics as the prism's optical medium — the lower the frequency, the greater the refraction index."),
-    "OHM":       ("Commune Refraction",      "Sage commune drone entering the prism — the group's collective frequency split into its individual voice-harmonics."),
-    "ORPHICA":   ("Harp Spectrum",           "Microsound harp pluck dispersed through the prism — each grain a separate wavelength scattered across the stereo field."),
-    "OBBLIGATO": ("Breath Angle",            "Wind-instrument breath as the light source for the prism — the angle of attack determining the spread of overtones."),
-    "OTTONI":    ("Brass Dispersion",        "Triple brass harmonics hitting the prism simultaneously — GROW macro controlling how wide the spectrum fans out."),
-    "OLE":       ("Drama Spectrum",          "DRAMA macro as prism rotation — the further it turns, the more the Afro-Latin rhythm separates into its constituent colors."),
-    "OMBRE":     ("Shadow Prism",            "Ombre gradient as the darkening medium inside the prism — light entering full-spectrum and exiting monochromatic mauve."),
-    "ORCA":      ("Echolocation Prism",      "Orca click train refracted through the prism — the hunt sonar dispersed into a full-spectrum rhythmic constellation."),
-    "OCTOPUS":   ("Mantle Prism",            "Chromatophore state as prism refractive index — the octopus choosing which wavelengths pass through its skin."),
-    "OVERLAP":   ("FDN Diffraction",         "FDN feedback paths as prism facets — each delay tap a separate refractive surface bending the signal further."),
-    "OUTWIT":    ("CA Prism Rule",           "Wolfram CA rule as the prism's internal geometry — each generation recomputing the refraction lattice."),
-    "ODDFELIX":  ("Neon Spectrum",           "Neon tetra iridescence entering the prism — schooling-pattern harmonics dispersed into a full prismatic arc."),
-    "ODDOSCAR":  ("Gill Refraction",         "Axolotl gill-branch geometry as a diffraction grating — regenerative growth determining the spectral output angle."),
-    "ODYSSEY":   ("Drifting Prism",          "Wavetable drift slowly rotating the prism — the spectral output continuously shifting as the oscillator morphs."),
-}
-
-# ──────────────────────────────────────────────
-# Helper functions
-# ──────────────────────────────────────────────
-
-def jitter(val, amount=0.1, rng=None):
-    """Add random jitter ±amount, clamped to [0, 1]."""
-    if rng is None:
-        rng = random
-    return round(max(0.0, min(1.0, val + rng.uniform(-amount, amount))), 3)
-
-
-def blend_dna(engines, rng):
-    """Blend DNA across 2 or 3 engines with equal weight, then jitter."""
-    keys = ["brightness", "warmth", "movement", "density", "space", "aggression"]
-    result = {}
-    for k in keys:
-        mid = sum(ENGINE_DNA[e][k] for e in engines) / len(engines)
-        result[k] = jitter(mid, 0.1, rng)
-    return result
-
-
-def make_macro_values(engines, rng):
-    """Generate macro values influenced by blended DNA."""
-    dna = blend_dna(engines, rng)
+def build_preset(spec):
+    engine_a, engine_b = spec["pair"]
+    defs_a = ENGINE_DEFAULTS.get(engine_a, {})
+    defs_b = ENGINE_DEFAULTS.get(engine_b, {})
+    variation = (list(spec["dna"].values())[0] - 0.5) * 0.2
+    params_a = {k: clamp(v + variation * 0.5) for k, v in defs_a.items()}
+    params_b = {k: clamp(v - variation * 0.5) for k, v in defs_b.items()}
+    amount = clamp(spec["coupling_amount"] + variation * 0.1)
+    global_char = clamp((params_a["macro_character"] + params_b["macro_character"]) / 2)
+    global_move = clamp((params_a["macro_movement"]  + params_b["macro_movement"])  / 2)
+    global_coup = clamp(amount)
+    global_spac = clamp((params_a["macro_space"]     + params_b["macro_space"])     / 2)
     return {
-        "CHARACTER": round(jitter((dna["aggression"] + dna["warmth"]) / 2.0, 0.1, rng), 3),
-        "MOVEMENT":  round(jitter(dna["movement"], 0.1, rng), 3),
-        "COUPLING":  round(rng.uniform(0.55, 0.85), 3),
-        "SPACE":     round(jitter(dna["space"], 0.1, rng), 3),
+        "name":    spec["name"],
+        "version": "1.0",
+        "mood":    "Entangled",
+        "engines": [engine_a, engine_b],
+        "parameters": {engine_a: params_a, engine_b: params_b},
+        "coupling": {"type": spec["coupling_type"], "source": engine_a, "target": engine_b, "amount": amount},
+        "dna": {k: clamp(v) for k, v in spec["dna"].items()},
+        "macros": {"CHARACTER": global_char, "MOVEMENT": global_move, "COUPLING": global_coup, "SPACE": global_spac},
+        "tags": spec.get("tags", ["entangled","coupling","visual"]),
     }
 
-
-def make_obscura_params(rng):
-    """Generate plausible OBSCURA parameter values (string stiffness model)."""
-    return {
-        "obscura_stiffness":      round(rng.uniform(0.2, 0.85), 3),
-        "obscura_dampening":      round(rng.uniform(0.1, 0.7), 3),
-        "obscura_exciterType":    round(rng.choice([0.0, 0.33, 0.66, 1.0]), 2),
-        "obscura_exciterAmount":  round(rng.uniform(0.3, 0.9), 3),
-        "obscura_plateBlend":     round(rng.uniform(0.0, 0.8), 3),
-        "obscura_silverTone":     round(rng.uniform(0.3, 0.9), 3),
-        "obscura_exposureTime":   round(rng.uniform(0.1, 0.8), 3),
-        "obscura_chemicalDepth":  round(rng.uniform(0.2, 0.85), 3),
-        "obscura_grainSize":      round(rng.uniform(0.1, 0.7), 3),
-        "obscura_filterCutoff":   round(rng.uniform(1200.0, 9000.0), 1),
-        "obscura_filterReso":     round(rng.uniform(0.1, 0.55), 3),
-        "obscura_level":          round(rng.uniform(0.65, 0.82), 3),
-        "obscura_ampAttack":      round(rng.uniform(0.01, 0.15), 4),
-        "obscura_ampDecay":       round(rng.uniform(0.4, 1.2), 3),
-        "obscura_ampSustain":     round(rng.uniform(0.4, 0.75), 3),
-        "obscura_ampRelease":     round(rng.uniform(0.5, 2.0), 3),
-        "obscura_modAttack":      round(rng.uniform(0.005, 0.08), 4),
-        "obscura_modDecay":       round(rng.uniform(0.2, 0.8), 3),
-        "obscura_modSustain":     round(rng.uniform(0.3, 0.7), 3),
-        "obscura_modRelease":     round(rng.uniform(0.4, 1.2), 3),
-        "obscura_lfo1Rate":       round(rng.uniform(0.05, 2.0), 3),
-        "obscura_lfo1Depth":      round(rng.uniform(0.1, 0.55), 3),
-        "obscura_lfo1Shape":      round(rng.choice([0.0, 0.25, 0.5, 0.75, 1.0]), 2),
-        "obscura_lfo2Rate":       round(rng.uniform(0.02, 1.0), 3),
-        "obscura_lfo2Depth":      round(rng.uniform(0.05, 0.4), 3),
-        "obscura_lfo2Shape":      round(rng.choice([0.0, 0.25, 0.5, 0.75, 1.0]), 2),
-    }
-
-
-def make_ocelot_params(rng):
-    """Generate plausible OCELOT parameter values (biome-shifting)."""
-    return {
-        "ocelot_biome":           round(rng.uniform(0.0, 1.0), 3),
-        "ocelot_biomeShiftRate":  round(rng.uniform(0.05, 0.7), 3),
-        "ocelot_biomeBlend":      round(rng.uniform(0.2, 0.9), 3),
-        "ocelot_rosetteDensity":  round(rng.uniform(0.3, 0.9), 3),
-        "ocelot_rosetteSize":     round(rng.uniform(0.2, 0.8), 3),
-        "ocelot_stalkDepth":      round(rng.uniform(0.3, 0.85), 3),
-        "ocelot_stalkRate":       round(rng.uniform(0.1, 0.6), 3),
-        "ocelot_ambushThreshold": round(rng.uniform(0.5, 0.9), 3),
-        "ocelot_territorialRange":round(rng.uniform(0.3, 0.9), 3),
-        "ocelot_filterCutoff":    round(rng.uniform(1800.0, 10000.0), 1),
-        "ocelot_filterReso":      round(rng.uniform(0.15, 0.65), 3),
-        "ocelot_level":           round(rng.uniform(0.65, 0.85), 3),
-        "ocelot_ampAttack":       round(rng.uniform(0.005, 0.1), 4),
-        "ocelot_ampDecay":        round(rng.uniform(0.2, 0.9), 3),
-        "ocelot_ampSustain":      round(rng.uniform(0.45, 0.8), 3),
-        "ocelot_ampRelease":      round(rng.uniform(0.3, 1.4), 3),
-        "ocelot_modAttack":       round(rng.uniform(0.005, 0.06), 4),
-        "ocelot_modDecay":        round(rng.uniform(0.1, 0.55), 3),
-        "ocelot_modSustain":      round(rng.uniform(0.3, 0.7), 3),
-        "ocelot_modRelease":      round(rng.uniform(0.3, 1.0), 3),
-        "ocelot_lfo1Rate":        round(rng.uniform(0.1, 3.0), 3),
-        "ocelot_lfo1Depth":       round(rng.uniform(0.2, 0.7), 3),
-        "ocelot_lfo1Shape":       round(rng.choice([0.0, 0.25, 0.5, 0.75, 1.0]), 2),
-        "ocelot_lfo2Rate":        round(rng.uniform(0.05, 1.5), 3),
-        "ocelot_lfo2Depth":       round(rng.uniform(0.1, 0.5), 3),
-        "ocelot_lfo2Shape":       round(rng.choice([0.0, 0.25, 0.5, 0.75, 1.0]), 2),
-    }
-
-
-def make_oblique_params(rng):
-    """Generate plausible OBLIQUE parameter values (RTJ × Funk × Tame Impala)."""
-    return {
-        "oblq_prismColor":        round(rng.uniform(0.0, 1.0), 3),
-        "oblq_prismAngle":        round(rng.uniform(0.1, 0.9), 3),
-        "oblq_refractIndex":      round(rng.uniform(0.3, 0.9), 3),
-        "oblq_dispersion":        round(rng.uniform(0.2, 0.85), 3),
-        "oblq_bounceDepth":       round(rng.uniform(0.3, 0.9), 3),
-        "oblq_bounceDecay":       round(rng.uniform(0.2, 0.75), 3),
-        "oblq_funkGroove":        round(rng.uniform(0.4, 1.0), 3),
-        "oblq_rtjAggression":     round(rng.uniform(0.3, 0.85), 3),
-        "oblq_psychWidth":        round(rng.uniform(0.4, 0.95), 3),
-        "oblq_phaseShift":        round(rng.uniform(0.0, 1.0), 3),
-        "oblq_filterCutoff":      round(rng.uniform(2000.0, 12000.0), 1),
-        "oblq_filterReso":        round(rng.uniform(0.15, 0.65), 3),
-        "oblq_level":             round(rng.uniform(0.65, 0.85), 3),
-        "oblq_ampAttack":         round(rng.uniform(0.005, 0.08), 4),
-        "oblq_ampDecay":          round(rng.uniform(0.15, 0.7), 3),
-        "oblq_ampSustain":        round(rng.uniform(0.45, 0.8), 3),
-        "oblq_ampRelease":        round(rng.uniform(0.25, 1.2), 3),
-        "oblq_modAttack":         round(rng.uniform(0.005, 0.05), 4),
-        "oblq_modDecay":          round(rng.uniform(0.1, 0.5), 3),
-        "oblq_modSustain":        round(rng.uniform(0.35, 0.7), 3),
-        "oblq_modRelease":        round(rng.uniform(0.3, 1.0), 3),
-        "oblq_lfo1Rate":          round(rng.uniform(0.2, 4.0), 3),
-        "oblq_lfo1Depth":         round(rng.uniform(0.2, 0.75), 3),
-        "oblq_lfo1Shape":         round(rng.choice([0.0, 0.25, 0.5, 0.75, 1.0]), 2),
-        "oblq_lfo2Rate":          round(rng.uniform(0.1, 2.5), 3),
-        "oblq_lfo2Depth":         round(rng.uniform(0.1, 0.6), 3),
-        "oblq_lfo2Shape":         round(rng.choice([0.0, 0.25, 0.5, 0.75, 1.0]), 2),
-    }
-
-
-def make_params_for(engine, rng):
-    """Dispatch to the correct param generator."""
-    if engine == "OBSCURA":
-        return make_obscura_params(rng)
-    if engine == "OCELOT":
-        return make_ocelot_params(rng)
-    if engine == "OBLIQUE":
-        return make_oblique_params(rng)
-    # Generic stub for partners — a handful of representative params
-    pfx = ENGINE_PREFIX.get(engine, engine.lower() + "_")
-    return {
-        f"{pfx}filterCutoff": round(rng.uniform(1000.0, 10000.0), 1),
-        f"{pfx}filterReso":   round(rng.uniform(0.1, 0.6), 3),
-        f"{pfx}level":        round(rng.uniform(0.65, 0.85), 3),
-        f"{pfx}ampAttack":    round(rng.uniform(0.005, 0.1), 4),
-        f"{pfx}ampDecay":     round(rng.uniform(0.2, 0.9), 3),
-        f"{pfx}ampSustain":   round(rng.uniform(0.4, 0.8), 3),
-        f"{pfx}ampRelease":   round(rng.uniform(0.3, 1.5), 3),
-        f"{pfx}lfo1Rate":     round(rng.uniform(0.1, 3.0), 3),
-        f"{pfx}lfo1Depth":    round(rng.uniform(0.1, 0.6), 3),
-    }
-
-
-def build_preset(name, engines, description, rng, coupling_override=None):
-    """Build a complete .xometa dict."""
-    dna   = blend_dna(engines, rng)
-    macro = make_macro_values(engines, rng)
-    params = {}
-    for e in engines:
-        params.update(make_params_for(e, rng))
-
-    coup_type = coupling_override or rng.choice(COUPLING_TYPES)
-    source, target = engines[0], engines[-1]
-
-    tags = ["entangled", "coupling"]
-    if "OBSCURA" in engines:
-        tags.append("daguerreotype")
-    if "OCELOT" in engines:
-        tags.append("biome-shifting")
-    if "OBLIQUE" in engines:
-        tags.append("prismatic")
-
-    return {
-        "name":        name,
-        "version":     VERSION,
-        "engines":     [ENGINE_DISPLAY[e] for e in engines],
-        "mood":        "Entangled",
-        "macros":      macro,
-        "sonic_dna":   dna,
-        "parameters":  params,
-        "coupling": {
-            "type":   coup_type,
-            "source": ENGINE_DISPLAY[source],
-            "target": ENGINE_DISPLAY[target],
-            "amount": round(rng.uniform(0.5, 0.85), 3),
-        },
-        "tags":        tags,
-        "description": description,
-    }
-
-
-def safe_filename(name):
-    """Convert preset name to a safe filename."""
-    return name.replace("/", "-").replace("\\", "-") + ".xometa"
-
-
-def write_preset(preset):
-    """Write a preset to OUTPUT_DIR, skipping if already exists."""
-    fname = safe_filename(preset["name"])
-    path  = os.path.join(OUTPUT_DIR, fname)
-    if os.path.exists(path):
-        return False, path
-    with open(path, "w", encoding="utf-8") as fh:
-        json.dump(preset, fh, indent=2, ensure_ascii=False)
-    return True, path
-
-
-# ──────────────────────────────────────────────
-# Main
-# ──────────────────────────────────────────────
+def validate_dna(dna, name):
+    extremes = [v for v in dna.values() if v <= 0.15 or v >= 0.85]
+    if not extremes:
+        raise ValueError(f"Preset '{name}' has no extreme DNA dimension (need <=0.15 or >=0.85)")
 
 def main():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
-    rng   = random.Random(20260316)   # deterministic seed for reproducibility
-    written  = 0
-    skipped  = 0
-    total    = 0
-
-    # ── 1. Six three-way marquee presets ──────────────────────────────────
-    marquee_coupling_types = [
-        "SPECTRAL_TRANSFER",
-        "HARMONIC_BLEND",
-        "WAVETABLE_MORPH",
-        "FREQUENCY_MODULATION",
-        "SPATIAL_BLEND",
-        "FILTER_COUPLING",
-    ]
-    for i, (name, desc) in enumerate(MARQUEE_NAMES):
-        engines = ["OBSCURA", "OCELOT", "OBLIQUE"]
-        preset  = build_preset(name, engines, desc, rng,
-                               coupling_override=marquee_coupling_types[i % len(marquee_coupling_types)])
-        ok, path = write_preset(preset)
-        total += 1
-        if ok:
+    written = skipped = 0
+    errors = []
+    for spec in PRESETS:
+        try:
+            preset = build_preset(spec)
+            validate_dna(preset["dna"], preset["name"])
+            filename = to_snake(preset["name"]) + ".xometa"
+            filepath = os.path.join(OUTPUT_DIR, filename)
+            with open(filepath, "w", encoding="utf-8") as fh:
+                json.dump(preset, fh, indent=2)
+                fh.write("\n")
             written += 1
-            print(f"  [WRITE]  {os.path.basename(path)}")
-        else:
+            print(f"  [OK] {filename}")
+        except Exception as exc:
+            errors.append((spec.get("name", "?"), str(exc)))
             skipped += 1
-            print(f"  [SKIP]   {os.path.basename(path)}")
-
-    # ── 2. OBSCURA × each of 20 partners ─────────────────────────────────
-    for partner in PARTNERS:
-        name, desc = OBSCURA_PARTNER_NAMES[partner]
-        engines    = ["OBSCURA", partner]
-        preset     = build_preset(name, engines, desc, rng)
-        ok, path   = write_preset(preset)
-        total += 1
-        if ok:
-            written += 1
-            print(f"  [WRITE]  {os.path.basename(path)}")
-        else:
-            skipped += 1
-            print(f"  [SKIP]   {os.path.basename(path)}")
-
-    # ── 3. OCELOT × each of 20 partners ──────────────────────────────────
-    for partner in PARTNERS:
-        name, desc = OCELOT_PARTNER_NAMES[partner]
-        engines    = ["OCELOT", partner]
-        preset     = build_preset(name, engines, desc, rng)
-        ok, path   = write_preset(preset)
-        total += 1
-        if ok:
-            written += 1
-            print(f"  [WRITE]  {os.path.basename(path)}")
-        else:
-            skipped += 1
-            print(f"  [SKIP]   {os.path.basename(path)}")
-
-    # ── 4. OBLIQUE × each of 20 partners ─────────────────────────────────
-    for partner in PARTNERS:
-        name, desc = OBLIQUE_PARTNER_NAMES[partner]
-        engines    = ["OBLIQUE", partner]
-        preset     = build_preset(name, engines, desc, rng)
-        ok, path   = write_preset(preset)
-        total += 1
-        if ok:
-            written += 1
-            print(f"  [WRITE]  {os.path.basename(path)}")
-        else:
-            skipped += 1
-            print(f"  [SKIP]   {os.path.basename(path)}")
-
-    print()
-    print(f"Done — {total} presets processed: {written} written, {skipped} skipped.")
-    print(f"Output: {OUTPUT_DIR}")
-
+    print(f"\n{'='*60}")
+    print(f"OBSCURA / OCELOT / OBLIQUE Coverage Pack")
+    print(f"  Written : {written}")
+    print(f"  Skipped : {skipped}")
+    if errors:
+        print("  ERRORS:")
+        for name, msg in errors:
+            print(f"    - {name}: {msg}")
+    print(f"  Output  : {OUTPUT_DIR}")
+    print(f"{'='*60}")
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Verde Vitality",
+  "mood": "Entangled",
+  "engines": [
+    "OTTONI",
+    "ORGANON"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Velocity of OTTONI attack drives Organon's vitality parameter \u2014 touch-sensitive life.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "velocity",
+    "expressive",
+    "brass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.74,
+    "movement": 0.65,
+    "density": 0.6,
+    "space": 0.3,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.75,
+      "macro_movement": 0.5,
+      "macro_coupling": 0.68,
+      "macro_space": 0.3
+    },
+    "ORGANON": {
+      "macro_character": 0.52,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.68,
+      "macro_space": 0.52
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OTTONI",
+        "engineB": "ORGANON",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.68
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.635,
+    "MOVEMENT": 0.61,
+    "COUPLING": 0.68,
+    "SPACE": 0.41
+  },
+  "sequencer": null
+}

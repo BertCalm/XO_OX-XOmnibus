@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Mirror Drift Circle",
+  "mood": "Entangled",
+  "engines": [
+    "OHM",
+    "OBSIDIAN"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sage smoke drifts through crystal fractures — OHM's communal hum resonates inside OBSIDIAN's glassy depth.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "commune",
+    "sage",
+    "drone",
+    "obsidian",
+    "crystal",
+    "glassy"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "ohm_macroMeddling": 0.752,
+    "ohm_macroCommune": 0.635,
+    "ohm_orgHarmonics": 0.34,
+    "ohm_droneFund": 0.56,
+    "obsidian_depth": 0.84,
+    "obsidian_crystalResonance": 0.45
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OHM",
+        "engineB": "OBSIDIAN",
+        "type": "Filter->Filter",
+        "amount": 0.87
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.375,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.745,
+    "SPACE": 0.85
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.45,
+    "movement": 0.88,
+    "density": 0.65,
+    "space": 0.85,
+    "aggression": 0.12
+  }
+}

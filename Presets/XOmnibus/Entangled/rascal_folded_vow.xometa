@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Rascal Folded Vow",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "ORIGAMI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Two reeds fold themselves into geometry — OBBLIGATO's BOND creases through ORIGAMI's architectural patience.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "bond",
+    "wind",
+    "coral",
+    "origami",
+    "folded",
+    "geometric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.552,
+    "obbl_breathB": 0.66,
+    "obbl_macroBond": 0.693,
+    "origami_foldPoint": 0.74,
+    "origami_creaseDensity": 0.76
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "ORIGAMI",
+        "type": "Filter->Filter",
+        "amount": 0.55
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.82,
+    "SPACE": 0.52
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.55,
+    "movement": 0.45,
+    "density": 0.9,
+    "space": 0.52,
+    "aggression": 0.25
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "name": "Biome Bounce",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OCELOT",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "macro_character": 0.675,
+      "macro_movement": 0.725,
+      "macro_coupling": 0.575,
+      "macro_space": 0.475
+    },
+    "OBLIQUE": {
+      "macro_character": 0.775,
+      "macro_movement": 0.725,
+      "macro_coupling": 0.625,
+      "macro_space": 0.525
+    }
+  },
+  "coupling": {
+    "type": "RHYTHM_SYNC",
+    "source": "OCELOT",
+    "target": "OBLIQUE",
+    "amount": 0.805
+  },
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.65,
+    "movement": 0.9,
+    "density": 0.55,
+    "space": 0.4,
+    "aggression": 0.7
+  },
+  "macros": {
+    "CHARACTER": 0.725,
+    "MOVEMENT": 0.725,
+    "COUPLING": 0.805,
+    "SPACE": 0.5
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "visual",
+    "rhythmic",
+    "funk"
+  ]
+}

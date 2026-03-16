@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Corroded Plate",
+  "mood": "Entangled",
+  "engines": [
+    "OBSCURA",
+    "OTTONI"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Obscura stiffness filter-modulates OTTONI harmonic brilliance \u2014 tarnished brass.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "corroded",
+    "filter",
+    "texture"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.72,
+    "movement": 0.55,
+    "density": 0.65,
+    "space": 0.48,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.55,
+      "macro_movement": 0.62,
+      "macro_coupling": 0.68,
+      "macro_space": 0.55
+    },
+    "OTTONI": {
+      "macro_character": 0.65,
+      "macro_movement": 0.46,
+      "macro_coupling": 0.68,
+      "macro_space": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBSCURA",
+        "engineB": "OTTONI",
+        "type": "FILTER_MOD",
+        "amount": 0.68
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.54,
+    "COUPLING": 0.68,
+    "SPACE": 0.45
+  },
+  "sequencer": null
+}

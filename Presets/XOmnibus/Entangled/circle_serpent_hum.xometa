@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Circle Serpent Hum",
+  "mood": "Entangled",
+  "engines": [
+    "OHM",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The hippie circle and the serpent — OHM's drone locks into OUROBOROS's recursive chaos with a gentle leash.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "commune",
+    "sage",
+    "drone",
+    "ouroboros",
+    "chaotic",
+    "recursive",
+    "serpent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "ohm_macroMeddling": 0.764,
+    "ohm_macroCommune": 0.665,
+    "ohm_orgHarmonics": 0.676,
+    "ohm_droneFund": 0.532,
+    "ouro_topology": 0.672,
+    "ouro_chaosLeash": 0.69
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OHM",
+        "engineB": "OUROBOROS",
+        "type": "LFO->Pitch",
+        "amount": 0.63
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.635,
+    "MOVEMENT": 0.91,
+    "COUPLING": 0.724,
+    "SPACE": 0.38
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.55,
+    "movement": 0.91,
+    "density": 0.58,
+    "space": 0.38,
+    "aggression": 0.62
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Stochastic Forge",
+  "mood": "Entangled",
+  "engines": [
+    "ORACLE",
+    "OTTONI"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Oracle's GENDY stochastic events amplitude-shape OTTONI attack \u2014 chance forging.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "stochastic",
+    "maqam",
+    "brass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.68,
+    "movement": 0.6,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.52,
+      "macro_movement": 0.68,
+      "macro_coupling": 0.6,
+      "macro_space": 0.55
+    },
+    "OTTONI": {
+      "macro_character": 0.68,
+      "macro_movement": 0.45,
+      "macro_coupling": 0.6,
+      "macro_space": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORACLE",
+        "engineB": "OTTONI",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.6
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.565,
+    "COUPLING": 0.6,
+    "SPACE": 0.45
+  },
+  "sequencer": null
+}

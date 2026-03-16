@@ -1,0 +1,50 @@
+{
+  "name": "Prism Perihelion",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBLIQUE",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.838,
+      "macro_movement": 0.788,
+      "macro_coupling": 0.688,
+      "macro_space": 0.588
+    },
+    "ORBITAL": {
+      "macro_character": 0.362,
+      "macro_movement": 0.512,
+      "macro_coupling": 0.462,
+      "macro_space": 0.662
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_SHIFT",
+    "source": "OBLIQUE",
+    "target": "ORBITAL",
+    "amount": 0.728
+  },
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.25,
+    "movement": 0.7,
+    "density": 0.4,
+    "space": 0.8,
+    "aggression": 0.3
+  },
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.728,
+    "SPACE": 0.625
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "visual",
+    "prismatic",
+    "orbital"
+  ]
+}

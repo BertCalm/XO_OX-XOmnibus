@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Sage Ancient Bond",
+  "mood": "Entangled",
+  "engines": [
+    "OHM",
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Hippie sage wisdom meets stochastic prophecy — OHM's COMMUNE axis channels through ORACLE's GENDY breakpoints.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "commune",
+    "sage",
+    "drone",
+    "oracle",
+    "stochastic",
+    "prophetic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "ohm_macroMeddling": 0.768,
+    "ohm_macroCommune": 0.626,
+    "ohm_orgHarmonics": 0.5,
+    "ohm_droneFund": 0.52,
+    "oracle_breakpoints": 0.76,
+    "oracle_stochasticRate": 0.768
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OHM",
+        "engineB": "ORACLE",
+        "type": "Rhythm->Gate",
+        "amount": 0.71
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.46,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.715,
+    "SPACE": 0.68
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.42,
+    "movement": 0.92,
+    "density": 0.55,
+    "space": 0.68,
+    "aggression": 0.35
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Siphon In Silver",
+  "mood": "Entangled",
+  "engines": [
+    "ORPHICA",
+    "OBSCURA"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "ORPHICA siphonophore envelope linked into Obscura's decay \u2014 colony fades to silver.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "siphon",
+    "envelope",
+    "silver"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.84,
+    "warmth": 0.38,
+    "movement": 0.52,
+    "density": 0.4,
+    "space": 0.8,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.65,
+      "macro_movement": 0.52,
+      "macro_coupling": 0.68,
+      "macro_space": 0.78
+    },
+    "OBSCURA": {
+      "macro_character": 0.52,
+      "macro_movement": 0.58,
+      "macro_coupling": 0.68,
+      "macro_space": 0.7
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORPHICA",
+        "engineB": "OBSCURA",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.68
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.585,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.68,
+    "SPACE": 0.74
+  },
+  "sequencer": null
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Leashed Fanfare",
+  "mood": "Entangled",
+  "engines": [
+    "OUROBOROS",
+    "OTTONI"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Ouroboros's leash mechanism controls OTTONI attack \u2014 controlled chaotic brass.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "leash",
+    "envelope",
+    "fanfare"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.73,
+    "movement": 0.68,
+    "density": 0.6,
+    "space": 0.35,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.6,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.73,
+      "macro_space": 0.42
+    },
+    "OTTONI": {
+      "macro_character": 0.65,
+      "macro_movement": 0.44,
+      "macro_coupling": 0.73,
+      "macro_space": 0.32
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUROBOROS",
+        "engineB": "OTTONI",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.73
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.625,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.73,
+    "SPACE": 0.37
+  },
+  "sequencer": null
+}

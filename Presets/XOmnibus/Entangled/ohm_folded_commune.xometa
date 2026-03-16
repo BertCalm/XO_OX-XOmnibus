@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "OHM Folded Commune",
+  "mood": "Entangled",
+  "engines": [
+    "OHM",
+    "ORIGAMI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The commune folds itself into geometric patience — OHM's organ harmonics crease through ORIGAMI's folded architecture.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "commune",
+    "sage",
+    "drone",
+    "origami",
+    "folded",
+    "geometric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "ohm_macroMeddling": 0.592,
+    "ohm_macroCommune": 0.674,
+    "ohm_orgHarmonics": 0.7,
+    "ohm_droneFund": 0.652,
+    "origami_foldPoint": 0.728,
+    "origami_creaseDensity": 0.752
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OHM",
+        "engineB": "ORIGAMI",
+        "type": "Pitch->Mod",
+        "amount": 0.55
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.665,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.814,
+    "SPACE": 0.5
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.58,
+    "movement": 0.48,
+    "density": 0.88,
+    "space": 0.5,
+    "aggression": 0.15
+  }
+}

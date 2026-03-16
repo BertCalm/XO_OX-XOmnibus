@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Coral Chaotic Link",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Coral wind tangles the serpent — OBBLIGATO's dual breath couples into OUROBOROS's recursive topology.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "bond",
+    "wind",
+    "coral",
+    "ouroboros",
+    "chaotic",
+    "recursive",
+    "serpent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.764,
+    "obbl_breathB": 0.54,
+    "obbl_macroBond": 0.693,
+    "ouro_topology": 0.708,
+    "ouro_chaosLeash": 0.66
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "OUROBOROS",
+        "type": "Rhythm->Gate",
+        "amount": 0.71
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.685,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.73,
+    "SPACE": 0.4
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.55,
+    "movement": 0.92,
+    "density": 0.6,
+    "space": 0.4,
+    "aggression": 0.68
+  }
+}

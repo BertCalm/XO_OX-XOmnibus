@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Variational Drama",
+  "mood": "Entangled",
+  "engines": [
+    "ORGANON",
+    "OLE"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Organon's free-energy inference spectrally morphs OLE's timbral drama \u2014 lived theatre.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "variational",
+    "spectral",
+    "vivid"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.7,
+    "movement": 0.72,
+    "density": 0.62,
+    "space": 0.4,
+    "aggression": 0.68
+  },
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.58,
+      "macro_movement": 0.68,
+      "macro_coupling": 0.72,
+      "macro_space": 0.52
+    },
+    "OLE": {
+      "macro_character": 0.68,
+      "macro_movement": 0.62,
+      "macro_coupling": 0.72,
+      "macro_space": 0.36
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORGANON",
+        "engineB": "OLE",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.72
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.72,
+    "SPACE": 0.44
+  },
+  "sequencer": null
+}

@@ -1,0 +1,49 @@
+{
+  "name": "Orbital Daguerreotype",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBSCURA",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.335,
+      "macro_movement": 0.235,
+      "macro_coupling": 0.535,
+      "macro_space": 0.585
+    },
+    "ORBITAL": {
+      "macro_character": 0.415,
+      "macro_movement": 0.565,
+      "macro_coupling": 0.515,
+      "macro_space": 0.715
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBSCURA",
+    "target": "ORBITAL",
+    "amount": 0.547
+  },
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.3,
+    "movement": 0.45,
+    "density": 0.5,
+    "space": 0.85,
+    "aggression": 0.12
+  },
+  "macros": {
+    "CHARACTER": 0.375,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.547,
+    "SPACE": 0.65
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "visual",
+    "cosmic"
+  ]
+}
