@@ -51,44 +51,50 @@ from xml.sax.saxutils import escape as xml_escape
 
 L_SYSTEMS = {
     "koch": {
-        "axiom": "F",
-        "rules": {"F": "F+F-F-F+F"},
-        "angle": 90,
+        "axiom":    "F",
+        "rules":    {"F": "F+F-F-F+F"},
+        "triggers": "Ff",
+        "angle":    90,
         "description": "Koch snowflake curve — dense, fractal subdivision",
     },
     "sierpinski": {
-        "axiom": "A",
-        "rules": {"A": "B-A-B", "B": "A+B+A"},
-        "angle": 60,
+        "axiom":    "A",
+        "rules":    {"A": "B-A-B", "B": "A+B+A"},
+        "triggers": "AB",   # A and B are terminal hits in this system
+        "angle":    60,
         "description": "Sierpinski triangle — alternating 3-beat subdivision",
     },
     "dragon": {
-        "axiom": "FX",
-        "rules": {"X": "X+YF+", "Y": "-FX-Y"},
-        "angle": 90,
+        "axiom":    "FX",
+        "rules":    {"X": "X+YF+", "Y": "-FX-Y"},
+        "triggers": "Ff",
+        "angle":    90,
         "description": "Dragon curve — asymmetric folding pattern",
     },
     "plant": {
-        "axiom": "X",
-        "rules": {"X": "F+[[X]-X]-F[-FX]+X", "F": "FF"},
-        "angle": 25,
+        "axiom":    "X",
+        "rules":    {"X": "F+[[X]-X]-F[-FX]+X", "F": "FF"},
+        "triggers": "Ff",
+        "angle":    25,
         "description": "Lindenmayer plant — branching with accent pockets",
     },
     "algae": {
-        "axiom": "A",
-        "rules": {"A": "AB", "B": "A"},
-        "angle": 0,
+        "axiom":    "A",
+        "rules":    {"A": "AB", "B": "A"},
+        "triggers": "AB",   # both symbols = hits; Fibonacci density pattern
+        "angle":    0,
         "description": "Fibonacci algae — grows at golden-ratio density",
     },
     "penrose": {
-        "axiom": "[N]++[N]++[N]++[N]++[N]",
-        "rules": {
+        "axiom":    "[N]++[N]++[N]++[N]++[N]",
+        "rules":    {
             "M": "OA++PA----NA[-OA----MA]++",
             "N": "+OA--PA[---MA--NA]+",
             "O": "-MA++NA[+++OA++PA]-",
             "P": "--OA++++MA[+PA++++NA]--NA",
         },
-        "angle": 36,
+        "triggers": "Ff",
+        "angle":    36,
         "description": "Penrose tiling — 5-fold quasi-crystalline rhythm",
     },
 }
@@ -136,19 +142,24 @@ def expand(axiom: str, rules: dict, iterations: int, max_len: int = 4096) -> str
     return s
 
 
-def extract_triggers(lstring: str, max_steps: int = 256) -> list[dict]:
+def extract_triggers(lstring: str, max_steps: int = 256,
+                     trigger_chars: str = "Ff") -> list[dict]:
     """
     Walk the L-system string and extract trigger events.
     Returns list of dicts: {step, accented, pitch_offset}
 
     State machine:
-      - F/f       -> trigger at current step, advance step counter
-      - [         -> push accent state (accented=True)
-      - ]         -> pop accent state
-      - +         -> increment pending pitch offset
-      - -         -> decrement pending pitch offset
-      - X,Y,Z,etc -> skip (structural symbols)
+      - trigger_chars  -> trigger at current step, advance step counter
+      - [              -> push accent state (accented=True)
+      - ]              -> pop accent state
+      - +              -> increment pending pitch offset
+      - -              -> decrement pending pitch offset
+      - everything else -> skip (structural/growth symbols)
+
+    trigger_chars defaults to "Ff" for standard L-systems;
+    Sierpinski/Algae pass "AB" since those are their terminal symbols.
     """
+    trigger_set = set(trigger_chars)
     triggers = []
     step = 0
     accent_stack = [False]   # stack of accent booleans
@@ -157,7 +168,7 @@ def extract_triggers(lstring: str, max_steps: int = 256) -> list[dict]:
     for ch in lstring:
         if step >= max_steps:
             break
-        if ch in ("F", "f"):
+        if ch in trigger_set:
             accented = accent_stack[-1]
             triggers.append({
                 "step":         step % 16,   # wrap into 16-step bar
@@ -720,7 +731,8 @@ def process_system(system_name: str, ls_def: dict, iterations: int,
     lstring = expand(ls_def["axiom"], ls_def["rules"], iterations, max_len=4096)
     print(f"          Expanded: {len(lstring)} chars")
 
-    triggers = extract_triggers(lstring, max_steps=256)
+    trig_chars = ls_def.get("triggers", "Ff")
+    triggers = extract_triggers(lstring, max_steps=256, trigger_chars=trig_chars)
     bar      = triggers_to_bar(triggers)
     binary   = "".join("1" if s["hit"] else "0" for s in bar)
     print(f"          Pattern : {binary}  ({binary.count('1')}/16 hits)")
@@ -787,7 +799,8 @@ def main():
         ls_def   = L_SYSTEMS[sname]
         iters    = args.iterations
         lstring  = expand(ls_def["axiom"], ls_def["rules"], iters)
-        triggers = extract_triggers(lstring)
+        trig_chars = ls_def.get("triggers", "Ff")
+        triggers = extract_triggers(lstring, trigger_chars=trig_chars)
         bar      = triggers_to_bar(triggers)
         print(render_trigger_grid(sname, bar, lstring, iters, ls_def))
         sys.exit(0)
@@ -819,10 +832,11 @@ def main():
         zone_bars = []
         midi_bases = [36, 40, 44, 48]   # kick/snare/hat/accent zones
         for idx, (sname, vkey, midi_notes, desc) in enumerate(POLY_ZONES):
-            ls_def   = L_SYSTEMS[sname]
-            lstring  = expand(ls_def["axiom"], ls_def["rules"], args.iterations)
-            triggers = extract_triggers(lstring)
-            bar      = triggers_to_bar(triggers)
+            ls_def     = L_SYSTEMS[sname]
+            lstring    = expand(ls_def["axiom"], ls_def["rules"], args.iterations)
+            trig_chars = ls_def.get("triggers", "Ff")
+            triggers   = extract_triggers(lstring, trigger_chars=trig_chars)
+            bar        = triggers_to_bar(triggers)
             binary   = "".join("1" if s["hit"] else "0" for s in bar)
             print(f"  {desc}: {binary[:4]} ({binary[:4].count('1')}/4 hits in pads)")
             zone_bars.append({
