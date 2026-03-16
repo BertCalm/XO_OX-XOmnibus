@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Permafrost Collapse",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.417,
+    "warmth": 0.045,
+    "movement": 0.408,
+    "density": 0.883,
+    "space": 0.233,
+    "aggression": 0.377
+  },
+  "engines": [
+    "OBBLIGATO"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sub-zero pressure wave \u2014 thick and cold, no amber anywhere.",
+  "tags": [
+    "aether",
+    "cold",
+    "dense",
+    "dark",
+    "pressure"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "DEPTH",
+    "COUPLING",
+    "MASS"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.417,
+    "warmth": 0.045,
+    "movement": 0.408,
+    "density": 0.883,
+    "space": 0.233,
+    "aggression": 0.377
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

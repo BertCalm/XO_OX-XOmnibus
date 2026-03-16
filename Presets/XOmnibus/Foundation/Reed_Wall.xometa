@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Reed Wall",
+  "mood": "Foundation",
+  "engines": [
+    "Obbligato"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.73,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.19,
+    "SPACE": 0.32
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.58,
+    "movement": 0.12,
+    "density": 0.65,
+    "space": 0.32,
+    "aggression": 0.88
+  },
+  "parameters": {},
+  "tags": [
+    "siege",
+    "obbligato",
+    "reed",
+    "wall"
+  ],
+  "description": "Dual woodwind sustain as structural force — held without movement."
+}

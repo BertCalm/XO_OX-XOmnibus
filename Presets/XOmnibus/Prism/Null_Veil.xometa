@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Null Veil",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.901,
+    "warmth": 0.08,
+    "movement": 0.29,
+    "density": 0.157,
+    "space": 0.744,
+    "aggression": 0.123
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Single photon trace \u2014 sparse, cold, absolutely precise.",
+  "tags": [
+    "prism",
+    "cold",
+    "sparse",
+    "crystalline",
+    "airy",
+    "spacious",
+    "bright"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.901,
+    "warmth": 0.08,
+    "movement": 0.29,
+    "density": 0.157,
+    "space": 0.744,
+    "aggression": 0.123
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Iron Floor",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.387,
+    "warmth": 0.082,
+    "movement": 0.429,
+    "density": 0.886,
+    "space": 0.334,
+    "aggression": 0.387
+  },
+  "engines": [
+    "OBSIDIAN"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dark plasma density: cold layers stacked to event horizon.",
+  "tags": [
+    "aether",
+    "cold",
+    "dense",
+    "dark",
+    "pressure"
+  ],
+  "macroLabels": [
+    "CYCLE",
+    "CONSUME",
+    "COUPLING",
+    "VOID"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.387,
+    "warmth": 0.082,
+    "movement": 0.429,
+    "density": 0.886,
+    "space": 0.334,
+    "aggression": 0.387
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

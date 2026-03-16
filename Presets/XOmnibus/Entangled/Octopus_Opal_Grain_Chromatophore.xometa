@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "name": "Grain Chromatophore",
+  "mood": "Entangled",
+  "engines": [
+    "Octopus",
+    "Opal"
+  ],
+  "author": "XO_OX Deep Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "Granular clouds seeded by chromatophore pulses; the octopus breathes and the opal scatters light.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "octopus",
+    "opal",
+    "alien",
+    "decentralized"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "Octopus": {
+      "octo_armCount": 8.0,
+      "octo_armSpread": 0.794,
+      "octo_armBaseRate": 0.72,
+      "octo_armDepth": 0.749,
+      "octo_chromaSens": 0.673,
+      "octo_chromaSpeed": 0.679,
+      "octo_chromaMorph": 0.505,
+      "octo_chromaDepth": 0.504,
+      "octo_chromaFreq": 2806.4,
+      "octo_inkThreshold": 0.464,
+      "octo_inkDensity": 0.714,
+      "octo_inkDecay": 0.785,
+      "octo_inkMix": 0.301,
+      "octo_shiftMicro": 0.311,
+      "octo_shiftGlide": 0.355,
+      "octo_shiftDrift": 0.452,
+      "octo_suckerReso": 0.306,
+      "octo_suckerFreq": 2538.9,
+      "octo_suckerDecay": 0.07,
+      "octo_suckerMix": 0.48,
+      "octo_wtPosition": 0.199,
+      "octo_wtScanRate": 0.42,
+      "octo_filterCutoff": 7329.0,
+      "octo_filterReso": 0.343,
+      "octo_level": 0.785,
+      "octo_ampAttack": 0.0757,
+      "octo_ampDecay": 0.39,
+      "octo_ampSustain": 0.417,
+      "octo_ampRelease": 1.132,
+      "octo_modAttack": 0.0073,
+      "octo_modDecay": 0.13,
+      "octo_modSustain": 0.66,
+      "octo_modRelease": 0.881,
+      "octo_lfo1Rate": 2.318,
+      "octo_lfo1Depth": 0.587,
+      "octo_lfo1Shape": 0.5,
+      "octo_lfo2Rate": 1.712,
+      "octo_lfo2Depth": 0.597,
+      "octo_lfo2Shape": 0.5
+    },
+    "Opal": {
+      "opal_level": 0.705,
+      "opal_filterCutoff": 5114.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "type": "HARMONIC_BLEND",
+        "source": "Octopus",
+        "target": "Opal",
+        "amount": 0.75
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.728,
+    "warmth": 0.459,
+    "movement": 0.777,
+    "density": 0.56,
+    "space": 0.7,
+    "aggression": 0.377
+  }
+}

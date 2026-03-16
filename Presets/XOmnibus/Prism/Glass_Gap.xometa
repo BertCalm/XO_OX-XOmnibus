@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Glass Gap",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.868,
+    "warmth": 0.052,
+    "movement": 0.16,
+    "density": 0.135,
+    "space": 0.816,
+    "aggression": 0.096
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Glass filament vibration, barely there, barely audible.",
+  "tags": [
+    "prism",
+    "cold",
+    "sparse",
+    "crystalline",
+    "airy",
+    "spacious",
+    "bright"
+  ],
+  "macroLabels": [
+    "FREEZE",
+    "GLINT",
+    "COUPLING",
+    "VOID"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.868,
+    "warmth": 0.052,
+    "movement": 0.16,
+    "density": 0.135,
+    "space": 0.816,
+    "aggression": 0.096
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

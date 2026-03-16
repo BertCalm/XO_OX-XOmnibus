@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "name": "Spotted Shore",
+  "mood": "Entangled",
+  "engines": [
+    "Osteria",
+    "Ocelot"
+  ],
+  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "OCELOT's biome variability applied to OSTERIA's shore regions — the menu changes with the ocelot's territory, flavor as habitat.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "osteria",
+    "ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.534,
+    "warmth": 0.632,
+    "movement": 0.408,
+    "density": 0.534,
+    "space": 0.556,
+    "aggression": 0.394
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_qBassShore": 0.348,
+      "osteria_qHarmShore": 0.28,
+      "osteria_qMelShore": 0.219,
+      "osteria_qRhythmShore": 0.118,
+      "osteria_qElastic": 0.689,
+      "osteria_qStretch": 0.338,
+      "osteria_qMemory": 0.415,
+      "osteria_qSympathy": 0.447,
+      "osteria_bassLevel": 0.631,
+      "osteria_harmLevel": 0.493,
+      "osteria_melLevel": 0.683,
+      "osteria_rhythmLevel": 0.47,
+      "osteria_ensWidth": 0.545,
+      "osteria_blendMode": 0.569,
+      "osteria_tavernMix": 0.464,
+      "osteria_tavernShore": 0.556,
+      "osteria_murmur": 0.427,
+      "osteria_warmth": 0.887,
+      "osteria_oceanBleed": 0.217,
+      "osteria_patina": 0.405,
+      "osteria_porto": 0.498,
+      "osteria_smoke": 0.126,
+      "osteria_filterEnvDepth": 0.452,
+      "osteria_attack": 0.073,
+      "osteria_decay": 0.422,
+      "osteria_sustain": 0.631,
+      "osteria_release": 1.2,
+      "osteria_sessionDelay": 0.084,
+      "osteria_hall": 0.451,
+      "osteria_chorus": 0.207,
+      "osteria_tape": 0.004,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.0
+    },
+    "Ocelot": {
+      "ocelot_biome": 0.511,
+      "ocelot_filterCutoff": 0.637,
+      "ocelot_lfoRate": 0.066,
+      "ocelot_attack": 0.13,
+      "ocelot_release": 1.0,
+      "ocelot_macroCharacter": 0.019,
+      "ocelot_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Osteria",
+        "target": "Ocelot",
+        "type": "FilterToGrain",
+        "amount": 0.643,
+        "description": "Osteria drives Ocelot via FilterToGrain"
+      }
+    ]
+  },
+  "sequencer": null
+}

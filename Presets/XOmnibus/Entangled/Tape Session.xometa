@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "name": "Tape Session",
+  "mood": "Entangled",
+  "engines": [
+    "Osteria",
+    "Overdub"
+  ],
+  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "Overdub's tape delay captures OSTERIA's ensemble murmur — the session recorded on degrading tape, warmth converting to grain.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "osteria",
+    "overdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.534,
+    "warmth": 0.796,
+    "movement": 0.276,
+    "density": 0.528,
+    "space": 0.528,
+    "aggression": 0.181
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_qBassShore": 0.598,
+      "osteria_qHarmShore": 0.629,
+      "osteria_qMelShore": 0.202,
+      "osteria_qRhythmShore": 0.106,
+      "osteria_qElastic": 0.307,
+      "osteria_qStretch": 0.211,
+      "osteria_qMemory": 0.536,
+      "osteria_qSympathy": 0.486,
+      "osteria_bassLevel": 0.548,
+      "osteria_harmLevel": 0.465,
+      "osteria_melLevel": 0.368,
+      "osteria_rhythmLevel": 0.313,
+      "osteria_ensWidth": 0.551,
+      "osteria_blendMode": 0.385,
+      "osteria_tavernMix": 0.571,
+      "osteria_tavernShore": 0.581,
+      "osteria_murmur": 0.296,
+      "osteria_warmth": 0.628,
+      "osteria_oceanBleed": 0.094,
+      "osteria_patina": 0.599,
+      "osteria_porto": 0.136,
+      "osteria_smoke": 0.345,
+      "osteria_filterEnvDepth": 0.254,
+      "osteria_attack": 0.068,
+      "osteria_decay": 0.758,
+      "osteria_sustain": 0.66,
+      "osteria_release": 1.52,
+      "osteria_sessionDelay": 0.153,
+      "osteria_hall": 0.453,
+      "osteria_chorus": 0.067,
+      "osteria_tape": 0.086,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.0
+    },
+    "Overdub": {
+      "dub_oscWave": 0.227,
+      "dub_sendAmount": 0.547,
+      "dub_tapeDelay": 0.587,
+      "dub_spring": 0.358,
+      "dub_filterCutoff": 0.632,
+      "dub_macroCharacter": 0.0,
+      "dub_macroCoupling": 0.079
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Osteria",
+        "target": "Overdub",
+        "type": "TimbreShare",
+        "amount": 0.793,
+        "description": "Osteria drives Overdub via TimbreShare"
+      }
+    ]
+  },
+  "sequencer": null
+}

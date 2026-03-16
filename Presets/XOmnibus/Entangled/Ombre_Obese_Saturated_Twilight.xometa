@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "name": "Saturated Twilight",
+  "mood": "Entangled",
+  "engines": [
+    "Ombre",
+    "Obese"
+  ],
+  "author": "XO_OX Deep Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "Saturation as the visible evidence of day → night compression — too much light caught in too small a moment.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "ombre",
+    "obese",
+    "memory",
+    "twilight",
+    "liminal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.675,
+      "ombre_memoryDepth": 0.601,
+      "ombre_forgetRate": 0.294,
+      "ombre_shadowAmount": 0.427,
+      "ombre_duskPosition": 0.652,
+      "ombre_narrativeA": 0.463,
+      "ombre_narrativeB": 0.241,
+      "ombre_crossfadeRate": 0.351,
+      "ombre_toneA": 4891.2,
+      "ombre_toneB": 2857.4,
+      "ombre_filterCutoff": 4752.7,
+      "ombre_filterReso": 0.141,
+      "ombre_level": 0.758,
+      "ombre_ampAttack": 0.076,
+      "ombre_ampDecay": 0.976,
+      "ombre_ampSustain": 0.51,
+      "ombre_ampRelease": 1.961,
+      "ombre_modAttack": 0.0527,
+      "ombre_modDecay": 0.543,
+      "ombre_modSustain": 0.561,
+      "ombre_modRelease": 1.209,
+      "ombre_lfo1Rate": 1.458,
+      "ombre_lfo1Depth": 0.263,
+      "ombre_lfo2Rate": 0.587,
+      "ombre_lfo2Depth": 0.489,
+      "ombre_spaceMix": 0.581,
+      "ombre_reverbSize": 0.593,
+      "ombre_reverbDamp": 0.592
+    },
+    "Obese": {
+      "fat_level": 0.739,
+      "fat_filterCutoff": 5358.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "type": "FREQUENCY_MODULATION",
+        "source": "Ombre",
+        "target": "Obese",
+        "amount": 0.8
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.596,
+    "warmth": 0.663,
+    "movement": 0.517,
+    "density": 0.643,
+    "space": 0.441,
+    "aggression": 0.546
+  }
+}

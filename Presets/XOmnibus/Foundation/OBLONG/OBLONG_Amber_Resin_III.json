@@ -1,0 +1,41 @@
+{
+  "name": "Amber Resin III",
+  "engine": "OBLONG",
+  "prefix": "bob_",
+  "mood": "Foundation",
+  "category": "Hot Dense",
+  "tags": [
+    "warm",
+    "dense",
+    "analog",
+    "bass",
+    "saturated"
+  ],
+  "sonic_dna": {
+    "warmth": 0.843,
+    "density": 0.932,
+    "aggression": 0.513,
+    "movement": 0.548,
+    "space": 0.357,
+    "brightness": 0.38
+  },
+  "parameters": {
+    "bob_drive": 0.6671,
+    "bob_filter_cutoff": 0.3879,
+    "bob_filter_res": 0.3337,
+    "bob_env_attack": 0.0657,
+    "bob_env_decay": 0.56,
+    "bob_env_sustain": 0.6974,
+    "bob_env_release": 0.4103,
+    "bob_sub_level": 0.746,
+    "bob_saturation": 0.6465,
+    "bob_body": 0.8568
+  },
+  "meta": {
+    "generator": "xpn_hot_dense_preset_pack.py",
+    "version": "1.0.0",
+    "quadrant": "hot_dense",
+    "warmth_range": "0.80-1.0",
+    "density_range": "0.80-1.0"
+  }
+}

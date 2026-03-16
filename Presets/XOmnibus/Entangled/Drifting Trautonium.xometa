@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "name": "Drifting Trautonium",
+  "mood": "Entangled",
+  "engines": [
+    "Owlfish",
+    "Odyssey"
+  ],
+  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "ODYSSEY's drift modulation applied to OWLFISH's resonant feedback — the oscillator drifting like a current, the tone never settling.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "owlfish",
+    "odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.467,
+    "warmth": 0.577,
+    "movement": 0.442,
+    "density": 0.593,
+    "space": 0.627,
+    "aggression": 0.264
+  },
+  "parameters": {
+    "Owlfish": {
+      "owl_filterCutoff": 0.485,
+      "owl_filterRes": 0.494,
+      "owl_oscPitch": 0.567,
+      "owl_oscLevel": 0.636,
+      "owl_subLevel": 0.453,
+      "owl_mixturSpread": 0.36,
+      "owl_mixturBlend": 0.742,
+      "owl_resonantPitch": 0.681,
+      "owl_resonantFeedback": 0.477,
+      "owl_abyssalDrive": 0.353,
+      "owl_ampAttack": 0.134,
+      "owl_ampDecay": 0.925,
+      "owl_ampSustain": 0.554,
+      "owl_ampRelease": 1.62,
+      "owl_lfoRate": 0.138,
+      "owl_lfoDepth": 0.288,
+      "owl_lfoShape": 0.541,
+      "owl_envDepth": 0.505,
+      "owl_hall": 0.292,
+      "owl_shimmer": 0.25,
+      "owl_macroCharacter": 0.0,
+      "owl_macroMovement": 0.0,
+      "owl_macroCoupling": 0.0,
+      "owl_macroSpace": 0.0
+    },
+    "Odyssey": {
+      "drift_oscA_mode": 0,
+      "drift_oscA_level": 0.547,
+      "drift_driftDepth": 0.284,
+      "drift_filterCutoff": 1.0,
+      "drift_attack": 0.409,
+      "drift_release": 1.0,
+      "drift_macroCharacter": 0.092,
+      "drift_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Owlfish",
+        "target": "Odyssey",
+        "type": "LFO_SYNC",
+        "amount": 0.598,
+        "description": "Owlfish drives Odyssey via LFO_SYNC"
+      }
+    ]
+  },
+  "sequencer": null
+}

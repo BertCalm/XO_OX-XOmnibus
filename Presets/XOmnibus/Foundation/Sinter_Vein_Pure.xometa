@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Sinter Vein Pure",
+  "mood": "Foundation",
+  "sonic_dna": {
+    "brightness": 0.362,
+    "warmth": 0.89,
+    "movement": 0.373,
+    "density": 0.877,
+    "space": 0.24,
+    "aggression": 0.726
+  },
+  "engines": [
+    "OTTONI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sub-heavy foundation with slow bloom and settled weight.",
+  "tags": [
+    "foundation",
+    "warm",
+    "dense",
+    "analog",
+    "thick",
+    "aggressive"
+  ],
+  "macroLabels": [
+    "MELT",
+    "COMPRESS",
+    "COUPLING",
+    "TAIL"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.362,
+    "warmth": 0.89,
+    "movement": 0.373,
+    "density": 0.877,
+    "space": 0.24,
+    "aggression": 0.726
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Ice Distance",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.625,
+    "warmth": 0.105,
+    "movement": 0.18,
+    "density": 0.146,
+    "space": 0.924,
+    "aggression": 0.072
+  },
+  "engines": [
+    "OPTIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sub-zero shimmer. The silence between notes is the sound.",
+  "tags": [
+    "prism",
+    "cold",
+    "sparse",
+    "crystalline",
+    "airy",
+    "spacious"
+  ],
+  "macroLabels": [
+    "PRISM",
+    "DISTANCE",
+    "COUPLING",
+    "TAIL"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.625,
+    "warmth": 0.105,
+    "movement": 0.18,
+    "density": 0.146,
+    "space": 0.924,
+    "aggression": 0.072
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

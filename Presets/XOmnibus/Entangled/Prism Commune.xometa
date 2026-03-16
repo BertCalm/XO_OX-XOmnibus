@@ -1,0 +1,39 @@
+{
+  "name": "Prism Commune",
+  "version": "1.0",
+  "engines": [
+    "OHM",
+    "OPTIC"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.6,
+    "SPACE": 0.75
+  },
+  "sonic_dna": {
+    "brightness": 0.64,
+    "warmth": 0.59,
+    "movement": 0.62,
+    "density": 0.48,
+    "space": 0.64,
+    "aggression": 0.28
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_REFRACTION",
+    "source": "OHM",
+    "target": "OPTIC",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "optic",
+    "hippy"
+  ],
+  "description": "Sage warmth refracts through a prismatic lens \u2014 folk harmonics split to spectral rays"
+}

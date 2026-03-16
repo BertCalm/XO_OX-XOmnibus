@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "GROW Maximum Crush",
+  "mood": "Foundation",
+  "engines": [
+    "Ottoni"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.26,
+    "SPACE": 0.18
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.52,
+    "movement": 0.1,
+    "density": 0.78,
+    "space": 0.18,
+    "aggression": 0.98
+  },
+  "parameters": {},
+  "tags": [
+    "siege",
+    "ottoni",
+    "GROW",
+    "crush"
+  ],
+  "description": "GROW macro at maximum — brass swell without forward motion."
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Solar Alone Low",
+  "mood": "Atmosphere",
+  "sonic_dna": {
+    "brightness": 0.583,
+    "warmth": 0.844,
+    "movement": 0.429,
+    "density": 0.056,
+    "space": 0.791,
+    "aggression": 0.205
+  },
+  "engines": [
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "One warm voice exhaling slowly into cathedral space.",
+  "tags": [
+    "atmosphere",
+    "warm",
+    "sparse",
+    "airy",
+    "breath",
+    "spacious"
+  ],
+  "macroLabels": [
+    "WARMTH",
+    "BREATH",
+    "COUPLING",
+    "OPEN"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.583,
+    "warmth": 0.844,
+    "movement": 0.429,
+    "density": 0.056,
+    "space": 0.791,
+    "aggression": 0.205
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

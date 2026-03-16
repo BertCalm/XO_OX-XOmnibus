@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Oblique Rip Current",
+  "mood": "Flux",
+  "engines": [
+    "Oblique"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.29,
+    "MOVEMENT": 0.89,
+    "COUPLING": 0.32,
+    "SPACE": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.5,
+    "movement": 0.89,
+    "density": 0.4,
+    "space": 0.72,
+    "aggression": 0.08
+  },
+  "parameters": {},
+  "tags": [
+    "tidal",
+    "oblique",
+    "rip",
+    "current"
+  ],
+  "description": "Lateral energy at full speed — oblique force without malice."
+}

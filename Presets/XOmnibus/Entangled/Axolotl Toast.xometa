@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "name": "Axolotl Toast",
+  "mood": "Entangled",
+  "engines": [
+    "Osteria",
+    "OddOscar"
+  ],
+  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "ODDOSCAR's gill-pink warmth rises with OSTERIA's porto — a toast to regeneration, soft tissue and warm wine in the same glass.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "osteria",
+    "oddoscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.433,
+    "warmth": 0.657,
+    "movement": 0.51,
+    "density": 0.666,
+    "space": 0.527,
+    "aggression": 0.302
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_qBassShore": 0.22,
+      "osteria_qHarmShore": 0.216,
+      "osteria_qMelShore": 0.538,
+      "osteria_qRhythmShore": 0.432,
+      "osteria_qElastic": 0.618,
+      "osteria_qStretch": 0.505,
+      "osteria_qMemory": 0.605,
+      "osteria_qSympathy": 0.411,
+      "osteria_bassLevel": 0.586,
+      "osteria_harmLevel": 0.519,
+      "osteria_melLevel": 0.426,
+      "osteria_rhythmLevel": 0.226,
+      "osteria_ensWidth": 0.587,
+      "osteria_blendMode": 0.596,
+      "osteria_tavernMix": 0.461,
+      "osteria_tavernShore": 0.347,
+      "osteria_murmur": 0.244,
+      "osteria_warmth": 0.619,
+      "osteria_oceanBleed": 0.276,
+      "osteria_patina": 0.524,
+      "osteria_porto": 0.477,
+      "osteria_smoke": 0.359,
+      "osteria_filterEnvDepth": 0.265,
+      "osteria_attack": 0.172,
+      "osteria_decay": 0.332,
+      "osteria_sustain": 0.778,
+      "osteria_release": 1.64,
+      "osteria_sessionDelay": 0.323,
+      "osteria_hall": 0.353,
+      "osteria_chorus": 0.127,
+      "osteria_tape": 0.038,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.0
+    },
+    "OddOscar": {
+      "morph_morph": 0.414,
+      "morph_filterCutoff": 0.657,
+      "morph_lfoRate": 0.154,
+      "morph_attack": 0.054,
+      "morph_release": 1.0,
+      "morph_macroCharacter": 0.0,
+      "morph_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Osteria",
+        "target": "OddOscar",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.751,
+        "description": "Osteria drives OddOscar via HARMONIC_BLEND"
+      }
+    ]
+  },
+  "sequencer": null
+}

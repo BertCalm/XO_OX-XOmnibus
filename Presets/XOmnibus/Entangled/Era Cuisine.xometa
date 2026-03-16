@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "name": "Era Cuisine",
+  "mood": "Entangled",
+  "engines": [
+    "Osteria",
+    "Overworld"
+  ],
+  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "OVERWORLD's ERA triangle maps to OSTERIA's shore regions — the food of each era, the music of each coastline, crossed.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "osteria",
+    "overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.66,
+    "warmth": 0.694,
+    "movement": 0.518,
+    "density": 0.543,
+    "space": 0.431,
+    "aggression": 0.309
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_qBassShore": 0.537,
+      "osteria_qHarmShore": 0.686,
+      "osteria_qMelShore": 0.496,
+      "osteria_qRhythmShore": 0.186,
+      "osteria_qElastic": 0.316,
+      "osteria_qStretch": 0.219,
+      "osteria_qMemory": 0.737,
+      "osteria_qSympathy": 0.552,
+      "osteria_bassLevel": 0.746,
+      "osteria_harmLevel": 0.424,
+      "osteria_melLevel": 0.587,
+      "osteria_rhythmLevel": 0.207,
+      "osteria_ensWidth": 0.79,
+      "osteria_blendMode": 0.597,
+      "osteria_tavernMix": 0.521,
+      "osteria_tavernShore": 0.54,
+      "osteria_murmur": 0.27,
+      "osteria_warmth": 0.609,
+      "osteria_oceanBleed": 0.293,
+      "osteria_patina": 0.359,
+      "osteria_porto": 0.45,
+      "osteria_smoke": 0.224,
+      "osteria_filterEnvDepth": 0.167,
+      "osteria_attack": 0.123,
+      "osteria_decay": 0.491,
+      "osteria_sustain": 0.834,
+      "osteria_release": 2.14,
+      "osteria_sessionDelay": 0.245,
+      "osteria_hall": 0.26,
+      "osteria_chorus": 0.122,
+      "osteria_tape": 0.278,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.0
+    },
+    "Overworld": {
+      "ow_era": 0.451,
+      "ow_filterCutoff": 0.448,
+      "ow_lfoRate": 0.205,
+      "ow_attack": 0.118,
+      "ow_release": 1.0,
+      "ow_macroCharacter": 0.0,
+      "ow_macroCoupling": 0.092
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Osteria",
+        "target": "Overworld",
+        "type": "TimbreShare",
+        "amount": 0.611,
+        "description": "Osteria drives Overworld via TimbreShare"
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Lava Glass Pause",
+  "mood": "Atmosphere",
+  "engines": [
+    "Obsidian"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.345,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.11,
+    "SPACE": 0.8
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.65,
+    "movement": 0.05,
+    "density": 0.25,
+    "space": 0.8,
+    "aggression": 0.04
+  },
+  "parameters": {},
+  "tags": [
+    "glacial",
+    "obsidian",
+    "pause",
+    "cold"
+  ],
+  "description": "The moment lava surrenders heat and becomes mirror."
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Arm Pattern Reflection",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OUTWIT",
+    "OVERLAP"
+  ],
+  "author": "XO_OX",
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.59,
+    "COUPLING": 0.7,
+    "SPACE": 0.78
+  },
+  "sonic_dna": {
+    "brightness": 0.62,
+    "warmth": 0.52,
+    "movement": 0.68,
+    "density": 0.67,
+    "space": 0.78,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "OUTWIT": {
+      "owit_rule": 54,
+      "owit_arms": 6,
+      "owit_cellSize": 0.341,
+      "owit_density": 0.682,
+      "owit_evolveRate": 0.592,
+      "owit_mutateProb": 0.184,
+      "owit_pitchSpread": 0.589,
+      "owit_filterCutoff": 0.501,
+      "owit_filterReso": 0.293,
+      "owit_ampAttack": 0.126,
+      "owit_ampRelease": 0.571,
+      "owit_outputLevel": 0.822,
+      "owit_couplingLevel": 0.673,
+      "owit_couplingBus": 0
+    },
+    "OVERLAP": {
+      "olap_size": 0.832,
+      "olap_decay": 0.518,
+      "olap_damping": 0.341,
+      "olap_diffusion": 0.61,
+      "olap_modDepth": 0.128,
+      "olap_modRate": 0.12,
+      "olap_preDelay": 0.025,
+      "olap_earlyMix": 0.297,
+      "olap_lateMix": 0.654,
+      "olap_filterCutoff": 0.546,
+      "olap_filterReso": 0.211,
+      "olap_outputLevel": 0.692,
+      "olap_couplingLevel": 0.617,
+      "olap_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_BLEND",
+    "source": "OUTWIT",
+    "target": "OVERLAP",
+    "amount": 0.7
+  },
+  "couplingIntensity": "Deep",
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "overlap",
+    "marquee",
+    "spatial",
+    "arms",
+    "routing",
+    "fdn"
+  ],
+  "description": "OUTWIT's 8-arm pattern shapes OVERLAP's FDN node routing \u2014 cellular intelligence selects the reflection path through the jellyfish's tangled fronds"
+}

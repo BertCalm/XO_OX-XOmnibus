@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Opal Suspension",
+  "mood": "Atmosphere",
+  "engines": [
+    "Opal"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.23,
+    "MOVEMENT": 0.03,
+    "COUPLING": 0.17,
+    "SPACE": 0.9
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.45,
+    "movement": 0.03,
+    "density": 0.2,
+    "space": 0.9,
+    "aggression": 0.01
+  },
+  "parameters": {},
+  "tags": [
+    "glacial",
+    "opal",
+    "granular",
+    "serene"
+  ],
+  "description": "Granules frozen in amber light — colour without motion."
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Amber Mass",
+  "mood": "Foundation",
+  "sonic_dna": {
+    "brightness": 0.608,
+    "warmth": 0.866,
+    "movement": 0.457,
+    "density": 0.992,
+    "space": 0.392,
+    "aggression": 0.503
+  },
+  "engines": [
+    "OddOscar"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sub-heavy foundation with slow bloom and settled weight.",
+  "tags": [
+    "foundation",
+    "warm",
+    "dense",
+    "analog",
+    "thick",
+    "aggressive"
+  ],
+  "macroLabels": [
+    "BODY",
+    "SATURATE",
+    "COUPLING",
+    "ROOM"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.608,
+    "warmth": 0.866,
+    "movement": 0.457,
+    "density": 0.992,
+    "space": 0.392,
+    "aggression": 0.503
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

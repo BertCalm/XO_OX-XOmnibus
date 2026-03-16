@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Adaptive Bloom",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OUTWIT",
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "macros": {
+    "CHARACTER": 0.44,
+    "MOVEMENT": 0.64,
+    "COUPLING": 0.56,
+    "SPACE": 0.61
+  },
+  "sonic_dna": {
+    "movement": 0.68,
+    "brightness": 0.58,
+    "aggression": 0.42,
+    "space": 0.61,
+    "warmth": 0.51,
+    "density": 0.63
+  },
+  "parameters": {
+    "OUTWIT": {
+      "owit_rule": 54,
+      "owit_arms": 7,
+      "owit_cellSize": 0.421,
+      "owit_density": 0.702,
+      "owit_evolveRate": 0.624,
+      "owit_mutateProb": 0.117,
+      "owit_pitchSpread": 0.515,
+      "owit_filterCutoff": 0.393,
+      "owit_filterReso": 0.405,
+      "owit_ampAttack": 0.13,
+      "owit_ampRelease": 0.333,
+      "owit_outputLevel": 0.813,
+      "owit_couplingLevel": 0.638,
+      "owit_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_MODULATION",
+    "source": "OUTWIT",
+    "target": "ORACLE",
+    "amount": 0.558
+  },
+  "couplingIntensity": "Moderate",
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "oracle",
+    "outwit-led",
+    "wolfram",
+    "cellular-automata"
+  ],
+  "description": "Oracle harmonic breakpoints seed OUTWIT Wolfram rules \u2014 prophecy encoded as cellular law"
+}

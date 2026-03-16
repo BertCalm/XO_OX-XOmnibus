@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "name": "Percussive Discharge",
+  "mood": "Entangled",
+  "engines": [
+    "Octopus",
+    "Onset"
+  ],
+  "author": "XO_OX Deep Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "Every arm-strike triggers a percussion cell; the octopus becomes a drum machine with distributed nervous system.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "octopus",
+    "onset",
+    "alien",
+    "decentralized"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "Octopus": {
+      "octo_armCount": 6.0,
+      "octo_armSpread": 0.466,
+      "octo_armBaseRate": 0.711,
+      "octo_armDepth": 0.664,
+      "octo_chromaSens": 0.827,
+      "octo_chromaSpeed": 0.46,
+      "octo_chromaMorph": 0.707,
+      "octo_chromaDepth": 0.651,
+      "octo_chromaFreq": 2911.4,
+      "octo_inkThreshold": 0.565,
+      "octo_inkDensity": 0.885,
+      "octo_inkDecay": 0.393,
+      "octo_inkMix": 0.52,
+      "octo_shiftMicro": 0.62,
+      "octo_shiftGlide": 0.272,
+      "octo_shiftDrift": 0.665,
+      "octo_suckerReso": 0.325,
+      "octo_suckerFreq": 3253.3,
+      "octo_suckerDecay": 0.222,
+      "octo_suckerMix": 0.507,
+      "octo_wtPosition": 0.888,
+      "octo_wtScanRate": 0.547,
+      "octo_filterCutoff": 2537.1,
+      "octo_filterReso": 0.465,
+      "octo_level": 0.665,
+      "octo_ampAttack": 0.0284,
+      "octo_ampDecay": 0.701,
+      "octo_ampSustain": 0.688,
+      "octo_ampRelease": 0.903,
+      "octo_modAttack": 0.0308,
+      "octo_modDecay": 0.306,
+      "octo_modSustain": 0.626,
+      "octo_modRelease": 0.799,
+      "octo_lfo1Rate": 2.187,
+      "octo_lfo1Depth": 0.531,
+      "octo_lfo1Shape": 0.5,
+      "octo_lfo2Rate": 0.738,
+      "octo_lfo2Depth": 0.378,
+      "octo_lfo2Shape": 0.75
+    },
+    "Onset": {
+      "perc_level": 0.707,
+      "perc_filterCutoff": 5444.7
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "type": "SPATIAL_BLEND",
+        "source": "Octopus",
+        "target": "Onset",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.611,
+    "warmth": 0.314,
+    "movement": 0.932,
+    "density": 0.715,
+    "space": 0.462,
+    "aggression": 0.564
+  }
+}

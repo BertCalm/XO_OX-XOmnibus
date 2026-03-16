@@ -1,0 +1,39 @@
+{
+  "name": "Song Breach",
+  "version": "1.0",
+  "engines": [
+    "ORPHICA",
+    "ORCA"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.65,
+    "SPACE": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.66,
+    "warmth": 0.48,
+    "movement": 0.76,
+    "density": 0.5,
+    "space": 0.6,
+    "aggression": 0.39
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "ECHOLOCATION_SYNC",
+    "source": "ORPHICA",
+    "target": "ORCA",
+    "amount": 0.65
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "orphica",
+    "orca",
+    "microsound"
+  ],
+  "description": "Orphica microsong and orca click-train merge \u2014 two ancient sonic languages"
+}

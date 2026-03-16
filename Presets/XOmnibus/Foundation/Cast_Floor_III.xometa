@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Cast Floor III",
+  "mood": "Foundation",
+  "sonic_dna": {
+    "brightness": 0.512,
+    "warmth": 0.885,
+    "movement": 0.341,
+    "density": 0.882,
+    "space": 0.272,
+    "aggression": 0.581
+  },
+  "engines": [
+    "OSTERIA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Molten core tone. Filter barely open, heat radiating outward.",
+  "tags": [
+    "foundation",
+    "warm",
+    "dense",
+    "analog",
+    "thick",
+    "aggressive"
+  ],
+  "macroLabels": [
+    "WARMTH",
+    "WEIGHT",
+    "COUPLING",
+    "DEPTH"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.512,
+    "warmth": 0.885,
+    "movement": 0.341,
+    "density": 0.882,
+    "space": 0.272,
+    "aggression": 0.581
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

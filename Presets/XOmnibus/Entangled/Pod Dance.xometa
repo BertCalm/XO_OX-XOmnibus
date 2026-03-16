@@ -1,0 +1,39 @@
+{
+  "name": "Pod Dance",
+  "version": "1.0",
+  "engines": [
+    "OLE",
+    "ORCA"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.7,
+    "SPACE": 0.45
+  },
+  "sonic_dna": {
+    "brightness": 0.66,
+    "warmth": 0.6,
+    "movement": 0.79,
+    "density": 0.62,
+    "space": 0.54,
+    "aggression": 0.6
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "ECHOLOCATION_SYNC",
+    "source": "OLE",
+    "target": "ORCA",
+    "amount": 0.7
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ole",
+    "orca",
+    "afro-latin"
+  ],
+  "description": "Afro-Latin percussion drives orca migration \u2014 drums become echolocation signal"
+}

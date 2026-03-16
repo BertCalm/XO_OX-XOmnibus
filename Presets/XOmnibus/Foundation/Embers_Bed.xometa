@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Embers Bed",
+  "mood": "Foundation",
+  "sonic_dna": {
+    "brightness": 0.355,
+    "warmth": 0.944,
+    "movement": 0.533,
+    "density": 0.946,
+    "space": 0.195,
+    "aggression": 0.669
+  },
+  "engines": [
+    "OddOscar"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Molten core tone. Filter barely open, heat radiating outward.",
+  "tags": [
+    "foundation",
+    "warm",
+    "dense",
+    "analog",
+    "thick",
+    "aggressive"
+  ],
+  "macroLabels": [
+    "WARMTH",
+    "WEIGHT",
+    "COUPLING",
+    "DEPTH"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.355,
+    "warmth": 0.944,
+    "movement": 0.533,
+    "density": 0.946,
+    "space": 0.195,
+    "aggression": 0.669
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

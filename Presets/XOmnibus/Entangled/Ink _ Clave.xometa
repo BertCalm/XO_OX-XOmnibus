@@ -1,0 +1,39 @@
+{
+  "name": "Ink & Clave",
+  "version": "1.0",
+  "engines": [
+    "OLE",
+    "OCTOPUS"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.7,
+    "SPACE": 0.45
+  },
+  "sonic_dna": {
+    "brightness": 0.62,
+    "warmth": 0.64,
+    "movement": 0.83,
+    "density": 0.64,
+    "space": 0.5,
+    "aggression": 0.52
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "NEURAL_WEAVE",
+    "source": "OCTOPUS",
+    "target": "OLE",
+    "amount": 0.7
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ole",
+    "octopus",
+    "afro-latin"
+  ],
+  "description": "Octopus cloud conceals the rhythm \u2014 African pulse heard dimly through dark water"
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Obsidian Stillness",
+  "mood": "Atmosphere",
+  "engines": [
+    "Obsidian"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.31,
+    "MOVEMENT": 0.02,
+    "COUPLING": 0.26,
+    "SPACE": 0.85
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.6,
+    "movement": 0.02,
+    "density": 0.3,
+    "space": 0.85,
+    "aggression": 0.02
+  },
+  "parameters": {},
+  "tags": [
+    "glacial",
+    "dark",
+    "obsidian",
+    "still"
+  ],
+  "description": "Volcanic glass frozen mid-pour — absolute silence at the edge of form."
+}

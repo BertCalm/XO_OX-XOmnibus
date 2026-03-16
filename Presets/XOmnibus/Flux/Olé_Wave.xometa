@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Olé Wave",
+  "mood": "Flux",
+  "engines": [
+    "Ole"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.31,
+    "MOVEMENT": 0.93,
+    "COUPLING": 0.19,
+    "SPACE": 0.65
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.5,
+    "movement": 0.93,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.12
+  },
+  "parameters": {},
+  "tags": [
+    "tidal",
+    "ole",
+    "latin",
+    "wave"
+  ],
+  "description": "Afro-Cuban rhythmic tide at full flow — drama without violence."
+}

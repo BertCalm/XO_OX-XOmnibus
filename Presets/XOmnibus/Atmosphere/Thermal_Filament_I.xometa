@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Thermal Filament I",
+  "mood": "Atmosphere",
+  "sonic_dna": {
+    "brightness": 0.484,
+    "warmth": 0.889,
+    "movement": 0.585,
+    "density": 0.087,
+    "space": 0.715,
+    "aggression": 0.233
+  },
+  "engines": [
+    "OCEANIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sun through fog: radiant warmth, minimal presence.",
+  "tags": [
+    "atmosphere",
+    "warm",
+    "sparse",
+    "airy",
+    "breath",
+    "evolving",
+    "spacious"
+  ],
+  "macroLabels": [
+    "GLOW",
+    "WANDER",
+    "COUPLING",
+    "AIR"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.484,
+    "warmth": 0.889,
+    "movement": 0.585,
+    "density": 0.087,
+    "space": 0.715,
+    "aggression": 0.233
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Molten Vein",
+  "mood": "Foundation",
+  "sonic_dna": {
+    "brightness": 0.434,
+    "warmth": 0.835,
+    "movement": 0.47,
+    "density": 0.827,
+    "space": 0.317,
+    "aggression": 0.438
+  },
+  "engines": [
+    "OVERBITE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Tar-slow attack into a saturated, immovable bed of sound.",
+  "tags": [
+    "foundation",
+    "warm",
+    "dense",
+    "analog",
+    "thick"
+  ],
+  "macroLabels": [
+    "BODY",
+    "SATURATE",
+    "COUPLING",
+    "ROOM"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.434,
+    "warmth": 0.835,
+    "movement": 0.47,
+    "density": 0.827,
+    "space": 0.317,
+    "aggression": 0.438
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "name": "Folded Arm Lattice",
+  "mood": "Entangled",
+  "engines": [
+    "Octopus",
+    "Origami"
+  ],
+  "author": "XO_OX Deep Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "Each arm folds along an origami crease, locking into harmonic geometry — alien origami in motion.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "octopus",
+    "origami",
+    "alien",
+    "decentralized"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "Octopus": {
+      "octo_armCount": 6.0,
+      "octo_armSpread": 0.604,
+      "octo_armBaseRate": 0.54,
+      "octo_armDepth": 0.643,
+      "octo_chromaSens": 0.487,
+      "octo_chromaSpeed": 0.661,
+      "octo_chromaMorph": 0.445,
+      "octo_chromaDepth": 0.418,
+      "octo_chromaFreq": 2475.7,
+      "octo_inkThreshold": 0.518,
+      "octo_inkDensity": 0.697,
+      "octo_inkDecay": 0.316,
+      "octo_inkMix": 0.241,
+      "octo_shiftMicro": 0.789,
+      "octo_shiftGlide": 0.007,
+      "octo_shiftDrift": 0.383,
+      "octo_suckerReso": 0.714,
+      "octo_suckerFreq": 3633.2,
+      "octo_suckerDecay": 0.205,
+      "octo_suckerMix": 0.355,
+      "octo_wtPosition": 0.531,
+      "octo_wtScanRate": 0.505,
+      "octo_filterCutoff": 3086.4,
+      "octo_filterReso": 0.313,
+      "octo_level": 0.69,
+      "octo_ampAttack": 0.0063,
+      "octo_ampDecay": 0.349,
+      "octo_ampSustain": 0.442,
+      "octo_ampRelease": 1.013,
+      "octo_modAttack": 0.0473,
+      "octo_modDecay": 0.115,
+      "octo_modSustain": 0.441,
+      "octo_modRelease": 0.62,
+      "octo_lfo1Rate": 1.62,
+      "octo_lfo1Depth": 0.647,
+      "octo_lfo1Shape": 0.0,
+      "octo_lfo2Rate": 1.673,
+      "octo_lfo2Depth": 0.593,
+      "octo_lfo2Shape": 0.75
+    },
+    "Origami": {
+      "origami_level": 0.695,
+      "origami_filterCutoff": 3712.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "type": "RHYTHMIC_SYNC",
+        "source": "Octopus",
+        "target": "Origami",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.663,
+    "warmth": 0.43,
+    "movement": 0.883,
+    "density": 0.788,
+    "space": 0.485,
+    "aggression": 0.588
+  }
+}

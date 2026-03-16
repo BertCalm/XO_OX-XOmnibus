@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Photon Tide",
+  "mood": "Flux",
+  "engines": [
+    "Optic"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.205,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.17,
+    "SPACE": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.35,
+    "movement": 0.9,
+    "density": 0.3,
+    "space": 0.82,
+    "aggression": 0.06
+  },
+  "parameters": {},
+  "tags": [
+    "tidal",
+    "optic",
+    "photon",
+    "tide"
+  ],
+  "description": "Coherent light cycling through the spectrum — wave nature dominant."
+}

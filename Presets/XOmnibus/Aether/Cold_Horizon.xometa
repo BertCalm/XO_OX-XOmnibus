@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Cold Horizon",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.327,
+    "warmth": 0.072,
+    "movement": 0.38,
+    "density": 0.882,
+    "space": 0.31,
+    "aggression": 0.551
+  },
+  "engines": [
+    "OBSIDIAN"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Void accumulation: cold resonance packed into black mass.",
+  "tags": [
+    "aether",
+    "cold",
+    "dense",
+    "dark",
+    "pressure",
+    "aggressive"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "DEPTH",
+    "COUPLING",
+    "MASS"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.327,
+    "warmth": 0.072,
+    "movement": 0.38,
+    "density": 0.882,
+    "space": 0.31,
+    "aggression": 0.551
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "name": "Daguerreotype Breach",
+  "mood": "Entangled",
+  "engines": [
+    "Orca",
+    "Obscura"
+  ],
+  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "OBSCURA's silver stillness captures the moment of breach — a daguerreotype of apex motion, the image hazed by water pressure.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "orca",
+    "obscura"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.359,
+    "warmth": 0.368,
+    "movement": 0.445,
+    "density": 0.766,
+    "space": 0.691,
+    "aggression": 0.487
+  },
+  "parameters": {
+    "Orca": {
+      "orca_wavetablePos": 0.834,
+      "orca_wavetableScan": 0.37,
+      "orca_echoDepth": 0.35,
+      "orca_huntMacro": 0.422,
+      "orca_breachAmt": 0.878,
+      "orca_podSync": 0.131,
+      "orca_pitchRand": 0.149,
+      "orca_ampAttack": 0.0248,
+      "orca_ampDecay": 0.526,
+      "orca_ampSustain": 0.711,
+      "orca_ampRelease": 2.8,
+      "orca_filterCutoff": 0.887,
+      "orca_filterRes": 0.602,
+      "orca_lfo1Rate": 0.139,
+      "orca_lfo1Depth": 0.111,
+      "orca_lfo2Rate": 0.0397,
+      "orca_lfo2Depth": 0.195,
+      "orca_macroCharacter": 0.0,
+      "orca_macroPunch": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroSpace": 0.0
+    },
+    "Obscura": {
+      "obscura_stiffness": 0.517,
+      "obscura_filterCutoff": 0.508,
+      "obscura_lfoRate": 0.034,
+      "obscura_attack": 0.036,
+      "obscura_release": 1.0,
+      "obscura_macroCharacter": 0.0,
+      "obscura_macroCoupling": 0.093
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Orca",
+        "target": "Obscura",
+        "type": "WavetableSync",
+        "amount": 0.586,
+        "description": "Orca drives Obscura via WavetableSync"
+      }
+    ]
+  },
+  "sequencer": null
+}

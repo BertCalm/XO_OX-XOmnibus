@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Lagrange Siege",
+  "mood": "Foundation",
+  "engines": [
+    "Orbital"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.73,
+    "MOVEMENT": 0.13,
+    "COUPLING": 0.14,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.52,
+    "movement": 0.13,
+    "density": 0.78,
+    "space": 0.2,
+    "aggression": 0.94
+  },
+  "parameters": {},
+  "tags": [
+    "siege",
+    "orbital",
+    "lagrange",
+    "siege"
+  ],
+  "description": "Positioned at L1 — maximum aggression through perfect stillness."
+}

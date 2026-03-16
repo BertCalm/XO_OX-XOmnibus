@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Apoapsis Hold",
+  "mood": "Foundation",
+  "engines": [
+    "Orbital"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.71,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.19,
+    "SPACE": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.55,
+    "movement": 0.15,
+    "density": 0.7,
+    "space": 0.25,
+    "aggression": 0.87
+  },
+  "parameters": {},
+  "tags": [
+    "siege",
+    "orbital",
+    "apoapsis",
+    "hold"
+  ],
+  "description": "Orbit at its farthest point — zero velocity, maximum potential energy."
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Ink Cloud Burst",
+  "mood": "Flux",
+  "engines": [
+    "Octopus"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.745,
+    "MOVEMENT": 0.97,
+    "COUPLING": 0.19,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.55,
+    "movement": 0.97,
+    "density": 0.75,
+    "space": 0.2,
+    "aggression": 0.94
+  },
+  "parameters": {},
+  "tags": [
+    "violent",
+    "octopus",
+    "ink",
+    "burst"
+  ],
+  "description": "Defence as offence — dense chemical chaos at full release."
+}

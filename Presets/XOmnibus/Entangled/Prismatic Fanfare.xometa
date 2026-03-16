@@ -1,0 +1,39 @@
+{
+  "name": "Prismatic Fanfare",
+  "version": "1.0",
+  "engines": [
+    "OTTONI",
+    "OPTIC"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.75,
+    "SPACE": 0.55
+  },
+  "sonic_dna": {
+    "brightness": 0.73,
+    "warmth": 0.5,
+    "movement": 0.56,
+    "density": 0.6,
+    "space": 0.52,
+    "aggression": 0.52
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_REFRACTION",
+    "source": "OPTIC",
+    "target": "OTTONI",
+    "amount": 0.75
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ottoni",
+    "optic",
+    "triple"
+  ],
+  "description": "Fanfare hits optical array and shatters into spectral components \u2014 glory dispersed"
+}

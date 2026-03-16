@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Arctic Hover",
+  "mood": "Atmosphere",
+  "engines": [
+    "Osprey"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.07,
+    "COUPLING": 0.11,
+    "SPACE": 0.91
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.47,
+    "movement": 0.07,
+    "density": 0.22,
+    "space": 0.91,
+    "aggression": 0.03
+  },
+  "parameters": {},
+  "tags": [
+    "glacial",
+    "osprey",
+    "arctic",
+    "hover"
+  ],
+  "description": "Wings locked in a katabatic wind — stillness through perfect opposition."
+}

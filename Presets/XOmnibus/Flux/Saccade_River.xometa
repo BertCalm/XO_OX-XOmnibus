@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Saccade River",
+  "mood": "Flux",
+  "engines": [
+    "Optic"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.27,
+    "MOVEMENT": 0.87,
+    "COUPLING": 0.12,
+    "SPACE": 0.76
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.4,
+    "movement": 0.87,
+    "density": 0.32,
+    "space": 0.76,
+    "aggression": 0.14
+  },
+  "parameters": {},
+  "tags": [
+    "tidal",
+    "optic",
+    "saccade",
+    "river"
+  ],
+  "description": "Rapid eye movements as water — perception at tidal velocity."
+}

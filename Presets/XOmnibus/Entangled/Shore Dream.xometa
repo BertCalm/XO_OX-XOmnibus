@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "name": "Shore Dream",
+  "mood": "Entangled",
+  "engines": [
+    "Osteria",
+    "Odyssey"
+  ],
+  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "OSTERIA's tavern fades into ODYSSEY's drift — the session becoming memory, the shore becoming a dreaming pad.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "osteria",
+    "odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.567,
+    "warmth": 0.671,
+    "movement": 0.512,
+    "density": 0.654,
+    "space": 0.676,
+    "aggression": 0.151
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_qBassShore": 0.556,
+      "osteria_qHarmShore": 0.439,
+      "osteria_qMelShore": 0.668,
+      "osteria_qRhythmShore": 0.458,
+      "osteria_qElastic": 0.739,
+      "osteria_qStretch": 0.203,
+      "osteria_qMemory": 0.616,
+      "osteria_qSympathy": 0.712,
+      "osteria_bassLevel": 0.643,
+      "osteria_harmLevel": 0.464,
+      "osteria_melLevel": 0.731,
+      "osteria_rhythmLevel": 0.361,
+      "osteria_ensWidth": 0.496,
+      "osteria_blendMode": 0.197,
+      "osteria_tavernMix": 0.301,
+      "osteria_tavernShore": 0.238,
+      "osteria_murmur": 0.357,
+      "osteria_warmth": 0.799,
+      "osteria_oceanBleed": 0.224,
+      "osteria_patina": 0.518,
+      "osteria_porto": 0.267,
+      "osteria_smoke": 0.308,
+      "osteria_filterEnvDepth": 0.283,
+      "osteria_attack": 0.136,
+      "osteria_decay": 0.677,
+      "osteria_sustain": 0.738,
+      "osteria_release": 1.64,
+      "osteria_sessionDelay": 0.29,
+      "osteria_hall": 0.591,
+      "osteria_chorus": 0.039,
+      "osteria_tape": 0.182,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.0
+    },
+    "Odyssey": {
+      "drift_oscA_mode": 0,
+      "drift_oscA_level": 0.416,
+      "drift_driftDepth": 0.292,
+      "drift_filterCutoff": 1.0,
+      "drift_attack": 0.37,
+      "drift_release": 1.0,
+      "drift_macroCharacter": 0.114,
+      "drift_macroCoupling": 0.037
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Osteria",
+        "target": "Odyssey",
+        "type": "DriftLock",
+        "amount": 0.625,
+        "description": "Osteria drives Odyssey via DriftLock"
+      }
+    ]
+  },
+  "sequencer": null
+}

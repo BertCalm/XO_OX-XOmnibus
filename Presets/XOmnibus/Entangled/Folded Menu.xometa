@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "name": "Folded Menu",
+  "mood": "Entangled",
+  "engines": [
+    "Osteria",
+    "Origami"
+  ],
+  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "ORIGAMI's fold geometry applied to OSTERIA's menu structure — the tactile architecture of paper and the sensory architecture of food.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "osteria",
+    "origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.631,
+    "warmth": 0.716,
+    "movement": 0.516,
+    "density": 0.539,
+    "space": 0.464,
+    "aggression": 0.476
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_qBassShore": 0.652,
+      "osteria_qHarmShore": 0.678,
+      "osteria_qMelShore": 0.552,
+      "osteria_qRhythmShore": 0.177,
+      "osteria_qElastic": 0.461,
+      "osteria_qStretch": 0.552,
+      "osteria_qMemory": 0.824,
+      "osteria_qSympathy": 0.366,
+      "osteria_bassLevel": 0.533,
+      "osteria_harmLevel": 0.649,
+      "osteria_melLevel": 0.447,
+      "osteria_rhythmLevel": 0.246,
+      "osteria_ensWidth": 0.794,
+      "osteria_blendMode": 0.554,
+      "osteria_tavernMix": 0.593,
+      "osteria_tavernShore": 0.557,
+      "osteria_murmur": 0.368,
+      "osteria_warmth": 0.786,
+      "osteria_oceanBleed": 0.103,
+      "osteria_patina": 0.249,
+      "osteria_porto": 0.247,
+      "osteria_smoke": 0.127,
+      "osteria_filterEnvDepth": 0.192,
+      "osteria_attack": 0.296,
+      "osteria_decay": 0.743,
+      "osteria_sustain": 0.577,
+      "osteria_release": 2.08,
+      "osteria_sessionDelay": 0.163,
+      "osteria_hall": 0.364,
+      "osteria_chorus": 0.087,
+      "osteria_tape": 0.003,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.0
+    },
+    "Origami": {
+      "origami_foldPoint": 0.449,
+      "origami_filterCutoff": 0.473,
+      "origami_lfoRate": 0.0,
+      "origami_attack": 0.0,
+      "origami_release": 1.0,
+      "origami_macroCharacter": 0.0,
+      "origami_macroCoupling": 0.025
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Osteria",
+        "target": "Origami",
+        "type": "WavetableSync",
+        "amount": 0.832,
+        "description": "Osteria drives Origami via WavetableSync"
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Arctic Shard Near",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.822,
+    "warmth": 0.092,
+    "movement": 0.129,
+    "density": 0.029,
+    "space": 0.724,
+    "aggression": 0.008
+  },
+  "engines": [
+    "OPTIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sub-zero shimmer. The silence between notes is the sound.",
+  "tags": [
+    "prism",
+    "cold",
+    "sparse",
+    "crystalline",
+    "airy",
+    "spacious",
+    "bright"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.822,
+    "warmth": 0.092,
+    "movement": 0.129,
+    "density": 0.029,
+    "space": 0.724,
+    "aggression": 0.008
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

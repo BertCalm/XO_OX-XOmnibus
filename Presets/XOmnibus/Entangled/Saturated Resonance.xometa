@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Saturated Resonance",
+  "mood": "Entangled",
+  "engines": [
+    "Owlfish",
+    "Obese"
+  ],
+  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "OBESE's fat saturation feeding OWLFISH's resonant feedback — distorted harmonics amplified by the Mixtur-Trautonium chain.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "owlfish",
+    "obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.59,
+    "warmth": 0.518,
+    "movement": 0.447,
+    "density": 0.662,
+    "space": 0.469,
+    "aggression": 0.513
+  },
+  "parameters": {
+    "Owlfish": {
+      "owl_filterCutoff": 0.617,
+      "owl_filterRes": 0.408,
+      "owl_oscPitch": 0.497,
+      "owl_oscLevel": 0.524,
+      "owl_subLevel": 0.488,
+      "owl_mixturSpread": 0.296,
+      "owl_mixturBlend": 0.521,
+      "owl_resonantPitch": 0.325,
+      "owl_resonantFeedback": 0.48,
+      "owl_abyssalDrive": 0.544,
+      "owl_ampAttack": 0.244,
+      "owl_ampDecay": 0.456,
+      "owl_ampSustain": 0.597,
+      "owl_ampRelease": 3.16,
+      "owl_lfoRate": 0.17,
+      "owl_lfoDepth": 0.196,
+      "owl_lfoShape": 0.145,
+      "owl_envDepth": 0.559,
+      "owl_hall": 0.696,
+      "owl_shimmer": 0.183,
+      "owl_macroCharacter": 0.0,
+      "owl_macroMovement": 0.0,
+      "owl_macroCoupling": 0.0,
+      "owl_macroSpace": 0.0
+    },
+    "Obese": {
+      "fat_satDrive": 0.545,
+      "fat_filterCutoff": 0.584,
+      "fat_lfoRate": 0.085,
+      "fat_attack": 0.0,
+      "fat_release": 0.908,
+      "fat_macroMojo": 0.096,
+      "fat_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Owlfish",
+        "target": "Obese",
+        "type": "ResonanceChain",
+        "amount": 0.706,
+        "description": "Owlfish drives Obese via ResonanceChain"
+      }
+    ]
+  },
+  "sequencer": null
+}

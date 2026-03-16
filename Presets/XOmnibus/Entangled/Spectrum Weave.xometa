@@ -1,0 +1,39 @@
+{
+  "name": "Spectrum Weave",
+  "version": "1.0",
+  "engines": [
+    "ORPHICA",
+    "OPTIC"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.75,
+    "SPACE": 0.7
+  },
+  "sonic_dna": {
+    "brightness": 0.76,
+    "warmth": 0.44,
+    "movement": 0.74,
+    "density": 0.42,
+    "space": 0.58,
+    "aggression": 0.25
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_REFRACTION",
+    "source": "ORPHICA",
+    "target": "OPTIC",
+    "amount": 0.75
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "orphica",
+    "optic",
+    "microsound"
+  ],
+  "description": "Microsound harp threads through prismatic refraction \u2014 each grain a different hue"
+}

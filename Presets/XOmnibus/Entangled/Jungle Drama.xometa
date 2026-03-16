@@ -1,0 +1,39 @@
+{
+  "name": "Jungle Drama",
+  "version": "1.0",
+  "engines": [
+    "OLE",
+    "OCELOT"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.8,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.75,
+    "SPACE": 0.45
+  },
+  "sonic_dna": {
+    "brightness": 0.68,
+    "warmth": 0.64,
+    "movement": 0.81,
+    "density": 0.58,
+    "space": 0.48,
+    "aggression": 0.58
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "PREDATOR_STALK",
+    "source": "OLE",
+    "target": "OCELOT",
+    "amount": 0.75
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ole",
+    "ocelot",
+    "afro-latin"
+  ],
+  "description": "Afro-Latin percussion meets the jungle cat \u2014 DRAMA macro triggers feline eruption"
+}

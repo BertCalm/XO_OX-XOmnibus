@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Tar Mass Pure",
+  "mood": "Foundation",
+  "sonic_dna": {
+    "brightness": 0.508,
+    "warmth": 0.891,
+    "movement": 0.484,
+    "density": 0.962,
+    "space": 0.292,
+    "aggression": 0.394
+  },
+  "engines": [
+    "OHM"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dense analog body with thick sustain and minimal air.",
+  "tags": [
+    "foundation",
+    "warm",
+    "dense",
+    "analog",
+    "thick"
+  ],
+  "macroLabels": [
+    "WARMTH",
+    "WEIGHT",
+    "COUPLING",
+    "DEPTH"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.508,
+    "warmth": 0.891,
+    "movement": 0.484,
+    "density": 0.962,
+    "space": 0.292,
+    "aggression": 0.394
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

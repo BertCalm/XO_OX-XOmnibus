@@ -1,0 +1,39 @@
+{
+  "name": "Photon Circle",
+  "version": "1.0",
+  "engines": [
+    "OHM",
+    "OPTIC"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.7,
+    "SPACE": 0.75
+  },
+  "sonic_dna": {
+    "brightness": 0.64,
+    "warmth": 0.59,
+    "movement": 0.62,
+    "density": 0.48,
+    "space": 0.64,
+    "aggression": 0.28
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_REFRACTION",
+    "source": "OPTIC",
+    "target": "OHM",
+    "amount": 0.7
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "optic",
+    "hippy"
+  ],
+  "description": "Communal chant processed through optical shimmer \u2014 shared breath caught in light"
+}

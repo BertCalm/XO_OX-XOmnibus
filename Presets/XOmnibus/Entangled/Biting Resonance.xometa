@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Biting Resonance",
+  "mood": "Entangled",
+  "engines": [
+    "Owlfish",
+    "Overbite"
+  ],
+  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "OVERBITE's transient bite triggers OWLFISH's resonant ring — the fang that starts the oscillator, the tone that follows the strike.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "owlfish",
+    "overbite"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.438,
+    "warmth": 0.505,
+    "movement": 0.581,
+    "density": 0.617,
+    "space": 0.431,
+    "aggression": 0.628
+  },
+  "parameters": {
+    "Owlfish": {
+      "owl_filterCutoff": 0.474,
+      "owl_filterRes": 0.376,
+      "owl_oscPitch": 0.581,
+      "owl_oscLevel": 0.534,
+      "owl_subLevel": 0.311,
+      "owl_mixturSpread": 0.644,
+      "owl_mixturBlend": 0.605,
+      "owl_resonantPitch": 0.302,
+      "owl_resonantFeedback": 0.462,
+      "owl_abyssalDrive": 0.483,
+      "owl_ampAttack": 0.19,
+      "owl_ampDecay": 0.79,
+      "owl_ampSustain": 0.553,
+      "owl_ampRelease": 2.99,
+      "owl_lfoRate": 0.099,
+      "owl_lfoDepth": 0.169,
+      "owl_lfoShape": 0.854,
+      "owl_envDepth": 0.354,
+      "owl_hall": 0.409,
+      "owl_shimmer": 0.357,
+      "owl_macroCharacter": 0.0,
+      "owl_macroMovement": 0.0,
+      "owl_macroCoupling": 0.0,
+      "owl_macroSpace": 0.0
+    },
+    "Overbite": {
+      "poss_biteDepth": 0.558,
+      "poss_filterCutoff": 0.471,
+      "poss_lfoRate": 0.117,
+      "poss_attack": 0.0,
+      "poss_release": 0.825,
+      "poss_macroBite": 0.098,
+      "poss_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Owlfish",
+        "target": "Overbite",
+        "type": "LFO_SYNC",
+        "amount": 0.558,
+        "description": "Owlfish drives Overbite via LFO_SYNC"
+      }
+    ]
+  },
+  "sequencer": null
+}

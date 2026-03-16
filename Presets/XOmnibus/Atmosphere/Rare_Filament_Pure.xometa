@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Rare Filament Pure",
+  "mood": "Atmosphere",
+  "sonic_dna": {
+    "brightness": 0.542,
+    "warmth": 0.867,
+    "movement": 0.714,
+    "density": 0.042,
+    "space": 0.628,
+    "aggression": 0.15
+  },
+  "engines": [
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sun through fog: radiant warmth, minimal presence.",
+  "tags": [
+    "atmosphere",
+    "warm",
+    "sparse",
+    "airy",
+    "breath",
+    "evolving"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.542,
+    "warmth": 0.867,
+    "movement": 0.714,
+    "density": 0.042,
+    "space": 0.628,
+    "aggression": 0.15
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

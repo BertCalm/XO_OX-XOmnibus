@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Crystal Mote III",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.771,
+    "warmth": 0.155,
+    "movement": 0.289,
+    "density": 0.066,
+    "space": 0.645,
+    "aggression": 0.167
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sparse prism scatter \u2014 each partial isolated in cold space.",
+  "tags": [
+    "prism",
+    "cold",
+    "sparse",
+    "crystalline",
+    "airy",
+    "bright"
+  ],
+  "macroLabels": [
+    "FREEZE",
+    "GLINT",
+    "COUPLING",
+    "VOID"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.771,
+    "warmth": 0.155,
+    "movement": 0.289,
+    "density": 0.066,
+    "space": 0.645,
+    "aggression": 0.167
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

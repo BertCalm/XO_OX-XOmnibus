@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "name": "Liminal Camouflage",
+  "mood": "Entangled",
+  "engines": [
+    "Octopus",
+    "Ombre"
+  ],
+  "author": "XO_OX Deep Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "The boundary between hiding and being seen dissolves; shadow and signal trade places every bar.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "octopus",
+    "ombre",
+    "memory",
+    "shape-shifting",
+    "marquee"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "Octopus": {
+      "octo_armCount": 4.0,
+      "octo_armSpread": 0.556,
+      "octo_armBaseRate": 0.752,
+      "octo_armDepth": 0.813,
+      "octo_chromaSens": 0.725,
+      "octo_chromaSpeed": 0.248,
+      "octo_chromaMorph": 0.729,
+      "octo_chromaDepth": 0.729,
+      "octo_chromaFreq": 3051.2,
+      "octo_inkThreshold": 0.562,
+      "octo_inkDensity": 0.746,
+      "octo_inkDecay": 0.611,
+      "octo_inkMix": 0.48,
+      "octo_shiftMicro": 0.336,
+      "octo_shiftGlide": 0.171,
+      "octo_shiftDrift": 0.336,
+      "octo_suckerReso": 0.334,
+      "octo_suckerFreq": 2390.3,
+      "octo_suckerDecay": 0.212,
+      "octo_suckerMix": 0.681,
+      "octo_wtPosition": 0.578,
+      "octo_wtScanRate": 0.148,
+      "octo_filterCutoff": 6955.2,
+      "octo_filterReso": 0.463,
+      "octo_level": 0.81,
+      "octo_ampAttack": 0.0184,
+      "octo_ampDecay": 0.225,
+      "octo_ampSustain": 0.438,
+      "octo_ampRelease": 1.241,
+      "octo_modAttack": 0.008,
+      "octo_modDecay": 0.119,
+      "octo_modSustain": 0.408,
+      "octo_modRelease": 0.316,
+      "octo_lfo1Rate": 0.963,
+      "octo_lfo1Depth": 0.556,
+      "octo_lfo1Shape": 0.0,
+      "octo_lfo2Rate": 1.658,
+      "octo_lfo2Depth": 0.574,
+      "octo_lfo2Shape": 0.0
+    },
+    "Ombre": {
+      "ombre_blend": 0.25,
+      "ombre_memoryDepth": 0.519,
+      "ombre_forgetRate": 0.242,
+      "ombre_shadowAmount": 0.325,
+      "ombre_duskPosition": 0.499,
+      "ombre_narrativeA": 0.563,
+      "ombre_narrativeB": 0.299,
+      "ombre_crossfadeRate": 0.403,
+      "ombre_toneA": 3689.6,
+      "ombre_toneB": 997.4,
+      "ombre_filterCutoff": 5272.8,
+      "ombre_filterReso": 0.441,
+      "ombre_level": 0.752,
+      "ombre_ampAttack": 0.047,
+      "ombre_ampDecay": 0.361,
+      "ombre_ampSustain": 0.631,
+      "ombre_ampRelease": 1.613,
+      "ombre_modAttack": 0.0473,
+      "ombre_modDecay": 0.532,
+      "ombre_modSustain": 0.433,
+      "ombre_modRelease": 1.461,
+      "ombre_lfo1Rate": 1.376,
+      "ombre_lfo1Depth": 0.214,
+      "ombre_lfo2Rate": 0.29,
+      "ombre_lfo2Depth": 0.432,
+      "ombre_spaceMix": 0.434,
+      "ombre_reverbSize": 0.466,
+      "ombre_reverbDamp": 0.557
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "type": "AMPLITUDE_MODULATION",
+        "source": "Octopus",
+        "target": "Ombre",
+        "amount": 0.6
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.554,
+    "warmth": 0.484,
+    "movement": 0.644,
+    "density": 0.576,
+    "space": 0.597,
+    "aggression": 0.425
+  }
+}

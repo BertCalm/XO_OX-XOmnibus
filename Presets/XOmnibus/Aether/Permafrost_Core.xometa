@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Permafrost Core",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.234,
+    "warmth": 0.141,
+    "movement": 0.413,
+    "density": 0.962,
+    "space": 0.369,
+    "aggression": 0.414
+  },
+  "engines": [
+    "OCTOPUS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Negative thermal density. Mass without heat, depth without air.",
+  "tags": [
+    "aether",
+    "cold",
+    "dense",
+    "dark",
+    "pressure"
+  ],
+  "macroLabels": [
+    "GRAVITY",
+    "CRUSH",
+    "COUPLING",
+    "DESCENT"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.234,
+    "warmth": 0.141,
+    "movement": 0.413,
+    "density": 0.962,
+    "space": 0.369,
+    "aggression": 0.414
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

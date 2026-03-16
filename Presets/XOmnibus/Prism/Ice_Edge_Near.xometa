@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Ice Edge Near",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.86,
+    "warmth": 0.078,
+    "movement": 0.322,
+    "density": 0.167,
+    "space": 0.893,
+    "aggression": 0.066
+  },
+  "engines": [
+    "OBSCURA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Glass filament vibration, barely there, barely audible.",
+  "tags": [
+    "prism",
+    "cold",
+    "sparse",
+    "crystalline",
+    "airy",
+    "spacious",
+    "bright"
+  ],
+  "macroLabels": [
+    "PRISM",
+    "DISTANCE",
+    "COUPLING",
+    "TAIL"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.078,
+    "movement": 0.322,
+    "density": 0.167,
+    "space": 0.893,
+    "aggression": 0.066
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

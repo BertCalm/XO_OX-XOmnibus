@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Harp Tide",
+  "mood": "Flux",
+  "engines": [
+    "Orphica"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.34,
+    "SPACE": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.45,
+    "movement": 0.9,
+    "density": 0.25,
+    "space": 0.88,
+    "aggression": 0.05
+  },
+  "parameters": {},
+  "tags": [
+    "tidal",
+    "orphica",
+    "harp",
+    "tide"
+  ],
+  "description": "String grains swept by a benevolent current — fast, musical, serene."
+}

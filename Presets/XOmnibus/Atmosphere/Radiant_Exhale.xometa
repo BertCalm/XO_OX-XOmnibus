@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Radiant Exhale",
+  "mood": "Atmosphere",
+  "sonic_dna": {
+    "brightness": 0.621,
+    "warmth": 0.909,
+    "movement": 0.442,
+    "density": 0.133,
+    "space": 0.68,
+    "aggression": 0.202
+  },
+  "engines": [
+    "ORPHICA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Warm breath on cold glass \u2014 heat without weight.",
+  "tags": [
+    "atmosphere",
+    "warm",
+    "sparse",
+    "airy",
+    "breath"
+  ],
+  "macroLabels": [
+    "GLOW",
+    "WANDER",
+    "COUPLING",
+    "AIR"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.621,
+    "warmth": 0.909,
+    "movement": 0.442,
+    "density": 0.133,
+    "space": 0.68,
+    "aggression": 0.202
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

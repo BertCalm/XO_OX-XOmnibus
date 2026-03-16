@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Osteria Standoff",
+  "mood": "Foundation",
+  "engines": [
+    "Osteria"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.25,
+    "SPACE": 0.32
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.6,
+    "movement": 0.05,
+    "density": 0.68,
+    "space": 0.32,
+    "aggression": 0.9
+  },
+  "parameters": {},
+  "tags": [
+    "siege",
+    "osteria",
+    "standoff",
+    "heavy"
+  ],
+  "description": "The tavern in the siege town — unmoving through the bombardment."
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Orca Breach",
+  "mood": "Flux",
+  "engines": [
+    "Orca"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.73,
+    "MOVEMENT": 0.99,
+    "COUPLING": 0.1,
+    "SPACE": 0.18
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.5,
+    "movement": 0.99,
+    "density": 0.75,
+    "space": 0.18,
+    "aggression": 0.96
+  },
+  "parameters": {},
+  "tags": [
+    "violent",
+    "orca",
+    "breach",
+    "impact"
+  ],
+  "description": "Five-tonne body airborne — re-entry as sonic event."
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Clave Stalk",
+  "version": "1.0",
+  "engines": [
+    "OLE",
+    "OCELOT"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.8,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.6,
+    "SPACE": 0.45
+  },
+  "sonic_dna": {
+    "brightness": 0.68,
+    "warmth": 0.64,
+    "movement": 0.81,
+    "density": 0.58,
+    "space": 0.48,
+    "aggression": 0.58
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "PREDATOR_STALK",
+    "source": "OCELOT",
+    "target": "OLE",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ole",
+    "ocelot",
+    "afro-latin"
+  ],
+  "description": "Ocelot moves through clave rhythm \u2014 each predatory step precisely on the pulse"
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Paper Cascade",
+  "mood": "Flux",
+  "engines": [
+    "Origami"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.34,
+    "MOVEMENT": 0.96,
+    "COUPLING": 0.25,
+    "SPACE": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.57,
+    "movement": 0.96,
+    "density": 0.3,
+    "space": 0.82,
+    "aggression": 0.11
+  },
+  "parameters": {},
+  "tags": [
+    "tidal",
+    "origami",
+    "paper",
+    "cascade"
+  ],
+  "description": "A thousand cranes unfolding simultaneously — motion as meditation."
+}

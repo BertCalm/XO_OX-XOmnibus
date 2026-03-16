@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Cold Horizon Core",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.339,
+    "warmth": 0.057,
+    "movement": 0.305,
+    "density": 0.892,
+    "space": 0.3,
+    "aggression": 0.628
+  },
+  "engines": [
+    "OBSIDIAN"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Abyssal density without warmth: dark matter in audio form.",
+  "tags": [
+    "aether",
+    "cold",
+    "dense",
+    "dark",
+    "pressure",
+    "aggressive"
+  ],
+  "macroLabels": [
+    "CYCLE",
+    "CONSUME",
+    "COUPLING",
+    "VOID"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.339,
+    "warmth": 0.057,
+    "movement": 0.305,
+    "density": 0.892,
+    "space": 0.3,
+    "aggression": 0.628
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

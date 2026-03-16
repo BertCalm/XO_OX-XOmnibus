@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Frozen Breath",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.774,
+    "warmth": 0.061,
+    "movement": 0.35,
+    "density": 0.123,
+    "space": 0.71,
+    "aggression": 0.07
+  },
+  "engines": [
+    "OVERWORLD"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Crystal lattice tone \u2014 intervals measured, density absent.",
+  "tags": [
+    "prism",
+    "cold",
+    "sparse",
+    "crystalline",
+    "airy",
+    "spacious",
+    "bright"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.774,
+    "warmth": 0.061,
+    "movement": 0.35,
+    "density": 0.123,
+    "space": 0.71,
+    "aggression": 0.07
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

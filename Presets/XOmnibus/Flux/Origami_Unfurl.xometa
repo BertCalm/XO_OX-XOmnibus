@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Origami Unfurl",
+  "mood": "Flux",
+  "engines": [
+    "Origami"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.31,
+    "MOVEMENT": 0.91,
+    "COUPLING": 0.31,
+    "SPACE": 0.8
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.55,
+    "movement": 0.91,
+    "density": 0.35,
+    "space": 0.8,
+    "aggression": 0.07
+  },
+  "parameters": {},
+  "tags": [
+    "tidal",
+    "origami",
+    "unfurl",
+    "fold"
+  ],
+  "description": "Paper folds releasing in rapid sequence — kinetic grace at speed."
+}

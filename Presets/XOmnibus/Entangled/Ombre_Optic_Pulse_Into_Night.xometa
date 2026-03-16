@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "name": "Pulse Into Night",
+  "mood": "Entangled",
+  "engines": [
+    "Ombre",
+    "Optic"
+  ],
+  "author": "XO_OX Deep Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "Optic's phosphor-green pulses fade through the shadow gradient — light becoming less of itself.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "ombre",
+    "optic",
+    "memory",
+    "twilight",
+    "liminal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.366,
+      "ombre_memoryDepth": 0.828,
+      "ombre_forgetRate": 0.163,
+      "ombre_shadowAmount": 0.631,
+      "ombre_duskPosition": 0.692,
+      "ombre_narrativeA": 0.85,
+      "ombre_narrativeB": 0.113,
+      "ombre_crossfadeRate": 0.34,
+      "ombre_toneA": 7273.4,
+      "ombre_toneB": 2095.0,
+      "ombre_filterCutoff": 1627.4,
+      "ombre_filterReso": 0.472,
+      "ombre_level": 0.666,
+      "ombre_ampAttack": 0.0843,
+      "ombre_ampDecay": 0.625,
+      "ombre_ampSustain": 0.659,
+      "ombre_ampRelease": 1.547,
+      "ombre_modAttack": 0.0669,
+      "ombre_modDecay": 0.595,
+      "ombre_modSustain": 0.573,
+      "ombre_modRelease": 0.602,
+      "ombre_lfo1Rate": 1.266,
+      "ombre_lfo1Depth": 0.35,
+      "ombre_lfo2Rate": 0.483,
+      "ombre_lfo2Depth": 0.123,
+      "ombre_spaceMix": 0.778,
+      "ombre_reverbSize": 0.657,
+      "ombre_reverbDamp": 0.538
+    },
+    "Optic": {
+      "optic_level": 0.756,
+      "optic_filterCutoff": 6104.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "type": "FILTER_COUPLING",
+        "source": "Ombre",
+        "target": "Optic",
+        "amount": 0.8
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.507,
+    "movement": 0.675,
+    "density": 0.536,
+    "space": 0.644,
+    "aggression": 0.29
+  }
+}

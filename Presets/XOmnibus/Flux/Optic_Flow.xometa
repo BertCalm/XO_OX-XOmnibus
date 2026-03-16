@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Optic Flow",
+  "mood": "Flux",
+  "engines": [
+    "Optic"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.235,
+    "MOVEMENT": 0.93,
+    "COUPLING": 0.16,
+    "SPACE": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.38,
+    "movement": 0.93,
+    "density": 0.35,
+    "space": 0.78,
+    "aggression": 0.09
+  },
+  "parameters": {},
+  "tags": [
+    "tidal",
+    "optic",
+    "flow",
+    "light"
+  ],
+  "description": "Visual field streaming past at speed — all movement, no tension."
+}

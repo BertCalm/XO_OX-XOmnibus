@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "name": "Forgetting Arm By Arm",
+  "mood": "Entangled",
+  "engines": [
+    "Octopus",
+    "Ombre"
+  ],
+  "author": "XO_OX Deep Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "Each arm carries a separate memory; one by one they go dark, leaving only the mauve residue of having been.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "octopus",
+    "ombre",
+    "memory",
+    "shape-shifting",
+    "marquee"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "Octopus": {
+      "octo_armCount": 4.0,
+      "octo_armSpread": 0.741,
+      "octo_armBaseRate": 0.628,
+      "octo_armDepth": 0.628,
+      "octo_chromaSens": 0.742,
+      "octo_chromaSpeed": 0.531,
+      "octo_chromaMorph": 0.37,
+      "octo_chromaDepth": 0.537,
+      "octo_chromaFreq": 2097.8,
+      "octo_inkThreshold": 0.58,
+      "octo_inkDensity": 0.785,
+      "octo_inkDecay": 0.33,
+      "octo_inkMix": 0.362,
+      "octo_shiftMicro": 0.366,
+      "octo_shiftGlide": 0.383,
+      "octo_shiftDrift": 0.451,
+      "octo_suckerReso": 0.759,
+      "octo_suckerFreq": 1954.8,
+      "octo_suckerDecay": 0.101,
+      "octo_suckerMix": 0.613,
+      "octo_wtPosition": 0.259,
+      "octo_wtScanRate": 0.574,
+      "octo_filterCutoff": 10562.8,
+      "octo_filterReso": 0.491,
+      "octo_level": 0.774,
+      "octo_ampAttack": 0.0238,
+      "octo_ampDecay": 0.215,
+      "octo_ampSustain": 0.552,
+      "octo_ampRelease": 1.199,
+      "octo_modAttack": 0.0251,
+      "octo_modDecay": 0.246,
+      "octo_modSustain": 0.52,
+      "octo_modRelease": 0.808,
+      "octo_lfo1Rate": 1.538,
+      "octo_lfo1Depth": 0.3,
+      "octo_lfo1Shape": 0.75,
+      "octo_lfo2Rate": 0.442,
+      "octo_lfo2Depth": 0.235,
+      "octo_lfo2Shape": 0.25
+    },
+    "Ombre": {
+      "ombre_blend": 0.238,
+      "ombre_memoryDepth": 0.616,
+      "ombre_forgetRate": 0.686,
+      "ombre_shadowAmount": 0.654,
+      "ombre_duskPosition": 0.394,
+      "ombre_narrativeA": 0.747,
+      "ombre_narrativeB": 0.298,
+      "ombre_crossfadeRate": 0.307,
+      "ombre_toneA": 2764.3,
+      "ombre_toneB": 505.5,
+      "ombre_filterCutoff": 6665.9,
+      "ombre_filterReso": 0.284,
+      "ombre_level": 0.658,
+      "ombre_ampAttack": 0.1999,
+      "ombre_ampDecay": 0.739,
+      "ombre_ampSustain": 0.494,
+      "ombre_ampRelease": 1.306,
+      "ombre_modAttack": 0.0824,
+      "ombre_modDecay": 0.488,
+      "ombre_modSustain": 0.583,
+      "ombre_modRelease": 0.508,
+      "ombre_lfo1Rate": 1.211,
+      "ombre_lfo1Depth": 0.429,
+      "ombre_lfo2Rate": 0.297,
+      "ombre_lfo2Depth": 0.264,
+      "ombre_spaceMix": 0.75,
+      "ombre_reverbSize": 0.871,
+      "ombre_reverbDamp": 0.421
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "type": "FILTER_COUPLING",
+        "source": "Octopus",
+        "target": "Ombre",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.549,
+    "warmth": 0.472,
+    "movement": 0.744,
+    "density": 0.639,
+    "space": 0.591,
+    "aggression": 0.305
+  }
+}

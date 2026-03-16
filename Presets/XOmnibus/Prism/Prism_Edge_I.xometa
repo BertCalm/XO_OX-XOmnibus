@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Prism Edge I",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.63,
+    "warmth": 0.13,
+    "movement": 0.168,
+    "density": 0.107,
+    "space": 0.881,
+    "aggression": 0.148
+  },
+  "engines": [
+    "ONSET"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Frozen millisecond \u2014 cold attack, instant decay, vast tail.",
+  "tags": [
+    "prism",
+    "cold",
+    "sparse",
+    "crystalline",
+    "airy",
+    "spacious"
+  ],
+  "macroLabels": [
+    "CRYSTAL",
+    "BREATH",
+    "COUPLING",
+    "OPEN"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.63,
+    "warmth": 0.13,
+    "movement": 0.168,
+    "density": 0.107,
+    "space": 0.881,
+    "aggression": 0.148
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

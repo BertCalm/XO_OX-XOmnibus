@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Sparse Trace Raw",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.759,
+    "warmth": 0.119,
+    "movement": 0.261,
+    "density": 0.118,
+    "space": 0.981,
+    "aggression": 0.088
+  },
+  "engines": [
+    "OBLIQUE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sub-zero shimmer. The silence between notes is the sound.",
+  "tags": [
+    "prism",
+    "cold",
+    "sparse",
+    "crystalline",
+    "airy",
+    "spacious",
+    "bright"
+  ],
+  "macroLabels": [
+    "CRYSTAL",
+    "BREATH",
+    "COUPLING",
+    "OPEN"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.759,
+    "warmth": 0.119,
+    "movement": 0.261,
+    "density": 0.118,
+    "space": 0.981,
+    "aggression": 0.088
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

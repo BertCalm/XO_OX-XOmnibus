@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Thermal Rise",
+  "mood": "Atmosphere",
+  "sonic_dna": {
+    "brightness": 0.645,
+    "warmth": 0.834,
+    "movement": 0.686,
+    "density": 0.094,
+    "space": 0.58,
+    "aggression": 0.168
+  },
+  "engines": [
+    "OLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Single warm partial in vast open space \u2014 glowing, alone.",
+  "tags": [
+    "atmosphere",
+    "warm",
+    "sparse",
+    "airy",
+    "breath",
+    "evolving"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.645,
+    "warmth": 0.834,
+    "movement": 0.686,
+    "density": 0.094,
+    "space": 0.58,
+    "aggression": 0.168
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

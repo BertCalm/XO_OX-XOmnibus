@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Stone Table",
+  "mood": "Foundation",
+  "engines": [
+    "Osteria"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.785,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.14,
+    "SPACE": 0.26
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.62,
+    "movement": 0.1,
+    "density": 0.72,
+    "space": 0.26,
+    "aggression": 0.95
+  },
+  "parameters": {},
+  "tags": [
+    "siege",
+    "osteria",
+    "stone",
+    "table"
+  ],
+  "description": "Unmovable mass at the centre of the room — dense, still, dominant."
+}

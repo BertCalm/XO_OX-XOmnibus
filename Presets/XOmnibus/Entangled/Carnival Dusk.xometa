@@ -1,0 +1,39 @@
+{
+  "name": "Carnival Dusk",
+  "version": "1.0",
+  "engines": [
+    "OLE",
+    "OMBRE"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.55,
+    "SPACE": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.66,
+    "warmth": 0.66,
+    "movement": 0.71,
+    "density": 0.56,
+    "space": 0.6,
+    "aggression": 0.4
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "GRADIENT_DISSOLVE",
+    "source": "OLE",
+    "target": "OMBRE",
+    "amount": 0.55
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ole",
+    "ombre",
+    "afro-latin"
+  ],
+  "description": "Afro-Latin celebration winding down \u2014 the drums fade through gradient twilight"
+}

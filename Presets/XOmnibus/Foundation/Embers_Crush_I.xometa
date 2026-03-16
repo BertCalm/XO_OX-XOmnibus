@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Embers Crush I",
+  "mood": "Foundation",
+  "sonic_dna": {
+    "brightness": 0.268,
+    "warmth": 0.903,
+    "movement": 0.474,
+    "density": 0.867,
+    "space": 0.211,
+    "aggression": 0.604
+  },
+  "engines": [
+    "ORGANON"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sub-heavy foundation with slow bloom and settled weight.",
+  "tags": [
+    "foundation",
+    "warm",
+    "dense",
+    "analog",
+    "thick",
+    "aggressive"
+  ],
+  "macroLabels": [
+    "MELT",
+    "COMPRESS",
+    "COUPLING",
+    "TAIL"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.268,
+    "warmth": 0.903,
+    "movement": 0.474,
+    "density": 0.867,
+    "space": 0.211,
+    "aggression": 0.604
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Brass Ambush",
+  "version": "1.0",
+  "engines": [
+    "OTTONI",
+    "OCELOT"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.65,
+    "SPACE": 0.45
+  },
+  "sonic_dna": {
+    "brightness": 0.65,
+    "warmth": 0.58,
+    "movement": 0.6,
+    "density": 0.64,
+    "space": 0.48,
+    "aggression": 0.64
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "PREDATOR_STALK",
+    "source": "OTTONI",
+    "target": "OCELOT",
+    "amount": 0.65
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ottoni",
+    "ocelot",
+    "triple"
+  ],
+  "description": "Triple brass fanfare interrupted by sudden ocelot pounce \u2014 stately meeting feral"
+}

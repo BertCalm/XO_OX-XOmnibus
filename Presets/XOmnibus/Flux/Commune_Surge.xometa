@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Commune Surge",
+  "mood": "Flux",
+  "engines": [
+    "Ohm"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.385,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.28,
+    "SPACE": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.67,
+    "movement": 0.88,
+    "density": 0.45,
+    "space": 0.78,
+    "aggression": 0.1
+  },
+  "parameters": {},
+  "tags": [
+    "tidal",
+    "ohm",
+    "commune",
+    "surge"
+  ],
+  "description": "The commune breathes in waves — collective motion without tension."
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Dense Vein",
+  "mood": "Foundation",
+  "sonic_dna": {
+    "brightness": 0.31,
+    "warmth": 0.929,
+    "movement": 0.46,
+    "density": 0.945,
+    "space": 0.201,
+    "aggression": 0.381
+  },
+  "engines": [
+    "OVERBITE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cauldron harmonic \u2014 boiling slowly, dense as cast iron.",
+  "tags": [
+    "foundation",
+    "warm",
+    "dense",
+    "analog",
+    "thick"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "DRIVE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.31,
+    "warmth": 0.929,
+    "movement": 0.46,
+    "density": 0.945,
+    "space": 0.201,
+    "aggression": 0.381
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Radiant Drift Near",
+  "mood": "Atmosphere",
+  "sonic_dna": {
+    "brightness": 0.548,
+    "warmth": 0.857,
+    "movement": 0.613,
+    "density": 0.104,
+    "space": 0.567,
+    "aggression": 0.223
+  },
+  "engines": [
+    "OCEANIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Thermal drift \u2014 a sparse harmonic rising on warm air.",
+  "tags": [
+    "atmosphere",
+    "warm",
+    "sparse",
+    "airy",
+    "breath",
+    "evolving"
+  ],
+  "macroLabels": [
+    "GLOW",
+    "WANDER",
+    "COUPLING",
+    "AIR"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.548,
+    "warmth": 0.857,
+    "movement": 0.613,
+    "density": 0.104,
+    "space": 0.567,
+    "aggression": 0.223
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

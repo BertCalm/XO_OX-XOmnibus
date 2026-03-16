@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "name": "Spot vs Sucker",
+  "mood": "Entangled",
+  "engines": [
+    "Octopus",
+    "Ocelot"
+  ],
+  "author": "XO_OX Deep Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "Ocelot rosette pattern cross-coupled to sucker adhesion array — two camouflage grammars arguing.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "octopus",
+    "ocelot",
+    "alien",
+    "decentralized"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "Octopus": {
+      "octo_armCount": 8.0,
+      "octo_armSpread": 0.708,
+      "octo_armBaseRate": 0.666,
+      "octo_armDepth": 0.577,
+      "octo_chromaSens": 0.563,
+      "octo_chromaSpeed": 0.376,
+      "octo_chromaMorph": 0.316,
+      "octo_chromaDepth": 0.56,
+      "octo_chromaFreq": 3033.3,
+      "octo_inkThreshold": 0.445,
+      "octo_inkDensity": 0.828,
+      "octo_inkDecay": 0.784,
+      "octo_inkMix": 0.484,
+      "octo_shiftMicro": 0.47,
+      "octo_shiftGlide": 0.027,
+      "octo_shiftDrift": 0.558,
+      "octo_suckerReso": 0.724,
+      "octo_suckerFreq": 1579.0,
+      "octo_suckerDecay": 0.152,
+      "octo_suckerMix": 0.525,
+      "octo_wtPosition": 0.897,
+      "octo_wtScanRate": 0.109,
+      "octo_filterCutoff": 3602.7,
+      "octo_filterReso": 0.609,
+      "octo_level": 0.803,
+      "octo_ampAttack": 0.0762,
+      "octo_ampDecay": 0.583,
+      "octo_ampSustain": 0.416,
+      "octo_ampRelease": 1.341,
+      "octo_modAttack": 0.0201,
+      "octo_modDecay": 0.251,
+      "octo_modSustain": 0.325,
+      "octo_modRelease": 0.544,
+      "octo_lfo1Rate": 1.756,
+      "octo_lfo1Depth": 0.303,
+      "octo_lfo1Shape": 0.25,
+      "octo_lfo2Rate": 0.578,
+      "octo_lfo2Depth": 0.121,
+      "octo_lfo2Shape": 0.0
+    },
+    "Ocelot": {
+      "ocelot_level": 0.69,
+      "ocelot_filterCutoff": 5154.8
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "type": "SPATIAL_BLEND",
+        "source": "Octopus",
+        "target": "Ocelot",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.707,
+    "warmth": 0.456,
+    "movement": 0.825,
+    "density": 0.701,
+    "space": 0.374,
+    "aggression": 0.607
+  }
+}

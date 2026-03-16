@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Abyssal Pull Dark",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.363,
+    "warmth": 0.053,
+    "movement": 0.299,
+    "density": 0.853,
+    "space": 0.504,
+    "aggression": 0.43
+  },
+  "engines": [
+    "XOwlfish"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cryogenic thickness \u2014 cold partials locked together tightly.",
+  "tags": [
+    "aether",
+    "cold",
+    "dense",
+    "dark",
+    "pressure"
+  ],
+  "macroLabels": [
+    "CYCLE",
+    "CONSUME",
+    "COUPLING",
+    "VOID"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.363,
+    "warmth": 0.053,
+    "movement": 0.299,
+    "density": 0.853,
+    "space": 0.504,
+    "aggression": 0.43
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

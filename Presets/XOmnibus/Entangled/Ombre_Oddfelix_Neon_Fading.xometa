@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "name": "Neon Fading",
+  "mood": "Entangled",
+  "engines": [
+    "Ombre",
+    "OddfeliX"
+  ],
+  "author": "XO_OX Deep Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "Neon pigment draining slowly from a schooling memory — the fish forget their colours at dusk.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "ombre",
+    "oddfelix",
+    "memory",
+    "twilight",
+    "liminal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.531,
+      "ombre_memoryDepth": 0.898,
+      "ombre_forgetRate": 0.232,
+      "ombre_shadowAmount": 0.793,
+      "ombre_duskPosition": 0.427,
+      "ombre_narrativeA": 0.514,
+      "ombre_narrativeB": 0.485,
+      "ombre_crossfadeRate": 0.199,
+      "ombre_toneA": 6847.1,
+      "ombre_toneB": 2930.7,
+      "ombre_filterCutoff": 2074.0,
+      "ombre_filterReso": 0.13,
+      "ombre_level": 0.794,
+      "ombre_ampAttack": 0.0967,
+      "ombre_ampDecay": 0.386,
+      "ombre_ampSustain": 0.659,
+      "ombre_ampRelease": 1.885,
+      "ombre_modAttack": 0.0162,
+      "ombre_modDecay": 0.706,
+      "ombre_modSustain": 0.494,
+      "ombre_modRelease": 0.968,
+      "ombre_lfo1Rate": 0.734,
+      "ombre_lfo1Depth": 0.459,
+      "ombre_lfo2Rate": 0.77,
+      "ombre_lfo2Depth": 0.434,
+      "ombre_spaceMix": 0.66,
+      "ombre_reverbSize": 0.89,
+      "ombre_reverbDamp": 0.694
+    },
+    "OddfeliX": {
+      "snap_level": 0.707,
+      "snap_filterCutoff": 7992.7
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "type": "PITCH_TRACKING",
+        "source": "Ombre",
+        "target": "OddfeliX",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.628,
+    "warmth": 0.512,
+    "movement": 0.556,
+    "density": 0.579,
+    "space": 0.528,
+    "aggression": 0.385
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Frozen Accumulation Core",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.496,
+    "warmth": 0.077,
+    "movement": 0.381,
+    "density": 0.972,
+    "space": 0.518,
+    "aggression": 0.514
+  },
+  "engines": [
+    "XOwlfish"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Abyssal density without warmth: dark matter in audio form.",
+  "tags": [
+    "aether",
+    "cold",
+    "dense",
+    "dark",
+    "pressure",
+    "aggressive"
+  ],
+  "macroLabels": [
+    "COLLAPSE",
+    "FEEDBACK",
+    "COUPLING",
+    "DARK"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.496,
+    "warmth": 0.077,
+    "movement": 0.381,
+    "density": 0.972,
+    "space": 0.518,
+    "aggression": 0.514
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

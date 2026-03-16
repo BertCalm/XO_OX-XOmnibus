@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "name": "Gold and Black Water",
+  "mood": "Entangled",
+  "engines": [
+    "Orca",
+    "Osteria",
+    "Owlfish"
+  ],
+  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "OWLFISH's Abyssal Gold meets ORCA's Deep Ocean — color before sound. OSTERIA's Porto Wine adds the third pigment. The mix is luminous and unsettling: a lamp in a kelp forest at killing depth.",
+  "tags": [
+    "entangled",
+    "three-way",
+    "spectral",
+    "textural",
+    "luminous",
+    "abyssal",
+    "marquee"
+  ],
+  "macroLabels": [
+    "GOLD",
+    "DARK",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.386,
+    "warmth": 0.529,
+    "movement": 0.369,
+    "density": 0.786,
+    "space": 0.465,
+    "aggression": 0.417
+  },
+  "parameters": {
+    "Orca": {
+      "orca_wavetablePos": 0.377,
+      "orca_wavetableScan": 0.314,
+      "orca_echoDepth": 0.306,
+      "orca_huntMacro": 0.558,
+      "orca_breachAmt": 0.561,
+      "orca_podSync": 0.1,
+      "orca_pitchRand": 0.052,
+      "orca_ampAttack": 0.0542,
+      "orca_ampDecay": 0.658,
+      "orca_ampSustain": 0.539,
+      "orca_ampRelease": 1.13,
+      "orca_filterCutoff": 0.482,
+      "orca_filterRes": 0.636,
+      "orca_lfo1Rate": 0.144,
+      "orca_lfo1Depth": 0.209,
+      "orca_lfo2Rate": 0.0788,
+      "orca_lfo2Depth": 0.235,
+      "orca_macroCharacter": 0.0,
+      "orca_macroPunch": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroSpace": 0.0
+    },
+    "Osteria": {
+      "osteria_qBassShore": 0.429,
+      "osteria_qHarmShore": 0.366,
+      "osteria_qMelShore": 0.697,
+      "osteria_qRhythmShore": 0.485,
+      "osteria_qElastic": 0.408,
+      "osteria_qStretch": 0.56,
+      "osteria_qMemory": 0.498,
+      "osteria_qSympathy": 0.726,
+      "osteria_bassLevel": 0.815,
+      "osteria_harmLevel": 0.517,
+      "osteria_melLevel": 0.395,
+      "osteria_rhythmLevel": 0.342,
+      "osteria_ensWidth": 0.545,
+      "osteria_blendMode": 0.639,
+      "osteria_tavernMix": 0.304,
+      "osteria_tavernShore": 0.541,
+      "osteria_murmur": 0.149,
+      "osteria_warmth": 0.57,
+      "osteria_oceanBleed": 0.257,
+      "osteria_patina": 0.349,
+      "osteria_porto": 0.317,
+      "osteria_smoke": 0.108,
+      "osteria_filterEnvDepth": 0.17,
+      "osteria_attack": 0.253,
+      "osteria_decay": 0.405,
+      "osteria_sustain": 0.628,
+      "osteria_release": 1.89,
+      "osteria_sessionDelay": 0.081,
+      "osteria_hall": 0.466,
+      "osteria_chorus": 0.384,
+      "osteria_tape": 0.036,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.0
+    },
+    "Owlfish": {
+      "owl_filterCutoff": 0.484,
+      "owl_filterRes": 0.543,
+      "owl_oscPitch": 0.457,
+      "owl_oscLevel": 0.815,
+      "owl_subLevel": 0.302,
+      "owl_mixturSpread": 0.289,
+      "owl_mixturBlend": 0.424,
+      "owl_resonantPitch": 0.692,
+      "owl_resonantFeedback": 0.556,
+      "owl_abyssalDrive": 0.525,
+      "owl_ampAttack": 0.03,
+      "owl_ampDecay": 0.53,
+      "owl_ampSustain": 0.787,
+      "owl_ampRelease": 1.97,
+      "owl_lfoRate": 0.021,
+      "owl_lfoDepth": 0.148,
+      "owl_lfoShape": 0.924,
+      "owl_envDepth": 0.412,
+      "owl_hall": 0.604,
+      "owl_shimmer": 0.219,
+      "owl_macroCharacter": 0.0,
+      "owl_macroMovement": 0.0,
+      "owl_macroCoupling": 0.0,
+      "owl_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Orca",
+        "target": "Osteria",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.697,
+        "description": "OWLFISH Mixtur-Trautonium oscillator phase-locks to ORCA wavetable; OSTERIA patina level tints the shared spectral blend"
+      },
+      {
+        "source": "Orca",
+        "target": "Owlfish",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.482,
+        "description": "ORCA wavetable scan drives OWLFISH Mixtur-Trautonium resonant pitch"
+      },
+      {
+        "source": "Osteria",
+        "target": "Owlfish",
+        "type": "ResonanceChain",
+        "amount": 0.591,
+        "description": "OSTERIA ensemble sympathy modulates OWLFISH drone timbre and shimmer"
+      }
+    ]
+  },
+  "sequencer": null
+}

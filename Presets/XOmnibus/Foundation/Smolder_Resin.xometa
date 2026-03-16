@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Smolder Resin",
+  "mood": "Foundation",
+  "sonic_dna": {
+    "brightness": 0.566,
+    "warmth": 0.937,
+    "movement": 0.611,
+    "density": 0.901,
+    "space": 0.413,
+    "aggression": 0.633
+  },
+  "engines": [
+    "OTTONI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Molten core tone. Filter barely open, heat radiating outward.",
+  "tags": [
+    "foundation",
+    "warm",
+    "dense",
+    "analog",
+    "thick",
+    "aggressive",
+    "evolving"
+  ],
+  "macroLabels": [
+    "WARMTH",
+    "WEIGHT",
+    "COUPLING",
+    "DEPTH"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.566,
+    "warmth": 0.937,
+    "movement": 0.611,
+    "density": 0.901,
+    "space": 0.413,
+    "aggression": 0.633
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

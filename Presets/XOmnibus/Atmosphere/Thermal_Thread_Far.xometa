@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Thermal Thread Far",
+  "mood": "Atmosphere",
+  "sonic_dna": {
+    "brightness": 0.648,
+    "warmth": 0.889,
+    "movement": 0.561,
+    "density": 0.135,
+    "space": 0.571,
+    "aggression": 0.136
+  },
+  "engines": [
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Thermal drift \u2014 a sparse harmonic rising on warm air.",
+  "tags": [
+    "atmosphere",
+    "warm",
+    "sparse",
+    "airy",
+    "breath",
+    "evolving"
+  ],
+  "macroLabels": [
+    "WARMTH",
+    "BREATH",
+    "COUPLING",
+    "OPEN"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.648,
+    "warmth": 0.889,
+    "movement": 0.561,
+    "density": 0.135,
+    "space": 0.571,
+    "aggression": 0.136
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

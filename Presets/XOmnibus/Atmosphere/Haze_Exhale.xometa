@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Haze Exhale",
+  "mood": "Atmosphere",
+  "sonic_dna": {
+    "brightness": 0.616,
+    "warmth": 0.863,
+    "movement": 0.594,
+    "density": 0.094,
+    "space": 0.664,
+    "aggression": 0.205
+  },
+  "engines": [
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Desert heat shimmer: warm glow, no groundmass at all.",
+  "tags": [
+    "atmosphere",
+    "warm",
+    "sparse",
+    "airy",
+    "breath",
+    "evolving"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.616,
+    "warmth": 0.863,
+    "movement": 0.594,
+    "density": 0.094,
+    "space": 0.664,
+    "aggression": 0.205
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

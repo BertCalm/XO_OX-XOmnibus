@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Crystal Scatter",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.679,
+    "warmth": 0.081,
+    "movement": 0.189,
+    "density": 0.079,
+    "space": 0.78,
+    "aggression": 0.106
+  },
+  "engines": [
+    "OBLIQUE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Crystal lattice tone \u2014 intervals measured, density absent.",
+  "tags": [
+    "prism",
+    "cold",
+    "sparse",
+    "crystalline",
+    "airy",
+    "spacious"
+  ],
+  "macroLabels": [
+    "PRISM",
+    "DISTANCE",
+    "COUPLING",
+    "TAIL"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.679,
+    "warmth": 0.081,
+    "movement": 0.189,
+    "density": 0.079,
+    "space": 0.78,
+    "aggression": 0.106
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

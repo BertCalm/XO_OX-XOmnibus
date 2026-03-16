@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "name": "Neon Shore Sign",
+  "mood": "Entangled",
+  "engines": [
+    "Osteria",
+    "Optic"
+  ],
+  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "OPTIC's visual pulse as OSTERIA's tavern sign — the blinking light that marks the cultural shore, visible from the water.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "osteria",
+    "optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.595,
+    "warmth": 0.578,
+    "movement": 0.52,
+    "density": 0.511,
+    "space": 0.577,
+    "aggression": 0.408
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_qBassShore": 0.314,
+      "osteria_qHarmShore": 0.52,
+      "osteria_qMelShore": 0.438,
+      "osteria_qRhythmShore": 0.222,
+      "osteria_qElastic": 0.679,
+      "osteria_qStretch": 0.515,
+      "osteria_qMemory": 0.465,
+      "osteria_qSympathy": 0.575,
+      "osteria_bassLevel": 0.705,
+      "osteria_harmLevel": 0.517,
+      "osteria_melLevel": 0.631,
+      "osteria_rhythmLevel": 0.381,
+      "osteria_ensWidth": 0.584,
+      "osteria_blendMode": 0.365,
+      "osteria_tavernMix": 0.558,
+      "osteria_tavernShore": 0.425,
+      "osteria_murmur": 0.105,
+      "osteria_warmth": 0.755,
+      "osteria_oceanBleed": 0.177,
+      "osteria_patina": 0.544,
+      "osteria_porto": 0.495,
+      "osteria_smoke": 0.241,
+      "osteria_filterEnvDepth": 0.244,
+      "osteria_attack": 0.083,
+      "osteria_decay": 0.47,
+      "osteria_sustain": 0.561,
+      "osteria_release": 1.31,
+      "osteria_sessionDelay": 0.291,
+      "osteria_hall": 0.345,
+      "osteria_chorus": 0.221,
+      "osteria_tape": 0.243,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.0
+    },
+    "Optic": {
+      "optic_pulseRate": 0.573,
+      "optic_filterCutoff": 0.638,
+      "optic_lfoRate": 0.126,
+      "optic_attack": 0.129,
+      "optic_release": 0.538,
+      "optic_macroCharacter": 0.065,
+      "optic_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Osteria",
+        "target": "Optic",
+        "type": "PitchToPosition",
+        "amount": 0.784,
+        "description": "Osteria drives Optic via PitchToPosition"
+      }
+    ]
+  },
+  "sequencer": null
+}

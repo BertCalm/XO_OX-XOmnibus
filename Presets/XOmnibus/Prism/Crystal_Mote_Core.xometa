@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Crystal Mote Core",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.605,
+    "warmth": 0.077,
+    "movement": 0.359,
+    "density": 0.126,
+    "space": 0.626,
+    "aggression": 0.079
+  },
+  "engines": [
+    "ORIGAMI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ice-thin harmonic. One partial, infinite room.",
+  "tags": [
+    "prism",
+    "cold",
+    "sparse",
+    "crystalline",
+    "airy"
+  ],
+  "macroLabels": [
+    "CRYSTAL",
+    "BREATH",
+    "COUPLING",
+    "OPEN"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.605,
+    "warmth": 0.077,
+    "movement": 0.359,
+    "density": 0.126,
+    "space": 0.626,
+    "aggression": 0.079
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Diagonal Brass",
+  "version": "1.0",
+  "engines": [
+    "OTTONI",
+    "OBLIQUE"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.5,
+    "SPACE": 0.45
+  },
+  "sonic_dna": {
+    "brightness": 0.57,
+    "warmth": 0.56,
+    "movement": 0.52,
+    "density": 0.66,
+    "space": 0.56,
+    "aggression": 0.56
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "ANGULAR_DEFLECT",
+    "source": "OTTONI",
+    "target": "OBLIQUE",
+    "amount": 0.5
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ottoni",
+    "oblique",
+    "triple"
+  ],
+  "description": "Straight fanfare angled obliquely \u2014 expected resolution arrives from wrong direction"
+}

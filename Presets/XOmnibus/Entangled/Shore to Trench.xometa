@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "name": "Shore to Trench",
+  "mood": "Entangled",
+  "engines": [
+    "Orca",
+    "Oceanic"
+  ],
+  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "OCEANIC's phosphorescent teal pairs with ORCA's deep ocean black — the full water column, from bioluminescent shallows to killing depth.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "orca",
+    "oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.436,
+    "warmth": 0.427,
+    "movement": 0.639,
+    "density": 0.65,
+    "space": 0.625,
+    "aggression": 0.538
+  },
+  "parameters": {
+    "Orca": {
+      "orca_wavetablePos": 0.843,
+      "orca_wavetableScan": 0.455,
+      "orca_echoDepth": 0.584,
+      "orca_huntMacro": 0.001,
+      "orca_breachAmt": 0.587,
+      "orca_podSync": 0.257,
+      "orca_pitchRand": 0.109,
+      "orca_ampAttack": 0.058,
+      "orca_ampDecay": 0.8,
+      "orca_ampSustain": 0.669,
+      "orca_ampRelease": 2.83,
+      "orca_filterCutoff": 0.746,
+      "orca_filterRes": 0.391,
+      "orca_lfo1Rate": 0.206,
+      "orca_lfo1Depth": 0.489,
+      "orca_lfo2Rate": 0.0193,
+      "orca_lfo2Depth": 0.133,
+      "orca_macroCharacter": 0.0,
+      "orca_macroPunch": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroSpace": 0.0
+    },
+    "Oceanic": {
+      "ocean_separation": 0.473,
+      "ocean_filterCutoff": 0.629,
+      "ocean_lfoRate": 0.097,
+      "ocean_attack": 0.002,
+      "ocean_release": 1.0,
+      "ocean_macroCharacter": 0.0,
+      "ocean_macroCoupling": 0.013
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Orca",
+        "target": "Oceanic",
+        "type": "EnvToMod",
+        "amount": 0.654,
+        "description": "Orca drives Oceanic via EnvToMod"
+      }
+    ]
+  },
+  "sequencer": null
+}

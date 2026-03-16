@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Amber Thread",
+  "mood": "Atmosphere",
+  "sonic_dna": {
+    "brightness": 0.715,
+    "warmth": 0.864,
+    "movement": 0.68,
+    "density": 0.089,
+    "space": 0.585,
+    "aggression": 0.253
+  },
+  "engines": [
+    "Opal"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Golden haze, no mass. Warmth floats free of density.",
+  "tags": [
+    "atmosphere",
+    "warm",
+    "sparse",
+    "airy",
+    "breath",
+    "evolving",
+    "bright"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.715,
+    "warmth": 0.864,
+    "movement": 0.68,
+    "density": 0.089,
+    "space": 0.585,
+    "aggression": 0.253
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

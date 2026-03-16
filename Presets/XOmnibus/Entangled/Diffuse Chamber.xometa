@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Diffuse Chamber",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OHM"
+  ],
+  "author": "XO_OX",
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.6,
+    "SPACE": 0.79
+  },
+  "sonic_dna": {
+    "movement": 0.58,
+    "brightness": 0.57,
+    "aggression": 0.27,
+    "space": 0.79,
+    "warmth": 0.63,
+    "density": 0.66
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.62,
+      "olap_decay": 0.53,
+      "olap_damping": 0.251,
+      "olap_diffusion": 0.671,
+      "olap_modDepth": 0.308,
+      "olap_modRate": 0.137,
+      "olap_preDelay": 0.058,
+      "olap_earlyMix": 0.447,
+      "olap_lateMix": 0.681,
+      "olap_filterCutoff": 0.582,
+      "olap_filterReso": 0.306,
+      "olap_outputLevel": 0.835,
+      "olap_couplingLevel": 0.747,
+      "olap_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "type": "GRANULAR_EXCHANGE",
+    "source": "OVERLAP",
+    "target": "OHM",
+    "amount": 0.602
+  },
+  "couplingIntensity": "Moderate",
+  "tags": [
+    "entangled",
+    "coupling",
+    "overlap",
+    "ohm",
+    "overlap-led",
+    "fdn",
+    "reverb"
+  ],
+  "description": "OHM commune drift rate syncs OVERLAP modulation rate \u2014 the jam's slow tempo rocks the FDN"
+}

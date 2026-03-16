@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Organon Stasis",
+  "mood": "Atmosphere",
+  "engines": [
+    "Organon"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.32,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.12,
+    "SPACE": 0.8
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.05,
+    "density": 0.4,
+    "space": 0.8,
+    "aggression": 0.04
+  },
+  "parameters": {},
+  "tags": [
+    "glacial",
+    "organon",
+    "stasis",
+    "harmonic"
+  ],
+  "description": "Pipe organ drones locked in harmonic stasis — breath held forever."
+}

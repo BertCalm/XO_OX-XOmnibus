@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Sleet Line",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.676,
+    "warmth": 0.141,
+    "movement": 0.334,
+    "density": 0.089,
+    "space": 0.664,
+    "aggression": 0.047
+  },
+  "engines": [
+    "OVERWORLD"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Glass filament vibration, barely there, barely audible.",
+  "tags": [
+    "prism",
+    "cold",
+    "sparse",
+    "crystalline",
+    "airy"
+  ],
+  "macroLabels": [
+    "PRISM",
+    "DISTANCE",
+    "COUPLING",
+    "TAIL"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.676,
+    "warmth": 0.141,
+    "movement": 0.334,
+    "density": 0.089,
+    "space": 0.664,
+    "aggression": 0.047
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "name": "Breach at Closing Time",
+  "mood": "Entangled",
+  "engines": [
+    "Orca",
+    "Osteria",
+    "Owlfish"
+  ],
+  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "The tavern empties. The last patron sees something massive arc above the harbor. ORCA's breach is abrupt — OSTERIA's murmur fades to silence — OWLFISH sustains the golden hum of a room that held witnesses.",
+  "tags": [
+    "entangled",
+    "three-way",
+    "dramatic",
+    "apex",
+    "atmospheric",
+    "marquee"
+  ],
+  "macroLabels": [
+    "BREACH",
+    "MURMUR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.413,
+    "warmth": 0.664,
+    "movement": 0.474,
+    "density": 0.775,
+    "space": 0.515,
+    "aggression": 0.616
+  },
+  "parameters": {
+    "Orca": {
+      "orca_wavetablePos": 0.486,
+      "orca_wavetableScan": 0.651,
+      "orca_echoDepth": 0.569,
+      "orca_huntMacro": 0.526,
+      "orca_breachAmt": 0.687,
+      "orca_podSync": 0.597,
+      "orca_pitchRand": 0.089,
+      "orca_ampAttack": 0.0679,
+      "orca_ampDecay": 0.493,
+      "orca_ampSustain": 0.658,
+      "orca_ampRelease": 1.51,
+      "orca_filterCutoff": 0.813,
+      "orca_filterRes": 0.604,
+      "orca_lfo1Rate": 0.275,
+      "orca_lfo1Depth": 0.332,
+      "orca_lfo2Rate": 0.0083,
+      "orca_lfo2Depth": 0.243,
+      "orca_macroCharacter": 0.0,
+      "orca_macroPunch": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroSpace": 0.0
+    },
+    "Osteria": {
+      "osteria_qBassShore": 0.582,
+      "osteria_qHarmShore": 0.244,
+      "osteria_qMelShore": 0.464,
+      "osteria_qRhythmShore": 0.148,
+      "osteria_qElastic": 0.377,
+      "osteria_qStretch": 0.288,
+      "osteria_qMemory": 0.707,
+      "osteria_qSympathy": 0.494,
+      "osteria_bassLevel": 0.727,
+      "osteria_harmLevel": 0.7,
+      "osteria_melLevel": 0.509,
+      "osteria_rhythmLevel": 0.44,
+      "osteria_ensWidth": 0.374,
+      "osteria_blendMode": 0.286,
+      "osteria_tavernMix": 0.388,
+      "osteria_tavernShore": 0.454,
+      "osteria_murmur": 0.174,
+      "osteria_warmth": 0.819,
+      "osteria_oceanBleed": 0.061,
+      "osteria_patina": 0.396,
+      "osteria_porto": 0.222,
+      "osteria_smoke": 0.188,
+      "osteria_filterEnvDepth": 0.182,
+      "osteria_attack": 0.05,
+      "osteria_decay": 0.342,
+      "osteria_sustain": 0.653,
+      "osteria_release": 1.85,
+      "osteria_sessionDelay": 0.141,
+      "osteria_hall": 0.205,
+      "osteria_chorus": 0.364,
+      "osteria_tape": 0.027,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.0
+    },
+    "Owlfish": {
+      "owl_filterCutoff": 0.659,
+      "owl_filterRes": 0.681,
+      "owl_oscPitch": 0.571,
+      "owl_oscLevel": 0.661,
+      "owl_subLevel": 0.35,
+      "owl_mixturSpread": 0.429,
+      "owl_mixturBlend": 0.319,
+      "owl_resonantPitch": 0.48,
+      "owl_resonantFeedback": 0.511,
+      "owl_abyssalDrive": 0.363,
+      "owl_ampAttack": 0.252,
+      "owl_ampDecay": 0.354,
+      "owl_ampSustain": 0.716,
+      "owl_ampRelease": 0.9,
+      "owl_lfoRate": 0.103,
+      "owl_lfoDepth": 0.072,
+      "owl_lfoShape": 0.924,
+      "owl_envDepth": 0.43,
+      "owl_hall": 0.612,
+      "owl_shimmer": 0.326,
+      "owl_macroCharacter": 0.0,
+      "owl_macroMovement": 0.0,
+      "owl_macroCoupling": 0.0,
+      "owl_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Orca",
+        "target": "Osteria",
+        "type": "EnvToMod",
+        "amount": 0.841,
+        "description": "ORCA breach amount triggers OSTERIA murmur ducking; OWLFISH amp release extends with each ORCA pod sync pulse"
+      },
+      {
+        "source": "Orca",
+        "target": "Owlfish",
+        "type": "ResonanceChain",
+        "amount": 0.627,
+        "description": "ORCA wavetable scan drives OWLFISH Mixtur-Trautonium resonant pitch"
+      },
+      {
+        "source": "Osteria",
+        "target": "Owlfish",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.459,
+        "description": "OSTERIA ensemble sympathy modulates OWLFISH drone timbre and shimmer"
+      }
+    ]
+  },
+  "sequencer": null
+}

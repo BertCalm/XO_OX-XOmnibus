@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Acid Surge",
+  "mood": "Flux",
+  "engines": [
+    "Overbite"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.93,
+    "COUPLING": 0.12,
+    "SPACE": 0.12
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.44,
+    "movement": 0.93,
+    "density": 0.85,
+    "space": 0.12,
+    "aggression": 0.96
+  },
+  "parameters": {},
+  "tags": [
+    "violent",
+    "overbite",
+    "acid",
+    "surge"
+  ],
+  "description": "Overbite filter fully open — acid wave at maximum aggression."
+}

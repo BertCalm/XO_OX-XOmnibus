@@ -1,0 +1,39 @@
+{
+  "name": "Sage Pounce",
+  "version": "1.0",
+  "engines": [
+    "OHM",
+    "OCELOT"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.65,
+    "SPACE": 0.65
+  },
+  "sonic_dna": {
+    "brightness": 0.56,
+    "warmth": 0.67,
+    "movement": 0.66,
+    "density": 0.52,
+    "space": 0.6,
+    "aggression": 0.4
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "PREDATOR_STALK",
+    "source": "OHM",
+    "target": "OCELOT",
+    "amount": 0.65
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "ocelot",
+    "hippy"
+  ],
+  "description": "Warm folk groove ambushed by a sudden feline leap \u2014 tension coils then releases"
+}

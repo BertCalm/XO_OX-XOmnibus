@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "name": "Crystal Ink Burst",
+  "mood": "Entangled",
+  "engines": [
+    "Octopus",
+    "Obsidian"
+  ],
+  "author": "XO_OX Deep Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "Obsidian clarity shattered by a single ink cloud — eight fragments of crystal dispersing into acoustic black.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "octopus",
+    "obsidian",
+    "alien",
+    "decentralized"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "Octopus": {
+      "octo_armCount": 6.0,
+      "octo_armSpread": 0.684,
+      "octo_armBaseRate": 0.802,
+      "octo_armDepth": 0.5,
+      "octo_chromaSens": 0.502,
+      "octo_chromaSpeed": 0.662,
+      "octo_chromaMorph": 0.315,
+      "octo_chromaDepth": 0.567,
+      "octo_chromaFreq": 1667.2,
+      "octo_inkThreshold": 0.381,
+      "octo_inkDensity": 0.473,
+      "octo_inkDecay": 0.715,
+      "octo_inkMix": 0.245,
+      "octo_shiftMicro": 0.592,
+      "octo_shiftGlide": 0.221,
+      "octo_shiftDrift": 0.697,
+      "octo_suckerReso": 0.513,
+      "octo_suckerFreq": 3136.1,
+      "octo_suckerDecay": 0.19,
+      "octo_suckerMix": 0.636,
+      "octo_wtPosition": 0.755,
+      "octo_wtScanRate": 0.745,
+      "octo_filterCutoff": 10444.0,
+      "octo_filterReso": 0.375,
+      "octo_level": 0.661,
+      "octo_ampAttack": 0.066,
+      "octo_ampDecay": 0.72,
+      "octo_ampSustain": 0.586,
+      "octo_ampRelease": 1.344,
+      "octo_modAttack": 0.04,
+      "octo_modDecay": 0.33,
+      "octo_modSustain": 0.352,
+      "octo_modRelease": 0.341,
+      "octo_lfo1Rate": 3.161,
+      "octo_lfo1Depth": 0.441,
+      "octo_lfo1Shape": 0.25,
+      "octo_lfo2Rate": 0.215,
+      "octo_lfo2Depth": 0.361,
+      "octo_lfo2Shape": 0.5
+    },
+    "Obsidian": {
+      "obsidian_level": 0.763,
+      "obsidian_filterCutoff": 4086.6
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "type": "ENVELOPE_SHARING",
+        "source": "Octopus",
+        "target": "Obsidian",
+        "amount": 0.6
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.719,
+    "warmth": 0.373,
+    "movement": 0.616,
+    "density": 0.552,
+    "space": 0.667,
+    "aggression": 0.475
+  }
+}

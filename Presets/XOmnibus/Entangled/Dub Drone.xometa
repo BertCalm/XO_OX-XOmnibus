@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Dub Drone",
+  "mood": "Entangled",
+  "engines": [
+    "Owlfish",
+    "Overdub"
+  ],
+  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "Overdub's spring reverb extends OWLFISH's Mixtur-Trautonium sustain — the metallic splash diffusing into an abyssal gold hum.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "owlfish",
+    "overdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.37,
+    "warmth": 0.666,
+    "movement": 0.371,
+    "density": 0.664,
+    "space": 0.563,
+    "aggression": 0.395
+  },
+  "parameters": {
+    "Owlfish": {
+      "owl_filterCutoff": 0.355,
+      "owl_filterRes": 0.591,
+      "owl_oscPitch": 0.546,
+      "owl_oscLevel": 0.678,
+      "owl_subLevel": 0.276,
+      "owl_mixturSpread": 0.626,
+      "owl_mixturBlend": 0.77,
+      "owl_resonantPitch": 0.627,
+      "owl_resonantFeedback": 0.333,
+      "owl_abyssalDrive": 0.407,
+      "owl_ampAttack": 0.259,
+      "owl_ampDecay": 0.577,
+      "owl_ampSustain": 0.644,
+      "owl_ampRelease": 2.25,
+      "owl_lfoRate": 0.224,
+      "owl_lfoDepth": 0.067,
+      "owl_lfoShape": 0.152,
+      "owl_envDepth": 0.438,
+      "owl_hall": 0.493,
+      "owl_shimmer": 0.407,
+      "owl_macroCharacter": 0.0,
+      "owl_macroMovement": 0.0,
+      "owl_macroCoupling": 0.0,
+      "owl_macroSpace": 0.0
+    },
+    "Overdub": {
+      "dub_oscWave": 0.365,
+      "dub_sendAmount": 0.532,
+      "dub_tapeDelay": 0.574,
+      "dub_spring": 0.514,
+      "dub_filterCutoff": 0.592,
+      "dub_macroCharacter": 0.0,
+      "dub_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Owlfish",
+        "target": "Overdub",
+        "type": "AmpToFilter",
+        "amount": 0.828,
+        "description": "Owlfish drives Overdub via AmpToFilter"
+      }
+    ]
+  },
+  "sequencer": null
+}

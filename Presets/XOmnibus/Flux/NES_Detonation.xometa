@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "NES Detonation",
+  "mood": "Flux",
+  "engines": [
+    "Overworld"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.545,
+    "MOVEMENT": 0.94,
+    "COUPLING": 0.31,
+    "SPACE": 0.16
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.18,
+    "movement": 0.94,
+    "density": 0.8,
+    "space": 0.16,
+    "aggression": 0.91
+  },
+  "parameters": {},
+  "tags": [
+    "violent",
+    "overworld",
+    "NES",
+    "detonation"
+  ],
+  "description": "2A03 pushed past technical limits — retro violence at 8-bit scale."
+}

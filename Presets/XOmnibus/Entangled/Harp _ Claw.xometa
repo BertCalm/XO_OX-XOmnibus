@@ -1,0 +1,39 @@
+{
+  "name": "Harp & Claw",
+  "version": "1.0",
+  "engines": [
+    "ORPHICA",
+    "OCELOT"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.7,
+    "SPACE": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.68,
+    "warmth": 0.52,
+    "movement": 0.78,
+    "density": 0.46,
+    "space": 0.54,
+    "aggression": 0.37
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "PREDATOR_STALK",
+    "source": "ORPHICA",
+    "target": "OCELOT",
+    "amount": 0.7
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "orphica",
+    "ocelot",
+    "microsound"
+  ],
+  "description": "Gossamer string plucks interrupted by sudden predatory stabs \u2014 beauty and danger"
+}

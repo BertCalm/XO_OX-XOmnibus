@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Ottoni Bombardment",
+  "mood": "Foundation",
+  "engines": [
+    "Ottoni"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.725,
+    "MOVEMENT": 0.06,
+    "COUPLING": 0.17,
+    "SPACE": 0.22
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.06,
+    "density": 0.75,
+    "space": 0.22,
+    "aggression": 0.95
+  },
+  "parameters": {},
+  "tags": [
+    "siege",
+    "ottoni",
+    "brass",
+    "bombardment"
+  ],
+  "description": "Triple brass locked in low unison — harmonic siege engine."
+}

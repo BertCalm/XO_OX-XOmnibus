@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Dissolving Membrane",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OMBRE"
+  ],
+  "author": "XO_OX",
+  "macros": {
+    "CHARACTER": 0.41,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.75,
+    "SPACE": 0.77
+  },
+  "sonic_dna": {
+    "movement": 0.54,
+    "brightness": 0.55,
+    "aggression": 0.27,
+    "space": 0.77,
+    "warmth": 0.59,
+    "density": 0.64
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.866,
+      "olap_decay": 0.59,
+      "olap_damping": 0.459,
+      "olap_diffusion": 0.671,
+      "olap_modDepth": 0.255,
+      "olap_modRate": 0.308,
+      "olap_preDelay": 0.248,
+      "olap_earlyMix": 0.307,
+      "olap_lateMix": 0.648,
+      "olap_filterCutoff": 0.644,
+      "olap_filterReso": 0.322,
+      "olap_outputLevel": 0.84,
+      "olap_couplingLevel": 0.602,
+      "olap_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_BLEND",
+    "source": "OVERLAP",
+    "target": "OMBRE",
+    "amount": 0.75
+  },
+  "couplingIntensity": "Deep",
+  "tags": [
+    "entangled",
+    "coupling",
+    "overlap",
+    "ombre",
+    "overlap-led",
+    "fdn",
+    "reverb"
+  ],
+  "description": "Ombre dual-narrative crossfade modulates OVERLAP early/late mix \u2014 memory and forgetting blend in time"
+}

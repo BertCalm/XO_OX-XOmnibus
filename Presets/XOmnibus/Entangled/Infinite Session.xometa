@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "name": "Infinite Session",
+  "mood": "Entangled",
+  "engines": [
+    "Osteria",
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "OUROBOROS's recursive topology in OSTERIA's circular session structure — the session that never ends, the song that feeds itself.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "osteria",
+    "ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.402,
+    "warmth": 0.556,
+    "movement": 0.585,
+    "density": 0.787,
+    "space": 0.496,
+    "aggression": 0.484
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_qBassShore": 0.204,
+      "osteria_qHarmShore": 0.402,
+      "osteria_qMelShore": 0.475,
+      "osteria_qRhythmShore": 0.423,
+      "osteria_qElastic": 0.664,
+      "osteria_qStretch": 0.268,
+      "osteria_qMemory": 0.433,
+      "osteria_qSympathy": 0.667,
+      "osteria_bassLevel": 0.637,
+      "osteria_harmLevel": 0.444,
+      "osteria_melLevel": 0.597,
+      "osteria_rhythmLevel": 0.291,
+      "osteria_ensWidth": 0.457,
+      "osteria_blendMode": 0.393,
+      "osteria_tavernMix": 0.581,
+      "osteria_tavernShore": 0.345,
+      "osteria_murmur": 0.491,
+      "osteria_warmth": 0.613,
+      "osteria_oceanBleed": 0.087,
+      "osteria_patina": 0.296,
+      "osteria_porto": 0.115,
+      "osteria_smoke": 0.268,
+      "osteria_filterEnvDepth": 0.206,
+      "osteria_attack": 0.268,
+      "osteria_decay": 0.356,
+      "osteria_sustain": 0.555,
+      "osteria_release": 1.98,
+      "osteria_sessionDelay": 0.284,
+      "osteria_hall": 0.358,
+      "osteria_chorus": 0.054,
+      "osteria_tape": 0.239,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.0
+    },
+    "Ouroboros": {
+      "ouro_topology": 0.516,
+      "ouro_filterCutoff": 0.563,
+      "ouro_lfoRate": 0.104,
+      "ouro_attack": 0.135,
+      "ouro_release": 1.0,
+      "ouro_macroCharacter": 0.0,
+      "ouro_macroCoupling": 0.026
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Osteria",
+        "target": "Ouroboros",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.452,
+        "description": "Osteria drives Ouroboros via HARMONIC_BLEND"
+      }
+    ]
+  },
+  "sequencer": null
+}

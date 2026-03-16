@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Demersal Pressure",
+  "mood": "Foundation",
+  "engines": [
+    "Owlfish"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.73,
+    "MOVEMENT": 0.11,
+    "COUPLING": 0.26,
+    "SPACE": 0.3
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.57,
+    "movement": 0.11,
+    "density": 0.7,
+    "space": 0.3,
+    "aggression": 0.89
+  },
+  "parameters": {},
+  "tags": [
+    "siege",
+    "owlfish",
+    "demersal",
+    "pressure"
+  ],
+  "description": "Bottom-dwelling weight at maximum aggression — crushing stillness."
+}

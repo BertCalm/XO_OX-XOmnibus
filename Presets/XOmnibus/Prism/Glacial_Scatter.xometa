@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Glacial Scatter",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.615,
+    "warmth": 0.094,
+    "movement": 0.34,
+    "density": 0.089,
+    "space": 0.656,
+    "aggression": 0.148
+  },
+  "engines": [
+    "ONSET"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Arctic breath tone. Maximum air, minimum body.",
+  "tags": [
+    "prism",
+    "cold",
+    "sparse",
+    "crystalline",
+    "airy"
+  ],
+  "macroLabels": [
+    "CRYSTAL",
+    "BREATH",
+    "COUPLING",
+    "OPEN"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.615,
+    "warmth": 0.094,
+    "movement": 0.34,
+    "density": 0.089,
+    "space": 0.656,
+    "aggression": 0.148
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

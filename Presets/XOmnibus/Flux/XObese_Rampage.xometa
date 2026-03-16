@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "XObese Rampage",
+  "mood": "Flux",
+  "engines": [
+    "Obese"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.655,
+    "MOVEMENT": 0.95,
+    "COUPLING": 0.34,
+    "SPACE": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.32,
+    "movement": 0.95,
+    "density": 0.9,
+    "space": 0.1,
+    "aggression": 0.99
+  },
+  "parameters": {},
+  "tags": [
+    "violent",
+    "obese",
+    "rampage",
+    "crushing"
+  ],
+  "description": "Every sample slot detonating simultaneously — unhinged mass event."
+}

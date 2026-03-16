@@ -1,0 +1,39 @@
+{
+  "name": "Angled Grain",
+  "version": "1.0",
+  "engines": [
+    "ORPHICA",
+    "OBLIQUE"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.5,
+    "SPACE": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.6,
+    "warmth": 0.5,
+    "movement": 0.7,
+    "density": 0.48,
+    "space": 0.62,
+    "aggression": 0.29
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "ANGULAR_DEFLECT",
+    "source": "OBLIQUE",
+    "target": "ORPHICA",
+    "amount": 0.5
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "orphica",
+    "oblique",
+    "microsound"
+  ],
+  "description": "Microsound particles scattered at oblique angles \u2014 cloud of deflected shimmer"
+}

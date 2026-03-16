@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Cast Weight Dark",
+  "mood": "Foundation",
+  "sonic_dna": {
+    "brightness": 0.508,
+    "warmth": 0.826,
+    "movement": 0.526,
+    "density": 0.922,
+    "space": 0.372,
+    "aggression": 0.452
+  },
+  "engines": [
+    "OBESE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Molten core tone. Filter barely open, heat radiating outward.",
+  "tags": [
+    "foundation",
+    "warm",
+    "dense",
+    "analog",
+    "thick"
+  ],
+  "macroLabels": [
+    "MELT",
+    "COMPRESS",
+    "COUPLING",
+    "TAIL"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.508,
+    "warmth": 0.826,
+    "movement": 0.526,
+    "density": 0.922,
+    "space": 0.372,
+    "aggression": 0.452
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Null Line",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.571,
+    "warmth": 0.006,
+    "movement": 0.309,
+    "density": 0.085,
+    "space": 0.805,
+    "aggression": 0.108
+  },
+  "engines": [
+    "OBSCURA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Arctic breath tone. Maximum air, minimum body.",
+  "tags": [
+    "prism",
+    "cold",
+    "sparse",
+    "crystalline",
+    "airy",
+    "spacious"
+  ],
+  "macroLabels": [
+    "FREEZE",
+    "GLINT",
+    "COUPLING",
+    "VOID"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.571,
+    "warmth": 0.006,
+    "movement": 0.309,
+    "density": 0.085,
+    "space": 0.805,
+    "aggression": 0.108
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

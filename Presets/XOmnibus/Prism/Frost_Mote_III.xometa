@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Frost Mote III",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.737,
+    "warmth": 0.119,
+    "movement": 0.137,
+    "density": 0.159,
+    "space": 0.873,
+    "aggression": 0.193
+  },
+  "engines": [
+    "OVERWORLD"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Frigid air column with no warmth, no weight, pure geometry.",
+  "tags": [
+    "prism",
+    "cold",
+    "sparse",
+    "crystalline",
+    "airy",
+    "spacious",
+    "bright"
+  ],
+  "macroLabels": [
+    "PRISM",
+    "DISTANCE",
+    "COUPLING",
+    "TAIL"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.737,
+    "warmth": 0.119,
+    "movement": 0.137,
+    "density": 0.159,
+    "space": 0.873,
+    "aggression": 0.193
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

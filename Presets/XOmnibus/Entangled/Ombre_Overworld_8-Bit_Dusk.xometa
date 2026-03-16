@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "name": "8-Bit Dusk",
+  "mood": "Entangled",
+  "engines": [
+    "Ombre",
+    "Overworld"
+  ],
+  "author": "XO_OX Deep Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "Chip-music quantized palette transitioning from NES-bright to Genesis-shadowed — a console sunset.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "ombre",
+    "overworld",
+    "memory",
+    "twilight",
+    "liminal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.734,
+      "ombre_memoryDepth": 0.826,
+      "ombre_forgetRate": 0.677,
+      "ombre_shadowAmount": 0.569,
+      "ombre_duskPosition": 0.544,
+      "ombre_narrativeA": 0.435,
+      "ombre_narrativeB": 0.156,
+      "ombre_crossfadeRate": 0.23,
+      "ombre_toneA": 6167.2,
+      "ombre_toneB": 766.2,
+      "ombre_filterCutoff": 5782.8,
+      "ombre_filterReso": 0.402,
+      "ombre_level": 0.795,
+      "ombre_ampAttack": 0.1133,
+      "ombre_ampDecay": 0.346,
+      "ombre_ampSustain": 0.427,
+      "ombre_ampRelease": 1.633,
+      "ombre_modAttack": 0.0431,
+      "ombre_modDecay": 0.31,
+      "ombre_modSustain": 0.396,
+      "ombre_modRelease": 1.069,
+      "ombre_lfo1Rate": 0.633,
+      "ombre_lfo1Depth": 0.304,
+      "ombre_lfo2Rate": 0.578,
+      "ombre_lfo2Depth": 0.137,
+      "ombre_spaceMix": 0.627,
+      "ombre_reverbSize": 0.813,
+      "ombre_reverbDamp": 0.469
+    },
+    "Overworld": {
+      "ow_level": 0.709,
+      "ow_filterCutoff": 1963.1
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "type": "FILTER_COUPLING",
+        "source": "Ombre",
+        "target": "Overworld",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.584,
+    "warmth": 0.526,
+    "movement": 0.646,
+    "density": 0.537,
+    "space": 0.664,
+    "aggression": 0.322
+  }
+}

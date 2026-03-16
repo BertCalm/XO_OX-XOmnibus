@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Spectral Freeze",
+  "mood": "Atmosphere",
+  "engines": [
+    "Opal"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.23,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.16,
+    "SPACE": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.4,
+    "movement": 0.08,
+    "density": 0.15,
+    "space": 0.88,
+    "aggression": 0.06
+  },
+  "parameters": {},
+  "tags": [
+    "glacial",
+    "opal",
+    "spectral",
+    "freeze"
+  ],
+  "description": "A single grain stretched across an ice shelf."
+}

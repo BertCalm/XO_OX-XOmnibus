@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Deep Layer III",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.363,
+    "warmth": 0.156,
+    "movement": 0.32,
+    "density": 0.898,
+    "space": 0.451,
+    "aggression": 0.377
+  },
+  "engines": [
+    "ORBITAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cryogenic thickness \u2014 cold partials locked together tightly.",
+  "tags": [
+    "aether",
+    "cold",
+    "dense",
+    "dark",
+    "pressure"
+  ],
+  "macroLabels": [
+    "GRAVITY",
+    "CRUSH",
+    "COUPLING",
+    "DESCENT"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.363,
+    "warmth": 0.156,
+    "movement": 0.32,
+    "density": 0.898,
+    "space": 0.451,
+    "aggression": 0.377
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

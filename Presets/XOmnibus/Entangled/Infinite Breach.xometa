@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "name": "Infinite Breach",
+  "mood": "Entangled",
+  "engines": [
+    "Orca",
+    "Ouroboros"
+  ],
+  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "OUROBOROS's chaos leash tied to ORCA — each breach feeds back into the topology, the predator consuming its own echolocation trail.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "orca",
+    "ouroboros"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.301,
+    "warmth": 0.28,
+    "movement": 0.698,
+    "density": 0.797,
+    "space": 0.527,
+    "aggression": 0.759
+  },
+  "parameters": {
+    "Orca": {
+      "orca_wavetablePos": 0.406,
+      "orca_wavetableScan": 0.337,
+      "orca_echoDepth": 0.482,
+      "orca_huntMacro": 0.217,
+      "orca_breachAmt": 0.718,
+      "orca_podSync": 0.185,
+      "orca_pitchRand": 0.115,
+      "orca_ampAttack": 0.0773,
+      "orca_ampDecay": 0.561,
+      "orca_ampSustain": 0.428,
+      "orca_ampRelease": 1.71,
+      "orca_filterCutoff": 0.763,
+      "orca_filterRes": 0.588,
+      "orca_lfo1Rate": 0.333,
+      "orca_lfo1Depth": 0.192,
+      "orca_lfo2Rate": 0.0427,
+      "orca_lfo2Depth": 0.299,
+      "orca_macroCharacter": 0.0,
+      "orca_macroPunch": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroSpace": 0.0
+    },
+    "Ouroboros": {
+      "ouro_topology": 0.384,
+      "ouro_filterCutoff": 0.485,
+      "ouro_lfoRate": 0.148,
+      "ouro_attack": 0.077,
+      "ouro_release": 1.0,
+      "ouro_macroCharacter": 0.077,
+      "ouro_macroCoupling": 0.101
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Orca",
+        "target": "Ouroboros",
+        "type": "EnvToMod",
+        "amount": 0.613,
+        "description": "Orca drives Ouroboros via EnvToMod"
+      }
+    ]
+  },
+  "sequencer": null
+}

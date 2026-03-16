@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Black Glass Siege",
+  "mood": "Foundation",
+  "engines": [
+    "Obsidian"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.83,
+    "MOVEMENT": 0.09,
+    "COUPLING": 0.17,
+    "SPACE": 0.18
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.75,
+    "movement": 0.09,
+    "density": 0.88,
+    "space": 0.18,
+    "aggression": 0.91
+  },
+  "parameters": {},
+  "tags": [
+    "siege",
+    "obsidian",
+    "glass",
+    "crushing"
+  ],
+  "description": "Dense black refraction under maximum pressure — no give, no motion."
+}

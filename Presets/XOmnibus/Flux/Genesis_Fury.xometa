@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Genesis Fury",
+  "mood": "Flux",
+  "engines": [
+    "Overworld"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.98,
+    "COUPLING": 0.25,
+    "SPACE": 0.12
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.25,
+    "movement": 0.98,
+    "density": 0.83,
+    "space": 0.12,
+    "aggression": 0.95
+  },
+  "parameters": {},
+  "tags": [
+    "violent",
+    "overworld",
+    "genesis",
+    "YM2612"
+  ],
+  "description": "YM2612 FM feedback at maximum — Mega Drive hardware screaming."
+}

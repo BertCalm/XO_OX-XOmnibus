@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Black Core II",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.275,
+    "warmth": 0.155,
+    "movement": 0.345,
+    "density": 0.956,
+    "space": 0.332,
+    "aggression": 0.435
+  },
+  "engines": [
+    "OCTOPUS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Frozen harmonic pile-up. Cold, packed, unrelenting.",
+  "tags": [
+    "aether",
+    "cold",
+    "dense",
+    "dark",
+    "pressure"
+  ],
+  "macroLabels": [
+    "CYCLE",
+    "CONSUME",
+    "COUPLING",
+    "VOID"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.275,
+    "warmth": 0.155,
+    "movement": 0.345,
+    "density": 0.956,
+    "space": 0.332,
+    "aggression": 0.435
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

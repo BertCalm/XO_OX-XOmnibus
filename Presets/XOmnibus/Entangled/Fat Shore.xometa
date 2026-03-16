@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "name": "Fat Shore",
+  "mood": "Entangled",
+  "engines": [
+    "Osteria",
+    "Obese"
+  ],
+  "author": "XO_OX Designs — Coverage Pack 2026-03-16",
+  "version": "1.0.0",
+  "description": "OBESE's saturated character pushes OSTERIA's ensemble into overdrive — the tavern session that gets too loud, too warm, too saturated.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "osteria",
+    "obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.662,
+    "warmth": 0.729,
+    "movement": 0.457,
+    "density": 0.673,
+    "space": 0.481,
+    "aggression": 0.577
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_qBassShore": 0.606,
+      "osteria_qHarmShore": 0.647,
+      "osteria_qMelShore": 0.342,
+      "osteria_qRhythmShore": 0.247,
+      "osteria_qElastic": 0.691,
+      "osteria_qStretch": 0.503,
+      "osteria_qMemory": 0.778,
+      "osteria_qSympathy": 0.656,
+      "osteria_bassLevel": 0.533,
+      "osteria_harmLevel": 0.771,
+      "osteria_melLevel": 0.435,
+      "osteria_rhythmLevel": 0.492,
+      "osteria_ensWidth": 0.468,
+      "osteria_blendMode": 0.453,
+      "osteria_tavernMix": 0.643,
+      "osteria_tavernShore": 0.303,
+      "osteria_murmur": 0.225,
+      "osteria_warmth": 0.762,
+      "osteria_oceanBleed": 0.064,
+      "osteria_patina": 0.216,
+      "osteria_porto": 0.474,
+      "osteria_smoke": 0.331,
+      "osteria_filterEnvDepth": 0.329,
+      "osteria_attack": 0.043,
+      "osteria_decay": 0.485,
+      "osteria_sustain": 0.784,
+      "osteria_release": 1.75,
+      "osteria_sessionDelay": 0.231,
+      "osteria_hall": 0.382,
+      "osteria_chorus": 0.068,
+      "osteria_tape": 0.136,
+      "osteria_macroCharacter": 0.0,
+      "osteria_macroMovement": 0.0,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.0
+    },
+    "Obese": {
+      "fat_satDrive": 0.557,
+      "fat_filterCutoff": 0.619,
+      "fat_lfoRate": 0.268,
+      "fat_attack": 0.0,
+      "fat_release": 0.859,
+      "fat_macroMojo": 0.0,
+      "fat_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Osteria",
+        "target": "Obese",
+        "type": "EnvToMod",
+        "amount": 0.807,
+        "description": "Osteria drives Obese via EnvToMod"
+      }
+    ]
+  },
+  "sequencer": null
+}
