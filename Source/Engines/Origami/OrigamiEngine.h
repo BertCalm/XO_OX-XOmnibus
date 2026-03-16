@@ -1856,7 +1856,7 @@ private:
     // ---- Voice Pool ----
     std::array<OrigamiVoice, kMaxVoices> voices;
     uint64_t voiceAllocationCounter = 0;             // Monotonic counter for LRU voice stealing
-    int activeVoiceCount = 0;                         // Current number of sounding voices
+    std::atomic<int> activeVoiceCount { 0 };          // Current number of sounding voices (written audio thread, read UI thread)
 
     // ---- Pre-Computed Tables ----
     std::array<float, kFFTSize> hannWindow {};                      // Hann analysis/synthesis window

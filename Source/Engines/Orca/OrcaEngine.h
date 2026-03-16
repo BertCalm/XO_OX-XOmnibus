@@ -470,7 +470,9 @@ public:
         float effectiveEchoRes = clamp (pEchoReso + huntAmount * 0.1f, 0.0f, 0.995f);
         float effectiveCrush   = clamp (pCrushMix + huntAmount * 0.6f, 0.0f, 1.0f);
         float effectiveBreachSub = clamp (pBreachSub + huntAmount * 0.3f, 0.0f, 1.0f);
-        float effectiveWTPos   = clamp (pWTPos + couplingWTPosMod + macroMove * 0.3f, 0.0f, 1.0f);
+        // Mod wheel (CC#1) scans the wavetable position — sweeps from sine/whale-call
+        // through metallic partials to complex vocal textures (D006 compliance)
+        float effectiveWTPos   = clamp (pWTPos + couplingWTPosMod + macroMove * 0.3f + modWheelAmount_ * 0.5f, 0.0f, 1.0f);
         float effectiveEchoRate = clamp (pEchoRate + couplingEchoRateMod * 10.0f + macroMove * 5.0f, 0.5f, 40.0f);
         float effectiveEchoMix = clamp (pEchoMix + macroCoup * 0.4f, 0.0f, 1.0f);
 
@@ -522,6 +524,8 @@ public:
                 noteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
+            else if (msg.isController() && msg.getControllerNumber() == 1)
+                modWheelAmount_ = msg.getControllerValue() / 127.0f;
         }
 
         // --- Update per-voice MPE expression from MPEManager ---
@@ -1325,6 +1329,9 @@ private:
     float smoothCoeff = 0.0f;
     float crossfadeRate = 0.0f;
     uint64_t voiceCounter = 0;
+
+    // MIDI expression
+    float modWheelAmount_ = 0.0f;   // CC#1 — scans wavetable position (D006)
 
     // Voices
     std::array<OrcaVoice, kMaxVoices> voices {};

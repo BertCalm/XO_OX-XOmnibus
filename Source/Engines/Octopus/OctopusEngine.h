@@ -524,7 +524,10 @@ public:
 
         float effectiveArmDepth = clamp (pArmDepth + macroChar * 0.4f, 0.0f, 1.0f);
         float effectiveArmRate  = clamp (pArmBaseRate + couplingArmRateMod + macroMove * 3.0f, 0.05f, 20.0f);
-        float effectiveChromaDepth = clamp (pChromaDepth + macroCoup * 0.4f + couplingChromaMod, 0.0f, 1.0f);
+        // D006: mod wheel intensifies chromatophore skin-shift — adds up to +0.4
+        // chroma depth, causing the filter topology to morph more aggressively.
+        float effectiveChromaDepth = clamp (pChromaDepth + macroCoup * 0.4f + couplingChromaMod
+                                            + modWheelAmount_ * 0.4f, 0.0f, 1.0f);
         float effectiveWTPos    = clamp (pWTPos + couplingWTPosMod + macroMove * 0.2f, 0.0f, 1.0f);
         float effectiveCutoff   = clamp (pCutoff + macroChar * 4000.0f, 20.0f, 20000.0f);
         float effectiveReso     = clamp (pReso + macroChar * 0.2f, 0.0f, 1.0f);
@@ -559,6 +562,8 @@ public:
                 noteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
+            else if (msg.isController() && msg.getControllerNumber() == 1)
+                modWheelAmount_ = msg.getControllerValue() / 127.0f;
         }
 
         // --- Update per-voice MPE expression from MPEManager ---
@@ -1455,6 +1460,12 @@ private:
     std::vector<float> outputCacheL;
     std::vector<float> outputCacheR;
     float envelopeOutput = 0.0f;
+
+    // D006: mod wheel (CC#1) — intensifies chromatophore skin-shift depth,
+    // pushing the filter topology morph harder on each note. Full wheel
+    // adds up to +0.4 to effectiveChromaDepth — the octopus flares its
+    // full chromatophore palette in response to the performer's expression.
+    float modWheelAmount_ = 0.0f;
 
     // Coupling modulation accumulators
     float couplingWTPosMod = 0.0f;

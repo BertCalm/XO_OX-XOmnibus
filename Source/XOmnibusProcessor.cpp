@@ -929,6 +929,16 @@ void XOmnibusProcessor::applyPreset(const PresetData& preset)
         {
             juce::String fullId = prop.name.toString();
 
+            // Resolve OddfeliX (Snap) legacy param aliases before lookup.
+            // Ghost params (removed in the percussive redesign) return an empty
+            // string — skip them. Renamed params map to their canonical ID.
+            if (fullId.startsWith("snap_"))
+            {
+                fullId = xomnibus::resolveSnapParamAlias(fullId);
+                if (fullId.isEmpty())
+                    continue;  // param was removed — skip silently
+            }
+
             // Try as-is first (already a full ID like "opal_source"),
             // then with prefix ("source" → "opal_source").
             if (apvts.getParameter(fullId) == nullptr)

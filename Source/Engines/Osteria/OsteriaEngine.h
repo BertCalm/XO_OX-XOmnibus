@@ -847,7 +847,11 @@ public:
         }
 
         // Setup smoke filter
-        float smokeCutoff = lerp (18000.0f, 3000.0f, pSmoke) + filterEnvBoost;
+        // D006: mod wheel thickens the woodfire smoke — full wheel adds up to
+        // 4 kHz of additional LPF roll-off, drawing the ensemble deeper into
+        // the hazy warmth of the tavern interior.
+        float smokeCutoff = lerp (18000.0f, 3000.0f, pSmoke) + filterEnvBoost
+                            - modWheelAmount_ * 4000.0f;
         smokeCutoff = std::max (200.0f, std::min (20000.0f, smokeCutoff));
         smokeFilter.setCoefficients (smokeCutoff, 0.0f, srf);
 
@@ -883,6 +887,8 @@ public:
                 reset();
             else if (msg.isChannelPressure())
                 aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
+            else if (msg.isController() && msg.getControllerNumber() == 1)
+                modWheelAmount_ = msg.getControllerValue() / 127.0f;
         }
 
         aftertouch.updateBlock (numSamples);
@@ -1840,6 +1846,11 @@ private:
 
     // D006: aftertouch handler — CS-80-style channel pressure → tavern mix depth
     PolyAftertouch aftertouch;
+
+    // D006: mod wheel (CC#1) — deepens smoke haze, pulling the ensemble into
+    // the woodfire warmth of the tavern. Full wheel drops smoke cutoff by up
+    // to 4 kHz, thickening the air between the listener and the quartet.
+    float modWheelAmount_ = 0.0f;
 
     // --- Coupling accumulators ---
     // These accumulate coupling input between renderBlock calls and are

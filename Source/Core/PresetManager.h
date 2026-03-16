@@ -3,6 +3,7 @@
 #include <cmath>
 #include <algorithm>
 #include <map>
+#include <set>
 #include <vector>
 
 namespace xomnibus {
@@ -111,6 +112,33 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : engineId.toLowerCase();
+}
+
+// Resolve legacy per-parameter aliases for OddfeliX (Snap) engine.
+// These were renamed or removed when the engine became purely percussive
+// (no ADSR sustain/release stage). Returns the canonical param ID, or an
+// empty String if the param has been removed and should be dropped.
+inline juce::String resolveSnapParamAlias(const juce::String& paramId)
+{
+    // Renamed params: old ID -> canonical ID
+    static const std::map<juce::String, juce::String> renamed {
+        { "snap_resonance",    "snap_filterReso"      },
+        { "snap_filterEnvAmt", "snap_filterEnvDepth"  },
+        { "snap_filterEnv",    "snap_filterEnvDepth"  },
+        { "snap_snapAmount",   "snap_snap"             },
+    };
+    // Removed params: had no equivalent in the percussive engine redesign
+    static const std::set<juce::String> removed {
+        "snap_attack", "snap_sustain", "snap_release",
+        "snap_ampAttack", "snap_ampDecay", "snap_ampRelease", "snap_ampSustain",
+        "snap_oscShape", "snap_oscTune", "snap_snapTone",
+    };
+
+    if (removed.count(paramId))
+        return {};  // empty = drop this param
+
+    auto it = renamed.find(paramId);
+    return (it != renamed.end()) ? it->second : paramId;
 }
 
 // Valid moods — the 6 browsing categories plus User.

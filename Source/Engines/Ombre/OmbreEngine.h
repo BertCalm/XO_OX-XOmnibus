@@ -267,7 +267,14 @@ public:
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
+            else if (msg.isController() && msg.getControllerNumber() == 1)
+                modWheelAmount_ = msg.getControllerValue() / 127.0f;
         }
+
+        // Mod wheel: sweeps blend toward pure Opsis (perception) at full throw.
+        // At modWheel=0: blend unchanged. At modWheel=1: blend pushed fully to 1.0.
+        // This lets the player shift live between ghost-memory and sharp-present.
+        const float effectiveBlend = clamp (blend + modWheelAmount_ * (1.0f - blend), 0.0f, 1.0f);
 
         // Consume coupling accumulators
         float pitchMod = externalPitchMod;
@@ -441,7 +448,8 @@ public:
                 }
 
                 // Crossfade: blend 0.0 = pure Oubli (ghost), 1.0 = pure Opsis (now)
-                float blended = opsisOut * blend + oubliOut * (1.0f - blend);
+                // effectiveBlend incorporates mod wheel — player can sweep live
+                float blended = opsisOut * effectiveBlend + oubliOut * (1.0f - effectiveBlend);
 
                 // Shared low-pass filter
                 float filtered = voice.lpf.processSample (blended);
@@ -450,7 +458,7 @@ public:
                 float out = filtered * voice.envLevel * voice.velocity * stealFade;
 
                 // Stereo spread — Oubli wider, Opsis centered
-                float stereoWidth = (1.0f - blend) * 0.3f;
+                float stereoWidth = (1.0f - effectiveBlend) * 0.3f;
                 float panMod = oubliOut * stereoWidth;
                 float outL = out * (1.0f - panMod * 0.5f);
                 float outR = out * (1.0f + panMod * 0.5f);
@@ -721,6 +729,9 @@ private:
     float srf = 44100.0f;
     std::array<OmbreVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
+
+    // MIDI expression
+    float modWheelAmount_ = 0.0f;   // CC#1 — sweeps blend toward Opsis (D006)
 
     // Coupling state
     float envelopeOutput = 0.0f;

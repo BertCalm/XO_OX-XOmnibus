@@ -991,6 +991,14 @@ public:
             juce::ParameterID { "obsidian_formantIntensity", 1 }, "Obsidian Formant",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.0f));
 
+        // P0-04 fix: formant blend (mix between dry PD and formant-filtered signal).
+        // Previously shared the ID "obsidian_formantIntensity" with the formant resonance
+        // amount, causing both pFormantResonance and pFormantIntensity to point at the
+        // same parameter slot. Now correctly registered under its own ID.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "obsidian_formantResonance", 1 }, "Obsidian Formant Blend",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.0f));
+
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "obsidian_stereoWidth", 1 }, "Obsidian Stereo",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.3f));
