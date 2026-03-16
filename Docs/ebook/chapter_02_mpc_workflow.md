@@ -4,383 +4,208 @@
 
 ---
 
-There's a version of MPC ownership where you load a pack, play a few pads, get busy with life, and come back to the same three sounds for the next six months. It's not your fault — MPC is a deep environment and its depth isn't always obvious from the surface. The hardware looks approachable. The workflow rewards patience.
+There is a moment that every MPC producer knows. You have just loaded a new expansion pack. The pads are lit. You are staring at sixteen squares of potential. You hit pad one, and the sound comes back at you — and it is either exactly what you needed, or it is a mystery you are about to spend the next twenty minutes solving.
 
-This chapter is about collapsing that patience curve. By the end of it, you'll understand exactly how XO_OX packs are structured, why they respond the way they do to your playing, what those Q-Links are actually connected to, and how to move between production and performance without losing your momentum.
-
-Everything here applies to MPC Live III and MPC software 3.0+. Most of it applies to MPC Live II and X as well. Where hardware generations diverge, I'll flag it.
-
-Let's get into it.
+The difference between those two outcomes usually has nothing to do with the quality of the pack. It has to do with whether you understand the architecture underneath. MPC's program system is elegant once you see it whole. XO_OX packs are designed around that architecture, not despite it. This chapter explains both.
 
 ---
 
-## 2.1 Understanding MPC's Program Architecture
+## 2.1 Understanding MPC's Program Architecture — Programs vs. Tracks vs. Sequences
 
-*Programs vs. Tracks vs. Sequences — what lives where and why*
+The MPC's three-level architecture is the foundation of everything. Get this wrong and you will spend your session fighting the instrument. Get it right and the whole machine opens up.
 
-Before you can use XO_OX packs fluently, you need a clear model of how MPC organizes its sound world. The terminology is precise, and conflating these concepts is the root cause of most workflow confusion.
+**Programs** are the bottom of the stack — the sound engine layer. A program defines exactly one set of sounds: which samples are assigned to which pads, what velocity curves those pads respond to, what filters and envelopes are applied per pad. A program does not know anything about time. It does not know what key you are playing in. It does not know your tempo. It is purely a sound palette.
 
-**The Program** is the atomic unit of sound in MPC. A program is a self-contained patch: one instrument (or one drum kit), its samples, its envelope settings, its FX chain, and its Q-Link mappings. A Keygroup program is a pitched instrument — samples spread across the keyboard, playable across multiple octaves. A Drum program is a collection of 16+ pads, each pad a discrete percussive hit with its own sample set, velocity layers, and kit voice settings. A Plugin program hosts a virtual instrument directly in the MPC environment. A CV program sends control voltage to external hardware.
+Think of a program as a single instrument. A drum kit is a program. A bass patch is a program. A chord machine built from eight velocity-switched samples is a program. Programs are instantiated per track — one track, one program.
 
-XO_OX packs primarily ship in two formats: Drum programs (from the ONSET engine) and Keygroup programs (from melodic engines like OPAL, OVERDUB, ODYSSEY, and the rest of the fleet). Some packs include both — a kit and a corresponding tonal program designed to sit in the same mix.
+**Tracks** are the middle layer — the performance layer. A track holds your recorded MIDI data (or audio) and assigns it to a program. When you record a pattern on the MPC, you are recording into a track. The track has a type: Drum, Keygroup, Plugin, Audio, MIDI, or CV. For XO_OX expansion packs, you will primarily work with Drum and Keygroup tracks.
 
-**The Track** is where a program lives inside a project. Think of a Track as an instance of a program assigned to a channel. One track = one program = one MIDI channel = one set of pads. You can load the same program onto multiple tracks — useful for layering — and each track instance can have its own Q-Link state.
+A Drum track assigns pad hits to specific notes — pad 1 is MIDI note 36 by default, and so on through the 16-pad grid. A Keygroup track maps a single instrument across a keyboard range, with each note playing the appropriate pitch-shifted sample.
 
-**The Sequence** is the container for your composition. A Sequence holds all the MIDI events recorded across all active tracks, for a specific section of your music. Most producers work in clip-launcher mode: multiple sequences per project, each one a section (intro, verse, chorus, break, outro), switching between them live or in arrangement.
+**Sequences** are the top layer — the arrangement layer. A sequence is a time container: it has a tempo, a time signature, and a length in bars. It holds all your tracks playing simultaneously. You can have up to 128 sequences per project. Sequences are the unit of performance — when you perform live on the MPC, you are triggering sequences.
 
-The important thing about sequences in the context of XO_OX packs: **the program is not the sequence**. When you switch sequences, your programs persist. This means you can sequence the same ONSET drum program differently in your intro and your peak — and swap Q-Link states per sequence for different timbral feels without reloading anything.
+> **Kai's Tip:** The confusion most producers hit is that they think of "the beat" as a single thing. On the MPC, a beat is actually a sequence containing multiple tracks each pointing to a program. When you want to swap a drum kit mid-song, you are not changing your track — you are pointing that track at a different program, or triggering a new sequence where that track already points to a different program.
 
-> **Workflow tip**: Create a "template project" with your three or four most-used XO_OX programs pre-loaded across tracks. Save it as your starting point for every session. Loading time savings alone are worth this habit.
-
-**Pad Banks** operate at the track level, not the sequence level. Bank A through Bank D gives you 64 pads from one program. XO_OX drum packs are designed to use all four banks meaningfully — more on this in section 2.5.
-
-One more concept worth naming: the **Program Group**. In MPC 3.0+, you can group programs for simultaneous Q-Link control — useful when you want one knob to affect both the kick program and the bass program in complementary ways. XO_OX "Coupled" packs (marked in the manifest) are designed with specific Program Group assignments in mind.
+The practical implication for XO_OX packs: when you load a pack, you are loading programs. You will assign those programs to tracks inside sequences. Each XO_OX program is designed to work independently as a complete sound palette — you can load a single program, get great results, and never think about another program. But the real power comes when you layer programs across tracks within a single sequence, or sequence program swaps across your song structure.
 
 ---
 
-## 2.2 The Expansion Pack Hierarchy
+## 2.2 The Expansion Pack Hierarchy — Collections, Packs, Programs, Keygroups
 
-*Collections → Packs → Programs → Keygroups — how the XO_OX catalog is organized*
+XO_OX packs are organized in a four-level hierarchy that maps directly to how MPC stores its content internally. Understanding this hierarchy means you always know where to look for what you need.
 
-XO_OX's release architecture has four levels. Understanding them makes browsing and purchasing decisions much clearer.
+**Collections** are the top level — the brand/concept grouping. The Kitchen Essentials Collection, the Travel/Water Collection, the Artwork/Color Collection. Collections are the creative universe that a group of packs belongs to. They share an aesthetic vocabulary, a sound design philosophy, and often specific cross-pack technical features. In your MPC's file system, collections appear as top-level folders inside the XO_OX expansion directory.
 
-**Collections** are the highest level. A Collection is a themed group of packs that share a design philosophy, visual identity, and compositional universe. Current XO_OX collections include Kitchen Essentials (acoustic flavor, FX recipe, boutique synthesis wildcard), Travel / Water / Vessels (geographic era, water-body acoustic character), and Artwork / Color (visual art movement, color science, cultural voice). Collections are released over time — individual packs within a collection can be purchased separately, but owning the full collection unlocks cross-pack coupling recipes.
+**Packs** are the second level — the product unit. Each pack has a name, a theme, and a set of programs. A pack corresponds to what you purchase or download as a single item. Inside your MPC, a pack is a subfolder within its collection, containing an `.xpn` file (the program definitions) and a `Samples/` directory (the audio content).
 
-**Packs** are what you download and install. A pack is an `.xpn` file — which is actually a ZIP archive containing programs, samples, and metadata. One pack typically contains 2–5 programs and all the samples they reference. Pack names follow the format `[ENGINE_NAME]/[Pack Concept]`, for example `ONSET/808 Reborn` or `OPAL/Tide Memory`. Pack version numbers use semantic versioning: `1.0.0` is the initial release, `1.1.0` adds programs, `1.0.1` fixes sample issues.
+**Programs** are the third level — the playable instrument. Each pack typically contains 4–12 programs. Each program is a complete, ready-to-play instrument. In XPN terms, a program is an `<MPCVObject>` containing one or more `<Instruments>` (the pad assignments and velocity layers). When you browse a pack on the MPC, you are scrolling through its programs.
 
-**Programs** are the individual `.xpm` files inside a pack. A program is what actually loads onto an MPC track. One pack might contain: a full drum kit (Drum program), a tonal pad derived from the same engine preset (Keygroup program), and a bonus FX chain program. When you browse packs on MPC hardware, you're browsing programs — the `.xpn` container is already unpacked into the MPC's expansion library.
+**Keygroups** are the fourth level — the per-sample assignment. Inside each program, each pad has one or more keygroups. A keygroup defines: which sample plays, across what velocity range, across what note range, with what tuning. For XO_OX drum programs, each pad typically has 2–4 keygroups stacked across velocity ranges — that is the velocity-switching system that gives the packs their dynamic expressiveness.
 
-**Keygroups** (for Keygroup programs) and **Pads** (for Drum programs) are the finest granularity — individual zones within a program. A Keygroup is a pitched range mapped to a sample or sample stack. A pad is one of the 16 physical pads in a drum program, each with its own velocity layers, mute groups, and kit voice settings.
+> **Kai's Tip:** Do not confuse the Keygroup program *type* (a track type that maps samples across a keyboard) with the keygroup *data structure* inside any program. Every program — drum, plugin, whatever — uses keygroups internally. The Keygroup track type is just a specific usage mode where you play chromatic notes across the keyboard and the program transposes the sample accordingly.
 
-When XO_OX describes a pack as having "8-velocity-layer Keygroups," we mean each individual note zone in that program has 8 samples stacked by velocity — so a soft press gets a different recording than a hard press, not just a louder version of the same one. This matters for the Velocity-Timbre Contract in section 2.7.
-
-> **Worth knowing**: Inside MPC's expansion manager, packs are listed by Pack name. To see what programs are inside before loading, tap the pack thumbnail and look at the program list on the detail screen. This saves the "I loaded the wrong program" fumble during a session.
+The practical navigation consequence: when you load an XO_OX pack on your MPC, you are loading an `.xpn` file that automatically creates all of these structures. You do not need to manually assign samples. The pack comes pre-wired. Your job is to understand the programs inside it and decide how to deploy them.
 
 ---
 
-## 2.3 Loading and Navigating XO_OX Packs on Hardware
+## 2.3 Loading and Navigating XO_OX Packs on Hardware — Step-by-Step for MPC Live III
 
-*Step-by-step for MPC Live III*
+The MPC Live III introduced a refined expansion management system in its 3.x firmware. Here is the exact workflow.
 
-Installing an XO_OX pack and navigating to a program takes about 90 seconds the first time, less than 30 once you know the path. Here is the complete flow on MPC Live III running firmware 3.4+.
+**Installing the pack:**
+1. Copy the XO_OX pack folder to a USB drive or SD card formatted for the MPC. Preserve the folder structure: `XO_OX/[Collection Name]/[Pack Name]/` with the `.xpn` file and `Samples/` subfolder inside the pack folder.
+2. Insert the drive into your MPC Live III. The MPC will not auto-install — you initiate the install.
+3. Navigate to **Menu > Expansions**. You will see your connected drives listed.
+4. Find the XO_OX pack, press and hold to get options, select **Install Expansion**. The MPC copies the samples to internal storage and registers the pack in the expansion browser.
+5. Installation confirmation appears in the top bar. The pack is now available from any project.
 
-**Installing from USB or SD:**
+**Loading a program into a project:**
+1. From the main screen, tap **Menu > Browse** (or press the Browse button on hardware).
+2. In the browser, tap **Expansions** at the top to switch from file system view to expansion view.
+3. Navigate to the XO_OX collection and find your pack. Tap the pack name to expand it and see the programs.
+4. Tap a program name once to preview it — you will hear the program's init sounds on the pads. Tap and hold to get load options.
+5. Select **Load to Current Track** to replace the active track's program, or **Load to New Track** to add it as a new layer in the current sequence.
 
-1. Copy the `.xpn` file to your USB drive or SD card.
-2. With MPC powered on, insert the drive.
-3. Press **BROWSE** to open the browser.
-4. Navigate to your drive and locate the `.xpn` file.
-5. Long-press the `.xpn` file icon → select **Install Expansion Pack**.
-6. MPC will unpack the archive and register it in your expansion library. Time varies with pack size — a standard XO_OX drum pack (200–400 samples) takes 15–45 seconds.
-7. When complete, the pack appears in your **Expansions** library.
+**Navigating inside the program:**
+1. With the program loaded, tap any pad to hear it. The pad shows the keygroup assignment at the bottom of the screen.
+2. Press **Program Edit** (or tap the pencil icon) to enter program edit mode. Here you see the full pad grid with velocity layer information.
+3. Tap a pad once to select it. The bottom panel shows the keygroup stack for that pad — scroll through layers to see each velocity range.
+4. Swipe left on the bottom panel to move to the Envelope / Filter / LFO screens for that pad. XO_OX programs are pre-configured here — you rarely need to edit, but knowing where the parameters live is important for customization.
 
-**Installing from MPC Connect (desktop):**
+> **Kai's Tip:** On the MPC Live III, long-pressing any pad in Program Edit mode opens the full sample assignment view. This is where you can see exactly which sample file is playing at which velocity range — useful when you want to understand why a pad sounds a certain way at soft vs. hard hits.
 
-1. Open MPC Connect, select your connected MPC.
-2. In the Expansions panel, click **Install Pack** and navigate to the `.xpn` file.
-3. MPC Connect transfers and installs over USB. Faster than SD card for large packs.
-
-**Loading a program from the Expansions library:**
-
-1. Press **BROWSE**, then tap the **Expansions** tab (usually the second tab, recognizable by the XPN icon).
-2. Scroll or search for your pack. XO_OX packs are named `XO_OX / [Pack Name]` in the vendor column.
-3. Tap the pack to expand its program list.
-4. Tap a program to preview it (the MPC will play its preview audio if one is included — XO_OX packs include 10-second previews).
-5. To load: drag the program to a track in the track view, or press **Load** while the program is selected.
-6. The program is now on your track, pads are lit, Q-Links are assigned.
-
-**Finding the program you want quickly:**
-
-MPC 3.0+ search uses both pack name and program name. Type "ONSET" to find all ONSET engine programs across all installed packs. Type "Foundation" to find all foundation-mood programs. XO_OX programs are tagged with engine name, mood, energy level, and genre — so `OPAL atmosphere` finds all low-energy granular programs.
-
-> **Tip: Pre-load for live sets**: MPC Live III can hold up to 32 programs in memory simultaneously. Before a live set, load all programs you plan to use across tracks in a single project. Use the track mute to silence what you're not using. Switching between programs mid-set via the browser introduces loading latency; switching between pre-loaded tracks is instant.
-
-**Navigating pad banks:**
-
-From any track with a Drum or Keygroup program loaded, press **PAD BANK** to cycle through banks A, B, C, D. XO_OX drum packs are organized with:
-- **Bank A**: Core kit voices (kick, snare, hats, clap)
-- **Bank B**: Tonal/melodic percussion, FX hits, sustain elements
-- **Bank C**: Variations and alternate takes on Bank A voices
-- **Bank D**: Performance elements (fills, transitions, field recordings)
-
-This layout is consistent across all XO_OX drum packs, so once you learn one, you know them all.
+**Switching between programs within a pack:**
+1. Press and hold the **Program** name display at the top of the main screen.
+2. A dropdown shows all programs available in the current project. Scroll to switch.
+3. To load a different program from the same pack without opening the browser: tap **Browse**, navigate to the pack, and load the new program to the current track. This swaps the program in place without losing your recorded sequence data.
 
 ---
 
 ## 2.4 Q-Link Mastery — Morphing Timbre in Real Time
 
-*The 4 Q-Link slots and what XO_OX maps to them*
+Q-Links are the MPC's four hardware knobs positioned above the pads on the right side of the unit. They are assignable to almost any parameter in the current program — filter cutoff, LFO rate, envelope attack, sample start point, effects parameters. On the MPC Live III they are touch-sensitive, meaning touching a knob without turning it shows the current value.
 
-The MPC's Q-Links are four physical knobs (on Live III, eight — but four active per bank) that control real-time parameter adjustments on the loaded program. They are the expressive surface of MPC performance. Most third-party packs use Q-Links as an afterthought — usually just a filter cutoff and a reverb send. XO_OX packs treat Q-Links as a first-class design element, and the assignments are intentional.
+XO_OX packs define Q-Link assignments as part of the program specification. Every pack ships with intentional Q-Link mappings chosen by the sound designer — these are not random. They are chosen to be the most musically useful transformations for that specific instrument character.
 
-**The 4-Q-Link Design Standard for XO_OX Packs:**
+**How to access Q-Link assignments:**
+1. In the main perform view, the Q-Link knobs are active immediately. Turn any knob to hear the effect.
+2. To see what each Q-Link controls: tap **Menu > Q-Link Edit** or tap the Q-Link assignment label on the screen (in newer firmware, the labels display next to each knob on the main screen when Q-Link mode is active).
+3. To reassign: in Q-Link Edit, tap any assignment slot and navigate to the parameter you want. Changes persist to the program.
 
-Every XO_OX program ships with at least four Q-Link assignments. The philosophy:
+**XO_OX standard Q-Link layout:**
+XO_OX packs follow a consistent Q-Link philosophy across the fleet. While specific targets vary by program, the four knobs are typically organized:
 
-- **Q1 — Tone / Character**: The core timbral quality of the sound. For most programs, this controls filter cutoff or harmonic tilt — moving Q1 from left to right moves the sound from closed and dark to open and bright. This is the "color" knob.
+- **Q-Link 1 (CHARACTER)**: The core timbre control — often filter cutoff or the instrument's primary spectral brightness parameter. Turning up brightens and sharpens; turning down darkens and warms.
+- **Q-Link 2 (MOVEMENT)**: Modulation depth — LFO amount, vibrato depth, or rhythmic variation. Turning up adds animation; turning down creates a static, locked tone.
+- **Q-Link 3 (COUPLING)**: The cross-engine interaction parameter in XOmnibus-sourced programs — controls how much the secondary engine influences the primary. In XPN packs this often maps to filter resonance or envelope attack.
+- **Q-Link 4 (SPACE)**: Reverb or delay send amount, or release time. Controls how much the sound fills the room.
 
-- **Q2 — Space / Environment**: The acoustic environment around the sound. Reverb send depth, room size, or pre-delay. Moving Q2 changes where the sound feels like it's happening — an intimate close-mic'd recording vs. a cavernous space. This is the "room" knob.
+> **Kai's Tip:** The most powerful Q-Link technique is automation. Record your sequence first, then hold the Record button and arm Q-Link recording, then turn the knobs as the sequence plays. The MPC records every knob movement as automation data attached to the track. You can draw fills, filter sweeps, and dynamic builds into your sequence without touching a single sample file.
 
-- **Q3 — Movement / Modulation**: The rate or depth of internal modulation — LFO rate, grain scatter (OPAL), flutter (OVERDUB tape engine), arpeggiator density. This controls how alive and unstable the sound feels. This is the "life" knob.
-
-- **Q4 — Weight / Density**: The physical mass of the sound. For percussion: attack strength, transient sharpness. For melodic instruments: unison detune width, filter resonance, harmonic density. Moving Q4 from left to right adds physical presence. This is the "body" knob.
-
-This mapping is consistent across the fleet. A producer who learns the Q1–4 grammar on one XO_OX pack immediately understands all of them.
-
-**Engine-specific Q-Link naming conventions:**
-
-The MPC OLED display shows an 8-character label for each Q-Link. XO_OX uses a standardized abbreviation system:
-
-| Assignment | Display Label | Engine Examples |
-|-----------|--------------|-----------------|
-| Filter cutoff | `TONE` | All engines |
-| Reverb send | `SPACE` | All engines |
-| LFO rate | `MOVE` | OVERDUB, OPAL, ODYSSEY |
-| Grain scatter | `SCTTR` | OPAL |
-| Tape flutter | `FLTR` | OVERDUB |
-| Harmonic tilt | `TILT` | OBLONG, OBESE |
-| Grain density | `DNSTY` | OPAL |
-| Era blend | `ERA` | OVERWORLD |
-| Commune | `COMMUNE` | OHM |
-| Pluck bright | `PLUCK` | ORPHICA |
-| Breath | `BRTH` | OBBLIGATO |
-| Chaos | `CHAOS` | OUROBOROS |
-| Metabolic | `META` | ORGANON |
-
-**Using Q-Links in live performance:**
-
-In performance mode, Q-Links control the active track's program. Switching tracks switches Q-Link context — the physical knobs now control the newly active track. MPC 3.0 introduced Q-Link lock, which freezes a Q-Link to its track even when you switch — useful for keeping reverb active on a pad you want ringing while you play a new track.
-
-> **Q-Link performance move**: Set Q1 (TONE) to a slow, deliberate sweep during your build section. XO_OX programs are designed so that the full Q1 travel from 0 to 127 is a meaningful musical statement — not a sudden click but a smooth timbral arc. Automate this in your sequence for hands-free builds.
-
-**The 8-Q-Link banks on MPC Live III:**
-
-MPC Live III expands to 8 physical Q-Links. XO_OX programs use Banks A and B:
-- **Bank A (Q1–4)**: Core controls as above — Tone, Space, Movement, Weight
-- **Bank B (Q5–8)**: Engine-specific deeper controls — varies by engine, always labeled
-
-Bank B assignments for ONSET drum programs follow the MACHINE/PUNCH/SPACE/MUTATE macro system from XOmnibus: Q5 = MACHINE (kit character preset), Q6 = PUNCH (transient sharpness), Q7 = SPACE (reverb depth), Q8 = MUTATE (random variation seed).
+**Performance technique — the Q-Link sweep:**
+Load a standard XO_OX drum program. Set Q-Link 1 to the filter cutoff of all pads simultaneously (multi-pad Q-Link assignment). On a 4-bar loop, hold down a sustained chord on another track and slowly open the filter over bars 3 and 4. The XO_OX velocity-switching system responds to the filter change differently at each pad — softer hits darken more, harder hits stay brighter. This creates an organic swell that sounds hand-crafted even when fully automated.
 
 ---
 
-## 2.5 Pad Banking Strategies
+## 2.5 Pad Banking Strategies — How XO_OX Organizes Sounds Across 4 Pad Banks
 
-*How XO_OX organizes 64+ sounds across 4 pad banks*
+The MPC has four pad banks — A, B, C, and D — each containing 16 pads, giving 64 pads total per program. XO_OX organizes these banks with a consistent logic designed for efficient live performance.
 
-A 16-pad MPC grid with 4 banks is 64 pads — enough to hold a complete compositional world. XO_OX drum packs are designed to fill this space with intentionality, not just quantity.
+**Bank A — Foundation:**
+The primary sounds. The hits you will use in 90% of patterns. In a drum program: kick, snare, closed hi-hat, open hi-hat, clap, rim, snare ghost, and their main variants. In a melodic program: the principal notes of the scale or chord voicings. Bank A is the place you stay during performance.
 
-**The Standard Bank Architecture:**
+**Bank B — Extended Palette:**
+Secondary sounds that add variety. Alternate snare hits, tom fills, cymbal textures, percussion accents. In a melodic program: higher or lower register versions of Bank A sounds, harmonic extensions, counter-melody material. Bank B is where you reach when the loop needs an injection of texture.
 
-As introduced in 2.3, XO_OX uses a consistent four-bank structure across all drum packs:
+**Bank C — FX and Transitions:**
+Transition sounds, risers, sweeps, downbeats, stutter effects, reverse hits. These sounds are not for steady-state groove — they mark boundaries, build tension, or create surprise moments. Bank C is your punctuation.
 
-```
-BANK A — Foundation Kit
-[ Kick 1   ] [ Snare 1  ] [ CH 1     ] [ OH 1     ]
-[ Kick 2   ] [ Snare 2  ] [ CH 2     ] [ OH 2     ]
-[ Clap 1   ] [ Tom Lo   ] [ Tom Hi   ] [ Perc 1   ]
-[ FX 1     ] [ Crash    ] [ Ride     ] [ Perc 2   ]
+**Bank D — Wildcards and Variants:**
+Program-specific content that does not fit the above categories. Long atmospheric samples, pitched alternate versions, extended techniques, or sample chops for manual rearrangement. Some XO_OX programs use Bank D as an alternative tuning bank — the same sounds as Bank A but tuned to a different key.
 
-BANK B — Tonal + Extended
-[ Bass Hit ] [ Chord 1  ] [ Pad 1    ] [ Stab 1   ]
-[ Sub Hit  ] [ Chord 2  ] [ Pad 2    ] [ Stab 2   ]
-[ Atmos 1  ] [ Atmos 2  ] [ FX Riser ] [ FX Fall  ]
-[ Vocal 1  ] [ Vocal 2  ] [ Loop 1   ] [ Loop 2   ]
+> **Kai's Tip:** When you first load an unfamiliar XO_OX program, spend three minutes exploring all four banks before you start recording. Hit every pad at soft, medium, and loud velocities. Listen to what is there. You will discover sounds in Banks C and D that you would otherwise never find — and those are often the sounds that make the track stand out.
 
-BANK C — Variations + Alternates
-[ Kick Alt ] [ Snr Alt  ] [ CH Alt   ] [ OH Alt   ]
-[ Kick Sat ] [ Snr Sat  ] [ CH Open  ] [ OH Open  ]
-[ Clap Alt ] [ Tom Alt  ] [ Perc Alt ] [ FX Alt   ]
-[ Kick Dry ] [ Snr Dry  ] [ Hat Dry  ] [ Fx Dry   ]
+**Navigating banks during performance:**
+On the MPC Live III, the four bank buttons (A, B, C, D) are in the upper right of the pad grid. You can switch with a single tap, or hold the bank button and tap a pad to trigger a sound from a different bank while staying in the current bank view — useful for dropping in a crash cymbal from Bank C while staying in Bank A for the groove.
 
-BANK D — Performance + Transitions
-[ Fill 1   ] [ Fill 2   ] [ Fill 3   ] [ Fill 4   ]
-[ Rise 1   ] [ Rise 2   ] [ Drop 1   ] [ Drop 2   ]
-[ Intro    ] [ Verse    ] [ Bridge   ] [ Outro    ]
-[ FX Prfm1 ] [ FX Prfm2 ] [ FX Prfm3 ] [ FX Prfm4 ]
-```
-
-This is a template, not a rigid rule. The specific content varies by pack. What stays consistent: Bank A is always the foundational kit; Bank D is always performance-oriented material.
-
-**Playing across banks in a live set:**
-
-The production instinct is to stay in Bank A and use everything there. The performance opportunity is in crossing banks mid-pattern. A snare from Bank A + a sustain clap from Bank C layered in the same sequence bar creates a layered snare hit that feels live rather than programmed. Bank D's fills and transitions, triggered by hand at the right moment, add the human intervention that sequences alone can't.
-
-> **Workflow**: Record a basic pattern in Bank A. Leave Bank D empty in your recording. In your live take or final performance pass, manually trigger Bank D fills at section transitions — no programming required, pure feel.
-
-**Keygroup programs and pad banking:**
-
-For Keygroup (melodic) programs, pad banking works differently. Bank A is typically C-major across two octaves (8 pads per octave, C1–B1 on Bank A rows 1–2, C2–B2 on rows 3–4). Banks B and C extend the range or provide alternate articulations. Bank D holds special performance materials: chord voicings, transpositions, or pre-configured harmonic clusters.
-
-XO_OX melodic programs include a "play in bank" page in the program notes — a single-page reference showing what each bank contains, printed in the pack's liner notes PDF.
-
-**The 5th-bank pattern for premium packs:**
-
-Some XO_OX flagship packs ship a "Bank E" as a separate bonus program — a fifth program with 16 pads of curated "best of the pack" material. This isn't a bank in the MPC hardware sense; it's a separate program designed as a performance-optimized selection from the full four banks. Look for programs with the `_BestOf` suffix in the program list.
+**Multi-bank programming strategy:**
+For a full production using a single XO_OX drum program: build your main groove in Bank A, program a variation or fill pattern using Bank B sounds in a second sequence, and wire a Bank C transition hit to fire on the last beat before you trigger the new sequence. This three-sequence, one-program approach gives you a dynamic full song structure without loading a second program.
 
 ---
 
-## 2.6 Performance Mode vs. Production Mode Workflows
+## 2.6 The Velocity-Timbre Contract — Why XO_OX Packs Respond Differently to Hard vs. Soft Hits
 
-*Two modes, two mindsets, one MPC*
+This section is the most important in the chapter for understanding what makes XO_OX packs sound different from typical drum kits.
 
-MPC's strength is that it is genuinely two different instruments depending on how you approach it. Production mode and performance mode aren't just different screen states — they invite different creative postures.
+Most expansion packs treat velocity as a volume control: hit harder, same sound but louder. This is technically correct but musically flat. A real drummer hitting a snare drum lightly does not just play a quieter version of their full snare hit. They play a fundamentally different articulation — a ghost note, a brush tap, a controlled rimshot — that sounds different in timbre, not just volume.
 
-**Production Mode:**
+XO_OX packs are built around what we call the **velocity-timbre contract**: velocity changes the character of the sound, not just its amplitude. This is implemented through two mechanisms in the XPN format.
 
-Production mode is where you build. The primary view is the sequence editor: MIDI events, automation lanes, track arrangement. Your attention is on the arrangement over time — what happens at bar 5, how the chorus differs from the verse, where the sample starts and ends.
+**Mechanism 1 — Velocity-switched samples:**
+Each pad in an XO_OX program has 2–4 different samples stacked across velocity ranges. The ranges are non-overlapping and exhaustive (covering velocity 1–127 with no gaps). Each sample in the stack was recorded, synthesized, or designed specifically for that velocity range.
 
-XO_OX packs in production mode are tools for sound selection and sound design. You're choosing the right program for each track, adjusting Q-Links to dial in the exact timbre, rendering your decisions to MIDI automation. The 8-Q-Link bank on MPC Live III becomes an automation lane — you can draw in Q-Link movements over time, creating the filter sweep you want in bars 8–12 without touching a knob in the final product.
+A typical 3-layer setup:
+- Layer 1 (velocity 1–40): Ghost note articulation — softer, darker, with less transient snap
+- Layer 2 (velocity 41–90): Normal playing articulation — the main character of the pad
+- Layer 3 (velocity 91–127): Accent articulation — brighter, more harmonically complex, more attack
 
-Best practice for XO_OX packs in production mode:
-- Load the program, play it raw before touching Q-Links
-- Set Q1 (TONE) first — it's the biggest voice decision
-- Lock Q2 (SPACE) early and leave it — reverb character is a once-per-track decision, not a performance variable
-- Use Q3 (MOVEMENT) as your automation target — it changes over time naturally in well-produced tracks
+> **Kai's Tip:** When an XO_OX program sounds thin or undynamic, check whether your MIDI controller or pad performance is actually reaching velocity 90+ on hard hits. Many producers chronically underplay — they never hit above 80. Recalibrate your pad sensitivity in the MPC settings (Menu > Preferences > Hardware > Pad Sensitivity) and then re-hit your pads. You may find a whole new layer of sound waiting above the threshold you normally use.
 
-**Performance Mode:**
+**Mechanism 2 — Velocity-scaled envelope and filter parameters:**
+Beyond sample switching, XO_OX programs define per-pad envelope and filter scalings that respond to velocity continuously within each layer. Velocity 45 and velocity 85 both fall in the normal-playing layer, but at 85 the filter envelope depth is higher, the attack is slightly faster, and the sustain is slightly shorter. This gives the impression of physically natural acoustic behavior even within a single sample layer.
 
-Performance mode is where you play. The primary view is the pad grid, full-screen, maximum pads visible. MIDI recording may or may not be active. Your attention is on what's happening right now — hitting the right pad at the right moment with the right velocity.
+**The practical consequence for programming:**
+When you are building a groove with XO_OX packs, the velocity pattern is not decorative — it is load-bearing for the feel. A hi-hat pattern programmed at uniform velocity 100 sounds robotic. The same pattern with alternating velocities (100, 65, 100, 45, 100, 80, 100, 55) activates different layers and different filter scalings, and the result sounds played by a human.
 
-XO_OX packs in performance mode are instruments. The Q-Link grammar (Tone / Space / Movement / Weight) is designed to be navigable by feel without looking at labels. After a few sessions with one pack, your hands know that left-of-center on Q1 is the darker sound and right-of-center is the brighter one. This muscle memory is why the Q-Link standard matters — it transfers across the fleet.
-
-Performance mode with XO_OX recommendations:
-- Assign the Q-Link you're most likely to perform to a physical position your hand returns to naturally (Q1, leftmost)
-- Use Q4 (WEIGHT) for dynamics control in the moment — pulling it back gives you room during verses, pushing it gives impact at drops
-- In a live set, switch tracks by pressing the track button directly without stopping playback — XO_OX programs are tuned to have low startup transients so there's no audio artifact when a track activates
-
-> **The two-hand technique**: Left hand on pads, right hand on Q-Links. While your left hand is playing a repetitive pattern, your right hand moves a Q-Link slowly. This continuous manual variation is what makes a live set feel live. Program it in and it sounds robotic. Play it live and it sounds human.
-
-**Hybrid: Live Arrangement Mode:**
-
-MPC 3.0 introduced a third mode: Live Arrangement, which sits between production and performance. Sequences are visible as clips in a launcher grid. You trigger sequences manually (like Ableton Live's clip launcher) while your programs remain loaded. XO_OX packs are designed to work cleanly in this mode — program transitions are smooth because the programs are persistent across sequences.
+The MPC has an automatic humanization function (in the Timing settings), but learning to program velocity intentionally rather than randomly is what separates workmanlike loops from loops that breathe.
 
 ---
 
-## 2.7 The Velocity-Timbre Contract
+## 2.7 MPC Stems Integration — Loading XO_OX Packs Alongside Stems
 
-*Why XO_OX packs respond differently to hard vs. soft hits*
+In July 2024, Akai introduced MPC Stems — an AI-powered stem separation feature that decomposes an audio file into four isolated components (drums, bass, melody, vocals) directly on the hardware. This changed how expansion packs fit into existing production workflows.
 
-This is the most important section in this chapter for understanding why XO_OX packs feel different from most other expansion packs.
+Before Stems, the typical workflow was: start from scratch with expansion pack sounds, or build over a static sample loop. After Stems, the workflow became: load any piece of existing music, separate it into stems, and layer expansion pack programs on top of the isolated components. The expansion pack sounds become additive layers, not replacement sounds.
 
-**The standard velocity model (most packs):**
+**Loading Stems + XO_OX together:**
+1. Import an audio file into your project (Menu > Browse > navigate to the file, load to Audio Track).
+2. With the audio track selected, tap **Stems** in the bottom toolbar. The MPC processes the file — this takes 10–60 seconds depending on file length and hardware temperature.
+3. Four new audio tracks are created: Drums, Bass, Melody/Chords, Vocals. Each plays the isolated stem.
+4. Mute the Stems Drums track. Create a new Drum track in the sequence. Load your XO_OX drum program to that track.
+5. Program your XO_OX pattern to align with the Stems content. Use the tap tempo feature to sync your sequence to the original track's feel.
 
-Velocity = volume. A soft press = quiet. A hard press = loud. The sample playing is the same sample at both velocities; only the output amplitude changes. This is functional. It is also musically flat — it treats dynamics as a loudness variable rather than an expressive one.
+> **Kai's Tip:** When layering XO_OX drums over Stems bass, match the fundamental character. If the Stems bass is warm and sub-heavy, choose an XO_OX kick that complements rather than fights — typically a tight, punchy kick with less sub than you would use in a standalone production. The bass stem already owns the low end; the kick needs to sit above it. Use Q-Link 1 (CHARACTER / filter cutoff) on the XO_OX kick program to dial in the exact frequency territory where it slots in without muddying the mix.
 
-**The XO_OX velocity model:**
+**Using Stems Melody to trigger XO_OX melodic programs:**
+When the Stems Melody track is isolated, you can manually pitch-match an XO_OX melodic keygroup program to the key of the original material. Set the Q-Link for the keygroup program's tuning to the root key of the original track — identify the key by ear or using the MPC's note detection feature — and use the melody stem as a guide layer while you build new parts.
 
-Velocity = timbre + volume. A soft press is not just quieter — it's a different recording, with different frequency content, different transient character, different harmonic structure. A hard press isn't just louder — it's a genuinely different state of the instrument.
+**Limitation to know:**
+The Stems algorithm is not infallible. Complex polyphonic music with drums, bass, and melody all overlapping at similar frequencies produces stems with bleed — you will hear drum transients in the melody stem and vice versa. For XO_OX pack layering this is usually manageable, but avoid using the Stems Drums track as a timing reference for precise quantization. Use the original audio track before stem separation as your timing anchor.
 
-This is called the Velocity-Timbre Contract, and it is a design doctrine across the XO_OX fleet (Doctrine D001 in the internal spec). Every program in every XO_OX pack is auditioned at minimum velocity (v1) and maximum velocity (v127) during quality review. The rule: if those two extremes don't sound meaningfully different — not just in volume but in character — the velocity design is rejected.
+**Workflow: XO_OX Pack + Stems for rapid arrangement prototyping:**
+1. Drop a reference track into Stems.
+2. Keep Stems Bass and Stems Vocals active. Mute Stems Drums and Stems Melody.
+3. Load an XO_OX drum program. Sketch a 2-bar drum pattern in Sequence 1.
+4. Load an XO_OX melodic keygroup program. Program chord stabs in Sequence 1.
+5. Bounce Sequence 1 to audio. Open it in Stems. Separate again.
+6. You now have a Stems comparison: original reference isolated elements alongside your XO_OX re-production. The frequency contrast between the two sets of stems tells you exactly where your sounds are competing and where they are complementing.
 
-**What this means for your playing:**
-
-Your velocity sensitivity settings on MPC hardware directly affect how much timbral range you have access to. High sensitivity (physical setting in MPC's pad calibration) means small variations in hand pressure produce large velocity range — you can access the full timbral spectrum with nuanced playing. Low sensitivity compresses the velocity range — useful if you want consistent dynamics, but you lose timbral variation.
-
-XO_OX recommends: medium-high sensitivity for melodic programs, medium sensitivity for drum programs. The specific calibration in MPC Live III's pad calibration screen should aim for `vTarget = 90–100` on a firm press.
-
-**The four velocity zones and what they mean:**
-
-| Zone | MIDI Range | Playing Feel | Sound Character |
-|------|-----------|-------------|----------------|
-| pp | 1–40 | Feather touch, near silence | Soft attack, muted highs, minimal saturation, long tail |
-| mp | 41–80 | Normal press, relaxed hand | The designed "canonical" sound — this is the intended character |
-| mf | 81–110 | Deliberate, committed | Sharper attack, brighter highs, slight saturation entering |
-| ff | 111–127 | Full force | Maximum transient, full frequency content, saturation at its peak |
-
-The mp zone is the reference. Everything else is a departure from it. Designing a beat entirely in the mp zone is composing with the sound's resting identity. Dropping to pp for a verse and pushing to ff for the chorus is composing with its emotional range.
-
-> **The listening test**: Take any XO_OX drum pack. Hold your hand one centimeter above a pad and just brush it (pp velocity). Then hit the same pad hard (ff velocity). The difference you hear is the velocity-timbre range. If it sounds like the same sample quieter and louder, something is wrong. If it sounds like the same instrument in two different emotional states — that's the Contract.
-
-**Engine-specific velocity behavior:**
-
-- **ONSET (percussion)**: Velocity drives the physical impact simulation. A pp kick is the drum brushed; ff is struck at full force with a beater. The filter envelope is velocity-scaled — harder hits open the filter, producing more harmonic content from the drum body.
-
-- **OPAL (granular)**: Velocity controls grain density and scatter. pp = sparse, slow-moving grains. ff = dense cloud of grains with increased scatter and modulation. The same underlying sample becomes a different textural phenomenon at each velocity extreme.
-
-- **OVERDUB (tape delay)**: Velocity drives the input saturation stage. pp = clean signal entering the tape. ff = hot signal, driving tape saturation before the delay even fires. The delay trails respond to this — saturated input produces warmer, denser echoes.
-
-- **OHM (communal drone)**: Velocity controls commune depth — how deeply the drone voices lock to each other. pp = independent, slightly detuned voices. ff = maximum coherence, voices merging. It's not louder, it's more unified.
+This is a fast path to competitive mix translation using only MPC hardware — no DAW, no plugins.
 
 ---
 
-## 2.8 MPC Stems Integration
+## Summary
 
-*Jul 2024 feature — loading XO_OX packs alongside Stems*
+The MPC's program architecture — Programs, Tracks, Sequences — is not bureaucracy. It is the structure that enables everything from simple one-program jams to fully arranged multi-program song productions. XO_OX packs are organized to serve that architecture: Banks A–D are designed for intentional navigation, Q-Links are pre-assigned for musical morphing, and velocity layers are built around the principle that how hard you play changes what you hear, not just how loud.
 
-MPC firmware 3.3 (released July 2024) added native Stems support — the ability to load Stems-format files directly onto MPC tracks and play individual stem components (drums, bass, melody, other) as separate playable elements. This changed the relationship between sample-based packs and full-track content in a significant way.
+The Stems integration opened a new relationship between expansion packs and existing music. XO_OX packs are designed to be layered, to be combined, and to coexist with other sounds — not to demand that you start from zero every time.
 
-**What Stems support means for MPC:**
-
-A Stems file (`.stem.mp4`) contains a full mixed track plus up to four isolated components. On MPC with Stems support, you can load a Stems file onto a track and independently control the volume of each component — mute the drums stem, bring the bass stem up, etc. This turns full-track music into live performance material without requiring you to have the original session files.
-
-**How XO_OX packs work alongside Stems:**
-
-XO_OX packs and Stems files are complementary, not competing. The workflow:
-
-1. Load a Stems file onto Track 1 — a full-track reference with isolatable components
-2. Mute the drums stem in the Stems track
-3. Load an XO_OX ONSET drum pack onto Track 2
-4. Play your live drum hits over the melody, bass, and other stems from the reference track
-
-This gives you the backing musical context from a Stems file with the full expressive range of an XO_OX drum pack replacing the drums. The stems file becomes a minus-one track for your live kit performance.
-
-**Tempo sync and grid alignment:**
-
-MPC's Stems integration includes automatic tempo detection and warp/stretch — the Stems file will lock to your project BPM. XO_OX drum programs are designed at tempo-neutral positions (no tempo-locked samples in the core kit voices, only in the performance Bank D elements that are labeled with BPM). This means your XO_OX kit plays at any BPM without artifacts, while the Stems file stretches to match.
-
-**Q-Link integration across Stems + Pack tracks:**
-
-With a Stems file on Track 1 and a drum pack on Track 2, MPC's 8 Q-Link banks can be split:
-- Q-Links 1–4 (Bank A) → Track 2 (drum pack): Tone, Space, Movement, Weight
-- Q-Links 5–8 (Bank B) → Track 1 (Stems): drum stem volume, bass stem volume, melody stem volume, other stem volume
-
-This gives you a coherent 8-knob mixing and performance surface across both your live drum kit and the Stems backing track — without touching the touchscreen.
-
-> **Session setup tip**: Save a project template with a Stems placeholder on Track 1 and your favorite XO_OX drum pack on Track 2, Q-Links pre-assigned as above. Any time you start a Stems-based session, load this template and drop in your Stems file. The Q-Link map is already done.
-
-**XO_OX "Stems Ready" packs:**
-
-Starting in 2025, XO_OX packs marked `StemsReady: true` in their manifest include a pre-configured project template file alongside the programs. Load the template, and the track routing, Q-Link assignments, and default FX sends for Stems integration are already set up. Look for the `[S]` badge in the XO_OX pack browser to identify Stems-optimized packs.
-
-**Upcoming: XO_OX Stems files:**
-
-The next phase of XO_OX's MPC integration includes native Stems exports — not just drum packs, but full tracks produced using XOmnibus engines, released as Stems files with isolated XOmnibus engine components. A Stems release where the melody stem is OPAL granular synthesis, the bass stem is OBESE saturation engine, and the atmosphere stem is OHM communal drone — each stem independently playable and Q-Link addressable on MPC hardware. This format is in active development as of this writing.
+The next chapter covers preset browsing strategy — how to audition programs efficiently across a large pack library without getting lost — and the XO_OX Sonic DNA system that tells you what you are going to hear before you hit the first pad.
 
 ---
 
-## What You Now Know
-
-By the end of this chapter, you have a working model of MPC's program architecture, understand how XO_OX packs are organized at every level from Collection down to Keygroup, can load and navigate a pack fluently on MPC Live III hardware, and understand the intentional design behind Q-Link assignments, pad banking, and velocity response.
-
-More importantly, you understand the Velocity-Timbre Contract — the philosophy that separates XO_OX packs from the majority of expansion content. Velocity is not a volume dial. It is an expressive dimension. The difference between a producer who ignores this and one who uses it deliberately is the difference between a beat that works and a beat that breathes.
-
-Chapter 3 goes deeper into the coupling dimension — how XOmnibus's cross-engine modulation system can be approximated in MPC's track architecture, and the specific Q-Link recipes that recreate the XOmnibus sound design environment on hardware.
+*Kai is XO_OX Designs' MPC workflow specialist. He has been programming the MPC since the MPC2000XL and has watched Akai's operating system evolve from a 2-line LCD display to a full color multitouch interface. His opinion: the fundamentals have not changed. The architecture is still Programs, Tracks, Sequences. Everything else is quality of life.*
 
 ---
 
-> **Quick Reference: Chapter 2 Key Terms**
->
-> **Program** — Self-contained instrument patch (samples + envelopes + FX + Q-Links). The atomic sound unit.
->
-> **Keygroup Program** — Pitched instrument spread across keyboard zones.
->
-> **Drum Program** — Percussive kit of up to 64 pads across 4 banks.
->
-> **Track** — One program, one MIDI channel, in a project.
->
-> **Sequence** — One section of your composition (intro, chorus, etc.).
->
-> **Pad Bank** — One of four 16-pad configurations per track (A/B/C/D = 64 pads total).
->
-> **Q-Link** — Physical knob mapped to a program parameter. XO_OX standard: Q1=Tone, Q2=Space, Q3=Movement, Q4=Weight.
->
-> **Velocity-Timbre Contract** — XO_OX design doctrine: velocity must shape timbre, not just amplitude. Every layer is a genuinely different sound, not just a volume adjustment.
->
-> **Stems** — MPC 3.3+ feature: full-track audio files with isolated instrument stems.
->
-> **StemsReady** — XO_OX manifest flag indicating a pack includes a pre-configured Stems integration template.
-
----
-
-*Kai — MPC workflow specialist, XO_OX Designs*
-*"The machine rewards producers who learn it. What I'm trying to do is shorten the time between getting the hardware and knowing the instrument."*
+*Part of "The MPC Producer's XO_OX Field Manual" — Chapter 2 of 8*
