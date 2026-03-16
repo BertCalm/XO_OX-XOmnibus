@@ -496,6 +496,17 @@ def _export_keygroup(ctx: PipelineContext) -> None:
         tuning_tag = f", tuning={ctx.tuning}" if tuning_module else ""
         print(f"      {xpm_path.name}  (keygroup, {len(wav_map)} WAVs{tuning_tag})")
 
+        # Apply choke preset if requested
+        if ctx.choke_preset != "none" and not ctx.dry_run and xpm_path.exists():
+            try:
+                import xpn_choke_group_assigner as _choke  # lazy import
+                _choke.apply_choke_preset(xpm_path, ctx.choke_preset)
+                print(f"      Applied choke preset {ctx.choke_preset} to {xpm_path.name}")
+            except ImportError:
+                print("      [WARN] xpn_choke_group_assigner not available — skipping choke preset")
+            except Exception as e:
+                print(f"      [WARN] Choke preset failed for {xpm_path.name}: {e}")
+
     print(f"    Generated {len(ctx.xpm_paths)} keygroup programs")
 
 
@@ -782,6 +793,7 @@ def cmd_run(args) -> int:
         dry_run=args.dry_run,
         strict_qa=getattr(args, "strict_qa", False),
         tuning=getattr(args, "tuning", None),
+        choke_preset=getattr(args, "choke_preset", "none"),
     )
     return run_pipeline(ctx, skip)
 
@@ -950,6 +962,13 @@ def main():
                             "(e.g. just_intonation, 19tet, pythagorean, maqam_rast). "
                             "Run xpn_tuning_systems.py --list-tunings to see all options. "
                             "Tuning name is also appended to the expansion manifest description.")
+    p_run.add_argument("--choke-preset", metavar="PRESET", default="none",
+                       choices=["onset", "standard", "none"], dest="choke_preset",
+                       help="Apply a choke group preset to each generated XPM after export. "
+                            "'onset' = Onset drum voice choke groups, "
+                            "'standard' = generic hi-hat choke groups, "
+                            "'none' = no choke assignment (default). "
+                            "Requires xpn_choke_group_assigner module.")
 
     # --- status ---
     p_status = sub.add_parser("status", help="Show pipeline state")
