@@ -32,6 +32,12 @@ namespace xomnibus {
 //   - Zero allocation — all state is inline
 //   - Linear interpolation between control points prevents zipper noise
 //   - Block-aligned variant for processing entire coupling blocks at once
+//
+// Topology note: At ratio N with linear interpolation, this is functionally
+// a sample-and-hold with slew limiting — the topology Buchla called "source
+// of uncertainty" (Model 266). Analog synths achieved this naturally through
+// CV line capacitance. The smoothing is not a compromise; it is a modulation
+// character that mirrors the organic feel of voltage-controlled systems.
 //==============================================================================
 template <int Ratio = 32>
 class ControlRateReducer
@@ -86,7 +92,10 @@ public:
     {
         if (numSamples <= 0) return;
 
-        float prev = buffer[0];
+        // Capture first sample before any writes to prevent aliasing if
+        // the compiler reorders loads/stores during SIMD vectorization.
+        const float firstSample = buffer[0];
+        float prev = firstSample;
         for (int i = 0; i < numSamples; i += Ratio)
         {
             float next = buffer[juce_min (i + Ratio, numSamples - 1)];

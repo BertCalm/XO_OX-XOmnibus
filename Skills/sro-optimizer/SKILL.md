@@ -18,7 +18,7 @@ Every breakthrough instrument in history was born from constraint — and the co
 
 **The Roland TB-303 (1981)** — Designed to replace a bass guitarist. Failed completely at that job — the sequencer was too rigid, the filter too squelchy, the oscillator too thin. It was a commercial disaster. Then DJ Pierre accidentally ran it through distortion, and acid house was born. The "flaws" — the accent circuit's filter sweep, the slide's portamento glitch, the resonance's self-oscillation — were the sound. *Every flaw was a feature waiting for the right context.*
 
-**The Fairlight CMI (1979) → Akai MPC (1988)** — Roger Linn couldn't afford the Fairlight's $25,000 sampling system. So he built the MPC60 with 12-bit samples, 750KB RAM, and finger-drummed pads instead of a keyboard. The low bit depth gave samples grit. The pads made rhythm a physical, expressive act. The RAM constraint forced users to chop, truncate, and loop — inventing the production techniques of hip-hop and electronic music. *The MPC didn't overcome its constraints. It performed them.*
+**The Akai MPC60 (1988)** — Roger Linn couldn't afford the Fairlight CMI's $25,000 sampling system. So he built the MPC60 with 12-bit samples, 750KB RAM, and finger-drummed pads instead of a keyboard. The low bit depth gave samples grit. The pads made rhythm a physical, expressive act. The RAM constraint forced users to chop, truncate, and loop — inventing the production techniques of hip-hop and electronic music. *The MPC didn't overcome its constraints. It performed them.*
 
 **The Buchla 259 (1970s)** — Don Buchla's Complex Waveform Generator put two oscillators in one module and had them modulate each other bidirectionally — not because he wanted complexity for its own sake, but because panel space was expensive and he needed one module to do the work of three. Bidirectional FM emerged from the constraint of *physical real estate on an aluminum panel*.
 
@@ -246,13 +246,14 @@ void reset() override
 }
 ```
 
-Wire into renderBlock:
+Wire into renderBlock (**ordering is critical** — Vangelis: *"A performer who strikes a key and hears silence for 5ms has lost trust in the instrument forever"*):
 
 ```cpp
 void renderBlock(juce::AudioBuffer<float>& buffer,
                  juce::MidiBuffer& midi, int numSamples) override
 {
-    // Wake on note-on
+    // STEP 1: ALWAYS parse MIDI first — even if bypassed.
+    // This is non-negotiable. The gate must wake before the bypass check.
     for (const auto metadata : midi)
     {
         auto msg = metadata.getMessage();
@@ -260,16 +261,16 @@ void renderBlock(juce::AudioBuffer<float>& buffer,
             silenceGate.wake();
     }
 
-    // Zero-idle bypass
+    // STEP 2: THEN check bypass.
     if (silenceGate.isBypassed() && midi.isEmpty())
     {
         buffer.clear();
         return;
     }
 
-    // ... existing render code ...
+    // STEP 3: existing render code ...
 
-    // Analyze output for silence detection
+    // STEP 4: analyze output for silence detection (AFTER rendering).
     silenceGate.analyzeBlock(buffer.getReadPointer(0),
                              buffer.getNumChannels() > 1
                                  ? buffer.getReadPointer(1) : nullptr,
@@ -277,7 +278,25 @@ void renderBlock(juce::AudioBuffer<float>& buffer,
 }
 ```
 
+**Set hold time per engine category** — the default 100ms suits percussive engines, but reverb-tail engines need more:
+
+| Category | Hold Time | Engines | Why |
+|----------|-----------|---------|-----|
+| Percussive | 100ms (default) | ONSET, OVERBITE, ODDFELIX, OBSIDIAN | Fast decay — silence means silence |
+| Standard | 200ms | OBLONG, ODYSSEY, OBLIQUE, ODDOSCAR | Moderate release tails |
+| Reverb-tail | 500ms | OVERDUB (spring reverb), OPAL (granular smear), OCEANIC (triple-BBD) | Long reverb tails must ring out naturally |
+| Infinite-sustain | 1000ms | ORGANON (metabolic), OUROBOROS (attractor), ORBITAL (group envelopes) | These engines evolve over minutes — premature bypass interrupts the evolution |
+
+```cpp
+// In prepare():
+silenceGate.setHoldTime(500.0f);  // reverb-tail engine — 500ms hold
+```
+
+**Future: Standby mode** (Tomita's recommendation) — Between "fully active" and "bypassed," a standby state would maintain filter state, phase positions, and envelope levels but skip the inner voice loop. Cost: ~5% of full active. Benefit: seamless re-entry without filter ramp-up transients or phase discontinuity. Critical for orchestral scoring where an engine may be silent for 8 bars then enter with a pianissimo swell. *A conductor holds silence. The instrument must hold readiness.*
+
 ### Step 2: Add ControlRateReducer to Coupling
+
+The ControlRateReducer at 1/32 rate with linear interpolation is functionally a **sample-and-hold module with built-in slew limiting** — a topology Buchla called "source of uncertainty" when he implemented it in the Model 266. The smoothing between control points is not a compromise; it is a modulation character. Analog synthesizers achieved this naturally through CV line capacitance. In digital, we choose it deliberately.
 
 Replace audio-rate coupling with control-rate:
 

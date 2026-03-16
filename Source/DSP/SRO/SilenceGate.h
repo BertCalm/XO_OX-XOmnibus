@@ -12,16 +12,44 @@ namespace xomnibus {
 // below a threshold (-90 dB by default) and stays there for a configurable
 // hold time, the gate signals that the engine can be bypassed entirely.
 //
+// CRITICAL INTEGRATION ORDER:
+//   In renderBlock(), you MUST parse MIDI and call wake() BEFORE checking
+//   isBypassed(). A one-block delay between note-on and gate opening is
+//   audible and unacceptable for performance use. The performer's first
+//   note must never be swallowed by a sleeping gate.
+//
 // Usage in renderBlock():
-//     if (silenceGate.isBypassed())
+//     // Step 1: ALWAYS parse MIDI first, even if bypassed
+//     for (const auto metadata : midi)
+//         if (metadata.getMessage().isNoteOn())
+//             silenceGate.wake();
+//
+//     // Step 2: THEN check bypass
+//     if (silenceGate.isBypassed() && midi.isEmpty())
+//     {
+//         buffer.clear();
 //         return;  // zero CPU — skip all DSP
+//     }
 //
-//     // ... render audio ...
+//     // Step 3: render audio ...
 //
+//     // Step 4: analyze output for silence detection
 //     silenceGate.analyzeBlock(buffer.getReadPointer(0),
 //                              buffer.getReadPointer(1), numSamples);
 //
 // The gate re-opens immediately when a note-on is received (call wake()).
+//
+// Hold time guidance:
+//   Percussive engines (ONSET, OVERBITE, ODDFELIX): 100ms (default)
+//   Standard engines (OBLONG, ODYSSEY, OBLIQUE):    200ms
+//   Reverb-tail engines (OVERDUB, OPAL, OCEANIC):   500ms
+//   Infinite-sustain (ORGANON, OUROBOROS):           1000ms
+//
+// Standby concept (future):
+//   Between "fully active" and "bypassed," a standby state could maintain
+//   filter state, phase positions, and envelope levels while skipping the
+//   inner voice loop — ~5% of full cost but seamless re-entry without
+//   filter ramp-up transients. Critical for orchestral/cinematic use.
 //
 // Design:
 //   - Zero allocation (all state is stack/member)

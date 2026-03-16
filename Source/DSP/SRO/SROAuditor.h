@@ -84,6 +84,16 @@ public:
     /// @param isBypassed    SilenceGate bypass state.
     /// @param sonicUniqueness  Engine's creative value score (0–1). Higher for
     ///                         engines with unique 6D DNA fingerprints.
+    ///
+    /// sonicUniqueness MUST be explicitly provided per engine. Derive it from:
+    ///   - 6D Sonic DNA variance: distance from fleet centroid in the
+    ///     (brightness, warmth, movement, density, space, aggression) space.
+    ///     Engines at the extremes (ORACLE: high aggression; OPAL: high space)
+    ///     score closer to 1.0. Engines near center score closer to 0.3.
+    ///   - OR from seance consensus score normalized to [0, 1]:
+    ///     e.g., ORGANON (8/8 → 1.0), OBLIQUE (7.2/10 → 0.72).
+    ///   - A default of 0.5 is provided for early integration but should be
+    ///     replaced with per-engine values before the ROI metric is trusted.
     void recordSlot (int slot, const EngineProfiler::Stats& stats,
                      bool isBypassed, float sonicUniqueness = 0.5f) noexcept
     {

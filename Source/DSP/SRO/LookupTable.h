@@ -53,6 +53,11 @@ public:
     //--------------------------------------------------------------------------
     /// Generate a table from a lambda/function over [rangeMin, rangeMax].
     /// Call at initialization time (not real-time).
+    ///
+    /// NOTE: std::function is used here because generate() runs ONLY at static
+    /// initialization (Meyer's singleton pattern in SROTables), never on the
+    /// audio thread. The real-time lookup() method is allocation-free and
+    /// noexcept. Do not call generate() from renderBlock().
     static LookupTable generate (float rangeMin, float rangeMax,
                                  const std::function<float(float)>& func)
     {
