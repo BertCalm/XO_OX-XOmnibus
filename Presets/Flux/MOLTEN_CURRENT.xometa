@@ -1,0 +1,49 @@
+{
+  "name": "MOLTEN CURRENT",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OCELOT",
+    "OBSCURA"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "macro_character": 0.458,
+      "macro_movement": 0.791,
+      "macro_coupling": 0.48,
+      "macro_space": 0.61
+    },
+    "OBSCURA": {
+      "macro_character": 0.447,
+      "macro_movement": 0.8,
+      "macro_coupling": 0.498,
+      "macro_space": 0.555
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OCELOT",
+    "target": "OBSCURA",
+    "amount": 0.878
+  },
+  "dna": {
+    "brightness": 0.622,
+    "warmth": 0.934,
+    "movement": 0.906,
+    "density": 0.523,
+    "space": 0.667,
+    "aggression": 0.349
+  },
+  "macros": {
+    "CHARACTER": 0.458,
+    "MOVEMENT": 0.791,
+    "COUPLING": 0.48,
+    "SPACE": 0.61
+  },
+  "tags": [
+    "flux",
+    "warm",
+    "kinetic",
+    "movement"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "CRYO FLUX 7",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OVERBITE",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OVERBITE": {
+      "macro_character": 0.1492,
+      "macro_movement": 0.5628,
+      "macro_coupling": 0.3038,
+      "macro_space": 0.9939
+    },
+    "ODDFELIX": {
+      "macro_character": 0.1185,
+      "macro_movement": 0.7644,
+      "macro_coupling": 0.6063,
+      "macro_space": 0.7907
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OVERBITE",
+    "target": "ODDFELIX",
+    "amount": 0.4354
+  },
+  "dna": {
+    "brightness": 0.9411,
+    "warmth": 0.0251,
+    "movement": 0.8575,
+    "density": 0.8221,
+    "space": 0.4007,
+    "aggression": 0.0741
+  },
+  "macros": {
+    "CHARACTER": 0.5226,
+    "MOVEMENT": 0.4505,
+    "COUPLING": 0.4427,
+    "SPACE": 0.8602
+  },
+  "tags": [
+    "flux",
+    "cold",
+    "shifting"
+  ]
+}

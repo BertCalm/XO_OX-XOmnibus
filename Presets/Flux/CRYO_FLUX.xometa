@@ -1,0 +1,48 @@
+{
+  "name": "CRYO FLUX",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OVERWORLD",
+    "OCELOT"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.6037,
+      "macro_movement": 0.8071,
+      "macro_coupling": 0.7297,
+      "macro_space": 0.5362
+    },
+    "OCELOT": {
+      "macro_character": 0.9731,
+      "macro_movement": 0.3785,
+      "macro_coupling": 0.552,
+      "macro_space": 0.8294
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OVERWORLD",
+    "target": "OCELOT",
+    "amount": 0.6711
+  },
+  "dna": {
+    "brightness": 0.3403,
+    "warmth": 0.0898,
+    "movement": 0.1302,
+    "density": 0.9572,
+    "space": 0.3366,
+    "aggression": 0.0927
+  },
+  "macros": {
+    "CHARACTER": 0.8617,
+    "MOVEMENT": 0.5774,
+    "COUPLING": 0.7046,
+    "SPACE": 0.0458
+  },
+  "tags": [
+    "flux",
+    "cold",
+    "shifting"
+  ]
+}

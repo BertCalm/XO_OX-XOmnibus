@@ -1,0 +1,48 @@
+{
+  "name": "CRYO FLUX 5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OUROBOROS",
+    "ONSET"
+  ],
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.5479,
+      "macro_movement": 0.8972,
+      "macro_coupling": 0.7437,
+      "macro_space": 0.4747
+    },
+    "ONSET": {
+      "macro_character": 0.2592,
+      "macro_movement": 0.2472,
+      "macro_coupling": 0.6377,
+      "macro_space": 0.7658
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OUROBOROS",
+    "target": "ONSET",
+    "amount": 0.6128
+  },
+  "dna": {
+    "brightness": 0.5955,
+    "warmth": 0.1188,
+    "movement": 0.9663,
+    "density": 0.8914,
+    "space": 0.6127,
+    "aggression": 0.7193
+  },
+  "macros": {
+    "CHARACTER": 0.6267,
+    "MOVEMENT": 0.2746,
+    "COUPLING": 0.0775,
+    "SPACE": 0.2857
+  },
+  "tags": [
+    "flux",
+    "cold",
+    "shifting"
+  ]
+}

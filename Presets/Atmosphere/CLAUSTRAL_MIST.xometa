@@ -1,0 +1,50 @@
+{
+  "name": "CLAUSTRAL MIST",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OPTIC",
+    "OBSCURA"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.696,
+      "macro_movement": 0.531,
+      "macro_coupling": 0.698,
+      "macro_space": 0.045
+    },
+    "OBSCURA": {
+      "macro_character": 0.567,
+      "macro_movement": 0.39,
+      "macro_coupling": 0.898,
+      "macro_space": 0.054
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OPTIC",
+    "target": "OBSCURA",
+    "amount": 0.297
+  },
+  "dna": {
+    "brightness": 0.153,
+    "warmth": 0.831,
+    "movement": 0.958,
+    "density": 0.27,
+    "space": 0.045,
+    "aggression": 0.148
+  },
+  "macros": {
+    "CHARACTER": 0.495,
+    "MOVEMENT": 0.705,
+    "COUPLING": 0.789,
+    "SPACE": 0.045
+  },
+  "tags": [
+    "atmosphere",
+    "claustrophobic",
+    "intimate",
+    "close",
+    "space-xlow"
+  ]
+}

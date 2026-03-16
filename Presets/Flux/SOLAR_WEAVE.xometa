@@ -1,0 +1,49 @@
+{
+  "name": "SOLAR WEAVE",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OVERWORLD",
+    "OVERDUB"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.721,
+      "macro_movement": 0.552,
+      "macro_coupling": 0.912,
+      "macro_space": 0.343
+    },
+    "OVERDUB": {
+      "macro_character": 0.723,
+      "macro_movement": 0.477,
+      "macro_coupling": 1.0,
+      "macro_space": 0.208
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OVERWORLD",
+    "target": "OVERDUB",
+    "amount": 0.817
+  },
+  "dna": {
+    "brightness": 0.939,
+    "warmth": 0.362,
+    "movement": 0.413,
+    "density": 0.875,
+    "space": 0.437,
+    "aggression": 0.575
+  },
+  "macros": {
+    "CHARACTER": 0.721,
+    "MOVEMENT": 0.552,
+    "COUPLING": 0.912,
+    "SPACE": 0.343
+  },
+  "tags": [
+    "flux",
+    "bright",
+    "dense",
+    "saturated"
+  ]
+}

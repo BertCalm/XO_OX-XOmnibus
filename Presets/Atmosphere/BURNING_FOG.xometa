@@ -1,0 +1,50 @@
+{
+  "name": "BURNING FOG",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OVERLAP",
+    "OTTONI"
+  ],
+  "parameters": {
+    "OVERLAP": {
+      "macro_character": 0.28,
+      "macro_movement": 0.355,
+      "macro_coupling": 0.179,
+      "macro_space": 0.165
+    },
+    "OTTONI": {
+      "macro_character": 0.368,
+      "macro_movement": 0.217,
+      "macro_coupling": 0.131,
+      "macro_space": 0.672
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OVERLAP",
+    "target": "OTTONI",
+    "amount": 0.842
+  },
+  "dna": {
+    "brightness": 0.765,
+    "warmth": 0.137,
+    "movement": 0.753,
+    "density": 0.808,
+    "space": 0.409,
+    "aggression": 0.925
+  },
+  "macros": {
+    "CHARACTER": 0.478,
+    "MOVEMENT": 0.765,
+    "COUPLING": 0.707,
+    "SPACE": 0.409
+  },
+  "tags": [
+    "atmosphere",
+    "harsh",
+    "abrasive",
+    "hostile",
+    "aggression-xhigh"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "ERODING MIST",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORPHICA",
+    "OWLFISH"
+  ],
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.6,
+      "macro_movement": 0.822,
+      "macro_coupling": 0.677,
+      "macro_space": 0.654
+    },
+    "OWLFISH": {
+      "macro_character": 0.391,
+      "macro_movement": 0.676,
+      "macro_coupling": 0.876,
+      "macro_space": 0.135
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ORPHICA",
+    "target": "OWLFISH",
+    "amount": 0.627
+  },
+  "dna": {
+    "brightness": 0.931,
+    "warmth": 0.691,
+    "movement": 0.521,
+    "density": 0.63,
+    "space": 0.245,
+    "aggression": 0.91
+  },
+  "macros": {
+    "CHARACTER": 0.702,
+    "MOVEMENT": 0.727,
+    "COUPLING": 0.287,
+    "SPACE": 0.245
+  },
+  "tags": [
+    "atmosphere",
+    "harsh",
+    "abrasive",
+    "hostile",
+    "aggression-xhigh"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "ARCTIC FLOW 7",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OTTONI",
+    "OBBLIGATO"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.9084,
+      "macro_movement": 0.8266,
+      "macro_coupling": 0.0714,
+      "macro_space": 0.1659
+    },
+    "OBBLIGATO": {
+      "macro_character": 0.3076,
+      "macro_movement": 0.749,
+      "macro_coupling": 0.5692,
+      "macro_space": 0.2886
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OTTONI",
+    "target": "OBBLIGATO",
+    "amount": 0.3746
+  },
+  "dna": {
+    "brightness": 0.7878,
+    "warmth": 0.1124,
+    "movement": 0.6251,
+    "density": 0.6612,
+    "space": 0.9407,
+    "aggression": 0.4251
+  },
+  "macros": {
+    "CHARACTER": 0.6887,
+    "MOVEMENT": 0.6997,
+    "COUPLING": 0.9427,
+    "SPACE": 0.5005
+  },
+  "tags": [
+    "flux",
+    "cold",
+    "shifting"
+  ]
+}

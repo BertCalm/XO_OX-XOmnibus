@@ -1,0 +1,50 @@
+{
+  "name": "BOXED MIST",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORIGAMI",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.737,
+      "macro_movement": 0.789,
+      "macro_coupling": 0.819,
+      "macro_space": 0.065
+    },
+    "ODDFELIX": {
+      "macro_character": 0.3,
+      "macro_movement": 0.182,
+      "macro_coupling": 0.724,
+      "macro_space": 0.037
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ORIGAMI",
+    "target": "ODDFELIX",
+    "amount": 0.819
+  },
+  "dna": {
+    "brightness": 0.132,
+    "warmth": 0.823,
+    "movement": 0.536,
+    "density": 0.768,
+    "space": 0.065,
+    "aggression": 0.679
+  },
+  "macros": {
+    "CHARACTER": 0.425,
+    "MOVEMENT": 0.597,
+    "COUPLING": 0.224,
+    "SPACE": 0.065
+  },
+  "tags": [
+    "atmosphere",
+    "claustrophobic",
+    "intimate",
+    "close",
+    "space-xlow"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "INFERNO FLUX",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OLE",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.913,
+      "macro_movement": 0.619,
+      "macro_coupling": 0.56,
+      "macro_space": 0.413
+    },
+    "OVERWORLD": {
+      "macro_character": 0.764,
+      "macro_movement": 0.687,
+      "macro_coupling": 0.661,
+      "macro_space": 0.437
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OLE",
+    "target": "OVERWORLD",
+    "amount": 0.83
+  },
+  "dna": {
+    "brightness": 0.866,
+    "warmth": 0.858,
+    "movement": 0.609,
+    "density": 0.642,
+    "space": 0.436,
+    "aggression": 0.945
+  },
+  "macros": {
+    "CHARACTER": 0.913,
+    "MOVEMENT": 0.619,
+    "COUPLING": 0.56,
+    "SPACE": 0.413
+  },
+  "tags": [
+    "flux",
+    "bright",
+    "hot",
+    "violent",
+    "extreme"
+  ]
+}

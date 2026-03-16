@@ -1,0 +1,50 @@
+{
+  "name": "HOLLOW CLOSE",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OBBLIGATO",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "OBBLIGATO": {
+      "macro_character": 0.827,
+      "macro_movement": 0.141,
+      "macro_coupling": 0.607,
+      "macro_space": 0.031
+    },
+    "OSTERIA": {
+      "macro_character": 0.135,
+      "macro_movement": 0.367,
+      "macro_coupling": 0.205,
+      "macro_space": 0.086
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OBBLIGATO",
+    "target": "OSTERIA",
+    "amount": 0.886
+  },
+  "dna": {
+    "brightness": 0.961,
+    "warmth": 0.224,
+    "movement": 0.325,
+    "density": 0.269,
+    "space": 0.031,
+    "aggression": 0.226
+  },
+  "macros": {
+    "CHARACTER": 0.229,
+    "MOVEMENT": 0.453,
+    "COUPLING": 0.665,
+    "SPACE": 0.031
+  },
+  "tags": [
+    "atmosphere",
+    "claustrophobic",
+    "intimate",
+    "close",
+    "space-xlow"
+  ]
+}

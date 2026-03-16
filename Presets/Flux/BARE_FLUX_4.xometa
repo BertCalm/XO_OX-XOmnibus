@@ -1,0 +1,48 @@
+{
+  "name": "BARE FLUX 4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OSPREY",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.3103,
+      "macro_movement": 0.3395,
+      "macro_coupling": 0.3331,
+      "macro_space": 0.1681
+    },
+    "ORGANON": {
+      "macro_character": 0.5105,
+      "macro_movement": 0.114,
+      "macro_coupling": 0.51,
+      "macro_space": 0.9059
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OSPREY",
+    "target": "ORGANON",
+    "amount": 0.5096
+  },
+  "dna": {
+    "brightness": 0.9198,
+    "warmth": 0.0881,
+    "movement": 0.9054,
+    "density": 0.1032,
+    "space": 0.2433,
+    "aggression": 0.5889
+  },
+  "macros": {
+    "CHARACTER": 0.7274,
+    "MOVEMENT": 0.8189,
+    "COUPLING": 0.815,
+    "SPACE": 0.2363
+  },
+  "tags": [
+    "flux",
+    "sparse",
+    "minimal"
+  ]
+}

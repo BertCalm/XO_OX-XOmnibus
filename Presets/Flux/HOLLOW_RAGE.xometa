@@ -1,0 +1,49 @@
+{
+  "name": "HOLLOW RAGE",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ORBITAL",
+    "OCTOPUS"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.576,
+      "macro_movement": 0.42,
+      "macro_coupling": 0.559,
+      "macro_space": 0.576
+    },
+    "OCTOPUS": {
+      "macro_character": 0.465,
+      "macro_movement": 0.464,
+      "macro_coupling": 0.546,
+      "macro_space": 0.705
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "ORBITAL",
+    "target": "OCTOPUS",
+    "amount": 0.968
+  },
+  "dna": {
+    "brightness": 0.109,
+    "warmth": 0.526,
+    "movement": 0.427,
+    "density": 0.404,
+    "space": 0.568,
+    "aggression": 0.888
+  },
+  "macros": {
+    "CHARACTER": 0.576,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.559,
+    "SPACE": 0.576
+  },
+  "tags": [
+    "flux",
+    "dark",
+    "violent",
+    "extreme"
+  ]
+}

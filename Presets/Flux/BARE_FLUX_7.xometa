@@ -1,0 +1,48 @@
+{
+  "name": "BARE FLUX 7",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OHM",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.2496,
+      "macro_movement": 0.1134,
+      "macro_coupling": 0.7357,
+      "macro_space": 0.499
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.387,
+      "macro_movement": 0.5617,
+      "macro_coupling": 0.2618,
+      "macro_space": 0.2603
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OHM",
+    "target": "ODDOSCAR",
+    "amount": 0.5678
+  },
+  "dna": {
+    "brightness": 0.9488,
+    "warmth": 0.372,
+    "movement": 0.1044,
+    "density": 0.0879,
+    "space": 0.5739,
+    "aggression": 0.5295
+  },
+  "macros": {
+    "CHARACTER": 0.9964,
+    "MOVEMENT": 0.2856,
+    "COUPLING": 0.9165,
+    "SPACE": 0.4912
+  },
+  "tags": [
+    "flux",
+    "sparse",
+    "minimal"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "ARCTIC FLOW",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OSPREY",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.9429,
+      "macro_movement": 0.8764,
+      "macro_coupling": 0.3147,
+      "macro_space": 0.6554
+    },
+    "ORGANON": {
+      "macro_character": 0.3956,
+      "macro_movement": 0.9145,
+      "macro_coupling": 0.4589,
+      "macro_space": 0.2649
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OSPREY",
+    "target": "ORGANON",
+    "amount": 0.448
+  },
+  "dna": {
+    "brightness": 0.8429,
+    "warmth": 0.0885,
+    "movement": 0.776,
+    "density": 0.229,
+    "space": 0.0474,
+    "aggression": 0.3155
+  },
+  "macros": {
+    "CHARACTER": 0.5614,
+    "MOVEMENT": 0.2627,
+    "COUPLING": 0.5846,
+    "SPACE": 0.8978
+  },
+  "tags": [
+    "flux",
+    "cold",
+    "shifting"
+  ]
+}

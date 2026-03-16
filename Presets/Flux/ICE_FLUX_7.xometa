@@ -1,0 +1,48 @@
+{
+  "name": "ICE FLUX 7",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBLIQUE",
+    "OVERBITE"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.6604,
+      "macro_movement": 0.1571,
+      "macro_coupling": 0.1738,
+      "macro_space": 0.0751
+    },
+    "OVERBITE": {
+      "macro_character": 0.0027,
+      "macro_movement": 0.4505,
+      "macro_coupling": 0.5938,
+      "macro_space": 0.2913
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBLIQUE",
+    "target": "OVERBITE",
+    "amount": 0.4389
+  },
+  "dna": {
+    "brightness": 0.3054,
+    "warmth": 0.119,
+    "movement": 0.621,
+    "density": 0.0474,
+    "space": 0.7401,
+    "aggression": 0.9476
+  },
+  "macros": {
+    "CHARACTER": 0.707,
+    "MOVEMENT": 0.703,
+    "COUPLING": 0.454,
+    "SPACE": 0.6874
+  },
+  "tags": [
+    "flux",
+    "cold",
+    "shifting"
+  ]
+}

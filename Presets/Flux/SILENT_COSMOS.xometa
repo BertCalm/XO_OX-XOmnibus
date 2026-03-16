@@ -1,0 +1,49 @@
+{
+  "name": "SILENT COSMOS",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBSIDIAN",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "OBSIDIAN": {
+      "macro_character": 0.483,
+      "macro_movement": 0.471,
+      "macro_coupling": 0.961,
+      "macro_space": 0.892
+    },
+    "OBLIQUE": {
+      "macro_character": 0.417,
+      "macro_movement": 0.456,
+      "macro_coupling": 1.0,
+      "macro_space": 0.913
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OBSIDIAN",
+    "target": "OBLIQUE",
+    "amount": 0.834
+  },
+  "dna": {
+    "brightness": 0.61,
+    "warmth": 0.486,
+    "movement": 0.63,
+    "density": 0.101,
+    "space": 0.889,
+    "aggression": 0.398
+  },
+  "macros": {
+    "CHARACTER": 0.483,
+    "MOVEMENT": 0.471,
+    "COUPLING": 0.961,
+    "SPACE": 0.892
+  },
+  "tags": [
+    "flux",
+    "spatial",
+    "sparse",
+    "open"
+  ]
+}

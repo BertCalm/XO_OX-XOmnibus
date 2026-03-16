@@ -1,0 +1,50 @@
+{
+  "name": "DARK POLAR",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OPTIC",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.318,
+      "macro_movement": 0.52,
+      "macro_coupling": 0.645,
+      "macro_space": 0.788
+    },
+    "ORPHICA": {
+      "macro_character": 0.264,
+      "macro_movement": 0.401,
+      "macro_coupling": 0.543,
+      "macro_space": 0.761
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OPTIC",
+    "target": "ORPHICA",
+    "amount": 0.748
+  },
+  "dna": {
+    "brightness": 0.063,
+    "warmth": 0.15,
+    "movement": 0.474,
+    "density": 0.626,
+    "space": 0.966,
+    "aggression": 0.488
+  },
+  "macros": {
+    "CHARACTER": 0.318,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.645,
+    "SPACE": 0.788
+  },
+  "tags": [
+    "flux",
+    "dark",
+    "cold",
+    "vast",
+    "extreme"
+  ]
+}

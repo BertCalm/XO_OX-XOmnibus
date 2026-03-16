@@ -1,0 +1,49 @@
+{
+  "name": "VACANT EXPANSE",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OVERDUB",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.511,
+      "macro_movement": 0.355,
+      "macro_coupling": 0.554,
+      "macro_space": 0.962
+    },
+    "ORGANON": {
+      "macro_character": 0.472,
+      "macro_movement": 0.387,
+      "macro_coupling": 0.693,
+      "macro_space": 1.0
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OVERDUB",
+    "target": "ORGANON",
+    "amount": 0.889
+  },
+  "dna": {
+    "brightness": 0.549,
+    "warmth": 0.395,
+    "movement": 0.489,
+    "density": 0.044,
+    "space": 0.964,
+    "aggression": 0.486
+  },
+  "macros": {
+    "CHARACTER": 0.511,
+    "MOVEMENT": 0.355,
+    "COUPLING": 0.554,
+    "SPACE": 0.962
+  },
+  "tags": [
+    "flux",
+    "spatial",
+    "sparse",
+    "open"
+  ]
+}

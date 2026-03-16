@@ -1,0 +1,50 @@
+{
+  "name": "CAVITY MIST",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OBSIDIAN",
+    "OBBLIGATO"
+  ],
+  "parameters": {
+    "OBSIDIAN": {
+      "macro_character": 0.764,
+      "macro_movement": 0.417,
+      "macro_coupling": 0.106,
+      "macro_space": 0.054
+    },
+    "OBBLIGATO": {
+      "macro_character": 0.723,
+      "macro_movement": 0.879,
+      "macro_coupling": 0.828,
+      "macro_space": 0.089
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OBSIDIAN",
+    "target": "OBBLIGATO",
+    "amount": 0.722
+  },
+  "dna": {
+    "brightness": 0.465,
+    "warmth": 0.342,
+    "movement": 0.978,
+    "density": 0.185,
+    "space": 0.054,
+    "aggression": 0.065
+  },
+  "macros": {
+    "CHARACTER": 0.766,
+    "MOVEMENT": 0.822,
+    "COUPLING": 0.721,
+    "SPACE": 0.054
+  },
+  "tags": [
+    "atmosphere",
+    "claustrophobic",
+    "intimate",
+    "close",
+    "space-xlow"
+  ]
+}

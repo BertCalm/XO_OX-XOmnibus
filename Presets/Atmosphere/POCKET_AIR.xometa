@@ -1,0 +1,50 @@
+{
+  "name": "POCKET AIR",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OBSCURA",
+    "OMBRE"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.626,
+      "macro_movement": 0.552,
+      "macro_coupling": 0.353,
+      "macro_space": 0.025
+    },
+    "OMBRE": {
+      "macro_character": 0.636,
+      "macro_movement": 0.351,
+      "macro_coupling": 0.312,
+      "macro_space": 0.041
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBSCURA",
+    "target": "OMBRE",
+    "amount": 0.292
+  },
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.154,
+    "movement": 0.789,
+    "density": 0.423,
+    "space": 0.025,
+    "aggression": 0.107
+  },
+  "macros": {
+    "CHARACTER": 0.616,
+    "MOVEMENT": 0.466,
+    "COUPLING": 0.843,
+    "SPACE": 0.025
+  },
+  "tags": [
+    "atmosphere",
+    "claustrophobic",
+    "intimate",
+    "close",
+    "space-xlow"
+  ]
+}

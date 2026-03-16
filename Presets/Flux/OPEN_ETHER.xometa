@@ -1,0 +1,49 @@
+{
+  "name": "OPEN ETHER",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBBLIGATO",
+    "OVERBITE"
+  ],
+  "parameters": {
+    "OBBLIGATO": {
+      "macro_character": 0.488,
+      "macro_movement": 0.431,
+      "macro_coupling": 0.441,
+      "macro_space": 0.964
+    },
+    "OVERBITE": {
+      "macro_character": 0.625,
+      "macro_movement": 0.293,
+      "macro_coupling": 0.3,
+      "macro_space": 0.888
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBBLIGATO",
+    "target": "OVERBITE",
+    "amount": 0.92
+  },
+  "dna": {
+    "brightness": 0.634,
+    "warmth": 0.488,
+    "movement": 0.6,
+    "density": 0.036,
+    "space": 0.964,
+    "aggression": 0.39
+  },
+  "macros": {
+    "CHARACTER": 0.488,
+    "MOVEMENT": 0.431,
+    "COUPLING": 0.441,
+    "SPACE": 0.964
+  },
+  "tags": [
+    "flux",
+    "spatial",
+    "sparse",
+    "open"
+  ]
+}
