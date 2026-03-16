@@ -1,395 +1,453 @@
 #!/usr/bin/env python3
 """
 XPN Git Kit — XO_OX Designs
-Git commit history → MPC drum program.
+Git commit history → MPC drum patterns.
 
-Each commit becomes a drum hit. The rhythm of your codebase, played back.
+Parses any local git repository via subprocess (pure stdlib, no external git libs).
 
-Mappings:
-  Inter-commit interval (time since previous commit) → pad selection (1–16)
-  Lines changed (insertions + deletions)             → velocity (20–127)
-  Commit message length                              → VelocityToVolume (0.3–1.0)
-  Burst sessions (3+ commits within 2 hours)        → accent pad (13–16) at vel 127
+Mapping:
+  Inter-arrival time → which of 16 pads gets hit:
+    Pad  1:  0-1 hr         (rapid fire)
+    Pad  2:  1-4 hrs        (focused session)
+    Pad  3:  4-8 hrs        (half-day gap)
+    Pad  4:  8-24 hrs       (daily cadence)
+    Pad  5:  1-3 days
+    Pad  6:  3-7 days       (weekly)
+    Pad  7:  1-2 weeks
+    Pad  8:  2-4 weeks
+    Pad  9:  1-2 months
+    Pad 10:  2-3 months
+    Pad 11:  3-6 months
+    Pad 12:  6-12 months
+    Pad 13: 12-24 months    (also burst accent)
+    Pad 14: 24-36 months    (also burst accent)
+    Pad 15: 36-60 months    (also burst accent)
+    Pad 16: 60+ months      (also burst accent)
 
-Pad / Interval Bins (16 temporal bins):
-  Pad  1:  0–30 min
-  Pad  2:  30 min–1 hr
-  Pad  3:  1–2 hr
-  Pad  4:  2–4 hr
-  Pad  5:  4–8 hr
-  Pad  6:  8–12 hr
-  Pad  7:  12–24 hr
-  Pad  8:  1–2 days
-  Pad  9:  2–3 days
-  Pad 10:  3–5 days
-  Pad 11:  5–7 days
-  Pad 12:  1–2 weeks
-  Pad 13:  2–4 weeks
-  Pad 14:  1–3 months
-  Pad 15:  3–6 months
-  Pad 16:  6 months+
+  Files changed → base velocity:
+    1-5   files → 30
+    6-20  files → 60
+    21-100 files → 90
+    100+  files → 127
 
-Velocity Layers (4 per pad):
-  Layer 1: 1–50 lines changed    → VelStart=1,   VelEnd=50
-  Layer 2: 51–200 lines changed  → VelStart=51,  VelEnd=200
-  Layer 3: 201–1000 lines        → VelStart=201, VelEnd=1000 (capped at 127 for MPC)
-  Layer 4: 1000+ lines           → VelStart=101, VelEnd=127
+  Lines added (insertions) → velocity boost: +min(20, insertions // 50)
+  Lines deleted (deletions) → velocity reduction: -min(15, deletions // 100)
+  Commit message length → msg weight (short=0.3, medium=0.6, long=1.0)
+  Burst sessions (3+ commits within 2 hours) → accent hits on pads 13-16
 
-Velocity values by lines changed:
-  1–10 lines    → 20
-  11–50 lines   → 50
-  51–200 lines  → 80
-  201–500 lines → 100
-  500+ lines    → 127
-
-VelocityToVolume from commit message length:
-  0–20 chars   → 0.3
-  20–50 chars  → 0.6
-  50–100 chars → 0.9
-  100+ chars   → 1.0
-
-Output:
-  {output}/git_kit_{slug}.xpn   — MPC-compatible ZIP with XPM + placeholder WAVs
-  {output}/commit_report.txt    — per-commit breakdown
-  ASCII histogram printed to stdout
-
+Output: XPN Drum Program ZIP + commit_report.txt
 CLI:
-  python xpn_git_kit.py --repo .
-  python xpn_git_kit.py --repo /path/to/repo --output ./out/ --max-commits 200
-  python xpn_git_kit.py --repo xomnibus --author you@email.com --since 2026-01-01
-  python xpn_git_kit.py --repo . --output ./out/ --max-commits 100 --author me@email.com
-
-XPN golden rules (no exceptions):
-  KeyTrack  = True
-  RootNote  = 0
-  VelStart  = 0 for empty layers
+  python xpn_git_kit.py --repo . --output ./out/ --max-commits 200
+  python xpn_git_kit.py --repo /path/to/repo --output ./out/
+  python xpn_git_kit.py --repo XO_OX-XOmnibus --output ./out/
 """
 
-from __future__ import annotations
-
 import argparse
-import os
+import json
+import re
 import subprocess
 import sys
 import zipfile
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
 from xml.sax.saxutils import escape as xml_escape
 
-# ---------------------------------------------------------------------------
-# Constants
-# ---------------------------------------------------------------------------
+# =============================================================================
+# INTER-ARRIVAL TIME BINS → PAD NUMBER (1-16), all values in seconds
+# =============================================================================
 
-XOMNIBUS_REPO_PATH = Path.home() / "Documents" / "GitHub" / "XO_OX-XOmnibus"
-
-# 16 temporal bins: (lower_seconds, upper_seconds, label, pad_index 0-based)
-# upper_seconds = None means infinity
-INTERVAL_BINS: List[Tuple[int, Optional[int], str]] = [
-    (0,          30 * 60,             "0–30 min"),
-    (30 * 60,    60 * 60,             "30 min–1 hr"),
-    (60 * 60,    2 * 60 * 60,         "1–2 hr"),
-    (2 * 60 * 60, 4 * 60 * 60,        "2–4 hr"),
-    (4 * 60 * 60, 8 * 60 * 60,        "4–8 hr"),
-    (8 * 60 * 60, 12 * 60 * 60,       "8–12 hr"),
-    (12 * 60 * 60, 24 * 60 * 60,      "12–24 hr"),
-    (24 * 60 * 60, 2 * 24 * 60 * 60,  "1–2 days"),
-    (2 * 24 * 60 * 60, 3 * 24 * 60 * 60, "2–3 days"),
-    (3 * 24 * 60 * 60, 5 * 24 * 60 * 60, "3–5 days"),
-    (5 * 24 * 60 * 60, 7 * 24 * 60 * 60, "5–7 days"),
-    (7 * 24 * 60 * 60, 14 * 24 * 60 * 60, "1–2 weeks"),
-    (14 * 24 * 60 * 60, 28 * 24 * 60 * 60, "2–4 weeks"),
-    (28 * 24 * 60 * 60, 90 * 24 * 60 * 60, "1–3 months"),
-    (90 * 24 * 60 * 60, 180 * 24 * 60 * 60, "3–6 months"),
-    (180 * 24 * 60 * 60, None,          "6 months+"),
+IAT_BINS = [
+    (0,            3_600,           1),    # 0-1 hr
+    (3_600,       14_400,           2),    # 1-4 hrs
+    (14_400,      28_800,           3),    # 4-8 hrs
+    (28_800,      86_400,           4),    # 8-24 hrs
+    (86_400,     259_200,           5),    # 1-3 days
+    (259_200,    604_800,           6),    # 3-7 days
+    (604_800,  1_209_600,           7),    # 1-2 weeks
+    (1_209_600, 2_419_200,          8),    # 2-4 weeks
+    (2_419_200, 5_184_000,          9),    # 1-2 months
+    (5_184_000, 7_776_000,         10),    # 2-3 months
+    (7_776_000, 15_552_000,        11),    # 3-6 months
+    (15_552_000, 31_104_000,       12),    # 6-12 months
+    (31_104_000, 63_072_000,       13),    # 1-2 years
+    (63_072_000, 94_608_000,       14),    # 2-3 years
+    (94_608_000, 157_680_000,      15),    # 3-5 years
+    (157_680_000, float("inf"),    16),    # 5+ years
 ]
 
-# MIDI notes for 16 pads: C2 (36) through D#3 (51)
-PAD_MIDI_NOTES = list(range(36, 52))
+BURST_WINDOW_SECS = 7_200   # 2 hours
+BURST_THRESHOLD   = 3       # 3+ commits in window = burst session
 
-# Velocity layer split ranges (VelStart, VelEnd for each layer)
-# Layer boundaries chosen for lines changed encoding
-LAYER_VEL_RANGES = [
-    (1,  50),    # Layer 1 — 1-50 lines (light changes)
-    (51, 75),    # Layer 2 — 51-200 lines (medium changes)
-    (76, 100),   # Layer 3 — 201-1000 lines (heavy changes)
-    (101, 127),  # Layer 4 — 1000+ lines (massive changes)
-]
+# =============================================================================
+# PAD → MIDI NOTE + VOICE + LABEL
+# =============================================================================
 
-PAD_LABELS = [
-    "0-30min", "30m-1h", "1-2hr", "2-4hr", "4-8hr", "8-12hr", "12-24hr", "1-2day",
-    "2-3day", "3-5day", "5-7day", "1-2wk", "2-4wk", "1-3mo", "3-6mo", "6mo+"
-]
+PAD_MIDI = {
+    1:  36,   # Kick
+    2:  38,   # Snare
+    3:  42,   # Closed Hat
+    4:  46,   # Open Hat
+    5:  39,   # Clap
+    6:  41,   # Low Tom
+    7:  43,   # Mid Tom
+    8:  45,   # High Tom
+    9:  49,   # Crash Cymbal
+    10: 51,   # Ride Cymbal
+    11: 56,   # Cowbell
+    12: 37,   # Side Stick
+    13: 50,   # High Floor Tom (burst accent 1)
+    14: 55,   # Splash Cymbal  (burst accent 2)
+    15: 57,   # Crash 2        (burst accent 3)
+    16: 58,   # Vibraslap      (burst accent 4)
+}
+
+PAD_VOICE = {
+    1: "kick",  2: "snare", 3: "chat",  4: "ohat",
+    5: "clap",  6: "tom",   7: "tom",   8: "tom",
+    9: "fx",   10: "fx",   11: "fx",   12: "snare",
+    13: "fx",  14: "fx",   15: "fx",   16: "fx",
+}
+
+PAD_LABELS = {
+    1:  "Kick — 0-1hr",            2:  "Snare — 1-4hr",
+    3:  "CHat — 4-8hr",            4:  "OHat — 8-24hr",
+    5:  "Clap — 1-3day",           6:  "LowTom — 3-7day",
+    7:  "MidTom — 1-2wk",          8:  "HiTom — 2-4wk",
+    9:  "Crash — 1-2mo",           10: "Ride — 2-3mo",
+    11: "Cowbell — 3-6mo",         12: "Stick — 6-12mo",
+    13: "HiFloor — 1-2yr (burst)", 14: "Splash — 2-3yr (burst)",
+    15: "Crash2 — 3-5yr (burst)",  16: "Vibra — 5+yr (burst)",
+}
+
+VOICE_DEFAULTS = {
+    "kick":  {"mono": True,  "poly": 1, "one_shot": True,  "vtp": 0.05, "vtf": 0.0,
+               "attack": 0.0, "decay": 0.3, "sustain": 0.0, "release": 0.05,
+               "cutoff": 1.0, "resonance": 0.0, "mute_group": 0},
+    "snare": {"mono": True,  "poly": 1, "one_shot": True,  "vtp": 0.0,  "vtf": 0.30,
+               "attack": 0.0, "decay": 0.4, "sustain": 0.0, "release": 0.08,
+               "cutoff": 0.9, "resonance": 0.05, "mute_group": 0},
+    "chat":  {"mono": True,  "poly": 1, "one_shot": True,  "vtp": 0.0,  "vtf": 0.0,
+               "attack": 0.0, "decay": 0.15, "sustain": 0.0, "release": 0.02,
+               "cutoff": 0.85, "resonance": 0.1, "mute_group": 1},
+    "ohat":  {"mono": False, "poly": 2, "one_shot": False, "vtp": 0.0,  "vtf": 0.0,
+               "attack": 0.0, "decay": 0.8, "sustain": 0.38, "release": 0.3,
+               "cutoff": 0.95, "resonance": 0.0, "mute_group": 1},
+    "clap":  {"mono": False, "poly": 2, "one_shot": True,  "vtp": 0.0,  "vtf": 0.15,
+               "attack": 0.0, "decay": 0.5, "sustain": 0.0, "release": 0.1,
+               "cutoff": 0.95, "resonance": 0.0, "mute_group": 0},
+    "tom":   {"mono": True,  "poly": 2, "one_shot": True,  "vtp": 0.02, "vtf": 0.1,
+               "attack": 0.0, "decay": 0.5, "sustain": 0.0, "release": 0.1,
+               "cutoff": 0.9, "resonance": 0.0, "mute_group": 0},
+    "fx":    {"mono": False, "poly": 4, "one_shot": False, "vtp": 0.0,  "vtf": 0.0,
+               "attack": 0.01, "decay": 0.6, "sustain": 0.1, "release": 0.3,
+               "cutoff": 1.0, "resonance": 0.0, "mute_group": 0},
+}
 
 
-# ---------------------------------------------------------------------------
-# Git parsing
-# ---------------------------------------------------------------------------
+# =============================================================================
+# GIT LOG PARSING
+# =============================================================================
 
-def resolve_repo(repo_arg: str) -> Path:
+def find_repo(repo_arg: str) -> Path:
     """Resolve --repo argument to an absolute path."""
-    if repo_arg == "xomnibus":
-        return XOMNIBUS_REPO_PATH
-    p = Path(repo_arg).expanduser().resolve()
-    if not p.exists():
-        print(f"ERROR: repo path does not exist: {p}", file=sys.stderr)
-        sys.exit(1)
-    return p
+    if repo_arg == ".":
+        return Path.cwd()
+    p = Path(repo_arg)
+    if p.is_absolute() and p.exists():
+        return p
+    # Shorthand: search ~/Documents/GitHub/ then cwd
+    for candidate in [
+        Path.home() / "Documents" / "GitHub" / repo_arg,
+        Path.cwd() / repo_arg,
+    ]:
+        if candidate.exists():
+            return candidate
+    return p   # let git fail with a useful error
 
 
-def run_git(repo: Path, args: List[str], extra_env: Optional[Dict] = None) -> str:
-    """Run a git command in repo, return stdout as string."""
-    env = os.environ.copy()
-    if extra_env:
-        env.update(extra_env)
-    result = subprocess.run(
-        ["git", "-C", str(repo)] + args,
-        capture_output=True,
-        text=True,
-        env=env,
-    )
+def run_git(args: list, cwd: Path) -> str:
+    """Run a git command in cwd, return stdout. Raises RuntimeError on failure."""
+    try:
+        result = subprocess.run(
+            ["git"] + args,
+            cwd=str(cwd),
+            capture_output=True,
+            text=True,
+            timeout=60,
+        )
+    except FileNotFoundError:
+        raise RuntimeError("git not found in PATH")
+    except subprocess.TimeoutExpired:
+        raise RuntimeError("git command timed out after 60s")
     if result.returncode != 0:
-        print(f"ERROR running git: {result.stderr.strip()}", file=sys.stderr)
-        sys.exit(1)
+        raise RuntimeError(f"git error: {result.stderr.strip()}")
     return result.stdout
 
 
-def fetch_commits(
-    repo: Path,
-    max_commits: int,
-    author: Optional[str],
-    since: Optional[str],
-) -> List[Dict]:
+def parse_git_log(repo_path: Path, max_commits: int) -> list:
     """
-    Parse git log output into a list of commit dicts.
-    Uses --numstat to get per-file line counts.
-
-    Returns list of:
-      {hash, timestamp, subject, insertions, deletions, lines_changed}
-    sorted oldest-first.
+    Parse git log into a list of commit dicts:
+      {hash, timestamp, subject, files_changed, insertions, deletions}
+    Sorted oldest-first.
     """
-    git_args = [
-        "log",
-        f"--max-count={max_commits}",
-        "--format=%H %at %s",
-        "--numstat",
-    ]
-    if author:
-        git_args.append(f"--author={author}")
-    if since:
-        git_args.append(f"--since={since}")
-
-    raw = run_git(repo, git_args)
-    commits: List[Dict] = []
-    current: Optional[Dict] = None
-
-    for line in raw.splitlines():
-        line_stripped = line.strip()
-        if not line_stripped:
+    # Get hashes + timestamps + subjects
+    log_out = run_git(
+        ["log", f"--max-count={max_commits}", "--format=%H %at %s"],
+        repo_path,
+    )
+    commits_raw = []
+    for line in log_out.splitlines():
+        line = line.strip()
+        if not line:
             continue
-
-        # Detect header lines: 40-char hex hash, space, unix timestamp, space, subject
-        parts = line_stripped.split(" ", 2)
-        if len(parts) >= 2 and len(parts[0]) == 40 and all(c in "0123456789abcdef" for c in parts[0]):
-            if current is not None:
-                commits.append(current)
-            subject = parts[2] if len(parts) == 3 else ""
-            current = {
-                "hash": parts[0],
-                "timestamp": int(parts[1]),
-                "subject": subject,
-                "insertions": 0,
-                "deletions": 0,
-            }
+        parts = line.split(" ", 2)
+        if len(parts) < 2:
             continue
+        try:
+            timestamp = int(parts[1])
+        except ValueError:
+            continue
+        commits_raw.append({
+            "hash":          parts[0],
+            "timestamp":     timestamp,
+            "subject":       parts[2] if len(parts) > 2 else "",
+            "files_changed": 0,
+            "insertions":    0,
+            "deletions":     0,
+        })
 
-        # numstat line: insertions<tab>deletions<tab>filename
-        # Binary files show "-" for counts
-        if current is not None and "\t" in line_stripped:
-            tab_parts = line_stripped.split("\t", 2)
-            if len(tab_parts) >= 2:
-                ins_str, del_str = tab_parts[0], tab_parts[1]
-                if ins_str.isdigit():
-                    current["insertions"] += int(ins_str)
-                if del_str.isdigit():
-                    current["deletions"] += int(del_str)
+    if not commits_raw:
+        return []
 
-    if current is not None:
-        commits.append(current)
+    # Get numstat in one pass
+    numstat_out = run_git(
+        ["log", f"--max-count={max_commits}", "--numstat", "--format=COMMIT:%H"],
+        repo_path,
+    )
+    stats: dict = {}
+    current_hash = None
+    for line in numstat_out.splitlines():
+        if line.startswith("COMMIT:"):
+            current_hash = line[7:].strip()
+            stats[current_hash] = {"files": 0, "ins": 0, "dels": 0}
+        elif current_hash and line.strip():
+            cols = line.split("\t")
+            if len(cols) >= 3:
+                try:
+                    ins  = int(cols[0]) if cols[0] != "-" else 0
+                    dels = int(cols[1]) if cols[1] != "-" else 0
+                    stats[current_hash]["files"] += 1
+                    stats[current_hash]["ins"]   += ins
+                    stats[current_hash]["dels"]  += dels
+                except ValueError:
+                    pass
 
-    # Add computed field
-    for c in commits:
-        c["lines_changed"] = c["insertions"] + c["deletions"]
+    for c in commits_raw:
+        s = stats.get(c["hash"], {})
+        c["files_changed"] = s.get("files", 0)
+        c["insertions"]    = s.get("ins",   0)
+        c["deletions"]     = s.get("dels",  0)
 
-    # git log returns newest-first; reverse to oldest-first for interval calc
-    commits.reverse()
-    return commits
-
-
-# ---------------------------------------------------------------------------
-# Mapping functions
-# ---------------------------------------------------------------------------
-
-def interval_to_pad(seconds: float) -> int:
-    """Map inter-commit interval in seconds to pad index (0-based, 0–15)."""
-    for idx, (lo, hi, _label) in enumerate(INTERVAL_BINS):
-        if hi is None or seconds < hi:
-            return idx
-    return 15
-
-
-def lines_to_velocity(lines: int) -> int:
-    """Map lines changed to MIDI velocity (20–127)."""
-    if lines <= 10:
-        return 20
-    if lines <= 50:
-        return 50
-    if lines <= 200:
-        return 80
-    if lines <= 500:
-        return 100
-    return 127
-
-
-def lines_to_layer(lines: int) -> int:
-    """Return layer index (0-based 0–3) based on lines changed."""
-    if lines <= 50:
-        return 0
-    if lines <= 200:
-        return 1
-    if lines <= 1000:
-        return 2
-    return 3
+    # Sort oldest-first for inter-arrival calculation
+    commits_raw.sort(key=lambda c: c["timestamp"])
+    return commits_raw
 
 
-def msg_len_to_vtv(length: int) -> float:
-    """Map commit message length to VelocityToVolume float (0.3–1.0)."""
-    if length < 20:
+# =============================================================================
+# COMMIT → PAD + VELOCITY MAPPING
+# =============================================================================
+
+def iat_to_pad(iat_seconds: float) -> int:
+    """Map inter-arrival time (seconds) to pad number 1-16."""
+    for lo, hi, pad in IAT_BINS:
+        if lo <= iat_seconds < hi:
+            return pad
+    return 16
+
+
+def files_to_base_velocity(files: int) -> int:
+    if files >= 100:
+        return 127
+    elif files >= 21:
+        return 90
+    elif files >= 6:
+        return 60
+    return 30
+
+
+def compute_velocity(files: int, insertions: int, deletions: int) -> int:
+    v = files_to_base_velocity(files)
+    v += min(20, insertions // 50)
+    v -= min(15, deletions // 100)
+    return max(1, min(127, v))
+
+
+def msg_weight(subject: str) -> float:
+    n = len(subject)
+    if n < 20:
         return 0.3
-    if length < 50:
+    elif n < 80:
         return 0.6
-    if length < 100:
-        return 0.9
     return 1.0
 
 
-def detect_burst_sessions(commits: List[Dict]) -> set:
-    """
-    Return a set of commit hashes that are part of burst sessions.
-    Burst = 3 or more commits within any 2-hour window.
-    """
+def detect_bursts(commits: list) -> set:
+    """Return set of commit hashes that are part of burst sessions."""
     burst_hashes: set = set()
     n = len(commits)
-    two_hours = 2 * 60 * 60
-
     for i in range(n):
         window = [commits[i]]
         for j in range(i + 1, n):
-            if commits[j]["timestamp"] - commits[i]["timestamp"] <= two_hours:
+            if commits[j]["timestamp"] - commits[i]["timestamp"] <= BURST_WINDOW_SECS:
                 window.append(commits[j])
             else:
                 break
-        if len(window) >= 3:
+        if len(window) >= BURST_THRESHOLD:
             for c in window:
                 burst_hashes.add(c["hash"])
-
     return burst_hashes
 
 
-def assign_commit(commit: Dict, prev_ts: Optional[int], burst_hashes: set) -> Dict:
+def map_commits_to_hits(commits: list) -> list:
     """
-    Compute pad, velocity, layer, and vtv for a single commit.
-    Returns augmented commit dict with these fields.
+    Convert parsed commits to hit dicts.
+    First commit has IAT=0 → pad 1.
+    Burst commits get remapped to pads 13-16.
     """
-    # Interval
-    if prev_ts is None:
-        interval = 180 * 24 * 60 * 60  # first commit → pad 15 (6 months+)
-    else:
-        interval = max(0, commit["timestamp"] - prev_ts)
+    if not commits:
+        return []
 
-    pad_idx = interval_to_pad(interval)
+    burst_hashes = detect_bursts(commits)
+    hits = []
 
-    # Burst override: reassign to accent pads 12–15 (0-based)
-    is_burst = commit["hash"] in burst_hashes
-    if is_burst:
-        # Map to pads 12–15 based on lines changed
-        lines = commit["lines_changed"]
-        if lines <= 50:
-            pad_idx = 12
-        elif lines <= 200:
-            pad_idx = 13
-        elif lines <= 1000:
-            pad_idx = 14
-        else:
-            pad_idx = 15
+    for i, commit in enumerate(commits):
+        iat = 0.0 if i == 0 else float(commit["timestamp"] - commits[i - 1]["timestamp"])
+        pad = iat_to_pad(iat)
 
-    velocity = 127 if is_burst else lines_to_velocity(commit["lines_changed"])
-    layer = lines_to_layer(commit["lines_changed"])
-    vtv = msg_len_to_vtv(len(commit["subject"]))
+        is_burst = commit["hash"] in burst_hashes
+        if is_burst:
+            pad = 13 + (i % 4)
 
-    return {
-        **commit,
-        "interval_seconds": interval,
-        "pad_idx": pad_idx,          # 0-based
-        "pad_num": pad_idx + 1,      # 1-based for display
-        "velocity": velocity,
-        "layer_idx": layer,          # 0-based
-        "layer_num": layer + 1,      # 1-based for display
-        "vtv": vtv,
-        "is_burst": is_burst,
-    }
+        vel     = compute_velocity(commit["files_changed"], commit["insertions"], commit["deletions"])
+        mweight = msg_weight(commit["subject"])
+
+        hits.append({
+            "hash":          commit["hash"][:8],
+            "full_hash":     commit["hash"],
+            "timestamp":     commit["timestamp"],
+            "subject":       commit["subject"],
+            "pad":           pad,
+            "midi_note":     PAD_MIDI[pad],
+            "velocity":      vel,
+            "is_burst":      is_burst,
+            "files_changed": commit["files_changed"],
+            "insertions":    commit["insertions"],
+            "deletions":     commit["deletions"],
+            "msg_weight":    mweight,
+            "iat_seconds":   iat,
+        })
+
+    return hits
 
 
-def process_commits(commits: List[Dict]) -> List[Dict]:
-    """Assign pad/velocity/layer to all commits in chronological order."""
-    burst_hashes = detect_burst_sessions(commits)
-    processed = []
-    prev_ts = None
-    for c in commits:
-        p = assign_commit(c, prev_ts, burst_hashes)
-        processed.append(p)
-        prev_ts = c["timestamp"]
-    return processed
+# =============================================================================
+# COMMIT REPORT
+# =============================================================================
+
+_IAT_FMTS = [
+    (3600,          lambda s: f"{int(s//60)}m"),
+    (86400,         lambda s: f"{s/3600:.1f}hr"),
+    (604800,        lambda s: f"{s/86400:.1f}d"),
+    (2592000,       lambda s: f"{s/604800:.1f}wk"),
+    (31536000,      lambda s: f"{s/2592000:.1f}mo"),
+    (float("inf"),  lambda s: f"{s/31536000:.1f}yr"),
+]
 
 
-# ---------------------------------------------------------------------------
-# Pad hit accumulator → per-pad velocity layers
-# ---------------------------------------------------------------------------
-
-def build_pad_layers(processed: List[Dict]) -> Dict[int, Dict]:
-    """
-    For each pad (0-based 0–15), build 4 layer sample file names.
-    Returns {pad_idx: {layer_idx: sample_filename, ...}}
-
-    Sample filename format: git_pad{N:02d}_layer{L}.wav
-    (N = 1-based pad, L = 1-based layer)
-    """
-    # Track which (pad, layer) combos have hits
-    hits: Dict[Tuple[int, int], int] = {}  # (pad_idx, layer_idx) → count
-    for c in processed:
-        key = (c["pad_idx"], c["layer_idx"])
-        hits[key] = hits.get(key, 0) + 1
-
-    pad_layers: Dict[int, Dict] = {}
-    for pad_idx in range(16):
-        pad_layers[pad_idx] = {}
-        for layer_idx in range(4):
-            if (pad_idx, layer_idx) in hits:
-                pad_layers[pad_idx][layer_idx] = f"git_pad{pad_idx + 1:02d}_layer{layer_idx + 1}.wav"
-            else:
-                pad_layers[pad_idx][layer_idx] = ""  # empty — no hits
-
-    return pad_layers
+def iat_human(seconds: float) -> str:
+    if seconds == 0:
+        return "start"
+    for threshold, fmt in _IAT_FMTS:
+        if seconds < threshold:
+            return fmt(seconds)
+    return f"{seconds/31536000:.1f}yr"
 
 
-# ---------------------------------------------------------------------------
-# XPM XML builder
-# ---------------------------------------------------------------------------
+def build_commit_report(repo_path: Path, hits: list, repo_name: str) -> str:
+    lines = []
+    lines.append("=" * 78)
+    lines.append("XO_OX GIT KIT — COMMIT REPORT")
+    lines.append(f"Repo     : {repo_path}")
+    lines.append(f"Name     : {repo_name}")
+    lines.append(f"Date     : {date.today()}")
+    lines.append(f"Commits  : {len(hits)}")
+    lines.append("=" * 78)
+    lines.append("")
+
+    # Pad usage summary
+    pad_counts: dict = {}
+    for h in hits:
+        pad_counts[h["pad"]] = pad_counts.get(h["pad"], 0) + 1
+
+    lines.append("Pad usage (inter-arrival time distribution):")
+    for pad_num in sorted(pad_counts):
+        count = pad_counts[pad_num]
+        label = PAD_LABELS.get(pad_num, f"Pad {pad_num}")
+        bar   = "#" * min(40, count)
+        lines.append(f"  Pad {pad_num:>2}  ({label:<32})  {count:>4}x  {bar}")
+    lines.append("")
+
+    # Burst summary
+    burst_count = sum(1 for h in hits if h["is_burst"])
+    if burst_count:
+        lines.append(f"Burst sessions: {burst_count} commits in rapid succession")
+        lines.append("  (3+ commits within 2 hours — mapped to accent pads 13-16)")
+        lines.append("")
+
+    # Per-commit table
+    lines.append(
+        f"{'#':>4}  {'Hash':>8}  {'Date':>10}  {'IAT':>6}  "
+        f"{'Pad':>3}  {'Vel':>3}  {'Files':>5}  {'+Ins':>5}  {'-Del':>5}  "
+        f"{'Wt':>4}  {'Brst':>4}  Subject"
+    )
+    lines.append("-" * 110)
+    for i, h in enumerate(hits):
+        dt      = datetime.fromtimestamp(h["timestamp"], tz=timezone.utc).strftime("%Y-%m-%d")
+        subj    = h["subject"][:40]
+        burst   = "YES" if h["is_burst"] else ""
+        iat_str = iat_human(h["iat_seconds"])
+        wt_str  = f"{h['msg_weight']:.1f}"
+        lines.append(
+            f"{i+1:>4}  {h['hash']:>8}  {dt:>10}  {iat_str:>6}  "
+            f"{h['pad']:>3}  {h['velocity']:>3}  {h['files_changed']:>5}  "
+            f"{h['insertions']:>5}  {h['deletions']:>5}  {wt_str:>4}  {burst:>4}  {subj}"
+        )
+
+    lines.append("")
+    lines.append("Mapping key:")
+    lines.append("  Inter-arrival time  → pad number (1=fastest, 16=slowest)")
+    lines.append("  Files changed       → base velocity (1-5=30, 6-20=60, 21-100=90, 100+=127)")
+    lines.append("  Insertions          → +velocity boost (up to +20)")
+    lines.append("  Deletions           → -velocity reduction (up to -15)")
+    lines.append("  Msg weight (Wt)     → VelocityToVolume (short=0.3, med=0.6, long=1.0)")
+    lines.append("  Burst (3+ in 2hr)   → accent pads 13-16")
+    lines.append("")
+    lines.append("Pad → MIDI note reference:")
+    for pad_num in range(1, 17):
+        label = PAD_LABELS[pad_num]
+        lines.append(f"  Pad {pad_num:>2} → MIDI {PAD_MIDI[pad_num]:>3}  ({label})")
+    lines.append("=" * 78)
+    return "\n".join(lines)
+
+
+# =============================================================================
+# XPM GENERATION
+# =============================================================================
 
 def _layer_block(number: int, vel_start: int, vel_end: int,
-                 sample_name: str, volume: float, program_slug: str) -> str:
+                 sample_name: str, sample_file: str,
+                 volume: float = 0.707946) -> str:
     active = "True" if sample_name else "False"
-    file_path = f"Samples/{program_slug}/{sample_name}" if sample_name else ""
     return (
         f'          <Layer number="{number}">\n'
         f'            <Active>{active}</Active>\n'
@@ -410,8 +468,8 @@ def _layer_block(number: int, vel_start: int, vel_end: int,
         f'            <RootNote>0</RootNote>\n'
         f'            <KeyTrack>True</KeyTrack>\n'
         f'            <SampleName>{xml_escape(sample_name)}</SampleName>\n'
-        f'            <SampleFile>{xml_escape(sample_name)}</SampleFile>\n'
-        f'            <File>{xml_escape(file_path)}</File>\n'
+        f'            <SampleFile>{xml_escape(sample_file)}</SampleFile>\n'
+        f'            <File>{xml_escape(sample_file)}</File>\n'
         f'            <SliceIndex>128</SliceIndex>\n'
         f'            <Direction>0</Direction>\n'
         f'            <Offset>0</Offset>\n'
@@ -423,481 +481,376 @@ def _layer_block(number: int, vel_start: int, vel_end: int,
     )
 
 
-def _empty_layer(number: int) -> str:
+def _empty_layers() -> str:
+    return "\n".join(_layer_block(i, 0, 0, "", "", 0.707946) for i in range(1, 5))
+
+
+def _instrument_block(instrument_num: int, voice_name: str,
+                      sample_name: str, sample_file: str,
+                      mute_group: int = 0) -> str:
+    is_active = bool(voice_name and sample_name)
+    cfg = VOICE_DEFAULTS.get(voice_name, VOICE_DEFAULTS["fx"])
+
+    if is_active:
+        layers_xml = "\n".join([
+            _layer_block(1, 1,  31,  sample_name, sample_file, 0.35),
+            _layer_block(2, 32, 63,  sample_name, sample_file, 0.55),
+            _layer_block(3, 64, 95,  sample_name, sample_file, 0.75),
+            _layer_block(4, 96, 127, sample_name, sample_file, 0.95),
+        ])
+    else:
+        layers_xml = _empty_layers()
+
+    mono_str    = "True" if cfg["mono"] else "False"
+    oneshot_str = "True" if cfg["one_shot"] else "False"
+
+    mute_xml = "\n".join(
+        f"        <MuteTarget{i+1}>0</MuteTarget{i+1}>" for i in range(4)
+    )
+    if voice_name == "chat":
+        mute_xml = (
+            f"        <MuteTarget1>{PAD_MIDI[4]}</MuteTarget1>\n"
+            + "\n".join(f"        <MuteTarget{i+1}>0</MuteTarget{i+1}>" for i in range(1, 4))
+        )
+    simult_xml = "\n".join(
+        f"        <SimultTarget{i+1}>0</SimultTarget{i+1}>" for i in range(4)
+    )
+
     return (
-        f'          <Layer number="{number}">\n'
-        f'            <Active>False</Active>\n'
-        f'            <Volume>0.707946</Volume>\n'
-        f'            <Pan>0.500000</Pan>\n'
-        f'            <Pitch>0.000000</Pitch>\n'
-        f'            <TuneCoarse>0</TuneCoarse>\n'
-        f'            <TuneFine>0</TuneFine>\n'
-        f'            <VelStart>0</VelStart>\n'
-        f'            <VelEnd>0</VelEnd>\n'
-        f'            <SampleStart>0</SampleStart>\n'
-        f'            <SampleEnd>0</SampleEnd>\n'
-        f'            <Loop>False</Loop>\n'
-        f'            <LoopStart>0</LoopStart>\n'
-        f'            <LoopEnd>0</LoopEnd>\n'
-        f'            <LoopTune>0</LoopTune>\n'
-        f'            <Mute>False</Mute>\n'
-        f'            <RootNote>0</RootNote>\n'
-        f'            <KeyTrack>True</KeyTrack>\n'
-        f'            <SampleName></SampleName>\n'
-        f'            <SampleFile></SampleFile>\n'
-        f'            <File></File>\n'
-        f'            <SliceIndex>128</SliceIndex>\n'
-        f'            <Direction>0</Direction>\n'
-        f'            <Offset>0</Offset>\n'
-        f'            <SliceStart>0</SliceStart>\n'
-        f'            <SliceEnd>0</SliceEnd>\n'
-        f'            <SliceLoopStart>0</SliceLoopStart>\n'
-        f'            <SliceLoop>0</SliceLoop>\n'
-        f'          </Layer>'
+        f'      <Instrument number="{instrument_num}">\n'
+        f'        <AudioRoute>\n'
+        f'          <AudioRoute>0</AudioRoute>\n'
+        f'          <AudioRouteSubIndex>0</AudioRouteSubIndex>\n'
+        f'          <InsertsEnabled>False</InsertsEnabled>\n'
+        f'        </AudioRoute>\n'
+        f'        <Send1>0.000000</Send1>\n'
+        f'        <Send2>0.000000</Send2>\n'
+        f'        <Send3>0.000000</Send3>\n'
+        f'        <Send4>0.000000</Send4>\n'
+        f'        <Volume>0.707946</Volume>\n'
+        f'        <Mute>False</Mute>\n'
+        f'        <Pan>0.500000</Pan>\n'
+        f'        <TuneCoarse>0</TuneCoarse>\n'
+        f'        <TuneFine>0</TuneFine>\n'
+        f'        <Mono>{mono_str}</Mono>\n'
+        f'        <Polyphony>{cfg["poly"]}</Polyphony>\n'
+        f'        <FilterKeytrack>0.000000</FilterKeytrack>\n'
+        f'        <LowNote>0</LowNote>\n'
+        f'        <HighNote>127</HighNote>\n'
+        f'        <IgnoreBaseNote>False</IgnoreBaseNote>\n'
+        f'        <ZonePlay>1</ZonePlay>\n'
+        f'        <MuteGroup>{mute_group}</MuteGroup>\n'
+        f'{mute_xml}\n'
+        f'{simult_xml}\n'
+        f'        <LfoPitch>0.000000</LfoPitch>\n'
+        f'        <LfoCutoff>0.000000</LfoCutoff>\n'
+        f'        <LfoVolume>0.000000</LfoVolume>\n'
+        f'        <LfoPan>0.000000</LfoPan>\n'
+        f'        <OneShot>{oneshot_str}</OneShot>\n'
+        f'        <FilterType>2</FilterType>\n'
+        f'        <Cutoff>{cfg["cutoff"]:.6f}</Cutoff>\n'
+        f'        <Resonance>{cfg["resonance"]:.6f}</Resonance>\n'
+        f'        <FilterEnvAmt>0.000000</FilterEnvAmt>\n'
+        f'        <AfterTouchToFilter>0.000000</AfterTouchToFilter>\n'
+        f'        <VelocityToStart>0.000000</VelocityToStart>\n'
+        f'        <VelocityToFilterAttack>0.000000</VelocityToFilterAttack>\n'
+        f'        <VelocityToFilter>{cfg["vtf"]:.6f}</VelocityToFilter>\n'
+        f'        <VelocityToFilterEnvelope>0.000000</VelocityToFilterEnvelope>\n'
+        f'        <FilterAttack>0.000000</FilterAttack>\n'
+        f'        <FilterDecay>0.000000</FilterDecay>\n'
+        f'        <FilterSustain>1.000000</FilterSustain>\n'
+        f'        <FilterRelease>0.000000</FilterRelease>\n'
+        f'        <FilterHold>0.000000</FilterHold>\n'
+        f'        <FilterDecayType>True</FilterDecayType>\n'
+        f'        <FilterADEnvelope>True</FilterADEnvelope>\n'
+        f'        <VolumeHold>0.000000</VolumeHold>\n'
+        f'        <VolumeDecayType>True</VolumeDecayType>\n'
+        f'        <VolumeADEnvelope>True</VolumeADEnvelope>\n'
+        f'        <VolumeAttack>{cfg["attack"]:.6f}</VolumeAttack>\n'
+        f'        <VolumeDecay>{cfg["decay"]:.6f}</VolumeDecay>\n'
+        f'        <VolumeSustain>{cfg["sustain"]:.6f}</VolumeSustain>\n'
+        f'        <VolumeRelease>{cfg["release"]:.6f}</VolumeRelease>\n'
+        f'        <VelocityToPitch>{cfg["vtp"]:.6f}</VelocityToPitch>\n'
+        f'        <VelocityToVolumeAttack>0.000000</VelocityToVolumeAttack>\n'
+        f'        <VelocitySensitivity>1.000000</VelocitySensitivity>\n'
+        f'        <VelocityToPan>0.000000</VelocityToPan>\n'
+        f'        <LFO>\n'
+        f'          <Speed>0.000000</Speed>\n'
+        f'          <Amount>0.000000</Amount>\n'
+        f'          <Type>0</Type>\n'
+        f'          <Sync>False</Sync>\n'
+        f'          <Retrigger>True</Retrigger>\n'
+        f'        </LFO>\n'
+        f'        <Layers>\n'
+        f'{layers_xml}\n'
+        f'        </Layers>\n'
+        f'      </Instrument>'
     )
 
 
-def _instrument_block(
-    instrument_num: int,
-    pad_idx: int,
-    pad_layers: Dict[int, str],
-    pad_label: str,
-    program_slug: str,
-    vtv: float,
-    active: bool,
-) -> str:
-    midi_note = PAD_MIDI_NOTES[pad_idx]
+def build_xpm(slug: str, repo_name: str, hits: list) -> str:
+    """Build complete drum program XPM XML. Used pads get active instruments."""
+    prog_name  = xml_escape(f"XO_OX-GIT-{slug.upper()}")
+    used_pads  = set(h["pad"] for h in hits)
 
-    # Build up to 4 layer blocks
-    layer_xml_parts = []
-    for layer_idx in range(4):
-        sample_name = pad_layers.get(layer_idx, "")
-        if sample_name:
-            vel_start, vel_end = LAYER_VEL_RANGES[layer_idx]
-            volume = 0.6 + 0.4 * (layer_idx / 3.0)  # 0.6 → 1.0 across layers
-            layer_xml_parts.append(
-                _layer_block(layer_idx + 1, vel_start, vel_end, sample_name, volume, program_slug)
+    instrument_parts = []
+    for i in range(128):
+        pad_for_note = None
+        for pad_num, midi in PAD_MIDI.items():
+            if midi == i and pad_num in used_pads:
+                pad_for_note = pad_num
+                break
+        if pad_for_note is not None:
+            v_name = PAD_VOICE[pad_for_note]
+            s_name = f"{slug}_pad{pad_for_note}"
+            s_file = f"{s_name}.wav"
+            mg     = VOICE_DEFAULTS.get(v_name, VOICE_DEFAULTS["fx"])["mute_group"]
+            instrument_parts.append(
+                _instrument_block(i, v_name, s_name, s_file, mute_group=mg)
             )
         else:
-            layer_xml_parts.append(_empty_layer(layer_idx + 1))
+            instrument_parts.append(_instrument_block(i, "", "", "", mute_group=0))
 
-    layers_xml = "\n".join(layer_xml_parts)
-    active_str = "True" if active else "False"
+    instruments_xml = "\n".join(instrument_parts)
 
-    return (
-        f'        <Instrument number="{instrument_num}">\n'
-        f'          <Active>{active_str}</Active>\n'
-        f'          <Volume>1.000000</Volume>\n'
-        f'          <Pan>0.500000</Pan>\n'
-        f'          <Pitch>0.000000</Pitch>\n'
-        f'          <MidiNote>{midi_note}</MidiNote>\n'
-        f'          <ZonePlay>1</ZonePlay>\n'
-        f'          <MuteGroup>0</MuteGroup>\n'
-        f'          <MuteTarget>0</MuteTarget>\n'
-        f'          <VoiceOverlap>0</VoiceOverlap>\n'
-        f'          <Mono>True</Mono>\n'
-        f'          <Polyphony>1</Polyphony>\n'
-        f'          <OneShot>True</OneShot>\n'
-        f'          <VelocitySensitivity>1.000000</VelocitySensitivity>\n'
-        f'          <VelocityToPitch>0.000000</VelocityToPitch>\n'
-        f'          <VelocityToFilter>0.150000</VelocityToFilter>\n'
-        f'          <VelocityToVolume>{vtv:.6f}</VelocityToVolume>\n'
-        f'          <ProgramName>{xml_escape(pad_label)}</ProgramName>\n'
-        f'          <Attack>0.000000</Attack>\n'
-        f'          <Hold>0.000000</Hold>\n'
-        f'          <Decay>0.350000</Decay>\n'
-        f'          <Sustain>0.000000</Sustain>\n'
-        f'          <Release>0.100000</Release>\n'
-        f'          <FilterType>2</FilterType>\n'
-        f'          <FilterCutoff>0.900000</FilterCutoff>\n'
-        f'          <FilterResonance>0.050000</FilterResonance>\n'
-        f'          <FilterEnvAmt>0.050000</FilterEnvAmt>\n'
-        f'{layers_xml}\n'
-        f'        </Instrument>'
-    )
-
-
-def _inactive_instrument(number: int, midi_note: int) -> str:
-    layers = "\n".join(_empty_layer(i + 1) for i in range(4))
-    return (
-        f'        <Instrument number="{number}">\n'
-        f'          <Active>False</Active>\n'
-        f'          <Volume>0.707946</Volume>\n'
-        f'          <Pan>0.500000</Pan>\n'
-        f'          <Pitch>0.000000</Pitch>\n'
-        f'          <MidiNote>{midi_note}</MidiNote>\n'
-        f'          <ZonePlay>1</ZonePlay>\n'
-        f'          <MuteGroup>0</MuteGroup>\n'
-        f'          <MuteTarget>0</MuteTarget>\n'
-        f'          <VoiceOverlap>0</VoiceOverlap>\n'
-        f'          <Mono>True</Mono>\n'
-        f'          <Polyphony>1</Polyphony>\n'
-        f'          <OneShot>True</OneShot>\n'
-        f'          <VelocitySensitivity>1.000000</VelocitySensitivity>\n'
-        f'          <VelocityToPitch>0.000000</VelocityToPitch>\n'
-        f'          <VelocityToFilter>0.000000</VelocityToFilter>\n'
-        f'          <VelocityToVolume>0.707946</VelocityToVolume>\n'
-        f'          <ProgramName></ProgramName>\n'
-        f'          <Attack>0.000000</Attack>\n'
-        f'          <Hold>0.000000</Hold>\n'
-        f'          <Decay>0.000000</Decay>\n'
-        f'          <Sustain>1.000000</Sustain>\n'
-        f'          <Release>0.000000</Release>\n'
-        f'          <FilterType>2</FilterType>\n'
-        f'          <FilterCutoff>1.000000</FilterCutoff>\n'
-        f'          <FilterResonance>0.000000</FilterResonance>\n'
-        f'          <FilterEnvAmt>0.000000</FilterEnvAmt>\n'
-        f'{layers}\n'
-        f'        </Instrument>'
-    )
-
-
-def build_xpm(
-    pad_layers_map: Dict[int, Dict],
-    pad_vtv: Dict[int, float],
-    program_slug: str,
-    repo_name: str,
-    commit_count: int,
-    date_range: str,
-) -> str:
-    today = date.today().isoformat()
-    instruments_xml_parts = []
-
-    # 16 active pads
-    for pad_idx in range(16):
-        pad_layers = pad_layers_map[pad_idx]
-        has_any_sample = any(pad_layers.get(li, "") for li in range(4))
-        vtv = pad_vtv.get(pad_idx, 0.707946)
-        label = f"{PAD_LABELS[pad_idx]} — {INTERVAL_BINS[pad_idx][2]}"
-        instruments_xml_parts.append(
-            _instrument_block(
-                instrument_num=pad_idx + 1,
-                pad_idx=pad_idx,
-                pad_layers=pad_layers,
-                pad_label=label,
-                program_slug=program_slug,
-                vtv=vtv,
-                active=has_any_sample,
-            )
-        )
-
-    # Fill remaining 112 slots (17–128) as inactive
-    for instrument_num in range(17, 129):
-        midi_note = min(PAD_MIDI_NOTES[15] + (instrument_num - 16), 127)
-        instruments_xml_parts.append(_inactive_instrument(instrument_num, midi_note))
-
-    instruments_xml = "\n".join(instruments_xml_parts)
-
-    return f"""<?xml version="1.0" encoding="UTF-8"?>
-<MPCVObject>
-  <Version>
-    <File_Version>2.1</File_Version>
-    <Application>MPC</Application>
-    <Application_Version>2.10</Application_Version>
-  </Version>
-  <Program type="Drum">
-    <Name>Git Kit — {xml_escape(repo_name)}</Name>
-    <Slug>{program_slug}</Slug>
-    <DateCreated>{today}</DateCreated>
-    <Description>Git commit history as drum kit. {commit_count} commits from {xml_escape(date_range)}. Each pad = one temporal interval between commits. Velocity = lines changed. VelocityToVolume = commit message length. Pads 13-16 = burst session accents (3+ commits within 2 hours).</Description>
-    <NumInstruments>128</NumInstruments>
-    <ProgramVolume>1.000000</ProgramVolume>
-    <ProgramPan>0.500000</ProgramPan>
-    <ProgramTranspose>0</ProgramTranspose>
-    <MemoryUsage>0</MemoryUsage>
-    <LFO1Shape>0</LFO1Shape>
-    <LFO1Rate>0.000000</LFO1Rate>
-    <LFO1Depth>0.000000</LFO1Depth>
-    <FilterQ>0.000000</FilterQ>
-    <InstrumentList>
-{instruments_xml}
-    </InstrumentList>
-  </Program>
-</MPCVObject>
-"""
-
-
-# ---------------------------------------------------------------------------
-# Commit report builder
-# ---------------------------------------------------------------------------
-
-def format_interval(seconds: float) -> str:
-    """Human-readable interval string."""
-    if seconds < 60:
-        return f"{int(seconds)}s"
-    if seconds < 3600:
-        return f"{int(seconds / 60)}m"
-    if seconds < 86400:
-        h = seconds / 3600
-        return f"{h:.1f}h"
-    d = seconds / 86400
-    return f"{d:.1f}d"
-
-
-def build_commit_report(
-    processed: List[Dict],
-    repo_path: Path,
-    author_filter: Optional[str],
-    since_filter: Optional[str],
-) -> str:
-    lines = [
-        "XPN Git Kit — Commit Report",
-        "=" * 72,
-        f"Repository : {repo_path}",
-        f"Generated  : {date.today().isoformat()}",
-        f"Commits    : {len(processed)}",
+    pad_note_entries = [
+        f'        <Pad number="{pad_num}" note="{PAD_MIDI[pad_num]}"/>  '
+        f'<!-- {xml_escape(PAD_LABELS[pad_num])} -->'
+        for pad_num in sorted(used_pads)
     ]
-    if author_filter:
-        lines.append(f"Author     : {author_filter}")
-    if since_filter:
-        lines.append(f"Since      : {since_filter}")
-    lines.append("")
-    lines.append(
-        f"{'Hash':>10}  {'Date':>10}  {'Pad':>3}  {'Layer':>5}  {'Vel':>3}  {'VtV':>4}  {'Lines':>6}  {'Burst':>5}  Subject"
+    pad_note_xml = "\n".join(pad_note_entries)
+
+    pad_group_entries = []
+    for pad_num in sorted(used_pads):
+        mg = VOICE_DEFAULTS.get(PAD_VOICE[pad_num], VOICE_DEFAULTS["fx"])["mute_group"]
+        if mg > 0:
+            pad_group_entries.append(f'        <Pad number="{pad_num}" group="{mg}"/>')
+    pad_group_xml = "\n".join(pad_group_entries)
+
+    pad_json = json.dumps(
+        {"ProgramPads": {"Universal": {"value0": False},
+                         "Type":      {"value0": 5},
+                         "universalPad": 32512}},
+        separators=(",", ":"),
     )
-    lines.append("-" * 100)
 
-    for c in processed:
-        ts_str = datetime.fromtimestamp(c["timestamp"]).strftime("%Y-%m-%d")
-        subject = c["subject"][:50] + "…" if len(c["subject"]) > 50 else c["subject"]
-        burst_flag = "YES" if c["is_burst"] else ""
-        lines.append(
-            f"{c['hash'][:10]}  {ts_str}  {c['pad_num']:>3}  L{c['layer_num']:>4}  {c['velocity']:>3}  "
-            f"{c['vtv']:.2f}  {c['lines_changed']:>6}  {burst_flag:>5}  {subject}"
-        )
-
-    lines.append("")
-    lines.append("Pad Mapping")
-    lines.append("-" * 40)
-    for i, (_lo, _hi, label) in enumerate(INTERVAL_BINS):
-        lines.append(f"  Pad {i + 1:>2} (MIDI {PAD_MIDI_NOTES[i]:>3}) : {label}")
-
-    lines.append("")
-    lines.append("Velocity Layer Boundaries")
-    lines.append("-" * 40)
-    layer_labels = ["1–50 lines (light)", "51–200 lines (medium)", "201–1000 lines (heavy)", "1000+ lines (massive)"]
-    for i, (vs, ve) in enumerate(LAYER_VEL_RANGES):
-        lines.append(f"  Layer {i + 1}: vel {vs:>3}–{ve:>3} — {layer_labels[i]}")
-
-    return "\n".join(lines) + "\n"
-
-
-# ---------------------------------------------------------------------------
-# ASCII histogram
-# ---------------------------------------------------------------------------
-
-def print_histogram(processed: List[Dict]) -> None:
-    pad_counts = [0] * 16
-    for c in processed:
-        pad_counts[c["pad_idx"]] += 1
-
-    total = max(sum(pad_counts), 1)
-    bar_width = 40
-
-    print("\nCommit Frequency per Pad")
-    print("=" * 72)
-    print(f"  {'Pad':>3}  {'Interval':>14}  {'Count':>5}  {'Bar'}")
-    print("-" * 72)
-    for i in range(16):
-        count = pad_counts[i]
-        label = INTERVAL_BINS[i][2]
-        bar_len = int(count / total * bar_width)
-        bar = "#" * bar_len
-        print(f"  {i + 1:>3}  {label:>14}  {count:>5}  {bar}")
-    print()
-
-    # Burst summary
-    burst_count = sum(1 for c in processed if c["is_burst"])
-    print(f"Burst session commits : {burst_count} / {len(processed)}")
-    print(f"Pads with zero hits   : {sum(1 for c in pad_counts if c == 0)}")
-    print()
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n\n'
+        '<MPCVObject>\n'
+        '  <Version>\n'
+        '    <File_Version>1.7</File_Version>\n'
+        '    <Application>MPC-V</Application>\n'
+        '    <Application_Version>2.10.0.0</Application_Version>\n'
+        '    <Platform>OSX</Platform>\n'
+        '  </Version>\n'
+        '  <Program type="Drum">\n'
+        f'    <Name>{prog_name}</Name>\n'
+        f'    <!-- Git Kit: {xml_escape(repo_name)} | {len(hits)} commits -->\n'
+        f'    <!-- Pad = inter-arrival time bin | Velocity = commit size -->\n'
+        f'    <ProgramPads>{pad_json}</ProgramPads>\n'
+        '    <PadNoteMap>\n'
+        f'{pad_note_xml}\n'
+        '    </PadNoteMap>\n'
+        '    <PadGroupMap>\n'
+        f'{pad_group_xml}\n'
+        '    </PadGroupMap>\n'
+        '    <QLinks>\n'
+        '      <QLink number="1">\n'
+        '        <Name>DENSITY</Name>\n'
+        '        <Parameter>FilterCutoff</Parameter>\n'
+        '        <Min>0.200000</Min>\n'
+        '        <Max>1.000000</Max>\n'
+        '      </QLink>\n'
+        '      <QLink number="2">\n'
+        '        <Name>PITCH</Name>\n'
+        '        <Parameter>TuneCoarse</Parameter>\n'
+        '        <Min>-12</Min>\n'
+        '        <Max>12</Max>\n'
+        '      </QLink>\n'
+        '      <QLink number="3">\n'
+        '        <Name>BURST</Name>\n'
+        '        <Parameter>VelocitySensitivity</Parameter>\n'
+        '        <Min>0.500000</Min>\n'
+        '        <Max>2.000000</Max>\n'
+        '      </QLink>\n'
+        '      <QLink number="4">\n'
+        '        <Name>SPACE</Name>\n'
+        '        <Parameter>Send1</Parameter>\n'
+        '        <Min>0.000000</Min>\n'
+        '        <Max>0.700000</Max>\n'
+        '      </QLink>\n'
+        '    </QLinks>\n'
+        '    <Instruments>\n'
+        f'{instruments_xml}\n'
+        '    </Instruments>\n'
+        '  </Program>\n'
+        '</MPCVObject>\n'
+    )
 
 
-# ---------------------------------------------------------------------------
-# ZIP / XPN builder
-# ---------------------------------------------------------------------------
+# =============================================================================
+# MANIFEST
+# =============================================================================
 
-def build_xpn_zip(
-    xpm_xml: str,
-    program_slug: str,
-    pad_layers_map: Dict[int, Dict],
-    output_dir: Path,
-) -> Path:
-    """
-    Write the XPN ZIP file.
-    Includes:
-      - {program_slug}.xpm
-      - Samples/{program_slug}/*.wav  (placeholder empty WAV stubs for referenced samples)
-    """
+def build_manifest(slug: str, repo_name: str, repo_path: Path, hits: list) -> dict:
+    pad_usage: dict = {}
+    for h in hits:
+        p = str(h["pad"])
+        pad_usage[p] = pad_usage.get(p, 0) + 1
+
+    return {
+        "tool":        "xpn_git_kit",
+        "version":     "1.0",
+        "date":        str(date.today()),
+        "slug":        slug,
+        "repo_name":   repo_name,
+        "repo_path":   str(repo_path),
+        "commits":     len(hits),
+        "burst_commits": sum(1 for h in hits if h["is_burst"]),
+        "total_files_changed": sum(h["files_changed"] for h in hits),
+        "total_insertions":    sum(h["insertions"] for h in hits),
+        "total_deletions":     sum(h["deletions"] for h in hits),
+        "pad_usage": pad_usage,
+        "golden_rules": {"KeyTrack": True, "RootNote": 0, "empty_layer_VelStart": 0},
+        "pad_map": {
+            str(pad): {"midi": PAD_MIDI[pad], "voice": PAD_VOICE[pad], "label": PAD_LABELS[pad]}
+            for pad in range(1, 17)
+        },
+        "commit_hits": [
+            {
+                "index":         i + 1,
+                "hash":          h["hash"],
+                "date":          datetime.fromtimestamp(h["timestamp"], tz=timezone.utc).strftime("%Y-%m-%d"),
+                "subject":       h["subject"][:80],
+                "pad":           h["pad"],
+                "midi_note":     h["midi_note"],
+                "velocity":      h["velocity"],
+                "is_burst":      h["is_burst"],
+                "files_changed": h["files_changed"],
+                "insertions":    h["insertions"],
+                "deletions":     h["deletions"],
+                "iat_seconds":   h["iat_seconds"],
+            }
+            for i, h in enumerate(hits)
+        ],
+    }
+
+
+# =============================================================================
+# ZIP PACKAGING
+# =============================================================================
+
+def write_kit_zip(output_dir: Path, slug: str, repo_name: str,
+                  repo_path: Path, hits: list) -> Path:
+    """Package XPM + commit_report.txt + manifest.json + README into a ZIP."""
     output_dir.mkdir(parents=True, exist_ok=True)
-    zip_path = output_dir / f"{program_slug}.xpn"
+    zip_path = output_dir / f"XO_OX-GIT-{slug.upper()}.zip"
 
-    # Minimal valid WAV stub: 44-byte header, 0 frames
-    def minimal_wav_stub() -> bytes:
-        import struct
-        channels = 1
-        sample_rate = 44100
-        bit_depth = 16
-        byte_rate = sample_rate * channels * bit_depth // 8
-        block_align = channels * bit_depth // 8
-        data_size = 0
-        chunk_size = 36 + data_size
-        header = struct.pack(
-            "<4sI4s4sIHHIIHH4sI",
-            b"RIFF", chunk_size, b"WAVE",
-            b"fmt ", 16,
-            1,            # PCM
-            channels,
-            sample_rate,
-            byte_rate,
-            block_align,
-            bit_depth,
-            b"data", data_size,
+    xpm_xml  = build_xpm(slug, repo_name, hits)
+    report   = build_commit_report(repo_path, hits, repo_name)
+    manifest = build_manifest(slug, repo_name, repo_path, hits)
+
+    used_pads = sorted(set(h["pad"] for h in hits))
+    readme_lines = [
+        f"XO_OX GIT KIT — {repo_name}",
+        "=" * 60,
+        "",
+        "Place WAV samples next to the .xpm file.",
+        "Only pads with commits in the analyzed history are active.",
+        "",
+        "Active pad → WAV file mapping:",
+    ]
+    for pad_num in used_pads:
+        readme_lines.append(
+            f"  Pad {pad_num:>2} (MIDI {PAD_MIDI[pad_num]:>3}) → {slug}_pad{pad_num}.wav"
+            f"  [{PAD_LABELS[pad_num]}]"
         )
-        return header
-
-    wav_stub = minimal_wav_stub()
+    readme_lines += [
+        "",
+        "Velocity mapping:",
+        "  1-5 files     → vel  30  (quiet tap)",
+        "  6-20 files    → vel  60  (medium hit)",
+        "  21-100 files  → vel  90  (strong hit)",
+        "  100+ files    → vel 127  (maximum impact)",
+        "  +insertions   → up to +20 velocity boost",
+        "  -deletions    → up to -15 velocity reduction",
+        "",
+        "Burst sessions (3+ commits in 2hrs) → pads 13-16 accent layer.",
+        "",
+        "See commit_report.txt for the full timeline.",
+        "See manifest.json for machine-readable data.",
+    ]
 
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
-        zf.writestr(f"{program_slug}.xpm", xpm_xml)
-
-        for pad_idx in range(16):
-            for layer_idx in range(4):
-                sample_name = pad_layers_map[pad_idx].get(layer_idx, "")
-                if sample_name:
-                    zf.writestr(f"Samples/{program_slug}/{sample_name}", wav_stub)
+        zf.writestr(f"{slug}/{slug}.xpm",          xpm_xml)
+        zf.writestr(f"{slug}/commit_report.txt",   report)
+        zf.writestr(f"{slug}/manifest.json",       json.dumps(manifest, indent=2))
+        zf.writestr(f"{slug}/README.txt",          "\n".join(readme_lines) + "\n")
 
     return zip_path
 
 
-# ---------------------------------------------------------------------------
-# Main
-# ---------------------------------------------------------------------------
+# =============================================================================
+# CLI
+# =============================================================================
 
-def main() -> None:
+def main():
     parser = argparse.ArgumentParser(
-        description="XPN Git Kit — git commit history → MPC drum program",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog=__doc__,
+        description="XPN Git Kit — git commit history → MPC drum programs"
     )
     parser.add_argument(
         "--repo",
         default=".",
-        help='Repo path. Use "." for current dir, "xomnibus" for XO_OX-XOmnibus, or any path.',
+        help=(
+            "Git repo path. '.' = current dir; absolute path; or shorthand name "
+            "(auto-resolved from ~/Documents/GitHub/). Default: current directory."
+        ),
     )
     parser.add_argument(
-        "--output",
-        default="./out/",
-        help="Output directory for XPN ZIP and commit_report.txt (default: ./out/)",
+        "--output", "-o",
+        default="./out",
+        help="Output directory (default: ./out)",
     )
     parser.add_argument(
         "--max-commits",
         type=int,
         default=200,
-        help="Maximum number of commits to parse (default: 200)",
-    )
-    parser.add_argument(
-        "--author",
-        default=None,
-        help="Filter commits by author email or name (passed to git --author)",
-    )
-    parser.add_argument(
-        "--since",
-        default=None,
-        help="Filter commits since date, e.g. 2026-01-01 (passed to git --since)",
+        help="Maximum commits to analyze (default: 200)",
     )
     args = parser.parse_args()
 
-    repo_path = resolve_repo(args.repo)
-    output_dir = Path(args.output).expanduser().resolve()
-
-    print(f"XPN Git Kit")
-    print(f"Repository : {repo_path}")
-    print(f"Output     : {output_dir}")
-    print(f"Max commits: {args.max_commits}")
-    if args.author:
-        print(f"Author     : {args.author}")
-    if args.since:
-        print(f"Since      : {args.since}")
-    print()
-
-    # Get repo name for slug
-    repo_name = repo_path.name
-    safe_name = "".join(c if c.isalnum() or c in "-_" else "_" for c in repo_name).lower()
-    program_slug = f"git_kit_{safe_name}"
-
-    # Fetch and process commits
-    print("Fetching commits...")
-    commits = fetch_commits(repo_path, args.max_commits, args.author, args.since)
-
-    if not commits:
-        print("ERROR: No commits found with the given filters.", file=sys.stderr)
+    repo_path = find_repo(args.repo)
+    if not repo_path.exists():
+        print(f"ERROR: Repository path not found: {repo_path}", file=sys.stderr)
         sys.exit(1)
 
-    print(f"Found {len(commits)} commits. Processing...")
-    processed = process_commits(commits)
+    repo_name = repo_path.name
+    slug      = re.sub(r"[^a-zA-Z0-9_-]", "_", repo_name.lower())[:30]
 
-    # Compute date range string
-    first_ts = processed[0]["timestamp"]
-    last_ts = processed[-1]["timestamp"]
-    date_range = (
-        f"{datetime.fromtimestamp(first_ts).strftime('%Y-%m-%d')} – "
-        f"{datetime.fromtimestamp(last_ts).strftime('%Y-%m-%d')}"
-    )
+    print(f"Analyzing : {repo_path}")
+    print(f"Max commits: {args.max_commits}")
 
-    # Build pad layers map
-    pad_layers_map = build_pad_layers(processed)
+    try:
+        commits = parse_git_log(repo_path, args.max_commits)
+    except RuntimeError as e:
+        print(f"ERROR: {e}", file=sys.stderr)
+        sys.exit(1)
 
-    # Compute per-pad average VelocityToVolume (mean of all commits hitting that pad)
-    pad_vtv_sums: Dict[int, float] = {}
-    pad_vtv_counts: Dict[int, int] = {}
-    for c in processed:
-        pi = c["pad_idx"]
-        pad_vtv_sums[pi] = pad_vtv_sums.get(pi, 0.0) + c["vtv"]
-        pad_vtv_counts[pi] = pad_vtv_counts.get(pi, 0) + 1
-    pad_vtv = {
-        pi: pad_vtv_sums[pi] / pad_vtv_counts[pi]
-        for pi in pad_vtv_sums
-    }
+    if not commits:
+        print("ERROR: No commits found.", file=sys.stderr)
+        sys.exit(1)
 
-    # Print histogram
-    print_histogram(processed)
+    print(f"Found {len(commits)} commits")
 
-    # Build XPM XML
-    xpm_xml = build_xpm(
-        pad_layers_map=pad_layers_map,
-        pad_vtv=pad_vtv,
-        program_slug=program_slug,
-        repo_name=repo_name,
-        commit_count=len(processed),
-        date_range=date_range,
-    )
+    hits = map_commits_to_hits(commits)
 
-    # Build commit report
-    report_text = build_commit_report(processed, repo_path, args.author, args.since)
+    burst_count = sum(1 for h in hits if h["is_burst"])
+    pads_used   = len(set(h["pad"] for h in hits))
+    print(f"Mapped to {pads_used} active pads  |  {burst_count} burst commits (pads 13-16)")
 
-    # Write XPN ZIP
-    xpn_path = build_xpn_zip(xpm_xml, program_slug, pad_layers_map, output_dir)
-    print(f"XPN written : {xpn_path}")
-
-    # Write commit report
-    report_path = output_dir / "commit_report.txt"
-    report_path.write_text(report_text, encoding="utf-8")
-    print(f"Report      : {report_path}")
-
-    # Summary
-    pad_counts = [0] * 16
-    for c in processed:
-        pad_counts[c["pad_idx"]] += 1
-    active_pads = sum(1 for n in pad_counts if n > 0)
-    burst_count = sum(1 for c in processed if c["is_burst"])
-    print()
-    print(f"Summary")
-    print(f"  Commits processed : {len(processed)}")
-    print(f"  Active pads       : {active_pads} / 16")
-    print(f"  Burst commits     : {burst_count}")
-    print(f"  Date range        : {date_range}")
-    print(f"  Program slug      : {program_slug}")
+    output_dir = Path(args.output)
+    zip_path   = write_kit_zip(output_dir, slug, repo_name, repo_path, hits)
+    print(f"Written   : {zip_path}")
 
 
 if __name__ == "__main__":
