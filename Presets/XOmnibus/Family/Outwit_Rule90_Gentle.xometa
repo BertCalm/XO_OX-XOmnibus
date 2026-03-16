@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Rule 90 Gentle",
+  "mood": "Family",
+  "engines": ["Outwit"],
+  "author": "Guru Bin — Family Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Rule 90 — the Sierpinski triangle woven across eight arms. Inherently fractal, inherently ordered. mutationRate at 0.01 means the pattern barely shifts: the octopus has found its configuration and is content to hold it. armSpread at 0.3 keeps the voices close, not scattered. Chaos at 0.05 — just a breath of unpredictability. Long attack and release. The cellular automata at peace, its pattern a lullaby of recursion.",
+  "tags": ["family", "pad", "gentle", "warm", "wolfram", "fractal", "rule90", "ordered", "beginner"],
+  "macroLabels": ["CHARACTER", "CHAOS", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 90,
+      "owit_armBalance": 0.50,
+      "owit_mutationRate": 0.01,
+      "owit_armSpread": 0.30,
+      "owit_sync": 0.85,
+      "owit_feedbackAmt": 0.18,
+      "owit_chaos": 0.05,
+      "owit_density": 0.55,
+      "owit_ampAttack": 0.5,
+      "owit_ampDecay": 0.7,
+      "owit_ampSustain": 0.80,
+      "owit_ampRelease": 2.0,
+      "owit_filterCutoff": 0.48,
+      "owit_filterRes": 0.12,
+      "owit_lfoRate": 0.03,
+      "owit_lfoDepth": 0.10,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.55,
+    "movement": 0.25,
+    "density": 0.45,
+    "space": 0.52,
+    "aggression": 0.08
+  }
+}
