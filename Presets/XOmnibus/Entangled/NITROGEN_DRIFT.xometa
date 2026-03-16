@@ -1,0 +1,49 @@
+{
+  "name": "NITROGEN DRIFT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OVERBITE"
+  ],
+  "parameters": {
+    "OVERLAP": {
+      "macro_character": 0.775,
+      "macro_movement": 0.465,
+      "macro_coupling": 0.826,
+      "macro_space": 0.592
+    },
+    "OVERBITE": {
+      "macro_character": 0.322,
+      "macro_movement": 0.245,
+      "macro_coupling": 0.935,
+      "macro_space": 0.279
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OVERLAP",
+    "target": "OVERBITE",
+    "amount": 0.57
+  },
+  "dna": {
+    "brightness": 0.608,
+    "warmth": 0.116,
+    "movement": 0.763,
+    "density": 0.97,
+    "space": 0.448,
+    "aggression": 0.687
+  },
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.57,
+    "COUPLING": 0.668,
+    "SPACE": 0.336
+  },
+  "tags": [
+    "entangled",
+    "cold",
+    "clinical",
+    "icy"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "INCANDESCENT SYNC",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OSTERIA",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OSTERIA": {
+      "macro_character": 0.463,
+      "macro_movement": 0.554,
+      "macro_coupling": 0.792,
+      "macro_space": 0.896
+    },
+    "ORGANON": {
+      "macro_character": 0.45,
+      "macro_movement": 0.81,
+      "macro_coupling": 0.652,
+      "macro_space": 0.322
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OSTERIA",
+    "target": "ORGANON",
+    "amount": 0.585
+  },
+  "dna": {
+    "brightness": 0.916,
+    "warmth": 0.931,
+    "movement": 0.462,
+    "density": 0.146,
+    "space": 0.765,
+    "aggression": 0.161
+  },
+  "macros": {
+    "CHARACTER": 0.151,
+    "MOVEMENT": 0.062,
+    "COUPLING": 0.104,
+    "SPACE": 0.899
+  },
+  "tags": [
+    "entangled",
+    "hot",
+    "molten",
+    "furnace"
+  ]
+}

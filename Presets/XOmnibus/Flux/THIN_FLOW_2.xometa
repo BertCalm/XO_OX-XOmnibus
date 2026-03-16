@@ -1,0 +1,48 @@
+{
+  "name": "THIN FLOW 2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBSIDIAN",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "OBSIDIAN": {
+      "macro_character": 0.3022,
+      "macro_movement": 0.4083,
+      "macro_coupling": 0.1398,
+      "macro_space": 0.9463
+    },
+    "ODYSSEY": {
+      "macro_character": 0.3044,
+      "macro_movement": 0.4926,
+      "macro_coupling": 0.0972,
+      "macro_space": 0.8873
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBSIDIAN",
+    "target": "ODYSSEY",
+    "amount": 0.3814
+  },
+  "dna": {
+    "brightness": 0.8842,
+    "warmth": 0.9773,
+    "movement": 0.9153,
+    "density": 0.0225,
+    "space": 0.2214,
+    "aggression": 0.0632
+  },
+  "macros": {
+    "CHARACTER": 0.4536,
+    "MOVEMENT": 0.6705,
+    "COUPLING": 0.7431,
+    "SPACE": 0.946
+  },
+  "tags": [
+    "flux",
+    "sparse",
+    "minimal"
+  ]
+}

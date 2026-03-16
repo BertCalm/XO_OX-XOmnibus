@@ -1,0 +1,49 @@
+{
+  "name": "RADIANT PILLAR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OUROBOROS",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.348,
+      "macro_movement": 0.333,
+      "macro_coupling": 0.67,
+      "macro_space": 0.858
+    },
+    "ORPHICA": {
+      "macro_character": 0.33,
+      "macro_movement": 0.694,
+      "macro_coupling": 0.288,
+      "macro_space": 0.945
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_LOCK",
+    "source": "OUROBOROS",
+    "target": "ORPHICA",
+    "amount": 0.355
+  },
+  "dna": {
+    "brightness": 0.898,
+    "warmth": 0.591,
+    "movement": 0.75,
+    "density": 0.309,
+    "space": 0.551,
+    "aggression": 0.919
+  },
+  "macros": {
+    "CHARACTER": 0.339,
+    "MOVEMENT": 0.513,
+    "COUPLING": 0.479,
+    "SPACE": 0.901
+  },
+  "tags": [
+    "foundation",
+    "bright",
+    "extreme",
+    "high-aggression"
+  ]
+}

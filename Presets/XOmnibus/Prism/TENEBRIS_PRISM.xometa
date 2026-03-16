@@ -1,0 +1,48 @@
+{
+  "name": "TENEBRIS PRISM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ONSET",
+    "OBLONG"
+  ],
+  "parameters": {
+    "ONSET": {
+      "macro_character": 0.912,
+      "macro_movement": 0.265,
+      "macro_coupling": 0.647,
+      "macro_space": 0.512
+    },
+    "OBLONG": {
+      "macro_character": 0.541,
+      "macro_movement": 0.777,
+      "macro_coupling": 0.162,
+      "macro_space": 0.632
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ONSET",
+    "target": "OBLONG",
+    "amount": 0.72
+  },
+  "dna": {
+    "brightness": 0.113,
+    "warmth": 0.626,
+    "movement": 0.443,
+    "density": 0.863,
+    "space": 0.968,
+    "aggression": 0.489
+  },
+  "macros": {
+    "CHARACTER": 0.889,
+    "MOVEMENT": 0.872,
+    "COUPLING": 0.876,
+    "SPACE": 0.225
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "spectrum"
+  ]
+}

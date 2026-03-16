@@ -1,0 +1,52 @@
+{
+  "name": "BEDROCK NET",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERWORLD",
+    "OCELOT"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.9802,
+      "macro_movement": 0.2437,
+      "macro_coupling": 0.8205,
+      "macro_space": 0.3836
+    },
+    "OCELOT": {
+      "macro_character": 0.9219,
+      "macro_movement": 0.5082,
+      "macro_coupling": 0.9517,
+      "macro_space": 0.864
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OVERWORLD",
+    "target": "OCELOT",
+    "amount": 0.7829
+  },
+  "dna": {
+    "brightness": 0.79,
+    "warmth": 0.4149,
+    "movement": 0.9342,
+    "density": 0.9733,
+    "space": 0.5077,
+    "aggression": 0.8205
+  },
+  "macros": {
+    "CHARACTER": 0.2828,
+    "MOVEMENT": 0.2986,
+    "COUPLING": 0.8761,
+    "SPACE": 0.9989
+  },
+  "tags": [
+    "entangled",
+    "dense",
+    "industrial",
+    "stacked",
+    "monolithic",
+    "extreme-density",
+    "solid"
+  ]
+}

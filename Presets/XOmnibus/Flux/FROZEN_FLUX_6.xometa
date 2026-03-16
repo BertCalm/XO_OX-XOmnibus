@@ -1,0 +1,48 @@
+{
+  "name": "FROZEN FLUX 6",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OUTWIT",
+    "OPAL"
+  ],
+  "parameters": {
+    "OUTWIT": {
+      "macro_character": 0.3308,
+      "macro_movement": 0.7029,
+      "macro_coupling": 0.2709,
+      "macro_space": 0.2514
+    },
+    "OPAL": {
+      "macro_character": 0.1207,
+      "macro_movement": 0.1926,
+      "macro_coupling": 0.1196,
+      "macro_space": 0.5359
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OUTWIT",
+    "target": "OPAL",
+    "amount": 0.7573
+  },
+  "dna": {
+    "brightness": 0.6918,
+    "warmth": 0.0422,
+    "movement": 0.3062,
+    "density": 0.5816,
+    "space": 0.4733,
+    "aggression": 0.117
+  },
+  "macros": {
+    "CHARACTER": 0.1851,
+    "MOVEMENT": 0.2164,
+    "COUPLING": 0.4842,
+    "SPACE": 0.7246
+  },
+  "tags": [
+    "flux",
+    "cold",
+    "shifting"
+  ]
+}

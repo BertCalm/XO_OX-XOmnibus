@@ -1,61 +1,48 @@
 {
-  "schema_version": 1,
-  "name": "Black Spectrum",
+  "name": "BLACK SPECTRUM",
+  "version": "1.0",
   "mood": "Prism",
-  "sonic_dna": {
-    "brightness": 0.0728,
-    "warmth": 0.4059,
-    "movement": 0.4079,
-    "density": 0.8492,
-    "space": 0.4161,
-    "aggression": 0.8434
-  },
-  "dna": {
-    "brightness": 0.0728,
-    "warmth": 0.4059,
-    "movement": 0.4079,
-    "density": 0.8492,
-    "space": 0.4161,
-    "aggression": 0.8434
-  },
   "engines": [
-    "OPTIC"
+    "OBSCURA",
+    "OBBLIGATO"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Refracted darkness \u2014 all prism bands collapsed low",
-  "tags": [
-    "prism",
-    "dark",
-    "dense",
-    "extreme",
-    "anchor"
-  ],
-  "macroLabels": [
-    "REFRACT",
-    "SPECTRUM",
-    "SCATTER",
-    "SPACE"
-  ],
-  "macros": {
-    "REFRACT": 0.2341,
-    "SPECTRUM": 0.9348,
-    "SCATTER": 0.4798,
-    "SPACE": 0.6288
-  },
-  "couplingIntensity": "None",
   "parameters": {
-    "OPTIC": {
-      "optic_macro_refract": 0.2341,
-      "optic_macro_spectrum": 0.9348,
-      "optic_macro_scatter": 0.4798,
-      "optic_macro_space": 0.6288,
-      "optic_outputLevel": 0.85,
-      "optic_couplingLevel": 0.5,
-      "optic_couplingBus": 0
+    "OBSCURA": {
+      "macro_character": 0.164,
+      "macro_movement": 0.979,
+      "macro_coupling": 0.864,
+      "macro_space": 0.67
+    },
+    "OBBLIGATO": {
+      "macro_character": 0.641,
+      "macro_movement": 0.307,
+      "macro_coupling": 0.184,
+      "macro_space": 0.291
     }
   },
   "coupling": {
-    "pairs": []
-  }
+    "type": "FILTER_MOD",
+    "source": "OBSCURA",
+    "target": "OBBLIGATO",
+    "amount": 0.349
+  },
+  "dna": {
+    "brightness": 0.031,
+    "warmth": 0.239,
+    "movement": 0.277,
+    "density": 0.573,
+    "space": 0.918,
+    "aggression": 0.744
+  },
+  "macros": {
+    "CHARACTER": 0.122,
+    "MOVEMENT": 0.922,
+    "COUPLING": 0.808,
+    "SPACE": 0.144
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "spectrum"
+  ]
 }

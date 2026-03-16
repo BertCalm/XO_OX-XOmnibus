@@ -1,0 +1,48 @@
+{
+  "name": "VIOLENT FLOOR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ORIGAMI",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.755,
+      "macro_movement": 0.329,
+      "macro_coupling": 0.34,
+      "macro_space": 0.504
+    },
+    "ORBITAL": {
+      "macro_character": 0.333,
+      "macro_movement": 0.41,
+      "macro_coupling": 0.617,
+      "macro_space": 0.474
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ORIGAMI",
+    "target": "ORBITAL",
+    "amount": 0.645
+  },
+  "dna": {
+    "brightness": 0.475,
+    "warmth": 0.778,
+    "movement": 0.236,
+    "density": 0.487,
+    "space": 0.939,
+    "aggression": 0.918
+  },
+  "macros": {
+    "CHARACTER": 0.463,
+    "MOVEMENT": 0.236,
+    "COUPLING": 0.645,
+    "SPACE": 0.939
+  },
+  "tags": [
+    "foundation",
+    "aggressive",
+    "harsh"
+  ]
+}

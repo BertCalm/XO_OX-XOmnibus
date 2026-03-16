@@ -1,0 +1,49 @@
+{
+  "name": "NOVA WAVE",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBLONG",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.466,
+      "macro_movement": 0.062,
+      "macro_coupling": 0.833,
+      "macro_space": 0.389
+    },
+    "ORACLE": {
+      "macro_character": 0.77,
+      "macro_movement": 0.946,
+      "macro_coupling": 0.02,
+      "macro_space": 0.881
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OBLONG",
+    "target": "ORACLE",
+    "amount": 0.499
+  },
+  "dna": {
+    "brightness": 0.914,
+    "warmth": 0.248,
+    "movement": 0.29,
+    "density": 0.43,
+    "space": 0.292,
+    "aggression": 0.068
+  },
+  "macros": {
+    "CHARACTER": 0.618,
+    "MOVEMENT": 0.504,
+    "COUPLING": 0.426,
+    "SPACE": 0.635
+  },
+  "tags": [
+    "flux",
+    "bright",
+    "extreme",
+    "low-aggression"
+  ]
+}

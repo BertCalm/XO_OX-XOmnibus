@@ -1,0 +1,50 @@
+{
+  "name": "FORGE HAZE",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORACLE",
+    "OCELOT"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.839,
+      "macro_movement": 0.625,
+      "macro_coupling": 0.698,
+      "macro_space": 0.163
+    },
+    "OCELOT": {
+      "macro_character": 0.762,
+      "macro_movement": 0.317,
+      "macro_coupling": 0.55,
+      "macro_space": 0.271
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "ORACLE",
+    "target": "OCELOT",
+    "amount": 0.39
+  },
+  "dna": {
+    "brightness": 0.33,
+    "warmth": 0.559,
+    "movement": 0.984,
+    "density": 0.416,
+    "space": 0.864,
+    "aggression": 0.928
+  },
+  "macros": {
+    "CHARACTER": 0.187,
+    "MOVEMENT": 0.693,
+    "COUPLING": 0.291,
+    "SPACE": 0.864
+  },
+  "tags": [
+    "atmosphere",
+    "harsh",
+    "abrasive",
+    "hostile",
+    "aggression-xhigh"
+  ]
+}

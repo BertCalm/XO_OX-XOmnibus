@@ -1,0 +1,48 @@
+{
+  "name": "OVERDRIVE CORE 48",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERBITE",
+    "OCTOPUS"
+  ],
+  "parameters": {
+    "OVERBITE": {
+      "macro_character": 0.287,
+      "macro_movement": 0.903,
+      "macro_coupling": 0.227,
+      "macro_space": 0.09
+    },
+    "OCTOPUS": {
+      "macro_character": 0.978,
+      "macro_movement": 0.948,
+      "macro_coupling": 0.76,
+      "macro_space": 0.704
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OVERBITE",
+    "target": "OCTOPUS",
+    "amount": 0.55
+  },
+  "dna": {
+    "brightness": 0.166,
+    "warmth": 0.299,
+    "movement": 0.925,
+    "density": 0.029,
+    "space": 0.324,
+    "aggression": 0.528
+  },
+  "macros": {
+    "CHARACTER": 0.358,
+    "MOVEMENT": 0.925,
+    "COUPLING": 0.431,
+    "SPACE": 0.244
+  },
+  "tags": [
+    "entangled",
+    "storm",
+    "vortex"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "SOLAR FURY",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ORBITAL",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.9,
+      "macro_movement": 0.517,
+      "macro_coupling": 0.47,
+      "macro_space": 0.44
+    },
+    "OBLIQUE": {
+      "macro_character": 0.982,
+      "macro_movement": 0.626,
+      "macro_coupling": 0.567,
+      "macro_space": 0.29
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ORBITAL",
+    "target": "OBLIQUE",
+    "amount": 0.935
+  },
+  "dna": {
+    "brightness": 0.93,
+    "warmth": 0.898,
+    "movement": 0.604,
+    "density": 0.315,
+    "space": 0.335,
+    "aggression": 0.88
+  },
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.517,
+    "COUPLING": 0.47,
+    "SPACE": 0.44
+  },
+  "tags": [
+    "flux",
+    "bright",
+    "hot",
+    "violent",
+    "extreme"
+  ]
+}

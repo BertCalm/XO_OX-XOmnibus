@@ -1,0 +1,49 @@
+{
+  "name": "MIDNIGHT REALM",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OPTIC",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 1.0,
+      "macro_movement": 0.155,
+      "macro_coupling": 0.296,
+      "macro_space": 0.788
+    },
+    "OSTERIA": {
+      "macro_character": 0.508,
+      "macro_movement": 0.54,
+      "macro_coupling": 0.739,
+      "macro_space": 0.527
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OPTIC",
+    "target": "OSTERIA",
+    "amount": 0.415
+  },
+  "dna": {
+    "brightness": 0.038,
+    "warmth": 0.505,
+    "movement": 0.211,
+    "density": 0.385,
+    "space": 0.898,
+    "aggression": 0.66
+  },
+  "macros": {
+    "CHARACTER": 0.754,
+    "MOVEMENT": 0.348,
+    "COUPLING": 0.517,
+    "SPACE": 0.657
+  },
+  "tags": [
+    "aether",
+    "dark",
+    "extreme",
+    "high-space"
+  ]
+}

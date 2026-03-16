@@ -1,0 +1,50 @@
+{
+  "name": "SHALLOW BREATH",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OVERBITE",
+    "OWLFISH"
+  ],
+  "parameters": {
+    "OVERBITE": {
+      "macro_character": 0.861,
+      "macro_movement": 0.437,
+      "macro_coupling": 0.768,
+      "macro_space": 0.093
+    },
+    "OWLFISH": {
+      "macro_character": 0.699,
+      "macro_movement": 0.142,
+      "macro_coupling": 0.862,
+      "macro_space": 0.058
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OVERBITE",
+    "target": "OWLFISH",
+    "amount": 0.357
+  },
+  "dna": {
+    "brightness": 0.064,
+    "warmth": 0.793,
+    "movement": 0.245,
+    "density": 0.308,
+    "space": 0.093,
+    "aggression": 0.245
+  },
+  "macros": {
+    "CHARACTER": 0.155,
+    "MOVEMENT": 0.866,
+    "COUPLING": 0.132,
+    "SPACE": 0.093
+  },
+  "tags": [
+    "atmosphere",
+    "claustrophobic",
+    "intimate",
+    "close",
+    "space-xlow"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "EMBEDDED MIST",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERDUB",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.062,
+      "macro_movement": 0.044,
+      "macro_coupling": 0.947,
+      "macro_space": 0.924
+    },
+    "ORACLE": {
+      "macro_character": 0.145,
+      "macro_movement": 0.091,
+      "macro_coupling": 0.853,
+      "macro_space": 0.216
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OVERDUB",
+    "target": "ORACLE",
+    "amount": 0.293
+  },
+  "dna": {
+    "brightness": 0.844,
+    "warmth": 0.12,
+    "movement": 0.068,
+    "density": 0.002,
+    "space": 0.291,
+    "aggression": 0.108
+  },
+  "macros": {
+    "CHARACTER": 0.555,
+    "MOVEMENT": 0.068,
+    "COUPLING": 0.909,
+    "SPACE": 0.787
+  },
+  "tags": [
+    "entangled",
+    "stillness",
+    "embedded"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "ECLIPSE CRYSTAL",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OUTWIT",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "OUTWIT": {
+      "macro_character": 0.704,
+      "macro_movement": 0.274,
+      "macro_coupling": 0.375,
+      "macro_space": 0.054
+    },
+    "ORPHICA": {
+      "macro_character": 0.61,
+      "macro_movement": 0.664,
+      "macro_coupling": 0.235,
+      "macro_space": 0.748
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OUTWIT",
+    "target": "ORPHICA",
+    "amount": 0.469
+  },
+  "dna": {
+    "brightness": 0.025,
+    "warmth": 0.663,
+    "movement": 0.752,
+    "density": 0.798,
+    "space": 0.144,
+    "aggression": 0.432
+  },
+  "macros": {
+    "CHARACTER": 0.479,
+    "MOVEMENT": 0.008,
+    "COUPLING": 0.373,
+    "SPACE": 0.158
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "spectrum"
+  ]
+}

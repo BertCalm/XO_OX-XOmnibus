@@ -1,0 +1,49 @@
+{
+  "name": "VAST FOUNDATION DRIFT",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OMBRE",
+    "OUTWIT"
+  ],
+  "parameters": {
+    "OMBRE": {
+      "macro_character": 0.984,
+      "macro_movement": 0.543,
+      "macro_coupling": 0.9,
+      "macro_space": 0.905
+    },
+    "OUTWIT": {
+      "macro_character": 0.044,
+      "macro_movement": 0.575,
+      "macro_coupling": 0.52,
+      "macro_space": 0.942
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OMBRE",
+    "target": "OUTWIT",
+    "amount": 0.781
+  },
+  "dna": {
+    "brightness": 0.984,
+    "warmth": 0.038,
+    "movement": 0.581,
+    "density": 0.597,
+    "space": 0.924,
+    "aggression": 0.346
+  },
+  "macros": {
+    "CHARACTER": 0.94,
+    "MOVEMENT": 0.581,
+    "COUPLING": 0.737,
+    "SPACE": 0.924
+  },
+  "tags": [
+    "foundation",
+    "vast",
+    "open",
+    "space-xhigh"
+  ]
+}

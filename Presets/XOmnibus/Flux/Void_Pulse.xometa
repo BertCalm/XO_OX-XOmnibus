@@ -1,45 +1,49 @@
 {
-  "schema_version": 1,
-  "author": "XO_OX Designs",
+  "name": "VOID PULSE",
   "version": "1.0",
-  "name": "Void Pulse",
   "mood": "Flux",
   "engines": [
-    "Overdub"
+    "OBLIQUE",
+    "OLE"
   ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.08,
-    "MOVEMENT": 0.91,
-    "COUPLING": 0.04,
-    "SPACE": 0.97
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.687,
+      "macro_movement": 0.853,
+      "macro_coupling": 0.505,
+      "macro_space": 0.251
+    },
+    "OLE": {
+      "macro_character": 0.908,
+      "macro_movement": 0.051,
+      "macro_coupling": 0.634,
+      "macro_space": 0.829
+    }
   },
   "coupling": {
-    "pairs": []
+    "type": "ENVELOPE_FOLLOW",
+    "source": "OBLIQUE",
+    "target": "OLE",
+    "amount": 0.506
   },
-  "sequencer": null,
   "dna": {
-    "brightness": 0.38,
-    "warmth": 0.28,
-    "movement": 0.91,
-    "density": 0.05,
-    "space": 0.97,
-    "aggression": 0.08
+    "brightness": 0.115,
+    "warmth": 0.359,
+    "movement": 0.954,
+    "density": 0.293,
+    "space": 0.369,
+    "aggression": 0.326
   },
-  "parameters": {},
+  "macros": {
+    "CHARACTER": 0.798,
+    "MOVEMENT": 0.452,
+    "COUPLING": 0.57,
+    "SPACE": 0.54
+  },
   "tags": [
     "flux",
-    "sparse-flux",
-    "overdub",
-    "void",
-    "pulse"
-  ],
-  "description": "Overdub void pulse \u2014 single tape echo in absolute maximum space."
+    "dark",
+    "extreme",
+    "high-movement"
+  ]
 }

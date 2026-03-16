@@ -1,0 +1,48 @@
+{
+  "name": "SPARSE DRIFT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORIGAMI",
+    "OBLONG"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.238,
+      "macro_movement": 0.669,
+      "macro_coupling": 0.214,
+      "macro_space": 0.132
+    },
+    "OBLONG": {
+      "macro_character": 0.936,
+      "macro_movement": 0.571,
+      "macro_coupling": 0.473,
+      "macro_space": 0.785
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ORIGAMI",
+    "target": "OBLONG",
+    "amount": 0.746
+  },
+  "dna": {
+    "brightness": 0.19,
+    "warmth": 0.097,
+    "movement": 0.431,
+    "density": 0.038,
+    "space": 0.424,
+    "aggression": 0.467
+  },
+  "macros": {
+    "CHARACTER": 0.729,
+    "MOVEMENT": 0.673,
+    "COUPLING": 0.984,
+    "SPACE": 0.098
+  },
+  "tags": [
+    "entangled",
+    "drift",
+    "filament"
+  ]
+}

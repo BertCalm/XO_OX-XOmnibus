@@ -1,0 +1,48 @@
+{
+  "name": "SAVAGE FLOOR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OVERDUB",
+    "OTTONI"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.63,
+      "macro_movement": 0.646,
+      "macro_coupling": 0.523,
+      "macro_space": 0.442
+    },
+    "OTTONI": {
+      "macro_character": 0.466,
+      "macro_movement": 0.605,
+      "macro_coupling": 0.489,
+      "macro_space": 0.666
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OVERDUB",
+    "target": "OTTONI",
+    "amount": 0.69
+  },
+  "dna": {
+    "brightness": 0.404,
+    "warmth": 0.673,
+    "movement": 0.959,
+    "density": 0.202,
+    "space": 0.636,
+    "aggression": 0.964
+  },
+  "macros": {
+    "CHARACTER": 0.735,
+    "MOVEMENT": 0.959,
+    "COUPLING": 0.69,
+    "SPACE": 0.636
+  },
+  "tags": [
+    "foundation",
+    "aggressive",
+    "harsh"
+  ]
+}

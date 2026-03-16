@@ -1,0 +1,49 @@
+{
+  "name": "SOLAR LATTICE",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ORIGAMI",
+    "OBESE"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.698,
+      "macro_movement": 0.407,
+      "macro_coupling": 0.82,
+      "macro_space": 0.03
+    },
+    "OBESE": {
+      "macro_character": 0.648,
+      "macro_movement": 0.912,
+      "macro_coupling": 0.958,
+      "macro_space": 0.06
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ORIGAMI",
+    "target": "OBESE",
+    "amount": 0.592
+  },
+  "dna": {
+    "brightness": 0.615,
+    "warmth": 0.895,
+    "movement": 0.142,
+    "density": 0.85,
+    "space": 0.442,
+    "aggression": 0.989
+  },
+  "macros": {
+    "CHARACTER": 0.547,
+    "MOVEMENT": 0.063,
+    "COUPLING": 0.061,
+    "SPACE": 0.189
+  },
+  "tags": [
+    "prism",
+    "warm",
+    "spectrum",
+    "fire"
+  ]
+}

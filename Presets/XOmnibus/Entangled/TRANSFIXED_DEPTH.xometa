@@ -1,0 +1,48 @@
+{
+  "name": "TRANSFIXED DEPTH",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OCEANIC",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.532,
+      "macro_movement": 0.081,
+      "macro_coupling": 0.075,
+      "macro_space": 0.036
+    },
+    "OPTIC": {
+      "macro_character": 0.92,
+      "macro_movement": 0.064,
+      "macro_coupling": 0.881,
+      "macro_space": 0.87
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OCEANIC",
+    "target": "OPTIC",
+    "amount": 0.483
+  },
+  "dna": {
+    "brightness": 0.474,
+    "warmth": 0.002,
+    "movement": 0.073,
+    "density": 0.45,
+    "space": 0.081,
+    "aggression": 0.584
+  },
+  "macros": {
+    "CHARACTER": 0.96,
+    "MOVEMENT": 0.073,
+    "COUPLING": 0.708,
+    "SPACE": 0.786
+  },
+  "tags": [
+    "entangled",
+    "stillness",
+    "transfixed"
+  ]
+}

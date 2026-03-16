@@ -1,0 +1,48 @@
+{
+  "name": "OBSIDIAN REFRACTION",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ORIGAMI",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.907,
+      "macro_movement": 0.061,
+      "macro_coupling": 0.796,
+      "macro_space": 0.241
+    },
+    "ORPHICA": {
+      "macro_character": 0.932,
+      "macro_movement": 0.094,
+      "macro_coupling": 0.816,
+      "macro_space": 0.128
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "ORIGAMI",
+    "target": "ORPHICA",
+    "amount": 0.841
+  },
+  "dna": {
+    "brightness": 0.051,
+    "warmth": 0.291,
+    "movement": 0.933,
+    "density": 0.636,
+    "space": 0.044,
+    "aggression": 0.053
+  },
+  "macros": {
+    "CHARACTER": 0.464,
+    "MOVEMENT": 0.02,
+    "COUPLING": 0.098,
+    "SPACE": 0.357
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "spectrum"
+  ]
+}

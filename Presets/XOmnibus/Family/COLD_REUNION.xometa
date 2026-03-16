@@ -1,0 +1,48 @@
+{
+  "name": "COLD REUNION",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OBESE",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OBESE": {
+      "macro_character": 0.73,
+      "macro_movement": 0.536,
+      "macro_coupling": 0.973,
+      "macro_space": 0.379
+    },
+    "OPTIC": {
+      "macro_character": 0.552,
+      "macro_movement": 0.829,
+      "macro_coupling": 0.619,
+      "macro_space": 0.862
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBESE",
+    "target": "OPTIC",
+    "amount": 0.646
+  },
+  "dna": {
+    "brightness": 0.34,
+    "warmth": 0.036,
+    "movement": 0.957,
+    "density": 0.337,
+    "space": 0.971,
+    "aggression": 0.097
+  },
+  "macros": {
+    "CHARACTER": 0.705,
+    "MOVEMENT": 0.046,
+    "COUPLING": 0.228,
+    "SPACE": 0.289
+  },
+  "tags": [
+    "family",
+    "cold",
+    "xlow-warmth"
+  ]
+}

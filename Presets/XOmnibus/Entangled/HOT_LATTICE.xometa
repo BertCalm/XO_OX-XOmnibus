@@ -1,0 +1,49 @@
+{
+  "name": "HOT LATTICE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBESE",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OBESE": {
+      "macro_character": 0.897,
+      "macro_movement": 0.827,
+      "macro_coupling": 0.515,
+      "macro_space": 0.087
+    },
+    "OVERWORLD": {
+      "macro_character": 0.669,
+      "macro_movement": 0.185,
+      "macro_coupling": 0.141,
+      "macro_space": 0.324
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OBESE",
+    "target": "OVERWORLD",
+    "amount": 0.449
+  },
+  "dna": {
+    "brightness": 0.306,
+    "warmth": 0.926,
+    "movement": 0.131,
+    "density": 0.689,
+    "space": 0.733,
+    "aggression": 0.554
+  },
+  "macros": {
+    "CHARACTER": 0.261,
+    "MOVEMENT": 0.236,
+    "COUPLING": 0.754,
+    "SPACE": 0.954
+  },
+  "tags": [
+    "entangled",
+    "hot",
+    "molten",
+    "furnace"
+  ]
+}

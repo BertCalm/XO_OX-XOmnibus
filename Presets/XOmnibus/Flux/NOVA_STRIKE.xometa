@@ -1,0 +1,50 @@
+{
+  "name": "NOVA STRIKE",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OPTIC",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.941,
+      "macro_movement": 0.542,
+      "macro_coupling": 0.875,
+      "macro_space": 0.417
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.987,
+      "macro_movement": 0.438,
+      "macro_coupling": 1.0,
+      "macro_space": 0.305
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OPTIC",
+    "target": "ODDOSCAR",
+    "amount": 0.983
+  },
+  "dna": {
+    "brightness": 0.899,
+    "warmth": 0.888,
+    "movement": 0.489,
+    "density": 0.665,
+    "space": 0.452,
+    "aggression": 0.969
+  },
+  "macros": {
+    "CHARACTER": 0.941,
+    "MOVEMENT": 0.542,
+    "COUPLING": 0.875,
+    "SPACE": 0.417
+  },
+  "tags": [
+    "flux",
+    "bright",
+    "hot",
+    "violent",
+    "extreme"
+  ]
+}

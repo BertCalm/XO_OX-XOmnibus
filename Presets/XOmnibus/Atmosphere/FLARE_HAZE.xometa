@@ -1,0 +1,50 @@
+{
+  "name": "FLARE HAZE",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OVERWORLD",
+    "OLE"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.716,
+      "macro_movement": 0.652,
+      "macro_coupling": 0.611,
+      "macro_space": 0.81
+    },
+    "OLE": {
+      "macro_character": 0.394,
+      "macro_movement": 0.277,
+      "macro_coupling": 0.866,
+      "macro_space": 0.853
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OVERWORLD",
+    "target": "OLE",
+    "amount": 0.535
+  },
+  "dna": {
+    "brightness": 0.566,
+    "warmth": 0.558,
+    "movement": 0.054,
+    "density": 0.289,
+    "space": 0.838,
+    "aggression": 0.975
+  },
+  "macros": {
+    "CHARACTER": 0.464,
+    "MOVEMENT": 0.891,
+    "COUPLING": 0.399,
+    "SPACE": 0.838
+  },
+  "tags": [
+    "atmosphere",
+    "harsh",
+    "abrasive",
+    "hostile",
+    "aggression-xhigh"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "FURIOUS ETHER RISE",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OVERBITE",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "OVERBITE": {
+      "macro_character": 0.319,
+      "macro_movement": 0.865,
+      "macro_coupling": 0.267,
+      "macro_space": 0.703
+    },
+    "ORBITAL": {
+      "macro_character": 0.097,
+      "macro_movement": 0.847,
+      "macro_coupling": 0.384,
+      "macro_space": 0.725
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OVERBITE",
+    "target": "ORBITAL",
+    "amount": 0.474
+  },
+  "dna": {
+    "brightness": 0.204,
+    "warmth": 0.607,
+    "movement": 0.868,
+    "density": 0.313,
+    "space": 0.718,
+    "aggression": 0.928
+  },
+  "macros": {
+    "CHARACTER": 0.865,
+    "MOVEMENT": 0.868,
+    "COUPLING": 0.16,
+    "SPACE": 0.718
+  },
+  "tags": [
+    "aether",
+    "violent",
+    "transcendence",
+    "aggression-xhigh"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "BLACK COSMOS",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OVERWORLD",
+    "OHM"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.273,
+      "macro_movement": 0.905,
+      "macro_coupling": 0.147,
+      "macro_space": 0.437
+    },
+    "OHM": {
+      "macro_character": 0.946,
+      "macro_movement": 0.222,
+      "macro_coupling": 0.451,
+      "macro_space": 0.35
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_SYNC",
+    "source": "OVERWORLD",
+    "target": "OHM",
+    "amount": 0.758
+  },
+  "dna": {
+    "brightness": 0.035,
+    "warmth": 0.724,
+    "movement": 0.533,
+    "density": 0.262,
+    "space": 0.969,
+    "aggression": 0.371
+  },
+  "macros": {
+    "CHARACTER": 0.609,
+    "MOVEMENT": 0.564,
+    "COUPLING": 0.299,
+    "SPACE": 0.393
+  },
+  "tags": [
+    "aether",
+    "dark",
+    "extreme",
+    "high-space"
+  ]
+}

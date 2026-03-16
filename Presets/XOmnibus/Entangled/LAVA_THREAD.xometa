@@ -1,0 +1,49 @@
+{
+  "name": "LAVA THREAD",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORCA",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "ORCA": {
+      "macro_character": 0.42,
+      "macro_movement": 0.341,
+      "macro_coupling": 0.37,
+      "macro_space": 0.722
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.777,
+      "macro_movement": 0.568,
+      "macro_coupling": 0.085,
+      "macro_space": 0.053
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ORCA",
+    "target": "ODDOSCAR",
+    "amount": 0.394
+  },
+  "dna": {
+    "brightness": 0.878,
+    "warmth": 0.898,
+    "movement": 0.626,
+    "density": 0.156,
+    "space": 0.693,
+    "aggression": 0.877
+  },
+  "macros": {
+    "CHARACTER": 0.618,
+    "MOVEMENT": 0.674,
+    "COUPLING": 0.272,
+    "SPACE": 0.662
+  },
+  "tags": [
+    "entangled",
+    "hot",
+    "molten",
+    "furnace"
+  ]
+}

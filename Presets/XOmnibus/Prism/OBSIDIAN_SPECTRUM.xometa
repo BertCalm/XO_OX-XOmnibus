@@ -1,0 +1,48 @@
+{
+  "name": "OBSIDIAN SPECTRUM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OHM",
+    "OBESE"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.972,
+      "macro_movement": 0.098,
+      "macro_coupling": 0.728,
+      "macro_space": 0.344
+    },
+    "OBESE": {
+      "macro_character": 0.364,
+      "macro_movement": 0.69,
+      "macro_coupling": 0.5,
+      "macro_space": 0.136
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OHM",
+    "target": "OBESE",
+    "amount": 0.355
+  },
+  "dna": {
+    "brightness": 0.042,
+    "warmth": 0.217,
+    "movement": 0.874,
+    "density": 0.95,
+    "space": 0.646,
+    "aggression": 0.929
+  },
+  "macros": {
+    "CHARACTER": 0.095,
+    "MOVEMENT": 0.399,
+    "COUPLING": 0.23,
+    "SPACE": 0.039
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "spectrum"
+  ]
+}

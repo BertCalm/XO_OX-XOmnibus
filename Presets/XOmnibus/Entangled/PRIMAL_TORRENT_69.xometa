@@ -1,0 +1,48 @@
+{
+  "name": "PRIMAL TORRENT 69",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBESE",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OBESE": {
+      "macro_character": 0.61,
+      "macro_movement": 0.904,
+      "macro_coupling": 0.379,
+      "macro_space": 0.029
+    },
+    "ORIGAMI": {
+      "macro_character": 0.851,
+      "macro_movement": 0.926,
+      "macro_coupling": 0.182,
+      "macro_space": 0.212
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBESE",
+    "target": "ORIGAMI",
+    "amount": 0.899
+  },
+  "dna": {
+    "brightness": 0.34,
+    "warmth": 0.88,
+    "movement": 0.915,
+    "density": 0.701,
+    "space": 0.276,
+    "aggression": 0.505
+  },
+  "macros": {
+    "CHARACTER": 0.948,
+    "MOVEMENT": 0.915,
+    "COUPLING": 0.086,
+    "SPACE": 0.72
+  },
+  "tags": [
+    "entangled",
+    "rupture",
+    "intensity"
+  ]
+}

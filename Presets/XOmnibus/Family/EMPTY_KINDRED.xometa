@@ -1,0 +1,48 @@
+{
+  "name": "EMPTY KINDRED",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OHM",
+    "OLE"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.801,
+      "macro_movement": 0.618,
+      "macro_coupling": 0.832,
+      "macro_space": 0.92
+    },
+    "OLE": {
+      "macro_character": 0.088,
+      "macro_movement": 0.844,
+      "macro_coupling": 0.243,
+      "macro_space": 0.589
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_SHARE",
+    "source": "OHM",
+    "target": "OLE",
+    "amount": 0.614
+  },
+  "dna": {
+    "brightness": 0.078,
+    "warmth": 0.313,
+    "movement": 0.429,
+    "density": 0.06,
+    "space": 0.64,
+    "aggression": 0.049
+  },
+  "macros": {
+    "CHARACTER": 0.396,
+    "MOVEMENT": 0.31,
+    "COUPLING": 0.34,
+    "SPACE": 0.333
+  },
+  "tags": [
+    "family",
+    "sparse",
+    "xlow-density"
+  ]
+}

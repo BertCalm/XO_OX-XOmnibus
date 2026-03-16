@@ -1,0 +1,50 @@
+{
+  "name": "SEALED ATMOSPHERE",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OHM",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.349,
+      "macro_movement": 0.896,
+      "macro_coupling": 0.62,
+      "macro_space": 0.026
+    },
+    "ORIGAMI": {
+      "macro_character": 0.514,
+      "macro_movement": 0.197,
+      "macro_coupling": 0.28,
+      "macro_space": 0.055
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OHM",
+    "target": "ORIGAMI",
+    "amount": 0.437
+  },
+  "dna": {
+    "brightness": 0.203,
+    "warmth": 0.082,
+    "movement": 0.312,
+    "density": 0.798,
+    "space": 0.026,
+    "aggression": 0.191
+  },
+  "macros": {
+    "CHARACTER": 0.571,
+    "MOVEMENT": 0.284,
+    "COUPLING": 0.276,
+    "SPACE": 0.026
+  },
+  "tags": [
+    "atmosphere",
+    "claustrophobic",
+    "intimate",
+    "close",
+    "space-xlow"
+  ]
+}

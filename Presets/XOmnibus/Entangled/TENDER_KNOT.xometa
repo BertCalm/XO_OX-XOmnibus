@@ -1,0 +1,49 @@
+{
+  "name": "TENDER KNOT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OVERBITE"
+  ],
+  "parameters": {
+    "OVERLAP": {
+      "macro_character": 0.323,
+      "macro_movement": 0.861,
+      "macro_coupling": 0.437,
+      "macro_space": 0.768
+    },
+    "OVERBITE": {
+      "macro_character": 0.476,
+      "macro_movement": 0.699,
+      "macro_coupling": 0.142,
+      "macro_space": 0.862
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OVERLAP",
+    "target": "OVERBITE",
+    "amount": 0.368
+  },
+  "dna": {
+    "brightness": 0.133,
+    "warmth": 0.245,
+    "movement": 0.063,
+    "density": 0.464,
+    "space": 0.134,
+    "aggression": 0.098
+  },
+  "macros": {
+    "CHARACTER": 0.155,
+    "MOVEMENT": 0.866,
+    "COUPLING": 0.132,
+    "SPACE": 0.125
+  },
+  "tags": [
+    "entangled",
+    "yielding",
+    "soft",
+    "delicate"
+  ]
+}

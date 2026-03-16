@@ -1,0 +1,50 @@
+{
+  "name": "TUNDRA STREAM",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ORGANON",
+    "OUROBOROS"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.279,
+      "macro_movement": 0.435,
+      "macro_coupling": 0.916,
+      "macro_space": 0.826
+    },
+    "OUROBOROS": {
+      "macro_character": 0.15,
+      "macro_movement": 0.355,
+      "macro_coupling": 0.845,
+      "macro_space": 0.913
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "ORGANON",
+    "target": "OUROBOROS",
+    "amount": 0.795
+  },
+  "dna": {
+    "brightness": 0.079,
+    "warmth": 0.113,
+    "movement": 0.488,
+    "density": 0.313,
+    "space": 0.885,
+    "aggression": 0.413
+  },
+  "macros": {
+    "CHARACTER": 0.279,
+    "MOVEMENT": 0.435,
+    "COUPLING": 0.916,
+    "SPACE": 0.826
+  },
+  "tags": [
+    "flux",
+    "dark",
+    "cold",
+    "vast",
+    "extreme"
+  ]
+}

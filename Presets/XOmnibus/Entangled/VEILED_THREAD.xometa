@@ -1,0 +1,48 @@
+{
+  "name": "VEILED THREAD",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OUROBOROS",
+    "OLE"
+  ],
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.132,
+      "macro_movement": 0.057,
+      "macro_coupling": 0.913,
+      "macro_space": 0.98
+    },
+    "OLE": {
+      "macro_character": 0.201,
+      "macro_movement": 0.1,
+      "macro_coupling": 0.521,
+      "macro_space": 0.031
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OUROBOROS",
+    "target": "OLE",
+    "amount": 0.858
+  },
+  "dna": {
+    "brightness": 0.719,
+    "warmth": 0.489,
+    "movement": 0.079,
+    "density": 0.32,
+    "space": 0.839,
+    "aggression": 0.249
+  },
+  "macros": {
+    "CHARACTER": 0.275,
+    "MOVEMENT": 0.079,
+    "COUPLING": 0.987,
+    "SPACE": 0.863
+  },
+  "tags": [
+    "entangled",
+    "stillness",
+    "veiled"
+  ]
+}

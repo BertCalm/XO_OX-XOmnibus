@@ -1,0 +1,49 @@
+{
+  "name": "SAVAGE LIGHT TEAR",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OVERWORLD",
+    "OBBLIGATO"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.048,
+      "macro_movement": 0.414,
+      "macro_coupling": 0.273,
+      "macro_space": 0.665
+    },
+    "OBBLIGATO": {
+      "macro_character": 0.437,
+      "macro_movement": 0.388,
+      "macro_coupling": 0.44,
+      "macro_space": 0.674
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OVERWORLD",
+    "target": "OBBLIGATO",
+    "amount": 0.537
+  },
+  "dna": {
+    "brightness": 0.815,
+    "warmth": 0.473,
+    "movement": 0.398,
+    "density": 0.037,
+    "space": 0.647,
+    "aggression": 0.914
+  },
+  "macros": {
+    "CHARACTER": 0.187,
+    "MOVEMENT": 0.398,
+    "COUPLING": 0.692,
+    "SPACE": 0.647
+  },
+  "tags": [
+    "aether",
+    "violent",
+    "transcendence",
+    "aggression-xhigh"
+  ]
+}

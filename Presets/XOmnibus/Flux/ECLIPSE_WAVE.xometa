@@ -1,0 +1,49 @@
+{
+  "name": "ECLIPSE WAVE",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OPAL",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.621,
+      "macro_movement": 0.155,
+      "macro_coupling": 0.93,
+      "macro_space": 0.865
+    },
+    "OCEANIC": {
+      "macro_character": 0.976,
+      "macro_movement": 0.811,
+      "macro_coupling": 0.881,
+      "macro_space": 0.025
+    }
+  },
+  "coupling": {
+    "type": "TIMBRAL_BLEND",
+    "source": "OPAL",
+    "target": "OCEANIC",
+    "amount": 0.544
+  },
+  "dna": {
+    "brightness": 0.058,
+    "warmth": 0.879,
+    "movement": 0.35,
+    "density": 0.262,
+    "space": 0.668,
+    "aggression": 0.73
+  },
+  "macros": {
+    "CHARACTER": 0.798,
+    "MOVEMENT": 0.483,
+    "COUPLING": 0.905,
+    "SPACE": 0.445
+  },
+  "tags": [
+    "flux",
+    "dark",
+    "extreme",
+    "high-warmth"
+  ]
+}

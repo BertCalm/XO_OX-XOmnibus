@@ -1,0 +1,49 @@
+{
+  "name": "FLUX CLOUD",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OCTOPUS",
+    "OMBRE"
+  ],
+  "parameters": {
+    "OCTOPUS": {
+      "macro_character": 0.8,
+      "macro_movement": 0.563,
+      "macro_coupling": 0.953,
+      "macro_space": 0.96
+    },
+    "OMBRE": {
+      "macro_character": 0.185,
+      "macro_movement": 0.687,
+      "macro_coupling": 0.909,
+      "macro_space": 0.99
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OMBRE",
+    "target": "OCTOPUS",
+    "amount": 0.817
+  },
+  "dna": {
+    "brightness": 0.671,
+    "warmth": 0.703,
+    "movement": 0.842,
+    "density": 0.145,
+    "space": 0.984,
+    "aggression": 0.277
+  },
+  "macros": {
+    "CHARACTER": 0.736,
+    "MOVEMENT": 0.401,
+    "COUPLING": 0.942,
+    "SPACE": 0.984
+  },
+  "tags": [
+    "entangled",
+    "vast",
+    "cosmic",
+    "xhigh"
+  ]
+}

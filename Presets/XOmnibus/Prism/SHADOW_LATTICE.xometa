@@ -1,0 +1,48 @@
+{
+  "name": "SHADOW LATTICE",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OMBRE",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "OMBRE": {
+      "macro_character": 0.442,
+      "macro_movement": 0.779,
+      "macro_coupling": 0.89,
+      "macro_space": 0.993
+    },
+    "ORPHICA": {
+      "macro_character": 0.191,
+      "macro_movement": 0.659,
+      "macro_coupling": 0.011,
+      "macro_space": 0.98
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OMBRE",
+    "target": "ORPHICA",
+    "amount": 0.514
+  },
+  "dna": {
+    "brightness": 0.109,
+    "warmth": 0.263,
+    "movement": 0.68,
+    "density": 0.396,
+    "space": 0.808,
+    "aggression": 0.952
+  },
+  "macros": {
+    "CHARACTER": 0.613,
+    "MOVEMENT": 0.89,
+    "COUPLING": 0.914,
+    "SPACE": 0.119
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "spectrum"
+  ]
+}

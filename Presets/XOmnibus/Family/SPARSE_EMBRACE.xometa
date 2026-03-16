@@ -1,0 +1,48 @@
+{
+  "name": "SPARSE EMBRACE",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OVERDUB",
+    "OCTOPUS"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.207,
+      "macro_movement": 0.216,
+      "macro_coupling": 0.87,
+      "macro_space": 0.329
+    },
+    "OCTOPUS": {
+      "macro_character": 0.148,
+      "macro_movement": 0.901,
+      "macro_coupling": 0.003,
+      "macro_space": 0.858
+    }
+  },
+  "coupling": {
+    "type": "FM_COUPLE",
+    "source": "OVERDUB",
+    "target": "OCTOPUS",
+    "amount": 0.387
+  },
+  "dna": {
+    "brightness": 0.639,
+    "warmth": 0.971,
+    "movement": 0.115,
+    "density": 0.053,
+    "space": 0.989,
+    "aggression": 0.787
+  },
+  "macros": {
+    "CHARACTER": 0.13,
+    "MOVEMENT": 0.251,
+    "COUPLING": 0.174,
+    "SPACE": 0.661
+  },
+  "tags": [
+    "family",
+    "sparse",
+    "xlow-density"
+  ]
+}

@@ -1,58 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "Midnight Surge",
+  "name": "MIDNIGHT SURGE",
+  "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "Overdub"
+    "ODDOSCAR",
+    "OLE"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Cold dub engine suddenly warming. The tape heats up unexpectedly.",
-  "tags": [
-    "flux",
-    "extreme",
-    "dub",
-    "dynamic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
   "parameters": {
-    "Overdub": {
-      "dub_oscWave": 2.0,
-      "dub_oscOctave": 0.0,
-      "dub_oscTune": 0.0,
-      "dub_drive": 0.82,
-      "dub_filterCutoff": 1200.0,
-      "dub_filterReso": 0.78,
-      "dub_filterEnvAmt": 0.88,
-      "dub_attack": 20.0,
-      "dub_decay": 280.0,
-      "dub_sustain": 0.75,
-      "dub_release": 350.0,
-      "dub_distortion": 0.75,
-      "dub_level": -4.0
+    "ODDOSCAR": {
+      "macro_character": 0.075,
+      "macro_movement": 0.883,
+      "macro_coupling": 0.904,
+      "macro_space": 0.546
+    },
+    "OLE": {
+      "macro_character": 0.835,
+      "macro_movement": 0.583,
+      "macro_coupling": 0.148,
+      "macro_space": 0.127
     }
   },
-  "coupling": null,
-  "sequencer": null,
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ODDOSCAR",
+    "target": "OLE",
+    "amount": 0.306
+  },
   "dna": {
-    "brightness": 0.45,
-    "warmth": 0.72,
-    "movement": 0.72,
-    "density": 0.68,
-    "space": 0.42,
-    "aggression": 0.68
-  }
+    "brightness": 0.034,
+    "warmth": 0.663,
+    "movement": 0.582,
+    "density": 0.114,
+    "space": 0.531,
+    "aggression": 0.457
+  },
+  "macros": {
+    "CHARACTER": 0.455,
+    "MOVEMENT": 0.733,
+    "COUPLING": 0.526,
+    "SPACE": 0.337
+  },
+  "tags": [
+    "flux",
+    "dark",
+    "extreme",
+    "low-density"
+  ]
 }

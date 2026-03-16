@@ -1,0 +1,48 @@
+{
+  "name": "EMPTY NEST",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODDOSCAR",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.362,
+      "macro_movement": 0.756,
+      "macro_coupling": 0.625,
+      "macro_space": 0.76
+    },
+    "OVERWORLD": {
+      "macro_character": 0.204,
+      "macro_movement": 0.549,
+      "macro_coupling": 0.928,
+      "macro_space": 0.438
+    }
+  },
+  "coupling": {
+    "type": "FM_COUPLE",
+    "source": "ODDOSCAR",
+    "target": "OVERWORLD",
+    "amount": 0.719
+  },
+  "dna": {
+    "brightness": 0.323,
+    "warmth": 0.97,
+    "movement": 0.404,
+    "density": 0.071,
+    "space": 0.988,
+    "aggression": 0.028
+  },
+  "macros": {
+    "CHARACTER": 0.121,
+    "MOVEMENT": 0.973,
+    "COUPLING": 0.609,
+    "SPACE": 0.239
+  },
+  "tags": [
+    "family",
+    "sparse",
+    "xlow-density"
+  ]
+}

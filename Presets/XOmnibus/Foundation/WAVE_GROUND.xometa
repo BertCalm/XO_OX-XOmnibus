@@ -1,0 +1,48 @@
+{
+  "name": "WAVE GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ORPHICA",
+    "OCELOT"
+  ],
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.728,
+      "macro_movement": 0.949,
+      "macro_coupling": 0.683,
+      "macro_space": 0.39
+    },
+    "OCELOT": {
+      "macro_character": 0.303,
+      "macro_movement": 0.951,
+      "macro_coupling": 0.476,
+      "macro_space": 0.577
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "ORPHICA",
+    "target": "OCELOT",
+    "amount": 0.748
+  },
+  "dna": {
+    "brightness": 0.526,
+    "warmth": 0.449,
+    "movement": 0.933,
+    "density": 0.324,
+    "space": 0.926,
+    "aggression": 0.743
+  },
+  "macros": {
+    "CHARACTER": 0.727,
+    "MOVEMENT": 0.933,
+    "COUPLING": 0.748,
+    "SPACE": 0.926
+  },
+  "tags": [
+    "foundation",
+    "kinetic",
+    "moving"
+  ]
+}

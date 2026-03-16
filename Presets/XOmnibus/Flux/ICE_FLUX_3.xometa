@@ -1,0 +1,48 @@
+{
+  "name": "ICE FLUX 3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBSCURA",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.8809,
+      "macro_movement": 0.8793,
+      "macro_coupling": 0.3695,
+      "macro_space": 0.1577
+    },
+    "ORPHICA": {
+      "macro_character": 0.8337,
+      "macro_movement": 0.7035,
+      "macro_coupling": 0.6117,
+      "macro_space": 0.9872
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBSCURA",
+    "target": "ORPHICA",
+    "amount": 0.6924
+  },
+  "dna": {
+    "brightness": 0.4583,
+    "warmth": 0.0273,
+    "movement": 0.9985,
+    "density": 0.1413,
+    "space": 0.0733,
+    "aggression": 0.2132
+  },
+  "macros": {
+    "CHARACTER": 0.0078,
+    "MOVEMENT": 0.8171,
+    "COUPLING": 0.2994,
+    "SPACE": 0.6634
+  },
+  "tags": [
+    "flux",
+    "cold",
+    "shifting"
+  ]
+}

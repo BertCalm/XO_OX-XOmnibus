@@ -1,0 +1,50 @@
+{
+  "name": "BUNKER HAZE",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OVERWORLD",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.846,
+      "macro_movement": 0.796,
+      "macro_coupling": 0.885,
+      "macro_space": 0.086
+    },
+    "ORACLE": {
+      "macro_character": 0.406,
+      "macro_movement": 0.785,
+      "macro_coupling": 0.429,
+      "macro_space": 0.039
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OVERWORLD",
+    "target": "ORACLE",
+    "amount": 0.423
+  },
+  "dna": {
+    "brightness": 0.681,
+    "warmth": 0.77,
+    "movement": 0.949,
+    "density": 0.792,
+    "space": 0.086,
+    "aggression": 0.314
+  },
+  "macros": {
+    "CHARACTER": 0.478,
+    "MOVEMENT": 0.831,
+    "COUPLING": 0.405,
+    "SPACE": 0.086
+  },
+  "tags": [
+    "atmosphere",
+    "claustrophobic",
+    "intimate",
+    "close",
+    "space-xlow"
+  ]
+}

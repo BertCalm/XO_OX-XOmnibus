@@ -1,0 +1,48 @@
+{
+  "name": "WHIPLASH 26",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OPAL",
+    "ORCA"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.791,
+      "macro_movement": 0.964,
+      "macro_coupling": 0.138,
+      "macro_space": 0.287
+    },
+    "ORCA": {
+      "macro_character": 0.83,
+      "macro_movement": 0.945,
+      "macro_coupling": 0.696,
+      "macro_space": 0.139
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OPAL",
+    "target": "ORCA",
+    "amount": 0.853
+  },
+  "dna": {
+    "brightness": 0.449,
+    "warmth": 0.005,
+    "movement": 0.954,
+    "density": 0.079,
+    "space": 0.256,
+    "aggression": 0.917
+  },
+  "macros": {
+    "CHARACTER": 0.549,
+    "MOVEMENT": 0.954,
+    "COUPLING": 0.727,
+    "SPACE": 0.528
+  },
+  "tags": [
+    "entangled",
+    "frantic",
+    "extreme"
+  ]
+}

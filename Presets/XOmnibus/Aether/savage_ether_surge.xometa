@@ -1,0 +1,49 @@
+{
+  "name": "SAVAGE ETHER SURGE",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORACLE",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.804,
+      "macro_movement": 0.368,
+      "macro_coupling": 0.149,
+      "macro_space": 0.064
+    },
+    "ODDFELIX": {
+      "macro_character": 0.14,
+      "macro_movement": 0.409,
+      "macro_coupling": 0.319,
+      "macro_space": 0.034
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORACLE",
+    "target": "ODDFELIX",
+    "amount": 0.732
+  },
+  "dna": {
+    "brightness": 0.144,
+    "warmth": 0.602,
+    "movement": 0.366,
+    "density": 0.401,
+    "space": 0.04,
+    "aggression": 0.941
+  },
+  "macros": {
+    "CHARACTER": 0.843,
+    "MOVEMENT": 0.366,
+    "COUPLING": 0.594,
+    "SPACE": 0.04
+  },
+  "tags": [
+    "aether",
+    "violent",
+    "transcendence",
+    "aggression-xhigh"
+  ]
+}

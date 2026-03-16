@@ -1,0 +1,49 @@
+{
+  "name": "NIGHT GATHERING",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OCTOPUS",
+    "OCELOT"
+  ],
+  "parameters": {
+    "OCTOPUS": {
+      "macro_character": 0.681,
+      "macro_movement": 0.032,
+      "macro_coupling": 0.948,
+      "macro_space": 0.11
+    },
+    "OCELOT": {
+      "macro_character": 0.019,
+      "macro_movement": 0.314,
+      "macro_coupling": 0.151,
+      "macro_space": 0.691
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_LINK",
+    "source": "OCTOPUS",
+    "target": "OCELOT",
+    "amount": 0.389
+  },
+  "dna": {
+    "brightness": 0.082,
+    "warmth": 0.633,
+    "movement": 0.874,
+    "density": 0.577,
+    "space": 0.572,
+    "aggression": 0.705
+  },
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.173,
+    "COUPLING": 0.549,
+    "SPACE": 0.4
+  },
+  "tags": [
+    "family",
+    "dark",
+    "extreme",
+    "high-movement"
+  ]
+}

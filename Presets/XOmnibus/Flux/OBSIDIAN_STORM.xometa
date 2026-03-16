@@ -1,0 +1,49 @@
+{
+  "name": "OBSIDIAN STORM",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ORCA",
+    "OUTWIT"
+  ],
+  "parameters": {
+    "ORCA": {
+      "macro_character": 0.606,
+      "macro_movement": 0.379,
+      "macro_coupling": 0.437,
+      "macro_space": 0.41
+    },
+    "OUTWIT": {
+      "macro_character": 0.55,
+      "macro_movement": 0.244,
+      "macro_coupling": 0.43,
+      "macro_space": 0.536
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ORCA",
+    "target": "OUTWIT",
+    "amount": 0.766
+  },
+  "dna": {
+    "brightness": 0.109,
+    "warmth": 0.495,
+    "movement": 0.376,
+    "density": 0.387,
+    "space": 0.323,
+    "aggression": 0.938
+  },
+  "macros": {
+    "CHARACTER": 0.606,
+    "MOVEMENT": 0.379,
+    "COUPLING": 0.437,
+    "SPACE": 0.41
+  },
+  "tags": [
+    "flux",
+    "dark",
+    "violent",
+    "extreme"
+  ]
+}

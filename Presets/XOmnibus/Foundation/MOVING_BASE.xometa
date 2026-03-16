@@ -1,0 +1,48 @@
+{
+  "name": "MOVING BASE",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ONSET",
+    "OSPREY"
+  ],
+  "parameters": {
+    "ONSET": {
+      "macro_character": 0.759,
+      "macro_movement": 0.906,
+      "macro_coupling": 0.599,
+      "macro_space": 0.444
+    },
+    "OSPREY": {
+      "macro_character": 0.356,
+      "macro_movement": 0.93,
+      "macro_coupling": 0.481,
+      "macro_space": 0.693
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ONSET",
+    "target": "OSPREY",
+    "amount": 0.861
+  },
+  "dna": {
+    "brightness": 0.974,
+    "warmth": 0.505,
+    "movement": 0.905,
+    "density": 0.319,
+    "space": 0.424,
+    "aggression": 0.297
+  },
+  "macros": {
+    "CHARACTER": 0.703,
+    "MOVEMENT": 0.905,
+    "COUPLING": 0.861,
+    "SPACE": 0.424
+  },
+  "tags": [
+    "foundation",
+    "kinetic",
+    "moving"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "BRUTAL FLOOR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBESE",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OBESE": {
+      "macro_character": 0.328,
+      "macro_movement": 0.443,
+      "macro_coupling": 0.515,
+      "macro_space": 0.322
+    },
+    "ORIGAMI": {
+      "macro_character": 0.506,
+      "macro_movement": 0.573,
+      "macro_coupling": 0.39,
+      "macro_space": 0.288
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OBESE",
+    "target": "ORIGAMI",
+    "amount": 0.562
+  },
+  "dna": {
+    "brightness": 0.656,
+    "warmth": 0.622,
+    "movement": 0.26,
+    "density": 0.024,
+    "space": 0.38,
+    "aggression": 0.98
+  },
+  "macros": {
+    "CHARACTER": 0.605,
+    "MOVEMENT": 0.26,
+    "COUPLING": 0.562,
+    "SPACE": 0.38
+  },
+  "tags": [
+    "foundation",
+    "aggressive",
+    "harsh"
+  ]
+}

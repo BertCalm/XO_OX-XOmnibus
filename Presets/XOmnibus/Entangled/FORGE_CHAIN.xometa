@@ -1,0 +1,52 @@
+{
+  "name": "FORGE CHAIN",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OCEANIC",
+    "OSPREY"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.4488,
+      "macro_movement": 0.5547,
+      "macro_coupling": 0.7632,
+      "macro_space": 0.0263
+    },
+    "OSPREY": {
+      "macro_character": 0.3539,
+      "macro_movement": 0.0931,
+      "macro_coupling": 0.8392,
+      "macro_space": 0.3244
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OCEANIC",
+    "target": "OSPREY",
+    "amount": 0.8156
+  },
+  "dna": {
+    "brightness": 0.2918,
+    "warmth": 0.3878,
+    "movement": 0.0847,
+    "density": 0.916,
+    "space": 0.9011,
+    "aggression": 0.9052
+  },
+  "macros": {
+    "CHARACTER": 0.9782,
+    "MOVEMENT": 0.572,
+    "COUPLING": 0.7509,
+    "SPACE": 0.3807
+  },
+  "tags": [
+    "entangled",
+    "dense",
+    "thick",
+    "heavy",
+    "massive",
+    "crushing",
+    "extreme-density"
+  ]
+}

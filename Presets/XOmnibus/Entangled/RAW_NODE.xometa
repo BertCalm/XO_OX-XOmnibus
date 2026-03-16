@@ -1,0 +1,48 @@
+{
+  "name": "RAW NODE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ONSET",
+    "OVERBITE"
+  ],
+  "parameters": {
+    "ONSET": {
+      "macro_character": 0.157,
+      "macro_movement": 0.174,
+      "macro_coupling": 0.075,
+      "macro_space": 0.003
+    },
+    "OVERBITE": {
+      "macro_character": 0.451,
+      "macro_movement": 0.594,
+      "macro_coupling": 0.291,
+      "macro_space": 0.231
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ONSET",
+    "target": "OVERBITE",
+    "amount": 0.666
+  },
+  "dna": {
+    "brightness": 0.703,
+    "warmth": 0.454,
+    "movement": 0.687,
+    "density": 0.103,
+    "space": 0.924,
+    "aggression": 0.788
+  },
+  "macros": {
+    "CHARACTER": 0.625,
+    "MOVEMENT": 0.661,
+    "COUPLING": 0.934,
+    "SPACE": 0.425
+  },
+  "tags": [
+    "entangled",
+    "thin",
+    "ghosted"
+  ]
+}

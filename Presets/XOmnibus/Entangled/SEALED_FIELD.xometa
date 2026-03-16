@@ -1,0 +1,50 @@
+{
+  "name": "SEALED FIELD",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OHM",
+    "OMBRE"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.788,
+      "macro_movement": 0.1863,
+      "macro_coupling": 0.8996,
+      "macro_space": 0.8723
+    },
+    "OMBRE": {
+      "macro_character": 0.2895,
+      "macro_movement": 0.0375,
+      "macro_coupling": 0.7194,
+      "macro_space": 0.6028
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OHM",
+    "target": "OMBRE",
+    "amount": 0.9785
+  },
+  "dna": {
+    "brightness": 0.335,
+    "warmth": 0.4543,
+    "movement": 0.6413,
+    "density": 0.9713,
+    "space": 0.5243,
+    "aggression": 0.8893
+  },
+  "macros": {
+    "CHARACTER": 0.1342,
+    "MOVEMENT": 0.5042,
+    "COUPLING": 0.7819,
+    "SPACE": 0.8088
+  },
+  "tags": [
+    "entangled",
+    "extreme-density",
+    "crushing",
+    "dense",
+    "iron"
+  ]
+}

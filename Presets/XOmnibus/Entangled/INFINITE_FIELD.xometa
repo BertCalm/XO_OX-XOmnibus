@@ -1,0 +1,49 @@
+{
+  "name": "INFINITE FIELD",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORBITAL",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.727,
+      "macro_movement": 0.095,
+      "macro_coupling": 0.462,
+      "macro_space": 0.928
+    },
+    "OCEANIC": {
+      "macro_character": 0.444,
+      "macro_movement": 0.206,
+      "macro_coupling": 0.439,
+      "macro_space": 0.897
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ORBITAL",
+    "target": "OCEANIC",
+    "amount": 0.873
+  },
+  "dna": {
+    "brightness": 0.584,
+    "warmth": 0.214,
+    "movement": 0.639,
+    "density": 0.592,
+    "space": 0.913,
+    "aggression": 0.12
+  },
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.403,
+    "COUPLING": 0.829,
+    "SPACE": 0.913
+  },
+  "tags": [
+    "entangled",
+    "vast",
+    "cosmic",
+    "xhigh"
+  ]
+}

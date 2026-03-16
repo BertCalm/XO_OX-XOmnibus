@@ -1,0 +1,48 @@
+{
+  "name": "TORRENT FOUNDATION",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OTTONI",
+    "OVERLAP"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.511,
+      "macro_movement": 0.888,
+      "macro_coupling": 0.717,
+      "macro_space": 0.435
+    },
+    "OVERLAP": {
+      "macro_character": 0.675,
+      "macro_movement": 0.923,
+      "macro_coupling": 0.326,
+      "macro_space": 0.676
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OTTONI",
+    "target": "OVERLAP",
+    "amount": 0.876
+  },
+  "dna": {
+    "brightness": 0.356,
+    "warmth": 0.056,
+    "movement": 0.92,
+    "density": 0.473,
+    "space": 0.403,
+    "aggression": 0.728
+  },
+  "macros": {
+    "CHARACTER": 0.412,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.876,
+    "SPACE": 0.403
+  },
+  "tags": [
+    "foundation",
+    "kinetic",
+    "moving"
+  ]
+}

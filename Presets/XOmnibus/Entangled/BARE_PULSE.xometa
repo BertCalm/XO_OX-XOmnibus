@@ -1,0 +1,48 @@
+{
+  "name": "BARE PULSE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OUTWIT",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OUTWIT": {
+      "macro_character": 0.362,
+      "macro_movement": 0.594,
+      "macro_coupling": 0.452,
+      "macro_space": 0.222
+    },
+    "OVERWORLD": {
+      "macro_character": 0.615,
+      "macro_movement": 0.727,
+      "macro_coupling": 0.909,
+      "macro_space": 0.659
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OUTWIT",
+    "target": "OVERWORLD",
+    "amount": 0.341
+  },
+  "dna": {
+    "brightness": 0.643,
+    "warmth": 0.031,
+    "movement": 0.999,
+    "density": 0.079,
+    "space": 0.847,
+    "aggression": 0.426
+  },
+  "macros": {
+    "CHARACTER": 0.108,
+    "MOVEMENT": 0.712,
+    "COUPLING": 0.444,
+    "SPACE": 0.899
+  },
+  "tags": [
+    "entangled",
+    "sparse",
+    "spectral"
+  ]
+}

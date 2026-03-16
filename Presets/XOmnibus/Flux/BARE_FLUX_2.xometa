@@ -1,0 +1,48 @@
+{
+  "name": "BARE FLUX 2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OPTIC",
+    "OBSCURA"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.0327,
+      "macro_movement": 0.3705,
+      "macro_coupling": 0.4434,
+      "macro_space": 0.9506
+    },
+    "OBSCURA": {
+      "macro_character": 0.8555,
+      "macro_movement": 0.0994,
+      "macro_coupling": 0.6857,
+      "macro_space": 0.5445
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OPTIC",
+    "target": "OBSCURA",
+    "amount": 0.8867
+  },
+  "dna": {
+    "brightness": 0.7423,
+    "warmth": 0.1545,
+    "movement": 0.1437,
+    "density": 0.0619,
+    "space": 0.099,
+    "aggression": 0.4893
+  },
+  "macros": {
+    "CHARACTER": 0.3587,
+    "MOVEMENT": 0.3981,
+    "COUPLING": 0.1898,
+    "SPACE": 0.1222
+  },
+  "tags": [
+    "flux",
+    "sparse",
+    "minimal"
+  ]
+}

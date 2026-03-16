@@ -1,0 +1,49 @@
+{
+  "name": "VOID CURRENT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERBITE",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OVERBITE": {
+      "macro_character": 0.443,
+      "macro_movement": 0.415,
+      "macro_coupling": 0.083,
+      "macro_space": 0.937
+    },
+    "OVERWORLD": {
+      "macro_character": 0.716,
+      "macro_movement": 0.588,
+      "macro_coupling": 0.229,
+      "macro_space": 0.948
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OVERWORLD",
+    "target": "OVERBITE",
+    "amount": 0.772
+  },
+  "dna": {
+    "brightness": 0.588,
+    "warmth": 0.43,
+    "movement": 0.909,
+    "density": 0.394,
+    "space": 0.924,
+    "aggression": 0.989
+  },
+  "macros": {
+    "CHARACTER": 0.259,
+    "MOVEMENT": 0.553,
+    "COUPLING": 0.788,
+    "SPACE": 0.924
+  },
+  "tags": [
+    "entangled",
+    "vast",
+    "cosmic",
+    "xhigh"
+  ]
+}

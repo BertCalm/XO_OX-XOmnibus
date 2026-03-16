@@ -1,0 +1,48 @@
+{
+  "name": "SPECTRAL WAVE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERDUB",
+    "OBSIDIAN"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.048,
+      "macro_movement": 0.656,
+      "macro_coupling": 0.273,
+      "macro_space": 0.799
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.437,
+      "macro_movement": 0.4,
+      "macro_coupling": 0.44,
+      "macro_space": 0.956
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OVERDUB",
+    "target": "OBSIDIAN",
+    "amount": 0.371
+  },
+  "dna": {
+    "brightness": 0.187,
+    "warmth": 0.692,
+    "movement": 0.367,
+    "density": 0.125,
+    "space": 0.797,
+    "aggression": 0.267
+  },
+  "macros": {
+    "CHARACTER": 0.083,
+    "MOVEMENT": 0.424,
+    "COUPLING": 0.431,
+    "SPACE": 0.995
+  },
+  "tags": [
+    "entangled",
+    "bare",
+    "skeletal"
+  ]
+}

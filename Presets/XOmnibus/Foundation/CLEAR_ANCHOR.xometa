@@ -1,0 +1,49 @@
+{
+  "name": "CLEAR ANCHOR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ORBITAL",
+    "OUTWIT"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.551,
+      "macro_movement": 0.384,
+      "macro_coupling": 0.922,
+      "macro_space": 0.508
+    },
+    "OUTWIT": {
+      "macro_character": 0.879,
+      "macro_movement": 0.864,
+      "macro_coupling": 0.276,
+      "macro_space": 0.79
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_FOLLOW",
+    "source": "ORBITAL",
+    "target": "OUTWIT",
+    "amount": 0.446
+  },
+  "dna": {
+    "brightness": 0.892,
+    "warmth": 0.499,
+    "movement": 0.921,
+    "density": 0.364,
+    "space": 0.701,
+    "aggression": 0.788
+  },
+  "macros": {
+    "CHARACTER": 0.715,
+    "MOVEMENT": 0.624,
+    "COUPLING": 0.599,
+    "SPACE": 0.649
+  },
+  "tags": [
+    "foundation",
+    "bright",
+    "extreme",
+    "high-movement"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "FROST GATHERING",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OHM",
+    "OLE"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.885,
+      "macro_movement": 0.643,
+      "macro_coupling": 0.143,
+      "macro_space": 0.14
+    },
+    "OLE": {
+      "macro_character": 0.745,
+      "macro_movement": 0.539,
+      "macro_coupling": 0.747,
+      "macro_space": 0.428
+    }
+  },
+  "coupling": {
+    "type": "RHYTHM_SYNC",
+    "source": "OHM",
+    "target": "OLE",
+    "amount": 0.65
+  },
+  "dna": {
+    "brightness": 0.056,
+    "warmth": 0.102,
+    "movement": 0.805,
+    "density": 0.401,
+    "space": 0.075,
+    "aggression": 0.913
+  },
+  "macros": {
+    "CHARACTER": 0.362,
+    "MOVEMENT": 0.997,
+    "COUPLING": 0.138,
+    "SPACE": 0.494
+  },
+  "tags": [
+    "family",
+    "cold",
+    "xlow-warmth"
+  ]
+}

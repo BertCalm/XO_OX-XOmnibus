@@ -1,0 +1,48 @@
+{
+  "name": "SILENT VOID",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OCELOT",
+    "OBESE"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "macro_character": 0.513,
+      "macro_movement": 0.831,
+      "macro_coupling": 0.092,
+      "macro_space": 0.911
+    },
+    "OBESE": {
+      "macro_character": 0.817,
+      "macro_movement": 0.885,
+      "macro_coupling": 0.93,
+      "macro_space": 0.415
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OCELOT",
+    "target": "OBESE",
+    "amount": 0.417
+  },
+  "dna": {
+    "brightness": 0.374,
+    "warmth": 0.386,
+    "movement": 0.082,
+    "density": 0.079,
+    "space": 0.225,
+    "aggression": 0.319
+  },
+  "macros": {
+    "CHARACTER": 0.099,
+    "MOVEMENT": 0.715,
+    "COUPLING": 0.335,
+    "SPACE": 0.146
+  },
+  "tags": [
+    "entangled",
+    "sparse",
+    "minimal"
+  ]
+}

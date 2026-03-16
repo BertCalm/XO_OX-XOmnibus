@@ -1,0 +1,48 @@
+{
+  "name": "COLD FLUX 6",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBESE",
+    "OHM"
+  ],
+  "parameters": {
+    "OBESE": {
+      "macro_character": 0.218,
+      "macro_movement": 0.6995,
+      "macro_coupling": 0.7669,
+      "macro_space": 0.1678
+    },
+    "OHM": {
+      "macro_character": 0.6072,
+      "macro_movement": 0.7479,
+      "macro_coupling": 0.1145,
+      "macro_space": 0.8193
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OBESE",
+    "target": "OHM",
+    "amount": 0.8788
+  },
+  "dna": {
+    "brightness": 0.929,
+    "warmth": 0.0954,
+    "movement": 0.1994,
+    "density": 0.0204,
+    "space": 0.1524,
+    "aggression": 0.1262
+  },
+  "macros": {
+    "CHARACTER": 0.1081,
+    "MOVEMENT": 0.0257,
+    "COUPLING": 0.312,
+    "SPACE": 0.6773
+  },
+  "tags": [
+    "flux",
+    "cold",
+    "shifting"
+  ]
+}

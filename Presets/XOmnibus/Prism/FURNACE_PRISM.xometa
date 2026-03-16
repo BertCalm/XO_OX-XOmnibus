@@ -1,0 +1,49 @@
+{
+  "name": "FURNACE PRISM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OPTIC",
+    "OPAL"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.319,
+      "macro_movement": 0.179,
+      "macro_coupling": 0.538,
+      "macro_space": 0.699
+    },
+    "OPAL": {
+      "macro_character": 0.627,
+      "macro_movement": 0.361,
+      "macro_coupling": 0.809,
+      "macro_space": 0.771
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OPTIC",
+    "target": "OPAL",
+    "amount": 0.819
+  },
+  "dna": {
+    "brightness": 0.135,
+    "warmth": 0.952,
+    "movement": 0.073,
+    "density": 0.358,
+    "space": 0.291,
+    "aggression": 0.875
+  },
+  "macros": {
+    "CHARACTER": 0.271,
+    "MOVEMENT": 0.028,
+    "COUPLING": 0.195,
+    "SPACE": 0.031
+  },
+  "tags": [
+    "prism",
+    "warm",
+    "spectrum",
+    "fire"
+  ]
+}

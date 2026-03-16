@@ -1,0 +1,48 @@
+{
+  "name": "SAVAGE BASE",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OCEANIC",
+    "ORCA"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.58,
+      "macro_movement": 0.607,
+      "macro_coupling": 0.611,
+      "macro_space": 0.537
+    },
+    "ORCA": {
+      "macro_character": 0.578,
+      "macro_movement": 0.544,
+      "macro_coupling": 0.629,
+      "macro_space": 0.547
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OCEANIC",
+    "target": "ORCA",
+    "amount": 0.615
+  },
+  "dna": {
+    "brightness": 0.708,
+    "warmth": 0.41,
+    "movement": 0.534,
+    "density": 0.049,
+    "space": 0.367,
+    "aggression": 0.897
+  },
+  "macros": {
+    "CHARACTER": 0.314,
+    "MOVEMENT": 0.534,
+    "COUPLING": 0.615,
+    "SPACE": 0.367
+  },
+  "tags": [
+    "foundation",
+    "aggressive",
+    "harsh"
+  ]
+}

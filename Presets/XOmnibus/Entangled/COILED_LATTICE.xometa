@@ -1,0 +1,52 @@
+{
+  "name": "COILED LATTICE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORACLE",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.7029,
+      "macro_movement": 0.2709,
+      "macro_coupling": 0.7006,
+      "macro_space": 0.1207
+    },
+    "OCEANIC": {
+      "macro_character": 0.1926,
+      "macro_movement": 0.1196,
+      "macro_coupling": 0.8143,
+      "macro_space": 0.7622
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORACLE",
+    "target": "OCEANIC",
+    "amount": 0.7555
+  },
+  "dna": {
+    "brightness": 0.2164,
+    "warmth": 0.4842,
+    "movement": 0.7246,
+    "density": 0.9273,
+    "space": 0.9766,
+    "aggression": 0.5246
+  },
+  "macros": {
+    "CHARACTER": 0.283,
+    "MOVEMENT": 0.1005,
+    "COUPLING": 0.7582,
+    "SPACE": 0.2275
+  },
+  "tags": [
+    "entangled",
+    "dense",
+    "extreme-density",
+    "compressed",
+    "dark",
+    "packed",
+    "granite"
+  ]
+}

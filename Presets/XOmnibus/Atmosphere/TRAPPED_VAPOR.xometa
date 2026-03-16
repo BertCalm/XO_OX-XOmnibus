@@ -1,0 +1,50 @@
+{
+  "name": "TRAPPED VAPOR",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OCELOT",
+    "OBLONG"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "macro_character": 0.586,
+      "macro_movement": 0.698,
+      "macro_coupling": 0.192,
+      "macro_space": 0.022
+    },
+    "OBLONG": {
+      "macro_character": 0.872,
+      "macro_movement": 0.186,
+      "macro_coupling": 0.121,
+      "macro_space": 0.086
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OCELOT",
+    "target": "OBLONG",
+    "amount": 0.418
+  },
+  "dna": {
+    "brightness": 0.259,
+    "warmth": 0.023,
+    "movement": 0.201,
+    "density": 0.636,
+    "space": 0.022,
+    "aggression": 0.167
+  },
+  "macros": {
+    "CHARACTER": 0.642,
+    "MOVEMENT": 0.867,
+    "COUPLING": 0.417,
+    "SPACE": 0.022
+  },
+  "tags": [
+    "atmosphere",
+    "claustrophobic",
+    "intimate",
+    "close",
+    "space-xlow"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "FURY LINK",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OLE",
+    "OMBRE"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.324,
+      "macro_movement": 0.534,
+      "macro_coupling": 0.626,
+      "macro_space": 0.243
+    },
+    "OMBRE": {
+      "macro_character": 0.78,
+      "macro_movement": 0.113,
+      "macro_coupling": 0.266,
+      "macro_space": 0.215
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OLE",
+    "target": "OMBRE",
+    "amount": 0.816
+  },
+  "dna": {
+    "brightness": 0.882,
+    "warmth": 0.821,
+    "movement": 0.929,
+    "density": 0.317,
+    "space": 0.946,
+    "aggression": 0.901
+  },
+  "macros": {
+    "CHARACTER": 0.757,
+    "MOVEMENT": 0.843,
+    "COUPLING": 0.339,
+    "SPACE": 0.551
+  },
+  "tags": [
+    "brutal",
+    "entangled",
+    "aggressive",
+    "obliterating"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "ENDLESS DEEP FLOOR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OVERBITE",
+    "ORCA"
+  ],
+  "parameters": {
+    "OVERBITE": {
+      "macro_character": 0.352,
+      "macro_movement": 0.93,
+      "macro_coupling": 0.853,
+      "macro_space": 0.965
+    },
+    "ORCA": {
+      "macro_character": 0.419,
+      "macro_movement": 0.93,
+      "macro_coupling": 0.546,
+      "macro_space": 0.944
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OVERBITE",
+    "target": "ORCA",
+    "amount": 0.454
+  },
+  "dna": {
+    "brightness": 0.584,
+    "warmth": 0.696,
+    "movement": 0.905,
+    "density": 0.857,
+    "space": 0.938,
+    "aggression": 0.766
+  },
+  "macros": {
+    "CHARACTER": 0.219,
+    "MOVEMENT": 0.905,
+    "COUPLING": 0.436,
+    "SPACE": 0.938
+  },
+  "tags": [
+    "foundation",
+    "vast",
+    "open",
+    "space-xhigh",
+    "movement-xhigh"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "FORGE PRESS",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OPTIC",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.6928,
+      "macro_movement": 0.0621,
+      "macro_coupling": 0.6473,
+      "macro_space": 0.3068
+    },
+    "ORACLE": {
+      "macro_character": 0.4054,
+      "macro_movement": 0.5025,
+      "macro_coupling": 0.958,
+      "macro_space": 0.7036
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OPTIC",
+    "target": "ORACLE",
+    "amount": 0.7933
+  },
+  "dna": {
+    "brightness": 0.1174,
+    "warmth": 0.9161,
+    "movement": 0.295,
+    "density": 0.9523,
+    "space": 0.6146,
+    "aggression": 0.2191
+  },
+  "macros": {
+    "CHARACTER": 0.1336,
+    "MOVEMENT": 0.1532,
+    "COUPLING": 0.9243,
+    "SPACE": 0.6057
+  },
+  "tags": [
+    "entangled",
+    "dense",
+    "monolithic",
+    "welded",
+    "granite"
+  ]
+}

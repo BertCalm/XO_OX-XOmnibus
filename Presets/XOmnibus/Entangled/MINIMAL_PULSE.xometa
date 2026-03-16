@@ -1,0 +1,48 @@
+{
+  "name": "MINIMAL PULSE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OCELOT",
+    "ORCA"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "macro_character": 0.005,
+      "macro_movement": 0.079,
+      "macro_coupling": 0.256,
+      "macro_space": 0.835
+    },
+    "ORCA": {
+      "macro_character": 0.549,
+      "macro_movement": 0.727,
+      "macro_coupling": 0.528,
+      "macro_space": 0.111
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OCELOT",
+    "target": "ORCA",
+    "amount": 0.33
+  },
+  "dna": {
+    "brightness": 0.301,
+    "warmth": 0.048,
+    "movement": 0.42,
+    "density": 0.079,
+    "space": 0.794,
+    "aggression": 0.457
+  },
+  "macros": {
+    "CHARACTER": 0.111,
+    "MOVEMENT": 0.905,
+    "COUPLING": 0.597,
+    "SPACE": 0.016
+  },
+  "tags": [
+    "entangled",
+    "thin",
+    "ghosted"
+  ]
+}

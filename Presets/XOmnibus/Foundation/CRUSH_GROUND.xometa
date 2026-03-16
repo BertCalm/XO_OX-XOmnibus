@@ -1,0 +1,48 @@
+{
+  "name": "CRUSH GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ODYSSEY",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "ODYSSEY": {
+      "macro_character": 0.798,
+      "macro_movement": 0.414,
+      "macro_coupling": 0.758,
+      "macro_space": 0.446
+    },
+    "ODDFELIX": {
+      "macro_character": 0.361,
+      "macro_movement": 0.641,
+      "macro_coupling": 0.526,
+      "macro_space": 0.649
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ODYSSEY",
+    "target": "ODDFELIX",
+    "amount": 0.623
+  },
+  "dna": {
+    "brightness": 0.054,
+    "warmth": 0.499,
+    "movement": 0.432,
+    "density": 0.537,
+    "space": 0.357,
+    "aggression": 0.922
+  },
+  "macros": {
+    "CHARACTER": 0.523,
+    "MOVEMENT": 0.432,
+    "COUPLING": 0.623,
+    "SPACE": 0.357
+  },
+  "tags": [
+    "foundation",
+    "aggressive",
+    "harsh"
+  ]
+}

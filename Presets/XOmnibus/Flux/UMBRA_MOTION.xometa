@@ -1,0 +1,49 @@
+{
+  "name": "UMBRA MOTION",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OCELOT",
+    "OTTONI"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "macro_character": 0.383,
+      "macro_movement": 0.039,
+      "macro_coupling": 0.471,
+      "macro_space": 0.2
+    },
+    "OTTONI": {
+      "macro_character": 0.918,
+      "macro_movement": 0.35,
+      "macro_coupling": 0.821,
+      "macro_space": 0.871
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_LOCK",
+    "source": "OCELOT",
+    "target": "OTTONI",
+    "amount": 0.721
+  },
+  "dna": {
+    "brightness": 0.096,
+    "warmth": 0.669,
+    "movement": 0.447,
+    "density": 0.953,
+    "space": 0.349,
+    "aggression": 0.296
+  },
+  "macros": {
+    "CHARACTER": 0.651,
+    "MOVEMENT": 0.194,
+    "COUPLING": 0.646,
+    "SPACE": 0.535
+  },
+  "tags": [
+    "flux",
+    "dark",
+    "extreme",
+    "high-density"
+  ]
+}

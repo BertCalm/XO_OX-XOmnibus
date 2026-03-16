@@ -1,0 +1,49 @@
+{
+  "name": "ARCTIC LINK",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OLE",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.932,
+      "macro_movement": 0.104,
+      "macro_coupling": 0.878,
+      "macro_space": 0.264
+    },
+    "ORACLE": {
+      "macro_character": 0.89,
+      "macro_movement": 0.742,
+      "macro_coupling": 0.155,
+      "macro_space": 0.282
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OLE",
+    "target": "ORACLE",
+    "amount": 0.426
+  },
+  "dna": {
+    "brightness": 0.922,
+    "warmth": 0.036,
+    "movement": 0.663,
+    "density": 0.589,
+    "space": 0.89,
+    "aggression": 0.623
+  },
+  "macros": {
+    "CHARACTER": 0.343,
+    "MOVEMENT": 0.687,
+    "COUPLING": 0.853,
+    "SPACE": 0.505
+  },
+  "tags": [
+    "entangled",
+    "cold",
+    "clinical",
+    "icy"
+  ]
+}

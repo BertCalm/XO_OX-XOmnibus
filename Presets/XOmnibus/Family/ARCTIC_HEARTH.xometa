@@ -1,0 +1,48 @@
+{
+  "name": "ARCTIC HEARTH",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ONSET",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "ONSET": {
+      "macro_character": 0.75,
+      "macro_movement": 0.57,
+      "macro_coupling": 0.668,
+      "macro_space": 0.336
+    },
+    "OSTERIA": {
+      "macro_character": 0.494,
+      "macro_movement": 0.325,
+      "macro_coupling": 0.488,
+      "macro_space": 0.355
+    }
+  },
+  "coupling": {
+    "type": "PITCH_LOCK",
+    "source": "ONSET",
+    "target": "OSTERIA",
+    "amount": 0.455
+  },
+  "dna": {
+    "brightness": 0.068,
+    "warmth": 0.066,
+    "movement": 0.826,
+    "density": 0.592,
+    "space": 0.322,
+    "aggression": 0.245
+  },
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.596,
+    "COUPLING": 0.88,
+    "SPACE": 0.556
+  },
+  "tags": [
+    "family",
+    "cold",
+    "xlow-warmth"
+  ]
+}

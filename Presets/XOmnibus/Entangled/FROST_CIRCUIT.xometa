@@ -1,0 +1,49 @@
+{
+  "name": "FROST CIRCUIT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBSCURA",
+    "OUROBOROS"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.222,
+      "macro_movement": 0.817,
+      "macro_coupling": 0.46,
+      "macro_space": 0.305
+    },
+    "OUROBOROS": {
+      "macro_character": 0.795,
+      "macro_movement": 0.228,
+      "macro_coupling": 0.024,
+      "macro_space": 0.193
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OBSCURA",
+    "target": "OUROBOROS",
+    "amount": 0.497
+  },
+  "dna": {
+    "brightness": 0.636,
+    "warmth": 0.061,
+    "movement": 0.688,
+    "density": 0.299,
+    "space": 0.962,
+    "aggression": 0.661
+  },
+  "macros": {
+    "CHARACTER": 0.864,
+    "MOVEMENT": 0.967,
+    "COUPLING": 0.279,
+    "SPACE": 0.641
+  },
+  "tags": [
+    "entangled",
+    "cold",
+    "clinical",
+    "icy"
+  ]
+}

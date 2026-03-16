@@ -1,0 +1,50 @@
+{
+  "name": "CRYOGENIC VOID",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ODYSSEY",
+    "OCTOPUS"
+  ],
+  "parameters": {
+    "ODYSSEY": {
+      "macro_character": 0.379,
+      "macro_movement": 0.442,
+      "macro_coupling": 0.856,
+      "macro_space": 0.74
+    },
+    "OCTOPUS": {
+      "macro_character": 0.408,
+      "macro_movement": 0.586,
+      "macro_coupling": 0.956,
+      "macro_space": 0.679
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ODYSSEY",
+    "target": "OCTOPUS",
+    "amount": 0.68
+  },
+  "dna": {
+    "brightness": 0.144,
+    "warmth": 0.113,
+    "movement": 0.377,
+    "density": 0.595,
+    "space": 0.883,
+    "aggression": 0.536
+  },
+  "macros": {
+    "CHARACTER": 0.379,
+    "MOVEMENT": 0.442,
+    "COUPLING": 0.856,
+    "SPACE": 0.74
+  },
+  "tags": [
+    "flux",
+    "dark",
+    "cold",
+    "vast",
+    "extreme"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "VOID STREAM",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OPAL",
+    "OTTONI"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.392,
+      "macro_movement": 0.468,
+      "macro_coupling": 0.673,
+      "macro_space": 0.901
+    },
+    "OTTONI": {
+      "macro_character": 0.343,
+      "macro_movement": 0.582,
+      "macro_coupling": 0.606,
+      "macro_space": 1.0
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OPAL",
+    "target": "OTTONI",
+    "amount": 0.711
+  },
+  "dna": {
+    "brightness": 0.334,
+    "warmth": 0.471,
+    "movement": 0.647,
+    "density": 0.052,
+    "space": 0.881,
+    "aggression": 0.431
+  },
+  "macros": {
+    "CHARACTER": 0.392,
+    "MOVEMENT": 0.468,
+    "COUPLING": 0.673,
+    "SPACE": 0.901
+  },
+  "tags": [
+    "flux",
+    "spatial",
+    "sparse",
+    "open"
+  ]
+}

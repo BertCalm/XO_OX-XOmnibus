@@ -1,0 +1,48 @@
+{
+  "name": "TEMPEST",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OCEANIC",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.455,
+      "macro_movement": 0.961,
+      "macro_coupling": 0.315,
+      "macro_space": 0.323
+    },
+    "ORIGAMI": {
+      "macro_character": 0.97,
+      "macro_movement": 0.935,
+      "macro_coupling": 0.404,
+      "macro_space": 0.515
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OCEANIC",
+    "target": "ORIGAMI",
+    "amount": 0.994
+  },
+  "dna": {
+    "brightness": 0.658,
+    "warmth": 0.543,
+    "movement": 0.948,
+    "density": 0.413,
+    "space": 0.188,
+    "aggression": 0.681
+  },
+  "macros": {
+    "CHARACTER": 0.756,
+    "MOVEMENT": 0.948,
+    "COUPLING": 0.625,
+    "SPACE": 0.76
+  },
+  "tags": [
+    "entangled",
+    "violent",
+    "surge"
+  ]
+}

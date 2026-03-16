@@ -1,0 +1,50 @@
+{
+  "name": "CELL VAPOR",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OUTWIT",
+    "OBSIDIAN"
+  ],
+  "parameters": {
+    "OUTWIT": {
+      "macro_character": 0.364,
+      "macro_movement": 0.655,
+      "macro_coupling": 0.331,
+      "macro_space": 0.034
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.751,
+      "macro_movement": 0.54,
+      "macro_coupling": 0.464,
+      "macro_space": 0.096
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OUTWIT",
+    "target": "OBSIDIAN",
+    "amount": 0.42
+  },
+  "dna": {
+    "brightness": 0.833,
+    "warmth": 0.245,
+    "movement": 0.568,
+    "density": 0.924,
+    "space": 0.034,
+    "aggression": 0.65
+  },
+  "macros": {
+    "CHARACTER": 0.359,
+    "MOVEMENT": 0.876,
+    "COUPLING": 0.423,
+    "SPACE": 0.034
+  },
+  "tags": [
+    "atmosphere",
+    "claustrophobic",
+    "intimate",
+    "close",
+    "space-xlow"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "VOID CIRCLE",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ORPHICA",
+    "ONSET"
+  ],
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.131,
+      "macro_movement": 0.371,
+      "macro_coupling": 0.562,
+      "macro_space": 0.319
+    },
+    "ONSET": {
+      "macro_character": 0.466,
+      "macro_movement": 0.267,
+      "macro_coupling": 0.248,
+      "macro_space": 0.097
+    }
+  },
+  "coupling": {
+    "type": "PITCH_TRACK",
+    "source": "ORPHICA",
+    "target": "ONSET",
+    "amount": 0.885
+  },
+  "dna": {
+    "brightness": 0.067,
+    "warmth": 0.322,
+    "movement": 0.564,
+    "density": 0.388,
+    "space": 0.953,
+    "aggression": 0.716
+  },
+  "macros": {
+    "CHARACTER": 0.298,
+    "MOVEMENT": 0.319,
+    "COUPLING": 0.405,
+    "SPACE": 0.208
+  },
+  "tags": [
+    "family",
+    "dark",
+    "extreme",
+    "high-space"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "THREAD SPACE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORIGAMI",
+    "OBLONG"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.117,
+      "macro_movement": 0.045,
+      "macro_coupling": 0.037,
+      "macro_space": 0.996
+    },
+    "OBLONG": {
+      "macro_character": 0.116,
+      "macro_movement": 0.235,
+      "macro_coupling": 0.538,
+      "macro_space": 0.389
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ORIGAMI",
+    "target": "OBLONG",
+    "amount": 0.397
+  },
+  "dna": {
+    "brightness": 0.949,
+    "warmth": 0.696,
+    "movement": 0.54,
+    "density": 0.101,
+    "space": 0.587,
+    "aggression": 0.727
+  },
+  "macros": {
+    "CHARACTER": 0.885,
+    "MOVEMENT": 0.655,
+    "COUPLING": 0.834,
+    "SPACE": 0.616
+  },
+  "tags": [
+    "entangled",
+    "minimal",
+    "negative-space"
+  ]
+}

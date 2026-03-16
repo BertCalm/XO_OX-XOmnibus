@@ -1,0 +1,48 @@
+{
+  "name": "CHAOS BASE",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OHM",
+    "OUROBOROS"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.705,
+      "macro_movement": 0.635,
+      "macro_coupling": 0.791,
+      "macro_space": 0.242
+    },
+    "OUROBOROS": {
+      "macro_character": 0.623,
+      "macro_movement": 0.316,
+      "macro_coupling": 0.654,
+      "macro_space": 0.695
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OHM",
+    "target": "OUROBOROS",
+    "amount": 0.625
+  },
+  "dna": {
+    "brightness": 0.975,
+    "warmth": 0.543,
+    "movement": 0.313,
+    "density": 0.563,
+    "space": 0.501,
+    "aggression": 0.966
+  },
+  "macros": {
+    "CHARACTER": 0.562,
+    "MOVEMENT": 0.313,
+    "COUPLING": 0.625,
+    "SPACE": 0.501
+  },
+  "tags": [
+    "foundation",
+    "aggressive",
+    "harsh"
+  ]
+}

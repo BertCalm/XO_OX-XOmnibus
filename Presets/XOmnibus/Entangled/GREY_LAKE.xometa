@@ -1,0 +1,48 @@
+{
+  "name": "GREY LAKE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OPTIC",
+    "ORCA"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.271,
+      "macro_movement": 0.11,
+      "macro_coupling": 0.64,
+      "macro_space": 0.889
+    },
+    "ORCA": {
+      "macro_character": 0.373,
+      "macro_movement": 0.045,
+      "macro_coupling": 0.681,
+      "macro_space": 0.364
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OPTIC",
+    "target": "ORCA",
+    "amount": 0.209
+  },
+  "dna": {
+    "brightness": 0.975,
+    "warmth": 0.77,
+    "movement": 0.077,
+    "density": 0.628,
+    "space": 0.161,
+    "aggression": 0.67
+  },
+  "macros": {
+    "CHARACTER": 0.749,
+    "MOVEMENT": 0.077,
+    "COUPLING": 0.004,
+    "SPACE": 0.288
+  },
+  "tags": [
+    "entangled",
+    "stillness",
+    "grey"
+  ]
+}

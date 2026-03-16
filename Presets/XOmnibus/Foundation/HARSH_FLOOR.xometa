@@ -1,0 +1,48 @@
+{
+  "name": "HARSH FLOOR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OCELOT",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "macro_character": 0.565,
+      "macro_movement": 0.45,
+      "macro_coupling": 0.527,
+      "macro_space": 0.279
+    },
+    "ODYSSEY": {
+      "macro_character": 0.456,
+      "macro_movement": 0.43,
+      "macro_coupling": 0.771,
+      "macro_space": 0.498
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OCELOT",
+    "target": "ODYSSEY",
+    "amount": 0.446
+  },
+  "dna": {
+    "brightness": 0.309,
+    "warmth": 0.286,
+    "movement": 0.146,
+    "density": 0.242,
+    "space": 0.645,
+    "aggression": 0.948
+  },
+  "macros": {
+    "CHARACTER": 0.742,
+    "MOVEMENT": 0.146,
+    "COUPLING": 0.446,
+    "SPACE": 0.645
+  },
+  "tags": [
+    "foundation",
+    "aggressive",
+    "harsh"
+  ]
+}

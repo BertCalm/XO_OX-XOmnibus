@@ -1,0 +1,49 @@
+{
+  "name": "CRYSTAL NODE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORIGAMI",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.214,
+      "macro_movement": 0.473,
+      "macro_coupling": 0.901,
+      "macro_space": 0.796
+    },
+    "ORPHICA": {
+      "macro_character": 0.17,
+      "macro_movement": 0.085,
+      "macro_coupling": 0.515,
+      "macro_space": 0.633
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ORIGAMI",
+    "target": "ORPHICA",
+    "amount": 0.501
+  },
+  "dna": {
+    "brightness": 0.767,
+    "warmth": 0.061,
+    "movement": 0.343,
+    "density": 0.077,
+    "space": 0.729,
+    "aggression": 0.585
+  },
+  "macros": {
+    "CHARACTER": 0.818,
+    "MOVEMENT": 0.751,
+    "COUPLING": 0.673,
+    "SPACE": 0.225
+  },
+  "tags": [
+    "entangled",
+    "cold",
+    "clinical",
+    "icy"
+  ]
+}

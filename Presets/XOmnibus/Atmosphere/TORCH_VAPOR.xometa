@@ -1,0 +1,50 @@
+{
+  "name": "TORCH VAPOR",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OCEANIC",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.115,
+      "macro_movement": 0.351,
+      "macro_coupling": 0.221,
+      "macro_space": 0.188
+    },
+    "OSTERIA": {
+      "macro_character": 0.428,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.836,
+      "macro_space": 0.652
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OCEANIC",
+    "target": "OSTERIA",
+    "amount": 0.811
+  },
+  "dna": {
+    "brightness": 0.677,
+    "warmth": 0.876,
+    "movement": 0.603,
+    "density": 0.596,
+    "space": 0.859,
+    "aggression": 0.977
+  },
+  "macros": {
+    "CHARACTER": 0.689,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.21,
+    "SPACE": 0.859
+  },
+  "tags": [
+    "atmosphere",
+    "harsh",
+    "abrasive",
+    "hostile",
+    "aggression-xhigh"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "TRAPPED LAYER",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORBITAL",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.464,
+      "macro_movement": 0.119,
+      "macro_coupling": 0.421,
+      "macro_space": 0.737
+    },
+    "ORIGAMI": {
+      "macro_character": 0.387,
+      "macro_movement": 0.114,
+      "macro_coupling": 0.323,
+      "macro_space": 0.855
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ORBITAL",
+    "target": "ORIGAMI",
+    "amount": 0.623
+  },
+  "dna": {
+    "brightness": 0.788,
+    "warmth": 0.869,
+    "movement": 0.116,
+    "density": 0.92,
+    "space": 0.037,
+    "aggression": 0.162
+  },
+  "macros": {
+    "CHARACTER": 0.369,
+    "MOVEMENT": 0.116,
+    "COUPLING": 0.093,
+    "SPACE": 0.059
+  },
+  "tags": [
+    "entangled",
+    "stillness",
+    "trapped"
+  ]
+}

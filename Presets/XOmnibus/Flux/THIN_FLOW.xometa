@@ -1,0 +1,48 @@
+{
+  "name": "THIN FLOW",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OUROBOROS",
+    "ONSET"
+  ],
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.5312,
+      "macro_movement": 0.5659,
+      "macro_coupling": 0.7925,
+      "macro_space": 0.17
+    },
+    "ONSET": {
+      "macro_character": 0.079,
+      "macro_movement": 0.8708,
+      "macro_coupling": 0.6197,
+      "macro_space": 0.2408
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OUROBOROS",
+    "target": "ONSET",
+    "amount": 0.8477
+  },
+  "dna": {
+    "brightness": 0.694,
+    "warmth": 0.0389,
+    "movement": 0.046,
+    "density": 0.0644,
+    "space": 0.7961,
+    "aggression": 0.2934
+  },
+  "macros": {
+    "CHARACTER": 0.1431,
+    "MOVEMENT": 0.4611,
+    "COUPLING": 0.254,
+    "SPACE": 0.2553
+  },
+  "tags": [
+    "flux",
+    "sparse",
+    "minimal"
+  ]
+}

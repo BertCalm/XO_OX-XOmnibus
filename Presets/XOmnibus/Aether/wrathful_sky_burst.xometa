@@ -1,0 +1,49 @@
+{
+  "name": "WRATHFUL SKY BURST",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ODDOSCAR",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.829,
+      "macro_movement": 0.58,
+      "macro_coupling": 0.588,
+      "macro_space": 0.482
+    },
+    "OSTERIA": {
+      "macro_character": 0.129,
+      "macro_movement": 0.575,
+      "macro_coupling": 0.868,
+      "macro_space": 0.486
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ODDOSCAR",
+    "target": "OSTERIA",
+    "amount": 0.663
+  },
+  "dna": {
+    "brightness": 0.125,
+    "warmth": 0.317,
+    "movement": 0.575,
+    "density": 0.074,
+    "space": 0.466,
+    "aggression": 0.925
+  },
+  "macros": {
+    "CHARACTER": 0.304,
+    "MOVEMENT": 0.575,
+    "COUPLING": 0.162,
+    "SPACE": 0.466
+  },
+  "tags": [
+    "aether",
+    "violent",
+    "transcendence",
+    "aggression-xhigh"
+  ]
+}

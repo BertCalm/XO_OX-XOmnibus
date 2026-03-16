@@ -1,0 +1,48 @@
+{
+  "name": "ARCTIC ORIGIN",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OTTONI",
+    "OSPREY"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.706,
+      "macro_movement": 0.561,
+      "macro_coupling": 0.112,
+      "macro_space": 0.945
+    },
+    "OSPREY": {
+      "macro_character": 0.691,
+      "macro_movement": 0.149,
+      "macro_coupling": 0.036,
+      "macro_space": 0.369
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OTTONI",
+    "target": "OSPREY",
+    "amount": 0.632
+  },
+  "dna": {
+    "brightness": 0.051,
+    "warmth": 0.083,
+    "movement": 0.829,
+    "density": 0.044,
+    "space": 0.066,
+    "aggression": 0.131
+  },
+  "macros": {
+    "CHARACTER": 0.43,
+    "MOVEMENT": 0.042,
+    "COUPLING": 0.365,
+    "SPACE": 0.933
+  },
+  "tags": [
+    "family",
+    "cold",
+    "xlow-warmth"
+  ]
+}

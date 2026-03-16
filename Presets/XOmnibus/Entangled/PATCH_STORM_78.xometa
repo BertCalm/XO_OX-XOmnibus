@@ -1,0 +1,48 @@
+{
+  "name": "PATCH STORM 78",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORPHICA",
+    "OMBRE"
+  ],
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.17,
+      "macro_movement": 0.937,
+      "macro_coupling": 0.079,
+      "macro_space": 0.871
+    },
+    "OMBRE": {
+      "macro_character": 0.62,
+      "macro_movement": 0.959,
+      "macro_coupling": 0.241,
+      "macro_space": 0.913
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ORPHICA",
+    "target": "OMBRE",
+    "amount": 0.572
+  },
+  "dna": {
+    "brightness": 0.461,
+    "warmth": 0.254,
+    "movement": 0.948,
+    "density": 0.255,
+    "space": 0.009,
+    "aggression": 0.902
+  },
+  "macros": {
+    "CHARACTER": 0.901,
+    "MOVEMENT": 0.948,
+    "COUPLING": 0.678,
+    "SPACE": 0.158
+  },
+  "tags": [
+    "entangled",
+    "rupture",
+    "intensity"
+  ]
+}

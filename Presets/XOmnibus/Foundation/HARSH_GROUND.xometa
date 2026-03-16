@@ -1,0 +1,48 @@
+{
+  "name": "HARSH GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OVERBITE",
+    "OVERDUB"
+  ],
+  "parameters": {
+    "OVERBITE": {
+      "macro_character": 0.308,
+      "macro_movement": 0.406,
+      "macro_coupling": 0.363,
+      "macro_space": 0.41
+    },
+    "OVERDUB": {
+      "macro_character": 0.357,
+      "macro_movement": 0.325,
+      "macro_coupling": 0.524,
+      "macro_space": 0.381
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OVERBITE",
+    "target": "OVERDUB",
+    "amount": 0.694
+  },
+  "dna": {
+    "brightness": 0.679,
+    "warmth": 0.952,
+    "movement": 0.72,
+    "density": 0.279,
+    "space": 0.415,
+    "aggression": 0.943
+  },
+  "macros": {
+    "CHARACTER": 0.597,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.694,
+    "SPACE": 0.415
+  },
+  "tags": [
+    "foundation",
+    "aggressive",
+    "harsh"
+  ]
+}

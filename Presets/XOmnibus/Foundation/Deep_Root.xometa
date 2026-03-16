@@ -1,55 +1,49 @@
 {
-  "schema_version": 1,
-  "name": "Deep Root",
+  "name": "DEEP ROOT",
+  "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "Organon"
+    "ODDFELIX",
+    "OBLONG"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Subterranean bass pad with slow metabolism and earth-heavy isotopes.",
-  "tags": [
-    "bass",
-    "sub",
-    "deep",
-    "grounding"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-10",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
-  },
   "parameters": {
-    "Organon": {
-      "organon_metabolicRate": 0.3,
-      "organon_enzymeSelect": 200.0,
-      "organon_catalystDrive": 0.6,
-      "organon_dampingCoeff": 0.2,
-      "organon_signalFlux": 0.7,
-      "organon_phasonShift": 0.0,
-      "organon_isotopeBalance": 0.1,
-      "organon_lockIn": 0.0,
-      "organon_membrane": 0.1,
-      "organon_noiseColor": 0.2
+    "ODDFELIX": {
+      "macro_character": 0.308,
+      "macro_movement": 0.749,
+      "macro_coupling": 0.569,
+      "macro_space": 0.289
+    },
+    "OBLONG": {
+      "macro_character": 0.124,
+      "macro_movement": 0.689,
+      "macro_coupling": 0.7,
+      "macro_space": 0.943
     }
   },
-  "coupling": null,
-  "sequencer": null,
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ODDFELIX",
+    "target": "OBLONG",
+    "amount": 0.4
+  },
   "dna": {
-    "brightness": 0.1,
-    "warmth": 0.8,
-    "movement": 0.2,
-    "density": 0.5,
-    "space": 0.1,
-    "aggression": 0.2
-  }
+    "brightness": 0.102,
+    "warmth": 0.455,
+    "movement": 0.941,
+    "density": 0.745,
+    "space": 0.696,
+    "aggression": 0.243
+  },
+  "macros": {
+    "CHARACTER": 0.216,
+    "MOVEMENT": 0.719,
+    "COUPLING": 0.634,
+    "SPACE": 0.616
+  },
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme",
+    "high-movement"
+  ]
 }

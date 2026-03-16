@@ -1,0 +1,48 @@
+{
+  "name": "BARE LINEAGE",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODYSSEY",
+    "OWLFISH"
+  ],
+  "parameters": {
+    "ODYSSEY": {
+      "macro_character": 0.608,
+      "macro_movement": 0.066,
+      "macro_coupling": 0.275,
+      "macro_space": 0.633
+    },
+    "OWLFISH": {
+      "macro_character": 0.548,
+      "macro_movement": 0.325,
+      "macro_coupling": 0.995,
+      "macro_space": 0.531
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_LOCK",
+    "source": "ODYSSEY",
+    "target": "OWLFISH",
+    "amount": 0.572
+  },
+  "dna": {
+    "brightness": 0.031,
+    "warmth": 0.999,
+    "movement": 0.847,
+    "density": 0.063,
+    "space": 0.108,
+    "aggression": 0.012
+  },
+  "macros": {
+    "CHARACTER": 0.605,
+    "MOVEMENT": 0.099,
+    "COUPLING": 0.702,
+    "SPACE": 0.853
+  },
+  "tags": [
+    "family",
+    "sparse",
+    "xlow-density"
+  ]
+}

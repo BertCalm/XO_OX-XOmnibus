@@ -1,0 +1,48 @@
+{
+  "name": "BARE FLUX",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OCELOT",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "macro_character": 0.6389,
+      "macro_movement": 0.4243,
+      "macro_coupling": 0.2501,
+      "macro_space": 0.8453
+    },
+    "OPTIC": {
+      "macro_character": 0.1992,
+      "macro_movement": 0.3847,
+      "macro_coupling": 0.4832,
+      "macro_space": 0.2372
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OCELOT",
+    "target": "OPTIC",
+    "amount": 0.6432
+  },
+  "dna": {
+    "brightness": 0.8046,
+    "warmth": 0.9012,
+    "movement": 0.0964,
+    "density": 0.0209,
+    "space": 0.158,
+    "aggression": 0.4417
+  },
+  "macros": {
+    "CHARACTER": 0.5748,
+    "MOVEMENT": 0.9927,
+    "COUPLING": 0.2952,
+    "SPACE": 0.9779
+  },
+  "tags": [
+    "flux",
+    "sparse",
+    "minimal"
+  ]
+}

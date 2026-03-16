@@ -1,0 +1,48 @@
+{
+  "name": "ENTANGLED EDGE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBLIQUE",
+    "OTTONI"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.41,
+      "macro_movement": 0.101,
+      "macro_coupling": 0.222,
+      "macro_space": 0.499
+    },
+    "OTTONI": {
+      "macro_character": 0.624,
+      "macro_movement": 0.115,
+      "macro_coupling": 0.279,
+      "macro_space": 0.208
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBLIQUE",
+    "target": "OTTONI",
+    "amount": 0.346
+  },
+  "dna": {
+    "brightness": 0.61,
+    "warmth": 0.431,
+    "movement": 0.108,
+    "density": 0.227,
+    "space": 0.114,
+    "aggression": 0.818
+  },
+  "macros": {
+    "CHARACTER": 0.887,
+    "MOVEMENT": 0.108,
+    "COUPLING": 0.172,
+    "SPACE": 0.254
+  },
+  "tags": [
+    "entangled",
+    "stillness",
+    "entangled"
+  ]
+}

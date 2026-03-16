@@ -1,0 +1,48 @@
+{
+  "name": "DELUGE 19",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OCEANIC",
+    "OMBRE"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.193,
+      "macro_movement": 0.905,
+      "macro_coupling": 0.12,
+      "macro_space": 0.536
+    },
+    "OMBRE": {
+      "macro_character": 0.762,
+      "macro_movement": 0.892,
+      "macro_coupling": 0.185,
+      "macro_space": 0.216
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OCEANIC",
+    "target": "OMBRE",
+    "amount": 0.742
+  },
+  "dna": {
+    "brightness": 0.725,
+    "warmth": 0.977,
+    "movement": 0.899,
+    "density": 0.525,
+    "space": 0.283,
+    "aggression": 0.55
+  },
+  "macros": {
+    "CHARACTER": 0.194,
+    "MOVEMENT": 0.899,
+    "COUPLING": 0.227,
+    "SPACE": 0.179
+  },
+  "tags": [
+    "entangled",
+    "kinetic",
+    "turbulent"
+  ]
+}

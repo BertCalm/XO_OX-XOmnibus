@@ -1,0 +1,49 @@
+{
+  "name": "ANNIHILATE KNOT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBLIQUE",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.234,
+      "macro_movement": 0.321,
+      "macro_coupling": 0.34,
+      "macro_space": 0.726
+    },
+    "ODYSSEY": {
+      "macro_character": 0.389,
+      "macro_movement": 0.855,
+      "macro_coupling": 0.677,
+      "macro_space": 0.497
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OBLIQUE",
+    "target": "ODYSSEY",
+    "amount": 0.663
+  },
+  "dna": {
+    "brightness": 0.517,
+    "warmth": 0.648,
+    "movement": 0.236,
+    "density": 0.315,
+    "space": 0.039,
+    "aggression": 0.926
+  },
+  "macros": {
+    "CHARACTER": 0.466,
+    "MOVEMENT": 0.208,
+    "COUPLING": 0.105,
+    "SPACE": 0.417
+  },
+  "tags": [
+    "fury",
+    "chaos",
+    "entangled",
+    "violent"
+  ]
+}

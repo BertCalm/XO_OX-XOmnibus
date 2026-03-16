@@ -1,0 +1,50 @@
+{
+  "name": "VIOLENT ATMOSPHERE",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OBBLIGATO",
+    "OCTOPUS"
+  ],
+  "parameters": {
+    "OBBLIGATO": {
+      "macro_character": 0.575,
+      "macro_movement": 0.462,
+      "macro_coupling": 0.277,
+      "macro_space": 0.39
+    },
+    "OCTOPUS": {
+      "macro_character": 0.682,
+      "macro_movement": 0.827,
+      "macro_coupling": 0.627,
+      "macro_space": 0.592
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBBLIGATO",
+    "target": "OCTOPUS",
+    "amount": 0.411
+  },
+  "dna": {
+    "brightness": 0.118,
+    "warmth": 0.571,
+    "movement": 0.113,
+    "density": 0.312,
+    "space": 0.459,
+    "aggression": 0.883
+  },
+  "macros": {
+    "CHARACTER": 0.615,
+    "MOVEMENT": 0.125,
+    "COUPLING": 0.899,
+    "SPACE": 0.459
+  },
+  "tags": [
+    "atmosphere",
+    "harsh",
+    "abrasive",
+    "hostile",
+    "aggression-xhigh"
+  ]
+}

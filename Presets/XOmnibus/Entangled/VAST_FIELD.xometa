@@ -1,0 +1,48 @@
+{
+  "name": "VAST FIELD",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORGANON",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.941,
+      "macro_movement": 0.08,
+      "macro_coupling": 0.458,
+      "macro_space": 0.693
+    },
+    "OCEANIC": {
+      "macro_character": 0.14,
+      "macro_movement": 0.066,
+      "macro_coupling": 0.253,
+      "macro_space": 0.408
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ORGANON",
+    "target": "OCEANIC",
+    "amount": 0.82
+  },
+  "dna": {
+    "brightness": 0.522,
+    "warmth": 0.523,
+    "movement": 0.073,
+    "density": 0.643,
+    "space": 0.413,
+    "aggression": 0.812
+  },
+  "macros": {
+    "CHARACTER": 0.531,
+    "MOVEMENT": 0.073,
+    "COUPLING": 0.186,
+    "SPACE": 0.396
+  },
+  "tags": [
+    "entangled",
+    "stillness",
+    "vast"
+  ]
+}

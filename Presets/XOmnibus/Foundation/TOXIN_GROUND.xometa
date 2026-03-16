@@ -1,0 +1,48 @@
+{
+  "name": "TOXIN GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OMBRE",
+    "OBSIDIAN"
+  ],
+  "parameters": {
+    "OMBRE": {
+      "macro_character": 0.436,
+      "macro_movement": 0.662,
+      "macro_coupling": 0.374,
+      "macro_space": 0.419
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.773,
+      "macro_movement": 0.389,
+      "macro_coupling": 0.526,
+      "macro_space": 0.375
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OMBRE",
+    "target": "OBSIDIAN",
+    "amount": 0.782
+  },
+  "dna": {
+    "brightness": 0.887,
+    "warmth": 0.533,
+    "movement": 0.262,
+    "density": 0.708,
+    "space": 0.711,
+    "aggression": 0.935
+  },
+  "macros": {
+    "CHARACTER": 0.313,
+    "MOVEMENT": 0.262,
+    "COUPLING": 0.782,
+    "SPACE": 0.711
+  },
+  "tags": [
+    "foundation",
+    "aggressive",
+    "harsh"
+  ]
+}

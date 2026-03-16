@@ -1,0 +1,48 @@
+{
+  "name": "CRYO FLUX 2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OPAL",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.0857,
+      "macro_movement": 0.486,
+      "macro_coupling": 0.0692,
+      "macro_space": 0.7606
+    },
+    "ORACLE": {
+      "macro_character": 0.7658,
+      "macro_movement": 0.1284,
+      "macro_coupling": 0.4753,
+      "macro_space": 0.5498
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OPAL",
+    "target": "ORACLE",
+    "amount": 0.459
+  },
+  "dna": {
+    "brightness": 0.9291,
+    "warmth": 0.0219,
+    "movement": 0.9826,
+    "density": 0.8317,
+    "space": 0.3075,
+    "aggression": 0.0579
+  },
+  "macros": {
+    "CHARACTER": 0.8724,
+    "MOVEMENT": 0.4231,
+    "COUPLING": 0.2118,
+    "SPACE": 0.5393
+  },
+  "tags": [
+    "flux",
+    "cold",
+    "shifting"
+  ]
+}

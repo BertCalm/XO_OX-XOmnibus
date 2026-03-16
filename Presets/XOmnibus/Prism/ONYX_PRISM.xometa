@@ -1,0 +1,48 @@
+{
+  "name": "ONYX PRISM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OBLIQUE",
+    "OWLFISH"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.009,
+      "macro_movement": 0.118,
+      "macro_coupling": 0.714,
+      "macro_space": 0.004
+    },
+    "OWLFISH": {
+      "macro_character": 0.31,
+      "macro_movement": 0.301,
+      "macro_coupling": 0.562,
+      "macro_space": 0.945
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBLIQUE",
+    "target": "OWLFISH",
+    "amount": 0.532
+  },
+  "dna": {
+    "brightness": 0.041,
+    "warmth": 0.257,
+    "movement": 0.897,
+    "density": 0.723,
+    "space": 0.922,
+    "aggression": 0.304
+  },
+  "macros": {
+    "CHARACTER": 0.258,
+    "MOVEMENT": 0.485,
+    "COUPLING": 0.61,
+    "SPACE": 0.241
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "spectrum"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "FURY GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OSPREY",
+    "OHM"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.353,
+      "macro_movement": 0.474,
+      "macro_coupling": 0.5,
+      "macro_space": 0.239
+    },
+    "OHM": {
+      "macro_character": 0.735,
+      "macro_movement": 0.598,
+      "macro_coupling": 0.411,
+      "macro_space": 0.59
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OSPREY",
+    "target": "OHM",
+    "amount": 0.618
+  },
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.303,
+    "movement": 0.769,
+    "density": 0.067,
+    "space": 0.614,
+    "aggression": 0.924
+  },
+  "macros": {
+    "CHARACTER": 0.338,
+    "MOVEMENT": 0.769,
+    "COUPLING": 0.618,
+    "SPACE": 0.614
+  },
+  "tags": [
+    "foundation",
+    "aggressive",
+    "harsh"
+  ]
+}

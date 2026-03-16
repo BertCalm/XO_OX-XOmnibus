@@ -1,0 +1,49 @@
+{
+  "name": "VELVET BIND",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORIGAMI",
+    "OCTOPUS"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.118,
+      "macro_movement": 0.764,
+      "macro_coupling": 0.417,
+      "macro_space": 0.106
+    },
+    "OCTOPUS": {
+      "macro_character": 0.792,
+      "macro_movement": 0.723,
+      "macro_coupling": 0.879,
+      "macro_space": 0.828
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ORIGAMI",
+    "target": "OCTOPUS",
+    "amount": 0.759
+  },
+  "dna": {
+    "brightness": 0.899,
+    "warmth": 0.865,
+    "movement": 0.067,
+    "density": 0.337,
+    "space": 0.659,
+    "aggression": 0.048
+  },
+  "macros": {
+    "CHARACTER": 0.766,
+    "MOVEMENT": 0.822,
+    "COUPLING": 0.721,
+    "SPACE": 0.284
+  },
+  "tags": [
+    "soft",
+    "delicate",
+    "yielding",
+    "tender"
+  ]
+}

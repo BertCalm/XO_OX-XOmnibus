@@ -1,0 +1,49 @@
+{
+  "name": "OPEN CATHEDRAL GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ORPHICA",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.882,
+      "macro_movement": 0.244,
+      "macro_coupling": 0.465,
+      "macro_space": 0.994
+    },
+    "OSTERIA": {
+      "macro_character": 0.379,
+      "macro_movement": 0.223,
+      "macro_coupling": 0.851,
+      "macro_space": 0.968
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ORPHICA",
+    "target": "OSTERIA",
+    "amount": 0.448
+  },
+  "dna": {
+    "brightness": 0.808,
+    "warmth": 0.538,
+    "movement": 0.27,
+    "density": 0.483,
+    "space": 0.987,
+    "aggression": 0.128
+  },
+  "macros": {
+    "CHARACTER": 0.798,
+    "MOVEMENT": 0.27,
+    "COUPLING": 0.34,
+    "SPACE": 0.987
+  },
+  "tags": [
+    "foundation",
+    "vast",
+    "open",
+    "space-xhigh"
+  ]
+}
