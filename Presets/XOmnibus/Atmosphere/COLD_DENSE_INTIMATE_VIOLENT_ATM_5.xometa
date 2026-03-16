@@ -1,0 +1,50 @@
+{
+  "name": "COLD_DENSE_INTIMATE_VIOLENT_ATM_5",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OSPREY",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.61,
+      "macro_movement": 0.522,
+      "macro_coupling": 0.562,
+      "macro_space": 0.068
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.612,
+      "macro_movement": 0.536,
+      "macro_coupling": 0.482,
+      "macro_space": 0.061
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OSPREY",
+    "target": "ODDOSCAR",
+    "amount": 0.872
+  },
+  "dna": {
+    "brightness": 0.629,
+    "warmth": 0.066,
+    "movement": 0.586,
+    "density": 0.933,
+    "space": 0.069,
+    "aggression": 0.865
+  },
+  "macros": {
+    "CHARACTER": 0.61,
+    "MOVEMENT": 0.522,
+    "COUPLING": 0.562,
+    "SPACE": 0.068
+  },
+  "tags": [
+    "atmosphere",
+    "cold",
+    "dense",
+    "intimate",
+    "violent"
+  ]
+}

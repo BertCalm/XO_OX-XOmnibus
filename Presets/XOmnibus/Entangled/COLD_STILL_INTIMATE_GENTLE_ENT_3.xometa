@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "name": "COLD_STILL_INTIMATE_GENTLE_ENT_3",
+  "mood": "Entangled",
+  "engines": [
+    "OWLFISH",
+    "ORBITAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cold Still Intimate Gentle character entanglement \u2014 OWLFISH \u00d7 ORBITAL via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "tags": [
+    "entangled",
+    "cold",
+    "still",
+    "intimate",
+    "gentle",
+    "resonant"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "FEEDING",
+    "DEFENSE",
+    "PRESSURE"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.6117,
+    "warmth": 0.0711,
+    "movement": 0.0965,
+    "density": 0.5527,
+    "space": 0.1093,
+    "aggression": 0.0269
+  },
+  "sonic_dna": {
+    "brightness": 0.6117,
+    "warmth": 0.0711,
+    "movement": 0.0965,
+    "density": 0.5527,
+    "space": 0.1093,
+    "aggression": 0.0269
+  },
+  "parameters": {
+    "OWLFISH": {
+      "macro_character": 0.4755,
+      "macro_movement": 0.0725,
+      "macro_coupling": 0.5728,
+      "macro_space": 0.144,
+      "filter_cutoff": 0.6294,
+      "filter_resonance": 0.1526,
+      "amp_attack": 0.4148,
+      "amp_release": 0.1459,
+      "reverb_mix": 0.2304,
+      "reverb_size": 0.2409,
+      "drive": 0.0601,
+      "density": 0.5752,
+      "output_level": 0.8675,
+      "coupling_level": 0.5474
+    },
+    "ORBITAL": {
+      "macro_character": 0.482,
+      "macro_movement": 0.0859,
+      "macro_coupling": 0.6406,
+      "macro_space": 0.1288,
+      "filter_cutoff": 0.6598,
+      "filter_resonance": 0.1044,
+      "amp_attack": 0.4493,
+      "amp_release": 0.1653,
+      "reverb_mix": 0.2099,
+      "reverb_size": 0.2995,
+      "drive": 0.073,
+      "density": 0.5768,
+      "output_level": 0.8564,
+      "coupling_level": 0.5271
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OWLFISH",
+    "target": "ORBITAL",
+    "amount": 0.8056,
+    "pairs": [
+      {
+        "source": "OWLFISH",
+        "target": "ORBITAL",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.8056
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.3414,
+    "MOVEMENT": 0.0965,
+    "COUPLING": 0.8056,
+    "SPACE": 0.1093
+  }
+}

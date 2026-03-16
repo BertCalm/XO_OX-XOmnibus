@@ -1,0 +1,52 @@
+{
+  "name": "HOT_KINETIC_DENSE_VIOLENT_FND_1",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ORACLE",
+    "OBSIDIAN"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.278,
+      "macro_movement": 0.12,
+      "macro_coupling": 0.551,
+      "macro_space": 0.753
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.45,
+      "macro_movement": 0.272,
+      "macro_coupling": 0.473,
+      "macro_space": 0.798
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORACLE",
+    "target": "OBSIDIAN",
+    "amount": 0.405
+  },
+  "dna": {
+    "brightness": 0.495,
+    "warmth": 0.9,
+    "movement": 0.912,
+    "density": 0.86,
+    "space": 0.686,
+    "aggression": 0.884
+  },
+  "macros": {
+    "CHARACTER": 0.574,
+    "MOVEMENT": 0.845,
+    "COUPLING": 0.231,
+    "SPACE": 0.533
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "hot",
+    "kinetic",
+    "dense",
+    "violent",
+    "aggressive"
+  ]
+}

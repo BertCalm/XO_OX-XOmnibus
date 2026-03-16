@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_WARM_STILL_SPARSE_FND_5",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OVERWORLD",
+    "OVERBITE"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.211,
+      "macro_movement": 0.242,
+      "macro_coupling": 0.173,
+      "macro_space": 0.542
+    },
+    "OVERBITE": {
+      "macro_character": 0.155,
+      "macro_movement": 0.295,
+      "macro_coupling": 0.302,
+      "macro_space": 0.753
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OVERWORLD",
+    "target": "OVERBITE",
+    "amount": 0.85
+  },
+  "dna": {
+    "brightness": 0.912,
+    "warmth": 0.971,
+    "movement": 0.082,
+    "density": 0.114,
+    "space": 0.659,
+    "aggression": 0.415
+  },
+  "macros": {
+    "CHARACTER": 0.63,
+    "MOVEMENT": 0.296,
+    "COUPLING": 0.443,
+    "SPACE": 0.385
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "warm",
+    "still",
+    "sparse"
+  ]
+}

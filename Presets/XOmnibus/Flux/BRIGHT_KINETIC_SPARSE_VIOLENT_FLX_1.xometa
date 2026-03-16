@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_KINETIC_SPARSE_VIOLENT_FLX_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBLIQUE",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.8087,
+      "macro_movement": 0.9373,
+      "macro_coupling": 0.7541,
+      "macro_space": 0.325
+    },
+    "OPTIC": {
+      "macro_character": 0.8178,
+      "macro_movement": 0.8596,
+      "macro_coupling": 0.9389,
+      "macro_space": 0.519
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OBLIQUE",
+    "target": "OPTIC",
+    "amount": 0.6009
+  },
+  "dna": {
+    "brightness": 0.9367,
+    "warmth": 0.5515,
+    "movement": 0.8889,
+    "density": 0.1187,
+    "space": 0.4346,
+    "aggression": 0.9037
+  },
+  "macros": {
+    "CHARACTER": 0.8087,
+    "MOVEMENT": 0.9373,
+    "COUPLING": 0.7541,
+    "SPACE": 0.325
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "high-brightness",
+    "high-movement",
+    "low-density",
+    "high-aggression"
+  ]
+}

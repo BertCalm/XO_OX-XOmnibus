@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_VAST_GENTLE_PRS_5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OLE",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.538,
+      "macro_movement": 0.586,
+      "macro_coupling": 0.604,
+      "macro_space": 0.907
+    },
+    "OBLIQUE": {
+      "macro_character": 0.066,
+      "macro_movement": 0.586,
+      "macro_coupling": 0.379,
+      "macro_space": 0.907
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OLE",
+    "target": "OBLIQUE",
+    "amount": 0.592
+  },
+  "dna": {
+    "brightness": 0.972,
+    "warmth": 0.885,
+    "movement": 0.586,
+    "density": 0.395,
+    "space": 0.907,
+    "aggression": 0.104
+  },
+  "macros": {
+    "CHARACTER": 0.538,
+    "MOVEMENT": 0.586,
+    "COUPLING": 0.604,
+    "SPACE": 0.907
+  },
+  "tags": [
+    "prism",
+    "bright",
+    "warm",
+    "vast",
+    "gentle"
+  ]
+}

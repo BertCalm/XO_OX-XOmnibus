@@ -1,0 +1,52 @@
+{
+  "name": "DARK_COLD_SPARSE_VAST_FLX_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OPAL",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.1474,
+      "macro_movement": 0.4243,
+      "macro_coupling": 0.4565,
+      "macro_space": 0.8161
+    },
+    "ORGANON": {
+      "macro_character": 0.2277,
+      "macro_movement": 0.2754,
+      "macro_coupling": 0.6052,
+      "macro_space": 0.8617
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OPAL",
+    "target": "ORGANON",
+    "amount": 0.6819
+  },
+  "dna": {
+    "brightness": 0.081,
+    "warmth": 0.0442,
+    "movement": 0.3687,
+    "density": 0.0421,
+    "space": 0.9475,
+    "aggression": 0.5325
+  },
+  "macros": {
+    "CHARACTER": 0.1474,
+    "MOVEMENT": 0.4243,
+    "COUPLING": 0.4565,
+    "SPACE": 0.8161
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-brightness",
+    "low-warmth",
+    "low-density",
+    "high-space"
+  ]
+}

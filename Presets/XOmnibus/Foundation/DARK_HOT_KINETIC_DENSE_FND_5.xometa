@@ -1,0 +1,51 @@
+{
+  "name": "DARK_HOT_KINETIC_DENSE_FND_5",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ODDFELIX",
+    "OVERDUB"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.404,
+      "macro_movement": 0.586,
+      "macro_coupling": 0.529,
+      "macro_space": 0.365
+    },
+    "OVERDUB": {
+      "macro_character": 0.398,
+      "macro_movement": 0.836,
+      "macro_coupling": 0.402,
+      "macro_space": 0.801
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ODDFELIX",
+    "target": "OVERDUB",
+    "amount": 0.942
+  },
+  "dna": {
+    "brightness": 0.121,
+    "warmth": 0.936,
+    "movement": 0.921,
+    "density": 0.919,
+    "space": 0.325,
+    "aggression": 0.429
+  },
+  "macros": {
+    "CHARACTER": 0.814,
+    "MOVEMENT": 0.724,
+    "COUPLING": 0.81,
+    "SPACE": 0.739
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "dark",
+    "hot",
+    "kinetic",
+    "dense"
+  ]
+}

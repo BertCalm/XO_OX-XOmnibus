@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_KINETIC_GENTLE_ATM_1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORBITAL",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.597,
+      "macro_movement": 0.822,
+      "macro_coupling": 0.53,
+      "macro_space": 0.687
+    },
+    "ODDFELIX": {
+      "macro_character": 0.713,
+      "macro_movement": 0.75,
+      "macro_coupling": 0.672,
+      "macro_space": 0.558
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORBITAL",
+    "target": "ODDFELIX",
+    "amount": 0.824
+  },
+  "dna": {
+    "brightness": 0.872,
+    "warmth": 0.913,
+    "movement": 0.923,
+    "density": 0.485,
+    "space": 0.622,
+    "aggression": 0.045
+  },
+  "macros": {
+    "CHARACTER": 0.597,
+    "MOVEMENT": 0.822,
+    "COUPLING": 0.53,
+    "SPACE": 0.687
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "warm",
+    "kinetic",
+    "gentle"
+  ]
+}

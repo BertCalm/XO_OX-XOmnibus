@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_WARM_DENSE_VAST_FND_1",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBLONG",
+    "ONSET"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.695,
+      "macro_movement": 0.739,
+      "macro_coupling": 0.544,
+      "macro_space": 0.245
+    },
+    "ONSET": {
+      "macro_character": 0.754,
+      "macro_movement": 0.785,
+      "macro_coupling": 0.586,
+      "macro_space": 0.608
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBLONG",
+    "target": "ONSET",
+    "amount": 0.657
+  },
+  "dna": {
+    "brightness": 0.957,
+    "warmth": 0.924,
+    "movement": 0.434,
+    "density": 0.956,
+    "space": 0.897,
+    "aggression": 0.316
+  },
+  "macros": {
+    "CHARACTER": 0.723,
+    "MOVEMENT": 0.614,
+    "COUPLING": 0.695,
+    "SPACE": 0.469
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "warm",
+    "dense",
+    "vast",
+    "spatial"
+  ]
+}

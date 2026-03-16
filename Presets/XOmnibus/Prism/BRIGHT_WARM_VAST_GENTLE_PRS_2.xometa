@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_VAST_GENTLE_PRS_2",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ORACLE",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.504,
+      "macro_movement": 0.356,
+      "macro_coupling": 0.544,
+      "macro_space": 0.916
+    },
+    "ORPHICA": {
+      "macro_character": 0.121,
+      "macro_movement": 0.356,
+      "macro_coupling": 0.589,
+      "macro_space": 0.916
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "ORACLE",
+    "target": "ORPHICA",
+    "amount": 0.876
+  },
+  "dna": {
+    "brightness": 0.883,
+    "warmth": 0.924,
+    "movement": 0.356,
+    "density": 0.373,
+    "space": 0.916,
+    "aggression": 0.126
+  },
+  "macros": {
+    "CHARACTER": 0.504,
+    "MOVEMENT": 0.356,
+    "COUPLING": 0.544,
+    "SPACE": 0.916
+  },
+  "tags": [
+    "prism",
+    "bright",
+    "warm",
+    "vast",
+    "gentle"
+  ]
+}

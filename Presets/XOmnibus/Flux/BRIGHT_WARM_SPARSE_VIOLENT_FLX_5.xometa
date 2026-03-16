@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_WARM_SPARSE_VIOLENT_FLX_5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBLIQUE",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.8757,
+      "macro_movement": 0.6764,
+      "macro_coupling": 0.8186,
+      "macro_space": 0.6947
+    },
+    "ORACLE": {
+      "macro_character": 0.8416,
+      "macro_movement": 0.5725,
+      "macro_coupling": 0.8733,
+      "macro_space": 0.4156
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OBLIQUE",
+    "target": "ORACLE",
+    "amount": 0.963
+  },
+  "dna": {
+    "brightness": 0.9383,
+    "warmth": 0.9514,
+    "movement": 0.6424,
+    "density": 0.0742,
+    "space": 0.5501,
+    "aggression": 0.915
+  },
+  "macros": {
+    "CHARACTER": 0.8757,
+    "MOVEMENT": 0.6764,
+    "COUPLING": 0.8186,
+    "SPACE": 0.6947
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "high-brightness",
+    "high-warmth",
+    "low-density",
+    "high-aggression"
+  ]
+}

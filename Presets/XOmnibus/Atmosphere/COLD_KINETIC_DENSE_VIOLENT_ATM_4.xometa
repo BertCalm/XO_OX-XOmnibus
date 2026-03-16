@@ -1,0 +1,50 @@
+{
+  "name": "COLD_KINETIC_DENSE_VIOLENT_ATM_4",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OBSCURA",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.562,
+      "macro_movement": 0.903,
+      "macro_coupling": 0.73,
+      "macro_space": 0.539
+    },
+    "ORBITAL": {
+      "macro_character": 0.56,
+      "macro_movement": 0.823,
+      "macro_coupling": 0.468,
+      "macro_space": 0.471
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBSCURA",
+    "target": "ORBITAL",
+    "amount": 0.759
+  },
+  "dna": {
+    "brightness": 0.53,
+    "warmth": 0.097,
+    "movement": 0.893,
+    "density": 0.864,
+    "space": 0.587,
+    "aggression": 0.95
+  },
+  "macros": {
+    "CHARACTER": 0.562,
+    "MOVEMENT": 0.903,
+    "COUPLING": 0.73,
+    "SPACE": 0.539
+  },
+  "tags": [
+    "atmosphere",
+    "cold",
+    "kinetic",
+    "dense",
+    "violent"
+  ]
+}

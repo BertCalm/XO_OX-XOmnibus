@@ -1,0 +1,52 @@
+{
+  "name": "HOT_DENSE_VAST_GENTLE_FND_4",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBESE",
+    "OBSIDIAN"
+  ],
+  "parameters": {
+    "OBESE": {
+      "macro_character": 0.349,
+      "macro_movement": 0.542,
+      "macro_coupling": 0.882,
+      "macro_space": 0.65
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.868,
+      "macro_movement": 0.7,
+      "macro_coupling": 0.302,
+      "macro_space": 0.677
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBESE",
+    "target": "OBSIDIAN",
+    "amount": 0.657
+  },
+  "dna": {
+    "brightness": 0.522,
+    "warmth": 0.87,
+    "movement": 0.436,
+    "density": 0.947,
+    "space": 0.956,
+    "aggression": 0.043
+  },
+  "macros": {
+    "CHARACTER": 0.171,
+    "MOVEMENT": 0.201,
+    "COUPLING": 0.673,
+    "SPACE": 0.741
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "hot",
+    "dense",
+    "vast",
+    "gentle",
+    "spatial"
+  ]
+}

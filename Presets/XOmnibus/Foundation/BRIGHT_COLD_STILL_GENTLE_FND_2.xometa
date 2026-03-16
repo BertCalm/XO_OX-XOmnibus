@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_COLD_STILL_GENTLE_FND_2",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OVERWORLD",
+    "OBLONG"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.112,
+      "macro_movement": 0.43,
+      "macro_coupling": 0.476,
+      "macro_space": 0.278
+    },
+    "OBLONG": {
+      "macro_character": 0.344,
+      "macro_movement": 0.42,
+      "macro_coupling": 0.415,
+      "macro_space": 0.556
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OVERWORLD",
+    "target": "OBLONG",
+    "amount": 0.925
+  },
+  "dna": {
+    "brightness": 0.871,
+    "warmth": 0.102,
+    "movement": 0.102,
+    "density": 0.441,
+    "space": 0.546,
+    "aggression": 0.055
+  },
+  "macros": {
+    "CHARACTER": 0.866,
+    "MOVEMENT": 0.147,
+    "COUPLING": 0.698,
+    "SPACE": 0.841
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "cold",
+    "still",
+    "gentle"
+  ]
+}

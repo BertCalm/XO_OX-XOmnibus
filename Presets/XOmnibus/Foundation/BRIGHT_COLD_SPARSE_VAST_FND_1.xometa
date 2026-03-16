@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_COLD_SPARSE_VAST_FND_1",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBESE",
+    "OUROBOROS"
+  ],
+  "parameters": {
+    "OBESE": {
+      "macro_character": 0.592,
+      "macro_movement": 0.732,
+      "macro_coupling": 0.552,
+      "macro_space": 0.7
+    },
+    "OUROBOROS": {
+      "macro_character": 0.696,
+      "macro_movement": 0.33,
+      "macro_coupling": 0.62,
+      "macro_space": 0.618
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBESE",
+    "target": "OUROBOROS",
+    "amount": 0.849
+  },
+  "dna": {
+    "brightness": 0.887,
+    "warmth": 0.107,
+    "movement": 0.359,
+    "density": 0.124,
+    "space": 0.921,
+    "aggression": 0.439
+  },
+  "macros": {
+    "CHARACTER": 0.773,
+    "MOVEMENT": 0.696,
+    "COUPLING": 0.118,
+    "SPACE": 0.772
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "cold",
+    "sparse",
+    "vast",
+    "spatial"
+  ]
+}

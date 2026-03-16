@@ -1,0 +1,52 @@
+{
+  "name": "COLD_DENSE_INTIMATE_GENTLE_FLX_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ORIGAMI",
+    "ORGANON"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.2836,
+      "macro_movement": 0.259,
+      "macro_coupling": 0.1366,
+      "macro_space": 0.0955
+    },
+    "ORGANON": {
+      "macro_character": 0.3849,
+      "macro_movement": 0.3856,
+      "macro_coupling": 0.072,
+      "macro_space": 0.0948
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ORIGAMI",
+    "target": "ORGANON",
+    "amount": 0.5708
+  },
+  "dna": {
+    "brightness": 0.4016,
+    "warmth": 0.1339,
+    "movement": 0.3417,
+    "density": 0.9591,
+    "space": 0.065,
+    "aggression": 0.1365
+  },
+  "macros": {
+    "CHARACTER": 0.2836,
+    "MOVEMENT": 0.259,
+    "COUPLING": 0.1366,
+    "SPACE": 0.0955
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-warmth",
+    "high-density",
+    "low-space",
+    "low-aggression"
+  ]
+}

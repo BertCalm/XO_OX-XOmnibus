@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_FND_3",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ORIGAMI",
+    "OVERDUB"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.491,
+      "macro_movement": 0.632,
+      "macro_coupling": 0.748,
+      "macro_space": 0.243
+    },
+    "OVERDUB": {
+      "macro_character": 0.15,
+      "macro_movement": 0.495,
+      "macro_coupling": 0.851,
+      "macro_space": 0.275
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORIGAMI",
+    "target": "OVERDUB",
+    "amount": 0.479
+  },
+  "dna": {
+    "brightness": 0.958,
+    "warmth": 0.616,
+    "movement": 0.902,
+    "density": 0.537,
+    "space": 0.042,
+    "aggression": 0.932
+  },
+  "macros": {
+    "CHARACTER": 0.712,
+    "MOVEMENT": 0.525,
+    "COUPLING": 0.826,
+    "SPACE": 0.114
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "kinetic",
+    "intimate",
+    "violent",
+    "aggressive"
+  ]
+}

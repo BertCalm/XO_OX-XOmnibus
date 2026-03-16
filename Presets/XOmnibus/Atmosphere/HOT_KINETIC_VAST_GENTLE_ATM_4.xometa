@@ -1,0 +1,50 @@
+{
+  "name": "HOT_KINETIC_VAST_GENTLE_ATM_4",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OCEANIC",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.768,
+      "macro_movement": 0.862,
+      "macro_coupling": 0.855,
+      "macro_space": 0.763
+    },
+    "ORIGAMI": {
+      "macro_character": 0.43,
+      "macro_movement": 0.852,
+      "macro_coupling": 0.892,
+      "macro_space": 0.698
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OCEANIC",
+    "target": "ORIGAMI",
+    "amount": 0.862
+  },
+  "dna": {
+    "brightness": 0.472,
+    "warmth": 0.979,
+    "movement": 0.966,
+    "density": 0.379,
+    "space": 0.871,
+    "aggression": 0.061
+  },
+  "macros": {
+    "CHARACTER": 0.768,
+    "MOVEMENT": 0.862,
+    "COUPLING": 0.855,
+    "SPACE": 0.763
+  },
+  "tags": [
+    "atmosphere",
+    "warm",
+    "kinetic",
+    "vast",
+    "gentle"
+  ]
+}

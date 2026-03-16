@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_STILL_VAST_GENTLE_FLX_5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ORIGAMI",
+    "OBLONG"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.8221,
+      "macro_movement": 0.0577,
+      "macro_coupling": 0.1675,
+      "macro_space": 0.8242
+    },
+    "OBLONG": {
+      "macro_character": 0.7838,
+      "macro_movement": 0.1403,
+      "macro_coupling": 0.2604,
+      "macro_space": 0.8138
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "ORIGAMI",
+    "target": "OBLONG",
+    "amount": 0.9335
+  },
+  "dna": {
+    "brightness": 0.918,
+    "warmth": 0.6609,
+    "movement": 0.0891,
+    "density": 0.6505,
+    "space": 0.9288,
+    "aggression": 0.1394
+  },
+  "macros": {
+    "CHARACTER": 0.8221,
+    "MOVEMENT": 0.0577,
+    "COUPLING": 0.1675,
+    "SPACE": 0.8242
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "high-brightness",
+    "low-movement",
+    "high-space",
+    "low-aggression"
+  ]
+}

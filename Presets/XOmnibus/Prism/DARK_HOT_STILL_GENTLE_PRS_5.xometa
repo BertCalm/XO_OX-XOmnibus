@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_STILL_GENTLE_PRS_5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OHM",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.042,
+      "macro_movement": 0.092,
+      "macro_coupling": 0.839,
+      "macro_space": 0.368
+    },
+    "ORACLE": {
+      "macro_character": 0.496,
+      "macro_movement": 0.092,
+      "macro_coupling": 0.579,
+      "macro_space": 0.368
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OHM",
+    "target": "ORACLE",
+    "amount": 0.558
+  },
+  "dna": {
+    "brightness": 0.046,
+    "warmth": 0.924,
+    "movement": 0.092,
+    "density": 0.617,
+    "space": 0.368,
+    "aggression": 0.039
+  },
+  "macros": {
+    "CHARACTER": 0.042,
+    "MOVEMENT": 0.092,
+    "COUPLING": 0.839,
+    "SPACE": 0.368
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "hot",
+    "still",
+    "gentle"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "DARK_SPARSE_INTIMATE_VIOLENT_PRS_4",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OVERWORLD",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.523,
+      "macro_movement": 0.53,
+      "macro_coupling": 0.304,
+      "macro_space": 0.123
+    },
+    "ORPHICA": {
+      "macro_character": 0.954,
+      "macro_movement": 0.53,
+      "macro_coupling": 0.822,
+      "macro_space": 0.123
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OVERWORLD",
+    "target": "ORPHICA",
+    "amount": 0.711
+  },
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.605,
+    "movement": 0.53,
+    "density": 0.119,
+    "space": 0.123,
+    "aggression": 0.977
+  },
+  "macros": {
+    "CHARACTER": 0.523,
+    "MOVEMENT": 0.53,
+    "COUPLING": 0.304,
+    "SPACE": 0.123
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "sparse",
+    "intimate",
+    "violent"
+  ]
+}

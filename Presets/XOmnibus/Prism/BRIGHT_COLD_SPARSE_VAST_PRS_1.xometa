@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_COLD_SPARSE_VAST_PRS_1",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OSTERIA",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OSTERIA": {
+      "macro_character": 0.765,
+      "macro_movement": 0.415,
+      "macro_coupling": 0.662,
+      "macro_space": 0.943
+    },
+    "OPTIC": {
+      "macro_character": 0.315,
+      "macro_movement": 0.415,
+      "macro_coupling": 0.316,
+      "macro_space": 0.943
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OSTERIA",
+    "target": "OPTIC",
+    "amount": 0.526
+  },
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.093,
+    "movement": 0.415,
+    "density": 0.044,
+    "space": 0.943,
+    "aggression": 0.58
+  },
+  "macros": {
+    "CHARACTER": 0.765,
+    "MOVEMENT": 0.415,
+    "COUPLING": 0.662,
+    "SPACE": 0.943
+  },
+  "tags": [
+    "prism",
+    "bright",
+    "cold",
+    "sparse",
+    "vast"
+  ]
+}

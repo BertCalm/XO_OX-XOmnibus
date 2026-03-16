@@ -1,0 +1,52 @@
+{
+  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ODYSSEY",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "ODYSSEY": {
+      "macro_character": 0.2419,
+      "macro_movement": 0.9319,
+      "macro_coupling": 0.9249,
+      "macro_space": 0.4239
+    },
+    "OCEANIC": {
+      "macro_character": 0.2476,
+      "macro_movement": 0.9395,
+      "macro_coupling": 0.9067,
+      "macro_space": 0.3298
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ODYSSEY",
+    "target": "OCEANIC",
+    "amount": 0.9627
+  },
+  "dna": {
+    "brightness": 0.1266,
+    "warmth": 0.0684,
+    "movement": 0.9549,
+    "density": 0.6806,
+    "space": 0.4249,
+    "aggression": 0.9522
+  },
+  "macros": {
+    "CHARACTER": 0.2419,
+    "MOVEMENT": 0.9319,
+    "COUPLING": 0.9249,
+    "SPACE": 0.4239
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-brightness",
+    "low-warmth",
+    "high-movement",
+    "high-aggression"
+  ]
+}

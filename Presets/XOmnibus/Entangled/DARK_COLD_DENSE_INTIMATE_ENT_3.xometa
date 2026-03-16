@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "name": "DARK_COLD_DENSE_INTIMATE_ENT_3",
+  "mood": "Entangled",
+  "engines": [
+    "OPTIC",
+    "ODDOSCAR"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dark Cold Dense Intimate character entanglement \u2014 OPTIC \u00d7 ODDOSCAR via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "tags": [
+    "entangled",
+    "dark",
+    "cold",
+    "dense",
+    "intimate",
+    "resonant"
+  ],
+  "macroLabels": [
+    "LENS",
+    "PRISM",
+    "REFRACT",
+    "RAY"
+  ],
+  "couplingIntensity": "Medium",
+  "dna": {
+    "brightness": 0.0836,
+    "warmth": 0.1034,
+    "movement": 0.3902,
+    "density": 0.9242,
+    "space": 0.1079,
+    "aggression": 0.3134
+  },
+  "sonic_dna": {
+    "brightness": 0.0836,
+    "warmth": 0.1034,
+    "movement": 0.3902,
+    "density": 0.9242,
+    "space": 0.1079,
+    "aggression": 0.3134
+  },
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.3537,
+      "macro_movement": 0.4212,
+      "macro_coupling": 0.6826,
+      "macro_space": 0.0739,
+      "filter_cutoff": 0.2938,
+      "filter_resonance": 0.2949,
+      "amp_attack": 0.2809,
+      "amp_release": 0.2035,
+      "reverb_mix": 0.2408,
+      "reverb_size": 0.2811,
+      "drive": 0.2952,
+      "density": 0.9365,
+      "output_level": 0.9396,
+      "coupling_level": 0.6701
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.3307,
+      "macro_movement": 0.3767,
+      "macro_coupling": 0.7477,
+      "macro_space": 0.1006,
+      "filter_cutoff": 0.2628,
+      "filter_resonance": 0.2907,
+      "amp_attack": 0.2971,
+      "amp_release": 0.1775,
+      "reverb_mix": 0.1931,
+      "reverb_size": 0.2324,
+      "drive": 0.2921,
+      "density": 0.9282,
+      "output_level": 0.9303,
+      "coupling_level": 0.6398
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OPTIC",
+    "target": "ODDOSCAR",
+    "amount": 0.7388,
+    "pairs": [
+      {
+        "source": "OPTIC",
+        "target": "ODDOSCAR",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.7388
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.0935,
+    "MOVEMENT": 0.3902,
+    "COUPLING": 0.7388,
+    "SPACE": 0.1079
+  }
+}

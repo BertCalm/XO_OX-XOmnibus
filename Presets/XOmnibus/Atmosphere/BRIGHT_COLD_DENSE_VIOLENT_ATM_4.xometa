@@ -1,47 +1,50 @@
 {
-  "schema_version": 1,
-  "name": "BRIGHT COLD DENSE VIOLENT ATM 4",
+  "name": "BRIGHT_COLD_DENSE_VIOLENT_ATM_4",
+  "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "Overworld"
+    "ORGANON",
+    "OCEANIC"
   ],
-  "author": "XO_OX",
-  "version": "1.0.0",
-  "description": "Ultra-diverse Atmosphere preset: BRIGHT COLD DENSE VIOLENT ATM 4.",
-  "tags": [
-    "x-high-brightness",
-    "x-low-warmth",
-    "x-high-aggression",
-    "x-high-density"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "couplingIntensity": "None",
-  "tempo": null,
-  "created": "2026-03-16",
-  "legacy": {
-    "sourceInstrument": null,
-    "sourceCategory": null,
-    "sourcePresetName": null
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.473,
+      "macro_movement": 0.549,
+      "macro_coupling": 0.712,
+      "macro_space": 0.442
+    },
+    "OCEANIC": {
+      "macro_character": 0.332,
+      "macro_movement": 0.62,
+      "macro_coupling": 0.485,
+      "macro_space": 0.553
+    }
   },
-  "parameters": {},
   "coupling": {
-    "type": "RingMod",
-    "intensity": "None",
-    "sourceEngine": "Overworld",
-    "targetEngine": null
+    "type": "ENVELOPE_LINK",
+    "source": "ORGANON",
+    "target": "OCEANIC",
+    "amount": 0.856
   },
-  "sequencer": null,
   "dna": {
-    "brightness": 0.944,
-    "warmth": 0.076,
-    "aggression": 0.935,
-    "density": 0.92,
-    "movement": 0.527,
-    "space": 0.568
-  }
+    "brightness": 0.881,
+    "warmth": 0.034,
+    "movement": 0.634,
+    "density": 0.951,
+    "space": 0.485,
+    "aggression": 0.903
+  },
+  "macros": {
+    "CHARACTER": 0.473,
+    "MOVEMENT": 0.549,
+    "COUPLING": 0.712,
+    "SPACE": 0.442
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "cold",
+    "dense",
+    "violent"
+  ]
 }

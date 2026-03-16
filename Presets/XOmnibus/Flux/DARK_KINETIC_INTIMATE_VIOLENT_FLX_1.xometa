@@ -1,0 +1,52 @@
+{
+  "name": "DARK_KINETIC_INTIMATE_VIOLENT_FLX_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBLIQUE",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.1468,
+      "macro_movement": 0.8922,
+      "macro_coupling": 0.7512,
+      "macro_space": 0.172
+    },
+    "ORGANON": {
+      "macro_character": 0.1218,
+      "macro_movement": 0.9672,
+      "macro_coupling": 0.8036,
+      "macro_space": 0.0908
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OBLIQUE",
+    "target": "ORGANON",
+    "amount": 0.7417
+  },
+  "dna": {
+    "brightness": 0.122,
+    "warmth": 0.4993,
+    "movement": 0.8985,
+    "density": 0.3491,
+    "space": 0.1167,
+    "aggression": 0.891
+  },
+  "macros": {
+    "CHARACTER": 0.1468,
+    "MOVEMENT": 0.8922,
+    "COUPLING": 0.7512,
+    "SPACE": 0.172
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-brightness",
+    "high-movement",
+    "low-space",
+    "high-aggression"
+  ]
+}

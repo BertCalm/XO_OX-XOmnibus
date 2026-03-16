@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_WARM_DENSE_VAST_FND_4",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OUROBOROS",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.776,
+      "macro_movement": 0.326,
+      "macro_coupling": 0.765,
+      "macro_space": 0.359
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.731,
+      "macro_movement": 0.344,
+      "macro_coupling": 0.505,
+      "macro_space": 0.308
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OUROBOROS",
+    "target": "ODDOSCAR",
+    "amount": 0.219
+  },
+  "dna": {
+    "brightness": 0.964,
+    "warmth": 0.887,
+    "movement": 0.687,
+    "density": 0.902,
+    "space": 0.909,
+    "aggression": 0.367
+  },
+  "macros": {
+    "CHARACTER": 0.263,
+    "MOVEMENT": 0.774,
+    "COUPLING": 0.271,
+    "SPACE": 0.64
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "warm",
+    "dense",
+    "vast",
+    "spatial"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "HOT_STILL_SPARSE_VAST_FLX_5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ORACLE",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.3582,
+      "macro_movement": 0.0609,
+      "macro_coupling": 0.553,
+      "macro_space": 0.938
+    },
+    "OCEANIC": {
+      "macro_character": 0.4311,
+      "macro_movement": 0.1306,
+      "macro_coupling": 0.4795,
+      "macro_space": 0.874
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "ORACLE",
+    "target": "OCEANIC",
+    "amount": 0.7211
+  },
+  "dna": {
+    "brightness": 0.469,
+    "warmth": 0.8888,
+    "movement": 0.056,
+    "density": 0.1203,
+    "space": 0.8841,
+    "aggression": 0.4338
+  },
+  "macros": {
+    "CHARACTER": 0.3582,
+    "MOVEMENT": 0.0609,
+    "COUPLING": 0.553,
+    "SPACE": 0.938
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "high-warmth",
+    "low-movement",
+    "low-density",
+    "high-space"
+  ]
+}

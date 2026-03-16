@@ -1,0 +1,52 @@
+{
+  "name": "DARK_COLD_SPARSE_VAST_FLX_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OVERWORLD",
+    "OPAL"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.0776,
+      "macro_movement": 0.3798,
+      "macro_coupling": 0.6573,
+      "macro_space": 0.8348
+    },
+    "OPAL": {
+      "macro_character": 0.1088,
+      "macro_movement": 0.497,
+      "macro_coupling": 0.4998,
+      "macro_space": 0.8287
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OVERWORLD",
+    "target": "OPAL",
+    "amount": 0.5916
+  },
+  "dna": {
+    "brightness": 0.0486,
+    "warmth": 0.0954,
+    "movement": 0.406,
+    "density": 0.0773,
+    "space": 0.9632,
+    "aggression": 0.5191
+  },
+  "macros": {
+    "CHARACTER": 0.0776,
+    "MOVEMENT": 0.3798,
+    "COUPLING": 0.6573,
+    "SPACE": 0.8348
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-brightness",
+    "low-warmth",
+    "low-density",
+    "high-space"
+  ]
+}

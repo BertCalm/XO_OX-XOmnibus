@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "name": "DARK_STILL_SPARSE_VAST_ENT_4",
+  "mood": "Entangled",
+  "engines": [
+    "OBLONG",
+    "OHM"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dark Still Sparse Vast character entanglement \u2014 OBLONG \u00d7 OHM via Chaos Inject. Extreme DNA zones push sound design to the edges.",
+  "tags": [
+    "entangled",
+    "dark",
+    "still",
+    "sparse",
+    "vast",
+    "resonant"
+  ],
+  "macroLabels": [
+    "BOB",
+    "FIDGET",
+    "WEAVE",
+    "CHAMBER"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.0274,
+    "warmth": 0.6327,
+    "movement": 0.0303,
+    "density": 0.0306,
+    "space": 0.9587,
+    "aggression": 0.6247
+  },
+  "sonic_dna": {
+    "brightness": 0.0274,
+    "warmth": 0.6327,
+    "movement": 0.0303,
+    "density": 0.0306,
+    "space": 0.9587,
+    "aggression": 0.6247
+  },
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.5477,
+      "macro_movement": 0.0001,
+      "macro_coupling": 0.8069,
+      "macro_space": 0.9719,
+      "filter_cutoff": 0.2392,
+      "filter_resonance": 0.4417,
+      "amp_attack": 0.4556,
+      "amp_release": 0.7127,
+      "reverb_mix": 0.6853,
+      "reverb_size": 0.7633,
+      "drive": 0.556,
+      "density": 0.0076,
+      "output_level": 0.7202,
+      "coupling_level": 0.7778
+    },
+    "OHM": {
+      "macro_character": 0.53,
+      "macro_movement": 0.0579,
+      "macro_coupling": 0.808,
+      "macro_space": 0.9797,
+      "filter_cutoff": 0.2251,
+      "filter_resonance": 0.4369,
+      "amp_attack": 0.4655,
+      "amp_release": 0.7132,
+      "reverb_mix": 0.7028,
+      "reverb_size": 0.7843,
+      "drive": 0.5612,
+      "density": 0.0,
+      "output_level": 0.742,
+      "coupling_level": 0.8263
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OHM",
+    "target": "OBLONG",
+    "amount": 0.8494,
+    "pairs": [
+      {
+        "source": "OHM",
+        "target": "OBLONG",
+        "type": "CHAOS_INJECT",
+        "amount": 0.8494
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.3301,
+    "MOVEMENT": 0.0303,
+    "COUPLING": 0.8494,
+    "SPACE": 0.9587
+  }
+}

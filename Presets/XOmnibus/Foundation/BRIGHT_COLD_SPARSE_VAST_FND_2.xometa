@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_COLD_SPARSE_VAST_FND_2",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ORACLE",
+    "OVERBITE"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.803,
+      "macro_movement": 0.127,
+      "macro_coupling": 0.122,
+      "macro_space": 0.572
+    },
+    "OVERBITE": {
+      "macro_character": 0.54,
+      "macro_movement": 0.83,
+      "macro_coupling": 0.569,
+      "macro_space": 0.431
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ORACLE",
+    "target": "OVERBITE",
+    "amount": 0.861
+  },
+  "dna": {
+    "brightness": 0.955,
+    "warmth": 0.061,
+    "movement": 0.323,
+    "density": 0.113,
+    "space": 0.944,
+    "aggression": 0.356
+  },
+  "macros": {
+    "CHARACTER": 0.667,
+    "MOVEMENT": 0.834,
+    "COUPLING": 0.71,
+    "SPACE": 0.284
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "cold",
+    "sparse",
+    "vast",
+    "spatial"
+  ]
+}

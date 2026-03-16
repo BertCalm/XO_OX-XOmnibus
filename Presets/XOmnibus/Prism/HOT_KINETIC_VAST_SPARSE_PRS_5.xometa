@@ -1,0 +1,50 @@
+{
+  "name": "HOT_KINETIC_VAST_SPARSE_PRS_5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OSTERIA",
+    "OTTONI"
+  ],
+  "parameters": {
+    "OSTERIA": {
+      "macro_character": 0.495,
+      "macro_movement": 0.973,
+      "macro_coupling": 0.344,
+      "macro_space": 0.954
+    },
+    "OTTONI": {
+      "macro_character": 0.651,
+      "macro_movement": 0.973,
+      "macro_coupling": 0.348,
+      "macro_space": 0.954
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OSTERIA",
+    "target": "OTTONI",
+    "amount": 0.735
+  },
+  "dna": {
+    "brightness": 0.344,
+    "warmth": 0.92,
+    "movement": 0.973,
+    "density": 0.035,
+    "space": 0.954,
+    "aggression": 0.647
+  },
+  "macros": {
+    "CHARACTER": 0.495,
+    "MOVEMENT": 0.973,
+    "COUPLING": 0.344,
+    "SPACE": 0.954
+  },
+  "tags": [
+    "prism",
+    "hot",
+    "kinetic",
+    "vast",
+    "sparse"
+  ]
+}

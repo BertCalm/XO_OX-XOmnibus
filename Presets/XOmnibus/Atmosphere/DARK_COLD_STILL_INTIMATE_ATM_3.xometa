@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_STILL_INTIMATE_ATM_3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORIGAMI",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.631,
+      "macro_movement": 0.177,
+      "macro_coupling": 0.411,
+      "macro_space": 0.184
+    },
+    "OBLIQUE": {
+      "macro_character": 0.522,
+      "macro_movement": 0.126,
+      "macro_coupling": 0.622,
+      "macro_space": 0.291
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "ORIGAMI",
+    "target": "OBLIQUE",
+    "amount": 0.611
+  },
+  "dna": {
+    "brightness": 0.112,
+    "warmth": 0.056,
+    "movement": 0.059,
+    "density": 0.57,
+    "space": 0.133,
+    "aggression": 0.501
+  },
+  "macros": {
+    "CHARACTER": 0.631,
+    "MOVEMENT": 0.177,
+    "COUPLING": 0.411,
+    "SPACE": 0.184
+  },
+  "tags": [
+    "atmosphere",
+    "dark",
+    "cold",
+    "still",
+    "intimate"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "DARK_DENSE_INTIMATE_VIOLENT_FND_4",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ONSET",
+    "ORACLE"
+  ],
+  "parameters": {
+    "ONSET": {
+      "macro_character": 0.618,
+      "macro_movement": 0.706,
+      "macro_coupling": 0.125,
+      "macro_space": 0.247
+    },
+    "ORACLE": {
+      "macro_character": 0.7,
+      "macro_movement": 0.287,
+      "macro_coupling": 0.496,
+      "macro_space": 0.147
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ONSET",
+    "target": "ORACLE",
+    "amount": 0.834
+  },
+  "dna": {
+    "brightness": 0.075,
+    "warmth": 0.614,
+    "movement": 0.674,
+    "density": 0.972,
+    "space": 0.031,
+    "aggression": 0.964
+  },
+  "macros": {
+    "CHARACTER": 0.538,
+    "MOVEMENT": 0.614,
+    "COUPLING": 0.82,
+    "SPACE": 0.396
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "dark",
+    "dense",
+    "intimate",
+    "violent",
+    "aggressive"
+  ]
+}

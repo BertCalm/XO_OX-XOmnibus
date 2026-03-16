@@ -1,0 +1,52 @@
+{
+  "name": "DARK_DENSE_VAST_GENTLE_FLX_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OCEANIC",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.214,
+      "macro_movement": 0.5954,
+      "macro_coupling": 0.0721,
+      "macro_space": 0.8671
+    },
+    "ODYSSEY": {
+      "macro_character": 0.1348,
+      "macro_movement": 0.6232,
+      "macro_coupling": 0.1191,
+      "macro_space": 0.9324
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OCEANIC",
+    "target": "ODYSSEY",
+    "amount": 0.8766
+  },
+  "dna": {
+    "brightness": 0.0741,
+    "warmth": 0.4339,
+    "movement": 0.5942,
+    "density": 0.9155,
+    "space": 0.9323,
+    "aggression": 0.0718
+  },
+  "macros": {
+    "CHARACTER": 0.214,
+    "MOVEMENT": 0.5954,
+    "COUPLING": 0.0721,
+    "SPACE": 0.8671
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-brightness",
+    "high-density",
+    "high-space",
+    "low-aggression"
+  ]
+}

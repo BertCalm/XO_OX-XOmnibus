@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_SPARSE_VAST_ATM_1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OPTIC",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.543,
+      "macro_movement": 0.611,
+      "macro_coupling": 0.857,
+      "macro_space": 0.856
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.494,
+      "macro_movement": 0.692,
+      "macro_coupling": 0.445,
+      "macro_space": 0.838
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OPTIC",
+    "target": "ODDOSCAR",
+    "amount": 0.403
+  },
+  "dna": {
+    "brightness": 0.925,
+    "warmth": 0.918,
+    "movement": 0.657,
+    "density": 0.089,
+    "space": 0.913,
+    "aggression": 0.371
+  },
+  "macros": {
+    "CHARACTER": 0.543,
+    "MOVEMENT": 0.611,
+    "COUPLING": 0.857,
+    "SPACE": 0.856
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "warm",
+    "sparse",
+    "vast"
+  ]
+}

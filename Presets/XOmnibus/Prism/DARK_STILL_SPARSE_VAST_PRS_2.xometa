@@ -1,0 +1,50 @@
+{
+  "name": "DARK_STILL_SPARSE_VAST_PRS_2",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OWLFISH",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "OWLFISH": {
+      "macro_character": 0.259,
+      "macro_movement": 0.078,
+      "macro_coupling": 0.545,
+      "macro_space": 0.888
+    },
+    "ORPHICA": {
+      "macro_character": 0.675,
+      "macro_movement": 0.078,
+      "macro_coupling": 0.626,
+      "macro_space": 0.888
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OWLFISH",
+    "target": "ORPHICA",
+    "amount": 0.629
+  },
+  "dna": {
+    "brightness": 0.083,
+    "warmth": 0.396,
+    "movement": 0.078,
+    "density": 0.108,
+    "space": 0.888,
+    "aggression": 0.434
+  },
+  "macros": {
+    "CHARACTER": 0.259,
+    "MOVEMENT": 0.078,
+    "COUPLING": 0.545,
+    "SPACE": 0.888
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "still",
+    "sparse",
+    "vast"
+  ]
+}

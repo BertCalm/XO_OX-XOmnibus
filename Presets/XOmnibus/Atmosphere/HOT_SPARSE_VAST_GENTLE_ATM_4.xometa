@@ -1,0 +1,50 @@
+{
+  "name": "HOT_SPARSE_VAST_GENTLE_ATM_4",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORGANON",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.33,
+      "macro_movement": 0.63,
+      "macro_coupling": 0.884,
+      "macro_space": 0.703
+    },
+    "OCEANIC": {
+      "macro_character": 0.506,
+      "macro_movement": 0.482,
+      "macro_coupling": 0.867,
+      "macro_space": 0.847
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORGANON",
+    "target": "OCEANIC",
+    "amount": 0.591
+  },
+  "dna": {
+    "brightness": 0.392,
+    "warmth": 0.897,
+    "movement": 0.556,
+    "density": 0.053,
+    "space": 0.865,
+    "aggression": 0.076
+  },
+  "macros": {
+    "CHARACTER": 0.33,
+    "MOVEMENT": 0.63,
+    "COUPLING": 0.884,
+    "SPACE": 0.703
+  },
+  "tags": [
+    "atmosphere",
+    "warm",
+    "sparse",
+    "vast",
+    "gentle"
+  ]
+}

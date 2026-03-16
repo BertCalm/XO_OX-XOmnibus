@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_FND_2",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ONSET",
+    "OVERBITE"
+  ],
+  "parameters": {
+    "ONSET": {
+      "macro_character": 0.616,
+      "macro_movement": 0.528,
+      "macro_coupling": 0.495,
+      "macro_space": 0.233
+    },
+    "OVERBITE": {
+      "macro_character": 0.561,
+      "macro_movement": 0.285,
+      "macro_coupling": 0.309,
+      "macro_space": 0.552
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ONSET",
+    "target": "OVERBITE",
+    "amount": 0.809
+  },
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.348,
+    "movement": 0.933,
+    "density": 0.468,
+    "space": 0.121,
+    "aggression": 0.972
+  },
+  "macros": {
+    "CHARACTER": 0.146,
+    "MOVEMENT": 0.209,
+    "COUPLING": 0.338,
+    "SPACE": 0.675
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "kinetic",
+    "intimate",
+    "violent",
+    "aggressive"
+  ]
+}

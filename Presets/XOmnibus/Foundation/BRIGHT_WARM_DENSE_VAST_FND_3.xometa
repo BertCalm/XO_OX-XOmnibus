@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_WARM_DENSE_VAST_FND_3",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBLONG",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.672,
+      "macro_movement": 0.723,
+      "macro_coupling": 0.375,
+      "macro_space": 0.265
+    },
+    "OVERWORLD": {
+      "macro_character": 0.586,
+      "macro_movement": 0.352,
+      "macro_coupling": 0.136,
+      "macro_space": 0.899
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBLONG",
+    "target": "OVERWORLD",
+    "amount": 0.86
+  },
+  "dna": {
+    "brightness": 0.885,
+    "warmth": 0.961,
+    "movement": 0.637,
+    "density": 0.948,
+    "space": 0.919,
+    "aggression": 0.414
+  },
+  "macros": {
+    "CHARACTER": 0.316,
+    "MOVEMENT": 0.135,
+    "COUPLING": 0.23,
+    "SPACE": 0.409
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "warm",
+    "dense",
+    "vast",
+    "spatial"
+  ]
+}

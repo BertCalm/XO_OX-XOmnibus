@@ -1,0 +1,52 @@
+{
+  "name": "DARK_HOT_DENSE_VIOLENT_FLX_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBLONG",
+    "OUROBOROS"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.0909,
+      "macro_movement": 0.4207,
+      "macro_coupling": 0.9064,
+      "macro_space": 0.7456
+    },
+    "OUROBOROS": {
+      "macro_character": 0.1149,
+      "macro_movement": 0.4023,
+      "macro_coupling": 0.9245,
+      "macro_space": 0.575
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBLONG",
+    "target": "OUROBOROS",
+    "amount": 0.7462
+  },
+  "dna": {
+    "brightness": 0.1384,
+    "warmth": 0.9376,
+    "movement": 0.4602,
+    "density": 0.8679,
+    "space": 0.6689,
+    "aggression": 0.9416
+  },
+  "macros": {
+    "CHARACTER": 0.0909,
+    "MOVEMENT": 0.4207,
+    "COUPLING": 0.9064,
+    "SPACE": 0.7456
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-brightness",
+    "high-warmth",
+    "high-density",
+    "high-aggression"
+  ]
+}

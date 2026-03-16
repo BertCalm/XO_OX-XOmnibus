@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "name": "DARK_COLD_DENSE_INTIMATE_ENT_2",
+  "mood": "Entangled",
+  "engines": [
+    "ORBITAL",
+    "OBESE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dark Cold Dense Intimate character entanglement \u2014 ORBITAL \u00d7 OBESE via Phase Lock. Extreme DNA zones push sound design to the edges.",
+  "tags": [
+    "entangled",
+    "dark",
+    "cold",
+    "dense",
+    "intimate",
+    "resonant"
+  ],
+  "macroLabels": [
+    "ORBIT",
+    "SPIN",
+    "HARMONIC",
+    "SPHERE"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.083,
+    "warmth": 0.1136,
+    "movement": 0.6083,
+    "density": 0.9381,
+    "space": 0.04,
+    "aggression": 0.4273
+  },
+  "sonic_dna": {
+    "brightness": 0.083,
+    "warmth": 0.1136,
+    "movement": 0.6083,
+    "density": 0.9381,
+    "space": 0.04,
+    "aggression": 0.4273
+  },
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.3386,
+      "macro_movement": 0.608,
+      "macro_coupling": 0.7361,
+      "macro_space": 0.0062,
+      "filter_cutoff": 0.2458,
+      "filter_resonance": 0.2992,
+      "amp_attack": 0.2176,
+      "amp_release": 0.161,
+      "reverb_mix": 0.1977,
+      "reverb_size": 0.2376,
+      "drive": 0.4101,
+      "density": 0.925,
+      "output_level": 0.8954,
+      "coupling_level": 0.6977
+    },
+    "OBESE": {
+      "macro_character": 0.3858,
+      "macro_movement": 0.5963,
+      "macro_coupling": 0.7726,
+      "macro_space": 0.0576,
+      "filter_cutoff": 0.222,
+      "filter_resonance": 0.3087,
+      "amp_attack": 0.2003,
+      "amp_release": 0.0973,
+      "reverb_mix": 0.1651,
+      "reverb_size": 0.2545,
+      "drive": 0.3799,
+      "density": 0.9281,
+      "output_level": 0.9608,
+      "coupling_level": 0.744
+    }
+  },
+  "coupling": {
+    "type": "PHASE_LOCK",
+    "source": "OBESE",
+    "target": "ORBITAL",
+    "amount": 0.8579,
+    "pairs": [
+      {
+        "source": "OBESE",
+        "target": "ORBITAL",
+        "type": "PHASE_LOCK",
+        "amount": 0.8579
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.0983,
+    "MOVEMENT": 0.6083,
+    "COUPLING": 0.8579,
+    "SPACE": 0.04
+  }
+}

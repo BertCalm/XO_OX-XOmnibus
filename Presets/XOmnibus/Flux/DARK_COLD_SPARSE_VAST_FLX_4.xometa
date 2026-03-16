@@ -1,0 +1,52 @@
+{
+  "name": "DARK_COLD_SPARSE_VAST_FLX_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ORACLE",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.1411,
+      "macro_movement": 0.6347,
+      "macro_coupling": 0.4027,
+      "macro_space": 0.7854
+    },
+    "ODYSSEY": {
+      "macro_character": 0.1773,
+      "macro_movement": 0.5068,
+      "macro_coupling": 0.6245,
+      "macro_space": 0.9498
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ORACLE",
+    "target": "ODYSSEY",
+    "amount": 0.8636
+  },
+  "dna": {
+    "brightness": 0.1315,
+    "warmth": 0.0756,
+    "movement": 0.6028,
+    "density": 0.0455,
+    "space": 0.9347,
+    "aggression": 0.4814
+  },
+  "macros": {
+    "CHARACTER": 0.1411,
+    "MOVEMENT": 0.6347,
+    "COUPLING": 0.4027,
+    "SPACE": 0.7854
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-brightness",
+    "low-warmth",
+    "low-density",
+    "high-space"
+  ]
+}

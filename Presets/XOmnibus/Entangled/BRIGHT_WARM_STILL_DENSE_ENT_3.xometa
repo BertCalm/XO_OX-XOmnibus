@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT_WARM_STILL_DENSE_ENT_3",
+  "mood": "Entangled",
+  "engines": [
+    "OPTIC",
+    "OBSIDIAN"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright Warm Still Dense character entanglement \u2014 OPTIC \u00d7 OBSIDIAN via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "tags": [
+    "entangled",
+    "bright",
+    "warm",
+    "still",
+    "dense",
+    "resonant"
+  ],
+  "macroLabels": [
+    "LENS",
+    "PRISM",
+    "REFRACT",
+    "RAY"
+  ],
+  "couplingIntensity": "Medium",
+  "dna": {
+    "brightness": 0.9777,
+    "warmth": 0.9179,
+    "movement": 0.0441,
+    "density": 0.9897,
+    "space": 0.5038,
+    "aggression": 0.3364
+  },
+  "sonic_dna": {
+    "brightness": 0.9777,
+    "warmth": 0.9179,
+    "movement": 0.0441,
+    "density": 0.9897,
+    "space": 0.5038,
+    "aggression": 0.3364
+  },
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.9839,
+      "macro_movement": 0.0379,
+      "macro_coupling": 0.6828,
+      "macro_space": 0.4943,
+      "filter_cutoff": 0.9241,
+      "filter_resonance": 0.2705,
+      "amp_attack": 0.4701,
+      "amp_release": 0.4312,
+      "reverb_mix": 0.388,
+      "reverb_size": 0.52,
+      "drive": 0.3336,
+      "density": 0.9927,
+      "output_level": 0.9287,
+      "coupling_level": 0.6959
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.9294,
+      "macro_movement": 0.0389,
+      "macro_coupling": 0.714,
+      "macro_space": 0.5401,
+      "filter_cutoff": 0.9145,
+      "filter_resonance": 0.2493,
+      "amp_attack": 0.4324,
+      "amp_release": 0.3766,
+      "reverb_mix": 0.4601,
+      "reverb_size": 0.5319,
+      "drive": 0.303,
+      "density": 1.0,
+      "output_level": 0.9561,
+      "coupling_level": 0.6568
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBSIDIAN",
+    "target": "OPTIC",
+    "amount": 0.6873,
+    "pairs": [
+      {
+        "source": "OBSIDIAN",
+        "target": "OPTIC",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.6873
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.9478,
+    "MOVEMENT": 0.0441,
+    "COUPLING": 0.6873,
+    "SPACE": 0.5038
+  }
+}

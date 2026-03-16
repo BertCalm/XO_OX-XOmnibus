@@ -1,0 +1,51 @@
+{
+  "name": "COLD_STILL_SPARSE_INTIMATE_FND_3",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBSIDIAN",
+    "OVERBITE"
+  ],
+  "parameters": {
+    "OBSIDIAN": {
+      "macro_character": 0.218,
+      "macro_movement": 0.778,
+      "macro_coupling": 0.463,
+      "macro_space": 0.244
+    },
+    "OVERBITE": {
+      "macro_character": 0.151,
+      "macro_movement": 0.685,
+      "macro_coupling": 0.153,
+      "macro_space": 0.285
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OBSIDIAN",
+    "target": "OVERBITE",
+    "amount": 0.311
+  },
+  "dna": {
+    "brightness": 0.605,
+    "warmth": 0.059,
+    "movement": 0.067,
+    "density": 0.125,
+    "space": 0.118,
+    "aggression": 0.369
+  },
+  "macros": {
+    "CHARACTER": 0.392,
+    "MOVEMENT": 0.27,
+    "COUPLING": 0.415,
+    "SPACE": 0.481
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "cold",
+    "still",
+    "sparse",
+    "intimate"
+  ]
+}

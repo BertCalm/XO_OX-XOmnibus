@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_WARM_STILL_SPARSE_FND_4",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ORIGAMI",
+    "ONSET"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.457,
+      "macro_movement": 0.831,
+      "macro_coupling": 0.785,
+      "macro_space": 0.714
+    },
+    "ONSET": {
+      "macro_character": 0.134,
+      "macro_movement": 0.547,
+      "macro_coupling": 0.347,
+      "macro_space": 0.256
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORIGAMI",
+    "target": "ONSET",
+    "amount": 0.941
+  },
+  "dna": {
+    "brightness": 0.931,
+    "warmth": 0.955,
+    "movement": 0.137,
+    "density": 0.053,
+    "space": 0.566,
+    "aggression": 0.371
+  },
+  "macros": {
+    "CHARACTER": 0.837,
+    "MOVEMENT": 0.887,
+    "COUPLING": 0.875,
+    "SPACE": 0.193
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "warm",
+    "still",
+    "sparse"
+  ]
+}

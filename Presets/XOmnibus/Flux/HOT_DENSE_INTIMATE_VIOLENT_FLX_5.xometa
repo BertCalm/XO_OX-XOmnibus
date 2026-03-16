@@ -1,0 +1,52 @@
+{
+  "name": "HOT_DENSE_INTIMATE_VIOLENT_FLX_5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OCEANIC",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.7552,
+      "macro_movement": 0.5129,
+      "macro_coupling": 0.9289,
+      "macro_space": 0.0921
+    },
+    "OBLIQUE": {
+      "macro_character": 0.6255,
+      "macro_movement": 0.3233,
+      "macro_coupling": 0.8581,
+      "macro_space": 0.1314
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OCEANIC",
+    "target": "OBLIQUE",
+    "amount": 0.8108
+  },
+  "dna": {
+    "brightness": 0.612,
+    "warmth": 0.8609,
+    "movement": 0.4232,
+    "density": 0.9118,
+    "space": 0.0631,
+    "aggression": 0.9771
+  },
+  "macros": {
+    "CHARACTER": 0.7552,
+    "MOVEMENT": 0.5129,
+    "COUPLING": 0.9289,
+    "SPACE": 0.0921
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "high-warmth",
+    "high-density",
+    "low-space",
+    "high-aggression"
+  ]
+}

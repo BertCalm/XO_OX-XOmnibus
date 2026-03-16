@@ -1,0 +1,52 @@
+{
+  "name": "DARK_COLD_VAST_GENTLE_FND_5",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OUROBOROS",
+    "OBESE"
+  ],
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.253,
+      "macro_movement": 0.609,
+      "macro_coupling": 0.176,
+      "macro_space": 0.367
+    },
+    "OBESE": {
+      "macro_character": 0.669,
+      "macro_movement": 0.662,
+      "macro_coupling": 0.174,
+      "macro_space": 0.767
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OUROBOROS",
+    "target": "OBESE",
+    "amount": 0.946
+  },
+  "dna": {
+    "brightness": 0.057,
+    "warmth": 0.074,
+    "movement": 0.413,
+    "density": 0.363,
+    "space": 0.912,
+    "aggression": 0.08
+  },
+  "macros": {
+    "CHARACTER": 0.321,
+    "MOVEMENT": 0.871,
+    "COUPLING": 0.255,
+    "SPACE": 0.342
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "dark",
+    "cold",
+    "vast",
+    "gentle",
+    "spatial"
+  ]
+}

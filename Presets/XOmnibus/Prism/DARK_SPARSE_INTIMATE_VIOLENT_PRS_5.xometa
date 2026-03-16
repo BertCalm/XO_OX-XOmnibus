@@ -1,0 +1,50 @@
+{
+  "name": "DARK_SPARSE_INTIMATE_VIOLENT_PRS_5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OTTONI",
+    "OLE"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.48,
+      "macro_movement": 0.553,
+      "macro_coupling": 0.394,
+      "macro_space": 0.112
+    },
+    "OLE": {
+      "macro_character": 0.906,
+      "macro_movement": 0.553,
+      "macro_coupling": 0.671,
+      "macro_space": 0.112
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OTTONI",
+    "target": "OLE",
+    "amount": 0.771
+  },
+  "dna": {
+    "brightness": 0.074,
+    "warmth": 0.357,
+    "movement": 0.553,
+    "density": 0.033,
+    "space": 0.112,
+    "aggression": 0.886
+  },
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.553,
+    "COUPLING": 0.394,
+    "SPACE": 0.112
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "sparse",
+    "intimate",
+    "violent"
+  ]
+}

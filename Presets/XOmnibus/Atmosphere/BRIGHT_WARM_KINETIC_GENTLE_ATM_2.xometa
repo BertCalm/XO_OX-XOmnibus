@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_KINETIC_GENTLE_ATM_2",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORBITAL",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.718,
+      "macro_movement": 0.805,
+      "macro_coupling": 0.719,
+      "macro_space": 0.396
+    },
+    "OBLIQUE": {
+      "macro_character": 0.441,
+      "macro_movement": 0.827,
+      "macro_coupling": 0.421,
+      "macro_space": 0.372
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ORBITAL",
+    "target": "OBLIQUE",
+    "amount": 0.551
+  },
+  "dna": {
+    "brightness": 0.916,
+    "warmth": 0.87,
+    "movement": 0.895,
+    "density": 0.314,
+    "space": 0.386,
+    "aggression": 0.077
+  },
+  "macros": {
+    "CHARACTER": 0.718,
+    "MOVEMENT": 0.805,
+    "COUPLING": 0.719,
+    "SPACE": 0.396
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "warm",
+    "kinetic",
+    "gentle"
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "name": "DARK_KINETIC_DENSE_GENTLE_ENT_5",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "OTTONI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dark Kinetic Dense Gentle character entanglement \u2014 OBBLIGATO \u00d7 OTTONI via Chaos Inject. Extreme DNA zones push sound design to the edges.",
+  "tags": [
+    "entangled",
+    "dark",
+    "kinetic",
+    "dense",
+    "gentle",
+    "resonant"
+  ],
+  "macroLabels": [
+    "WIND",
+    "BOND",
+    "FLOW",
+    "AIR"
+  ],
+  "couplingIntensity": "Medium",
+  "dna": {
+    "brightness": 0.0598,
+    "warmth": 0.6669,
+    "movement": 0.8835,
+    "density": 0.9695,
+    "space": 0.6612,
+    "aggression": 0.0422
+  },
+  "sonic_dna": {
+    "brightness": 0.0598,
+    "warmth": 0.6669,
+    "movement": 0.8835,
+    "density": 0.9695,
+    "space": 0.6612,
+    "aggression": 0.0422
+  },
+  "parameters": {
+    "OBBLIGATO": {
+      "macro_character": 0.58,
+      "macro_movement": 0.8979,
+      "macro_coupling": 0.6322,
+      "macro_space": 0.6603,
+      "filter_cutoff": 0.2738,
+      "filter_resonance": 0.1167,
+      "amp_attack": 0.0611,
+      "amp_release": 0.4673,
+      "reverb_mix": 0.5069,
+      "reverb_size": 0.6018,
+      "drive": 0.0885,
+      "density": 0.9833,
+      "output_level": 0.9271,
+      "coupling_level": 0.5286
+    },
+    "OTTONI": {
+      "macro_character": 0.5651,
+      "macro_movement": 0.8437,
+      "macro_coupling": 0.5922,
+      "macro_space": 0.627,
+      "filter_cutoff": 0.2358,
+      "filter_resonance": 0.1371,
+      "amp_attack": 0.0999,
+      "amp_release": 0.4615,
+      "reverb_mix": 0.5452,
+      "reverb_size": 0.6356,
+      "drive": 0.0816,
+      "density": 0.9525,
+      "output_level": 0.9168,
+      "coupling_level": 0.5377
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OTTONI",
+    "target": "OBBLIGATO",
+    "amount": 0.7059,
+    "pairs": [
+      {
+        "source": "OTTONI",
+        "target": "OBBLIGATO",
+        "type": "CHAOS_INJECT",
+        "amount": 0.7059
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.3634,
+    "MOVEMENT": 0.8835,
+    "COUPLING": 0.7059,
+    "SPACE": 0.6612
+  }
+}

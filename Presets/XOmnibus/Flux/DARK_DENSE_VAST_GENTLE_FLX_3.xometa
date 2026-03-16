@@ -1,0 +1,52 @@
+{
+  "name": "DARK_DENSE_VAST_GENTLE_FLX_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBLIQUE",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.1838,
+      "macro_movement": 0.4278,
+      "macro_coupling": 0.1612,
+      "macro_space": 0.8579
+    },
+    "OPTIC": {
+      "macro_character": 0.1513,
+      "macro_movement": 0.5581,
+      "macro_coupling": 0.0516,
+      "macro_space": 0.7844
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBLIQUE",
+    "target": "OPTIC",
+    "amount": 0.6274
+  },
+  "dna": {
+    "brightness": 0.0481,
+    "warmth": 0.5276,
+    "movement": 0.4782,
+    "density": 0.9294,
+    "space": 0.9225,
+    "aggression": 0.0352
+  },
+  "macros": {
+    "CHARACTER": 0.1838,
+    "MOVEMENT": 0.4278,
+    "COUPLING": 0.1612,
+    "SPACE": 0.8579
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-brightness",
+    "high-density",
+    "high-space",
+    "low-aggression"
+  ]
+}

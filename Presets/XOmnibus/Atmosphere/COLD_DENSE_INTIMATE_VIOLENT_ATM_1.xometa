@@ -1,0 +1,50 @@
+{
+  "name": "COLD_DENSE_INTIMATE_VIOLENT_ATM_1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORBITAL",
+    "OSPREY"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.443,
+      "macro_movement": 0.513,
+      "macro_coupling": 0.642,
+      "macro_space": 0.29
+    },
+    "OSPREY": {
+      "macro_character": 0.39,
+      "macro_movement": 0.608,
+      "macro_coupling": 0.746,
+      "macro_space": 0.154
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ORBITAL",
+    "target": "OSPREY",
+    "amount": 0.54
+  },
+  "dna": {
+    "brightness": 0.694,
+    "warmth": 0.096,
+    "movement": 0.545,
+    "density": 0.896,
+    "space": 0.116,
+    "aggression": 0.954
+  },
+  "macros": {
+    "CHARACTER": 0.443,
+    "MOVEMENT": 0.513,
+    "COUPLING": 0.642,
+    "SPACE": 0.29
+  },
+  "tags": [
+    "atmosphere",
+    "cold",
+    "dense",
+    "intimate",
+    "violent"
+  ]
+}

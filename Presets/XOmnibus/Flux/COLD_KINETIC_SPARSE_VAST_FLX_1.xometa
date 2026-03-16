@@ -1,0 +1,52 @@
+{
+  "name": "COLD_KINETIC_SPARSE_VAST_FLX_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBLONG",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.2925,
+      "macro_movement": 0.8909,
+      "macro_coupling": 0.7653,
+      "macro_space": 0.8629
+    },
+    "OBLIQUE": {
+      "macro_character": 0.3705,
+      "macro_movement": 0.9445,
+      "macro_coupling": 0.6211,
+      "macro_space": 0.9451
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBLONG",
+    "target": "OBLIQUE",
+    "amount": 0.7722
+  },
+  "dna": {
+    "brightness": 0.3421,
+    "warmth": 0.0691,
+    "movement": 0.9561,
+    "density": 0.0843,
+    "space": 0.9196,
+    "aggression": 0.6221
+  },
+  "macros": {
+    "CHARACTER": 0.2925,
+    "MOVEMENT": 0.8909,
+    "COUPLING": 0.7653,
+    "SPACE": 0.8629
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-warmth",
+    "high-movement",
+    "low-density",
+    "high-space"
+  ]
+}

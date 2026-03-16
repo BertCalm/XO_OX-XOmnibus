@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_PRS_3",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OTTONI",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.706,
+      "macro_movement": 0.905,
+      "macro_coupling": 0.565,
+      "macro_space": 0.049
+    },
+    "OPTIC": {
+      "macro_character": 0.323,
+      "macro_movement": 0.905,
+      "macro_coupling": 0.428,
+      "macro_space": 0.049
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OTTONI",
+    "target": "OPTIC",
+    "amount": 0.66
+  },
+  "dna": {
+    "brightness": 0.883,
+    "warmth": 0.566,
+    "movement": 0.905,
+    "density": 0.95,
+    "space": 0.049,
+    "aggression": 0.528
+  },
+  "macros": {
+    "CHARACTER": 0.706,
+    "MOVEMENT": 0.905,
+    "COUPLING": 0.565,
+    "SPACE": 0.049
+  },
+  "tags": [
+    "prism",
+    "bright",
+    "kinetic",
+    "dense",
+    "intimate"
+  ]
+}

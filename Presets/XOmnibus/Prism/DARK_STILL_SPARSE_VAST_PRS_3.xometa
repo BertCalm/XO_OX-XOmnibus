@@ -1,0 +1,50 @@
+{
+  "name": "DARK_STILL_SPARSE_VAST_PRS_3",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OCELOT",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "macro_character": 0.348,
+      "macro_movement": 0.13,
+      "macro_coupling": 0.464,
+      "macro_space": 0.943
+    },
+    "OPTIC": {
+      "macro_character": 0.795,
+      "macro_movement": 0.13,
+      "macro_coupling": 0.591,
+      "macro_space": 0.943
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OCELOT",
+    "target": "OPTIC",
+    "amount": 0.614
+  },
+  "dna": {
+    "brightness": 0.053,
+    "warmth": 0.468,
+    "movement": 0.13,
+    "density": 0.094,
+    "space": 0.943,
+    "aggression": 0.643
+  },
+  "macros": {
+    "CHARACTER": 0.348,
+    "MOVEMENT": 0.13,
+    "COUPLING": 0.464,
+    "SPACE": 0.943
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "still",
+    "sparse",
+    "vast"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_WARM_DENSE_VAST_FND_2",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBLONG",
+    "OBESE"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.607,
+      "macro_movement": 0.355,
+      "macro_coupling": 0.855,
+      "macro_space": 0.158
+    },
+    "OBESE": {
+      "macro_character": 0.127,
+      "macro_movement": 0.579,
+      "macro_coupling": 0.159,
+      "macro_space": 0.81
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBLONG",
+    "target": "OBESE",
+    "amount": 0.486
+  },
+  "dna": {
+    "brightness": 0.895,
+    "warmth": 0.927,
+    "movement": 0.517,
+    "density": 0.862,
+    "space": 0.943,
+    "aggression": 0.538
+  },
+  "macros": {
+    "CHARACTER": 0.827,
+    "MOVEMENT": 0.188,
+    "COUPLING": 0.14,
+    "SPACE": 0.669
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "warm",
+    "dense",
+    "vast",
+    "spatial"
+  ]
+}

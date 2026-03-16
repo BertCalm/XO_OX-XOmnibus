@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT_COLD_VAST_VIOLENT_ENT_3",
+  "mood": "Entangled",
+  "engines": [
+    "OHM",
+    "OWLFISH"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright Cold Vast Violent character entanglement \u2014 OHM \u00d7 OWLFISH via Chaos Inject. Extreme DNA zones push sound design to the edges.",
+  "tags": [
+    "entangled",
+    "bright",
+    "cold",
+    "vast",
+    "violent",
+    "resonant"
+  ],
+  "macroLabels": [
+    "COMMUNE",
+    "MEDDLING",
+    "RESONANCE",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.9699,
+    "warmth": 0.0628,
+    "movement": 0.6079,
+    "density": 0.6784,
+    "space": 0.8723,
+    "aggression": 0.9757
+  },
+  "sonic_dna": {
+    "brightness": 0.9699,
+    "warmth": 0.0628,
+    "movement": 0.6079,
+    "density": 0.6784,
+    "space": 0.8723,
+    "aggression": 0.9757
+  },
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.6,
+      "macro_movement": 0.5991,
+      "macro_coupling": 0.9728,
+      "macro_space": 0.8992,
+      "filter_cutoff": 0.882,
+      "filter_resonance": 0.6066,
+      "amp_attack": 0.2308,
+      "amp_release": 0.6552,
+      "reverb_mix": 0.6289,
+      "reverb_size": 0.7052,
+      "drive": 0.8295,
+      "density": 0.6695,
+      "output_level": 0.8831,
+      "coupling_level": 0.9642
+    },
+    "OWLFISH": {
+      "macro_character": 0.634,
+      "macro_movement": 0.6351,
+      "macro_coupling": 0.9751,
+      "macro_space": 0.9108,
+      "filter_cutoff": 0.8816,
+      "filter_resonance": 0.6204,
+      "amp_attack": 0.2142,
+      "amp_release": 0.6364,
+      "reverb_mix": 0.5965,
+      "reverb_size": 0.7177,
+      "drive": 0.8599,
+      "density": 0.6529,
+      "output_level": 0.8504,
+      "coupling_level": 0.9265
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OWLFISH",
+    "target": "OHM",
+    "amount": 0.8122,
+    "pairs": [
+      {
+        "source": "OWLFISH",
+        "target": "OHM",
+        "type": "CHAOS_INJECT",
+        "amount": 0.8122
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.5163,
+    "MOVEMENT": 0.6079,
+    "COUPLING": 0.8122,
+    "SPACE": 0.8723
+  }
+}

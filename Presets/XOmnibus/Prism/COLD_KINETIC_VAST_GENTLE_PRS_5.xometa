@@ -1,0 +1,50 @@
+{
+  "name": "COLD_KINETIC_VAST_GENTLE_PRS_5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ORIGAMI",
+    "OWLFISH"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.184,
+      "macro_movement": 0.894,
+      "macro_coupling": 0.343,
+      "macro_space": 0.869
+    },
+    "OWLFISH": {
+      "macro_character": 0.372,
+      "macro_movement": 0.894,
+      "macro_coupling": 0.4,
+      "macro_space": 0.869
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ORIGAMI",
+    "target": "OWLFISH",
+    "amount": 0.569
+  },
+  "dna": {
+    "brightness": 0.313,
+    "warmth": 0.062,
+    "movement": 0.894,
+    "density": 0.644,
+    "space": 0.869,
+    "aggression": 0.056
+  },
+  "macros": {
+    "CHARACTER": 0.184,
+    "MOVEMENT": 0.894,
+    "COUPLING": 0.343,
+    "SPACE": 0.869
+  },
+  "tags": [
+    "prism",
+    "cold",
+    "kinetic",
+    "vast",
+    "gentle"
+  ]
+}

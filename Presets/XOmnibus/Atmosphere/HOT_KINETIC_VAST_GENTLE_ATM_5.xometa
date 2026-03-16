@@ -1,0 +1,50 @@
+{
+  "name": "HOT_KINETIC_VAST_GENTLE_ATM_5",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OCEANIC",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.482,
+      "macro_movement": 0.796,
+      "macro_coupling": 0.863,
+      "macro_space": 0.823
+    },
+    "ORBITAL": {
+      "macro_character": 0.322,
+      "macro_movement": 0.733,
+      "macro_coupling": 0.714,
+      "macro_space": 0.852
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OCEANIC",
+    "target": "ORBITAL",
+    "amount": 0.627
+  },
+  "dna": {
+    "brightness": 0.443,
+    "warmth": 0.897,
+    "movement": 0.872,
+    "density": 0.531,
+    "space": 0.928,
+    "aggression": 0.071
+  },
+  "macros": {
+    "CHARACTER": 0.482,
+    "MOVEMENT": 0.796,
+    "COUPLING": 0.863,
+    "SPACE": 0.823
+  },
+  "tags": [
+    "atmosphere",
+    "warm",
+    "kinetic",
+    "vast",
+    "gentle"
+  ]
+}

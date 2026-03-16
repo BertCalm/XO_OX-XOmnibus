@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_DENSE_INTIMATE_GENTLE_FND_1",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OVERBITE",
+    "OVERDUB"
+  ],
+  "parameters": {
+    "OVERBITE": {
+      "macro_character": 0.672,
+      "macro_movement": 0.355,
+      "macro_coupling": 0.227,
+      "macro_space": 0.569
+    },
+    "OVERDUB": {
+      "macro_character": 0.318,
+      "macro_movement": 0.755,
+      "macro_coupling": 0.497,
+      "macro_space": 0.238
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OVERBITE",
+    "target": "OVERDUB",
+    "amount": 0.884
+  },
+  "dna": {
+    "brightness": 0.921,
+    "warmth": 0.348,
+    "movement": 0.376,
+    "density": 0.977,
+    "space": 0.08,
+    "aggression": 0.096
+  },
+  "macros": {
+    "CHARACTER": 0.477,
+    "MOVEMENT": 0.421,
+    "COUPLING": 0.84,
+    "SPACE": 0.247
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "dense",
+    "intimate",
+    "gentle"
+  ]
+}

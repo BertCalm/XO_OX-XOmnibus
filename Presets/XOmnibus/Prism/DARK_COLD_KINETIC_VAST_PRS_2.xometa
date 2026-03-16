@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_KINETIC_VAST_PRS_2",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OTTONI",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.27,
+      "macro_movement": 0.968,
+      "macro_coupling": 0.851,
+      "macro_space": 0.946
+    },
+    "OSTERIA": {
+      "macro_character": 0.732,
+      "macro_movement": 0.968,
+      "macro_coupling": 0.532,
+      "macro_space": 0.946
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OTTONI",
+    "target": "OSTERIA",
+    "amount": 0.826
+  },
+  "dna": {
+    "brightness": 0.037,
+    "warmth": 0.041,
+    "movement": 0.968,
+    "density": 0.437,
+    "space": 0.946,
+    "aggression": 0.502
+  },
+  "macros": {
+    "CHARACTER": 0.27,
+    "MOVEMENT": 0.968,
+    "COUPLING": 0.851,
+    "SPACE": 0.946
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "cold",
+    "kinetic",
+    "vast"
+  ]
+}

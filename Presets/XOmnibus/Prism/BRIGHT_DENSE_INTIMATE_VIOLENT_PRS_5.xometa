@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_DENSE_INTIMATE_VIOLENT_PRS_5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OLE",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.907,
+      "macro_movement": 0.534,
+      "macro_coupling": 0.69,
+      "macro_space": 0.133
+    },
+    "OSTERIA": {
+      "macro_character": 0.466,
+      "macro_movement": 0.534,
+      "macro_coupling": 0.37,
+      "macro_space": 0.133
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OLE",
+    "target": "OSTERIA",
+    "amount": 0.425
+  },
+  "dna": {
+    "brightness": 0.941,
+    "warmth": 0.569,
+    "movement": 0.534,
+    "density": 0.959,
+    "space": 0.133,
+    "aggression": 0.873
+  },
+  "macros": {
+    "CHARACTER": 0.907,
+    "MOVEMENT": 0.534,
+    "COUPLING": 0.69,
+    "SPACE": 0.133
+  },
+  "tags": [
+    "prism",
+    "bright",
+    "dense",
+    "intimate",
+    "violent"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "DARK_KINETIC_SPARSE_GENTLE_ATM_3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OCEANIC",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.513,
+      "macro_movement": 0.815,
+      "macro_coupling": 0.614,
+      "macro_space": 0.487
+    },
+    "ORGANON": {
+      "macro_character": 0.422,
+      "macro_movement": 0.915,
+      "macro_coupling": 0.617,
+      "macro_space": 0.573
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OCEANIC",
+    "target": "ORGANON",
+    "amount": 0.674
+  },
+  "dna": {
+    "brightness": 0.132,
+    "warmth": 0.561,
+    "movement": 0.948,
+    "density": 0.076,
+    "space": 0.505,
+    "aggression": 0.034
+  },
+  "macros": {
+    "CHARACTER": 0.513,
+    "MOVEMENT": 0.815,
+    "COUPLING": 0.614,
+    "SPACE": 0.487
+  },
+  "tags": [
+    "atmosphere",
+    "dark",
+    "kinetic",
+    "sparse",
+    "gentle"
+  ]
+}

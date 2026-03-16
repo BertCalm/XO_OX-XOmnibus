@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_STILL_VAST_GENTLE_FLX_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OCEANIC",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.8857,
+      "macro_movement": 0.1588,
+      "macro_coupling": 0.1226,
+      "macro_space": 0.8237
+    },
+    "OVERWORLD": {
+      "macro_character": 0.8931,
+      "macro_movement": 0.1381,
+      "macro_coupling": 0.0686,
+      "macro_space": 0.828
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OCEANIC",
+    "target": "OVERWORLD",
+    "amount": 0.6534
+  },
+  "dna": {
+    "brightness": 0.9197,
+    "warmth": 0.444,
+    "movement": 0.1094,
+    "density": 0.4787,
+    "space": 0.9144,
+    "aggression": 0.0329
+  },
+  "macros": {
+    "CHARACTER": 0.8857,
+    "MOVEMENT": 0.1588,
+    "COUPLING": 0.1226,
+    "SPACE": 0.8237
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "high-brightness",
+    "low-movement",
+    "high-space",
+    "low-aggression"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "DARK_COLD_KINETIC_VIOLENT_FLX_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OVERDUB",
+    "OBLONG"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.0875,
+      "macro_movement": 0.8851,
+      "macro_coupling": 0.9131,
+      "macro_space": 0.4469
+    },
+    "OBLONG": {
+      "macro_character": 0.1415,
+      "macro_movement": 0.9098,
+      "macro_coupling": 0.8918,
+      "macro_space": 0.4581
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OVERDUB",
+    "target": "OBLONG",
+    "amount": 0.577
+  },
+  "dna": {
+    "brightness": 0.0939,
+    "warmth": 0.0514,
+    "movement": 0.9758,
+    "density": 0.6696,
+    "space": 0.4869,
+    "aggression": 0.9396
+  },
+  "macros": {
+    "CHARACTER": 0.0875,
+    "MOVEMENT": 0.8851,
+    "COUPLING": 0.9131,
+    "SPACE": 0.4469
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-brightness",
+    "low-warmth",
+    "high-movement",
+    "high-aggression"
+  ]
+}

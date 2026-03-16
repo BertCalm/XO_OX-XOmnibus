@@ -1,0 +1,50 @@
+{
+  "name": "DARK_KINETIC_SPARSE_GENTLE_ATM_5",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORBITAL",
+    "OPTIC"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.615,
+      "macro_movement": 0.891,
+      "macro_coupling": 0.52,
+      "macro_space": 0.528
+    },
+    "OPTIC": {
+      "macro_character": 0.681,
+      "macro_movement": 0.848,
+      "macro_coupling": 0.629,
+      "macro_space": 0.565
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORBITAL",
+    "target": "OPTIC",
+    "amount": 0.557
+  },
+  "dna": {
+    "brightness": 0.073,
+    "warmth": 0.539,
+    "movement": 0.911,
+    "density": 0.033,
+    "space": 0.498,
+    "aggression": 0.03
+  },
+  "macros": {
+    "CHARACTER": 0.615,
+    "MOVEMENT": 0.891,
+    "COUPLING": 0.52,
+    "SPACE": 0.528
+  },
+  "tags": [
+    "atmosphere",
+    "dark",
+    "kinetic",
+    "sparse",
+    "gentle"
+  ]
+}

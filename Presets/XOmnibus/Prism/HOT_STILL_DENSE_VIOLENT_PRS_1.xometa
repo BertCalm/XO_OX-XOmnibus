@@ -1,0 +1,50 @@
+{
+  "name": "HOT_STILL_DENSE_VIOLENT_PRS_1",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OPTIC",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.651,
+      "macro_movement": 0.092,
+      "macro_coupling": 0.538,
+      "macro_space": 0.58
+    },
+    "OSTERIA": {
+      "macro_character": 0.801,
+      "macro_movement": 0.092,
+      "macro_coupling": 0.729,
+      "macro_space": 0.58
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OPTIC",
+    "target": "OSTERIA",
+    "amount": 0.442
+  },
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.94,
+    "movement": 0.092,
+    "density": 0.886,
+    "space": 0.58,
+    "aggression": 0.952
+  },
+  "macros": {
+    "CHARACTER": 0.651,
+    "MOVEMENT": 0.092,
+    "COUPLING": 0.538,
+    "SPACE": 0.58
+  },
+  "tags": [
+    "prism",
+    "hot",
+    "still",
+    "dense",
+    "violent"
+  ]
+}

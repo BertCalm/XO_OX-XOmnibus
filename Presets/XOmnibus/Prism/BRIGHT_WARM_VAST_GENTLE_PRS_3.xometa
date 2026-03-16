@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_VAST_GENTLE_PRS_3",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OSTERIA",
+    "OLE"
+  ],
+  "parameters": {
+    "OSTERIA": {
+      "macro_character": 0.542,
+      "macro_movement": 0.301,
+      "macro_coupling": 0.749,
+      "macro_space": 0.971
+    },
+    "OLE": {
+      "macro_character": 0.074,
+      "macro_movement": 0.301,
+      "macro_coupling": 0.334,
+      "macro_space": 0.971
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OSTERIA",
+    "target": "OLE",
+    "amount": 0.721
+  },
+  "dna": {
+    "brightness": 0.968,
+    "warmth": 0.88,
+    "movement": 0.301,
+    "density": 0.456,
+    "space": 0.971,
+    "aggression": 0.116
+  },
+  "macros": {
+    "CHARACTER": 0.542,
+    "MOVEMENT": 0.301,
+    "COUPLING": 0.749,
+    "SPACE": 0.971
+  },
+  "tags": [
+    "prism",
+    "bright",
+    "warm",
+    "vast",
+    "gentle"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "DARK_DENSE_VAST_GENTLE_FLX_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OCEANIC",
+    "OPAL"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.1412,
+      "macro_movement": 0.6661,
+      "macro_coupling": 0.2226,
+      "macro_space": 0.8944
+    },
+    "OPAL": {
+      "macro_character": 0.181,
+      "macro_movement": 0.5175,
+      "macro_coupling": 0.188,
+      "macro_space": 0.9171
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OCEANIC",
+    "target": "OPAL",
+    "amount": 0.7476
+  },
+  "dna": {
+    "brightness": 0.0371,
+    "warmth": 0.6645,
+    "movement": 0.6079,
+    "density": 0.904,
+    "space": 0.9424,
+    "aggression": 0.093
+  },
+  "macros": {
+    "CHARACTER": 0.1412,
+    "MOVEMENT": 0.6661,
+    "COUPLING": 0.2226,
+    "SPACE": 0.8944
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-brightness",
+    "high-density",
+    "high-space",
+    "low-aggression"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_SPARSE_VAST_ATM_3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OPAL",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.335,
+      "macro_movement": 0.583,
+      "macro_coupling": 0.832,
+      "macro_space": 0.908
+    },
+    "ORGANON": {
+      "macro_character": 0.387,
+      "macro_movement": 0.57,
+      "macro_coupling": 0.794,
+      "macro_space": 0.741
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OPAL",
+    "target": "ORGANON",
+    "amount": 0.941
+  },
+  "dna": {
+    "brightness": 0.898,
+    "warmth": 0.927,
+    "movement": 0.539,
+    "density": 0.048,
+    "space": 0.885,
+    "aggression": 0.652
+  },
+  "macros": {
+    "CHARACTER": 0.335,
+    "MOVEMENT": 0.583,
+    "COUPLING": 0.832,
+    "SPACE": 0.908
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "warm",
+    "sparse",
+    "vast"
+  ]
+}

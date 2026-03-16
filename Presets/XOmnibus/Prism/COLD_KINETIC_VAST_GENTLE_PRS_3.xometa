@@ -1,0 +1,50 @@
+{
+  "name": "COLD_KINETIC_VAST_GENTLE_PRS_3",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ORACLE",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.223,
+      "macro_movement": 0.929,
+      "macro_coupling": 0.57,
+      "macro_space": 0.878
+    },
+    "OVERWORLD": {
+      "macro_character": 0.396,
+      "macro_movement": 0.929,
+      "macro_coupling": 0.566,
+      "macro_space": 0.878
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ORACLE",
+    "target": "OVERWORLD",
+    "amount": 0.873
+  },
+  "dna": {
+    "brightness": 0.326,
+    "warmth": 0.084,
+    "movement": 0.929,
+    "density": 0.575,
+    "space": 0.878,
+    "aggression": 0.119
+  },
+  "macros": {
+    "CHARACTER": 0.223,
+    "MOVEMENT": 0.929,
+    "COUPLING": 0.57,
+    "SPACE": 0.878
+  },
+  "tags": [
+    "prism",
+    "cold",
+    "kinetic",
+    "vast",
+    "gentle"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_STILL_SPARSE_VAST_ATM_1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OBLIQUE",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.575,
+      "macro_movement": 0.135,
+      "macro_coupling": 0.864,
+      "macro_space": 0.708
+    },
+    "ODDFELIX": {
+      "macro_character": 0.7,
+      "macro_movement": 0.256,
+      "macro_coupling": 0.406,
+      "macro_space": 0.768
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OBLIQUE",
+    "target": "ODDFELIX",
+    "amount": 0.918
+  },
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.586,
+    "movement": 0.13,
+    "density": 0.106,
+    "space": 0.876,
+    "aggression": 0.568
+  },
+  "macros": {
+    "CHARACTER": 0.575,
+    "MOVEMENT": 0.135,
+    "COUPLING": 0.864,
+    "SPACE": 0.708
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "still",
+    "sparse",
+    "vast"
+  ]
+}

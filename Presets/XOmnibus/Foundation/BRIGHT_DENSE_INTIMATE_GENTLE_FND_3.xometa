@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_DENSE_INTIMATE_GENTLE_FND_3",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBSIDIAN",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OBSIDIAN": {
+      "macro_character": 0.205,
+      "macro_movement": 0.278,
+      "macro_coupling": 0.557,
+      "macro_space": 0.861
+    },
+    "ORIGAMI": {
+      "macro_character": 0.562,
+      "macro_movement": 0.873,
+      "macro_coupling": 0.661,
+      "macro_space": 0.548
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBSIDIAN",
+    "target": "ORIGAMI",
+    "amount": 0.499
+  },
+  "dna": {
+    "brightness": 0.926,
+    "warmth": 0.491,
+    "movement": 0.436,
+    "density": 0.927,
+    "space": 0.129,
+    "aggression": 0.086
+  },
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.777,
+    "COUPLING": 0.199,
+    "SPACE": 0.101
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "dense",
+    "intimate",
+    "gentle"
+  ]
+}

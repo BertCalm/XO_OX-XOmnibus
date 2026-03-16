@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_KINETIC_VIOLENT_PRS_3",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OLE",
+    "OCELOT"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.941,
+      "macro_movement": 0.929,
+      "macro_coupling": 0.807,
+      "macro_space": 0.584
+    },
+    "OCELOT": {
+      "macro_character": 0.47,
+      "macro_movement": 0.929,
+      "macro_coupling": 0.446,
+      "macro_space": 0.584
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OLE",
+    "target": "OCELOT",
+    "amount": 0.724
+  },
+  "dna": {
+    "brightness": 0.971,
+    "warmth": 0.963,
+    "movement": 0.929,
+    "density": 0.529,
+    "space": 0.584,
+    "aggression": 0.91
+  },
+  "macros": {
+    "CHARACTER": 0.941,
+    "MOVEMENT": 0.929,
+    "COUPLING": 0.807,
+    "SPACE": 0.584
+  },
+  "tags": [
+    "prism",
+    "bright",
+    "warm",
+    "kinetic",
+    "violent"
+  ]
+}

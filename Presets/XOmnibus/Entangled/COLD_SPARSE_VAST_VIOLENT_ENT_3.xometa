@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "name": "COLD_SPARSE_VAST_VIOLENT_ENT_3",
+  "mood": "Entangled",
+  "engines": [
+    "OVERDUB",
+    "ORBITAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cold Sparse Vast Violent character entanglement \u2014 OVERDUB \u00d7 ORBITAL via Phase Lock. Extreme DNA zones push sound design to the edges.",
+  "tags": [
+    "entangled",
+    "cold",
+    "sparse",
+    "vast",
+    "violent",
+    "resonant"
+  ],
+  "macroLabels": [
+    "VOICE",
+    "DRIVE",
+    "DELAY",
+    "SPRING"
+  ],
+  "couplingIntensity": "Medium",
+  "dna": {
+    "brightness": 0.402,
+    "warmth": 0.0563,
+    "movement": 0.3316,
+    "density": 0.0695,
+    "space": 0.9145,
+    "aggression": 0.9343
+  },
+  "sonic_dna": {
+    "brightness": 0.402,
+    "warmth": 0.0563,
+    "movement": 0.3316,
+    "density": 0.0695,
+    "space": 0.9145,
+    "aggression": 0.9343
+  },
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.4515,
+      "macro_movement": 0.2948,
+      "macro_coupling": 0.8928,
+      "macro_space": 0.9389,
+      "filter_cutoff": 0.4884,
+      "filter_resonance": 0.5809,
+      "amp_attack": 0.2948,
+      "amp_release": 0.6254,
+      "reverb_mix": 0.6856,
+      "reverb_size": 0.733,
+      "drive": 0.8301,
+      "density": 0.0464,
+      "output_level": 0.6926,
+      "coupling_level": 0.943
+    },
+    "ORBITAL": {
+      "macro_character": 0.4629,
+      "macro_movement": 0.3519,
+      "macro_coupling": 0.9602,
+      "macro_space": 0.9302,
+      "filter_cutoff": 0.4977,
+      "filter_resonance": 0.5589,
+      "amp_attack": 0.2965,
+      "amp_release": 0.6344,
+      "reverb_mix": 0.6356,
+      "reverb_size": 0.746,
+      "drive": 0.8093,
+      "density": 0.0542,
+      "output_level": 0.7062,
+      "coupling_level": 0.9543
+    }
+  },
+  "coupling": {
+    "type": "PHASE_LOCK",
+    "source": "OVERDUB",
+    "target": "ORBITAL",
+    "amount": 0.6675,
+    "pairs": [
+      {
+        "source": "OVERDUB",
+        "target": "ORBITAL",
+        "type": "PHASE_LOCK",
+        "amount": 0.6675
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.2292,
+    "MOVEMENT": 0.3316,
+    "COUPLING": 0.6675,
+    "SPACE": 0.9145
+  }
+}

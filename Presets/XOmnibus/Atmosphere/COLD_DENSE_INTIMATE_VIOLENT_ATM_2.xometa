@@ -1,0 +1,50 @@
+{
+  "name": "COLD_DENSE_INTIMATE_VIOLENT_ATM_2",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ODDOSCAR",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.762,
+      "macro_movement": 0.409,
+      "macro_coupling": 0.551,
+      "macro_space": 0.237
+    },
+    "OCEANIC": {
+      "macro_character": 0.597,
+      "macro_movement": 0.384,
+      "macro_coupling": 0.487,
+      "macro_space": 0.065
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ODDOSCAR",
+    "target": "OCEANIC",
+    "amount": 0.755
+  },
+  "dna": {
+    "brightness": 0.494,
+    "warmth": 0.035,
+    "movement": 0.389,
+    "density": 0.864,
+    "space": 0.048,
+    "aggression": 0.905
+  },
+  "macros": {
+    "CHARACTER": 0.762,
+    "MOVEMENT": 0.409,
+    "COUPLING": 0.551,
+    "SPACE": 0.237
+  },
+  "tags": [
+    "atmosphere",
+    "cold",
+    "dense",
+    "intimate",
+    "violent"
+  ]
+}

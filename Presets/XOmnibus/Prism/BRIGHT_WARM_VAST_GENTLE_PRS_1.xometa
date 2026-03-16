@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_VAST_GENTLE_PRS_1",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ORACLE",
+    "OCELOT"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.485,
+      "macro_movement": 0.614,
+      "macro_coupling": 0.737,
+      "macro_space": 0.883
+    },
+    "OCELOT": {
+      "macro_character": 0.056,
+      "macro_movement": 0.614,
+      "macro_coupling": 0.78,
+      "macro_space": 0.883
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORACLE",
+    "target": "OCELOT",
+    "amount": 0.46
+  },
+  "dna": {
+    "brightness": 0.929,
+    "warmth": 0.917,
+    "movement": 0.614,
+    "density": 0.623,
+    "space": 0.883,
+    "aggression": 0.041
+  },
+  "macros": {
+    "CHARACTER": 0.485,
+    "MOVEMENT": 0.614,
+    "COUPLING": 0.737,
+    "SPACE": 0.883
+  },
+  "tags": [
+    "prism",
+    "bright",
+    "warm",
+    "vast",
+    "gentle"
+  ]
+}

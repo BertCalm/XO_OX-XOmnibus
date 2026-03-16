@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "name": "COLD_SPARSE_VAST_VIOLENT_ENT_2",
+  "mood": "Entangled",
+  "engines": [
+    "OVERDUB",
+    "OMBRE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cold Sparse Vast Violent character entanglement \u2014 OVERDUB \u00d7 OMBRE via Formant Bridge. Extreme DNA zones push sound design to the edges.",
+  "tags": [
+    "entangled",
+    "cold",
+    "sparse",
+    "vast",
+    "violent",
+    "resonant"
+  ],
+  "macroLabels": [
+    "VOICE",
+    "DRIVE",
+    "DELAY",
+    "SPRING"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.6666,
+    "warmth": 0.0834,
+    "movement": 0.531,
+    "density": 0.105,
+    "space": 0.9682,
+    "aggression": 0.8984
+  },
+  "sonic_dna": {
+    "brightness": 0.6666,
+    "warmth": 0.0834,
+    "movement": 0.531,
+    "density": 0.105,
+    "space": 0.9682,
+    "aggression": 0.8984
+  },
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.5264,
+      "macro_movement": 0.513,
+      "macro_coupling": 0.9189,
+      "macro_space": 0.9755,
+      "filter_cutoff": 0.6854,
+      "filter_resonance": 0.5232,
+      "amp_attack": 0.2519,
+      "amp_release": 0.6854,
+      "reverb_mix": 0.6463,
+      "reverb_size": 0.7685,
+      "drive": 0.7802,
+      "density": 0.0955,
+      "output_level": 0.7282,
+      "coupling_level": 0.9251
+    },
+    "OMBRE": {
+      "macro_character": 0.526,
+      "macro_movement": 0.515,
+      "macro_coupling": 0.8891,
+      "macro_space": 0.9712,
+      "filter_cutoff": 0.6459,
+      "filter_resonance": 0.5272,
+      "amp_attack": 0.2662,
+      "amp_release": 0.6524,
+      "reverb_mix": 0.6795,
+      "reverb_size": 0.7455,
+      "drive": 0.7617,
+      "density": 0.0983,
+      "output_level": 0.7286,
+      "coupling_level": 0.9005
+    }
+  },
+  "coupling": {
+    "type": "FORMANT_BRIDGE",
+    "source": "OMBRE",
+    "target": "OVERDUB",
+    "amount": 0.9851,
+    "pairs": [
+      {
+        "source": "OMBRE",
+        "target": "OVERDUB",
+        "type": "FORMANT_BRIDGE",
+        "amount": 0.9851
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.375,
+    "MOVEMENT": 0.531,
+    "COUPLING": 0.9851,
+    "SPACE": 0.9682
+  }
+}

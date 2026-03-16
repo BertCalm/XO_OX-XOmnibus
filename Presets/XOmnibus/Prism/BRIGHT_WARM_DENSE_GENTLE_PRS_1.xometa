@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_DENSE_GENTLE_PRS_1",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ORIGAMI",
+    "OCELOT"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.516,
+      "macro_movement": 0.601,
+      "macro_coupling": 0.781,
+      "macro_space": 0.394
+    },
+    "OCELOT": {
+      "macro_character": 0.04,
+      "macro_movement": 0.601,
+      "macro_coupling": 0.383,
+      "macro_space": 0.394
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORIGAMI",
+    "target": "OCELOT",
+    "amount": 0.538
+  },
+  "dna": {
+    "brightness": 0.976,
+    "warmth": 0.933,
+    "movement": 0.601,
+    "density": 0.954,
+    "space": 0.394,
+    "aggression": 0.056
+  },
+  "macros": {
+    "CHARACTER": 0.516,
+    "MOVEMENT": 0.601,
+    "COUPLING": 0.781,
+    "SPACE": 0.394
+  },
+  "tags": [
+    "prism",
+    "bright",
+    "warm",
+    "dense",
+    "gentle"
+  ]
+}

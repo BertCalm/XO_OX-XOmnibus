@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_KINETIC_VIOLENT_PRS_2",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OSTERIA",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OSTERIA": {
+      "macro_character": 0.88,
+      "macro_movement": 0.885,
+      "macro_coupling": 0.817,
+      "macro_space": 0.402
+    },
+    "ORIGAMI": {
+      "macro_character": 0.519,
+      "macro_movement": 0.885,
+      "macro_coupling": 0.325,
+      "macro_space": 0.402
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OSTERIA",
+    "target": "ORIGAMI",
+    "amount": 0.41
+  },
+  "dna": {
+    "brightness": 0.861,
+    "warmth": 0.896,
+    "movement": 0.885,
+    "density": 0.355,
+    "space": 0.402,
+    "aggression": 0.899
+  },
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.885,
+    "COUPLING": 0.817,
+    "SPACE": 0.402
+  },
+  "tags": [
+    "prism",
+    "bright",
+    "warm",
+    "kinetic",
+    "violent"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_WARM_SPARSE_VIOLENT_FLX_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OCEANIC",
+    "OUROBOROS"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.8647,
+      "macro_movement": 0.46,
+      "macro_coupling": 0.8725,
+      "macro_space": 0.497
+    },
+    "OUROBOROS": {
+      "macro_character": 0.939,
+      "macro_movement": 0.4202,
+      "macro_coupling": 0.9345,
+      "macro_space": 0.64
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OCEANIC",
+    "target": "OUROBOROS",
+    "amount": 0.668
+  },
+  "dna": {
+    "brightness": 0.9577,
+    "warmth": 0.8845,
+    "movement": 0.3748,
+    "density": 0.0584,
+    "space": 0.4937,
+    "aggression": 0.9517
+  },
+  "macros": {
+    "CHARACTER": 0.8647,
+    "MOVEMENT": 0.46,
+    "COUPLING": 0.8725,
+    "SPACE": 0.497
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "high-brightness",
+    "high-warmth",
+    "low-density",
+    "high-aggression"
+  ]
+}

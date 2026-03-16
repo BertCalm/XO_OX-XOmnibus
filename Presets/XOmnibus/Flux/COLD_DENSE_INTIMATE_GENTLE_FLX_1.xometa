@@ -1,0 +1,52 @@
+{
+  "name": "COLD_DENSE_INTIMATE_GENTLE_FLX_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ORACLE",
+    "OPAL"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.3518,
+      "macro_movement": 0.4068,
+      "macro_coupling": 0.1121,
+      "macro_space": 0.2852
+    },
+    "OPAL": {
+      "macro_character": 0.4782,
+      "macro_movement": 0.4191,
+      "macro_coupling": 0.0554,
+      "macro_space": 0.2732
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORACLE",
+    "target": "OPAL",
+    "amount": 0.8654
+  },
+  "dna": {
+    "brightness": 0.4433,
+    "warmth": 0.1399,
+    "movement": 0.4453,
+    "density": 0.8811,
+    "space": 0.1355,
+    "aggression": 0.0992
+  },
+  "macros": {
+    "CHARACTER": 0.3518,
+    "MOVEMENT": 0.4068,
+    "COUPLING": 0.1121,
+    "SPACE": 0.2852
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-warmth",
+    "high-density",
+    "low-space",
+    "low-aggression"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_KINETIC_VAST_PRS_1",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ORACLE",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.298,
+      "macro_movement": 0.865,
+      "macro_coupling": 0.493,
+      "macro_space": 0.894
+    },
+    "OBLIQUE": {
+      "macro_character": 0.76,
+      "macro_movement": 0.865,
+      "macro_coupling": 0.585,
+      "macro_space": 0.894
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORACLE",
+    "target": "OBLIQUE",
+    "amount": 0.483
+  },
+  "dna": {
+    "brightness": 0.038,
+    "warmth": 0.081,
+    "movement": 0.865,
+    "density": 0.447,
+    "space": 0.894,
+    "aggression": 0.558
+  },
+  "macros": {
+    "CHARACTER": 0.298,
+    "MOVEMENT": 0.865,
+    "COUPLING": 0.493,
+    "SPACE": 0.894
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "cold",
+    "kinetic",
+    "vast"
+  ]
+}

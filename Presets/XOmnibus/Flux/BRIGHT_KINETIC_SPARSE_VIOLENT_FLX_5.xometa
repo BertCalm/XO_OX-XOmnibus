@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_KINETIC_SPARSE_VIOLENT_FLX_5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OVERWORLD",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.7833,
+      "macro_movement": 0.7974,
+      "macro_coupling": 0.8459,
+      "macro_space": 0.3315
+    },
+    "ORACLE": {
+      "macro_character": 0.8974,
+      "macro_movement": 0.9374,
+      "macro_coupling": 0.9467,
+      "macro_space": 0.5247
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OVERWORLD",
+    "target": "ORACLE",
+    "amount": 0.9763
+  },
+  "dna": {
+    "brightness": 0.878,
+    "warmth": 0.6377,
+    "movement": 0.8937,
+    "density": 0.1072,
+    "space": 0.4176,
+    "aggression": 0.9554
+  },
+  "macros": {
+    "CHARACTER": 0.7833,
+    "MOVEMENT": 0.7974,
+    "COUPLING": 0.8459,
+    "SPACE": 0.3315
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "high-brightness",
+    "high-movement",
+    "low-density",
+    "high-aggression"
+  ]
+}

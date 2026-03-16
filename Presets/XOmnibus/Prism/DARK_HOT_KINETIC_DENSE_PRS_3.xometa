@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_KINETIC_DENSE_PRS_3",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OWLFISH",
+    "OTTONI"
+  ],
+  "parameters": {
+    "OWLFISH": {
+      "macro_character": 0.226,
+      "macro_movement": 0.875,
+      "macro_coupling": 0.82,
+      "macro_space": 0.332
+    },
+    "OTTONI": {
+      "macro_character": 0.691,
+      "macro_movement": 0.875,
+      "macro_coupling": 0.528,
+      "macro_space": 0.332
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OWLFISH",
+    "target": "OTTONI",
+    "amount": 0.649
+  },
+  "dna": {
+    "brightness": 0.035,
+    "warmth": 0.915,
+    "movement": 0.875,
+    "density": 0.971,
+    "space": 0.332,
+    "aggression": 0.417
+  },
+  "macros": {
+    "CHARACTER": 0.226,
+    "MOVEMENT": 0.875,
+    "COUPLING": 0.82,
+    "SPACE": 0.332
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "hot",
+    "kinetic",
+    "dense"
+  ]
+}

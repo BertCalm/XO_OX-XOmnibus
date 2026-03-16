@@ -1,0 +1,52 @@
+{
+  "name": "HOT_STILL_SPARSE_VAST_FLX_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBLIQUE",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.6551,
+      "macro_movement": 0.0853,
+      "macro_coupling": 0.7882,
+      "macro_space": 0.8961
+    },
+    "ORGANON": {
+      "macro_character": 0.5342,
+      "macro_movement": 0.0642,
+      "macro_coupling": 0.5455,
+      "macro_space": 0.8954
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OBLIQUE",
+    "target": "ORGANON",
+    "amount": 0.9208
+  },
+  "dna": {
+    "brightness": 0.5471,
+    "warmth": 0.8627,
+    "movement": 0.0346,
+    "density": 0.0688,
+    "space": 0.9525,
+    "aggression": 0.6395
+  },
+  "macros": {
+    "CHARACTER": 0.6551,
+    "MOVEMENT": 0.0853,
+    "COUPLING": 0.7882,
+    "SPACE": 0.8961
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "high-warmth",
+    "low-movement",
+    "low-density",
+    "high-space"
+  ]
+}

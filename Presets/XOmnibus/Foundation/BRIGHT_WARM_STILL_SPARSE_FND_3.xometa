@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_WARM_STILL_SPARSE_FND_3",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBSIDIAN",
+    "OVERDUB"
+  ],
+  "parameters": {
+    "OBSIDIAN": {
+      "macro_character": 0.896,
+      "macro_movement": 0.749,
+      "macro_coupling": 0.348,
+      "macro_space": 0.895
+    },
+    "OVERDUB": {
+      "macro_character": 0.878,
+      "macro_movement": 0.239,
+      "macro_coupling": 0.508,
+      "macro_space": 0.47
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OBSIDIAN",
+    "target": "OVERDUB",
+    "amount": 0.762
+  },
+  "dna": {
+    "brightness": 0.889,
+    "warmth": 0.885,
+    "movement": 0.08,
+    "density": 0.077,
+    "space": 0.486,
+    "aggression": 0.515
+  },
+  "macros": {
+    "CHARACTER": 0.633,
+    "MOVEMENT": 0.767,
+    "COUPLING": 0.816,
+    "SPACE": 0.307
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "warm",
+    "still",
+    "sparse"
+  ]
+}

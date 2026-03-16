@@ -1,0 +1,52 @@
+{
+  "name": "DARK_COLD_KINETIC_VIOLENT_FND_4",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OVERBITE",
+    "ONSET"
+  ],
+  "parameters": {
+    "OVERBITE": {
+      "macro_character": 0.128,
+      "macro_movement": 0.849,
+      "macro_coupling": 0.855,
+      "macro_space": 0.499
+    },
+    "ONSET": {
+      "macro_character": 0.419,
+      "macro_movement": 0.881,
+      "macro_coupling": 0.481,
+      "macro_space": 0.163
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OVERBITE",
+    "target": "ONSET",
+    "amount": 0.598
+  },
+  "dna": {
+    "brightness": 0.091,
+    "warmth": 0.051,
+    "movement": 0.931,
+    "density": 0.522,
+    "space": 0.345,
+    "aggression": 0.927
+  },
+  "macros": {
+    "CHARACTER": 0.327,
+    "MOVEMENT": 0.89,
+    "COUPLING": 0.236,
+    "SPACE": 0.686
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "dark",
+    "cold",
+    "kinetic",
+    "violent",
+    "aggressive"
+  ]
+}

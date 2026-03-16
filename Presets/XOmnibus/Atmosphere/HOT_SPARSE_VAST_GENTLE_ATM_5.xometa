@@ -1,0 +1,50 @@
+{
+  "name": "HOT_SPARSE_VAST_GENTLE_ATM_5",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ODDOSCAR",
+    "OPTIC"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.481,
+      "macro_movement": 0.496,
+      "macro_coupling": 0.726,
+      "macro_space": 0.75
+    },
+    "OPTIC": {
+      "macro_character": 0.465,
+      "macro_movement": 0.568,
+      "macro_coupling": 0.879,
+      "macro_space": 0.782
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "ODDOSCAR",
+    "target": "OPTIC",
+    "amount": 0.784
+  },
+  "dna": {
+    "brightness": 0.486,
+    "warmth": 0.877,
+    "movement": 0.474,
+    "density": 0.047,
+    "space": 0.929,
+    "aggression": 0.088
+  },
+  "macros": {
+    "CHARACTER": 0.481,
+    "MOVEMENT": 0.496,
+    "COUPLING": 0.726,
+    "SPACE": 0.75
+  },
+  "tags": [
+    "atmosphere",
+    "warm",
+    "sparse",
+    "vast",
+    "gentle"
+  ]
+}

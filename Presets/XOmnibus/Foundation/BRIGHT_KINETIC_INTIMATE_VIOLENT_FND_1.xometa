@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_FND_1",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ORACLE",
+    "ONSET"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.26,
+      "macro_movement": 0.218,
+      "macro_coupling": 0.24,
+      "macro_space": 0.58
+    },
+    "ONSET": {
+      "macro_character": 0.824,
+      "macro_movement": 0.801,
+      "macro_coupling": 0.51,
+      "macro_space": 0.292
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "ORACLE",
+    "target": "ONSET",
+    "amount": 0.56
+  },
+  "dna": {
+    "brightness": 0.914,
+    "warmth": 0.356,
+    "movement": 0.978,
+    "density": 0.406,
+    "space": 0.089,
+    "aggression": 0.909
+  },
+  "macros": {
+    "CHARACTER": 0.104,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.283,
+    "SPACE": 0.537
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "kinetic",
+    "intimate",
+    "violent",
+    "aggressive"
+  ]
+}

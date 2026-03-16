@@ -1,0 +1,50 @@
+{
+  "name": "DARK_STILL_VAST_GENTLE_ATM_3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OBSCURA",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.649,
+      "macro_movement": 0.203,
+      "macro_coupling": 0.884,
+      "macro_space": 0.806
+    },
+    "ORIGAMI": {
+      "macro_character": 0.774,
+      "macro_movement": 0.123,
+      "macro_coupling": 0.434,
+      "macro_space": 0.842
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBSCURA",
+    "target": "ORIGAMI",
+    "amount": 0.463
+  },
+  "dna": {
+    "brightness": 0.03,
+    "warmth": 0.455,
+    "movement": 0.087,
+    "density": 0.585,
+    "space": 0.897,
+    "aggression": 0.133
+  },
+  "macros": {
+    "CHARACTER": 0.649,
+    "MOVEMENT": 0.203,
+    "COUPLING": 0.884,
+    "SPACE": 0.806
+  },
+  "tags": [
+    "atmosphere",
+    "dark",
+    "still",
+    "vast",
+    "gentle"
+  ]
+}

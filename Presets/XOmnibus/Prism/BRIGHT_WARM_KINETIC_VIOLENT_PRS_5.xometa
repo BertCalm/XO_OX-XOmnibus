@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_KINETIC_VIOLENT_PRS_5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OBLIQUE",
+    "OHM"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.951,
+      "macro_movement": 0.881,
+      "macro_coupling": 0.778,
+      "macro_space": 0.498
+    },
+    "OHM": {
+      "macro_character": 0.5,
+      "macro_movement": 0.881,
+      "macro_coupling": 0.655,
+      "macro_space": 0.498
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBLIQUE",
+    "target": "OHM",
+    "amount": 0.594
+  },
+  "dna": {
+    "brightness": 0.951,
+    "warmth": 0.939,
+    "movement": 0.881,
+    "density": 0.609,
+    "space": 0.498,
+    "aggression": 0.951
+  },
+  "macros": {
+    "CHARACTER": 0.951,
+    "MOVEMENT": 0.881,
+    "COUPLING": 0.778,
+    "SPACE": 0.498
+  },
+  "tags": [
+    "prism",
+    "bright",
+    "warm",
+    "kinetic",
+    "violent"
+  ]
+}

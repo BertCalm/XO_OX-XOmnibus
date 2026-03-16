@@ -1,0 +1,50 @@
+{
+  "name": "DARK_DENSE_VAST_GENTLE_ATM_3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OPAL",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.341,
+      "macro_movement": 0.732,
+      "macro_coupling": 0.617,
+      "macro_space": 0.755
+    },
+    "ORACLE": {
+      "macro_character": 0.303,
+      "macro_movement": 0.735,
+      "macro_coupling": 0.821,
+      "macro_space": 0.893
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OPAL",
+    "target": "ORACLE",
+    "amount": 0.74
+  },
+  "dna": {
+    "brightness": 0.114,
+    "warmth": 0.568,
+    "movement": 0.696,
+    "density": 0.889,
+    "space": 0.903,
+    "aggression": 0.123
+  },
+  "macros": {
+    "CHARACTER": 0.341,
+    "MOVEMENT": 0.732,
+    "COUPLING": 0.617,
+    "SPACE": 0.755
+  },
+  "tags": [
+    "atmosphere",
+    "dark",
+    "dense",
+    "vast",
+    "gentle"
+  ]
+}

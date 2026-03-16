@@ -1,0 +1,50 @@
+{
+  "name": "DARK_STILL_SPARSE_VAST_PRS_5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OLE",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.351,
+      "macro_movement": 0.061,
+      "macro_coupling": 0.42,
+      "macro_space": 0.911
+    },
+    "OSTERIA": {
+      "macro_character": 0.784,
+      "macro_movement": 0.061,
+      "macro_coupling": 0.312,
+      "macro_space": 0.911
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OLE",
+    "target": "OSTERIA",
+    "amount": 0.484
+  },
+  "dna": {
+    "brightness": 0.067,
+    "warmth": 0.652,
+    "movement": 0.061,
+    "density": 0.135,
+    "space": 0.911,
+    "aggression": 0.634
+  },
+  "macros": {
+    "CHARACTER": 0.351,
+    "MOVEMENT": 0.061,
+    "COUPLING": 0.42,
+    "SPACE": 0.911
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "still",
+    "sparse",
+    "vast"
+  ]
+}

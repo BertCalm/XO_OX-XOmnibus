@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_WARM_STILL_SPARSE_FND_1",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OVERDUB",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.181,
+      "macro_movement": 0.445,
+      "macro_coupling": 0.321,
+      "macro_space": 0.282
+    },
+    "ORACLE": {
+      "macro_character": 0.346,
+      "macro_movement": 0.323,
+      "macro_coupling": 0.637,
+      "macro_space": 0.254
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OVERDUB",
+    "target": "ORACLE",
+    "amount": 0.588
+  },
+  "dna": {
+    "brightness": 0.952,
+    "warmth": 0.87,
+    "movement": 0.092,
+    "density": 0.039,
+    "space": 0.612,
+    "aggression": 0.525
+  },
+  "macros": {
+    "CHARACTER": 0.862,
+    "MOVEMENT": 0.136,
+    "COUPLING": 0.14,
+    "SPACE": 0.798
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "warm",
+    "still",
+    "sparse"
+  ]
+}

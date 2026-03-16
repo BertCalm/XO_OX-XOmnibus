@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT_WARM_KINETIC_VAST_FLX_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ODYSSEY",
+    "OBLONG"
+  ],
+  "parameters": {
+    "ODYSSEY": {
+      "macro_character": 0.8485,
+      "macro_movement": 0.9787,
+      "macro_coupling": 0.493,
+      "macro_space": 0.8419
+    },
+    "OBLONG": {
+      "macro_character": 0.8085,
+      "macro_movement": 0.862,
+      "macro_coupling": 0.6128,
+      "macro_space": 0.8472
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "ODYSSEY",
+    "target": "OBLONG",
+    "amount": 0.7454
+  },
+  "dna": {
+    "brightness": 0.8709,
+    "warmth": 0.9611,
+    "movement": 0.9321,
+    "density": 0.3851,
+    "space": 0.9536,
+    "aggression": 0.5378
+  },
+  "macros": {
+    "CHARACTER": 0.8485,
+    "MOVEMENT": 0.9787,
+    "COUPLING": 0.493,
+    "SPACE": 0.8419
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "high-brightness",
+    "high-warmth",
+    "high-movement",
+    "high-space"
+  ]
+}

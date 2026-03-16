@@ -1,0 +1,53 @@
+{
+  "name": "COLD_KINETIC_VAST_VIOLENT_FND_3",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBSIDIAN",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OBSIDIAN": {
+      "macro_character": 0.845,
+      "macro_movement": 0.713,
+      "macro_coupling": 0.781,
+      "macro_space": 0.874
+    },
+    "ORIGAMI": {
+      "macro_character": 0.543,
+      "macro_movement": 0.521,
+      "macro_coupling": 0.246,
+      "macro_space": 0.413
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBSIDIAN",
+    "target": "ORIGAMI",
+    "amount": 0.652
+  },
+  "dna": {
+    "brightness": 0.344,
+    "warmth": 0.114,
+    "movement": 0.947,
+    "density": 0.584,
+    "space": 0.967,
+    "aggression": 0.958
+  },
+  "macros": {
+    "CHARACTER": 0.142,
+    "MOVEMENT": 0.333,
+    "COUPLING": 0.619,
+    "SPACE": 0.706
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "cold",
+    "kinetic",
+    "vast",
+    "violent",
+    "aggressive",
+    "spatial"
+  ]
+}

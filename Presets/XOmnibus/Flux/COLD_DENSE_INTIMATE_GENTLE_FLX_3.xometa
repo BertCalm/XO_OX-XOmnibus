@@ -1,0 +1,52 @@
+{
+  "name": "COLD_DENSE_INTIMATE_GENTLE_FLX_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OPTIC",
+    "OUROBOROS"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.5138,
+      "macro_movement": 0.5676,
+      "macro_coupling": 0.1163,
+      "macro_space": 0.1142
+    },
+    "OUROBOROS": {
+      "macro_character": 0.5844,
+      "macro_movement": 0.555,
+      "macro_coupling": 0.1892,
+      "macro_space": 0.1918
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OPTIC",
+    "target": "OUROBOROS",
+    "amount": 0.5742
+  },
+  "dna": {
+    "brightness": 0.4605,
+    "warmth": 0.0822,
+    "movement": 0.4873,
+    "density": 0.9753,
+    "space": 0.1002,
+    "aggression": 0.0514
+  },
+  "macros": {
+    "CHARACTER": 0.5138,
+    "MOVEMENT": 0.5676,
+    "COUPLING": 0.1163,
+    "SPACE": 0.1142
+  },
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-warmth",
+    "high-density",
+    "low-space",
+    "low-aggression"
+  ]
+}

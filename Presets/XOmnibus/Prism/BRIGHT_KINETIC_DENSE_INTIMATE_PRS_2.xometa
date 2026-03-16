@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_PRS_2",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OVERWORLD",
+    "OCELOT"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.709,
+      "macro_movement": 0.946,
+      "macro_coupling": 0.496,
+      "macro_space": 0.104
+    },
+    "OCELOT": {
+      "macro_character": 0.238,
+      "macro_movement": 0.946,
+      "macro_coupling": 0.718,
+      "macro_space": 0.104
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OVERWORLD",
+    "target": "OCELOT",
+    "amount": 0.705
+  },
+  "dna": {
+    "brightness": 0.971,
+    "warmth": 0.515,
+    "movement": 0.946,
+    "density": 0.949,
+    "space": 0.104,
+    "aggression": 0.446
+  },
+  "macros": {
+    "CHARACTER": 0.709,
+    "MOVEMENT": 0.946,
+    "COUPLING": 0.496,
+    "SPACE": 0.104
+  },
+  "tags": [
+    "prism",
+    "bright",
+    "kinetic",
+    "dense",
+    "intimate"
+  ]
+}

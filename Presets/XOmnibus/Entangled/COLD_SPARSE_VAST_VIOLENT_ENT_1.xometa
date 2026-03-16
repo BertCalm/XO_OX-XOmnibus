@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "name": "COLD_SPARSE_VAST_VIOLENT_ENT_1",
+  "mood": "Entangled",
+  "engines": [
+    "OVERWORLD",
+    "OLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cold Sparse Vast Violent character entanglement \u2014 OVERWORLD \u00d7 OLE via Pitch Entangle. Extreme DNA zones push sound design to the edges.",
+  "tags": [
+    "entangled",
+    "cold",
+    "sparse",
+    "vast",
+    "violent",
+    "resonant"
+  ],
+  "macroLabels": [
+    "ERA",
+    "GLITCH",
+    "CHIP",
+    "CRT"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.6971,
+    "warmth": 0.0632,
+    "movement": 0.3509,
+    "density": 0.1277,
+    "space": 0.9702,
+    "aggression": 0.9607
+  },
+  "sonic_dna": {
+    "brightness": 0.6971,
+    "warmth": 0.0632,
+    "movement": 0.3509,
+    "density": 0.1277,
+    "space": 0.9702,
+    "aggression": 0.9607
+  },
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.5283,
+      "macro_movement": 0.3412,
+      "macro_coupling": 0.9146,
+      "macro_space": 0.9671,
+      "filter_cutoff": 0.6604,
+      "filter_resonance": 0.5555,
+      "amp_attack": 0.3396,
+      "amp_release": 0.7033,
+      "reverb_mix": 0.6462,
+      "reverb_size": 0.7949,
+      "drive": 0.8278,
+      "density": 0.1626,
+      "output_level": 0.763,
+      "coupling_level": 0.9136
+    },
+    "OLE": {
+      "macro_character": 0.4998,
+      "macro_movement": 0.3584,
+      "macro_coupling": 0.9319,
+      "macro_space": 0.984,
+      "filter_cutoff": 0.7178,
+      "filter_resonance": 0.56,
+      "amp_attack": 0.2731,
+      "amp_release": 0.6772,
+      "reverb_mix": 0.6868,
+      "reverb_size": 0.8025,
+      "drive": 0.8407,
+      "density": 0.0989,
+      "output_level": 0.7714,
+      "coupling_level": 0.913
+    }
+  },
+  "coupling": {
+    "type": "PITCH_ENTANGLE",
+    "source": "OLE",
+    "target": "OVERWORLD",
+    "amount": 0.8074,
+    "pairs": [
+      {
+        "source": "OLE",
+        "target": "OVERWORLD",
+        "type": "PITCH_ENTANGLE",
+        "amount": 0.8074
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.3802,
+    "MOVEMENT": 0.3509,
+    "COUPLING": 0.8074,
+    "SPACE": 0.9702
+  }
+}

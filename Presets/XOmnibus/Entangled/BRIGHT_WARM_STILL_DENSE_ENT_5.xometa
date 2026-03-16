@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT_WARM_STILL_DENSE_ENT_5",
+  "mood": "Entangled",
+  "engines": [
+    "OVERBITE",
+    "OBLONG"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright Warm Still Dense character entanglement \u2014 OVERBITE \u00d7 OBLONG via Subharmonic Weave. Extreme DNA zones push sound design to the edges.",
+  "tags": [
+    "entangled",
+    "bright",
+    "warm",
+    "still",
+    "dense",
+    "resonant"
+  ],
+  "macroLabels": [
+    "FANG",
+    "BASS",
+    "BITE",
+    "BODY"
+  ],
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.9406,
+    "warmth": 0.8976,
+    "movement": 0.0442,
+    "density": 0.8785,
+    "space": 0.5524,
+    "aggression": 0.3916
+  },
+  "sonic_dna": {
+    "brightness": 0.9406,
+    "warmth": 0.8976,
+    "movement": 0.0442,
+    "density": 0.8785,
+    "space": 0.5524,
+    "aggression": 0.3916
+  },
+  "parameters": {
+    "OVERBITE": {
+      "macro_character": 0.9202,
+      "macro_movement": 0.0577,
+      "macro_coupling": 0.7142,
+      "macro_space": 0.523,
+      "filter_cutoff": 0.8932,
+      "filter_resonance": 0.3015,
+      "amp_attack": 0.4301,
+      "amp_release": 0.4542,
+      "reverb_mix": 0.4784,
+      "reverb_size": 0.5066,
+      "drive": 0.3311,
+      "density": 0.873,
+      "output_level": 0.9135,
+      "coupling_level": 0.704
+    },
+    "OBLONG": {
+      "macro_character": 0.9595,
+      "macro_movement": 0.0581,
+      "macro_coupling": 0.7758,
+      "macro_space": 0.5203,
+      "filter_cutoff": 0.8506,
+      "filter_resonance": 0.2829,
+      "amp_attack": 0.4612,
+      "amp_release": 0.4113,
+      "reverb_mix": 0.429,
+      "reverb_size": 0.5273,
+      "drive": 0.3571,
+      "density": 0.8608,
+      "output_level": 0.8996,
+      "coupling_level": 0.7405
+    }
+  },
+  "coupling": {
+    "type": "SUBHARMONIC_WEAVE",
+    "source": "OVERBITE",
+    "target": "OBLONG",
+    "amount": 0.9423,
+    "pairs": [
+      {
+        "source": "OVERBITE",
+        "target": "OBLONG",
+        "type": "SUBHARMONIC_WEAVE",
+        "amount": 0.9423
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.9191,
+    "MOVEMENT": 0.0442,
+    "COUPLING": 0.9423,
+    "SPACE": 0.5524
+  }
+}

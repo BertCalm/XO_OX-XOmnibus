@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_COLD_SPARSE_VAST_PRS_5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OSTERIA",
+    "OWLFISH"
+  ],
+  "parameters": {
+    "OSTERIA": {
+      "macro_character": 0.625,
+      "macro_movement": 0.345,
+      "macro_coupling": 0.53,
+      "macro_space": 0.938
+    },
+    "OWLFISH": {
+      "macro_character": 0.237,
+      "macro_movement": 0.345,
+      "macro_coupling": 0.853,
+      "macro_space": 0.938
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OSTERIA",
+    "target": "OWLFISH",
+    "amount": 0.68
+  },
+  "dna": {
+    "brightness": 0.887,
+    "warmth": 0.123,
+    "movement": 0.345,
+    "density": 0.134,
+    "space": 0.938,
+    "aggression": 0.362
+  },
+  "macros": {
+    "CHARACTER": 0.625,
+    "MOVEMENT": 0.345,
+    "COUPLING": 0.53,
+    "SPACE": 0.938
+  },
+  "tags": [
+    "prism",
+    "bright",
+    "cold",
+    "sparse",
+    "vast"
+  ]
+}

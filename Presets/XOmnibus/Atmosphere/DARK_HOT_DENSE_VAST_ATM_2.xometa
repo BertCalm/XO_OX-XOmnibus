@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_DENSE_VAST_ATM_2",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORACLE",
+    "OBSCURA"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.31,
+      "macro_movement": 0.565,
+      "macro_coupling": 0.766,
+      "macro_space": 0.774
+    },
+    "OBSCURA": {
+      "macro_character": 0.605,
+      "macro_movement": 0.568,
+      "macro_coupling": 0.775,
+      "macro_space": 0.826
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "ORACLE",
+    "target": "OBSCURA",
+    "amount": 0.651
+  },
+  "dna": {
+    "brightness": 0.089,
+    "warmth": 0.942,
+    "movement": 0.504,
+    "density": 0.973,
+    "space": 0.877,
+    "aggression": 0.612
+  },
+  "macros": {
+    "CHARACTER": 0.31,
+    "MOVEMENT": 0.565,
+    "COUPLING": 0.766,
+    "SPACE": 0.774
+  },
+  "tags": [
+    "atmosphere",
+    "dark",
+    "warm",
+    "dense",
+    "vast"
+  ]
+}

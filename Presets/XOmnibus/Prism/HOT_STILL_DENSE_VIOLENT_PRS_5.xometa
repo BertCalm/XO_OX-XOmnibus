@@ -1,0 +1,50 @@
+{
+  "name": "HOT_STILL_DENSE_VIOLENT_PRS_5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ORACLE",
+    "OWLFISH"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.689,
+      "macro_movement": 0.056,
+      "macro_coupling": 0.555,
+      "macro_space": 0.585
+    },
+    "OWLFISH": {
+      "macro_character": 0.726,
+      "macro_movement": 0.056,
+      "macro_coupling": 0.748,
+      "macro_space": 0.585
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ORACLE",
+    "target": "OWLFISH",
+    "amount": 0.582
+  },
+  "dna": {
+    "brightness": 0.463,
+    "warmth": 0.927,
+    "movement": 0.056,
+    "density": 0.917,
+    "space": 0.585,
+    "aggression": 0.914
+  },
+  "macros": {
+    "CHARACTER": 0.689,
+    "MOVEMENT": 0.056,
+    "COUPLING": 0.555,
+    "SPACE": 0.585
+  },
+  "tags": [
+    "prism",
+    "hot",
+    "still",
+    "dense",
+    "violent"
+  ]
+}

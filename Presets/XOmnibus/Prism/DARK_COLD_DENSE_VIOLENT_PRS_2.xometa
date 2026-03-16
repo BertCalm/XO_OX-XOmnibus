@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_DENSE_VIOLENT_PRS_2",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OHM",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.472,
+      "macro_movement": 0.575,
+      "macro_coupling": 0.631,
+      "macro_space": 0.502
+    },
+    "ORPHICA": {
+      "macro_character": 0.918,
+      "macro_movement": 0.575,
+      "macro_coupling": 0.557,
+      "macro_space": 0.502
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OHM",
+    "target": "ORPHICA",
+    "amount": 0.405
+  },
+  "dna": {
+    "brightness": 0.053,
+    "warmth": 0.068,
+    "movement": 0.575,
+    "density": 0.962,
+    "space": 0.502,
+    "aggression": 0.89
+  },
+  "macros": {
+    "CHARACTER": 0.472,
+    "MOVEMENT": 0.575,
+    "COUPLING": 0.631,
+    "SPACE": 0.502
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "cold",
+    "dense",
+    "violent"
+  ]
+}

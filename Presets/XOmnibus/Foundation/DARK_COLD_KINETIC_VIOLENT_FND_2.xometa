@@ -1,0 +1,52 @@
+{
+  "name": "DARK_COLD_KINETIC_VIOLENT_FND_2",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ONSET",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "ONSET": {
+      "macro_character": 0.79,
+      "macro_movement": 0.538,
+      "macro_coupling": 0.845,
+      "macro_space": 0.673
+    },
+    "ORIGAMI": {
+      "macro_character": 0.305,
+      "macro_movement": 0.366,
+      "macro_coupling": 0.419,
+      "macro_space": 0.642
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ONSET",
+    "target": "ORIGAMI",
+    "amount": 0.297
+  },
+  "dna": {
+    "brightness": 0.031,
+    "warmth": 0.136,
+    "movement": 0.965,
+    "density": 0.312,
+    "space": 0.495,
+    "aggression": 0.916
+  },
+  "macros": {
+    "CHARACTER": 0.819,
+    "MOVEMENT": 0.662,
+    "COUPLING": 0.818,
+    "SPACE": 0.161
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "dark",
+    "cold",
+    "kinetic",
+    "violent",
+    "aggressive"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_KINETIC_VIOLENT_ATM_3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OPAL",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.729,
+      "macro_movement": 0.725,
+      "macro_coupling": 0.719,
+      "macro_space": 0.413
+    },
+    "OBLIQUE": {
+      "macro_character": 0.401,
+      "macro_movement": 0.836,
+      "macro_coupling": 0.598,
+      "macro_space": 0.375
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OPAL",
+    "target": "OBLIQUE",
+    "amount": 0.638
+  },
+  "dna": {
+    "brightness": 0.042,
+    "warmth": 0.941,
+    "movement": 0.865,
+    "density": 0.489,
+    "space": 0.329,
+    "aggression": 0.892
+  },
+  "macros": {
+    "CHARACTER": 0.729,
+    "MOVEMENT": 0.725,
+    "COUPLING": 0.719,
+    "SPACE": 0.413
+  },
+  "tags": [
+    "atmosphere",
+    "dark",
+    "warm",
+    "kinetic",
+    "violent"
+  ]
+}

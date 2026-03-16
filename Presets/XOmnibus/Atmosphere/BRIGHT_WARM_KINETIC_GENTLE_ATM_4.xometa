@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_KINETIC_GENTLE_ATM_4",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORGANON",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.552,
+      "macro_movement": 0.791,
+      "macro_coupling": 0.572,
+      "macro_space": 0.523
+    },
+    "ORBITAL": {
+      "macro_character": 0.47,
+      "macro_movement": 0.845,
+      "macro_coupling": 0.642,
+      "macro_space": 0.624
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORGANON",
+    "target": "ORBITAL",
+    "amount": 0.62
+  },
+  "dna": {
+    "brightness": 0.869,
+    "warmth": 0.974,
+    "movement": 0.908,
+    "density": 0.682,
+    "space": 0.625,
+    "aggression": 0.06
+  },
+  "macros": {
+    "CHARACTER": 0.552,
+    "MOVEMENT": 0.791,
+    "COUPLING": 0.572,
+    "SPACE": 0.523
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "warm",
+    "kinetic",
+    "gentle"
+  ]
+}

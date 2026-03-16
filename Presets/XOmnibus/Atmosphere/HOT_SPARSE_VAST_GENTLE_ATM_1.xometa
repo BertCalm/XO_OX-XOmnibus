@@ -1,0 +1,50 @@
+{
+  "name": "HOT_SPARSE_VAST_GENTLE_ATM_1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORBITAL",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.383,
+      "macro_movement": 0.643,
+      "macro_coupling": 0.838,
+      "macro_space": 0.837
+    },
+    "OBLIQUE": {
+      "macro_character": 0.365,
+      "macro_movement": 0.634,
+      "macro_coupling": 0.845,
+      "macro_space": 0.749
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORBITAL",
+    "target": "OBLIQUE",
+    "amount": 0.452
+  },
+  "dna": {
+    "brightness": 0.449,
+    "warmth": 0.946,
+    "movement": 0.66,
+    "density": 0.109,
+    "space": 0.916,
+    "aggression": 0.055
+  },
+  "macros": {
+    "CHARACTER": 0.383,
+    "MOVEMENT": 0.643,
+    "COUPLING": 0.838,
+    "SPACE": 0.837
+  },
+  "tags": [
+    "atmosphere",
+    "warm",
+    "sparse",
+    "vast",
+    "gentle"
+  ]
+}

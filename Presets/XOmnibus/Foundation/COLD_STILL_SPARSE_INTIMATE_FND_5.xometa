@@ -1,0 +1,51 @@
+{
+  "name": "COLD_STILL_SPARSE_INTIMATE_FND_5",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBESE",
+    "OBSIDIAN"
+  ],
+  "parameters": {
+    "OBESE": {
+      "macro_character": 0.267,
+      "macro_movement": 0.411,
+      "macro_coupling": 0.277,
+      "macro_space": 0.791
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.368,
+      "macro_movement": 0.213,
+      "macro_coupling": 0.858,
+      "macro_space": 0.639
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OBESE",
+    "target": "OBSIDIAN",
+    "amount": 0.715
+  },
+  "dna": {
+    "brightness": 0.598,
+    "warmth": 0.053,
+    "movement": 0.125,
+    "density": 0.09,
+    "space": 0.063,
+    "aggression": 0.525
+  },
+  "macros": {
+    "CHARACTER": 0.672,
+    "MOVEMENT": 0.181,
+    "COUPLING": 0.592,
+    "SPACE": 0.598
+  },
+  "tags": [
+    "foundation",
+    "extreme",
+    "cold",
+    "still",
+    "sparse",
+    "intimate"
+  ]
+}
