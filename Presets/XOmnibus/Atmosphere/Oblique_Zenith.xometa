@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Oblique Zenith",
+  "mood": "Atmosphere",
+  "engines": [
+    "OBLIQUE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OBLIQUE \u2014 bright extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "bright",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.9,
+    "warmth": 0.38,
+    "movement": 0.58,
+    "density": 0.82,
+    "space": 0.51,
+    "aggression": 0.32
+  },
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.38,
+    "movement": 0.58,
+    "density": 0.82,
+    "space": 0.51,
+    "aggression": 0.32
+  },
+  "parameters": {
+    "OBLIQUE": {
+      "oblq_warpAngle": 0.08,
+      "oblq_filterCutoff": 0.66,
+      "oblq_filterReso": 0.31,
+      "oblq_ampAttack": 484.1,
+      "oblq_ampDecay": 343.8,
+      "oblq_ampSustain": 0.78,
+      "oblq_ampRelease": 284.5,
+      "oblq_lfoRate": 0.04,
+      "oblq_lfoDepth": 0.87,
+      "oblq_reverbMix": 0.35,
+      "oblq_delayMix": 1.0,
+      "oblq_character": 0.27,
+      "oblq_movement": 0.98,
+      "oblq_space": 0.95,
+      "oblq_coupling": 0.08,
+      "oblq_skew": 0.64
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

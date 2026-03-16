@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Tape Void",
+  "mood": "Foundation",
+  "engines": [
+    "OVERDUB"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OVERDUB \u2014 dark extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.11,
+    "warmth": 0.6,
+    "movement": 0.48,
+    "density": 0.79,
+    "space": 0.43,
+    "aggression": 0.74
+  },
+  "dna": {
+    "brightness": 0.11,
+    "warmth": 0.6,
+    "movement": 0.48,
+    "density": 0.79,
+    "space": 0.43,
+    "aggression": 0.74
+  },
+  "parameters": {
+    "OVERDUB": {
+      "dub_drive": 0.19,
+      "dub_tapeDelay": 0.1,
+      "dub_springReverb": 0.43,
+      "dub_filterCutoff": 0.42,
+      "dub_ampAttack": 376.3,
+      "dub_ampDecay": 584.6,
+      "dub_ampSustain": 0.77,
+      "dub_ampRelease": 787.4,
+      "dub_lfoRate": 0.1,
+      "dub_lfoDepth": 0.4,
+      "dub_reverbMix": 0.34,
+      "dub_delayMix": 0.86,
+      "dub_character": 0.25,
+      "dub_movement": 0.19,
+      "dub_space": 0.45,
+      "dub_coupling": 0.42
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

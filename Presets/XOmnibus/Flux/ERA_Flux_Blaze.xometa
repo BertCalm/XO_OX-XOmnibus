@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "ERA Flux Blaze",
+  "mood": "Flux",
+  "engines": [
+    "OVERWORLD"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERWORLD pushed to extreme brightness \u2014 brightness 0.91, movement 0.73, aggression 0.66. Ultra-bright Flux zone filler.",
+  "tags": [
+    "flux",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.911,
+    "warmth": 0.127,
+    "movement": 0.73,
+    "density": 0.633,
+    "space": 0.294,
+    "aggression": 0.662
+  },
+  "sonic_dna": {
+    "brightness": 0.911,
+    "warmth": 0.127,
+    "movement": 0.73,
+    "density": 0.633,
+    "space": 0.294,
+    "aggression": 0.662
+  },
+  "parameters": {
+    "OVERWORLD": {
+      "ow_macro_era": 0.99,
+      "ow_macro_chaos": 0.353,
+      "ow_macro_couple": 0.096,
+      "ow_macro_space": 0.635,
+      "ow_outputLevel": 0.859,
+      "ow_couplingLevel": 0.141,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

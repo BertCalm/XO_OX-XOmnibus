@@ -1,0 +1,48 @@
+{
+  "name": "Harmonic Tonnage",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBESE",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OBESE": {
+      "macro_character": 0.99,
+      "macro_movement": 0.52,
+      "macro_coupling": 0.84,
+      "macro_space": 0.6
+    },
+    "ORGANON": {
+      "macro_character": 0.89,
+      "macro_movement": 0.59,
+      "macro_coupling": 0.78,
+      "macro_space": 0.37
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBESE",
+    "target": "ORGANON",
+    "amount": 0.75
+  },
+  "dna": {
+    "brightness": 0.39,
+    "warmth": 0.95,
+    "movement": 0.59,
+    "density": 0.97,
+    "space": 0.49,
+    "aggression": 0.51
+  },
+  "macros": {
+    "CHARACTER": 0.94,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.81,
+    "SPACE": 0.48
+  },
+  "tags": [
+    "entangled",
+    "warm-dense",
+    "scorching"
+  ]
+}

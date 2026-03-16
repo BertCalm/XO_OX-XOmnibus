@@ -1,0 +1,37 @@
+{
+  "name": "Organ Of Night",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORGANON"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "org_macro_character": 0.38,
+      "org_macro_movement": 0.24,
+      "org_macro_coupling": 0.37,
+      "org_macro_space": 0.89
+    }
+  },
+  "dna": {
+    "brightness": 0.11,
+    "warmth": 0.26,
+    "movement": 0.27,
+    "density": 0.16,
+    "space": 0.89,
+    "aggression": 0.04
+  },
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.27,
+    "COUPLING": 0.26,
+    "SPACE": 0.89
+  },
+  "tags": [
+    "aether",
+    "dark",
+    "void",
+    "organ",
+    "night"
+  ]
+}

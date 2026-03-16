@@ -1,0 +1,37 @@
+{
+  "name": "Cryogenic Felix",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "felx_macro_character": 0.44,
+      "felx_macro_movement": 0.18,
+      "felx_macro_coupling": 0.16,
+      "felx_macro_space": 0.83
+    }
+  },
+  "dna": {
+    "brightness": 0.84,
+    "warmth": 0.05,
+    "movement": 0.22,
+    "density": 0.12,
+    "space": 0.83,
+    "aggression": 0.03
+  },
+  "macros": {
+    "CHARACTER": 0.33,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.3,
+    "SPACE": 0.83
+  },
+  "tags": [
+    "aether",
+    "frozen",
+    "crystalline",
+    "cryogenic",
+    "felix"
+  ]
+}

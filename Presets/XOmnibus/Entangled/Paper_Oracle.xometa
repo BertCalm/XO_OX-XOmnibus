@@ -1,0 +1,50 @@
+{
+  "name": "Paper Oracle",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORIGAMI",
+    "ORACLE"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.18,
+      "macro_movement": 0.46,
+      "macro_coupling": 0.67,
+      "macro_space": 0.9
+    },
+    "ORACLE": {
+      "macro_character": 0.15,
+      "macro_movement": 0.41,
+      "macro_coupling": 0.72,
+      "macro_space": 0.93
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ORACLE",
+    "target": "ORIGAMI",
+    "amount": 0.67
+  },
+  "dna": {
+    "brightness": 0.11,
+    "warmth": 0.05,
+    "movement": 0.46,
+    "density": 0.13,
+    "space": 0.9,
+    "aggression": 0.08
+  },
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.46,
+    "COUPLING": 0.67,
+    "SPACE": 0.9
+  },
+  "tags": [
+    "entangled",
+    "cold-sparse",
+    "paper",
+    "oracle"
+  ],
+  "description": "Oracle's timbre blends with Origami paper harmonics \u2014 prophecy written in folded sheets."
+}

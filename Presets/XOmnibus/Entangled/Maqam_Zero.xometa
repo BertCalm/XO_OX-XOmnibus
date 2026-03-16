@@ -1,0 +1,50 @@
+{
+  "name": "Maqam Zero",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORACLE",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.18,
+      "macro_movement": 0.5,
+      "macro_coupling": 0.7,
+      "macro_space": 0.91
+    },
+    "ODYSSEY": {
+      "macro_character": 0.15,
+      "macro_movement": 0.45,
+      "macro_coupling": 0.75,
+      "macro_space": 0.94
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORACLE",
+    "target": "ODYSSEY",
+    "amount": 0.7
+  },
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.08,
+    "movement": 0.5,
+    "density": 0.13,
+    "space": 0.91,
+    "aggression": 0.08
+  },
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.7,
+    "SPACE": 0.91
+  },
+  "tags": [
+    "entangled",
+    "cold-sparse",
+    "maqam",
+    "spectral"
+  ],
+  "description": "A single maqam interval floats in void \u2014 Oracle pitch-syncs Odyssey to ancient cold."
+}

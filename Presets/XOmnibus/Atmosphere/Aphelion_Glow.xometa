@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Aphelion Glow",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORBITAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ORBITAL \u2014 bright extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "bright",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.95,
+    "warmth": 0.26,
+    "movement": 0.74,
+    "density": 0.43,
+    "space": 0.85,
+    "aggression": 0.66
+  },
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.26,
+    "movement": 0.74,
+    "density": 0.43,
+    "space": 0.85,
+    "aggression": 0.66
+  },
+  "parameters": {
+    "ORBITAL": {
+      "orb_orbitPeriod": 0.53,
+      "orb_eccentricity": 0.77,
+      "orb_filterCutoff": 0.82,
+      "orb_filterReso": 0.07,
+      "orb_ampAttack": 778.0,
+      "orb_ampDecay": 515.7,
+      "orb_ampSustain": 0.61,
+      "orb_ampRelease": 545.7,
+      "orb_lfoRate": 0.34,
+      "orb_lfoDepth": 0.88,
+      "orb_reverbMix": 0.78,
+      "orb_delayMix": 0.64,
+      "orb_character": 0.18,
+      "orb_movement": 0.97,
+      "orb_space": 0.43,
+      "orb_coupling": 0.91
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

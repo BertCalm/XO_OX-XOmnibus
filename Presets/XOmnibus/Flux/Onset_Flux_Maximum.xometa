@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Onset Flux Maximum",
+  "mood": "Flux",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Onset pushed to extreme brightness \u2014 brightness 0.92, movement 0.89, aggression 0.83. Ultra-bright Flux zone filler.",
+  "tags": [
+    "flux",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "onset"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.921,
+    "warmth": 0.153,
+    "movement": 0.89,
+    "density": 0.383,
+    "space": 0.64,
+    "aggression": 0.835
+  },
+  "sonic_dna": {
+    "brightness": 0.921,
+    "warmth": 0.153,
+    "movement": 0.89,
+    "density": 0.383,
+    "space": 0.64,
+    "aggression": 0.835
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v1_blend": 0.768,
+      "perc_v1_algoMode": 0,
+      "perc_v1_pitch": 0.851,
+      "perc_v1_decay": 0.079,
+      "perc_v1_tone": 0.887,
+      "perc_v1_snap": 0.752,
+      "perc_v1_body": 0.731,
+      "perc_v1_character": 0.673,
+      "perc_v2_blend": 0.377,
+      "perc_v2_pitch": 0.656,
+      "perc_v2_decay": 0.153,
+      "perc_v2_tone": 0.846,
+      "perc_v2_snap": 0.343,
+      "perc_v2_body": 0.291,
+      "perc_machine": 0.732,
+      "perc_punch": 0.688,
+      "perc_space": 0.525,
+      "perc_mutate": 0.394,
+      "perc_outputLevel": 0.823,
+      "perc_couplingLevel": 0.199,
+      "perc_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

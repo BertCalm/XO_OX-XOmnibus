@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Siphon Shimmer",
+  "mood": "Foundation",
+  "engines": [
+    "ORPHICA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ORPHICA \u2014 bright extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "bright",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.95,
+    "warmth": 0.36,
+    "movement": 0.62,
+    "density": 0.57,
+    "space": 0.69,
+    "aggression": 0.13
+  },
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.36,
+    "movement": 0.62,
+    "density": 0.57,
+    "space": 0.69,
+    "aggression": 0.13
+  },
+  "parameters": {
+    "ORPHICA": {
+      "orph_pluckDecay": 181.2,
+      "orph_resonanceBody": 0.69,
+      "orph_filterCutoff": 0.31,
+      "orph_filterReso": 0.58,
+      "orph_ampAttack": 381.2,
+      "orph_ampDecay": 427.1,
+      "orph_ampSustain": 0.6,
+      "orph_ampRelease": 598.0,
+      "orph_lfoRate": 0.33,
+      "orph_lfoDepth": 0.7,
+      "orph_reverbMix": 0.27,
+      "orph_delayMix": 0.25,
+      "orph_character": 0.12,
+      "orph_movement": 0.19,
+      "orph_space": 0.12,
+      "orph_coupling": 0.54
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Paper Lantern",
+  "mood": "Foundation",
+  "engines": [
+    "ORIGAMI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ORIGAMI \u2014 bright extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "bright",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.9,
+    "warmth": 0.57,
+    "movement": 0.46,
+    "density": 0.53,
+    "space": 0.57,
+    "aggression": 0.78
+  },
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.57,
+    "movement": 0.46,
+    "density": 0.53,
+    "space": 0.57,
+    "aggression": 0.78
+  },
+  "parameters": {
+    "ORIGAMI": {
+      "ori_foldDepth": 0.99,
+      "ori_foldRate": 0.31,
+      "ori_filterCutoff": 0.62,
+      "ori_filterReso": 0.61,
+      "ori_ampAttack": 593.4,
+      "ori_ampDecay": 758.3,
+      "ori_ampSustain": 0.45,
+      "ori_ampRelease": 172.8,
+      "ori_lfoRate": 0.66,
+      "ori_lfoDepth": 0.16,
+      "ori_reverbMix": 0.17,
+      "ori_delayMix": 0.08,
+      "ori_character": 0.0,
+      "ori_movement": 0.45,
+      "ori_space": 0.59,
+      "ori_coupling": 0.29
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

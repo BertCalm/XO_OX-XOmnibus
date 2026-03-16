@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Genesis Glare",
+  "mood": "Atmosphere",
+  "engines": [
+    "OVERWORLD"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OVERWORLD \u2014 bright extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "bright",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.95,
+    "warmth": 0.83,
+    "movement": 0.7,
+    "density": 0.45,
+    "space": 0.79,
+    "aggression": 0.09
+  },
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.83,
+    "movement": 0.7,
+    "density": 0.45,
+    "space": 0.79,
+    "aggression": 0.09
+  },
+  "parameters": {
+    "OVERWORLD": {
+      "ow_era": 0.86,
+      "ow_chipWave": 0,
+      "ow_filterCutoff": 0.05,
+      "ow_filterReso": 0.64,
+      "ow_ampAttack": 463.5,
+      "ow_ampDecay": 522.6,
+      "ow_ampSustain": 0.84,
+      "ow_ampRelease": 336.2,
+      "ow_lfoRate": 0.64,
+      "ow_lfoDepth": 0.5,
+      "ow_reverbMix": 0.63,
+      "ow_delayMix": 0.29,
+      "ow_character": 0.96,
+      "ow_movement": 0.48,
+      "ow_space": 0.8,
+      "ow_coupling": 0.68
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

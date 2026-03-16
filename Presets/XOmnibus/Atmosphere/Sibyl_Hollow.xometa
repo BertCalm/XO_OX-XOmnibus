@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Sibyl Hollow",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ORACLE \u2014 dark extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "dark",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.05,
+    "warmth": 0.66,
+    "movement": 0.83,
+    "density": 0.43,
+    "space": 0.59,
+    "aggression": 0.06
+  },
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.66,
+    "movement": 0.83,
+    "density": 0.43,
+    "space": 0.59,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "ORACLE": {
+      "orc_prophecyDepth": 0.66,
+      "orc_filterCutoff": 0.13,
+      "orc_filterReso": 0.71,
+      "orc_ampAttack": 72.4,
+      "orc_ampDecay": 449.3,
+      "orc_ampSustain": 0.75,
+      "orc_ampRelease": 266.1,
+      "orc_lfoRate": 0.13,
+      "orc_lfoDepth": 0.7,
+      "orc_reverbMix": 0.95,
+      "orc_delayMix": 1.0,
+      "orc_character": 0.91,
+      "orc_movement": 0.09,
+      "orc_space": 0.67,
+      "orc_coupling": 0.51,
+      "orc_vision": 0.02
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

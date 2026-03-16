@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Wolfram Flux Maximum",
+  "mood": "Flux",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Outwit pushed to extreme brightness \u2014 brightness 0.94, movement 0.93, aggression 0.84. Ultra-bright Flux zone filler.",
+  "tags": [
+    "flux",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "outwit"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.941,
+    "warmth": 0.21,
+    "movement": 0.926,
+    "density": 0.396,
+    "space": 0.64,
+    "aggression": 0.843
+  },
+  "sonic_dna": {
+    "brightness": 0.941,
+    "warmth": 0.21,
+    "movement": 0.926,
+    "density": 0.396,
+    "space": 0.64,
+    "aggression": 0.843
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 2,
+      "owit_armBalance": 0.484,
+      "owit_mutationRate": 0.614,
+      "owit_armSpread": 0.883,
+      "owit_sync": 0.548,
+      "owit_feedbackAmt": 0.506,
+      "owit_filterCutoff": 0.779,
+      "owit_filterReso": 0.252,
+      "owit_drive": 0.593,
+      "owit_modRate": 2.823,
+      "owit_reverbMix": 0.33,
+      "owit_outputLevel": 0.8,
+      "owit_couplingLevel": 0.155,
+      "owit_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

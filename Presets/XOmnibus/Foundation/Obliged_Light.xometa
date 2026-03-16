@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Obliged Light",
+  "mood": "Foundation",
+  "engines": [
+    "OBBLIGATO"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OBBLIGATO \u2014 bright extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "bright",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.97,
+    "warmth": 0.3,
+    "movement": 0.57,
+    "density": 0.55,
+    "space": 0.29,
+    "aggression": 0.27
+  },
+  "dna": {
+    "brightness": 0.97,
+    "warmth": 0.3,
+    "movement": 0.57,
+    "density": 0.55,
+    "space": 0.29,
+    "aggression": 0.27
+  },
+  "parameters": {
+    "OBBLIGATO": {
+      "obbl_bond": 0.01,
+      "obbl_wind1": 0.8,
+      "obbl_wind2": 0.9,
+      "obbl_filterCutoff": 0.68,
+      "obbl_ampAttack": 130.6,
+      "obbl_ampDecay": 356.2,
+      "obbl_ampSustain": 0.54,
+      "obbl_ampRelease": 472.1,
+      "obbl_lfoRate": 0.64,
+      "obbl_lfoDepth": 0.42,
+      "obbl_reverbMix": 0.25,
+      "obbl_delayMix": 0.85,
+      "obbl_character": 0.2,
+      "obbl_movement": 0.38,
+      "obbl_space": 0.48,
+      "obbl_coupling": 0.24
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

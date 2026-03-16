@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Snapper Ultra",
+  "mood": "Prism",
+  "engines": [
+    "OddfeliX"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddfeliX pushed to extreme brightness \u2014 brightness 0.92, movement 0.62, aggression 0.58. Ultra-bright Prism zone filler.",
+  "tags": [
+    "prism",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "oddfelix"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.918,
+    "warmth": 0.171,
+    "movement": 0.621,
+    "density": 0.401,
+    "space": 0.327,
+    "aggression": 0.584
+  },
+  "sonic_dna": {
+    "brightness": 0.918,
+    "warmth": 0.171,
+    "movement": 0.621,
+    "density": 0.401,
+    "space": 0.327,
+    "aggression": 0.584
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_snap": 0.36,
+      "snap_decay": 0.235,
+      "snap_detune": 1.748,
+      "snap_filterCutoff": 0.735,
+      "snap_filterReso": 0.585,
+      "snap_filterEnvDepth": 0.66,
+      "snap_pitchEnvDepth": 0.501,
+      "snap_pitchEnvDecay": 0.044,
+      "snap_noiseLevel": 0.348,
+      "snap_morphRate": 0.505,
+      "snap_outputLevel": 0.872,
+      "snap_couplingLevel": 0.116,
+      "snap_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "name": "Bounce Chaos Maximum",
+  "mood": "Flux",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oblique pushed to extreme brightness \u2014 brightness 0.91, movement 0.90, aggression 0.50. Ultra-bright Flux zone filler.",
+  "tags": [
+    "flux",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.913,
+    "warmth": 0.181,
+    "movement": 0.901,
+    "density": 0.366,
+    "space": 0.55,
+    "aggression": 0.501
+  },
+  "sonic_dna": {
+    "brightness": 0.913,
+    "warmth": 0.181,
+    "movement": 0.901,
+    "density": 0.366,
+    "space": 0.55,
+    "aggression": 0.501
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_oscWave": 1,
+      "oblq_oscFold": 0.371,
+      "oblq_oscDetune": 1.555,
+      "oblq_level": 0.898,
+      "oblq_glide": 0.011,
+      "oblq_percClick": 0.669,
+      "oblq_percDecay": 0.015,
+      "oblq_bounceRate": 12.35,
+      "oblq_bounceGravity": 0.797,
+      "oblq_bounceDamp": 0.16,
+      "oblq_bounceCnt": 18.5,
+      "oblq_bounceSwing": 0.021,
+      "oblq_clickTone": 13415.2,
+      "oblq_filterCut": 11430.7,
+      "oblq_filterRes": 0.718,
+      "oblq_attack": 0.001,
+      "oblq_decay": 0.131,
+      "oblq_sustain": 0.344,
+      "oblq_release": 0.119,
+      "oblq_prismDelay": 24.2,
+      "oblq_prismSpread": 0.956,
+      "oblq_prismColor": 0.736,
+      "oblq_prismWidth": 0.813,
+      "oblq_prismFeedback": 0.625,
+      "oblq_prismMix": 0.533,
+      "oblq_prismDamp": 0.002,
+      "oblq_phaserRate": 3.24,
+      "oblq_phaserDepth": 0.623,
+      "oblq_phaserFeedback": 0.418,
+      "oblq_phaserMix": 0.27
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

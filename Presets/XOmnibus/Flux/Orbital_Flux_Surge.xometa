@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Orbital Flux Surge",
+  "mood": "Flux",
+  "engines": [
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Orbital pushed to extreme brightness \u2014 brightness 0.89, movement 0.79, aggression 0.76. Ultra-bright Flux zone filler.",
+  "tags": [
+    "flux",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.888,
+    "warmth": 0.183,
+    "movement": 0.787,
+    "density": 0.697,
+    "space": 0.353,
+    "aggression": 0.758
+  },
+  "sonic_dna": {
+    "brightness": 0.888,
+    "warmth": 0.183,
+    "movement": 0.787,
+    "density": 0.697,
+    "space": 0.353,
+    "aggression": 0.758
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.883,
+      "orb_groupEnvRate": 0.831,
+      "orb_groupEnvDepth": 0.94,
+      "orb_oscCount": 5,
+      "orb_spread": 0.638,
+      "orb_detune": 0.355,
+      "orb_filterCutoff": 0.871,
+      "orb_filterReso": 0.315,
+      "orb_drive": 0.642,
+      "orb_modRate": 2.739,
+      "orb_modDepth": 0.552,
+      "orb_reverbSize": 0.352,
+      "orb_reverbMix": 0.243,
+      "orb_outputLevel": 0.872,
+      "orb_couplingLevel": 0.256,
+      "orb_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

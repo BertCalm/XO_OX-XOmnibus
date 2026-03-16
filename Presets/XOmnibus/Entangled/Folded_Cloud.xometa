@@ -1,0 +1,50 @@
+{
+  "name": "Folded Cloud",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OPAL",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.08,
+      "macro_movement": 0.14,
+      "macro_coupling": 0.85,
+      "macro_space": 0.97
+    },
+    "ORIGAMI": {
+      "macro_character": 0.05,
+      "macro_movement": 0.09,
+      "macro_coupling": 0.9,
+      "macro_space": 1.0
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ORIGAMI",
+    "target": "OPAL",
+    "amount": 0.85
+  },
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.03,
+    "movement": 0.14,
+    "density": 0.05,
+    "space": 0.97,
+    "aggression": 0.03
+  },
+  "macros": {
+    "CHARACTER": 0.08,
+    "MOVEMENT": 0.14,
+    "COUPLING": 0.85,
+    "SPACE": 0.97
+  },
+  "tags": [
+    "entangled",
+    "cold-sparse",
+    "folded",
+    "cloud"
+  ],
+  "description": "Origami envelope shapes grain cloud density \u2014 the cloud folds into almost nothing."
+}

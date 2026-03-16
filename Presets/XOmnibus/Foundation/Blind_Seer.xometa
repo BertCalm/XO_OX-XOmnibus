@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Blind Seer",
+  "mood": "Foundation",
+  "engines": [
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ORACLE \u2014 dark extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.12,
+    "warmth": 0.84,
+    "movement": 0.6,
+    "density": 0.7,
+    "space": 0.74,
+    "aggression": 0.16
+  },
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.84,
+    "movement": 0.6,
+    "density": 0.7,
+    "space": 0.74,
+    "aggression": 0.16
+  },
+  "parameters": {
+    "ORACLE": {
+      "orc_prophecyDepth": 0.9,
+      "orc_filterCutoff": 0.51,
+      "orc_filterReso": 0.67,
+      "orc_ampAttack": 264.3,
+      "orc_ampDecay": 559.3,
+      "orc_ampSustain": 0.69,
+      "orc_ampRelease": 157.5,
+      "orc_lfoRate": 0.66,
+      "orc_lfoDepth": 0.38,
+      "orc_reverbMix": 0.75,
+      "orc_delayMix": 0.17,
+      "orc_character": 0.57,
+      "orc_movement": 0.41,
+      "orc_space": 0.83,
+      "orc_coupling": 0.3,
+      "orc_vision": 0.21
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

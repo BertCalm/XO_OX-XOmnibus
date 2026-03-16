@@ -1,0 +1,48 @@
+{
+  "name": "Warm Odd Loop",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERDUB",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.94,
+      "macro_movement": 0.37,
+      "macro_coupling": 0.99,
+      "macro_space": 0.45
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.94,
+      "macro_movement": 0.4,
+      "macro_coupling": 0.82,
+      "macro_space": 0.33
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OVERDUB",
+    "target": "ODDOSCAR",
+    "amount": 0.9
+  },
+  "dna": {
+    "brightness": 0.21,
+    "warmth": 0.97,
+    "movement": 0.48,
+    "density": 0.86,
+    "space": 0.35,
+    "aggression": 0.34
+  },
+  "macros": {
+    "CHARACTER": 0.94,
+    "MOVEMENT": 0.39,
+    "COUPLING": 0.91,
+    "SPACE": 0.39
+  },
+  "tags": [
+    "entangled",
+    "warm-dense",
+    "scorching"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Prophecy Pit",
+  "mood": "Foundation",
+  "engines": [
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ORACLE \u2014 dark extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.1,
+    "warmth": 0.62,
+    "movement": 0.36,
+    "density": 0.67,
+    "space": 0.43,
+    "aggression": 0.62
+  },
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.62,
+    "movement": 0.36,
+    "density": 0.67,
+    "space": 0.43,
+    "aggression": 0.62
+  },
+  "parameters": {
+    "ORACLE": {
+      "orc_prophecyDepth": 0.51,
+      "orc_filterCutoff": 0.79,
+      "orc_filterReso": 0.96,
+      "orc_ampAttack": 590.1,
+      "orc_ampDecay": 528.8,
+      "orc_ampSustain": 0.5,
+      "orc_ampRelease": 532.8,
+      "orc_lfoRate": 0.62,
+      "orc_lfoDepth": 0.09,
+      "orc_reverbMix": 0.95,
+      "orc_delayMix": 0.23,
+      "orc_character": 0.31,
+      "orc_movement": 0.81,
+      "orc_space": 0.15,
+      "orc_coupling": 0.05,
+      "orc_vision": 0.98
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

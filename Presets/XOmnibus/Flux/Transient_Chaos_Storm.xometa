@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Transient Chaos Storm",
+  "mood": "Flux",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Onset pushed to extreme brightness \u2014 brightness 0.93, movement 0.80, aggression 0.51. Ultra-bright Flux zone filler.",
+  "tags": [
+    "flux",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "onset"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.93,
+    "warmth": 0.06,
+    "movement": 0.797,
+    "density": 0.442,
+    "space": 0.291,
+    "aggression": 0.51
+  },
+  "sonic_dna": {
+    "brightness": 0.93,
+    "warmth": 0.06,
+    "movement": 0.797,
+    "density": 0.442,
+    "space": 0.291,
+    "aggression": 0.51
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v1_blend": 0.551,
+      "perc_v1_algoMode": 1,
+      "perc_v1_pitch": 0.69,
+      "perc_v1_decay": 0.303,
+      "perc_v1_tone": 0.902,
+      "perc_v1_snap": 0.385,
+      "perc_v1_body": 0.343,
+      "perc_v1_character": 0.697,
+      "perc_v2_blend": 0.336,
+      "perc_v2_pitch": 0.807,
+      "perc_v2_decay": 0.079,
+      "perc_v2_tone": 0.644,
+      "perc_v2_snap": 0.206,
+      "perc_v2_body": 0.568,
+      "perc_machine": 0.92,
+      "perc_punch": 0.273,
+      "perc_space": 0.252,
+      "perc_mutate": 0.473,
+      "perc_outputLevel": 0.81,
+      "perc_couplingLevel": 0.28,
+      "perc_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

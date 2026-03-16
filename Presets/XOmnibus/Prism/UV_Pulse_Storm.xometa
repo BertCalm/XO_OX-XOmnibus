@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "UV Pulse Storm",
+  "mood": "Prism",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Optic pushed to extreme brightness \u2014 brightness 0.97, movement 0.89, aggression 0.54. Ultra-bright Prism zone filler.",
+  "tags": [
+    "prism",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.973,
+    "warmth": 0.135,
+    "movement": 0.889,
+    "density": 0.332,
+    "space": 0.605,
+    "aggression": 0.542
+  },
+  "sonic_dna": {
+    "brightness": 0.973,
+    "warmth": 0.135,
+    "movement": 0.889,
+    "density": 0.332,
+    "space": 0.605,
+    "aggression": 0.542
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.782,
+      "optic_inputGain": 0.767,
+      "optic_autoPulse": 0.809,
+      "optic_pulseRate": 10.55,
+      "optic_pulseShape": 0.946,
+      "optic_pulseSwing": 0.253,
+      "optic_pulseEvolve": 0.57,
+      "optic_pulseSubdiv": 4,
+      "optic_filterCutoff": 0.923,
+      "optic_filterReso": 0.512,
+      "optic_drive": 0.392,
+      "optic_outputLevel": 0.818,
+      "optic_couplingLevel": 0.279,
+      "optic_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Creased Shadow",
+  "mood": "Foundation",
+  "engines": [
+    "ORIGAMI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ORIGAMI \u2014 dark extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.09,
+    "warmth": 0.4,
+    "movement": 0.71,
+    "density": 0.54,
+    "space": 0.76,
+    "aggression": 0.54
+  },
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.4,
+    "movement": 0.71,
+    "density": 0.54,
+    "space": 0.76,
+    "aggression": 0.54
+  },
+  "parameters": {
+    "ORIGAMI": {
+      "ori_foldDepth": 0.72,
+      "ori_foldRate": 0.38,
+      "ori_filterCutoff": 0.4,
+      "ori_filterReso": 0.15,
+      "ori_ampAttack": 551.7,
+      "ori_ampDecay": 714.7,
+      "ori_ampSustain": 0.9,
+      "ori_ampRelease": 708.9,
+      "ori_lfoRate": 0.78,
+      "ori_lfoDepth": 0.22,
+      "ori_reverbMix": 0.8,
+      "ori_delayMix": 0.7,
+      "ori_character": 0.46,
+      "ori_movement": 0.56,
+      "ori_space": 0.92,
+      "ori_coupling": 0.12
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

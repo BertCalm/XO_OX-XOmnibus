@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Octopus Flux Radiance",
+  "mood": "Flux",
+  "engines": [
+    "Octopus"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Octopus pushed to extreme brightness \u2014 brightness 0.96, movement 0.70, aggression 0.52. Ultra-bright Flux zone filler.",
+  "tags": [
+    "flux",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "octopus"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.958,
+    "warmth": 0.079,
+    "movement": 0.701,
+    "density": 0.625,
+    "space": 0.372,
+    "aggression": 0.524
+  },
+  "sonic_dna": {
+    "brightness": 0.958,
+    "warmth": 0.079,
+    "movement": 0.701,
+    "density": 0.625,
+    "space": 0.372,
+    "aggression": 0.524
+  },
+  "parameters": {
+    "Octopus": {
+      "octo_armCount": 4,
+      "octo_armSpread": 0.54,
+      "octo_armBaseRate": 2.137,
+      "octo_armDepth": 0.646,
+      "octo_chromaSens": 0.851,
+      "octo_chromaSpeed": 1.011,
+      "octo_chromaMorph": 0.51,
+      "octo_chromaDepth": 0.604,
+      "octo_inkDrive": 0.373,
+      "octo_inkFilter": 0.704,
+      "octo_reverbMix": 0.362,
+      "octo_outputLevel": 0.865,
+      "octo_couplingLevel": 0.263,
+      "octo_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

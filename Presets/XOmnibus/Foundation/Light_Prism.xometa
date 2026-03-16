@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Light Prism",
+  "mood": "Foundation",
+  "engines": [
+    "OPTIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OPTIC \u2014 bright extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "bright",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.93,
+    "warmth": 0.44,
+    "movement": 0.78,
+    "density": 0.82,
+    "space": 0.74,
+    "aggression": 0.14
+  },
+  "dna": {
+    "brightness": 0.93,
+    "warmth": 0.44,
+    "movement": 0.78,
+    "density": 0.82,
+    "space": 0.74,
+    "aggression": 0.14
+  },
+  "parameters": {
+    "OPTIC": {
+      "opt_prismAngle": 0.96,
+      "opt_spectralShift": 0.64,
+      "opt_filterCutoff": 0.83,
+      "opt_filterReso": 0.71,
+      "opt_ampAttack": 351.2,
+      "opt_ampDecay": 588.4,
+      "opt_ampSustain": 0.98,
+      "opt_ampRelease": 219.7,
+      "opt_lfoRate": 0.81,
+      "opt_lfoDepth": 0.54,
+      "opt_reverbMix": 0.48,
+      "opt_delayMix": 0.44,
+      "opt_character": 0.73,
+      "opt_movement": 0.27,
+      "opt_space": 0.85,
+      "opt_coupling": 0.83
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

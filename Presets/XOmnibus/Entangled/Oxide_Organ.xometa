@@ -1,0 +1,48 @@
+{
+  "name": "Oxide Organ",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERDUB",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.88,
+      "macro_movement": 0.44,
+      "macro_coupling": 0.69,
+      "macro_space": 0.23
+    },
+    "ORGANON": {
+      "macro_character": 0.62,
+      "macro_movement": 0.32,
+      "macro_coupling": 0.69,
+      "macro_space": 0.19
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OVERDUB",
+    "target": "ORGANON",
+    "amount": 0.74
+  },
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.89,
+    "movement": 0.46,
+    "density": 0.93,
+    "space": 0.21,
+    "aggression": 0.42
+  },
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.69,
+    "SPACE": 0.21
+  },
+  "tags": [
+    "entangled",
+    "warm-dense",
+    "scorching"
+  ]
+}

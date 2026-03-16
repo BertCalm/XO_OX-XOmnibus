@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Chip Chaos Maximum",
+  "mood": "Flux",
+  "engines": [
+    "OVERWORLD"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERWORLD pushed to extreme brightness \u2014 brightness 0.96, movement 0.89, aggression 0.61. Ultra-bright Flux zone filler.",
+  "tags": [
+    "flux",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.96,
+    "warmth": 0.129,
+    "movement": 0.893,
+    "density": 0.598,
+    "space": 0.599,
+    "aggression": 0.609
+  },
+  "sonic_dna": {
+    "brightness": 0.96,
+    "warmth": 0.129,
+    "movement": 0.893,
+    "density": 0.598,
+    "space": 0.599,
+    "aggression": 0.609
+  },
+  "parameters": {
+    "OVERWORLD": {
+      "ow_macro_era": 0.648,
+      "ow_macro_chaos": 0.607,
+      "ow_macro_couple": 0.309,
+      "ow_macro_space": 0.308,
+      "ow_outputLevel": 0.854,
+      "ow_couplingLevel": 0.299,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

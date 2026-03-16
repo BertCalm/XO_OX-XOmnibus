@@ -1,0 +1,48 @@
+{
+  "name": "Bellows Om Wall",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORGANON",
+    "OHM"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.82,
+      "macro_movement": 0.6,
+      "macro_coupling": 0.77,
+      "macro_space": 0.65
+    },
+    "OHM": {
+      "macro_character": 0.84,
+      "macro_movement": 0.74,
+      "macro_coupling": 0.62,
+      "macro_space": 0.62
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "ORGANON",
+    "target": "OHM",
+    "amount": 0.77
+  },
+  "dna": {
+    "brightness": 0.21,
+    "warmth": 0.89,
+    "movement": 0.64,
+    "density": 0.95,
+    "space": 0.56,
+    "aggression": 0.31
+  },
+  "macros": {
+    "CHARACTER": 0.83,
+    "MOVEMENT": 0.67,
+    "COUPLING": 0.7,
+    "SPACE": 0.64
+  },
+  "tags": [
+    "entangled",
+    "warm-dense",
+    "scorching"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Orphica Solar String",
+  "mood": "Prism",
+  "engines": [
+    "Orphica"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Orphica pushed to extreme brightness \u2014 brightness 0.89, movement 0.76, aggression 0.56. Ultra-bright Prism zone filler.",
+  "tags": [
+    "prism",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.89,
+    "warmth": 0.18,
+    "movement": 0.761,
+    "density": 0.435,
+    "space": 0.418,
+    "aggression": 0.56
+  },
+  "sonic_dna": {
+    "brightness": 0.89,
+    "warmth": 0.18,
+    "movement": 0.761,
+    "density": 0.435,
+    "space": 0.418,
+    "aggression": 0.56
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_harpTension": 0.971,
+      "orph_grainSize": 0.051,
+      "orph_grainDensity": 0.746,
+      "orph_grainPitch": 0.094,
+      "orph_grainSpread": 0.928,
+      "orph_shimmerRate": 1.286,
+      "orph_shimmerDepth": 0.584,
+      "orph_filterCutoff": 0.943,
+      "orph_filterReso": 0.267,
+      "orph_attack": 0.013,
+      "orph_decay": 0.427,
+      "orph_sustain": 0.749,
+      "orph_release": 0.534,
+      "orph_reverbSize": 0.711,
+      "orph_reverbMix": 0.341,
+      "orph_outputLevel": 0.896,
+      "orph_couplingLevel": 0.198,
+      "orph_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

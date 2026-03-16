@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Snap Machine Max",
+  "mood": "Prism",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Onset pushed to extreme brightness \u2014 brightness 0.90, movement 0.63, aggression 0.76. Ultra-bright Prism zone filler.",
+  "tags": [
+    "prism",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "onset"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.902,
+    "warmth": 0.274,
+    "movement": 0.626,
+    "density": 0.625,
+    "space": 0.511,
+    "aggression": 0.764
+  },
+  "sonic_dna": {
+    "brightness": 0.902,
+    "warmth": 0.274,
+    "movement": 0.626,
+    "density": 0.625,
+    "space": 0.511,
+    "aggression": 0.764
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v1_blend": 0.783,
+      "perc_v1_algoMode": 2,
+      "perc_v1_pitch": 0.796,
+      "perc_v1_decay": 0.278,
+      "perc_v1_tone": 0.708,
+      "perc_v1_snap": 0.714,
+      "perc_v1_body": 0.541,
+      "perc_v1_character": 0.527,
+      "perc_v2_blend": 0.588,
+      "perc_v2_pitch": 0.531,
+      "perc_v2_decay": 0.052,
+      "perc_v2_tone": 0.825,
+      "perc_v2_snap": 0.556,
+      "perc_v2_body": 0.206,
+      "perc_machine": 0.983,
+      "perc_punch": 0.457,
+      "perc_space": 0.414,
+      "perc_mutate": 0.104,
+      "perc_outputLevel": 0.845,
+      "perc_couplingLevel": 0.333,
+      "perc_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

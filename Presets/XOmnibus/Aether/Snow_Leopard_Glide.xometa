@@ -1,0 +1,37 @@
+{
+  "name": "Snow Leopard Glide",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OCELOT"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "ocel_macro_character": 0.33,
+      "ocel_macro_movement": 0.28,
+      "ocel_macro_coupling": 0.38,
+      "ocel_macro_space": 0.87
+    }
+  },
+  "dna": {
+    "brightness": 0.81,
+    "warmth": 0.09,
+    "movement": 0.28,
+    "density": 0.11,
+    "space": 0.87,
+    "aggression": 0.04
+  },
+  "macros": {
+    "CHARACTER": 0.21,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.31,
+    "SPACE": 0.87
+  },
+  "tags": [
+    "aether",
+    "frozen",
+    "crystalline",
+    "snow",
+    "leopard"
+  ]
+}

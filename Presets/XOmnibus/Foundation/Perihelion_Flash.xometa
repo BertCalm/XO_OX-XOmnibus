@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Perihelion Flash",
+  "mood": "Foundation",
+  "engines": [
+    "ORBITAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ORBITAL \u2014 bright extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "bright",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.93,
+    "warmth": 0.66,
+    "movement": 0.83,
+    "density": 0.5,
+    "space": 0.24,
+    "aggression": 0.55
+  },
+  "dna": {
+    "brightness": 0.93,
+    "warmth": 0.66,
+    "movement": 0.83,
+    "density": 0.5,
+    "space": 0.24,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "ORBITAL": {
+      "orb_orbitPeriod": 0.63,
+      "orb_eccentricity": 0.49,
+      "orb_filterCutoff": 0.09,
+      "orb_filterReso": 0.35,
+      "orb_ampAttack": 270.0,
+      "orb_ampDecay": 537.8,
+      "orb_ampSustain": 0.9,
+      "orb_ampRelease": 267.2,
+      "orb_lfoRate": 0.69,
+      "orb_lfoDepth": 0.29,
+      "orb_reverbMix": 0.95,
+      "orb_delayMix": 0.81,
+      "orb_character": 0.55,
+      "orb_movement": 0.45,
+      "orb_space": 0.31,
+      "orb_coupling": 0.32
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

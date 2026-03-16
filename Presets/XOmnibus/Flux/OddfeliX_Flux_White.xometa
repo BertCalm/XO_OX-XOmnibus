@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "OddfeliX Flux White",
+  "mood": "Flux",
+  "engines": [
+    "OddfeliX"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddfeliX pushed to extreme brightness \u2014 brightness 0.90, movement 0.94, aggression 0.50. Ultra-bright Flux zone filler.",
+  "tags": [
+    "flux",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "oddfelix"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.896,
+    "warmth": 0.063,
+    "movement": 0.936,
+    "density": 0.303,
+    "space": 0.491,
+    "aggression": 0.501
+  },
+  "sonic_dna": {
+    "brightness": 0.896,
+    "warmth": 0.063,
+    "movement": 0.936,
+    "density": 0.303,
+    "space": 0.491,
+    "aggression": 0.501
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_snap": 0.371,
+      "snap_decay": 0.128,
+      "snap_detune": 1.131,
+      "snap_filterCutoff": 0.738,
+      "snap_filterReso": 0.519,
+      "snap_filterEnvDepth": 0.885,
+      "snap_pitchEnvDepth": 0.728,
+      "snap_pitchEnvDecay": 0.026,
+      "snap_noiseLevel": 0.242,
+      "snap_morphRate": 0.999,
+      "snap_outputLevel": 0.905,
+      "snap_couplingLevel": 0.189,
+      "snap_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

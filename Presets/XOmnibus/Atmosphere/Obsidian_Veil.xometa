@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Obsidian Veil",
+  "mood": "Atmosphere",
+  "engines": [
+    "OBSIDIAN"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OBSIDIAN \u2014 dark extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "dark",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.09,
+    "warmth": 0.66,
+    "movement": 0.77,
+    "density": 0.67,
+    "space": 0.63,
+    "aggression": 0.82
+  },
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.66,
+    "movement": 0.77,
+    "density": 0.67,
+    "space": 0.63,
+    "aggression": 0.82
+  },
+  "parameters": {
+    "OBSIDIAN": {
+      "obs_glassResonance": 0.65,
+      "obs_filterCutoff": 0.31,
+      "obs_filterReso": 0.44,
+      "obs_ampAttack": 465.8,
+      "obs_ampDecay": 587.2,
+      "obs_ampSustain": 0.36,
+      "obs_ampRelease": 239.6,
+      "obs_lfoRate": 0.75,
+      "obs_lfoDepth": 0.18,
+      "obs_reverbMix": 0.13,
+      "obs_delayMix": 0.54,
+      "obs_character": 0.97,
+      "obs_movement": 0.53,
+      "obs_space": 0.91,
+      "obs_coupling": 0.83,
+      "obs_darkMatter": 0.26
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

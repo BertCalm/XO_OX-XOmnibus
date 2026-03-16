@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Octopus Bioluminescent",
+  "mood": "Prism",
+  "engines": [
+    "Octopus"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Octopus pushed to extreme brightness \u2014 brightness 0.87, movement 0.56, aggression 0.41. Ultra-bright Prism zone filler.",
+  "tags": [
+    "prism",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "octopus"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.873,
+    "warmth": 0.12,
+    "movement": 0.557,
+    "density": 0.508,
+    "space": 0.438,
+    "aggression": 0.412
+  },
+  "sonic_dna": {
+    "brightness": 0.873,
+    "warmth": 0.12,
+    "movement": 0.557,
+    "density": 0.508,
+    "space": 0.438,
+    "aggression": 0.412
+  },
+  "parameters": {
+    "Octopus": {
+      "octo_armCount": 7,
+      "octo_armSpread": 0.714,
+      "octo_armBaseRate": 1.755,
+      "octo_armDepth": 0.609,
+      "octo_chromaSens": 0.658,
+      "octo_chromaSpeed": 0.548,
+      "octo_chromaMorph": 0.616,
+      "octo_chromaDepth": 0.68,
+      "octo_inkDrive": 0.313,
+      "octo_inkFilter": 0.82,
+      "octo_reverbMix": 0.139,
+      "octo_outputLevel": 0.876,
+      "octo_couplingLevel": 0.252,
+      "octo_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

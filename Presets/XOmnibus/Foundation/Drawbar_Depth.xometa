@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Drawbar Depth",
+  "mood": "Foundation",
+  "engines": [
+    "ORGANON"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ORGANON \u2014 dark extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.07,
+    "warmth": 0.59,
+    "movement": 0.8,
+    "density": 0.67,
+    "space": 0.83,
+    "aggression": 0.69
+  },
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.59,
+    "movement": 0.8,
+    "density": 0.67,
+    "space": 0.83,
+    "aggression": 0.69
+  },
+  "parameters": {
+    "ORGANON": {
+      "org_drawbar1": 0.93,
+      "org_drawbar2": 0.24,
+      "org_drawbar3": 0.16,
+      "org_filterCutoff": 0.8,
+      "org_ampAttack": 145.8,
+      "org_ampDecay": 332.8,
+      "org_ampSustain": 0.43,
+      "org_ampRelease": 740.0,
+      "org_rotarySpeed": 0.78,
+      "org_rotaryDepth": 0.41,
+      "org_reverbMix": 0.67,
+      "org_delayMix": 0.74,
+      "org_character": 0.25,
+      "org_movement": 0.16,
+      "org_space": 0.7,
+      "org_coupling": 0.38
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

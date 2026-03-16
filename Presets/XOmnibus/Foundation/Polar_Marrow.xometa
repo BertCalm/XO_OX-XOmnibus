@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Polar Marrow",
+  "mood": "Foundation",
+  "engines": [
+    "ODDOSCAR"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ODDOSCAR \u2014 dark extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.05,
+    "warmth": 0.81,
+    "movement": 0.31,
+    "density": 0.87,
+    "space": 0.39,
+    "aggression": 0.68
+  },
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.81,
+    "movement": 0.31,
+    "density": 0.87,
+    "space": 0.39,
+    "aggression": 0.68
+  },
+  "parameters": {
+    "ODDOSCAR": {
+      "oddo_oscAwave": 0,
+      "oddo_oscBwave": 1,
+      "oddo_filterCutoff": 0.28,
+      "oddo_filterReso": 0.21,
+      "oddo_ampAttack": 277.6,
+      "oddo_ampDecay": 551.6,
+      "oddo_ampSustain": 0.9,
+      "oddo_ampRelease": 406.8,
+      "oddo_lfoRate": 0.25,
+      "oddo_lfoDepth": 0.91,
+      "oddo_reverbMix": 0.05,
+      "oddo_delayMix": 0.63,
+      "oddo_character": 0.83,
+      "oddo_movement": 0.04,
+      "oddo_space": 0.33,
+      "oddo_coupling": 0.13
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

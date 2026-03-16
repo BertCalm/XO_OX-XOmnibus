@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Iron Core Pulse",
+  "mood": "Foundation",
+  "engines": [
+    "OBLONG"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OBLONG \u2014 dark extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.04,
+    "warmth": 0.58,
+    "movement": 0.37,
+    "density": 0.74,
+    "space": 0.64,
+    "aggression": 0.88
+  },
+  "dna": {
+    "brightness": 0.04,
+    "warmth": 0.58,
+    "movement": 0.37,
+    "density": 0.74,
+    "space": 0.64,
+    "aggression": 0.88
+  },
+  "parameters": {
+    "OBLONG": {
+      "bob_osc1wave": 0,
+      "bob_osc2wave": 0,
+      "bob_filterCutoff": 0.87,
+      "bob_filterReso": 0.3,
+      "bob_ampAttack": 513.0,
+      "bob_ampDecay": 489.1,
+      "bob_ampSustain": 0.41,
+      "bob_ampRelease": 611.2,
+      "bob_lfoRate": 0.54,
+      "bob_lfoDepth": 0.78,
+      "bob_reverbMix": 0.53,
+      "bob_delayMix": 0.0,
+      "bob_character": 0.32,
+      "bob_movement": 0.02,
+      "bob_space": 0.93,
+      "bob_coupling": 0.88
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

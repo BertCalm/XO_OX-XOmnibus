@@ -1,0 +1,50 @@
+{
+  "name": "Written in Ice",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORACLE",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.08,
+      "macro_movement": 0.16,
+      "macro_coupling": 0.86,
+      "macro_space": 0.97
+    },
+    "ORIGAMI": {
+      "macro_character": 0.05,
+      "macro_movement": 0.11,
+      "macro_coupling": 0.91,
+      "macro_space": 1.0
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ORACLE",
+    "target": "ORIGAMI",
+    "amount": 0.86
+  },
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.04,
+    "movement": 0.16,
+    "density": 0.05,
+    "space": 0.97,
+    "aggression": 0.03
+  },
+  "macros": {
+    "CHARACTER": 0.08,
+    "MOVEMENT": 0.16,
+    "COUPLING": 0.86,
+    "SPACE": 0.97
+  },
+  "tags": [
+    "entangled",
+    "cold-sparse",
+    "ice",
+    "prophecy"
+  ],
+  "description": "Oracle controls Origami's envelope \u2014 the prophecy is written in ice that melts slowly."
+}

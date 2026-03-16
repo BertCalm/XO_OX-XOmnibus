@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Fold Flare",
+  "mood": "Foundation",
+  "engines": [
+    "ORIGAMI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ORIGAMI \u2014 bright extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "bright",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.9,
+    "warmth": 0.69,
+    "movement": 0.81,
+    "density": 0.73,
+    "space": 0.44,
+    "aggression": 0.63
+  },
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.69,
+    "movement": 0.81,
+    "density": 0.73,
+    "space": 0.44,
+    "aggression": 0.63
+  },
+  "parameters": {
+    "ORIGAMI": {
+      "ori_foldDepth": 0.92,
+      "ori_foldRate": 0.79,
+      "ori_filterCutoff": 0.63,
+      "ori_filterReso": 0.66,
+      "ori_ampAttack": 747.3,
+      "ori_ampDecay": 343.0,
+      "ori_ampSustain": 0.68,
+      "ori_ampRelease": 519.9,
+      "ori_lfoRate": 0.91,
+      "ori_lfoDepth": 0.83,
+      "ori_reverbMix": 0.07,
+      "ori_delayMix": 0.17,
+      "ori_character": 0.31,
+      "ori_movement": 0.75,
+      "ori_space": 0.57,
+      "ori_coupling": 0.29
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

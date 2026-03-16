@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Diamond Fold",
+  "mood": "Prism",
+  "engines": [
+    "ORIGAMI"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORIGAMI pushed to extreme brightness \u2014 brightness 0.94, movement 0.74, aggression 0.57. Ultra-bright Prism zone filler.",
+  "tags": [
+    "prism",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.938,
+    "warmth": 0.265,
+    "movement": 0.737,
+    "density": 0.584,
+    "space": 0.493,
+    "aggression": 0.57
+  },
+  "sonic_dna": {
+    "brightness": 0.938,
+    "warmth": 0.265,
+    "movement": 0.737,
+    "density": 0.584,
+    "space": 0.493,
+    "aggression": 0.57
+  },
+  "parameters": {
+    "ORIGAMI": {
+      "ori_macro_fold": 0.36,
+      "ori_macro_tension": 0.849,
+      "ori_macro_couple": 0.25,
+      "ori_macro_space": 0.339,
+      "ori_outputLevel": 0.807,
+      "ori_couplingLevel": 0.341,
+      "ori_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

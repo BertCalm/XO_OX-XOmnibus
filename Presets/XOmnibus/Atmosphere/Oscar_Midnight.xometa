@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Oscar Midnight",
+  "mood": "Atmosphere",
+  "engines": [
+    "ODDOSCAR"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ODDOSCAR \u2014 dark extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "dark",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.06,
+    "warmth": 0.44,
+    "movement": 0.33,
+    "density": 0.54,
+    "space": 0.41,
+    "aggression": 0.13
+  },
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.44,
+    "movement": 0.33,
+    "density": 0.54,
+    "space": 0.41,
+    "aggression": 0.13
+  },
+  "parameters": {
+    "ODDOSCAR": {
+      "oddo_oscAwave": 1,
+      "oddo_oscBwave": 1,
+      "oddo_filterCutoff": 0.67,
+      "oddo_filterReso": 0.37,
+      "oddo_ampAttack": 126.3,
+      "oddo_ampDecay": 738.8,
+      "oddo_ampSustain": 0.35,
+      "oddo_ampRelease": 666.3,
+      "oddo_lfoRate": 0.09,
+      "oddo_lfoDepth": 0.1,
+      "oddo_reverbMix": 0.74,
+      "oddo_delayMix": 0.81,
+      "oddo_character": 0.56,
+      "oddo_movement": 0.59,
+      "oddo_space": 0.56,
+      "oddo_coupling": 0.33
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

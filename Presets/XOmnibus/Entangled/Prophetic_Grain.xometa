@@ -1,0 +1,50 @@
+{
+  "name": "Prophetic Grain",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OPAL",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.17,
+      "macro_movement": 0.45,
+      "macro_coupling": 0.69,
+      "macro_space": 0.91
+    },
+    "ORACLE": {
+      "macro_character": 0.14,
+      "macro_movement": 0.4,
+      "macro_coupling": 0.74,
+      "macro_space": 0.94
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORACLE",
+    "target": "OPAL",
+    "amount": 0.69
+  },
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.1,
+    "movement": 0.45,
+    "density": 0.12,
+    "space": 0.91,
+    "aggression": 0.07
+  },
+  "macros": {
+    "CHARACTER": 0.17,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.69,
+    "SPACE": 0.91
+  },
+  "tags": [
+    "entangled",
+    "cold-sparse",
+    "prophecy",
+    "grain"
+  ],
+  "description": "Oracle breakpoints scatter Opal grains \u2014 each grain lands on a prophesied frequency."
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Solar Orbit Maximum",
+  "mood": "Prism",
+  "engines": [
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Orbital pushed to extreme brightness \u2014 brightness 0.89, movement 0.74, aggression 0.75. Ultra-bright Prism zone filler.",
+  "tags": [
+    "prism",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.889,
+    "warmth": 0.188,
+    "movement": 0.741,
+    "density": 0.623,
+    "space": 0.379,
+    "aggression": 0.753
+  },
+  "sonic_dna": {
+    "brightness": 0.889,
+    "warmth": 0.188,
+    "movement": 0.741,
+    "density": 0.623,
+    "space": 0.379,
+    "aggression": 0.753
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.889,
+      "orb_groupEnvRate": 1.182,
+      "orb_groupEnvDepth": 0.939,
+      "orb_oscCount": 4,
+      "orb_spread": 0.446,
+      "orb_detune": 0.324,
+      "orb_filterCutoff": 0.916,
+      "orb_filterReso": 0.577,
+      "orb_drive": 0.622,
+      "orb_modRate": 2.145,
+      "orb_modDepth": 0.397,
+      "orb_reverbSize": 0.547,
+      "orb_reverbMix": 0.225,
+      "orb_outputLevel": 0.9,
+      "orb_couplingLevel": 0.001,
+      "orb_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

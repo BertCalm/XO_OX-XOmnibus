@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Orbital Apex",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORBITAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ORBITAL \u2014 bright extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "bright",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.97,
+    "warmth": 0.42,
+    "movement": 0.38,
+    "density": 0.22,
+    "space": 0.15,
+    "aggression": 0.51
+  },
+  "dna": {
+    "brightness": 0.97,
+    "warmth": 0.42,
+    "movement": 0.38,
+    "density": 0.22,
+    "space": 0.15,
+    "aggression": 0.51
+  },
+  "parameters": {
+    "ORBITAL": {
+      "orb_orbitPeriod": 0.89,
+      "orb_eccentricity": 0.85,
+      "orb_filterCutoff": 0.71,
+      "orb_filterReso": 0.93,
+      "orb_ampAttack": 512.0,
+      "orb_ampDecay": 636.0,
+      "orb_ampSustain": 0.66,
+      "orb_ampRelease": 101.5,
+      "orb_lfoRate": 0.2,
+      "orb_lfoDepth": 0.14,
+      "orb_reverbMix": 0.79,
+      "orb_delayMix": 0.03,
+      "orb_character": 0.55,
+      "orb_movement": 0.37,
+      "orb_space": 0.8,
+      "orb_coupling": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

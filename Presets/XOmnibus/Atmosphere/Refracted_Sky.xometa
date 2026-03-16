@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Refracted Sky",
+  "mood": "Atmosphere",
+  "engines": [
+    "OPTIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OPTIC \u2014 bright extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "bright",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.92,
+    "warmth": 0.78,
+    "movement": 0.54,
+    "density": 0.41,
+    "space": 0.65,
+    "aggression": 0.5
+  },
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.78,
+    "movement": 0.54,
+    "density": 0.41,
+    "space": 0.65,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "OPTIC": {
+      "opt_prismAngle": 0.11,
+      "opt_spectralShift": 0.29,
+      "opt_filterCutoff": 0.3,
+      "opt_filterReso": 0.05,
+      "opt_ampAttack": 338.8,
+      "opt_ampDecay": 636.1,
+      "opt_ampSustain": 0.62,
+      "opt_ampRelease": 93.1,
+      "opt_lfoRate": 0.91,
+      "opt_lfoDepth": 0.6,
+      "opt_reverbMix": 0.02,
+      "opt_delayMix": 0.52,
+      "opt_character": 0.24,
+      "opt_movement": 0.14,
+      "opt_space": 0.43,
+      "opt_coupling": 0.61
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

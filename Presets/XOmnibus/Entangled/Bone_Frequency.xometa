@@ -1,0 +1,50 @@
+{
+  "name": "Bone Frequency",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ODYSSEY",
+    "OBSIDIAN"
+  ],
+  "parameters": {
+    "ODYSSEY": {
+      "macro_character": 0.25,
+      "macro_movement": 0.18,
+      "macro_coupling": 0.78,
+      "macro_space": 0.88
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.22,
+      "macro_movement": 0.13,
+      "macro_coupling": 0.83,
+      "macro_space": 0.91
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OBSIDIAN",
+    "target": "ODYSSEY",
+    "amount": 0.78
+  },
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.03,
+    "movement": 0.18,
+    "density": 0.06,
+    "space": 0.88,
+    "aggression": 0.12
+  },
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.78,
+    "SPACE": 0.88
+  },
+  "tags": [
+    "entangled",
+    "cold-sparse",
+    "void",
+    "drone"
+  ],
+  "description": "A single harmonic bone \u2014 Obsidian locks Odyssey's pitch to sub-zero stillness."
+}

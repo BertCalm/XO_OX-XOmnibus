@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Slant Shine",
+  "mood": "Atmosphere",
+  "engines": [
+    "OBLIQUE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OBLIQUE \u2014 bright extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "bright",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.94,
+    "warmth": 0.38,
+    "movement": 0.62,
+    "density": 0.76,
+    "space": 0.24,
+    "aggression": 0.35
+  },
+  "dna": {
+    "brightness": 0.94,
+    "warmth": 0.38,
+    "movement": 0.62,
+    "density": 0.76,
+    "space": 0.24,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "OBLIQUE": {
+      "oblq_warpAngle": 0.78,
+      "oblq_filterCutoff": 0.87,
+      "oblq_filterReso": 0.33,
+      "oblq_ampAttack": 104.0,
+      "oblq_ampDecay": 297.6,
+      "oblq_ampSustain": 0.92,
+      "oblq_ampRelease": 595.9,
+      "oblq_lfoRate": 0.89,
+      "oblq_lfoDepth": 0.39,
+      "oblq_reverbMix": 0.97,
+      "oblq_delayMix": 0.5,
+      "oblq_character": 0.5,
+      "oblq_movement": 0.92,
+      "oblq_space": 0.52,
+      "oblq_coupling": 0.8,
+      "oblq_skew": 0.73
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

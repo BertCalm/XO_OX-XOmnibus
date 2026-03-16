@@ -1,0 +1,48 @@
+{
+  "name": "Dense Granule",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBLONG",
+    "OPAL"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.88,
+      "macro_movement": 0.31,
+      "macro_coupling": 0.72,
+      "macro_space": 0.37
+    },
+    "OPAL": {
+      "macro_character": 0.72,
+      "macro_movement": 0.25,
+      "macro_coupling": 0.69,
+      "macro_space": 0.27
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBLONG",
+    "target": "OPAL",
+    "amount": 0.68
+  },
+  "dna": {
+    "brightness": 0.31,
+    "warmth": 0.89,
+    "movement": 0.21,
+    "density": 0.87,
+    "space": 0.34,
+    "aggression": 0.48
+  },
+  "macros": {
+    "CHARACTER": 0.8,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.7,
+    "SPACE": 0.32
+  },
+  "tags": [
+    "entangled",
+    "warm-dense",
+    "scorching"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Cyclic Dark",
+  "mood": "Atmosphere",
+  "engines": [
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OUROBOROS \u2014 dark extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "dark",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.09,
+    "warmth": 0.23,
+    "movement": 0.54,
+    "density": 0.5,
+    "space": 0.55,
+    "aggression": 0.06
+  },
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.23,
+    "movement": 0.54,
+    "density": 0.5,
+    "space": 0.55,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "OUROBOROS": {
+      "uro_feedbackLoop": 0.3,
+      "uro_filterCutoff": 0.21,
+      "uro_filterReso": 0.14,
+      "uro_ampAttack": 208.1,
+      "uro_ampDecay": 265.9,
+      "uro_ampSustain": 0.31,
+      "uro_ampRelease": 598.9,
+      "uro_lfoRate": 0.18,
+      "uro_lfoDepth": 0.38,
+      "uro_reverbMix": 0.7,
+      "uro_delayMix": 0.5,
+      "uro_character": 0.83,
+      "uro_movement": 0.81,
+      "uro_space": 0.07,
+      "uro_coupling": 0.86,
+      "uro_cycle": 0.04
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

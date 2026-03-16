@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Laser Glass Burst",
+  "mood": "Prism",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Optic pushed to extreme brightness \u2014 brightness 0.89, movement 0.75, aggression 0.45. Ultra-bright Prism zone filler.",
+  "tags": [
+    "prism",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.894,
+    "warmth": 0.209,
+    "movement": 0.75,
+    "density": 0.332,
+    "space": 0.658,
+    "aggression": 0.447
+  },
+  "sonic_dna": {
+    "brightness": 0.894,
+    "warmth": 0.209,
+    "movement": 0.75,
+    "density": 0.332,
+    "space": 0.658,
+    "aggression": 0.447
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.708,
+      "optic_inputGain": 0.986,
+      "optic_autoPulse": 0.697,
+      "optic_pulseRate": 4.24,
+      "optic_pulseShape": 0.544,
+      "optic_pulseSwing": 0.333,
+      "optic_pulseEvolve": 0.715,
+      "optic_pulseSubdiv": 3,
+      "optic_filterCutoff": 0.771,
+      "optic_filterReso": 0.509,
+      "optic_drive": 0.364,
+      "optic_outputLevel": 0.916,
+      "optic_couplingLevel": 0.333,
+      "optic_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

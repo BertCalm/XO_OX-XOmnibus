@@ -1,0 +1,50 @@
+{
+  "name": "Crystal Grain",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBSIDIAN",
+    "OPAL"
+  ],
+  "parameters": {
+    "OBSIDIAN": {
+      "macro_character": 0.14,
+      "macro_movement": 0.38,
+      "macro_coupling": 0.71,
+      "macro_space": 0.92
+    },
+    "OPAL": {
+      "macro_character": 0.11,
+      "macro_movement": 0.33,
+      "macro_coupling": 0.76,
+      "macro_space": 0.95
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OBSIDIAN",
+    "target": "OPAL",
+    "amount": 0.71
+  },
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.08,
+    "movement": 0.38,
+    "density": 0.11,
+    "space": 0.92,
+    "aggression": 0.06
+  },
+  "macros": {
+    "CHARACTER": 0.14,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.71,
+    "SPACE": 0.92
+  },
+  "tags": [
+    "entangled",
+    "cold-sparse",
+    "crystal",
+    "grain"
+  ],
+  "description": "Crystal harmonics morph into granular clouds \u2014 facets dissolving into suspended particles."
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Flash Rate Extreme",
+  "mood": "Flux",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Optic pushed to extreme brightness \u2014 brightness 0.92, movement 0.95, aggression 0.60. Ultra-bright Flux zone filler.",
+  "tags": [
+    "flux",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.923,
+    "warmth": 0.247,
+    "movement": 0.946,
+    "density": 0.425,
+    "space": 0.491,
+    "aggression": 0.596
+  },
+  "sonic_dna": {
+    "brightness": 0.923,
+    "warmth": 0.247,
+    "movement": 0.946,
+    "density": 0.425,
+    "space": 0.491,
+    "aggression": 0.596
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.966,
+      "optic_inputGain": 0.803,
+      "optic_autoPulse": 0.651,
+      "optic_pulseRate": 10.75,
+      "optic_pulseShape": 0.785,
+      "optic_pulseSwing": 0.131,
+      "optic_pulseEvolve": 0.812,
+      "optic_pulseSubdiv": 2,
+      "optic_filterCutoff": 0.839,
+      "optic_filterReso": 0.685,
+      "optic_drive": 0.429,
+      "optic_outputLevel": 0.792,
+      "optic_couplingLevel": 0.181,
+      "optic_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Punch Horizon",
+  "mood": "Atmosphere",
+  "engines": [
+    "ONSET"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ONSET \u2014 bright extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "bright",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.93,
+    "warmth": 0.63,
+    "movement": 0.3,
+    "density": 0.42,
+    "space": 0.75,
+    "aggression": 0.19
+  },
+  "dna": {
+    "brightness": 0.93,
+    "warmth": 0.63,
+    "movement": 0.3,
+    "density": 0.42,
+    "space": 0.75,
+    "aggression": 0.19
+  },
+  "parameters": {
+    "ONSET": {
+      "ons_machine": 0.33,
+      "ons_punch": 0.58,
+      "ons_space": 0.31,
+      "ons_mutate": 0.76,
+      "ons_kickTune": 0.5,
+      "ons_snareTone": 0.51,
+      "ons_hihatDecay": 401.5,
+      "ons_filterCutoff": 0.31,
+      "ons_reverbMix": 0.02,
+      "ons_delayMix": 0.95,
+      "ons_character": 0.51,
+      "ons_movement": 0.97,
+      "ons_density": 0.22,
+      "ons_aggression": 0.35,
+      "ons_coupling": 0.05,
+      "ons_outputLevel": 0.49
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

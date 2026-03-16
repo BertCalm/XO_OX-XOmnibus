@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Solar Arc",
+  "mood": "Foundation",
+  "engines": [
+    "ORBITAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ORBITAL \u2014 bright extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "bright",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.89,
+    "warmth": 0.68,
+    "movement": 0.74,
+    "density": 0.72,
+    "space": 0.81,
+    "aggression": 0.48
+  },
+  "dna": {
+    "brightness": 0.89,
+    "warmth": 0.68,
+    "movement": 0.74,
+    "density": 0.72,
+    "space": 0.81,
+    "aggression": 0.48
+  },
+  "parameters": {
+    "ORBITAL": {
+      "orb_orbitPeriod": 0.49,
+      "orb_eccentricity": 0.08,
+      "orb_filterCutoff": 0.04,
+      "orb_filterReso": 0.43,
+      "orb_ampAttack": 261.2,
+      "orb_ampDecay": 204.0,
+      "orb_ampSustain": 0.36,
+      "orb_ampRelease": 769.7,
+      "orb_lfoRate": 0.84,
+      "orb_lfoDepth": 0.58,
+      "orb_reverbMix": 0.95,
+      "orb_delayMix": 1.0,
+      "orb_character": 0.67,
+      "orb_movement": 0.27,
+      "orb_space": 0.04,
+      "orb_coupling": 0.76
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

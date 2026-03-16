@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Angled Light",
+  "mood": "Foundation",
+  "engines": [
+    "OBLIQUE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OBLIQUE \u2014 bright extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "bright",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.96,
+    "warmth": 0.33,
+    "movement": 0.27,
+    "density": 0.56,
+    "space": 0.64,
+    "aggression": 0.39
+  },
+  "dna": {
+    "brightness": 0.96,
+    "warmth": 0.33,
+    "movement": 0.27,
+    "density": 0.56,
+    "space": 0.64,
+    "aggression": 0.39
+  },
+  "parameters": {
+    "OBLIQUE": {
+      "oblq_warpAngle": 0.98,
+      "oblq_filterCutoff": 0.52,
+      "oblq_filterReso": 0.28,
+      "oblq_ampAttack": 84.9,
+      "oblq_ampDecay": 159.3,
+      "oblq_ampSustain": 0.46,
+      "oblq_ampRelease": 147.7,
+      "oblq_lfoRate": 0.01,
+      "oblq_lfoDepth": 0.53,
+      "oblq_reverbMix": 0.27,
+      "oblq_delayMix": 0.97,
+      "oblq_character": 0.55,
+      "oblq_movement": 0.7,
+      "oblq_space": 0.13,
+      "oblq_coupling": 0.87,
+      "oblq_skew": 0.49
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

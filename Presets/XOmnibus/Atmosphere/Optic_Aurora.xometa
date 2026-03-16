@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Optic Aurora",
+  "mood": "Atmosphere",
+  "engines": [
+    "OPTIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OPTIC \u2014 bright extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "bright",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.92,
+    "warmth": 0.22,
+    "movement": 0.14,
+    "density": 0.58,
+    "space": 0.88,
+    "aggression": 0.25
+  },
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.22,
+    "movement": 0.14,
+    "density": 0.58,
+    "space": 0.88,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "OPTIC": {
+      "opt_prismAngle": 0.99,
+      "opt_spectralShift": 0.37,
+      "opt_filterCutoff": 0.03,
+      "opt_filterReso": 0.93,
+      "opt_ampAttack": 672.1,
+      "opt_ampDecay": 521.7,
+      "opt_ampSustain": 0.85,
+      "opt_ampRelease": 114.4,
+      "opt_lfoRate": 0.29,
+      "opt_lfoDepth": 0.83,
+      "opt_reverbMix": 0.7,
+      "opt_delayMix": 0.14,
+      "opt_character": 0.71,
+      "opt_movement": 0.45,
+      "opt_space": 0.01,
+      "opt_coupling": 0.08
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Warm Granule",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERDUB",
+    "OPAL"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.77,
+      "macro_movement": 0.55,
+      "macro_coupling": 0.7,
+      "macro_space": 0.46
+    },
+    "OPAL": {
+      "macro_character": 0.85,
+      "macro_movement": 0.26,
+      "macro_coupling": 0.64,
+      "macro_space": 0.37
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OVERDUB",
+    "target": "OPAL",
+    "amount": 0.76
+  },
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.87,
+    "movement": 0.43,
+    "density": 0.88,
+    "space": 0.53,
+    "aggression": 0.59
+  },
+  "macros": {
+    "CHARACTER": 0.81,
+    "MOVEMENT": 0.41,
+    "COUPLING": 0.67,
+    "SPACE": 0.42
+  },
+  "tags": [
+    "entangled",
+    "warm-dense",
+    "scorching"
+  ]
+}

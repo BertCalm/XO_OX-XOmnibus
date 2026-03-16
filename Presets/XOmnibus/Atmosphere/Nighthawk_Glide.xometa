@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Nighthawk Glide",
+  "mood": "Atmosphere",
+  "engines": [
+    "OSPREY"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OSPREY \u2014 dark extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "dark",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.1,
+    "warmth": 0.63,
+    "movement": 0.51,
+    "density": 0.55,
+    "space": 0.63,
+    "aggression": 0.52
+  },
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.63,
+    "movement": 0.51,
+    "density": 0.55,
+    "space": 0.63,
+    "aggression": 0.52
+  },
+  "parameters": {
+    "OSPREY": {
+      "osp_diveSpeed": 0,
+      "osp_filterCutoff": 0.45,
+      "osp_filterReso": 0.81,
+      "osp_ampAttack": 523.2,
+      "osp_ampDecay": 260.6,
+      "osp_ampSustain": 0.63,
+      "osp_ampRelease": 124.9,
+      "osp_lfoRate": 0.06,
+      "osp_lfoDepth": 0.1,
+      "osp_reverbMix": 0.9,
+      "osp_delayMix": 0.34,
+      "osp_character": 0.71,
+      "osp_movement": 0.5,
+      "osp_space": 0.17,
+      "osp_coupling": 0.25
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

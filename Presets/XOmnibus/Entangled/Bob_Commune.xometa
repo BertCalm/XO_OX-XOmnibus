@@ -1,0 +1,48 @@
+{
+  "name": "Bob Commune",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBLONG",
+    "OHM"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.82,
+      "macro_movement": 0.27,
+      "macro_coupling": 0.79,
+      "macro_space": 0.35
+    },
+    "OHM": {
+      "macro_character": 0.67,
+      "macro_movement": 0.23,
+      "macro_coupling": 0.84,
+      "macro_space": 0.49
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OBLONG",
+    "target": "OHM",
+    "amount": 0.79
+  },
+  "dna": {
+    "brightness": 0.59,
+    "warmth": 0.95,
+    "movement": 0.4,
+    "density": 0.79,
+    "space": 0.47,
+    "aggression": 0.74
+  },
+  "macros": {
+    "CHARACTER": 0.74,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.81,
+    "SPACE": 0.42
+  },
+  "tags": [
+    "entangled",
+    "warm-dense",
+    "scorching"
+  ]
+}

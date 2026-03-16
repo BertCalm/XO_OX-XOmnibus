@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Ocelot Solar Pounce",
+  "mood": "Prism",
+  "engines": [
+    "Ocelot"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ocelot pushed to extreme brightness \u2014 brightness 0.93, movement 0.68, aggression 0.76. Ultra-bright Prism zone filler.",
+  "tags": [
+    "prism",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.928,
+    "warmth": 0.244,
+    "movement": 0.677,
+    "density": 0.315,
+    "space": 0.544,
+    "aggression": 0.762
+  },
+  "sonic_dna": {
+    "brightness": 0.928,
+    "warmth": 0.244,
+    "movement": 0.677,
+    "density": 0.315,
+    "space": 0.544,
+    "aggression": 0.762
+  },
+  "parameters": {
+    "Ocelot": {
+      "ocelot_biome": 1,
+      "ocelot_strataBalance": 0.823,
+      "ocelot_ecosystemDepth": 0.707,
+      "ocelot_humidity": 0.122,
+      "ocelot_swing": 0.209,
+      "ocelot_density": 0.833,
+      "ocelot_filterCutoff": 0.913,
+      "ocelot_brightness": 0.906,
+      "ocelot_agility": 0.485,
+      "ocelot_predation": 0.544,
+      "ocelot_reverbMix": 0.348,
+      "ocelot_outputLevel": 0.785,
+      "ocelot_couplingLevel": 0.181,
+      "ocelot_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

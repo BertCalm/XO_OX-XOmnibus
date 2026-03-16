@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Harp Blinding Light",
+  "mood": "Prism",
+  "engines": [
+    "Orphica"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Orphica pushed to extreme brightness \u2014 brightness 0.92, movement 0.73, aggression 0.78. Ultra-bright Prism zone filler.",
+  "tags": [
+    "prism",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.174,
+    "movement": 0.731,
+    "density": 0.598,
+    "space": 0.529,
+    "aggression": 0.779
+  },
+  "sonic_dna": {
+    "brightness": 0.92,
+    "warmth": 0.174,
+    "movement": 0.731,
+    "density": 0.598,
+    "space": 0.529,
+    "aggression": 0.779
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_harpTension": 0.649,
+      "orph_grainSize": 0.139,
+      "orph_grainDensity": 0.676,
+      "orph_grainPitch": 0.112,
+      "orph_grainSpread": 0.939,
+      "orph_shimmerRate": 2.721,
+      "orph_shimmerDepth": 0.866,
+      "orph_filterCutoff": 0.985,
+      "orph_filterReso": 0.374,
+      "orph_attack": 0.008,
+      "orph_decay": 0.525,
+      "orph_sustain": 0.771,
+      "orph_release": 0.766,
+      "orph_reverbSize": 0.757,
+      "orph_reverbMix": 0.455,
+      "orph_outputLevel": 0.783,
+      "orph_couplingLevel": 0.008,
+      "orph_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

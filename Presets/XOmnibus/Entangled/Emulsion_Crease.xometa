@@ -1,0 +1,50 @@
+{
+  "name": "Emulsion Crease",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBSCURA",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.18,
+      "macro_movement": 0.44,
+      "macro_coupling": 0.67,
+      "macro_space": 0.9
+    },
+    "ORIGAMI": {
+      "macro_character": 0.15,
+      "macro_movement": 0.39,
+      "macro_coupling": 0.72,
+      "macro_space": 0.93
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ORIGAMI",
+    "target": "OBSCURA",
+    "amount": 0.67
+  },
+  "dna": {
+    "brightness": 0.11,
+    "warmth": 0.06,
+    "movement": 0.44,
+    "density": 0.13,
+    "space": 0.9,
+    "aggression": 0.08
+  },
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.44,
+    "COUPLING": 0.67,
+    "SPACE": 0.9
+  },
+  "tags": [
+    "entangled",
+    "cold-sparse",
+    "emulsion",
+    "crease"
+  ],
+  "description": "Origami paper timbres blend into Obscura's emulsion \u2014 both surfaces dissolve in cold light."
+}

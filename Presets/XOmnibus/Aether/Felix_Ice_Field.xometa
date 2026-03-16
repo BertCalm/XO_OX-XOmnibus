@@ -1,0 +1,37 @@
+{
+  "name": "Felix Ice Field",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "felx_macro_character": 0.33,
+      "felx_macro_movement": 0.12,
+      "felx_macro_coupling": 0.17,
+      "felx_macro_space": 0.86
+    }
+  },
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.04,
+    "movement": 0.15,
+    "density": 0.1,
+    "space": 0.86,
+    "aggression": 0.02
+  },
+  "macros": {
+    "CHARACTER": 0.17,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.29,
+    "SPACE": 0.86
+  },
+  "tags": [
+    "aether",
+    "frozen",
+    "crystalline",
+    "felix",
+    "ice"
+  ]
+}

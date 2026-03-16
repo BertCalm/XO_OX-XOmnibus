@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Commune Daybreak",
+  "mood": "Atmosphere",
+  "engines": [
+    "OHM"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OHM \u2014 bright extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "bright",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.99,
+    "warmth": 0.5,
+    "movement": 0.42,
+    "density": 0.8,
+    "space": 0.35,
+    "aggression": 0.85
+  },
+  "dna": {
+    "brightness": 0.99,
+    "warmth": 0.5,
+    "movement": 0.42,
+    "density": 0.8,
+    "space": 0.35,
+    "aggression": 0.85
+  },
+  "parameters": {
+    "OHM": {
+      "ohm_commune": 0.75,
+      "ohm_meddling": 0.2,
+      "ohm_filterCutoff": 0.51,
+      "ohm_filterReso": 0.5,
+      "ohm_ampAttack": 41.0,
+      "ohm_ampDecay": 113.9,
+      "ohm_ampSustain": 0.53,
+      "ohm_ampRelease": 381.6,
+      "ohm_lfoRate": 0.46,
+      "ohm_lfoDepth": 0.61,
+      "ohm_reverbMix": 0.52,
+      "ohm_delayMix": 0.33,
+      "ohm_character": 0.61,
+      "ohm_movement": 0.16,
+      "ohm_space": 0.99,
+      "ohm_coupling": 0.74
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

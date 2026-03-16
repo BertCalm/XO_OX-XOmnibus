@@ -1,0 +1,48 @@
+{
+  "name": "Thick Shore",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBLONG",
+    "OSPREY"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.84,
+      "macro_movement": 0.44,
+      "macro_coupling": 0.5,
+      "macro_space": 0.5
+    },
+    "OSPREY": {
+      "macro_character": 0.88,
+      "macro_movement": 0.51,
+      "macro_coupling": 0.59,
+      "macro_space": 0.33
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBLONG",
+    "target": "OSPREY",
+    "amount": 0.62
+  },
+  "dna": {
+    "brightness": 0.33,
+    "warmth": 0.93,
+    "movement": 0.52,
+    "density": 0.78,
+    "space": 0.44,
+    "aggression": 0.28
+  },
+  "macros": {
+    "CHARACTER": 0.86,
+    "MOVEMENT": 0.47,
+    "COUPLING": 0.54,
+    "SPACE": 0.42
+  },
+  "tags": [
+    "entangled",
+    "warm-dense",
+    "scorching"
+  ]
+}

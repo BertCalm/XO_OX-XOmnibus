@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Commune Gleam",
+  "mood": "Foundation",
+  "engines": [
+    "OHM"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OHM \u2014 bright extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "bright",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.92,
+    "warmth": 0.66,
+    "movement": 0.22,
+    "density": 0.55,
+    "space": 0.59,
+    "aggression": 0.87
+  },
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.66,
+    "movement": 0.22,
+    "density": 0.55,
+    "space": 0.59,
+    "aggression": 0.87
+  },
+  "parameters": {
+    "OHM": {
+      "ohm_commune": 0.34,
+      "ohm_meddling": 0.69,
+      "ohm_filterCutoff": 0.65,
+      "ohm_filterReso": 0.85,
+      "ohm_ampAttack": 682.6,
+      "ohm_ampDecay": 688.2,
+      "ohm_ampSustain": 0.57,
+      "ohm_ampRelease": 256.7,
+      "ohm_lfoRate": 0.72,
+      "ohm_lfoDepth": 0.76,
+      "ohm_reverbMix": 0.87,
+      "ohm_delayMix": 0.04,
+      "ohm_character": 0.07,
+      "ohm_movement": 0.63,
+      "ohm_space": 0.92,
+      "ohm_coupling": 1.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

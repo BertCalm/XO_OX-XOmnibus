@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Snap Chaos Storm",
+  "mood": "Flux",
+  "engines": [
+    "OddfeliX"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddfeliX pushed to extreme brightness \u2014 brightness 0.97, movement 0.72, aggression 0.82. Ultra-bright Flux zone filler.",
+  "tags": [
+    "flux",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "oddfelix"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.97,
+    "warmth": 0.103,
+    "movement": 0.716,
+    "density": 0.478,
+    "space": 0.405,
+    "aggression": 0.818
+  },
+  "sonic_dna": {
+    "brightness": 0.97,
+    "warmth": 0.103,
+    "movement": 0.716,
+    "density": 0.478,
+    "space": 0.405,
+    "aggression": 0.818
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_snap": 0.804,
+      "snap_decay": 0.302,
+      "snap_detune": 1.588,
+      "snap_filterCutoff": 0.88,
+      "snap_filterReso": 0.231,
+      "snap_filterEnvDepth": 0.837,
+      "snap_pitchEnvDepth": 0.327,
+      "snap_pitchEnvDecay": 0.098,
+      "snap_noiseLevel": 0.518,
+      "snap_morphRate": 0.943,
+      "snap_outputLevel": 0.876,
+      "snap_couplingLevel": 0.233,
+      "snap_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

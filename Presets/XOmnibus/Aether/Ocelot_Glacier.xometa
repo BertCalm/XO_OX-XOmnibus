@@ -1,0 +1,37 @@
+{
+  "name": "Ocelot Glacier",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OCELOT"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "ocel_macro_character": 0.19,
+      "ocel_macro_movement": 0.22,
+      "ocel_macro_coupling": 0.27,
+      "ocel_macro_space": 0.84
+    }
+  },
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.08,
+    "movement": 0.18,
+    "density": 0.09,
+    "space": 0.84,
+    "aggression": 0.03
+  },
+  "macros": {
+    "CHARACTER": 0.29,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.34,
+    "SPACE": 0.84
+  },
+  "tags": [
+    "aether",
+    "frozen",
+    "crystalline",
+    "glacier",
+    "ocelot"
+  ]
+}

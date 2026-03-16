@@ -1,0 +1,50 @@
+{
+  "name": "Daguerreotype Oracle",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORACLE",
+    "OBSCURA"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.16,
+      "macro_movement": 0.32,
+      "macro_coupling": 0.75,
+      "macro_space": 0.91
+    },
+    "OBSCURA": {
+      "macro_character": 0.13,
+      "macro_movement": 0.27,
+      "macro_coupling": 0.8,
+      "macro_space": 0.94
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORACLE",
+    "target": "OBSCURA",
+    "amount": 0.75
+  },
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.13,
+    "movement": 0.32,
+    "density": 0.1,
+    "space": 0.91,
+    "aggression": 0.07
+  },
+  "macros": {
+    "CHARACTER": 0.16,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.75,
+    "SPACE": 0.91
+  },
+  "tags": [
+    "entangled",
+    "cold-sparse",
+    "daguerreotype",
+    "prophecy"
+  ],
+  "description": "Prophecy fixed in silver plate \u2014 Oracle's voice captured as a fading spectral image."
+}

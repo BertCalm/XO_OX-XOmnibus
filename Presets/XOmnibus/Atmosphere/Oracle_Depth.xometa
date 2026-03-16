@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Oracle Depth",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ORACLE \u2014 dark extreme brightness preset for Atmosphere.",
+  "tags": [
+    "atmosphere",
+    "dark",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.06,
+    "warmth": 0.87,
+    "movement": 0.37,
+    "density": 0.63,
+    "space": 0.67,
+    "aggression": 0.21
+  },
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.87,
+    "movement": 0.37,
+    "density": 0.63,
+    "space": 0.67,
+    "aggression": 0.21
+  },
+  "parameters": {
+    "ORACLE": {
+      "orc_prophecyDepth": 1.0,
+      "orc_filterCutoff": 0.15,
+      "orc_filterReso": 0.3,
+      "orc_ampAttack": 631.6,
+      "orc_ampDecay": 408.6,
+      "orc_ampSustain": 0.68,
+      "orc_ampRelease": 592.2,
+      "orc_lfoRate": 0.53,
+      "orc_lfoDepth": 0.66,
+      "orc_reverbMix": 0.88,
+      "orc_delayMix": 0.62,
+      "orc_character": 0.6,
+      "orc_movement": 0.15,
+      "orc_space": 0.18,
+      "orc_coupling": 0.69,
+      "orc_vision": 0.62
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

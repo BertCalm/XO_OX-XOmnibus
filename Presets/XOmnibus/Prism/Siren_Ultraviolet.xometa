@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Siren Ultraviolet",
+  "mood": "Prism",
+  "engines": [
+    "Orphica"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Orphica pushed to extreme brightness \u2014 brightness 0.94, movement 0.73, aggression 0.73. Ultra-bright Prism zone filler.",
+  "tags": [
+    "prism",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "orphica"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.943,
+    "warmth": 0.1,
+    "movement": 0.734,
+    "density": 0.725,
+    "space": 0.344,
+    "aggression": 0.727
+  },
+  "sonic_dna": {
+    "brightness": 0.943,
+    "warmth": 0.1,
+    "movement": 0.734,
+    "density": 0.725,
+    "space": 0.344,
+    "aggression": 0.727
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_harpTension": 0.999,
+      "orph_grainSize": 0.36,
+      "orph_grainDensity": 0.578,
+      "orph_grainPitch": 0.001,
+      "orph_grainSpread": 0.815,
+      "orph_shimmerRate": 1.195,
+      "orph_shimmerDepth": 0.524,
+      "orph_filterCutoff": 0.844,
+      "orph_filterReso": 0.47,
+      "orph_attack": 0.001,
+      "orph_decay": 0.565,
+      "orph_sustain": 0.551,
+      "orph_release": 1.033,
+      "orph_reverbSize": 0.78,
+      "orph_reverbMix": 0.446,
+      "orph_outputLevel": 0.805,
+      "orph_couplingLevel": 0.011,
+      "orph_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

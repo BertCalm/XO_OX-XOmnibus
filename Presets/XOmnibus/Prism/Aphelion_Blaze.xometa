@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Aphelion Blaze",
+  "mood": "Prism",
+  "engines": [
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Orbital pushed to extreme brightness \u2014 brightness 0.89, movement 0.84, aggression 0.41. Ultra-bright Prism zone filler.",
+  "tags": [
+    "prism",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.889,
+    "warmth": 0.1,
+    "movement": 0.843,
+    "density": 0.434,
+    "space": 0.464,
+    "aggression": 0.407
+  },
+  "sonic_dna": {
+    "brightness": 0.889,
+    "warmth": 0.1,
+    "movement": 0.843,
+    "density": 0.434,
+    "space": 0.464,
+    "aggression": 0.407
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.957,
+      "orb_groupEnvRate": 1.528,
+      "orb_groupEnvDepth": 0.511,
+      "orb_oscCount": 8,
+      "orb_spread": 0.505,
+      "orb_detune": 0.326,
+      "orb_filterCutoff": 0.878,
+      "orb_filterReso": 0.4,
+      "orb_drive": 0.33,
+      "orb_modRate": 0.879,
+      "orb_modDepth": 0.481,
+      "orb_reverbSize": 0.396,
+      "orb_reverbMix": 0.408,
+      "orb_outputLevel": 0.901,
+      "orb_couplingLevel": 0.215,
+      "orb_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

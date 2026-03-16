@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "White Paper Ignite",
+  "mood": "Prism",
+  "engines": [
+    "ORIGAMI"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORIGAMI pushed to extreme brightness \u2014 brightness 0.94, movement 0.90, aggression 0.42. Ultra-bright Prism zone filler.",
+  "tags": [
+    "prism",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.943,
+    "warmth": 0.184,
+    "movement": 0.898,
+    "density": 0.584,
+    "space": 0.665,
+    "aggression": 0.419
+  },
+  "sonic_dna": {
+    "brightness": 0.943,
+    "warmth": 0.184,
+    "movement": 0.898,
+    "density": 0.584,
+    "space": 0.665,
+    "aggression": 0.419
+  },
+  "parameters": {
+    "ORIGAMI": {
+      "ori_macro_fold": 0.28,
+      "ori_macro_tension": 0.793,
+      "ori_macro_couple": 0.392,
+      "ori_macro_space": 0.606,
+      "ori_outputLevel": 0.864,
+      "ori_couplingLevel": 0.104,
+      "ori_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

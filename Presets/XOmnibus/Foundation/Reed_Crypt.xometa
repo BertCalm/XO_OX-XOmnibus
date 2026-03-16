@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Reed Crypt",
+  "mood": "Foundation",
+  "engines": [
+    "ORGANON"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ORGANON \u2014 dark extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.12,
+    "warmth": 0.69,
+    "movement": 0.23,
+    "density": 0.53,
+    "space": 0.63,
+    "aggression": 0.53
+  },
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.69,
+    "movement": 0.23,
+    "density": 0.53,
+    "space": 0.63,
+    "aggression": 0.53
+  },
+  "parameters": {
+    "ORGANON": {
+      "org_drawbar1": 0.11,
+      "org_drawbar2": 0.95,
+      "org_drawbar3": 0.69,
+      "org_filterCutoff": 0.15,
+      "org_ampAttack": 33.6,
+      "org_ampDecay": 298.5,
+      "org_ampSustain": 0.69,
+      "org_ampRelease": 346.7,
+      "org_rotarySpeed": 0.04,
+      "org_rotaryDepth": 0.36,
+      "org_reverbMix": 0.93,
+      "org_delayMix": 0.97,
+      "org_character": 0.04,
+      "org_movement": 0.36,
+      "org_space": 0.68,
+      "org_coupling": 0.67
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

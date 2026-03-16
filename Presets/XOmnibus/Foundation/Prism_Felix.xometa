@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Prism Felix",
+  "mood": "Foundation",
+  "engines": [
+    "ODDFELIX"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "ODDFELIX \u2014 bright extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "bright",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.93,
+    "warmth": 0.13,
+    "movement": 0.83,
+    "density": 0.64,
+    "space": 0.6,
+    "aggression": 0.12
+  },
+  "dna": {
+    "brightness": 0.93,
+    "warmth": 0.13,
+    "movement": 0.83,
+    "density": 0.64,
+    "space": 0.6,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "ODDFELIX": {
+      "oddf_oscAwave": 1,
+      "oddf_oscBwave": 0,
+      "oddf_filterCutoff": 0.87,
+      "oddf_filterReso": 0.18,
+      "oddf_ampAttack": 211.8,
+      "oddf_ampDecay": 265.2,
+      "oddf_ampSustain": 0.62,
+      "oddf_ampRelease": 273.3,
+      "oddf_lfoRate": 0.88,
+      "oddf_lfoDepth": 0.28,
+      "oddf_reverbMix": 0.95,
+      "oddf_delayMix": 0.42,
+      "oddf_character": 0.83,
+      "oddf_movement": 0.47,
+      "oddf_space": 0.75,
+      "oddf_coupling": 0.05
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

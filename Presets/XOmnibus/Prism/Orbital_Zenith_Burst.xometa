@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Orbital Zenith Burst",
+  "mood": "Prism",
+  "engines": [
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Orbital pushed to extreme brightness \u2014 brightness 0.90, movement 0.84, aggression 0.49. Ultra-bright Prism zone filler.",
+  "tags": [
+    "prism",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.904,
+    "warmth": 0.269,
+    "movement": 0.84,
+    "density": 0.74,
+    "space": 0.437,
+    "aggression": 0.491
+  },
+  "sonic_dna": {
+    "brightness": 0.904,
+    "warmth": 0.269,
+    "movement": 0.84,
+    "density": 0.74,
+    "space": 0.437,
+    "aggression": 0.491
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.992,
+      "orb_groupEnvRate": 0.64,
+      "orb_groupEnvDepth": 0.522,
+      "orb_oscCount": 6,
+      "orb_spread": 0.614,
+      "orb_detune": 0.132,
+      "orb_filterCutoff": 0.966,
+      "orb_filterReso": 0.352,
+      "orb_drive": 0.387,
+      "orb_modRate": 1.339,
+      "orb_modDepth": 0.721,
+      "orb_reverbSize": 0.361,
+      "orb_reverbMix": 0.293,
+      "orb_outputLevel": 0.881,
+      "orb_couplingLevel": 0.258,
+      "orb_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

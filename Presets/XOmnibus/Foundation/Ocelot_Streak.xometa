@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Ocelot Streak",
+  "mood": "Foundation",
+  "engines": [
+    "OCELOT"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OCELOT \u2014 bright extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "bright",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.9,
+    "warmth": 0.59,
+    "movement": 0.83,
+    "density": 0.61,
+    "space": 0.17,
+    "aggression": 0.89
+  },
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.59,
+    "movement": 0.83,
+    "density": 0.61,
+    "space": 0.17,
+    "aggression": 0.89
+  },
+  "parameters": {
+    "OCELOT": {
+      "ocel_huntMode": 0,
+      "ocel_filterCutoff": 0.46,
+      "ocel_filterReso": 0.12,
+      "ocel_ampAttack": 666.6,
+      "ocel_ampDecay": 401.2,
+      "ocel_ampSustain": 0.8,
+      "ocel_ampRelease": 409.6,
+      "ocel_lfoRate": 0.27,
+      "ocel_lfoDepth": 0.83,
+      "ocel_reverbMix": 0.98,
+      "ocel_delayMix": 0.24,
+      "ocel_character": 0.55,
+      "ocel_movement": 0.38,
+      "ocel_space": 0.92,
+      "ocel_coupling": 0.51,
+      "ocel_prowl": 0.88
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

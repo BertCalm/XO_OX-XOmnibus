@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "name": "Oblique Neon Surge",
+  "mood": "Prism",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oblique pushed to extreme brightness \u2014 brightness 0.94, movement 0.73, aggression 0.68. Ultra-bright Prism zone filler.",
+  "tags": [
+    "prism",
+    "ultra-bright",
+    "extreme",
+    "brightness",
+    "oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.94,
+    "warmth": 0.166,
+    "movement": 0.734,
+    "density": 0.456,
+    "space": 0.346,
+    "aggression": 0.675
+  },
+  "sonic_dna": {
+    "brightness": 0.94,
+    "warmth": 0.166,
+    "movement": 0.734,
+    "density": 0.456,
+    "space": 0.346,
+    "aggression": 0.675
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_oscWave": 2,
+      "oblq_oscFold": 0.515,
+      "oblq_oscDetune": 0.9,
+      "oblq_level": 0.897,
+      "oblq_glide": 0.074,
+      "oblq_percClick": 0.663,
+      "oblq_percDecay": 0.033,
+      "oblq_bounceRate": 9.99,
+      "oblq_bounceGravity": 0.9,
+      "oblq_bounceDamp": 0.337,
+      "oblq_bounceCnt": 16.2,
+      "oblq_bounceSwing": 0.06,
+      "oblq_clickTone": 12666.8,
+      "oblq_filterCut": 15238.6,
+      "oblq_filterRes": 0.596,
+      "oblq_attack": 0.003,
+      "oblq_decay": 0.082,
+      "oblq_sustain": 0.513,
+      "oblq_release": 0.043,
+      "oblq_prismDelay": 9.8,
+      "oblq_prismSpread": 0.966,
+      "oblq_prismColor": 0.994,
+      "oblq_prismWidth": 0.798,
+      "oblq_prismFeedback": 0.672,
+      "oblq_prismMix": 0.435,
+      "oblq_prismDamp": 0.033,
+      "oblq_phaserRate": 2.78,
+      "oblq_phaserDepth": 0.716,
+      "oblq_phaserFeedback": 0.569,
+      "oblq_phaserMix": 0.462
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

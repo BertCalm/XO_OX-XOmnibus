@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Dub Burial",
+  "mood": "Foundation",
+  "engines": [
+    "OVERDUB"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "OVERDUB \u2014 dark extreme brightness preset for Foundation.",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme-brightness"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.06,
+    "warmth": 0.71,
+    "movement": 0.3,
+    "density": 0.61,
+    "space": 0.79,
+    "aggression": 0.43
+  },
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.71,
+    "movement": 0.3,
+    "density": 0.61,
+    "space": 0.79,
+    "aggression": 0.43
+  },
+  "parameters": {
+    "OVERDUB": {
+      "dub_drive": 0.86,
+      "dub_tapeDelay": 0.55,
+      "dub_springReverb": 0.05,
+      "dub_filterCutoff": 1.0,
+      "dub_ampAttack": 669.6,
+      "dub_ampDecay": 775.4,
+      "dub_ampSustain": 0.95,
+      "dub_ampRelease": 679.7,
+      "dub_lfoRate": 0.17,
+      "dub_lfoDepth": 0.49,
+      "dub_reverbMix": 0.21,
+      "dub_delayMix": 0.4,
+      "dub_character": 0.06,
+      "dub_movement": 0.38,
+      "dub_space": 0.99,
+      "dub_coupling": 0.27
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "name": "White Grain",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBSIDIAN",
+    "OPAL"
+  ],
+  "parameters": {
+    "OBSIDIAN": {
+      "macro_character": 0.19,
+      "macro_movement": 0.48,
+      "macro_coupling": 0.67,
+      "macro_space": 0.89
+    },
+    "OPAL": {
+      "macro_character": 0.16,
+      "macro_movement": 0.43,
+      "macro_coupling": 0.72,
+      "macro_space": 0.92
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OPAL",
+    "target": "OBSIDIAN",
+    "amount": 0.67
+  },
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.05,
+    "movement": 0.48,
+    "density": 0.14,
+    "space": 0.89,
+    "aggression": 0.08
+  },
+  "macros": {
+    "CHARACTER": 0.19,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.67,
+    "SPACE": 0.89
+  },
+  "tags": [
+    "entangled",
+    "cold-sparse",
+    "white",
+    "grain"
+  ],
+  "description": "Opal lavender blends into Obsidian white \u2014 two pale cold timbres unite in vast space."
+}
