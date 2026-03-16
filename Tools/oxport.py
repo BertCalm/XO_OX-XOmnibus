@@ -1,0 +1,749 @@
+#!/usr/bin/env python3
+"""
+Oxport — XO_OX Expansion Pack Pipeline Orchestrator
+Chains the full XPN export pipeline into a single command.
+
+Pipeline stages:
+  1. render_spec       — Generate render specifications from .xometa presets
+  2. categorize        — Classify WAV samples into voice categories
+  3. expand            — Expand flat kits into velocity/cycle/smart WAV sets
+  4. export            — Generate .xpm programs (drum or keygroup, per engine)
+  5. cover_art         — Generate branded procedural cover art
+  6. package           — Package everything into a .xpn archive
+
+Usage:
+    # Full pipeline for an engine
+    python3 oxport.py run --engine Onset --wavs-dir /path/to/wavs \\
+        --output-dir /path/to/out
+
+    # Dry run — show what would happen
+    python3 oxport.py run --engine Onset --output-dir /tmp/test --dry-run
+
+    # Skip specific stages
+    python3 oxport.py run --engine Onset --wavs-dir /path/to/wavs \\
+        --output-dir /path/to/out --skip cover_art,categorize
+
+    # Run for a single preset
+    python3 oxport.py run --engine Onset --preset "808 Reborn" \\
+        --wavs-dir /path/to/wavs --output-dir /path/to/out
+
+    # Show pipeline status
+    python3 oxport.py status --output-dir /path/to/out
+
+    # Validate (placeholder)
+    python3 oxport.py validate --output-dir /path/to/out
+"""
+
+import argparse
+import json
+import sys
+import time
+from datetime import datetime
+from pathlib import Path
+from typing import Optional
+
+# ---------------------------------------------------------------------------
+# Resolve Tools/ directory so sibling imports work when invoked from anywhere
+# ---------------------------------------------------------------------------
+TOOLS_DIR = Path(__file__).parent.resolve()
+REPO_ROOT = TOOLS_DIR.parent
+PRESETS_DIR = REPO_ROOT / "Presets" / "XOmnibus"
+
+if str(TOOLS_DIR) not in sys.path:
+    sys.path.insert(0, str(TOOLS_DIR))
+
+# ---------------------------------------------------------------------------
+# Lazy imports — each stage imports its tool only when needed.
+# This keeps startup fast and lets --dry-run work without heavy deps.
+# ---------------------------------------------------------------------------
+
+# Engines whose presets produce drum programs (everything else is keygroup)
+DRUM_ENGINES = {"onset", "Onset", "ONSET", "OnsetEngine"}
+
+BANNER = r"""
+   ____                       _
+  / __ \_  ___ __  ___  _ __ | |_
+ | |  | \ \/ / '_ \/ _ \| '__| __|
+ | |__| |>  <| |_) |(_) | |  | |_
+  \____/_/\_\ .__/\___/|_|   \__|
+    XO_OX   |_| Expansion Pipeline
+"""
+
+# ---------------------------------------------------------------------------
+# Pipeline stage definitions
+# ---------------------------------------------------------------------------
+
+STAGES = [
+    "render_spec",
+    "categorize",
+    "expand",
+    "export",
+    "cover_art",
+    "package",
+]
+
+STAGE_DESCRIPTIONS = {
+    "render_spec": "Generate render specifications from .xometa presets",
+    "categorize":  "Classify WAV samples into voice categories",
+    "expand":      "Expand flat kits into velocity/cycle/smart WAV sets",
+    "export":      "Generate .xpm programs (drum or keygroup)",
+    "cover_art":   "Generate branded procedural cover art",
+    "package":     "Package into .xpn archive",
+}
+
+
+# ---------------------------------------------------------------------------
+# Pipeline context — passed between stages, accumulates outputs
+# ---------------------------------------------------------------------------
+
+class PipelineContext:
+    """Mutable state bag that flows through the pipeline."""
+
+    def __init__(self, engine: str, output_dir: Path,
+                 wavs_dir: Optional[Path] = None,
+                 preset_filter: Optional[str] = None,
+                 kit_mode: str = "smart",
+                 version: str = "1.0",
+                 pack_name: Optional[str] = None,
+                 dry_run: bool = False):
+        self.engine = engine
+        self.output_dir = output_dir
+        self.wavs_dir = wavs_dir
+        self.preset_filter = preset_filter
+        self.kit_mode = kit_mode
+        self.version = version
+        self.pack_name = pack_name or f"XO_OX {engine}"
+        self.dry_run = dry_run
+
+        # Accumulated outputs
+        self.render_specs: list[dict] = []
+        self.categories: dict = {}
+        self.expanded_files: list[str] = []
+        self.xpm_paths: list[Path] = []
+        self.cover_paths: dict = {}
+        self.xpn_path: Optional[Path] = None
+
+        # Stage timing
+        self.stage_times: dict[str, float] = {}
+
+        # Derived paths
+        self.build_dir = output_dir / engine.replace(" ", "_")
+        self.specs_dir = self.build_dir / "specs"
+        self.samples_dir = self.build_dir / "Samples"
+        self.programs_dir = self.build_dir / "Programs"
+
+    @property
+    def is_drum_engine(self) -> bool:
+        return self.engine in DRUM_ENGINES
+
+    @property
+    def preset_slug(self) -> str:
+        if self.preset_filter:
+            return self.preset_filter.replace(" ", "_")
+        return self.engine.replace(" ", "_")
+
+    def ensure_dirs(self):
+        """Create the build directory tree (no-op on dry run)."""
+        if self.dry_run:
+            return
+        self.build_dir.mkdir(parents=True, exist_ok=True)
+        self.specs_dir.mkdir(exist_ok=True)
+        self.samples_dir.mkdir(exist_ok=True)
+        self.programs_dir.mkdir(exist_ok=True)
+
+
+# ---------------------------------------------------------------------------
+# Stage runners
+# ---------------------------------------------------------------------------
+
+def _stage_render_spec(ctx: PipelineContext) -> None:
+    """Stage 1: Generate render specs from .xometa presets."""
+    from xpn_render_spec import generate_render_spec
+
+    # Find presets for this engine
+    presets_found = []
+    for mood_dir in sorted(PRESETS_DIR.iterdir()):
+        if not mood_dir.is_dir():
+            continue
+        # Check engine subdirectories
+        for engine_dir in sorted(mood_dir.iterdir()):
+            if not engine_dir.is_dir():
+                continue
+            if engine_dir.name.lower() != ctx.engine.lower():
+                continue
+            for xmeta in sorted(engine_dir.glob("*.xometa")):
+                presets_found.append(xmeta)
+        # Also check flat presets in mood dir
+        for xmeta in sorted(mood_dir.glob("*.xometa")):
+            try:
+                with open(xmeta) as f:
+                    data = json.load(f)
+                engines = data.get("engines", [])
+                if isinstance(engines, str):
+                    engines = [engines]
+                if any(e.lower() == ctx.engine.lower() for e in engines):
+                    presets_found.append(xmeta)
+            except (json.JSONDecodeError, OSError):
+                continue
+
+    if ctx.preset_filter:
+        filter_lower = ctx.preset_filter.lower()
+        presets_found = [
+            p for p in presets_found
+            if filter_lower in p.stem.lower()
+            or filter_lower in p.stem.lower().replace("_", " ")
+        ]
+
+    if not presets_found:
+        print(f"    No .xometa presets found for engine '{ctx.engine}'")
+        return
+
+    print(f"    Found {len(presets_found)} presets")
+    for xmeta in presets_found:
+        try:
+            spec = generate_render_spec(xmeta)
+            ctx.render_specs.append(spec)
+
+            if not ctx.dry_run:
+                spec_path = ctx.specs_dir / f"{spec['preset_slug']}_render_spec.json"
+                with open(spec_path, "w") as f:
+                    json.dump(spec, f, indent=2)
+
+            print(f"      {spec['preset_name']}  ({spec['wav_count']} WAVs, {spec['program_type']})")
+        except Exception as e:
+            print(f"      [WARN] {xmeta.name}: {e}")
+
+    print(f"    Generated {len(ctx.render_specs)} render specs")
+
+
+def _stage_categorize(ctx: PipelineContext) -> None:
+    """Stage 2: Classify WAV samples into voice categories."""
+    if not ctx.wavs_dir or not ctx.wavs_dir.exists():
+        print("    [SKIP] No --wavs-dir provided or directory does not exist")
+        return
+
+    from xpn_sample_categorizer import categorize_folder
+
+    ctx.categories = categorize_folder(ctx.wavs_dir, use_audio_analysis=False)
+    total = sum(len(v) for v in ctx.categories.values())
+    print(f"    Classified {total} samples:")
+    for voice in ["kick", "snare", "chat", "ohat", "clap", "tom", "perc", "fx", "unknown"]:
+        samples = ctx.categories.get(voice, [])
+        if samples:
+            print(f"      {voice:8s}: {len(samples)}")
+
+
+def _stage_expand(ctx: PipelineContext) -> None:
+    """Stage 3: Expand flat kits into velocity/cycle/smart WAV sets."""
+    if not ctx.wavs_dir or not ctx.wavs_dir.exists():
+        print("    [SKIP] No --wavs-dir provided or directory does not exist")
+        return
+
+    if not ctx.is_drum_engine:
+        print("    [SKIP] Kit expansion only applies to drum engines (Onset)")
+        return
+
+    from xpn_kit_expander import expand_kit
+
+    expand_out = ctx.samples_dir / ctx.preset_slug
+    if not ctx.dry_run:
+        expand_out.mkdir(parents=True, exist_ok=True)
+
+    print(f"    Mode: {ctx.kit_mode}")
+    preset_name = ctx.preset_filter or ctx.engine
+    summary = expand_kit(
+        kit_dir=ctx.wavs_dir,
+        preset_name=preset_name,
+        expand_mode=ctx.kit_mode,
+        output_dir=expand_out,
+        dry_run=ctx.dry_run,
+    )
+    ctx.expanded_files = summary.get("files_written", [])
+    print(f"    Expanded: {len(ctx.expanded_files)} files")
+
+
+def _stage_export(ctx: PipelineContext) -> None:
+    """Stage 4: Generate .xpm programs."""
+    if ctx.is_drum_engine:
+        _export_drum(ctx)
+    else:
+        _export_keygroup(ctx)
+
+
+def _export_drum(ctx: PipelineContext) -> None:
+    """Generate drum .xpm programs."""
+    from xpn_drum_export import generate_xpm, build_wav_map
+
+    if not ctx.render_specs:
+        print("    [WARN] No render specs — generating XPM with empty WAV map")
+        specs = [{"preset_name": ctx.preset_filter or ctx.engine,
+                  "preset_slug": ctx.preset_slug}]
+    else:
+        specs = ctx.render_specs
+
+    for spec in specs:
+        name = spec.get("preset_name", ctx.engine)
+        slug = spec.get("preset_slug", name.replace(" ", "_"))
+
+        # Look for WAVs in samples dir or wavs_dir
+        wav_map = {}
+        samples_sub = ctx.samples_dir / slug
+        if samples_sub.exists():
+            wav_map = build_wav_map(samples_sub, slug, ctx.kit_mode)
+        elif ctx.wavs_dir and ctx.wavs_dir.exists():
+            wav_map = build_wav_map(ctx.wavs_dir, slug, ctx.kit_mode)
+
+        xpm_content = generate_xpm(name, wav_map, ctx.kit_mode)
+        xpm_path = ctx.programs_dir / f"{slug}.xpm"
+
+        if not ctx.dry_run:
+            xpm_path.write_text(xpm_content, encoding="utf-8")
+
+        ctx.xpm_paths.append(xpm_path)
+        print(f"      {xpm_path.name}  (drum, mode={ctx.kit_mode}, {len(wav_map)} WAVs)")
+
+    print(f"    Generated {len(ctx.xpm_paths)} drum programs")
+
+
+def _export_keygroup(ctx: PipelineContext) -> None:
+    """Generate keygroup .xpm programs."""
+    from xpn_keygroup_export import generate_keygroup_xpm, build_keygroup_wav_map
+
+    if not ctx.render_specs:
+        print("    [WARN] No render specs — generating XPM with empty WAV map")
+        specs = [{"preset_name": ctx.preset_filter or ctx.engine,
+                  "preset_slug": ctx.preset_slug}]
+    else:
+        specs = ctx.render_specs
+
+    for spec in specs:
+        name = spec.get("preset_name", ctx.engine)
+        slug = spec.get("preset_slug", name.replace(" ", "_"))
+
+        wav_map = {}
+        if ctx.wavs_dir and ctx.wavs_dir.exists():
+            wav_map = build_keygroup_wav_map(ctx.wavs_dir, slug)
+
+        xpm_content = generate_keygroup_xpm(name, ctx.engine, wav_map)
+        xpm_path = ctx.programs_dir / f"{slug}.xpm"
+
+        if not ctx.dry_run:
+            xpm_path.write_text(xpm_content, encoding="utf-8")
+
+        ctx.xpm_paths.append(xpm_path)
+        print(f"      {xpm_path.name}  (keygroup, {len(wav_map)} WAVs)")
+
+    print(f"    Generated {len(ctx.xpm_paths)} keygroup programs")
+
+
+def _stage_cover_art(ctx: PipelineContext) -> None:
+    """Stage 5: Generate branded procedural cover art."""
+    try:
+        from xpn_cover_art import generate_cover, PILLOW_AVAILABLE
+    except ImportError:
+        print("    [SKIP] xpn_cover_art not available")
+        return
+
+    if not PILLOW_AVAILABLE:
+        print("    [SKIP] Pillow/numpy not installed (pip install Pillow numpy)")
+        return
+
+    if ctx.dry_run:
+        print(f"    [DRY] Would generate cover art for '{ctx.pack_name}'")
+        return
+
+    preset_count = len(ctx.render_specs) or 1
+    try:
+        ctx.cover_paths = generate_cover(
+            engine=ctx.engine.upper(),
+            pack_name=ctx.pack_name,
+            output_dir=str(ctx.build_dir),
+            preset_count=preset_count,
+            version=ctx.version,
+            seed=hash(ctx.pack_name) % 10000,
+        )
+        print(f"    artwork.png + artwork_2000.png")
+    except Exception as e:
+        print(f"    [WARN] Cover art failed: {e}")
+
+
+def _stage_package(ctx: PipelineContext) -> None:
+    """Stage 6: Package everything into a .xpn archive."""
+    from xpn_packager import package_xpn, XPNMetadata
+
+    if not ctx.xpm_paths and not ctx.dry_run:
+        # Check if programs dir has any .xpm files from previous runs
+        existing = list(ctx.programs_dir.glob("*.xpm"))
+        if not existing:
+            print("    [SKIP] No .xpm programs to package")
+            return
+
+    pack_slug = ctx.pack_name.replace(" ", "_")
+    xpn_path = ctx.output_dir / f"{pack_slug}.xpn"
+
+    meta = XPNMetadata(
+        name=ctx.pack_name,
+        version=ctx.version,
+        author="XO_OX Designs",
+        description=f"{ctx.pack_name} expansion pack — XO_OX Designs",
+        cover_engine=ctx.engine.upper(),
+    )
+
+    if ctx.dry_run:
+        print(f"    [DRY] Would package to {xpn_path}")
+        print(f"    [DRY] {len(ctx.xpm_paths)} programs, metadata: {meta.name} v{meta.version}")
+        return
+
+    # The packager expects .xpm files in the build dir or Programs/ subdir
+    # Move .xpm files into the expected location if needed
+    for xpm in ctx.xpm_paths:
+        if xpm.parent != ctx.build_dir:
+            target = ctx.build_dir / xpm.name
+            if not target.exists() and xpm.exists():
+                import shutil
+                shutil.copy2(xpm, target)
+
+    ctx.xpn_path = package_xpn(
+        build_dir=ctx.build_dir,
+        output_path=xpn_path,
+        metadata=meta,
+        include_artwork=True,
+        verbose=True,
+    )
+    print(f"    Output: {ctx.xpn_path}")
+
+
+# Stage function dispatch
+STAGE_FUNCS = {
+    "render_spec": _stage_render_spec,
+    "categorize":  _stage_categorize,
+    "expand":      _stage_expand,
+    "export":      _stage_export,
+    "cover_art":   _stage_cover_art,
+    "package":     _stage_package,
+}
+
+
+# ---------------------------------------------------------------------------
+# Pipeline runner
+# ---------------------------------------------------------------------------
+
+def run_pipeline(ctx: PipelineContext, skip_stages: set[str]) -> int:
+    """Execute the pipeline stages in order. Returns 0 on success, 1 on failure."""
+    print(BANNER)
+    print(f"  Engine:     {ctx.engine}")
+    print(f"  Output:     {ctx.output_dir}")
+    print(f"  WAVs:       {ctx.wavs_dir or '(none)'}")
+    print(f"  Pack name:  {ctx.pack_name}")
+    print(f"  Kit mode:   {ctx.kit_mode}")
+    print(f"  Version:    {ctx.version}")
+    if ctx.preset_filter:
+        print(f"  Filter:     {ctx.preset_filter}")
+    if ctx.dry_run:
+        print(f"  Mode:       DRY RUN")
+    if skip_stages:
+        print(f"  Skipping:   {', '.join(sorted(skip_stages))}")
+    print()
+
+    ctx.ensure_dirs()
+
+    pipeline_start = time.monotonic()
+    failed_stage = None
+
+    for stage in STAGES:
+        if stage in skip_stages:
+            print(f"  [{stage}] SKIPPED")
+            continue
+
+        print(f"  [{stage}] {STAGE_DESCRIPTIONS[stage]}")
+        stage_start = time.monotonic()
+
+        try:
+            STAGE_FUNCS[stage](ctx)
+        except Exception as e:
+            elapsed = time.monotonic() - stage_start
+            ctx.stage_times[stage] = elapsed
+            print(f"    [FAIL] {e}")
+            failed_stage = stage
+            break
+
+        elapsed = time.monotonic() - stage_start
+        ctx.stage_times[stage] = elapsed
+        print(f"    Done ({elapsed:.2f}s)")
+        print()
+
+    total_time = time.monotonic() - pipeline_start
+
+    # Summary
+    print("=" * 60)
+    if failed_stage:
+        print(f"  PIPELINE FAILED at stage: {failed_stage}")
+    else:
+        print("  PIPELINE COMPLETE")
+    print(f"  Total time: {total_time:.2f}s")
+    print()
+    print("  Stage timings:")
+    for stage in STAGES:
+        if stage in skip_stages:
+            print(f"    {stage:<14s}  --skipped--")
+        elif stage in ctx.stage_times:
+            t = ctx.stage_times[stage]
+            status = "FAIL" if stage == failed_stage else "OK"
+            print(f"    {stage:<14s}  {t:6.2f}s  {status}")
+        else:
+            print(f"    {stage:<14s}  --not reached--")
+    print()
+
+    if ctx.xpn_path and ctx.xpn_path.exists():
+        size_kb = ctx.xpn_path.stat().st_size / 1024
+        unit = "KB" if size_kb < 1024 else "MB"
+        size_val = size_kb if size_kb < 1024 else size_kb / 1024
+        print(f"  Output: {ctx.xpn_path} ({size_val:.1f} {unit})")
+    elif ctx.dry_run:
+        print("  (Dry run — no files written)")
+
+    # Write pipeline state for status command
+    if not ctx.dry_run:
+        _write_state(ctx, failed_stage)
+
+    return 1 if failed_stage else 0
+
+
+def _write_state(ctx: PipelineContext, failed_stage: Optional[str] = None):
+    """Persist pipeline state to JSON for the status command."""
+    state = {
+        "engine":        ctx.engine,
+        "pack_name":     ctx.pack_name,
+        "version":       ctx.version,
+        "timestamp":     datetime.now().isoformat(),
+        "render_specs":  len(ctx.render_specs),
+        "xpm_count":     len(ctx.xpm_paths),
+        "expanded_files": len(ctx.expanded_files),
+        "xpn_path":      str(ctx.xpn_path) if ctx.xpn_path else None,
+        "stage_times":   ctx.stage_times,
+        "failed_stage":  failed_stage,
+        "stages":        {
+            stage: ("skipped" if stage not in ctx.stage_times and stage != failed_stage
+                    else "failed" if stage == failed_stage
+                    else "ok" if stage in ctx.stage_times
+                    else "not_reached")
+            for stage in STAGES
+        },
+    }
+    state_path = ctx.build_dir / ".oxport_state.json"
+    try:
+        ctx.build_dir.mkdir(parents=True, exist_ok=True)
+        with open(state_path, "w") as f:
+            json.dump(state, f, indent=2)
+    except OSError:
+        pass  # non-critical
+
+
+# ---------------------------------------------------------------------------
+# Subcommands
+# ---------------------------------------------------------------------------
+
+def cmd_run(args) -> int:
+    """Execute the full pipeline."""
+    skip = set()
+    if args.skip:
+        skip = {s.strip() for s in args.skip.split(",")}
+        invalid = skip - set(STAGES)
+        if invalid:
+            print(f"ERROR: Unknown stages to skip: {invalid}")
+            print(f"Valid stages: {', '.join(STAGES)}")
+            return 1
+
+    ctx = PipelineContext(
+        engine=args.engine,
+        output_dir=Path(args.output_dir),
+        wavs_dir=Path(args.wavs_dir) if args.wavs_dir else None,
+        preset_filter=args.preset,
+        kit_mode=args.kit_mode,
+        version=args.version,
+        pack_name=args.pack_name,
+        dry_run=args.dry_run,
+    )
+    return run_pipeline(ctx, skip)
+
+
+def cmd_status(args) -> int:
+    """Show pipeline state for an output directory."""
+    output_dir = Path(args.output_dir)
+    if not output_dir.exists():
+        print(f"Output directory does not exist: {output_dir}")
+        return 1
+
+    # Find all .oxport_state.json files
+    states = sorted(output_dir.glob("**/.oxport_state.json"))
+    if not states:
+        print(f"No pipeline state found in {output_dir}")
+        print("Run `oxport.py run` first to create a pipeline state.")
+        return 0
+
+    print(BANNER)
+    for state_path in states:
+        try:
+            with open(state_path) as f:
+                state = json.load(f)
+        except (json.JSONDecodeError, OSError) as e:
+            print(f"  [WARN] Could not read {state_path}: {e}")
+            continue
+
+        engine = state.get("engine", "?")
+        pack = state.get("pack_name", "?")
+        ts = state.get("timestamp", "?")
+        failed = state.get("failed_stage")
+
+        status_icon = "FAILED" if failed else "COMPLETE"
+        print(f"  {pack} ({engine}) — {status_icon}")
+        print(f"    Timestamp: {ts}")
+        print(f"    Render specs: {state.get('render_specs', 0)}")
+        print(f"    Programs: {state.get('xpm_count', 0)}")
+        print(f"    Expanded files: {state.get('expanded_files', 0)}")
+        if state.get("xpn_path"):
+            print(f"    XPN: {state['xpn_path']}")
+
+        stages = state.get("stages", {})
+        times = state.get("stage_times", {})
+        print("    Stages:")
+        for stage in STAGES:
+            s = stages.get(stage, "?")
+            t = times.get(stage)
+            time_str = f" ({t:.2f}s)" if t is not None else ""
+            print(f"      {stage:<14s}  {s}{time_str}")
+
+        if failed:
+            print(f"    FAILED at: {failed}")
+        print()
+
+    return 0
+
+
+def cmd_validate(args) -> int:
+    """Validate a pipeline output (placeholder)."""
+    print(BANNER)
+    output_dir = Path(args.output_dir)
+    print(f"  Validate: {output_dir}")
+    print()
+
+    # Basic structural checks
+    checks_passed = 0
+    checks_failed = 0
+
+    # Check for .xpm files
+    xpms = list(output_dir.rglob("*.xpm"))
+    if xpms:
+        print(f"    [OK] Found {len(xpms)} .xpm program(s)")
+        checks_passed += 1
+    else:
+        print(f"    [FAIL] No .xpm programs found")
+        checks_failed += 1
+
+    # Check for .xpn files
+    xpns = list(output_dir.glob("*.xpn"))
+    if xpns:
+        for xpn in xpns:
+            size_kb = xpn.stat().st_size / 1024
+            print(f"    [OK] {xpn.name} ({size_kb:.1f} KB)")
+            checks_passed += 1
+    else:
+        print(f"    [INFO] No .xpn archives found (run full pipeline to generate)")
+
+    # Check for artwork
+    artwork = list(output_dir.rglob("artwork.png"))
+    if artwork:
+        print(f"    [OK] Cover art found ({len(artwork)} file(s))")
+        checks_passed += 1
+    else:
+        print(f"    [INFO] No cover art found")
+
+    # Check for WAV samples
+    wavs = list(output_dir.rglob("*.wav")) + list(output_dir.rglob("*.WAV"))
+    if wavs:
+        print(f"    [OK] {len(wavs)} WAV sample(s)")
+        checks_passed += 1
+    else:
+        print(f"    [INFO] No WAV samples found")
+
+    # Check XPM validity (basic XML check)
+    for xpm in xpms[:5]:  # spot-check first 5
+        try:
+            content = xpm.read_text(encoding="utf-8")
+            if "<MPCVObject>" in content and "</MPCVObject>" in content:
+                print(f"    [OK] {xpm.name} — valid XML structure")
+                checks_passed += 1
+            else:
+                print(f"    [FAIL] {xpm.name} — missing MPCVObject tags")
+                checks_failed += 1
+        except Exception as e:
+            print(f"    [FAIL] {xpm.name} — {e}")
+            checks_failed += 1
+
+    print()
+    print(f"  Passed: {checks_passed}  Failed: {checks_failed}")
+    return 1 if checks_failed > 0 else 0
+
+
+# ---------------------------------------------------------------------------
+# CLI
+# ---------------------------------------------------------------------------
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Oxport — XO_OX Expansion Pack Pipeline Orchestrator",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=__doc__,
+    )
+    sub = parser.add_subparsers(dest="command")
+
+    # --- run ---
+    p_run = sub.add_parser("run", help="Execute the full export pipeline")
+    p_run.add_argument("--engine",     required=True,
+                       help="Engine name (e.g. Onset, Odyssey, Opal)")
+    p_run.add_argument("--preset",     metavar="NAME",
+                       help="Filter to a single preset name (partial match)")
+    p_run.add_argument("--wavs-dir",   metavar="DIR",
+                       help="Directory containing rendered WAV files")
+    p_run.add_argument("--output-dir", required=True,
+                       help="Output directory for the built pack")
+    p_run.add_argument("--pack-name",  metavar="NAME",
+                       help="Display name for the pack (default: 'XO_OX {engine}')")
+    p_run.add_argument("--kit-mode",   default="smart",
+                       choices=["velocity", "cycle", "random",
+                                "random-norepeat", "smart"],
+                       help="Kit expansion mode for drum engines (default: smart)")
+    p_run.add_argument("--version",    default="1.0",
+                       help="Pack version string (default: 1.0)")
+    p_run.add_argument("--skip",       metavar="STAGES",
+                       help="Comma-separated stages to skip "
+                            f"({', '.join(STAGES)})")
+    p_run.add_argument("--dry-run",    action="store_true",
+                       help="Show what would be executed without running")
+
+    # --- status ---
+    p_status = sub.add_parser("status", help="Show pipeline state")
+    p_status.add_argument("--output-dir", required=True,
+                          help="Output directory to inspect")
+
+    # --- validate ---
+    p_validate = sub.add_parser("validate",
+                                help="Validate a pipeline output")
+    p_validate.add_argument("--output-dir", required=True,
+                            help="Output directory to validate")
+
+    args = parser.parse_args()
+    if not args.command:
+        parser.print_help()
+        return 1
+
+    dispatch = {
+        "run":      cmd_run,
+        "status":   cmd_status,
+        "validate": cmd_validate,
+    }
+    return dispatch[args.command](args)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -167,6 +167,146 @@ ENGINE_DEFS = {
         "style":    "angular_cuts",
         "label":    "OLE",
     },
+    # Remaining registered engines
+    "ORBITAL": {
+        "accent":   (255, 107, 107),     # Warm Red
+        "bg_base":  (18,   4,   4),
+        "style":    "lissajous",
+        "label":    "ORBITAL",
+    },
+    "ORGANON": {
+        "accent":   (0,   206, 209),     # Bioluminescent Cyan
+        "bg_base":  (0,   10,  12),
+        "style":    "particle_scatter",
+        "label":    "ORGANON",
+    },
+    "OUROBOROS": {
+        "accent":   (255,  45,  45),     # Strange Attractor Red
+        "bg_base":  (18,   0,   0),
+        "style":    "lissajous",
+        "label":    "OUROBOROS",
+    },
+    "OBSIDIAN": {
+        "accent":   (232, 224, 216),     # Crystal White
+        "bg_base":  (8,    6,   4),
+        "style":    "angular_cuts",
+        "label":    "OBSIDIAN",
+    },
+    "ORIGAMI": {
+        "accent":   (230,  57,  70),     # Vermillion Fold
+        "bg_base":  (16,   2,   2),
+        "style":    "angular_cuts",
+        "label":    "ORIGAMI",
+    },
+    "ORACLE": {
+        "accent":   (75,    0, 130),     # Prophecy Indigo
+        "bg_base":  (4,    0,  12),
+        "style":    "wave_morph",
+        "label":    "ORACLE",
+    },
+    "OBSCURA": {
+        "accent":   (138, 155, 168),     # Daguerreotype Silver
+        "bg_base":  (8,    8,  10),
+        "style":    "tape_streaks",
+        "label":    "OBSCURA",
+    },
+    "OCEANIC": {
+        "accent":   (0,   180, 160),     # Phosphorescent Teal
+        "bg_base":  (0,   10,   8),
+        "style":    "wave_morph",
+        "label":    "OCEANIC",
+    },
+    "OCELOT": {
+        "accent":   (197, 131,  43),     # Ocelot Tawny
+        "bg_base":  (14,   8,   2),
+        "style":    "dense_blocks",
+        "label":    "OCELOT",
+    },
+    "OPTIC": {
+        "accent":   (0,   255,  65),     # Phosphor Green
+        "bg_base":  (0,    8,   2),
+        "style":    "pixel_grid",
+        "label":    "OPTIC",
+    },
+    "OBLIQUE": {
+        "accent":   (191,  64, 255),     # Prism Violet
+        "bg_base":  (10,   2,  18),
+        "style":    "angular_cuts",
+        "label":    "OBLIQUE",
+    },
+    "OSPREY": {
+        "accent":   (27,   79, 138),     # Azulejo Blue
+        "bg_base":  (2,    4,  12),
+        "style":    "freq_bands",
+        "label":    "OSPREY",
+    },
+    "OSTERIA": {
+        "accent":   (114,  47,  55),     # Porto Wine
+        "bg_base":  (10,   2,   4),
+        "style":    "dense_blocks",
+        "label":    "OSTERIA",
+    },
+    "OWLFISH": {
+        "accent":   (184, 134,  11),     # Abyssal Gold
+        "bg_base":  (12,   8,   0),
+        "style":    "freq_bands",
+        "label":    "OWLFISH",
+    },
+    "OVERLAP": {
+        "accent":   (0,   255, 180),     # #00FFB4
+        "bg_base":  (0,   10,   8),
+        "style":    "wave_morph",
+        "label":    "OVERLAP",
+    },
+    "OUTWIT": {
+        "accent":   (204, 102,   0),     # #CC6600
+        "bg_base":  (14,   6,   0),
+        "style":    "pixel_grid",
+        "label":    "OUTWIT",
+    },
+    "OMBRE": {
+        "accent":   (123, 107, 138),     # Shadow Mauve
+        "bg_base":  (6,    4,   8),
+        "style":    "tape_streaks",
+        "label":    "OMBRE",
+    },
+    "ORCA": {
+        "accent":   (27,   40,  56),     # Deep Ocean
+        "bg_base":  (2,    4,   8),
+        "style":    "transient_spikes",
+        "label":    "ORCA",
+    },
+    "OCTOPUS": {
+        "accent":   (224,  64, 251),     # Chromatophore Magenta
+        "bg_base":  (12,   2,  14),
+        "style":    "particle_scatter",
+        "label":    "OCTOPUS",
+    },
+    # V1 concept engines (DSP pending)
+    "OSTINATO": {
+        "accent":   (232, 112,  26),     # Firelight Orange
+        "bg_base":  (16,   6,   0),
+        "style":    "transient_spikes",
+        "label":    "OSTINATO",
+    },
+    "OPENSKY": {
+        "accent":   (255, 140,   0),     # Sunburst
+        "bg_base":  (18,   8,   0),
+        "style":    "particle_scatter",
+        "label":    "OPENSKY",
+    },
+    "OCEANDEEP": {
+        "accent":   (45,   10,  78),     # Trench Violet
+        "bg_base":  (2,    0,   6),
+        "style":    "dense_blocks",
+        "label":    "OCEANDEEP",
+    },
+    "OUIE": {
+        "accent":   (112, 128, 144),     # Hammerhead Steel
+        "bg_base":  (6,    6,   8),
+        "style":    "angular_cuts",
+        "label":    "OUIE",
+    },
     # Fallback for unknown engines
     "DEFAULT": {
         "accent":   (233, 196, 106),     # XO Gold

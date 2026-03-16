@@ -271,7 +271,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 - All 6 doctrines resolved fleet-wide (D001–D006)
 - 22/22 engines with mod wheel | 23/23 engines with aftertouch (Optic intentionally exempt — visual engine)
-- 2,369 presets, 0 duplicates, 100% DNA coverage, health score ~92/100
+- 2,451 presets, 0 duplicates, 100% DNA coverage, health score ~92/100
 - Build PASS + auval PASS
 - **Full history**: `Docs/prism_sweep_final_report.md` | Master index: `Docs/prism_sweep_index.md`
 

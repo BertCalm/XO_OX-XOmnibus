@@ -306,16 +306,26 @@ def _resolve_mode(kit_mode: str, voice_name: str) -> str:
 # =============================================================================
 
 def _layers_for_voice(voice_name: str, kit_mode: str,
-                      wav_map: dict, preset_slug: str) -> list[tuple]:
+                      wav_map: dict, preset_slug: str,
+                      dna: dict = None) -> list[tuple]:
     """
     Return a list of (vel_start, vel_end, volume, sample_name, sample_file)
     tuples for each layer of this voice in the given kit mode.
+
+    When dna is provided and mode is velocity, the velocity splits and volumes
+    are adapted based on the preset's Sonic DNA profile.
     """
     effective_mode = _resolve_mode(kit_mode, voice_name)
 
     if effective_mode == "velocity":
+        # Use DNA-adaptive curve when DNA is available, otherwise fall back
+        # to the module-level VEL_LAYERS (musical or even, per CLI flag).
+        if dna is not None:
+            vel_layers = _dna_adapt_velocity_layers(dna)
+        else:
+            vel_layers = VEL_LAYERS
         layers = []
-        for i, (vel_start, vel_end, vol) in enumerate(VEL_LAYERS):
+        for i, (vel_start, vel_end, vol) in enumerate(vel_layers):
             key = f"{preset_slug}_{voice_name}_{VEL_SUFFIXES[i]}"
             name = wav_map.get(key, "")
             layers.append((vel_start, vel_end, vol, name, name))
@@ -393,7 +403,7 @@ def _empty_layers() -> str:
 def _instrument_block(instrument_num: int, voice_name: str,
                       mute_group: int, mute_targets: list,
                       wav_map: dict, preset_slug: str,
-                      kit_mode: str) -> str:
+                      kit_mode: str, dna: dict = None) -> str:
     """Generate one <Instrument> XML block."""
     is_active = bool(voice_name)
     cfg = _voice_cfg(voice_name) if is_active else _VOICE_DEFAULTS_FALLBACK
@@ -406,7 +416,7 @@ def _instrument_block(instrument_num: int, voice_name: str,
     prog_slug = preset_slug
 
     if is_active:
-        layer_data = _layers_for_voice(voice_name, kit_mode, wav_map, preset_slug)
+        layer_data = _layers_for_voice(voice_name, kit_mode, wav_map, preset_slug, dna=dna)
         layers_xml = "\n".join(
             _layer_block(
                 i + 1, vs, ve, sn, sf, vol,
@@ -500,7 +510,7 @@ def _instrument_block(instrument_num: int, voice_name: str,
         f'        <VolumeRelease>{vol_release:.6f}</VolumeRelease>\n'
         f'        <VelocityToPitch>{cfg["velocity_to_pitch"]:.6f}</VelocityToPitch>\n'
         f'        <VelocityToVolumeAttack>0.000000</VelocityToVolumeAttack>\n'
-        f'        <VelocitySensitivity>{cfg["velocity_sensitivity"]:.6f}</VelocitySensitivity>\n'
+        f'        <VelocitySensitivity>{(_dna_adapt_voice_sensitivity(voice_name, dna or _DEFAULT_DNA) if is_active else cfg["velocity_sensitivity"]):.6f}</VelocitySensitivity>\n'
         f'        <VelocityToPan>0.000000</VelocityToPan>\n'
         f'        <LFO>\n'
         f'          <Speed>0.000000</Speed>\n'
@@ -560,13 +570,172 @@ def _generate_qlink_xml() -> str:
     )
 
 
-# DNA-adaptive velocity curve: see v1.1 roadmap — not implemented in MVP
+# =============================================================================
+# DNA-ADAPTIVE VELOCITY CURVES
+# =============================================================================
+#
+# Sonic DNA (6D) shapes the velocity response per preset. The base curve is
+# Vibe's musical curve (VEL_LAYERS_MUSICAL). DNA dimensions modulate it:
+#
+#   aggression  → shifts velocity split points downward ("hotter" curve).
+#                 High aggression: ghost range shrinks, hard range expands —
+#                 louder sooner, ghost notes quieter. Musical rationale: aggressive
+#                 presets reward harder playing and punish tentative touches.
+#
+#   warmth      → softens the crossover between adjacent layers. High warmth
+#                 widens the overlap zone where two layers blend, producing
+#                 gentler transitions. Low warmth → sharp, discrete jumps.
+#                 Implemented as velocity band expansion toward neighbors.
+#
+#   brightness  → scales VelocitySensitivity for attack-responsive voices.
+#                 Bright presets make velocity differences more audible in the
+#                 transient — you hear the attack change with every dynamic level.
+#
+#   density     → adjusts layer volume scaling. Dense presets compress the
+#                 volume difference between ghost and hard layers — everything
+#                 stays fuller. Sparse presets widen the dynamic range.
+#
+# The remaining DNA dimensions (movement, space) don't meaningfully map to
+# velocity curve behavior, so they are intentionally left unused here.
+#
+# All DNA modulation is bounded so that extreme values still produce valid
+# MPC velocity splits (non-overlapping, 1-127 range, ascending).
+
+# Default DNA (neutral — no curve modification)
+_DEFAULT_DNA = {
+    "brightness": 0.5, "warmth": 0.5, "movement": 0.5,
+    "density": 0.5, "space": 0.5, "aggression": 0.5,
+}
+
+
+def _dna_adapt_velocity_layers(dna: dict) -> list[tuple]:
+    """
+    Return a DNA-modified velocity layer list: [(vel_start, vel_end, volume), ...].
+
+    Starts from VEL_LAYERS_MUSICAL and applies DNA-driven adjustments.
+    Returns a new list — never mutates the module-level constant.
+    """
+    aggression = dna.get("aggression", 0.5)
+    warmth = dna.get("warmth", 0.5)
+    density = dna.get("density", 0.5)
+
+    # --- Aggression: shift split points downward (hotter curve) ---
+    # At aggression=0.5 (neutral), no shift. At 1.0, ghost ceiling drops by ~8,
+    # hard floor drops by ~12 — hard layer starts sooner.
+    # The shift is applied as a bias that compresses lower layers and expands upper ones.
+    aggr_bias = (aggression - 0.5) * 2.0  # range: -1.0 .. +1.0
+
+    # Start from the musical curve boundaries
+    #   ghost: 1-20, light: 21-50, mid: 51-90, hard: 91-127
+    boundaries = [1, 20, 50, 90, 127]  # 5 boundaries → 4 bands
+
+    # Shift the 3 internal boundaries downward for high aggression
+    # (ghost shrinks, hard expands) or upward for low aggression.
+    shift_amounts = [
+        int(round(aggr_bias * -4)),   # boundary between ghost/light
+        int(round(aggr_bias * -6)),   # boundary between light/mid
+        int(round(aggr_bias * -8)),   # boundary between mid/hard
+    ]
+    adjusted = list(boundaries)
+    for i, shift in enumerate(shift_amounts):
+        adjusted[i + 1] = boundaries[i + 1] + shift
+
+    # Clamp internal boundaries to maintain ordering with minimum 4-wide bands
+    min_width = 4
+    for i in range(1, 4):
+        adjusted[i] = max(adjusted[i], adjusted[i - 1] + min_width)
+    for i in range(3, 0, -1):
+        adjusted[i] = min(adjusted[i], adjusted[i + 1] - min_width)
+
+    # --- Warmth: widen crossover zones ---
+    # High warmth overlaps adjacent layers by expanding each band slightly.
+    # MPC velocity layers don't truly overlap, so we approximate by nudging
+    # boundaries to create wider "transition" bands in the mid range.
+    # At warmth=1.0, mid band expands ±3; at warmth=0.0, bands tighten ±2.
+    warmth_nudge = int(round((warmth - 0.5) * 4))  # -2 .. +2
+    # Only nudge the mid band (index 2-3) — it's the expressive sweet spot
+    adjusted[2] = max(adjusted[1] + min_width,
+                      min(adjusted[2] - warmth_nudge, adjusted[3] - min_width))
+    adjusted[3] = max(adjusted[2] + min_width,
+                      min(adjusted[3] + warmth_nudge, adjusted[4] - min_width))
+
+    # --- Density: compress/expand volume scaling ---
+    # Neutral density (0.5) → original volumes. High density compresses toward
+    # 0.7 (everything fuller). Low density widens toward extremes.
+    base_vols = [0.30, 0.55, 0.75, 0.95]
+    density_bias = (density - 0.5) * 2.0  # -1.0 .. +1.0
+    center_vol = 0.65
+    adapted_vols = []
+    for v in base_vols:
+        # Lerp toward center for high density, away for low density
+        compressed = center_vol + (v - center_vol) * (1.0 - density_bias * 0.3)
+        adapted_vols.append(max(0.10, min(0.99, compressed)))
+
+    # Build final layers
+    layers = []
+    for i in range(4):
+        vs = adjusted[i] if i == 0 else adjusted[i] + 1
+        ve = adjusted[i + 1]
+        layers.append((vs, ve, adapted_vols[i]))
+
+    return layers
+
+
+def _dna_adapt_voice_sensitivity(voice_name: str, dna: dict) -> float:
+    """
+    Return a DNA-adjusted VelocitySensitivity for a voice.
+
+    Brightness increases sensitivity for attack-prominent voices (kick, snare,
+    tom, clap) — brighter presets make velocity differences more audible.
+    """
+    base = _voice_cfg(voice_name).get("velocity_sensitivity", 1.0)
+    brightness = dna.get("brightness", 0.5)
+
+    # Only modulate attack-prominent voices
+    attack_voices = {"kick", "snare", "tom", "clap"}
+    if voice_name not in attack_voices:
+        return base
+
+    # At brightness=0.5, no change. At 1.0, +10% sensitivity. At 0.0, -10%.
+    brightness_mod = (brightness - 0.5) * 0.2
+    return max(0.3, min(1.0, base + brightness_mod))
+
+
+def _load_preset_dna(preset_name: str) -> dict:
+    """
+    Load the 6D Sonic DNA from a preset's .xometa file.
+    Returns _DEFAULT_DNA if the preset or DNA is not found.
+    """
+    import json as _json
+    slug = preset_name.replace(" ", "_")
+    # Search through all mood directories for a matching preset
+    for xmeta in PRESETS_DIR.rglob("*.xometa"):
+        try:
+            with open(xmeta) as f:
+                data = _json.load(f)
+            if data.get("name") == preset_name:
+                dna = data.get("dna", {})
+                if dna:
+                    return {**_DEFAULT_DNA, **dna}
+        except (KeyError, _json.JSONDecodeError, OSError):
+            continue
+    return dict(_DEFAULT_DNA)
+
 
 def generate_xpm(preset_name: str, wav_map: dict,
-                 kit_mode: str = "velocity") -> str:
-    """Generate complete drum program XPM XML string."""
+                 kit_mode: str = "velocity",
+                 dna: dict = None) -> str:
+    """Generate complete drum program XPM XML string.
+
+    If dna is None, attempts to load it from the preset's .xometa file.
+    DNA shapes velocity curves and voice sensitivity per preset.
+    """
     preset_slug = preset_name.replace(" ", "_")
     prog_name   = xml_escape(f"XO_OX-{preset_name}")
+
+    # Load DNA for adaptive velocity curves
+    if dna is None:
+        dna = _load_preset_dna(preset_name)
 
     note_to_pad = {note: (voice, mg, mt) for note, voice, mg, mt in PAD_MAP}
 
@@ -585,6 +754,7 @@ def generate_xpm(preset_name: str, wav_map: dict,
             wav_map=wav_map,
             preset_slug=preset_slug,
             kit_mode=kit_mode,
+            dna=dna,
         ))
 
     instruments_xml = "\n".join(parts)
@@ -736,7 +906,9 @@ def build_drum_pack(preset_name: str, wavs_dir: Path, output_dir: Path,
     required = _required_wavs(preset_slug, kit_mode)
     missing  = [f for f in required if f.replace(".wav", "") not in wav_map]
 
-    xpm_content = generate_xpm(preset_name, wav_map, kit_mode)
+    # Load DNA for adaptive velocity curves
+    dna = _load_preset_dna(preset_name)
+    xpm_content = generate_xpm(preset_name, wav_map, kit_mode, dna=dna)
     xpm_path    = pack_dir / f"{preset_slug}.xpm"
     if not dry_run:
         xpm_path.write_text(xpm_content, encoding="utf-8")

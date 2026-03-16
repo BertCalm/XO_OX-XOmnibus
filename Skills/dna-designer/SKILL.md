@@ -2,7 +2,7 @@
 
 **Invoke with:** `/dna-designer`
 **Status:** LIVE
-**Purpose:** Assign accurate, musically meaningful 6D Sonic DNA values to XOmnibus presets — covering brightness, warmth, movement, density, space, and aggression with consistent methodology across all 31 engines.
+**Purpose:** Assign accurate, musically meaningful 6D Sonic DNA values to XOmnibus presets — covering brightness, warmth, movement, density, space, and aggression with consistent methodology across all 34 engines.
 
 ---
 

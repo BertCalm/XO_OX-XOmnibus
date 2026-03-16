@@ -50,9 +50,9 @@ These skills exist in the Claude profile (not version-controlled here) but are r
 
 ## Related Documentation
 
-- `Docs/coupling_audit.md` — Coupling quality scores for all 31 engines
+- `Docs/coupling_audit.md` — Coupling quality scores for all 34 engines
 - `Docs/coupling_preset_library.md` — 18 proven coupling preset examples with mythology
-- `Docs/xomnibus_sound_design_guides.md` — Per-engine parameter reference (20 of 31 engines)
+- `Docs/xomnibus_sound_design_guides.md` — Per-engine parameter reference (20 of 34 engines)
 - `Docs/sonic_dna_audit.md` — DNA coverage analysis + gap table
 - `Docs/how_to_write_a_xomnibus_adapter.md` — Adapter writing guide
 - `Docs/xomnibus_new_engine_process.md` — New engine development process

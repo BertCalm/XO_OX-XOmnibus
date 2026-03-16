@@ -7,7 +7,7 @@
 
 ## What V1 Ships
 
-29 engines registered (24 original + 5 Constellation), 2,369 presets, 7 moods, full doctrine compliance, all seances complete.
+34 engines registered (24 original + 5 Constellation + OVERLAP + OUTWIT + OMBRE + ORCA + OCTOPUS), 2,451 presets, 7 moods, full doctrine compliance, all seances complete.
 The Constellation (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) is integrated as stubs, swept, and description-complete.
 OVERLAP and OUTWIT are Phase 3 complete in standalone form and pending XOmnibus installation.
 This document is what comes next.

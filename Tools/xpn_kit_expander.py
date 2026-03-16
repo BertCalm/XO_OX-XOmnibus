@@ -53,7 +53,10 @@ Flat kit input naming (auto-detected):
 
 import argparse
 import math
+import os
 import sys
+import time
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 from typing import List, Optional
 
@@ -418,11 +421,28 @@ def expand_voice(source: Path, voice_name: str, preset_slug: str,
     return written
 
 
+def _expand_voice_worker(source_path: str, voice_name: str, preset_slug: str,
+                         expand_mode: str, output_dir_str: str) -> List[str]:
+    """
+    Worker function for parallel voice expansion.
+    Accepts and returns only picklable types (strings, lists) so it can
+    run in a subprocess via ProcessPoolExecutor.
+    """
+    source = Path(source_path)
+    output_dir = Path(output_dir_str)
+    return expand_voice(source, voice_name, preset_slug,
+                        expand_mode, output_dir, dry_run=False)
+
+
 def expand_kit(kit_dir: Path, preset_name: str, expand_mode: str,
-               output_dir: Path, dry_run: bool = False) -> dict:
+               output_dir: Path, dry_run: bool = False,
+               workers: int = 1) -> dict:
     """
     Expand an entire flat kit directory into a full set of derived WAVs.
     Returns summary dict.
+
+    workers > 1 enables parallel per-voice processing via ProcessPoolExecutor.
+    Each voice is independent (no shared state), so parallelism is safe.
     """
     preset_slug = preset_name.replace(" ", "_")
     if not dry_run:
@@ -431,6 +451,8 @@ def expand_kit(kit_dir: Path, preset_name: str, expand_mode: str,
     summary = {"preset": preset_name, "mode": expand_mode,
                "voices_found": [], "voices_missing": [], "files_written": []}
 
+    # Collect work items: (source_path, voice_name, effective_mode)
+    work_items = []
     for voice_name in VOICE_NAMES:
         source = find_voice_wav(kit_dir, voice_name)
         effective = _resolve_mode(expand_mode, voice_name)
@@ -443,12 +465,47 @@ def expand_kit(kit_dir: Path, preset_name: str, expand_mode: str,
 
         print(f"\n  {voice_name:6s} {mode_label:20s} ← {source.name}")
         summary["voices_found"].append(voice_name)
-        written = expand_voice(source, voice_name, preset_slug,
-                               expand_mode, output_dir, dry_run)
-        summary["files_written"].extend(written)
+        work_items.append((source, voice_name))
 
+    t_start = time.perf_counter()
+
+    use_parallel = workers > 1 and not dry_run and len(work_items) > 1
+
+    if use_parallel:
+        # Parallel per-voice expansion — each voice's DSP is CPU-bound and
+        # independent (no shared buffers). ProcessPoolExecutor sidesteps the
+        # GIL for Butterworth filters, resampling, and convolution.
+        actual_workers = min(workers, len(work_items))
+        print(f"\n  [PARALLEL] Using {actual_workers} worker processes")
+        with ProcessPoolExecutor(max_workers=actual_workers) as pool:
+            futures = {}
+            for source, voice_name in work_items:
+                fut = pool.submit(
+                    _expand_voice_worker,
+                    str(source), voice_name, preset_slug,
+                    expand_mode, str(output_dir),
+                )
+                futures[fut] = voice_name
+
+            for fut in as_completed(futures):
+                voice_name = futures[fut]
+                try:
+                    written = fut.result()
+                    summary["files_written"].extend(written)
+                except Exception as exc:
+                    print(f"  [ERROR] {voice_name}: {exc}")
+    else:
+        # Sequential expansion (original behavior, also used for dry runs)
+        for source, voice_name in work_items:
+            written = expand_voice(source, voice_name, preset_slug,
+                                   expand_mode, output_dir, dry_run)
+            summary["files_written"].extend(written)
+
+    elapsed = time.perf_counter() - t_start
+    mode_str = "parallel" if use_parallel else "sequential"
     print(f"\n  Total files {'(would be) ' if dry_run else ''}written: "
-          f"{len(summary['files_written'])}")
+          f"{len(summary['files_written'])}  "
+          f"({mode_str}, {elapsed:.2f}s)")
     return summary
 
 
@@ -480,6 +537,11 @@ def main():
                         help="Where to write expanded WAV files")
     parser.add_argument("--dry-run",    action="store_true",
                         help="Show what would be written without processing")
+    parser.add_argument("--workers",    type=int,
+                        default=max(1, os.cpu_count() - 1),
+                        help="Number of parallel worker processes "
+                             f"(default: {max(1, os.cpu_count() - 1)}, "
+                             f"i.e. cpu_count-1)")
     args = parser.parse_args()
 
     if not SF_AVAILABLE and not args.dry_run:
@@ -505,8 +567,10 @@ def main():
                      args.mode, output_dir, args.dry_run)
     else:
         kit_dir = Path(args.kit_dir)
-        print(f"Expanding kit: {kit_dir}  preset='{args.preset}'  mode={args.mode}")
-        expand_kit(kit_dir, args.preset, args.mode, output_dir, args.dry_run)
+        print(f"Expanding kit: {kit_dir}  preset='{args.preset}'  mode={args.mode}"
+              f"  workers={args.workers}")
+        expand_kit(kit_dir, args.preset, args.mode, output_dir, args.dry_run,
+                   workers=args.workers)
 
     return 0
 

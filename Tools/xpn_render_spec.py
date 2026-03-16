@@ -174,6 +174,207 @@ ENGINE_STRATEGIES = {
                        "attack in the first 50ms.",
         "variants": ["calm", "drama"],
     },
+    "Orbital": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES,
+        "vel_layers": 4,
+        "range": "C1-C6",
+        "description": "Group envelope system — render with full sustain to capture "
+                       "envelope interactions. Hold 3+ seconds per note.",
+    },
+    "Organon": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Metabolic synthesis — render at low and high metabolic rates. "
+                       "Hold 4+ seconds to capture the living evolution.",
+        "variants": ["low_metabolism", "high_metabolism"],
+    },
+    "Ouroboros": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Strange attractor chaos — render with leash tight (stable) and "
+                       "leash loose (chaotic). Hold 3+ seconds for feedback to develop.",
+        "variants": ["leash_tight", "leash_loose"],
+    },
+    "Obsidian": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES,
+        "vel_layers": 4,
+        "range": "C1-C6",
+        "description": "Crystal resonance — render dry, full range. The glassy "
+                       "harmonics need clean captures.",
+    },
+    "Origami": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Fold synthesis — render at fold point extremes (low fold = smooth, "
+                       "high fold = complex harmonics).",
+        "variants": ["fold_low", "fold_high"],
+    },
+    "Oracle": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "GENDY stochastic + maqam — render 3+ second holds to let the "
+                       "stochastic walk develop. Capture the unpredictability.",
+    },
+    "Obscura": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Physical modeling strings — render dry, hold 3+ seconds for the "
+                       "stiffness and body resonance to bloom.",
+    },
+    "Oceanic": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 2,
+        "range": "C1-C5",
+        "description": "Chromatophore modulator — render at two separation states. "
+                       "Hold 4+ seconds for the tidal evolution.",
+        "variants": ["separated", "converged"],
+    },
+    "Ocelot": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Biome synthesis — render at different biome settings to capture "
+                       "timbral environment shifts.",
+        "variants": ["biome_a", "biome_b"],
+    },
+    "Optic": {
+        "program_type": "stem",
+        "duration_seconds": 30,
+        "description": "Visual modulation engine — zero-audio identity. Render 30s stems "
+                       "of the AutoPulse rhythm output. This engine may produce silence "
+                       "in some modes (visual-only); only render audio-producing presets.",
+    },
+    "Oblique": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES,
+        "vel_layers": 4,
+        "range": "C1-C6",
+        "description": "Prismatic bounce — full range, render dry. The prism reflections "
+                       "need clean captures across the full keyboard.",
+    },
+    "Osprey": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "ShoreSystem coastline — render at different shore blend positions "
+                       "to capture the cultural timbral shifts.",
+        "variants": ["shore_near", "shore_far"],
+    },
+    "Osteria": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "ShoreSystem coastline — porto wine warmth. Render with natural "
+                       "sustain, hold 2+ seconds per note.",
+    },
+    "Owlfish": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:13],  # C1-C4
+        "vel_layers": 4,
+        "range": "C1-C4",
+        "description": "Mixtur-Trautonium — abyssal register focus. Render with long "
+                       "holds (4+ seconds) to capture the subharmonic series development.",
+    },
+    "Overlap": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 2,
+        "range": "C1-C5",
+        "description": "FDN reverb engine — render wet and dry variants at multiple room "
+                       "sizes. Hold 4+ seconds for the reverb tail to develop fully.",
+        "variants": ["dry", "wet_small", "wet_large"],
+    },
+    "Outwit": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "8-arm Wolfram CA — render at different rule states to capture "
+                       "the cellular automata timbral evolution. Render at rule "
+                       "extremes (simple=30, complex=110) and varied arm configs.",
+        "variants": ["rule_simple", "rule_complex"],
+    },
+    "Ombre": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 2,
+        "range": "C1-C5",
+        "description": "Dual narrative — memory/forgetting engine. Render at both blend "
+                       "extremes: full memory (0.0) and full forgetting (1.0). "
+                       "Hold 3+ seconds for the narrative arc.",
+        "variants": ["memory", "forgetting"],
+    },
+    "Orca": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Wavetable + echolocation — render at different hunt macro positions "
+                       "to capture the predatory timbral sweep. Include breach variant "
+                       "at maximum intensity.",
+        "variants": ["calm_hunt", "active_hunt", "breach"],
+    },
+    "Octopus": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Decentralized 8-arm intelligence — render at different arm depth "
+                       "settings and chromatophore states. Hold 3+ seconds for the "
+                       "distributed modulation to develop.",
+        "variants": ["shallow_arms", "deep_arms"],
+    },
+    # V1 concept engines (DSP pending — strategies ready for when they ship)
+    "Ostinato": {
+        "program_type": "drum",
+        "voices": ["drum1", "drum2", "drum3", "drum4", "bell", "shaker", "bass", "accent"],
+        "vel_layers": 4,
+        "vel_suffixes": ["v1", "v2", "v3", "v4"],
+        "notes": None,
+        "description": "Communal drum circle — 8 voices × 4 velocity layers. Capture "
+                       "the communal groove: each voice is a circle participant.",
+    },
+    "OpenSky": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES,
+        "vel_layers": 2,
+        "range": "C1-C6",
+        "description": "Euphoric shimmer — pure feliX energy. Full range, render with "
+                       "long sustains (4+ seconds) to capture the shimmer tail.",
+    },
+    "OceanDeep": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:9],  # C1-C3
+        "vel_layers": 4,
+        "range": "C1-C3",
+        "description": "Abyssal bass — pure Oscar. Low register only, render with 4+ "
+                       "second holds to capture the trench pressure.",
+    },
+    "Ouie": {
+        "program_type": "keygroup",
+        "notes": MINOR_3RD_NOTES[:17],  # C1-C5
+        "vel_layers": 4,
+        "range": "C1-C5",
+        "description": "Duophonic hammerhead — render at STRIFE (0.0) and LOVE (1.0) "
+                       "axis positions. Capture both characters.",
+        "variants": ["strife", "love"],
+    },
 }
 
 # Default strategy for engines not explicitly listed
@@ -192,6 +393,7 @@ def _resolve_engine_name(engine_id: str) -> str:
         "Snap": "OddfeliX", "Morph": "OddOscar",
         "Dub": "Overdub", "Drift": "Odyssey",
         "Bob": "Oblong", "Fat": "Obese", "Bite": "Overbite",
+        "Olé": "Ole", "Ouïe": "Ouie",
     }
     return aliases.get(engine_id, engine_id)
 
