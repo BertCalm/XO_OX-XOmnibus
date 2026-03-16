@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Cascade Tangle",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Oracle filter position modulates OVERLAP damping \u2014 spectral gate on infinite space",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "oracle",
+    "oracle",
+    "overlap",
+    "fdn",
+    "reverb"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "dna": {
+    "aggression": 0.275,
+    "space": 0.775,
+    "warmth": 0.575,
+    "brightness": 0.6,
+    "density": 0.65,
+    "movement": 0.55
+  },
+  "sonic_dna": {
+    "aggression": 0.275,
+    "space": 0.775,
+    "warmth": 0.575,
+    "brightness": 0.6,
+    "density": 0.65,
+    "movement": 0.55
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.71,
+      "olap_decay": 0.588,
+      "olap_damping": 0.649,
+      "olap_diffusion": 0.678,
+      "olap_modDepth": 0.132,
+      "olap_modRate": 0.064,
+      "olap_preDelay": 0.027,
+      "olap_earlyMix": 0.388,
+      "olap_lateMix": 0.717,
+      "olap_filterCutoff": 0.569,
+      "olap_filterReso": 0.119,
+      "olap_outputLevel": 0.726,
+      "olap_couplingLevel": 0.799,
+      "olap_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "ORACLE",
+        "type": "FILTER_MOD",
+        "amount": 0.814
+      }
+    ]
+  }
+}

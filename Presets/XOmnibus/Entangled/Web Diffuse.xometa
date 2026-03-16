@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Web Diffuse",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OVERWORLD"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Overworld chip glitch triggers OVERLAP scatter bursts \u2014 pixels dissolve into reverb",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "overworld",
+    "overworld",
+    "overlap",
+    "fdn",
+    "reverb"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "aggression": 0.35,
+    "space": 0.6,
+    "warmth": 0.425,
+    "brightness": 0.675,
+    "density": 0.575,
+    "movement": 0.6
+  },
+  "sonic_dna": {
+    "aggression": 0.35,
+    "space": 0.6,
+    "warmth": 0.425,
+    "brightness": 0.675,
+    "density": 0.575,
+    "movement": 0.6
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.71,
+      "olap_decay": 0.523,
+      "olap_damping": 0.433,
+      "olap_diffusion": 0.845,
+      "olap_modDepth": 0.193,
+      "olap_modRate": 0.285,
+      "olap_preDelay": 0.114,
+      "olap_earlyMix": 0.327,
+      "olap_lateMix": 0.783,
+      "olap_filterCutoff": 0.798,
+      "olap_filterReso": 0.267,
+      "olap_outputLevel": 0.794,
+      "olap_couplingLevel": 0.589,
+      "olap_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "OVERWORLD",
+        "type": "SYNC_LFO",
+        "amount": 0.575
+      }
+    ]
+  }
+}

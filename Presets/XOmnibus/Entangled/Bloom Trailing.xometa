@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Bloom Trailing",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERLAP mod rate tracks ORACLE harmonic series \u2014 overtones become geometry",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "oracle",
+    "oracle",
+    "overlap",
+    "fdn",
+    "reverb"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "aggression": 0.275,
+    "space": 0.775,
+    "warmth": 0.575,
+    "brightness": 0.6,
+    "density": 0.65,
+    "movement": 0.55
+  },
+  "sonic_dna": {
+    "aggression": 0.275,
+    "space": 0.775,
+    "warmth": 0.575,
+    "brightness": 0.6,
+    "density": 0.65,
+    "movement": 0.55
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.634,
+      "olap_decay": 0.877,
+      "olap_damping": 0.607,
+      "olap_diffusion": 0.61,
+      "olap_modDepth": 0.329,
+      "olap_modRate": 0.169,
+      "olap_preDelay": 0.229,
+      "olap_earlyMix": 0.338,
+      "olap_lateMix": 0.506,
+      "olap_filterCutoff": 0.499,
+      "olap_filterReso": 0.268,
+      "olap_outputLevel": 0.703,
+      "olap_couplingLevel": 0.696,
+      "olap_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "ORACLE",
+        "type": "SYNC_LFO",
+        "amount": 0.594
+      }
+    ]
+  }
+}

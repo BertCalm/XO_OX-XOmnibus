@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Branch Signal",
+  "mood": "Entangled",
+  "engines": [
+    "OUTWIT",
+    "OBBLIGATO"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OUTWIT arm count maps to OBBLIGATO voice balance \u2014 8 arms, 2 voices, infinite shades",
+  "tags": [
+    "coupling",
+    "entangled",
+    "outwit",
+    "obbligato",
+    "obbligato",
+    "outwit",
+    "cellular-automata",
+    "wolfram"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "dna": {
+    "aggression": 0.4,
+    "space": 0.575,
+    "warmth": 0.525,
+    "brightness": 0.575,
+    "density": 0.625,
+    "movement": 0.65
+  },
+  "sonic_dna": {
+    "aggression": 0.4,
+    "space": 0.575,
+    "warmth": 0.525,
+    "brightness": 0.575,
+    "density": 0.625,
+    "movement": 0.65
+  },
+  "parameters": {
+    "OUTWIT": {
+      "owit_rule": 30,
+      "owit_arms": 5,
+      "owit_cellSize": 0.207,
+      "owit_density": 0.446,
+      "owit_evolveRate": 0.415,
+      "owit_mutateProb": 0.27,
+      "owit_pitchSpread": 0.394,
+      "owit_filterCutoff": 0.362,
+      "owit_filterReso": 0.321,
+      "owit_ampAttack": 0.122,
+      "owit_ampRelease": 0.626,
+      "owit_outputLevel": 0.712,
+      "owit_couplingLevel": 0.504,
+      "owit_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "OBBLIGATO",
+        "type": "PITCH_MOD",
+        "amount": 0.719
+      }
+    ]
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Bloom Cascade",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OBSIDIAN"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERLAP diffusion softens OBSIDIAN transients \u2014 glass edges dissolve in water",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "obsidian",
+    "obsidian",
+    "overlap",
+    "fdn",
+    "reverb"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "dna": {
+    "aggression": 0.475,
+    "space": 0.675,
+    "warmth": 0.45,
+    "brightness": 0.475,
+    "density": 0.725,
+    "movement": 0.575
+  },
+  "sonic_dna": {
+    "aggression": 0.475,
+    "space": 0.675,
+    "warmth": 0.45,
+    "brightness": 0.475,
+    "density": 0.725,
+    "movement": 0.575
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.766,
+      "olap_decay": 0.811,
+      "olap_damping": 0.486,
+      "olap_diffusion": 0.5,
+      "olap_modDepth": 0.213,
+      "olap_modRate": 0.056,
+      "olap_preDelay": 0.232,
+      "olap_earlyMix": 0.464,
+      "olap_lateMix": 0.733,
+      "olap_filterCutoff": 0.523,
+      "olap_filterReso": 0.117,
+      "olap_outputLevel": 0.826,
+      "olap_couplingLevel": 0.787,
+      "olap_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "OBSIDIAN",
+        "type": "PITCH_MOD",
+        "amount": 0.767
+      }
+    ]
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Spread Frond",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OBSIDIAN"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBSIDIAN wavefold depth extends OVERLAP modulation \u2014 sharp becomes diffuse",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "obsidian",
+    "obsidian",
+    "overlap",
+    "fdn",
+    "reverb"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "aggression": 0.475,
+    "space": 0.675,
+    "warmth": 0.45,
+    "brightness": 0.475,
+    "density": 0.725,
+    "movement": 0.575
+  },
+  "sonic_dna": {
+    "aggression": 0.475,
+    "space": 0.675,
+    "warmth": 0.45,
+    "brightness": 0.475,
+    "density": 0.725,
+    "movement": 0.575
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.744,
+      "olap_decay": 0.528,
+      "olap_damping": 0.566,
+      "olap_diffusion": 0.768,
+      "olap_modDepth": 0.145,
+      "olap_modRate": 0.193,
+      "olap_preDelay": 0.137,
+      "olap_earlyMix": 0.28,
+      "olap_lateMix": 0.749,
+      "olap_filterCutoff": 0.569,
+      "olap_filterReso": 0.164,
+      "olap_outputLevel": 0.758,
+      "olap_couplingLevel": 0.732,
+      "olap_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "OBSIDIAN",
+        "type": "SYNC_LFO",
+        "amount": 0.53
+      }
+    ]
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Diffuse Trailing",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OPAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Granular clouds refract through Lion's Mane FDN \u2014 spectral shimmer meets deep space",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "opal",
+    "opal",
+    "overlap",
+    "fdn",
+    "reverb"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "aggression": 0.225,
+    "space": 0.825,
+    "warmth": 0.525,
+    "brightness": 0.675,
+    "density": 0.625,
+    "movement": 0.625
+  },
+  "sonic_dna": {
+    "aggression": 0.225,
+    "space": 0.825,
+    "warmth": 0.525,
+    "brightness": 0.675,
+    "density": 0.625,
+    "movement": 0.625
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.719,
+      "olap_decay": 0.512,
+      "olap_damping": 0.377,
+      "olap_diffusion": 0.677,
+      "olap_modDepth": 0.109,
+      "olap_modRate": 0.11,
+      "olap_preDelay": 0.162,
+      "olap_earlyMix": 0.363,
+      "olap_lateMix": 0.488,
+      "olap_filterCutoff": 0.636,
+      "olap_filterReso": 0.343,
+      "olap_outputLevel": 0.651,
+      "olap_couplingLevel": 0.751,
+      "olap_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "OPAL",
+        "type": "SYNC_LFO",
+        "amount": 0.53
+      }
+    ]
+  }
+}

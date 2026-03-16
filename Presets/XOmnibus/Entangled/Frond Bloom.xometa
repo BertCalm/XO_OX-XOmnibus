@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Frond Bloom",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "ORBITAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERLAP cascade tail feeds ORBITAL timbre bus \u2014 reverb becomes a new oscillator",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "orbital",
+    "orbital",
+    "overlap",
+    "fdn",
+    "reverb"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "dna": {
+    "aggression": 0.3,
+    "space": 0.75,
+    "warmth": 0.475,
+    "brightness": 0.65,
+    "density": 0.6,
+    "movement": 0.55
+  },
+  "sonic_dna": {
+    "aggression": 0.3,
+    "space": 0.75,
+    "warmth": 0.475,
+    "brightness": 0.65,
+    "density": 0.6,
+    "movement": 0.55
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.612,
+      "olap_decay": 0.872,
+      "olap_damping": 0.603,
+      "olap_diffusion": 0.842,
+      "olap_modDepth": 0.384,
+      "olap_modRate": 0.314,
+      "olap_preDelay": 0.006,
+      "olap_earlyMix": 0.421,
+      "olap_lateMix": 0.533,
+      "olap_filterCutoff": 0.772,
+      "olap_filterReso": 0.341,
+      "olap_outputLevel": 0.823,
+      "olap_couplingLevel": 0.753,
+      "olap_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "ORBITAL",
+        "type": "AMP_MOD",
+        "amount": 0.717
+      }
+    ]
+  }
+}
