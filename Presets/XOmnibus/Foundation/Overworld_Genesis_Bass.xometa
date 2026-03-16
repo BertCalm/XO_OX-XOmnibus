@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Genesis Bass",
+  "mood": "Foundation",
+  "engines": ["OVERWORLD"],
+  "author": "Guru Bin — OVERWORLD Deepening 2026-03-16",
+  "version": "1.0.0",
+  "description": "YM2612 FM at Vertex 1 — the metallic low end. Genesis bass patches always sat in that channel 6 DAC slot. OW-IV: fmLfoDepth 20 at 1Hz for the DX-style pitch wobble that made Sonic sound like it ran on something alive. filterEnvDepth 0.73 — velocity is the difference between a pad and a slap. Low filterCutoff for genuine bass weight.",
+  "tags": ["genesis", "ym2612", "fm", "bass", "foundation", "metallic", "dx-style"],
+  "macroLabels": ["CHARACTER", "GLITCH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.29,
+    "movement": 0.55,
+    "density": 0.79,
+    "space": 0.27,
+    "aggression": 0.61
+  },
+  "sonic_dna": {
+    "brightness": 0.38,
+    "warmth": 0.29,
+    "movement": 0.55,
+    "density": 0.79,
+    "space": 0.27,
+    "aggression": 0.61
+  },
+  "parameters": {
+    "OVERWORLD": {
+      "ow_era": 0.91,
+      "ow_eraY": 0.05,
+      "ow_eraMemory": 0.4,
+      "ow_eraPortamento": 0.5,
+      "ow_eraDrift": 0.067,
+      "ow_filterCutoff": 0.36,
+      "ow_filterEnvDepth": 0.73,
+      "ow_glitch": 0.04,
+      "ow_fmLfoRate": 1.0,
+      "ow_fmLfoDepth": 20.0,
+      "ow_macro_era": 0.91,
+      "ow_macro_chaos": 0.04,
+      "ow_macro_couple": 0.04,
+      "ow_macro_space": 0.29,
+      "ow_outputLevel": 0.91,
+      "ow_couplingLevel": 0.04,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}
