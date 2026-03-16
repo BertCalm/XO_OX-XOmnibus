@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Roots System",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.11,
+    "warmth": 0.76,
+    "aggression": 0.28,
+    "movement": 0.3,
+    "density": 0.78,
+    "space": 0.38
+  },
+  "engines": [
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Underground root network \u2014 exchange in total darkness",
+  "tags": [
+    "aether",
+    "dark",
+    "extreme",
+    "roots",
+    "underground",
+    "system"
+  ],
+  "macroLabels": [
+    "CYCLE",
+    "CONSUME",
+    "COUPLING",
+    "VOID"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.11,
+    "warmth": 0.76,
+    "movement": 0.3,
+    "density": 0.78,
+    "space": 0.38,
+    "aggression": 0.28
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

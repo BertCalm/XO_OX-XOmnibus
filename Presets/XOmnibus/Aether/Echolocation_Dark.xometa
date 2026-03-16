@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Echolocation Dark",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.05,
+    "warmth": 0.75,
+    "aggression": 0.55,
+    "movement": 0.35,
+    "density": 0.7,
+    "space": 0.45
+  },
+  "engines": [
+    "ORCA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orca pulse in lightless deep \u2014 sonar without reflection",
+  "tags": [
+    "aether",
+    "dark",
+    "extreme",
+    "orca",
+    "sonar",
+    "deep"
+  ],
+  "macroLabels": [
+    "HUNT",
+    "DIVE",
+    "COUPLING",
+    "DEPTH"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.75,
+    "movement": 0.35,
+    "density": 0.7,
+    "space": 0.45,
+    "aggression": 0.55
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

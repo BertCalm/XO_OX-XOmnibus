@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Photon Bloom",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.92,
+    "warmth": 0.2,
+    "aggression": 0.08,
+    "movement": 0.8,
+    "density": 0.25,
+    "space": 0.85
+  },
+  "engines": [
+    "ODDFELIX"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Rapid modulation scatter paints the treble sky",
+  "tags": [
+    "prism",
+    "bright",
+    "extreme",
+    "bloom",
+    "scatter",
+    "radiant"
+  ],
+  "macroLabels": [
+    "SHIMMER",
+    "SCATTER",
+    "COUPLING",
+    "AIR"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.2,
+    "movement": 0.8,
+    "density": 0.25,
+    "space": 0.85,
+    "aggression": 0.08
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

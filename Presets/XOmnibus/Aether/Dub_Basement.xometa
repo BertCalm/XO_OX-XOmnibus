@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Dub Basement",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.12,
+    "warmth": 0.9,
+    "aggression": 0.38,
+    "movement": 0.3,
+    "density": 0.65,
+    "space": 0.6
+  },
+  "engines": [
+    "OVERDUB"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sub-bass dub pressure \u2014 room below the room",
+  "tags": [
+    "aether",
+    "dark",
+    "extreme",
+    "dub",
+    "basement",
+    "sub"
+  ],
+  "macroLabels": [
+    "DRIVE",
+    "TAPE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.9,
+    "movement": 0.3,
+    "density": 0.65,
+    "space": 0.6,
+    "aggression": 0.38
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

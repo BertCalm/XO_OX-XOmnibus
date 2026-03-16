@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Cold Seep",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.09,
+    "warmth": 0.86,
+    "aggression": 0.22,
+    "movement": 0.12,
+    "density": 0.88,
+    "space": 0.2
+  },
+  "engines": [
+    "OCEANIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Methane seep at trench floor \u2014 cold, dense, dark",
+  "tags": [
+    "aether",
+    "dark",
+    "extreme",
+    "seep",
+    "methane",
+    "abyssal"
+  ],
+  "macroLabels": [
+    "CURRENT",
+    "PRESSURE",
+    "COUPLING",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.86,
+    "movement": 0.12,
+    "density": 0.88,
+    "space": 0.2,
+    "aggression": 0.22
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

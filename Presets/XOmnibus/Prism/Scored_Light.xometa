@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Scored Light",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.88,
+    "warmth": 0.2,
+    "aggression": 0.15,
+    "movement": 0.6,
+    "density": 0.3,
+    "space": 0.75
+  },
+  "engines": [
+    "ORIGAMI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Crease lines become frequency partials \u2014 luminous structure",
+  "tags": [
+    "prism",
+    "bright",
+    "extreme",
+    "crease",
+    "structure",
+    "bright"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "CREASE",
+    "COUPLING",
+    "UNFOLD"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.2,
+    "movement": 0.6,
+    "density": 0.3,
+    "space": 0.75,
+    "aggression": 0.15
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Volcanic Glass",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.06,
+    "warmth": 0.78,
+    "aggression": 0.5,
+    "movement": 0.1,
+    "density": 0.85,
+    "space": 0.25
+  },
+  "engines": [
+    "OBSIDIAN"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Hardest darkness \u2014 razor density, zero treble",
+  "tags": [
+    "aether",
+    "dark",
+    "extreme",
+    "volcanic",
+    "glass",
+    "dense"
+  ],
+  "macroLabels": [
+    "EDGE",
+    "DENSITY",
+    "COUPLING",
+    "PRESSURE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.78,
+    "movement": 0.1,
+    "density": 0.85,
+    "space": 0.25,
+    "aggression": 0.5
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

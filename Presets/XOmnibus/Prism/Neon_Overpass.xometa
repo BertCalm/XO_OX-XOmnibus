@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Neon Overpass",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.88,
+    "warmth": 0.18,
+    "aggression": 0.2,
+    "movement": 0.6,
+    "density": 0.45,
+    "space": 0.65
+  },
+  "engines": [
+    "OVERWORLD"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Glitch-shredded SNES palette, aggressive treble presence",
+  "tags": [
+    "prism",
+    "bright",
+    "extreme",
+    "neon",
+    "glitch",
+    "urban"
+  ],
+  "macroLabels": [
+    "ERA",
+    "GLITCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.18,
+    "movement": 0.6,
+    "density": 0.45,
+    "space": 0.65,
+    "aggression": 0.2
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

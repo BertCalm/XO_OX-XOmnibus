@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Bioluminescence Off",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.1,
+    "warmth": 0.82,
+    "aggression": 0.4,
+    "movement": 0.35,
+    "density": 0.8,
+    "space": 0.4
+  },
+  "engines": [
+    "OWLFISH"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "All bioluminescence extinguished \u2014 only weight remains",
+  "tags": [
+    "aether",
+    "dark",
+    "extreme",
+    "dark",
+    "deep",
+    "owlfish"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "FEEDING",
+    "COUPLING",
+    "PRESSURE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.82,
+    "movement": 0.35,
+    "density": 0.8,
+    "space": 0.4,
+    "aggression": 0.4
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

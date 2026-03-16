@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Ink Dissolve",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.11,
+    "warmth": 0.75,
+    "aggression": 0.1,
+    "movement": 0.2,
+    "density": 0.55,
+    "space": 0.65
+  },
+  "engines": [
+    "OMBRE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Black ink expanding in still water",
+  "tags": [
+    "aether",
+    "dark",
+    "extreme",
+    "ink",
+    "dissolve",
+    "water"
+  ],
+  "macroLabels": [
+    "FADE",
+    "DEPTH",
+    "COUPLING",
+    "SHADE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.11,
+    "warmth": 0.75,
+    "movement": 0.2,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.1
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

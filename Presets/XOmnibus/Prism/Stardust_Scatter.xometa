@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Stardust Scatter",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.86,
+    "warmth": 0.18,
+    "aggression": 0.1,
+    "movement": 0.7,
+    "density": 0.25,
+    "space": 0.9
+  },
+  "engines": [
+    "ORBITAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Microdebris trail \u2014 shimmering upper partials",
+  "tags": [
+    "prism",
+    "bright",
+    "extreme",
+    "space",
+    "scatter",
+    "airy"
+  ],
+  "macroLabels": [
+    "ORBIT",
+    "DECAY",
+    "COUPLING",
+    "DRIFT"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.18,
+    "movement": 0.7,
+    "density": 0.25,
+    "space": 0.9,
+    "aggression": 0.1
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

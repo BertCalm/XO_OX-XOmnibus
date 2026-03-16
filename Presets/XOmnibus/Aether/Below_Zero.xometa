@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Below Zero",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.06,
+    "warmth": 0.92,
+    "aggression": 0.3,
+    "movement": 0.1,
+    "density": 0.95,
+    "space": 0.15
+  },
+  "engines": [
+    "ODDOSCAR"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Below freezing \u2014 matter compressed to maximum Oscar density",
+  "tags": [
+    "aether",
+    "dark",
+    "extreme",
+    "zero",
+    "dense",
+    "sub"
+  ],
+  "macroLabels": [
+    "WEIGHT",
+    "GRIND",
+    "COUPLING",
+    "CAVE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.92,
+    "movement": 0.1,
+    "density": 0.95,
+    "space": 0.15,
+    "aggression": 0.3
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

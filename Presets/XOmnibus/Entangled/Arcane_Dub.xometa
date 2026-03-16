@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Arcane Dub",
+  "mood": "Entangled",
+  "engines": [
+    "Oracle",
+    "Overdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Prophecy on tape. ORACLE stochastic maqam warped through OVERDUB dub saturation.",
+  "tags": [
+    "oracle",
+    "overdub",
+    "prophecy",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_brightness": 0.437,
+      "oracle_warmth": 0.54,
+      "oracle_movement": 0.675,
+      "oracle_density": 0.617,
+      "oracle_space": 0.7,
+      "oracle_aggression": 0.367,
+      "oracle_level": 0.773
+    },
+    "Overdub": {
+      "dub_brightness": 0.378,
+      "dub_warmth": 0.718,
+      "dub_movement": 0.568,
+      "dub_density": 0.477,
+      "dub_space": 0.679,
+      "dub_aggression": 0.261,
+      "dub_level": 0.761
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Overdub",
+        "type": "ENVELOPE_SHARING",
+        "amount": 0.539
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.422,
+    "warmth": 0.577,
+    "movement": 0.686,
+    "density": 0.638,
+    "space": 0.744,
+    "aggression": 0.357
+  }
+}

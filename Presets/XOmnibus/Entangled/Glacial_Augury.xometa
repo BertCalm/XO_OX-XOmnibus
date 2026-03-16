@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Glacial Augury",
+  "mood": "Entangled",
+  "engines": [
+    "Obsidian",
+    "Oracle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Pure crystal edge as scrying surface. OBSIDIAN facets reveal what ORACLE stochastic predicts.",
+  "tags": [
+    "obsidian",
+    "oracle",
+    "crystal",
+    "prophecy",
+    "marquee",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_brightness": 0.85,
+      "obsidian_warmth": 0.192,
+      "obsidian_movement": 0.309,
+      "obsidian_density": 0.491,
+      "obsidian_space": 0.655,
+      "obsidian_aggression": 0.182,
+      "obsidian_level": 0.769
+    },
+    "Oracle": {
+      "oracle_brightness": 0.471,
+      "oracle_warmth": 0.477,
+      "oracle_movement": 0.738,
+      "oracle_density": 0.649,
+      "oracle_space": 0.635,
+      "oracle_aggression": 0.346,
+      "oracle_level": 0.848
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Oracle",
+        "type": "WAVETABLE_MORPH",
+        "amount": 0.823
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.606,
+    "warmth": 0.307,
+    "movement": 0.482,
+    "density": 0.591,
+    "space": 0.615,
+    "aggression": 0.268
+  }
+}

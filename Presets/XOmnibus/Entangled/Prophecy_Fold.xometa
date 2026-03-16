@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Prophecy Fold",
+  "mood": "Entangled",
+  "engines": [
+    "Oracle",
+    "Origami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Oracle fold \u2014 prophecy geometry written in ORIGAMI crease mathematics.",
+  "tags": [
+    "oracle",
+    "origami",
+    "prophecy",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_brightness": 0.422,
+      "oracle_warmth": 0.532,
+      "oracle_movement": 0.658,
+      "oracle_density": 0.581,
+      "oracle_space": 0.684,
+      "oracle_aggression": 0.393,
+      "oracle_level": 0.778
+    },
+    "Origami": {
+      "origami_brightness": 0.656,
+      "origami_warmth": 0.436,
+      "origami_movement": 0.572,
+      "origami_density": 0.518,
+      "origami_space": 0.544,
+      "origami_aggression": 0.623,
+      "origami_level": 0.829
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Origami",
+        "type": "WAVETABLE_MORPH",
+        "amount": 0.733
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.505,
+    "warmth": 0.5,
+    "movement": 0.702,
+    "density": 0.592,
+    "space": 0.596,
+    "aggression": 0.432
+  }
+}

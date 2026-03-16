@@ -1,0 +1,746 @@
+{
+  "pack_name": "TIDE TABLES",
+  "tagline": "Where the water meets the shore",
+  "version": "1.0.0",
+  "release_date": "2026-03-16",
+  "price": "free",
+  "patreon_tier": "Signal",
+  "format": "MPC Expansion (.xpn)",
+  "engines": [
+    "ONSET",
+    "ODYSSEY",
+    "OPAL"
+  ],
+  "mood": "Entangled (primary) / Foundation (Program 1) / Atmosphere (Programs 2–3)",
+  "target_audience": "New listeners discovering XO_OX for the first time. Producers who want a taste of all three flagship engines before committing to the full XOmnibus library.",
+  "description": "TIDE TABLES is the free gateway pack for XO_OX. Four programs trace a journey from the shore to the open sea: ONSET builds the rhythmic foundation (Incoming Tide), ODYSSEY opens the harmonic layer (Open Water), OPAL dissolves into granular texture (Surface Tension), and Full Spectrum couples all three in the Entangled mood. Everything here is synthesized — no samples. Every sound was born in the engine.",
+  "programs": [
+    {
+      "name": "Incoming Tide",
+      "type": "DrumProgram",
+      "engine": "ONSET",
+      "description": "Pure percussion. ONSET's eight synthesis voices map across the kit: kick, snare, hats, clap, toms, perc, and two FX slots. MACHINE macro dials between acoustic-adjacent and machine-rigid. PUNCH shapes transient aggression. SPACE opens the reverb field. MUTATE introduces timbral randomness — nudge it for organic variation.",
+      "macro_map": {
+        "Q1": "MACHINE — acoustic ↔ machine character",
+        "Q2": "PUNCH — transient attack across all voices",
+        "Q3": "SPACE — global reverb field depth",
+        "Q4": "MUTATE — timbral randomness / controlled chaos"
+      },
+      "pads": [
+        {
+          "pad": 1,
+          "name": "Kick Deep",
+          "preset": "ONSET:Kick > Trench Kick",
+          "midi_note": 36,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Sub-heavy kick, MACHINE macro pushed high"
+        },
+        {
+          "pad": 2,
+          "name": "Kick Snap",
+          "preset": "ONSET:Kick > Shore Break",
+          "midi_note": 36,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Punchy mid-forward kick, PUNCH macro at 70%"
+        },
+        {
+          "pad": 3,
+          "name": "Snare Crack",
+          "preset": "ONSET:Snare > Brine Snap",
+          "midi_note": 38,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Sharp transient snare, PUNCH at max"
+        },
+        {
+          "pad": 4,
+          "name": "Snare Brush",
+          "preset": "ONSET:Snare > Foam Roll",
+          "midi_note": 38,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Brushed snare, lower PUNCH, SPACE open"
+        },
+        {
+          "pad": 5,
+          "name": "Closed Hat",
+          "preset": "ONSET:CHat > Ripple Hat",
+          "midi_note": 42,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Tight hi-hat, MACHINE at 50%"
+        },
+        {
+          "pad": 6,
+          "name": "Open Hat",
+          "preset": "ONSET:OHat > Crest Hat",
+          "midi_note": 46,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Open hat with long decay, SPACE at 60%"
+        },
+        {
+          "pad": 7,
+          "name": "Clap",
+          "preset": "ONSET:Clap > Tidal Clap",
+          "midi_note": 39,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Wide stereo clap, SPACE adds room"
+        },
+        {
+          "pad": 8,
+          "name": "Rim Shot",
+          "preset": "ONSET:Snare > Reef Rim",
+          "midi_note": 37,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Bright rimshot, MUTATE adds grit"
+        },
+        {
+          "pad": 9,
+          "name": "Tom High",
+          "preset": "ONSET:Tom > High Water Tom",
+          "midi_note": 48,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "High pitched tom, PITCH up"
+        },
+        {
+          "pad": 10,
+          "name": "Tom Low",
+          "preset": "ONSET:Tom > Deep Current Tom",
+          "midi_note": 45,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Low tuned tom, sub resonance"
+        },
+        {
+          "pad": 11,
+          "name": "Perc Shaker",
+          "preset": "ONSET:Perc > Drift Shaker",
+          "midi_note": 56,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Continuous shaker texture, MUTATE varies tone"
+        },
+        {
+          "pad": 12,
+          "name": "Perc Clave",
+          "preset": "ONSET:Perc > Sandbar Clave",
+          "midi_note": 75,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Dry wood clave, tight SPACE"
+        },
+        {
+          "pad": 13,
+          "name": "FX Swell",
+          "preset": "ONSET:FX > Incoming Surge",
+          "midi_note": 37,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Rising ocean FX swell, full SPACE"
+        },
+        {
+          "pad": 14,
+          "name": "FX Crash",
+          "preset": "ONSET:FX > Whitecap Crash",
+          "midi_note": 49,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Cymbal-like crash built from ONSET noise"
+        },
+        {
+          "pad": 15,
+          "name": "Full Kit A",
+          "preset": "ONSET:Kick > Trench Kick",
+          "midi_note": 36,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Performance pad — kick + snare layered via MUTATE"
+        },
+        {
+          "pad": 16,
+          "name": "Full Kit B",
+          "preset": "ONSET:Perc > Drift Shaker",
+          "midi_note": 56,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Performance pad — perc texture fill"
+        }
+      ]
+    },
+    {
+      "name": "Open Water",
+      "type": "DrumProgram",
+      "description": "ODYSSEY's wavetable/subtractive engine laid out chromatically across two octaves. Pads 1–4 cycle through four tonal characters: Lead, Pad, Bass, Arp. The layout mirrors a keygroup so producers can play melodies directly off the pads. DRIFT macro introduces pitch instability — from studio-clean to open-sea detuned. DEPTH controls filter evolution. WAVE morphs between wavetable frames. ECHO sends into the built-in tape-style delay.",
+      "engine": "ODYSSEY",
+      "macro_map": {
+        "Q1": "DRIFT — pitch instability / detuning width",
+        "Q2": "DEPTH — filter sweep depth",
+        "Q3": "WAVE — wavetable morph position",
+        "Q4": "ECHO — tape delay send level"
+      },
+      "pads": [
+        {
+          "pad": 1,
+          "name": "C3",
+          "preset": "ODYSSEY:Lead > Oceanic Saw",
+          "midi_note": 48,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Chromatic keygroup layout — two octaves C3–D5"
+        },
+        {
+          "pad": 2,
+          "name": "D3",
+          "preset": "ODYSSEY:Pad > Pelagic Wash",
+          "midi_note": 50,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Chromatic keygroup layout — two octaves C3–D5"
+        },
+        {
+          "pad": 3,
+          "name": "E3",
+          "preset": "ODYSSEY:Bass > Abyssal Sub",
+          "midi_note": 52,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Chromatic keygroup layout — two octaves C3–D5"
+        },
+        {
+          "pad": 4,
+          "name": "F3",
+          "preset": "ODYSSEY:Arp > Current Sequence",
+          "midi_note": 53,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Chromatic keygroup layout — two octaves C3–D5"
+        },
+        {
+          "pad": 5,
+          "name": "G3",
+          "preset": "ODYSSEY:Lead > Oceanic Saw",
+          "midi_note": 55,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Chromatic keygroup layout — two octaves C3–D5"
+        },
+        {
+          "pad": 6,
+          "name": "A3",
+          "preset": "ODYSSEY:Pad > Pelagic Wash",
+          "midi_note": 57,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Chromatic keygroup layout — two octaves C3–D5"
+        },
+        {
+          "pad": 7,
+          "name": "B3",
+          "preset": "ODYSSEY:Bass > Abyssal Sub",
+          "midi_note": 59,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Chromatic keygroup layout — two octaves C3–D5"
+        },
+        {
+          "pad": 8,
+          "name": "C4",
+          "preset": "ODYSSEY:Arp > Current Sequence",
+          "midi_note": 60,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Chromatic keygroup layout — two octaves C3–D5"
+        },
+        {
+          "pad": 9,
+          "name": "D4",
+          "preset": "ODYSSEY:Lead > Oceanic Saw",
+          "midi_note": 62,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Chromatic keygroup layout — two octaves C3–D5"
+        },
+        {
+          "pad": 10,
+          "name": "E4",
+          "preset": "ODYSSEY:Pad > Pelagic Wash",
+          "midi_note": 64,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Chromatic keygroup layout — two octaves C3–D5"
+        },
+        {
+          "pad": 11,
+          "name": "F4",
+          "preset": "ODYSSEY:Bass > Abyssal Sub",
+          "midi_note": 65,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Chromatic keygroup layout — two octaves C3–D5"
+        },
+        {
+          "pad": 12,
+          "name": "G4",
+          "preset": "ODYSSEY:Arp > Current Sequence",
+          "midi_note": 67,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Chromatic keygroup layout — two octaves C3–D5"
+        },
+        {
+          "pad": 13,
+          "name": "A4",
+          "preset": "ODYSSEY:Lead > Oceanic Saw",
+          "midi_note": 69,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Chromatic keygroup layout — two octaves C3–D5"
+        },
+        {
+          "pad": 14,
+          "name": "B4",
+          "preset": "ODYSSEY:Pad > Pelagic Wash",
+          "midi_note": 71,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Chromatic keygroup layout — two octaves C3–D5"
+        },
+        {
+          "pad": 15,
+          "name": "C5",
+          "preset": "ODYSSEY:Bass > Abyssal Sub",
+          "midi_note": 72,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Chromatic keygroup layout — two octaves C3–D5"
+        },
+        {
+          "pad": 16,
+          "name": "D5",
+          "preset": "ODYSSEY:Arp > Current Sequence",
+          "midi_note": 74,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Chromatic keygroup layout — two octaves C3–D5"
+        }
+      ]
+    },
+    {
+      "name": "Surface Tension",
+      "type": "DrumProgram",
+      "engine": "OPAL",
+      "description": "OPAL's granular synthesis engine across six texture categories: Cloud, Scatter, Freeze, Pitched, Motion, Stutter — plus two Atmos and two FX slots. Each pair presents the same category in contrasting characters (bright/dark, fast/slow). DENSITY controls grain population. SIZE sets grain duration. POSITION scrubs the source position. SCATTER randomizes grain placement. Push all four macros for maximum granular chaos; pull back for intimate, breath-like textures.",
+      "macro_map": {
+        "Q1": "DENSITY — grain population (sparse to cloud)",
+        "Q2": "SIZE — grain duration (micro to long)",
+        "Q3": "POSITION — source scan position",
+        "Q4": "SCATTER — spatial randomization"
+      },
+      "pads": [
+        {
+          "pad": 1,
+          "name": "Grain Cloud A",
+          "preset": "OPAL:Texture > Bioluminescence",
+          "midi_note": 60,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Dense slow grain cloud, high density"
+        },
+        {
+          "pad": 2,
+          "name": "Grain Cloud B",
+          "preset": "OPAL:Texture > Thermal Plume",
+          "midi_note": 60,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Rising warm grain mass, position sweeps up"
+        },
+        {
+          "pad": 3,
+          "name": "Scatter A",
+          "preset": "OPAL:Scatter > Foam Scatter",
+          "midi_note": 62,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "High scatter, short grain size, bright"
+        },
+        {
+          "pad": 4,
+          "name": "Scatter B",
+          "preset": "OPAL:Scatter > Depth Scatter",
+          "midi_note": 57,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Low scatter, long grains, dark and slow"
+        },
+        {
+          "pad": 5,
+          "name": "Freeze A",
+          "preset": "OPAL:Freeze > Ice Shelf",
+          "midi_note": 64,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Frozen grain loop, sustained shimmer"
+        },
+        {
+          "pad": 6,
+          "name": "Freeze B",
+          "preset": "OPAL:Freeze > Permafrost",
+          "midi_note": 59,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Dense freeze, subtle pitch modulation"
+        },
+        {
+          "pad": 7,
+          "name": "Pitch Grain A",
+          "preset": "OPAL:Pitched > Coral Chord",
+          "midi_note": 65,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Pitched grains forming a chord cluster"
+        },
+        {
+          "pad": 8,
+          "name": "Pitch Grain B",
+          "preset": "OPAL:Pitched > Kelp Drone",
+          "midi_note": 55,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Deep pitched drone grains, slow attack"
+        },
+        {
+          "pad": 9,
+          "name": "Motion A",
+          "preset": "OPAL:Motion > Tidal Drift",
+          "midi_note": 67,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Position LFO creates sweeping motion"
+        },
+        {
+          "pad": 10,
+          "name": "Motion B",
+          "preset": "OPAL:Motion > Undertow",
+          "midi_note": 53,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Reverse-sweep position motion, dark pull"
+        },
+        {
+          "pad": 11,
+          "name": "Stutter A",
+          "preset": "OPAL:Stutter > Chop Break",
+          "midi_note": 69,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Rapid grain stutter, rhythmic texture"
+        },
+        {
+          "pad": 12,
+          "name": "Stutter B",
+          "preset": "OPAL:Stutter > Tide Pool Drip",
+          "midi_note": 48,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Sparse stutter, organic drop pattern"
+        },
+        {
+          "pad": 13,
+          "name": "Atmos A",
+          "preset": "OPAL:Atmos > Open Sea Breath",
+          "midi_note": 72,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Wide stereo atmosphere, all SPACE"
+        },
+        {
+          "pad": 14,
+          "name": "Atmos B",
+          "preset": "OPAL:Atmos > Cave Echo",
+          "midi_note": 45,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Narrow dark atmosphere, heavy reverb"
+        },
+        {
+          "pad": 15,
+          "name": "FX Sweep",
+          "preset": "OPAL:FX > Current Sweep",
+          "midi_note": 74,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Filter sweep FX grain, performance use"
+        },
+        {
+          "pad": 16,
+          "name": "FX Burst",
+          "preset": "OPAL:FX > Surge Burst",
+          "midi_note": 36,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "One-shot grain burst, full transient"
+        }
+      ]
+    },
+    {
+      "name": "Full Spectrum",
+      "type": "DrumProgram",
+      "engine": "ONSET + ODYSSEY + OPAL",
+      "mood": "Entangled",
+      "description": "The full XO_OX water column in one program. Pads 1–4: ONSET rhythmic core. Pads 5–8: ODYSSEY harmonic layer. Pads 9–12: OPAL granular textures. Pads 13–16: coupled performance pads where two or three engines are entangled — their parameters cross-modulate. This is the Entangled mood: no engine operates alone. Use as a compositional sketch pad or a live performance set.",
+      "coupling_notes": "Entangled mood couples ONSET transient data → OPAL grain trigger density, ODYSSEY filter cutoff → OPAL scatter amount, OPAL density → ODYSSEY reverb send. All three share a common SPACE macro for unified room feel.",
+      "macro_map": {
+        "Q1": "DRIVE — saturation across all three engines",
+        "Q2": "SPACE — unified reverb field",
+        "Q3": "ENTANGLE — cross-modulation depth",
+        "Q4": "TIDE — tempo-synced global LFO"
+      },
+      "pads": [
+        {
+          "pad": 1,
+          "name": "Kick",
+          "preset": "ONSET:Kick > Trench Kick",
+          "midi_note": 36,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Engine: ONSET"
+        },
+        {
+          "pad": 2,
+          "name": "Snare",
+          "preset": "ONSET:Snare > Brine Snap",
+          "midi_note": 38,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Engine: ONSET"
+        },
+        {
+          "pad": 3,
+          "name": "Hat",
+          "preset": "ONSET:CHat > Ripple Hat",
+          "midi_note": 42,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Engine: ONSET"
+        },
+        {
+          "pad": 4,
+          "name": "Perc",
+          "preset": "ONSET:Perc > Drift Shaker",
+          "midi_note": 56,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Engine: ONSET"
+        },
+        {
+          "pad": 5,
+          "name": "Bass",
+          "preset": "ODYSSEY:Bass > Abyssal Sub",
+          "midi_note": 36,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Engine: ODYSSEY"
+        },
+        {
+          "pad": 6,
+          "name": "Lead",
+          "preset": "ODYSSEY:Lead > Oceanic Saw",
+          "midi_note": 60,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Engine: ODYSSEY"
+        },
+        {
+          "pad": 7,
+          "name": "Pad",
+          "preset": "ODYSSEY:Pad > Pelagic Wash",
+          "midi_note": 65,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Engine: ODYSSEY"
+        },
+        {
+          "pad": 8,
+          "name": "Arp",
+          "preset": "ODYSSEY:Arp > Current Sequence",
+          "midi_note": 67,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Engine: ODYSSEY"
+        },
+        {
+          "pad": 9,
+          "name": "Grain Atmos",
+          "preset": "OPAL:Atmos > Open Sea Breath",
+          "midi_note": 72,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Engine: OPAL"
+        },
+        {
+          "pad": 10,
+          "name": "Grain Motion",
+          "preset": "OPAL:Motion > Tidal Drift",
+          "midi_note": 67,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Engine: OPAL"
+        },
+        {
+          "pad": 11,
+          "name": "Grain Freeze",
+          "preset": "OPAL:Freeze > Ice Shelf",
+          "midi_note": 64,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Engine: OPAL"
+        },
+        {
+          "pad": 12,
+          "name": "Grain Scatter",
+          "preset": "OPAL:Scatter > Foam Scatter",
+          "midi_note": 62,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Engine: OPAL"
+        },
+        {
+          "pad": 13,
+          "name": "Entangled 1",
+          "preset": "COUPLED:ONSET+OPAL > Tide Break",
+          "midi_note": 36,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Engine: ONSET+OPAL"
+        },
+        {
+          "pad": 14,
+          "name": "Entangled 2",
+          "preset": "COUPLED:ODYSSEY+OPAL > Deep Bloom",
+          "midi_note": 60,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Engine: ODYSSEY+OPAL"
+        },
+        {
+          "pad": 15,
+          "name": "Full Surge",
+          "preset": "COUPLED:ALL > Full Spectrum Surge",
+          "midi_note": 48,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Engine: ALL THREE"
+        },
+        {
+          "pad": 16,
+          "name": "Reset",
+          "preset": "COUPLED:ALL > Return to Shore",
+          "midi_note": 36,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Engine: ALL THREE — soft version"
+        }
+      ]
+    }
+  ],
+  "marketing_hooks": [
+    "100% free — no catch, no email wall. Just download and make something.",
+    "Three flagship XO_OX engines in one pack: ONSET (drums), ODYSSEY (synth), OPAL (granular).",
+    "64 pads across 4 programs, all synthesized from scratch — zero sample playback.",
+    "Entangled program shows XOmnibus engine coupling: rhythms that breathe, pads that pulse.",
+    "Gateway to the full XOmnibus library — every engine here has a deeper version in the main release.",
+    "MPC-native format: drop it in MPC Software or MPC Live/One/X and play immediately."
+  ],
+  "release_checklist": [
+    "[ ] Record 30-second audio demo of each program (4 clips total)",
+    "[ ] Export .xpn bundle using xpn_pack_builder.py or MPC Software export",
+    "[ ] Upload to XO-OX.org downloads page",
+    "[ ] Post to Patreon Signal tier as free public post",
+    "[ ] Cross-post to Instagram with audio demo clip (Program 4 preferred)",
+    "[ ] Pin to top of Patreon page",
+    "[ ] Link from XO-OX.org index hero section",
+    "[ ] Add to XO-OX.org /packs page as featured free pack",
+    "[ ] Update patreon.com/xoox bio link to point to TIDE TABLES landing page"
+  ],
+  "build_notes": {
+    "preset_references": "Preset strings use the format ENGINE:Category > Preset Name. These are reference labels for the sound designer — map them to actual XOmnibus preset IDs during the XPN build step.",
+    "xpn_build_command": "python3 Tools/xpn_pack_builder.py Docs/packs/tide_tables/tide_tables_spec.json",
+    "next_steps": [
+      "Run xpn_pack_builder.py to generate .xpn bundle",
+      "Validate in MPC Software",
+      "Record audio demos",
+      "Release"
+    ]
+  }
+}

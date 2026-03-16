@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Obsidian Echo",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.1,
+    "warmth": 0.55,
+    "aggression": 0.15,
+    "movement": 0.2,
+    "density": 0.5,
+    "space": 0.8
+  },
+  "engines": [
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dark reverb tail \u2014 reflection from obsidian walls",
+  "tags": [
+    "aether",
+    "dark",
+    "extreme",
+    "echo",
+    "obsidian",
+    "reverb"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "VOID",
+    "COUPLING",
+    "ECHO"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.55,
+    "movement": 0.2,
+    "density": 0.5,
+    "space": 0.8,
+    "aggression": 0.15
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "White Frequency",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.98,
+    "warmth": 0.05,
+    "aggression": 0.03,
+    "movement": 0.5,
+    "density": 0.1,
+    "space": 0.95
+  },
+  "engines": [
+    "ODDFELIX"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Flat spectral energy \u2014 maximum brightness, minimal character",
+  "tags": [
+    "prism",
+    "bright",
+    "extreme",
+    "white",
+    "flat",
+    "spectral"
+  ],
+  "macroLabels": [
+    "SHIMMER",
+    "SCATTER",
+    "COUPLING",
+    "AIR"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.98,
+    "warmth": 0.05,
+    "movement": 0.5,
+    "density": 0.1,
+    "space": 0.95,
+    "aggression": 0.03
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

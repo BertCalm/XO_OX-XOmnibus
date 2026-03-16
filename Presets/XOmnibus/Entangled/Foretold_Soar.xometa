@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Foretold Soar",
+  "mood": "Entangled",
+  "engines": [
+    "Oracle",
+    "Osprey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Oracle augury soars on OSPREY thermal. Vision carried on predator wings.",
+  "tags": [
+    "oracle",
+    "osprey",
+    "prophecy",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_brightness": 0.426,
+      "oracle_warmth": 0.481,
+      "oracle_movement": 0.7,
+      "oracle_density": 0.623,
+      "oracle_space": 0.627,
+      "oracle_aggression": 0.3,
+      "oracle_level": 0.756
+    },
+    "Osprey": {
+      "osprey_brightness": 0.626,
+      "osprey_warmth": 0.553,
+      "osprey_movement": 0.69,
+      "osprey_density": 0.624,
+      "osprey_space": 0.553,
+      "osprey_aggression": 0.527,
+      "osprey_level": 0.864
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Osprey",
+        "type": "AMPLITUDE_MODULATION",
+        "amount": 0.819
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.54,
+    "warmth": 0.478,
+    "movement": 0.707,
+    "density": 0.643,
+    "space": 0.666,
+    "aggression": 0.414
+  }
+}

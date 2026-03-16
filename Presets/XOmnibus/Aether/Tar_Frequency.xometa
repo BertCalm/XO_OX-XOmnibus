@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Tar Frequency",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.03,
+    "warmth": 0.85,
+    "aggression": 0.4,
+    "movement": 0.2,
+    "density": 0.8,
+    "space": 0.3
+  },
+  "engines": [
+    "ODDOSCAR"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Maximum Oscar density \u2014 thick sub matter",
+  "tags": [
+    "aether",
+    "dark",
+    "extreme",
+    "sub",
+    "dense",
+    "heavy"
+  ],
+  "macroLabels": [
+    "WEIGHT",
+    "GRIND",
+    "COUPLING",
+    "CAVE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.03,
+    "warmth": 0.85,
+    "movement": 0.2,
+    "density": 0.8,
+    "space": 0.3,
+    "aggression": 0.4
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

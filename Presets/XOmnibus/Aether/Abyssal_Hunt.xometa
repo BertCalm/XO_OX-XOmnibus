@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Abyssal Hunt",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.02,
+    "warmth": 0.7,
+    "aggression": 0.65,
+    "movement": 0.45,
+    "density": 0.75,
+    "space": 0.35
+  },
+  "engines": [
+    "ORCA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Maximum depth pursuit \u2014 bass frequencies only",
+  "tags": [
+    "aether",
+    "dark",
+    "extreme",
+    "hunt",
+    "abyssal",
+    "predator"
+  ],
+  "macroLabels": [
+    "HUNT",
+    "DIVE",
+    "COUPLING",
+    "DEPTH"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.02,
+    "warmth": 0.7,
+    "movement": 0.45,
+    "density": 0.75,
+    "space": 0.35,
+    "aggression": 0.65
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

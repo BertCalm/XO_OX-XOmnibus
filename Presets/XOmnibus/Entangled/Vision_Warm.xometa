@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Vision Warm",
+  "mood": "Entangled",
+  "engines": [
+    "Oracle",
+    "Osteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Prophecy over the candlelit table. ORACLE vision shared at OSTERIA gathering.",
+  "tags": [
+    "oracle",
+    "osteria",
+    "prophecy",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_brightness": 0.421,
+      "oracle_warmth": 0.46,
+      "oracle_movement": 0.74,
+      "oracle_density": 0.635,
+      "oracle_space": 0.66,
+      "oracle_aggression": 0.374,
+      "oracle_level": 0.861
+    },
+    "Osteria": {
+      "osteria_brightness": 0.48,
+      "osteria_warmth": 0.671,
+      "osteria_movement": 0.43,
+      "osteria_density": 0.667,
+      "osteria_space": 0.528,
+      "osteria_aggression": 0.274,
+      "osteria_level": 0.891
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Osteria",
+        "type": "ENVELOPE_SHARING",
+        "amount": 0.702
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.439,
+    "warmth": 0.596,
+    "movement": 0.623,
+    "density": 0.636,
+    "space": 0.644,
+    "aggression": 0.344
+  }
+}

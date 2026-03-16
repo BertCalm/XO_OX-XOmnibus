@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Shard Phosphene",
+  "mood": "Entangled",
+  "engines": [
+    "Obsidian",
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Prismatic shards refract phosphor pulse. OBSIDIAN crystal lens focuses OPTIC visual field.",
+  "tags": [
+    "obsidian",
+    "optic",
+    "crystal",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_brightness": 0.897,
+      "obsidian_warmth": 0.155,
+      "obsidian_movement": 0.329,
+      "obsidian_density": 0.536,
+      "obsidian_space": 0.596,
+      "obsidian_aggression": 0.196,
+      "obsidian_level": 0.716
+    },
+    "Optic": {
+      "optic_brightness": 0.786,
+      "optic_warmth": 0.275,
+      "optic_movement": 0.874,
+      "optic_density": 0.397,
+      "optic_space": 0.578,
+      "optic_aggression": 0.468,
+      "optic_level": 0.7
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Optic",
+        "type": "FREQUENCY_MODULATION",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.867,
+    "warmth": 0.24,
+    "movement": 0.58,
+    "density": 0.481,
+    "space": 0.567,
+    "aggression": 0.234
+  }
+}

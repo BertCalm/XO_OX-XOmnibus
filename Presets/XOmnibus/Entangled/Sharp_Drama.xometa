@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Sharp Drama",
+  "mood": "Entangled",
+  "engines": [
+    "Obsidian",
+    "Ole"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Faceted crystal catches the clave drama. OBSIDIAN purity in OLE Afro-Latin groove.",
+  "tags": [
+    "obsidian",
+    "ole",
+    "crystal",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_brightness": 0.832,
+      "obsidian_warmth": 0.241,
+      "obsidian_movement": 0.317,
+      "obsidian_density": 0.442,
+      "obsidian_space": 0.698,
+      "obsidian_aggression": 0.197,
+      "obsidian_level": 0.867
+    },
+    "Ole": {
+      "ole_brightness": 0.572,
+      "ole_warmth": 0.72,
+      "ole_movement": 0.811,
+      "ole_density": 0.589,
+      "ole_space": 0.529,
+      "ole_aggression": 0.576,
+      "ole_level": 0.776
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Ole",
+        "type": "RHYTHMIC_SYNC",
+        "amount": 0.683
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.787,
+    "warmth": 0.429,
+    "movement": 0.515,
+    "density": 0.527,
+    "space": 0.589,
+    "aggression": 0.279
+  }
+}

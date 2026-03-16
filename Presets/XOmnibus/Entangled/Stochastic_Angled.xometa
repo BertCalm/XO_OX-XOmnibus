@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Stochastic Angled",
+  "mood": "Entangled",
+  "engines": [
+    "Oracle",
+    "Oblique"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Prophecy arrives at a slant. ORACLE arcane signal couples with OBLIQUE diagonal drift.",
+  "tags": [
+    "oracle",
+    "oblique",
+    "prophecy",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_brightness": 0.399,
+      "oracle_warmth": 0.45,
+      "oracle_movement": 0.676,
+      "oracle_density": 0.637,
+      "oracle_space": 0.706,
+      "oracle_aggression": 0.452,
+      "oracle_level": 0.729
+    },
+    "Oblique": {
+      "oblique_brightness": 0.583,
+      "oblique_warmth": 0.454,
+      "oblique_movement": 0.656,
+      "oblique_density": 0.543,
+      "oblique_space": 0.578,
+      "oblique_aggression": 0.33,
+      "oblique_level": 0.779
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Oblique",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.545
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.51,
+    "warmth": 0.478,
+    "movement": 0.639,
+    "density": 0.65,
+    "space": 0.651,
+    "aggression": 0.425
+  }
+}

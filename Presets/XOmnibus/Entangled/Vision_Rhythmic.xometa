@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Vision Rhythmic",
+  "mood": "Entangled",
+  "engines": [
+    "Oracle",
+    "Ole"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Arcane drama clave. ORACLE stochastic rhythm coupled with OLE Afro-Latin pulse.",
+  "tags": [
+    "oracle",
+    "ole",
+    "prophecy",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_brightness": 0.461,
+      "oracle_warmth": 0.486,
+      "oracle_movement": 0.643,
+      "oracle_density": 0.693,
+      "oracle_space": 0.728,
+      "oracle_aggression": 0.403,
+      "oracle_level": 0.778
+    },
+    "Ole": {
+      "ole_brightness": 0.635,
+      "ole_warmth": 0.771,
+      "ole_movement": 0.739,
+      "ole_density": 0.545,
+      "ole_space": 0.538,
+      "ole_aggression": 0.484,
+      "ole_level": 0.816
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Ole",
+        "type": "RHYTHMIC_SYNC",
+        "amount": 0.579
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.487,
+    "warmth": 0.623,
+    "movement": 0.746,
+    "density": 0.622,
+    "space": 0.611,
+    "aggression": 0.471
+  }
+}

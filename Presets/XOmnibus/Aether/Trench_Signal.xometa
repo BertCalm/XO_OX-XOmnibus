@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Trench Signal",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.04,
+    "warmth": 0.92,
+    "aggression": 0.3,
+    "movement": 0.2,
+    "density": 0.85,
+    "space": 0.3
+  },
+  "engines": [
+    "OCEANIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Signal from the Mariana Trench \u2014 pure abyssal current",
+  "tags": [
+    "aether",
+    "dark",
+    "extreme",
+    "trench",
+    "abyss",
+    "signal"
+  ],
+  "macroLabels": [
+    "CURRENT",
+    "PRESSURE",
+    "COUPLING",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.04,
+    "warmth": 0.92,
+    "movement": 0.2,
+    "density": 0.85,
+    "space": 0.3,
+    "aggression": 0.3
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

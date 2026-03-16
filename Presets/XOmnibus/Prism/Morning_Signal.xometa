@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Morning Signal",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.93,
+    "warmth": 0.14,
+    "aggression": 0.06,
+    "movement": 0.45,
+    "density": 0.18,
+    "space": 0.72
+  },
+  "engines": [
+    "OVERWORLD"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "First light transmitted through chip oscillators",
+  "tags": [
+    "prism",
+    "bright",
+    "extreme",
+    "morning",
+    "signal",
+    "dawn"
+  ],
+  "macroLabels": [
+    "ERA",
+    "GLITCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.93,
+    "warmth": 0.14,
+    "movement": 0.45,
+    "density": 0.18,
+    "space": 0.72,
+    "aggression": 0.06
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

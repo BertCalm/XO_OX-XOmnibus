@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Crystal Abyssal",
+  "mood": "Entangled",
+  "engines": [
+    "Obsidian",
+    "Owlfish"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Crystal surface couples with abyssal filament. Cold light descends into OWLFISH deep.",
+  "tags": [
+    "obsidian",
+    "owlfish",
+    "crystal",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_brightness": 0.882,
+      "obsidian_warmth": 0.211,
+      "obsidian_movement": 0.272,
+      "obsidian_density": 0.505,
+      "obsidian_space": 0.616,
+      "obsidian_aggression": 0.191,
+      "obsidian_level": 0.84
+    },
+    "Owlfish": {
+      "owl_brightness": 0.48,
+      "owl_warmth": 0.651,
+      "owl_movement": 0.382,
+      "owl_density": 0.63,
+      "owl_space": 0.871,
+      "owl_aggression": 0.254,
+      "owl_level": 0.727
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Owlfish",
+        "type": "SPATIAL_BLEND",
+        "amount": 0.623
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.692,
+    "warmth": 0.369,
+    "movement": 0.372,
+    "density": 0.546,
+    "space": 0.705,
+    "aggression": 0.154
+  }
+}

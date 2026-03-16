@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Mineral Vision",
+  "mood": "Entangled",
+  "engines": [
+    "Obsidian",
+    "Oracle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Glacial surface carries the augury. OBSIDIAN cold space opens as ORACLE prophecy unfolds.",
+  "tags": [
+    "obsidian",
+    "oracle",
+    "crystal",
+    "prophecy",
+    "marquee",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_brightness": 0.957,
+      "obsidian_warmth": 0.119,
+      "obsidian_movement": 0.267,
+      "obsidian_density": 0.541,
+      "obsidian_space": 0.564,
+      "obsidian_aggression": 0.118,
+      "obsidian_level": 0.708
+    },
+    "Oracle": {
+      "oracle_brightness": 0.427,
+      "oracle_warmth": 0.542,
+      "oracle_movement": 0.732,
+      "oracle_density": 0.71,
+      "oracle_space": 0.65,
+      "oracle_aggression": 0.411,
+      "oracle_level": 0.819
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Oracle",
+        "type": "FREQUENCY_MODULATION",
+        "amount": 0.796
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.346,
+    "movement": 0.502,
+    "density": 0.605,
+    "space": 0.668,
+    "aggression": 0.233
+  }
+}

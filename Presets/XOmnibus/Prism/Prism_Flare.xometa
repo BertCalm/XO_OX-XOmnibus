@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Prism Flare",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.99,
+    "warmth": 0.08,
+    "aggression": 0.05,
+    "movement": 0.55,
+    "density": 0.15,
+    "space": 0.9
+  },
+  "engines": [
+    "OPTIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Diffracted light \u2014 pure spectral white",
+  "tags": [
+    "prism",
+    "bright",
+    "extreme",
+    "prism",
+    "diffraction",
+    "white"
+  ],
+  "macroLabels": [
+    "FOCUS",
+    "PRISM",
+    "COUPLING",
+    "DIFFUSE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.99,
+    "warmth": 0.08,
+    "movement": 0.55,
+    "density": 0.15,
+    "space": 0.9,
+    "aggression": 0.05
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

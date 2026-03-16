@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Solar Periapsis",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.94,
+    "warmth": 0.1,
+    "aggression": 0.08,
+    "movement": 0.55,
+    "density": 0.2,
+    "space": 0.85
+  },
+  "engines": [
+    "ORBITAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orbital decay frozen at closest bright approach",
+  "tags": [
+    "prism",
+    "bright",
+    "extreme",
+    "space",
+    "orbit",
+    "luminous"
+  ],
+  "macroLabels": [
+    "ORBIT",
+    "DECAY",
+    "COUPLING",
+    "DRIFT"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.94,
+    "warmth": 0.1,
+    "movement": 0.55,
+    "density": 0.2,
+    "space": 0.85,
+    "aggression": 0.08
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

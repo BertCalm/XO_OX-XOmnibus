@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Commune Frequency",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.89,
+    "warmth": 0.3,
+    "aggression": 0.08,
+    "movement": 0.65,
+    "density": 0.35,
+    "space": 0.75
+  },
+  "engines": [
+    "OHM"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Hippy Dad's highest harmonic \u2014 open, radiant, communal",
+  "tags": [
+    "prism",
+    "bright",
+    "extreme",
+    "commune",
+    "harmonic",
+    "open"
+  ],
+  "macroLabels": [
+    "COMMUNE",
+    "MEDDLING",
+    "COUPLING",
+    "DRIFT"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.89,
+    "warmth": 0.3,
+    "movement": 0.65,
+    "density": 0.35,
+    "space": 0.75,
+    "aggression": 0.08
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

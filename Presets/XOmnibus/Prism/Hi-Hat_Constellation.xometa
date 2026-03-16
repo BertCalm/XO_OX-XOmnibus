@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Hi-Hat Constellation",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.95,
+    "warmth": 0.05,
+    "aggression": 0.22,
+    "movement": 0.9,
+    "density": 0.3,
+    "space": 0.7
+  },
+  "engines": [
+    "ONSET"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Open hat shimmer at the edge of the frequency spectrum",
+  "tags": [
+    "prism",
+    "bright",
+    "extreme",
+    "hihat",
+    "drum",
+    "metallic"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.05,
+    "movement": 0.9,
+    "density": 0.3,
+    "space": 0.7,
+    "aggression": 0.22
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

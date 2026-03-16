@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Thermal Ascent",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.9,
+    "warmth": 0.12,
+    "aggression": 0.1,
+    "movement": 0.75,
+    "density": 0.2,
+    "space": 0.8
+  },
+  "engines": [
+    "OSPREY"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Riding the updraft \u2014 open treble soar",
+  "tags": [
+    "prism",
+    "bright",
+    "extreme",
+    "soar",
+    "air",
+    "bird"
+  ],
+  "macroLabels": [
+    "DIVE",
+    "THERMAL",
+    "COUPLING",
+    "SOAR"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.12,
+    "movement": 0.75,
+    "density": 0.2,
+    "space": 0.8,
+    "aggression": 0.1
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

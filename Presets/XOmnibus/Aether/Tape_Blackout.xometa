@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Tape Blackout",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.06,
+    "warmth": 0.85,
+    "aggression": 0.42,
+    "movement": 0.18,
+    "density": 0.7,
+    "space": 0.5
+  },
+  "engines": [
+    "OVERDUB"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Saturated tape \u2014 all HF eaten by magnetic oxide",
+  "tags": [
+    "aether",
+    "dark",
+    "extreme",
+    "tape",
+    "saturation",
+    "dub"
+  ],
+  "macroLabels": [
+    "DRIVE",
+    "TAPE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.85,
+    "movement": 0.18,
+    "density": 0.7,
+    "space": 0.5,
+    "aggression": 0.42
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

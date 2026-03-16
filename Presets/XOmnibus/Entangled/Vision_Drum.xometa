@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Vision Drum",
+  "mood": "Entangled",
+  "engines": [
+    "Oracle",
+    "Onset"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Prophetic attack. ORACLE stochastic triggers ONSET percussive impact.",
+  "tags": [
+    "oracle",
+    "onset",
+    "prophecy",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_brightness": 0.333,
+      "oracle_warmth": 0.537,
+      "oracle_movement": 0.764,
+      "oracle_density": 0.652,
+      "oracle_space": 0.609,
+      "oracle_aggression": 0.381,
+      "oracle_level": 0.776
+    },
+    "Onset": {
+      "onset_brightness": 0.572,
+      "onset_warmth": 0.492,
+      "onset_movement": 0.757,
+      "onset_density": 0.879,
+      "onset_space": 0.387,
+      "onset_aggression": 0.75,
+      "onset_level": 0.739
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Onset",
+        "type": "RHYTHMIC_SYNC",
+        "amount": 0.471
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.436,
+    "warmth": 0.488,
+    "movement": 0.707,
+    "density": 0.714,
+    "space": 0.505,
+    "aggression": 0.525
+  }
+}

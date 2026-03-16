@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Iris Spike",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.93,
+    "warmth": 0.12,
+    "aggression": 0.1,
+    "movement": 0.4,
+    "density": 0.2,
+    "space": 0.8
+  },
+  "engines": [
+    "OPTIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Single focused beam, knife-sharp frequency",
+  "tags": [
+    "prism",
+    "bright",
+    "extreme",
+    "focus",
+    "beam",
+    "sharp"
+  ],
+  "macroLabels": [
+    "FOCUS",
+    "PRISM",
+    "COUPLING",
+    "DIFFUSE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.93,
+    "warmth": 0.12,
+    "movement": 0.4,
+    "density": 0.2,
+    "space": 0.8,
+    "aggression": 0.1
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

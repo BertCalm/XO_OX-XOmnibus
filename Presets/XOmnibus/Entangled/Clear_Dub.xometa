@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Clear Dub",
+  "mood": "Entangled",
+  "engines": [
+    "Obsidian",
+    "Overdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Pure crystal signal enters OVERDUB tape saturation. Mineral clarity warped.",
+  "tags": [
+    "obsidian",
+    "overdub",
+    "crystal",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_brightness": 0.944,
+      "obsidian_warmth": 0.146,
+      "obsidian_movement": 0.26,
+      "obsidian_density": 0.483,
+      "obsidian_space": 0.7,
+      "obsidian_aggression": 0.134,
+      "obsidian_level": 0.772
+    },
+    "Overdub": {
+      "dub_brightness": 0.438,
+      "dub_warmth": 0.684,
+      "dub_movement": 0.478,
+      "dub_density": 0.486,
+      "dub_space": 0.804,
+      "dub_aggression": 0.216,
+      "dub_level": 0.887
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Overdub",
+        "type": "FILTER_COUPLING",
+        "amount": 0.756
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.66,
+    "warmth": 0.427,
+    "movement": 0.421,
+    "density": 0.491,
+    "space": 0.709,
+    "aggression": 0.192
+  }
+}

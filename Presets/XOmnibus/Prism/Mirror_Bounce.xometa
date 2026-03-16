@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Mirror Bounce",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.87,
+    "warmth": 0.3,
+    "aggression": 0.25,
+    "movement": 0.75,
+    "density": 0.5,
+    "space": 0.6
+  },
+  "engines": [
+    "OBLONG"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Rapid room reflections \u2014 bright and percussive",
+  "tags": [
+    "prism",
+    "bright",
+    "extreme",
+    "room",
+    "bounce",
+    "percussive"
+  ],
+  "macroLabels": [
+    "BOB",
+    "SNAP",
+    "COUPLING",
+    "ROOM"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.87,
+    "warmth": 0.3,
+    "movement": 0.75,
+    "density": 0.5,
+    "space": 0.6,
+    "aggression": 0.25
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

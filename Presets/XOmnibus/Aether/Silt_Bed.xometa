@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Silt Bed",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.08,
+    "warmth": 0.9,
+    "aggression": 0.25,
+    "movement": 0.15,
+    "density": 0.9,
+    "space": 0.2
+  },
+  "engines": [
+    "ODDOSCAR"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Settled sediment \u2014 the lowest resonant floor",
+  "tags": [
+    "aether",
+    "dark",
+    "extreme",
+    "sediment",
+    "low",
+    "settled"
+  ],
+  "macroLabels": [
+    "WEIGHT",
+    "GRIND",
+    "COUPLING",
+    "CAVE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.9,
+    "movement": 0.15,
+    "density": 0.9,
+    "space": 0.2,
+    "aggression": 0.25
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

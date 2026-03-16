@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Dive Glare",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.95,
+    "warmth": 0.08,
+    "aggression": 0.18,
+    "movement": 0.85,
+    "density": 0.15,
+    "space": 0.7
+  },
+  "engines": [
+    "OSPREY"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "High-velocity descent into blinding treble light",
+  "tags": [
+    "prism",
+    "bright",
+    "extreme",
+    "dive",
+    "speed",
+    "radiant"
+  ],
+  "macroLabels": [
+    "DIVE",
+    "THERMAL",
+    "COUPLING",
+    "SOAR"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.08,
+    "movement": 0.85,
+    "density": 0.15,
+    "space": 0.7,
+    "aggression": 0.18
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

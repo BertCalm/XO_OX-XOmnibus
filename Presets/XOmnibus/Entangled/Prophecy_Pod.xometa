@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Prophecy Pod",
+  "mood": "Entangled",
+  "engines": [
+    "Oracle",
+    "Orca"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Oracle predicts the breach. Prophetic sonar couples with ORCA deep strike.",
+  "tags": [
+    "oracle",
+    "orca",
+    "prophecy",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_brightness": 0.356,
+      "oracle_warmth": 0.485,
+      "oracle_movement": 0.775,
+      "oracle_density": 0.703,
+      "oracle_space": 0.629,
+      "oracle_aggression": 0.335,
+      "oracle_level": 0.78
+    },
+    "Orca": {
+      "orca_brightness": 0.453,
+      "orca_warmth": 0.381,
+      "orca_movement": 0.59,
+      "orca_density": 0.71,
+      "orca_space": 0.536,
+      "orca_aggression": 0.764,
+      "orca_level": 0.708
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Orca",
+        "type": "CHAOS_INJECTION",
+        "amount": 0.79
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.412,
+    "warmth": 0.49,
+    "movement": 0.7,
+    "density": 0.718,
+    "space": 0.577,
+    "aggression": 0.537
+  }
+}

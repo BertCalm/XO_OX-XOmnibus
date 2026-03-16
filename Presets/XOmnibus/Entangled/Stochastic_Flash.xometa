@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Stochastic Flash",
+  "mood": "Entangled",
+  "engines": [
+    "Oracle",
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Stochastic vision phosphene. ORACLE maqam feeds OPTIC visual pulse field.",
+  "tags": [
+    "oracle",
+    "optic",
+    "prophecy",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_brightness": 0.428,
+      "oracle_warmth": 0.487,
+      "oracle_movement": 0.681,
+      "oracle_density": 0.677,
+      "oracle_space": 0.748,
+      "oracle_aggression": 0.336,
+      "oracle_level": 0.707
+    },
+    "Optic": {
+      "optic_brightness": 0.824,
+      "optic_warmth": 0.267,
+      "optic_movement": 0.929,
+      "optic_density": 0.352,
+      "optic_space": 0.548,
+      "optic_aggression": 0.488,
+      "optic_level": 0.801
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Optic",
+        "type": "SPECTRAL_TRANSFER",
+        "amount": 0.514
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.569,
+    "warmth": 0.444,
+    "movement": 0.812,
+    "density": 0.53,
+    "space": 0.566,
+    "aggression": 0.409
+  }
+}

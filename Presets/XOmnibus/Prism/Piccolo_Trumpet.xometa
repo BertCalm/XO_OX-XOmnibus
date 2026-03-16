@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Piccolo Trumpet",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.96,
+    "warmth": 0.32,
+    "aggression": 0.28,
+    "movement": 0.6,
+    "density": 0.45,
+    "space": 0.55
+  },
+  "engines": [
+    "OTTONI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Triple-brass GROW macro pushed to piccolo register",
+  "tags": [
+    "prism",
+    "bright",
+    "extreme",
+    "brass",
+    "trumpet",
+    "high"
+  ],
+  "macroLabels": [
+    "GROW",
+    "BELL",
+    "COUPLING",
+    "HALL"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.96,
+    "warmth": 0.32,
+    "movement": 0.6,
+    "density": 0.45,
+    "space": 0.55,
+    "aggression": 0.28
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Stochastic Gradient",
+  "mood": "Entangled",
+  "engines": [
+    "Oracle",
+    "Ombre"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Vision fades into OMBRE gradient. Oracle prophecy diffusing into shadow.",
+  "tags": [
+    "oracle",
+    "ombre",
+    "prophecy",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_brightness": 0.438,
+      "oracle_warmth": 0.447,
+      "oracle_movement": 0.696,
+      "oracle_density": 0.596,
+      "oracle_space": 0.627,
+      "oracle_aggression": 0.311,
+      "oracle_level": 0.777
+    },
+    "Ombre": {
+      "ombre_brightness": 0.541,
+      "ombre_warmth": 0.667,
+      "ombre_movement": 0.649,
+      "ombre_density": 0.548,
+      "ombre_space": 0.734,
+      "ombre_aggression": 0.247,
+      "ombre_level": 0.883
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Ombre",
+        "type": "SPECTRAL_TRANSFER",
+        "amount": 0.472
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.406,
+    "warmth": 0.522,
+    "movement": 0.694,
+    "density": 0.612,
+    "space": 0.686,
+    "aggression": 0.389
+  }
+}

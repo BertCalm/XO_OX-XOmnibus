@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Deep Gradient",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.05,
+    "warmth": 0.82,
+    "aggression": 0.12,
+    "movement": 0.15,
+    "density": 0.6,
+    "space": 0.55
+  },
+  "engines": [
+    "OMBRE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Smooth descent into total darkness \u2014 no hard edge",
+  "tags": [
+    "aether",
+    "dark",
+    "extreme",
+    "gradient",
+    "fade",
+    "deep"
+  ],
+  "macroLabels": [
+    "FADE",
+    "DEPTH",
+    "COUPLING",
+    "SHADE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.82,
+    "movement": 0.15,
+    "density": 0.6,
+    "space": 0.55,
+    "aggression": 0.12
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}

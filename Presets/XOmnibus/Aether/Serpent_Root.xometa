@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Serpent Root",
+  "mood": "Aether",
+  "sonic_dna": {
+    "brightness": 0.07,
+    "warmth": 0.78,
+    "aggression": 0.35,
+    "movement": 0.22,
+    "density": 0.8,
+    "space": 0.35
+  },
+  "engines": [
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Tail-devouring tone at the lowest root frequency",
+  "tags": [
+    "aether",
+    "dark",
+    "extreme",
+    "serpent",
+    "root",
+    "cycle"
+  ],
+  "macroLabels": [
+    "CYCLE",
+    "CONSUME",
+    "COUPLING",
+    "VOID"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.78,
+    "movement": 0.22,
+    "density": 0.8,
+    "space": 0.35,
+    "aggression": 0.35
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": []
+  }
+}
