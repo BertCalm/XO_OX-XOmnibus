@@ -292,13 +292,44 @@ void renderBlock(juce::AudioBuffer<float>& buffer,
 silenceGate.setHoldTime(500.0f);  // reverb-tail engine — 500ms hold
 ```
 
+**Disabling SilenceGate per engine** — Some engines intentionally use feedback loops, near-silence textures, or sub-threshold signals as part of their design. Industrial/noise workflows exploit the boundary between silence and sound. For these engines, SilenceGate should be disabled or configured with a much lower threshold:
+
+```cpp
+// Option 1: Disable entirely for feedback-heavy engines
+// Simply don't integrate SilenceGate — the engine always processes.
+
+// Option 2: Lower the threshold for engines that live near silence
+silenceGate.setThreshold(-120.0f);  // effectively disabled but still measuring
+
+// Option 3: Conditional — disable when feedback coupling is active
+if (hasFeedbackCoupling)
+    silenceGate.wake();  // keep it awake while feedback is routed
+```
+
+Engines where SilenceGate should be disabled or relaxed: OUROBOROS (strange attractor feedback), ORGANON (metabolic processes that idle at sub-threshold), any engine in an AudioToFM or AudioToRing self-feedback coupling route.
+
 **Future: Standby mode** (Tomita's recommendation) — Between "fully active" and "bypassed," a standby state would maintain filter state, phase positions, and envelope levels but skip the inner voice loop. Cost: ~5% of full active. Benefit: seamless re-entry without filter ramp-up transients or phase discontinuity. Critical for orchestral scoring where an engine may be silent for 8 bars then enter with a pianissimo swell. *A conductor holds silence. The instrument must hold readiness.*
 
 ### Step 2: Add ControlRateReducer to Coupling
 
 The ControlRateReducer at 1/32 rate with linear interpolation is functionally a **sample-and-hold module with built-in slew limiting** — a topology Buchla called "source of uncertainty" when he implemented it in the Model 266. The smoothing between control points is not a compromise; it is a modulation character. Analog synthesizers achieved this naturally through CV line capacitance. In digital, we choose it deliberately.
 
-Replace audio-rate coupling with control-rate:
+**Expression protection — signals that must NEVER be reduced:**
+
+Velocity, note-on, aftertouch, and mod wheel are performer gestures. They must remain sample-accurate. A jazz pianist striking a chord expects instantaneous timbral response from velocity. A cellist leaning into aftertouch expects continuous, immediate pressure mapping. The ControlRateReducer is for *slow modulation sources* (LFOs, envelopes, rhythmic patterns) — never for expression signals.
+
+| Signal Type | Rate | Why |
+|-------------|------|-----|
+| Velocity (note-on) | **Audio-rate (instant)** | Performer expects immediate timbral response — D001 non-negotiable |
+| Aftertouch / Channel Pressure | **Audio-rate** | Continuous expression must not be quantized — D006 non-negotiable |
+| Mod Wheel (CC1) | **Audio-rate** | Real-time performance control — D006 non-negotiable |
+| LFO → Pitch | Control-rate (1/32) | Slow modulation — interpolation adds natural slew |
+| Envelope → Morph | Control-rate (1/32) | Slow modulation — interpolation is imperceptible |
+| Amp → Filter (coupling) | Control-rate (1/32) | Cross-engine modulation — smooth is better |
+| Audio → FM (coupling) | **Audio-rate** | Timbral FM requires sample-accurate carriers |
+| Audio → Ring (coupling) | **Audio-rate** | Ring modulation IS the audio-rate interaction |
+
+Replace audio-rate coupling with control-rate (for slow types only):
 
 ```cpp
 #include "../../DSP/SRO/ControlRateReducer.h"
@@ -309,6 +340,9 @@ ControlRateReducer<32> couplingReducer;  // 32:1 decimation
 void applyCouplingInput(CouplingType type, float amount,
                         const float* sourceBuffer, int numSamples) override
 {
+    // EXPRESSION SIGNALS: velocity, aftertouch, mod wheel — ALWAYS audio-rate.
+    // These are performer gestures. Never reduce them.
+
     // For slow modulation types, reduce to control rate
     if (type == CouplingType::LFOToPitch
      || type == CouplingType::EnvToMorph
@@ -322,7 +356,8 @@ void applyCouplingInput(CouplingType type, float amount,
     }
     else
     {
-        // Audio-rate types (AudioToFM, AudioToRing) stay at full rate
+        // Audio-rate types (AudioToFM, AudioToRing) stay at full rate.
+        // Also: velocity, aftertouch, mod wheel — never reduced.
         // ... existing per-sample coupling code ...
     }
 }
@@ -516,7 +551,8 @@ Before marking an SRO integration as complete, verify these. They're not bureauc
 - [ ] **Coupling modulation routes use ControlRateReducer** where applicable — *slow signals don't need audio-rate precision; the interpolation is a feature*
 - [ ] **EngineProfiler ScopedMeasurement wraps renderBlock** — *you can't improve what you don't measure*
 - [ ] **Build passes** (no new warnings)
-- [ ] **Audio output is perceptually equivalent** to pre-optimization — *if it sounds different, decide whether the new version is better. Sometimes it is. Document either way.*
+- [ ] **Factory presets are audibly identical** after optimization — *shipped presets approved by producers and sound designers must not change. This is non-negotiable for session recall, scoring consistency, and user trust. A/B test with null-difference analysis where possible.*
+- [ ] **New engine development: perceptual equivalence is acceptable** — *during development (before presets ship), if optimization changes the sound, A/B test it. If the new version is better, keep it and document the change. But once a preset ships, its sound is frozen.*
 - [ ] **The constraint was explored, not just applied** — *did we find anything surprising? A happy accident? A cheaper path that sounded better? Log it in the commit message or engine comments. These discoveries compound.*
 
 ---
