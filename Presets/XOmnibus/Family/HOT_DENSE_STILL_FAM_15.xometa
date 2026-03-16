@@ -1,0 +1,51 @@
+{
+  "name": "HOT DENSE STILL FAM 15",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OBLONG",
+    "ORCA"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.688,
+      "macro_movement": 0.074,
+      "macro_coupling": 0.849,
+      "macro_space": 0.641
+    },
+    "ORCA": {
+      "macro_character": 0.564,
+      "macro_movement": 0.129,
+      "macro_coupling": 0.727,
+      "macro_space": 0.587
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBLONG",
+    "target": "ORCA",
+    "amount": 0.739
+  },
+  "dna": {
+    "brightness": 0.414,
+    "warmth": 0.962,
+    "movement": 0.074,
+    "density": 0.891,
+    "space": 0.641,
+    "aggression": 0.481
+  },
+  "macros": {
+    "CHARACTER": 0.688,
+    "MOVEMENT": 0.074,
+    "COUPLING": 0.849,
+    "SPACE": 0.641
+  },
+  "tags": [
+    "family",
+    "warm",
+    "dense",
+    "static",
+    "extreme",
+    "diversity-push"
+  ]
+}

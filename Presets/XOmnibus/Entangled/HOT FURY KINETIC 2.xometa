@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "HOT FURY KINETIC 2",
+  "mood": "Entangled",
+  "engines": [
+    "Orphica",
+    "Oblong"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Orphica \u00d7 Oblong \u2014 Filter Mod coupling at extreme DNA corner.",
+  "tags": [
+    "hot",
+    "orphica",
+    "oblong",
+    "filter-mod",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.393,
+    "warmth": 0.907,
+    "movement": 0.938,
+    "density": 0.574,
+    "space": 0.415,
+    "aggression": 0.91
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orphica",
+        "engineB": "Oblong",
+        "type": "FILTER_MOD",
+        "amount": 0.93
+      }
+    ]
+  },
+  "sequencer": null
+}

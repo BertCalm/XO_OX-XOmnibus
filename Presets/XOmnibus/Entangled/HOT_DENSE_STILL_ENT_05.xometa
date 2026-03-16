@@ -1,0 +1,51 @@
+{
+  "name": "HOT DENSE STILL ENT 05",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBSCURA",
+    "OUROBOROS"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.644,
+      "macro_movement": 0.032,
+      "macro_coupling": 0.725,
+      "macro_space": 0.7
+    },
+    "OUROBOROS": {
+      "macro_character": 0.69,
+      "macro_movement": 0.108,
+      "macro_coupling": 0.926,
+      "macro_space": 0.61
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBSCURA",
+    "target": "OUROBOROS",
+    "amount": 0.608
+  },
+  "dna": {
+    "brightness": 0.401,
+    "warmth": 0.887,
+    "movement": 0.032,
+    "density": 0.929,
+    "space": 0.7,
+    "aggression": 0.44
+  },
+  "macros": {
+    "CHARACTER": 0.644,
+    "MOVEMENT": 0.032,
+    "COUPLING": 0.725,
+    "SPACE": 0.7
+  },
+  "tags": [
+    "entangled",
+    "warm",
+    "dense",
+    "static",
+    "extreme",
+    "diversity-push"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT SPARSE GENTLE 4",
+  "mood": "Entangled",
+  "engines": [
+    "Oblique",
+    "Oracle"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oblique \u00d7 Oracle \u2014 Velocity Couple coupling at extreme DNA corner.",
+  "tags": [
+    "bright",
+    "oblique",
+    "oracle",
+    "velocity-couple",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.881,
+    "warmth": 0.389,
+    "movement": 0.544,
+    "density": 0.09,
+    "space": 0.629,
+    "aggression": 0.085
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Oracle",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.582
+      }
+    ]
+  },
+  "sequencer": null
+}

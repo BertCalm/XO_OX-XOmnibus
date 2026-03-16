@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "KINETIC FURY DENSE 2",
+  "mood": "Entangled",
+  "engines": [
+    "Organon",
+    "Optic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Organon \u00d7 Optic \u2014 Harmonic Fold coupling at extreme DNA corner.",
+  "tags": [
+    "kinetic",
+    "organon",
+    "optic",
+    "harmonic-fold",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "BRIGHTNESS",
+    "WARMTH",
+    "FURY",
+    "DENSITY"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.382,
+    "warmth": 0.358,
+    "movement": 0.937,
+    "density": 0.935,
+    "space": 0.637,
+    "aggression": 0.886
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Optic",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.594
+      }
+    ]
+  },
+  "sequencer": null
+}

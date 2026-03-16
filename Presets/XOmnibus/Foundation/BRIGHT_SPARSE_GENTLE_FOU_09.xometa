@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT SPARSE GENTLE FOU 09",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ONSET",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "ONSET": {
+      "macro_character": 0.777,
+      "macro_movement": 0.651,
+      "macro_coupling": 0.839,
+      "macro_space": 0.423
+    },
+    "OSTERIA": {
+      "macro_character": 0.653,
+      "macro_movement": 0.647,
+      "macro_coupling": 0.744,
+      "macro_space": 0.501
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ONSET",
+    "target": "OSTERIA",
+    "amount": 0.906
+  },
+  "dna": {
+    "brightness": 0.882,
+    "warmth": 0.672,
+    "movement": 0.651,
+    "density": 0.105,
+    "space": 0.423,
+    "aggression": 0.035
+  },
+  "macros": {
+    "CHARACTER": 0.777,
+    "MOVEMENT": 0.651,
+    "COUPLING": 0.839,
+    "SPACE": 0.423
+  },
+  "tags": [
+    "foundation",
+    "bright",
+    "sparse",
+    "gentle",
+    "extreme",
+    "diversity-push"
+  ]
+}

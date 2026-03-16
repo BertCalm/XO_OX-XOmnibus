@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD FURY FAM 11",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OVERBITE",
+    "OCELOT"
+  ],
+  "parameters": {
+    "OVERBITE": {
+      "macro_character": 0.094,
+      "macro_movement": 0.518,
+      "macro_coupling": 0.553,
+      "macro_space": 0.332
+    },
+    "OCELOT": {
+      "macro_character": 0.072,
+      "macro_movement": 0.575,
+      "macro_coupling": 0.656,
+      "macro_space": 0.195
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OVERBITE",
+    "target": "OCELOT",
+    "amount": 0.948
+  },
+  "dna": {
+    "brightness": 0.084,
+    "warmth": 0.104,
+    "movement": 0.518,
+    "density": 0.428,
+    "space": 0.332,
+    "aggression": 0.939
+  },
+  "macros": {
+    "CHARACTER": 0.094,
+    "MOVEMENT": 0.518,
+    "COUPLING": 0.553,
+    "SPACE": 0.332
+  },
+  "tags": [
+    "family",
+    "dark",
+    "cold",
+    "aggressive",
+    "extreme",
+    "diversity-push"
+  ]
+}

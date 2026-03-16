@@ -1,0 +1,51 @@
+{
+  "name": "DARK VAST KINETIC FAM 13",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OTTONI",
+    "OSPREY"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.207,
+      "macro_movement": 0.886,
+      "macro_coupling": 0.684,
+      "macro_space": 0.913
+    },
+    "OSPREY": {
+      "macro_character": 0.261,
+      "macro_movement": 1.0,
+      "macro_coupling": 0.665,
+      "macro_space": 0.992
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OTTONI",
+    "target": "OSPREY",
+    "amount": 0.83
+  },
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.314,
+    "movement": 0.886,
+    "density": 0.611,
+    "space": 0.913,
+    "aggression": 0.453
+  },
+  "macros": {
+    "CHARACTER": 0.207,
+    "MOVEMENT": 0.886,
+    "COUPLING": 0.684,
+    "SPACE": 0.913
+  },
+  "tags": [
+    "family",
+    "dark",
+    "expansive",
+    "kinetic",
+    "extreme",
+    "diversity-push"
+  ]
+}

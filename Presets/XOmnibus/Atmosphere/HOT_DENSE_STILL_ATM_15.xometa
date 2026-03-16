@@ -1,0 +1,51 @@
+{
+  "name": "HOT DENSE STILL ATM 15",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OBLONG",
+    "ORCA"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.668,
+      "macro_movement": 0.03,
+      "macro_coupling": 0.613,
+      "macro_space": 0.608
+    },
+    "ORCA": {
+      "macro_character": 0.805,
+      "macro_movement": 0.035,
+      "macro_coupling": 0.353,
+      "macro_space": 0.533
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OBLONG",
+    "target": "ORCA",
+    "amount": 0.939
+  },
+  "dna": {
+    "brightness": 0.398,
+    "warmth": 0.939,
+    "movement": 0.03,
+    "density": 0.948,
+    "space": 0.608,
+    "aggression": 0.343
+  },
+  "macros": {
+    "CHARACTER": 0.668,
+    "MOVEMENT": 0.03,
+    "COUPLING": 0.613,
+    "SPACE": 0.608
+  },
+  "tags": [
+    "atmosphere",
+    "warm",
+    "dense",
+    "static",
+    "extreme",
+    "diversity-push"
+  ]
+}

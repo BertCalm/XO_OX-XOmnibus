@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD FURY FAM 16",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OUTWIT",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "OUTWIT": {
+      "macro_character": 0.057,
+      "macro_movement": 0.657,
+      "macro_coupling": 0.719,
+      "macro_space": 0.585
+    },
+    "OCEANIC": {
+      "macro_character": 0.06,
+      "macro_movement": 0.543,
+      "macro_coupling": 0.707,
+      "macro_space": 0.477
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OUTWIT",
+    "target": "OCEANIC",
+    "amount": 0.916
+  },
+  "dna": {
+    "brightness": 0.036,
+    "warmth": 0.079,
+    "movement": 0.657,
+    "density": 0.641,
+    "space": 0.585,
+    "aggression": 0.963
+  },
+  "macros": {
+    "CHARACTER": 0.057,
+    "MOVEMENT": 0.657,
+    "COUPLING": 0.719,
+    "SPACE": 0.585
+  },
+  "tags": [
+    "family",
+    "dark",
+    "cold",
+    "aggressive",
+    "extreme",
+    "diversity-push"
+  ]
+}

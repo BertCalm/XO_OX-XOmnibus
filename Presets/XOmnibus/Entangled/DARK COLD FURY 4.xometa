@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "DARK COLD FURY 4",
+  "mood": "Entangled",
+  "engines": [
+    "Onset",
+    "Ohm"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Onset \u00d7 Ohm \u2014 Resonance Share coupling at extreme DNA corner.",
+  "tags": [
+    "dark",
+    "onset",
+    "ohm",
+    "resonance-share",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "BRIGHTNESS",
+    "WARMTH",
+    "FURY",
+    "DENSITY"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.115,
+    "warmth": 0.092,
+    "movement": 0.459,
+    "density": 0.461,
+    "space": 0.413,
+    "aggression": 0.929
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Ohm",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.78
+      }
+    ]
+  },
+  "sequencer": null
+}

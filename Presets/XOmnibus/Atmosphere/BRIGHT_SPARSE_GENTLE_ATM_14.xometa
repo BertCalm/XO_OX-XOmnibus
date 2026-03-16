@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT SPARSE GENTLE ATM 14",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ODYSSEY",
+    "OWLFISH"
+  ],
+  "parameters": {
+    "ODYSSEY": {
+      "macro_character": 0.665,
+      "macro_movement": 0.38,
+      "macro_coupling": 0.825,
+      "macro_space": 0.398
+    },
+    "OWLFISH": {
+      "macro_character": 0.639,
+      "macro_movement": 0.419,
+      "macro_coupling": 0.344,
+      "macro_space": 0.457
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ODYSSEY",
+    "target": "OWLFISH",
+    "amount": 0.798
+  },
+  "dna": {
+    "brightness": 0.941,
+    "warmth": 0.39,
+    "movement": 0.38,
+    "density": 0.032,
+    "space": 0.398,
+    "aggression": 0.073
+  },
+  "macros": {
+    "CHARACTER": 0.665,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.825,
+    "SPACE": 0.398
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "sparse",
+    "gentle",
+    "extreme",
+    "diversity-push"
+  ]
+}

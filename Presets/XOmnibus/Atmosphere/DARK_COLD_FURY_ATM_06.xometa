@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD FURY ATM 06",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OBBLIGATO",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OBBLIGATO": {
+      "macro_character": 0.104,
+      "macro_movement": 0.66,
+      "macro_coupling": 0.79,
+      "macro_space": 0.4
+    },
+    "ORIGAMI": {
+      "macro_character": 0.076,
+      "macro_movement": 0.696,
+      "macro_coupling": 0.738,
+      "macro_space": 0.529
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OBBLIGATO",
+    "target": "ORIGAMI",
+    "amount": 0.946
+  },
+  "dna": {
+    "brightness": 0.102,
+    "warmth": 0.107,
+    "movement": 0.66,
+    "density": 0.384,
+    "space": 0.4,
+    "aggression": 0.889
+  },
+  "macros": {
+    "CHARACTER": 0.104,
+    "MOVEMENT": 0.66,
+    "COUPLING": 0.79,
+    "SPACE": 0.4
+  },
+  "tags": [
+    "atmosphere",
+    "dark",
+    "cold",
+    "aggressive",
+    "extreme",
+    "diversity-push"
+  ]
+}

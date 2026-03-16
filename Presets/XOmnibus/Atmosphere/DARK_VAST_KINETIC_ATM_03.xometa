@@ -1,0 +1,51 @@
+{
+  "name": "DARK VAST KINETIC ATM 03",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OHM",
+    "OLE"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.329,
+      "macro_movement": 0.907,
+      "macro_coupling": 0.458,
+      "macro_space": 0.965
+    },
+    "OLE": {
+      "macro_character": 0.345,
+      "macro_movement": 0.839,
+      "macro_coupling": 0.485,
+      "macro_space": 1.0
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OHM",
+    "target": "OLE",
+    "amount": 0.681
+  },
+  "dna": {
+    "brightness": 0.031,
+    "warmth": 0.627,
+    "movement": 0.907,
+    "density": 0.565,
+    "space": 0.965,
+    "aggression": 0.354
+  },
+  "macros": {
+    "CHARACTER": 0.329,
+    "MOVEMENT": 0.907,
+    "COUPLING": 0.458,
+    "SPACE": 0.965
+  },
+  "tags": [
+    "atmosphere",
+    "dark",
+    "expansive",
+    "kinetic",
+    "extreme",
+    "diversity-push"
+  ]
+}

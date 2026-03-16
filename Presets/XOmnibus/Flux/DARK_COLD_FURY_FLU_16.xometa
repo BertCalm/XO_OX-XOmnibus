@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD FURY FLU 16",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OUTWIT",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "OUTWIT": {
+      "macro_character": 0.052,
+      "macro_movement": 0.566,
+      "macro_coupling": 0.884,
+      "macro_space": 0.647
+    },
+    "OCEANIC": {
+      "macro_character": 0.007,
+      "macro_movement": 0.589,
+      "macro_coupling": 0.614,
+      "macro_space": 0.694
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OUTWIT",
+    "target": "OCEANIC",
+    "amount": 0.69
+  },
+  "dna": {
+    "brightness": 0.041,
+    "warmth": 0.062,
+    "movement": 0.566,
+    "density": 0.6,
+    "space": 0.647,
+    "aggression": 0.945
+  },
+  "macros": {
+    "CHARACTER": 0.052,
+    "MOVEMENT": 0.566,
+    "COUPLING": 0.884,
+    "SPACE": 0.647
+  },
+  "tags": [
+    "flux",
+    "dark",
+    "cold",
+    "aggressive",
+    "extreme",
+    "diversity-push"
+  ]
+}

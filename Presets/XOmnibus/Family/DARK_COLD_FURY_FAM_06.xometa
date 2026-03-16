@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD FURY FAM 06",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OBBLIGATO",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OBBLIGATO": {
+      "macro_character": 0.069,
+      "macro_movement": 0.467,
+      "macro_coupling": 0.434,
+      "macro_space": 0.334
+    },
+    "ORIGAMI": {
+      "macro_character": 0.071,
+      "macro_movement": 0.613,
+      "macro_coupling": 0.679,
+      "macro_space": 0.301
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OBBLIGATO",
+    "target": "ORIGAMI",
+    "amount": 0.788
+  },
+  "dna": {
+    "brightness": 0.085,
+    "warmth": 0.052,
+    "movement": 0.467,
+    "density": 0.566,
+    "space": 0.334,
+    "aggression": 0.968
+  },
+  "macros": {
+    "CHARACTER": 0.069,
+    "MOVEMENT": 0.467,
+    "COUPLING": 0.434,
+    "SPACE": 0.334
+  },
+  "tags": [
+    "family",
+    "dark",
+    "cold",
+    "aggressive",
+    "extreme",
+    "diversity-push"
+  ]
+}

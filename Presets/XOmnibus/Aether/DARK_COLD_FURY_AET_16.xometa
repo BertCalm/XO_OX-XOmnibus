@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD FURY AET 16",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OUTWIT",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "OUTWIT": {
+      "macro_character": 0.046,
+      "macro_movement": 0.607,
+      "macro_coupling": 0.816,
+      "macro_space": 0.451
+    },
+    "OCEANIC": {
+      "macro_character": 0.139,
+      "macro_movement": 0.507,
+      "macro_coupling": 0.767,
+      "macro_space": 0.424
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OUTWIT",
+    "target": "OCEANIC",
+    "amount": 0.871
+  },
+  "dna": {
+    "brightness": 0.033,
+    "warmth": 0.06,
+    "movement": 0.607,
+    "density": 0.352,
+    "space": 0.451,
+    "aggression": 0.895
+  },
+  "macros": {
+    "CHARACTER": 0.046,
+    "MOVEMENT": 0.607,
+    "COUPLING": 0.816,
+    "SPACE": 0.451
+  },
+  "tags": [
+    "aether",
+    "dark",
+    "cold",
+    "aggressive",
+    "extreme",
+    "diversity-push"
+  ]
+}

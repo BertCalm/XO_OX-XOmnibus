@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "VAST GENTLE SPARSE 3",
+  "mood": "Entangled",
+  "engines": [
+    "OddFelix",
+    "Osteria"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddFelix \u00d7 Osteria \u2014 Spectral Morph coupling at extreme DNA corner.",
+  "tags": [
+    "vast",
+    "oddfelix",
+    "osteria",
+    "spectral-morph",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.422,
+    "warmth": 0.475,
+    "movement": 0.549,
+    "density": 0.119,
+    "space": 0.922,
+    "aggression": 0.081
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddFelix",
+        "engineB": "Osteria",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.718
+      }
+    ]
+  },
+  "sequencer": null
+}

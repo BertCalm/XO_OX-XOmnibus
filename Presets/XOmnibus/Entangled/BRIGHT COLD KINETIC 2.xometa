@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT COLD KINETIC 2",
+  "mood": "Entangled",
+  "engines": [
+    "Organon",
+    "Owlfish"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Organon \u00d7 Owlfish \u2014 Chaos Inject coupling at extreme DNA corner.",
+  "tags": [
+    "bright",
+    "organon",
+    "owlfish",
+    "chaos-inject",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "EDGE",
+    "BODY",
+    "FLUX",
+    "FIELD"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.932,
+    "warmth": 0.045,
+    "movement": 0.888,
+    "density": 0.452,
+    "space": 0.529,
+    "aggression": 0.587
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Owlfish",
+        "type": "CHAOS_INJECT",
+        "amount": 0.672
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT STILL VAST 1",
+  "mood": "Entangled",
+  "engines": [
+    "Onset",
+    "Octopus"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Onset \u00d7 Octopus \u2014 Resonance Share coupling at extreme DNA corner.",
+  "tags": [
+    "bright",
+    "onset",
+    "octopus",
+    "resonance-share",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "TEXTURE",
+    "DEPTH",
+    "CHAOS",
+    "MOTION"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.899,
+    "warmth": 0.632,
+    "movement": 0.069,
+    "density": 0.557,
+    "space": 0.958,
+    "aggression": 0.483
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Octopus",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.784
+      }
+    ]
+  },
+  "sequencer": null
+}

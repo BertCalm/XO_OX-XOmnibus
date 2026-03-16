@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "COLD SPARSE VAST 4",
+  "mood": "Entangled",
+  "engines": [
+    "Obese",
+    "Ottoni"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Obese \u00d7 Ottoni \u2014 Spectral Morph coupling at extreme DNA corner.",
+  "tags": [
+    "cold",
+    "obese",
+    "ottoni",
+    "spectral-morph",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "EDGE",
+    "BODY",
+    "FLUX",
+    "FIELD"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.379,
+    "warmth": 0.066,
+    "movement": 0.594,
+    "density": 0.05,
+    "space": 0.908,
+    "aggression": 0.518
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Ottoni",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.923
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT HOT DENSE FOU 02",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBLIQUE",
+    "OBSIDIAN"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.943,
+      "macro_movement": 0.547,
+      "macro_coupling": 0.423,
+      "macro_space": 0.531
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.88,
+      "macro_movement": 0.421,
+      "macro_coupling": 0.434,
+      "macro_space": 0.411
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OBLIQUE",
+    "target": "OBSIDIAN",
+    "amount": 0.711
+  },
+  "dna": {
+    "brightness": 0.93,
+    "warmth": 0.955,
+    "movement": 0.547,
+    "density": 0.958,
+    "space": 0.531,
+    "aggression": 0.582
+  },
+  "macros": {
+    "CHARACTER": 0.943,
+    "MOVEMENT": 0.547,
+    "COUPLING": 0.423,
+    "SPACE": 0.531
+  },
+  "tags": [
+    "foundation",
+    "bright",
+    "warm",
+    "dense",
+    "extreme",
+    "diversity-push"
+  ]
+}

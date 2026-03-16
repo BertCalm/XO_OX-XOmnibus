@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "HOT FURY KINETIC 5",
+  "mood": "Entangled",
+  "engines": [
+    "OddFelix",
+    "Octopus"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddFelix \u00d7 Octopus \u2014 Harmonic Fold coupling at extreme DNA corner.",
+  "tags": [
+    "hot",
+    "oddfelix",
+    "octopus",
+    "harmonic-fold",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.574,
+    "warmth": 0.944,
+    "movement": 0.949,
+    "density": 0.561,
+    "space": 0.5,
+    "aggression": 0.886
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddFelix",
+        "engineB": "Octopus",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.738
+      }
+    ]
+  },
+  "sequencer": null
+}

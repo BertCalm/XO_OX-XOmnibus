@@ -1,0 +1,51 @@
+{
+  "name": "DARK VAST KINETIC PRI 08",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OPAL",
+    "OMBRE"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.392,
+      "macro_movement": 0.922,
+      "macro_coupling": 0.758,
+      "macro_space": 0.955
+    },
+    "OMBRE": {
+      "macro_character": 0.324,
+      "macro_movement": 1.0,
+      "macro_coupling": 0.798,
+      "macro_space": 0.878
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OPAL",
+    "target": "OMBRE",
+    "amount": 0.821
+  },
+  "dna": {
+    "brightness": 0.119,
+    "warmth": 0.665,
+    "movement": 0.922,
+    "density": 0.347,
+    "space": 0.955,
+    "aggression": 0.499
+  },
+  "macros": {
+    "CHARACTER": 0.392,
+    "MOVEMENT": 0.922,
+    "COUPLING": 0.758,
+    "SPACE": 0.955
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "expansive",
+    "kinetic",
+    "extreme",
+    "diversity-push"
+  ]
+}

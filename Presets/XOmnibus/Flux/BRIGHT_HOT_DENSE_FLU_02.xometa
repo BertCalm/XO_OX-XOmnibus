@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT HOT DENSE FLU 02",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBLIQUE",
+    "OBSIDIAN"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.942,
+      "macro_movement": 0.635,
+      "macro_coupling": 0.554,
+      "macro_space": 0.661
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.966,
+      "macro_movement": 0.705,
+      "macro_coupling": 0.497,
+      "macro_space": 0.6
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OBLIQUE",
+    "target": "OBSIDIAN",
+    "amount": 0.899
+  },
+  "dna": {
+    "brightness": 0.945,
+    "warmth": 0.939,
+    "movement": 0.635,
+    "density": 0.937,
+    "space": 0.661,
+    "aggression": 0.559
+  },
+  "macros": {
+    "CHARACTER": 0.942,
+    "MOVEMENT": 0.635,
+    "COUPLING": 0.554,
+    "SPACE": 0.661
+  },
+  "tags": [
+    "flux",
+    "bright",
+    "warm",
+    "dense",
+    "extreme",
+    "diversity-push"
+  ]
+}

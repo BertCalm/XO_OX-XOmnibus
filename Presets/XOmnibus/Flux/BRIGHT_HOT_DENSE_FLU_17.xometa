@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT HOT DENSE FLU 17",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ODDOSCAR",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.923,
+      "macro_movement": 0.447,
+      "macro_coupling": 0.823,
+      "macro_space": 0.53
+    },
+    "OVERWORLD": {
+      "macro_character": 1.0,
+      "macro_movement": 0.481,
+      "macro_coupling": 0.93,
+      "macro_space": 0.388
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ODDOSCAR",
+    "target": "OVERWORLD",
+    "amount": 0.972
+  },
+  "dna": {
+    "brightness": 0.89,
+    "warmth": 0.956,
+    "movement": 0.447,
+    "density": 0.949,
+    "space": 0.53,
+    "aggression": 0.623
+  },
+  "macros": {
+    "CHARACTER": 0.923,
+    "MOVEMENT": 0.447,
+    "COUPLING": 0.823,
+    "SPACE": 0.53
+  },
+  "tags": [
+    "flux",
+    "bright",
+    "warm",
+    "dense",
+    "extreme",
+    "diversity-push"
+  ]
+}

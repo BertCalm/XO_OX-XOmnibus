@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT HOT DENSE FOU 17",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ODDOSCAR",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.892,
+      "macro_movement": 0.538,
+      "macro_coupling": 0.845,
+      "macro_space": 0.394
+    },
+    "OVERWORLD": {
+      "macro_character": 0.92,
+      "macro_movement": 0.574,
+      "macro_coupling": 0.499,
+      "macro_space": 0.419
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ODDOSCAR",
+    "target": "OVERWORLD",
+    "amount": 0.809
+  },
+  "dna": {
+    "brightness": 0.887,
+    "warmth": 0.897,
+    "movement": 0.538,
+    "density": 0.941,
+    "space": 0.394,
+    "aggression": 0.348
+  },
+  "macros": {
+    "CHARACTER": 0.892,
+    "MOVEMENT": 0.538,
+    "COUPLING": 0.845,
+    "SPACE": 0.394
+  },
+  "tags": [
+    "foundation",
+    "bright",
+    "warm",
+    "dense",
+    "extreme",
+    "diversity-push"
+  ]
+}

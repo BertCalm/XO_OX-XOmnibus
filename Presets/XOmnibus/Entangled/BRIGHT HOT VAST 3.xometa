@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT HOT VAST 3",
+  "mood": "Entangled",
+  "engines": [
+    "Obbligato",
+    "Odyssey"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Obbligato \u00d7 Odyssey \u2014 Frequency Shift coupling at extreme DNA corner.",
+  "tags": [
+    "bright",
+    "obbligato",
+    "odyssey",
+    "frequency-shift",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "EDGE",
+    "BODY",
+    "FLUX",
+    "FIELD"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.924,
+    "warmth": 0.954,
+    "movement": 0.577,
+    "density": 0.538,
+    "space": 0.915,
+    "aggression": 0.411
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obbligato",
+        "engineB": "Odyssey",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.602
+      }
+    ]
+  },
+  "sequencer": null
+}

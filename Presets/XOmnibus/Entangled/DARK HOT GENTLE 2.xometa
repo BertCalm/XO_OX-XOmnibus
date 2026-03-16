@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "DARK HOT GENTLE 2",
+  "mood": "Entangled",
+  "engines": [
+    "Opal",
+    "Oblong"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Opal \u00d7 Oblong \u2014 Timbre Blend coupling at extreme DNA corner.",
+  "tags": [
+    "dark",
+    "opal",
+    "oblong",
+    "timbre-blend",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "TEXTURE",
+    "DEPTH",
+    "CHAOS",
+    "MOTION"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.066,
+    "warmth": 0.908,
+    "movement": 0.484,
+    "density": 0.376,
+    "space": 0.555,
+    "aggression": 0.045
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oblong",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.933
+      }
+    ]
+  },
+  "sequencer": null
+}

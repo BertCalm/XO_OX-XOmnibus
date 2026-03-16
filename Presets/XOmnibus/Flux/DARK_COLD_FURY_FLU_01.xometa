@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD FURY FLU 01",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBESE",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OBESE": {
+      "macro_character": 0.095,
+      "macro_movement": 0.32,
+      "macro_coupling": 0.543,
+      "macro_space": 0.499
+    },
+    "OPTIC": {
+      "macro_character": 0.127,
+      "macro_movement": 0.276,
+      "macro_coupling": 0.84,
+      "macro_space": 0.535
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBESE",
+    "target": "OPTIC",
+    "amount": 0.871
+  },
+  "dna": {
+    "brightness": 0.092,
+    "warmth": 0.097,
+    "movement": 0.32,
+    "density": 0.543,
+    "space": 0.499,
+    "aggression": 0.961
+  },
+  "macros": {
+    "CHARACTER": 0.095,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.543,
+    "SPACE": 0.499
+  },
+  "tags": [
+    "flux",
+    "dark",
+    "cold",
+    "aggressive",
+    "extreme",
+    "diversity-push"
+  ]
+}

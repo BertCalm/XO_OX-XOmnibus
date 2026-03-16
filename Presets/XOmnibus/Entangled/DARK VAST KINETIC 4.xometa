@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "DARK VAST KINETIC 4",
+  "mood": "Entangled",
+  "engines": [
+    "Onset",
+    "Ottoni"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Onset \u00d7 Ottoni \u2014 Envelope Link coupling at extreme DNA corner.",
+  "tags": [
+    "dark",
+    "onset",
+    "ottoni",
+    "envelope-link",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.045,
+    "warmth": 0.473,
+    "movement": 0.944,
+    "density": 0.366,
+    "space": 0.938,
+    "aggression": 0.544
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Ottoni",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.657
+      }
+    ]
+  },
+  "sequencer": null
+}

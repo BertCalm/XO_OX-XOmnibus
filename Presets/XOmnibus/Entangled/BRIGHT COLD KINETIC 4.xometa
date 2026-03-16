@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT COLD KINETIC 4",
+  "mood": "Entangled",
+  "engines": [
+    "Osprey",
+    "Opal"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Osprey \u00d7 Opal \u2014 Filter Mod coupling at extreme DNA corner.",
+  "tags": [
+    "bright",
+    "osprey",
+    "opal",
+    "filter-mod",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "BRIGHTNESS",
+    "WARMTH",
+    "FURY",
+    "DENSITY"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.914,
+    "warmth": 0.069,
+    "movement": 0.909,
+    "density": 0.556,
+    "space": 0.508,
+    "aggression": 0.544
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Opal",
+        "type": "FILTER_MOD",
+        "amount": 0.959
+      }
+    ]
+  },
+  "sequencer": null
+}

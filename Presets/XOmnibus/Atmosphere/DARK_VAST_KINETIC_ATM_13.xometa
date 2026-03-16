@@ -1,0 +1,51 @@
+{
+  "name": "DARK VAST KINETIC ATM 13",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OTTONI",
+    "OSPREY"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.274,
+      "macro_movement": 0.899,
+      "macro_coupling": 0.485,
+      "macro_space": 0.961
+    },
+    "OSPREY": {
+      "macro_character": 0.279,
+      "macro_movement": 0.939,
+      "macro_coupling": 0.393,
+      "macro_space": 1.0
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OTTONI",
+    "target": "OSPREY",
+    "amount": 0.9
+  },
+  "dna": {
+    "brightness": 0.072,
+    "warmth": 0.477,
+    "movement": 0.899,
+    "density": 0.489,
+    "space": 0.961,
+    "aggression": 0.618
+  },
+  "macros": {
+    "CHARACTER": 0.274,
+    "MOVEMENT": 0.899,
+    "COUPLING": 0.485,
+    "SPACE": 0.961
+  },
+  "tags": [
+    "atmosphere",
+    "dark",
+    "expansive",
+    "kinetic",
+    "extreme",
+    "diversity-push"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "HOT DENSE STILL FLU 10",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ODDFELIX",
+    "OVERLAP"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.662,
+      "macro_movement": 0.111,
+      "macro_coupling": 0.465,
+      "macro_space": 0.643
+    },
+    "OVERLAP": {
+      "macro_character": 0.564,
+      "macro_movement": 0.159,
+      "macro_coupling": 0.383,
+      "macro_space": 0.497
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ODDFELIX",
+    "target": "OVERLAP",
+    "amount": 0.916
+  },
+  "dna": {
+    "brightness": 0.431,
+    "warmth": 0.893,
+    "movement": 0.111,
+    "density": 0.88,
+    "space": 0.643,
+    "aggression": 0.358
+  },
+  "macros": {
+    "CHARACTER": 0.662,
+    "MOVEMENT": 0.111,
+    "COUPLING": 0.465,
+    "SPACE": 0.643
+  },
+  "tags": [
+    "flux",
+    "warm",
+    "dense",
+    "static",
+    "extreme",
+    "diversity-push"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "DARK HOT GENTLE 5",
+  "mood": "Entangled",
+  "engines": [
+    "Ouroboros",
+    "Opal"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ouroboros \u00d7 Opal \u2014 Spectral Morph coupling at extreme DNA corner.",
+  "tags": [
+    "dark",
+    "ouroboros",
+    "opal",
+    "spectral-morph",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "TEXTURE",
+    "DEPTH",
+    "CHAOS",
+    "MOTION"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.066,
+    "warmth": 0.937,
+    "movement": 0.367,
+    "density": 0.387,
+    "space": 0.396,
+    "aggression": 0.068
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Opal",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.914
+      }
+    ]
+  },
+  "sequencer": null
+}

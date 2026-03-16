@@ -1,0 +1,51 @@
+{
+  "name": "DARK VAST KINETIC ENT 08",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OPAL",
+    "OMBRE"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.216,
+      "macro_movement": 0.969,
+      "macro_coupling": 0.585,
+      "macro_space": 0.911
+    },
+    "OMBRE": {
+      "macro_character": 0.168,
+      "macro_movement": 1.0,
+      "macro_coupling": 0.75,
+      "macro_space": 0.793
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OPAL",
+    "target": "OMBRE",
+    "amount": 0.984
+  },
+  "dna": {
+    "brightness": 0.084,
+    "warmth": 0.348,
+    "movement": 0.969,
+    "density": 0.613,
+    "space": 0.911,
+    "aggression": 0.471
+  },
+  "macros": {
+    "CHARACTER": 0.216,
+    "MOVEMENT": 0.969,
+    "COUPLING": 0.585,
+    "SPACE": 0.911
+  },
+  "tags": [
+    "entangled",
+    "dark",
+    "expansive",
+    "kinetic",
+    "extreme",
+    "diversity-push"
+  ]
+}

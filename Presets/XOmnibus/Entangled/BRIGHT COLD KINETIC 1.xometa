@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT COLD KINETIC 1",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Orbital"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Overlap \u00d7 Orbital \u2014 Spectral Morph coupling at extreme DNA corner.",
+  "tags": [
+    "bright",
+    "overlap",
+    "orbital",
+    "spectral-morph",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "EDGE",
+    "BODY",
+    "FLUX",
+    "FIELD"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.932,
+    "warmth": 0.043,
+    "movement": 0.937,
+    "density": 0.601,
+    "space": 0.645,
+    "aggression": 0.375
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Orbital",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.775
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "HOT FURY KINETIC 1",
+  "mood": "Entangled",
+  "engines": [
+    "Ottoni",
+    "OddOscar"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ottoni \u00d7 OddOscar \u2014 Envelope Link coupling at extreme DNA corner.",
+  "tags": [
+    "hot",
+    "ottoni",
+    "oddoscar",
+    "envelope-link",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "BRIGHTNESS",
+    "WARMTH",
+    "FURY",
+    "DENSITY"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.533,
+    "warmth": 0.954,
+    "movement": 0.895,
+    "density": 0.359,
+    "space": 0.432,
+    "aggression": 0.908
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "OddOscar",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.794
+      }
+    ]
+  },
+  "sequencer": null
+}

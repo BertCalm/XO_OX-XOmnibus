@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "VAST GENTLE SPARSE 1",
+  "mood": "Entangled",
+  "engines": [
+    "Opal",
+    "Orca"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Opal \u00d7 Orca \u2014 Frequency Shift coupling at extreme DNA corner.",
+  "tags": [
+    "vast",
+    "opal",
+    "orca",
+    "frequency-shift",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "TEXTURE",
+    "DEPTH",
+    "CHAOS",
+    "MOTION"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.485,
+    "warmth": 0.352,
+    "movement": 0.374,
+    "density": 0.049,
+    "space": 0.938,
+    "aggression": 0.082
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Orca",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.652
+      }
+    ]
+  },
+  "sequencer": null
+}

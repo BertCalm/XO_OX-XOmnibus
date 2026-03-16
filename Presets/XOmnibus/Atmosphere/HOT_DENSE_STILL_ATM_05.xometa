@@ -1,0 +1,51 @@
+{
+  "name": "HOT DENSE STILL ATM 05",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OBSCURA",
+    "OUROBOROS"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.72,
+      "macro_movement": 0.031,
+      "macro_coupling": 0.673,
+      "macro_space": 0.653
+    },
+    "OUROBOROS": {
+      "macro_character": 0.745,
+      "macro_movement": 0.0,
+      "macro_coupling": 0.705,
+      "macro_space": 0.595
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OBSCURA",
+    "target": "OUROBOROS",
+    "amount": 0.96
+  },
+  "dna": {
+    "brightness": 0.521,
+    "warmth": 0.918,
+    "movement": 0.031,
+    "density": 0.887,
+    "space": 0.653,
+    "aggression": 0.662
+  },
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.031,
+    "COUPLING": 0.673,
+    "SPACE": 0.653
+  },
+  "tags": [
+    "atmosphere",
+    "warm",
+    "dense",
+    "static",
+    "extreme",
+    "diversity-push"
+  ]
+}

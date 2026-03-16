@@ -1,0 +1,51 @@
+{
+  "name": "DARK VAST KINETIC FAM 03",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OHM",
+    "OLE"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.268,
+      "macro_movement": 0.901,
+      "macro_coupling": 0.865,
+      "macro_space": 0.914
+    },
+    "OLE": {
+      "macro_character": 0.313,
+      "macro_movement": 0.988,
+      "macro_coupling": 0.711,
+      "macro_space": 0.85
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OHM",
+    "target": "OLE",
+    "amount": 0.932
+  },
+  "dna": {
+    "brightness": 0.035,
+    "warmth": 0.501,
+    "movement": 0.901,
+    "density": 0.698,
+    "space": 0.914,
+    "aggression": 0.311
+  },
+  "macros": {
+    "CHARACTER": 0.268,
+    "MOVEMENT": 0.901,
+    "COUPLING": 0.865,
+    "SPACE": 0.914
+  },
+  "tags": [
+    "family",
+    "dark",
+    "expansive",
+    "kinetic",
+    "extreme",
+    "diversity-push"
+  ]
+}

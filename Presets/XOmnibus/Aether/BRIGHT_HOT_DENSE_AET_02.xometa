@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT HOT DENSE AET 02",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OBLIQUE",
+    "OBSIDIAN"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.923,
+      "macro_movement": 0.468,
+      "macro_coupling": 0.788,
+      "macro_space": 0.448
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.798,
+      "macro_movement": 0.334,
+      "macro_coupling": 0.581,
+      "macro_space": 0.483
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBLIQUE",
+    "target": "OBSIDIAN",
+    "amount": 0.87
+  },
+  "dna": {
+    "brightness": 0.947,
+    "warmth": 0.899,
+    "movement": 0.468,
+    "density": 0.911,
+    "space": 0.448,
+    "aggression": 0.589
+  },
+  "macros": {
+    "CHARACTER": 0.923,
+    "MOVEMENT": 0.468,
+    "COUPLING": 0.788,
+    "SPACE": 0.448
+  },
+  "tags": [
+    "aether",
+    "bright",
+    "warm",
+    "dense",
+    "extreme",
+    "diversity-push"
+  ]
+}

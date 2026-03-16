@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "COLD INTIMATE FURY 2",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Orphica"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Overlap \u00d7 Orphica \u2014 Filter Mod coupling at extreme DNA corner.",
+  "tags": [
+    "cold",
+    "overlap",
+    "orphica",
+    "filter-mod",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "EDGE",
+    "BODY",
+    "FLUX",
+    "FIELD"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.554,
+    "warmth": 0.086,
+    "movement": 0.449,
+    "density": 0.358,
+    "space": 0.119,
+    "aggression": 0.883
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Orphica",
+        "type": "FILTER_MOD",
+        "amount": 0.699
+      }
+    ]
+  },
+  "sequencer": null
+}

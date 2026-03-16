@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT SPARSE GENTLE FAM 09",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ONSET",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "ONSET": {
+      "macro_character": 0.778,
+      "macro_movement": 0.506,
+      "macro_coupling": 0.777,
+      "macro_space": 0.517
+    },
+    "OSTERIA": {
+      "macro_character": 0.735,
+      "macro_movement": 0.59,
+      "macro_coupling": 0.606,
+      "macro_space": 0.467
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ONSET",
+    "target": "OSTERIA",
+    "amount": 0.65
+  },
+  "dna": {
+    "brightness": 0.884,
+    "warmth": 0.673,
+    "movement": 0.506,
+    "density": 0.119,
+    "space": 0.517,
+    "aggression": 0.053
+  },
+  "macros": {
+    "CHARACTER": 0.778,
+    "MOVEMENT": 0.506,
+    "COUPLING": 0.777,
+    "SPACE": 0.517
+  },
+  "tags": [
+    "family",
+    "bright",
+    "sparse",
+    "gentle",
+    "extreme",
+    "diversity-push"
+  ]
+}

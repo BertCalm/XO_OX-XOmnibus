@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "DARK COLD DENSE 4",
+  "mood": "Entangled",
+  "engines": [
+    "Obsidian",
+    "Ottoni"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Obsidian \u00d7 Ottoni \u2014 Harmonic Fold coupling at extreme DNA corner.",
+  "tags": [
+    "dark",
+    "obsidian",
+    "ottoni",
+    "harmonic-fold",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "TEXTURE",
+    "DEPTH",
+    "CHAOS",
+    "MOTION"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.103,
+    "warmth": 0.088,
+    "movement": 0.395,
+    "density": 0.946,
+    "space": 0.393,
+    "aggression": 0.368
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Ottoni",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.739
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,51 @@
+{
+  "name": "DARK VAST KINETIC FOU 03",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OHM",
+    "OLE"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.267,
+      "macro_movement": 0.913,
+      "macro_coupling": 0.724,
+      "macro_space": 0.904
+    },
+    "OLE": {
+      "macro_character": 0.168,
+      "macro_movement": 0.982,
+      "macro_coupling": 0.604,
+      "macro_space": 0.868
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OHM",
+    "target": "OLE",
+    "amount": 0.996
+  },
+  "dna": {
+    "brightness": 0.087,
+    "warmth": 0.446,
+    "movement": 0.913,
+    "density": 0.384,
+    "space": 0.904,
+    "aggression": 0.675
+  },
+  "macros": {
+    "CHARACTER": 0.267,
+    "MOVEMENT": 0.913,
+    "COUPLING": 0.724,
+    "SPACE": 0.904
+  },
+  "tags": [
+    "foundation",
+    "dark",
+    "expansive",
+    "kinetic",
+    "extreme",
+    "diversity-push"
+  ]
+}

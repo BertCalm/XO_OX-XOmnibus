@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "HOT FURY KINETIC 3",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Organon"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Orbital \u00d7 Organon \u2014 Resonance Share coupling at extreme DNA corner.",
+  "tags": [
+    "hot",
+    "orbital",
+    "organon",
+    "resonance-share",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "TEXTURE",
+    "DEPTH",
+    "CHAOS",
+    "MOTION"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.576,
+    "warmth": 0.913,
+    "movement": 0.921,
+    "density": 0.483,
+    "space": 0.477,
+    "aggression": 0.897
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Organon",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.735
+      }
+    ]
+  },
+  "sequencer": null
+}

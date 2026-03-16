@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "DARK VAST KINETIC 1",
+  "mood": "Entangled",
+  "engines": [
+    "Octopus",
+    "Oblong"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Octopus \u00d7 Oblong \u2014 Amplitude Mod coupling at extreme DNA corner.",
+  "tags": [
+    "dark",
+    "octopus",
+    "oblong",
+    "amplitude-mod",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "BRIGHTNESS",
+    "WARMTH",
+    "FURY",
+    "DENSITY"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.082,
+    "warmth": 0.51,
+    "movement": 0.957,
+    "density": 0.548,
+    "space": 0.929,
+    "aggression": 0.4
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Oblong",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.857
+      }
+    ]
+  },
+  "sequencer": null
+}

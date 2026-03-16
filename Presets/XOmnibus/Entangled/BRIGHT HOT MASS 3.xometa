@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT HOT MASS 3",
+  "mood": "Entangled",
+  "engines": [
+    "Ombre",
+    "Outwit"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ombre \u00d7 Outwit \u2014 Pitch Sync coupling at extreme DNA corner.",
+  "tags": [
+    "bright",
+    "ombre",
+    "outwit",
+    "pitch-sync",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "TEXTURE",
+    "DEPTH",
+    "CHAOS",
+    "MOTION"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.94,
+    "warmth": 0.941,
+    "movement": 0.633,
+    "density": 0.907,
+    "space": 0.384,
+    "aggression": 0.615
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ombre",
+        "engineB": "Outwit",
+        "type": "PITCH_SYNC",
+        "amount": 0.737
+      }
+    ]
+  },
+  "sequencer": null
+}

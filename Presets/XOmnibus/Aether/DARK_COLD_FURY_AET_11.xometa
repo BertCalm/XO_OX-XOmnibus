@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD FURY AET 11",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OVERBITE",
+    "OCELOT"
+  ],
+  "parameters": {
+    "OVERBITE": {
+      "macro_character": 0.074,
+      "macro_movement": 0.49,
+      "macro_coupling": 0.85,
+      "macro_space": 0.325
+    },
+    "OCELOT": {
+      "macro_character": 0.138,
+      "macro_movement": 0.491,
+      "macro_coupling": 0.474,
+      "macro_space": 0.249
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OVERBITE",
+    "target": "OCELOT",
+    "amount": 0.775
+  },
+  "dna": {
+    "brightness": 0.089,
+    "warmth": 0.059,
+    "movement": 0.49,
+    "density": 0.36,
+    "space": 0.325,
+    "aggression": 0.889
+  },
+  "macros": {
+    "CHARACTER": 0.074,
+    "MOVEMENT": 0.49,
+    "COUPLING": 0.85,
+    "SPACE": 0.325
+  },
+  "tags": [
+    "aether",
+    "dark",
+    "cold",
+    "aggressive",
+    "extreme",
+    "diversity-push"
+  ]
+}

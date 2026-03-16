@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT SPARSE GENTLE FAM 04",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ORACLE",
+    "ORGANON"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.649,
+      "macro_movement": 0.582,
+      "macro_coupling": 0.528,
+      "macro_space": 0.302
+    },
+    "ORGANON": {
+      "macro_character": 0.664,
+      "macro_movement": 0.65,
+      "macro_coupling": 0.825,
+      "macro_space": 0.185
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "ORACLE",
+    "target": "ORGANON",
+    "amount": 0.715
+  },
+  "dna": {
+    "brightness": 0.943,
+    "warmth": 0.356,
+    "movement": 0.582,
+    "density": 0.07,
+    "space": 0.302,
+    "aggression": 0.037
+  },
+  "macros": {
+    "CHARACTER": 0.649,
+    "MOVEMENT": 0.582,
+    "COUPLING": 0.528,
+    "SPACE": 0.302
+  },
+  "tags": [
+    "family",
+    "bright",
+    "sparse",
+    "gentle",
+    "extreme",
+    "diversity-push"
+  ]
+}

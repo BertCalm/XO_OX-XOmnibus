@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT HOT VAST 1",
+  "mood": "Entangled",
+  "engines": [
+    "OddOscar",
+    "Oceanic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddOscar \u00d7 Oceanic \u2014 Pitch Sync coupling at extreme DNA corner.",
+  "tags": [
+    "bright",
+    "oddoscar",
+    "oceanic",
+    "pitch-sync",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.96,
+    "warmth": 0.915,
+    "movement": 0.403,
+    "density": 0.506,
+    "space": 0.945,
+    "aggression": 0.433
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Oceanic",
+        "type": "PITCH_SYNC",
+        "amount": 0.752
+      }
+    ]
+  },
+  "sequencer": null
+}

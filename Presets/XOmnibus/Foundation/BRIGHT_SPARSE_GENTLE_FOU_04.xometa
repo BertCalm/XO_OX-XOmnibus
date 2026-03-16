@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT SPARSE GENTLE FOU 04",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ORACLE",
+    "ORGANON"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.73,
+      "macro_movement": 0.574,
+      "macro_coupling": 0.416,
+      "macro_space": 0.61
+    },
+    "ORGANON": {
+      "macro_character": 0.66,
+      "macro_movement": 0.487,
+      "macro_coupling": 0.691,
+      "macro_space": 0.723
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORACLE",
+    "target": "ORGANON",
+    "amount": 0.726
+  },
+  "dna": {
+    "brightness": 0.938,
+    "warmth": 0.523,
+    "movement": 0.574,
+    "density": 0.106,
+    "space": 0.61,
+    "aggression": 0.051
+  },
+  "macros": {
+    "CHARACTER": 0.73,
+    "MOVEMENT": 0.574,
+    "COUPLING": 0.416,
+    "SPACE": 0.61
+  },
+  "tags": [
+    "foundation",
+    "bright",
+    "sparse",
+    "gentle",
+    "extreme",
+    "diversity-push"
+  ]
+}

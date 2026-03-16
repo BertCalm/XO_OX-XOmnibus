@@ -1,0 +1,51 @@
+{
+  "name": "DARK VAST KINETIC FOU 08",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OPAL",
+    "OMBRE"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.356,
+      "macro_movement": 0.958,
+      "macro_coupling": 0.476,
+      "macro_space": 0.938
+    },
+    "OMBRE": {
+      "macro_character": 0.368,
+      "macro_movement": 1.0,
+      "macro_coupling": 0.79,
+      "macro_space": 0.788
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OPAL",
+    "target": "OMBRE",
+    "amount": 0.73
+  },
+  "dna": {
+    "brightness": 0.046,
+    "warmth": 0.665,
+    "movement": 0.958,
+    "density": 0.419,
+    "space": 0.938,
+    "aggression": 0.544
+  },
+  "macros": {
+    "CHARACTER": 0.356,
+    "MOVEMENT": 0.958,
+    "COUPLING": 0.476,
+    "SPACE": 0.938
+  },
+  "tags": [
+    "foundation",
+    "dark",
+    "expansive",
+    "kinetic",
+    "extreme",
+    "diversity-push"
+  ]
+}

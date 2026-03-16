@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD FURY FLU 11",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OVERBITE",
+    "OCELOT"
+  ],
+  "parameters": {
+    "OVERBITE": {
+      "macro_character": 0.055,
+      "macro_movement": 0.37,
+      "macro_coupling": 0.773,
+      "macro_space": 0.597
+    },
+    "OCELOT": {
+      "macro_character": 0.138,
+      "macro_movement": 0.374,
+      "macro_coupling": 0.521,
+      "macro_space": 0.598
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OVERBITE",
+    "target": "OCELOT",
+    "amount": 0.978
+  },
+  "dna": {
+    "brightness": 0.051,
+    "warmth": 0.059,
+    "movement": 0.37,
+    "density": 0.321,
+    "space": 0.597,
+    "aggression": 0.927
+  },
+  "macros": {
+    "CHARACTER": 0.055,
+    "MOVEMENT": 0.37,
+    "COUPLING": 0.773,
+    "SPACE": 0.597
+  },
+  "tags": [
+    "flux",
+    "dark",
+    "cold",
+    "aggressive",
+    "extreme",
+    "diversity-push"
+  ]
+}

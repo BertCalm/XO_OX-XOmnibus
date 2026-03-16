@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT SPARSE GENTLE PRI 09",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ONSET",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "ONSET": {
+      "macro_character": 0.792,
+      "macro_movement": 0.503,
+      "macro_coupling": 0.795,
+      "macro_space": 0.646
+    },
+    "OSTERIA": {
+      "macro_character": 0.922,
+      "macro_movement": 0.505,
+      "macro_coupling": 0.703,
+      "macro_space": 0.581
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ONSET",
+    "target": "OSTERIA",
+    "amount": 0.719
+  },
+  "dna": {
+    "brightness": 0.915,
+    "warmth": 0.669,
+    "movement": 0.503,
+    "density": 0.109,
+    "space": 0.646,
+    "aggression": 0.055
+  },
+  "macros": {
+    "CHARACTER": 0.792,
+    "MOVEMENT": 0.503,
+    "COUPLING": 0.795,
+    "SPACE": 0.646
+  },
+  "tags": [
+    "prism",
+    "bright",
+    "sparse",
+    "gentle",
+    "extreme",
+    "diversity-push"
+  ]
+}

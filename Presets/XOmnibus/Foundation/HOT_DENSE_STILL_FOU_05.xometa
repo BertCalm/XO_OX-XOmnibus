@@ -1,0 +1,51 @@
+{
+  "name": "HOT DENSE STILL FOU 05",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBSCURA",
+    "OUROBOROS"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.739,
+      "macro_movement": 0.112,
+      "macro_coupling": 0.681,
+      "macro_space": 0.406
+    },
+    "OUROBOROS": {
+      "macro_character": 0.764,
+      "macro_movement": 0.231,
+      "macro_coupling": 0.501,
+      "macro_space": 0.322
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBSCURA",
+    "target": "OUROBOROS",
+    "amount": 0.999
+  },
+  "dna": {
+    "brightness": 0.562,
+    "warmth": 0.916,
+    "movement": 0.112,
+    "density": 0.921,
+    "space": 0.406,
+    "aggression": 0.399
+  },
+  "macros": {
+    "CHARACTER": 0.739,
+    "MOVEMENT": 0.112,
+    "COUPLING": 0.681,
+    "SPACE": 0.406
+  },
+  "tags": [
+    "foundation",
+    "warm",
+    "dense",
+    "static",
+    "extreme",
+    "diversity-push"
+  ]
+}

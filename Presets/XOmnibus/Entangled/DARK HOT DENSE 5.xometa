@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "DARK HOT DENSE 5",
+  "mood": "Entangled",
+  "engines": [
+    "Oceanic",
+    "Outwit"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oceanic \u00d7 Outwit \u2014 Amplitude Mod coupling at extreme DNA corner.",
+  "tags": [
+    "dark",
+    "oceanic",
+    "outwit",
+    "amplitude-mod",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "EDGE",
+    "BODY",
+    "FLUX",
+    "FIELD"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.111,
+    "warmth": 0.886,
+    "movement": 0.482,
+    "density": 0.892,
+    "space": 0.42,
+    "aggression": 0.451
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Outwit",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.848
+      }
+    ]
+  },
+  "sequencer": null
+}

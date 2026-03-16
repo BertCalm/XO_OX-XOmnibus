@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "COLD SPARSE VAST 2",
+  "mood": "Entangled",
+  "engines": [
+    "Oblique",
+    "Ohm"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oblique \u00d7 Ohm \u2014 Frequency Shift coupling at extreme DNA corner.",
+  "tags": [
+    "cold",
+    "oblique",
+    "ohm",
+    "frequency-shift",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "BRIGHTNESS",
+    "WARMTH",
+    "FURY",
+    "DENSITY"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.648,
+    "warmth": 0.108,
+    "movement": 0.486,
+    "density": 0.092,
+    "space": 0.942,
+    "aggression": 0.561
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ohm",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.735
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT SPARSE GENTLE FLU 09",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ONSET",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "ONSET": {
+      "macro_character": 0.748,
+      "macro_movement": 0.539,
+      "macro_coupling": 0.463,
+      "macro_space": 0.615
+    },
+    "OSTERIA": {
+      "macro_character": 0.619,
+      "macro_movement": 0.619,
+      "macro_coupling": 0.594,
+      "macro_space": 0.53
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ONSET",
+    "target": "OSTERIA",
+    "amount": 0.948
+  },
+  "dna": {
+    "brightness": 0.94,
+    "warmth": 0.557,
+    "movement": 0.539,
+    "density": 0.032,
+    "space": 0.615,
+    "aggression": 0.052
+  },
+  "macros": {
+    "CHARACTER": 0.748,
+    "MOVEMENT": 0.539,
+    "COUPLING": 0.463,
+    "SPACE": 0.615
+  },
+  "tags": [
+    "flux",
+    "bright",
+    "sparse",
+    "gentle",
+    "extreme",
+    "diversity-push"
+  ]
+}

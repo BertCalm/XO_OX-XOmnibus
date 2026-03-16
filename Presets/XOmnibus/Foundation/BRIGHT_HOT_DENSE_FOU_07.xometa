@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT HOT DENSE FOU 07",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ORPHICA",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.913,
+      "macro_movement": 0.573,
+      "macro_coupling": 0.456,
+      "macro_space": 0.407
+    },
+    "ORBITAL": {
+      "macro_character": 0.899,
+      "macro_movement": 0.709,
+      "macro_coupling": 0.73,
+      "macro_space": 0.336
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ORPHICA",
+    "target": "ORBITAL",
+    "amount": 0.8
+  },
+  "dna": {
+    "brightness": 0.881,
+    "warmth": 0.945,
+    "movement": 0.573,
+    "density": 0.928,
+    "space": 0.407,
+    "aggression": 0.556
+  },
+  "macros": {
+    "CHARACTER": 0.913,
+    "MOVEMENT": 0.573,
+    "COUPLING": 0.456,
+    "SPACE": 0.407
+  },
+  "tags": [
+    "foundation",
+    "bright",
+    "warm",
+    "dense",
+    "extreme",
+    "diversity-push"
+  ]
+}

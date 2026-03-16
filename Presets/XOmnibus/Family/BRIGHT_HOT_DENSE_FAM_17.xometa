@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT HOT DENSE FAM 17",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODDOSCAR",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.906,
+      "macro_movement": 0.448,
+      "macro_coupling": 0.443,
+      "macro_space": 0.521
+    },
+    "OVERWORLD": {
+      "macro_character": 1.0,
+      "macro_movement": 0.514,
+      "macro_coupling": 0.563,
+      "macro_space": 0.602
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ODDOSCAR",
+    "target": "OVERWORLD",
+    "amount": 0.929
+  },
+  "dna": {
+    "brightness": 0.882,
+    "warmth": 0.93,
+    "movement": 0.448,
+    "density": 0.952,
+    "space": 0.521,
+    "aggression": 0.545
+  },
+  "macros": {
+    "CHARACTER": 0.906,
+    "MOVEMENT": 0.448,
+    "COUPLING": 0.443,
+    "SPACE": 0.521
+  },
+  "tags": [
+    "family",
+    "bright",
+    "warm",
+    "dense",
+    "extreme",
+    "diversity-push"
+  ]
+}
