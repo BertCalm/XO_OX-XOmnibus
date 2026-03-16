@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "DARK_HOT_KINETIC_VAST_VIOLENT_PRS_1",
+  "mood": "Prism",
+  "engines": [
+    "ORACLE",
+    "OTTONI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_HOT_KINETIC_VAST_VIOLENT. Variant 1.",
+  "tags": [
+    "hot",
+    "extreme",
+    "kinetic",
+    "dark",
+    "diversity",
+    "vast",
+    "violent",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.106,
+      "macro_movement": 0.922,
+      "macro_coupling": 0.416,
+      "macro_space": 0.92
+    },
+    "OTTONI": {
+      "macro_character": 0.115,
+      "macro_movement": 0.847,
+      "macro_coupling": 0.492,
+      "macro_space": 1.0
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "ORACLE",
+    "target": "OTTONI",
+    "amount": 0.857
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.085,
+    "warmth": 0.893,
+    "movement": 0.883,
+    "density": 0.422,
+    "space": 0.984,
+    "aggression": 0.91
+  },
+  "macros": {
+    "CHARACTER": 0.111,
+    "MOVEMENT": 0.885,
+    "COUPLING": 0.454,
+    "SPACE": 0.96
+  }
+}

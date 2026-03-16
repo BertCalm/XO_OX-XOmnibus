@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT_WARM_KINETIC_VAST_GENTLE_FND_3",
+  "mood": "Foundation",
+  "engines": [
+    "ODDOSCAR",
+    "OVERDUB"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_WARM_KINETIC_VAST_GENTLE. Variant 3.",
+  "tags": [
+    "extreme",
+    "kinetic",
+    "diversity",
+    "bright",
+    "vast",
+    "warm",
+    "foundation",
+    "gentle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.906,
+      "macro_movement": 0.903,
+      "macro_coupling": 0.384,
+      "macro_space": 1.0
+    },
+    "OVERDUB": {
+      "macro_character": 0.835,
+      "macro_movement": 0.963,
+      "macro_coupling": 0.455,
+      "macro_space": 0.84
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ODDOSCAR",
+    "target": "OVERDUB",
+    "amount": 0.626
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.874,
+    "warmth": 0.91,
+    "movement": 0.932,
+    "density": 0.411,
+    "space": 0.928,
+    "aggression": 0.079
+  },
+  "macros": {
+    "CHARACTER": 0.871,
+    "MOVEMENT": 0.933,
+    "COUPLING": 0.419,
+    "SPACE": 0.92
+  }
+}

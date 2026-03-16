@@ -1,0 +1,51 @@
+{
+  "name": "DARK_COLD_STILL_DENSE_VIOLENT_FLX2_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ORIGAMI",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.0725,
+      "macro_movement": 0.0438,
+      "macro_coupling": 0.971,
+      "macro_space": 0.3521
+    },
+    "ODYSSEY": {
+      "macro_character": 0.0525,
+      "macro_movement": 0.0335,
+      "macro_coupling": 0.9677,
+      "macro_space": 0.3348
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ORIGAMI",
+    "target": "ODYSSEY",
+    "amount": 0.912
+  },
+  "dna": {
+    "brightness": 0.0514,
+    "warmth": 0.1039,
+    "movement": 0.05,
+    "density": 0.9786,
+    "space": 0.3589,
+    "aggression": 0.9225
+  },
+  "macros": {
+    "CHARACTER": 0.0625,
+    "MOVEMENT": 0.0387,
+    "COUPLING": 0.9693,
+    "SPACE": 0.3435
+  },
+  "tags": [
+    "flux",
+    "dark",
+    "cold",
+    "still",
+    "dense",
+    "violent"
+  ]
+}

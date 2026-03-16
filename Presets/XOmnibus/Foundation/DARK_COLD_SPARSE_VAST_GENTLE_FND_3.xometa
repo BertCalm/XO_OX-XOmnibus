@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "DARK_COLD_SPARSE_VAST_GENTLE_FND_3",
+  "mood": "Foundation",
+  "engines": [
+    "ORIGAMI",
+    "OBSIDIAN"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_COLD_SPARSE_VAST_GENTLE. Variant 3.",
+  "tags": [
+    "sparse",
+    "extreme",
+    "cold",
+    "dark",
+    "diversity",
+    "vast",
+    "foundation",
+    "gentle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.16,
+      "macro_movement": 0.465,
+      "macro_coupling": 0.19,
+      "macro_space": 0.802
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.233,
+      "macro_movement": 0.416,
+      "macro_coupling": 0.0,
+      "macro_space": 0.983
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORIGAMI",
+    "target": "OBSIDIAN",
+    "amount": 0.842
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.093,
+    "warmth": 0.029,
+    "movement": 0.471,
+    "density": 0.115,
+    "space": 0.892,
+    "aggression": 0.049
+  },
+  "macros": {
+    "CHARACTER": 0.197,
+    "MOVEMENT": 0.441,
+    "COUPLING": 0.095,
+    "SPACE": 0.893
+  }
+}

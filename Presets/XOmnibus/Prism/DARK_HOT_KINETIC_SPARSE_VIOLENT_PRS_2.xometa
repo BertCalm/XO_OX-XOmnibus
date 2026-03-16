@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "DARK_HOT_KINETIC_SPARSE_VIOLENT_PRS_2",
+  "mood": "Prism",
+  "engines": [
+    "OVERWORLD",
+    "ORPHICA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_HOT_KINETIC_SPARSE_VIOLENT. Variant 2.",
+  "tags": [
+    "sparse",
+    "hot",
+    "extreme",
+    "kinetic",
+    "dark",
+    "diversity",
+    "violent",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.151,
+      "macro_movement": 0.965,
+      "macro_coupling": 0.012,
+      "macro_space": 0.56
+    },
+    "ORPHICA": {
+      "macro_character": 0.026,
+      "macro_movement": 1.0,
+      "macro_coupling": 0.0,
+      "macro_space": 0.686
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OVERWORLD",
+    "target": "ORPHICA",
+    "amount": 0.91
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.061,
+    "warmth": 0.965,
+    "movement": 0.968,
+    "density": 0.094,
+    "space": 0.632,
+    "aggression": 0.959
+  },
+  "macros": {
+    "CHARACTER": 0.088,
+    "MOVEMENT": 0.982,
+    "COUPLING": 0.006,
+    "SPACE": 0.623
+  }
+}

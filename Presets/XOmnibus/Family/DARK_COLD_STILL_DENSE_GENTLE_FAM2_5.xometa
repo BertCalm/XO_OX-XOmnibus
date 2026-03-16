@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD STILL DENSE GENTLE FAM2 5",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ORPHICA",
+    "OPAL"
+  ],
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.06,
+      "macro_movement": 0.049,
+      "macro_coupling": 0.482,
+      "macro_space": 0.609
+    },
+    "OPAL": {
+      "macro_character": 0.029,
+      "macro_movement": 0.044,
+      "macro_coupling": 0.46,
+      "macro_space": 0.573
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORPHICA",
+    "target": "OPAL",
+    "amount": 0.482
+  },
+  "dna": {
+    "brightness": 0.054,
+    "warmth": 0.067,
+    "movement": 0.049,
+    "density": 0.915,
+    "space": 0.609,
+    "aggression": 0.049
+  },
+  "macros": {
+    "CHARACTER": 0.06,
+    "MOVEMENT": 0.049,
+    "COUPLING": 0.482,
+    "SPACE": 0.609
+  },
+  "tags": [
+    "family",
+    "dark",
+    "cold",
+    "still",
+    "dense",
+    "gentle"
+  ]
+}

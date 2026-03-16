@@ -1,0 +1,51 @@
+{
+  "name": "DARK HOT DENSE INTIMATE VIOLENT FAM2 2",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OBLONG",
+    "OTTONI"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.489,
+      "macro_movement": 0.323,
+      "macro_coupling": 0.964,
+      "macro_space": 0.057
+    },
+    "OTTONI": {
+      "macro_character": 0.481,
+      "macro_movement": 0.358,
+      "macro_coupling": 0.974,
+      "macro_space": 0.066
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OBLONG",
+    "target": "OTTONI",
+    "amount": 0.964
+  },
+  "dna": {
+    "brightness": 0.024,
+    "warmth": 0.954,
+    "movement": 0.323,
+    "density": 0.99,
+    "space": 0.057,
+    "aggression": 0.938
+  },
+  "macros": {
+    "CHARACTER": 0.489,
+    "MOVEMENT": 0.323,
+    "COUPLING": 0.964,
+    "SPACE": 0.057
+  },
+  "tags": [
+    "family",
+    "dark",
+    "warm",
+    "dense",
+    "intimate",
+    "violent"
+  ]
+}

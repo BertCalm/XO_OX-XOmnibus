@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "HOT_KINETIC_DENSE_INTIMATE_GENTLE_PRS_2",
+  "mood": "Prism",
+  "engines": [
+    "ORPHICA",
+    "OWLFISH"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: HOT_KINETIC_DENSE_INTIMATE_GENTLE. Variant 2.",
+  "tags": [
+    "hot",
+    "extreme",
+    "kinetic",
+    "diversity",
+    "intimate",
+    "prism",
+    "gentle",
+    "dense"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.58,
+      "macro_movement": 0.943,
+      "macro_coupling": 0.961,
+      "macro_space": 0.031
+    },
+    "OWLFISH": {
+      "macro_character": 0.774,
+      "macro_movement": 0.861,
+      "macro_coupling": 0.911,
+      "macro_space": 0.197
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ORPHICA",
+    "target": "OWLFISH",
+    "amount": 0.79
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.67,
+    "warmth": 0.949,
+    "movement": 0.96,
+    "density": 0.896,
+    "space": 0.111,
+    "aggression": 0.05
+  },
+  "macros": {
+    "CHARACTER": 0.677,
+    "MOVEMENT": 0.902,
+    "COUPLING": 0.936,
+    "SPACE": 0.114
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT_HOT_STILL_INTIMATE_GENTLE_PRS_1",
+  "mood": "Prism",
+  "engines": [
+    "ORIGAMI",
+    "OTTONI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_HOT_STILL_INTIMATE_GENTLE. Variant 1.",
+  "tags": [
+    "hot",
+    "extreme",
+    "diversity",
+    "bright",
+    "intimate",
+    "prism",
+    "still",
+    "gentle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.869,
+      "macro_movement": 0.121,
+      "macro_coupling": 0.274,
+      "macro_space": 0.0
+    },
+    "OTTONI": {
+      "macro_character": 0.877,
+      "macro_movement": 0.11,
+      "macro_coupling": 0.387,
+      "macro_space": 0.121
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "ORIGAMI",
+    "target": "OTTONI",
+    "amount": 0.958
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.893,
+    "warmth": 0.933,
+    "movement": 0.11,
+    "density": 0.407,
+    "space": 0.064,
+    "aggression": 0.061
+  },
+  "macros": {
+    "CHARACTER": 0.873,
+    "MOVEMENT": 0.115,
+    "COUPLING": 0.331,
+    "SPACE": 0.06
+  }
+}

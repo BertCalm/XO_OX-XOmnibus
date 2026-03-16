@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT_COLD_DENSE_INTIMATE_VIOLENT_PRS_3",
+  "mood": "Prism",
+  "engines": [
+    "ORIGAMI",
+    "OWLFISH"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_COLD_DENSE_INTIMATE_VIOLENT. Variant 3.",
+  "tags": [
+    "extreme",
+    "cold",
+    "diversity",
+    "bright",
+    "violent",
+    "intimate",
+    "prism",
+    "dense"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.926,
+      "macro_movement": 0.461,
+      "macro_coupling": 1.0,
+      "macro_space": 0.025
+    },
+    "OWLFISH": {
+      "macro_character": 0.86,
+      "macro_movement": 0.336,
+      "macro_coupling": 0.972,
+      "macro_space": 0.13
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORIGAMI",
+    "target": "OWLFISH",
+    "amount": 0.489
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.881,
+    "warmth": 0.113,
+    "movement": 0.397,
+    "density": 0.941,
+    "space": 0.078,
+    "aggression": 0.917
+  },
+  "macros": {
+    "CHARACTER": 0.893,
+    "MOVEMENT": 0.399,
+    "COUPLING": 0.986,
+    "SPACE": 0.077
+  }
+}

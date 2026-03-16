@@ -1,0 +1,51 @@
+{
+  "name": "DARK HOT DENSE INTIMATE GENTLE FAM2 3",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODDOSCAR",
+    "OBBLIGATO"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.493,
+      "macro_movement": 0.726,
+      "macro_coupling": 0.499,
+      "macro_space": 0.08
+    },
+    "OBBLIGATO": {
+      "macro_character": 0.483,
+      "macro_movement": 0.739,
+      "macro_coupling": 0.505,
+      "macro_space": 0.047
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ODDOSCAR",
+    "target": "OBBLIGATO",
+    "amount": 0.499
+  },
+  "dna": {
+    "brightness": 0.094,
+    "warmth": 0.893,
+    "movement": 0.726,
+    "density": 0.977,
+    "space": 0.08,
+    "aggression": 0.021
+  },
+  "macros": {
+    "CHARACTER": 0.493,
+    "MOVEMENT": 0.726,
+    "COUPLING": 0.499,
+    "SPACE": 0.08
+  },
+  "tags": [
+    "family",
+    "dark",
+    "warm",
+    "dense",
+    "intimate",
+    "gentle"
+  ]
+}

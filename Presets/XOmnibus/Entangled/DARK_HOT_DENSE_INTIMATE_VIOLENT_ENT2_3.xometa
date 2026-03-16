@@ -1,0 +1,51 @@
+{
+  "name": "DARK HOT DENSE INTIMATE VIOLENT ENT2 3",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OWLFISH",
+    "OMBRE"
+  ],
+  "parameters": {
+    "OWLFISH": {
+      "macro_character": 0.519,
+      "macro_movement": 0.696,
+      "macro_coupling": 0.944,
+      "macro_space": 0.024
+    },
+    "OMBRE": {
+      "macro_character": 0.51,
+      "macro_movement": 0.68,
+      "macro_coupling": 0.933,
+      "macro_space": 0.027
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OWLFISH",
+    "target": "OMBRE",
+    "amount": 0.944
+  },
+  "dna": {
+    "brightness": 0.077,
+    "warmth": 0.962,
+    "movement": 0.696,
+    "density": 0.955,
+    "space": 0.024,
+    "aggression": 0.933
+  },
+  "macros": {
+    "CHARACTER": 0.519,
+    "MOVEMENT": 0.696,
+    "COUPLING": 0.944,
+    "SPACE": 0.024
+  },
+  "tags": [
+    "entangled",
+    "dark",
+    "warm",
+    "dense",
+    "intimate",
+    "violent"
+  ]
+}

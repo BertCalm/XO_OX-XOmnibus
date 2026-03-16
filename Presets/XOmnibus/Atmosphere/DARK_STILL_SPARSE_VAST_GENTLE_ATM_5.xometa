@@ -1,0 +1,51 @@
+{
+  "name": "DARK_STILL_SPARSE_VAST_GENTLE_ATM_5",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ODDFELIX",
+    "ORGANON"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.2232,
+      "macro_movement": 0.1184,
+      "macro_coupling": 0.0799,
+      "macro_space": 0.9393
+    },
+    "ORGANON": {
+      "macro_character": 0.2575,
+      "macro_movement": 0.1089,
+      "macro_coupling": 0.0675,
+      "macro_space": 0.9575
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ODDFELIX",
+    "target": "ORGANON",
+    "amount": 0.627
+  },
+  "dna": {
+    "brightness": 0.0546,
+    "warmth": 0.4293,
+    "movement": 0.1267,
+    "density": 0.0645,
+    "space": 0.9318,
+    "aggression": 0.1287
+  },
+  "macros": {
+    "CHARACTER": 0.2404,
+    "MOVEMENT": 0.1137,
+    "COUPLING": 0.0737,
+    "SPACE": 0.9484
+  },
+  "tags": [
+    "atmosphere",
+    "dark",
+    "still",
+    "sparse",
+    "vast",
+    "gentle"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FLX2_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OPAL",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.687,
+      "macro_movement": 0.943,
+      "macro_coupling": 0.8712,
+      "macro_space": 0.02
+    },
+    "OVERWORLD": {
+      "macro_character": 0.7117,
+      "macro_movement": 0.9384,
+      "macro_coupling": 0.8525,
+      "macro_space": 0.02
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OPAL",
+    "target": "OVERWORLD",
+    "amount": 0.922
+  },
+  "dna": {
+    "brightness": 0.8871,
+    "warmth": 0.543,
+    "movement": 0.9638,
+    "density": 0.8742,
+    "space": 0.0274,
+    "aggression": 0.9634
+  },
+  "macros": {
+    "CHARACTER": 0.6994,
+    "MOVEMENT": 0.9407,
+    "COUPLING": 0.8619,
+    "SPACE": 0.02
+  },
+  "tags": [
+    "flux",
+    "bright",
+    "kinetic",
+    "dense",
+    "intimate",
+    "violent"
+  ]
+}

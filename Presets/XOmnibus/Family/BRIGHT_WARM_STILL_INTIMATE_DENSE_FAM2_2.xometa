@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT WARM STILL INTIMATE DENSE FAM2 2",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OLE",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.953,
+      "macro_movement": 0.03,
+      "macro_coupling": 0.742,
+      "macro_space": 0.137
+    },
+    "ODYSSEY": {
+      "macro_character": 0.954,
+      "macro_movement": 0.02,
+      "macro_coupling": 0.737,
+      "macro_space": 0.2
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OLE",
+    "target": "ODYSSEY",
+    "amount": 0.742
+  },
+  "dna": {
+    "brightness": 0.965,
+    "warmth": 0.941,
+    "movement": 0.03,
+    "density": 0.99,
+    "space": 0.137,
+    "aggression": 0.493
+  },
+  "macros": {
+    "CHARACTER": 0.953,
+    "MOVEMENT": 0.03,
+    "COUPLING": 0.742,
+    "SPACE": 0.137
+  },
+  "tags": [
+    "family",
+    "bright",
+    "warm",
+    "still",
+    "dense",
+    "intimate"
+  ]
+}

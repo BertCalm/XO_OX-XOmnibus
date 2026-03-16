@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_ATM_2",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OPTIC",
+    "OSPREY"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.9449,
+      "macro_movement": 0.6765,
+      "macro_coupling": 0.0884,
+      "macro_space": 0.9622
+    },
+    "OSPREY": {
+      "macro_character": 0.8984,
+      "macro_movement": 0.6787,
+      "macro_coupling": 0.1248,
+      "macro_space": 0.9501
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OPTIC",
+    "target": "OSPREY",
+    "amount": 0.65
+  },
+  "dna": {
+    "brightness": 0.9516,
+    "warmth": 0.8837,
+    "movement": 0.6539,
+    "density": 0.1026,
+    "space": 0.9622,
+    "aggression": 0.0574
+  },
+  "macros": {
+    "CHARACTER": 0.9216,
+    "MOVEMENT": 0.6776,
+    "COUPLING": 0.1066,
+    "SPACE": 0.9562
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "warm",
+    "sparse",
+    "vast",
+    "gentle"
+  ]
+}

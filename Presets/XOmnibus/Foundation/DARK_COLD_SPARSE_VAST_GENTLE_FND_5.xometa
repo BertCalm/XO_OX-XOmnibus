@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "DARK_COLD_SPARSE_VAST_GENTLE_FND_5",
+  "mood": "Foundation",
+  "engines": [
+    "OBESE",
+    "OVERBITE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_COLD_SPARSE_VAST_GENTLE. Variant 5.",
+  "tags": [
+    "sparse",
+    "extreme",
+    "cold",
+    "dark",
+    "diversity",
+    "vast",
+    "foundation",
+    "gentle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OBESE": {
+      "macro_character": 0.0,
+      "macro_movement": 0.381,
+      "macro_coupling": 0.094,
+      "macro_space": 0.893
+    },
+    "OVERBITE": {
+      "macro_character": 0.107,
+      "macro_movement": 0.475,
+      "macro_coupling": 0.085,
+      "macro_space": 0.837
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBESE",
+    "target": "OVERBITE",
+    "amount": 0.832
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.085,
+    "warmth": 0.111,
+    "movement": 0.397,
+    "density": 0.097,
+    "space": 0.906,
+    "aggression": 0.095
+  },
+  "macros": {
+    "CHARACTER": 0.053,
+    "MOVEMENT": 0.428,
+    "COUPLING": 0.089,
+    "SPACE": 0.865
+  }
+}

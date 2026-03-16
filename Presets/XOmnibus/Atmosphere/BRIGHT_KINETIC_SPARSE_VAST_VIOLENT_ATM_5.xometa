@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_KINETIC_SPARSE_VAST_VIOLENT_ATM_5",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OSPREY",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.7408,
+      "macro_movement": 0.9084,
+      "macro_coupling": 0.0419,
+      "macro_space": 0.9138
+    },
+    "ODDFELIX": {
+      "macro_character": 0.7763,
+      "macro_movement": 0.8745,
+      "macro_coupling": 0.0844,
+      "macro_space": 0.8891
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OSPREY",
+    "target": "ODDFELIX",
+    "amount": 0.846
+  },
+  "dna": {
+    "brightness": 0.8895,
+    "warmth": 0.62,
+    "movement": 0.8912,
+    "density": 0.0654,
+    "space": 0.8915,
+    "aggression": 0.9809
+  },
+  "macros": {
+    "CHARACTER": 0.7586,
+    "MOVEMENT": 0.8915,
+    "COUPLING": 0.0631,
+    "SPACE": 0.9014
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "kinetic",
+    "sparse",
+    "vast",
+    "violent"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "HOT_KINETIC_SPARSE_VAST_GENTLE_ATM_2",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OCEANIC",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.6182,
+      "macro_movement": 0.8947,
+      "macro_coupling": 0.0617,
+      "macro_space": 0.9634
+    },
+    "ORBITAL": {
+      "macro_character": 0.6427,
+      "macro_movement": 0.8681,
+      "macro_coupling": 0.0226,
+      "macro_space": 0.955
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OCEANIC",
+    "target": "ORBITAL",
+    "amount": 0.541
+  },
+  "dna": {
+    "brightness": 0.3797,
+    "warmth": 0.8724,
+    "movement": 0.8883,
+    "density": 0.0339,
+    "space": 0.9503,
+    "aggression": 0.082
+  },
+  "macros": {
+    "CHARACTER": 0.6304,
+    "MOVEMENT": 0.8814,
+    "COUPLING": 0.0421,
+    "SPACE": 0.9592
+  },
+  "tags": [
+    "atmosphere",
+    "warm",
+    "kinetic",
+    "sparse",
+    "vast",
+    "gentle"
+  ]
+}

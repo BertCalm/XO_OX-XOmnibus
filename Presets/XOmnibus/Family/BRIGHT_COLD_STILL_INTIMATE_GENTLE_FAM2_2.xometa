@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT COLD STILL INTIMATE GENTLE FAM2 2",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ORGANON",
+    "OBBLIGATO"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.516,
+      "macro_movement": 0.02,
+      "macro_coupling": 0.156,
+      "macro_space": 0.096
+    },
+    "OBBLIGATO": {
+      "macro_character": 0.499,
+      "macro_movement": 0.052,
+      "macro_coupling": 0.164,
+      "macro_space": 0.057
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ORGANON",
+    "target": "OBBLIGATO",
+    "amount": 0.156
+  },
+  "dna": {
+    "brightness": 0.977,
+    "warmth": 0.056,
+    "movement": 0.02,
+    "density": 0.281,
+    "space": 0.096,
+    "aggression": 0.031
+  },
+  "macros": {
+    "CHARACTER": 0.516,
+    "MOVEMENT": 0.02,
+    "COUPLING": 0.156,
+    "SPACE": 0.096
+  },
+  "tags": [
+    "family",
+    "bright",
+    "cold",
+    "still",
+    "intimate",
+    "gentle"
+  ]
+}

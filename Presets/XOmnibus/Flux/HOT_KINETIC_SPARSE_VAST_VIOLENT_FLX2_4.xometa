@@ -1,0 +1,51 @@
+{
+  "name": "HOT_KINETIC_SPARSE_VAST_VIOLENT_FLX2_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OCEANIC",
+    "OVERDUB"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.7358,
+      "macro_movement": 0.9849,
+      "macro_coupling": 0.1186,
+      "macro_space": 0.9516
+    },
+    "OVERDUB": {
+      "macro_character": 0.7741,
+      "macro_movement": 0.9622,
+      "macro_coupling": 0.1279,
+      "macro_space": 0.9847
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OCEANIC",
+    "target": "OVERDUB",
+    "amount": 0.469
+  },
+  "dna": {
+    "brightness": 0.5837,
+    "warmth": 0.9115,
+    "movement": 0.9829,
+    "density": 0.1184,
+    "space": 0.9715,
+    "aggression": 0.9001
+  },
+  "macros": {
+    "CHARACTER": 0.755,
+    "MOVEMENT": 0.9736,
+    "COUPLING": 0.1232,
+    "SPACE": 0.9682
+  },
+  "tags": [
+    "flux",
+    "warm",
+    "kinetic",
+    "sparse",
+    "vast",
+    "violent"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "HOT_KINETIC_SPARSE_VAST_GENTLE_ATM_3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORIGAMI",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.8217,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.0673,
+      "macro_space": 0.9603
+    },
+    "ODDFELIX": {
+      "macro_character": 0.8344,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.0521,
+      "macro_space": 0.9787
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORIGAMI",
+    "target": "ODDFELIX",
+    "amount": 0.456
+  },
+  "dna": {
+    "brightness": 0.6716,
+    "warmth": 0.9391,
+    "movement": 0.979,
+    "density": 0.0613,
+    "space": 0.983,
+    "aggression": 0.0418
+  },
+  "macros": {
+    "CHARACTER": 0.828,
+    "MOVEMENT": 0.99,
+    "COUPLING": 0.0597,
+    "SPACE": 0.9695
+  },
+  "tags": [
+    "atmosphere",
+    "warm",
+    "kinetic",
+    "sparse",
+    "vast",
+    "gentle"
+  ]
+}

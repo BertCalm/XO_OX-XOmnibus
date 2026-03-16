@@ -1,0 +1,51 @@
+{
+  "name": "DARK HOT DENSE INTIMATE GENTLE FAM2 2",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OSTERIA",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "OSTERIA": {
+      "macro_character": 0.525,
+      "macro_movement": 0.606,
+      "macro_coupling": 0.536,
+      "macro_space": 0.088
+    },
+    "ORPHICA": {
+      "macro_character": 0.569,
+      "macro_movement": 0.65,
+      "macro_coupling": 0.514,
+      "macro_space": 0.112
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OSTERIA",
+    "target": "ORPHICA",
+    "amount": 0.536
+  },
+  "dna": {
+    "brightness": 0.145,
+    "warmth": 0.905,
+    "movement": 0.606,
+    "density": 0.985,
+    "space": 0.088,
+    "aggression": 0.088
+  },
+  "macros": {
+    "CHARACTER": 0.525,
+    "MOVEMENT": 0.606,
+    "COUPLING": 0.536,
+    "SPACE": 0.088
+  },
+  "tags": [
+    "family",
+    "dark",
+    "warm",
+    "dense",
+    "intimate",
+    "gentle"
+  ]
+}

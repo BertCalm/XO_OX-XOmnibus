@@ -1,0 +1,51 @@
+{
+  "name": "HOT_KINETIC_SPARSE_VAST_VIOLENT_FLX2_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OPAL",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.6444,
+      "macro_movement": 0.8606,
+      "macro_coupling": 0.1008,
+      "macro_space": 0.8862
+    },
+    "ODYSSEY": {
+      "macro_character": 0.62,
+      "macro_movement": 0.8813,
+      "macro_coupling": 0.1015,
+      "macro_space": 0.8777
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OPAL",
+    "target": "ODYSSEY",
+    "amount": 0.471
+  },
+  "dna": {
+    "brightness": 0.3485,
+    "warmth": 0.8941,
+    "movement": 0.8867,
+    "density": 0.1069,
+    "space": 0.8732,
+    "aggression": 0.9365
+  },
+  "macros": {
+    "CHARACTER": 0.6322,
+    "MOVEMENT": 0.871,
+    "COUPLING": 0.1012,
+    "SPACE": 0.882
+  },
+  "tags": [
+    "flux",
+    "warm",
+    "kinetic",
+    "sparse",
+    "vast",
+    "violent"
+  ]
+}

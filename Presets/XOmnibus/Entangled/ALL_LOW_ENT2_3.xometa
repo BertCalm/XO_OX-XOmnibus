@@ -1,0 +1,51 @@
+{
+  "name": "ALL LOW ENT2 3",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OSPREY",
+    "OUTWIT"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.086,
+      "macro_movement": 0.347,
+      "macro_coupling": 0.067,
+      "macro_space": 0.13
+    },
+    "OUTWIT": {
+      "macro_character": 0.071,
+      "macro_movement": 0.367,
+      "macro_coupling": 0.069,
+      "macro_space": 0.2
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OSPREY",
+    "target": "OUTWIT",
+    "amount": 0.067
+  },
+  "dna": {
+    "brightness": 0.119,
+    "warmth": 0.053,
+    "movement": 0.347,
+    "density": 0.03,
+    "space": 0.13,
+    "aggression": 0.104
+  },
+  "macros": {
+    "CHARACTER": 0.086,
+    "MOVEMENT": 0.347,
+    "COUPLING": 0.067,
+    "SPACE": 0.13
+  },
+  "tags": [
+    "entangled",
+    "dark",
+    "cold",
+    "sparse",
+    "intimate",
+    "gentle"
+  ]
+}

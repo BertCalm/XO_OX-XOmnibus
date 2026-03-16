@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_COLD_KINETIC_SPARSE_VIOLENT_FLX2_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBLIQUE",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.5078,
+      "macro_movement": 0.8619,
+      "macro_coupling": 0.0292,
+      "macro_space": 0.4264
+    },
+    "ORACLE": {
+      "macro_character": 0.4879,
+      "macro_movement": 0.8953,
+      "macro_coupling": 0.0492,
+      "macro_space": 0.4127
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBLIQUE",
+    "target": "ORACLE",
+    "amount": 0.486
+  },
+  "dna": {
+    "brightness": 0.9151,
+    "warmth": 0.0699,
+    "movement": 0.8889,
+    "density": 0.0543,
+    "space": 0.4298,
+    "aggression": 0.983
+  },
+  "macros": {
+    "CHARACTER": 0.4979,
+    "MOVEMENT": 0.8786,
+    "COUPLING": 0.0392,
+    "SPACE": 0.4195
+  },
+  "tags": [
+    "flux",
+    "bright",
+    "cold",
+    "kinetic",
+    "sparse",
+    "violent"
+  ]
+}

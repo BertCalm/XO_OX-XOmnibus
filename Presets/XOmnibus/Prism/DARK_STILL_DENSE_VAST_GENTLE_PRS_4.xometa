@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "DARK_STILL_DENSE_VAST_GENTLE_PRS_4",
+  "mood": "Prism",
+  "engines": [
+    "OHM",
+    "OSTERIA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_STILL_DENSE_VAST_GENTLE. Variant 4.",
+  "tags": [
+    "extreme",
+    "dark",
+    "diversity",
+    "vast",
+    "prism",
+    "gentle",
+    "still",
+    "dense"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.193,
+      "macro_movement": 0.064,
+      "macro_coupling": 0.977,
+      "macro_space": 0.8
+    },
+    "OSTERIA": {
+      "macro_character": 0.083,
+      "macro_movement": 0.079,
+      "macro_coupling": 0.902,
+      "macro_space": 0.924
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OHM",
+    "target": "OSTERIA",
+    "amount": 0.667
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.124,
+    "warmth": 0.508,
+    "movement": 0.051,
+    "density": 0.879,
+    "space": 0.894,
+    "aggression": 0.125
+  },
+  "macros": {
+    "CHARACTER": 0.138,
+    "MOVEMENT": 0.072,
+    "COUPLING": 0.94,
+    "SPACE": 0.862
+  }
+}

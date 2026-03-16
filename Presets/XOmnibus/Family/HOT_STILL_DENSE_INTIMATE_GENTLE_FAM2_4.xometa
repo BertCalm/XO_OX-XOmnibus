@@ -1,0 +1,51 @@
+{
+  "name": "HOT STILL DENSE INTIMATE GENTLE FAM2 4",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OTTONI",
+    "OSPREY"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.735,
+      "macro_movement": 0.047,
+      "macro_coupling": 0.534,
+      "macro_space": 0.045
+    },
+    "OSPREY": {
+      "macro_character": 0.744,
+      "macro_movement": 0.04,
+      "macro_coupling": 0.543,
+      "macro_space": 0.037
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OTTONI",
+    "target": "OSPREY",
+    "amount": 0.534
+  },
+  "dna": {
+    "brightness": 0.533,
+    "warmth": 0.936,
+    "movement": 0.047,
+    "density": 0.99,
+    "space": 0.045,
+    "aggression": 0.078
+  },
+  "macros": {
+    "CHARACTER": 0.735,
+    "MOVEMENT": 0.047,
+    "COUPLING": 0.534,
+    "SPACE": 0.045
+  },
+  "tags": [
+    "family",
+    "warm",
+    "still",
+    "dense",
+    "intimate",
+    "gentle"
+  ]
+}

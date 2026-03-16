@@ -1,0 +1,51 @@
+{
+  "name": "DARK_HOT_DENSE_VAST_VIOLENT_FLX2_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OPAL",
+    "OVERDUB"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.4818,
+      "macro_movement": 0.4772,
+      "macro_coupling": 0.8622,
+      "macro_space": 0.9054
+    },
+    "OVERDUB": {
+      "macro_character": 0.4923,
+      "macro_movement": 0.4384,
+      "macro_coupling": 0.9039,
+      "macro_space": 0.8697
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OPAL",
+    "target": "OVERDUB",
+    "amount": 0.44
+  },
+  "dna": {
+    "brightness": 0.0491,
+    "warmth": 0.9139,
+    "movement": 0.4613,
+    "density": 0.8754,
+    "space": 0.8761,
+    "aggression": 0.9374
+  },
+  "macros": {
+    "CHARACTER": 0.487,
+    "MOVEMENT": 0.4578,
+    "COUPLING": 0.8831,
+    "SPACE": 0.8876
+  },
+  "tags": [
+    "flux",
+    "dark",
+    "warm",
+    "dense",
+    "vast",
+    "violent"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT WARM DENSE INTIMATE GENTLE FAM2 4",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OSTERIA",
+    "OLE"
+  ],
+  "parameters": {
+    "OSTERIA": {
+      "macro_character": 0.914,
+      "macro_movement": 0.404,
+      "macro_coupling": 0.521,
+      "macro_space": 0.129
+    },
+    "OLE": {
+      "macro_character": 0.885,
+      "macro_movement": 0.44,
+      "macro_coupling": 0.541,
+      "macro_space": 0.2
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OSTERIA",
+    "target": "OLE",
+    "amount": 0.521
+  },
+  "dna": {
+    "brightness": 0.891,
+    "warmth": 0.938,
+    "movement": 0.404,
+    "density": 0.947,
+    "space": 0.129,
+    "aggression": 0.095
+  },
+  "macros": {
+    "CHARACTER": 0.914,
+    "MOVEMENT": 0.404,
+    "COUPLING": 0.521,
+    "SPACE": 0.129
+  },
+  "tags": [
+    "family",
+    "bright",
+    "warm",
+    "dense",
+    "intimate",
+    "gentle"
+  ]
+}

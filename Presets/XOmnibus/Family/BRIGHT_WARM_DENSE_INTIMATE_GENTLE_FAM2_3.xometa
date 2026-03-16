@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT WARM DENSE INTIMATE GENTLE FAM2 3",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OTTONI",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.901,
+      "macro_movement": 0.37,
+      "macro_coupling": 0.511,
+      "macro_space": 0.141
+    },
+    "ODYSSEY": {
+      "macro_character": 0.891,
+      "macro_movement": 0.329,
+      "macro_coupling": 0.53,
+      "macro_space": 0.2
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OTTONI",
+    "target": "ODYSSEY",
+    "amount": 0.511
+  },
+  "dna": {
+    "brightness": 0.859,
+    "warmth": 0.944,
+    "movement": 0.37,
+    "density": 0.937,
+    "space": 0.141,
+    "aggression": 0.085
+  },
+  "macros": {
+    "CHARACTER": 0.901,
+    "MOVEMENT": 0.37,
+    "COUPLING": 0.511,
+    "SPACE": 0.141
+  },
+  "tags": [
+    "family",
+    "bright",
+    "warm",
+    "dense",
+    "intimate",
+    "gentle"
+  ]
+}

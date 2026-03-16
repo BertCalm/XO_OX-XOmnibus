@@ -1,549 +1,537 @@
 {
   "generated": "2026-03-16",
-  "total_presets_with_dna": 7304,
+  "total_presets_with_dna": 8139,
   "total_presets_missing_dna": 437,
-  "fleet_cosine_diversity": 0.1884,
+  "fleet_cosine_diversity": 0.2194,
   "fleet_dim_stats": {
     "brightness": {
-      "mean": 0.516,
-      "std": 0.25,
-      "pct_midrange": 58.4,
-      "pct_extreme_low": 12.1,
-      "pct_extreme_high": 12.8
+      "mean": 0.515,
+      "std": 0.267,
+      "pct_midrange": 54.3,
+      "pct_extreme_low": 14.9,
+      "pct_extreme_high": 15.8
     },
     "warmth": {
-      "mean": 0.492,
-      "std": 0.25,
-      "pct_midrange": 57.6,
-      "pct_extreme_low": 12.8,
-      "pct_extreme_high": 10.5
+      "mean": 0.494,
+      "std": 0.266,
+      "pct_midrange": 54.0,
+      "pct_extreme_low": 15.3,
+      "pct_extreme_high": 13.5
     },
     "movement": {
-      "mean": 0.512,
-      "std": 0.266,
-      "pct_midrange": 51.6,
-      "pct_extreme_low": 12.8,
-      "pct_extreme_high": 13.3
+      "mean": 0.52,
+      "std": 0.275,
+      "pct_midrange": 49.8,
+      "pct_extreme_low": 13.8,
+      "pct_extreme_high": 16.3
     },
     "density": {
-      "mean": 0.529,
-      "std": 0.253,
-      "pct_midrange": 55.7,
-      "pct_extreme_low": 11.3,
-      "pct_extreme_high": 13.3
+      "mean": 0.53,
+      "std": 0.265,
+      "pct_midrange": 53.1,
+      "pct_extreme_low": 13.3,
+      "pct_extreme_high": 15.9
     },
     "space": {
-      "mean": 0.517,
-      "std": 0.266,
-      "pct_midrange": 52.3,
-      "pct_extreme_low": 11.8,
-      "pct_extreme_high": 15.2
+      "mean": 0.526,
+      "std": 0.276,
+      "pct_midrange": 50.0,
+      "pct_extreme_low": 12.8,
+      "pct_extreme_high": 18.5
     },
     "aggression": {
-      "mean": 0.391,
-      "std": 0.285,
-      "pct_midrange": 40.4,
-      "pct_extreme_low": 28.3,
-      "pct_extreme_high": 11.3
+      "mean": 0.408,
+      "std": 0.298,
+      "pct_midrange": 39.3,
+      "pct_extreme_low": 28.4,
+      "pct_extreme_high": 14.4
     }
   },
   "per_mood": {
     "Foundation": {
-      "count": 785,
-      "cosine_diversity": 0.199,
+      "count": 926,
+      "cosine_diversity": 0.2216,
       "dims": {
         "brightness": {
-          "mean": 0.452,
-          "std": 0.233,
-          "pct_midrange": 62.5,
-          "pct_extreme_low": 11.6,
-          "pct_extreme_high": 9.9
+          "mean": 0.459,
+          "std": 0.262,
+          "pct_midrange": 56.5,
+          "pct_extreme_low": 15.7,
+          "pct_extreme_high": 14.4
         },
         "warmth": {
-          "mean": 0.57,
-          "std": 0.229,
-          "pct_midrange": 54.4,
-          "pct_extreme_low": 7.0,
-          "pct_extreme_high": 9.7
+          "mean": 0.555,
+          "std": 0.261,
+          "pct_midrange": 49.0,
+          "pct_extreme_low": 12.5,
+          "pct_extreme_high": 13.9
         },
         "movement": {
-          "mean": 0.364,
-          "std": 0.265,
-          "pct_midrange": 39.7,
-          "pct_extreme_low": 26.0,
-          "pct_extreme_high": 9.4
+          "mean": 0.398,
+          "std": 0.287,
+          "pct_midrange": 39.3,
+          "pct_extreme_low": 25.3,
+          "pct_extreme_high": 14.4
         },
         "density": {
-          "mean": 0.531,
-          "std": 0.236,
-          "pct_midrange": 58.0,
-          "pct_extreme_low": 6.2,
-          "pct_extreme_high": 12.4
+          "mean": 0.529,
+          "std": 0.261,
+          "pct_midrange": 53.1,
+          "pct_extreme_low": 10.5,
+          "pct_extreme_high": 16.5
         },
         "space": {
-          "mean": 0.358,
-          "std": 0.255,
-          "pct_midrange": 43.2,
-          "pct_extreme_low": 22.5,
-          "pct_extreme_high": 7.9
+          "mean": 0.393,
+          "std": 0.285,
+          "pct_midrange": 40.6,
+          "pct_extreme_low": 23.3,
+          "pct_extreme_high": 13.7
         },
         "aggression": {
-          "mean": 0.358,
-          "std": 0.28,
-          "pct_midrange": 37.5,
-          "pct_extreme_low": 33.1,
-          "pct_extreme_high": 9.7
+          "mean": 0.384,
+          "std": 0.301,
+          "pct_midrange": 35.6,
+          "pct_extreme_low": 33.4,
+          "pct_extreme_high": 14.3
         }
       }
     },
     "Atmosphere": {
-      "count": 735,
-      "cosine_diversity": 0.1967,
+      "count": 911,
+      "cosine_diversity": 0.2166,
       "dims": {
         "brightness": {
-          "mean": 0.454,
-          "std": 0.238,
-          "pct_midrange": 59.2,
-          "pct_extreme_low": 10.9,
-          "pct_extreme_high": 9.8
+          "mean": 0.467,
+          "std": 0.275,
+          "pct_midrange": 51.3,
+          "pct_extreme_low": 16.2,
+          "pct_extreme_high": 16.2
         },
         "warmth": {
-          "mean": 0.512,
-          "std": 0.227,
-          "pct_midrange": 62.9,
-          "pct_extreme_low": 8.2,
-          "pct_extreme_high": 7.3
+          "mean": 0.519,
+          "std": 0.26,
+          "pct_midrange": 55.9,
+          "pct_extreme_low": 12.6,
+          "pct_extreme_high": 14.1
         },
         "movement": {
-          "mean": 0.388,
-          "std": 0.259,
-          "pct_midrange": 46.0,
-          "pct_extreme_low": 20.4,
-          "pct_extreme_high": 6.3
+          "mean": 0.437,
+          "std": 0.29,
+          "pct_midrange": 43.4,
+          "pct_extreme_low": 19.9,
+          "pct_extreme_high": 14.7
         },
         "density": {
-          "mean": 0.454,
-          "std": 0.246,
-          "pct_midrange": 55.0,
-          "pct_extreme_low": 13.2,
-          "pct_extreme_high": 9.1
+          "mean": 0.45,
+          "std": 0.265,
+          "pct_midrange": 51.7,
+          "pct_extreme_low": 18.2,
+          "pct_extreme_high": 11.7
         },
         "space": {
-          "mean": 0.575,
-          "std": 0.24,
-          "pct_midrange": 50.1,
-          "pct_extreme_low": 6.9,
-          "pct_extreme_high": 14.3
+          "mean": 0.605,
+          "std": 0.259,
+          "pct_midrange": 44.9,
+          "pct_extreme_low": 7.7,
+          "pct_extreme_high": 24.3
         },
         "aggression": {
-          "mean": 0.255,
-          "std": 0.284,
-          "pct_midrange": 17.8,
-          "pct_extreme_low": 58.2,
-          "pct_extreme_high": 8.0
+          "mean": 0.289,
+          "std": 0.307,
+          "pct_midrange": 19.5,
+          "pct_extreme_low": 55.7,
+          "pct_extreme_high": 12.0
         }
       }
     },
     "Entangled": {
-      "count": 3231,
-      "cosine_diversity": 0.1638,
+      "count": 3323,
+      "cosine_diversity": 0.1536,
       "dims": {
         "brightness": {
           "mean": 0.52,
-          "std": 0.236,
-          "pct_midrange": 62.8,
-          "pct_extreme_low": 11.5,
-          "pct_extreme_high": 10.1
+          "std": 0.241,
+          "pct_midrange": 61.7,
+          "pct_extreme_low": 12.1,
+          "pct_extreme_high": 10.9
         },
         "warmth": {
-          "mean": 0.53,
-          "std": 0.244,
-          "pct_midrange": 60.7,
-          "pct_extreme_low": 9.7,
-          "pct_extreme_high": 13.5
+          "mean": 0.529,
+          "std": 0.249,
+          "pct_midrange": 59.7,
+          "pct_extreme_low": 10.5,
+          "pct_extreme_high": 14.1
         },
         "movement": {
-          "mean": 0.572,
-          "std": 0.223,
-          "pct_midrange": 63.0,
-          "pct_extreme_low": 7.1,
-          "pct_extreme_high": 12.5
+          "mean": 0.571,
+          "std": 0.226,
+          "pct_midrange": 62.5,
+          "pct_extreme_low": 7.5,
+          "pct_extreme_high": 13.0
         },
         "density": {
-          "mean": 0.586,
-          "std": 0.236,
-          "pct_midrange": 58.7,
-          "pct_extreme_low": 9.0,
-          "pct_extreme_high": 15.4
+          "mean": 0.585,
+          "std": 0.241,
+          "pct_midrange": 57.9,
+          "pct_extreme_low": 9.6,
+          "pct_extreme_high": 16.0
         },
         "space": {
           "mean": 0.529,
-          "std": 0.236,
-          "pct_midrange": 62.3,
-          "pct_extreme_low": 8.6,
-          "pct_extreme_high": 12.2
+          "std": 0.24,
+          "pct_midrange": 61.5,
+          "pct_extreme_low": 9.1,
+          "pct_extreme_high": 12.9
         },
         "aggression": {
-          "mean": 0.442,
-          "std": 0.259,
-          "pct_midrange": 53.1,
-          "pct_extreme_low": 16.3,
-          "pct_extreme_high": 11.1
+          "mean": 0.444,
+          "std": 0.263,
+          "pct_midrange": 52.4,
+          "pct_extreme_low": 16.8,
+          "pct_extreme_high": 11.9
         }
       }
     },
     "Prism": {
-      "count": 763,
-      "cosine_diversity": 0.2025,
+      "count": 944,
+      "cosine_diversity": 0.2231,
       "dims": {
         "brightness": {
-          "mean": 0.65,
-          "std": 0.248,
-          "pct_midrange": 40.6,
-          "pct_extreme_low": 7.7,
-          "pct_extreme_high": 28.4
+          "mean": 0.628,
+          "std": 0.286,
+          "pct_midrange": 35.7,
+          "pct_extreme_low": 13.6,
+          "pct_extreme_high": 32.0
         },
         "warmth": {
-          "mean": 0.341,
-          "std": 0.25,
-          "pct_midrange": 39.2,
-          "pct_extreme_low": 25.4,
-          "pct_extreme_high": 8.9
+          "mean": 0.38,
+          "std": 0.29,
+          "pct_midrange": 36.0,
+          "pct_extreme_low": 27.0,
+          "pct_extreme_high": 15.6
         },
         "movement": {
-          "mean": 0.419,
-          "std": 0.285,
-          "pct_midrange": 46.8,
-          "pct_extreme_low": 21.2,
-          "pct_extreme_high": 9.6
+          "mean": 0.443,
+          "std": 0.304,
+          "pct_midrange": 43.3,
+          "pct_extreme_low": 23.0,
+          "pct_extreme_high": 15.6
         },
         "density": {
-          "mean": 0.417,
-          "std": 0.247,
-          "pct_midrange": 52.2,
-          "pct_extreme_low": 18.0,
-          "pct_extreme_high": 7.9
+          "mean": 0.445,
+          "std": 0.276,
+          "pct_midrange": 48.2,
+          "pct_extreme_low": 19.6,
+          "pct_extreme_high": 14.4
         },
         "space": {
-          "mean": 0.441,
-          "std": 0.267,
-          "pct_midrange": 51.5,
-          "pct_extreme_low": 20.8,
-          "pct_extreme_high": 7.7
+          "mean": 0.467,
+          "std": 0.288,
+          "pct_midrange": 48.2,
+          "pct_extreme_low": 21.5,
+          "pct_extreme_high": 14.2
         },
         "aggression": {
-          "mean": 0.329,
-          "std": 0.289,
-          "pct_midrange": 23.9,
-          "pct_extreme_low": 39.7,
-          "pct_extreme_high": 8.5
+          "mean": 0.378,
+          "std": 0.317,
+          "pct_midrange": 25.8,
+          "pct_extreme_low": 36.7,
+          "pct_extreme_high": 14.9
         }
       }
     },
     "Flux": {
-      "count": 807,
-      "cosine_diversity": 0.1801,
+      "count": 949,
+      "cosine_diversity": 0.1871,
       "dims": {
         "brightness": {
-          "mean": 0.556,
-          "std": 0.251,
-          "pct_midrange": 59.6,
-          "pct_extreme_low": 12.5,
-          "pct_extreme_high": 17.1
+          "mean": 0.544,
+          "std": 0.274,
+          "pct_midrange": 54.1,
+          "pct_extreme_low": 16.9,
+          "pct_extreme_high": 19.9
         },
         "warmth": {
-          "mean": 0.403,
-          "std": 0.242,
-          "pct_midrange": 55.9,
-          "pct_extreme_low": 21.1,
-          "pct_extreme_high": 7.8
+          "mean": 0.416,
+          "std": 0.268,
+          "pct_midrange": 51.0,
+          "pct_extreme_low": 23.8,
+          "pct_extreme_high": 12.2
         },
         "movement": {
-          "mean": 0.693,
-          "std": 0.257,
-          "pct_midrange": 28.0,
-          "pct_extreme_low": 7.1,
-          "pct_extreme_high": 38.9
+          "mean": 0.685,
+          "std": 0.27,
+          "pct_midrange": 28.3,
+          "pct_extreme_low": 8.7,
+          "pct_extreme_high": 40.8
         },
         "density": {
-          "mean": 0.547,
-          "std": 0.262,
-          "pct_midrange": 53.3,
-          "pct_extreme_low": 13.1,
-          "pct_extreme_high": 18.1
+          "mean": 0.555,
+          "std": 0.28,
+          "pct_midrange": 48.7,
+          "pct_extreme_low": 15.3,
+          "pct_extreme_high": 22.9
         },
         "space": {
-          "mean": 0.426,
-          "std": 0.275,
-          "pct_midrange": 46.1,
-          "pct_extreme_low": 18.6,
-          "pct_extreme_high": 13.8
+          "mean": 0.445,
+          "std": 0.292,
+          "pct_midrange": 44.0,
+          "pct_extreme_low": 20.0,
+          "pct_extreme_high": 17.6
         },
         "aggression": {
-          "mean": 0.553,
-          "std": 0.268,
-          "pct_midrange": 49.9,
-          "pct_extreme_low": 9.0,
-          "pct_extreme_high": 22.7
+          "mean": 0.576,
+          "std": 0.28,
+          "pct_midrange": 46.3,
+          "pct_extreme_low": 9.8,
+          "pct_extreme_high": 28.3
         }
       }
     },
     "Aether": {
-      "count": 691,
-      "cosine_diversity": 0.1963,
+      "count": 742,
+      "cosine_diversity": 0.2028,
       "dims": {
         "brightness": {
-          "mean": 0.449,
-          "std": 0.265,
-          "pct_midrange": 53.0,
-          "pct_extreme_low": 20.0,
-          "pct_extreme_high": 8.7
+          "mean": 0.451,
+          "std": 0.276,
+          "pct_midrange": 50.3,
+          "pct_extreme_low": 21.7,
+          "pct_extreme_high": 10.9
         },
         "warmth": {
-          "mean": 0.455,
-          "std": 0.235,
-          "pct_midrange": 63.2,
-          "pct_extreme_low": 14.5,
-          "pct_extreme_high": 6.1
+          "mean": 0.454,
+          "std": 0.249,
+          "pct_midrange": 59.8,
+          "pct_extreme_low": 16.8,
+          "pct_extreme_high": 8.2
         },
         "movement": {
-          "mean": 0.426,
-          "std": 0.246,
-          "pct_midrange": 49.6,
-          "pct_extreme_low": 14.6,
-          "pct_extreme_high": 5.5
+          "mean": 0.439,
+          "std": 0.257,
+          "pct_midrange": 48.5,
+          "pct_extreme_low": 15.1,
+          "pct_extreme_high": 8.2
         },
         "density": {
-          "mean": 0.464,
-          "std": 0.271,
-          "pct_midrange": 44.4,
+          "mean": 0.474,
+          "std": 0.276,
+          "pct_midrange": 44.5,
           "pct_extreme_low": 16.2,
-          "pct_extreme_high": 12.0
+          "pct_extreme_high": 13.9
         },
         "space": {
-          "mean": 0.744,
-          "std": 0.237,
-          "pct_midrange": 26.8,
-          "pct_extreme_low": 3.6,
-          "pct_extreme_high": 49.2
+          "mean": 0.737,
+          "std": 0.245,
+          "pct_midrange": 27.1,
+          "pct_extreme_low": 4.6,
+          "pct_extreme_high": 49.3
         },
         "aggression": {
-          "mean": 0.232,
-          "std": 0.264,
-          "pct_midrange": 21.1,
-          "pct_extreme_low": 55.3,
-          "pct_extreme_high": 8.2
+          "mean": 0.257,
+          "std": 0.284,
+          "pct_midrange": 22.5,
+          "pct_extreme_low": 52.8,
+          "pct_extreme_high": 10.4
         }
       }
     },
     "Family": {
-      "count": 292,
-      "cosine_diversity": 0.1914,
+      "count": 344,
+      "cosine_diversity": 0.2064,
       "dims": {
         "brightness": {
-          "mean": 0.492,
-          "std": 0.268,
-          "pct_midrange": 52.1,
-          "pct_extreme_low": 15.4,
-          "pct_extreme_high": 14.4
+          "mean": 0.502,
+          "std": 0.291,
+          "pct_midrange": 46.2,
+          "pct_extreme_low": 18.6,
+          "pct_extreme_high": 19.8
         },
         "warmth": {
-          "mean": 0.529,
-          "std": 0.251,
-          "pct_midrange": 58.2,
-          "pct_extreme_low": 14.0,
-          "pct_extreme_high": 9.6
+          "mean": 0.534,
+          "std": 0.273,
+          "pct_midrange": 52.9,
+          "pct_extreme_low": 16.6,
+          "pct_extreme_high": 15.1
         },
         "movement": {
-          "mean": 0.505,
-          "std": 0.24,
-          "pct_midrange": 53.8,
-          "pct_extreme_low": 9.9,
-          "pct_extreme_high": 7.5
+          "mean": 0.502,
+          "std": 0.255,
+          "pct_midrange": 52.0,
+          "pct_extreme_low": 13.1,
+          "pct_extreme_high": 10.5
         },
         "density": {
-          "mean": 0.48,
-          "std": 0.244,
-          "pct_midrange": 59.2,
-          "pct_extreme_low": 13.0,
-          "pct_extreme_high": 7.5
+          "mean": 0.498,
+          "std": 0.268,
+          "pct_midrange": 53.8,
+          "pct_extreme_low": 15.1,
+          "pct_extreme_high": 14.0
         },
         "space": {
-          "mean": 0.574,
-          "std": 0.242,
-          "pct_midrange": 51.0,
-          "pct_extreme_low": 7.2,
-          "pct_extreme_high": 14.4
+          "mean": 0.577,
+          "std": 0.253,
+          "pct_midrange": 49.7,
+          "pct_extreme_low": 8.7,
+          "pct_extreme_high": 18.3
         },
         "aggression": {
-          "mean": 0.346,
-          "std": 0.281,
-          "pct_midrange": 28.4,
-          "pct_extreme_low": 31.5,
-          "pct_extreme_high": 9.2
+          "mean": 0.379,
+          "std": 0.301,
+          "pct_midrange": 29.1,
+          "pct_extreme_low": 30.8,
+          "pct_extreme_high": 14.0
         }
       }
     }
   },
   "top_10_duplicate_clusters": [
     {
-      "name": "Prophecy Harp",
-      "mood": "Entangled",
+      "name": "5X DARK COLD KINETIC DENSE VIOLENT ATH 11",
+      "mood": "Aether",
       "dna": {
-        "brightness": 0.85,
-        "warmth": 0.4,
-        "movement": 0.55,
-        "density": 0.42,
-        "space": 0.75,
-        "aggression": 0.06
+        "brightness": 0.928,
+        "warmth": 0.954,
+        "movement": 0.088,
+        "density": 0.454,
+        "space": 0.905,
+        "aggression": 0.071
       },
       "close_neighbors": 1,
       "neighbor_names": [
-        "Maqam Siren"
+        "5X DARK COLD KINETIC DENSE VIOLENT PRM 8"
       ]
     },
     {
-      "name": "Maqam Siren",
-      "mood": "Entangled",
-      "dna": {
-        "brightness": 0.84,
-        "warmth": 0.4,
-        "movement": 0.58,
-        "density": 0.42,
-        "space": 0.75,
-        "aggression": 0.07
-      },
-      "close_neighbors": 1,
-      "neighbor_names": [
-        "Prophecy Harp"
-      ]
-    },
-    {
-      "name": "Gill Pluck Bloom",
-      "mood": "Entangled",
-      "dna": {
-        "brightness": 0.318,
-        "warmth": 0.8,
-        "movement": 0.517,
-        "density": 0.633,
-        "space": 0.535,
-        "aggression": 0.3
-      },
-      "close_neighbors": 1,
-      "neighbor_names": [
-        "Axolotl Meddling"
-      ]
-    },
-    {
-      "name": "Fold Echo",
-      "mood": "Entangled",
-      "dna": {
-        "brightness": 0.55,
-        "warmth": 0.5,
-        "movement": 0.55,
-        "density": 0.55,
-        "space": 0.725,
-        "aggression": 0.3
-      },
-      "close_neighbors": 1,
-      "neighbor_names": [
-        "Crease Echo"
-      ]
-    },
-    {
-      "name": "Axolotl Meddling",
-      "mood": "Entangled",
-      "dna": {
-        "brightness": 0.3,
-        "warmth": 0.835,
-        "movement": 0.517,
-        "density": 0.65,
-        "space": 0.517,
-        "aggression": 0.282
-      },
-      "close_neighbors": 1,
-      "neighbor_names": [
-        "Gill Pluck Bloom"
-      ]
-    },
-    {
-      "name": "Bob Snap Dub Kit",
-      "mood": "Foundation",
-      "dna": {
-        "brightness": 0.52,
-        "warmth": 0.72,
-        "movement": 0.55,
-        "density": 0.68,
-        "space": 0.42,
-        "aggression": 0.42
-      },
-      "close_neighbors": 1,
-      "neighbor_names": [
-        "Snap Bob Dub Kit"
-      ]
-    },
-    {
-      "name": "Crease Echo",
-      "mood": "Entangled",
-      "dna": {
-        "brightness": 0.55,
-        "warmth": 0.5,
-        "movement": 0.55,
-        "density": 0.55,
-        "space": 0.725,
-        "aggression": 0.3
-      },
-      "close_neighbors": 1,
-      "neighbor_names": [
-        "Fold Echo"
-      ]
-    },
-    {
-      "name": "Snap Bob Dub Kit",
-      "mood": "Foundation",
-      "dna": {
-        "brightness": 0.5,
-        "warmth": 0.7,
-        "movement": 0.52,
-        "density": 0.68,
-        "space": 0.42,
-        "aggression": 0.42
-      },
-      "close_neighbors": 1,
-      "neighbor_names": [
-        "Bob Snap Dub Kit"
-      ]
-    },
-    {
-      "name": "Sparse Trace Raw",
+      "name": "5X DARK COLD KINETIC DENSE VIOLENT PRM 8",
       "mood": "Prism",
       "dna": {
-        "brightness": 0.759,
-        "warmth": 0.119,
-        "movement": 0.261,
-        "density": 0.118,
-        "space": 0.981,
-        "aggression": 0.088
+        "brightness": 0.914,
+        "warmth": 0.924,
+        "movement": 0.08,
+        "density": 0.472,
+        "space": 0.919,
+        "aggression": 0.085
+      },
+      "close_neighbors": 1,
+      "neighbor_names": [
+        "5X DARK COLD KINETIC DENSE VIOLENT ATH 11"
+      ]
+    },
+    {
+      "name": "Crystal Banjo",
+      "mood": "Prism",
+      "dna": {
+        "brightness": 0.87,
+        "warmth": 0.34,
+        "movement": 0.3,
+        "density": 0.25,
+        "space": 0.39,
+        "aggression": 0.09
       },
       "close_neighbors": 0,
       "neighbor_names": []
     },
     {
-      "name": "Astral Pad",
+      "name": "KINETIC FLOOR",
+      "mood": "Foundation",
+      "dna": {
+        "brightness": 0.517,
+        "warmth": 0.783,
+        "movement": 0.923,
+        "density": 0.716,
+        "space": 0.939,
+        "aggression": 0.632
+      },
+      "close_neighbors": 0,
+      "neighbor_names": []
+    },
+    {
+      "name": "THRUST FLOOR",
+      "mood": "Foundation",
+      "dna": {
+        "brightness": 0.365,
+        "warmth": 0.785,
+        "movement": 0.905,
+        "density": 0.532,
+        "space": 0.618,
+        "aggression": 0.133
+      },
+      "close_neighbors": 0,
+      "neighbor_names": []
+    },
+    {
+      "name": "HOT DENSE STILL PRI 05",
+      "mood": "Prism",
+      "dna": {
+        "brightness": 0.336,
+        "warmth": 0.911,
+        "movement": 0.06,
+        "density": 0.94,
+        "space": 0.643,
+        "aggression": 0.432
+      },
+      "close_neighbors": 0,
+      "neighbor_names": []
+    },
+    {
+      "name": "Rascal Crystal Vow",
+      "mood": "Entangled",
+      "dna": {
+        "brightness": 0.92,
+        "warmth": 0.48,
+        "movement": 0.45,
+        "density": 0.7,
+        "space": 0.84,
+        "aggression": 0.3
+      },
+      "close_neighbors": 0,
+      "neighbor_names": []
+    },
+    {
+      "name": "VORTEX 8",
+      "mood": "Entangled",
+      "dna": {
+        "brightness": 0.674,
+        "warmth": 0.397,
+        "movement": 0.944,
+        "density": 0.846,
+        "space": 0.557,
+        "aggression": 0.545
+      },
+      "close_neighbors": 0,
+      "neighbor_names": []
+    },
+    {
+      "name": "BRIGHT_WARM_KINETIC_SPARSE_GENTLE_ATM_1",
       "mood": "Atmosphere",
       "dna": {
-        "brightness": 0.54,
-        "warmth": 0.408,
-        "movement": 0.09,
-        "density": 0.163,
-        "space": 0.346,
-        "aggression": 0.083
+        "brightness": 0.9541,
+        "warmth": 0.9032,
+        "movement": 0.8712,
+        "density": 0.1243,
+        "space": 0.3342,
+        "aggression": 0.0992
+      },
+      "close_neighbors": 0,
+      "neighbor_names": []
+    },
+    {
+      "name": "Solar Alone Low",
+      "mood": "Atmosphere",
+      "dna": {
+        "brightness": 0.583,
+        "warmth": 0.844,
+        "movement": 0.429,
+        "density": 0.056,
+        "space": 0.791,
+        "aggression": 0.205
       },
       "close_neighbors": 0,
       "neighbor_names": []
     }
   ],
   "repair_recommendations": [
-    "[WARNING] Fleet cosine diversity score 0.1884 is below healthy threshold (\u22650.20)"
+    "[OK] Fleet cosine diversity score 0.2194 is acceptable (0.20\u20130.30)"
   ]
 }

@@ -1,0 +1,51 @@
+{
+  "name": "COLD STILL SPARSE INTIMATE GENTLE ENT2 4",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBSCURA",
+    "ONSET"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.176,
+      "macro_movement": 0.063,
+      "macro_coupling": 0.104,
+      "macro_space": 0.052
+    },
+    "ONSET": {
+      "macro_character": 0.202,
+      "macro_movement": 0.085,
+      "macro_coupling": 0.132,
+      "macro_space": 0.078
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBSCURA",
+    "target": "ONSET",
+    "amount": 0.104
+  },
+  "dna": {
+    "brightness": 0.331,
+    "warmth": 0.02,
+    "movement": 0.063,
+    "density": 0.151,
+    "space": 0.052,
+    "aggression": 0.057
+  },
+  "macros": {
+    "CHARACTER": 0.176,
+    "MOVEMENT": 0.063,
+    "COUPLING": 0.104,
+    "SPACE": 0.052
+  },
+  "tags": [
+    "entangled",
+    "cold",
+    "still",
+    "sparse",
+    "intimate",
+    "gentle"
+  ]
+}

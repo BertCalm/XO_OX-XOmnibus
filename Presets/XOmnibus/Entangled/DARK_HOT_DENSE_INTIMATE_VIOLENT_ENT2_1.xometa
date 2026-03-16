@@ -1,0 +1,51 @@
+{
+  "name": "DARK HOT DENSE INTIMATE VIOLENT ENT2 1",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORGANON",
+    "OCELOT"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.497,
+      "macro_movement": 0.644,
+      "macro_coupling": 0.968,
+      "macro_space": 0.051
+    },
+    "OCELOT": {
+      "macro_character": 0.471,
+      "macro_movement": 0.602,
+      "macro_coupling": 0.966,
+      "macro_space": 0.024
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORGANON",
+    "target": "OCELOT",
+    "amount": 0.968
+  },
+  "dna": {
+    "brightness": 0.065,
+    "warmth": 0.929,
+    "movement": 0.644,
+    "density": 0.989,
+    "space": 0.051,
+    "aggression": 0.948
+  },
+  "macros": {
+    "CHARACTER": 0.497,
+    "MOVEMENT": 0.644,
+    "COUPLING": 0.968,
+    "SPACE": 0.051
+  },
+  "tags": [
+    "entangled",
+    "dark",
+    "warm",
+    "dense",
+    "intimate",
+    "violent"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "DARK HOT DENSE INTIMATE GENTLE FAM2 1",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ORGANON",
+    "OSPREY"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.516,
+      "macro_movement": 0.685,
+      "macro_coupling": 0.503,
+      "macro_space": 0.066
+    },
+    "OSPREY": {
+      "macro_character": 0.496,
+      "macro_movement": 0.662,
+      "macro_coupling": 0.48,
+      "macro_space": 0.082
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "ORGANON",
+    "target": "OSPREY",
+    "amount": 0.503
+  },
+  "dna": {
+    "brightness": 0.119,
+    "warmth": 0.913,
+    "movement": 0.685,
+    "density": 0.956,
+    "space": 0.066,
+    "aggression": 0.05
+  },
+  "macros": {
+    "CHARACTER": 0.516,
+    "MOVEMENT": 0.685,
+    "COUPLING": 0.503,
+    "SPACE": 0.066
+  },
+  "tags": [
+    "family",
+    "dark",
+    "warm",
+    "dense",
+    "intimate",
+    "gentle"
+  ]
+}

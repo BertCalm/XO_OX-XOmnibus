@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD STILL DENSE GENTLE FAM2 2",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ORGANON",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.05,
+      "macro_movement": 0.082,
+      "macro_coupling": 0.471,
+      "macro_space": 0.611
+    },
+    "ODYSSEY": {
+      "macro_character": 0.069,
+      "macro_movement": 0.056,
+      "macro_coupling": 0.497,
+      "macro_space": 0.605
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ORGANON",
+    "target": "ODYSSEY",
+    "amount": 0.471
+  },
+  "dna": {
+    "brightness": 0.02,
+    "warmth": 0.08,
+    "movement": 0.082,
+    "density": 0.887,
+    "space": 0.611,
+    "aggression": 0.055
+  },
+  "macros": {
+    "CHARACTER": 0.05,
+    "MOVEMENT": 0.082,
+    "COUPLING": 0.471,
+    "SPACE": 0.611
+  },
+  "tags": [
+    "family",
+    "dark",
+    "cold",
+    "still",
+    "dense",
+    "gentle"
+  ]
+}

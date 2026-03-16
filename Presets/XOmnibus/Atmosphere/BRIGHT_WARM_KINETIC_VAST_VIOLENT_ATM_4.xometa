@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_WARM_KINETIC_VAST_VIOLENT_ATM_4",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ODDFELIX",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.9182,
+      "macro_movement": 0.9083,
+      "macro_coupling": 0.4946,
+      "macro_space": 0.99
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.9685,
+      "macro_movement": 0.9046,
+      "macro_coupling": 0.4908,
+      "macro_space": 0.977
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ODDFELIX",
+    "target": "ODDOSCAR",
+    "amount": 0.672
+  },
+  "dna": {
+    "brightness": 0.9727,
+    "warmth": 0.9193,
+    "movement": 0.9082,
+    "density": 0.4892,
+    "space": 0.9796,
+    "aggression": 0.9157
+  },
+  "macros": {
+    "CHARACTER": 0.9434,
+    "MOVEMENT": 0.9064,
+    "COUPLING": 0.4927,
+    "SPACE": 0.9835
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "warm",
+    "kinetic",
+    "vast",
+    "violent"
+  ]
+}

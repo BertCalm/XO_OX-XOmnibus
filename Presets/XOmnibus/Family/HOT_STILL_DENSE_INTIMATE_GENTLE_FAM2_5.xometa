@@ -1,0 +1,51 @@
+{
+  "name": "HOT STILL DENSE INTIMATE GENTLE FAM2 5",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODDOSCAR",
+    "OSPREY"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.72,
+      "macro_movement": 0.02,
+      "macro_coupling": 0.522,
+      "macro_space": 0.048
+    },
+    "OSPREY": {
+      "macro_character": 0.671,
+      "macro_movement": 0.039,
+      "macro_coupling": 0.525,
+      "macro_space": 0.053
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ODDOSCAR",
+    "target": "OSPREY",
+    "amount": 0.522
+  },
+  "dna": {
+    "brightness": 0.486,
+    "warmth": 0.953,
+    "movement": 0.02,
+    "density": 0.99,
+    "space": 0.048,
+    "aggression": 0.054
+  },
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.02,
+    "COUPLING": 0.522,
+    "SPACE": 0.048
+  },
+  "tags": [
+    "family",
+    "warm",
+    "still",
+    "dense",
+    "intimate",
+    "gentle"
+  ]
+}

@@ -1,0 +1,289 @@
+{
+  "Foundation": {
+    "total": 926,
+    "dims": {
+      "brightness": {
+        "xlow_pct": 15.66,
+        "xhigh_pct": 14.36,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "warmth": {
+        "xlow_pct": 12.53,
+        "xhigh_pct": 13.93,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "movement": {
+        "xlow_pct": 25.27,
+        "xhigh_pct": 14.36,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "density": {
+        "xlow_pct": 10.48,
+        "xhigh_pct": 16.52,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "space": {
+        "xlow_pct": 23.33,
+        "xhigh_pct": 13.71,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "aggression": {
+        "xlow_pct": 33.37,
+        "xhigh_pct": 14.25,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      }
+    }
+  },
+  "Atmosphere": {
+    "total": 971,
+    "dims": {
+      "brightness": {
+        "xlow_pct": 15.24,
+        "xhigh_pct": 15.24,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "warmth": {
+        "xlow_pct": 11.84,
+        "xhigh_pct": 13.18,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "movement": {
+        "xlow_pct": 18.64,
+        "xhigh_pct": 13.8,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "density": {
+        "xlow_pct": 17.1,
+        "xhigh_pct": 11.02,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "space": {
+        "xlow_pct": 7.21,
+        "xhigh_pct": 22.76,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "aggression": {
+        "xlow_pct": 52.21,
+        "xhigh_pct": 11.23,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      }
+    }
+  },
+  "Entangled": {
+    "total": 3700,
+    "dims": {
+      "brightness": {
+        "xlow_pct": 10.89,
+        "xhigh_pct": 9.81,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "warmth": {
+        "xlow_pct": 9.41,
+        "xhigh_pct": 12.68,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "movement": {
+        "xlow_pct": 6.76,
+        "xhigh_pct": 11.68,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "density": {
+        "xlow_pct": 8.62,
+        "xhigh_pct": 14.41,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "space": {
+        "xlow_pct": 8.16,
+        "xhigh_pct": 11.62,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "aggression": {
+        "xlow_pct": 15.08,
+        "xhigh_pct": 10.68,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      }
+    }
+  },
+  "Prism": {
+    "total": 944,
+    "dims": {
+      "brightness": {
+        "xlow_pct": 13.56,
+        "xhigh_pct": 31.99,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "warmth": {
+        "xlow_pct": 27.01,
+        "xhigh_pct": 15.57,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "movement": {
+        "xlow_pct": 22.99,
+        "xhigh_pct": 15.57,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "density": {
+        "xlow_pct": 19.6,
+        "xhigh_pct": 14.41,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "space": {
+        "xlow_pct": 21.5,
+        "xhigh_pct": 14.19,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "aggression": {
+        "xlow_pct": 36.65,
+        "xhigh_pct": 14.94,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      }
+    }
+  },
+  "Flux": {
+    "total": 949,
+    "dims": {
+      "brightness": {
+        "xlow_pct": 16.86,
+        "xhigh_pct": 19.92,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "warmth": {
+        "xlow_pct": 23.81,
+        "xhigh_pct": 12.22,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "movement": {
+        "xlow_pct": 8.75,
+        "xhigh_pct": 40.78,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "density": {
+        "xlow_pct": 15.28,
+        "xhigh_pct": 22.87,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "space": {
+        "xlow_pct": 20.02,
+        "xhigh_pct": 17.6,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "aggression": {
+        "xlow_pct": 9.8,
+        "xhigh_pct": 28.35,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      }
+    }
+  },
+  "Aether": {
+    "total": 742,
+    "dims": {
+      "brightness": {
+        "xlow_pct": 21.7,
+        "xhigh_pct": 10.92,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "warmth": {
+        "xlow_pct": 16.85,
+        "xhigh_pct": 8.22,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "movement": {
+        "xlow_pct": 15.09,
+        "xhigh_pct": 8.22,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "density": {
+        "xlow_pct": 16.17,
+        "xhigh_pct": 13.88,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "space": {
+        "xlow_pct": 4.58,
+        "xhigh_pct": 49.33,
+        "xlow_warn": true,
+        "xhigh_warn": false
+      },
+      "aggression": {
+        "xlow_pct": 52.83,
+        "xhigh_pct": 10.38,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      }
+    }
+  },
+  "Family": {
+    "total": 344,
+    "dims": {
+      "brightness": {
+        "xlow_pct": 18.6,
+        "xhigh_pct": 19.77,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "warmth": {
+        "xlow_pct": 16.57,
+        "xhigh_pct": 15.12,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "movement": {
+        "xlow_pct": 13.08,
+        "xhigh_pct": 10.47,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "density": {
+        "xlow_pct": 15.12,
+        "xhigh_pct": 13.95,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "space": {
+        "xlow_pct": 8.72,
+        "xhigh_pct": 18.31,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      },
+      "aggression": {
+        "xlow_pct": 30.81,
+        "xhigh_pct": 13.95,
+        "xlow_warn": false,
+        "xhigh_warn": false
+      }
+    }
+  }
+}

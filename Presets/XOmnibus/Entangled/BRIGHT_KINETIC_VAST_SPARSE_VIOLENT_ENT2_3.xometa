@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT KINETIC VAST SPARSE VIOLENT ENT2 3",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORGANON",
+    "OVERDUB"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.656,
+      "macro_movement": 0.917,
+      "macro_coupling": 0.548,
+      "macro_space": 0.96
+    },
+    "OVERDUB": {
+      "macro_character": 0.649,
+      "macro_movement": 0.942,
+      "macro_coupling": 0.594,
+      "macro_space": 0.944
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ORGANON",
+    "target": "OVERDUB",
+    "amount": 0.548
+  },
+  "dna": {
+    "brightness": 0.961,
+    "warmth": 0.352,
+    "movement": 0.917,
+    "density": 0.133,
+    "space": 0.96,
+    "aggression": 0.963
+  },
+  "macros": {
+    "CHARACTER": 0.656,
+    "MOVEMENT": 0.917,
+    "COUPLING": 0.548,
+    "SPACE": 0.96
+  },
+  "tags": [
+    "entangled",
+    "bright",
+    "kinetic",
+    "sparse",
+    "vast",
+    "violent"
+  ]
+}

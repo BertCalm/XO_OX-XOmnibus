@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD STILL DENSE GENTLE FAM2 3",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OSPREY",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.032,
+      "macro_movement": 0.021,
+      "macro_coupling": 0.448,
+      "macro_space": 0.583
+    },
+    "ODYSSEY": {
+      "macro_character": 0.042,
+      "macro_movement": 0.02,
+      "macro_coupling": 0.41,
+      "macro_space": 0.588
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OSPREY",
+    "target": "ODYSSEY",
+    "amount": 0.448
+  },
+  "dna": {
+    "brightness": 0.023,
+    "warmth": 0.041,
+    "movement": 0.021,
+    "density": 0.876,
+    "space": 0.583,
+    "aggression": 0.02
+  },
+  "macros": {
+    "CHARACTER": 0.032,
+    "MOVEMENT": 0.021,
+    "COUPLING": 0.448,
+    "SPACE": 0.583
+  },
+  "tags": [
+    "family",
+    "dark",
+    "cold",
+    "still",
+    "dense",
+    "gentle"
+  ]
+}

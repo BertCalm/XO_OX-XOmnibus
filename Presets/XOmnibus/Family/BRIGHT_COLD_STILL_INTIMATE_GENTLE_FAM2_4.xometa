@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT COLD STILL INTIMATE GENTLE FAM2 4",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OPAL",
+    "OLE"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.503,
+      "macro_movement": 0.02,
+      "macro_coupling": 0.192,
+      "macro_space": 0.102
+    },
+    "OLE": {
+      "macro_character": 0.506,
+      "macro_movement": 0.03,
+      "macro_coupling": 0.207,
+      "macro_space": 0.121
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OPAL",
+    "target": "OLE",
+    "amount": 0.192
+  },
+  "dna": {
+    "brightness": 0.921,
+    "warmth": 0.084,
+    "movement": 0.02,
+    "density": 0.297,
+    "space": 0.102,
+    "aggression": 0.087
+  },
+  "macros": {
+    "CHARACTER": 0.503,
+    "MOVEMENT": 0.02,
+    "COUPLING": 0.192,
+    "SPACE": 0.102
+  },
+  "tags": [
+    "family",
+    "bright",
+    "cold",
+    "still",
+    "intimate",
+    "gentle"
+  ]
+}

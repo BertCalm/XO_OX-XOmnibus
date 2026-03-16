@@ -1,0 +1,51 @@
+{
+  "name": "DARK_STILL_SPARSE_VAST_GENTLE_ATM_1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OPTIC",
+    "OPAL"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.1904,
+      "macro_movement": 0.0499,
+      "macro_coupling": 0.02,
+      "macro_space": 0.9081
+    },
+    "OPAL": {
+      "macro_character": 0.1893,
+      "macro_movement": 0.0458,
+      "macro_coupling": 0.0257,
+      "macro_space": 0.9423
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OPTIC",
+    "target": "OPAL",
+    "amount": 0.558
+  },
+  "dna": {
+    "brightness": 0.0373,
+    "warmth": 0.3695,
+    "movement": 0.0283,
+    "density": 0.0203,
+    "space": 0.9241,
+    "aggression": 0.0853
+  },
+  "macros": {
+    "CHARACTER": 0.1899,
+    "MOVEMENT": 0.0479,
+    "COUPLING": 0.0229,
+    "SPACE": 0.9252
+  },
+  "tags": [
+    "atmosphere",
+    "dark",
+    "still",
+    "sparse",
+    "vast",
+    "gentle"
+  ]
+}

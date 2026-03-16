@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FND_5",
+  "mood": "Foundation",
+  "engines": [
+    "ODDFELIX",
+    "OBSIDIAN"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_COLD_KINETIC_DENSE_VIOLENT. Variant 5.",
+  "tags": [
+    "extreme",
+    "cold",
+    "kinetic",
+    "dark",
+    "diversity",
+    "violent",
+    "foundation",
+    "dense"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.0,
+      "macro_movement": 0.932,
+      "macro_coupling": 0.951,
+      "macro_space": 0.56
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.15,
+      "macro_movement": 0.898,
+      "macro_coupling": 0.965,
+      "macro_space": 0.405
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "ODDFELIX",
+    "target": "OBSIDIAN",
+    "amount": 0.903
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.025,
+    "warmth": 0.032,
+    "movement": 0.945,
+    "density": 0.965,
+    "space": 0.469,
+    "aggression": 0.878
+  },
+  "macros": {
+    "CHARACTER": 0.075,
+    "MOVEMENT": 0.915,
+    "COUPLING": 0.958,
+    "SPACE": 0.483
+  }
+}

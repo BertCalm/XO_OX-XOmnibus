@@ -1,0 +1,51 @@
+{
+  "name": "HOT_KINETIC_SPARSE_VAST_GENTLE_ATM_1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OPTIC",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.6493,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.0527,
+      "macro_space": 0.9692
+    },
+    "ORACLE": {
+      "macro_character": 0.6638,
+      "macro_movement": 0.9704,
+      "macro_coupling": 0.077,
+      "macro_space": 0.9872
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OPTIC",
+    "target": "ORACLE",
+    "amount": 0.411
+  },
+  "dna": {
+    "brightness": 0.3847,
+    "warmth": 0.9092,
+    "movement": 0.9613,
+    "density": 0.0617,
+    "space": 0.9602,
+    "aggression": 0.1115
+  },
+  "macros": {
+    "CHARACTER": 0.6565,
+    "MOVEMENT": 0.9802,
+    "COUPLING": 0.0648,
+    "SPACE": 0.9782
+  },
+  "tags": [
+    "atmosphere",
+    "warm",
+    "kinetic",
+    "sparse",
+    "vast",
+    "gentle"
+  ]
+}

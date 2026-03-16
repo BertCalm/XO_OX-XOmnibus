@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT COLD KINETIC DENSE VIOLENT ENT2 1",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OMBRE",
+    "OUROBOROS"
+  ],
+  "parameters": {
+    "OMBRE": {
+      "macro_character": 0.523,
+      "macro_movement": 0.924,
+      "macro_coupling": 0.966,
+      "macro_space": 0.449
+    },
+    "OUROBOROS": {
+      "macro_character": 0.506,
+      "macro_movement": 0.931,
+      "macro_coupling": 0.939,
+      "macro_space": 0.404
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OMBRE",
+    "target": "OUROBOROS",
+    "amount": 0.966
+  },
+  "dna": {
+    "brightness": 0.956,
+    "warmth": 0.091,
+    "movement": 0.924,
+    "density": 0.954,
+    "space": 0.449,
+    "aggression": 0.979
+  },
+  "macros": {
+    "CHARACTER": 0.523,
+    "MOVEMENT": 0.924,
+    "COUPLING": 0.966,
+    "SPACE": 0.449
+  },
+  "tags": [
+    "entangled",
+    "bright",
+    "cold",
+    "kinetic",
+    "dense",
+    "violent"
+  ]
+}

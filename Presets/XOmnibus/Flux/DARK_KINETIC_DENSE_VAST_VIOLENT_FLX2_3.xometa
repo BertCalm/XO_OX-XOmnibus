@@ -1,0 +1,51 @@
+{
+  "name": "DARK_KINETIC_DENSE_VAST_VIOLENT_FLX2_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OPAL",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.281,
+      "macro_movement": 0.9482,
+      "macro_coupling": 0.964,
+      "macro_space": 0.9337
+    },
+    "OCEANIC": {
+      "macro_character": 0.2803,
+      "macro_movement": 0.9521,
+      "macro_coupling": 0.9644,
+      "macro_space": 0.9443
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OPAL",
+    "target": "OCEANIC",
+    "amount": 0.483
+  },
+  "dna": {
+    "brightness": 0.082,
+    "warmth": 0.5318,
+    "movement": 0.9517,
+    "density": 0.9758,
+    "space": 0.9472,
+    "aggression": 0.9884
+  },
+  "macros": {
+    "CHARACTER": 0.2807,
+    "MOVEMENT": 0.9502,
+    "COUPLING": 0.9642,
+    "SPACE": 0.939
+  },
+  "tags": [
+    "flux",
+    "dark",
+    "kinetic",
+    "dense",
+    "vast",
+    "violent"
+  ]
+}

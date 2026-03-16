@@ -1,0 +1,51 @@
+{
+  "name": "DARK_COLD_KINETIC_SPARSE_VAST_ATM_1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORACLE",
+    "OPTIC"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.0745,
+      "macro_movement": 0.9262,
+      "macro_coupling": 0.0248,
+      "macro_space": 0.9196
+    },
+    "OPTIC": {
+      "macro_character": 0.0575,
+      "macro_movement": 0.9255,
+      "macro_coupling": 0.02,
+      "macro_space": 0.921
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ORACLE",
+    "target": "OPTIC",
+    "amount": 0.753
+  },
+  "dna": {
+    "brightness": 0.0536,
+    "warmth": 0.1075,
+    "movement": 0.8973,
+    "density": 0.0226,
+    "space": 0.8932,
+    "aggression": 0.4313
+  },
+  "macros": {
+    "CHARACTER": 0.066,
+    "MOVEMENT": 0.9259,
+    "COUPLING": 0.0224,
+    "SPACE": 0.9203
+  },
+  "tags": [
+    "atmosphere",
+    "dark",
+    "cold",
+    "kinetic",
+    "sparse",
+    "vast"
+  ]
+}

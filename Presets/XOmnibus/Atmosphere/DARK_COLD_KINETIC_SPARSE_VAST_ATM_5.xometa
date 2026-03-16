@@ -1,0 +1,51 @@
+{
+  "name": "DARK_COLD_KINETIC_SPARSE_VAST_ATM_5",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OCEANIC",
+    "OBSCURA"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.1196,
+      "macro_movement": 0.8879,
+      "macro_coupling": 0.1408,
+      "macro_space": 0.8955
+    },
+    "OBSCURA": {
+      "macro_character": 0.1137,
+      "macro_movement": 0.8857,
+      "macro_coupling": 0.1378,
+      "macro_space": 0.8912
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OCEANIC",
+    "target": "OBSCURA",
+    "amount": 0.425
+  },
+  "dna": {
+    "brightness": 0.093,
+    "warmth": 0.0881,
+    "movement": 0.8812,
+    "density": 0.1247,
+    "space": 0.8982,
+    "aggression": 0.4242
+  },
+  "macros": {
+    "CHARACTER": 0.1167,
+    "MOVEMENT": 0.8868,
+    "COUPLING": 0.1393,
+    "SPACE": 0.8933
+  },
+  "tags": [
+    "atmosphere",
+    "dark",
+    "cold",
+    "kinetic",
+    "sparse",
+    "vast"
+  ]
+}

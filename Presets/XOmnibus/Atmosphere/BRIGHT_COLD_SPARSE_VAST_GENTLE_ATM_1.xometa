@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_COLD_SPARSE_VAST_GENTLE_ATM_1",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OSPREY",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.4889,
+      "macro_movement": 0.5729,
+      "macro_coupling": 0.1216,
+      "macro_space": 0.99
+    },
+    "OCEANIC": {
+      "macro_character": 0.4544,
+      "macro_movement": 0.553,
+      "macro_coupling": 0.1161,
+      "macro_space": 0.9752
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OSPREY",
+    "target": "OCEANIC",
+    "amount": 0.842
+  },
+  "dna": {
+    "brightness": 0.918,
+    "warmth": 0.0362,
+    "movement": 0.575,
+    "density": 0.1182,
+    "space": 0.9733,
+    "aggression": 0.1174
+  },
+  "macros": {
+    "CHARACTER": 0.4717,
+    "MOVEMENT": 0.563,
+    "COUPLING": 0.1188,
+    "SPACE": 0.9826
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "cold",
+    "sparse",
+    "vast",
+    "gentle"
+  ]
+}

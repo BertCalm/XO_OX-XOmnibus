@@ -1,0 +1,51 @@
+{
+  "name": "DARK_HOT_DENSE_VAST_VIOLENT_FLX2_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ORIGAMI",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.4778,
+      "macro_movement": 0.3152,
+      "macro_coupling": 0.99,
+      "macro_space": 0.9411
+    },
+    "OBLIQUE": {
+      "macro_character": 0.4781,
+      "macro_movement": 0.2798,
+      "macro_coupling": 0.9598,
+      "macro_space": 0.9087
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ORIGAMI",
+    "target": "OBLIQUE",
+    "amount": 0.427
+  },
+  "dna": {
+    "brightness": 0.0749,
+    "warmth": 0.907,
+    "movement": 0.3093,
+    "density": 0.9834,
+    "space": 0.9307,
+    "aggression": 0.986
+  },
+  "macros": {
+    "CHARACTER": 0.4779,
+    "MOVEMENT": 0.2975,
+    "COUPLING": 0.9749,
+    "SPACE": 0.9249
+  },
+  "tags": [
+    "flux",
+    "dark",
+    "warm",
+    "dense",
+    "vast",
+    "violent"
+  ]
+}

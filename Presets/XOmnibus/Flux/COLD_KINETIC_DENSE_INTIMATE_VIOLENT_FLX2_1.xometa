@@ -1,0 +1,51 @@
+{
+  "name": "COLD_KINETIC_DENSE_INTIMATE_VIOLENT_FLX2_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OPTIC",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.3509,
+      "macro_movement": 0.9539,
+      "macro_coupling": 0.8569,
+      "macro_space": 0.02
+    },
+    "OVERWORLD": {
+      "macro_character": 0.3328,
+      "macro_movement": 0.9727,
+      "macro_coupling": 0.8665,
+      "macro_space": 0.0398
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OPTIC",
+    "target": "OVERWORLD",
+    "amount": 0.868
+  },
+  "dna": {
+    "brightness": 0.5392,
+    "warmth": 0.1068,
+    "movement": 0.9477,
+    "density": 0.8779,
+    "space": 0.0304,
+    "aggression": 0.9514
+  },
+  "macros": {
+    "CHARACTER": 0.3418,
+    "MOVEMENT": 0.9633,
+    "COUPLING": 0.8617,
+    "SPACE": 0.0299
+  },
+  "tags": [
+    "flux",
+    "cold",
+    "kinetic",
+    "dense",
+    "intimate",
+    "violent"
+  ]
+}

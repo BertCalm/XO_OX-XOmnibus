@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FLX2_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OVERDUB",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.6908,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.9488,
+      "macro_space": 0.0774
+    },
+    "OPTIC": {
+      "macro_character": 0.7053,
+      "macro_movement": 0.9616,
+      "macro_coupling": 0.9392,
+      "macro_space": 0.0631
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OVERDUB",
+    "target": "OPTIC",
+    "amount": 0.8
+  },
+  "dna": {
+    "brightness": 0.9774,
+    "warmth": 0.4547,
+    "movement": 0.9868,
+    "density": 0.9295,
+    "space": 0.0747,
+    "aggression": 0.9809
+  },
+  "macros": {
+    "CHARACTER": 0.6981,
+    "MOVEMENT": 0.9758,
+    "COUPLING": 0.944,
+    "SPACE": 0.0703
+  },
+  "tags": [
+    "flux",
+    "bright",
+    "kinetic",
+    "dense",
+    "intimate",
+    "violent"
+  ]
+}

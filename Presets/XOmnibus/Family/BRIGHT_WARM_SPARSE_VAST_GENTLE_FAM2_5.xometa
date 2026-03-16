@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT WARM SPARSE VAST GENTLE FAM2 5",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ORIGAMI",
+    "OHM"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.917,
+      "macro_movement": 0.39,
+      "macro_coupling": 0.051,
+      "macro_space": 0.947
+    },
+    "OHM": {
+      "macro_character": 0.895,
+      "macro_movement": 0.406,
+      "macro_coupling": 0.037,
+      "macro_space": 0.931
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORIGAMI",
+    "target": "OHM",
+    "amount": 0.051
+  },
+  "dna": {
+    "brightness": 0.937,
+    "warmth": 0.898,
+    "movement": 0.39,
+    "density": 0.024,
+    "space": 0.947,
+    "aggression": 0.078
+  },
+  "macros": {
+    "CHARACTER": 0.917,
+    "MOVEMENT": 0.39,
+    "COUPLING": 0.051,
+    "SPACE": 0.947
+  },
+  "tags": [
+    "family",
+    "bright",
+    "warm",
+    "sparse",
+    "vast",
+    "gentle"
+  ]
+}

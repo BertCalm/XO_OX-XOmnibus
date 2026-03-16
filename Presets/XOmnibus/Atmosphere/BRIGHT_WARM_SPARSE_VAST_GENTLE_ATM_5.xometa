@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_ATM_5",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORIGAMI",
+    "ORGANON"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.9057,
+      "macro_movement": 0.5195,
+      "macro_coupling": 0.02,
+      "macro_space": 0.871
+    },
+    "ORGANON": {
+      "macro_character": 0.9072,
+      "macro_movement": 0.4968,
+      "macro_coupling": 0.0341,
+      "macro_space": 0.8837
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORIGAMI",
+    "target": "ORGANON",
+    "amount": 0.724
+  },
+  "dna": {
+    "brightness": 0.948,
+    "warmth": 0.9226,
+    "movement": 0.507,
+    "density": 0.0333,
+    "space": 0.897,
+    "aggression": 0.0572
+  },
+  "macros": {
+    "CHARACTER": 0.9064,
+    "MOVEMENT": 0.5081,
+    "COUPLING": 0.027,
+    "SPACE": 0.8774
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "warm",
+    "sparse",
+    "vast",
+    "gentle"
+  ]
+}

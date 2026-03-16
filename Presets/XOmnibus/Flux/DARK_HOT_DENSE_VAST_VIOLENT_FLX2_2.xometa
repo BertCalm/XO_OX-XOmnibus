@@ -1,0 +1,51 @@
+{
+  "name": "DARK_HOT_DENSE_VAST_VIOLENT_FLX2_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBLONG",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.4873,
+      "macro_movement": 0.3286,
+      "macro_coupling": 0.9136,
+      "macro_space": 0.8916
+    },
+    "OBLIQUE": {
+      "macro_character": 0.4541,
+      "macro_movement": 0.3648,
+      "macro_coupling": 0.9239,
+      "macro_space": 0.8878
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBLONG",
+    "target": "OBLIQUE",
+    "amount": 0.537
+  },
+  "dna": {
+    "brightness": 0.0317,
+    "warmth": 0.899,
+    "movement": 0.349,
+    "density": 0.924,
+    "space": 0.8869,
+    "aggression": 0.8761
+  },
+  "macros": {
+    "CHARACTER": 0.4707,
+    "MOVEMENT": 0.3467,
+    "COUPLING": 0.9187,
+    "SPACE": 0.8897
+  },
+  "tags": [
+    "flux",
+    "dark",
+    "warm",
+    "dense",
+    "vast",
+    "violent"
+  ]
+}

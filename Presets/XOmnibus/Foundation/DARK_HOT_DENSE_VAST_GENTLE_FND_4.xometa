@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "DARK_HOT_DENSE_VAST_GENTLE_FND_4",
+  "mood": "Foundation",
+  "engines": [
+    "ORIGAMI",
+    "ODDOSCAR"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_HOT_DENSE_VAST_GENTLE. Variant 4.",
+  "tags": [
+    "hot",
+    "extreme",
+    "dark",
+    "diversity",
+    "vast",
+    "gentle",
+    "foundation",
+    "dense"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.207,
+      "macro_movement": 0.409,
+      "macro_coupling": 1.0,
+      "macro_space": 0.854
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.095,
+      "macro_movement": 0.419,
+      "macro_coupling": 0.788,
+      "macro_space": 0.889
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ORIGAMI",
+    "target": "ODDOSCAR",
+    "amount": 0.833
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.112,
+    "warmth": 0.94,
+    "movement": 0.359,
+    "density": 0.885,
+    "space": 0.907,
+    "aggression": 0.119
+  },
+  "macros": {
+    "CHARACTER": 0.151,
+    "MOVEMENT": 0.414,
+    "COUPLING": 0.894,
+    "SPACE": 0.871
+  }
+}

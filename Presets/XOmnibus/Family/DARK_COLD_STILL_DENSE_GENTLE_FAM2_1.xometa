@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD STILL DENSE GENTLE FAM2 1",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ORGANON",
+    "OHM"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.04,
+      "macro_movement": 0.053,
+      "macro_coupling": 0.46,
+      "macro_space": 0.599
+    },
+    "OHM": {
+      "macro_character": 0.053,
+      "macro_movement": 0.077,
+      "macro_coupling": 0.433,
+      "macro_space": 0.657
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ORGANON",
+    "target": "OHM",
+    "amount": 0.46
+  },
+  "dna": {
+    "brightness": 0.034,
+    "warmth": 0.046,
+    "movement": 0.053,
+    "density": 0.881,
+    "space": 0.599,
+    "aggression": 0.038
+  },
+  "macros": {
+    "CHARACTER": 0.04,
+    "MOVEMENT": 0.053,
+    "COUPLING": 0.46,
+    "SPACE": 0.599
+  },
+  "tags": [
+    "family",
+    "dark",
+    "cold",
+    "still",
+    "dense",
+    "gentle"
+  ]
+}

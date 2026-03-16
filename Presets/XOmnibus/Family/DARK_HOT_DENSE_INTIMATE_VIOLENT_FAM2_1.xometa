@@ -1,0 +1,51 @@
+{
+  "name": "DARK HOT DENSE INTIMATE VIOLENT FAM2 1",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OLE",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.509,
+      "macro_movement": 0.377,
+      "macro_coupling": 0.952,
+      "macro_space": 0.035
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.533,
+      "macro_movement": 0.438,
+      "macro_coupling": 0.944,
+      "macro_space": 0.022
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OLE",
+    "target": "ODDOSCAR",
+    "amount": 0.952
+  },
+  "dna": {
+    "brightness": 0.054,
+    "warmth": 0.964,
+    "movement": 0.377,
+    "density": 0.99,
+    "space": 0.035,
+    "aggression": 0.913
+  },
+  "macros": {
+    "CHARACTER": 0.509,
+    "MOVEMENT": 0.377,
+    "COUPLING": 0.952,
+    "SPACE": 0.035
+  },
+  "tags": [
+    "family",
+    "dark",
+    "warm",
+    "dense",
+    "intimate",
+    "violent"
+  ]
+}

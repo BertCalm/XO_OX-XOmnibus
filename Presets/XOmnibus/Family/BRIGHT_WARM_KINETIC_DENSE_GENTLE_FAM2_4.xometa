@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT WARM KINETIC DENSE GENTLE FAM2 4",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODDOSCAR",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.911,
+      "macro_movement": 0.958,
+      "macro_coupling": 0.472,
+      "macro_space": 0.649
+    },
+    "ORPHICA": {
+      "macro_character": 0.919,
+      "macro_movement": 0.97,
+      "macro_coupling": 0.487,
+      "macro_space": 0.59
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ODDOSCAR",
+    "target": "ORPHICA",
+    "amount": 0.472
+  },
+  "dna": {
+    "brightness": 0.927,
+    "warmth": 0.894,
+    "movement": 0.958,
+    "density": 0.923,
+    "space": 0.649,
+    "aggression": 0.02
+  },
+  "macros": {
+    "CHARACTER": 0.911,
+    "MOVEMENT": 0.958,
+    "COUPLING": 0.472,
+    "SPACE": 0.649
+  },
+  "tags": [
+    "family",
+    "bright",
+    "warm",
+    "kinetic",
+    "dense",
+    "gentle"
+  ]
+}

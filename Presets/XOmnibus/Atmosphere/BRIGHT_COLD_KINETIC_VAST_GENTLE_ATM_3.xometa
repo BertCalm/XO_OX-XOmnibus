@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_COLD_KINETIC_VAST_GENTLE_ATM_3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORACLE",
+    "OPAL"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.4532,
+      "macro_movement": 0.9202,
+      "macro_coupling": 0.6382,
+      "macro_space": 0.8895
+    },
+    "OPAL": {
+      "macro_character": 0.4525,
+      "macro_movement": 0.9535,
+      "macro_coupling": 0.6461,
+      "macro_space": 0.9056
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORACLE",
+    "target": "OPAL",
+    "amount": 0.525
+  },
+  "dna": {
+    "brightness": 0.8795,
+    "warmth": 0.0522,
+    "movement": 0.9454,
+    "density": 0.6542,
+    "space": 0.9134,
+    "aggression": 0.0412
+  },
+  "macros": {
+    "CHARACTER": 0.4528,
+    "MOVEMENT": 0.9368,
+    "COUPLING": 0.6421,
+    "SPACE": 0.8975
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "cold",
+    "kinetic",
+    "vast",
+    "gentle"
+  ]
+}

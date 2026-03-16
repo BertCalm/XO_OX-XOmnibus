@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_COLD_SPARSE_VAST_GENTLE_ATM_3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OBSCURA",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.4449,
+      "macro_movement": 0.3971,
+      "macro_coupling": 0.0448,
+      "macro_space": 0.8983
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.4637,
+      "macro_movement": 0.388,
+      "macro_coupling": 0.0699,
+      "macro_space": 0.9018
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OBSCURA",
+    "target": "ODDOSCAR",
+    "amount": 0.611
+  },
+  "dna": {
+    "brightness": 0.903,
+    "warmth": 0.0285,
+    "movement": 0.4143,
+    "density": 0.0499,
+    "space": 0.9084,
+    "aggression": 0.0794
+  },
+  "macros": {
+    "CHARACTER": 0.4543,
+    "MOVEMENT": 0.3926,
+    "COUPLING": 0.0573,
+    "SPACE": 0.9001
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "cold",
+    "sparse",
+    "vast",
+    "gentle"
+  ]
+}

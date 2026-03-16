@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_COLD_KINETIC_VAST_GENTLE_ATM_4",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ODDOSCAR",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.4584,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.5705,
+      "macro_space": 0.9263
+    },
+    "OCEANIC": {
+      "macro_character": 0.4617,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.5326,
+      "macro_space": 0.9624
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ODDOSCAR",
+    "target": "OCEANIC",
+    "amount": 0.654
+  },
+  "dna": {
+    "brightness": 0.8951,
+    "warmth": 0.0494,
+    "movement": 0.9824,
+    "density": 0.5592,
+    "space": 0.9431,
+    "aggression": 0.0388
+  },
+  "macros": {
+    "CHARACTER": 0.46,
+    "MOVEMENT": 0.99,
+    "COUPLING": 0.5515,
+    "SPACE": 0.9444
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "cold",
+    "kinetic",
+    "vast",
+    "gentle"
+  ]
+}

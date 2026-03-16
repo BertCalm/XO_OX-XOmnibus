@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_ATM_4",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORBITAL",
+    "ORGANON"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.9266,
+      "macro_movement": 0.3231,
+      "macro_coupling": 0.0864,
+      "macro_space": 0.9643
+    },
+    "ORGANON": {
+      "macro_character": 0.9181,
+      "macro_movement": 0.3098,
+      "macro_coupling": 0.0924,
+      "macro_space": 0.99
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ORBITAL",
+    "target": "ORGANON",
+    "amount": 0.546
+  },
+  "dna": {
+    "brightness": 0.8803,
+    "warmth": 0.9283,
+    "movement": 0.3277,
+    "density": 0.1037,
+    "space": 0.9619,
+    "aggression": 0.0341
+  },
+  "macros": {
+    "CHARACTER": 0.9224,
+    "MOVEMENT": 0.3165,
+    "COUPLING": 0.0894,
+    "SPACE": 0.9771
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "warm",
+    "sparse",
+    "vast",
+    "gentle"
+  ]
+}

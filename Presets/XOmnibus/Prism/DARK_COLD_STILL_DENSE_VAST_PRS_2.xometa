@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "DARK_COLD_STILL_DENSE_VAST_PRS_2",
+  "mood": "Prism",
+  "engines": [
+    "ORPHICA",
+    "OTTONI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_COLD_STILL_DENSE_VAST. Variant 2.",
+  "tags": [
+    "extreme",
+    "cold",
+    "dark",
+    "diversity",
+    "vast",
+    "prism",
+    "still",
+    "dense"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.122,
+      "macro_movement": 0.022,
+      "macro_coupling": 1.0,
+      "macro_space": 0.93
+    },
+    "OTTONI": {
+      "macro_character": 0.143,
+      "macro_movement": 0.0,
+      "macro_coupling": 0.893,
+      "macro_space": 0.794
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORPHICA",
+    "target": "OTTONI",
+    "amount": 0.936
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.077,
+    "warmth": 0.033,
+    "movement": 0.043,
+    "density": 0.94,
+    "space": 0.881,
+    "aggression": 0.504
+  },
+  "macros": {
+    "CHARACTER": 0.133,
+    "MOVEMENT": 0.011,
+    "COUPLING": 0.947,
+    "SPACE": 0.862
+  }
+}

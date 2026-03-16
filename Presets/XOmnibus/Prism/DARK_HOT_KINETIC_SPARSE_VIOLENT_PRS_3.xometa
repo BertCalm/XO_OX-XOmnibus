@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "DARK_HOT_KINETIC_SPARSE_VIOLENT_PRS_3",
+  "mood": "Prism",
+  "engines": [
+    "OWLFISH",
+    "ORIGAMI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_HOT_KINETIC_SPARSE_VIOLENT. Variant 3.",
+  "tags": [
+    "sparse",
+    "hot",
+    "extreme",
+    "kinetic",
+    "dark",
+    "diversity",
+    "violent",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OWLFISH": {
+      "macro_character": 0.074,
+      "macro_movement": 1.0,
+      "macro_coupling": 0.0,
+      "macro_space": 0.399
+    },
+    "ORIGAMI": {
+      "macro_character": 0.167,
+      "macro_movement": 1.0,
+      "macro_coupling": 0.155,
+      "macro_space": 0.39
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OWLFISH",
+    "target": "ORIGAMI",
+    "amount": 0.943
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.024,
+    "warmth": 0.91,
+    "movement": 0.962,
+    "density": 0.034,
+    "space": 0.451,
+    "aggression": 0.889
+  },
+  "macros": {
+    "CHARACTER": 0.12,
+    "MOVEMENT": 1.0,
+    "COUPLING": 0.077,
+    "SPACE": 0.395
+  }
+}

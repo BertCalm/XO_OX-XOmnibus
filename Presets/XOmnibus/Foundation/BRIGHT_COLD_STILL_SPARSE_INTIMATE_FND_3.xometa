@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT_COLD_STILL_SPARSE_INTIMATE_FND_3",
+  "mood": "Foundation",
+  "engines": [
+    "OBESE",
+    "OVERBITE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_COLD_STILL_SPARSE_INTIMATE. Variant 3.",
+  "tags": [
+    "sparse",
+    "extreme",
+    "cold",
+    "still",
+    "diversity",
+    "bright",
+    "intimate",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OBESE": {
+      "macro_character": 0.968,
+      "macro_movement": 0.009,
+      "macro_coupling": 0.116,
+      "macro_space": 0.108
+    },
+    "OVERBITE": {
+      "macro_character": 0.905,
+      "macro_movement": 0.142,
+      "macro_coupling": 0.0,
+      "macro_space": 0.046
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OBESE",
+    "target": "OVERBITE",
+    "amount": 0.527
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.936,
+    "warmth": 0.02,
+    "movement": 0.052,
+    "density": 0.067,
+    "space": 0.084,
+    "aggression": 0.562
+  },
+  "macros": {
+    "CHARACTER": 0.936,
+    "MOVEMENT": 0.075,
+    "COUPLING": 0.058,
+    "SPACE": 0.077
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "name": "DARK HOT DENSE INTIMATE GENTLE FAM2 4",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OSTERIA",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "OSTERIA": {
+      "macro_character": 0.513,
+      "macro_movement": 0.626,
+      "macro_coupling": 0.505,
+      "macro_space": 0.104
+    },
+    "ODYSSEY": {
+      "macro_character": 0.556,
+      "macro_movement": 0.623,
+      "macro_coupling": 0.511,
+      "macro_space": 0.124
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OSTERIA",
+    "target": "ODYSSEY",
+    "amount": 0.505
+  },
+  "dna": {
+    "brightness": 0.139,
+    "warmth": 0.887,
+    "movement": 0.626,
+    "density": 0.959,
+    "space": 0.104,
+    "aggression": 0.052
+  },
+  "macros": {
+    "CHARACTER": 0.513,
+    "MOVEMENT": 0.626,
+    "COUPLING": 0.505,
+    "SPACE": 0.104
+  },
+  "tags": [
+    "family",
+    "dark",
+    "warm",
+    "dense",
+    "intimate",
+    "gentle"
+  ]
+}

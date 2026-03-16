@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_ATM_3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORGANON",
+    "OPAL"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.9161,
+      "macro_movement": 0.3868,
+      "macro_coupling": 0.1266,
+      "macro_space": 0.9546
+    },
+    "OPAL": {
+      "macro_character": 0.9334,
+      "macro_movement": 0.3346,
+      "macro_coupling": 0.1266,
+      "macro_space": 0.9615
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "ORGANON",
+    "target": "OPAL",
+    "amount": 0.578
+  },
+  "dna": {
+    "brightness": 0.9467,
+    "warmth": 0.9431,
+    "movement": 0.3611,
+    "density": 0.1039,
+    "space": 0.9347,
+    "aggression": 0.1056
+  },
+  "macros": {
+    "CHARACTER": 0.9247,
+    "MOVEMENT": 0.3607,
+    "COUPLING": 0.1266,
+    "SPACE": 0.9581
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "warm",
+    "sparse",
+    "vast",
+    "gentle"
+  ]
+}

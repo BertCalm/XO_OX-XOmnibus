@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FLX2_5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OVERDUB",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.6718,
+      "macro_movement": 0.9682,
+      "macro_coupling": 0.8798,
+      "macro_space": 0.0521
+    },
+    "ORACLE": {
+      "macro_character": 0.6895,
+      "macro_movement": 0.9673,
+      "macro_coupling": 0.8512,
+      "macro_space": 0.02
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OVERDUB",
+    "target": "ORACLE",
+    "amount": 0.826
+  },
+  "dna": {
+    "brightness": 0.9077,
+    "warmth": 0.4115,
+    "movement": 0.9853,
+    "density": 0.8731,
+    "space": 0.0405,
+    "aggression": 0.9321
+  },
+  "macros": {
+    "CHARACTER": 0.6806,
+    "MOVEMENT": 0.9677,
+    "COUPLING": 0.8655,
+    "SPACE": 0.036
+  },
+  "tags": [
+    "flux",
+    "bright",
+    "kinetic",
+    "dense",
+    "intimate",
+    "violent"
+  ]
+}

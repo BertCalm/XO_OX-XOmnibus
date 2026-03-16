@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT WARM KINETIC SPARSE VIOLENT ENT2 4",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ODDFELIX",
+    "OWLFISH"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.935,
+      "macro_movement": 0.977,
+      "macro_coupling": 0.479,
+      "macro_space": 0.416
+    },
+    "OWLFISH": {
+      "macro_character": 0.927,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.431,
+      "macro_space": 0.474
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ODDFELIX",
+    "target": "OWLFISH",
+    "amount": 0.479
+  },
+  "dna": {
+    "brightness": 0.91,
+    "warmth": 0.96,
+    "movement": 0.977,
+    "density": 0.083,
+    "space": 0.416,
+    "aggression": 0.875
+  },
+  "macros": {
+    "CHARACTER": 0.935,
+    "MOVEMENT": 0.977,
+    "COUPLING": 0.479,
+    "SPACE": 0.416
+  },
+  "tags": [
+    "entangled",
+    "bright",
+    "warm",
+    "kinetic",
+    "sparse",
+    "violent"
+  ]
+}

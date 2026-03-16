@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT WARM SPARSE VAST GENTLE FAM2 1",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ORPHICA",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.929,
+      "macro_movement": 0.349,
+      "macro_coupling": 0.075,
+      "macro_space": 0.953
+    },
+    "ODYSSEY": {
+      "macro_character": 0.913,
+      "macro_movement": 0.294,
+      "macro_coupling": 0.069,
+      "macro_space": 0.981
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORPHICA",
+    "target": "ODYSSEY",
+    "amount": 0.075
+  },
+  "dna": {
+    "brightness": 0.942,
+    "warmth": 0.916,
+    "movement": 0.349,
+    "density": 0.055,
+    "space": 0.953,
+    "aggression": 0.095
+  },
+  "macros": {
+    "CHARACTER": 0.929,
+    "MOVEMENT": 0.349,
+    "COUPLING": 0.075,
+    "SPACE": 0.953
+  },
+  "tags": [
+    "family",
+    "bright",
+    "warm",
+    "sparse",
+    "vast",
+    "gentle"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FLX2_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBLONG",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.0478,
+      "macro_movement": 0.872,
+      "macro_coupling": 0.9824,
+      "macro_space": 0.6793
+    },
+    "OPTIC": {
+      "macro_character": 0.0702,
+      "macro_movement": 0.8834,
+      "macro_coupling": 0.99,
+      "macro_space": 0.6828
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OBLONG",
+    "target": "OPTIC",
+    "amount": 0.865
+  },
+  "dna": {
+    "brightness": 0.0516,
+    "warmth": 0.0801,
+    "movement": 0.8789,
+    "density": 0.9834,
+    "space": 0.6951,
+    "aggression": 0.9059
+  },
+  "macros": {
+    "CHARACTER": 0.059,
+    "MOVEMENT": 0.8777,
+    "COUPLING": 0.9862,
+    "SPACE": 0.681
+  },
+  "tags": [
+    "flux",
+    "dark",
+    "cold",
+    "kinetic",
+    "dense",
+    "violent"
+  ]
+}

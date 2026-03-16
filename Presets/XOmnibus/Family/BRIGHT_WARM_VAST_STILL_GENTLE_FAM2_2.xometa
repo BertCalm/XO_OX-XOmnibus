@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT WARM VAST STILL GENTLE FAM2 2",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OSTERIA",
+    "OHM"
+  ],
+  "parameters": {
+    "OSTERIA": {
+      "macro_character": 0.897,
+      "macro_movement": 0.12,
+      "macro_coupling": 0.226,
+      "macro_space": 0.953
+    },
+    "OHM": {
+      "macro_character": 0.888,
+      "macro_movement": 0.156,
+      "macro_coupling": 0.245,
+      "macro_space": 0.956
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OSTERIA",
+    "target": "OHM",
+    "amount": 0.226
+  },
+  "dna": {
+    "brightness": 0.902,
+    "warmth": 0.893,
+    "movement": 0.12,
+    "density": 0.418,
+    "space": 0.953,
+    "aggression": 0.035
+  },
+  "macros": {
+    "CHARACTER": 0.897,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.226,
+    "SPACE": 0.953
+  },
+  "tags": [
+    "family",
+    "bright",
+    "warm",
+    "still",
+    "vast",
+    "gentle"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "DARK_COLD_KINETIC_SPARSE_VAST_ATM_4",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORIGAMI",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.0669,
+      "macro_movement": 0.9463,
+      "macro_coupling": 0.0207,
+      "macro_space": 0.922
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.098,
+      "macro_movement": 0.95,
+      "macro_coupling": 0.0295,
+      "macro_space": 0.8914
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORIGAMI",
+    "target": "ODDOSCAR",
+    "amount": 0.577
+  },
+  "dna": {
+    "brightness": 0.0877,
+    "warmth": 0.0531,
+    "movement": 0.9358,
+    "density": 0.02,
+    "space": 0.9044,
+    "aggression": 0.472
+  },
+  "macros": {
+    "CHARACTER": 0.0824,
+    "MOVEMENT": 0.9482,
+    "COUPLING": 0.0251,
+    "SPACE": 0.9067
+  },
+  "tags": [
+    "atmosphere",
+    "dark",
+    "cold",
+    "kinetic",
+    "sparse",
+    "vast"
+  ]
+}

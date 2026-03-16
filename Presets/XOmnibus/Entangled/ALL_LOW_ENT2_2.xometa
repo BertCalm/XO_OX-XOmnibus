@@ -1,0 +1,51 @@
+{
+  "name": "ALL LOW ENT2 2",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ONSET",
+    "OSPREY"
+  ],
+  "parameters": {
+    "ONSET": {
+      "macro_character": 0.112,
+      "macro_movement": 0.345,
+      "macro_coupling": 0.067,
+      "macro_space": 0.085
+    },
+    "OSPREY": {
+      "macro_character": 0.107,
+      "macro_movement": 0.38,
+      "macro_coupling": 0.065,
+      "macro_space": 0.088
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ONSET",
+    "target": "OSPREY",
+    "amount": 0.067
+  },
+  "dna": {
+    "brightness": 0.118,
+    "warmth": 0.107,
+    "movement": 0.345,
+    "density": 0.02,
+    "space": 0.085,
+    "aggression": 0.114
+  },
+  "macros": {
+    "CHARACTER": 0.112,
+    "MOVEMENT": 0.345,
+    "COUPLING": 0.067,
+    "SPACE": 0.085
+  },
+  "tags": [
+    "entangled",
+    "dark",
+    "cold",
+    "sparse",
+    "intimate",
+    "gentle"
+  ]
+}

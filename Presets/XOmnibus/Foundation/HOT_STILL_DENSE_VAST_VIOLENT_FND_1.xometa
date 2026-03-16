@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "HOT_STILL_DENSE_VAST_VIOLENT_FND_1",
+  "mood": "Foundation",
+  "engines": [
+    "OVERDUB",
+    "OBLONG"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: HOT_STILL_DENSE_VAST_VIOLENT. Variant 1.",
+  "tags": [
+    "hot",
+    "extreme",
+    "still",
+    "diversity",
+    "vast",
+    "violent",
+    "foundation",
+    "dense"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.57,
+      "macro_movement": 0.117,
+      "macro_coupling": 0.775,
+      "macro_space": 0.906
+    },
+    "OBLONG": {
+      "macro_character": 0.5,
+      "macro_movement": 0.102,
+      "macro_coupling": 0.925,
+      "macro_space": 0.931
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OVERDUB",
+    "target": "OBLONG",
+    "amount": 0.694
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.488,
+    "warmth": 0.874,
+    "movement": 0.052,
+    "density": 0.904,
+    "space": 0.973,
+    "aggression": 0.879
+  },
+  "macros": {
+    "CHARACTER": 0.535,
+    "MOVEMENT": 0.11,
+    "COUPLING": 0.85,
+    "SPACE": 0.919
+  }
+}

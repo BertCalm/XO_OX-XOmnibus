@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT WARM SPARSE VAST GENTLE FAM2 2",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OLE",
+    "OSPREY"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.916,
+      "macro_movement": 0.314,
+      "macro_coupling": 0.067,
+      "macro_space": 0.947
+    },
+    "OSPREY": {
+      "macro_character": 0.926,
+      "macro_movement": 0.238,
+      "macro_coupling": 0.074,
+      "macro_space": 0.973
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OLE",
+    "target": "OSPREY",
+    "amount": 0.067
+  },
+  "dna": {
+    "brightness": 0.947,
+    "warmth": 0.885,
+    "movement": 0.314,
+    "density": 0.033,
+    "space": 0.947,
+    "aggression": 0.1
+  },
+  "macros": {
+    "CHARACTER": 0.916,
+    "MOVEMENT": 0.314,
+    "COUPLING": 0.067,
+    "SPACE": 0.947
+  },
+  "tags": [
+    "family",
+    "bright",
+    "warm",
+    "sparse",
+    "vast",
+    "gentle"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_WARM_KINETIC_VAST_VIOLENT_ATM_3",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OBSCURA",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.9261,
+      "macro_movement": 0.9216,
+      "macro_coupling": 0.5274,
+      "macro_space": 0.99
+    },
+    "ORBITAL": {
+      "macro_character": 0.9584,
+      "macro_movement": 0.9346,
+      "macro_coupling": 0.5191,
+      "macro_space": 0.9829
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBSCURA",
+    "target": "ORBITAL",
+    "amount": 0.666
+  },
+  "dna": {
+    "brightness": 0.9685,
+    "warmth": 0.9039,
+    "movement": 0.9058,
+    "density": 0.5348,
+    "space": 0.9899,
+    "aggression": 0.9288
+  },
+  "macros": {
+    "CHARACTER": 0.9423,
+    "MOVEMENT": 0.9281,
+    "COUPLING": 0.5232,
+    "SPACE": 0.9865
+  },
+  "tags": [
+    "atmosphere",
+    "bright",
+    "warm",
+    "kinetic",
+    "vast",
+    "violent"
+  ]
+}

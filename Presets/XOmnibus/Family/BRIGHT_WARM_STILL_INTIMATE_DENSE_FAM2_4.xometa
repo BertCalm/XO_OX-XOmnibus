@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT WARM STILL INTIMATE DENSE FAM2 4",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OPAL",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.959,
+      "macro_movement": 0.09,
+      "macro_coupling": 0.74,
+      "macro_space": 0.123
+    },
+    "ORGANON": {
+      "macro_character": 0.945,
+      "macro_movement": 0.105,
+      "macro_coupling": 0.737,
+      "macro_space": 0.2
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OPAL",
+    "target": "ORGANON",
+    "amount": 0.74
+  },
+  "dna": {
+    "brightness": 0.927,
+    "warmth": 0.99,
+    "movement": 0.09,
+    "density": 0.953,
+    "space": 0.123,
+    "aggression": 0.528
+  },
+  "macros": {
+    "CHARACTER": 0.959,
+    "MOVEMENT": 0.09,
+    "COUPLING": 0.74,
+    "SPACE": 0.123
+  },
+  "tags": [
+    "family",
+    "bright",
+    "warm",
+    "still",
+    "dense",
+    "intimate"
+  ]
+}
