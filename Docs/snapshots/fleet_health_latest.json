@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-03-16T10:29:26.389912+00:00",
+  "health_rating": "CRITICAL",
+  "total_presets": 4250,
+  "mood_distribution": {
+    "Foundation": 559,
+    "Atmosphere": 530,
+    "Entangled": 1582,
+    "Prism": 568,
+    "Flux": 452,
+    "Aether": 404,
+    "Family": 155
+  },
+  "coupling_coverage": {
+    "covered_pairs": 513,
+    "total_possible": 561,
+    "coverage_pct": 91.44,
+    "entangled_preset_count": 1582,
+    "per_engine_partner_counts": {
+      "OBBLIGATO": 29,
+      "OBESE": 31,
+      "OBLIQUE": 31,
+      "OBLONG": 33,
+      "OBSCURA": 27,
+      "OBSIDIAN": 30,
+      "OCEANIC": 31,
+      "OCELOT": 32,
+      "OCTOPUS": 31,
+      "ODDFELIX": 30,
+      "ODDOSCAR": 29,
+      "ODYSSEY": 31,
+      "OHM": 32,
+      "OLE": 30,
+      "OMBRE": 31,
+      "ONSET": 33,
+      "OPAL": 33,
+      "OPTIC": 32,
+      "ORACLE": 32,
+      "ORBITAL": 30,
+      "ORCA": 28,
+      "ORGANON": 31,
+      "ORIGAMI": 26,
+      "ORPHICA": 30,
+      "OSPREY": 29,
+      "OSTERIA": 31,
+      "OTTONI": 29,
+      "OUROBOROS": 29,
+      "OUTWIT": 27,
+      "OVERBITE": 31,
+      "OVERDUB": 33,
+      "OVERLAP": 25,
+      "OVERWORLD": 33,
+      "OWLFISH": 26
+    },
+    "most_coupled_engine": "OVERDUB",
+    "most_coupled_count": 33,
+    "least_coupled_engine": "OVERLAP",
+    "least_coupled_count": 25,
+    "unresolved_engine_names": []
+  },
+  "dna_diversity": {
+    "score": 0.1479,
+    "sample_pairs": 300,
+    "dimension_compression": {
+      "brightness": 0.6367,
+      "warmth": 0.5727,
+      "movement": 0.4184,
+      "density": 0.5447,
+      "space": 0.4861,
+      "aggression": 0.34
+    },
+    "compressed_dims_above_60pct": [
+      "brightness"
+    ]
+  }
+}
