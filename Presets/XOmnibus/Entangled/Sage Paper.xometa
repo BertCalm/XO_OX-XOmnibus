@@ -1,0 +1,39 @@
+{
+  "name": "Sage Paper",
+  "version": "1.0",
+  "engines": [
+    "OHM",
+    "ORIGAMI"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.65,
+    "SPACE": 0.65
+  },
+  "sonic_dna": {
+    "brightness": 0.54,
+    "warmth": 0.65,
+    "movement": 0.6,
+    "density": 0.52,
+    "space": 0.64,
+    "aggression": 0.28
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "FOLD_MODULATE",
+    "source": "ORIGAMI",
+    "target": "OHM",
+    "amount": 0.65
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "origami",
+    "hippy"
+  ],
+  "description": "Ohm groove folded once, twice, three times \u2014 communal heat concentrated at the crease"
+}

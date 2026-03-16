@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "name": "Frond Intelligence",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OUTWIT"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Lion's Mane FDN meets Giant Pacific CA — space and emergent pattern entangled at the reef's edge",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "outwit",
+    "marquee",
+    "space",
+    "generative"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.495,
+    "MOVEMENT": 0.427,
+    "COUPLING": 0.574,
+    "SPACE": 0.698
+  },
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.55,
+    "space": 0.675,
+    "aggression": 0.4,
+    "movement": 0.65,
+    "warmth": 0.475,
+    "density": 0.675
+  },
+  "sonic_dna": {
+    "brightness": 0.55,
+    "space": 0.675,
+    "aggression": 0.4,
+    "movement": 0.65,
+    "warmth": 0.475,
+    "density": 0.675
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.56,
+      "olap_decay": 0.61,
+      "olap_damping": 0.339,
+      "olap_diffusion": 0.795,
+      "olap_modDepth": 0.371,
+      "olap_modRate": 0.362,
+      "olap_preDelay": 0.026,
+      "olap_earlyMix": 0.348,
+      "olap_lateMix": 0.413,
+      "olap_filterCutoff": 0.459,
+      "olap_filterReso": 0.277,
+      "olap_outputLevel": 0.656,
+      "olap_couplingLevel": 0.61,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.625,
+      "olap_nodeCount": 14,
+      "olap_crossfeedAmt": 0.368,
+      "olap_spinRate": 0.123,
+      "olap_shimmerMix": 0.111
+    },
+    "OUTWIT": {
+      "owit_rule": 30,
+      "owit_arms": 5,
+      "owit_cellSize": 0.414,
+      "owit_density": 0.503,
+      "owit_evolveRate": 0.328,
+      "owit_mutateProb": 0.337,
+      "owit_pitchSpread": 0.351,
+      "owit_filterCutoff": 0.346,
+      "owit_filterReso": 0.139,
+      "owit_ampAttack": 0.171,
+      "owit_ampRelease": 0.573,
+      "owit_outputLevel": 0.836,
+      "owit_couplingLevel": 0.755,
+      "owit_couplingBus": 0,
+      "owit_armStagger": 0.268,
+      "owit_borderMode": 1,
+      "owit_inkCloudMix": 0.035,
+      "owit_chroma1": 0.476,
+      "owit_chroma2": 0.677,
+      "owit_polyDepth": 0.743
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "OUTWIT",
+        "type": "SPATIAL_BLEND",
+        "amount": 0.756
+      }
+    ]
+  }
+}

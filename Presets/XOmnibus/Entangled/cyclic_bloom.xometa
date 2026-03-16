@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "name": "Cyclic Bloom",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Lion's Mane knot-topology FDN entangled with OUROBOROS's recursive self-feeding character (strange-attractor topology). Coupling: Harmonic Fold.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "overlap",
+    "ouroboros",
+    "spatial",
+    "lush"
+  ],
+  "macroLabels": [
+    "TOPOLOGY",
+    "DIFFUSION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.59,
+    "COUPLING": 0.65,
+    "SPACE": 0.59
+  },
+  "couplingIntensity": "Deep",
+  "sonic_dna": {
+    "brightness": 0.36,
+    "warmth": 0.72,
+    "movement": 0.0,
+    "density": 0.59,
+    "space": 0.6,
+    "aggression": 0.13
+  },
+  "dna": {
+    "brightness": 0.36,
+    "warmth": 0.72,
+    "movement": 0.0,
+    "density": 0.59,
+    "space": 0.6,
+    "aggression": 0.13
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.59,
+      "olap_decay": 0.65,
+      "olap_damping": 0.28,
+      "olap_diffusion": 0.93,
+      "olap_modDepth": 0.39,
+      "olap_modRate": 0.18,
+      "olap_preDelay": 0.24,
+      "olap_earlyMix": 0.53,
+      "olap_lateMix": 0.72,
+      "olap_filterCutoff": 0.36,
+      "olap_filterReso": 0.44,
+      "olap_frondDensity": 0.78,
+      "olap_nodeCount": 15,
+      "olap_crossfeedAmt": 0.62,
+      "olap_spinRate": 0.21,
+      "olap_shimmerMix": 0.05,
+      "olap_couplingLevel": 0.55,
+      "olap_couplingBus": 0,
+      "olap_outputLevel": 0.74,
+      "olap_outputPan": -0.05
+    },
+    "OUROBOROS": {
+      "ouro_character": 0.62,
+      "ouro_movement": 0.71,
+      "ouro_coupling": 0.73,
+      "ouro_space": 0.53,
+      "ouro_filterCutoff": 0.68,
+      "ouro_filterReso": 0.32,
+      "ouro_ampAttack": 0.35,
+      "ouro_ampSustain": 0.68,
+      "ouro_ampRelease": 0.71,
+      "ouro_reverbMix": 0.28,
+      "ouro_couplingLevel": 0.71,
+      "ouro_outputLevel": 0.73
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OVERLAP",
+    "target": "OUROBOROS",
+    "amount": 0.91,
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "OUROBOROS",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.91
+      }
+    ]
+  }
+}

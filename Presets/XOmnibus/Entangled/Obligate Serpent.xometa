@@ -1,0 +1,39 @@
+{
+  "name": "Obligate Serpent",
+  "version": "1.0",
+  "engines": [
+    "OBBLIGATO",
+    "OUROBOROS"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.7,
+    "SPACE": 0.5
+  },
+  "sonic_dna": {
+    "brightness": 0.55,
+    "warmth": 0.57,
+    "movement": 0.65,
+    "density": 0.65,
+    "space": 0.5,
+    "aggression": 0.51
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "CHAOS_LEASH",
+    "source": "OBBLIGATO",
+    "target": "OUROBOROS",
+    "amount": 0.7
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "ouroboros",
+    "wind"
+  ],
+  "description": "Ouroboros chaos leash implemented as OBBLIGATO breath gating \u2014 chaos breathes on cue"
+}

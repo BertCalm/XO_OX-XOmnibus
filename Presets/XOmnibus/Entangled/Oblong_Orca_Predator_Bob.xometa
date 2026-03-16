@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Predator Bob",
+  "mood": "Entangled",
+  "engines": [
+    "Oblong",
+    "Orca"
+  ],
+  "author": "XO_OX Coverage Pack 2026-03-16",
+  "version": "1.0",
+  "description": "Orca hunt macro triggers Bob's attack transient — apex-predator bass strike.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "oblong",
+    "orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "Oblong": {
+      "bob_fltCutoff": 2056.1,
+      "bob_fltReso": 0.407,
+      "bob_fltEnvAmt": 0.574,
+      "bob_oscWave": 0.0,
+      "bob_oscDetune": 0.203,
+      "bob_subOscLevel": 0.555,
+      "bob_distDrive": 0.318,
+      "bob_distMix": 0.048,
+      "bob_ampAttack": 0.0392,
+      "bob_ampDecay": 0.68,
+      "bob_ampSustain": 0.417,
+      "bob_ampRelease": 0.458,
+      "bob_modAttack": 0.0333,
+      "bob_modDecay": 0.42,
+      "bob_modSustain": 0.309,
+      "bob_modRelease": 0.622,
+      "bob_lfo1Rate": 0.163,
+      "bob_lfo1Depth": 0.32,
+      "bob_lfo1Shape": 1.0,
+      "bob_chordMode": 0.0,
+      "bob_scaleMode": 0.0,
+      "bob_level": 0.799,
+      "bob_reverbMix": 0.107
+    },
+    "Orca": {
+      "orca_level": 0.804,
+      "orca_filterCutoff": 6895.4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "type": "GRANULAR_EXCHANGE",
+        "source": "Oblong",
+        "target": "Orca",
+        "amount": 0.75
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.458,
+    "movement": 0.61,
+    "density": 0.647,
+    "space": 0.411,
+    "aggression": 0.632
+  }
+}

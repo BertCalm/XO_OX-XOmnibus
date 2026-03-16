@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "name": "Deep Emergence",
+  "mood": "Entangled",
+  "engines": [
+    "OUTWIT",
+    "OCEANIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Oceanic pressure zone index modulates OUTWIT arm count — deeper water, more arms unfurl",
+  "tags": [
+    "coupling",
+    "entangled",
+    "outwit",
+    "oceanic",
+    "oceanic",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.452,
+    "MOVEMENT": 0.481,
+    "COUPLING": 0.553,
+    "SPACE": 0.736
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.55,
+    "space": 0.7,
+    "aggression": 0.375,
+    "movement": 0.65,
+    "warmth": 0.55,
+    "density": 0.675
+  },
+  "sonic_dna": {
+    "brightness": 0.55,
+    "space": 0.7,
+    "aggression": 0.375,
+    "movement": 0.65,
+    "warmth": 0.55,
+    "density": 0.675
+  },
+  "parameters": {
+    "OUTWIT": {
+      "owit_rule": 22,
+      "owit_arms": 7,
+      "owit_cellSize": 0.373,
+      "owit_density": 0.536,
+      "owit_evolveRate": 0.358,
+      "owit_mutateProb": 0.199,
+      "owit_pitchSpread": 0.355,
+      "owit_filterCutoff": 0.355,
+      "owit_filterReso": 0.371,
+      "owit_ampAttack": 0.123,
+      "owit_ampRelease": 0.519,
+      "owit_outputLevel": 0.721,
+      "owit_couplingLevel": 0.577,
+      "owit_couplingBus": 0,
+      "owit_armStagger": 0.492,
+      "owit_borderMode": 0,
+      "owit_inkCloudMix": 0.003,
+      "owit_chroma1": 0.481,
+      "owit_chroma2": 0.427,
+      "owit_polyDepth": 0.369
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "OCEANIC",
+        "type": "SPATIAL_BLEND",
+        "amount": 0.609
+      }
+    ]
+  }
+}

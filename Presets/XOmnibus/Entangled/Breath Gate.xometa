@@ -1,0 +1,39 @@
+{
+  "name": "Breath Gate",
+  "version": "1.0",
+  "engines": [
+    "OBBLIGATO",
+    "ONSET"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.7,
+    "SPACE": 0.5
+  },
+  "sonic_dna": {
+    "brightness": 0.53,
+    "warmth": 0.61,
+    "movement": 0.61,
+    "density": 0.71,
+    "space": 0.44,
+    "aggression": 0.49
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "RHYTHM_GATE",
+    "source": "OBBLIGATO",
+    "target": "ONSET",
+    "amount": 0.7
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "onset",
+    "wind"
+  ],
+  "description": "Onset percussive hits gated by OBBLIGATO breath pattern \u2014 drums speak only when wind allows"
+}

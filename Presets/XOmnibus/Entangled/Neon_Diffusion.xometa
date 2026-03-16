@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Neon Diffusion",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "ODDFELIX"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Neon tetra brightness charges OVERLAP shimmer mix — electric colour through an infinite reverb web",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "oddfelix",
+    "neon",
+    "bright"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.691,
+    "MOVEMENT": 0.413,
+    "COUPLING": 0.886,
+    "SPACE": 0.436
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.625,
+    "space": 0.7,
+    "aggression": 0.275,
+    "movement": 0.525,
+    "warmth": 0.5,
+    "density": 0.55
+  },
+  "sonic_dna": {
+    "brightness": 0.625,
+    "space": 0.7,
+    "aggression": 0.275,
+    "movement": 0.525,
+    "warmth": 0.5,
+    "density": 0.55
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.944,
+      "olap_decay": 0.606,
+      "olap_damping": 0.564,
+      "olap_diffusion": 0.682,
+      "olap_modDepth": 0.269,
+      "olap_modRate": 0.385,
+      "olap_preDelay": 0.299,
+      "olap_earlyMix": 0.395,
+      "olap_lateMix": 0.723,
+      "olap_filterCutoff": 0.427,
+      "olap_filterReso": 0.204,
+      "olap_outputLevel": 0.873,
+      "olap_couplingLevel": 0.724,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.571,
+      "olap_nodeCount": 11,
+      "olap_crossfeedAmt": 0.223,
+      "olap_spinRate": 0.154,
+      "olap_shimmerMix": 0.201
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "ODDFELIX",
+        "type": "FILTER_MOD",
+        "amount": 0.652
+      }
+    ]
+  }
+}

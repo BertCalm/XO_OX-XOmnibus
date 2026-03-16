@@ -1,0 +1,39 @@
+{
+  "name": "Rotating Hearth",
+  "version": "1.0",
+  "engines": [
+    "OHM",
+    "ORBITAL"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.6,
+    "SPACE": 0.65
+  },
+  "sonic_dna": {
+    "brightness": 0.54,
+    "warmth": 0.67,
+    "movement": 0.6,
+    "density": 0.52,
+    "space": 0.66,
+    "aggression": 0.3
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "ORBITAL_RING",
+    "source": "OHM",
+    "target": "ORBITAL",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "orbital",
+    "hippy"
+  ],
+  "description": "Orbital group envelope cycles through ohm commune \u2014 the fire rotates, always warm"
+}

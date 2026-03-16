@@ -1,0 +1,39 @@
+{
+  "name": "Amber Reed",
+  "version": "1.0",
+  "engines": [
+    "OBBLIGATO",
+    "OBLONG"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.6,
+    "SPACE": 0.5
+  },
+  "sonic_dna": {
+    "brightness": 0.57,
+    "warmth": 0.65,
+    "movement": 0.53,
+    "density": 0.63,
+    "space": 0.5,
+    "aggression": 0.41
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "RESONANT_BRIDGE",
+    "source": "OBBLIGATO",
+    "target": "OBLONG",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "oblong",
+    "wind"
+  ],
+  "description": "Oblong amber character obligated to OBBLIGATO breath rhythm \u2014 amber must breathe with the wind"
+}

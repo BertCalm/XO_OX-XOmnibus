@@ -1,0 +1,39 @@
+{
+  "name": "Reed & Fang",
+  "version": "1.0",
+  "engines": [
+    "OBBLIGATO",
+    "OVERBITE"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.65,
+    "SPACE": 0.5
+  },
+  "sonic_dna": {
+    "brightness": 0.55,
+    "warmth": 0.65,
+    "movement": 0.55,
+    "density": 0.67,
+    "space": 0.5,
+    "aggression": 0.47
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "BITE_TRIGGER",
+    "source": "OBBLIGATO",
+    "target": "OVERBITE",
+    "amount": 0.65
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "overbite",
+    "wind"
+  ],
+  "description": "Overbite BITE macro obligated to OBBLIGATO breath attack \u2014 the possum bites on the downbeat"
+}

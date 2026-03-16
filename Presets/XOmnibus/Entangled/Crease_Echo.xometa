@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Crease Echo",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "ORIGAMI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Origami crease events scatter OVERLAP early reflection timing — each fold rearranges the cave",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "origami",
+    "fold",
+    "geometric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.498,
+    "MOVEMENT": 0.671,
+    "COUPLING": 0.743,
+    "SPACE": 0.675
+  },
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.55,
+    "space": 0.725,
+    "aggression": 0.3,
+    "movement": 0.55,
+    "warmth": 0.5,
+    "density": 0.55
+  },
+  "sonic_dna": {
+    "brightness": 0.55,
+    "space": 0.725,
+    "aggression": 0.3,
+    "movement": 0.55,
+    "warmth": 0.5,
+    "density": 0.55
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.945,
+      "olap_decay": 0.767,
+      "olap_damping": 0.534,
+      "olap_diffusion": 0.72,
+      "olap_modDepth": 0.216,
+      "olap_modRate": 0.155,
+      "olap_preDelay": 0.047,
+      "olap_earlyMix": 0.448,
+      "olap_lateMix": 0.715,
+      "olap_filterCutoff": 0.437,
+      "olap_filterReso": 0.227,
+      "olap_outputLevel": 0.702,
+      "olap_couplingLevel": 0.846,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.696,
+      "olap_nodeCount": 9,
+      "olap_crossfeedAmt": 0.516,
+      "olap_spinRate": 0.026,
+      "olap_shimmerMix": 0.222
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "ORIGAMI",
+        "type": "ENVELOPE_SHARE",
+        "amount": 0.887
+      }
+    ]
+  }
+}

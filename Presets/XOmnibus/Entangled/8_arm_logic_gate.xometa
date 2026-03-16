@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "name": "8-Arm Logic Gate",
+  "mood": "Entangled",
+  "engines": [
+    "OUTWIT",
+    "ORGANON"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with ORGANON's logical-metabolic character (Aristotelian organ-pipe variational synthesis). Coupling: Chaos Inject.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "organon",
+    "chaotic",
+    "generative"
+  ],
+  "macroLabels": [
+    "ARMS",
+    "CHAOS",
+    "COUPLING",
+    "DENSITY"
+  ],
+  "macros": {
+    "CHARACTER": 0.39,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.65,
+    "SPACE": 0.86
+  },
+  "couplingIntensity": "Deep",
+  "sonic_dna": {
+    "brightness": 0.37,
+    "warmth": 0.06,
+    "movement": 0.63,
+    "density": 0.7,
+    "space": 0.54,
+    "aggression": 0.31
+  },
+  "dna": {
+    "brightness": 0.37,
+    "warmth": 0.06,
+    "movement": 0.63,
+    "density": 0.7,
+    "space": 0.54,
+    "aggression": 0.31
+  },
+  "parameters": {
+    "OUTWIT": {
+      "owit_rule": 150,
+      "owit_arms": 8,
+      "owit_cellSize": 0.3,
+      "owit_density": 0.5,
+      "owit_evolveRate": 0.76,
+      "owit_mutateProb": 0.04,
+      "owit_pitchSpread": 0.41,
+      "owit_filterCutoff": 0.36,
+      "owit_filterReso": 0.43,
+      "owit_ampAttack": 0.17,
+      "owit_ampRelease": 0.6,
+      "owit_armStagger": 0.5,
+      "owit_borderMode": 1,
+      "owit_inkCloudMix": 0.07,
+      "owit_chroma1": 0.68,
+      "owit_chroma2": 0.71,
+      "owit_polyDepth": 0.48,
+      "owit_couplingLevel": 0.67,
+      "owit_couplingBus": 0,
+      "owit_outputLevel": 0.79,
+      "owit_outputPan": 0.18
+    },
+    "ORGANON": {
+      "organon_character": 0.45,
+      "organon_movement": 0.57,
+      "organon_coupling": 0.79,
+      "organon_space": 0.72,
+      "organon_filterCutoff": 0.75,
+      "organon_filterReso": 0.5,
+      "organon_ampAttack": 0.33,
+      "organon_ampSustain": 0.6,
+      "organon_ampRelease": 0.69,
+      "organon_reverbMix": 0.34,
+      "organon_couplingLevel": 0.54,
+      "organon_outputLevel": 0.74
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OUTWIT",
+    "target": "ORGANON",
+    "amount": 0.87,
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "ORGANON",
+        "type": "CHAOS_INJECT",
+        "amount": 0.87
+      }
+    ]
+  }
+}

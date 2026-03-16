@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "name": "Vatic Predator",
+  "mood": "Entangled",
+  "engines": [
+    "OUTWIT",
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with ORACLE's prophetic stochastic character (GENDY + Maqam liminal tones). Coupling: Spatial Couple.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "oracle",
+    "chaotic",
+    "generative"
+  ],
+  "macroLabels": [
+    "ARMS",
+    "CHAOS",
+    "COUPLING",
+    "DENSITY"
+  ],
+  "macros": {
+    "CHARACTER": 0.43,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.57,
+    "SPACE": 0.49
+  },
+  "couplingIntensity": "Moderate",
+  "sonic_dna": {
+    "brightness": 0.25,
+    "warmth": 0.6,
+    "movement": 0.87,
+    "density": 0.85,
+    "space": 0.79,
+    "aggression": 0.39
+  },
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.6,
+    "movement": 0.87,
+    "density": 0.85,
+    "space": 0.79,
+    "aggression": 0.39
+  },
+  "parameters": {
+    "OUTWIT": {
+      "owit_rule": 110,
+      "owit_arms": 8,
+      "owit_cellSize": 0.14,
+      "owit_density": 0.72,
+      "owit_evolveRate": 0.37,
+      "owit_mutateProb": 0.39,
+      "owit_pitchSpread": 0.39,
+      "owit_filterCutoff": 0.45,
+      "owit_filterReso": 0.5,
+      "owit_ampAttack": 0.08,
+      "owit_ampRelease": 0.18,
+      "owit_armStagger": 0.2,
+      "owit_borderMode": 1,
+      "owit_inkCloudMix": 0.32,
+      "owit_chroma1": 0.63,
+      "owit_chroma2": 0.43,
+      "owit_polyDepth": 0.84,
+      "owit_couplingLevel": 0.65,
+      "owit_couplingBus": 0,
+      "owit_outputLevel": 0.71,
+      "owit_outputPan": -0.21
+    },
+    "ORACLE": {
+      "oracle_character": 0.56,
+      "oracle_movement": 0.69,
+      "oracle_coupling": 0.57,
+      "oracle_space": 0.73,
+      "oracle_filterCutoff": 0.8,
+      "oracle_filterReso": 0.13,
+      "oracle_ampAttack": 0.22,
+      "oracle_ampSustain": 0.66,
+      "oracle_ampRelease": 0.46,
+      "oracle_reverbMix": 0.08,
+      "oracle_couplingLevel": 0.79,
+      "oracle_outputLevel": 0.74
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OUTWIT",
+    "target": "ORACLE",
+    "amount": 0.71,
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "ORACLE",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.71
+      }
+    ]
+  }
+}

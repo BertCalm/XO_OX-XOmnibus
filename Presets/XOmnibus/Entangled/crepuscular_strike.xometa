@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "name": "Crepuscular Strike",
+  "mood": "Entangled",
+  "engines": [
+    "OUTWIT",
+    "OBSCURA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with OBSCURA's daguerreotype-veiled spectral character (plate physics and silver grain). Coupling: Envelope Link.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "obscura",
+    "chaotic",
+    "generative"
+  ],
+  "macroLabels": [
+    "ARMS",
+    "CHAOS",
+    "COUPLING",
+    "DENSITY"
+  ],
+  "macros": {
+    "CHARACTER": 0.67,
+    "MOVEMENT": 0.69,
+    "COUPLING": 0.63,
+    "SPACE": 0.55
+  },
+  "couplingIntensity": "Moderate",
+  "sonic_dna": {
+    "brightness": 0.49,
+    "warmth": 0.53,
+    "movement": 0.63,
+    "density": 0.01,
+    "space": 0.41,
+    "aggression": 0.44
+  },
+  "dna": {
+    "brightness": 0.49,
+    "warmth": 0.53,
+    "movement": 0.63,
+    "density": 0.01,
+    "space": 0.41,
+    "aggression": 0.44
+  },
+  "parameters": {
+    "OUTWIT": {
+      "owit_rule": 90,
+      "owit_arms": 8,
+      "owit_cellSize": 0.15,
+      "owit_density": 0.67,
+      "owit_evolveRate": 0.5,
+      "owit_mutateProb": 0.23,
+      "owit_pitchSpread": 0.46,
+      "owit_filterCutoff": 0.58,
+      "owit_filterReso": 0.2,
+      "owit_ampAttack": 0.11,
+      "owit_ampRelease": 0.31,
+      "owit_armStagger": 0.16,
+      "owit_borderMode": 0,
+      "owit_inkCloudMix": 0.04,
+      "owit_chroma1": 0.85,
+      "owit_chroma2": 0.75,
+      "owit_polyDepth": 0.79,
+      "owit_couplingLevel": 0.61,
+      "owit_couplingBus": 0,
+      "owit_outputLevel": 0.81,
+      "owit_outputPan": -0.03
+    },
+    "OBSCURA": {
+      "obscura_character": 0.65,
+      "obscura_movement": 0.65,
+      "obscura_coupling": 0.66,
+      "obscura_space": 0.24,
+      "obscura_filterCutoff": 0.62,
+      "obscura_filterReso": 0.49,
+      "obscura_ampAttack": 0.19,
+      "obscura_ampSustain": 0.86,
+      "obscura_ampRelease": 0.47,
+      "obscura_reverbMix": 0.42,
+      "obscura_couplingLevel": 0.52,
+      "obscura_outputLevel": 0.75
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OUTWIT",
+    "target": "OBSCURA",
+    "amount": 0.66,
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "OBSCURA",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.66
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "name": "Brine Ambush",
+  "mood": "Entangled",
+  "engines": [
+    "OUTWIT",
+    "OCEANIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with OCEANIC's deep-current tidal character (phosphorescent abyssal pressure). Coupling: Velocity Couple.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "oceanic",
+    "chaotic",
+    "generative"
+  ],
+  "macroLabels": [
+    "ARMS",
+    "CHAOS",
+    "COUPLING",
+    "DENSITY"
+  ],
+  "macros": {
+    "CHARACTER": 0.47,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.9,
+    "SPACE": 0.84
+  },
+  "couplingIntensity": "Moderate",
+  "sonic_dna": {
+    "brightness": 0.34,
+    "warmth": 0.92,
+    "movement": 0.61,
+    "density": 0.64,
+    "space": 0.25,
+    "aggression": 0.28
+  },
+  "dna": {
+    "brightness": 0.34,
+    "warmth": 0.92,
+    "movement": 0.61,
+    "density": 0.64,
+    "space": 0.25,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "OUTWIT": {
+      "owit_rule": 30,
+      "owit_arms": 8,
+      "owit_cellSize": 0.19,
+      "owit_density": 0.72,
+      "owit_evolveRate": 0.48,
+      "owit_mutateProb": 0.38,
+      "owit_pitchSpread": 0.58,
+      "owit_filterCutoff": 0.66,
+      "owit_filterReso": 0.18,
+      "owit_ampAttack": 0.14,
+      "owit_ampRelease": 0.79,
+      "owit_armStagger": 0.28,
+      "owit_borderMode": 1,
+      "owit_inkCloudMix": 0.16,
+      "owit_chroma1": 0.6,
+      "owit_chroma2": 0.4,
+      "owit_polyDepth": 0.58,
+      "owit_couplingLevel": 0.57,
+      "owit_couplingBus": 0,
+      "owit_outputLevel": 0.76,
+      "owit_outputPan": -0.11
+    },
+    "OCEANIC": {
+      "ocean_character": 0.41,
+      "ocean_movement": 0.64,
+      "ocean_coupling": 0.72,
+      "ocean_space": 0.72,
+      "ocean_filterCutoff": 0.65,
+      "ocean_filterReso": 0.22,
+      "ocean_ampAttack": 0.23,
+      "ocean_ampSustain": 0.46,
+      "ocean_ampRelease": 0.25,
+      "ocean_reverbMix": 0.39,
+      "ocean_couplingLevel": 0.6,
+      "ocean_outputLevel": 0.69
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OUTWIT",
+    "target": "OCEANIC",
+    "amount": 0.68,
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "OCEANIC",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.68
+      }
+    ]
+  }
+}

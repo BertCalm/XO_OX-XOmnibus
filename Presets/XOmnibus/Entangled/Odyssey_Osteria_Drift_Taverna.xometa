@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "name": "Drift Taverna",
+  "mood": "Entangled",
+  "engines": [
+    "Odyssey",
+    "Osteria"
+  ],
+  "author": "XO_OX Coverage Pack 2026-03-16",
+  "version": "1.0",
+  "description": "The osteria's resonant Q tunes the FM carrier; every round ordered, the pitch drifts warmer.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "odyssey",
+    "osteria"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 0.25,
+      "drift_oscA_pitch": -0.475,
+      "drift_oscA_level": 0.678,
+      "drift_oscB_mode": 0.25,
+      "drift_oscB_pitch": -0.192,
+      "drift_oscB_level": 0.673,
+      "drift_wtPosition": 0.618,
+      "drift_wtMorph": 0.683,
+      "drift_fmRatio": 3.0,
+      "drift_fmDepth": 0.613,
+      "drift_filterCutoff": 1749.6,
+      "drift_filterReso": 0.394,
+      "drift_filterEnvAmt": 0.62,
+      "drift_ampAttack": 0.0958,
+      "drift_ampDecay": 0.643,
+      "drift_ampSustain": 0.748,
+      "drift_ampRelease": 1.466,
+      "drift_modAttack": 0.0538,
+      "drift_modDecay": 0.312,
+      "drift_modSustain": 0.375,
+      "drift_modRelease": 0.404,
+      "drift_lfo1Rate": 0.853,
+      "drift_lfo1Depth": 0.503,
+      "drift_lfo1Shape": 0.25,
+      "drift_lfo2Rate": 0.337,
+      "drift_lfo2Depth": 0.234,
+      "drift_level": 0.712,
+      "drift_chorus": 0.469,
+      "drift_reverbMix": 0.308
+    },
+    "Osteria": {
+      "osteria_level": 0.705,
+      "osteria_filterCutoff": 3929.7
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "type": "FILTER_COUPLING",
+        "source": "Odyssey",
+        "target": "Osteria",
+        "amount": 0.6
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.508,
+    "warmth": 0.661,
+    "movement": 0.458,
+    "density": 0.605,
+    "space": 0.544,
+    "aggression": 0.313
+  }
+}

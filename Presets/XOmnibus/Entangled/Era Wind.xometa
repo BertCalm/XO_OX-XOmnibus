@@ -1,0 +1,39 @@
+{
+  "name": "Era Wind",
+  "version": "1.0",
+  "engines": [
+    "OBBLIGATO",
+    "OVERWORLD"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.6,
+    "SPACE": 0.5
+  },
+  "sonic_dna": {
+    "brightness": 0.61,
+    "warmth": 0.55,
+    "movement": 0.59,
+    "density": 0.63,
+    "space": 0.48,
+    "aggression": 0.43
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "ERA_CROSSFADE",
+    "source": "OBBLIGATO",
+    "target": "OVERWORLD",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "overworld",
+    "wind"
+  ],
+  "description": "Overworld ERA triangle obligated to dual wind breath \u2014 chip music breathes again"
+}

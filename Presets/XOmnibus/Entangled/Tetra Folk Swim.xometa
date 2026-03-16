@@ -1,0 +1,39 @@
+{
+  "name": "Tetra Folk Swim",
+  "version": "1.0",
+  "engines": [
+    "OHM",
+    "ODDFELIX"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.55,
+    "SPACE": 0.65
+  },
+  "sonic_dna": {
+    "brightness": 0.58,
+    "warmth": 0.65,
+    "movement": 0.62,
+    "density": 0.5,
+    "space": 0.64,
+    "aggression": 0.3
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "HARMONIC_BLEND",
+    "source": "ODDFELIX",
+    "target": "OHM",
+    "amount": 0.55
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "oddfelix",
+    "hippy"
+  ],
+  "description": "Neon arc cuts through sage haze \u2014 OddfeliX sharp edges softened by ohm's communal gravity"
+}

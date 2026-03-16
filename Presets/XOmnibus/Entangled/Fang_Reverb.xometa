@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Fang Reverb",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OVERBITE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Overbite bite depth punctures OVERLAP FDN silence — aggression followed by infinite bloom",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "overbite",
+    "bite",
+    "aggressive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.587,
+    "MOVEMENT": 0.615,
+    "COUPLING": 0.579,
+    "SPACE": 0.593
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.5,
+    "space": 0.675,
+    "aggression": 0.425,
+    "movement": 0.5,
+    "warmth": 0.55,
+    "density": 0.625
+  },
+  "sonic_dna": {
+    "brightness": 0.5,
+    "space": 0.675,
+    "aggression": 0.425,
+    "movement": 0.5,
+    "warmth": 0.55,
+    "density": 0.625
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.907,
+      "olap_decay": 0.834,
+      "olap_damping": 0.465,
+      "olap_diffusion": 0.794,
+      "olap_modDepth": 0.42,
+      "olap_modRate": 0.364,
+      "olap_preDelay": 0.146,
+      "olap_earlyMix": 0.296,
+      "olap_lateMix": 0.619,
+      "olap_filterCutoff": 0.544,
+      "olap_filterReso": 0.334,
+      "olap_outputLevel": 0.834,
+      "olap_couplingLevel": 0.767,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.72,
+      "olap_nodeCount": 8,
+      "olap_crossfeedAmt": 0.592,
+      "olap_spinRate": 0.143,
+      "olap_shimmerMix": 0.363
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "OVERBITE",
+        "type": "AMP_MOD",
+        "amount": 0.656
+      }
+    ]
+  }
+}

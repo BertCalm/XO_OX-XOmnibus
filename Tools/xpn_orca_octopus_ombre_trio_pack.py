@@ -90,7 +90,7 @@ VOCAB: Dict[str, List[str]] = {
                 "Liminal", "Drift", "Haze", "Trace", "Lull"],
 }
 
-PARTNER_WORDS: dict[str, list[str]] = {
+PARTNER_WORDS: Dict[str, List[str]] = {
     "ORACLE":    ["Vision", "Break", "Fracture", "Dream", "Omen", "Seer"],
     "OBSIDIAN":  ["Glass", "Void", "Edge", "Cut", "Shard", "Dark"],
     "OUROBOROS": ["Coil", "Loop", "Return", "Spiral", "Cycle", "Knot"],
@@ -105,14 +105,14 @@ PARTNER_WORDS: dict[str, list[str]] = {
     "OSTERIA":   ["Cellar", "Port", "Wood", "Smoke", "Grain", "Steep"],
 }
 
-COUPLING_TYPES: list[str] = [
+COUPLING_TYPES: List[str] = [
     "Amp->Filter", "Env->Morph", "Audio->Wavetable", "Env->Decay",
     "Audio->FM", "Rhythm->Blend", "Env->Filter", "Amp->Morph",
     "Env->Pitch", "Amp->Drive", "Rhythm->Gate", "Audio->Reverb",
 ]
 
 # Marquee triad names — 6 distinct, hand-crafted
-TRIAD_NAMES: list[str] = [
+TRIAD_NAMES: List[str] = [
     "Abyss Signal",
     "Chromatic Hunt",
     "Deep Memory",
@@ -128,7 +128,7 @@ TRIAD_NAMES: list[str] = [
 _DNA_KEYS = ["brightness", "warmth", "movement", "density", "space", "aggression"]
 
 
-def blend_dna(*engine_names: str, weights: list[float] | None = None) -> dict[str, float]:
+def blend_dna(*engine_names: str, weights: Optional[List[float]] = None) -> Dict[str, float]:
     """Weighted average of DNA across named engines."""
     if weights is None:
         weights = [1.0] * len(engine_names)
@@ -139,7 +139,7 @@ def blend_dna(*engine_names: str, weights: list[float] | None = None) -> dict[st
     }
 
 
-def nudge(dna: dict[str, float], seed_val: int) -> dict[str, float]:
+def nudge(dna: Dict[str, float], seed_val: int) -> Dict[str, float]:
     """Apply small deterministic per-preset variation so variants differ."""
     rng = random.Random(seed_val)
     return {k: round(min(1.0, max(0.0, dna[k] + rng.uniform(-0.06, 0.06))), 3)
@@ -153,11 +153,11 @@ def nudge(dna: dict[str, float], seed_val: int) -> dict[str, float]:
 def make_preset(
     name: str,
     desc: str,
-    tags: list[str],
-    engines: list[str],
+    tags: List[str],
+    engines: List[str],
     coupling_type: str,
     amount: float,
-    dna: dict[str, float],
+    dna: Dict[str, float],
 ) -> dict:
     """Build a single .xometa dict.
 
@@ -246,14 +246,14 @@ def _build_12_pair(
     engine_a: str,
     engine_b: str,
     word_a: str,
-    word_b_list: list[str],
+    word_b_list: List[str],
     coupling_type: str,
     base_amount: float,
     desc_frag: str,
-    base_tags: list[str],
+    base_tags: List[str],
     rng: random.Random,
-    vocab_a: list[str] | None = None,
-) -> list[dict]:
+    vocab_a: Optional[List[str]] = None,
+) -> List[dict]:
     """Generate 12 variants for a given engine pair.
 
     Names cycle through vocab_a × word_b_list combinations to stay unique.
@@ -335,7 +335,7 @@ _OTHER_12 = [
     "OVERDUB", "OPAL", "ORGANON", "ORBITAL", "OSPREY", "OSTERIA",
 ]
 
-_ORCA_OTHER_CFG: dict[str, tuple[str, float, str, list[str]]] = {
+_ORCA_OTHER_CFG: Dict[str, Tuple[str, float, str, List[str]]] = {
     # partner: (coupling_type, base_amt, desc_frag, extra_tags)
     "ORACLE":    ("Env->Morph",       0.63, "sonar pulse illuminates oracle prophecy",      ["vision", "depth"]),
     "OBSIDIAN":  ("Env->Decay",       0.74, "apex breach cuts through obsidian void",       ["dark", "edge"]),
@@ -376,7 +376,7 @@ def build_orca_others(rng: random.Random) -> list[dict]:
 
 
 # ---------- OCTOPUS × 12 other engines ----------
-_OCTOPUS_OTHER_CFG: dict[str, tuple[str, float, str, list[str]]] = {
+_OCTOPUS_OTHER_CFG: Dict[str, Tuple[str, float, str, List[str]]] = {
     "ORACLE":    ("Env->Filter",      0.64, "arm pattern reveals oracle fracture",          ["vision", "pattern"]),
     "OBSIDIAN":  ("Amp->Morph",       0.70, "ink cloud darkens obsidian edge",              ["dark", "ink"]),
     "OUROBOROS": ("Audio->FM",        0.68, "eight arms feed ouroboros chaos loop",         ["chaos", "arms"]),
@@ -419,7 +419,7 @@ def build_octopus_others(rng: random.Random) -> list[dict]:
 # I/O
 # ---------------------------------------------------------------------------
 
-def write_preset(preset: dict, output_dir: str, dry_run: bool) -> tuple[Path, bool]:
+def write_preset(preset: dict, output_dir: str, dry_run: bool) -> Tuple[Path, bool]:
     mood_dir = Path(output_dir) / "XOmnibus" / preset["mood"]
     filepath = mood_dir / (preset["name"] + ".xometa")
     if dry_run:

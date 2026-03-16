@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "name": "Drift Patina",
+  "mood": "Entangled",
+  "engines": [
+    "Odyssey",
+    "Ottoni"
+  ],
+  "author": "XO_OX Coverage Pack 2026-03-16",
+  "version": "1.0",
+  "description": "Patina green tunes the FM carrier via Ottoni formant shift — aged metal, aged wave.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "odyssey",
+    "ottoni"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_pitch": 0.459,
+      "drift_oscA_level": 0.679,
+      "drift_oscB_mode": 0.5,
+      "drift_oscB_pitch": 0.227,
+      "drift_oscB_level": 0.567,
+      "drift_wtPosition": 0.515,
+      "drift_wtMorph": 0.623,
+      "drift_fmRatio": 4.0,
+      "drift_fmDepth": 0.368,
+      "drift_filterCutoff": 8603.6,
+      "drift_filterReso": 0.234,
+      "drift_filterEnvAmt": 0.646,
+      "drift_ampAttack": 0.0285,
+      "drift_ampDecay": 0.257,
+      "drift_ampSustain": 0.628,
+      "drift_ampRelease": 0.536,
+      "drift_modAttack": 0.0334,
+      "drift_modDecay": 0.456,
+      "drift_modSustain": 0.381,
+      "drift_modRelease": 1.052,
+      "drift_lfo1Rate": 2.677,
+      "drift_lfo1Depth": 0.116,
+      "drift_lfo1Shape": 0.75,
+      "drift_lfo2Rate": 0.602,
+      "drift_lfo2Depth": 0.124,
+      "drift_level": 0.662,
+      "drift_chorus": 0.096,
+      "drift_reverbMix": 0.544
+    },
+    "Ottoni": {
+      "otto_level": 0.774,
+      "otto_filterCutoff": 5726.3
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "type": "WAVETABLE_MORPH",
+        "source": "Odyssey",
+        "target": "Ottoni",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.637,
+    "warmth": 0.56,
+    "movement": 0.635,
+    "density": 0.682,
+    "space": 0.627,
+    "aggression": 0.317
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Shoreline Tail",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OSPREY"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Osprey shore blend feeds OVERLAP late decay colour — cultural coast tones absorbed into FDN space",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "osprey",
+    "shore",
+    "cultural"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.571,
+    "MOVEMENT": 0.413,
+    "COUPLING": 0.693,
+    "SPACE": 0.71
+  },
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.525,
+    "space": 0.75,
+    "aggression": 0.275,
+    "movement": 0.45,
+    "warmth": 0.525,
+    "density": 0.575
+  },
+  "sonic_dna": {
+    "brightness": 0.525,
+    "space": 0.75,
+    "aggression": 0.275,
+    "movement": 0.45,
+    "warmth": 0.525,
+    "density": 0.575
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.793,
+      "olap_decay": 0.816,
+      "olap_damping": 0.34,
+      "olap_diffusion": 0.709,
+      "olap_modDepth": 0.28,
+      "olap_modRate": 0.205,
+      "olap_preDelay": 0.258,
+      "olap_earlyMix": 0.547,
+      "olap_lateMix": 0.537,
+      "olap_filterCutoff": 0.661,
+      "olap_filterReso": 0.313,
+      "olap_outputLevel": 0.82,
+      "olap_couplingLevel": 0.834,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.404,
+      "olap_nodeCount": 9,
+      "olap_crossfeedAmt": 0.306,
+      "olap_spinRate": 0.039,
+      "olap_shimmerMix": 0.096
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "OSPREY",
+        "type": "SPATIAL_BLEND",
+        "amount": 0.806
+      }
+    ]
+  }
+}

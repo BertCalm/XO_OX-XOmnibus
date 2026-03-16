@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Porto Mojo",
+  "mood": "Entangled",
+  "engines": [
+    "Obese",
+    "Osteria"
+  ],
+  "author": "XO_OX Coverage Pack 2026-03-16",
+  "version": "1.0",
+  "description": "Porto wine resonance fattens the saturation low shelf — deep tavern drive.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "obese",
+    "osteria"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "Obese": {
+      "fat_satDrive": 0.72,
+      "fat_satMix": 0.817,
+      "fat_mojoControl": 0.695,
+      "fat_analogDigital": 0.553,
+      "fat_filterCutoff": 3461.7,
+      "fat_filterReso": 0.522,
+      "fat_filterEnvAmt": 0.377,
+      "fat_oscWave": 0.0,
+      "fat_oscDetune": 0.385,
+      "fat_subOscLevel": 0.36,
+      "fat_distType": 0.25,
+      "fat_ampAttack": 0.0412,
+      "fat_ampDecay": 0.465,
+      "fat_ampSustain": 0.607,
+      "fat_ampRelease": 0.29,
+      "fat_modAttack": 0.0182,
+      "fat_modDecay": 0.379,
+      "fat_modSustain": 0.432,
+      "fat_modRelease": 0.203,
+      "fat_lfo1Rate": 3.675,
+      "fat_lfo1Depth": 0.3,
+      "fat_lfo1Shape": 0.5,
+      "fat_level": 0.642,
+      "fat_reverbMix": 0.281
+    },
+    "Osteria": {
+      "osteria_level": 0.837,
+      "osteria_filterCutoff": 9715.1
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "type": "PITCH_TRACKING",
+        "source": "Obese",
+        "target": "Osteria",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.74,
+    "movement": 0.447,
+    "density": 0.822,
+    "space": 0.479,
+    "aggression": 0.434
+  }
+}

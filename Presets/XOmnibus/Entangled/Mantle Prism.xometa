@@ -1,0 +1,73 @@
+{
+  "name": "Mantle Prism",
+  "version": "1.0.0",
+  "engines": [
+    "Oblique",
+    "Octopus"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.567,
+    "MOVEMENT": 0.916,
+    "COUPLING": 0.658,
+    "SPACE": 0.531
+  },
+  "sonic_dna": {
+    "brightness": 0.639,
+    "warmth": 0.328,
+    "movement": 0.796,
+    "density": 0.628,
+    "space": 0.492,
+    "aggression": 0.511
+  },
+  "parameters": {
+    "oblq_prismColor": 0.506,
+    "oblq_prismAngle": 0.735,
+    "oblq_refractIndex": 0.434,
+    "oblq_dispersion": 0.585,
+    "oblq_bounceDepth": 0.696,
+    "oblq_bounceDecay": 0.373,
+    "oblq_funkGroove": 0.696,
+    "oblq_rtjAggression": 0.393,
+    "oblq_psychWidth": 0.683,
+    "oblq_phaseShift": 0.175,
+    "oblq_filterCutoff": 5945.6,
+    "oblq_filterReso": 0.286,
+    "oblq_level": 0.736,
+    "oblq_ampAttack": 0.0263,
+    "oblq_ampDecay": 0.445,
+    "oblq_ampSustain": 0.776,
+    "oblq_ampRelease": 1.122,
+    "oblq_modAttack": 0.0178,
+    "oblq_modDecay": 0.394,
+    "oblq_modSustain": 0.546,
+    "oblq_modRelease": 0.923,
+    "oblq_lfo1Rate": 2.778,
+    "oblq_lfo1Depth": 0.366,
+    "oblq_lfo1Shape": 1.0,
+    "oblq_lfo2Rate": 1.958,
+    "oblq_lfo2Depth": 0.358,
+    "oblq_lfo2Shape": 0.25,
+    "octo_filterCutoff": 6285.6,
+    "octo_filterReso": 0.231,
+    "octo_level": 0.662,
+    "octo_ampAttack": 0.0402,
+    "octo_ampDecay": 0.574,
+    "octo_ampSustain": 0.536,
+    "octo_ampRelease": 1.306,
+    "octo_lfo1Rate": 2.565,
+    "octo_lfo1Depth": 0.576
+  },
+  "coupling": {
+    "type": "HARMONIC_BLEND",
+    "source": "Oblique",
+    "target": "Octopus",
+    "amount": 0.517
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "prismatic"
+  ],
+  "description": "Chromatophore state as prism refractive index — the octopus choosing which wavelengths pass through its skin."
+}

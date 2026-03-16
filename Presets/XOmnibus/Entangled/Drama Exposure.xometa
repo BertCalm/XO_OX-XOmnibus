@@ -1,0 +1,72 @@
+{
+  "name": "Drama Exposure",
+  "version": "1.0.0",
+  "engines": [
+    "Obscura",
+    "Ole"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.423,
+    "MOVEMENT": 0.562,
+    "COUPLING": 0.786,
+    "SPACE": 0.409
+  },
+  "sonic_dna": {
+    "brightness": 0.543,
+    "warmth": 0.638,
+    "movement": 0.528,
+    "density": 0.583,
+    "space": 0.426,
+    "aggression": 0.478
+  },
+  "parameters": {
+    "obscura_stiffness": 0.834,
+    "obscura_dampening": 0.261,
+    "obscura_exciterType": 1.0,
+    "obscura_exciterAmount": 0.407,
+    "obscura_plateBlend": 0.171,
+    "obscura_silverTone": 0.699,
+    "obscura_exposureTime": 0.296,
+    "obscura_chemicalDepth": 0.674,
+    "obscura_grainSize": 0.2,
+    "obscura_filterCutoff": 6579.2,
+    "obscura_filterReso": 0.186,
+    "obscura_level": 0.752,
+    "obscura_ampAttack": 0.0717,
+    "obscura_ampDecay": 0.574,
+    "obscura_ampSustain": 0.688,
+    "obscura_ampRelease": 1.097,
+    "obscura_modAttack": 0.0146,
+    "obscura_modDecay": 0.731,
+    "obscura_modSustain": 0.622,
+    "obscura_modRelease": 1.078,
+    "obscura_lfo1Rate": 1.106,
+    "obscura_lfo1Depth": 0.339,
+    "obscura_lfo1Shape": 0.25,
+    "obscura_lfo2Rate": 0.135,
+    "obscura_lfo2Depth": 0.149,
+    "obscura_lfo2Shape": 1.0,
+    "ole_filterCutoff": 5806.2,
+    "ole_filterReso": 0.491,
+    "ole_level": 0.677,
+    "ole_ampAttack": 0.0959,
+    "ole_ampDecay": 0.373,
+    "ole_ampSustain": 0.687,
+    "ole_ampRelease": 1.176,
+    "ole_lfo1Rate": 0.125,
+    "ole_lfo1Depth": 0.303
+  },
+  "coupling": {
+    "type": "GRANULAR_EXCHANGE",
+    "source": "Obscura",
+    "target": "Ole",
+    "amount": 0.768
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "daguerreotype"
+  ],
+  "description": "Hibiscus pigment as red-channel developer; the flamenco stomp determines the exposure time — drama measured in silver."
+}

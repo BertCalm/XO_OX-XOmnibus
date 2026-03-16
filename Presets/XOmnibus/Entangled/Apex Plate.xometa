@@ -1,0 +1,72 @@
+{
+  "name": "Apex Plate",
+  "version": "1.0.0",
+  "engines": [
+    "Obscura",
+    "Orca"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.411,
+    "MOVEMENT": 0.676,
+    "COUPLING": 0.8,
+    "SPACE": 0.523
+  },
+  "sonic_dna": {
+    "brightness": 0.484,
+    "warmth": 0.515,
+    "movement": 0.56,
+    "density": 0.662,
+    "space": 0.476,
+    "aggression": 0.59
+  },
+  "parameters": {
+    "obscura_stiffness": 0.587,
+    "obscura_dampening": 0.677,
+    "obscura_exciterType": 0.66,
+    "obscura_exciterAmount": 0.839,
+    "obscura_plateBlend": 0.268,
+    "obscura_silverTone": 0.82,
+    "obscura_exposureTime": 0.7,
+    "obscura_chemicalDepth": 0.629,
+    "obscura_grainSize": 0.312,
+    "obscura_filterCutoff": 6070.2,
+    "obscura_filterReso": 0.48,
+    "obscura_level": 0.767,
+    "obscura_ampAttack": 0.0949,
+    "obscura_ampDecay": 0.945,
+    "obscura_ampSustain": 0.611,
+    "obscura_ampRelease": 1.499,
+    "obscura_modAttack": 0.0565,
+    "obscura_modDecay": 0.25,
+    "obscura_modSustain": 0.376,
+    "obscura_modRelease": 0.718,
+    "obscura_lfo1Rate": 0.817,
+    "obscura_lfo1Depth": 0.455,
+    "obscura_lfo1Shape": 0.0,
+    "obscura_lfo2Rate": 0.373,
+    "obscura_lfo2Depth": 0.121,
+    "obscura_lfo2Shape": 0.25,
+    "orca_filterCutoff": 9102.4,
+    "orca_filterReso": 0.424,
+    "orca_level": 0.733,
+    "orca_ampAttack": 0.0178,
+    "orca_ampDecay": 0.553,
+    "orca_ampSustain": 0.469,
+    "orca_ampRelease": 1.072,
+    "orca_lfo1Rate": 2.68,
+    "orca_lfo1Depth": 0.411
+  },
+  "coupling": {
+    "type": "CHAOS_INJECTION",
+    "source": "Obscura",
+    "target": "Orca",
+    "amount": 0.84
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "daguerreotype"
+  ],
+  "description": "Echolocation click mapped to shutter speed — the orca's hunting pulse determining how long the silver is exposed to light."
+}

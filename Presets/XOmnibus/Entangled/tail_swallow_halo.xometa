@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "name": "Tail-Swallow Halo",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Lion's Mane knot-topology FDN entangled with OUROBOROS's recursive self-feeding character (strange-attractor topology). Coupling: Chaos Inject.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "overlap",
+    "ouroboros",
+    "spatial",
+    "lush"
+  ],
+  "macroLabels": [
+    "TOPOLOGY",
+    "DIFFUSION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.39,
+    "MOVEMENT": 0.66,
+    "COUPLING": 0.84,
+    "SPACE": 0.73
+  },
+  "couplingIntensity": "Moderate",
+  "sonic_dna": {
+    "brightness": 0.06,
+    "warmth": 0.2,
+    "movement": 0.59,
+    "density": 0.61,
+    "space": 0.6,
+    "aggression": 0.07
+  },
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.2,
+    "movement": 0.59,
+    "density": 0.61,
+    "space": 0.6,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.76,
+      "olap_decay": 0.72,
+      "olap_damping": 0.42,
+      "olap_diffusion": 0.71,
+      "olap_modDepth": 0.23,
+      "olap_modRate": 0.15,
+      "olap_preDelay": 0.16,
+      "olap_earlyMix": 0.2,
+      "olap_lateMix": 0.63,
+      "olap_filterCutoff": 0.36,
+      "olap_filterReso": 0.35,
+      "olap_frondDensity": 0.76,
+      "olap_nodeCount": 14,
+      "olap_crossfeedAmt": 0.58,
+      "olap_spinRate": 0.22,
+      "olap_shimmerMix": 0.38,
+      "olap_couplingLevel": 0.62,
+      "olap_couplingBus": 0,
+      "olap_outputLevel": 0.83,
+      "olap_outputPan": 0.2
+    },
+    "OUROBOROS": {
+      "ouro_character": 0.54,
+      "ouro_movement": 0.36,
+      "ouro_coupling": 0.77,
+      "ouro_space": 0.41,
+      "ouro_filterCutoff": 0.77,
+      "ouro_filterReso": 0.17,
+      "ouro_ampAttack": 0.39,
+      "ouro_ampSustain": 0.49,
+      "ouro_ampRelease": 0.61,
+      "ouro_reverbMix": 0.12,
+      "ouro_couplingLevel": 0.61,
+      "ouro_outputLevel": 0.8
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OVERLAP",
+    "target": "OUROBOROS",
+    "amount": 0.6,
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "OUROBOROS",
+        "type": "CHAOS_INJECT",
+        "amount": 0.6
+      }
+    ]
+  }
+}

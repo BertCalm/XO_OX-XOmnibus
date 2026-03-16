@@ -1,0 +1,39 @@
+{
+  "name": "Bob Needs Air",
+  "version": "1.0",
+  "engines": [
+    "OBBLIGATO",
+    "OBLONG"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.55,
+    "SPACE": 0.5
+  },
+  "sonic_dna": {
+    "brightness": 0.57,
+    "warmth": 0.65,
+    "movement": 0.53,
+    "density": 0.63,
+    "space": 0.5,
+    "aggression": 0.41
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "RESONANT_BRIDGE",
+    "source": "OBLONG",
+    "target": "OBBLIGATO",
+    "amount": 0.55
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "oblong",
+    "wind"
+  ],
+  "description": "OBBLIGATO dual wind feeds oblong filter \u2014 the bass synth finally has breath"
+}

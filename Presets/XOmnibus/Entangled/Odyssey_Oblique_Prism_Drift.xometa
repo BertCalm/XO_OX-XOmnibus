@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "name": "Prism Drift",
+  "mood": "Entangled",
+  "engines": [
+    "Odyssey",
+    "Oblique"
+  ],
+  "author": "XO_OX Coverage Pack 2026-03-16",
+  "version": "1.0",
+  "description": "Violet meets prism violet — two purples at oblique angles, refracting into a third colour.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "odyssey",
+    "oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_pitch": 0.031,
+      "drift_oscA_level": 0.561,
+      "drift_oscB_mode": 1.0,
+      "drift_oscB_pitch": 0.045,
+      "drift_oscB_level": 0.497,
+      "drift_wtPosition": 0.351,
+      "drift_wtMorph": 0.487,
+      "drift_fmRatio": 1.5,
+      "drift_fmDepth": 0.604,
+      "drift_filterCutoff": 4132.0,
+      "drift_filterReso": 0.553,
+      "drift_filterEnvAmt": 0.43,
+      "drift_ampAttack": 0.0821,
+      "drift_ampDecay": 0.383,
+      "drift_ampSustain": 0.592,
+      "drift_ampRelease": 1.467,
+      "drift_modAttack": 0.075,
+      "drift_modDecay": 0.37,
+      "drift_modSustain": 0.657,
+      "drift_modRelease": 0.985,
+      "drift_lfo1Rate": 1.4,
+      "drift_lfo1Depth": 0.365,
+      "drift_lfo1Shape": 0.75,
+      "drift_lfo2Rate": 0.765,
+      "drift_lfo2Depth": 0.496,
+      "drift_level": 0.792,
+      "drift_chorus": 0.19,
+      "drift_reverbMix": 0.521
+    },
+    "Oblique": {
+      "oblq_level": 0.744,
+      "oblq_filterCutoff": 8427.3
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "type": "HARMONIC_BLEND",
+        "source": "Odyssey",
+        "target": "Oblique",
+        "amount": 0.8
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.694,
+    "warmth": 0.518,
+    "movement": 0.748,
+    "density": 0.562,
+    "space": 0.487,
+    "aggression": 0.426
+  }
+}

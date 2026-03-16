@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "name": "Drama Wave",
+  "mood": "Entangled",
+  "engines": [
+    "Odyssey",
+    "Ole"
+  ],
+  "author": "XO_OX Coverage Pack 2026-03-16",
+  "version": "1.0",
+  "description": "OLE DRAMA macro depth-modulates wavetable position — every accent a new timbral reveal.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "odyssey",
+    "ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_pitch": -0.263,
+      "drift_oscA_level": 0.838,
+      "drift_oscB_mode": 0.25,
+      "drift_oscB_pitch": 0.102,
+      "drift_oscB_level": 0.723,
+      "drift_wtPosition": 0.469,
+      "drift_wtMorph": 0.253,
+      "drift_fmRatio": 1.0,
+      "drift_fmDepth": 0.568,
+      "drift_filterCutoff": 4605.2,
+      "drift_filterReso": 0.159,
+      "drift_filterEnvAmt": 0.256,
+      "drift_ampAttack": 0.1231,
+      "drift_ampDecay": 0.472,
+      "drift_ampSustain": 0.634,
+      "drift_ampRelease": 1.171,
+      "drift_modAttack": 0.0641,
+      "drift_modDecay": 0.254,
+      "drift_modSustain": 0.345,
+      "drift_modRelease": 0.493,
+      "drift_lfo1Rate": 3.606,
+      "drift_lfo1Depth": 0.67,
+      "drift_lfo1Shape": 1.0,
+      "drift_lfo2Rate": 0.226,
+      "drift_lfo2Depth": 0.253,
+      "drift_level": 0.738,
+      "drift_chorus": 0.123,
+      "drift_reverbMix": 0.375
+    },
+    "Ole": {
+      "ole_level": 0.711,
+      "ole_filterCutoff": 3796.1
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "type": "WAVETABLE_MORPH",
+        "source": "Odyssey",
+        "target": "Ole",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.669,
+    "warmth": 0.62,
+    "movement": 0.731,
+    "density": 0.564,
+    "space": 0.545,
+    "aggression": 0.43
+  }
+}

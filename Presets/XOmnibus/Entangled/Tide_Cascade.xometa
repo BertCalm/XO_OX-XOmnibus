@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Tide Cascade",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "ODYSSEY"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Odyssey tidal swell expands OVERLAP room size in lock-step — tide and tail rise and fall as one",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "odyssey",
+    "tidal",
+    "evolving"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.571,
+    "MOVEMENT": 0.521,
+    "COUPLING": 0.553,
+    "SPACE": 0.434
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.55,
+    "space": 0.8,
+    "aggression": 0.225,
+    "movement": 0.55,
+    "warmth": 0.6,
+    "density": 0.55
+  },
+  "sonic_dna": {
+    "brightness": 0.55,
+    "space": 0.8,
+    "aggression": 0.225,
+    "movement": 0.55,
+    "warmth": 0.6,
+    "density": 0.55
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.771,
+      "olap_decay": 0.609,
+      "olap_damping": 0.492,
+      "olap_diffusion": 0.787,
+      "olap_modDepth": 0.181,
+      "olap_modRate": 0.272,
+      "olap_preDelay": 0.079,
+      "olap_earlyMix": 0.371,
+      "olap_lateMix": 0.807,
+      "olap_filterCutoff": 0.773,
+      "olap_filterReso": 0.132,
+      "olap_outputLevel": 0.747,
+      "olap_couplingLevel": 0.633,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.302,
+      "olap_nodeCount": 8,
+      "olap_crossfeedAmt": 0.455,
+      "olap_spinRate": 0.08,
+      "olap_shimmerMix": 0.296
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "ODYSSEY",
+        "type": "SYNC_LFO",
+        "amount": 0.543
+      }
+    ]
+  }
+}

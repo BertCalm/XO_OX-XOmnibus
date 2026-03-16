@@ -1,0 +1,1284 @@
+{
+  "pack_name": "Drift Essentials",
+  "engine": "ODYSSEY",
+  "version": "1.0.0",
+  "mood": "Foundation",
+  "programs": [
+    {
+      "preset_name": "808 Sub",
+      "preset_path": "Foundation/808 Sub.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Acid 303",
+      "preset_path": "Foundation/Acid 303.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Benthic Presence",
+      "preset_path": "Foundation/Ambient Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Classic Wobble",
+      "preset_path": "Foundation/Classic Wobble.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Crushing Bass",
+      "preset_path": "Foundation/Crushing Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Crystal Chime",
+      "preset_path": "Foundation/Crystal_Chime.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Deep Abyss",
+      "preset_path": "Foundation/Deep Abyss.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Thermocline Beating",
+      "preset_path": "Foundation/Detune Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Digital Growl",
+      "preset_path": "Foundation/Digital Growl.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Distortion Bass",
+      "preset_path": "Foundation/Distortion Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Drift Bass",
+      "preset_path": "Foundation/Drift Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Drift Bob Foundation",
+      "preset_path": "Foundation/Drift Bob Foundation.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Drift Fat Bob Warmth",
+      "preset_path": "Foundation/Drift Fat Bob Warmth.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Drift Glide Bass",
+      "preset_path": "Foundation/Drift Glide Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Drift Morph Pad Layer",
+      "preset_path": "Foundation/Drift Morph Pad Layer.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Drift Pluck Bass",
+      "preset_path": "Foundation/Drift Pluck Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Drift Sub Pad",
+      "preset_path": "Foundation/Drift Sub Pad.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Drift Vowel Bass",
+      "preset_path": "Foundation/Drift Vowel Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Drift FM Lead",
+      "preset_path": "Foundation/Drift_FM_Lead.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Saturation Bloom",
+      "preset_path": "Foundation/Drift_Haze_Pad.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Littoral Flash",
+      "preset_path": "Foundation/Drift_Keys_Bright.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Voyager Signal",
+      "preset_path": "Foundation/Drift_Lead_Classic.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Drift Low Drone",
+      "preset_path": "Foundation/Drift_Low_Drone.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Drift Mono Lead",
+      "preset_path": "Foundation/Drift_Mono_Lead.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Superposed Horizon",
+      "preset_path": "Foundation/Drift_Pad_Wide.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Drift Supersaw Pad",
+      "preset_path": "Foundation/Drift_Supersaw_Pad.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Haze Thermocline",
+      "preset_path": "Foundation/Drift_Warm_Pad.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Dubstep Growl",
+      "preset_path": "Foundation/Dubstep Growl.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Operator Descent",
+      "preset_path": "Foundation/FM Thump.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Fat Saw Bass",
+      "preset_path": "Foundation/Fat Saw Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Interval Drop",
+      "preset_path": "Foundation/Fifth Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Formant Lead",
+      "preset_path": "Foundation/Formant_Lead.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Fracture Bass",
+      "preset_path": "Foundation/Fracture Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Funky Bass",
+      "preset_path": "Foundation/Funky Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Fuzz Bass",
+      "preset_path": "Foundation/Fuzz Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Hollow Bass",
+      "preset_path": "Foundation/Hollow Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Laminar Flow",
+      "preset_path": "Foundation/Legato Smooth.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Metallic Bass",
+      "preset_path": "Foundation/Metallic Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Sediment Filter",
+      "preset_path": "Foundation/Muted Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Noir Bass",
+      "preset_path": "Foundation/Noir Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Sub-Octave Anchor",
+      "preset_path": "Foundation/Octave Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Living Chord",
+      "preset_path": "Foundation/Odyssey_Living_Chord.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Organ Bass",
+      "preset_path": "Foundation/Organ Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Tidal Compression",
+      "preset_path": "Foundation/Pulse Width Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Origin Point",
+      "preset_path": "Foundation/Pure Sub.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Reese Bass",
+      "preset_path": "Foundation/Reese Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Resonant Acid",
+      "preset_path": "Foundation/Resonant Acid.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Elastic Depth",
+      "preset_path": "Foundation/Rubber Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Shimmer Bass",
+      "preset_path": "Foundation/Shimmer Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Slow Wobble",
+      "preset_path": "Foundation/Slow Wobble.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Pressure Front",
+      "preset_path": "Foundation/Square Thump.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Squelch Bass",
+      "preset_path": "Foundation/Squelch Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Neritic Mass",
+      "preset_path": "Foundation/Supersaw Sub.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Supersaw Stack",
+      "preset_path": "Foundation/Supersaw_Stack.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Tape Bass",
+      "preset_path": "Foundation/Tape Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Tidal Bass",
+      "preset_path": "Foundation/Tidal Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Voyager Pad",
+      "preset_path": "Foundation/Voyager_Pad.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    },
+    {
+      "preset_name": "Shelf Extension",
+      "preset_path": "Foundation/Wide Bass.xometa",
+      "program_type": "melodic",
+      "render_notes": [
+        48,
+        52,
+        55,
+        60,
+        64,
+        67,
+        72
+      ],
+      "velocities": [
+        40,
+        80,
+        100,
+        120
+      ],
+      "duration_s": 3.0,
+      "tail_s": 1.0
+    }
+  ]
+}

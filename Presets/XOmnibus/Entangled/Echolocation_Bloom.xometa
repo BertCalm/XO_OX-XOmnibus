@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Echolocation Bloom",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "ORCA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orca echolocation pulse fires into OVERLAP FDN — the apex predator's sonar maps the infinite room",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "orca",
+    "orca",
+    "spatial"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.526,
+    "MOVEMENT": 0.733,
+    "COUPLING": 0.669,
+    "SPACE": 0.484
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.45,
+    "space": 0.7,
+    "aggression": 0.45,
+    "movement": 0.525,
+    "warmth": 0.45,
+    "density": 0.675
+  },
+  "sonic_dna": {
+    "brightness": 0.45,
+    "space": 0.7,
+    "aggression": 0.45,
+    "movement": 0.525,
+    "warmth": 0.45,
+    "density": 0.675
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.568,
+      "olap_decay": 0.58,
+      "olap_damping": 0.267,
+      "olap_diffusion": 0.873,
+      "olap_modDepth": 0.306,
+      "olap_modRate": 0.396,
+      "olap_preDelay": 0.163,
+      "olap_earlyMix": 0.289,
+      "olap_lateMix": 0.739,
+      "olap_filterCutoff": 0.446,
+      "olap_filterReso": 0.225,
+      "olap_outputLevel": 0.83,
+      "olap_couplingLevel": 0.81,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.466,
+      "olap_nodeCount": 7,
+      "olap_crossfeedAmt": 0.52,
+      "olap_spinRate": 0.12,
+      "olap_shimmerMix": 0.16
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "ORCA",
+        "type": "SPATIAL_BLEND",
+        "amount": 0.617
+      }
+    ]
+  }
+}

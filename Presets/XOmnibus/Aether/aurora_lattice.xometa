@@ -1,0 +1,42 @@
+{
+  "name": "Aurora Lattice",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OPTIC",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.2,
+      "macro_movement": 0.55,
+      "macro_coupling": 0.5,
+      "macro_space": 0.95
+    },
+    "ORBITAL": {
+      "macro_character": 0.15,
+      "macro_movement": 0.5,
+      "macro_coupling": 0.5,
+      "macro_space": 0.98
+    }
+  },
+  "dna": {
+    "brightness": 0.87,
+    "warmth": 0.13,
+    "movement": 0.52,
+    "density": 0.09,
+    "space": 0.96,
+    "aggression": 0.03
+  },
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.5,
+    "SPACE": 0.96
+  },
+  "tags": [
+    "aether",
+    "crystalline",
+    "entangled"
+  ]
+}

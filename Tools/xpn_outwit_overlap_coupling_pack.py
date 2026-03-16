@@ -84,11 +84,12 @@ PARTNER_ENGINES = [
     "OVERWORLD","OBBLIGATO","ORPHICA",  "OTTONI",  "OLE",
 ]
 
-# OUTWIT-led: 20 partners excluding OVERLAP (marquee covers that pair already)
-OUTWIT_PARTNER_ENGINES = [e for e in PARTNER_ENGINES if e != "OVERLAP"]
+# OUTWIT-led partners: all 20 from the master list (OVERLAP is included — beyond the
+# 6 marquee presets these are distinct named patches with different coupling types)
+OUTWIT_PARTNER_ENGINES = list(PARTNER_ENGINES)
 
-# OVERLAP-led: 20 partners — replace OVERLAP slot with OUTWIT
-OVERLAP_PARTNER_ENGINES = ["OUTWIT"] + [e for e in PARTNER_ENGINES if e not in ("OVERLAP", "OUTWIT")]
+# OVERLAP-led partners: substitute OVERLAP slot with OUTWIT (same 20-engine count)
+OVERLAP_PARTNER_ENGINES = ["OUTWIT"] + [e for e in PARTNER_ENGINES if e != "OVERLAP"]
 
 # ---------------------------------------------------------------------------
 # Evocative name vocabularies
@@ -449,13 +450,13 @@ def main() -> None:
     if args.dry_run:
         print(f"[dry-run] Would write {len(presets)} presets to: {args.output_dir}")
         print()
-        categories = [
-            ("MARQUEE (OUTWIT×OVERLAP)", lambda p: "OUTWIT" in p["engines"] and "OVERLAP" in p["engines"]),
-            ("OUTWIT-led",  lambda p: p["engines"][0] == "OUTWIT" and "OVERLAP" not in p["engines"]),
-            ("OVERLAP-led", lambda p: p["engines"][0] == "OVERLAP" and "OUTWIT" not in p["engines"]),
+        # Marquee = first 6 (hardcoded spec), OUTWIT-led = next 20, OVERLAP-led = last 20
+        groups = [
+            ("MARQUEE (OUTWIT×OVERLAP)", presets[:6]),
+            ("OUTWIT-led (20)",          presets[6:26]),
+            ("OVERLAP-led (20)",         presets[26:]),
         ]
-        for label, pred in categories:
-            group = [p for p in presets if pred(p)]
+        for label, group in groups:
             print(f"  {label} ({len(group)} presets):")
             for p in group:
                 engines = " × ".join(p["engines"])
@@ -479,9 +480,9 @@ def main() -> None:
             fh.write("\n")
         written += 1
 
-    marquee_count = sum(1 for p in presets if "OUTWIT" in p["engines"] and "OVERLAP" in p["engines"])
-    outwit_led    = sum(1 for p in presets if p["engines"][0] == "OUTWIT" and "OVERLAP" not in p["engines"])
-    overlap_led   = sum(1 for p in presets if p["engines"][0] == "OVERLAP" and "OUTWIT" not in p["engines"])
+    marquee_count = 6
+    outwit_led    = 20
+    overlap_led   = len(presets) - 6 - 20
 
     print(f"OUTWIT×OVERLAP marquee   : {marquee_count}")
     print(f"OUTWIT-led presets       : {outwit_led}")

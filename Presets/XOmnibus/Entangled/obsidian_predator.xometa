@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "name": "Obsidian Predator",
+  "mood": "Entangled",
+  "engines": [
+    "OUTWIT",
+    "OBSIDIAN"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with OBSIDIAN's dark volcanic crystalline character (obsidian physical-modelling). Coupling: Chaos Inject.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "obsidian",
+    "chaotic",
+    "generative"
+  ],
+  "macroLabels": [
+    "ARMS",
+    "CHAOS",
+    "COUPLING",
+    "DENSITY"
+  ],
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.76,
+    "COUPLING": 0.76,
+    "SPACE": 0.6
+  },
+  "couplingIntensity": "Deep",
+  "sonic_dna": {
+    "brightness": 0.41,
+    "warmth": 0.19,
+    "movement": 0.63,
+    "density": 0.85,
+    "space": 0.9,
+    "aggression": 0.8
+  },
+  "dna": {
+    "brightness": 0.41,
+    "warmth": 0.19,
+    "movement": 0.63,
+    "density": 0.85,
+    "space": 0.9,
+    "aggression": 0.8
+  },
+  "parameters": {
+    "OUTWIT": {
+      "owit_rule": 126,
+      "owit_arms": 8,
+      "owit_cellSize": 0.2,
+      "owit_density": 0.37,
+      "owit_evolveRate": 0.77,
+      "owit_mutateProb": 0.27,
+      "owit_pitchSpread": 0.65,
+      "owit_filterCutoff": 0.58,
+      "owit_filterReso": 0.29,
+      "owit_ampAttack": 0.14,
+      "owit_ampRelease": 0.35,
+      "owit_armStagger": 0.22,
+      "owit_borderMode": 1,
+      "owit_inkCloudMix": 0.16,
+      "owit_chroma1": 0.3,
+      "owit_chroma2": 0.8,
+      "owit_polyDepth": 0.44,
+      "owit_couplingLevel": 0.77,
+      "owit_couplingBus": 0,
+      "owit_outputLevel": 0.69,
+      "owit_outputPan": -0.0
+    },
+    "OBSIDIAN": {
+      "obsidian_character": 0.59,
+      "obsidian_movement": 0.7,
+      "obsidian_coupling": 0.52,
+      "obsidian_space": 0.23,
+      "obsidian_filterCutoff": 0.76,
+      "obsidian_filterReso": 0.11,
+      "obsidian_ampAttack": 0.26,
+      "obsidian_ampSustain": 0.68,
+      "obsidian_ampRelease": 0.64,
+      "obsidian_reverbMix": 0.17,
+      "obsidian_couplingLevel": 0.59,
+      "obsidian_outputLevel": 0.72
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OUTWIT",
+    "target": "OBSIDIAN",
+    "amount": 0.74,
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "OBSIDIAN",
+        "type": "CHAOS_INJECT",
+        "amount": 0.74
+      }
+    ]
+  }
+}

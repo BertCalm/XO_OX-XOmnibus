@@ -1,0 +1,39 @@
+{
+  "name": "Folk Grains",
+  "version": "1.0",
+  "engines": [
+    "OHM",
+    "OPAL"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.75,
+    "SPACE": 0.75
+  },
+  "sonic_dna": {
+    "brightness": 0.6,
+    "warmth": 0.65,
+    "movement": 0.64,
+    "density": 0.48,
+    "space": 0.74,
+    "aggression": 0.2
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "GRANULAR_WEAVE",
+    "source": "OPAL",
+    "target": "OHM",
+    "amount": 0.75
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "opal",
+    "hippy"
+  ],
+  "description": "Ohm groove granularized \u2014 each moment of warmth scattered and suspended in space"
+}

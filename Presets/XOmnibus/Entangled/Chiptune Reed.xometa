@@ -1,0 +1,39 @@
+{
+  "name": "Chiptune Reed",
+  "version": "1.0",
+  "engines": [
+    "OBBLIGATO",
+    "OVERWORLD"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.65,
+    "SPACE": 0.5
+  },
+  "sonic_dna": {
+    "brightness": 0.61,
+    "warmth": 0.55,
+    "movement": 0.59,
+    "density": 0.63,
+    "space": 0.48,
+    "aggression": 0.43
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "ERA_CROSSFADE",
+    "source": "OVERWORLD",
+    "target": "OBBLIGATO",
+    "amount": 0.65
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "overworld",
+    "wind"
+  ],
+  "description": "OBBLIGATO breath modulates overworld era crossfade \u2014 each exhale shifts the era"
+}

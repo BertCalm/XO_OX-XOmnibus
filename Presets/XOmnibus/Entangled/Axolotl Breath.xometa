@@ -1,0 +1,39 @@
+{
+  "name": "Axolotl Breath",
+  "version": "1.0",
+  "engines": [
+    "OBBLIGATO",
+    "ODDOSCAR"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.6,
+    "SPACE": 0.5
+  },
+  "sonic_dna": {
+    "brightness": 0.51,
+    "warmth": 0.67,
+    "movement": 0.61,
+    "density": 0.61,
+    "space": 0.54,
+    "aggression": 0.33
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "MORPH_CHAIN",
+    "source": "OBBLIGATO",
+    "target": "ODDOSCAR",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "oddoscar",
+    "wind"
+  ],
+  "description": "Axolotl's regenerative morph fed through dual wind channel \u2014 tender gill-song obligated to air"
+}

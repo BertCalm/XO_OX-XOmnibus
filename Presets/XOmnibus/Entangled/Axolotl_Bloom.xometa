@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Axolotl Bloom",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "ODDOSCAR"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Axolotl gill pulse feeds OVERLAP modulation rate — regenerative rhythm in deep reflective water",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "oddoscar",
+    "organic",
+    "pulse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.533,
+    "MOVEMENT": 0.722,
+    "COUPLING": 0.878,
+    "SPACE": 0.404
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.525,
+    "space": 0.725,
+    "aggression": 0.2,
+    "movement": 0.45,
+    "warmth": 0.625,
+    "density": 0.625
+  },
+  "sonic_dna": {
+    "brightness": 0.525,
+    "space": 0.725,
+    "aggression": 0.2,
+    "movement": 0.45,
+    "warmth": 0.625,
+    "density": 0.625
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.788,
+      "olap_decay": 0.77,
+      "olap_damping": 0.344,
+      "olap_diffusion": 0.548,
+      "olap_modDepth": 0.456,
+      "olap_modRate": 0.136,
+      "olap_preDelay": 0.178,
+      "olap_earlyMix": 0.417,
+      "olap_lateMix": 0.589,
+      "olap_filterCutoff": 0.642,
+      "olap_filterReso": 0.283,
+      "olap_outputLevel": 0.865,
+      "olap_couplingLevel": 0.611,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.658,
+      "olap_nodeCount": 9,
+      "olap_crossfeedAmt": 0.306,
+      "olap_spinRate": 0.05,
+      "olap_shimmerMix": 0.258
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "ODDOSCAR",
+        "type": "AMP_MOD",
+        "amount": 0.574
+      }
+    ]
+  }
+}

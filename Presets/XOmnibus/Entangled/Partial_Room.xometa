@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Partial Room",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "ORBITAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orbital partial count expands OVERLAP FDN node count — more harmonics, more dimensions of space",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "orbital",
+    "additive",
+    "spatial"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.419,
+    "MOVEMENT": 0.635,
+    "COUPLING": 0.899,
+    "SPACE": 0.765
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.575,
+    "space": 0.75,
+    "aggression": 0.275,
+    "movement": 0.45,
+    "warmth": 0.475,
+    "density": 0.55
+  },
+  "sonic_dna": {
+    "brightness": 0.575,
+    "space": 0.75,
+    "aggression": 0.275,
+    "movement": 0.45,
+    "warmth": 0.475,
+    "density": 0.55
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.697,
+      "olap_decay": 0.626,
+      "olap_damping": 0.361,
+      "olap_diffusion": 0.884,
+      "olap_modDepth": 0.11,
+      "olap_modRate": 0.115,
+      "olap_preDelay": 0.155,
+      "olap_earlyMix": 0.52,
+      "olap_lateMix": 0.453,
+      "olap_filterCutoff": 0.737,
+      "olap_filterReso": 0.346,
+      "olap_outputLevel": 0.699,
+      "olap_couplingLevel": 0.734,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.647,
+      "olap_nodeCount": 13,
+      "olap_crossfeedAmt": 0.28,
+      "olap_spinRate": 0.051,
+      "olap_shimmerMix": 0.03
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "ORBITAL",
+        "type": "SPECTRAL_CROSS",
+        "amount": 0.555
+      }
+    ]
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Abyssal Cathedral",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OWLFISH"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Owlfish Mixtur-Trautonium partials align OVERLAP FDN nodes — subharmonic series in deep reverb",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "owlfish",
+    "abyssal",
+    "subharmonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.366,
+    "MOVEMENT": 0.653,
+    "COUPLING": 0.715,
+    "SPACE": 0.693
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.525,
+    "space": 0.725,
+    "aggression": 0.225,
+    "movement": 0.425,
+    "warmth": 0.575,
+    "density": 0.625
+  },
+  "sonic_dna": {
+    "brightness": 0.525,
+    "space": 0.725,
+    "aggression": 0.225,
+    "movement": 0.425,
+    "warmth": 0.575,
+    "density": 0.625
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.825,
+      "olap_decay": 0.78,
+      "olap_damping": 0.627,
+      "olap_diffusion": 0.7,
+      "olap_modDepth": 0.298,
+      "olap_modRate": 0.078,
+      "olap_preDelay": 0.012,
+      "olap_earlyMix": 0.351,
+      "olap_lateMix": 0.545,
+      "olap_filterCutoff": 0.475,
+      "olap_filterReso": 0.132,
+      "olap_outputLevel": 0.871,
+      "olap_couplingLevel": 0.801,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.588,
+      "olap_nodeCount": 6,
+      "olap_crossfeedAmt": 0.6,
+      "olap_spinRate": 0.175,
+      "olap_shimmerMix": 0.108
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "OWLFISH",
+        "type": "PHASE_LOCK",
+        "amount": 0.55
+      }
+    ]
+  }
+}

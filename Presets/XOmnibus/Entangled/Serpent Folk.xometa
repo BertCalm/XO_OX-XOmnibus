@@ -1,0 +1,39 @@
+{
+  "name": "Serpent Folk",
+  "version": "1.0",
+  "engines": [
+    "OHM",
+    "OUROBOROS"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.6,
+    "SPACE": 0.65
+  },
+  "sonic_dna": {
+    "brightness": 0.52,
+    "warmth": 0.63,
+    "movement": 0.68,
+    "density": 0.56,
+    "space": 0.62,
+    "aggression": 0.42
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "CHAOS_LEASH",
+    "source": "OUROBOROS",
+    "target": "OHM",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "ouroboros",
+    "hippy"
+  ],
+  "description": "Ohm groove becomes the leash for self-devouring chaos \u2014 folk holds the serpent"
+}

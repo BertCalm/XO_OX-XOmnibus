@@ -1,0 +1,39 @@
+{
+  "name": "Spring Reed",
+  "version": "1.0",
+  "engines": [
+    "OBBLIGATO",
+    "OVERDUB"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.7,
+    "SPACE": 0.5
+  },
+  "sonic_dna": {
+    "brightness": 0.47,
+    "warmth": 0.69,
+    "movement": 0.57,
+    "density": 0.61,
+    "space": 0.58,
+    "aggression": 0.31
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "TAPE_ECHO_LOCK",
+    "source": "OVERDUB",
+    "target": "OBBLIGATO",
+    "amount": 0.7
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "overdub",
+    "wind"
+  ],
+  "description": "Overdub spring reverb activated by OBBLIGATO breath gate \u2014 the spring only splashes when the reed speaks"
+}

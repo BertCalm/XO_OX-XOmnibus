@@ -1,0 +1,35 @@
+{
+  "name": "Perpetual Opening",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OVERLAP"
+  ],
+  "parameters": {
+    "OVERLAP": {
+      "macro_character": 0.35,
+      "macro_movement": 0.87,
+      "macro_coupling": 0.22,
+      "macro_space": 0.83
+    }
+  },
+  "dna": {
+    "brightness": 0.54,
+    "warmth": 0.38,
+    "movement": 0.87,
+    "density": 0.18,
+    "space": 0.83,
+    "aggression": 0.1
+  },
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.87,
+    "COUPLING": 0.22,
+    "SPACE": 0.83
+  },
+  "tags": [
+    "aether",
+    "shifting-aether",
+    "evolving"
+  ]
+}

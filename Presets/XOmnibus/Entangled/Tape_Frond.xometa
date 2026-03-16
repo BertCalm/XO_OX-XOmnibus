@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Tape Frond",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OVERDUB"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Overdub tape saturation bleeds into OVERLAP decay — warm oxide tail through an FDN cathedral",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "overdub",
+    "warm",
+    "tape"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.615,
+    "MOVEMENT": 0.726,
+    "COUPLING": 0.597,
+    "SPACE": 0.452
+  },
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.475,
+    "space": 0.775,
+    "aggression": 0.25,
+    "movement": 0.425,
+    "warmth": 0.575,
+    "density": 0.575
+  },
+  "sonic_dna": {
+    "brightness": 0.475,
+    "space": 0.775,
+    "aggression": 0.25,
+    "movement": 0.425,
+    "warmth": 0.575,
+    "density": 0.575
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.775,
+      "olap_decay": 0.54,
+      "olap_damping": 0.465,
+      "olap_diffusion": 0.702,
+      "olap_modDepth": 0.153,
+      "olap_modRate": 0.172,
+      "olap_preDelay": 0.021,
+      "olap_earlyMix": 0.285,
+      "olap_lateMix": 0.528,
+      "olap_filterCutoff": 0.569,
+      "olap_filterReso": 0.29,
+      "olap_outputLevel": 0.72,
+      "olap_couplingLevel": 0.845,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.704,
+      "olap_nodeCount": 14,
+      "olap_crossfeedAmt": 0.203,
+      "olap_spinRate": 0.208,
+      "olap_shimmerMix": 0.12
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "OVERDUB",
+        "type": "SPATIAL_BLEND",
+        "amount": 0.748
+      }
+    ]
+  }
+}

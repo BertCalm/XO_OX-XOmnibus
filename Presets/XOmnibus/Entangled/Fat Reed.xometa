@@ -1,0 +1,39 @@
+{
+  "name": "Fat Reed",
+  "version": "1.0",
+  "engines": [
+    "OBBLIGATO",
+    "OBESE"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.6,
+    "SPACE": 0.5
+  },
+  "sonic_dna": {
+    "brightness": 0.59,
+    "warmth": 0.63,
+    "movement": 0.55,
+    "density": 0.69,
+    "space": 0.44,
+    "aggression": 0.49
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SATURATION_FEED",
+    "source": "OBESE",
+    "target": "OBBLIGATO",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "obese",
+    "wind"
+  ],
+  "description": "Obese MOJO axis obligated to OBBLIGATO breath envelope \u2014 saturation breathes"
+}

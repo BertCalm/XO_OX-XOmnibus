@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Pixel Frond",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OVERWORLD"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Overworld chip glitch scatters OVERLAP diffusion coefficients — pixels dissolve into reverb geometry",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "overworld",
+    "chip",
+    "glitch"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.71,
+    "MOVEMENT": 0.426,
+    "COUPLING": 0.566,
+    "SPACE": 0.596
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.6,
+    "space": 0.6,
+    "aggression": 0.325,
+    "movement": 0.5,
+    "warmth": 0.425,
+    "density": 0.525
+  },
+  "sonic_dna": {
+    "brightness": 0.6,
+    "space": 0.6,
+    "aggression": 0.325,
+    "movement": 0.5,
+    "warmth": 0.425,
+    "density": 0.525
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.859,
+      "olap_decay": 0.64,
+      "olap_damping": 0.454,
+      "olap_diffusion": 0.772,
+      "olap_modDepth": 0.437,
+      "olap_modRate": 0.166,
+      "olap_preDelay": 0.008,
+      "olap_earlyMix": 0.507,
+      "olap_lateMix": 0.518,
+      "olap_filterCutoff": 0.64,
+      "olap_filterReso": 0.444,
+      "olap_outputLevel": 0.659,
+      "olap_couplingLevel": 0.729,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.473,
+      "olap_nodeCount": 11,
+      "olap_crossfeedAmt": 0.375,
+      "olap_spinRate": 0.246,
+      "olap_shimmerMix": 0.046
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "OVERWORLD",
+        "type": "CHAOS_INJECT",
+        "amount": 0.528
+      }
+    ]
+  }
+}

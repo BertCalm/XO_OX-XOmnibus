@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "name": "Maqam Cells",
+  "mood": "Entangled",
+  "engines": [
+    "OUTWIT",
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Oracle Maqam pitch set seeds OUTWIT cell pitch classes — ancient tuning as cellular DNA",
+  "tags": [
+    "coupling",
+    "entangled",
+    "outwit",
+    "oracle",
+    "prophetic",
+    "tuning"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.656,
+    "MOVEMENT": 0.363,
+    "COUPLING": 0.781,
+    "SPACE": 0.677
+  },
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.575,
+    "space": 0.6,
+    "aggression": 0.45,
+    "movement": 0.7,
+    "warmth": 0.5,
+    "density": 0.675
+  },
+  "sonic_dna": {
+    "brightness": 0.575,
+    "space": 0.6,
+    "aggression": 0.45,
+    "movement": 0.7,
+    "warmth": 0.5,
+    "density": 0.675
+  },
+  "parameters": {
+    "OUTWIT": {
+      "owit_rule": 184,
+      "owit_arms": 4,
+      "owit_cellSize": 0.18,
+      "owit_density": 0.592,
+      "owit_evolveRate": 0.514,
+      "owit_mutateProb": 0.266,
+      "owit_pitchSpread": 0.3,
+      "owit_filterCutoff": 0.302,
+      "owit_filterReso": 0.109,
+      "owit_ampAttack": 0.067,
+      "owit_ampRelease": 0.621,
+      "owit_outputLevel": 0.775,
+      "owit_couplingLevel": 0.686,
+      "owit_couplingBus": 0,
+      "owit_armStagger": 0.412,
+      "owit_borderMode": 0,
+      "owit_inkCloudMix": 0.207,
+      "owit_chroma1": 0.393,
+      "owit_chroma2": 0.413,
+      "owit_polyDepth": 0.738
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "ORACLE",
+        "type": "PHASE_LOCK",
+        "amount": 0.761
+      }
+    ]
+  }
+}

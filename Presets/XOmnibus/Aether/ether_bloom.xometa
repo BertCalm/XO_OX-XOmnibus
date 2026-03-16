@@ -1,0 +1,35 @@
+{
+  "name": "Ether Bloom",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OHM"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.28,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.18,
+      "macro_space": 0.94
+    }
+  },
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.42,
+    "movement": 0.72,
+    "density": 0.12,
+    "space": 0.94,
+    "aggression": 0.05
+  },
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.18,
+    "SPACE": 0.94
+  },
+  "tags": [
+    "aether",
+    "transcendent",
+    "evolving"
+  ]
+}

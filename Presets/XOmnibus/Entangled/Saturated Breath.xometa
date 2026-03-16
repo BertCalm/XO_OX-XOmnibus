@@ -1,0 +1,39 @@
+{
+  "name": "Saturated Breath",
+  "version": "1.0",
+  "engines": [
+    "OBBLIGATO",
+    "OBESE"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.65,
+    "SPACE": 0.5
+  },
+  "sonic_dna": {
+    "brightness": 0.59,
+    "warmth": 0.63,
+    "movement": 0.55,
+    "density": 0.69,
+    "space": 0.44,
+    "aggression": 0.49
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SATURATION_FEED",
+    "source": "OBBLIGATO",
+    "target": "OBESE",
+    "amount": 0.65
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "obese",
+    "wind"
+  ],
+  "description": "Dual wind runs through obese saturation \u2014 obligated coral warmth turned molten"
+}

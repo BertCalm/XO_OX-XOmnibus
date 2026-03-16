@@ -1,0 +1,35 @@
+{
+  "name": "Slow Unraveling",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.4,
+      "macro_movement": 0.78,
+      "macro_coupling": 0.25,
+      "macro_space": 0.84
+    }
+  },
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.42,
+    "movement": 0.78,
+    "density": 0.2,
+    "space": 0.84,
+    "aggression": 0.12
+  },
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.78,
+    "COUPLING": 0.25,
+    "SPACE": 0.84
+  },
+  "tags": [
+    "aether",
+    "shifting-aether",
+    "evolving"
+  ]
+}

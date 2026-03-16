@@ -1,0 +1,73 @@
+{
+  "name": "Neon Spectrum",
+  "version": "1.0.0",
+  "engines": [
+    "Oblique",
+    "OddfeliX"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.487,
+    "MOVEMENT": 0.818,
+    "COUPLING": 0.556,
+    "SPACE": 0.601
+  },
+  "sonic_dna": {
+    "brightness": 0.834,
+    "warmth": 0.551,
+    "movement": 0.793,
+    "density": 0.662,
+    "space": 0.634,
+    "aggression": 0.442
+  },
+  "parameters": {
+    "oblq_prismColor": 0.933,
+    "oblq_prismAngle": 0.433,
+    "oblq_refractIndex": 0.544,
+    "oblq_dispersion": 0.824,
+    "oblq_bounceDepth": 0.368,
+    "oblq_bounceDecay": 0.741,
+    "oblq_funkGroove": 0.989,
+    "oblq_rtjAggression": 0.561,
+    "oblq_psychWidth": 0.889,
+    "oblq_phaseShift": 0.85,
+    "oblq_filterCutoff": 11986.6,
+    "oblq_filterReso": 0.647,
+    "oblq_level": 0.659,
+    "oblq_ampAttack": 0.0101,
+    "oblq_ampDecay": 0.279,
+    "oblq_ampSustain": 0.74,
+    "oblq_ampRelease": 0.556,
+    "oblq_modAttack": 0.0302,
+    "oblq_modDecay": 0.236,
+    "oblq_modSustain": 0.543,
+    "oblq_modRelease": 0.411,
+    "oblq_lfo1Rate": 3.327,
+    "oblq_lfo1Depth": 0.711,
+    "oblq_lfo1Shape": 1.0,
+    "oblq_lfo2Rate": 2.366,
+    "oblq_lfo2Depth": 0.34,
+    "oblq_lfo2Shape": 0.5,
+    "snap_filterCutoff": 9505.8,
+    "snap_filterReso": 0.284,
+    "snap_level": 0.658,
+    "snap_ampAttack": 0.0357,
+    "snap_ampDecay": 0.657,
+    "snap_ampSustain": 0.637,
+    "snap_ampRelease": 0.856,
+    "snap_lfo1Rate": 2.474,
+    "snap_lfo1Depth": 0.147
+  },
+  "coupling": {
+    "type": "WAVETABLE_MORPH",
+    "source": "Oblique",
+    "target": "OddfeliX",
+    "amount": 0.509
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "prismatic"
+  ],
+  "description": "Neon tetra iridescence entering the prism — schooling-pattern harmonics dispersed into a full prismatic arc."
+}

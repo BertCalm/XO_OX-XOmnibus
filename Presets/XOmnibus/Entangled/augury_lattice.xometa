@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "name": "Augury Lattice",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Lion's Mane knot-topology FDN entangled with ORACLE's prophetic stochastic character (GENDY + Maqam liminal tones). Coupling: Pitch Sync.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "overlap",
+    "oracle",
+    "spatial",
+    "lush"
+  ],
+  "macroLabels": [
+    "TOPOLOGY",
+    "DIFFUSION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.69,
+    "MOVEMENT": 0.39,
+    "COUPLING": 0.74,
+    "SPACE": 0.67
+  },
+  "couplingIntensity": "Moderate",
+  "sonic_dna": {
+    "brightness": 0.88,
+    "warmth": 0.62,
+    "movement": 0.61,
+    "density": 0.3,
+    "space": 0.97,
+    "aggression": 0.36
+  },
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.62,
+    "movement": 0.61,
+    "density": 0.3,
+    "space": 0.97,
+    "aggression": 0.36
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.63,
+      "olap_decay": 0.67,
+      "olap_damping": 0.42,
+      "olap_diffusion": 0.74,
+      "olap_modDepth": 0.46,
+      "olap_modRate": 0.04,
+      "olap_preDelay": 0.09,
+      "olap_earlyMix": 0.38,
+      "olap_lateMix": 0.68,
+      "olap_filterCutoff": 0.63,
+      "olap_filterReso": 0.31,
+      "olap_frondDensity": 0.6,
+      "olap_nodeCount": 6,
+      "olap_crossfeedAmt": 0.21,
+      "olap_spinRate": 0.28,
+      "olap_shimmerMix": 0.41,
+      "olap_couplingLevel": 0.87,
+      "olap_couplingBus": 0,
+      "olap_outputLevel": 0.8,
+      "olap_outputPan": 0.1
+    },
+    "ORACLE": {
+      "oracle_character": 0.72,
+      "oracle_movement": 0.66,
+      "oracle_coupling": 0.66,
+      "oracle_space": 0.27,
+      "oracle_filterCutoff": 0.43,
+      "oracle_filterReso": 0.43,
+      "oracle_ampAttack": 0.16,
+      "oracle_ampSustain": 0.75,
+      "oracle_ampRelease": 0.33,
+      "oracle_reverbMix": 0.23,
+      "oracle_couplingLevel": 0.6,
+      "oracle_outputLevel": 0.83
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OVERLAP",
+    "target": "ORACLE",
+    "amount": 0.51,
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "ORACLE",
+        "type": "PITCH_SYNC",
+        "amount": 0.51
+      }
+    ]
+  }
+}

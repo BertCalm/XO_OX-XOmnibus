@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "name": "Drift Origami",
+  "mood": "Entangled",
+  "engines": [
+    "Odyssey",
+    "Origami"
+  ],
+  "author": "XO_OX Coverage Pack 2026-03-16",
+  "version": "1.0",
+  "description": "A drifting FM ratio traces a kite-fold pattern; the paper moves but the crease stays fixed.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "odyssey",
+    "origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 0.0,
+      "drift_oscA_pitch": 0.178,
+      "drift_oscA_level": 0.737,
+      "drift_oscB_mode": 0.0,
+      "drift_oscB_pitch": -0.379,
+      "drift_oscB_level": 0.774,
+      "drift_wtPosition": 0.402,
+      "drift_wtMorph": 0.529,
+      "drift_fmRatio": 1.0,
+      "drift_fmDepth": 0.419,
+      "drift_filterCutoff": 9869.2,
+      "drift_filterReso": 0.573,
+      "drift_filterEnvAmt": 0.484,
+      "drift_ampAttack": 0.0069,
+      "drift_ampDecay": 0.543,
+      "drift_ampSustain": 0.545,
+      "drift_ampRelease": 0.705,
+      "drift_modAttack": 0.0066,
+      "drift_modDecay": 0.256,
+      "drift_modSustain": 0.436,
+      "drift_modRelease": 1.052,
+      "drift_lfo1Rate": 0.388,
+      "drift_lfo1Depth": 0.537,
+      "drift_lfo1Shape": 1.0,
+      "drift_lfo2Rate": 0.244,
+      "drift_lfo2Depth": 0.244,
+      "drift_level": 0.664,
+      "drift_chorus": 0.137,
+      "drift_reverbMix": 0.162
+    },
+    "Origami": {
+      "origami_level": 0.733,
+      "origami_filterCutoff": 4829.8
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "type": "SPATIAL_BLEND",
+        "source": "Odyssey",
+        "target": "Origami",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.653,
+    "warmth": 0.525,
+    "movement": 0.622,
+    "density": 0.507,
+    "space": 0.548,
+    "aggression": 0.377
+  }
+}

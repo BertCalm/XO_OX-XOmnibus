@@ -1,0 +1,39 @@
+{
+  "name": "Chaos Commune",
+  "version": "1.0",
+  "engines": [
+    "OHM",
+    "OUROBOROS"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.7,
+    "SPACE": 0.65
+  },
+  "sonic_dna": {
+    "brightness": 0.52,
+    "warmth": 0.63,
+    "movement": 0.68,
+    "density": 0.56,
+    "space": 0.62,
+    "aggression": 0.42
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "CHAOS_LEASH",
+    "source": "OHM",
+    "target": "OUROBOROS",
+    "amount": 0.7
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "ouroboros",
+    "hippy"
+  ],
+  "description": "Ouroboros strange attractor leashed to ohm's warm gravitational centre \u2014 chaos with a hearth"
+}

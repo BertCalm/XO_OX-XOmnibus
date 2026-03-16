@@ -1,0 +1,39 @@
+{
+  "name": "Reed Rhythm",
+  "version": "1.0",
+  "engines": [
+    "OBBLIGATO",
+    "ONSET"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.6,
+    "SPACE": 0.5
+  },
+  "sonic_dna": {
+    "brightness": 0.53,
+    "warmth": 0.61,
+    "movement": 0.61,
+    "density": 0.71,
+    "space": 0.44,
+    "aggression": 0.49
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "RHYTHM_GATE",
+    "source": "ONSET",
+    "target": "OBBLIGATO",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "onset",
+    "wind"
+  ],
+  "description": "OBBLIGATO attack shaped by onset kick pattern \u2014 the wind is rhythmically forced"
+}

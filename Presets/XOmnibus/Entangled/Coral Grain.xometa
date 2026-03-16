@@ -1,0 +1,39 @@
+{
+  "name": "Coral Grain",
+  "version": "1.0",
+  "engines": [
+    "OBBLIGATO",
+    "OPAL"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.7,
+    "SPACE": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.63,
+    "warmth": 0.59,
+    "movement": 0.61,
+    "density": 0.57,
+    "space": 0.62,
+    "aggression": 0.29
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "GRANULAR_WEAVE",
+    "source": "OPAL",
+    "target": "OBBLIGATO",
+    "amount": 0.7
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "opal",
+    "wind"
+  ],
+  "description": "OBBLIGATO BOND macro tied to opal grain size \u2014 the tighter the bond, the smaller the grain"
+}

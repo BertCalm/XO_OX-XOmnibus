@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Glass Web",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OBSIDIAN"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Obsidian crystal aggression cuts through OVERLAP bloom — dark shards dissolve in diffuse reflection",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "obsidian",
+    "dark",
+    "crystalline"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.541,
+    "COUPLING": 0.88,
+    "SPACE": 0.534
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.4,
+    "space": 0.675,
+    "aggression": 0.45,
+    "movement": 0.475,
+    "warmth": 0.45,
+    "density": 0.675
+  },
+  "sonic_dna": {
+    "brightness": 0.4,
+    "space": 0.675,
+    "aggression": 0.45,
+    "movement": 0.475,
+    "warmth": 0.45,
+    "density": 0.675
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.664,
+      "olap_decay": 0.609,
+      "olap_damping": 0.378,
+      "olap_diffusion": 0.716,
+      "olap_modDepth": 0.155,
+      "olap_modRate": 0.131,
+      "olap_preDelay": 0.208,
+      "olap_earlyMix": 0.447,
+      "olap_lateMix": 0.429,
+      "olap_filterCutoff": 0.554,
+      "olap_filterReso": 0.29,
+      "olap_outputLevel": 0.746,
+      "olap_couplingLevel": 0.612,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.51,
+      "olap_nodeCount": 15,
+      "olap_crossfeedAmt": 0.578,
+      "olap_spinRate": 0.024,
+      "olap_shimmerMix": 0.352
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "OBSIDIAN",
+        "type": "FILTER_MOD",
+        "amount": 0.531
+      }
+    ]
+  }
+}

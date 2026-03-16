@@ -1,0 +1,35 @@
+{
+  "name": "Slow Decay",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OVERDUB"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.5,
+      "macro_movement": 0.58,
+      "macro_coupling": 0.35,
+      "macro_space": 0.87
+    }
+  },
+  "dna": {
+    "brightness": 0.19,
+    "warmth": 0.55,
+    "movement": 0.58,
+    "density": 0.26,
+    "space": 0.87,
+    "aggression": 0.18
+  },
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.35,
+    "SPACE": 0.87
+  },
+  "tags": [
+    "aether",
+    "dark-aether",
+    "ambient"
+  ]
+}

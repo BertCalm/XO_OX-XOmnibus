@@ -1,0 +1,72 @@
+{
+  "name": "Cellular Exposure",
+  "version": "1.0.0",
+  "engines": [
+    "Obscura",
+    "Outwit"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.36,
+    "MOVEMENT": 0.511,
+    "COUPLING": 0.711,
+    "SPACE": 0.641
+  },
+  "sonic_dna": {
+    "brightness": 0.478,
+    "warmth": 0.364,
+    "movement": 0.546,
+    "density": 0.722,
+    "space": 0.591,
+    "aggression": 0.474
+  },
+  "parameters": {
+    "obscura_stiffness": 0.503,
+    "obscura_dampening": 0.415,
+    "obscura_exciterType": 1.0,
+    "obscura_exciterAmount": 0.351,
+    "obscura_plateBlend": 0.2,
+    "obscura_silverTone": 0.603,
+    "obscura_exposureTime": 0.181,
+    "obscura_chemicalDepth": 0.424,
+    "obscura_grainSize": 0.407,
+    "obscura_filterCutoff": 6593.1,
+    "obscura_filterReso": 0.115,
+    "obscura_level": 0.781,
+    "obscura_ampAttack": 0.0318,
+    "obscura_ampDecay": 0.859,
+    "obscura_ampSustain": 0.665,
+    "obscura_ampRelease": 1.823,
+    "obscura_modAttack": 0.0605,
+    "obscura_modDecay": 0.405,
+    "obscura_modSustain": 0.587,
+    "obscura_modRelease": 0.96,
+    "obscura_lfo1Rate": 1.888,
+    "obscura_lfo1Depth": 0.202,
+    "obscura_lfo1Shape": 0.0,
+    "obscura_lfo2Rate": 0.281,
+    "obscura_lfo2Depth": 0.179,
+    "obscura_lfo2Shape": 1.0,
+    "owit_filterCutoff": 6404.6,
+    "owit_filterReso": 0.145,
+    "owit_level": 0.758,
+    "owit_ampAttack": 0.0063,
+    "owit_ampDecay": 0.585,
+    "owit_ampSustain": 0.558,
+    "owit_ampRelease": 1.195,
+    "owit_lfo1Rate": 0.391,
+    "owit_lfo1Depth": 0.364
+  },
+  "coupling": {
+    "type": "WAVETABLE_MORPH",
+    "source": "Obscura",
+    "target": "Outwit",
+    "amount": 0.518
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "daguerreotype"
+  ],
+  "description": "Wolfram CA rule applied to halftone grid — cellular automata determining which silver grains activate on the plate."
+}

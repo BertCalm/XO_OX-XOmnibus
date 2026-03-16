@@ -1,0 +1,39 @@
+{
+  "name": "Sage Ring",
+  "version": "1.0",
+  "engines": [
+    "OHM",
+    "ORBITAL"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.55,
+    "SPACE": 0.65
+  },
+  "sonic_dna": {
+    "brightness": 0.54,
+    "warmth": 0.67,
+    "movement": 0.6,
+    "density": 0.52,
+    "space": 0.66,
+    "aggression": 0.3
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "ORBITAL_RING",
+    "source": "ORBITAL",
+    "target": "OHM",
+    "amount": 0.55
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "ohm",
+    "orbital",
+    "hippy"
+  ],
+  "description": "Ohm's COMMUNE axis imprinted on orbital ring modulation \u2014 shared breathing in orbit"
+}

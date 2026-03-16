@@ -1,0 +1,35 @@
+{
+  "name": "Shard of Dawn",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OPAL"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.24,
+      "macro_movement": 0.58,
+      "macro_coupling": 0.14,
+      "macro_space": 0.91
+    }
+  },
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.2,
+    "movement": 0.58,
+    "density": 0.11,
+    "space": 0.91,
+    "aggression": 0.05
+  },
+  "macros": {
+    "CHARACTER": 0.24,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.14,
+    "SPACE": 0.91
+  },
+  "tags": [
+    "aether",
+    "crystalline",
+    "ambient"
+  ]
+}

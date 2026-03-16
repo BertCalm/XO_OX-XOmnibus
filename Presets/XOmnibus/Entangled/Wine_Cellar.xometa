@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Wine Cellar",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OSTERIA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Osteria warmth and density settle into OVERLAP room size — Porto wine in a vaulted FDN hall",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "osteria",
+    "warm",
+    "warm-space"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.473,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.749,
+    "SPACE": 0.53
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.475,
+    "space": 0.675,
+    "aggression": 0.25,
+    "movement": 0.4,
+    "warmth": 0.625,
+    "density": 0.65
+  },
+  "sonic_dna": {
+    "brightness": 0.475,
+    "space": 0.675,
+    "aggression": 0.25,
+    "movement": 0.4,
+    "warmth": 0.625,
+    "density": 0.65
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.563,
+      "olap_decay": 0.615,
+      "olap_damping": 0.363,
+      "olap_diffusion": 0.844,
+      "olap_modDepth": 0.128,
+      "olap_modRate": 0.132,
+      "olap_preDelay": 0.079,
+      "olap_earlyMix": 0.477,
+      "olap_lateMix": 0.665,
+      "olap_filterCutoff": 0.752,
+      "olap_filterReso": 0.169,
+      "olap_outputLevel": 0.676,
+      "olap_couplingLevel": 0.617,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.374,
+      "olap_nodeCount": 10,
+      "olap_crossfeedAmt": 0.531,
+      "olap_spinRate": 0.036,
+      "olap_shimmerMix": 0.066
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "OSTERIA",
+        "type": "ENVELOPE_SHARE",
+        "amount": 0.688
+      }
+    ]
+  }
+}

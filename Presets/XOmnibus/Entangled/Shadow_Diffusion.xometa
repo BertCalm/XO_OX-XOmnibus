@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Shadow Diffusion",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OMBRE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ombre memory/forgetting axis modulates OVERLAP decay length — remembering fades into the reverb tail",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "ombre",
+    "shadow",
+    "memory"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.675,
+    "MOVEMENT": 0.375,
+    "COUPLING": 0.822,
+    "SPACE": 0.606
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.475,
+    "space": 0.725,
+    "aggression": 0.275,
+    "movement": 0.45,
+    "warmth": 0.55,
+    "density": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.475,
+    "space": 0.725,
+    "aggression": 0.275,
+    "movement": 0.45,
+    "warmth": 0.55,
+    "density": 0.6
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.699,
+      "olap_decay": 0.799,
+      "olap_damping": 0.393,
+      "olap_diffusion": 0.527,
+      "olap_modDepth": 0.196,
+      "olap_modRate": 0.28,
+      "olap_preDelay": 0.031,
+      "olap_earlyMix": 0.404,
+      "olap_lateMix": 0.741,
+      "olap_filterCutoff": 0.417,
+      "olap_filterReso": 0.223,
+      "olap_outputLevel": 0.728,
+      "olap_couplingLevel": 0.743,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.715,
+      "olap_nodeCount": 16,
+      "olap_crossfeedAmt": 0.386,
+      "olap_spinRate": 0.18,
+      "olap_shimmerMix": 0.253
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "OMBRE",
+        "type": "FILTER_MOD",
+        "amount": 0.655
+      }
+    ]
+  }
+}

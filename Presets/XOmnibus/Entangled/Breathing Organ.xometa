@@ -1,0 +1,39 @@
+{
+  "name": "Breathing Organ",
+  "version": "1.0",
+  "engines": [
+    "OBBLIGATO",
+    "ORGANON"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.65,
+    "SPACE": 0.5
+  },
+  "sonic_dna": {
+    "brightness": 0.53,
+    "warmth": 0.63,
+    "movement": 0.63,
+    "density": 0.65,
+    "space": 0.52,
+    "aggression": 0.35
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "METABOLIC_SYNC",
+    "source": "ORGANON",
+    "target": "OBBLIGATO",
+    "amount": 0.65
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "organon",
+    "wind"
+  ],
+  "description": "OBBLIGATO BOND macro tied to organon metabolic variational energy \u2014 wind feeds the metabolism"
+}

@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "name": "Aristotelian Bloom",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "ORGANON"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Lion's Mane knot-topology FDN entangled with ORGANON's logical-metabolic character (Aristotelian organ-pipe variational synthesis). Coupling: Timbre Blend.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "overlap",
+    "organon",
+    "spatial",
+    "lush"
+  ],
+  "macroLabels": [
+    "TOPOLOGY",
+    "DIFFUSION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.36,
+    "MOVEMENT": 0.66,
+    "COUPLING": 0.81,
+    "SPACE": 0.55
+  },
+  "couplingIntensity": "Moderate",
+  "sonic_dna": {
+    "brightness": 0.88,
+    "warmth": 0.86,
+    "movement": 0.65,
+    "density": 0.44,
+    "space": 0.9,
+    "aggression": 0.2
+  },
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.86,
+    "movement": 0.65,
+    "density": 0.44,
+    "space": 0.9,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.8,
+      "olap_decay": 0.81,
+      "olap_damping": 0.43,
+      "olap_diffusion": 0.68,
+      "olap_modDepth": 0.35,
+      "olap_modRate": 0.16,
+      "olap_preDelay": 0.09,
+      "olap_earlyMix": 0.22,
+      "olap_lateMix": 0.63,
+      "olap_filterCutoff": 0.62,
+      "olap_filterReso": 0.27,
+      "olap_frondDensity": 0.71,
+      "olap_nodeCount": 15,
+      "olap_crossfeedAmt": 0.2,
+      "olap_spinRate": 0.21,
+      "olap_shimmerMix": 0.14,
+      "olap_couplingLevel": 0.64,
+      "olap_couplingBus": 0,
+      "olap_outputLevel": 0.81,
+      "olap_outputPan": -0.2
+    },
+    "ORGANON": {
+      "organon_character": 0.64,
+      "organon_movement": 0.26,
+      "organon_coupling": 0.57,
+      "organon_space": 0.52,
+      "organon_filterCutoff": 0.81,
+      "organon_filterReso": 0.23,
+      "organon_ampAttack": 0.24,
+      "organon_ampSustain": 0.53,
+      "organon_ampRelease": 0.62,
+      "organon_reverbMix": 0.15,
+      "organon_couplingLevel": 0.81,
+      "organon_outputLevel": 0.74
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OVERLAP",
+    "target": "ORGANON",
+    "amount": 0.61,
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "ORGANON",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.61
+      }
+    ]
+  }
+}

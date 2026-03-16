@@ -1,0 +1,39 @@
+{
+  "name": "Orbital Reed",
+  "version": "1.0",
+  "engines": [
+    "OBBLIGATO",
+    "ORBITAL"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.6,
+    "SPACE": 0.5
+  },
+  "sonic_dna": {
+    "brightness": 0.57,
+    "warmth": 0.61,
+    "movement": 0.57,
+    "density": 0.61,
+    "space": 0.54,
+    "aggression": 0.39
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "ORBITAL_RING",
+    "source": "OBBLIGATO",
+    "target": "ORBITAL",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "constellation",
+    "obbligato",
+    "orbital",
+    "wind"
+  ],
+  "description": "Orbital group envelope obligated to OBBLIGATO breath phase \u2014 the orbit breathes in sync"
+}

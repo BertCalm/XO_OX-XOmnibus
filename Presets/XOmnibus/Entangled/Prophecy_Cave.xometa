@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Prophecy Cave",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Oracle harmonic prophecy feeds OVERLAP cavern resonance — the future echoes through FDN chambers",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "oracle",
+    "prophetic",
+    "harmonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.727,
+    "MOVEMENT": 0.429,
+    "COUPLING": 0.757,
+    "SPACE": 0.774
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.525,
+    "space": 0.775,
+    "aggression": 0.25,
+    "movement": 0.45,
+    "warmth": 0.575,
+    "density": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.525,
+    "space": 0.775,
+    "aggression": 0.25,
+    "movement": 0.45,
+    "warmth": 0.575,
+    "density": 0.6
+  },
+  "parameters": {
+    "OVERLAP": {
+      "olap_size": 0.6,
+      "olap_decay": 0.768,
+      "olap_damping": 0.476,
+      "olap_diffusion": 0.587,
+      "olap_modDepth": 0.38,
+      "olap_modRate": 0.318,
+      "olap_preDelay": 0.05,
+      "olap_earlyMix": 0.413,
+      "olap_lateMix": 0.737,
+      "olap_filterCutoff": 0.407,
+      "olap_filterReso": 0.387,
+      "olap_outputLevel": 0.872,
+      "olap_couplingLevel": 0.582,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.313,
+      "olap_nodeCount": 10,
+      "olap_crossfeedAmt": 0.43,
+      "olap_spinRate": 0.229,
+      "olap_shimmerMix": 0.15
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "ORACLE",
+        "type": "SPECTRAL_CROSS",
+        "amount": 0.561
+      }
+    ]
+  }
+}

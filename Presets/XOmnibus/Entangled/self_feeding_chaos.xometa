@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "name": "Self-Feeding Chaos",
+  "mood": "Entangled",
+  "engines": [
+    "OUTWIT",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with OUROBOROS's recursive self-feeding character (strange-attractor topology). Coupling: Timbre Blend.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "ouroboros",
+    "chaotic",
+    "generative"
+  ],
+  "macroLabels": [
+    "ARMS",
+    "CHAOS",
+    "COUPLING",
+    "DENSITY"
+  ],
+  "macros": {
+    "CHARACTER": 0.49,
+    "MOVEMENT": 0.37,
+    "COUPLING": 0.84,
+    "SPACE": 0.62
+  },
+  "couplingIntensity": "Moderate",
+  "sonic_dna": {
+    "brightness": 0.66,
+    "warmth": 0.12,
+    "movement": 0.81,
+    "density": 0.61,
+    "space": 0.75,
+    "aggression": 0.98
+  },
+  "dna": {
+    "brightness": 0.66,
+    "warmth": 0.12,
+    "movement": 0.81,
+    "density": 0.61,
+    "space": 0.75,
+    "aggression": 0.98
+  },
+  "parameters": {
+    "OUTWIT": {
+      "owit_rule": 182,
+      "owit_arms": 8,
+      "owit_cellSize": 0.24,
+      "owit_density": 0.71,
+      "owit_evolveRate": 0.47,
+      "owit_mutateProb": 0.28,
+      "owit_pitchSpread": 0.38,
+      "owit_filterCutoff": 0.42,
+      "owit_filterReso": 0.49,
+      "owit_ampAttack": 0.16,
+      "owit_ampRelease": 0.68,
+      "owit_armStagger": 0.36,
+      "owit_borderMode": 0,
+      "owit_inkCloudMix": 0.26,
+      "owit_chroma1": 0.76,
+      "owit_chroma2": 0.73,
+      "owit_polyDepth": 0.74,
+      "owit_couplingLevel": 0.59,
+      "owit_couplingBus": 0,
+      "owit_outputLevel": 0.7,
+      "owit_outputPan": -0.07
+    },
+    "OUROBOROS": {
+      "ouro_character": 0.44,
+      "ouro_movement": 0.43,
+      "ouro_coupling": 0.72,
+      "ouro_space": 0.7,
+      "ouro_filterCutoff": 0.32,
+      "ouro_filterReso": 0.52,
+      "ouro_ampAttack": 0.07,
+      "ouro_ampSustain": 0.9,
+      "ouro_ampRelease": 0.34,
+      "ouro_reverbMix": 0.51,
+      "ouro_couplingLevel": 0.68,
+      "ouro_outputLevel": 0.7
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OUTWIT",
+    "target": "OUROBOROS",
+    "amount": 0.7,
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "OUROBOROS",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.7
+      }
+    ]
+  }
+}

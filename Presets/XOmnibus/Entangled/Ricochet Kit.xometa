@@ -1,0 +1,73 @@
+{
+  "name": "Ricochet Kit",
+  "version": "1.0.0",
+  "engines": [
+    "Oblique",
+    "Onset"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.759,
+    "COUPLING": 0.824,
+    "SPACE": 0.426
+  },
+  "sonic_dna": {
+    "brightness": 0.707,
+    "warmth": 0.5,
+    "movement": 0.832,
+    "density": 0.634,
+    "space": 0.55,
+    "aggression": 0.56
+  },
+  "parameters": {
+    "oblq_prismColor": 0.232,
+    "oblq_prismAngle": 0.826,
+    "oblq_refractIndex": 0.626,
+    "oblq_dispersion": 0.374,
+    "oblq_bounceDepth": 0.635,
+    "oblq_bounceDecay": 0.476,
+    "oblq_funkGroove": 0.782,
+    "oblq_rtjAggression": 0.768,
+    "oblq_psychWidth": 0.924,
+    "oblq_phaseShift": 0.173,
+    "oblq_filterCutoff": 6548.7,
+    "oblq_filterReso": 0.514,
+    "oblq_level": 0.688,
+    "oblq_ampAttack": 0.0403,
+    "oblq_ampDecay": 0.683,
+    "oblq_ampSustain": 0.721,
+    "oblq_ampRelease": 1.148,
+    "oblq_modAttack": 0.0059,
+    "oblq_modDecay": 0.238,
+    "oblq_modSustain": 0.578,
+    "oblq_modRelease": 0.688,
+    "oblq_lfo1Rate": 0.269,
+    "oblq_lfo1Depth": 0.713,
+    "oblq_lfo1Shape": 0.75,
+    "oblq_lfo2Rate": 0.605,
+    "oblq_lfo2Depth": 0.282,
+    "oblq_lfo2Shape": 0.0,
+    "perc_filterCutoff": 4076.6,
+    "perc_filterReso": 0.1,
+    "perc_level": 0.8,
+    "perc_ampAttack": 0.0382,
+    "perc_ampDecay": 0.461,
+    "perc_ampSustain": 0.472,
+    "perc_ampRelease": 1.145,
+    "perc_lfo1Rate": 2.265,
+    "perc_lfo1Depth": 0.529
+  },
+  "coupling": {
+    "type": "FILTER_COUPLING",
+    "source": "Oblique",
+    "target": "Onset",
+    "amount": 0.525
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "prismatic"
+  ],
+  "description": "RTJ percussion patterns bouncing off prism walls — each drum hit refracting into three rhythmic afterimages."
+}
