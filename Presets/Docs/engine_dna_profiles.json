@@ -1,0 +1,1653 @@
+{
+  "_meta": {
+    "tool": "xpn_engine_dna_profile_builder",
+    "description": "Authoritative 6D Sonic DNA fingerprint per XOmnibus engine",
+    "sort_order": "felix_score descending (most feliX → most Oscar)",
+    "dna_dimensions": [
+      "brightness",
+      "warmth",
+      "movement",
+      "density",
+      "space",
+      "aggression"
+    ],
+    "felix_score_formula": "(brightness - warmth + 1) / 2",
+    "versatility_formula": "mean(std_dev per dimension)"
+  },
+  "fleet_summary": {
+    "engine_count": 34,
+    "total_presets": 3283,
+    "most_felix_engine": "OddfeliX",
+    "most_oscar_engine": "XOwlfish",
+    "most_versatile_engine": "Optic",
+    "most_consistent_engine": "Oceanic",
+    "fleet_mean_felix": 0.5004,
+    "fleet_mean_versatility": 0.19
+  },
+  "engines": [
+    {
+      "engine": "OddfeliX",
+      "preset_count": 252,
+      "mean_dna": {
+        "brightness": 0.6836,
+        "warmth": 0.5243,
+        "movement": 0.5107,
+        "density": 0.5308,
+        "space": 0.5143,
+        "aggression": 0.3798
+      },
+      "min_dna": {
+        "brightness": 0.18,
+        "warmth": 0.1,
+        "movement": 0.1,
+        "density": 0.15,
+        "space": 0.1,
+        "aggression": 0.03
+      },
+      "max_dna": {
+        "brightness": 1.0,
+        "warmth": 1.0,
+        "movement": 0.98,
+        "density": 0.92,
+        "space": 0.95,
+        "aggression": 0.92
+      },
+      "std_dna": {
+        "brightness": 0.1764,
+        "warmth": 0.1787,
+        "movement": 0.2226,
+        "density": 0.1831,
+        "space": 0.2017,
+        "aggression": 0.1773
+      },
+      "felix_score": 0.5796,
+      "versatility": 0.19,
+      "dominant_character": "airy gentle",
+      "mood_distribution": {
+        "Entangled": 93,
+        "Foundation": 44,
+        "Atmosphere": 41,
+        "Aether": 33,
+        "Prism": 23,
+        "Flux": 17,
+        "Family": 1
+      }
+    },
+    {
+      "engine": "Optic",
+      "preset_count": 31,
+      "mean_dna": {
+        "brightness": 0.6006,
+        "warmth": 0.4545,
+        "movement": 0.6481,
+        "density": 0.5745,
+        "space": 0.5613,
+        "aggression": 0.41
+      },
+      "min_dna": {
+        "brightness": 0.25,
+        "warmth": 0.08,
+        "movement": 0.1,
+        "density": 0.2,
+        "space": 0.2,
+        "aggression": 0.03
+      },
+      "max_dna": {
+        "brightness": 0.95,
+        "warmth": 0.85,
+        "movement": 0.98,
+        "density": 0.92,
+        "space": 0.98,
+        "aggression": 0.92
+      },
+      "std_dna": {
+        "brightness": 0.1824,
+        "warmth": 0.209,
+        "movement": 0.2948,
+        "density": 0.1923,
+        "space": 0.2248,
+        "aggression": 0.297
+      },
+      "felix_score": 0.5731,
+      "versatility": 0.2334,
+      "dominant_character": "animated airy gentle",
+      "mood_distribution": {
+        "Flux": 9,
+        "Prism": 8,
+        "Aether": 4,
+        "Atmosphere": 4,
+        "Entangled": 3,
+        "Foundation": 3
+      }
+    },
+    {
+      "engine": "Odyssey",
+      "preset_count": 397,
+      "mean_dna": {
+        "brightness": 0.4913,
+        "warmth": 0.3575,
+        "movement": 0.2769,
+        "density": 0.383,
+        "space": 0.4199,
+        "aggression": 0.1616
+      },
+      "min_dna": {
+        "brightness": 0.2,
+        "warmth": 0.0,
+        "movement": 0.0,
+        "density": 0.012,
+        "space": 0.0,
+        "aggression": 0.0
+      },
+      "max_dna": {
+        "brightness": 0.85,
+        "warmth": 0.9,
+        "movement": 0.95,
+        "density": 0.9,
+        "space": 0.98,
+        "aggression": 0.8
+      },
+      "std_dna": {
+        "brightness": 0.1258,
+        "warmth": 0.2434,
+        "movement": 0.2821,
+        "density": 0.2633,
+        "space": 0.2903,
+        "aggression": 0.1575
+      },
+      "felix_score": 0.5669,
+      "versatility": 0.2271,
+      "dominant_character": "tender drifting",
+      "mood_distribution": {
+        "Prism": 110,
+        "Atmosphere": 98,
+        "Entangled": 66,
+        "Foundation": 64,
+        "Aether": 34,
+        "Flux": 24,
+        "Family": 1
+      }
+    },
+    {
+      "engine": "Obsidian",
+      "preset_count": 24,
+      "mean_dna": {
+        "brightness": 0.5496,
+        "warmth": 0.4208,
+        "movement": 0.4075,
+        "density": 0.5217,
+        "space": 0.5758,
+        "aggression": 0.3233
+      },
+      "min_dna": {
+        "brightness": 0.22,
+        "warmth": 0.15,
+        "movement": 0.12,
+        "density": 0.08,
+        "space": 0.2,
+        "aggression": 0.08
+      },
+      "max_dna": {
+        "brightness": 0.88,
+        "warmth": 0.78,
+        "movement": 0.88,
+        "density": 0.92,
+        "space": 0.92,
+        "aggression": 0.85
+      },
+      "std_dna": {
+        "brightness": 0.1914,
+        "warmth": 0.1862,
+        "movement": 0.2024,
+        "density": 0.193,
+        "space": 0.2279,
+        "aggression": 0.2033
+      },
+      "felix_score": 0.5644,
+      "versatility": 0.2007,
+      "dominant_character": "gentle drifting",
+      "mood_distribution": {
+        "Atmosphere": 7,
+        "Prism": 5,
+        "Entangled": 4,
+        "Foundation": 3,
+        "Aether": 2,
+        "Flux": 2,
+        "Family": 1
+      }
+    },
+    {
+      "engine": "Oblique",
+      "preset_count": 34,
+      "mean_dna": {
+        "brightness": 0.6162,
+        "warmth": 0.4976,
+        "movement": 0.6288,
+        "density": 0.5385,
+        "space": 0.6197,
+        "aggression": 0.3753
+      },
+      "min_dna": {
+        "brightness": 0.22,
+        "warmth": 0.15,
+        "movement": 0.05,
+        "density": 0.2,
+        "space": 0.15,
+        "aggression": 0.05
+      },
+      "max_dna": {
+        "brightness": 0.95,
+        "warmth": 0.88,
+        "movement": 0.95,
+        "density": 0.9,
+        "space": 0.97,
+        "aggression": 0.93
+      },
+      "std_dna": {
+        "brightness": 0.167,
+        "warmth": 0.1723,
+        "movement": 0.2395,
+        "density": 0.1702,
+        "space": 0.239,
+        "aggression": 0.2714
+      },
+      "felix_score": 0.5593,
+      "versatility": 0.2099,
+      "dominant_character": "animated gentle",
+      "mood_distribution": {
+        "Prism": 12,
+        "Foundation": 7,
+        "Aether": 5,
+        "Atmosphere": 3,
+        "Entangled": 3,
+        "Flux": 3,
+        "Family": 1
+      }
+    },
+    {
+      "engine": "Octopus",
+      "preset_count": 24,
+      "mean_dna": {
+        "brightness": 0.5087,
+        "warmth": 0.4121,
+        "movement": 0.6025,
+        "density": 0.5475,
+        "space": 0.5354,
+        "aggression": 0.365
+      },
+      "min_dna": {
+        "brightness": 0.25,
+        "warmth": 0.15,
+        "movement": 0.12,
+        "density": 0.18,
+        "space": 0.2,
+        "aggression": 0.0
+      },
+      "max_dna": {
+        "brightness": 0.82,
+        "warmth": 0.8,
+        "movement": 0.95,
+        "density": 0.9,
+        "space": 0.95,
+        "aggression": 0.88
+      },
+      "std_dna": {
+        "brightness": 0.157,
+        "warmth": 0.1762,
+        "movement": 0.2459,
+        "density": 0.1817,
+        "space": 0.2059,
+        "aggression": 0.2628
+      },
+      "felix_score": 0.5483,
+      "versatility": 0.2049,
+      "dominant_character": "gentle animated",
+      "mood_distribution": {
+        "Entangled": 5,
+        "Prism": 5,
+        "Flux": 4,
+        "Aether": 3,
+        "Atmosphere": 3,
+        "Foundation": 3,
+        "Family": 1
+      }
+    },
+    {
+      "engine": "Overworld",
+      "preset_count": 79,
+      "mean_dna": {
+        "brightness": 0.5119,
+        "warmth": 0.4178,
+        "movement": 0.4486,
+        "density": 0.4682,
+        "space": 0.3447,
+        "aggression": 0.2839
+      },
+      "min_dna": {
+        "brightness": 0.15,
+        "warmth": 0.05,
+        "movement": 0.1,
+        "density": 0.2,
+        "space": 0.0,
+        "aggression": 0.0
+      },
+      "max_dna": {
+        "brightness": 0.85,
+        "warmth": 0.75,
+        "movement": 0.95,
+        "density": 0.75,
+        "space": 0.95,
+        "aggression": 0.9
+      },
+      "std_dna": {
+        "brightness": 0.156,
+        "warmth": 0.1713,
+        "movement": 0.2082,
+        "density": 0.1185,
+        "space": 0.2619,
+        "aggression": 0.2236
+      },
+      "felix_score": 0.5471,
+      "versatility": 0.1899,
+      "dominant_character": "gentle intimate",
+      "mood_distribution": {
+        "Entangled": 26,
+        "Atmosphere": 11,
+        "Flux": 11,
+        "Prism": 11,
+        "Foundation": 10,
+        "Aether": 9,
+        "Family": 1
+      }
+    },
+    {
+      "engine": "Obscura",
+      "preset_count": 26,
+      "mean_dna": {
+        "brightness": 0.5238,
+        "warmth": 0.4658,
+        "movement": 0.4277,
+        "density": 0.5296,
+        "space": 0.5258,
+        "aggression": 0.3123
+      },
+      "min_dna": {
+        "brightness": 0.15,
+        "warmth": 0.12,
+        "movement": 0.1,
+        "density": 0.25,
+        "space": 0.22,
+        "aggression": 0.03
+      },
+      "max_dna": {
+        "brightness": 0.92,
+        "warmth": 0.8,
+        "movement": 0.92,
+        "density": 0.88,
+        "space": 0.92,
+        "aggression": 0.85
+      },
+      "std_dna": {
+        "brightness": 0.206,
+        "warmth": 0.1995,
+        "movement": 0.2523,
+        "density": 0.174,
+        "space": 0.2109,
+        "aggression": 0.2401
+      },
+      "felix_score": 0.529,
+      "versatility": 0.2138,
+      "dominant_character": "gentle drifting",
+      "mood_distribution": {
+        "Atmosphere": 7,
+        "Entangled": 6,
+        "Foundation": 6,
+        "Aether": 2,
+        "Flux": 2,
+        "Prism": 2,
+        "Family": 1
+      }
+    },
+    {
+      "engine": "Outwit",
+      "preset_count": 22,
+      "mean_dna": {
+        "brightness": 0.5009,
+        "warmth": 0.4455,
+        "movement": 0.6432,
+        "density": 0.5841,
+        "space": 0.6236,
+        "aggression": 0.375
+      },
+      "min_dna": {
+        "brightness": 0.25,
+        "warmth": 0.2,
+        "movement": 0.2,
+        "density": 0.25,
+        "space": 0.35,
+        "aggression": 0.08
+      },
+      "max_dna": {
+        "brightness": 0.7,
+        "warmth": 0.7,
+        "movement": 0.95,
+        "density": 0.9,
+        "space": 0.9,
+        "aggression": 0.85
+      },
+      "std_dna": {
+        "brightness": 0.1017,
+        "warmth": 0.1137,
+        "movement": 0.2041,
+        "density": 0.148,
+        "space": 0.1521,
+        "aggression": 0.2306
+      },
+      "felix_score": 0.5277,
+      "versatility": 0.1584,
+      "dominant_character": "animated gentle",
+      "mood_distribution": {
+        "Atmosphere": 4,
+        "Foundation": 4,
+        "Prism": 4,
+        "Aether": 3,
+        "Entangled": 3,
+        "Flux": 3,
+        "Family": 1
+      }
+    },
+    {
+      "engine": "Ouroboros",
+      "preset_count": 101,
+      "mean_dna": {
+        "brightness": 0.4783,
+        "warmth": 0.4301,
+        "movement": 0.5802,
+        "density": 0.4767,
+        "space": 0.3546,
+        "aggression": 0.3382
+      },
+      "min_dna": {
+        "brightness": 0.1,
+        "warmth": 0.05,
+        "movement": 0.1,
+        "density": 0.2,
+        "space": 0.0,
+        "aggression": 0.0
+      },
+      "max_dna": {
+        "brightness": 0.9,
+        "warmth": 0.82,
+        "movement": 0.95,
+        "density": 0.8,
+        "space": 0.9,
+        "aggression": 0.95
+      },
+      "std_dna": {
+        "brightness": 0.1718,
+        "warmth": 0.1723,
+        "movement": 0.2217,
+        "density": 0.1462,
+        "space": 0.2512,
+        "aggression": 0.2382
+      },
+      "felix_score": 0.5241,
+      "versatility": 0.2002,
+      "dominant_character": "gentle intimate",
+      "mood_distribution": {
+        "Entangled": 40,
+        "Aether": 15,
+        "Flux": 13,
+        "Foundation": 11,
+        "Prism": 11,
+        "Atmosphere": 9,
+        "Family": 2
+      }
+    },
+    {
+      "engine": "Orca",
+      "preset_count": 24,
+      "mean_dna": {
+        "brightness": 0.5229,
+        "warmth": 0.4875,
+        "movement": 0.6033,
+        "density": 0.5329,
+        "space": 0.5683,
+        "aggression": 0.4325
+      },
+      "min_dna": {
+        "brightness": 0.2,
+        "warmth": 0.2,
+        "movement": 0.25,
+        "density": 0.2,
+        "space": 0.25,
+        "aggression": 0.0
+      },
+      "max_dna": {
+        "brightness": 0.8,
+        "warmth": 0.9,
+        "movement": 0.92,
+        "density": 0.9,
+        "space": 1.0,
+        "aggression": 1.0
+      },
+      "std_dna": {
+        "brightness": 0.1522,
+        "warmth": 0.2103,
+        "movement": 0.1961,
+        "density": 0.1723,
+        "space": 0.2136,
+        "aggression": 0.2915
+      },
+      "felix_score": 0.5177,
+      "versatility": 0.206,
+      "dominant_character": "animated spacious gentle",
+      "mood_distribution": {
+        "Entangled": 5,
+        "Aether": 4,
+        "Flux": 4,
+        "Foundation": 4,
+        "Prism": 3,
+        "Atmosphere": 2,
+        "Family": 2
+      }
+    },
+    {
+      "engine": "Opal",
+      "preset_count": 144,
+      "mean_dna": {
+        "brightness": 0.4875,
+        "warmth": 0.4678,
+        "movement": 0.4693,
+        "density": 0.4639,
+        "space": 0.4849,
+        "aggression": 0.1682
+      },
+      "min_dna": {
+        "brightness": 0.0,
+        "warmth": 0.0,
+        "movement": 0.05,
+        "density": 0.1,
+        "space": 0.0,
+        "aggression": 0.0
+      },
+      "max_dna": {
+        "brightness": 1.0,
+        "warmth": 0.95,
+        "movement": 0.95,
+        "density": 0.9,
+        "space": 1.0,
+        "aggression": 0.9
+      },
+      "std_dna": {
+        "brightness": 0.2081,
+        "warmth": 0.2019,
+        "movement": 0.2332,
+        "density": 0.2022,
+        "space": 0.2549,
+        "aggression": 0.2043
+      },
+      "felix_score": 0.5099,
+      "versatility": 0.2174,
+      "dominant_character": "tender sparse",
+      "mood_distribution": {
+        "Entangled": 41,
+        "Atmosphere": 21,
+        "Foundation": 20,
+        "Prism": 20,
+        "Aether": 19,
+        "Flux": 18,
+        "Family": 5
+      }
+    },
+    {
+      "engine": "Ottoni",
+      "preset_count": 120,
+      "mean_dna": {
+        "brightness": 0.5234,
+        "warmth": 0.5048,
+        "movement": 0.4378,
+        "density": 0.4942,
+        "space": 0.4849,
+        "aggression": 0.202
+      },
+      "min_dna": {
+        "brightness": 0.2,
+        "warmth": 0.21,
+        "movement": 0.04,
+        "density": 0.19,
+        "space": 0.09,
+        "aggression": 0.0
+      },
+      "max_dna": {
+        "brightness": 0.92,
+        "warmth": 0.81,
+        "movement": 0.91,
+        "density": 0.89,
+        "space": 0.9,
+        "aggression": 0.63
+      },
+      "std_dna": {
+        "brightness": 0.1613,
+        "warmth": 0.1467,
+        "movement": 0.2366,
+        "density": 0.166,
+        "space": 0.2298,
+        "aggression": 0.1468
+      },
+      "felix_score": 0.5093,
+      "versatility": 0.1812,
+      "dominant_character": "tender drifting",
+      "mood_distribution": {
+        "Aether": 23,
+        "Entangled": 20,
+        "Prism": 20,
+        "Foundation": 20,
+        "Atmosphere": 19,
+        "Flux": 18
+      }
+    },
+    {
+      "engine": "Ole",
+      "preset_count": 120,
+      "mean_dna": {
+        "brightness": 0.5167,
+        "warmth": 0.5012,
+        "movement": 0.4467,
+        "density": 0.4798,
+        "space": 0.4857,
+        "aggression": 0.1914
+      },
+      "min_dna": {
+        "brightness": 0.18,
+        "warmth": 0.19,
+        "movement": 0.04,
+        "density": 0.19,
+        "space": 0.09,
+        "aggression": 0.0
+      },
+      "max_dna": {
+        "brightness": 0.91,
+        "warmth": 0.81,
+        "movement": 0.92,
+        "density": 0.93,
+        "space": 0.91,
+        "aggression": 0.58
+      },
+      "std_dna": {
+        "brightness": 0.1809,
+        "warmth": 0.1547,
+        "movement": 0.2354,
+        "density": 0.1685,
+        "space": 0.2326,
+        "aggression": 0.1464
+      },
+      "felix_score": 0.5078,
+      "versatility": 0.1864,
+      "dominant_character": "tender drifting",
+      "mood_distribution": {
+        "Foundation": 22,
+        "Prism": 22,
+        "Aether": 21,
+        "Atmosphere": 19,
+        "Flux": 19,
+        "Entangled": 17
+      }
+    },
+    {
+      "engine": "Orphica",
+      "preset_count": 121,
+      "mean_dna": {
+        "brightness": 0.513,
+        "warmth": 0.4982,
+        "movement": 0.4408,
+        "density": 0.4785,
+        "space": 0.4883,
+        "aggression": 0.1884
+      },
+      "min_dna": {
+        "brightness": 0.2,
+        "warmth": 0.18,
+        "movement": 0.06,
+        "density": 0.18,
+        "space": 0.08,
+        "aggression": 0.0
+      },
+      "max_dna": {
+        "brightness": 0.91,
+        "warmth": 0.81,
+        "movement": 0.92,
+        "density": 0.84,
+        "space": 0.91,
+        "aggression": 0.49
+      },
+      "std_dna": {
+        "brightness": 0.1617,
+        "warmth": 0.1462,
+        "movement": 0.2168,
+        "density": 0.1641,
+        "space": 0.2223,
+        "aggression": 0.1362
+      },
+      "felix_score": 0.5074,
+      "versatility": 0.1745,
+      "dominant_character": "tender drifting",
+      "mood_distribution": {
+        "Atmosphere": 21,
+        "Foundation": 21,
+        "Aether": 20,
+        "Entangled": 20,
+        "Prism": 20,
+        "Flux": 18,
+        "Family": 1
+      }
+    },
+    {
+      "engine": "Obbligato",
+      "preset_count": 115,
+      "mean_dna": {
+        "brightness": 0.514,
+        "warmth": 0.4994,
+        "movement": 0.4233,
+        "density": 0.485,
+        "space": 0.505,
+        "aggression": 0.1867
+      },
+      "min_dna": {
+        "brightness": 0.21,
+        "warmth": 0.21,
+        "movement": 0.04,
+        "density": 0.18,
+        "space": 0.09,
+        "aggression": 0.0
+      },
+      "max_dna": {
+        "brightness": 0.91,
+        "warmth": 0.77,
+        "movement": 0.88,
+        "density": 0.83,
+        "space": 0.91,
+        "aggression": 0.5
+      },
+      "std_dna": {
+        "brightness": 0.1751,
+        "warmth": 0.1405,
+        "movement": 0.2305,
+        "density": 0.1588,
+        "space": 0.2225,
+        "aggression": 0.1407
+      },
+      "felix_score": 0.5073,
+      "versatility": 0.178,
+      "dominant_character": "tender drifting",
+      "mood_distribution": {
+        "Aether": 21,
+        "Atmosphere": 20,
+        "Foundation": 20,
+        "Prism": 19,
+        "Flux": 18,
+        "Entangled": 17
+      }
+    },
+    {
+      "engine": "Oceanic",
+      "preset_count": 12,
+      "mean_dna": {
+        "brightness": 0.515,
+        "warmth": 0.5083,
+        "movement": 0.6742,
+        "density": 0.5783,
+        "space": 0.6108,
+        "aggression": 0.2725
+      },
+      "min_dna": {
+        "brightness": 0.35,
+        "warmth": 0.3,
+        "movement": 0.22,
+        "density": 0.42,
+        "space": 0.38,
+        "aggression": 0.05
+      },
+      "max_dna": {
+        "brightness": 0.78,
+        "warmth": 0.72,
+        "movement": 0.85,
+        "density": 0.7,
+        "space": 0.8,
+        "aggression": 0.5
+      },
+      "std_dna": {
+        "brightness": 0.1157,
+        "warmth": 0.1201,
+        "movement": 0.1595,
+        "density": 0.09,
+        "space": 0.1081,
+        "aggression": 0.1335
+      },
+      "felix_score": 0.5033,
+      "versatility": 0.1211,
+      "dominant_character": "gentle animated",
+      "mood_distribution": {
+        "Entangled": 5,
+        "Atmosphere": 2,
+        "Aether": 1,
+        "Family": 1,
+        "Flux": 1,
+        "Foundation": 1,
+        "Prism": 1
+      }
+    },
+    {
+      "engine": "Onset",
+      "preset_count": 164,
+      "mean_dna": {
+        "brightness": 0.5025,
+        "warmth": 0.4993,
+        "movement": 0.4399,
+        "density": 0.544,
+        "space": 0.3003,
+        "aggression": 0.3962
+      },
+      "min_dna": {
+        "brightness": 0.2,
+        "warmth": 0.15,
+        "movement": 0.05,
+        "density": 0.05,
+        "space": 0.02,
+        "aggression": 0.02
+      },
+      "max_dna": {
+        "brightness": 0.95,
+        "warmth": 0.9,
+        "movement": 1.0,
+        "density": 0.95,
+        "space": 0.95,
+        "aggression": 0.95
+      },
+      "std_dna": {
+        "brightness": 0.1379,
+        "warmth": 0.1543,
+        "movement": 0.2528,
+        "density": 0.1309,
+        "space": 0.2329,
+        "aggression": 0.1805
+      },
+      "felix_score": 0.5016,
+      "versatility": 0.1816,
+      "dominant_character": "intimate gentle",
+      "mood_distribution": {
+        "Entangled": 49,
+        "Flux": 35,
+        "Foundation": 29,
+        "Prism": 24,
+        "Atmosphere": 13,
+        "Aether": 12,
+        "Family": 2
+      }
+    },
+    {
+      "engine": "Ohm",
+      "preset_count": 115,
+      "mean_dna": {
+        "brightness": 0.5086,
+        "warmth": 0.5088,
+        "movement": 0.4314,
+        "density": 0.4773,
+        "space": 0.4933,
+        "aggression": 0.1929
+      },
+      "min_dna": {
+        "brightness": 0.19,
+        "warmth": 0.19,
+        "movement": 0.03,
+        "density": 0.18,
+        "space": 0.08,
+        "aggression": 0.0
+      },
+      "max_dna": {
+        "brightness": 0.92,
+        "warmth": 0.82,
+        "movement": 0.92,
+        "density": 0.88,
+        "space": 0.92,
+        "aggression": 0.51
+      },
+      "std_dna": {
+        "brightness": 0.1772,
+        "warmth": 0.1463,
+        "movement": 0.2222,
+        "density": 0.1661,
+        "space": 0.2265,
+        "aggression": 0.131
+      },
+      "felix_score": 0.4999,
+      "versatility": 0.1782,
+      "dominant_character": "tender drifting",
+      "mood_distribution": {
+        "Atmosphere": 21,
+        "Aether": 20,
+        "Foundation": 20,
+        "Prism": 19,
+        "Entangled": 18,
+        "Flux": 17
+      }
+    },
+    {
+      "engine": "Origami",
+      "preset_count": 20,
+      "mean_dna": {
+        "brightness": 0.5225,
+        "warmth": 0.5285,
+        "movement": 0.3795,
+        "density": 0.5455,
+        "space": 0.54,
+        "aggression": 0.319
+      },
+      "min_dna": {
+        "brightness": 0.22,
+        "warmth": 0.3,
+        "movement": 0.12,
+        "density": 0.25,
+        "space": 0.3,
+        "aggression": 0.02
+      },
+      "max_dna": {
+        "brightness": 0.82,
+        "warmth": 0.78,
+        "movement": 0.85,
+        "density": 0.88,
+        "space": 0.9,
+        "aggression": 0.88
+      },
+      "std_dna": {
+        "brightness": 0.1492,
+        "warmth": 0.136,
+        "movement": 0.2374,
+        "density": 0.1845,
+        "space": 0.1592,
+        "aggression": 0.2295
+      },
+      "felix_score": 0.497,
+      "versatility": 0.1826,
+      "dominant_character": "gentle drifting",
+      "mood_distribution": {
+        "Entangled": 4,
+        "Atmosphere": 3,
+        "Family": 3,
+        "Foundation": 3,
+        "Prism": 3,
+        "Aether": 2,
+        "Flux": 2
+      }
+    },
+    {
+      "engine": "Oblong",
+      "preset_count": 367,
+      "mean_dna": {
+        "brightness": 0.4919,
+        "warmth": 0.501,
+        "movement": 0.3952,
+        "density": 0.4721,
+        "space": 0.3914,
+        "aggression": 0.2249
+      },
+      "min_dna": {
+        "brightness": 0.15,
+        "warmth": 0.065,
+        "movement": 0.0,
+        "density": 0.065,
+        "space": 0.0,
+        "aggression": 0.0
+      },
+      "max_dna": {
+        "brightness": 0.88,
+        "warmth": 0.95,
+        "movement": 0.95,
+        "density": 0.92,
+        "space": 0.92,
+        "aggression": 0.97
+      },
+      "std_dna": {
+        "brightness": 0.119,
+        "warmth": 0.2219,
+        "movement": 0.3026,
+        "density": 0.235,
+        "space": 0.2623,
+        "aggression": 0.1981
+      },
+      "felix_score": 0.4955,
+      "versatility": 0.2231,
+      "dominant_character": "tender intimate",
+      "mood_distribution": {
+        "Entangled": 98,
+        "Prism": 69,
+        "Flux": 68,
+        "Atmosphere": 56,
+        "Foundation": 38,
+        "Aether": 37,
+        "Family": 1
+      }
+    },
+    {
+      "engine": "Oracle",
+      "preset_count": 27,
+      "mean_dna": {
+        "brightness": 0.4907,
+        "warmth": 0.5163,
+        "movement": 0.5019,
+        "density": 0.5522,
+        "space": 0.583,
+        "aggression": 0.27
+      },
+      "min_dna": {
+        "brightness": 0.28,
+        "warmth": 0.18,
+        "movement": 0.15,
+        "density": 0.28,
+        "space": 0.3,
+        "aggression": 0.04
+      },
+      "max_dna": {
+        "brightness": 0.85,
+        "warmth": 0.78,
+        "movement": 0.95,
+        "density": 0.78,
+        "space": 0.95,
+        "aggression": 0.8
+      },
+      "std_dna": {
+        "brightness": 0.1349,
+        "warmth": 0.1689,
+        "movement": 0.2389,
+        "density": 0.1258,
+        "space": 0.212,
+        "aggression": 0.2259
+      },
+      "felix_score": 0.4872,
+      "versatility": 0.1844,
+      "dominant_character": "gentle spacious",
+      "mood_distribution": {
+        "Atmosphere": 7,
+        "Entangled": 7,
+        "Aether": 3,
+        "Flux": 3,
+        "Foundation": 3,
+        "Prism": 3,
+        "Family": 1
+      }
+    },
+    {
+      "engine": "OddOscar",
+      "preset_count": 173,
+      "mean_dna": {
+        "brightness": 0.5409,
+        "warmth": 0.5682,
+        "movement": 0.549,
+        "density": 0.6691,
+        "space": 0.5719,
+        "aggression": 0.2386
+      },
+      "min_dna": {
+        "brightness": 0.1,
+        "warmth": 0.08,
+        "movement": 0.04,
+        "density": 0.08,
+        "space": 0.1,
+        "aggression": 0.0
+      },
+      "max_dna": {
+        "brightness": 0.92,
+        "warmth": 0.86,
+        "movement": 0.95,
+        "density": 0.92,
+        "space": 0.96,
+        "aggression": 0.91
+      },
+      "std_dna": {
+        "brightness": 0.1271,
+        "warmth": 0.1137,
+        "movement": 0.2197,
+        "density": 0.1464,
+        "space": 0.1885,
+        "aggression": 0.1732
+      },
+      "felix_score": 0.4864,
+      "versatility": 0.1614,
+      "dominant_character": "tender layered",
+      "mood_distribution": {
+        "Entangled": 54,
+        "Aether": 27,
+        "Flux": 27,
+        "Prism": 24,
+        "Atmosphere": 21,
+        "Foundation": 19,
+        "Family": 1
+      }
+    },
+    {
+      "engine": "Organon",
+      "preset_count": 166,
+      "mean_dna": {
+        "brightness": 0.4683,
+        "warmth": 0.4961,
+        "movement": 0.3866,
+        "density": 0.4596,
+        "space": 0.3299,
+        "aggression": 0.2062
+      },
+      "min_dna": {
+        "brightness": 0.05,
+        "warmth": 0.05,
+        "movement": 0.02,
+        "density": 0.1,
+        "space": 0.05,
+        "aggression": 0.01
+      },
+      "max_dna": {
+        "brightness": 0.95,
+        "warmth": 0.9,
+        "movement": 0.95,
+        "density": 0.88,
+        "space": 0.82,
+        "aggression": 0.85
+      },
+      "std_dna": {
+        "brightness": 0.1915,
+        "warmth": 0.171,
+        "movement": 0.2119,
+        "density": 0.143,
+        "space": 0.1777,
+        "aggression": 0.1894
+      },
+      "felix_score": 0.4861,
+      "versatility": 0.1807,
+      "dominant_character": "tender intimate",
+      "mood_distribution": {
+        "Entangled": 48,
+        "Atmosphere": 30,
+        "Foundation": 27,
+        "Prism": 23,
+        "Flux": 20,
+        "Aether": 17,
+        "Family": 1
+      }
+    },
+    {
+      "engine": "Ocelot",
+      "preset_count": 12,
+      "mean_dna": {
+        "brightness": 0.5,
+        "warmth": 0.54,
+        "movement": 0.6892,
+        "density": 0.6167,
+        "space": 0.6083,
+        "aggression": 0.375
+      },
+      "min_dna": {
+        "brightness": 0.3,
+        "warmth": 0.2,
+        "movement": 0.4,
+        "density": 0.3,
+        "space": 0.4,
+        "aggression": 0.05
+      },
+      "max_dna": {
+        "brightness": 0.72,
+        "warmth": 0.85,
+        "movement": 0.92,
+        "density": 0.92,
+        "space": 0.9,
+        "aggression": 0.88
+      },
+      "std_dna": {
+        "brightness": 0.1356,
+        "warmth": 0.1977,
+        "movement": 0.167,
+        "density": 0.1854,
+        "space": 0.1304,
+        "aggression": 0.2745
+      },
+      "felix_score": 0.48,
+      "versatility": 0.1818,
+      "dominant_character": "animated gentle",
+      "mood_distribution": {
+        "Entangled": 3,
+        "Flux": 3,
+        "Foundation": 2,
+        "Aether": 1,
+        "Atmosphere": 1,
+        "Family": 1,
+        "Prism": 1
+      }
+    },
+    {
+      "engine": "Overlap",
+      "preset_count": 21,
+      "mean_dna": {
+        "brightness": 0.5086,
+        "warmth": 0.551,
+        "movement": 0.541,
+        "density": 0.6524,
+        "space": 0.7948,
+        "aggression": 0.2086
+      },
+      "min_dna": {
+        "brightness": 0.2,
+        "warmth": 0.3,
+        "movement": 0.15,
+        "density": 0.35,
+        "space": 0.6,
+        "aggression": 0.05
+      },
+      "max_dna": {
+        "brightness": 0.82,
+        "warmth": 0.9,
+        "movement": 0.88,
+        "density": 0.9,
+        "space": 0.99,
+        "aggression": 0.6
+      },
+      "std_dna": {
+        "brightness": 0.1357,
+        "warmth": 0.1492,
+        "movement": 0.2033,
+        "density": 0.1397,
+        "space": 0.1082,
+        "aggression": 0.1668
+      },
+      "felix_score": 0.4788,
+      "versatility": 0.1505,
+      "dominant_character": "cavernous tender",
+      "mood_distribution": {
+        "Atmosphere": 5,
+        "Foundation": 4,
+        "Aether": 3,
+        "Entangled": 3,
+        "Flux": 3,
+        "Prism": 3
+      }
+    },
+    {
+      "engine": "Ombre",
+      "preset_count": 26,
+      "mean_dna": {
+        "brightness": 0.4573,
+        "warmth": 0.5135,
+        "movement": 0.5512,
+        "density": 0.4788,
+        "space": 0.5942,
+        "aggression": 0.2723
+      },
+      "min_dna": {
+        "brightness": 0.2,
+        "warmth": 0.1,
+        "movement": 0.25,
+        "density": 0.25,
+        "space": 0.1,
+        "aggression": 0.02
+      },
+      "max_dna": {
+        "brightness": 0.7,
+        "warmth": 0.78,
+        "movement": 0.9,
+        "density": 0.8,
+        "space": 0.95,
+        "aggression": 0.8
+      },
+      "std_dna": {
+        "brightness": 0.1391,
+        "warmth": 0.1748,
+        "movement": 0.212,
+        "density": 0.1331,
+        "space": 0.2372,
+        "aggression": 0.2409
+      },
+      "felix_score": 0.4719,
+      "versatility": 0.1895,
+      "dominant_character": "gentle spacious",
+      "mood_distribution": {
+        "Prism": 6,
+        "Flux": 5,
+        "Aether": 4,
+        "Entangled": 4,
+        "Foundation": 4,
+        "Atmosphere": 3
+      }
+    },
+    {
+      "engine": "Orbital",
+      "preset_count": 18,
+      "mean_dna": {
+        "brightness": 0.4911,
+        "warmth": 0.5544,
+        "movement": 0.5522,
+        "density": 0.645,
+        "space": 0.6483,
+        "aggression": 0.2167
+      },
+      "min_dna": {
+        "brightness": 0.22,
+        "warmth": 0.3,
+        "movement": 0.18,
+        "density": 0.3,
+        "space": 0.45,
+        "aggression": 0.02
+      },
+      "max_dna": {
+        "brightness": 0.72,
+        "warmth": 0.85,
+        "movement": 0.95,
+        "density": 0.88,
+        "space": 0.95,
+        "aggression": 0.72
+      },
+      "std_dna": {
+        "brightness": 0.1329,
+        "warmth": 0.1547,
+        "movement": 0.2351,
+        "density": 0.1509,
+        "space": 0.1582,
+        "aggression": 0.1795
+      },
+      "felix_score": 0.4683,
+      "versatility": 0.1685,
+      "dominant_character": "tender spacious",
+      "mood_distribution": {
+        "Entangled": 4,
+        "Atmosphere": 3,
+        "Foundation": 3,
+        "Prism": 3,
+        "Aether": 2,
+        "Flux": 2,
+        "Family": 1
+      }
+    },
+    {
+      "engine": "Osprey",
+      "preset_count": 22,
+      "mean_dna": {
+        "brightness": 0.4477,
+        "warmth": 0.5332,
+        "movement": 0.4086,
+        "density": 0.4668,
+        "space": 0.5755,
+        "aggression": 0.2027
+      },
+      "min_dna": {
+        "brightness": 0.22,
+        "warmth": 0.25,
+        "movement": 0.1,
+        "density": 0.22,
+        "space": 0.1,
+        "aggression": 0.01
+      },
+      "max_dna": {
+        "brightness": 0.85,
+        "warmth": 0.82,
+        "movement": 0.85,
+        "density": 0.78,
+        "space": 0.95,
+        "aggression": 0.8
+      },
+      "std_dna": {
+        "brightness": 0.1862,
+        "warmth": 0.1782,
+        "movement": 0.2487,
+        "density": 0.1544,
+        "space": 0.2272,
+        "aggression": 0.2304
+      },
+      "felix_score": 0.4572,
+      "versatility": 0.2042,
+      "dominant_character": "tender drifting",
+      "mood_distribution": {
+        "Entangled": 5,
+        "Atmosphere": 4,
+        "Family": 3,
+        "Foundation": 3,
+        "Prism": 3,
+        "Aether": 2,
+        "Flux": 2
+      }
+    },
+    {
+      "engine": "Overdub",
+      "preset_count": 201,
+      "mean_dna": {
+        "brightness": 0.482,
+        "warmth": 0.5917,
+        "movement": 0.5354,
+        "density": 0.5985,
+        "space": 0.5761,
+        "aggression": 0.2972
+      },
+      "min_dna": {
+        "brightness": 0.15,
+        "warmth": 0.079,
+        "movement": 0.1,
+        "density": 0.2,
+        "space": 0.1,
+        "aggression": 0.0
+      },
+      "max_dna": {
+        "brightness": 0.88,
+        "warmth": 0.92,
+        "movement": 1.0,
+        "density": 0.92,
+        "space": 0.98,
+        "aggression": 1.0
+      },
+      "std_dna": {
+        "brightness": 0.1434,
+        "warmth": 0.203,
+        "movement": 0.2302,
+        "density": 0.1867,
+        "space": 0.1901,
+        "aggression": 0.2035
+      },
+      "felix_score": 0.4451,
+      "versatility": 0.1928,
+      "dominant_character": "gentle layered",
+      "mood_distribution": {
+        "Entangled": 65,
+        "Foundation": 35,
+        "Flux": 32,
+        "Prism": 32,
+        "Atmosphere": 20,
+        "Aether": 17
+      }
+    },
+    {
+      "engine": "Obese",
+      "preset_count": 171,
+      "mean_dna": {
+        "brightness": 0.5003,
+        "warmth": 0.6197,
+        "movement": 0.516,
+        "density": 0.8195,
+        "space": 0.5248,
+        "aggression": 0.2956
+      },
+      "min_dna": {
+        "brightness": 0.15,
+        "warmth": 0.08,
+        "movement": 0.05,
+        "density": 0.1,
+        "space": 0.05,
+        "aggression": 0.0
+      },
+      "max_dna": {
+        "brightness": 0.85,
+        "warmth": 0.85,
+        "movement": 0.95,
+        "density": 0.95,
+        "space": 0.92,
+        "aggression": 0.88
+      },
+      "std_dna": {
+        "brightness": 0.1416,
+        "warmth": 0.1233,
+        "movement": 0.2448,
+        "density": 0.1237,
+        "space": 0.2099,
+        "aggression": 0.2013
+      },
+      "felix_score": 0.4403,
+      "versatility": 0.1741,
+      "dominant_character": "dense gentle",
+      "mood_distribution": {
+        "Entangled": 52,
+        "Flux": 30,
+        "Foundation": 26,
+        "Aether": 23,
+        "Prism": 20,
+        "Atmosphere": 19,
+        "Family": 1
+      }
+    },
+    {
+      "engine": "Overbite",
+      "preset_count": 87,
+      "mean_dna": {
+        "brightness": 0.3793,
+        "warmth": 0.513,
+        "movement": 0.3493,
+        "density": 0.522,
+        "space": 0.217,
+        "aggression": 0.3406
+      },
+      "min_dna": {
+        "brightness": 0.05,
+        "warmth": 0.05,
+        "movement": 0.0,
+        "density": 0.2,
+        "space": 0.0,
+        "aggression": 0.0
+      },
+      "max_dna": {
+        "brightness": 0.8,
+        "warmth": 0.9,
+        "movement": 0.88,
+        "density": 0.85,
+        "space": 0.95,
+        "aggression": 0.92
+      },
+      "std_dna": {
+        "brightness": 0.1564,
+        "warmth": 0.1968,
+        "movement": 0.1959,
+        "density": 0.1372,
+        "space": 0.2297,
+        "aggression": 0.2642
+      },
+      "felix_score": 0.4332,
+      "versatility": 0.1967,
+      "dominant_character": "dry gentle",
+      "mood_distribution": {
+        "Entangled": 23,
+        "Flux": 19,
+        "Foundation": 16,
+        "Prism": 11,
+        "Aether": 9,
+        "Atmosphere": 8,
+        "Family": 1
+      }
+    },
+    {
+      "engine": "Osteria",
+      "preset_count": 18,
+      "mean_dna": {
+        "brightness": 0.4683,
+        "warmth": 0.6378,
+        "movement": 0.4178,
+        "density": 0.5228,
+        "space": 0.4628,
+        "aggression": 0.2322
+      },
+      "min_dna": {
+        "brightness": 0.2,
+        "warmth": 0.3,
+        "movement": 0.1,
+        "density": 0.2,
+        "space": 0.15,
+        "aggression": 0.05
+      },
+      "max_dna": {
+        "brightness": 0.8,
+        "warmth": 0.88,
+        "movement": 0.82,
+        "density": 0.75,
+        "space": 0.88,
+        "aggression": 0.78
+      },
+      "std_dna": {
+        "brightness": 0.16,
+        "warmth": 0.1552,
+        "movement": 0.2281,
+        "density": 0.1594,
+        "space": 0.215,
+        "aggression": 0.2092
+      },
+      "felix_score": 0.4153,
+      "versatility": 0.1878,
+      "dominant_character": "tender neutral",
+      "mood_distribution": {
+        "Aether": 3,
+        "Atmosphere": 3,
+        "Flux": 3,
+        "Prism": 3,
+        "Entangled": 2,
+        "Family": 2,
+        "Foundation": 2
+      }
+    },
+    {
+      "engine": "XOwlfish",
+      "preset_count": 29,
+      "mean_dna": {
+        "brightness": 0.3438,
+        "warmth": 0.569,
+        "movement": 0.4614,
+        "density": 0.5876,
+        "space": 0.5903,
+        "aggression": 0.3252
+      },
+      "min_dna": {
+        "brightness": 0.0,
+        "warmth": 0.08,
+        "movement": 0.08,
+        "density": 0.12,
+        "space": 0.14,
+        "aggression": 0.05
+      },
+      "max_dna": {
+        "brightness": 0.9,
+        "warmth": 0.95,
+        "movement": 1.0,
+        "density": 1.0,
+        "space": 1.0,
+        "aggression": 0.8
+      },
+      "std_dna": {
+        "brightness": 0.208,
+        "warmth": 0.2329,
+        "movement": 0.2618,
+        "density": 0.2081,
+        "space": 0.2389,
+        "aggression": 0.2247
+      },
+      "felix_score": 0.3874,
+      "versatility": 0.2291,
+      "dominant_character": "gentle muted",
+      "mood_distribution": {
+        "Foundation": 8,
+        "Atmosphere": 5,
+        "Aether": 4,
+        "Entangled": 4,
+        "Prism": 4,
+        "Flux": 3,
+        "Family": 1
+      }
+    }
+  ]
+}
