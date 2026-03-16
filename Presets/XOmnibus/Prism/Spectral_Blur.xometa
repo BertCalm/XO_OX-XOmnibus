@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Blur",
+  "mood": "Prism",
+  "engines": [
+    "OddfeliX"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Harmonic scan at maximum rate. Bright spectrum smeared into motion.",
+  "tags": [
+    "kinetic-bright",
+    "extreme",
+    "prism",
+    "spectral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 3.0,
+      "snap_filterCutoff": 7500.0,
+      "snap_filterReso": 0.45,
+      "snap_filterEnvDepth": 0.88,
+      "snap_drive": 0.82,
+      "snap_attack": 1.0,
+      "snap_decay": 60.0,
+      "snap_sustain": 0.82,
+      "snap_release": 45.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.91,
+    "warmth": 0.48,
+    "movement": 0.95,
+    "density": 0.8,
+    "space": 0.08,
+    "aggression": 0.7
+  }
+}

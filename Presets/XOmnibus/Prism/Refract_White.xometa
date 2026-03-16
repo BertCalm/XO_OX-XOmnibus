@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Refract White",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.9018,
+    "warmth": 0.2049,
+    "movement": 0.5184,
+    "density": 0.2587,
+    "space": 0.8214,
+    "aggression": 0.3244
+  },
+  "dna": {
+    "brightness": 0.9018,
+    "warmth": 0.2049,
+    "movement": 0.5184,
+    "density": 0.2587,
+    "space": 0.8214,
+    "aggression": 0.3244
+  },
+  "engines": [
+    "OPTIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Full-spectrum white-light refraction output",
+  "tags": [
+    "prism",
+    "bright",
+    "ultra",
+    "spectral",
+    "anchor"
+  ],
+  "macroLabels": [
+    "REFRACT",
+    "SPECTRUM",
+    "SCATTER",
+    "SPACE"
+  ],
+  "macros": {
+    "REFRACT": 0.6577,
+    "SPECTRUM": 0.7735,
+    "SCATTER": 0.8753,
+    "SPACE": 0.2757
+  },
+  "couplingIntensity": "None",
+  "parameters": {
+    "OPTIC": {
+      "optic_macro_refract": 0.6577,
+      "optic_macro_spectrum": 0.7735,
+      "optic_macro_scatter": 0.8753,
+      "optic_macro_space": 0.2757,
+      "optic_outputLevel": 0.85,
+      "optic_couplingLevel": 0.5,
+      "optic_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

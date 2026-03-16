@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Amber Nebula",
+  "mood": "Aether",
+  "engines": [
+    "Opal"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Warm grain clouds drifting through stellar distance. Unhurried and vast.",
+  "tags": [
+    "warm-deep-space",
+    "extreme",
+    "aether",
+    "granular"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Opal": {
+      "opal_grainSize": 0.55,
+      "opal_density": 0.62,
+      "opal_posScatter": 0.88,
+      "opal_pitchScatter": 0.3,
+      "opal_filterCutoff": 1800.0,
+      "opal_filterReso": 0.12,
+      "opal_attack": 400.0,
+      "opal_release": 800.0,
+      "opal_dryWet": 0.95
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.88,
+    "movement": 0.65,
+    "density": 0.42,
+    "space": 0.94,
+    "aggression": 0.08
+  }
+}

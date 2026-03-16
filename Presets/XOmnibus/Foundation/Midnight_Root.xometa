@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Midnight Root",
+  "mood": "Foundation",
+  "sonic_dna": {
+    "brightness": 0.0763,
+    "warmth": 0.7254,
+    "movement": 0.4193,
+    "density": 0.6999,
+    "space": 0.3658,
+    "aggression": 0.3494
+  },
+  "dna": {
+    "brightness": 0.0763,
+    "warmth": 0.7254,
+    "movement": 0.4193,
+    "density": 0.6999,
+    "space": 0.3658,
+    "aggression": 0.3494
+  },
+  "engines": [
+    "ODDFELIX"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Felix voice locked in lowest harmonic field",
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme",
+    "anchor"
+  ],
+  "macroLabels": [
+    "VOICE",
+    "MOTION",
+    "COUPLE",
+    "SPACE"
+  ],
+  "macros": {
+    "VOICE": 0.2569,
+    "MOTION": 0.2636,
+    "COUPLE": 0.233,
+    "SPACE": 0.2768
+  },
+  "couplingIntensity": "None",
+  "parameters": {
+    "ODDFELIX": {
+      "felix_macro_voice": 0.2569,
+      "felix_macro_motion": 0.2636,
+      "felix_macro_couple": 0.233,
+      "felix_macro_space": 0.2768,
+      "felix_outputLevel": 0.85,
+      "felix_couplingLevel": 0.5,
+      "felix_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

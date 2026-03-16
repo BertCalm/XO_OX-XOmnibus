@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Interstellar Medium",
+  "mood": "Aether",
+  "engines": [
+    "Osprey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Shore receded to a theoretical point. Only cold swell remains.",
+  "tags": [
+    "cold-sparse",
+    "extreme",
+    "aether",
+    "ambient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Osprey": {
+      "osprey_shore": 0.04,
+      "osprey_seaState": 0.03,
+      "osprey_swellPeriod": 0.96,
+      "osprey_brightness": 0.06,
+      "osprey_foam": 0.03,
+      "osprey_depth": 0.97,
+      "osprey_wetMix": 0.9
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.05,
+    "movement": 0.07,
+    "density": 0.06,
+    "space": 0.94,
+    "aggression": 0.04
+  }
+}

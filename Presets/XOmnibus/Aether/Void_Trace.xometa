@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Void Trace",
+  "mood": "Aether",
+  "engines": [
+    "Opal"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "A single grain per measure. Cold light in infinite darkness.",
+  "tags": [
+    "cold-sparse",
+    "extreme",
+    "aether",
+    "granular"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Opal": {
+      "opal_grainSize": 0.95,
+      "opal_density": 0.04,
+      "opal_posScatter": 0.85,
+      "opal_pitchScatter": 0.0,
+      "opal_filterCutoff": 280.0,
+      "opal_filterReso": 0.08,
+      "opal_attack": 800.0,
+      "opal_release": 1200.0,
+      "opal_dryWet": 0.92
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.05,
+    "movement": 0.05,
+    "density": 0.04,
+    "space": 0.95,
+    "aggression": 0.03
+  }
+}

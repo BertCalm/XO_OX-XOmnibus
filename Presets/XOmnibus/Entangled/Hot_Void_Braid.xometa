@@ -1,0 +1,49 @@
+{
+  "name": "Hot Void Braid",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERDUB",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.86,
+      "macro_movement": 0.46,
+      "macro_coupling": 0.66,
+      "macro_space": 0.74
+    },
+    "ORGANON": {
+      "macro_character": 0.83,
+      "macro_movement": 0.35,
+      "macro_coupling": 0.64,
+      "macro_space": 0.82
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_LOCK",
+    "source": "OVERDUB",
+    "target": "ORGANON",
+    "amount": 0.68
+  },
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.93,
+    "movement": 0.52,
+    "density": 0.43,
+    "space": 0.76,
+    "aggression": 0.31
+  },
+  "macros": {
+    "CHARACTER": 0.84,
+    "MOVEMENT": 0.41,
+    "COUPLING": 0.65,
+    "SPACE": 0.78
+  },
+  "tags": [
+    "entangled",
+    "warm",
+    "scorching",
+    "spatial"
+  ]
+}

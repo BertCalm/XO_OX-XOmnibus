@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Cobalt Path",
+  "mood": "Entangled",
+  "engines": [
+    "OHM",
+    "OWLFISH"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "ohm",
+    "owlfish"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.551,
+    "MOVEMENT": 0.259,
+    "COUPLING": 0.591,
+    "SPACE": 0.575
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.335,
+    "warmth": 0.695,
+    "movement": 0.37,
+    "density": 0.665,
+    "space": 0.635,
+    "aggression": 0.0
+  },
+  "sonic_dna": {
+    "brightness": 0.335,
+    "warmth": 0.695,
+    "movement": 0.37,
+    "density": 0.665,
+    "space": 0.635,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.42,
+      "macro_movement": 0.613,
+      "macro_coupling": 0.759,
+      "macro_space": 0.592
+    },
+    "OWLFISH": {
+      "macro_character": 0.475,
+      "macro_movement": 0.405,
+      "macro_coupling": 0.549,
+      "macro_space": 0.449
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OHM",
+        "engineB": "OWLFISH",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.554
+      }
+    ]
+  }
+}

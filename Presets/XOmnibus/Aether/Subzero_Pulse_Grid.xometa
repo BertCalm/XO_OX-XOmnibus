@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Subzero Pulse Grid",
+  "mood": "Aether",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Wavefolded into darkness. Dense harmonic web without any light.",
+  "tags": [
+    "cold-dense",
+    "extreme",
+    "aether",
+    "distorted"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_oscWave": 2.0,
+      "oblq_oscFold": 0.92,
+      "oblq_oscDetune": 4.0,
+      "oblq_filterCutoff": 90.0,
+      "oblq_filterReso": 0.88,
+      "oblq_filterDrive": 0.9,
+      "oblq_envAmt": 0.82,
+      "oblq_attack": 2.0,
+      "oblq_decay": 180.0,
+      "oblq_sustain": 0.92
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.08,
+    "movement": 0.6,
+    "density": 0.92,
+    "space": 0.04,
+    "aggression": 0.84
+  }
+}

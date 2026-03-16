@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Brass Horizon",
+  "mood": "Prism",
+  "engines": [
+    "Obbligato"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Single brass voice singing across an empty plain at golden hour.",
+  "tags": [
+    "hot-sparse",
+    "extreme",
+    "prism",
+    "brass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obbligato": {
+      "obbl_breathA": 0.88,
+      "obbl_embouchureA": 0.9,
+      "obbl_airFlutterA": 0.15,
+      "obbl_instrumentA": 1.0,
+      "obbl_brightnessA": 0.88,
+      "obbl_spaceA": 0.92,
+      "obbl_attackA": 40.0,
+      "obbl_releaseA": 900.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.88,
+    "movement": 0.2,
+    "density": 0.07,
+    "space": 0.93,
+    "aggression": 0.1
+  }
+}

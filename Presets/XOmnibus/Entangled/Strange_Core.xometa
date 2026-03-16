@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Strange Core",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "ORCA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "obbligato",
+    "orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.462,
+    "MOVEMENT": 0.644,
+    "COUPLING": 0.708,
+    "SPACE": 0.481
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "brightness": 0.405,
+    "warmth": 0.5,
+    "movement": 0.665,
+    "density": 0.995,
+    "space": 0.6,
+    "aggression": 0.595
+  },
+  "sonic_dna": {
+    "brightness": 0.405,
+    "warmth": 0.5,
+    "movement": 0.665,
+    "density": 0.995,
+    "space": 0.6,
+    "aggression": 0.595
+  },
+  "parameters": {
+    "OBBLIGATO": {
+      "macro_character": 0.699,
+      "macro_movement": 0.597,
+      "macro_coupling": 0.693,
+      "macro_space": 0.573
+    },
+    "ORCA": {
+      "macro_character": 0.516,
+      "macro_movement": 0.75,
+      "macro_coupling": 0.56,
+      "macro_space": 0.395
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORCA",
+        "engineB": "OBBLIGATO",
+        "type": "ENVELOPE_FOLLOW",
+        "amount": 0.841
+      }
+    ]
+  }
+}

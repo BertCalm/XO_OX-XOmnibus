@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Compressor Crush",
+  "mood": "Foundation",
+  "sonic_dna": {
+    "brightness": 0.2068,
+    "warmth": 0.6787,
+    "movement": 0.6636,
+    "density": 0.8663,
+    "space": 0.2923,
+    "aggression": 0.7598
+  },
+  "dna": {
+    "brightness": 0.2068,
+    "warmth": 0.6787,
+    "movement": 0.6636,
+    "density": 0.8663,
+    "space": 0.2923,
+    "aggression": 0.7598
+  },
+  "engines": [
+    "ONSET"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Machine-tight kick/snare with extreme punch",
+  "tags": [
+    "foundation",
+    "aggressive",
+    "extreme",
+    "anchor",
+    "drive"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.8146,
+    "PUNCH": 0.7173,
+    "SPACE": 0.26,
+    "MUTATE": 0.7902
+  },
+  "couplingIntensity": "None",
+  "parameters": {
+    "ONSET": {
+      "onset_macro_machine": 0.8146,
+      "onset_macro_punch": 0.7173,
+      "onset_macro_space": 0.26,
+      "onset_macro_mutate": 0.7902,
+      "onset_outputLevel": 0.85,
+      "onset_couplingLevel": 0.5,
+      "onset_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

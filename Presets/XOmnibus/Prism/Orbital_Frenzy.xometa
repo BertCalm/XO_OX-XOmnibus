@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Orbital Frenzy",
+  "mood": "Prism",
+  "engines": [
+    "Orbital"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Every grouped resonance spinning at maximum rate. No stillness survives.",
+  "tags": [
+    "kinetic-bright",
+    "extreme",
+    "prism",
+    "fast"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.91,
+      "orb_groupEnvRate": 0.95,
+      "orb_groupEnvDepth": 0.88,
+      "orb_spread": 0.85,
+      "orb_density": 0.82,
+      "orb_attack": 2.0,
+      "orb_release": 50.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.52,
+    "movement": 0.94,
+    "density": 0.83,
+    "space": 0.1,
+    "aggression": 0.72
+  }
+}

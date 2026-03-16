@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Crystal Fold",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.9422,
+    "warmth": 0.104,
+    "movement": 0.3879,
+    "density": 0.3975,
+    "space": 0.7054,
+    "aggression": 0.2928
+  },
+  "dna": {
+    "brightness": 0.9422,
+    "warmth": 0.104,
+    "movement": 0.3879,
+    "density": 0.3975,
+    "space": 0.7054,
+    "aggression": 0.2928
+  },
+  "engines": [
+    "ORIGAMI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Paper-light origami surface, brilliant reflections",
+  "tags": [
+    "prism",
+    "bright",
+    "ultra",
+    "spectral",
+    "anchor"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "TENSION",
+    "COUPLE",
+    "SPACE"
+  ],
+  "macros": {
+    "FOLD": 0.7135,
+    "TENSION": 0.5232,
+    "COUPLE": 0.2352,
+    "SPACE": 0.4654
+  },
+  "couplingIntensity": "None",
+  "parameters": {
+    "ORIGAMI": {
+      "ori_macro_fold": 0.7135,
+      "ori_macro_tension": 0.5232,
+      "ori_macro_couple": 0.2352,
+      "ori_macro_space": 0.4654,
+      "ori_outputLevel": 0.85,
+      "ori_couplingLevel": 0.5,
+      "ori_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

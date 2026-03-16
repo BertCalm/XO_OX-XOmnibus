@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Chaos Refract",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.4934,
+    "warmth": 0.3807,
+    "movement": 0.9097,
+    "density": 0.6117,
+    "space": 0.5555,
+    "aggression": 0.928
+  },
+  "dna": {
+    "brightness": 0.4934,
+    "warmth": 0.3807,
+    "movement": 0.9097,
+    "density": 0.6117,
+    "space": 0.5555,
+    "aggression": 0.928
+  },
+  "engines": [
+    "OPTIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Rapidly cycling prism scatter, maximum movement",
+  "tags": [
+    "prism",
+    "brutal",
+    "movement",
+    "aggressive",
+    "anchor"
+  ],
+  "macroLabels": [
+    "REFRACT",
+    "SPECTRUM",
+    "SCATTER",
+    "SPACE"
+  ],
+  "macros": {
+    "REFRACT": 0.2607,
+    "SPECTRUM": 0.8526,
+    "SCATTER": 0.3707,
+    "SPACE": 0.5253
+  },
+  "couplingIntensity": "None",
+  "parameters": {
+    "OPTIC": {
+      "optic_macro_refract": 0.2607,
+      "optic_macro_spectrum": 0.8526,
+      "optic_macro_scatter": 0.3707,
+      "optic_macro_space": 0.5253,
+      "optic_outputLevel": 0.85,
+      "optic_couplingLevel": 0.5,
+      "optic_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

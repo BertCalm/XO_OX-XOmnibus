@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Sunlit Bottom",
+  "mood": "Foundation",
+  "sonic_dna": {
+    "brightness": 0.9216,
+    "warmth": 0.1667,
+    "movement": 0.3362,
+    "density": 0.0662,
+    "space": 0.8117,
+    "aggression": 0.2217
+  },
+  "dna": {
+    "brightness": 0.9216,
+    "warmth": 0.1667,
+    "movement": 0.3362,
+    "density": 0.0662,
+    "space": 0.8117,
+    "aggression": 0.2217
+  },
+  "engines": [
+    "ODDFELIX"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Felix fundamental with extreme brightness, low density",
+  "tags": [
+    "foundation",
+    "bright",
+    "sparse",
+    "crystalline",
+    "anchor"
+  ],
+  "macroLabels": [
+    "VOICE",
+    "MOTION",
+    "COUPLE",
+    "SPACE"
+  ],
+  "macros": {
+    "VOICE": 0.8886,
+    "MOTION": 0.7716,
+    "COUPLE": 0.5222,
+    "SPACE": 0.4136
+  },
+  "couplingIntensity": "None",
+  "parameters": {
+    "ODDFELIX": {
+      "felix_macro_voice": 0.8886,
+      "felix_macro_motion": 0.7716,
+      "felix_macro_couple": 0.5222,
+      "felix_macro_space": 0.4136,
+      "felix_outputLevel": 0.85,
+      "felix_couplingLevel": 0.5,
+      "felix_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

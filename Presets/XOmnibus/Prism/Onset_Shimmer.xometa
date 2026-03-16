@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Onset Shimmer",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.94,
+    "warmth": 0.1182,
+    "movement": 0.5943,
+    "density": 0.4739,
+    "space": 0.7694,
+    "aggression": 0.2285
+  },
+  "dna": {
+    "brightness": 0.94,
+    "warmth": 0.1182,
+    "movement": 0.5943,
+    "density": 0.4739,
+    "space": 0.7694,
+    "aggression": 0.2285
+  },
+  "engines": [
+    "ONSET"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Transient shimmer prism \u2014 percussion gone spectral",
+  "tags": [
+    "prism",
+    "bright",
+    "ultra",
+    "spectral",
+    "anchor"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "macros": {
+    "MACHINE": 0.8967,
+    "PUNCH": 0.5542,
+    "SPACE": 0.4389,
+    "MUTATE": 0.7947
+  },
+  "couplingIntensity": "None",
+  "parameters": {
+    "ONSET": {
+      "onset_macro_machine": 0.8967,
+      "onset_macro_punch": 0.5542,
+      "onset_macro_space": 0.4389,
+      "onset_macro_mutate": 0.7947,
+      "onset_outputLevel": 0.85,
+      "onset_couplingLevel": 0.5,
+      "onset_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

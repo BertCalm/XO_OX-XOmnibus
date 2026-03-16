@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Sundowner Reverb",
+  "mood": "Aether",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Warm knot topology spreading into infinite FDN decay. Sunset in a hall.",
+  "tags": [
+    "warm-deep-space",
+    "extreme",
+    "aether",
+    "reverb"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 2.0,
+      "olap_delayFeedback": 0.88,
+      "olap_diffusion": 0.72,
+      "olap_spread": 0.92,
+      "olap_size": 0.95,
+      "olap_decay": 0.92,
+      "olap_damping": 0.35,
+      "olap_brightness": 0.52
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.88,
+    "movement": 0.62,
+    "density": 0.32,
+    "space": 0.94,
+    "aggression": 0.08
+  }
+}

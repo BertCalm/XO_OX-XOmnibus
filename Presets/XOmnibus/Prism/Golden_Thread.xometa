@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Golden Thread",
+  "mood": "Prism",
+  "engines": [
+    "Orphica"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "One string plucked in a cathedral. Warmth radiated into infinite reverb.",
+  "tags": [
+    "hot-sparse",
+    "extreme",
+    "prism",
+    "harp"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_stringMaterial": 0.88,
+      "orph_pluckBrightness": 0.91,
+      "orph_pluckPosition": 0.85,
+      "orph_stringCount": 1.0,
+      "orph_resonance": 0.12,
+      "orph_space": 0.93,
+      "orph_decay": 1500.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.89,
+    "movement": 0.15,
+    "density": 0.06,
+    "space": 0.93,
+    "aggression": 0.08
+  }
+}

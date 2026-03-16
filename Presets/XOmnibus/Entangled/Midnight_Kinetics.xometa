@@ -1,0 +1,48 @@
+{
+  "name": "Midnight Kinetics",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OUTWIT",
+    "OCTOPUS"
+  ],
+  "parameters": {
+    "OUTWIT": {
+      "macro_character": 0.71,
+      "macro_movement": 0.38,
+      "macro_coupling": 0.88,
+      "macro_space": 0.41
+    },
+    "OCTOPUS": {
+      "macro_character": 0.37,
+      "macro_movement": 0.56,
+      "macro_coupling": 0.53,
+      "macro_space": 0.64
+    }
+  },
+  "coupling": {
+    "type": "PITCH_MOD",
+    "source": "OUTWIT",
+    "target": "OCTOPUS",
+    "amount": 0.81
+  },
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.29,
+    "movement": 0.83,
+    "density": 0.55,
+    "space": 0.54,
+    "aggression": 0.47
+  },
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.83,
+    "COUPLING": 0.86,
+    "SPACE": 0.54
+  },
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ]
+}

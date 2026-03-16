@@ -1,0 +1,49 @@
+{
+  "name": "Torch Braid",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORBITAL",
+    "ORACLE"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.77,
+      "macro_movement": 0.65,
+      "macro_coupling": 0.67,
+      "macro_space": 0.62
+    },
+    "ORACLE": {
+      "macro_character": 0.84,
+      "macro_movement": 0.67,
+      "macro_coupling": 0.73,
+      "macro_space": 0.65
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_BRAID",
+    "source": "ORBITAL",
+    "target": "ORACLE",
+    "amount": 0.72
+  },
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.94,
+    "movement": 0.65,
+    "density": 0.56,
+    "space": 0.57,
+    "aggression": 0.43
+  },
+  "macros": {
+    "CHARACTER": 0.8,
+    "MOVEMENT": 0.66,
+    "COUPLING": 0.7,
+    "SPACE": 0.64
+  },
+  "tags": [
+    "entangled",
+    "warm",
+    "scorching",
+    "bright"
+  ]
+}

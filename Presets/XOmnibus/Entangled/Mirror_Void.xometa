@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Mirror Void",
+  "mood": "Entangled",
+  "engines": [
+    "OMBRE",
+    "ORCA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "ombre",
+    "orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.485,
+    "MOVEMENT": 0.531,
+    "COUPLING": 0.609,
+    "SPACE": 0.538
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "brightness": 0.365,
+    "warmth": 0.565,
+    "movement": 0.57,
+    "density": 0.97,
+    "space": 0.665,
+    "aggression": 0.44
+  },
+  "sonic_dna": {
+    "brightness": 0.365,
+    "warmth": 0.565,
+    "movement": 0.57,
+    "density": 0.97,
+    "space": 0.665,
+    "aggression": 0.44
+  },
+  "parameters": {
+    "OMBRE": {
+      "macro_character": 0.544,
+      "macro_movement": 0.692,
+      "macro_coupling": 0.639,
+      "macro_space": 0.575
+    },
+    "ORCA": {
+      "macro_character": 0.649,
+      "macro_movement": 0.554,
+      "macro_coupling": 0.788,
+      "macro_space": 0.463
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OMBRE",
+        "engineB": "ORCA",
+        "type": "SPECTRAL_BLEND",
+        "amount": 0.833
+      }
+    ]
+  }
+}

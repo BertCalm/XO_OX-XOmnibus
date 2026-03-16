@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Timeless Current",
+  "mood": "Entangled",
+  "engines": [
+    "OSTERIA",
+    "OWLFISH"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "osteria",
+    "owlfish"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.551,
+    "MOVEMENT": 0.326,
+    "COUPLING": 0.627,
+    "SPACE": 0.584
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.47,
+    "warmth": 0.605,
+    "movement": 0.465,
+    "density": 0.6,
+    "space": 0.63,
+    "aggression": 0.0
+  },
+  "sonic_dna": {
+    "brightness": 0.47,
+    "warmth": 0.605,
+    "movement": 0.465,
+    "density": 0.6,
+    "space": 0.63,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "OSTERIA": {
+      "macro_character": 0.554,
+      "macro_movement": 0.384,
+      "macro_coupling": 0.731,
+      "macro_space": 0.54
+    },
+    "OWLFISH": {
+      "macro_character": 0.523,
+      "macro_movement": 0.409,
+      "macro_coupling": 0.588,
+      "macro_space": 0.633
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OWLFISH",
+        "engineB": "OSTERIA",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.584
+      }
+    ]
+  }
+}

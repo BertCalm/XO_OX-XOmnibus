@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Anvil Pulse",
+  "mood": "Foundation",
+  "sonic_dna": {
+    "brightness": 0.5015,
+    "warmth": 0.5651,
+    "movement": 0.4152,
+    "density": 0.8999,
+    "space": 0.4508,
+    "aggression": 0.9147
+  },
+  "dna": {
+    "brightness": 0.5015,
+    "warmth": 0.5651,
+    "movement": 0.4152,
+    "density": 0.8999,
+    "space": 0.4508,
+    "aggression": 0.9147
+  },
+  "engines": [
+    "OBLONG"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Rhythmic anvil-weight pulse, unrelenting density",
+  "tags": [
+    "foundation",
+    "aggressive",
+    "extreme",
+    "anchor",
+    "drive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8485,
+    "MOVEMENT": 0.7534,
+    "COUPLING": 0.3164,
+    "SPACE": 0.7003
+  },
+  "couplingIntensity": "None",
+  "parameters": {
+    "OBLONG": {
+      "bob_macro_character": 0.8485,
+      "bob_macro_movement": 0.7534,
+      "bob_macro_coupling": 0.3164,
+      "bob_macro_space": 0.7003,
+      "bob_outputLevel": 0.85,
+      "bob_couplingLevel": 0.5,
+      "bob_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Timeless Sink",
+  "mood": "Entangled",
+  "engines": [
+    "OTTONI",
+    "OWLFISH"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "ottoni",
+    "owlfish"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.495,
+    "MOVEMENT": 0.471,
+    "COUPLING": 0.625,
+    "SPACE": 0.517
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "brightness": 0.435,
+    "warmth": 0.535,
+    "movement": 0.5,
+    "density": 0.935,
+    "space": 0.63,
+    "aggression": 0.405
+  },
+  "sonic_dna": {
+    "brightness": 0.435,
+    "warmth": 0.535,
+    "movement": 0.5,
+    "density": 0.935,
+    "space": 0.63,
+    "aggression": 0.405
+  },
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.506,
+      "macro_movement": 0.715,
+      "macro_coupling": 0.53,
+      "macro_space": 0.247
+    },
+    "OWLFISH": {
+      "macro_character": 0.494,
+      "macro_movement": 0.759,
+      "macro_coupling": 0.5,
+      "macro_space": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OWLFISH",
+        "engineB": "OTTONI",
+        "type": "ENVELOPE_FOLLOW",
+        "amount": 0.652
+      }
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Murky Heart",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "OCTOPUS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "obbligato",
+    "octopus"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.475,
+    "MOVEMENT": 0.859,
+    "COUPLING": 0.628,
+    "SPACE": 0.502
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "brightness": 0.535,
+    "warmth": 0.435,
+    "movement": 1.0,
+    "density": 0.63,
+    "space": 0.535,
+    "aggression": 0.53
+  },
+  "sonic_dna": {
+    "brightness": 0.535,
+    "warmth": 0.435,
+    "movement": 1.0,
+    "density": 0.63,
+    "space": 0.535,
+    "aggression": 0.53
+  },
+  "parameters": {
+    "OBBLIGATO": {
+      "macro_character": 0.327,
+      "macro_movement": 0.522,
+      "macro_coupling": 0.584,
+      "macro_space": 0.608
+    },
+    "OCTOPUS": {
+      "macro_character": 0.685,
+      "macro_movement": 0.776,
+      "macro_coupling": 0.406,
+      "macro_space": 0.361
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OCTOPUS",
+        "engineB": "OBBLIGATO",
+        "type": "PHASE_LOCK",
+        "amount": 0.677
+      }
+    ]
+  }
+}

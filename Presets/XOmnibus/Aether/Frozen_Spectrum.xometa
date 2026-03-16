@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Frozen Spectrum",
+  "mood": "Aether",
+  "engines": [
+    "Ocelot"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The ecosystem reduced to a single cold strand of signal.",
+  "tags": [
+    "cold-sparse",
+    "extreme",
+    "aether",
+    "minimal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ocelot": {
+      "ocelot_biome": 0.05,
+      "ocelot_strataBalance": 0.04,
+      "ocelot_ecosystemDepth": 0.04,
+      "ocelot_brightness": 0.06,
+      "ocelot_movement": 0.03,
+      "ocelot_density": 0.05,
+      "ocelot_aggression": 0.04
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.06,
+    "movement": 0.04,
+    "density": 0.06,
+    "space": 0.93,
+    "aggression": 0.06
+  }
+}

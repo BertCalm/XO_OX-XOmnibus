@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Crystal Root",
+  "mood": "Foundation",
+  "sonic_dna": {
+    "brightness": 0.8279,
+    "warmth": 0.2488,
+    "movement": 0.3026,
+    "density": 0.0853,
+    "space": 0.586,
+    "aggression": 0.2281
+  },
+  "dna": {
+    "brightness": 0.8279,
+    "warmth": 0.2488,
+    "movement": 0.3026,
+    "density": 0.0853,
+    "space": 0.586,
+    "aggression": 0.2281
+  },
+  "engines": [
+    "ODDFELIX"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Felix in pure crystalline overtone, sparse texture",
+  "tags": [
+    "foundation",
+    "bright",
+    "sparse",
+    "crystalline",
+    "anchor"
+  ],
+  "macroLabels": [
+    "VOICE",
+    "MOTION",
+    "COUPLE",
+    "SPACE"
+  ],
+  "macros": {
+    "VOICE": 0.8251,
+    "MOTION": 0.6162,
+    "COUPLE": 0.6336,
+    "SPACE": 0.4935
+  },
+  "couplingIntensity": "None",
+  "parameters": {
+    "ODDFELIX": {
+      "felix_macro_voice": 0.8251,
+      "felix_macro_motion": 0.6162,
+      "felix_macro_couple": 0.6336,
+      "felix_macro_space": 0.4935,
+      "felix_outputLevel": 0.85,
+      "felix_couplingLevel": 0.5,
+      "felix_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

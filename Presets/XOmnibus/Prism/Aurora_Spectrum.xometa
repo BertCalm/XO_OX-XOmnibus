@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Aurora Spectrum",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.9657,
+    "warmth": 0.2148,
+    "movement": 0.3831,
+    "density": 0.2021,
+    "space": 0.7704,
+    "aggression": 0.326
+  },
+  "dna": {
+    "brightness": 0.9657,
+    "warmth": 0.2148,
+    "movement": 0.3831,
+    "density": 0.2021,
+    "space": 0.7704,
+    "aggression": 0.326
+  },
+  "engines": [
+    "OBLIQUE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Oblique angle producing maximum luminance",
+  "tags": [
+    "prism",
+    "bright",
+    "ultra",
+    "spectral",
+    "anchor"
+  ],
+  "macroLabels": [
+    "ANGLE",
+    "MOTION",
+    "COUPLE",
+    "SPACE"
+  ],
+  "macros": {
+    "ANGLE": 0.8138,
+    "MOTION": 0.8674,
+    "COUPLE": 0.4933,
+    "SPACE": 0.7233
+  },
+  "couplingIntensity": "None",
+  "parameters": {
+    "OBLIQUE": {
+      "obl_macro_angle": 0.8138,
+      "obl_macro_motion": 0.8674,
+      "obl_macro_couple": 0.4933,
+      "obl_macro_space": 0.7233,
+      "obl_outputLevel": 0.85,
+      "obl_couplingLevel": 0.5,
+      "obl_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

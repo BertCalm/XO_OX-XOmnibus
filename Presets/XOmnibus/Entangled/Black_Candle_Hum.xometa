@@ -1,0 +1,48 @@
+{
+  "name": "Black Candle Hum",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBSCURA",
+    "OPAL"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.64,
+      "macro_movement": 0.67,
+      "macro_coupling": 0.69,
+      "macro_space": 0.41
+    },
+    "OPAL": {
+      "macro_character": 0.52,
+      "macro_movement": 0.49,
+      "macro_coupling": 0.54,
+      "macro_space": 0.2
+    }
+  },
+  "coupling": {
+    "type": "AMP_MOD",
+    "source": "OPAL",
+    "target": "OBSCURA",
+    "amount": 0.55
+  },
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.78,
+    "movement": 0.53,
+    "density": 0.75,
+    "space": 0.19,
+    "aggression": 0.18
+  },
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.53,
+    "COUPLING": 0.66,
+    "SPACE": 0.19
+  },
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ]
+}

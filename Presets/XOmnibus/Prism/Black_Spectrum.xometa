@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Black Spectrum",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.0728,
+    "warmth": 0.4059,
+    "movement": 0.4079,
+    "density": 0.8492,
+    "space": 0.4161,
+    "aggression": 0.8434
+  },
+  "dna": {
+    "brightness": 0.0728,
+    "warmth": 0.4059,
+    "movement": 0.4079,
+    "density": 0.8492,
+    "space": 0.4161,
+    "aggression": 0.8434
+  },
+  "engines": [
+    "OPTIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Refracted darkness \u2014 all prism bands collapsed low",
+  "tags": [
+    "prism",
+    "dark",
+    "dense",
+    "extreme",
+    "anchor"
+  ],
+  "macroLabels": [
+    "REFRACT",
+    "SPECTRUM",
+    "SCATTER",
+    "SPACE"
+  ],
+  "macros": {
+    "REFRACT": 0.2341,
+    "SPECTRUM": 0.9348,
+    "SCATTER": 0.4798,
+    "SPACE": 0.6288
+  },
+  "couplingIntensity": "None",
+  "parameters": {
+    "OPTIC": {
+      "optic_macro_refract": 0.2341,
+      "optic_macro_spectrum": 0.9348,
+      "optic_macro_scatter": 0.4798,
+      "optic_macro_space": 0.6288,
+      "optic_outputLevel": 0.85,
+      "optic_couplingLevel": 0.5,
+      "optic_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

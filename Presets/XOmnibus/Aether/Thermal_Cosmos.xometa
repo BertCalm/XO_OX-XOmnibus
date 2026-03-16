@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Thermal Cosmos",
+  "mood": "Aether",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Warm interference patterns echoing across cosmological distances.",
+  "tags": [
+    "warm-deep-space",
+    "extreme",
+    "aether",
+    "ambient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.72,
+      "ombre_interference": 0.65,
+      "ombre_memoryDecay": 0.15,
+      "ombre_brightness": 0.52,
+      "ombre_movement": 0.68,
+      "ombre_space": 0.94,
+      "ombre_level": -8.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.9,
+    "movement": 0.68,
+    "density": 0.38,
+    "space": 0.93,
+    "aggression": 0.07
+  }
+}

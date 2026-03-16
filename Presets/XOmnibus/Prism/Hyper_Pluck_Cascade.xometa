@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Hyper Pluck Cascade",
+  "mood": "Prism",
+  "engines": [
+    "Orphica"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "All strings at maximum pluck density, bright harmonics stacking fast.",
+  "tags": [
+    "kinetic-bright",
+    "extreme",
+    "prism",
+    "harp"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_stringMaterial": 0.85,
+      "orph_pluckBrightness": 0.92,
+      "orph_pluckPosition": 0.15,
+      "orph_stringCount": 0.95,
+      "orph_resonance": 0.82,
+      "orph_space": 0.12,
+      "orph_decay": 120.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.55,
+    "movement": 0.92,
+    "density": 0.82,
+    "space": 0.11,
+    "aggression": 0.68
+  }
+}

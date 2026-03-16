@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Pulse Grid",
+  "mood": "Entangled",
+  "engines": [
+    "OBSIDIAN",
+    "ODDOSCAR"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "obsidian",
+    "oddoscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.375,
+    "MOVEMENT": 0.461,
+    "COUPLING": 0.628,
+    "SPACE": 0.453
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.0,
+    "warmth": 0.625,
+    "movement": 0.4,
+    "density": 0.735,
+    "space": 0.5,
+    "aggression": 0.605
+  },
+  "sonic_dna": {
+    "brightness": 0.0,
+    "warmth": 0.625,
+    "movement": 0.4,
+    "density": 0.735,
+    "space": 0.5,
+    "aggression": 0.605
+  },
+  "parameters": {
+    "OBSIDIAN": {
+      "macro_character": 0.74,
+      "macro_movement": 0.665,
+      "macro_coupling": 0.892,
+      "macro_space": 0.551
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.742,
+      "macro_movement": 0.532,
+      "macro_coupling": 0.535,
+      "macro_space": 0.402
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ODDOSCAR",
+        "engineB": "OBSIDIAN",
+        "type": "FORMANT_BLEND",
+        "amount": 0.64
+      }
+    ]
+  }
+}

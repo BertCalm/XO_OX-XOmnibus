@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Arctic Current",
+  "mood": "Entangled",
+  "engines": [
+    "ORPHICA",
+    "OWLFISH"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "orphica",
+    "owlfish"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.502,
+    "MOVEMENT": 0.503,
+    "COUPLING": 0.565,
+    "SPACE": 0.901
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "brightness": 0.505,
+    "warmth": 0.5,
+    "movement": 0.605,
+    "density": 0.495,
+    "space": 1.0,
+    "aggression": 0.265
+  },
+  "sonic_dna": {
+    "brightness": 0.505,
+    "warmth": 0.5,
+    "movement": 0.605,
+    "density": 0.495,
+    "space": 1.0,
+    "aggression": 0.265
+  },
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.378,
+      "macro_movement": 0.731,
+      "macro_coupling": 0.543,
+      "macro_space": 0.437
+    },
+    "OWLFISH": {
+      "macro_character": 0.305,
+      "macro_movement": 0.676,
+      "macro_coupling": 0.665,
+      "macro_space": 0.374
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OWLFISH",
+        "engineB": "ORPHICA",
+        "type": "CHAOS_SYNC",
+        "amount": 0.829
+      }
+    ]
+  }
+}

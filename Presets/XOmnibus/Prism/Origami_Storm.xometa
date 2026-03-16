@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Origami Storm",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.4516,
+    "warmth": 0.2586,
+    "movement": 0.9276,
+    "density": 0.5918,
+    "space": 0.3636,
+    "aggression": 0.9237
+  },
+  "dna": {
+    "brightness": 0.4516,
+    "warmth": 0.2586,
+    "movement": 0.9276,
+    "density": 0.5918,
+    "space": 0.3636,
+    "aggression": 0.9237
+  },
+  "engines": [
+    "ORIGAMI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Fast-folding chaos, brutal rhythmic density",
+  "tags": [
+    "prism",
+    "brutal",
+    "movement",
+    "aggressive",
+    "anchor"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "TENSION",
+    "COUPLE",
+    "SPACE"
+  ],
+  "macros": {
+    "FOLD": 0.4382,
+    "TENSION": 0.7025,
+    "COUPLE": 0.6908,
+    "SPACE": 0.3934
+  },
+  "couplingIntensity": "None",
+  "parameters": {
+    "ORIGAMI": {
+      "ori_macro_fold": 0.4382,
+      "ori_macro_tension": 0.7025,
+      "ori_macro_couple": 0.6908,
+      "ori_macro_space": 0.3934,
+      "ori_outputLevel": 0.85,
+      "ori_couplingLevel": 0.5,
+      "ori_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Entropic Trace",
+  "mood": "Aether",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Light below detection threshold. Optic at its quietest extreme.",
+  "tags": [
+    "cold-sparse",
+    "extreme",
+    "aether",
+    "minimal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.04,
+      "optic_inputGain": 0.05,
+      "optic_autoPulse": 0.03,
+      "optic_brightness": 0.06,
+      "optic_movement": 0.04,
+      "optic_wetDry": 0.06
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.04,
+    "movement": 0.05,
+    "density": 0.05,
+    "space": 0.94,
+    "aggression": 0.04
+  }
+}

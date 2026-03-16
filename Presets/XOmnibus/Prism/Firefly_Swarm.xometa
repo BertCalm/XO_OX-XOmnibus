@@ -3,16 +3,16 @@
   "name": "Firefly Swarm",
   "mood": "Prism",
   "engines": [
-    "Organon"
+    "Outwit"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Rapid tiny harmonic bursts like a cloud of fireflies.",
+  "description": "Cellular automata at max update rate. Every arm firing bright.",
   "tags": [
-    "firefly",
-    "swarm",
-    "rapid",
-    "bursts"
+    "kinetic-bright",
+    "extreme",
+    "prism",
+    "cellular"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -22,34 +22,32 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "created": "2026-03-10",
+  "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
     "sourceCategory": null,
     "sourcePresetName": null
   },
   "parameters": {
-    "Organon": {
-      "organon_metabolicRate": 6.0,
-      "organon_enzymeSelect": 4500.0,
-      "organon_catalystDrive": 0.5,
-      "organon_dampingCoeff": 0.35,
-      "organon_signalFlux": 0.55,
-      "organon_phasonShift": 0.4,
-      "organon_isotopeBalance": 0.72,
-      "organon_lockIn": 0.0,
-      "organon_membrane": 0.25,
-      "organon_noiseColor": 0.72
+    "Outwit": {
+      "owit_rule": 110.0,
+      "owit_armBalance": 0.88,
+      "owit_mutationRate": 0.92,
+      "owit_armSpread": 0.18,
+      "owit_brightness": 0.88,
+      "owit_density": 0.82,
+      "owit_aggression": 0.72,
+      "owit_warmth": 0.5
     }
   },
   "coupling": null,
   "sequencer": null,
   "dna": {
-    "brightness": 0.7,
-    "warmth": 0.3,
-    "movement": 0.65,
-    "density": 0.35,
-    "space": 0.25,
-    "aggression": 0.2
+    "brightness": 0.88,
+    "warmth": 0.52,
+    "movement": 0.93,
+    "density": 0.82,
+    "space": 0.1,
+    "aggression": 0.72
   }
 }

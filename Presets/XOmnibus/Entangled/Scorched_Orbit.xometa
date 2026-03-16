@@ -1,0 +1,49 @@
+{
+  "name": "Scorched Orbit",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ODYSSEY",
+    "ORGANON"
+  ],
+  "parameters": {
+    "ODYSSEY": {
+      "macro_character": 0.75,
+      "macro_movement": 0.7,
+      "macro_coupling": 0.66,
+      "macro_space": 0.95
+    },
+    "ORGANON": {
+      "macro_character": 0.64,
+      "macro_movement": 0.42,
+      "macro_coupling": 0.53,
+      "macro_space": 0.94
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_LOCK",
+    "source": "ODYSSEY",
+    "target": "ORGANON",
+    "amount": 0.57
+  },
+  "dna": {
+    "brightness": 0.47,
+    "warmth": 0.92,
+    "movement": 0.56,
+    "density": 0.46,
+    "space": 0.85,
+    "aggression": 0.26
+  },
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.56,
+    "COUPLING": 0.59,
+    "SPACE": 0.94
+  },
+  "tags": [
+    "entangled",
+    "warm",
+    "scorching",
+    "spatial"
+  ]
+}

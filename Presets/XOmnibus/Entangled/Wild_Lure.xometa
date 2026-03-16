@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Wild Lure",
+  "mood": "Entangled",
+  "engines": [
+    "OLE",
+    "OWLFISH"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "ole",
+    "owlfish"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.616,
+    "MOVEMENT": 0.826,
+    "COUPLING": 0.487,
+    "SPACE": 0.549
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "brightness": 0.595,
+    "warmth": 0.63,
+    "movement": 0.995,
+    "density": 0.535,
+    "space": 0.57,
+    "aggression": 0.43
+  },
+  "sonic_dna": {
+    "brightness": 0.595,
+    "warmth": 0.63,
+    "movement": 0.995,
+    "density": 0.535,
+    "space": 0.57,
+    "aggression": 0.43
+  },
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.449,
+      "macro_movement": 0.519,
+      "macro_coupling": 0.764,
+      "macro_space": 0.693
+    },
+    "OWLFISH": {
+      "macro_character": 0.33,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.748,
+      "macro_space": 0.321
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OLE",
+        "engineB": "OWLFISH",
+        "type": "HARMONIC_SYNC",
+        "amount": 0.786
+      }
+    ]
+  }
+}

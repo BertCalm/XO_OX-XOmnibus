@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Sepia Cloud",
+  "mood": "Aether",
+  "engines": [
+    "Osprey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Warm tidal breathing at deep sea swell period. Vast and gentle.",
+  "tags": [
+    "warm-deep-space",
+    "extreme",
+    "aether",
+    "ambient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Osprey": {
+      "osprey_shore": 0.42,
+      "osprey_seaState": 0.25,
+      "osprey_swellPeriod": 0.65,
+      "osprey_brightness": 0.52,
+      "osprey_foam": 0.3,
+      "osprey_depth": 0.62,
+      "osprey_wetMix": 0.94
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.88,
+    "movement": 0.62,
+    "density": 0.28,
+    "space": 0.93,
+    "aggression": 0.07
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Black Flux Engine",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBLONG",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.13,
+      "macro_movement": 0.66,
+      "macro_coupling": 0.89,
+      "macro_space": 0.71
+    },
+    "OPTIC": {
+      "macro_character": 0.8,
+      "macro_movement": 0.57,
+      "macro_coupling": 0.66,
+      "macro_space": 0.55
+    }
+  },
+  "coupling": {
+    "type": "PHASE_MOD",
+    "source": "OPTIC",
+    "target": "OBLONG",
+    "amount": 0.91
+  },
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.52,
+    "movement": 0.91,
+    "density": 0.53,
+    "space": 0.36,
+    "aggression": 0.36
+  },
+  "macros": {
+    "CHARACTER": 0.64,
+    "MOVEMENT": 0.91,
+    "COUPLING": 0.86,
+    "SPACE": 0.36
+  },
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ]
+}

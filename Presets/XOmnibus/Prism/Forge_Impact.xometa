@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Forge Impact",
+  "mood": "Prism",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Steel on steel. Every hit carries the weight of a thousand tons.",
+  "tags": [
+    "hot-dense",
+    "extreme",
+    "prism",
+    "percussion"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v1_blend": 0.9,
+      "perc_v1_algoMode": 2.0,
+      "perc_v1_pitch": 180.0,
+      "perc_v1_drive": 0.88,
+      "perc_v1_punch": 0.95,
+      "perc_v1_decay": 280.0,
+      "perc_v2_blend": 0.85,
+      "perc_v2_drive": 0.9,
+      "perc_v2_pitch": 95.0,
+      "perc_v2_punch": 0.88,
+      "perc_v2_decay": 320.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.86,
+    "movement": 0.72,
+    "density": 0.89,
+    "space": 0.09,
+    "aggression": 0.88
+  }
+}

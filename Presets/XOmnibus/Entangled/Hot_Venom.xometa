@@ -1,0 +1,49 @@
+{
+  "name": "Hot Venom",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OUROBOROS",
+    "ORCA"
+  ],
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.82,
+      "macro_movement": 0.7,
+      "macro_coupling": 0.61,
+      "macro_space": 0.45
+    },
+    "ORCA": {
+      "macro_character": 0.73,
+      "macro_movement": 0.53,
+      "macro_coupling": 0.53,
+      "macro_space": 0.32
+    }
+  },
+  "coupling": {
+    "type": "PITCH_FOLLOW",
+    "source": "OUROBOROS",
+    "target": "ORCA",
+    "amount": 0.71
+  },
+  "dna": {
+    "brightness": 0.53,
+    "warmth": 0.87,
+    "movement": 0.58,
+    "density": 0.84,
+    "space": 0.42,
+    "aggression": 0.83
+  },
+  "macros": {
+    "CHARACTER": 0.77,
+    "MOVEMENT": 0.61,
+    "COUPLING": 0.57,
+    "SPACE": 0.39
+  },
+  "tags": [
+    "entangled",
+    "warm",
+    "scorching",
+    "aggressive"
+  ]
+}

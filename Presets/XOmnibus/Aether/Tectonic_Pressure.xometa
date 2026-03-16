@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Tectonic Pressure",
+  "mood": "Aether",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cold mass compressed to maximum density. Topology at terminal load.",
+  "tags": [
+    "cold-dense",
+    "extreme",
+    "aether",
+    "dense"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 3.0,
+      "olap_delayFeedback": 0.92,
+      "olap_diffusion": 0.96,
+      "olap_spread": 0.88,
+      "olap_size": 0.04,
+      "olap_decay": 0.96,
+      "olap_damping": 0.05,
+      "olap_brightness": 0.06
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.08,
+    "movement": 0.65,
+    "density": 0.93,
+    "space": 0.05,
+    "aggression": 0.82
+  }
+}

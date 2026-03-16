@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Ocean Drift",
+  "mood": "Entangled",
+  "engines": [
+    "OBSIDIAN",
+    "OVERBITE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "obsidian",
+    "overbite"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.346,
+    "MOVEMENT": 0.558,
+    "COUPLING": 0.606,
+    "SPACE": 0.372
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "brightness": 0.205,
+    "warmth": 0.44,
+    "movement": 0.47,
+    "density": 1.0,
+    "space": 0.465,
+    "aggression": 0.765
+  },
+  "sonic_dna": {
+    "brightness": 0.205,
+    "warmth": 0.44,
+    "movement": 0.47,
+    "density": 1.0,
+    "space": 0.465,
+    "aggression": 0.765
+  },
+  "parameters": {
+    "OBSIDIAN": {
+      "macro_character": 0.505,
+      "macro_movement": 0.481,
+      "macro_coupling": 0.611,
+      "macro_space": 0.276
+    },
+    "OVERBITE": {
+      "macro_character": 0.737,
+      "macro_movement": 0.65,
+      "macro_coupling": 0.735,
+      "macro_space": 0.645
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBSIDIAN",
+        "engineB": "OVERBITE",
+        "type": "AMPLITUDE_LOCK",
+        "amount": 0.832
+      }
+    ]
+  }
+}

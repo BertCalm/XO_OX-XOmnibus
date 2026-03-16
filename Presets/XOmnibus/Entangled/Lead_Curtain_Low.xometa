@@ -1,0 +1,48 @@
+{
+  "name": "Lead Curtain Low",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OMBRE",
+    "OBSIDIAN"
+  ],
+  "parameters": {
+    "OMBRE": {
+      "macro_character": 0.18,
+      "macro_movement": 0.44,
+      "macro_coupling": 0.63,
+      "macro_space": 0.38
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.66,
+      "macro_movement": 0.85,
+      "macro_coupling": 0.85,
+      "macro_space": 0.38
+    }
+  },
+  "coupling": {
+    "type": "LFO_SYNC",
+    "source": "OBSIDIAN",
+    "target": "OMBRE",
+    "amount": 0.75
+  },
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.52,
+    "movement": 0.35,
+    "density": 0.82,
+    "space": 0.16,
+    "aggression": 0.71
+  },
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.8,
+    "SPACE": 0.16
+  },
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ]
+}

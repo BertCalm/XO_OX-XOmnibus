@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Growl Machine",
+  "mood": "Foundation",
+  "sonic_dna": {
+    "brightness": 0.5483,
+    "warmth": 0.595,
+    "movement": 0.5314,
+    "density": 0.8035,
+    "space": 0.2363,
+    "aggression": 0.7882
+  },
+  "dna": {
+    "brightness": 0.5483,
+    "warmth": 0.595,
+    "movement": 0.5314,
+    "density": 0.8035,
+    "space": 0.2363,
+    "aggression": 0.7882
+  },
+  "engines": [
+    "ODDOSCAR"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Oscar vocal growl pushed into full aggression",
+  "tags": [
+    "foundation",
+    "aggressive",
+    "extreme",
+    "anchor",
+    "drive"
+  ],
+  "macroLabels": [
+    "WEIGHT",
+    "BREATH",
+    "COUPLE",
+    "SPACE"
+  ],
+  "macros": {
+    "WEIGHT": 0.4367,
+    "BREATH": 0.7177,
+    "COUPLE": 0.3611,
+    "SPACE": 0.7578
+  },
+  "couplingIntensity": "None",
+  "parameters": {
+    "ODDOSCAR": {
+      "oscar_macro_weight": 0.4367,
+      "oscar_macro_breath": 0.7177,
+      "oscar_macro_couple": 0.3611,
+      "oscar_macro_space": 0.7578,
+      "oscar_outputLevel": 0.85,
+      "oscar_couplingLevel": 0.5,
+      "oscar_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

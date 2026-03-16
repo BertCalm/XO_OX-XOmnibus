@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Coma Drone",
+  "mood": "Aether",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "FDN decay so long it's essentially static. Dark, motionless, vast.",
+  "tags": [
+    "still-dark",
+    "extreme",
+    "aether",
+    "drone"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 1.0,
+      "olap_delayFeedback": 0.97,
+      "olap_diffusion": 0.88,
+      "olap_spread": 0.9,
+      "olap_size": 0.98,
+      "olap_decay": 0.98,
+      "olap_damping": 0.96,
+      "olap_brightness": 0.04
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.06,
+    "movement": 0.04,
+    "density": 0.12,
+    "space": 0.95,
+    "aggression": 0.04
+  }
+}

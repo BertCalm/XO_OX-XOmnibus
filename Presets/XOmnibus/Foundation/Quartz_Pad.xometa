@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Quartz Pad",
+  "mood": "Foundation",
+  "sonic_dna": {
+    "brightness": 0.9269,
+    "warmth": 0.1231,
+    "movement": 0.2271,
+    "density": 0.0915,
+    "space": 0.5511,
+    "aggression": 0.2042
+  },
+  "dna": {
+    "brightness": 0.9269,
+    "warmth": 0.1231,
+    "movement": 0.2271,
+    "density": 0.0915,
+    "space": 0.5511,
+    "aggression": 0.2042
+  },
+  "engines": [
+    "OBLONG"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sparse bob texture, crystalline upper partials",
+  "tags": [
+    "foundation",
+    "bright",
+    "sparse",
+    "crystalline",
+    "anchor"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7783,
+    "MOVEMENT": 0.3834,
+    "COUPLING": 0.7189,
+    "SPACE": 0.5862
+  },
+  "couplingIntensity": "None",
+  "parameters": {
+    "OBLONG": {
+      "bob_macro_character": 0.7783,
+      "bob_macro_movement": 0.3834,
+      "bob_macro_coupling": 0.7189,
+      "bob_macro_space": 0.5862,
+      "bob_outputLevel": 0.85,
+      "bob_couplingLevel": 0.5,
+      "bob_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

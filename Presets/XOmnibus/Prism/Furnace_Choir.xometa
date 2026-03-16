@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Furnace Choir",
+  "mood": "Prism",
+  "engines": [
+    "Ottoni"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Triple brass at maximum blaze, stacked in a burning unison.",
+  "tags": [
+    "hot-dense",
+    "extreme",
+    "prism",
+    "brass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ottoni": {
+      "otto_toddlerLevel": 0.9,
+      "otto_toddlerPressure": 0.92,
+      "otto_toddlerInst": 2.0,
+      "otto_tweenLevel": 0.88,
+      "otto_tweenPressure": 0.89,
+      "otto_tweenInst": 1.0,
+      "otto_grownupLevel": 0.85,
+      "otto_grownupPressure": 0.91,
+      "otto_grownupInst": 3.0,
+      "otto_crowdDensity": 0.9
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.87,
+    "movement": 0.65,
+    "density": 0.88,
+    "space": 0.07,
+    "aggression": 0.8
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Spike Array",
+  "mood": "Prism",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Isolated transients from a wavefolded blade. Each hit is a scar.",
+  "tags": [
+    "aggressive-sparse",
+    "extreme",
+    "prism",
+    "transient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_oscWave": 3.0,
+      "oblq_oscFold": 0.97,
+      "oblq_oscDetune": 0.0,
+      "oblq_filterCutoff": 6500.0,
+      "oblq_filterReso": 0.92,
+      "oblq_filterDrive": 0.95,
+      "oblq_envAmt": 0.92,
+      "oblq_attack": 0.5,
+      "oblq_decay": 45.0,
+      "oblq_sustain": 0.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.35,
+    "movement": 0.88,
+    "density": 0.1,
+    "space": 0.75,
+    "aggression": 0.96
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Jade Rune",
+  "mood": "Entangled",
+  "engines": [
+    "OBSIDIAN",
+    "ODDOSCAR"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "obsidian",
+    "oddoscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.285,
+    "MOVEMENT": 0.488,
+    "COUPLING": 0.704,
+    "SPACE": 0.447
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "brightness": 0.0,
+    "warmth": 0.475,
+    "movement": 0.4,
+    "density": 0.765,
+    "space": 0.5,
+    "aggression": 0.695
+  },
+  "sonic_dna": {
+    "brightness": 0.0,
+    "warmth": 0.475,
+    "movement": 0.4,
+    "density": 0.765,
+    "space": 0.5,
+    "aggression": 0.695
+  },
+  "parameters": {
+    "OBSIDIAN": {
+      "macro_character": 0.622,
+      "macro_movement": 0.339,
+      "macro_coupling": 0.593,
+      "macro_space": 0.225
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.367,
+      "macro_movement": 0.699,
+      "macro_coupling": 0.653,
+      "macro_space": 0.497
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBSIDIAN",
+        "engineB": "ODDOSCAR",
+        "type": "PITCH_TRACK",
+        "amount": 0.791
+      }
+    ]
+  }
+}

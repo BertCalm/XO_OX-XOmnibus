@@ -1,0 +1,48 @@
+{
+  "name": "Shadow Locomotion",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OUROBOROS",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.69,
+      "macro_movement": 0.79,
+      "macro_coupling": 0.88,
+      "macro_space": 0.27
+    },
+    "OVERWORLD": {
+      "macro_character": 0.14,
+      "macro_movement": 0.52,
+      "macro_coupling": 0.53,
+      "macro_space": 0.56
+    }
+  },
+  "coupling": {
+    "type": "LFO_SYNC",
+    "source": "OUROBOROS",
+    "target": "OVERWORLD",
+    "amount": 0.89
+  },
+  "dna": {
+    "brightness": 0.11,
+    "warmth": 0.42,
+    "movement": 0.73,
+    "density": 0.5,
+    "space": 0.41,
+    "aggression": 0.32
+  },
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.73,
+    "COUPLING": 0.79,
+    "SPACE": 0.41
+  },
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ]
+}

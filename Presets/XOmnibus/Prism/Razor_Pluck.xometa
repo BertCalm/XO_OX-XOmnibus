@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Razor Pluck",
+  "mood": "Prism",
+  "engines": [
+    "Orphica"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "One string, maximum pluck position aggression. Gone before you register it.",
+  "tags": [
+    "aggressive-sparse",
+    "extreme",
+    "prism",
+    "harp"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_stringMaterial": 0.95,
+      "orph_pluckBrightness": 0.92,
+      "orph_pluckPosition": 0.98,
+      "orph_stringCount": 0.08,
+      "orph_resonance": 0.95,
+      "orph_space": 0.78,
+      "orph_decay": 35.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.28,
+    "movement": 0.88,
+    "density": 0.08,
+    "space": 0.8,
+    "aggression": 0.95
+  }
+}

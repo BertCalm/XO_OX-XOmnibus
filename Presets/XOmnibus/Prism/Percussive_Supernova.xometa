@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Percussive Supernova",
+  "mood": "Prism",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "All eight voices at maximum rate. Bright transient mass with no gaps.",
+  "tags": [
+    "kinetic-bright",
+    "extreme",
+    "prism",
+    "percussion"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v1_blend": 0.88,
+      "perc_v1_algoMode": 1.0,
+      "perc_v1_pitch": 280.0,
+      "perc_v1_drive": 0.82,
+      "perc_v1_punch": 0.92,
+      "perc_v1_decay": 80.0,
+      "perc_v2_blend": 0.85,
+      "perc_v2_drive": 0.8,
+      "perc_v2_pitch": 320.0,
+      "perc_v2_punch": 0.88,
+      "perc_v2_decay": 65.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.5,
+    "movement": 0.94,
+    "density": 0.85,
+    "space": 0.09,
+    "aggression": 0.78
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Obsidian Drift Current",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OCTOPUS",
+    "ONSET"
+  ],
+  "parameters": {
+    "OCTOPUS": {
+      "macro_character": 0.78,
+      "macro_movement": 0.76,
+      "macro_coupling": 0.89,
+      "macro_space": 0.47
+    },
+    "ONSET": {
+      "macro_character": 0.29,
+      "macro_movement": 0.4,
+      "macro_coupling": 0.85,
+      "macro_space": 0.49
+    }
+  },
+  "coupling": {
+    "type": "PITCH_MOD",
+    "source": "OCTOPUS",
+    "target": "ONSET",
+    "amount": 0.86
+  },
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.34,
+    "movement": 0.86,
+    "density": 0.48,
+    "space": 0.39,
+    "aggression": 0.64
+  },
+  "macros": {
+    "CHARACTER": 0.49,
+    "MOVEMENT": 0.86,
+    "COUPLING": 0.8,
+    "SPACE": 0.39
+  },
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ]
+}

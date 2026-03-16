@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Knotted Bloom",
+  "mood": "Entangled",
+  "engines": [
+    "OBSIDIAN",
+    "OVERBITE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "obsidian",
+    "overbite"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.454,
+    "MOVEMENT": 0.592,
+    "COUPLING": 0.62,
+    "SPACE": 0.348
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.295,
+    "warmth": 0.56,
+    "movement": 0.53,
+    "density": 1.0,
+    "space": 0.435,
+    "aggression": 0.735
+  },
+  "sonic_dna": {
+    "brightness": 0.295,
+    "warmth": 0.56,
+    "movement": 0.53,
+    "density": 1.0,
+    "space": 0.435,
+    "aggression": 0.735
+  },
+  "parameters": {
+    "OBSIDIAN": {
+      "macro_character": 0.567,
+      "macro_movement": 0.779,
+      "macro_coupling": 0.68,
+      "macro_space": 0.344
+    },
+    "OVERBITE": {
+      "macro_character": 0.775,
+      "macro_movement": 0.612,
+      "macro_coupling": 0.658,
+      "macro_space": 0.208
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERBITE",
+        "engineB": "OBSIDIAN",
+        "type": "TEXTURE_WEAVE",
+        "amount": 0.588
+      }
+    ]
+  }
+}

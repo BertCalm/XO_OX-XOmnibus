@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Solar Flare Burst",
+  "mood": "Prism",
+  "engines": [
+    "Obese"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Subterranean pressure venting in a wall of saturated harmonics.",
+  "tags": [
+    "hot-dense",
+    "extreme",
+    "prism",
+    "saturated"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obese": {
+      "fat_morph": 0.92,
+      "fat_mojo": 0.88,
+      "fat_subLevel": 0.85,
+      "fat_filterCutoff": 4200.0,
+      "fat_drive": 0.9,
+      "fat_crush": 0.78,
+      "fat_attack": 5.0,
+      "fat_decay": 220.0,
+      "fat_sustain": 0.88,
+      "fat_release": 150.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.91,
+    "movement": 0.7,
+    "density": 0.93,
+    "space": 0.07,
+    "aggression": 0.82
+  }
+}

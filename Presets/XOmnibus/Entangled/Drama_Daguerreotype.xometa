@@ -36,7 +36,7 @@
     "movement": 0.74,
     "density": 0.7,
     "space": 0.34,
-    "aggression": 0.84
+    "aggression": 0.86
   },
   "macros": {
     "CHARACTER": 0.8,

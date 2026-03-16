@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Warm Form",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "ORCA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "obbligato",
+    "orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.498,
+    "MOVEMENT": 0.806,
+    "COUPLING": 0.554,
+    "SPACE": 0.559
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "brightness": 0.495,
+    "warmth": 0.5,
+    "movement": 0.935,
+    "density": 0.605,
+    "space": 0.6,
+    "aggression": 0.505
+  },
+  "sonic_dna": {
+    "brightness": 0.495,
+    "warmth": 0.5,
+    "movement": 0.935,
+    "density": 0.605,
+    "space": 0.6,
+    "aggression": 0.505
+  },
+  "parameters": {
+    "OBBLIGATO": {
+      "macro_character": 0.729,
+      "macro_movement": 0.632,
+      "macro_coupling": 0.744,
+      "macro_space": 0.626
+    },
+    "ORCA": {
+      "macro_character": 0.715,
+      "macro_movement": 0.747,
+      "macro_coupling": 0.768,
+      "macro_space": 0.358
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "ORCA",
+        "type": "SPECTRAL_BLEND",
+        "amount": 0.83
+      }
+    ]
+  }
+}

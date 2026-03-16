@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Bob Dark Prism",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.1401,
+    "warmth": 0.599,
+    "movement": 0.4009,
+    "density": 0.8127,
+    "space": 0.3289,
+    "aggression": 0.7766
+  },
+  "dna": {
+    "brightness": 0.1401,
+    "warmth": 0.599,
+    "movement": 0.4009,
+    "density": 0.8127,
+    "space": 0.3289,
+    "aggression": 0.7766
+  },
+  "engines": [
+    "OBLONG"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Oblong in extreme low-brightness dense mode",
+  "tags": [
+    "prism",
+    "dark",
+    "dense",
+    "extreme",
+    "anchor"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1562,
+    "MOVEMENT": 0.7498,
+    "COUPLING": 0.7258,
+    "SPACE": 0.6061
+  },
+  "couplingIntensity": "None",
+  "parameters": {
+    "OBLONG": {
+      "bob_macro_character": 0.1562,
+      "bob_macro_movement": 0.7498,
+      "bob_macro_coupling": 0.7258,
+      "bob_macro_space": 0.6061,
+      "bob_outputLevel": 0.85,
+      "bob_couplingLevel": 0.5,
+      "bob_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

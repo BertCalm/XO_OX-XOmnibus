@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Ohm Overdrive",
+  "mood": "Prism",
+  "engines": [
+    "Ohm"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dad's commune instrument going too fast. Maximum pluck density.",
+  "tags": [
+    "kinetic-bright",
+    "extreme",
+    "prism",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_dadInstrument": 3.0,
+      "ohm_dadLevel": 0.88,
+      "ohm_pluckBrightness": 0.9,
+      "ohm_pluckDecay": 85.0,
+      "ohm_resonance": 0.82,
+      "ohm_space": 0.12,
+      "ohm_warmth": 0.55
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.89,
+    "warmth": 0.55,
+    "movement": 0.92,
+    "density": 0.8,
+    "space": 0.12,
+    "aggression": 0.65
+  }
+}

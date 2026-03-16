@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Ember Flute",
+  "mood": "Prism",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "One fold, maximum brightness. The crease glows in empty air.",
+  "tags": [
+    "hot-sparse",
+    "extreme",
+    "prism",
+    "textured"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldPoint": 0.12,
+      "origami_foldAmt": 0.88,
+      "origami_layers": 0.08,
+      "origami_brightness": 0.92,
+      "origami_tension": 0.15,
+      "origami_resonance": 0.12,
+      "origami_release": 900.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.91,
+    "warmth": 0.88,
+    "movement": 0.14,
+    "density": 0.07,
+    "space": 0.92,
+    "aggression": 0.09
+  }
+}

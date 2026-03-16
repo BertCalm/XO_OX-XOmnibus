@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Needle Burst",
+  "mood": "Prism",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Single percussive voice. Maximum attack, instant release, pure aggression.",
+  "tags": [
+    "aggressive-sparse",
+    "extreme",
+    "prism",
+    "percussion"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v1_blend": 0.95,
+      "perc_v1_algoMode": 0.0,
+      "perc_v1_pitch": 420.0,
+      "perc_v1_drive": 0.95,
+      "perc_v1_punch": 0.97,
+      "perc_v1_decay": 28.0,
+      "perc_v2_blend": 0.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.3,
+    "movement": 0.92,
+    "density": 0.08,
+    "space": 0.8,
+    "aggression": 0.97
+  }
+}

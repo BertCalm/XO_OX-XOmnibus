@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Infrared Whisper",
+  "mood": "Prism",
+  "engines": [
+    "Orca"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Single wavetable position, maximum warmth, room for sound to breathe.",
+  "tags": [
+    "hot-sparse",
+    "extreme",
+    "prism",
+    "wavetable"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orca": {
+      "orca_wtPosition": 0.88,
+      "orca_wtScanRate": 0.05,
+      "orca_formantIntensity": 0.85,
+      "orca_filterCutoff": 5200.0,
+      "orca_filterReso": 0.12,
+      "orca_attack": 60.0,
+      "orca_decay": 700.0,
+      "orca_sustain": 0.88,
+      "orca_release": 1100.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.89,
+    "warmth": 0.87,
+    "movement": 0.12,
+    "density": 0.08,
+    "space": 0.91,
+    "aggression": 0.1
+  }
+}

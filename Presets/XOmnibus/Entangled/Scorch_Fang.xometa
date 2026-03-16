@@ -1,0 +1,49 @@
+{
+  "name": "Scorch Fang",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERBITE",
+    "OUROBOROS"
+  ],
+  "parameters": {
+    "OVERBITE": {
+      "macro_character": 0.82,
+      "macro_movement": 0.5,
+      "macro_coupling": 0.74,
+      "macro_space": 0.45
+    },
+    "OUROBOROS": {
+      "macro_character": 0.77,
+      "macro_movement": 0.36,
+      "macro_coupling": 0.64,
+      "macro_space": 0.51
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_BRAID",
+    "source": "OVERBITE",
+    "target": "OUROBOROS",
+    "amount": 0.82
+  },
+  "dna": {
+    "brightness": 0.59,
+    "warmth": 0.96,
+    "movement": 0.38,
+    "density": 0.71,
+    "space": 0.42,
+    "aggression": 0.75
+  },
+  "macros": {
+    "CHARACTER": 0.79,
+    "MOVEMENT": 0.43,
+    "COUPLING": 0.69,
+    "SPACE": 0.48
+  },
+  "tags": [
+    "entangled",
+    "warm",
+    "scorching",
+    "aggressive"
+  ]
+}

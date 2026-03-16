@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Midnight Surge",
+  "mood": "Flux",
+  "engines": [
+    "Overdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cold dub engine suddenly warming. The tape heats up unexpectedly.",
+  "tags": [
+    "flux",
+    "extreme",
+    "dub",
+    "dynamic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overdub": {
+      "dub_oscWave": 2.0,
+      "dub_oscOctave": 0.0,
+      "dub_oscTune": 0.0,
+      "dub_drive": 0.82,
+      "dub_filterCutoff": 1200.0,
+      "dub_filterReso": 0.78,
+      "dub_filterEnvAmt": 0.88,
+      "dub_attack": 20.0,
+      "dub_decay": 280.0,
+      "dub_sustain": 0.75,
+      "dub_release": 350.0,
+      "dub_distortion": 0.75,
+      "dub_level": -4.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.72,
+    "movement": 0.72,
+    "density": 0.68,
+    "space": 0.42,
+    "aggression": 0.68
+  }
+}

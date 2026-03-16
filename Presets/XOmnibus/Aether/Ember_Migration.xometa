@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Ember Migration",
+  "mood": "Aether",
+  "engines": [
+    "Oceanic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Warm boid migration with maximum spread. Unhurried, amber, infinite.",
+  "tags": [
+    "warm-deep-space",
+    "extreme",
+    "aether",
+    "swarm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_separation": 0.65,
+      "ocean_alignment": 0.62,
+      "ocean_cohesion": 0.45,
+      "ocean_brightness": 0.52,
+      "ocean_depth": 0.35,
+      "ocean_turbulence": 0.28
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.9,
+    "movement": 0.65,
+    "density": 0.28,
+    "space": 0.94,
+    "aggression": 0.08
+  }
+}

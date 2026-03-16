@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Void Swarm",
+  "mood": "Aether",
+  "engines": [
+    "Oceanic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Maximum cohesion with zero brightness. Dark boids in lockstep.",
+  "tags": [
+    "cold-dense",
+    "extreme",
+    "aether",
+    "swarm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_separation": 0.05,
+      "ocean_alignment": 0.95,
+      "ocean_cohesion": 0.95,
+      "ocean_brightness": 0.05,
+      "ocean_depth": 0.97,
+      "ocean_turbulence": 0.88
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.06,
+    "movement": 0.82,
+    "density": 0.93,
+    "space": 0.04,
+    "aggression": 0.85
+  }
+}

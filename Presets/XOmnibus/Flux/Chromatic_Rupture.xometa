@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Chromatic Rupture",
+  "mood": "Flux",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Between hot-dense and aggressive-sparse. The boundary where heat meets void.",
+  "tags": [
+    "flux",
+    "extreme",
+    "hybrid",
+    "aggressive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_oscWave": 3.0,
+      "oblq_oscFold": 0.88,
+      "oblq_oscDetune": 12.0,
+      "oblq_filterCutoff": 3500.0,
+      "oblq_filterReso": 0.82,
+      "oblq_filterDrive": 0.88,
+      "oblq_envAmt": 0.78,
+      "oblq_attack": 3.0,
+      "oblq_decay": 120.0,
+      "oblq_sustain": 0.72
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.75,
+    "movement": 0.82,
+    "density": 0.45,
+    "space": 0.35,
+    "aggression": 0.88
+  }
+}

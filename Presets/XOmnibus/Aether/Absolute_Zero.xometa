@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Absolute Zero",
+  "mood": "Aether",
+  "engines": [
+    "Organon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Nothing. Below noise floor. The absence that precedes all sound.",
+  "tags": [
+    "cold-sparse",
+    "extreme",
+    "aether",
+    "minimal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 0.04,
+      "organon_enzymeSelect": 220.0,
+      "organon_catalystDrive": 0.06,
+      "organon_dampingCoeff": 0.97,
+      "organon_signalFlux": 0.04,
+      "organon_phasonShift": 0.02,
+      "organon_isotopeBalance": 0.5,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.05,
+      "organon_noiseColor": 0.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.06,
+    "movement": 0.08,
+    "density": 0.06,
+    "space": 0.92,
+    "aggression": 0.04
+  }
+}

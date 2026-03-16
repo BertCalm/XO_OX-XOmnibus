@@ -1,0 +1,48 @@
+{
+  "name": "Umbra Thermal Bloom",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ODDOSCAR",
+    "ORACLE"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.79,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.74,
+      "macro_space": 0.59
+    },
+    "ORACLE": {
+      "macro_character": 0.78,
+      "macro_movement": 0.85,
+      "macro_coupling": 0.79,
+      "macro_space": 0.84
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_SHARE",
+    "source": "ODDOSCAR",
+    "target": "ORACLE",
+    "amount": 0.52
+  },
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.81,
+    "movement": 0.22,
+    "density": 0.57,
+    "space": 0.44,
+    "aggression": 0.41
+  },
+  "macros": {
+    "CHARACTER": 0.74,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.84,
+    "SPACE": 0.44
+  },
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Desert Star",
+  "mood": "Prism",
+  "engines": [
+    "Odyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Single oscillator burning in an empty sky. Warm tone, infinite space.",
+  "tags": [
+    "hot-sparse",
+    "extreme",
+    "prism",
+    "lead"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 1.0,
+      "drift_oscA_shape": 0.85,
+      "drift_oscA_level": 0.88,
+      "drift_filterCutoff": 5500.0,
+      "drift_filterReso": 0.15,
+      "drift_filterSlope": 0.0,
+      "drift_hazeAmount": 0.72,
+      "drift_attack": 80.0,
+      "drift_decay": 600.0,
+      "drift_sustain": 0.88,
+      "drift_release": 800.0,
+      "drift_filterEnvAmt": 0.3,
+      "drift_level": -4.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.87,
+    "movement": 0.22,
+    "density": 0.08,
+    "space": 0.92,
+    "aggression": 0.18
+  }
+}

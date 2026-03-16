@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Prism Zenith",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.9112,
+    "warmth": 0.2016,
+    "movement": 0.5854,
+    "density": 0.3388,
+    "space": 0.843,
+    "aggression": 0.1228
+  },
+  "dna": {
+    "brightness": 0.9112,
+    "warmth": 0.2016,
+    "movement": 0.5854,
+    "density": 0.3388,
+    "space": 0.843,
+    "aggression": 0.1228
+  },
+  "engines": [
+    "OBLIQUE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme high-end prism angle, near-UV brightness",
+  "tags": [
+    "prism",
+    "bright",
+    "ultra",
+    "spectral",
+    "anchor"
+  ],
+  "macroLabels": [
+    "ANGLE",
+    "MOTION",
+    "COUPLE",
+    "SPACE"
+  ],
+  "macros": {
+    "ANGLE": 0.9051,
+    "MOTION": 0.6391,
+    "COUPLE": 0.2713,
+    "SPACE": 0.7407
+  },
+  "couplingIntensity": "None",
+  "parameters": {
+    "OBLIQUE": {
+      "obl_macro_angle": 0.9051,
+      "obl_macro_motion": 0.6391,
+      "obl_macro_couple": 0.2713,
+      "obl_macro_space": 0.7407,
+      "obl_outputLevel": 0.85,
+      "obl_couplingLevel": 0.5,
+      "obl_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

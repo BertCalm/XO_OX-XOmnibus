@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Thermocline",
+  "mood": "Flux",
+  "engines": [
+    "Oceanic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The layer where hot meets cold. Maximum turbulence at the boundary.",
+  "tags": [
+    "flux",
+    "extreme",
+    "swarm",
+    "boundary"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_separation": 0.5,
+      "ocean_alignment": 0.72,
+      "ocean_cohesion": 0.72,
+      "ocean_brightness": 0.55,
+      "ocean_depth": 0.45,
+      "ocean_turbulence": 0.95
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.55,
+    "movement": 0.92,
+    "density": 0.72,
+    "space": 0.3,
+    "aggression": 0.65
+  }
+}

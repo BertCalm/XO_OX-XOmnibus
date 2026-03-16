@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Null Field",
+  "mood": "Aether",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Memory collapsed to a point. Interference at near-zero amplitude.",
+  "tags": [
+    "cold-sparse",
+    "extreme",
+    "aether",
+    "ambient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.04,
+      "ombre_interference": 0.03,
+      "ombre_memoryDecay": 0.97,
+      "ombre_brightness": 0.06,
+      "ombre_movement": 0.05,
+      "ombre_space": 0.95,
+      "ombre_level": -24.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.04,
+    "movement": 0.05,
+    "density": 0.05,
+    "space": 0.96,
+    "aggression": 0.03
+  }
+}

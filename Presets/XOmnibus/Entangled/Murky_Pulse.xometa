@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Murky Pulse",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "OCTOPUS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "obbligato",
+    "octopus"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.505,
+    "MOVEMENT": 0.841,
+    "COUPLING": 0.579,
+    "SPACE": 0.538
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.565,
+    "warmth": 0.465,
+    "movement": 1.0,
+    "density": 0.57,
+    "space": 0.565,
+    "aggression": 0.47
+  },
+  "sonic_dna": {
+    "brightness": 0.565,
+    "warmth": 0.465,
+    "movement": 1.0,
+    "density": 0.57,
+    "space": 0.565,
+    "aggression": 0.47
+  },
+  "parameters": {
+    "OBBLIGATO": {
+      "macro_character": 0.726,
+      "macro_movement": 0.76,
+      "macro_coupling": 0.784,
+      "macro_space": 0.677
+    },
+    "OCTOPUS": {
+      "macro_character": 0.737,
+      "macro_movement": 0.5,
+      "macro_coupling": 0.45,
+      "macro_space": 0.346
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "OCTOPUS",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.528
+      }
+    ]
+  }
+}

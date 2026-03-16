@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Midnight Monolith",
+  "mood": "Aether",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Immovable, lightless, warm-free. A slab of sonic dark matter.",
+  "tags": [
+    "still-dark",
+    "extreme",
+    "aether",
+    "dark"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_densityX": 0.15,
+      "obsidian_tiltY": 0.06,
+      "obsidian_depth": 0.95,
+      "obsidian_brightness": 0.05,
+      "obsidian_movement": 0.04,
+      "obsidian_aggression": 0.08
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.06,
+    "movement": 0.04,
+    "density": 0.15,
+    "space": 0.93,
+    "aggression": 0.06
+  }
+}

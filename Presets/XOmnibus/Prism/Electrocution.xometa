@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Electrocution",
+  "mood": "Prism",
+  "engines": [
+    "OddfeliX"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Single oscillator with maximum snap aggression. Bite and disappear.",
+  "tags": [
+    "aggressive-sparse",
+    "extreme",
+    "prism",
+    "transient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 1.0,
+      "snap_filterCutoff": 7800.0,
+      "snap_filterReso": 0.95,
+      "snap_filterEnvDepth": 0.95,
+      "snap_drive": 0.95,
+      "snap_attack": 0.2,
+      "snap_decay": 30.0,
+      "snap_sustain": 0.0,
+      "snap_release": 20.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.93,
+    "warmth": 0.25,
+    "movement": 0.92,
+    "density": 0.08,
+    "space": 0.82,
+    "aggression": 0.97
+  }
+}

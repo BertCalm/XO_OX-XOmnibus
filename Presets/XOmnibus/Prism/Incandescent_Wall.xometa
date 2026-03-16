@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Incandescent Wall",
+  "mood": "Prism",
+  "engines": [
+    "Octopus"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Eight oscillators firing simultaneously at maximum saturation.",
+  "tags": [
+    "hot-dense",
+    "extreme",
+    "prism",
+    "layered"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Octopus": {
+      "octo_wtPosition": 0.88,
+      "octo_wtScanRate": 0.72,
+      "octo_filterCutoff": 5000.0,
+      "octo_filterReso": 0.75,
+      "octo_drive": 0.91,
+      "octo_spread": 0.82,
+      "octo_attack": 3.0,
+      "octo_decay": 250.0,
+      "octo_sustain": 0.9,
+      "octo_release": 200.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.87,
+    "warmth": 0.86,
+    "movement": 0.68,
+    "density": 0.94,
+    "space": 0.05,
+    "aggression": 0.79
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Permafrost",
+  "mood": "Aether",
+  "engines": [
+    "Orbital"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orbital resonance frozen. Brightness extinguished. Movement ceased.",
+  "tags": [
+    "cold-sparse",
+    "extreme",
+    "aether",
+    "static"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.05,
+      "orb_groupEnvRate": 0.04,
+      "orb_groupEnvDepth": 0.03,
+      "orb_spread": 0.04,
+      "orb_density": 0.06,
+      "orb_attack": 1200.0,
+      "orb_release": 2000.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.06,
+    "movement": 0.04,
+    "density": 0.07,
+    "space": 0.93,
+    "aggression": 0.05
+  }
+}

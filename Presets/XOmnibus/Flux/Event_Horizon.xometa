@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Event Horizon",
+  "mood": "Flux",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Warm FDN mass collapsed to near-infinite feedback density.",
+  "tags": [
+    "flux",
+    "extreme",
+    "reverb",
+    "dense"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 4.0,
+      "olap_delayFeedback": 0.96,
+      "olap_diffusion": 0.82,
+      "olap_spread": 0.72,
+      "olap_size": 0.25,
+      "olap_decay": 0.95,
+      "olap_damping": 0.18,
+      "olap_brightness": 0.68
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.75,
+    "movement": 0.72,
+    "density": 0.88,
+    "space": 0.32,
+    "aggression": 0.45
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Murky Vessel",
+  "mood": "Entangled",
+  "engines": [
+    "OMBRE",
+    "ORCA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "ombre",
+    "orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.455,
+    "MOVEMENT": 0.609,
+    "COUPLING": 0.746,
+    "SPACE": 0.508
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "brightness": 0.335,
+    "warmth": 0.535,
+    "movement": 0.63,
+    "density": 1.0,
+    "space": 0.635,
+    "aggression": 0.56
+  },
+  "sonic_dna": {
+    "brightness": 0.335,
+    "warmth": 0.535,
+    "movement": 0.63,
+    "density": 1.0,
+    "space": 0.635,
+    "aggression": 0.56
+  },
+  "parameters": {
+    "OMBRE": {
+      "macro_character": 0.303,
+      "macro_movement": 0.318,
+      "macro_coupling": 0.699,
+      "macro_space": 0.412
+    },
+    "ORCA": {
+      "macro_character": 0.589,
+      "macro_movement": 0.411,
+      "macro_coupling": 0.652,
+      "macro_space": 0.619
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORCA",
+        "engineB": "OMBRE",
+        "type": "ENVELOPE_FOLLOW",
+        "amount": 0.718
+      }
+    ]
+  }
+}

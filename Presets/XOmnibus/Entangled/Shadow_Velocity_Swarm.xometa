@@ -1,0 +1,48 @@
+{
+  "name": "Shadow Velocity Swarm",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERWORLD",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.71,
+      "macro_movement": 0.62,
+      "macro_coupling": 0.81,
+      "macro_space": 0.39
+    },
+    "ORIGAMI": {
+      "macro_character": 0.32,
+      "macro_movement": 0.89,
+      "macro_coupling": 0.66,
+      "macro_space": 0.79
+    }
+  },
+  "coupling": {
+    "type": "PITCH_MOD",
+    "source": "ORIGAMI",
+    "target": "OVERWORLD",
+    "amount": 0.86
+  },
+  "dna": {
+    "brightness": 0.13,
+    "warmth": 0.46,
+    "movement": 0.79,
+    "density": 0.69,
+    "space": 0.25,
+    "aggression": 0.37
+  },
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.79,
+    "COUPLING": 0.67,
+    "SPACE": 0.25
+  },
+  "tags": [
+    "entangled",
+    "dark",
+    "low-brightness"
+  ]
+}

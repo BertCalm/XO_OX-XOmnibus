@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Night Topology",
+  "mood": "Aether",
+  "engines": [
+    "Ouroboros"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Self-reference loop so slow it's effectively frozen in dark eternity.",
+  "tags": [
+    "still-dark",
+    "extreme",
+    "aether",
+    "feedback"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 1.0,
+      "ouro_rate": 0.04,
+      "ouro_chaosIndex": 0.06,
+      "ouro_leash": 0.96,
+      "ouro_feedback": 0.3,
+      "ouro_brightness": 0.05,
+      "ouro_density": 0.12,
+      "ouro_decay": 6.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.06,
+    "movement": 0.04,
+    "density": 0.12,
+    "space": 0.94,
+    "aggression": 0.05
+  }
+}

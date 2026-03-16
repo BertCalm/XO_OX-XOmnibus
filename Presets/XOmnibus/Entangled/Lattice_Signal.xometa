@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Lattice Signal",
+  "mood": "Entangled",
+  "engines": [
+    "ODDFELIX",
+    "ORBITAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "oddfelix",
+    "orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.508,
+    "MOVEMENT": 0.625,
+    "COUPLING": 0.487,
+    "SPACE": 0.913
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "brightness": 0.67,
+    "warmth": 0.4,
+    "movement": 0.765,
+    "density": 0.435,
+    "space": 1.0,
+    "aggression": 0.3
+  },
+  "sonic_dna": {
+    "brightness": 0.67,
+    "warmth": 0.4,
+    "movement": 0.765,
+    "density": 0.435,
+    "space": 1.0,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.648,
+      "macro_movement": 0.369,
+      "macro_coupling": 0.772,
+      "macro_space": 0.219
+    },
+    "ORBITAL": {
+      "macro_character": 0.734,
+      "macro_movement": 0.325,
+      "macro_coupling": 0.561,
+      "macro_space": 0.681
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORBITAL",
+        "engineB": "ODDFELIX",
+        "type": "RHYTHM_LOCK",
+        "amount": 0.843
+      }
+    ]
+  }
+}

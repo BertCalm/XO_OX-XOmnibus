@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Mirror Flow",
+  "mood": "Entangled",
+  "engines": [
+    "ORCA",
+    "OWLFISH"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "orca",
+    "owlfish"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.446,
+    "MOVEMENT": 0.531,
+    "COUPLING": 0.644,
+    "SPACE": 0.538
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "brightness": 0.365,
+    "warmth": 0.5,
+    "movement": 0.57,
+    "density": 0.97,
+    "space": 0.665,
+    "aggression": 0.44
+  },
+  "sonic_dna": {
+    "brightness": 0.365,
+    "warmth": 0.5,
+    "movement": 0.57,
+    "density": 0.97,
+    "space": 0.665,
+    "aggression": 0.44
+  },
+  "parameters": {
+    "ORCA": {
+      "macro_character": 0.356,
+      "macro_movement": 0.301,
+      "macro_coupling": 0.693,
+      "macro_space": 0.261
+    },
+    "OWLFISH": {
+      "macro_character": 0.75,
+      "macro_movement": 0.793,
+      "macro_coupling": 0.589,
+      "macro_space": 0.223
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OWLFISH",
+        "engineB": "ORCA",
+        "type": "TEXTURE_WEAVE",
+        "amount": 0.669
+      }
+    ]
+  }
+}

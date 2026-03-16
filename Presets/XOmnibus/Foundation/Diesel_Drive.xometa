@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Diesel Drive",
+  "mood": "Foundation",
+  "sonic_dna": {
+    "brightness": 0.5194,
+    "warmth": 0.6612,
+    "movement": 0.4895,
+    "density": 0.8278,
+    "space": 0.3827,
+    "aggression": 0.776
+  },
+  "dna": {
+    "brightness": 0.5194,
+    "warmth": 0.6612,
+    "movement": 0.4895,
+    "density": 0.8278,
+    "space": 0.3827,
+    "aggression": 0.776
+  },
+  "engines": [
+    "OBLONG"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "High-aggression bob drive, dense harmonic grit",
+  "tags": [
+    "foundation",
+    "aggressive",
+    "extreme",
+    "anchor",
+    "drive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7338,
+    "MOVEMENT": 0.7001,
+    "COUPLING": 0.745,
+    "SPACE": 0.681
+  },
+  "couplingIntensity": "None",
+  "parameters": {
+    "OBLONG": {
+      "bob_macro_character": 0.7338,
+      "bob_macro_movement": 0.7001,
+      "bob_macro_coupling": 0.745,
+      "bob_macro_space": 0.681,
+      "bob_outputLevel": 0.85,
+      "bob_couplingLevel": 0.5,
+      "bob_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

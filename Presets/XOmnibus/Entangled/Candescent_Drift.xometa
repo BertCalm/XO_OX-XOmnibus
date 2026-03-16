@@ -1,0 +1,49 @@
+{
+  "name": "Candescent Drift",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORIGAMI",
+    "ORACLE"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.94,
+      "macro_movement": 0.44,
+      "macro_coupling": 0.86,
+      "macro_space": 0.5
+    },
+    "ORACLE": {
+      "macro_character": 0.72,
+      "macro_movement": 0.44,
+      "macro_coupling": 0.79,
+      "macro_space": 0.37
+    }
+  },
+  "coupling": {
+    "type": "PITCH_FOLLOW",
+    "source": "ORIGAMI",
+    "target": "ORACLE",
+    "amount": 0.81
+  },
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.9,
+    "movement": 0.51,
+    "density": 0.67,
+    "space": 0.49,
+    "aggression": 0.2
+  },
+  "macros": {
+    "CHARACTER": 0.83,
+    "MOVEMENT": 0.44,
+    "COUPLING": 0.82,
+    "SPACE": 0.43
+  },
+  "tags": [
+    "entangled",
+    "warm",
+    "scorching",
+    "bright"
+  ]
+}

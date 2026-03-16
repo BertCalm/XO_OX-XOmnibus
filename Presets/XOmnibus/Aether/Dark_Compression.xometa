@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Dark Compression",
+  "mood": "Aether",
+  "engines": [
+    "Oblong"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "All oscillators locked tight in cold phase. No light escapes.",
+  "tags": [
+    "cold-dense",
+    "extreme",
+    "aether",
+    "compressed"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_oscA_wave": 2.0,
+      "bob_oscA_shape": 0.88,
+      "bob_oscA_tune": 0.0,
+      "bob_oscB_wave": 2.0,
+      "bob_oscB_shape": 0.86,
+      "bob_oscB_tune": -0.01,
+      "bob_filterCutoff": 120.0,
+      "bob_filterReso": 0.9,
+      "bob_drive": 0.88,
+      "bob_attack": 2.0,
+      "bob_decay": 150.0,
+      "bob_sustain": 0.95,
+      "bob_release": 80.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.08,
+    "movement": 0.55,
+    "density": 0.94,
+    "space": 0.04,
+    "aggression": 0.83
+  }
+}

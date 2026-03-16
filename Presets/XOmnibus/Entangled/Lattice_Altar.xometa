@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Lattice Altar",
+  "mood": "Entangled",
+  "engines": [
+    "ODDOSCAR",
+    "ORBITAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "oddoscar",
+    "orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.738,
+    "MOVEMENT": 0.507,
+    "COUPLING": 0.44,
+    "SPACE": 0.593
+  },
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.405,
+    "warmth": 0.96,
+    "movement": 0.54,
+    "density": 0.595,
+    "space": 0.64,
+    "aggression": 0.43
+  },
+  "sonic_dna": {
+    "brightness": 0.405,
+    "warmth": 0.96,
+    "movement": 0.54,
+    "density": 0.595,
+    "space": 0.64,
+    "aggression": 0.43
+  },
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.301,
+      "macro_movement": 0.722,
+      "macro_coupling": 0.53,
+      "macro_space": 0.681
+    },
+    "ORBITAL": {
+      "macro_character": 0.623,
+      "macro_movement": 0.38,
+      "macro_coupling": 0.541,
+      "macro_space": 0.502
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ODDOSCAR",
+        "engineB": "ORBITAL",
+        "type": "PITCH_TRACK",
+        "amount": 0.585
+      }
+    ]
+  }
+}

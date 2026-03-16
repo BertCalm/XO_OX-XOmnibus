@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Orbital Fury",
+  "mood": "Prism",
+  "sonic_dna": {
+    "brightness": 0.6792,
+    "warmth": 0.2757,
+    "movement": 0.908,
+    "density": 0.6624,
+    "space": 0.5274,
+    "aggression": 0.9098
+  },
+  "dna": {
+    "brightness": 0.6792,
+    "warmth": 0.2757,
+    "movement": 0.908,
+    "density": 0.6624,
+    "space": 0.5274,
+    "aggression": 0.9098
+  },
+  "engines": [
+    "ORBITAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orbit at maximum angular velocity, brutal phase",
+  "tags": [
+    "prism",
+    "brutal",
+    "movement",
+    "aggressive",
+    "anchor"
+  ],
+  "macroLabels": [
+    "ORBIT",
+    "PHASE",
+    "COUPLE",
+    "SPACE"
+  ],
+  "macros": {
+    "ORBIT": 0.6521,
+    "PHASE": 0.7554,
+    "COUPLE": 0.7551,
+    "SPACE": 0.2651
+  },
+  "couplingIntensity": "None",
+  "parameters": {
+    "ORBITAL": {
+      "orb_macro_orbit": 0.6521,
+      "orb_macro_phase": 0.7554,
+      "orb_macro_couple": 0.7551,
+      "orb_macro_space": 0.2651,
+      "orb_outputLevel": 0.85,
+      "orb_couplingLevel": 0.5,
+      "orb_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

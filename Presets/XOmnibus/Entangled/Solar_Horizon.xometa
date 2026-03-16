@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Solar Horizon",
+  "mood": "Entangled",
+  "engines": [
+    "ORCA",
+    "OSPREY"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "tags": [
+    "entangled",
+    "coupling",
+    "coverage",
+    "orca",
+    "osprey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.485,
+    "MOVEMENT": 0.871,
+    "COUPLING": 0.578,
+    "SPACE": 0.637
+  },
+  "couplingIntensity": "Strong",
+  "dna": {
+    "brightness": 0.56,
+    "warmth": 0.435,
+    "movement": 1.0,
+    "density": 0.475,
+    "space": 0.665,
+    "aggression": 0.57
+  },
+  "sonic_dna": {
+    "brightness": 0.56,
+    "warmth": 0.435,
+    "movement": 1.0,
+    "density": 0.475,
+    "space": 0.665,
+    "aggression": 0.57
+  },
+  "parameters": {
+    "ORCA": {
+      "macro_character": 0.535,
+      "macro_movement": 0.399,
+      "macro_coupling": 0.751,
+      "macro_space": 0.622
+    },
+    "OSPREY": {
+      "macro_character": 0.69,
+      "macro_movement": 0.584,
+      "macro_coupling": 0.736,
+      "macro_space": 0.666
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OSPREY",
+        "engineB": "ORCA",
+        "type": "FORMANT_BLEND",
+        "amount": 0.674
+      }
+    ]
+  }
+}

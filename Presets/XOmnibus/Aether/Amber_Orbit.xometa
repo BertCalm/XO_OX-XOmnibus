@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Amber Orbit",
+  "mood": "Aether",
+  "engines": [
+    "Orbital"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Slow warm orbital resonance groups. Vast ellipses in heated space.",
+  "tags": [
+    "warm-deep-space",
+    "extreme",
+    "aether",
+    "ambient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.52,
+      "orb_groupEnvRate": 0.62,
+      "orb_groupEnvDepth": 0.72,
+      "orb_spread": 0.92,
+      "orb_density": 0.35,
+      "orb_attack": 600.0,
+      "orb_release": 1200.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.89,
+    "movement": 0.65,
+    "density": 0.3,
+    "space": 0.93,
+    "aggression": 0.07
+  }
+}

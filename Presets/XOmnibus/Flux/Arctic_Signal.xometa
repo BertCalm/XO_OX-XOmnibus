@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Arctic Signal",
+  "mood": "Flux",
+  "engines": [
+    "Orphica"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Harp in permafrost. Cold sparse brightness with slow harmonic decay.",
+  "tags": [
+    "flux",
+    "extreme",
+    "harp",
+    "cold"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_stringMaterial": 0.15,
+      "orph_pluckBrightness": 0.88,
+      "orph_pluckPosition": 0.8,
+      "orph_stringCount": 0.12,
+      "orph_resonance": 0.08,
+      "orph_space": 0.88,
+      "orph_decay": 800.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.08,
+    "movement": 0.35,
+    "density": 0.12,
+    "space": 0.88,
+    "aggression": 0.42
+  }
+}

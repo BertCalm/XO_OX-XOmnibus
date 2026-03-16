@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Magma Core",
+  "mood": "Prism",
+  "engines": [
+    "Overdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Molten density compressed to a singularity. Heat without mercy.",
+  "tags": [
+    "hot-dense",
+    "extreme",
+    "prism",
+    "aggressive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overdub": {
+      "dub_oscWave": 3.0,
+      "dub_oscOctave": 0.0,
+      "dub_oscTune": 0.0,
+      "dub_drive": 0.95,
+      "dub_filterCutoff": 3800.0,
+      "dub_filterReso": 0.82,
+      "dub_filterEnvAmt": 0.88,
+      "dub_attack": 2.0,
+      "dub_decay": 180.0,
+      "dub_sustain": 0.9,
+      "dub_release": 120.0,
+      "dub_distortion": 0.9,
+      "dub_level": -2.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.91,
+    "warmth": 0.88,
+    "movement": 0.65,
+    "density": 0.92,
+    "space": 0.08,
+    "aggression": 0.87
+  }
+}

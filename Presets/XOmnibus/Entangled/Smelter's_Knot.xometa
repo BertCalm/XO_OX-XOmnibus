@@ -1,0 +1,49 @@
+{
+  "name": "Smelter's Knot",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERDUB",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.9,
+      "macro_movement": 0.42,
+      "macro_coupling": 0.7,
+      "macro_space": 0.6
+    },
+    "ORGANON": {
+      "macro_character": 0.6,
+      "macro_movement": 0.41,
+      "macro_coupling": 0.8,
+      "macro_space": 0.29
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_BRAID",
+    "source": "OVERDUB",
+    "target": "ORGANON",
+    "amount": 0.79
+  },
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.89,
+    "movement": 0.42,
+    "density": 0.8,
+    "space": 0.48,
+    "aggression": 0.45
+  },
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.41,
+    "COUPLING": 0.75,
+    "SPACE": 0.44
+  },
+  "tags": [
+    "entangled",
+    "warm",
+    "scorching",
+    "dense"
+  ]
+}

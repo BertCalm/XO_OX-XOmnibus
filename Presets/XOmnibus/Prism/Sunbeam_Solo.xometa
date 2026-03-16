@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Sunbeam Solo",
+  "mood": "Prism",
+  "engines": [
+    "Ohm"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dad's single note philosophy: one warm tone, all the room in the world.",
+  "tags": [
+    "hot-sparse",
+    "extreme",
+    "prism",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_dadInstrument": 1.0,
+      "ohm_dadLevel": 0.9,
+      "ohm_pluckBrightness": 0.88,
+      "ohm_pluckDecay": 1200.0,
+      "ohm_resonance": 0.12,
+      "ohm_space": 0.92,
+      "ohm_warmth": 0.89
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.89,
+    "warmth": 0.91,
+    "movement": 0.18,
+    "density": 0.09,
+    "space": 0.9,
+    "aggression": 0.12
+  }
+}
