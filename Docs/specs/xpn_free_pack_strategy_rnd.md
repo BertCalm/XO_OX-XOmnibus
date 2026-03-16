@@ -1,354 +1,98 @@
-# XPN Free Pack Strategy — R&D
-
+# XPN Free Pack Strategy — R&D Spec
 **Date**: 2026-03-16
-**Status**: R&D / Planning
-**Author**: XO_OX Designs
-**Related**: `pack_economics_strategy_rnd.md`, `xpn-tools.md`, `patreon_content_calendar_rnd.md`, `pack_launch_playbook_rnd.md`
+**Status**: Draft
 
 ---
 
-## Executive Summary
+## 1. Free Pack Philosophy
 
-Free packs are the top of the acquisition funnel — the moment a producer decides whether XO_OX sounds are worth paying for. A poorly designed free pack (watered-down, filler sounds, no identity) is worse than no free pack. A well-designed free pack converts. This document defines what to give away, why, how to design it for maximum conversion, and how to track whether it is working.
+Free packs are not demos. They are not crippleware, samplers, or loss leaders with the good stuff held back. A free pack is a standalone product that happens to cost nothing.
 
-**Three findings that determine everything:**
-1. The free pack must sound as good as the paid catalog — mediocre first impressions are terminal.
-2. Email capture via Gumroad is non-negotiable. No email = no follow-up = no conversion.
-3. Conversion happens within 7–30 days of first download. The email sequence does most of the work.
+The logic is simple: a producer who downloads a free pack, loads it up, and makes something they're proud of is worth more to XO_OX than a paid customer who expected more and got less. Reputation compounds. A producer who gets a free pack and is impressed will tell three people. A producer who gets a free pack that feels like a teaser will tell ten.
 
----
-
-## 1. Why Free Packs Matter
-
-### The Loss Leader Model
-
-Native Instruments built Kontakt's install base partly through free starter kits bundled with hardware and periodic free downloads on Native Access. These free kits are not demos — they are full-quality instruments designed to make the platform sticky. A producer who builds a session around a free NI kit is a likely Kontakt library buyer. The free kit established trust, demonstrated the platform's sound quality, and created a workflow dependency.
-
-Splice's free sample drops operate the same way. Every "free Friday" Splice drop is a top-of-funnel move. The samples are real, usable, production-quality. The message is: "this is what $8/month sounds like." The conversion from free samples to Splice subscription has been one of the most successful acquisition models in the sample industry.
-
-Output's free sample collections (Analog Brass & Winds, Signal Vol. 1 free tier) follow the same logic — give away something genuinely useful, let the sound quality speak, and the catalog sells itself.
-
-**The XO_OX application:** XO_OX has 34 synthesis engines and a distinctive sonic identity. A free pack is the fastest way to prove that identity is real. The MPC community is skeptical of boutique instruments they have not heard — a free download removes the risk of the first encounter entirely.
-
-### The Trust Architecture
-
-Before a producer spends $9.99 on a pack from an unknown brand, they need three things:
-1. Proof the sounds are good
-2. Proof the format works on their hardware
-3. A reason to believe more paid content is worth it
-
-A free pack answers all three in one download. It is not charity — it is the most efficient marketing tool available at a near-zero marginal cost.
-
-### Acquisition Funnel Position
-
-```
-Discovery (social/forum post) → Free Download (email captured) → Email Sequence (7-day) → First Paid Pack Offer → Repeat Customer
-```
-
-The free pack is the bridge between discovery and purchase. Without it, the bridge is missing and conversion relies on producers committing cold to a paid download from a brand they do not know.
+Every free pack ships at the same quality bar as a paid pack. Same cover art standard. Same README depth. Same preset curation rigor. The only difference is the price tag.
 
 ---
 
-## 2. Free Pack Design Principles
+## 2. Free Pack Content Standard
 
-### Principle 1: Best Sound, Not B-Stock
+**Minimum programs**: 8-12. Not 4-6. A 4-program free pack reads as a demo. 8-12 programs reads as a real pack. The producer should be able to load the pack and run a full session without ever feeling the edge of the content.
 
-The single most common mistake in free pack design is treating free content as a place to put sounds that were not good enough for the paid catalog. This is exactly backwards. The free pack is the first impression — it must be the sharpest, most immediately useful content in the entire catalog.
+**Full DNA range**: At least 3 of the 4 quadrants must be represented. If TIDE TABLES covers movement=high/aggression=low through movement=high/aggression=high, there must also be something in the textural or sparse corner. A free pack that only covers one mood is a demo.
 
-Design brief for every sound in the free pack: "Would I be proud if this was in a $19.99 pack?" If no, cut it.
+**Required files**:
+- Cover art (1000x1000px minimum, XO_OX visual standard)
+- README.txt — pack story, program notes, engine overview, links
+- MPCE_SETUP.md if the engine has a recommended MPC pad layout
 
-### Principle 2: Leave Them Wanting More
-
-The free pack should feel complete but create a specific hunger. The way to do this is not artificial limitation — it is editorial curation. Include one exceptional drum kit, one exceptional melodic program, one exceptional atmospheric texture, one exceptional character sound. Do not include a second of each. The producer who loves the ONSET drum kit immediately wonders what an ONSET drum pack with 8 kits would sound like. That is the moment the conversion is won.
-
-The free pack ends on an unresolved note not by withholding quality but by showing the shape of a larger universe without filling it in.
-
-### Principle 3: Cover the Accessible Engines First
-
-Not all engines have equal accessibility:
-
-- **ONSET** — drum kits are the most universally understood format in the MPC community. Any producer can immediately evaluate a drum kit. The learning curve is zero.
-- **OBLONG** — melodic programs with a strong harmonic character. Immediately musical. The amber color and warm analog texture read as accessible, not experimental.
-- **ORACLE** — atmospheric. Less immediately accessible than drums or keys, but the texture is distinctive and memorable. A producer who has never heard ORACLE will remember it.
-- **OVERDUB** — character. Dub synth with a strong personality. Polarizing, which is good — producers who connect with it connect hard.
-
-The free pack should lead with the accessible engines (ONSET, OBLONG) and use the more distinctive engines (ORACLE, OVERDUB) to demonstrate range.
-
-### Principle 4: The Hook Preset
-
-Every free pack needs one preset that producers will share. This is the "hook" — a sound so immediately striking that the producer's first instinct is to post it to a forum or send it to a friend.
-
-Design criteria for the hook:
-- Instantly recognizable as XO_OX (not generic)
-- Works without modification — drop it in a session and it fits
-- Has a memorable name (2-3 words, evocative, not a technical description)
-- Represents one engine at its absolute best
-
-Candidate hook types by engine:
-- ONSET: a drum kit with a distinctive character that sounds impossible to have synthesized (e.g., an alien trap kit where every hit has a clear organic analog root)
-- OBLONG: a chord voicing that sounds like no other keyboard on the MPC
-- ORACLE: an atmospheric texture that evolves over 30+ seconds without losing musical focus
-- OVERDUB: a dub delay lead that sounds exactly like what the engine is named after but pushed to an extreme
+**No crippled content**: Every program in a free pack is a complete, production-ready preset. No "full version in the paid pack" logic. No programs that exist just to demonstrate a feature. Every program must be something a producer would keep in rotation.
 
 ---
 
-## 3. The Starter Kit: XO_OX Foundation Sampler
+## 3. Funnel Design
 
-### Concept
+**Entry point**: Gumroad, pay-what-you-want with $0 floor. This captures emails without friction. A producer who chooses to pay $3 is signaling intent.
 
-"XO_OX Foundation Sampler" — 4 programs from 4 different engines. Designed as a permanent free release (not a limited-time offer). The foundation of the XO_OX catalog relationship.
+**README links**: Every README includes:
+- Link to the engine's Field Guide article on XO-OX.org
+- Link to XO-OX.org main index
+- "What comes next" section: a one-paragraph preview of the FORM or DOCTRINE paid pack from the same engine, with a direct Gumroad link
 
-### Program Manifest
+**Patreon mention**: Brief, one line, near the bottom of the README. "Patreon members get early access to the next pack before public release — xo-ox.org/patreon." No pressure, just visibility.
 
-**Program 1: ONSET — Synthetic Signal (Drum Kit)**
-- Quality tier: SIGNAL-equivalent (XO_OX's highest tier)
-- 16 pads: Kick A, Kick B, Snare A, Snare B, CHat, OHat, Clap, Tom A, Tom B, Perc A, Perc B, FX A, FX B, + 3 bonus
-- Velocity layers: 4 per pad
-- Round-robin: 3 cycles per pad (CycleType = random-norepeat)
-- MACHINE/PUNCH macro settings documented in pad metadata
-- Character: clean, contemporary, BPM-agnostic (works at 80–160 BPM)
-- The hook: a clap sound that sounds acoustic-adjacent but mathematically impossible
-
-**Program 2: OBLONG — Amber Keys (Keygroup Program)**
-- Chromatic mapping: C2–C6
-- Velocity layers: 3
-- Character: warm, analog-feeling, harmonically rich in the midrange
-- Works as a lead, a pad layer, or a chord instrument
-- Q-Links: Filter Cutoff, Filter Resonance, Amp Decay, Warmth
-- The hook: a major 7th voicing in the 3rd octave that sounds genuinely emotional
-
-**Program 3: ORACLE — Deep Signal (Atmospheric Pad)**
-- Chromatic mapping: C2–C5
-- Velocity layers: 2 (soft/loud with timbral shift, not just amplitude)
-- Character: evolving, prophetic, slow attack, long release
-- Designed to layer under a drum kit without masking it
-- The hook: a single held note at G3 that rewards sustained listening (the texture reveals itself at 15s)
-
-**Program 4: OVERDUB — Character Dub (Lead/Character)**
-- Chromatic mapping: C2–C5
-- Velocity layers: 2
-- Character: lo-fi, spring-flavored, assertive but not abrasive
-- Designed to sit on top of a production as a statement instrument
-- The hook: the spring reverb splash on high notes is physically tactile — producers feel it
-
-### Technical Spec
-
-| Property | Value |
-|----------|-------|
-| Total sample count | ~80 samples (20 per program average) |
-| File format | 24-bit WAV, 44.1 kHz |
-| Total size | < 50 MB |
-| XPN format | `.xpn` ZIP (Programs/ + Samples/ + README/) |
-| MPC compatibility | MPC One, MPC Live 1/2, MPC X, MPC Key 37/61, MPC3 |
-| Price | Free forever |
-| Platform | Gumroad (primary), XO-OX.org direct link |
-
-### README Contents
-
-The README inside the ZIP should include:
-- 1-page brand story (who XO_OX is, what XOmnibus is)
-- Engine descriptions for all 4 represented engines (3–4 sentences each)
-- Load instructions for MPC (exact menu path for XPN import)
-- Link to paid catalog
-- Link to Field Guide
-- Link to Patreon
-- Discount code for first paid purchase (20% off, 30-day expiry, unique per download batch)
+The funnel is: free pack → email list → site visit → paid pack consideration → Patreon. Each step is a soft ask, not a hard sell.
 
 ---
 
-## 4. Email Capture Strategy
+## 4. First Free Pack: TIDE TABLES (ONSET)
 
-### Gumroad Setup
+**Engine**: ONSET. Most universally appealing engine in the fleet — it's a drum machine. Every producer on MPC needs drum kits. ONSET is also the most legible engine for a first-time XO_OX user.
 
-Gumroad's free product tier still captures buyer emails at checkout. This is the most important technical fact in this entire document. Set the price to $0 — do not set it to "pay what you want" for the initial free download, as PWYW adds friction for a first-time visitor who is not yet committed.
+**Pack name**: TIDE TABLES
 
-Every free download from Gumroad captures:
-- Email address
-- Download date
-- Country
-- Referring source (if UTM-tagged)
+**Pack story**: "A drum machine running on ocean time. These are the rhythms of tide patterns, breaking wave stutters, and deep sea resonance — precise, mechanical, and pulled by something larger than the grid."
 
-This is the beginning of the customer relationship.
+**Programs**: 8-12 total. Proposed structure:
+- 4 core drum kits (NEAP, SPRING, SURGE, UNDERTOW)
+- 4 variations/mutations (NEAP DRY, SPRING PUNCHED, SURGE STUTTERED, UNDERTOW DEEP)
+- Optional 2-4 bonus programs if curation yields strong outliers
 
-### Email Sequence (7-Day Arc)
+**DNA targets**: movement=0.85 (rhythmic), aggression=0.45 (mid-range, accessible), brightness=0.60 (balanced, not harsh)
 
-**Day 0 — Welcome (immediate, automated)**
-Subject: "Your XO_OX Foundation Sampler is ready"
-Content:
-- Download link (redundant — Gumroad sends one, but this builds the relationship)
-- 3-sentence brand intro: who made this, why, what XO_OX sounds like
-- "Load the ONSET drum kit first. Pad A1 will tell you everything you need to know."
-- No pitch. Just a warm handshake.
-
-**Day 1 — Getting Started Guide**
-Subject: "How to get the most out of the Foundation Sampler"
-Content:
-- Load instructions for each of the 4 programs
-- The Q-Link assignments and what each macro does
-- One specific production tip per engine (e.g., "Layer the ORACLE pad 10 dB below your main synth — it becomes invisible but the track misses it when you mute it")
-- No pitch.
-
-**Day 4 — Social Proof**
-Subject: "Here is what producers are making with XO_OX"
-Content:
-- 2–3 short audio clips or screenshots from beta users or early adopters
-- Quote or testimonial (real preferred; if not yet available, describe the intended use case in first person)
-- Link to Field Guide posts that show the creative range of the catalog
-- Soft mention: "The paid catalog goes deeper."
-
-**Day 7 — First Offer**
-Subject: "For Foundation Sampler users only: 20% off your first pack"
-Content:
-- Clear statement of what the offer is (code, expiry, which packs qualify)
-- 2–3 pack recommendations based on which free engine they likely liked:
-  - "If you loved the ONSET drums → ONSET Drum Essentials ($7.99)"
-  - "If you loved the OBLONG keys → OddfeliX + OddOscar Signature Keys ($11.99)"
-  - "If you loved the atmospheric pads → ORACLE Expanded ($11.99)"
-- Discount code: `FOUNDATION20` (20% off, 30-day expiry from day 7 send date)
-- One sentence on Patreon: "Want a new free pack every quarter? Patreon free tier includes seasonal drops."
-
-**Day 30 — Reengagement (if no purchase)**
-Subject: "Still making music with the Foundation Sampler?"
-Content:
-- Light touch — no hard sell
-- New content mention: "We just released [most recent pack]"
-- Reissue the discount code if expired: "If your code lapsed, here is a fresh one: FOUNDATION20R"
-
-### Segmentation (Future State)
-
-Once the list reaches 500+ subscribers, segment by download source:
-- MPC Forum downloads → pitch drum-forward packs first
-- Instagram/social downloads → pitch signature sounds first
-- Field Guide referrals → pitch engine-specific deep packs first
+**MPCE_SETUP.md**: Map ONSET's 4 machine voices (Kick, Snare/Clap, Hat, Perc/FX) to MPC's standard quad-corner pad layout. Include note assignments and suggested Q-Link mapping for the MACHINE and PUNCH macros.
 
 ---
 
-## 5. Patreon Free Tier
+## 5. Second Free Pack: DRIFT SAMPLES (OPAL) — Q2
 
-### What the Free Tier Includes
+**Engine**: OPAL. High artistic appeal, strong YouTube/social demo potential. Granular packs photograph and video well — the visual of grain clouds performs on social.
 
-The Patreon free tier (Follow tier, $0) should provide:
-- All Field Guide posts (full text, not paywalled)
-- XOmnibus changelog posts (every update)
-- One seasonal free pack per quarter (see Section 6)
-- Access to community discussion posts
-- Announcement of new paid pack releases
+**Pack name**: DRIFT SAMPLES
 
-### What Requires Payment
+**Brief**: 8 programs, atmospheric and textural. These are first-generation OPAL grains — the pack that introduces producers to granular synthesis without requiring them to understand it. They load a program, it sounds like nothing else, and they keep it.
 
-Patreon paid tiers unlock:
-- Early access to new engine announcements (1–2 weeks before public)
-- Behind-the-scenes design notes and R&D posts
-- Voting on future engine and pack priorities
-- Discounts on Gumroad purchases
-- Extended preset packs (paid-tier-exclusive content)
-- Direct Q&A access
-
-### Why the Free Tier Should Be Generous
-
-A generous free tier builds goodwill and increases the chance of organic sharing. A Patreon follower who reads every Field Guide post and downloads every seasonal free pack is a warm lead — they know the brand deeply. When they finally hit a paid-tier benefit they want (e.g., voting on engine priorities), the conversion from follow to paid tier is low-friction because the relationship is already established.
+**DNA targets**: movement=0.40, aggression=0.20, brightness=0.50 — ambient, drifting, harmonic.
 
 ---
 
-## 6. Quarterly Free Drops
+## 6. Free-to-Paid Conversion Targets
 
-### The Seasonal Calendar
+**Tracking**: Compare free download count vs. FORM pack sales for the same engine over a 90-day window. Gumroad and XO-OX.org analytics both capture this.
 
-Free drops ship on the first day of each meteorological season:
-- **March 1 — Spring Drop**: Renewal / emergence themes. Bright, forward-moving sounds.
-- **June 1 — Summer Drop**: Energy / heat themes. Dense, physical, percussive-forward.
-- **September 1 — Autumn Drop**: Decay / transformation themes. Atmospheric, textured, melancholic.
-- **December 1 — Winter Drop**: Stillness / depth themes. Slow, cavernous, sparse.
+**Target conversion rate**: 8-12%. Industry standard for music production tools. If TIDE TABLES gets 500 downloads and ONSET FORM gets 45-60 sales in the following 90 days, the funnel is working.
 
-Seasonal drops ship on the first of the month (not the astronomical equinox/solstice) for calendar predictability and MPC Forum announcement timing.
+**If conversion is below 8%**: Audit the README funnel first — are the links visible, is the "what comes next" section compelling? Audit the FORM pack second — is it priced correctly, is the content step-up clear?
 
-### Drop Format
-
-Each seasonal drop: 1 program from 1 engine, selected to match the seasonal character.
-- Size: < 20 MB
-- Quality: SIGNAL tier (same standard as paid content)
-- Distribution: Gumroad free product (new listing per season, email captured fresh)
-- Announcement: Field Guide post + social + MPC Forum thread
-
-**2026 Drop Schedule:**
-| Season | Engine | Theme | Target Ship |
-|--------|--------|-------|-------------|
-| Spring (Q1 2026) | ONSET | New Growth (organic-feeling drum kit) | 2026-03-01 — retroactively ship as part of Foundation Sampler launch |
-| Summer (Q2 2026) | OBESE | Heat / Drive | 2026-06-01 |
-| Autumn (Q3 2026) | ORACLE | Decay Textures | 2026-09-01 |
-| Winter (Q4 2026) | OPAL | Crystalline Grain | 2026-12-01 |
-
-### Why Seasonal Timing Works
-
-1. Calendar relevance creates a natural content hook for social posts ("first day of autumn, here is a free atmospheric pack")
-2. Quarterly cadence is slow enough that each drop feels like an event, not a commodity
-3. Seasonal themes give the sound designer a clear brief, which produces more coherent packs
-4. Each drop re-activates dormant subscribers who received a previous free drop but have not purchased
+**Mechanism summary**: README → XO-OX.org visit → email list opt-in (via Gumroad or site) → Patreon awareness → paid pack purchase. No single step should feel like a sales pitch. The quality of the free pack does the selling.
 
 ---
 
-## 7. Conversion Metrics
+## 7. Distribution
 
-### Success Definition
+**Primary**: XO-OX.org direct download. This keeps the relationship on XO_OX's domain and drives site traffic.
 
-**Primary KPI**: 15% free-to-paid conversion within 30 days of first download.
+**Secondary**: Gumroad, pay-what-you-want. Email capture, social proof via download count, option for voluntary payment.
 
-This means: for every 100 free Foundation Sampler downloads, 15 producers make at least one paid pack purchase within 30 days.
+**Tertiary**: Akaipro.com free expansions, once a partner relationship is established. This is a future channel — not blocking V1 release. TIDE TABLES ships on XO-OX.org first, Akaipro second if and when the partnership exists.
 
-Industry benchmarks for comparison:
-- Splice free sample conversion: estimated 8–12% to subscription within 30 days
-- NI free Kontakt instrument conversion to paid library: estimated 10–18%
-- 15% is achievable with a strong email sequence and a quality free pack
-
-### Secondary KPIs
-
-| Metric | Target | Measurement Tool |
-|--------|--------|-----------------|
-| Email open rate (Day 0 welcome) | > 60% | Gumroad / email provider |
-| Email open rate (Day 7 offer) | > 35% | Email provider |
-| Click-through on Day 7 offer | > 25% of opens | Gumroad UTM tracking |
-| 30-day conversion (free → paid) | ≥ 15% | Gumroad buyer overlap analysis |
-| 90-day repeat purchase rate | ≥ 30% of first-time buyers | Gumroad purchase history |
-| Patreon follow rate from free email list | ≥ 5% | Patreon + email list cross-reference |
-
-### Gumroad Analytics Setup
-
-1. Create separate Gumroad listings for each free product (Foundation Sampler, each seasonal drop) — this allows per-product conversion tracking
-2. Tag each UTM source in Gumroad affiliate links (MPC Forum = `utm_source=mpcforum`, Instagram = `utm_source=instagram`)
-3. Use Gumroad's customer export monthly to build a conversion cohort — compare free-download date to first paid purchase date
-4. Export buyer email list quarterly and cross-reference with free-download list to calculate conversion rate manually if Gumroad's native analytics are insufficient
-
-### When to Adjust
-
-If the 30-day conversion rate is below 8% after the first 200 downloads, the likely causes in priority order:
-1. The email sequence Day 7 offer is arriving too early or the discount is too small (try 30%)
-2. The free pack quality is not strong enough to create desire for more (re-evaluate the hook preset)
-3. The paid catalog does not yet have enough packs for the recommended "next step" to feel obvious (catalog depth problem — not fixable by email sequence changes)
-4. The free pack is not reaching producers who are likely buyers (channel problem — re-examine distribution)
-
----
-
-## 8. Implementation Checklist
-
-Before shipping the Foundation Sampler:
-
-- [ ] Render all 4 programs through XPN pipeline (ONSET/OBLONG/ORACLE/OVERDUB)
-- [ ] Validate XPN ZIP loads without errors on MPC One, MPC Live 2, MPC3
-- [ ] Write README (brand story, load instructions, discount code, links)
-- [ ] Set up Gumroad free product listing with email capture enabled
-- [ ] Configure email sequence in email provider (Day 0/1/4/7/30)
-- [ ] Write all 5 email sequence drafts (tone: warm, peer-to-peer, not corporate)
-- [ ] Generate first batch of discount codes (`FOUNDATION20`, 30-day expiry, 500-code batch)
-- [ ] Set up UTM tracking for MPC Forum, Instagram, and XO-OX.org referral links
-- [ ] Create Patreon follow-tier description that mentions seasonal free drops
-- [ ] Schedule Spring 2026 seasonal drop (retroactive — ship with Foundation Sampler as bonus)
-
----
-
-## Related Documents
-
-- `pack_economics_strategy_rnd.md` — full release calendar and pricing strategy
-- `pack_launch_playbook_rnd.md` — launch day execution checklist
-- `patreon_content_calendar_rnd.md` — Patreon tier content planning
-- `xpn-tools.md` — XPN export pipeline technical reference
-- `pack_design_onset_drums.md` — ONSET drum kit design detail
+**Timing**: TIDE TABLES ships with XOmnibus V1 launch or within the first 30 days. It is the first artifact a producer encounters from XO_OX that costs nothing — it sets the tone for everything that follows.
