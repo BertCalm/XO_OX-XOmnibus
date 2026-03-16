@@ -99,7 +99,7 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Oblong | `bob_` | `bob_fltCutoff` |
 | Obese | `fat_` | `fat_satDrive` |
 | Overbite | `poss_` | `poss_biteDepth` |
-| Onset | `onset_` | `onset_noiseLevel` |
+| Onset | `perc_` | `perc_noiseLevel` |
 | Overworld | `ow_` | `ow_era` |
 | Opal | `opal_` | `opal_grainSize` |
 | Orbital | `orb_` | `orb_brightness` |
@@ -109,12 +109,12 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Origami | `origami_` | `origami_foldPoint` |
 | Oracle | `oracle_` | `oracle_breakpoints` |
 | Obscura | `obscura_` | `obscura_stiffness` |
-| Oceanic | `oceanic_` | `oceanic_separation` |
+| Oceanic | `ocean_` | `ocean_separation` |
 | Ocelot | `ocelot_` | `ocelot_biome` |
 | Optic | `optic_` | `optic_pulseRate` |
 | Oblique | `oblq_` | `oblq_prismColor` |
 | Osprey | `osprey_` | `osprey_shoreBlend` |
-| Osteria | `ost_` | `ost_shoreBlend` |
+| Osteria | `osteria_` | `osteria_qBassShore` |
 | Owlfish | `owl_` | `owl_filterCutoff` |
 | Ohm | `ohm_` | `ohm_macroMeddling` |
 | Orphica | `orph_` | `orph_pluckBrightness` |

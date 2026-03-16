@@ -6,7 +6,7 @@
 ## Engine Identity
 
 - **Gallery code:** OCEANIC | **Accent:** Phosphorescent Teal `#00B4A0`
-- **Parameter prefix:** `oceanic_`
+- **Parameter prefix:** `ocean_`
 - **Aquatic mythology:** Cephalopod school — bioluminescent, collective, emergent intelligence
 - **feliX-Oscar polarity:** Deeply feliX — curious, alive, social, emergent
 - **Synthesis type:** Swarm Particle Synthesis via Craig Reynolds Boid Flocking Rules
@@ -18,7 +18,7 @@
 
 **0 factory presets** in XOmnibus. 34 presets in standalone XOceanic repo (not integrated).
 
-Sound design guide described OCEANIC as "paraphonic string ensemble" with BBD chorus and Chromatophore pedalboard — parameters `oceanic_ensemble`, `oceanic_filterCutoff`, `oceanic_pedalMix`, `oceanic_abyssMix`, `oceanic_freezeMix`, `oceanic_chromRate`. **None of these are real parameters.** The guide described a different engine entirely. Corrected during Phase R7.
+Sound design guide described OCEANIC as "paraphonic string ensemble" with BBD chorus and Chromatophore pedalboard — parameters `oceanic_ensemble`, `oceanic_filterCutoff`, `oceanic_pedalMix`, `oceanic_abyssMix`, `oceanic_freezeMix`, `oceanic_chromRate`. **None of these are real parameters.** (Actual prefix is `ocean_`.) The guide described a different engine entirely. Corrected during Phase R7.
 
 Seance P2-10 flagged "zero velocity response." Source examination revealed this is partially inaccurate: velocity-proportional scatter IS applied at noteOn. However, the scatter decays quickly and was invisible to the ghosts because no preset demonstrates its ceiling behavior.
 
@@ -43,7 +43,7 @@ That is the first truth.
 ## Phase R3: Awakening — 6 Discoveries
 
 ### Discovery 1: The Swarm Has Two Lifetimes
-Every instrument in the fleet has one envelope — the amplitude ADSR. OCEANIC has two. The Swarm ADSR (`oceanic_swarmAttack/Decay/Sustain/Release`) controls the *strength of the boid rules* — the collective intelligence of the school — independently of amplitude. At `swarmSustain=0`, the boid forces fully extinguish by the sustain phase; particles drift freely, held only by inertia, as the note continues at full amplitude. At `swarmAttack=3.0`, the school takes three seconds to learn to be a school — during those seconds it sounds scattered, raw, organic. Then it coheres into a tone. This is the most singular DSP capability in the fleet: no other engine separates the *intelligence* of the sound from the *loudness* of the sound.
+Every instrument in the fleet has one envelope — the amplitude ADSR. OCEANIC has two. The Swarm ADSR (`ocean_swarmEnvAttack/Decay/Sustain/Release`) controls the *strength of the boid rules* — the collective intelligence of the school — independently of amplitude. At `ocean_swarmEnvSustain=0`, the boid forces fully extinguish by the sustain phase; particles drift freely, held only by inertia, as the note continues at full amplitude. At `ocean_swarmEnvAttack=3.0`, the school takes three seconds to learn to be a school — during those seconds it sounds scattered, raw, organic. Then it coheres into a tone. This is the most singular DSP capability in the fleet: no other engine separates the *intelligence* of the sound from the *loudness* of the sound.
 
 ### Discovery 2: The Chromatophore IS the Aftertouch
 The B013 Blessing is not a metaphor. It is literal: `aftertouch → separation boost (×0.25)`. Pressing harder makes particles scatter faster from their neighbors, exactly as an octopus accelerates chromatophore cycling under stress or excitement. The mod wheel inverts it: `mod wheel → cohesion boost (×0.4)`, tightening the school. The two gestures are physical opposites — scattering and contracting — mapped to the two most expressive CCs a player has. No preset had ever taught this. Players have owned this engine without knowing their fingers control a cephalopod's nervous system.
@@ -52,13 +52,13 @@ The B013 Blessing is not a metaphor. It is literal: `aftertouch → separation b
 `RhythmToBlend` coupling triggers murmuration: a cascade perturbation starting at particle 0 with influence 1.0, decaying by factor 0.97 through all 128 particles. The first particles get maximum disruption. The last particles get 0.97^128 ≈ 0.019× — barely touched. The result is a wave of reorganization that passes through the school. Send a drum hit from ONSET and 128 particles reorganize in sequence. This is not distortion. Not modulation. It is a starling murmuration triggered by percussion.
 
 ### Discovery 4: Sub-Flocks Are a Self-Composing Chord Section
-`oceanic_subflocks` defaults to 1 — only the fundamental flock. At 4 sub-flocks, particles are distributed across four attractor frequencies: the MIDI note (1×), one octave up (2×), a perfect fifth up (1.5×), and one octave + fifth (3×). The boid rules operate *within each sub-flock* — particles of the same ratio cluster together. Play C3 and a self-organizing chord cluster forms at C3/C4/G4/G5. The chord is emergent; no designer placed those pitches. The flock discovered them through physics.
+`ocean_subflocks` defaults to 1 — only the fundamental flock. At 4 sub-flocks, particles are distributed across four attractor frequencies: the MIDI note (1×), one octave up (2×), a perfect fifth up (1.5×), and one octave + fifth (3×). The boid rules operate *within each sub-flock* — particles of the same ratio cluster together. Play C3 and a self-organizing chord cluster forms at C3/C4/G4/G5. The chord is emergent; no designer placed those pitches. The flock discovered them through physics.
 
 ### Discovery 5: The Waveform Changes the Creature
 128 sine particles under boid rules → the classic swarm tone: smooth, evolving, slightly glassy. 128 saw particles with PolyBLEP → 128 buzzing saws the boid force shapes into spectral swarms. 128 noise particles → the school stops being a pitched instrument; it becomes a self-organizing texture that coheres into white noise density clusters. Each waveform is a different creature made from the same flocking math.
 
 ### Discovery 6: Low Tether Is Near-Unpitched Territory
-`oceanic_tether` at 0.05: the MIDI note barely influences particle behavior. High velocity-scatter sends particles far from the attractor at noteOn. The weak attractor cannot pull them fully back. The note never resolves to its intended pitch. A cloud that knows it is near C3 but cannot commit. This is the engine's most distinct timbral territory — near-unpitched, drifting, atmospheric — and the one least explored in any existing preset.
+`ocean_tether` at 0.05: the MIDI note barely influences particle behavior. High velocity-scatter sends particles far from the attractor at noteOn. The weak attractor cannot pull them fully back. The note never resolves to its intended pitch. A cloud that knows it is near C3 but cannot commit. This is the engine's most distinct timbral territory — near-unpitched, drifting, atmospheric — and the one least explored in any existing preset.
 
 ---
 
@@ -66,7 +66,7 @@ The B013 Blessing is not a metaphor. It is literal: `aftertouch → separation b
 
 **The Obvious Fix:** The sound design guide was completely wrong. Every parameter in the guide was fabricated. The guide described a different, imagined engine. This is now corrected (same pattern as OUROBOROS — delay-line vs ODE chaos synthesis).
 
-**The Hidden Trick:** `swarmSustain=0` + slow `swarmDecay` + `ampSustain=0.9` = a note that holds at full volume while its collective intelligence dissolves. The sound changes shape with no input from the player. The school dies while the volume lives.
+**The Hidden Trick:** `ocean_swarmEnvSustain=0` + slow `ocean_swarmEnvDecay` + `ocean_ampSustain=0.9` = a note that holds at full volume while its collective intelligence dissolves. The sound changes shape with no input from the player. The school dies while the volume lives.
 
 **The Sacrifice:** The seance's P2-10 ("zero velocity response") was not fully wrong — the velocity scatter decays too quickly to be heard as timbre in most contexts. The fix is not DSP: design presets where `tether=0.05` + `scatter=0.5` makes the scatter audible because particles never return to equilibrium.
 
@@ -81,8 +81,8 @@ The B013 Blessing is not a metaphor. It is literal: `aftertouch → separation b
 | Boid School | Oceanic_Boid_School.xometa | Foundation | subflocks=4, emergent chord cluster |
 | Murmuration | Oceanic_Murmuration.xometa | Entangled | RhythmToBlend from Onset, cascade event |
 | Chromatophore Touch | Oceanic_Chromatophore_Touch.xometa | Prism | B013 — aftertouch=scatter, mod wheel=cohesion |
-| Swarm Wake | Oceanic_Swarm_Wake.xometa | Atmosphere | swarmAttack=2.5 — school coheres over 2.5 seconds |
-| Dissolving School | Oceanic_Dissolving_School.xometa | Flux | swarmSustain=0 — boid rules extinguish on sustain |
+| Swarm Wake | Oceanic_Swarm_Wake.xometa | Atmosphere | ocean_swarmEnvAttack=2.5 — school coheres over 2.5 seconds |
+| Dissolving School | Oceanic_Dissolving_School.xometa | Flux | ocean_swarmEnvSustain=0 — boid rules extinguish on sustain |
 | Noise Flock | Oceanic_Noise_Flock.xometa | Aether | waveform=Noise, 4 sub-flocks, self-organizing texture |
 | Low Tether Drift | Oceanic_Low_Tether_Drift.xometa | Atmosphere | tether=0.05, near-unpitched drifting cloud |
 
@@ -127,7 +127,7 @@ Four verses to be inscribed in Book VII — Engine-Specific Verses.
 The following was incorrect in `Docs/xomnibus_sound_design_guides.md` before this retreat:
 - Engine type: "paraphonic string ensemble" → corrected to "swarm particle synthesis"
 - Voice count: "1 (paraphonic — all 128 MIDI notes)" → corrected to "Mono/Poly2/Poly4"
-- Parameters: six fabricated parameters → replaced with actual `oceanic_separation`, `oceanic_alignment`, `oceanic_cohesion`, `oceanic_tether`, `oceanic_scatter`, `oceanic_subflocks`, `oceanic_damping`, `oceanic_waveform`, `oceanic_swarmAttack/Decay/Sustain/Release`, `oceanic_lfo1/2Rate/Depth/Shape`, `oceanic_voiceMode`, `oceanic_glide`, macros
+- Parameters: six fabricated parameters → replaced with actual `ocean_separation`, `ocean_alignment`, `ocean_cohesion`, `ocean_tether`, `ocean_scatter`, `ocean_subflocks`, `ocean_damping`, `ocean_waveform`, `ocean_swarmEnvAttack/Decay/Sustain/Release`, `ocean_lfo1/2Rate/Depth/Shape`, `ocean_voiceMode`, `ocean_glide`, macros
 - Coupling: "AudioToWavetable, EnvToMorph, LFOToPitch" → corrected to "AudioToFM, AmpToFilter, RhythmToBlend"
 
 ---

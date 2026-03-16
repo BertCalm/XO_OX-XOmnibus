@@ -416,7 +416,7 @@ The Weight Engine reinforces the sub-harmonic foundation — five shapes, three 
 ## 8. ONSET (Onset)
 *Algorithmic drum synthesis with Cross-Voice Coupling — surface splashes*
 
-**Accent:** Electric Blue `#0066FF` | **Prefix:** `onset_` | **Voices:** 8 (fixed kit)
+**Accent:** Electric Blue `#0066FF` | **Prefix:** `perc_` | **Voices:** 8 (fixed kit)
 **Creature:** Surface splashes — fish leaping, tails slapping, rain striking the ocean in a downpour
 **Polarity:** Pure feliX — the surface, where energy is highest and every sound is an event, not a process
 
@@ -438,15 +438,25 @@ The dual-layer architecture mirrors impact physics: **Layer X** (circuit models 
 ### Key Parameters
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
-| `onset_vN_pitch` | Hz | varies | Base frequency per voice. The size of the splash. |
-| `onset_vN_decay` | ms | 50–300 | How long the ripple lasts. Tight clicks to resonant toms. |
-| `onset_vN_blend` | 0–1 | 0.3–0.6 | Layer X↔O crossfade. Analog circuit ↔ algorithmic synthesis. The magic zone. |
-| `onset_vN_algo` | 0–3 | — | 0=FM, 1=Modal, 2=KS, 3=PhaseDist — which algorithm Layer O uses |
-| `onset_vN_snap` | 0–1 | 0.3–0.7 | Transient intensity. How sharp the impact. feliX's dart as a drum parameter. |
-| `onset_vN_body` | 0–1 | 0.3–0.6 | Resonant sustain. How much the water rings after impact. |
-| `onset_vN_character` | 0–1 | 0.2–0.5 | Layer O character amount. How alien the splash sounds. |
-| `onset_vN_tone` | 0–1 | 0.3–0.7 | Per-voice filter. The surface tension — how much high frequency passes. |
-| `onset_xvc_amount` | 0–1 | 0.1–0.4 | Cross-Voice Coupling intensity. How reactive the school is. |
+| `perc_v1_pitch` | Hz | varies | Base frequency per voice. The size of the splash. (v1–v8 per voice) |
+| `perc_v1_decay` | ms | 50–300 | How long the ripple lasts. Tight clicks to resonant toms. |
+| `perc_v1_blend` | 0–1 | 0.3–0.6 | Layer X↔O crossfade. Analog circuit ↔ algorithmic synthesis. The magic zone. |
+| `perc_v1_algoMode` | 0–3 | — | 0=FM, 1=Modal, 2=KS, 3=PhaseDist — which algorithm Layer O uses |
+| `perc_v1_snap` | 0–1 | 0.3–0.7 | Transient intensity. How sharp the impact. feliX's dart as a drum parameter. |
+| `perc_v1_body` | 0–1 | 0.3–0.6 | Resonant sustain. How much the water rings after impact. |
+| `perc_v1_character` | 0–1 | 0.2–0.5 | Layer O character amount. How alien the splash sounds. |
+| `perc_v1_tone` | 0–1 | 0.3–0.7 | Per-voice filter. The surface tension — how much high frequency passes. |
+| `perc_v1_level` | 0–1 | 0.7–1.0 | Per-voice output level. |
+| `perc_v1_pan` | -1–1 | varies | Per-voice stereo position. |
+| `perc_v1_envShape` | 0–1 | 0.3–0.7 | Envelope shape per voice. |
+| `perc_level` | 0–1 | 0.8 | Master output level. |
+| `perc_drive` | 0–1 | 0.1–0.4 | Master saturation drive. |
+| `perc_masterTone` | 0–1 | 0.4–0.7 | Master tone filter. |
+| `perc_xvc_amount` | 0–1 | 0.1–0.4 | Cross-Voice Coupling intensity. How reactive the school is. |
+| `perc_macro_machine` | 0–1 | varies | MACHINE macro — Layer X↔O blend bias across all voices. |
+| `perc_macro_punch` | 0–1 | varies | PUNCH macro — snap transient + body amount per voice. |
+| `perc_macro_space` | 0–1 | varies | SPACE macro — FX sends (delay + reverb). |
+| `perc_macro_mutate` | 0–1 | varies | MUTATE macro — per-hit pitch/timbre drift amount. |
 
 ### Coupling
 - **Sends:** Stereo audio + 8 independent peak amplitudes — each voice is an independent coupling source
@@ -463,11 +473,11 @@ The dual-layer architecture mirrors impact physics: **Layer X** (circuit models 
 - **+ Odyssey:** Surface percussion heard as filter pumps in the open ocean — the deep hearing the surface.
 
 ### Starter Recipes
-**Body Drop:** V1 pitch=55, decay=200, blend=0.0, snap=0.7, body=0.5 — a body entering water from height, the BridgedT circuit at its purest
-**Breaking Wave:** V2 pitch=180, decay=120, blend=0.5, algo=1 (Modal), snap=0.5 — wave on rock, circuit model meeting modal resonance
-**Rain Patter:** V3 pitch=8000, decay=25, blend=0.3, character=0.4, tone=0.7 — light rain on the ocean surface, six inharmonic squares
-**School Reaction:** xvc_amount=0.4, V1 kick pumps V2 snare filter, V3 chokes V4 — the school: each splash triggers the next
-**Alien Percussion:** blend=0.8 across all voices, algo=0 (FM), character=0.6 — Layer O dominant, every hit an FM flash from the deep
+**Body Drop:** perc_v1_pitch=55, perc_v1_decay=200, perc_v1_blend=0.0, perc_v1_snap=0.7, perc_v1_body=0.5 — a body entering water from height, the BridgedT circuit at its purest
+**Breaking Wave:** perc_v2_pitch=180, perc_v2_decay=120, perc_v2_blend=0.5, perc_v2_algoMode=1 (Modal), perc_v2_snap=0.5 — wave on rock, circuit model meeting modal resonance
+**Rain Patter:** perc_v3_pitch=8000, perc_v3_decay=25, perc_v3_blend=0.3, perc_v3_character=0.4, perc_v3_tone=0.7 — light rain on the ocean surface, six inharmonic squares
+**School Reaction:** perc_xvc_amount=0.4, V1 kick pumps V2 snare filter, V3 chokes V4 — the school: each splash triggers the next
+**Alien Percussion:** perc_v1_blend=0.8 across all voices, perc_v1_algoMode=0 (FM), perc_v1_character=0.6 — Layer O dominant, every hit an FM flash from the deep
 
 ---
 
@@ -515,8 +525,8 @@ A time machine for video game sound. 6 chip engines (NES, FM, SNES, GameBoy, PCE
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
 | `opal_grainSize` | 1–500 ms | 20–80 | Individual grain length. Shorter = more granular texture. |
-| `opal_grainDensity` | 1–32 | 8–16 | Grains per cloud. Higher = denser, more continuous. |
-| `opal_positionScatter` | 0–1 | 0.1–0.4 | Randomize grain read position. Higher = more chaotic. |
+| `opal_density` | 1–32 | 8–16 | Grains per cloud. Higher = denser, more continuous. |
+| `opal_posScatter` | 0–1 | 0.1–0.4 | Randomize grain read position. Higher = more chaotic. |
 | `opal_pitchScatter` | 0–24 st | 2–7 | Random pitch offset per grain. Creates shimmer. |
 | `opal_freeze` | on/off | — | Freeze current grain buffer. Infinite sustain. |
 | `opal_panScatter` | 0–1 | 0.3–0.6 | Stereo spread of grains. Wide = immersive. |
@@ -541,7 +551,7 @@ A time machine for video game sound. 6 chip engines (NES, FM, SNES, GameBoy, PCE
 ## 11. ORBITAL (Orbital)
 *64-partial additive synthesis with formant shaping*
 
-**Accent:** Warm Red `#FF6B6B` | **Prefix:** `orbital_` | **Voices:** 6
+**Accent:** Warm Red `#FF6B6B` | **Prefix:** `orb_` | **Voices:** 6
 
 ### What It Does
 Pure additive synthesis: 64 harmonic partials per voice, each with independent amplitude. Formant filter shapes the partial envelope with spectral tilt and vowel modes. Clean, precise, and endlessly sculptable.
@@ -549,10 +559,11 @@ Pure additive synthesis: 64 harmonic partials per voice, each with independent a
 ### Key Parameters
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
-| `orbital_partialTilt` | -1 to +1 | -0.3 to +0.3 | Spectral tilt. Negative = dark, positive = bright. |
-| `orbital_oddEven` | 0–1 | 0.5 | Balance between odd and even harmonics |
-| `orbital_formantMode` | tilt/vowels | — | Spectral shaping mode |
-| `orbital_partialCount` | 1–64 | 16–48 | How many partials are active |
+| `orb_brightness` | -1 to +1 | -0.3 to +0.3 | Spectral tilt. Negative = dark, positive = bright. |
+| `orb_oddEven` | 0–1 | 0.5 | Balance between odd and even harmonics |
+| `orb_formantShape` | 0–1 | — | Spectral formant shaping amount |
+| `orb_formantShift` | 0–1 | — | Shifts formant center frequency up/down |
+| `orb_morph` | 0–1 | 0.3–0.7 | Crossfades between Profile A and Profile B partial maps |
 
 ### Coupling
 - **Sends:** Stereo audio (ch0/1)
@@ -565,42 +576,59 @@ Pure additive synthesis: 64 harmonic partials per voice, each with independent a
 - **+ Obscura:** Additive output scanned through Obscura's spring chain
 
 ### Starter Recipes
-**Organ:** partialCount=32, tilt=0, oddEven=0.7 (mostly odd)
-**Bright Bell:** partialCount=48, tilt=0.5, decay=0.8, sustain=0.0
-**Vowel Pad:** formantMode=vowel, vowelMorph=0.5, partialCount=64
+**Organ:** morph=0.5, brightness=0, oddEven=0.7 (mostly odd)
+**Bright Bell:** brightness=0.5, morph=0.8, ampDecay=0.8, ampSustain=0.0
+**Formant Pad:** formantShape=0.8, formantShift=0.5, morph=0.5, oddEven=0.5
 
 ---
 
 ## 12. ORGANON (Organon)
-*Self-feeding modal synthesis with entropy analysis*
+*Biochemical metabolism synth — Variational Free Energy drives Port-Hamiltonian modal arrays*
 
 **Accent:** Bioluminescent Cyan `#00CED1` | **Prefix:** `organon_` | **Voices:** 4
 
 ### What It Does
-A 32-mode resonator network that feeds back into itself. Shannon entropy analysis of its own output drives the behavior — when the sound becomes predictable, it mutates. Creates sounds that seem alive: metallic bells, singing bowls, self-evolving drones.
+ORGANON is a deep-sea chemotroph: it eats audio signals and converts their information content into living harmonic structures. Each of the 4 voices is an independent organism with its own metabolic state machine based on the Variational Free Energy / Active Inference framework (Karl Friston, 2010). The organism ingests audio — from a coupling partner or its own internal noise substrate — filters it through an enzyme selectivity bandpass, analyzes its entropy, then uses that signal to drive a Port-Hamiltonian modal array (descended from Julius O. Smith III's modal synthesis). Free energy accumulates on note-on and dissipates on release; when the organism starves it dims, when fed rich signal it blooms. Blessed (B011): unanimous seance praise, described as publishable research.
+
+No two performances sound identical — metabolic state accumulates from coupling history.
 
 ### Key Parameters
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
-| `organon_entropy` | 0–1 | 0.3–0.6 | How much entropy analysis affects modal behavior |
-| `organon_modeSpread` | 0–1 | 0.4–0.7 | Frequency spread across 32 modes |
-| `organon_feedback` | 0–1 | 0.3–0.6 | Self-feeding intensity. Higher = more alive. |
-| `organon_damping` | 0–1 | 0.2–0.5 | How quickly modes decay |
+| `organon_metabolicRate` | 0.1–10 Hz | 0.5–3.0 | Speed of energy turnover. 0.1 Hz = glacial deep-sea, 10 Hz = frantic surface feeding. Aftertouch accelerates this. |
+| `organon_enzymeSelect` | 20–20000 Hz | 200–4000 | Bandpass center for ingestion. Narrow = specialist feeder, high = generalist. |
+| `organon_catalystDrive` | 0–2 | 0.4–1.2 | How aggressively metabolic energy excites the modal array. 0 = silent, 2 = potentially self-exciting. |
+| `organon_dampingCoeff` | 0.01–0.99 | 0.15–0.45 | Damping in the modal ODE. Low = long crystalline tails, high = muted percussive response. |
+| `organon_signalFlux` | 0–1 | 0.4–0.8 | Gain of the ingestion input — coupling audio or internal noise. 0 = starved, 1 = fully fed. |
+| `organon_phasonShift` | 0–1 | 0–0.6 | Temporal offset between the 4 voices' metabolic cycles. 0 = unison pulse, 1 = fully polyrhythmic (voices fully out of phase). Named after quasicrystal phason modes. |
+| `organon_isotopeBalance` | 0–1 | 0.3–0.7 | Spectral weighting of modal partials. 0 = subharmonic (dark), 0.5 = natural harmonic series, 1 = upper partials (metallic, alien). |
+| `organon_lockIn` | 0–1 | 0–0.5 | Sync metabolic rate to DAW tempo. 0 = free-running organic drift, 1 = quantized to beat subdivisions. |
+| `organon_membrane` | 0–1 | 0.1–0.4 | Membrane porosity — reverb send level. High porosity leaks energy into shared reverb. VFE surprise modulates this automatically: stressed organisms sweat more. |
+| `organon_noiseColor` | 0–1 | 0.3–0.7 | Spectral tilt of internal noise substrate (when no coupling partner feeds the organism). 0 = dark rumble, 0.5 = white, 1 = bright hiss. Coupling input bypasses this. |
 
 ### Coupling
-- **Sends:** Modal synthesis output (ch0/1)
-- **Receives:** AudioToFM (external audio perturbs modes), AudioToWavetable (drives modes)
-- **Best as source for:** AudioToWavetable (its evolving harmonics are great source material)
+- **Sends:** Metabolic modal output (ch0/1) — usable as AudioToFM or AudioToWavetable source for partner engines
+- **Receives:** AudioToFM, AudioToWavetable (audio feeds the ingestion stage — organism eats it), RhythmToBlend, EnvToDecay, AmpToFilter, EnvToMorph, LFOToPitch, PitchToPitch
+- **Best as target for:** Any audio-output engine (Ouroboros, Obese, Onset) — ORGANON literally digests their output into harmonic structure
+- **Mod wheel:** Adds up to +3 Hz to metabolic rate | **Aftertouch:** Boosts metabolic rate and free energy — plays the organism harder
+
+### Variational Free Energy (B011 — Seance Blessed)
+The VFE state machine tracks three internal readouts per voice that shape sound automatically:
+- **freeEnergy:** Envelopes output amplitude — builds on note-on, dissipates on release
+- **surprise:** Shifts fundamental pitch and widens stereo spread when organism is stressed; also modulates `organon_membrane` reverb send
+- **adaptationGain:** Scales catalyst drive — well-adapted organisms amplify their own excitation
 
 ### Recommended Pairings
-- **+ Overbite:** Formant-shaped excitation → modal resonance = vocal metal
-- **+ Ouroboros:** Two self-feeding engines coupled = chaos system
-- **+ Optic:** Entropy-driven modulation visualized in real-time
+- **+ Ouroboros:** Chaos attractor output feeds ORGANON's ingestion — organism metabolizes chaos into harmonic structure
+- **+ Onset:** Drum transients feed the enzyme bandpass — percussive bursts bloom into resonant modal clouds
+- **+ Opal:** ORGANON's modal output drives Opal grain scatter — living harmonic organism seeds a granular cloud
+- **+ Optic:** ORGANON's evolving modal output drives Optic's visual modulator in real-time
 
 ### Starter Recipes
-**Singing Bowl:** modeSpread=0.4, feedback=0.4, entropy=0.3, damping=0.2
-**Self-Evolving Drone:** feedback=0.7, entropy=0.6, modeSpread=0.6
-**Metallic Bell:** modeSpread=0.8, damping=0.5, feedback=0.2, entropy=0.1
+**Hydrothermal Bloom:** metabolicRate=1.5, signalFlux=0.7, catalystDrive=0.6, dampingCoeff=0.2, isotopeBalance=0.5, membrane=0.3
+**Deep Crystal:** metabolicRate=0.3, dampingCoeff=0.08, isotopeBalance=0.8, catalystDrive=0.4, phasonShift=0.0, noiseColor=0.3
+**Polyrhythmic Colony:** phasonShift=0.9, metabolicRate=2.0, lockIn=0.5, signalFlux=0.6, catalystDrive=0.8
+**Starved Drone:** signalFlux=0.1, metabolicRate=0.5, dampingCoeff=0.05, noiseColor=0.2, membrane=0.5
 
 ---
 
@@ -717,26 +745,35 @@ Real-time FFT (2048-point STFT, 4× overlap) with 4 spectral operations: FOLD, M
 ---
 
 ## 16. ORACLE (Oracle)
-*Stochastic GENDY + Maqam microtonal synthesis*
+*Stochastic GENDY + Maqam microtonal synthesis (B010 Blessed)*
 
 **Accent:** Prophecy Indigo `#4B0082` | **Prefix:** `oracle_` | **Voices:** 8
 
 ### What It Does
-Iannis Xenakis' GENDY algorithm: stochastic breakpoint waveforms where 8-32 breakpoints per cycle undergo random walks. Plus 8 Maqam scales with quarter-tone microtonal tuning. Sounds like prophecy — alien, unpredictable, ancient.
+Iannis Xenakis' GENDY algorithm: stochastic breakpoint waveforms where 8–32 breakpoints per waveform cycle undergo random walks drawn from a morphable Cauchy/Logistic distribution blend. Mirror barriers reflect overshooting values. Cubic Hermite (Catmull-Rom) interpolation renders smooth per-sample output between breakpoints. Plus 9-option Maqam tuning system (12-TET + 8 maqamat with quarter-tone microtonal steps) blended via the GRAVITY parameter. Two ADSR envelopes: amplitude and stochastic activity. Sounds like prophecy — alien, unpredictable, ancient.
 
 ### Key Parameters
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
-| `oracle_breakpoints` | 8–32 | 12–20 | Breakpoints per cycle. More = more complex. |
-| `oracle_walkRange` | 0–1 | 0.2–0.5 | Random walk magnitude. Higher = wilder. |
-| `oracle_maqamScale` | 0–7 | — | Which Maqam scale (Rast, Bayati, Saba, etc.) |
-| `oracle_maqamGravity` | 0–1 | 0.3–0.7 | Blend between 12-TET and Maqam tuning |
-| `oracle_distribution` | Cauchy/Logistic | Cauchy | Random walk distribution shape |
+| `oracle_breakpoints` | 8–32 | 12–20 | Breakpoints per cycle. More = more complex waveform. |
+| `oracle_timeStep` | 0–1 | 0.2–0.4 | How far breakpoints walk in time per cycle. Higher = more rhythmic instability. |
+| `oracle_ampStep` | 0–1 | 0.2–0.5 | How far breakpoints walk in amplitude per cycle. Higher = wilder timbral chaos. |
+| `oracle_distribution` | 0–1 | 0.3–0.7 | Morph between Logistic (smooth, 0.0) and Cauchy (heavy-tailed, 1.0) distribution. |
+| `oracle_barrierElasticity` | 0–1 | 0.3–0.7 | Elasticity of mirror barriers. 0 = hard reflect, 1 = soft bounce. |
+| `oracle_maqam` | 12-TET/Rast/Bayati/Saba/Hijaz/Sikah/Nahawand/Kurd/Ajam | 12-TET | Tuning system. 12-TET = standard. Any other = Maqam quarter-tone intonation. |
+| `oracle_gravity` | 0–1 | 0.3–0.8 | Blend between 12-TET (0.0) and selected Maqam tuning (1.0). |
+| `oracle_drift` | 0–1 | 0.2–0.5 | Long-term waveform drift. Slowly reshapes the stochastic character over time. |
 
-### Coupling
-- **Sends:** Stochastic audio (ch0/1)
-- **Receives:** AudioToFM (perturb breakpoints), AmpToFilter (modulate barriers), EnvToMorph (distribution morph)
-- **Best as source for:** AudioToFM (stochastic output as FM source = unique timbres)
+### Macros
+- **PROPHECY** — pushes oracle_ampStep + oracle_distribution toward maximum chaos
+- **EVOLUTION** — drives oracle_drift + stochastic envelope shape
+- **GRAVITY** — sweeps oracle_gravity (12-TET → full Maqam intonation)
+- **DRIFT** — long-term oracle_drift + oracle_timeStep combined
+
+### Coupling (B010 Blessed)
+- **Sends:** Stochastic stereo audio (ch0/1) with 1% phase decorrelation on R
+- **Receives:** AudioToFM (perturbs breakpoint amplitudes), AmpToFilter (modulates barrier positions), EnvToMorph (drives distribution morph between Logistic and Cauchy)
+- **Best as source for:** AudioToFM (stochastic output as FM source = unique non-repeating sidebands)
 
 ### Recommended Pairings
 - **+ Obscura:** Stochastic excitation → mass-spring resonance = alien instruments
@@ -744,75 +781,85 @@ Iannis Xenakis' GENDY algorithm: stochastic breakpoint waveforms where 8-32 brea
 - **+ Opal:** Oracle tones granulated by Opal = stochastic cloud
 
 ### Starter Recipes
-**Xenakis Drone:** breakpoints=16, walkRange=0.3, maqamGravity=0.0
-**Maqam Lead:** breakpoints=12, walkRange=0.15, maqamScale=Rast, maqamGravity=0.8
-**Chaos Texture:** breakpoints=32, walkRange=0.6, distribution=Cauchy
+**Xenakis Drone:** breakpoints=16, ampStep=0.3, timeStep=0.1, maqam=12-TET, gravity=0.0, distribution=0.8
+**Maqam Lead:** breakpoints=12, ampStep=0.15, timeStep=0.05, maqam=Rast, gravity=0.8, drift=0.2
+**Chaos Texture:** breakpoints=32, ampStep=0.6, timeStep=0.5, distribution=1.0 (Cauchy), barrierElasticity=0.2
 
 ---
 
 ## 17. OBSCURA (Obscura)
-*Scanned synthesis — mass-spring physics*
+*Scanned synthesis — 128-mass spring chain physics*
 
 **Accent:** Daguerreotype Silver `#8A9BA8` | **Prefix:** `obscura_` | **Voices:** 8
 
 ### What It Does
-A 128-mass spring chain simulated with Verlet integration. Excite the chain with Gaussian impulses or bowing, then "scan" it at audio rate (like a pickup on a vibrating string). Different boundary modes (Fixed/Free/Periodic) create radically different timbres.
+Implements the scanned synthesis technique pioneered by Bill Verplank and Max Mathews at CCRMA (Stanford, late 1990s). A 128-mass spring chain is simulated at ~4 kHz using Verlet integration. At note-on, a Gaussian impulse excites the chain at `obscura_excitePos` with width `obscura_exciteWidth`. `obscura_sustain` applies a continuous bowing force to maintain energy. A scanner sweeps across the chain at MIDI note frequency, reading displacements via cubic Hermite interpolation to produce audio-rate output — L channel scans forward, R channel scans backward. Boundary modes and initial chain shape determine fundamental timbral character. Two envelopes: amplitude and physics excitation.
 
 ### Key Parameters
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
-| `obscura_stiffness` | 0–1 | 0.3–0.6 | Spring stiffness. Higher = brighter, metallic. |
-| `obscura_damping` | 0–1 | 0.1–0.3 | Energy dissipation. Lower = longer sustain. |
-| `obscura_nonlinearity` | 0–1 | 0.1–0.3 | Spring nonlinearity. Adds chaos. |
-| `obscura_boundary` | Fixed/Free/Periodic | Fixed | Boundary conditions at chain ends |
-| `obscura_excitation` | Impulse/Bow | Impulse | How the chain is excited |
+| `obscura_stiffness` | 0–1 | 0.3–0.6 | Spring stiffness. Higher = brighter, more metallic harmonic content. |
+| `obscura_damping` | 0–1 | 0.1–0.3 | Energy dissipation per step. Lower = longer sustain and ring. |
+| `obscura_nonlinear` | 0–1 | 0.05–0.2 | Spring nonlinearity coefficient. Introduces inharmonicity and chaos. |
+| `obscura_excitePos` | 0–1 | 0.3–0.7 | Position on chain where impulse strikes. 0.5 = center. |
+| `obscura_exciteWidth` | 0–1 | 0.2–0.5 | Width of the Gaussian impulse. Narrow = bright attack, wide = soft. |
+| `obscura_scanWidth` | 0–1 | 0.3–0.6 | Scanner readout width. Narrow = bright, wide = darker Hann-windowed average. |
+| `obscura_boundary` | Fixed/Free/Periodic | Fixed | Boundary conditions at chain ends. Fixed = string-like. Free = rod-like. Periodic = infinite loop. |
+| `obscura_sustain` | 0–1 | 0.0–0.4 | Continuous bowing force applied to chain. 0 = impulse-only attack, >0 = sustained tone. |
+| `obscura_initShape` | Sine/Saw/Random/Flat | Sine | Initial chain displacement shape at note-on. |
+
+### Macros
+- **CHARACTER** — drives obscura_stiffness + obscura_nonlinear (timbre hardness axis)
+- **MOVEMENT** — drives obscura_scanWidth + LFO depth (animation)
+- **COUPLING** — drives coupling send level
+- **SPACE** — drives obscura_damping inverse + envelope release
 
 ### Coupling
 - **Sends:** Stereo scan output (ch0/1) — forward scan L, backward scan R
-- **Receives:** AudioToFM (force on chain), AmpToFilter (stiffness modulation), RhythmToBlend (impulse trigger)
-- **Best as source for:** AudioToWavetable (scanned waveform as wavetable source)
+- **Receives:** AudioToFM (applies external force to chain masses), AmpToFilter (modulates stiffness), RhythmToBlend (triggers impulse excitation)
+- **Best as source for:** AudioToWavetable (scanned waveform as live wavetable source for other engines)
 
 ### Recommended Pairings
-- **+ Oracle:** Stochastic excitation of the spring chain = alien resonance
+- **+ Oracle:** Stochastic GENDY excitation drives the chain = alien resonator
 - **+ Obsidian:** Phase distortion + scanned synthesis = complex metallics
 - **+ Organon:** Two physical modeling engines coupled = emergent acoustics
 
 ### Starter Recipes
-**Bowed String:** excitation=Bow, stiffness=0.4, damping=0.15, boundary=Fixed
-**Bell Cluster:** excitation=Impulse, stiffness=0.7, nonlinearity=0.2, boundary=Free
-**Ambient Drone:** excitation=Bow, stiffness=0.2, damping=0.05, boundary=Periodic
+**Bowed String:** sustain=0.35, stiffness=0.4, damping=0.15, boundary=Fixed, initShape=Sine
+**Bell Cluster:** sustain=0.0, stiffness=0.7, nonlinear=0.15, boundary=Free, initShape=Random
+**Ambient Drone:** sustain=0.25, stiffness=0.2, damping=0.05, boundary=Periodic, scanWidth=0.6
 
 ---
 
 ## 18. OCEANIC (Oceanic)
 *Swarm particle synthesis — 128 oscillators that flock like creatures*
 
-**Accent:** Phosphorescent Teal `#00B4A0` | **Prefix:** `oceanic_` | **Voices:** Mono/Poly2/Poly4 (max 4)
+**Accent:** Phosphorescent Teal `#00B4A0` | **Prefix:** `ocean_` | **Voices:** Mono/Poly2/Poly4 (max 4)
 
 ### What It Does
 128 oscillating particles per voice that self-organize using Craig Reynolds' boid flocking rules (separation, alignment, cohesion) plus an attractor anchored to the MIDI note frequency. Particles live in a 3D perceptual space — log-frequency, amplitude, pan. The emergent flocking behavior produces evolving, organic timbres impossible with static additive synthesis.
 
-Two independent envelopes: **Amp ADSR** controls loudness; **Swarm ADSR** controls the *strength of the boid rules* — the collective intelligence of the school — entirely separately. At `swarmSustain=0` the boid forces extinguish during sustain: particles drift freely while the note holds at full amplitude. At `swarmAttack=2.5s` the school takes 2.5 seconds to learn to be a school — the attack is organic, scattered, then coheres into a tone. B013 Blessed: the Chromatophore Modulator — aftertouch boosts separation, modeling cephalopod color-shift physics.
+Two independent envelopes: **Amp ADSR** controls loudness; **Swarm ADSR** controls the *strength of the boid rules* — the collective intelligence of the school — entirely separately. At `ocean_swarmEnvSustain=0` the boid forces extinguish during sustain: particles drift freely while the note holds at full amplitude. At `ocean_swarmEnvAttack=2.5s` the school takes 2.5 seconds to learn to be a school — the attack is organic, scattered, then coheres into a tone. B013 Blessed: the Chromatophore Modulator — aftertouch boosts separation, modeling cephalopod color-shift physics.
 
 ### Key Parameters
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
-| `oceanic_separation` | 0–1 | 0.2–0.7 | How strongly particles repel nearby neighbors — spreads swarm spectrally |
-| `oceanic_alignment` | 0–1 | 0.3–0.7 | How strongly particles match flock velocity — smooths collective motion |
-| `oceanic_cohesion` | 0–1 | 0.3–0.7 | How strongly particles pull toward flock centroid — tightens the school |
-| `oceanic_tether` | 0–1 | 0.3–0.8 | Attractor strength toward MIDI note — lower = near-unpitched drift |
-| `oceanic_scatter` | 0–1 | 0.1–0.4 | Velocity-proportional note-on perturbation — harder hits scatter further |
-| `oceanic_subflocks` | 1–4 | 2–4 | Sub-flocks at 1×/2×/1.5×/3× MIDI frequency — emergent chord cluster |
-| `oceanic_damping` | 0–1 | 0.3–0.7 | Velocity damping on particles — higher = slower, more sustained drift |
-| `oceanic_waveform` | 0–3 | 0–1 | Per-particle: 0=Sine, 1=Saw (PolyBLEP), 2=Pulse (PolyBLEP), 3=Noise |
-| `oceanic_swarmAttack` | 0–5s | 0.05–2.5 | Time for boid forces to build to full strength after note-on |
-| `oceanic_swarmDecay` | 0–5s | 0.1–1.0 | Time for boid forces to fall from peak to sustain level |
-| `oceanic_swarmSustain` | 0–1 | 0.4–1.0 | Sustained boid force level. 0 = school dissolves, particles drift freely |
-| `oceanic_swarmRelease` | 0–5s | 0.3–2.0 | Time for boid forces to extinguish after note-off |
-| `oceanic_lfo1Rate` | Hz | 0.01–10 | LFO1 rate — modulates separation |
-| `oceanic_lfo1Depth` | 0–1 | 0.1–0.4 | LFO1 depth on separation — breathing swarm |
-| `oceanic_lfo2Rate` | Hz | 0.01–10 | LFO2 rate — modulates cohesion |
-| `oceanic_lfo2Depth` | 0–1 | 0.1–0.3 | LFO2 depth on cohesion — tidal pull |
+| `ocean_separation` | 0–1 | 0.2–0.7 | How strongly particles repel nearby neighbors — spreads swarm spectrally |
+| `ocean_alignment` | 0–1 | 0.3–0.7 | How strongly particles match flock velocity — smooths collective motion |
+| `ocean_cohesion` | 0–1 | 0.3–0.7 | How strongly particles pull toward flock centroid — tightens the school |
+| `ocean_tether` | 0–1 | 0.3–0.8 | Attractor strength toward MIDI note — lower = near-unpitched drift |
+| `ocean_scatter` | 0–1 | 0.1–0.4 | Velocity-proportional note-on perturbation — harder hits scatter further |
+| `ocean_subflocks` | 1–4 | 2–4 | Sub-flocks at 1×/2×/1.5×/3× MIDI frequency — emergent chord cluster |
+| `ocean_damping` | 0–1 | 0.3–0.7 | Velocity damping on particles — higher = slower, more sustained drift |
+| `ocean_waveform` | 0–3 | 0–1 | Per-particle: 0=Sine, 1=Saw (PolyBLEP), 2=Pulse (PolyBLEP), 3=Noise |
+| `ocean_swarmEnvAttack` | 0–5s | 0.05–2.5 | Time for boid forces to build to full strength after note-on |
+| `ocean_swarmEnvDecay` | 0–5s | 0.1–1.0 | Time for boid forces to fall from peak to sustain level |
+| `ocean_swarmEnvSustain` | 0–1 | 0.4–1.0 | Sustained boid force level. 0 = school dissolves, particles drift freely |
+| `ocean_swarmEnvRelease` | 0–5s | 0.3–2.0 | Time for boid forces to extinguish after note-off |
+| `ocean_lfo1Rate` | Hz | 0.01–10 | LFO1 rate — modulates separation |
+| `ocean_lfo1Depth` | 0–1 | 0.1–0.4 | LFO1 depth on separation — breathing swarm |
+| `ocean_lfo2Rate` | Hz | 0.01–10 | LFO2 rate — modulates cohesion |
+| `ocean_lfo2Depth` | 0–1 | 0.1–0.3 | LFO2 depth on cohesion — tidal pull |
 
 ### Coupling
 - **Sends:** Post-limiter stereo swarm audio
@@ -831,10 +878,10 @@ Aftertouch (channel pressure) boosts separation ×0.25 — pressing harder makes
 - **+ Opal:** Swarm output granulated — double-emergent cloud
 
 ### Starter Recipes
-**Boid School:** subflocks=4, tether=0.6, separation=0.4, cohesion=0.5, waveform=Sine
-**Chromatophore Pad:** separation=0.3, tether=0.7, cohesion=0.5 — use aftertouch for color
-**Slow Cohere:** swarmAttack=2.5, swarmSustain=0.8, separation=0.5, cohesion=0.4
-**Noise Flock:** waveform=Noise, subflocks=4, tether=0.4, separation=0.6 — self-organizing texture
+**Boid School:** ocean_subflocks=4, ocean_tether=0.6, ocean_separation=0.4, ocean_cohesion=0.5, ocean_waveform=0 (Sine)
+**Chromatophore Pad:** ocean_separation=0.3, ocean_tether=0.7, ocean_cohesion=0.5 — use aftertouch for color
+**Slow Cohere:** ocean_swarmEnvAttack=2.5, ocean_swarmEnvSustain=0.8, ocean_separation=0.5, ocean_cohesion=0.4
+**Noise Flock:** ocean_waveform=3 (Noise), ocean_subflocks=4, ocean_tether=0.4, ocean_separation=0.6 — self-organizing texture
 
 ---
 
@@ -952,10 +999,10 @@ Prismatic light bouncing off mirrors. A dual oscillator with wavefolder (grit) f
 - OBLIQUE (prismatic bounce), ORIGAMI (spectral fold), ORACLE (stochastic)
 
 **Physical engines** (simulate physics):
-- OBSCURA (mass-spring), OCEANIC (paraphonic string ensemble), ORGANON (modal resonance)
+- OBSCURA (mass-spring scanned synthesis), OCEANIC (boid swarm synthesis), ORGANON (VFE metabolism synthesis)
 
 **Chaos engines** (generate complexity):
-- OUROBOROS (feedback), ORGANON (entropy), ORACLE (stochastic walk)
+- OUROBOROS (ODE attractor), ORGANON (metabolic entropy), ORACLE (stochastic GENDY walk)
 
 ---
 
@@ -1039,3 +1086,301 @@ A single engine containing two cognitive halves. **Oubli** (forgetting) captures
 **Reactive Lead:** blend=0.85, reactivity=0.8, oscShape=Saw, subLevel=0.4, interference=0.15, memoryDecay=1.5, attack=0.005, decay=0.2, sustain=0.7
 **Dissolving Bells:** blend=0.5, memoryDecay=6, memoryGrain=30, memoryDrift=0.6, oscShape=Sine, reactivity=0.5, interference=0.5, filterCutoff=6000
 **Memory Drone:** blend=0.1, memoryDecay=25, memoryGrain=400, memoryDrift=0.3, interference=0.6, oscShape=Triangle, attack=2.0, sustain=1.0, release=4.0
+
+---
+
+## 22. OHM (XOhm)
+
+**Accent:** Sage `#87AE73` | **Prefix:** `ohm_` | **Max voices:** 12 | **Macro axis:** MEDDLING / COMMUNE
+
+### What It Is
+
+OHM is the Hippy Dad of the Constellation Family — a physical modeling ensemble built around a folk-string waveguide core surrounded by eccentric in-laws. At rest it sounds like a single plucked or bowed instrument in a warm room. Push MEDDLING and the in-laws arrive: theremin interference, glass harmonica partials, a granular scatter engine. Push COMMUNE and they start listening to each other.
+
+### DSP Engine
+
+Karplus-Strong waveguide at the core: delay line → damping filter → body resonance filter → output. Body material (Wood/Metal/Gourd/Air) adjusts Q and resonance frequency. `FamilySympatheticBank` adds tuned secondary resonances; `FamilyOrganicDrift` adds continuous slow pitch microvariations. Three interference sources gated by MEDDLING: theremin sine oscillator, glass partial generator, and Hann-windowed grain engine (4.6B-state LCG seed). `OhmObedFM` — 2-operator FM with 8 selectable harmonic ratios (H 1:1 through Pu 11:6) — arrives only when MEDDLING > 0.7.
+
+### Macros
+
+**JAM (M1)** — Dad presence: scales waveguide output level. Automate for solo/verse dynamics.
+
+**MEDDLING (M2)** — In-law threshold: below `ohm_meddlingThresh` all interference is silent; above it, theremin/glass/grain blend in proportionally. Obed FM arrives at 0.7+.
+
+**COMMUNE (M3)** — Merges in-law interference into the Dad signal at low amplitude rather than adding on top. Full COMMUNE absorbs the in-laws into a modulated, beating complex string.
+
+**MEADOW (M4)** — Scales reverb mix and delay feedback simultaneously. Low = dry living room; high = backyard dusk with long echoes.
+
+### Key Parameters
+
+| Parameter | Range | Function |
+|-----------|-------|----------|
+| `ohm_dadInstrument` | 0–8 (choice) | Banjo, Guitar, Mandolin, Dobro, Fiddle (bow), Harmonica, Djembe, Kalimba, Sitar |
+| `ohm_pluckBrightness` | 0–1 | Pick attack transient brightness |
+| `ohm_bowPressure` | 0–1 | Bow contact pressure (Fiddle mode only) |
+| `ohm_bodyMaterial` | 0–3 (choice) | Wood, Metal (Q=8), Gourd, Air |
+| `ohm_sympatheticAmt` | 0–1 | Sympathetic string resonance volume |
+| `ohm_damping` | 0.8–0.999 | Feedback loop damping — higher = longer sustain |
+| `ohm_inlawLevel` | 0–1 | Master level of theremin/glass/grain interference |
+| `ohm_thereminScale` | 0.5–2.0 | Pitch ratio of theremin relative to fundamental |
+| `ohm_spectralFreeze` | 0–1 | Locks in-law signal — instant drone |
+| `ohm_grainSize` | 10–500ms | Grain window length |
+| `ohm_obedLevel` | 0–1 | Obed FM carrier amplitude |
+| `ohm_fmRatioPreset` | 0–7 (choice) | H 1:1, C 3:2, N 5:4, O 2:1, Fe 5:3, Au 7:4, U 9:5, Pu 11:6 |
+| `ohm_fmIndex` | 0–8 | FM modulation depth |
+| `ohm_delayTime` | 0.05–2.0s | Echo repeat time |
+| `ohm_reverbMix` | 0–1 | Reverb wet level (also scaled by MEADOW) |
+
+### Sound Design Recipes
+
+**Campfire Guitar** — Instrument: Guitar, Body: Wood. JAM 0.7, MEDDLING 0, COMMUNE 0, MEADOW 0.4. Damping 0.996. Clean, warm, slightly reverberant.
+
+**Theremin Séance** — Instrument: Kalimba, Body: Air. JAM 0.5, MEDDLING 0.8, COMMUNE 0.2, MEADOW 0.5. thereminScale 1.5, inlawLevel 0.7. Tine backdrop for wavering ethereal interference.
+
+**Sunday Communion Drone** — Instrument: Harmonica. spectralFreeze 0.85, COMMUNE 0.8, MEDDLING 0.85, MEADOW 0.7, delayTime 1.2s. Hold a note — in-law interference freezes into a crystalline sustained tone.
+
+**The Family Argument** — Body: Metal. JAM 0.6, MEDDLING 1.0, COMMUNE 0.0. FM ratio Pu (11:6), fmIndex 6.0, grainSize 15ms. Everything fighting simultaneously.
+
+### Coupling
+
+Accepts `LFOToPitch` (external pitch mod), `AmpToFilter` (raises damping), `EnvToMorph` (scales exciter intensity). Spectral freeze + COMMUNE makes OHM an always-available drone source for other engines.
+
+---
+
+## 23. ORPHICA (XOrphica)
+
+**Accent:** Siren Seafoam `#7FDBCA` | **Prefix:** `orph_` | **Max voices:** 16 | **Identity:** Microsound harp, siphonophore
+
+### What It Is
+
+ORPHICA is a microsound harp — a waveguide plucked string with a per-voice grain processor that captures the string's own output into a circular buffer and plays it back as overlapping grain clouds. The string and cloud share the same voice and the same pitch. The result sits between a plucked instrument and a dispersed texture: precise in the transient, diffuse and shimmering in the sustain.
+
+### DSP Engine
+
+`PluckExciter` → Karplus-Strong waveguide → `FamilyDampingFilter` → `FamilyBodyResonance` → `FamilySympatheticBank`. String material (Nylon/Steel/Crystal/Light) adjusts damping and brightness. `FamilyOrganicDrift` adds continuous pitch microvariations. Per-voice `OrphicaMicrosound` engine: 8192-sample circular buffer, four simultaneous Hann-windowed grains. Four grain modes: Stutter (immediate repeat), Scatter (randomized read position), Freeze (locked read — instant drone), Reverse (reads backwards). FX chain splits at a configurable crossover note: LOW path (sub-octave, tape saturation, dark delay, deep plate reverb) vs HIGH path (shimmer reverb, micro delay, spectral smear, crystal chorus). LOW leans left, HIGH leans right for natural stereo imaging.
+
+### Macros
+
+**PLUCK (M1)** — Attack transient sharpness and exciter gain. Low = soft airy initiation; high = hard defined transient. Also energizes the sympathetic bank.
+
+**FRACTURE (M2)** — Microsound intensity: adds to `orph_microMix` and increases grain scatter. At zero the grain layer is silent. Above 0.7 produces a grain storm on sustained notes.
+
+**SURFACE (M3)** — Biases the crossover note split toward LOW (warm, reverberant) or HIGH (bright, shimmer, chorus-widened) FX path.
+
+**DIVINE (M4)** — Scales shimmer reverb mix, deep plate mix, and spectral smear simultaneously. The atmosphere macro. Push to dissolve the instrument into a luminous field.
+
+### Key Parameters
+
+| Parameter | Range | Function |
+|-----------|-------|----------|
+| `orph_stringMaterial` | 0–3 (choice) | Nylon, Steel, Crystal, Light |
+| `orph_pluckBrightness` | 0–1 | Base pluck transient brightness |
+| `orph_pluckPosition` | 0–1 | 0=near bridge (bright), 1=near nut (dark) |
+| `orph_stringCount` | 1–6 | Sympathetic strings per voice |
+| `orph_bodySize` | 0–1 | Body resonance frequency and Q |
+| `orph_sympatheticAmt` | 0–1 | Sympathetic string amplitude |
+| `orph_damping` | 0.8–0.999 | Feedback loop damping |
+| `orph_microMode` | 0–3 (choice) | Stutter, Scatter, Freeze, Reverse |
+| `orph_microRate` | 0.5–50 Hz | Grain trigger rate |
+| `orph_microSize` | 5–200ms | Grain window length |
+| `orph_microDensity` | 1–20 | Grain overlap count |
+| `orph_microScatter` | 0–1 | Position randomization in Scatter mode |
+| `orph_microMix` | 0–1 | Grain cloud dry/wet |
+| `orph_crossoverNote` | 36–84 (MIDI) | LOW/HIGH FX path split point |
+| `orph_subAmount` | 0–1 | Sub-octave sine in LOW path |
+| `orph_shimmerMix` | 0–1 | Shimmer reverb in HIGH path |
+| `orph_spectralSmear` | 0–1 | Granular dissolve on HIGH path output |
+
+### Sound Design Recipes
+
+**The Harp** — Material: Nylon. PLUCK 0.5, FRACTURE 0, SURFACE 0.5, DIVINE 0.25. Micro mix 0. Transparent, pitched, natural decay.
+
+**Frozen Lake** — Micro mode: Freeze. PLUCK 0.3, FRACTURE 0.8, SURFACE 0.3, DIVINE 0.7. Micro mix 0.9, size 120ms, density 12. Play a chord, freeze it — drone persists under new notes.
+
+**Shattered Glass** — Material: Light, mode: Scatter. PLUCK 0.9, FRACTURE 0.9, SURFACE 0.8. Scatter 0.8, rate 25 Hz, size 20ms. Clear initial note disperses into pitch-smeared debris.
+
+**Crystal Delay** — Material: Crystal. PLUCK 0.7, FRACTURE 0, SURFACE 0.7, DIVINE 0.6. shimmerMix 0.5. Long glassy sustain with octave-up ghost from shimmer verb.
+
+### Coupling
+
+Accepts `LFOToPitch`, `AmpToFilter` (increases damping), `EnvToMorph` (scales pluck intensity). 16 voices and the dual LOW/HIGH stereo spread make ORPHICA a natural coupling source for OPAL or OVERWORLD's ERA crossfade.
+
+---
+
+## 24. OBBLIGATO (XObbligato)
+
+**Accent:** Rascal Coral `#FF8A7A` | **Prefix:** `obbl_` | **Max voices:** 12 | **Identity:** Dual wind, BOND macro
+
+### What It Is
+
+OBBLIGATO is a dual wind instrument — two brothers sharing a waveguide. Brother A plays flute-family instruments (air jet exciter); Brother B plays reed-family instruments (reed exciter). They share a delay line and sympathetic resonance bank. The BOND system models their emotional relationship through eight stages (Harmony → Fight → Cry → Forgive → Protect → Transcend), reshaping breath, detune, sympathetic amplitude, and stereo width in real time.
+
+### DSP Engine
+
+Both brothers: same waveguide architecture (delay line → `FamilyDampingFilter` → `FamilyBodyResonance` → `FamilySympatheticBank`), different exciters. Brother A's `AirJetExciter` models air-jet/embouchure-hole nonlinearity; `ohm_airFlutterA` adds natural flute vibrato. Brother B's `ReedExciter` models a clamped-end vibrating reed; reed stiffness and bite control flexibility and harmonic content. Per-instrument body resonance ratios and Q values are instrument-specific (e.g., shakuhachi: 1.0× Q=5.0; ocarina: 0.6× Q=6.0; oboe: 1.8× Q=5; bassoon: 0.6× Q=3).
+
+### Voice Routing Modes
+
+Alternate (even→A, odd→B), Split (below C4→A, above→B), Layer (two voices per note, one from each), Round Robin (A-B-A-B), Velocity (soft→A, hard→B). Brother A pans to 0.35 (left of center), Brother B to 0.65 (right). BOND Fight stage pushes them to opposite sides; Transcend collapses to near-mono.
+
+### Macros
+
+**BREATH (M1)** — Global lung capacity: scales both brothers' pressure/breath parameters proportionally. Low = thin/airy; high = dense focused resonance.
+
+**BOND (M2)** — Eight-stage emotional arc. Stage progression: Harmony(0) → Play(0.14) → Annoy(0.28) → Fight(0.43) → Cry(0.57) → Forgive(0.71) → Protect(0.86) → Transcend(1.0). Each stage reshapes detune, panning, sympathetic amplitude, and breath pressure.
+
+**MISCHIEF (M3)** — Detuning chaos: A goes sharp, B goes flat by up to ±8 cents independently of BOND. Low = tight unison; high = beating chorus.
+
+**WIND (M4)** — Band-limited noise floor (~1 kHz cutoff): environmental texture from dry studio to outdoor air.
+
+### Key Parameters
+
+| Parameter | Range | Function |
+|-----------|-------|----------|
+| `obbl_instrumentA` | 0–7 (choice) | Flute, Piccolo, Pan Flute, Shakuhachi, Bansuri, Ney, Recorder, Ocarina |
+| `obbl_breathA` | 0–1 | Brother A air pressure |
+| `obbl_embouchureA` | 0–1 | Embouchure quality — shapes resonance mode |
+| `obbl_airFlutterA` | 0–1 | Natural vibrato via breath flutter |
+| `obbl_instrumentB` | 0–7 (choice) | Clarinet, Oboe, Bassoon, Soprano Sax, Duduk, Zurna, Shawm, Musette |
+| `obbl_breathB` | 0–1 | Brother B breath pressure |
+| `obbl_reedStiffness` | 0–1 | Reed flex — lower is more rubbery |
+| `obbl_reedBite` | 0–1 | Reed harmonic edge above stiffness |
+| `obbl_voiceRouting` | 0–4 (choice) | Alternate, Split, Layer, Round Robin, Velocity |
+| `obbl_bondStage` | 0–1 | Continuous emotional stage (0=Harmony, 1=Transcend) |
+| `obbl_bondIntensity` | 0–1 | Scale of all BOND emotional modulations |
+| `obbl_bondRate` | 0.01–2.0 | Stage transition smoothing speed |
+| `obbl_sympatheticAmt` | 0–1 | Sympathetic resonance amplitude (BOND-modulated) |
+| `obbl_fxAChorus` | 0–1 | Brother A air chorus pitch modulation depth |
+| `obbl_fxBSpring` | 0–1 | Brother B spring reverb |
+| `obbl_macroWind` | 0–1 | Wind noise floor |
+
+### Sound Design Recipes
+
+**Morning Practice** — A: Bansuri, B: Duduk. Routing: Split. BREATH 0.5, BOND 0, MISCHIEF 0.05, WIND 0.4. Two instruments warming up — complementary body ratios in the low-mid register.
+
+**The Argument** — Routing: Alternate. BOND 0.43 (Fight), MISCHIEF 0.8, WIND 0.15. Bond intensity 0.9, rate 0.05 (slow). Brothers detune and pan hard.
+
+**Outdoor Transcendence** — BOND 1.0 (Transcend). A: Flute, B: Clarinet. Layer routing. BREATH 0.6, MISCHIEF 0, WIND 0.7. springReverb 0.5. Beatless unison with high wind ambience.
+
+**Narrative Arc** — Draw BOND automation 0→1 over 8–16 bars at rate 0.01. The full emotional arc glides from Harmony through every stage to Transcend.
+
+### Coupling
+
+Accepts `LFOToPitch`, `AmpToFilter`, `EnvToMorph`. OBBLIGATO's stereo field (brothers panned L/R, widened by BOND fight stage) is a natural modulation source — coupling its amplitude to ORPHICA's `AmpToFilter` creates wind-driven harp decay shaping.
+
+---
+
+## 25. OTTONI (XOttoni)
+
+**Accent:** Patina `#5B8A72` | **Prefix:** `otto_` | **Max voices:** 12 | **Identity:** Triple brass, GROW macro
+
+### What It Is
+
+OTTONI is a brass family portrait — three generations of players. Toddler (conch/vuvuzela/toy trumpet): all pressure and imprecision. Tween (trumpet/cornet/flugelhorn): finding the valve. Teen (French horn/tuba/ophicleide): disciplined, with vibrato. The GROW macro sweeps through these ages in a single gesture, morphing from loose and childlike to full and virtuosic.
+
+### DSP Engine
+
+All three voices share a `LipBuzzExciter` feeding a Karplus-Strong waveguide loop → `FamilyDampingFilter` → `FamilyBodyResonance` → `FamilySympatheticBank`. `LipBuzzExciter` receives an `ageScale` argument derived from GROW that shifts from loose/unfocused (low age) to tight/centered (high age). Teen voice has per-voice `vibPhase` accumulator — vibrato only appears as GROW approaches 1.0 via `growTeen` multiplier. Three-layer blend uses a triangular crossfade: toddler peaks at GROW 0, tween at 0.5, teen at 1.0 — intermediate values genuinely blend two age groups. Foreign Harmonics section: Stretch (delay line lengthened up to 10% — inharmonic partials), Drift (microtonal pitch wavering via sinusoidal delay modulation, up to 2 cents), Cold (body resonance shifted higher with sharper Q, up to +4 Q units).
+
+### Macros
+
+**EMBOUCHURE (M1)** — Global mouth-pressure multiplier: `(0.5 + EMBOUCHURE)` scales all three voices' individual pressure settings. Center = unmodified. Crescendo/decrescendo macro.
+
+**GROW (M2)** — Engine's signature gesture: sweeps toddler→tween→teen via triangular crossfade. Teen vibrato appears only near 1.0. Automate across an entire arrangement for a developmental arc.
+
+**FOREIGN (M3)** — Scales all three exotic deviations: Stretch (flat partials), Drift (microtonal wavering), Cold (nasal body resonance shift). Low = studio brass; high = ethnographic/unresolved.
+
+**LAKE (M4)** — Reverb room size and delay mix (ping-pong stereo, 250ms, 60% feedback). Low = small room; high = alpine lake or cathedral.
+
+### Key Parameters
+
+| Parameter | Range | Function |
+|-----------|-------|----------|
+| `otto_toddlerInst` | 0–5 (choice) | Conch, Shofar, Didgeridoo, Alphorn, Vuvuzela, Toy Trumpet |
+| `otto_toddlerPressure` | 0–1 | Toddler lip pressure |
+| `otto_tweenInst` | 0–5 (choice) | Trumpet, Alto Sax, Cornet, Flugelhorn, Trombone, Baritone Sax |
+| `otto_tweenEmbouchure` | 0–1 | Tween embouchure quality |
+| `otto_tweenValve` | 0–1 | Valve modulation — subtle pitch wobble |
+| `otto_teenInst` | 0–9 (choice) | French Horn, Trombone, Tuba, Euphonium, Tenor Sax, Dungchen, Serpent, Ophicleide, Sackbut, Bass Sax |
+| `otto_teenEmbouchure` | 0–1 | Teen embouchure quality |
+| `otto_teenBore` | 0–1 | Bore width — wider lowers damping and darkens tone |
+| `otto_teenVibratoRate` | 3–8 Hz | Teen vibrato speed |
+| `otto_teenVibratoDepth` | 0–1 | Teen vibrato depth (scales with GROW) |
+| `otto_foreignStretch` | 0–1 | Partial detuning via delay line extension |
+| `otto_foreignDrift` | 0–1 | Microtonal pitch drift |
+| `otto_foreignCold` | 0–1 | Body resonance frequency shift + sharper Q |
+| `otto_driveAmount` | 0–1 | Soft-clip (tanh) saturation on summed output |
+| `otto_sympatheticAmt` | 0–1 | Sympathetic resonance amplitude |
+| `otto_damping` | 0.8–0.999 | Feedback loop damping |
+
+### Sound Design Recipes
+
+**Coming of Age** — Automate GROW 0→1 over 8 bars. Toddler: Toy Trumpet, pressure 0.3. Tween: Cornet, embouchure 0.5. Teen: French Horn, bore 0.4. EMBOUCHURE 0.6, FOREIGN 0, LAKE 0.5.
+
+**Distant Ceremony** — GROW 0.5. Toddler: Didgeridoo, Teen: Dungchen. FOREIGN 0.8, LAKE 0.9. Foreign cold + drift produces a distant ritual sound from no particular culture.
+
+**Young Brass Section** — GROW 0.5. Tween: Flugelhorn, Teen: Euphonium (bore 0.7). Drive 0.15, LAKE 0.4. Warm, slightly unfocused brass pad.
+
+**Old Horn Cold Day** — GROW 0.9. Teen: Serpent, bore 0.8. FOREIGN 1.0, LAKE 0.6. Vibrato rate 3.5 Hz. Strained nasal character of an old player on an old instrument.
+
+### Coupling
+
+Accepts `LFOToPitch`, `AmpToFilter`, `EnvToMorph`. Teen vibrato (pitch-modulating) coupling into OHM's `LFOToPitch` transfers teenage brass vibrato to the folk string — a cross-instrument expressive transfer unique in the fleet. OTTONI's harmonically dense drive-saturated output is well-suited as an audio source into OPAL's granular cloud.
+
+---
+
+## 26. OLE (XOlé)
+
+**Accent:** Hibiscus `#C9377A` | **Prefix:** `ole_` | **Max voices:** 18 | **Identity:** Afro-Latin trio, DRAMA macro
+
+### What It Is
+
+OLE is an Afro-Latin string trio of three aunts — Tres Cubano (Cuba), Berimbau (Brazil), Charango (Andes) — plus three latent husbands (Oud, Bouzouki, Thai Pin) who arrive when DRAMA exceeds 0.7. The Alliance system formalizes disagreement: at any moment two aunts are paired against the third. SIDES sweeps through all three configurations; DRAMA raises the temperature and deploys the husbands.
+
+### DSP Engine
+
+All voices run a pluck/strum exciter into a Karplus-Strong waveguide loop. Voices 0–11 cycle between aunts (voice index mod 3). Voices 12–17 are husband voices, `isHusband` flagged, activated above DRAMA 0.7. Aunt 1 (Tres Cubano): `StrumExciter` — multi-pulse attack. Aunt 2 (Berimbau): `StrumExciter` with `coinPress` bending pitch up to +4 semitones, plus gourd size parameter shifting body resonance. Aunt 3 (Charango): per-voice `tremoloPhase` oscillator (5–25 Hz) amplitude-modulating output. Husbands use `PluckExciter` at 60% brightness average of Aunts 1 and 3. Stereo placement: Aunt 1 → 0.2 (far left), Aunt 2 → 0.5 (center), Aunt 3 → 0.8 (far right). Husbands center at 0.5. ISLA widens all positions proportionally.
+
+### Macros
+
+**FUEGO (M1)** — Strum exciter intensity for all aunts: directly scales `voiceBright × FUEGO` into the StrumExciter. Purely an attack macro — no effect on sustain or decay.
+
+**DRAMA (M2)** — Emotional temperature. Below 0.7: no effect. Above 0.7: husband voices become active, scaling linearly 0→full at DRAMA 1.0. Individual husband levels set the final balance.
+
+**SIDES (M3)** — Rotates through the three alliance configurations. At 0: Aunt 1 isolated, 2+3 paired. At 0.33: Aunt 2 isolated. At 0.67: Aunt 3 isolated. Intermediate values crossfade between adjacent configs. Sweeping in real time rotates dominant voice across stereo field.
+
+**ISLA (M4)** — Stereo width: pushes Aunt 1 further left, Aunt 3 further right while Aunt 2 stays centered. Also reads as outdoor openness without adding reverb.
+
+### Key Parameters
+
+| Parameter | Range | Function |
+|-----------|-------|----------|
+| `ole_aunt1StrumRate` | 1–30 | Tres Cubano strum rate / attack energy |
+| `ole_aunt1Brightness` | 0–1 | Tres Cubano pick brightness |
+| `ole_aunt2CoinPress` | 0–1 | Berimbau coin press pitch bend (0 to +4 semitones) |
+| `ole_aunt2GourdSize` | 0–1 | Berimbau gourd resonance — larger = darker body |
+| `ole_aunt3Tremolo` | 5–25 Hz | Charango tremolo rate |
+| `ole_aunt3Brightness` | 0–1 | Charango pick brightness |
+| `ole_allianceConfig` | 0–2 (choice) | 1v2+3 / 2v1+3 / 3v1+2 — base alliance position |
+| `ole_allianceBlend` | 0–1 | Strength of alliance gain differential |
+| `ole_husbandOudLevel` | 0–1 | Oud level when DRAMA > 0.7 |
+| `ole_husbandBouzLevel` | 0–1 | Bouzouki level when DRAMA > 0.7 |
+| `ole_husbandPinLevel` | 0–1 | Thai Pin level when DRAMA > 0.7 |
+| `ole_sympatheticAmt` | 0–1 | Sympathetic resonance shared across all voices |
+| `ole_damping` | 0.8–0.999 | Feedback loop decay |
+| `ole_driftRate` | 0.05–0.5 Hz | Organic drift rate |
+| `ole_driftDepth` | 0–20 cents | Organic drift depth |
+
+### Sound Design Recipes
+
+**The Aunts at Rest** — FUEGO 0.4, DRAMA 0, SIDES 0, ISLA 0.4. A1: bright 0.6, strum 6. A2: coinPress 0, gourd 0.5. A3: tremolo 10 Hz. Alliance blend 0.4. Balanced trio.
+
+**Full Drama** — FUEGO 0.8, DRAMA 1.0, SIDES 0.3, ISLA 0.7. All husband levels 0.7. Full 6-voice cast — aunts in the outer field, husbands darkening the center.
+
+**Berimbau Solo** — Aunt 1 + 3 levels 0. DRAMA 0. FUEGO 0.7. Alliance blend 0 (no differentiation). coinPress automated 0→0.8 over 4 beats. GourdSize 0.8. Pure coin-press pitch slides.
+
+**Rotating Stage** — SIDES automated 0→1 over 8 bars. ISLA 0.6, alliance blend 0.7. Dominant voice rotates left→center→right without changing any notes.
+
+### Coupling
+
+Accepts `LFOToPitch`, `AmpToFilter`, `EnvToMorph`. Best coupling use: route OBBLIGATO's amplitude into OLE's `EnvToMorph` — wind duet dynamics drive strum intensity in real time. OLE's wide stereo field (especially at high ISLA) makes it a natural L/R anchor in a four-engine XOmnibus setup.

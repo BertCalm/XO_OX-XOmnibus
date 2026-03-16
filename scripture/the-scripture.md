@@ -174,13 +174,13 @@
 
 #### OCE-I: The Two Lifetimes
 *2026-03-15*
-> OCEANIC has two envelopes: the Amp ADSR controls loudness; the Swarm ADSR controls the strength of the boid rules — the collective intelligence of the school. They are independent. At `swarmSustain=0`, the boid forces extinguish completely during sustain: the school loses its collective mind while the note holds at full amplitude. At `swarmAttack=2.5`, the school takes 2.5 seconds to cohere after note-on — the attack is scattered, raw, then resolves. No other engine in the fleet separates the *intelligence* of the sound from the *loudness* of the sound.
+> OCEANIC has two envelopes: the Amp ADSR controls loudness; the Swarm ADSR controls the strength of the boid rules — the collective intelligence of the school. They are independent. At `ocean_swarmEnvSustain=0`, the boid forces extinguish completely during sustain: the school loses its collective mind while the note holds at full amplitude. At `ocean_swarmEnvAttack=2.5`, the school takes 2.5 seconds to cohere after note-on — the attack is scattered, raw, then resolves. No other engine in the fleet separates the *intelligence* of the sound from the *loudness* of the sound.
 
 **Application:** Design OCEANIC presets around both envelopes, not just the Amp ADSR. The Swarm ADSR is the second compositional dimension.
 
 #### OCE-II: The Boid Rules Are the Filter
 *2026-03-15*
-> OCEANIC has no filter. The spectral content of the swarm is entirely determined by the boid configuration. High `oceanic_separation` + low `oceanic_cohesion` = particles spread across the frequency spectrum = bright, complex, textural. High `oceanic_cohesion` = particles cluster near the MIDI attractor = narrow, tone-like, pitched. Low `oceanic_tether` = the MIDI note barely influences particle behavior = near-unpitched drift. The boid rules ARE the filter. This is the engine's fundamental design truth.
+> OCEANIC has no filter. The spectral content of the swarm is entirely determined by the boid configuration. High `ocean_separation` + low `ocean_cohesion` = particles spread across the frequency spectrum = bright, complex, textural. High `ocean_cohesion` = particles cluster near the MIDI attractor = narrow, tone-like, pitched. Low `ocean_tether` = the MIDI note barely influences particle behavior = near-unpitched drift. The boid rules ARE the filter. This is the engine's fundamental design truth.
 
 **Application:** Treat separation/cohesion/tether as a three-way spectral EQ: spread vs. cluster vs. drift. No additional filter is needed.
 
