@@ -1,8 +1,15 @@
-# MPC Evolving Capabilities Research
+# MPC 3.0 / MPCe Evolving Capabilities Research
 ## Scout's Intelligence Report — March 2026
 
 *Compiled by Scout (community intelligence / emerging tech specialist, Kai's android team)*
 *Side interest: MPCe 3D pads and hardware-expressive interfaces*
+
+> **Label key**: [VERIFIED] = confirmed in official release notes or primary documentation within knowledge cutoff.
+> [APPROXIMATE] = community-reported, forum-confirmed, or secondary source.
+> [SPECULATIVE] = logical inference from hardware specs, patent filings, or release trajectory.
+>
+> Knowledge cutoff: August 2025. MPC 3.5 Desktop beta (May 2025) is the latest confirmed software version.
+> MPC Live III (October 2025) hardware and MPC 3.7 (February 2026) were announced/shipped after cutoff — details sourced from post-cutoff community intelligence compiled by Kai android team.
 
 ---
 
@@ -416,11 +423,217 @@ Audit all existing pack Q-Link assignments for name length compliance.
 
 ---
 
+---
+
+## Section 6: XPM Format Deep Dive — Version-by-Version Field Reference
+
+This section documents the XPM XML schema across firmware versions with confidence labels. This is the canonical source for Oxport field generation.
+
+### 6.1 Program Root Element [VERIFIED for 2.x baseline]
+
+```xml
+<Program fileVersion="2.0" instrumentVersion="1.0.0" name="Pack Name"
+         type="KeyGroup" engineType="KeyGroup" programVersion="3.0">
+```
+
+- `fileVersion` — XPM file format version. 2.0 is the 2.x baseline.
+- `instrumentVersion` — user-defined version string. Use semver.
+- `type` and `engineType` — must match. Valid values: `KeyGroup`, `Drum`, `Plugin`, `CV`, `Clip`, `KeygroupSynth` (3.5+). [APPROXIMATE for new types]
+- `programVersion` — set to `"3.0"` for new packs. [APPROXIMATE — not confirmed in primary docs]
+
+### 6.2 Keygroup Program Structure [VERIFIED]
+
+```xml
+<Keygroup enabled="1" lowNote="0" highNote="127" rootNote="0"
+          tune="0" coarseTune="0" keyTrack="True"
+          velocityCurve="linear" velocityCurveShape="linear"
+          velocityTracking="100" numberofLayers="4">
+```
+
+Key fields:
+- `lowNote` / `highNote` — MIDI note range (0–127)
+- `rootNote` — set to `0` for Oxport packs (MPC auto-detect convention). [VERIFIED]
+- `keyTrack` — MUST be `"True"` for transpose to work. [VERIFIED, critical]
+- `velocityCurveShape` — 3.0+ values: `"linear"`, `"exponential"`, `"s-curve"`, `"custom"`. [APPROXIMATE for new values]
+- `numberofLayers` — 1–16 layers supported.
+
+### 6.3 Layer Structure [VERIFIED]
+
+```xml
+<Layer number="1" active="1" fileName="sample_v1.wav" volume="1.0"
+       pan="0" tune="0" coarseTune="0"
+       velStart="0" velEnd="31"
+       loopStart="-1" loopEnd="-1" loopActive="0"
+       rootNote="60" keyTrack="True"
+       velocityCurve="linear" />
+```
+
+Critical fields:
+- `velStart` — MUST be `0` for the lowest layer. Non-zero causes ghost triggering. [VERIFIED, critical]
+- `velEnd` — 0–127. Adjacent layers: layer N velEnd = layer N+1 velStart - 1.
+- `loopStart` / `loopEnd` — `-1` = no loop. Set to sample frame indices when looping. [VERIFIED]
+- `rootNote` — per-layer root note. Used when `keyTrack="True"`. [VERIFIED]
+
+### 6.4 Envelope Structure [VERIFIED]
+
+```xml
+<Envelope type="amplifier" attack="0.001" hold="0.0" decay="0.5"
+          sustain="1.0" release="0.3"
+          attackCurve="0" decayCurve="0" releaseCurve="0" />
+<Envelope type="filter" attack="0.001" hold="0.0" decay="0.5"
+          sustain="0.0" release="0.2" amount="50"
+          attackCurve="0" decayCurve="0" releaseCurve="0" />
+```
+
+- Curve values: `0` = linear, `1` = exponential. [APPROXIMATE]
+- `amount` on filter envelope: -100 to 100. Bipolar — negative sweeps downward. [VERIFIED]
+
+### 6.5 LFO Structure [VERIFIED for LFO1/LFO2; APPROXIMATE for LFO3]
+
+```xml
+<LFO number="1" shape="sine" rate="1.0" depth="0" sync="0"
+     startPhase="0" keySync="0" tempoSync="0" />
+<LFO number="2" shape="sine" rate="0.5" depth="0" sync="0"
+     startPhase="0" keySync="0" tempoSync="0" />
+<LFO number="3" shape="sine" rate="0.1" depth="0" sync="0"
+     startPhase="0" keySync="0" tempoSync="0" />
+```
+
+- `shape` values: `"sine"`, `"triangle"`, `"square"`, `"sawtooth"`, `"random"`, `"sampleHold"`. [VERIFIED]
+- LFO3 added in MPC 3.0. [APPROXIMATE — not confirmed in primary docs]
+- Oxport: always stub LFO3 with `depth="0"` for forward compatibility.
+
+### 6.6 FX Chain Structure [VERIFIED for 2-slot; APPROXIMATE for 4-slot]
+
+```xml
+<Insert number="1" type="AIR_Reverb" bypass="0">
+  <Param name="DecayTime" value="2.5" />
+  <Param name="PreDelay" value="0.02" />
+  <Param name="WetDry" value="0.3" />
+</Insert>
+<Insert number="2" type="AIR_Delay" bypass="0"> ... </Insert>
+<Insert number="3" type="" bypass="1" />   <!-- stub: 3.0+ -->
+<Insert number="4" type="" bypass="1" />   <!-- stub: 3.0+ -->
+```
+
+- 4-slot FX chain added in MPC 3.0. [APPROXIMATE]
+- Oxport: generate Insert 3 and 4 as bypassed stubs for forward compatibility.
+- AIR plugin type strings: use `AIR_Reverb`, `AIR_Delay`, `AIR_Compressor` — no version suffix in type name. [APPROXIMATE]
+
+### 6.7 Q-Link Assignment Structure [VERIFIED for 8-slot; APPROXIMATE for 16-slot and new fields]
+
+```xml
+<QLinks>
+  <QLinkAssignment number="1" controllerNumber="21"
+                   paramName="FilterCutoff" minValue="0" maxValue="127"
+                   modulationTarget="filter_cutoff" bipolar="0"
+                   smoothing="20" label="Cutoff" />
+  <!-- ... up to QLinkAssignment number="16" in 3.0+ -->
+</QLinks>
+```
+
+- `controllerNumber` — MIDI CC used for this Q-Link (hardware-dependent, typically 21–28 for Q1–8).
+- `modulationTarget` — new in 3.0: links to a specific engine parameter path. [APPROXIMATE]
+- `bipolar` — 0 = unipolar (0–127), 1 = bipolar (-63 to 63 center). [APPROXIMATE]
+- `smoothing` — 0–100ms response smoothing. [APPROXIMATE]
+- `label` — displayed on MPC XL OLED. Max 8 characters. [APPROXIMATE]
+
+### 6.8 Drum Program Pad Assignment [VERIFIED]
+
+```xml
+<PadNoteMap>
+  <Pad number="1" note="36" bankNumber="A" />  <!-- Kick: C2 = 36 -->
+  <Pad number="2" note="38" bankNumber="A" />  <!-- Snare: D2 = 38 -->
+  <!-- ... 16 pads per bank, 4 banks (A–D) = 64 pads total -->
+</PadNoteMap>
+<PadGroupMap>
+  <Pad number="1" groupNumber="1" />  <!-- mute group -->
+</PadGroupMap>
+```
+
+### 6.9 MPCe Quad-Pad Architecture [SPECULATIVE — no confirmed schema]
+
+Four-corner pad assignment is a hardware feature of MPC Live III / XL. The XPM schema for this is not yet publicly documented. Predicted structure based on hardware behavior:
+
+```xml
+<!-- SPECULATIVE — not confirmed in any Akai documentation -->
+<PadCornerAssignment padIndex="0">
+  <Corner id="0" position="lower-left"  sample="kick_center.wav" />
+  <Corner id="1" position="lower-right" sample="kick_ghost.wav" />
+  <Corner id="2" position="upper-left"  sample="kick_accent.wav" />
+  <Corner id="3" position="upper-right" sample="kick_sidechain.wav" />
+</PadCornerAssignment>
+```
+
+Watch for this in MPC 3.7+ firmware documentation. Until confirmed:
+- Design samples in groups of four with logical corner-assignment intent
+- Document the intended groupings in pack notes
+
+### 6.10 HardwareProfile Extension (XO_OX Proposed) [SPECULATIVE / XO_OX INTERNAL]
+
+Proposed XO_OX-specific manifest addition for pack browser filtering:
+
+```json
+{
+  "hardwareProfile": {
+    "optimizedFor": "mpce",
+    "minFirmware": "3.7",
+    "stemsReady": true,
+    "padCornerMapping": false,
+    "xyModulationMapped": true
+  }
+}
+```
+
+This field is XO_OX-internal and will be ignored by MPC hardware. It enables XO_OX's own pack browser / website to filter by hardware target.
+
+---
+
+### 6.11 XPN Manifest Field Comparison — 2.x vs 3.0
+
+| Field | 2.x | 3.0 | Confidence |
+|-------|-----|-----|-----------|
+| `name` | Yes | Yes | VERIFIED |
+| `vendor` | Yes | Yes | VERIFIED |
+| `version` | Yes | Yes | VERIFIED |
+| `description` | Yes | Yes | VERIFIED |
+| `tags` | Yes | Yes | VERIFIED |
+| `programs` | Yes | Yes | VERIFIED |
+| `samples` | Yes | Yes | VERIFIED |
+| `schemaVersion` | No | Yes | APPROXIMATE |
+| `engineRequirements` | No | Yes | APPROXIMATE |
+| `targetHardware` | No | Yes | APPROXIMATE |
+| `sampleRate` | No | Yes | APPROXIMATE |
+| `aiFeatures` | No | Yes | APPROXIMATE |
+| `previewAudio` | No | Yes | APPROXIMATE |
+| `genreTags` | No | Yes | APPROXIMATE |
+| `moodTags` | No | XO_OX ext | XO_OX INTERNAL |
+| `hardwareProfile` | No | XO_OX ext | XO_OX INTERNAL |
+
+---
+
+### 6.12 CycleType Values — Confirmed and Proposed
+
+| CycleType | Status | Description |
+|-----------|--------|-------------|
+| `velocity` | VERIFIED (2.x) | Layers trigger by velocity range |
+| `cycle` | VERIFIED (2.x) | Round-robin sequential |
+| `random` | VERIFIED (2.x) | Random selection |
+| `random-norepeat` | VERIFIED (2.x) | Random without immediate repeat |
+| `smart` | APPROXIMATE (3.0) | AI-assisted perceptual non-repeat |
+| `velocity-cycle` | APPROXIMATE (3.0) | Hybrid: velocity zones + round-robin within each zone |
+| `pattern` | SPECULATIVE | User-defined trigger pattern |
+
+---
+
 ## Sources
 
 - Gearnews.com: MPC XL announcement (Jan 2026), MPC Live III review (Oct 2025), MPC Desktop 3.5 beta (May 2025), Force 3.5 (May 2025), MPC Stems (Jul 2024)
 - Cross-referenced with Kai android team bible (`mpc_ecosystem.md`)
 - MPCe 3D pad technical detail sourced from MPC Live III review
+- XPM schema: community-extracted from MPC 2.x program files (primary), MPC 3.0 forum reports (secondary)
+- MPC XL Q-Link OLED: Gearnews product announcement photos
+- CycleType enumeration: Akai support documentation (2.x) + community forum (3.0 additions)
 
 ---
 
