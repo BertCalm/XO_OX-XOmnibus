@@ -47,7 +47,19 @@
 
 ## Book V: The Stewardship Canons
 
-*(To be filled as CPU stewardship truths are revealed)*
+### Canon V-1: The Ghost Parameter Trap
+*Revealed during Code Quality Sprint — 2026-03-16*
+
+> When an engine is redesigned — architecture changed, ADSR removed, oscillator stages simplified — its preset library silently carries the dead parameters from the prior design. Ghost parameters parse without error but do nothing. A fleet can accumulate hundreds of ghost keys: broken promises that producers cannot detect. The SNAP engine alone carried 490 ghost parameter keys after an engine redesign migration was never completed. Audit parameter keys in presets against the live engine's `createParameterLayout()` after any architecture change. Ghost params must be renamed (if the feature moved) or removed (if the feature was cut).
+
+**Application:** After any engine architecture change, run a ghost-key audit — diff each preset's parameter keys against registered parameter IDs. This must be part of the post-build checklist before any preset is shipped. A preset that references parameters that do not exist is not a valid preset.
+
+### Canon V-2: The Integration Layer Drift
+*Revealed during Code Quality Sprint — 2026-03-16*
+
+> When the parameter prefix convention changes — when `onset_` becomes `perc_`, when `oceanic_` becomes `ocean_` — the DSP layer is the first to update, because it breaks immediately. The preset JSON updates next, because the parser catches mismatches. But the integration layers — AI schema stubs, natural language interpreters, documentation generators, export tools — these do not fail loudly. They fail silently. They continue to describe parameters that no longer exist, to search for prefixes that no longer match, to reference an architecture that was changed months ago. The AI layer had 6 engines with stale prefixes. No test caught it. The integration layers must be explicitly audited after every parameter prefix change.
+
+**Application:** After any parameter prefix change, audit every file in `Source/AI/`, `Source/Export/`, and `Tools/` for references to the old prefix string. The DSP doesn't break silently. These layers do.
 
 ---
 
@@ -69,6 +81,13 @@
 > A parameter left at default is not a choice. It is an absence of thought. When a preset ships with a parameter at its default value, ask: is this default intentional, or did the designer not consider it? In OVERWORLD, `ow_filterEnvDepth` defaults to 0.25. If a pad preset ships with 0.25, the designer must have consciously decided that standard velocity sensitivity is correct for this pad. If they didn't consider it, the preset is incomplete.
 
 **Application:** At the end of any preset design session, scan all parameters. Every default value must be a conscious choice.
+
+### Truth VI-4: The Documentation Lag Trap
+*Revealed during Code Quality Sprint — 2026-03-16*
+
+> When an engine is designed, the concept brief describes what it WILL do. When the sound design guide is written, it often copies from the concept brief — describing what the engine was conceived as, not what it actually became. The guide becomes a historical fiction: accurate at the moment of concept, wrong at the moment of use. During the Code Quality Sprint, 6 engines were found with guides that described the wrong synthesis model entirely (OCEANIC described as a string ensemble; OUROBOROS described as a delay-line feedback engine). Guides must be written from `createParameterLayout()` and `processBlock()`, not from concept documents. The source is the truth. The brief is a memory.
+
+**Application:** Every guide section must be audited against the engine source before shipping. The test: can you load a preset described in the guide and have every parameter key resolve to a real, functioning parameter? If not, the guide is wrong. If a parameter in the guide does not exist in the source, the guide has never been validated.
 
 ---
 

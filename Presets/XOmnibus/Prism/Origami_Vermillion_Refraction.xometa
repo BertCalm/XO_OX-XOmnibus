@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "name": "Vermillion Refraction",
+  "mood": "Prism",
+  "engines": ["Origami"],
+  "author": "Guru Bin — Fleet Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Maximum fold amount, moderate layers, asymmetry at 0.1. The near-zero symmetry creates complex odd-harmonic spectra that shift dramatically with pitch — high notes are buzzy and bright, low notes are dark and formant-rich. A prism that refracts different frequencies at different angles.",
+  "tags": ["prism", "harmonic", "complex", "bright", "buzzy", "versatile"],
+  "macroLabels": ["CHARACTER", "FOLD", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.42,
+    "movement": 0.35,
+    "density": 0.7,
+    "space": 0.45,
+    "aggression": 0.58
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldPoint": 0.5,
+      "origami_foldAmt": 0.95,
+      "origami_layers": 3,
+      "origami_symmetry": 0.1,
+      "origami_filterCutoff": 0.7,
+      "origami_filterReso": 0.38,
+      "origami_oscPitch": 0.0,
+      "origami_ampAttack": 0.04,
+      "origami_ampDecay": 0.35,
+      "origami_ampSustain": 0.78,
+      "origami_ampRelease": 1.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

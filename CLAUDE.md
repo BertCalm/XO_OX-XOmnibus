@@ -146,7 +146,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Engines/Orca/OrcaEngine.h` | Apex predator engine (wavetable + echolocation + breach) |
 | `Source/Engines/Octopus/OctopusEngine.h` | Decentralized alien intelligence engine (arms + chromatophores + ink cloud) |
 | `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
-| `Docs/xomnibus_sound_design_guides.md` | Sound design guide (20 of 29 engines in unified guide; OSPREY, OSTERIA, OWLFISH, OCELOT not yet integrated; 5 Constellation engines have dedicated guides in Docs/) |
+| `Docs/xomnibus_sound_design_guides.md` | Sound design guide (24 of 29 engines in unified guide; 5 Constellation engines have dedicated guides in Docs/) |
 | `Source/DSP/` | Shared DSP library |
 | `Source/UI/` | Gallery Model UI components |
 | `Source/Export/` | XPN export pipeline |

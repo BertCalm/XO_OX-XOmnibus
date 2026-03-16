@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Blend Collapse",
+  "mood": "Flux",
+  "engines": ["Ombre"],
+  "author": "Guru Bin — Flux Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "The boundary between memory and perception dissolves. Blend oscillates wildly — high reactivity means every velocity spike throws the system toward full Opsis, then interference drags it back into the grain. Memory decay is short enough that fragments only half-survive. Raise CHARACTER to decide which side of yourself you're losing.",
+  "tags": ["ombre", "flux", "memory", "collapse", "granular", "unstable", "evolving"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.5,
+      "ombre_interference": 0.85,
+      "ombre_memoryDecay": 0.8,
+      "ombre_memoryGrain": 15.0,
+      "ombre_memoryDrift": 0.9,
+      "ombre_oscShape": 0.75,
+      "ombre_reactivity": 0.95,
+      "ombre_subLevel": 0.35,
+      "ombre_filterCutoff": 8500.0,
+      "ombre_filterReso": 0.65,
+      "ombre_attack": 0.005,
+      "ombre_decay": 0.18,
+      "ombre_sustain": 0.4,
+      "ombre_release": 0.55,
+      "ombre_level": 0.78
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.35,
+    "movement": 0.9,
+    "density": 0.7,
+    "space": 0.55,
+    "aggression": 0.62
+  }
+}

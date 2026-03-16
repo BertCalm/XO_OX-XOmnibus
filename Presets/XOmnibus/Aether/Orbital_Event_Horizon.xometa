@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Event Horizon",
+  "mood": "Aether",
+  "engines": ["Orbital"],
+  "author": "Guru Bin — Fleet Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Twelve voices at maximum spread, minimum detune. The group envelope depth is extreme but the rate is cosmically slow — a full swell cycle takes over thirty seconds. Playing a note is a commitment. By the time the chord peaks, you have forgotten where you began. The event horizon: information that left but never returns.",
+  "tags": ["aether", "transcendent", "slow", "vast", "cosmic", "sustained"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.55,
+    "movement": 0.18,
+    "density": 0.85,
+    "space": 0.95,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.42,
+      "orb_groupEnvRate": 0.02,
+      "orb_groupEnvDepth": 0.9,
+      "orb_oscCount": 12,
+      "orb_spread": 0.9,
+      "orb_detune": 0.05,
+      "orb_filterCutoff": 0.48,
+      "orb_filterReso": 0.1,
+      "orb_ampAttack": 3.5,
+      "orb_ampDecay": 1.2,
+      "orb_ampSustain": 0.88,
+      "orb_ampRelease": 6.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

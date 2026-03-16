@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "name": "Metabolic Fever",
+  "mood": "Flux",
+  "engines": ["Organon"],
+  "author": "Guru Bin — Flux Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Variational free energy at crisis point — metabolic rate maxed, prediction error cascading through the signal chain. CatalystDrive amplifies every fluctuation. The membrane is permeable to everything. The cell cannot stop processing and cannot process fast enough. Biological emergency as synthesis.",
+  "tags": ["organon", "flux", "metabolism", "fever", "unstable", "prediction-error", "biological"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 0.95,
+      "organon_enzymeSelect": 8500.0,
+      "organon_catalystDrive": 0.88,
+      "organon_dampingCoeff": 0.08,
+      "organon_signalFlux": 0.92,
+      "organon_phasonShift": 0.75,
+      "organon_isotopeBalance": 0.15,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.95,
+      "organon_noiseColor": 0.82
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.3,
+    "movement": 0.95,
+    "density": 0.88,
+    "space": 0.55,
+    "aggression": 0.85
+  }
+}

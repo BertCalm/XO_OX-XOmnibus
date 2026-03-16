@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Echo Trails",
+  "mood": "Foundation",
+  "engines": ["Overlap"],
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Low diffusion on a trefoil knot — the cross-coupling is present but the echoes stay distinct, not washed. You hear the topology working: each reflection arrives from a slightly different vector. A delay effect that thinks it's a reverb, or a reverb that knows it's a delay.",
+  "tags": ["echo", "delay", "distinct", "trefoil", "foundation", "rhythmic"],
+  "macroLabels": ["CHARACTER", "SPACE", "COUPLING", "DECAY"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.4,
+    "movement": 0.4,
+    "density": 0.4,
+    "space": 0.6,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 0,
+      "olap_delayFeedback": 0.42,
+      "olap_diffusion": 0.22,
+      "olap_spread": 0.7,
+      "olap_decay": 1.4,
+      "olap_modDepth": 0.08,
+      "olap_modRate": 0.18,
+      "olap_damping": 0.35,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

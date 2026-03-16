@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "name": "Bioluminescent Collision",
+  "mood": "Entangled",
+  "engines": ["Octopus", "Oceanic"],
+  "author": "Guru Bin — Coupling Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Two swarm intelligences collide in open water. Octopus chromatophore patterns modulate Oceanic's particle school reorganization — alien cephalopod intelligence painting itself onto a boid colony. When Octopus arms signal, the school reorients toward the bioluminescent source. Neither knows it is the other. This is attraction as misrecognition. Two collective minds interpreting the same signal differently.",
+  "tags": ["entangled", "swarm", "bioluminescence", "collision", "octopus", "oceanic", "chromatophore", "school"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.45,
+    "movement": 0.85,
+    "density": 0.7,
+    "space": 0.65,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Octopus": {
+      "octo_armDepth": 0.65,
+      "octo_armSpread": 0.6,
+      "octo_chromaFlash": 0.7,
+      "octo_inkCloud": 0.3,
+      "octo_armSync": 0.45,
+      "octo_tentacleRate": 0.12,
+      "octo_camouflage": 0.4,
+      "octo_ampAttack": 0.08,
+      "octo_ampDecay": 0.5,
+      "octo_ampSustain": 0.65,
+      "octo_ampRelease": 2.0,
+      "octo_filterCutoff": 0.6,
+      "octo_filterRes": 0.4,
+      "octo_lfo1Rate": 0.1,
+      "octo_lfo1Depth": 0.35,
+      "octo_lfo2Rate": 0.03,
+      "octo_lfo2Depth": 0.2,
+      "octo_macroCharacter": 0.0,
+      "octo_macroMovement": 0.0,
+      "octo_macroCoupling": 0.0,
+      "octo_macroSpace": 0.0
+    },
+    "Oceanic": {
+      "ocean_separation": 0.5,
+      "ocean_alignment": 0.55,
+      "ocean_cohesion": 0.45,
+      "ocean_tether": 0.25,
+      "ocean_scatter": 0.4,
+      "ocean_subflocks": 3,
+      "ocean_damping": 0.4,
+      "ocean_waveform": 1,
+      "ocean_ampAttack": 0.06,
+      "ocean_ampDecay": 0.55,
+      "ocean_ampSustain": 0.65,
+      "ocean_ampRelease": 2.5,
+      "ocean_swarmEnvAttack": 0.12,
+      "ocean_swarmEnvDecay": 0.45,
+      "ocean_swarmEnvSustain": 0.6,
+      "ocean_swarmEnvRelease": 1.5,
+      "ocean_lfo1Rate": 0.06,
+      "ocean_lfo1Depth": 0.25,
+      "ocean_lfo1Shape": 0,
+      "ocean_lfo2Rate": 0.04,
+      "ocean_lfo2Depth": 0.15,
+      "ocean_lfo2Shape": 1,
+      "ocean_voiceMode": 1,
+      "ocean_glide": 0.0,
+      "ocean_macroCharacter": 0.0,
+      "ocean_macroMovement": 0.0,
+      "ocean_macroCoupling": 0.0,
+      "ocean_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Octopus",
+        "target": "Oceanic",
+        "type": "RhythmToBlend",
+        "amount": 0.75,
+        "description": "Octopus chromatophore pulse rate modulates Oceanic school reorganization — bioluminescent signals reorient the boid colony"
+      },
+      {
+        "source": "Oceanic",
+        "target": "Octopus",
+        "type": "AmpToFilter",
+        "amount": 0.45,
+        "description": "Oceanic swarm amplitude modulates Octopus filter — the school's density colours the cephalopod's skin in return"
+      }
+    ]
+  },
+  "sequencer": null
+}

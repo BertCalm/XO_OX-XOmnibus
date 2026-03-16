@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP tuned for a wooden strike — mid-range oscillator, short decay, moderate filter.",
+  "description": "SNAP tuned for a wooden strike \u2014 mid-range oscillator, short decay, moderate filter.",
   "tags": [
     "snap",
     "wood",
@@ -38,7 +38,9 @@
       "snap_filterReso": 0.4,
       "snap_filterEnvDepth": 0.55,
       "snap_decay": 0.18,
-      "snap_level": 0.78
+      "snap_level": 0.78,
+      "snap_snap": 0.4,
+      "snap_detune": 10.0
     }
   },
   "coupling": {

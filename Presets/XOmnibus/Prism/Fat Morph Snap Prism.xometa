@@ -88,7 +88,9 @@
       "snap_filterReso": 0.52,
       "snap_filterEnvDepth": 0.72,
       "snap_decay": 0.1,
-      "snap_level": 0.62
+      "snap_level": 0.62,
+      "snap_snap": 0.4,
+      "snap_detune": 10.0
     }
   },
   "coupling": {

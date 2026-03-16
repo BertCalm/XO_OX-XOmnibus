@@ -97,7 +97,7 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         { "Oblique",     "oblq"    },
         { "Ocelot",      "ocelot"  },
         { "Osprey",      "osprey"  },
-        { "Osteria",     "ost"     },
+        { "Osteria",     "osteria" },
         { "Owlfish",     "owl"     },
         { "Ohm",         "ohm"     },
         { "Orphica",     "orph"    },

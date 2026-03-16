@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Loop Collision",
+  "mood": "Flux",
+  "engines": ["Overlap"],
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Two figure-8 loops collide at their crossing point — the feedback at that juncture is high enough to create audible interference. Diffusion is deliberately low so the collision is legible: you hear the echoes intersecting. The modulation desyncs the loops over time, so no two bars sound identical. Pure flux.",
+  "tags": ["collision", "interference", "figure-8", "flux", "desynced", "unstable"],
+  "macroLabels": ["CHARACTER", "SPACE", "COUPLING", "DECAY"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.35,
+    "movement": 0.78,
+    "density": 0.6,
+    "space": 0.68,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 1,
+      "olap_delayFeedback": 0.72,
+      "olap_diffusion": 0.3,
+      "olap_spread": 0.88,
+      "olap_decay": 2.6,
+      "olap_modDepth": 0.35,
+      "olap_modRate": 0.28,
+      "olap_damping": 0.22,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "name": "Corrugated Fog",
+  "mood": "Atmosphere",
+  "engines": ["Origami"],
+  "author": "Guru Bin — Fleet Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Five fold layers at moderate fold amount and extremely low symmetry (0.05). The near-zero symmetry value maximizes odd harmonic content — a dense, foggy formant cluster. The fold point sits at 0.42, in the middle of the wave, creating even harmonic spacing within the odd-dominant spectrum. Fog that has structure.",
+  "tags": ["atmosphere", "dense", "fog", "harmonic", "ambient", "complex"],
+  "macroLabels": ["CHARACTER", "FOLD", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.55,
+    "movement": 0.3,
+    "density": 0.78,
+    "space": 0.65,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldPoint": 0.42,
+      "origami_foldAmt": 0.55,
+      "origami_layers": 5,
+      "origami_symmetry": 0.05,
+      "origami_filterCutoff": 0.48,
+      "origami_filterReso": 0.22,
+      "origami_oscPitch": 0.0,
+      "origami_ampAttack": 1.5,
+      "origami_ampDecay": 0.8,
+      "origami_ampSustain": 0.82,
+      "origami_ampRelease": 4.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

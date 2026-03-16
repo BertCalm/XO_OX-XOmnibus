@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Aphelion Drift",
+  "mood": "Atmosphere",
+  "engines": ["Orbital"],
+  "author": "Guru Bin — Fleet Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Ten oscillators with high spread and slow group envelope rate create a diffuse field. Individual voices drift in and out of the mix like signal from a distant probe — you hear the group, not the parts. Cold and vast. The point of farthest remove.",
+  "tags": ["atmosphere", "ambient", "drifting", "cold", "vast", "texture"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.3,
+    "movement": 0.35,
+    "density": 0.55,
+    "space": 0.88,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.48,
+      "orb_groupEnvRate": 0.06,
+      "orb_groupEnvDepth": 0.62,
+      "orb_oscCount": 10,
+      "orb_spread": 0.78,
+      "orb_detune": 0.22,
+      "orb_filterCutoff": 0.56,
+      "orb_filterReso": 0.12,
+      "orb_ampAttack": 1.2,
+      "orb_ampDecay": 0.8,
+      "orb_ampSustain": 0.75,
+      "orb_ampRelease": 4.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

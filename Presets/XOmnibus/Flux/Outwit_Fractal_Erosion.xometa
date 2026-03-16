@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Fractal Erosion",
+  "mood": "Flux",
+  "engines": ["Outwit"],
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Rule 90 fractal beginning to erode — mutation eats the Sierpinski triangle from the edges inward. Perfect symmetry degrades into jagged coastline and then into noise and then, briefly, back to beauty. A geological process in three seconds.",
+  "tags": ["flux", "erosion", "fractal", "degradation", "cycling", "organic"],
+  "macroLabels": ["CHARACTER", "CHAOS", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.45,
+    "movement": 0.8,
+    "density": 0.5,
+    "space": 0.6,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 90,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.55,
+      "owit_armSpread": 0.65,
+      "owit_sync": 0.3,
+      "owit_feedbackAmt": 0.45,
+      "owit_chaos": 0.45,
+      "owit_density": 0.5,
+      "owit_ampAttack": 0.1,
+      "owit_ampDecay": 0.45,
+      "owit_ampSustain": 0.72,
+      "owit_ampRelease": 1.4,
+      "owit_filterCutoff": 0.58,
+      "owit_filterRes": 0.4,
+      "owit_lfoRate": 0.18,
+      "owit_lfoDepth": 0.25,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

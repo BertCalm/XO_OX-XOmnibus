@@ -36,7 +36,9 @@
       "snap_oscMode": 1,
       "snap_filterCutoff": 3000.0,
       "snap_decay": 0.1,
-      "snap_level": 0.7
+      "snap_level": 0.7,
+      "snap_snap": 0.4,
+      "snap_detune": 10.0
     },
     "Oblong": {
       "bob_oscA_wave": 0,

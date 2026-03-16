@@ -36,7 +36,9 @@
       "snap_filterCutoff": 4000.0,
       "snap_filterReso": 0.3,
       "snap_decay": 0.15,
-      "snap_level": 0.8
+      "snap_level": 0.8,
+      "snap_snap": 0.4,
+      "snap_detune": 10.0
     },
     "Organon": {
       "organon_metabolicRate": 3.0,

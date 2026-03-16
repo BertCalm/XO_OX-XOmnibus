@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "name": "First Fold",
+  "mood": "Foundation",
+  "engines": ["Origami"],
+  "author": "Guru Bin — Fleet Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "A single fold layer, low fold amount, symmetric. The waveform barely bends — just enough to push the second harmonic above the fundamental. The sound of a clean sheet of paper held at one edge and tilted. An introduction to what wavefold synthesis can become.",
+  "tags": ["foundation", "clean", "harmonic", "minimal", "warm", "lead"],
+  "macroLabels": ["CHARACTER", "FOLD", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.7,
+    "movement": 0.2,
+    "density": 0.35,
+    "space": 0.4,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldPoint": 0.65,
+      "origami_foldAmt": 0.22,
+      "origami_layers": 1,
+      "origami_symmetry": 0.85,
+      "origami_filterCutoff": 0.6,
+      "origami_filterReso": 0.2,
+      "origami_oscPitch": 0.0,
+      "origami_ampAttack": 0.05,
+      "origami_ampDecay": 0.35,
+      "origami_ampSustain": 0.8,
+      "origami_ampRelease": 1.2
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

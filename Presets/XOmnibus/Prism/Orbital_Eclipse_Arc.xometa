@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Eclipse Arc",
+  "mood": "Prism",
+  "engines": ["Orbital"],
+  "author": "Guru Bin — Fleet Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Group envelope depth at maximum — every voice fully modulates the others. Playing two notes creates interference patterns between the two group envelope phases. The harmonic content shifts as the modulation waves constructively and destructively interfere. An eclipse: periodic darkening and revelation.",
+  "tags": ["prism", "interference", "harmonic", "motion", "complex", "dynamic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.48,
+    "movement": 0.82,
+    "density": 0.7,
+    "space": 0.6,
+    "aggression": 0.32
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.55,
+      "orb_groupEnvRate": 0.38,
+      "orb_groupEnvDepth": 0.95,
+      "orb_oscCount": 8,
+      "orb_spread": 0.5,
+      "orb_detune": 0.2,
+      "orb_filterCutoff": 0.65,
+      "orb_filterReso": 0.42,
+      "orb_ampAttack": 0.1,
+      "orb_ampDecay": 0.45,
+      "orb_ampSustain": 0.75,
+      "orb_ampRelease": 1.6
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

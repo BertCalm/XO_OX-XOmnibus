@@ -41,7 +41,9 @@
       "snap_filterReso": 0.2,
       "snap_filterEnvDepth": 0.38,
       "snap_decay": 0.2,
-      "snap_level": 0.38
+      "snap_level": 0.38,
+      "snap_snap": 0.4,
+      "snap_detune": 10.0
     },
     "Oblong": {
       "bob_oscA_wave": 0,

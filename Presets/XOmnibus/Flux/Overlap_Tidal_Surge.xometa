@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Tidal Surge",
+  "mood": "Flux",
+  "engines": ["Overlap"],
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Torus topology with a slow, deep modulation that creates tidal swell — the reverb level rises and falls on a long cycle. Feedback is near-threshold, so the swell amplifies instead of dampening. At the peak of each cycle the spatial wash floods the mix; at the trough it retreats. Dangerous and beautiful.",
+  "tags": ["tidal", "swell", "torus", "flux", "dangerous", "cyclical"],
+  "macroLabels": ["CHARACTER", "SPACE", "COUPLING", "DECAY"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.65,
+    "movement": 0.7,
+    "density": 0.72,
+    "space": 0.82,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 2,
+      "olap_delayFeedback": 0.82,
+      "olap_diffusion": 0.68,
+      "olap_spread": 0.7,
+      "olap_decay": 5.0,
+      "olap_modDepth": 0.62,
+      "olap_modRate": 0.018,
+      "olap_damping": 0.32,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Eight Pillars",
+  "mood": "Foundation",
+  "engines": ["Outwit"],
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Rule 110 — the edge of chaos, held steady. Each arm finds the knife-edge between order and dissolution and stays there. Eight pillars of complex behavior that never resolve and never collapse. The architecture of intelligence.",
+  "tags": ["foundation", "complex", "edge-of-chaos", "stable", "intelligent", "pillars"],
+  "macroLabels": ["CHARACTER", "CHAOS", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.45,
+    "movement": 0.5,
+    "density": 0.65,
+    "space": 0.5,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 110,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.08,
+      "owit_armSpread": 0.5,
+      "owit_sync": 0.6,
+      "owit_feedbackAmt": 0.35,
+      "owit_chaos": 0.2,
+      "owit_density": 0.65,
+      "owit_ampAttack": 0.08,
+      "owit_ampDecay": 0.35,
+      "owit_ampSustain": 0.88,
+      "owit_ampRelease": 1.0,
+      "owit_filterCutoff": 0.6,
+      "owit_filterRes": 0.3,
+      "owit_lfoRate": 0.08,
+      "owit_lfoDepth": 0.12,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

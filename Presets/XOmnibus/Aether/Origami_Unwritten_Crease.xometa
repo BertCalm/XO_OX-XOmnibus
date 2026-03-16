@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "name": "Unwritten Crease",
+  "mood": "Aether",
+  "engines": ["Origami"],
+  "author": "Guru Bin — Fleet Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Single layer, fold amount at 0.08 — barely a fold. The waveform is almost unchanged; only the faintest trace of the second harmonic appears above the fundamental. The filter is closed to 0.22. What you hear is the ghost of a fold that never quite happened. An unwritten crease: the mark paper retains when you bend it almost but not quite enough.",
+  "tags": ["aether", "sparse", "subtle", "transcendent", "ghost", "minimal"],
+  "macroLabels": ["CHARACTER", "FOLD", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.65,
+    "movement": 0.12,
+    "density": 0.25,
+    "space": 0.9,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldPoint": 0.72,
+      "origami_foldAmt": 0.08,
+      "origami_layers": 1,
+      "origami_symmetry": 0.55,
+      "origami_filterCutoff": 0.22,
+      "origami_filterReso": 0.05,
+      "origami_oscPitch": 0.0,
+      "origami_ampAttack": 3.0,
+      "origami_ampDecay": 1.8,
+      "origami_ampSustain": 0.9,
+      "origami_ampRelease": 7.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

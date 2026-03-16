@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Nordic Fjord",
+  "mood": "Entangled",
+  "engines": ["Osprey", "Obsidian"],
+  "author": "Guru Bin — Engine Deepening 2026-03-16",
+  "version": "1.0.0",
+  "description": "Hardangerfjord at low tide — OSPREY's ShoreSystem tuned to Nordic shore data (glacial silt, granite walls, Hardanger fiddle sympathetic tuning) coupled to OBSIDIAN's crystal resonance. The fjord walls return the note as glacial memory. Two frozen certainties listening to each other.",
+  "tags": ["nordic", "fjord", "glacial", "granite", "hardanger", "entangled", "coupled"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "Osprey": {
+      "osprey_shore": 0.8,
+      "osprey_seaState": 0.2,
+      "osprey_swellPeriod": 22.0,
+      "osprey_windDir": 0.35,
+      "osprey_depth": 0.85,
+      "osprey_resonatorBright": 0.35,
+      "osprey_resonatorDecay": 4.5,
+      "osprey_sympathyAmount": 0.72,
+      "osprey_creatureRate": 0.05,
+      "osprey_creatureDepth": 0.15,
+      "osprey_coherence": 0.85,
+      "osprey_foam": 0.08,
+      "osprey_brine": 0.12,
+      "osprey_hull": 0.5,
+      "osprey_filterTilt": 0.28,
+      "osprey_filterEnvDepth": 0.25,
+      "osprey_harborVerb": 0.7,
+      "osprey_fog": 0.45,
+      "osprey_ampAttack": 0.8,
+      "osprey_ampDecay": 2.5,
+      "osprey_ampSustain": 0.55,
+      "osprey_ampRelease": 5.0,
+      "osprey_macroCharacter": 0.0,
+      "osprey_macroMovement": 0.0,
+      "osprey_macroCoupling": 0.0,
+      "osprey_macroSpace": 0.0
+    },
+    "Obsidian": {
+      "obsidian_depth": 0.65,
+      "obsidian_shimmer": 0.3,
+      "obsidian_attack": 0.9,
+      "obsidian_release": 4.5,
+      "obsidian_filterCutoff": 1800.0,
+      "obsidian_filterReso": 0.45
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Obsidian",
+        "type": "AmpToFilter",
+        "amount": 0.5
+      },
+      {
+        "engineA": "Obsidian",
+        "engineB": "Osprey",
+        "type": "PitchToFilter",
+        "amount": 0.35
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.35,
+    "movement": 0.18,
+    "density": 0.45,
+    "space": 0.88,
+    "aggression": 0.1
+  }
+}

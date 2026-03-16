@@ -1,8 +1,8 @@
 # XOmnibus — Sound Design Guide
 *Per-engine reference for sound designers, preset builders, and performers.*
-*Covers 20 of 29+ registered engines (plus OMBRE): features, key parameters, coupling strategies, and recommended pairings.*
+*Covers 26 of 34 registered engines: features, key parameters, coupling strategies, and recommended pairings.*
 *5 Constellation engines (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) have dedicated synthesis guides in Docs/ (e.g. ohm_synthesis_guide.md) but are not yet integrated into this unified guide.*
-*Registered engines not yet covered in this guide: OSPREY, OSTERIA, OWLFISH, OCELOT, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE.*
+*Registered engines not yet covered in this guide: OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT.*
 *V2 concept engines (OSTINATO, OPENSKY, OCEANDEEP, OUIE) are not registered in XOmnibus and are out of scope for this guide.*
 
 ---
@@ -23,33 +23,40 @@ Each engine section covers:
 ## 1. ODDFELIX (OddfeliX)
 *Percussive transient synthesis — feliX the neon tetra*
 
-**Accent:** Neon Tetra Blue `#00A6D6` | **Prefix:** `snap_` | **Voices:** 8
+**Accent:** Neon Tetra Blue `#00A6D6` | **Prefix:** `snap_` | **Voices:** 8 (polyphony: 1/2/4/8)
 **Creature:** The neon tetra — a flash of iridescent blue darting through sunlit shallows
 **Polarity:** Pure feliX — the surface, where energy is highest and sounds are sharpest
 
 ### What It Does
-feliX himself. Every note begins with his signature dart — a pitch sweep crashing from up to +24 semitones down to the target, like a tail snap changing direction underwater. Three oscillator modes give him range: Sine+Noise for the body splashes, FM for metallic surface reflections, Karplus-Strong for the pluck of a fishing line breaking the surface. The HPF→BPF filter cascade is the water itself — filtering sunlight by depth. The unison detune is the school — one fish becomes four, darting in slightly different directions.
+feliX himself. A **decay-only percussive engine** — there is no attack, sustain, or release parameter. Every note is instantaneous: the pitch sweep fires the moment a note lands, crashing downward (or upward with `snap_sweepDirection`) from the dart height set by `snap_snap`, and the sound decays away with no sustain. This is deliberate. feliX is a transient; he does not linger.
 
-feliX is the initiator. He strikes first. His transient envelope is the sharpest attack in the gallery, and his coupling output drives everything downstream.
+Three oscillator modes give him range: Sine+Noise for body splashes, FM for metallic surface reflections, Karplus-Strong for the pluck of a fishing line breaking the surface. The HPF→BPF filter cascade (Cytomic SVF) is the water itself — `snap_filterEnvDepth` controls how much the decay envelope opens the filter at the transient peak. The unison detune is the school — one fish becomes two or four, darting in slightly different directions.
+
+feliX is the initiator. He strikes first. His decay envelope is the sharpest envelope in the gallery, and his coupling output drives everything downstream.
 
 ### Macros (Recommended)
 | Macro | Name | Mapping | Aquatic Meaning |
 |-------|------|---------|-----------------|
-| M1 | **DART** | `snap_snap` + `snap_decay` inverse | The snap of a tail — how sharp the transient is |
-| M2 | **SCHOOL** | `snap_unison` + `snap_detune` | The school — how many fish, how spread |
-| M3 | **SURFACE** | `snap_filterCutoff` + `snap_filterReso` | The water surface — how much light filters through |
-| M4 | **DEPTH** | FX sends + reverb | How deep the splash echoes |
+| M1 | **DART** | `snap_macroDart` → `snap_snap` + `snap_decay` inverse | The snap of a tail — how sharp the transient is |
+| M2 | **SCHOOL** | `snap_macroSchool` → `snap_unison` + `snap_detune` | The school — how many fish, how spread |
+| M3 | **SURFACE** | `snap_macroSurface` → `snap_filterCutoff` + `snap_filterReso` | The water surface — how much light filters through |
+| M4 | **DEPTH** | `snap_macroDepth` → `snap_filterEnvDepth` + FX sends | How deep the filter opens on each hit |
 
 ### Key Parameters
-| Parameter | Range | Sweet Spot | What It Does |
-|-----------|-------|------------|-------------|
-| `snap_snap` | 0–1 | 0.3–0.6 | The dart intensity. Higher = more transient. The neon flash. |
-| `snap_decay` | 0.001–5s | 0.1–0.4 | How long the ripple lasts. Short for clicks, longer for toms. |
-| `snap_filterCutoff` | 20–20kHz | 1–4 kHz | HPF→BPF cascade. The surface filter — lower = deeper water. |
-| `snap_filterReso` | 0–1 | 0.2–0.5 | Resonance. Higher = the ring of a droplet hitting still water. |
-| `snap_detune` | 0–100 cents | 5–15 | School spread. Wider = bigger swarm. |
-| `snap_unison` | 1/2/4 | 2 | School size. 4 = the whole swarm changes direction at once. |
-| `snap_oscMode` | 0/1/2 | — | 0=Sine+Noise (body splash), 1=FM (metallic reflection), 2=KS (plucked string) |
+| Parameter | Range | Default | Sweet Spot | What It Does |
+|-----------|-------|---------|------------|-------------|
+| `snap_oscMode` | 0/1/2 | 0 | — | 0=Sine+Noise (body splash), 1=FM (metallic reflection), 2=Karplus-Strong (plucked string) |
+| `snap_snap` | 0–1 | 0.4 | 0.3–0.6 | Dart intensity — controls pitch sweep height and transient sharpness. The neon flash. |
+| `snap_decay` | 0–8s | 0.5 | 0.05–0.5 | How long the ripple lasts. Short for clicks, longer for toms. Skewed (0.3 curve). |
+| `snap_sweepDirection` | -1 to +1 | -1.0 | -1.0 | Pitch sweep direction: -1=downward (classic drum), +1=upward (effect snare/pitched tom). |
+| `snap_filterCutoff` | 20–20kHz | 2000 | 1–4 kHz | HPF→BPF cascade center. Lower = deeper water; higher = sunlit surface. |
+| `snap_filterReso` | 0–1 | 0.3 | 0.2–0.5 | Resonance. Higher = the ring of a droplet hitting still water. |
+| `snap_filterEnvDepth` | 0–1 | 0.3 | 0.2–0.6 | How far the decay envelope pushes the filter open at the transient peak. Velocity × depth. |
+| `snap_detune` | 0–50 cents | 10 | 5–15 | School spread. Wider = bigger swarm. |
+| `snap_unison` | 1/2/4 | 1 | 1–2 | School size — sub-voices per note. 4 = the whole swarm darting at once. |
+| `snap_polyphony` | 1/2/4/8 | 4 | 1–4 | How many simultaneous notes. 1 = mono percussion; 4 = melodic use. |
+| `snap_level` | 0–1 | 0.8 | 0.7–1.0 | Output level before FX chain. |
+| `snap_pitchLock` | on/off | off | — | When on, ignores MIDI note pitch — feliX always fires at the same tuned frequency. Useful for pure percussion. |
 
 ### Coupling
 - **Sends:** Envelope level (ch2) — feliX's transient drives other engines' filters, gates, chokes
@@ -65,11 +72,12 @@ feliX is the initiator. He strikes first. His transient envelope is the sharpest
 - **+ Onset:** Two percussive species schooling — feliX's organic snap alongside Onset's algorithmic precision.
 
 ### Starter Recipes
-**Tail Snap:** snap=0.8, decay=0.15, oscMode=0, filterCutoff=400 — feliX's signature dart
-**Surface Pluck:** snap=0.5, decay=0.3, oscMode=2 (KS), filterCutoff=3000, reso=0.4 — a fishing line breaking the surface
-**Metallic Flash:** snap=0.6, decay=0.25, oscMode=1 (FM), filterCutoff=2000, detune=20 — neon scales catching light
-**School Stab:** snap=0.4, decay=0.2, unison=4, detune=12, filterCutoff=3000 — the whole swarm darting at once
-**Deep Dart:** snap=0.7, decay=0.4, oscMode=0, filterCutoff=800, reso=0.3 — feliX diving below the surface
+**Tail Snap:** snap_snap=0.8, snap_decay=0.15, snap_oscMode=0, snap_filterCutoff=400, snap_sweepDirection=-1 — feliX's signature dart
+**Surface Pluck:** snap_snap=0.5, snap_decay=0.3, snap_oscMode=2 (KS), snap_filterCutoff=3000, snap_filterReso=0.4 — a fishing line breaking the surface
+**Metallic Flash:** snap_snap=0.6, snap_decay=0.25, snap_oscMode=1 (FM), snap_filterCutoff=2000, snap_detune=20 — neon scales catching light
+**School Stab:** snap_snap=0.4, snap_decay=0.2, snap_unison=4, snap_detune=12, snap_filterCutoff=3000 — the whole swarm darting at once
+**Upward Snare:** snap_snap=0.7, snap_decay=0.18, snap_sweepDirection=+1, snap_oscMode=1 (FM), snap_filterCutoff=3500 — the dart that defies gravity
+**Pitched Tone:** snap_snap=0.3, snap_decay=1.5, snap_oscMode=2 (KS), snap_pitchLock=off, snap_filterEnvDepth=0.5 — feliX as melodic instrument
 
 ---
 
@@ -1384,3 +1392,734 @@ All voices run a pluck/strum exciter into a Karplus-Strong waveguide loop. Voice
 ### Coupling
 
 Accepts `LFOToPitch`, `AmpToFilter`, `EnvToMorph`. Best coupling use: route OBBLIGATO's amplitude into OLE's `EnvToMorph` — wind duet dynamics drive strum intensity in real time. OLE's wide stereo field (especially at high ISLA) makes it a natural L/R anchor in a four-engine XOmnibus setup.
+
+---
+
+## 27. OVERLAP (XOverlap)
+
+**Accent:** Bioluminescent Cyan-Green `#00FFB4` | **Prefix:** `olap_` | **Voices:** 6 | **Identity:** Lion's Mane jellyfish — knot-topology Feedback Delay Network synthesizer
+
+### What It Does
+
+OVERLAP is a 6-voice FDN (Feedback Delay Network) synthesizer whose routing matrix morphs between four mathematical knot topologies: Unknot, Trefoil, Figure-Eight, and Torus. Each voice is a pulsing oscillator fed through the shared FDN; the knot geometry determines how delay lines cross-feed each other. Voices couple via Kuramoto hydrodynamic entrainment — when `olap_entrain` is high, voice phases synchronize like bioluminescent pulses rippling through a jellyfish bell. A separate Bioluminescence layer adds shimmer above the FDN mix. Post-FDN processing runs through a Zavalishin TPT state-variable lowpass filter and a chorus/diffusion stage.
+
+### Key Parameters
+
+| Parameter | Range | Default | What It Does |
+|-----------|-------|---------|--------------|
+| `olap_knot` | Unknot / Trefoil / Figure-Eight / Torus | Unknot | FDN routing topology |
+| `olap_tangleDepth` | 0–1 | 0.4 | Interpolation toward full knot matrix — 0 = identity routing, 1 = full topology |
+| `olap_torusP` | 2–7 | 3 | Torus knot P parameter (active when knot = Torus) |
+| `olap_torusQ` | 2–7 | 2 | Torus knot Q parameter (active when knot = Torus) |
+| `olap_delayBase` | 1–50 ms | 10 ms | FDN delay line base length — sets pitch/density of the resonant network |
+| `olap_dampening` | 0–1 | 0.5 | High-frequency energy loss in FDN feedback — 0 = bright ring, 1 = muted |
+| `olap_feedback` | 0–0.99 | 0.7 | FDN recirculation — higher values approach infinite sustain |
+| `olap_pulseRate` | 0.01–8 Hz | 0.5 Hz | Voice oscillator pulse rate — controls bioluminescence flash rhythm |
+| `olap_entrain` | 0–1 | 0.3 | Kuramoto coupling strength — how strongly voices synchronize pulse phase |
+| `olap_spread` | 0–1 | 0.7 | Stereo spread of the 6 voice outputs across the -1 to +1 field |
+| `olap_voiceMode` | Poly / Mono / Legato | Poly | Voice allocation mode |
+| `olap_glide` | 0–500 ms | 0 ms | Portamento time |
+| `olap_brightness` | 0–1 | 0.5 | Voice oscillator harmonic content |
+| `olap_bioluminescence` | 0–1 | 0.2 | Bioluminescence layer level — parallel shimmer above FDN mix |
+| `olap_current` | 0–1 | 0.1 | Ocean current modulation depth applied to voice oscillators |
+| `olap_currentRate` | 0.005–0.5 Hz | 0.03 Hz | Ocean current modulation rate |
+| `olap_attack` | 1 ms–2 s | 50 ms | Voice amplitude envelope attack |
+| `olap_decay` | 10 ms–5 s | 1 s | Voice amplitude envelope decay |
+| `olap_sustain` | 0–1 | 0.7 | Voice amplitude envelope sustain |
+| `olap_release` | 10 ms–10 s | 2 s | Voice amplitude envelope release |
+| `olap_filterCutoff` | 20–20k Hz | 8 kHz | SVF lowpass cutoff frequency |
+| `olap_filterRes` | 0–1 | 0.1 | SVF resonance — 0 = Butterworth, 1 = near self-oscillation |
+| `olap_filterEnvAmt` | -1–1 | 0.3 | Filter envelope amount — bipolar (negative sweeps downward) |
+| `olap_filterEnvDecay` | 10 ms–5 s | 0.5 s | Filter envelope decay time |
+| `olap_lfo1Rate` | 0.01–20 Hz | 0.8 Hz | LFO 1 rate |
+| `olap_lfo1Shape` | Sine / Triangle / Saw / Square / S&H | Sine | LFO 1 waveform |
+| `olap_lfo1Depth` | 0–1 | 0.3 | LFO 1 depth |
+| `olap_lfo1Dest` | Tangle / Dampening / Pulse Rate / Delay / Filter / Spread | Tangle | LFO 1 routing destination |
+| `olap_lfo2Rate` | 0.01–20 Hz | 0.15 Hz | LFO 2 rate |
+| `olap_lfo2Shape` | Sine / Triangle / Saw / Square / S&H | Sine | LFO 2 waveform |
+| `olap_lfo2Depth` | 0–1 | 0.2 | LFO 2 depth |
+| `olap_lfo2Dest` | Tangle / Dampening / Pulse Rate / Delay / Filter / Spread | Pulse Rate | LFO 2 routing destination |
+| `olap_chorusMix` | 0–1 | 0.2 | Post-FDN chorus wet amount |
+| `olap_chorusRate` | 0.01–0.5 Hz | 0.08 Hz | Chorus modulation rate |
+| `olap_diffusion` | 0–1 | 0.3 | Post-FDN diffusion (smears transients, widens stereo) |
+
+### Macros
+
+| Macro | Parameter | What It Controls |
+|-------|-----------|-----------------|
+| `olap_macroKnot` (M1 KNOT) | 0–1 | Sweeps knot topology from Unknot → Trefoil → Figure-Eight → Torus while scaling tangle depth |
+| `olap_macroPulse` (M2 PULSE) | 0–1 | Simultaneously raises pulse rate (0.01→8 Hz) and spread (0.3→1.0) |
+| `olap_macroEntrain` (M3 ENTRAIN) | 0–1 | Sets entrainment coupling strength and raises FDN feedback proportionally |
+| `olap_macroBloom` (M4 BLOOM) | 0–1 | Raises bioluminescence depth and opens filter cutoff |
+
+### Expression
+
+| Controller | Destination Options |
+|-----------|-------------------|
+| Mod Wheel (`olap_modWheelDest`) | Tangle / Entrain / Bioluminescence / Filter |
+| Aftertouch (`olap_atPressureDest`) | Tangle / Entrain / Brightness / Pulse Rate |
+
+### Coupling
+
+OVERLAP accepts 7 coupling types from upstream engines:
+
+| Incoming Type | Effect Inside OVERLAP |
+|--------------|----------------------|
+| `AudioToFM` | Modulates FDN delay base — audio-rate FM of the resonant network |
+| `AudioToRing` | Ring-modulates the final stereo output |
+| `AmpToFilter` | Opens filter cutoff proportionally to upstream amplitude |
+| `EnvToMorph` | Pushes tangle depth toward more knotted topology |
+| `LFOToPitch` | Maps pitch semitones to tangle depth perturbation |
+| `PitchToPitch` | Same as LFOToPitch — semitone offset becomes tangle perturbation |
+| `FilterToFilter` | Multiplicative filter cutoff shift from upstream filter state |
+
+### The Knot Topology System
+
+The FDN routing matrix is determined by `olap_knot` combined with `olap_tangleDepth`. At tangleDepth 0, all knot types reduce to the identity matrix (direct pass-through). As depth rises, the matrix morphs toward the full knot recirculation pattern:
+
+- **Unknot** — simple loop topology; each delay feeds the next in a ring
+- **Trefoil** — three-crossing alternating feedback; produces beating between voice pairs
+- **Figure-Eight** — two-loop crossing at the center; creates a characteristic double-resonance density
+- **Torus** — defined by P and Q parameters (`olap_torusP`, `olap_torusQ`); delay ratios are derived from the torus winding number, producing inharmonic frequency lattices at high feedback
+
+The KNOT macro sweeps through all four sequentially — use it as the primary timbral morphing control for performances.
+
+### Sound Design Recipes
+
+**Bioluminescent Pad** — `olap_knot` Trefoil, tangleDepth 0.5, feedback 0.75, entrain 0.4, pulseRate 0.3 Hz, bioluminescence 0.4, filterCutoff 6 kHz, attack 400 ms, release 4 s. Mod wheel → Bioluminescence. Aftertouch → Entrain. Result: slow pulsing chordal shimmer that tightens phase-lock under pressure.
+
+**Deep Tangle Drone** — KNOT macro 0.9 (Torus territory), delayBase 30 ms, feedback 0.92, dampening 0.7, entrain 0.8, BLOOM 0.6. Voices lock into a single breathing unit. Hold a low note for 8 bars and automate KNOT 0→1.
+
+**FDN Percussion** — `olap_attack` 1 ms, decay 80 ms, sustain 0, release 100 ms, filterEnvAmt 0.9, filterEnvDecay 60 ms, knot Figure-Eight, delayBase 5 ms, feedback 0.4. PULSE macro 0.7. Short metallic transients with topology-defined pitch.
+
+**Synchronized Pulse Field** — PULSE macro 0.5 (pulseRate ~4 Hz), ENTRAIN macro 1.0, spread 1.0, bioluminescence 0.3, filterCutoff 12 kHz. All 6 voices lock in phase and pulse together as a unified rhythmic texture.
+
+---
+
+## 28. OUTWIT (XOutwit)
+
+**Accent:** Chromatophore Amber `#CC6600` | **Prefix:** `owit_` | **Voices:** Mono (4-note poly via 8 independent arms) | **Identity:** Giant Pacific Octopus — 8-arm Wolfram cellular automaton synthesizer
+
+### What It Does
+
+OUTWIT is an 8-arm synthesizer where each arm is an independent Wolfram elementary cellular automaton running its own Rule (0–255). The CA generates a 1D binary pattern; the arm reads pattern density and transition events to drive an oscillator, filter, and pitch. Arms are not merely layered — they communicate: the SYNAPSE parameter couples arm N's step event into arm N+1's state as an inter-arm excitation signal, creating a ring of eight distributed intelligence units. A global Amp Envelope shapes the composite sound per note. The SOLVE macro activates a genetic-algorithm hunt toward a target sonic DNA (6 descriptors: brightness, warmth, movement, density, space, aggression). An Ink Cloud module adds a separate decay tail on note trigger. Den Reverb is the on-board spatial processor.
+
+### Per-Arm Parameters (x8, prefix `owit_arm0` through `owit_arm7`)
+
+Each arm has 7 parameters using the pattern `owit_armN{Param}`:
+
+| Parameter suffix | Range | Default | What It Does |
+|-----------------|-------|---------|--------------|
+| `Rule` | 0–255 | 110, 30, 90, 184, 60, 45, 150, 105 | Wolfram elementary CA rule — determines pattern evolution |
+| `Length` | 4–64 cells | 16 | CA row width — wider rows produce denser, slower-cycling patterns |
+| `Level` | 0–1 | 0.7 | Arm output amplitude |
+| `Pitch` | -24 to +24 semitones | 0 | Semitone offset from root note for this arm |
+| `Filter` | 20–20k Hz | 4 kHz | Per-arm lowpass filter cutoff |
+| `Wave` | Saw / Pulse / Sine | Saw | Oscillator waveform for this arm |
+| `Pan` | -1 to +1 | Arms spread L→R: -0.8 to +0.9 | Stereo position; default spreads arms across the field |
+
+### Global Parameters
+
+| Parameter | Range | Default | What It Does |
+|-----------|-------|---------|--------------|
+| `owit_stepRate` | 0.01–40 Hz | 4 Hz | CA clock rate — how fast all arms advance one cellular generation |
+| `owit_stepSync` | on/off | off | Sync step rate to host tempo |
+| `owit_stepDiv` | 1/32 to 2/1 | 1/8 | Step division when synced to host |
+| `owit_synapse` | 0–1 | 0.2 | Inter-arm coupling strength — arm N step event excites arm N+1 |
+| `owit_chromAmount` | 0–1 | 0.5 | Chromatophore modulation depth — CA pattern modulates timbre |
+| `owit_solve` | 0–1 | 0 | SOLVE base activation level for the GA hunt |
+| `owit_huntRate` | 0–1 | 0.3 | Speed of the SOLVE genetic algorithm search |
+| `owit_targetBrightness` | 0–1 | 0.5 | SOLVE target: desired brightness descriptor |
+| `owit_targetWarmth` | 0–1 | 0.5 | SOLVE target: desired warmth descriptor |
+| `owit_targetMovement` | 0–1 | 0.5 | SOLVE target: desired movement descriptor |
+| `owit_targetDensity` | 0–1 | 0.5 | SOLVE target: desired density descriptor |
+| `owit_targetSpace` | 0–1 | 0.5 | SOLVE target: desired space descriptor |
+| `owit_targetAggression` | 0–1 | 0.5 | SOLVE target: desired aggression descriptor |
+| `owit_inkCloud` | 0–1 | 0 | Ink Cloud trigger level — noise burst on note-on |
+| `owit_inkDecay` | 10–500 ms | 80 ms | Ink Cloud decay time |
+| `owit_triggerThresh` | 0–1 | 0.3 | CA pattern density threshold that gates arm output |
+| `owit_masterLevel` | 0–1 | 0.8 | Overall output level before soft limiter |
+| `owit_ampAttack` | 1 ms–2 s | 10 ms | Global amp envelope attack |
+| `owit_ampDecay` | 1 ms–2 s | 200 ms | Global amp envelope decay |
+| `owit_ampSustain` | 0–1 | 0.8 | Global amp envelope sustain |
+| `owit_ampRelease` | 1 ms–4 s | 300 ms | Global amp envelope release |
+| `owit_filterRes` | 0–1 | 0.2 | Filter resonance shared across all arms |
+| `owit_filterType` | LP / BP / HP | LP | Filter mode applied to each arm |
+| `owit_denSize` | 0–1 | 0.4 | Den Reverb room size |
+| `owit_denDecay` | 0–1 | 0.4 | Den Reverb decay time |
+| `owit_denMix` | 0–1 | 0.2 | Den Reverb wet/dry mix |
+| `owit_voiceMode` | Poly / Mono | Poly | Voice allocation |
+| `owit_glide` | 0–1 | 0 | Portamento amount |
+
+### LFOs
+
+| Parameter | Range | Default | Notes |
+|-----------|-------|---------|-------|
+| `owit_lfo1Rate` | 0.01–20 Hz | 1 Hz | LFO 1 rate |
+| `owit_lfo1Depth` | 0–1 | 0 | LFO 1 depth |
+| `owit_lfo1Shape` | Sine / Triangle / Saw / Square / S&H | Sine | LFO 1 waveform |
+| `owit_lfo1Dest` | StepRate / FilterCutoff / ChromAmount / ArmLevels | StepRate | LFO 1 destination |
+| `owit_lfo2Rate` | 0.01–20 Hz | 0.3 Hz | LFO 2 rate |
+| `owit_lfo2Depth` | 0–1 | 0 | LFO 2 depth |
+| `owit_lfo2Shape` | Sine / Triangle / Saw / Square / S&H | Sine | LFO 2 waveform |
+| `owit_lfo2Dest` | StepRate / FilterCutoff / ChromAmount / ArmLevels | FilterCutoff | LFO 2 destination |
+
+### Macros
+
+| Macro | Parameter | What It Controls |
+|-------|-----------|-----------------|
+| `owit_macroSolve` (M1 SOLVE) | 0–1 | Activates and intensifies the GA hunt toward the target DNA descriptors |
+| `owit_macroSynapse` (M2 SYNAPSE) | 0–1 | Adds up to +0.6 to synapse coupling — pushes arms toward collective behavior |
+| `owit_macroChromatophore` (M3 CHROMATOPHORE) | 0–1 | Adds up to +0.7 to chromAmount — maximum CA-driven timbre modulation |
+| `owit_macroDen` (M4 DEN) | 0–1 | Simultaneously raises denSize, denDecay, and denMix — fills the octopus's den |
+
+### Expression
+
+Mod wheel adds up to +0.4 to `owit_synapse` — playing pressure increases inter-arm coupling, tightening the octopus's distributed intelligence. Aftertouch adds up to +0.3 to `owit_chromAmount` — pressure increases chromatophore modulation depth.
+
+### Coupling
+
+OUTWIT accepts 9 coupling types from upstream engines:
+
+| Incoming Type | Effect Inside OUTWIT |
+|--------------|---------------------|
+| `AudioToFM` | Modulates step rate (±20 Hz) — upstream audio drives CA clock speed |
+| `AmpToFilter` | Opens all arm filter cutoffs by up to +8 kHz |
+| `EnvToMorph` | Increases chromatophore depth (up to +0.7) |
+| `LFOToPitch` | Applies semitone pitch offset across all arms (±12 semitones) |
+| `RhythmToBlend` | Increases synapse coupling (up to +0.5) — upstream rhythm tightens inter-arm sync |
+| `AmpToChoke` | Scales arm levels down (inverse of amplitude — creates sidechain-like ducking) |
+| `AudioToRing` | Ring-modulates arm output amplitude by upstream audio |
+| `FilterToFilter` | Adds +4 kHz offset to all arm filter cutoffs |
+| `PitchToPitch` | Adds harmony offset (+7 semitones) across all arms |
+
+### The Wolfram CA System
+
+Each arm maintains a 1D cellular array of length `armNLength`. At each CA step (rate = `owit_stepRate`), the engine applies the arm's Rule to generate the next row. Rules are standard Wolfram elementary CA: the next state of each cell is determined by the current state of the cell and its two neighbors, producing one of 256 possible rule tables. Key Rules for sound design:
+
+- **Rule 110** — complex aperiodic patterns (Turing-complete); default arm 0
+- **Rule 30** — chaotic, pseudo-random; default arm 1; useful for noise-like textures
+- **Rule 90** — Sierpinski triangle fractal; default arm 2; strong rhythmic pulse at power-of-2 lengths
+- **Rule 184** — traffic flow model; default arm 3; produces slow-moving density waves
+- **Rule 60** — XOR fractal; default arm 4; creates repeating melodic sequences at short lengths
+- **Rule 45** — complex/chaotic hybrid; default arm 5
+- **Rule 150** — symmetric wave fractal; default arm 6
+- **Rule 105** — complex aperiodic; default arm 7
+
+The `owit_triggerThresh` parameter gates each arm: arm output is only produced when pattern density exceeds the threshold, creating natural rhythm from the CA dynamics.
+
+### Sound Design Recipes
+
+**Distributed Pulse** — All arm Rules set to defaults. stepRate 8 Hz, synapse 0.5, chromAmount 0.6, arm pitches: 0, 7, 12, 19, 24, 7, -12, -5 (octave + fifth spread). SYNAPSE macro 0.6. Arms phase-lock via synapse and produce a rhythmically interlocked harmonic stack.
+
+**CA Drone** — Arms 0–3 active (levels 0.8), arms 4–7 at 0. stepRate 0.5 Hz, arm lengths 48–64, triggerThresh 0.1. DEN macro 0.7. Very slow CA evolution with dense sustain and full reverb — meditative texture.
+
+**SOLVE Hunt** — Set target DNA: brightness 0.8, warmth 0.3, movement 0.9, density 0.6, space 0.4, aggression 0.7. SOLVE macro 0 → 1 over 8 bars. The GA progressively mutates arm rules and parameters toward the target — run live as a performance gesture.
+
+**Ink Cloud Attack** — inkCloud 0.8, inkDecay 200 ms, ampAttack 1 ms, ampDecay 50 ms, ampSustain 0. Every note trigger fires a noise burst (ink) followed by the arm CA texture decaying quickly. Percussion from distributed intelligence.
+
+**Synapse Ring** — stepRate 12 Hz, synapse 1.0 (SYNAPSE macro 1.0), arm pitches 0/2/4/7/9/12/14/16 (D major scale offsets). triggerThresh 0.2. Each arm immediately triggers the next; the ring propagates a traveling wave across the stereo field.
+
+---
+
+## OSPREY (Osprey)
+*Turbulence-Modulated Resonator Synthesis — the surface hunter*
+
+**Accent:** Azulejo Blue `#1B4F8A` | **Prefix:** `osprey_` | **Voices:** 8 (polyphonic, LRU stealing)
+**Creature:** The osprey hunts at the boundary between air and ocean — the only raptor that plunges into water. XOsprey lives in the Surface zone: turbulent interface where wind meets wave, where resonance is born from chaos.
+**Polarity:** Balanced feliX/Oscar — lives at the threshold between the two worlds
+**Blessing:** B012 ShoreSystem — 5-coastline cultural data shared across engines
+
+### What It Does
+Turbulence-modulated modal synthesis shaped by five coastal resonator profiles (Atlantic, Nordic, Mediterranean, Pacific, Southern). A physics-inspired FluidEnergyModel replaces traditional oscillators — at low sea states it produces smooth sinusoidal swells; at high states it stacks 4 octaves of Perlin-style noise modeling the ocean energy cascade. Sixteen modal resonators per voice (3 instrument groups × 4 formants + 4 sympathetic strings) are excited by this fluid energy rather than a physical gesture.
+
+Three creature formant voices per voice add the living element — birds, wind, distant calls. The ShoreSystem morphs between five coastal instrument families, smoothly transitioning the timbral DNA of a kora (Atlantic) into a koto (Pacific) as the Shore knob sweeps.
+
+### Macros
+| Macro | Name | Mapping |
+|-------|------|---------|
+| M1 | **CHARACTER** | `osprey_macroCharacter` — Shore morphing + resonator brightness |
+| M2 | **MOVEMENT** | `osprey_macroMovement` — Creature rate + sea state energy |
+| M3 | **COUPLING** | `osprey_macroCoupling` — Sympathy amount + coupling send level |
+| M4 | **SPACE** | `osprey_macroSpace` — Harbor verb + fog amount |
+
+### Key Parameters
+| Parameter | Range | Sweet Spot | What It Does |
+|-----------|-------|------------|-------------|
+| `osprey_shore` | 0–4 | 1–3 | Coastal resonator profile. 0=Atlantic, 1=Nordic, 2=Mediterranean, 3=Pacific, 4=Southern. |
+| `osprey_seaState` | 0–1 | 0.2–0.6 | Fluid energy turbulence. Low=smooth swells, high=chaotic chop. |
+| `osprey_swellPeriod` | s | 2–8 | Period of primary wave oscillation. The tempo of the ocean. |
+| `osprey_windDir` | 0–1 | varies | Wind direction relative to shore. Shapes excitation character. |
+| `osprey_depth` | 0–1 | 0.3–0.7 | Resonator bank depth. How far below the surface the resonance extends. |
+| `osprey_resonatorBright` | 0–1 | 0.4–0.7 | Brightness of modal resonators. |
+| `osprey_resonatorDecay` | s | 0.5–3.0 | Modal ring time. How long the water body resonates after excitation. |
+| `osprey_sympathyAmount` | 0–1 | 0.1–0.4 | Sympathetic string response level. Cross-resonance between partials. |
+| `osprey_creatureRate` | Hz | 0.1–2.0 | Creature formant animation rate. How fast the living voice moves. |
+| `osprey_creatureDepth` | 0–1 | 0.2–0.5 | Creature formant modulation depth. How much the voice evolves. |
+| `osprey_coherence` | 0–1 | 0.3–0.7 | Noise coherence. Low=stochastic, high=tonal. |
+| `osprey_foam` | 0–1 | 0.1–0.3 | High-frequency foam texture added to output. |
+| `osprey_brine` | 0–1 | 0.1–0.4 | Mid-frequency salt character — saturated tonal weight. |
+| `osprey_hull` | 0–1 | 0.2–0.5 | Low-end hull resonance — the body of the vessel. |
+| `osprey_filterTilt` | -1–1 | -0.2–0.2 | Tilt filter shelving. Negative=darker, positive=brighter. |
+| `osprey_filterEnvDepth` | 0–1 | 0.2–0.5 | Filter envelope depth. Velocity-triggered filter sweep. |
+| `osprey_harborVerb` | 0–1 | 0.2–0.5 | Harbor reverb (4-allpass chain). Enclosed water acoustic. |
+| `osprey_fog` | 0–1 | 0.1–0.4 | Fog HF diffusion — softens transients and upper partials. |
+| `osprey_ampAttack` | ms | 5–50 | Amplitude envelope attack. |
+| `osprey_ampDecay` | ms | 50–500 | Amplitude envelope decay. |
+| `osprey_ampSustain` | 0–1 | 0.5–0.8 | Amplitude envelope sustain level. |
+| `osprey_ampRelease` | ms | 100–1000 | Amplitude envelope release. |
+| `osprey_voiceMode` | 0–1 | — | 0=polyphonic, 1=mono legato. |
+| `osprey_glide` | 0–2 s | 0–0.2 | Portamento time. |
+
+### Coupling
+- **Sends:** Stereo resonator audio, per-voice amplitude envelope output
+- **Receives:** AudioToWavetable (external audio feeds the fluid excitation model), AmpToFilter (external amplitude modulates the tilt filter)
+- **Best as source for:** AmpToFilter (resonator amplitude drives other engines' filters), AudioToWavetable (coastal resonance feeds granular engines)
+- **Ecosystem role:** The surface layer — where energy from above enters the column. Pairs naturally with OSTERIA (its cultural twin) and deep engines that receive surface energy.
+
+### Recommended Pairings
+- **+ OSTERIA:** The companion diptych. OSPREY is the ocean; OSTERIA is the human answer to it. Shore values can mirror or diverge.
+- **+ Opal:** Osprey's resonant swells frozen into Opal grain clouds. Shore becomes granular texture.
+- **+ Overdub:** Osprey's surface turbulence gaining tape delay history. Coastal sound becoming memory.
+- **+ Ouroboros:** FluidEnergy excitation feeding the strange attractor. Chaos feeding chaos.
+- **+ Onset:** Surface splashes + resonant body. Percussion arrives, the shore absorbs it.
+
+### Starter Recipes
+**Atlantic Modal:** osprey_shore=0, osprey_seaState=0.3, osprey_resonatorDecay=2.0, osprey_sympathyAmount=0.3, osprey_harborVerb=0.4 — kora-like resonant pluck, North Atlantic acoustic
+**Pacific Storm:** osprey_shore=3, osprey_seaState=0.8, osprey_coherence=0.2, osprey_foam=0.4, osprey_fog=0.3 — violent Pacific turbulence, inharmonic chaos
+**Nordic Whisper:** osprey_shore=1, osprey_seaState=0.1, osprey_creatureRate=0.3, osprey_creatureDepth=0.4, osprey_fog=0.5 — still Nordic fjord, creature voices barely present
+**Sympathy Web:** osprey_sympathyAmount=0.5, osprey_resonatorDecay=3.0, osprey_depth=0.6 — dense cross-resonance, every partial triggering its neighbors
+
+---
+
+## OSTERIA (Osteria)
+*Ensemble Synthesis with Elastic Coupling and Timbral Memory — the shore tavern*
+
+**Accent:** Porto Wine `#722F37` | **Prefix:** `osteria_` | **Voices:** 8 (polyphonic, LRU stealing)
+**Creature:** The osteria is where the fisherman goes after the sea. Stories become songs. Strangers become an ensemble. OSTERIA is the human answer to OSPREY's inhuman vastness — communal synthesis, living at the Open Water zone.
+**Polarity:** Balanced feliX/Oscar — communal, warm, accumulated history
+**Blessing:** B012 ShoreSystem — shared with OSPREY, the OSPREY × OSTERIA diptych
+
+### What It Does
+A jazz quartet (Bass, Harmony, Melody, Rhythm) stretched across five coastal cultures via the ShoreSystem. Each voice independently absorbs local folk instrument character through formant resonator banks — Guitarra Portuguesa, Kora, Oud, Shakuhachi, Gamelan. Voices are connected by spring forces: elastic rubber-band coupling pulls them toward a shared centroid, creating tension when stretched and musical unity when tight.
+
+Timbral memory means borrowed influences persist across notes — the quartet accumulates a living history of everywhere it's been. The Tavern Room is an FDN reverb with Householder-like mixing and per-shore absorption. Murmur generates crowd/conversation texture via filtered noise.
+
+### Macros
+| Macro | Name | Mapping |
+|-------|------|---------|
+| M1 | **CHARACTER** | `osteria_macroCharacter` — shore morphing + patina character |
+| M2 | **MOVEMENT** | `osteria_macroMovement` — elastic coupling + memory recall |
+| M3 | **COUPLING** | `osteria_macroCoupling` — sympathy crossfeed + coupling level |
+| M4 | **SPACE** | `osteria_macroSpace` — tavern mix + hall + murmur |
+
+### Key Parameters
+| Parameter | Range | Sweet Spot | What It Does |
+|-----------|-------|------------|-------------|
+| `osteria_qBassShore` | 0–4 | 0–2 | Bass voice shore position. 0=Atlantic, 4=Southern. |
+| `osteria_qHarmShore` | 0–4 | varies | Harmony voice shore position. |
+| `osteria_qMelShore` | 0–4 | varies | Melody voice shore position. |
+| `osteria_qRhythmShore` | 0–4 | varies | Rhythm voice shore position. |
+| `osteria_qElastic` | 0–1 | 0.2–0.6 | Spring coupling stiffness. How tightly voices pull toward shared centroid. |
+| `osteria_qStretch` | 0–1 | 0.1–0.5 | Spring stretch limit. How far apart voices can wander before snapping back. |
+| `osteria_qMemory` | 0–1 | 0.3–0.7 | Timbral memory retention. How long borrowed shore influence persists. |
+| `osteria_qSympathy` | 0–1 | 0.1–0.4 | Cross-voice sympathy crossfeed. Harmony bleeds into melody, etc. |
+| `osteria_bassLevel` | 0–1 | 0.6–0.9 | Bass voice output level. |
+| `osteria_harmLevel` | 0–1 | 0.5–0.8 | Harmony voice output level. |
+| `osteria_melLevel` | 0–1 | 0.5–0.8 | Melody voice output level. |
+| `osteria_rhythmLevel` | 0–1 | 0.4–0.7 | Rhythm voice output level. |
+| `osteria_ensWidth` | 0–1 | 0.4–0.8 | Ensemble stereo width. |
+| `osteria_blendMode` | 0–2 | — | Quartet blend mode. 0=independent, 1=spring-centered, 2=unison. |
+| `osteria_tavernMix` | 0–1 | 0.2–0.5 | Tavern Room FDN reverb send amount. |
+| `osteria_tavernShore` | 0–4 | varies | Tavern room acoustic character (per-shore absorption). |
+| `osteria_murmur` | 0–1 | 0.05–0.2 | Crowd murmur texture level. |
+| `osteria_warmth` | 0–1 | 0.3–0.6 | Formant warmth — mid-range resonance character. |
+| `osteria_oceanBleed` | 0–1 | 0.0–0.2 | Ocean bleed — slight OSPREY-like excitation noise in output. |
+| `osteria_patina` | 0–1 | 0.1–0.4 | Harmonic fold character stage. Gentle even-order distortion. |
+| `osteria_porto` | 0–1 | 0.1–0.4 | Porto character stage. tanh warmth — soft saturation. |
+| `osteria_smoke` | 0–1 | 0.1–0.3 | Smoke character stage. HF haze lowpass — softens upper harmonics. |
+| `osteria_filterEnvDepth` | 0–1 | 0.2–0.5 | Velocity-triggered filter envelope depth. |
+| `osteria_attack` | ms | 10–100 | Amp envelope attack. |
+| `osteria_decay` | ms | 50–500 | Amp envelope decay. |
+| `osteria_sustain` | 0–1 | 0.5–0.8 | Amp envelope sustain. |
+| `osteria_release` | ms | 100–1000 | Amp envelope release. |
+| `osteria_sessionDelay` | 0–1 | 0.1–0.3 | Session delay send amount. |
+| `osteria_hall` | 0–1 | 0.1–0.3 | Hall allpass reverb amount. |
+| `osteria_chorus` | 0–1 | 0.1–0.3 | Chorus ensemble modulation amount. |
+| `osteria_tape` | 0–1 | 0.0–0.2 | Tape saturation/flutter amount. |
+
+### Coupling
+- **Sends:** Post-room stereo audio
+- **Receives:** AudioToWavetable (any engine becomes a shore the quartet absorbs), AmpToFilter (external dynamics modulate elastic tension)
+- **Best as source for:** AudioToWavetable (cultural resonance as source material for granular engines)
+- **Ecosystem role:** The shore tavern — acoustic anchor for cultural pairing with any OSPREY instance.
+
+### Recommended Pairings
+- **+ OSPREY:** The diptych. Ocean + shore. Shore values mirror or diverge depending on musical intent.
+- **+ Overdub:** Ensemble warmth with tape delay history. The tavern's stories echoing into evening.
+- **+ Opal:** Osteria's formant output granularized by Opal. Voices frozen into shimmering clouds.
+- **+ Oblong:** Osteria ensemble feed into Bob's modal resonance. Folk instruments blooming the reef.
+- **+ Odyssey:** Open-water drift pad beneath the coastal ensemble. Depth and surface.
+
+### Starter Recipes
+**Mediterranean Duo:** osteria_qBassShore=2, osteria_qHarmShore=2, osteria_qMelShore=2, osteria_qElastic=0.4, osteria_tavernMix=0.3, osteria_porto=0.3 — oud warmth, Mediterranean acoustic, spring coupling tight
+**Elastic Stretch:** osteria_qBassShore=0, osteria_qMelShore=4, osteria_qElastic=0.1, osteria_qStretch=0.8 — Atlantic bass vs Southern melody, maximum drift before spring pulls them home
+**Memory Accumulation:** osteria_qMemory=0.8, osteria_qSympathy=0.3, osteria_blendMode=1 — quartet accumulates shore history, sympathy crossfeed builds ensemble mind
+**Smoke and Porto:** osteria_porto=0.5, osteria_smoke=0.4, osteria_patina=0.2, osteria_murmur=0.15 — character stages full, crowd texture present, late-night tavern warmth
+
+---
+
+## OWLFISH (Owlfish)
+*Mixtur-Trautonium Oscillator + Sacrificial Armor — the abyssal organ*
+
+**Accent:** Abyssal Gold `#B8860B` | **Prefix:** `owl_` | **Voices:** 1 (monophonic)
+**Creature:** The owlfish lives in the deep abyss — bioluminescent, heavily armored, predating in near-total darkness. Its Mixtur-Trautonium heritage makes it a creature of subharmonic stacks and resonant depth.
+**Polarity:** Pure Oscar — the deep, the heavy, the organ of the abyss
+**Blessing:** B014 Mixtur-Trautonium Oscillator — unanimous praise from the ghost council, genuinely novel
+
+### What It Does
+Monophonic organ synthesizer inspired by the Trautonium's subharmonic synthesis — a fundamental tone with a stack of integer-ratio sub-oscillators (the "Mixtur"). Each sub-oscillator runs at a division of the fundamental: 1/2, 1/3, 1/4, 1/5 — Trautonium subharmonics, not octave doublings. The blend and level of each partial shapes the organ register: thin and reedy at top, massive and bowed at depth.
+
+The Sacrificial Armor system is the owlfish's defense: a compressor-triggered scatter that breaks apart the signal when it comes under pressure, then reconstitutes it. Under soft dynamics, smooth and tonal. Under hard attack, the armor shatters into granular fragments before reforming.
+
+Signal flow: Abyss Habitat (Mixtur oscillator stack) → Owl Optics (filter with keytracking) → Diet (spectral shaping) → Sacrificial Armor (compressor + scatter) → Amp Envelope → Abyss Reverb → Output.
+
+### Macros
+| Macro | Name | Mapping |
+|-------|------|---------|
+| M1 | **DEPTH** | `owl_depth` — mixtur subharmonic presence, how far into the abyss |
+| M2 | **FEEDING** | `owl_feeding` — filter resonance + grain mix |
+| M3 | **DEFENSE** | `owl_defense` — armor threshold + scatter amount |
+| M4 | **PRESSURE** | `owl_pressure` — comp ratio + armor decay |
+
+### Key Parameters
+| Parameter | Range | Sweet Spot | What It Does |
+|-----------|-------|------------|-------------|
+| `owl_mixtur` | 0–1 | 0.3–0.7 | Mixtur subharmonic stack blend. How much of the sub-oscillators are present. |
+| `owl_fundWave` | 0–3 | 0–1 | Fundamental waveform. 0=sine, 1=triangle, 2=saw, 3=square. |
+| `owl_subWave` | 0–3 | 0–2 | Sub-oscillator waveform (applies to all sub partials). |
+| `owl_subDiv1` | 2–16 | 2–4 | First sub-oscillator integer division. |
+| `owl_subDiv2` | 2–16 | 3–6 | Second sub-oscillator integer division. |
+| `owl_subDiv3` | 2–16 | 4–8 | Third sub-oscillator integer division. |
+| `owl_subDiv4` | 2–16 | 5–10 | Fourth sub-oscillator integer division. |
+| `owl_subLevel1` | 0–1 | 0.6–0.9 | Level of first sub partial. |
+| `owl_subLevel2` | 0–1 | 0.4–0.7 | Level of second sub partial. |
+| `owl_subLevel3` | 0–1 | 0.2–0.5 | Level of third sub partial. |
+| `owl_subLevel4` | 0–1 | 0.1–0.3 | Level of fourth sub partial. |
+| `owl_subMix` | 0–1 | 0.3–0.7 | Overall sub-oscillator mix vs fundamental. |
+| `owl_bodyFreq` | Hz | 100–600 | Body resonance frequency. The bioluminescent core tone. |
+| `owl_bodyLevel` | 0–1 | 0.2–0.5 | Body resonance level. |
+| `owl_filterCutoff` | Hz | 400–4k | Filter cutoff with key tracking. |
+| `owl_filterReso` | 0–1 | 0.2–0.6 | Filter resonance. |
+| `owl_filterTrack` | 0–1 | 0.5–1.0 | Key tracking amount. 1.0 = full octave tracking. |
+| `owl_filterEnvDepth` | 0–1 | 0.2–0.5 | Filter envelope depth (velocity-triggered). |
+| `owl_grainSize` | ms | 20–200 | Granular fragment size (used when Armor scatters). |
+| `owl_grainDensity` | 1–32 | 4–16 | Grain density during armor scatter. |
+| `owl_grainPitch` | 0–1 | 0.0–0.2 | Grain pitch scatter during armor break. |
+| `owl_grainMix` | 0–1 | 0.0–0.4 | Grain mix level (0=no scatter, 1=full scatter). |
+| `owl_feedRate` | 0–1 | 0.2–0.6 | Diet spectral feed rate — how fast the spectral shaping evolves. |
+| `owl_armorThreshold` | dB | -30–0 | Sacrificial Armor trigger threshold. |
+| `owl_armorDecay` | ms | 50–500 | Armor scatter decay — how quickly it reconstitutes. |
+| `owl_armorScatter` | 0–1 | 0.2–0.7 | Armor scatter intensity when triggered. |
+| `owl_armorDuck` | 0–1 | 0.3–0.7 | Armor duck amount — how much fundamental ducks while armor scatters. |
+| `owl_armorDelay` | ms | 10–100 | Armor trigger delay — onset hold before scatter fires. |
+| `owl_compRatio` | 1–20 | 3–8 | Compressor ratio (feeds armor trigger). |
+| `owl_compThreshold` | dB | -40–0 | Compressor threshold. |
+| `owl_compAttack` | ms | 1–50 | Compressor attack. |
+| `owl_compRelease` | ms | 50–500 | Compressor release. |
+| `owl_reverbSize` | 0–1 | 0.4–0.8 | Abyss Reverb size. Large = deep abyssal space. |
+| `owl_reverbDamp` | 0–1 | 0.3–0.6 | Reverb damping. High = muffled deep-sea acoustic. |
+| `owl_reverbPreDelay` | ms | 0–80 | Reverb pre-delay. |
+| `owl_reverbMix` | 0–1 | 0.2–0.5 | Reverb wet mix. |
+| `owl_ampAttack` | ms | 10–200 | Amp envelope attack. |
+| `owl_ampDecay` | ms | 50–500 | Amp envelope decay. |
+| `owl_ampSustain` | 0–1 | 0.5–0.8 | Amp envelope sustain. |
+| `owl_ampRelease` | ms | 100–2000 | Amp envelope release. |
+| `owl_portamento` | 0–2 s | 0–0.3 | Portamento glide time. |
+| `owl_legatoMode` | bool | on | Legato mode — new notes glide from previous pitch. |
+| `owl_morphGlide` | 0–1 | 0.3–0.7 | Mixtur morph glide smoothing. |
+| `owl_outputLevel` | 0–1 | 0.8 | Master output level. |
+| `owl_outputPan` | -1–1 | 0 | Master pan. |
+| `owl_couplingLevel` | 0–1 | varies | Coupling output send level. |
+| `owl_couplingBus` | 0–3 | — | Coupling bus assignment. |
+
+### Coupling
+- **Sends:** Monophonic audio (ch0/1) — deep subharmonic organ voice as coupling source
+- **Receives:** AmpToFilter (external amplitude modulates filter cutoff), LFOToPitch (external LFO pitch modulation), AudioToFM (external audio feeds into Mixtur as FM source)
+- **Best as source for:** AudioToWavetable (subharmonic organ as source material for granular engines), AmpToFilter (owlfish envelope pumping other engines' filters)
+- **Ecosystem role:** The abyssal organ — deepest tonal anchor in the column. Paired with surface engines for maximum depth contrast.
+
+### Recommended Pairings
+- **+ Obese:** Owlfish subharmonics beneath Fat's massive bass — Oscar polarity amplified to the extreme.
+- **+ Osprey:** Abyssal depth + surface turbulence. Maximum water column span.
+- **+ Opal:** Owlfish organ frozen into Opal grain clouds. Subharmonic textures granularized.
+- **+ Overdub:** Deep organ gaining tape delay. Dub subharmonic echo.
+- **+ Ouroboros:** Owlfish tones feeding the strange attractor injection. Deep order meeting deep chaos.
+
+### Starter Recipes
+**Trautonium Stack:** owl_mixtur=0.7, owl_subDiv1=2, owl_subDiv2=3, owl_subDiv3=4, owl_subDiv4=5 — classic Trautonium subharmonic register, full natural harmonic series below fundamental
+**Armor Break:** owl_armorThreshold=-20, owl_armorScatter=0.7, owl_grainMix=0.5, owl_grainSize=40 — signal shatters under hard attack, granular scatter reveals then reconstitutes
+**Abyssal Organ:** owl_filterCutoff=800, owl_filterReso=0.3, owl_reverbSize=0.8, owl_reverbDamp=0.6 — deep cathedral with abyssal damping, massive space
+**Bioluminescent Pulse:** owl_bodyFreq=220, owl_bodyLevel=0.4, owl_depth=0.8 — pulsing body resonance in the darkness, subharmonic glow
+
+---
+
+## OCELOT (Ocelot)
+*Forest Strata Synthesis — four ecosystem layers in cross-modulation*
+
+**Accent:** Ocelot Tawny `#C5832B` | **Prefix:** `ocelot_` | **Voices:** polyphonic (voice pool)
+**Creature:** The ocelot hunts across all forest layers — floor to canopy — moving between ecological strata with predatory precision. XOcelot models this as synthesis: four distinct synthesis layers (Floor, Understory, Canopy, Emergent) that cross-modulate each other through a 12-route EcosystemMatrix.
+**Polarity:** Balanced feliX/Oscar — organic, territorial, layered
+
+### What It Does
+Four synthesis strata, each using a different synthesis approach, connected by a 12-route cross-modulation matrix. The Floor layer uses physical models (adjustable via `ocelot_floorModel`), the Understory provides rhythmic chopped texture, the Canopy delivers wavefold spectral shimmer, and the Emergent layer adds creature formant voices.
+
+The Biome selector (`ocelot_biome`) morphs between forest biome character profiles — each biome shapes the timbral DNA of all four strata simultaneously. The EcosystemMatrix allows any stratum to modulate any other (12 cross-routes: Floor→Understory, Floor→Canopy, Floor→Emergent, Understory→Floor, etc.), creating complex internal ecosystems.
+
+A lofi processing chain (bit depth reduction, sample rate reduction, tape wobble, tape age, dust) can give the entire engine a field-recording character — archival forest recordings.
+
+### Macros
+| Macro | Name | Mapping |
+|-------|------|---------|
+| M1 | **PROWL** | `ocelot_prowl` — Floor intensity + creature trigger rate |
+| M2 | **FOLIAGE** | `ocelot_foliage` — Canopy shimmer + understory grain density |
+| M3 | **ECOSYSTEM** | `ocelot_ecosystem` — EcosystemMatrix cross-modulation depth |
+| M4 | **CANOPY** | `ocelot_canopy` — Canopy wavefold + spectral filter |
+
+### Key Parameters
+| Parameter | Range | Sweet Spot | What It Does |
+|-----------|-------|------------|-------------|
+| `ocelot_biome` | 0–N | varies | Biome profile. Shapes all strata timbral DNA simultaneously. |
+| `ocelot_strataBalance` | 0–1 | 0.4–0.6 | Balance between strata — shifts weight from Floor toward Canopy. |
+| `ocelot_ecosystemDepth` | 0–1 | 0.3–0.6 | EcosystemMatrix cross-modulation depth. How much strata affect each other. |
+| `ocelot_humidity` | 0–1 | 0.3–0.6 | Humidity — affects filter character across all strata. |
+| `ocelot_swing` | 0–1 | 0.0–0.3 | Rhythmic swing amount (applied to Understory chop). |
+| `ocelot_density` | 0–1 | 0.4–0.7 | Event density across all strata. |
+| `ocelot_floorModel` | 0–N | 2–4 | Physical model type for Floor layer. |
+| `ocelot_floorTension` | 0–1 | 0.4–0.7 | Floor model string/membrane tension. |
+| `ocelot_floorStrike` | 0–1 | 0.5–0.8 | Floor model excitation intensity. |
+| `ocelot_floorDamping` | 0–1 | 0.2–0.5 | Floor model damping. Higher=shorter resonance. |
+| `ocelot_floorPattern` | 0–N | varies | Floor rhythmic pattern selection. |
+| `ocelot_floorLevel` | 0–1 | 0.6–0.9 | Floor stratum output level. |
+| `ocelot_floorPitch` | 0–1 | 0.5 | Floor stratum pitch offset (0.5=center). |
+| `ocelot_floorVelocity` | 0–1 | 0.6–0.9 | Floor velocity sensitivity. |
+| `ocelot_chopRate` | bpm | 4–32 | Understory chop rate. |
+| `ocelot_chopSwing` | 0–1 | 0.0–0.3 | Understory chop swing. |
+| `ocelot_bitDepth` | 4–24 | 12–16 | Lofi bit depth reduction (24=off). |
+| `ocelot_sampleRate` | Hz | 8000–44100 | Lofi sample rate reduction (44100=off). |
+| `ocelot_tapeWobble` | 0–1 | 0.0–0.1 | Tape pitch wobble amount. |
+| `ocelot_tapeAge` | 0–1 | 0.0–0.1 | Tape degradation character. |
+| `ocelot_dustLevel` | 0–1 | 0.0–0.1 | Dust/crackle noise level. |
+| `ocelot_understoryLevel` | 0–1 | 0.4–0.7 | Understory stratum output level. |
+| `ocelot_understorySrc` | 0–1 | varies | Understory source selection. |
+| `ocelot_canopyWavefold` | 0–1 | 0.2–0.5 | Canopy wavefolder amount. |
+| `ocelot_canopyPartials` | 1–8 | 3–5 | Number of canopy partials in spectral synthesis. |
+| `ocelot_canopyDetune` | 0–1 | 0.1–0.3 | Canopy partial detuning for shimmer. |
+| `ocelot_canopySpectralFilter` | 0–1 | 0.5–0.8 | Canopy spectral filter shape. |
+| `ocelot_canopyBreathe` | 0–1 | 0.2–0.5 | Canopy breathing LFO depth. |
+| `ocelot_canopyShimmer` | 0–1 | 0.1–0.4 | Canopy shimmer modulation. |
+| `ocelot_canopyLevel` | 0–1 | 0.4–0.7 | Canopy stratum output level. |
+| `ocelot_canopyPitch` | 0–1 | 0.5 | Canopy pitch offset (0.5=center). |
+| `ocelot_creatureType` | 0–N | varies | Emergent creature formant type. |
+| `ocelot_creatureRate` | Hz | 0.1–2.0 | Creature formant animation rate. |
+| `ocelot_creaturePitch` | 0–1 | 0.5 | Creature pitch offset. |
+| `ocelot_creatureSpread` | 0–1 | 0.2–0.5 | Creature formant stereo spread. |
+| `ocelot_creatureTrigger` | 0–1 | 0–1 | Creature trigger mode (0=continuous, 1=note-triggered). |
+| `ocelot_creatureLevel` | 0–1 | 0.2–0.5 | Emergent creature stratum output level. |
+| `ocelot_creatureAttack` | 0–1 | 0.1–0.4 | Creature envelope attack. |
+| `ocelot_creatureDecay` | 0–1 | 0.3–0.7 | Creature envelope decay. |
+| `ocelot_xf_floorUnder` | 0–1 | 0.0–0.3 | Floor → Understory chop rate cross-modulation. |
+| `ocelot_xf_floorCanopy` | 0–1 | 0.0–0.3 | Floor → Canopy filter cross-modulation. |
+| `ocelot_xf_floorEmerg` | 0–1 | 0.0–0.2 | Floor → Emergent trigger threshold cross-modulation. |
+| `ocelot_xf_underFloor` | 0–1 | 0.0–0.2 | Understory → Floor swing cross-modulation. |
+| `ocelot_xf_underCanopy` | 0–1 | 0.0–0.3 | Understory → Canopy morph cross-modulation. |
+| `ocelot_xf_underEmerg` | 0–1 | 0.0–0.2 | Understory → Emergent pitch cross-modulation. |
+| `ocelot_xf_canopyFloor` | 0–1 | 0.0–0.2 | Canopy → Floor damping cross-modulation. |
+| `ocelot_xf_canopyUnder` | 0–1 | 0.0–0.3 | Canopy → Understory grain position cross-modulation. |
+| `ocelot_xf_canopyEmerg` | 0–1 | 0.0–0.2 | Canopy → Emergent formant cross-modulation. |
+| `ocelot_xf_emergFloor` | 0–1 | 0.0–0.2 | Emergent → Floor accent cross-modulation. |
+| `ocelot_xf_emergUnder` | 0–1 | 0.0–0.2 | Emergent → Understory scatter cross-modulation. |
+| `ocelot_xf_emergCanopy` | 0–1 | 0.0–0.2 | Emergent → Canopy shimmer cross-modulation. |
+| `ocelot_reverbSize` | 0–1 | 0.4–0.7 | Reverb room size. |
+| `ocelot_reverbMix` | 0–1 | 0.2–0.4 | Reverb wet mix. |
+| `ocelot_delayTime` | 0–1 | 0.3–0.5 | Delay time (normalized). |
+| `ocelot_delayFeedback` | 0–1 | 0.2–0.4 | Delay feedback. |
+| `ocelot_delayMix` | 0–1 | 0.1–0.2 | Delay wet mix. |
+| `ocelot_filterEnvDepth` | 0–1 | 0.2–0.5 | Filter envelope depth (velocity-triggered). |
+| `ocelot_ampAttack` | ms | 5–100 | Amp envelope attack. |
+| `ocelot_ampDecay` | ms | 100–1000 | Amp envelope decay. |
+| `ocelot_ampSustain` | 0–1 | 0.7–0.9 | Amp envelope sustain. |
+| `ocelot_ampRelease` | ms | 200–2000 | Amp envelope release. |
+| `ocelot_couplingLevel` | 0–1 | varies | Coupling output send level. |
+| `ocelot_couplingBus` | 0–3 | — | Coupling bus assignment. |
+
+### Coupling
+- **Sends:** Stereo audio from all strata (post-mix), per-stratum amplitude envelopes
+- **Receives:** AudioToWavetable (external audio as understory or canopy source), AmpToFilter (ecosystem depth modulation), LFOToPitch (creature pitch modulation)
+- **Best as source for:** AmpToFilter (ecosystem dynamics driving other engines), AudioToWavetable (forest strata as source material)
+- **Ecosystem role:** The forest floor and canopy — organic layered synthesis with rich internal cross-modulation. Pairs naturally with engines that can receive rhythmic complexity.
+
+### Recommended Pairings
+- **+ Onset:** Ocelot's floor physical models + Onset's drum voices. Percussion with ecological context.
+- **+ Opal:** Canopy shimmer granularized by Opal. Forest shimmer frozen into grain clouds.
+- **+ Ouroboros:** EcosystemMatrix feeding the strange attractor injection. Organic chaos meeting mathematical chaos.
+- **+ Odyssey:** Open-water drift beneath the forest canopy. Depth and organic complexity.
+- **+ Optic:** Ocelot's creature formants feeding Optic's visual engine. Bioluminescent forest display.
+
+### Starter Recipes
+**Forest Floor:** ocelot_floorModel=3, ocelot_floorTension=0.55, ocelot_floorStrike=0.6, ocelot_strataBalance=0.3, ocelot_ecosystemDepth=0.2 — physical model dominant, minimal cross-modulation, grounded
+**Canopy Shimmer:** ocelot_strataBalance=0.8, ocelot_canopyWavefold=0.4, ocelot_canopyBreathe=0.5, ocelot_canopyShimmer=0.4 — canopy dominant, shimmer LFO active, airy texture
+**Ecosystem Pulse:** ocelot_ecosystemDepth=0.7, ocelot_xf_floorUnder=0.4, ocelot_xf_underCanopy=0.3, ocelot_xf_canopyEmerg=0.3 — cross-modulation chain active, floor pulses through understory to canopy to creature
+
+---
+
+## 29. ORCA — Apex Predator Synthesis
+
+**Gallery code:** ORCA | **Accent:** Deep Ocean `#1B2838`
+**Parameter prefix:** `orca_`
+**Aquatic mythology:** The orca (killer whale) — apex predator of every ocean. Coordinated, intelligent, devastating. XOrca maps five biological subsystems directly into DSP: vocal dialect (wavetable + formant), echolocation (resonant comb), apex hunt macro (coordinated aggression), breach sub-bass (sidechain displacement), and countershading (band-split bitcrusher).
+**Synthesis type:** Wavetable oscillator with 5-band formant network, resonant comb filter echolocation, sub-bass breach layer, dynamic bitcrushing with high/low band split
+**Polyphony:** Mono / Legato / Poly8 / Poly16 (default: Legato)
+
+### Core Parameters
+
+| Parameter | Range | Default | Sweet Spot |
+|-----------|-------|---------|------------|
+| `orca_wtPosition` | 0–1 | 0.0 | 0.0–0.4 (whale-call to metallic) |
+| `orca_wtScanRate` | 0–1 | 0.5 | 0.2–0.6 (slow scan for vocal movement) |
+| `orca_formantIntensity` | 0–1 | 0.5 | 0.4–0.8 |
+| `orca_formantShift` | 0–1 | 0.5 | 0.3–0.7 (shifts all 5 formants together) |
+| `orca_glide` | 0–5 s | 0.3 | 0.1–1.0 (heavy portamento for whale song) |
+| `orca_echoRate` | 0.5–40 Hz | 5.0 | 2–15 (clicks to ringing tone) |
+| `orca_echoReso` | 0–0.995 | 0.85 | 0.7–0.95 (high for metallic ring) |
+| `orca_echoDamp` | 0–0.99 | 0.3 | 0.1–0.5 |
+| `orca_echoMix` | 0–1 | 0.0 | 0.2–0.5 |
+| `orca_huntMacro` | 0–1 | 0.0 | 0–1 (master aggression: filter, crush, formant, breach, echo reso) |
+| `orca_breachSub` | 0–1 | 0.5 | 0.4–0.8 |
+| `orca_breachShape` | 0–1 | 0.0 | 0=sine sub, >0.5=triangle sub |
+| `orca_breachThreshold` | -60–0 dB | -18 | -24 to -12 |
+| `orca_breachRatio` | 1–20 | 8.0 | 6–12 (hard sidechain compression) |
+| `orca_crushBits` | 1–16 | 16.0 | 8–16 (16=clean, lower=decimated dorsal) |
+| `orca_crushDownsample` | 1–64 | 1.0 | 1–8 |
+| `orca_crushMix` | 0–1 | 0.0 | 0–0.4 (countershading high-end) |
+| `orca_crushSplitFreq` | 100–4000 Hz | 800 | 400–1200 (low stays clean, high gets crushed) |
+| `orca_filterCutoff` | 20–20000 Hz | 8000 | 2000–12000 |
+| `orca_filterReso` | 0–1 | 0.0 | 0–0.4 |
+| `orca_level` | 0–1 | 0.8 | 0.7–0.9 |
+| `orca_ampAttack` | 0–10 s | 0.01 | 0.001–0.05 |
+| `orca_ampDecay` | 0–10 s | 0.1 | 0.05–0.5 |
+| `orca_ampSustain` | 0–1 | 0.8 | 0.6–0.9 |
+| `orca_ampRelease` | 0–20 s | 0.3 | 0.1–2.0 |
+| `orca_modAttack` | 0–10 s | 0.01 | 0.001–0.1 |
+| `orca_modDecay` | 0–10 s | 0.3 | 0.1–1.0 |
+| `orca_modSustain` | 0–1 | 0.5 | 0.3–0.7 |
+| `orca_modRelease` | 0–20 s | 0.5 | 0.2–1.0 |
+| `orca_lfo1Rate` | 0.01–30 Hz | 0.2 | 0.05–0.5 (slow wavetable scan) |
+| `orca_lfo1Depth` | 0–1 | 0.5 | 0.3–0.7 |
+| `orca_lfo1Shape` | Sine/Tri/Saw/Sq/S&H | Sine | Sine for organic movement |
+| `orca_lfo2Rate` | 0.01–30 Hz | 8.0 | 4–20 (echolocation click modulation) |
+| `orca_lfo2Depth` | 0–1 | 0.0 | 0–0.5 |
+| `orca_lfo2Shape` | Sine/Tri/Saw/Sq/S&H | Sine | — |
+| `orca_polyphony` | Mono/Legato/Poly8/Poly16 | Legato | Legato for portamento lines |
+| `orca_macroCharacter` | 0–1 | 0.0 | 0–0.5 (adds to HUNT macro intensity) |
+| `orca_macroMovement` | 0–1 | 0.0 | 0–0.6 (formant intensity + WT scan + echo rate) |
+| `orca_macroCoupling` | 0–1 | 0.0 | 0–0.5 (echolocation mix send depth) |
+| `orca_macroSpace` | 0–1 | 0.0 | 0–0.5 |
+
+### Macro Mappings
+- **M1 CHARACTER**: Adds to `orca_huntMacro` aggression — drives filter cutoff, formant intensity, crush mix, breach sub, and echo resonance as a coordinated unit
+- **M2 MOVEMENT**: Formant intensity offset + wavetable scan position + echolocation click rate — shapes how the pod vocalizes and hunts
+- **M3 COUPLING**: Echolocation mix level — how much the comb-filter echo layer bleeds into the output and into coupling sends
+- **M4 SPACE**: Registered macro; use for reverb/delay send depth in coupled configurations
+
+### Coupling Compatibility
+ORCA accepts: `AudioToFM` (modulates wavetable position via FM), `AmpToFilter` (external amplitude → formant intensity), `AmpToChoke` (external amplitude triggers breach sidechain), `EnvToMorph` (envelope → echolocation click rate modulation), `AudioToRing` (ring modulation source on the pod dialect layer), `LFOToPitch` (pitch modulation from upstream LFOs)
+
+### Starter Recipes
+**Pod Dialect:** orca_wtPosition=0.1, orca_formantIntensity=0.6, orca_formantShift=0.5, orca_glide=0.4, orca_echoMix=0.0 — pure vocal synthesis, orca click-calls without percussion; long glide for whale-song movement
+**Echolocation Hunt:** orca_echoRate=12.0, orca_echoReso=0.92, orca_echoMix=0.4, orca_huntMacro=0.5 — rapid-fire comb pinging merges into metallic tones; HUNT at 0.5 adds aggression to filter and crush
+**Breach Event:** orca_breachSub=0.8, orca_breachShape=0.0, orca_breachThreshold=-12.0, orca_breachRatio=12.0, orca_huntMacro=0.8 — massive sine sub displaces the mix on each note trigger; HUNT fully engaged for maximum countershading decimation
+
+### Designer Notes
+ORCA is an apex predator — it should never sound polite. The HUNT macro is the engine's identity: push it and everything moves as a single coordinated organism. Filter opens, formants intensify, echo rings harder, high-end gets crushed, sub displaces the bottom. It is designed to be pushed, not left at zero.
+
+The wavetable + formant system (Pod Dialect) covers enormous timbral territory: sine-like whale calls at position 0, complex metallic vocal textures as position increases. Heavy portamento (`orca_glide` 0.3–1.0 seconds) transforms chromatic lines into the sliding pitch bends of actual orca vocalizations. Echolocation sits underneath as a resonant textural layer — at low rates it clicks, at high rates it rings. Mod wheel (CC#1) scans wavetable position live, enabling performance-time timbral sweeps from organic to metallic.
+
+---
+
+## 30. OCTOPUS — Decentralized Alien Intelligence
+
+**Gallery code:** OCTOPUS | **Accent:** Chromatophore Magenta `#E040FB`
+**Parameter prefix:** `octo_`
+**Aquatic mythology:** The octopus — alien intelligence distributed across eight arms, each with its own neural cluster. XOctopus maps this directly: eight independent LFOs (arms) run at prime-ratio-related rates, modulating different sonic dimensions simultaneously. The instrument is never still, never symmetric, never predictable. It camouflages (chromatophore morphing filter), inks (velocity-triggered noise freeze), squeezes through microtonal gaps (shapeshifter), and grabs with wet suckers (fast bandpass transients).
+**Synthesis type:** Wavetable oscillator with 8-arm polyrhythmic LFO modulation, envelope-follower-driven morphing filter (LP→BP→HP→Notch), velocity-triggered noise freeze burst, microtonal pitch drift + extreme portamento, ultra-fast bandpass transient layer
+**Polyphony:** Mono / Legato / Poly8 / Poly16 (default: Poly8)
+
+### Core Parameters
+
+| Parameter | Range | Default | Sweet Spot |
+|-----------|-------|---------|------------|
+| `octo_armCount` | 1–8 | 4 | 4–8 (more arms = more alien complexity) |
+| `octo_armSpread` | 0–1 | 0.5 | 0.3–0.8 (how different the arm rates are from each other) |
+| `octo_armBaseRate` | 0.05–20 Hz | 1.0 | 0.2–3.0 |
+| `octo_armDepth` | 0–1 | 0.5 | 0.3–0.7 (modulation depth per arm) |
+| `octo_chromaSens` | 0–1 | 0.5 | 0.4–0.7 (envelope follower sensitivity) |
+| `octo_chromaSpeed` | 0–1 | 0.5 | 0.3–0.7 (filter topology adaptation rate) |
+| `octo_chromaMorph` | 0–1 | 0.0 | 0.0–1.0 (static: LP=0, BP=0.33, HP=0.66, Notch=1.0) |
+| `octo_chromaDepth` | 0–1 | 0.5 | 0.3–0.7 (how intensely the filter morphs) |
+| `octo_chromaFreq` | 100–16000 Hz | 2000 | 500–6000 |
+| `octo_inkThreshold` | 0–1 | 0.9 | 0.7–0.95 (velocity required to trigger ink cloud) |
+| `octo_inkDensity` | 0–1 | 0.8 | 0.6–0.9 (noise burst density) |
+| `octo_inkDecay` | 0.5–30 s | 5.0 | 2–10 (how long the ink cloud lingers) |
+| `octo_inkMix` | 0–1 | 0.0 | 0–0.5 (normally triggered by high velocity, not static mix) |
+| `octo_shiftMicro` | -100–100 cents | 0.0 | -20–20 (microtonal detuning from equal temperament) |
+| `octo_shiftGlide` | 0–10 s | 0.5 | 0.1–3.0 (extreme portamento — "boneless" pitch) |
+| `octo_shiftDrift` | 0–1 | 0.0 | 0.1–0.4 (random pitch drift between notes) |
+| `octo_suckerReso` | 0–0.995 | 0.8 | 0.7–0.95 (high reso for pronounced plonk) |
+| `octo_suckerFreq` | 200–8000 Hz | 2000 | 500–4000 (center frequency of the bandpass pluck) |
+| `octo_suckerDecay` | 0.005–0.5 s | 0.05 | 0.01–0.15 |
+| `octo_suckerMix` | 0–1 | 0.0 | 0.1–0.4 (subtle sticky transient underneath) |
+| `octo_wtPosition` | 0–1 | 0.0 | 0–0.5 |
+| `octo_wtScanRate` | 0–1 | 0.3 | 0.1–0.5 (arms also modulate WT position) |
+| `octo_filterCutoff` | 20–20000 Hz | 8000 | 2000–10000 |
+| `octo_filterReso` | 0–1 | 0.0 | 0–0.3 |
+| `octo_level` | 0–1 | 0.8 | 0.7–0.9 |
+| `octo_ampAttack` | 0–10 s | 0.01 | 0.001–0.05 |
+| `octo_ampDecay` | 0–10 s | 0.3 | 0.05–0.8 |
+| `octo_ampSustain` | 0–1 | 0.7 | 0.5–0.8 |
+| `octo_ampRelease` | 0–20 s | 0.5 | 0.2–2.0 |
+| `octo_modAttack` | 0–10 s | 0.01 | 0.001–0.1 |
+| `octo_modDecay` | 0–10 s | 0.5 | 0.1–1.0 |
+| `octo_modSustain` | 0–1 | 0.5 | 0.3–0.7 |
+| `octo_modRelease` | 0–20 s | 0.5 | 0.2–1.0 |
+| `octo_lfo1Rate` | 0.01–30 Hz | 0.5 | 0.1–2.0 |
+| `octo_lfo1Depth` | 0–1 | 0.3 | 0.2–0.5 |
+| `octo_lfo1Shape` | Sine/Tri/Saw/Sq/S&H | Sine | — |
+| `octo_lfo2Rate` | 0.01–30 Hz | 2.0 | 1.0–8.0 |
+| `octo_lfo2Depth` | 0–1 | 0.0 | 0–0.4 |
+| `octo_lfo2Shape` | Sine/Tri/Saw/Sq/S&H | Sine | — |
+| `octo_polyphony` | Mono/Legato/Poly8/Poly16 | Poly8 | Poly8 for multi-arm texture |
+| `octo_macroCharacter` | 0–1 | 0.0 | 0–0.6 (arm depth + sucker intensity + filter brightness) |
+| `octo_macroMovement` | 0–1 | 0.0 | 0–0.6 (arm rate + chroma speed + WT scan) |
+| `octo_macroCoupling` | 0–1 | 0.0 | 0–0.5 (chromatophore depth + ink mix) |
+| `octo_macroSpace` | 0–1 | 0.0 | 0–0.5 (ink decay time + pitch drift) |
+
+### Macro Mappings
+- **M1 CHARACTER**: Arm modulation depth + sucker mix + filter cutoff/resonance — controls how much the decentralized arms impose themselves on the sound
+- **M2 MOVEMENT**: Arm base rate + chromatophore adaptation speed + wavetable scan rate + chroma morph target — how fast the organism adapts and shifts
+- **M3 COUPLING**: Chromatophore filter morph depth + ink cloud mix — how intensely the skin changes color and how readily it inks
+- **M4 SPACE**: Ink cloud decay time extension + pitch drift — how long the ink cloud lingers and how far the pitch wanders between notes
+
+### Coupling Compatibility
+OCTOPUS accepts: `AudioToFM` (modulates wavetable position via FM — external audio shapes the oscillator timbre), `AmpToFilter` (external amplitude → chromatophore sensitivity, making the filter morph respond to upstream dynamics), `EnvToMorph` (envelope → arm rate modulation — upstream envelopes speed up the arm polyrhythm), `AudioToRing` (ring modulation on arm output amplitude), `LFOToPitch` (additional pitch modulation layered onto shapeshifter drift)
+
+### Starter Recipes
+**Alien Texture:** octo_armCount=8, octo_armSpread=0.7, octo_armBaseRate=0.8, octo_armDepth=0.6, octo_chromaDepth=0.5, octo_chromaSpeed=0.4 — all 8 arms running at prime-ratio rates with deep chromatophore adaptation; never repeats, never settles
+**Ink Attack:** octo_inkThreshold=0.75, octo_inkDensity=0.9, octo_inkDecay=8.0, octo_inkMix=0.0 — hit keys at high velocity to trigger noise freeze; play softly for dry synth, slam hard for the ink cloud eruption
+**Boneless Lead:** octo_shiftGlide=2.0, octo_shiftDrift=0.2, octo_shiftMicro=15.0, octo_suckerReso=0.85, octo_suckerMix=0.3 — extreme portamento with microtonal offset and sucker transients; slides through frequencies like a boneless body through a crack
+
+### Designer Notes
+OCTOPUS is the most generative engine in the fleet. The 8-arm LFO system operates independently — each arm runs at a prime-ratio multiple of the base rate (so arm ratios are 1×, 1.3×, 1.7×, 2.1×, 2.3×, 2.9×, 3.1×, 3.7× or similar), meaning the arms never exactly re-synchronize. The result is modulation that is always moving, always changing, but always internally coherent because it shares a common tempo reference. `octo_armSpread` is the key variable: at 0 all arms run at the same rate (synchronized), at 1 they diverge maximally.
+
+The ink cloud is a performance weapon, not a mixing tool. Set `octo_inkThreshold` to 0.75–0.9 and leave `octo_inkMix` at 0. Play phrases normally; the ink only erupts when you play an accent note at maximum velocity. This creates dramatic contrast: melodic content suddenly obliterated by a wall of saturated noise that slowly dissolves. Pair with OPAL (granular) to freeze the ink cloud into indefinite sustain, or with OVERDUB (tape delay) to smear the noise into a murky wash.
+**Archival Field Recording:** ocelot_bitDepth=12, ocelot_tapeWobble=0.08, ocelot_tapeAge=0.1, ocelot_dustLevel=0.1, ocelot_reverbMix=0.3 — lofi field recording character, forest sounds as degraded archive

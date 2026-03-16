@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "Rule Sculptor",
+  "mood": "Prism",
+  "engines": ["Outwit"],
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Mod wheel sweeps continuously through the Wolfram rule space — from Rule 0 (silence) through Rule 110 (intelligence) to Rule 255 (maximum density). Every performance gesture rewrites the laws of this cellular universe. The octopus sculpts its own physics.",
+  "tags": ["prism", "expressive", "mod-wheel", "morphing", "performance", "rule-sweep"],
+  "macroLabels": ["CHARACTER", "CHAOS", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.65,
+    "density": 0.55,
+    "space": 0.55,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 110,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.2,
+      "owit_armSpread": 0.6,
+      "owit_sync": 0.5,
+      "owit_feedbackAmt": 0.3,
+      "owit_chaos": 0.25,
+      "owit_density": 0.55,
+      "owit_ampAttack": 0.05,
+      "owit_ampDecay": 0.3,
+      "owit_ampSustain": 0.82,
+      "owit_ampRelease": 1.0,
+      "owit_filterCutoff": 0.6,
+      "owit_filterRes": 0.32,
+      "owit_lfoRate": 0.1,
+      "owit_lfoDepth": 0.15,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0,
+      "owit_modWheelTarget": "owit_rule",
+      "owit_modWheelDepth": 1.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

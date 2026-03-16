@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "name": "Tessellated Lead",
+  "mood": "Prism",
+  "engines": ["Origami"],
+  "author": "Guru Bin — Fleet Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Five layers, fold point at 0.35, high fold amount, symmetry at 0.45. The slightly asymmetric fold at a sub-midpoint position creates tessellating harmonic patterns — each layer adds a reflection of the previous layer's fold structure. A lead voice that sounds like a geometric tiling of a single waveform.",
+  "tags": ["prism", "lead", "harmonic", "geometric", "layers", "synth"],
+  "macroLabels": ["CHARACTER", "FOLD", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.45,
+    "movement": 0.3,
+    "density": 0.72,
+    "space": 0.4,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldPoint": 0.35,
+      "origami_foldAmt": 0.82,
+      "origami_layers": 5,
+      "origami_symmetry": 0.45,
+      "origami_filterCutoff": 0.68,
+      "origami_filterReso": 0.42,
+      "origami_oscPitch": 0.0,
+      "origami_ampAttack": 0.03,
+      "origami_ampDecay": 0.4,
+      "origami_ampSustain": 0.8,
+      "origami_ampRelease": 0.9
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

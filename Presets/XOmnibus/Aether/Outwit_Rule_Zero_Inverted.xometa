@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Rule Zero Inverted",
+  "mood": "Aether",
+  "engines": ["Outwit"],
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Rule 0 maps every neighbourhood to dead — silence. But with maximum feedback and maximum chaos, the system fights against its own law. Ghosts of patterns flicker in the feedback, survive momentarily, and are annihilated again. The sound of entropy losing a battle it is destined to win.",
+  "tags": ["aether", "abstract", "silence", "feedback", "ghost", "paradox"],
+  "macroLabels": ["CHARACTER", "CHAOS", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.2,
+    "movement": 0.75,
+    "density": 0.4,
+    "space": 0.9,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 0,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.9,
+      "owit_armSpread": 0.85,
+      "owit_sync": 0.0,
+      "owit_feedbackAmt": 0.9,
+      "owit_chaos": 0.85,
+      "owit_density": 0.4,
+      "owit_ampAttack": 0.2,
+      "owit_ampDecay": 0.6,
+      "owit_ampSustain": 0.3,
+      "owit_ampRelease": 2.5,
+      "owit_filterCutoff": 0.5,
+      "owit_filterRes": 0.6,
+      "owit_lfoRate": 0.3,
+      "owit_lfoDepth": 0.45,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

@@ -49,7 +49,9 @@
       "snap_filterReso": 0.38,
       "snap_filterEnvDepth": 0.5,
       "snap_decay": 0.15,
-      "snap_level": 0.65
+      "snap_level": 0.65,
+      "snap_snap": 0.4,
+      "snap_detune": 10.0
     },
     "OddOscar": {
       "morph_morph": 0.5,

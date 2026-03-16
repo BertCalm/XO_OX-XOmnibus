@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "Origami Box",
+  "mood": "Family",
+  "engines": ["Origami"],
+  "author": "Guru Bin — Family Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Symmetric folds build a warm enclosure around the fundamental — two layers, high symmetry, foldAmt gentle enough to feel like a held shape rather than a distorted signal. The fundamental dominates. Decay is gentle. A closed box of warm air, folded by careful hands.",
+  "tags": ["family", "warm", "symmetric", "gentle", "fundamental", "pad", "beginner"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldPoint": 0.6,
+      "origami_foldAmt": 0.18,
+      "origami_layers": 2,
+      "origami_symmetry": 0.95,
+      "origami_filterCutoff": 0.52,
+      "origami_filterReso": 0.15,
+      "origami_oscPitch": 0.0,
+      "origami_ampAttack": 0.5,
+      "origami_ampDecay": 0.7,
+      "origami_ampSustain": 0.82,
+      "origami_ampRelease": 2.5
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.78,
+    "movement": 0.18,
+    "density": 0.38,
+    "space": 0.52,
+    "aggression": 0.05
+  }
+}

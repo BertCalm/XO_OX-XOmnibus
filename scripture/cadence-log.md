@@ -61,6 +61,17 @@
 - 0 factory presets at retreat start — the highest urgency gap in the pilgrimage. 7 presets created to fill all non-Family moods.
 - The "boid rules are the filter" insight: OCEANIC has no filter but engineers spectral content via boid configuration. This was never documented.
 
+**Code Quality Sprint (2026-03-16):**
+- Ghost Parameter Trap (Canon V-1) confirmed at scale: SNAP engine alone had 490 ghost keys from an incomplete engine redesign migration. Fleet-wide audit prompted.
+- Documentation Lag Trap (Truth VI-4) confirmed for 6 engines: OCEANIC, ORGANON, OPAL, ORBITAL, ORACLE, OBSCURA guides corrected — all had been written from concept briefs, not source.
+- D004 dead params: 4 bugs fixed this sprint (Obsidian formant registration, Origami atomic int) + 2 flagged for follow-up (Ocelot macros, Osprey LFO).
+- D006 mod wheel: 4 engines gained mod wheel mapping (Osteria, Octopus, Ombre, Orca).
+- Fleet prefix audit: 33 engines verified, 3 corrections applied in CLAUDE.md (OCEANIC→ocean_, ONSET→perc_, OSTERIA→osteria_).
+- Pattern: "write the guide from the source, not the brief" must become a hard release gate.
+- **AI Subsystem Prefix Audit (Canon V-2):** Found 6 engines with stale prefixes in `AIParameterSchema.h` and `NaturalLanguageInterpreter.h` — ONSET/OVERWORLD/ORBITAL/OUROBOROS/OCEANIC/ODYSSEY all referenced pre-migration prefixes. Fixed. Also corrected `frozenPrefixForEngine` in Osteria (was missing). These files had never been updated during the parameter prefix migration — they failed silently rather than loudly.
+- **OddfeliX Guide Rewrite (5 error categories):** Missing params (`snap_filterEnvDepth`, `snap_sweepDirection`, `snap_pitchLock`), wrong ranges (detune documented as 0–100, actual 0–50; decay documented as 0–8s, actual 0–5s), wrong defaults, incomplete macro table. Full guide rewritten from source.
+- **Preset Expansion:** Outwit 1→21, Overlap 1→21, Orbital+Origami each 2→17, Ocelot 0→8, Oblique+Ombre+Orca Foundation/Aether +14, Family mood +6 (15 engines now represented in Family), 12 Oracle/Obscura/Ouroboros presets added.
+
 **Active Triggers:**
 - Next retreats: OVERLAP/OUTWIT (post-build, need seances first); OCELOT (0 presets, 6.4/10 — high priority)
 - OWLFISH coupling: once applyCouplingInput is wired, design receiving-end presets (OWLFISH as coupling target)

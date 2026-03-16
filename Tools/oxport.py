@@ -7,9 +7,11 @@ Pipeline stages:
   1. render_spec       — Generate render specifications from .xometa presets
   2. categorize        — Classify WAV samples into voice categories
   3. expand            — Expand flat kits into velocity/cycle/smart WAV sets
-  4. export            — Generate .xpm programs (drum or keygroup, per engine)
-  5. cover_art         — Generate branded procedural cover art
-  6. package           — Package everything into a .xpn archive
+  4. qa                — Perceptual QA check on rendered WAV files
+  5. export            — Generate .xpm programs (drum or keygroup, per engine)
+  6. cover_art         — Generate branded procedural cover art
+  7. complement_chain  — Generate primary+complement XPM variant pairs (Artwork collection)
+  8. package           — Package everything into a .xpn archive
 
 Usage:
     # Full pipeline for an engine
@@ -77,6 +79,7 @@ STAGES = [
     "render_spec",
     "categorize",
     "expand",
+    "qa",
     "export",
     "cover_art",
     "complement_chain",
@@ -87,6 +90,7 @@ STAGE_DESCRIPTIONS = {
     "render_spec":      "Generate render specifications from .xometa presets",
     "categorize":       "Classify WAV samples into voice categories",
     "expand":           "Expand flat kits into velocity/cycle/smart WAV sets",
+    "qa":               "Perceptual QA check on rendered WAV files",
     "export":           "Generate .xpm programs (drum or keygroup)",
     "cover_art":        "Generate branded procedural cover art",
     "complement_chain": "Generate primary+complement variant XPM pairs (Artwork/Color collection)",
@@ -118,7 +122,8 @@ class PipelineContext:
                  kit_mode: str = "smart",
                  version: str = "1.0",
                  pack_name: Optional[str] = None,
-                 dry_run: bool = False):
+                 dry_run: bool = False,
+                 strict_qa: bool = False):
         self.engine = engine
         self.output_dir = output_dir
         self.wavs_dir = wavs_dir
@@ -127,6 +132,7 @@ class PipelineContext:
         self.version = version
         self.pack_name = pack_name or f"XO_OX {engine}"
         self.dry_run = dry_run
+        self.strict_qa = strict_qa
 
         # Accumulated outputs
         self.render_specs: list[dict] = []
@@ -273,6 +279,86 @@ def _stage_expand(ctx: PipelineContext) -> None:
     )
     ctx.expanded_files = summary.get("files_written", [])
     print(f"    Expanded: {len(ctx.expanded_files)} files")
+
+
+def _stage_qa(ctx: PipelineContext) -> None:
+    """Stage QA: Perceptual quality check on rendered WAV files."""
+    try:
+        import xpn_qa_checker
+    except ImportError:
+        print("    [SKIP] xpn_qa_checker not found")
+        return
+
+    # Determine where to look for WAVs: prefer expanded samples dir, fall back to wavs_dir
+    search_dirs: list[Path] = []
+    if ctx.samples_dir.exists():
+        search_dirs.append(ctx.samples_dir)
+    if ctx.wavs_dir and ctx.wavs_dir.exists():
+        search_dirs.append(ctx.wavs_dir)
+
+    if not search_dirs:
+        print("    [SKIP] No WAV directories available for QA")
+        return
+
+    # Collect all unique WAV files
+    seen: set[str] = set()
+    wav_paths: list[Path] = []
+    for d in search_dirs:
+        for wav in sorted(d.rglob("*.wav")) + sorted(d.rglob("*.WAV")):
+            key = str(wav).lower()
+            if key not in seen:
+                seen.add(key)
+                wav_paths.append(wav)
+
+    if not wav_paths:
+        print("    [SKIP] No WAV files found for QA")
+        return
+
+    if ctx.dry_run:
+        print(f"    [DRY] Would run QA on {len(wav_paths)} WAV file(s)")
+        return
+
+    print(f"    Checking {len(wav_paths)} WAV file(s)...")
+
+    n_pass   = 0
+    n_fail   = 0
+    warnings: list[str] = []   # issue descriptions for blocking/non-blocking issues
+    abort_issues = {"CLIPPING", "PHASE_CANCELLED"}
+
+    for wav_path in wav_paths:
+        result = xpn_qa_checker.check_file(wav_path)
+        overall = result.get("overall", "ERROR")
+        issues  = result.get("issues", [])
+
+        if overall == "PASS":
+            n_pass += 1
+        else:
+            n_fail += 1
+            for issue in issues:
+                desc = f"{issue} in {wav_path.name}"
+                warnings.append(desc)
+                print(f"      [WARN] {desc}")
+
+    total = n_pass + n_fail
+    if warnings:
+        summary = f"QA: {n_pass}/{total} passed ({len(warnings)} warning(s): {'; '.join(warnings[:3])}" + \
+                  (" ..." if len(warnings) > 3 else "") + ")"
+    else:
+        summary = f"QA: {n_pass}/{total} passed"
+    print(f"    {summary}")
+
+    # Abort logic
+    if n_fail > 0 and ctx.strict_qa:
+        raise RuntimeError(
+            f"QA strict mode: {n_fail} file(s) failed — "
+            + ", ".join(warnings[:5])
+        )
+
+    # Non-blocking warning for CLIPPING / PHASE_CANCELLED even without --strict-qa
+    blocking_found = [w for w in warnings if any(a in w for a in abort_issues)]
+    if blocking_found and not ctx.strict_qa:
+        print(f"    [WARN] Blocking issues detected (pass --strict-qa to abort): "
+              + ", ".join(blocking_found[:3]))
 
 
 def _stage_export(ctx: PipelineContext) -> None:
@@ -472,6 +558,7 @@ STAGE_FUNCS = {
     "render_spec":      _stage_render_spec,
     "categorize":       _stage_categorize,
     "expand":           _stage_expand,
+    "qa":               _stage_qa,
     "export":           _stage_export,
     "cover_art":        _stage_cover_art,
     "complement_chain": _stage_complement_chain,
@@ -626,6 +713,7 @@ def cmd_run(args) -> int:
         version=args.version,
         pack_name=args.pack_name,
         dry_run=args.dry_run,
+        strict_qa=getattr(args, "strict_qa", False),
     )
     return run_pipeline(ctx, skip)
 
@@ -787,6 +875,8 @@ def main():
                             f"({', '.join(STAGES)})")
     p_run.add_argument("--dry-run",    action="store_true",
                        help="Show what would be executed without running")
+    p_run.add_argument("--strict-qa",  action="store_true", dest="strict_qa",
+                       help="Abort the pipeline on any QA failure (default: warn and continue)")
 
     # --- status ---
     p_status = sub.add_parser("status", help="Show pipeline state")

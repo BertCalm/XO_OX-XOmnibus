@@ -1035,23 +1035,23 @@ inline AIParameterSchema buildDefaultSchema()
 
     registerStub ("Overdub", "dub_", "Dub synth with tape delay, spring reverb, and drive",
                   { "dub techno", "reggae", "tape echo", "lo-fi", "ambient dub" });
-    registerStub ("Odyssey", "odyssey_", "FM synthesis with drift and slow evolving envelopes",
+    registerStub ("Odyssey", "drift_", "FM synthesis with drift and slow evolving envelopes",
                   { "evolving pads", "ambient", "drones", "slow textures" });
     registerStub ("Oblong", "bob_", "Curious, bouncy synthesis with randomized elements",
                   { "weird basses", "experimental", "playful leads", "generative" });
     registerStub ("Obese", "fat_", "Massive distorted bass with saturation stages",
                   { "bass", "sub bass", "distorted bass", "aggressive", "fat sounds" });
-    registerStub ("Onset", "onset_", "Noise-based percussion and transient design",
+    registerStub ("Onset", "perc_", "Noise-based percussion and transient design",
                   { "noise percussion", "hi-hats", "cymbals", "risers", "noise textures" });
-    registerStub ("Overworld", "era_", "Retro/chiptune synthesis across console eras",
+    registerStub ("Overworld", "ow_", "Retro/chiptune synthesis across console eras",
                   { "chiptune", "retro", "8-bit", "16-bit", "game sounds" });
     registerStub ("Opal", "opal_", "Granular synthesis with shimmer and frost effects",
                   { "granular textures", "ambient", "shimmer pads", "frozen sounds", "glitch" });
-    registerStub ("Orbital", "orbital_", "Additive synthesis with partial control and spectral tilt",
+    registerStub ("Orbital", "orb_", "Additive synthesis with partial control and spectral tilt",
                   { "bells", "organs", "harmonic textures", "spectral sounds", "overtone design" });
     registerStub ("Organon", "organon_", "Entropy-driven synthesis — chaos to order continuum",
                   { "chaos", "noise", "evolving textures", "experimental", "entropy" });
-    registerStub ("Ouroboros", "ouroboros_", "Self-modulating feedback synthesis",
+    registerStub ("Ouroboros", "ouro_", "Self-modulating feedback synthesis",
                   { "feedback drones", "self-oscillation", "dark ambient", "evolving noise" });
     registerStub ("Obsidian", "obsidian_", "Phase distortion with crystalline/dark character",
                   { "crystal tones", "metallic", "glass", "dark textures", "phase distortion" });
@@ -1063,7 +1063,7 @@ inline AIParameterSchema buildDefaultSchema()
                   { "custom envelopes", "complex modulation", "generative", "contour design" });
     registerStub ("Obscura", "obscura_", "Physical modeling — stiff string and membrane",
                   { "strings", "drums", "physical modeling", "resonant bodies", "mallets" });
-    registerStub ("Oceanic", "oceanic_", "Spectral synthesis with ocean/water metaphor",
+    registerStub ("Oceanic", "ocean_", "Spectral synthesis with ocean/water metaphor",
                   { "water textures", "spectral pads", "tidal movement", "fluid sounds" });
     registerStub ("Optic", "optic_", "Visual modulation synthesis with AutoPulse LFO matrix",
                   { "rhythmic modulation", "visual sync", "pulsing textures", "light patterns" });

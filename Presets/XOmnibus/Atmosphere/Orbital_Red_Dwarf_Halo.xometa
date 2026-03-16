@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Red Dwarf Halo",
+  "mood": "Atmosphere",
+  "engines": ["Orbital"],
+  "author": "Guru Bin — Fleet Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "High group envelope depth pushes voices into choir-like swell patterns, but the filter cutoff is pulled low and resonance is near zero — heat without brightness. The warm red accent of ORBITAL bleeding into pure texture. A halo of low-frequency light.",
+  "tags": ["atmosphere", "warm", "dark", "halo", "ambient", "low"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.8,
+    "movement": 0.48,
+    "density": 0.65,
+    "space": 0.72,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.22,
+      "orb_groupEnvRate": 0.15,
+      "orb_groupEnvDepth": 0.82,
+      "orb_oscCount": 8,
+      "orb_spread": 0.55,
+      "orb_detune": 0.3,
+      "orb_filterCutoff": 0.32,
+      "orb_filterReso": 0.08,
+      "orb_ampAttack": 0.9,
+      "orb_ampDecay": 0.6,
+      "orb_ampSustain": 0.8,
+      "orb_ampRelease": 3.5
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

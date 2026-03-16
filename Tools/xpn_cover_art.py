@@ -3,9 +3,10 @@
 XPN Cover Art Generator — XO_OX Designs
 Generates branded procedural cover art for MPC expansion packs.
 
-Outputs:
-  - artwork_2000.png  (2000×2000, social/web master)
-  - artwork.png       (1000×1000, MPC expansion cover)
+Outputs (controlled by --resolution flag):
+  - artwork_500.png   (500×500,   standard MPC thumbnail)
+  - artwork_1000.png  (1000×1000, MPC XL / retina display)
+  - artwork_2000.png  (2000×2000, social/web/eBook master)
 
 Usage:
     from xpn_cover_art import generate_cover
@@ -16,6 +17,9 @@ Usage:
         output_dir="/path/to/pack",
         version="1.0"
     )
+
+    # Multi-resolution:
+    generate_cover(..., resolutions=[500, 1000, 2000])
 
     # With spectral fingerprints (sound-derived visuals):
     from xpn_optic_fingerprint import load_fingerprints
@@ -33,9 +37,11 @@ Dependencies: Pillow, numpy
     pip install Pillow numpy
 """
 
+import json
 import math
 import os
 import random
+from datetime import date
 from pathlib import Path
 
 try:
@@ -330,6 +336,61 @@ ENGINE_DEFS = {
 
 XO_GOLD = (233, 196, 106)
 WARM_WHITE = (248, 246, 243)
+
+# Valid resolution sizes supported by the generator.
+VALID_RESOLUTIONS = {500, 1000, 2000}
+
+
+# =============================================================================
+# PAD COLOR API
+# =============================================================================
+
+def get_pad_color_hex(engine_name: str) -> str:
+    """Return the engine's accent color as hex for XPM PadColor field.
+
+    Looks up the engine in ENGINE_DEFS (case-insensitive) and converts the
+    RGB accent tuple to a CSS hex string.  Falls back to XO Gold for
+    unrecognised engine names.
+
+    Args:
+        engine_name: Engine short name, e.g. "ONSET", "FAT", "opal".
+
+    Returns:
+        Hex string with leading '#', e.g. "#0066FF".
+    """
+    eng = ENGINE_DEFS.get(engine_name.upper(), ENGINE_DEFS["DEFAULT"])
+    r, g, b = eng["accent"]
+    return f"#{r:02X}{g:02X}{b:02X}"
+
+
+def generate_pad_color_manifest(engine_name: str, output_dir: str) -> str:
+    """Write pad_colors.json alongside cover art with per-pad hex assignments.
+
+    All 16 pads are assigned the engine's canonical accent color.  The JSON
+    file is intended to be bundled into the XPN archive by xpn_packager.py
+    and consumed by future Oxport stages to inject <Group Color=""> into
+    drum XPM files.
+
+    Args:
+        engine_name: Engine short name, e.g. "ONSET".
+        output_dir:  Directory to write pad_colors.json.
+
+    Returns:
+        Absolute path to the written pad_colors.json file.
+    """
+    hex_color = get_pad_color_hex(engine_name)
+    manifest = {
+        "engine": engine_name.upper(),
+        "accent_color": hex_color,
+        "pad_assignments": {str(i): hex_color for i in range(1, 17)},
+        "generated": str(date.today()),
+    }
+    out_path = Path(output_dir)
+    out_path.mkdir(parents=True, exist_ok=True)
+    json_path = out_path / "pad_colors.json"
+    with open(json_path, "w", encoding="utf-8") as fh:
+        json.dump(manifest, fh, indent=2)
+    return str(json_path)
 
 
 # =============================================================================
@@ -801,6 +862,7 @@ def generate_cover(
     version: str = "1.0",
     seed: int = None,
     fingerprints: list = None,
+    resolutions: list = None,
 ) -> dict:
     """
     Generate cover art for an XPN expansion pack.
@@ -816,12 +878,25 @@ def generate_cover(
                        spectral data modulates visual parameters and adds a
                        spectral silhouette overlay. When None, behavior is
                        identical to the original (static engine styles).
+        resolutions:   List of output sizes in pixels, e.g. [500, 1000, 2000].
+                       Valid values: 500, 1000, 2000.  Default: [500] for
+                       backward compatibility.  Use [500, 1000, 2000] or pass
+                       the string "all" at the CLI level to generate all three.
 
     Returns:
-        dict with keys "cover_1000" and "cover_2000" pointing to output paths.
+        dict mapping resolution keys ("cover_500", "cover_1000", "cover_2000")
+        to output paths for each requested size.
     """
     if not PILLOW_AVAILABLE:
         raise RuntimeError("Pillow and numpy required: pip install Pillow numpy")
+
+    # Normalise resolutions argument; default to [500] for backward compat.
+    if resolutions is None:
+        resolutions = [500]
+    # Clamp to valid values; silently skip unknowns.
+    resolutions = sorted({r for r in resolutions if r in VALID_RESOLUTIONS})
+    if not resolutions:
+        resolutions = [500]
 
     engine_key = engine.upper()
     eng = ENGINE_DEFS.get(engine_key, ENGINE_DEFS["DEFAULT"])
@@ -876,21 +951,28 @@ def generate_cover(
     img = _add_text_overlay(img, eng, pack_name, preset_count, version)
     img = img.convert("RGB")
 
-    # 5. Save outputs
+    # 5. Save outputs — one file per requested resolution.
     out_path = Path(output_dir)
     out_path.mkdir(parents=True, exist_ok=True)
 
-    path_2000 = out_path / "artwork_2000.png"
-    path_1000 = out_path / "artwork.png"
+    result: dict = {}
+    saved_names: list = []
 
-    img.save(str(path_2000), "PNG", optimize=True)
+    for res in resolutions:
+        if res == 2000:
+            # Master render is already 2000px — save directly.
+            dest = out_path / "artwork_2000.png"
+            img.save(str(dest), "PNG", optimize=True)
+        else:
+            resized = img.resize((res, res), Image.LANCZOS)
+            dest = out_path / f"artwork_{res}.png"
+            resized.save(str(dest), "PNG", optimize=True)
 
-    # Downscale to 1000×1000 with Lanczos
-    img_1000 = img.resize((1000, 1000), Image.LANCZOS)
-    img_1000.save(str(path_1000), "PNG", optimize=True)
+        result[f"cover_{res}"] = str(dest)
+        saved_names.append(dest.name)
 
-    print(f"  Cover art: {path_1000.name} + {path_2000.name}")
-    return {"cover_1000": str(path_1000), "cover_2000": str(path_2000)}
+    print(f"  Cover art: {' + '.join(saved_names)}")
+    return result
 
 
 # =============================================================================
@@ -902,17 +984,44 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(description="Generate XPN cover art")
-    parser.add_argument("--engine",    required=True, help="Engine name (ONSET, FAT, etc.)")
-    parser.add_argument("--pack-name", required=True, help="Pack display name")
-    parser.add_argument("--output",    required=True, help="Output directory")
-    parser.add_argument("--count",     type=int, default=0,  help="Preset count")
-    parser.add_argument("--version",   default="1.0",         help="Version string")
-    parser.add_argument("--seed",      type=int, default=None, help="RNG seed")
+    parser.add_argument("--engine",     required=True,  help="Engine name (ONSET, FAT, etc.)")
+    parser.add_argument("--pack-name",  required=True,  help="Pack display name")
+    parser.add_argument("--output",     required=True,  help="Output directory")
+    parser.add_argument("--count",      type=int, default=0,    help="Preset count")
+    parser.add_argument("--version",    default="1.0",           help="Version string")
+    parser.add_argument("--seed",       type=int, default=None,  help="RNG seed")
+    parser.add_argument(
+        "--resolution",
+        default="500",
+        help=(
+            "Output resolution(s). Use '500' (default), '1000', '2000', "
+            "'all' (500+1000+2000), or comma-separated list e.g. '1000,2000'."
+        ),
+    )
+    parser.add_argument(
+        "--pad-colors",
+        action="store_true",
+        default=False,
+        help="Also write pad_colors.json alongside cover art.",
+    )
     args = parser.parse_args()
 
     if not PILLOW_AVAILABLE:
         print("ERROR: pip install Pillow numpy")
         sys.exit(1)
+
+    # Parse --resolution into a list of ints.
+    res_raw = args.resolution.strip().lower()
+    if res_raw == "all":
+        requested_resolutions = [500, 1000, 2000]
+    else:
+        requested_resolutions = []
+        for token in res_raw.split(","):
+            token = token.strip()
+            if token.isdigit():
+                requested_resolutions.append(int(token))
+            else:
+                print(f"WARNING: ignoring unrecognised resolution token '{token}'")
 
     result = generate_cover(
         engine=args.engine,
@@ -921,5 +1030,16 @@ if __name__ == "__main__":
         preset_count=args.count,
         version=args.version,
         seed=args.seed,
+        resolutions=requested_resolutions,
     )
+
+    if args.pad_colors:
+        pad_json = generate_pad_color_manifest(args.engine, args.output)
+        result["pad_colors"] = pad_json
+        print(f"  Pad colors: {Path(pad_json).name}")
+
+    total = len([k for k in result if k.startswith("cover_")])
+    if res_raw == "all":
+        print(f"  Total files generated: {total}")
+
     print(f"Done: {result}")

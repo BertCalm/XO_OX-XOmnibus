@@ -615,9 +615,9 @@ private:
     {
         // Check for parameter ID patterns
         static const char* prefixes[] = {
-            "snap_", "morph_", "dub_", "odyssey_", "bob_", "fat_", "poss_",
-            "onset_", "era_", "opal_", "orbital_", "organon_", "ouroboros_",
-            "obsidian_", "origami_", "oracle_", "obscura_", "oceanic_",
+            "snap_", "morph_", "dub_", "drift_", "bob_", "fat_", "poss_",
+            "perc_", "ow_", "opal_", "orb_", "organon_", "ouro_",
+            "obsidian_", "origami_", "oracle_", "obscura_", "ocean_",
             "optic_", "oblq_"
         };
 
