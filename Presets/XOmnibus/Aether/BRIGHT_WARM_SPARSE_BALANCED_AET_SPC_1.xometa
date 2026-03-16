@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT WARM SPARSE BALANCED AET SPC 1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ODDFELIX",
+    "OSPREY"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.936,
+      "macro_movement": 0.613,
+      "macro_coupling": 0.689,
+      "macro_space": 0.479
+    },
+    "OSPREY": {
+      "macro_character": 0.935,
+      "macro_movement": 0.609,
+      "macro_coupling": 0.681,
+      "macro_space": 0.502
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ODDFELIX",
+    "target": "OSPREY",
+    "amount": 0.407
+  },
+  "dna": {
+    "brightness": 0.885,
+    "warmth": 0.988,
+    "movement": 0.613,
+    "density": 0.058,
+    "space": 0.479,
+    "aggression": 0.914
+  },
+  "macros": {
+    "CHARACTER": 0.936,
+    "MOVEMENT": 0.613,
+    "COUPLING": 0.689,
+    "SPACE": 0.479
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "bright",
+    "warm"
+  ]
+}

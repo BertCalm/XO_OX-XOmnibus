@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_KINETIC_SPARSE_FAM_VOL_92",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ORPHICA",
+    "OLE"
+  ],
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.89,
+      "macro_movement": 0.951,
+      "macro_coupling": 0.194,
+      "macro_space": 0.574
+    },
+    "OLE": {
+      "macro_character": 0.909,
+      "macro_movement": 0.939,
+      "macro_coupling": 0.201,
+      "macro_space": 0.582
+    }
+  },
+  "coupling": {
+    "type": "FILTER_LINK",
+    "source": "OLE",
+    "target": "ORPHICA",
+    "amount": 0.463
+  },
+  "dna": {
+    "brightness": 0.894,
+    "warmth": 0.907,
+    "movement": 0.968,
+    "density": 0.054,
+    "space": 0.577,
+    "aggression": 0.329
+  },
+  "macros": {
+    "CHARACTER": 0.899,
+    "MOVEMENT": 0.945,
+    "COUPLING": 0.198,
+    "SPACE": 0.578
+  },
+  "tags": [
+    "family",
+    "warm",
+    "kinetic",
+    "sparse",
+    "bright"
+  ]
+}

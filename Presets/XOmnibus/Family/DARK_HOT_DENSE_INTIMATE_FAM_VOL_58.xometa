@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_DENSE_INTIMATE_FAM_VOL_58",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ORPHICA",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.478,
+      "macro_movement": 0.344,
+      "macro_coupling": 0.734,
+      "macro_space": 0.115
+    },
+    "ODDFELIX": {
+      "macro_character": 0.492,
+      "macro_movement": 0.32,
+      "macro_coupling": 0.764,
+      "macro_space": 0.094
+    }
+  },
+  "coupling": {
+    "type": "PHASE_COUPLE",
+    "source": "ODDFELIX",
+    "target": "ORPHICA",
+    "amount": 0.8
+  },
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.905,
+    "movement": 0.349,
+    "density": 0.944,
+    "space": 0.097,
+    "aggression": 0.57
+  },
+  "macros": {
+    "CHARACTER": 0.485,
+    "MOVEMENT": 0.332,
+    "COUPLING": 0.749,
+    "SPACE": 0.105
+  },
+  "tags": [
+    "family",
+    "hot",
+    "dense",
+    "intimate",
+    "dark"
+  ]
+}

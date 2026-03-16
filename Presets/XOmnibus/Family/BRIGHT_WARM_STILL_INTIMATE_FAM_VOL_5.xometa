@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_STILL_INTIMATE_FAM_VOL_5",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OLE",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.929,
+      "macro_movement": 0.024,
+      "macro_coupling": 0.471,
+      "macro_space": 0.071
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.88,
+      "macro_movement": 0.021,
+      "macro_coupling": 0.502,
+      "macro_space": 0.074
+    }
+  },
+  "coupling": {
+    "type": "MODULATION_FLOW",
+    "source": "OLE",
+    "target": "ODDOSCAR",
+    "amount": 0.433
+  },
+  "dna": {
+    "brightness": 0.897,
+    "warmth": 0.909,
+    "movement": 0.049,
+    "density": 0.618,
+    "space": 0.069,
+    "aggression": 0.361
+  },
+  "macros": {
+    "CHARACTER": 0.905,
+    "MOVEMENT": 0.022,
+    "COUPLING": 0.486,
+    "SPACE": 0.072
+  },
+  "tags": [
+    "family",
+    "warm",
+    "intimate",
+    "bright",
+    "still"
+  ]
+}

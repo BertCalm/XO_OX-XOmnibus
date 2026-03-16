@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_DENSE_INTIMATE_FAM_VOL_54",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OSPREY",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.896,
+      "macro_movement": 0.32,
+      "macro_coupling": 0.639,
+      "macro_space": 0.085
+    },
+    "ORIGAMI": {
+      "macro_character": 0.888,
+      "macro_movement": 0.312,
+      "macro_coupling": 0.658,
+      "macro_space": 0.068
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OSPREY",
+    "target": "ORIGAMI",
+    "amount": 0.921
+  },
+  "dna": {
+    "brightness": 0.903,
+    "warmth": 0.915,
+    "movement": 0.321,
+    "density": 0.943,
+    "space": 0.093,
+    "aggression": 0.394
+  },
+  "macros": {
+    "CHARACTER": 0.892,
+    "MOVEMENT": 0.316,
+    "COUPLING": 0.649,
+    "SPACE": 0.077
+  },
+  "tags": [
+    "family",
+    "warm",
+    "dense",
+    "intimate",
+    "bright"
+  ]
+}

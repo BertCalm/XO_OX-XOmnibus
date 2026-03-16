@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_SPARSE_VAST_FAM_VOL_17",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODDFELIX",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.891,
+      "macro_movement": 0.496,
+      "macro_coupling": 0.31,
+      "macro_space": 0.946
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.9,
+      "macro_movement": 0.52,
+      "macro_coupling": 0.295,
+      "macro_space": 0.974
+    }
+  },
+  "coupling": {
+    "type": "DYNAMIC_CROSS",
+    "source": "ODDOSCAR",
+    "target": "ODDFELIX",
+    "amount": 0.607
+  },
+  "dna": {
+    "brightness": 0.936,
+    "warmth": 0.897,
+    "movement": 0.523,
+    "density": 0.034,
+    "space": 0.971,
+    "aggression": 0.555
+  },
+  "macros": {
+    "CHARACTER": 0.895,
+    "MOVEMENT": 0.508,
+    "COUPLING": 0.302,
+    "SPACE": 0.96
+  },
+  "tags": [
+    "family",
+    "warm",
+    "sparse",
+    "vast",
+    "bright"
+  ]
+}

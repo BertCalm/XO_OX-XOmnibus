@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT WARM SPARSE BALANCED AET SPC 5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORGANON",
+    "OMBRE"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.932,
+      "macro_movement": 0.521,
+      "macro_coupling": 0.613,
+      "macro_space": 0.649
+    },
+    "OMBRE": {
+      "macro_character": 0.909,
+      "macro_movement": 0.503,
+      "macro_coupling": 0.59,
+      "macro_space": 0.651
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ORGANON",
+    "target": "OMBRE",
+    "amount": 0.549
+  },
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.914,
+    "movement": 0.521,
+    "density": 0.058,
+    "space": 0.649,
+    "aggression": 0.936
+  },
+  "macros": {
+    "CHARACTER": 0.932,
+    "MOVEMENT": 0.521,
+    "COUPLING": 0.613,
+    "SPACE": 0.649
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "bright",
+    "warm"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "DARK_SPARSE_VAST_VIOLENT_PRS_DRK_5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OCELOT",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "macro_character": 0.7003,
+      "macro_movement": 0.6045,
+      "macro_coupling": 0.0617,
+      "macro_space": 0.9602
+    },
+    "ORIGAMI": {
+      "macro_character": 0.7035,
+      "macro_movement": 0.6445,
+      "macro_coupling": 0.0497,
+      "macro_space": 0.9722
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OCELOT",
+    "target": "ORIGAMI",
+    "amount": 0.5578
+  },
+  "dna": {
+    "brightness": 0.039,
+    "warmth": 0.4307,
+    "movement": 0.6045,
+    "density": 0.0617,
+    "space": 0.9602,
+    "aggression": 0.9698
+  },
+  "macros": {
+    "CHARACTER": 0.7003,
+    "MOVEMENT": 0.6045,
+    "COUPLING": 0.0617,
+    "SPACE": 0.9602
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "sparse",
+    "vast",
+    "violent"
+  ]
+}

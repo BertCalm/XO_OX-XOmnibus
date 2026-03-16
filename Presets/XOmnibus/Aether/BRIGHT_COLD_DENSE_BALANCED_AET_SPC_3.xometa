@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT COLD DENSE BALANCED AET SPC 3",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OSPREY",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.504,
+      "macro_movement": 0.634,
+      "macro_coupling": 0.84,
+      "macro_space": 0.635
+    },
+    "ORBITAL": {
+      "macro_character": 0.502,
+      "macro_movement": 0.643,
+      "macro_coupling": 0.865,
+      "macro_space": 0.616
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OSPREY",
+    "target": "ORBITAL",
+    "amount": 0.422
+  },
+  "dna": {
+    "brightness": 0.881,
+    "warmth": 0.126,
+    "movement": 0.634,
+    "density": 0.939,
+    "space": 0.635,
+    "aggression": 0.13
+  },
+  "macros": {
+    "CHARACTER": 0.504,
+    "MOVEMENT": 0.634,
+    "COUPLING": 0.84,
+    "SPACE": 0.635
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle",
+    "bright",
+    "dense"
+  ]
+}

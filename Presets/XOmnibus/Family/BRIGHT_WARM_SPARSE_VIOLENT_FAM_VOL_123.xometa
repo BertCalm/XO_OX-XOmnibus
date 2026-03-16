@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_SPARSE_VIOLENT_FAM_VOL_123",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OVERDUB",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.979,
+      "macro_movement": 0.711,
+      "macro_coupling": 0.512,
+      "macro_space": 0.539
+    },
+    "OSTERIA": {
+      "macro_character": 0.983,
+      "macro_movement": 0.671,
+      "macro_coupling": 0.501,
+      "macro_space": 0.534
+    }
+  },
+  "coupling": {
+    "type": "FILTER_LINK",
+    "source": "OSTERIA",
+    "target": "OVERDUB",
+    "amount": 0.562
+  },
+  "dna": {
+    "brightness": 0.969,
+    "warmth": 0.948,
+    "movement": 0.686,
+    "density": 0.092,
+    "space": 0.515,
+    "aggression": 0.96
+  },
+  "macros": {
+    "CHARACTER": 0.981,
+    "MOVEMENT": 0.691,
+    "COUPLING": 0.506,
+    "SPACE": 0.536
+  },
+  "tags": [
+    "family",
+    "warm",
+    "sparse",
+    "aggressive",
+    "bright"
+  ]
+}

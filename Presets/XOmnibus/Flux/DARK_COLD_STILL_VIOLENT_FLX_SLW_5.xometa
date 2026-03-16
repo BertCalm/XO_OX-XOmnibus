@@ -1,0 +1,51 @@
+{
+  "name": "DARK_COLD_STILL_VIOLENT_FLX_SLW_5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OCEANIC",
+    "OBLONG"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.625,
+      "macro_movement": 0.046,
+      "macro_coupling": 0.918,
+      "macro_space": 0.604
+    },
+    "OBLONG": {
+      "macro_character": 0.601,
+      "macro_movement": 0.048,
+      "macro_coupling": 0.705,
+      "macro_space": 0.618
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OCEANIC",
+    "target": "OBLONG",
+    "amount": 0.612
+  },
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.079,
+    "movement": 0.049,
+    "density": 0.499,
+    "space": 0.631,
+    "aggression": 0.897
+  },
+  "macros": {
+    "CHARACTER": 0.698,
+    "MOVEMENT": 0.049,
+    "COUPLING": 0.741,
+    "SPACE": 0.631
+  },
+  "tags": [
+    "flux",
+    "still",
+    "dark",
+    "cold",
+    "violent",
+    "frozen-instability"
+  ]
+}

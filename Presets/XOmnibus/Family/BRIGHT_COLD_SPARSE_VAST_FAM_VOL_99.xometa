@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_COLD_SPARSE_VAST_FAM_VOL_99",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODDOSCAR",
+    "OBLONG"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.503,
+      "macro_movement": 0.303,
+      "macro_coupling": 0.385,
+      "macro_space": 0.945
+    },
+    "OBLONG": {
+      "macro_character": 0.51,
+      "macro_movement": 0.33,
+      "macro_coupling": 0.372,
+      "macro_space": 0.989
+    }
+  },
+  "coupling": {
+    "type": "DYNAMIC_CROSS",
+    "source": "OBLONG",
+    "target": "ODDOSCAR",
+    "amount": 0.485
+  },
+  "dna": {
+    "brightness": 0.965,
+    "warmth": 0.042,
+    "movement": 0.318,
+    "density": 0.12,
+    "space": 0.974,
+    "aggression": 0.659
+  },
+  "macros": {
+    "CHARACTER": 0.506,
+    "MOVEMENT": 0.317,
+    "COUPLING": 0.379,
+    "SPACE": 0.967
+  },
+  "tags": [
+    "family",
+    "bright",
+    "cold",
+    "sparse",
+    "vast"
+  ]
+}

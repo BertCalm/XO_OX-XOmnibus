@@ -1,0 +1,50 @@
+{
+  "name": "COLD STILL SPARSE BALANCED AET SPC 5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OCEANIC",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.327,
+      "macro_movement": 0.083,
+      "macro_coupling": 0.782,
+      "macro_space": 0.463
+    },
+    "ORACLE": {
+      "macro_character": 0.303,
+      "macro_movement": 0.099,
+      "macro_coupling": 0.803,
+      "macro_space": 0.469
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OCEANIC",
+    "target": "ORACLE",
+    "amount": 0.78
+  },
+  "dna": {
+    "brightness": 0.531,
+    "warmth": 0.122,
+    "movement": 0.083,
+    "density": 0.12,
+    "space": 0.463,
+    "aggression": 0.124
+  },
+  "macros": {
+    "CHARACTER": 0.327,
+    "MOVEMENT": 0.083,
+    "COUPLING": 0.782,
+    "SPACE": 0.463
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle"
+  ]
+}

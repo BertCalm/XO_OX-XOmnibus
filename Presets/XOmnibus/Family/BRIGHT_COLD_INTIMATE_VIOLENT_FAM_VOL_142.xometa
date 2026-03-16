@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_FAM_VOL_142",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OVERDUB",
+    "OBBLIGATO"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.496,
+      "macro_movement": 0.657,
+      "macro_coupling": 0.722,
+      "macro_space": 0.055
+    },
+    "OBBLIGATO": {
+      "macro_character": 0.458,
+      "macro_movement": 0.694,
+      "macro_coupling": 0.72,
+      "macro_space": 0.069
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OVERDUB",
+    "target": "OBBLIGATO",
+    "amount": 0.626
+  },
+  "dna": {
+    "brightness": 0.871,
+    "warmth": 0.081,
+    "movement": 0.666,
+    "density": 0.538,
+    "space": 0.054,
+    "aggression": 0.944
+  },
+  "macros": {
+    "CHARACTER": 0.477,
+    "MOVEMENT": 0.675,
+    "COUPLING": 0.721,
+    "SPACE": 0.062
+  },
+  "tags": [
+    "family",
+    "bright",
+    "cold",
+    "intimate",
+    "violent"
+  ]
+}

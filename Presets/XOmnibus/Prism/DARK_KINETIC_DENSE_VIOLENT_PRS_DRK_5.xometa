@@ -1,0 +1,50 @@
+{
+  "name": "DARK_KINETIC_DENSE_VIOLENT_PRS_DRK_5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ORACLE",
+    "OPTIC"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.6428,
+      "macro_movement": 0.9636,
+      "macro_coupling": 0.9761,
+      "macro_space": 0.4626
+    },
+    "OPTIC": {
+      "macro_character": 0.6677,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.9381,
+      "macro_space": 0.4815
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ORACLE",
+    "target": "OPTIC",
+    "amount": 0.9405
+  },
+  "dna": {
+    "brightness": 0.0425,
+    "warmth": 0.3411,
+    "movement": 0.9636,
+    "density": 0.9761,
+    "space": 0.4626,
+    "aggression": 0.9445
+  },
+  "macros": {
+    "CHARACTER": 0.6428,
+    "MOVEMENT": 0.9636,
+    "COUPLING": 0.9761,
+    "SPACE": 0.4626
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "kinetic",
+    "dense",
+    "violent"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_STILL_SPARSE_FAM_VOL_75",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ORPHICA",
+    "OPAL"
+  ],
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.538,
+      "macro_movement": 0.064,
+      "macro_coupling": 0.285,
+      "macro_space": 0.637
+    },
+    "OPAL": {
+      "macro_character": 0.542,
+      "macro_movement": 0.052,
+      "macro_coupling": 0.279,
+      "macro_space": 0.661
+    }
+  },
+  "coupling": {
+    "type": "MODULATION_FLOW",
+    "source": "OPAL",
+    "target": "ORPHICA",
+    "amount": 0.67
+  },
+  "dna": {
+    "brightness": 0.128,
+    "warmth": 0.915,
+    "movement": 0.058,
+    "density": 0.047,
+    "space": 0.643,
+    "aggression": 0.549
+  },
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.058,
+    "COUPLING": 0.282,
+    "SPACE": 0.649
+  },
+  "tags": [
+    "family",
+    "hot",
+    "still",
+    "sparse",
+    "dark"
+  ]
+}

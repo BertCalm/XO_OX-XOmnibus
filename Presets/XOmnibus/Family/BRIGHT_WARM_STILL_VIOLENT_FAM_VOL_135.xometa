@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_STILL_VIOLENT_FAM_VOL_135",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OTTONI",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.951,
+      "macro_movement": 0.029,
+      "macro_coupling": 0.676,
+      "macro_space": 0.461
+    },
+    "ORGANON": {
+      "macro_character": 0.947,
+      "macro_movement": 0.051,
+      "macro_coupling": 0.698,
+      "macro_space": 0.518
+    }
+  },
+  "coupling": {
+    "type": "FILTER_LINK",
+    "source": "OTTONI",
+    "target": "ORGANON",
+    "amount": 0.856
+  },
+  "dna": {
+    "brightness": 0.985,
+    "warmth": 0.936,
+    "movement": 0.039,
+    "density": 0.51,
+    "space": 0.49,
+    "aggression": 0.878
+  },
+  "macros": {
+    "CHARACTER": 0.949,
+    "MOVEMENT": 0.04,
+    "COUPLING": 0.687,
+    "SPACE": 0.49
+  },
+  "tags": [
+    "family",
+    "warm",
+    "still",
+    "aggressive",
+    "bright"
+  ]
+}

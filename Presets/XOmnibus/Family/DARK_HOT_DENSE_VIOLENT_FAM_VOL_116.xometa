@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_DENSE_VIOLENT_FAM_VOL_116",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ORPHICA",
+    "OBLONG"
+  ],
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.482,
+      "macro_movement": 0.364,
+      "macro_coupling": 0.928,
+      "macro_space": 0.687
+    },
+    "OBLONG": {
+      "macro_character": 0.531,
+      "macro_movement": 0.328,
+      "macro_coupling": 0.94,
+      "macro_space": 0.683
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_WEAVE",
+    "source": "OBLONG",
+    "target": "ORPHICA",
+    "amount": 0.939
+  },
+  "dna": {
+    "brightness": 0.101,
+    "warmth": 0.914,
+    "movement": 0.334,
+    "density": 0.902,
+    "space": 0.697,
+    "aggression": 0.967
+  },
+  "macros": {
+    "CHARACTER": 0.506,
+    "MOVEMENT": 0.346,
+    "COUPLING": 0.934,
+    "SPACE": 0.685
+  },
+  "tags": [
+    "family",
+    "hot",
+    "dense",
+    "aggressive",
+    "dark"
+  ]
+}

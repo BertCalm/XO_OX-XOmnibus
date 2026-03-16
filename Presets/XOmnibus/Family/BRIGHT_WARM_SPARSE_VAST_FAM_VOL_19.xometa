@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_SPARSE_VAST_FAM_VOL_19",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OVERDUB",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.97,
+      "macro_movement": 0.367,
+      "macro_coupling": 0.393,
+      "macro_space": 0.888
+    },
+    "ORPHICA": {
+      "macro_character": 0.929,
+      "macro_movement": 0.391,
+      "macro_coupling": 0.385,
+      "macro_space": 0.891
+    }
+  },
+  "coupling": {
+    "type": "FILTER_LINK",
+    "source": "OVERDUB",
+    "target": "ORPHICA",
+    "amount": 0.497
+  },
+  "dna": {
+    "brightness": 0.952,
+    "warmth": 0.933,
+    "movement": 0.386,
+    "density": 0.094,
+    "space": 0.913,
+    "aggression": 0.662
+  },
+  "macros": {
+    "CHARACTER": 0.95,
+    "MOVEMENT": 0.379,
+    "COUPLING": 0.389,
+    "SPACE": 0.889
+  },
+  "tags": [
+    "family",
+    "warm",
+    "sparse",
+    "vast",
+    "bright"
+  ]
+}

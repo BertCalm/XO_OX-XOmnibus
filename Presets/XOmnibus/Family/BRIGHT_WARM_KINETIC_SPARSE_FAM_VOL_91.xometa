@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_KINETIC_SPARSE_FAM_VOL_91",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OSPREY",
+    "OPAL"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.893,
+      "macro_movement": 0.953,
+      "macro_coupling": 0.4,
+      "macro_space": 0.642
+    },
+    "OPAL": {
+      "macro_character": 0.909,
+      "macro_movement": 0.952,
+      "macro_coupling": 0.412,
+      "macro_space": 0.636
+    }
+  },
+  "coupling": {
+    "type": "MODULATION_FLOW",
+    "source": "OPAL",
+    "target": "OSPREY",
+    "amount": 0.535
+  },
+  "dna": {
+    "brightness": 0.891,
+    "warmth": 0.931,
+    "movement": 0.936,
+    "density": 0.079,
+    "space": 0.612,
+    "aggression": 0.694
+  },
+  "macros": {
+    "CHARACTER": 0.901,
+    "MOVEMENT": 0.952,
+    "COUPLING": 0.406,
+    "SPACE": 0.639
+  },
+  "tags": [
+    "family",
+    "warm",
+    "kinetic",
+    "sparse",
+    "bright"
+  ]
+}

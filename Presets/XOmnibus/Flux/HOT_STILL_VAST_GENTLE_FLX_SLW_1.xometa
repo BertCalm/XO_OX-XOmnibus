@@ -1,0 +1,51 @@
+{
+  "name": "HOT_STILL_VAST_GENTLE_FLX_SLW_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ORGANON",
+    "OBLONG"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.496,
+      "macro_movement": 0.026,
+      "macro_coupling": 0.865,
+      "macro_space": 0.951
+    },
+    "OBLONG": {
+      "macro_character": 0.4,
+      "macro_movement": 0.031,
+      "macro_coupling": 0.923,
+      "macro_space": 0.951
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ORGANON",
+    "target": "OBLONG",
+    "amount": 0.893
+  },
+  "dna": {
+    "brightness": 0.447,
+    "warmth": 0.917,
+    "movement": 0.027,
+    "density": 0.317,
+    "space": 0.982,
+    "aggression": 0.033
+  },
+  "macros": {
+    "CHARACTER": 0.175,
+    "MOVEMENT": 0.027,
+    "COUPLING": 0.853,
+    "SPACE": 0.982
+  },
+  "tags": [
+    "flux",
+    "still",
+    "warm",
+    "vast",
+    "gentle",
+    "suspended-chaos"
+  ]
+}

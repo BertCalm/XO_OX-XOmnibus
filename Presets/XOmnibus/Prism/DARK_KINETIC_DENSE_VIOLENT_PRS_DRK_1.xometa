@@ -1,0 +1,50 @@
+{
+  "name": "DARK_KINETIC_DENSE_VIOLENT_PRS_DRK_1",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OTTONI",
+    "OLE"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.701,
+      "macro_movement": 0.9226,
+      "macro_coupling": 0.9352,
+      "macro_space": 0.421
+    },
+    "OLE": {
+      "macro_character": 0.7054,
+      "macro_movement": 0.9571,
+      "macro_coupling": 0.9035,
+      "macro_space": 0.4513
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OTTONI",
+    "target": "OLE",
+    "amount": 0.8171
+  },
+  "dna": {
+    "brightness": 0.042,
+    "warmth": 0.414,
+    "movement": 0.9226,
+    "density": 0.9352,
+    "space": 0.421,
+    "aggression": 0.9881
+  },
+  "macros": {
+    "CHARACTER": 0.701,
+    "MOVEMENT": 0.9226,
+    "COUPLING": 0.9352,
+    "SPACE": 0.421
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "kinetic",
+    "dense",
+    "violent"
+  ]
+}

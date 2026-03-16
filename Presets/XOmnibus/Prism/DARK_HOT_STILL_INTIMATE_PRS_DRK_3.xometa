@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_STILL_INTIMATE_PRS_DRK_3",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OWLFISH",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "OWLFISH": {
+      "macro_character": 0.6649,
+      "macro_movement": 0.0396,
+      "macro_coupling": 0.685,
+      "macro_space": 0.0492
+    },
+    "OSTERIA": {
+      "macro_character": 0.6598,
+      "macro_movement": 0.0783,
+      "macro_coupling": 0.6543,
+      "macro_space": 0.0812
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OWLFISH",
+    "target": "OSTERIA",
+    "amount": 0.8646
+  },
+  "dna": {
+    "brightness": 0.0304,
+    "warmth": 0.9864,
+    "movement": 0.0396,
+    "density": 0.685,
+    "space": 0.0492,
+    "aggression": 0.3434
+  },
+  "macros": {
+    "CHARACTER": 0.6649,
+    "MOVEMENT": 0.0396,
+    "COUPLING": 0.685,
+    "SPACE": 0.0492
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "hot",
+    "still",
+    "intimate"
+  ]
+}

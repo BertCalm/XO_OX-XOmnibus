@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_FAM_VOL_141",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OLE",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.485,
+      "macro_movement": 0.481,
+      "macro_coupling": 0.66,
+      "macro_space": 0.116
+    },
+    "OSTERIA": {
+      "macro_character": 0.52,
+      "macro_movement": 0.462,
+      "macro_coupling": 0.65,
+      "macro_space": 0.105
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_WEAVE",
+    "source": "OSTERIA",
+    "target": "OLE",
+    "amount": 0.52
+  },
+  "dna": {
+    "brightness": 0.873,
+    "warmth": 0.13,
+    "movement": 0.487,
+    "density": 0.37,
+    "space": 0.103,
+    "aggression": 0.934
+  },
+  "macros": {
+    "CHARACTER": 0.502,
+    "MOVEMENT": 0.472,
+    "COUPLING": 0.655,
+    "SPACE": 0.111
+  },
+  "tags": [
+    "family",
+    "bright",
+    "cold",
+    "intimate",
+    "violent"
+  ]
+}

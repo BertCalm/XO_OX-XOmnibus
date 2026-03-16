@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_STILL_VAST_FAM_VOL_63",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OLE",
+    "OPAL"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.905,
+      "macro_movement": 0.14,
+      "macro_coupling": 0.398,
+      "macro_space": 0.958
+    },
+    "OPAL": {
+      "macro_character": 0.944,
+      "macro_movement": 0.098,
+      "macro_coupling": 0.386,
+      "macro_space": 0.913
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OPAL",
+    "target": "OLE",
+    "amount": 0.819
+  },
+  "dna": {
+    "brightness": 0.957,
+    "warmth": 0.902,
+    "movement": 0.112,
+    "density": 0.433,
+    "space": 0.943,
+    "aggression": 0.326
+  },
+  "macros": {
+    "CHARACTER": 0.924,
+    "MOVEMENT": 0.119,
+    "COUPLING": 0.392,
+    "SPACE": 0.935
+  },
+  "tags": [
+    "family",
+    "warm",
+    "still",
+    "vast",
+    "bright"
+  ]
+}

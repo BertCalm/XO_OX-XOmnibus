@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT WARM SPARSE BALANCED AET SPC 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ODDFELIX",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.907,
+      "macro_movement": 0.37,
+      "macro_coupling": 0.829,
+      "macro_space": 0.545
+    },
+    "ORIGAMI": {
+      "macro_character": 0.893,
+      "macro_movement": 0.391,
+      "macro_coupling": 0.849,
+      "macro_space": 0.52
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ODDFELIX",
+    "target": "ORIGAMI",
+    "amount": 0.64
+  },
+  "dna": {
+    "brightness": 0.925,
+    "warmth": 0.888,
+    "movement": 0.37,
+    "density": 0.077,
+    "space": 0.545,
+    "aggression": 0.944
+  },
+  "macros": {
+    "CHARACTER": 0.907,
+    "MOVEMENT": 0.37,
+    "COUPLING": 0.829,
+    "SPACE": 0.545
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "bright",
+    "warm"
+  ]
+}

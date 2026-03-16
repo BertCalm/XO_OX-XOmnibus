@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_KINETIC_VAST_FAM_VOL_136",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODDFELIX",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.489,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.649,
+      "macro_space": 0.926
+    },
+    "ORPHICA": {
+      "macro_character": 0.459,
+      "macro_movement": 0.975,
+      "macro_coupling": 0.642,
+      "macro_space": 0.932
+    }
+  },
+  "coupling": {
+    "type": "RHYTHM_LOCK",
+    "source": "ODDFELIX",
+    "target": "ORPHICA",
+    "amount": 0.745
+  },
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.877,
+    "movement": 0.989,
+    "density": 0.64,
+    "space": 0.92,
+    "aggression": 0.622
+  },
+  "macros": {
+    "CHARACTER": 0.474,
+    "MOVEMENT": 0.982,
+    "COUPLING": 0.645,
+    "SPACE": 0.929
+  },
+  "tags": [
+    "family",
+    "hot",
+    "kinetic",
+    "vast",
+    "dark"
+  ]
+}

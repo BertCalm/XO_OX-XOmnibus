@@ -1,0 +1,53 @@
+{
+  "name": "HOT KINETIC DENSE BALANCED AET SPC 3",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORIGAMI",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.789,
+      "macro_movement": 0.979,
+      "macro_coupling": 0.625,
+      "macro_space": 0.398
+    },
+    "ORBITAL": {
+      "macro_character": 0.806,
+      "macro_movement": 0.978,
+      "macro_coupling": 0.609,
+      "macro_space": 0.394
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORIGAMI",
+    "target": "ORBITAL",
+    "amount": 0.862
+  },
+  "dna": {
+    "brightness": 0.657,
+    "warmth": 0.921,
+    "movement": 0.979,
+    "density": 0.924,
+    "space": 0.398,
+    "aggression": 0.973
+  },
+  "macros": {
+    "CHARACTER": 0.789,
+    "MOVEMENT": 0.979,
+    "COUPLING": 0.625,
+    "SPACE": 0.398
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "warm",
+    "kinetic",
+    "dense"
+  ]
+}

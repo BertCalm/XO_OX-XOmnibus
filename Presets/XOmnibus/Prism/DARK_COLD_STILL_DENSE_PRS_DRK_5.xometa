@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_STILL_DENSE_PRS_DRK_5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OBLIQUE",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.1966,
+      "macro_movement": 0.1238,
+      "macro_coupling": 0.9465,
+      "macro_space": 0.6011
+    },
+    "ORPHICA": {
+      "macro_character": 0.1918,
+      "macro_movement": 0.0985,
+      "macro_coupling": 0.9106,
+      "macro_space": 0.6364
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBLIQUE",
+    "target": "ORPHICA",
+    "amount": 0.7378
+  },
+  "dna": {
+    "brightness": 0.0249,
+    "warmth": 0.0521,
+    "movement": 0.1238,
+    "density": 0.9465,
+    "space": 0.6011,
+    "aggression": 0.341
+  },
+  "macros": {
+    "CHARACTER": 0.1966,
+    "MOVEMENT": 0.1238,
+    "COUPLING": 0.9465,
+    "SPACE": 0.6011
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "cold",
+    "still",
+    "dense"
+  ]
+}

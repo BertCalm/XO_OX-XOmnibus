@@ -1,0 +1,52 @@
+{
+  "name": "DARK HOT KINETIC BALANCED AET SPC 4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORGANON",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.52,
+      "macro_movement": 0.928,
+      "macro_coupling": 0.672,
+      "macro_space": 0.579
+    },
+    "OCEANIC": {
+      "macro_character": 0.541,
+      "macro_movement": 0.923,
+      "macro_coupling": 0.661,
+      "macro_space": 0.577
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ORGANON",
+    "target": "OCEANIC",
+    "amount": 0.531
+  },
+  "dna": {
+    "brightness": 0.115,
+    "warmth": 0.924,
+    "movement": 0.928,
+    "density": 0.433,
+    "space": 0.579,
+    "aggression": 0.915
+  },
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.928,
+    "COUPLING": 0.672,
+    "SPACE": 0.579
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "warm",
+    "kinetic"
+  ]
+}

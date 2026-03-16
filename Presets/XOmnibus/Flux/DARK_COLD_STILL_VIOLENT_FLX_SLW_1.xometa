@@ -1,0 +1,51 @@
+{
+  "name": "DARK_COLD_STILL_VIOLENT_FLX_SLW_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ORIGAMI",
+    "ORGANON"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.547,
+      "macro_movement": 0.019,
+      "macro_coupling": 0.726,
+      "macro_space": 0.575
+    },
+    "ORGANON": {
+      "macro_character": 0.496,
+      "macro_movement": 0.016,
+      "macro_coupling": 0.865,
+      "macro_space": 0.582
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ORIGAMI",
+    "target": "ORGANON",
+    "amount": 0.807
+  },
+  "dna": {
+    "brightness": 0.056,
+    "warmth": 0.02,
+    "movement": 0.016,
+    "density": 0.413,
+    "space": 0.601,
+    "aggression": 0.953
+  },
+  "macros": {
+    "CHARACTER": 0.683,
+    "MOVEMENT": 0.016,
+    "COUPLING": 0.827,
+    "SPACE": 0.601
+  },
+  "tags": [
+    "flux",
+    "still",
+    "dark",
+    "cold",
+    "violent",
+    "frozen-instability"
+  ]
+}

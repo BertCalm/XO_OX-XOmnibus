@@ -1,0 +1,51 @@
+{
+  "name": "COLD_STILL_VAST_VIOLENT_FLX_SLW_2",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OCEANIC",
+    "OVERDUB"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.546,
+      "macro_movement": 0.057,
+      "macro_coupling": 0.85,
+      "macro_space": 0.822
+    },
+    "OVERDUB": {
+      "macro_character": 0.69,
+      "macro_movement": 0.058,
+      "macro_coupling": 0.833,
+      "macro_space": 0.883
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OCEANIC",
+    "target": "OVERDUB",
+    "amount": 0.651
+  },
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.055,
+    "movement": 0.059,
+    "density": 0.425,
+    "space": 0.892,
+    "aggression": 0.978
+  },
+  "macros": {
+    "CHARACTER": 0.702,
+    "MOVEMENT": 0.059,
+    "COUPLING": 0.684,
+    "SPACE": 0.892
+  },
+  "tags": [
+    "flux",
+    "still",
+    "cold",
+    "vast",
+    "violent",
+    "frozen-instability"
+  ]
+}

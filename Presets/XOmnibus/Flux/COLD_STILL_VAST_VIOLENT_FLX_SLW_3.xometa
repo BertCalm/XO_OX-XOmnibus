@@ -1,0 +1,51 @@
+{
+  "name": "COLD_STILL_VAST_VIOLENT_FLX_SLW_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OVERDUB",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.574,
+      "macro_movement": 0.019,
+      "macro_coupling": 0.724,
+      "macro_space": 1.0
+    },
+    "OPTIC": {
+      "macro_character": 0.636,
+      "macro_movement": 0.018,
+      "macro_coupling": 0.823,
+      "macro_space": 0.971
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OVERDUB",
+    "target": "OPTIC",
+    "amount": 0.682
+  },
+  "dna": {
+    "brightness": 0.495,
+    "warmth": 0.065,
+    "movement": 0.02,
+    "density": 0.398,
+    "space": 0.988,
+    "aggression": 0.899
+  },
+  "macros": {
+    "CHARACTER": 0.649,
+    "MOVEMENT": 0.02,
+    "COUPLING": 0.839,
+    "SPACE": 0.988
+  },
+  "tags": [
+    "flux",
+    "still",
+    "cold",
+    "vast",
+    "violent",
+    "frozen-instability"
+  ]
+}

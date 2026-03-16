@@ -1,0 +1,50 @@
+{
+  "name": "COLD STILL SPARSE BALANCED AET SPC 1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OBLIQUE",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.351,
+      "macro_movement": 0.119,
+      "macro_coupling": 0.682,
+      "macro_space": 0.432
+    },
+    "ORGANON": {
+      "macro_character": 0.331,
+      "macro_movement": 0.117,
+      "macro_coupling": 0.66,
+      "macro_space": 0.439
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OBLIQUE",
+    "target": "ORGANON",
+    "amount": 0.774
+  },
+  "dna": {
+    "brightness": 0.594,
+    "warmth": 0.108,
+    "movement": 0.119,
+    "density": 0.074,
+    "space": 0.432,
+    "aggression": 0.073
+  },
+  "macros": {
+    "CHARACTER": 0.351,
+    "MOVEMENT": 0.119,
+    "COUPLING": 0.682,
+    "SPACE": 0.432
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle"
+  ]
+}

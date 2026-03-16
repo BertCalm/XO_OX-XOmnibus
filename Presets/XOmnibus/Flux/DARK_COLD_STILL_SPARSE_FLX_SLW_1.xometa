@@ -1,0 +1,51 @@
+{
+  "name": "DARK_COLD_STILL_SPARSE_FLX_SLW_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBLIQUE",
+    "OUROBOROS"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.466,
+      "macro_movement": 0.091,
+      "macro_coupling": 0.691,
+      "macro_space": 0.316
+    },
+    "OUROBOROS": {
+      "macro_character": 0.528,
+      "macro_movement": 0.084,
+      "macro_coupling": 0.838,
+      "macro_space": 0.353
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OBLIQUE",
+    "target": "OUROBOROS",
+    "amount": 0.859
+  },
+  "dna": {
+    "brightness": 0.026,
+    "warmth": 0.104,
+    "movement": 0.082,
+    "density": 0.115,
+    "space": 0.337,
+    "aggression": 0.661
+  },
+  "macros": {
+    "CHARACTER": 0.388,
+    "MOVEMENT": 0.082,
+    "COUPLING": 0.679,
+    "SPACE": 0.337
+  },
+  "tags": [
+    "flux",
+    "still",
+    "dark",
+    "cold",
+    "sparse",
+    "imperceptible-morph"
+  ]
+}

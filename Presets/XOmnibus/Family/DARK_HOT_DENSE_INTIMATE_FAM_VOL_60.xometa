@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_DENSE_INTIMATE_FAM_VOL_60",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OSPREY",
+    "OBBLIGATO"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.49,
+      "macro_movement": 0.64,
+      "macro_coupling": 0.711,
+      "macro_space": 0.037
+    },
+    "OBBLIGATO": {
+      "macro_character": 0.468,
+      "macro_movement": 0.615,
+      "macro_coupling": 0.677,
+      "macro_space": 0.042
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OSPREY",
+    "target": "OBBLIGATO",
+    "amount": 0.88
+  },
+  "dna": {
+    "brightness": 0.103,
+    "warmth": 0.872,
+    "movement": 0.644,
+    "density": 0.91,
+    "space": 0.049,
+    "aggression": 0.485
+  },
+  "macros": {
+    "CHARACTER": 0.479,
+    "MOVEMENT": 0.627,
+    "COUPLING": 0.694,
+    "SPACE": 0.04
+  },
+  "tags": [
+    "family",
+    "hot",
+    "dense",
+    "intimate",
+    "dark"
+  ]
+}

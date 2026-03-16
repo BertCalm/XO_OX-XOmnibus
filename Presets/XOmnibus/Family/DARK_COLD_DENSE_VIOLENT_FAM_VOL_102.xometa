@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_DENSE_VIOLENT_FAM_VOL_102",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODYSSEY",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "ODYSSEY": {
+      "macro_character": 0.063,
+      "macro_movement": 0.529,
+      "macro_coupling": 0.938,
+      "macro_space": 0.383
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.063,
+      "macro_movement": 0.539,
+      "macro_coupling": 0.967,
+      "macro_space": 0.368
+    }
+  },
+  "coupling": {
+    "type": "RHYTHM_LOCK",
+    "source": "ODYSSEY",
+    "target": "ODDOSCAR",
+    "amount": 0.736
+  },
+  "dna": {
+    "brightness": 0.046,
+    "warmth": 0.061,
+    "movement": 0.528,
+    "density": 0.924,
+    "space": 0.389,
+    "aggression": 0.958
+  },
+  "macros": {
+    "CHARACTER": 0.063,
+    "MOVEMENT": 0.534,
+    "COUPLING": 0.952,
+    "SPACE": 0.376
+  },
+  "tags": [
+    "family",
+    "dark",
+    "cold",
+    "dense",
+    "violent"
+  ]
+}

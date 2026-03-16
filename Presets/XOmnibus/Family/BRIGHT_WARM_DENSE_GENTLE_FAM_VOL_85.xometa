@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_DENSE_GENTLE_FAM_VOL_85",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OHM",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.857,
+      "macro_movement": 0.312,
+      "macro_coupling": 0.522,
+      "macro_space": 0.647
+    },
+    "ORPHICA": {
+      "macro_character": 0.899,
+      "macro_movement": 0.32,
+      "macro_coupling": 0.526,
+      "macro_space": 0.634
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORPHICA",
+    "target": "OHM",
+    "amount": 0.657
+  },
+  "dna": {
+    "brightness": 0.887,
+    "warmth": 0.878,
+    "movement": 0.342,
+    "density": 0.973,
+    "space": 0.632,
+    "aggression": 0.088
+  },
+  "macros": {
+    "CHARACTER": 0.878,
+    "MOVEMENT": 0.316,
+    "COUPLING": 0.524,
+    "SPACE": 0.641
+  },
+  "tags": [
+    "family",
+    "warm",
+    "dense",
+    "gentle",
+    "bright"
+  ]
+}

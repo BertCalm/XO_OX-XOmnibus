@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_VAST_GENTLE_FAM_VOL_13",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OBLONG",
+    "OBBLIGATO"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.524,
+      "macro_movement": 0.68,
+      "macro_coupling": 0.312,
+      "macro_space": 0.941
+    },
+    "OBBLIGATO": {
+      "macro_character": 0.499,
+      "macro_movement": 0.649,
+      "macro_coupling": 0.294,
+      "macro_space": 0.965
+    }
+  },
+  "coupling": {
+    "type": "MODULATION_FLOW",
+    "source": "OBLONG",
+    "target": "OBBLIGATO",
+    "amount": 0.664
+  },
+  "dna": {
+    "brightness": 0.114,
+    "warmth": 0.917,
+    "movement": 0.66,
+    "density": 0.498,
+    "space": 0.939,
+    "aggression": 0.121
+  },
+  "macros": {
+    "CHARACTER": 0.512,
+    "MOVEMENT": 0.665,
+    "COUPLING": 0.303,
+    "SPACE": 0.953
+  },
+  "tags": [
+    "family",
+    "hot",
+    "vast",
+    "gentle",
+    "dark"
+  ]
+}

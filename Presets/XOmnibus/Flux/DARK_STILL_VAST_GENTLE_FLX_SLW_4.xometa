@@ -1,0 +1,51 @@
+{
+  "name": "DARK_STILL_VAST_GENTLE_FLX_SLW_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OUROBOROS",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.669,
+      "macro_movement": 0.014,
+      "macro_coupling": 0.764,
+      "macro_space": 0.88
+    },
+    "OPTIC": {
+      "macro_character": 0.316,
+      "macro_movement": 0.014,
+      "macro_coupling": 0.815,
+      "macro_space": 0.9
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OUROBOROS",
+    "target": "OPTIC",
+    "amount": 0.675
+  },
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.608,
+    "movement": 0.016,
+    "density": 0.447,
+    "space": 0.952,
+    "aggression": 0.083
+  },
+  "macros": {
+    "CHARACTER": 0.265,
+    "MOVEMENT": 0.016,
+    "COUPLING": 0.761,
+    "SPACE": 0.952
+  },
+  "tags": [
+    "flux",
+    "still",
+    "dark",
+    "vast",
+    "gentle",
+    "suspended-chaos"
+  ]
+}

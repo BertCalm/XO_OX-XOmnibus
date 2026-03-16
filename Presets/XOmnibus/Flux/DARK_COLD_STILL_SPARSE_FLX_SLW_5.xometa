@@ -1,0 +1,51 @@
+{
+  "name": "DARK_COLD_STILL_SPARSE_FLX_SLW_5",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ODYSSEY",
+    "OUROBOROS"
+  ],
+  "parameters": {
+    "ODYSSEY": {
+      "macro_character": 0.67,
+      "macro_movement": 0.055,
+      "macro_coupling": 0.875,
+      "macro_space": 0.55
+    },
+    "OUROBOROS": {
+      "macro_character": 0.386,
+      "macro_movement": 0.05,
+      "macro_coupling": 0.667,
+      "macro_space": 0.523
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ODYSSEY",
+    "target": "OUROBOROS",
+    "amount": 0.706
+  },
+  "dna": {
+    "brightness": 0.119,
+    "warmth": 0.079,
+    "movement": 0.053,
+    "density": 0.116,
+    "space": 0.529,
+    "aggression": 0.698
+  },
+  "macros": {
+    "CHARACTER": 0.407,
+    "MOVEMENT": 0.053,
+    "COUPLING": 0.752,
+    "SPACE": 0.529
+  },
+  "tags": [
+    "flux",
+    "still",
+    "dark",
+    "cold",
+    "sparse",
+    "imperceptible-morph"
+  ]
+}

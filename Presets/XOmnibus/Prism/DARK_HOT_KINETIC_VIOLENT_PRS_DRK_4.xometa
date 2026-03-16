@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_KINETIC_VIOLENT_PRS_DRK_4",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OHM",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.9631,
+      "macro_movement": 0.9612,
+      "macro_coupling": 0.3814,
+      "macro_space": 0.5197
+    },
+    "OVERWORLD": {
+      "macro_character": 0.9735,
+      "macro_movement": 0.9851,
+      "macro_coupling": 0.3982,
+      "macro_space": 0.5046
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OHM",
+    "target": "OVERWORLD",
+    "amount": 0.5615
+  },
+  "dna": {
+    "brightness": 0.0881,
+    "warmth": 0.945,
+    "movement": 0.9612,
+    "density": 0.3814,
+    "space": 0.5197,
+    "aggression": 0.9813
+  },
+  "macros": {
+    "CHARACTER": 0.9631,
+    "MOVEMENT": 0.9612,
+    "COUPLING": 0.3814,
+    "SPACE": 0.5197
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "hot",
+    "kinetic",
+    "violent"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT COLD KINETIC BALANCED AET SPC 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OMBRE",
+    "OBSCURA"
+  ],
+  "parameters": {
+    "OMBRE": {
+      "macro_character": 0.479,
+      "macro_movement": 0.955,
+      "macro_coupling": 0.666,
+      "macro_space": 0.384
+    },
+    "OBSCURA": {
+      "macro_character": 0.482,
+      "macro_movement": 0.951,
+      "macro_coupling": 0.639,
+      "macro_space": 0.376
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OMBRE",
+    "target": "OBSCURA",
+    "amount": 0.42
+  },
+  "dna": {
+    "brightness": 0.889,
+    "warmth": 0.069,
+    "movement": 0.955,
+    "density": 0.524,
+    "space": 0.384,
+    "aggression": 0.983
+  },
+  "macros": {
+    "CHARACTER": 0.479,
+    "MOVEMENT": 0.955,
+    "COUPLING": 0.666,
+    "SPACE": 0.384
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "bright",
+    "kinetic"
+  ]
+}

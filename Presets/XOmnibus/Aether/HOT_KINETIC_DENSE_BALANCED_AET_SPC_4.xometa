@@ -1,0 +1,53 @@
+{
+  "name": "HOT KINETIC DENSE BALANCED AET SPC 4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OBLIQUE",
+    "OMBRE"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.742,
+      "macro_movement": 0.91,
+      "macro_coupling": 0.529,
+      "macro_space": 0.374
+    },
+    "OMBRE": {
+      "macro_character": 0.736,
+      "macro_movement": 0.913,
+      "macro_coupling": 0.524,
+      "macro_space": 0.356
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBLIQUE",
+    "target": "OMBRE",
+    "amount": 0.789
+  },
+  "dna": {
+    "brightness": 0.585,
+    "warmth": 0.898,
+    "movement": 0.91,
+    "density": 0.977,
+    "space": 0.374,
+    "aggression": 0.888
+  },
+  "macros": {
+    "CHARACTER": 0.742,
+    "MOVEMENT": 0.91,
+    "COUPLING": 0.529,
+    "SPACE": 0.374
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "warm",
+    "kinetic",
+    "dense"
+  ]
+}

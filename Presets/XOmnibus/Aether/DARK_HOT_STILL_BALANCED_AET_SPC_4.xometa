@@ -1,0 +1,51 @@
+{
+  "name": "DARK HOT STILL BALANCED AET SPC 4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OCEANIC",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.491,
+      "macro_movement": 0.07,
+      "macro_coupling": 0.657,
+      "macro_space": 0.649
+    },
+    "ODDFELIX": {
+      "macro_character": 0.465,
+      "macro_movement": 0.055,
+      "macro_coupling": 0.644,
+      "macro_space": 0.645
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OCEANIC",
+    "target": "ODDFELIX",
+    "amount": 0.473
+  },
+  "dna": {
+    "brightness": 0.103,
+    "warmth": 0.879,
+    "movement": 0.07,
+    "density": 0.699,
+    "space": 0.649,
+    "aggression": 0.028
+  },
+  "macros": {
+    "CHARACTER": 0.491,
+    "MOVEMENT": 0.07,
+    "COUPLING": 0.657,
+    "SPACE": 0.649
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle",
+    "warm"
+  ]
+}

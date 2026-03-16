@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_STILL_DENSE_FAM_VOL_43",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OBBLIGATO",
+    "OPAL"
+  ],
+  "parameters": {
+    "OBBLIGATO": {
+      "macro_character": 0.031,
+      "macro_movement": 0.11,
+      "macro_coupling": 0.733,
+      "macro_space": 0.438
+    },
+    "OPAL": {
+      "macro_character": 0.055,
+      "macro_movement": 0.098,
+      "macro_coupling": 0.783,
+      "macro_space": 0.464
+    }
+  },
+  "coupling": {
+    "type": "PHASE_COUPLE",
+    "source": "OPAL",
+    "target": "OBBLIGATO",
+    "amount": 0.502
+  },
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.05,
+    "movement": 0.126,
+    "density": 0.937,
+    "space": 0.438,
+    "aggression": 0.586
+  },
+  "macros": {
+    "CHARACTER": 0.043,
+    "MOVEMENT": 0.104,
+    "COUPLING": 0.758,
+    "SPACE": 0.451
+  },
+  "tags": [
+    "family",
+    "dark",
+    "cold",
+    "still",
+    "dense"
+  ]
+}

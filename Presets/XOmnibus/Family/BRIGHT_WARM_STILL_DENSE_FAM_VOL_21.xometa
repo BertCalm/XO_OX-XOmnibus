@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_STILL_DENSE_FAM_VOL_21",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OVERDUB",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.89,
+      "macro_movement": 0.04,
+      "macro_coupling": 0.749,
+      "macro_space": 0.668
+    },
+    "ORIGAMI": {
+      "macro_character": 0.9,
+      "macro_movement": 0.013,
+      "macro_coupling": 0.722,
+      "macro_space": 0.677
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_WEAVE",
+    "source": "ORIGAMI",
+    "target": "OVERDUB",
+    "amount": 0.698
+  },
+  "dna": {
+    "brightness": 0.915,
+    "warmth": 0.887,
+    "movement": 0.021,
+    "density": 0.949,
+    "space": 0.659,
+    "aggression": 0.497
+  },
+  "macros": {
+    "CHARACTER": 0.895,
+    "MOVEMENT": 0.026,
+    "COUPLING": 0.736,
+    "SPACE": 0.673
+  },
+  "tags": [
+    "family",
+    "warm",
+    "still",
+    "dense",
+    "bright"
+  ]
+}

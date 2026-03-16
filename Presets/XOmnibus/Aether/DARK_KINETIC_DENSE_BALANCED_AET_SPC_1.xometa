@@ -1,0 +1,52 @@
+{
+  "name": "DARK KINETIC DENSE BALANCED AET SPC 1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ODDFELIX",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.239,
+      "macro_movement": 0.896,
+      "macro_coupling": 0.875,
+      "macro_space": 0.567
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.227,
+      "macro_movement": 0.888,
+      "macro_coupling": 0.863,
+      "macro_space": 0.579
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ODDFELIX",
+    "target": "ODDOSCAR",
+    "amount": 0.939
+  },
+  "dna": {
+    "brightness": 0.104,
+    "warmth": 0.374,
+    "movement": 0.896,
+    "density": 0.928,
+    "space": 0.567,
+    "aggression": 0.127
+  },
+  "macros": {
+    "CHARACTER": 0.239,
+    "MOVEMENT": 0.896,
+    "COUPLING": 0.875,
+    "SPACE": 0.567
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle",
+    "kinetic",
+    "dense"
+  ]
+}

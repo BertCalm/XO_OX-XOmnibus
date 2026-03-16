@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_KINETIC_VAST_FAM_VOL_139",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODDOSCAR",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.517,
+      "macro_movement": 0.915,
+      "macro_coupling": 0.486,
+      "macro_space": 0.99
+    },
+    "ODYSSEY": {
+      "macro_character": 0.514,
+      "macro_movement": 0.932,
+      "macro_coupling": 0.49,
+      "macro_space": 0.99
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_MESH",
+    "source": "ODDOSCAR",
+    "target": "ODYSSEY",
+    "amount": 0.713
+  },
+  "dna": {
+    "brightness": 0.101,
+    "warmth": 0.9,
+    "movement": 0.932,
+    "density": 0.643,
+    "space": 0.99,
+    "aggression": 0.327
+  },
+  "macros": {
+    "CHARACTER": 0.516,
+    "MOVEMENT": 0.923,
+    "COUPLING": 0.488,
+    "SPACE": 0.99
+  },
+  "tags": [
+    "family",
+    "hot",
+    "kinetic",
+    "vast",
+    "dark"
+  ]
+}

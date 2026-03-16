@@ -1,0 +1,52 @@
+{
+  "name": "DARK HOT KINETIC BALANCED AET SPC 3",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OBLIQUE",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.526,
+      "macro_movement": 0.976,
+      "macro_coupling": 0.501,
+      "macro_space": 0.433
+    },
+    "ORGANON": {
+      "macro_character": 0.54,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.506,
+      "macro_space": 0.443
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBLIQUE",
+    "target": "ORGANON",
+    "amount": 0.547
+  },
+  "dna": {
+    "brightness": 0.121,
+    "warmth": 0.931,
+    "movement": 0.976,
+    "density": 0.646,
+    "space": 0.433,
+    "aggression": 0.965
+  },
+  "macros": {
+    "CHARACTER": 0.526,
+    "MOVEMENT": 0.976,
+    "COUPLING": 0.501,
+    "SPACE": 0.433
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "warm",
+    "kinetic"
+  ]
+}

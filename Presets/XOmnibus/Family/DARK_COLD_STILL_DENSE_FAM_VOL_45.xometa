@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_STILL_DENSE_FAM_VOL_45",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OLE",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.054,
+      "macro_movement": 0.06,
+      "macro_coupling": 0.694,
+      "macro_space": 0.656
+    },
+    "ODYSSEY": {
+      "macro_character": 0.077,
+      "macro_movement": 0.05,
+      "macro_coupling": 0.707,
+      "macro_space": 0.654
+    }
+  },
+  "coupling": {
+    "type": "PHASE_COUPLE",
+    "source": "ODYSSEY",
+    "target": "OLE",
+    "amount": 0.483
+  },
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.034,
+    "movement": 0.058,
+    "density": 0.926,
+    "space": 0.642,
+    "aggression": 0.491
+  },
+  "macros": {
+    "CHARACTER": 0.066,
+    "MOVEMENT": 0.055,
+    "COUPLING": 0.7,
+    "SPACE": 0.655
+  },
+  "tags": [
+    "family",
+    "dark",
+    "cold",
+    "still",
+    "dense"
+  ]
+}

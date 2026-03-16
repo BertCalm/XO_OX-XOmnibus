@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_WARM_STILL_DENSE_FLX_SLW_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OPTIC",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.839,
+      "macro_movement": 0.081,
+      "macro_coupling": 0.798,
+      "macro_space": 0.421
+    },
+    "OVERWORLD": {
+      "macro_character": 0.939,
+      "macro_movement": 0.105,
+      "macro_coupling": 0.92,
+      "macro_space": 0.43
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OPTIC",
+    "target": "OVERWORLD",
+    "amount": 0.729
+  },
+  "dna": {
+    "brightness": 0.975,
+    "warmth": 0.958,
+    "movement": 0.096,
+    "density": 0.897,
+    "space": 0.432,
+    "aggression": 0.586
+  },
+  "macros": {
+    "CHARACTER": 0.742,
+    "MOVEMENT": 0.096,
+    "COUPLING": 0.804,
+    "SPACE": 0.432
+  },
+  "tags": [
+    "flux",
+    "still",
+    "bright",
+    "warm",
+    "dense",
+    "suspended-chaos"
+  ]
+}

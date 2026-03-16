@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_DENSE_GENTLE_PRS_DRK_5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ORPHICA",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.0617,
+      "macro_movement": 0.4265,
+      "macro_coupling": 0.9602,
+      "macro_space": 0.329
+    },
+    "ORIGAMI": {
+      "macro_character": 0.0622,
+      "macro_movement": 0.3971,
+      "macro_coupling": 0.9481,
+      "macro_space": 0.2945
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "ORPHICA",
+    "target": "ORIGAMI",
+    "amount": 0.7651
+  },
+  "dna": {
+    "brightness": 0.0805,
+    "warmth": 0.053,
+    "movement": 0.4265,
+    "density": 0.9602,
+    "space": 0.329,
+    "aggression": 0.0704
+  },
+  "macros": {
+    "CHARACTER": 0.0617,
+    "MOVEMENT": 0.4265,
+    "COUPLING": 0.9602,
+    "SPACE": 0.329
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "cold",
+    "dense",
+    "gentle"
+  ]
+}

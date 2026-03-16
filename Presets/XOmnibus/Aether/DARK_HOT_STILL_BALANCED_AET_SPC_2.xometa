@@ -1,0 +1,51 @@
+{
+  "name": "DARK HOT STILL BALANCED AET SPC 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ODDFELIX",
+    "ORACLE"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.489,
+      "macro_movement": 0.084,
+      "macro_coupling": 0.531,
+      "macro_space": 0.606
+    },
+    "ORACLE": {
+      "macro_character": 0.511,
+      "macro_movement": 0.078,
+      "macro_coupling": 0.557,
+      "macro_space": 0.61
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ODDFELIX",
+    "target": "ORACLE",
+    "amount": 0.438
+  },
+  "dna": {
+    "brightness": 0.102,
+    "warmth": 0.877,
+    "movement": 0.084,
+    "density": 0.501,
+    "space": 0.606,
+    "aggression": 0.037
+  },
+  "macros": {
+    "CHARACTER": 0.489,
+    "MOVEMENT": 0.084,
+    "COUPLING": 0.531,
+    "SPACE": 0.606
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle",
+    "warm"
+  ]
+}

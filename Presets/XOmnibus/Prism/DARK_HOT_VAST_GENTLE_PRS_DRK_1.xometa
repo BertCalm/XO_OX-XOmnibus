@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_VAST_GENTLE_PRS_DRK_1",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OLE",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.5329,
+      "macro_movement": 0.3315,
+      "macro_coupling": 0.5928,
+      "macro_space": 0.9679
+    },
+    "ORACLE": {
+      "macro_character": 0.5686,
+      "macro_movement": 0.3047,
+      "macro_coupling": 0.595,
+      "macro_space": 0.9764
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OLE",
+    "target": "ORACLE",
+    "amount": 0.8139
+  },
+  "dna": {
+    "brightness": 0.0417,
+    "warmth": 0.9381,
+    "movement": 0.3315,
+    "density": 0.5928,
+    "space": 0.9679,
+    "aggression": 0.1276
+  },
+  "macros": {
+    "CHARACTER": 0.5329,
+    "MOVEMENT": 0.3315,
+    "COUPLING": 0.5928,
+    "SPACE": 0.9679
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "hot",
+    "vast",
+    "gentle"
+  ]
+}

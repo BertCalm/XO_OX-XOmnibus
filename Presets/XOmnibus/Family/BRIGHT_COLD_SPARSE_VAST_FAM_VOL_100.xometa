@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_COLD_SPARSE_VAST_FAM_VOL_100",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OLE",
+    "OPAL"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.489,
+      "macro_movement": 0.32,
+      "macro_coupling": 0.349,
+      "macro_space": 0.959
+    },
+    "OPAL": {
+      "macro_character": 0.522,
+      "macro_movement": 0.285,
+      "macro_coupling": 0.318,
+      "macro_space": 0.99
+    }
+  },
+  "coupling": {
+    "type": "FILTER_LINK",
+    "source": "OPAL",
+    "target": "OLE",
+    "amount": 0.451
+  },
+  "dna": {
+    "brightness": 0.901,
+    "warmth": 0.1,
+    "movement": 0.305,
+    "density": 0.023,
+    "space": 0.978,
+    "aggression": 0.646
+  },
+  "macros": {
+    "CHARACTER": 0.506,
+    "MOVEMENT": 0.302,
+    "COUPLING": 0.334,
+    "SPACE": 0.974
+  },
+  "tags": [
+    "family",
+    "bright",
+    "cold",
+    "sparse",
+    "vast"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "DARK COLD DENSE BALANCED AET SPC 3",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OVERWORLD",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.065,
+      "macro_movement": 0.677,
+      "macro_coupling": 0.632,
+      "macro_space": 0.384
+    },
+    "ORBITAL": {
+      "macro_character": 0.044,
+      "macro_movement": 0.647,
+      "macro_coupling": 0.645,
+      "macro_space": 0.397
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OVERWORLD",
+    "target": "ORBITAL",
+    "amount": 0.587
+  },
+  "dna": {
+    "brightness": 0.048,
+    "warmth": 0.081,
+    "movement": 0.677,
+    "density": 0.952,
+    "space": 0.384,
+    "aggression": 0.976
+  },
+  "macros": {
+    "CHARACTER": 0.065,
+    "MOVEMENT": 0.677,
+    "COUPLING": 0.632,
+    "SPACE": 0.384
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "dense"
+  ]
+}

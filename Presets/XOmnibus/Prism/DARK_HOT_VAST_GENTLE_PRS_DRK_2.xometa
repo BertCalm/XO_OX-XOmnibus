@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_VAST_GENTLE_PRS_DRK_2",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OTTONI",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.5227,
+      "macro_movement": 0.6021,
+      "macro_coupling": 0.5759,
+      "macro_space": 0.9556
+    },
+    "OVERWORLD": {
+      "macro_character": 0.5241,
+      "macro_movement": 0.5718,
+      "macro_coupling": 0.5539,
+      "macro_space": 0.9426
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OTTONI",
+    "target": "OVERWORLD",
+    "amount": 0.7252
+  },
+  "dna": {
+    "brightness": 0.1068,
+    "warmth": 0.9815,
+    "movement": 0.6021,
+    "density": 0.5759,
+    "space": 0.9556,
+    "aggression": 0.0639
+  },
+  "macros": {
+    "CHARACTER": 0.5227,
+    "MOVEMENT": 0.6021,
+    "COUPLING": 0.5759,
+    "SPACE": 0.9556
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "hot",
+    "vast",
+    "gentle"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "name": "BRIGHT WARM KINETIC BALANCED AET SPC 1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ODDFELIX",
+    "ORACLE"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.91,
+      "macro_movement": 0.903,
+      "macro_coupling": 0.513,
+      "macro_space": 0.571
+    },
+    "ORACLE": {
+      "macro_character": 0.893,
+      "macro_movement": 0.903,
+      "macro_coupling": 0.485,
+      "macro_space": 0.553
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "ODDFELIX",
+    "target": "ORACLE",
+    "amount": 0.632
+  },
+  "dna": {
+    "brightness": 0.947,
+    "warmth": 0.873,
+    "movement": 0.903,
+    "density": 0.389,
+    "space": 0.571,
+    "aggression": 0.094
+  },
+  "macros": {
+    "CHARACTER": 0.91,
+    "MOVEMENT": 0.903,
+    "COUPLING": 0.513,
+    "SPACE": 0.571
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle",
+    "bright",
+    "warm",
+    "kinetic"
+  ]
+}

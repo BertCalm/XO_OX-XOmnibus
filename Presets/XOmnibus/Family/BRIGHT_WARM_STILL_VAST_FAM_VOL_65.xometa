@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_STILL_VAST_FAM_VOL_65",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OHM",
+    "OBLONG"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.924,
+      "macro_movement": 0.019,
+      "macro_coupling": 0.433,
+      "macro_space": 0.865
+    },
+    "OBLONG": {
+      "macro_character": 0.896,
+      "macro_movement": 0.02,
+      "macro_coupling": 0.477,
+      "macro_space": 0.87
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_MIRROR",
+    "source": "OHM",
+    "target": "OBLONG",
+    "amount": 0.653
+  },
+  "dna": {
+    "brightness": 0.919,
+    "warmth": 0.933,
+    "movement": 0.033,
+    "density": 0.497,
+    "space": 0.874,
+    "aggression": 0.398
+  },
+  "macros": {
+    "CHARACTER": 0.91,
+    "MOVEMENT": 0.019,
+    "COUPLING": 0.455,
+    "SPACE": 0.867
+  },
+  "tags": [
+    "family",
+    "warm",
+    "still",
+    "vast",
+    "bright"
+  ]
+}

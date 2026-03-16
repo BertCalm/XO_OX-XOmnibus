@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_COLD_DENSE_INTIMATE_FAM_VOL_39",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODDFELIX",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.467,
+      "macro_movement": 0.604,
+      "macro_coupling": 0.68,
+      "macro_space": 0.01
+    },
+    "ORIGAMI": {
+      "macro_character": 0.459,
+      "macro_movement": 0.6,
+      "macro_coupling": 0.675,
+      "macro_space": 0.01
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ODDFELIX",
+    "target": "ORIGAMI",
+    "amount": 0.835
+  },
+  "dna": {
+    "brightness": 0.875,
+    "warmth": 0.021,
+    "movement": 0.606,
+    "density": 0.883,
+    "space": 0.027,
+    "aggression": 0.431
+  },
+  "macros": {
+    "CHARACTER": 0.463,
+    "MOVEMENT": 0.602,
+    "COUPLING": 0.677,
+    "SPACE": 0.01
+  },
+  "tags": [
+    "family",
+    "bright",
+    "dense",
+    "intimate",
+    "cool"
+  ]
+}

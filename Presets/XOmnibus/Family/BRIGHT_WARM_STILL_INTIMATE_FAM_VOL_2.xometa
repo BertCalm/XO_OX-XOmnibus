@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_STILL_INTIMATE_FAM_VOL_2",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ORIGAMI",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.97,
+      "macro_movement": 0.087,
+      "macro_coupling": 0.492,
+      "macro_space": 0.14
+    },
+    "ODDFELIX": {
+      "macro_character": 0.977,
+      "macro_movement": 0.094,
+      "macro_coupling": 0.516,
+      "macro_space": 0.144
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ODDFELIX",
+    "target": "ORIGAMI",
+    "amount": 0.875
+  },
+  "dna": {
+    "brightness": 0.959,
+    "warmth": 0.99,
+    "movement": 0.107,
+    "density": 0.603,
+    "space": 0.129,
+    "aggression": 0.41
+  },
+  "macros": {
+    "CHARACTER": 0.974,
+    "MOVEMENT": 0.09,
+    "COUPLING": 0.504,
+    "SPACE": 0.142
+  },
+  "tags": [
+    "family",
+    "warm",
+    "intimate",
+    "bright",
+    "still"
+  ]
+}

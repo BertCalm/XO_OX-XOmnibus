@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_KINETIC_VAST_FAM_VOL_137",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODYSSEY",
+    "OPAL"
+  ],
+  "parameters": {
+    "ODYSSEY": {
+      "macro_character": 0.523,
+      "macro_movement": 0.939,
+      "macro_coupling": 0.542,
+      "macro_space": 0.929
+    },
+    "OPAL": {
+      "macro_character": 0.544,
+      "macro_movement": 0.899,
+      "macro_coupling": 0.56,
+      "macro_space": 0.913
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_MIRROR",
+    "source": "OPAL",
+    "target": "ODYSSEY",
+    "amount": 0.925
+  },
+  "dna": {
+    "brightness": 0.118,
+    "warmth": 0.936,
+    "movement": 0.92,
+    "density": 0.614,
+    "space": 0.902,
+    "aggression": 0.477
+  },
+  "macros": {
+    "CHARACTER": 0.534,
+    "MOVEMENT": 0.919,
+    "COUPLING": 0.551,
+    "SPACE": 0.921
+  },
+  "tags": [
+    "family",
+    "hot",
+    "kinetic",
+    "vast",
+    "dark"
+  ]
+}

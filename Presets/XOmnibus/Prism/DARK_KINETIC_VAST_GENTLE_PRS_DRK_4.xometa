@@ -1,0 +1,50 @@
+{
+  "name": "DARK_KINETIC_VAST_GENTLE_PRS_DRK_4",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OWLFISH",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OWLFISH": {
+      "macro_character": 0.3962,
+      "macro_movement": 0.9645,
+      "macro_coupling": 0.55,
+      "macro_space": 0.9493
+    },
+    "ORIGAMI": {
+      "macro_character": 0.3681,
+      "macro_movement": 0.9458,
+      "macro_coupling": 0.5214,
+      "macro_space": 0.9141
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OWLFISH",
+    "target": "ORIGAMI",
+    "amount": 0.6399
+  },
+  "dna": {
+    "brightness": 0.0819,
+    "warmth": 0.6696,
+    "movement": 0.9645,
+    "density": 0.55,
+    "space": 0.9493,
+    "aggression": 0.1227
+  },
+  "macros": {
+    "CHARACTER": 0.3962,
+    "MOVEMENT": 0.9645,
+    "COUPLING": 0.55,
+    "SPACE": 0.9493
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "kinetic",
+    "vast",
+    "gentle"
+  ]
+}

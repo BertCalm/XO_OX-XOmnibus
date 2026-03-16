@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_DENSE_INTIMATE_FAM_VOL_52",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OSPREY",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.916,
+      "macro_movement": 0.673,
+      "macro_coupling": 0.794,
+      "macro_space": 0.123
+    },
+    "ODDFELIX": {
+      "macro_character": 0.915,
+      "macro_movement": 0.654,
+      "macro_coupling": 0.82,
+      "macro_space": 0.125
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_BIND",
+    "source": "OSPREY",
+    "target": "ODDFELIX",
+    "amount": 0.597
+  },
+  "dna": {
+    "brightness": 0.889,
+    "warmth": 0.983,
+    "movement": 0.674,
+    "density": 0.934,
+    "space": 0.102,
+    "aggression": 0.659
+  },
+  "macros": {
+    "CHARACTER": 0.915,
+    "MOVEMENT": 0.663,
+    "COUPLING": 0.807,
+    "SPACE": 0.124
+  },
+  "tags": [
+    "family",
+    "warm",
+    "dense",
+    "intimate",
+    "bright"
+  ]
+}

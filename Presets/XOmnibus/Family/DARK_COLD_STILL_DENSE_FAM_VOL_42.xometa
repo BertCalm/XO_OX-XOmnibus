@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_STILL_DENSE_FAM_VOL_42",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODDFELIX",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.105,
+      "macro_movement": 0.055,
+      "macro_coupling": 0.644,
+      "macro_space": 0.653
+    },
+    "ORIGAMI": {
+      "macro_character": 0.062,
+      "macro_movement": 0.067,
+      "macro_coupling": 0.655,
+      "macro_space": 0.631
+    }
+  },
+  "coupling": {
+    "type": "RHYTHM_LOCK",
+    "source": "ODDFELIX",
+    "target": "ORIGAMI",
+    "amount": 0.509
+  },
+  "dna": {
+    "brightness": 0.097,
+    "warmth": 0.078,
+    "movement": 0.055,
+    "density": 0.876,
+    "space": 0.654,
+    "aggression": 0.437
+  },
+  "macros": {
+    "CHARACTER": 0.083,
+    "MOVEMENT": 0.061,
+    "COUPLING": 0.649,
+    "SPACE": 0.642
+  },
+  "tags": [
+    "family",
+    "dark",
+    "cold",
+    "still",
+    "dense"
+  ]
+}

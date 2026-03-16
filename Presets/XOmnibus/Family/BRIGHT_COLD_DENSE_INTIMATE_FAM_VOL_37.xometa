@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_COLD_DENSE_INTIMATE_FAM_VOL_37",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OSPREY",
+    "OHM"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.474,
+      "macro_movement": 0.375,
+      "macro_coupling": 0.682,
+      "macro_space": 0.066
+    },
+    "OHM": {
+      "macro_character": 0.47,
+      "macro_movement": 0.355,
+      "macro_coupling": 0.635,
+      "macro_space": 0.072
+    }
+  },
+  "coupling": {
+    "type": "FILTER_LINK",
+    "source": "OSPREY",
+    "target": "OHM",
+    "amount": 0.739
+  },
+  "dna": {
+    "brightness": 0.898,
+    "warmth": 0.04,
+    "movement": 0.358,
+    "density": 0.978,
+    "space": 0.076,
+    "aggression": 0.331
+  },
+  "macros": {
+    "CHARACTER": 0.472,
+    "MOVEMENT": 0.365,
+    "COUPLING": 0.659,
+    "SPACE": 0.069
+  },
+  "tags": [
+    "family",
+    "bright",
+    "dense",
+    "intimate",
+    "cool"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_COLD_STILL_VAST_FLX_SLW_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBLONG",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.387,
+      "macro_movement": 0.045,
+      "macro_coupling": 0.715,
+      "macro_space": 0.89
+    },
+    "ODYSSEY": {
+      "macro_character": 0.574,
+      "macro_movement": 0.053,
+      "macro_coupling": 0.662,
+      "macro_space": 0.863
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OBLONG",
+    "target": "ODYSSEY",
+    "amount": 0.83
+  },
+  "dna": {
+    "brightness": 0.966,
+    "warmth": 0.074,
+    "movement": 0.046,
+    "density": 0.484,
+    "space": 0.898,
+    "aggression": 0.567
+  },
+  "macros": {
+    "CHARACTER": 0.525,
+    "MOVEMENT": 0.046,
+    "COUPLING": 0.839,
+    "SPACE": 0.898
+  },
+  "tags": [
+    "flux",
+    "still",
+    "bright",
+    "cold",
+    "vast",
+    "imperceptible-morph"
+  ]
+}

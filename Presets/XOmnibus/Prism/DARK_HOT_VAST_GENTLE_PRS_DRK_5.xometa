@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_VAST_GENTLE_PRS_DRK_5",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OHM",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.4796,
+      "macro_movement": 0.4357,
+      "macro_coupling": 0.6447,
+      "macro_space": 0.8998
+    },
+    "ORACLE": {
+      "macro_character": 0.4766,
+      "macro_movement": 0.4657,
+      "macro_coupling": 0.6107,
+      "macro_space": 0.9244
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OHM",
+    "target": "ORACLE",
+    "amount": 0.6234
+  },
+  "dna": {
+    "brightness": 0.0289,
+    "warmth": 0.9183,
+    "movement": 0.4357,
+    "density": 0.6447,
+    "space": 0.8998,
+    "aggression": 0.0409
+  },
+  "macros": {
+    "CHARACTER": 0.4796,
+    "MOVEMENT": 0.4357,
+    "COUPLING": 0.6447,
+    "SPACE": 0.8998
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "hot",
+    "vast",
+    "gentle"
+  ]
+}

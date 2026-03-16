@@ -1,0 +1,50 @@
+{
+  "name": "COLD STILL SPARSE BALANCED AET SPC 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORIGAMI",
+    "OBSCURA"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.187,
+      "macro_movement": 0.082,
+      "macro_coupling": 0.647,
+      "macro_space": 0.543
+    },
+    "OBSCURA": {
+      "macro_character": 0.184,
+      "macro_movement": 0.072,
+      "macro_coupling": 0.67,
+      "macro_space": 0.53
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORIGAMI",
+    "target": "OBSCURA",
+    "amount": 0.543
+  },
+  "dna": {
+    "brightness": 0.311,
+    "warmth": 0.063,
+    "movement": 0.082,
+    "density": 0.023,
+    "space": 0.543,
+    "aggression": 0.035
+  },
+  "macros": {
+    "CHARACTER": 0.187,
+    "MOVEMENT": 0.082,
+    "COUPLING": 0.647,
+    "SPACE": 0.543
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle"
+  ]
+}

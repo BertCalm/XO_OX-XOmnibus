@@ -1,0 +1,51 @@
+{
+  "name": "HOT_STILL_DENSE_VIOLENT_FLX_SLW_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OVERDUB",
+    "OBLONG"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.834,
+      "macro_movement": 0.012,
+      "macro_coupling": 0.751,
+      "macro_space": 0.327
+    },
+    "OBLONG": {
+      "macro_character": 0.937,
+      "macro_movement": 0.016,
+      "macro_coupling": 0.769,
+      "macro_space": 0.354
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OVERDUB",
+    "target": "OBLONG",
+    "amount": 0.942
+  },
+  "dna": {
+    "brightness": 0.362,
+    "warmth": 0.987,
+    "movement": 0.015,
+    "density": 0.9,
+    "space": 0.331,
+    "aggression": 0.882
+  },
+  "macros": {
+    "CHARACTER": 0.891,
+    "MOVEMENT": 0.015,
+    "COUPLING": 0.861,
+    "SPACE": 0.331
+  },
+  "tags": [
+    "flux",
+    "still",
+    "warm",
+    "dense",
+    "violent",
+    "imperceptible-morph"
+  ]
+}

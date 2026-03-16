@@ -1,0 +1,53 @@
+{
+  "name": "BRIGHT WARM DENSE BALANCED AET SPC 1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OCEANIC",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.906,
+      "macro_movement": 0.52,
+      "macro_coupling": 0.821,
+      "macro_space": 0.612
+    },
+    "ODDFELIX": {
+      "macro_character": 0.9,
+      "macro_movement": 0.53,
+      "macro_coupling": 0.813,
+      "macro_space": 0.636
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OCEANIC",
+    "target": "ODDFELIX",
+    "amount": 0.779
+  },
+  "dna": {
+    "brightness": 0.885,
+    "warmth": 0.927,
+    "movement": 0.52,
+    "density": 0.902,
+    "space": 0.612,
+    "aggression": 0.067
+  },
+  "macros": {
+    "CHARACTER": 0.906,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.821,
+    "SPACE": 0.612
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle",
+    "bright",
+    "warm",
+    "dense"
+  ]
+}

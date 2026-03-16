@@ -1,0 +1,52 @@
+{
+  "name": "DARK HOT KINETIC BALANCED AET SPC 1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OPAL",
+    "OSPREY"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.464,
+      "macro_movement": 0.886,
+      "macro_coupling": 0.819,
+      "macro_space": 0.614
+    },
+    "OSPREY": {
+      "macro_character": 0.453,
+      "macro_movement": 0.857,
+      "macro_coupling": 0.813,
+      "macro_space": 0.597
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OPAL",
+    "target": "OSPREY",
+    "amount": 0.84
+  },
+  "dna": {
+    "brightness": 0.026,
+    "warmth": 0.902,
+    "movement": 0.886,
+    "density": 0.415,
+    "space": 0.614,
+    "aggression": 0.928
+  },
+  "macros": {
+    "CHARACTER": 0.464,
+    "MOVEMENT": 0.886,
+    "COUPLING": 0.819,
+    "SPACE": 0.614
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "warm",
+    "kinetic"
+  ]
+}

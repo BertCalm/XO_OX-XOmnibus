@@ -1,0 +1,50 @@
+{
+  "name": "DARK COLD SPARSE BALANCED AET SPC 4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OSPREY",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.067,
+      "macro_movement": 0.3,
+      "macro_coupling": 0.804,
+      "macro_space": 0.479
+    },
+    "ORGANON": {
+      "macro_character": 0.068,
+      "macro_movement": 0.318,
+      "macro_coupling": 0.832,
+      "macro_space": 0.493
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OSPREY",
+    "target": "ORGANON",
+    "amount": 0.643
+  },
+  "dna": {
+    "brightness": 0.053,
+    "warmth": 0.08,
+    "movement": 0.3,
+    "density": 0.052,
+    "space": 0.479,
+    "aggression": 0.084
+  },
+  "macros": {
+    "CHARACTER": 0.067,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.804,
+    "SPACE": 0.479
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle"
+  ]
+}

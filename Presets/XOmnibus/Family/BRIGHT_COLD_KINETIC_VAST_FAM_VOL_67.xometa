@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_COLD_KINETIC_VAST_FAM_VOL_67",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OBBLIGATO",
+    "OLE"
+  ],
+  "parameters": {
+    "OBBLIGATO": {
+      "macro_character": 0.537,
+      "macro_movement": 0.958,
+      "macro_coupling": 0.612,
+      "macro_space": 0.856
+    },
+    "OLE": {
+      "macro_character": 0.521,
+      "macro_movement": 0.942,
+      "macro_coupling": 0.627,
+      "macro_space": 0.854
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBBLIGATO",
+    "target": "OLE",
+    "amount": 0.888
+  },
+  "dna": {
+    "brightness": 0.952,
+    "warmth": 0.089,
+    "movement": 0.928,
+    "density": 0.574,
+    "space": 0.873,
+    "aggression": 0.641
+  },
+  "macros": {
+    "CHARACTER": 0.529,
+    "MOVEMENT": 0.95,
+    "COUPLING": 0.619,
+    "SPACE": 0.855
+  },
+  "tags": [
+    "family",
+    "bright",
+    "cold",
+    "kinetic",
+    "vast"
+  ]
+}

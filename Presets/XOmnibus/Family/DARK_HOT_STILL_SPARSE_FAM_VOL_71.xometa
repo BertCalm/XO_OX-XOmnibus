@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_STILL_SPARSE_FAM_VOL_71",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODDOSCAR",
+    "ORGANON"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.519,
+      "macro_movement": 0.124,
+      "macro_coupling": 0.279,
+      "macro_space": 0.524
+    },
+    "ORGANON": {
+      "macro_character": 0.49,
+      "macro_movement": 0.129,
+      "macro_coupling": 0.275,
+      "macro_space": 0.513
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ODDOSCAR",
+    "target": "ORGANON",
+    "amount": 0.455
+  },
+  "dna": {
+    "brightness": 0.113,
+    "warmth": 0.908,
+    "movement": 0.117,
+    "density": 0.124,
+    "space": 0.533,
+    "aggression": 0.48
+  },
+  "macros": {
+    "CHARACTER": 0.504,
+    "MOVEMENT": 0.127,
+    "COUPLING": 0.277,
+    "SPACE": 0.518
+  },
+  "tags": [
+    "family",
+    "hot",
+    "still",
+    "sparse",
+    "dark"
+  ]
+}

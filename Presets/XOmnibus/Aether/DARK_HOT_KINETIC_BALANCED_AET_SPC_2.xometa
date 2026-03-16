@@ -1,0 +1,52 @@
+{
+  "name": "DARK HOT KINETIC BALANCED AET SPC 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORBITAL",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.498,
+      "macro_movement": 0.984,
+      "macro_coupling": 0.876,
+      "macro_space": 0.396
+    },
+    "ODDFELIX": {
+      "macro_character": 0.527,
+      "macro_movement": 0.969,
+      "macro_coupling": 0.879,
+      "macro_space": 0.389
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ORBITAL",
+    "target": "ODDFELIX",
+    "amount": 0.55
+  },
+  "dna": {
+    "brightness": 0.113,
+    "warmth": 0.884,
+    "movement": 0.984,
+    "density": 0.559,
+    "space": 0.396,
+    "aggression": 0.982
+  },
+  "macros": {
+    "CHARACTER": 0.498,
+    "MOVEMENT": 0.984,
+    "COUPLING": 0.876,
+    "SPACE": 0.396
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "warm",
+    "kinetic"
+  ]
+}

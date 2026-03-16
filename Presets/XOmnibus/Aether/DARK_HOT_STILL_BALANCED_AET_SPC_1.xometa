@@ -1,0 +1,51 @@
+{
+  "name": "DARK HOT STILL BALANCED AET SPC 1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OVERWORLD",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.522,
+      "macro_movement": 0.106,
+      "macro_coupling": 0.57,
+      "macro_space": 0.559
+    },
+    "ODDFELIX": {
+      "macro_character": 0.51,
+      "macro_movement": 0.134,
+      "macro_coupling": 0.575,
+      "macro_space": 0.562
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OVERWORLD",
+    "target": "ODDFELIX",
+    "amount": 0.795
+  },
+  "dna": {
+    "brightness": 0.063,
+    "warmth": 0.981,
+    "movement": 0.106,
+    "density": 0.414,
+    "space": 0.559,
+    "aggression": 0.1
+  },
+  "macros": {
+    "CHARACTER": 0.522,
+    "MOVEMENT": 0.106,
+    "COUPLING": 0.57,
+    "SPACE": 0.559
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle",
+    "warm"
+  ]
+}

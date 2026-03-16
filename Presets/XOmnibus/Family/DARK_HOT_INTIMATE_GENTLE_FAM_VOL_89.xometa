@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_INTIMATE_GENTLE_FAM_VOL_89",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OBLONG",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.492,
+      "macro_movement": 0.383,
+      "macro_coupling": 0.279,
+      "macro_space": 0.097
+    },
+    "ORGANON": {
+      "macro_character": 0.465,
+      "macro_movement": 0.401,
+      "macro_coupling": 0.281,
+      "macro_space": 0.073
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_BIND",
+    "source": "OBLONG",
+    "target": "ORGANON",
+    "amount": 0.74
+  },
+  "dna": {
+    "brightness": 0.056,
+    "warmth": 0.911,
+    "movement": 0.391,
+    "density": 0.479,
+    "space": 0.094,
+    "aggression": 0.072
+  },
+  "macros": {
+    "CHARACTER": 0.479,
+    "MOVEMENT": 0.392,
+    "COUPLING": 0.28,
+    "SPACE": 0.085
+  },
+  "tags": [
+    "family",
+    "hot",
+    "intimate",
+    "gentle",
+    "dark"
+  ]
+}

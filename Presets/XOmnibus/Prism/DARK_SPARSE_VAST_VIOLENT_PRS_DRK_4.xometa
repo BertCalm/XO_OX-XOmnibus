@@ -1,0 +1,50 @@
+{
+  "name": "DARK_SPARSE_VAST_VIOLENT_PRS_DRK_4",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OTTONI",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.8044,
+      "macro_movement": 0.6923,
+      "macro_coupling": 0.0788,
+      "macro_space": 0.9788
+    },
+    "OBLIQUE": {
+      "macro_character": 0.7753,
+      "macro_movement": 0.6892,
+      "macro_coupling": 0.0428,
+      "macro_space": 0.9691
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OTTONI",
+    "target": "OBLIQUE",
+    "amount": 0.8071
+  },
+  "dna": {
+    "brightness": 0.0956,
+    "warmth": 0.6678,
+    "movement": 0.6923,
+    "density": 0.0788,
+    "space": 0.9788,
+    "aggression": 0.941
+  },
+  "macros": {
+    "CHARACTER": 0.8044,
+    "MOVEMENT": 0.6923,
+    "COUPLING": 0.0788,
+    "SPACE": 0.9788
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "sparse",
+    "vast",
+    "violent"
+  ]
+}

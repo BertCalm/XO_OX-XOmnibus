@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT COLD DENSE BALANCED AET SPC 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORBITAL",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.545,
+      "macro_movement": 0.476,
+      "macro_coupling": 0.536,
+      "macro_space": 0.441
+    },
+    "ODDFELIX": {
+      "macro_character": 0.517,
+      "macro_movement": 0.472,
+      "macro_coupling": 0.525,
+      "macro_space": 0.426
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ORBITAL",
+    "target": "ODDFELIX",
+    "amount": 0.672
+  },
+  "dna": {
+    "brightness": 0.969,
+    "warmth": 0.121,
+    "movement": 0.476,
+    "density": 0.926,
+    "space": 0.441,
+    "aggression": 0.064
+  },
+  "macros": {
+    "CHARACTER": 0.545,
+    "MOVEMENT": 0.476,
+    "COUPLING": 0.536,
+    "SPACE": 0.441
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle",
+    "bright",
+    "dense"
+  ]
+}

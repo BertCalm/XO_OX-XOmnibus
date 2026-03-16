@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_WARM_STILL_VAST_FLX_SLW_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ODYSSEY",
+    "OBLONG"
+  ],
+  "parameters": {
+    "ODYSSEY": {
+      "macro_character": 0.521,
+      "macro_movement": 0.072,
+      "macro_coupling": 0.794,
+      "macro_space": 1.0
+    },
+    "OBLONG": {
+      "macro_character": 0.581,
+      "macro_movement": 0.075,
+      "macro_coupling": 0.855,
+      "macro_space": 0.889
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ODYSSEY",
+    "target": "OBLONG",
+    "amount": 0.767
+  },
+  "dna": {
+    "brightness": 0.978,
+    "warmth": 0.904,
+    "movement": 0.074,
+    "density": 0.459,
+    "space": 0.978,
+    "aggression": 0.697
+  },
+  "macros": {
+    "CHARACTER": 0.578,
+    "MOVEMENT": 0.074,
+    "COUPLING": 0.677,
+    "SPACE": 0.978
+  },
+  "tags": [
+    "flux",
+    "still",
+    "bright",
+    "warm",
+    "vast",
+    "suspended-chaos"
+  ]
+}

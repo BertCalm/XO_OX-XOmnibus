@@ -1,0 +1,51 @@
+{
+  "name": "HOT_STILL_VAST_GENTLE_FLX_SLW_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OUROBOROS",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.531,
+      "macro_movement": 0.041,
+      "macro_coupling": 0.777,
+      "macro_space": 0.813
+    },
+    "ORACLE": {
+      "macro_character": 0.344,
+      "macro_movement": 0.044,
+      "macro_coupling": 0.747,
+      "macro_space": 0.971
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OUROBOROS",
+    "target": "ORACLE",
+    "amount": 0.678
+  },
+  "dna": {
+    "brightness": 0.456,
+    "warmth": 0.906,
+    "movement": 0.044,
+    "density": 0.395,
+    "space": 0.883,
+    "aggression": 0.063
+  },
+  "macros": {
+    "CHARACTER": 0.229,
+    "MOVEMENT": 0.044,
+    "COUPLING": 0.778,
+    "SPACE": 0.883
+  },
+  "tags": [
+    "flux",
+    "still",
+    "warm",
+    "vast",
+    "gentle",
+    "suspended-chaos"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_STILL_INTIMATE_PRS_DRK_4",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OVERWORLD",
+    "OTTONI"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.725,
+      "macro_movement": 0.068,
+      "macro_coupling": 0.508,
+      "macro_space": 0.1087
+    },
+    "OTTONI": {
+      "macro_character": 0.6906,
+      "macro_movement": 0.0811,
+      "macro_coupling": 0.4944,
+      "macro_space": 0.0938
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OVERWORLD",
+    "target": "OTTONI",
+    "amount": 0.6957
+  },
+  "dna": {
+    "brightness": 0.0371,
+    "warmth": 0.8753,
+    "movement": 0.068,
+    "density": 0.508,
+    "space": 0.1087,
+    "aggression": 0.5747
+  },
+  "macros": {
+    "CHARACTER": 0.725,
+    "MOVEMENT": 0.068,
+    "COUPLING": 0.508,
+    "SPACE": 0.1087
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "hot",
+    "still",
+    "intimate"
+  ]
+}

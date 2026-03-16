@@ -1,0 +1,51 @@
+{
+  "name": "DARK HOT STILL BALANCED AET SPC 3",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORBITAL",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.479,
+      "macro_movement": 0.029,
+      "macro_coupling": 0.607,
+      "macro_space": 0.52
+    },
+    "OCEANIC": {
+      "macro_character": 0.473,
+      "macro_movement": 0.039,
+      "macro_coupling": 0.595,
+      "macro_space": 0.509
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORBITAL",
+    "target": "OCEANIC",
+    "amount": 0.794
+  },
+  "dna": {
+    "brightness": 0.084,
+    "warmth": 0.875,
+    "movement": 0.029,
+    "density": 0.563,
+    "space": 0.52,
+    "aggression": 0.055
+  },
+  "macros": {
+    "CHARACTER": 0.479,
+    "MOVEMENT": 0.029,
+    "COUPLING": 0.607,
+    "SPACE": 0.52
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle",
+    "warm"
+  ]
+}

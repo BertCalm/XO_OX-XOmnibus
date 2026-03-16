@@ -1,0 +1,51 @@
+{
+  "name": "DARK_HOT_STILL_DENSE_FLX_SLW_3",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OPAL",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.822,
+      "macro_movement": 0.036,
+      "macro_coupling": 0.848,
+      "macro_space": 0.707
+    },
+    "ODYSSEY": {
+      "macro_character": 0.927,
+      "macro_movement": 0.036,
+      "macro_coupling": 0.746,
+      "macro_space": 0.742
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OPAL",
+    "target": "ODYSSEY",
+    "amount": 0.775
+  },
+  "dna": {
+    "brightness": 0.058,
+    "warmth": 0.964,
+    "movement": 0.032,
+    "density": 0.978,
+    "space": 0.696,
+    "aggression": 0.593
+  },
+  "macros": {
+    "CHARACTER": 0.785,
+    "MOVEMENT": 0.032,
+    "COUPLING": 0.889,
+    "SPACE": 0.696
+  },
+  "tags": [
+    "flux",
+    "still",
+    "dark",
+    "warm",
+    "dense",
+    "suspended-chaos"
+  ]
+}

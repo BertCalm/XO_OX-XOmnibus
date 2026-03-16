@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_KINETIC_GENTLE_FAM_VOL_27",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODYSSEY",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "ODYSSEY": {
+      "macro_character": 0.471,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.293,
+      "macro_space": 0.707
+    },
+    "ODDFELIX": {
+      "macro_character": 0.522,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.315,
+      "macro_space": 0.715
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ODDFELIX",
+    "target": "ODYSSEY",
+    "amount": 0.871
+  },
+  "dna": {
+    "brightness": 0.104,
+    "warmth": 0.892,
+    "movement": 0.983,
+    "density": 0.603,
+    "space": 0.693,
+    "aggression": 0.037
+  },
+  "macros": {
+    "CHARACTER": 0.496,
+    "MOVEMENT": 0.99,
+    "COUPLING": 0.304,
+    "SPACE": 0.711
+  },
+  "tags": [
+    "family",
+    "hot",
+    "kinetic",
+    "gentle",
+    "dark"
+  ]
+}

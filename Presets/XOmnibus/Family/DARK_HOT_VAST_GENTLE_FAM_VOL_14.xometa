@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_VAST_GENTLE_FAM_VOL_14",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODDFELIX",
+    "OVERDUB"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.521,
+      "macro_movement": 0.603,
+      "macro_coupling": 0.282,
+      "macro_space": 0.881
+    },
+    "OVERDUB": {
+      "macro_character": 0.522,
+      "macro_movement": 0.597,
+      "macro_coupling": 0.281,
+      "macro_space": 0.903
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OVERDUB",
+    "target": "ODDFELIX",
+    "amount": 0.618
+  },
+  "dna": {
+    "brightness": 0.097,
+    "warmth": 0.909,
+    "movement": 0.619,
+    "density": 0.393,
+    "space": 0.905,
+    "aggression": 0.12
+  },
+  "macros": {
+    "CHARACTER": 0.522,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.281,
+    "SPACE": 0.892
+  },
+  "tags": [
+    "family",
+    "hot",
+    "vast",
+    "gentle",
+    "dark"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "DARK_COLD_STILL_SPARSE_FLX_SLW_4",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OVERDUB",
+    "OUROBOROS"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.49,
+      "macro_movement": 0.053,
+      "macro_coupling": 0.756,
+      "macro_space": 0.505
+    },
+    "OUROBOROS": {
+      "macro_character": 0.432,
+      "macro_movement": 0.041,
+      "macro_coupling": 0.733,
+      "macro_space": 0.515
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OVERDUB",
+    "target": "OUROBOROS",
+    "amount": 0.862
+  },
+  "dna": {
+    "brightness": 0.127,
+    "warmth": 0.087,
+    "movement": 0.048,
+    "density": 0.096,
+    "space": 0.504,
+    "aggression": 0.375
+  },
+  "macros": {
+    "CHARACTER": 0.235,
+    "MOVEMENT": 0.048,
+    "COUPLING": 0.688,
+    "SPACE": 0.504
+  },
+  "tags": [
+    "flux",
+    "still",
+    "dark",
+    "cold",
+    "sparse",
+    "imperceptible-morph"
+  ]
+}

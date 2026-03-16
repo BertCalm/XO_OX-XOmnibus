@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_STILL_DENSE_FAM_VOL_25",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OBBLIGATO",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OBBLIGATO": {
+      "macro_character": 0.913,
+      "macro_movement": 0.088,
+      "macro_coupling": 0.817,
+      "macro_space": 0.462
+    },
+    "ODDFELIX": {
+      "macro_character": 0.921,
+      "macro_movement": 0.102,
+      "macro_coupling": 0.804,
+      "macro_space": 0.423
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ODDFELIX",
+    "target": "OBBLIGATO",
+    "amount": 0.423
+  },
+  "dna": {
+    "brightness": 0.903,
+    "warmth": 0.945,
+    "movement": 0.076,
+    "density": 0.96,
+    "space": 0.45,
+    "aggression": 0.665
+  },
+  "macros": {
+    "CHARACTER": 0.917,
+    "MOVEMENT": 0.095,
+    "COUPLING": 0.81,
+    "SPACE": 0.443
+  },
+  "tags": [
+    "family",
+    "warm",
+    "still",
+    "dense",
+    "bright"
+  ]
+}

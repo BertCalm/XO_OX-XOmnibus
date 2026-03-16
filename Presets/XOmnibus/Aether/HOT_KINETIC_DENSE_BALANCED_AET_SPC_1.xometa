@@ -1,0 +1,53 @@
+{
+  "name": "HOT KINETIC DENSE BALANCED AET SPC 1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OCEANIC",
+    "OBSCURA"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.625,
+      "macro_movement": 0.946,
+      "macro_coupling": 0.902,
+      "macro_space": 0.559
+    },
+    "OBSCURA": {
+      "macro_character": 0.647,
+      "macro_movement": 0.969,
+      "macro_coupling": 0.919,
+      "macro_space": 0.542
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OCEANIC",
+    "target": "OBSCURA",
+    "amount": 0.778
+  },
+  "dna": {
+    "brightness": 0.329,
+    "warmth": 0.92,
+    "movement": 0.946,
+    "density": 0.893,
+    "space": 0.559,
+    "aggression": 0.929
+  },
+  "macros": {
+    "CHARACTER": 0.625,
+    "MOVEMENT": 0.946,
+    "COUPLING": 0.902,
+    "SPACE": 0.559
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "warm",
+    "kinetic",
+    "dense"
+  ]
+}

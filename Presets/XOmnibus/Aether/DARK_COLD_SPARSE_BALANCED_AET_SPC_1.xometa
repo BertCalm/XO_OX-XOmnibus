@@ -1,0 +1,50 @@
+{
+  "name": "DARK COLD SPARSE BALANCED AET SPC 1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORBITAL",
+    "OPAL"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.085,
+      "macro_movement": 0.311,
+      "macro_coupling": 0.656,
+      "macro_space": 0.428
+    },
+    "OPAL": {
+      "macro_character": 0.102,
+      "macro_movement": 0.307,
+      "macro_coupling": 0.685,
+      "macro_space": 0.405
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "ORBITAL",
+    "target": "OPAL",
+    "amount": 0.728
+  },
+  "dna": {
+    "brightness": 0.113,
+    "warmth": 0.056,
+    "movement": 0.311,
+    "density": 0.116,
+    "space": 0.428,
+    "aggression": 0.084
+  },
+  "macros": {
+    "CHARACTER": 0.085,
+    "MOVEMENT": 0.311,
+    "COUPLING": 0.656,
+    "SPACE": 0.428
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle"
+  ]
+}

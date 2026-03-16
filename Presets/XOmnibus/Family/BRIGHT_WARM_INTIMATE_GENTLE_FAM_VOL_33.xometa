@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_INTIMATE_GENTLE_FAM_VOL_33",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ORIGAMI",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.862,
+      "macro_movement": 0.608,
+      "macro_coupling": 0.322,
+      "macro_space": 0.014
+    },
+    "OSTERIA": {
+      "macro_character": 0.877,
+      "macro_movement": 0.581,
+      "macro_coupling": 0.345,
+      "macro_space": 0.038
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_MESH",
+    "source": "OSTERIA",
+    "target": "ORIGAMI",
+    "amount": 0.64
+  },
+  "dna": {
+    "brightness": 0.876,
+    "warmth": 0.897,
+    "movement": 0.583,
+    "density": 0.54,
+    "space": 0.034,
+    "aggression": 0.126
+  },
+  "macros": {
+    "CHARACTER": 0.869,
+    "MOVEMENT": 0.595,
+    "COUPLING": 0.334,
+    "SPACE": 0.026
+  },
+  "tags": [
+    "family",
+    "warm",
+    "intimate",
+    "gentle",
+    "bright"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_DENSE_GENTLE_PRS_DRK_2",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OLE",
+    "OTTONI"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.0872,
+      "macro_movement": 0.6136,
+      "macro_coupling": 0.9246,
+      "macro_space": 0.4692
+    },
+    "OTTONI": {
+      "macro_character": 0.0624,
+      "macro_movement": 0.591,
+      "macro_coupling": 0.8893,
+      "macro_space": 0.4881
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OLE",
+    "target": "OTTONI",
+    "amount": 0.7447
+  },
+  "dna": {
+    "brightness": 0.1087,
+    "warmth": 0.0492,
+    "movement": 0.6136,
+    "density": 0.9246,
+    "space": 0.4692,
+    "aggression": 0.1253
+  },
+  "macros": {
+    "CHARACTER": 0.0872,
+    "MOVEMENT": 0.6136,
+    "COUPLING": 0.9246,
+    "SPACE": 0.4692
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "cold",
+    "dense",
+    "gentle"
+  ]
+}

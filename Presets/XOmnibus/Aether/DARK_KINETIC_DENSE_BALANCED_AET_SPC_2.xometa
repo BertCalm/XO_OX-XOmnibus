@@ -1,0 +1,52 @@
+{
+  "name": "DARK KINETIC DENSE BALANCED AET SPC 2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OVERWORLD",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.176,
+      "macro_movement": 0.877,
+      "macro_coupling": 0.758,
+      "macro_space": 0.633
+    },
+    "ORIGAMI": {
+      "macro_character": 0.174,
+      "macro_movement": 0.873,
+      "macro_coupling": 0.739,
+      "macro_space": 0.606
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OVERWORLD",
+    "target": "ORIGAMI",
+    "amount": 0.88
+  },
+  "dna": {
+    "brightness": 0.034,
+    "warmth": 0.318,
+    "movement": 0.877,
+    "density": 0.905,
+    "space": 0.633,
+    "aggression": 0.09
+  },
+  "macros": {
+    "CHARACTER": 0.176,
+    "MOVEMENT": 0.877,
+    "COUPLING": 0.758,
+    "SPACE": 0.633
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "gentle",
+    "kinetic",
+    "dense"
+  ]
+}

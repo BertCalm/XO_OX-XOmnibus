@@ -1,0 +1,52 @@
+{
+  "name": "BRIGHT WARM SPARSE BALANCED AET SPC 4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OMBRE",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OMBRE": {
+      "macro_character": 0.927,
+      "macro_movement": 0.334,
+      "macro_coupling": 0.702,
+      "macro_space": 0.497
+    },
+    "ORIGAMI": {
+      "macro_character": 0.898,
+      "macro_movement": 0.322,
+      "macro_coupling": 0.696,
+      "macro_space": 0.482
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OMBRE",
+    "target": "ORIGAMI",
+    "amount": 0.792
+  },
+  "dna": {
+    "brightness": 0.871,
+    "warmth": 0.984,
+    "movement": 0.334,
+    "density": 0.099,
+    "space": 0.497,
+    "aggression": 0.961
+  },
+  "macros": {
+    "CHARACTER": 0.927,
+    "MOVEMENT": 0.334,
+    "COUPLING": 0.702,
+    "SPACE": 0.497
+  },
+  "tags": [
+    "aether",
+    "balanced",
+    "room",
+    "space-mid",
+    "aggressive",
+    "bright",
+    "warm"
+  ]
+}

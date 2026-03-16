@@ -1,0 +1,50 @@
+{
+  "name": "DARK_KINETIC_VAST_GENTLE_PRS_DRK_1",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ORACLE",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.3274,
+      "macro_movement": 0.9181,
+      "macro_coupling": 0.3296,
+      "macro_space": 0.9455
+    },
+    "ORPHICA": {
+      "macro_character": 0.3073,
+      "macro_movement": 0.9227,
+      "macro_coupling": 0.3229,
+      "macro_space": 0.9532
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ORACLE",
+    "target": "ORPHICA",
+    "amount": 0.5841
+  },
+  "dna": {
+    "brightness": 0.063,
+    "warmth": 0.6288,
+    "movement": 0.9181,
+    "density": 0.3296,
+    "space": 0.9455,
+    "aggression": 0.0259
+  },
+  "macros": {
+    "CHARACTER": 0.3274,
+    "MOVEMENT": 0.9181,
+    "COUPLING": 0.3296,
+    "SPACE": 0.9455
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "kinetic",
+    "vast",
+    "gentle"
+  ]
+}

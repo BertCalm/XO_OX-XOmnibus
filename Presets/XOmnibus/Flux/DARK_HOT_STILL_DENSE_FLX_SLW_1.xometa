@@ -1,0 +1,51 @@
+{
+  "name": "DARK_HOT_STILL_DENSE_FLX_SLW_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OVERWORLD",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.971,
+      "macro_movement": 0.052,
+      "macro_coupling": 0.763,
+      "macro_space": 0.599
+    },
+    "ODYSSEY": {
+      "macro_character": 0.901,
+      "macro_movement": 0.058,
+      "macro_coupling": 0.693,
+      "macro_space": 0.649
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OVERWORLD",
+    "target": "ODYSSEY",
+    "amount": 0.736
+  },
+  "dna": {
+    "brightness": 0.067,
+    "warmth": 0.969,
+    "movement": 0.055,
+    "density": 0.965,
+    "space": 0.618,
+    "aggression": 0.457
+  },
+  "macros": {
+    "CHARACTER": 0.711,
+    "MOVEMENT": 0.055,
+    "COUPLING": 0.684,
+    "SPACE": 0.618
+  },
+  "tags": [
+    "flux",
+    "still",
+    "dark",
+    "warm",
+    "dense",
+    "suspended-chaos"
+  ]
+}

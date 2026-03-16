@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_STILL_INTIMATE_VIOLENT_FLX_SLW_1",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OVERWORLD",
+    "OPAL"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.624,
+      "macro_movement": 0.039,
+      "macro_coupling": 0.882,
+      "macro_space": 0.116
+    },
+    "OPAL": {
+      "macro_character": 0.513,
+      "macro_movement": 0.036,
+      "macro_coupling": 0.948,
+      "macro_space": 0.122
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OVERWORLD",
+    "target": "OPAL",
+    "amount": 0.931
+  },
+  "dna": {
+    "brightness": 0.99,
+    "warmth": 0.445,
+    "movement": 0.042,
+    "density": 0.37,
+    "space": 0.125,
+    "aggression": 0.946
+  },
+  "macros": {
+    "CHARACTER": 0.658,
+    "MOVEMENT": 0.042,
+    "COUPLING": 0.724,
+    "SPACE": 0.125
+  },
+  "tags": [
+    "flux",
+    "still",
+    "bright",
+    "intimate",
+    "violent",
+    "frozen-instability"
+  ]
+}

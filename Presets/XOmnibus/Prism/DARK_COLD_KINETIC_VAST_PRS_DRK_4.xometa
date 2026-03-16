@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_KINETIC_VAST_PRS_DRK_4",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ORIGAMI",
+    "OHM"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.2836,
+      "macro_movement": 0.9665,
+      "macro_coupling": 0.5784,
+      "macro_space": 0.9257
+    },
+    "OHM": {
+      "macro_character": 0.297,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.586,
+      "macro_space": 0.9617
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ORIGAMI",
+    "target": "OHM",
+    "amount": 0.8706
+  },
+  "dna": {
+    "brightness": 0.0901,
+    "warmth": 0.0441,
+    "movement": 0.9665,
+    "density": 0.5784,
+    "space": 0.9257,
+    "aggression": 0.523
+  },
+  "macros": {
+    "CHARACTER": 0.2836,
+    "MOVEMENT": 0.9665,
+    "COUPLING": 0.5784,
+    "SPACE": 0.9257
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "cold",
+    "kinetic",
+    "vast"
+  ]
+}

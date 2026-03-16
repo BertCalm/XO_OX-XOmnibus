@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_COLD_SPARSE_VAST_FAM_VOL_98",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OTTONI",
+    "OBBLIGATO"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.498,
+      "macro_movement": 0.338,
+      "macro_coupling": 0.263,
+      "macro_space": 0.911
+    },
+    "OBBLIGATO": {
+      "macro_character": 0.535,
+      "macro_movement": 0.368,
+      "macro_coupling": 0.297,
+      "macro_space": 0.926
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBBLIGATO",
+    "target": "OTTONI",
+    "amount": 0.493
+  },
+  "dna": {
+    "brightness": 0.952,
+    "warmth": 0.063,
+    "movement": 0.36,
+    "density": 0.061,
+    "space": 0.928,
+    "aggression": 0.496
+  },
+  "macros": {
+    "CHARACTER": 0.516,
+    "MOVEMENT": 0.353,
+    "COUPLING": 0.28,
+    "SPACE": 0.919
+  },
+  "tags": [
+    "family",
+    "bright",
+    "cold",
+    "sparse",
+    "vast"
+  ]
+}

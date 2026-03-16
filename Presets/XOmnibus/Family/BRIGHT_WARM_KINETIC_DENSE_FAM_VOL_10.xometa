@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_WARM_KINETIC_DENSE_FAM_VOL_10",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OTTONI",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.911,
+      "macro_movement": 0.954,
+      "macro_coupling": 0.788,
+      "macro_space": 0.517
+    },
+    "ODDFELIX": {
+      "macro_character": 0.894,
+      "macro_movement": 0.908,
+      "macro_coupling": 0.759,
+      "macro_space": 0.521
+    }
+  },
+  "coupling": {
+    "type": "RHYTHM_LOCK",
+    "source": "OTTONI",
+    "target": "ODDFELIX",
+    "amount": 0.781
+  },
+  "dna": {
+    "brightness": 0.905,
+    "warmth": 0.877,
+    "movement": 0.928,
+    "density": 0.934,
+    "space": 0.492,
+    "aggression": 0.625
+  },
+  "macros": {
+    "CHARACTER": 0.903,
+    "MOVEMENT": 0.931,
+    "COUPLING": 0.774,
+    "SPACE": 0.519
+  },
+  "tags": [
+    "family",
+    "warm",
+    "kinetic",
+    "dense",
+    "bright"
+  ]
+}
