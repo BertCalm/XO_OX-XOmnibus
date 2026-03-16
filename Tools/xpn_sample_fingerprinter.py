@@ -1,362 +1,477 @@
+#!/usr/bin/env python3
 """
-xpn_sample_fingerprinter.py — Perceptual near-duplicate detector for .xpn sample packs.
+xpn_sample_fingerprinter.py — WAV sample deduplication and provenance tracking
+XO_OX XOmnibus Tools Suite
 
-SHA-256 only catches exact duplicates. This tool catches perceptual near-duplicates:
-the same sample slightly processed, resampled, normalized, or pitch-shifted.
-
-Algorithm:
-  1. Read first 4096 PCM frames from each WAV (mono mix if stereo)
-  2. Compute real DFT over those frames
-  3. Divide frequency bins into 8 logarithmically-spaced bands
-  4. Compute normalized RMS energy per band (0.0–1.0)
-  5. Quantize each band to 4 bits (0–15) → pack into 32-bit integer fingerprint
-  6. Compare all pairs via Hamming distance (bit difference count)
-  7. Pairs with distance ≤ threshold are flagged as near-duplicates
+Generates multi-tier fingerprints for WAV files:
+  Tier 1: Exact hash (MD5 of raw audio data bytes)
+  Tier 2: Format fingerprint (sample_rate, bit_depth, channels, duration_ms)
+  Tier 3: Content fingerprint (RMS over 8 equal time segments)
 
 Usage:
-  python xpn_sample_fingerprinter.py --xpn pack.xpn [--threshold 4] [--format text|json] [--show-all]
-
-  --xpn        Path to .xpn file (ZIP-based pack)
-  --threshold  Hamming distance cutoff (default: 4 bits out of 32)
-  --format     Output format: text (default) or json
-  --show-all   Print full fingerprint table for all samples, not just duplicate pairs
+  python xpn_sample_fingerprinter.py <dir> [--compare <dir2>] [--rebuild] [--output report.txt]
 """
 
 import argparse
+import hashlib
 import json
 import math
 import struct
-import sys
-import tempfile
-import wave
-import zipfile
 from pathlib import Path
 
-# ---------------------------------------------------------------------------
-# Constants
-# ---------------------------------------------------------------------------
 
-FRAME_COUNT = 4096          # PCM frames to fingerprint
-NUM_BANDS = 8               # Spectral bands
-BITS_PER_BAND = 4           # Quantization depth per band (0–15)
-FINGERPRINT_BITS = NUM_BANDS * BITS_PER_BAND   # 32 bits total
+DB_FILENAME = "sample_fingerprints.json"
+CONTENT_SEGMENTS = 8
+NEAR_DUPLICATE_THRESHOLD = 0.08   # max mean RMS delta for near-duplicate
+SUSPICIOUS_THRESHOLD = 0.05       # tighter threshold for cross-format suspicious matches
 
 
 # ---------------------------------------------------------------------------
-# PCM extraction
+# WAV parsing (stdlib only — struct-parsed RIFF, no wave module)
 # ---------------------------------------------------------------------------
 
-def read_pcm_frames(wav_path: str, max_frames: int = FRAME_COUNT) -> list[float]:
-    """Return up to max_frames mono-mixed, normalized float samples from a WAV file."""
-    with wave.open(wav_path, "rb") as wf:
-        n_channels = wf.getnchannels()
-        sampwidth = wf.getsampwidth()
-        n_frames = wf.getnframes()
-        frames_to_read = min(n_frames, max_frames)
-        raw = wf.readframes(frames_to_read)
+def _read_riff_chunks(data: bytes) -> dict:
+    """Parse RIFF/WAVE file, return dict mapping chunk_id (bytes) -> chunk_data (bytes)."""
+    if len(data) < 12:
+        raise ValueError("File too small to be a valid WAV")
+    riff_id = data[0:4]
+    if riff_id not in (b"RIFF", b"RF64"):
+        raise ValueError(f"Not a RIFF file (got {riff_id!r})")
+    wave_id = data[8:12]
+    if wave_id != b"WAVE":
+        raise ValueError(f"Not a WAVE file (got {wave_id!r})")
 
-    # Parse raw bytes into integers
-    if sampwidth == 1:
-        # 8-bit WAV is unsigned (0–255), center at 128
-        fmt = f"{len(raw)}B"
-        samples_raw = list(struct.unpack(fmt, raw))
-        samples_int = [(s - 128) for s in samples_raw]
-        max_val = 128.0
-    elif sampwidth == 2:
-        n_samples = len(raw) // 2
-        fmt = f"<{n_samples}h"
-        samples_int = list(struct.unpack(fmt, raw))
-        max_val = 32768.0
-    elif sampwidth == 3:
-        # 24-bit: unpack manually
-        samples_int = []
-        for i in range(0, len(raw) - 2, 3):
-            b0, b1, b2 = raw[i], raw[i + 1], raw[i + 2]
-            val = b0 | (b1 << 8) | (b2 << 16)
-            if val >= 0x800000:
-                val -= 0x1000000
-            samples_int.append(val)
-        max_val = 8388608.0
-    elif sampwidth == 4:
-        n_samples = len(raw) // 4
-        fmt = f"<{n_samples}i"
-        samples_int = list(struct.unpack(fmt, raw))
-        max_val = 2147483648.0
-    else:
-        raise ValueError(f"Unsupported sample width: {sampwidth} bytes")
-
-    # Normalize to [-1.0, 1.0]
-    normalized = [s / max_val for s in samples_int]
-
-    # Mono mix: average channels
-    if n_channels > 1:
-        mono = []
-        for i in range(0, len(normalized) - (n_channels - 1), n_channels):
-            frame = normalized[i:i + n_channels]
-            mono.append(sum(frame) / n_channels)
-        normalized = mono
-
-    return normalized[:max_frames]
+    chunks: dict = {}
+    pos = 12
+    while pos + 8 <= len(data):
+        chunk_id = data[pos:pos + 4]
+        chunk_size = struct.unpack_from("<I", data, pos + 4)[0]
+        chunk_data = data[pos + 8: pos + 8 + chunk_size]
+        # First occurrence wins (handles duplicate data chunks gracefully)
+        if chunk_id not in chunks:
+            chunks[chunk_id] = chunk_data
+        pos += 8 + chunk_size + (chunk_size & 1)  # word-align
+    return chunks
 
 
-# ---------------------------------------------------------------------------
-# Spectral analysis
-# ---------------------------------------------------------------------------
-
-def real_dft_magnitudes(samples: list[float]) -> list[float]:
-    """
-    Compute magnitude spectrum via real DFT (no FFT library needed).
-    Returns N/2 magnitude values for N input samples.
-    Only upper half of spectrum is meaningful for real signals.
-    """
-    n = len(samples)
-    half = n // 2
-    magnitudes = []
-    two_pi_over_n = 2.0 * math.pi / n
-    for k in range(half):
-        re = 0.0
-        im = 0.0
-        freq = two_pi_over_n * k
-        for t, x in enumerate(samples):
-            angle = freq * t
-            re += x * math.cos(angle)
-            im -= x * math.sin(angle)
-        magnitudes.append(math.sqrt(re * re + im * im))
-    return magnitudes
-
-
-def band_rms_energy(magnitudes: list[float], num_bands: int = NUM_BANDS) -> list[float]:
-    """
-    Divide magnitude spectrum into num_bands logarithmically-spaced bands.
-    Return RMS energy per band, normalized so the max band = 1.0.
-    """
-    n = len(magnitudes)
-    if n == 0:
-        return [0.0] * num_bands
-
-    # Log-spaced bin edges from bin 1 to bin n (avoid DC at 0)
-    log_min = math.log(1.0)
-    log_max = math.log(float(n))
-    edges = [
-        int(math.exp(log_min + (log_max - log_min) * i / num_bands))
-        for i in range(num_bands + 1)
-    ]
-    # Ensure last edge reaches n
-    edges[-1] = n
-
-    band_energies = []
-    for b in range(num_bands):
-        lo = edges[b]
-        hi = edges[b + 1]
-        if hi <= lo:
-            hi = lo + 1
-        band_mags = magnitudes[lo:hi]
-        if not band_mags:
-            band_energies.append(0.0)
-        else:
-            rms = math.sqrt(sum(m * m for m in band_mags) / len(band_mags))
-            band_energies.append(rms)
-
-    # Normalize so max band = 1.0 (relative spectral shape, not absolute level)
-    max_e = max(band_energies) if any(e > 0 for e in band_energies) else 1.0
-    if max_e > 0:
-        band_energies = [e / max_e for e in band_energies]
-
-    return band_energies
-
-
-# ---------------------------------------------------------------------------
-# Fingerprint encoding / comparison
-# ---------------------------------------------------------------------------
-
-def encode_fingerprint(band_energies: list[float]) -> int:
-    """Pack 8 × 4-bit band values into a 32-bit integer."""
-    fingerprint = 0
-    for i, energy in enumerate(band_energies):
-        quantized = min(15, int(energy * 15.0 + 0.5))
-        fingerprint |= (quantized & 0xF) << (i * BITS_PER_BAND)
-    return fingerprint
-
-
-def hamming_distance(a: int, b: int) -> int:
-    """Count differing bits between two 32-bit fingerprints."""
-    xor = (a ^ b) & 0xFFFFFFFF
-    count = 0
-    while xor:
-        count += xor & 1
-        xor >>= 1
-    return count
-
-
-def decode_bands(fingerprint: int) -> list[int]:
-    """Extract 8 band quantized values from fingerprint integer."""
-    return [(fingerprint >> (i * BITS_PER_BAND)) & 0xF for i in range(NUM_BANDS)]
-
-
-# ---------------------------------------------------------------------------
-# Pack processing
-# ---------------------------------------------------------------------------
-
-def fingerprint_xpn(xpn_path: str) -> list[dict]:
-    """
-    Extract WAV files from an .xpn pack, fingerprint each one.
-    Returns list of dicts: {name, fingerprint, bands, error}.
-    """
-    results = []
-    with zipfile.ZipFile(xpn_path, "r") as zf:
-        wav_entries = [e for e in zf.namelist() if e.lower().endswith(".wav")]
-        if not wav_entries:
-            print("Warning: no .wav files found in pack.", file=sys.stderr)
-            return results
-
-        with tempfile.TemporaryDirectory() as tmpdir:
-            for entry in sorted(wav_entries):
-                name = Path(entry).name
-                try:
-                    extracted = zf.extract(entry, tmpdir)
-                    samples = read_pcm_frames(extracted)
-                    if not samples:
-                        raise ValueError("Empty PCM data")
-                    magnitudes = real_dft_magnitudes(samples)
-                    band_energies = band_rms_energy(magnitudes)
-                    fp = encode_fingerprint(band_energies)
-                    results.append({
-                        "name": name,
-                        "path": entry,
-                        "fingerprint": fp,
-                        "bands": band_energies,
-                        "error": None,
-                    })
-                except Exception as exc:
-                    results.append({
-                        "name": name,
-                        "path": entry,
-                        "fingerprint": None,
-                        "bands": None,
-                        "error": str(exc),
-                    })
-    return results
-
-
-def find_near_duplicates(records: list[dict], threshold: int) -> list[dict]:
-    """Return all pairs where Hamming distance ≤ threshold."""
-    valid = [r for r in records if r["fingerprint"] is not None]
-    pairs = []
-    for i in range(len(valid)):
-        for j in range(i + 1, len(valid)):
-            dist = hamming_distance(valid[i]["fingerprint"], valid[j]["fingerprint"])
-            if dist <= threshold:
-                pairs.append({
-                    "file_a": valid[i]["name"],
-                    "path_a": valid[i]["path"],
-                    "file_b": valid[j]["name"],
-                    "path_b": valid[j]["path"],
-                    "distance": dist,
-                    "fp_a": valid[i]["fingerprint"],
-                    "fp_b": valid[j]["fingerprint"],
-                })
-    pairs.sort(key=lambda p: p["distance"])
-    return pairs
-
-
-# ---------------------------------------------------------------------------
-# Output formatting
-# ---------------------------------------------------------------------------
-
-def format_bands(bands: list[float]) -> str:
-    return " ".join(f"{v:.2f}" for v in bands)
-
-
-def print_text(records: list[dict], pairs: list[dict], show_all: bool, threshold: int) -> None:
-    if show_all:
-        print(f"\n{'FILE':<40} {'HEX FP':>10}  BANDS (8 × normalized RMS)")
-        print("-" * 80)
-        for r in records:
-            if r["error"]:
-                print(f"  {'[ERROR] ' + r['name']:<40}  {r['error']}")
-            else:
-                hex_fp = f"0x{r['fingerprint']:08X}"
-                print(f"  {r['name']:<40} {hex_fp:>10}  {format_bands(r['bands'])}")
-
-    print(f"\nNear-duplicate pairs (Hamming distance ≤ {threshold} bits out of {FINGERPRINT_BITS}):")
-    if not pairs:
-        print("  None found.")
-    else:
-        print(f"  {'FILE A':<38} {'FILE B':<38} DIST")
-        print("  " + "-" * 84)
-        for p in pairs:
-            print(f"  {p['file_a']:<38} {p['file_b']:<38} {p['distance']:>4} bits")
-
-    valid = sum(1 for r in records if r["fingerprint"] is not None)
-    errors = len(records) - valid
-    print(f"\nSummary: {valid} samples fingerprinted, {errors} errors, {len(pairs)} near-duplicate pairs.")
-
-
-def print_json(records: list[dict], pairs: list[dict]) -> None:
-    output = {
-        "fingerprints": [
-            {
-                "name": r["name"],
-                "path": r["path"],
-                "fingerprint_hex": f"0x{r['fingerprint']:08X}" if r["fingerprint"] is not None else None,
-                "fingerprint_int": r["fingerprint"],
-                "bands": [round(b, 4) for b in r["bands"]] if r["bands"] else None,
-                "quantized_bands": decode_bands(r["fingerprint"]) if r["fingerprint"] is not None else None,
-                "error": r["error"],
-            }
-            for r in records
-        ],
-        "near_duplicates": [
-            {
-                "file_a": p["file_a"],
-                "file_b": p["file_b"],
-                "hamming_distance": p["distance"],
-                "fp_a_hex": f"0x{p['fp_a']:08X}",
-                "fp_b_hex": f"0x{p['fp_b']:08X}",
-            }
-            for p in pairs
-        ],
+def _parse_fmt(fmt_data: bytes) -> dict:
+    """Parse fmt chunk bytes, return audio format metadata dict."""
+    if len(fmt_data) < 16:
+        raise ValueError("fmt chunk too small")
+    audio_format, channels, sample_rate, byte_rate, block_align, bit_depth = \
+        struct.unpack_from("<HHIIHH", fmt_data, 0)
+    return {
+        "audio_format": audio_format,   # 1=PCM, 3=IEEE float, 65534=extensible
+        "channels": channels,
+        "sample_rate": sample_rate,
+        "bit_depth": bit_depth,
+        "block_align": block_align,
     }
-    print(json.dumps(output, indent=2))
+
+
+def _decode_sample(raw: bytes, bit_depth: int, audio_format: int) -> float:
+    """Decode a single audio sample bytes to float in range [-1.0, 1.0]."""
+    if audio_format == 3 and bit_depth == 32:
+        return struct.unpack_from("<f", raw)[0]
+    if bit_depth == 8:
+        return (struct.unpack_from("<B", raw)[0] - 128) / 128.0
+    if bit_depth == 16:
+        return struct.unpack_from("<h", raw)[0] / 32768.0
+    if bit_depth == 24:
+        b0, b1, b2 = raw[0], raw[1], raw[2]
+        signed = b2 << 16 | b1 << 8 | b0
+        if signed & 0x800000:
+            signed -= 0x1000000
+        return signed / 8388608.0
+    if bit_depth == 32:
+        return struct.unpack_from("<i", raw)[0] / 2147483648.0
+    return 0.0
+
+
+def _compute_rms_segments(pcm_bytes: bytes, fmt: dict, num_segments: int) -> list:
+    """
+    Compute RMS amplitude for num_segments equal time windows across pcm_bytes.
+    Returns list of floats (RMS, roughly 0.0–1.0).
+    """
+    channels = fmt["channels"]
+    bit_depth = fmt["bit_depth"]
+    audio_format = fmt["audio_format"]
+    block_align = fmt["block_align"]
+    bytes_per_sample = max(1, bit_depth // 8)
+
+    if block_align == 0 or len(pcm_bytes) == 0:
+        return [0.0] * num_segments
+
+    total_frames = len(pcm_bytes) // block_align
+    if total_frames == 0:
+        return [0.0] * num_segments
+
+    segment_frames = max(1, total_frames // num_segments)
+    segments = []
+
+    for seg in range(num_segments):
+        start_frame = seg * segment_frames
+        end_frame = min(total_frames, start_frame + segment_frames)
+        if start_frame >= total_frames:
+            segments.append(0.0)
+            continue
+
+        sum_sq = 0.0
+        count = 0
+        for frame in range(start_frame, end_frame):
+            frame_offset = frame * block_align
+            for ch in range(channels):
+                sample_offset = frame_offset + ch * bytes_per_sample
+                if sample_offset + bytes_per_sample > len(pcm_bytes):
+                    break
+                raw = pcm_bytes[sample_offset: sample_offset + bytes_per_sample]
+                val = _decode_sample(raw, bit_depth, audio_format)
+                sum_sq += val * val
+                count += 1
+
+        rms = math.sqrt(sum_sq / count) if count > 0 else 0.0
+        segments.append(round(rms, 6))
+
+    return segments
 
 
 # ---------------------------------------------------------------------------
-# CLI entry point
+# Main fingerprint computation
 # ---------------------------------------------------------------------------
 
-def main() -> None:
+def fingerprint_wav(path: Path) -> dict:
+    """
+    Compute all three fingerprint tiers for a WAV file.
+
+    Returns dict:
+      path         - relative or absolute string path (caller sets final value)
+      exact_hash   - MD5 hex digest of raw audio data chunk bytes
+      format_fp    - [sample_rate, bit_depth, channels, duration_ms_rounded_10ms]
+      content_fp   - list of CONTENT_SEGMENTS RMS floats
+      meta         - human-readable format metadata + file_size
+    """
+    data = path.read_bytes()
+    chunks = _read_riff_chunks(data)
+
+    if b"fmt " not in chunks:
+        raise ValueError("Missing fmt chunk")
+    if b"data" not in chunks:
+        raise ValueError("Missing data chunk")
+
+    fmt = _parse_fmt(chunks[b"fmt "])
+    pcm_bytes = chunks[b"data"]
+
+    # Tier 1 — exact duplicate detection
+    exact_hash = hashlib.md5(pcm_bytes).hexdigest()
+
+    # Tier 2 — same recording at different encodings
+    block_align = fmt["block_align"]
+    total_frames = len(pcm_bytes) // block_align if block_align else 0
+    duration_raw_ms = (total_frames / fmt["sample_rate"] * 1000) if fmt["sample_rate"] > 0 else 0
+    duration_ms = int(round(duration_raw_ms / 10) * 10)  # rounded to nearest 10 ms
+    format_fp = [fmt["sample_rate"], fmt["bit_depth"], fmt["channels"], duration_ms]
+
+    # Tier 3 — audio content similarity
+    content_fp = _compute_rms_segments(pcm_bytes, fmt, CONTENT_SEGMENTS)
+
+    return {
+        "path": str(path),
+        "exact_hash": exact_hash,
+        "format_fp": format_fp,
+        "content_fp": content_fp,
+        "meta": {
+            "sample_rate": fmt["sample_rate"],
+            "bit_depth": fmt["bit_depth"],
+            "channels": fmt["channels"],
+            "duration_ms": duration_ms,
+            "file_size": path.stat().st_size,
+        },
+    }
+
+
+# ---------------------------------------------------------------------------
+# Database build / load
+# ---------------------------------------------------------------------------
+
+def build_database(directory: Path, rebuild: bool = False) -> dict:
+    """
+    Scan directory recursively for WAV files, build/update fingerprint DB.
+    Returns DB dict keyed by relative path string.
+    """
+    db_path = directory / DB_FILENAME
+    db: dict = {}
+
+    if db_path.exists() and not rebuild:
+        try:
+            db = json.loads(db_path.read_text(encoding="utf-8"))
+            print(f"  Loaded existing DB: {len(db)} entries from {db_path.name}")
+        except (json.JSONDecodeError, OSError):
+            db = {}
+
+    # Collect unique WAVs (case-insensitive extension)
+    seen: set = set()
+    unique_wavs = []
+    for wav in sorted(directory.rglob("*")):
+        if wav.suffix.lower() == ".wav" and str(wav) not in seen:
+            seen.add(str(wav))
+            unique_wavs.append(wav)
+
+    new_count = error_count = 0
+    for wav in unique_wavs:
+        key = str(wav.relative_to(directory))
+        if key in db and not rebuild:
+            continue
+        try:
+            fp = fingerprint_wav(wav)
+            fp["path"] = key  # store relative path
+            db[key] = fp
+            new_count += 1
+        except Exception as exc:
+            print(f"  WARN: Could not fingerprint {wav.name}: {exc}")
+            error_count += 1
+
+    db_path.write_text(json.dumps(db, indent=2), encoding="utf-8")
+    print(f"  Scanned {len(unique_wavs)} WAVs — {new_count} new, {error_count} errors")
+    print(f"  DB written: {db_path}")
+    return db
+
+
+# ---------------------------------------------------------------------------
+# Comparison / duplicate detection
+# ---------------------------------------------------------------------------
+
+def _quality_score(meta: dict) -> int:
+    """Higher = better quality encoding."""
+    return meta["sample_rate"] * meta["bit_depth"]
+
+
+def _content_distance(fp_a: list, fp_b: list) -> float:
+    """Mean absolute difference between two RMS segment vectors."""
+    n = min(len(fp_a), len(fp_b))
+    if n == 0:
+        return 1.0
+    return sum(abs(a - b) for a, b in zip(fp_a[:n], fp_b[:n])) / n
+
+
+def find_duplicates(db_a: dict, db_b: dict, dir_a: Path, dir_b: Path) -> dict:
+    """
+    Cross-directory comparison. Returns dict with three match categories:
+      exact_duplicates  — identical MD5
+      near_duplicates   — same format_fp + content distance < NEAR_DUPLICATE_THRESHOLD
+      suspicious        — different format but content distance < SUSPICIOUS_THRESHOLD
+    """
+    exact, near, suspicious = [], [], []
+
+    for key_a, fp_a in db_a.items():
+        for key_b, fp_b in db_b.items():
+            path_a = str(dir_a / key_a)
+            path_b = str(dir_b / key_b)
+
+            if fp_a["exact_hash"] == fp_b["exact_hash"]:
+                exact.append(_match_entry(path_a, fp_a, path_b, fp_b))
+                continue
+
+            dist = _content_distance(fp_a["content_fp"], fp_b["content_fp"])
+            same_format = fp_a["format_fp"] == fp_b["format_fp"]
+
+            if same_format and dist < NEAR_DUPLICATE_THRESHOLD:
+                entry = _match_entry(path_a, fp_a, path_b, fp_b)
+                entry["content_distance"] = round(dist, 4)
+                near.append(entry)
+            elif not same_format and dist < SUSPICIOUS_THRESHOLD:
+                entry = _match_entry(path_a, fp_a, path_b, fp_b)
+                entry["content_distance"] = round(dist, 4)
+                suspicious.append(entry)
+
+    return {"exact_duplicates": exact, "near_duplicates": near, "suspicious": suspicious}
+
+
+def find_internal_duplicates(db: dict, directory: Path) -> dict:
+    """Find duplicates within a single directory's database."""
+    keys = list(db.keys())
+    exact, near = [], []
+
+    for i in range(len(keys)):
+        for j in range(i + 1, len(keys)):
+            fp_a = db[keys[i]]
+            fp_b = db[keys[j]]
+            path_a = str(directory / keys[i])
+            path_b = str(directory / keys[j])
+
+            if fp_a["exact_hash"] == fp_b["exact_hash"]:
+                exact.append(_match_entry(path_a, fp_a, path_b, fp_b))
+                continue
+
+            dist = _content_distance(fp_a["content_fp"], fp_b["content_fp"])
+            if fp_a["format_fp"] == fp_b["format_fp"] and dist < NEAR_DUPLICATE_THRESHOLD:
+                entry = _match_entry(path_a, fp_a, path_b, fp_b)
+                entry["content_distance"] = round(dist, 4)
+                near.append(entry)
+
+    return {"exact_duplicates": exact, "near_duplicates": near, "suspicious": []}
+
+
+def _match_entry(path_a: str, fp_a: dict, path_b: str, fp_b: dict) -> dict:
+    return {
+        "file_a": path_a,
+        "file_b": path_b,
+        "meta_a": fp_a["meta"],
+        "meta_b": fp_b["meta"],
+    }
+
+
+# ---------------------------------------------------------------------------
+# Report generation
+# ---------------------------------------------------------------------------
+
+def _fmt_meta(meta: dict) -> str:
+    sr = meta["sample_rate"]
+    bd = meta["bit_depth"]
+    ch = "mono" if meta["channels"] == 1 else f"{meta['channels']}ch"
+    dur = meta["duration_ms"]
+    size_kb = meta["file_size"] // 1024
+    return f"{sr}Hz / {bd}bit / {ch} / {dur}ms / {size_kb}KB"
+
+
+def _recommend_keep(meta_a: dict, meta_b: dict, path_a: str, path_b: str) -> str:
+    qa = _quality_score(meta_a)
+    qb = _quality_score(meta_b)
+    if qa > qb:
+        return f"KEEP: {path_a}"
+    if qb > qa:
+        return f"KEEP: {path_b}"
+    return "KEEP: either (equal quality)"
+
+
+def _storage_waste(matches: list) -> int:
+    """Estimate bytes recoverable by removing the lower-quality duplicate."""
+    total = 0
+    for m in matches:
+        qa = _quality_score(m["meta_a"])
+        qb = _quality_score(m["meta_b"])
+        discard_meta = m["meta_b"] if qa >= qb else m["meta_a"]
+        total += discard_meta["file_size"]
+    return total
+
+
+def generate_report(results: dict, dir_a: Path, dir_b: Path = None) -> str:
+    lines = []
+    sep = "=" * 72
+    thin = "-" * 72
+    lines += [sep, "XPN SAMPLE FINGERPRINTER — DEDUPLICATION REPORT", sep]
+
+    if dir_b:
+        lines.append(f"Directory A : {dir_a}")
+        lines.append(f"Directory B : {dir_b}")
+    else:
+        lines.append(f"Directory   : {dir_a}")
+    lines.append("")
+
+    exact = results["exact_duplicates"]
+    near = results["near_duplicates"]
+    suspicious = results["suspicious"]
+    waste_bytes = _storage_waste(exact) + _storage_waste(near)
+    waste_mb = waste_bytes / (1024 * 1024)
+
+    lines += [
+        "SUMMARY",
+        f"  Exact duplicates   : {len(exact)}",
+        f"  Near-duplicates    : {len(near)}",
+        f"  Suspicious matches : {len(suspicious)}",
+        f"  Est. storage waste : {waste_mb:.2f} MB",
+        "",
+    ]
+
+    if exact:
+        lines += [thin, f"EXACT DUPLICATES ({len(exact)})",
+                  "  Identical audio data — safe to remove the lower-quality copy.", ""]
+        for idx, m in enumerate(exact, 1):
+            lines.append(f"  [{idx}]")
+            lines.append(f"      A: {m['file_a']}")
+            lines.append(f"         {_fmt_meta(m['meta_a'])}")
+            lines.append(f"      B: {m['file_b']}")
+            lines.append(f"         {_fmt_meta(m['meta_b'])}")
+            lines.append(f"      {_recommend_keep(m['meta_a'], m['meta_b'], m['file_a'], m['file_b'])}")
+            lines.append("")
+
+    if near:
+        lines += [thin, f"NEAR-DUPLICATES ({len(near)})",
+                  "  Same format, very similar content — likely minor edits or re-saves.", ""]
+        for idx, m in enumerate(near, 1):
+            dist = m.get("content_distance", "?")
+            lines.append(f"  [{idx}]  content distance: {dist}")
+            lines.append(f"      A: {m['file_a']}")
+            lines.append(f"         {_fmt_meta(m['meta_a'])}")
+            lines.append(f"      B: {m['file_b']}")
+            lines.append(f"         {_fmt_meta(m['meta_b'])}")
+            lines.append(f"      {_recommend_keep(m['meta_a'], m['meta_b'], m['file_a'], m['file_b'])}")
+            lines.append("")
+
+    if suspicious:
+        lines += [thin, f"SUSPICIOUS MATCHES ({len(suspicious)})",
+                  "  Different format, nearly identical content — possible leaked or re-encoded samples.", ""]
+        for idx, m in enumerate(suspicious, 1):
+            dist = m.get("content_distance", "?")
+            lines.append(f"  [{idx}]  content distance: {dist}")
+            lines.append(f"      A: {m['file_a']}")
+            lines.append(f"         {_fmt_meta(m['meta_a'])}")
+            lines.append(f"      B: {m['file_b']}")
+            lines.append(f"         {_fmt_meta(m['meta_b'])}")
+            lines.append("")
+
+    if not exact and not near and not suspicious:
+        lines += ["No duplicates or suspicious matches found.", ""]
+
+    lines.append(sep)
+    return "\n".join(lines)
+
+
+# ---------------------------------------------------------------------------
+# CLI
+# ---------------------------------------------------------------------------
+
+def main():
     parser = argparse.ArgumentParser(
-        description="Perceptual near-duplicate detector for .xpn sample packs.",
+        description="WAV sample fingerprinter — deduplication and provenance tracking",
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog=__doc__,
     )
-    parser.add_argument("--xpn", required=True, help="Path to .xpn pack file")
-    parser.add_argument("--threshold", type=int, default=4,
-                        help="Hamming distance threshold for near-duplicate detection (default: 4)")
-    parser.add_argument("--format", choices=["text", "json"], default="text",
-                        help="Output format (default: text)")
-    parser.add_argument("--show-all", action="store_true",
-                        help="Print full fingerprint table for all samples")
+    parser.add_argument("dir", help="Directory of WAV files to scan")
+    parser.add_argument("--compare", metavar="DIR2",
+                        help="Compare against a second WAV directory")
+    parser.add_argument("--rebuild", action="store_true",
+                        help="Force full rescan, ignoring cached DB entries")
+    parser.add_argument("--output", metavar="FILE",
+                        help="Write report to a text file (default: stdout only)")
     args = parser.parse_args()
 
-    xpn_path = args.xpn
-    if not Path(xpn_path).exists():
-        print(f"Error: file not found: {xpn_path}", file=sys.stderr)
-        sys.exit(1)
-    if not zipfile.is_zipfile(xpn_path):
-        print(f"Error: not a valid ZIP/XPN file: {xpn_path}", file=sys.stderr)
-        sys.exit(1)
+    dir_a = Path(args.dir).resolve()
+    if not dir_a.is_dir():
+        parser.error(f"Not a directory: {dir_a}")
 
-    if args.format == "text":
-        print(f"Fingerprinting samples in: {xpn_path}")
+    print("\nXPN Sample Fingerprinter")
+    print(f"Scanning: {dir_a}")
+    db_a = build_database(dir_a, rebuild=args.rebuild)
 
-    records = fingerprint_xpn(xpn_path)
-    pairs = find_near_duplicates(records, args.threshold)
-
-    if args.format == "json":
-        print_json(records, pairs)
+    if args.compare:
+        dir_b = Path(args.compare).resolve()
+        if not dir_b.is_dir():
+            parser.error(f"Not a directory: {dir_b}")
+        print(f"Comparing against: {dir_b}")
+        db_b = build_database(dir_b, rebuild=args.rebuild)
+        results = find_duplicates(db_a, db_b, dir_a, dir_b)
+        report = generate_report(results, dir_a, dir_b)
     else:
-        print_text(records, pairs, args.show_all, args.threshold)
+        print("Checking for internal duplicates...")
+        results = find_internal_duplicates(db_a, dir_a)
+        report = generate_report(results, dir_a)
+
+    print()
+    print(report)
+
+    if args.output:
+        out_path = Path(args.output)
+        out_path.write_text(report, encoding="utf-8")
+        print(f"Report saved: {out_path}")
 
 
 if __name__ == "__main__":
