@@ -1,0 +1,53 @@
+{
+  "name": "Fat Volcanic",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBESE",
+    "OBSIDIAN"
+  ],
+  "parameters": {
+    "OBESE": {
+      "macro_character": 0.95,
+      "macro_movement": 0.35,
+      "macro_coupling": 0.9,
+      "macro_space": 0.08
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.92,
+      "macro_movement": 0.3,
+      "macro_coupling": 0.88,
+      "macro_space": 0.12
+    }
+  },
+  "coupling": {
+    "type": "RING_MOD",
+    "source": "OBESE",
+    "target": "OBSIDIAN",
+    "amount": 0.95
+  },
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.92,
+    "movement": 0.3,
+    "density": 1.0,
+    "space": 0.08,
+    "aggression": 1.0
+  },
+  "macros": {
+    "CHARACTER": 0.95,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.9,
+    "SPACE": 0.08
+  },
+  "tags": [
+    "entangled",
+    "obese",
+    "obsidian",
+    "bass",
+    "dark",
+    "extreme",
+    "volcanic",
+    "fat"
+  ]
+}

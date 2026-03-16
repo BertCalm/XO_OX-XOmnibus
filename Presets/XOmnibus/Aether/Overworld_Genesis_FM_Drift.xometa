@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Genesis FM Drift",
+  "mood": "Aether",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "YM2612 FM operators in continuous drift. The Genesis palette shifted toward the aetheric \u2014 brass stabs become slow moving clouds of metallic shimmer.",
+  "tags": [
+    "aether",
+    "shifting-aether",
+    "genesis",
+    "FM",
+    "drift",
+    "metallic"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHIP",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.48,
+    "movement": 0.68,
+    "density": 0.32,
+    "space": 0.85,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_era": 0.6,
+      "ow_eraBlend": 0.6,
+      "ow_filterCutoff": 0.6,
+      "ow_filterReso": 0.1,
+      "ow_lfoRate": 0.28,
+      "ow_lfoDepth": 0.62,
+      "ow_ampAttack": 0.2,
+      "ow_ampRelease": 4.0,
+      "ow_reverbMix": 0.8,
+      "ow_glitchAmt": 0.3,
+      "ow_macroEra": 0.0,
+      "ow_macroChip": 0.0,
+      "ow_macroCoupling": 0.0,
+      "ow_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

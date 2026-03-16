@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Polar Vortex",
+  "mood": "Flux",
+  "engines": [
+    "Obsidian"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.93,
+    "COUPLING": 0.35,
+    "SPACE": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.09,
+    "movement": 0.93,
+    "density": 0.62,
+    "space": 0.58,
+    "aggression": 0.55
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "cold-flux",
+    "obsidian",
+    "polar",
+    "vortex"
+  ],
+  "description": "Obsidian in polar vortex \u2014 dark kinetic mass spinning without warmth."
+}

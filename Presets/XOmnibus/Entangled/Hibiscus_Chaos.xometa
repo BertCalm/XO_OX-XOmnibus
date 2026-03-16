@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Hibiscus Chaos",
+  "mood": "Entangled",
+  "engines": [
+    "OLE",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Spectral morphing between hibiscus harmonic burst and OUROBOROS's self-replicating noise.",
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.86,
+      "macro_movement": 0.78,
+      "macro_coupling": 0.88,
+      "macro_space": 0.3
+    },
+    "OUROBOROS": {
+      "macro_character": 0.78,
+      "macro_movement": 0.82,
+      "macro_coupling": 0.83,
+      "macro_space": 0.34
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OLE",
+    "target": "OUROBOROS",
+    "amount": 0.88,
+    "intensity": "Deep"
+  },
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.73,
+    "movement": 0.84,
+    "density": 0.8,
+    "space": 0.26,
+    "aggression": 0.88
+  },
+  "macros": {
+    "CHARACTER": 0.86,
+    "MOVEMENT": 0.78,
+    "COUPLING": 0.88,
+    "SPACE": 0.3
+  },
+  "tags": [
+    "entangled",
+    "ole",
+    "ouroboros",
+    "spectral",
+    "chaos"
+  ]
+}

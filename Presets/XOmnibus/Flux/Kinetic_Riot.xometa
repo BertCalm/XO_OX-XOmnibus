@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Kinetic Riot",
+  "mood": "Flux",
+  "engines": [
+    "Optic"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.83,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.4,
+    "SPACE": 0.11
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.16,
+    "movement": 0.9,
+    "density": 0.74,
+    "space": 0.11,
+    "aggression": 0.83
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "high-flux",
+    "optic",
+    "kinetic",
+    "riot"
+  ],
+  "description": "Optic scanner in kinetic riot \u2014 visual data streams colliding."
+}

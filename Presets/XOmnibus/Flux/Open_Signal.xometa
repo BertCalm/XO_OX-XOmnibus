@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Open Signal",
+  "mood": "Flux",
+  "engines": [
+    "Opal"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.2,
+    "MOVEMENT": 0.86,
+    "COUPLING": 0.11,
+    "SPACE": 0.85
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.22,
+    "movement": 0.86,
+    "density": 0.12,
+    "space": 0.85,
+    "aggression": 0.2
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "sparse-flux",
+    "opal",
+    "open",
+    "signal"
+  ],
+  "description": "Opal open signal \u2014 granular emission spreading freely through maximum space."
+}

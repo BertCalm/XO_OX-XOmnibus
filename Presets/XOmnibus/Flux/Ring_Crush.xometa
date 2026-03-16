@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Ring Crush",
+  "mood": "Flux",
+  "engines": [
+    "Orbital"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.87,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.7,
+    "SPACE": 0.05
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.45,
+    "movement": 0.8,
+    "density": 0.95,
+    "space": 0.05,
+    "aggression": 0.87
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "dense-flux",
+    "orbital",
+    "ring",
+    "crush"
+  ],
+  "description": "Orbital ring crush \u2014 circumference shrinking, density increasing to critical."
+}

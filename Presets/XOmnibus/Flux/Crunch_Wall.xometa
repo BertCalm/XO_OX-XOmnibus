@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Crunch Wall",
+  "mood": "Flux",
+  "engines": [
+    "Oblong"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.93,
+    "MOVEMENT": 0.89,
+    "COUPLING": 0.28,
+    "SPACE": 0.06
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.3,
+    "movement": 0.89,
+    "density": 0.87,
+    "space": 0.06,
+    "aggression": 0.93
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "high-flux",
+    "oblong",
+    "crunch",
+    "wall"
+  ],
+  "description": "Oblong chord stacks compressed into a crunch wall \u2014 harmonic saturation peak."
+}

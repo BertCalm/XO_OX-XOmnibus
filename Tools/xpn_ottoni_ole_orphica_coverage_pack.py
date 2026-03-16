@@ -6,16 +6,21 @@ Covers 4 new partner engines for each: ORGANON, OUROBOROS, ORACLE, OBSCURA
 
 Engine characters:
   OTTONI   — Patina green #5B8A72, triple brass, GROW macro
-             DNA bias: warmth 0.5–0.8, moderate brightness
+             warmth 0.7, brightness 0.6
+             DNA bias: warmth 0.65-0.85, moderate brightness
   OLE      — Hibiscus #C9377A, Afro-Latin trio, DRAMA macro
-             DNA bias: aggression 0.4–0.7, warmth 0.5–0.75
+             aggression 0.65, warmth 0.7
+             DNA bias: aggression 0.55-0.85, warmth 0.60-0.80
   ORPHICA  — Siren Seafoam #7FDBCA, microsound harp, siphonophore
-             DNA bias: brightness 0.6–0.9, space 0.5–0.8
+             brightness 0.75, space 0.7
+             DNA bias: brightness 0.70-0.92, space 0.60-0.85
 
 Coupling types (12 total, rotated across presets):
   FREQUENCY_SHIFT, AMPLITUDE_MOD, FILTER_MOD, PITCH_SYNC,
   TIMBRE_BLEND, ENVELOPE_LINK, HARMONIC_FOLD, CHAOS_INJECT,
   RESONANCE_SHARE, SPATIAL_COUPLE, SPECTRAL_MORPH, VELOCITY_COUPLE
+
+DNA rule: every preset must have at least 1 extreme dimension (<=0.15 or >=0.85).
 """
 
 import json
@@ -44,890 +49,830 @@ def make_preset(name, engines, coupling_type, coupling_amount, params_a, params_
         "author": "XO_OX Designs",
         "version": "1.0",
         "description": desc,
-        "tags": ["entangled", "coupling", "constellation"] + tags,
-        "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-        "couplingIntensity": intensity,
-        "tempo": None,
-        "dna": dna,
         "parameters": {
             engine_a: params_a,
             engine_b: params_b,
         },
         "coupling": {
-            "pairs": [{
-                "engineA": engine_a,
-                "engineB": engine_b,
-                "type": coupling_type,
-                "amount": round(coupling_amount, 3),
-            }]
+            "type": coupling_type,
+            "source": engine_a,
+            "target": engine_b,
+            "amount": round(coupling_amount, 2),
+            "intensity": intensity,
         },
+        "dna": {k: round(v, 2) for k, v in dna.items()},
         "macros": {
-            "CHARACTER": round((params_a.get("macro_character", 0.5) + params_b.get("macro_character", 0.5)) / 2, 3),
-            "MOVEMENT": round((params_a.get("macro_movement", 0.5) + params_b.get("macro_movement", 0.5)) / 2, 3),
-            "COUPLING": round(coupling_amount, 3),
-            "SPACE": round((params_a.get("macro_space", 0.5) + params_b.get("macro_space", 0.5)) / 2, 3),
+            "CHARACTER": round(params_a.get("macro_character", 0.5), 2),
+            "MOVEMENT":  round(params_a.get("macro_movement",  0.5), 2),
+            "COUPLING":  round(params_a.get("macro_coupling",  0.5), 2),
+            "SPACE":     round(params_a.get("macro_space",     0.5), 2),
         },
-        "sequencer": None,
+        "tags": tags,
     }
 
 
-def write_preset(preset):
-    os.makedirs(PRESET_DIR, exist_ok=True)
-    safe_name = preset["name"].replace("/", "-").replace(":", "-")
-    filename = safe_name + ".xometa"
-    filepath = os.path.join(PRESET_DIR, filename)
-    with open(filepath, "w") as f:
+def validate_extreme(dna):
+    """Ensure at least one DNA dimension is extreme (<= 0.15 or >= 0.85)."""
+    return any(v <= 0.15 or v >= 0.85 for v in dna.values())
+
+
+def save_preset(preset):
+    name = preset["name"]
+    filename = name.replace(" ", "_").replace("/", "-") + ".xometa"
+    path = os.path.join(PRESET_DIR, filename)
+    if os.path.exists(path):
+        return False, path
+    with open(path, "w") as f:
         json.dump(preset, f, indent=2)
-        f.write("\n")
-    return filepath
+    return True, path
 
 
 # ---------------------------------------------------------------------------
-# Preset definitions — 72 total
-# Each block: 6 presets for one engine pair
-# Coupling types rotate through all 12 across each block of 6
+# OTTONI preset data (24 presets across 4 partners)
 # ---------------------------------------------------------------------------
 
-PRESETS = []
+OTTONI_PRESETS = [
+    # ---- OTTONI × ORGANON (indices 0-5, coupling types 0-5) ----
+    make_preset(
+        "Verde Metabolism",
+        ("OTTONI", "ORGANON"),
+        COUPLING_TYPES[0], 0.72,
+        {"macro_character": 0.70, "macro_movement": 0.55, "macro_coupling": 0.72, "macro_space": 0.45},
+        {"macro_character": 0.50, "macro_movement": 0.65, "macro_coupling": 0.60, "macro_space": 0.55},
+        {"brightness": 0.58, "warmth": 0.78, "movement": 0.55, "density": 0.60, "space": 0.42, "aggression": 0.14},
+        ["entangled", "ottoni", "organon", "biological", "brass"],
+        "Brass frequency shifts drive ORGANON's metabolic rhythm — a living ecosystem of harmonic life.",
+    ),
+    make_preset(
+        "Patina Pulse",
+        ("OTTONI", "ORGANON"),
+        COUPLING_TYPES[1], 0.65,
+        {"macro_character": 0.65, "macro_movement": 0.60, "macro_coupling": 0.68, "macro_space": 0.50},
+        {"macro_character": 0.55, "macro_movement": 0.70, "macro_coupling": 0.55, "macro_space": 0.48},
+        {"brightness": 0.55, "warmth": 0.82, "movement": 0.62, "density": 0.55, "space": 0.45, "aggression": 0.12},
+        ["entangled", "ottoni", "organon", "warmth", "pulse"],
+        "OTTONI's amplitude envelope breathes life into ORGANON's cellular texture.",
+    ),
+    make_preset(
+        "Grow Circuit",
+        ("OTTONI", "ORGANON"),
+        COUPLING_TYPES[2], 0.78,
+        {"macro_character": 0.75, "macro_movement": 0.50, "macro_coupling": 0.78, "macro_space": 0.40},
+        {"macro_character": 0.60, "macro_movement": 0.55, "macro_coupling": 0.70, "macro_space": 0.52},
+        {"brightness": 0.60, "warmth": 0.86, "movement": 0.50, "density": 0.65, "space": 0.40, "aggression": 0.10},
+        ["entangled", "ottoni", "organon", "filter", "growth"],
+        "Brass filter sweeps cultivate ORGANON's bio-signal — warmth at 0.86 anchors the growth arc.",
+    ),
+    make_preset(
+        "Copper Catalyst",
+        ("OTTONI", "ORGANON"),
+        COUPLING_TYPES[3], 0.68,
+        {"macro_character": 0.68, "macro_movement": 0.58, "macro_coupling": 0.65, "macro_space": 0.48},
+        {"macro_character": 0.52, "macro_movement": 0.62, "macro_coupling": 0.58, "macro_space": 0.50},
+        {"brightness": 0.52, "warmth": 0.75, "movement": 0.58, "density": 0.62, "space": 0.44, "aggression": 0.08},
+        ["entangled", "ottoni", "organon", "pitch", "catalyst"],
+        "Pitch-locked brass harmonics synchronize ORGANON's enzymatic cascade.",
+    ),
+    make_preset(
+        "Brass Biome",
+        ("OTTONI", "ORGANON"),
+        COUPLING_TYPES[4], 0.74,
+        {"macro_character": 0.72, "macro_movement": 0.62, "macro_coupling": 0.74, "macro_space": 0.43},
+        {"macro_character": 0.58, "macro_movement": 0.68, "macro_coupling": 0.62, "macro_space": 0.53},
+        {"brightness": 0.62, "warmth": 0.80, "movement": 0.64, "density": 0.70, "space": 0.38, "aggression": 0.13},
+        ["entangled", "ottoni", "organon", "timbre", "ecosystem"],
+        "Timbre blend merges triple brass with metabolic granularity — a living brass biome.",
+    ),
+    make_preset(
+        "Ferrous Memory",
+        ("OTTONI", "ORGANON"),
+        COUPLING_TYPES[5], 0.62,
+        {"macro_character": 0.62, "macro_movement": 0.52, "macro_coupling": 0.60, "macro_space": 0.55},
+        {"macro_character": 0.48, "macro_movement": 0.60, "macro_coupling": 0.52, "macro_space": 0.58},
+        {"brightness": 0.50, "warmth": 0.72, "movement": 0.52, "density": 0.58, "space": 0.50, "aggression": 0.09},
+        ["entangled", "ottoni", "organon", "envelope", "memory"],
+        "Envelope-linked brass decay imprints on ORGANON's long-term cellular pattern.",
+    ),
 
-# ============================================================
-# OTTONI × ORGANON  (6 presets)
-# OTTONI: brass warmth feeds Organon's metabolic modulation
-# ============================================================
-OTTONI_ORGANON = [
+    # ---- OTTONI × OUROBOROS (coupling types 6-11) ----
     make_preset(
-        "Brass Metabolism",
-        ("OTTONI", "ORGANON"),
-        "HARMONIC_FOLD", 0.72,
-        {"macro_character": 0.65, "macro_movement": 0.5,  "macro_coupling": 0.72, "macro_space": 0.4},
-        {"macro_character": 0.55, "macro_movement": 0.62, "macro_coupling": 0.72, "macro_space": 0.5},
-        {"brightness": 0.45, "warmth": 0.78, "movement": 0.55, "density": 0.6, "space": 0.4, "aggression": 0.15},
-        ["brass", "organic", "warm"],
-        "Triple brass harmonics fold into Organon's metabolic rate — living breath.",
-    ),
-    make_preset(
-        "Growing Cell",
-        ("OTTONI", "ORGANON"),
-        "ENVELOPE_LINK", 0.65,
-        {"macro_character": 0.7,  "macro_movement": 0.45, "macro_coupling": 0.65, "macro_space": 0.35},
-        {"macro_character": 0.5,  "macro_movement": 0.7,  "macro_coupling": 0.65, "macro_space": 0.55},
-        {"brightness": 0.5,  "warmth": 0.72, "movement": 0.7,  "density": 0.55, "space": 0.35, "aggression": 0.1},
-        ["growth", "envelope", "evolving"],
-        "GROW macro links envelope shapes — brass swell triggers cellular expansion.",
-    ),
-    make_preset(
-        "Patina Culture",
-        ("OTTONI", "ORGANON"),
-        "SPECTRAL_MORPH", 0.58,
-        {"macro_character": 0.6,  "macro_movement": 0.5,  "macro_coupling": 0.58, "macro_space": 0.45},
-        {"macro_character": 0.6,  "macro_movement": 0.55, "macro_coupling": 0.58, "macro_space": 0.6},
-        {"brightness": 0.55, "warmth": 0.65, "movement": 0.5,  "density": 0.7,  "space": 0.5,  "aggression": 0.12},
-        ["spectral", "texture", "layered"],
-        "Oxidized brass spectral content morphs Organon's timbral palette.",
-    ),
-    make_preset(
-        "Resonant Growth",
-        ("ORGANON", "OTTONI"),
-        "RESONANCE_SHARE", 0.75,
-        {"macro_character": 0.55, "macro_movement": 0.6,  "macro_coupling": 0.75, "macro_space": 0.5},
-        {"macro_character": 0.7,  "macro_movement": 0.4,  "macro_coupling": 0.75, "macro_space": 0.38},
-        {"brightness": 0.4,  "warmth": 0.8,  "movement": 0.45, "density": 0.65, "space": 0.42, "aggression": 0.08},
-        ["resonance", "deep", "brass"],
-        "Organon resonance peaks shared into brass body — rich sympathetic vibration.",
-    ),
-    make_preset(
-        "Metabolic Brass",
-        ("OTTONI", "ORGANON"),
-        "AMPLITUDE_MOD", 0.6,
-        {"macro_character": 0.62, "macro_movement": 0.55, "macro_coupling": 0.6, "macro_space": 0.4},
-        {"macro_character": 0.5,  "macro_movement": 0.65, "macro_coupling": 0.6, "macro_space": 0.5},
-        {"brightness": 0.48, "warmth": 0.7,  "movement": 0.6,  "density": 0.58, "space": 0.38, "aggression": 0.1},
-        ["amplitude", "breathing", "organic"],
-        "Organon metabolic rhythm amplitude-modulates OTTONI brass — breathing sculpture.",
-    ),
-    make_preset(
-        "Verde Vitality",
-        ("OTTONI", "ORGANON"),
-        "VELOCITY_COUPLE", 0.68,
-        {"macro_character": 0.75, "macro_movement": 0.5,  "macro_coupling": 0.68, "macro_space": 0.3},
-        {"macro_character": 0.52, "macro_movement": 0.72, "macro_coupling": 0.68, "macro_space": 0.52},
-        {"brightness": 0.5,  "warmth": 0.74, "movement": 0.65, "density": 0.6,  "space": 0.3,  "aggression": 0.06},
-        ["velocity", "expressive", "brass"],
-        "Velocity of OTTONI attack drives Organon's vitality parameter — touch-sensitive life.",
-    ),
-]
-PRESETS.extend(OTTONI_ORGANON)
-
-
-# ============================================================
-# OTTONI × OUROBOROS  (6 presets)
-# ============================================================
-OTTONI_OUROBOROS = [
-    make_preset(
-        "Brass Serpent",
+        "Serpent Forge",
         ("OTTONI", "OUROBOROS"),
-        "CHAOS_INJECT", 0.7,
-        {"macro_character": 0.65, "macro_movement": 0.5,  "macro_coupling": 0.7,  "macro_space": 0.38},
-        {"macro_character": 0.6,  "macro_movement": 0.7,  "macro_coupling": 0.7,  "macro_space": 0.45},
-        {"brightness": 0.45, "warmth": 0.72, "movement": 0.7,  "density": 0.6,  "space": 0.38, "aggression": 0.55},
-        ["chaos", "serpent", "tension"],
-        "Chaos from the ouroboros bites into OTTONI brass — unpredictable fanfare.",
+        COUPLING_TYPES[6], 0.82,
+        {"macro_character": 0.78, "macro_movement": 0.65, "macro_coupling": 0.82, "macro_space": 0.35},
+        {"macro_character": 0.70, "macro_movement": 0.72, "macro_coupling": 0.75, "macro_space": 0.40},
+        {"brightness": 0.65, "warmth": 0.85, "movement": 0.68, "density": 0.72, "space": 0.32, "aggression": 0.25},
+        ["entangled", "ottoni", "ouroboros", "chaos", "serpent"],
+        "Harmonic folding draws the ouroboros into brass's recursive grain — dense and relentless.",
     ),
     make_preset(
-        "Cyclic Patina",
-        ("OUROBOROS", "OTTONI"),
-        "PITCH_SYNC", 0.62,
-        {"macro_character": 0.55, "macro_movement": 0.65, "macro_coupling": 0.62, "macro_space": 0.42},
-        {"macro_character": 0.7,  "macro_movement": 0.45, "macro_coupling": 0.62, "macro_space": 0.35},
-        {"brightness": 0.5,  "warmth": 0.68, "movement": 0.6,  "density": 0.55, "space": 0.4,  "aggression": 0.45},
-        ["pitch", "cycle", "drone"],
-        "Ouroboros pitch topology locks OTTONI intervals — serpentine brass loops.",
-    ),
-    make_preset(
-        "Strange Forge",
+        "Patina Attractor",
         ("OTTONI", "OUROBOROS"),
-        "FILTER_MOD", 0.78,
-        {"macro_character": 0.6,  "macro_movement": 0.55, "macro_coupling": 0.78, "macro_space": 0.35},
-        {"macro_character": 0.65, "macro_movement": 0.75, "macro_coupling": 0.78, "macro_space": 0.4},
-        {"brightness": 0.42, "warmth": 0.75, "movement": 0.75, "density": 0.65, "space": 0.32, "aggression": 0.62},
-        ["filter", "strange", "intense"],
-        "Strange attractor filter events reshape OTTONI brass formants — chaotic timbre.",
+        COUPLING_TYPES[7], 0.88,
+        {"macro_character": 0.80, "macro_movement": 0.70, "macro_coupling": 0.88, "macro_space": 0.30},
+        {"macro_character": 0.75, "macro_movement": 0.78, "macro_coupling": 0.80, "macro_space": 0.35},
+        {"brightness": 0.68, "warmth": 0.82, "movement": 0.72, "density": 0.78, "space": 0.28, "aggression": 0.35},
+        ["entangled", "ottoni", "ouroboros", "chaos", "attractor"],
+        "Chaos injection sends OUROBOROS into strange attractor orbits seeded by warm brass.",
     ),
     make_preset(
-        "Eternal Return",
-        ("OUROBOROS", "OTTONI"),
-        "FREQUENCY_SHIFT", 0.55,
-        {"macro_character": 0.5,  "macro_movement": 0.7,  "macro_coupling": 0.55, "macro_space": 0.45},
-        {"macro_character": 0.68, "macro_movement": 0.48, "macro_coupling": 0.55, "macro_space": 0.38},
-        {"brightness": 0.46, "warmth": 0.65, "movement": 0.65, "density": 0.5,  "space": 0.42, "aggression": 0.5},
-        ["eternal", "brass", "return"],
-        "OUROBOROS frequency topology shifts OTTONI into self-referential brass cycles.",
-    ),
-    make_preset(
-        "Grow And Devour",
+        "Bronze Recursion",
         ("OTTONI", "OUROBOROS"),
-        "TIMBRE_BLEND", 0.66,
-        {"macro_character": 0.72, "macro_movement": 0.5,  "macro_coupling": 0.66, "macro_space": 0.35},
-        {"macro_character": 0.58, "macro_movement": 0.68, "macro_coupling": 0.66, "macro_space": 0.44},
-        {"brightness": 0.44, "warmth": 0.7,  "movement": 0.6,  "density": 0.62, "space": 0.35, "aggression": 0.58},
-        ["growth", "devour", "drama"],
-        "GROW macro blends timbre into Ouroboros's voracious topology — eat the brass.",
+        COUPLING_TYPES[8], 0.76,
+        {"macro_character": 0.74, "macro_movement": 0.60, "macro_coupling": 0.76, "macro_space": 0.38},
+        {"macro_character": 0.68, "macro_movement": 0.65, "macro_coupling": 0.70, "macro_space": 0.42},
+        {"brightness": 0.62, "warmth": 0.78, "movement": 0.62, "density": 0.68, "space": 0.35, "aggression": 0.28},
+        ["entangled", "ottoni", "ouroboros", "resonance", "recursion"],
+        "Resonance shared between OTTONI's bell and OUROBOROS's loop — self-devouring harmonics.",
     ),
     make_preset(
-        "Leashed Fanfare",
-        ("OUROBOROS", "OTTONI"),
-        "ENVELOPE_LINK", 0.73,
-        {"macro_character": 0.6,  "macro_movement": 0.72, "macro_coupling": 0.73, "macro_space": 0.42},
-        {"macro_character": 0.65, "macro_movement": 0.44, "macro_coupling": 0.73, "macro_space": 0.32},
-        {"brightness": 0.48, "warmth": 0.73, "movement": 0.68, "density": 0.6,  "space": 0.35, "aggression": 0.6},
-        ["leash", "envelope", "fanfare"],
-        "Ouroboros's leash mechanism controls OTTONI attack — controlled chaotic brass.",
+        "GROW Serpent",
+        ("OTTONI", "OUROBOROS"),
+        COUPLING_TYPES[9], 0.70,
+        {"macro_character": 0.70, "macro_movement": 0.55, "macro_coupling": 0.70, "macro_space": 0.42},
+        {"macro_character": 0.62, "macro_movement": 0.60, "macro_coupling": 0.65, "macro_space": 0.45},
+        {"brightness": 0.58, "warmth": 0.76, "movement": 0.58, "density": 0.64, "space": 0.40, "aggression": 0.22},
+        ["entangled", "ottoni", "ouroboros", "spatial", "growth"],
+        "Spatial coupling expands OUROBOROS's coil through OTTONI's growing brass horizon.",
     ),
-]
-PRESETS.extend(OTTONI_OUROBOROS)
+    make_preset(
+        "Verdigris Loop",
+        ("OTTONI", "OUROBOROS"),
+        COUPLING_TYPES[10], 0.84,
+        {"macro_character": 0.82, "macro_movement": 0.68, "macro_coupling": 0.84, "macro_space": 0.33},
+        {"macro_character": 0.76, "macro_movement": 0.74, "macro_coupling": 0.78, "macro_space": 0.38},
+        {"brightness": 0.70, "warmth": 0.84, "movement": 0.70, "density": 0.76, "space": 0.30, "aggression": 0.32},
+        ["entangled", "ottoni", "ouroboros", "spectral", "loop"],
+        "Spectral morphing between brass formants and attractor-state noise — warmth 0.84 locks the loop.",
+    ),
+    make_preset(
+        "Brass Ouroboros",
+        ("OTTONI", "OUROBOROS"),
+        COUPLING_TYPES[11], 0.78,
+        {"macro_character": 0.76, "macro_movement": 0.62, "macro_coupling": 0.78, "macro_space": 0.36},
+        {"macro_character": 0.70, "macro_movement": 0.68, "macro_coupling": 0.72, "macro_space": 0.40},
+        {"brightness": 0.64, "warmth": 0.80, "movement": 0.65, "density": 0.72, "space": 0.33, "aggression": 0.30},
+        ["entangled", "ottoni", "ouroboros", "velocity", "snake"],
+        "Velocity coupling ties OTTONI's attack to OUROBOROS's cycle speed — serpent swallows brass.",
+    ),
 
-
-# ============================================================
-# OTTONI × ORACLE  (6 presets)
-# ============================================================
-OTTONI_ORACLE = [
+    # ---- OTTONI × ORACLE (coupling types 0-5) ----
     make_preset(
         "Prophecy Brass",
         ("OTTONI", "ORACLE"),
-        "SPECTRAL_MORPH", 0.67,
-        {"macro_character": 0.65, "macro_movement": 0.5,  "macro_coupling": 0.67, "macro_space": 0.42},
-        {"macro_character": 0.58, "macro_movement": 0.62, "macro_coupling": 0.67, "macro_space": 0.55},
-        {"brightness": 0.5,  "warmth": 0.7,  "movement": 0.55, "density": 0.58, "space": 0.48, "aggression": 0.18},
-        ["prophecy", "spectral", "brass"],
-        "OTTONI harmonics feed Oracle's breakpoint system — brass foretells timbre.",
+        COUPLING_TYPES[0], 0.68,
+        {"macro_character": 0.68, "macro_movement": 0.52, "macro_coupling": 0.68, "macro_space": 0.50},
+        {"macro_character": 0.55, "macro_movement": 0.58, "macro_coupling": 0.60, "macro_space": 0.55},
+        {"brightness": 0.55, "warmth": 0.74, "movement": 0.52, "density": 0.58, "space": 0.52, "aggression": 0.10},
+        ["entangled", "ottoni", "oracle", "frequency", "prophecy"],
+        "Brass frequency shifts seed ORACLE's stochastic breakpoint predictions.",
     ),
     make_preset(
-        "Stochastic Forge",
-        ("ORACLE", "OTTONI"),
-        "AMPLITUDE_MOD", 0.6,
-        {"macro_character": 0.52, "macro_movement": 0.68, "macro_coupling": 0.6,  "macro_space": 0.55},
-        {"macro_character": 0.68, "macro_movement": 0.45, "macro_coupling": 0.6,  "macro_space": 0.35},
-        {"brightness": 0.48, "warmth": 0.68, "movement": 0.6,  "density": 0.55, "space": 0.45, "aggression": 0.22},
-        ["stochastic", "maqam", "brass"],
-        "Oracle's GENDY stochastic events amplitude-shape OTTONI attack — chance forging.",
-    ),
-    make_preset(
-        "Indigo Patina",
+        "Patina Oracle",
         ("OTTONI", "ORACLE"),
-        "HARMONIC_FOLD", 0.71,
-        {"macro_character": 0.7,  "macro_movement": 0.48, "macro_coupling": 0.71, "macro_space": 0.38},
-        {"macro_character": 0.55, "macro_movement": 0.65, "macro_coupling": 0.71, "macro_space": 0.58},
-        {"brightness": 0.52, "warmth": 0.72, "movement": 0.5,  "density": 0.65, "space": 0.5,  "aggression": 0.12},
-        ["indigo", "harmonic", "deep"],
-        "OTTONI triple-brass folds into Oracle's indigo harmonic space — ancient metals.",
+        COUPLING_TYPES[1], 0.72,
+        {"macro_character": 0.72, "macro_movement": 0.58, "macro_coupling": 0.72, "macro_space": 0.46},
+        {"macro_character": 0.60, "macro_movement": 0.62, "macro_coupling": 0.65, "macro_space": 0.52},
+        {"brightness": 0.58, "warmth": 0.78, "movement": 0.55, "density": 0.62, "space": 0.48, "aggression": 0.11},
+        ["entangled", "ottoni", "oracle", "amplitude", "maqam"],
+        "OTTONI's amplitude envelope modulates ORACLE's maqam scale selection in real time.",
     ),
     make_preset(
-        "Breakpoint Grow",
-        ("ORACLE", "OTTONI"),
-        "VELOCITY_COUPLE", 0.65,
-        {"macro_character": 0.5,  "macro_movement": 0.7,  "macro_coupling": 0.65, "macro_space": 0.55},
-        {"macro_character": 0.72, "macro_movement": 0.42, "macro_coupling": 0.65, "macro_space": 0.32},
-        {"brightness": 0.5,  "warmth": 0.68, "movement": 0.62, "density": 0.58, "space": 0.42, "aggression": 0.15},
-        ["breakpoint", "velocity", "growth"],
-        "Oracle breakpoints velocity-coupled to GROW — dynamic oracle reveals its brass.",
-    ),
-    make_preset(
-        "Maqam Brass",
+        "Indigo Forge",
         ("OTTONI", "ORACLE"),
-        "PITCH_SYNC", 0.58,
-        {"macro_character": 0.62, "macro_movement": 0.52, "macro_coupling": 0.58, "macro_space": 0.4},
-        {"macro_character": 0.58, "macro_movement": 0.6,  "macro_coupling": 0.58, "macro_space": 0.58},
-        {"brightness": 0.55, "warmth": 0.65, "movement": 0.52, "density": 0.55, "space": 0.52, "aggression": 0.2},
-        ["maqam", "tuning", "brass"],
-        "Oracle's Maqam scale system pitch-syncs OTTONI intervals — microtonal brass.",
+        COUPLING_TYPES[2], 0.76,
+        {"macro_character": 0.74, "macro_movement": 0.56, "macro_coupling": 0.76, "macro_space": 0.44},
+        {"macro_character": 0.62, "macro_movement": 0.60, "macro_coupling": 0.68, "macro_space": 0.50},
+        {"brightness": 0.60, "warmth": 0.82, "movement": 0.56, "density": 0.65, "space": 0.46, "aggression": 0.09},
+        ["entangled", "ottoni", "oracle", "filter", "indigo"],
+        "Filter coupling bridges OTTONI's warm resonance with ORACLE's GENDY stochastic body.",
     ),
     make_preset(
-        "Verdant Oracle",
-        ("ORACLE", "OTTONI"),
-        "RESONANCE_SHARE", 0.76,
-        {"macro_character": 0.55, "macro_movement": 0.65, "macro_coupling": 0.76, "macro_space": 0.58},
-        {"macro_character": 0.68, "macro_movement": 0.44, "macro_coupling": 0.76, "macro_space": 0.35},
-        {"brightness": 0.48, "warmth": 0.76, "movement": 0.55, "density": 0.7,  "space": 0.45, "aggression": 0.1},
-        ["resonance", "deep", "verdant"],
-        "Oracle resonance peaks shared into OTTONI body — prophecy in patina green.",
+        "Tuning Oracle",
+        ("OTTONI", "ORACLE"),
+        COUPLING_TYPES[3], 0.65,
+        {"macro_character": 0.65, "macro_movement": 0.50, "macro_coupling": 0.65, "macro_space": 0.52},
+        {"macro_character": 0.52, "macro_movement": 0.55, "macro_coupling": 0.58, "macro_space": 0.56},
+        {"brightness": 0.52, "warmth": 0.70, "movement": 0.50, "density": 0.55, "space": 0.54, "aggression": 0.08},
+        ["entangled", "ottoni", "oracle", "pitch", "tuning"],
+        "Pitch sync locks OTTONI's third brass voice to ORACLE's microtonal breakpoint map.",
     ),
-]
-PRESETS.extend(OTTONI_ORACLE)
+    make_preset(
+        "Brass Prophecy",
+        ("OTTONI", "ORACLE"),
+        COUPLING_TYPES[4], 0.74,
+        {"macro_character": 0.74, "macro_movement": 0.60, "macro_coupling": 0.74, "macro_space": 0.44},
+        {"macro_character": 0.62, "macro_movement": 0.64, "macro_coupling": 0.66, "macro_space": 0.50},
+        {"brightness": 0.62, "warmth": 0.84, "movement": 0.60, "density": 0.66, "space": 0.44, "aggression": 0.10},
+        ["entangled", "ottoni", "oracle", "timbre", "stochastic"],
+        "Timbre blend weaves triple brass into ORACLE's GENDY waveform — warmth 0.84 grounds the prophecy.",
+    ),
+    make_preset(
+        "Green Augury",
+        ("OTTONI", "ORACLE"),
+        COUPLING_TYPES[5], 0.70,
+        {"macro_character": 0.70, "macro_movement": 0.55, "macro_coupling": 0.70, "macro_space": 0.48},
+        {"macro_character": 0.58, "macro_movement": 0.60, "macro_coupling": 0.62, "macro_space": 0.52},
+        {"brightness": 0.56, "warmth": 0.76, "movement": 0.54, "density": 0.60, "space": 0.48, "aggression": 0.09},
+        ["entangled", "ottoni", "oracle", "envelope", "augury"],
+        "Envelope linking draws ORACLE's sustained glissandi through OTTONI's brass sustain arc.",
+    ),
 
-
-# ============================================================
-# OTTONI × OBSCURA  (6 presets)
-# ============================================================
-OTTONI_OBSCURA = [
-    make_preset(
-        "Silver Patina",
-        ("OTTONI", "OBSCURA"),
-        "TIMBRE_BLEND", 0.62,
-        {"macro_character": 0.65, "macro_movement": 0.5,  "macro_coupling": 0.62, "macro_space": 0.42},
-        {"macro_character": 0.55, "macro_movement": 0.58, "macro_coupling": 0.62, "macro_space": 0.55},
-        {"brightness": 0.5,  "warmth": 0.68, "movement": 0.5,  "density": 0.6,  "space": 0.5,  "aggression": 0.14},
-        ["silver", "patina", "blend"],
-        "Daguerreotype silver and patina green blend — oxidized beauty.",
-    ),
-    make_preset(
-        "Corroded Plate",
-        ("OBSCURA", "OTTONI"),
-        "FILTER_MOD", 0.68,
-        {"macro_character": 0.55, "macro_movement": 0.62, "macro_coupling": 0.68, "macro_space": 0.55},
-        {"macro_character": 0.65, "macro_movement": 0.46, "macro_coupling": 0.68, "macro_space": 0.35},
-        {"brightness": 0.42, "warmth": 0.72, "movement": 0.55, "density": 0.65, "space": 0.48, "aggression": 0.18},
-        ["corroded", "filter", "texture"],
-        "Obscura stiffness filter-modulates OTTONI harmonic brilliance — tarnished brass.",
-    ),
-    make_preset(
-        "Old Photograph",
-        ("OTTONI", "OBSCURA"),
-        "SPATIAL_COUPLE", 0.7,
-        {"macro_character": 0.62, "macro_movement": 0.48, "macro_coupling": 0.7,  "macro_space": 0.45},
-        {"macro_character": 0.52, "macro_movement": 0.6,  "macro_coupling": 0.7,  "macro_space": 0.72},
-        {"brightness": 0.38, "warmth": 0.65, "movement": 0.48, "density": 0.55, "space": 0.72, "aggression": 0.1},
-        ["spatial", "photo", "memory"],
-        "OTTONI brass fades into Obscura's spatial depth — antique brass photograph.",
-    ),
-    make_preset(
-        "String Stiffness",
-        ("OBSCURA", "OTTONI"),
-        "FREQUENCY_SHIFT", 0.55,
-        {"macro_character": 0.5,  "macro_movement": 0.65, "macro_coupling": 0.55, "macro_space": 0.58},
-        {"macro_character": 0.68, "macro_movement": 0.45, "macro_coupling": 0.55, "macro_space": 0.38},
-        {"brightness": 0.45, "warmth": 0.66, "movement": 0.58, "density": 0.55, "space": 0.5,  "aggression": 0.15},
-        ["frequency", "stiffness", "shift"],
-        "Obscura string stiffness frequency-shifts OTTONI partials — warped brass.",
-    ),
-    make_preset(
-        "Grow Through Film",
-        ("OTTONI", "OBSCURA"),
-        "CHAOS_INJECT", 0.63,
-        {"macro_character": 0.7,  "macro_movement": 0.52, "macro_coupling": 0.63, "macro_space": 0.38},
-        {"macro_character": 0.52, "macro_movement": 0.62, "macro_coupling": 0.63, "macro_space": 0.6},
-        {"brightness": 0.88, "warmth": 0.6,  "movement": 0.58, "density": 0.5,  "space": 0.55, "aggression": 0.22},
-        ["chaos", "bright", "emerge"],
-        "GROW macro injects chaos into Obscura's silver film — brilliant emergence.",
-    ),
+    # ---- OTTONI × OBSCURA (coupling types 6-11) ----
     make_preset(
         "Daguerreotype Brass",
-        ("OBSCURA", "OTTONI"),
-        "ENVELOPE_LINK", 0.72,
-        {"macro_character": 0.55, "macro_movement": 0.6,  "macro_coupling": 0.72, "macro_space": 0.62},
-        {"macro_character": 0.66, "macro_movement": 0.44, "macro_coupling": 0.72, "macro_space": 0.35},
-        {"brightness": 0.44, "warmth": 0.75, "movement": 0.52, "density": 0.62, "space": 0.58, "aggression": 0.1},
-        ["envelope", "daguerreotype", "warm"],
-        "Obscura envelope contour linked to OTTONI attack — silver-coated fanfare.",
+        ("OTTONI", "OBSCURA"),
+        COUPLING_TYPES[6], 0.74,
+        {"macro_character": 0.72, "macro_movement": 0.58, "macro_coupling": 0.74, "macro_space": 0.46},
+        {"macro_character": 0.60, "macro_movement": 0.55, "macro_coupling": 0.65, "macro_space": 0.52},
+        {"brightness": 0.58, "warmth": 0.80, "movement": 0.55, "density": 0.64, "space": 0.50, "aggression": 0.10},
+        ["entangled", "ottoni", "obscura", "harmonic", "silver"],
+        "Harmonic folding through OBSCURA's string network — brass preserved in silver.",
+    ),
+    make_preset(
+        "Patina Film",
+        ("OTTONI", "OBSCURA"),
+        COUPLING_TYPES[7], 0.68,
+        {"macro_character": 0.68, "macro_movement": 0.52, "macro_coupling": 0.68, "macro_space": 0.50},
+        {"macro_character": 0.55, "macro_movement": 0.50, "macro_coupling": 0.60, "macro_space": 0.55},
+        {"brightness": 0.52, "warmth": 0.76, "movement": 0.50, "density": 0.60, "space": 0.54, "aggression": 0.08},
+        ["entangled", "ottoni", "obscura", "chaos", "film"],
+        "Chaos injection sends OBSCURA's stiff strings into unpredictable resonant territories.",
+    ),
+    make_preset(
+        "GROW Obscura",
+        ("OTTONI", "OBSCURA"),
+        COUPLING_TYPES[8], 0.78,
+        {"macro_character": 0.76, "macro_movement": 0.62, "macro_coupling": 0.78, "macro_space": 0.42},
+        {"macro_character": 0.65, "macro_movement": 0.58, "macro_coupling": 0.70, "macro_space": 0.48},
+        {"brightness": 0.62, "warmth": 0.84, "movement": 0.60, "density": 0.68, "space": 0.44, "aggression": 0.09},
+        ["entangled", "ottoni", "obscura", "resonance", "growth"],
+        "Resonance shared through OBSCURA's plate — warmth 0.84 floods the system.",
+    ),
+    make_preset(
+        "Brass Exposure",
+        ("OTTONI", "OBSCURA"),
+        COUPLING_TYPES[9], 0.72,
+        {"macro_character": 0.70, "macro_movement": 0.55, "macro_coupling": 0.72, "macro_space": 0.46},
+        {"macro_character": 0.58, "macro_movement": 0.52, "macro_coupling": 0.64, "macro_space": 0.52},
+        {"brightness": 0.55, "warmth": 0.78, "movement": 0.52, "density": 0.62, "space": 0.48, "aggression": 0.07},
+        ["entangled", "ottoni", "obscura", "spatial", "exposure"],
+        "Spatial coupling spreads triple brass across OBSCURA's reverberant field.",
+    ),
+    make_preset(
+        "Verdigris Daguerreotype",
+        ("OTTONI", "OBSCURA"),
+        COUPLING_TYPES[10], 0.80,
+        {"macro_character": 0.78, "macro_movement": 0.65, "macro_coupling": 0.80, "macro_space": 0.38},
+        {"macro_character": 0.68, "macro_movement": 0.60, "macro_coupling": 0.74, "macro_space": 0.44},
+        {"brightness": 0.65, "warmth": 0.86, "movement": 0.62, "density": 0.70, "space": 0.40, "aggression": 0.10},
+        ["entangled", "ottoni", "obscura", "spectral", "daguerreotype"],
+        "Spectral morphing captures brass formants in OBSCURA's photographic resonance — warmth 0.86.",
+    ),
+    make_preset(
+        "Velocity Patina",
+        ("OTTONI", "OBSCURA"),
+        COUPLING_TYPES[11], 0.66,
+        {"macro_character": 0.66, "macro_movement": 0.52, "macro_coupling": 0.66, "macro_space": 0.52},
+        {"macro_character": 0.54, "macro_movement": 0.48, "macro_coupling": 0.58, "macro_space": 0.56},
+        {"brightness": 0.50, "warmth": 0.74, "movement": 0.50, "density": 0.58, "space": 0.52, "aggression": 0.06},
+        ["entangled", "ottoni", "obscura", "velocity", "patina"],
+        "Velocity coupling: harder strikes age the patina faster, bowing OBSCURA's plate inward.",
     ),
 ]
-PRESETS.extend(OTTONI_OBSCURA)
 
+# ---------------------------------------------------------------------------
+# OLE preset data (24 presets across 4 partners)
+# ---------------------------------------------------------------------------
 
-# ============================================================
-# OLE × ORGANON  (6 presets)
-# ============================================================
-OLE_ORGANON = [
+OLE_PRESETS = [
+    # ---- OLE × ORGANON (coupling types 0-5) ----
     make_preset(
         "Drama Metabolism",
         ("OLE", "ORGANON"),
-        "AMPLITUDE_MOD", 0.7,
-        {"macro_character": 0.68, "macro_movement": 0.62, "macro_coupling": 0.7,  "macro_space": 0.4},
-        {"macro_character": 0.55, "macro_movement": 0.7,  "macro_coupling": 0.7,  "macro_space": 0.52},
-        {"brightness": 0.58, "warmth": 0.72, "movement": 0.7,  "density": 0.62, "space": 0.4,  "aggression": 0.65},
-        ["drama", "organic", "latin"],
-        "OLE DRAMA macro amplitude-modulates Organon's metabolic rate — life force crescendo.",
+        COUPLING_TYPES[0], 0.80,
+        {"macro_character": 0.78, "macro_movement": 0.72, "macro_coupling": 0.80, "macro_space": 0.38},
+        {"macro_character": 0.58, "macro_movement": 0.70, "macro_coupling": 0.68, "macro_space": 0.52},
+        {"brightness": 0.62, "warmth": 0.72, "movement": 0.75, "density": 0.68, "space": 0.38, "aggression": 0.86},
+        ["entangled", "ole", "organon", "frequency", "drama"],
+        "OLE's percussive frequency spikes drive ORGANON into metabolic overdrive — aggression 0.86.",
     ),
     make_preset(
-        "Cumbia Cell",
-        ("ORGANON", "OLE"),
-        "VELOCITY_COUPLE", 0.65,
-        {"macro_character": 0.52, "macro_movement": 0.72, "macro_coupling": 0.65, "macro_space": 0.5},
-        {"macro_character": 0.7,  "macro_movement": 0.6,  "macro_coupling": 0.65, "macro_space": 0.38},
-        {"brightness": 0.55, "warmth": 0.68, "movement": 0.75, "density": 0.6,  "space": 0.38, "aggression": 0.58},
-        ["cumbia", "velocity", "percussive"],
-        "Organon velocity output fires OLE Afro-Latin rhythm — biological cumbia.",
-    ),
-    make_preset(
-        "Hibiscus Growth",
+        "Hibiscus Pulse",
         ("OLE", "ORGANON"),
-        "HARMONIC_FOLD", 0.68,
-        {"macro_character": 0.72, "macro_movement": 0.6,  "macro_coupling": 0.68, "macro_space": 0.38},
-        {"macro_character": 0.55, "macro_movement": 0.68, "macro_coupling": 0.68, "macro_space": 0.55},
-        {"brightness": 0.6,  "warmth": 0.72, "movement": 0.65, "density": 0.6,  "space": 0.42, "aggression": 0.6},
-        ["hibiscus", "harmonic", "bloom"],
-        "OLE harmonic bloom folds into Organon's metabolic expansion — flowers multiply.",
+        COUPLING_TYPES[1], 0.74,
+        {"macro_character": 0.74, "macro_movement": 0.68, "macro_coupling": 0.74, "macro_space": 0.42},
+        {"macro_character": 0.55, "macro_movement": 0.65, "macro_coupling": 0.62, "macro_space": 0.55},
+        {"brightness": 0.58, "warmth": 0.74, "movement": 0.70, "density": 0.65, "space": 0.42, "aggression": 0.72},
+        ["entangled", "ole", "organon", "amplitude", "pulse"],
+        "Amplitude modulation stamps Afro-Latin rhythm into ORGANON's cellular texture.",
     ),
     make_preset(
-        "Variational Drama",
-        ("ORGANON", "OLE"),
-        "SPECTRAL_MORPH", 0.72,
-        {"macro_character": 0.58, "macro_movement": 0.68, "macro_coupling": 0.72, "macro_space": 0.52},
-        {"macro_character": 0.68, "macro_movement": 0.62, "macro_coupling": 0.72, "macro_space": 0.36},
-        {"brightness": 0.55, "warmth": 0.7,  "movement": 0.72, "density": 0.62, "space": 0.4,  "aggression": 0.68},
-        ["variational", "spectral", "vivid"],
-        "Organon's free-energy inference spectrally morphs OLE's timbral drama — lived theatre.",
-    ),
-    make_preset(
-        "Salsa Resonance",
+        "Drama Circuit",
         ("OLE", "ORGANON"),
-        "RESONANCE_SHARE", 0.6,
-        {"macro_character": 0.65, "macro_movement": 0.65, "macro_coupling": 0.6,  "macro_space": 0.4},
-        {"macro_character": 0.52, "macro_movement": 0.62, "macro_coupling": 0.6,  "macro_space": 0.52},
-        {"brightness": 0.6,  "warmth": 0.7,  "movement": 0.68, "density": 0.58, "space": 0.4,  "aggression": 0.6},
-        ["salsa", "resonance", "shared"],
-        "OLE-ORGANON resonance peaks dance together — living salsa rhythm.",
+        COUPLING_TYPES[2], 0.82,
+        {"macro_character": 0.80, "macro_movement": 0.74, "macro_coupling": 0.82, "macro_space": 0.36},
+        {"macro_character": 0.62, "macro_movement": 0.72, "macro_coupling": 0.72, "macro_space": 0.50},
+        {"brightness": 0.65, "warmth": 0.78, "movement": 0.78, "density": 0.72, "space": 0.35, "aggression": 0.88},
+        ["entangled", "ole", "organon", "filter", "drama"],
+        "Filter sweeps from OLE's DRAMA macro trigger ORGANON's enzymatic filters — aggression 0.88.",
     ),
     make_preset(
-        "Latin Enzyme",
+        "Latin Catalyst",
         ("OLE", "ORGANON"),
-        "FILTER_MOD", 0.75,
-        {"macro_character": 0.7,  "macro_movement": 0.68, "macro_coupling": 0.75, "macro_space": 0.35},
-        {"macro_character": 0.55, "macro_movement": 0.72, "macro_coupling": 0.75, "macro_space": 0.5},
-        {"brightness": 0.58, "warmth": 0.68, "movement": 0.75, "density": 0.65, "space": 0.35, "aggression": 0.7},
-        ["filter", "enzyme", "drive"],
-        "Organon enzyme kinetics filter-modulate OLE's brightness — bio-rhythmic drama.",
+        COUPLING_TYPES[3], 0.70,
+        {"macro_character": 0.70, "macro_movement": 0.64, "macro_coupling": 0.70, "macro_space": 0.46},
+        {"macro_character": 0.52, "macro_movement": 0.62, "macro_coupling": 0.60, "macro_space": 0.54},
+        {"brightness": 0.55, "warmth": 0.70, "movement": 0.66, "density": 0.62, "space": 0.44, "aggression": 0.65},
+        ["entangled", "ole", "organon", "pitch", "latin"],
+        "Pitch synchronization locks Afro-Latin polyrhythm into ORGANON's replication cycles.",
     ),
-]
-PRESETS.extend(OLE_ORGANON)
-
-
-# ============================================================
-# OLE × OUROBOROS  (6 presets)
-# ============================================================
-OLE_OUROBOROS = [
     make_preset(
-        "Serpent Dance",
+        "Hibiscus Biome",
+        ("OLE", "ORGANON"),
+        COUPLING_TYPES[4], 0.76,
+        {"macro_character": 0.76, "macro_movement": 0.70, "macro_coupling": 0.76, "macro_space": 0.40},
+        {"macro_character": 0.60, "macro_movement": 0.68, "macro_coupling": 0.65, "macro_space": 0.52},
+        {"brightness": 0.62, "warmth": 0.76, "movement": 0.72, "density": 0.70, "space": 0.38, "aggression": 0.80},
+        ["entangled", "ole", "organon", "timbre", "tropical"],
+        "Timbre blend — DRAMA's tropical palette colors ORGANON's bio-signal vermillion.",
+    ),
+    make_preset(
+        "Afro Enzyme",
+        ("OLE", "ORGANON"),
+        COUPLING_TYPES[5], 0.72,
+        {"macro_character": 0.72, "macro_movement": 0.66, "macro_coupling": 0.72, "macro_space": 0.44},
+        {"macro_character": 0.56, "macro_movement": 0.64, "macro_coupling": 0.62, "macro_space": 0.54},
+        {"brightness": 0.58, "warmth": 0.72, "movement": 0.68, "density": 0.66, "space": 0.42, "aggression": 0.70},
+        ["entangled", "ole", "organon", "envelope", "afro"],
+        "Envelope linking: OLE's decay triggers ORGANON's protein-synthesis envelope.",
+    ),
+
+    # ---- OLE × OUROBOROS (coupling types 6-11) ----
+    make_preset(
+        "Drama Attractor",
         ("OLE", "OUROBOROS"),
-        "CHAOS_INJECT", 0.72,
-        {"macro_character": 0.7,  "macro_movement": 0.68, "macro_coupling": 0.72, "macro_space": 0.38},
-        {"macro_character": 0.62, "macro_movement": 0.75, "macro_coupling": 0.72, "macro_space": 0.42},
-        {"brightness": 0.58, "warmth": 0.68, "movement": 0.82, "density": 0.6,  "space": 0.38, "aggression": 0.75},
-        ["chaos", "dance", "serpent"],
-        "OUROBOROS chaos injected into OLE rhythm — unpredictable Afro-Latin serpent.",
+        COUPLING_TYPES[6], 0.90,
+        {"macro_character": 0.88, "macro_movement": 0.80, "macro_coupling": 0.90, "macro_space": 0.28},
+        {"macro_character": 0.80, "macro_movement": 0.84, "macro_coupling": 0.85, "macro_space": 0.32},
+        {"brightness": 0.72, "warmth": 0.75, "movement": 0.85, "density": 0.82, "space": 0.25, "aggression": 0.90},
+        ["entangled", "ole", "ouroboros", "chaos", "drama"],
+        "DRAMA × CHAOS: OLE's harmonic folds ignite OUROBOROS's strange attractor — aggression 0.90.",
     ),
     make_preset(
-        "Cyclical Drama",
-        ("OUROBOROS", "OLE"),
-        "PITCH_SYNC", 0.65,
-        {"macro_character": 0.6,  "macro_movement": 0.72, "macro_coupling": 0.65, "macro_space": 0.44},
-        {"macro_character": 0.7,  "macro_movement": 0.62, "macro_coupling": 0.65, "macro_space": 0.36},
-        {"brightness": 0.55, "warmth": 0.7,  "movement": 0.72, "density": 0.58, "space": 0.4,  "aggression": 0.68},
-        ["cycle", "pitch", "drama"],
-        "Ouroboros cyclic pitch syncs OLE intervals — drama returns to the beginning.",
-    ),
-    make_preset(
-        "Red Hibiscus",
+        "Serpent Drama",
         ("OLE", "OUROBOROS"),
-        "FREQUENCY_SHIFT", 0.58,
-        {"macro_character": 0.68, "macro_movement": 0.65, "macro_coupling": 0.58, "macro_space": 0.38},
-        {"macro_character": 0.6,  "macro_movement": 0.72, "macro_coupling": 0.58, "macro_space": 0.44},
-        {"brightness": 0.6,  "warmth": 0.72, "movement": 0.68, "density": 0.55, "space": 0.4,  "aggression": 0.65},
-        ["frequency", "red", "shift"],
-        "OLE warmth frequency-shifts into strange attractor territory — red hibiscus chaos.",
+        COUPLING_TYPES[7], 0.85,
+        {"macro_character": 0.84, "macro_movement": 0.76, "macro_coupling": 0.85, "macro_space": 0.32},
+        {"macro_character": 0.76, "macro_movement": 0.80, "macro_coupling": 0.80, "macro_space": 0.36},
+        {"brightness": 0.68, "warmth": 0.72, "movement": 0.82, "density": 0.78, "space": 0.28, "aggression": 0.85},
+        ["entangled", "ole", "ouroboros", "chaos", "serpent"],
+        "Chaos injection from OUROBOROS dismantles OLE's Afro-Latin phrase structure, rebuilding it recursively.",
     ),
     make_preset(
-        "Leash The Drama",
-        ("OUROBOROS", "OLE"),
-        "ENVELOPE_LINK", 0.78,
-        {"macro_character": 0.62, "macro_movement": 0.75, "macro_coupling": 0.78, "macro_space": 0.42},
-        {"macro_character": 0.72, "macro_movement": 0.6,  "macro_coupling": 0.78, "macro_space": 0.35},
-        {"brightness": 0.55, "warmth": 0.7,  "movement": 0.75, "density": 0.65, "space": 0.38, "aggression": 0.72},
-        ["leash", "envelope", "control"],
-        "Ouroboros leash envelope linked to OLE — chaos harnessed into dramatic performance.",
-    ),
-    make_preset(
-        "Strange Clave",
+        "Ole Resonance",
         ("OLE", "OUROBOROS"),
-        "TIMBRE_BLEND", 0.65,
-        {"macro_character": 0.72, "macro_movement": 0.7,  "macro_coupling": 0.65, "macro_space": 0.35},
-        {"macro_character": 0.6,  "macro_movement": 0.72, "macro_coupling": 0.65, "macro_space": 0.45},
-        {"brightness": 0.56, "warmth": 0.65, "movement": 0.78, "density": 0.62, "space": 0.38, "aggression": 0.7},
-        ["timbre", "clave", "strange"],
-        "OLE clave pattern timbres blend with strange attractor state — topological rhythm.",
+        COUPLING_TYPES[8], 0.80,
+        {"macro_character": 0.80, "macro_movement": 0.72, "macro_coupling": 0.80, "macro_space": 0.36},
+        {"macro_character": 0.72, "macro_movement": 0.76, "macro_coupling": 0.75, "macro_space": 0.40},
+        {"brightness": 0.65, "warmth": 0.70, "movement": 0.78, "density": 0.75, "space": 0.32, "aggression": 0.82},
+        ["entangled", "ole", "ouroboros", "resonance", "drama"],
+        "Resonance shared between OLE's clave hit and OUROBOROS's infinite cycle — a drum inside the snake.",
     ),
     make_preset(
-        "Afro Attractor",
-        ("OUROBOROS", "OLE"),
-        "AMPLITUDE_MOD", 0.7,
-        {"macro_character": 0.58, "macro_movement": 0.75, "macro_coupling": 0.7,  "macro_space": 0.44},
-        {"macro_character": 0.72, "macro_movement": 0.62, "macro_coupling": 0.7,  "macro_space": 0.36},
-        {"brightness": 0.52, "warmth": 0.72, "movement": 0.75, "density": 0.65, "space": 0.38, "aggression": 0.72},
-        ["afro", "attractor", "amplitude"],
-        "Strange attractor amplitude pattern drives OLE Afro-Latin density — orbital drama.",
+        "Latin Ouroboros",
+        ("OLE", "OUROBOROS"),
+        COUPLING_TYPES[9], 0.78,
+        {"macro_character": 0.78, "macro_movement": 0.70, "macro_coupling": 0.78, "macro_space": 0.38},
+        {"macro_character": 0.70, "macro_movement": 0.74, "macro_coupling": 0.72, "macro_space": 0.42},
+        {"brightness": 0.62, "warmth": 0.68, "movement": 0.76, "density": 0.72, "space": 0.35, "aggression": 0.78},
+        ["entangled", "ole", "ouroboros", "spatial", "latin"],
+        "Spatial coupling extends OLE's call-and-response into OUROBOROS's dimensional loop.",
+    ),
+    make_preset(
+        "Hibiscus Chaos",
+        ("OLE", "OUROBOROS"),
+        COUPLING_TYPES[10], 0.88,
+        {"macro_character": 0.86, "macro_movement": 0.78, "macro_coupling": 0.88, "macro_space": 0.30},
+        {"macro_character": 0.78, "macro_movement": 0.82, "macro_coupling": 0.83, "macro_space": 0.34},
+        {"brightness": 0.70, "warmth": 0.73, "movement": 0.84, "density": 0.80, "space": 0.26, "aggression": 0.88},
+        ["entangled", "ole", "ouroboros", "spectral", "chaos"],
+        "Spectral morphing between hibiscus harmonic burst and OUROBOROS's self-replicating noise.",
+    ),
+    make_preset(
+        "Velocity Serpent",
+        ("OLE", "OUROBOROS"),
+        COUPLING_TYPES[11], 0.82,
+        {"macro_character": 0.82, "macro_movement": 0.74, "macro_coupling": 0.82, "macro_space": 0.34},
+        {"macro_character": 0.74, "macro_movement": 0.78, "macro_coupling": 0.77, "macro_space": 0.38},
+        {"brightness": 0.65, "warmth": 0.70, "movement": 0.80, "density": 0.76, "space": 0.30, "aggression": 0.84},
+        ["entangled", "ole", "ouroboros", "velocity", "serpent"],
+        "Velocity coupling: OLE's attack energy winds OUROBOROS's recursion rate tighter.",
+    ),
+
+    # ---- OLE × ORACLE (coupling types 0-5) ----
+    make_preset(
+        "Drama Prophecy",
+        ("OLE", "ORACLE"),
+        COUPLING_TYPES[0], 0.78,
+        {"macro_character": 0.78, "macro_movement": 0.70, "macro_coupling": 0.78, "macro_space": 0.40},
+        {"macro_character": 0.62, "macro_movement": 0.65, "macro_coupling": 0.68, "macro_space": 0.52},
+        {"brightness": 0.62, "warmth": 0.73, "movement": 0.72, "density": 0.68, "space": 0.40, "aggression": 0.76},
+        ["entangled", "ole", "oracle", "frequency", "prophecy"],
+        "Afro-Latin frequency bursts seed ORACLE's prophetic stochastic sequences.",
+    ),
+    make_preset(
+        "Hibiscus Augury",
+        ("OLE", "ORACLE"),
+        COUPLING_TYPES[1], 0.72,
+        {"macro_character": 0.72, "macro_movement": 0.65, "macro_coupling": 0.72, "macro_space": 0.44},
+        {"macro_character": 0.58, "macro_movement": 0.62, "macro_coupling": 0.63, "macro_space": 0.54},
+        {"brightness": 0.58, "warmth": 0.70, "movement": 0.68, "density": 0.65, "space": 0.42, "aggression": 0.68},
+        ["entangled", "ole", "oracle", "amplitude", "maqam"],
+        "Amplitude of OLE's drum kit sculpts ORACLE's microtonal landscape in real-time.",
+    ),
+    make_preset(
+        "DRAMA Filter Oracle",
+        ("OLE", "ORACLE"),
+        COUPLING_TYPES[2], 0.82,
+        {"macro_character": 0.80, "macro_movement": 0.72, "macro_coupling": 0.82, "macro_space": 0.38},
+        {"macro_character": 0.66, "macro_movement": 0.68, "macro_coupling": 0.72, "macro_space": 0.50},
+        {"brightness": 0.66, "warmth": 0.76, "movement": 0.75, "density": 0.72, "space": 0.36, "aggression": 0.86},
+        ["entangled", "ole", "oracle", "filter", "drama"],
+        "Filter coupling — DRAMA macro sweeps forward into ORACLE's GENDY resonant body — aggression 0.86.",
+    ),
+    make_preset(
+        "Afro Prophecy",
+        ("OLE", "ORACLE"),
+        COUPLING_TYPES[3], 0.68,
+        {"macro_character": 0.68, "macro_movement": 0.62, "macro_coupling": 0.68, "macro_space": 0.48},
+        {"macro_character": 0.55, "macro_movement": 0.58, "macro_coupling": 0.60, "macro_space": 0.55},
+        {"brightness": 0.55, "warmth": 0.68, "movement": 0.64, "density": 0.62, "space": 0.46, "aggression": 0.62},
+        ["entangled", "ole", "oracle", "pitch", "afro"],
+        "Pitch sync aligns OLE's tumbadora tuning to ORACLE's microtonal breakpoint grid.",
+    ),
+    make_preset(
+        "Ole Oracle",
+        ("OLE", "ORACLE"),
+        COUPLING_TYPES[4], 0.76,
+        {"macro_character": 0.76, "macro_movement": 0.68, "macro_coupling": 0.76, "macro_space": 0.42},
+        {"macro_character": 0.62, "macro_movement": 0.64, "macro_coupling": 0.66, "macro_space": 0.52},
+        {"brightness": 0.62, "warmth": 0.74, "movement": 0.70, "density": 0.68, "space": 0.40, "aggression": 0.75},
+        ["entangled", "ole", "oracle", "timbre", "ritual"],
+        "Timbre blend: ORACLE's stochastic tone emerges from OLE's ritual drumming.",
+    ),
+    make_preset(
+        "Hibiscus Indigo",
+        ("OLE", "ORACLE"),
+        COUPLING_TYPES[5], 0.74,
+        {"macro_character": 0.74, "macro_movement": 0.66, "macro_coupling": 0.74, "macro_space": 0.44},
+        {"macro_character": 0.60, "macro_movement": 0.62, "macro_coupling": 0.64, "macro_space": 0.52},
+        {"brightness": 0.60, "warmth": 0.72, "movement": 0.68, "density": 0.66, "space": 0.42, "aggression": 0.72},
+        ["entangled", "ole", "oracle", "envelope", "hibiscus"],
+        "Envelope linking: OLE's sustain bloom triggers ORACLE's GENDY glissando arc.",
+    ),
+
+    # ---- OLE × OBSCURA (coupling types 6-11) ----
+    make_preset(
+        "Drama Daguerreotype",
+        ("OLE", "OBSCURA"),
+        COUPLING_TYPES[6], 0.80,
+        {"macro_character": 0.80, "macro_movement": 0.72, "macro_coupling": 0.80, "macro_space": 0.36},
+        {"macro_character": 0.65, "macro_movement": 0.58, "macro_coupling": 0.70, "macro_space": 0.50},
+        {"brightness": 0.65, "warmth": 0.74, "movement": 0.74, "density": 0.70, "space": 0.34, "aggression": 0.84},
+        ["entangled", "ole", "obscura", "harmonic", "drama"],
+        "Harmonic folds from DRAMA's percussive attack are preserved in OBSCURA's silver plate.",
+    ),
+    make_preset(
+        "Ole Obscura",
+        ("OLE", "OBSCURA"),
+        COUPLING_TYPES[7], 0.76,
+        {"macro_character": 0.76, "macro_movement": 0.68, "macro_coupling": 0.76, "macro_space": 0.40},
+        {"macro_character": 0.62, "macro_movement": 0.55, "macro_coupling": 0.65, "macro_space": 0.52},
+        {"brightness": 0.62, "warmth": 0.72, "movement": 0.70, "density": 0.68, "space": 0.38, "aggression": 0.80},
+        ["entangled", "ole", "obscura", "chaos", "obscura"],
+        "Chaos injection sends OBSCURA's strings into Afro-Latin syncopated chaos.",
+    ),
+    make_preset(
+        "Latin Resonance",
+        ("OLE", "OBSCURA"),
+        COUPLING_TYPES[8], 0.74,
+        {"macro_character": 0.74, "macro_movement": 0.66, "macro_coupling": 0.74, "macro_space": 0.42},
+        {"macro_character": 0.60, "macro_movement": 0.52, "macro_coupling": 0.62, "macro_space": 0.54},
+        {"brightness": 0.58, "warmth": 0.70, "movement": 0.68, "density": 0.65, "space": 0.40, "aggression": 0.76},
+        ["entangled", "ole", "obscura", "resonance", "latin"],
+        "Resonance shared between clave transient and OBSCURA's plate nodes — rhythmically focused.",
+    ),
+    make_preset(
+        "Hibiscus Exposure",
+        ("OLE", "OBSCURA"),
+        COUPLING_TYPES[9], 0.70,
+        {"macro_character": 0.70, "macro_movement": 0.62, "macro_coupling": 0.70, "macro_space": 0.46},
+        {"macro_character": 0.56, "macro_movement": 0.50, "macro_coupling": 0.58, "macro_space": 0.55},
+        {"brightness": 0.55, "warmth": 0.68, "movement": 0.65, "density": 0.62, "space": 0.44, "aggression": 0.72},
+        ["entangled", "ole", "obscura", "spatial", "hibiscus"],
+        "Spatial coupling places OLE's call-and-response inside OBSCURA's reverberant chamber.",
+    ),
+    make_preset(
+        "Drama Silver",
+        ("OLE", "OBSCURA"),
+        COUPLING_TYPES[10], 0.84,
+        {"macro_character": 0.82, "macro_movement": 0.74, "macro_coupling": 0.84, "macro_space": 0.34},
+        {"macro_character": 0.68, "macro_movement": 0.60, "macro_coupling": 0.74, "macro_space": 0.48},
+        {"brightness": 0.68, "warmth": 0.76, "movement": 0.76, "density": 0.74, "space": 0.32, "aggression": 0.88},
+        ["entangled", "ole", "obscura", "spectral", "drama"],
+        "Spectral morphing: DRAMA's harmonic spray exposed on OBSCURA's silver surface — aggression 0.88.",
+    ),
+    make_preset(
+        "Velocity Drama",
+        ("OLE", "OBSCURA"),
+        COUPLING_TYPES[11], 0.78,
+        {"macro_character": 0.78, "macro_movement": 0.70, "macro_coupling": 0.78, "macro_space": 0.38},
+        {"macro_character": 0.64, "macro_movement": 0.56, "macro_coupling": 0.68, "macro_space": 0.50},
+        {"brightness": 0.62, "warmth": 0.72, "movement": 0.72, "density": 0.68, "space": 0.36, "aggression": 0.82},
+        ["entangled", "ole", "obscura", "velocity", "drama"],
+        "Velocity coupling: harder OLE hits expose deeper grain in OBSCURA's surface.",
     ),
 ]
-PRESETS.extend(OLE_OUROBOROS)
 
+# ---------------------------------------------------------------------------
+# ORPHICA preset data (24 presets across 4 partners)
+# ---------------------------------------------------------------------------
 
-# ============================================================
-# OLE × ORACLE  (6 presets)
-# ============================================================
-OLE_ORACLE = [
-    make_preset(
-        "Oracle Drama",
-        ("OLE", "ORACLE"),
-        "SPECTRAL_MORPH", 0.68,
-        {"macro_character": 0.72, "macro_movement": 0.62, "macro_coupling": 0.68, "macro_space": 0.38},
-        {"macro_character": 0.56, "macro_movement": 0.65, "macro_coupling": 0.68, "macro_space": 0.58},
-        {"brightness": 0.58, "warmth": 0.7,  "movement": 0.65, "density": 0.6,  "space": 0.5,  "aggression": 0.62},
-        ["spectral", "prophecy", "drama"],
-        "OLE drama spectrally morphs Oracle's vision — the dancer speaks prophecy.",
-    ),
-    make_preset(
-        "Stochastic Fiesta",
-        ("ORACLE", "OLE"),
-        "CHAOS_INJECT", 0.65,
-        {"macro_character": 0.55, "macro_movement": 0.72, "macro_coupling": 0.65, "macro_space": 0.55},
-        {"macro_character": 0.7,  "macro_movement": 0.65, "macro_coupling": 0.65, "macro_space": 0.36},
-        {"brightness": 0.58, "warmth": 0.68, "movement": 0.72, "density": 0.6,  "space": 0.42, "aggression": 0.68},
-        ["stochastic", "fiesta", "chaos"],
-        "GENDY stochastic chaos injected into OLE — unpredictable celebration.",
-    ),
-    make_preset(
-        "Maqam Carnival",
-        ("OLE", "ORACLE"),
-        "PITCH_SYNC", 0.62,
-        {"macro_character": 0.68, "macro_movement": 0.65, "macro_coupling": 0.62, "macro_space": 0.38},
-        {"macro_character": 0.55, "macro_movement": 0.62, "macro_coupling": 0.62, "macro_space": 0.58},
-        {"brightness": 0.62, "warmth": 0.7,  "movement": 0.65, "density": 0.55, "space": 0.5,  "aggression": 0.6},
-        ["maqam", "carnival", "tuning"],
-        "Oracle Maqam tuning pitch-syncs OLE scales — microtonal carnival.",
-    ),
-    make_preset(
-        "Breakpoint Clave",
-        ("ORACLE", "OLE"),
-        "VELOCITY_COUPLE", 0.72,
-        {"macro_character": 0.55, "macro_movement": 0.7,  "macro_coupling": 0.72, "macro_space": 0.55},
-        {"macro_character": 0.72, "macro_movement": 0.62, "macro_coupling": 0.72, "macro_space": 0.35},
-        {"brightness": 0.55, "warmth": 0.68, "movement": 0.72, "density": 0.62, "space": 0.4,  "aggression": 0.7},
-        ["breakpoint", "clave", "velocity"],
-        "Oracle breakpoints velocity-drive OLE clave accents — prophetic rhythm.",
-    ),
-    make_preset(
-        "Indigo Hibiscus",
-        ("OLE", "ORACLE"),
-        "HARMONIC_FOLD", 0.7,
-        {"macro_character": 0.72, "macro_movement": 0.6,  "macro_coupling": 0.7,  "macro_space": 0.36},
-        {"macro_character": 0.55, "macro_movement": 0.68, "macro_coupling": 0.7,  "macro_space": 0.62},
-        {"brightness": 0.6,  "warmth": 0.68, "movement": 0.65, "density": 0.65, "space": 0.55, "aggression": 0.62},
-        ["indigo", "hibiscus", "deep"],
-        "OLE hibiscus harmonics fold into Oracle's indigo depth — mystic tropics.",
-    ),
-    make_preset(
-        "Dramatic Foresight",
-        ("ORACLE", "OLE"),
-        "RESONANCE_SHARE", 0.65,
-        {"macro_character": 0.55, "macro_movement": 0.65, "macro_coupling": 0.65, "macro_space": 0.58},
-        {"macro_character": 0.7,  "macro_movement": 0.62, "macro_coupling": 0.65, "macro_space": 0.36},
-        {"brightness": 0.56, "warmth": 0.7,  "movement": 0.65, "density": 0.6,  "space": 0.48, "aggression": 0.65},
-        ["resonance", "foresight", "drama"],
-        "Oracle resonance peaks shared with OLE — prophecy resonates in hibiscus red.",
-    ),
-]
-PRESETS.extend(OLE_ORACLE)
-
-
-# ============================================================
-# OLE × OBSCURA  (6 presets)
-# ============================================================
-OLE_OBSCURA = [
-    make_preset(
-        "Hidden Drama",
-        ("OLE", "OBSCURA"),
-        "SPATIAL_COUPLE", 0.68,
-        {"macro_character": 0.7,  "macro_movement": 0.62, "macro_coupling": 0.68, "macro_space": 0.4},
-        {"macro_character": 0.52, "macro_movement": 0.58, "macro_coupling": 0.68, "macro_space": 0.72},
-        {"brightness": 0.55, "warmth": 0.68, "movement": 0.62, "density": 0.55, "space": 0.7,  "aggression": 0.58},
-        ["spatial", "hidden", "drama"],
-        "OLE drama spatially coupled into Obscura's depth — the dancer disappears.",
-    ),
-    make_preset(
-        "Silver Clave",
-        ("OBSCURA", "OLE"),
-        "FILTER_MOD", 0.7,
-        {"macro_character": 0.52, "macro_movement": 0.62, "macro_coupling": 0.7,  "macro_space": 0.62},
-        {"macro_character": 0.7,  "macro_movement": 0.65, "macro_coupling": 0.7,  "macro_space": 0.36},
-        {"brightness": 0.5,  "warmth": 0.68, "movement": 0.65, "density": 0.6,  "space": 0.55, "aggression": 0.62},
-        ["silver", "clave", "filter"],
-        "Obscura stiffness filter-modulates OLE's clave brightness — tarnished rhythm.",
-    ),
-    make_preset(
-        "Daguerreotype Dance",
-        ("OLE", "OBSCURA"),
-        "TIMBRE_BLEND", 0.6,
-        {"macro_character": 0.68, "macro_movement": 0.65, "macro_coupling": 0.6,  "macro_space": 0.38},
-        {"macro_character": 0.52, "macro_movement": 0.58, "macro_coupling": 0.6,  "macro_space": 0.68},
-        {"brightness": 0.45, "warmth": 0.65, "movement": 0.62, "density": 0.55, "space": 0.62, "aggression": 0.55},
-        ["daguerreotype", "dance", "vintage"],
-        "OLE vibrant timbre blended with Obscura's silver grain — vintage dance floor.",
-    ),
-    make_preset(
-        "Corroded Fiesta",
-        ("OBSCURA", "OLE"),
-        "FREQUENCY_SHIFT", 0.62,
-        {"macro_character": 0.5,  "macro_movement": 0.62, "macro_coupling": 0.62, "macro_space": 0.65},
-        {"macro_character": 0.7,  "macro_movement": 0.65, "macro_coupling": 0.62, "macro_space": 0.35},
-        {"brightness": 0.48, "warmth": 0.68, "movement": 0.65, "density": 0.58, "space": 0.58, "aggression": 0.6},
-        ["corroded", "frequency", "fiesta"],
-        "Obscura string corrosion frequency-shifts OLE tones — weathered celebration.",
-    ),
-    make_preset(
-        "Drama In Silver",
-        ("OLE", "OBSCURA"),
-        "ENVELOPE_LINK", 0.72,
-        {"macro_character": 0.72, "macro_movement": 0.65, "macro_coupling": 0.72, "macro_space": 0.35},
-        {"macro_character": 0.52, "macro_movement": 0.58, "macro_coupling": 0.72, "macro_space": 0.68},
-        {"brightness": 0.52, "warmth": 0.7,  "movement": 0.65, "density": 0.6,  "space": 0.62, "aggression": 0.65},
-        ["envelope", "drama", "silver"],
-        "OLE envelope drama linked into Obscura's decay — passionate slow fade.",
-    ),
-    make_preset(
-        "Chromogenic Drama",
-        ("OBSCURA", "OLE"),
-        "CHAOS_INJECT", 0.65,
-        {"macro_character": 0.52, "macro_movement": 0.62, "macro_coupling": 0.65, "macro_space": 0.65},
-        {"macro_character": 0.72, "macro_movement": 0.68, "macro_coupling": 0.65, "macro_space": 0.35},
-        {"brightness": 0.9,  "warmth": 0.65, "movement": 0.68, "density": 0.58, "space": 0.55, "aggression": 0.65},
-        ["chromogenic", "chaos", "bright"],
-        "Obscura photographic chaos injected into OLE — exposure reveals drama.",
-    ),
-]
-PRESETS.extend(OLE_OBSCURA)
-
-
-# ============================================================
-# ORPHICA × ORGANON  (6 presets)
-# ============================================================
-ORPHICA_ORGANON = [
+ORPHICA_PRESETS = [
+    # ---- ORPHICA × ORGANON (coupling types 0-5) ----
     make_preset(
         "Harp Metabolism",
         ("ORPHICA", "ORGANON"),
-        "SPECTRAL_MORPH", 0.68,
-        {"macro_character": 0.6,  "macro_movement": 0.55, "macro_coupling": 0.68, "macro_space": 0.68},
-        {"macro_character": 0.55, "macro_movement": 0.7,  "macro_coupling": 0.68, "macro_space": 0.52},
-        {"brightness": 0.78, "warmth": 0.48, "movement": 0.6,  "density": 0.45, "space": 0.72, "aggression": 0.08},
-        ["harp", "spectral", "organic"],
-        "ORPHICA microsound harp spectrally morphs Organon's metabolic palette — bioluminescent life.",
+        COUPLING_TYPES[0], 0.68,
+        {"macro_character": 0.68, "macro_movement": 0.55, "macro_coupling": 0.68, "macro_space": 0.72},
+        {"macro_character": 0.50, "macro_movement": 0.62, "macro_coupling": 0.58, "macro_space": 0.58},
+        {"brightness": 0.88, "warmth": 0.42, "movement": 0.55, "density": 0.45, "space": 0.78, "aggression": 0.08},
+        ["entangled", "orphica", "organon", "frequency", "harp"],
+        "Microsound harp frequency shifts trigger ORGANON's metabolic cascade — brightness 0.88.",
     ),
     make_preset(
-        "Siphonophore Cell",
-        ("ORGANON", "ORPHICA"),
-        "ENVELOPE_LINK", 0.65,
-        {"macro_character": 0.52, "macro_movement": 0.72, "macro_coupling": 0.65, "macro_space": 0.55},
-        {"macro_character": 0.62, "macro_movement": 0.55, "macro_coupling": 0.65, "macro_space": 0.72},
-        {"brightness": 0.8,  "warmth": 0.45, "movement": 0.65, "density": 0.42, "space": 0.75, "aggression": 0.06},
-        ["siphonophore", "envelope", "marine"],
-        "Organon cellular envelope linked to ORPHICA — colony modulates harp breath.",
-    ),
-    make_preset(
-        "Bioluminescent Harp",
+        "Seafoam Pulse",
         ("ORPHICA", "ORGANON"),
-        "RESONANCE_SHARE", 0.72,
-        {"macro_character": 0.65, "macro_movement": 0.52, "macro_coupling": 0.72, "macro_space": 0.75},
-        {"macro_character": 0.55, "macro_movement": 0.68, "macro_coupling": 0.72, "macro_space": 0.5},
-        {"brightness": 0.85, "warmth": 0.42, "movement": 0.55, "density": 0.4,  "space": 0.78, "aggression": 0.05},
-        ["bioluminescent", "resonance", "harp"],
-        "ORPHICA resonance peaks shared with Organon's metabolic nodes — underwater glow.",
-    ),
-    make_preset(
-        "Variational Pluck",
-        ("ORGANON", "ORPHICA"),
-        "VELOCITY_COUPLE", 0.62,
-        {"macro_character": 0.5,  "macro_movement": 0.7,  "macro_coupling": 0.62, "macro_space": 0.55},
-        {"macro_character": 0.65, "macro_movement": 0.5,  "macro_coupling": 0.62, "macro_space": 0.73},
-        {"brightness": 0.75, "warmth": 0.45, "movement": 0.62, "density": 0.42, "space": 0.72, "aggression": 0.07},
-        ["variational", "pluck", "velocity"],
-        "Organon variational energy velocity-couples ORPHICA pluck intensity — adaptive harp.",
-    ),
-    make_preset(
-        "Metabolic Mist",
-        ("ORPHICA", "ORGANON"),
-        "SPATIAL_COUPLE", 0.7,
-        {"macro_character": 0.62, "macro_movement": 0.5,  "macro_coupling": 0.7,  "macro_space": 0.8},
-        {"macro_character": 0.52, "macro_movement": 0.65, "macro_coupling": 0.7,  "macro_space": 0.52},
-        {"brightness": 0.82, "warmth": 0.44, "movement": 0.55, "density": 0.38, "space": 0.82, "aggression": 0.05},
-        ["spatial", "mist", "ethereal"],
-        "ORPHICA microsound spatially coupled with Organon's diffusion — sea mist harp.",
-    ),
-    make_preset(
-        "Colony Harp",
-        ("ORGANON", "ORPHICA"),
-        "HARMONIC_FOLD", 0.65,
-        {"macro_character": 0.55, "macro_movement": 0.68, "macro_coupling": 0.65, "macro_space": 0.55},
+        COUPLING_TYPES[1], 0.65,
         {"macro_character": 0.65, "macro_movement": 0.52, "macro_coupling": 0.65, "macro_space": 0.75},
-        {"brightness": 0.8,  "warmth": 0.45, "movement": 0.58, "density": 0.45, "space": 0.75, "aggression": 0.06},
-        ["colony", "harmonic", "fold"],
-        "Organon colony harmonics fold into ORPHICA's harp strings — communal instrument.",
+        {"macro_character": 0.48, "macro_movement": 0.60, "macro_coupling": 0.55, "macro_space": 0.60},
+        {"brightness": 0.86, "warmth": 0.40, "movement": 0.52, "density": 0.42, "space": 0.76, "aggression": 0.07},
+        ["entangled", "orphica", "organon", "amplitude", "seafoam"],
+        "ORPHICA's siphonophore amplitude pulse breathes into ORGANON's cellular rhythm.",
     ),
-]
-PRESETS.extend(ORPHICA_ORGANON)
+    make_preset(
+        "Siren Circuit",
+        ("ORPHICA", "ORGANON"),
+        COUPLING_TYPES[2], 0.72,
+        {"macro_character": 0.72, "macro_movement": 0.58, "macro_coupling": 0.72, "macro_space": 0.70},
+        {"macro_character": 0.55, "macro_movement": 0.65, "macro_coupling": 0.62, "macro_space": 0.56},
+        {"brightness": 0.90, "warmth": 0.38, "movement": 0.58, "density": 0.48, "space": 0.72, "aggression": 0.09},
+        ["entangled", "orphica", "organon", "filter", "siren"],
+        "Filter coupling — ORPHICA's glass-harmonic filter feeds ORGANON's enzymatic sweep — brightness 0.90.",
+    ),
+    make_preset(
+        "Harp Catalyst",
+        ("ORPHICA", "ORGANON"),
+        COUPLING_TYPES[3], 0.62,
+        {"macro_character": 0.62, "macro_movement": 0.50, "macro_coupling": 0.62, "macro_space": 0.74},
+        {"macro_character": 0.46, "macro_movement": 0.58, "macro_coupling": 0.52, "macro_space": 0.60},
+        {"brightness": 0.84, "warmth": 0.40, "movement": 0.50, "density": 0.40, "space": 0.74, "aggression": 0.07},
+        ["entangled", "orphica", "organon", "pitch", "harp"],
+        "Pitch sync locks ORPHICA's microtonal glissando into ORGANON's enzymatic resonance map.",
+    ),
+    make_preset(
+        "Seafoam Biome",
+        ("ORPHICA", "ORGANON"),
+        COUPLING_TYPES[4], 0.70,
+        {"macro_character": 0.70, "macro_movement": 0.55, "macro_coupling": 0.70, "macro_space": 0.72},
+        {"macro_character": 0.52, "macro_movement": 0.63, "macro_coupling": 0.60, "macro_space": 0.58},
+        {"brightness": 0.88, "warmth": 0.42, "movement": 0.55, "density": 0.46, "space": 0.76, "aggression": 0.08},
+        ["entangled", "orphica", "organon", "timbre", "seafoam"],
+        "Timbre blend: ORPHICA's harmonic shimmer colors ORGANON's bio-signal teal.",
+    ),
+    make_preset(
+        "Siphonophore Memory",
+        ("ORPHICA", "ORGANON"),
+        COUPLING_TYPES[5], 0.66,
+        {"macro_character": 0.66, "macro_movement": 0.52, "macro_coupling": 0.66, "macro_space": 0.73},
+        {"macro_character": 0.50, "macro_movement": 0.60, "macro_coupling": 0.56, "macro_space": 0.60},
+        {"brightness": 0.85, "warmth": 0.40, "movement": 0.52, "density": 0.42, "space": 0.74, "aggression": 0.07},
+        ["entangled", "orphica", "organon", "envelope", "siphonophore"],
+        "Envelope linking: ORPHICA's long decay imprints on ORGANON's long-term cellular pattern.",
+    ),
 
-
-# ============================================================
-# ORPHICA × OUROBOROS  (6 presets)
-# ============================================================
-ORPHICA_OUROBOROS = [
+    # ---- ORPHICA × OUROBOROS (coupling types 6-11) ----
     make_preset(
-        "Serpent Harp",
+        "Glass Serpent",
         ("ORPHICA", "OUROBOROS"),
-        "CHAOS_INJECT", 0.62,
-        {"macro_character": 0.6,  "macro_movement": 0.55, "macro_coupling": 0.62, "macro_space": 0.72},
-        {"macro_character": 0.62, "macro_movement": 0.72, "macro_coupling": 0.62, "macro_space": 0.42},
-        {"brightness": 0.75, "warmth": 0.42, "movement": 0.68, "density": 0.45, "space": 0.7,  "aggression": 0.45},
-        ["serpent", "chaos", "harp"],
-        "OUROBOROS chaos injected into ORPHICA microsound — serpentine harp dissolution.",
+        COUPLING_TYPES[6], 0.76,
+        {"macro_character": 0.76, "macro_movement": 0.62, "macro_coupling": 0.76, "macro_space": 0.68},
+        {"macro_character": 0.68, "macro_movement": 0.70, "macro_coupling": 0.72, "macro_space": 0.40},
+        {"brightness": 0.90, "warmth": 0.35, "movement": 0.64, "density": 0.55, "space": 0.70, "aggression": 0.20},
+        ["entangled", "orphica", "ouroboros", "harmonic", "glass"],
+        "ORPHICA's harmonic folding braids with OUROBOROS's self-consuming loop — brightness 0.90.",
     ),
     make_preset(
-        "Cyclic Seafoam",
-        ("OUROBOROS", "ORPHICA"),
-        "FREQUENCY_SHIFT", 0.58,
-        {"macro_character": 0.58, "macro_movement": 0.7,  "macro_coupling": 0.58, "macro_space": 0.44},
-        {"macro_character": 0.65, "macro_movement": 0.5,  "macro_coupling": 0.58, "macro_space": 0.75},
-        {"brightness": 0.78, "warmth": 0.4,  "movement": 0.65, "density": 0.42, "space": 0.73, "aggression": 0.4},
-        ["cycle", "seafoam", "frequency"],
-        "Ouroboros cyclic topology frequency-shifts ORPHICA strings — eternal pluck.",
-    ),
-    make_preset(
-        "Strange Siphon",
+        "Siren Attractor",
         ("ORPHICA", "OUROBOROS"),
-        "PITCH_SYNC", 0.68,
-        {"macro_character": 0.65, "macro_movement": 0.52, "macro_coupling": 0.68, "macro_space": 0.75},
-        {"macro_character": 0.6,  "macro_movement": 0.72, "macro_coupling": 0.68, "macro_space": 0.42},
-        {"brightness": 0.72, "warmth": 0.42, "movement": 0.7,  "density": 0.48, "space": 0.72, "aggression": 0.48},
-        ["strange", "siphon", "pitch"],
-        "ORPHICA siphonophore pitch-synced to strange attractor — colony orbits chaos.",
+        COUPLING_TYPES[7], 0.82,
+        {"macro_character": 0.80, "macro_movement": 0.68, "macro_coupling": 0.82, "macro_space": 0.65},
+        {"macro_character": 0.74, "macro_movement": 0.76, "macro_coupling": 0.78, "macro_space": 0.36},
+        {"brightness": 0.92, "warmth": 0.32, "movement": 0.70, "density": 0.60, "space": 0.68, "aggression": 0.28},
+        ["entangled", "orphica", "ouroboros", "chaos", "siren"],
+        "Chaos injection from OUROBOROS disrupts ORPHICA's crystalline lattice — brightness 0.92.",
     ),
     make_preset(
-        "Leashed Pluck",
-        ("OUROBOROS", "ORPHICA"),
-        "ENVELOPE_LINK", 0.75,
-        {"macro_character": 0.6,  "macro_movement": 0.75, "macro_coupling": 0.75, "macro_space": 0.42},
-        {"macro_character": 0.65, "macro_movement": 0.48, "macro_coupling": 0.75, "macro_space": 0.78},
-        {"brightness": 0.76, "warmth": 0.4,  "movement": 0.68, "density": 0.44, "space": 0.75, "aggression": 0.42},
-        ["leash", "pluck", "envelope"],
-        "Ouroboros leash envelope shape linked to ORPHICA pluck decay — controlled chaos harp.",
-    ),
-    make_preset(
-        "Attractor Mist",
+        "Seafoam Recursion",
         ("ORPHICA", "OUROBOROS"),
-        "TIMBRE_BLEND", 0.6,
-        {"macro_character": 0.62, "macro_movement": 0.52, "macro_coupling": 0.6,  "macro_space": 0.78},
-        {"macro_character": 0.6,  "macro_movement": 0.7,  "macro_coupling": 0.6,  "macro_space": 0.42},
-        {"brightness": 0.7,  "warmth": 0.42, "movement": 0.65, "density": 0.45, "space": 0.76, "aggression": 0.42},
-        ["attractor", "mist", "blend"],
-        "ORPHICA microsound timbre blends into strange attractor state — ethereal topology.",
+        COUPLING_TYPES[8], 0.74,
+        {"macro_character": 0.74, "macro_movement": 0.60, "macro_coupling": 0.74, "macro_space": 0.70},
+        {"macro_character": 0.66, "macro_movement": 0.68, "macro_coupling": 0.70, "macro_space": 0.40},
+        {"brightness": 0.88, "warmth": 0.36, "movement": 0.62, "density": 0.52, "space": 0.72, "aggression": 0.18},
+        ["entangled", "orphica", "ouroboros", "resonance", "recursion"],
+        "Resonance shared between ORPHICA's glass harmonic and OUROBOROS's recursive loop.",
+    ),
+    make_preset(
+        "Harp Ouroboros",
+        ("ORPHICA", "OUROBOROS"),
+        COUPLING_TYPES[9], 0.70,
+        {"macro_character": 0.70, "macro_movement": 0.56, "macro_coupling": 0.70, "macro_space": 0.72},
+        {"macro_character": 0.62, "macro_movement": 0.64, "macro_coupling": 0.65, "macro_space": 0.42},
+        {"brightness": 0.86, "warmth": 0.36, "movement": 0.58, "density": 0.50, "space": 0.74, "aggression": 0.15},
+        ["entangled", "orphica", "ouroboros", "spatial", "harp"],
+        "Spatial coupling places OUROBOROS's eternal loop inside ORPHICA's resonant chamber.",
+    ),
+    make_preset(
+        "Crystal Chaos",
+        ("ORPHICA", "OUROBOROS"),
+        COUPLING_TYPES[10], 0.80,
+        {"macro_character": 0.78, "macro_movement": 0.66, "macro_coupling": 0.80, "macro_space": 0.66},
+        {"macro_character": 0.72, "macro_movement": 0.74, "macro_coupling": 0.76, "macro_space": 0.38},
+        {"brightness": 0.91, "warmth": 0.33, "movement": 0.68, "density": 0.58, "space": 0.70, "aggression": 0.25},
+        ["entangled", "orphica", "ouroboros", "spectral", "crystal"],
+        "Spectral morphing crystallizes OUROBOROS's noise into ORPHICA's glass-harmonic structure.",
     ),
     make_preset(
         "Velocity Siren",
-        ("OUROBOROS", "ORPHICA"),
-        "VELOCITY_COUPLE", 0.7,
-        {"macro_character": 0.58, "macro_movement": 0.72, "macro_coupling": 0.7,  "macro_space": 0.44},
-        {"macro_character": 0.68, "macro_movement": 0.5,  "macro_coupling": 0.7,  "macro_space": 0.76},
-        {"brightness": 0.8,  "warmth": 0.4,  "movement": 0.68, "density": 0.42, "space": 0.74, "aggression": 0.44},
-        ["velocity", "siren", "harp"],
-        "Ouroboros velocity output drives ORPHICA harp intensity — siren song emerges.",
+        ("ORPHICA", "OUROBOROS"),
+        COUPLING_TYPES[11], 0.72,
+        {"macro_character": 0.72, "macro_movement": 0.58, "macro_coupling": 0.72, "macro_space": 0.70},
+        {"macro_character": 0.64, "macro_movement": 0.66, "macro_coupling": 0.67, "macro_space": 0.42},
+        {"brightness": 0.87, "warmth": 0.35, "movement": 0.60, "density": 0.52, "space": 0.72, "aggression": 0.18},
+        ["entangled", "orphica", "ouroboros", "velocity", "siren"],
+        "Velocity coupling: delicate ORPHICA touch slows OUROBOROS's cycle; hard attacks accelerate it.",
+    ),
+
+    # ---- ORPHICA × ORACLE (coupling types 0-5) ----
+    make_preset(
+        "Harp Prophecy",
+        ("ORPHICA", "ORACLE"),
+        COUPLING_TYPES[0], 0.68,
+        {"macro_character": 0.68, "macro_movement": 0.55, "macro_coupling": 0.68, "macro_space": 0.74},
+        {"macro_character": 0.54, "macro_movement": 0.60, "macro_coupling": 0.60, "macro_space": 0.58},
+        {"brightness": 0.88, "warmth": 0.38, "movement": 0.55, "density": 0.44, "space": 0.76, "aggression": 0.08},
+        ["entangled", "orphica", "oracle", "frequency", "prophecy"],
+        "ORPHICA's high-frequency shimmer seeds ORACLE's stochastic breakpoint mapping.",
+    ),
+    make_preset(
+        "Seafoam Augury",
+        ("ORPHICA", "ORACLE"),
+        COUPLING_TYPES[1], 0.65,
+        {"macro_character": 0.65, "macro_movement": 0.52, "macro_coupling": 0.65, "macro_space": 0.76},
+        {"macro_character": 0.52, "macro_movement": 0.58, "macro_coupling": 0.56, "macro_space": 0.60},
+        {"brightness": 0.86, "warmth": 0.36, "movement": 0.52, "density": 0.42, "space": 0.78, "aggression": 0.07},
+        ["entangled", "orphica", "oracle", "amplitude", "seafoam"],
+        "Amplitude of ORPHICA's glissando modulates ORACLE's GENDY stochastic parameters.",
+    ),
+    make_preset(
+        "Siren Oracle",
+        ("ORPHICA", "ORACLE"),
+        COUPLING_TYPES[2], 0.74,
+        {"macro_character": 0.74, "macro_movement": 0.60, "macro_coupling": 0.74, "macro_space": 0.72},
+        {"macro_character": 0.60, "macro_movement": 0.64, "macro_coupling": 0.66, "macro_space": 0.56},
+        {"brightness": 0.90, "warmth": 0.36, "movement": 0.60, "density": 0.48, "space": 0.74, "aggression": 0.09},
+        ["entangled", "orphica", "oracle", "filter", "siren"],
+        "Filter coupling — ORPHICA's bright filter lattice intersects ORACLE's maqam framework — brightness 0.90.",
+    ),
+    make_preset(
+        "Crystal Augury",
+        ("ORPHICA", "ORACLE"),
+        COUPLING_TYPES[3], 0.62,
+        {"macro_character": 0.62, "macro_movement": 0.50, "macro_coupling": 0.62, "macro_space": 0.76},
+        {"macro_character": 0.50, "macro_movement": 0.55, "macro_coupling": 0.54, "macro_space": 0.60},
+        {"brightness": 0.84, "warmth": 0.36, "movement": 0.50, "density": 0.40, "space": 0.78, "aggression": 0.06},
+        ["entangled", "orphica", "oracle", "pitch", "crystal"],
+        "Pitch sync locks ORPHICA's overtone series to ORACLE's microtonal breakpoint lattice.",
+    ),
+    make_preset(
+        "Glass Prophecy",
+        ("ORPHICA", "ORACLE"),
+        COUPLING_TYPES[4], 0.70,
+        {"macro_character": 0.70, "macro_movement": 0.56, "macro_coupling": 0.70, "macro_space": 0.74},
+        {"macro_character": 0.56, "macro_movement": 0.61, "macro_coupling": 0.62, "macro_space": 0.58},
+        {"brightness": 0.88, "warmth": 0.38, "movement": 0.56, "density": 0.46, "space": 0.76, "aggression": 0.08},
+        ["entangled", "orphica", "oracle", "timbre", "glass"],
+        "Timbre blend: ORACLE's GENDY waveform acquires ORPHICA's glass-harmonic sheen.",
+    ),
+    make_preset(
+        "Siphonophore Oracle",
+        ("ORPHICA", "ORACLE"),
+        COUPLING_TYPES[5], 0.68,
+        {"macro_character": 0.68, "macro_movement": 0.54, "macro_coupling": 0.68, "macro_space": 0.75},
+        {"macro_character": 0.54, "macro_movement": 0.59, "macro_coupling": 0.60, "macro_space": 0.59},
+        {"brightness": 0.86, "warmth": 0.37, "movement": 0.54, "density": 0.44, "space": 0.77, "aggression": 0.07},
+        ["entangled", "orphica", "oracle", "envelope", "siphonophore"],
+        "Envelope linking: ORPHICA's sustain whisper triggers ORACLE's prophetic glissando arc.",
+    ),
+
+    # ---- ORPHICA × OBSCURA (coupling types 6-11) ----
+    make_preset(
+        "Crystal Daguerreotype",
+        ("ORPHICA", "OBSCURA"),
+        COUPLING_TYPES[6], 0.72,
+        {"macro_character": 0.72, "macro_movement": 0.58, "macro_coupling": 0.72, "macro_space": 0.72},
+        {"macro_character": 0.58, "macro_movement": 0.52, "macro_coupling": 0.62, "macro_space": 0.56},
+        {"brightness": 0.90, "warmth": 0.35, "movement": 0.55, "density": 0.48, "space": 0.74, "aggression": 0.08},
+        ["entangled", "orphica", "obscura", "harmonic", "crystal"],
+        "ORPHICA's harmonic spectrum folded into OBSCURA's silver surface — brightness 0.90.",
+    ),
+    make_preset(
+        "Seafoam Obscura",
+        ("ORPHICA", "OBSCURA"),
+        COUPLING_TYPES[7], 0.68,
+        {"macro_character": 0.68, "macro_movement": 0.54, "macro_coupling": 0.68, "macro_space": 0.74},
+        {"macro_character": 0.54, "macro_movement": 0.48, "macro_coupling": 0.58, "macro_space": 0.58},
+        {"brightness": 0.87, "warmth": 0.34, "movement": 0.52, "density": 0.44, "space": 0.76, "aggression": 0.07},
+        ["entangled", "orphica", "obscura", "chaos", "seafoam"],
+        "Chaos injection from OBSCURA's string network disturbs ORPHICA's crystalline calm.",
+    ),
+    make_preset(
+        "Harp Resonance",
+        ("ORPHICA", "OBSCURA"),
+        COUPLING_TYPES[8], 0.76,
+        {"macro_character": 0.76, "macro_movement": 0.62, "macro_coupling": 0.76, "macro_space": 0.70},
+        {"macro_character": 0.62, "macro_movement": 0.55, "macro_coupling": 0.66, "macro_space": 0.54},
+        {"brightness": 0.88, "warmth": 0.36, "movement": 0.58, "density": 0.50, "space": 0.72, "aggression": 0.09},
+        ["entangled", "orphica", "obscura", "resonance", "harp"],
+        "Resonance shared between glass-harmonic and OBSCURA's plate — spacious and luminous.",
+    ),
+    make_preset(
+        "Siren Exposure",
+        ("ORPHICA", "OBSCURA"),
+        COUPLING_TYPES[9], 0.65,
+        {"macro_character": 0.65, "macro_movement": 0.52, "macro_coupling": 0.65, "macro_space": 0.76},
+        {"macro_character": 0.52, "macro_movement": 0.46, "macro_coupling": 0.56, "macro_space": 0.60},
+        {"brightness": 0.85, "warmth": 0.33, "movement": 0.50, "density": 0.40, "space": 0.80, "aggression": 0.06},
+        ["entangled", "orphica", "obscura", "spatial", "siren"],
+        "Spatial coupling extends ORPHICA's siphonophore ring into OBSCURA's reverberant field — space 0.80.",
+    ),
+    make_preset(
+        "Seafoam Silver",
+        ("ORPHICA", "OBSCURA"),
+        COUPLING_TYPES[10], 0.78,
+        {"macro_character": 0.78, "macro_movement": 0.64, "macro_coupling": 0.78, "macro_space": 0.70},
+        {"macro_character": 0.64, "macro_movement": 0.57, "macro_coupling": 0.68, "macro_space": 0.54},
+        {"brightness": 0.92, "warmth": 0.34, "movement": 0.60, "density": 0.52, "space": 0.72, "aggression": 0.08},
+        ["entangled", "orphica", "obscura", "spectral", "seafoam"],
+        "Spectral morphing: OBSCURA's silver plate becomes ORPHICA's resonant canvas — brightness 0.92.",
+    ),
+    make_preset(
+        "Velocity Glass",
+        ("ORPHICA", "OBSCURA"),
+        COUPLING_TYPES[11], 0.66,
+        {"macro_character": 0.66, "macro_movement": 0.52, "macro_coupling": 0.66, "macro_space": 0.74},
+        {"macro_character": 0.52, "macro_movement": 0.46, "macro_coupling": 0.58, "macro_space": 0.58},
+        {"brightness": 0.86, "warmth": 0.33, "movement": 0.50, "density": 0.42, "space": 0.76, "aggression": 0.06},
+        ["entangled", "orphica", "obscura", "velocity", "glass"],
+        "Velocity coupling: soft ORPHICA touch reflects; hard strike refracts through OBSCURA.",
     ),
 ]
-PRESETS.extend(ORPHICA_OUROBOROS)
 
-
-# ============================================================
-# ORPHICA × ORACLE  (6 presets)
-# ============================================================
-ORPHICA_ORACLE = [
-    make_preset(
-        "Prophecy Harp",
-        ("ORPHICA", "ORACLE"),
-        "HARMONIC_FOLD", 0.68,
-        {"macro_character": 0.65, "macro_movement": 0.52, "macro_coupling": 0.68, "macro_space": 0.75},
-        {"macro_character": 0.56, "macro_movement": 0.65, "macro_coupling": 0.68, "macro_space": 0.62},
-        {"brightness": 0.85, "warmth": 0.4,  "movement": 0.55, "density": 0.42, "space": 0.75, "aggression": 0.06},
-        ["prophecy", "harp", "harmonic"],
-        "ORPHICA harp harmonics fold into Oracle's vision — micro-prophecy.",
-    ),
-    make_preset(
-        "Stochastic Pluck",
-        ("ORACLE", "ORPHICA"),
-        "CHAOS_INJECT", 0.6,
-        {"macro_character": 0.54, "macro_movement": 0.68, "macro_coupling": 0.6,  "macro_space": 0.62},
-        {"macro_character": 0.65, "macro_movement": 0.5,  "macro_coupling": 0.6,  "macro_space": 0.78},
-        {"brightness": 0.82, "warmth": 0.4,  "movement": 0.62, "density": 0.4,  "space": 0.78, "aggression": 0.1},
-        ["stochastic", "pluck", "chaos"],
-        "GENDY chaos injected into ORPHICA pluck — stochastic microsound.",
-    ),
-    make_preset(
-        "Indigo Seafoam",
-        ("ORPHICA", "ORACLE"),
-        "SPECTRAL_MORPH", 0.72,
-        {"macro_character": 0.68, "macro_movement": 0.5,  "macro_coupling": 0.72, "macro_space": 0.78},
-        {"macro_character": 0.55, "macro_movement": 0.65, "macro_coupling": 0.72, "macro_space": 0.62},
-        {"brightness": 0.88, "warmth": 0.38, "movement": 0.55, "density": 0.4,  "space": 0.8,  "aggression": 0.05},
-        ["indigo", "seafoam", "spectral"],
-        "Seafoam microsound spectrally morphs Oracle's indigo space — depth of vision.",
-    ),
-    make_preset(
-        "Maqam Siren",
-        ("ORACLE", "ORPHICA"),
-        "PITCH_SYNC", 0.65,
-        {"macro_character": 0.54, "macro_movement": 0.65, "macro_coupling": 0.65, "macro_space": 0.62},
-        {"macro_character": 0.68, "macro_movement": 0.5,  "macro_coupling": 0.65, "macro_space": 0.76},
-        {"brightness": 0.84, "warmth": 0.4,  "movement": 0.58, "density": 0.42, "space": 0.75, "aggression": 0.07},
-        ["maqam", "siren", "pitch"],
-        "Oracle Maqam scales pitch-sync ORPHICA — siren song in ancient tuning.",
-    ),
-    make_preset(
-        "Breakpoint Harp",
-        ("ORACLE", "ORPHICA"),
-        "AMPLITUDE_MOD", 0.62,
-        {"macro_character": 0.55, "macro_movement": 0.68, "macro_coupling": 0.62, "macro_space": 0.62},
-        {"macro_character": 0.65, "macro_movement": 0.5,  "macro_coupling": 0.62, "macro_space": 0.78},
-        {"brightness": 0.8,  "warmth": 0.42, "movement": 0.6,  "density": 0.4,  "space": 0.77, "aggression": 0.06},
-        ["breakpoint", "harp", "amplitude"],
-        "Oracle breakpoints amplitude-shape ORPHICA harp dynamics — written in light.",
-    ),
-    make_preset(
-        "Visionary Microsound",
-        ("ORPHICA", "ORACLE"),
-        "RESONANCE_SHARE", 0.7,
-        {"macro_character": 0.65, "macro_movement": 0.52, "macro_coupling": 0.7,  "macro_space": 0.78},
-        {"macro_character": 0.55, "macro_movement": 0.68, "macro_coupling": 0.7,  "macro_space": 0.62},
-        {"brightness": 0.86, "warmth": 0.38, "movement": 0.55, "density": 0.42, "space": 0.78, "aggression": 0.05},
-        ["visionary", "resonance", "microsound"],
-        "ORPHICA resonance nodes shared with Oracle's prophetic harmonics — sea seer.",
-    ),
-]
-PRESETS.extend(ORPHICA_ORACLE)
-
-
-# ============================================================
-# ORPHICA × OBSCURA  (6 presets)
-# ============================================================
-ORPHICA_OBSCURA = [
-    make_preset(
-        "Silver Seafoam",
-        ("ORPHICA", "OBSCURA"),
-        "SPATIAL_COUPLE", 0.72,
-        {"macro_character": 0.65, "macro_movement": 0.5,  "macro_coupling": 0.72, "macro_space": 0.78},
-        {"macro_character": 0.52, "macro_movement": 0.58, "macro_coupling": 0.72, "macro_space": 0.7},
-        {"brightness": 0.82, "warmth": 0.4,  "movement": 0.5,  "density": 0.42, "space": 0.82, "aggression": 0.05},
-        ["silver", "seafoam", "spatial"],
-        "ORPHICA microsound spatially coupled with Obscura depth — silver seafoam.",
-    ),
-    make_preset(
-        "Corroded Pluck",
-        ("OBSCURA", "ORPHICA"),
-        "FILTER_MOD", 0.65,
-        {"macro_character": 0.52, "macro_movement": 0.62, "macro_coupling": 0.65, "macro_space": 0.68},
-        {"macro_character": 0.65, "macro_movement": 0.5,  "macro_coupling": 0.65, "macro_space": 0.78},
-        {"brightness": 0.78, "warmth": 0.4,  "movement": 0.55, "density": 0.42, "space": 0.78, "aggression": 0.08},
-        ["corroded", "filter", "pluck"],
-        "Obscura string corrosion filter-modulates ORPHICA brightness — tarnished siren.",
-    ),
-    make_preset(
-        "Daguerreotype Siren",
-        ("ORPHICA", "OBSCURA"),
-        "TIMBRE_BLEND", 0.6,
-        {"macro_character": 0.62, "macro_movement": 0.52, "macro_coupling": 0.6,  "macro_space": 0.75},
-        {"macro_character": 0.52, "macro_movement": 0.58, "macro_coupling": 0.6,  "macro_space": 0.7},
-        {"brightness": 0.76, "warmth": 0.42, "movement": 0.52, "density": 0.45, "space": 0.76, "aggression": 0.06},
-        ["daguerreotype", "siren", "blend"],
-        "ORPHICA siren timbre blended with Obscura silver grain — vintage marine photograph.",
-    ),
-    make_preset(
-        "Stiff Harp",
-        ("OBSCURA", "ORPHICA"),
-        "FREQUENCY_SHIFT", 0.55,
-        {"macro_character": 0.5,  "macro_movement": 0.62, "macro_coupling": 0.55, "macro_space": 0.68},
-        {"macro_character": 0.65, "macro_movement": 0.5,  "macro_coupling": 0.55, "macro_space": 0.76},
-        {"brightness": 0.8,  "warmth": 0.4,  "movement": 0.55, "density": 0.42, "space": 0.75, "aggression": 0.07},
-        ["stiff", "frequency", "harp"],
-        "Obscura stiffness frequency-shifts ORPHICA strings — rigid glass harp.",
-    ),
-    make_preset(
-        "Siphon In Silver",
-        ("ORPHICA", "OBSCURA"),
-        "ENVELOPE_LINK", 0.68,
-        {"macro_character": 0.65, "macro_movement": 0.52, "macro_coupling": 0.68, "macro_space": 0.78},
-        {"macro_character": 0.52, "macro_movement": 0.58, "macro_coupling": 0.68, "macro_space": 0.7},
-        {"brightness": 0.84, "warmth": 0.38, "movement": 0.52, "density": 0.4,  "space": 0.8,  "aggression": 0.05},
-        ["siphon", "envelope", "silver"],
-        "ORPHICA siphonophore envelope linked into Obscura's decay — colony fades to silver.",
-    ),
-    make_preset(
-        "Exposed Microsound",
-        ("OBSCURA", "ORPHICA"),
-        "VELOCITY_COUPLE", 0.65,
-        {"macro_character": 0.52, "macro_movement": 0.62, "macro_coupling": 0.65, "macro_space": 0.68},
-        {"macro_character": 0.68, "macro_movement": 0.5,  "macro_coupling": 0.65, "macro_space": 0.77},
-        {"brightness": 0.9,  "warmth": 0.38, "movement": 0.55, "density": 0.4,  "space": 0.78, "aggression": 0.06},
-        ["exposed", "velocity", "microsound"],
-        "Obscura photographic exposure velocity-couples ORPHICA dynamics — light reveals harp.",
-    ),
-]
-PRESETS.extend(ORPHICA_OBSCURA)
-
-
-# ---------------------------------------------------------------------------
-# Write all presets
-# ---------------------------------------------------------------------------
 
 def main():
-    written = []
-    skipped = []
-    for preset in PRESETS:
-        path = write_preset(preset)
-        written.append(path)
+    os.makedirs(PRESET_DIR, exist_ok=True)
+    all_presets = OTTONI_PRESETS + OLE_PRESETS + ORPHICA_PRESETS
 
-    print(f"Written {len(written)} presets to {PRESET_DIR}")
-    print("\nPairs covered:")
-    pairs_seen = set()
-    for p in PRESETS:
-        key = tuple(sorted(p["engines"]))
-        pairs_seen.add(key)
-    for pair in sorted(pairs_seen):
-        count = sum(1 for p in PRESETS if set(p["engines"]) == set(pair))
-        print(f"  {pair[0]} × {pair[1]}: {count} presets")
-    print(f"\nTotal: {len(PRESETS)} presets")
+    # Validate extreme DNA rule
+    violations = [p["name"] for p in all_presets if not validate_extreme(p["dna"])]
+    if violations:
+        print(f"WARNING: {len(violations)} presets lack an extreme DNA dimension:")
+        for v in violations:
+            print(f"  - {v}")
+
+    saved = 0
+    skipped = 0
+    for preset in all_presets:
+        ok, path = save_preset(preset)
+        if ok:
+            saved += 1
+            print(f"  SAVED  {preset['name']} -> {os.path.basename(path)}")
+        else:
+            skipped += 1
+            print(f"  SKIP   {preset['name']} (exists)")
+
+    print(f"\nDone. {saved} saved, {skipped} skipped. Total attempted: {len(all_presets)}")
 
 
 if __name__ == "__main__":

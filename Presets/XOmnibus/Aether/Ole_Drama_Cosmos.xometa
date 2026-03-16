@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Drama Cosmos",
+  "mood": "Aether",
+  "engines": [
+    "Ole"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "The drama fully engaged but at cosmic tempo. The trio's passion diffused across enormous space \u2014 each gesture arrives seconds after it was initiated.",
+  "tags": [
+    "aether",
+    "shifting-aether",
+    "drama",
+    "cosmic",
+    "warm",
+    "vast"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "FIRE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.7,
+    "movement": 0.68,
+    "density": 0.32,
+    "space": 0.9,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Ole": {
+      "ole_voiceBlend": 0.6,
+      "ole_rhythmAmt": 0.35,
+      "ole_filterCutoff": 0.6,
+      "ole_filterReso": 0.12,
+      "ole_lfoRate": 0.15,
+      "ole_lfoDepth": 0.62,
+      "ole_ampAttack": 0.3,
+      "ole_ampRelease": 4.5,
+      "ole_reverbMix": 0.85,
+      "ole_macroDrama": 0.0,
+      "ole_macroFire": 0.0,
+      "ole_macroCoupling": 0.0,
+      "ole_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

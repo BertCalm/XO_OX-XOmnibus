@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Oracle Darkness Speaks",
+  "mood": "Aether",
+  "engines": [
+    "Oracle"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "The prophecy arrives without light. The oracle's spectral voice carries no treble \u2014 only the fundamental truth, dense and dark, from the deepest octave.",
+  "tags": [
+    "aether",
+    "dark-aether",
+    "oracle",
+    "prophecy",
+    "dark",
+    "deep"
+  ],
+  "macroLabels": [
+    "VISION",
+    "DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.28,
+    "movement": 0.25,
+    "density": 0.48,
+    "space": 0.87,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_spectralBlur": 0.8,
+      "oracle_harmonicSpread": 0.6,
+      "oracle_feedbackAmt": 0.35,
+      "oracle_filterCutoff": 0.06,
+      "oracle_filterReso": 0.15,
+      "oracle_ampAttack": 4.0,
+      "oracle_ampRelease": 8.5,
+      "oracle_reverbMix": 0.88,
+      "oracle_delayFeedback": 0.4,
+      "oracle_macroVision": 0.0,
+      "oracle_macroDepth": 0.0,
+      "oracle_macroCoupling": 0.0,
+      "oracle_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

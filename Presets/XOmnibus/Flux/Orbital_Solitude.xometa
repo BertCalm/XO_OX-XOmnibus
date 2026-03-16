@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Orbital Solitude",
+  "mood": "Flux",
+  "engines": [
+    "Orbital"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.2,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.1,
+    "SPACE": 0.9
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.3,
+    "movement": 0.72,
+    "density": 0.1,
+    "space": 0.9,
+    "aggression": 0.2
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "sparse-flux",
+    "orbital",
+    "solitude",
+    "ring"
+  ],
+  "description": "Orbital single ring \u2014 one particle traversing vast empty circumference."
+}

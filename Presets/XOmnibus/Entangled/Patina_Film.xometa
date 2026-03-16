@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Patina Film",
+  "mood": "Entangled",
+  "engines": [
+    "OTTONI",
+    "OBSCURA"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Chaos injection sends OBSCURA's stiff strings into unpredictable resonant territories.",
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.68,
+      "macro_movement": 0.52,
+      "macro_coupling": 0.68,
+      "macro_space": 0.5
+    },
+    "OBSCURA": {
+      "macro_character": 0.55,
+      "macro_movement": 0.5,
+      "macro_coupling": 0.6,
+      "macro_space": 0.55
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OTTONI",
+    "target": "OBSCURA",
+    "amount": 0.68,
+    "intensity": "Moderate"
+  },
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.76,
+    "movement": 0.5,
+    "density": 0.6,
+    "space": 0.54,
+    "aggression": 0.08
+  },
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.68,
+    "SPACE": 0.5
+  },
+  "tags": [
+    "entangled",
+    "ottoni",
+    "obscura",
+    "chaos",
+    "film"
+  ]
+}

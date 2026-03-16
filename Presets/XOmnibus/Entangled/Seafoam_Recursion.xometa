@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Seafoam Recursion",
+  "mood": "Entangled",
+  "engines": [
+    "ORPHICA",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Resonance shared between ORPHICA's glass harmonic and OUROBOROS's recursive loop.",
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.74,
+      "macro_movement": 0.6,
+      "macro_coupling": 0.74,
+      "macro_space": 0.7
+    },
+    "OUROBOROS": {
+      "macro_character": 0.66,
+      "macro_movement": 0.68,
+      "macro_coupling": 0.7,
+      "macro_space": 0.4
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ORPHICA",
+    "target": "OUROBOROS",
+    "amount": 0.74,
+    "intensity": "Deep"
+  },
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.36,
+    "movement": 0.62,
+    "density": 0.52,
+    "space": 0.72,
+    "aggression": 0.18
+  },
+  "macros": {
+    "CHARACTER": 0.74,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.74,
+    "SPACE": 0.7
+  },
+  "tags": [
+    "entangled",
+    "orphica",
+    "ouroboros",
+    "resonance",
+    "recursion"
+  ]
+}

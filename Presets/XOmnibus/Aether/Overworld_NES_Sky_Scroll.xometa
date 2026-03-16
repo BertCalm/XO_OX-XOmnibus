@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "NES Sky Scroll",
+  "mood": "Aether",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "The NES sky layer scrolling across the overworld. Pixel clouds in permanent lateral motion. The chip hum carries no weight \u2014 only the shimmer of 8-bit atmosphere.",
+  "tags": [
+    "aether",
+    "shifting-aether",
+    "chip",
+    "NES",
+    "scrolling",
+    "atmospheric"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHIP",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.4,
+    "movement": 0.75,
+    "density": 0.3,
+    "space": 0.88,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_era": 0.1,
+      "ow_eraBlend": 0.15,
+      "ow_filterCutoff": 0.6,
+      "ow_filterReso": 0.1,
+      "ow_lfoRate": 0.35,
+      "ow_lfoDepth": 0.6,
+      "ow_ampAttack": 0.2,
+      "ow_ampRelease": 4.0,
+      "ow_reverbMix": 0.82,
+      "ow_glitchAmt": 0.15,
+      "ow_macroEra": 0.0,
+      "ow_macroChip": 0.0,
+      "ow_macroCoupling": 0.0,
+      "ow_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

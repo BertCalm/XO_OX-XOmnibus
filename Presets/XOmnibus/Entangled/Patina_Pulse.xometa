@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Patina Pulse",
+  "mood": "Entangled",
+  "engines": [
+    "OTTONI",
+    "ORGANON"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "OTTONI's amplitude envelope breathes life into ORGANON's cellular texture.",
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.65,
+      "macro_movement": 0.6,
+      "macro_coupling": 0.68,
+      "macro_space": 0.5
+    },
+    "ORGANON": {
+      "macro_character": 0.55,
+      "macro_movement": 0.7,
+      "macro_coupling": 0.55,
+      "macro_space": 0.48
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OTTONI",
+    "target": "ORGANON",
+    "amount": 0.65,
+    "intensity": "Moderate"
+  },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.82,
+    "movement": 0.62,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.12
+  },
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.68,
+    "SPACE": 0.5
+  },
+  "tags": [
+    "entangled",
+    "ottoni",
+    "organon",
+    "warmth",
+    "pulse"
+  ]
+}

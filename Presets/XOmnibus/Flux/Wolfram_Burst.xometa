@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Wolfram Burst",
+  "mood": "Flux",
+  "engines": [
+    "Outwit"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.86,
+    "MOVEMENT": 0.89,
+    "COUPLING": 0.55,
+    "SPACE": 0.06
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.18,
+    "movement": 0.89,
+    "density": 0.88,
+    "space": 0.06,
+    "aggression": 0.86
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "high-flux",
+    "outwit",
+    "cellular-automata",
+    "burst"
+  ],
+  "description": "Outwit CA rules firing simultaneously \u2014 Wolfram Rule 110 at maximum density."
+}

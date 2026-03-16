@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Tundra Signal",
+  "mood": "Flux",
+  "engines": [
+    "Ombre"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.14,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.1,
+    "SPACE": 0.87
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.13,
+    "warmth": 0.1,
+    "movement": 0.88,
+    "density": 0.4,
+    "space": 0.87,
+    "aggression": 0.14
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "cold-flux",
+    "ombre",
+    "tundra",
+    "signal"
+  ],
+  "description": "Ombre tundra gradient \u2014 cold sparse signal moving across open plains."
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Cathedral Of Night",
+  "mood": "Aether",
+  "engines": [
+    "Organon"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "The organ breathes at minimum speed \u2014 a single sustained breath filling a stone cathedral at midnight. Bass registers only, stretching the dark to its limits.",
+  "tags": [
+    "aether",
+    "dark-aether",
+    "organ",
+    "cathedral",
+    "nocturnal",
+    "vast"
+  ],
+  "macroLabels": [
+    "BREATH",
+    "SWELL",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.45,
+    "movement": 0.08,
+    "density": 0.5,
+    "space": 0.93,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Organon": {
+      "organon_drawbar1": 0.9,
+      "organon_drawbar2": 0.7,
+      "organon_drawbar3": 0.1,
+      "organon_rotarySpeed": 0.02,
+      "organon_filterCutoff": 0.05,
+      "organon_filterReso": 0.15,
+      "organon_ampAttack": 6.0,
+      "organon_ampRelease": 8.0,
+      "organon_reverbMix": 0.95,
+      "organon_macroBreathe": 0.0,
+      "organon_macroSwell": 0.0,
+      "organon_macroCoupling": 0.0,
+      "organon_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

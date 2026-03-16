@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Metamorphosis Final",
+  "mood": "Aether",
+  "engines": [
+    "OddOscar"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "The final metamorphosis \u2014 the organism has transcended its glitch origins. What remains is pure signal, unrecognizable from its source.",
+  "tags": [
+    "aether",
+    "transcendent",
+    "digital",
+    "evolved",
+    "pure"
+  ],
+  "macroLabels": [
+    "TENSION",
+    "GLITCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.28,
+    "movement": 0.15,
+    "density": 0.2,
+    "space": 0.94,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "OddOscar": {
+      "morph_bitDepth": 0.9,
+      "morph_sampleRate": 0.85,
+      "morph_filterCutoff": 0.85,
+      "morph_filterReso": 0.1,
+      "morph_ampAttack": 4.0,
+      "morph_ampRelease": 7.5,
+      "morph_reverbMix": 0.9,
+      "morph_delayFeedback": 0.35,
+      "morph_macroTension": 0.0,
+      "morph_macroGlitch": 0.0,
+      "morph_macroCoupling": 0.0,
+      "morph_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

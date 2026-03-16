@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Lone Wavetable",
+  "mood": "Flux",
+  "engines": [
+    "Odyssey"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.14,
+    "MOVEMENT": 0.76,
+    "COUPLING": 0.07,
+    "SPACE": 0.91
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.32,
+    "movement": 0.76,
+    "density": 0.08,
+    "space": 0.91,
+    "aggression": 0.14
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "sparse-flux",
+    "odyssey",
+    "lone",
+    "wavetable"
+  ],
+  "description": "Odyssey lone wavetable scanning through empty frequency space."
+}

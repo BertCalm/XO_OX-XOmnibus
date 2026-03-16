@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Sub Density",
+  "mood": "Flux",
+  "engines": [
+    "Obese"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.86,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.4,
+    "SPACE": 0.04
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.72,
+    "movement": 0.62,
+    "density": 0.97,
+    "space": 0.04,
+    "aggression": 0.86
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "dense-flux",
+    "obese",
+    "sub",
+    "density"
+  ],
+  "description": "Obese sub-bass at extreme density \u2014 compressed low-end at crushing pressure."
+}

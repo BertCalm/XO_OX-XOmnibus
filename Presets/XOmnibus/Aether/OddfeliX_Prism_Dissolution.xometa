@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Prism Dissolution",
+  "mood": "Aether",
+  "engines": [
+    "OddfeliX"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "The glitch dissolves completely. feliX stripped of all character \u2014 only the highest partials remain, scattered like light through a prism that is itself dissolving.",
+  "tags": [
+    "aether",
+    "transcendent",
+    "prism",
+    "dissolved",
+    "pure"
+  ],
+  "macroLabels": [
+    "TENSION",
+    "GLITCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.94,
+    "warmth": 0.12,
+    "movement": 0.18,
+    "density": 0.16,
+    "space": 0.97,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_bitDepth": 0.98,
+      "snap_sampleRate": 0.98,
+      "snap_filterCutoff": 0.94,
+      "snap_filterReso": 0.12,
+      "snap_ampAttack": 4.0,
+      "snap_ampRelease": 8.0,
+      "snap_reverbMix": 0.94,
+      "snap_delayFeedback": 0.3,
+      "snap_macroTension": 0.0,
+      "snap_macroGlitch": 0.0,
+      "snap_macroCoupling": 0.0,
+      "snap_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

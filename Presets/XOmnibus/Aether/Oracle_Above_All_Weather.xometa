@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Above All Weather",
+  "mood": "Aether",
+  "engines": [
+    "Oracle"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "Spectral harmonics hover where no weather reaches. The oracle sees only light \u2014 refracted, diffused, infinite.",
+  "tags": [
+    "aether",
+    "transcendent",
+    "spectral",
+    "elevated",
+    "spacious"
+  ],
+  "macroLabels": [
+    "VISION",
+    "DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.25,
+    "movement": 0.2,
+    "density": 0.25,
+    "space": 0.95,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_spectralBlur": 0.85,
+      "oracle_harmonicSpread": 0.75,
+      "oracle_feedbackAmt": 0.35,
+      "oracle_filterCutoff": 0.85,
+      "oracle_filterReso": 0.15,
+      "oracle_ampAttack": 4.5,
+      "oracle_ampRelease": 8.0,
+      "oracle_reverbMix": 0.92,
+      "oracle_delayFeedback": 0.4,
+      "oracle_macroVision": 0.0,
+      "oracle_macroDepth": 0.0,
+      "oracle_macroCoupling": 0.0,
+      "oracle_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

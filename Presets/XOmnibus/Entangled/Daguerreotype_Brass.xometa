@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Daguerreotype Brass",
+  "mood": "Entangled",
+  "engines": [
+    "OTTONI",
+    "OBSCURA"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Harmonic folding through OBSCURA's string network \u2014 brass preserved in silver.",
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.72,
+      "macro_movement": 0.58,
+      "macro_coupling": 0.74,
+      "macro_space": 0.46
+    },
+    "OBSCURA": {
+      "macro_character": 0.6,
+      "macro_movement": 0.55,
+      "macro_coupling": 0.65,
+      "macro_space": 0.52
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OTTONI",
+    "target": "OBSCURA",
+    "amount": 0.74,
+    "intensity": "Deep"
+  },
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.8,
+    "movement": 0.55,
+    "density": 0.64,
+    "space": 0.5,
+    "aggression": 0.1
+  },
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.74,
+    "SPACE": 0.46
+  },
+  "tags": [
+    "entangled",
+    "ottoni",
+    "obscura",
+    "harmonic",
+    "silver"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Siren Attractor",
+  "mood": "Entangled",
+  "engines": [
+    "ORPHICA",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Chaos injection from OUROBOROS disrupts ORPHICA's crystalline lattice \u2014 brightness 0.92.",
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.8,
+      "macro_movement": 0.68,
+      "macro_coupling": 0.82,
+      "macro_space": 0.65
+    },
+    "OUROBOROS": {
+      "macro_character": 0.74,
+      "macro_movement": 0.76,
+      "macro_coupling": 0.78,
+      "macro_space": 0.36
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ORPHICA",
+    "target": "OUROBOROS",
+    "amount": 0.82,
+    "intensity": "Deep"
+  },
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.32,
+    "movement": 0.7,
+    "density": 0.6,
+    "space": 0.68,
+    "aggression": 0.28
+  },
+  "macros": {
+    "CHARACTER": 0.8,
+    "MOVEMENT": 0.68,
+    "COUPLING": 0.82,
+    "SPACE": 0.65
+  },
+  "tags": [
+    "entangled",
+    "orphica",
+    "ouroboros",
+    "chaos",
+    "siren"
+  ]
+}

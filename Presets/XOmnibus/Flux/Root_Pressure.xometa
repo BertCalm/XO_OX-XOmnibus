@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Root Pressure",
+  "mood": "Flux",
+  "engines": [
+    "Overbite"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.35,
+    "SPACE": 0.06
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.68,
+    "movement": 0.72,
+    "density": 0.92,
+    "space": 0.06,
+    "aggression": 0.9
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "dense-flux",
+    "overbite",
+    "root",
+    "pressure"
+  ],
+  "description": "Overbite root frequencies under maximum pressure \u2014 tectonic bass density."
+}

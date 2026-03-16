@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Tape At Event Horizon",
+  "mood": "Aether",
+  "engines": [
+    "Overdub"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "Tape delay feedback approaching the event horizon. Time dilates. The echo stretches into thermal noise across vast reverberant space.",
+  "tags": [
+    "aether",
+    "dark-aether",
+    "tape",
+    "feedback",
+    "vast",
+    "dark"
+  ],
+  "macroLabels": [
+    "DRIVE",
+    "ECHO",
+    "XOSEND",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.5,
+    "movement": 0.12,
+    "density": 0.45,
+    "space": 0.95,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Overdub": {
+      "dub_driveAmt": 0.05,
+      "dub_tapeSpeed": 0.08,
+      "dub_tapeWow": 0.6,
+      "dub_tapeFeedback": 0.88,
+      "dub_springMix": 0.7,
+      "dub_filterCutoff": 0.06,
+      "dub_filterReso": 0.2,
+      "dub_reverbSize": 0.99,
+      "dub_reverbMix": 0.92,
+      "dub_macroDrive": 0.0,
+      "dub_macroEcho": 0.0,
+      "dub_macroXosend": 0.0,
+      "dub_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

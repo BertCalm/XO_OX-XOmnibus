@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Serpent Modulation",
+  "mood": "Aether",
+  "engines": [
+    "Ouroboros"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "The serpent's modulation depth \u2014 tail entering mouth creates a modulation index that perpetually redefines the spectrum. Circular, spacious, inevitable.",
+  "tags": [
+    "aether",
+    "shifting-aether",
+    "serpent",
+    "modulation",
+    "circular",
+    "vast"
+  ],
+  "macroLabels": [
+    "CYCLE",
+    "DEVOUR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.48,
+    "movement": 0.72,
+    "density": 0.38,
+    "space": 0.87,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0.5,
+      "ouro_loopLength": 0.5,
+      "ouro_feedbackAmt": 0.65,
+      "ouro_filterCutoff": 0.55,
+      "ouro_filterReso": 0.22,
+      "ouro_lfoRate": 0.38,
+      "ouro_lfoDepth": 0.7,
+      "ouro_ampAttack": 0.5,
+      "ouro_ampRelease": 5.0,
+      "ouro_reverbMix": 0.83,
+      "ouro_macroCycle": 0.0,
+      "ouro_macroDevour": 0.0,
+      "ouro_macroCoupling": 0.0,
+      "ouro_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

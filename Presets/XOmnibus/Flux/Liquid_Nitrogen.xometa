@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Liquid Nitrogen",
+  "mood": "Flux",
+  "engines": [
+    "Ombre"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.86,
+    "COUPLING": 0.3,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.08,
+    "movement": 0.86,
+    "density": 0.6,
+    "space": 0.55,
+    "aggression": 0.52
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "cold-flux",
+    "ombre",
+    "nitrogen",
+    "liquid"
+  ],
+  "description": "Ombre gradient locked at coldest temperature \u2014 liquid nitrogen flow."
+}

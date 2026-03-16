@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Dub Echo Void",
+  "mood": "Flux",
+  "engines": [
+    "Overdub"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.12,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.05,
+    "SPACE": 0.96
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.38,
+    "movement": 0.8,
+    "density": 0.06,
+    "space": 0.96,
+    "aggression": 0.12
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "sparse-flux",
+    "overdub",
+    "dub",
+    "void"
+  ],
+  "description": "Overdub tape echo in maximum space \u2014 single repeat dying across infinite room."
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Deep Current Dark",
+  "mood": "Aether",
+  "engines": [
+    "Oceanic"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "Thermohaline circulation moving in absolute darkness. The current is immense and slow \u2014 a river that never surfaces, never illuminates.",
+  "tags": [
+    "aether",
+    "dark-aether",
+    "thermohaline",
+    "current",
+    "deep",
+    "moving"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "CURRENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.35,
+    "movement": 0.3,
+    "density": 0.5,
+    "space": 0.82,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_filterCutoff": 0.07,
+      "ocean_filterReso": 0.3,
+      "ocean_separation": 0.8,
+      "ocean_wavefolderAmt": 0.2,
+      "ocean_ampAttack": 4.0,
+      "ocean_ampRelease": 8.0,
+      "ocean_reverbMix": 0.85,
+      "ocean_delayFeedback": 0.6,
+      "ocean_macroDepth": 0.0,
+      "ocean_macroCurrent": 0.0,
+      "ocean_macroCoupling": 0.0,
+      "ocean_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

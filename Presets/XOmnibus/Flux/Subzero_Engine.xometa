@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Subzero Engine",
+  "mood": "Flux",
+  "engines": [
+    "Obscura"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.84,
+    "COUPLING": 0.22,
+    "SPACE": 0.65
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.13,
+    "movement": 0.84,
+    "density": 0.52,
+    "space": 0.65,
+    "aggression": 0.48
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "cold-flux",
+    "obscura",
+    "subzero",
+    "engine"
+  ],
+  "description": "Obscura granular engine running subzero \u2014 cold spectral motion."
+}

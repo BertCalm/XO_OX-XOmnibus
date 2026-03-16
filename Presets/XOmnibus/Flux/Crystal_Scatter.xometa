@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Crystal Scatter",
+  "mood": "Flux",
+  "engines": [
+    "Opal"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.12,
+    "MOVEMENT": 0.79,
+    "COUPLING": 0.1,
+    "SPACE": 0.89
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.18,
+    "movement": 0.79,
+    "density": 0.1,
+    "space": 0.89,
+    "aggression": 0.12
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "sparse-flux",
+    "opal",
+    "crystal",
+    "scatter"
+  ],
+  "description": "Opal crystal grains scattered bright \u2014 high-frequency particles in open field."
+}

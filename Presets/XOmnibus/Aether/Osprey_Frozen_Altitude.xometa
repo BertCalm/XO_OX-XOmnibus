@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Frozen Altitude",
+  "mood": "Aether",
+  "engines": [
+    "Osprey"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "Ice crystals form on the wings at maximum altitude. The osprey hangs motionless in the blue-black sky above the clouds.",
+  "tags": [
+    "aether",
+    "transcendent",
+    "frozen",
+    "altitude",
+    "stillness"
+  ],
+  "macroLabels": [
+    "DIVE",
+    "LIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.15,
+    "movement": 0.08,
+    "density": 0.15,
+    "space": 0.98,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Osprey": {
+      "osprey_filterCutoff": 0.75,
+      "osprey_filterReso": 0.1,
+      "osprey_wingSpan": 0.75,
+      "osprey_altitude": 0.98,
+      "osprey_ampAttack": 5.0,
+      "osprey_ampRelease": 9.0,
+      "osprey_reverbMix": 0.95,
+      "osprey_delayFeedback": 0.25,
+      "osprey_macroDive": 0.0,
+      "osprey_macroLift": 0.0,
+      "osprey_macroCoupling": 0.0,
+      "osprey_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

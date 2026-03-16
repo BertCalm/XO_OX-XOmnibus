@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Fuzz Torrent",
+  "mood": "Flux",
+  "engines": [
+    "Overbite"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.95,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.2,
+    "SPACE": 0.08
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.74,
+    "warmth": 0.35,
+    "movement": 0.88,
+    "density": 0.9,
+    "space": 0.08,
+    "aggression": 0.95
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "high-flux",
+    "overbite",
+    "fuzz",
+    "torrent"
+  ],
+  "description": "Overbite bass filter wide open \u2014 fuzz distortion torrenting through the mix."
+}

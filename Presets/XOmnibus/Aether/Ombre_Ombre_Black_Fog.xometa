@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Ombre Black Fog",
+  "mood": "Aether",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "Maximum shade, nearly zero brightness. The grain fog is impenetrable \u2014 a black weather system with no edges, suspended in enormous reverberant space.",
+  "tags": [
+    "aether",
+    "dark-aether",
+    "fog",
+    "grain",
+    "impenetrable",
+    "vast"
+  ],
+  "macroLabels": [
+    "GRAIN",
+    "SHADE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.35,
+    "movement": 0.15,
+    "density": 0.6,
+    "space": 0.9,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_grainSize": 0.85,
+      "ombre_grainDensity": 0.62,
+      "ombre_filterCutoff": 0.03,
+      "ombre_filterReso": 0.25,
+      "ombre_ampAttack": 6.0,
+      "ombre_ampRelease": 9.0,
+      "ombre_reverbMix": 0.91,
+      "ombre_delayFeedback": 0.5,
+      "ombre_macroGrain": 0.0,
+      "ombre_macroShade": 0.0,
+      "ombre_macroCoupling": 0.0,
+      "ombre_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Crystalline Departure",
+  "mood": "Aether",
+  "engines": [
+    "OddfeliX"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "The digital artifact becomes transcendence. Bit reduction so extreme it strips material reality \u2014 what remains is pure light frequency.",
+  "tags": [
+    "aether",
+    "transcendent",
+    "digital",
+    "pure",
+    "crystalline"
+  ],
+  "macroLabels": [
+    "TENSION",
+    "GLITCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.91,
+    "warmth": 0.15,
+    "movement": 0.1,
+    "density": 0.18,
+    "space": 0.98,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_bitDepth": 0.95,
+      "snap_sampleRate": 0.9,
+      "snap_filterCutoff": 0.92,
+      "snap_filterReso": 0.12,
+      "snap_ampAttack": 3.0,
+      "snap_ampRelease": 7.0,
+      "snap_reverbMix": 0.95,
+      "snap_delayFeedback": 0.3,
+      "snap_macroTension": 0.0,
+      "snap_macroGlitch": 0.0,
+      "snap_macroCoupling": 0.0,
+      "snap_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

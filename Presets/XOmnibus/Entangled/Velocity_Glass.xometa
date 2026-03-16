@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Velocity Glass",
+  "mood": "Entangled",
+  "engines": [
+    "ORPHICA",
+    "OBSCURA"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Velocity coupling: soft ORPHICA touch reflects; hard strike refracts through OBSCURA.",
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.66,
+      "macro_movement": 0.52,
+      "macro_coupling": 0.66,
+      "macro_space": 0.74
+    },
+    "OBSCURA": {
+      "macro_character": 0.52,
+      "macro_movement": 0.46,
+      "macro_coupling": 0.58,
+      "macro_space": 0.58
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ORPHICA",
+    "target": "OBSCURA",
+    "amount": 0.66,
+    "intensity": "Moderate"
+  },
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.33,
+    "movement": 0.5,
+    "density": 0.42,
+    "space": 0.76,
+    "aggression": 0.06
+  },
+  "macros": {
+    "CHARACTER": 0.66,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.66,
+    "SPACE": 0.74
+  },
+  "tags": [
+    "entangled",
+    "orphica",
+    "obscura",
+    "velocity",
+    "glass"
+  ]
+}

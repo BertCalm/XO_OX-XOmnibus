@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Ice Erosion",
+  "mood": "Flux",
+  "engines": [
+    "Ombre"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.86,
+    "COUPLING": 0.12,
+    "SPACE": 0.85
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.14,
+    "movement": 0.86,
+    "density": 0.38,
+    "space": 0.85,
+    "aggression": 0.28
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "cold-flux",
+    "ombre",
+    "ice",
+    "erosion"
+  ],
+  "description": "Ombre gradient carved by cold \u2014 slow ice erosion over deep open time."
+}

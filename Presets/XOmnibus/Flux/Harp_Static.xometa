@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Harp Static",
+  "mood": "Flux",
+  "engines": [
+    "Orphica"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.14,
+    "MOVEMENT": 0.77,
+    "COUPLING": 0.07,
+    "SPACE": 0.9
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.15,
+    "movement": 0.77,
+    "density": 0.08,
+    "space": 0.9,
+    "aggression": 0.14
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "sparse-flux",
+    "orphica",
+    "harp",
+    "static"
+  ],
+  "description": "Orphica harp static \u2014 microsound particles barely disturbing the silence."
+}

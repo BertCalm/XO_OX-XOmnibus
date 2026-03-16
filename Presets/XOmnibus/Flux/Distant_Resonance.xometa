@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Distant Resonance",
+  "mood": "Flux",
+  "engines": [
+    "Odyssey"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.78,
+    "COUPLING": 0.08,
+    "SPACE": 0.95
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.28,
+    "movement": 0.78,
+    "density": 0.09,
+    "space": 0.95,
+    "aggression": 0.18
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "sparse-flux",
+    "odyssey",
+    "distant",
+    "resonance"
+  ],
+  "description": "Odyssey wavetable in deep space \u2014 single resonance moving through void."
+}

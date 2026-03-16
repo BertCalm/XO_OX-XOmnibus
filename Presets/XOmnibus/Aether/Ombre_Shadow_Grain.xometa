@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Shadow Grain",
+  "mood": "Aether",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "Dense grain cloud with all brightness removed. The shadow has texture \u2014 you can feel its weight against the enormous empty space behind it.",
+  "tags": [
+    "aether",
+    "dark-aether",
+    "grain",
+    "shadow",
+    "dense",
+    "vast"
+  ],
+  "macroLabels": [
+    "GRAIN",
+    "SHADE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.4,
+    "movement": 0.2,
+    "density": 0.55,
+    "space": 0.85,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_grainSize": 0.85,
+      "ombre_grainDensity": 0.6,
+      "ombre_filterCutoff": 0.12,
+      "ombre_filterReso": 0.25,
+      "ombre_ampAttack": 4.0,
+      "ombre_ampRelease": 7.0,
+      "ombre_reverbMix": 0.88,
+      "ombre_delayFeedback": 0.5,
+      "ombre_macroGrain": 0.0,
+      "ombre_macroShade": 0.0,
+      "ombre_macroCoupling": 0.0,
+      "ombre_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

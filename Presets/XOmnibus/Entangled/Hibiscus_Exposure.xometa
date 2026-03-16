@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Hibiscus Exposure",
+  "mood": "Entangled",
+  "engines": [
+    "OLE",
+    "OBSCURA"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "description": "Spatial coupling places OLE's call-and-response inside OBSCURA's reverberant chamber.",
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.7,
+      "macro_movement": 0.62,
+      "macro_coupling": 0.7,
+      "macro_space": 0.46
+    },
+    "OBSCURA": {
+      "macro_character": 0.56,
+      "macro_movement": 0.5,
+      "macro_coupling": 0.58,
+      "macro_space": 0.55
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OLE",
+    "target": "OBSCURA",
+    "amount": 0.7,
+    "intensity": "Deep"
+  },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.68,
+    "movement": 0.65,
+    "density": 0.62,
+    "space": 0.44,
+    "aggression": 0.72
+  },
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.7,
+    "SPACE": 0.46
+  },
+  "tags": [
+    "entangled",
+    "ole",
+    "obscura",
+    "spatial",
+    "hibiscus"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Zero Kelvin Motion",
+  "mood": "Flux",
+  "engines": [
+    "Oracle"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.91,
+    "COUPLING": 0.08,
+    "SPACE": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.12,
+    "movement": 0.91,
+    "density": 0.35,
+    "space": 0.82,
+    "aggression": 0.28
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "cold-flux",
+    "oracle",
+    "zero",
+    "kelvin"
+  ],
+  "description": "Oracle prediction engine at absolute zero \u2014 cold motion without heat."
+}

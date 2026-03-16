@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Harp Of Stars",
+  "mood": "Aether",
+  "engines": [
+    "Orphica"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "The siphonophore's strings are stellar filaments. Each pluck travels light-years. The resonance outlasts the star that created it.",
+  "tags": [
+    "aether",
+    "transcendent",
+    "stellar",
+    "harp",
+    "cosmic"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "BLOOM",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.15,
+    "movement": 0.25,
+    "density": 0.2,
+    "space": 0.93,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_microsoundDensity": 0.4,
+      "orph_pluckBrightness": 0.95,
+      "orph_filterCutoff": 0.96,
+      "orph_filterReso": 0.1,
+      "orph_ampAttack": 0.01,
+      "orph_ampDecay": 6.0,
+      "orph_ampSustain": 0.3,
+      "orph_ampRelease": 8.0,
+      "orph_reverbMix": 0.9,
+      "orph_shimmerAmt": 0.9,
+      "orph_macroPluck": 0.0,
+      "orph_macroBloom": 0.0,
+      "orph_macroCoupling": 0.0,
+      "orph_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

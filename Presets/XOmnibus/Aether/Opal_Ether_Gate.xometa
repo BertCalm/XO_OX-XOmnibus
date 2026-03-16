@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Ether Gate",
+  "mood": "Aether",
+  "engines": [
+    "Opal"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "Grains dissolve at the threshold between silence and sound. The gate opens slowly \u2014 nine seconds of nothing, then pure crystalline shimmer that vanishes before you can name it.",
+  "tags": [
+    "aether",
+    "transcendent",
+    "granular",
+    "vast",
+    "crystalline"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.3,
+    "movement": 0.15,
+    "density": 0.2,
+    "space": 0.97,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Opal": {
+      "opal_grainSize": 0.9,
+      "opal_density": 0.15,
+      "opal_posScatter": 0.35,
+      "opal_pitchScatter": 0.02,
+      "opal_filterCutoff": 0.88,
+      "opal_filterReso": 0.08,
+      "opal_ampAttack": 9.0,
+      "opal_ampDecay": 1.5,
+      "opal_ampSustain": 0.9,
+      "opal_ampRelease": 8.0,
+      "opal_speed": 0.2,
+      "opal_reverse": 0.0,
+      "opal_macroCharacter": 0.0,
+      "opal_macroMovement": 0.0,
+      "opal_macroCoupling": 0.0,
+      "opal_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

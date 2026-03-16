@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Spring In Void",
+  "mood": "Aether",
+  "engines": [
+    "Overdub"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "Spring reverb coil submerged in deep darkness. The metallic resonance stripped of attack \u2014 only the ring of the coil in empty space.",
+  "tags": [
+    "aether",
+    "dark-aether",
+    "spring",
+    "reverb",
+    "void",
+    "metallic"
+  ],
+  "macroLabels": [
+    "DRIVE",
+    "ECHO",
+    "XOSEND",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.4,
+    "movement": 0.25,
+    "density": 0.48,
+    "space": 0.93,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Overdub": {
+      "dub_driveAmt": 0.05,
+      "dub_tapeSpeed": 0.5,
+      "dub_tapeWow": 0.3,
+      "dub_tapeFeedback": 0.45,
+      "dub_springMix": 0.95,
+      "dub_filterCutoff": 0.15,
+      "dub_filterReso": 0.2,
+      "dub_reverbSize": 0.95,
+      "dub_reverbMix": 0.9,
+      "dub_macroDrive": 0.0,
+      "dub_macroEcho": 0.0,
+      "dub_macroXosend": 0.0,
+      "dub_macroSpace": 0.0,
+      "dub_ampAttack": 3.0,
+      "dub_ampRelease": 8.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

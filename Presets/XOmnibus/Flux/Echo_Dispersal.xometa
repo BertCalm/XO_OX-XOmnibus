@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Echo Dispersal",
+  "mood": "Flux",
+  "engines": [
+    "Overdub"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1,
+    "MOVEMENT": 0.83,
+    "COUPLING": 0.06,
+    "SPACE": 0.93
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.35,
+    "movement": 0.83,
+    "density": 0.07,
+    "space": 0.93,
+    "aggression": 0.1
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "sparse-flux",
+    "overdub",
+    "echo",
+    "dispersal"
+  ],
+  "description": "Overdub echo dispersal \u2014 sound dissolving into space, barely traceable."
+}

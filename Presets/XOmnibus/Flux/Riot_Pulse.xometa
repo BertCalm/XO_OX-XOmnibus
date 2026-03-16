@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Riot Pulse",
+  "mood": "Flux",
+  "engines": [
+    "Onset"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.95,
+    "COUPLING": 0.22,
+    "SPACE": 0.08
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.38,
+    "movement": 0.95,
+    "density": 0.88,
+    "space": 0.08,
+    "aggression": 0.92
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "high-flux",
+    "onset",
+    "riot",
+    "percussion"
+  ],
+  "description": "Onset drums in full riot \u2014 every hit overlapping, rhythm dissolving into noise."
+}

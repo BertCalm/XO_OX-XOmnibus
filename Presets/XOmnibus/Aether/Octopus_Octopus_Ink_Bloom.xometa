@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Octopus Ink Bloom",
+  "mood": "Aether",
+  "engines": [
+    "Octopus"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "The ink cloud released and expanding in slow motion \u2014 an octopus signature expanding through the water column, warm and dark, in constant motion.",
+  "tags": [
+    "aether",
+    "shifting-aether",
+    "ink",
+    "bloom",
+    "warm",
+    "expanding"
+  ],
+  "macroLabels": [
+    "STRETCH",
+    "INK",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.7,
+    "movement": 0.75,
+    "density": 0.45,
+    "space": 0.82,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Octopus": {
+      "octo_armDepth": 0.6,
+      "octo_stretchAmt": 0.7,
+      "octo_inkDepth": 0.8,
+      "octo_filterCutoff": 0.38,
+      "octo_filterReso": 0.2,
+      "octo_lfoRate": 0.3,
+      "octo_lfoDepth": 0.72,
+      "octo_ampAttack": 0.3,
+      "octo_ampRelease": 4.0,
+      "octo_reverbMix": 0.8,
+      "octo_macroStretch": 0.0,
+      "octo_macroInk": 0.0,
+      "octo_macroCoupling": 0.0,
+      "octo_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

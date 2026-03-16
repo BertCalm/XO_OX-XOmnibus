@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Organ Night Mass",
+  "mood": "Aether",
+  "engines": [
+    "Organon"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "The night mass requires no congregation. The organ plays for stone walls and vaulted darkness. The rotary barely turns \u2014 a held breath of sacred bass.",
+  "tags": [
+    "aether",
+    "dark-aether",
+    "organ",
+    "mass",
+    "sacred",
+    "vast"
+  ],
+  "macroLabels": [
+    "BREATH",
+    "SWELL",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.13,
+    "warmth": 0.55,
+    "movement": 0.15,
+    "density": 0.45,
+    "space": 0.9,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Organon": {
+      "organon_drawbar1": 0.85,
+      "organon_drawbar2": 0.5,
+      "organon_drawbar3": 0.5,
+      "organon_rotarySpeed": 0.05,
+      "organon_filterCutoff": 0.12,
+      "organon_filterReso": 0.15,
+      "organon_ampAttack": 5.0,
+      "organon_ampRelease": 9.0,
+      "organon_reverbMix": 0.92,
+      "organon_macroBreathe": 0.0,
+      "organon_macroSwell": 0.0,
+      "organon_macroCoupling": 0.0,
+      "organon_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Odyssey Drift",
+  "mood": "Flux",
+  "engines": [
+    "Odyssey"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.15,
+    "MOVEMENT": 0.73,
+    "COUPLING": 0.08,
+    "SPACE": 0.92
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.24,
+    "movement": 0.73,
+    "density": 0.06,
+    "space": 0.92,
+    "aggression": 0.15
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "sparse-flux",
+    "odyssey",
+    "drift",
+    "sparse"
+  ],
+  "description": "Odyssey wavetable adrift in open space \u2014 minimal presence, maximum journey."
+}

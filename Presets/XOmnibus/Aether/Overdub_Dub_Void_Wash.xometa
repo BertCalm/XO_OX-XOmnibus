@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Dub Void Wash",
+  "mood": "Aether",
+  "engines": [
+    "Overdub"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "Dub reduction to pure reverberant space. The signal is gone \u2014 what remains is the room the signal once occupied. Warm darkness, infinite decay.",
+  "tags": [
+    "aether",
+    "dark-aether",
+    "dub",
+    "void",
+    "reverberant",
+    "warm"
+  ],
+  "macroLabels": [
+    "DRIVE",
+    "ECHO",
+    "XOSEND",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.55,
+    "movement": 0.18,
+    "density": 0.4,
+    "space": 0.96,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Overdub": {
+      "dub_driveAmt": 0.05,
+      "dub_tapeSpeed": 0.5,
+      "dub_tapeWow": 0.3,
+      "dub_tapeFeedback": 0.3,
+      "dub_springMix": 0.7,
+      "dub_filterCutoff": 0.1,
+      "dub_filterReso": 0.2,
+      "dub_reverbSize": 1.0,
+      "dub_reverbMix": 0.97,
+      "dub_macroDrive": 0.0,
+      "dub_macroEcho": 0.0,
+      "dub_macroXosend": 0.0,
+      "dub_macroSpace": 0.0,
+      "dub_ampAttack": 4.0,
+      "dub_ampRelease": 9.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

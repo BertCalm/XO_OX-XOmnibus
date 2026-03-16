@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Oblique Weather",
+  "mood": "Aether",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XPN Aether Expansion \u2014 2026-03-16",
+  "version": "1.0.0",
+  "description": "The weather system approaching from an oblique angle. The pressure front warps spectral content. What arrives is never what was launched.",
+  "tags": [
+    "aether",
+    "shifting-aether",
+    "weather",
+    "oblique",
+    "warm",
+    "movement"
+  ],
+  "macroLabels": [
+    "ANGLE",
+    "PHASE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.6,
+    "movement": 0.78,
+    "density": 0.38,
+    "space": 0.85,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_prismColor": 0.6,
+      "oblq_phaseShift": 0.65,
+      "oblq_filterCutoff": 0.45,
+      "oblq_filterReso": 0.18,
+      "oblq_lfoRate": 0.38,
+      "oblq_lfoDepth": 0.78,
+      "oblq_ampAttack": 0.5,
+      "oblq_ampRelease": 4.5,
+      "oblq_reverbMix": 0.8,
+      "oblq_delayFeedback": 0.4,
+      "oblq_macroAngle": 0.0,
+      "oblq_macroPhase": 0.0,
+      "oblq_macroCoupling": 0.0,
+      "oblq_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}
