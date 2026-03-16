@@ -124,7 +124,8 @@ class PipelineContext:
                  pack_name: Optional[str] = None,
                  dry_run: bool = False,
                  strict_qa: bool = False,
-                 tuning: Optional[str] = None):
+                 tuning: Optional[str] = None,
+                 choke_preset: str = "none"):
         self.engine = engine
         self.output_dir = output_dir
         self.wavs_dir = wavs_dir
@@ -135,6 +136,7 @@ class PipelineContext:
         self.dry_run = dry_run
         self.strict_qa = strict_qa
         self.tuning = tuning  # Optional tuning system name (from xpn_tuning_systems)
+        self.choke_preset = choke_preset  # "onset" | "standard" | "none"
 
         # Accumulated outputs
         self.render_specs: list[dict] = []
@@ -242,6 +244,26 @@ def _stage_categorize(ctx: PipelineContext) -> None:
     if not ctx.wavs_dir or not ctx.wavs_dir.exists():
         print("    [SKIP] No --wavs-dir provided or directory does not exist")
         return
+
+    # DNA pre-flight: sample up to 5 WAVs and report sonic character
+    try:
+        import xpn_auto_dna as _dna  # lazy import
+        wav_sample = sorted(ctx.wavs_dir.glob("*.wav"))[:5] + \
+                     sorted(ctx.wavs_dir.glob("*.WAV"))[:5]
+        wav_sample = wav_sample[:5]
+        if wav_sample:
+            results = [_dna.compute_dna(str(p)) for p in wav_sample]
+            brightness  = sum(r.get("brightness",  0.0) for r in results) / len(results)
+            warmth      = sum(r.get("warmth",      0.0) for r in results) / len(results)
+            aggression  = sum(r.get("aggression",  0.0) for r in results) / len(results)
+            print(f"    DNA pre-flight: brightness={brightness:.2f}, "
+                  f"warmth={warmth:.2f}, aggression={aggression:.2f}")
+            if aggression > 0.8:
+                print("    ⚡ High aggression pack — consider tagging as 'aggressive'")
+            if brightness < 0.3:
+                print("    🌊 Dark/deep pack — consider tagging as 'dark'")
+    except (ImportError, Exception):
+        pass  # module not available or analysis failed — skip silently
 
     from xpn_sample_categorizer import categorize_folder
 
@@ -402,6 +424,17 @@ def _export_drum(ctx: PipelineContext) -> None:
 
         ctx.xpm_paths.append(xpm_path)
         print(f"      {xpm_path.name}  (drum, mode={ctx.kit_mode}, {len(wav_map)} WAVs)")
+
+        # Apply choke preset if requested
+        if ctx.choke_preset != "none" and not ctx.dry_run and xpm_path.exists():
+            try:
+                import xpn_choke_group_assigner as _choke  # lazy import
+                _choke.apply_choke_preset(xpm_path, ctx.choke_preset)
+                print(f"      Applied choke preset {ctx.choke_preset} to {xpm_path.name}")
+            except ImportError:
+                print("      [WARN] xpn_choke_group_assigner not available — skipping choke preset")
+            except Exception as e:
+                print(f"      [WARN] Choke preset failed for {xpm_path.name}: {e}")
 
     print(f"    Generated {len(ctx.xpm_paths)} drum programs")
 
