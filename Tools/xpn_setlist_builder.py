@@ -1,50 +1,18 @@
 #!/usr/bin/env python3
 """
 XPN Setlist Builder — XO_OX Designs
-Set-long kit validation and loading order builder for MPC Live III.
+Set-long kit validation and loading order builder for MPC.
 
-Reads a JSON setlist file listing all packs to be used in a live set.
-For each XPN (ZIP), opens it, parses all XPM files, counts WAV references,
-and estimates RAM usage. Validates against the target device RAM ceiling.
-Generates three output documents: setlist_validation.txt, loading_order.txt,
-and swap_guide.txt.
-
-Device profiles:
-  MPC_Live_III  — 2800 MB practical ceiling
-  MPC_X         — 2400 MB practical ceiling
-  MPC_One       — 1200 MB practical ceiling
-
-RAM estimation strategy:
-  - Parse WAV paths from XPM <File> / <SampleFile> elements.
-  - If the WAV is present inside the XPN ZIP, use its actual compressed size
-    × decompression ratio estimate (see WAV_INFLATE_RATIO).
-  - If the WAV is absent (stub reference), estimate from a 2-second stereo
-    WAV at 44100 Hz / 16-bit: 44100 × 2ch × 2bytes × 2s ≈ 352 KB per sample.
-  - Program overhead: 2 MB per XPM program (MPC program table + voice state).
-  - Total per pack: sum(sample_estimates) + (num_programs × PROGRAM_OVERHEAD_MB).
-
-Setlist JSON format:
-    {
-        "device": "MPC_Live_III",
-        "packs": [
-            {
-                "name": "ONSET_Foundation",
-                "path": "./ONSET_Foundation.xpn",
-                "programs": 3
-            }
-        ]
-    }
+Parses a JSON setlist, opens each XPN ZIP, estimates RAM usage from XPM
+program files, validates against device ceiling, and outputs:
+  - setlist_validation.txt   per-pack RAM breakdown + PASS/FAIL
+  - loading_order.txt        recommended load sequence (largest-first)
+  - swap_guide.txt           mid-set swap plan when total > ceiling
+  - setlist_summary.txt      one-page overview
 
 Usage:
-    python xpn_setlist_builder.py \\
-        --setlist my_set.json \\
-        --device MPC_Live_III \\
-        --output ./out/
-
-Output files in ./out/:
-    setlist_validation.txt   — fit/fail verdict per pack, total RAM
-    loading_order.txt        — recommended load sequence
-    swap_guide.txt           — live swap instructions if set exceeds RAM
+  python xpn_setlist_builder.py --setlist my_set.json [--device MPC_Live_III] [--output ./out/] [--dry-run]
+  python xpn_setlist_builder.py --setlist my_set.json   # auto-detects device from JSON
 """
 
 import argparse
@@ -52,643 +20,509 @@ import json
 import os
 import sys
 import zipfile
+import xml.etree.ElementTree as ET
+from dataclasses import dataclass, field
 from pathlib import Path
-from xml.etree import ElementTree as ET
+from typing import Dict, List, Optional
 
+# ---------------------------------------------------------------------------
+# Device profiles
+# ---------------------------------------------------------------------------
 
-# =============================================================================
-# DEVICE PROFILES
-# =============================================================================
-
-# Practical RAM ceilings per device (in MB).
-# "Practical" = hardware RAM minus OS + MPC firmware overhead.
-DEVICE_PROFILES = {
-    "MPC_Live_III": 2800,
-    "MPC_X":        2400,
-    "MPC_One":      1200,
+DEVICE_PROFILES: Dict[str, Dict] = {
+    "MPC_Live_III": {
+        "ram_mb": 2800,
+        "cores": 8,
+        "load_speed": "fast",
+        "description": "MPC Live III — 2800 MB ceiling, 8-core, fast load",
+    },
+    "MPC_X": {
+        "ram_mb": 2400,
+        "cores": 8,
+        "load_speed": "normal",
+        "description": "MPC X — 2400 MB ceiling, 8-core",
+    },
+    "MPC_One": {
+        "ram_mb": 1200,
+        "cores": 4,
+        "load_speed": "slow",
+        "description": "MPC One — 1200 MB ceiling, 4-core, slow load",
+    },
 }
 
-DEVICE_ALIASES = {
-    "live3":        "MPC_Live_III",
-    "live_iii":     "MPC_Live_III",
-    "mpc_live_iii": "MPC_Live_III",
-    "mpc_live3":    "MPC_Live_III",
-    "x":            "MPC_X",
-    "mpc_x":        "MPC_X",
-    "one":          "MPC_One",
-    "mpc_one":      "MPC_One",
-}
+# Conservative per-WAV estimate when actual file is not present in ZIP
+DEFAULT_WAV_MB = 4.0
+# Fallback when computing from WAV spec: 44100 Hz × 2ch × 2bytes × 4sec ≈ 0.67 MB
+FALLBACK_WAV_MB = 44100 * 2 * 2 * 4 / (1024 * 1024)
+# Base overhead charged per MPC program
+PROGRAM_BASE_MB = 2.0
+
+SEPARATOR = "=" * 72
+THIN_SEP  = "-" * 72
 
 
-def resolve_device(name: str) -> str:
-    """Resolve device name (case-insensitive, with aliases) to canonical form."""
-    canon = name.strip()
-    if canon in DEVICE_PROFILES:
-        return canon
-    lower = canon.lower().replace("-", "_").replace(" ", "_")
-    if lower in DEVICE_ALIASES:
-        return DEVICE_ALIASES[lower]
-    if lower in {k.lower() for k in DEVICE_PROFILES}:
-        for k in DEVICE_PROFILES:
-            if k.lower() == lower:
-                return k
-    return canon  # return as-is; validation will fail later with a clear message
+# ---------------------------------------------------------------------------
+# Data classes
+# ---------------------------------------------------------------------------
+
+@dataclass
+class WavInfo:
+    path: str
+    size_mb: float
+    estimated: bool     # True when size was not read from an actual WAV in the ZIP
 
 
-def device_ram_mb(device: str) -> int:
-    """Return practical RAM ceiling in MB for the given device name."""
-    return DEVICE_PROFILES.get(device, 0)
+@dataclass
+class ProgramInfo:
+    xpm_name: str
+    wav_refs: List[WavInfo] = field(default_factory=list)
+
+    @property
+    def ram_mb(self) -> float:
+        return PROGRAM_BASE_MB + sum(w.size_mb for w in self.wav_refs)
+
+    @property
+    def wav_count(self) -> int:
+        return len(self.wav_refs)
+
+    @property
+    def estimated_wav_count(self) -> int:
+        return sum(1 for w in self.wav_refs if w.estimated)
 
 
-# =============================================================================
-# RAM ESTIMATION CONSTANTS
-# =============================================================================
+@dataclass
+class PackInfo:
+    name: str
+    path: str
+    programs: List[ProgramInfo] = field(default_factory=list)
+    error: Optional[str] = None
 
-# WAVs stored inside the XPN ZIP are DEFLATE-compressed. PCM audio compresses
-# poorly — typical ratio is 1.05–1.15× (almost no compression for random audio).
-# We use 1.08× as a conservative inflate estimate.
-WAV_INFLATE_RATIO = 1.08
+    @property
+    def total_ram_mb(self) -> float:
+        return sum(p.ram_mb for p in self.programs)
 
-# Default sample RAM estimate when a WAV is referenced but not embedded.
-# Based on: 44100 Hz × 2 channels × 2 bytes/sample × 2 seconds = 352,800 bytes.
-DEFAULT_SAMPLE_BYTES = 44100 * 2 * 2 * 2   # ≈ 352 KB
+    @property
+    def program_count(self) -> int:
+        return len(self.programs)
 
-# Per-program RAM overhead: program table, voice state, envelope state, etc.
-# MPC documentation doesn't publish this; 2 MB is a conservative real-world
-# estimate based on community measurements of Live II/III behaviour.
-PROGRAM_OVERHEAD_MB = 2.0
-
-# Safety headroom to keep below the ceiling (percent of ceiling).
-# Headroom prevents MPC's internal memory manager from thrashing.
-HEADROOM_PCT = 0.05   # 5%
+    @property
+    def total_wav_refs(self) -> int:
+        return sum(p.wav_count for p in self.programs)
 
 
-# =============================================================================
-# XPM PARSING
-# =============================================================================
+# ---------------------------------------------------------------------------
+# XPN / ZIP parsing
+# ---------------------------------------------------------------------------
 
-def _extract_wav_refs_from_xpm_xml(xml_text: str) -> list:
-    """
-    Parse XPM XML text and return a list of all unique WAV file references.
-    Checks both <File> and <SampleFile> elements under <Layer> blocks.
-    Returns paths as strings exactly as they appear in the XPM.
-    """
-    refs = set()
+def _build_wav_index(zf: zipfile.ZipFile) -> Dict[str, float]:
+    """Map lowercase path/basename -> uncompressed MB for every WAV in the ZIP."""
+    index: Dict[str, float] = {}
+    for entry in zf.namelist():
+        if not entry.lower().endswith(".wav"):
+            continue
+        info = zf.getinfo(entry)
+        size_mb = info.file_size / (1024 * 1024) if info.file_size > 0 else DEFAULT_WAV_MB
+        index[entry.lower()] = size_mb
+        basename = os.path.basename(entry).lower()
+        if basename not in index:
+            index[basename] = size_mb
+    return index
+
+
+def _parse_xpm_wavs(xpm_xml: str, wav_index: Dict[str, float]) -> List[WavInfo]:
+    """Extract unique WAV references from XPM XML and resolve their sizes."""
+    wavs: List[WavInfo] = []
+    seen: set = set()
     try:
-        root = ET.fromstring(xml_text)
+        root = ET.fromstring(xpm_xml)
     except ET.ParseError:
-        return []
+        return wavs
 
-    for layer in root.iter("Layer"):
-        for tag in ("File", "SampleFile", "SampleName"):
-            el = layer.find(tag)
-            if el is not None and el.text:
-                val = el.text.strip()
-                if val and (val.lower().endswith(".wav") or "Samples/" in val):
-                    refs.add(val)
+    for tag in ("SampleFile", "FileName", "File"):
+        for elem in root.iter(tag):
+            text = (elem.text or "").strip()
+            if not text or not text.lower().endswith(".wav"):
+                continue
+            norm = text.replace("\\", "/")
+            if norm in seen:
+                continue
+            seen.add(norm)
 
-    return list(refs)
+            # Try full path, then basename
+            size_mb = wav_index.get(norm.lower())
+            estimated = False
+            if size_mb is None:
+                size_mb = wav_index.get(os.path.basename(norm).lower())
+            if size_mb is None:
+                size_mb = DEFAULT_WAV_MB
+                estimated = True
 
+            wavs.append(WavInfo(path=norm, size_mb=size_mb, estimated=estimated))
 
-# =============================================================================
-# PACK ANALYSIS
-# =============================================================================
-
-class PackAnalysis:
-    """Result of analysing a single XPN pack."""
-
-    def __init__(self, name: str, path: str):
-        self.name: str = name
-        self.path: str = path
-        self.error: str = ""               # non-empty if pack could not be opened
-        self.num_programs: int = 0
-        self.num_wav_refs: int = 0         # total WAV references across all XPMs
-        self.num_unique_wavs: int = 0      # deduplicated
-        self.embedded_wav_bytes: int = 0   # bytes of WAVs actually inside the ZIP
-        self.stub_wav_count: int = 0       # WAV refs with no embedded file
-        self.estimated_ram_mb: float = 0.0
-        self.program_names: list = []
+    return wavs
 
 
-def analyse_pack(pack_entry: dict, setlist_dir: Path) -> PackAnalysis:
-    """
-    Open an XPN file (ZIP), parse its XPM programs, and estimate RAM usage.
+def parse_xpn_zip(name: str, zip_path: str) -> PackInfo:
+    """Open an XPN ZIP and build a PackInfo describing all programs and WAVs."""
+    pack = PackInfo(name=name, path=zip_path)
 
-    pack_entry: dict with keys: name, path, programs (optional hint)
-    setlist_dir: directory containing the setlist JSON (for resolving relative paths)
-    """
-    name = pack_entry.get("name", "unknown")
-    raw_path = pack_entry.get("path", "")
-    result = PackAnalysis(name, raw_path)
-
-    # Resolve the path relative to the setlist file's directory
-    pack_path = Path(raw_path)
-    if not pack_path.is_absolute():
-        pack_path = setlist_dir / pack_path
-
-    if not pack_path.exists():
-        result.error = f"File not found: {pack_path}"
-        return result
-
-    if not zipfile.is_zipfile(str(pack_path)):
-        result.error = f"Not a valid ZIP/XPN file: {pack_path}"
-        return result
+    if not os.path.isfile(zip_path):
+        pack.error = f"File not found: {zip_path}"
+        return pack
 
     try:
-        with zipfile.ZipFile(str(pack_path), "r") as zf:
-            namelist = zf.namelist()
+        with zipfile.ZipFile(zip_path, "r") as zf:
+            wav_index = _build_wav_index(zf)
+            xpm_entries = [e for e in zf.namelist() if e.lower().endswith(".xpm")]
 
-            # Find all XPM files in the archive
-            xpm_names = [n for n in namelist if n.lower().endswith(".xpm")]
-            result.num_programs = len(xpm_names)
+            if not xpm_entries:
+                pack.error = "No XPM files found in ZIP"
+                return pack
 
-            # Build a set of embedded WAV paths (lower-cased for matching)
-            embedded_wavs = {}  # lower_name → compressed_size
-            for info in zf.infolist():
-                lower = info.filename.lower()
-                if lower.endswith(".wav"):
-                    embedded_wavs[lower] = info.compress_size
-
-            all_wav_refs = set()
-
-            for xpm_name in xpm_names:
+            for xpm_entry in xpm_entries:
+                xpm_name = os.path.basename(xpm_entry)
                 try:
-                    xpm_bytes = zf.read(xpm_name)
-                    xpm_text = xpm_bytes.decode("utf-8", errors="replace")
-                    result.program_names.append(
-                        Path(xpm_name).stem
-                    )
-                    wav_refs = _extract_wav_refs_from_xpm_xml(xpm_text)
-                    for ref in wav_refs:
-                        all_wav_refs.add(ref)
-                except (KeyError, UnicodeDecodeError):
+                    xpm_xml = zf.read(xpm_entry).decode("utf-8", errors="replace")
+                except Exception:
+                    pack.programs.append(ProgramInfo(xpm_name=xpm_name))
                     continue
-
-            result.num_wav_refs = len(all_wav_refs)
-            result.num_unique_wavs = len(all_wav_refs)
-
-            # Estimate RAM for each unique WAV reference
-            total_sample_bytes = 0
-            stub_count = 0
-
-            for ref in all_wav_refs:
-                # Try to find in embedded WAVs (normalise path separators)
-                ref_lower = ref.lower().replace("\\", "/")
-                ref_basename = Path(ref_lower).name
-
-                # First: try exact match
-                matched_size = None
-                if ref_lower in embedded_wavs:
-                    matched_size = embedded_wavs[ref_lower]
-                else:
-                    # Try basename match (samples may be in Samples/ subdirs)
-                    for emb_path, emb_size in embedded_wavs.items():
-                        if Path(emb_path).name == ref_basename:
-                            matched_size = emb_size
-                            break
-
-                if matched_size is not None:
-                    # Inflate compressed size to approximate decompressed WAV size
-                    inflated = int(matched_size * WAV_INFLATE_RATIO)
-                    total_sample_bytes += inflated
-                    result.embedded_wav_bytes += matched_size
-                else:
-                    # No embedded WAV — use stub estimate
-                    total_sample_bytes += DEFAULT_SAMPLE_BYTES
-                    stub_count += 1
-
-            result.stub_wav_count = stub_count
-
-            # Total RAM: sample data + per-program overhead
-            num_programs = result.num_programs or pack_entry.get("programs", 1)
-            program_overhead = num_programs * PROGRAM_OVERHEAD_MB * 1024 * 1024
-
-            total_bytes = total_sample_bytes + program_overhead
-            result.estimated_ram_mb = total_bytes / (1024 * 1024)
+                wav_refs = _parse_xpm_wavs(xpm_xml, wav_index)
+                pack.programs.append(ProgramInfo(xpm_name=xpm_name, wav_refs=wav_refs))
 
     except zipfile.BadZipFile as exc:
-        result.error = f"Bad ZIP file: {exc}"
+        pack.error = f"Bad ZIP file: {exc}"
+    except Exception as exc:
+        pack.error = f"Error reading pack: {exc}"
 
-    return result
+    return pack
 
 
-# =============================================================================
-# SETLIST VALIDATION
-# =============================================================================
+# ---------------------------------------------------------------------------
+# Formatting helpers
+# ---------------------------------------------------------------------------
 
-def generate_setlist_validation(
-    analyses: list,
-    device: str,
-    ram_ceiling_mb: int,
-    headroom_mb: float,
+def _mb_str(mb: float) -> str:
+    if mb >= 1000:
+        return f"{mb / 1024:.2f} GB"
+    return f"{mb:.1f} MB"
+
+
+# ---------------------------------------------------------------------------
+# Report builders
+# ---------------------------------------------------------------------------
+
+def build_validation_report(
+    packs: List[PackInfo], device_name: str, ceiling_mb: float, set_name: str
 ) -> str:
-    """Generate setlist_validation.txt content."""
-    total_ram = sum(a.estimated_ram_mb for a in analyses if not a.error)
-    fits = (total_ram <= (ram_ceiling_mb - headroom_mb))
-
     lines = [
-        "XPN Setlist Builder — Validation Report",
-        f"XO_OX Designs | {_today()}",
-        "",
-        f"Device         : {device}",
-        f"RAM ceiling    : {ram_ceiling_mb} MB",
-        f"Safety headroom: {headroom_mb:.0f} MB ({HEADROOM_PCT*100:.0f}% of ceiling)",
-        f"Available RAM  : {ram_ceiling_mb - headroom_mb:.0f} MB",
-        "",
-        "=" * 60,
-        "PACK ANALYSIS",
-        "=" * 60,
+        SEPARATOR,
+        "  SETLIST VALIDATION REPORT",
+        f"  Set: {set_name}",
+        f"  Device: {device_name}  |  RAM Ceiling: {_mb_str(ceiling_mb)}",
+        SEPARATOR,
         "",
     ]
 
-    for a in analyses:
-        if a.error:
-            lines.append(f"[ERROR] {a.name}")
-            lines.append(f"        Path  : {a.path}")
-            lines.append(f"        Error : {a.error}")
+    total_mb = 0.0
+    for i, pack in enumerate(packs, 1):
+        lines.append(f"[{i:02d}] {pack.name}")
+        lines.append(f"     Path: {pack.path}")
+        if pack.error:
+            lines.append(f"     ERROR: {pack.error}")
             lines.append("")
             continue
 
-        status = "OK" if a.estimated_ram_mb <= (ram_ceiling_mb - headroom_mb) else "LARGE"
-        lines.append(f"[{status:5s}] {a.name}")
-        lines.append(f"        Path          : {a.path}")
-        lines.append(f"        Programs      : {a.num_programs}")
-        lines.append(f"        Unique WAVs   : {a.num_unique_wavs}")
-        lines.append(f"        Stub WAVs     : {a.stub_wav_count}  (estimated @ {DEFAULT_SAMPLE_BYTES // 1024} KB each)")
-        lines.append(f"        Estimated RAM : {a.estimated_ram_mb:.1f} MB")
-        if a.program_names:
-            prog_list = ", ".join(a.program_names[:8])
-            if len(a.program_names) > 8:
-                prog_list += f", ... (+{len(a.program_names) - 8} more)"
-            lines.append(f"        Programs      : {prog_list}")
+        lines.append(f"     Programs : {pack.program_count}")
+        lines.append(f"     WAV refs : {pack.total_wav_refs}")
+        for prog in pack.programs:
+            est_note = (
+                f"  ({prog.estimated_wav_count} estimated)"
+                if prog.estimated_wav_count
+                else ""
+            )
+            lines.append(
+                f"       {prog.xpm_name:<40}  {prog.wav_count:>3} WAVs"
+                f"  {_mb_str(prog.ram_mb):>10}{est_note}"
+            )
+        lines.append(f"     Pack RAM : {_mb_str(pack.total_ram_mb)}")
+        total_mb += pack.total_ram_mb
         lines.append("")
 
+    headroom = ceiling_mb - total_mb
     lines += [
-        "=" * 60,
-        "SUMMARY",
-        "=" * 60,
-        "",
-        f"Total estimated RAM : {total_ram:.1f} MB",
-        f"Available RAM       : {ram_ceiling_mb - headroom_mb:.0f} MB",
-        f"Remaining headroom  : {(ram_ceiling_mb - headroom_mb) - total_ram:.1f} MB",
+        THIN_SEP,
+        f"  TOTAL ESTIMATED RAM : {_mb_str(total_mb)}",
+        f"  DEVICE CEILING      : {_mb_str(ceiling_mb)}",
+        f"  HEADROOM            : {_mb_str(headroom)}",
         "",
     ]
 
-    if fits:
-        lines.append("VERDICT: SET FITS IN MEMORY — all packs can be loaded simultaneously.")
+    if total_mb <= ceiling_mb:
+        lines.append("  RESULT: PASS — entire setlist fits within device RAM.")
     else:
-        over = total_ram - (ram_ceiling_mb - headroom_mb)
-        lines.append(f"VERDICT: SET EXCEEDS RAM BY {over:.1f} MB — see swap_guide.txt.")
+        over = total_mb - ceiling_mb
+        lines.append(f"  RESULT: FAIL — exceeds ceiling by {_mb_str(over)}.")
+        lines.append("  See swap_guide.txt for mid-set swap recommendations.")
 
-    lines += [
-        "",
-        "Notes:",
-        "  - RAM estimates are approximate. Actual MPC usage depends on sample",
-        "    format, bit depth, and MPC firmware version.",
-        "  - Stub WAV estimates assume 2-second stereo 44.1 kHz / 16-bit samples.",
-        "  - Program overhead estimated at 2 MB per XPM program.",
-        "  - Run with embedded WAVs in XPN files for more accurate estimates.",
-    ]
-
-    return "\n".join(lines) + "\n"
+    lines.append(SEPARATOR)
+    return "\n".join(lines)
 
 
-# =============================================================================
-# LOADING ORDER
-# =============================================================================
-
-def generate_loading_order(
-    analyses: list,
-    device: str,
-    ram_ceiling_mb: int,
-    headroom_mb: float,
+def build_loading_order_report(
+    packs: List[PackInfo], device_name: str, set_name: str
 ) -> str:
-    """
-    Generate loading_order.txt.
-    Strategy: largest packs first — MPC caches warm early, smaller packs
-    fill remaining space, reducing total swap events during the set.
-    Packs with errors are listed last with a warning.
-    """
-    good = [a for a in analyses if not a.error]
-    errors = [a for a in analyses if a.error]
-
-    # Sort descending by RAM (largest first)
-    sorted_packs = sorted(good, key=lambda a: a.estimated_ram_mb, reverse=True)
+    valid   = [p for p in packs if not p.error]
+    errored = [p for p in packs if p.error]
+    ordered = sorted(valid, key=lambda p: p.total_ram_mb, reverse=True)
 
     lines = [
-        "XPN Setlist Builder — Recommended Loading Order",
-        f"XO_OX Designs | {_today()}",
-        "",
-        f"Device : {device}",
-        f"Strategy: Largest packs first — fills MPC cache efficiently.",
-        "",
-        "=" * 60,
-        "LOAD SEQUENCE",
-        "=" * 60,
+        SEPARATOR,
+        "  RECOMMENDED LOADING ORDER",
+        f"  Set: {set_name}  |  Device: {device_name}",
+        "  Strategy: load largest packs first to minimise RAM fragmentation",
+        SEPARATOR,
         "",
     ]
 
     cumulative = 0.0
-    available = ram_ceiling_mb - headroom_mb
+    for rank, pack in enumerate(ordered, 1):
+        cumulative += pack.total_ram_mb
+        lines.append(
+            f"  {rank:>2}. {pack.name:<36}  {_mb_str(pack.total_ram_mb):>10}"
+            f"  (cumulative: {_mb_str(cumulative)})"
+        )
 
-    for i, a in enumerate(sorted_packs, 1):
-        cumulative += a.estimated_ram_mb
-        over = max(0.0, cumulative - available)
-        status = "OK" if over == 0 else f"OVER by {over:.1f} MB"
-        lines.append(f"  {i:2d}. {a.name}")
-        lines.append(f"       RAM: {a.estimated_ram_mb:.1f} MB  |  "
-                     f"Cumulative: {cumulative:.1f} MB / {available:.0f} MB  [{status}]")
-        lines.append(f"       Path: {a.path}")
-        lines.append("")
-
-    if errors:
-        lines += [
-            "=" * 60,
-            "PACKS WITH ERRORS (excluded from load order)",
-            "=" * 60,
-            "",
-        ]
-        for a in errors:
-            lines.append(f"  ! {a.name}")
-            lines.append(f"    {a.error}")
-            lines.append("")
+    if errored:
+        lines += ["", "  SKIPPED (errors):"]
+        for pack in errored:
+            lines.append(f"       {pack.name}  — {pack.error}")
 
     lines += [
-        "MPC Live loading tips:",
-        "  1. Load packs via Expansion Manager before the set starts.",
-        "  2. Load in the order above — largest programs load first.",
-        "  3. Keep swap_guide.txt handy if total RAM exceeds the ceiling.",
+        "",
+        THIN_SEP,
+        "  NOTE: On MPC One (slow load), front-load all packs before performance.",
+        "  On MPC Live III / MPC X, packs can be swapped mid-set in under 3 sec.",
+        SEPARATOR,
     ]
+    return "\n".join(lines)
 
-    return "\n".join(lines) + "\n"
 
-
-# =============================================================================
-# SWAP GUIDE
-# =============================================================================
-
-def generate_swap_guide(
-    analyses: list,
-    device: str,
-    ram_ceiling_mb: int,
-    headroom_mb: float,
-    original_order: list,
+def build_swap_guide(
+    packs: List[PackInfo], device_name: str, ceiling_mb: float, set_name: str
 ) -> str:
-    """
-    Generate swap_guide.txt.
-    If the full set exceeds RAM, suggest which packs to swap in/out
-    at which point during the set.
-
-    Strategy:
-      - Divide the set into time slots (equal thirds: early, middle, late).
-      - Greedily assign packs to time slots respecting the RAM ceiling.
-      - When a new pack can't fit, evict the pack that was last used earliest.
-    """
-    good = [a for a in analyses if not a.error]
-    available = ram_ceiling_mb - headroom_mb
-    total_ram = sum(a.estimated_ram_mb for a in good)
+    valid   = [p for p in packs if not p.error]
+    ordered = sorted(valid, key=lambda p: p.total_ram_mb, reverse=True)
+    total_mb = sum(p.total_ram_mb for p in valid)
 
     lines = [
-        "XPN Setlist Builder — Live Swap Guide",
-        f"XO_OX Designs | {_today()}",
-        "",
-        f"Device          : {device}",
-        f"Available RAM   : {available:.0f} MB",
-        f"Total set RAM   : {total_ram:.1f} MB",
+        SEPARATOR,
+        "  MID-SET SWAP GUIDE",
+        f"  Set: {set_name}  |  Device: {device_name}",
+        SEPARATOR,
         "",
     ]
 
-    if total_ram <= available:
+    if total_mb <= ceiling_mb:
         lines += [
-            "SET FITS IN MEMORY.",
-            "No swaps required — all packs can be loaded simultaneously.",
-            "",
-            "Load order is listed in loading_order.txt.",
+            "  No swaps needed — all packs fit within device RAM.",
+            SEPARATOR,
         ]
-        return "\n".join(lines) + "\n"
+        return "\n".join(lines)
 
-    over = total_ram - available
+    over_mb = total_mb - ceiling_mb
     lines += [
-        f"SET EXCEEDS RAM BY {over:.1f} MB.",
-        "Swap strategy: load next pack, unload least-recently-needed pack.",
+        f"  Total estimated RAM : {_mb_str(total_mb)}",
+        f"  Device ceiling      : {_mb_str(ceiling_mb)}",
+        f"  Overage             : {_mb_str(over_mb)}",
         "",
-        "=" * 60,
-        "SWAP PLAN",
-        "=" * 60,
+        "  SWAP STRATEGY",
+        "  Load the largest packs at set start. Swap smaller packs in as needed.",
+        "  Suggested split:",
         "",
     ]
 
-    # Simple greedy swap: maintain a "loaded" set constrained by available RAM.
-    # Process packs in the original setlist order (preserving artistic intent).
-    # When we can't fit a new pack, evict the pack earliest in the loaded order.
-
-    loaded: list = []          # list of PackAnalysis, in order loaded
-    loaded_ram: float = 0.0
-    events: list = []          # list of (pack_name, action, cumulative_ram, note)
-
-    for pack in original_order:
-        if pack.error:
-            events.append((pack.name, "SKIP", loaded_ram, f"Error: {pack.error}"))
-            continue
-
-        # Try to load without eviction
-        if loaded_ram + pack.estimated_ram_mb <= available:
-            loaded.append(pack)
-            loaded_ram += pack.estimated_ram_mb
-            events.append((pack.name, "LOAD", loaded_ram,
-                           f"Fits. RAM now {loaded_ram:.1f}/{available:.0f} MB."))
+    # Greedy fill: fit as many large packs as possible into opening slot
+    set_start: List[PackInfo] = []
+    swap_in: List[PackInfo] = []
+    running = 0.0
+    for pack in ordered:
+        if running + pack.total_ram_mb <= ceiling_mb:
+            set_start.append(pack)
+            running += pack.total_ram_mb
         else:
-            # Must evict. Evict the pack loaded earliest (FIFO = least likely to be needed soon)
-            evicted = loaded.pop(0)
-            loaded_ram -= evicted.estimated_ram_mb
-            events.append((evicted.name, "UNLOAD", loaded_ram,
-                           f"Evicted to make room for {pack.name}."))
+            swap_in.append(pack)
 
-            # Now load the new pack
-            loaded.append(pack)
-            loaded_ram += pack.estimated_ram_mb
-            events.append((pack.name, "LOAD", loaded_ram,
-                           f"RAM now {loaded_ram:.1f}/{available:.0f} MB."))
+    lines.append("  LOAD AT SET START:")
+    for i, pack in enumerate(set_start, 1):
+        lines.append(f"    {i:>2}. {pack.name:<36}  {_mb_str(pack.total_ram_mb)}")
 
-    # Format events as numbered steps
-    step = 1
-    for pack_name, action, cum_ram, note in events:
-        symbol = "+" if action == "LOAD" else ("-" if action == "UNLOAD" else "!")
-        lines.append(f"  Step {step:2d}. [{symbol}] {action:6s}  {pack_name}")
-        lines.append(f"           {note}")
-        lines.append(f"           RAM in use after step: {cum_ram:.1f} MB")
-        lines.append("")
-        step += 1
+    lines += ["", "  SWAP IN MID-SET (unload a set-start pack first):"]
+    for i, pack in enumerate(swap_in, 1):
+        # Recommend unloading the set-start pack closest in size
+        candidate = min(set_start, key=lambda p: abs(p.total_ram_mb - pack.total_ram_mb))
+        lines += [
+            f"    {i:>2}. Load  : {pack.name:<36}  {_mb_str(pack.total_ram_mb)}",
+            f"        Unload: {candidate.name:<36}  {_mb_str(candidate.total_ram_mb)}",
+            f"        Suggested swap point: after finishing songs that use {candidate.name}",
+            f"        (e.g., after pad 8 in Bank B, unload {candidate.name}, load {pack.name})",
+            "",
+        ]
 
     lines += [
-        "=" * 60,
-        "LIVE SWAP WORKFLOW",
-        "=" * 60,
+        THIN_SEP,
+        "  TIP: Plan swap points between songs or during interludes.",
+        "  TIP: On MPC One, pre-queue the swap before the last hit of a section.",
+        SEPARATOR,
+    ]
+    return "\n".join(lines)
+
+
+def build_summary(
+    packs: List[PackInfo], device_name: str, ceiling_mb: float, set_name: str
+) -> str:
+    valid        = [p for p in packs if not p.error]
+    errored      = [p for p in packs if p.error]
+    total_mb     = sum(p.total_ram_mb for p in valid)
+    total_progs  = sum(p.program_count for p in valid)
+    total_wavs   = sum(p.total_wav_refs for p in valid)
+    passed       = total_mb <= ceiling_mb
+
+    lines = [
+        SEPARATOR,
+        f"  SETLIST SUMMARY — {set_name}",
+        SEPARATOR,
+        f"  Device         : {device_name}",
+        f"  RAM ceiling    : {_mb_str(ceiling_mb)}",
+        f"  Packs          : {len(packs)}  ({len(errored)} errors)",
+        f"  Programs       : {total_progs}",
+        f"  WAV references : {total_wavs}",
+        f"  Total RAM est. : {_mb_str(total_mb)}",
+        f"  Headroom       : {_mb_str(ceiling_mb - total_mb)}",
+        f"  Result         : {'PASS' if passed else 'FAIL — see swap_guide.txt'}",
         "",
-        "Before the set:",
-        "  1. Load all packs that appear in the first 3 set slots.",
-        "  2. Pre-cue swaps at natural set breaks (verse→chorus, song end).",
-        "",
-        "During the set:",
-        "  - Follow the step list above.",
-        "  - Unload BEFORE loading the next pack to avoid RAM overflow.",
-        "  - MPC Live III: use Browse → Expansions → Unload Pack.",
-        "",
-        "Preventing audible gaps:",
-        "  - Swap during a breakdown, outro, or DJ transition.",
-        "  - Do NOT swap while the program you're evicting is actively playing.",
-        "",
-        "Alternative — reduce RAM usage:",
-        "  - Use xpn_drum_export.py to rebuild packs at lower sample count.",
-        "  - Reduce programs per pack (--programs flag) to trim overhead.",
     ]
 
-    return "\n".join(lines) + "\n"
+    if errored:
+        lines.append("  Packs with errors:")
+        for p in errored:
+            lines.append(f"    - {p.name}: {p.error}")
+        lines.append("")
+
+    lines.append("  Pack overview (largest first):")
+    for pack in sorted(packs, key=lambda p: p.total_ram_mb, reverse=True):
+        status = "ERROR" if pack.error else _mb_str(pack.total_ram_mb)
+        lines.append(f"    {pack.name:<40}  {status}")
+
+    lines.append(SEPARATOR)
+    return "\n".join(lines)
 
 
-# =============================================================================
-# UTILITIES
-# =============================================================================
+# ---------------------------------------------------------------------------
+# CLI
+# ---------------------------------------------------------------------------
 
-def _today() -> str:
-    import datetime
-    return str(datetime.date.today())
-
-
-def _load_setlist(path: Path) -> dict:
-    """Load and minimally validate the setlist JSON file."""
-    try:
-        with open(path, encoding="utf-8") as f:
-            data = json.load(f)
-    except FileNotFoundError:
-        print(f"[ERROR] Setlist file not found: {path}", file=sys.stderr)
-        sys.exit(1)
-    except json.JSONDecodeError as exc:
-        print(f"[ERROR] Invalid JSON in setlist: {exc}", file=sys.stderr)
-        sys.exit(1)
-
-    if "packs" not in data:
-        print("[ERROR] Setlist JSON must have a 'packs' array.", file=sys.stderr)
-        sys.exit(1)
-
-    if not isinstance(data["packs"], list):
-        print("[ERROR] 'packs' must be a JSON array.", file=sys.stderr)
-        sys.exit(1)
-
-    return data
+def resolve_path(base_dir: str, path: str) -> str:
+    if os.path.isabs(path):
+        return path
+    return os.path.normpath(os.path.join(base_dir, path))
 
 
-# =============================================================================
-# MAIN
-# =============================================================================
-
-def main():
+def main() -> int:
     parser = argparse.ArgumentParser(
-        description="XPN Setlist Builder — validate and plan loading order for MPC Live sets.",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog=__doc__,
+        description="XPN Setlist Builder — MPC RAM validation and loading order tool"
     )
-    parser.add_argument("--setlist", required=True, metavar="SETLIST.json",
-                        help="Path to the setlist JSON file.")
-    parser.add_argument("--device", default="", metavar="DEVICE",
-                        help=(
-                            "Target MPC device. Choices: "
-                            + ", ".join(DEVICE_PROFILES.keys())
-                            + ". Overrides 'device' field in setlist JSON."
-                        ))
-    parser.add_argument("--output", default="./out", metavar="DIR",
-                        help="Output directory for report files (default: ./out).")
-    parser.add_argument("--dry-run", action="store_true",
-                        help="Analyse packs and print summary without writing files.")
+    parser.add_argument("--setlist", required=True, help="Path to setlist JSON file")
+    parser.add_argument(
+        "--device",
+        choices=list(DEVICE_PROFILES.keys()),
+        default=None,
+        help="Device profile (overrides 'device' field in setlist JSON)",
+    )
+    parser.add_argument(
+        "--output",
+        default=".",
+        help="Output directory for report files (default: current directory)",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Print estimates to stdout without writing files",
+    )
     args = parser.parse_args()
 
-    setlist_path = Path(args.setlist)
-    output_dir = Path(args.output)
-    setlist_dir = setlist_path.parent.resolve()
+    setlist_path = os.path.abspath(args.setlist)
+    if not os.path.isfile(setlist_path):
+        print(f"ERROR: Setlist file not found: {setlist_path}", file=sys.stderr)
+        return 1
 
-    # Load setlist
-    setlist_data = _load_setlist(setlist_path)
+    with open(setlist_path, "r", encoding="utf-8") as fh:
+        try:
+            setlist = json.load(fh)
+        except json.JSONDecodeError as exc:
+            print(f"ERROR: Invalid JSON in setlist: {exc}", file=sys.stderr)
+            return 1
 
-    # Resolve device
-    device_raw = args.device or setlist_data.get("device", "MPC_Live_III")
-    device = resolve_device(device_raw)
-    if device not in DEVICE_PROFILES:
-        known = ", ".join(DEVICE_PROFILES.keys())
-        print(f"[ERROR] Unknown device '{device}'. Known devices: {known}", file=sys.stderr)
-        sys.exit(1)
+    set_name   = setlist.get("set_name", "Unnamed Set")
+    packs_data = setlist.get("packs", [])
 
-    ram_ceiling_mb = device_ram_mb(device)
-    headroom_mb = ram_ceiling_mb * HEADROOM_PCT
+    # Resolve device: CLI flag > JSON field > default
+    device_key = args.device or setlist.get("device")
+    if device_key not in DEVICE_PROFILES:
+        if device_key:
+            print(
+                f"WARNING: Unknown device '{device_key}'. Defaulting to MPC_Live_III.",
+                file=sys.stderr,
+            )
+        device_key = "MPC_Live_III"
 
-    packs = setlist_data["packs"]
+    ceiling_mb  = DEVICE_PROFILES[device_key]["ram_mb"]
+    setlist_dir = os.path.dirname(setlist_path)
+
+    # Parse each pack
+    packs: List[PackInfo] = []
+    for entry in packs_data:
+        name     = entry.get("name", "Unknown")
+        rel_path = entry.get("path", "")
+        abs_path = resolve_path(setlist_dir, rel_path)
+        print(f"Parsing: {name}  ({abs_path})")
+        packs.append(parse_xpn_zip(name, abs_path))
+
     if not packs:
-        print("[ERROR] Setlist has no packs.", file=sys.stderr)
-        sys.exit(1)
+        print("WARNING: No packs found in setlist.", file=sys.stderr)
 
-    print(f"XPN Setlist Builder — XO_OX Designs")
-    print(f"  Setlist : {setlist_path}")
-    print(f"  Device  : {device}  ({ram_ceiling_mb} MB ceiling)")
-    print(f"  Packs   : {len(packs)}")
-    print(f"  Output  : {output_dir}")
-    print()
-
-    # Analyse all packs
-    analyses_in_order = []
-    for pack_entry in packs:
-        name = pack_entry.get("name", pack_entry.get("path", "unknown"))
-        print(f"  Analysing: {name} ...")
-        analysis = analyse_pack(pack_entry, setlist_dir)
-        analyses_in_order.append(analysis)
-        if analysis.error:
-            print(f"    [ERROR] {analysis.error}")
-        else:
-            print(f"    Programs: {analysis.num_programs}  "
-                  f"WAVs: {analysis.num_unique_wavs}  "
-                  f"RAM: {analysis.estimated_ram_mb:.1f} MB")
-
-    print()
-    total_ram = sum(a.estimated_ram_mb for a in analyses_in_order if not a.error)
-    available = ram_ceiling_mb - headroom_mb
-    fits = (total_ram <= available)
-    print(f"Total estimated RAM : {total_ram:.1f} MB / {available:.0f} MB available")
-    print(f"Verdict: {'FITS' if fits else 'EXCEEDS RAM — swap guide generated'}")
-    print()
+    # Build all four reports
+    validation_txt = build_validation_report(packs, device_key, ceiling_mb, set_name)
+    loading_txt    = build_loading_order_report(packs, device_key, set_name)
+    swap_txt       = build_swap_guide(packs, device_key, ceiling_mb, set_name)
+    summary_txt    = build_summary(packs, device_key, ceiling_mb, set_name)
 
     if args.dry_run:
-        print("[DRY RUN] Would write:")
-        print(f"  {output_dir}/setlist_validation.txt")
-        print(f"  {output_dir}/loading_order.txt")
-        print(f"  {output_dir}/swap_guide.txt")
-        return
+        for report in (summary_txt, validation_txt, loading_txt, swap_txt):
+            print()
+            print(report)
+        return 0
 
-    # Write output files
-    output_dir.mkdir(parents=True, exist_ok=True)
+    out_dir = os.path.abspath(args.output)
+    os.makedirs(out_dir, exist_ok=True)
 
-    validation_txt = generate_setlist_validation(
-        analyses_in_order, device, ram_ceiling_mb, headroom_mb
-    )
-    validation_path = output_dir / "setlist_validation.txt"
-    validation_path.write_text(validation_txt, encoding="utf-8")
-    print(f"  Written: {validation_path}")
+    files = {
+        "setlist_validation.txt": validation_txt,
+        "loading_order.txt":      loading_txt,
+        "swap_guide.txt":         swap_txt,
+        "setlist_summary.txt":    summary_txt,
+    }
 
-    loading_txt = generate_loading_order(
-        analyses_in_order, device, ram_ceiling_mb, headroom_mb
-    )
-    loading_path = output_dir / "loading_order.txt"
-    loading_path.write_text(loading_txt, encoding="utf-8")
-    print(f"  Written: {loading_path}")
-
-    swap_txt = generate_swap_guide(
-        analyses_in_order, device, ram_ceiling_mb, headroom_mb,
-        original_order=analyses_in_order,
-    )
-    swap_path = output_dir / "swap_guide.txt"
-    swap_path.write_text(swap_txt, encoding="utf-8")
-    print(f"  Written: {swap_path}")
+    for filename, content in files.items():
+        out_path = os.path.join(out_dir, filename)
+        with open(out_path, "w", encoding="utf-8") as fh:
+            fh.write(content)
+            fh.write("\n")
+        print(f"Written: {out_path}")
 
     print()
-    print(f"Done. Reports written to {output_dir}/")
+    print(summary_txt)
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

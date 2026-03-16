@@ -123,7 +123,8 @@ class PipelineContext:
                  version: str = "1.0",
                  pack_name: Optional[str] = None,
                  dry_run: bool = False,
-                 strict_qa: bool = False):
+                 strict_qa: bool = False,
+                 tuning: Optional[str] = None):
         self.engine = engine
         self.output_dir = output_dir
         self.wavs_dir = wavs_dir
@@ -133,6 +134,7 @@ class PipelineContext:
         self.pack_name = pack_name or f"XO_OX {engine}"
         self.dry_run = dry_run
         self.strict_qa = strict_qa
+        self.tuning = tuning  # Optional tuning system name (from xpn_tuning_systems)
 
         # Accumulated outputs
         self.render_specs: list[dict] = []
@@ -415,6 +417,27 @@ def _export_keygroup(ctx: PipelineContext) -> None:
     else:
         specs = ctx.render_specs
 
+    # Resolve tuning system once if requested
+    tuning_module = None
+    if ctx.tuning:
+        try:
+            import xpn_tuning_systems as _tun
+            if ctx.tuning not in _tun.TUNING_SYSTEMS:
+                print(f"    [WARN] Unknown tuning '{ctx.tuning}' — "
+                      f"valid names: {', '.join(_tun.TUNING_SYSTEMS)}")
+                print("    [WARN] Continuing without tuning.")
+            else:
+                tuning_module = _tun
+                ts_info = _tun.TUNING_SYSTEMS[ctx.tuning]
+                max_dev = max(abs(o) for o in _tun.compute_offsets(ctx.tuning))
+                print(f"    Tuning:  {ctx.tuning}")
+                print(f"             {ts_info.get('description', '')[:80]}")
+                print(f"             Max deviation from 12-TET: ±{max_dev:.1f} cents")
+                if ts_info.get("reference"):
+                    print(f"             Ref: {ts_info['reference'][:80]}")
+        except ImportError:
+            print("    [WARN] xpn_tuning_systems not found — continuing without tuning.")
+
     for spec in specs:
         name = spec.get("preset_name", ctx.engine)
         slug = spec.get("preset_slug", name.replace(" ", "_"))
@@ -424,13 +447,21 @@ def _export_keygroup(ctx: PipelineContext) -> None:
             wav_map = build_keygroup_wav_map(ctx.wavs_dir, slug)
 
         xpm_content = generate_keygroup_xpm(name, ctx.engine, wav_map)
+
+        # Apply tuning: rewrite PitchCents in every Instrument block
+        if tuning_module is not None and not ctx.dry_run:
+            xpm_content = tuning_module.apply_tuning_to_xpm(xpm_content, ctx.tuning)
+
         xpm_path = ctx.programs_dir / f"{slug}.xpm"
 
         if not ctx.dry_run:
             xpm_path.write_text(xpm_content, encoding="utf-8")
+        elif tuning_module is not None:
+            print(f"      [DRY] Would apply tuning '{ctx.tuning}' to {slug}.xpm")
 
         ctx.xpm_paths.append(xpm_path)
-        print(f"      {xpm_path.name}  (keygroup, {len(wav_map)} WAVs)")
+        tuning_tag = f", tuning={ctx.tuning}" if tuning_module else ""
+        print(f"      {xpm_path.name}  (keygroup, {len(wav_map)} WAVs{tuning_tag})")
 
     print(f"    Generated {len(ctx.xpm_paths)} keygroup programs")
 
@@ -480,11 +511,12 @@ def _stage_package(ctx: PipelineContext) -> None:
     pack_slug = ctx.pack_name.replace(" ", "_")
     xpn_path = ctx.output_dir / f"{pack_slug}.xpn"
 
+    tuning_suffix = f" | Tuning: {ctx.tuning}" if ctx.tuning else ""
     meta = XPNMetadata(
         name=ctx.pack_name,
         version=ctx.version,
         author="XO_OX Designs",
-        description=f"{ctx.pack_name} expansion pack — XO_OX Designs",
+        description=f"{ctx.pack_name} expansion pack — XO_OX Designs{tuning_suffix}",
         cover_engine=ctx.engine.upper(),
     )
 
@@ -581,6 +613,8 @@ def run_pipeline(ctx: PipelineContext, skip_stages: set[str]) -> int:
     print(f"  Version:    {ctx.version}")
     if ctx.preset_filter:
         print(f"  Filter:     {ctx.preset_filter}")
+    if ctx.tuning:
+        print(f"  Tuning:     {ctx.tuning}")
     if ctx.dry_run:
         print(f"  Mode:       DRY RUN")
     if skip_stages:
@@ -714,6 +748,7 @@ def cmd_run(args) -> int:
         pack_name=args.pack_name,
         dry_run=args.dry_run,
         strict_qa=getattr(args, "strict_qa", False),
+        tuning=getattr(args, "tuning", None),
     )
     return run_pipeline(ctx, skip)
 
@@ -877,6 +912,11 @@ def main():
                        help="Show what would be executed without running")
     p_run.add_argument("--strict-qa",  action="store_true", dest="strict_qa",
                        help="Abort the pipeline on any QA failure (default: warn and continue)")
+    p_run.add_argument("--tuning",     metavar="SYSTEM", default=None,
+                       help="Apply a microtonal tuning system to keygroup XPM root note assignments "
+                            "(e.g. just_intonation, 19tet, pythagorean, maqam_rast). "
+                            "Run xpn_tuning_systems.py --list-tunings to see all options. "
+                            "Tuning name is also appended to the expansion manifest description.")
 
     # --- status ---
     p_status = sub.add_parser("status", help="Show pipeline state")
