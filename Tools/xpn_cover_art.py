@@ -17,6 +17,18 @@ Usage:
         version="1.0"
     )
 
+    # With spectral fingerprints (sound-derived visuals):
+    from xpn_optic_fingerprint import load_fingerprints
+    fps = load_fingerprints("/path/to/fingerprints/")
+    generate_cover(
+        engine="ONSET",
+        pack_name="808 Reborn Collection",
+        preset_count=20,
+        output_dir="/path/to/pack",
+        version="1.0",
+        fingerprints=fps,
+    )
+
 Dependencies: Pillow, numpy
     pip install Pillow numpy
 """
@@ -682,6 +694,105 @@ def _add_text_overlay(img, engine_def, pack_name, preset_count, version):
 # PUBLIC API
 # =============================================================================
 
+def _draw_spectral_silhouette(arr, band_means, accent, size, position="bottom_right"):
+    """Draw 8-band spectral silhouette as a design element.
+
+    Each bar's height = normalized band energy. Color = engine accent with
+    brightness modulated by energy. Takes up ~15% of canvas width.
+
+    Args:
+        arr:         numpy array (size, size, 3) float [0, 1].
+        band_means:  List of 8 band energy values.
+        accent:      RGB tuple (0-255).
+        size:        Canvas size in pixels.
+        position:    "bottom_right" or "center_bottom".
+    """
+    bar_width = int(size * 0.015)
+    max_height = int(size * 0.12)
+    gap = int(size * 0.004)
+
+    if position == "center_bottom":
+        total_width = 8 * bar_width + 7 * gap
+        start_x = (size - total_width) // 2
+        base_y = int(size * 0.92)
+    else:
+        start_x = int(size * 0.72)
+        base_y = int(size * 0.88)
+
+    peak = max(band_means) if max(band_means) > 0 else 1.0
+
+    for i, energy in enumerate(band_means):
+        x = start_x + i * (bar_width + gap)
+        bar_h = max(1, int((energy / peak) * max_height))
+        brightness = 0.3 + 0.7 * (energy / peak)
+
+        r = accent[0] / 255.0 * brightness
+        g = accent[1] / 255.0 * brightness
+        b = accent[2] / 255.0 * brightness
+
+        y_top = max(0, base_y - bar_h)
+        x_end = min(size, x + bar_width)
+        x = max(0, x)
+
+        arr[y_top:base_y, x:x_end, 0] = r
+        arr[y_top:base_y, x:x_end, 1] = g
+        arr[y_top:base_y, x:x_end, 2] = b
+
+
+def _apply_fingerprint_modulation(arr, size, accent, fingerprint_agg):
+    """Apply fingerprint-derived visual modulations to the cover art array.
+
+    Modulates the existing artwork based on aggregated spectral data:
+    - High centroid -> lighter background tint
+    - High transient density -> sharper visual elements (contrast boost)
+    - High warmth -> warmer color shift toward accent
+    - Band energy array -> spectral silhouette bar graph overlay
+
+    Args:
+        arr:               numpy array (size, size, 3) float [0, 1].
+        size:              Canvas size in pixels.
+        accent:            RGB tuple (0-255).
+        fingerprint_agg:   Aggregated fingerprint dict from aggregate_fingerprints().
+    """
+    if fingerprint_agg is None:
+        return arr
+
+    centroid          = fingerprint_agg.get("centroid_mean",        0.5)
+    warmth            = fingerprint_agg.get("warmth",               0.5)
+    band_means        = fingerprint_agg.get("band_energy_mean",     [0.0] * 8)
+    transient_density = fingerprint_agg.get("transient_density",    0.0)
+    # polarity: 0 = pure Oscar (warm/dark), 1 = pure feliX (bright/transient)
+    polarity          = fingerprint_agg.get("felix_oscar_polarity", 0.5)
+
+    # Centroid -> lighten background (bright presets = lighter background).
+    lighten = centroid * 0.08
+    arr = np.clip(arr + lighten, 0.0, 1.0)
+
+    # Warmth -> shift toward warm accent tones.
+    warm_tint  = np.array([accent[0] / 255.0, accent[1] / 255.0, accent[2] / 255.0])
+    warm_blend = warmth * 0.05
+    arr = np.clip(arr * (1.0 - warm_blend) + warm_tint * warm_blend, 0.0, 1.0)
+
+    # Transient density -> contrast boost (high transients = sharper visual feel).
+    td_norm  = min(transient_density / 10.0, 1.0)
+    contrast = 1.0 + td_norm * 0.15
+    mid      = 0.5
+    arr = np.clip(mid + (arr - mid) * contrast, 0.0, 1.0)
+
+    # Polarity color tint: polarity is [0, 1]; 0 = Oscar pink, 1 = feliX blue.
+    t          = polarity
+    felix_blue = np.array([0.0, 166.0 / 255.0, 214.0 / 255.0])
+    oscar_pink = np.array([232.0 / 255.0, 131.0 / 255.0, 155.0 / 255.0])
+    polarity_tint  = oscar_pink * (1.0 - t) + felix_blue * t
+    polarity_blend = 0.03
+    arr = np.clip(arr * (1.0 - polarity_blend) + polarity_tint * polarity_blend, 0.0, 1.0)
+
+    # Spectral silhouette overlay.
+    _draw_spectral_silhouette(arr, band_means, accent, size)
+
+    return arr
+
+
 def generate_cover(
     engine: str,
     pack_name: str,
@@ -689,6 +800,7 @@ def generate_cover(
     preset_count: int = 0,
     version: str = "1.0",
     seed: int = None,
+    fingerprints: list = None,
 ) -> dict:
     """
     Generate cover art for an XPN expansion pack.
@@ -700,6 +812,10 @@ def generate_cover(
         preset_count:  Number of presets in the pack (displayed on cover).
         version:       Version string (e.g., "1.0").
         seed:          RNG seed for reproducible art. None = random.
+        fingerprints:  Optional list of OpticFingerprint dicts. When provided,
+                       spectral data modulates visual parameters and adds a
+                       spectral silhouette overlay. When None, behavior is
+                       identical to the original (static engine styles).
 
     Returns:
         dict with keys "cover_1000" and "cover_2000" pointing to output paths.
@@ -730,6 +846,26 @@ def generate_cover(
         def gauss(self, mu, sigma): return float(self._r.normal(mu, sigma))
 
     arr = style_func(arr, SIZE, eng["accent"], NpRngAdapter(np_rng))
+
+    # 2b. Apply fingerprint modulations (when provided).
+    if fingerprints is not None:
+        try:
+            from xpn_optic_fingerprint import aggregate_fingerprints
+        except ImportError:
+            # Fallback: try relative import from same directory.
+            import importlib.util
+            _fp_path = Path(__file__).parent / "xpn_optic_fingerprint.py"
+            if _fp_path.exists():
+                _spec = importlib.util.spec_from_file_location("xpn_optic_fingerprint", _fp_path)
+                _mod = importlib.util.module_from_spec(_spec)
+                _spec.loader.exec_module(_mod)
+                aggregate_fingerprints = _mod.aggregate_fingerprints
+            else:
+                aggregate_fingerprints = None
+
+        if aggregate_fingerprints is not None:
+            agg = aggregate_fingerprints(fingerprints)
+            arr = _apply_fingerprint_modulation(arr, SIZE, eng["accent"], agg)
 
     # 3. Convert to PIL, apply subtle blur for anti-aliasing
     img = _arr_to_image(arr)

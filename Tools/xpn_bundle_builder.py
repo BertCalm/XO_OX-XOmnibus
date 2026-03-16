@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """
 XPN Bundle Builder — XO_OX Designs
-Flexible multi-engine expansion pack builder with 3 bundling modes.
+Flexible multi-engine expansion pack builder with 3 bundling modes,
+plus Collection mode for hierarchical multi-quad/set XPN packaging.
 
 Modes:
   1. custom     — Pick-and-choose individual presets from any engine/mood
   2. category   — Filter by mood, tag, genre, engine, coupling
   3. engine     — All presets for one engine (wraps per-engine behavior)
+  4. collection — Hierarchical quad/set layout for 20–24 engine collections
 
 Bundle profiles are JSON files for reproducible builds.
 
@@ -22,6 +24,16 @@ Usage:
     # Build by tag
     python3 xpn_bundle_builder.py category --tags "808,sub,bass" \\
         --pack-name "808 Bass Pack" --output-dir /path/to/out
+
+    # Build a full collection from a collection profile JSON
+    python3 xpn_bundle_builder.py collection \\
+        --profile Kitchen_Essentials.collection.json \\
+        --output-dir /path/to/out
+
+    # Build a single quad/set from a collection profile
+    python3 xpn_bundle_builder.py collection \\
+        --profile Kitchen_Essentials.collection.json \\
+        --quad "Chef" --output-dir /path/to/out
 
     # List all available presets
     python3 xpn_bundle_builder.py list
@@ -58,6 +70,29 @@ Bundle Profile Format:
             ...
         ]
     }
+
+Collection Profile Format:
+    {
+        "collection": "Kitchen Essentials",
+        "description": "24-engine culinary collection",
+        "version": "1.0",
+        "author": "XO_OX Designs",
+        "pack_id": "com.xo-ox.collection.kitchen",
+        "quads": [
+            {
+                "name": "Chef",
+                "cover_art": "artwork_chef.png",
+                "engines": ["XOto", "XOctave", "XOleg", "XOtis"],
+                "unlock_condition": null
+            },
+            {
+                "name": "Fusion",
+                "cover_art": "artwork_fusion.png",
+                "engines": ["XOasis"],
+                "unlock_condition": "own_all_quad:Kitchen"
+            }
+        ]
+    }
 """
 
 import argparse
@@ -65,8 +100,9 @@ import json
 import os
 import shutil
 import sys
+import zipfile
 from pathlib import Path
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 try:
     from xpn_cover_art import generate_cover
@@ -666,6 +702,398 @@ def build_predefined_profile(profile_key: str, index: PresetIndex,
 
 
 # =============================================================================
+# COLLECTION MODE — hierarchical quad/set packaging
+# =============================================================================
+
+class CollectionQuad:
+    """
+    A quad (or set) within a collection.
+
+    A quad groups 4 engines (or N engines for the 5th-slot fusion engine)
+    under a single named sub-directory inside the collection XPN.
+    """
+
+    def __init__(
+        self,
+        name: str,
+        engines: List[str],
+        cover_art: Optional[str] = None,
+        unlock_condition: Optional[str] = None,
+    ):
+        self.name = name
+        self.engines = engines                  # canonical engine short names
+        self.cover_art = cover_art              # filename relative to build_dir
+        self.unlock_condition = unlock_condition  # e.g. "own_all_quad:Kitchen"
+        self.presets: List[dict] = []
+
+    @property
+    def slug(self) -> str:
+        return self.name.replace(" ", "_")
+
+    def add_preset(self, preset: dict):
+        if preset not in self.presets:
+            self.presets.append(preset)
+
+    @property
+    def program_count(self) -> int:
+        return len(self.presets)
+
+    def to_nav_entry(self) -> dict:
+        entry: dict = {
+            "name": self.name,
+            "engines": self.engines,
+            "program_count": self.program_count,
+        }
+        if self.cover_art:
+            entry["cover_art"] = self.cover_art
+        if self.unlock_condition:
+            entry["unlock_condition"] = self.unlock_condition
+        return entry
+
+
+class CollectionSpec:
+    """
+    Describes a full XO_OX collection pack (Kitchen Essentials, Travel/Water, etc.).
+
+    A collection consists of multiple quads/sets.  Each quad maps to its own
+    Programs sub-directory so the MPC browser groups them visually.
+    """
+
+    def __init__(
+        self,
+        name: str,
+        description: str = "",
+        version: str = "1.0",
+        author: str = "XO_OX Designs",
+        pack_id: Optional[str] = None,
+    ):
+        self.name = name
+        self.description = description
+        self.version = version
+        self.author = author
+        self.pack_id = pack_id or f"com.xo-ox.collection.{name.lower().replace(' ', '-')}"
+        self.quads: List[CollectionQuad] = []
+
+    @property
+    def slug(self) -> str:
+        return self.name.replace(" ", "_")
+
+    def add_quad(self, quad: CollectionQuad):
+        self.quads.append(quad)
+
+    @property
+    def all_presets(self) -> List[dict]:
+        seen_names: set = set()
+        out = []
+        for q in self.quads:
+            for p in q.presets:
+                if p["name"] not in seen_names:
+                    out.append(p)
+                    seen_names.add(p["name"])
+        return out
+
+    @property
+    def total_program_count(self) -> int:
+        return sum(q.program_count for q in self.quads)
+
+    def to_collection_nav(self) -> dict:
+        """Generate collection_nav.json content."""
+        return {
+            "collection": self.name,
+            "version": self.version,
+            "author": self.author,
+            "pack_id": self.pack_id,
+            "total_programs": self.total_program_count,
+            "quads": [q.to_nav_entry() for q in self.quads],
+        }
+
+    @classmethod
+    def from_profile(cls, profile: dict, index: "PresetIndex") -> "CollectionSpec":
+        """
+        Build a CollectionSpec from a collection profile dict.
+
+        Each quad's presets are resolved by searching the index for the
+        engines listed in that quad entry.
+        """
+        spec = cls(
+            name=profile["collection"],
+            description=profile.get("description", ""),
+            version=profile.get("version", "1.0"),
+            author=profile.get("author", "XO_OX Designs"),
+            pack_id=profile.get("pack_id"),
+        )
+        for quad_def in profile.get("quads", []):
+            quad = CollectionQuad(
+                name=quad_def["name"],
+                engines=quad_def.get("engines", []),
+                cover_art=quad_def.get("cover_art"),
+                unlock_condition=quad_def.get("unlock_condition"),
+            )
+            # Resolve presets for each engine in this quad
+            for engine_name in quad.engines:
+                engine_presets = index.search(engine=engine_name)
+                if not engine_presets:
+                    print(f"  [WARN] No presets found for engine '{engine_name}' in quad '{quad.name}'")
+                for p in engine_presets:
+                    quad.add_preset(p)
+            spec.add_quad(quad)
+        return spec
+
+    def print_summary(self):
+        print(f"\nCollection: {self.name}  v{self.version}")
+        print(f"  {len(self.quads)} quads | {self.total_program_count} programs total")
+        for q in self.quads:
+            engines_str = ", ".join(q.engines)
+            lock_str = f"  [locked: {q.unlock_condition}]" if q.unlock_condition else ""
+            print(f"  {q.name:<20} {q.program_count:>4} programs  ({engines_str}){lock_str}")
+
+
+def build_collection(
+    spec: CollectionSpec,
+    wavs_dir: Optional[Path],
+    output_dir: Path,
+    dry_run: bool = False,
+    quad_filter: Optional[str] = None,
+) -> dict:
+    """
+    Build a collection XPN bundle from a CollectionSpec.
+
+    Directory layout inside the XPN:
+        Expansion/
+          manifest
+          Expansion.xml
+          collection_nav.json
+          bundle_manifest.json
+          Programs/
+            {CollectionName}_{QuadName}/
+              {preset_slug}.xpm
+              ...
+          Samples/
+            {preset_slug}/
+              *.wav
+
+    Args:
+        spec:         CollectionSpec with quads + presets resolved.
+        wavs_dir:     Root directory of rendered WAVs (optional).
+        output_dir:   Filesystem output root.
+        dry_run:      Print plan without writing files.
+        quad_filter:  If set, only build programs for this one quad name.
+
+    Returns:
+        dict with keys "pack_dir", "manifest", "collection_nav".
+    """
+    quads_to_build = spec.quads
+    if quad_filter:
+        quads_to_build = [
+            q for q in spec.quads
+            if q.name.lower() == quad_filter.lower()
+        ]
+        if not quads_to_build:
+            available = ", ".join(q.name for q in spec.quads)
+            print(f"  [ERROR] Quad '{quad_filter}' not found. Available: {available}")
+            return {}
+
+    # Output root for this collection (or sub-pack when quad_filter set)
+    if quad_filter:
+        pack_slug = f"{spec.slug}_{quads_to_build[0].slug}"
+    else:
+        pack_slug = spec.slug
+
+    pack_dir = output_dir / pack_slug
+
+    print(f"\nBuilding collection: {spec.name}")
+    if quad_filter:
+        print(f"  (sub-pack mode — quad: {quad_filter})")
+    spec.print_summary()
+
+    if not dry_run:
+        pack_dir.mkdir(parents=True, exist_ok=True)
+        (pack_dir / "Programs").mkdir(exist_ok=True)
+        (pack_dir / "Samples").mkdir(exist_ok=True)
+
+    # ------------------------------------------------------------------ #
+    # Expansion.xml + plain manifest
+    # ------------------------------------------------------------------ #
+    pack_description = spec.description or f"XO_OX {spec.name} — {spec.total_program_count} programs"
+    exp_xml = generate_expansion_xml(
+        pack_name=spec.name,
+        pack_id=spec.pack_id,
+        description=pack_description,
+        version=spec.version,
+    ) if DRUM_EXPORT_AVAILABLE else f"<!-- {spec.name} -->"
+
+    plain_manifest = (
+        f"Name={spec.name}\n"
+        f"Version={spec.version}\n"
+        f"Author={spec.author}\n"
+        f"Description={pack_description}\n"
+    )
+
+    if not dry_run:
+        (pack_dir / "Expansion.xml").write_text(exp_xml, encoding="utf-8")
+        (pack_dir / "Expansions").mkdir(exist_ok=True)
+        (pack_dir / "Expansions" / "manifest").write_text(plain_manifest, encoding="utf-8")
+
+    # ------------------------------------------------------------------ #
+    # Programs — one sub-directory per quad
+    # ------------------------------------------------------------------ #
+    all_built_programs: List[dict] = []
+
+    for quad in quads_to_build:
+        quad_dir_name = f"{spec.slug}_{quad.slug}"
+        programs_quad_dir = pack_dir / "Programs" / quad_dir_name
+
+        if not dry_run:
+            programs_quad_dir.mkdir(parents=True, exist_ok=True)
+
+        print(f"\n  Quad: {quad.name}  ({quad.program_count} programs)")
+
+        drum_presets = [p for p in quad.presets if p["engine"] in DRUM_ENGINES]
+        key_presets = [p for p in quad.presets if p["engine"] not in DRUM_ENGINES]
+
+        for p in drum_presets:
+            preset_slug = p["name"].replace(" ", "_")
+            wav_map = build_wav_map(wavs_dir, preset_slug) if (wavs_dir and DRUM_EXPORT_AVAILABLE) else {}
+            xpm = generate_xpm(p["name"], wav_map) if DRUM_EXPORT_AVAILABLE else ""
+            xpm_path = programs_quad_dir / f"{preset_slug}.xpm"
+            if not dry_run and xpm:
+                xpm_path.write_text(xpm, encoding="utf-8")
+            print(f"    [drum]     {p['name']}  ({len(wav_map)} WAVs)")
+            all_built_programs.append({
+                "name": p["name"],
+                "engine": p["engine"],
+                "quad": quad.name,
+                "type": "drum",
+                "xpm": str(xpm_path.relative_to(pack_dir)),
+            })
+
+        for p in key_presets:
+            preset_slug = p["name"].replace(" ", "_")
+            wav_map: dict = {}
+            if wavs_dir:
+                if KEYGROUP_EXPORT_AVAILABLE:
+                    wav_map = build_keygroup_wav_map(wavs_dir, preset_slug)
+                else:
+                    for wf in wavs_dir.glob(f"{preset_slug}__*.WAV"):
+                        wav_map[wf.stem] = wf.name
+            xpm = generate_keygroup_xpm_stub(p["name"], p["engine"], wav_map)
+            xpm_path = programs_quad_dir / f"{preset_slug}.xpm"
+            if not dry_run:
+                xpm_path.write_text(xpm, encoding="utf-8")
+            print(f"    [keygroup] {p['name']}  [{p['engine']}]  ({len(wav_map)} WAVs)")
+            all_built_programs.append({
+                "name": p["name"],
+                "engine": p["engine"],
+                "quad": quad.name,
+                "type": "keygroup",
+                "xpm": str(xpm_path.relative_to(pack_dir)),
+            })
+
+        # Quad cover art
+        if quad.cover_art and not dry_run:
+            art_src = output_dir / quad.cover_art
+            if art_src.exists():
+                shutil.copy2(art_src, programs_quad_dir / quad.cover_art)
+            elif COVER_ART_AVAILABLE:
+                try:
+                    generate_cover(
+                        engine=quad.engines[0] if quad.engines else "ONSET",
+                        pack_name=f"{spec.name}: {quad.name}",
+                        output_dir=str(programs_quad_dir),
+                        preset_count=quad.program_count,
+                        version=spec.version,
+                        seed=hash(f"{spec.name}:{quad.name}") % 10000,
+                    )
+                except Exception as e:
+                    print(f"    [WARN] Cover art for quad '{quad.name}': {e}")
+
+    # Copy WAVs into Samples/ organised by program slug
+    if wavs_dir and not dry_run:
+        copied = 0
+        for prog_info in all_built_programs:
+            slug = prog_info["name"].replace(" ", "_")
+            sample_target = pack_dir / "Samples" / slug
+            # Check wavs_dir/{slug}/ subfolder first, then flat files
+            src_sub = wavs_dir / slug
+            if src_sub.exists() and src_sub.is_dir():
+                sample_target.mkdir(parents=True, exist_ok=True)
+                for wf in list(src_sub.glob("*.wav")) + list(src_sub.glob("*.WAV")):
+                    dst = sample_target / wf.name
+                    if not dst.exists():
+                        shutil.copy2(wf, dst)
+                        copied += 1
+            else:
+                flat_wavs = list(wavs_dir.glob(f"{slug}*.wav")) + list(wavs_dir.glob(f"{slug}*.WAV"))
+                if flat_wavs:
+                    sample_target.mkdir(parents=True, exist_ok=True)
+                    for wf in flat_wavs:
+                        dst = sample_target / wf.name
+                        if not dst.exists():
+                            shutil.copy2(wf, dst)
+                            copied += 1
+        if copied:
+            print(f"\n  WAVs: {copied} files copied into Samples/")
+
+    # ------------------------------------------------------------------ #
+    # collection_nav.json
+    # ------------------------------------------------------------------ #
+    nav = spec.to_collection_nav()
+    if not dry_run:
+        with open(pack_dir / "collection_nav.json", "w") as f:
+            json.dump(nav, f, indent=2)
+        print(f"\n  collection_nav.json  ({len(spec.quads)} quads)")
+
+    # ------------------------------------------------------------------ #
+    # bundle_manifest.json (flat list for tooling compatibility)
+    # ------------------------------------------------------------------ #
+    bundle_manifest = {
+        "name": spec.name,
+        "version": spec.version,
+        "collection": True,
+        "quad_filter": quad_filter,
+        "preset_count": len(all_built_programs),
+        "quads": [
+            {
+                "name": q.name,
+                "engines": q.engines,
+                "program_count": q.program_count,
+                "cover_art": q.cover_art,
+                "unlock_condition": q.unlock_condition,
+            }
+            for q in quads_to_build
+        ],
+        "presets": all_built_programs,
+    }
+    if not dry_run:
+        with open(pack_dir / "bundle_manifest.json", "w") as f:
+            json.dump(bundle_manifest, f, indent=2)
+        print(f"  bundle_manifest.json  ({len(all_built_programs)} programs)")
+
+    # ------------------------------------------------------------------ #
+    # Optional: package into .xpn ZIP
+    # ------------------------------------------------------------------ #
+    print(f"\n  Output: {pack_dir}")
+    return {
+        "pack_dir": str(pack_dir),
+        "manifest": bundle_manifest,
+        "collection_nav": nav,
+    }
+
+
+def build_collection_subpack(
+    collection_profile: dict,
+    index: "PresetIndex",
+    quad_name: str,
+    wavs_dir: Optional[Path],
+    output_dir: Path,
+    dry_run: bool = False,
+) -> dict:
+    """Convenience wrapper: load a collection profile and build one quad as a sub-pack."""
+    spec = CollectionSpec.from_profile(collection_profile, index)
+    return build_collection(spec, wavs_dir, output_dir, dry_run, quad_filter=quad_name)
+
+
+# =============================================================================
 # CLI
 # =============================================================================
 
@@ -773,6 +1201,82 @@ def cmd_summary(args, index: PresetIndex):
     print(index.summary())
 
 
+def cmd_collection(args, index: PresetIndex):
+    """Build a full collection or single quad/set sub-pack."""
+    profile_path = Path(args.profile)
+    if not profile_path.exists():
+        # Try bundle profiles dir
+        alt = PROFILES_DIR / args.profile
+        if not alt.exists():
+            alt = PROFILES_DIR / (args.profile + ".json")
+        if alt.exists():
+            profile_path = alt
+    if not profile_path.exists():
+        print(f"ERROR: Collection profile not found: {args.profile}")
+        return 1
+
+    with open(profile_path) as f:
+        profile_data = json.load(f)
+
+    # Validate it looks like a collection profile
+    if "collection" not in profile_data:
+        print("ERROR: Profile does not contain a 'collection' key. "
+              "Use 'build' command for standard bundle profiles.")
+        return 1
+
+    spec = CollectionSpec.from_profile(profile_data, index)
+    wavs_dir = Path(args.wavs_dir) if args.wavs_dir else None
+    output_dir = Path(args.output_dir)
+
+    result = build_collection(
+        spec=spec,
+        wavs_dir=wavs_dir,
+        output_dir=output_dir,
+        dry_run=args.dry_run,
+        quad_filter=args.quad or None,
+    )
+
+    if not result:
+        return 1
+
+    # Optionally package into .xpn ZIP
+    if args.package and not args.dry_run and PACKAGER_AVAILABLE:
+        from xpn_packager import XPNMetadata
+        pack_dir = Path(result["pack_dir"])
+        xpn_name = pack_dir.name
+        xpn_out = output_dir / f"{xpn_name}.xpn"
+        meta = XPNMetadata(
+            name=spec.name,
+            version=spec.version,
+            author=spec.author if hasattr(spec, "author") else "XO_OX Designs",
+            description=spec.description,
+            pack_id=spec.pack_id,
+        )
+        package_xpn(
+            build_dir=pack_dir,
+            output_path=xpn_out,
+            metadata=meta,
+        )
+    return 0
+
+
+def cmd_collection_nav(args, index: PresetIndex):
+    """Print the collection navigator JSON for a collection profile (dry preview)."""
+    profile_path = Path(args.profile)
+    if not profile_path.exists():
+        print(f"ERROR: Profile not found: {args.profile}")
+        return 1
+    with open(profile_path) as f:
+        profile_data = json.load(f)
+    if "collection" not in profile_data:
+        print("ERROR: Not a collection profile.")
+        return 1
+    spec = CollectionSpec.from_profile(profile_data, index)
+    nav = spec.to_collection_nav()
+    print(json.dumps(nav, indent=2))
+    return 0
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="XPN Bundle Builder — XO_OX Designs",
@@ -824,6 +1328,37 @@ def main():
     p_save.add_argument("--cover-engine", default="ONSET")
     p_save.add_argument("--output",       help="Output JSON path")
 
+    # collection — build a hierarchical collection or single quad sub-pack
+    p_col = sub.add_parser(
+        "collection",
+        help="Build a collection pack (hierarchical quad/set layout)",
+    )
+    p_col.add_argument(
+        "--profile", required=True,
+        help="Path to .collection.json profile (must contain 'collection' key)",
+    )
+    p_col.add_argument(
+        "--quad", default=None,
+        help="Build only this quad/set as a standalone sub-pack (optional)",
+    )
+    p_col.add_argument("--wavs-dir",   help="Directory of rendered WAVs")
+    p_col.add_argument("--output-dir", required=True, help="Output directory")
+    p_col.add_argument(
+        "--package", action="store_true",
+        help="After building, package the output directory into a .xpn ZIP",
+    )
+    p_col.add_argument("--dry-run", action="store_true")
+
+    # collection-nav — preview the collection_nav.json without building
+    p_cnav = sub.add_parser(
+        "collection-nav",
+        help="Print the collection navigator JSON for a collection profile",
+    )
+    p_cnav.add_argument(
+        "--profile", required=True,
+        help="Path to .collection.json profile",
+    )
+
     args = parser.parse_args()
     if not args.command:
         parser.print_help()
@@ -832,12 +1367,14 @@ def main():
     index = PresetIndex()
 
     dispatch = {
-        "list":         cmd_list,
-        "summary":      cmd_summary,
-        "build":        cmd_build,
-        "category":     cmd_category,
-        "predefined":   cmd_predefined,
-        "save-profile": cmd_save_profile,
+        "list":           cmd_list,
+        "summary":        cmd_summary,
+        "build":          cmd_build,
+        "category":       cmd_category,
+        "predefined":     cmd_predefined,
+        "save-profile":   cmd_save_profile,
+        "collection":     cmd_collection,
+        "collection-nav": cmd_collection_nav,
     }
     return dispatch[args.command](args, index) or 0
 
