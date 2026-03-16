@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Brass Shimmer",
+  "mood": "Entangled",
+  "engines": [
+    "ORPHICA",
+    "OTTONI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ORPHICA and OTTONI coupled via Env->Morph. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "tags": [
+    "coupling",
+    "constellation",
+    "orphica",
+    "ottoni"
+  ],
+  "macroLabels": [
+    "WARMTH",
+    "BLOOM",
+    "ENTANGLE",
+    "AIR"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORPHICA",
+        "engineB": "OTTONI",
+        "type": "Env->Morph",
+        "amount": 0.453
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.69,
+    "warmth": 0.569,
+    "movement": 0.594,
+    "density": 0.509,
+    "space": 0.595,
+    "aggression": 0.428
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Reed Fiesta",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "OLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBBLIGATO and OLE coupled via LFO->Pitch. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "tags": [
+    "coupling",
+    "constellation",
+    "obbligato",
+    "ole"
+  ],
+  "macroLabels": [
+    "WARMTH",
+    "BLOOM",
+    "ENTANGLE",
+    "AIR"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "OLE",
+        "type": "LFO->Pitch",
+        "amount": 0.716
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.541,
+    "warmth": 0.727,
+    "movement": 0.639,
+    "density": 0.594,
+    "space": 0.585,
+    "aggression": 0.542
+  }
+}

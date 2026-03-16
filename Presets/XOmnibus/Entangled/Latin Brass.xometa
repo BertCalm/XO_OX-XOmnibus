@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Latin Brass",
+  "mood": "Entangled",
+  "engines": [
+    "OTTONI",
+    "OLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OTTONI and OLE coupled via Env->Morph. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "tags": [
+    "coupling",
+    "constellation",
+    "ottoni",
+    "ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OTTONI",
+        "engineB": "OLE",
+        "type": "Env->Morph",
+        "amount": 0.494
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.605,
+    "warmth": 0.624,
+    "movement": 0.601,
+    "density": 0.615,
+    "space": 0.514,
+    "aggression": 0.576
+  }
+}

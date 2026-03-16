@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Brass Wind Circle",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "OTTONI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBBLIGATO and OTTONI coupled via Pitch->Mod. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "tags": [
+    "coupling",
+    "constellation",
+    "obbligato",
+    "ottoni"
+  ],
+  "macroLabels": [
+    "TEXTURE",
+    "PULSE",
+    "BRIDGE",
+    "DEPTH"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "OTTONI",
+        "type": "Pitch->Mod",
+        "amount": 0.461
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.647,
+    "warmth": 0.628,
+    "movement": 0.623,
+    "density": 0.634,
+    "space": 0.558,
+    "aggression": 0.506
+  }
+}

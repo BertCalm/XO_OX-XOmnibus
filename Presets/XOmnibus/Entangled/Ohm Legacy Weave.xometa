@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Ohm Legacy Weave",
+  "mood": "Entangled",
+  "engines": [
+    "OHM",
+    "Overdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OHM and Overdub coupled via Env->Level. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "tags": [
+    "coupling",
+    "constellation",
+    "ohm",
+    "overdub"
+  ],
+  "macroLabels": [
+    "VOICE",
+    "SWELL",
+    "WEAVE",
+    "SPREAD"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OHM",
+        "engineB": "Overdub",
+        "type": "Env->Level",
+        "amount": 0.847
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.334,
+    "warmth": 0.684,
+    "movement": 0.639,
+    "density": 0.615,
+    "space": 0.707,
+    "aggression": 0.211
+  }
+}

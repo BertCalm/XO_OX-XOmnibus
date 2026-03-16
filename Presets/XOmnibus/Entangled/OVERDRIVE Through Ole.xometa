@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "OVERDRIVE Through Ole",
+  "mood": "Entangled",
+  "engines": [
+    "OLE",
+    "OVERDRIVE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OLE and OVERDRIVE coupled via Env->Level. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "tags": [
+    "coupling",
+    "constellation",
+    "ole",
+    "overdrive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OLE",
+        "engineB": "OVERDRIVE",
+        "type": "Env->Level",
+        "amount": 0.643
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.573,
+    "warmth": 0.536,
+    "movement": 0.638,
+    "density": 0.699,
+    "space": 0.552,
+    "aggression": 0.571
+  }
+}

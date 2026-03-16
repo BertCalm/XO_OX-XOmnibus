@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Sun Salute Horn",
+  "mood": "Entangled",
+  "engines": [
+    "OHM",
+    "OTTONI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OHM and OTTONI coupled via Env->Morph. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "tags": [
+    "coupling",
+    "constellation",
+    "ohm",
+    "ottoni"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OHM",
+        "engineB": "OTTONI",
+        "type": "Env->Morph",
+        "amount": 0.769
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.509,
+    "warmth": 0.633,
+    "movement": 0.581,
+    "density": 0.689,
+    "space": 0.644,
+    "aggression": 0.451
+  }
+}

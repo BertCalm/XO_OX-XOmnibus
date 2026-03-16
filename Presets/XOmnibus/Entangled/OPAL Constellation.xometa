@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "OPAL Constellation",
+  "mood": "Entangled",
+  "engines": [
+    "ORPHICA",
+    "OPAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ORPHICA and OPAL coupled via Amp->Filter. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "tags": [
+    "coupling",
+    "constellation",
+    "orphica",
+    "opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORPHICA",
+        "engineB": "OPAL",
+        "type": "Amp->Filter",
+        "amount": 0.532
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.713,
+    "warmth": 0.449,
+    "movement": 0.703,
+    "density": 0.455,
+    "space": 0.813,
+    "aggression": 0.278
+  }
+}

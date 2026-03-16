@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Trumpet Fiesta",
+  "mood": "Entangled",
+  "engines": [
+    "OTTONI",
+    "OLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OTTONI and OLE coupled via LFO->Pitch. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "tags": [
+    "coupling",
+    "constellation",
+    "ottoni",
+    "ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OTTONI",
+        "engineB": "OLE",
+        "type": "LFO->Pitch",
+        "amount": 0.745
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.549,
+    "warmth": 0.729,
+    "movement": 0.678,
+    "density": 0.675,
+    "space": 0.577,
+    "aggression": 0.65
+  }
+}

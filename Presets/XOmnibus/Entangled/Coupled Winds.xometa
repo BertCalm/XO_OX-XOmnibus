@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Coupled Winds",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "OTTONI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBBLIGATO and OTTONI coupled via Amp->Filter. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "tags": [
+    "coupling",
+    "constellation",
+    "obbligato",
+    "ottoni"
+  ],
+  "macroLabels": [
+    "WARMTH",
+    "BLOOM",
+    "ENTANGLE",
+    "AIR"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "OTTONI",
+        "type": "Amp->Filter",
+        "amount": 0.776
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.586,
+    "warmth": 0.621,
+    "movement": 0.551,
+    "density": 0.738,
+    "space": 0.6,
+    "aggression": 0.506
+  }
+}

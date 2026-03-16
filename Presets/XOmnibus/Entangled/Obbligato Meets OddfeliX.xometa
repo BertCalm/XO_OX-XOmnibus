@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Obbligato Meets OddfeliX",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "OddfeliX"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBBLIGATO and OddfeliX coupled via Env->Morph. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "tags": [
+    "coupling",
+    "constellation",
+    "obbligato",
+    "oddfelix"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "OddfeliX",
+        "type": "Env->Morph",
+        "amount": 0.549
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.597,
+    "warmth": 0.578,
+    "movement": 0.57,
+    "density": 0.662,
+    "space": 0.503,
+    "aggression": 0.422
+  }
+}

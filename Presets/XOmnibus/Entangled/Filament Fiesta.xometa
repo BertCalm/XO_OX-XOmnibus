@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Filament Fiesta",
+  "mood": "Entangled",
+  "engines": [
+    "ORPHICA",
+    "OLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ORPHICA and OLE coupled via LFO->Pitch. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "tags": [
+    "coupling",
+    "constellation",
+    "orphica",
+    "ole"
+  ],
+  "macroLabels": [
+    "TEXTURE",
+    "PULSE",
+    "BRIDGE",
+    "DEPTH"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORPHICA",
+        "engineB": "OLE",
+        "type": "LFO->Pitch",
+        "amount": 0.568
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.798,
+    "warmth": 0.647,
+    "movement": 0.662,
+    "density": 0.561,
+    "space": 0.708,
+    "aggression": 0.413
+  }
+}
