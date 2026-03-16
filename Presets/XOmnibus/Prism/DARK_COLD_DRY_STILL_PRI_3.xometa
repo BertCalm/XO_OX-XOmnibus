@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "DARK COLD DRY STILL PRI 3",
+  "mood": "Prism",
+  "engines": [
+    "Obese"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Prism preset: DARK COLD DRY STILL PRI 3.",
+  "tags": [
+    "x-low-brightness",
+    "x-low-aggression",
+    "x-low-density",
+    "x-low-movement"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "RingMod",
+    "intensity": "None",
+    "sourceEngine": "Obese",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.068,
+    "warmth": 0.406,
+    "aggression": 0.087,
+    "density": 0.101,
+    "movement": 0.052,
+    "space": 0.552
+  }
+}

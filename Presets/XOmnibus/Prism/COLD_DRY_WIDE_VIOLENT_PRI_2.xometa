@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "COLD DRY WIDE VIOLENT PRI 2",
+  "mood": "Prism",
+  "engines": [
+    "Ouroboros"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Prism preset: COLD DRY WIDE VIOLENT PRI 2.",
+  "tags": [
+    "x-high-brightness",
+    "x-low-warmth",
+    "x-low-density",
+    "x-high-space"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Low",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "Harmonic",
+    "intensity": "Low",
+    "sourceEngine": "Ouroboros",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.892,
+    "warmth": 0.073,
+    "aggression": 0.533,
+    "density": 0.106,
+    "movement": 0.577,
+    "space": 0.934
+  }
+}

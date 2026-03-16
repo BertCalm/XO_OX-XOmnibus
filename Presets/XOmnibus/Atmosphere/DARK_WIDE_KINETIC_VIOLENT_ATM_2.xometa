@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "DARK WIDE KINETIC VIOLENT ATM 2",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Atmosphere preset: DARK WIDE KINETIC VIOLENT ATM 2.",
+  "tags": [
+    "x-low-brightness",
+    "x-high-aggression",
+    "x-high-movement",
+    "x-high-space"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "FM",
+    "intensity": "Medium",
+    "sourceEngine": "Overlap",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.051,
+    "warmth": 0.421,
+    "aggression": 0.951,
+    "density": 0.518,
+    "movement": 0.891,
+    "space": 0.908
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "DARK WIDE KINETIC VIOLENT ATM 1",
+  "mood": "Atmosphere",
+  "engines": [
+    "Osteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Atmosphere preset: DARK WIDE KINETIC VIOLENT ATM 1.",
+  "tags": [
+    "x-low-brightness",
+    "x-high-aggression",
+    "x-high-movement",
+    "x-high-space"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Low",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "Envelope",
+    "intensity": "Low",
+    "sourceEngine": "Osteria",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.071,
+    "warmth": 0.513,
+    "aggression": 0.915,
+    "density": 0.427,
+    "movement": 0.894,
+    "space": 0.897
+  }
+}

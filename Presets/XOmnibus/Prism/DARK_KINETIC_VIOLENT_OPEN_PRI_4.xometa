@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "DARK KINETIC VIOLENT OPEN PRI 4",
+  "mood": "Prism",
+  "engines": [
+    "OddOscar"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Prism preset: DARK KINETIC VIOLENT OPEN PRI 4.",
+  "tags": [
+    "x-low-brightness",
+    "x-high-aggression",
+    "x-high-movement",
+    "x-high-space"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "Envelope",
+    "intensity": "None",
+    "sourceEngine": "OddOscar",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.106,
+    "warmth": 0.416,
+    "aggression": 0.911,
+    "density": 0.509,
+    "movement": 0.947,
+    "space": 0.896
+  }
+}

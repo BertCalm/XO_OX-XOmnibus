@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "DARK HOT WIDE KINETIC ATM 3",
+  "mood": "Atmosphere",
+  "engines": [
+    "Obbligato"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Atmosphere preset: DARK HOT WIDE KINETIC ATM 3.",
+  "tags": [
+    "x-low-brightness",
+    "x-high-warmth",
+    "x-high-movement",
+    "x-high-space"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Low",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "Granular",
+    "intensity": "Low",
+    "sourceEngine": "Obbligato",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.106,
+    "warmth": 0.893,
+    "aggression": 0.504,
+    "density": 0.518,
+    "movement": 0.926,
+    "space": 0.929
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "HOT TIGHT KINETIC DENSE PRI 2",
+  "mood": "Prism",
+  "engines": [
+    "Oceanic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Prism preset: HOT TIGHT KINETIC DENSE PRI 2.",
+  "tags": [
+    "x-high-warmth",
+    "x-high-density",
+    "x-high-movement",
+    "x-low-space"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "Waveshape",
+    "intensity": "Extreme",
+    "sourceEngine": "Oceanic",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.457,
+    "warmth": 0.917,
+    "aggression": 0.591,
+    "density": 0.92,
+    "movement": 0.919,
+    "space": 0.055
+  }
+}

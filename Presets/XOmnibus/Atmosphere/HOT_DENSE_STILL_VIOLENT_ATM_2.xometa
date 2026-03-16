@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "HOT DENSE STILL VIOLENT ATM 2",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oracle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Atmosphere preset: HOT DENSE STILL VIOLENT ATM 2.",
+  "tags": [
+    "x-high-warmth",
+    "x-high-aggression",
+    "x-high-density",
+    "x-low-movement"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "Granular",
+    "intensity": "Extreme",
+    "sourceEngine": "Oracle",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.51,
+    "warmth": 0.901,
+    "aggression": 0.947,
+    "density": 0.953,
+    "movement": 0.107,
+    "space": 0.526
+  }
+}

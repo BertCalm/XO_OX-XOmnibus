@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT COLD DENSE VIOLENT ATM 1",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ole"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Atmosphere preset: BRIGHT COLD DENSE VIOLENT ATM 1.",
+  "tags": [
+    "x-high-brightness",
+    "x-low-warmth",
+    "x-high-aggression",
+    "x-high-density"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Low",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "RingMod",
+    "intensity": "Low",
+    "sourceEngine": "Ole",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.945,
+    "warmth": 0.069,
+    "aggression": 0.917,
+    "density": 0.946,
+    "movement": 0.538,
+    "space": 0.47
+  }
+}

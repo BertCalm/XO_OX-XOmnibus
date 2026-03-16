@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT COLD DENSE VIOLENT ATM 3",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Atmosphere preset: BRIGHT COLD DENSE VIOLENT ATM 3.",
+  "tags": [
+    "x-high-brightness",
+    "x-low-warmth",
+    "x-high-aggression",
+    "x-high-density"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "Pitch",
+    "intensity": "Medium",
+    "sourceEngine": "Oblique",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.918,
+    "warmth": 0.042,
+    "aggression": 0.937,
+    "density": 0.94,
+    "movement": 0.459,
+    "space": 0.492
+  }
+}

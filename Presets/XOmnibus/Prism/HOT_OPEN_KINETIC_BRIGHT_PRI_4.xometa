@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "HOT OPEN KINETIC BRIGHT PRI 4",
+  "mood": "Prism",
+  "engines": [
+    "Oblong"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Prism preset: HOT OPEN KINETIC BRIGHT PRI 4.",
+  "tags": [
+    "x-high-brightness",
+    "x-high-warmth",
+    "x-high-aggression",
+    "x-high-movement"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "Rhythmic",
+    "intensity": "High",
+    "sourceEngine": "Oblong",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.907,
+    "warmth": 0.942,
+    "aggression": 0.94,
+    "density": 0.506,
+    "movement": 0.931,
+    "space": 0.469
+  }
+}

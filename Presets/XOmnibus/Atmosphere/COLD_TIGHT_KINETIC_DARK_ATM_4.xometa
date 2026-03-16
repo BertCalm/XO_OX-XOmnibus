@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "COLD TIGHT KINETIC DARK ATM 4",
+  "mood": "Atmosphere",
+  "engines": [
+    "Orca"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Atmosphere preset: COLD TIGHT KINETIC DARK ATM 4.",
+  "tags": [
+    "x-low-brightness",
+    "x-low-warmth",
+    "x-high-movement",
+    "x-low-space"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "Waveshape",
+    "intensity": "None",
+    "sourceEngine": "Orca",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.081,
+    "warmth": 0.098,
+    "aggression": 0.47,
+    "density": 0.582,
+    "movement": 0.922,
+    "space": 0.088
+  }
+}

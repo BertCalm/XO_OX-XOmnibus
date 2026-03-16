@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "5X DARK COLD KINETIC DENSE VIOLENT FND 3",
+  "mood": "Foundation",
+  "engines": [
+    "ORBITAL",
+    "OBBLIGATO"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.87,
+      "macro_movement": 0.83,
+      "macro_coupling": 0.53,
+      "macro_space": 0.33
+    },
+    "OBBLIGATO": {
+      "macro_character": 0.65,
+      "macro_movement": 0.62,
+      "macro_coupling": 0.83,
+      "macro_space": 0.17
+    }
+  },
+  "coupling": {
+    "type": "RING_MOD",
+    "source": "ORBITAL",
+    "target": "OBBLIGATO",
+    "amount": 0.93
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.042,
+    "warmth": 0.052,
+    "movement": 0.521,
+    "density": 0.933,
+    "space": 0.053,
+    "aggression": 0.935
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "COLD TIGHT KINETIC DARK ATM 2",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ottoni"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Atmosphere preset: COLD TIGHT KINETIC DARK ATM 2.",
+  "tags": [
+    "x-low-brightness",
+    "x-low-warmth",
+    "x-high-movement",
+    "x-low-space"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "RingMod",
+    "intensity": "Medium",
+    "sourceEngine": "Ottoni",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.04,
+    "warmth": 0.076,
+    "aggression": 0.436,
+    "density": 0.508,
+    "movement": 0.935,
+    "space": 0.102
+  }
+}

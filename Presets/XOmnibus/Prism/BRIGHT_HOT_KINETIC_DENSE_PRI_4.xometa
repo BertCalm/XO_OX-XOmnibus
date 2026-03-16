@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT HOT KINETIC DENSE PRI 4",
+  "mood": "Prism",
+  "engines": [
+    "Obscura"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Prism preset: BRIGHT HOT KINETIC DENSE PRI 4.",
+  "tags": [
+    "x-high-brightness",
+    "x-high-warmth",
+    "x-high-density",
+    "x-high-movement"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "Pitch",
+    "intensity": "High",
+    "sourceEngine": "Obscura",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.916,
+    "warmth": 0.928,
+    "aggression": 0.568,
+    "density": 0.94,
+    "movement": 0.951,
+    "space": 0.499
+  }
+}

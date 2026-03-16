@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT DRY QUIET OPEN ATM 4",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Atmosphere preset: BRIGHT DRY QUIET OPEN ATM 4.",
+  "tags": [
+    "x-high-brightness",
+    "x-low-aggression",
+    "x-low-density",
+    "x-high-space"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "Harmonic",
+    "intensity": "Medium",
+    "sourceEngine": "Ombre",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.929,
+    "warmth": 0.453,
+    "aggression": 0.107,
+    "density": 0.086,
+    "movement": 0.519,
+    "space": 0.926
+  }
+}

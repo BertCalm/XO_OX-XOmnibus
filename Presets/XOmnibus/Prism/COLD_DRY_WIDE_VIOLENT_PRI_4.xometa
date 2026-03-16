@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "COLD DRY WIDE VIOLENT PRI 4",
+  "mood": "Prism",
+  "engines": [
+    "Orca"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Prism preset: COLD DRY WIDE VIOLENT PRI 4.",
+  "tags": [
+    "x-high-brightness",
+    "x-low-warmth",
+    "x-low-density",
+    "x-high-space"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "Rhythmic",
+    "intensity": "None",
+    "sourceEngine": "Orca",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.918,
+    "warmth": 0.097,
+    "aggression": 0.434,
+    "density": 0.078,
+    "movement": 0.517,
+    "space": 0.906
+  }
+}

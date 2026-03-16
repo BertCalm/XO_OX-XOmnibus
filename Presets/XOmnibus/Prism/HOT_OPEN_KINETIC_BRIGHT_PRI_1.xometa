@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "HOT OPEN KINETIC BRIGHT PRI 1",
+  "mood": "Prism",
+  "engines": [
+    "Obbligato"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Prism preset: HOT OPEN KINETIC BRIGHT PRI 1.",
+  "tags": [
+    "x-high-brightness",
+    "x-high-warmth",
+    "x-high-aggression",
+    "x-high-movement"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "RingMod",
+    "intensity": "High",
+    "sourceEngine": "Obbligato",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.907,
+    "warmth": 0.959,
+    "aggression": 0.93,
+    "density": 0.404,
+    "movement": 0.926,
+    "space": 0.551
+  }
+}

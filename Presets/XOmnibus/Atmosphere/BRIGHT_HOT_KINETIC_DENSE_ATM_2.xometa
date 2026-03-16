@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT HOT KINETIC DENSE ATM 2",
+  "mood": "Atmosphere",
+  "engines": [
+    "Orbital"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Atmosphere preset: BRIGHT HOT KINETIC DENSE ATM 2.",
+  "tags": [
+    "x-high-brightness",
+    "x-high-warmth",
+    "x-high-movement",
+    "x-high-space"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "Harmonic",
+    "intensity": "None",
+    "sourceEngine": "Orbital",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.949,
+    "warmth": 0.917,
+    "aggression": 0.557,
+    "density": 0.503,
+    "movement": 0.92,
+    "space": 0.919
+  }
+}

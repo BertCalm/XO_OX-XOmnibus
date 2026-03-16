@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "5X DARK COLD KINETIC DENSE VIOLENT ATM 10",
+  "mood": "Atmosphere",
+  "engines": [
+    "OMBRE",
+    "OBSCURA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OMBRE": {
+      "macro_character": 0.84,
+      "macro_movement": 0.77,
+      "macro_coupling": 0.79,
+      "macro_space": 0.4
+    },
+    "OBSCURA": {
+      "macro_character": 0.87,
+      "macro_movement": 0.66,
+      "macro_coupling": 0.81,
+      "macro_space": 0.42
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_BLEND",
+    "source": "OMBRE",
+    "target": "OBSCURA",
+    "amount": 0.75
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.086,
+    "warmth": 0.072,
+    "movement": 0.947,
+    "density": 0.932,
+    "space": 0.43,
+    "aggression": 0.919
+  }
+}

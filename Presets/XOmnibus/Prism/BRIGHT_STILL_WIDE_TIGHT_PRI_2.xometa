@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT STILL WIDE TIGHT PRI 2",
+  "mood": "Prism",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Prism preset: BRIGHT STILL WIDE TIGHT PRI 2.",
+  "tags": [
+    "x-high-brightness",
+    "x-low-density",
+    "x-low-movement",
+    "x-high-space"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "RingMod",
+    "intensity": "High",
+    "sourceEngine": "Obsidian",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.918,
+    "warmth": 0.461,
+    "aggression": 0.494,
+    "density": 0.069,
+    "movement": 0.076,
+    "space": 0.949
+  }
+}

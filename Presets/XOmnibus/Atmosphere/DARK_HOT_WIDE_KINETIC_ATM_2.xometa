@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "DARK HOT WIDE KINETIC ATM 2",
+  "mood": "Atmosphere",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Atmosphere preset: DARK HOT WIDE KINETIC ATM 2.",
+  "tags": [
+    "x-low-brightness",
+    "x-high-warmth",
+    "x-high-movement",
+    "x-high-space"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "RingMod",
+    "intensity": "Medium",
+    "sourceEngine": "Obsidian",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.055,
+    "warmth": 0.922,
+    "aggression": 0.508,
+    "density": 0.402,
+    "movement": 0.902,
+    "space": 0.932
+  }
+}

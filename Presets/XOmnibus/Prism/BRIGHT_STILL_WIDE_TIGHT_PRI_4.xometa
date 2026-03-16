@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT STILL WIDE TIGHT PRI 4",
+  "mood": "Prism",
+  "engines": [
+    "Overbite"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Prism preset: BRIGHT STILL WIDE TIGHT PRI 4.",
+  "tags": [
+    "x-high-brightness",
+    "x-low-density",
+    "x-low-movement",
+    "x-high-space"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "Filter",
+    "intensity": "Extreme",
+    "sourceEngine": "Overbite",
+    "targetEngine": null
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.941,
+    "warmth": 0.428,
+    "aggression": 0.448,
+    "density": 0.076,
+    "movement": 0.042,
+    "space": 0.932
+  }
+}
