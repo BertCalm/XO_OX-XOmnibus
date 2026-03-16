@@ -69,7 +69,7 @@ DRUM_PREFIXES = re.compile(
 )
 
 TRAILING_JUNK = re.compile(
-    r'[_\-](0[1-9]|v[1-9]|rr[1-9]?|fx|wet|dry|mono|st|stereo|[lrLR]|x)$',
+    r'[_\-](0[1-9]|v[1-9]|c[1-9]|rr[1-9]?|fx|wet|dry|mono|st|stereo|[lrLR]|x)$',
     re.IGNORECASE,
 )
 
@@ -105,7 +105,7 @@ VOCAB = [
 
 def smart_label(stem: str) -> str:
     """Convert a sample filename stem into a ≤6-char meaningful pad label."""
-    # 1. Strip prefix
+    # 1. Strip drum-type prefix
     s = DRUM_PREFIXES.sub('', stem)
 
     # 2. Strip trailing junk tokens iteratively
@@ -115,24 +115,33 @@ def smart_label(stem: str) -> str:
         if s == prev:
             break
 
-    # 3. Vocabulary shortcuts — operate on the whole string before splitting
-    for pattern, replacement in VOCAB:
-        s = pattern.sub(replacement, s)
-
-    # 4. Tokenise on underscores, hyphens, spaces, or CamelCase boundaries
-    #    Insert space before uppercase letters that follow lowercase (CamelCase split)
+    # 3. Split into tokens on underscores, hyphens, spaces, or CamelCase boundaries
+    #    (CamelCase: insert space before an uppercase letter preceded by lowercase/digit)
     s = re.sub(r'([a-z0-9])([A-Z])', r'\1 \2', s)
     tokens = [t for t in re.split(r'[_\-\s]+', s) if t]
 
     if not tokens:
         return stem[:6]  # nothing survived — fall back to raw stem
 
-    # 5. Build label from leading tokens
+    # 4. Apply vocabulary shortcuts per token (avoids \b vs _ boundary issues)
+    def _shorten_token(tok: str) -> str:
+        for pattern, replacement in VOCAB:
+            result = pattern.sub(replacement, tok)
+            if result != tok:
+                return result
+        return tok
+
+    tokens = [_shorten_token(t) for t in tokens]
+    tokens = [t for t in tokens if t]  # drop any tokens reduced to empty string
+
+    if not tokens:
+        return stem[:6]
+
+    # 5. Build label from leading tokens, capitalising each token's first char
     label = ''
     for tok in tokens:
         if len(label) >= 6:
             break
-        # Capitalise first char of each token for readability
         label += tok[0].upper() + tok[1:]
     label = label[:6]
 
