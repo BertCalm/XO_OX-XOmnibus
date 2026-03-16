@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Outwit Electric Arms",
+  "mood": "Atmosphere",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
+  "version": "1.0.0",
+  "description": "Rule 73 with high mutation \u2014 arms flickering with CA-computed randomness. High feedback and density. Still atmosphere \u2014 the space charge before breakdown.",
+  "tags": [
+    "atmosphere",
+    "charged",
+    "outwit",
+    "electric",
+    "arms"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 73,
+      "owit_armBalance": 0.42,
+      "owit_mutationRate": 0.68,
+      "owit_armSpread": 0.82,
+      "owit_sync": 0.55,
+      "owit_feedbackAmt": 0.52,
+      "owit_chaos": 0.68,
+      "owit_density": 0.72,
+      "owit_ampAttack": 0.2,
+      "owit_ampDecay": 0.8,
+      "owit_ampSustain": 0.58,
+      "owit_ampRelease": 3.0,
+      "owit_filterCutoff": 0.78,
+      "owit_filterRes": 0.62,
+      "owit_lfoRate": 0.28,
+      "owit_lfoDepth": 0.65,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.22,
+    "movement": 0.82,
+    "density": 0.75,
+    "space": 0.62,
+    "aggression": 0.65
+  }
+}

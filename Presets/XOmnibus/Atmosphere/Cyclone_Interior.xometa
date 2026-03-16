@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Cyclone Interior",
+  "mood": "Atmosphere",
+  "engines": [
+    "OUTWIT"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Weather system in motion. High movement, active aggression. OUTWIT kinetic register.",
+  "tags": [
+    "atmosphere",
+    "kinetic",
+    "extreme",
+    "movement",
+    "weather",
+    "dynamic"
+  ],
+  "macroLabels": [
+    "CUNNING",
+    "REFLEX",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.586,
+    "warmth": 0.34,
+    "movement": 0.9,
+    "density": 0.685,
+    "space": 0.44,
+    "aggression": 0.429
+  },
+  "parameters": {
+    "OUTWIT": {
+      "cunning": 0.356,
+      "reflex": 0.911,
+      "coupling": 0.209,
+      "space": 0.461
+    }
+  },
+  "macros": {
+    "CUNNING": 0.356,
+    "REFLEX": 0.911,
+    "COUPLING": 0.209,
+    "SPACE": 0.461
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

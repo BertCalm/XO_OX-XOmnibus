@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Abyss Predator",
+  "mood": "Entangled",
+  "engines": [
+    "OBSIDIAN",
+    "ORCA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orca chaos injected into Obsidian crystal \u2014 the predator in the abyss, zero warmth, maximum kill.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "obsidian",
+    "orca",
+    "abyss"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.94,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.95,
+    "SPACE": 0.09
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.08,
+    "movement": 0.72,
+    "density": 0.93,
+    "space": 0.09,
+    "aggression": 0.99
+  },
+  "sonic_dna": {
+    "brightness": 0.06,
+    "warmth": 0.08,
+    "movement": 0.72,
+    "density": 0.93,
+    "space": 0.09,
+    "aggression": 0.99
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBSIDIAN",
+        "engineB": "ORCA",
+        "type": "CHAOS_INJECT",
+        "amount": 0.95
+      }
+    ]
+  }
+}

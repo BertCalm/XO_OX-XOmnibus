@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Loaded Atmosphere",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORGANON"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Thick, heavy environment. Maximum density, warm compression. ORGANON dense register.",
+  "tags": [
+    "atmosphere",
+    "dense",
+    "extreme",
+    "heavy",
+    "warm",
+    "thick"
+  ],
+  "macroLabels": [
+    "SYSTEM",
+    "LOGIC",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.287,
+    "warmth": 0.633,
+    "movement": 0.351,
+    "density": 0.929,
+    "space": 0.349,
+    "aggression": 0.323
+  },
+  "parameters": {
+    "ORGANON": {
+      "system": 0.295,
+      "logic": 0.487,
+      "coupling": 0.425,
+      "space": 0.359
+    }
+  },
+  "macros": {
+    "SYSTEM": 0.295,
+    "LOGIC": 0.487,
+    "COUPLING": 0.425,
+    "SPACE": 0.359
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

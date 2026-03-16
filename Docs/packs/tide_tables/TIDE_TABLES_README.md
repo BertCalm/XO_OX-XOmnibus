@@ -1,43 +1,51 @@
 # TIDE TABLES
 ### A free MPC expansion from XO_OX
-**"Where the water meets the shore"**
+**"Three Engines. One Free Pack."**
 
 ---
 
-## What is this?
+## What Is This?
 
-TIDE TABLES is a free gateway pack for the XO_OX synthesizer library.
-It showcases three core engines from XOmnibus — ONSET, ODYSSEY, and OPAL — in a single
-MPC expansion you can load today at no cost.
+TIDE TABLES is the gateway pack for the XO_OX synthesizer library.
+It brings three of XOmnibus's flagship engines — **ONSET**, **ODYSSEY**, and **OPAL** —
+into a single, free MPC expansion you can load today.
 
-No samples. No loops. Every sound is synthesized in real time.
+No samples. No loops. Every sound is synthesized in real time by the engines themselves.
+
+---
+
+## Engines Showcased
+
+| Engine  | Character | Color |
+|---------|-----------|-------|
+| **ONSET**   | Percussive synthesis — 8 voices across kick, snare, hats, clap, toms, perc, FX | Electric Blue `#0066FF` |
+| **ODYSSEY** | Wavetable-subtractive leads, pads, bass, and arpeggios | Violet `#7B2D8B` |
+| **OPAL**    | Granular textures — cloud, scatter, freeze, pitched, motion, stutter | Lavender `#A78BFA` |
 
 ---
 
 ## Four Programs
 
-### 1. Incoming Tide — *ONSET*
-Pure percussion. ONSET's eight synthesis voices cover the full kit:
-kick, snare, hats, clap, toms, perc, and two FX slots.
+### 1. Coastal Drums — *ONSET*
+Pure percussion. ONSET's eight synthesis voices cover the full kit.
+Three velocity layers per pad. Macro control over character, transient, space, and mutation.
 
-| Macro | Function |
-|-------|----------|
+| Q-Link | Function |
+|--------|----------|
 | Q1 MACHINE | Acoustic ↔ machine character |
 | Q2 PUNCH   | Transient attack across all voices |
 | Q3 SPACE   | Global reverb field depth |
 | Q4 MUTATE  | Timbral randomness |
 
-Start here. Build the groove.
-
 ---
 
-### 2. Open Water — *ODYSSEY*
-ODYSSEY's wavetable/subtractive engine laid out chromatically across two octaves (C3–D5).
-Pads cycle through four tonal characters: Lead, Pad, Bass, Arp.
-Play melodies straight off the pads.
+### 2. Tide Lead — *ODYSSEY*
+ODYSSEY's engine laid chromatically across 16 pads.
+Four tonal characters — Lead, Pad, Bass, Arp — organized so you can play melodies and harmonics
+straight off the pads without ever touching keys.
 
-| Macro | Function |
-|-------|----------|
+| Q-Link | Function |
+|--------|----------|
 | Q1 DRIFT | Pitch instability / detuning width |
 | Q2 DEPTH | Filter sweep depth |
 | Q3 WAVE  | Wavetable morph position |
@@ -45,13 +53,13 @@ Play melodies straight off the pads.
 
 ---
 
-### 3. Surface Tension — *OPAL*
-OPAL's granular engine across six texture categories:
-Cloud, Scatter, Freeze, Pitched, Motion, Stutter.
-Each category comes in two contrasting flavors — bright/dark, fast/slow.
+### 3. Shore Texture — *OPAL*
+OPAL's granular engine across six texture categories, each in two contrasting flavors
+(bright/dark, fast/slow, hard/soft). Sixteen pads of atmosphere you can trigger,
+layer, and sweep in real time.
 
-| Macro | Function |
-|-------|----------|
+| Q-Link | Function |
+|--------|----------|
 | Q1 DENSITY  | Grain population (sparse to cloud) |
 | Q2 SIZE     | Grain duration (micro to long) |
 | Q3 POSITION | Source scan position |
@@ -59,15 +67,18 @@ Each category comes in two contrasting flavors — bright/dark, fast/slow.
 
 ---
 
-### 4. Full Spectrum — *ONSET + ODYSSEY + OPAL* (Entangled)
-All three engines in one program. Pads 1–4 are ONSET rhythm.
-Pads 5–8 are ODYSSEY harmony. Pads 9–12 are OPAL texture.
-Pads 13–16 are coupled performance pads where engines cross-modulate.
+### 4. Deep Water — *ONSET + ODYSSEY + OPAL* (Entangled)
+All three engines in one program.
 
-This is the **Entangled mood**: no engine operates alone.
+- Pads 1–4 → ONSET rhythm anchors
+- Pads 5–8 → ODYSSEY harmonic tones
+- Pads 9–12 → OPAL texture layers
+- Pads 13–16 → Coupled performance pads: engines cross-modulate each other
 
-| Macro | Function |
-|-------|----------|
+This is the **Entangled mood**. No engine operates alone.
+
+| Q-Link   | Function |
+|----------|----------|
 | Q1 DRIVE    | Saturation across all three engines |
 | Q2 SPACE    | Unified reverb field |
 | Q3 ENTANGLE | Cross-modulation depth |
@@ -79,18 +90,30 @@ This is the **Entangled mood**: no engine operates alone.
 
 1. Open MPC Software or boot your MPC hardware.
 2. Go to **Menu → Browse → Expansions**.
-3. Navigate to the TIDE TABLES .xpn file and double-click to install.
+3. Navigate to the **TIDE TABLES .xpn** file and double-click to install.
 4. Find "TIDE TABLES" in your expansion library.
 5. Load any of the four programs and start playing.
 
 ---
 
+## What Makes It Special
+
+TIDE TABLES is fully synthesized — no sample content, no licensing restrictions.
+Every pad responds to velocity, mod wheel, and aftertouch exactly as it would
+inside XOmnibus on a desktop. The engines are the same code running on the same DSP.
+
+The pack is also a map. Each program is a door into a different engine.
+Play Coastal Drums, then open Deep Water and hear what happens when all three
+engines lock together. That's what XOmnibus is built for.
+
+---
+
 ## Want More?
 
-TIDE TABLES is a taste. The full XOmnibus library contains **31+ engines**,
-2,369+ factory presets, and the complete XO_OX water column mythology.
+TIDE TABLES is a taste. The full XOmnibus library contains **34+ engines**,
+2,550+ factory presets, and the complete XO_OX water column mythology.
 
-Visit **xo-ox.org** to learn more, or join Patreon at the Signal tier
+Visit **[xo-ox.org](https://xo-ox.org)** to learn more, or join Patreon at the Signal tier
 to receive new packs as they're released.
 
 ---

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Grow Singularity",
+  "mood": "Entangled",
+  "engines": [
+    "OTTONI",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "GROW macro timbral-warped by Ouroboros topology \u2014 brass expansion without harmonic ceiling.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "ottoni",
+    "ouroboros",
+    "grow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.84,
+    "MOVEMENT": 0.78,
+    "COUPLING": 0.84,
+    "SPACE": 0.18
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.18,
+    "movement": 0.78,
+    "density": 0.74,
+    "space": 0.18,
+    "aggression": 0.88
+  },
+  "sonic_dna": {
+    "brightness": 0.76,
+    "warmth": 0.18,
+    "movement": 0.78,
+    "density": 0.74,
+    "space": 0.18,
+    "aggression": 0.88
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OTTONI",
+        "engineB": "OUROBOROS",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.84
+      }
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Obese Attractor",
+  "mood": "Entangled",
+  "engines": [
+    "OBESE",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE BELLY maxed, MOJO maxed \u2014 Ouroboros strange attractor as the engine's own heartbeat.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "obese",
+    "ouroboros",
+    "attractor"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 1.0,
+    "MOVEMENT": 0.68,
+    "COUPLING": 0.94,
+    "SPACE": 0.05
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.54,
+    "warmth": 0.36,
+    "movement": 0.68,
+    "density": 0.96,
+    "space": 0.05,
+    "aggression": 1.0
+  },
+  "sonic_dna": {
+    "brightness": 0.54,
+    "warmth": 0.36,
+    "movement": 0.68,
+    "density": 0.96,
+    "space": 0.05,
+    "aggression": 1.0
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBESE",
+        "engineB": "OUROBOROS",
+        "type": "CHAOS_INJECT",
+        "amount": 0.94
+      }
+    ]
+  }
+}

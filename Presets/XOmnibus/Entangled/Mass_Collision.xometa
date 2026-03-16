@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Mass Collision",
+  "mood": "Entangled",
+  "engines": [
+    "OUROBOROS",
+    "OBESE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ouroboros strange attractor injecting chaos into OBESE saturation \u2014 harmonic mass at total density.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "ouroboros",
+    "obese",
+    "collision"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.95,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.92,
+    "SPACE": 0.08
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.35,
+    "movement": 0.72,
+    "density": 0.97,
+    "space": 0.08,
+    "aggression": 0.98
+  },
+  "sonic_dna": {
+    "brightness": 0.55,
+    "warmth": 0.35,
+    "movement": 0.72,
+    "density": 0.97,
+    "space": 0.08,
+    "aggression": 0.98
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUROBOROS",
+        "engineB": "OBESE",
+        "type": "CHAOS_INJECT",
+        "amount": 0.92
+      }
+    ]
+  }
+}

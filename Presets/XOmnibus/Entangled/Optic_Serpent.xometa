@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Optic Serpent",
+  "mood": "Entangled",
+  "engines": [
+    "OPTIC",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ouroboros topology channeled through Optic luminance \u2014 the strange attractor made of light.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "optic",
+    "ouroboros",
+    "serpent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.86,
+    "COUPLING": 0.91,
+    "SPACE": 0.24
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.05,
+    "movement": 0.86,
+    "density": 0.66,
+    "space": 0.24,
+    "aggression": 0.95
+  },
+  "sonic_dna": {
+    "brightness": 0.9,
+    "warmth": 0.05,
+    "movement": 0.86,
+    "density": 0.66,
+    "space": 0.24,
+    "aggression": 0.95
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OPTIC",
+        "engineB": "OUROBOROS",
+        "type": "CHAOS_INJECT",
+        "amount": 0.91
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Eclipsed Basin",
+  "mood": "Atmosphere",
+  "engines": [
+    "OPAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Shadowy environmental texture. Low brightness, expansive space. OPAL in void register.",
+  "tags": [
+    "atmosphere",
+    "dark",
+    "extreme",
+    "shadowy",
+    "environmental",
+    "deep"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.057,
+    "warmth": 0.487,
+    "movement": 0.4,
+    "density": 0.599,
+    "space": 0.618,
+    "aggression": 0.093
+  },
+  "parameters": {
+    "OPAL": {
+      "scatter": 0.064,
+      "drift": 0.533,
+      "coupling": 0.452,
+      "space": 0.694
+    }
+  },
+  "macros": {
+    "SCATTER": 0.064,
+    "DRIFT": 0.533,
+    "COUPLING": 0.452,
+    "SPACE": 0.694
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

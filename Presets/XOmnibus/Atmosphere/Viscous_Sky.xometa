@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Viscous Sky",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORCA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Thick, heavy environment. Maximum density, warm compression. ORCA dense register.",
+  "tags": [
+    "atmosphere",
+    "dense",
+    "extreme",
+    "heavy",
+    "warm",
+    "thick"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.345,
+    "warmth": 0.668,
+    "movement": 0.309,
+    "density": 0.864,
+    "space": 0.474,
+    "aggression": 0.233
+  },
+  "parameters": {
+    "ORCA": {
+      "character": 0.309,
+      "movement": 0.277,
+      "coupling": 0.201,
+      "space": 0.398
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.309,
+    "MOVEMENT": 0.277,
+    "COUPLING": 0.201,
+    "SPACE": 0.398
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

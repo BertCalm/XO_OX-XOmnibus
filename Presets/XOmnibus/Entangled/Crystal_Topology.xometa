@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Crystal Topology",
+  "mood": "Entangled",
+  "engines": [
+    "OBSIDIAN",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Frequency smear from the topology loop corrupting Obsidian's crystal silence.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "obsidian",
+    "ouroboros",
+    "crystal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.9,
+    "SPACE": 0.1
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.1,
+    "movement": 0.6,
+    "density": 0.88,
+    "space": 0.1,
+    "aggression": 0.95
+  },
+  "sonic_dna": {
+    "brightness": 0.12,
+    "warmth": 0.1,
+    "movement": 0.6,
+    "density": 0.88,
+    "space": 0.1,
+    "aggression": 0.95
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBSIDIAN",
+        "engineB": "OUROBOROS",
+        "type": "FREQUENCY_SMEAR",
+        "amount": 0.9
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Kinetic Envelope",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORBITAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Weather system in motion. High movement, active aggression. ORBITAL kinetic register.",
+  "tags": [
+    "atmosphere",
+    "kinetic",
+    "extreme",
+    "movement",
+    "weather",
+    "dynamic"
+  ],
+  "macroLabels": [
+    "ORBIT",
+    "GRAVITY",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.528,
+    "warmth": 0.484,
+    "movement": 0.898,
+    "density": 0.639,
+    "space": 0.685,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "ORBITAL": {
+      "orbit": 0.355,
+      "gravity": 0.829,
+      "coupling": 0.15,
+      "space": 0.719
+    }
+  },
+  "macros": {
+    "ORBIT": 0.355,
+    "GRAVITY": 0.829,
+    "COUPLING": 0.15,
+    "SPACE": 0.719
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

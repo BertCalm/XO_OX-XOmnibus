@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Electron Storm",
+  "mood": "Atmosphere",
+  "engines": [
+    "OVERWORLD"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Weather system in motion. High movement, active aggression. OVERWORLD kinetic register.",
+  "tags": [
+    "atmosphere",
+    "kinetic",
+    "extreme",
+    "movement",
+    "weather",
+    "dynamic"
+  ],
+  "macroLabels": [
+    "ERA",
+    "GLITCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.309,
+    "warmth": 0.471,
+    "movement": 0.85,
+    "density": 0.683,
+    "space": 0.641,
+    "aggression": 0.616
+  },
+  "parameters": {
+    "OVERWORLD": {
+      "era": 0.719,
+      "glitch": 0.817,
+      "coupling": 0.415,
+      "space": 0.563
+    }
+  },
+  "macros": {
+    "ERA": 0.719,
+    "GLITCH": 0.817,
+    "COUPLING": 0.415,
+    "SPACE": 0.563
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

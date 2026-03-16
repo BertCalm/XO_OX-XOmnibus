@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Shadow Topology",
+  "mood": "Entangled",
+  "engines": [
+    "OMBRE",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Shadow mauve frequency-smeared by Ouroboros \u2014 the memory's topology consumed by chaos.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "ombre",
+    "ouroboros",
+    "shadow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.68,
+    "COUPLING": 0.88,
+    "SPACE": 0.15
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.15,
+    "movement": 0.68,
+    "density": 0.86,
+    "space": 0.15,
+    "aggression": 0.93
+  },
+  "sonic_dna": {
+    "brightness": 0.1,
+    "warmth": 0.15,
+    "movement": 0.68,
+    "density": 0.86,
+    "space": 0.15,
+    "aggression": 0.93
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OMBRE",
+        "engineB": "OUROBOROS",
+        "type": "FREQUENCY_SMEAR",
+        "amount": 0.88
+      }
+    ]
+  }
+}

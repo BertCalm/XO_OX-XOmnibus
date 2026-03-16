@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Vermillion Attractor",
+  "mood": "Entangled",
+  "engines": [
+    "ORIGAMI",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ouroboros timbral warping Origami fold timbre \u2014 vermillion crease fractal.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "origami",
+    "ouroboros",
+    "vermillion"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.84,
+    "MOVEMENT": 0.84,
+    "COUPLING": 0.87,
+    "SPACE": 0.2
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.24,
+    "movement": 0.84,
+    "density": 0.7,
+    "space": 0.2,
+    "aggression": 0.91
+  },
+  "sonic_dna": {
+    "brightness": 0.72,
+    "warmth": 0.24,
+    "movement": 0.84,
+    "density": 0.7,
+    "space": 0.2,
+    "aggression": 0.91
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORIGAMI",
+        "engineB": "OUROBOROS",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.87
+      }
+    ]
+  }
+}

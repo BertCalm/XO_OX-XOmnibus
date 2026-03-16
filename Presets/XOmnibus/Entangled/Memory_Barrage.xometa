@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Memory Barrage",
+  "mood": "Entangled",
+  "engines": [
+    "OMBRE",
+    "ONSET"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ombre memory layer chaos-injected into Onset percussion \u2014 grief as machine barrage.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "ombre",
+    "onset",
+    "memory"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.84,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.86,
+    "SPACE": 0.12
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.16,
+    "movement": 0.75,
+    "density": 0.88,
+    "space": 0.12,
+    "aggression": 0.92
+  },
+  "sonic_dna": {
+    "brightness": 0.18,
+    "warmth": 0.16,
+    "movement": 0.75,
+    "density": 0.88,
+    "space": 0.12,
+    "aggression": 0.92
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OMBRE",
+        "engineB": "ONSET",
+        "type": "CHAOS_INJECT",
+        "amount": 0.86
+      }
+    ]
+  }
+}

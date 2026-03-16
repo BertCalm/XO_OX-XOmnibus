@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "White Strike",
+  "mood": "Entangled",
+  "engines": [
+    "OVERBITE",
+    "OPTIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Fang White meets Phosphor Green \u2014 BITE macro timbral-warped by Optic luminance.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "overbite",
+    "optic",
+    "white-strike"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.9,
+    "SPACE": 0.2
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.91,
+    "warmth": 0.1,
+    "movement": 0.82,
+    "density": 0.72,
+    "space": 0.2,
+    "aggression": 0.96
+  },
+  "sonic_dna": {
+    "brightness": 0.91,
+    "warmth": 0.1,
+    "movement": 0.82,
+    "density": 0.72,
+    "space": 0.2,
+    "aggression": 0.96
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERBITE",
+        "engineB": "OPTIC",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.9
+      }
+    ]
+  }
+}

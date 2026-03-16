@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Oblique Tempest",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
+  "version": "1.0.0",
+  "description": "Maximum fold, maximum detune, sixteen bounces with minimal damping. Prism feedback near saturation. The prism bounce is now a tempest: energy reflecting endlessly off storm walls.",
+  "tags": [
+    "atmosphere",
+    "storm",
+    "oblique",
+    "tempest",
+    "cascade"
+  ],
+  "macroLabels": [
+    "SPACE",
+    "FOLD",
+    "PRISM DEPTH",
+    "FILTER"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_oscWave": 2,
+      "oblq_oscFold": 0.88,
+      "oblq_oscDetune": 48.0,
+      "oblq_level": 0.92,
+      "oblq_glide": 0.12,
+      "oblq_percClick": 0.28,
+      "oblq_percDecay": 0.18,
+      "oblq_bounceRate": 180.0,
+      "oblq_bounceGravity": 0.92,
+      "oblq_bounceDamp": 0.45,
+      "oblq_bounceCnt": 16.0,
+      "oblq_bounceSwing": 0.48,
+      "oblq_clickTone": 3500.0,
+      "oblq_filterCut": 7000.0,
+      "oblq_filterRes": 0.88,
+      "oblq_attack": 0.05,
+      "oblq_decay": 0.3,
+      "oblq_sustain": 0.48,
+      "oblq_release": 2.5,
+      "oblq_prismDelay": 95.0,
+      "oblq_prismSpread": 0.98,
+      "oblq_prismColor": 0.95,
+      "oblq_prismWidth": 0.98,
+      "oblq_prismFeedback": 0.95,
+      "oblq_prismMix": 0.92,
+      "oblq_prismDamp": 0.12,
+      "oblq_phaserRate": 0.88,
+      "oblq_phaserDepth": 0.98,
+      "oblq_phaserFeedback": 0.92,
+      "oblq_phaserMix": 0.88
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.12,
+    "movement": 0.88,
+    "density": 0.88,
+    "space": 0.58,
+    "aggression": 0.86
+  }
+}

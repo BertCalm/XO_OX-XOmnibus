@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Penumbra Drift",
+  "mood": "Atmosphere",
+  "engines": [
+    "OMBRE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Shadowy environmental texture. Low brightness, expansive space. OMBRE in void register.",
+  "tags": [
+    "atmosphere",
+    "dark",
+    "extreme",
+    "shadowy",
+    "environmental",
+    "deep"
+  ],
+  "macroLabels": [
+    "GRADIENT",
+    "WARMTH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.133,
+    "warmth": 0.536,
+    "movement": 0.359,
+    "density": 0.473,
+    "space": 0.776,
+    "aggression": 0.059
+  },
+  "parameters": {
+    "OMBRE": {
+      "gradient": 0.048,
+      "warmth": 0.331,
+      "coupling": 0.132,
+      "space": 0.723
+    }
+  },
+  "macros": {
+    "GRADIENT": 0.048,
+    "WARMTH": 0.331,
+    "COUPLING": 0.132,
+    "SPACE": 0.723
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

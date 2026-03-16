@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Fog Column",
+  "mood": "Atmosphere",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
+  "version": "1.0.0",
+  "description": "Seven fold layers at high symmetry \u2014 even harmonics dominate. The fold point sits high, creating a warm, rounded density. A fog column rising in still air.",
+  "tags": [
+    "atmosphere",
+    "calm",
+    "fog",
+    "dense",
+    "warm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FOLD",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldPoint": 0.55,
+      "origami_foldAmt": 0.72,
+      "origami_layers": 7,
+      "origami_symmetry": 0.85,
+      "origami_filterCutoff": 0.32,
+      "origami_filterReso": 0.08,
+      "origami_oscPitch": 0.0,
+      "origami_ampAttack": 3.0,
+      "origami_ampDecay": 1.5,
+      "origami_ampSustain": 0.95,
+      "origami_ampRelease": 7.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.82,
+    "movement": 0.65,
+    "density": 0.95,
+    "space": 0.75,
+    "aggression": 0.09
+  }
+}

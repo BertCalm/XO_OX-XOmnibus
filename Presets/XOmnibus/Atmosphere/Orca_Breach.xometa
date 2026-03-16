@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Orca Breach",
+  "mood": "Atmosphere",
+  "engines": [
+    "Orca"
+  ],
+  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
+  "version": "1.0.0",
+  "description": "Filter self-oscillating, drive at maximum, LFO scanning at predator speed. Echo feedback building into sustained tone. A 7-tonne breach: the ocean erupts and the air fills with water.",
+  "tags": [
+    "atmosphere",
+    "storm",
+    "orca",
+    "breach",
+    "impact"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orca": {
+      "orca_filterCutoff": 0.95,
+      "orca_filterReso": 0.92,
+      "orca_drive": 0.88,
+      "orca_lfoRate": 0.85,
+      "orca_lfoDepth": 0.95,
+      "orca_echoDelay": 0.28,
+      "orca_echoFeedback": 0.88,
+      "orca_reverbMix": 0.55,
+      "orca_ampAttack": 0.03,
+      "orca_ampDecay": 0.3,
+      "orca_ampSustain": 0.45,
+      "orca_ampRelease": 2.5,
+      "orca_macroCharacter": 0.0,
+      "orca_macroMovement": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.12,
+    "movement": 0.92,
+    "density": 0.88,
+    "space": 0.48,
+    "aggression": 0.88
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Silver Topology",
+  "mood": "Entangled",
+  "engines": [
+    "OBSCURA",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ouroboros timbral warp corrupting Obscura plate stiffness \u2014 silver daguerreotype at fractal resolution.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "obscura",
+    "ouroboros",
+    "silver"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.86,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.89,
+    "SPACE": 0.14
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.14,
+    "movement": 0.58,
+    "density": 0.84,
+    "space": 0.14,
+    "aggression": 0.93
+  },
+  "sonic_dna": {
+    "brightness": 0.1,
+    "warmth": 0.14,
+    "movement": 0.58,
+    "density": 0.84,
+    "space": 0.14,
+    "aggression": 0.93
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBSCURA",
+        "engineB": "OUROBOROS",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.89
+      }
+    ]
+  }
+}

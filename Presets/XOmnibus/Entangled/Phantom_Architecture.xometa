@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Phantom Architecture",
+  "mood": "Entangled",
+  "engines": [
+    "OBSCURA",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Daguerreotype silver structure chaos-injected by Ouroboros \u2014 the photograph as topological weapon.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "obscura",
+    "ouroboros",
+    "phantom"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.92,
+    "SPACE": 0.16
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.14,
+    "warmth": 0.18,
+    "movement": 0.62,
+    "density": 0.86,
+    "space": 0.16,
+    "aggression": 0.96
+  },
+  "sonic_dna": {
+    "brightness": 0.14,
+    "warmth": 0.18,
+    "movement": 0.62,
+    "density": 0.86,
+    "space": 0.16,
+    "aggression": 0.96
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBSCURA",
+        "engineB": "OUROBOROS",
+        "type": "CHAOS_INJECT",
+        "amount": 0.92
+      }
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Orbital Ion Trail",
+  "mood": "Atmosphere",
+  "engines": [
+    "Orbital"
+  ],
+  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
+  "version": "1.0.0",
+  "description": "Fourteen oscillators, group envelope rate elevated. Individual voices re-enter the mix with quick attacks. The ion trail of a charged object passing through atmosphere.",
+  "tags": [
+    "atmosphere",
+    "charged",
+    "orbital",
+    "ion-trail",
+    "energized"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.82,
+      "orb_groupEnvRate": 0.72,
+      "orb_groupEnvDepth": 0.88,
+      "orb_oscCount": 14,
+      "orb_spread": 0.88,
+      "orb_detune": 0.62,
+      "orb_filterCutoff": 0.78,
+      "orb_filterReso": 0.48,
+      "orb_ampAttack": 0.15,
+      "orb_ampDecay": 0.7,
+      "orb_ampSustain": 0.55,
+      "orb_ampRelease": 3.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.18,
+    "movement": 0.82,
+    "density": 0.78,
+    "space": 0.72,
+    "aggression": 0.55
+  }
+}

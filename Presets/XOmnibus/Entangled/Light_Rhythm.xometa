@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Light Rhythm",
+  "mood": "Entangled",
+  "engines": [
+    "OPTIC",
+    "ONSET"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Optic timbral-warping Onset drum timbre in real time \u2014 light shaping percussion.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "optic",
+    "onset",
+    "light"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.93,
+    "COUPLING": 0.89,
+    "SPACE": 0.2
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.06,
+    "movement": 0.93,
+    "density": 0.62,
+    "space": 0.2,
+    "aggression": 0.92
+  },
+  "sonic_dna": {
+    "brightness": 0.88,
+    "warmth": 0.06,
+    "movement": 0.93,
+    "density": 0.62,
+    "space": 0.2,
+    "aggression": 0.92
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OPTIC",
+        "engineB": "ONSET",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.89
+      }
+    ]
+  }
+}

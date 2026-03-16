@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Turbulent Ascent",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORBITAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Weather system in motion. High movement, active aggression. ORBITAL kinetic register.",
+  "tags": [
+    "atmosphere",
+    "kinetic",
+    "extreme",
+    "movement",
+    "weather",
+    "dynamic"
+  ],
+  "macroLabels": [
+    "ORBIT",
+    "GRAVITY",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.424,
+    "movement": 0.898,
+    "density": 0.566,
+    "space": 0.533,
+    "aggression": 0.453
+  },
+  "parameters": {
+    "ORBITAL": {
+      "orbit": 0.471,
+      "gravity": 0.98,
+      "coupling": 0.418,
+      "space": 0.467
+    }
+  },
+  "macros": {
+    "ORBIT": 0.471,
+    "GRAVITY": 0.98,
+    "COUPLING": 0.418,
+    "SPACE": 0.467
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

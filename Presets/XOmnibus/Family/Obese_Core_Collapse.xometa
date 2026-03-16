@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "Obese Core Collapse",
+  "mood": "Family",
+  "engines": [
+    "OBESE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE beyond event horizon \u2014 saturation beyond recovery, density star.",
+  "tags": [
+    "family",
+    "portrait",
+    "extreme-dna",
+    "dense",
+    "aggressive",
+    "saturated"
+  ],
+  "macroLabels": [
+    "WEIGHT",
+    "SATURATE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.55,
+    "movement": 0.45,
+    "density": 0.97,
+    "space": 0.15,
+    "aggression": 0.88
+  }
+}

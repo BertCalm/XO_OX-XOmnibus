@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Iron Fog",
+  "mood": "Atmosphere",
+  "engines": [
+    "OVERBITE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Thick, heavy environment. Maximum density, warm compression. OVERBITE dense register.",
+  "tags": [
+    "atmosphere",
+    "dense",
+    "extreme",
+    "heavy",
+    "warm",
+    "thick"
+  ],
+  "macroLabels": [
+    "BITE",
+    "RESONANCE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.335,
+    "warmth": 0.671,
+    "movement": 0.281,
+    "density": 0.91,
+    "space": 0.331,
+    "aggression": 0.363
+  },
+  "parameters": {
+    "OVERBITE": {
+      "bite": 0.471,
+      "resonance": 0.203,
+      "coupling": 0.453,
+      "space": 0.28
+    }
+  },
+  "macros": {
+    "BITE": 0.471,
+    "RESONANCE": 0.203,
+    "COUPLING": 0.453,
+    "SPACE": 0.28
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

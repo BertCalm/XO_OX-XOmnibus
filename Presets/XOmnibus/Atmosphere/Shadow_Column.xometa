@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Shadow Column",
+  "mood": "Atmosphere",
+  "engines": [
+    "OBSIDIAN"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Shadowy environmental texture. Low brightness, expansive space. OBSIDIAN in void register.",
+  "tags": [
+    "atmosphere",
+    "dark",
+    "extreme",
+    "shadowy",
+    "environmental",
+    "deep"
+  ],
+  "macroLabels": [
+    "DARKNESS",
+    "SHIMMER",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.092,
+    "warmth": 0.414,
+    "movement": 0.262,
+    "density": 0.519,
+    "space": 0.65,
+    "aggression": 0.112
+  },
+  "parameters": {
+    "OBSIDIAN": {
+      "darkness": 0.261,
+      "shimmer": 0.324,
+      "coupling": 0.275,
+      "space": 0.654
+    }
+  },
+  "macros": {
+    "DARKNESS": 0.261,
+    "SHIMMER": 0.324,
+    "COUPLING": 0.275,
+    "SPACE": 0.654
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

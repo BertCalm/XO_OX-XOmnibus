@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Static Front",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
+  "version": "1.0.0",
+  "description": "Sawtooth with meaningful fold, five bounces at mid gravity. Prism color elevated \u2014 the refracted frequencies carry edge. An approaching electrical front: the air before lightning.",
+  "tags": [
+    "atmosphere",
+    "tense",
+    "oblique",
+    "static",
+    "charged-air"
+  ],
+  "macroLabels": [
+    "SPACE",
+    "FOLD",
+    "PRISM DEPTH",
+    "FILTER"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_oscWave": 2,
+      "oblq_oscFold": 0.45,
+      "oblq_oscDetune": 18.0,
+      "oblq_level": 0.72,
+      "oblq_glide": 0.45,
+      "oblq_percClick": 0.08,
+      "oblq_percDecay": 0.05,
+      "oblq_bounceRate": 450.0,
+      "oblq_bounceGravity": 0.42,
+      "oblq_bounceDamp": 0.88,
+      "oblq_bounceCnt": 5.0,
+      "oblq_bounceSwing": 0.12,
+      "oblq_clickTone": 1200.0,
+      "oblq_filterCut": 2200.0,
+      "oblq_filterRes": 0.38,
+      "oblq_attack": 0.4,
+      "oblq_decay": 1.5,
+      "oblq_sustain": 0.72,
+      "oblq_release": 4.0,
+      "oblq_prismDelay": 280.0,
+      "oblq_prismSpread": 0.72,
+      "oblq_prismColor": 0.65,
+      "oblq_prismWidth": 0.78,
+      "oblq_prismFeedback": 0.68,
+      "oblq_prismMix": 0.58,
+      "oblq_prismDamp": 0.45,
+      "oblq_phaserRate": 0.12,
+      "oblq_phaserDepth": 0.72,
+      "oblq_phaserFeedback": 0.58,
+      "oblq_phaserMix": 0.62
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.32,
+    "movement": 0.55,
+    "density": 0.75,
+    "space": 0.65,
+    "aggression": 0.5
+  }
+}

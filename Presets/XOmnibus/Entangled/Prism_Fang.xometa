@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Prism Fang",
+  "mood": "Entangled",
+  "engines": [
+    "OBLIQUE",
+    "OVERBITE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Prism bounce frequency smearing Overbite resonance \u2014 bright venom across the spectrum.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "oblique",
+    "overbite",
+    "prism-fang"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.86,
+    "MOVEMENT": 0.76,
+    "COUPLING": 0.85,
+    "SPACE": 0.22
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.84,
+    "warmth": 0.16,
+    "movement": 0.76,
+    "density": 0.71,
+    "space": 0.22,
+    "aggression": 0.9
+  },
+  "sonic_dna": {
+    "brightness": 0.84,
+    "warmth": 0.16,
+    "movement": 0.76,
+    "density": 0.71,
+    "space": 0.22,
+    "aggression": 0.9
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBLIQUE",
+        "engineB": "OVERBITE",
+        "type": "FREQUENCY_SMEAR",
+        "amount": 0.85
+      }
+    ]
+  }
+}

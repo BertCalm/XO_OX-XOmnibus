@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Tarpit Horizon",
+  "mood": "Atmosphere",
+  "engines": [
+    "OMBRE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Shadowy environmental texture. Low brightness, expansive space. OMBRE in void register.",
+  "tags": [
+    "atmosphere",
+    "dark",
+    "extreme",
+    "shadowy",
+    "environmental",
+    "deep"
+  ],
+  "macroLabels": [
+    "GRADIENT",
+    "WARMTH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.123,
+    "warmth": 0.552,
+    "movement": 0.395,
+    "density": 0.33,
+    "space": 0.701,
+    "aggression": 0.118
+  },
+  "parameters": {
+    "OMBRE": {
+      "gradient": 0.233,
+      "warmth": 0.357,
+      "coupling": 0.176,
+      "space": 0.691
+    }
+  },
+  "macros": {
+    "GRADIENT": 0.233,
+    "WARMTH": 0.357,
+    "COUPLING": 0.176,
+    "SPACE": 0.691
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

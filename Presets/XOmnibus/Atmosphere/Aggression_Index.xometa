@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Aggression Index",
+  "mood": "Atmosphere",
+  "engines": [
+    "OUTWIT"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Storm and pressure atmosphere. Maximum aggression, kinetic density. OUTWIT aggressive register.",
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "extreme",
+    "storm",
+    "pressure",
+    "fierce"
+  ],
+  "macroLabels": [
+    "CUNNING",
+    "REFLEX",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.536,
+    "warmth": 0.524,
+    "movement": 0.816,
+    "density": 0.564,
+    "space": 0.547,
+    "aggression": 0.807
+  },
+  "parameters": {
+    "OUTWIT": {
+      "cunning": 0.909,
+      "reflex": 0.903,
+      "coupling": 0.235,
+      "space": 0.47
+    }
+  },
+  "macros": {
+    "CUNNING": 0.909,
+    "REFLEX": 0.903,
+    "COUPLING": 0.235,
+    "SPACE": 0.47
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Glitch Barrage",
+  "mood": "Entangled",
+  "engines": [
+    "OVERWORLD",
+    "ONSET"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "NES glitch velocity coupling into Onset XVC \u2014 chip noise driving percussion barrage.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "overworld",
+    "onset",
+    "glitch"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8,
+    "MOVEMENT": 0.86,
+    "COUPLING": 0.88,
+    "SPACE": 0.15
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.12,
+    "movement": 0.86,
+    "density": 0.8,
+    "space": 0.15,
+    "aggression": 0.93
+  },
+  "sonic_dna": {
+    "brightness": 0.88,
+    "warmth": 0.12,
+    "movement": 0.86,
+    "density": 0.8,
+    "space": 0.15,
+    "aggression": 0.93
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERWORLD",
+        "engineB": "ONSET",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.88
+      }
+    ]
+  }
+}

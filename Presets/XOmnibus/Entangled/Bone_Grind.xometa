@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Bone Grind",
+  "mood": "Entangled",
+  "engines": [
+    "OBLONG",
+    "OBESE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bob's amber warmth ground through OBESE saturation \u2014 character crushed into harmonic bone dust.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "oblong",
+    "obese",
+    "grind"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.92,
+    "MOVEMENT": 0.64,
+    "COUPLING": 0.84,
+    "SPACE": 0.07
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.44,
+    "movement": 0.64,
+    "density": 0.93,
+    "space": 0.07,
+    "aggression": 0.92
+  },
+  "sonic_dna": {
+    "brightness": 0.5,
+    "warmth": 0.44,
+    "movement": 0.64,
+    "density": 0.93,
+    "space": 0.07,
+    "aggression": 0.92
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBLONG",
+        "engineB": "OBESE",
+        "type": "SATURATION_DRIVE",
+        "amount": 0.84
+      }
+    ]
+  }
+}

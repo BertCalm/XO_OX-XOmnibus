@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Pressure Front",
+  "mood": "Atmosphere",
+  "engines": [
+    "OCTOPUS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Weather system in motion. High movement, active aggression. OCTOPUS kinetic register.",
+  "tags": [
+    "atmosphere",
+    "kinetic",
+    "extreme",
+    "movement",
+    "weather",
+    "dynamic"
+  ],
+  "macroLabels": [
+    "SPREAD",
+    "PULSE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.448,
+    "warmth": 0.333,
+    "movement": 0.801,
+    "density": 0.643,
+    "space": 0.591,
+    "aggression": 0.465
+  },
+  "parameters": {
+    "OCTOPUS": {
+      "spread": 0.55,
+      "pulse": 0.839,
+      "coupling": 0.271,
+      "space": 0.493
+    }
+  },
+  "macros": {
+    "SPREAD": 0.55,
+    "PULSE": 0.839,
+    "COUPLING": 0.271,
+    "SPACE": 0.493
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

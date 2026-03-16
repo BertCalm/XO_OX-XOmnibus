@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Era Saturation",
+  "mood": "Entangled",
+  "engines": [
+    "OVERWORLD",
+    "OBESE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ERA crossfade timbral-warped by OBESE mojo \u2014 chip eras dissolving in saturation heat.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "overworld",
+    "obese",
+    "era"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.84,
+    "SPACE": 0.12
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.25,
+    "movement": 0.72,
+    "density": 0.85,
+    "space": 0.12,
+    "aggression": 0.9
+  },
+  "sonic_dna": {
+    "brightness": 0.82,
+    "warmth": 0.25,
+    "movement": 0.72,
+    "density": 0.85,
+    "space": 0.12,
+    "aggression": 0.9
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERWORLD",
+        "engineB": "OBESE",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.84
+      }
+    ]
+  }
+}

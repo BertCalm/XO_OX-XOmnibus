@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Deep Predator Loop",
+  "mood": "Entangled",
+  "engines": [
+    "ORCA",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Frequency smear locks Orca breach timing to strange attractor rhythm \u2014 looped predation.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "orca",
+    "ouroboros",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.89,
+    "SPACE": 0.1
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.22,
+    "movement": 0.7,
+    "density": 0.89,
+    "space": 0.1,
+    "aggression": 0.96
+  },
+  "sonic_dna": {
+    "brightness": 0.38,
+    "warmth": 0.22,
+    "movement": 0.7,
+    "density": 0.89,
+    "space": 0.1,
+    "aggression": 0.96
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORCA",
+        "engineB": "OUROBOROS",
+        "type": "FREQUENCY_SMEAR",
+        "amount": 0.89
+      }
+    ]
+  }
+}

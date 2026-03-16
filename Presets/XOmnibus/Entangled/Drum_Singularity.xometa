@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Drum Singularity",
+  "mood": "Entangled",
+  "engines": [
+    "OUROBOROS",
+    "ONSET"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ouroboros velocity coupling feeding Onset percussive triggers \u2014 a drum singularity event.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "ouroboros",
+    "onset",
+    "singularity"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.91,
+    "SPACE": 0.06
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.15,
+    "movement": 0.82,
+    "density": 0.93,
+    "space": 0.06,
+    "aggression": 0.97
+  },
+  "sonic_dna": {
+    "brightness": 0.55,
+    "warmth": 0.15,
+    "movement": 0.82,
+    "density": 0.93,
+    "space": 0.06,
+    "aggression": 0.97
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUROBOROS",
+        "engineB": "ONSET",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.91
+      }
+    ]
+  }
+}

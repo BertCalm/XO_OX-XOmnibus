@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "Overworld Sunrise",
+  "mood": "Family",
+  "engines": [
+    "OVERWORLD"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERWORLD chip sunrise \u2014 NES palette at dawn, all 16 colors fully lit.",
+  "tags": [
+    "family",
+    "portrait",
+    "extreme-dna",
+    "bright",
+    "chip",
+    "nostalgic"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHIP",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.94,
+    "warmth": 0.72,
+    "movement": 0.65,
+    "density": 0.28,
+    "space": 0.72,
+    "aggression": 0.28
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "Oblique Noon Sun",
+  "mood": "Family",
+  "engines": [
+    "OBLIQUE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBLIQUE at sharpest angle in full light \u2014 the cut is brilliant, edge catches everything.",
+  "tags": [
+    "family",
+    "portrait",
+    "extreme-dna",
+    "bright",
+    "angular",
+    "cutting"
+  ],
+  "macroLabels": [
+    "ANGLE",
+    "EDGE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.4,
+    "movement": 0.5,
+    "density": 0.35,
+    "space": 0.7,
+    "aggression": 0.3
+  }
+}

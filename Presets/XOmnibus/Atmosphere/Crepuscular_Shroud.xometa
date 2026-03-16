@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Crepuscular Shroud",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Shadowy environmental texture. Low brightness, expansive space. ORACLE in void register.",
+  "tags": [
+    "atmosphere",
+    "dark",
+    "extreme",
+    "shadowy",
+    "environmental",
+    "deep"
+  ],
+  "macroLabels": [
+    "VISION",
+    "FLOW",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.601,
+    "movement": 0.391,
+    "density": 0.578,
+    "space": 0.812,
+    "aggression": 0.083
+  },
+  "parameters": {
+    "ORACLE": {
+      "vision": 0.113,
+      "flow": 0.344,
+      "coupling": 0.26,
+      "space": 0.724
+    }
+  },
+  "macros": {
+    "VISION": 0.113,
+    "FLOW": 0.344,
+    "COUPLING": 0.26,
+    "SPACE": 0.724
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

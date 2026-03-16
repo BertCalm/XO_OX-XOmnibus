@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Obsidian Seabed",
+  "mood": "Atmosphere",
+  "engines": [
+    "OBSCURA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Shadowy environmental texture. Low brightness, expansive space. OBSCURA in void register.",
+  "tags": [
+    "atmosphere",
+    "dark",
+    "extreme",
+    "shadowy",
+    "environmental",
+    "deep"
+  ],
+  "macroLabels": [
+    "VEIL",
+    "DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.131,
+    "warmth": 0.352,
+    "movement": 0.342,
+    "density": 0.509,
+    "space": 0.685,
+    "aggression": 0.081
+  },
+  "parameters": {
+    "OBSCURA": {
+      "veil": 0.221,
+      "depth": 0.326,
+      "coupling": 0.137,
+      "space": 0.604
+    }
+  },
+  "macros": {
+    "VEIL": 0.221,
+    "DEPTH": 0.326,
+    "COUPLING": 0.137,
+    "SPACE": 0.604
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

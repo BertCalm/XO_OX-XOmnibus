@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Saturate Horizon",
+  "mood": "Atmosphere",
+  "engines": [
+    "OVERDUB"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Thick, heavy environment. Maximum density, warm compression. OVERDUB dense register.",
+  "tags": [
+    "atmosphere",
+    "dense",
+    "extreme",
+    "heavy",
+    "warm",
+    "thick"
+  ],
+  "macroLabels": [
+    "TAPE",
+    "DRIVE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.398,
+    "warmth": 0.606,
+    "movement": 0.307,
+    "density": 0.868,
+    "space": 0.383,
+    "aggression": 0.365
+  },
+  "parameters": {
+    "OVERDUB": {
+      "tape": 0.513,
+      "drive": 0.283,
+      "coupling": 0.348,
+      "space": 0.405
+    }
+  },
+  "macros": {
+    "TAPE": 0.513,
+    "DRIVE": 0.283,
+    "COUPLING": 0.348,
+    "SPACE": 0.405
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

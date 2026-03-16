@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "Orphica Warm Colony",
+  "mood": "Family",
+  "engines": [
+    "ORPHICA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ORPHICA warm microsound \u2014 each grain a warm polyp, colony spanning full space.",
+  "tags": [
+    "family",
+    "portrait",
+    "extreme-dna",
+    "warm",
+    "spatial",
+    "microsound"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "SHIMMER",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.86,
+    "movement": 0.65,
+    "density": 0.2,
+    "space": 0.89,
+    "aggression": 0.08
+  }
+}

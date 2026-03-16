@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Ink Storm",
+  "mood": "Entangled",
+  "engines": [
+    "OCTOPUS",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ouroboros timbral warping Octopus ink cloud mix \u2014 chromatophore explosion in topological space.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "octopus",
+    "ouroboros",
+    "ink"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.88,
+    "SPACE": 0.17
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.2,
+    "movement": 0.9,
+    "density": 0.73,
+    "space": 0.17,
+    "aggression": 0.91
+  },
+  "sonic_dna": {
+    "brightness": 0.6,
+    "warmth": 0.2,
+    "movement": 0.9,
+    "density": 0.73,
+    "space": 0.17,
+    "aggression": 0.91
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OCTOPUS",
+        "engineB": "OUROBOROS",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.88
+      }
+    ]
+  }
+}

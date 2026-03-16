@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "Ohm Sunrise Commune",
+  "mood": "Family",
+  "engines": [
+    "OHM"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OHM at peak commune \u2014 drone field maximum warmth, MEDDLING dissolved in space.",
+  "tags": [
+    "family",
+    "portrait",
+    "extreme-dna",
+    "warm",
+    "spatial",
+    "drone"
+  ],
+  "macroLabels": [
+    "COMMUNE",
+    "MEDDLING",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.94,
+    "movement": 0.38,
+    "density": 0.28,
+    "space": 0.82,
+    "aggression": 0.08
+  }
+}

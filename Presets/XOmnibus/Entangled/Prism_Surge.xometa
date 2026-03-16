@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Prism Surge",
+  "mood": "Entangled",
+  "engines": [
+    "OPTIC",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Optic luminance driven by Ouroboros topology \u2014 fractal light at kinetic velocity.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "optic",
+    "ouroboros",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.74,
+    "MOVEMENT": 0.91,
+    "COUPLING": 0.91,
+    "SPACE": 0.2
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.89,
+    "warmth": 0.1,
+    "movement": 0.91,
+    "density": 0.66,
+    "space": 0.2,
+    "aggression": 0.95
+  },
+  "sonic_dna": {
+    "brightness": 0.89,
+    "warmth": 0.1,
+    "movement": 0.91,
+    "density": 0.66,
+    "space": 0.2,
+    "aggression": 0.95
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OPTIC",
+        "engineB": "OUROBOROS",
+        "type": "CHAOS_INJECT",
+        "amount": 0.91
+      }
+    ]
+  }
+}

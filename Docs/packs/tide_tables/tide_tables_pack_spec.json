@@ -1,0 +1,1233 @@
+{
+  "pack_name": "TIDE TABLES",
+  "subtitle": "Three Engines. One Free Pack.",
+  "version": "1.0.0",
+  "release_date": "2026-03-16",
+  "format": "Akai MPC Expansion (.xpn)",
+  "license": "Free for personal and commercial use",
+  "engines": [
+    "ONSET",
+    "ODYSSEY",
+    "OPAL"
+  ],
+  "engine_colors": {
+    "ONSET": "#0066FF",
+    "ODYSSEY": "#7B2D8B",
+    "OPAL": "#A78BFA"
+  },
+  "programs": [
+    {
+      "program_name": "Coastal Drums",
+      "engine": "ONSET",
+      "engine_prefix": "perc_",
+      "description": "Eight synthesis voices — kick, snare, hats, clap, toms, perc, and two FX slots. ONSET's full kit in a single program. Start here.",
+      "pads": [
+        {
+          "pad": 1,
+          "name": "Kick Punch",
+          "preset": "perc_kick_solid",
+          "midi_note": 36,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 2,
+          "name": "Kick Deep",
+          "preset": "perc_kick_deep",
+          "midi_note": 37,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 3,
+          "name": "Snare Crack",
+          "preset": "perc_snare_crack",
+          "midi_note": 38,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 4,
+          "name": "Snare Brush",
+          "preset": "perc_snare_brush",
+          "midi_note": 39,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 5,
+          "name": "Closed Hat",
+          "preset": "perc_chat_tight",
+          "midi_note": 40,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 6,
+          "name": "Open Hat",
+          "preset": "perc_ohat_long",
+          "midi_note": 41,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 7,
+          "name": "Clap Classic",
+          "preset": "perc_clap_classic",
+          "midi_note": 42,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 8,
+          "name": "Clap Layer",
+          "preset": "perc_clap_layer",
+          "midi_note": 43,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 9,
+          "name": "Tom Low",
+          "preset": "perc_tom_low",
+          "midi_note": 44,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 10,
+          "name": "Tom Mid",
+          "preset": "perc_tom_mid",
+          "midi_note": 45,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 11,
+          "name": "Perc Rim",
+          "preset": "perc_perc_rim",
+          "midi_note": 46,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 12,
+          "name": "Perc Shaker",
+          "preset": "perc_perc_shaker",
+          "midi_note": 47,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 13,
+          "name": "FX Crash",
+          "preset": "perc_fx_crash",
+          "midi_note": 48,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 14,
+          "name": "FX Rise",
+          "preset": "perc_fx_rise",
+          "midi_note": 49,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 15,
+          "name": "FX Sweep",
+          "preset": "perc_fx_sweep",
+          "midi_note": 50,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 16,
+          "name": "FX Glitch",
+          "preset": "perc_fx_glitch",
+          "midi_note": 51,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        }
+      ],
+      "keygroup": {
+        "root_note": 36,
+        "velocity_layers": [
+          {
+            "low": 0,
+            "high": 63,
+            "label": "soft"
+          },
+          {
+            "low": 64,
+            "high": 100,
+            "label": "medium"
+          },
+          {
+            "low": 101,
+            "high": 127,
+            "label": "hard"
+          }
+        ],
+        "envelope": {
+          "attack": 0.001,
+          "decay": 0.15,
+          "sustain": 0.0,
+          "release": 0.08
+        }
+      },
+      "qlinks": [
+        {
+          "qlink": 1,
+          "label": "MACHINE",
+          "parameter": "perc_macroMachine",
+          "min": 0.0,
+          "max": 1.0,
+          "curve": "linear"
+        },
+        {
+          "qlink": 2,
+          "label": "PUNCH",
+          "parameter": "perc_macroPunch",
+          "min": 0.0,
+          "max": 1.0,
+          "curve": "linear"
+        },
+        {
+          "qlink": 3,
+          "label": "SPACE",
+          "parameter": "perc_macroSpace",
+          "min": 0.0,
+          "max": 1.0,
+          "curve": "linear"
+        },
+        {
+          "qlink": 4,
+          "label": "MUTATE",
+          "parameter": "perc_macroMutate",
+          "min": 0.0,
+          "max": 1.0,
+          "curve": "linear"
+        }
+      ],
+      "dna_vector": {
+        "brightness": 0.55,
+        "warmth": 0.45,
+        "movement": 0.7,
+        "density": 0.6,
+        "space": 0.4,
+        "aggression": 0.65
+      },
+      "variations": [
+        {
+          "name": "Shoreline Kit",
+          "mood_tags": [
+            "Foundation",
+            "Prism"
+          ],
+          "dna_delta": {
+            "movement": 0.75
+          }
+        },
+        {
+          "name": "Lagoon Breaks",
+          "mood_tags": [
+            "Atmosphere"
+          ],
+          "dna_delta": {
+            "space": 0.6
+          }
+        },
+        {
+          "name": "Reef Stomp",
+          "mood_tags": [
+            "Flux"
+          ],
+          "dna_delta": {
+            "aggression": 0.8
+          }
+        },
+        {
+          "name": "Tide Pool Snap",
+          "mood_tags": [
+            "Prism"
+          ],
+          "dna_delta": {
+            "brightness": 0.7
+          }
+        },
+        {
+          "name": "Rip Current",
+          "mood_tags": [
+            "Flux",
+            "Entangled"
+          ],
+          "dna_delta": {
+            "movement": 0.9,
+            "aggression": 0.75
+          }
+        },
+        {
+          "name": "Dawn Patrol",
+          "mood_tags": [
+            "Foundation",
+            "Atmosphere"
+          ],
+          "dna_delta": {
+            "warmth": 0.65
+          }
+        },
+        {
+          "name": "Surge Pocket",
+          "mood_tags": [
+            "Entangled"
+          ],
+          "dna_delta": {
+            "density": 0.8
+          }
+        },
+        {
+          "name": "Wash Out",
+          "mood_tags": [
+            "Aether"
+          ],
+          "dna_delta": {
+            "space": 0.8,
+            "aggression": 0.3
+          }
+        }
+      ]
+    },
+    {
+      "program_name": "Tide Lead",
+      "engine": "ODYSSEY",
+      "engine_prefix": "drift_",
+      "description": "ODYSSEY's wavetable-subtractive engine laid chromatically across 16 pads. Four tonal characters: Lead, Pad, Bass, Arp. Play melodies straight off the pads.",
+      "pads": [
+        {
+          "pad": 1,
+          "name": "Lead C3",
+          "preset": "drift_lead_bright",
+          "midi_note": 36,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 2,
+          "name": "Lead D3",
+          "preset": "drift_lead_mid",
+          "midi_note": 37,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 3,
+          "name": "Lead E3",
+          "preset": "drift_lead_warm",
+          "midi_note": 38,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 4,
+          "name": "Lead F3",
+          "preset": "drift_lead_edge",
+          "midi_note": 39,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 5,
+          "name": "Lead G3",
+          "preset": "drift_lead_hollow",
+          "midi_note": 40,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 6,
+          "name": "Lead A3",
+          "preset": "drift_lead_glass",
+          "midi_note": 41,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 7,
+          "name": "Lead B3",
+          "preset": "drift_lead_drive",
+          "midi_note": 42,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 8,
+          "name": "Pad C4",
+          "preset": "drift_pad_wide",
+          "midi_note": 43,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 9,
+          "name": "Pad D4",
+          "preset": "drift_pad_shimmer",
+          "midi_note": 44,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 10,
+          "name": "Pad E4",
+          "preset": "drift_pad_choir",
+          "midi_note": 45,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 11,
+          "name": "Pad F4",
+          "preset": "drift_pad_string",
+          "midi_note": 46,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 12,
+          "name": "Bass C3",
+          "preset": "drift_bass_deep",
+          "midi_note": 47,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 13,
+          "name": "Bass G2",
+          "preset": "drift_bass_sub",
+          "midi_note": 48,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 14,
+          "name": "Arp C4",
+          "preset": "drift_arp_fast",
+          "midi_note": 49,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 15,
+          "name": "Arp G4",
+          "preset": "drift_arp_gate",
+          "midi_note": 50,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 16,
+          "name": "Arp E4",
+          "preset": "drift_arp_rise",
+          "midi_note": 51,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        }
+      ],
+      "keygroup": {
+        "root_note": 60,
+        "velocity_layers": [
+          {
+            "low": 0,
+            "high": 89,
+            "label": "soft"
+          },
+          {
+            "low": 90,
+            "high": 127,
+            "label": "hard"
+          }
+        ],
+        "envelope": {
+          "attack": 0.008,
+          "decay": 0.3,
+          "sustain": 0.75,
+          "release": 0.35
+        }
+      },
+      "qlinks": [
+        {
+          "qlink": 1,
+          "label": "DRIFT",
+          "parameter": "drift_macroDrift",
+          "min": 0.0,
+          "max": 1.0,
+          "curve": "linear"
+        },
+        {
+          "qlink": 2,
+          "label": "DEPTH",
+          "parameter": "drift_macroDepth",
+          "min": 0.0,
+          "max": 1.0,
+          "curve": "linear"
+        },
+        {
+          "qlink": 3,
+          "label": "WAVE",
+          "parameter": "drift_macroWave",
+          "min": 0.0,
+          "max": 1.0,
+          "curve": "linear"
+        },
+        {
+          "qlink": 4,
+          "label": "ECHO",
+          "parameter": "drift_macroEcho",
+          "min": 0.0,
+          "max": 1.0,
+          "curve": "linear"
+        }
+      ],
+      "dna_vector": {
+        "brightness": 0.65,
+        "warmth": 0.5,
+        "movement": 0.55,
+        "density": 0.4,
+        "space": 0.55,
+        "aggression": 0.35
+      },
+      "variations": [
+        {
+          "name": "Biolume Lead",
+          "mood_tags": [
+            "Atmosphere"
+          ],
+          "dna_delta": {
+            "brightness": 0.8
+          }
+        },
+        {
+          "name": "Salt Flat Pulse",
+          "mood_tags": [
+            "Prism"
+          ],
+          "dna_delta": {
+            "movement": 0.75
+          }
+        },
+        {
+          "name": "Kelp Forest Pad",
+          "mood_tags": [
+            "Atmosphere",
+            "Aether"
+          ],
+          "dna_delta": {
+            "space": 0.75,
+            "density": 0.55
+          }
+        },
+        {
+          "name": "Surge Bass",
+          "mood_tags": [
+            "Foundation"
+          ],
+          "dna_delta": {
+            "warmth": 0.7,
+            "aggression": 0.55
+          }
+        },
+        {
+          "name": "Coral Arp",
+          "mood_tags": [
+            "Flux"
+          ],
+          "dna_delta": {
+            "movement": 0.85
+          }
+        },
+        {
+          "name": "Drift Tone",
+          "mood_tags": [
+            "Aether"
+          ],
+          "dna_delta": {
+            "brightness": 0.5,
+            "space": 0.7
+          }
+        },
+        {
+          "name": "Undertow Dark",
+          "mood_tags": [
+            "Entangled"
+          ],
+          "dna_delta": {
+            "warmth": 0.3,
+            "aggression": 0.6
+          }
+        },
+        {
+          "name": "Open Horizon",
+          "mood_tags": [
+            "Foundation",
+            "Prism"
+          ],
+          "dna_delta": {
+            "brightness": 0.7,
+            "space": 0.6
+          }
+        }
+      ]
+    },
+    {
+      "program_name": "Shore Texture",
+      "engine": "OPAL",
+      "engine_prefix": "opal_",
+      "description": "OPAL's granular engine across six texture categories — Cloud, Scatter, Freeze, Pitched, Motion, Stutter. Each in two contrasting flavors. Atmosphere in 16 pads.",
+      "pads": [
+        {
+          "pad": 1,
+          "name": "Cloud Bright",
+          "preset": "opal_cloud_bright",
+          "midi_note": 36,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 2,
+          "name": "Cloud Dark",
+          "preset": "opal_cloud_dark",
+          "midi_note": 37,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 3,
+          "name": "Scatter Fast",
+          "preset": "opal_scatter_fast",
+          "midi_note": 38,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 4,
+          "name": "Scatter Slow",
+          "preset": "opal_scatter_slow",
+          "midi_note": 39,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 5,
+          "name": "Freeze High",
+          "preset": "opal_freeze_high",
+          "midi_note": 40,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 6,
+          "name": "Freeze Low",
+          "preset": "opal_freeze_low",
+          "midi_note": 41,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 7,
+          "name": "Pitched Rise",
+          "preset": "opal_pitched_rise",
+          "midi_note": 42,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 8,
+          "name": "Pitched Fall",
+          "preset": "opal_pitched_fall",
+          "midi_note": 43,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 9,
+          "name": "Motion Fast",
+          "preset": "opal_motion_fast",
+          "midi_note": 44,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 10,
+          "name": "Motion Slow",
+          "preset": "opal_motion_slow",
+          "midi_note": 45,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 11,
+          "name": "Stutter Hard",
+          "preset": "opal_stutter_hard",
+          "midi_note": 46,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 12,
+          "name": "Stutter Soft",
+          "preset": "opal_stutter_soft",
+          "midi_note": 47,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 13,
+          "name": "Foam",
+          "preset": "opal_texture_foam",
+          "midi_note": 48,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 14,
+          "name": "Surge",
+          "preset": "opal_texture_surge",
+          "midi_note": 49,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 15,
+          "name": "Undertow",
+          "preset": "opal_texture_under",
+          "midi_note": 50,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 16,
+          "name": "Spray",
+          "preset": "opal_texture_spray",
+          "midi_note": 51,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        }
+      ],
+      "keygroup": {
+        "root_note": 60,
+        "velocity_layers": [
+          {
+            "low": 0,
+            "high": 70,
+            "label": "breath"
+          },
+          {
+            "low": 71,
+            "high": 127,
+            "label": "full"
+          }
+        ],
+        "envelope": {
+          "attack": 0.12,
+          "decay": 0.8,
+          "sustain": 0.6,
+          "release": 1.2
+        }
+      },
+      "qlinks": [
+        {
+          "qlink": 1,
+          "label": "DENSITY",
+          "parameter": "opal_macroDensity",
+          "min": 0.0,
+          "max": 1.0,
+          "curve": "linear"
+        },
+        {
+          "qlink": 2,
+          "label": "SIZE",
+          "parameter": "opal_macroSize",
+          "min": 0.0,
+          "max": 1.0,
+          "curve": "linear"
+        },
+        {
+          "qlink": 3,
+          "label": "POSITION",
+          "parameter": "opal_macroPosition",
+          "min": 0.0,
+          "max": 1.0,
+          "curve": "linear"
+        },
+        {
+          "qlink": 4,
+          "label": "SCATTER",
+          "parameter": "opal_macroScatter",
+          "min": 0.0,
+          "max": 1.0,
+          "curve": "linear"
+        }
+      ],
+      "dna_vector": {
+        "brightness": 0.5,
+        "warmth": 0.55,
+        "movement": 0.6,
+        "density": 0.7,
+        "space": 0.75,
+        "aggression": 0.2
+      },
+      "variations": [
+        {
+          "name": "Sea Glass Cloud",
+          "mood_tags": [
+            "Atmosphere",
+            "Aether"
+          ],
+          "dna_delta": {
+            "brightness": 0.65,
+            "density": 0.55
+          }
+        },
+        {
+          "name": "Tidal Scatter",
+          "mood_tags": [
+            "Flux"
+          ],
+          "dna_delta": {
+            "movement": 0.8
+          }
+        },
+        {
+          "name": "Ice Freeze",
+          "mood_tags": [
+            "Atmosphere"
+          ],
+          "dna_delta": {
+            "brightness": 0.75,
+            "warmth": 0.3
+          }
+        },
+        {
+          "name": "Warm Grain Pitch",
+          "mood_tags": [
+            "Foundation"
+          ],
+          "dna_delta": {
+            "warmth": 0.7
+          }
+        },
+        {
+          "name": "Storm Motion",
+          "mood_tags": [
+            "Entangled",
+            "Flux"
+          ],
+          "dna_delta": {
+            "movement": 0.9,
+            "aggression": 0.5
+          }
+        },
+        {
+          "name": "Drift Stutter",
+          "mood_tags": [
+            "Prism"
+          ],
+          "dna_delta": {
+            "brightness": 0.6,
+            "movement": 0.7
+          }
+        },
+        {
+          "name": "Shore Mist",
+          "mood_tags": [
+            "Aether"
+          ],
+          "dna_delta": {
+            "density": 0.45,
+            "space": 0.85
+          }
+        },
+        {
+          "name": "Abyssal Freeze",
+          "mood_tags": [
+            "Entangled"
+          ],
+          "dna_delta": {
+            "warmth": 0.25,
+            "space": 0.9
+          }
+        }
+      ]
+    },
+    {
+      "program_name": "Deep Water",
+      "engine": "ONSET + ODYSSEY + OPAL",
+      "engine_prefix": "multi",
+      "mood": "Entangled",
+      "description": "All three engines in one program. Pads 1–4 are ONSET rhythm. Pads 5–8 are ODYSSEY harmony. Pads 9–12 are OPAL texture. Pads 13–16 are coupled performance pads where engines cross-modulate. No engine operates alone.",
+      "pads": [
+        {
+          "pad": 1,
+          "name": "DW Kick",
+          "preset": "perc_kick_deep",
+          "midi_note": 36,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 2,
+          "name": "DW Snare",
+          "preset": "perc_snare_crack",
+          "midi_note": 37,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 3,
+          "name": "DW Hat",
+          "preset": "perc_chat_tight",
+          "midi_note": 38,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 4,
+          "name": "DW Clap",
+          "preset": "perc_clap_classic",
+          "midi_note": 39,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 5,
+          "name": "DW Lead C",
+          "preset": "drift_lead_warm",
+          "midi_note": 48,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 6,
+          "name": "DW Lead F",
+          "preset": "drift_lead_hollow",
+          "midi_note": 53,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 7,
+          "name": "DW Pad C",
+          "preset": "drift_pad_wide",
+          "midi_note": 60,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 8,
+          "name": "DW Bass C",
+          "preset": "drift_bass_deep",
+          "midi_note": 36,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 9,
+          "name": "DW Cloud",
+          "preset": "opal_cloud_dark",
+          "midi_note": 60,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 10,
+          "name": "DW Freeze",
+          "preset": "opal_freeze_low",
+          "midi_note": 60,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 11,
+          "name": "DW Motion",
+          "preset": "opal_motion_slow",
+          "midi_note": 60,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 12,
+          "name": "DW Scatter",
+          "preset": "opal_scatter_slow",
+          "midi_note": 60,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single"
+        },
+        {
+          "pad": 13,
+          "name": "DW Surge",
+          "preset": "entangled_surge",
+          "midi_note": 60,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "ONSET→OPAL coupling; drum hits scatter grains"
+        },
+        {
+          "pad": 14,
+          "name": "DW Entangle",
+          "preset": "entangled_mesh",
+          "midi_note": 62,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "ODYSSEY→ONSET coupling; pitch gates rhythm"
+        },
+        {
+          "pad": 15,
+          "name": "DW Tide",
+          "preset": "entangled_tide",
+          "midi_note": 64,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Tempo-synced LFO sweeps all three engines"
+        },
+        {
+          "pad": 16,
+          "name": "DW Release",
+          "preset": "entangled_release",
+          "midi_note": 65,
+          "velocity_low": 0,
+          "velocity_high": 127,
+          "layer_mode": "single",
+          "notes": "Full open — all engines breathe together"
+        }
+      ],
+      "keygroup": {
+        "root_note": 60,
+        "velocity_layers": [
+          {
+            "low": 0,
+            "high": 80,
+            "label": "submerged"
+          },
+          {
+            "low": 81,
+            "high": 127,
+            "label": "surfacing"
+          }
+        ],
+        "envelope": {
+          "attack": 0.05,
+          "decay": 0.5,
+          "sustain": 0.7,
+          "release": 0.8
+        }
+      },
+      "qlinks": [
+        {
+          "qlink": 1,
+          "label": "DRIVE",
+          "parameter": "global_macroDrive",
+          "min": 0.0,
+          "max": 1.0,
+          "curve": "exponential"
+        },
+        {
+          "qlink": 2,
+          "label": "SPACE",
+          "parameter": "global_macroSpace",
+          "min": 0.0,
+          "max": 1.0,
+          "curve": "linear"
+        },
+        {
+          "qlink": 3,
+          "label": "ENTANGLE",
+          "parameter": "global_macroEntangle",
+          "min": 0.0,
+          "max": 1.0,
+          "curve": "linear"
+        },
+        {
+          "qlink": 4,
+          "label": "TIDE",
+          "parameter": "global_macroTide",
+          "min": 0.0,
+          "max": 1.0,
+          "curve": "linear"
+        }
+      ],
+      "dna_vector": {
+        "brightness": 0.45,
+        "warmth": 0.5,
+        "movement": 0.65,
+        "density": 0.75,
+        "space": 0.8,
+        "aggression": 0.4
+      },
+      "variations": [
+        {
+          "name": "Midnight Trench",
+          "mood_tags": [
+            "Entangled",
+            "Aether"
+          ],
+          "dna_delta": {
+            "brightness": 0.2,
+            "space": 0.95
+          }
+        },
+        {
+          "name": "Shallow Reef",
+          "mood_tags": [
+            "Foundation"
+          ],
+          "dna_delta": {
+            "brightness": 0.65,
+            "density": 0.55
+          }
+        },
+        {
+          "name": "Current Break",
+          "mood_tags": [
+            "Flux"
+          ],
+          "dna_delta": {
+            "movement": 0.85,
+            "aggression": 0.6
+          }
+        },
+        {
+          "name": "Still Water",
+          "mood_tags": [
+            "Atmosphere",
+            "Aether"
+          ],
+          "dna_delta": {
+            "movement": 0.3,
+            "space": 0.85
+          }
+        },
+        {
+          "name": "Thermal Rise",
+          "mood_tags": [
+            "Prism"
+          ],
+          "dna_delta": {
+            "warmth": 0.75,
+            "brightness": 0.6
+          }
+        },
+        {
+          "name": "Storm Front",
+          "mood_tags": [
+            "Flux",
+            "Entangled"
+          ],
+          "dna_delta": {
+            "aggression": 0.8,
+            "movement": 0.9
+          }
+        },
+        {
+          "name": "Bioluminescent",
+          "mood_tags": [
+            "Prism",
+            "Atmosphere"
+          ],
+          "dna_delta": {
+            "brightness": 0.8,
+            "density": 0.6
+          }
+        },
+        {
+          "name": "The Deep",
+          "mood_tags": [
+            "Family"
+          ],
+          "dna_delta": {
+            "warmth": 0.45,
+            "space": 1.0,
+            "aggression": 0.15
+          }
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "description": "TIDE TABLES is a free gateway pack for the XO_OX synthesizer library. Three flagship engines — ONSET (drums), ODYSSEY (leads/pads), OPAL (textures/granular) — assembled into four programs that work together or alone. No samples. Every sound is synthesized in real time.",
+    "tags": [
+      "free",
+      "gateway",
+      "drums",
+      "leads",
+      "pads",
+      "granular",
+      "synthesis",
+      "XO_OX"
+    ],
+    "url": "https://xo-ox.org"
+  }
+}

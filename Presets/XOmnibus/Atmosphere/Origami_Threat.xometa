@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Origami Threat",
+  "mood": "Atmosphere",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
+  "version": "1.0.0",
+  "description": "Six layers at low symmetry \u2014 odd harmonics dominate, creating edge and dissonance. High fold amount folds the wave sharply. Not violent but wrong. Paper folding against its grain.",
+  "tags": [
+    "atmosphere",
+    "tense",
+    "origami",
+    "threat",
+    "odd-harmonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "FOLD",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldPoint": 0.35,
+      "origami_foldAmt": 0.78,
+      "origami_layers": 6,
+      "origami_symmetry": 0.18,
+      "origami_filterCutoff": 0.58,
+      "origami_filterReso": 0.42,
+      "origami_oscPitch": 0.0,
+      "origami_ampAttack": 0.6,
+      "origami_ampDecay": 0.8,
+      "origami_ampSustain": 0.75,
+      "origami_ampRelease": 3.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.28,
+    "movement": 0.58,
+    "density": 0.82,
+    "space": 0.55,
+    "aggression": 0.45
+  }
+}

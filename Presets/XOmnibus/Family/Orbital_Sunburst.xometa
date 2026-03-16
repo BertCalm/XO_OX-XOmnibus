@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "Orbital Sunburst",
+  "mood": "Family",
+  "engines": [
+    "ORBITAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ORBITAL resonance at maximum \u2014 the orbit closest to the star, pure radiant spin.",
+  "tags": [
+    "family",
+    "portrait",
+    "extreme-dna",
+    "bright",
+    "resonant",
+    "orbital"
+  ],
+  "macroLabels": [
+    "SPIN",
+    "RESONANCE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.87,
+    "warmth": 0.55,
+    "movement": 0.82,
+    "density": 0.25,
+    "space": 0.8,
+    "aggression": 0.2
+  }
+}

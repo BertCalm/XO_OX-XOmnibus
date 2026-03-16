@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "Octopus All Arms",
+  "mood": "Family",
+  "engines": [
+    "OCTOPUS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OCTOPUS 8 arms simultaneously \u2014 maximum CA density, full aggressive Wolfram field.",
+  "tags": [
+    "family",
+    "portrait",
+    "extreme-dna",
+    "dense",
+    "aggressive",
+    "chaotic"
+  ],
+  "macroLabels": [
+    "ARM",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.35,
+    "movement": 0.92,
+    "density": 0.87,
+    "space": 0.2,
+    "aggression": 0.84
+  }
+}

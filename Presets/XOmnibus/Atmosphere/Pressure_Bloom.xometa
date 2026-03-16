@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Pressure Bloom",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Thick, heavy environment. Maximum density, warm compression. ORACLE dense register.",
+  "tags": [
+    "atmosphere",
+    "dense",
+    "extreme",
+    "heavy",
+    "warm",
+    "thick"
+  ],
+  "macroLabels": [
+    "VISION",
+    "FLOW",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.317,
+    "warmth": 0.66,
+    "movement": 0.205,
+    "density": 0.808,
+    "space": 0.532,
+    "aggression": 0.269
+  },
+  "parameters": {
+    "ORACLE": {
+      "vision": 0.375,
+      "flow": 0.205,
+      "coupling": 0.13,
+      "space": 0.558
+    }
+  },
+  "macros": {
+    "VISION": 0.375,
+    "FLOW": 0.205,
+    "COUPLING": 0.13,
+    "SPACE": 0.558
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

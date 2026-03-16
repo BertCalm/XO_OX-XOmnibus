@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Optic Storm Cell",
+  "mood": "Atmosphere",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
+  "version": "1.0.0",
+  "description": "High reactivity, evolving pulse at charged rate. Visual feedback approaching saturation. Not noise yet \u2014 the system is still coherent. Inside the storm cell before it collapses.",
+  "tags": [
+    "atmosphere",
+    "charged",
+    "optic",
+    "storm-cell",
+    "electric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.78,
+      "optic_inputGain": 1.0,
+      "optic_autoPulse": 1,
+      "optic_pulseRate": 0.62,
+      "optic_pulseShape": 0.58,
+      "optic_pulseSwing": 0.28,
+      "optic_pulseEvolve": 0.72,
+      "optic_pulseSubdiv": 0.68,
+      "optic_pulseAccent": 0.75,
+      "optic_modDepth": 0.82,
+      "optic_modMixPulse": 0.72,
+      "optic_modMixSpec": 0.65,
+      "optic_vizMode": 3,
+      "optic_vizFeedback": 0.78,
+      "optic_vizSpeed": 0.72,
+      "optic_vizIntensity": 0.82
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.15,
+    "movement": 0.78,
+    "density": 0.72,
+    "space": 0.62,
+    "aggression": 0.65
+  }
+}

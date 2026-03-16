@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Orca Frost",
+  "mood": "Entangled",
+  "engines": [
+    "OBSIDIAN",
+    "ORCA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orca echolocation pulse beneath Obsidian crystal density \u2014 deep cold with predator velocity.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "obsidian",
+    "orca",
+    "frost"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.93,
+    "MOVEMENT": 0.68,
+    "COUPLING": 0.93,
+    "SPACE": 0.08
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.1,
+    "movement": 0.68,
+    "density": 0.92,
+    "space": 0.08,
+    "aggression": 0.97
+  },
+  "sonic_dna": {
+    "brightness": 0.08,
+    "warmth": 0.1,
+    "movement": 0.68,
+    "density": 0.92,
+    "space": 0.08,
+    "aggression": 0.97
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBSIDIAN",
+        "engineB": "ORCA",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.93
+      }
+    ]
+  }
+}

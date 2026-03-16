@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Jet Stream Pulse",
+  "mood": "Atmosphere",
+  "engines": [
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Weather system in motion. High movement, active aggression. OUROBOROS kinetic register.",
+  "tags": [
+    "atmosphere",
+    "kinetic",
+    "extreme",
+    "movement",
+    "weather",
+    "dynamic"
+  ],
+  "macroLabels": [
+    "CYCLE",
+    "TENSION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.41,
+    "warmth": 0.504,
+    "movement": 0.908,
+    "density": 0.525,
+    "space": 0.493,
+    "aggression": 0.502
+  },
+  "parameters": {
+    "OUROBOROS": {
+      "cycle": 0.503,
+      "tension": 0.865,
+      "coupling": 0.151,
+      "space": 0.477
+    }
+  },
+  "macros": {
+    "CYCLE": 0.503,
+    "TENSION": 0.865,
+    "COUPLING": 0.151,
+    "SPACE": 0.477
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Double Fang",
+  "mood": "Entangled",
+  "engines": [
+    "OVERBITE",
+    "OBESE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Both BITE and MOJO maxed and coupled \u2014 double bite architecture at total density.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "overbite",
+    "obese",
+    "double-fang"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.93,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.85,
+    "SPACE": 0.08
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.38,
+    "movement": 0.62,
+    "density": 0.9,
+    "space": 0.08,
+    "aggression": 0.91
+  },
+  "sonic_dna": {
+    "brightness": 0.55,
+    "warmth": 0.38,
+    "movement": 0.62,
+    "density": 0.9,
+    "space": 0.08,
+    "aggression": 0.91
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERBITE",
+        "engineB": "OBESE",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.85
+      }
+    ]
+  }
+}

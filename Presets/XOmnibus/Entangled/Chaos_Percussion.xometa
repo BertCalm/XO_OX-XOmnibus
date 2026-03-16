@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Chaos Percussion",
+  "mood": "Entangled",
+  "engines": [
+    "OBESE",
+    "ONSET"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Onset drum voices timbral-warped by OBESE saturation \u2014 percussion with infinite harmonic weight.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "dense",
+    "obese",
+    "onset",
+    "percussion"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.76,
+    "COUPLING": 0.88,
+    "SPACE": 0.06
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.25,
+    "movement": 0.76,
+    "density": 0.92,
+    "space": 0.06,
+    "aggression": 0.94
+  },
+  "sonic_dna": {
+    "brightness": 0.65,
+    "warmth": 0.25,
+    "movement": 0.76,
+    "density": 0.92,
+    "space": 0.06,
+    "aggression": 0.94
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBESE",
+        "engineB": "ONSET",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.88
+      }
+    ]
+  }
+}

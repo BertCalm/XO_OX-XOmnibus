@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Forgotten Cave System",
+  "mood": "Atmosphere",
+  "engines": [
+    "OCEANIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Shadowy environmental texture. Low brightness, expansive space. OCEANIC in void register.",
+  "tags": [
+    "atmosphere",
+    "dark",
+    "extreme",
+    "shadowy",
+    "environmental",
+    "deep"
+  ],
+  "macroLabels": [
+    "TIDE",
+    "DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.061,
+    "warmth": 0.538,
+    "movement": 0.338,
+    "density": 0.427,
+    "space": 0.616,
+    "aggression": 0.126
+  },
+  "parameters": {
+    "OCEANIC": {
+      "tide": 0.275,
+      "depth": 0.37,
+      "coupling": 0.488,
+      "space": 0.688
+    }
+  },
+  "macros": {
+    "TIDE": 0.275,
+    "DEPTH": 0.37,
+    "COUPLING": 0.488,
+    "SPACE": 0.688
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

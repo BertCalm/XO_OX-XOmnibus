@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Phosphor Topology",
+  "mood": "Entangled",
+  "engines": [
+    "OBLONG",
+    "OPTIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bob's warmth timbral-warped by Optic luminance modulation \u2014 amber light at brutal intensity.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "oblong",
+    "optic",
+    "phosphor"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.74,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.83,
+    "SPACE": 0.2
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.28,
+    "movement": 0.72,
+    "density": 0.7,
+    "space": 0.2,
+    "aggression": 0.89
+  },
+  "sonic_dna": {
+    "brightness": 0.86,
+    "warmth": 0.28,
+    "movement": 0.72,
+    "density": 0.7,
+    "space": 0.2,
+    "aggression": 0.89
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBLONG",
+        "engineB": "OPTIC",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.83
+      }
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Deep Time",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
+  "version": "1.0.0",
+  "description": "ERA triangle at NES corner \u2014 pure chip warmth with zero glitch. Eight voices spread wide, detuned minimally. Movement comes from era drift: geological, not rhythmic.",
+  "tags": [
+    "atmosphere",
+    "calm",
+    "overworld",
+    "era",
+    "deep-time"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_eraBalance": 0.15,
+      "ow_voiceCount": 8,
+      "ow_spread": 0.82,
+      "ow_detune": 0.12,
+      "ow_filterCutoff": 0.38,
+      "ow_filterReso": 0.08,
+      "ow_glitchRate": 0.0,
+      "ow_glitchDepth": 0.0,
+      "ow_glitchType": 0,
+      "ow_ampAttack": 2.5,
+      "ow_ampDecay": 1.5,
+      "ow_ampSustain": 0.88,
+      "ow_ampRelease": 8.0,
+      "ow_reverbMix": 0.72,
+      "ow_macroCharacter": 0.0,
+      "ow_macroMovement": 0.0,
+      "ow_macroCoupling": 0.0,
+      "ow_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.72,
+    "movement": 0.75,
+    "density": 0.85,
+    "space": 0.88,
+    "aggression": 0.09
+  }
+}

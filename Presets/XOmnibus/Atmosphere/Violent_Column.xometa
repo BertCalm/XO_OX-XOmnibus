@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Violent Column",
+  "mood": "Atmosphere",
+  "engines": [
+    "OUTWIT"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Storm and pressure atmosphere. Maximum aggression, kinetic density. OUTWIT aggressive register.",
+  "tags": [
+    "atmosphere",
+    "aggressive",
+    "extreme",
+    "storm",
+    "pressure",
+    "fierce"
+  ],
+  "macroLabels": [
+    "CUNNING",
+    "REFLEX",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.378,
+    "warmth": 0.432,
+    "movement": 0.663,
+    "density": 0.569,
+    "space": 0.49,
+    "aggression": 0.819
+  },
+  "parameters": {
+    "OUTWIT": {
+      "cunning": 0.8,
+      "reflex": 0.812,
+      "coupling": 0.312,
+      "space": 0.481
+    }
+  },
+  "macros": {
+    "CUNNING": 0.8,
+    "REFLEX": 0.812,
+    "COUPLING": 0.312,
+    "SPACE": 0.481
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

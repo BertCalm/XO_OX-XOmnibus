@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Mineral Haze",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORIGAMI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Thick, heavy environment. Maximum density, warm compression. ORIGAMI dense register.",
+  "tags": [
+    "atmosphere",
+    "dense",
+    "extreme",
+    "heavy",
+    "warm",
+    "thick"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "TENSION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "dna": {
+    "brightness": 0.338,
+    "warmth": 0.573,
+    "movement": 0.448,
+    "density": 0.937,
+    "space": 0.388,
+    "aggression": 0.179
+  },
+  "parameters": {
+    "ORIGAMI": {
+      "fold": 0.287,
+      "tension": 0.473,
+      "coupling": 0.387,
+      "space": 0.39
+    }
+  },
+  "macros": {
+    "FOLD": 0.287,
+    "TENSION": 0.473,
+    "COUPLING": 0.387,
+    "SPACE": 0.39
+  },
+  "couplingIntensity": "None",
+  "coupling": {
+    "pairs": []
+  }
+}

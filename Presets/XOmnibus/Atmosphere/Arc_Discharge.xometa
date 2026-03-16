@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Arc Discharge",
+  "mood": "Atmosphere",
+  "engines": [
+    "Orca"
+  ],
+  "author": "XO_OX Designs \u2014 Atmosphere Aggression Expander 2026-03-16",
+  "version": "1.0.0",
+  "description": "High filter resonance approaching self-oscillation, drive creating harmonic multiplication. LFO sweeps aggressively. An electric arc that shapes into atmosphere only via the reverb tail.",
+  "tags": [
+    "atmosphere",
+    "charged",
+    "orca",
+    "arc",
+    "discharge"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orca": {
+      "orca_filterCutoff": 0.82,
+      "orca_filterReso": 0.78,
+      "orca_drive": 0.65,
+      "orca_lfoRate": 0.45,
+      "orca_lfoDepth": 0.85,
+      "orca_echoDelay": 0.42,
+      "orca_echoFeedback": 0.68,
+      "orca_reverbMix": 0.52,
+      "orca_ampAttack": 0.15,
+      "orca_ampDecay": 0.8,
+      "orca_ampSustain": 0.58,
+      "orca_ampRelease": 3.0,
+      "orca_macroCharacter": 0.0,
+      "orca_macroMovement": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.18,
+    "movement": 0.72,
+    "density": 0.78,
+    "space": 0.58,
+    "aggression": 0.7
+  }
+}

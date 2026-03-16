@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Neon Perc Surge",
+  "mood": "Entangled",
+  "engines": [
+    "OVERWORLD",
+    "OBLIQUE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Overworld chip timbral-warped by Oblique prism \u2014 neon spectrum through bounced geometry.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "bright",
+    "overworld",
+    "oblique",
+    "neon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8,
+    "MOVEMENT": 0.84,
+    "COUPLING": 0.85,
+    "SPACE": 0.2
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.89,
+    "warmth": 0.1,
+    "movement": 0.84,
+    "density": 0.7,
+    "space": 0.2,
+    "aggression": 0.91
+  },
+  "sonic_dna": {
+    "brightness": 0.89,
+    "warmth": 0.1,
+    "movement": 0.84,
+    "density": 0.7,
+    "space": 0.2,
+    "aggression": 0.91
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERWORLD",
+        "engineB": "OBLIQUE",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.85
+      }
+    ]
+  }
+}

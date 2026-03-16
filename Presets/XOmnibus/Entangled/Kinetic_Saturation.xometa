@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Kinetic Saturation",
+  "mood": "Entangled",
+  "engines": [
+    "OCTOPUS",
+    "OBESE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Octopus arm timbre warped by OBESE saturation \u2014 kinetic intelligence at full harmonic load.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "movement",
+    "octopus",
+    "obese",
+    "kinetic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.86,
+    "SPACE": 0.15
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.28,
+    "movement": 0.85,
+    "density": 0.79,
+    "space": 0.15,
+    "aggression": 0.91
+  },
+  "sonic_dna": {
+    "brightness": 0.62,
+    "warmth": 0.28,
+    "movement": 0.85,
+    "density": 0.79,
+    "space": 0.15,
+    "aggression": 0.91
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OCTOPUS",
+        "engineB": "OBESE",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.86
+      }
+    ]
+  }
+}

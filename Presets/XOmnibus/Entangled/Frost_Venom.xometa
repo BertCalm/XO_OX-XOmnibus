@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Frost Venom",
+  "mood": "Entangled",
+  "engines": [
+    "OBSIDIAN",
+    "OVERBITE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Overbite BITE timbral-warping Obsidian crystal \u2014 fang at absolute zero.",
+  "tags": [
+    "entangled",
+    "brutal",
+    "cold",
+    "obsidian",
+    "overbite",
+    "frost"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.92,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.91,
+    "SPACE": 0.1
+  },
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.11,
+    "warmth": 0.13,
+    "movement": 0.6,
+    "density": 0.91,
+    "space": 0.1,
+    "aggression": 0.95
+  },
+  "sonic_dna": {
+    "brightness": 0.11,
+    "warmth": 0.13,
+    "movement": 0.6,
+    "density": 0.91,
+    "space": 0.1,
+    "aggression": 0.95
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBSIDIAN",
+        "engineB": "OVERBITE",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.91
+      }
+    ]
+  }
+}
