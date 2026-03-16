@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Stiffness Dark",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Obsidian"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Obscura \u00d7 Obsidian coupling (amplitude sidechain). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "obscura",
+    "obsidian",
+    "amplitude-sidechain",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": 120,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_stiffness": 0.46,
+      "obscura_graininess": 0.481,
+      "obscura_exposure": 0.494,
+      "obscura_latentDepth": 0.739,
+      "obscura_silverTone": 0.563,
+      "obscura_macro1": 0.497,
+      "obscura_macro2": 0.425,
+      "obscura_macro3": 0.379,
+      "obscura_macro4": 0.485,
+      "obscura_couplingOut": 0.746
+    },
+    "Obsidian": {
+      "obsidian_macro1": 0.668,
+      "obsidian_macro2": 0.604,
+      "obsidian_macro3": 0.44,
+      "obsidian_macro4": 0.633,
+      "obsidian_couplingOut": 0.636,
+      "obsidian_couplingIn": 0.485
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Obsidian",
+        "type": "spectral_cross",
+        "amount": 0.734
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.358,
+    "warmth": 0.503,
+    "movement": 0.309,
+    "density": 0.649,
+    "space": 0.556,
+    "aggression": 0.3
+  }
+}

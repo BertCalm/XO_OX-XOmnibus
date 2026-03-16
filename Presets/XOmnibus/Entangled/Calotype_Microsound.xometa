@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Calotype Microsound",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Orphica"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Obscura \u00d7 Orphica coupling (filter modulation). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "obscura",
+    "orphica",
+    "filter-modulation",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": 125,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_stiffness": 0.314,
+      "obscura_graininess": 0.674,
+      "obscura_exposure": 0.89,
+      "obscura_latentDepth": 0.218,
+      "obscura_silverTone": 0.688,
+      "obscura_macro1": 0.559,
+      "obscura_macro2": 0.665,
+      "obscura_macro3": 0.616,
+      "obscura_macro4": 0.415,
+      "obscura_couplingOut": 0.546
+    },
+    "Orphica": {
+      "orph_macro1": 0.304,
+      "orph_macro2": 0.508,
+      "orph_macro3": 0.655,
+      "orph_macro4": 0.636,
+      "orph_couplingOut": 0.595,
+      "orph_couplingIn": 0.455
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Orphica",
+        "type": "filter_modulation",
+        "amount": 0.652
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.649,
+    "warmth": 0.462,
+    "movement": 0.508,
+    "density": 0.546,
+    "space": 0.662,
+    "aggression": 0.216
+  }
+}

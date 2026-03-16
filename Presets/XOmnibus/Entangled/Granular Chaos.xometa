@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Granular Chaos",
+  "mood": "Entangled",
+  "engines": [
+    "Ouroboros",
+    "Opal"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Grain size and position modulated by Ouroboros' attractor coordinates. Clouds form strange shapes.",
+  "tags": [
+    "granular",
+    "clouds",
+    "chaos",
+    "entangled",
+    "ouroboros",
+    "opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.65,
+    "SPACE": 0.5
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 1,
+      "ouro_rate": 75.0,
+      "ouro_chaosIndex": 0.5,
+      "ouro_leash": 0.4,
+      "ouro_theta": 0.0,
+      "ouro_phi": 0.35,
+      "ouro_damping": 0.4,
+      "ouro_injection": 0.0
+    },
+    "Opal": {
+      "opal_grainSize": 0.5,
+      "opal_density": 0.6,
+      "opal_pitch": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Opal",
+        "type": "LFO->LFO",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.515,
+    "warmth": 0.46,
+    "movement": 0.805,
+    "density": 0.685,
+    "space": 0.445,
+    "aggression": 0.63
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Tidal Table",
+  "mood": "Entangled",
+  "engines": [
+    "OSPREY",
+    "OSTERIA",
+    "OCEANIC"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Tidal surge shapes the osprey's dive; the shore feast follows the tide's schedule.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "shore",
+    "tidal",
+    "coastal",
+    "warmth"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.7,
+    "SPACE": 0.55
+  },
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.595,
+    "warmth": 0.662,
+    "movement": 0.555,
+    "density": 0.555,
+    "space": 0.627,
+    "aggression": 0.318
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OCEANIC",
+        "engineB": "OSPREY",
+        "type": "Env->Morph",
+        "amount": 0.7
+      },
+      {
+        "engineA": "OSPREY",
+        "engineB": "OSTERIA",
+        "type": "Audio->Filter",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Sub Skin",
+  "mood": "Foundation",
+  "engines": [
+    "Oblong"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Close-miked oblong presence. Dry and immediate \u2014 space locked at 0.00. No reverb needed. The room is your ears.",
+  "tags": [
+    "foundation",
+    "intimate",
+    "dry",
+    "close",
+    "present",
+    "oblong",
+    "anechoic"
+  ],
+  "macroLabels": [
+    "ACID SWEEP",
+    "RESONANCE",
+    "DRIVE",
+    "MOTION"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.415,
+    "warmth": 0.531,
+    "movement": 0.253,
+    "density": 0.72,
+    "space": 0.003,
+    "aggression": 0.543
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_oscA_wave": 3,
+      "bob_oscA_shape": 0.332,
+      "bob_oscA_tune": -12,
+      "bob_oscA_drift": 0.05,
+      "bob_oscB_wave": 3,
+      "bob_oscB_detune": 12.1,
+      "bob_oscB_blend": 0.632,
+      "bob_oscB_sync": 0,
+      "bob_oscB_fm": 0.163,
+      "bob_texMode": 1,
+      "bob_texLevel": 0.0,
+      "bob_texTone": 0.249,
+      "bob_fltMode": 0,
+      "bob_fltCutoff": 3520.0,
+      "bob_fltReso": 0.294,
+      "bob_ampAttack": 0.0193,
+      "bob_ampDecay": 0.338,
+      "bob_ampSustain": 0.566,
+      "bob_ampRelease": 0.187,
+      "bob_spaceMix": 0.0,
+      "bob_spaceSize": 0.003,
+      "bob_bobMode": 0.212
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

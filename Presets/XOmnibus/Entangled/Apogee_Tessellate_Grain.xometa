@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "name": "Apogee Tessellate Grain",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Origami",
+    "Obscura"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orbital \u00d7 Origami + Obscura coupling (amplitude sidechain). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "orbital",
+    "origami",
+    "obscura",
+    "amplitude-sidechain",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": 100,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.648,
+      "orb_groupEnv": 0.601,
+      "orb_phaseSpread": 0.774,
+      "orb_arcDecay": 0.701,
+      "orb_resonantPeak": 0.518,
+      "orb_harmonicAmt": 0.362,
+      "orb_macro1": 0.425,
+      "orb_macro2": 0.533,
+      "orb_macro3": 0.608,
+      "orb_macro4": 0.68,
+      "orb_couplingIn": 0.597
+    },
+    "Origami": {
+      "origami_macro1": 0.588,
+      "origami_macro2": 0.354,
+      "origami_macro3": 0.389,
+      "origami_macro4": 0.535,
+      "origami_couplingOut": 0.783,
+      "origami_couplingIn": 0.75
+    },
+    "Obscura": {
+      "obscura_macro1": 0.502,
+      "obscura_macro2": 0.334,
+      "obscura_macro3": 0.567,
+      "obscura_macro4": 0.674,
+      "obscura_couplingOut": 0.713,
+      "obscura_couplingIn": 0.766
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Origami",
+        "type": "pitch_follow",
+        "amount": 0.628
+      },
+      {
+        "engineA": "Orbital",
+        "engineB": "Obscura",
+        "type": "harmonic_lock",
+        "amount": 0.764
+      },
+      {
+        "engineA": "Origami",
+        "engineB": "Obscura",
+        "type": "amplitude_sidechain",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.625,
+    "warmth": 0.493,
+    "movement": 0.528,
+    "density": 0.605,
+    "space": 0.55,
+    "aggression": 0.411
+  }
+}

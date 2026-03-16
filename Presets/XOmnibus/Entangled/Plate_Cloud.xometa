@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Plate Cloud",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Opal"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Obscura \u00d7 Opal coupling (spectral cross). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "obscura",
+    "opal",
+    "spectral-cross",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": 110,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_stiffness": 0.295,
+      "obscura_graininess": 0.405,
+      "obscura_exposure": 0.591,
+      "obscura_latentDepth": 0.203,
+      "obscura_silverTone": 0.442,
+      "obscura_macro1": 0.682,
+      "obscura_macro2": 0.509,
+      "obscura_macro3": 0.463,
+      "obscura_macro4": 0.315,
+      "obscura_couplingOut": 0.469
+    },
+    "Opal": {
+      "opal_macro1": 0.42,
+      "opal_macro2": 0.519,
+      "opal_macro3": 0.406,
+      "opal_macro4": 0.586,
+      "opal_couplingOut": 0.44,
+      "opal_couplingIn": 0.761
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Opal",
+        "type": "amplitude_sidechain",
+        "amount": 0.782
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.581,
+    "warmth": 0.478,
+    "movement": 0.611,
+    "density": 0.512,
+    "space": 0.671,
+    "aggression": 0.221
+  }
+}

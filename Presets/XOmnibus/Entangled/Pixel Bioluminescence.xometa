@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Pixel Bioluminescence",
+  "mood": "Entangled",
+  "engines": [
+    "OCEANIC",
+    "OVERWORLD"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Chiptune phosphorescence \u2014 Overworld glitch lights the midnight water column.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "shore",
+    "oceanic",
+    "overworld",
+    "chiptune",
+    "bioluminescent",
+    "depth"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.75,
+    "SPACE": 0.5
+  },
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.66,
+    "warmth": 0.47,
+    "movement": 0.61,
+    "density": 0.51,
+    "space": 0.56,
+    "aggression": 0.36
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OCEANIC",
+        "engineB": "OVERWORLD",
+        "type": "LFO->Pitch",
+        "amount": 0.6
+      }
+    ]
+  },
+  "sequencer": null
+}

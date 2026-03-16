@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Distant Shore Haze",
+  "mood": "Aether",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Ombre dissolved into infinite space. Space dimension at 0.96 \u2014 cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "tags": [
+    "aether",
+    "vast",
+    "reverb",
+    "spatial",
+    "infinite",
+    "cosmic",
+    "ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.382,
+    "warmth": 0.449,
+    "movement": 0.318,
+    "density": 0.513,
+    "space": 0.965,
+    "aggression": 0.365
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.782,
+      "ombre_interference": 0.879,
+      "ombre_memoryDecay": 0.879,
+      "ombre_memoryGrain": 29.1,
+      "ombre_memoryDrift": 0.924,
+      "ombre_oscShape": 0.306,
+      "ombre_reactivity": 0.559,
+      "ombre_subLevel": 0.28,
+      "ombre_filterCutoff": 6348.0,
+      "ombre_filterReso": 0.214,
+      "ombre_attack": 0.4835,
+      "ombre_decay": 0.822,
+      "ombre_macroCharacter": 0.382,
+      "ombre_macroMovement": 0.318,
+      "ombre_macroCoupling": 0.0,
+      "ombre_macroSpace": 0.965
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

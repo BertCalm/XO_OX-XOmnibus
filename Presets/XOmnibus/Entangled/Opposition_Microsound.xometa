@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Opposition Microsound",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Orphica"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orbital \u00d7 Orphica coupling (envelope share). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "orbital",
+    "orphica",
+    "envelope-share",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": 130,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.435,
+      "orb_groupEnv": 0.303,
+      "orb_phaseSpread": 0.667,
+      "orb_arcDecay": 0.611,
+      "orb_resonantPeak": 0.593,
+      "orb_harmonicAmt": 0.463,
+      "orb_macro1": 0.309,
+      "orb_macro2": 0.37,
+      "orb_macro3": 0.504,
+      "orb_macro4": 0.351,
+      "orb_couplingIn": 0.742
+    },
+    "Orphica": {
+      "orph_macro1": 0.641,
+      "orph_macro2": 0.307,
+      "orph_macro3": 0.335,
+      "orph_macro4": 0.668,
+      "orph_couplingOut": 0.57,
+      "orph_couplingIn": 0.647
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Orphica",
+        "type": "pitch_follow",
+        "amount": 0.541
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.707,
+    "warmth": 0.517,
+    "movement": 0.593,
+    "density": 0.558,
+    "space": 0.628,
+    "aggression": 0.369
+  }
+}

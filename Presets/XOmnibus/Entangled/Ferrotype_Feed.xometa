@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Ferrotype Feed",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Ouroboros"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Obscura \u00d7 Ouroboros coupling (timbral blend). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "obscura",
+    "ouroboros",
+    "timbral-blend",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": 100,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_stiffness": 0.421,
+      "obscura_graininess": 0.308,
+      "obscura_exposure": 0.393,
+      "obscura_latentDepth": 0.566,
+      "obscura_silverTone": 0.351,
+      "obscura_macro1": 0.694,
+      "obscura_macro2": 0.494,
+      "obscura_macro3": 0.65,
+      "obscura_macro4": 0.591,
+      "obscura_couplingOut": 0.552
+    },
+    "Ouroboros": {
+      "ouro_macro1": 0.547,
+      "ouro_macro2": 0.559,
+      "ouro_macro3": 0.439,
+      "ouro_macro4": 0.664,
+      "ouro_couplingOut": 0.448,
+      "ouro_couplingIn": 0.608
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Ouroboros",
+        "type": "envelope_share",
+        "amount": 0.708
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.497,
+    "warmth": 0.403,
+    "movement": 0.606,
+    "density": 0.639,
+    "space": 0.478,
+    "aggression": 0.487
+  }
+}

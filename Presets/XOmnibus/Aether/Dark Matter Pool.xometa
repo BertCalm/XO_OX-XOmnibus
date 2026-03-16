@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Dark Matter Pool",
+  "mood": "Aether",
+  "engines": [
+    "Osprey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Osprey dissolved into infinite space. Space dimension at 1.00 \u2014 cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "tags": [
+    "aether",
+    "vast",
+    "reverb",
+    "spatial",
+    "infinite",
+    "cosmic",
+    "osprey",
+    "infinite"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.554,
+    "warmth": 0.488,
+    "movement": 0.567,
+    "density": 0.55,
+    "space": 0.998,
+    "aggression": 0.376
+  },
+  "parameters": {
+    "Osprey": {
+      "osprey_shore": 4.0,
+      "osprey_seaState": 0.799,
+      "osprey_swellPeriod": 11.0,
+      "osprey_windDir": 0.583,
+      "osprey_depth": 0.899,
+      "osprey_resonatorBright": 0.443,
+      "osprey_resonatorDecay": 0.949,
+      "osprey_sympathyAmount": 0.699,
+      "osprey_creatureRate": 0.54,
+      "osprey_creatureDepth": 0.375,
+      "osprey_coherence": 0.301,
+      "osprey_foam": 0.15,
+      "osprey_macroCharacter": 0.488,
+      "osprey_macroMovement": 0.567,
+      "osprey_macroCoupling": 0.0,
+      "osprey_macroSpace": 0.998
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Pocket Pulse",
+  "mood": "Foundation",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Close-miked optic presence. Dry and immediate \u2014 space locked at 0.08. No reverb needed. The room is your ears.",
+  "tags": [
+    "foundation",
+    "intimate",
+    "dry",
+    "close",
+    "present",
+    "optic"
+  ],
+  "macroLabels": [
+    "REACTIVITY",
+    "TEMPO",
+    "EVOLVE",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.278,
+    "warmth": 0.67,
+    "movement": 0.543,
+    "density": 0.69,
+    "space": 0.077,
+    "aggression": 0.33
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.632,
+      "optic_inputGain": 0.769,
+      "optic_autoPulse": 1,
+      "optic_pulseRate": 0.58,
+      "optic_pulseShape": 0.139,
+      "optic_pulseSwing": 0.217,
+      "optic_pulseEvolve": 0.626,
+      "optic_pulseSubdiv": 0.714,
+      "optic_pulseAccent": 0.565,
+      "optic_modDepth": 0.645,
+      "optic_modMixPulse": 0.511,
+      "optic_modMixSpec": 0.345,
+      "optic_space": 0.077
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

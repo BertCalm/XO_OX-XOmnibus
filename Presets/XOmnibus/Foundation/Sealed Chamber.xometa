@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Sealed Chamber",
+  "mood": "Foundation",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Close-miked optic presence. Dry and immediate \u2014 space locked at 0.10. No reverb needed. The room is your ears.",
+  "tags": [
+    "foundation",
+    "intimate",
+    "dry",
+    "close",
+    "present",
+    "optic"
+  ],
+  "macroLabels": [
+    "REACTIVITY",
+    "TEMPO",
+    "EVOLVE",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.383,
+    "warmth": 0.653,
+    "movement": 0.35,
+    "density": 0.698,
+    "space": 0.099,
+    "aggression": 0.731
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.792,
+      "optic_inputGain": 0.796,
+      "optic_autoPulse": 1,
+      "optic_pulseRate": 0.445,
+      "optic_pulseShape": 0.192,
+      "optic_pulseSwing": 0.14,
+      "optic_pulseEvolve": 0.51,
+      "optic_pulseSubdiv": 0.719,
+      "optic_pulseAccent": 0.766,
+      "optic_modDepth": 0.649,
+      "optic_modMixPulse": 0.553,
+      "optic_modMixSpec": 0.349,
+      "optic_space": 0.099
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

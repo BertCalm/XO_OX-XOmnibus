@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Shore Trinity",
+  "mood": "Entangled",
+  "engines": [
+    "OSPREY",
+    "OSTERIA",
+    "OCEANIC"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The three shore engines in full communion \u2014 coastline, cuisine, and current as one.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "shore",
+    "trinity",
+    "coastal",
+    "three-way"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.8,
+    "SPACE": 0.65
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.601,
+    "warmth": 0.633,
+    "movement": 0.585,
+    "density": 0.549,
+    "space": 0.651,
+    "aggression": 0.317
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OSPREY",
+        "engineB": "OSTERIA",
+        "type": "Env->Filter",
+        "amount": 0.65
+      },
+      {
+        "engineA": "OSTERIA",
+        "engineB": "OCEANIC",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.6
+      },
+      {
+        "engineA": "OCEANIC",
+        "engineB": "OSPREY",
+        "type": "LFO->Pitch",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Opposition Ferment",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Osteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orbital \u00d7 Osteria coupling (spectral cross). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "orbital",
+    "osteria",
+    "spectral-cross",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": 110,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.645,
+      "orb_groupEnv": 0.457,
+      "orb_phaseSpread": 0.231,
+      "orb_arcDecay": 0.517,
+      "orb_resonantPeak": 0.211,
+      "orb_harmonicAmt": 0.53,
+      "orb_macro1": 0.446,
+      "orb_macro2": 0.481,
+      "orb_macro3": 0.528,
+      "orb_macro4": 0.319,
+      "orb_couplingIn": 0.571
+    },
+    "Osteria": {
+      "osteria_macro1": 0.578,
+      "osteria_macro2": 0.391,
+      "osteria_macro3": 0.504,
+      "osteria_macro4": 0.671,
+      "osteria_couplingOut": 0.739,
+      "osteria_couplingIn": 0.641
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Osteria",
+        "type": "harmonic_lock",
+        "amount": 0.645
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.531,
+    "warmth": 0.673,
+    "movement": 0.519,
+    "density": 0.64,
+    "space": 0.503,
+    "aggression": 0.525
+  }
+}

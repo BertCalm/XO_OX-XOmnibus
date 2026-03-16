@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Dark Water Hunter",
+  "mood": "Entangled",
+  "engines": [
+    "OSPREY",
+    "OBSIDIAN"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Obsidian depths sharpen the seabird's silhouette against a leaden sky.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "shore",
+    "osprey",
+    "obsidian",
+    "dark",
+    "tension",
+    "hunter"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.75,
+    "SPACE": 0.55
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.53,
+    "warmth": 0.49,
+    "movement": 0.6,
+    "density": 0.58,
+    "space": 0.67,
+    "aggression": 0.43
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OSPREY",
+        "engineB": "OBSIDIAN",
+        "type": "Env->Filter",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null
+}

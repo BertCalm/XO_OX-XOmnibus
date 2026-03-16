@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Ambrotype Porto",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Osteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Obscura \u00d7 Osteria coupling (filter modulation). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "obscura",
+    "osteria",
+    "filter-modulation",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": 105,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_stiffness": 0.312,
+      "obscura_graininess": 0.227,
+      "obscura_exposure": 0.411,
+      "obscura_latentDepth": 0.292,
+      "obscura_silverTone": 0.556,
+      "obscura_macro1": 0.496,
+      "obscura_macro2": 0.518,
+      "obscura_macro3": 0.312,
+      "obscura_macro4": 0.388,
+      "obscura_couplingOut": 0.546
+    },
+    "Osteria": {
+      "osteria_macro1": 0.517,
+      "osteria_macro2": 0.486,
+      "osteria_macro3": 0.599,
+      "osteria_macro4": 0.362,
+      "osteria_couplingOut": 0.53,
+      "osteria_couplingIn": 0.686
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Osteria",
+        "type": "timbral_blend",
+        "amount": 0.612
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.453,
+    "warmth": 0.58,
+    "movement": 0.482,
+    "density": 0.589,
+    "space": 0.596,
+    "aggression": 0.369
+  }
+}

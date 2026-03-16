@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "name": "Prismatic Grain Field",
+  "mood": "Entangled",
+  "engines": [
+    "Oblique",
+    "Opal"
+  ],
+  "author": "XPN Tool \u2014 Optic/Oblique/Ocelot Coupling Pack",
+  "version": "1.0.0",
+  "description": "OPAL granular clouds refracting through OBLIQUE's angular modulation \u2014 light scattered in a thousand directions.",
+  "tags": [
+    "oblique",
+    "opal",
+    "prism",
+    "rtj",
+    "funk",
+    "tame-impala",
+    "entangled",
+    "coupling"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_prismAngle": 0.55,
+      "oblq_bounce": 0.65,
+      "oblq_refraction": 0.6,
+      "oblq_funkDepth": 0.7,
+      "oblq_modRate": 0.5,
+      "oblq_modDepth": 0.6,
+      "oblq_filterCutoff": 3200.0,
+      "oblq_filterReso": 0.35,
+      "oblq_ampAttack": 0.02,
+      "oblq_ampRelease": 1.2
+    },
+    "Opal": {
+      "opal_filterCutoff": 2800.0,
+      "opal_filterReso": 0.3,
+      "opal_ampAttack": 0.03,
+      "opal_ampRelease": 1.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "OPAL",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.65
+      },
+      {
+        "engineA": "OPAL",
+        "engineB": "Oblique",
+        "type": "GrainToMod",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.728,
+    "warmth": 0.427,
+    "movement": 0.755,
+    "density": 0.555,
+    "space": 0.69,
+    "aggression": 0.415
+  }
+}

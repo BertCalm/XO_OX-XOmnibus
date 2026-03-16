@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Prism Attractor",
+  "mood": "Entangled",
+  "engines": [
+    "Ouroboros",
+    "Oblique"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Oblique's prism bounce paths trace Lorenz attractor wings. Refraction as topology.",
+  "tags": [
+    "prism",
+    "refraction",
+    "lorenz",
+    "entangled",
+    "ouroboros",
+    "oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.65,
+    "SPACE": 0.5
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 1,
+      "ouro_rate": 80.0,
+      "ouro_chaosIndex": 0.5,
+      "ouro_leash": 0.4,
+      "ouro_theta": 0.0,
+      "ouro_phi": 0.6,
+      "ouro_damping": 0.3,
+      "ouro_injection": 0.0
+    },
+    "Oblique": {
+      "oblq_prismColor": 0.5,
+      "oblq_bounce": 0.6,
+      "oblq_refraction": 0.45
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oblique",
+        "type": "Audio->Ring",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.515,
+    "warmth": 0.46,
+    "movement": 0.805,
+    "density": 0.685,
+    "space": 0.445,
+    "aggression": 0.63
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "name": "Daguerreotype Pleat Cycle",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Origami",
+    "Orbital"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Obscura \u00d7 Origami + Orbital coupling (timbral blend). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "obscura",
+    "origami",
+    "orbital",
+    "timbral-blend",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": 130,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_stiffness": 0.397,
+      "obscura_graininess": 0.352,
+      "obscura_exposure": 0.496,
+      "obscura_latentDepth": 0.273,
+      "obscura_silverTone": 0.68,
+      "obscura_macro1": 0.529,
+      "obscura_macro2": 0.622,
+      "obscura_macro3": 0.362,
+      "obscura_macro4": 0.508,
+      "obscura_couplingOut": 0.573
+    },
+    "Origami": {
+      "origami_macro1": 0.435,
+      "origami_macro2": 0.539,
+      "origami_macro3": 0.571,
+      "origami_macro4": 0.328,
+      "origami_couplingOut": 0.56,
+      "origami_couplingIn": 0.478
+    },
+    "Orbital": {
+      "orb_macro1": 0.669,
+      "orb_macro2": 0.318,
+      "orb_macro3": 0.518,
+      "orb_macro4": 0.636,
+      "orb_couplingOut": 0.581,
+      "orb_couplingIn": 0.702
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Origami",
+        "type": "amplitude_sidechain",
+        "amount": 0.618
+      },
+      {
+        "engineA": "Obscura",
+        "engineB": "Orbital",
+        "type": "timbral_blend",
+        "amount": 0.458
+      },
+      {
+        "engineA": "Origami",
+        "engineB": "Orbital",
+        "type": "amplitude_sidechain",
+        "amount": 0.664
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.629,
+    "warmth": 0.522,
+    "movement": 0.491,
+    "density": 0.633,
+    "space": 0.531,
+    "aggression": 0.443
+  }
+}

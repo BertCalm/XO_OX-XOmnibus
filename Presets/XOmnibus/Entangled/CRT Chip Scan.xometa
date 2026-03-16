@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "name": "CRT Chip Scan",
+  "mood": "Entangled",
+  "engines": [
+    "Optic",
+    "Overworld"
+  ],
+  "author": "XPN Tool \u2014 Optic/Oblique/Ocelot Coupling Pack",
+  "version": "1.0.0",
+  "description": "OPTIC's scan-line feedback synced to OVERWORLD's retro oscillators \u2014 both engines live in the era of phosphorescent screens.",
+  "tags": [
+    "optic",
+    "overworld",
+    "phosphor",
+    "visual-modulation",
+    "entangled",
+    "coupling"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.7,
+      "optic_inputGain": 0.85,
+      "optic_autoPulse": 0,
+      "optic_pulseRate": 0.45,
+      "optic_pulseShape": 0.5,
+      "optic_modDepth": 0.6,
+      "optic_vizMode": 1,
+      "optic_vizFeedback": 0.5,
+      "optic_vizSpeed": 0.55,
+      "optic_vizIntensity": 0.65
+    },
+    "Overworld": {
+      "ow_filterCutoff": 2800.0,
+      "ow_filterReso": 0.3,
+      "ow_ampAttack": 0.03,
+      "ow_ampRelease": 1.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Overworld",
+        "type": "EnvToMod",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Overworld",
+        "engineB": "Optic",
+        "type": "SpectralMorph",
+        "amount": 0.4
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.788,
+    "warmth": 0.345,
+    "movement": 0.677,
+    "density": 0.468,
+    "space": 0.755,
+    "aggression": 0.312
+  }
+}

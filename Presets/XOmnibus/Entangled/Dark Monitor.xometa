@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "name": "Dark Monitor",
+  "mood": "Entangled",
+  "engines": [
+    "Optic",
+    "Obsidian"
+  ],
+  "author": "XPN Tool \u2014 Optic/Oblique/Ocelot Coupling Pack",
+  "version": "1.0.0",
+  "description": "Phosphor green on obsidian black \u2014 OPTIC's high-contrast reactivity carving shapes from OBSIDIAN's dense low-end.",
+  "tags": [
+    "optic",
+    "obsidian",
+    "phosphor",
+    "visual-modulation",
+    "entangled",
+    "coupling"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.7,
+      "optic_inputGain": 0.85,
+      "optic_autoPulse": 0,
+      "optic_pulseRate": 0.45,
+      "optic_pulseShape": 0.5,
+      "optic_modDepth": 0.6,
+      "optic_vizMode": 1,
+      "optic_vizFeedback": 0.5,
+      "optic_vizSpeed": 0.55,
+      "optic_vizIntensity": 0.65
+    },
+    "Obsidian": {
+      "obs_filterCutoff": 2800.0,
+      "obs_filterReso": 0.3,
+      "obs_ampAttack": 0.03,
+      "obs_ampRelease": 1.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Obsidian",
+        "type": "AmpToFilter",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Obsidian",
+        "engineB": "Optic",
+        "type": "PitchSync",
+        "amount": 0.4
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.653,
+    "warmth": 0.412,
+    "movement": 0.61,
+    "density": 0.58,
+    "space": 0.643,
+    "aggression": 0.402
+  }
+}

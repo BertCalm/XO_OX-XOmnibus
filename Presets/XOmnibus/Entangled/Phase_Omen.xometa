@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Phase Omen",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Oracle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orbital \u00d7 Oracle coupling (envelope share). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "orbital",
+    "oracle",
+    "envelope-share",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": 125,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.424,
+      "orb_groupEnv": 0.7,
+      "orb_phaseSpread": 0.272,
+      "orb_arcDecay": 0.891,
+      "orb_resonantPeak": 0.494,
+      "orb_harmonicAmt": 0.522,
+      "orb_macro1": 0.304,
+      "orb_macro2": 0.349,
+      "orb_macro3": 0.348,
+      "orb_macro4": 0.664,
+      "orb_couplingIn": 0.422
+    },
+    "Oracle": {
+      "oracle_macro1": 0.342,
+      "oracle_macro2": 0.392,
+      "oracle_macro3": 0.55,
+      "oracle_macro4": 0.437,
+      "oracle_couplingOut": 0.471,
+      "oracle_couplingIn": 0.637
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Oracle",
+        "type": "harmonic_lock",
+        "amount": 0.728
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.594,
+    "warmth": 0.519,
+    "movement": 0.528,
+    "density": 0.713,
+    "space": 0.63,
+    "aggression": 0.463
+  }
+}

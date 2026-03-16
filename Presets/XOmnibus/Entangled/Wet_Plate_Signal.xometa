@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Wet Plate Signal",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Oracle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Obscura \u00d7 Oracle coupling (pitch follow). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "obscura",
+    "oracle",
+    "pitch-follow",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": 120,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_stiffness": 0.783,
+      "obscura_graininess": 0.481,
+      "obscura_exposure": 0.374,
+      "obscura_latentDepth": 0.376,
+      "obscura_silverTone": 0.483,
+      "obscura_macro1": 0.46,
+      "obscura_macro2": 0.309,
+      "obscura_macro3": 0.587,
+      "obscura_macro4": 0.57,
+      "obscura_couplingOut": 0.535
+    },
+    "Oracle": {
+      "oracle_macro1": 0.572,
+      "oracle_macro2": 0.669,
+      "oracle_macro3": 0.663,
+      "oracle_macro4": 0.639,
+      "oracle_couplingOut": 0.781,
+      "oracle_couplingIn": 0.667
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oracle",
+        "type": "amplitude_sidechain",
+        "amount": 0.591
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.468,
+    "warmth": 0.433,
+    "movement": 0.462,
+    "density": 0.627,
+    "space": 0.662,
+    "aggression": 0.301
+  }
+}

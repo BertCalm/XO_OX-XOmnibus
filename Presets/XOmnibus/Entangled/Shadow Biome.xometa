@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Shadow Biome",
+  "mood": "Entangled",
+  "engines": [
+    "Ocelot",
+    "Obsidian"
+  ],
+  "author": "XPN Tool \u2014 Optic/Oblique/Ocelot Coupling Pack",
+  "version": "1.0.0",
+  "description": "OCELOT hunting through OBSIDIAN's dense shadow territory \u2014 spotted coat invisible in black volcanic field.",
+  "tags": [
+    "ocelot",
+    "obsidian",
+    "biome-shift",
+    "tawny",
+    "apex",
+    "entangled",
+    "coupling"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ocelot": {
+      "ocelot_biomeShift": 0.5,
+      "ocelot_warmth": 0.65,
+      "ocelot_movement": 0.6,
+      "ocelot_predatorDepth": 0.55,
+      "ocelot_filterCutoff": 2400.0,
+      "ocelot_filterReso": 0.3,
+      "ocelot_ampAttack": 0.04,
+      "ocelot_ampRelease": 1.8
+    },
+    "Obsidian": {
+      "obs_filterCutoff": 2800.0,
+      "obs_filterReso": 0.3,
+      "obs_ampAttack": 0.03,
+      "obs_ampRelease": 1.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Obsidian",
+        "type": "AmpToFilter",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Obsidian",
+        "engineB": "Ocelot",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.487,
+    "warmth": 0.605,
+    "movement": 0.555,
+    "density": 0.718,
+    "space": 0.478,
+    "aggression": 0.568
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Living Saturation",
+  "mood": "Entangled",
+  "engines": [
+    "Organon",
+    "Obese"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Organon's metabolic output drives Obese saturation curves. The organism overdrives itself into life.",
+  "tags": [
+    "saturation",
+    "overdrive",
+    "organism",
+    "entangled",
+    "organon",
+    "obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.65,
+    "SPACE": 0.55
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 3.5,
+      "organon_enzymeSelect": 600.0,
+      "organon_catalystDrive": 1.8,
+      "organon_dampingCoeff": 0.4,
+      "organon_signalFlux": 0.9,
+      "organon_phasonShift": 0.25,
+      "organon_isotopeBalance": 0.5,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.55,
+      "organon_noiseColor": 0.6
+    },
+    "Obese": {
+      "fat_satDrive": 0.55,
+      "fat_filterCutoff": 0.5,
+      "fat_mojoAnalog": 0.6
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Obese",
+        "type": "Audio->FM",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.535,
+    "warmth": 0.54,
+    "movement": 0.745,
+    "density": 0.665,
+    "space": 0.505,
+    "aggression": 0.47
+  }
+}

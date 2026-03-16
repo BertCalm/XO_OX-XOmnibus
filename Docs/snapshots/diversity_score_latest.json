@@ -1,0 +1,391 @@
+{
+  "generated_at": "2026-03-16T10:13:44.427804+00:00",
+  "total_presets": 3430,
+  "skipped_presets": 0,
+  "fleet_diversity_score": 0.1569,
+  "reference_diversity_score": 0.173,
+  "delta_from_reference": -0.0161,
+  "midrange_zone": [
+    0.35,
+    0.65
+  ],
+  "extreme_zones": [
+    "0.0\u20130.2",
+    "0.8\u20131.0"
+  ],
+  "dimensions": {
+    "brightness": {
+      "midrange_pct": 0.6569,
+      "extreme_pct": 0.1204,
+      "extreme_low_count": 140,
+      "extreme_high_count": 273,
+      "mean": 0.5242,
+      "stdev": 0.1763,
+      "histogram": [
+        {
+          "lo": 0.0,
+          "hi": 0.1,
+          "count": 30
+        },
+        {
+          "lo": 0.1,
+          "hi": 0.2,
+          "count": 59
+        },
+        {
+          "lo": 0.2,
+          "hi": 0.3,
+          "count": 185
+        },
+        {
+          "lo": 0.3,
+          "hi": 0.4,
+          "count": 443
+        },
+        {
+          "lo": 0.4,
+          "hi": 0.5,
+          "count": 752
+        },
+        {
+          "lo": 0.5,
+          "hi": 0.6,
+          "count": 825
+        },
+        {
+          "lo": 0.6,
+          "hi": 0.7,
+          "count": 540
+        },
+        {
+          "lo": 0.7,
+          "hi": 0.8,
+          "count": 323
+        },
+        {
+          "lo": 0.8,
+          "hi": 0.9,
+          "count": 197
+        },
+        {
+          "lo": 0.9,
+          "hi": 1.0,
+          "count": 76
+        }
+      ]
+    },
+    "warmth": {
+      "midrange_pct": 0.5752,
+      "extreme_pct": 0.1671,
+      "extreme_low_count": 395,
+      "extreme_high_count": 178,
+      "mean": 0.4899,
+      "stdev": 0.2018,
+      "histogram": [
+        {
+          "lo": 0.0,
+          "hi": 0.1,
+          "count": 133
+        },
+        {
+          "lo": 0.1,
+          "hi": 0.2,
+          "count": 205
+        },
+        {
+          "lo": 0.2,
+          "hi": 0.3,
+          "count": 244
+        },
+        {
+          "lo": 0.3,
+          "hi": 0.4,
+          "count": 407
+        },
+        {
+          "lo": 0.4,
+          "hi": 0.5,
+          "count": 516
+        },
+        {
+          "lo": 0.5,
+          "hi": 0.6,
+          "count": 742
+        },
+        {
+          "lo": 0.6,
+          "hi": 0.7,
+          "count": 655
+        },
+        {
+          "lo": 0.7,
+          "hi": 0.8,
+          "count": 350
+        },
+        {
+          "lo": 0.8,
+          "hi": 0.9,
+          "count": 134
+        },
+        {
+          "lo": 0.9,
+          "hi": 1.0,
+          "count": 44
+        }
+      ]
+    },
+    "movement": {
+      "midrange_pct": 0.412,
+      "extreme_pct": 0.3064,
+      "extreme_low_count": 712,
+      "extreme_high_count": 339,
+      "mean": 0.4581,
+      "stdev": 0.2544,
+      "histogram": [
+        {
+          "lo": 0.0,
+          "hi": 0.1,
+          "count": 326
+        },
+        {
+          "lo": 0.1,
+          "hi": 0.2,
+          "count": 275
+        },
+        {
+          "lo": 0.2,
+          "hi": 0.3,
+          "count": 354
+        },
+        {
+          "lo": 0.3,
+          "hi": 0.4,
+          "count": 394
+        },
+        {
+          "lo": 0.4,
+          "hi": 0.5,
+          "count": 411
+        },
+        {
+          "lo": 0.5,
+          "hi": 0.6,
+          "count": 466
+        },
+        {
+          "lo": 0.6,
+          "hi": 0.7,
+          "count": 471
+        },
+        {
+          "lo": 0.7,
+          "hi": 0.8,
+          "count": 394
+        },
+        {
+          "lo": 0.8,
+          "hi": 0.9,
+          "count": 215
+        },
+        {
+          "lo": 0.9,
+          "hi": 1.0,
+          "count": 124
+        }
+      ]
+    },
+    "density": {
+      "midrange_pct": 0.5466,
+      "extreme_pct": 0.1918,
+      "extreme_low_count": 349,
+      "extreme_high_count": 309,
+      "mean": 0.5102,
+      "stdev": 0.2067,
+      "histogram": [
+        {
+          "lo": 0.0,
+          "hi": 0.1,
+          "count": 81
+        },
+        {
+          "lo": 0.1,
+          "hi": 0.2,
+          "count": 222
+        },
+        {
+          "lo": 0.2,
+          "hi": 0.3,
+          "count": 255
+        },
+        {
+          "lo": 0.3,
+          "hi": 0.4,
+          "count": 368
+        },
+        {
+          "lo": 0.4,
+          "hi": 0.5,
+          "count": 455
+        },
+        {
+          "lo": 0.5,
+          "hi": 0.6,
+          "count": 708
+        },
+        {
+          "lo": 0.6,
+          "hi": 0.7,
+          "count": 706
+        },
+        {
+          "lo": 0.7,
+          "hi": 0.8,
+          "count": 326
+        },
+        {
+          "lo": 0.8,
+          "hi": 0.9,
+          "count": 235
+        },
+        {
+          "lo": 0.9,
+          "hi": 1.0,
+          "count": 74
+        }
+      ]
+    },
+    "space": {
+      "midrange_pct": 0.4574,
+      "extreme_pct": 0.2738,
+      "extreme_low_count": 549,
+      "extreme_high_count": 390,
+      "mean": 0.4863,
+      "stdev": 0.2416,
+      "histogram": [
+        {
+          "lo": 0.0,
+          "hi": 0.1,
+          "count": 215
+        },
+        {
+          "lo": 0.1,
+          "hi": 0.2,
+          "count": 234
+        },
+        {
+          "lo": 0.2,
+          "hi": 0.3,
+          "count": 301
+        },
+        {
+          "lo": 0.3,
+          "hi": 0.4,
+          "count": 392
+        },
+        {
+          "lo": 0.4,
+          "hi": 0.5,
+          "count": 513
+        },
+        {
+          "lo": 0.5,
+          "hi": 0.6,
+          "count": 535
+        },
+        {
+          "lo": 0.6,
+          "hi": 0.7,
+          "count": 507
+        },
+        {
+          "lo": 0.7,
+          "hi": 0.8,
+          "count": 343
+        },
+        {
+          "lo": 0.8,
+          "hi": 0.9,
+          "count": 244
+        },
+        {
+          "lo": 0.9,
+          "hi": 1.0,
+          "count": 146
+        }
+      ]
+    },
+    "aggression": {
+      "midrange_pct": 0.312,
+      "extreme_pct": 0.481,
+      "extreme_low_count": 1550,
+      "extreme_high_count": 100,
+      "mean": 0.2812,
+      "stdev": 0.214,
+      "histogram": [
+        {
+          "lo": 0.0,
+          "hi": 0.1,
+          "count": 792
+        },
+        {
+          "lo": 0.1,
+          "hi": 0.2,
+          "count": 629
+        },
+        {
+          "lo": 0.2,
+          "hi": 0.3,
+          "count": 488
+        },
+        {
+          "lo": 0.3,
+          "hi": 0.4,
+          "count": 528
+        },
+        {
+          "lo": 0.4,
+          "hi": 0.5,
+          "count": 431
+        },
+        {
+          "lo": 0.5,
+          "hi": 0.6,
+          "count": 270
+        },
+        {
+          "lo": 0.6,
+          "hi": 0.7,
+          "count": 127
+        },
+        {
+          "lo": 0.7,
+          "hi": 0.8,
+          "count": 65
+        },
+        {
+          "lo": 0.8,
+          "hi": 0.9,
+          "count": 49
+        },
+        {
+          "lo": 0.9,
+          "hi": 1.0,
+          "count": 51
+        }
+      ]
+    }
+  },
+  "per_mood_diversity": {
+    "Aether": 0.1236,
+    "Atmosphere": 0.1192,
+    "Entangled": 0.0575,
+    "Family": 0.0914,
+    "Flux": 0.089,
+    "Foundation": 0.1491,
+    "Prism": 0.1491
+  },
+  "sonic_dna_key_usage": {
+    "sonic_dna": 359,
+    "dna": 3071
+  }
+}

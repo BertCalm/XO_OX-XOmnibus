@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Frozen Expanse",
+  "mood": "Aether",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Obsidian dissolved into infinite space. Space dimension at 0.92 \u2014 cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "tags": [
+    "aether",
+    "vast",
+    "reverb",
+    "spatial",
+    "infinite",
+    "cosmic",
+    "obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.275,
+    "warmth": 0.296,
+    "movement": 0.629,
+    "density": 0.698,
+    "space": 0.921,
+    "aggression": 0.192
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_densityX": 0.698,
+      "obsidian_tiltY": 0.438,
+      "obsidian_depth": 0.853,
+      "obsidian_stiffness": 0.082,
+      "obsidian_cascadeBlend": 0.745,
+      "obsidian_crossModDepth": 0.096,
+      "obsidian_formantIntensity": 0.378,
+      "obsidian_stereoWidth": 0.899,
+      "obsidian_filterCutoff": 4850.0,
+      "obsidian_filterReso": 0.136,
+      "obsidian_level": 0.78,
+      "obsidian_ampAttack": 0.511,
+      "obsidian_ampRelease": 3.72,
+      "obsidian_macroCharacter": 0.296,
+      "obsidian_macroMovement": 0.629,
+      "obsidian_macroCoupling": 0.0,
+      "obsidian_macroSpace": 0.921
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

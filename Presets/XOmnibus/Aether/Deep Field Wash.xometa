@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Deep Field Wash",
+  "mood": "Aether",
+  "engines": [
+    "Oracle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Oracle dissolved into infinite space. Space dimension at 0.93 \u2014 cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "tags": [
+    "aether",
+    "vast",
+    "reverb",
+    "spatial",
+    "infinite",
+    "cosmic",
+    "oracle"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.504,
+    "warmth": 0.251,
+    "movement": 0.709,
+    "density": 0.542,
+    "space": 0.925,
+    "aggression": 0.302
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_breakpoints": 31,
+      "oracle_timeStep": 0.654,
+      "oracle_ampStep": 0.471,
+      "oracle_distribution": 0.141,
+      "oracle_barrierElasticity": 0.747,
+      "oracle_maqam": 5,
+      "oracle_gravity": 0.701,
+      "oracle_drift": 0.801,
+      "oracle_level": 0.75,
+      "oracle_ampAttack": 0.79,
+      "oracle_ampDecay": 1.79,
+      "oracle_ampSustain": 0.425,
+      "oracle_ampRelease": 4.5,
+      "oracle_macroProphecy": 0.504,
+      "oracle_macroEvolution": 0.709,
+      "oracle_macroGravity": 0.302,
+      "oracle_macroDrift": 0.925
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

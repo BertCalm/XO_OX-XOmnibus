@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "name": "Exposure Group Crease",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Orbital",
+    "Origami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Obscura \u00d7 Orbital + Origami coupling (spectral cross). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "obscura",
+    "orbital",
+    "origami",
+    "spectral-cross",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": 120,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_stiffness": 0.753,
+      "obscura_graininess": 0.33,
+      "obscura_exposure": 0.591,
+      "obscura_latentDepth": 0.507,
+      "obscura_silverTone": 0.63,
+      "obscura_macro1": 0.623,
+      "obscura_macro2": 0.523,
+      "obscura_macro3": 0.663,
+      "obscura_macro4": 0.633,
+      "obscura_couplingOut": 0.527
+    },
+    "Orbital": {
+      "orb_macro1": 0.667,
+      "orb_macro2": 0.339,
+      "orb_macro3": 0.576,
+      "orb_macro4": 0.614,
+      "orb_couplingOut": 0.606,
+      "orb_couplingIn": 0.581
+    },
+    "Origami": {
+      "origami_macro1": 0.686,
+      "origami_macro2": 0.687,
+      "origami_macro3": 0.637,
+      "origami_macro4": 0.492,
+      "origami_couplingOut": 0.426,
+      "origami_couplingIn": 0.507
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Orbital",
+        "type": "spectral_cross",
+        "amount": 0.567
+      },
+      {
+        "engineA": "Obscura",
+        "engineB": "Origami",
+        "type": "amplitude_sidechain",
+        "amount": 0.736
+      },
+      {
+        "engineA": "Orbital",
+        "engineB": "Origami",
+        "type": "harmonic_lock",
+        "amount": 0.409
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.574,
+    "warmth": 0.504,
+    "movement": 0.567,
+    "density": 0.551,
+    "space": 0.482,
+    "aggression": 0.438
+  }
+}

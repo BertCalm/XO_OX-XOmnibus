@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Brass Below",
+  "mood": "Entangled",
+  "engines": [
+    "OCEANIC",
+    "OTTONI"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OTTONI brass resonance transforms underwater \u2014 pressure changes the timbre.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "shore",
+    "oceanic",
+    "ottoni",
+    "brass",
+    "underwater",
+    "resonant"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.7,
+    "SPACE": 0.65
+  },
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.57,
+    "movement": 0.61,
+    "density": 0.55,
+    "space": 0.64,
+    "aggression": 0.36
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OCEANIC",
+        "engineB": "OTTONI",
+        "type": "Audio->Filter",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Albumen Hum",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Ohm"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Obscura \u00d7 Ohm coupling (amplitude sidechain). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "obscura",
+    "ohm",
+    "amplitude-sidechain",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": 125,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_stiffness": 0.598,
+      "obscura_graininess": 0.3,
+      "obscura_exposure": 0.805,
+      "obscura_latentDepth": 0.345,
+      "obscura_silverTone": 0.565,
+      "obscura_macro1": 0.498,
+      "obscura_macro2": 0.449,
+      "obscura_macro3": 0.514,
+      "obscura_macro4": 0.648,
+      "obscura_couplingOut": 0.688
+    },
+    "Ohm": {
+      "ohm_macro1": 0.484,
+      "ohm_macro2": 0.445,
+      "ohm_macro3": 0.384,
+      "ohm_macro4": 0.423,
+      "ohm_couplingOut": 0.695,
+      "ohm_couplingIn": 0.774
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Ohm",
+        "type": "spectral_cross",
+        "amount": 0.441
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.435,
+    "warmth": 0.659,
+    "movement": 0.495,
+    "density": 0.632,
+    "space": 0.608,
+    "aggression": 0.228
+  }
+}

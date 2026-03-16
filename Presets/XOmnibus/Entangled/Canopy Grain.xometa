@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Canopy Grain",
+  "mood": "Entangled",
+  "engines": [
+    "Ocelot",
+    "Opal"
+  ],
+  "author": "XPN Tool \u2014 Optic/Oblique/Ocelot Coupling Pack",
+  "version": "1.0.0",
+  "description": "OPAL's granular canopy filtered through OCELOT's tawny warmth \u2014 light through leaves, dappled and moving.",
+  "tags": [
+    "ocelot",
+    "opal",
+    "biome-shift",
+    "tawny",
+    "apex",
+    "entangled",
+    "coupling"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ocelot": {
+      "ocelot_biomeShift": 0.5,
+      "ocelot_warmth": 0.65,
+      "ocelot_movement": 0.6,
+      "ocelot_predatorDepth": 0.55,
+      "ocelot_filterCutoff": 2400.0,
+      "ocelot_filterReso": 0.3,
+      "ocelot_ampAttack": 0.04,
+      "ocelot_ampRelease": 1.8
+    },
+    "Opal": {
+      "opal_filterCutoff": 2800.0,
+      "opal_filterReso": 0.3,
+      "opal_ampAttack": 0.03,
+      "opal_ampRelease": 1.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "OPAL",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.6
+      },
+      {
+        "engineA": "OPAL",
+        "engineB": "Ocelot",
+        "type": "AmpToFilter",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.645,
+    "warmth": 0.538,
+    "movement": 0.645,
+    "density": 0.583,
+    "space": 0.635,
+    "aggression": 0.388
+  }
+}

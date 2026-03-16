@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Nodal Era",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orbital \u00d7 Overworld coupling (harmonic lock). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "orbital",
+    "overworld",
+    "harmonic-lock",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": 125,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.437,
+      "orb_groupEnv": 0.58,
+      "orb_phaseSpread": 0.368,
+      "orb_arcDecay": 0.723,
+      "orb_resonantPeak": 0.461,
+      "orb_harmonicAmt": 0.352,
+      "orb_macro1": 0.679,
+      "orb_macro2": 0.624,
+      "orb_macro3": 0.666,
+      "orb_macro4": 0.68,
+      "orb_couplingIn": 0.506
+    },
+    "Overworld": {
+      "ow_macro1": 0.569,
+      "ow_macro2": 0.305,
+      "ow_macro3": 0.413,
+      "ow_macro4": 0.368,
+      "ow_couplingOut": 0.772,
+      "ow_couplingIn": 0.71
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Overworld",
+        "type": "pitch_follow",
+        "amount": 0.607
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.578,
+    "warmth": 0.614,
+    "movement": 0.596,
+    "density": 0.62,
+    "space": 0.507,
+    "aggression": 0.414
+  }
+}

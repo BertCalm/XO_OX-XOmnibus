@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "name": "Brass Prism Fanfare",
+  "mood": "Entangled",
+  "engines": [
+    "Oblique",
+    "Ottoni"
+  ],
+  "author": "XPN Tool \u2014 Optic/Oblique/Ocelot Coupling Pack",
+  "version": "1.0.0",
+  "description": "OTTONI's growing brass chords spread through OBLIQUE's prism \u2014 the fanfare explodes into colored vectors.",
+  "tags": [
+    "oblique",
+    "ottoni",
+    "prism",
+    "rtj",
+    "funk",
+    "tame-impala",
+    "entangled",
+    "coupling"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_prismAngle": 0.55,
+      "oblq_bounce": 0.65,
+      "oblq_refraction": 0.6,
+      "oblq_funkDepth": 0.7,
+      "oblq_modRate": 0.5,
+      "oblq_modDepth": 0.6,
+      "oblq_filterCutoff": 3200.0,
+      "oblq_filterReso": 0.35,
+      "oblq_ampAttack": 0.02,
+      "oblq_ampRelease": 1.2
+    },
+    "Ottoni": {
+      "otto_filterCutoff": 2800.0,
+      "otto_filterReso": 0.3,
+      "otto_ampAttack": 0.03,
+      "otto_ampRelease": 1.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ottoni",
+        "type": "AmpToFilter",
+        "amount": 0.65
+      },
+      {
+        "engineA": "Ottoni",
+        "engineB": "Oblique",
+        "type": "EnvToMod",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.705,
+    "warmth": 0.473,
+    "movement": 0.733,
+    "density": 0.6,
+    "space": 0.6,
+    "aggression": 0.55
+  }
+}

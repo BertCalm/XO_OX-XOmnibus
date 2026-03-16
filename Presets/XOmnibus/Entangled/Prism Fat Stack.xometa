@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "name": "Prism Fat Stack",
+  "mood": "Entangled",
+  "engines": [
+    "Oblique",
+    "Oblong"
+  ],
+  "author": "XPN Tool \u2014 Optic/Oblique/Ocelot Coupling Pack",
+  "version": "1.0.0",
+  "description": "RTJ energy smearing OBLONG's detuned warmth through a violet prism \u2014 big bass with angular attitude.",
+  "tags": [
+    "oblique",
+    "oblong",
+    "prism",
+    "rtj",
+    "funk",
+    "tame-impala",
+    "entangled",
+    "coupling"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oblique": {
+      "oblq_prismAngle": 0.55,
+      "oblq_bounce": 0.65,
+      "oblq_refraction": 0.6,
+      "oblq_funkDepth": 0.7,
+      "oblq_modRate": 0.5,
+      "oblq_modDepth": 0.6,
+      "oblq_filterCutoff": 3200.0,
+      "oblq_filterReso": 0.35,
+      "oblq_ampAttack": 0.02,
+      "oblq_ampRelease": 1.2
+    },
+    "Oblong": {
+      "bob_filterCutoff": 2800.0,
+      "bob_filterReso": 0.3,
+      "bob_ampAttack": 0.03,
+      "bob_ampRelease": 1.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Oblong",
+        "type": "AudioToFM",
+        "amount": 0.65
+      },
+      {
+        "engineA": "Oblong",
+        "engineB": "Oblique",
+        "type": "PitchSync",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.637,
+    "warmth": 0.562,
+    "movement": 0.665,
+    "density": 0.667,
+    "space": 0.555,
+    "aggression": 0.483
+  }
+}

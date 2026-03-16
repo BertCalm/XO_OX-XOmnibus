@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Latent Retro",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Obscura \u00d7 Overworld coupling (timbral blend). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "obscura",
+    "overworld",
+    "timbral-blend",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": 110,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_stiffness": 0.537,
+      "obscura_graininess": 0.561,
+      "obscura_exposure": 0.368,
+      "obscura_latentDepth": 0.571,
+      "obscura_silverTone": 0.347,
+      "obscura_macro1": 0.35,
+      "obscura_macro2": 0.442,
+      "obscura_macro3": 0.559,
+      "obscura_macro4": 0.562,
+      "obscura_couplingOut": 0.412
+    },
+    "Overworld": {
+      "ow_macro1": 0.531,
+      "ow_macro2": 0.442,
+      "ow_macro3": 0.454,
+      "ow_macro4": 0.396,
+      "ow_couplingOut": 0.568,
+      "ow_couplingIn": 0.488
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Overworld",
+        "type": "filter_modulation",
+        "amount": 0.483
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.504,
+    "warmth": 0.571,
+    "movement": 0.555,
+    "density": 0.537,
+    "space": 0.602,
+    "aggression": 0.282
+  }
+}

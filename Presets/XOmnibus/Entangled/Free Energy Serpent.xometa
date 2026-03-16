@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "name": "Free Energy Serpent",
+  "mood": "Entangled",
+  "engines": [
+    "Ouroboros",
+    "Organon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Variational free energy minimisation navigating a chaotic potential landscape. Prediction errors propagate as audio.",
+  "tags": [
+    "marquee",
+    "free-energy",
+    "prediction",
+    "cascade",
+    "entangled",
+    "ouroboros-organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.7,
+    "SPACE": 0.6
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 1,
+      "ouro_rate": 80.0,
+      "ouro_chaosIndex": 0.5,
+      "ouro_leash": 0.45,
+      "ouro_theta": 0.0,
+      "ouro_phi": 0.35,
+      "ouro_damping": 0.2,
+      "ouro_injection": 0.5
+    },
+    "Organon": {
+      "organon_metabolicRate": 3.5,
+      "organon_enzymeSelect": 600.0,
+      "organon_catalystDrive": 1.2,
+      "organon_dampingCoeff": 0.4,
+      "organon_signalFlux": 0.8,
+      "organon_phasonShift": 0.6,
+      "organon_isotopeBalance": 0.5,
+      "organon_lockIn": 0.3,
+      "organon_membrane": 0.55,
+      "organon_noiseColor": 0.8
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Organon",
+        "type": "CV->Filter",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.528,
+    "warmth": 0.51,
+    "movement": 0.767,
+    "density": 0.672,
+    "space": 0.483,
+    "aggression": 0.53
+  }
+}

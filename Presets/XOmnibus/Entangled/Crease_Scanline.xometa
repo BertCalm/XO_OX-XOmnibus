@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Crease Scanline",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Origami \u00d7 Overworld coupling (amplitude sidechain). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "origami",
+    "overworld",
+    "amplitude-sidechain",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": 90,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldPoint": 0.525,
+      "origami_crease": 0.437,
+      "origami_valleyDepth": 0.436,
+      "origami_pleatRate": 0.252,
+      "origami_tessellate": 0.313,
+      "origami_macro1": 0.465,
+      "origami_macro2": 0.522,
+      "origami_macro3": 0.476,
+      "origami_macro4": 0.549,
+      "origami_couplingOut": 0.469
+    },
+    "Overworld": {
+      "ow_macro1": 0.366,
+      "ow_macro2": 0.38,
+      "ow_macro3": 0.603,
+      "ow_macro4": 0.46,
+      "ow_couplingOut": 0.793,
+      "ow_couplingIn": 0.662
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Overworld",
+        "type": "spectral_cross",
+        "amount": 0.442
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.692,
+    "warmth": 0.482,
+    "movement": 0.67,
+    "density": 0.555,
+    "space": 0.555,
+    "aggression": 0.402
+  }
+}

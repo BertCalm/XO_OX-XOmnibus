@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Facet Surge",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Ole"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Origami \u00d7 Ole coupling (amplitude sidechain). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "origami",
+    "ole",
+    "amplitude-sidechain",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": 120,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldPoint": 0.705,
+      "origami_crease": 0.645,
+      "origami_valleyDepth": 0.495,
+      "origami_pleatRate": 0.611,
+      "origami_tessellate": 0.576,
+      "origami_macro1": 0.325,
+      "origami_macro2": 0.56,
+      "origami_macro3": 0.65,
+      "origami_macro4": 0.381,
+      "origami_couplingOut": 0.775
+    },
+    "Ole": {
+      "ole_macro1": 0.522,
+      "ole_macro2": 0.51,
+      "ole_macro3": 0.619,
+      "ole_macro4": 0.515,
+      "ole_couplingOut": 0.705,
+      "ole_couplingIn": 0.655
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ole",
+        "type": "timbral_blend",
+        "amount": 0.595
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.634,
+    "warmth": 0.6,
+    "movement": 0.702,
+    "density": 0.566,
+    "space": 0.533,
+    "aggression": 0.525
+  }
+}

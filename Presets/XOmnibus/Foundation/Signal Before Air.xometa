@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Signal Before Air",
+  "mood": "Foundation",
+  "engines": [
+    "Overbite"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Close-miked overbite presence. Dry and immediate \u2014 space locked at 0.01. No reverb needed. The room is your ears.",
+  "tags": [
+    "foundation",
+    "intimate",
+    "dry",
+    "close",
+    "present",
+    "overbite",
+    "anechoic"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.692,
+    "warmth": 0.638,
+    "movement": 0.523,
+    "density": 0.669,
+    "space": 0.011,
+    "aggression": 0.432
+  },
+  "parameters": {
+    "Overbite": {
+      "poss_oscAWaveform": 1,
+      "poss_oscAShape": 0.484,
+      "poss_oscADrift": 0.062,
+      "poss_oscMix": 0.635,
+      "poss_oscBWaveform": 2,
+      "poss_oscBShape": 0.615,
+      "poss_oscBInstability": 0.108,
+      "poss_oscInteractMode": 0,
+      "poss_oscInteractAmount": 0.216,
+      "poss_subLevel": 0.519,
+      "poss_subOctave": -1,
+      "poss_weightShape": 0,
+      "poss_filterCutoff": 5736.0,
+      "poss_filterReso": 0.244,
+      "poss_ampAttack": 0.0237,
+      "poss_ampDecay": 0.318,
+      "poss_ampSustain": 0.619,
+      "poss_ampRelease": 0.22,
+      "poss_fxSpaceType": 0,
+      "poss_fxSpaceMix": 0.001,
+      "poss_fxSpaceSize": 0.01,
+      "poss_fxSpaceDecay": 0.059,
+      "poss_fxSpaceDamping": 0.695
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

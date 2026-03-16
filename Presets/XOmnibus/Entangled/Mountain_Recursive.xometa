@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Mountain Recursive",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Ouroboros"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Origami \u00d7 Ouroboros coupling (spectral cross). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "origami",
+    "ouroboros",
+    "spectral-cross",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": 105,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldPoint": 0.505,
+      "origami_crease": 0.322,
+      "origami_valleyDepth": 0.573,
+      "origami_pleatRate": 0.317,
+      "origami_tessellate": 0.368,
+      "origami_macro1": 0.472,
+      "origami_macro2": 0.532,
+      "origami_macro3": 0.478,
+      "origami_macro4": 0.45,
+      "origami_couplingOut": 0.599
+    },
+    "Ouroboros": {
+      "ouro_macro1": 0.324,
+      "ouro_macro2": 0.423,
+      "ouro_macro3": 0.314,
+      "ouro_macro4": 0.539,
+      "ouro_couplingOut": 0.535,
+      "ouro_couplingIn": 0.519
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Ouroboros",
+        "type": "harmonic_lock",
+        "amount": 0.502
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.571,
+    "warmth": 0.455,
+    "movement": 0.791,
+    "density": 0.654,
+    "space": 0.488,
+    "aggression": 0.601
+  }
+}

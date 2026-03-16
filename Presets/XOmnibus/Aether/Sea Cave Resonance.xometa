@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Sea Cave Resonance",
+  "mood": "Aether",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Ombre dissolved into infinite space. Space dimension at 0.99 \u2014 cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "tags": [
+    "aether",
+    "vast",
+    "reverb",
+    "spatial",
+    "infinite",
+    "cosmic",
+    "ombre",
+    "infinite"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.325,
+    "warmth": 0.619,
+    "movement": 0.679,
+    "density": 0.4,
+    "space": 0.992,
+    "aggression": 0.281
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.796,
+      "ombre_interference": 0.895,
+      "ombre_memoryDecay": 0.895,
+      "ombre_memoryGrain": 29.8,
+      "ombre_memoryDrift": 0.944,
+      "ombre_oscShape": 0.26,
+      "ombre_reactivity": 0.74,
+      "ombre_subLevel": 0.348,
+      "ombre_filterCutoff": 5550.0,
+      "ombre_filterReso": 0.176,
+      "ombre_attack": 0.497,
+      "ombre_decay": 0.844,
+      "ombre_macroCharacter": 0.325,
+      "ombre_macroMovement": 0.679,
+      "ombre_macroCoupling": 0.0,
+      "ombre_macroSpace": 0.992
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

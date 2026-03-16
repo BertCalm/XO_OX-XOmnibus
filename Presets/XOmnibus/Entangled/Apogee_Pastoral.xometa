@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Apogee Pastoral",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Ohm"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orbital \u00d7 Ohm coupling (pitch follow). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "orbital",
+    "ohm",
+    "pitch-follow",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": 110,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.584,
+      "orb_groupEnv": 0.311,
+      "orb_phaseSpread": 0.45,
+      "orb_arcDecay": 0.446,
+      "orb_resonantPeak": 0.627,
+      "orb_harmonicAmt": 0.351,
+      "orb_macro1": 0.468,
+      "orb_macro2": 0.696,
+      "orb_macro3": 0.667,
+      "orb_macro4": 0.491,
+      "orb_couplingIn": 0.555
+    },
+    "Ohm": {
+      "ohm_macro1": 0.537,
+      "ohm_macro2": 0.453,
+      "ohm_macro3": 0.332,
+      "ohm_macro4": 0.591,
+      "ohm_couplingOut": 0.618,
+      "ohm_couplingIn": 0.6
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Ohm",
+        "type": "filter_modulation",
+        "amount": 0.42
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.486,
+    "warmth": 0.687,
+    "movement": 0.592,
+    "density": 0.615,
+    "space": 0.575,
+    "aggression": 0.39
+  }
+}

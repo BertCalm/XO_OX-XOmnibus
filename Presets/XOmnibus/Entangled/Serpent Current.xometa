@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Serpent Current",
+  "mood": "Entangled",
+  "engines": [
+    "OCEANIC",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ouroboros cycles in the open ocean \u2014 a current that feeds itself forever.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "shore",
+    "oceanic",
+    "ouroboros",
+    "cyclic",
+    "ouroboros",
+    "abyssal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.8,
+    "SPACE": 0.7
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.56,
+    "warmth": 0.55,
+    "movement": 0.67,
+    "density": 0.57,
+    "space": 0.66,
+    "aggression": 0.34
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OCEANIC",
+        "engineB": "OUROBOROS",
+        "type": "Audio->Filter",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null
+}

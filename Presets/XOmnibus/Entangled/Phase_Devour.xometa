@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Phase Devour",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Ouroboros"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orbital \u00d7 Ouroboros coupling (rhythm sync). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "orbital",
+    "ouroboros",
+    "rhythm-sync",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": 130,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.77,
+      "orb_groupEnv": 0.566,
+      "orb_phaseSpread": 0.482,
+      "orb_arcDecay": 0.504,
+      "orb_resonantPeak": 0.33,
+      "orb_harmonicAmt": 0.662,
+      "orb_macro1": 0.323,
+      "orb_macro2": 0.458,
+      "orb_macro3": 0.687,
+      "orb_macro4": 0.626,
+      "orb_couplingIn": 0.439
+    },
+    "Ouroboros": {
+      "ouro_macro1": 0.499,
+      "ouro_macro2": 0.615,
+      "ouro_macro3": 0.507,
+      "ouro_macro4": 0.695,
+      "ouro_couplingOut": 0.725,
+      "ouro_couplingIn": 0.633
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Ouroboros",
+        "type": "amplitude_sidechain",
+        "amount": 0.515
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.568,
+    "warmth": 0.46,
+    "movement": 0.692,
+    "density": 0.687,
+    "space": 0.537,
+    "aggression": 0.614
+  }
+}

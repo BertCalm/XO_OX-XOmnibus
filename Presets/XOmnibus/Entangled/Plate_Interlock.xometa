@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Plate Interlock",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Obbligato"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Obscura \u00d7 Obbligato coupling (rhythm sync). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "obscura",
+    "obbligato",
+    "rhythm-sync",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": 130,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_stiffness": 0.408,
+      "obscura_graininess": 0.613,
+      "obscura_exposure": 0.615,
+      "obscura_latentDepth": 0.518,
+      "obscura_silverTone": 0.339,
+      "obscura_macro1": 0.41,
+      "obscura_macro2": 0.315,
+      "obscura_macro3": 0.536,
+      "obscura_macro4": 0.328,
+      "obscura_couplingOut": 0.769
+    },
+    "Obbligato": {
+      "obbl_macro1": 0.526,
+      "obbl_macro2": 0.454,
+      "obbl_macro3": 0.558,
+      "obbl_macro4": 0.53,
+      "obbl_couplingOut": 0.583,
+      "obbl_couplingIn": 0.591
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Obbligato",
+        "type": "timbral_blend",
+        "amount": 0.469
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.488,
+    "warmth": 0.588,
+    "movement": 0.455,
+    "density": 0.645,
+    "space": 0.581,
+    "aggression": 0.375
+  }
+}

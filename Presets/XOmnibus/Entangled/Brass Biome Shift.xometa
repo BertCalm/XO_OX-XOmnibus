@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Brass Biome Shift",
+  "mood": "Entangled",
+  "engines": [
+    "Ocelot",
+    "Ottoni"
+  ],
+  "author": "XPN Tool \u2014 Optic/Oblique/Ocelot Coupling Pack",
+  "version": "1.0.0",
+  "description": "OTTONI's triple brass calling across OCELOT's shifting biome \u2014 a fanfare announcing the ecosystem change.",
+  "tags": [
+    "ocelot",
+    "ottoni",
+    "biome-shift",
+    "tawny",
+    "apex",
+    "entangled",
+    "coupling"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ocelot": {
+      "ocelot_biomeShift": 0.5,
+      "ocelot_warmth": 0.65,
+      "ocelot_movement": 0.6,
+      "ocelot_predatorDepth": 0.55,
+      "ocelot_filterCutoff": 2400.0,
+      "ocelot_filterReso": 0.3,
+      "ocelot_ampAttack": 0.04,
+      "ocelot_ampRelease": 1.8
+    },
+    "Ottoni": {
+      "otto_filterCutoff": 2800.0,
+      "otto_filterReso": 0.3,
+      "otto_ampAttack": 0.03,
+      "otto_ampRelease": 1.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Ottoni",
+        "type": "AmpToFilter",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Ottoni",
+        "engineB": "Ocelot",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.623,
+    "warmth": 0.583,
+    "movement": 0.623,
+    "density": 0.627,
+    "space": 0.545,
+    "aggression": 0.522
+  }
+}

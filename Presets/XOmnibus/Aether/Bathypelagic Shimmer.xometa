@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Bathypelagic Shimmer",
+  "mood": "Aether",
+  "engines": [
+    "Oceanic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Oceanic dissolved into infinite space. Space dimension at 0.93 \u2014 cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "tags": [
+    "aether",
+    "vast",
+    "reverb",
+    "spatial",
+    "infinite",
+    "cosmic",
+    "oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.214,
+    "warmth": 0.439,
+    "movement": 0.717,
+    "density": 0.605,
+    "space": 0.93,
+    "aggression": 0.366
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_separation": 0.297,
+      "ocean_alignment": 0.542,
+      "ocean_cohesion": 0.476,
+      "ocean_tether": 0.242,
+      "ocean_scatter": 0.608,
+      "ocean_subflocks": 6,
+      "ocean_damping": 0.135,
+      "ocean_waveform": 2,
+      "ocean_ampAttack": 0.485,
+      "ocean_ampDecay": 1.13,
+      "ocean_ampSustain": 0.519,
+      "ocean_ampRelease": 4.02,
+      "ocean_macroCharacter": 0.214,
+      "ocean_macroMovement": 0.717,
+      "ocean_macroCoupling": 0.0,
+      "ocean_macroSpace": 0.93
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

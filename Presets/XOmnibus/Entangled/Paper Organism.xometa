@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Paper Organism",
+  "mood": "Entangled",
+  "engines": [
+    "Organon",
+    "Origami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Origami fold angles respond to Organon metabolic pressure. Organic origami.",
+  "tags": [
+    "fold",
+    "paper",
+    "pressure",
+    "entangled",
+    "organon",
+    "origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.65,
+    "SPACE": 0.55
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 3.5,
+      "organon_enzymeSelect": 600.0,
+      "organon_catalystDrive": 1.2,
+      "organon_dampingCoeff": 0.4,
+      "organon_signalFlux": 0.7,
+      "organon_phasonShift": 0.25,
+      "organon_isotopeBalance": 0.5,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.65,
+      "organon_noiseColor": 0.6
+    },
+    "Origami": {
+      "origami_foldPoint": 0.5,
+      "origami_crease": 0.45,
+      "origami_unfold": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Origami",
+        "type": "CV->Filter",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.535,
+    "warmth": 0.54,
+    "movement": 0.745,
+    "density": 0.665,
+    "space": 0.505,
+    "aggression": 0.47
+  }
+}

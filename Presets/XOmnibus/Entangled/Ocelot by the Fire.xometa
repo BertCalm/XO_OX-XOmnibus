@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Ocelot by the Fire",
+  "mood": "Entangled",
+  "engines": [
+    "OSTERIA",
+    "OCELOT"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The cat curls near the hearth of the osteria \u2014 feline warmth by the shore fire.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "shore",
+    "osteria",
+    "ocelot",
+    "feline",
+    "fire",
+    "warmth"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.65,
+    "SPACE": 0.5
+  },
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.61,
+    "warmth": 0.7,
+    "movement": 0.54,
+    "density": 0.54,
+    "space": 0.5,
+    "aggression": 0.38
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OSTERIA",
+        "engineB": "OCELOT",
+        "type": "Env->Amp",
+        "amount": 0.6
+      }
+    ]
+  },
+  "sequencer": null
+}

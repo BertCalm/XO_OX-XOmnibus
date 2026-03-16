@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Brass Headland",
+  "mood": "Entangled",
+  "engines": [
+    "OSPREY",
+    "OTTONI"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Triple brass of OTTONI herald the osprey's return above the headland.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "shore",
+    "osprey",
+    "ottoni",
+    "brass",
+    "herald",
+    "coastal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.7,
+    "SPACE": 0.6
+  },
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.63,
+    "warmth": 0.57,
+    "movement": 0.64,
+    "density": 0.52,
+    "space": 0.67,
+    "aggression": 0.39
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OSPREY",
+        "engineB": "OTTONI",
+        "type": "Audio->Filter",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null
+}

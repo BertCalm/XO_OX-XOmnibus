@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Thermocline Drift",
+  "mood": "Aether",
+  "engines": [
+    "Osprey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Osprey dissolved into infinite space. Space dimension at 0.93 \u2014 cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "tags": [
+    "aether",
+    "vast",
+    "reverb",
+    "spatial",
+    "infinite",
+    "cosmic",
+    "osprey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.424,
+    "warmth": 0.25,
+    "movement": 0.358,
+    "density": 0.493,
+    "space": 0.93,
+    "aggression": 0.253
+  },
+  "parameters": {
+    "Osprey": {
+      "osprey_shore": 3.8,
+      "osprey_seaState": 0.758,
+      "osprey_swellPeriod": 10.4,
+      "osprey_windDir": 0.479,
+      "osprey_depth": 0.851,
+      "osprey_resonatorBright": 0.339,
+      "osprey_resonatorDecay": 0.905,
+      "osprey_sympathyAmount": 0.658,
+      "osprey_creatureRate": 0.415,
+      "osprey_creatureDepth": 0.347,
+      "osprey_coherence": 0.328,
+      "osprey_foam": 0.101,
+      "osprey_macroCharacter": 0.25,
+      "osprey_macroMovement": 0.358,
+      "osprey_macroCoupling": 0.0,
+      "osprey_macroSpace": 0.93
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Event Horizon Choir",
+  "mood": "Aether",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Obsidian dissolved into infinite space. Space dimension at 0.97 \u2014 cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "tags": [
+    "aether",
+    "vast",
+    "reverb",
+    "spatial",
+    "infinite",
+    "cosmic",
+    "obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.332,
+    "warmth": 0.281,
+    "movement": 0.565,
+    "density": 0.449,
+    "space": 0.967,
+    "aggression": 0.16
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_densityX": 0.449,
+      "obsidian_tiltY": 0.466,
+      "obsidian_depth": 0.88,
+      "obsidian_stiffness": 0.063,
+      "obsidian_cascadeBlend": 0.777,
+      "obsidian_crossModDepth": 0.08,
+      "obsidian_formantIntensity": 0.369,
+      "obsidian_stereoWidth": 0.929,
+      "obsidian_filterCutoff": 5648.0,
+      "obsidian_filterReso": 0.122,
+      "obsidian_level": 0.78,
+      "obsidian_ampAttack": 0.533,
+      "obsidian_ampRelease": 3.88,
+      "obsidian_macroCharacter": 0.281,
+      "obsidian_macroMovement": 0.565,
+      "obsidian_macroCoupling": 0.0,
+      "obsidian_macroSpace": 0.967
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

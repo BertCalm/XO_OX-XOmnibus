@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Direct Source",
+  "mood": "Foundation",
+  "engines": [
+    "Overdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0",
+  "description": "Close-miked overdub presence. Dry and immediate \u2014 space locked at 0.05. No reverb needed. The room is your ears.",
+  "tags": [
+    "foundation",
+    "intimate",
+    "dry",
+    "close",
+    "present",
+    "overdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.639,
+    "warmth": 0.539,
+    "movement": 0.1,
+    "density": 0.663,
+    "space": 0.054,
+    "aggression": 0.309
+  },
+  "parameters": {
+    "Overdub": {
+      "dub_oscWave": 1,
+      "dub_filterCutoff": 5312.0,
+      "dub_filterReso": 0.189,
+      "dub_delayTime": 0.065,
+      "dub_delayFeedback": 0.266,
+      "dub_delayWow": 0.008,
+      "dub_delayWear": 0.216,
+      "dub_sendLevel": 0.006,
+      "dub_returnLevel": 0.006,
+      "dub_driveAmount": 0.154
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

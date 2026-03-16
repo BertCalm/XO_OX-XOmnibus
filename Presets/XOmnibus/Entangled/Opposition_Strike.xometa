@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Opposition Strike",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Onset"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orbital \u00d7 Onset coupling (envelope share). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "orbital",
+    "onset",
+    "envelope-share",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": 115,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_brightness": 0.447,
+      "orb_groupEnv": 0.469,
+      "orb_phaseSpread": 0.587,
+      "orb_arcDecay": 0.467,
+      "orb_resonantPeak": 0.307,
+      "orb_harmonicAmt": 0.682,
+      "orb_macro1": 0.304,
+      "orb_macro2": 0.315,
+      "orb_macro3": 0.688,
+      "orb_macro4": 0.49,
+      "orb_couplingIn": 0.469
+    },
+    "Onset": {
+      "perc_macro1": 0.661,
+      "perc_macro2": 0.678,
+      "perc_macro3": 0.353,
+      "perc_macro4": 0.38,
+      "perc_couplingOut": 0.641,
+      "perc_couplingIn": 0.472
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Onset",
+        "type": "harmonic_lock",
+        "amount": 0.529
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.589,
+    "warmth": 0.504,
+    "movement": 0.64,
+    "density": 0.716,
+    "space": 0.49,
+    "aggression": 0.621
+  }
+}

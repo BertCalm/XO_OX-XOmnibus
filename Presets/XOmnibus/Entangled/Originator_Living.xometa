@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Originator Living",
+  "mood": "Entangled",
+  "engines": [
+    "Origami",
+    "Organon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Origami \u00d7 Organon coupling (pitch follow). Stub preset \u2014 sound-design pass pending.",
+  "tags": [
+    "origami",
+    "organon",
+    "pitch-follow",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": 130,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldPoint": 0.644,
+      "origami_crease": 0.546,
+      "origami_valleyDepth": 0.378,
+      "origami_pleatRate": 0.388,
+      "origami_tessellate": 0.367,
+      "origami_macro1": 0.545,
+      "origami_macro2": 0.312,
+      "origami_macro3": 0.385,
+      "origami_macro4": 0.58,
+      "origami_couplingOut": 0.685
+    },
+    "Organon": {
+      "organon_macro1": 0.604,
+      "organon_macro2": 0.461,
+      "organon_macro3": 0.647,
+      "organon_macro4": 0.566,
+      "organon_couplingOut": 0.466,
+      "organon_couplingIn": 0.441
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Organon",
+        "type": "harmonic_lock",
+        "amount": 0.458
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.619,
+    "warmth": 0.507,
+    "movement": 0.664,
+    "density": 0.577,
+    "space": 0.552,
+    "aggression": 0.473
+  }
+}
