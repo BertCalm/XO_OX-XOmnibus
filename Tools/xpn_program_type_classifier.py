@@ -151,18 +151,24 @@ def classify_program(prog: dict[str, Any]) -> dict[str, Any]:
     # -----------------------------------------------------------------------
     drum_score = 0
 
-    # GM note range check
+    # GM note range check — only treat as a drum signal when MOST notes cluster
+    # tightly within the GM percussion zone AND the program has no wide melodic
+    # spread.  Bass/lead programs often use MIDI notes 36-48 (C2-C3) which
+    # partially overlaps with the GM range, so also require octave_span < 1
+    # (notes don't spread more than an octave) to avoid false positives.
     if root_notes:
         notes_in_gm = sum(1 for n in root_notes if GM_DRUM_LOW <= n <= GM_DRUM_HIGH)
         gm_fraction = notes_in_gm / len(root_notes)
-        if n_kg <= 24 and gm_fraction >= 0.5:
+        note_span = max(root_notes) - min(root_notes) if len(root_notes) > 1 else 0
+        distinct_gm = len({n for n in root_notes if GM_DRUM_LOW <= n <= GM_DRUM_HIGH})
+        if n_kg <= 24 and gm_fraction >= 0.65 and note_span < 24 and distinct_gm >= 3:
             drum_score += 50
-            indicators.append(f"GM drum range ({notes_in_gm}/{len(root_notes)} notes)")
+            indicators.append(f"GM drum range ({notes_in_gm}/{len(root_notes)} notes, {distinct_gm} distinct)")
 
     # Keyword hits
     drum_hits = _keyword_hits(sample_names, DRUM_KEYWORDS)
     if drum_hits >= 3:
-        drum_score += min(50, drum_hits * 12)
+        drum_score += min(55, drum_hits * 14)
         indicators.append(f"{drum_hits} drum keywords")
     elif drum_hits >= 1:
         drum_score += drum_hits * 8
