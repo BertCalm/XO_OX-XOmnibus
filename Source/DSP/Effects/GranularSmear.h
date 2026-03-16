@@ -4,6 +4,7 @@
 #include <array>
 #include <vector>
 #include <cstring>
+#include "../FastMath.h"
 
 namespace xomnibus {
 
@@ -88,7 +89,7 @@ public:
                     // Hann window position
                     float phase = static_cast<float> (grain.grainLength - grain.samplesRemaining)
                                 / static_cast<float> (grain.grainLength);
-                    float window = 0.5f * (1.0f - std::cos (2.0f * 3.14159265f * phase));
+                    float window = 0.5f * (1.0f - fastCos (2.0f * 3.14159265f * phase));
 
                     int rp = grain.readPos % bufferSize;
                     if (rp < 0) rp += bufferSize;

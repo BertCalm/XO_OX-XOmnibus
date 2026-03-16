@@ -5,6 +5,7 @@
 #include <limits>
 #include "OcelotVoice.h"
 #include "OcelotParamSnapshot.h"
+#include "../../DSP/FastMath.h"
 
 namespace xocelot {
 
@@ -117,8 +118,8 @@ public:
         // Soft-clip the mix to prevent hard distortion when multiple voices sum
         for (int i = 0; i < numSamples; ++i)
         {
-            outL[i] = std::tanh(outL[i]);
-            outR[i] = std::tanh(outR[i]);
+            outL[i] = xomnibus::fastTanh(outL[i]);
+            outR[i] = xomnibus::fastTanh(outR[i]);
         }
 
         return std::sqrt(totalSumSq / static_cast<float>(kMaxVoices));

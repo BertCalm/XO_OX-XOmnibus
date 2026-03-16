@@ -106,7 +106,7 @@ struct OrphicaMicrosound {
                 // Hann window
                 float phase = static_cast<float>(gr.length - gr.remaining)
                             / static_cast<float>(gr.length);
-                float window = 0.5f * (1.0f - std::cos(2.0f * 3.14159265f * phase));
+                float window = 0.5f * (1.0f - fastCos(2.0f * 3.14159265f * phase));
 
                 int rp = gr.readPos % kBufSize;
                 if (rp < 0) rp += kBufSize;
@@ -145,7 +145,7 @@ struct OrphicaAdapterVoice {
         micro.reset();active=false;ampEnv=0;
     }
     void noteOn(int n,float v){
-        note=n;vel=v;freq=440*std::pow(2.f,(n-69)/12.f);
+        note=n;vel=v;freq=440*fastPow2((n-69)/12.f);
         dl.reset();df.reset();body.setParams(freq*1.2f,4);symp.tune(freq);
         pluck.trigger(2.5f);ampEnv=v;releasing=false;active=true;
     }
@@ -385,7 +385,7 @@ public:
             float subInc=subFreq/static_cast<float>(sr);
             for(int i=0;i<ns;++i){
                 subPhaseL=std::fmod(subPhaseL+subInc,1.0f);
-                float sub=std::sin(subPhaseL*6.2831853f)*pSub*0.3f;
+                float sub=fastSin(subPhaseL*6.2831853f)*pSub*0.3f;
                 lowBufL[i]+=sub; lowBufR[i]+=sub;
             }
         }

@@ -1,5 +1,6 @@
 #pragma once
 #include <cmath>
+#include "../../DSP/FastMath.h"
 
 namespace xocelot {
 
@@ -12,7 +13,7 @@ struct WaveFolder
     // drive: 1.0 = clean, higher = more folds (useful range 1–5)
     static float process(float x, float drive)
     {
-        return std::tanh(x * drive);
+        return xomnibus::fastTanh(x * drive);
     }
 };
 

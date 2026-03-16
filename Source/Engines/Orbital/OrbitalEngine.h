@@ -594,7 +594,7 @@ public:
         if (spectralDriftPhase >= juce::MathConstants<double>::twoPi) spectralDriftPhase -= juce::MathConstants<double>::twoPi;
         // D006: aftertouch added below — atPressure resolved after MIDI loop
         float effectiveMorph  = juce::jlimit (0.0f, 1.0f,
-            morphPosition + morphOffset + 0.05f * (float)std::sin(spectralDriftPhase));
+            morphPosition + morphOffset + 0.05f * (float)fastSin(spectralDriftPhase));
         // D001: compute peak velocity × envLevel across all active voices this block.
         // The post-mix SVF filter receives a boost proportional to how hard the notes
         // are playing — louder/harder hits open the filter, satisfying D001 (velocity

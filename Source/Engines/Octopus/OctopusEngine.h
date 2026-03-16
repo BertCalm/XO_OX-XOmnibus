@@ -378,7 +378,7 @@ public:
         sr = sampleRate;
         srf = static_cast<float> (sr);
 
-        smoothCoeff = 1.0f - std::exp (-kTwoPi * (1.0f / 0.005f) / srf);
+        smoothCoeff = 1.0f - fastExp (-kTwoPi * (1.0f / 0.005f) / srf);
         crossfadeRate = 1.0f / (0.005f * srf);
 
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
@@ -514,7 +514,7 @@ public:
         // Glide coefficient — shapeshifter extreme portamento
         float glideCoeff = 1.0f;
         if (pShiftGlide > 0.001f)
-            glideCoeff = 1.0f - std::exp (-1.0f / (pShiftGlide * srf));
+            glideCoeff = 1.0f - fastExp (-1.0f / (pShiftGlide * srf));
 
         // === MACRO MODULATION ===
         // M1 CHARACTER: arms depth + sucker intensity
@@ -601,6 +601,9 @@ public:
         }
 
         float peakEnv = 0.0f;
+
+        // Chromatophore envelope follower coefficient — block-constant
+        const float chromaCoeff = 1.0f - fastExp (-kTwoPi * (pChromaSpeed * 20.0f + 1.0f) / srf);
 
         // --- Render sample loop ---
         for (int sample = 0; sample < numSamples; ++sample)
@@ -718,7 +721,6 @@ public:
                 {
                     // Envelope follower — tracks signal amplitude
                     float envIn = std::fabs (voiceSignal);
-                    float chromaCoeff = 1.0f - std::exp (-kTwoPi * (pChromaSpeed * 20.0f + 1.0f) / srf);
                     voice.envFollower += (envIn - voice.envFollower) * chromaCoeff;
                     voice.envFollower = flushDenormal (voice.envFollower);
 
@@ -1197,7 +1199,7 @@ private:
                 float sample = 0.0f;
 
                 // Frame 0: Pure sine — calm, resting octopus
-                float sine = std::sin (kTwoPi * phase);
+                float sine = fastSin (kTwoPi * phase);
 
                 // Progression: add fluid, undulating overtones
                 // Unlike Orca's metallic/inharmonic stretch, Octopus uses
@@ -1227,7 +1229,7 @@ private:
                     // Phase rotation per partial — creates swirling motion
                     float phaseRot = morph * kPI * 0.5f * n;
 
-                    sample += amp * std::sin (kTwoPi * ratio * phase + phaseRot);
+                    sample += amp * fastSin (kTwoPi * ratio * phase + phaseRot);
                     totalAmp += amp;
                 }
 
@@ -1242,7 +1244,7 @@ private:
                 {
                     float foldAmount = (morph - 0.5f) * 2.0f;
                     // Gentle wavefold — creates the bubbling, sucking quality
-                    float folded = std::sin (sample * kPI * (1.0f + foldAmount));
+                    float folded = fastSin (sample * kPI * (1.0f + foldAmount));
                     sample = sample * (1.0f - foldAmount * 0.4f) + folded * foldAmount * 0.4f;
                 }
 

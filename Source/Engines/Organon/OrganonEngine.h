@@ -1019,7 +1019,7 @@ public:
                 float voicePhase = phasonClock + static_cast<float> (voiceIndex) / static_cast<float> (kMaxVoices);
                 if (voicePhase > 1.0f) voicePhase -= 1.0f;
                 // Sinusoidal modulation: +/- phasonShift of metabolic rate
-                phasonModulations[voiceIndex] = std::sin (kTwoPi * voicePhase) * phasonShift;
+                phasonModulations[voiceIndex] = fastSin (kTwoPi * voicePhase) * phasonShift;
             }
         }
         else

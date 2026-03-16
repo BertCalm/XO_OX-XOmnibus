@@ -27,6 +27,7 @@
 #include "DSP/ParamSnapshot.h"
 #include "DSP/KnotMatrix.h"
 #include "DSP/FastMath.h"
+#include "../../DSP/FastMath.h"
 
 #include <array>
 #include <cmath>
@@ -171,7 +172,7 @@ public:
                 case 0: modTangleDepth = std::clamp(modTangleDepth + mwMod, 0.0f, 1.0f); break;
                 case 1: modEntrain     = std::clamp(modEntrain + mwMod, 0.0f, 1.0f); break;
                 case 2: modBioluminescence = std::clamp(modBioluminescence + mwMod, 0.0f, 1.0f); break;
-                case 3: modFilterCutoff = std::clamp(modFilterCutoff * std::pow(2.0f, mwMod * 3.0f), 20.0f, 20000.0f); break;
+                case 3: modFilterCutoff = std::clamp(modFilterCutoff * fastPow2(mwMod * 3.0f), 20.0f, 20000.0f); break;
                 default: break;
             }
             float atMod = aftertouchValue * params.atPressureDepth;
@@ -218,10 +219,10 @@ public:
 
         // SVF filter coefficients (once per block)
         float envMod = filterEnvLevel * filterEnvVelocity * params.filterEnvAmt;
-        float effectiveCutoff = modFilterCutoff * std::pow(2.0f, envMod * 4.0f);
+        float effectiveCutoff = modFilterCutoff * fastPow2(envMod * 4.0f);
         effectiveCutoff = std::clamp(effectiveCutoff, 20.0f,
                                      std::min(20000.0f, static_cast<float>(sr) * 0.45f));
-        float g_svf   = std::tan(3.14159265f * effectiveCutoff / static_cast<float>(sr));
+        float g_svf   = fastTan(3.14159265f * effectiveCutoff / static_cast<float>(sr));
         float k_svf   = 2.0f - 2.0f * params.filterRes;
         k_svf         = std::max(k_svf, 0.01f);
         float svfDen  = 1.0f / (1.0f + k_svf * g_svf + g_svf * g_svf);
@@ -279,8 +280,8 @@ public:
 
                 float pan     = kPanPositions[i] * modSpread;
                 float panNorm = (pan + 1.0f) * 0.5f;
-                float lGain   = std::cos(panNorm * 1.5707963f);
-                float rGain   = std::sin(panNorm * 1.5707963f);
+                float lGain   = fastCos(panNorm * 1.5707963f);
+                float rGain   = fastSin(panNorm * 1.5707963f);
                 left  += fdnOut * lGain;
                 right += fdnOut * rGain;
             }
@@ -600,7 +601,7 @@ private:
     {
         switch (shape)
         {
-            case 0: return std::sin(phase * 6.28318530f);
+            case 0: return fastSin(phase * 6.28318530f);
             case 1: return 2.0f * std::fabs(2.0f * phase - 1.0f) - 1.0f;
             case 2: return 1.0f - 2.0f * phase;
             case 3: return phase < 0.5f ? 1.0f : -1.0f;
@@ -621,7 +622,7 @@ private:
             case 1: dampening    = std::clamp(dampening + mod * 0.5f, 0.0f, 1.0f); break;
             case 2: pulseRate    = std::max(0.01f, pulseRate * (1.0f + mod * 0.5f)); break;
             case 3: delayBase    = std::max(1.0f, delayBase * (1.0f + mod * 0.3f)); break;
-            case 4: filterCutoff = std::clamp(filterCutoff * std::pow(2.0f, mod * 2.0f), 20.0f, 20000.0f); break;
+            case 4: filterCutoff = std::clamp(filterCutoff * fastPow2(mod * 2.0f), 20.0f, 20000.0f); break;
             case 5: spread       = std::clamp(spread + mod * 0.5f, 0.0f, 1.0f); break;
         }
     }

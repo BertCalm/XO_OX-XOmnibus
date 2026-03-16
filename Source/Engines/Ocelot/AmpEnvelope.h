@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <algorithm>
+#include "../../DSP/FastMath.h"
 
 namespace xocelot {
 
@@ -91,7 +92,7 @@ private:
 
     float calcCoeff(float timeMs) const
     {
-        return std::exp(-1.0f / (timeMs * 0.001f * static_cast<float>(sr)));
+        return xomnibus::fastExp(-1.0f / (timeMs * 0.001f * static_cast<float>(sr)));
     }
 };
 

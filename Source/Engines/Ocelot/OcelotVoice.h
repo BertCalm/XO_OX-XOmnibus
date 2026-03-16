@@ -109,7 +109,7 @@ public:
         ecosystemDriftPhase += static_cast<float>(numSamples) * 0.07f
                                / static_cast<float>(sr);
         if (ecosystemDriftPhase > 1.0f) ecosystemDriftPhase -= 1.0f;
-        float driftSine = std::sin(ecosystemDriftPhase * juce::MathConstants<float>::twoPi);
+        float driftSine = xomnibus::fastSin(ecosystemDriftPhase * juce::MathConstants<float>::twoPi);
         float lfoEcosystemDepth = std::clamp(
             snap.ecosystemDepth + snap.ecosystemDepth * 0.20f * driftSine, 0.0f, 1.0f);
 
@@ -172,8 +172,8 @@ public:
             if (snap.humidity > 0.01f)
             {
                 float drive = 1.0f + snap.humidity * 4.0f;
-                l = std::tanh(l * drive) / drive;
-                r = std::tanh(r * drive) / drive;
+                l = xomnibus::fastTanh(l * drive) / drive;
+                r = xomnibus::fastTanh(r * drive) / drive;
             }
 
             // Amp envelope (per-sample)

@@ -460,7 +460,7 @@ public:
         // Derived from a 5ms time constant (200Hz cutoff), which prevents
         // audible zipper noise on knob movements while remaining responsive
         // enough for performance gestures.
-        parameterSmoothingCoefficient = 1.0f - std::exp (-kTwoPi * (1.0f / 0.005f) / sampleRateFloat);
+        parameterSmoothingCoefficient = 1.0f - fastExp (-kTwoPi * (1.0f / 0.005f) / sampleRateFloat);
 
         // Voice-stealing crossfade rate: 5ms linear ramp.
         // 5ms is short enough to be imperceptible as a click but long enough
@@ -493,7 +493,7 @@ public:
         for (int i = 0; i < kFFTSize; ++i)
         {
             hannWindow[static_cast<size_t> (i)] =
-                0.5f * (1.0f - std::cos (kTwoPi * static_cast<float> (i) / static_cast<float> (kFFTSize)));
+                0.5f * (1.0f - fastCos (kTwoPi * static_cast<float> (i) / static_cast<float> (kFFTSize)));
         }
 
         // Build bit-reversal table and twiddle factors for the radix-2 FFT
@@ -610,7 +610,7 @@ public:
         // At 0.001s minimum, glide is essentially instant.
         float glideCoefficient = 1.0f;
         if (glideTime > 0.001f)
-            glideCoefficient = 1.0f - std::exp (-1.0f / (glideTime * sampleRateFloat));
+            glideCoefficient = 1.0f - fastExp (-1.0f / (glideTime * sampleRateFloat));
 
         // ---- Apply macro and coupling modulation offsets ----
 
@@ -810,8 +810,8 @@ public:
                     panPosition = 0.3f + 0.4f * static_cast<float> (voiceIndex) / static_cast<float> (kMaxVoices - 1);
                 }
                 // Constant-power panning using sin/cos law
-                float panGainLeft  = std::cos (panPosition * kPI * 0.5f);
-                float panGainRight = std::sin (panPosition * kPI * 0.5f);
+                float panGainLeft  = fastCos (panPosition * kPI * 0.5f);
+                float panGainRight = fastSin (panPosition * kPI * 0.5f);
 
                 stereoMixLeft  += outputSample * panGainLeft;
                 stereoMixRight += outputSample * panGainRight;
@@ -1194,8 +1194,8 @@ private:
         for (int k = 0; k < kFFTSize / 2; ++k)
         {
             float angle = -kTwoPi * static_cast<float> (k) / static_cast<float> (kFFTSize);
-            twiddleFactorsReal[static_cast<size_t> (k)] = std::cos (angle);
-            twiddleFactorsImaginary[static_cast<size_t> (k)] = std::sin (angle);
+            twiddleFactorsReal[static_cast<size_t> (k)] = fastCos (angle);
+            twiddleFactorsImaginary[static_cast<size_t> (k)] = fastSin (angle);
         }
     }
 
@@ -1406,8 +1406,8 @@ private:
             float magnitude = std::max (voice.foldedMagnitude[static_cast<size_t> (bin)], kMagnitudeFloor);
             float binPhase  = voice.foldedPhase[static_cast<size_t> (bin)];
 
-            voice.ifftReal[static_cast<size_t> (bin)] = magnitude * std::cos (binPhase);
-            voice.ifftImaginary[static_cast<size_t> (bin)] = magnitude * std::sin (binPhase);
+            voice.ifftReal[static_cast<size_t> (bin)] = magnitude * fastCos (binPhase);
+            voice.ifftImaginary[static_cast<size_t> (bin)] = magnitude * fastSin (binPhase);
         }
 
         // Mirror conjugate for negative frequencies.
@@ -1626,15 +1626,17 @@ private:
         //   stretch =  0 -> exponent = 1.0  (identity, no change)
         //   stretch = +1 -> exponent = 2.0  (square-law: darken)
         //   stretch = -1 -> exponent = 0.5  (square-root: brighten)
-        float warpExponent = std::pow (2.0f, stretchAmount);
+        float warpExponent = fastPow2 (stretchAmount);
 
         for (int bin = 1; bin < kFFTHalf; ++bin)
         {
             // Normalized frequency position [0, 1]
             float normalizedFrequency = static_cast<float> (bin) / static_cast<float> (kFFTHalf - 1);
 
-            // Apply power-law warp: f_out = f_in ^ exponent
-            float warpedFrequency = std::pow (normalizedFrequency, warpExponent);
+            // Apply power-law warp: f_out = f_in ^ exponent = 2^(exponent * log2(f_in))
+            float warpedFrequency = (normalizedFrequency > 0.0f)
+                ? fastPow2 (warpExponent * std::log2 (normalizedFrequency))
+                : 0.0f;
 
             // Map warped frequency back to bin index
             float warpedBinPosition = warpedFrequency * static_cast<float> (kFFTHalf - 1);
@@ -1837,7 +1839,7 @@ private:
     // A4 (MIDI note 69) = 440 Hz, 12 semitones per octave.
     static float midiNoteToFrequency (float midiNote) noexcept
     {
-        return 440.0f * std::pow (2.0f, (midiNote - 69.0f) / 12.0f);
+        return 440.0f * fastPow2 ((midiNote - 69.0f) / 12.0f);
     }
 
     //==========================================================================

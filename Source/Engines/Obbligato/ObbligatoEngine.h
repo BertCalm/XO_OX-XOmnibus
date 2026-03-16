@@ -21,7 +21,7 @@ struct ObbligatoAdapterVoice {
     }
     void reset(){dl.reset();df.reset();body.reset();symp.reset();drift.reset();airJet.reset();reed.reset();active=false;ampEnv=0;}
     void noteOn(int n,float v){
-        note=n;vel=v;freq=440*std::pow(2.f,(n-69)/12.f);
+        note=n;vel=v;freq=440*fastPow2((n-69)/12.f);
         dl.reset();df.reset();body.setParams(freq*1.3f,3.5f);symp.tune(freq);
         ampEnv=v;releasing=false;active=true;
     }
@@ -191,7 +191,7 @@ public:
                 float exc;
                 if(v.isBroA){
                     // Air flutter modulates breath pressure for flute vibrato
-                    float flutterMod = pFlutterA * 0.15f * std::sin(v.drift.tick(5.0f, 1.0f) * 20.0f);
+                    float flutterMod = pFlutterA * 0.15f * fastSin(v.drift.tick(5.0f, 1.0f) * 20.0f);
                     exc=v.airJet.tick(std::clamp(effBreathA*velIntens + flutterMod * pEmbA, 0.0f, 1.0f), v.freq)*effIntens;
                 }else{
                     // Reed bite adds harmonic edge on top of stiffness
@@ -225,7 +225,7 @@ public:
             // Chorus: subtle pitch modulation via LFO
             chorusPhase += 0.7f / (float)sr; // ~0.7Hz chorus LFO
             if(chorusPhase>=1.0f) chorusPhase-=1.0f;
-            float chorusMod = std::sin(chorusPhase * 6.2831853f) * pChorus * 0.003f;
+            float chorusMod = fastSin(chorusPhase * 6.2831853f) * pChorus * 0.003f;
             float chorusL = sL * (1.0f + chorusMod);
             float chorusR = sR * (1.0f - chorusMod);
 
@@ -256,7 +256,7 @@ public:
             // Phaser: notch sweep
             phaserPhase += 0.3f / (float)sr; // ~0.3Hz phaser LFO
             if(phaserPhase>=1.0f) phaserPhase-=1.0f;
-            float phaserMod = std::sin(phaserPhase * 6.2831853f);
+            float phaserMod = fastSin(phaserPhase * 6.2831853f);
             float notchFreq = 0.1f + phaserMod * 0.05f;
             phaserStateL = flushDenormal(phaserStateL + (chorusL - phaserStateL) * notchFreq);
             phaserStateR = flushDenormal(phaserStateR + (chorusR - phaserStateR) * notchFreq);

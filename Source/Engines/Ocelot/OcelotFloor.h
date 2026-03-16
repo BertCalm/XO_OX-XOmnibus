@@ -8,6 +8,7 @@
 #include "KarplusStrong.h"
 #include "ModalResonator.h"
 #include "WaveFolder.h"
+#include "../../DSP/FastMath.h"
 
 namespace xocelot {
 
@@ -73,7 +74,7 @@ public:
 
         // Compute base frequency with pitch offset
         float pitchOffset = (snap.floorPitch - 0.5f) * 24.0f; // +/-12 semitones
-        baseFreq = 440.0f * std::pow(2.0f, (midiNote - 69 + pitchOffset / 12.0f) / 12.0f);
+        baseFreq = 440.0f * xomnibus::fastPow2((midiNote - 69 + pitchOffset / 12.0f) / 12.0f);
 
         int model = std::clamp(snap.floorModel, 0, 5);
 
@@ -204,7 +205,7 @@ private:
 
     inline static float midiToFreq(int note)
     {
-        return 440.0f * std::pow(2.0f, (note - 69) / 12.0f);
+        return 440.0f * xomnibus::fastPow2((note - 69) / 12.0f);
     }
 
     // Simple 1-pole lowpass for brightness tilt on output
@@ -268,7 +269,7 @@ private:
         for (int i = 0; i < numSamples; ++i)
         {
             // Pitch sweep: frequency modulation decaying from noteOn
-            float sweepMul = 1.0f + sweepAmount * std::exp(-sweepPhase * 6.0f);
+            float sweepMul = 1.0f + sweepAmount * xomnibus::fastExp(-sweepPhase * 6.0f);
             sweepPhase += sweepDecayPerSample;
 
             // Update KS frequency with sweep
@@ -322,7 +323,7 @@ private:
         float svfQ = 15.0f + tension * 10.0f; // 15-25 for squealing quality
         float svfCutoff = baseFreq * 2.0f;
         svfCutoff = std::clamp(svfCutoff, 100.0f, sr * 0.45f);
-        float svfF = 2.0f * std::sin(kPi * svfCutoff / sr);
+        float svfF = 2.0f * xomnibus::fastSin(kPi * svfCutoff / sr);
         svfF = std::clamp(svfF, 0.001f, 0.999f);
 
         // Biome modifiers
@@ -351,7 +352,7 @@ private:
         {
             // Pitch bend: upward sweep decaying from noteOn
             float bendSemitones = cuicaBendEnv * tension * 12.0f * bendScale;
-            float freq = baseFreq * std::pow(2.0f, bendSemitones / 12.0f);
+            float freq = baseFreq * xomnibus::fastPow2(bendSemitones / 12.0f);
 
             // Winter: noise modulate frequency
             if (noiseModAmt > 0.0f)
@@ -365,10 +366,10 @@ private:
             // Damped sine oscillator
             cuicaPhase += freq / sr;
             if (cuicaPhase >= 1.0f) cuicaPhase -= 1.0f;
-            float osc = std::sin(kTwoPi * cuicaPhase);
+            float osc = xomnibus::fastSin(kTwoPi * cuicaPhase);
 
             // Amplitude decay with damping
-            float ampDecay = std::exp(-static_cast<float>(i) * damp * 0.0001f);
+            float ampDecay = xomnibus::fastExp(-static_cast<float>(i) * damp * 0.0001f);
             osc *= currentVelocity * ampDecay;
 
             // Inline SVF bandpass for squealing quality
@@ -376,7 +377,7 @@ private:
             float h = osc - cuicaLpState - (1.0f / svfQ) * cuicaBpState;
             cuicaBpState += svfF * h;
             cuicaLpState += svfF * cuicaBpState;
-            cuicaBpState = std::tanh(cuicaBpState); // saturation for character
+            cuicaBpState = xomnibus::fastTanh(cuicaBpState); // saturation for character
             cuicaBpState = flushDenormal(cuicaBpState);
             cuicaLpState = flushDenormal(cuicaLpState);
 
