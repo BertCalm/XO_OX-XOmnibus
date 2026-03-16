@@ -1,693 +1,614 @@
 #!/usr/bin/env python3
 """
-XPN Pack Release Checklist — XO_OX Designs
-Runs the 15-point pre-release checklist for a .xpn pack and generates a
-formatted report combining automated checks with manual placeholders.
+xpn_pack_release_checklist.py
+Pre-release checklist runner for XPN packs.
+Verifies everything is in order before packaging and publishing a pack.
 
 Usage:
-    python xpn_pack_release_checklist.py <pack.xpn> [--tier signal|form|doctrine] \
-        [--format text|markdown] [--output FILE]
-
-Tiers and pack_score thresholds:
-    signal   >= 70
-    form     >= 80  (default)
-    doctrine >= 90
+    python xpn_pack_release_checklist.py --pack-dir ./MyPack
+    python xpn_pack_release_checklist.py --pack-dir ./MyPack --strict
+    python xpn_pack_release_checklist.py --pack-dir ./MyPack --json
 """
 
 import argparse
 import json
-import math
 import os
 import re
-import struct
 import sys
-import zipfile
-from dataclasses import dataclass, field
 from pathlib import Path
-from typing import List, Optional, Tuple
-from xml.etree import ElementTree as ET
-
 
 # ---------------------------------------------------------------------------
 # Constants
 # ---------------------------------------------------------------------------
 
-TIER_THRESHOLDS = {"signal": 70, "form": 80, "doctrine": 90}
-CLIPPING_THRESHOLD_DBFS = -0.5          # peaks above this flag as clipping
-CLIPPING_LINEAR = 10 ** (CLIPPING_THRESHOLD_DBFS / 20.0)  # ~0.9441
-COVER_MIN_PX = 400
-PROGRAM_NAME_MAX = 20
-TUNING_TOLERANCE_CENTS = 50.0
-VERSION_RE = re.compile(r"^\d+\.\d+\.\d+$")
+REQUIRED_EXPANSION_FIELDS = {"name", "version", "description", "type", "tier"}
 
-PASS  = "PASS"
-FAIL  = "FAIL"
-SKIP  = "SKIP"   # could not verify (missing data)
+SONIC_DNA_KEYS = {"energy", "warmth", "darkness", "motion", "density", "brightness"}
 
+VALID_MOODS = {
+    "Foundation",
+    "Atmosphere",
+    "Entangled",
+    "Prism",
+    "Flux",
+    "Aether",
+    "Family",
+}
+
+FORBIDDEN_NAME_CHARS = set('[]/\\:*?"<>|')
+
+SEMVER_RE = re.compile(r"^\d+\.\d+\.\d+$")
+
+DRUM_TYPE_KEYWORDS = {"drums", "kits", "drum", "kit", "percussion", "beats"}
 
 # ---------------------------------------------------------------------------
-# Result model
+# Result helpers
 # ---------------------------------------------------------------------------
 
-@dataclass
+PASS = "PASS"
+FAIL = "FAIL"
+WARN = "WARN"
+SKIP = "SKIP"
+
+# Checks that cause exit(1) on failure
+CRITICAL_CHECK_IDS = {1, 2, 3, 4, 5, 7, 12, 13}
+
+
 class CheckResult:
-    number: int
-    description: str
-    status: str          # PASS / FAIL / SKIP
-    detail: str = ""     # extra detail for the report line
+    def __init__(self, check_id: int, label: str, status: str, detail: str = ""):
+        self.check_id = check_id
+        self.label = label
+        self.status = status
+        self.detail = detail
+
+    def to_dict(self):
+        d = {"id": self.check_id, "label": self.label, "status": self.status}
+        if self.detail:
+            d["detail"] = self.detail
+        return d
 
 
 # ---------------------------------------------------------------------------
-# WAV helpers (stdlib only — no soundfile/scipy)
+# Utility
 # ---------------------------------------------------------------------------
 
-def _wav_peak(data: bytes) -> Optional[float]:
-    """Return the absolute peak sample value (0.0–1.0) from raw WAV bytes."""
+
+def find_files(root: Path, suffix: str):
+    return list(root.rglob(f"*{suffix}"))
+
+
+def load_json_file(path: Path):
+    with path.open("r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+# ---------------------------------------------------------------------------
+# Individual checks
+# ---------------------------------------------------------------------------
+
+
+def check_01_expansion_json(pack_dir: Path) -> CheckResult:
+    """expansion.json exists and has required fields."""
+    label = "expansion.json exists with required fields"
+    exp_path = pack_dir / "expansion.json"
+    if not exp_path.exists():
+        return CheckResult(1, label, FAIL, "expansion.json not found in pack root")
     try:
-        if data[:4] != b"RIFF" or data[8:12] != b"WAVE":
-            return None
-        offset = 12
-        fmt_channels = fmt_sampwidth = fmt_samplerate = None
-        data_offset = data_size = None
-        while offset + 8 <= len(data):
-            chunk_id = data[offset:offset+4]
-            chunk_size = struct.unpack_from("<I", data, offset+4)[0]
-            if chunk_id == b"fmt ":
-                audio_format = struct.unpack_from("<H", data, offset+8)[0]
-                if audio_format not in (1, 3):   # PCM or IEEE float
-                    return None
-                fmt_channels  = struct.unpack_from("<H", data, offset+10)[0]
-                fmt_sampwidth  = struct.unpack_from("<H", data, offset+22)[0]  # bits
-            elif chunk_id == b"data":
-                data_offset = offset + 8
-                data_size   = chunk_size
-                break
-            offset += 8 + chunk_size + (chunk_size & 1)
-        if fmt_sampwidth is None or data_offset is None or data_size == 0:
-            return None
-        raw = data[data_offset:data_offset + data_size]
-        peak = 0.0
-        if fmt_sampwidth == 16:
-            n = len(raw) // 2
-            samples = struct.unpack_from(f"<{n}h", raw, 0)
-            peak = max(abs(s) / 32768.0 for s in samples) if samples else 0.0
-        elif fmt_sampwidth == 24:
-            peak = 0.0
-            for i in range(0, len(raw) - 2, 3):
-                val = struct.unpack_from("<i", raw[i:i+3] + (b"\xff" if raw[i+2] & 0x80 else b"\x00"))[0] >> 8
-                peak = max(peak, abs(val) / 8388608.0)
-        elif fmt_sampwidth == 32:
-            # could be float or int — detect by audio_format (already checked above)
-            n = len(raw) // 4
-            try:
-                samples = struct.unpack_from(f"<{n}f", raw, 0)
-                peak = max(abs(s) for s in samples) if samples else 0.0
-            except Exception:
-                samples = struct.unpack_from(f"<{n}i", raw, 0)
-                peak = max(abs(s) / 2147483648.0 for s in samples) if samples else 0.0
-        else:
-            return None
-        return peak
-    except Exception:
-        return None
+        data = load_json_file(exp_path)
+    except Exception as e:
+        return CheckResult(1, label, FAIL, f"JSON parse error: {e}")
+    missing = REQUIRED_EXPANSION_FIELDS - set(data.keys())
+    if missing:
+        return CheckResult(1, label, FAIL, f"Missing fields: {sorted(missing)}")
+    return CheckResult(1, label, PASS)
 
 
-def _wav_is_silent(data: bytes) -> Optional[bool]:
-    """Return True if the WAV contains only silence (all zeros)."""
-    peak = _wav_peak(data)
-    if peak is None:
-        return None
-    return peak < 1e-6
-
-
-# ---------------------------------------------------------------------------
-# PNG dimension helper
-# ---------------------------------------------------------------------------
-
-def _png_dimensions(data: bytes) -> Optional[Tuple[int, int]]:
-    """Return (width, height) from PNG header bytes, or None."""
-    try:
-        if data[:8] != b"\x89PNG\r\n\x1a\n":
-            return None
-        if data[12:16] != b"IHDR":
-            return None
-        width  = struct.unpack_from(">I", data, 16)[0]
-        height = struct.unpack_from(">I", data, 20)[0]
-        return width, height
-    except Exception:
-        return None
-
-
-def _jpg_dimensions(data: bytes) -> Optional[Tuple[int, int]]:
-    """Return (width, height) from JPEG SOF marker, or None."""
-    try:
-        if data[:2] != b"\xff\xd8":
-            return None
-        offset = 2
-        while offset + 4 < len(data):
-            if data[offset] != 0xFF:
-                break
-            marker = data[offset+1]
-            length = struct.unpack_from(">H", data, offset+2)[0]
-            if marker in (0xC0, 0xC1, 0xC2):
-                height = struct.unpack_from(">H", data, offset+5)[0]
-                width  = struct.unpack_from(">H", data, offset+7)[0]
-                return width, height
-            offset += 2 + length
-        return None
-    except Exception:
-        return None
-
-
-# ---------------------------------------------------------------------------
-# XPM XML helpers
-# ---------------------------------------------------------------------------
-
-def _parse_xpm(data: bytes) -> Optional[ET.Element]:
-    try:
-        return ET.fromstring(data)
-    except ET.ParseError:
-        return None
-
-
-def _get_layers(root: ET.Element) -> List[ET.Element]:
-    """Return all Layer elements from an XPM tree."""
-    return root.findall(".//Layer")
-
-
-# ---------------------------------------------------------------------------
-# pack_score calculation  (simplified heuristic matching xpn_qa_checker.py style)
-# ---------------------------------------------------------------------------
-
-def _compute_pack_score(
-    expansion: dict,
-    manifest: dict,
-    programs: List[ET.Element],
-    sample_peaks: dict,  # path -> float peak
-) -> float:
-    """
-    Quick heuristic pack_score [0–100]:
-      - 30 pts: expansion.json completeness
-      - 20 pts: sonic_dna completeness
-      - 20 pts: program count (>=10 full marks)
-      - 15 pts: sample peak quality (no clipping)
-      - 15 pts: program name quality (within limit)
-    """
-    score = 0.0
-
-    # expansion.json completeness (30 pts)
-    exp_fields = ["Name", "Engine", "Version", "Description", "Author"]
-    filled = sum(1 for f in exp_fields if expansion.get(f, "").strip())
-    score += 30 * (filled / len(exp_fields))
-
-    # sonic_dna (20 pts)
-    dna = manifest.get("sonic_dna", {}) if manifest else {}
-    dna_dims = ["brightness", "warmth", "movement", "density", "space", "aggression"]
-    filled_dna = sum(1 for d in dna_dims if d in dna)
-    score += 20 * (filled_dna / len(dna_dims))
-
-    # program count (20 pts — 10+ = full)
-    prog_count = len(programs)
-    score += min(20.0, 20 * prog_count / 10)
-
-    # no clipping (15 pts)
-    if sample_peaks:
-        clean = sum(1 for p in sample_peaks.values() if p < CLIPPING_LINEAR)
-        score += 15 * (clean / len(sample_peaks))
-    else:
-        score += 15  # no samples to check = no deduction
-
-    # program names within limit (15 pts)
-    if programs:
-        ok = sum(1 for p in programs
-                 if len((p.get("ProgramName") or "").strip()) <= PROGRAM_NAME_MAX)
-        score += 15 * (ok / len(programs))
-    else:
-        score += 15
-
-    return round(score, 1)
-
-
-# ---------------------------------------------------------------------------
-# Core checker
-# ---------------------------------------------------------------------------
-
-def run_checks(xpn_path: Path, tier: str) -> Tuple[List[CheckResult], dict]:
-    """
-    Run all 11 automated checks. Returns (results, metadata).
-    metadata keys: pack_name, engine, version, tier, score, threshold
-    """
-    results: List[CheckResult] = []
-    threshold = TIER_THRESHOLDS[tier]
-
-    if not xpn_path.exists():
-        print(f"ERROR: File not found: {xpn_path}", file=sys.stderr)
-        sys.exit(1)
-
-    try:
-        zf = zipfile.ZipFile(xpn_path, "r")
-    except zipfile.BadZipFile:
-        print(f"ERROR: Not a valid ZIP/XPN file: {xpn_path}", file=sys.stderr)
-        sys.exit(1)
-
-    namelist = zf.namelist()
-
-    # ------------------------------------------------------------------
-    # CHECK 1: expansion.json
-    # ------------------------------------------------------------------
-    expansion: dict = {}
-    exp_names = [n for n in namelist if Path(n).name == "expansion.json"]
-    if exp_names:
+def check_02_sonic_dna(xometa_files: list) -> CheckResult:
+    """All .xometa files have valid sonic_dna (6 keys, values 0.0-1.0)."""
+    label = "All .xometa files have valid sonic_dna"
+    if not xometa_files:
+        return CheckResult(2, label, SKIP, "No .xometa files found")
+    errors = []
+    for path in xometa_files:
         try:
-            expansion = json.loads(zf.read(exp_names[0]))
-        except Exception:
-            pass
-        name  = expansion.get("Name", "").strip()
-        eng   = expansion.get("Engine", "").strip()
-        ver   = expansion.get("Version", "").strip()
-        if name and eng and ver:
-            results.append(CheckResult(
-                1, "expansion.json — Name/Engine/Version populated", PASS,
-                f'Name: "{name}", Engine: {eng}, Version: {ver}'
-            ))
-        else:
-            missing = [f for f, v in [("Name", name), ("Engine", eng), ("Version", ver)] if not v]
-            results.append(CheckResult(
-                1, "expansion.json — Name/Engine/Version populated", FAIL,
-                f"Missing fields: {', '.join(missing)}"
-            ))
-    else:
-        results.append(CheckResult(
-            1, "expansion.json — Name/Engine/Version populated", FAIL,
-            "expansion.json not found in archive"
-        ))
-
-    pack_name = expansion.get("Name", xpn_path.stem)
-    pack_eng  = expansion.get("Engine", "?")
-    pack_ver  = expansion.get("Version", "?")
-
-    # ------------------------------------------------------------------
-    # CHECK 2: bundle_manifest.json + sonic_dna
-    # ------------------------------------------------------------------
-    manifest: dict = {}
-    man_names = [n for n in namelist if Path(n).name == "bundle_manifest.json"]
-    if man_names:
-        try:
-            manifest = json.loads(zf.read(man_names[0]))
-        except Exception:
-            pass
-        dna = manifest.get("sonic_dna", {})
-        dims = ["brightness", "warmth", "movement", "density", "space", "aggression"]
-        present = [d for d in dims if d in dna]
-        if len(present) >= 1:
-            results.append(CheckResult(
-                2, "bundle_manifest.json — sonic_dna populated", PASS,
-                f"sonic_dna populated ({len(present)} dimensions)"
-            ))
-        else:
-            results.append(CheckResult(
-                2, "bundle_manifest.json — sonic_dna populated", FAIL,
-                "sonic_dna missing or empty"
-            ))
-    else:
-        results.append(CheckResult(
-            2, "bundle_manifest.json — sonic_dna populated", FAIL,
-            "bundle_manifest.json not found in archive"
-        ))
-
-    # ------------------------------------------------------------------
-    # CHECK 3: Cover art >= 400px
-    # ------------------------------------------------------------------
-    art_names = [n for n in namelist
-                 if Path(n).name.lower() in ("cover.png", "cover.jpg", "artwork.png", "artwork.jpg")
-                 or re.search(r"cover\.(png|jpg)$", n.lower())]
-    if art_names:
-        art_data = zf.read(art_names[0])
-        dims = _png_dimensions(art_data) or _jpg_dimensions(art_data)
-        if dims:
-            w, h = dims
-            if w >= COVER_MIN_PX and h >= COVER_MIN_PX:
-                results.append(CheckResult(
-                    3, f"Cover art — {Path(art_names[0]).name}", PASS,
-                    f"{w}×{h}px"
-                ))
-            else:
-                results.append(CheckResult(
-                    3, f"Cover art — {Path(art_names[0]).name}", FAIL,
-                    f"{w}×{h}px (minimum {COVER_MIN_PX}×{COVER_MIN_PX}px required)"
-                ))
-        else:
-            results.append(CheckResult(
-                3, f"Cover art — {Path(art_names[0]).name}", SKIP,
-                "Could not parse image dimensions"
-            ))
-    else:
-        results.append(CheckResult(
-            3, "Cover art", FAIL,
-            "No cover image found (expected cover.png or cover.jpg)"
-        ))
-
-    # ------------------------------------------------------------------
-    # Load all XPM programs
-    # ------------------------------------------------------------------
-    xpm_names = [n for n in namelist if n.lower().endswith(".xpm")]
-    programs: List[ET.Element] = []
-    program_names: List[str] = []
-    for xn in xpm_names:
-        try:
-            root = _parse_xpm(zf.read(xn))
-            if root is not None:
-                programs.append(root)
-                prog_name = (root.get("ProgramName") or
-                             root.findtext("ProgramName") or
-                             Path(xn).stem)
-                program_names.append(prog_name.strip())
-        except Exception:
-            pass
-
-    # ------------------------------------------------------------------
-    # CHECK 4: Program names <= 20 chars
-    # ------------------------------------------------------------------
-    too_long = [(name, len(name)) for name in program_names if len(name) > PROGRAM_NAME_MAX]
-    if too_long:
-        examples = "; ".join(f'"{n}" ({c})' for n, c in too_long[:3])
-        results.append(CheckResult(
-            4, "Program names — all ≤ 20 chars", FAIL,
-            f"{len(too_long)} name(s) exceed limit: {examples}"
-        ))
-    else:
-        results.append(CheckResult(
-            4, f"Program names — all ≤ 20 chars", PASS,
-            f"{len(program_names)} program(s) checked"
-        ))
-
-    # ------------------------------------------------------------------
-    # Collect samples and analyse audio
-    # ------------------------------------------------------------------
-    wav_names = [n for n in namelist if n.lower().endswith(".wav")]
-    sample_peaks: dict = {}   # wav path -> linear peak
-    for wn in wav_names:
-        try:
-            data = zf.read(wn)
-            peak = _wav_peak(data)
-            if peak is not None:
-                sample_peaks[wn] = peak
-        except Exception:
-            pass
-
-    # ------------------------------------------------------------------
-    # CHECK 5: No sample clipping (peak < -0.5 dBFS)
-    # ------------------------------------------------------------------
-    clipping = {p: v for p, v in sample_peaks.items() if v >= CLIPPING_LINEAR}
-    if not wav_names:
-        results.append(CheckResult(5, "No sample clipping (peak < -0.5 dBFS)", SKIP,
-                                   "No WAV files found in archive"))
-    elif clipping:
-        ex = list(clipping.keys())[:3]
-        ex_str = "; ".join(f'"{Path(p).name}" ({20*math.log10(clipping[p]):.1f} dBFS)' for p in ex)
-        results.append(CheckResult(5, "No sample clipping (peak < -0.5 dBFS)", FAIL,
-                                   f"{len(clipping)} clipping sample(s): {ex_str}"))
-    else:
-        results.append(CheckResult(5, "No sample clipping (peak < -0.5 dBFS)", PASS,
-                                   f"{len(sample_peaks)} sample(s) checked"))
-
-    # ------------------------------------------------------------------
-    # CHECK 6: No silent programs (at least 1 pad per program has a sample)
-    # ------------------------------------------------------------------
-    silent_programs = []
-    for root, pname in zip(programs, program_names):
-        layers = _get_layers(root)
-        has_sample = any(
-            (layer.get("SampleFile") or "").strip()
-            for layer in layers
-        )
-        if not has_sample:
-            silent_programs.append(pname)
-
-    if not programs:
-        results.append(CheckResult(6, "No silent programs", SKIP, "No XPM files found"))
-    elif silent_programs:
-        ex = "; ".join(f'"{p}"' for p in silent_programs[:3])
-        results.append(CheckResult(6, "No silent programs", FAIL,
-                                   f"{len(silent_programs)} program(s) have no samples: {ex}"))
-    else:
-        results.append(CheckResult(6, "No silent programs", PASS,
-                                   f"{len(programs)} program(s) all have samples"))
-
-    # ------------------------------------------------------------------
-    # CHECK 7: Velocity layers contiguous (no gaps)
-    # ------------------------------------------------------------------
-    gap_programs = []
-    for root, pname in zip(programs, program_names):
-        layers = _get_layers(root)
-        if not layers:
+            data = load_json_file(path)
+        except Exception as e:
+            errors.append(f"{path.name}: JSON parse error: {e}")
             continue
+        dna = data.get("sonic_dna")
+        if dna is None:
+            errors.append(f"{path.name}: missing sonic_dna")
+            continue
+        if not isinstance(dna, dict):
+            errors.append(f"{path.name}: sonic_dna is not an object")
+            continue
+        missing_keys = SONIC_DNA_KEYS - set(dna.keys())
+        if missing_keys:
+            errors.append(f"{path.name}: sonic_dna missing keys {sorted(missing_keys)}")
+            continue
+        bad_vals = [
+            k for k, v in dna.items()
+            if k in SONIC_DNA_KEYS
+            and not (isinstance(v, (int, float)) and 0.0 <= float(v) <= 1.0)
+        ]
+        if bad_vals:
+            errors.append(
+                f"{path.name}: sonic_dna values out of [0,1] for keys {bad_vals}"
+            )
+    if errors:
+        detail = "; ".join(errors[:5])
+        if len(errors) > 5:
+            detail += f" ... (+{len(errors) - 5} more)"
+        return CheckResult(2, label, FAIL, detail)
+    return CheckResult(2, label, PASS, f"{len(xometa_files)} file(s) validated")
+
+
+def check_03_preset_names(xometa_files: list) -> CheckResult:
+    """All .xometa files have non-empty name (<=30 chars)."""
+    label = "All .xometa preset names non-empty and <= 30 chars"
+    if not xometa_files:
+        return CheckResult(3, label, SKIP, "No .xometa files found")
+    errors = []
+    for path in xometa_files:
         try:
-            vel_pairs = []
-            for layer in layers:
-                vs = layer.get("VelStart") or layer.get("velocityStart")
-                ve = layer.get("VelEnd")   or layer.get("velocityEnd")
-                sf = (layer.get("SampleFile") or "").strip()
-                if vs is not None and ve is not None and sf:
-                    vel_pairs.append((int(vs), int(ve)))
-            if not vel_pairs:
-                continue
-            vel_pairs.sort()
-            gap = False
-            for i in range(1, len(vel_pairs)):
-                if vel_pairs[i][0] != vel_pairs[i-1][1] + 1:
-                    gap = True
-                    break
-            if gap:
-                gap_programs.append(pname)
-        except (ValueError, TypeError):
+            data = load_json_file(path)
+        except Exception:
+            continue
+        name = data.get("name", "")
+        if not name or not str(name).strip():
+            errors.append(f"{path.name}: empty name")
+        elif len(str(name)) > 30:
+            errors.append(
+                f"{path.name}: name '{name}' exceeds 30 chars ({len(str(name))})"
+            )
+    if errors:
+        detail = "; ".join(errors[:5])
+        if len(errors) > 5:
+            detail += f" ... (+{len(errors) - 5} more)"
+        return CheckResult(3, label, FAIL, detail)
+    return CheckResult(3, label, PASS)
+
+
+def check_04_mood_field(xometa_files: list) -> CheckResult:
+    """All .xometa files have mood field (one of 7 valid moods)."""
+    label = "All .xometa files have valid mood field"
+    if not xometa_files:
+        return CheckResult(4, label, SKIP, "No .xometa files found")
+    errors = []
+    for path in xometa_files:
+        try:
+            data = load_json_file(path)
+        except Exception:
+            continue
+        mood = data.get("mood")
+        if mood is None:
+            errors.append(f"{path.name}: missing mood")
+        elif mood not in VALID_MOODS:
+            errors.append(f"{path.name}: invalid mood '{mood}'")
+    if errors:
+        detail = "; ".join(errors[:5])
+        if len(errors) > 5:
+            detail += f" ... (+{len(errors) - 5} more)"
+        return CheckResult(4, label, FAIL, detail)
+    return CheckResult(4, label, PASS)
+
+
+def check_05_no_duplicate_names(xometa_files: list) -> CheckResult:
+    """No duplicate preset names within the pack."""
+    label = "No duplicate preset names"
+    if not xometa_files:
+        return CheckResult(5, label, SKIP, "No .xometa files found")
+    seen: dict = {}
+    dupes = []
+    for path in xometa_files:
+        try:
+            data = load_json_file(path)
+        except Exception:
+            continue
+        name = str(data.get("name", "")).strip()
+        if not name:
+            continue
+        if name in seen:
+            dupes.append(f"'{name}' ({path.name} & {seen[name]})")
+        else:
+            seen[name] = path.name
+    if dupes:
+        detail = "Duplicates: " + "; ".join(dupes[:5])
+        if len(dupes) > 5:
+            detail += f" ... (+{len(dupes) - 5} more)"
+        return CheckResult(5, label, FAIL, detail)
+    return CheckResult(5, label, PASS, f"{len(seen)} unique preset names")
+
+
+def check_06_mood_coverage(xometa_files: list) -> CheckResult:
+    """At least 1 preset per mood represented (if >20 presets)."""
+    label = "All 7 moods represented (for packs with >20 presets)"
+    count = len(xometa_files)
+    if count <= 20:
+        return CheckResult(
+            6, label, SKIP, f"Only {count} preset(s) — mood coverage check not required"
+        )
+    moods_present: set = set()
+    for path in xometa_files:
+        try:
+            data = load_json_file(path)
+        except Exception:
+            continue
+        mood = data.get("mood")
+        if mood in VALID_MOODS:
+            moods_present.add(mood)
+    missing = VALID_MOODS - moods_present
+    if missing:
+        return CheckResult(
+            6, label, WARN, f"Missing moods: {sorted(missing)}"
+        )
+    return CheckResult(6, label, PASS, f"All 7 moods covered across {count} presets")
+
+
+def check_07_relative_sample_paths(xpm_files: list) -> CheckResult:
+    """All sample file paths in .xpm files are relative (not absolute)."""
+    label = "All .xpm sample paths are relative (not absolute)"
+    if not xpm_files:
+        return CheckResult(7, label, SKIP, "No .xpm files found")
+
+    # Match XML element content or attribute values starting with absolute path indicators
+    abs_path_re = re.compile(
+        r"(?:<[^>]*>|=\s*\"|=\s*')(?:\s*)(/(?!/)|\b[A-Za-z]:\\)",
+        re.IGNORECASE,
+    )
+    errors = []
+    for path in xpm_files:
+        try:
+            content = path.read_text(encoding="utf-8", errors="replace")
+        except Exception as e:
+            errors.append(f"{path.name}: read error: {e}")
+            continue
+        if abs_path_re.search(content):
+            errors.append(f"{path.name}: contains absolute sample path(s)")
+    if errors:
+        detail = "; ".join(errors[:5])
+        if len(errors) > 5:
+            detail += f" ... (+{len(errors) - 5} more)"
+        return CheckResult(7, label, FAIL, detail)
+    return CheckResult(7, label, PASS, f"{len(xpm_files)} .xpm file(s) checked")
+
+
+def check_08_readme_exists(pack_dir: Path) -> CheckResult:
+    """README.md or WORKFLOW_GUIDE.md exists in pack root."""
+    label = "README.md or WORKFLOW_GUIDE.md present"
+    candidates = [
+        "README.md", "readme.md", "README.txt",
+        "WORKFLOW_GUIDE.md", "workflow_guide.md",
+    ]
+    for name in candidates:
+        if (pack_dir / name).exists():
+            return CheckResult(8, label, PASS, f"Found {name}")
+    return CheckResult(8, label, WARN, "No README.md or WORKFLOW_GUIDE.md found in pack root")
+
+
+def check_09_cover_art(pack_dir: Path) -> CheckResult:
+    """Cover art file exists (cover.png / artwork.png / any *.png)."""
+    label = "Cover art file present"
+    priority_names = ["cover.png", "artwork.png", "Cover.png", "Artwork.png"]
+    for name in priority_names:
+        if (pack_dir / name).exists():
+            return CheckResult(9, label, PASS, f"Found {name}")
+    pngs = list(pack_dir.glob("*.png"))
+    if pngs:
+        return CheckResult(9, label, PASS, f"Found {pngs[0].name}")
+    return CheckResult(9, label, WARN, "No cover art (.png) found in pack root")
+
+
+def check_10_xometa_size(xometa_files: list) -> CheckResult:
+    """No .xometa file exceeds 50KB."""
+    label = "No .xometa file exceeds 50KB"
+    limit = 50 * 1024
+    bloated = []
+    for path in xometa_files:
+        size = path.stat().st_size
+        if size > limit:
+            bloated.append(f"{path.name} ({size // 1024}KB)")
+    if bloated:
+        return CheckResult(
+            10, label, WARN, "Oversized files: " + ", ".join(bloated[:5])
+        )
+    return CheckResult(10, label, PASS, f"All {len(xometa_files)} file(s) within 50KB limit")
+
+
+def check_11_minimum_presets(xometa_files: list) -> CheckResult:
+    """Pack has at least 4 presets."""
+    label = "Pack has at least 4 presets"
+    count = len(xometa_files)
+    if count < 4:
+        return CheckResult(
+            11, label, WARN, f"Only {count} preset(s) found (minimum recommended: 4)"
+        )
+    return CheckResult(11, label, PASS, f"{count} preset(s) found")
+
+
+def check_12_forbidden_chars(xometa_files: list) -> CheckResult:
+    """No preset name contains forbidden chars ([]/\\:*?\"<>|)."""
+    label = 'No preset names contain forbidden characters ([]/\\\\:*?"<>|)'
+    if not xometa_files:
+        return CheckResult(12, label, SKIP, "No .xometa files found")
+    errors = []
+    for path in xometa_files:
+        try:
+            data = load_json_file(path)
+        except Exception:
+            continue
+        name = str(data.get("name", ""))
+        bad = [c for c in name if c in FORBIDDEN_NAME_CHARS]
+        if bad:
+            unique_bad = list(dict.fromkeys(bad))
+            errors.append(f"'{name}' contains {unique_bad}")
+    if errors:
+        detail = "; ".join(errors[:5])
+        if len(errors) > 5:
+            detail += f" ... (+{len(errors) - 5} more)"
+        return CheckResult(12, label, FAIL, detail)
+    return CheckResult(12, label, PASS)
+
+
+def check_13_semver(pack_dir: Path) -> CheckResult:
+    """expansion.json version follows semver (N.N.N)."""
+    label = "expansion.json version follows semver (N.N.N)"
+    exp_path = pack_dir / "expansion.json"
+    if not exp_path.exists():
+        return CheckResult(13, label, FAIL, "expansion.json not found — cannot check version")
+    try:
+        data = load_json_file(exp_path)
+    except Exception as e:
+        return CheckResult(13, label, FAIL, f"JSON parse error: {e}")
+    version = str(data.get("version", "")).strip()
+    if not version:
+        return CheckResult(13, label, FAIL, "version field is empty or missing")
+    if not SEMVER_RE.match(version):
+        return CheckResult(
+            13, label, FAIL, f"'{version}' does not match N.N.N semver format"
+        )
+    return CheckResult(13, label, PASS, f"version = {version}")
+
+
+def check_14_drum_kit_xpm(pack_dir: Path, xpm_files: list) -> CheckResult:
+    """At least one .xpm exists if pack claims to have drums/kits."""
+    label = "Drum/kit pack includes .xpm program file(s)"
+    exp_path = pack_dir / "expansion.json"
+    is_drum_pack = False
+    if exp_path.exists():
+        try:
+            data = load_json_file(exp_path)
+            pack_type = str(data.get("type", "")).lower()
+            pack_name = str(data.get("name", "")).lower()
+            if any(kw in pack_type or kw in pack_name for kw in DRUM_TYPE_KEYWORDS):
+                is_drum_pack = True
+        except Exception:
             pass
+    if not is_drum_pack:
+        return CheckResult(
+            14, label, SKIP, "Pack does not appear to be a drum/kit pack"
+        )
+    if not xpm_files:
+        return CheckResult(
+            14, label, WARN, "Pack claims drums/kits but no .xpm files found"
+        )
+    return CheckResult(14, label, PASS, f"{len(xpm_files)} .xpm file(s) found")
 
-    if gap_programs:
-        ex = "; ".join(f'"{p}"' for p in gap_programs[:3])
-        results.append(CheckResult(7, "Velocity layers contiguous (no gaps)", FAIL,
-                                   f"{len(gap_programs)} program(s) have gaps: {ex}"))
-    else:
-        results.append(CheckResult(7, "Velocity layers contiguous (no gaps)", PASS,
-                                   f"{len(programs)} program(s) checked"))
 
-    # ------------------------------------------------------------------
-    # CHECK 8: Tuning within ±50 cents across all layers
-    # ------------------------------------------------------------------
-    tuning_violations = []
-    for root, pname in zip(programs, program_names):
-        layers = _get_layers(root)
-        for layer in layers:
-            tune = layer.get("Tune") or layer.get("tune") or layer.get("TuneCoarse")
-            if tune is not None:
-                try:
-                    cents = float(tune) * 100 if abs(float(tune)) <= 1.0 else float(tune)
-                    if abs(cents) > TUNING_TOLERANCE_CENTS:
-                        tuning_violations.append((pname, cents))
-                except ValueError:
-                    pass
-    if tuning_violations:
-        ex = "; ".join(f'"{p}" ({c:+.0f}¢)' for p, c in tuning_violations[:3])
-        results.append(CheckResult(8, f"Tuning within ±{TUNING_TOLERANCE_CENTS:.0f} cents", FAIL,
-                                   f"{len(tuning_violations)} layer(s) out of range: {ex}"))
-    else:
-        results.append(CheckResult(8, f"Tuning within ±{TUNING_TOLERANCE_CENTS:.0f} cents", PASS,
-                                   "All layers within tolerance"))
-
-    # ------------------------------------------------------------------
-    # CHECK 9: pack_score meets tier threshold
-    # ------------------------------------------------------------------
-    score = _compute_pack_score(expansion, manifest, programs, sample_peaks)
-    score_status = PASS if score >= threshold else FAIL
-    results.append(CheckResult(
-        9, f"pack_score ≥ {threshold} ({tier.upper()})", score_status,
-        f"Computed score: {score}/100"
-    ))
-
-    # ------------------------------------------------------------------
-    # CHECK 10: Version format "X.Y.Z"
-    # ------------------------------------------------------------------
-    ver_str = expansion.get("Version", "").strip()
-    if VERSION_RE.match(ver_str):
-        results.append(CheckResult(10, "Version format (X.Y.Z)", PASS, f'"{ver_str}"'))
-    else:
-        results.append(CheckResult(10, "Version format (X.Y.Z)", FAIL,
-                                   f'"{ver_str}" does not match X.Y.Z pattern'))
-
-    # ------------------------------------------------------------------
-    # CHECK 11: CHANGELOG present in zip
-    # ------------------------------------------------------------------
-    changelog_names = [n for n in namelist
-                       if Path(n).name.upper().startswith("CHANGELOG")]
-    if changelog_names:
-        results.append(CheckResult(11, "CHANGELOG present", PASS,
-                                   f"Found: {Path(changelog_names[0]).name}"))
-    else:
-        results.append(CheckResult(11, "CHANGELOG present", FAIL,
-                                   "No CHANGELOG.md or CHANGELOG file found in archive"))
-
-    zf.close()
-
-    metadata = {
-        "pack_name": pack_name,
-        "engine":    pack_eng,
-        "version":   pack_ver,
-        "tier":      tier.upper(),
-        "score":     score,
-        "threshold": threshold,
-    }
-    return results, metadata
+def check_15_no_junk_files(pack_dir: Path) -> CheckResult:
+    """No .DS_Store or Thumbs.db files present."""
+    label = "No .DS_Store or Thumbs.db files present"
+    junk_names = {".DS_Store", "Thumbs.db", "desktop.ini", "ehthumbs.db"}
+    found = []
+    for item in pack_dir.rglob("*"):
+        if item.name in junk_names:
+            try:
+                found.append(str(item.relative_to(pack_dir)))
+            except ValueError:
+                found.append(item.name)
+    if found:
+        return CheckResult(
+            15, label, WARN, "Junk files found: " + ", ".join(found[:10])
+        )
+    return CheckResult(15, label, PASS)
 
 
 # ---------------------------------------------------------------------------
-# Manual checks (placeholders)
+# Runner
 # ---------------------------------------------------------------------------
 
-MANUAL_CHECKS = [
-    (12, "Ear test — play all programs on hardware MPC"),
-    (13, "DNA accuracy — A/B test brightness/warmth against 3 known packs"),
-    (14, "Pack story holds — can a blind listener identify the theme?"),
-    (15, "Naming review — all program names evocative and consistent"),
-]
+
+def run_checks(pack_dir: Path, strict: bool) -> list:
+    xometa_files = find_files(pack_dir, ".xometa")
+    xpm_files = find_files(pack_dir, ".xpm")
+
+    results = [
+        check_01_expansion_json(pack_dir),
+        check_02_sonic_dna(xometa_files),
+        check_03_preset_names(xometa_files),
+        check_04_mood_field(xometa_files),
+        check_05_no_duplicate_names(xometa_files),
+        check_06_mood_coverage(xometa_files),
+        check_07_relative_sample_paths(xpm_files),
+        check_08_readme_exists(pack_dir),
+        check_09_cover_art(pack_dir),
+        check_10_xometa_size(xometa_files),
+        check_11_minimum_presets(xometa_files),
+        check_12_forbidden_chars(xometa_files),
+        check_13_semver(pack_dir),
+        check_14_drum_kit_xpm(pack_dir, xpm_files),
+        check_15_no_junk_files(pack_dir),
+    ]
+
+    if strict:
+        for r in results:
+            if r.status == WARN:
+                r.status = FAIL
+
+    return results
 
 
 # ---------------------------------------------------------------------------
-# Formatters
+# Output
 # ---------------------------------------------------------------------------
 
-def _status_symbol_text(status: str) -> str:
-    if status == PASS:
-        return "✓"
-    if status == FAIL:
-        return "✗"
-    return "~"
+STATUS_SYMBOLS = {PASS: "v", FAIL: "X", WARN: "!", SKIP: "-"}
+STATUS_LABELS  = {PASS: " PASS", FAIL: " FAIL", WARN: " WARN", SKIP: " SKIP"}
 
 
-def _status_symbol_md(status: str) -> str:
-    if status == PASS:
-        return "- [x]"
-    if status == FAIL:
-        return "- [ ] ~~FAIL~~"
-    return "- [ ] ~~SKIP~~"
+def print_results(results: list, pack_dir: Path, strict: bool):
+    print()
+    print("=" * 68)
+    print("  XPN Pack Release Checklist")
+    print(f"  Pack : {pack_dir}")
+    if strict:
+        print("  Mode : STRICT (warnings treated as failures)")
+    print("=" * 68)
 
+    passed = 0
+    failed_critical = []
+    warnings_or_noncrit_fails = []
 
-def format_text(results: List[CheckResult], metadata: dict) -> str:
-    lines = []
-    title = (f"XO_OX Pack Release Checklist — "
-             f"{metadata['pack_name']} v{metadata['version']} [{metadata['tier']}]")
-    bar   = "═" * len(title)
-    lines.append(title)
-    lines.append(bar)
-    lines.append("")
-
-    lines.append("AUTOMATED CHECKS")
     for r in results:
-        sym  = _status_symbol_text(r.status)
-        detail = f" — {r.detail}" if r.detail else ""
-        lines.append(f"  {sym}  {r.number}. {r.description}{detail}")
-    lines.append("")
+        sym = STATUS_SYMBOLS[r.status]
+        lbl = STATUS_LABELS[r.status]
+        crit_tag = " [CRITICAL]" if r.check_id in CRITICAL_CHECK_IDS else "          "
+        print(f"  {sym}{lbl}  [{r.check_id:02d}]{crit_tag} {r.label}")
+        if r.detail:
+            print(f"           {r.detail}")
+        if r.status == PASS:
+            passed += 1
+        elif r.status == FAIL:
+            if r.check_id in CRITICAL_CHECK_IDS:
+                failed_critical.append(r)
+            else:
+                warnings_or_noncrit_fails.append(r)
+        elif r.status == WARN:
+            warnings_or_noncrit_fails.append(r)
 
-    lines.append("MANUAL CHECKS")
-    for num, desc in MANUAL_CHECKS:
-        lines.append(f"  [ ] {num}. {desc}")
-    lines.append("")
-
-    # Summary
-    passed   = sum(1 for r in results if r.status == PASS)
-    failed   = sum(1 for r in results if r.status == FAIL)
-    skipped  = sum(1 for r in results if r.status == SKIP)
-    auto_total = len(results)
-    lines.append(f"RESULT: {passed}/{auto_total} automated ✓"
-                 + (f" | {skipped} skipped" if skipped else "")
-                 + f" | {len(MANUAL_CHECKS)}/{len(MANUAL_CHECKS)} manual pending")
-
-    if failed == 0:
-        lines.append("STATUS: READY — all automated checks pass")
-    else:
-        lines.append(f"STATUS: BLOCKED — fix {failed} error{'s' if failed != 1 else ''} before release")
-
-    return "\n".join(lines)
-
-
-def format_markdown(results: List[CheckResult], metadata: dict) -> str:
-    lines = []
-    lines.append(f"# XO_OX Pack Release Checklist")
-    lines.append(f"**{metadata['pack_name']}** v{metadata['version']} | "
-                 f"Engine: {metadata['engine']} | Tier: **{metadata['tier']}**")
-    lines.append("")
-
-    lines.append("## Automated Checks")
-    lines.append("")
-    for r in results:
-        check = "x" if r.status == PASS else " "
-        detail = f" — _{r.detail}_" if r.detail else ""
-        lines.append(f"- [{check}] **{r.number}.** {r.description}{detail}")
-    lines.append("")
-
-    lines.append("## Manual Checks")
-    lines.append("")
-    for num, desc in MANUAL_CHECKS:
-        lines.append(f"- [ ] **{num}.** {desc}")
-    lines.append("")
-
-    passed  = sum(1 for r in results if r.status == PASS)
-    failed  = sum(1 for r in results if r.status == FAIL)
     skipped = sum(1 for r in results if r.status == SKIP)
-    auto_total = len(results)
+    total_applicable = len(results) - skipped
+    release_ready = (
+        len(failed_critical) == 0
+        and (not strict or len(warnings_or_noncrit_fails) == 0)
+    )
 
-    lines.append("---")
-    lines.append(f"**Score:** {metadata['score']}/100 (threshold: {metadata['threshold']})")
-    lines.append(f"**Result:** {passed}/{auto_total} automated checks pass"
-                 + (f" | {skipped} skipped" if skipped else "")
-                 + f" | {len(MANUAL_CHECKS)} manual checks pending")
-    if failed == 0:
-        lines.append("**Status:** ✅ READY — all automated checks pass")
-    else:
-        lines.append(f"**Status:** ❌ BLOCKED — {failed} error{'s' if failed != 1 else ''} must be fixed before release")
+    print()
+    print("-" * 68)
+    print(f"  Results : {passed}/{total_applicable} checks passed  ({skipped} skipped)")
+    if failed_critical:
+        print(f"  Critical failures : {len(failed_critical)}")
+    if warnings_or_noncrit_fails:
+        label = "Non-critical failures" if strict else "Warnings"
+        print(f"  {label} : {len(warnings_or_noncrit_fails)}")
+    print(f"  Release-ready     : {'YES' if release_ready else 'NO'}")
+    print("=" * 68)
+    print()
 
-    return "\n".join(lines)
+
+def print_json_results(results: list, pack_dir: Path, strict: bool):
+    passed = sum(1 for r in results if r.status == PASS)
+    skipped = sum(1 for r in results if r.status == SKIP)
+    failed_critical = [
+        r for r in results
+        if r.status == FAIL and r.check_id in CRITICAL_CHECK_IDS
+    ]
+    warnings_or_noncrit_fails = [
+        r for r in results
+        if (r.status == WARN)
+        or (r.status == FAIL and r.check_id not in CRITICAL_CHECK_IDS)
+    ]
+    release_ready = (
+        len(failed_critical) == 0
+        and (not strict or len(warnings_or_noncrit_fails) == 0)
+    )
+
+    output = {
+        "pack_dir": str(pack_dir),
+        "strict": strict,
+        "summary": {
+            "total": len(results),
+            "passed": passed,
+            "skipped": skipped,
+            "failed_critical": len(failed_critical),
+            "warnings_or_noncrit_fails": len(warnings_or_noncrit_fails),
+            "release_ready": release_ready,
+        },
+        "checks": [r.to_dict() for r in results],
+    }
+    print(json.dumps(output, indent=2))
 
 
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
-def main():
+
+def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="XO_OX Pack Release Checklist — 15-point pre-release verification"
+        description="Pre-release checklist for XPN packs.",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  python xpn_pack_release_checklist.py --pack-dir ./MyPack
+  python xpn_pack_release_checklist.py --pack-dir ./MyPack --strict
+  python xpn_pack_release_checklist.py --pack-dir ./MyPack --json
+
+CRITICAL checks (exit 1 on failure): 1, 2, 3, 4, 5, 7, 12, 13
+WARNING checks  (exit 0 by default): 6, 8, 9, 10, 11, 14, 15
+        """,
     )
-    parser.add_argument("pack", help="Path to the .xpn pack file")
     parser.add_argument(
-        "--tier", choices=["signal", "form", "doctrine"], default="form",
-        help="Pack tier (sets pack_score threshold: signal=70, form=80, doctrine=90)"
+        "--pack-dir",
+        required=True,
+        metavar="DIR",
+        help="Path to the root directory of the XPN pack",
     )
     parser.add_argument(
-        "--format", choices=["text", "markdown"], default="text",
-        dest="fmt", help="Output format (default: text)"
+        "--strict",
+        action="store_true",
+        help="Treat WARN results as failures (exit 1 if any warnings)",
     )
     parser.add_argument(
-        "--output", metavar="FILE", default=None,
-        help="Write output to FILE instead of stdout"
+        "--json",
+        action="store_true",
+        dest="output_json",
+        help="Output results as JSON instead of formatted text",
     )
+    return parser
+
+
+def main() -> None:
+    parser = build_parser()
     args = parser.parse_args()
 
-    xpn_path = Path(args.pack)
-    results, metadata = run_checks(xpn_path, args.tier)
+    pack_dir = Path(args.pack_dir).resolve()
+    if not pack_dir.is_dir():
+        print(
+            f"ERROR: --pack-dir '{pack_dir}' is not a directory or does not exist.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
 
-    if args.fmt == "markdown":
-        report = format_markdown(results, metadata)
+    results = run_checks(pack_dir, strict=args.strict)
+
+    if args.output_json:
+        print_json_results(results, pack_dir, strict=args.strict)
     else:
-        report = format_text(results, metadata)
+        print_results(results, pack_dir, strict=args.strict)
 
-    if args.output:
-        Path(args.output).write_text(report, encoding="utf-8")
-        print(f"Report written to {args.output}")
-    else:
-        print(report)
+    # Exit 1 if any critical check failed
+    for r in results:
+        if r.status == FAIL and r.check_id in CRITICAL_CHECK_IDS:
+            sys.exit(1)
 
-    # Exit code: 0 = all pass, 1 = failures
-    failed = sum(1 for r in results if r.status == FAIL)
-    sys.exit(0 if failed == 0 else 1)
+    # In strict mode, any remaining FAIL (promoted from WARN) also exits 1
+    if args.strict:
+        for r in results:
+            if r.status == FAIL:
+                sys.exit(1)
+
+    sys.exit(0)
 
 
 if __name__ == "__main__":
