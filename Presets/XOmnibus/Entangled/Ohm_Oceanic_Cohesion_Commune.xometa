@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "name": "Cohesion Commune",
+  "mood": "Entangled",
+  "engines": ["Ohm", "Oceanic"],
+  "author": "Guru Bin — Coupling Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Oceanic's boid school cohesion drives OHM's commune spread — when the school tightens together the commune tunes to unity; when the school scatters across the water column the commune detunes into a wide shimmer cluster. AmpToFilter bidirectional coupling: ocean_cohesion ↔ ohm_spread, amount 0.58. School and commune mirror each other's social geometry. Two collectives, one behavioral law.",
+  "tags": ["cohesion", "commune", "boids", "spread", "entangled", "collective", "school"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.68,
+    "movement": 0.65,
+    "density": 0.72,
+    "space": 0.7,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_tuning": 0.5,
+      "ohm_spread": 0.35,
+      "ohm_droneDepth": 0.72,
+      "ohm_communeVoices": 6,
+      "ohm_filterCutoff": 0.5,
+      "ohm_filterRes": 0.18,
+      "ohm_ampAttack": 0.45,
+      "ohm_ampDecay": 1.0,
+      "ohm_ampSustain": 0.88,
+      "ohm_ampRelease": 4.0,
+      "ohm_lfo1Rate": 0.015,
+      "ohm_lfo1Depth": 0.22,
+      "ohm_lfo1Shape": 0,
+      "ohm_lfo2Rate": 0.006,
+      "ohm_lfo2Depth": 0.12,
+      "ohm_lfo2Shape": 2,
+      "ohm_macroMeddling": 0.0,
+      "ohm_macroCommune": 0.0,
+      "ohm_macroCoupling": 0.0,
+      "ohm_macroSpace": 0.0
+    },
+    "Oceanic": {
+      "ocean_separation": 0.48,
+      "ocean_alignment": 0.52,
+      "ocean_cohesion": 0.62,
+      "ocean_tether": 0.35,
+      "ocean_scatter": 0.25,
+      "ocean_subflocks": 3,
+      "ocean_damping": 0.42,
+      "ocean_waveform": 1,
+      "ocean_ampAttack": 0.08,
+      "ocean_ampDecay": 0.55,
+      "ocean_ampSustain": 0.72,
+      "ocean_ampRelease": 2.5,
+      "ocean_swarmEnvAttack": 0.12,
+      "ocean_swarmEnvDecay": 0.48,
+      "ocean_swarmEnvSustain": 0.68,
+      "ocean_swarmEnvRelease": 1.5,
+      "ocean_lfo1Rate": 0.04,
+      "ocean_lfo1Depth": 0.25,
+      "ocean_lfo1Shape": 0,
+      "ocean_lfo2Rate": 0.015,
+      "ocean_lfo2Depth": 0.15,
+      "ocean_lfo2Shape": 2,
+      "ocean_voiceMode": 1,
+      "ocean_glide": 0.0,
+      "ocean_macroCharacter": 0.0,
+      "ocean_macroMovement": 0.0,
+      "ocean_macroCoupling": 0.0,
+      "ocean_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "sourceEngine": "Oceanic",
+        "targetEngine": "Ohm",
+        "sourceParam": "ocean_cohesion",
+        "targetParam": "ohm_spread",
+        "type": "AmpToFilter",
+        "amount": 0.58,
+        "direction": "bidirectional"
+      },
+      {
+        "sourceEngine": "Oceanic",
+        "targetEngine": "Ohm",
+        "sourceParam": "ocean_scatter",
+        "targetParam": "ohm_spread",
+        "type": "ModToMod",
+        "amount": 0.42,
+        "direction": "unidirectional"
+      }
+    ]
+  },
+  "sequencer": null
+}

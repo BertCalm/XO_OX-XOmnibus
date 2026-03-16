@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Reverse Gate",
+  "mood": "Prism",
+  "engines": ["Opal"],
+  "author": "Guru Bin — OPAL Deep Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Reverse mode engaged with negative speed — each grain plays a brief excerpt in reverse. posScatter at 0.55 means every grain starts at a different position, so the reversal is non-repeating. Mod wheel sweeps grain size from small (0.05, micro-reverse stutters) to large (0.6, full reversed phrases). The result sounds like time collapsing: you can hear something was said, but not what. Velocity controls the spread — soft = narrow, hard = the source fully randomized.",
+  "tags": ["granular", "prism", "reverse", "mod-wheel", "time", "experimental", "expressive", "backward"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "modMatrix": [
+    {"source": "modWheel", "destination": "opal_grainSize", "amount": 0.55},
+    {"source": "modWheel", "destination": "opal_filterCutoff", "amount": 0.3},
+    {"source": "velocity", "destination": "opal_posScatter", "amount": 0.4},
+    {"source": "velocity", "destination": "opal_density", "amount": 0.35},
+    {"source": "aftertouch", "destination": "opal_pitchScatter", "amount": 0.3}
+  ],
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.4,
+    "movement": 0.7,
+    "density": 0.5,
+    "space": 0.55,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Opal": {
+      "opal_grainSize": 0.05,
+      "opal_density": 0.5,
+      "opal_posScatter": 0.55,
+      "opal_pitchScatter": 0.0,
+      "opal_filterCutoff": 0.48,
+      "opal_filterReso": 0.2,
+      "opal_ampAttack": 0.05,
+      "opal_ampDecay": 0.4,
+      "opal_ampSustain": 0.8,
+      "opal_ampRelease": 1.8,
+      "opal_speed": -0.5,
+      "opal_reverse": 1.0,
+      "opal_macroCharacter": 0.0,
+      "opal_macroMovement": 0.0,
+      "opal_macroCoupling": 0.0,
+      "opal_macroSpace": 0.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

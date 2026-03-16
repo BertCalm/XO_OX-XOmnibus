@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Hunt Escalation",
+  "mood": "Prism",
+  "engines": ["Orca"],
+  "author": "Guru Bin — Prism Expression 2026-03-16",
+  "version": "1.0.0",
+  "description": "The complete predator arc under one hand. Starts at patrol — huntMacro 0.2, wavetable scanning slowly, the orca cruising at depth. Mod wheel escalates: huntMacro rises toward 0.9, scan rate accelerates, the animal locking onto prey. Aftertouch triggers the breach — threshold drops, the sub impact fires, the full predator reveals itself. Velocity drives formant shift, lighter touches keeping the call ambiguous, hard strikes resolving it into full vocal aggression. Return the wheel and the hunt retreats. The sound remembers being dangerous.",
+  "tags": ["orca", "hunt", "escalation", "predator", "mod-wheel", "aftertouch", "prism", "expression", "cinematic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "modMatrix": [
+    {"source": "modWheel", "destination": "orca_huntMacro", "amount": 0.7},
+    {"source": "modWheel", "destination": "orca_wtScanRate", "amount": 0.65},
+    {"source": "modWheel", "destination": "orca_filterCutoff", "amount": 0.45},
+    {"source": "aftertouch", "destination": "orca_breachThreshold", "amount": -0.6},
+    {"source": "aftertouch", "destination": "orca_breachSub", "amount": 0.5},
+    {"source": "velocity", "destination": "orca_formantIntensity", "amount": 0.75},
+    {"source": "velocity", "destination": "orca_filterReso", "amount": 0.35}
+  ],
+  "parameters": {
+    "Orca": {
+      "orca_huntMacro": 0.2,
+      "orca_wtScanRate": 0.15,
+      "orca_echoReso": 0.45,
+      "orca_breachThreshold": 0.75,
+      "orca_breachSub": 0.3,
+      "orca_formantIntensity": 0.25,
+      "orca_filterCutoff": 1800.0,
+      "orca_filterReso": 0.12,
+      "orca_attack": 0.08,
+      "orca_decay": 0.6,
+      "orca_sustain": 0.65,
+      "orca_release": 2.2,
+      "orca_level": 0.75
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.3,
+    "movement": 0.72,
+    "density": 0.5,
+    "space": 0.65,
+    "aggression": 0.6
+  }
+}

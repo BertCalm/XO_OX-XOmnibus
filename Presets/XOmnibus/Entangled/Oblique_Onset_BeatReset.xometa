@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Beat Reset",
+  "mood": "Entangled",
+  "engines": ["Oblique", "Onset"],
+  "author": "Guru Bin — Coupling Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Each kick trigger resets the prismatic bounce phase — Onset's percussion events act as a hard clock for Oblique's oblq_bounceRate, snapping the waveform back to zero on every hit. The result is rhythmically quantized prism sweeps that land exactly on the beat. Tune oblq_bounceRate to a sub-beat fraction of tempo for polyrhythmic tension: at 1/4 rate each kick restarts the same sweep; at 3/8 rate the phase shifts forward, building a stuttering Funkadelic momentum. The bounce does not merely sync — it is continuously re-launched by the drum. That violence IS the groove.",
+  "tags": ["oblique", "onset", "kick", "bounce", "phase-reset", "rhythm", "funk", "entangled", "coupled"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "parameters": {
+    "Oblique": {
+      "oblq_prismColor": 0.55,
+      "oblq_bounceRate": 0.42,
+      "oblq_bounceDepth": 0.78,
+      "oblq_filterCutoff": 0.62,
+      "oblq_filterReso": 0.35,
+      "oblq_drive": 0.48,
+      "oblq_ampAttack": 0.04,
+      "oblq_ampDecay": 0.22,
+      "oblq_ampSustain": 0.65,
+      "oblq_ampRelease": 0.38
+    },
+    "Onset": {
+      "perc_kickLevel": 0.82,
+      "perc_kickPitch": 0.38,
+      "perc_kickDecay": 0.28,
+      "perc_kickPunch": 0.72,
+      "perc_snareLevel": 0.55,
+      "perc_snareTone": 0.44,
+      "perc_snareDecay": 0.35,
+      "perc_noiseLevel": 0.40,
+      "perc_masterLevel": 0.75
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Oblique",
+        "type": "RhythmToBlend",
+        "amount": 0.78,
+        "direction": "A->B",
+        "notes": "Onset kick trigger fires a phase-reset pulse into oblq_bounceRate — each drum hit collapses and re-launches the prismatic bounce cycle, turning rhythm into prism choreography"
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.42,
+    "movement": 0.88,
+    "density": 0.58,
+    "space": 0.35,
+    "aggression": 0.72
+  }
+}

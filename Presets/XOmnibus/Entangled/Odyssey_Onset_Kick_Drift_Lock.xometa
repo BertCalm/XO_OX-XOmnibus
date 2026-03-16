@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Kick Drift Lock",
+  "mood": "Entangled",
+  "engines": ["Odyssey", "Onset"],
+  "author": "Guru Bin — Coupling Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Each kick event from Onset locks Odyssey's per-voice drift to a fixed position momentarily — percussion becomes a freeze trigger. Between hits the drift resumes its wander; on impact it snaps to stillness like a photo taken at the moment of impact. RhythmToBlend coupling from Onset's kick voice holds Odyssey's drift_freeze high for the transient duration, creating rhythmic crystallization inside an otherwise liquid shimmer field.",
+  "tags": ["drift", "percussion", "rhythm", "freeze", "entangled", "kick", "crystallize"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.35,
+    "movement": 0.68,
+    "density": 0.65,
+    "space": 0.6,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 3,
+      "drift_oscA_tune": 0.0,
+      "drift_oscB_mode": 0,
+      "drift_oscB_tune": 7.0,
+      "drift_oscB_blend": 0.28,
+      "drift_drift_amount": 0.72,
+      "drift_drift_rate": 0.12,
+      "drift_drift_spread": 0.78,
+      "drift_drift_freeze": 0.0,
+      "drift_filterCutoff": 0.52,
+      "drift_filterRes": 0.32,
+      "drift_filterEnvAmt": 0.42,
+      "drift_ampAttack": 0.02,
+      "drift_ampDecay": 0.55,
+      "drift_ampSustain": 0.65,
+      "drift_ampRelease": 2.2,
+      "drift_lfo1Rate": 0.15,
+      "drift_lfo1Depth": 0.42,
+      "drift_lfo1Shape": 0,
+      "drift_lfo2Rate": 0.05,
+      "drift_lfo2Depth": 0.22,
+      "drift_lfo2Shape": 1,
+      "drift_macroCharacter": 0.0,
+      "drift_macroMovement": 0.0,
+      "drift_macroCoupling": 0.0,
+      "drift_macroSpace": 0.0
+    },
+    "Onset": {
+      "perc_kickLevel": 0.78,
+      "perc_kickPitch": 0.42,
+      "perc_kickDecay": 0.35,
+      "perc_kickPunch": 0.65,
+      "perc_snareLevel": 0.25,
+      "perc_chatLevel": 0.18,
+      "perc_ohatLevel": 0.12,
+      "perc_clapLevel": 0.0,
+      "perc_noiseLevel": 0.15,
+      "perc_masterLevel": 0.72,
+      "perc_swingAmount": 0.0,
+      "perc_macroMachine": 0.0,
+      "perc_macroPunch": 0.0,
+      "perc_macroSpace": 0.0,
+      "perc_macroMutate": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "sourceEngine": "Onset",
+        "targetEngine": "Odyssey",
+        "sourceParam": "perc_kickLevel",
+        "targetParam": "drift_drift_freeze",
+        "type": "RhythmToBlend",
+        "amount": 0.65,
+        "direction": "unidirectional"
+      }
+    ]
+  },
+  "sequencer": null
+}

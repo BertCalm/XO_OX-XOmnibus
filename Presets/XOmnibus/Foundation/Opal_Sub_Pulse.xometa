@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "Sub Pulse",
+  "mood": "Foundation",
+  "engines": ["Opal"],
+  "author": "Guru Bin — OPAL Deep Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "Low density — 0.18 — with large grains 0.8 and near-zero posScatter 0.05. The effect is sparse, meditational: one grain arrives, plays, completes, then silence before the next. pitchScatter 0, filter closed low. This is granular synthesis at its most honest — just a thing that pulses at the bottom, slowly, making no argument for its own existence.",
+  "tags": ["granular", "sub", "bass", "sparse", "meditative", "foundation", "deep"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.8,
+    "movement": 0.15,
+    "density": 0.25,
+    "space": 0.55,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Opal": {
+      "opal_grainSize": 0.8,
+      "opal_density": 0.18,
+      "opal_posScatter": 0.05,
+      "opal_pitchScatter": 0.0,
+      "opal_filterCutoff": 0.25,
+      "opal_filterReso": 0.1,
+      "opal_ampAttack": 0.25,
+      "opal_ampDecay": 0.6,
+      "opal_ampSustain": 0.7,
+      "opal_ampRelease": 2.0,
+      "opal_speed": 1.0,
+      "opal_reverse": 0.0,
+      "opal_macroCharacter": 0.0,
+      "opal_macroMovement": 0.0,
+      "opal_macroCoupling": 0.0,
+      "opal_macroSpace": 0.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

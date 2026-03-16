@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Arm Geometry",
+  "mood": "Prism",
+  "engines": ["Octopus"],
+  "author": "Guru Bin — Prism Expression 2026-03-16",
+  "version": "1.0.0",
+  "description": "The octopus as a spatial sculptor — shape-shifting geometry under the hands. armSpread starts at 0.4, a moderate configuration, the arms occupying a compact field. Mod wheel re-geometrizes: spread travels from 0.1 at low wheel (all arms converging toward a single point, the sound collapsed to mono, a focused jet of signal) to 0.9 at full wheel (maximum spread, eight arms at maximum extension, the stereo field filling from edge to edge). The journey from point to plane. Aftertouch pulses chromaDepth — the skin reacting to pressure, colour firing in waves across the body. Velocity controls arm modulation rate, soft notes creating slow deliberate gestures, hard strikes triggering rapid arm cycling.",
+  "tags": ["octopus", "spatial", "geometry", "stereo", "spread", "mod-wheel", "aftertouch", "prism", "expression"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "modMatrix": [
+    {"source": "modWheel", "destination": "octo_armSpread", "amount": 0.8},
+    {"source": "modWheel", "destination": "octo_armDepth", "amount": 0.35},
+    {"source": "aftertouch", "destination": "octo_chromaDepth", "amount": 0.65},
+    {"source": "aftertouch", "destination": "octo_filterReso", "amount": 0.3},
+    {"source": "velocity", "destination": "octo_armDepth", "amount": 0.55},
+    {"source": "velocity", "destination": "octo_filterCutoff", "amount": 0.5}
+  ],
+  "parameters": {
+    "Octopus": {
+      "octo_armDepth": 0.35,
+      "octo_chromaDepth": 0.3,
+      "octo_inkCloud": 0.02,
+      "octo_armSpread": 0.4,
+      "octo_filterCutoff": 3200.0,
+      "octo_filterReso": 0.1,
+      "octo_attack": 0.1,
+      "octo_decay": 0.7,
+      "octo_sustain": 0.5,
+      "octo_release": 2.8,
+      "octo_level": 0.74
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.45,
+    "movement": 0.65,
+    "density": 0.45,
+    "space": 0.8,
+    "aggression": 0.3
+  }
+}

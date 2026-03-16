@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Pitch Rain",
+  "mood": "Prism",
+  "engines": ["Opal"],
+  "author": "Guru Bin — OPAL Deep Expansion 2026-03-16",
+  "version": "1.0.0",
+  "description": "pitchScatter is the primary voice here — at rest it sits at 0.25, giving each grain a slightly different pitch, producing a shimmering halo around the played note. Mod wheel sweeps pitchScatter to maximum: the played pitch becomes a suggestion and the grains scatter across the octave like a chord no one composed. Velocity controls density so a soft key produces one pitched grain at a time — individual drops — while a hard key floods the field. An instrument for playing weather.",
+  "tags": ["granular", "prism", "pitch-scatter", "mod-wheel", "velocity", "harmonic", "rain", "stochastic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "modMatrix": [
+    {"source": "modWheel", "destination": "opal_pitchScatter", "amount": 0.75},
+    {"source": "modWheel", "destination": "opal_posScatter", "amount": 0.3},
+    {"source": "velocity", "destination": "opal_density", "amount": 0.7},
+    {"source": "velocity", "destination": "opal_ampAttack", "amount": -0.15},
+    {"source": "aftertouch", "destination": "opal_filterCutoff", "amount": 0.4},
+    {"source": "aftertouch", "destination": "opal_filterReso", "amount": 0.3}
+  ],
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.35,
+    "movement": 0.65,
+    "density": 0.3,
+    "space": 0.6,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Opal": {
+      "opal_grainSize": 0.25,
+      "opal_density": 0.2,
+      "opal_posScatter": 0.25,
+      "opal_pitchScatter": 0.25,
+      "opal_filterCutoff": 0.6,
+      "opal_filterReso": 0.12,
+      "opal_ampAttack": 0.08,
+      "opal_ampDecay": 0.5,
+      "opal_ampSustain": 0.7,
+      "opal_ampRelease": 1.8,
+      "opal_speed": 1.0,
+      "opal_reverse": 0.0,
+      "opal_macroCharacter": 0.0,
+      "opal_macroMovement": 0.0,
+      "opal_macroCoupling": 0.0,
+      "opal_macroSpace": 0.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

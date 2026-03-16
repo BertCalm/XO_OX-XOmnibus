@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Time Machine",
+  "mood": "Prism",
+  "engines": ["Ombre"],
+  "author": "Guru Bin — Prism Expression 2026-03-16",
+  "version": "1.0.0",
+  "description": "You literally move through time. blend starts at 0.1 — deep in the past, sound arriving through long grain reconstruction, the present barely audible beneath the memory layer. Mod wheel is the temporal lever: drag it forward and blend rises toward 0.95, the past collapsing, the perception engine taking over, the sound becoming immediate and present. At full wheel you are entirely in now — memoryGrain has shrunk to near real-time, reactivity at maximum. The instrument has transformed. Release the wheel and time reverses: the past reasserts itself slowly, notes once again arriving as echoes of themselves, the present dissolving into memory. Aftertouch maximizes interference at any temporal position — the boundary between states becoming unstable, resonant. Velocity controls reactivity — how quickly both states respond to your playing.",
+  "tags": ["ombre", "time", "temporal", "blend", "memory", "present", "mod-wheel", "aftertouch", "prism", "expression"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "modMatrix": [
+    {"source": "modWheel", "destination": "ombre_blend", "amount": 0.85},
+    {"source": "modWheel", "destination": "ombre_grainSize", "amount": -0.7},
+    {"source": "modWheel", "destination": "ombre_reactivity", "amount": 0.6},
+    {"source": "aftertouch", "destination": "ombre_interference", "amount": 0.9},
+    {"source": "aftertouch", "destination": "ombre_filterReso", "amount": 0.5},
+    {"source": "velocity", "destination": "ombre_reactivity", "amount": 0.55},
+    {"source": "velocity", "destination": "ombre_attack", "amount": -0.5}
+  ],
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.1,
+      "ombre_interference": 0.06,
+      "ombre_memoryDecay": 14.0,
+      "ombre_grainSize": 380.0,
+      "ombre_memoryDrift": 0.4,
+      "ombre_oscShape": 0.6,
+      "ombre_reactivity": 0.2,
+      "ombre_subLevel": 0.2,
+      "ombre_filterCutoff": 3400.0,
+      "ombre_filterReso": 0.1,
+      "ombre_attack": 0.22,
+      "ombre_decay": 0.8,
+      "ombre_sustain": 0.55,
+      "ombre_release": 3.8,
+      "ombre_level": 0.72
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.55,
+    "movement": 0.62,
+    "density": 0.4,
+    "space": 0.85,
+    "aggression": 0.08
+  }
+}
