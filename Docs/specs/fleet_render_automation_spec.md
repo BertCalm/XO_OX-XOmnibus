@@ -557,6 +557,106 @@ The render CLI reads the `variants` array from the render spec and maps each var
 
 ---
 
+## 5.7 Per-Engine Render Strategies
+
+Not all engines render the same way. The following table documents engines that require special
+handling in `renderNoteToWav()` or in the render spec that drives it. Engines not listed use the
+default 4-velocity, chromatic-range keygroup strategy.
+
+| Engine | Strategy | Reason | Key Parameters |
+|--------|----------|--------|----------------|
+| **ONSET** | Drum — fixed velocity per voice | Drum voices (Kick/Snare/CHat/OHat/Clap/Tom/Perc/FX) are triggered at 4 discrete velocities only. Do not render chromatic note range — each voice has one canonical pitch. | Velocity: 20/50/80/120. Note: per-voice MIDI note from `perc_voiceNote` param |
+| **OddfeliX** | 12-note chromatic | Neon tetra glide synthesis requires full chromatic coverage for accurate pitch mapping in the XPM keygroup. Render all 12 semitones per octave across 3 octaves (C2–B4). | 4 velocity layers. Hold: 3s (sustained FM tones). Tail: 2s |
+| **OPAL** | 30-second stems | Granular texture engine. Renders single long stem per preset rather than note-by-note keygroup. Stem captures full granular evolution. | 1 WAV per preset. No velocity layers. Hold: 30s + 5s tail |
+| **OVERLAP** | Extended tail | FDN reverb tails extend 8–12 seconds. Fixed tail allocation of 2s truncates the decay and produces audible cutoff. | Hold: 4s (reverb build). Tail: 10s. Early-exit RMS check deferred until 5s into tail |
+| **OHM** | Long hold for commune macro | Commune sustain requires 4+ seconds of hold time to reach its characteristic harmonic convergence state. Render 2 variants: `calm` (meddling=0.0) and `full` (meddling=0.7). | Hold: 5s. Tail: 3s. 2 variants per preset |
+| **ORACLE** | Stochastic seed management | GENDY stochastic synthesis means identical parameters produce different outputs per render. Render 2 takes, keep higher RMS. See section 5.4 for full protocol. | Seed: render first take with no pre-roll; second take with 1s pre-roll silence |
+| **OUTWIT** | CA state warmup | Wolfram CA 8-arm engine requires ~0.5s of processing before the cellular automata grid reaches an interesting state. Add 0.5s silent pre-roll before note-on. | Pre-roll: 0.5s (512 blocks at 512 blockSize, 48kHz). Tail: 2s |
+| **ORGANON** | Long metabolic tail | Variational Free Energy metabolism engine has organic decay curves that extend well past standard tail times when metabolism rate is low. | Hold: 3s. Tail: 6s. RMS check deferred until 2s into tail |
+| **OUROBOROS** | Leash variant set | Strange attractor state depends heavily on leash value. Render 2 variants: `leash_tight` (ouro_leash=0.2) and `leash_loose` (ouro_leash=0.9). Tight leash = disciplined melodic; loose leash = chaotic texture. | 2 variants × 4 velocity × chromatic range |
+| **OVERDUB** | Dry + wet variants | Tape delay + spring reverb tails add 4–8 seconds to the wet variant. Render `dry` (dub_sendAmount=0.0) and `wet` (dub_sendAmount=1.0) as separate XPM banks. | Dry: standard tail. Wet: 8s tail |
+| **OPTIC** | Skip audio render | Visual modulation engine. Many presets produce no audio. Post-render silence check (peak < -60 dBFS) flags and skips WAV write. Log warning to render report. | See section 5.5 |
+| **OddOscar** | 3-variant morph | Axolotl morph synthesis has 3 distinct characters: morph_a / morph_mid / morph_b. Each is a substantively different sound, not just a tone shift. | 3 variants: morph=0.0 / 0.5 / 1.0. Full chromatic × 4 velocity for each |
+
+**Default strategy** (all engines not listed above):
+- Note range: C2 to B4 (21 notes across 2.5 octaves, covering MPC standard pad mapping zone)
+- Velocity layers: 4 (MIDI 20 / 50 / 80 / 120)
+- Hold duration: derived from `SoundShapeClassifier` profile
+- Tail duration: derived from `SoundShapeClassifier` profile
+- Variants: 1 (no macro sweep)
+
+---
+
+## 5.8 Post-Render Quality Checks (`xpn_qa_checker.py`)
+
+After `fleet-render` completes each WAV, and again as a batch pass before packaging, `xpn_qa_checker.py`
+validates the rendered output. The checker runs as the last step in the `render` stage of `oxport.py`
+before handing off to `categorize`.
+
+### Per-WAV Automated Validation
+
+| Check | Pass Condition | Failure Action |
+|-------|--------------|----------------|
+| File size | > 44 bytes (not just header) | FAIL — re-render |
+| Peak amplitude | > -60 dBFS | WARN for Optic; FAIL for all others |
+| NaN / Inf samples | Zero occurrences | FAIL — DSP bug; stop pipeline |
+| Duration | Within 10% of expected hold+tail | WARN — silence trim may have over-trimmed |
+| Sample rate | Exactly 48,000 Hz | FAIL — sampleRate mismatch bug |
+| Bit depth | 24-bit (3 bytes/sample in raw PCM) | WARN — accept 16-bit but flag for re-render |
+| Stereo | 2 channels | FAIL — mono output indicates mix bug |
+| Click detection | No sample-to-sample delta > 0.5 FS in first/last 5ms | WARN — fade may not have applied |
+| DC offset | Absolute mean amplitude < 0.001 | WARN — indicates filter instability or init bug |
+
+### Batch-Level Validation
+
+After all WAVs for an engine are rendered:
+
+1. **Coverage check:** Verify that all note/velocity/variant combinations specified in the render
+   spec have a corresponding WAV file. Missing files = re-render those slots.
+
+2. **Pitch consistency check:** For keygroup presets, render the same preset at C3, E3, and G3,
+   then measure the fundamental frequency of each WAV via FFT. Verify the ratio matches the expected
+   equal-tempered intervals (within 5 cents). A failed pitch check indicates a pitch-tracking bug in
+   the engine's oscillator.
+
+3. **Velocity scaling check:** For 4-layer presets, verify that RMS increases monotonically from
+   v1 → v4. A reversal (v3 louder than v4) indicates a velocity routing bug.
+
+4. **Variant distinctness check:** For engines with variants (Obbligato, OddOscar, Orca, etc.),
+   verify that variant WAVs are perceptually distinct. Compute cross-correlation between `bond_a`
+   and `bond_b` at the same note/velocity. If correlation > 0.95, the variant parameter had no
+   effect — flag as DSP issue.
+
+### Spot-Check Listening Pass
+
+After a full fleet render (all 34 engines), randomly select 1% of WAVs (~2,000 files) stratified
+by engine and sound shape profile. Concatenate into a single spot-check WAV with 0.5s silence
+between samples. A human (Vibe) listens through the ~3-hour file and flags:
+- Systematic clicks or pops (fade application bug)
+- Wrong pitch register (octave doubling/halving — pitch detect bug)
+- Missing release tails (tail time too short for this sound shape class)
+- Distortion or clipping (normalization bug)
+- Silent files that passed the automated check (false negative in peak detector)
+
+Findings from the listening pass feed back into `SoundShapeClassifier` profile tuning and
+`renderNoteToWav()` hold/tail calibration.
+
+### A/B Comparison (Per-Engine Sign-Off)
+
+For each engine, select 1 representative preset and render it via:
+1. `fleet-render` offline CLI
+2. Manual recording from the standalone XOmnibus app (record into DAW at 48 kHz / 24-bit)
+
+Compare spectrograms side-by-side (use `librosa.display.specshow` or similar). Verify:
+- Frequency content is identical (same partials present at same relative amplitudes)
+- Attack and decay shapes match within 5% time tolerance
+- No artifacts in the offline render not present in the live version
+
+This A/B pass provides the strongest guarantee that `processBlock()` in headless mode produces
+identical audio to live plugin execution.
+
+---
+
 ## 6. Estimated Scale
 
 ### 6.1 WAV Count Per Engine
@@ -648,6 +748,26 @@ After silence trimming (typically removes 30-50% of file size): **~150-200 GB**
 - 50,000s / 15 = 3,333 seconds = **~55 minutes**
 
 These estimates include only render time. WAV I/O adds ~10%. Preset loading adds ~5%. Total wall clock on an 8-core machine: **~2.5 hours** for the entire fleet.
+
+### 6.4 Pack Production Throughput
+
+With fleet render operational, the economic bottleneck shifts from rendering to sound design and
+curation. The per-day pack production capacity under different work modes:
+
+| Work Mode | Fleet Render | Curation / QA | Packaging | Packs/Day |
+|-----------|-------------|---------------|-----------|-----------|
+| Manual (current) | 8,000+ hours per fleet | N/A | N/A | 0 (not viable) |
+| Automated, 8-core | 2.5 hours (full fleet) | 2 hours/engine (Vibe) | 30 min/engine | ~3 per day |
+| Automated, 16-core | 55 min (full fleet) | 2 hours/engine (Vibe) | 30 min/engine | ~4 per day |
+| Automated + parallel curation (3 reviewers) | 55 min (full fleet) | 45 min/engine | 30 min/engine | ~10 per day |
+
+**At 3 packs/day: the 34-engine fleet ships in ~11 days of focused pack production.**
+
+The bottleneck at that rate is Vibe's curation pass — not compute. The parallel curation scenario
+(3 reviewers covering separate engines simultaneously) would let the full fleet ship in 4 days.
+
+This throughput analysis validates the P0 classification of fleet render. It is not a quality-of-life
+improvement — it is the unlock that makes the entire XPN distribution model viable.
 
 ---
 
