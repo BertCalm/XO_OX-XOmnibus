@@ -1,0 +1,49 @@
+{
+  "name": "ALLLO FAM 04",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ODDOSCAR",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.085,
+      "macro_movement": 0.304,
+      "macro_coupling": 0.083,
+      "macro_space": 0.098
+    },
+    "ORPHICA": {
+      "macro_character": 0.085,
+      "macro_movement": 0.304,
+      "macro_coupling": 0.083,
+      "macro_space": 0.098
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ODDOSCAR",
+    "target": "ORPHICA",
+    "amount": 0.197
+  },
+  "dna": {
+    "brightness": 0.065,
+    "warmth": 0.105,
+    "movement": 0.024,
+    "density": 0.585,
+    "space": 0.098,
+    "aggression": 0.067
+  },
+  "macros": {
+    "CHARACTER": 0.085,
+    "MOVEMENT": 0.304,
+    "COUPLING": 0.083,
+    "SPACE": 0.098
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ]
+}

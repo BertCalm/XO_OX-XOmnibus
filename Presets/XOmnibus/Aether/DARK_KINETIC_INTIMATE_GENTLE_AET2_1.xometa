@@ -1,0 +1,53 @@
+{
+  "name": "DARK_KINETIC_INTIMATE_GENTLE_AET2_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORBITAL",
+    "OMBRE"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.1137,
+      "macro_movement": 0.9709,
+      "macro_coupling": 0.5504,
+      "macro_space": 0.0467
+    },
+    "OMBRE": {
+      "macro_character": 0.1022,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.5524,
+      "macro_space": 0.0874
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ORBITAL",
+    "target": "OMBRE",
+    "amount": 0.8832
+  },
+  "dna": {
+    "brightness": 0.0858,
+    "movement": 0.9647,
+    "space": 0.0718,
+    "aggression": 0.0273,
+    "warmth": 0.3378,
+    "density": 0.5714
+  },
+  "macros": {
+    "CHARACTER": 0.1079,
+    "MOVEMENT": 0.9805,
+    "COUPLING": 0.8832,
+    "SPACE": 0.0718
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "dark",
+    "kinetic",
+    "intimate",
+    "gentle",
+    "stirring"
+  ]
+}

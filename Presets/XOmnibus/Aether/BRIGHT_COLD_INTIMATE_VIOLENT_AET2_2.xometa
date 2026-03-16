@@ -1,0 +1,53 @@
+{
+  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_AET2_2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OBLIQUE",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.9517,
+      "macro_movement": 0.6245,
+      "macro_coupling": 0.6424,
+      "macro_space": 0.0652
+    },
+    "ODDFELIX": {
+      "macro_character": 0.9509,
+      "macro_movement": 0.6526,
+      "macro_coupling": 0.6589,
+      "macro_space": 0.0931
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OBLIQUE",
+    "target": "ODDFELIX",
+    "amount": 0.9037
+  },
+  "dna": {
+    "brightness": 0.9371,
+    "warmth": 0.0549,
+    "space": 0.0804,
+    "aggression": 0.9231,
+    "movement": 0.626,
+    "density": 0.6568
+  },
+  "macros": {
+    "CHARACTER": 0.9513,
+    "MOVEMENT": 0.6385,
+    "COUPLING": 0.9037,
+    "SPACE": 0.0804
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "bright",
+    "cold",
+    "intimate",
+    "violent",
+    "crystalline"
+  ]
+}

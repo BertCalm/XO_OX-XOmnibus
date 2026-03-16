@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_KINETIC_VAST_GENTLE_AET4_5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OPAL",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.4736,
+      "macro_movement": 0.2986,
+      "macro_coupling": 0.8822,
+      "macro_space": 0.445
+    },
+    "ORBITAL": {
+      "macro_character": 0.5116,
+      "macro_movement": 0.3506,
+      "macro_coupling": 0.7899,
+      "macro_space": 0.8573
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OPAL",
+    "target": "ORBITAL",
+    "amount": 0.515
+  },
+  "dna": {
+    "brightness": 0.9662,
+    "warmth": 0.607,
+    "movement": 0.8963,
+    "density": 0.3547,
+    "space": 0.8928,
+    "aggression": 0.0476
+  },
+  "macros": {
+    "CHARACTER": 0.7866,
+    "MOVEMENT": 0.8963,
+    "COUPLING": 0.515,
+    "SPACE": 0.8928
+  },
+  "tags": [
+    "aether",
+    "kinetic",
+    "bright",
+    "vast",
+    "gentle"
+  ]
+}

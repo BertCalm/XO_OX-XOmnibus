@@ -1,0 +1,49 @@
+{
+  "name": "ALLLO PRS 06",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OHM",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.037,
+      "macro_movement": 0.071,
+      "macro_coupling": 0.33,
+      "macro_space": 0.099
+    },
+    "OSTERIA": {
+      "macro_character": 0.037,
+      "macro_movement": 0.071,
+      "macro_coupling": 0.33,
+      "macro_space": 0.099
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OHM",
+    "target": "OSTERIA",
+    "amount": 0.171
+  },
+  "dna": {
+    "brightness": 0.036,
+    "warmth": 0.039,
+    "movement": 0.092,
+    "density": 0.051,
+    "space": 0.099,
+    "aggression": 0.56
+  },
+  "macros": {
+    "CHARACTER": 0.037,
+    "MOVEMENT": 0.071,
+    "COUPLING": 0.33,
+    "SPACE": 0.099
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ]
+}

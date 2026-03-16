@@ -1,0 +1,50 @@
+{
+  "name": "KINETIC_DENSE_VAST_VIOLENT_AET4_4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OMBRE",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OMBRE": {
+      "macro_character": 0.8573,
+      "macro_movement": 0.6635,
+      "macro_coupling": 0.6479,
+      "macro_space": 0.3157
+    },
+    "ODDFELIX": {
+      "macro_character": 0.3356,
+      "macro_movement": 0.7196,
+      "macro_coupling": 0.6686,
+      "macro_space": 0.877
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OMBRE",
+    "target": "ODDFELIX",
+    "amount": 0.7979
+  },
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.362,
+    "movement": 0.9841,
+    "density": 0.911,
+    "space": 0.9619,
+    "aggression": 0.893
+  },
+  "macros": {
+    "CHARACTER": 0.531,
+    "MOVEMENT": 0.9841,
+    "COUPLING": 0.7979,
+    "SPACE": 0.9619
+  },
+  "tags": [
+    "aether",
+    "kinetic",
+    "dense",
+    "vast",
+    "violent"
+  ]
+}

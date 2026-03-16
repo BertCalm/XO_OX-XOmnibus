@@ -1,0 +1,49 @@
+{
+  "name": "CROSS FAM 01",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OTTONI",
+    "OHM"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.93,
+      "macro_movement": 0.527,
+      "macro_coupling": 0.333,
+      "macro_space": 0.581
+    },
+    "OHM": {
+      "macro_character": 0.93,
+      "macro_movement": 0.527,
+      "macro_coupling": 0.333,
+      "macro_space": 0.581
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OTTONI",
+    "target": "OHM",
+    "amount": 0.522
+  },
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.96,
+    "movement": 0.975,
+    "density": 0.079,
+    "space": 0.581,
+    "aggression": 0.085
+  },
+  "macros": {
+    "CHARACTER": 0.93,
+    "MOVEMENT": 0.527,
+    "COUPLING": 0.333,
+    "SPACE": 0.581
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "cross-pole",
+    "contrast"
+  ]
+}

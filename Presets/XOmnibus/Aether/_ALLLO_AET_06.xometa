@@ -1,0 +1,49 @@
+{
+  "name": "ALLLO AET 06",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OPAL",
+    "OMBRE"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.095,
+      "macro_movement": 0.098,
+      "macro_coupling": 0.255,
+      "macro_space": 0.09
+    },
+    "OMBRE": {
+      "macro_character": 0.095,
+      "macro_movement": 0.098,
+      "macro_coupling": 0.255,
+      "macro_space": 0.09
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OPAL",
+    "target": "OMBRE",
+    "amount": 0.074
+  },
+  "dna": {
+    "brightness": 0.102,
+    "warmth": 0.087,
+    "movement": 0.095,
+    "density": 0.101,
+    "space": 0.09,
+    "aggression": 0.419
+  },
+  "macros": {
+    "CHARACTER": 0.095,
+    "MOVEMENT": 0.098,
+    "COUPLING": 0.255,
+    "SPACE": 0.09
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ]
+}

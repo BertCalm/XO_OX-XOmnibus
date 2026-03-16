@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_KINETIC_VAST_AET4_4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OCEANIC",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.3301,
+      "macro_movement": 0.3147,
+      "macro_coupling": 0.7694,
+      "macro_space": 0.2565
+    },
+    "ORACLE": {
+      "macro_character": 0.9135,
+      "macro_movement": 0.671,
+      "macro_coupling": 0.548,
+      "macro_space": 0.6228
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OCEANIC",
+    "target": "ORACLE",
+    "amount": 0.6152
+  },
+  "dna": {
+    "brightness": 0.0566,
+    "warmth": 0.0385,
+    "movement": 0.9313,
+    "density": 0.591,
+    "space": 0.8837,
+    "aggression": 0.626
+  },
+  "macros": {
+    "CHARACTER": 0.0475,
+    "MOVEMENT": 0.9313,
+    "COUPLING": 0.6152,
+    "SPACE": 0.8837
+  },
+  "tags": [
+    "aether",
+    "kinetic",
+    "dark",
+    "cold",
+    "vast"
+  ]
+}

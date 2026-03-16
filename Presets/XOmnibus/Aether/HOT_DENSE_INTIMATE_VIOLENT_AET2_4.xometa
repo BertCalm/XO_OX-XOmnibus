@@ -1,0 +1,53 @@
+{
+  "name": "HOT_DENSE_INTIMATE_VIOLENT_AET2_4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ODDOSCAR",
+    "OMBRE"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.4113,
+      "macro_movement": 0.4825,
+      "macro_coupling": 0.9068,
+      "macro_space": 0.0814
+    },
+    "OMBRE": {
+      "macro_character": 0.4608,
+      "macro_movement": 0.4956,
+      "macro_coupling": 0.922,
+      "macro_space": 0.0422
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ODDOSCAR",
+    "target": "OMBRE",
+    "amount": 0.645
+  },
+  "dna": {
+    "warmth": 0.9439,
+    "density": 0.9061,
+    "space": 0.0638,
+    "aggression": 0.87,
+    "brightness": 0.4148,
+    "movement": 0.472
+  },
+  "macros": {
+    "CHARACTER": 0.436,
+    "MOVEMENT": 0.489,
+    "COUPLING": 0.645,
+    "SPACE": 0.0638
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "hot",
+    "dense",
+    "intimate",
+    "violent",
+    "compressed"
+  ]
+}

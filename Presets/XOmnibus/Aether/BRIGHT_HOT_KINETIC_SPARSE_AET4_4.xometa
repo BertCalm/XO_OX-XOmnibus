@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_HOT_KINETIC_SPARSE_AET4_4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OCEANIC",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.4757,
+      "macro_movement": 0.772,
+      "macro_coupling": 0.6306,
+      "macro_space": 0.8054
+    },
+    "ORACLE": {
+      "macro_character": 0.8339,
+      "macro_movement": 0.9309,
+      "macro_coupling": 0.8138,
+      "macro_space": 0.6602
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OCEANIC",
+    "target": "ORACLE",
+    "amount": 0.8804
+  },
+  "dna": {
+    "brightness": 0.9498,
+    "warmth": 0.96,
+    "movement": 0.9742,
+    "density": 0.0993,
+    "space": 0.3851,
+    "aggression": 0.5627
+  },
+  "macros": {
+    "CHARACTER": 0.9549,
+    "MOVEMENT": 0.9742,
+    "COUPLING": 0.8804,
+    "SPACE": 0.3851
+  },
+  "tags": [
+    "aether",
+    "kinetic",
+    "bright",
+    "warm",
+    "sparse"
+  ]
+}

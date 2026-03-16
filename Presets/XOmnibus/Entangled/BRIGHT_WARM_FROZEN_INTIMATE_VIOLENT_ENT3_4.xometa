@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT_WARM_FROZEN_INTIMATE_VIOLENT_ENT3_4",
+  "mood": "Entangled",
+  "engines": [
+    "OWLFISH",
+    "OMBRE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_WARM_FROZEN_INTIMATE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "bright",
+    "warm",
+    "violent",
+    "intimate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OWLFISH": {
+      "macro_character": 0.9316,
+      "macro_movement": 0.0594,
+      "macro_coupling": 0.8663,
+      "macro_space": 0.1245
+    },
+    "OMBRE": {
+      "macro_character": 0.8917,
+      "macro_movement": 0.0347,
+      "macro_coupling": 0.9203,
+      "macro_space": 0.3641
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OWLFISH",
+    "target": "OMBRE",
+    "amount": 0.7724
+  },
+  "macros": {
+    "CHARACTER": 0.9117,
+    "MOVEMENT": 0.0471,
+    "COUPLING": 0.8933,
+    "SPACE": 0.2443
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.9447,
+    "warmth": 0.9298,
+    "movement": 0.0542,
+    "density": 0.3206,
+    "space": 0.0494,
+    "aggression": 0.8857
+  }
+}

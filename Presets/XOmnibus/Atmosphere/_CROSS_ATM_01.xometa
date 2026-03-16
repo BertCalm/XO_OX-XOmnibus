@@ -1,0 +1,49 @@
+{
+  "name": "CROSS ATM 01",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OBSCURA",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.915,
+      "macro_movement": 0.503,
+      "macro_coupling": 0.336,
+      "macro_space": 0.606
+    },
+    "OPTIC": {
+      "macro_character": 0.915,
+      "macro_movement": 0.503,
+      "macro_coupling": 0.336,
+      "macro_space": 0.606
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBSCURA",
+    "target": "OPTIC",
+    "amount": 0.712
+  },
+  "dna": {
+    "brightness": 0.918,
+    "warmth": 0.911,
+    "movement": 0.924,
+    "density": 0.082,
+    "space": 0.606,
+    "aggression": 0.065
+  },
+  "macros": {
+    "CHARACTER": 0.915,
+    "MOVEMENT": 0.503,
+    "COUPLING": 0.336,
+    "SPACE": 0.606
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "cross-pole",
+    "contrast"
+  ]
+}

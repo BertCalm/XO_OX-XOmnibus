@@ -1,0 +1,50 @@
+{
+  "name": "DARK_KINETIC_VAST_DENSE_AET4_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORIGAMI",
+    "ORACLE"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.3692,
+      "macro_movement": 0.7072,
+      "macro_coupling": 0.7058,
+      "macro_space": 0.4981
+    },
+    "ORACLE": {
+      "macro_character": 0.8343,
+      "macro_movement": 0.618,
+      "macro_coupling": 0.2677,
+      "macro_space": 0.4959
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ORIGAMI",
+    "target": "ORACLE",
+    "amount": 0.8394
+  },
+  "dna": {
+    "brightness": 0.0602,
+    "warmth": 0.6777,
+    "movement": 0.9302,
+    "density": 0.8897,
+    "space": 0.9027,
+    "aggression": 0.6217
+  },
+  "macros": {
+    "CHARACTER": 0.369,
+    "MOVEMENT": 0.9302,
+    "COUPLING": 0.8394,
+    "SPACE": 0.9027
+  },
+  "tags": [
+    "aether",
+    "kinetic",
+    "dark",
+    "vast",
+    "dense"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT_WARM_FROZEN_DENSE_GENTLE_ENT3_2",
+  "mood": "Entangled",
+  "engines": [
+    "ORIGAMI",
+    "OCEANIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "bright",
+    "warm",
+    "gentle",
+    "dense"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.7952,
+      "macro_movement": 0.031,
+      "macro_coupling": 0.8463,
+      "macro_space": 0.1342
+    },
+    "OCEANIC": {
+      "macro_character": 0.8497,
+      "macro_movement": 0.0354,
+      "macro_coupling": 0.943,
+      "macro_space": 0.5414
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ORIGAMI",
+    "target": "OCEANIC",
+    "amount": 0.7835
+  },
+  "macros": {
+    "CHARACTER": 0.8225,
+    "MOVEMENT": 0.0332,
+    "COUPLING": 0.8946,
+    "SPACE": 0.3378
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.8843,
+    "warmth": 0.987,
+    "movement": 0.0494,
+    "density": 0.9654,
+    "space": 0.4356,
+    "aggression": 0.1233
+  }
+}

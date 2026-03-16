@@ -1,0 +1,49 @@
+{
+  "name": "ALLHI AET 05",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OBLIQUE",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.975,
+      "macro_movement": 0.952,
+      "macro_coupling": 0.704,
+      "macro_space": 0.445
+    },
+    "ORACLE": {
+      "macro_character": 0.975,
+      "macro_movement": 0.952,
+      "macro_coupling": 0.704,
+      "macro_space": 0.445
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OBLIQUE",
+    "target": "ORACLE",
+    "amount": 0.953
+  },
+  "dna": {
+    "brightness": 0.975,
+    "warmth": 0.975,
+    "movement": 0.976,
+    "density": 0.928,
+    "space": 0.445,
+    "aggression": 0.962
+  },
+  "macros": {
+    "CHARACTER": 0.975,
+    "MOVEMENT": 0.952,
+    "COUPLING": 0.704,
+    "SPACE": 0.445
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ]
+}

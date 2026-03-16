@@ -1,0 +1,49 @@
+{
+  "name": "CROSS FAM 03",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OLE",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.313,
+      "macro_movement": 0.899,
+      "macro_coupling": 0.528,
+      "macro_space": 0.086
+    },
+    "ORPHICA": {
+      "macro_character": 0.313,
+      "macro_movement": 0.899,
+      "macro_coupling": 0.528,
+      "macro_space": 0.086
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OLE",
+    "target": "ORPHICA",
+    "amount": 0.374
+  },
+  "dna": {
+    "brightness": 0.026,
+    "warmth": 0.6,
+    "movement": 0.899,
+    "density": 0.9,
+    "space": 0.086,
+    "aggression": 0.971
+  },
+  "macros": {
+    "CHARACTER": 0.313,
+    "MOVEMENT": 0.899,
+    "COUPLING": 0.528,
+    "SPACE": 0.086
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "cross-pole",
+    "contrast"
+  ]
+}

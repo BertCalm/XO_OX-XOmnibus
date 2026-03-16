@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_HOT_VAST_GENTLE_AET3_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OCEANIC",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.6209,
+      "macro_movement": 0.737,
+      "macro_coupling": 0.726,
+      "macro_space": 0.5146
+    },
+    "OVERWORLD": {
+      "macro_character": 0.5369,
+      "macro_movement": 0.4086,
+      "macro_coupling": 0.852,
+      "macro_space": 0.7691
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OCEANIC",
+    "target": "OVERWORLD",
+    "amount": 0.7709
+  },
+  "dna": {
+    "brightness": 0.9467,
+    "warmth": 0.873,
+    "movement": 0.6569,
+    "density": 0.3348,
+    "space": 0.903,
+    "aggression": 0.0446
+  },
+  "macros": {
+    "CHARACTER": 0.9099,
+    "MOVEMENT": 0.6569,
+    "COUPLING": 0.7709,
+    "SPACE": 0.903
+  },
+  "tags": [
+    "aether",
+    "warm",
+    "bright",
+    "vast",
+    "gentle",
+    "transcendent"
+  ]
+}

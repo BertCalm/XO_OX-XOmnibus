@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_AET4_5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORIGAMI",
+    "OPAL"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.7933,
+      "macro_movement": 0.8643,
+      "macro_coupling": 0.4367,
+      "macro_space": 0.4326
+    },
+    "OPAL": {
+      "macro_character": 0.4987,
+      "macro_movement": 0.8116,
+      "macro_coupling": 0.555,
+      "macro_space": 0.2275
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ORIGAMI",
+    "target": "OPAL",
+    "amount": 0.5907
+  },
+  "dna": {
+    "brightness": 0.9355,
+    "warmth": 0.5782,
+    "movement": 0.9676,
+    "density": 0.6246,
+    "space": 0.0393,
+    "aggression": 0.9635
+  },
+  "macros": {
+    "CHARACTER": 0.7569,
+    "MOVEMENT": 0.9676,
+    "COUPLING": 0.5907,
+    "SPACE": 0.0393
+  },
+  "tags": [
+    "aether",
+    "kinetic",
+    "bright",
+    "intimate",
+    "violent"
+  ]
+}

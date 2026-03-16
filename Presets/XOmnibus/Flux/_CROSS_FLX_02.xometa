@@ -1,0 +1,49 @@
+{
+  "name": "CROSS FLX 02",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ORGANON",
+    "OPTIC"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.509,
+      "macro_movement": 0.686,
+      "macro_coupling": 0.496,
+      "macro_space": 0.951
+    },
+    "OPTIC": {
+      "macro_character": 0.509,
+      "macro_movement": 0.686,
+      "macro_coupling": 0.496,
+      "macro_space": 0.951
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ORGANON",
+    "target": "OPTIC",
+    "amount": 0.474
+  },
+  "dna": {
+    "brightness": 0.934,
+    "warmth": 0.083,
+    "movement": 0.386,
+    "density": 0.987,
+    "space": 0.951,
+    "aggression": 0.042
+  },
+  "macros": {
+    "CHARACTER": 0.509,
+    "MOVEMENT": 0.686,
+    "COUPLING": 0.496,
+    "SPACE": 0.951
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "cross-pole",
+    "contrast"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT_WARM_FROZEN_SPARSE_INTIMATE_ENT3_4",
+  "mood": "Entangled",
+  "engines": [
+    "OPTIC",
+    "ODDOSCAR"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_WARM_FROZEN_SPARSE_INTIMATE. Designed to raise Entangled cosine diversity.",
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "bright",
+    "warm",
+    "sparse",
+    "intimate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.6562,
+      "macro_movement": 0.043,
+      "macro_coupling": 0.7738,
+      "macro_space": 0.7075
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.5716,
+      "macro_movement": 0.0485,
+      "macro_coupling": 0.7592,
+      "macro_space": 0.8798
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OPTIC",
+    "target": "ODDOSCAR",
+    "amount": 0.9321
+  },
+  "macros": {
+    "CHARACTER": 0.6139,
+    "MOVEMENT": 0.0457,
+    "COUPLING": 0.7665,
+    "SPACE": 0.7936
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.9817,
+    "warmth": 0.9198,
+    "movement": 0.0496,
+    "density": 0.0611,
+    "space": 0.0625,
+    "aggression": 0.3326
+  }
+}

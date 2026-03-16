@@ -1,0 +1,53 @@
+{
+  "name": "BRIGHT_WARM_KINETIC_INTIMATE_AET2_3",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OBSCURA",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.9584,
+      "macro_movement": 0.9562,
+      "macro_coupling": 0.6922,
+      "macro_space": 0.0699
+    },
+    "ORIGAMI": {
+      "macro_character": 0.99,
+      "macro_movement": 0.9885,
+      "macro_coupling": 0.6735,
+      "macro_space": 0.0322
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBSCURA",
+    "target": "ORIGAMI",
+    "amount": 0.718
+  },
+  "dna": {
+    "brightness": 0.9685,
+    "warmth": 0.9039,
+    "space": 0.0439,
+    "movement": 0.9404,
+    "density": 0.6996,
+    "aggression": 0.4959
+  },
+  "macros": {
+    "CHARACTER": 0.9742,
+    "MOVEMENT": 0.9724,
+    "COUPLING": 0.718,
+    "SPACE": 0.0439
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "bright",
+    "warm",
+    "kinetic",
+    "intimate",
+    "celestial"
+  ]
+}

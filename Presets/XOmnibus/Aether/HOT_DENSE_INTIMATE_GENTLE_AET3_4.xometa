@@ -1,0 +1,50 @@
+{
+  "name": "HOT_DENSE_INTIMATE_GENTLE_AET3_4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OMBRE",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OMBRE": {
+      "macro_character": 0.5662,
+      "macro_movement": 0.4047,
+      "macro_coupling": 0.5642,
+      "macro_space": 0.4916
+    },
+    "ODDFELIX": {
+      "macro_character": 0.7017,
+      "macro_movement": 0.7986,
+      "macro_coupling": 0.7431,
+      "macro_space": 0.8304
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OMBRE",
+    "target": "ODDFELIX",
+    "amount": 0.904
+  },
+  "dna": {
+    "brightness": 0.6771,
+    "warmth": 0.8723,
+    "movement": 0.456,
+    "density": 0.9757,
+    "space": 0.0833,
+    "aggression": 0.0725
+  },
+  "macros": {
+    "CHARACTER": 0.7747,
+    "MOVEMENT": 0.456,
+    "COUPLING": 0.904,
+    "SPACE": 0.0833
+  },
+  "tags": [
+    "aether",
+    "warm",
+    "dense",
+    "intimate",
+    "gentle"
+  ]
+}

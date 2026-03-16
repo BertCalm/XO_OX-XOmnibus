@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_VAST_SPARSE_AET3_2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORACLE",
+    "OMBRE"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.9335,
+      "macro_movement": 0.5995,
+      "macro_coupling": 0.2943,
+      "macro_space": 0.6948
+    },
+    "OMBRE": {
+      "macro_character": 0.9101,
+      "macro_movement": 0.3238,
+      "macro_coupling": 0.5958,
+      "macro_space": 0.6549
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ORACLE",
+    "target": "OMBRE",
+    "amount": 0.8672
+  },
+  "dna": {
+    "brightness": 0.0201,
+    "warmth": 0.9089,
+    "movement": 0.423,
+    "density": 0.1222,
+    "space": 0.8723,
+    "aggression": 0.6788
+  },
+  "macros": {
+    "CHARACTER": 0.4645,
+    "MOVEMENT": 0.423,
+    "COUPLING": 0.8672,
+    "SPACE": 0.8723
+  },
+  "tags": [
+    "aether",
+    "warm",
+    "dark",
+    "vast",
+    "sparse"
+  ]
+}

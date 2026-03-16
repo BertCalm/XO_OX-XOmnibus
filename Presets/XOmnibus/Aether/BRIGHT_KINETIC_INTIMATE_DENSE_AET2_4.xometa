@@ -1,0 +1,53 @@
+{
+  "name": "BRIGHT_KINETIC_INTIMATE_DENSE_AET2_4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORGANON",
+    "OPAL"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.9286,
+      "macro_movement": 0.914,
+      "macro_coupling": 0.8564,
+      "macro_space": 0.065
+    },
+    "OPAL": {
+      "macro_character": 0.8864,
+      "macro_movement": 0.8614,
+      "macro_coupling": 0.8865,
+      "macro_space": 0.0549
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORGANON",
+    "target": "OPAL",
+    "amount": 0.7629
+  },
+  "dna": {
+    "brightness": 0.9284,
+    "movement": 0.8928,
+    "space": 0.0374,
+    "density": 0.877,
+    "warmth": 0.5943,
+    "aggression": 0.3244
+  },
+  "macros": {
+    "CHARACTER": 0.9075,
+    "MOVEMENT": 0.8877,
+    "COUPLING": 0.7629,
+    "SPACE": 0.0374
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "bright",
+    "kinetic",
+    "intimate",
+    "dense",
+    "ethereal"
+  ]
+}

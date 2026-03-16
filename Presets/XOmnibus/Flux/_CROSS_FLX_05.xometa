@@ -1,0 +1,49 @@
+{
+  "name": "CROSS FLX 05",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OVERDUB",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.51,
+      "macro_movement": 0.722,
+      "macro_coupling": 0.522,
+      "macro_space": 0.104
+    },
+    "ORGANON": {
+      "macro_character": 0.51,
+      "macro_movement": 0.722,
+      "macro_coupling": 0.522,
+      "macro_space": 0.104
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OVERDUB",
+    "target": "ORGANON",
+    "amount": 0.463
+  },
+  "dna": {
+    "brightness": 0.976,
+    "warmth": 0.045,
+    "movement": 0.969,
+    "density": 0.474,
+    "space": 0.104,
+    "aggression": 0.941
+  },
+  "macros": {
+    "CHARACTER": 0.51,
+    "MOVEMENT": 0.722,
+    "COUPLING": 0.522,
+    "SPACE": 0.104
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "cross-pole",
+    "contrast"
+  ]
+}

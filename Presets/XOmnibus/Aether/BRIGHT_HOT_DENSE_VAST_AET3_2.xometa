@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_HOT_DENSE_VAST_AET3_2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OCEANIC",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.2615,
+      "macro_movement": 0.693,
+      "macro_coupling": 0.6239,
+      "macro_space": 0.4373
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.3956,
+      "macro_movement": 0.7023,
+      "macro_coupling": 0.4356,
+      "macro_space": 0.3992
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OCEANIC",
+    "target": "ODDOSCAR",
+    "amount": 0.5179
+  },
+  "dna": {
+    "brightness": 0.9723,
+    "warmth": 0.8889,
+    "movement": 0.5701,
+    "density": 0.9853,
+    "space": 0.8796,
+    "aggression": 0.6561
+  },
+  "macros": {
+    "CHARACTER": 0.9306,
+    "MOVEMENT": 0.5701,
+    "COUPLING": 0.5179,
+    "SPACE": 0.8796
+  },
+  "tags": [
+    "aether",
+    "warm",
+    "bright",
+    "dense",
+    "vast"
+  ]
+}

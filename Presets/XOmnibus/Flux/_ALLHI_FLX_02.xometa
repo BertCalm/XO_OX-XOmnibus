@@ -1,0 +1,49 @@
+{
+  "name": "ALLHI FLX 02",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ODYSSEY",
+    "ORACLE"
+  ],
+  "parameters": {
+    "ODYSSEY": {
+      "macro_character": 0.721,
+      "macro_movement": 0.925,
+      "macro_coupling": 0.9,
+      "macro_space": 0.895
+    },
+    "ORACLE": {
+      "macro_character": 0.721,
+      "macro_movement": 0.925,
+      "macro_coupling": 0.9,
+      "macro_space": 0.895
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "ODYSSEY",
+    "target": "ORACLE",
+    "amount": 0.975
+  },
+  "dna": {
+    "brightness": 0.972,
+    "warmth": 0.47,
+    "movement": 0.897,
+    "density": 0.953,
+    "space": 0.895,
+    "aggression": 0.905
+  },
+  "macros": {
+    "CHARACTER": 0.721,
+    "MOVEMENT": 0.925,
+    "COUPLING": 0.9,
+    "SPACE": 0.895
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ]
+}

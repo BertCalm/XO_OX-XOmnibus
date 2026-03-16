@@ -1,0 +1,49 @@
+{
+  "name": "CROSS FLX 03",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OUROBOROS",
+    "OVERDUB"
+  ],
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.237,
+      "macro_movement": 0.938,
+      "macro_coupling": 0.53,
+      "macro_space": 0.105
+    },
+    "OVERDUB": {
+      "macro_character": 0.237,
+      "macro_movement": 0.938,
+      "macro_coupling": 0.53,
+      "macro_space": 0.105
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OUROBOROS",
+    "target": "OVERDUB",
+    "amount": 0.549
+  },
+  "dna": {
+    "brightness": 0.057,
+    "warmth": 0.417,
+    "movement": 0.974,
+    "density": 0.901,
+    "space": 0.105,
+    "aggression": 0.955
+  },
+  "macros": {
+    "CHARACTER": 0.237,
+    "MOVEMENT": 0.938,
+    "COUPLING": 0.53,
+    "SPACE": 0.105
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "cross-pole",
+    "contrast"
+  ]
+}

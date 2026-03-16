@@ -1,0 +1,53 @@
+{
+  "name": "BRIGHT_SPARSE_INTIMATE_GENTLE_AET2_4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORIGAMI",
+    "ORACLE"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.9491,
+      "macro_movement": 0.3284,
+      "macro_coupling": 0.0563,
+      "macro_space": 0.0366
+    },
+    "ORACLE": {
+      "macro_character": 0.981,
+      "macro_movement": 0.301,
+      "macro_coupling": 0.1325,
+      "macro_space": 0.0194
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "ORIGAMI",
+    "target": "ORACLE",
+    "amount": 0.6803
+  },
+  "dna": {
+    "brightness": 0.9747,
+    "density": 0.0831,
+    "space": 0.0576,
+    "aggression": 0.0685,
+    "warmth": 0.3737,
+    "movement": 0.3206
+  },
+  "macros": {
+    "CHARACTER": 0.965,
+    "MOVEMENT": 0.3147,
+    "COUPLING": 0.6803,
+    "SPACE": 0.0576
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "bright",
+    "sparse",
+    "intimate",
+    "gentle",
+    "airy"
+  ]
+}

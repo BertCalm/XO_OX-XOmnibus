@@ -1,0 +1,53 @@
+{
+  "name": "BRIGHT_WARM_INTIMATE_GENTLE_AET2_3",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORACLE",
+    "OPAL"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.8669,
+      "macro_movement": 0.4195,
+      "macro_coupling": 0.3609,
+      "macro_space": 0.0464
+    },
+    "OPAL": {
+      "macro_character": 0.8573,
+      "macro_movement": 0.4583,
+      "macro_coupling": 0.3634,
+      "macro_space": 0.0573
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORACLE",
+    "target": "OPAL",
+    "amount": 0.6026
+  },
+  "dna": {
+    "brightness": 0.8795,
+    "warmth": 0.9052,
+    "space": 0.0703,
+    "aggression": 0.1174,
+    "movement": 0.4447,
+    "density": 0.3769
+  },
+  "macros": {
+    "CHARACTER": 0.8621,
+    "MOVEMENT": 0.4389,
+    "COUPLING": 0.6026,
+    "SPACE": 0.0703
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "bright",
+    "warm",
+    "intimate",
+    "gentle",
+    "celestial"
+  ]
+}

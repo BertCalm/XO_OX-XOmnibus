@@ -1,0 +1,53 @@
+{
+  "name": "BRIGHT_KINETIC_INTIMATE_DENSE_AET2_3",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OPAL",
+    "OBSCURA"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.9746,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.9454,
+      "macro_space": 0.0204
+    },
+    "OBSCURA": {
+      "macro_character": 0.99,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.9566,
+      "macro_space": 0.0495
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OPAL",
+    "target": "OBSCURA",
+    "amount": 0.501
+  },
+  "dna": {
+    "brightness": 0.9812,
+    "movement": 0.9718,
+    "space": 0.0333,
+    "density": 0.9283,
+    "warmth": 0.3855,
+    "aggression": 0.4604
+  },
+  "macros": {
+    "CHARACTER": 0.9823,
+    "MOVEMENT": 0.99,
+    "COUPLING": 0.501,
+    "SPACE": 0.0333
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "bright",
+    "kinetic",
+    "intimate",
+    "dense",
+    "ethereal"
+  ]
+}

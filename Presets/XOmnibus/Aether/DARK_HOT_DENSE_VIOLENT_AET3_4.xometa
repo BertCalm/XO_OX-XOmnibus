@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_DENSE_VIOLENT_AET3_4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORBITAL",
+    "OMBRE"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.6349,
+      "macro_movement": 0.695,
+      "macro_coupling": 0.8489,
+      "macro_space": 0.5349
+    },
+    "OMBRE": {
+      "macro_character": 0.5633,
+      "macro_movement": 0.4493,
+      "macro_coupling": 0.7722,
+      "macro_space": 0.4829
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ORBITAL",
+    "target": "OMBRE",
+    "amount": 0.8769
+  },
+  "dna": {
+    "brightness": 0.1214,
+    "warmth": 0.931,
+    "movement": 0.466,
+    "density": 0.9755,
+    "space": 0.5031,
+    "aggression": 0.9737
+  },
+  "macros": {
+    "CHARACTER": 0.5262,
+    "MOVEMENT": 0.466,
+    "COUPLING": 0.8769,
+    "SPACE": 0.5031
+  },
+  "tags": [
+    "aether",
+    "warm",
+    "dark",
+    "dense",
+    "violent"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "CROSS AET 03",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORGANON",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.248,
+      "macro_movement": 0.944,
+      "macro_coupling": 0.546,
+      "macro_space": 0.105
+    },
+    "ODDFELIX": {
+      "macro_character": 0.248,
+      "macro_movement": 0.944,
+      "macro_coupling": 0.546,
+      "macro_space": 0.105
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ORGANON",
+    "target": "ODDFELIX",
+    "amount": 0.649
+  },
+  "dna": {
+    "brightness": 0.065,
+    "warmth": 0.432,
+    "movement": 0.906,
+    "density": 0.981,
+    "space": 0.105,
+    "aggression": 0.987
+  },
+  "macros": {
+    "CHARACTER": 0.248,
+    "MOVEMENT": 0.944,
+    "COUPLING": 0.546,
+    "SPACE": 0.105
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "cross-pole",
+    "contrast"
+  ]
+}

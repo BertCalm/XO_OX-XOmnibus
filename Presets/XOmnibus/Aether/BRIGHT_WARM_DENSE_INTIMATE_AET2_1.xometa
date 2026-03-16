@@ -1,0 +1,53 @@
+{
+  "name": "BRIGHT_WARM_DENSE_INTIMATE_AET2_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORGANON",
+    "ORACLE"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.8684,
+      "macro_movement": 0.5526,
+      "macro_coupling": 0.9676,
+      "macro_space": 0.0397
+    },
+    "ORACLE": {
+      "macro_character": 0.8648,
+      "macro_movement": 0.5313,
+      "macro_coupling": 0.9495,
+      "macro_space": 0.0128
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ORGANON",
+    "target": "ORACLE",
+    "amount": 0.88
+  },
+  "dna": {
+    "brightness": 0.8838,
+    "warmth": 0.8725,
+    "space": 0.046,
+    "density": 0.9662,
+    "movement": 0.5473,
+    "aggression": 0.6328
+  },
+  "macros": {
+    "CHARACTER": 0.8666,
+    "MOVEMENT": 0.5419,
+    "COUPLING": 0.88,
+    "SPACE": 0.046
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "bright",
+    "warm",
+    "dense",
+    "intimate",
+    "lush"
+  ]
+}

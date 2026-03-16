@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "DARK_COLD_FROZEN_SPARSE_VIOLENT_ENT3_2",
+  "mood": "Entangled",
+  "engines": [
+    "OVERWORLD",
+    "OBLONG"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: DARK_COLD_FROZEN_SPARSE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "dark",
+    "cold",
+    "violent",
+    "sparse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.6559,
+      "macro_movement": 0.1033,
+      "macro_coupling": 0.8635,
+      "macro_space": 0.8764
+    },
+    "OBLONG": {
+      "macro_character": 0.9843,
+      "macro_movement": 0.0942,
+      "macro_coupling": 0.9402,
+      "macro_space": 0.6542
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OVERWORLD",
+    "target": "OBLONG",
+    "amount": 0.7803
+  },
+  "macros": {
+    "CHARACTER": 0.8201,
+    "MOVEMENT": 0.0988,
+    "COUPLING": 0.9019,
+    "SPACE": 0.7653
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.1226,
+    "warmth": 0.1157,
+    "movement": 0.1081,
+    "density": 0.0463,
+    "space": 0.4532,
+    "aggression": 0.9727
+  }
+}

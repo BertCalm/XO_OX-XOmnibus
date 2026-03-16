@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_STILL_GENTLE_AET3_2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OCEANIC",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.2521,
+      "macro_movement": 0.78,
+      "macro_coupling": 0.4634,
+      "macro_space": 0.5821
+    },
+    "OBLIQUE": {
+      "macro_character": 0.7096,
+      "macro_movement": 0.8327,
+      "macro_coupling": 0.4484,
+      "macro_space": 0.2207
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OCEANIC",
+    "target": "OBLIQUE",
+    "amount": 0.6254
+  },
+  "dna": {
+    "brightness": 0.0319,
+    "warmth": 0.9747,
+    "movement": 0.1144,
+    "density": 0.6181,
+    "space": 0.391,
+    "aggression": 0.0445
+  },
+  "macros": {
+    "CHARACTER": 0.5033,
+    "MOVEMENT": 0.1144,
+    "COUPLING": 0.6254,
+    "SPACE": 0.391
+  },
+  "tags": [
+    "aether",
+    "warm",
+    "dark",
+    "still",
+    "gentle"
+  ]
+}

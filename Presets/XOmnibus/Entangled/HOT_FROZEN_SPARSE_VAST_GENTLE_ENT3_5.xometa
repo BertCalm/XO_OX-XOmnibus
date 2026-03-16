@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "HOT_FROZEN_SPARSE_VAST_GENTLE_ENT3_5",
+  "mood": "Entangled",
+  "engines": [
+    "ORIGAMI",
+    "OBLIQUE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: HOT_FROZEN_SPARSE_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "warm",
+    "gentle",
+    "sparse",
+    "vast"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.5504,
+      "macro_movement": 0.0155,
+      "macro_coupling": 0.8114,
+      "macro_space": 0.2475
+    },
+    "OBLIQUE": {
+      "macro_character": 0.872,
+      "macro_movement": 0.0345,
+      "macro_coupling": 0.7681,
+      "macro_space": 0.9086
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ORIGAMI",
+    "target": "OBLIQUE",
+    "amount": 0.9311
+  },
+  "macros": {
+    "CHARACTER": 0.7112,
+    "MOVEMENT": 0.025,
+    "COUPLING": 0.7897,
+    "SPACE": 0.578
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5533,
+    "warmth": 0.9337,
+    "movement": 0.0294,
+    "density": 0.1054,
+    "space": 0.9121,
+    "aggression": 0.1254
+  }
+}

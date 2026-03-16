@@ -1,0 +1,49 @@
+{
+  "name": "ALLLO AET 02",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ODDFELIX",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.329,
+      "macro_movement": 0.031,
+      "macro_coupling": 0.087,
+      "macro_space": 0.098
+    },
+    "OBLIQUE": {
+      "macro_character": 0.329,
+      "macro_movement": 0.031,
+      "macro_coupling": 0.087,
+      "macro_space": 0.098
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ODDFELIX",
+    "target": "OBLIQUE",
+    "amount": 0.154
+  },
+  "dna": {
+    "brightness": 0.071,
+    "warmth": 0.588,
+    "movement": 0.035,
+    "density": 0.027,
+    "space": 0.098,
+    "aggression": 0.076
+  },
+  "macros": {
+    "CHARACTER": 0.329,
+    "MOVEMENT": 0.031,
+    "COUPLING": 0.087,
+    "SPACE": 0.098
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ]
+}

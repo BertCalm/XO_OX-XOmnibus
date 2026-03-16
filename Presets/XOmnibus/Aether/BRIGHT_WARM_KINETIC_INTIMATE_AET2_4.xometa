@@ -1,0 +1,53 @@
+{
+  "name": "BRIGHT_WARM_KINETIC_INTIMATE_AET2_4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OSPREY",
+    "OMBRE"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.9449,
+      "macro_movement": 0.9269,
+      "macro_coupling": 0.6708,
+      "macro_space": 0.0677
+    },
+    "OMBRE": {
+      "macro_character": 0.99,
+      "macro_movement": 0.9208,
+      "macro_coupling": 0.668,
+      "macro_space": 0.0412
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OSPREY",
+    "target": "OMBRE",
+    "amount": 0.7229
+  },
+  "dna": {
+    "brightness": 0.9727,
+    "warmth": 0.9193,
+    "space": 0.0455,
+    "movement": 0.9268,
+    "density": 0.6654,
+    "aggression": 0.4525
+  },
+  "macros": {
+    "CHARACTER": 0.9674,
+    "MOVEMENT": 0.9238,
+    "COUPLING": 0.7229,
+    "SPACE": 0.0455
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "bright",
+    "warm",
+    "kinetic",
+    "intimate",
+    "celestial"
+  ]
+}

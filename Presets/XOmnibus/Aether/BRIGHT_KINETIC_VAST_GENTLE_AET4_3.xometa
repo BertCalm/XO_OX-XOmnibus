@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_KINETIC_VAST_GENTLE_AET4_3",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OVERWORLD",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.3185,
+      "macro_movement": 0.5313,
+      "macro_coupling": 0.4592,
+      "macro_space": 0.6407
+    },
+    "ORIGAMI": {
+      "macro_character": 0.6792,
+      "macro_movement": 0.5182,
+      "macro_coupling": 0.3876,
+      "macro_space": 0.834
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OVERWORLD",
+    "target": "ORIGAMI",
+    "amount": 0.8049
+  },
+  "dna": {
+    "brightness": 0.8795,
+    "warmth": 0.3572,
+    "movement": 0.9745,
+    "density": 0.4016,
+    "space": 0.9444,
+    "aggression": 0.0465
+  },
+  "macros": {
+    "CHARACTER": 0.6183,
+    "MOVEMENT": 0.9745,
+    "COUPLING": 0.8049,
+    "SPACE": 0.9444
+  },
+  "tags": [
+    "aether",
+    "kinetic",
+    "bright",
+    "vast",
+    "gentle"
+  ]
+}

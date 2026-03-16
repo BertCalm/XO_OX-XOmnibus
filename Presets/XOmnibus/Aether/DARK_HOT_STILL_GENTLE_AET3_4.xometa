@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_STILL_GENTLE_AET3_4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OMBRE",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "OMBRE": {
+      "macro_character": 0.5153,
+      "macro_movement": 0.9053,
+      "macro_coupling": 0.708,
+      "macro_space": 0.8771
+    },
+    "ORBITAL": {
+      "macro_character": 0.6616,
+      "macro_movement": 0.4257,
+      "macro_coupling": 0.611,
+      "macro_space": 0.2003
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OMBRE",
+    "target": "ORBITAL",
+    "amount": 0.5573
+  },
+  "dna": {
+    "brightness": 0.0674,
+    "warmth": 0.9839,
+    "movement": 0.1213,
+    "density": 0.5028,
+    "space": 0.5668,
+    "aggression": 0.0885
+  },
+  "macros": {
+    "CHARACTER": 0.5256,
+    "MOVEMENT": 0.1213,
+    "COUPLING": 0.5573,
+    "SPACE": 0.5668
+  },
+  "tags": [
+    "aether",
+    "warm",
+    "dark",
+    "still",
+    "gentle"
+  ]
+}

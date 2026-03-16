@@ -1,0 +1,53 @@
+{
+  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_AET2_4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORGANON",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.9896,
+      "macro_movement": 0.5254,
+      "macro_coupling": 0.5057,
+      "macro_space": 0.0244
+    },
+    "ORBITAL": {
+      "macro_character": 0.9727,
+      "macro_movement": 0.5024,
+      "macro_coupling": 0.4627,
+      "macro_space": 0.0152
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ORGANON",
+    "target": "ORBITAL",
+    "amount": 0.8841
+  },
+  "dna": {
+    "brightness": 0.9624,
+    "warmth": 0.1241,
+    "space": 0.0216,
+    "aggression": 0.9757,
+    "movement": 0.5303,
+    "density": 0.4908
+  },
+  "macros": {
+    "CHARACTER": 0.9811,
+    "MOVEMENT": 0.5139,
+    "COUPLING": 0.8841,
+    "SPACE": 0.0216
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "bright",
+    "cold",
+    "intimate",
+    "violent",
+    "crystalline"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "name": "HOT_DENSE_INTIMATE_VIOLENT_AET2_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORACLE",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.3713,
+      "macro_movement": 0.4602,
+      "macro_coupling": 0.9676,
+      "macro_space": 0.0646
+    },
+    "ORBITAL": {
+      "macro_character": 0.3388,
+      "macro_movement": 0.4783,
+      "macro_coupling": 0.9333,
+      "macro_space": 0.0845
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ORACLE",
+    "target": "ORBITAL",
+    "amount": 0.7887
+  },
+  "dna": {
+    "warmth": 0.9066,
+    "density": 0.9654,
+    "space": 0.0382,
+    "aggression": 0.8728,
+    "brightness": 0.3773,
+    "movement": 0.4313
+  },
+  "macros": {
+    "CHARACTER": 0.355,
+    "MOVEMENT": 0.4693,
+    "COUPLING": 0.7887,
+    "SPACE": 0.0382
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "hot",
+    "dense",
+    "intimate",
+    "violent",
+    "compressed"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "name": "COLD_KINETIC_INTIMATE_DENSE_AET2_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORBITAL",
+    "OPAL"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.4672,
+      "macro_movement": 0.9125,
+      "macro_coupling": 0.8446,
+      "macro_space": 0.01
+    },
+    "OPAL": {
+      "macro_character": 0.4567,
+      "macro_movement": 0.92,
+      "macro_coupling": 0.8793,
+      "macro_space": 0.0564
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORBITAL",
+    "target": "OPAL",
+    "amount": 0.6296
+  },
+  "dna": {
+    "warmth": 0.0373,
+    "movement": 0.8909,
+    "space": 0.026,
+    "density": 0.8703,
+    "brightness": 0.4802,
+    "aggression": 0.5375
+  },
+  "macros": {
+    "CHARACTER": 0.4619,
+    "MOVEMENT": 0.9163,
+    "COUPLING": 0.6296,
+    "SPACE": 0.026
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "cold",
+    "kinetic",
+    "intimate",
+    "dense",
+    "mechanical"
+  ]
+}

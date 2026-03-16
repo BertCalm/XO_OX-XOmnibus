@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "DARK_HOT_FROZEN_SPARSE_GENTLE_ENT3_1",
+  "mood": "Entangled",
+  "engines": [
+    "ORGANON",
+    "OBSIDIAN"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: DARK_HOT_FROZEN_SPARSE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "dark",
+    "warm",
+    "gentle",
+    "sparse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.6296,
+      "macro_movement": 0.0616,
+      "macro_coupling": 0.9635,
+      "macro_space": 0.7311
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.6381,
+      "macro_movement": 0.0829,
+      "macro_coupling": 0.8006,
+      "macro_space": 0.3914
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORGANON",
+    "target": "OBSIDIAN",
+    "amount": 0.8713
+  },
+  "macros": {
+    "CHARACTER": 0.6339,
+    "MOVEMENT": 0.0723,
+    "COUPLING": 0.8821,
+    "SPACE": 0.5613
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.0873,
+    "warmth": 0.9885,
+    "movement": 0.0754,
+    "density": 0.0209,
+    "space": 0.6268,
+    "aggression": 0.0529
+  }
+}

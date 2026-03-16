@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_KINETIC_VAST_AET4_2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OBLIQUE",
+    "OBSCURA"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.7278,
+      "macro_movement": 0.5752,
+      "macro_coupling": 0.825,
+      "macro_space": 0.8047
+    },
+    "OBSCURA": {
+      "macro_character": 0.2541,
+      "macro_movement": 0.8463,
+      "macro_coupling": 0.2317,
+      "macro_space": 0.2141
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBLIQUE",
+    "target": "OBSCURA",
+    "amount": 0.6711
+  },
+  "dna": {
+    "brightness": 0.0443,
+    "warmth": 0.1283,
+    "movement": 0.8766,
+    "density": 0.4158,
+    "space": 0.8945,
+    "aggression": 0.499
+  },
+  "macros": {
+    "CHARACTER": 0.0863,
+    "MOVEMENT": 0.8766,
+    "COUPLING": 0.6711,
+    "SPACE": 0.8945
+  },
+  "tags": [
+    "aether",
+    "kinetic",
+    "dark",
+    "cold",
+    "vast"
+  ]
+}

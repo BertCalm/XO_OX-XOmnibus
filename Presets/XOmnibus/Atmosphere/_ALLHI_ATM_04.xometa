@@ -1,0 +1,49 @@
+{
+  "name": "ALLHI ATM 04",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OPTIC",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.949,
+      "macro_movement": 0.771,
+      "macro_coupling": 0.92,
+      "macro_space": 0.945
+    },
+    "ORBITAL": {
+      "macro_character": 0.949,
+      "macro_movement": 0.771,
+      "macro_coupling": 0.92,
+      "macro_space": 0.945
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OPTIC",
+    "target": "ORBITAL",
+    "amount": 0.942
+  },
+  "dna": {
+    "brightness": 0.915,
+    "warmth": 0.982,
+    "movement": 0.934,
+    "density": 0.608,
+    "space": 0.945,
+    "aggression": 0.895
+  },
+  "macros": {
+    "CHARACTER": 0.949,
+    "MOVEMENT": 0.771,
+    "COUPLING": 0.92,
+    "SPACE": 0.945
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ]
+}

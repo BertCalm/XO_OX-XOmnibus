@@ -1,0 +1,49 @@
+{
+  "name": "ALLHI ATM 01",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OPAL",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.631,
+      "macro_movement": 0.932,
+      "macro_coupling": 0.928,
+      "macro_space": 0.918
+    },
+    "OCEANIC": {
+      "macro_character": 0.631,
+      "macro_movement": 0.932,
+      "macro_coupling": 0.928,
+      "macro_space": 0.918
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OPAL",
+    "target": "OCEANIC",
+    "amount": 0.738
+  },
+  "dna": {
+    "brightness": 0.37,
+    "warmth": 0.893,
+    "movement": 0.923,
+    "density": 0.941,
+    "space": 0.918,
+    "aggression": 0.939
+  },
+  "macros": {
+    "CHARACTER": 0.631,
+    "MOVEMENT": 0.932,
+    "COUPLING": 0.928,
+    "SPACE": 0.918
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "ALLLO FND 02",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ODDFELIX",
+    "OVERDUB"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.213,
+      "macro_movement": 0.086,
+      "macro_coupling": 0.062,
+      "macro_space": 0.085
+    },
+    "OVERDUB": {
+      "macro_character": 0.213,
+      "macro_movement": 0.086,
+      "macro_coupling": 0.062,
+      "macro_space": 0.085
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ODDFELIX",
+    "target": "OVERDUB",
+    "amount": 0.125
+  },
+  "dna": {
+    "brightness": 0.056,
+    "warmth": 0.37,
+    "movement": 0.102,
+    "density": 0.071,
+    "space": 0.085,
+    "aggression": 0.039
+  },
+  "macros": {
+    "CHARACTER": 0.213,
+    "MOVEMENT": 0.086,
+    "COUPLING": 0.062,
+    "SPACE": 0.085
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "ALLLO ATM 05",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORGANON",
+    "OPTIC"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.041,
+      "macro_movement": 0.034,
+      "macro_coupling": 0.247,
+      "macro_space": 0.435
+    },
+    "OPTIC": {
+      "macro_character": 0.041,
+      "macro_movement": 0.034,
+      "macro_coupling": 0.247,
+      "macro_space": 0.435
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ORGANON",
+    "target": "OPTIC",
+    "amount": 0.214
+  },
+  "dna": {
+    "brightness": 0.032,
+    "warmth": 0.051,
+    "movement": 0.026,
+    "density": 0.042,
+    "space": 0.435,
+    "aggression": 0.059
+  },
+  "macros": {
+    "CHARACTER": 0.041,
+    "MOVEMENT": 0.034,
+    "COUPLING": 0.247,
+    "SPACE": 0.435
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ]
+}

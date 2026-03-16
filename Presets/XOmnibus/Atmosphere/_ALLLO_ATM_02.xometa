@@ -1,0 +1,49 @@
+{
+  "name": "ALLLO ATM 02",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OBSCURA",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.314,
+      "macro_movement": 0.036,
+      "macro_coupling": 0.071,
+      "macro_space": 0.1
+    },
+    "ORACLE": {
+      "macro_character": 0.314,
+      "macro_movement": 0.036,
+      "macro_coupling": 0.071,
+      "macro_space": 0.1
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OBSCURA",
+    "target": "ORACLE",
+    "amount": 0.022
+  },
+  "dna": {
+    "brightness": 0.074,
+    "warmth": 0.553,
+    "movement": 0.041,
+    "density": 0.031,
+    "space": 0.1,
+    "aggression": 0.042
+  },
+  "macros": {
+    "CHARACTER": 0.314,
+    "MOVEMENT": 0.036,
+    "COUPLING": 0.071,
+    "SPACE": 0.1
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ]
+}

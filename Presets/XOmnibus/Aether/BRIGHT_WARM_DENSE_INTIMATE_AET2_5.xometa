@@ -1,0 +1,53 @@
+{
+  "name": "BRIGHT_WARM_DENSE_INTIMATE_AET2_5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OSPREY",
+    "OBSCURA"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.9812,
+      "macro_movement": 0.6894,
+      "macro_coupling": 0.9719,
+      "macro_space": 0.0644
+    },
+    "OBSCURA": {
+      "macro_character": 0.9722,
+      "macro_movement": 0.6713,
+      "macro_coupling": 0.9614,
+      "macro_space": 0.0687
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OSPREY",
+    "target": "OBSCURA",
+    "amount": 0.6115
+  },
+  "dna": {
+    "brightness": 0.9849,
+    "warmth": 0.9241,
+    "space": 0.0849,
+    "density": 0.9705,
+    "movement": 0.693,
+    "aggression": 0.3337
+  },
+  "macros": {
+    "CHARACTER": 0.9767,
+    "MOVEMENT": 0.6804,
+    "COUPLING": 0.6115,
+    "SPACE": 0.0849
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "bright",
+    "warm",
+    "dense",
+    "intimate",
+    "lush"
+  ]
+}

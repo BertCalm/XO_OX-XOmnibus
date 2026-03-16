@@ -1,0 +1,50 @@
+{
+  "name": "HOT_VAST_VIOLENT_DENSE_AET3_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORBITAL",
+    "ORACLE"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.4707,
+      "macro_movement": 0.4267,
+      "macro_coupling": 0.731,
+      "macro_space": 0.2949
+    },
+    "ORACLE": {
+      "macro_character": 0.2341,
+      "macro_movement": 0.2409,
+      "macro_coupling": 0.4191,
+      "macro_space": 0.9081
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORBITAL",
+    "target": "ORACLE",
+    "amount": 0.6333
+  },
+  "dna": {
+    "brightness": 0.3741,
+    "warmth": 0.8931,
+    "movement": 0.4937,
+    "density": 0.9615,
+    "space": 0.8843,
+    "aggression": 0.9343
+  },
+  "macros": {
+    "CHARACTER": 0.6336,
+    "MOVEMENT": 0.4937,
+    "COUPLING": 0.6333,
+    "SPACE": 0.8843
+  },
+  "tags": [
+    "aether",
+    "warm",
+    "vast",
+    "violent",
+    "dense"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "ALLLO FLX 01",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OVERDUB",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.323,
+      "macro_movement": 0.06,
+      "macro_coupling": 0.042,
+      "macro_space": 0.035
+    },
+    "ORIGAMI": {
+      "macro_character": 0.323,
+      "macro_movement": 0.06,
+      "macro_coupling": 0.042,
+      "macro_space": 0.035
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OVERDUB",
+    "target": "ORIGAMI",
+    "amount": 0.249
+  },
+  "dna": {
+    "brightness": 0.544,
+    "warmth": 0.102,
+    "movement": 0.094,
+    "density": 0.026,
+    "space": 0.035,
+    "aggression": 0.048
+  },
+  "macros": {
+    "CHARACTER": 0.323,
+    "MOVEMENT": 0.06,
+    "COUPLING": 0.042,
+    "SPACE": 0.035
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ]
+}

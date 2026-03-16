@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_AET4_4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORGANON",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.7914,
+      "macro_movement": 0.4586,
+      "macro_coupling": 0.7497,
+      "macro_space": 0.6712
+    },
+    "ORBITAL": {
+      "macro_character": 0.7786,
+      "macro_movement": 0.7514,
+      "macro_coupling": 0.4494,
+      "macro_space": 0.2333
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ORGANON",
+    "target": "ORBITAL",
+    "amount": 0.5073
+  },
+  "dna": {
+    "brightness": 0.8803,
+    "warmth": 0.6953,
+    "movement": 0.987,
+    "density": 0.4562,
+    "space": 0.0274,
+    "aggression": 0.9331
+  },
+  "macros": {
+    "CHARACTER": 0.7878,
+    "MOVEMENT": 0.987,
+    "COUPLING": 0.5073,
+    "SPACE": 0.0274
+  },
+  "tags": [
+    "aether",
+    "kinetic",
+    "bright",
+    "intimate",
+    "violent"
+  ]
+}

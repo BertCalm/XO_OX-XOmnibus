@@ -2,8 +2,44 @@
 xpn_params_sidecar_spec.py — XOmnibus params_sidecar.json generator and validator.
 
 Bridges MPC XPN programs with XOmnibus .xometa presets via a companion sidecar file.
-When MPC loads an XPN program, XOmnibus reads the sidecar to auto-load a matching
-preset voice, linking sample pack character to synthesis engine character.
+When a user opens an XPN pack in XOmnibus, the sidecar auto-loads the matching engine
+preset for each program, linking sample pack character to synthesis engine character.
+
+CANONICAL SCHEMA (V1 — pack-level sidecar)
+-------------------------------------------
+This tool implements the pack-level sidecar schema, which is the canonical V1 format.
+Full schema specification, validation rules, and worked examples for ONSET and OPAL are
+in Docs/specs/params_sidecar_schema.md.
+
+One params_sidecar.json lives at the pack root (same level as expansion.json):
+
+  MyPack.xpn.zip
+  ├── expansion.json
+  ├── params_sidecar.json   ← this file
+  ├── Programs/
+  └── Samples/
+
+Schema:
+  {
+    "version": "1.0",
+    "pack_name": "ONSET Drum Essentials",
+    "xomnibus_version_min": "1.0.0",
+    "mappings": [
+      {
+        "program_file": "Kick Hard.xpm",       // bare filename, no path
+        "preset_file":  "Kick Hard.xometa",    // bare filename, no path
+        "engine":       "ONSET",               // uppercase registered engine ID
+        "confidence":   0.95,                  // Jaccard score [0.0, 1.0]
+        "match_method": "exact"                // "exact" | "fuzzy" | "manual"
+      }
+    ]
+  }
+
+V1.1 NOTE: A per-program sidecar variant (one params_sidecar.json per Programs/<Name>/
+directory, with inline "params" and "qlinks" dictionaries) is the V1.1 design target.
+See Docs/specs/xpn_air_plugin_architecture_rnd.md §4 and
+Docs/specs/params_sidecar_schema.md §6 for details. This tool does NOT generate the
+per-program format; it generates the pack-level format only.
 
 Usage:
   python xpn_params_sidecar_spec.py generate \\
@@ -12,22 +48,6 @@ Usage:
 
   python xpn_params_sidecar_spec.py validate \\
       --sidecar sidecar.json --pack <pack_dir> --presets <preset_dir>
-
-Schema (params_sidecar.json):
-  {
-    "version": "1.0",
-    "pack_name": "...",
-    "xomnibus_version_min": "1.0.0",
-    "mappings": [
-      {
-        "program_file": "kick_hard.xpm",
-        "preset_file": "Kick Hard.xometa",
-        "engine": "ONSET",
-        "confidence": 0.95,
-        "match_method": "exact|fuzzy|manual"
-      }
-    ]
-  }
 """
 
 from __future__ import annotations

@@ -82,41 +82,41 @@
     }
   },
   "Entangled": {
-    "total": 3700,
+    "total": 3750,
     "dims": {
       "brightness": {
-        "xlow_pct": 10.89,
-        "xhigh_pct": 9.81,
+        "xlow_pct": 11.28,
+        "xhigh_pct": 10.21,
         "xlow_warn": false,
         "xhigh_warn": false
       },
       "warmth": {
-        "xlow_pct": 9.41,
-        "xhigh_pct": 12.68,
+        "xlow_pct": 9.81,
+        "xhigh_pct": 13.17,
         "xlow_warn": false,
         "xhigh_warn": false
       },
       "movement": {
-        "xlow_pct": 6.76,
-        "xhigh_pct": 11.68,
+        "xlow_pct": 6.93,
+        "xhigh_pct": 12.19,
         "xlow_warn": false,
         "xhigh_warn": false
       },
       "density": {
-        "xlow_pct": 8.62,
-        "xhigh_pct": 14.41,
+        "xlow_pct": 9.01,
+        "xhigh_pct": 14.88,
         "xlow_warn": false,
         "xhigh_warn": false
       },
       "space": {
-        "xlow_pct": 8.16,
-        "xhigh_pct": 11.62,
+        "xlow_pct": 8.45,
+        "xhigh_pct": 12.13,
         "xlow_warn": false,
         "xhigh_warn": false
       },
       "aggression": {
-        "xlow_pct": 15.08,
-        "xhigh_pct": 10.68,
+        "xlow_pct": 15.28,
+        "xhigh_pct": 11.33,
         "xlow_warn": false,
         "xhigh_warn": false
       }
@@ -205,82 +205,82 @@
     }
   },
   "Aether": {
-    "total": 742,
+    "total": 902,
     "dims": {
       "brightness": {
-        "xlow_pct": 21.7,
-        "xhigh_pct": 10.92,
+        "xlow_pct": 24.5,
+        "xhigh_pct": 16.19,
         "xlow_warn": false,
         "xhigh_warn": false
       },
       "warmth": {
-        "xlow_pct": 16.85,
-        "xhigh_pct": 8.22,
+        "xlow_pct": 17.18,
+        "xhigh_pct": 15.63,
         "xlow_warn": false,
         "xhigh_warn": false
       },
       "movement": {
-        "xlow_pct": 15.09,
-        "xhigh_pct": 8.22,
+        "xlow_pct": 14.08,
+        "xhigh_pct": 15.08,
         "xlow_warn": false,
         "xhigh_warn": false
       },
       "density": {
-        "xlow_pct": 16.17,
-        "xhigh_pct": 13.88,
+        "xlow_pct": 16.08,
+        "xhigh_pct": 18.63,
         "xlow_warn": false,
         "xhigh_warn": false
       },
       "space": {
-        "xlow_pct": 4.58,
-        "xhigh_pct": 49.33,
-        "xlow_warn": true,
+        "xlow_pct": 13.75,
+        "xhigh_pct": 45.57,
+        "xlow_warn": false,
         "xhigh_warn": false
       },
       "aggression": {
-        "xlow_pct": 52.83,
-        "xhigh_pct": 10.38,
+        "xlow_pct": 48.45,
+        "xhigh_pct": 13.53,
         "xlow_warn": false,
         "xhigh_warn": false
       }
     }
   },
   "Family": {
-    "total": 344,
+    "total": 394,
     "dims": {
       "brightness": {
-        "xlow_pct": 18.6,
-        "xhigh_pct": 19.77,
+        "xlow_pct": 20.05,
+        "xhigh_pct": 24.87,
         "xlow_warn": false,
         "xhigh_warn": false
       },
       "warmth": {
-        "xlow_pct": 16.57,
-        "xhigh_pct": 15.12,
+        "xlow_pct": 17.01,
+        "xhigh_pct": 23.35,
         "xlow_warn": false,
         "xhigh_warn": false
       },
       "movement": {
-        "xlow_pct": 13.08,
-        "xhigh_pct": 10.47,
+        "xlow_pct": 17.77,
+        "xhigh_pct": 10.41,
         "xlow_warn": false,
         "xhigh_warn": false
       },
       "density": {
-        "xlow_pct": 15.12,
-        "xhigh_pct": 13.95,
+        "xlow_pct": 14.47,
+        "xhigh_pct": 21.07,
         "xlow_warn": false,
         "xhigh_warn": false
       },
       "space": {
-        "xlow_pct": 8.72,
-        "xhigh_pct": 18.31,
+        "xlow_pct": 15.23,
+        "xhigh_pct": 18.53,
         "xlow_warn": false,
         "xhigh_warn": false
       },
       "aggression": {
-        "xlow_pct": 30.81,
-        "xhigh_pct": 13.95,
+        "xlow_pct": 37.06,
+        "xhigh_pct": 13.45,
         "xlow_warn": false,
         "xhigh_warn": false
       }

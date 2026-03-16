@@ -1,0 +1,49 @@
+{
+  "name": "ALLLO FLX 03",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OBLONG",
+    "OPAL"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.048,
+      "macro_movement": 0.25,
+      "macro_coupling": 0.085,
+      "macro_space": 0.097
+    },
+    "OPAL": {
+      "macro_character": 0.048,
+      "macro_movement": 0.25,
+      "macro_coupling": 0.085,
+      "macro_space": 0.097
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBLONG",
+    "target": "OPAL",
+    "amount": 0.3
+  },
+  "dna": {
+    "brightness": 0.074,
+    "warmth": 0.022,
+    "movement": 0.419,
+    "density": 0.081,
+    "space": 0.097,
+    "aggression": 0.073
+  },
+  "macros": {
+    "CHARACTER": 0.048,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.085,
+    "SPACE": 0.097
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ]
+}

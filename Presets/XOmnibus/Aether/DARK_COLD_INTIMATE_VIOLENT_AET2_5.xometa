@@ -1,0 +1,53 @@
+{
+  "name": "DARK_COLD_INTIMATE_VIOLENT_AET2_5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ODDOSCAR",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.0619,
+      "macro_movement": 0.4024,
+      "macro_coupling": 0.4087,
+      "macro_space": 0.0354
+    },
+    "ODDFELIX": {
+      "macro_character": 0.0446,
+      "macro_movement": 0.3729,
+      "macro_coupling": 0.4366,
+      "macro_space": 0.0392
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ODDOSCAR",
+    "target": "ODDFELIX",
+    "amount": 0.7648
+  },
+  "dna": {
+    "brightness": 0.0915,
+    "warmth": 0.0682,
+    "space": 0.0614,
+    "aggression": 0.8845,
+    "movement": 0.3899,
+    "density": 0.4352
+  },
+  "macros": {
+    "CHARACTER": 0.0532,
+    "MOVEMENT": 0.3876,
+    "COUPLING": 0.7648,
+    "SPACE": 0.0614
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "dark",
+    "cold",
+    "intimate",
+    "violent",
+    "compressed"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "ALLLO ATM 04",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OPTIC",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.068,
+      "macro_movement": 0.257,
+      "macro_coupling": 0.11,
+      "macro_space": 0.11
+    },
+    "ORBITAL": {
+      "macro_character": 0.068,
+      "macro_movement": 0.257,
+      "macro_coupling": 0.11,
+      "macro_space": 0.11
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OPTIC",
+    "target": "ORBITAL",
+    "amount": 0.166
+  },
+  "dna": {
+    "brightness": 0.048,
+    "warmth": 0.088,
+    "movement": 0.027,
+    "density": 0.487,
+    "space": 0.11,
+    "aggression": 0.11
+  },
+  "macros": {
+    "CHARACTER": 0.068,
+    "MOVEMENT": 0.257,
+    "COUPLING": 0.11,
+    "SPACE": 0.11
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "ALLHI PRS 01",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ORPHICA",
+    "OPTIC"
+  ],
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.707,
+      "macro_movement": 0.934,
+      "macro_coupling": 0.964,
+      "macro_space": 0.957
+    },
+    "OPTIC": {
+      "macro_character": 0.707,
+      "macro_movement": 0.934,
+      "macro_coupling": 0.964,
+      "macro_space": 0.957
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ORPHICA",
+    "target": "OPTIC",
+    "amount": 0.748
+  },
+  "dna": {
+    "brightness": 0.496,
+    "warmth": 0.917,
+    "movement": 0.939,
+    "density": 0.929,
+    "space": 0.957,
+    "aggression": 0.97
+  },
+  "macros": {
+    "CHARACTER": 0.707,
+    "MOVEMENT": 0.934,
+    "COUPLING": 0.964,
+    "SPACE": 0.957
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ]
+}

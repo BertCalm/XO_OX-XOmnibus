@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_VAST_SPARSE_AET3_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OBSCURA",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.4238,
+      "macro_movement": 0.6792,
+      "macro_coupling": 0.6567,
+      "macro_space": 0.3146
+    },
+    "ODDFELIX": {
+      "macro_character": 0.7719,
+      "macro_movement": 0.6045,
+      "macro_coupling": 0.784,
+      "macro_space": 0.5978
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OBSCURA",
+    "target": "ODDFELIX",
+    "amount": 0.8917
+  },
+  "dna": {
+    "brightness": 0.0791,
+    "warmth": 0.902,
+    "movement": 0.6815,
+    "density": 0.0323,
+    "space": 0.9469,
+    "aggression": 0.5002
+  },
+  "macros": {
+    "CHARACTER": 0.4906,
+    "MOVEMENT": 0.6815,
+    "COUPLING": 0.8917,
+    "SPACE": 0.9469
+  },
+  "tags": [
+    "aether",
+    "warm",
+    "dark",
+    "vast",
+    "sparse"
+  ]
+}

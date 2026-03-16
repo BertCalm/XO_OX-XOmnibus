@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_STILL_GENTLE_AET3_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OBSCURA",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.7524,
+      "macro_movement": 0.4491,
+      "macro_coupling": 0.8981,
+      "macro_space": 0.8017
+    },
+    "OVERWORLD": {
+      "macro_character": 0.848,
+      "macro_movement": 0.8081,
+      "macro_coupling": 0.4001,
+      "macro_space": 0.7905
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBSCURA",
+    "target": "OVERWORLD",
+    "amount": 0.5112
+  },
+  "dna": {
+    "brightness": 0.0594,
+    "warmth": 0.9518,
+    "movement": 0.0934,
+    "density": 0.5998,
+    "space": 0.6703,
+    "aggression": 0.0589
+  },
+  "macros": {
+    "CHARACTER": 0.5056,
+    "MOVEMENT": 0.0934,
+    "COUPLING": 0.5112,
+    "SPACE": 0.6703
+  },
+  "tags": [
+    "aether",
+    "warm",
+    "dark",
+    "still",
+    "gentle"
+  ]
+}

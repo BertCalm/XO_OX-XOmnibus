@@ -1,0 +1,50 @@
+{
+  "name": "DARK_KINETIC_DENSE_VIOLENT_AET4_3",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OSPREY",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.4266,
+      "macro_movement": 0.3837,
+      "macro_coupling": 0.8055,
+      "macro_space": 0.5046
+    },
+    "ODDFELIX": {
+      "macro_character": 0.5402,
+      "macro_movement": 0.7165,
+      "macro_coupling": 0.3186,
+      "macro_space": 0.5117
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OSPREY",
+    "target": "ODDFELIX",
+    "amount": 0.7889
+  },
+  "dna": {
+    "brightness": 0.1108,
+    "warmth": 0.5605,
+    "movement": 0.8734,
+    "density": 0.8755,
+    "space": 0.5556,
+    "aggression": 0.947
+  },
+  "macros": {
+    "CHARACTER": 0.3357,
+    "MOVEMENT": 0.8734,
+    "COUPLING": 0.7889,
+    "SPACE": 0.5556
+  },
+  "tags": [
+    "aether",
+    "kinetic",
+    "dark",
+    "dense",
+    "violent"
+  ]
+}

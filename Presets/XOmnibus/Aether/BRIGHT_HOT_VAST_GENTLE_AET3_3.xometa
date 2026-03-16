@@ -1,0 +1,51 @@
+{
+  "name": "BRIGHT_HOT_VAST_GENTLE_AET3_3",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OCEANIC",
+    "OSPREY"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.7127,
+      "macro_movement": 0.2536,
+      "macro_coupling": 0.6762,
+      "macro_space": 0.6006
+    },
+    "OSPREY": {
+      "macro_character": 0.3836,
+      "macro_movement": 0.5467,
+      "macro_coupling": 0.4025,
+      "macro_space": 0.894
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OCEANIC",
+    "target": "OSPREY",
+    "amount": 0.8158
+  },
+  "dna": {
+    "brightness": 0.8755,
+    "warmth": 0.8973,
+    "movement": 0.4112,
+    "density": 0.5543,
+    "space": 0.9047,
+    "aggression": 0.0288
+  },
+  "macros": {
+    "CHARACTER": 0.8864,
+    "MOVEMENT": 0.4112,
+    "COUPLING": 0.8158,
+    "SPACE": 0.9047
+  },
+  "tags": [
+    "aether",
+    "warm",
+    "bright",
+    "vast",
+    "gentle",
+    "transcendent"
+  ]
+}

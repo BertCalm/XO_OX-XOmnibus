@@ -1,0 +1,49 @@
+{
+  "name": "ALLHI FAM 04",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OHM",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.962,
+      "macro_movement": 0.709,
+      "macro_coupling": 0.935,
+      "macro_space": 0.959
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.962,
+      "macro_movement": 0.709,
+      "macro_coupling": 0.935,
+      "macro_space": 0.959
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OHM",
+    "target": "ODDOSCAR",
+    "amount": 0.976
+  },
+  "dna": {
+    "brightness": 0.973,
+    "warmth": 0.952,
+    "movement": 0.984,
+    "density": 0.434,
+    "space": 0.959,
+    "aggression": 0.912
+  },
+  "macros": {
+    "CHARACTER": 0.962,
+    "MOVEMENT": 0.709,
+    "COUPLING": 0.935,
+    "SPACE": 0.959
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ]
+}

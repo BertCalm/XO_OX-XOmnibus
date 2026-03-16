@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT_WARM_FROZEN_DENSE_GENTLE_ENT3_3",
+  "mood": "Entangled",
+  "engines": [
+    "OUTWIT",
+    "OVERLAP"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "bright",
+    "warm",
+    "gentle",
+    "dense"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OUTWIT": {
+      "macro_character": 0.8473,
+      "macro_movement": 0.044,
+      "macro_coupling": 0.8219,
+      "macro_space": 0.7934
+    },
+    "OVERLAP": {
+      "macro_character": 0.8302,
+      "macro_movement": 0.0612,
+      "macro_coupling": 0.9852,
+      "macro_space": 0.5961
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OUTWIT",
+    "target": "OVERLAP",
+    "amount": 0.9593
+  },
+  "macros": {
+    "CHARACTER": 0.8388,
+    "MOVEMENT": 0.0526,
+    "COUPLING": 0.9035,
+    "SPACE": 0.6947
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.9818,
+    "warmth": 0.9082,
+    "movement": 0.0493,
+    "density": 0.944,
+    "space": 0.637,
+    "aggression": 0.0853
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "ALLLO AET 04",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OBSCURA",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.055,
+      "macro_movement": 0.307,
+      "macro_coupling": 0.051,
+      "macro_space": 0.058
+    },
+    "ORACLE": {
+      "macro_character": 0.055,
+      "macro_movement": 0.307,
+      "macro_coupling": 0.051,
+      "macro_space": 0.058
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBSCURA",
+    "target": "ORACLE",
+    "amount": 0.068
+  },
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.051,
+    "movement": 0.073,
+    "density": 0.542,
+    "space": 0.058,
+    "aggression": 0.043
+  },
+  "macros": {
+    "CHARACTER": 0.055,
+    "MOVEMENT": 0.307,
+    "COUPLING": 0.051,
+    "SPACE": 0.058
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ]
+}

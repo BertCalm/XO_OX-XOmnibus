@@ -1,0 +1,49 @@
+{
+  "name": "ALLHI ATM 03",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OPAL",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.929,
+      "macro_movement": 0.746,
+      "macro_coupling": 0.926,
+      "macro_space": 0.909
+    },
+    "ORACLE": {
+      "macro_character": 0.929,
+      "macro_movement": 0.746,
+      "macro_coupling": 0.926,
+      "macro_space": 0.909
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OPAL",
+    "target": "ORACLE",
+    "amount": 0.822
+  },
+  "dna": {
+    "brightness": 0.896,
+    "warmth": 0.963,
+    "movement": 0.59,
+    "density": 0.901,
+    "space": 0.909,
+    "aggression": 0.944
+  },
+  "macros": {
+    "CHARACTER": 0.929,
+    "MOVEMENT": 0.746,
+    "COUPLING": 0.926,
+    "SPACE": 0.909
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ]
+}

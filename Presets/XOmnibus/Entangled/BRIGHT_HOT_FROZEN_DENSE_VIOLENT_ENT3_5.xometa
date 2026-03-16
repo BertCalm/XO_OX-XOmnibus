@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT_HOT_FROZEN_DENSE_VIOLENT_ENT3_5",
+  "mood": "Entangled",
+  "engines": [
+    "ODDFELIX",
+    "OSPREY"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_HOT_FROZEN_DENSE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "tags": [
+    "entangled",
+    "frozen",
+    "static",
+    "resonant",
+    "bright",
+    "warm",
+    "violent",
+    "dense"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.7629,
+      "macro_movement": 0.1136,
+      "macro_coupling": 0.8591,
+      "macro_space": 0.6719
+    },
+    "OSPREY": {
+      "macro_character": 0.7864,
+      "macro_movement": 0.091,
+      "macro_coupling": 0.9474,
+      "macro_space": 0.8992
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ODDFELIX",
+    "target": "OSPREY",
+    "amount": 0.8632
+  },
+  "macros": {
+    "CHARACTER": 0.7747,
+    "MOVEMENT": 0.1023,
+    "COUPLING": 0.9032,
+    "SPACE": 0.7855
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.9569,
+    "warmth": 0.9876,
+    "movement": 0.1067,
+    "density": 0.9666,
+    "space": 0.4463,
+    "aggression": 0.9649
+  }
+}

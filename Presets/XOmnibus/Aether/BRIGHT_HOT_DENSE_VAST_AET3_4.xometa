@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_HOT_DENSE_VAST_AET3_4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORBITAL",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.4572,
+      "macro_movement": 0.7156,
+      "macro_coupling": 0.8397,
+      "macro_space": 0.5791
+    },
+    "OVERWORLD": {
+      "macro_character": 0.3883,
+      "macro_movement": 0.8811,
+      "macro_coupling": 0.2381,
+      "macro_space": 0.6757
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "ORBITAL",
+    "target": "OVERWORLD",
+    "amount": 0.5948
+  },
+  "dna": {
+    "brightness": 0.9485,
+    "warmth": 0.8709,
+    "movement": 0.3537,
+    "density": 0.9681,
+    "space": 0.9059,
+    "aggression": 0.5213
+  },
+  "macros": {
+    "CHARACTER": 0.9097,
+    "MOVEMENT": 0.3537,
+    "COUPLING": 0.5948,
+    "SPACE": 0.9059
+  },
+  "tags": [
+    "aether",
+    "warm",
+    "bright",
+    "dense",
+    "vast"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "DARK_HOT_STILL_GENTLE_AET3_5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OBSCURA",
+    "OSPREY"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.6979,
+      "macro_movement": 0.6644,
+      "macro_coupling": 0.27,
+      "macro_space": 0.914
+    },
+    "OSPREY": {
+      "macro_character": 0.3762,
+      "macro_movement": 0.4328,
+      "macro_coupling": 0.8049,
+      "macro_space": 0.3105
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OBSCURA",
+    "target": "OSPREY",
+    "amount": 0.6277
+  },
+  "dna": {
+    "brightness": 0.0516,
+    "warmth": 0.9216,
+    "movement": 0.0838,
+    "density": 0.4893,
+    "space": 0.6605,
+    "aggression": 0.092
+  },
+  "macros": {
+    "CHARACTER": 0.4866,
+    "MOVEMENT": 0.0838,
+    "COUPLING": 0.6277,
+    "SPACE": 0.6605
+  },
+  "tags": [
+    "aether",
+    "warm",
+    "dark",
+    "still",
+    "gentle"
+  ]
+}

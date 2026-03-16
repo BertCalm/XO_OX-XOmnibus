@@ -1,0 +1,49 @@
+{
+  "name": "ALLHI AET 03",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OBSCURA",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.945,
+      "macro_movement": 0.782,
+      "macro_coupling": 0.938,
+      "macro_space": 0.9
+    },
+    "ORIGAMI": {
+      "macro_character": 0.945,
+      "macro_movement": 0.782,
+      "macro_coupling": 0.938,
+      "macro_space": 0.9
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OBSCURA",
+    "target": "ORIGAMI",
+    "amount": 0.853
+  },
+  "dna": {
+    "brightness": 0.986,
+    "warmth": 0.903,
+    "movement": 0.64,
+    "density": 0.923,
+    "space": 0.9,
+    "aggression": 0.975
+  },
+  "macros": {
+    "CHARACTER": 0.945,
+    "MOVEMENT": 0.782,
+    "COUPLING": 0.938,
+    "SPACE": 0.9
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ]
+}

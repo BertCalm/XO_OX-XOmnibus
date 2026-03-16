@@ -1,0 +1,49 @@
+{
+  "name": "ALLHI PRS 02",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OHM",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.749,
+      "macro_movement": 0.965,
+      "macro_coupling": 0.927,
+      "macro_space": 0.956
+    },
+    "ORACLE": {
+      "macro_character": 0.749,
+      "macro_movement": 0.965,
+      "macro_coupling": 0.927,
+      "macro_space": 0.956
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OHM",
+    "target": "ORACLE",
+    "amount": 0.739
+  },
+  "dna": {
+    "brightness": 0.988,
+    "warmth": 0.51,
+    "movement": 0.981,
+    "density": 0.949,
+    "space": 0.956,
+    "aggression": 0.898
+  },
+  "macros": {
+    "CHARACTER": 0.749,
+    "MOVEMENT": 0.965,
+    "COUPLING": 0.927,
+    "SPACE": 0.956
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ]
+}

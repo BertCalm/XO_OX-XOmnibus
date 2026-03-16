@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_KINETIC_VAST_GENTLE_AET4_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OBLIQUE",
+    "OSPREY"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.8393,
+      "macro_movement": 0.8445,
+      "macro_coupling": 0.485,
+      "macro_space": 0.4375
+    },
+    "OSPREY": {
+      "macro_character": 0.739,
+      "macro_movement": 0.7696,
+      "macro_coupling": 0.8543,
+      "macro_space": 0.2269
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OBLIQUE",
+    "target": "OSPREY",
+    "amount": 0.8833
+  },
+  "dna": {
+    "brightness": 0.882,
+    "warmth": 0.688,
+    "movement": 0.9793,
+    "density": 0.6126,
+    "space": 0.8718,
+    "aggression": 0.0359
+  },
+  "macros": {
+    "CHARACTER": 0.785,
+    "MOVEMENT": 0.9793,
+    "COUPLING": 0.8833,
+    "SPACE": 0.8718
+  },
+  "tags": [
+    "aether",
+    "kinetic",
+    "bright",
+    "vast",
+    "gentle"
+  ]
+}

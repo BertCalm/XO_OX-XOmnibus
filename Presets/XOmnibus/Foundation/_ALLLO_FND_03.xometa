@@ -1,0 +1,49 @@
+{
+  "name": "ALLLO FND 03",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OUROBOROS",
+    "OBLONG"
+  ],
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.043,
+      "macro_movement": 0.281,
+      "macro_coupling": 0.087,
+      "macro_space": 0.073
+    },
+    "OBLONG": {
+      "macro_character": 0.043,
+      "macro_movement": 0.281,
+      "macro_coupling": 0.087,
+      "macro_space": 0.073
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OUROBOROS",
+    "target": "OBLONG",
+    "amount": 0.115
+  },
+  "dna": {
+    "brightness": 0.044,
+    "warmth": 0.042,
+    "movement": 0.518,
+    "density": 0.044,
+    "space": 0.073,
+    "aggression": 0.101
+  },
+  "macros": {
+    "CHARACTER": 0.043,
+    "MOVEMENT": 0.281,
+    "COUPLING": 0.087,
+    "SPACE": 0.073
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ]
+}

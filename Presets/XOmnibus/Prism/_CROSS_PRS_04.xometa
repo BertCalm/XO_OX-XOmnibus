@@ -1,0 +1,49 @@
+{
+  "name": "CROSS PRS 04",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ORACLE",
+    "OPTIC"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.676,
+      "macro_movement": 0.097,
+      "macro_coupling": 0.93,
+      "macro_space": 0.942
+    },
+    "OPTIC": {
+      "macro_character": 0.676,
+      "macro_movement": 0.097,
+      "macro_coupling": 0.93,
+      "macro_space": 0.942
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "ORACLE",
+    "target": "OPTIC",
+    "amount": 0.683
+  },
+  "dna": {
+    "brightness": 0.415,
+    "warmth": 0.938,
+    "movement": 0.085,
+    "density": 0.108,
+    "space": 0.942,
+    "aggression": 0.918
+  },
+  "macros": {
+    "CHARACTER": 0.676,
+    "MOVEMENT": 0.097,
+    "COUPLING": 0.93,
+    "SPACE": 0.942
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "cross-pole",
+    "contrast"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "ALLHI FAM 06",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ORPHICA",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "ORPHICA": {
+      "macro_character": 0.955,
+      "macro_movement": 0.921,
+      "macro_coupling": 0.696,
+      "macro_space": 0.969
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.955,
+      "macro_movement": 0.921,
+      "macro_coupling": 0.696,
+      "macro_space": 0.969
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ORPHICA",
+    "target": "ODDOSCAR",
+    "amount": 0.928
+  },
+  "dna": {
+    "brightness": 0.956,
+    "warmth": 0.954,
+    "movement": 0.95,
+    "density": 0.892,
+    "space": 0.969,
+    "aggression": 0.423
+  },
+  "macros": {
+    "CHARACTER": 0.955,
+    "MOVEMENT": 0.921,
+    "COUPLING": 0.696,
+    "SPACE": 0.969
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ]
+}

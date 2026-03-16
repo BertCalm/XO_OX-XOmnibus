@@ -1,0 +1,49 @@
+{
+  "name": "ALLHI FLX 01",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "ORGANON",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.636,
+      "macro_movement": 0.928,
+      "macro_coupling": 0.956,
+      "macro_space": 0.924
+    },
+    "ODYSSEY": {
+      "macro_character": 0.636,
+      "macro_movement": 0.928,
+      "macro_coupling": 0.956,
+      "macro_space": 0.924
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ORGANON",
+    "target": "ODYSSEY",
+    "amount": 0.973
+  },
+  "dna": {
+    "brightness": 0.381,
+    "warmth": 0.891,
+    "movement": 0.918,
+    "density": 0.938,
+    "space": 0.924,
+    "aggression": 0.987
+  },
+  "macros": {
+    "CHARACTER": 0.636,
+    "MOVEMENT": 0.928,
+    "COUPLING": 0.956,
+    "SPACE": 0.924
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ]
+}

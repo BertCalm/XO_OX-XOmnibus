@@ -1,0 +1,53 @@
+{
+  "name": "BRIGHT_WARM_INTIMATE_GENTLE_AET2_2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OBSCURA",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.9335,
+      "macro_movement": 0.5708,
+      "macro_coupling": 0.4267,
+      "macro_space": 0.01
+    },
+    "OCEANIC": {
+      "macro_character": 0.895,
+      "macro_movement": 0.5752,
+      "macro_coupling": 0.3986,
+      "macro_space": 0.0627
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OBSCURA",
+    "target": "OCEANIC",
+    "amount": 0.546
+  },
+  "dna": {
+    "brightness": 0.9407,
+    "warmth": 0.9671,
+    "space": 0.0205,
+    "aggression": 0.1086,
+    "movement": 0.5793,
+    "density": 0.4361
+  },
+  "macros": {
+    "CHARACTER": 0.9143,
+    "MOVEMENT": 0.573,
+    "COUPLING": 0.546,
+    "SPACE": 0.0205
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "bright",
+    "warm",
+    "intimate",
+    "gentle",
+    "celestial"
+  ]
+}

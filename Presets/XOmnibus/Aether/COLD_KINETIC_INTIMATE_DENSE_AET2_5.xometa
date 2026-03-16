@@ -1,0 +1,53 @@
+{
+  "name": "COLD_KINETIC_INTIMATE_DENSE_AET2_5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OSPREY",
+    "ODDFELIX"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.4871,
+      "macro_movement": 0.9005,
+      "macro_coupling": 0.9339,
+      "macro_space": 0.1051
+    },
+    "ODDFELIX": {
+      "macro_character": 0.5318,
+      "macro_movement": 0.8792,
+      "macro_coupling": 0.9234,
+      "macro_space": 0.1404
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OSPREY",
+    "target": "ODDFELIX",
+    "amount": 0.686
+  },
+  "dna": {
+    "warmth": 0.0546,
+    "movement": 0.9088,
+    "space": 0.0976,
+    "density": 0.9185,
+    "brightness": 0.5058,
+    "aggression": 0.6952
+  },
+  "macros": {
+    "CHARACTER": 0.5094,
+    "MOVEMENT": 0.8899,
+    "COUPLING": 0.686,
+    "SPACE": 0.0976
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "cold",
+    "kinetic",
+    "intimate",
+    "dense",
+    "mechanical"
+  ]
+}

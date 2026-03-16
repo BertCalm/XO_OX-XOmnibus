@@ -1,0 +1,50 @@
+{
+  "name": "DARK_COLD_KINETIC_VAST_AET4_3",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ODDOSCAR",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.2661,
+      "macro_movement": 0.8334,
+      "macro_coupling": 0.3825,
+      "macro_space": 0.6417
+    },
+    "ORIGAMI": {
+      "macro_character": 0.593,
+      "macro_movement": 0.4968,
+      "macro_coupling": 0.4327,
+      "macro_space": 0.4546
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ODDOSCAR",
+    "target": "ORIGAMI",
+    "amount": 0.9139
+  },
+  "dna": {
+    "brightness": 0.1213,
+    "warmth": 0.1148,
+    "movement": 0.9391,
+    "density": 0.3083,
+    "space": 0.9388,
+    "aggression": 0.6205
+  },
+  "macros": {
+    "CHARACTER": 0.1181,
+    "MOVEMENT": 0.9391,
+    "COUPLING": 0.9139,
+    "SPACE": 0.9388
+  },
+  "tags": [
+    "aether",
+    "kinetic",
+    "dark",
+    "cold",
+    "vast"
+  ]
+}

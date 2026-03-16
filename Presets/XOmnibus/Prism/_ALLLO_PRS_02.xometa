@@ -1,0 +1,49 @@
+{
+  "name": "ALLLO PRS 02",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OCELOT",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "macro_character": 0.34,
+      "macro_movement": 0.048,
+      "macro_coupling": 0.074,
+      "macro_space": 0.068
+    },
+    "ORPHICA": {
+      "macro_character": 0.34,
+      "macro_movement": 0.048,
+      "macro_coupling": 0.074,
+      "macro_space": 0.068
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OCELOT",
+    "target": "ORPHICA",
+    "amount": 0.157
+  },
+  "dna": {
+    "brightness": 0.092,
+    "warmth": 0.589,
+    "movement": 0.071,
+    "density": 0.024,
+    "space": 0.068,
+    "aggression": 0.08
+  },
+  "macros": {
+    "CHARACTER": 0.34,
+    "MOVEMENT": 0.048,
+    "COUPLING": 0.074,
+    "SPACE": 0.068
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ]
+}

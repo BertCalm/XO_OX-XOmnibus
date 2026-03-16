@@ -1,0 +1,53 @@
+{
+  "name": "DARK_KINETIC_INTIMATE_GENTLE_AET2_4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OSPREY",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.1265,
+      "macro_movement": 0.9795,
+      "macro_coupling": 0.4483,
+      "macro_space": 0.0691
+    },
+    "OCEANIC": {
+      "macro_character": 0.158,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.5047,
+      "macro_space": 0.0541
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OSPREY",
+    "target": "OCEANIC",
+    "amount": 0.7748
+  },
+  "dna": {
+    "brightness": 0.1114,
+    "movement": 0.9625,
+    "space": 0.0847,
+    "aggression": 0.0382,
+    "warmth": 0.4751,
+    "density": 0.4643
+  },
+  "macros": {
+    "CHARACTER": 0.1422,
+    "MOVEMENT": 0.9848,
+    "COUPLING": 0.7748,
+    "SPACE": 0.0847
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "dark",
+    "kinetic",
+    "intimate",
+    "gentle",
+    "stirring"
+  ]
+}

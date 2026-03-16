@@ -1,0 +1,49 @@
+{
+  "name": "ALLHI FLX 04",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OPTIC",
+    "OBLONG"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.936,
+      "macro_movement": 0.761,
+      "macro_coupling": 0.948,
+      "macro_space": 0.985
+    },
+    "OBLONG": {
+      "macro_character": 0.936,
+      "macro_movement": 0.761,
+      "macro_coupling": 0.948,
+      "macro_space": 0.985
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OPTIC",
+    "target": "OBLONG",
+    "amount": 0.777
+  },
+  "dna": {
+    "brightness": 0.921,
+    "warmth": 0.952,
+    "movement": 0.951,
+    "density": 0.572,
+    "space": 0.985,
+    "aggression": 0.911
+  },
+  "macros": {
+    "CHARACTER": 0.936,
+    "MOVEMENT": 0.761,
+    "COUPLING": 0.948,
+    "SPACE": 0.985
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ]
+}

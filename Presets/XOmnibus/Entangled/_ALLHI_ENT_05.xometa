@@ -1,0 +1,49 @@
+{
+  "name": "ALLHI ENT 05",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OSTERIA",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "OSTERIA": {
+      "macro_character": 0.946,
+      "macro_movement": 0.939,
+      "macro_coupling": 0.694,
+      "macro_space": 0.426
+    },
+    "ODYSSEY": {
+      "macro_character": 0.946,
+      "macro_movement": 0.939,
+      "macro_coupling": 0.694,
+      "macro_space": 0.426
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OSTERIA",
+    "target": "ODYSSEY",
+    "amount": 0.851
+  },
+  "dna": {
+    "brightness": 0.951,
+    "warmth": 0.941,
+    "movement": 0.929,
+    "density": 0.948,
+    "space": 0.426,
+    "aggression": 0.961
+  },
+  "macros": {
+    "CHARACTER": 0.946,
+    "MOVEMENT": 0.939,
+    "COUPLING": 0.694,
+    "SPACE": 0.426
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ]
+}

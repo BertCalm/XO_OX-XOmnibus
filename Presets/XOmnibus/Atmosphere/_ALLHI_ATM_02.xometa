@@ -1,0 +1,49 @@
+{
+  "name": "ALLHI ATM 02",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "ORBITAL",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.78,
+      "macro_movement": 0.905,
+      "macro_coupling": 0.933,
+      "macro_space": 0.933
+    },
+    "OCEANIC": {
+      "macro_character": 0.78,
+      "macro_movement": 0.905,
+      "macro_coupling": 0.933,
+      "macro_space": 0.933
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ORBITAL",
+    "target": "OCEANIC",
+    "amount": 0.951
+  },
+  "dna": {
+    "brightness": 0.968,
+    "warmth": 0.592,
+    "movement": 0.909,
+    "density": 0.9,
+    "space": 0.933,
+    "aggression": 0.932
+  },
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.905,
+    "COUPLING": 0.933,
+    "SPACE": 0.933
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ]
+}

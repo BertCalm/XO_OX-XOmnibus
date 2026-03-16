@@ -1,0 +1,49 @@
+{
+  "name": "ALLLO FND 05",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OUROBOROS",
+    "OVERBITE"
+  ],
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.102,
+      "macro_movement": 0.053,
+      "macro_coupling": 0.311,
+      "macro_space": 0.555
+    },
+    "OVERBITE": {
+      "macro_character": 0.102,
+      "macro_movement": 0.053,
+      "macro_coupling": 0.311,
+      "macro_space": 0.555
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OUROBOROS",
+    "target": "OVERBITE",
+    "amount": 0.233
+  },
+  "dna": {
+    "brightness": 0.107,
+    "warmth": 0.097,
+    "movement": 0.021,
+    "density": 0.085,
+    "space": 0.555,
+    "aggression": 0.068
+  },
+  "macros": {
+    "CHARACTER": 0.102,
+    "MOVEMENT": 0.053,
+    "COUPLING": 0.311,
+    "SPACE": 0.555
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "CROSS PRS 05",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OCELOT",
+    "OPTIC"
+  ],
+  "parameters": {
+    "OCELOT": {
+      "macro_character": 0.487,
+      "macro_movement": 0.674,
+      "macro_coupling": 0.46,
+      "macro_space": 0.024
+    },
+    "OPTIC": {
+      "macro_character": 0.487,
+      "macro_movement": 0.674,
+      "macro_coupling": 0.46,
+      "macro_space": 0.024
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OCELOT",
+    "target": "OPTIC",
+    "amount": 0.629
+  },
+  "dna": {
+    "brightness": 0.926,
+    "warmth": 0.047,
+    "movement": 0.961,
+    "density": 0.388,
+    "space": 0.024,
+    "aggression": 0.895
+  },
+  "macros": {
+    "CHARACTER": 0.487,
+    "MOVEMENT": 0.674,
+    "COUPLING": 0.46,
+    "SPACE": 0.024
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "cross-pole",
+    "contrast"
+  ]
+}

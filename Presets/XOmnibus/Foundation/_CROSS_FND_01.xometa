@@ -1,0 +1,49 @@
+{
+  "name": "CROSS FND 01",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ODDOSCAR",
+    "OVERBITE"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.958,
+      "macro_movement": 0.482,
+      "macro_coupling": 0.252,
+      "macro_space": 0.398
+    },
+    "OVERBITE": {
+      "macro_character": 0.958,
+      "macro_movement": 0.482,
+      "macro_coupling": 0.252,
+      "macro_space": 0.398
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ODDOSCAR",
+    "target": "OVERBITE",
+    "amount": 0.717
+  },
+  "dna": {
+    "brightness": 0.974,
+    "warmth": 0.941,
+    "movement": 0.91,
+    "density": 0.054,
+    "space": 0.398,
+    "aggression": 0.106
+  },
+  "macros": {
+    "CHARACTER": 0.958,
+    "MOVEMENT": 0.482,
+    "COUPLING": 0.252,
+    "SPACE": 0.398
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "cross-pole",
+    "contrast"
+  ]
+}

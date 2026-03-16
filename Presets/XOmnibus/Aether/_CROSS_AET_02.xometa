@@ -1,0 +1,49 @@
+{
+  "name": "CROSS AET 02",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORIGAMI",
+    "OPAL"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.517,
+      "macro_movement": 0.649,
+      "macro_coupling": 0.5,
+      "macro_space": 0.965
+    },
+    "OPAL": {
+      "macro_character": 0.517,
+      "macro_movement": 0.649,
+      "macro_coupling": 0.5,
+      "macro_space": 0.965
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ORIGAMI",
+    "target": "OPAL",
+    "amount": 0.665
+  },
+  "dna": {
+    "brightness": 0.948,
+    "warmth": 0.086,
+    "movement": 0.377,
+    "density": 0.92,
+    "space": 0.965,
+    "aggression": 0.036
+  },
+  "macros": {
+    "CHARACTER": 0.517,
+    "MOVEMENT": 0.649,
+    "COUPLING": 0.5,
+    "SPACE": 0.965
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "cross-pole",
+    "contrast"
+  ]
+}

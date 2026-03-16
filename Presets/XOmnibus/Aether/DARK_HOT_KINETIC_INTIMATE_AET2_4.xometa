@@ -1,0 +1,53 @@
+{
+  "name": "DARK_HOT_KINETIC_INTIMATE_AET2_4",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ORGANON",
+    "OSPREY"
+  ],
+  "parameters": {
+    "ORGANON": {
+      "macro_character": 0.0569,
+      "macro_movement": 0.9859,
+      "macro_coupling": 0.6568,
+      "macro_space": 0.0335
+    },
+    "OSPREY": {
+      "macro_character": 0.0916,
+      "macro_movement": 0.9757,
+      "macro_coupling": 0.6272,
+      "macro_space": 0.0409
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ORGANON",
+    "target": "OSPREY",
+    "amount": 0.8183
+  },
+  "dna": {
+    "brightness": 0.0608,
+    "warmth": 0.9307,
+    "space": 0.0473,
+    "movement": 0.9719,
+    "density": 0.6289,
+    "aggression": 0.3422
+  },
+  "macros": {
+    "CHARACTER": 0.0742,
+    "MOVEMENT": 0.9808,
+    "COUPLING": 0.8183,
+    "SPACE": 0.0473
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "dark",
+    "hot",
+    "kinetic",
+    "intimate",
+    "smoldering"
+  ]
+}

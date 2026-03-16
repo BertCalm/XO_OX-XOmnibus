@@ -1,0 +1,49 @@
+{
+  "name": "ALLLO FAM 06",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OBLONG",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.053,
+      "macro_movement": 0.079,
+      "macro_coupling": 0.292,
+      "macro_space": 0.054
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.053,
+      "macro_movement": 0.079,
+      "macro_coupling": 0.292,
+      "macro_space": 0.054
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBLONG",
+    "target": "ODDOSCAR",
+    "amount": 0.142
+  },
+  "dna": {
+    "brightness": 0.031,
+    "warmth": 0.076,
+    "movement": 0.073,
+    "density": 0.084,
+    "space": 0.054,
+    "aggression": 0.529
+  },
+  "macros": {
+    "CHARACTER": 0.053,
+    "MOVEMENT": 0.079,
+    "COUPLING": 0.292,
+    "SPACE": 0.054
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ]
+}

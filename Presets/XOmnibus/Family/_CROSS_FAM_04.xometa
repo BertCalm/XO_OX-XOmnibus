@@ -1,0 +1,49 @@
+{
+  "name": "CROSS FAM 04",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OBBLIGATO",
+    "OLE"
+  ],
+  "parameters": {
+    "OBBLIGATO": {
+      "macro_character": 0.675,
+      "macro_movement": 0.066,
+      "macro_coupling": 0.971,
+      "macro_space": 0.965
+    },
+    "OLE": {
+      "macro_character": 0.675,
+      "macro_movement": 0.066,
+      "macro_coupling": 0.971,
+      "macro_space": 0.965
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OBBLIGATO",
+    "target": "OLE",
+    "amount": 0.371
+  },
+  "dna": {
+    "brightness": 0.449,
+    "warmth": 0.902,
+    "movement": 0.052,
+    "density": 0.08,
+    "space": 0.965,
+    "aggression": 0.977
+  },
+  "macros": {
+    "CHARACTER": 0.675,
+    "MOVEMENT": 0.066,
+    "COUPLING": 0.971,
+    "SPACE": 0.965
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "cross-pole",
+    "contrast"
+  ]
+}

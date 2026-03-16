@@ -1,0 +1,50 @@
+{
+  "name": "KINETIC_DENSE_VAST_VIOLENT_AET4_5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OVERWORLD",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.9103,
+      "macro_movement": 0.9383,
+      "macro_coupling": 0.5463,
+      "macro_space": 0.4113
+    },
+    "ORIGAMI": {
+      "macro_character": 0.4864,
+      "macro_movement": 0.5956,
+      "macro_coupling": 0.9247,
+      "macro_space": 0.8127
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OVERWORLD",
+    "target": "ORIGAMI",
+    "amount": 0.6655
+  },
+  "dna": {
+    "brightness": 0.6878,
+    "warmth": 0.5442,
+    "movement": 0.9565,
+    "density": 0.8752,
+    "space": 0.9137,
+    "aggression": 0.9564
+  },
+  "macros": {
+    "CHARACTER": 0.616,
+    "MOVEMENT": 0.9565,
+    "COUPLING": 0.6655,
+    "SPACE": 0.9137
+  },
+  "tags": [
+    "aether",
+    "kinetic",
+    "dense",
+    "vast",
+    "violent"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "ALLHI FND 02",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ODDFELIX",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.707,
+      "macro_movement": 0.901,
+      "macro_coupling": 0.95,
+      "macro_space": 0.955
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.707,
+      "macro_movement": 0.901,
+      "macro_coupling": 0.95,
+      "macro_space": 0.955
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ODDFELIX",
+    "target": "ODDOSCAR",
+    "amount": 0.83
+  },
+  "dna": {
+    "brightness": 0.912,
+    "warmth": 0.502,
+    "movement": 0.893,
+    "density": 0.91,
+    "space": 0.955,
+    "aggression": 0.944
+  },
+  "macros": {
+    "CHARACTER": 0.707,
+    "MOVEMENT": 0.901,
+    "COUPLING": 0.95,
+    "SPACE": 0.955
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ]
+}

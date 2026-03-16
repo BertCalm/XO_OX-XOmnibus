@@ -1,0 +1,49 @@
+{
+  "name": "ALLLO PRS 03",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OSTERIA",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "OSTERIA": {
+      "macro_character": 0.095,
+      "macro_movement": 0.244,
+      "macro_coupling": 0.086,
+      "macro_space": 0.077
+    },
+    "OBLIQUE": {
+      "macro_character": 0.095,
+      "macro_movement": 0.244,
+      "macro_coupling": 0.086,
+      "macro_space": 0.077
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OSTERIA",
+    "target": "OBLIQUE",
+    "amount": 0.054
+  },
+  "dna": {
+    "brightness": 0.096,
+    "warmth": 0.094,
+    "movement": 0.382,
+    "density": 0.106,
+    "space": 0.077,
+    "aggression": 0.095
+  },
+  "macros": {
+    "CHARACTER": 0.095,
+    "MOVEMENT": 0.244,
+    "COUPLING": 0.086,
+    "SPACE": 0.077
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ]
+}

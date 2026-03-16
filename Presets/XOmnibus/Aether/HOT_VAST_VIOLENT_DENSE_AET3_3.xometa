@@ -1,0 +1,50 @@
+{
+  "name": "HOT_VAST_VIOLENT_DENSE_AET3_3",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OPAL",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.7721,
+      "macro_movement": 0.6691,
+      "macro_coupling": 0.3985,
+      "macro_space": 0.2609
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.3799,
+      "macro_movement": 0.614,
+      "macro_coupling": 0.3174,
+      "macro_space": 0.5064
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OPAL",
+    "target": "ODDOSCAR",
+    "amount": 0.5447
+  },
+  "dna": {
+    "brightness": 0.4522,
+    "warmth": 0.9199,
+    "movement": 0.4189,
+    "density": 0.9631,
+    "space": 0.9415,
+    "aggression": 0.9442
+  },
+  "macros": {
+    "CHARACTER": 0.6861,
+    "MOVEMENT": 0.4189,
+    "COUPLING": 0.5447,
+    "SPACE": 0.9415
+  },
+  "tags": [
+    "aether",
+    "warm",
+    "vast",
+    "violent",
+    "dense"
+  ]
+}

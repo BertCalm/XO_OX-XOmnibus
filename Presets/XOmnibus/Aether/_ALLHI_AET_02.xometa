@@ -1,0 +1,49 @@
+{
+  "name": "ALLHI AET 02",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OCEANIC",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.748,
+      "macro_movement": 0.929,
+      "macro_coupling": 0.966,
+      "macro_space": 0.961
+    },
+    "OBLIQUE": {
+      "macro_character": 0.748,
+      "macro_movement": 0.929,
+      "macro_coupling": 0.966,
+      "macro_space": 0.961
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OCEANIC",
+    "target": "OBLIQUE",
+    "amount": 0.987
+  },
+  "dna": {
+    "brightness": 0.913,
+    "warmth": 0.583,
+    "movement": 0.894,
+    "density": 0.964,
+    "space": 0.961,
+    "aggression": 0.971
+  },
+  "macros": {
+    "CHARACTER": 0.748,
+    "MOVEMENT": 0.929,
+    "COUPLING": 0.966,
+    "SPACE": 0.961
+  },
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ]
+}

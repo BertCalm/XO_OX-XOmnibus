@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_HOT_DENSE_VAST_AET3_1",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OSPREY",
+    "OMBRE"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.4225,
+      "macro_movement": 0.9265,
+      "macro_coupling": 0.6344,
+      "macro_space": 0.6066
+    },
+    "OMBRE": {
+      "macro_character": 0.761,
+      "macro_movement": 0.2429,
+      "macro_coupling": 0.6381,
+      "macro_space": 0.5771
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OSPREY",
+    "target": "OMBRE",
+    "amount": 0.5697
+  },
+  "dna": {
+    "brightness": 0.9783,
+    "warmth": 0.8898,
+    "movement": 0.4141,
+    "density": 0.8703,
+    "space": 0.9169,
+    "aggression": 0.6133
+  },
+  "macros": {
+    "CHARACTER": 0.9341,
+    "MOVEMENT": 0.4141,
+    "COUPLING": 0.5697,
+    "SPACE": 0.9169
+  },
+  "tags": [
+    "aether",
+    "warm",
+    "bright",
+    "dense",
+    "vast"
+  ]
+}

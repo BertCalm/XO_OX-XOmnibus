@@ -1,0 +1,50 @@
+{
+  "name": "BRIGHT_HOT_KINETIC_SPARSE_AET4_2",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ODDOSCAR",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.2858,
+      "macro_movement": 0.691,
+      "macro_coupling": 0.8583,
+      "macro_space": 0.6135
+    },
+    "OBLIQUE": {
+      "macro_character": 0.8491,
+      "macro_movement": 0.5226,
+      "macro_coupling": 0.8661,
+      "macro_space": 0.5104
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "ODDOSCAR",
+    "target": "OBLIQUE",
+    "amount": 0.8569
+  },
+  "dna": {
+    "brightness": 0.8797,
+    "warmth": 0.943,
+    "movement": 0.8779,
+    "density": 0.0503,
+    "space": 0.5122,
+    "aggression": 0.4815
+  },
+  "macros": {
+    "CHARACTER": 0.9113,
+    "MOVEMENT": 0.8779,
+    "COUPLING": 0.8569,
+    "SPACE": 0.5122
+  },
+  "tags": [
+    "aether",
+    "kinetic",
+    "bright",
+    "warm",
+    "sparse"
+  ]
+}

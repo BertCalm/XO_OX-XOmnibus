@@ -1,0 +1,53 @@
+{
+  "name": "DARK_HOT_KINETIC_INTIMATE_AET2_5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OCEANIC",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.0931,
+      "macro_movement": 0.9414,
+      "macro_coupling": 0.3558,
+      "macro_space": 0.069
+    },
+    "ORIGAMI": {
+      "macro_character": 0.0716,
+      "macro_movement": 0.99,
+      "macro_coupling": 0.3187,
+      "macro_space": 0.1261
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OCEANIC",
+    "target": "ORIGAMI",
+    "amount": 0.7746
+  },
+  "dna": {
+    "brightness": 0.1004,
+    "warmth": 0.9022,
+    "space": 0.0881,
+    "movement": 0.9697,
+    "density": 0.3347,
+    "aggression": 0.6527
+  },
+  "macros": {
+    "CHARACTER": 0.0824,
+    "MOVEMENT": 0.9657,
+    "COUPLING": 0.7746,
+    "SPACE": 0.0881
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "dark",
+    "hot",
+    "kinetic",
+    "intimate",
+    "smoldering"
+  ]
+}

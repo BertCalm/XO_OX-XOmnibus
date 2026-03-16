@@ -1,0 +1,53 @@
+{
+  "name": "DARK_STILL_INTIMATE_SPARSE_AET2_5",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OBLIQUE",
+    "OSPREY"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.0239,
+      "macro_movement": 0.1252,
+      "macro_coupling": 0.0419,
+      "macro_space": 0.0565
+    },
+    "OSPREY": {
+      "macro_character": 0.0738,
+      "macro_movement": 0.0802,
+      "macro_coupling": 0.0971,
+      "macro_space": 0.0302
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OBLIQUE",
+    "target": "OSPREY",
+    "amount": 0.8648
+  },
+  "dna": {
+    "brightness": 0.0379,
+    "movement": 0.108,
+    "space": 0.0342,
+    "density": 0.0654,
+    "warmth": 0.3717,
+    "aggression": 0.6698
+  },
+  "macros": {
+    "CHARACTER": 0.0489,
+    "MOVEMENT": 0.1027,
+    "COUPLING": 0.8648,
+    "SPACE": 0.0342
+  },
+  "tags": [
+    "aether",
+    "intimate",
+    "space-xlow",
+    "dark",
+    "still",
+    "intimate",
+    "sparse",
+    "void"
+  ]
+}
