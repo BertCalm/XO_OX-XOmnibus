@@ -148,6 +148,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
 | `Docs/xomnibus_sound_design_guides.md` | Sound design guide (30 of 34 engines in unified guide; 4 Constellation engines have dedicated guides in Docs/) |
 | `Source/DSP/` | Shared DSP library |
+| `Source/DSP/SRO/` | SRO framework (SilenceGate, ControlRateReducer, LookupTable, SROAuditor) |
 | `Source/UI/` | Gallery Model UI components |
 | `Source/Export/` | XPN export pipeline |
 | `Presets/XOmnibus/{mood}/` | Factory presets by mood |
@@ -290,6 +291,7 @@ Reusable skill guides live in `Skills/` — invoke the relevant one before start
 | [engine-health-check](Skills/engine-health-check/SKILL.md) | `/engine-health-check` | Quick D001–D006 doctrine check on any engine |
 | [dna-designer](Skills/dna-designer/SKILL.md) | `/dna-designer` | Assigning accurate 6D Sonic DNA to presets |
 | [xpn-export-specialist](Skills/xpn-export-specialist/SKILL.md) | `/xpn-export-specialist` | Full XPN/MPC export pipeline |
+| [sro-optimizer](Skills/sro-optimizer/SKILL.md) | `/sro-optimizer` | CPU audit, zero-idle bypass, LUT replacement, control-rate coupling optimization |
 | synth-seance (`~/.claude/skills/`) | `/synth-seance` | Ghost council full engine quality evaluation |
 | post-engine-completion-checklist (`~/.claude/skills/`) | `/post-engine-completion-checklist` | 5-point post-build audit |
 | producers-guild (`~/.claude/skills/`) | `/producers-guild` | 12-specialist market/product review |

@@ -17,6 +17,7 @@ This directory contains Claude Code skill files for working efficiently with the
 | [engine-health-check](./engine-health-check/SKILL.md) | `/engine-health-check` | Quick D001–D006 doctrine compliance check + coupling quality + known bugs | MEDIUM |
 | [dna-designer](./dna-designer/SKILL.md) | `/dna-designer` | Assign accurate 6D Sonic DNA values — calibrated per dimension per engine | MEDIUM |
 | [xpn-export-specialist](./xpn-export-specialist/SKILL.md) | `/xpn-export-specialist` | End-to-end XPN/MPC export — render specs, WAV rendering, XPM rules, bundle assembly | MEDIUM |
+| [sro-optimizer](./sro-optimizer/SKILL.md) | `/sro-optimizer` | Sustainability & Resource Optimization — CPU audit, zero-idle bypass, LUT replacement, control-rate coupling | HIGH |
 
 ### Referenced Elsewhere (`~/.claude/skills/`)
 
@@ -41,6 +42,7 @@ These skills exist in the Claude profile (not version-controlled here) but are r
 | Quick engine QA before release | `/engine-health-check` |
 | Adding DNA to existing presets | `/dna-designer` |
 | Building an MPC export bundle | `/xpn-export-specialist` |
+| Auditing engine CPU / optimizing performance | `/sro-optimizer` |
 | Deep engine quality evaluation | `/synth-seance` |
 | After finishing an engine | `/post-engine-completion-checklist` |
 | Product direction / market review | `/producers-guild` |
