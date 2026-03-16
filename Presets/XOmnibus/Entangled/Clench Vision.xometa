@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Clench Vision",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.445,
+    "warmth": 0.504,
+    "movement": 0.556,
+    "density": 0.707,
+    "space": 0.61,
+    "aggression": 0.524
+  },
+  "engines": [
+    "XOverbite",
+    "XOracle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERBITE gnash decodes ORACLE vision. Bass prophecy. [Env->Morph]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overbite",
+    "oracle",
+    "bite"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.445,
+    "warmth": 0.504,
+    "movement": 0.556,
+    "density": 0.707,
+    "space": 0.61,
+    "aggression": 0.524
+  },
+  "parameters": {
+    "XOverbite": {
+      "poss_outputLevel": 0.81,
+      "poss_outputPan": 0.03,
+      "poss_couplingLevel": 0.65,
+      "poss_couplingBus": 0,
+      "poss_brightness": 0.456,
+      "poss_warmth": 0.582,
+      "poss_aggression": 0.575
+    },
+    "XOracle": {
+      "orc_outputLevel": 0.86,
+      "orc_outputPan": -0.02,
+      "orc_couplingLevel": 0.63,
+      "orc_couplingBus": 0,
+      "orc_brightness": 0.493,
+      "orc_warmth": 0.467,
+      "orc_aggression": 0.474
+    }
+  },
+  "coupling": {
+    "type": "Env->Morph",
+    "amount": 0.77,
+    "pairs": [
+      {
+        "engineA": "XOverbite",
+        "engineB": "XOracle",
+        "type": "Env->Morph",
+        "amount": 0.77
+      }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Coral Coral × Overdub",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "OVERDUB"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERDUB's dub delay loops OBBLIGATO's dual voices; BOND makes the tape echo an obligate breath bond.",
+  "tags": [
+    "coupling",
+    "obbligato",
+    "bond",
+    "overdub",
+    "tape",
+    "echo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.761,
+    "obbl_breathB": 0.525,
+    "obbl_macroBond": 0.716
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "OVERDUB",
+        "type": "Amp->Drive",
+        "amount": 0.595
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.515,
+    "warmth": 0.667,
+    "movement": 0.583,
+    "density": 0.615,
+    "space": 0.652,
+    "aggression": 0.38
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "OBBLIGATO Necessary — Orphica",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "ORPHICA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright harp threads weave through OBBLIGATO's breath pair; BOND knots them into coral lace.",
+  "tags": [
+    "coupling",
+    "obbligato",
+    "bond",
+    "orphica",
+    "granular",
+    "shimmer"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.47,
+    "obbl_breathB": 0.651,
+    "obbl_macroBond": 0.966
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "ORPHICA",
+        "type": "LFO->Pan",
+        "amount": 0.668
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.685,
+    "warmth": 0.569,
+    "movement": 0.654,
+    "density": 0.542,
+    "space": 0.681,
+    "aggression": 0.342
+  }
+}

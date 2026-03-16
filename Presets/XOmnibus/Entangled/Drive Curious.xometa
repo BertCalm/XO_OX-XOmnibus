@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Drive Curious",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.592,
+    "warmth": 0.679,
+    "movement": 0.478,
+    "density": 0.681,
+    "space": 0.477,
+    "aggression": 0.643
+  },
+  "engines": [
+    "XObese",
+    "XOblong"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE warmth coats OBLONG curiosity. Fat Bob, saturated wandering. [Audio->Wavetable]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "oblong",
+    "fat"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.592,
+    "warmth": 0.679,
+    "movement": 0.478,
+    "density": 0.681,
+    "space": 0.477,
+    "aggression": 0.643
+  },
+  "parameters": {
+    "XObese": {
+      "fat_outputLevel": 0.77,
+      "fat_outputPan": 0.0,
+      "fat_couplingLevel": 0.7,
+      "fat_couplingBus": 0,
+      "fat_brightness": 0.557,
+      "fat_warmth": 0.672,
+      "fat_aggression": 0.731
+    },
+    "XOblong": {
+      "bob_outputLevel": 0.89,
+      "bob_outputPan": 0.04,
+      "bob_couplingLevel": 0.74,
+      "bob_couplingBus": 0,
+      "bob_brightness": 0.622,
+      "bob_warmth": 0.698,
+      "bob_aggression": 0.586
+    }
+  },
+  "coupling": {
+    "type": "Audio->Wavetable",
+    "amount": 0.84,
+    "pairs": [
+      {
+        "engineA": "XObese",
+        "engineB": "XOblong",
+        "type": "Audio->Wavetable",
+        "amount": 0.84
+      }
+    ]
+  }
+}

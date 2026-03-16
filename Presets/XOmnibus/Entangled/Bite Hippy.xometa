@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Bite Hippy",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.425,
+    "warmth": 0.71,
+    "movement": 0.526,
+    "density": 0.685,
+    "space": 0.599,
+    "aggression": 0.495
+  },
+  "engines": [
+    "XOverbite",
+    "XOhm"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERBITE bass warmth meets OHM commune. Grounded drone. [Audio->Wavetable]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overbite",
+    "ohm",
+    "bite"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.425,
+    "warmth": 0.71,
+    "movement": 0.526,
+    "density": 0.685,
+    "space": 0.599,
+    "aggression": 0.495
+  },
+  "parameters": {
+    "XOverbite": {
+      "poss_outputLevel": 0.87,
+      "poss_outputPan": 0.02,
+      "poss_couplingLevel": 0.56,
+      "poss_couplingBus": 0,
+      "poss_brightness": 0.468,
+      "poss_warmth": 0.71,
+      "poss_aggression": 0.612
+    },
+    "XOhm": {
+      "ohm_outputLevel": 0.84,
+      "ohm_outputPan": -0.02,
+      "ohm_couplingLevel": 0.63,
+      "ohm_couplingBus": 0,
+      "ohm_brightness": 0.481,
+      "ohm_warmth": 0.738,
+      "ohm_aggression": 0.359
+    }
+  },
+  "coupling": {
+    "type": "Audio->Wavetable",
+    "amount": 0.77,
+    "pairs": [
+      {
+        "engineA": "XOverbite",
+        "engineB": "XOhm",
+        "type": "Audio->Wavetable",
+        "amount": 0.77
+      }
+    ]
+  }
+}

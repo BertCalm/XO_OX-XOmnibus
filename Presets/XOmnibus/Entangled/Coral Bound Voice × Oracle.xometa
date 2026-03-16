@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Coral Bound Voice × Oracle",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "ORACLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "GENDY maqam lattice meets dual wind BOND — OBBLIGATO's voices are bound to ORACLE's spectral decree.",
+  "tags": [
+    "coupling",
+    "obbligato",
+    "bond",
+    "oracle",
+    "stochastic",
+    "maqam"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.659,
+    "obbl_breathB": 0.654,
+    "obbl_macroBond": 0.857
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "ORACLE",
+        "type": "Env->LFO Rate",
+        "amount": 0.557
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.532,
+    "warmth": 0.557,
+    "movement": 0.6,
+    "density": 0.669,
+    "space": 0.637,
+    "aggression": 0.431
+  }
+}

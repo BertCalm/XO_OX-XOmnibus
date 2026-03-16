@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "OBBLIGATO Necessary — Ole",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "OLE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBBLIGATO rascal coral answers OLE's communal call — BOND creates an obligate rhythmic breath tie.",
+  "tags": [
+    "coupling",
+    "obbligato",
+    "bond",
+    "ole",
+    "afro-latin",
+    "rhythmic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.417,
+    "obbl_breathB": 0.43,
+    "obbl_macroBond": 0.725
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "OLE",
+        "type": "Amp->Filter",
+        "amount": 0.697
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.588,
+    "warmth": 0.669,
+    "movement": 0.657,
+    "density": 0.631,
+    "space": 0.6,
+    "aggression": 0.488
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Rascal Rascal ft Ohm",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "OHM"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OHM hum meets coral coral wind — BOND creates an obligate resonance between the sage and the reed.",
+  "tags": [
+    "coupling",
+    "obbligato",
+    "bond",
+    "ohm",
+    "drone",
+    "meditative"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.705,
+    "obbl_breathB": 0.579,
+    "obbl_macroBond": 0.78
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "OHM",
+        "type": "LFO->Filter",
+        "amount": 0.686
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.491,
+    "warmth": 0.709,
+    "movement": 0.571,
+    "density": 0.621,
+    "space": 0.659,
+    "aggression": 0.362
+  }
+}

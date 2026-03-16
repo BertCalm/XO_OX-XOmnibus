@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Warm Clip Hippy",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.488,
+    "warmth": 0.713,
+    "movement": 0.501,
+    "density": 0.683,
+    "space": 0.553,
+    "aggression": 0.507
+  },
+  "engines": [
+    "XObese",
+    "XOhm"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE drive softened by OHM commune warmth. Hot hippie. [LFO->Pitch]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "ohm",
+    "fat"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.488,
+    "warmth": 0.713,
+    "movement": 0.501,
+    "density": 0.683,
+    "space": 0.553,
+    "aggression": 0.507
+  },
+  "parameters": {
+    "XObese": {
+      "fat_outputLevel": 0.86,
+      "fat_outputPan": -0.01,
+      "fat_couplingLevel": 0.55,
+      "fat_couplingBus": 0,
+      "fat_brightness": 0.476,
+      "fat_warmth": 0.687,
+      "fat_aggression": 0.666
+    },
+    "XOhm": {
+      "ohm_outputLevel": 0.79,
+      "ohm_outputPan": -0.01,
+      "ohm_couplingLevel": 0.61,
+      "ohm_couplingBus": 0,
+      "ohm_brightness": 0.439,
+      "ohm_warmth": 0.716,
+      "ohm_aggression": 0.371
+    }
+  },
+  "coupling": {
+    "type": "LFO->Pitch",
+    "amount": 0.78,
+    "pairs": [
+      {
+        "engineA": "XObese",
+        "engineB": "XOhm",
+        "type": "LFO->Pitch",
+        "amount": 0.78
+      }
+    ]
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Clench Commune",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.445,
+    "warmth": 0.666,
+    "movement": 0.518,
+    "density": 0.645,
+    "space": 0.561,
+    "aggression": 0.514
+  },
+  "engines": [
+    "XOverbite",
+    "XOhm"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERBITE bass warmth meets OHM commune. Grounded drone. [Amp->Amp]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overbite",
+    "ohm",
+    "bite"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.445,
+    "warmth": 0.666,
+    "movement": 0.518,
+    "density": 0.645,
+    "space": 0.561,
+    "aggression": 0.514
+  },
+  "parameters": {
+    "XOverbite": {
+      "poss_outputLevel": 0.77,
+      "poss_outputPan": -0.02,
+      "poss_couplingLevel": 0.59,
+      "poss_couplingBus": 0,
+      "poss_brightness": 0.468,
+      "poss_warmth": 0.633,
+      "poss_aggression": 0.605
+    },
+    "XOhm": {
+      "ohm_outputLevel": 0.77,
+      "ohm_outputPan": 0.03,
+      "ohm_couplingLevel": 0.57,
+      "ohm_couplingBus": 0,
+      "ohm_brightness": 0.424,
+      "ohm_warmth": 0.743,
+      "ohm_aggression": 0.347
+    }
+  },
+  "coupling": {
+    "type": "Amp->Amp",
+    "amount": 0.71,
+    "pairs": [
+      {
+        "engineA": "XOverbite",
+        "engineB": "XOhm",
+        "type": "Amp->Amp",
+        "amount": 0.71
+      }
+    ]
+  }
+}

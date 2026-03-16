@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Fang Saturation",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.512,
+    "warmth": 0.662,
+    "movement": 0.442,
+    "density": 0.718,
+    "space": 0.478,
+    "aggression": 0.708
+  },
+  "engines": [
+    "XObese",
+    "XOverbite"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERBITE fang attack modulates OBESE drive amount. Bite shapes the heat.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "overbite",
+    "fang",
+    "saturation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.512,
+    "warmth": 0.662,
+    "movement": 0.442,
+    "density": 0.718,
+    "space": 0.478,
+    "aggression": 0.708
+  },
+  "parameters": {
+    "XObese": {
+      "fat_outputLevel": 0.78,
+      "fat_outputPan": -0.02,
+      "fat_couplingLevel": 0.57,
+      "fat_couplingBus": 0,
+      "fat_brightness": 0.529,
+      "fat_warmth": 0.705,
+      "fat_aggression": 0.739
+    },
+    "XOverbite": {
+      "poss_outputLevel": 0.78,
+      "poss_outputPan": -0.04,
+      "poss_couplingLevel": 0.62,
+      "poss_couplingBus": 0,
+      "poss_brightness": 0.498,
+      "poss_warmth": 0.664,
+      "poss_aggression": 0.634
+    }
+  },
+  "coupling": {
+    "type": "Env->Morph",
+    "amount": 0.7,
+    "pairs": [
+      {
+        "engineA": "XObese",
+        "engineB": "XOverbite",
+        "type": "Env->Morph",
+        "amount": 0.7
+      }
+    ]
+  }
+}

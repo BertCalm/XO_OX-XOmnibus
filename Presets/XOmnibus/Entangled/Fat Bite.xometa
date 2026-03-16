@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Fat Bite",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.486,
+    "warmth": 0.637,
+    "movement": 0.457,
+    "density": 0.728,
+    "space": 0.469,
+    "aggression": 0.714
+  },
+  "engines": [
+    "XObese",
+    "XOverbite"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE saturation drives OVERBITE filter. Maximum low-end character.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "overbite",
+    "fat",
+    "bite"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.486,
+    "warmth": 0.637,
+    "movement": 0.457,
+    "density": 0.728,
+    "space": 0.469,
+    "aggression": 0.714
+  },
+  "parameters": {
+    "XObese": {
+      "fat_outputLevel": 0.87,
+      "fat_outputPan": -0.05,
+      "fat_couplingLevel": 0.75,
+      "fat_couplingBus": 0,
+      "fat_brightness": 0.526,
+      "fat_warmth": 0.645,
+      "fat_aggression": 0.738
+    },
+    "XOverbite": {
+      "poss_outputLevel": 0.85,
+      "poss_outputPan": -0.02,
+      "poss_couplingLevel": 0.59,
+      "poss_couplingBus": 0,
+      "poss_brightness": 0.425,
+      "poss_warmth": 0.621,
+      "poss_aggression": 0.68
+    }
+  },
+  "coupling": {
+    "type": "Amp->Filter",
+    "amount": 0.8,
+    "pairs": [
+      {
+        "engineA": "XObese",
+        "engineB": "XOverbite",
+        "type": "Amp->Filter",
+        "amount": 0.8
+      }
+    ]
+  }
+}

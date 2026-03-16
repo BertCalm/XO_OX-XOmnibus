@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Warm Clip 8-Bit",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.646,
+    "warmth": 0.536,
+    "movement": 0.468,
+    "density": 0.695,
+    "space": 0.492,
+    "aggression": 0.704
+  },
+  "engines": [
+    "XObese",
+    "XOverworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE analog heat warms OVERWORLD chiptune. Fat pixels. [Audio->Wavetable]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "overworld",
+    "fat"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.646,
+    "warmth": 0.536,
+    "movement": 0.468,
+    "density": 0.695,
+    "space": 0.492,
+    "aggression": 0.704
+  },
+  "parameters": {
+    "XObese": {
+      "fat_outputLevel": 0.83,
+      "fat_outputPan": 0.01,
+      "fat_couplingLevel": 0.63,
+      "fat_couplingBus": 0,
+      "fat_brightness": 0.58,
+      "fat_warmth": 0.673,
+      "fat_aggression": 0.75
+    },
+    "XOverworld": {
+      "ow_outputLevel": 0.86,
+      "ow_outputPan": -0.01,
+      "ow_couplingLevel": 0.75,
+      "ow_couplingBus": 0,
+      "ow_brightness": 0.711,
+      "ow_warmth": 0.452,
+      "ow_aggression": 0.634
+    }
+  },
+  "coupling": {
+    "type": "Audio->Wavetable",
+    "amount": 0.82,
+    "pairs": [
+      {
+        "engineA": "XObese",
+        "engineB": "XOverworld",
+        "type": "Audio->Wavetable",
+        "amount": 0.82
+      }
+    ]
+  }
+}

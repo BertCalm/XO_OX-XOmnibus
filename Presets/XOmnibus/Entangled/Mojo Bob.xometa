@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Mojo Bob",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.543,
+    "warmth": 0.673,
+    "movement": 0.493,
+    "density": 0.741,
+    "space": 0.512,
+    "aggression": 0.596
+  },
+  "engines": [
+    "XObese",
+    "XOblong"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE warmth coats OBLONG curiosity. Fat Bob, saturated wandering. [Amp->Filter]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "oblong",
+    "fat"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.543,
+    "warmth": 0.673,
+    "movement": 0.493,
+    "density": 0.741,
+    "space": 0.512,
+    "aggression": 0.596
+  },
+  "parameters": {
+    "XObese": {
+      "fat_outputLevel": 0.83,
+      "fat_outputPan": -0.04,
+      "fat_couplingLevel": 0.8,
+      "fat_couplingBus": 0,
+      "fat_brightness": 0.507,
+      "fat_warmth": 0.678,
+      "fat_aggression": 0.692
+    },
+    "XOblong": {
+      "bob_outputLevel": 0.88,
+      "bob_outputPan": 0.05,
+      "bob_couplingLevel": 0.78,
+      "bob_couplingBus": 0,
+      "bob_brightness": 0.574,
+      "bob_warmth": 0.64,
+      "bob_aggression": 0.563
+    }
+  },
+  "coupling": {
+    "type": "Amp->Filter",
+    "amount": 0.58,
+    "pairs": [
+      {
+        "engineA": "XObese",
+        "engineB": "XOblong",
+        "type": "Amp->Filter",
+        "amount": 0.58
+      }
+    ]
+  }
+}

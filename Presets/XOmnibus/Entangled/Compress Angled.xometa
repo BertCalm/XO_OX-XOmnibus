@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Compress Angled",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.659,
+    "warmth": 0.567,
+    "movement": 0.575,
+    "density": 0.628,
+    "space": 0.482,
+    "aggression": 0.659
+  },
+  "engines": [
+    "XObese",
+    "XOblique"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE crush modulates OBLIQUE angle. Off-axis harmonic density. [Rhythm->Blend]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "oblique",
+    "fat"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.659,
+    "warmth": 0.567,
+    "movement": 0.575,
+    "density": 0.628,
+    "space": 0.482,
+    "aggression": 0.659
+  },
+  "parameters": {
+    "XObese": {
+      "fat_outputLevel": 0.86,
+      "fat_outputPan": -0.04,
+      "fat_couplingLevel": 0.65,
+      "fat_couplingBus": 0,
+      "fat_brightness": 0.577,
+      "fat_warmth": 0.655,
+      "fat_aggression": 0.701
+    },
+    "XOblique": {
+      "obl_outputLevel": 0.83,
+      "obl_outputPan": -0.01,
+      "obl_couplingLevel": 0.6,
+      "obl_couplingBus": 0,
+      "obl_brightness": 0.7,
+      "obl_warmth": 0.444,
+      "obl_aggression": 0.604
+    }
+  },
+  "coupling": {
+    "type": "Rhythm->Blend",
+    "amount": 0.8,
+    "pairs": [
+      {
+        "engineA": "XObese",
+        "engineB": "XOblique",
+        "type": "Rhythm->Blend",
+        "amount": 0.8
+      }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Bond with Organon",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "ORGANON"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ORGANON metabolic rate pulses through OBBLIGATO's BOND — free energy meets obligate coral breath.",
+  "tags": [
+    "coupling",
+    "obbligato",
+    "bond",
+    "organon",
+    "metabolic",
+    "bioluminescent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.441,
+    "obbl_breathB": 0.464,
+    "obbl_macroBond": 0.798
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "ORGANON",
+        "type": "Env->LFO Rate",
+        "amount": 0.662
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.568,
+    "warmth": 0.632,
+    "movement": 0.618,
+    "density": 0.686,
+    "space": 0.618,
+    "aggression": 0.432
+  }
+}

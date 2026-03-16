@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Grip Wandering",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.575,
+    "warmth": 0.629,
+    "movement": 0.491,
+    "density": 0.7,
+    "space": 0.522,
+    "aggression": 0.549
+  },
+  "engines": [
+    "XOverbite",
+    "XOblong"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERBITE fang bites into OBLONG's harmonic curiosity. Bass-forward Bob. [Rhythm->Blend]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overbite",
+    "oblong",
+    "bite"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.575,
+    "warmth": 0.629,
+    "movement": 0.491,
+    "density": 0.7,
+    "space": 0.522,
+    "aggression": 0.549
+  },
+  "parameters": {
+    "XOverbite": {
+      "poss_outputLevel": 0.88,
+      "poss_outputPan": -0.04,
+      "poss_couplingLevel": 0.78,
+      "poss_couplingBus": 0,
+      "poss_brightness": 0.492,
+      "poss_warmth": 0.676,
+      "poss_aggression": 0.627
+    },
+    "XOblong": {
+      "bob_outputLevel": 0.75,
+      "bob_outputPan": -0.04,
+      "bob_couplingLevel": 0.77,
+      "bob_couplingBus": 0,
+      "bob_brightness": 0.563,
+      "bob_warmth": 0.68,
+      "bob_aggression": 0.485
+    }
+  },
+  "coupling": {
+    "type": "Rhythm->Blend",
+    "amount": 0.78,
+    "pairs": [
+      {
+        "engineA": "XOverbite",
+        "engineB": "XOblong",
+        "type": "Rhythm->Blend",
+        "amount": 0.78
+      }
+    ]
+  }
+}

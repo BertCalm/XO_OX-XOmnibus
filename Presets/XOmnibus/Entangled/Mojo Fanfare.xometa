@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Mojo Fanfare",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.542,
+    "warmth": 0.649,
+    "movement": 0.473,
+    "density": 0.747,
+    "space": 0.452,
+    "aggression": 0.7
+  },
+  "engines": [
+    "XObese",
+    "XOttoni"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE saturation into OTTONI brass. Thick fanfare. [Amp->Amp]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "ottoni",
+    "fat"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.542,
+    "warmth": 0.649,
+    "movement": 0.473,
+    "density": 0.747,
+    "space": 0.452,
+    "aggression": 0.7
+  },
+  "parameters": {
+    "XObese": {
+      "fat_outputLevel": 0.79,
+      "fat_outputPan": -0.02,
+      "fat_couplingLevel": 0.76,
+      "fat_couplingBus": 0,
+      "fat_brightness": 0.483,
+      "fat_warmth": 0.703,
+      "fat_aggression": 0.712
+    },
+    "XOttoni": {
+      "ott_outputLevel": 0.76,
+      "ott_outputPan": -0.03,
+      "ott_couplingLevel": 0.62,
+      "ott_couplingBus": 0,
+      "ott_brightness": 0.584,
+      "ott_warmth": 0.59,
+      "ott_aggression": 0.598
+    }
+  },
+  "coupling": {
+    "type": "Amp->Amp",
+    "amount": 0.66,
+    "pairs": [
+      {
+        "engineA": "XObese",
+        "engineB": "XOttoni",
+        "type": "Amp->Amp",
+        "amount": 0.66
+      }
+    ]
+  }
+}

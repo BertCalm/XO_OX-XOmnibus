@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Bite Rhythmic",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.486,
+    "warmth": 0.553,
+    "movement": 0.64,
+    "density": 0.728,
+    "space": 0.523,
+    "aggression": 0.647
+  },
+  "engines": [
+    "XOverbite",
+    "XOnset"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERBITE snap aligns with ONSET hits. Bitten percussion. [LFO->Pitch]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overbite",
+    "onset",
+    "bite"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.486,
+    "warmth": 0.553,
+    "movement": 0.64,
+    "density": 0.728,
+    "space": 0.523,
+    "aggression": 0.647
+  },
+  "parameters": {
+    "XOverbite": {
+      "poss_outputLevel": 0.85,
+      "poss_outputPan": -0.03,
+      "poss_couplingLevel": 0.66,
+      "poss_couplingBus": 0,
+      "poss_brightness": 0.429,
+      "poss_warmth": 0.646,
+      "poss_aggression": 0.62
+    },
+    "XOnset": {
+      "ons_outputLevel": 0.8,
+      "ons_outputPan": 0.01,
+      "ons_couplingLevel": 0.71,
+      "ons_couplingBus": 0,
+      "ons_brightness": 0.524,
+      "ons_warmth": 0.499,
+      "ons_aggression": 0.714
+    }
+  },
+  "coupling": {
+    "type": "LFO->Pitch",
+    "amount": 0.74,
+    "pairs": [
+      {
+        "engineA": "XOverbite",
+        "engineB": "XOnset",
+        "type": "LFO->Pitch",
+        "amount": 0.74
+      }
+    ]
+  }
+}

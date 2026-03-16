@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Crush Brass",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.587,
+    "warmth": 0.657,
+    "movement": 0.462,
+    "density": 0.749,
+    "space": 0.455,
+    "aggression": 0.658
+  },
+  "engines": [
+    "XObese",
+    "XOttoni"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE saturation into OTTONI brass. Thick fanfare. [Rhythm->Blend]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "ottoni",
+    "fat"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.587,
+    "warmth": 0.657,
+    "movement": 0.462,
+    "density": 0.749,
+    "space": 0.455,
+    "aggression": 0.658
+  },
+  "parameters": {
+    "XObese": {
+      "fat_outputLevel": 0.87,
+      "fat_outputPan": -0.02,
+      "fat_couplingLevel": 0.64,
+      "fat_couplingBus": 0,
+      "fat_brightness": 0.548,
+      "fat_warmth": 0.67,
+      "fat_aggression": 0.693
+    },
+    "XOttoni": {
+      "ott_outputLevel": 0.8,
+      "ott_outputPan": 0.02,
+      "ott_couplingLevel": 0.58,
+      "ott_couplingBus": 0,
+      "ott_brightness": 0.615,
+      "ott_warmth": 0.602,
+      "ott_aggression": 0.659
+    }
+  },
+  "coupling": {
+    "type": "Rhythm->Blend",
+    "amount": 0.72,
+    "pairs": [
+      {
+        "engineA": "XObese",
+        "engineB": "XOttoni",
+        "type": "Rhythm->Blend",
+        "amount": 0.72
+      }
+    ]
+  }
+}

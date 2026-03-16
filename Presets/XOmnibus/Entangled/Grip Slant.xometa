@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Grip Slant",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.564,
+    "warmth": 0.528,
+    "movement": 0.622,
+    "density": 0.621,
+    "space": 0.574,
+    "aggression": 0.579
+  },
+  "engines": [
+    "XOverbite",
+    "XOblique"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERBITE clench bends OBLIQUE angle. Bitten geometry. [Rhythm->Blend]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overbite",
+    "oblique",
+    "bite"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.564,
+    "warmth": 0.528,
+    "movement": 0.622,
+    "density": 0.621,
+    "space": 0.574,
+    "aggression": 0.579
+  },
+  "parameters": {
+    "XOverbite": {
+      "poss_outputLevel": 0.84,
+      "poss_outputPan": 0.0,
+      "poss_couplingLevel": 0.63,
+      "poss_couplingBus": 0,
+      "poss_brightness": 0.51,
+      "poss_warmth": 0.571,
+      "poss_aggression": 0.634
+    },
+    "XOblique": {
+      "obl_outputLevel": 0.78,
+      "obl_outputPan": 0.05,
+      "obl_couplingLevel": 0.56,
+      "obl_couplingBus": 0,
+      "obl_brightness": 0.678,
+      "obl_warmth": 0.422,
+      "obl_aggression": 0.574
+    }
+  },
+  "coupling": {
+    "type": "Rhythm->Blend",
+    "amount": 0.64,
+    "pairs": [
+      {
+        "engineA": "XOverbite",
+        "engineB": "XOblique",
+        "type": "Rhythm->Blend",
+        "amount": 0.64
+      }
+    ]
+  }
+}

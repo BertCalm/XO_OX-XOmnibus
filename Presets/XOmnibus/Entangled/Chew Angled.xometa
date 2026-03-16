@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Chew Angled",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.559,
+    "warmth": 0.522,
+    "movement": 0.579,
+    "density": 0.62,
+    "space": 0.564,
+    "aggression": 0.617
+  },
+  "engines": [
+    "XOverbite",
+    "XOblique"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERBITE clench bends OBLIQUE angle. Bitten geometry. [Amp->Amp]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overbite",
+    "oblique",
+    "bite"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.559,
+    "warmth": 0.522,
+    "movement": 0.579,
+    "density": 0.62,
+    "space": 0.564,
+    "aggression": 0.617
+  },
+  "parameters": {
+    "XOverbite": {
+      "poss_outputLevel": 0.85,
+      "poss_outputPan": -0.04,
+      "poss_couplingLevel": 0.74,
+      "poss_couplingBus": 0,
+      "poss_brightness": 0.502,
+      "poss_warmth": 0.61,
+      "poss_aggression": 0.601
+    },
+    "XOblique": {
+      "obl_outputLevel": 0.9,
+      "obl_outputPan": -0.04,
+      "obl_couplingLevel": 0.68,
+      "obl_couplingBus": 0,
+      "obl_brightness": 0.665,
+      "obl_warmth": 0.464,
+      "obl_aggression": 0.545
+    }
+  },
+  "coupling": {
+    "type": "Amp->Amp",
+    "amount": 0.67,
+    "pairs": [
+      {
+        "engineA": "XOverbite",
+        "engineB": "XOblique",
+        "type": "Amp->Amp",
+        "amount": 0.67
+      }
+    ]
+  }
+}

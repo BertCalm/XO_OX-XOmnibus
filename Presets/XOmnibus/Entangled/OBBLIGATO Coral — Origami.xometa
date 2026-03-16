@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "OBBLIGATO Coral — Origami",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "ORIGAMI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Necessary voices, necessary folds: BOND ties OBBLIGATO's wind pair to ORIGAMI's vermillion crease.",
+  "tags": [
+    "coupling",
+    "obbligato",
+    "bond",
+    "origami",
+    "fold",
+    "geometric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.609,
+    "obbl_breathB": 0.555,
+    "obbl_macroBond": 0.655
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "ORIGAMI",
+        "type": "LFO->Filter",
+        "amount": 0.53
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.627,
+    "warmth": 0.548,
+    "movement": 0.625,
+    "density": 0.599,
+    "space": 0.575,
+    "aggression": 0.501
+  }
+}

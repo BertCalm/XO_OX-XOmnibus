@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Snap Feast",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.443,
+    "warmth": 0.703,
+    "movement": 0.443,
+    "density": 0.683,
+    "space": 0.535,
+    "aggression": 0.512
+  },
+  "engines": [
+    "XOverbite",
+    "XOsteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERBITE bite at the OSTERIA table. Slow feast, fat bass. [Env->Morph]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overbite",
+    "osteria",
+    "bite"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.443,
+    "warmth": 0.703,
+    "movement": 0.443,
+    "density": 0.683,
+    "space": 0.535,
+    "aggression": 0.512
+  },
+  "parameters": {
+    "XOverbite": {
+      "poss_outputLevel": 0.79,
+      "poss_outputPan": -0.01,
+      "poss_couplingLevel": 0.72,
+      "poss_couplingBus": 0,
+      "poss_brightness": 0.441,
+      "poss_warmth": 0.692,
+      "poss_aggression": 0.609
+    },
+    "XOsteria": {
+      "ost_outputLevel": 0.76,
+      "ost_outputPan": 0.05,
+      "ost_couplingLevel": 0.57,
+      "ost_couplingBus": 0,
+      "ost_brightness": 0.376,
+      "ost_warmth": 0.735,
+      "ost_aggression": 0.481
+    }
+  },
+  "coupling": {
+    "type": "Env->Morph",
+    "amount": 0.75,
+    "pairs": [
+      {
+        "engineA": "XOverbite",
+        "engineB": "XOsteria",
+        "type": "Env->Morph",
+        "amount": 0.75
+      }
+    ]
+  }
+}

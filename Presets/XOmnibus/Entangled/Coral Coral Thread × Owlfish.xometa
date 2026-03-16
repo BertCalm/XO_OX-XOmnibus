@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Coral Coral Thread × Owlfish",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "OWLFISH"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Abyssal gold pressure surrounds OBBLIGATO's coral reeds; BOND surfaces as a deep obligate breath tie.",
+  "tags": [
+    "coupling",
+    "obbligato",
+    "bond",
+    "owlfish",
+    "subharmonic",
+    "abyssal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.538,
+    "obbl_breathB": 0.543,
+    "obbl_macroBond": 0.615
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "OWLFISH",
+        "type": "LFO->Filter",
+        "amount": 0.829
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.463,
+    "warmth": 0.621,
+    "movement": 0.484,
+    "density": 0.65,
+    "space": 0.716,
+    "aggression": 0.305
+  }
+}

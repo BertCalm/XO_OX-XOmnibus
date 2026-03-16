@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Crush Infinite",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.488,
+    "warmth": 0.545,
+    "movement": 0.693,
+    "density": 0.811,
+    "space": 0.473,
+    "aggression": 0.811
+  },
+  "engines": [
+    "XObese",
+    "XOuroboros"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE feedback loop entangles with OUROBOROS recursion. Infinite saturation. [Env->Morph]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "ouroboros",
+    "fat"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.488,
+    "warmth": 0.545,
+    "movement": 0.693,
+    "density": 0.811,
+    "space": 0.473,
+    "aggression": 0.811
+  },
+  "parameters": {
+    "XObese": {
+      "fat_outputLevel": 0.77,
+      "fat_outputPan": 0.02,
+      "fat_couplingLevel": 0.65,
+      "fat_couplingBus": 0,
+      "fat_brightness": 0.475,
+      "fat_warmth": 0.619,
+      "fat_aggression": 0.746
+    },
+    "XOuroboros": {
+      "ouro_outputLevel": 0.76,
+      "ouro_outputPan": -0.0,
+      "ouro_couplingLevel": 0.6,
+      "ouro_couplingBus": 0,
+      "ouro_brightness": 0.53,
+      "ouro_warmth": 0.473,
+      "ouro_aggression": 0.784
+    }
+  },
+  "coupling": {
+    "type": "Env->Morph",
+    "amount": 0.75,
+    "pairs": [
+      {
+        "engineA": "XObese",
+        "engineB": "XOuroboros",
+        "type": "Env->Morph",
+        "amount": 0.75
+      }
+    ]
+  }
+}

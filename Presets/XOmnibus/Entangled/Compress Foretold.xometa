@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Compress Foretold",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.493,
+    "warmth": 0.522,
+    "movement": 0.515,
+    "density": 0.77,
+    "space": 0.563,
+    "aggression": 0.593
+  },
+  "engines": [
+    "XObese",
+    "XOracle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE mojo reveals ORACLE vision. Saturated prophecy. [Amp->Filter]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "obese",
+    "oracle",
+    "fat"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.493,
+    "warmth": 0.522,
+    "movement": 0.515,
+    "density": 0.77,
+    "space": 0.563,
+    "aggression": 0.593
+  },
+  "parameters": {
+    "XObese": {
+      "fat_outputLevel": 0.76,
+      "fat_outputPan": 0.05,
+      "fat_couplingLevel": 0.78,
+      "fat_couplingBus": 0,
+      "fat_brightness": 0.474,
+      "fat_warmth": 0.642,
+      "fat_aggression": 0.665
+    },
+    "XOracle": {
+      "orc_outputLevel": 0.82,
+      "orc_outputPan": -0.04,
+      "orc_couplingLevel": 0.76,
+      "orc_couplingBus": 0,
+      "orc_brightness": 0.535,
+      "orc_warmth": 0.451,
+      "orc_aggression": 0.472
+    }
+  },
+  "coupling": {
+    "type": "Amp->Filter",
+    "amount": 0.75,
+    "pairs": [
+      {
+        "engineA": "XObese",
+        "engineB": "XOracle",
+        "type": "Amp->Filter",
+        "amount": 0.75
+      }
+    ]
+  }
+}

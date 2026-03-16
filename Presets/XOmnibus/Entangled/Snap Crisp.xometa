@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Snap Crisp",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.588,
+    "warmth": 0.532,
+    "movement": 0.61,
+    "density": 0.602,
+    "space": 0.507,
+    "aggression": 0.626
+  },
+  "engines": [
+    "XOverbite",
+    "XOrigami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERBITE fang creases ORIGAMI fold. Bass-crisp edge. [Env->Morph]",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overbite",
+    "origami",
+    "bite"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.588,
+    "warmth": 0.532,
+    "movement": 0.61,
+    "density": 0.602,
+    "space": 0.507,
+    "aggression": 0.626
+  },
+  "parameters": {
+    "XOverbite": {
+      "poss_outputLevel": 0.89,
+      "poss_outputPan": 0.02,
+      "poss_couplingLevel": 0.56,
+      "poss_couplingBus": 0,
+      "poss_brightness": 0.499,
+      "poss_warmth": 0.612,
+      "poss_aggression": 0.672
+    },
+    "XOrigami": {
+      "ori_outputLevel": 0.8,
+      "ori_outputPan": 0.02,
+      "ori_couplingLevel": 0.79,
+      "ori_couplingBus": 0,
+      "ori_brightness": 0.67,
+      "ori_warmth": 0.486,
+      "ori_aggression": 0.587
+    }
+  },
+  "coupling": {
+    "type": "Env->Morph",
+    "amount": 0.79,
+    "pairs": [
+      {
+        "engineA": "XOverbite",
+        "engineB": "XOrigami",
+        "type": "Env->Morph",
+        "amount": 0.79
+      }
+    ]
+  }
+}
