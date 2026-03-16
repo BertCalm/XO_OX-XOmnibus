@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "OBBLIGATO The Bond — Oceanic",
+  "name": "OBBLIGATO The Bond \u2014 Oceanic",
   "mood": "Entangled",
   "engines": [
     "OBBLIGATO",
@@ -43,11 +43,11 @@
   },
   "sequencer": null,
   "dna": {
-    "brightness": 0.597,
+    "brightness": 0.941,
     "warmth": 0.603,
     "movement": 0.553,
-    "density": 0.603,
+    "density": 0.799,
     "space": 0.67,
-    "aggression": 0.38
+    "aggression": 0.583
   }
 }

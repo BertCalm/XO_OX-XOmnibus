@@ -1,0 +1,49 @@
+{
+  "name": "WEIGHT ROOM",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OLE",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OLE": {
+      "macro_character": 0.418,
+      "macro_movement": 0.985,
+      "macro_coupling": 0.957,
+      "macro_space": 0.111
+    },
+    "ORIGAMI": {
+      "macro_character": 0.08,
+      "macro_movement": 0.616,
+      "macro_coupling": 0.916,
+      "macro_space": 0.092
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OLE",
+    "target": "ORIGAMI",
+    "amount": 0.929
+  },
+  "dna": {
+    "brightness": 0.391,
+    "warmth": 0.595,
+    "movement": 0.326,
+    "density": 0.575,
+    "space": 0.083,
+    "aggression": 0.24
+  },
+  "macros": {
+    "CHARACTER": 0.258,
+    "MOVEMENT": 0.582,
+    "COUPLING": 0.93,
+    "SPACE": 0.083
+  },
+  "tags": [
+    "entangled",
+    "claustrophobic",
+    "intimate",
+    "xlow"
+  ]
+}

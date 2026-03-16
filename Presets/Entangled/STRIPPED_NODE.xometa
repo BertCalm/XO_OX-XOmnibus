@@ -1,0 +1,48 @@
+{
+  "name": "STRIPPED NODE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBLIQUE",
+    "OTTONI"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.153,
+      "macro_movement": 0.923,
+      "macro_coupling": 0.067,
+      "macro_space": 0.832
+    },
+    "OTTONI": {
+      "macro_character": 0.093,
+      "macro_movement": 0.097,
+      "macro_coupling": 0.739,
+      "macro_space": 0.812
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OBLIQUE",
+    "target": "OTTONI",
+    "amount": 0.545
+  },
+  "dna": {
+    "brightness": 0.586,
+    "warmth": 0.562,
+    "movement": 0.33,
+    "density": 0.071,
+    "space": 0.122,
+    "aggression": 0.354
+  },
+  "macros": {
+    "CHARACTER": 0.665,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.868,
+    "SPACE": 0.721
+  },
+  "tags": [
+    "entangled",
+    "minimal",
+    "negative-space"
+  ]
+}

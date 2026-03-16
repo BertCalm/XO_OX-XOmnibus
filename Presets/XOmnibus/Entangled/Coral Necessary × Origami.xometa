@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Coral Necessary × Origami",
+  "name": "Coral Necessary \u00d7 Origami",
   "mood": "Entangled",
   "engines": [
     "OBBLIGATO",
@@ -44,10 +44,10 @@
   "sequencer": null,
   "dna": {
     "brightness": 0.616,
-    "warmth": 0.562,
+    "warmth": 0.216,
     "movement": 0.622,
-    "density": 0.606,
-    "space": 0.578,
+    "density": 0.396,
+    "space": 0.919,
     "aggression": 0.494
   }
 }

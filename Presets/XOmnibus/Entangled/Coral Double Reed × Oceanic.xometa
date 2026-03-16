@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Coral Double Reed × Oceanic",
+  "name": "Coral Double Reed \u00d7 Oceanic",
   "mood": "Entangled",
   "engines": [
     "OBBLIGATO",
@@ -45,9 +45,9 @@
   "dna": {
     "brightness": 0.603,
     "warmth": 0.597,
-    "movement": 0.547,
-    "density": 0.597,
-    "space": 0.679,
+    "movement": 0.86,
+    "density": 0.312,
+    "space": 0.971,
     "aggression": 0.37
   }
 }

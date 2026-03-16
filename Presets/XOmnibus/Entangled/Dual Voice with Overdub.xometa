@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Tape warmth embraces OBBLIGATO's BOND — coral reeds echo into OVERDUB's olive spring reverb.",
+  "description": "Tape warmth embraces OBBLIGATO's BOND \u2014 coral reeds echo into OVERDUB's olive spring reverb.",
   "tags": [
     "coupling",
     "obbligato",
@@ -46,8 +46,8 @@
     "brightness": 0.512,
     "warmth": 0.669,
     "movement": 0.581,
-    "density": 0.612,
-    "space": 0.657,
+    "density": 0.945,
+    "space": 0.913,
     "aggression": 0.374
   }
 }

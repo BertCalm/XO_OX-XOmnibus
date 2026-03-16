@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "OBBLIGATO Wind Tie — Ottoni",
+  "name": "OBBLIGATO Wind Tie \u2014 Ottoni",
   "mood": "Entangled",
   "engines": [
     "OBBLIGATO",
@@ -43,10 +43,10 @@
   },
   "sequencer": null,
   "dna": {
-    "brightness": 0.579,
+    "brightness": 0.845,
     "warmth": 0.621,
-    "movement": 0.542,
-    "density": 0.679,
+    "movement": 0.694,
+    "density": 0.931,
     "space": 0.571,
     "aggression": 0.537
   }

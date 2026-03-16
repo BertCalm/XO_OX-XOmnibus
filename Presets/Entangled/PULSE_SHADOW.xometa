@@ -1,0 +1,48 @@
+{
+  "name": "PULSE SHADOW",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ODDFELIX",
+    "OMBRE"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.073,
+      "macro_movement": 0.213,
+      "macro_coupling": 0.265,
+      "macro_space": 0.933
+    },
+    "OMBRE": {
+      "macro_character": 0.881,
+      "macro_movement": 0.879,
+      "macro_coupling": 0.37,
+      "macro_space": 0.158
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ODDFELIX",
+    "target": "OMBRE",
+    "amount": 0.767
+  },
+  "dna": {
+    "brightness": 0.704,
+    "warmth": 0.612,
+    "movement": 0.987,
+    "density": 0.14,
+    "space": 0.654,
+    "aggression": 0.008
+  },
+  "macros": {
+    "CHARACTER": 0.817,
+    "MOVEMENT": 0.299,
+    "COUPLING": 0.663,
+    "SPACE": 0.939
+  },
+  "tags": [
+    "entangled",
+    "bare",
+    "skeletal"
+  ]
+}

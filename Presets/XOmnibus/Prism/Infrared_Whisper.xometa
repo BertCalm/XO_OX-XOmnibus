@@ -45,10 +45,10 @@
   "sequencer": null,
   "dna": {
     "brightness": 0.89,
-    "warmth": 0.87,
+    "warmth": 0.639,
     "movement": 0.12,
     "density": 0.08,
-    "space": 0.91,
+    "space": 0.747,
     "aggression": 0.1
   }
 }

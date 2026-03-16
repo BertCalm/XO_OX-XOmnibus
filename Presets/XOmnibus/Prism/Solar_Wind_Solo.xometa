@@ -42,9 +42,9 @@
   "coupling": null,
   "sequencer": null,
   "dna": {
-    "brightness": 0.93,
+    "brightness": 1.0,
     "warmth": 0.86,
-    "movement": 0.18,
+    "movement": 0.0,
     "density": 0.09,
     "space": 0.9,
     "aggression": 0.14

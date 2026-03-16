@@ -1,0 +1,48 @@
+{
+  "name": "FAINT CHAMBER",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OWLFISH",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "OWLFISH": {
+      "macro_character": 0.347,
+      "macro_movement": 0.058,
+      "macro_coupling": 0.545,
+      "macro_space": 0.597
+    },
+    "ORPHICA": {
+      "macro_character": 0.885,
+      "macro_movement": 0.115,
+      "macro_coupling": 0.324,
+      "macro_space": 0.339
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OWLFISH",
+    "target": "ORPHICA",
+    "amount": 0.252
+  },
+  "dna": {
+    "brightness": 0.457,
+    "warmth": 0.568,
+    "movement": 0.087,
+    "density": 0.64,
+    "space": 0.454,
+    "aggression": 0.191
+  },
+  "macros": {
+    "CHARACTER": 0.926,
+    "MOVEMENT": 0.087,
+    "COUPLING": 0.854,
+    "SPACE": 0.216
+  },
+  "tags": [
+    "entangled",
+    "stillness",
+    "faint"
+  ]
+}

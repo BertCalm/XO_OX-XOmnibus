@@ -34,9 +34,9 @@
     "brightness": 0.55,
     "warmth": 0.68,
     "movement": 0.65,
-    "density": 0.62,
+    "density": 0.333,
     "space": 0.44,
-    "aggression": 0.86
+    "aggression": 1.0
   },
   "macros": {
     "CHARACTER": 0.7,

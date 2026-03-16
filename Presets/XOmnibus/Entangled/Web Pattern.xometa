@@ -30,9 +30,9 @@
   "couplingIntensity": "Moderate",
   "dna": {
     "aggression": 0.375,
-    "space": 0.7,
-    "warmth": 0.5,
-    "brightness": 0.625,
+    "space": 0.891,
+    "warmth": 0.791,
+    "brightness": 0.782,
     "density": 0.675,
     "movement": 0.7
   },

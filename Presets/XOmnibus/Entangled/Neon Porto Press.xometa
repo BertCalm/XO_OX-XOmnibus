@@ -34,11 +34,11 @@
   "tempo": null,
   "dna": {
     "brightness": 0.833,
-    "warmth": 0.253,
-    "movement": 0.6,
+    "warmth": 0.0,
+    "movement": 0.807,
     "density": 0.535,
     "space": 0.55,
-    "aggression": 0.367
+    "aggression": 0.028
   },
   "parameters": {
     "OddfeliX": {

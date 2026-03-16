@@ -29,10 +29,10 @@
   "dna": {
     "brightness": 0.11,
     "warmth": 0.06,
-    "movement": 0.5,
+    "movement": 0.775,
     "density": 0.14,
     "space": 0.89,
-    "aggression": 0.09
+    "aggression": 0.0
   },
   "macros": {
     "CHARACTER": 0.18,

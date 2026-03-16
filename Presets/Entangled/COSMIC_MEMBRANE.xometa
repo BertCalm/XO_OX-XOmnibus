@@ -1,0 +1,49 @@
+{
+  "name": "COSMIC MEMBRANE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERDUB",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.866,
+      "macro_movement": 0.508,
+      "macro_coupling": 0.503,
+      "macro_space": 0.99
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.618,
+      "macro_movement": 0.522,
+      "macro_coupling": 0.181,
+      "macro_space": 0.961
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ODDOSCAR",
+    "target": "OVERDUB",
+    "amount": 0.408
+  },
+  "dna": {
+    "brightness": 0.325,
+    "warmth": 0.838,
+    "movement": 0.153,
+    "density": 0.983,
+    "space": 0.975,
+    "aggression": 0.353
+  },
+  "macros": {
+    "CHARACTER": 0.122,
+    "MOVEMENT": 0.655,
+    "COUPLING": 0.249,
+    "SPACE": 0.975
+  },
+  "tags": [
+    "entangled",
+    "vast",
+    "cosmic",
+    "xhigh"
+  ]
+}

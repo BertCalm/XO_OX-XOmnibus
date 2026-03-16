@@ -18,8 +18,8 @@
     "warmth": 0.2,
     "movement": 0.58,
     "density": 0.11,
-    "space": 0.91,
-    "aggression": 0.05
+    "space": 1.0,
+    "aggression": 0.26
   },
   "macros": {
     "CHARACTER": 0.24,

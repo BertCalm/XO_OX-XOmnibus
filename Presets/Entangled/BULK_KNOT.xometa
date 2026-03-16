@@ -1,0 +1,53 @@
+{
+  "name": "BULK KNOT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OUTWIT",
+    "OBSCURA"
+  ],
+  "parameters": {
+    "OUTWIT": {
+      "macro_character": 0.4061,
+      "macro_movement": 0.8337,
+      "macro_coupling": 0.7215,
+      "macro_space": 0.2102
+    },
+    "OBSCURA": {
+      "macro_character": 0.7858,
+      "macro_movement": 0.6067,
+      "macro_coupling": 0.7289,
+      "macro_space": 0.4418
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OUTWIT",
+    "target": "OBSCURA",
+    "amount": 0.9027
+  },
+  "dna": {
+    "brightness": 0.5112,
+    "warmth": 0.7937,
+    "movement": 0.9598,
+    "density": 0.9465,
+    "space": 0.736,
+    "aggression": 0.6589
+  },
+  "macros": {
+    "CHARACTER": 0.2838,
+    "MOVEMENT": 0.6639,
+    "COUPLING": 0.8858,
+    "SPACE": 0.0934
+  },
+  "tags": [
+    "entangled",
+    "dense",
+    "coiled",
+    "compressed",
+    "crushing",
+    "fused",
+    "deep",
+    "layered"
+  ]
+}

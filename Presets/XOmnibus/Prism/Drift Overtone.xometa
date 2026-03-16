@@ -51,7 +51,7 @@
     "warmth": 0.0,
     "movement": 0.0,
     "density": 0.125,
-    "space": 0.198,
-    "aggression": 0.033
+    "space": 0.025,
+    "aggression": 0.301
   }
 }

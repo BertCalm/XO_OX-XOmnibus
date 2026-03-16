@@ -1,0 +1,2959 @@
+{
+  "scan_date": "2026-03-16",
+  "presets_scanned": 6261,
+  "cluster_threshold": 0.03,
+  "clusters_found": 134,
+  "clusters_repaired": 0,
+  "presets_repaired": 0,
+  "clusters": [
+    {
+      "anchor_dna": {
+        "brightness": 0.42,
+        "warmth": 0.62,
+        "movement": 0.18,
+        "density": 0.88,
+        "space": 0.92,
+        "aggression": 0.03
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Bob Fat Drift Cosmos",
+          "path": "Presets/XOmnibus/Aether/Bob Fat Drift Cosmos.xometa"
+        },
+        {
+          "name": "Fat Bob Morph Aether",
+          "path": "Presets/XOmnibus/Aether/Fat Bob Morph Aether.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.05,
+        "warmth": 0.05,
+        "movement": 0.04,
+        "density": 0.0,
+        "space": 0.95,
+        "aggression": 0.0
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Crypt Resonance",
+          "path": "Presets/XOmnibus/Aether/Crypt_Resonance.xometa"
+        },
+        {
+          "name": "Null Field",
+          "path": "Presets/XOmnibus/Aether/Null_Field.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.5,
+        "warmth": 0.5,
+        "movement": 0.22,
+        "density": 0.65,
+        "space": 0.9,
+        "aggression": 0.04
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Drift Morph Infinite",
+          "path": "Presets/XOmnibus/Aether/Drift Morph Infinite.xometa"
+        },
+        {
+          "name": "Morph Drift Slow Bloom",
+          "path": "Presets/XOmnibus/Aether/Morph Drift Slow Bloom.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.45,
+        "warmth": 0.55,
+        "movement": 0.2,
+        "density": 0.9,
+        "space": 0.9,
+        "aggression": 0.03
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Fat Drift Void",
+          "path": "Presets/XOmnibus/Aether/Fat Drift Void.xometa"
+        },
+        {
+          "name": "Snap Fat Drift Aether",
+          "path": "Presets/XOmnibus/Aether/Snap Fat Drift Aether.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.07,
+        "warmth": 0.0,
+        "movement": 0.04,
+        "density": 0.06,
+        "space": 1.0,
+        "aggression": 0.06
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Frozen Spectrum",
+          "path": "Presets/XOmnibus/Aether/Frozen_Spectrum.xometa"
+        },
+        {
+          "name": "Zero Kelvin Drone",
+          "path": "Presets/XOmnibus/Aether/Zero_Kelvin_Drone.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.45,
+        "warmth": 0.6,
+        "movement": 0.78,
+        "density": 0.38,
+        "space": 0.85,
+        "aggression": 0.06
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Oblique Weather",
+          "path": "Presets/XOmnibus/Aether/Oblique_Oblique_Weather.xometa"
+        },
+        {
+          "name": "Eight Arm Drift",
+          "path": "Presets/XOmnibus/Aether/Octopus_Eight_Arm_Drift.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.75,
+        "warmth": 0.08,
+        "movement": 0.18,
+        "density": 0.09,
+        "space": 0.84,
+        "aggression": 0.03
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Ocelot Glacier",
+          "path": "Presets/XOmnibus/Aether/Ocelot_Glacier.xometa"
+        },
+        {
+          "name": "Paper Snow",
+          "path": "Presets/XOmnibus/Aether/Paper_Snow.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.88,
+        "warmth": 0.2,
+        "movement": 0.2,
+        "density": 0.18,
+        "space": 0.96,
+        "aggression": 0.0
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Oscar Unbound",
+          "path": "Presets/XOmnibus/Aether/OddOscar_Oscar_Unbound.xometa"
+        },
+        {
+          "name": "Siphonophore Light",
+          "path": "Presets/XOmnibus/Aether/Orphica_Siphonophore_Light.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.08,
+        "warmth": 0.24,
+        "movement": 0.3,
+        "density": 0.16,
+        "space": 0.9,
+        "aggression": 0.04
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Odd Dark Matter",
+          "path": "Presets/XOmnibus/Aether/Odd_Dark_Matter.xometa"
+        },
+        {
+          "name": "Organ Of Night",
+          "path": "Presets/XOmnibus/Aether/Organ_Of_Night.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.58,
+        "warmth": 0.55,
+        "movement": 0.55,
+        "density": 0.6,
+        "space": 0.67,
+        "aggression": 0.3
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Nuclear Jam",
+          "path": "Presets/XOmnibus/Aether/Ohm_Nuclear_Jam.xometa"
+        },
+        {
+          "name": "Drama Bloom",
+          "path": "Presets/XOmnibus/Entangled/Drama_Bloom.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.53,
+        "warmth": 0.43,
+        "movement": 0.63,
+        "density": 0.61,
+        "space": 0.74,
+        "aggression": 0.3
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "La Mesa",
+          "path": "Presets/XOmnibus/Aether/Ole_La_Mesa.xometa"
+        },
+        {
+          "name": "FM Drift",
+          "path": "Presets/XOmnibus/Entangled/FM_Drift.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.5,
+        "warmth": 0.45,
+        "movement": 0.75,
+        "density": 0.55,
+        "space": 0.15,
+        "aggression": 0.4
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "DNA Shift",
+          "path": "Presets/XOmnibus/Aether/Onset/DNA_Shift.xometa"
+        },
+        {
+          "name": "Blend Walker",
+          "path": "Presets/XOmnibus/Flux/Onset/Blend_Walker.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.06,
+        "warmth": 0.28,
+        "movement": 0.25,
+        "density": 0.14,
+        "space": 0.93,
+        "aggression": 0.03
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Oscar's Tomb",
+          "path": "Presets/XOmnibus/Aether/Oscars_Tomb.xometa"
+        },
+        {
+          "name": "Tape Silence",
+          "path": "Presets/XOmnibus/Aether/Tape_Silence.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.6,
+        "warmth": 0.4,
+        "movement": 0.65,
+        "density": 0.15,
+        "space": 0.92,
+        "aggression": 0.05
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Celestial Threshold",
+          "path": "Presets/XOmnibus/Aether/celestial_threshold.xometa"
+        },
+        {
+          "name": "Open Frequency",
+          "path": "Presets/XOmnibus/Aether/open_frequency.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.76,
+        "warmth": 0.24,
+        "movement": 0.52,
+        "density": 0.1,
+        "space": 0.95,
+        "aggression": 0.04
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Clear Frequency",
+          "path": "Presets/XOmnibus/Aether/clear_frequency.xometa"
+        },
+        {
+          "name": "Pure Resonance",
+          "path": "Presets/XOmnibus/Aether/pure_resonance.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.56,
+        "warmth": 0.36,
+        "movement": 0.84,
+        "density": 0.16,
+        "space": 0.84,
+        "aggression": 0.09
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Flux Sublime",
+          "path": "Presets/XOmnibus/Aether/flux_sublime.xometa"
+        },
+        {
+          "name": "Form and Formless",
+          "path": "Presets/XOmnibus/Aether/form_and_formless.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.45,
+        "warmth": 0.72,
+        "movement": 0.28,
+        "density": 0.88,
+        "space": 0.85,
+        "aggression": 0.06
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "All Engines World",
+          "path": "Presets/XOmnibus/Atmosphere/All Engines World.xometa"
+        },
+        {
+          "name": "Dub Fat Drift Bob Landscape",
+          "path": "Presets/XOmnibus/Atmosphere/Dub Fat Drift Bob Landscape.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.404,
+        "warmth": 0.25,
+        "movement": 0.0,
+        "density": 0.163,
+        "space": 0.133,
+        "aggression": 0.147
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Temperate Drift",
+          "path": "Presets/XOmnibus/Atmosphere/Analog Warmth.xometa"
+        },
+        {
+          "name": "Burnished Copper",
+          "path": "Presets/XOmnibus/Atmosphere/Burnished Copper.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.7,
+        "warmth": 0.4,
+        "movement": 0.4,
+        "density": 0.3,
+        "space": 0.6,
+        "aggression": 0.05
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Aurora Wash",
+          "path": "Presets/XOmnibus/Atmosphere/Aurora_Wash.xometa"
+        },
+        {
+          "name": "Crystal Cave",
+          "path": "Presets/XOmnibus/Prism/Crystal Cave.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.42,
+        "warmth": 0.75,
+        "movement": 0.28,
+        "density": 0.65,
+        "space": 0.82,
+        "aggression": 0.08
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Dub Bob Harbor Two",
+          "path": "Presets/XOmnibus/Atmosphere/Dub Bob Harbor Two.xometa"
+        },
+        {
+          "name": "Dub Bob Rain Room",
+          "path": "Presets/XOmnibus/Atmosphere/Dub Bob Rain Room.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.44,
+        "warmth": 0.11,
+        "movement": 0.0,
+        "density": 0.141,
+        "space": 0.281,
+        "aggression": 0.041
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Etheric Strings",
+          "path": "Presets/XOmnibus/Atmosphere/Etheric Strings.xometa"
+        },
+        {
+          "name": "Spiral Phase",
+          "path": "Presets/XOmnibus/Atmosphere/Spiral Phase.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.45,
+        "warmth": 0.72,
+        "movement": 0.3,
+        "density": 0.85,
+        "space": 0.82,
+        "aggression": 0.06
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Fat Bob Drift Dub World",
+          "path": "Presets/XOmnibus/Atmosphere/Fat Bob Drift Dub World.xometa"
+        },
+        {
+          "name": "Fat Bob Morph Landscape",
+          "path": "Presets/XOmnibus/Atmosphere/Fat Bob Morph Landscape.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.35,
+        "warmth": 0.5,
+        "movement": 0.16,
+        "density": 0.29,
+        "space": 0.74,
+        "aggression": 0.14
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Surface Calm Orphica",
+          "path": "Presets/XOmnibus/Atmosphere/Orphica_Surface_Calm.xometa"
+        },
+        {
+          "name": "Quiet Brass",
+          "path": "Presets/XOmnibus/Atmosphere/Ottoni_Quiet_Brass.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.47,
+        "warmth": 0.0,
+        "movement": 0.0,
+        "density": 0.012,
+        "space": 0.393,
+        "aggression": 0.062
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Pink Rain",
+          "path": "Presets/XOmnibus/Atmosphere/Pink Rain.xometa"
+        },
+        {
+          "name": "Digital Harpsichord",
+          "path": "Presets/XOmnibus/Prism/Digital Harpsichord.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.44,
+        "warmth": 0.0,
+        "movement": 0.0,
+        "density": 0.09,
+        "space": 0.367,
+        "aggression": 0.041
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Reverberant Void",
+          "path": "Presets/XOmnibus/Atmosphere/Reverberant Void.xometa"
+        },
+        {
+          "name": "Cloud Piano",
+          "path": "Presets/XOmnibus/Prism/Cloud Piano.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.4,
+        "warmth": 0.75,
+        "movement": 0.7,
+        "density": 1.0,
+        "space": 0.6,
+        "aggression": 0.65
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Harmonic Predator",
+          "path": "Presets/XOmnibus/Entangled/14_Harmonic_Predator.xometa"
+        },
+        {
+          "name": "Ecosystem Hunter",
+          "path": "Presets/XOmnibus/Entangled/15_Ecosystem_Hunter.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.372,
+        "warmth": 0.57,
+        "movement": 0.382,
+        "density": 0.629,
+        "space": 0.734,
+        "aggression": 0.19
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Albumen Abyssal",
+          "path": "Presets/XOmnibus/Entangled/Albumen_Abyssal.xometa"
+        },
+        {
+          "name": "Collodion Deep Filament",
+          "path": "Presets/XOmnibus/Entangled/Collodion_Deep_Filament.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.65,
+        "warmth": 0.65,
+        "movement": 0.65,
+        "density": 0.72,
+        "space": 0.4,
+        "aggression": 0.52
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Amber Strange Loop",
+          "path": "Presets/XOmnibus/Entangled/Amber Strange Loop.xometa"
+        },
+        {
+          "name": "Amber Wind Rhythm",
+          "path": "Presets/XOmnibus/Entangled/Amber Wind Rhythm.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.525,
+        "warmth": 0.625,
+        "movement": 0.425,
+        "density": 0.6,
+        "space": 0.7,
+        "aggression": 0.25
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Amber Web",
+          "path": "Presets/XOmnibus/Entangled/Amber_Web.xometa"
+        },
+        {
+          "name": "Silver Plate Phosphor",
+          "path": "Presets/XOmnibus/Entangled/Silver_Plate_Phosphor.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.903,
+        "warmth": 0.696,
+        "movement": 0.473,
+        "density": 0.608,
+        "space": 0.647,
+        "aggression": 0.375
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Amen Tangle",
+          "path": "Presets/XOmnibus/Entangled/Amen Tangle.xometa"
+        },
+        {
+          "name": "Phase Conjugation",
+          "path": "Presets/XOmnibus/Entangled/Phase Conjugation.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.645,
+        "warmth": 0.573,
+        "movement": 0.6,
+        "density": 0.635,
+        "space": 0.464,
+        "aggression": 0.635
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Analog Heat Slant",
+          "path": "Presets/XOmnibus/Entangled/Analog Heat Slant.xometa"
+        },
+        {
+          "name": "Compress Angled",
+          "path": "Presets/XOmnibus/Entangled/Compress Angled.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.625,
+        "warmth": 0.493,
+        "movement": 0.528,
+        "density": 0.605,
+        "space": 0.55,
+        "aggression": 0.411
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Apogee Tessellate Grain",
+          "path": "Presets/XOmnibus/Entangled/Apogee_Tessellate_Grain.xometa"
+        },
+        {
+          "name": "Neon Fading",
+          "path": "Presets/XOmnibus/Entangled/Ombre_Oddfelix_Neon_Fading.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.579,
+        "warmth": 0.607,
+        "movement": 0.595,
+        "density": 0.654,
+        "space": 0.55,
+        "aggression": 0.475
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Arc Salt",
+          "path": "Presets/XOmnibus/Entangled/Arc_Salt.xometa"
+        },
+        {
+          "name": "Ecosystem Logic",
+          "path": "Presets/XOmnibus/Entangled/Ecosystem Logic.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.58,
+        "warmth": 0.18,
+        "movement": 0.91,
+        "density": 0.72,
+        "space": 0.17,
+        "aggression": 0.93
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Arm Drum Surge",
+          "path": "Presets/XOmnibus/Entangled/Arm_Drum_Surge.xometa"
+        },
+        {
+          "name": "Ink Storm",
+          "path": "Presets/XOmnibus/Entangled/Ink_Storm.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.16,
+        "warmth": 0.22,
+        "movement": 0.64,
+        "density": 0.87,
+        "space": 0.12,
+        "aggression": 0.95
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Axolotl Freeze",
+          "path": "Presets/XOmnibus/Entangled/Axolotl_Freeze.xometa"
+        },
+        {
+          "name": "Forgetting Strike",
+          "path": "Presets/XOmnibus/Entangled/Forgetting_Strike.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.743,
+        "warmth": 0.39,
+        "movement": 0.677,
+        "density": 0.468,
+        "space": 0.755,
+        "aggression": 0.29
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Bioluminescent Grid",
+          "path": "Presets/XOmnibus/Entangled/Bioluminescent Grid.xometa"
+        },
+        {
+          "name": "Wind Display Bond",
+          "path": "Presets/XOmnibus/Entangled/Wind Display Bond.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.425,
+        "warmth": 0.71,
+        "movement": 0.526,
+        "density": 0.685,
+        "space": 0.599,
+        "aggression": 0.495
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Bite Hippy",
+          "path": "Presets/XOmnibus/Entangled/Bite Hippy.xometa"
+        },
+        {
+          "name": "Clench Warm Drone",
+          "path": "Presets/XOmnibus/Entangled/Clench Warm Drone.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.58,
+        "warmth": 0.55,
+        "movement": 0.62,
+        "density": 0.6,
+        "space": 0.58,
+        "aggression": 0.38
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Bob Drift FM Two",
+          "path": "Presets/XOmnibus/Entangled/Bob Drift FM Two.xometa"
+        },
+        {
+          "name": "Ink Fading Into Dusk",
+          "path": "Presets/XOmnibus/Entangled/Octopus_Ombre_Ink_Fading_Into_Dusk.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.4,
+        "warmth": 0.55,
+        "movement": 0.5,
+        "density": 0.4,
+        "space": 0.3,
+        "aggression": 0.1
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Bob Meets NES",
+          "path": "Presets/XOmnibus/Entangled/Bob Meets NES.xometa"
+        },
+        {
+          "name": "Circadian Wave",
+          "path": "Presets/XOmnibus/Flux/Circadian_Wave.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.82,
+        "warmth": 0.2,
+        "movement": 0.84,
+        "density": 0.74,
+        "space": 0.24,
+        "aggression": 0.9
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Bounce Cascade",
+          "path": "Presets/XOmnibus/Entangled/Bounce_Cascade.xometa"
+        },
+        {
+          "name": "Chua Grind",
+          "path": "Presets/XOmnibus/Flux/Ouroboros_Chua_Grind.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.5,
+        "warmth": 0.525,
+        "movement": 0.5,
+        "density": 0.575,
+        "space": 0.7,
+        "aggression": 0.35
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Bounced Diffusion",
+          "path": "Presets/XOmnibus/Entangled/Bounced_Diffusion.xometa"
+        },
+        {
+          "name": "Prism Diffusion",
+          "path": "Presets/XOmnibus/Entangled/Prism_Diffusion.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.62,
+        "warmth": 0.84,
+        "movement": 0.6,
+        "density": 0.66,
+        "space": 0.44,
+        "aggression": 0.1
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Brass Prophecy",
+          "path": "Presets/XOmnibus/Entangled/Brass_Prophecy.xometa"
+        },
+        {
+          "name": "GROW Obscura",
+          "path": "Presets/XOmnibus/Entangled/GROW_Obscura.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.65,
+        "warmth": 0.5,
+        "movement": 0.78,
+        "density": 0.7,
+        "space": 0.4,
+        "aggression": 0.7
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Breach Drum Surge",
+          "path": "Presets/XOmnibus/Entangled/Breach Drum Surge.xometa"
+        },
+        {
+          "name": "Prism Saturation",
+          "path": "Presets/XOmnibus/Entangled/Obese_Oblique_Prism_Saturation.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.5,
+        "warmth": 0.35,
+        "movement": 0.6,
+        "density": 0.4,
+        "space": 0.1,
+        "aggression": 0.3
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Chaos Filter",
+          "path": "Presets/XOmnibus/Entangled/Chaos Filter.xometa"
+        },
+        {
+          "name": "Edge Walker",
+          "path": "Presets/XOmnibus/Entangled/Edge Walker.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.08,
+        "warmth": 0.77,
+        "movement": 0.46,
+        "density": 0.63,
+        "space": 0.17,
+        "aggression": 0.36
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Charcoal Bloom Field",
+          "path": "Presets/XOmnibus/Entangled/Charcoal_Bloom_Field.xometa"
+        },
+        {
+          "name": "Deep Coal Glow",
+          "path": "Presets/XOmnibus/Entangled/Deep_Coal_Glow.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.524,
+        "warmth": 0.649,
+        "movement": 0.498,
+        "density": 0.669,
+        "space": 0.499,
+        "aggression": 0.544
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Clench Curious",
+          "path": "Presets/XOmnibus/Entangled/Clench Curious.xometa"
+        },
+        {
+          "name": "Opposition Ferment",
+          "path": "Presets/XOmnibus/Entangled/Opposition_Ferment.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.461,
+        "warmth": 0.677,
+        "movement": 0.472,
+        "density": 0.688,
+        "space": 0.511,
+        "aggression": 0.517
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Clench Table",
+          "path": "Presets/XOmnibus/Entangled/Clench Table.xometa"
+        },
+        {
+          "name": "Snap Feast",
+          "path": "Presets/XOmnibus/Entangled/Snap Feast.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.525,
+        "warmth": 0.525,
+        "movement": 0.45,
+        "density": 0.575,
+        "space": 0.75,
+        "aggression": 0.275
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Coastal Cathedral",
+          "path": "Presets/XOmnibus/Entangled/Coastal_Cathedral.xometa"
+        },
+        {
+          "name": "Shoreline Tail",
+          "path": "Presets/XOmnibus/Entangled/Shoreline_Tail.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.493,
+        "warmth": 0.522,
+        "movement": 0.515,
+        "density": 0.77,
+        "space": 0.563,
+        "aggression": 0.593
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Compress Foretold",
+          "path": "Presets/XOmnibus/Entangled/Compress Foretold.xometa"
+        },
+        {
+          "name": "Fat Vision",
+          "path": "Presets/XOmnibus/Entangled/Fat Vision.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.69,
+        "warmth": 0.541,
+        "movement": 0.592,
+        "density": 0.617,
+        "space": 0.61,
+        "aggression": 0.462
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Copper Filament",
+          "path": "Presets/XOmnibus/Entangled/Copper Filament.xometa"
+        },
+        {
+          "name": "Metallic Harp",
+          "path": "Presets/XOmnibus/Entangled/Metallic Harp.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.463,
+        "warmth": 0.621,
+        "movement": 0.484,
+        "density": 0.65,
+        "space": 0.716,
+        "aggression": 0.305
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Coral Coral Thread \u00d7 Owlfish",
+          "path": "Presets/XOmnibus/Entangled/Coral Coral Thread \u00d7 Owlfish.xometa"
+        },
+        {
+          "name": "Necessary with Owlfish",
+          "path": "Presets/XOmnibus/Entangled/Necessary with Owlfish.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.48,
+        "warmth": 0.68,
+        "movement": 0.65,
+        "density": 0.58,
+        "space": 0.58,
+        "aggression": 0.6
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Corroded Fiesta",
+          "path": "Presets/XOmnibus/Entangled/Corroded Fiesta.xometa"
+        },
+        {
+          "name": "Silver Clave",
+          "path": "Presets/XOmnibus/Entangled/Silver Clave.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.55,
+        "warmth": 0.5,
+        "movement": 0.55,
+        "density": 0.55,
+        "space": 0.725,
+        "aggression": 0.3
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Crease Echo",
+          "path": "Presets/XOmnibus/Entangled/Crease_Echo.xometa"
+        },
+        {
+          "name": "Fold Echo",
+          "path": "Presets/XOmnibus/Entangled/Fold_Echo.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.06,
+        "warmth": 0.09,
+        "movement": 0.15,
+        "density": 0.06,
+        "space": 0.95,
+        "aggression": 0.04
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Crease Lattice",
+          "path": "Presets/XOmnibus/Entangled/Crease_Lattice.xometa"
+        },
+        {
+          "name": "Threshold Lattice",
+          "path": "Presets/XOmnibus/Entangled/Threshold_Lattice.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.692,
+        "warmth": 0.482,
+        "movement": 0.67,
+        "density": 0.555,
+        "space": 0.555,
+        "aggression": 0.402
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Crease Scanline",
+          "path": "Presets/XOmnibus/Entangled/Crease_Scanline.xometa"
+        },
+        {
+          "name": "Bob Drift Snap Spectral",
+          "path": "Presets/XOmnibus/Prism/Bob Drift Snap Spectral.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.66,
+        "warmth": 0.76,
+        "movement": 0.75,
+        "density": 0.72,
+        "space": 0.36,
+        "aggression": 0.86
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "DRAMA Filter Oracle",
+          "path": "Presets/XOmnibus/Entangled/DRAMA_Filter_Oracle.xometa"
+        },
+        {
+          "name": "Drama Daguerreotype",
+          "path": "Presets/XOmnibus/Entangled/Drama_Daguerreotype.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.16,
+        "warmth": 0.18,
+        "movement": 0.72,
+        "density": 0.84,
+        "space": 0.14,
+        "aggression": 0.91
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Daguerreotype Violence",
+          "path": "Presets/XOmnibus/Entangled/Daguerreotype_Violence.xometa"
+        },
+        {
+          "name": "Grey Percussion",
+          "path": "Presets/XOmnibus/Entangled/Grey_Percussion.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.625,
+        "warmth": 0.425,
+        "movement": 0.8,
+        "density": 0.775,
+        "space": 0.425,
+        "aggression": 0.675
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Dense Emergence",
+          "path": "Presets/XOmnibus/Entangled/Dense_Emergence.xometa"
+        },
+        {
+          "name": "Fat Emergence",
+          "path": "Presets/XOmnibus/Entangled/Fat_Emergence.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.55,
+        "warmth": 0.45,
+        "movement": 0.75,
+        "density": 0.65,
+        "space": 0.525,
+        "aggression": 0.55
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Diagonal Automata",
+          "path": "Presets/XOmnibus/Entangled/Diagonal_Automata.xometa"
+        },
+        {
+          "name": "Skewed Automata",
+          "path": "Presets/XOmnibus/Entangled/Skewed_Automata.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.65,
+        "warmth": 0.5,
+        "movement": 0.82,
+        "density": 0.7,
+        "space": 0.4,
+        "aggression": 0.6
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Dive Bomb Fill",
+          "path": "Presets/XOmnibus/Entangled/Dive Bomb Fill.xometa"
+        },
+        {
+          "name": "Grain Scatter Drums",
+          "path": "Presets/XOmnibus/Entangled/Grain Scatter Drums.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.72,
+        "warmth": 0.75,
+        "movement": 0.85,
+        "density": 0.82,
+        "space": 0.25,
+        "aggression": 0.9
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Drama Attractor",
+          "path": "Presets/XOmnibus/Entangled/Drama_Attractor.xometa"
+        },
+        {
+          "name": "Hibiscus Chaos",
+          "path": "Presets/XOmnibus/Entangled/Hibiscus_Chaos.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.58,
+        "warmth": 0.62,
+        "movement": 0.62,
+        "density": 0.55,
+        "space": 0.62,
+        "aggression": 0.28
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Drift Bob Harmony Two",
+          "path": "Presets/XOmnibus/Entangled/Drift Bob Harmony Two.xometa"
+        },
+        {
+          "name": "Drift Bob Wavetable",
+          "path": "Presets/XOmnibus/Entangled/Drift Bob Wavetable.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.478,
+        "warmth": 0.704,
+        "movement": 0.519,
+        "density": 0.715,
+        "space": 0.534,
+        "aggression": 0.518
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Drive Commune",
+          "path": "Presets/XOmnibus/Entangled/Drive Commune.xometa"
+        },
+        {
+          "name": "Fat Shadow",
+          "path": "Presets/XOmnibus/Entangled/Fat_Shadow.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.81,
+        "warmth": 0.303,
+        "movement": 0.455,
+        "density": 0.535,
+        "space": 0.542,
+        "aggression": 0.303
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Facet Era",
+          "path": "Presets/XOmnibus/Entangled/Facet_Era.xometa"
+        },
+        {
+          "name": "Facet Folded",
+          "path": "Presets/XOmnibus/Entangled/Facet_Folded.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.525,
+        "warmth": 0.475,
+        "movement": 0.7,
+        "density": 0.675,
+        "space": 0.55,
+        "aggression": 0.475
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Fading Pattern",
+          "path": "Presets/XOmnibus/Entangled/Fading_Pattern.xometa"
+        },
+        {
+          "name": "Silver Pattern",
+          "path": "Presets/XOmnibus/Entangled/Silver_Pattern.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.6,
+        "warmth": 0.3,
+        "movement": 0.72,
+        "density": 0.94,
+        "space": 0.06,
+        "aggression": 0.93
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Fang Topology",
+          "path": "Presets/XOmnibus/Entangled/Fang_Topology.xometa"
+        },
+        {
+          "name": "Serpent Strike",
+          "path": "Presets/XOmnibus/Entangled/Serpent_Strike.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.575,
+        "warmth": 0.5,
+        "movement": 0.55,
+        "density": 0.7,
+        "space": 0.6,
+        "aggression": 0.475
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Fat Frond",
+          "path": "Presets/XOmnibus/Entangled/Fat_Frond.xometa"
+        },
+        {
+          "name": "Saturated Space",
+          "path": "Presets/XOmnibus/Entangled/Saturated_Space.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.358,
+        "warmth": 0.359,
+        "movement": 0.71,
+        "density": 0.72,
+        "space": 0.648,
+        "aggression": 0.7
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Fold Line",
+          "path": "Presets/XOmnibus/Entangled/Fold Line.xometa"
+        },
+        {
+          "name": "Group Formation",
+          "path": "Presets/XOmnibus/Entangled/Group Formation.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.6,
+        "warmth": 0.425,
+        "movement": 0.8,
+        "density": 0.625,
+        "space": 0.55,
+        "aggression": 0.5
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Fold Automata",
+          "path": "Presets/XOmnibus/Entangled/Fold_Automata.xometa"
+        },
+        {
+          "name": "Fold Rule",
+          "path": "Presets/XOmnibus/Entangled/Fold_Rule.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.0,
+        "warmth": 0.03,
+        "movement": 0.14,
+        "density": 0.0,
+        "space": 0.97,
+        "aggression": 0.03
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Folded Cloud",
+          "path": "Presets/XOmnibus/Entangled/Folded_Cloud.xometa"
+        },
+        {
+          "name": "Written in Ice",
+          "path": "Presets/XOmnibus/Entangled/Written_in_Ice.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.675,
+        "warmth": 0.425,
+        "movement": 0.6,
+        "density": 0.575,
+        "space": 0.6,
+        "aggression": 0.35
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Frond Propagate",
+          "path": "Presets/XOmnibus/Entangled/Frond Propagate.xometa"
+        },
+        {
+          "name": "Web Diffuse",
+          "path": "Presets/XOmnibus/Entangled/Web Diffuse.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.485,
+        "warmth": 0.472,
+        "movement": 0.537,
+        "density": 0.67,
+        "space": 0.605,
+        "aggression": 0.48
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Gnash Prophecy",
+          "path": "Presets/XOmnibus/Entangled/Gnash Prophecy.xometa"
+        },
+        {
+          "name": "Snap Foretold",
+          "path": "Presets/XOmnibus/Entangled/Snap Foretold.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.625,
+        "warmth": 0.4,
+        "movement": 0.7,
+        "density": 0.625,
+        "space": 0.575,
+        "aggression": 0.475
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Harmonic Arms",
+          "path": "Presets/XOmnibus/Entangled/Harmonic_Arms.xometa"
+        },
+        {
+          "name": "Spectral Arms",
+          "path": "Presets/XOmnibus/Entangled/Spectral_Arms.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.575,
+        "warmth": 0.475,
+        "movement": 0.45,
+        "density": 0.55,
+        "space": 0.75,
+        "aggression": 0.275
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Harmonic Diffusion",
+          "path": "Presets/XOmnibus/Entangled/Harmonic_Diffusion.xometa"
+        },
+        {
+          "name": "Partial Room",
+          "path": "Presets/XOmnibus/Entangled/Partial_Room.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.88,
+        "warmth": 0.42,
+        "movement": 0.55,
+        "density": 0.45,
+        "space": 0.78,
+        "aggression": 0.08
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Harp Metabolism",
+          "path": "Presets/XOmnibus/Entangled/Harp_Metabolism.xometa"
+        },
+        {
+          "name": "Seafoam Biome",
+          "path": "Presets/XOmnibus/Entangled/Seafoam_Biome.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.45,
+        "warmth": 0.92,
+        "movement": 0.53,
+        "density": 0.5,
+        "space": 0.83,
+        "aggression": 0.25
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Ignis Expanse",
+          "path": "Presets/XOmnibus/Entangled/Ignis_Expanse.xometa"
+        },
+        {
+          "name": "Pyrosphere",
+          "path": "Presets/XOmnibus/Entangled/Pyrosphere.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.625,
+        "warmth": 0.45,
+        "movement": 0.875,
+        "density": 0.65,
+        "space": 0.475,
+        "aggression": 0.6
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Jungle Cells",
+          "path": "Presets/XOmnibus/Entangled/Jungle_Cells.xometa"
+        },
+        {
+          "name": "Predator Cells",
+          "path": "Presets/XOmnibus/Entangled/Predator_Cells.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.7,
+        "warmth": 0.375,
+        "movement": 0.775,
+        "density": 0.6,
+        "space": 0.5,
+        "aggression": 0.525
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Light Pattern",
+          "path": "Presets/XOmnibus/Entangled/Light_Pattern.xometa"
+        },
+        {
+          "name": "Signal Automata",
+          "path": "Presets/XOmnibus/Entangled/Signal_Automata.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.88,
+        "warmth": 0.08,
+        "movement": 0.82,
+        "density": 0.68,
+        "space": 0.22,
+        "aggression": 0.92
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Light Singularity",
+          "path": "Presets/XOmnibus/Entangled/Light_Singularity.xometa"
+        },
+        {
+          "name": "Neon Perc Surge",
+          "path": "Presets/XOmnibus/Entangled/Neon_Perc_Surge.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.65,
+        "warmth": 0.45,
+        "movement": 0.525,
+        "density": 0.525,
+        "space": 0.675,
+        "aggression": 0.325
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Light Web",
+          "path": "Presets/XOmnibus/Entangled/Light_Web.xometa"
+        },
+        {
+          "name": "Pulse Web",
+          "path": "Presets/XOmnibus/Entangled/Pulse_Web.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.7,
+        "warmth": 0.4,
+        "movement": 0.7,
+        "density": 0.65,
+        "space": 0.5,
+        "aggression": 0.5
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Logic Chip Structure",
+          "path": "Presets/XOmnibus/Entangled/Logic Chip Structure.xometa"
+        },
+        {
+          "name": "Orbital Chip Bass",
+          "path": "Presets/XOmnibus/Entangled/Orbital Chip Bass.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.84,
+        "warmth": 0.4,
+        "movement": 0.58,
+        "density": 0.42,
+        "space": 0.75,
+        "aggression": 0.07
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Maqam Siren",
+          "path": "Presets/XOmnibus/Entangled/Maqam Siren.xometa"
+        },
+        {
+          "name": "Prophecy Harp",
+          "path": "Presets/XOmnibus/Entangled/Prophecy Harp.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.575,
+        "warmth": 0.5,
+        "movement": 0.7,
+        "density": 0.675,
+        "space": 0.6,
+        "aggression": 0.45
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Maqam Cells",
+          "path": "Presets/XOmnibus/Entangled/Maqam_Cells.xometa"
+        },
+        {
+          "name": "Prophecy Code",
+          "path": "Presets/XOmnibus/Entangled/Prophecy_Code.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.687,
+        "warmth": 0.387,
+        "movement": 0.292,
+        "density": 0.518,
+        "space": 0.653,
+        "aggression": 0.158
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Mineral Daguerreotype",
+          "path": "Presets/XOmnibus/Entangled/Mineral_Daguerreotype.xometa"
+        },
+        {
+          "name": "Vitreous Image",
+          "path": "Presets/XOmnibus/Entangled/Vitreous_Image.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.12,
+        "warmth": 0.88,
+        "movement": 0.42,
+        "density": 0.95,
+        "space": 0.15,
+        "aggression": 0.92
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Mojo Lava",
+          "path": "Presets/XOmnibus/Entangled/Obese_Obsidian_Mojo_Lava.xometa"
+        },
+        {
+          "name": "Fat Kick",
+          "path": "Presets/XOmnibus/Entangled/Obese_Onset_Fat_Kick.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.59,
+        "warmth": 0.524,
+        "movement": 0.8,
+        "density": 0.843,
+        "space": 0.461,
+        "aggression": 0.59
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Ink Mojo",
+          "path": "Presets/XOmnibus/Entangled/Obese_Octopus_Ink_Mojo.xometa"
+        },
+        {
+          "name": "Snap Drift Fat Gate",
+          "path": "Presets/XOmnibus/Entangled/Snap Drift Fat Gate.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.25,
+        "warmth": 0.8,
+        "movement": 0.65,
+        "density": 0.9,
+        "space": 0.2,
+        "aggression": 0.85
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Mojo Machine",
+          "path": "Presets/XOmnibus/Entangled/Obese_Onset_Mojo_Machine.xometa"
+        },
+        {
+          "name": "Mojo Serpent",
+          "path": "Presets/XOmnibus/Entangled/Obese_Ouroboros_Mojo_Serpent.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.682,
+        "warmth": 0.473,
+        "movement": 0.755,
+        "density": 0.578,
+        "space": 0.623,
+        "aggression": 0.483
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Obligate Bounce",
+          "path": "Presets/XOmnibus/Entangled/Obligate Bounce.xometa"
+        },
+        {
+          "name": "Pressure Angle",
+          "path": "Presets/XOmnibus/Entangled/Pressure Angle.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.58,
+        "warmth": 0.53,
+        "movement": 0.65,
+        "density": 0.53,
+        "space": 0.66,
+        "aggression": 0.34
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Oblique Drift",
+          "path": "Presets/XOmnibus/Entangled/Oblique Drift.xometa"
+        },
+        {
+          "name": "8-Bit Dusk",
+          "path": "Presets/XOmnibus/Entangled/Ombre_Overworld_8-Bit_Dusk.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.618,
+        "warmth": 0.623,
+        "movement": 0.43,
+        "density": 0.659,
+        "space": 0.572,
+        "aggression": 0.287
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Commune Bass",
+          "path": "Presets/XOmnibus/Entangled/Oblong_Ohm_Commune_Bass.xometa"
+        },
+        {
+          "name": "Sage Bob",
+          "path": "Presets/XOmnibus/Entangled/Oblong_Ohm_Sage_Bob.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.606,
+        "warmth": 0.589,
+        "movement": 0.612,
+        "density": 0.662,
+        "space": 0.557,
+        "aggression": 0.546
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Deep Tavern Arms",
+          "path": "Presets/XOmnibus/Entangled/Octopus_Osteria_Deep_Tavern_Arms.xometa"
+        },
+        {
+          "name": "Phase Rule",
+          "path": "Presets/XOmnibus/Entangled/Phase_Rule.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.65,
+        "warmth": 0.7,
+        "movement": 0.78,
+        "density": 0.75,
+        "space": 0.32,
+        "aggression": 0.86
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Ole Resonance",
+          "path": "Presets/XOmnibus/Entangled/Ole_Resonance.xometa"
+        },
+        {
+          "name": "Velocity Serpent",
+          "path": "Presets/XOmnibus/Entangled/Velocity_Serpent.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.68,
+        "warmth": 0.86,
+        "movement": 0.72,
+        "density": 0.78,
+        "space": 0.28,
+        "aggression": 0.35
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Patina Attractor",
+          "path": "Presets/XOmnibus/Entangled/Patina_Attractor.xometa"
+        },
+        {
+          "name": "Verdigris Loop",
+          "path": "Presets/XOmnibus/Entangled/Verdigris_Loop.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.534,
+        "warmth": 0.591,
+        "movement": 0.549,
+        "density": 0.72,
+        "space": 0.438,
+        "aggression": 0.602
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Perihelion Snap Drive",
+          "path": "Presets/XOmnibus/Entangled/Perihelion_Snap_Drive.xometa"
+        },
+        {
+          "name": "The Ravenous Triad",
+          "path": "Presets/XOmnibus/Entangled/The_Ravenous_Triad.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.578,
+        "warmth": 0.583,
+        "movement": 0.623,
+        "density": 0.605,
+        "space": 0.59,
+        "aggression": 0.455
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Pressure Habitat",
+          "path": "Presets/XOmnibus/Entangled/Pressure Habitat.xometa"
+        },
+        {
+          "name": "Wind Through Canopy",
+          "path": "Presets/XOmnibus/Entangled/Wind Through Canopy.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.649,
+        "warmth": 0.325,
+        "movement": 0.47,
+        "density": 0.604,
+        "space": 0.686,
+        "aggression": 0.262
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Prismatic Foretelling",
+          "path": "Presets/XOmnibus/Entangled/Prismatic_Foretelling.xometa"
+        },
+        {
+          "name": "Shard of Divination",
+          "path": "Presets/XOmnibus/Entangled/Shard_of_Divination.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.525,
+        "warmth": 0.575,
+        "movement": 0.45,
+        "density": 0.6,
+        "space": 0.775,
+        "aggression": 0.25
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Prophecy Cave",
+          "path": "Presets/XOmnibus/Entangled/Prophecy_Cave.xometa"
+        },
+        {
+          "name": "Resonant Prophecy",
+          "path": "Presets/XOmnibus/Entangled/Resonant_Prophecy.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.575,
+        "warmth": 0.525,
+        "movement": 0.625,
+        "density": 0.575,
+        "space": 0.65,
+        "aggression": 0.4
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Prowl Bloom",
+          "path": "Presets/XOmnibus/Entangled/Prowl_Bloom.xometa"
+        },
+        {
+          "name": "Stalker Space",
+          "path": "Presets/XOmnibus/Entangled/Stalker_Space.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.865,
+        "warmth": 0.586,
+        "movement": 0.455,
+        "density": 0.52,
+        "space": 0.559,
+        "aggression": 0.371
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Quantum Lock",
+          "path": "Presets/XOmnibus/Entangled/Quantum Lock.xometa"
+        },
+        {
+          "name": "Spooky Action",
+          "path": "Presets/XOmnibus/Entangled/Spooky Action.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.475,
+        "warmth": 0.55,
+        "movement": 0.45,
+        "density": 0.6,
+        "space": 0.725,
+        "aggression": 0.275
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Shadow Diffusion",
+          "path": "Presets/XOmnibus/Entangled/Shadow_Diffusion.xometa"
+        },
+        {
+          "name": "Silver Diffusion",
+          "path": "Presets/XOmnibus/Entangled/Silver_Diffusion.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.575,
+        "warmth": 0.45,
+        "movement": 0.7,
+        "density": 0.65,
+        "space": 0.575,
+        "aggression": 0.475
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Shore Automata",
+          "path": "Presets/XOmnibus/Entangled/Shore_Automata.xometa"
+        },
+        {
+          "name": "Shore Pattern",
+          "path": "Presets/XOmnibus/Entangled/Shore_Pattern.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.9,
+        "warmth": 0.2,
+        "movement": 0.6,
+        "density": 0.2,
+        "space": 0.9,
+        "aggression": 0.1
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Clear Weight Read",
+          "path": "Presets/XOmnibus/Entangled/clear_weight_read.xometa"
+        },
+        {
+          "name": "Pale Augury",
+          "path": "Presets/XOmnibus/Entangled/pale_augury.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.7,
+        "warmth": 0.3,
+        "movement": 0.8,
+        "density": 0.4,
+        "space": 0.7,
+        "aggression": 0.2
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Coil Horizon",
+          "path": "Presets/XOmnibus/Entangled/coil_horizon.xometa"
+        },
+        {
+          "name": "Angle of Incidence",
+          "path": "Presets/XOmnibus/Prism/Angle of Incidence.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.4,
+        "warmth": 0.7,
+        "movement": 0.5,
+        "density": 0.8,
+        "space": 0.3,
+        "aggression": 0.5
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Dense Cycle Gate",
+          "path": "Presets/XOmnibus/Entangled/dense_cycle_gate.xometa"
+        },
+        {
+          "name": "Penumbra Mass",
+          "path": "Presets/XOmnibus/Entangled/penumbra_mass.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.2,
+        "warmth": 0.8,
+        "movement": 0.4,
+        "density": 0.9,
+        "space": 0.2,
+        "aggression": 0.6
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Dense Fold Flux",
+          "path": "Presets/XOmnibus/Entangled/dense_fold_flux.xometa"
+        },
+        {
+          "name": "Dense Pleat Form",
+          "path": "Presets/XOmnibus/Entangled/dense_pleat_form.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.5,
+        "warmth": 0.6,
+        "movement": 0.5,
+        "density": 0.7,
+        "space": 0.4,
+        "aggression": 0.4
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Fat Oracle Vision",
+          "path": "Presets/XOmnibus/Entangled/fat_oracle_vision.xometa"
+        },
+        {
+          "name": "Lateral Theorem",
+          "path": "Presets/XOmnibus/Entangled/lateral_theorem.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.3,
+        "warmth": 0.7,
+        "movement": 0.7,
+        "density": 0.8,
+        "space": 0.2,
+        "aggression": 0.6
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Fat Serpent Loop",
+          "path": "Presets/XOmnibus/Entangled/fat_serpent_loop.xometa"
+        },
+        {
+          "name": "Murk Saturation",
+          "path": "Presets/XOmnibus/Entangled/murk_saturation.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.8,
+        "warmth": 0.3,
+        "movement": 0.7,
+        "density": 0.3,
+        "space": 0.8,
+        "aggression": 0.2
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Foresight Transit",
+          "path": "Presets/XOmnibus/Entangled/foresight_transit.xometa"
+        },
+        {
+          "name": "Vision Slab Wide",
+          "path": "Presets/XOmnibus/Entangled/vision_slab_wide.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.58,
+        "warmth": 0.6,
+        "movement": 0.87,
+        "density": 0.64,
+        "space": 0.42,
+        "aggression": 0.55
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "OHM Recursive Commune",
+          "path": "Presets/XOmnibus/Entangled/ohm_recursive_commune.xometa"
+        },
+        {
+          "name": "Snap Bob Morph Trigger",
+          "path": "Presets/XOmnibus/Flux/Snap Bob Morph Trigger.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.68,
+        "warmth": 0.5,
+        "movement": 0.79,
+        "density": 0.75,
+        "space": 0.31,
+        "aggression": 0.61
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Metabolic Cycle",
+          "path": "Presets/XOmnibus/Flux/Metabolic_Cycle.xometa"
+        },
+        {
+          "name": "Metabolic Push",
+          "path": "Presets/XOmnibus/Flux/Metabolic_Push.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.62,
+        "warmth": 0.45,
+        "movement": 0.83,
+        "density": 0.8,
+        "space": 0.35,
+        "aggression": 0.58
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Oceanic Undertow",
+          "path": "Presets/XOmnibus/Flux/Oceanic_Undertow.xometa"
+        },
+        {
+          "name": "Tidal Engine",
+          "path": "Presets/XOmnibus/Flux/Tidal_Engine.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.58,
+        "warmth": 0.35,
+        "movement": 0.72,
+        "density": 0.74,
+        "space": 0.3,
+        "aggression": 0.74
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Oracle Command",
+          "path": "Presets/XOmnibus/Flux/Oracle_Command.xometa"
+        },
+        {
+          "name": "Prophecy Beat",
+          "path": "Presets/XOmnibus/Flux/Prophecy_Beat.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.72,
+        "warmth": 0.3,
+        "movement": 0.9,
+        "density": 0.78,
+        "space": 0.35,
+        "aggression": 0.75
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Stochastic Flood",
+          "path": "Presets/XOmnibus/Flux/Oracle_Stochastic_Flood.xometa"
+        },
+        {
+          "name": "Serpent Strain",
+          "path": "Presets/XOmnibus/Flux/Ouro_Serpent_Strain.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.939,
+        "warmth": 0.251,
+        "movement": 0.838,
+        "density": 0.47,
+        "space": 0.31,
+        "aggression": 0.724
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Orbit Chaos Maximum",
+          "path": "Presets/XOmnibus/Flux/Orbit_Chaos_Maximum.xometa"
+        },
+        {
+          "name": "Snap Diamond",
+          "path": "Presets/XOmnibus/Prism/Snap Diamond.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.52,
+        "warmth": 0.3,
+        "movement": 0.82,
+        "density": 0.38,
+        "space": 0.23,
+        "aggression": 0.33
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Shift Tone",
+          "path": "Presets/XOmnibus/Flux/Orphica_Shift_Tone.xometa"
+        },
+        {
+          "name": "Pitch Warp",
+          "path": "Presets/XOmnibus/Flux/Pitch Warp.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.52,
+        "warmth": 0.7,
+        "movement": 0.92,
+        "density": 0.88,
+        "space": 0.42,
+        "aggression": 0.52
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Snap Bob Fat Dub Groove",
+          "path": "Presets/XOmnibus/Flux/Snap Bob Fat Dub Groove.xometa"
+        },
+        {
+          "name": "Snap Fat Dub Machine",
+          "path": "Presets/XOmnibus/Flux/Snap Fat Dub Machine.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.294,
+        "warmth": 0.135,
+        "movement": 0.0,
+        "density": 0.211,
+        "space": 0.0,
+        "aggression": 0.091
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Cushion Bass",
+          "path": "Presets/XOmnibus/Foundation/Cushion Bass.xometa"
+        },
+        {
+          "name": "Warm Sustain",
+          "path": "Presets/XOmnibus/Foundation/Warm Sustain.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.271,
+        "warmth": 0.13,
+        "movement": 0.0,
+        "density": 0.291,
+        "space": 0.0,
+        "aggression": 0.039
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Pelagic Glide",
+          "path": "Presets/XOmnibus/Foundation/Glide Bass (XOblongBob).xometa"
+        },
+        {
+          "name": "Sub Bob",
+          "path": "Presets/XOmnibus/Foundation/Sub Bob.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.813,
+        "warmth": 0.165,
+        "movement": 0.227,
+        "density": 0.245,
+        "space": 0.217,
+        "aggression": 0.307
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Rust Bucket",
+          "path": "Presets/XOmnibus/Foundation/Rust Bucket.xometa"
+        },
+        {
+          "name": "Steelpan Ring",
+          "path": "Presets/XOmnibus/Foundation/Steelpan Ring.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.93,
+        "warmth": 0.09,
+        "movement": 0.17,
+        "density": 0.32,
+        "space": 0.76,
+        "aggression": 0.11
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Beryl Resonance",
+          "path": "Presets/XOmnibus/Prism/Beryl Resonance.xometa"
+        },
+        {
+          "name": "Obsidian Point",
+          "path": "Presets/XOmnibus/Prism/Obsidian Point.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.78,
+        "warmth": 0.52,
+        "movement": 0.55,
+        "density": 0.88,
+        "space": 0.5,
+        "aggression": 0.3
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Bob Fat Drift Full Prism",
+          "path": "Presets/XOmnibus/Prism/Bob Fat Drift Full Prism.xometa"
+        },
+        {
+          "name": "Fat Drift Bob Prism Two",
+          "path": "Presets/XOmnibus/Prism/Fat Drift Bob Prism Two.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.461,
+        "warmth": 0.13,
+        "movement": 0.0,
+        "density": 0.119,
+        "space": 0.086,
+        "aggression": 0.072
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Bob Filament",
+          "path": "Presets/XOmnibus/Prism/Bob Filament.xometa"
+        },
+        {
+          "name": "Velvet Lead",
+          "path": "Presets/XOmnibus/Prism/Velvet Lead.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.79,
+        "warmth": 0.27,
+        "movement": 0.77,
+        "density": 0.4,
+        "space": 0.74,
+        "aggression": 0.18
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Color Dispersion",
+          "path": "Presets/XOmnibus/Prism/Color Dispersion.xometa"
+        },
+        {
+          "name": "Shimmer Transit",
+          "path": "Presets/XOmnibus/Prism/Shimmer Transit.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.93,
+        "warmth": 0.09,
+        "movement": 0.19,
+        "density": 0.24,
+        "space": 0.83,
+        "aggression": 0.1
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Diamond Harmonic",
+          "path": "Presets/XOmnibus/Prism/Diamond Harmonic.xometa"
+        },
+        {
+          "name": "Quartz Lattice",
+          "path": "Presets/XOmnibus/Prism/Quartz Lattice.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.86,
+        "warmth": 0.22,
+        "movement": 0.35,
+        "density": 0.38,
+        "space": 0.74,
+        "aggression": 0.16
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Diffraction Bloom",
+          "path": "Presets/XOmnibus/Prism/Diffraction Bloom.xometa"
+        },
+        {
+          "name": "Frequency Bloom",
+          "path": "Presets/XOmnibus/Prism/Frequency Bloom.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.699,
+        "warmth": 0.1,
+        "movement": 0.275,
+        "density": 0.24,
+        "space": 0.457,
+        "aggression": 0.104
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Dub Stab Prism",
+          "path": "Presets/XOmnibus/Prism/Dub Stab Prism.xometa"
+        },
+        {
+          "name": "Stepper Glide",
+          "path": "Presets/XOmnibus/Prism/Stepper Glide.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.477,
+        "warmth": 0.0,
+        "movement": 0.0,
+        "density": 0.071,
+        "space": 0.043,
+        "aggression": 0.041
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Harmonic Blade",
+          "path": "Presets/XOmnibus/Prism/FM Razor.xometa"
+        },
+        {
+          "name": "Tine Piano",
+          "path": "Presets/XOmnibus/Prism/Tine Piano.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.404,
+        "warmth": 0.126,
+        "movement": 0.0,
+        "density": 0.199,
+        "space": 0.0,
+        "aggression": 0.156
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Foam Mallet",
+          "path": "Presets/XOmnibus/Prism/Foam Mallet.xometa"
+        },
+        {
+          "name": "Gut String",
+          "path": "Presets/XOmnibus/Prism/Gut String.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.88,
+        "warmth": 0.12,
+        "movement": 0.22,
+        "density": 0.23,
+        "space": 0.87,
+        "aggression": 0.07
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Glacier Shard",
+          "path": "Presets/XOmnibus/Prism/Glacier Shard.xometa"
+        },
+        {
+          "name": "Osprey Ice",
+          "path": "Presets/XOmnibus/Prism/Osprey Ice.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.7,
+        "warmth": 0.4,
+        "movement": 0.88,
+        "density": 0.45,
+        "space": 0.67,
+        "aggression": 0.24
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Index Shift",
+          "path": "Presets/XOmnibus/Prism/Index Shift.xometa"
+        },
+        {
+          "name": "Velocity Prism",
+          "path": "Presets/XOmnibus/Prism/Velocity Prism.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.411,
+        "warmth": 0.0,
+        "movement": 0.0,
+        "density": 0.128,
+        "space": 0.215,
+        "aggression": 0.041
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Juno Strings",
+          "path": "Presets/XOmnibus/Prism/Juno Strings.xometa"
+        },
+        {
+          "name": "Trigger Particle",
+          "path": "Presets/XOmnibus/Prism/Pluck Keys.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.91,
+        "warmth": 0.48,
+        "movement": 0.96,
+        "density": 0.8,
+        "space": 0.08,
+        "aggression": 0.72
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Kinetic Seizure",
+          "path": "Presets/XOmnibus/Prism/Kinetic_Seizure.xometa"
+        },
+        {
+          "name": "Spectral Blur",
+          "path": "Presets/XOmnibus/Prism/Spectral_Blur.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.88,
+        "warmth": 0.22,
+        "movement": 0.28,
+        "density": 0.38,
+        "space": 0.68,
+        "aggression": 0.1
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Prismatic Dawn",
+          "path": "Presets/XOmnibus/Prism/Prismatic Dawn.xometa"
+        },
+        {
+          "name": "Solar Harmonic",
+          "path": "Presets/XOmnibus/Prism/Solar Harmonic.xometa"
+        }
+      ]
+    },
+    {
+      "anchor_dna": {
+        "brightness": 0.454,
+        "warmth": 0.13,
+        "movement": 0.0,
+        "density": 0.179,
+        "space": 0.0,
+        "aggression": 0.104
+      },
+      "size": 2,
+      "repaired": false,
+      "members": [
+        {
+          "name": "Rounded Point",
+          "path": "Presets/XOmnibus/Prism/Rounded Point.xometa"
+        },
+        {
+          "name": "Triangle Lead",
+          "path": "Presets/XOmnibus/Prism/Triangle Lead.xometa"
+        }
+      ]
+    }
+  ],
+  "repairs": []
+}

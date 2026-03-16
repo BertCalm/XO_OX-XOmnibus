@@ -1,0 +1,51 @@
+{
+  "name": "DARK DRIVE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERBITE",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "OVERBITE": {
+      "macro_character": 0.7631,
+      "macro_movement": 0.4983,
+      "macro_coupling": 0.8059,
+      "macro_space": 0.4988
+    },
+    "OCEANIC": {
+      "macro_character": 0.3085,
+      "macro_movement": 0.0232,
+      "macro_coupling": 0.9781,
+      "macro_space": 0.5054
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OVERBITE",
+    "target": "OCEANIC",
+    "amount": 0.99
+  },
+  "dna": {
+    "brightness": 0.2151,
+    "warmth": 0.3529,
+    "movement": 0.0505,
+    "density": 0.9218,
+    "space": 0.4949,
+    "aggression": 0.8823
+  },
+  "macros": {
+    "CHARACTER": 0.6543,
+    "MOVEMENT": 0.4706,
+    "COUPLING": 0.861,
+    "SPACE": 0.8472
+  },
+  "tags": [
+    "entangled",
+    "dense",
+    "packed",
+    "deep",
+    "compressed",
+    "pressure"
+  ]
+}

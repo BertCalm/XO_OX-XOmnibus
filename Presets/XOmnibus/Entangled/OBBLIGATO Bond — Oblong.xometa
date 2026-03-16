@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "OBBLIGATO Bond — Oblong",
+  "name": "OBBLIGATO Bond \u2014 Oblong",
   "mood": "Entangled",
   "engines": [
     "OBBLIGATO",
@@ -43,11 +43,11 @@
   },
   "sequencer": null,
   "dna": {
-    "brightness": 0.572,
+    "brightness": 0.783,
     "warmth": 0.65,
     "movement": 0.557,
-    "density": 0.65,
+    "density": 1.0,
     "space": 0.579,
-    "aggression": 0.472
+    "aggression": 0.187
   }
 }

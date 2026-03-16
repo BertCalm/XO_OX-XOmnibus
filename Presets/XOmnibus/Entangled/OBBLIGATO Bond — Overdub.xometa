@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "OBBLIGATO Bond — Overdub",
+  "name": "OBBLIGATO Bond \u2014 Overdub",
   "mood": "Entangled",
   "engines": [
     "OBBLIGATO",
@@ -47,7 +47,7 @@
     "warmth": 0.679,
     "movement": 0.571,
     "density": 0.592,
-    "space": 0.687,
-    "aggression": 0.334
+    "space": 0.867,
+    "aggression": 0.08
   }
 }

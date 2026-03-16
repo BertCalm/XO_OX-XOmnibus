@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "OBBLIGATO Coral — Origami",
+  "name": "OBBLIGATO Coral \u2014 Origami",
   "mood": "Entangled",
   "engines": [
     "OBBLIGATO",
@@ -47,7 +47,7 @@
     "warmth": 0.548,
     "movement": 0.625,
     "density": 0.599,
-    "space": 0.575,
-    "aggression": 0.501
+    "space": 0.349,
+    "aggression": 0.0
   }
 }

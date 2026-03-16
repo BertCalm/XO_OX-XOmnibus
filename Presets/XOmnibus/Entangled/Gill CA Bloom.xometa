@@ -36,9 +36,9 @@
     "brightness": 0.318,
     "warmth": 0.8,
     "movement": 0.552,
-    "density": 0.667,
+    "density": 0.401,
     "space": 0.5,
-    "aggression": 0.335
+    "aggression": 0.092
   },
   "parameters": {
     "OddOscar": {

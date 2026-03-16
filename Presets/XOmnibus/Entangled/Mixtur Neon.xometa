@@ -34,10 +34,10 @@
   "tempo": null,
   "dna": {
     "brightness": 0.885,
-    "warmth": 0.217,
-    "movement": 0.6,
+    "warmth": 0.0,
+    "movement": 0.802,
     "density": 0.517,
-    "space": 0.568,
+    "space": 0.825,
     "aggression": 0.35
   },
   "parameters": {

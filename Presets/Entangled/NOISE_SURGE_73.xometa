@@ -1,0 +1,48 @@
+{
+  "name": "NOISE SURGE 73",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBESE",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "OBESE": {
+      "macro_character": 0.443,
+      "macro_movement": 0.883,
+      "macro_coupling": 0.951,
+      "macro_space": 0.855
+    },
+    "ODYSSEY": {
+      "macro_character": 0.099,
+      "macro_movement": 0.917,
+      "macro_coupling": 0.686,
+      "macro_space": 0.544
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBESE",
+    "target": "ODYSSEY",
+    "amount": 0.989
+  },
+  "dna": {
+    "brightness": 0.359,
+    "warmth": 0.398,
+    "movement": 0.9,
+    "density": 0.19,
+    "space": 0.122,
+    "aggression": 0.924
+  },
+  "macros": {
+    "CHARACTER": 0.455,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.663,
+    "SPACE": 0.642
+  },
+  "tags": [
+    "entangled",
+    "kinetic",
+    "turbulent"
+  ]
+}

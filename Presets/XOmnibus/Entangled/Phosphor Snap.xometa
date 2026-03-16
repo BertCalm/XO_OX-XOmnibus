@@ -35,10 +35,10 @@
   "dna": {
     "brightness": 0.885,
     "warmth": 0.183,
-    "movement": 0.652,
+    "movement": 0.325,
     "density": 0.5,
-    "space": 0.585,
-    "aggression": 0.35
+    "space": 0.768,
+    "aggression": 0.044
   },
   "parameters": {
     "OddfeliX": {

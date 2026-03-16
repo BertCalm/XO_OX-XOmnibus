@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Coral The Bond × Oblong",
+  "name": "Coral The Bond \u00d7 Oblong",
   "mood": "Entangled",
   "engines": [
     "OBBLIGATO",
@@ -45,8 +45,8 @@
   "dna": {
     "brightness": 0.569,
     "warmth": 0.65,
-    "movement": 0.563,
-    "density": 0.65,
+    "movement": 0.349,
+    "density": 1.0,
     "space": 0.582,
     "aggression": 0.469
   }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "OBBLIGATO Breath Bond — Oblique",
+  "name": "OBBLIGATO Breath Bond \u2014 Oblique",
   "mood": "Entangled",
   "engines": [
     "OBBLIGATO",
@@ -46,8 +46,8 @@
     "brightness": 0.624,
     "warmth": 0.557,
     "movement": 0.637,
-    "density": 0.595,
+    "density": 0.054,
     "space": 0.6,
-    "aggression": 0.487
+    "aggression": 0.274
   }
 }

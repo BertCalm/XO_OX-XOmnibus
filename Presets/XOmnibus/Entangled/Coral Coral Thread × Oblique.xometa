@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Coral Coral Thread × Oblique",
+  "name": "Coral Coral Thread \u00d7 Oblique",
   "mood": "Entangled",
   "engines": [
     "OBBLIGATO",
@@ -44,9 +44,9 @@
   "sequencer": null,
   "dna": {
     "brightness": 0.64,
-    "warmth": 0.538,
-    "movement": 0.645,
-    "density": 0.583,
+    "warmth": 0.317,
+    "movement": 0.977,
+    "density": 0.877,
     "space": 0.6,
     "aggression": 0.495
   }

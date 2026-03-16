@@ -33,12 +33,12 @@
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
-    "brightness": 0.282,
+    "brightness": 0.0,
     "warmth": 0.8,
     "movement": 0.517,
     "density": 0.685,
-    "space": 0.552,
-    "aggression": 0.3
+    "space": 0.372,
+    "aggression": 0.493
   },
   "parameters": {
     "OddOscar": {

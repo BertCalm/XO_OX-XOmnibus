@@ -36,8 +36,8 @@
     "brightness": 0.833,
     "warmth": 0.235,
     "movement": 0.617,
-    "density": 0.5,
-    "space": 0.585,
+    "density": 1.0,
+    "space": 0.805,
     "aggression": 0.35
   },
   "parameters": {

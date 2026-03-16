@@ -1,0 +1,52 @@
+{
+  "name": "FUSED BODY",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBESE",
+    "OCTOPUS"
+  ],
+  "parameters": {
+    "OBESE": {
+      "macro_character": 0.3797,
+      "macro_movement": 0.9802,
+      "macro_coupling": 0.9274,
+      "macro_space": 0.9546
+    },
+    "OCTOPUS": {
+      "macro_character": 0.8046,
+      "macro_movement": 0.2905,
+      "macro_coupling": 0.7151,
+      "macro_space": 0.7141
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBESE",
+    "target": "OCTOPUS",
+    "amount": 0.8039
+  },
+  "dna": {
+    "brightness": 0.4424,
+    "warmth": 0.2564,
+    "movement": 0.4791,
+    "density": 0.928,
+    "space": 0.2021,
+    "aggression": 0.5386
+  },
+  "macros": {
+    "CHARACTER": 0.933,
+    "MOVEMENT": 0.6962,
+    "COUPLING": 0.7412,
+    "SPACE": 0.6157
+  },
+  "tags": [
+    "entangled",
+    "dense",
+    "layered",
+    "thick",
+    "deep",
+    "coiled",
+    "dark"
+  ]
+}

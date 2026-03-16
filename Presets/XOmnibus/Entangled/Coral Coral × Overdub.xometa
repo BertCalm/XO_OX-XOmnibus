@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Coral Coral × Overdub",
+  "name": "Coral Coral \u00d7 Overdub",
   "mood": "Entangled",
   "engines": [
     "OBBLIGATO",
@@ -43,11 +43,11 @@
   },
   "sequencer": null,
   "dna": {
-    "brightness": 0.515,
+    "brightness": 0.856,
     "warmth": 0.667,
-    "movement": 0.583,
+    "movement": 0.342,
     "density": 0.615,
     "space": 0.652,
-    "aggression": 0.38
+    "aggression": 0.156
   }
 }

@@ -32,9 +32,9 @@
   ],
   "couplingIntensity": "Deep",
   "dna": {
-    "brightness": 0.588,
-    "warmth": 0.532,
-    "movement": 0.61,
+    "brightness": 0.38,
+    "warmth": 0.308,
+    "movement": 0.908,
     "density": 0.602,
     "space": 0.507,
     "aggression": 0.626

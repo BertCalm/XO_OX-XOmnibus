@@ -1,0 +1,48 @@
+{
+  "name": "ENSNARED BASIN",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERWORLD",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.488,
+      "macro_movement": 0.064,
+      "macro_coupling": 0.231,
+      "macro_space": 0.106
+    },
+    "ORBITAL": {
+      "macro_character": 0.604,
+      "macro_movement": 0.082,
+      "macro_coupling": 0.726,
+      "macro_space": 0.417
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OVERWORLD",
+    "target": "ORBITAL",
+    "amount": 0.366
+  },
+  "dna": {
+    "brightness": 0.135,
+    "warmth": 0.921,
+    "movement": 0.073,
+    "density": 0.327,
+    "space": 0.843,
+    "aggression": 0.65
+  },
+  "macros": {
+    "CHARACTER": 0.453,
+    "MOVEMENT": 0.073,
+    "COUPLING": 0.083,
+    "SPACE": 0.247
+  },
+  "tags": [
+    "entangled",
+    "stillness",
+    "ensnared"
+  ]
+}

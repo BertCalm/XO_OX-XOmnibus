@@ -1,0 +1,49 @@
+{
+  "name": "RADIO TELESCOPE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBBLIGATO",
+    "ORACLE"
+  ],
+  "parameters": {
+    "OBBLIGATO": {
+      "macro_character": 0.457,
+      "macro_movement": 0.066,
+      "macro_coupling": 0.683,
+      "macro_space": 0.912
+    },
+    "ORACLE": {
+      "macro_character": 0.553,
+      "macro_movement": 0.653,
+      "macro_coupling": 0.631,
+      "macro_space": 0.904
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBBLIGATO",
+    "target": "ORACLE",
+    "amount": 0.791
+  },
+  "dna": {
+    "brightness": 0.065,
+    "warmth": 0.409,
+    "movement": 0.165,
+    "density": 0.432,
+    "space": 0.914,
+    "aggression": 0.843
+  },
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.709,
+    "COUPLING": 0.118,
+    "SPACE": 0.914
+  },
+  "tags": [
+    "entangled",
+    "vast",
+    "cosmic",
+    "xhigh"
+  ]
+}

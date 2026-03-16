@@ -1,0 +1,48 @@
+{
+  "name": "STATIC LAKE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OSPREY",
+    "OVERLAP"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.257,
+      "macro_movement": 0.054,
+      "macro_coupling": 0.692,
+      "macro_space": 0.896
+    },
+    "OVERLAP": {
+      "macro_character": 0.66,
+      "macro_movement": 0.115,
+      "macro_coupling": 0.212,
+      "macro_space": 0.889
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OSPREY",
+    "target": "OVERLAP",
+    "amount": 0.504
+  },
+  "dna": {
+    "brightness": 0.516,
+    "warmth": 0.811,
+    "movement": 0.085,
+    "density": 1.0,
+    "space": 0.827,
+    "aggression": 0.944
+  },
+  "macros": {
+    "CHARACTER": 0.767,
+    "MOVEMENT": 0.085,
+    "COUPLING": 0.659,
+    "SPACE": 0.732
+  },
+  "tags": [
+    "entangled",
+    "stillness",
+    "static"
+  ]
+}

@@ -28,10 +28,10 @@
   "couplingIntensity": "Deep",
   "dna": {
     "aggression": 0.275,
-    "space": 0.775,
-    "warmth": 0.575,
+    "space": 0.563,
+    "warmth": 0.869,
     "brightness": 0.6,
-    "density": 0.65,
+    "density": 0.922,
     "movement": 0.55
   },
   "sonic_dna": {

@@ -31,12 +31,12 @@
     "intensity": "Moderate"
   },
   "dna": {
-    "brightness": 0.86,
+    "brightness": 0.602,
     "warmth": 0.33,
     "movement": 0.5,
     "density": 0.42,
-    "space": 0.76,
-    "aggression": 0.06
+    "space": 1.0,
+    "aggression": 0.319
   },
   "macros": {
     "CHARACTER": 0.66,

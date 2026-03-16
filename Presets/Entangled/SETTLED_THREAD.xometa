@@ -1,0 +1,48 @@
+{
+  "name": "SETTLED THREAD",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERDUB",
+    "ORBITAL"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.771,
+      "macro_movement": 0.054,
+      "macro_coupling": 0.897,
+      "macro_space": 0.049
+    },
+    "ORBITAL": {
+      "macro_character": 0.44,
+      "macro_movement": 0.085,
+      "macro_coupling": 0.006,
+      "macro_space": 0.509
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OVERDUB",
+    "target": "ORBITAL",
+    "amount": 0.41
+  },
+  "dna": {
+    "brightness": 0.619,
+    "warmth": 0.273,
+    "movement": 0.07,
+    "density": 0.777,
+    "space": 0.731,
+    "aggression": 0.519
+  },
+  "macros": {
+    "CHARACTER": 0.212,
+    "MOVEMENT": 0.07,
+    "COUPLING": 0.42,
+    "SPACE": 0.61
+  },
+  "tags": [
+    "entangled",
+    "stillness",
+    "settled"
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Coral The Bond × Orphica",
+  "name": "Coral The Bond \u00d7 Orphica",
   "mood": "Entangled",
   "engines": [
     "OBBLIGATO",
@@ -43,8 +43,8 @@
   },
   "sequencer": null,
   "dna": {
-    "brightness": 0.655,
-    "warmth": 0.587,
+    "brightness": 0.437,
+    "warmth": 0.057,
     "movement": 0.642,
     "density": 0.566,
     "space": 0.663,

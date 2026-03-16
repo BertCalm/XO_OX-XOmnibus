@@ -1,0 +1,48 @@
+{
+  "name": "STRIPPED SILENCE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OCEANIC",
+    "OSPREY"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.151,
+      "macro_movement": 0.383,
+      "macro_coupling": 0.153,
+      "macro_space": 0.214
+    },
+    "OSPREY": {
+      "macro_character": 0.415,
+      "macro_movement": 0.331,
+      "macro_coupling": 0.466,
+      "macro_space": 0.062
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OCEANIC",
+    "target": "OSPREY",
+    "amount": 0.766
+  },
+  "dna": {
+    "brightness": 0.389,
+    "warmth": 0.77,
+    "movement": 0.946,
+    "density": 0.039,
+    "space": 0.02,
+    "aggression": 0.881
+  },
+  "macros": {
+    "CHARACTER": 0.576,
+    "MOVEMENT": 0.477,
+    "COUPLING": 0.943,
+    "SPACE": 0.299
+  },
+  "tags": [
+    "entangled",
+    "drift",
+    "filament"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "KNOTTED PRESS",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERLAP",
+    "OBSIDIAN"
+  ],
+  "parameters": {
+    "OVERLAP": {
+      "macro_character": 0.4689,
+      "macro_movement": 0.6314,
+      "macro_coupling": 0.9185,
+      "macro_space": 0.5914
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.3519,
+      "macro_movement": 0.0742,
+      "macro_coupling": 0.7847,
+      "macro_space": 0.0376
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OVERLAP",
+    "target": "OBSIDIAN",
+    "amount": 0.8106
+  },
+  "dna": {
+    "brightness": 0.2871,
+    "warmth": 0.6447,
+    "movement": 0.9774,
+    "density": 0.9249,
+    "space": 0.0903,
+    "aggression": 0.5941
+  },
+  "macros": {
+    "CHARACTER": 0.3845,
+    "MOVEMENT": 0.5803,
+    "COUPLING": 0.9863,
+    "SPACE": 0.7389
+  },
+  "tags": [
+    "entangled",
+    "dense",
+    "welded",
+    "packed",
+    "heavy",
+    "xhigh",
+    "massive"
+  ]
+}

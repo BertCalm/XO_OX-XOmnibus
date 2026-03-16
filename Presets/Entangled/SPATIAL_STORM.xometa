@@ -1,0 +1,48 @@
+{
+  "name": "SPATIAL STORM",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBLIQUE",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.299,
+      "macro_movement": 0.962,
+      "macro_coupling": 0.587,
+      "macro_space": 0.999
+    },
+    "ORPHICA": {
+      "macro_character": 0.49,
+      "macro_movement": 0.908,
+      "macro_coupling": 0.149,
+      "macro_space": 0.539
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBLIQUE",
+    "target": "ORPHICA",
+    "amount": 0.673
+  },
+  "dna": {
+    "brightness": 0.552,
+    "warmth": 0.543,
+    "movement": 0.935,
+    "density": 0.455,
+    "space": 0.322,
+    "aggression": 0.594
+  },
+  "macros": {
+    "CHARACTER": 0.697,
+    "MOVEMENT": 0.935,
+    "COUPLING": 0.572,
+    "SPACE": 0.234
+  },
+  "tags": [
+    "entangled",
+    "storm",
+    "vortex"
+  ]
+}

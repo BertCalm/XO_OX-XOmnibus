@@ -32,9 +32,9 @@
   },
   "dna": {
     "brightness": 0.58,
-    "warmth": 0.74,
+    "warmth": 0.581,
     "movement": 0.7,
-    "density": 0.65,
+    "density": 0.361,
     "space": 0.42,
     "aggression": 0.86
   },

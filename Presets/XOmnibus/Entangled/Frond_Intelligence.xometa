@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Lion's Mane FDN meets Giant Pacific CA — space and emergent pattern entangled at the reef's edge",
+  "description": "Lion's Mane FDN meets Giant Pacific CA \u2014 space and emergent pattern entangled at the reef's edge",
   "tags": [
     "coupling",
     "entangled",
@@ -33,10 +33,10 @@
   "couplingIntensity": "Deep",
   "dna": {
     "brightness": 0.55,
-    "space": 0.675,
+    "space": 0.989,
     "aggression": 0.4,
-    "movement": 0.65,
-    "warmth": 0.475,
+    "movement": 0.325,
+    "warmth": 0.74,
     "density": 0.675
   },
   "sonic_dna": {

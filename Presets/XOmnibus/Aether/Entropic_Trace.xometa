@@ -43,9 +43,9 @@
   "dna": {
     "brightness": 0.06,
     "warmth": 0.04,
-    "movement": 0.05,
-    "density": 0.05,
+    "movement": 0.0,
+    "density": 0.334,
     "space": 0.94,
-    "aggression": 0.04
+    "aggression": 0.0
   }
 }

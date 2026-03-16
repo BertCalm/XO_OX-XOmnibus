@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "MORPH scan in stellar drift with FAT gravitational density — star system in audio.",
+  "description": "MORPH scan in stellar drift with FAT gravitational density \u2014 star system in audio.",
   "tags": [
     "morph",
     "fat",
@@ -28,9 +28,9 @@
     "brightness": 0.42,
     "warmth": 0.6,
     "movement": 0.2,
-    "density": 0.92,
+    "density": 0.674,
     "space": 0.88,
-    "aggression": 0.04
+    "aggression": 0.0
   },
   "parameters": {
     "OddOscar": {

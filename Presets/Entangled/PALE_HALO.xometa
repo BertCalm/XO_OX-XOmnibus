@@ -1,0 +1,48 @@
+{
+  "name": "PALE HALO",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OSTERIA",
+    "OWLFISH"
+  ],
+  "parameters": {
+    "OSTERIA": {
+      "macro_character": 0.094,
+      "macro_movement": 0.112,
+      "macro_coupling": 0.07,
+      "macro_space": 0.353
+    },
+    "OWLFISH": {
+      "macro_character": 0.701,
+      "macro_movement": 0.076,
+      "macro_coupling": 0.171,
+      "macro_space": 0.915
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OSTERIA",
+    "target": "OWLFISH",
+    "amount": 0.933
+  },
+  "dna": {
+    "brightness": 0.149,
+    "warmth": 0.95,
+    "movement": 0.094,
+    "density": 0.165,
+    "space": 0.534,
+    "aggression": 0.381
+  },
+  "macros": {
+    "CHARACTER": 0.264,
+    "MOVEMENT": 0.094,
+    "COUPLING": 0.494,
+    "SPACE": 0.161
+  },
+  "tags": [
+    "entangled",
+    "stillness",
+    "pale"
+  ]
+}

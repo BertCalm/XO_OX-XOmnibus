@@ -27,10 +27,10 @@
     "amount": 0.62
   },
   "dna": {
-    "brightness": 0.14,
+    "brightness": 0.0,
     "warmth": 0.06,
-    "movement": 0.62,
-    "density": 0.15,
+    "movement": 0.902,
+    "density": 0.303,
     "space": 0.87,
     "aggression": 0.11
   },

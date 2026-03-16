@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Triple brass GROW meets OBBLIGATO's BOND — two reeds locked to three brass voices in patina warmth.",
+  "description": "Triple brass GROW meets OBBLIGATO's BOND \u2014 two reeds locked to three brass voices in patina warmth.",
   "tags": [
     "coupling",
     "obbligato",
@@ -43,8 +43,8 @@
   },
   "sequencer": null,
   "dna": {
-    "brightness": 0.576,
-    "warmth": 0.625,
+    "brightness": 0.858,
+    "warmth": 0.904,
     "movement": 0.549,
     "density": 0.675,
     "space": 0.575,

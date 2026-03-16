@@ -1,0 +1,48 @@
+{
+  "name": "IMMOBILE DRIFT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBESE",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OBESE": {
+      "macro_character": 0.386,
+      "macro_movement": 0.067,
+      "macro_coupling": 0.144,
+      "macro_space": 0.038
+    },
+    "OVERWORLD": {
+      "macro_character": 0.046,
+      "macro_movement": 0.097,
+      "macro_coupling": 0.103,
+      "macro_space": 0.297
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OBESE",
+    "target": "OVERWORLD",
+    "amount": 0.276
+  },
+  "dna": {
+    "brightness": 0.179,
+    "warmth": 0.145,
+    "movement": 0.082,
+    "density": 0.572,
+    "space": 0.619,
+    "aggression": 0.774
+  },
+  "macros": {
+    "CHARACTER": 0.37,
+    "MOVEMENT": 0.082,
+    "COUPLING": 0.167,
+    "SPACE": 0.286
+  },
+  "tags": [
+    "entangled",
+    "stillness",
+    "immobile"
+  ]
+}

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Organon pipe resonance propagates through OVERLAP web — the pipe organ acquires an infinite cave",
+  "description": "Organon pipe resonance propagates through OVERLAP web \u2014 the pipe organ acquires an infinite cave",
   "tags": [
     "coupling",
     "entangled",
@@ -32,11 +32,11 @@
   "couplingIntensity": "Deep",
   "dna": {
     "brightness": 0.55,
-    "space": 0.725,
-    "aggression": 0.25,
+    "space": 1.0,
+    "aggression": 0.003,
     "movement": 0.475,
     "warmth": 0.55,
-    "density": 0.625
+    "density": 0.928
   },
   "sonic_dna": {
     "brightness": 0.55,

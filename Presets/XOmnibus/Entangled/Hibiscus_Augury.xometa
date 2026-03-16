@@ -31,11 +31,11 @@
     "intensity": "Deep"
   },
   "dna": {
-    "brightness": 0.58,
+    "brightness": 0.733,
     "warmth": 0.7,
     "movement": 0.68,
-    "density": 0.65,
-    "space": 0.42,
+    "density": 0.485,
+    "space": 0.744,
     "aggression": 0.86
   },
   "macros": {

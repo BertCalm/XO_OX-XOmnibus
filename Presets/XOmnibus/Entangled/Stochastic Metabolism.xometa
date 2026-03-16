@@ -71,8 +71,8 @@
     "brightness": 0.535,
     "warmth": 0.54,
     "movement": 0.745,
-    "density": 0.665,
+    "density": 1.0,
     "space": 0.505,
-    "aggression": 0.47
+    "aggression": 0.695
   }
 }

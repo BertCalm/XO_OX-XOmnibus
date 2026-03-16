@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERLAP decay length modulates OUTWIT generation rate — the longer the tail, the faster the evolution",
+  "description": "OVERLAP decay length modulates OUTWIT generation rate \u2014 the longer the tail, the faster the evolution",
   "tags": [
     "coupling",
     "entangled",
@@ -34,10 +34,10 @@
   "dna": {
     "brightness": 0.55,
     "space": 0.675,
-    "aggression": 0.4,
+    "aggression": 0.077,
     "movement": 0.65,
     "warmth": 0.475,
-    "density": 0.675
+    "density": 0.872
   },
   "sonic_dna": {
     "brightness": 0.55,

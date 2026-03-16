@@ -1,0 +1,48 @@
+{
+  "name": "RAMPAGE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OSPREY",
+    "ONSET"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.664,
+      "macro_movement": 0.946,
+      "macro_coupling": 0.619,
+      "macro_space": 0.093
+    },
+    "ONSET": {
+      "macro_character": 0.952,
+      "macro_movement": 0.908,
+      "macro_coupling": 0.235,
+      "macro_space": 0.31
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OSPREY",
+    "target": "ONSET",
+    "amount": 0.903
+  },
+  "dna": {
+    "brightness": 0.147,
+    "warmth": 0.046,
+    "movement": 0.927,
+    "density": 0.984,
+    "space": 0.611,
+    "aggression": 0.884
+  },
+  "macros": {
+    "CHARACTER": 0.455,
+    "MOVEMENT": 0.927,
+    "COUPLING": 0.886,
+    "SPACE": 0.576
+  },
+  "tags": [
+    "entangled",
+    "storm",
+    "vortex"
+  ]
+}

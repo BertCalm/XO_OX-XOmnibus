@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "OBBLIGATO Bound Voice — Odyssey",
+  "name": "OBBLIGATO Bound Voice \u2014 Odyssey",
   "mood": "Entangled",
   "engines": [
     "OBBLIGATO",
@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Violet tide meets rascal coral — BOND creates a breath bond that shifts with ODYSSEY's ocean current.",
+  "description": "Violet tide meets rascal coral \u2014 BOND creates a breath bond that shifts with ODYSSEY's ocean current.",
   "tags": [
     "coupling",
     "obbligato",
@@ -43,11 +43,11 @@
   },
   "sequencer": null,
   "dna": {
-    "brightness": 0.55,
-    "warmth": 0.572,
+    "brightness": 0.814,
+    "warmth": 0.782,
     "movement": 0.652,
     "density": 0.572,
-    "space": 0.652,
+    "space": 0.878,
     "aggression": 0.372
   }
 }

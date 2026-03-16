@@ -1,0 +1,48 @@
+{
+  "name": "MODULAR CHAOS",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORACLE",
+    "ORCA"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.19,
+      "macro_movement": 0.973,
+      "macro_coupling": 0.159,
+      "macro_space": 0.996
+    },
+    "ORCA": {
+      "macro_character": 0.467,
+      "macro_movement": 0.952,
+      "macro_coupling": 0.879,
+      "macro_space": 0.497
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORACLE",
+    "target": "ORCA",
+    "amount": 0.545
+  },
+  "dna": {
+    "brightness": 0.393,
+    "warmth": 0.457,
+    "movement": 0.962,
+    "density": 0.241,
+    "space": 0.583,
+    "aggression": 0.524
+  },
+  "macros": {
+    "CHARACTER": 0.281,
+    "MOVEMENT": 0.962,
+    "COUPLING": 0.598,
+    "SPACE": 0.843
+  },
+  "tags": [
+    "entangled",
+    "rupture",
+    "intensity"
+  ]
+}

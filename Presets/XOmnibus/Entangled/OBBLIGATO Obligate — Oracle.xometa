@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "OBBLIGATO Obligate — Oracle",
+  "name": "OBBLIGATO Obligate \u2014 Oracle",
   "mood": "Entangled",
   "engines": [
     "OBBLIGATO",
@@ -44,9 +44,9 @@
   "sequencer": null,
   "dna": {
     "brightness": 0.528,
-    "warmth": 0.54,
+    "warmth": 0.0,
     "movement": 0.6,
-    "density": 0.672,
+    "density": 0.44,
     "space": 0.644,
     "aggression": 0.428
   }

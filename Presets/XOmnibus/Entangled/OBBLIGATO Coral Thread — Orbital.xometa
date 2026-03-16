@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "OBBLIGATO Coral Thread — Orbital",
+  "name": "OBBLIGATO Coral Thread \u2014 Orbital",
   "mood": "Entangled",
   "engines": [
     "OBBLIGATO",
@@ -46,8 +46,8 @@
     "brightness": 0.573,
     "warmth": 0.65,
     "movement": 0.578,
-    "density": 0.627,
-    "space": 0.6,
-    "aggression": 0.473
+    "density": 0.951,
+    "space": 0.343,
+    "aggression": 0.63
   }
 }

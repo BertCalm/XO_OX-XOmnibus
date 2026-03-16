@@ -1,0 +1,49 @@
+{
+  "name": "BOUND FORM",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBLIQUE",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.4263,
+      "macro_movement": 0.108,
+      "macro_coupling": 0.885,
+      "macro_space": 0.4436
+    },
+    "ODYSSEY": {
+      "macro_character": 0.8993,
+      "macro_movement": 0.3221,
+      "macro_coupling": 0.6593,
+      "macro_space": 0.1262
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBLIQUE",
+    "target": "ODYSSEY",
+    "amount": 0.8873
+  },
+  "dna": {
+    "brightness": 0.5854,
+    "warmth": 0.7122,
+    "movement": 0.3809,
+    "density": 0.9258,
+    "space": 0.5974,
+    "aggression": 0.2949
+  },
+  "macros": {
+    "CHARACTER": 0.5056,
+    "MOVEMENT": 0.4302,
+    "COUPLING": 0.9379,
+    "SPACE": 0.1144
+  },
+  "tags": [
+    "entangled",
+    "dense",
+    "solid",
+    "iron"
+  ]
+}

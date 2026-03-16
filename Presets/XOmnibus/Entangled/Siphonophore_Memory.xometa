@@ -31,11 +31,11 @@
     "intensity": "Moderate"
   },
   "dna": {
-    "brightness": 0.85,
+    "brightness": 1.0,
     "warmth": 0.4,
     "movement": 0.52,
-    "density": 0.42,
-    "space": 0.74,
+    "density": 0.233,
+    "space": 1.0,
     "aggression": 0.07
   },
   "macros": {

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OddFelix harmonics in fluid refractive motion — spectral run through shifting medium.",
+  "description": "OddFelix harmonics in fluid refractive motion \u2014 spectral run through shifting medium.",
   "tags": [
     "refraction",
     "oddlight",
@@ -54,10 +54,10 @@
   "coupling": null,
   "sequencer": null,
   "dna": {
-    "brightness": 0.76,
+    "brightness": 0.575,
     "warmth": 0.34,
     "movement": 0.83,
-    "density": 0.44,
+    "density": 0.96,
     "space": 0.69,
     "aggression": 0.2
   }

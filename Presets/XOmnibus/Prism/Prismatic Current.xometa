@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Folded light currents in motion — prismatic flow that bends and returns.",
+  "description": "Folded light currents in motion \u2014 prismatic flow that bends and returns.",
   "tags": [
     "refraction",
     "prismatic",
@@ -52,10 +52,10 @@
   "coupling": null,
   "sequencer": null,
   "dna": {
-    "brightness": 0.74,
-    "warmth": 0.36,
+    "brightness": 1.0,
+    "warmth": 0.692,
     "movement": 0.84,
-    "density": 0.43,
+    "density": 0.113,
     "space": 0.7,
     "aggression": 0.22
   }

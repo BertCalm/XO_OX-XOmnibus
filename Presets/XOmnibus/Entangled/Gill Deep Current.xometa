@@ -35,10 +35,10 @@
   "dna": {
     "brightness": 0.282,
     "warmth": 0.835,
-    "movement": 0.517,
+    "movement": 0.839,
     "density": 0.65,
     "space": 0.535,
-    "aggression": 0.3
+    "aggression": 0.019
   },
   "parameters": {
     "OddOscar": {

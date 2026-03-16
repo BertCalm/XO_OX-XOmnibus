@@ -27,12 +27,12 @@
   ],
   "couplingIntensity": "Moderate",
   "dna": {
-    "aggression": 0.475,
+    "aggression": 0.779,
     "space": 0.45,
     "warmth": 0.375,
     "brightness": 0.65,
     "density": 0.55,
-    "movement": 0.7
+    "movement": 0.907
   },
   "sonic_dna": {
     "aggression": 0.475,

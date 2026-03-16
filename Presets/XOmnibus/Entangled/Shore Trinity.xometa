@@ -35,10 +35,10 @@
   "dna": {
     "brightness": 0.601,
     "warmth": 0.633,
-    "movement": 0.585,
-    "density": 0.549,
+    "movement": 0.334,
+    "density": 0.394,
     "space": 0.651,
-    "aggression": 0.317
+    "aggression": 0.124
   },
   "parameters": {},
   "coupling": {

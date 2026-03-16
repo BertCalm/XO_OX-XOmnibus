@@ -1,0 +1,48 @@
+{
+  "name": "STATIC BLOOM",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORCA",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "ORCA": {
+      "macro_character": 0.981,
+      "macro_movement": 0.833,
+      "macro_coupling": 0.296,
+      "macro_space": 0.361
+    },
+    "OCEANIC": {
+      "macro_character": 0.302,
+      "macro_movement": 0.708,
+      "macro_coupling": 0.127,
+      "macro_space": 0.046
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORCA",
+    "target": "OCEANIC",
+    "amount": 0.144
+  },
+  "dna": {
+    "brightness": 0.292,
+    "warmth": 0.944,
+    "movement": 0.638,
+    "density": 0.096,
+    "space": 0.753,
+    "aggression": 0.103
+  },
+  "macros": {
+    "CHARACTER": 0.012,
+    "MOVEMENT": 0.284,
+    "COUPLING": 0.479,
+    "SPACE": 0.341
+  },
+  "tags": [
+    "entangled",
+    "sparse",
+    "minimal"
+  ]
+}

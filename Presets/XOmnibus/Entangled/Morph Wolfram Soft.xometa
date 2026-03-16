@@ -34,11 +34,11 @@
   "tempo": null,
   "dna": {
     "brightness": 0.318,
-    "warmth": 0.8,
-    "movement": 0.552,
+    "warmth": 1.0,
+    "movement": 0.276,
     "density": 0.667,
     "space": 0.5,
-    "aggression": 0.335
+    "aggression": 0.097
   },
   "parameters": {
     "OddOscar": {

@@ -1,0 +1,48 @@
+{
+  "name": "NEGATIVE WIRE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ODDOSCAR",
+    "OWLFISH"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.584,
+      "macro_movement": 0.797,
+      "macro_coupling": 0.725,
+      "macro_space": 0.688
+    },
+    "OWLFISH": {
+      "macro_character": 0.027,
+      "macro_movement": 0.475,
+      "macro_coupling": 0.967,
+      "macro_space": 0.783
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "ODDOSCAR",
+    "target": "OWLFISH",
+    "amount": 0.721
+  },
+  "dna": {
+    "brightness": 0.578,
+    "warmth": 0.721,
+    "movement": 0.584,
+    "density": 0.138,
+    "space": 0.171,
+    "aggression": 0.629
+  },
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.841,
+    "COUPLING": 0.148,
+    "SPACE": 0.681
+  },
+  "tags": [
+    "entangled",
+    "sparse",
+    "minimal"
+  ]
+}

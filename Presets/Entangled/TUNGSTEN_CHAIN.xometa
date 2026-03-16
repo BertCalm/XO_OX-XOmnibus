@@ -1,0 +1,53 @@
+{
+  "name": "TUNGSTEN CHAIN",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORACLE",
+    "OVERBITE"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.1138,
+      "macro_movement": 0.4299,
+      "macro_coupling": 0.7133,
+      "macro_space": 0.6785
+    },
+    "OVERBITE": {
+      "macro_character": 0.4866,
+      "macro_movement": 0.6671,
+      "macro_coupling": 0.6182,
+      "macro_space": 0.3953
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORACLE",
+    "target": "OVERBITE",
+    "amount": 0.8798
+  },
+  "dna": {
+    "brightness": 0.0077,
+    "warmth": 0.3014,
+    "movement": 0.2112,
+    "density": 0.9462,
+    "space": 0.1372,
+    "aggression": 0.2555
+  },
+  "macros": {
+    "CHARACTER": 0.3281,
+    "MOVEMENT": 0.0077,
+    "COUPLING": 0.9241,
+    "SPACE": 0.1757
+  },
+  "tags": [
+    "entangled",
+    "dense",
+    "fused",
+    "xhigh",
+    "extreme-density",
+    "monolithic",
+    "pressure",
+    "industrial"
+  ]
+}

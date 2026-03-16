@@ -1,0 +1,48 @@
+{
+  "name": "RAW POINT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBSCURA",
+    "OLE"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.916,
+      "macro_movement": 0.491,
+      "macro_coupling": 0.123,
+      "macro_space": 0.853
+    },
+    "OLE": {
+      "macro_character": 0.452,
+      "macro_movement": 0.899,
+      "macro_coupling": 0.445,
+      "macro_space": 0.088
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OBSCURA",
+    "target": "OLE",
+    "amount": 0.646
+  },
+  "dna": {
+    "brightness": 0.846,
+    "warmth": 0.32,
+    "movement": 0.347,
+    "density": 0.061,
+    "space": 0.065,
+    "aggression": 0.542
+  },
+  "macros": {
+    "CHARACTER": 0.891,
+    "MOVEMENT": 0.851,
+    "COUPLING": 0.712,
+    "SPACE": 0.927
+  },
+  "tags": [
+    "entangled",
+    "bare",
+    "skeletal"
+  ]
+}

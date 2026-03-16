@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Obbligato BOND macro depth modulates OUTWIT mutation probability — tight bond tightens cellular order",
+  "description": "Obbligato BOND macro depth modulates OUTWIT mutation probability \u2014 tight bond tightens cellular order",
   "tags": [
     "coupling",
     "entangled",
@@ -34,9 +34,9 @@
     "brightness": 0.575,
     "space": 0.55,
     "aggression": 0.45,
-    "movement": 0.7,
+    "movement": 0.482,
     "warmth": 0.5,
-    "density": 0.675
+    "density": 0.878
   },
   "sonic_dna": {
     "brightness": 0.575,

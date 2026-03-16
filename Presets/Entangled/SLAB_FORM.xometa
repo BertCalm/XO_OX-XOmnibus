@@ -1,0 +1,50 @@
+{
+  "name": "SLAB FORM",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORIGAMI",
+    "OPAL"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.6974,
+      "macro_movement": 0.1263,
+      "macro_coupling": 0.9474,
+      "macro_space": 0.4909
+    },
+    "OPAL": {
+      "macro_character": 0.8727,
+      "macro_movement": 0.5741,
+      "macro_coupling": 0.7878,
+      "macro_space": 0.4405
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ORIGAMI",
+    "target": "OPAL",
+    "amount": 0.7553
+  },
+  "dna": {
+    "brightness": 0.0514,
+    "warmth": 0.9411,
+    "movement": 0.4777,
+    "density": 0.8814,
+    "space": 0.8221,
+    "aggression": 0.4007
+  },
+  "macros": {
+    "CHARACTER": 0.0741,
+    "MOVEMENT": 0.6294,
+    "COUPLING": 0.7161,
+    "SPACE": 0.1492
+  },
+  "tags": [
+    "entangled",
+    "monolithic",
+    "dense",
+    "dark",
+    "layered"
+  ]
+}

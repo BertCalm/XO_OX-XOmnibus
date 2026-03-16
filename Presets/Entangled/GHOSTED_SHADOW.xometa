@@ -1,0 +1,48 @@
+{
+  "name": "GHOSTED SHADOW",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OPTIC",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "OPTIC": {
+      "macro_character": 0.155,
+      "macro_movement": 0.482,
+      "macro_coupling": 0.847,
+      "macro_space": 0.35
+    },
+    "OSTERIA": {
+      "macro_character": 0.556,
+      "macro_movement": 0.115,
+      "macro_coupling": 0.279,
+      "macro_space": 0.226
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OPTIC",
+    "target": "OSTERIA",
+    "amount": 0.443
+  },
+  "dna": {
+    "brightness": 0.561,
+    "warmth": 0.767,
+    "movement": 0.622,
+    "density": 0.086,
+    "space": 0.675,
+    "aggression": 0.557
+  },
+  "macros": {
+    "CHARACTER": 0.609,
+    "MOVEMENT": 0.658,
+    "COUPLING": 0.693,
+    "SPACE": 0.029
+  },
+  "tags": [
+    "entangled",
+    "minimal",
+    "negative-space"
+  ]
+}

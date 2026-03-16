@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Organon registration depth modulates OUTWIT mutation probability — denser pipe stops, less order",
+  "description": "Organon registration depth modulates OUTWIT mutation probability \u2014 denser pipe stops, less order",
   "tags": [
     "coupling",
     "entangled",
@@ -32,11 +32,11 @@
   "couplingIntensity": "Moderate",
   "dna": {
     "brightness": 0.6,
-    "space": 0.55,
-    "aggression": 0.45,
+    "space": 0.298,
+    "aggression": 0.677,
     "movement": 0.725,
     "warmth": 0.475,
-    "density": 0.7
+    "density": 0.899
   },
   "sonic_dna": {
     "brightness": 0.6,

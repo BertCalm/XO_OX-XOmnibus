@@ -31,8 +31,8 @@
     "space": 0.8,
     "warmth": 0.6,
     "brightness": 0.625,
-    "density": 0.6,
-    "movement": 0.65
+    "density": 0.287,
+    "movement": 0.916
   },
   "sonic_dna": {
     "aggression": 0.25,

@@ -1,0 +1,48 @@
+{
+  "name": "RAMPAGE 25",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OSPREY",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.538,
+      "macro_movement": 0.88,
+      "macro_coupling": 0.719,
+      "macro_space": 0.742
+    },
+    "OCEANIC": {
+      "macro_character": 0.671,
+      "macro_movement": 0.973,
+      "macro_coupling": 0.364,
+      "macro_space": 0.07
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OSPREY",
+    "target": "OCEANIC",
+    "amount": 0.832
+  },
+  "dna": {
+    "brightness": 0.33,
+    "warmth": 0.314,
+    "movement": 0.926,
+    "density": 0.848,
+    "space": 0.72,
+    "aggression": 0.65
+  },
+  "macros": {
+    "CHARACTER": 0.309,
+    "MOVEMENT": 0.926,
+    "COUPLING": 0.408,
+    "SPACE": 0.402
+  },
+  "tags": [
+    "entangled",
+    "explosive",
+    "unstable"
+  ]
+}

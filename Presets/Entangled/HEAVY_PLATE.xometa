@@ -1,0 +1,51 @@
+{
+  "name": "HEAVY PLATE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OCEANIC",
+    "OSPREY"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.5618,
+      "macro_movement": 0.3625,
+      "macro_coupling": 0.7154,
+      "macro_space": 0.3863
+    },
+    "OSPREY": {
+      "macro_character": 0.4504,
+      "macro_movement": 0.5499,
+      "macro_coupling": 0.9301,
+      "macro_space": 0.6232
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OCEANIC",
+    "target": "OSPREY",
+    "amount": 0.8833
+  },
+  "dna": {
+    "brightness": 0.1287,
+    "warmth": 0.0967,
+    "movement": 0.3732,
+    "density": 0.9682,
+    "space": 0.9868,
+    "aggression": 0.5578
+  },
+  "macros": {
+    "CHARACTER": 0.3656,
+    "MOVEMENT": 0.1443,
+    "COUPLING": 0.8807,
+    "SPACE": 0.4014
+  },
+  "tags": [
+    "entangled",
+    "bound",
+    "iron",
+    "granite",
+    "dense",
+    "deep"
+  ]
+}

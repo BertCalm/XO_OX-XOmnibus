@@ -33,12 +33,12 @@
   "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {
-    "brightness": 0.885,
+    "brightness": 0.673,
     "warmth": 0.183,
     "movement": 0.652,
-    "density": 0.5,
+    "density": 0.981,
     "space": 0.585,
-    "aggression": 0.35
+    "aggression": 0.642
   },
   "parameters": {
     "OddfeliX": {
