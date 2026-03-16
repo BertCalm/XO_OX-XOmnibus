@@ -1,9 +1,35 @@
-# Fleet Render Automation -- Technical Specification
+# Fleet Render Automation — Technical Specification
 
-**Status:** Design Document (Pre-Implementation)
-**Date:** 2026-03-15
+**Status:** Design Document (Pre-Implementation) — Updated 2026-03-16
+**Date:** 2026-03-15 | Updated: 2026-03-16
 **Author:** XO_OX Designs
 **Scope:** Automated offline rendering of all XOmnibus presets into WAV samples for the Oxport XPN pipeline
+
+---
+
+> **P0 CRITICAL PATH ITEM.** This is the single highest-priority technical task in the Oxport V2
+> backlog. Without `renderNoteToWav()`, no pack is economically viable. See `oxport_v2_feature_backlog.md`
+> for full priority context.
+
+---
+
+## What Already Exists
+
+`Source/Export/XPNExporter.h` contains approximately 80% of the fleet render scaffolding. The
+following are fully implemented and tested:
+
+- **`SoundShapeClassifier`** — classifies presets into 6 render profiles (Transient / Sustained /
+  Evolving / Bass / Texture / Rhythmic) with per-profile hold and tail durations
+- **Buffer allocation and WAV writing** — `normalizeBuffer()`, `writeWav()`, silence trimming, fade
+  in/out application
+- **Parallel batch dispatch** — `std::async` worker pool with `std::atomic` progress tracking
+- **XPM keygroup program generation** — all 3 critical MPC rules enforced (KeyTrack=True,
+  RootNote=0, empty layer VelStart=0)
+- **Size estimation, validation, atomic export** — write to temp dir, rename on success
+- **`velocityForLayer()`** — maps layer index (0–3) to canonical MIDI velocity values
+
+**The single missing piece** is lines 602–616 of `XPNExporter.h` — the `renderNoteToWav()` method
+currently generates silence instead of processing audio through the engine.
 
 ---
 
