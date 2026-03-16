@@ -1,408 +1,298 @@
 # Patreon Content Calendar & Tier Strategy — R&D
 
-**Date**: 2026-03-16
-**Status**: R&D / Pre-Spec
-**Owner**: XO_OX Design
-**Audience**: Internal strategy, XO_OX team launch planning
+**Date:** 2026-03-16
+**Status:** Planning / Pre-Launch
+**Author:** XO_OX Designs
 
 ---
 
 ## Overview
 
-XO_OX Patreon launches April 2026. This document specs the tier structure, month-by-month content calendar through March 2027, launch mechanics, content types that work for music production Patreons, and the integration strategy with the Field Guide flywheel.
+This document outlines the tier structure, content calendar, and launch mechanics for the XO_OX Patreon. The goal is to build a sustainable funding and community layer that operates independently of one-time pack sales — a recurring relationship with the producers who care about where XO_OX is going, not just what it has already shipped.
 
-The goal for Year 1 is not scale — it is signal. 25 Tier 2 subscribers is break-even. 100 Tier 2 subscribers is proof of concept. The content calendar is designed to build trust first, community second, and revenue third. In that order.
+The model is straightforward: give away enough that the value is obvious at every tier, and structure the tiers so that the most engaged producers naturally migrate toward the higher tiers over time.
 
 ---
 
-## 1. Three-Tier Structure
+## Tier Structure
 
-### Tier 1 — "Listener" ($5/month)
+### Tier 1 — Listener ($5/month)
 
-The entry point. For fans who want to follow the build without a financial commitment to the tools.
+**For:** Producers who want to stay close to what XO_OX is building without a major commitment.
 
-**Benefits**:
-- Monthly behind-the-scenes post (written, ~800 words): one window into what XO_OX is building and why
-- Early access to free packs 1 week before public release
-- Name in quarterly credits post ("Made possible by")
+**Benefits:**
+- Behind-the-scenes posts: design decisions, rejected ideas, workflow snapshots, early concept art
+- 1-week early access to all free packs before they go public
+- Monthly patron-only post (text + audio): a sound design story, a technique, a build diary entry
+- Access to the Patreon feed archive
 
-**Positioning**: Listener tier is a tip jar with consistent value. It should never feel like a second-class membership. The behind-the-scenes posts must be genuinely interesting — not marketing copy dressed as transparency.
+**Design intent:** This tier should feel like a backstage pass. Not features, not tools — access to the thinking. The post quality at Tier 1 determines whether producers upgrade. The content here should be worth $5 on its own.
 
-### Tier 2 — "Producer" ($15/month)
+---
 
-The core tier. For active producers who use XO_OX tools in their workflow.
+### Tier 2 — Producer ($15/month)
 
-**Benefits**:
+**For:** Working producers who want XO_OX packs in their monthly workflow without paying per-pack retail.
+
+**Benefits:**
 - All Tier 1 benefits
-- Monthly paid pack free (1 pack per month, curated to the season)
-- Discord access: XO_OX community server with dedicated channels for producers
-- Monthly vote on next pack theme (3 options, Tier 2+ vote, XO_OX reserves final say)
-- Access to Patreon-exclusive tutorial posts (~2/month): "How we made this" deep-dives
+- One paid pack per month at no additional charge (value $15–$25)
+- Access to the XO_OX Discord (Producer channels)
+- Monthly community vote: influence the next pack topic, engine focus, or design direction
+- Early access to pack pre-releases (2 weeks before public)
 
-**Positioning**: At $15/month, the free pack alone is worth $10–15 at retail. The math has to work for the producer. If the monthly pack is weak, this tier bleeds. Pack selection for Tier 2 must be treated as a programming decision, not a giveaway.
+**Design intent:** At $15/month this tier has to win on pure economics — the monthly free pack at full retail value makes the math obvious. The Discord and voting rights are secondary draws but important for retention. This is the subscription tier.
 
-### Tier 3 — "Studio" ($30/month)
-
-For producers who want to see inside the process and shape it. Limited to 50 members in Year 1 (scarcity creates value; also limits support load).
-
-**Benefits**:
-- All Tier 2 benefits
-- Source XPM files for current month's engine releases (raw, pre-pack)
-- Oxport tool early builds: access 1 build cycle ahead of public release
-- Quarterly 1-on-1 with XO_OX team: 30-minute call, any topic (sound design, XPN format questions, feature requests)
-- "Studio" badge in Discord + credits
-- DNA Challenge voting weight: Studio votes count 2x in Challenge finalists round
-
-**Positioning**: Studio tier is a relationship, not a subscription. The quarterly 1-on-1 is the differentiator. It cannot be outsourced, automated, or scaled beyond ~50 members without quality loss. That constraint is the point.
+**Break-even math:** 25 Tier 2 subscribers = $375/month. At $15/subscriber, that covers hosting, tools, and part of pack production overhead. First business milestone is 25 T2 subscribers at launch.
 
 ---
 
-## 2. Month-by-Month Content Plan (April 2026 – March 2027)
+### Tier 3 — Studio ($30/month)
+
+**For:** Power users: sound designers, educators, advanced producers who use XO_OX as a core instrument.
+
+**Benefits:**
+- All Tier 2 benefits
+- Source XPM files for all monthly packs (the unmixed, unmastered individual programs)
+- Oxport early builds: access to unreleased Oxport tool versions before public release
+- Quarterly 1-on-1 (30 min): sound design session, workflow review, or open Q&A with Kai
+- Name in the credits of every XO_OX release shipped that month
+
+**Design intent:** This tier is for the people who want to understand how the packs were built, not just use them. The source XPM files are the key differentiator — producers at this level will rebuild, modify, and reference them. The 1-on-1 is a high-touch perk that creates genuine loyalty. Keep this tier small and managed.
+
+---
+
+## Month-by-Month Content Calendar (April 2026 → March 2027)
 
 ### April 2026 — Launch Month
 
-**Theme**: Why XO_OX Patreon exists.
+**Theme:** Why XO_OX Patreon exists
 
-| Post | Tier | Type |
-|---|---|---|
-| "Why XO_OX Patreon exists" | Public | Mission statement / launch post |
-| Behind the Scenes: Building the Aquatic Mythology | Tier 1+ | Written, ~800 words |
-| Tutorial: Introduction to 6D Sonic DNA | Tier 2+ | Deep-dive written post |
-| Discord launch + live Q&A | Tier 2+ | Live event |
+**Pack (T2 free):** ONSET Drum Essentials — 8-voice electronic kit, 4 velocity layers, full Sonic DNA spread. First public demonstration of V1 drum synthesis quality.
 
-**Tier 2 Free Pack**: XObese Starter Pack (4 kits, introduces OBESE engine character)
+**Posts:**
+1. **Launch post** — the honest version of why we're doing this. Not a pitch. A story. Where XO_OX came from, where it's going, what Patreon enables that retail alone can't.
+2. **Behind the Scenes: Building ONSET Drum Essentials** — the rejected versions, the early renders, the decision to use 4 velocity layers instead of 2.
+3. **T1 exclusive: Sound Design Diary #1** — what Kai is working on right now and why.
 
-**Notes**: April is about trust, not product. The launch post should be written personally, not as a press release. Discord launch Q&A should happen within the first week — the energy window is short.
+**Community action:** Launch announcement + first community challenge posted (April Challenge: "Make something with only ONSET — no other instruments").
 
----
-
-### May 2026
-
-**Theme**: The engines behind the packs.
-
-| Post | Tier | Type |
-|---|---|---|
-| Behind the Scenes: How ONSET was designed | Tier 1+ | Written |
-| Tutorial: ONSET velocity layering — what we do and why | Tier 2+ | Deep-dive with audio examples |
-| DNA Challenge #001 announced | Public | Challenge brief |
-| Failed Experiments: What didn't work in XOnset v1 | Tier 2+ | Honest post-mortem |
-
-**Tier 2 Free Pack**: XOnset Vol. 1 (drum kit pack, 6 kits)
-
-**Notes**: The "Failed Experiments" post type is high-trust content. Producers respond strongly to honesty about dead ends. Write it without hedging.
+**Milestone goal:** 25 T2 subscribers by April 30.
 
 ---
 
-### June 2026 — Early Summer
+### May 2026 — Characters
 
-**Theme**: Sound design for warm weather.
+**Theme:** The two sides of XO_OX — feliX vs. Oscar
 
-| Post | Tier | Type |
-|---|---|---|
-| Behind the Scenes: The XO_OX Field Guide — what we're building | Tier 1+ | Written |
-| Tutorial: Bright, airy kits — DNA targeting brightness > 7 | Tier 2+ | Deep-dive |
-| DNA Challenge #001 results + winner feature | Public | Challenge results |
-| DNA Challenge #002 announced | Public | Challenge brief |
+**Pack (T2 free):** Signature Keys — melodic lead programs from OddfeliX (neon tetra precision) and OddOscar (axolotl warmth). Keygroup format, full velocity layer treatment.
 
-**Tier 2 Free Pack**: XOpal Granular Textures Vol. 1 (atmospheric, bright — seasonal fit)
+**Posts:**
+1. **Deep-dive: OddfeliX + OddOscar** — the origin of the feliX-Oscar axis, how the two characters shape everything else in XOmnibus.
+2. **Making of Signature Keys** — why these two engines were chosen first for keygroup format, what the render process exposed.
+3. **T1 exclusive: April Challenge Results** — showcase community submissions, Kai's notes on what stood out.
+4. **First community challenge results post** — public-facing, links to showcase tracks.
 
-**Notes**: Summer is texture season. OPAL and OVERDUB are the right engines to push in June–July. The Field Guide behind-the-scenes is a strong June post — sets up the content flywheel explanation.
-
----
-
-### July 2026 — Travel Pack Season
-
-**Theme**: The Travel + Water collection arrives.
-
-| Post | Tier | Type |
-|---|---|---|
-| Behind the Scenes: Designing kits for the Travel collection | Tier 1+ | Written |
-| Tutorial: OCEANIC — how the shore system works | Tier 2+ | Deep-dive |
-| "Making Of": Recording source samples for Sail (Woodwind pack) | Tier 2+ | Video or detailed written post |
-| DNA Challenge #002 results | Public | Challenge results |
-
-**Tier 2 Free Pack**: Sail — XOceanic Woodwind Kits Vol. 1
-
-**Notes**: Travel pack season is the big commercial moment of the summer. Tier 2 free pack should be the flagship kit from the Sail line — this is a preview for non-subscribers, not a lesser version.
+**Discord:** First monthly voting round — June pack topic.
 
 ---
 
-### August 2026
+### June 2026 — Constellation
 
-**Theme**: Community grows.
+**Theme:** Engines that play together
 
-| Post | Tier | Type |
-|---|---|---|
-| Behind the Scenes: The first community-grown kits (Seed + Grow results) | Tier 1+ | Written |
-| Tutorial: How to grow a seed kit — walkthrough | Tier 2+ | Deep-dive + example XPN |
-| Seed Kit #001 released | Public | Free download |
-| DNA Challenge #003 announced | Public | Challenge brief |
+**Pack (T2 free):** Constellation Pack — one program per Constellation engine (OHM, ORPHICA, OBBLIGATO, OTTONI, OLE), pre-arranged for simultaneous multi-program loading.
 
-**Tier 2 Free Pack**: XOverdub Dub Textures — The Tape Series Vol. 1
+**Posts:**
+1. **Behind the Scenes: How we design 5 engines that play together** — the Constellation brief, the BOND/DRAMA/COMMUNE/GROW macro languages, how 5 distinct identities form a coherent family.
+2. **Making of Constellation Pack** — the challenge of rendering 5 engines into XPN format while preserving their coupling relationships in static samples.
+3. **T1 exclusive: The Rejected Engine** — the engine concept that didn't make the Constellation family and why.
 
-**Notes**: August is community infrastructure month. The Seed Kit release and the first community-grown kit showcase should land in the same week — the before/after story writes itself.
+**Discord:** June community challenge posted: "Build a track using at least 3 Constellation engines."
 
 ---
 
-### September 2026 — Back to Work Season
+### July 2026 — Kitchen Essentials
 
-**Theme**: Production-ready tools for serious producers.
+**Theme:** The culinary collection — sound design as recipe
 
-| Post | Tier | Type |
-|---|---|---|
-| Behind the Scenes: The XPN tool suite — 8 tools explained | Tier 1+ | Written |
-| Tutorial: Oxport batch export workflow | Tier 2+ | Deep-dive |
-| DNA Challenge #003 results | Public | Challenge results |
-| "Why I chose this engine": OVERBITE deep-dive | Tier 2+ | Engine character essay |
+**Pack (T2 free):** Kitchen Essentials Vol. 1 — first 6-engine quad from the culinary collection. Drum programs + melody programs, curated for the culinary aesthetic.
 
-**Tier 2 Free Pack**: XOverbite Character Kits Vol. 1 (dense, aggressive — season shift toward autumn)
-
-**Notes**: September packs should shift from bright/airy summer toward heavier, denser material. OVERBITE is the right engine here — Fang White character, production-ready.
+**Posts:**
+1. **Making-of series, Part 1: The Concept** — where the culinary collection came from, the Voice × FX Recipe × Wildcard architecture, what it means for sound design.
+2. **Making-of series, Part 2: The Engines** — which engines were chosen and why, how the culinary metaphors map to synthesis decisions.
+3. **Making-of series, Part 3: The Presets** — the specific presets that define each "dish," the DNA choices, the velocity layer decisions.
+4. **T1 exclusive: The Menu That Didn't Make It** — rejected culinary collection concepts.
 
 ---
 
-### October 2026 — Atmospheric Season
+### August 2026 — Community + Field Guide
 
-**Theme**: Dark, moving, tension.
+**Theme:** Mid-year check-in
 
-| Post | Tier | Type |
-|---|---|---|
-| Behind the Scenes: Aquarium — 29 engines across 9 depth zones | Tier 1+ | Written |
-| Tutorial: Building tension with DNA — movement < 3, tension > 7 | Tier 2+ | Deep-dive |
-| DNA Challenge #004 announced | Public | Challenge brief ("Frozen Engine Room") |
-| Failed Experiments: The presets that didn't make it into XOdyssey | Tier 2+ | Post-mortem |
+**Pack:** No new paid pack this month — consolidation month.
 
-**Tier 2 Free Pack**: XOdyssey Atmospheric Drones Vol. 1
+**Posts:**
+1. **Mid-year check-in** — what's been built, what's coming, honest status on V1 scope.
+2. **Community challenge results: Constellation engines** — the best submissions, Kai's notes.
+3. **Field Guide cross-post** — republish or excerpt a Field Guide entry relevant to Patreon producers. Introduce the Field Guide to patrons who don't know it.
+4. **T1 exclusive: What's in the V1 pipeline** — the engines and packs coming in the next 6 months.
 
-**Notes**: October is atmospheric engine season. ODYSSEY, ORCA, OCEANDEEP are the engines for this month's content. The depth zone framing from the Aquarium is good October content — dark, layered, going deeper.
-
----
-
-### November 2026
-
-**Theme**: Constellation engines arrive publicly.
-
-| Post | Tier | Type |
-|---|---|---|
-| Behind the Scenes: The Constellation Fast Track — building 5 engines in one sprint | Tier 1+ | Written |
-| Tutorial: OHM macro system — MEDDLING vs COMMUNE | Tier 2+ | Deep-dive |
-| DNA Challenge #004 results | Public | Challenge results |
-| "Making Of": XOttoni — Triple Brass engine | Tier 2+ | Engine origin story |
-
-**Tier 2 Free Pack**: XOhm + XOlé Afro-Latin Ensemble Kits Vol. 1
-
-**Notes**: Constellation engines (OHM, ORPHICA, OBBLIGATO, OTTONI, OLE) are the November story. They were built fast and they are good — that is the narrative. The sprint story is compelling content.
+**Subscriber milestone:** Celebrate first milestone (25/50/100 T2 subscribers reached — whichever is next).
 
 ---
 
-### December 2026 — Winter / End of Year
+### September 2026 — MPCe Native
 
-**Theme**: Reflection + the ecosystem.
+**Theme:** The future of hardware integration
 
-| Post | Tier | Type |
-|---|---|---|
-| Behind the Scenes: Year 1 in review — what we built, what we learned | Tier 1+ | Written |
-| Tutorial: Coupling presets — cross-engine modulation deep-dive | Tier 2+ | Deep-dive |
-| Community highlight reel: Best DNA Challenge submissions of 2026 | Public | Curated showcase |
-| DNA Challenge #005 announced — Year-End Retrospective edition | Public | Challenge brief |
+**Pack (T2 free):** MPCe Native Pack — designed specifically for the MPCe's 3D pressure-sensitive pads. Quad-corner architecture, XY pad morphing, pressure-velocity integration.
 
-**Tier 2 Free Pack**: XOmnibus Coupling Collection Vol. 1 (cross-engine Entangled mood presets)
-
-**Notes**: December is gratitude and reflection. The Year 1 review post is the most important written post of the year — it should be honest, specific, and forward-looking. No marketing language.
+**Posts:**
+1. **Technical deep-dive: Designing for 3D pads** — the MPCe's pressure and XY data, how XO_OX packs take advantage of it, what that means for performance.
+2. **Making of MPCe Native Pack** — the rendering pipeline for 3D pad packs, the difference from standard velocity layer packs.
+3. **T1 exclusive: The workflow that broke our assumptions** — something we discovered during MPCe Native development that changed how we think about XPN format.
 
 ---
 
-### January 2027 — New Year Push
+### October 2026 — Tools
 
-**Theme**: V2 horizons + community expansion.
+**Theme:** The infrastructure behind XO_OX
 
-| Post | Tier | Type |
-|---|---|---|
-| Behind the Scenes: V2 scope preview — what's coming next | Tier 1+ | Written |
-| Tutorial: ORGANON — metabolic synthesis deep-dive | Tier 2+ | Deep-dive |
-| DNA Challenge #005 results | Public | Challenge results |
-| Tier vote: Which engine gets a free pack in Q1 2027? | Tier 2+ | Community vote |
+**Pack:** No paid pack — tech showcase month.
 
-**Tier 2 Free Pack**: XOstinato Communal Drum Circle Vol. 1 (if OSTINATO ships by January)
+**Posts:**
+1. **Fleet Render Automation reveal** — public announcement of the automated pack rendering pipeline. What it does, why it exists, what it enables.
+2. **Tier 3 preview: New Oxport tools** — T3 patrons get early builds. T1/T2 get the preview post. What's coming in Oxport 2.x.
+3. **Behind the scenes: How we build 150 presets per engine** — the Sonic DNA spread methodology, the curated-versus-automated balance, the quality passes.
+4. **T1 exclusive: Tools we built and abandoned** — internal tools that didn't survive, what they taught us.
 
-**Notes**: January is momentum. New Year energy is real and the "what's coming" post converts well. The community vote for Q1 pack is a strong engagement mechanic to open the year.
-
----
-
-### February 2027
-
-**Theme**: The Field Guide flywheel in full effect.
-
-| Post | Tier | Type |
-|---|---|---|
-| Behind the Scenes: The Guru Bin pilgrimage — 7 retreats complete | Tier 1+ | Written |
-| Tutorial: Preset deconstruction — anatomy of a Foundation-mood preset | Tier 2+ | Deep-dive |
-| DNA Challenge #006 announced | Public | Challenge brief |
-| "Why I chose this engine": ORACLE — GENDY stochastic synthesis | Tier 2+ | Engine character essay |
-
-**Tier 2 Free Pack**: XOracle Stochastic Textures Vol. 1
+**Discord:** October community challenge: "Build using only XO_OX + your MPC, no external samples."
 
 ---
 
-### March 2027 — Year 1 Complete
+### November 2026 — Black Friday
 
-**Theme**: The XO_OX ecosystem — where we stand.
+**Theme:** Acknowledgment and celebration
 
-| Post | Tier | Type |
-|---|---|---|
-| Behind the Scenes: 12 months of XO_OX Patreon — the honest numbers | Tier 1+ | Written |
-| Tutorial: Community Marketplace launch — how to submit a seed kit | Tier 2+ | Deep-dive |
-| DNA Challenge #006 results + Year 1 DNA Challenge retrospective | Public | Results + analysis |
-| V1 scope announcement — 38 engines confirmed | Public | Product announcement |
+**Pack (all tiers + public):** Black Friday Bundle — curated pack of best-of 2026, free to all T2+ (deep discount for public).
 
-**Tier 2 Free Pack**: Community Pack Vol. 1 — Best of Year 1 community submissions
-
-**Notes**: March 2027 is a pivot post: Year 1 closes, the community marketplace launches, V1 scope is announced. The "honest numbers" post is essential — share subscriber counts, pack revenue, community stats. Trust is built with specifics.
+**Posts:**
+1. **Annual results post** — by the numbers: packs shipped, presets built, engines completed, community challenge highlights.
+2. **Subscriber milestone celebration** — wherever the count landed, acknowledge it sincerely.
+3. **Black Friday context post** — why the Bundle was curated this way, what it represents as a year-end statement.
+4. **T1 exclusive: 2027 roadmap early access** — the year ahead, with honest uncertainty where it exists.
 
 ---
 
-## 3. Launch Mechanics
+### December 2026 — Holiday
 
-### Pre-Launch Goal
+**Theme:** Atmosphere and generosity
 
-**25 Tier 2 subscribers = break-even**. At $15/month × 25 = $375/month. Monthly pack costs ~$150 in production time. Discord runs free. The math works at 25.
+**Pack (free to all tiers + public):** Holiday atmospheric pack — high-space, high-movement, Oscar-biased. Free to everyone including non-patrons. A gift.
 
-**Target at 3 months**: 50 Tier 2, 15 Tier 3, 100 Tier 1. Monthly revenue: ~$1,200. This funds 1–2 pack cycles per month and basic platform costs.
-
-### Pre-Launch Sequence (March 2026)
-
-1. **March 20**: Patreon page goes live (no tiers active yet — "coming April 1" landing page)
-2. **March 25**: Email to XO-OX.org mailing list — "XO_OX Patreon is launching April 1"
-3. **March 28**: Field Guide teaser post — "Why we're building a Patreon" (links to Patreon pre-launch page)
-4. **April 1**: Tiers activate. Launch post goes live.
-5. **April 3–5**: Discord launch + live Q&A (within first week — energy window is short)
-
-### Launch Post: "Why XO_OX Patreon Exists"
-
-This is the most important piece of writing in the launch. It should answer three questions:
-
-1. What is XO_OX and why does it exist? (Not "we make synths" — the actual reason)
-2. Why Patreon, not a different model? (Direct answer: no ads, no algorithm, no label deal)
-3. What do you get, and why does that matter to your music? (Concrete, specific)
-
-Tone: direct, not effusive. No superlatives. No "excited to announce." Write it like a producer talking to another producer.
-
-### First Exclusive: Private Discord Launch + Live Q&A
-
-- Discord opens to Tier 2+ on April 1 simultaneously with Patreon launch
-- Live Q&A on April 3, 8pm ET: Joshua + community team, open questions for 90 minutes
-- The Q&A is not scripted. It is a conversation. Hard questions are welcome.
-- Recording posted to Patreon for Tier 2+ who couldn't attend
+**Posts:**
+1. **Year-in-review** — the year from a sound design perspective: what changed, what got better, what surprised us.
+2. **T1 exclusive: Kai's personal listening list** — music made by patrons or artists using XO_OX in 2026, curated by Kai.
+3. **Field Guide cross-post** — end-of-year essay, meditative.
 
 ---
 
-## 4. Content Types That Work for Music Production Patreons
+### January 2027 — V2 Horizon
 
-### "Making Of" — Sound Design Session Recording
+**Theme:** What comes next
 
-**Format**: Video or detailed written walkthrough of a single sound design session. One engine, one goal, raw process.
+**Pack:** No paid pack — futures month.
 
-**Why it works**: Producers learn by watching other producers work. The imperfect moments are more instructive than the polished result. Show the wrong turns.
+**Posts:**
+1. **V2 teaser** — first public signal of where XOmnibus goes in Version 2. Concepts, not commitments.
+2. **Community feedback round** — structured questionnaire for patrons: what worked in 2026, what's missing, what they want built next.
+3. **T1 exclusive: The debates we're not settled on** — the ongoing design tensions inside XO_OX, the questions we're still arguing about.
 
-**Cadence**: 1 per month, Tier 2+. Video is ideal; written with screenshots is acceptable.
-
-**Example**: "Making the OVERBITE kick in 40 minutes — what I tried, what worked, what I threw away."
-
-### Preset Deconstruction Posts
-
-**Format**: Take one finished preset. Pull it apart parameter by parameter. Explain every decision.
-
-**Why it works**: Producers want to understand the vocabulary, not just copy settings. A preset deconstruction teaches the thinking, not just the result.
-
-**Cadence**: 1–2 per month, Tier 2+. Written, with embedded audio comparisons where possible.
-
-**Example**: "Anatomy of 'Brine Circuit' — how this ONSET preset uses velocity to shift from snare to texture."
-
-### "Why I Chose This Engine" Deep-Dives
-
-**Format**: Personal essay, 600–1000 words. No technical specs. Just: what is this engine for, when do I reach for it, what does it do to a track.
-
-**Why it works**: This is the voice content that builds loyalty. It is not documentation — it is point of view. Producers want to know how you think.
-
-**Cadence**: 1 per month, Tier 2+. Written.
-
-**Example**: "Why I chose ORACLE for the OPENSKY coupling chain — and why nothing else would have worked."
-
-### Failed Experiments
-
-**Format**: What didn't work and why. Be specific. No redemption arc required.
-
-**Why it works**: Most Patreon content is aspirational. Failed experiments are rare and high-trust. Producers remember the posts where you admitted something didn't work. That is the content that gets forwarded.
-
-**Cadence**: 1 per quarter, Tier 2+. Written.
-
-**Example**: "The XOdyssey preset pack we cut — 12 presets that didn't survive the final listen and why."
-
-### Monthly Community Challenge Results
-
-**Format**: Showcase 3–5 submissions with specific feedback on what worked and what didn't. Not just "winner announced" — actual critique.
-
-**Why it works**: The losers read this post as carefully as the winner does. Specific feedback is the content. Generic praise is not.
-
-**Cadence**: Monthly, Public (drives challenge participation from non-subscribers).
+**Discord:** January community challenge: "Build something you couldn't have built without an XO_OX pack."
 
 ---
 
-## 5. Integration with Field Guide: The Flywheel Strategy
+### February 2027 — World Instruments
 
-### The Flywheel
+**Theme:** The collections preview
 
-```
-Field Guide post (public, free)
-        |
-        | "go deeper on Patreon"
-        v
-Patreon post (paid, deeper)
-        |
-        | "read the Field Guide background"
-        v
-Field Guide post (public, free)
-        |
-        | cycle continues
-```
+**Pack (T2 free):** World Instruments Preview Pack — early samples from the Travel/Water/Vessels and Artwork/Color collections. Sail, Industrial, Leisure, Historical themes.
 
-Every Field Guide post ends with a one-line Patreon link: "If you want to go deeper on this, the Patreon post this month covers [specific thing]."
-
-Every Patreon post references a Field Guide article for context: "The background on the OCEANIC shore system is in the Field Guide — this post assumes you've read it."
-
-### Specific Pairings (April–September 2026)
-
-| Month | Field Guide Article | Patreon Post |
-|---|---|---|
-| April | "What is Sonic DNA?" (public) | "How we assign DNA in production" (Tier 2) |
-| May | "ONSET: The Drum Machine Doctrine" (public) | "ONSET velocity layering — what we do and why" (Tier 2) |
-| June | "The XO_OX Field Guide: What We're Building" (public) | "Field Guide production notes — why we write this way" (Tier 2) |
-| July | "The Water Column Atlas — Travel Collection" (public) | "Making Of: Sail source sample sessions" (Tier 2) |
-| August | "Growing a Kit: Community as Co-Creator" (public) | "How to grow a seed kit — walkthrough" (Tier 2) |
-| September | "Oxport: Why We Built a Pack Export Tool" (public) | "Oxport batch export workflow" (Tier 2) |
-
-### Why This Works
-
-The Field Guide is free and public — it builds the audience. Patreon is the depth layer — it converts the audience into subscribers. Neither works as well alone. The Field Guide without Patreon has no business model. Patreon without the Field Guide has no top-of-funnel.
-
-The flywheel only works if both layers are genuinely good. A weak Field Guide article does not convert. A Patreon post that is just "more of the same" does not retain. The content must be differentiated by depth, not just by access.
+**Posts:**
+1. **Collections deep-dive: World instruments** — the research behind the collections, the cultural and historical references, what synthesis approaches serve world instrument authenticity.
+2. **Making of World Instruments Preview** — the specific instruments chosen, the DSP decisions, how character is preserved at the XPN format level.
+3. **T1 exclusive: The instruments we researched and couldn't build** — honest account of limits and decisions.
 
 ---
 
-## Open Questions
+### March 2027 — One Year
 
-1. **Pack sourcing for Tier 2**: Who decides which pack is free each month? Product team decision or community vote? Recommendation: product team decides (pack programming is an editorial function, not a democracy), but community votes on the theme for the following quarter.
+**Theme:** Anthology and retrospective
 
-2. **Discord moderation**: Who moderates the Tier 2 Discord? Barry OB's team is the answer, but what are the moderation guidelines? This needs a one-page community standards document before Discord launches.
+**Pack (T2 free):** Anthology Vol. 1 — definitive curated selection of the year's best programs across all pack categories.
 
-3. **Tier 3 capacity**: 50 Studio members is the Year 1 cap. What happens when it fills? Waitlist, or waitlist with priority for long-term Tier 2 members? Recommendation: waitlist with priority for 6+ months Tier 2.
-
-4. **Video production**: Several content types ("Making Of") are stronger as video. Does XO_OX have video production capacity? If not, written + screenshots is acceptable but not ideal. This is a resource planning question, not a content question.
-
-5. **Pack ownership**: When a Tier 2 subscriber receives a free pack, do they own it permanently even if they cancel? Answer must be yes (industry standard) and must be written into the Patreon description clearly.
-
-6. **Patreon URL**: The current placeholder is `patreon.com/xoox`. This must be confirmed/claimed before the March 20 pre-launch page goes live.
+**Posts:**
+1. **Anthology Vol. 1 launch post** — the curatorial decisions, what makes these the definitive versions.
+2. **One-year retrospective** — what the Patreon built, what the community contributed, where the money went, what's possible now that wasn't in March 2026.
+3. **T1 exclusive: Year 2 full roadmap** — detailed, honest, honest about uncertainty.
+4. **Community challenge results archive** — full year of challenges compiled into one reference post.
 
 ---
 
-*End of Document*
+## Launch Mechanics
+
+### Pre-Launch Goal: 25 T2 Subscribers
+
+The Patreon launch should not go live before this threshold is reached or publicly committed by enough community members. 25 T2 subscribers at $15/month = $375/month — enough to cover hosting, tools, and demonstrate the model is viable before committing to a monthly pack production schedule.
+
+**Pre-launch actions:**
+1. Build the Patreon page to completion: all tier descriptions written, all benefits clearly stated, at least 3 preview posts visible to potential subscribers before the page goes public.
+2. Announce across all channels (XO-OX.org, Field Guide, Discord if active): "Patreon launches when we hit 25 committed producers. Here's where to follow."
+3. Launch ONSET Drum Essentials simultaneously with the Patreon launch — the first T2 free pack must be available on day one. No launch without a pack.
+
+### Launch Post Template
+
+> **Why XO_OX Patreon exists**
+>
+> [2–3 paragraphs: honest account of what it costs to build this many engines, how Patreon enables the V1 scope, what recurring funding means for the pace of development and the quality of the tools]
+>
+> [1 paragraph: what patrons get — the three tiers summarized plainly, the break-even logic explained without embarrassment]
+>
+> [1 paragraph: what this is not — not a Kickstarter, not a subscription to access features that should be free, not a paywall around the core instrument. XOmnibus stays free. The Patreon is for people who want to go deeper.]
+>
+> [Call to action: link to tiers, link to ONSET Drum Essentials as first free pack, link to Field Guide for context]
+
+---
+
+## Content Types That Work
+
+**Making Of videos** (T1 + T2): screen recordings of the pack build process, synthesis parameter changes, velocity layer render comparisons. Short (5–15 min). The most shareable content type. Easy to produce during normal work sessions by recording the existing workflow.
+
+**Preset deconstruction posts** (all tiers): pick one preset from the month's pack, explain every parameter choice. Why this filter cutoff. Why this envelope shape. What the Sonic DNA values mean for how it sits in a mix. These build producer knowledge directly and demonstrate the depth of design behind each pack.
+
+**Failed experiments** (T1 exclusive): the sounds that didn't make the pack and why they were rejected. This is the most honest and interesting content type in any creative practice. Rejection criteria reveal design philosophy more clearly than success stories. Producers who see the rejected versions understand the chosen ones at a deeper level.
+
+**Monthly challenge results** (all tiers + public): community tracks using XO_OX packs. A mix of showcase (the best submissions highlighted) and honest reflection (what the challenge revealed about how producers are actually using the tools). These posts are the social proof that the tools work in real production contexts.
+
+---
+
+## Integration with Field Guide
+
+The Field Guide (14 published posts, 16 planned as of March 2026) is the public-facing educational content. The Patreon is the behind-the-scenes layer. They are designed to work together as a reinforcing system:
+
+- **Field Guide posts are public and permanent.** They teach the concepts. They establish XO_OX's intellectual authority in synthesis education. They are indexed by search engines and referenced externally.
+- **Patreon posts are exclusive and intimate.** They show the process. They reveal the thinking behind the concepts. They are the reason to subscribe.
+
+**The linking protocol:**
+- Every Field Guide post includes a callout: "The making-of process behind this topic is in the Patreon archive."
+- Every Patreon post links to the Field Guide article that covers the foundational concept.
+
+**The flywheel this creates:**
+1. New readers discover XO_OX through Field Guide articles (search, shares, reference links)
+2. Field Guide readers discover Patreon via callouts
+3. Patreon subscribers become community members who submit to challenges
+4. Challenge results become Field Guide content showcasing real producer outcomes
+5. That content brings new readers → cycle accelerates
+
+Plant the flywheel in April 2026. The compounding effect of content cross-referencing is worth more than any individual post or pack.
