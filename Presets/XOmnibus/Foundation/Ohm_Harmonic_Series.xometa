@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Ohm Harmonic Series",
+  "mood": "Foundation",
+  "engines": [
+    "Ohm"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Pure harmonic series at rest. Overtones stacked on one root.",
+  "tags": [
+    "harmonic",
+    "tone",
+    "anchor-tone",
+    "anchor",
+    "series",
+    "foundation",
+    "drone"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ohm": {}
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.75,
+    "movement": 0.25,
+    "density": 0.7,
+    "space": 0.35,
+    "aggression": 0.15
+  }
+}

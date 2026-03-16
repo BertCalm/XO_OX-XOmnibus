@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Bedrock Stomp",
+  "mood": "Foundation",
+  "engines": [
+    "Oblong"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dense sub kick stomp. The floor beneath the floor.",
+  "tags": [
+    "kick",
+    "bedrock",
+    "sub",
+    "bedrock-bass",
+    "foundation",
+    "bass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oblong": {
+      "ob_drive": 0.7,
+      "ob_body": 0.9,
+      "ob_tone": 0.15,
+      "ob_decay": 0.45,
+      "ob_sub": 0.95
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.75,
+    "movement": 0.2,
+    "density": 0.95,
+    "space": 0.1,
+    "aggression": 0.65
+  }
+}

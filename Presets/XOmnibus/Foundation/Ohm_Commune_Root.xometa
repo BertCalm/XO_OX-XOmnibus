@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Ohm Commune Root",
+  "mood": "Foundation",
+  "engines": [
+    "Ohm"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The drone that holds the commune together. Warm, inclusive.",
+  "tags": [
+    "tone",
+    "commune",
+    "anchor-tone",
+    "anchor",
+    "foundation",
+    "drone"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ohm": {}
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.8,
+    "movement": 0.25,
+    "density": 0.65,
+    "space": 0.4,
+    "aggression": 0.15
+  }
+}

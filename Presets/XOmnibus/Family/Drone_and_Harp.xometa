@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Drone and Harp",
+  "mood": "Family",
+  "engines": [
+    "OHM",
+    "ORPHICA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OHM commune drone + ORPHICA siphonophore harp \u2014 the meditation circle. Sustained resonance beneath shimmering grain scatter. The practice.",
+  "tags": [
+    "family",
+    "reunion",
+    "duo",
+    "portrait",
+    "drone",
+    "microsound",
+    "meditative",
+    "batch3-reunion"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.68,
+    "movement": 0.48,
+    "density": 0.45,
+    "space": 0.82,
+    "aggression": 0.12
+  }
+}

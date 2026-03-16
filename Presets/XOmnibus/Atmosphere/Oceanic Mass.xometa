@@ -1,0 +1,31 @@
+{
+  "name": "Oceanic Mass",
+  "version": "1.0",
+  "engines": [
+    "OVERDUB"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.309,
+    "MOVEMENT": 0.234,
+    "COUPLING": 0.0,
+    "SPACE": 0.909
+  },
+  "sonic_dna": {
+    "brightness": 0.18,
+    "warmth": 0.439,
+    "movement": 0.234,
+    "density": 0.514,
+    "space": 0.909,
+    "aggression": 0.084
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "pad",
+    "ambient",
+    "deep",
+    "vast"
+  ],
+  "description": "The basin as instrument. Bottomless resonance, infinite sustain."
+}

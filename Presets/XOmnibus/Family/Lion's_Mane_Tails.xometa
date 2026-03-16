@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Lion's Mane Tails",
+  "mood": "Family",
+  "engines": [
+    "OVERLAP"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERLAP KNOT topology \u2014 FDN tails overlapping. The jellyfish whose tendrils never fully separate. Endless interweave.",
+  "tags": [
+    "family",
+    "extended-family",
+    "portrait",
+    "reverb",
+    "knot",
+    "spatial",
+    "batch2-extended"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "TAIL",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.55,
+    "movement": 0.62,
+    "density": 0.72,
+    "space": 0.88,
+    "aggression": 0.22
+  }
+}

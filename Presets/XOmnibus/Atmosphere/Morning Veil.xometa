@@ -1,0 +1,31 @@
+{
+  "name": "Morning Veil",
+  "version": "1.0",
+  "engines": [
+    "OCEANIC"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.791,
+    "MOVEMENT": 0.261,
+    "COUPLING": 0.0,
+    "SPACE": 0.754
+  },
+  "sonic_dna": {
+    "brightness": 0.796,
+    "warmth": 0.786,
+    "movement": 0.261,
+    "density": 0.6,
+    "space": 0.754,
+    "aggression": 0.011
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "pad",
+    "ambient",
+    "dawn",
+    "gentle"
+  ],
+  "description": "Copper warmth spreads across the canopy. The day arrives without announcement."
+}

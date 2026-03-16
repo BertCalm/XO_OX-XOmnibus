@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Orphica Shard",
+  "mood": "Prism",
+  "engines": [
+    "Orphica"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Microsound harp struck at crystalline frequencies — grain-sized shards of pure light.",
+  "tags": [
+    "crystal",
+    "orphica",
+    "shard",
+    "microsound",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Orphica",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_stringTension": 0.728,
+      "orph_microsoundDensity": 0.221,
+      "orph_grainRate": 1.6,
+      "orph_grainScatter": 0.15,
+      "orph_filterCutoff": 16830.0,
+      "orph_filterReso": 0.083,
+      "orph_reverbMix": 0.689,
+      "orph_ampAttack": 0.0066,
+      "orph_ampDecay": 1.306,
+      "orph_ampSustain": 0.793,
+      "orph_ampRelease": 2.444,
+      "orph_stereoWidth": 0.903,
+      "orph_level": 0.77,
+      "orph_macroCharacter": 0.746,
+      "orph_macroMovement": 0.3,
+      "orph_macroCoupling": 0.0,
+      "orph_macroSpace": 0.84
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.91,
+    "warmth": 0.11,
+    "movement": 0.3,
+    "density": 0.22,
+    "space": 0.84,
+    "aggression": 0.07
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Spotted Hunter",
+  "mood": "Family",
+  "engines": [
+    "OCELOT"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OCELOT in motion \u2014 HUNT macro engaged, agility full. Quick attack, precise placement, feline economy of movement.",
+  "tags": [
+    "family",
+    "signature",
+    "portrait",
+    "canonical",
+    "percussive",
+    "agile",
+    "feline",
+    "batch1-signatures"
+  ],
+  "macroLabels": [
+    "HUNT",
+    "AGILITY",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.5,
+    "movement": 0.82,
+    "density": 0.4,
+    "space": 0.52,
+    "aggression": 0.5
+  }
+}

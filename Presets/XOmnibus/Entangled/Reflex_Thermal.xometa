@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Reflex Thermal",
+  "mood": "Entangled",
+  "engines": [
+    "Overbite",
+    "Oceanic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERBITE fang punctures OCEANIC bioluminescent column. Abyssal bite.",
+  "tags": [
+    "overbite",
+    "oceanic",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": 105,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overbite": {
+      "poss_macro1": 0.321,
+      "poss_macro2": 0.348,
+      "poss_macro3": 0.658,
+      "poss_macro4": 0.38,
+      "poss_couplingOut": 0.787,
+      "poss_couplingIn": 0.413,
+      "poss_outputLevel": 0.774,
+      "poss_outputPan": 0.024,
+      "poss_biteDepth": 0.873,
+      "poss_fangAttack": 0.168,
+      "poss_gnashAmt": 0.608,
+      "poss_snapRelease": 0.641
+    },
+    "Oceanic": {
+      "ocean_macro1": 0.697,
+      "ocean_macro2": 0.62,
+      "ocean_macro3": 0.527,
+      "ocean_macro4": 0.662,
+      "ocean_couplingOut": 0.453,
+      "ocean_couplingIn": 0.486,
+      "ocean_outputLevel": 0.819,
+      "ocean_outputPan": 0.019
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Oceanic",
+        "type": "pitch_follow",
+        "amount": 0.464
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.573,
+    "movement": 0.613,
+    "density": 0.617,
+    "space": 0.514,
+    "aggression": 0.511
+  }
+}

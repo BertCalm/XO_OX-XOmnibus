@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Lockjaw Surge",
+  "mood": "Entangled",
+  "engines": [
+    "Overbite",
+    "Ole"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERBITE reflex strikes OLEL\u00c9 drama pulse. Bitten flamencoid surge.",
+  "tags": [
+    "overbite",
+    "ole",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": 115,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overbite": {
+      "poss_macro1": 0.609,
+      "poss_macro2": 0.665,
+      "poss_macro3": 0.495,
+      "poss_macro4": 0.439,
+      "poss_couplingOut": 0.659,
+      "poss_couplingIn": 0.775,
+      "poss_outputLevel": 0.866,
+      "poss_outputPan": 0.002,
+      "poss_biteDepth": 0.585,
+      "poss_fangAttack": 0.225,
+      "poss_gnashAmt": 0.309,
+      "poss_snapRelease": 0.55
+    },
+    "Ole": {
+      "ole_macro1": 0.372,
+      "ole_macro2": 0.34,
+      "ole_macro3": 0.397,
+      "ole_macro4": 0.567,
+      "ole_couplingOut": 0.746,
+      "ole_couplingIn": 0.625,
+      "ole_outputLevel": 0.841,
+      "ole_outputPan": -0.001
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Ole",
+        "type": "harmonic_lock",
+        "amount": 0.598
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.538,
+    "warmth": 0.653,
+    "movement": 0.598,
+    "density": 0.653,
+    "space": 0.438,
+    "aggression": 0.561
+  }
+}

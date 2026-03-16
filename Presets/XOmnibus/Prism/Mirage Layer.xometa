@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Mirage Layer",
+  "mood": "Prism",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Thermal mirage bends the horizon — shimmering tonal layer in constant motion.",
+  "tags": [
+    "refraction",
+    "mirage",
+    "thermal",
+    "wavering",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Overworld",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_eraBlend": 0.608,
+      "ow_oscillatorMix": 0.56,
+      "ow_glitchIntensity": 0.05,
+      "ow_filterCutoff": 14400.0,
+      "ow_filterReso": 0.13,
+      "ow_lfoRate": 4.4,
+      "ow_lfoDepth": 0.287,
+      "ow_reverbMix": 0.488,
+      "ow_ampAttack": 0.0136,
+      "ow_ampDecay": 0.875,
+      "ow_ampSustain": 0.716,
+      "ow_ampRelease": 1.75,
+      "ow_stereoWidth": 0.788,
+      "ow_level": 0.8,
+      "ow_macroCharacter": 0.57,
+      "ow_macroMovement": 0.82,
+      "ow_macroCoupling": 0.0,
+      "ow_macroSpace": 0.75
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.38,
+    "movement": 0.82,
+    "density": 0.46,
+    "space": 0.75,
+    "aggression": 0.2
+  }
+}

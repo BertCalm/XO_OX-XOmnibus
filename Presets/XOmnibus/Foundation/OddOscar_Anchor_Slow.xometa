@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "OddOscar Anchor Slow",
+  "mood": "Foundation",
+  "engines": [
+    "OddOscar"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Oscar in his slowest aspect. A held tone that lasts.",
+  "tags": [
+    "tone",
+    "oscar",
+    "anchor-tone",
+    "anchor",
+    "slow",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OddOscar": {}
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.8,
+    "movement": 0.2,
+    "density": 0.7,
+    "space": 0.3,
+    "aggression": 0.2
+  }
+}

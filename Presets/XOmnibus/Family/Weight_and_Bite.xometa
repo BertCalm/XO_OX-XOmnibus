@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Weight and Bite",
+  "mood": "Family",
+  "engines": [
+    "OBESE",
+    "OVERBITE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE sub weight + OVERBITE warm fang \u2014 the low end family reunion. Mass below, character above. The bass section has arrived.",
+  "tags": [
+    "family",
+    "reunion",
+    "duo",
+    "portrait",
+    "bass",
+    "sub",
+    "heavy",
+    "batch3-reunion"
+  ],
+  "macroLabels": [
+    "WEIGHT",
+    "GRIT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.68,
+    "movement": 0.28,
+    "density": 0.82,
+    "space": 0.38,
+    "aggression": 0.58
+  }
+}

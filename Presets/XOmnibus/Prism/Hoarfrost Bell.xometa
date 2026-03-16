@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Hoarfrost Bell",
+  "mood": "Prism",
+  "engines": [
+    "Osprey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Hoarfrost on bell metal at dawn — delicate crystal ringing in cold still air.",
+  "tags": [
+    "crystal",
+    "hoarfrost",
+    "bell",
+    "delicate",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Osprey",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Osprey": {
+      "osprey_soarHeight": 0.748,
+      "osprey_wingFlutter": 0.13,
+      "osprey_thermalDrift": 1.31,
+      "osprey_filterCutoff": 16440.0,
+      "osprey_filterReso": 0.101,
+      "osprey_reverbMix": 0.68,
+      "osprey_ampAttack": 0.0076,
+      "osprey_ampDecay": 1.265,
+      "osprey_ampSustain": 0.784,
+      "osprey_ampRelease": 2.36,
+      "osprey_stereoWidth": 0.89,
+      "osprey_level": 0.77,
+      "osprey_macroCharacter": 0.704,
+      "osprey_macroMovement": 0.26,
+      "osprey_macroCoupling": 0.0,
+      "osprey_macroSpace": 0.85
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.14,
+    "movement": 0.26,
+    "density": 0.2,
+    "space": 0.85,
+    "aggression": 0.06
+  }
+}

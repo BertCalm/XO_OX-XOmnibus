@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Ottoni Low Unison",
+  "mood": "Foundation",
+  "engines": [
+    "Ottoni"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "All three brass in low unison. The anchor chord.",
+  "tags": [
+    "brass",
+    "tone",
+    "anchor-tone",
+    "unison",
+    "anchor",
+    "chord",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ottoni": {}
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.8,
+    "movement": 0.2,
+    "density": 0.8,
+    "space": 0.3,
+    "aggression": 0.25
+  }
+}

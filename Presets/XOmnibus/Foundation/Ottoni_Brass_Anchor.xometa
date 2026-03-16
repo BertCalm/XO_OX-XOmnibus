@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Ottoni Brass Anchor",
+  "mood": "Foundation",
+  "engines": [
+    "Ottoni"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Triple brass voiced low and wide. The harmonic floor.",
+  "tags": [
+    "harmonic",
+    "tone",
+    "brass",
+    "anchor-tone",
+    "anchor",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ottoni": {}
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.75,
+    "movement": 0.3,
+    "density": 0.7,
+    "space": 0.35,
+    "aggression": 0.3
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Rose Canopy",
+  "version": "1.0",
+  "engines": [
+    "OPAL"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.708,
+    "MOVEMENT": 0.123,
+    "COUPLING": 0.0,
+    "SPACE": 0.825
+  },
+  "sonic_dna": {
+    "brightness": 0.717,
+    "warmth": 0.7,
+    "movement": 0.123,
+    "density": 0.452,
+    "space": 0.825,
+    "aggression": 0.09
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "pad",
+    "ambient",
+    "dawn",
+    "gentle"
+  ],
+  "description": "Something golden and weightless. A chord built from early light."
+}

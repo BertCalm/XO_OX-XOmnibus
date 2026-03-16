@@ -1,0 +1,31 @@
+{
+  "name": "Dew Thread",
+  "version": "1.0",
+  "engines": [
+    "ORPHICA"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.74,
+    "MOVEMENT": 0.152,
+    "COUPLING": 0.0,
+    "SPACE": 0.878
+  },
+  "sonic_dna": {
+    "brightness": 0.698,
+    "warmth": 0.783,
+    "movement": 0.152,
+    "density": 0.426,
+    "space": 0.878,
+    "aggression": 0.072
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "pad",
+    "ambient",
+    "dawn",
+    "gentle"
+  ],
+  "description": "Orchid mist over a still lake. Warmth accumulates with no sharp edges."
+}

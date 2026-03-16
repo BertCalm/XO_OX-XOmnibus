@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Clip Mantric",
+  "mood": "Entangled",
+  "engines": [
+    "Obese",
+    "Ohm"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE drive softened by OHM commune warmth. Hot hippie, sage and girth.",
+  "tags": [
+    "obese",
+    "ohm",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": 100,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obese": {
+      "fat_macro1": 0.314,
+      "fat_macro2": 0.335,
+      "fat_macro3": 0.422,
+      "fat_macro4": 0.342,
+      "fat_couplingOut": 0.578,
+      "fat_couplingIn": 0.427,
+      "fat_outputLevel": 0.914,
+      "fat_outputPan": -0.029,
+      "fat_satDrive": 0.563,
+      "fat_mojoCtrl": 0.699,
+      "fat_analog": 0.908,
+      "fat_digital": 0.879,
+      "fat_compress": 0.483
+    },
+    "Ohm": {
+      "ohm_macro1": 0.687,
+      "ohm_macro2": 0.553,
+      "ohm_macro3": 0.516,
+      "ohm_macro4": 0.376,
+      "ohm_couplingOut": 0.49,
+      "ohm_couplingIn": 0.652,
+      "ohm_outputLevel": 0.783,
+      "ohm_outputPan": -0.032
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Ohm",
+        "type": "envelope_share",
+        "amount": 0.519
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.506,
+    "warmth": 0.761,
+    "movement": 0.546,
+    "density": 0.687,
+    "space": 0.545,
+    "aggression": 0.526
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Solar Harmonic",
+  "mood": "Prism",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Solar spectrum folded into harmonic structure — ordered radiance, folded tight.",
+  "tags": [
+    "spectral",
+    "solar",
+    "harmonic",
+    "warm-bright",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Origami",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldDepth": 0.675,
+      "origami_creaseScan": 0.168,
+      "origami_unfoldRate": 1.476,
+      "origami_filterCutoff": 16150.0,
+      "origami_filterReso": 0.104,
+      "origami_reverbMix": 0.475,
+      "origami_ampAttack": 0.009,
+      "origami_ampDecay": 0.978,
+      "origami_ampSustain": 0.75,
+      "origami_ampRelease": 1.89,
+      "origami_stereoWidth": 0.784,
+      "origami_level": 0.78,
+      "origami_macroCharacter": 0.738,
+      "origami_macroMovement": 0.28,
+      "origami_macroCoupling": 0.0,
+      "origami_macroSpace": 0.66
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.2,
+    "movement": 0.28,
+    "density": 0.36,
+    "space": 0.66,
+    "aggression": 0.12
+  }
+}

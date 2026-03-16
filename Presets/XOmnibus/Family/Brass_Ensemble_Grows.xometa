@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Brass Ensemble Grows",
+  "mood": "Family",
+  "engines": [
+    "OTTONI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OTTONI GROW macro engaged \u2014 triple brass building. The crescendo of an ensemble that finds its size.",
+  "tags": [
+    "family",
+    "extended-family",
+    "portrait",
+    "brass",
+    "ensemble",
+    "powerful",
+    "batch2-extended"
+  ],
+  "macroLabels": [
+    "GROW",
+    "BRASS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.58,
+    "movement": 0.55,
+    "density": 0.72,
+    "space": 0.5,
+    "aggression": 0.55
+  }
+}

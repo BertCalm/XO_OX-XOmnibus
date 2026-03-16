@@ -1,0 +1,31 @@
+{
+  "name": "Abyssal Calm",
+  "version": "1.0",
+  "engines": [
+    "OVERDUB"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.325,
+    "MOVEMENT": 0.152,
+    "COUPLING": 0.0,
+    "SPACE": 0.962
+  },
+  "sonic_dna": {
+    "brightness": 0.152,
+    "warmth": 0.497,
+    "movement": 0.152,
+    "density": 0.748,
+    "space": 0.962,
+    "aggression": 0.056
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "pad",
+    "ambient",
+    "deep",
+    "vast"
+  ],
+  "description": "Three hundred meters below. No light, only pressure and resonance."
+}

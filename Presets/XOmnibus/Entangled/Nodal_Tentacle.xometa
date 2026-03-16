@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Nodal Tentacle",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Octopus"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ORBITAL phase spread activates OCTOPUS chromatophore arm depth. Radial alien cycle.",
+  "tags": [
+    "orbital",
+    "octopus",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": 130,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_macro1": 0.467,
+      "orb_macro2": 0.373,
+      "orb_macro3": 0.543,
+      "orb_macro4": 0.411,
+      "orb_couplingOut": 0.539,
+      "orb_couplingIn": 0.53,
+      "orb_outputLevel": 0.81,
+      "orb_outputPan": 0.029,
+      "orb_groupEnv": 0.789,
+      "orb_phaseSpread": 0.768,
+      "orb_arcDecay": 0.385,
+      "orb_harmonicAmt": 0.724,
+      "orb_resonantPeak": 0.36
+    },
+    "Octopus": {
+      "octo_macro1": 0.591,
+      "octo_macro2": 0.665,
+      "octo_macro3": 0.475,
+      "octo_macro4": 0.575,
+      "octo_couplingOut": 0.596,
+      "octo_couplingIn": 0.505,
+      "octo_outputLevel": 0.821,
+      "octo_outputPan": 0.029
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Octopus",
+        "type": "harmonic_lock",
+        "amount": 0.792
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.632,
+    "warmth": 0.521,
+    "movement": 0.665,
+    "density": 0.646,
+    "space": 0.491,
+    "aggression": 0.579
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Interference Tone",
+  "mood": "Prism",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Two pure tones in constructive interference — standing wave of perfect clarity.",
+  "tags": [
+    "spectral",
+    "interference",
+    "tonal",
+    "precise",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Oblique",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oblique": {
+      "oblique_angle": 0.616,
+      "oblique_harmonicDrift": 0.135,
+      "oblique_lfoRate": 1.626,
+      "oblique_lfoDepth": 0.081,
+      "oblique_filterCutoff": 15060.0,
+      "oblique_filterReso": 0.153,
+      "oblique_reverbMix": 0.49,
+      "oblique_ampAttack": 0.0084,
+      "oblique_ampDecay": 0.925,
+      "oblique_ampSustain": 0.746,
+      "oblique_ampRelease": 1.83,
+      "oblique_stereoWidth": 0.794,
+      "oblique_level": 0.79,
+      "oblique_macroCharacter": 0.686,
+      "oblique_macroMovement": 0.27,
+      "oblique_macroCoupling": 0.0,
+      "oblique_macroSpace": 0.7
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.18,
+    "movement": 0.27,
+    "density": 0.4,
+    "space": 0.7,
+    "aggression": 0.15
+  }
+}

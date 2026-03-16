@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Parallax Organic",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Organon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ORBITAL metabolic rate couples to ORGANON variational free energy. Living orbit.",
+  "tags": [
+    "orbital",
+    "organon",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": 90,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_macro1": 0.475,
+      "orb_macro2": 0.579,
+      "orb_macro3": 0.629,
+      "orb_macro4": 0.337,
+      "orb_couplingOut": 0.63,
+      "orb_couplingIn": 0.705,
+      "orb_outputLevel": 0.807,
+      "orb_outputPan": -0.013,
+      "orb_groupEnv": 0.344,
+      "orb_phaseSpread": 0.504,
+      "orb_arcDecay": 0.378,
+      "orb_harmonicAmt": 0.593,
+      "orb_resonantPeak": 0.211
+    },
+    "Organon": {
+      "organon_macro1": 0.678,
+      "organon_macro2": 0.561,
+      "organon_macro3": 0.372,
+      "organon_macro4": 0.512,
+      "organon_couplingOut": 0.506,
+      "organon_couplingIn": 0.577,
+      "organon_outputLevel": 0.891,
+      "organon_outputPan": 0.026
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Organon",
+        "type": "timbral_blend",
+        "amount": 0.709
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.609,
+    "warmth": 0.598,
+    "movement": 0.599,
+    "density": 0.634,
+    "space": 0.506,
+    "aggression": 0.465
+  }
+}

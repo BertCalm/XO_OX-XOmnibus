@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Overdub Tape Sub",
+  "mood": "Foundation",
+  "engines": [
+    "Overdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Tape-saturated sub. The warmth is load-bearing.",
+  "tags": [
+    "bedrock",
+    "tape",
+    "sub",
+    "bedrock-bass",
+    "foundation",
+    "bass",
+    "warmth"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overdub": {
+      "dub_delay_mix": 0.05,
+      "dub_tape_drive": 0.8,
+      "dub_bass_resonance": 0.6,
+      "dub_send_vca": 0.3,
+      "dub_warmth": 0.95
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.95,
+    "movement": 0.15,
+    "density": 0.85,
+    "space": 0.2,
+    "aggression": 0.4
+  }
+}

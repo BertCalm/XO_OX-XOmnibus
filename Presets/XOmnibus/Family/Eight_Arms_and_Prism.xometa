@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Eight Arms and Prism",
+  "mood": "Family",
+  "engines": [
+    "OCTOPUS",
+    "OPTIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OCTOPUS distributed intelligence + OPTIC prismatic light \u2014 the problem solver and the spectrum. Eight arms catching every frequency.",
+  "tags": [
+    "family",
+    "reunion",
+    "duo",
+    "portrait",
+    "chaos",
+    "light",
+    "intelligence",
+    "batch3-reunion"
+  ],
+  "macroLabels": [
+    "ARMS",
+    "ADAPT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.48,
+    "movement": 0.82,
+    "density": 0.58,
+    "space": 0.55,
+    "aggression": 0.45
+  }
+}

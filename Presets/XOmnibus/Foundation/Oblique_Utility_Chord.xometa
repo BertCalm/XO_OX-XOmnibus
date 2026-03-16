@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Oblique Utility Chord",
+  "mood": "Foundation",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Slightly off-angle chord voicing that sits in every mix.",
+  "tags": [
+    "work-horse",
+    "utility",
+    "oblique",
+    "chord",
+    "foundation",
+    "workhorse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oblique": {}
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.45,
+    "density": 0.7,
+    "space": 0.35,
+    "aggression": 0.3
+  }
+}

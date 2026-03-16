@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Orphica Frost",
+  "mood": "Prism",
+  "engines": [
+    "Orphica"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Frost grain microsounds in crystalline suspension — orphic harp at maximum brightness.",
+  "tags": [
+    "crystal",
+    "orphica",
+    "frost",
+    "grain",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Orphica",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orphica": {
+      "orph_stringTension": 0.752,
+      "orph_microsoundDensity": 0.218,
+      "orph_grainRate": 1.68,
+      "orph_grainScatter": 0.16,
+      "orph_filterCutoff": 17220.0,
+      "orph_filterReso": 0.081,
+      "orph_reverbMix": 0.722,
+      "orph_ampAttack": 0.0054,
+      "orph_ampDecay": 1.342,
+      "orph_ampSustain": 0.802,
+      "orph_ampRelease": 2.508,
+      "orph_stereoWidth": 0.92,
+      "orph_level": 0.77,
+      "orph_macroCharacter": 0.771,
+      "orph_macroMovement": 0.32,
+      "orph_macroCoupling": 0.0,
+      "orph_macroSpace": 0.88
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.94,
+    "warmth": 0.08,
+    "movement": 0.32,
+    "density": 0.18,
+    "space": 0.88,
+    "aggression": 0.06
+  }
+}

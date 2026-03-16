@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Prismatic Dawn",
+  "mood": "Prism",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "First light splitting through atmospheric crystal — chromatic dawn chorus.",
+  "tags": [
+    "spectral",
+    "dawn",
+    "bright",
+    "airy",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Overworld",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_eraBlend": 0.704,
+      "ow_oscillatorMix": 0.53,
+      "ow_glitchIntensity": 0.025,
+      "ow_filterCutoff": 16200.0,
+      "ow_filterReso": 0.105,
+      "ow_lfoRate": 1.7,
+      "ow_lfoDepth": 0.098,
+      "ow_reverbMix": 0.442,
+      "ow_ampAttack": 0.0088,
+      "ow_ampDecay": 0.826,
+      "ow_ampSustain": 0.758,
+      "ow_ampRelease": 1.652,
+      "ow_stereoWidth": 0.756,
+      "ow_level": 0.8,
+      "ow_macroCharacter": 0.66,
+      "ow_macroMovement": 0.28,
+      "ow_macroCoupling": 0.0,
+      "ow_macroSpace": 0.68
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.22,
+    "movement": 0.28,
+    "density": 0.38,
+    "space": 0.68,
+    "aggression": 0.1
+  }
+}

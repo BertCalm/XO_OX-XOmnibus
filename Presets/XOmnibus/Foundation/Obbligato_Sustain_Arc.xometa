@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Obbligato Sustain Arc",
+  "mood": "Foundation",
+  "engines": [
+    "Obbligato"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Long sustain across both wind voices. Harmonic arch.",
+  "tags": [
+    "sustain",
+    "arc",
+    "tone",
+    "anchor-tone",
+    "anchor",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obbligato": {}
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.75,
+    "movement": 0.25,
+    "density": 0.7,
+    "space": 0.35,
+    "aggression": 0.2
+  }
+}

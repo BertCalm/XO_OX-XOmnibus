@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Dispersive Wave",
+  "mood": "Prism",
+  "engines": [
+    "OddFelix"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Wave dispersion in motion — high frequencies race ahead in prismatic scatter.",
+  "tags": [
+    "refraction",
+    "dispersive",
+    "wave",
+    "spreading",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "OddFelix",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OddFelix": {
+      "oddfelix_harmonicBlend": 0.72,
+      "oddfelix_spectralTilt": 0.56,
+      "oddfelix_pitchMod": 0.312,
+      "oddfelix_lfoRate": 4.01,
+      "oddfelix_lfoDepth": 0.234,
+      "oddfelix_reverbMix": 0.455,
+      "oddfelix_filterCutoff": 15200.0,
+      "oddfelix_filterReso": 0.154,
+      "oddfelix_ampAttack": 0.013,
+      "oddfelix_ampDecay": 0.92,
+      "oddfelix_ampSustain": 0.74,
+      "oddfelix_ampRelease": 1.775,
+      "oddfelix_stereoWidth": 0.76,
+      "oddfelix_level": 0.8,
+      "oddfelix_macroCharacter": 0.64,
+      "oddfelix_macroMovement": 0.78,
+      "oddfelix_macroCoupling": 0.0,
+      "oddfelix_macroSpace": 0.65
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.28,
+    "movement": 0.78,
+    "density": 0.44,
+    "space": 0.65,
+    "aggression": 0.18
+  }
+}

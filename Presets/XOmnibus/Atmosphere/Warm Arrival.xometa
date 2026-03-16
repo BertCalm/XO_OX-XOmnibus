@@ -1,0 +1,31 @@
+{
+  "name": "Warm Arrival",
+  "version": "1.0",
+  "engines": [
+    "ORACLE"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.736,
+    "MOVEMENT": 0.187,
+    "COUPLING": 0.0,
+    "SPACE": 0.681
+  },
+  "sonic_dna": {
+    "brightness": 0.696,
+    "warmth": 0.777,
+    "movement": 0.187,
+    "density": 0.388,
+    "space": 0.681,
+    "aggression": 0.005
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "pad",
+    "ambient",
+    "dawn",
+    "gentle"
+  ],
+  "description": "Where the river meets the open sky. Warmth and space in perfect equilibrium."
+}

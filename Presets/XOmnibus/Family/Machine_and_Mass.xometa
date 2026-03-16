@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Machine and Mass",
+  "mood": "Family",
+  "engines": [
+    "ONSET",
+    "OBLONG"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ONSET percussion + OBLONG chord mass \u2014 the rhythm section reunion. The groove laid, the harmony placed. Production essentials.",
+  "tags": [
+    "family",
+    "reunion",
+    "duo",
+    "portrait",
+    "drums",
+    "chords",
+    "rhythm",
+    "batch3-reunion"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.42,
+    "movement": 0.78,
+    "density": 0.72,
+    "space": 0.4,
+    "aggression": 0.52
+  }
+}

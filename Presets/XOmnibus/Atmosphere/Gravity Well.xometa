@@ -1,0 +1,31 @@
+{
+  "name": "Gravity Well",
+  "version": "1.0",
+  "engines": [
+    "OWLFISH"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.345,
+    "MOVEMENT": 0.117,
+    "COUPLING": 0.0,
+    "SPACE": 0.936
+  },
+  "sonic_dna": {
+    "brightness": 0.204,
+    "warmth": 0.487,
+    "movement": 0.117,
+    "density": 0.679,
+    "space": 0.936,
+    "aggression": 0.007
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "pad",
+    "ambient",
+    "deep",
+    "vast"
+  ],
+  "description": "Hadal zone gravity. Sound compresses. Everything hums at a lower register."
+}

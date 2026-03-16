@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Wool Vector",
+  "mood": "Entangled",
+  "engines": [
+    "Obese",
+    "Oblique"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE mojo warmth into OBLIQUE prism refraction. Off-axis saturated bounce.",
+  "tags": [
+    "obese",
+    "oblique",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": 130,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obese": {
+      "fat_macro1": 0.389,
+      "fat_macro2": 0.496,
+      "fat_macro3": 0.303,
+      "fat_macro4": 0.371,
+      "fat_couplingOut": 0.492,
+      "fat_couplingIn": 0.754,
+      "fat_outputLevel": 0.769,
+      "fat_outputPan": -0.025,
+      "fat_satDrive": 0.414,
+      "fat_mojoCtrl": 0.637,
+      "fat_analog": 0.776,
+      "fat_digital": 0.321,
+      "fat_compress": 0.457
+    },
+    "Oblique": {
+      "oblq_macro1": 0.667,
+      "oblq_macro2": 0.311,
+      "oblq_macro3": 0.315,
+      "oblq_macro4": 0.568,
+      "oblq_couplingOut": 0.732,
+      "oblq_couplingIn": 0.53,
+      "oblq_outputLevel": 0.809,
+      "oblq_outputPan": 0.016
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Oblique",
+        "type": "filter_modulation",
+        "amount": 0.64
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.576,
+    "warmth": 0.597,
+    "movement": 0.677,
+    "density": 0.684,
+    "space": 0.49,
+    "aggression": 0.601
+  }
+}

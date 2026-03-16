@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Aureole Drift",
+  "mood": "Prism",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Luminous halo drifts in slow spectral tide — prismatic aureole in open space.",
+  "tags": [
+    "spectral",
+    "aureole",
+    "drift",
+    "halo",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Oblique",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oblique": {
+      "oblique_angle": 0.581,
+      "oblique_harmonicDrift": 0.17,
+      "oblique_lfoRate": 1.892,
+      "oblique_lfoDepth": 0.102,
+      "oblique_filterCutoff": 14460.0,
+      "oblique_filterReso": 0.144,
+      "oblique_reverbMix": 0.546,
+      "oblique_ampAttack": 0.0107,
+      "oblique_ampDecay": 0.985,
+      "oblique_ampSustain": 0.732,
+      "oblique_ampRelease": 1.942,
+      "oblique_stereoWidth": 0.828,
+      "oblique_level": 0.79,
+      "oblique_macroCharacter": 0.647,
+      "oblique_macroMovement": 0.34,
+      "oblique_macroCoupling": 0.0,
+      "oblique_macroSpace": 0.78
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.83,
+    "warmth": 0.27,
+    "movement": 0.34,
+    "density": 0.36,
+    "space": 0.78,
+    "aggression": 0.11
+  }
+}

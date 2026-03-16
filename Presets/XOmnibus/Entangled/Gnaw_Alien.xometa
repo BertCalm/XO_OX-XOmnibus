@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Gnaw Alien",
+  "mood": "Entangled",
+  "engines": [
+    "Overbite",
+    "Octopus"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERBITE tusk activates OCTOPUS ink cloud defense. Reflex arc entanglement.",
+  "tags": [
+    "overbite",
+    "octopus",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": 110,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overbite": {
+      "poss_macro1": 0.47,
+      "poss_macro2": 0.518,
+      "poss_macro3": 0.445,
+      "poss_macro4": 0.611,
+      "poss_couplingOut": 0.515,
+      "poss_couplingIn": 0.447,
+      "poss_outputLevel": 0.757,
+      "poss_outputPan": 0.037,
+      "poss_biteDepth": 0.812,
+      "poss_fangAttack": 0.166,
+      "poss_gnashAmt": 0.792,
+      "poss_snapRelease": 0.327
+    },
+    "Octopus": {
+      "octo_macro1": 0.316,
+      "octo_macro2": 0.515,
+      "octo_macro3": 0.498,
+      "octo_macro4": 0.394,
+      "octo_couplingOut": 0.687,
+      "octo_couplingIn": 0.724,
+      "octo_outputLevel": 0.914,
+      "octo_outputPan": 0.011
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Octopus",
+        "type": "spectral_cross",
+        "amount": 0.64
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.541,
+    "warmth": 0.563,
+    "movement": 0.616,
+    "density": 0.651,
+    "space": 0.488,
+    "aggression": 0.639
+  }
+}

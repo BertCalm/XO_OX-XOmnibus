@@ -1,0 +1,31 @@
+{
+  "name": "Orchid Haze",
+  "version": "1.0",
+  "engines": [
+    "OLE"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.71,
+    "MOVEMENT": 0.234,
+    "COUPLING": 0.0,
+    "SPACE": 0.84
+  },
+  "sonic_dna": {
+    "brightness": 0.709,
+    "warmth": 0.712,
+    "movement": 0.234,
+    "density": 0.392,
+    "space": 0.84,
+    "aggression": 0.075
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "pad",
+    "ambient",
+    "dawn",
+    "gentle"
+  ],
+  "description": "Rose light on stone. Ancient and gentle. A pad with geological patience."
+}

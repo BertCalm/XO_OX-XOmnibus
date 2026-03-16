@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "NES Kid",
+  "mood": "Family",
+  "engines": [
+    "OVERWORLD"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERWORLD full ERA mode \u2014 NES square waves in the room. The pixelated nostalgia of a cartridge that still boots. Warmth through 8-bit limitation.",
+  "tags": [
+    "family",
+    "signature",
+    "portrait",
+    "canonical",
+    "chip",
+    "retro",
+    "pixel",
+    "batch1-signatures"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.42,
+    "movement": 0.55,
+    "density": 0.5,
+    "space": 0.58,
+    "aggression": 0.3
+  }
+}

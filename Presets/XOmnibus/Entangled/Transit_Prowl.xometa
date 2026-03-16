@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Transit Prowl",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Ocelot"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ORBITAL phase spread tracks OCELOT territorial biome. A warm predatory cycle.",
+  "tags": [
+    "orbital",
+    "ocelot",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": 120,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_macro1": 0.632,
+      "orb_macro2": 0.469,
+      "orb_macro3": 0.661,
+      "orb_macro4": 0.518,
+      "orb_couplingOut": 0.644,
+      "orb_couplingIn": 0.762,
+      "orb_outputLevel": 0.756,
+      "orb_outputPan": 0.034,
+      "orb_groupEnv": 0.554,
+      "orb_phaseSpread": 0.725,
+      "orb_arcDecay": 0.363,
+      "orb_harmonicAmt": 0.373,
+      "orb_resonantPeak": 0.48
+    },
+    "Ocelot": {
+      "ocelot_macro1": 0.408,
+      "ocelot_macro2": 0.419,
+      "ocelot_macro3": 0.67,
+      "ocelot_macro4": 0.688,
+      "ocelot_couplingOut": 0.547,
+      "ocelot_couplingIn": 0.735,
+      "ocelot_outputLevel": 0.794,
+      "ocelot_outputPan": -0.027
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Ocelot",
+        "type": "timbral_blend",
+        "amount": 0.566
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.599,
+    "warmth": 0.638,
+    "movement": 0.612,
+    "density": 0.599,
+    "space": 0.555,
+    "aggression": 0.501
+  }
+}

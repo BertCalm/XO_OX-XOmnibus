@@ -1,0 +1,31 @@
+{
+  "name": "Below Surface",
+  "version": "1.0",
+  "engines": [
+    "ORGANON"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.336,
+    "MOVEMENT": 0.053,
+    "COUPLING": 0.0,
+    "SPACE": 0.916
+  },
+  "sonic_dna": {
+    "brightness": 0.182,
+    "warmth": 0.49,
+    "movement": 0.053,
+    "density": 0.5,
+    "space": 0.916,
+    "aggression": 0.093
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "pad",
+    "ambient",
+    "deep",
+    "vast"
+  ],
+  "description": "Abyssal plain stretching past comprehension. A drone built from fathoms."
+}

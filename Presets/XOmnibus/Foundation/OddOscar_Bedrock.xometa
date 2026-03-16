@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "OddOscar Bedrock",
+  "mood": "Foundation",
+  "engines": [
+    "OddOscar"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The pure Oscar descend. Sub below sub.",
+  "tags": [
+    "bedrock",
+    "oscar",
+    "sub",
+    "bedrock-bass",
+    "foundation",
+    "bass",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OddOscar": {}
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.75,
+    "movement": 0.15,
+    "density": 0.95,
+    "space": 0.1,
+    "aggression": 0.55
+  }
+}

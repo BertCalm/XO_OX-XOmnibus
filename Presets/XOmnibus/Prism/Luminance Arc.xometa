@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Luminance Arc",
+  "mood": "Prism",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Maximal luminance sweeps a gentle arc — spectral purity in slow motion.",
+  "tags": [
+    "spectral",
+    "luminance",
+    "arc",
+    "bright",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Overworld",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_eraBlend": 0.752,
+      "ow_oscillatorMix": 0.527,
+      "ow_glitchIntensity": 0.022,
+      "ow_filterCutoff": 17100.0,
+      "ow_filterReso": 0.103,
+      "ow_lfoRate": 1.6,
+      "ow_lfoDepth": 0.091,
+      "ow_reverbMix": 0.442,
+      "ow_ampAttack": 0.0064,
+      "ow_ampDecay": 0.826,
+      "ow_ampSustain": 0.779,
+      "ow_ampRelease": 1.652,
+      "ow_stereoWidth": 0.756,
+      "ow_level": 0.8,
+      "ow_macroCharacter": 0.705,
+      "ow_macroMovement": 0.26,
+      "ow_macroCoupling": 0.0,
+      "ow_macroSpace": 0.68
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.94,
+    "warmth": 0.12,
+    "movement": 0.26,
+    "density": 0.35,
+    "space": 0.68,
+    "aggression": 0.09
+  }
+}

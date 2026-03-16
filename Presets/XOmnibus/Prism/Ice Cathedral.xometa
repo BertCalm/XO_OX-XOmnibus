@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Ice Cathedral",
+  "mood": "Prism",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ice architecture on massive scale — vast cathedral of frozen crystal silence.",
+  "tags": [
+    "crystal",
+    "ice",
+    "cathedral",
+    "spacious",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Origami",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldDepth": 0.652,
+      "origami_creaseScan": 0.138,
+      "origami_unfoldRate": 1.266,
+      "origami_filterCutoff": 15745.0,
+      "origami_filterReso": 0.096,
+      "origami_reverbMix": 0.634,
+      "origami_ampAttack": 0.0102,
+      "origami_ampDecay": 1.154,
+      "origami_ampSustain": 0.741,
+      "origami_ampRelease": 2.22,
+      "origami_stereoWidth": 0.878,
+      "origami_level": 0.78,
+      "origami_macroCharacter": 0.713,
+      "origami_macroMovement": 0.23,
+      "origami_macroCoupling": 0.0,
+      "origami_macroSpace": 0.88
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.87,
+    "warmth": 0.15,
+    "movement": 0.23,
+    "density": 0.28,
+    "space": 0.88,
+    "aggression": 0.08
+  }
+}

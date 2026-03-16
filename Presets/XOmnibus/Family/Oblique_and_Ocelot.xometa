@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Oblique and Ocelot",
+  "mood": "Family",
+  "engines": [
+    "OBLIQUE",
+    "OCELOT"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBLIQUE off-axis + OCELOT feline precision \u2014 the unexpected angle and the precise strike. Two ways of not going straight.",
+  "tags": [
+    "family",
+    "reunion",
+    "duo",
+    "portrait",
+    "agile",
+    "unexpected",
+    "hunter",
+    "batch3-reunion"
+  ],
+  "macroLabels": [
+    "ANGLE",
+    "SKEW",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.5,
+    "movement": 0.72,
+    "density": 0.45,
+    "space": 0.6,
+    "aggression": 0.45
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Obsidian Point",
+  "mood": "Prism",
+  "engines": [
+    "Obsidian"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Volcanic glass worked to a razor point — crystalline precision at maximum brightness.",
+  "tags": [
+    "crystal",
+    "obsidian",
+    "point",
+    "sharp",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Obsidian",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_densityX": 0.76,
+      "obsidian_tiltY": 0.69,
+      "obsidian_depth": 0.868,
+      "obsidian_stiffness": 0.26,
+      "obsidian_cascadeBlend": 0.063,
+      "obsidian_crossModDepth": 0.036,
+      "obsidian_formantIntensity": 0.414,
+      "obsidian_stereoWidth": 0.815,
+      "obsidian_filterCutoff": 16960.0,
+      "obsidian_filterReso": 0.104,
+      "obsidian_level": 0.78,
+      "obsidian_ampAttack": 0.0062,
+      "obsidian_ampDecay": 1.1,
+      "obsidian_ampSustain": 0.756,
+      "obsidian_ampRelease": 1.95,
+      "obsidian_lfo1Rate": 1.4,
+      "obsidian_lfo1Depth": 0.045,
+      "obsidian_lfo1Shape": 2,
+      "obsidian_lfo2Rate": 0.84,
+      "obsidian_lfo2Depth": 0.027,
+      "obsidian_lfo2Shape": 0,
+      "obsidian_polyphony": 4,
+      "obsidian_glide": 0.0,
+      "obsidian_macroCharacter": 0.736,
+      "obsidian_macroMovement": 0.18,
+      "obsidian_macroCoupling": 0.0,
+      "obsidian_macroSpace": 0.75
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.1,
+    "movement": 0.18,
+    "density": 0.3,
+    "space": 0.75,
+    "aggression": 0.12
+  }
+}

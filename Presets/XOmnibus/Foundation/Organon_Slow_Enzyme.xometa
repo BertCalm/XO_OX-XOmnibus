@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Organon Slow Enzyme",
+  "mood": "Foundation",
+  "engines": [
+    "Organon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Metabolic rate dialed to minimum. Long-hold enzymatic warmth.",
+  "tags": [
+    "tone",
+    "anchor-tone",
+    "organon",
+    "anchor",
+    "slow",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 0.05,
+      "organon_enzymeSelect": 180.0,
+      "organon_catalystDrive": 0.5,
+      "organon_dampingCoeff": 0.2,
+      "organon_signalFlux": 0.75
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.9,
+    "movement": 0.15,
+    "density": 0.75,
+    "space": 0.25,
+    "aggression": 0.1
+  }
+}

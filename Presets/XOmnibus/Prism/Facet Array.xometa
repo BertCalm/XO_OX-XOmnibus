@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Facet Array",
+  "mood": "Prism",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Array of precisely cut facets — each one casting its own bright sliver of light.",
+  "tags": [
+    "crystal",
+    "facet",
+    "array",
+    "geometric",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Optic",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Optic": {
+      "optic_dispersion": 0.816,
+      "optic_chromaticShift": 0.576,
+      "optic_modulationRate": 1.552,
+      "optic_modulationDepth": 0.096,
+      "optic_filterCutoff": 17480.0,
+      "optic_filterReso": 0.118,
+      "optic_reverbMix": 0.585,
+      "optic_ampAttack": 0.0036,
+      "optic_ampDecay": 1.002,
+      "optic_ampSustain": 0.788,
+      "optic_ampRelease": 2.148,
+      "optic_stereoWidth": 0.862,
+      "optic_level": 0.78,
+      "optic_macroCharacter": 0.768,
+      "optic_macroMovement": 0.24,
+      "optic_macroCoupling": 0.0,
+      "optic_macroSpace": 0.78
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.96,
+    "warmth": 0.06,
+    "movement": 0.24,
+    "density": 0.28,
+    "space": 0.78,
+    "aggression": 0.09
+  }
+}

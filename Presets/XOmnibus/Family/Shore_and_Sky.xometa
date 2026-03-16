@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Shore and Sky",
+  "mood": "Family",
+  "engines": [
+    "OSPREY",
+    "OSTERIA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OSPREY clean air + OSTERIA table warmth \u2014 the Mediterranean reunion. Sea hawk diving toward the harbor where dinner is ready.",
+  "tags": [
+    "family",
+    "reunion",
+    "duo",
+    "portrait",
+    "Mediterranean",
+    "warm",
+    "outdoor",
+    "batch3-reunion"
+  ],
+  "macroLabels": [
+    "DIVE",
+    "CLARITY",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.72,
+    "movement": 0.72,
+    "density": 0.38,
+    "space": 0.65,
+    "aggression": 0.38
+  }
+}

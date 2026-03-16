@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Osprey Thermal Hold",
+  "mood": "Foundation",
+  "engines": [
+    "Osprey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Riding the thermal column. Effortless altitude maintenance.",
+  "tags": [
+    "thermal",
+    "glide",
+    "tone",
+    "anchor-tone",
+    "anchor",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Osprey": {}
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.75,
+    "movement": 0.3,
+    "density": 0.65,
+    "space": 0.4,
+    "aggression": 0.2
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Oscar Extended Warmth",
+  "mood": "Family",
+  "engines": [
+    "OddOscar"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Oscar in the extended family \u2014 the axolotl grown large. More bloom, more morph depth. The warmth that took years to develop.",
+  "tags": [
+    "family",
+    "extended-family",
+    "portrait",
+    "analog",
+    "warm",
+    "deep",
+    "batch2-extended"
+  ],
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.85,
+    "movement": 0.35,
+    "density": 0.62,
+    "space": 0.65,
+    "aggression": 0.12
+  }
+}

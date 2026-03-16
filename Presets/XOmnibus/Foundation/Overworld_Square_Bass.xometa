@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Overworld Square Bass",
+  "mood": "Foundation",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Genesis-era square wave bass. Genre-neutral foundation.",
+  "tags": [
+    "chip",
+    "work-horse",
+    "utility",
+    "foundation",
+    "bass",
+    "workhorse",
+    "square"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overworld": {}
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.45,
+    "movement": 0.45,
+    "density": 0.8,
+    "space": 0.2,
+    "aggression": 0.55
+  }
+}

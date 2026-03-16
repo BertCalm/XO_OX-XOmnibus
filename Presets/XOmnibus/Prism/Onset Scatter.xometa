@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Onset Scatter",
+  "mood": "Prism",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Percussive scatter through prismatic space — onset energy refracting into many angles.",
+  "tags": [
+    "refraction",
+    "onset",
+    "scatter",
+    "percussive",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Onset",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Onset": {
+      "onset_kickTone": 0.325,
+      "onset_snareSnap": 0.18,
+      "onset_hihatBrightness": 0.552,
+      "onset_machine": 0.66,
+      "onset_punch": 0.21,
+      "onset_space": 0.48,
+      "onset_mutate": 0.36,
+      "onset_level": 0.78,
+      "onset_macroCharacter": 0.455,
+      "onset_macroMovement": 0.9,
+      "onset_macroCoupling": 0.0,
+      "onset_macroSpace": 0.6
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.35,
+    "movement": 0.9,
+    "density": 0.55,
+    "space": 0.6,
+    "aggression": 0.3
+  }
+}

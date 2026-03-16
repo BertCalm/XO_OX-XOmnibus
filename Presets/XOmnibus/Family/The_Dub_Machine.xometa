@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "The Dub Machine",
+  "mood": "Family",
+  "engines": [
+    "OVERDUB"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERDUB in its element \u2014 drive warm, wobble riding the 2, send VCA open. Tape hiss present, spring reverb trailing. The machine breathes.",
+  "tags": [
+    "family",
+    "signature",
+    "portrait",
+    "canonical",
+    "dub",
+    "tape",
+    "saturated",
+    "batch1-signatures"
+  ],
+  "macroLabels": [
+    "DRIVE",
+    "WOBBLE",
+    "SEND",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.88,
+    "movement": 0.68,
+    "density": 0.65,
+    "space": 0.8,
+    "aggression": 0.28
+  }
+}

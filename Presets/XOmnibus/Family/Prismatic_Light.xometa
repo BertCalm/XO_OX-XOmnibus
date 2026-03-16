@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Prismatic Light",
+  "mood": "Family",
+  "engines": [
+    "OPTIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OPTIC at full spectrum \u2014 REFRACT open, brightness maximum. Light through a prism: every frequency present, each in its place.",
+  "tags": [
+    "family",
+    "signature",
+    "portrait",
+    "canonical",
+    "bright",
+    "spectral",
+    "light",
+    "batch1-signatures"
+  ],
+  "macroLabels": [
+    "SPECTRUM",
+    "REFRACT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.28,
+    "movement": 0.6,
+    "density": 0.38,
+    "space": 0.72,
+    "aggression": 0.28
+  }
+}

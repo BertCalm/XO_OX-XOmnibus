@@ -1,0 +1,31 @@
+{
+  "name": "Saffron Drift",
+  "version": "1.0",
+  "engines": [
+    "OLE"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.69,
+    "MOVEMENT": 0.158,
+    "COUPLING": 0.0,
+    "SPACE": 0.863
+  },
+  "sonic_dna": {
+    "brightness": 0.668,
+    "warmth": 0.711,
+    "movement": 0.158,
+    "density": 0.437,
+    "space": 0.863,
+    "aggression": 0.106
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "pad",
+    "ambient",
+    "dawn",
+    "gentle"
+  ],
+  "description": "Pale horizon giving way to saffron. A pad that breathes like morning itself."
+}

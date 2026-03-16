@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Origami Fold Pad",
+  "mood": "Foundation",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Crisp folded pad. Adaptable to any mix geometry.",
+  "tags": [
+    "fold",
+    "pad",
+    "work-horse",
+    "adaptable",
+    "utility",
+    "foundation",
+    "workhorse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Origami": {}
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.6,
+    "movement": 0.5,
+    "density": 0.7,
+    "space": 0.4,
+    "aggression": 0.3
+  }
+}

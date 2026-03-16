@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Frost Needle",
+  "mood": "Prism",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Single ice needle hanging in clear air — sparse crystalline tone of winter light.",
+  "tags": [
+    "crystal",
+    "frost",
+    "needle",
+    "sparse",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Overworld",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_eraBlend": 0.72,
+      "ow_oscillatorMix": 0.521,
+      "ow_glitchIntensity": 0.018,
+      "ow_filterCutoff": 16500.0,
+      "ow_filterReso": 0.098,
+      "ow_lfoRate": 1.3,
+      "ow_lfoDepth": 0.07,
+      "ow_reverbMix": 0.533,
+      "ow_ampAttack": 0.008,
+      "ow_ampDecay": 0.924,
+      "ow_ampSustain": 0.765,
+      "ow_ampRelease": 1.848,
+      "ow_stereoWidth": 0.819,
+      "ow_level": 0.8,
+      "ow_macroCharacter": 0.675,
+      "ow_macroMovement": 0.2,
+      "ow_macroCoupling": 0.0,
+      "ow_macroSpace": 0.82
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.12,
+    "movement": 0.2,
+    "density": 0.22,
+    "space": 0.82,
+    "aggression": 0.07
+  }
+}

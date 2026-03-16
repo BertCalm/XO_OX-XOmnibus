@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Organon Pillar Tone",
+  "mood": "Foundation",
+  "engines": [
+    "Organon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Enzymatic steady-state. A tone in metabolic balance.",
+  "tags": [
+    "tone",
+    "anchor-tone",
+    "organon",
+    "stable",
+    "anchor",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 0.15,
+      "organon_enzymeSelect": 200.0,
+      "organon_catalystDrive": 0.6,
+      "organon_dampingCoeff": 0.15,
+      "organon_signalFlux": 0.8
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.85,
+    "movement": 0.2,
+    "density": 0.7,
+    "space": 0.25,
+    "aggression": 0.15
+  }
+}

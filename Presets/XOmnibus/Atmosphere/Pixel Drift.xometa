@@ -1,0 +1,31 @@
+{
+  "name": "Pixel Drift",
+  "version": "1.0",
+  "engines": [
+    "ORIGAMI"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.482,
+    "MOVEMENT": 0.582,
+    "COUPLING": 0.0,
+    "SPACE": 0.633
+  },
+  "sonic_dna": {
+    "brightness": 0.852,
+    "warmth": 0.113,
+    "movement": 0.582,
+    "density": 0.569,
+    "space": 0.633,
+    "aggression": 0.133
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "pad",
+    "ambient",
+    "electric",
+    "phosphor"
+  ],
+  "description": "Pixel decay in slow motion. A signal losing integrity in beautiful increments."
+}

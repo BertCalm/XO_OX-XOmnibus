@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Angle of Incidence",
+  "mood": "Prism",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Precise angle of incidence — tones bend at the interface between two worlds.",
+  "tags": [
+    "refraction",
+    "angle",
+    "incident",
+    "bending",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Optic",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Optic": {
+      "optic_dispersion": 0.612,
+      "optic_chromaticShift": 0.432,
+      "optic_modulationRate": 4.24,
+      "optic_modulationDepth": 0.32,
+      "optic_filterCutoff": 14360.0,
+      "optic_filterReso": 0.14,
+      "optic_reverbMix": 0.51,
+      "optic_ampAttack": 0.0132,
+      "optic_ampDecay": 0.912,
+      "optic_ampSustain": 0.716,
+      "optic_ampRelease": 1.988,
+      "optic_stereoWidth": 0.822,
+      "optic_level": 0.78,
+      "optic_macroCharacter": 0.576,
+      "optic_macroMovement": 0.8,
+      "optic_macroCoupling": 0.0,
+      "optic_macroSpace": 0.68
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.3,
+    "movement": 0.8,
+    "density": 0.42,
+    "space": 0.68,
+    "aggression": 0.2
+  }
+}

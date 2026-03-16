@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Obese Slow Pressure",
+  "mood": "Foundation",
+  "engines": [
+    "Obese"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Slow-attack sub swell. Pressure builds like a diving bell.",
+  "tags": [
+    "pressure",
+    "bedrock",
+    "sub",
+    "slow",
+    "bedrock-bass",
+    "foundation",
+    "bass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obese": {
+      "ob_sub_gain": 0.85,
+      "ob_warmth": 0.9,
+      "ob_saturation": 0.4,
+      "ob_low_shelf": 0.9,
+      "ob_presence": 0.1
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.9,
+    "movement": 0.2,
+    "density": 0.85,
+    "space": 0.25,
+    "aggression": 0.45
+  }
+}

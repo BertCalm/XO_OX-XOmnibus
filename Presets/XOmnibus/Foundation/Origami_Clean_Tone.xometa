@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Origami Clean Tone",
+  "mood": "Foundation",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Unfolded and flat. The cleanest utility tone in the library.",
+  "tags": [
+    "tone",
+    "work-horse",
+    "clean",
+    "utility",
+    "foundation",
+    "workhorse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Origami": {}
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.55,
+    "movement": 0.45,
+    "density": 0.75,
+    "space": 0.3,
+    "aggression": 0.3
+  }
+}

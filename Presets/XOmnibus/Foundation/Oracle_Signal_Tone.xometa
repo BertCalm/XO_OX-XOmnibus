@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Oracle Signal Tone",
+  "mood": "Foundation",
+  "engines": [
+    "Oracle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Clear predictive tone. Bright and honest, no surprises.",
+  "tags": [
+    "clear",
+    "tone",
+    "work-horse",
+    "utility",
+    "foundation",
+    "workhorse",
+    "signal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oracle": {}
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.7,
+    "space": 0.3,
+    "aggression": 0.4
+  }
+}

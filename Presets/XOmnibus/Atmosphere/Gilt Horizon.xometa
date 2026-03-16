@@ -1,0 +1,31 @@
+{
+  "name": "Gilt Horizon",
+  "version": "1.0",
+  "engines": [
+    "ORPHICA"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.716,
+    "MOVEMENT": 0.257,
+    "COUPLING": 0.0,
+    "SPACE": 0.819
+  },
+  "sonic_dna": {
+    "brightness": 0.72,
+    "warmth": 0.711,
+    "movement": 0.257,
+    "density": 0.464,
+    "space": 0.819,
+    "aggression": 0.115
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "pad",
+    "ambient",
+    "dawn",
+    "gentle"
+  ],
+  "description": "Morning haze lifts through reeds. A rising brightness, nothing urgent."
+}

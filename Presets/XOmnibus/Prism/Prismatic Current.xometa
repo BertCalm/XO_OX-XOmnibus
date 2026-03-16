@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Prismatic Current",
+  "mood": "Prism",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Folded light currents in motion — prismatic flow that bends and returns.",
+  "tags": [
+    "refraction",
+    "prismatic",
+    "current",
+    "flowing",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Origami",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldDepth": 0.555,
+      "origami_creaseScan": 0.504,
+      "origami_unfoldRate": 3.828,
+      "origami_filterCutoff": 13990.0,
+      "origami_filterReso": 0.124,
+      "origami_reverbMix": 0.504,
+      "origami_ampAttack": 0.0154,
+      "origami_ampDecay": 1.01,
+      "origami_ampSustain": 0.702,
+      "origami_ampRelease": 1.95,
+      "origami_stereoWidth": 0.801,
+      "origami_level": 0.78,
+      "origami_macroCharacter": 0.607,
+      "origami_macroMovement": 0.84,
+      "origami_macroCoupling": 0.0,
+      "origami_macroSpace": 0.7
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.74,
+    "warmth": 0.36,
+    "movement": 0.84,
+    "density": 0.43,
+    "space": 0.7,
+    "aggression": 0.22
+  }
+}

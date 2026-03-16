@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Oceanic Extended Depth",
+  "mood": "Family",
+  "engines": [
+    "OCEANIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OCEANIC at maximum depth \u2014 the extended family portrait taken at the bottom of the water column. Pressure, beauty, silence between waves.",
+  "tags": [
+    "family",
+    "extended-family",
+    "portrait",
+    "ocean",
+    "pressure",
+    "vast",
+    "batch2-extended"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "SWELL",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.68,
+    "movement": 0.72,
+    "density": 0.65,
+    "space": 0.92,
+    "aggression": 0.18
+  }
+}

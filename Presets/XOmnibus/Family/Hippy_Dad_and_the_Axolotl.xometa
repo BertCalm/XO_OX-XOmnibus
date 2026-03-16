@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Hippy Dad and the Axolotl",
+  "mood": "Family",
+  "engines": [
+    "OHM",
+    "OddOscar"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OHM commune warmth + OddOscar regenerative bloom \u2014 the generational reunion. Father drone holding the room; Oscar breathing slow underneath.",
+  "tags": [
+    "family",
+    "reunion",
+    "duo",
+    "portrait",
+    "drone",
+    "warm",
+    "generational",
+    "batch3-reunion"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.82,
+    "movement": 0.3,
+    "density": 0.55,
+    "space": 0.72,
+    "aggression": 0.1
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Spectrum Peak",
+  "mood": "Prism",
+  "engines": [
+    "OddFelix"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Upper limit of tonal brightness — the spectral peak at full luminance.",
+  "tags": [
+    "spectral",
+    "peak",
+    "pure",
+    "maximal",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "OddFelix",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OddFelix": {
+      "oddfelix_harmonicBlend": 0.855,
+      "oddfelix_spectralTilt": 0.665,
+      "oddfelix_pitchMod": 0.088,
+      "oddfelix_lfoRate": 1.49,
+      "oddfelix_lfoDepth": 0.066,
+      "oddfelix_reverbMix": 0.448,
+      "oddfelix_filterCutoff": 17300.0,
+      "oddfelix_filterReso": 0.13,
+      "oddfelix_ampAttack": 0.0055,
+      "oddfelix_ampDecay": 0.912,
+      "oddfelix_ampSustain": 0.785,
+      "oddfelix_ampRelease": 1.76,
+      "oddfelix_stereoWidth": 0.756,
+      "oddfelix_level": 0.8,
+      "oddfelix_macroCharacter": 0.76,
+      "oddfelix_macroMovement": 0.22,
+      "oddfelix_macroCoupling": 0.0,
+      "oddfelix_macroSpace": 0.64
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.1,
+    "movement": 0.22,
+    "density": 0.35,
+    "space": 0.64,
+    "aggression": 0.1
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Ochre Field",
+  "version": "1.0",
+  "engines": [
+    "OSTERIA"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.641,
+    "MOVEMENT": 0.089,
+    "COUPLING": 0.0,
+    "SPACE": 0.566
+  },
+  "sonic_dna": {
+    "brightness": 0.294,
+    "warmth": 0.989,
+    "movement": 0.089,
+    "density": 0.852,
+    "space": 0.566,
+    "aggression": 0.065
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "drone",
+    "ambient",
+    "warm",
+    "thick"
+  ],
+  "description": "Ochre clay walls absorbing sound. A room that breathes as one drone."
+}

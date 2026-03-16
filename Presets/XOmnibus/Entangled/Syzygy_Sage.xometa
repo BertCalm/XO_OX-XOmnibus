@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Syzygy Sage",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Ohm"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ORBITAL cycle breathes through OHM commune warmth. Pastoral resonance drift.",
+  "tags": [
+    "orbital",
+    "ohm",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": 100,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_macro1": 0.599,
+      "orb_macro2": 0.604,
+      "orb_macro3": 0.601,
+      "orb_macro4": 0.535,
+      "orb_couplingOut": 0.568,
+      "orb_couplingIn": 0.674,
+      "orb_outputLevel": 0.898,
+      "orb_outputPan": -0.006,
+      "orb_groupEnv": 0.405,
+      "orb_phaseSpread": 0.56,
+      "orb_arcDecay": 0.805,
+      "orb_harmonicAmt": 0.725,
+      "orb_resonantPeak": 0.247
+    },
+    "Ohm": {
+      "ohm_macro1": 0.489,
+      "ohm_macro2": 0.381,
+      "ohm_macro3": 0.437,
+      "ohm_macro4": 0.388,
+      "ohm_couplingOut": 0.619,
+      "ohm_couplingIn": 0.471,
+      "ohm_outputLevel": 0.915,
+      "ohm_outputPan": 0.022
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Ohm",
+        "type": "harmonic_lock",
+        "amount": 0.609
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.558,
+    "warmth": 0.655,
+    "movement": 0.54,
+    "density": 0.64,
+    "space": 0.627,
+    "aggression": 0.387
+  }
+}

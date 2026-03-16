@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Pixels and Paper",
+  "mood": "Family",
+  "engines": [
+    "OVERWORLD",
+    "ORIGAMI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERWORLD chip voice + ORIGAMI paper fold \u2014 NES geometry meeting Japanese precision. Pixel and crease. The unlikely duo that works.",
+  "tags": [
+    "family",
+    "reunion",
+    "duo",
+    "portrait",
+    "chip",
+    "delicate",
+    "contrast",
+    "batch3-reunion"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Light",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.38,
+    "movement": 0.55,
+    "density": 0.45,
+    "space": 0.62,
+    "aggression": 0.3
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Orca Depth Charge",
+  "mood": "Foundation",
+  "engines": [
+    "Orca"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Low-frequency detonation. The orca surfaces briefly then plunges.",
+  "tags": [
+    "bedrock",
+    "sub",
+    "bedrock-bass",
+    "foundation",
+    "bass",
+    "orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orca": {}
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.7,
+    "movement": 0.35,
+    "density": 0.85,
+    "space": 0.2,
+    "aggression": 0.7
+  }
+}

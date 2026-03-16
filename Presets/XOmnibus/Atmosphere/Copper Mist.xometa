@@ -1,0 +1,31 @@
+{
+  "name": "Copper Mist",
+  "version": "1.0",
+  "engines": [
+    "OHM"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.654,
+    "MOVEMENT": 0.145,
+    "COUPLING": 0.0,
+    "SPACE": 0.615
+  },
+  "sonic_dna": {
+    "brightness": 0.704,
+    "warmth": 0.605,
+    "movement": 0.145,
+    "density": 0.339,
+    "space": 0.615,
+    "aggression": 0.106
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "pad",
+    "ambient",
+    "dawn",
+    "gentle"
+  ],
+  "description": "A slow opening \u2014 like watching a flower find the sun. Patient and luminous."
+}

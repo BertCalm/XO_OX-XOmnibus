@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Machine Groove Portrait",
+  "mood": "Family",
+  "engines": [
+    "ONSET"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ONSET full kit \u2014 MACHINE macro engaged, PUNCH present. The rhythm architect laying down its signature groove.",
+  "tags": [
+    "family",
+    "signature",
+    "portrait",
+    "canonical",
+    "drums",
+    "percussion",
+    "groove",
+    "batch1-signatures"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.42,
+    "movement": 0.85,
+    "density": 0.75,
+    "space": 0.4,
+    "aggression": 0.68
+  }
+}

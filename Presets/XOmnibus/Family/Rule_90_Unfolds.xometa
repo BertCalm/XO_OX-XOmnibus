@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Rule 90 Unfolds",
+  "mood": "Family",
+  "engines": [
+    "OUTWIT"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OUTWIT RULE 90 \u2014 the octopus outmaneuvering logic itself. Eight arms of cellular automata solving what shouldn't be solvable.",
+  "tags": [
+    "family",
+    "extended-family",
+    "portrait",
+    "cellular-automata",
+    "rule",
+    "pattern",
+    "batch2-extended"
+  ],
+  "macroLabels": [
+    "RULE",
+    "ARMS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.42,
+    "movement": 0.9,
+    "density": 0.62,
+    "space": 0.5,
+    "aggression": 0.58
+  }
+}

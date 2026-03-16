@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Felix Extended Take",
+  "mood": "Family",
+  "engines": [
+    "OddfeliX"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "feliX in the extended family portrait \u2014 older now, more complex. The snap sharper, the morph wider. Still neon, still tetra.",
+  "tags": [
+    "family",
+    "extended-family",
+    "portrait",
+    "digital",
+    "neon",
+    "evolution",
+    "batch2-extended"
+  ],
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.55,
+    "movement": 0.52,
+    "density": 0.5,
+    "space": 0.55,
+    "aggression": 0.25
+  }
+}

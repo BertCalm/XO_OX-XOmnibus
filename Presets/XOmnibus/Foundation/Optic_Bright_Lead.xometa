@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Optic Bright Lead",
+  "mood": "Foundation",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Clean optical lead. Cuts through without fighting.",
+  "tags": [
+    "lead",
+    "optic",
+    "work-horse",
+    "bright",
+    "utility",
+    "foundation",
+    "workhorse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Optic": {}
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.4,
+    "movement": 0.55,
+    "density": 0.65,
+    "space": 0.3,
+    "aggression": 0.45
+  }
+}

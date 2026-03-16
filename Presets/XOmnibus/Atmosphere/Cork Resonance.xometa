@@ -1,0 +1,31 @@
+{
+  "name": "Cork Resonance",
+  "version": "1.0",
+  "engines": [
+    "OHM"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.722,
+    "MOVEMENT": 0.136,
+    "COUPLING": 0.0,
+    "SPACE": 0.693
+  },
+  "sonic_dna": {
+    "brightness": 0.459,
+    "warmth": 0.985,
+    "movement": 0.136,
+    "density": 0.72,
+    "space": 0.693,
+    "aggression": 0.095
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "drone",
+    "ambient",
+    "warm",
+    "thick"
+  ],
+  "description": "A cork floor in a warm room. Soft density, perfect absorption."
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Orca Hull Thud",
+  "mood": "Foundation",
+  "engines": [
+    "Orca"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The hull-knock resonance of a great vessel at rest.",
+  "tags": [
+    "bedrock",
+    "thud",
+    "bedrock-bass",
+    "foundation",
+    "bass",
+    "vessel"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orca": {}
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.7,
+    "movement": 0.2,
+    "density": 0.9,
+    "space": 0.25,
+    "aggression": 0.55
+  }
+}

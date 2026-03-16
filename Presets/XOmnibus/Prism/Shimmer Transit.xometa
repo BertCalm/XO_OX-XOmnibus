@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Shimmer Transit",
+  "mood": "Prism",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Transit through shimmering atmosphere — light in constant refractive passage.",
+  "tags": [
+    "refraction",
+    "shimmer",
+    "transit",
+    "passing",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Overworld",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_eraBlend": 0.624,
+      "ow_oscillatorMix": 0.551,
+      "ow_glitchIntensity": 0.043,
+      "ow_filterCutoff": 14700.0,
+      "ow_filterReso": 0.122,
+      "ow_lfoRate": 4.05,
+      "ow_lfoDepth": 0.262,
+      "ow_reverbMix": 0.494,
+      "ow_ampAttack": 0.0128,
+      "ow_ampDecay": 0.882,
+      "ow_ampSustain": 0.723,
+      "ow_ampRelease": 1.764,
+      "ow_stereoWidth": 0.792,
+      "ow_level": 0.8,
+      "ow_macroCharacter": 0.585,
+      "ow_macroMovement": 0.75,
+      "ow_macroCoupling": 0.0,
+      "ow_macroSpace": 0.76
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.3,
+    "movement": 0.75,
+    "density": 0.4,
+    "space": 0.76,
+    "aggression": 0.17
+  }
+}

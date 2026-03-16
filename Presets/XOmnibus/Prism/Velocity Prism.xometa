@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Velocity Prism",
+  "mood": "Prism",
+  "engines": [
+    "Oblique"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Different velocities create different bending angles — velocity prism in full motion.",
+  "tags": [
+    "refraction",
+    "velocity",
+    "prism",
+    "speed",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Oblique",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Oblique": {
+      "oblique_angle": 0.476,
+      "oblique_harmonicDrift": 0.43,
+      "oblique_lfoRate": 3.868,
+      "oblique_lfoDepth": 0.258,
+      "oblique_filterCutoff": 12660.0,
+      "oblique_filterReso": 0.177,
+      "oblique_reverbMix": 0.455,
+      "oblique_ampAttack": 0.0174,
+      "oblique_ampDecay": 0.888,
+      "oblique_ampSustain": 0.69,
+      "oblique_ampRelease": 1.76,
+      "oblique_stereoWidth": 0.773,
+      "oblique_level": 0.79,
+      "oblique_macroCharacter": 0.53,
+      "oblique_macroMovement": 0.86,
+      "oblique_macroCoupling": 0.0,
+      "oblique_macroSpace": 0.65
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.38,
+    "movement": 0.86,
+    "density": 0.48,
+    "space": 0.65,
+    "aggression": 0.26
+  }
+}

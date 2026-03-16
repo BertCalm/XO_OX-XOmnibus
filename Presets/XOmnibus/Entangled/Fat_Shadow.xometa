@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Fat Shadow",
+  "mood": "Entangled",
+  "engines": [
+    "Obese",
+    "Ombre"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE velvet density through OMBRE gradient. Saturated twilight fade.",
+  "tags": [
+    "obese",
+    "ombre",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": 105,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obese": {
+      "fat_macro1": 0.467,
+      "fat_macro2": 0.5,
+      "fat_macro3": 0.691,
+      "fat_macro4": 0.647,
+      "fat_couplingOut": 0.658,
+      "fat_couplingIn": 0.412,
+      "fat_outputLevel": 0.78,
+      "fat_outputPan": 0.035,
+      "fat_satDrive": 0.874,
+      "fat_mojoCtrl": 0.43,
+      "fat_analog": 0.976,
+      "fat_digital": 0.548,
+      "fat_compress": 0.625
+    },
+    "Ombre": {
+      "ombre_macro1": 0.49,
+      "ombre_macro2": 0.607,
+      "ombre_macro3": 0.373,
+      "ombre_macro4": 0.588,
+      "ombre_couplingOut": 0.705,
+      "ombre_couplingIn": 0.588,
+      "ombre_outputLevel": 0.799,
+      "ombre_outputPan": 0.026
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Ombre",
+        "type": "spectral_cross",
+        "amount": 0.472
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.485,
+    "warmth": 0.681,
+    "movement": 0.534,
+    "density": 0.721,
+    "space": 0.521,
+    "aggression": 0.517
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Snow Quartz",
+  "mood": "Prism",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Snow quartz — slightly milky, slightly warm, still unmistakably crystalline.",
+  "tags": [
+    "crystal",
+    "snow",
+    "quartz",
+    "cloudy",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Overworld",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_eraBlend": 0.64,
+      "ow_oscillatorMix": 0.527,
+      "ow_glitchIntensity": 0.022,
+      "ow_filterCutoff": 15000.0,
+      "ow_filterReso": 0.103,
+      "ow_lfoRate": 1.8,
+      "ow_lfoDepth": 0.105,
+      "ow_reverbMix": 0.533,
+      "ow_ampAttack": 0.012,
+      "ow_ampDecay": 0.924,
+      "ow_ampSustain": 0.73,
+      "ow_ampRelease": 1.848,
+      "ow_stereoWidth": 0.819,
+      "ow_level": 0.8,
+      "ow_macroCharacter": 0.6,
+      "ow_macroMovement": 0.3,
+      "ow_macroCoupling": 0.0,
+      "ow_macroSpace": 0.82
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.22,
+    "movement": 0.3,
+    "density": 0.38,
+    "space": 0.82,
+    "aggression": 0.09
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Thick Mixtur",
+  "mood": "Entangled",
+  "engines": [
+    "Obese",
+    "Owlfish"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE drive warms OWLFISH abyssal lantern. Fat depth, gold light.",
+  "tags": [
+    "obese",
+    "owlfish",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": 130,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obese": {
+      "fat_macro1": 0.304,
+      "fat_macro2": 0.478,
+      "fat_macro3": 0.39,
+      "fat_macro4": 0.521,
+      "fat_couplingOut": 0.618,
+      "fat_couplingIn": 0.734,
+      "fat_outputLevel": 0.898,
+      "fat_outputPan": -0.024,
+      "fat_satDrive": 0.416,
+      "fat_mojoCtrl": 0.774,
+      "fat_analog": 0.562,
+      "fat_digital": 0.863,
+      "fat_compress": 0.361
+    },
+    "Owlfish": {
+      "owl_macro1": 0.586,
+      "owl_macro2": 0.358,
+      "owl_macro3": 0.532,
+      "owl_macro4": 0.486,
+      "owl_couplingOut": 0.488,
+      "owl_couplingIn": 0.534,
+      "owl_outputLevel": 0.855,
+      "owl_outputPan": -0.015
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Owlfish",
+        "type": "amplitude_sidechain",
+        "amount": 0.538
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.539,
+    "warmth": 0.61,
+    "movement": 0.542,
+    "density": 0.747,
+    "space": 0.508,
+    "aggression": 0.565
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Radial Flamencoid",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Ole"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ORBITAL transit sparks OLEL\u00c9 drama. Flamencoid orbit, hibiscus arc.",
+  "tags": [
+    "orbital",
+    "ole",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": 100,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_macro1": 0.519,
+      "orb_macro2": 0.442,
+      "orb_macro3": 0.322,
+      "orb_macro4": 0.495,
+      "orb_couplingOut": 0.791,
+      "orb_couplingIn": 0.656,
+      "orb_outputLevel": 0.912,
+      "orb_outputPan": 0.04,
+      "orb_groupEnv": 0.795,
+      "orb_phaseSpread": 0.262,
+      "orb_arcDecay": 0.734,
+      "orb_harmonicAmt": 0.33,
+      "orb_resonantPeak": 0.329
+    },
+    "Ole": {
+      "ole_macro1": 0.695,
+      "ole_macro2": 0.524,
+      "ole_macro3": 0.36,
+      "ole_macro4": 0.315,
+      "ole_couplingOut": 0.587,
+      "ole_couplingIn": 0.606,
+      "ole_outputLevel": 0.862,
+      "ole_outputPan": 0.033
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Ole",
+        "type": "envelope_share",
+        "amount": 0.658
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.615,
+    "warmth": 0.683,
+    "movement": 0.614,
+    "density": 0.635,
+    "space": 0.58,
+    "aggression": 0.489
+  }
+}

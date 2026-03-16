@@ -1,0 +1,31 @@
+{
+  "name": "Charged Mist",
+  "version": "1.0",
+  "engines": [
+    "ONSET"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.579,
+    "MOVEMENT": 0.656,
+    "COUPLING": 0.0,
+    "SPACE": 0.596
+  },
+  "sonic_dna": {
+    "brightness": 0.987,
+    "warmth": 0.17,
+    "movement": 0.656,
+    "density": 0.482,
+    "space": 0.596,
+    "aggression": 0.173
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "pad",
+    "ambient",
+    "electric",
+    "phosphor"
+  ],
+  "description": "Charged atmosphere before a plasma storm. Everything bright, nothing warm."
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Apogee Gold",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Owlfish"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ORBITAL Mixtur harmonic locks to OWLFISH lantern depth. Abyssal overtone arc.",
+  "tags": [
+    "orbital",
+    "owlfish",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": 90,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_macro1": 0.576,
+      "orb_macro2": 0.437,
+      "orb_macro3": 0.454,
+      "orb_macro4": 0.612,
+      "orb_couplingOut": 0.667,
+      "orb_couplingIn": 0.755,
+      "orb_outputLevel": 0.847,
+      "orb_outputPan": 0.026,
+      "orb_groupEnv": 0.759,
+      "orb_phaseSpread": 0.342,
+      "orb_arcDecay": 0.684,
+      "orb_harmonicAmt": 0.55,
+      "orb_resonantPeak": 0.28
+    },
+    "Owlfish": {
+      "owl_macro1": 0.388,
+      "owl_macro2": 0.457,
+      "owl_macro3": 0.679,
+      "owl_macro4": 0.314,
+      "owl_couplingOut": 0.785,
+      "owl_couplingIn": 0.78,
+      "owl_outputLevel": 0.819,
+      "owl_outputPan": 0.01
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Owlfish",
+        "type": "pitch_follow",
+        "amount": 0.58
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.517,
+    "warmth": 0.526,
+    "movement": 0.531,
+    "density": 0.682,
+    "space": 0.525,
+    "aggression": 0.448
+  }
+}

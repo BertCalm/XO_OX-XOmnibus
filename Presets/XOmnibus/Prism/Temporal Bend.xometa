@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Temporal Bend",
+  "mood": "Prism",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Time itself bent at the optical interface — temporal refraction of slow harmonics.",
+  "tags": [
+    "refraction",
+    "temporal",
+    "bend",
+    "warping",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Optic",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Optic": {
+      "optic_dispersion": 0.654,
+      "optic_chromaticShift": 0.462,
+      "optic_modulationRate": 4.192,
+      "optic_modulationDepth": 0.316,
+      "optic_filterCutoff": 15010.0,
+      "optic_filterReso": 0.138,
+      "optic_reverbMix": 0.547,
+      "optic_ampAttack": 0.0112,
+      "optic_ampDecay": 0.957,
+      "optic_ampSustain": 0.731,
+      "optic_ampRelease": 2.068,
+      "optic_stereoWidth": 0.842,
+      "optic_level": 0.78,
+      "optic_macroCharacter": 0.616,
+      "optic_macroMovement": 0.79,
+      "optic_macroCoupling": 0.0,
+      "optic_macroSpace": 0.73
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.77,
+    "warmth": 0.31,
+    "movement": 0.79,
+    "density": 0.41,
+    "space": 0.73,
+    "aggression": 0.19
+  }
+}

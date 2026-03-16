@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Phase Off-Axis",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Oblique"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ORBITAL arc decay bends OBLIQUE's prism angle. Off-axis harmonic trajectories.",
+  "tags": [
+    "orbital",
+    "oblique",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": 100,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_macro1": 0.687,
+      "orb_macro2": 0.523,
+      "orb_macro3": 0.609,
+      "orb_macro4": 0.54,
+      "orb_couplingOut": 0.74,
+      "orb_couplingIn": 0.569,
+      "orb_outputLevel": 0.765,
+      "orb_outputPan": -0.024,
+      "orb_groupEnv": 0.71,
+      "orb_phaseSpread": 0.79,
+      "orb_arcDecay": 0.437,
+      "orb_harmonicAmt": 0.519,
+      "orb_resonantPeak": 0.59
+    },
+    "Oblique": {
+      "oblq_macro1": 0.422,
+      "oblq_macro2": 0.394,
+      "oblq_macro3": 0.606,
+      "oblq_macro4": 0.347,
+      "oblq_couplingOut": 0.533,
+      "oblq_couplingIn": 0.638,
+      "oblq_outputLevel": 0.834,
+      "oblq_outputPan": 0.036
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Oblique",
+        "type": "envelope_share",
+        "amount": 0.658
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.636,
+    "warmth": 0.573,
+    "movement": 0.644,
+    "density": 0.578,
+    "space": 0.549,
+    "aggression": 0.489
+  }
+}

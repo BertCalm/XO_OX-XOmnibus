@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Onset 808 Pillar",
+  "mood": "Foundation",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "808-style pillar kick. Structural, reliable, immovable.",
+  "tags": [
+    "kick",
+    "bedrock",
+    "pillar",
+    "808",
+    "bedrock-bass",
+    "foundation",
+    "bass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Onset": {
+      "onset_kick_tune": 0.35,
+      "onset_kick_decay": 0.7,
+      "onset_kick_punch": 0.7,
+      "onset_kick_sub": 0.9,
+      "onset_sub_drive": 0.45
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.85,
+    "movement": 0.2,
+    "density": 0.9,
+    "space": 0.2,
+    "aggression": 0.5
+  }
+}

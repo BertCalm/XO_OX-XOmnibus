@@ -1,0 +1,31 @@
+{
+  "name": "Trench Whisper",
+  "version": "1.0",
+  "engines": [
+    "OMBRE"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.423,
+    "MOVEMENT": 0.113,
+    "COUPLING": 0.0,
+    "SPACE": 0.82
+  },
+  "sonic_dna": {
+    "brightness": 0.281,
+    "warmth": 0.566,
+    "movement": 0.113,
+    "density": 0.775,
+    "space": 0.82,
+    "aggression": 0.069
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "pad",
+    "ambient",
+    "deep",
+    "vast"
+  ],
+  "description": "The deep ocean at rest. Vast space, mineral warmth, absolute stillness."
+}

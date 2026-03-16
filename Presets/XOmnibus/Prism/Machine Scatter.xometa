@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "name": "Machine Scatter",
+  "mood": "Prism",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Machine strikes scatter light — mechanical refraction in bright percussive space.",
+  "tags": [
+    "refraction",
+    "machine",
+    "scatter",
+    "mechanical",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Onset",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Onset": {
+      "onset_kickTone": 0.33,
+      "onset_snareSnap": 0.192,
+      "onset_hihatBrightness": 0.561,
+      "onset_machine": 0.664,
+      "onset_punch": 0.224,
+      "onset_space": 0.464,
+      "onset_mutate": 0.348,
+      "onset_level": 0.78,
+      "onset_macroCharacter": 0.462,
+      "onset_macroMovement": 0.87,
+      "onset_macroCoupling": 0.0,
+      "onset_macroSpace": 0.58
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.66,
+    "warmth": 0.32,
+    "movement": 0.87,
+    "density": 0.58,
+    "space": 0.58,
+    "aggression": 0.32
+  }
+}

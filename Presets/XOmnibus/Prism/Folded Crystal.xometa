@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Folded Crystal",
+  "mood": "Prism",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Crystal folded along perfect cleavage planes — geometric light trap, folded tight.",
+  "tags": [
+    "crystal",
+    "folded",
+    "origami",
+    "geometric",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Origami",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldDepth": 0.645,
+      "origami_creaseScan": 0.162,
+      "origami_unfoldRate": 1.434,
+      "origami_filterCutoff": 15610.0,
+      "origami_filterReso": 0.1,
+      "origami_reverbMix": 0.583,
+      "origami_ampAttack": 0.0106,
+      "origami_ampDecay": 1.098,
+      "origami_ampSustain": 0.738,
+      "origami_ampRelease": 2.115,
+      "origami_stereoWidth": 0.848,
+      "origami_level": 0.78,
+      "origami_macroCharacter": 0.705,
+      "origami_macroMovement": 0.27,
+      "origami_macroCoupling": 0.0,
+      "origami_macroSpace": 0.81
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.16,
+    "movement": 0.27,
+    "density": 0.3,
+    "space": 0.81,
+    "aggression": 0.1
+  }
+}

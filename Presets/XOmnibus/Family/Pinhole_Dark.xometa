@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Pinhole Dark",
+  "mood": "Family",
+  "engines": [
+    "OBSCURA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBSCURA at full veil \u2014 frequencies shadowed, depth active. The beauty that lives behind the curtain. Patient, interior, true.",
+  "tags": [
+    "family",
+    "signature",
+    "portrait",
+    "canonical",
+    "dark",
+    "veiled",
+    "hidden",
+    "batch1-signatures"
+  ],
+  "macroLabels": [
+    "VEIL",
+    "DEPTH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.45,
+    "movement": 0.48,
+    "density": 0.62,
+    "space": 0.72,
+    "aggression": 0.35
+  }
+}

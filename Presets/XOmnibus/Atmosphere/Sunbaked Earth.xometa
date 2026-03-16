@@ -1,0 +1,31 @@
+{
+  "name": "Sunbaked Earth",
+  "version": "1.0",
+  "engines": [
+    "OTTONI"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.622,
+    "MOVEMENT": 0.058,
+    "COUPLING": 0.0,
+    "SPACE": 0.526
+  },
+  "sonic_dna": {
+    "brightness": 0.373,
+    "warmth": 0.871,
+    "movement": 0.058,
+    "density": 0.672,
+    "space": 0.526,
+    "aggression": 0.022
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "drone",
+    "ambient",
+    "warm",
+    "thick"
+  ],
+  "description": "Sunbaked stone holding the heat of the afternoon. Dense mineral warmth."
+}

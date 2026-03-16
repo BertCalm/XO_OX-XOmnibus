@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Grain Cloud Portrait",
+  "mood": "Family",
+  "engines": [
+    "OPAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OPAL in full scatter \u2014 grain size micro, scatter wide, luminous cloud diffuse. The gem at rest, refracting quietly.",
+  "tags": [
+    "family",
+    "signature",
+    "portrait",
+    "canonical",
+    "granular",
+    "shimmer",
+    "scatter",
+    "batch1-signatures"
+  ],
+  "macroLabels": [
+    "GRAIN",
+    "SCATTER",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.52,
+    "movement": 0.72,
+    "density": 0.55,
+    "space": 0.78,
+    "aggression": 0.15
+  }
+}

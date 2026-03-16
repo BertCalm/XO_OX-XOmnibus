@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Drive Void",
+  "mood": "Entangled",
+  "engines": [
+    "Obese",
+    "Oracle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBESE mojo reveals ORACLE stochastic vision. Saturated prophecy density.",
+  "tags": [
+    "obese",
+    "oracle",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": 110,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obese": {
+      "fat_macro1": 0.604,
+      "fat_macro2": 0.67,
+      "fat_macro3": 0.535,
+      "fat_macro4": 0.423,
+      "fat_couplingOut": 0.505,
+      "fat_couplingIn": 0.63,
+      "fat_outputLevel": 0.768,
+      "fat_outputPan": -0.029,
+      "fat_satDrive": 0.747,
+      "fat_mojoCtrl": 0.699,
+      "fat_analog": 0.172,
+      "fat_digital": 0.573,
+      "fat_compress": 0.376
+    },
+    "Oracle": {
+      "oracle_macro1": 0.628,
+      "oracle_macro2": 0.505,
+      "oracle_macro3": 0.558,
+      "oracle_macro4": 0.564,
+      "oracle_couplingOut": 0.557,
+      "oracle_couplingIn": 0.546,
+      "oracle_outputLevel": 0.864,
+      "oracle_outputPan": 0.04
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Oracle",
+        "type": "amplitude_sidechain",
+        "amount": 0.721
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.532,
+    "warmth": 0.513,
+    "movement": 0.627,
+    "density": 0.718,
+    "space": 0.544,
+    "aggression": 0.537
+  }
+}

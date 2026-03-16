@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Ouroboros Cycle",
+  "mood": "Foundation",
+  "engines": [
+    "Ouroboros"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Serpentine bass loop that grounds itself in perpetual return.",
+  "tags": [
+    "bedrock",
+    "loop",
+    "bedrock-bass",
+    "foundation",
+    "bass",
+    "cycle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ouroboros": {}
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.75,
+    "movement": 0.25,
+    "density": 0.8,
+    "space": 0.2,
+    "aggression": 0.55
+  }
+}

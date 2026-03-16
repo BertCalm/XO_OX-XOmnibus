@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Wavefront Fold",
+  "mood": "Prism",
+  "engines": [
+    "OddFelix"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Wavefront folds back on itself at density boundary — interference cascade unfolds.",
+  "tags": [
+    "refraction",
+    "wavefront",
+    "fold",
+    "interference",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "OddFelix",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "OddFelix": {
+      "oddfelix_harmonicBlend": 0.657,
+      "oddfelix_spectralTilt": 0.511,
+      "oddfelix_pitchMod": 0.328,
+      "oddfelix_lfoRate": 4.19,
+      "oddfelix_lfoDepth": 0.246,
+      "oddfelix_reverbMix": 0.476,
+      "oddfelix_filterCutoff": 14220.0,
+      "oddfelix_filterReso": 0.163,
+      "oddfelix_ampAttack": 0.0165,
+      "oddfelix_ampDecay": 0.944,
+      "oddfelix_ampSustain": 0.719,
+      "oddfelix_ampRelease": 1.82,
+      "oddfelix_stereoWidth": 0.772,
+      "oddfelix_level": 0.8,
+      "oddfelix_macroCharacter": 0.584,
+      "oddfelix_macroMovement": 0.82,
+      "oddfelix_macroCoupling": 0.0,
+      "oddfelix_macroSpace": 0.68
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.73,
+    "warmth": 0.33,
+    "movement": 0.82,
+    "density": 0.42,
+    "space": 0.68,
+    "aggression": 0.21
+  }
+}

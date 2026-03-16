@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Watercolor Fade",
+  "mood": "Family",
+  "engines": [
+    "OMBRE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OMBRE SHADE to FADE \u2014 tonal gradient drifting. A watercolor bleeding at the edges. The in-between as destination.",
+  "tags": [
+    "family",
+    "extended-family",
+    "portrait",
+    "gradient",
+    "soft",
+    "transition",
+    "batch2-extended"
+  ],
+  "macroLabels": [
+    "SHADE",
+    "FADE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.65,
+    "movement": 0.5,
+    "density": 0.48,
+    "space": 0.75,
+    "aggression": 0.18
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Ouroboros Rootlock",
+  "mood": "Foundation",
+  "engines": [
+    "Ouroboros"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "A bass note that eats its own tail \u2014 never moves from root.",
+  "tags": [
+    "bedrock",
+    "locked",
+    "root",
+    "bedrock-bass",
+    "foundation",
+    "bass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ouroboros": {}
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.8,
+    "movement": 0.15,
+    "density": 0.85,
+    "space": 0.15,
+    "aggression": 0.5
+  }
+}

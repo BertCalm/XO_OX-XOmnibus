@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Knot and Rule",
+  "mood": "Family",
+  "engines": [
+    "OVERLAP",
+    "OUTWIT"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OVERLAP FDN knots + OUTWIT Wolfram CA arms \u2014 the complex systems reunion. Topology and cellular automata in conversation. Both are right.",
+  "tags": [
+    "family",
+    "reunion",
+    "duo",
+    "portrait",
+    "topology",
+    "cellular-automata",
+    "complex",
+    "batch3-reunion"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "TAIL",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.55,
+    "movement": 0.78,
+    "density": 0.68,
+    "space": 0.72,
+    "aggression": 0.4
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Ocean and Serpent",
+  "mood": "Family",
+  "engines": [
+    "OCEANIC",
+    "OWLFISH"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OCEANIC pressure swell + OWLFISH bioluminescence \u2014 the column and the creature. The deep ocean meeting the thing that lives in it.",
+  "tags": [
+    "family",
+    "reunion",
+    "duo",
+    "portrait",
+    "ocean",
+    "deep",
+    "luminescent",
+    "batch3-reunion"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "SWELL",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.62,
+    "movement": 0.55,
+    "density": 0.62,
+    "space": 0.88,
+    "aggression": 0.18
+  }
+}

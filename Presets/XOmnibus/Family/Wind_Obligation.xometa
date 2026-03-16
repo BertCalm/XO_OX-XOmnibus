@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Wind Obligation",
+  "mood": "Family",
+  "engines": [
+    "OBBLIGATO"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "OBBLIGATO BOND macro \u2014 dual wind voices interlocked. The obligation fulfilled in harmony. Neither voice can leave.",
+  "tags": [
+    "family",
+    "extended-family",
+    "portrait",
+    "wind",
+    "dual",
+    "interlocking",
+    "batch2-extended"
+  ],
+  "macroLabels": [
+    "BOND",
+    "BREATH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.52,
+    "density": 0.55,
+    "space": 0.6,
+    "aggression": 0.28
+  }
+}

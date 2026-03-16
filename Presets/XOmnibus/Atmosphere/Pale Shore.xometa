@@ -1,0 +1,31 @@
+{
+  "name": "Pale Shore",
+  "version": "1.0",
+  "engines": [
+    "OHM"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.734,
+    "MOVEMENT": 0.148,
+    "COUPLING": 0.0,
+    "SPACE": 0.633
+  },
+  "sonic_dna": {
+    "brightness": 0.75,
+    "warmth": 0.717,
+    "movement": 0.148,
+    "density": 0.484,
+    "space": 0.633,
+    "aggression": 0.123
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "pad",
+    "ambient",
+    "dawn",
+    "gentle"
+  ],
+  "description": "The sky becomes gold before you notice. Space opens like held breath released."
+}

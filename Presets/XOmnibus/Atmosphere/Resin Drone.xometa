@@ -1,0 +1,31 @@
+{
+  "name": "Resin Drone",
+  "version": "1.0",
+  "engines": [
+    "OHM"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.053,
+    "COUPLING": 0.0,
+    "SPACE": 0.597
+  },
+  "sonic_dna": {
+    "brightness": 0.235,
+    "warmth": 0.825,
+    "movement": 0.053,
+    "density": 0.794,
+    "space": 0.597,
+    "aggression": 0.003
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "drone",
+    "ambient",
+    "warm",
+    "thick"
+  ],
+  "description": "An earthen vessel resonating in a warm room. Ancient and comfortable."
+}

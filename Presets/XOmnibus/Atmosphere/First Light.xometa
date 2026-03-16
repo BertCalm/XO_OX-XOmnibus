@@ -1,0 +1,31 @@
+{
+  "name": "First Light",
+  "version": "1.0",
+  "engines": [
+    "OPAL"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.662,
+    "MOVEMENT": 0.202,
+    "COUPLING": 0.0,
+    "SPACE": 0.631
+  },
+  "sonic_dna": {
+    "brightness": 0.624,
+    "warmth": 0.701,
+    "movement": 0.202,
+    "density": 0.558,
+    "space": 0.631,
+    "aggression": 0.033
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "pad",
+    "ambient",
+    "dawn",
+    "gentle"
+  ],
+  "description": "Soft light breaks across still water. Warmth builds slowly, movement a gentle tide."
+}

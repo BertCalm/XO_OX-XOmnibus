@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Transit Hunt",
+  "mood": "Entangled",
+  "engines": [
+    "Orbital",
+    "Orca"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ORBITAL cycle drives ORCA hunt sonar. Apex predator on an elliptic path.",
+  "tags": [
+    "orbital",
+    "orca",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": 105,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Orbital": {
+      "orb_macro1": 0.455,
+      "orb_macro2": 0.366,
+      "orb_macro3": 0.446,
+      "orb_macro4": 0.538,
+      "orb_couplingOut": 0.459,
+      "orb_couplingIn": 0.656,
+      "orb_outputLevel": 0.893,
+      "orb_outputPan": -0.04,
+      "orb_groupEnv": 0.839,
+      "orb_phaseSpread": 0.402,
+      "orb_arcDecay": 0.648,
+      "orb_harmonicAmt": 0.717,
+      "orb_resonantPeak": 0.514
+    },
+    "Orca": {
+      "orca_macro1": 0.677,
+      "orca_macro2": 0.595,
+      "orca_macro3": 0.657,
+      "orca_macro4": 0.608,
+      "orca_couplingOut": 0.604,
+      "orca_couplingIn": 0.494,
+      "orca_outputLevel": 0.858,
+      "orca_outputPan": 0.027
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Orca",
+        "type": "filter_modulation",
+        "amount": 0.474
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.487,
+    "warmth": 0.55,
+    "movement": 0.587,
+    "density": 0.722,
+    "space": 0.497,
+    "aggression": 0.658
+  }
+}

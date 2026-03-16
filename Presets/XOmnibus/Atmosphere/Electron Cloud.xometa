@@ -1,0 +1,31 @@
+{
+  "name": "Electron Cloud",
+  "version": "1.0",
+  "engines": [
+    "OSTERIA"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.461,
+    "MOVEMENT": 0.505,
+    "COUPLING": 0.0,
+    "SPACE": 0.606
+  },
+  "sonic_dna": {
+    "brightness": 0.803,
+    "warmth": 0.119,
+    "movement": 0.505,
+    "density": 0.337,
+    "space": 0.606,
+    "aggression": 0.165
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "pad",
+    "ambient",
+    "electric",
+    "phosphor"
+  ],
+  "description": "Signal burn across a dark monitor. Phosphor memory of sound already gone."
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Thick Horizon",
+  "version": "1.0",
+  "engines": [
+    "OBBLIGATO"
+  ],
+  "mood": "Atmosphere",
+  "macros": {
+    "CHARACTER": 0.574,
+    "MOVEMENT": 0.099,
+    "COUPLING": 0.0,
+    "SPACE": 0.605
+  },
+  "sonic_dna": {
+    "brightness": 0.238,
+    "warmth": 0.909,
+    "movement": 0.099,
+    "density": 0.88,
+    "space": 0.605,
+    "aggression": 0.04
+  },
+  "parameters": {},
+  "tags": [
+    "atmosphere",
+    "drone",
+    "ambient",
+    "warm",
+    "thick"
+  ],
+  "description": "Bronze singing bowl at rest. Rich overtones decaying over geological time."
+}

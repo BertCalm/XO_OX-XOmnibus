@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Ocelot Flicker",
+  "mood": "Prism",
+  "engines": [
+    "Ocelot"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Fast flicker through dappled light — hunting movement in prismatic forest.",
+  "tags": [
+    "refraction",
+    "flicker",
+    "hunting",
+    "movement",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": "Ocelot",
+    "sourceCategory": "Prism",
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Ocelot": {
+      "ocelot_huntDepth": 0.497,
+      "ocelot_stalkerRate": 4.222,
+      "ocelot_filterCutoff": 13440.0,
+      "ocelot_filterReso": 0.187,
+      "ocelot_reverbMix": 0.403,
+      "ocelot_ampAttack": 0.0166,
+      "ocelot_ampDecay": 0.865,
+      "ocelot_ampSustain": 0.699,
+      "ocelot_ampRelease": 1.637,
+      "ocelot_stereoWidth": 0.74,
+      "ocelot_level": 0.79,
+      "ocelot_macroCharacter": 0.532,
+      "ocelot_macroMovement": 0.91,
+      "ocelot_macroCoupling": 0.0,
+      "ocelot_macroSpace": 0.62
+    }
+  },
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.71,
+    "warmth": 0.36,
+    "movement": 0.91,
+    "density": 0.52,
+    "space": 0.62,
+    "aggression": 0.29
+  }
+}

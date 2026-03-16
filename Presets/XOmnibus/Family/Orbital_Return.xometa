@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "name": "Orbital Return",
+  "mood": "Family",
+  "engines": [
+    "ORBITAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ORBITAL completing its ellipse \u2014 the long orbit coming home. Extended resonance, slow pulse. The planet that remembers its path.",
+  "tags": [
+    "family",
+    "extended-family",
+    "portrait",
+    "space",
+    "elliptical",
+    "return",
+    "batch2-extended"
+  ],
+  "macroLabels": [
+    "ORBIT",
+    "RESONANCE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {},
+  "coupling": null,
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.48,
+    "movement": 0.62,
+    "density": 0.48,
+    "space": 0.88,
+    "aggression": 0.18
+  }
+}
