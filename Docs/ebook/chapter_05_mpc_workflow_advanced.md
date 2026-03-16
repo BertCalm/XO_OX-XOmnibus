@@ -4,233 +4,231 @@
 
 ---
 
-You know the basics by now. You've loaded an XPN pack, assigned programs to tracks, built a sequence, and heard what XO_OX sounds like on hardware. You know how velocity layers work and why they matter. You know what Q-Links do.
+There's a gap between knowing how to use the MPC and knowing how to *use* it with XO_OX packs. The basics — load a program, play some pads, record a pattern — those are covered in Chapter 2. This chapter is for the producers who want more. The ones who layer three programs simultaneously and wonder why they don't phase-cancel each other. The ones who chopped a keygroup program into chords and it worked once and now they can't remember how they did it.
 
-This chapter is for after that. These are the techniques that separate producers who use XO_OX packs as sample libraries from producers who use them as instruments. Some of this involves exploiting specific MPC features. Some of it involves rethinking how you structure a live set. All of it assumes you're willing to spend thirty minutes learning a workflow that will pay back every session going forward.
-
----
-
-## 5.1 Multi-Program Layering — Loading 2–3 XO_OX Programs Simultaneously on Different MIDI Channels
-
-The MPC allows you to assign multiple programs to different tracks within the same sequence, each responding to different MIDI channels. This is the hardware-level analog of running multiple XOmnibus engines in a coupled patch — except here, the "coupling" is in your arrangement decisions rather than in a shared parameter matrix.
-
-The technique: load two or three XO_OX programs from related engines onto separate tracks. Assign them to MIDI channels 1, 2, and 3. Now, any note you play on channel 1 triggers only the first program. Any note on channel 2 triggers only the second. But when you're recording and let both channels run simultaneously, you get polyphonic layering across multiple synthesis engines — a character impossible from either program alone.
-
-The combination guidelines that consistently work:
-
-**Textural layering (one feliX + one Oscar):** An ONSET drum program on channel 1 (tight, clinical, digital precision) plus an OVERDUB program on channel 2 (warm, analog, spatial). Trigger the ONSET program for the rhythmic skeleton. Trigger the OVERDUB program for accents and atmosphere. The two programs don't fight because they occupy different parts of the feliX-Oscar spectrum — the clinical hits anchor the groove while the warm tails provide depth.
-
-**Harmonic stacking (two melodic programs):** An OddfeliX keygroup program on channel 1 (neon tetra brightness, precision attack) plus an OddOscar keygroup on channel 2 (axolotl warmth, rounded sustain). Play the same sequence through both channels at slightly different velocities. OddfeliX handles the transient edge of each note; OddOscar fills in the body. The result sounds like a single instrument with more dimensional character than either can produce alone.
-
-**Rhythmic reinforcement (drum program + melodic texture):** An ONSET kit on channel 1 plus an OPAL granular program on channel 2. Map similar note numbers to both programs but offset the rhythm slightly — OPAL responds a 16th note later than ONSET. The granular texture from OPAL blurs the transient precision of ONSET, softening its clinical edge with organic scatter. This is a software-level coupling technique implemented entirely in the MPC sequencer.
-
-> **Practical tip:** When multi-program layering, use the MPC's Track Mute function to A/B single programs against the combined stack. If removing one program makes the overall sound worse rather than just thinner, both programs are earning their place. If removing one program doesn't change the character meaningfully, you're stacking for volume, not for character — simplify.
-
-The MPC's MIDI channel assignment is in Track settings (long-press the track name in the main sequence view, or navigate through Track → MIDI Channel). Set each XO_OX track to its own MIDI channel before recording. Use MIDI channel split on an external controller if you have one, or use the MPC's own Program Change and MIDI routing to feed the right channel to the right track.
+This chapter is practical and specific. Every technique here has been tested on real sessions. Some of it is unconventional. All of it sounds good.
 
 ---
 
-## 5.2 The XO_OX Coupling Trick on MPC — Using Q-Link to Recreate Coupling Depth in Hardware
+## 5.1 Multi-Program Layering — 2–3 XO_OX Programs Simultaneously
 
-In XOmnibus, the COUPLING macro sweeps the depth of cross-engine modulation in real time — at zero, both engines run independently; at full, one engine is deeply modulating the other. In XPN format on MPC hardware, the actual synthesis coupling is frozen in the rendered samples. But you can recreate the *perceptual experience* of coupling depth using Q-Links and the MPC's program-level parameter control.
+The MPC handles multiple programs on different MIDI channels through its track system. What most producers miss is that multi-channel layering with XO_OX packs isn't just about stacking — it's about exploiting the timbral differences between engines to create sounds that no single engine can produce.
 
-The trick has two parts:
+**The basic setup**: Three tracks, three MIDI channels, three XO_OX programs. Route them all to the same pad bank or separate banks depending on your performance intent.
 
-**Part 1: Volume-based pseudo-coupling.** When you increase coupling depth in XOmnibus, one engine begins modulating the other — the result is that the combined sound becomes richer, more complex, more timbral. You can approximate this effect on MPC by mapping the Q-Link that corresponds to COUPLING to track volume or pad level. At minimum coupling position (Q-Link left), one of the two multi-program-layered programs is nearly silent — you only hear one engine. As you sweep Q-Link right, the second program fades in. The combined character grows. It's not synthesis-level coupling but it produces the perceptual arc.
+The most powerful multi-program configuration in XO_OX is the **feliX/Oscar split**: one program from the feliX polarity (clean, even harmonics, forward-thinking) on Track 1, one from the Oscar polarity (pushed, odd harmonics, character-forward) on Track 2. Layer them at equal volume and the result occupies the full harmonic spectrum — not wider, but *denser*. The feliX program fills the mid-high clarity; the Oscar program fills the low-mid body. Together they behave like a real instrument with acoustic physics.
 
-**Part 2: Filter-sweep pseudo-coupling.** Map COUPLING Q-Link to filter cutoff on the secondary program. At low coupling, the secondary program has a nearly-closed filter — it's present but muffled, providing only low-frequency support. As you sweep the Q-Link, the filter opens, revealing the full brightness and harmonic content of the secondary program. The transition from muffled to bright is a rough analog of what happens when synthesis coupling engages and one engine begins modulating the timbral character of another.
+**Three-program technique — the XO_OX Triad:**
 
-The most natural implementation:
-1. Load two related XO_OX programs on channels 1 and 2 (e.g., ONSET drums + OPAL granular texture).
-2. Assign Q-Link 3 on both programs to filter cutoff simultaneously (use the MIDI Multi setting on the Q-Link to send to both tracks at once).
-3. Before recording, set Q-Link 3 to minimum (both programs with near-closed filters).
-4. Perform the Q-Link sweep by hand during recording — the sweep from closed to open is the drop moment.
+- Track 1 (MIDI Ch 1): **Foundation** program — low velocity, ambient or pad character. OPAL or ODYSSEY work well here. Set velocity sensitivity high so this program only fills in at soft touch.
+- Track 2 (MIDI Ch 2): **Mid** program — the primary melodic voice. OVERWORLD or ORGANON. Full velocity range.
+- Track 3 (MIDI Ch 3): **Accent** program — only activates at high velocity. OBESE, ORIGAMI, or OXIDE. Triggered only at velocity 90+.
 
-> **Practical tip:** Record the Q-Link sweep as automation data rather than performing it live every time. In the MPC, enable automation recording (the circle-A button on the transport), perform the sweep, then play it back automatically. Once it's recorded, you can edit the automation curve in the Piano Roll view (switch to Automation view, select the Q-Link parameter). A slow logarithmic curve into the drop sounds more natural than a linear sweep.
+The result is a single pad surface that behaves differently depending on how hard you play. Soft touch gives you ambient foundation. Medium gives you the primary voice. Hard gives you the accent layer sitting on top. It sounds like one instrument with dynamic complexity.
+
+**MIDI channel routing in MPC**: Each track has an independent MIDI channel assignment. In the Track view, set Channel to 1, 2, 3 respectively. All three tracks receive note-on events from the pad surface simultaneously — MIDI channel filtering is handled by the program assignment.
+
+> **Tip**: If your three-layer stack is phase-coherent (all programs derived from the same XPN expansion), the low frequencies will reinforce rather than fight. XO_OX expansions tuned to the same root ensure this. If you're mixing programs from different XPN expansions, A/B the low end in mono before committing to the layer.
 
 ---
 
-## 5.3 Chopping Samples from XO_OX Keygroup Programs — Chop Mode, Re-Pitch, Re-Sequence
+## 5.2 The XO_OX Coupling Trick on MPC — Q-Link to Recreate Coupling Depth in Hardware
 
-XO_OX keygroup programs are designed for melodic and harmonic playing — you press a key and a velocity-layered sample plays back at the root pitch, transposing for other notes via KeyTrack. But keygroup programs also work as chop source material. The rendered samples are long enough (most XO_OX keygroup renders are 4–8 seconds at full sustain) to slice into rhythmic pieces and re-sequence.
+XOmnibus coupling — where one engine modulates another's parameters — doesn't exist in standalone MPC workflow. The MPC doesn't know about OUROBOROS feeding OPAL's grain size. But you can approximate the *experience* of coupling with Q-Link assignments, and in some cases the result is more performable than the plugin version.
+
+**The principle**: Coupling in XOmnibus creates parameter relationships — as one parameter rises, another rises or falls in tandem. On MPC, a single Q-Link can be assigned to multiple parameters across multiple programs simultaneously. One knob, multiple targets, one gesture.
+
+**Setting up a coupling-style Q-Link:**
+
+1. Long-press a Q-Link knob to open its assignment menu.
+2. Assign it to Filter Cutoff on Program 1 (Track 1).
+3. Add a second assignment: Filter Resonance on Program 2 (Track 2), but inverted (as cutoff opens on P1, resonance closes on P2).
+4. Optional third assignment: Volume on Program 3 (Track 3) — as the "coupling" deepens, the accent program rises in.
+
+This approximates the OVERDUB→OPAL coupling type, where OVERDUB's send amount (Q-Link 1) gates OPAL's grain density. You're not doing the actual DSP — but you're performing the same gestural movement, and the audible result is similar because the parameter relationships are similar.
+
+**OUROBOROS coupling approximation**: OUROBOROS feeds chaos into target engines. On MPC, use Q-Link 3 with a wide range assignment to the target program's LFO Rate. Fast movement of Q-Link 3 approximates the "chaos injection" behavior — you're manually introducing rate variation where the plugin would do it automatically.
+
+> **Tip**: The Q-Link coupling trick works best when you decide in advance which coupling type you're approximating. Don't try to recreate complex multi-parameter coupling with a single knob — pick one relationship that matters most for the performance and commit to it.
+
+---
+
+## 5.3 Chopping Samples from XO_OX Keygroup Programs
+
+XO_OX keygroup programs contain fully formed pitched samples across 2–4 velocity layers. Most producers use them as they ship — load, play, record. The producers who get interesting results use Chop Mode.
 
 **The workflow:**
 
-1. Load an XO_OX keygroup program and record a single, long sustained note (C3, full velocity, 4–8 seconds).
-2. Bounce that note to audio (Track → Bounce to Sample, or use Audio Mixdown set to a single track).
-3. Load the bounced audio file into the Sample Editor.
-4. Use Chop mode to slice the sample. For XO_OX granular programs (OPAL, OBSCURA), use the transient-based chop for natural slicing points. For XO_OX tonal programs (OBLONG, OVERBITE), use fixed-time chops (every 500ms or every beat at your project tempo) to capture different moments in the sound's evolution.
-5. Map the chops to pads in a new Drum program.
-6. Sequence those pads rhythmically.
+1. Load your XO_OX keygroup program.
+2. Play a phrase of 4–8 bars and bounce to audio (see 5.8 for bouncing details).
+3. Import the bounced audio into a new sample slot.
+4. Open Sample Edit → Chop.
+5. Set chop mode to **Threshold** (for programs with clear transients) or **Bars/Beats** (for pads and sustained tones).
 
-What you've done: taken a sustained synthesis sound and converted its timbral evolution over time into a rhythmic grid of tonal slices. The first slice might be the bright, transient-forward attack moment. The middle slices are the mid-sustain body. The later slices are the warm, dark tail. Sequencing these out of order creates rhythmic patterns where brightness and warmth alternate per-hit — a rhythm that is also a timbral pattern.
+The result is a new drum program built from your own XO_OX performance. Each chop becomes a new sample triggered from a pad.
 
-**Re-pitch application:** In Drum program mode, each pad can have its root note set independently. After mapping the chops, set different pads to different root notes (±3–5 semitones). The pitch shift is subtle enough to stay musical but changes the register of each slice. A bass-forward slice played at +3 semitones becomes a mid-register hit. Combined with the original, you get harmonic spread from a monophonic source.
+**Re-pitch technique**: After chopping, enable **Keytrack** on the new sample pads. Each chop is now an instrument — play it up and down the keyboard. The granular artifacts from pitch-shifting the already-rendered XO_OX material create textures that no synthesis engine can produce directly.
 
-**The re-sequence trick:** Record a pad pattern using the chopped slices. Then swap the pad assignments — move the attack-moment slice to the position where the tail-moment slice was, and vice versa. The rhythm stays identical but the timbral progression reverses. Attack hits where you expected a fade; brightness arrives at moments you mapped to warmth. This technique produces rhythmic patterns that feel unfamiliar even when the underlying note pattern is simple.
+**Re-sequence technique**: After chopping, open the new drum program and record a pattern using only these chop pads. Change the order, change the velocity, add swing. You're now composing with fragments of your own XO_OX performance — the material is yours, the sequence is new, and the result is something that could not have existed without first playing the keygroup live.
 
-> **Practical tip:** XO_OX programs with high Sonic DNA movement values (7–10) make the best chop sources because timbral variety is already built into the sustained sound. A high-movement OPAL granular program might have 12 meaningfully distinct timbral states across a single 6-second sustain. Each chop captures a different state. Low-movement programs make more consistent chops — useful if you want clean, stable hits rather than varied textural ones.
+> **Tip**: The most interesting chops come from XO_OX programs with internal modulation — OPAL grain programs, OUROBOROS chaos presets, OCEANIC temperature-modulated pads. Programs that change over time give you more varied chop material than static tones.
 
----
-
-## 5.4 XO_OX + MPC Stems — Using Zplane Stem Separation on Full XO_OX Renders
-
-The MPC's stem separation feature (powered by zplane's AI separation technology, available in firmware 2.15+) can decompose a stereo audio file into up to four stems: Drums, Bass, Melody, and Other. This creates an unexpected workflow opportunity for XO_OX producers.
-
-The idea: render a full XO_OX multi-engine patch (or a complete XPN program sequence) to audio, then run stem separation to extract layers that weren't explicitly separated during rendering. The stem AI finds energy clusters in the frequency spectrum and assigns them. For XO_OX material, this often produces:
-
-- **Drums stem** from ONSET programs: clean, close to the original
-- **Bass stem** from OVERBITE or sub-frequency programs: bass-forward with minimal bleed
-- **Melody stem** from harmonic programs: the mid-frequency tonal content, often a mix of what was "lead" and "pad"
-- **Other stem**: atmospheric content, reverb tails, granular texture — the OPAL/OBSCURA/ORACLE material
-
-Once separated, each stem can be loaded into its own track, manipulated independently, and re-sequenced. The granular texture that was baked into the "Other" stem can be pitched independently of the melody. The bass from OVERBITE can be re-triggered at a different rhythm from the original sequence.
-
-**Practical use case — the "decoupled stems" arrangement:**
-1. Record a 4-bar section using multi-program layering (e.g., ONSET + OPAL + OVERBITE simultaneously).
-2. Bounce the 4 bars to a stereo file.
-3. Run stem separation on the bounced file.
-4. Load Drums stem into Track 1, Bass stem into Track 2, Melody stem into Track 3, Other stem into Track 4.
-5. Now remix: change the rhythm of the bass stem independently of the melody stem. Add effects to the Other stem that would have muddied the whole mix if applied to the original. Pitch the melody stem down 2 semitones for a section variant.
-
-> **Practical tip:** Stem separation quality degrades when sources are heavily interleaved in the frequency spectrum. XO_OX programs with high Sonic DNA density values (7–10) will produce messier stems than low-density programs because the AI has less frequency space between the elements to use as separation guidance. If stem separation is part of your workflow intent, keep the source programs relatively low-density (3–5 each) and choose programs with distinct spectral characters — one occupying lows, one mids, one upper-mids.
+**ONSET drum chop trick**: ONSET drum programs already contain one-shot sample hits. Instead of chopping a performance, use the ONSET samples directly as chop sources. Load individual ONSET samples into a drum program, then use Chop Mode to slice them into sub-hits — the attack, the body, the tail. Re-sequence these micro-slices for rhythms that sound almost biological.
 
 ---
 
-## 5.5 Building a Live Set Architecture with XO_OX Packs — The "8-Program Set" Template
+## 5.4 XO_OX + MPC Stems — zplane Stem Separation on Full XO_OX Renders
 
-A live set is not a session. A session is exploratory. A live set is a structure you perform through, with intention about what happens when. XO_OX packs can fill both roles, but the live set role requires specific architecture decisions before the first gig.
+MPC 3.5's Stems feature uses zplane élastique technology to separate audio into Vocals, Bass, Drums, Melody, and Other. This was designed for separating existing music. XO_OX packs give you a different use case: separating your own rendered synthesis into stems you can rearrange.
 
-The 8-Program Set template is designed to give you a complete live performance architecture using eight XO_OX programs across four banks (A/B/C/D on the MPC, each holding two programs):
+**Render first, then separate**: Render a full XO_OX performance to audio (full mix, 4–8 bars). Import the rendered audio into the Stems workflow. Let zplane separate it.
 
-**Bank A — Foundation:**
-- A1: Main drum kit (ONSET or equivalent)
-- A2: Sub-bass / harmonic anchor (OVERBITE, ODDOSCAR, or OBLONG low program)
+What happens is unexpected: zplane's algorithm, trained on acoustic sources, interprets synthesized material in interesting ways. An OPAL pad might have its attack grain cloud classified as "Other" and its sustained body as "Melody." An ONSET kick might have its sub frequency sent to "Bass" and its transient snap kept in "Drums." These separations are imperfect by acoustic-source standards and precisely right by XO_OX standards.
 
-**Bank B — Momentum:**
-- B1: Rhythmic texture / groove element (high-movement, mid-density program)
-- B2: Melodic groove / arp program (medium-brightness, forward energy)
+**The XO_OX Stems formula:**
 
-**Bank C — Feature:**
-- C1: Main lead / melody instrument (high-brightness, low-density keygroup)
-- C2: Hook element or vocal chop (the most distinctive sound in the set)
+1. Load a rendered XO_OX performance as the Stems source.
+2. Let MPC generate the 5 stems.
+3. Mute the "Drums" stem entirely and reconstruct it with a fresh ONSET program.
+4. Replace the "Bass" stem with a live OVERDUB bass patch.
+5. Layer the "Melody" and "Other" stems under a new OPAL or ODYSSEY performance.
 
-**Bank D — Atmosphere:**
-- D1: Textural pad / evolving ambient (OPAL granular, ORACLE stochastic, or OBSCURA)
-- D2: Transition / wildcard (a program you use only in specific structural moments)
+You have now rebuilt your own performance from scratch, using the zplane separation as a structural guide rather than a source. The original render becomes a blueprint for a new session.
 
-**The performance logic:** You start with Bank A only — Foundation. Add Bank B at the first real groove moment. Add Bank C Feature when the first hook arrives. Bank D lives under everything but its D1 program should be subtly audible throughout. D2 is a surprise — brought in for a bridge, removed for the drop impact, or used as an intro element before A1 enters.
+> **Tip**: zplane separation quality degrades at high density (many simultaneous voices). For best results, use XO_OX programs with 1–2 active voices rather than full 8-voice poly performances. Isolated tones separate cleanly; dense chord clusters produce interesting artifacts worth keeping.
 
-**MIDI channel assignment for live sets:**
-- Each bank gets its own MIDI channel
-- The Q-Link assignments on each program should be consistent across all 8 programs — Q-Link 1 always controls CHARACTER-adjacent, Q-Link 2 always controls MOVEMENT-adjacent, etc.
-- This consistency means that in performance, Q-Link gestures work the same way regardless of which bank is active
+---
 
-> **Practical tip:** Map Bank transitions to pad mutes rather than program changes. In the MPC live view, muting a pad track is instantaneous and silent; program changes can introduce brief loading moments. Design your set so that a "bank change" is actually a track mute/unmute operation — A2 sub-bass was always playing (just muted), and unmuting it is the bass drop. The architecture of the set lives in what's muted, not what's loaded.
+## 5.5 Building a Live Set Architecture with XO_OX Packs — The 8-Program Set Template
+
+A live MPC set with XO_OX packs has a specific architecture that differs from a studio session. The goal is to perform a set that evolves without scene changes feeling like transitions.
+
+**The 8-program template:**
+
+| Program Slot | Role | Suggested Engine Family | Trigger Mode |
+|---|---|---|---|
+| P1 | Opening texture | OPAL or ODYSSEY | Pad hold, ambient fill |
+| P2 | Rhythmic foundation | ONSET | Drum program, looped |
+| P3 | Bass voice | OVERDUB or OVERBITE | Keygroup, low octave |
+| P4 | Primary melodic | OVERWORLD or ORGANON | Keygroup, mid range |
+| P5 | Secondary melodic | OBLIQUE or OCEANIC | Keygroup, upper range |
+| P6 | Accent / effect | ORIGAMI or OXIDE | One-shot, high velocity |
+| P7 | Transition texture | OBSCURA or OMBRE | Pad hold, fills between sections |
+| P8 | Closing texture | OPAL (different preset) | Fade in, set end |
+
+**Program switching without silence**: The MPC allows programs to sustain while you navigate to a new scene. The technique: always keep P1 (opening texture) running as a bed. When you switch from verse to chorus energy, activate P4 while P1 and P2 are still running. The texture overlaps. There is no hard cut.
+
+**Q-Link as set architecture control**: Assign Q-Links 5–8 as program-level volume controls for P1, P2, P7, P8. These are your "fade in / fade out" controls for the ambient and transitional programs. Your melody and rhythm tracks run on pad triggers; your atmosphere tracks run on the Q-Links. Two-handed performance: left hand on Q-Links shaping atmosphere, right hand on pads playing melody.
+
+> **Tip**: Build the 8-program template as a single MPC project, not 8 separate projects. Save scene variations as patterns within the same project. This prevents the 2–3 second project load time that breaks a live set. Everything you need for the full performance lives in one file.
+
+**Set arc with XO_OX engines**: The engine color spectrum tracks the emotional arc naturally. Open with OPAL blue-purple (floating, uncertain). Move through OVERWORLD green (grounded, dimensional). Peak with OBESE pink or OUROBOROS red (aggressive, intense). Return through OVERDUB olive (warm, resolving). Close with OPAL again (arrival, familiar but changed). The color story and the music story are the same story.
 
 ---
 
 ## 5.6 Velocity Humanization on MPC — Overcoming the Grid with XO_OX's Velocity Sensitivity
 
-The MPC's grid is precise. Too precise. A hi-hat pattern where every hit is exactly at velocity 100 sounds like a robot emulating a human. XO_OX packs are designed for the opposite — the velocity layer system means that timbral variation is locked to velocity variation, so the more consistent your velocity, the more mechanical the timbre.
+XO_OX packs are built with D001 compliance: velocity drives timbre, not just amplitude. At low velocity, a OVERWORLD ERA patch sounds close. At high velocity, it sounds open and bright. This is the Doctrine in action, and it means velocity humanization on MPC is not just about feel — it's about timbral variation that makes a programmed sequence sound played.
 
-The solution is humanization, and the MPC has tools for it.
+**The velocity randomization technique:**
 
-**Step-recorded humanization:** After recording a pad pattern, navigate to the Piano Roll (or Drum Grid view). Select all notes in a rhythmic element (all the hi-hats, all the snares). Use the Velocity randomize function (Edit → Randomize Velocity or right-click for the context menu) with a range of ±10–20 velocity points. The notes will now have varied velocities, and in XO_OX packs, that variation maps directly to timbral variation. The hi-hat pattern now has the organic character of a drummer who's not hitting exactly the same way every time.
+1. Record or program a pattern with flat velocity (all notes at 100).
+2. Select all notes in the pattern.
+3. Open Note Edit → Velocity → Randomize.
+4. Set randomization range: ±15–20 velocity points.
+5. Play back. The pattern now has timbral variation across every note.
 
-**The MPC Timing Correct + Velocity relationship:** When you use TC (Timing Correct) at 100%, velocities from live playing are preserved even as timing is corrected. Use TC at 80–90% rather than 100% — the residual timing looseness combined with the velocity variation from natural playing gives you humanized rhythm and humanized timbre simultaneously. You lose the machine precision but gain the human character.
+Because XO_OX programs tie velocity to filter brightness, harmonic content, and envelope shape, this ±20 velocity swing creates audible timbre changes on every note — not just louder/softer, but brighter/darker, more forward/more recessed.
 
-**Velocity shaping for XO_OX layers:**
-XO_OX velocity layers are roughly:
-- Layer 1: vel 1–42 (dark, rounded)
-- Layer 2: vel 43–63 (present, opening)
-- Layer 3: vel 64–84 (bright, forward)
-- Layer 4: vel 85–127 (full brightness, maximum aggression)
+**The grid-breaking technique**: The MPC's quantization grid is its greatest strength and most audible weakness. For XO_OX melodic programs, try recording with a loose humanize setting:
 
-A hi-hat pattern that cycles through velocities 65, 45, 80, 45, 70, 45, 85, 45 is hitting Layer 3, Layer 2, Layer 3, Layer 2, Layer 3, Layer 2, Layer 4, Layer 2 alternately. The pattern has a consistent rhythm but an alternating timbral character — open and bright on the accented hits, darker and rounder on the in-between hits. This is a swing feel implemented at the timbre level, not just at the timing level.
+1. Record your pattern at BPM in real time.
+2. In Note Edit, select all notes.
+3. Quantize to 1/16 but with **Swing 54%** and **Humanize ±8ms**.
 
-> **Practical tip:** Use the MPC's Velocity Ramp feature (Q-Link assigned to track velocity offset) to slowly build the average velocity of a track over 8 or 16 bars. Start at -15 offset, end at 0. The track gets progressively brighter and more aggressive over the section — a build that operates at the synthesis layer, not the mix layer. By the drop, full velocity means full aggression.
+The ±8ms timing shift keeps notes near the grid without sitting exactly on it. Combined with ±15 velocity randomization, the result is a pattern that "breathes" — close enough to the grid to feel intentional, loose enough to feel human.
 
----
+> **Tip**: XO_OX programs with fast attack envelopes (ONSET percussion, OBLONG transients) are more sensitive to timing humanization than slow-attack programs (OPAL pads, ODYSSEY long tones). Apply heavier humanize (±15ms, ±25 velocity) to fast programs and lighter humanize (±5ms, ±10 velocity) to slow programs. This matches the perceptual sensitivity of each timbre type.
 
-## 5.7 MPCe 3D Pad Technique — Using Pressure and XY for XO_OX Quad-Corner Packs
+**Velocity layer targeting**: Some XO_OX programs have 4 velocity layers, each with a different sample character. To deliberately target a specific layer, record with note velocity locked to the center of that layer's range:
+- Layer 1 (soft): velocity 1–32 → program center at 16
+- Layer 2 (medium): velocity 33–64 → center at 48
+- Layer 3 (hard): velocity 65–96 → center at 80
+- Layer 4 (forte): velocity 97–127 → center at 112
 
-The Akai MPC Element (MPCe) introduces 3D pressure-sensitive pads: in addition to strike velocity, the pads respond to continuous aftertouch pressure and to XY position on the pad surface. This is a different instrument from previous MPC hardware, and XO_OX has begun designing packs specifically for the 3D pad architecture.
-
-**How 3D pads work with XPN programs:**
-In an MPCe-native XPN pack, each pad in a drum program has been designed as a quad-corner architecture — four timbral states mapped to the four corners of the pad surface. Moving your finger across the XY field morphs between these states in real time. Pressing harder with aftertouch opens a fifth dimension (usually filter cutoff or reverb depth). The result: each pad is not a single sound but a continuous timbral field.
-
-**The XO_OX quad-corner design philosophy:**
-XO_OX quad-corner packs use the feliX-Oscar axis and the Sonic DNA brightness dimension to define the four corners:
-
-- **Top-left:** feliX-bright (high brightness, clean transients)
-- **Top-right:** feliX-warm (high brightness with warmth added)
-- **Bottom-left:** Oscar-dark (low brightness, maximum warmth)
-- **Bottom-right:** Oscar-aggressive (low brightness, high aggression)
-
-Moving diagonally from bottom-left to top-right is a pure feliX-Oscar transition. Moving from top-right to bottom-right adds aggression while keeping brightness. The XY pad becomes a 2D performance space that lets you express feliX-Oscar character as a real-time gesture.
-
-**Aftertouch as COUPLING macro:**
-In MPCe-native XO_OX packs, aftertouch pressure is typically mapped to the COUPLING-equivalent parameter — a filter opening or reverb depth increase that simulates the effect of XOmnibus coupling engagement. Light touch = dry, separate layers. Hard pressure = the layers blend and one begins to modulate the other perceptually.
-
-**Future-proofing for non-MPCe hardware:**
-If you're on standard MPC hardware (without 3D pads), these packs still function correctly — they load as standard velocity-layer drum programs. The XY morphing simply isn't available. When you eventually migrate to MPCe hardware, the same packs unlock their full 3D performance capability without reprogramming anything. This is the future-proof aspect of the architecture: standard XPN compatibility now, 3D expression when the hardware catches up.
-
-> **Practical tip:** On MPCe hardware, don't treat the 3D pads as knobs. Treat them as a playing surface. The XY field rewards continuous physical motion during performance — dragging your finger from corner to corner as you play a pattern. The most expressive technique: anchor your strike on the bottom-left corner (Oscar-dark), then drag toward the top-right (feliX-bright) during the note's sustain. The sound starts warm and moves toward bright over the duration of the note — velocity timbre responding to physical gesture, not just strike force.
+Locking to layer centers and applying light randomization (±10) keeps you in one layer with natural variation. Wider randomization (±20+) starts crossing layer boundaries, and the timbre shifts between layers add another dimension of movement.
 
 ---
 
-## 5.8 Recording XO_OX to Audio — Bouncing, Stem Rendering, and Mastering Chain Suggestions
+## 5.7 MPCe 3D Pad Technique — Pressure/XY for Quad-Corner Packs (Future-Proof)
 
-At some point, you need to commit. The sequence is done, the programs are performing, the Q-Link automation is recorded. The track needs to become audio that can be exported, shared, or released. Here is the XO_OX-specific guidance for that final step.
+The MPC's evolution toward 3D pad control (pressure + XY position) is an acknowledged direction in the hardware roadmap. This section is forward-looking: documenting technique for when 3D pads are fully supported, and suggesting how to prepare XO_OX packs for that future.
 
-**Bouncing individual programs to audio:**
-Use the MPC's Bounce to Audio function (Track menu → Export Track as Audio, or through the Mixdown workflow). For XO_OX programs, bounce at 24-bit, 48kHz minimum. The velocity layer samples in XO_OX packs are rendered at 44.1kHz/24-bit, but the MPC's internal processing adds its own sample rate conversion and filter processing — bouncing at 48kHz captures all of it cleanly.
+**Current state (MPC 3.5)**: Aftertouch (channel pressure) is supported via compatible controller input. XY position on pads is not yet exposed as a parameter modulation source.
 
-Important: bounce each program separately before bouncing the mix. This gives you per-program stems that can be processed independently in your DAW. The granular texture program should not go through the same compression settings as the drum program.
+**What 3D pads would enable with XO_OX packs:**
 
-**The stem rendering workflow:**
-For a complete XO_OX track, the recommended stem structure is:
-1. **Rhythm stem:** All drum programs combined (ONSET or equivalent), bounced dry (no additional effects beyond what's in the XPN program)
-2. **Bass stem:** Sub-bass and harmonic anchor programs combined
-3. **Melody stem:** Lead instruments and melodic keygroup programs
-4. **Texture stem:** Atmospheric, granular, and ambient programs (OPAL, ORACLE, etc.)
-5. **FX stem:** Any programs designed primarily as effect sources or transitions
+The quad-corner design of future XO_OX packs maps four engine characters to four corners of a pad's XY surface. For an OPAL program:
+- **Bottom-left**: Close/dark grain (short size, low pitch)
+- **Bottom-right**: Close/bright grain (short size, high pitch)
+- **Top-left**: Distant/dark grain (long size, low pitch)
+- **Top-right**: Distant/bright grain (long size, high pitch)
 
-Export all five stems from the MPC at matched gain levels (no normalization — preserve the relative levels you set during the session). Import into your DAW as a stem mix project.
+Finger position on the pad continuously morphs between these four timbral states. The center of the pad is the average of all four corners — the MOJO Center.
 
-**Mastering chain suggestions for XO_OX material:**
+**Preparing packs now for 3D pads later:**
 
-XO_OX packs have a characteristic sonic profile that responds consistently to specific processing choices:
+1. Design presets with 4 extreme parameter states corresponding to the four corners.
+2. Document these states in the preset's metadata so the future XPN import tool can generate 3D assignments automatically.
+3. In the current XPN format, encode these corner states as `"pad_xy_corners"` in the program's metadata block — even if MPC ignores them today, the data is there when support arrives.
 
-*High-feliX material (ONSET drums, OddfeliX, OVERWORLD):*
-- Minimal compression on the bus — these transients are tight and don't need shaping
-- High-shelf boost (+1–2 dB, 10kHz) enhances the designed brightness
-- Limiter with very fast attack (0.1ms) and short release to preserve transient character
+**Current workaround with Q-Links**: Until 3D pads exist, approximate the X axis with Q-Link 1 (say, grain size) and the Y axis with Q-Link 2 (grain pitch). Two-finger Q-Link movement approximates the spatial feel of pad XY. It is not the same. It is close enough to prepare your muscle memory.
 
-*High-Oscar material (OVERDUB, OBLONG warm programs, OPAL sustains):*
-- Bus compression with slow attack (10–20ms) to let the warmth breathe
-- Low-mid presence (+0.5–1 dB, 300Hz) enhances the warmth character
-- Tape saturation plugin at subtle settings (0.5–1% drive) adds the analog warmth that Oscar material is designed to have
-
-*Full mix (all programs combined):*
-- True peak limiter at -0.3 LUFS true peak (streaming platform standard)
-- Target -14 LUFS integrated loudness for streaming
-- Avoid heavy parallel compression on the full XO_OX mix — the Sonic DNA density balance across programs was designed to be coherent without gluing. Heavy compression collapses that designed balance.
-
-> **Practical tip:** Before mastering, do a Sonic DNA audit of your mix against the targets in Chapter 3. Is the drop carrying the high-brightness, high-aggression DNA you designed? Is the intro sitting at high-movement, low-density? If the DNA intentions are present in the mix, mastering only needs to maximize loudness and polish. If the DNA intentions got lost somewhere in the arrangement, no mastering chain will fix the underlying problem. Diagnose in DNA terms, solve at the arrangement level, then master.
-
-**The bounce workflow as quality control:**
-Bouncing each program separately before mixing has a secondary benefit: you'll hear each program in isolation, and that isolation often reveals issues that get masked in the full mix. The high-movement granular texture that sounded perfect in context may have a low-end buildup that needs a high-pass filter. The lead program may have a narrow frequency spike that the bass program was accidentally masking. Hearing them separately finds these problems early, before they become mastering problems.
+> **Tip**: All XO_OX programs are designed with four macro parameters (CHARACTER, MOVEMENT, COUPLING, SPACE) that map naturally to quad-corner XY destinations. When 3D pad support arrives, XO_OX packs will be the first third-party library with native 3D assignments, because the architecture was designed for it from the beginning.
 
 ---
 
-## Closing
+## 5.8 Recording XO_OX to Audio — Bouncing, Stem Rendering, Mastering Chain
 
-These techniques share a common underlying philosophy: the MPC is not a playback device for XO_OX packs. It is an instrument that performs them. Multi-program layering, Q-Link coupling tricks, velocity humanization, 3D pad expression — all of these treat the hardware as a means of coaxing character out of pre-rendered audio. The character was designed into the sounds at the synthesis level. Your job on the hardware is to unlock it.
+At some point every MPC session needs to become audio. The quality of that transition — from live performance to fixed file — determines what the listener hears.
 
-The most advanced MPC technique is not a specific workflow. It is the habit of asking, before you add anything: *does this make the character of the sound more present, or does it bury it?* Every technique in this chapter points toward more presence, more expression, more of what the XO_OX engine wanted the sound to be. Go toward that.
+**Bouncing a single program to audio:**
+
+1. Solo the target program (press SOLO on its track).
+2. Open Export → Audio Mixdown.
+3. Set output to Stereo, format to WAV 24-bit 44.1kHz (or 48kHz if your session runs at 48).
+4. Set duration to your pattern length + 2 bars of tail.
+5. Export.
+
+The +2 bars of tail captures reverb and delay decay from OVERDUB, OBSCURA, or OPAL programs. Without tail time, your bounce clips the natural decay and the audio sounds truncated.
+
+**Stem rendering from XO_OX sessions:**
+
+For a full multi-track project, render stems per program rather than one stereo mixdown:
+1. Mute all tracks except Track 1.
+2. Export Stem 1 with 2-bar tail.
+3. Unmute Track 1, mute all except Track 2.
+4. Export Stem 2.
+5. Repeat for all tracks.
+
+You now have individual stems that can be imported into a DAW for arrangement, mixing, and mastering. This is the handoff point from MPC production to DAW finishing.
+
+> **Tip**: Render stems at -3dBFS peak headroom minimum. XO_OX programs with OUROBOROS coupling or ORIGAMI fold distortion can produce unexpected transient peaks — give yourself headroom before mixing. Normalize to -14 LUFS for streaming targets during mastering, not at the stem render stage.
+
+**Mastering chain suggestions for XO_OX rendered audio:**
+
+The harmonic content of XO_OX programs requires a mastering chain that preserves rather than homogenizes. Suggested chain:
+
+1. **High-pass at 20–30Hz**: Remove sub-sub content that XO_OX bass programs can generate. Protects speakers and streaming encoders.
+2. **Gentle low-mid EQ**: XO_OX Oscar-polarity programs have low-mid density. A 1–2dB dip at 200–350Hz opens space if the mix sounds congested.
+3. **Multiband compression with conservative ratios**: 2:1 maximum. XO_OX programs have velocity-responsive dynamics — don't flatten them.
+4. **Stereo width control**: OCEANIC and OBLIQUE programs generate wide stereo fields. Verify mono compatibility and reduce width if needed.
+5. **Limiter**: -0.1dBTP ceiling for streaming. True peak limiter, not peak.
+
+**XO_OX + OXIDE render stage (when OXIDE ships)**: When OXIDE is available as a mastering plugin, a single instance of OXIDE at MOJO Center settings (tube, drive=40, mix=50) as the last step before the limiter adds the final harmonic density that makes a master feel complete. This is the "baked in character" that hardware mastering chains provide. OXIDE at mastering levels is subtle — it is the difference between a mix that is finished and a master that is real.
+
+**Archiving session files**: After rendering, archive the full MPC project file (`.xpj`), all XO_OX samples referenced by the project, and your rendered stems as a single folder. XO_OX samples are licensed for use in your music but not for redistribution — keep them in project archives, not in shared drives or sample pools passed between collaborators.
 
 ---
 
-*Next: Chapter 6 — Building Expansion Packs: Rendering, Packaging, and Distribution*
+*Next chapter: Chapter 6 — XO_OX Preset Design Philosophy: How to Create Your Own Sound Libraries*
