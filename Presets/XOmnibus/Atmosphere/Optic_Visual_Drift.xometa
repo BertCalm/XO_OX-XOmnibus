@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "Visual Drift",
+  "mood": "Atmosphere",
+  "engines": ["Optic"],
+  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
+  "version": "1.0.0",
+  "description": "Slow drifting luminescence — barely-there pulse that breathes across vast space. Bioluminescence in still water.",
+  "tags": ["drift", "ambient", "glow", "atmosphere"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.55,
+    "warmth": 0.6,
+    "movement": 0.3,
+    "density": 0.15,
+    "space": 0.9,
+    "aggression": 0.05
+  },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.6,
+    "movement": 0.3,
+    "density": 0.15,
+    "space": 0.9,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 0.02,
+      "optic_pulseDepth": 0.5,
+      "optic_pulseShape": 0.7,
+      "optic_emissionLevel": 0.5,
+      "optic_brightness": 0.55,
+      "optic_filterCutoff": 0.4,
+      "optic_filterReso": 0.15,
+      "optic_reverbSize": 0.85,
+      "optic_reverbDamp": 0.4,
+      "optic_reverbMix": 0.6,
+      "optic_outputLevel": 0.7,
+      "optic_outputPan": 0.0,
+      "optic_couplingLevel": 0.3,
+      "optic_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Ole Ritual Silence",
+  "mood": "Aether",
+  "engines": ["OLE"],
+  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
+  "version": "1.0.0",
+  "description": "Between songs, the ceremony breathes. Almost no drama, barely any rhythm — a quiet continuous drone that holds the space sacred. The memory of the last song, waiting for the next.",
+  "tags": ["ritual", "silence", "drone", "ambient", "aether", "ceremony"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.75,
+    "movement": 0.1,
+    "density": 0.35,
+    "space": 0.9,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "OLE": {
+      "ole_drama": 0.05,
+      "ole_rhythmA": 0.1,
+      "ole_rhythmB": 0.08,
+      "ole_voiceA": 0.3,
+      "ole_voiceB": 0.2,
+      "ole_voiceC": 0.15,
+      "ole_attackTime": 1.5,
+      "ole_releaseTime": 5.5,
+      "ole_reverbSend": 0.88,
+      "ole_filterCutoff": 0.4,
+      "macro_character": 0.3,
+      "macro_movement": 0.1,
+      "macro_coupling": 0.0,
+      "macro_space": 0.9
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

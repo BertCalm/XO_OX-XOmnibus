@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Deep Fold",
+  "mood": "Aether",
+  "engines": ["Origami"],
+  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
+  "version": "1.0.0",
+  "description": "Recursive wavefold pushed toward its limit — fold point near maximum, fold amount at depth, brightness reduced by the self-cancellation. The signal approaches silence the further it folds. A sonic Möbius strip.",
+  "tags": ["aether", "fold", "recursive", "deep", "silence", "wavefold", "minimal"],
+  "macroLabels": ["FOLD", "CREASE", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.42,
+    "movement": 0.15,
+    "density": 0.38,
+    "space": 0.92,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldPoint": 0.95,
+      "origami_foldAmt": 0.9,
+      "origami_creaseDepth": 0.72,
+      "origami_filterCutoff": 0.38,
+      "origami_filterReso": 0.22,
+      "origami_lfoRate": 0.03,
+      "origami_lfoDepth": 0.15,
+      "origami_ampAttack": 5.0,
+      "origami_ampDecay": 2.5,
+      "origami_ampSustain": 0.55,
+      "origami_ampRelease": 11.0,
+      "origami_reverbMix": 0.9,
+      "origami_macroFold": 0.0,
+      "origami_macroCrease": 0.0,
+      "origami_macroCoupling": 0.0,
+      "origami_macroSpace": 0.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}

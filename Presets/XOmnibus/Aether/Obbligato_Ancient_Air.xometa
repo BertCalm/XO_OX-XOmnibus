@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Obbligato Ancient Air",
+  "mood": "Aether",
+  "engines": ["OBBLIGATO"],
+  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
+  "version": "1.0.0",
+  "description": "Two ancient winds, patient as geology. They breathe so slowly the listener questions whether they are moving at all. A meditation on the gap between two notes.",
+  "tags": ["ancient", "sustained", "slow", "meditative", "wind", "aether"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.8,
+    "movement": 0.12,
+    "density": 0.45,
+    "space": 0.9,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "OBBLIGATO": {
+      "obbl_bond": 0.15,
+      "obbl_breathA": 0.3,
+      "obbl_breathB": 0.25,
+      "obbl_lfoRateA": 0.06,
+      "obbl_lfoRateB": 0.04,
+      "obbl_lfoDepthA": 0.2,
+      "obbl_lfoDepthB": 0.18,
+      "obbl_attackTime": 1.8,
+      "obbl_releaseTime": 5.0,
+      "obbl_reverbSend": 0.85,
+      "macro_character": 0.35,
+      "macro_movement": 0.12,
+      "macro_coupling": 0.15,
+      "macro_space": 0.9
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

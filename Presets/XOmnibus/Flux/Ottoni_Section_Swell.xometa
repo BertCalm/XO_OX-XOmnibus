@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Ottoni Section Swell",
+  "mood": "Flux",
+  "engines": ["OTTONI"],
+  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
+  "version": "1.0.0",
+  "description": "A long brass swell with natural decay variation across the three voices. Each horn fades at a slightly different rate, creating an organic disbanding of the section.",
+  "tags": ["brass", "swell", "orchestral", "decay", "natural", "flux"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.65,
+    "movement": 0.4,
+    "density": 0.6,
+    "space": 0.65,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "OTTONI": {
+      "otto_grow": 0.5,
+      "otto_brassA": 0.65,
+      "otto_brassB": 0.55,
+      "otto_brassC": 0.45,
+      "otto_attackTime": 0.6,
+      "otto_releaseTime": 3.2,
+      "otto_decayVariation": 0.35,
+      "otto_filterCutoff": 0.6,
+      "otto_harmonicRich": 0.5,
+      "macro_character": 0.55,
+      "macro_movement": 0.4,
+      "macro_coupling": 0.0,
+      "macro_space": 0.65
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

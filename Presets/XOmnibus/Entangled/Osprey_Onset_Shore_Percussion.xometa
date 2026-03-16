@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "name": "Shore Percussion",
+  "mood": "Entangled",
+  "engines": ["Osprey", "Onset"],
+  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
+  "version": "1.0.0",
+  "description": "Osprey's tidal rhythm bleeds into Onset's drum blend ratios, synchronizing the percussion architecture to the shoreline's own pulse. The wave period sets the kick's internal timing reference; the sea state determines how much the drum texture swells and recedes. Nature as the drum machine.",
+  "tags": ["entangled", "coupling", "osprey", "onset", "shore", "percussion", "tidal", "rhythm"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.6,
+    "movement": 0.7,
+    "density": 0.6,
+    "space": 0.65,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Osprey": {
+      "osprey_shore": 0.5,
+      "osprey_seaState": 0.55,
+      "osprey_swellPeriod": 6.0,
+      "osprey_windDir": 0.6,
+      "osprey_depth": 0.4,
+      "osprey_resonatorBright": 0.55,
+      "osprey_resonatorDecay": 1.5,
+      "osprey_creatureRate": 0.3,
+      "osprey_creatureDepth": 0.4,
+      "osprey_foam": 0.35,
+      "osprey_brine": 0.2,
+      "osprey_filterTilt": 0.5,
+      "osprey_ampAttack": 0.3,
+      "osprey_ampDecay": 0.9,
+      "osprey_ampSustain": 0.7,
+      "osprey_ampRelease": 1.8,
+      "osprey_macroCharacter": 0.0,
+      "osprey_macroMovement": 0.0,
+      "osprey_macroCoupling": 0.5,
+      "osprey_macroSpace": 0.0
+    },
+    "Onset": {
+      "perc_kickLevel": 0.85,
+      "perc_kickTone": 0.4,
+      "perc_kickDecay": 0.35,
+      "perc_snareLevel": 0.65,
+      "perc_snareTone": 0.5,
+      "perc_snareSnap": 0.6,
+      "perc_chatLevel": 0.5,
+      "perc_chatTone": 0.7,
+      "perc_noiseLevel": 0.3,
+      "perc_circuitBlend": 0.45,
+      "perc_algorithmBlend": 0.3,
+      "perc_reverbMix": 0.35,
+      "perc_reverbSize": 0.55,
+      "perc_macroMachine": 0.0,
+      "perc_macroPunch": 0.0,
+      "perc_macroSpace": 0.0,
+      "perc_macroMutate": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "sourceEngine": "Osprey",
+        "targetEngine": "Onset",
+        "sourceParam": "osprey_seaState",
+        "targetParam": "perc_circuitBlend",
+        "type": "RhythmToBlend",
+        "amount": 0.5,
+        "direction": "unidirectional"
+      },
+      {
+        "sourceEngine": "Osprey",
+        "targetEngine": "Onset",
+        "sourceParam": "osprey_swellPeriod",
+        "targetParam": "perc_kickDecay",
+        "type": "LFOToPitch",
+        "amount": 0.3,
+        "direction": "unidirectional"
+      }
+    ]
+  },
+  "sequencer": null
+}

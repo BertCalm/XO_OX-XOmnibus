@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Soft Rhythm",
+  "mood": "Atmosphere",
+  "engines": ["Ole"],
+  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
+  "version": "1.0.0",
+  "description": "Gentle groove with the drama dialed back — rhythmA breathing softly, space opening wide. The trio playing for an empty afternoon courtyard.",
+  "tags": ["gentle", "groove", "spatial", "atmosphere"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.42,
+    "warmth": 0.62,
+    "movement": 0.35,
+    "density": 0.28,
+    "space": 0.7,
+    "aggression": 0.1
+  },
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.62,
+    "movement": 0.35,
+    "density": 0.28,
+    "space": 0.7,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Ole": {
+      "ole_rhythmA": 0.25,
+      "ole_rhythmB": 0.15,
+      "ole_rhythmC": 0.1,
+      "ole_drama": 0.2,
+      "ole_percussionMix": 0.3,
+      "ole_filterCutoff": 0.42,
+      "ole_filterReso": 0.15,
+      "ole_reverbSize": 0.75,
+      "ole_reverbDamp": 0.45,
+      "ole_reverbMix": 0.45,
+      "ole_ampAttack": 0.05,
+      "ole_ampRelease": 0.5,
+      "ole_outputLevel": 0.72,
+      "ole_outputPan": 0.0,
+      "ole_couplingLevel": 0.35,
+      "ole_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

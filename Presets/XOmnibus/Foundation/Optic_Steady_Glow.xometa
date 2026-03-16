@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Steady Glow",
+  "mood": "Foundation",
+  "engines": ["Optic"],
+  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
+  "version": "1.0.0",
+  "description": "Unblinking steady emission — a bright visual anchor with minimal pulse flutter. The lighthouse in the mix.",
+  "tags": ["steady", "bright", "anchor", "foundation"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.8,
+    "warmth": 0.4,
+    "movement": 0.08,
+    "density": 0.35,
+    "space": 0.45,
+    "aggression": 0.1
+  },
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.4,
+    "movement": 0.08,
+    "density": 0.35,
+    "space": 0.45,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 0.08,
+      "optic_pulseDepth": 0.3,
+      "optic_pulseShape": 0.1,
+      "optic_emissionLevel": 0.85,
+      "optic_brightness": 0.8,
+      "optic_filterCutoff": 0.7,
+      "optic_filterReso": 0.1,
+      "optic_reverbMix": 0.15,
+      "optic_outputLevel": 0.85,
+      "optic_outputPan": 0.0,
+      "optic_couplingLevel": 0.4,
+      "optic_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

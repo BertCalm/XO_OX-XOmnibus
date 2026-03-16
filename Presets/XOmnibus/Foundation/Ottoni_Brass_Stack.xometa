@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Brass Stack",
+  "mood": "Foundation",
+  "engines": ["Ottoni"],
+  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
+  "version": "1.0.0",
+  "description": "Three brass layers at full deployment — trumpet, trombone, and horn in tight harmonic stack. Dense, commanding, and slightly aggressive.",
+  "tags": ["brass", "stack", "dense", "foundation"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.65,
+    "warmth": 0.55,
+    "movement": 0.45,
+    "density": 0.7,
+    "space": 0.35,
+    "aggression": 0.6
+  },
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.55,
+    "movement": 0.45,
+    "density": 0.7,
+    "space": 0.35,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Ottoni": {
+      "otto_brassA": 0.7,
+      "otto_brassB": 0.6,
+      "otto_brassC": 0.5,
+      "otto_grow": 0.55,
+      "otto_bellA": 0.6,
+      "otto_bellB": 0.55,
+      "otto_bellC": 0.5,
+      "otto_filterCutoff": 0.6,
+      "otto_filterReso": 0.3,
+      "otto_driveAmount": 0.35,
+      "otto_reverbMix": 0.2,
+      "otto_ampAttack": 0.06,
+      "otto_ampRelease": 0.45,
+      "otto_outputLevel": 0.8,
+      "otto_outputPan": 0.0,
+      "otto_couplingLevel": 0.5,
+      "otto_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}
