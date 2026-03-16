@@ -569,6 +569,30 @@ def _stage_package(ctx: PipelineContext) -> None:
         print(f"    [DRY] {len(ctx.xpm_paths)} programs, metadata: {meta.name} v{meta.version}")
         return
 
+    # Generate expansion.json + bundle_manifest.json and write them into build_dir
+    # so the packager picks them up when sealing the ZIP.
+    try:
+        from xpn_manifest_generator import generate_manifests
+        pack_config = {
+            "pack_name": ctx.pack_name,
+            "engine":    ctx.engine.upper(),
+            "mood":      getattr(ctx, "mood", "Foundation"),
+            "version":   ctx.version,
+            "bpm":       getattr(ctx, "bpm", None),
+            "key":       getattr(ctx, "key", None),
+            "tags":      getattr(ctx, "tags", []),
+        }
+        expansion_json, bundle_json = generate_manifests(pack_config)
+        (ctx.build_dir / "expansion.json").write_text(
+            json.dumps(expansion_json, indent=2), encoding="utf-8"
+        )
+        (ctx.build_dir / "bundle_manifest.json").write_text(
+            json.dumps(bundle_json, indent=2), encoding="utf-8"
+        )
+        print("    Manifests: expansion.json + bundle_manifest.json written")
+    except ImportError:
+        print("    [WARN] xpn_manifest_generator not found — skipping manifests")
+
     # The packager expects .xpm files in the build dir or Programs/ subdir
     # Move .xpm files into the expected location if needed
     for xpm in ctx.xpm_paths:
