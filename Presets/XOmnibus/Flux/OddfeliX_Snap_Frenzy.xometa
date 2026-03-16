@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "name": "OddfeliX Snap Frenzy",
+  "mood": "Flux",
+  "engines": ["OddfeliX"],
+  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
+  "version": "1.0.0",
+  "description": "The snap filter in rapid flux — cutoff at 2800Hz with a fast LFO carving rhythmic notches through the spectrum. High aggression, maximum movement. A neon tetra darting through turbulent water, unpredictable and kinetic.",
+  "tags": ["flux", "oddfelix", "filter", "fast", "aggressive", "movement", "snap"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": { "brightness": 0.7, "warmth": 0.3, "movement": 0.9, "density": 0.65, "space": 0.35, "aggression": 0.6 },
+  "parameters": {
+    "OddfeliX": {
+      "snap_filterCutoff": 2800,
+      "snap_filterRes": 0.65,
+      "snap_oscWave": 0.5,
+      "snap_envAttack": 0.004,
+      "snap_envDecay": 0.12,
+      "snap_envSustain": 0.45,
+      "snap_envRelease": 0.25,
+      "snap_lfo1Rate": 0.72,
+      "snap_lfo1Depth": 0.6
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

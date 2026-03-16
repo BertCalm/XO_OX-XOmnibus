@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "name": "Shore Commune",
+  "mood": "Entangled",
+  "engines": ["Osprey", "Ohm"],
+  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
+  "version": "1.0.0",
+  "description": "Shore data from Osprey's geological frequency system informs the commune's harmonic tuning reference via FreqToColor coupling. Each coastline carries a signature frequency signature — Atlantic, Pacific, Baltic — and the commune retunes its drone cluster to match that geological keynote. Geography as harmony. The hippy dad goes to the sea and finds his tonic.",
+  "tags": ["entangled", "coupling", "osprey", "ohm", "shore", "commune", "tuning", "geography", "harmony"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.7,
+    "movement": 0.35,
+    "density": 0.5,
+    "space": 0.8,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Osprey": {
+      "osprey_shore": 0.5,
+      "osprey_seaState": 0.3,
+      "osprey_swellPeriod": 12.0,
+      "osprey_windDir": 0.3,
+      "osprey_depth": 0.45,
+      "osprey_resonatorBright": 0.35,
+      "osprey_resonatorDecay": 3.0,
+      "osprey_geoFrequency": 0.55,
+      "osprey_sympathyAmount": 0.4,
+      "osprey_coherence": 0.75,
+      "osprey_foam": 0.1,
+      "osprey_brine": 0.08,
+      "osprey_hull": 0.4,
+      "osprey_harborVerb": 0.5,
+      "osprey_fog": 0.3,
+      "osprey_filterTilt": 0.4,
+      "osprey_ampAttack": 1.0,
+      "osprey_ampDecay": 2.5,
+      "osprey_ampSustain": 0.72,
+      "osprey_ampRelease": 4.0,
+      "osprey_macroCharacter": 0.0,
+      "osprey_macroMovement": 0.0,
+      "osprey_macroCoupling": 0.35,
+      "osprey_macroSpace": 0.0
+    },
+    "Ohm": {
+      "ohm_tuning": 0.5,
+      "ohm_spread": 0.5,
+      "ohm_droneDepth": 0.72,
+      "ohm_communeVoices": 6,
+      "ohm_filterCutoff": 0.48,
+      "ohm_filterRes": 0.1,
+      "ohm_ampAttack": 0.5,
+      "ohm_ampDecay": 1.0,
+      "ohm_ampSustain": 0.88,
+      "ohm_ampRelease": 4.5,
+      "ohm_lfo1Rate": 0.015,
+      "ohm_lfo1Depth": 0.2,
+      "ohm_lfo1Shape": 0,
+      "ohm_lfo2Rate": 0.006,
+      "ohm_lfo2Depth": 0.12,
+      "ohm_lfo2Shape": 2,
+      "ohm_macroMeddling": 0.0,
+      "ohm_macroCommune": 0.0,
+      "ohm_macroCoupling": 0.0,
+      "ohm_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "sourceEngine": "Osprey",
+        "targetEngine": "Ohm",
+        "sourceParam": "osprey_geoFrequency",
+        "targetParam": "ohm_tuning",
+        "type": "FreqToColor",
+        "amount": 0.35,
+        "direction": "unidirectional"
+      },
+      {
+        "sourceEngine": "Osprey",
+        "targetEngine": "Ohm",
+        "sourceParam": "osprey_swellPeriod",
+        "targetParam": "ohm_lfo1Rate",
+        "type": "LFOToPitch",
+        "amount": 0.22,
+        "direction": "unidirectional"
+      }
+    ]
+  },
+  "sequencer": null
+}

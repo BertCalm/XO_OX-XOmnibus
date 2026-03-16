@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Tape Ghost",
+  "mood": "Aether",
+  "engines": ["Oblong"],
+  "author": "Guru Bin — XOmnibus Code Quality Sprint 2026-03-16",
+  "version": "1.0.0",
+  "description": "A faded tape recording — signal degraded by time, the warmth of oxide saturation still present. Filter at 400 Hz blurs every transient. Very little movement, long decay, reverb almost as loud as the source. A presence without a body.",
+  "tags": ["aether", "tape", "ghost", "warm", "faded", "saturation", "ethereal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.85,
+    "movement": 0.15,
+    "density": 0.28,
+    "space": 0.88,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_oscWave": 1,
+      "bob_oscDetune": 0.08,
+      "bob_fltCutoff": 0.22,
+      "bob_fltReso": 0.2,
+      "bob_drive": 0.28,
+      "bob_lfo1Rate": 0.04,
+      "bob_lfo1Depth": 0.08,
+      "bob_ampAttack": 3.8,
+      "bob_ampDecay": 1.5,
+      "bob_ampSustain": 0.7,
+      "bob_ampRelease": 9.5,
+      "bob_macroCharacter": 0.0,
+      "bob_macroMovement": 0.0,
+      "bob_macroCoupling": 0.0,
+      "bob_macroSpace": 0.0
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null
+}
