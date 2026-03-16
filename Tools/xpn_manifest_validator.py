@@ -226,7 +226,7 @@ def load_json_from_file(path: str) -> Tuple[Optional[Any], Optional[str]]:
 # Output formatters
 # ---------------------------------------------------------------------------
 
-def format_text(all_issues: list[dict], passed: bool) -> str:
+def format_text(all_issues: List[dict], passed: bool) -> str:
     lines = []
     for iss in all_issues:
         lines.append(f"  [{iss['severity']}] {iss['field']}: {iss['message']}")
@@ -237,7 +237,7 @@ def format_text(all_issues: list[dict], passed: bool) -> str:
     return "\n".join(lines)
 
 
-def format_json(all_issues: list[dict], passed: bool) -> str:
+def format_json(all_issues: List[dict], passed: bool) -> str:
     return json.dumps({"passed": passed, "issues": all_issues}, indent=2)
 
 
@@ -261,7 +261,7 @@ def main() -> int:
         help="Output format (default: text)")
     args = parser.parse_args()
 
-    all_issues: list[dict] = []
+    all_issues: List[dict] = []
     exp_data = None
     bm_data = None
 
