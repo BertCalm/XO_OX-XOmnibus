@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "name": "Joint Venture",
-  "mood": "Entangled",
+  "mood": "Foundation",
   "engines": [
     "Ohm"
   ],
-  "author": "Exo Meta \u2014 Family Constellation",
+  "author": "Exo Meta — Family Constellation",
   "version": "1.0.0",
   "tags": [
     "physical-modeling",

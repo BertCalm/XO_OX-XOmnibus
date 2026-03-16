@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Murmuration",
+  "mood": "Entangled",
+  "engines": ["Oceanic"],
+  "author": "Guru Bin — OCEANIC Retreat 2026-03-15",
+  "version": "1.0.0",
+  "description": "Receives RhythmToBlend from Onset. Every drum hit sends a cascade reorganization through all 128 particles — a perturbation wave from particle 0 with 0.97× decay per particle. The first particles get maximum disruption; the last barely move. The school reorganizes in sequence. Low tether means the MIDI note barely holds the cloud. Each hit reshapes a drifting colony.",
+  "tags": ["murmuration", "coupling", "onset", "swarm", "entangled", "awakening"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.4,
+    "movement": 0.8,
+    "density": 0.6,
+    "space": 0.65,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Oceanic": {
+      "oceanic_separation": 0.55,
+      "oceanic_alignment": 0.4,
+      "oceanic_cohesion": 0.4,
+      "oceanic_tether": 0.2,
+      "oceanic_scatter": 0.35,
+      "oceanic_subflocks": 2,
+      "oceanic_damping": 0.35,
+      "oceanic_waveform": 0,
+      "oceanic_ampAttack": 0.05,
+      "oceanic_ampDecay": 0.5,
+      "oceanic_ampSustain": 0.7,
+      "oceanic_ampRelease": 2.0,
+      "oceanic_swarmAttack": 0.1,
+      "oceanic_swarmDecay": 0.4,
+      "oceanic_swarmSustain": 0.65,
+      "oceanic_swarmRelease": 1.0,
+      "oceanic_lfo1Rate": 0.05,
+      "oceanic_lfo1Depth": 0.2,
+      "oceanic_lfo1Shape": 0,
+      "oceanic_lfo2Rate": 0.03,
+      "oceanic_lfo2Depth": 0.1,
+      "oceanic_lfo2Shape": 0,
+      "oceanic_voiceMode": 1,
+      "oceanic_glide": 0.0,
+      "oceanic_macroCharacter": 0.0,
+      "oceanic_macroMovement": 0.0,
+      "oceanic_macroCoupling": 0.0,
+      "oceanic_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "sourceEngine": "Onset",
+        "targetEngine": "Oceanic",
+        "type": "RhythmToBlend",
+        "amount": 0.85
+      }
+    ]
+  },
+  "sequencer": null
+}

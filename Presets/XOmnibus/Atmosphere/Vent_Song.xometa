@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "name": "Vent Song",
+  "mood": "Atmosphere",
+  "engines": ["Ouroboros"],
+  "author": "Guru Bin — OUROBOROS Retreat 2026-03-15",
+  "version": "1.0.0",
+  "description": "Rossler at high leash (0.9), low chaos (0.15), projection rotated to the spiral's tonal axis (theta=0.8, phi=1.2). OUROBOROS as a pitched instrument. The vent as a singing thing. Sounds like nothing else in the fleet.",
+  "tags": ["rossler", "tonal", "pitched", "atmosphere", "awakening"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.6,
+    "movement": 0.35,
+    "density": 0.4,
+    "space": 0.6,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 1,
+      "ouro_rate": 130.0,
+      "ouro_chaosIndex": 0.15,
+      "ouro_leash": 0.9,
+      "ouro_theta": 0.8,
+      "ouro_phi": 1.2,
+      "ouro_damping": 0.4,
+      "ouro_injection": 0.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "name": "Zooid Chain",
-  "mood": "Entangled",
+  "mood": "Foundation",
   "engines": [
     "Orphica"
   ],
-  "author": "Exo Meta \u2014 Family Constellation",
+  "author": "Exo Meta — Family Constellation",
   "version": "1.0.0",
   "tags": [
     "harp",

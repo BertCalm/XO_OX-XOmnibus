@@ -94,8 +94,20 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         { "Oceanic",     "ocean"   },
         { "Optic",       "optic"   },
         { "Oblique",     "oblq"    },
+        { "Ocelot",      "ocelot"  },
+        { "Osprey",      "osprey"  },
+        { "Osteria",     "ost"     },
+        { "Owlfish",     "owl"     },
+        { "Ohm",         "ohm"     },
+        { "Orphica",     "orph"    },
+        { "Obbligato",   "obbl"    },
+        { "Ottoni",      "otto"    },
+        { "Ole",         "ole"     },
+        { "Ombre",       "ombre"   },
         { "Orca",        "orca"    },
         { "Octopus",     "octo"    },
+        { "XOverlap",    "olap"    },
+        { "XOutwit",     "owit"    },
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : engineId.toLowerCase();

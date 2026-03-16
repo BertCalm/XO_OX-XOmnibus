@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Neural Storm",
+  "name": "Neural Storm Onset",
   "mood": "Flux",
   "engines": [
     "Onset"

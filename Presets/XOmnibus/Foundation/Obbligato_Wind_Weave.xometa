@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "name": "Wind Weave",
-  "mood": "Entangled",
+  "mood": "Foundation",
   "engines": [
     "Obbligato"
   ],
-  "author": "Exo Meta \u2014 Family Constellation",
+  "author": "Exo Meta — Family Constellation",
   "version": "1.0.0",
   "tags": [
     "wind",

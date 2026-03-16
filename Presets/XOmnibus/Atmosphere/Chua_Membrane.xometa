@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "name": "Chua Membrane",
+  "mood": "Atmosphere",
+  "engines": ["Ouroboros"],
+  "author": "Guru Bin — OUROBOROS Retreat 2026-03-15",
+  "version": "1.0.0",
+  "description": "Chua at high chaos (0.75), high leash (0.7), high damping (0.65). The electronic circuit sustaining at the edge of breakdown — buzzy, warm, breathing. The membrane between order and chaos.",
+  "tags": ["chua", "atmosphere", "membrane", "sustain", "awakening"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.55,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.55,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 2,
+      "ouro_rate": 95.0,
+      "ouro_chaosIndex": 0.75,
+      "ouro_leash": 0.7,
+      "ouro_theta": 1.0,
+      "ouro_phi": -0.5,
+      "ouro_damping": 0.65,
+      "ouro_injection": 0.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

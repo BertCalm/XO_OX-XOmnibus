@@ -4,14 +4,14 @@
 
 XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. **31 engines** are registered in XOmnibus
-(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15, auval PASS)
+and mutate into sounds impossible with any single synth. **34 engines** are registered in XOmnibus
+(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS)
 — see engine table below.
 
 - **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
-- **Presets:** 2,369 factory presets in `.xometa` format, 7 mood categories (incl. Family), 6D Sonic DNA
+- **Presets:** 2,451 factory presets in `.xometa` format, 7 mood categories (incl. Family), 6D Sonic DNA
 - **Formats:** AU, Standalone (macOS); AUv3, Standalone (iOS); VST3 (v2)
 - **Design:** Gallery Model — warm white shell frames engine accent colors. Light mode default.
 
@@ -72,10 +72,11 @@ and mutate into sounds impossible with any single synth. **31 engines** are regi
 | ORCA | XOrca | Deep Ocean `#1B2838` |
 | OCTOPUS | XOctopus | Chromatophore Magenta `#E040FB` |
 
-### V2 Concept Engines (no DSP yet — approved concepts only)
+### V1 Concept Engines — DSP Build Pending (approved concepts, no source code yet)
 
-These engines have identity cards and design specs but zero source code. They are not registered
-in XOmnibus and will not ship in V1. Do not reference them as integrated engines.
+These engines have identity cards and design specs but zero source code. They are not yet registered
+in XOmnibus. They ARE V1 scope (decision 2026-03-14) — do not defer to V2. Scaffold and DSP build
+are next up after current Opus sessions resume.
 
 | Short Name | Source Instrument | Accent Color |
 |-----------|------------------|-------------|

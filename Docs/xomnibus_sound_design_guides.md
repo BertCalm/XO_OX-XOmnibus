@@ -605,35 +605,48 @@ A 32-mode resonator network that feeds back into itself. Shannon entropy analysi
 ---
 
 ## 13. OUROBOROS (Ouroboros)
-*Delay-line feedback synthesis — the strange attractor*
+*Chaotic ODE synthesis — the strange attractor*
 
-**Accent:** Strange Attractor Red `#FF2D2D` | **Prefix:** `ouroboros_` | **Voices:** 6
+**Accent:** Strange Attractor Red `#FF2D2D` | **Prefix:** `ouro_` | **Voices:** 6
 
 ### What It Does
-A 12-tap delay line that feeds back into itself with nonlinear waveshaping. The ouroboros (snake eating its tail) topology creates sounds from nowhere — internal oscillation, ring modulation, and strange attractor behavior. Chaotic but musical.
+RK4-integrated chaotic ordinary differential equations at 4× oversampling. Four selectable attractor topologies (Lorenz, Rossler, Chua, Aizawa) with Phase-Locked Chaos ("The Leash") for tonal control. 3D attractor trajectory projected to stereo via theta/phi angles. Accepts external ODE perturbation (`ouro_injection`) from coupled engines — meaning drum hits can literally push the chaos. This is not delay-line or feedback synthesis. It is the sound of a differential equation solving itself in real time.
 
 ### Key Parameters
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
-| `ouroboros_feedback` | 0–1 | 0.4–0.7 | Feedback amount. >0.7 = self-oscillation territory. |
-| `ouroboros_tapSpread` | 0–1 | 0.3–0.6 | Spread of 12 delay taps |
-| `ouroboros_nonlinearity` | 0–1 | 0.2–0.5 | Waveshaping in the feedback path |
-| `ouroboros_modDepth` | 0–1 | 0.2–0.4 | Ring modulation depth |
+| `ouro_topology` | 0–3 | — | Attractor type: 0=Lorenz, 1=Rossler, 2=Chua, 3=Aizawa |
+| `ouro_rate` | 80–200 | 95–145 | Integration speed — controls attractor orbital frequency (tonal register) |
+| `ouro_chaosIndex` | 0–1 | 0.35–0.65 | Chaos intensity. <0.35 = stable. >0.75 = Chua breakdown territory |
+| `ouro_leash` | 0–1 | 0.5–0.9 | Phase-Locked Chaos: >0.7 = almost pitched, 0.4–0.6 = uncanny middle, <0.4 = pure chaos |
+| `ouro_theta` | 0–π | 0.0, 1.571 | 3D projection polar angle. 1.571 (π/2) = Z-axis = warmer, DC-shifted output |
+| `ouro_phi` | −π–π | 0.0, 0.785 | 3D projection azimuth. 0.785 (π/4) = maximum stereo width |
+| `ouro_damping` | 0–1 | 0.25–0.45 | Attractor energy loss — higher = slower, more sustained chaos |
+| `ouro_injection` | 0–1 | 0.12–0.22 | External ODE perturbation — coupling target, allows external engines to push the attractor |
+
+### Attractor Topologies
+- **Lorenz (0):** Angular, fast-moving, the canonical chaos. Default starting point.
+- **Rossler (1):** Slower, smooth asymmetric orbit. Most pitch-adjacent. Best for melodic chaos.
+- **Chua (2):** Warm, buzzy, circuit-flavored. At high chaosIndex + high leash = edge of breakdown. Most organic.
+- **Aizawa (3):** Dense, layered. Highest harmonic density. Least explored.
 
 ### Coupling
-- **Sends:** Feedback output (ch0/1) — chaotic, harmonically rich
-- **Receives:** AudioToFM (external audio modulates delay times)
-- **Best as source for:** AudioToFM (its chaotic output creates complex FM sidebands)
+- **Sends:** Attractor velocity outputs (B007 — Seance Blessed) — chaotic, harmonically rich
+- **Receives:** AmpToFilter (shapes chaos output), AmpToPitch (injection source via ouro_injection)
+- **Best as source for:** AudioToFM (attractor velocity as FM source = unique sidebands)
+- **Best as target for:** ONSET velocity output → injection (drum hits perturb the attractor)
 
 ### Recommended Pairings
-- **+ Organon:** Two feedback systems coupled = emergent complexity
-- **+ Optic:** Chaotic output drives wild visualizations. Optic modulates back.
-- **+ Oblique:** Ouroboros chaos through Oblique's prism = fractured feedback
+- **+ Onset:** ONSET velocity → ouro_injection = rhythm gives chaos a heartbeat
+- **+ Opal:** Ouroboros velocity drives Opal grain scatter — chaos organizes the granular cloud
+- **+ Optic:** Attractor velocity drives Optic visualizer. Optic modulates chaos back.
+- **+ Oblique:** Ouroboros chaos through Oblique's prism = fractured attractor
 
 ### Starter Recipes
-**Strange Attractor:** feedback=0.6, nonlinearity=0.4, tapSpread=0.5
-**Self-Oscillating Drone:** feedback=0.8, tapSpread=0.3, nonlinearity=0.2
-**Ring Mod Texture:** feedback=0.4, modDepth=0.6, tapSpread=0.7
+**Strange Attractor (Lorenz):** topology=0, chaosIndex=0.5, leash=0.55, rate=145, theta=1.571
+**Vent Drone (Rossler):** topology=1, chaosIndex=0.15, leash=0.9, rate=120, theta=0.8, phi=1.2
+**Chua Atmosphere:** topology=2, chaosIndex=0.75, leash=0.7, damping=0.65, rate=95
+**Perturbed (couple with Onset):** topology=0, injection=0.18, chaosIndex=0.55, leash=0.45
 
 ---
 
@@ -772,37 +785,56 @@ A 128-mass spring chain simulated with Verlet integration. Excite the chain with
 ---
 
 ## 18. OCEANIC (Oceanic)
-*Paraphonic string ensemble — the creature and the eyes that see it*
+*Swarm particle synthesis — 128 oscillators that flock like creatures*
 
-**Accent:** Phosphorescent Teal `#00B4A0` | **Prefix:** `oceanic_` | **Voices:** 1 (paraphonic — all 128 MIDI notes, constant CPU)
+**Accent:** Phosphorescent Teal `#00B4A0` | **Prefix:** `oceanic_` | **Voices:** Mono/Poly2/Poly4 (max 4)
 
 ### What It Does
-A warm vintage string ensemble with a bioluminescent effects processor that reveals impossible colors hiding inside the harmonic content. Divide-down oscillator bank with 6 registration stops (Violin, Viola, Cello, Bass, Contrabass, Horn), triple-phase BBD ensemble chorus, and a 5-pedal Chromatophore chain (FREEZE, SCATTER, TIDE, ABYSS, MIRROR). The strings are the creature; the pedalboard is the eye that reveals hidden spectral colors.
+128 oscillating particles per voice that self-organize using Craig Reynolds' boid flocking rules (separation, alignment, cohesion) plus an attractor anchored to the MIDI note frequency. Particles live in a 3D perceptual space — log-frequency, amplitude, pan. The emergent flocking behavior produces evolving, organic timbres impossible with static additive synthesis.
+
+Two independent envelopes: **Amp ADSR** controls loudness; **Swarm ADSR** controls the *strength of the boid rules* — the collective intelligence of the school — entirely separately. At `swarmSustain=0` the boid forces extinguish during sustain: particles drift freely while the note holds at full amplitude. At `swarmAttack=2.5s` the school takes 2.5 seconds to learn to be a school — the attack is organic, scattered, then coheres into a tone. B013 Blessed: the Chromatophore Modulator — aftertouch boosts separation, modeling cephalopod color-shift physics.
 
 ### Key Parameters
 | Parameter | Range | Sweet Spot | What It Does |
 |-----------|-------|------------|-------------|
-| `oceanic_ensemble` | 0–1 | 0.4–0.7 | Triple-BBD ensemble depth — the Solina soul |
-| `oceanic_filterCutoff` | 20–20k Hz | 800–4000 | Shared paraphonic filter — shapes all notes at once |
-| `oceanic_pedalMix` | 0–1 | 0.3–0.6 | Dry strings vs chromatophore processing |
-| `oceanic_abyssMix` | 0–1 | 0.2–0.4 | Shimmer reverb send (Dattorro + pitch shifting) |
-| `oceanic_freezeMix` | 0–1 | 0.0–0.3 | Spectral freeze — holds current harmonic content |
-| `oceanic_chromRate` | Hz | 0.2–2 | Chromatophore modulation speed — organic pulsing |
+| `oceanic_separation` | 0–1 | 0.2–0.7 | How strongly particles repel nearby neighbors — spreads swarm spectrally |
+| `oceanic_alignment` | 0–1 | 0.3–0.7 | How strongly particles match flock velocity — smooths collective motion |
+| `oceanic_cohesion` | 0–1 | 0.3–0.7 | How strongly particles pull toward flock centroid — tightens the school |
+| `oceanic_tether` | 0–1 | 0.3–0.8 | Attractor strength toward MIDI note — lower = near-unpitched drift |
+| `oceanic_scatter` | 0–1 | 0.1–0.4 | Velocity-proportional note-on perturbation — harder hits scatter further |
+| `oceanic_subflocks` | 1–4 | 2–4 | Sub-flocks at 1×/2×/1.5×/3× MIDI frequency — emergent chord cluster |
+| `oceanic_damping` | 0–1 | 0.3–0.7 | Velocity damping on particles — higher = slower, more sustained drift |
+| `oceanic_waveform` | 0–3 | 0–1 | Per-particle: 0=Sine, 1=Saw (PolyBLEP), 2=Pulse (PolyBLEP), 3=Noise |
+| `oceanic_swarmAttack` | 0–5s | 0.05–2.5 | Time for boid forces to build to full strength after note-on |
+| `oceanic_swarmDecay` | 0–5s | 0.1–1.0 | Time for boid forces to fall from peak to sustain level |
+| `oceanic_swarmSustain` | 0–1 | 0.4–1.0 | Sustained boid force level. 0 = school dissolves, particles drift freely |
+| `oceanic_swarmRelease` | 0–5s | 0.3–2.0 | Time for boid forces to extinguish after note-off |
+| `oceanic_lfo1Rate` | Hz | 0.01–10 | LFO1 rate — modulates separation |
+| `oceanic_lfo1Depth` | 0–1 | 0.1–0.4 | LFO1 depth on separation — breathing swarm |
+| `oceanic_lfo2Rate` | Hz | 0.01–10 | LFO2 rate — modulates cohesion |
+| `oceanic_lfo2Depth` | 0–1 | 0.1–0.3 | LFO2 depth on cohesion — tidal pull |
 
 ### Coupling
-- **Sends:** Post-pedalboard stereo output (the processed string sound)
-- **Receives:** AudioToWavetable (any engine through chromatophore chain), AmpToFilter (drum hits sweep the filter), EnvToMorph (external crescendos intensify ensemble), LFOToPitch (cross-engine pitch wander)
-- **Best as source for:** Overdub (shimmer strings through dub delay), Opal (string output granulated)
+- **Sends:** Post-limiter stereo swarm audio
+- **Receives:** AudioToFM (velocity perturbation on all particles), AmpToFilter (modulates cohesion), RhythmToBlend (triggers **murmuration** — cascade reorganization of all 128 particles)
+- **Best as source for:** Opal (swarm granulated), Overdub (swarm through tape delay)
+
+### The Chromatophore (B013 Blessed)
+Aftertouch (channel pressure) boosts separation ×0.25 — pressing harder makes particles scatter faster, exactly like a cephalopod accelerating chromatophore cycles under stress. Mod wheel (CC1) boosts cohesion ×0.4 — tightening the school. The two gestures are physical opposites: pressure scatters, wheel contracts.
+
+### Murmuration
+`RhythmToBlend` coupling triggers a cascade reorganization: a perturbation wave propagates from particle 0 through all 128 particles with 0.97× attenuation per particle. The first particles are maximally disrupted; the last barely moved. ONSET → OCEANIC via RhythmToBlend: every drum hit sends a murmuration wave through the school.
 
 ### Recommended Pairings
-- **+ Overdub:** Oceanic strings through tape echo — deepest dub pads
-- **+ Opal:** String ensemble granulated into time-scattered cloud
-- **+ Onset:** Drum transients modulate the string filter — strings breathe with drums
+- **+ Onset:** RhythmToBlend from Onset triggers murmuration — drums reorganize the swarm
+- **+ Overdub:** Swarm audio through tape delay — organic dub textures
+- **+ Opal:** Swarm output granulated — double-emergent cloud
 
 ### Starter Recipes
-**Solina Foundation:** ensemble=0.5, pedalMix=0, filter=4000Hz — pure dry string ensemble
-**Bioluminescent Pad:** ensemble=0.6, pedalMix=0.5, abyssMix=0.3, chromRate=0.4 — glowing shimmer
-**Frozen Cathedral:** freezeMix=0.7, abyssMix=0.5, pedalMix=0.8 — suspended infinite strings
+**Boid School:** subflocks=4, tether=0.6, separation=0.4, cohesion=0.5, waveform=Sine
+**Chromatophore Pad:** separation=0.3, tether=0.7, cohesion=0.5 — use aftertouch for color
+**Slow Cohere:** swarmAttack=2.5, swarmSustain=0.8, separation=0.5, cohesion=0.4
+**Noise Flock:** waveform=Noise, subflocks=4, tether=0.4, separation=0.6 — self-organizing texture
 
 ---
 

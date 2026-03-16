@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "name": "Almost Pitched",
+  "mood": "Foundation",
+  "engines": ["Ouroboros"],
+  "author": "Guru Bin — OUROBOROS Retreat 2026-03-15",
+  "version": "1.0.0",
+  "description": "leash=0.5, chaosIndex=0.45 — the uncanny middle. The attractor holds a note but harmonics scramble unpredictably each cycle. Not noise. Not a tone. Something in between that has no other name.",
+  "tags": ["leash", "uncanny", "foundation", "pitched", "awakening"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.45,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.3,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0,
+      "ouro_rate": 130.0,
+      "ouro_chaosIndex": 0.45,
+      "ouro_leash": 0.5,
+      "ouro_theta": 0.3,
+      "ouro_phi": -0.5,
+      "ouro_damping": 0.35,
+      "ouro_injection": 0.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}
