@@ -93,7 +93,7 @@ L_SYSTEMS = {
             "O": "-MA++NA[+++OA++PA]-",
             "P": "--OA++++MA[+PA++++NA]--NA",
         },
-        "triggers": "Ff",
+        "triggers": "MNOP",  # all production symbols are terminal hits
         "angle":    36,
         "description": "Penrose tiling — 5-fold quasi-crystalline rhythm",
     },
