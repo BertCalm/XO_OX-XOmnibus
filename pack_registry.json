@@ -1,0 +1,25 @@
+{
+  "registry_version": "1.0",
+  "last_updated": "2026-03-16T07:30:59Z",
+  "packs": [
+    {
+      "id": "onset-iron-machines",
+      "pack_name": "Iron Machines",
+      "engine": "ONSET",
+      "mood": "Foundation",
+      "tier": "SIGNAL",
+      "version": "1.0.0",
+      "release_date": null,
+      "gumroad_product_id": "TEST123",
+      "xpn_filename": "ONSET_IronMachines_v1.0.0.xpn",
+      "preset_count": 16,
+      "price_usd": 9.0,
+      "tags": [
+        "drums",
+        "808",
+        "hip-hop"
+      ],
+      "status": "beta"
+    }
+  ]
+}
