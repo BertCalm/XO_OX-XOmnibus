@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Latent Breakpoint",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Oracle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Daguerreotype stiffness channels oracle prophecy. Fixed image of broken futures.",
+  "tags": [
+    "obscura",
+    "oracle",
+    "daguerreotype",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_brightness": 0.44,
+      "obscura_warmth": 0.611,
+      "obscura_movement": 0.316,
+      "obscura_density": 0.54,
+      "obscura_space": 0.68,
+      "obscura_aggression": 0.232,
+      "obscura_level": 0.889
+    },
+    "Oracle": {
+      "oracle_brightness": 0.5,
+      "oracle_warmth": 0.399,
+      "oracle_movement": 0.533,
+      "oracle_density": 0.626,
+      "oracle_space": 0.689,
+      "oracle_aggression": 0.372,
+      "oracle_level": 0.75
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oracle",
+        "type": "LFO->Pitch",
+        "amount": 0.618
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.457,
+    "warmth": 0.543,
+    "movement": 0.489,
+    "density": 0.611,
+    "space": 0.646,
+    "aggression": 0.275
+  }
+}

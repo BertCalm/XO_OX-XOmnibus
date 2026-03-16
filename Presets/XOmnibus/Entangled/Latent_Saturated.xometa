@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Latent Saturated",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Overdub"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Collodion dub. Old photographic chemistry warped by tape saturation.",
+  "tags": [
+    "obscura",
+    "overdub",
+    "daguerreotype",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_brightness": 0.412,
+      "obscura_warmth": 0.634,
+      "obscura_movement": 0.337,
+      "obscura_density": 0.538,
+      "obscura_space": 0.573,
+      "obscura_aggression": 0.172,
+      "obscura_level": 0.86
+    },
+    "Overdub": {
+      "dub_brightness": 0.469,
+      "dub_warmth": 0.753,
+      "dub_movement": 0.617,
+      "dub_density": 0.484,
+      "dub_space": 0.805,
+      "dub_aggression": 0.209,
+      "dub_level": 0.818
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Overdub",
+        "type": "Gate->Env",
+        "amount": 0.429
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.451,
+    "warmth": 0.608,
+    "movement": 0.401,
+    "density": 0.611,
+    "space": 0.724,
+    "aggression": 0.229
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Vitreous Oracle",
+  "mood": "Entangled",
+  "engines": [
+    "Obsidian",
+    "Oracle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Crystal clarity channels prophecy \u2014 obsidian edge meets broken oracle timbre.",
+  "tags": [
+    "obsidian",
+    "oracle",
+    "crystal",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_brightness": 0.945,
+      "obsidian_warmth": 0.205,
+      "obsidian_movement": 0.22,
+      "obsidian_density": 0.472,
+      "obsidian_space": 0.523,
+      "obsidian_aggression": 0.169,
+      "obsidian_level": 0.876
+    },
+    "Oracle": {
+      "oracle_brightness": 0.553,
+      "oracle_warmth": 0.369,
+      "oracle_movement": 0.529,
+      "oracle_density": 0.76,
+      "oracle_space": 0.772,
+      "oracle_aggression": 0.334,
+      "oracle_level": 0.797
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Oracle",
+        "type": "LFO->Pitch",
+        "amount": 0.748
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.704,
+    "warmth": 0.301,
+    "movement": 0.444,
+    "density": 0.562,
+    "space": 0.666,
+    "aggression": 0.238
+  }
+}

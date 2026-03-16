@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Albumen Abyssal",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Owlfish"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Daguerreotype and abyssal filament \u2014 stiffness meets deep bioluminescence.",
+  "tags": [
+    "obscura",
+    "owlfish",
+    "daguerreotype",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_brightness": 0.416,
+      "obscura_warmth": 0.567,
+      "obscura_movement": 0.351,
+      "obscura_density": 0.589,
+      "obscura_space": 0.697,
+      "obscura_aggression": 0.138,
+      "obscura_level": 0.831
+    },
+    "Owlfish": {
+      "owl_brightness": 0.46,
+      "owl_warmth": 0.608,
+      "owl_movement": 0.458,
+      "owl_density": 0.639,
+      "owl_space": 0.862,
+      "owl_aggression": 0.186,
+      "owl_level": 0.865
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Owlfish",
+        "type": "LFO->Pitch",
+        "amount": 0.529
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.372,
+    "warmth": 0.57,
+    "movement": 0.382,
+    "density": 0.629,
+    "space": 0.734,
+    "aggression": 0.19
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Silver Plate Phosphor",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Oceanic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Latent coastal image. Collodion suspension meets phosphorescent wave.",
+  "tags": [
+    "obscura",
+    "oceanic",
+    "daguerreotype",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_brightness": 0.43,
+      "obscura_warmth": 0.566,
+      "obscura_movement": 0.306,
+      "obscura_density": 0.534,
+      "obscura_space": 0.727,
+      "obscura_aggression": 0.242,
+      "obscura_level": 0.841
+    },
+    "Oceanic": {
+      "ocean_brightness": 0.586,
+      "ocean_warmth": 0.497,
+      "ocean_movement": 0.468,
+      "ocean_density": 0.475,
+      "ocean_space": 0.722,
+      "ocean_aggression": 0.229,
+      "ocean_level": 0.772
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oceanic",
+        "type": "Pitch->Rate",
+        "amount": 0.782
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.523,
+    "warmth": 0.608,
+    "movement": 0.417,
+    "density": 0.581,
+    "space": 0.704,
+    "aggression": 0.224
+  }
+}

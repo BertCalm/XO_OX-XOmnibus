@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Latent Living",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Organon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Silver plate metabolism \u2014 photochemical reaction feeds enzymatic life.",
+  "tags": [
+    "obscura",
+    "organon",
+    "daguerreotype",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_brightness": 0.424,
+      "obscura_warmth": 0.545,
+      "obscura_movement": 0.419,
+      "obscura_density": 0.567,
+      "obscura_space": 0.683,
+      "obscura_aggression": 0.186,
+      "obscura_level": 0.796
+    },
+    "Organon": {
+      "organon_brightness": 0.596,
+      "organon_warmth": 0.593,
+      "organon_movement": 0.593,
+      "organon_density": 0.7,
+      "organon_space": 0.666,
+      "organon_aggression": 0.439,
+      "organon_level": 0.727
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Organon",
+        "type": "Audio->FM",
+        "amount": 0.524
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.451,
+    "warmth": 0.593,
+    "movement": 0.463,
+    "density": 0.695,
+    "space": 0.619,
+    "aggression": 0.326
+  }
+}

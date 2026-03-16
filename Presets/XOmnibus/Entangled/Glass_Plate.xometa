@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Glass Plate",
+  "mood": "Entangled",
+  "engines": [
+    "Obsidian",
+    "Obscura"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Glass plate tension: the moment before the image is fixed forever.",
+  "tags": [
+    "obsidian",
+    "obscura",
+    "crystal",
+    "daguerreotype",
+    "marquee",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_brightness": 0.932,
+      "obsidian_warmth": 0.229,
+      "obsidian_movement": 0.231,
+      "obsidian_density": 0.522,
+      "obsidian_space": 0.605,
+      "obsidian_aggression": 0.059,
+      "obsidian_level": 0.792
+    },
+    "Obscura": {
+      "obscura_brightness": 0.363,
+      "obscura_warmth": 0.668,
+      "obscura_movement": 0.38,
+      "obscura_density": 0.555,
+      "obscura_space": 0.622,
+      "obscura_aggression": 0.243,
+      "obscura_level": 0.711
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Obscura",
+        "type": "Env->Amp",
+        "amount": 0.81
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.64,
+    "warmth": 0.396,
+    "movement": 0.352,
+    "density": 0.523,
+    "space": 0.613,
+    "aggression": 0.164
+  }
+}

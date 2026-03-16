@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Daguerreotype Voyager",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Odyssey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Silver plate voyage. Albumen of a long drifting journey.",
+  "tags": [
+    "obscura",
+    "odyssey",
+    "daguerreotype",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_brightness": 0.357,
+      "obscura_warmth": 0.644,
+      "obscura_movement": 0.396,
+      "obscura_density": 0.615,
+      "obscura_space": 0.614,
+      "obscura_aggression": 0.277,
+      "obscura_level": 0.898
+    },
+    "Odyssey": {
+      "drift_brightness": 0.556,
+      "drift_warmth": 0.548,
+      "drift_movement": 0.638,
+      "drift_density": 0.559,
+      "drift_space": 0.641,
+      "drift_aggression": 0.277,
+      "drift_level": 0.858
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Odyssey",
+        "type": "Env->Amp",
+        "amount": 0.796
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.49,
+    "warmth": 0.531,
+    "movement": 0.534,
+    "density": 0.559,
+    "space": 0.679,
+    "aggression": 0.27
+  }
+}

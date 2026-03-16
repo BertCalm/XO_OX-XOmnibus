@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Crystal Exposure",
+  "mood": "Entangled",
+  "engines": [
+    "Obsidian",
+    "Obscura"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Crystal meets daguerreotype \u2014 vitreous clarity fused with photographic stiffness.",
+  "tags": [
+    "obsidian",
+    "obscura",
+    "crystal",
+    "daguerreotype",
+    "marquee",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_brightness": 0.888,
+      "obsidian_warmth": 0.125,
+      "obsidian_movement": 0.255,
+      "obsidian_density": 0.501,
+      "obsidian_space": 0.524,
+      "obsidian_aggression": 0.052,
+      "obsidian_level": 0.83
+    },
+    "Obscura": {
+      "obscura_brightness": 0.407,
+      "obscura_warmth": 0.555,
+      "obscura_movement": 0.364,
+      "obscura_density": 0.65,
+      "obscura_space": 0.571,
+      "obscura_aggression": 0.249,
+      "obscura_level": 0.84
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Obscura",
+        "type": "LFO->Pitch",
+        "amount": 0.558
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.632,
+    "warmth": 0.378,
+    "movement": 0.344,
+    "density": 0.564,
+    "space": 0.656,
+    "aggression": 0.117
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Latent Gravitational",
+  "mood": "Entangled",
+  "engines": [
+    "Obscura",
+    "Orbital"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Exposure loop. Fixed image rotates in warm red gravitational field.",
+  "tags": [
+    "obscura",
+    "orbital",
+    "daguerreotype",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_brightness": 0.423,
+      "obscura_warmth": 0.569,
+      "obscura_movement": 0.341,
+      "obscura_density": 0.613,
+      "obscura_space": 0.687,
+      "obscura_aggression": 0.134,
+      "obscura_level": 0.759
+    },
+    "Orbital": {
+      "orb_brightness": 0.64,
+      "orb_warmth": 0.598,
+      "orb_movement": 0.491,
+      "orb_density": 0.606,
+      "orb_space": 0.675,
+      "orb_aggression": 0.505,
+      "orb_level": 0.883
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Orbital",
+        "type": "Env->Amp",
+        "amount": 0.648
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.504,
+    "warmth": 0.64,
+    "movement": 0.453,
+    "density": 0.627,
+    "space": 0.638,
+    "aggression": 0.367
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Mineral Coastal",
+  "mood": "Entangled",
+  "engines": [
+    "Obsidian",
+    "Oceanic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Crystal edge meets phosphorescent teal. Mineral dissolves into coast.",
+  "tags": [
+    "obsidian",
+    "oceanic",
+    "crystal",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_brightness": 0.855,
+      "obsidian_warmth": 0.231,
+      "obsidian_movement": 0.269,
+      "obsidian_density": 0.513,
+      "obsidian_space": 0.596,
+      "obsidian_aggression": 0.105,
+      "obsidian_level": 0.785
+    },
+    "Oceanic": {
+      "ocean_brightness": 0.689,
+      "ocean_warmth": 0.523,
+      "ocean_movement": 0.532,
+      "ocean_density": 0.513,
+      "ocean_space": 0.71,
+      "ocean_aggression": 0.239,
+      "ocean_level": 0.739
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Oceanic",
+        "type": "Pitch->Rate",
+        "amount": 0.595
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.808,
+    "warmth": 0.373,
+    "movement": 0.402,
+    "density": 0.522,
+    "space": 0.691,
+    "aggression": 0.157
+  }
+}

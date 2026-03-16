@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Mineral Daguerreotype",
+  "mood": "Entangled",
+  "engines": [
+    "Obsidian",
+    "Obscura"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Mineral hardness and silver plate emulsion in slow mutual exposure.",
+  "tags": [
+    "obsidian",
+    "obscura",
+    "crystal",
+    "daguerreotype",
+    "marquee",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_brightness": 0.949,
+      "obsidian_warmth": 0.237,
+      "obsidian_movement": 0.306,
+      "obsidian_density": 0.576,
+      "obsidian_space": 0.581,
+      "obsidian_aggression": 0.108,
+      "obsidian_level": 0.866
+    },
+    "Obscura": {
+      "obscura_brightness": 0.419,
+      "obscura_warmth": 0.658,
+      "obscura_movement": 0.362,
+      "obscura_density": 0.633,
+      "obscura_space": 0.577,
+      "obscura_aggression": 0.156,
+      "obscura_level": 0.758
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Obscura",
+        "type": "Mod->Cutoff",
+        "amount": 0.597
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.687,
+    "warmth": 0.387,
+    "movement": 0.292,
+    "density": 0.518,
+    "space": 0.653,
+    "aggression": 0.158
+  }
+}

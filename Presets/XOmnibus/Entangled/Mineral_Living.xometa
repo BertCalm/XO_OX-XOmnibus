@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Mineral Living",
+  "mood": "Entangled",
+  "engines": [
+    "Obsidian",
+    "Organon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Pure mineral feeds enzymatic metabolism. Hardness becoming life.",
+  "tags": [
+    "obsidian",
+    "organon",
+    "crystal",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_brightness": 0.827,
+      "obsidian_warmth": 0.19,
+      "obsidian_movement": 0.303,
+      "obsidian_density": 0.549,
+      "obsidian_space": 0.63,
+      "obsidian_aggression": 0.17,
+      "obsidian_level": 0.847
+    },
+    "Organon": {
+      "organon_brightness": 0.552,
+      "organon_warmth": 0.589,
+      "organon_movement": 0.722,
+      "organon_density": 0.817,
+      "organon_space": 0.67,
+      "organon_aggression": 0.426,
+      "organon_level": 0.725
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Organon",
+        "type": "Pitch->Rate",
+        "amount": 0.538
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.788,
+    "warmth": 0.375,
+    "movement": 0.496,
+    "density": 0.582,
+    "space": 0.654,
+    "aggression": 0.21
+  }
+}
