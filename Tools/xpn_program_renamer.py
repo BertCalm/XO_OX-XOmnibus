@@ -153,7 +153,7 @@ def cmd_rename(
 
     total_xpm_changes = 0
     total_pad_changes = 0
-    matched_xpms: list[str] = []
+    matched_xpms = []
 
     with zipfile.ZipFile(xpn_path, "r") as zf_in:
         xpm_paths = get_xpm_paths(zf_in)
