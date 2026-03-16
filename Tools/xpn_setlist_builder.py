@@ -1,526 +1,506 @@
 #!/usr/bin/env python3
 """
 XPN Setlist Builder — XO_OX Designs
-Set-long kit validation and loading order builder for MPC.
+====================================
+Generates a "setlist" — an ordered sequence of XPN packs optimised for a live
+performance set, using Sonic DNA metadata to maximize arc, momentum, and tonal
+variety.
 
-Parses a JSON setlist, opens each XPN ZIP, estimates RAM usage from XPM
-program files, validates against device ceiling, and outputs:
-  - setlist_validation.txt   per-pack RAM breakdown + PASS/FAIL
-  - loading_order.txt        recommended load sequence (largest-first)
-  - swap_guide.txt           mid-set swap plan when total > ceiling
-  - setlist_summary.txt      one-page overview
+Algorithm overview
+------------------
+1. Scan `--packs-dir` for .xpn files (ZIP archives).
+2. Open each ZIP and read `bundle_manifest.json` to extract Sonic DNA
+   (brightness, warmth, movement, density, space, aggression) and mood.
+   Packs missing the manifest receive placeholder DNA (all 0.5) with a warning.
+3. Select `--set-length` packs from the pool (defaults to all) by running a
+   greedy search that maximises a weighted composite score:
+     - contrast_weight  (default 0.5): reward large Euclidean distance between
+       adjacent DNA vectors — prevents same-vibe runs.
+     - arc_weight       (default 0.3): penalise mood placement that violates the
+       expected performance arc:
+         * slots 1–2 → Foundation preferred
+         * slots 3–(N-2) → Entangled / Prism / Flux preferred
+         * slots (N-1)–N → Atmosphere / Aether preferred
+     - energy_weight    (default 0.2): reward builds where warmth + aggression
+       rises toward the centre of the set then resolves toward the end.
+4. Write the result as JSON and/or print a numbered human-readable list.
 
-Usage:
-  python xpn_setlist_builder.py --setlist my_set.json [--device MPC_Live_III] [--output ./out/] [--dry-run]
-  python xpn_setlist_builder.py --setlist my_set.json   # auto-detects device from JSON
+Usage
+-----
+  python xpn_setlist_builder.py --packs-dir ./dist --set-length 8 \\
+      --output setlist.json --format json
+
+  python xpn_setlist_builder.py --packs-dir ./dist --format text
+
+  python xpn_setlist_builder.py --packs-dir ./dist --set-length 6 \\
+      --output setlist.json --format both
+
+Options
+-------
+  --packs-dir DIR    Directory containing .xpn files (required)
+  --set-length N     Number of packs to include (default: all available)
+  --output PATH      File path to write the setlist JSON (optional)
+  --format           text | json | both  (default: both)
 """
 
 import argparse
 import json
+import math
 import os
 import sys
 import zipfile
-import xml.etree.ElementTree as ET
-from dataclasses import dataclass, field
-from pathlib import Path
-from typing import Dict, List, Optional
+from datetime import datetime, timezone
+from typing import Dict, List, Optional, Tuple
 
 # ---------------------------------------------------------------------------
-# Device profiles
+# Constants
 # ---------------------------------------------------------------------------
 
-DEVICE_PROFILES: Dict[str, Dict] = {
-    "MPC_Live_III": {
-        "ram_mb": 2800,
-        "cores": 8,
-        "load_speed": "fast",
-        "description": "MPC Live III — 2800 MB ceiling, 8-core, fast load",
-    },
-    "MPC_X": {
-        "ram_mb": 2400,
-        "cores": 8,
-        "load_speed": "normal",
-        "description": "MPC X — 2400 MB ceiling, 8-core",
-    },
-    "MPC_One": {
-        "ram_mb": 1200,
-        "cores": 4,
-        "load_speed": "slow",
-        "description": "MPC One — 1200 MB ceiling, 4-core, slow load",
-    },
-}
+DNA_KEYS: Tuple[str, ...] = (
+    "brightness",
+    "warmth",
+    "movement",
+    "density",
+    "space",
+    "aggression",
+)
 
-# Conservative per-WAV estimate when actual file is not present in ZIP
-DEFAULT_WAV_MB = 4.0
-# Fallback when computing from WAV spec: 44100 Hz × 2ch × 2bytes × 4sec ≈ 0.67 MB
-FALLBACK_WAV_MB = 44100 * 2 * 2 * 4 / (1024 * 1024)
-# Base overhead charged per MPC program
-PROGRAM_BASE_MB = 2.0
+PLACEHOLDER_DNA: Dict[str, float] = {k: 0.5 for k in DNA_KEYS}
+
+# Mood categories used by the arc scorer
+ARC_OPENING  = {"Foundation"}
+ARC_MIDDLE   = {"Entangled", "Prism", "Flux"}
+ARC_CLOSING  = {"Atmosphere", "Aether"}
+ALL_MOODS    = ARC_OPENING | ARC_MIDDLE | ARC_CLOSING | {"Family"}
+
+MANIFEST_PATH = "bundle_manifest.json"
 
 SEPARATOR = "=" * 72
 THIN_SEP  = "-" * 72
 
 
 # ---------------------------------------------------------------------------
-# Data classes
+# Data helpers
 # ---------------------------------------------------------------------------
 
-@dataclass
-class WavInfo:
-    path: str
-    size_mb: float
-    estimated: bool     # True when size was not read from an actual WAV in the ZIP
+def _dna_vector(dna: Dict[str, float]) -> List[float]:
+    """Return DNA as an ordered list matching DNA_KEYS."""
+    return [float(dna.get(k, 0.5)) for k in DNA_KEYS]
 
 
-@dataclass
-class ProgramInfo:
-    xpm_name: str
-    wav_refs: List[WavInfo] = field(default_factory=list)
-
-    @property
-    def ram_mb(self) -> float:
-        return PROGRAM_BASE_MB + sum(w.size_mb for w in self.wav_refs)
-
-    @property
-    def wav_count(self) -> int:
-        return len(self.wav_refs)
-
-    @property
-    def estimated_wav_count(self) -> int:
-        return sum(1 for w in self.wav_refs if w.estimated)
+def _euclidean(a: List[float], b: List[float]) -> float:
+    """Euclidean distance between two equal-length vectors (range 0–√6 ≈ 2.45)."""
+    return math.sqrt(sum((x - y) ** 2 for x, y in zip(a, b)))
 
 
-@dataclass
-class PackInfo:
-    name: str
-    path: str
-    programs: List[ProgramInfo] = field(default_factory=list)
-    error: Optional[str] = None
+def _energy(dna: Dict[str, float]) -> float:
+    """Scalar energy proxy: warmth + aggression (range 0–2)."""
+    return dna.get("warmth", 0.5) + dna.get("aggression", 0.5)
 
-    @property
-    def total_ram_mb(self) -> float:
-        return sum(p.ram_mb for p in self.programs)
 
-    @property
-    def program_count(self) -> int:
-        return len(self.programs)
-
-    @property
-    def total_wav_refs(self) -> int:
-        return sum(p.wav_count for p in self.programs)
+def _normalised_distance(a: List[float], b: List[float]) -> float:
+    """Distance normalised to [0, 1] using max possible distance √6."""
+    return _euclidean(a, b) / math.sqrt(len(a))
 
 
 # ---------------------------------------------------------------------------
-# XPN / ZIP parsing
+# Pack loading
 # ---------------------------------------------------------------------------
 
-def _build_wav_index(zf: zipfile.ZipFile) -> Dict[str, float]:
-    """Map lowercase path/basename -> uncompressed MB for every WAV in the ZIP."""
-    index: Dict[str, float] = {}
-    for entry in zf.namelist():
-        if not entry.lower().endswith(".wav"):
-            continue
-        info = zf.getinfo(entry)
-        size_mb = info.file_size / (1024 * 1024) if info.file_size > 0 else DEFAULT_WAV_MB
-        index[entry.lower()] = size_mb
-        basename = os.path.basename(entry).lower()
-        if basename not in index:
-            index[basename] = size_mb
-    return index
+def load_pack_meta(xpn_path: str) -> Dict:
+    """
+    Open an .xpn ZIP and extract Sonic DNA + mood from bundle_manifest.json.
+    Returns a dict with keys: name, path, mood, dna, placeholder_dna.
+    Warns to stderr and uses placeholder DNA if the manifest is absent/malformed.
+    """
+    name = os.path.basename(xpn_path)
+    result = {
+        "name": name,
+        "path": xpn_path,
+        "mood": "Foundation",
+        "dna": dict(PLACEHOLDER_DNA),
+        "placeholder_dna": False,
+    }
 
-
-def _parse_xpm_wavs(xpm_xml: str, wav_index: Dict[str, float]) -> List[WavInfo]:
-    """Extract unique WAV references from XPM XML and resolve their sizes."""
-    wavs: List[WavInfo] = []
-    seen: set = set()
-    try:
-        root = ET.fromstring(xpm_xml)
-    except ET.ParseError:
-        return wavs
-
-    for tag in ("SampleFile", "FileName", "File"):
-        for elem in root.iter(tag):
-            text = (elem.text or "").strip()
-            if not text or not text.lower().endswith(".wav"):
-                continue
-            norm = text.replace("\\", "/")
-            if norm in seen:
-                continue
-            seen.add(norm)
-
-            # Try full path, then basename
-            size_mb = wav_index.get(norm.lower())
-            estimated = False
-            if size_mb is None:
-                size_mb = wav_index.get(os.path.basename(norm).lower())
-            if size_mb is None:
-                size_mb = DEFAULT_WAV_MB
-                estimated = True
-
-            wavs.append(WavInfo(path=norm, size_mb=size_mb, estimated=estimated))
-
-    return wavs
-
-
-def parse_xpn_zip(name: str, zip_path: str) -> PackInfo:
-    """Open an XPN ZIP and build a PackInfo describing all programs and WAVs."""
-    pack = PackInfo(name=name, path=zip_path)
-
-    if not os.path.isfile(zip_path):
-        pack.error = f"File not found: {zip_path}"
-        return pack
+    if not os.path.isfile(xpn_path):
+        print(f"WARNING: Pack not found — {xpn_path}", file=sys.stderr)
+        result["placeholder_dna"] = True
+        return result
 
     try:
-        with zipfile.ZipFile(zip_path, "r") as zf:
-            wav_index = _build_wav_index(zf)
-            xpm_entries = [e for e in zf.namelist() if e.lower().endswith(".xpm")]
+        with zipfile.ZipFile(xpn_path, "r") as zf:
+            if MANIFEST_PATH not in zf.namelist():
+                print(
+                    f"WARNING: No bundle_manifest.json in {name} — using placeholder DNA",
+                    file=sys.stderr,
+                )
+                result["placeholder_dna"] = True
+                return result
 
-            if not xpm_entries:
-                pack.error = "No XPM files found in ZIP"
-                return pack
+            raw = zf.read(MANIFEST_PATH).decode("utf-8", errors="replace")
+            manifest = json.loads(raw)
 
-            for xpm_entry in xpm_entries:
-                xpm_name = os.path.basename(xpm_entry)
-                try:
-                    xpm_xml = zf.read(xpm_entry).decode("utf-8", errors="replace")
-                except Exception:
-                    pack.programs.append(ProgramInfo(xpm_name=xpm_name))
-                    continue
-                wav_refs = _parse_xpm_wavs(xpm_xml, wav_index)
-                pack.programs.append(ProgramInfo(xpm_name=xpm_name, wav_refs=wav_refs))
-
-    except zipfile.BadZipFile as exc:
-        pack.error = f"Bad ZIP file: {exc}"
-    except Exception as exc:
-        pack.error = f"Error reading pack: {exc}"
-
-    return pack
-
-
-# ---------------------------------------------------------------------------
-# Formatting helpers
-# ---------------------------------------------------------------------------
-
-def _mb_str(mb: float) -> str:
-    if mb >= 1000:
-        return f"{mb / 1024:.2f} GB"
-    return f"{mb:.1f} MB"
-
-
-# ---------------------------------------------------------------------------
-# Report builders
-# ---------------------------------------------------------------------------
-
-def build_validation_report(
-    packs: List[PackInfo], device_name: str, ceiling_mb: float, set_name: str
-) -> str:
-    lines = [
-        SEPARATOR,
-        "  SETLIST VALIDATION REPORT",
-        f"  Set: {set_name}",
-        f"  Device: {device_name}  |  RAM Ceiling: {_mb_str(ceiling_mb)}",
-        SEPARATOR,
-        "",
-    ]
-
-    total_mb = 0.0
-    for i, pack in enumerate(packs, 1):
-        lines.append(f"[{i:02d}] {pack.name}")
-        lines.append(f"     Path: {pack.path}")
-        if pack.error:
-            lines.append(f"     ERROR: {pack.error}")
-            lines.append("")
-            continue
-
-        lines.append(f"     Programs : {pack.program_count}")
-        lines.append(f"     WAV refs : {pack.total_wav_refs}")
-        for prog in pack.programs:
-            est_note = (
-                f"  ({prog.estimated_wav_count} estimated)"
-                if prog.estimated_wav_count
-                else ""
-            )
-            lines.append(
-                f"       {prog.xpm_name:<40}  {prog.wav_count:>3} WAVs"
-                f"  {_mb_str(prog.ram_mb):>10}{est_note}"
-            )
-        lines.append(f"     Pack RAM : {_mb_str(pack.total_ram_mb)}")
-        total_mb += pack.total_ram_mb
-        lines.append("")
-
-    headroom = ceiling_mb - total_mb
-    lines += [
-        THIN_SEP,
-        f"  TOTAL ESTIMATED RAM : {_mb_str(total_mb)}",
-        f"  DEVICE CEILING      : {_mb_str(ceiling_mb)}",
-        f"  HEADROOM            : {_mb_str(headroom)}",
-        "",
-    ]
-
-    if total_mb <= ceiling_mb:
-        lines.append("  RESULT: PASS — entire setlist fits within device RAM.")
-    else:
-        over = total_mb - ceiling_mb
-        lines.append(f"  RESULT: FAIL — exceeds ceiling by {_mb_str(over)}.")
-        lines.append("  See swap_guide.txt for mid-set swap recommendations.")
-
-    lines.append(SEPARATOR)
-    return "\n".join(lines)
-
-
-def build_loading_order_report(
-    packs: List[PackInfo], device_name: str, set_name: str
-) -> str:
-    valid   = [p for p in packs if not p.error]
-    errored = [p for p in packs if p.error]
-    ordered = sorted(valid, key=lambda p: p.total_ram_mb, reverse=True)
-
-    lines = [
-        SEPARATOR,
-        "  RECOMMENDED LOADING ORDER",
-        f"  Set: {set_name}  |  Device: {device_name}",
-        "  Strategy: load largest packs first to minimise RAM fragmentation",
-        SEPARATOR,
-        "",
-    ]
-
-    cumulative = 0.0
-    for rank, pack in enumerate(ordered, 1):
-        cumulative += pack.total_ram_mb
-        lines.append(
-            f"  {rank:>2}. {pack.name:<36}  {_mb_str(pack.total_ram_mb):>10}"
-            f"  (cumulative: {_mb_str(cumulative)})"
+    except zipfile.BadZipFile:
+        print(f"WARNING: Bad ZIP file — {name} — using placeholder DNA", file=sys.stderr)
+        result["placeholder_dna"] = True
+        return result
+    except json.JSONDecodeError as exc:
+        print(
+            f"WARNING: Malformed bundle_manifest.json in {name} ({exc}) — "
+            "using placeholder DNA",
+            file=sys.stderr,
         )
+        result["placeholder_dna"] = True
+        return result
 
-    if errored:
-        lines += ["", "  SKIPPED (errors):"]
-        for pack in errored:
-            lines.append(f"       {pack.name}  — {pack.error}")
+    # Extract mood (accept top-level or nested under "metadata")
+    mood_raw: str = (
+        manifest.get("mood")
+        or manifest.get("metadata", {}).get("mood")
+        or "Foundation"
+    )
+    result["mood"] = mood_raw if mood_raw in ALL_MOODS else "Foundation"
 
-    lines += [
-        "",
-        THIN_SEP,
-        "  NOTE: On MPC One (slow load), front-load all packs before performance.",
-        "  On MPC Live III / MPC X, packs can be swapped mid-set in under 3 sec.",
-        SEPARATOR,
-    ]
-    return "\n".join(lines)
+    # Extract Sonic DNA
+    dna_raw = (
+        manifest.get("sonic_dna")
+        or manifest.get("sonicDna")
+        or manifest.get("dna")
+        or {}
+    )
+    if not isinstance(dna_raw, dict):
+        dna_raw = {}
+
+    merged: Dict[str, float] = {}
+    for k in DNA_KEYS:
+        raw_val = dna_raw.get(k)
+        try:
+            merged[k] = max(0.0, min(1.0, float(raw_val))) if raw_val is not None else 0.5
+        except (TypeError, ValueError):
+            merged[k] = 0.5
+
+    result["dna"] = merged
+
+    if not dna_raw:
+        print(
+            f"WARNING: No Sonic DNA in manifest for {name} — using placeholder DNA",
+            file=sys.stderr,
+        )
+        result["placeholder_dna"] = True
+
+    return result
 
 
-def build_swap_guide(
-    packs: List[PackInfo], device_name: str, ceiling_mb: float, set_name: str
-) -> str:
-    valid   = [p for p in packs if not p.error]
-    ordered = sorted(valid, key=lambda p: p.total_ram_mb, reverse=True)
-    total_mb = sum(p.total_ram_mb for p in valid)
+def scan_packs_dir(packs_dir: str) -> List[Dict]:
+    """Return sorted list of pack meta dicts for every .xpn in packs_dir."""
+    if not os.path.isdir(packs_dir):
+        print(f"ERROR: --packs-dir not found: {packs_dir}", file=sys.stderr)
+        sys.exit(1)
 
+    xpn_files = sorted(
+        os.path.join(packs_dir, f)
+        for f in os.listdir(packs_dir)
+        if f.lower().endswith(".xpn")
+    )
+
+    if not xpn_files:
+        print(f"ERROR: No .xpn files found in {packs_dir}", file=sys.stderr)
+        sys.exit(1)
+
+    return [load_pack_meta(p) for p in xpn_files]
+
+
+# ---------------------------------------------------------------------------
+# Scoring
+# ---------------------------------------------------------------------------
+
+def arc_score_for_slot(mood: str, slot: int, total_slots: int) -> float:
+    """
+    Return 0.0–1.0 indicating how well `mood` fits position `slot` (1-indexed)
+    in a set of `total_slots` packs.
+    """
+    frac = (slot - 1) / max(total_slots - 1, 1)  # 0.0 = first, 1.0 = last
+
+    if frac <= 0.25:      # Opening quarter
+        return 1.0 if mood in ARC_OPENING else 0.3
+    elif frac >= 0.75:    # Closing quarter
+        return 1.0 if mood in ARC_CLOSING else 0.3
+    else:                 # Middle half
+        return 1.0 if mood in ARC_MIDDLE else 0.5
+
+
+def energy_curve_score(
+    ordered_packs: List[Dict],
+    candidate: Dict,
+    slot: int,
+    total_slots: int,
+) -> float:
+    """
+    Score based on whether the candidate's energy (warmth + aggression) follows
+    an arc that builds to the centre and resolves toward the end.
+    Expected energy at each slot follows a tent function peaking at the midpoint.
+    """
+    frac = (slot - 1) / max(total_slots - 1, 1)
+    # Tent function: rises linearly to 0.5 then falls
+    expected_energy = 1.0 - abs(frac - 0.5) * 2.0   # 0 at edges, 1 at centre
+
+    actual_energy = _energy(candidate["dna"]) / 2.0  # normalise to [0, 1]
+    diff = abs(actual_energy - expected_energy)
+    return max(0.0, 1.0 - diff * 2.0)
+
+
+# ---------------------------------------------------------------------------
+# Greedy setlist construction
+# ---------------------------------------------------------------------------
+
+def build_setlist(
+    pool: List[Dict],
+    set_length: int,
+    contrast_weight: float = 0.5,
+    arc_weight: float = 0.3,
+    energy_weight: float = 0.2,
+) -> List[Dict]:
+    """
+    Greedy selection: pick `set_length` packs from `pool` that maximise the
+    weighted composite score at each slot.
+
+    Returns ordered list of slot dicts (pack meta + slot + contrast_to_prev).
+    """
+    if set_length >= len(pool):
+        # Use all packs; still optimise ordering
+        candidates = list(pool)
+    else:
+        candidates = list(pool)
+
+    selected: List[Dict] = []
+    remaining = list(candidates)
+
+    for slot in range(1, set_length + 1):
+        if not remaining:
+            break
+
+        best_pack: Optional[Dict] = None
+        best_score = -1.0
+
+        prev_vec = _dna_vector(selected[-1]["dna"]) if selected else None
+
+        for pack in remaining:
+            vec = _dna_vector(pack["dna"])
+
+            # Contrast: normalised distance from previous pack (0 on first slot)
+            if prev_vec is not None:
+                contrast = _normalised_distance(prev_vec, vec)
+            else:
+                contrast = 0.5  # neutral for the opener
+
+            arc    = arc_score_for_slot(pack["mood"], slot, set_length)
+            energy = energy_curve_score(selected, pack, slot, set_length)
+
+            score = (
+                contrast_weight * contrast
+                + arc_weight    * arc
+                + energy_weight * energy
+            )
+
+            if score > best_score:
+                best_score = best_pack_contrast = contrast
+                best_score = score
+                best_pack = pack
+                best_pack_contrast = contrast
+
+        if best_pack is None:
+            break
+
+        selected.append(best_pack)
+        remaining.remove(best_pack)
+        best_pack["_contrast_to_prev"] = best_pack_contrast  # type: ignore[assignment]
+
+    return selected
+
+
+# ---------------------------------------------------------------------------
+# Output formatters
+# ---------------------------------------------------------------------------
+
+def compute_output(ordered: List[Dict]) -> Dict:
+    """Build the final output dict from the ordered pack list."""
+    slots = []
+    total_contrast = 0.0
+    arc_scores = []
+
+    for i, pack in enumerate(ordered):
+        slot_num = i + 1
+        contrast = pack.get("_contrast_to_prev", 0.0)
+        if slot_num > 1:
+            total_contrast += contrast
+
+        arc_s = arc_score_for_slot(pack["mood"], slot_num, len(ordered))
+        arc_scores.append(arc_s)
+
+        slots.append({
+            "slot": slot_num,
+            "pack": pack["name"],
+            "mood": pack["mood"],
+            "dna": {k: round(v, 4) for k, v in pack["dna"].items()},
+            "contrast_to_prev": round(contrast, 4) if slot_num > 1 else None,
+            "placeholder_dna": pack.get("placeholder_dna", False),
+        })
+
+    avg_arc = sum(arc_scores) / len(arc_scores) if arc_scores else 0.0
+
+    return {
+        "generated": datetime.now(timezone.utc).isoformat(),
+        "set_length": len(ordered),
+        "packs": slots,
+        "arc_score": round(avg_arc, 4),
+        "total_contrast": round(total_contrast, 4),
+    }
+
+
+def format_text(output: Dict) -> str:
+    """Render the setlist as a human-readable numbered list."""
     lines = [
         SEPARATOR,
-        "  MID-SET SWAP GUIDE",
-        f"  Set: {set_name}  |  Device: {device_name}",
+        "  XPN SETLIST — XO_OX DESIGNS",
+        f"  Generated : {output['generated']}",
+        f"  Set length: {output['set_length']}  |  "
+        f"Arc score: {output['arc_score']:.2f}  |  "
+        f"Total contrast: {output['total_contrast']:.2f}",
         SEPARATOR,
         "",
     ]
 
-    if total_mb <= ceiling_mb:
-        lines += [
-            "  No swaps needed — all packs fit within device RAM.",
-            SEPARATOR,
-        ]
-        return "\n".join(lines)
+    for entry in output["packs"]:
+        dna = entry["dna"]
+        dna_str = "  ".join(f"{k[:3].upper()}: {v:.2f}" for k, v in dna.items())
+        contrast_str = (
+            f"  Δ contrast: {entry['contrast_to_prev']:.2f}"
+            if entry["contrast_to_prev"] is not None
+            else ""
+        )
+        placeholder_note = "  [placeholder DNA]" if entry.get("placeholder_dna") else ""
 
-    over_mb = total_mb - ceiling_mb
-    lines += [
-        f"  Total estimated RAM : {_mb_str(total_mb)}",
-        f"  Device ceiling      : {_mb_str(ceiling_mb)}",
-        f"  Overage             : {_mb_str(over_mb)}",
-        "",
-        "  SWAP STRATEGY",
-        "  Load the largest packs at set start. Swap smaller packs in as needed.",
-        "  Suggested split:",
-        "",
-    ]
-
-    # Greedy fill: fit as many large packs as possible into opening slot
-    set_start: List[PackInfo] = []
-    swap_in: List[PackInfo] = []
-    running = 0.0
-    for pack in ordered:
-        if running + pack.total_ram_mb <= ceiling_mb:
-            set_start.append(pack)
-            running += pack.total_ram_mb
-        else:
-            swap_in.append(pack)
-
-    lines.append("  LOAD AT SET START:")
-    for i, pack in enumerate(set_start, 1):
-        lines.append(f"    {i:>2}. {pack.name:<36}  {_mb_str(pack.total_ram_mb)}")
-
-    lines += ["", "  SWAP IN MID-SET (unload a set-start pack first):"]
-    for i, pack in enumerate(swap_in, 1):
-        # Recommend unloading the set-start pack closest in size
-        candidate = min(set_start, key=lambda p: abs(p.total_ram_mb - pack.total_ram_mb))
-        lines += [
-            f"    {i:>2}. Load  : {pack.name:<36}  {_mb_str(pack.total_ram_mb)}",
-            f"        Unload: {candidate.name:<36}  {_mb_str(candidate.total_ram_mb)}",
-            f"        Suggested swap point: after finishing songs that use {candidate.name}",
-            f"        (e.g., after pad 8 in Bank B, unload {candidate.name}, load {pack.name})",
-            "",
-        ]
-
-    lines += [
-        THIN_SEP,
-        "  TIP: Plan swap points between songs or during interludes.",
-        "  TIP: On MPC One, pre-queue the swap before the last hit of a section.",
-        SEPARATOR,
-    ]
-    return "\n".join(lines)
-
-
-def build_summary(
-    packs: List[PackInfo], device_name: str, ceiling_mb: float, set_name: str
-) -> str:
-    valid        = [p for p in packs if not p.error]
-    errored      = [p for p in packs if p.error]
-    total_mb     = sum(p.total_ram_mb for p in valid)
-    total_progs  = sum(p.program_count for p in valid)
-    total_wavs   = sum(p.total_wav_refs for p in valid)
-    passed       = total_mb <= ceiling_mb
-
-    lines = [
-        SEPARATOR,
-        f"  SETLIST SUMMARY — {set_name}",
-        SEPARATOR,
-        f"  Device         : {device_name}",
-        f"  RAM ceiling    : {_mb_str(ceiling_mb)}",
-        f"  Packs          : {len(packs)}  ({len(errored)} errors)",
-        f"  Programs       : {total_progs}",
-        f"  WAV references : {total_wavs}",
-        f"  Total RAM est. : {_mb_str(total_mb)}",
-        f"  Headroom       : {_mb_str(ceiling_mb - total_mb)}",
-        f"  Result         : {'PASS' if passed else 'FAIL — see swap_guide.txt'}",
-        "",
-    ]
-
-    if errored:
-        lines.append("  Packs with errors:")
-        for p in errored:
-            lines.append(f"    - {p.name}: {p.error}")
+        lines.append(f"  [{entry['slot']:02d}]  {entry['pack']}")
+        lines.append(f"        Mood: {entry['mood']}{contrast_str}{placeholder_note}")
+        lines.append(f"        DNA: {dna_str}")
         lines.append("")
 
-    lines.append("  Pack overview (largest first):")
-    for pack in sorted(packs, key=lambda p: p.total_ram_mb, reverse=True):
-        status = "ERROR" if pack.error else _mb_str(pack.total_ram_mb)
-        lines.append(f"    {pack.name:<40}  {status}")
-
-    lines.append(SEPARATOR)
+    lines += [
+        THIN_SEP,
+        f"  Arc score     : {output['arc_score']:.3f}  "
+        "(1.0 = perfect opening→middle→closing arc)",
+        f"  Total contrast: {output['total_contrast']:.3f}  "
+        "(higher = more varied DNA across set)",
+        SEPARATOR,
+    ]
     return "\n".join(lines)
 
 
 # ---------------------------------------------------------------------------
-# CLI
+# CLI entry point
 # ---------------------------------------------------------------------------
-
-def resolve_path(base_dir: str, path: str) -> str:
-    if os.path.isabs(path):
-        return path
-    return os.path.normpath(os.path.join(base_dir, path))
-
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="XPN Setlist Builder — MPC RAM validation and loading order tool"
+        description="XPN Setlist Builder — performance order optimised by Sonic DNA"
     )
-    parser.add_argument("--setlist", required=True, help="Path to setlist JSON file")
     parser.add_argument(
-        "--device",
-        choices=list(DEVICE_PROFILES.keys()),
-        default=None,
-        help="Device profile (overrides 'device' field in setlist JSON)",
+        "--packs-dir",
+        required=True,
+        metavar="DIR",
+        help="Directory containing .xpn files",
+    )
+    parser.add_argument(
+        "--set-length",
+        type=int,
+        default=0,
+        metavar="N",
+        help="Number of packs to include (default: all available)",
     )
     parser.add_argument(
         "--output",
-        default=".",
-        help="Output directory for report files (default: current directory)",
+        default=None,
+        metavar="PATH",
+        help="File path to write the setlist JSON (optional)",
     )
     parser.add_argument(
-        "--dry-run",
-        action="store_true",
-        help="Print estimates to stdout without writing files",
+        "--format",
+        choices=["text", "json", "both"],
+        default="both",
+        help="Output format (default: both)",
+    )
+    parser.add_argument(
+        "--contrast-weight",
+        type=float,
+        default=0.5,
+        metavar="W",
+        help="Weight for contrast scoring 0–1 (default: 0.5)",
+    )
+    parser.add_argument(
+        "--arc-weight",
+        type=float,
+        default=0.3,
+        metavar="W",
+        help="Weight for arc/mood scoring 0–1 (default: 0.3)",
+    )
+    parser.add_argument(
+        "--energy-weight",
+        type=float,
+        default=0.2,
+        metavar="W",
+        help="Weight for energy-curve scoring 0–1 (default: 0.2)",
     )
     args = parser.parse_args()
 
-    setlist_path = os.path.abspath(args.setlist)
-    if not os.path.isfile(setlist_path):
-        print(f"ERROR: Setlist file not found: {setlist_path}", file=sys.stderr)
+    # Validate weights
+    total_weight = args.contrast_weight + args.arc_weight + args.energy_weight
+    if not math.isclose(total_weight, 1.0, abs_tol=0.01):
+        print(
+            f"WARNING: Weights sum to {total_weight:.3f} (expected 1.0). "
+            "Results may be unexpected.",
+            file=sys.stderr,
+        )
+
+    # Load packs
+    packs_dir = os.path.abspath(args.packs_dir)
+    pool = scan_packs_dir(packs_dir)
+    print(f"Found {len(pool)} pack(s) in {packs_dir}")
+
+    set_length = args.set_length if args.set_length > 0 else len(pool)
+    set_length = min(set_length, len(pool))
+
+    if set_length == 0:
+        print("ERROR: No packs to sequence.", file=sys.stderr)
         return 1
 
-    with open(setlist_path, "r", encoding="utf-8") as fh:
-        try:
-            setlist = json.load(fh)
-        except json.JSONDecodeError as exc:
-            print(f"ERROR: Invalid JSON in setlist: {exc}", file=sys.stderr)
-            return 1
+    print(f"Building setlist: {set_length} slot(s) …")
 
-    set_name   = setlist.get("set_name", "Unnamed Set")
-    packs_data = setlist.get("packs", [])
+    ordered = build_setlist(
+        pool,
+        set_length,
+        contrast_weight=args.contrast_weight,
+        arc_weight=args.arc_weight,
+        energy_weight=args.energy_weight,
+    )
 
-    # Resolve device: CLI flag > JSON field > default
-    device_key = args.device or setlist.get("device")
-    if device_key not in DEVICE_PROFILES:
-        if device_key:
-            print(
-                f"WARNING: Unknown device '{device_key}'. Defaulting to MPC_Live_III.",
-                file=sys.stderr,
-            )
-        device_key = "MPC_Live_III"
+    output = compute_output(ordered)
 
-    ceiling_mb  = DEVICE_PROFILES[device_key]["ram_mb"]
-    setlist_dir = os.path.dirname(setlist_path)
-
-    # Parse each pack
-    packs: List[PackInfo] = []
-    for entry in packs_data:
-        name     = entry.get("name", "Unknown")
-        rel_path = entry.get("path", "")
-        abs_path = resolve_path(setlist_dir, rel_path)
-        print(f"Parsing: {name}  ({abs_path})")
-        packs.append(parse_xpn_zip(name, abs_path))
-
-    if not packs:
-        print("WARNING: No packs found in setlist.", file=sys.stderr)
-
-    # Build all four reports
-    validation_txt = build_validation_report(packs, device_key, ceiling_mb, set_name)
-    loading_txt    = build_loading_order_report(packs, device_key, set_name)
-    swap_txt       = build_swap_guide(packs, device_key, ceiling_mb, set_name)
-    summary_txt    = build_summary(packs, device_key, ceiling_mb, set_name)
-
-    if args.dry_run:
-        for report in (summary_txt, validation_txt, loading_txt, swap_txt):
-            print()
-            print(report)
-        return 0
-
-    out_dir = os.path.abspath(args.output)
-    os.makedirs(out_dir, exist_ok=True)
-
-    files = {
-        "setlist_validation.txt": validation_txt,
-        "loading_order.txt":      loading_txt,
-        "swap_guide.txt":         swap_txt,
-        "setlist_summary.txt":    summary_txt,
-    }
-
-    for filename, content in files.items():
-        out_path = os.path.join(out_dir, filename)
+    # Write JSON
+    if args.output and args.format in ("json", "both"):
+        out_path = os.path.abspath(args.output)
         with open(out_path, "w", encoding="utf-8") as fh:
-            fh.write(content)
+            json.dump(output, fh, indent=2)
             fh.write("\n")
-        print(f"Written: {out_path}")
+        print(f"Setlist JSON written: {out_path}")
 
-    print()
-    print(summary_txt)
+    # Print text
+    if args.format in ("text", "both"):
+        print()
+        print(format_text(output))
+    elif args.format == "json" and not args.output:
+        # json-only with no --output: print to stdout
+        print(json.dumps(output, indent=2))
+
     return 0
 
 
