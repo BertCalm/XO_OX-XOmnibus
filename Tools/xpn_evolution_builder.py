@@ -1,37 +1,57 @@
 #!/usr/bin/env python3
 """
 XPN Evolution Builder — XO_OX Designs
-Interpolates between two XPM programs across N steps, producing a series of
-XPN programs that smoothly transition from a Start kit state to an End kit
-state. Use case: load 8 progressively evolved versions of a kit during a live
-set.
+======================================
+Generates "evolution packs" — a series of XPM programs that evolve a single
+preset through a DNA journey, producing a narrative arc from one timbral state
+to another. Use case: load 8 progressively evolved versions of a kit during a
+live set (pad 1 = raw, pad 16 = transformed).
 
-Evolution interpolation strategy:
-  - Matching instruments are found by MIDI note number.
-  - VelocityToVolume: linear interpolation across steps.
-  - PitchSemitones (TuneCoarse): linear interpolation across steps.
-  - FilterCutoff (Cutoff): linear interpolation if present in both XPMs.
-  - Sample assignment: start sample for steps 1..N//2, end sample for
-    steps N//2+1..N.
-  - Steps closer to start are "dry/raw"; steps closer to end are "evolved".
+Two source modes:
+  1. XPM-to-XPM: supply --start and --end (full MPC Drum program files)
+  2. DNA target: supply --start and --dna-target "brightness=0.9,warmth=0.2"
+     — end state is synthesised by nudging numeric instrument parameters
+     proportionally from their start values toward the DNA targets.
 
-XPN golden rules (never violate):
+Interpolation:
+  - ProgramParameters numeric attributes: linearly interpolated at each step.
+  - Instrument-level floats (Volume, Pan, Cutoff, Resonance, envelope times):
+    interpolated with the selected easing curve.
+  - Integer params (TuneCoarse): lerp rounded to nearest int.
+  - Boolean / string params: snap at midpoint (step < N/2 → start, else end).
+  - Sample assignment: start samples for first half, end samples for second half.
+
+Easing curves (--ease):
+  linear         — uniform t each step
+  ease-in        — t² (slow start)
+  ease-out       — t*(2-t) (slow end)
+  ease-in-out    — smoothstep: 3t²-2t³
+
+Output file naming: {basename}_evo_01.xpm … {basename}_evo_N.xpm
+Also writes:
+  {basename}_evolution_notes.txt  — human-readable arc description
+  {basename}_Evolution.xpn        — ZIP bundle for MPC expansion manager
+
+CLI:
+    python xpn_evolution_builder.py \\
+        --start path/to/start.xpm \\
+        --end path/to/end.xpm \\
+        --steps 8 \\
+        --output-dir ./evolved/ \\
+        --ease ease-in-out
+
+    python xpn_evolution_builder.py \\
+        --start path/to/start.xpm \\
+        --dna-target "brightness=0.9,warmth=0.2,aggression=0.8" \\
+        --steps 8 \\
+        --output-dir ./evolved/
+
+    python xpn_evolution_builder.py --start a.xpm --end b.xpm --dry-run
+
+XPN golden rules (never violated):
   - KeyTrack = True
   - RootNote = 0
   - Empty layer VelStart = 0
-
-Usage:
-    python xpn_evolution_builder.py \\
-        --start kit_a.xpm \\
-        --end   kit_b.xpm \\
-        --steps 8 \\
-        --output ./out/
-
-Output:
-    ./out/
-        Evolution_Step1.xpm  ..  Evolution_StepN.xpm
-        evolution_notes.txt
-    (These are then zipped into Evolution_Kit.xpn by the tool.)
 """
 
 import argparse
@@ -44,18 +64,52 @@ from xml.etree import ElementTree as ET
 from xml.sax.saxutils import escape as xml_escape
 
 
+# ---------------------------------------------------------------------------
+# DNA parameter map — maps DNA axis names to InstrumentState field names.
+# Brightness ↔ Cutoff, Warmth ↔ (inverse of Cutoff), Aggression ↔ Resonance,
+# Movement ↔ vol_release, Space ↔ vol_decay, Density ↔ polyphony (discrete).
+# ---------------------------------------------------------------------------
+_DNA_FIELD_MAP = {
+    "brightness":  ("cutoff",        0.0, 1.0),
+    "warmth":      ("cutoff",        1.0, 0.0),   # inverted
+    "aggression":  ("resonance",     0.0, 1.0),
+    "movement":    ("vol_release",   0.0, 4.0),
+    "space":       ("vol_decay",     0.0, 4.0),
+    "density":     ("vol_sustain",   0.0, 1.0),
+}
+
+# Key instrument params tracked in the summary table
+_TABLE_PARAMS = ["cutoff", "resonance", "vol_attack", "vol_release"]
+_TABLE_LABELS = {"cutoff": "Cutoff", "resonance": "Resonance",
+                 "vol_attack": "Attack", "vol_release": "Release"}
+
+
+# =============================================================================
+# EASING
+# =============================================================================
+
+def apply_ease(t: float, mode: str) -> float:
+    """Map normalised t∈[0,1] through the requested easing curve."""
+    t = max(0.0, min(1.0, t))
+    if mode == "ease-in":
+        return t * t
+    if mode == "ease-out":
+        return t * (2.0 - t)
+    if mode == "ease-in-out":
+        return t * t * (3.0 - 2.0 * t)
+    return t  # linear
+
+
 # =============================================================================
 # XPM PARSING
 # =============================================================================
 
 def _text(node: ET.Element, tag: str, default: str = "") -> str:
-    """Return text content of first child with given tag, or default."""
     child = node.find(tag)
     return child.text.strip() if (child is not None and child.text) else default
 
 
 def _float(node: ET.Element, tag: str, default: float = 0.0) -> float:
-    """Return float value of a child element."""
     try:
         return float(_text(node, tag, str(default)))
     except ValueError:
@@ -63,7 +117,6 @@ def _float(node: ET.Element, tag: str, default: float = 0.0) -> float:
 
 
 def _int(node: ET.Element, tag: str, default: int = 0) -> int:
-    """Return int value of a child element."""
     try:
         return int(_text(node, tag, str(default)))
     except ValueError:
@@ -71,15 +124,15 @@ def _int(node: ET.Element, tag: str, default: int = 0) -> int:
 
 
 class InstrumentState:
-    """Parsed state of a single drum instrument (one MIDI note slot)."""
+    """Parsed state of a single drum instrument slot (one MIDI note)."""
 
     def __init__(self, number: int):
         self.number: int = number
-        self.volume: float = 0.707946           # instrument-level volume
+        self.volume: float = 0.707946
         self.pan: float = 0.500000
-        self.tune_coarse: int = 0               # semitones
+        self.tune_coarse: int = 0
         self.tune_fine: int = 0
-        self.cutoff: float = 1.0                # filter cutoff (0-1)
+        self.cutoff: float = 1.0
         self.resonance: float = 0.0
         self.velocity_to_pitch: float = 0.0
         self.velocity_to_filter: float = 0.0
@@ -97,16 +150,32 @@ class InstrumentState:
         self.vol_decay: float = 0.0
         self.vol_sustain: float = 1.0
         self.vol_release: float = 0.0
-        # Layer data: list of dicts with keys:
-        #   number, active, vel_start, vel_end, volume, pan, pitch,
-        #   tune_coarse, tune_fine, sample_name, sample_file, root_note,
-        #   key_track, loop, loop_start, loop_end
         self.layers: list = []
+        # Raw ProgramParameters attributes captured for round-trip / DNA use
+        self.program_params: dict = {}
+
+
+def _parse_program_parameters(program_el: ET.Element) -> dict:
+    """
+    Parse a <ProgramParameters> child (if present) into a flat dict of
+    attribute-name → value strings.  All child element text values are
+    collected so they can be round-tripped and interpolated where numeric.
+    """
+    params = {}
+    pp_el = program_el.find("ProgramParameters")
+    if pp_el is None:
+        return params
+    # Attributes on the element itself
+    params.update(pp_el.attrib)
+    # Child elements (text content)
+    for child in pp_el:
+        if child.text and child.text.strip():
+            params[child.tag] = child.text.strip()
+    return params
 
 
 def _parse_layer(layer_el: ET.Element) -> dict:
-    """Parse a <Layer> element into a dict."""
-    layer = {
+    return {
         "number":      int(layer_el.get("number", "1")),
         "active":      _text(layer_el, "Active", "False"),
         "vel_start":   _int(layer_el, "VelStart", 0),
@@ -138,13 +207,13 @@ def _parse_layer(layer_el: ET.Element) -> dict:
         "cycle_type":   _text(layer_el, "CycleType", ""),
         "cycle_group":  _int(layer_el, "CycleGroup", 0),
     }
-    return layer
 
 
 def parse_xpm(path: Path) -> dict:
     """
-    Parse an XPM file into a dict: {midi_note: InstrumentState}.
-    Returns empty dict on parse failure with a warning printed to stderr.
+    Parse an XPM file into {midi_note: InstrumentState}.
+    Also attaches raw ProgramParameters to each InstrumentState.
+    Returns empty dict on failure.
     """
     try:
         tree = ET.parse(str(path))
@@ -158,7 +227,8 @@ def parse_xpm(path: Path) -> dict:
         print(f"[ERROR] No <Program> element in {path}", file=sys.stderr)
         return {}
 
-    instruments = {}
+    prog_params = _parse_program_parameters(program)
+    instruments: dict = {}
     instruments_el = program.find("Instruments")
     if instruments_el is None:
         return instruments
@@ -179,9 +249,7 @@ def parse_xpm(path: Path) -> dict:
         inst.mono = _text(inst_el, "Mono", "True") == "True"
         inst.polyphony = _int(inst_el, "Polyphony", 1)
         inst.mute_group = _int(inst_el, "MuteGroup", 0)
-        inst.mute_targets = [
-            _int(inst_el, f"MuteTarget{i+1}", 0) for i in range(4)
-        ]
+        inst.mute_targets = [_int(inst_el, f"MuteTarget{i+1}", 0) for i in range(4)]
         inst.zone_play = _int(inst_el, "ZonePlay", 1)
         inst.filter_type = _int(inst_el, "FilterType", 2)
         inst.filter_env_amt = _float(inst_el, "FilterEnvAmt", 0.0)
@@ -190,6 +258,7 @@ def parse_xpm(path: Path) -> dict:
         inst.vol_decay = _float(inst_el, "VolumeDecay", 0.0)
         inst.vol_sustain = _float(inst_el, "VolumeSustain", 1.0)
         inst.vol_release = _float(inst_el, "VolumeRelease", 0.0)
+        inst.program_params = prog_params  # shared reference — read-only
 
         layers_el = inst_el.find("Layers")
         if layers_el is not None:
@@ -202,17 +271,77 @@ def parse_xpm(path: Path) -> dict:
 
 
 # =============================================================================
+# DNA TARGET → SYNTHETIC END MAP
+# =============================================================================
+
+def parse_dna_target(raw: str) -> dict:
+    """
+    Parse a DNA target string like "brightness=0.9,warmth=0.2" into a dict
+    {axis_name: float_value}.  Raises ValueError on malformed input.
+    """
+    result = {}
+    for token in raw.split(","):
+        token = token.strip()
+        if not token:
+            continue
+        if "=" not in token:
+            raise ValueError(f"Expected 'key=value' in DNA target, got: {token!r}")
+        key, val = token.split("=", 1)
+        key = key.strip().lower()
+        if key not in _DNA_FIELD_MAP:
+            raise ValueError(
+                f"Unknown DNA axis {key!r}. Valid: {sorted(_DNA_FIELD_MAP)}"
+            )
+        result[key] = float(val.strip())
+    return result
+
+
+def synthesise_end_map(start_map: dict, dna_targets: dict) -> dict:
+    """
+    Build a synthetic end InstrumentState map by copying start states and
+    applying DNA axis targets.  Each axis drives one field toward its target.
+    """
+    import copy
+    end_map: dict = {}
+    for note, inst in start_map.items():
+        end_inst = copy.deepcopy(inst)
+        for axis, target_val in dna_targets.items():
+            field, lo, hi = _DNA_FIELD_MAP[axis]
+            # Map target_val (0-1 DNA space) to the field's native range
+            native_target = lo + target_val * (hi - lo)
+            setattr(end_inst, field, native_target)
+        end_map[note] = end_inst
+    return end_map
+
+
+# =============================================================================
 # INTERPOLATION
 # =============================================================================
 
 def _lerp(a: float, b: float, t: float) -> float:
-    """Linear interpolation: a + t*(b-a), t in [0,1]."""
     return a + t * (b - a)
 
 
 def _lerp_int(a: int, b: int, t: float) -> int:
-    """Linear interpolation rounded to nearest int."""
     return int(round(a + t * (b - a)))
+
+
+def _lerp_prog_params(start_pp: dict, end_pp: dict, t: float) -> dict:
+    """
+    Interpolate ProgramParameters dicts.  Numeric values are lerped;
+    non-numeric values snap at midpoint.
+    """
+    all_keys = set(start_pp) | set(end_pp)
+    out = {}
+    for k in all_keys:
+        sv = start_pp.get(k, "")
+        ev = end_pp.get(k, sv)
+        try:
+            out[k] = str(_lerp(float(sv), float(ev), t))
+        except (ValueError, TypeError):
+            # Boolean / string: snap at midpoint
+            out[k] = sv if t < 0.5 else ev
+    return out
 
 
 def interpolate_instrument(
@@ -220,16 +349,13 @@ def interpolate_instrument(
     end_inst: InstrumentState,
     t: float,
     n_steps: int,
-    step_idx: int,          # 0-based
+    step_idx: int,
 ) -> InstrumentState:
     """
-    Produce an interpolated InstrumentState between start and end.
-    t = 0.0 → pure start, t = 1.0 → pure end.
-    Sample selection: start samples for first half, end samples for second half.
+    Produce an interpolated InstrumentState.
+    t = 0.0 → pure start, t = 1.0 → pure end (already eased by caller).
     """
     out = InstrumentState(start_inst.number)
-
-    # Linear interpolation of continuous parameters
     out.volume = _lerp(start_inst.volume, end_inst.volume, t)
     out.pan = _lerp(start_inst.pan, end_inst.pan, t)
     out.tune_coarse = _lerp_int(start_inst.tune_coarse, end_inst.tune_coarse, t)
@@ -247,8 +373,8 @@ def interpolate_instrument(
     out.vol_sustain = max(0.0, min(1.0, _lerp(start_inst.vol_sustain, end_inst.vol_sustain, t)))
     out.vol_release = max(0.0, _lerp(start_inst.vol_release, end_inst.vol_release, t))
 
-    # Boolean / discrete: take from whichever source dominates (start for first half)
-    use_start = (step_idx < n_steps // 2)
+    # Discrete / boolean: snap at midpoint
+    use_start = step_idx < n_steps // 2
     src = start_inst if use_start else end_inst
     out.one_shot = src.one_shot
     out.mono = src.mono
@@ -258,25 +384,22 @@ def interpolate_instrument(
     out.zone_play = src.zone_play
     out.filter_type = src.filter_type
 
-    # Layers: interpolate layer volumes; swap samples at midpoint
+    # ProgramParameters interpolation
+    out.program_params = _lerp_prog_params(
+        start_inst.program_params, end_inst.program_params, t
+    )
+
+    # Layers: interpolate continuous values; snap samples at midpoint
     start_layers = start_inst.layers
     end_layers = end_inst.layers
-
-    # Use start layers as template structure; interpolate volumes
     out_layers = []
     for i, sl in enumerate(start_layers):
         el = end_layers[i] if i < len(end_layers) else sl
-        layer = dict(sl)  # shallow copy
-
-        # Volume: linear interpolation per layer
+        layer = dict(sl)
         layer["volume"] = _lerp(sl["volume"], el["volume"], t)
-
-        # Pitch (fine cents in layer): interpolate
         layer["pitch"] = _lerp(sl["pitch"], el["pitch"], t)
         layer["tune_coarse"] = _lerp_int(sl["tune_coarse"], el["tune_coarse"], t)
         layer["tune_fine"] = _lerp_int(sl["tune_fine"], el["tune_fine"], t)
-
-        # Sample assignment: first half uses start, second half uses end
         if use_start:
             layer["sample_name"] = sl["sample_name"]
             layer["sample_file"] = sl["sample_file"]
@@ -287,26 +410,22 @@ def interpolate_instrument(
             layer["sample_file"] = el["sample_file"]
             layer["file"] = el["file"]
             layer["active"] = el["active"]
-
-        # Golden rules: RootNote=0, KeyTrack=True for active layers
+        # Golden rules
         layer["root_note"] = 0
         if layer["active"] == "True":
             layer["key_track"] = "True"
-
         out_layers.append(layer)
-
     out.layers = out_layers
     return out
 
 
 # =============================================================================
-# XPM GENERATION
+# XPM XML GENERATION
 # =============================================================================
 
 def _layer_xml(layer: dict) -> str:
     num = layer["number"]
     active = layer["active"]
-    vol = layer["volume"]
     cycle_xml = ""
     if layer.get("cycle_type") and layer["active"] == "True":
         cycle_xml = (
@@ -316,7 +435,7 @@ def _layer_xml(layer: dict) -> str:
     return (
         f'          <Layer number="{num}">\n'
         f'            <Active>{active}</Active>\n'
-        f'            <Volume>{vol:.6f}</Volume>\n'
+        f'            <Volume>{layer["volume"]:.6f}</Volume>\n'
         f'            <Pan>{layer["pan"]:.6f}</Pan>\n'
         f'            <Pitch>{layer["pitch"]:.6f}</Pitch>\n'
         f'            <TuneCoarse>{layer["tune_coarse"]}</TuneCoarse>\n'
@@ -355,11 +474,9 @@ def _instrument_xml(inst: InstrumentState) -> str:
         for i, t in enumerate(inst.mute_targets)
     )
     simult_xml = "\n".join(
-        f"        <SimultTarget{i+1}>0</SimultTarget{i+1}>"
-        for i in range(4)
+        f"        <SimultTarget{i+1}>0</SimultTarget{i+1}>" for i in range(4)
     )
     layers_xml = "\n".join(_layer_xml(l) for l in inst.layers)
-
     return (
         f'      <Instrument number="{inst.number}">\n'
         f'        <AudioRoute>\n'
@@ -432,81 +549,64 @@ def _instrument_xml(inst: InstrumentState) -> str:
     )
 
 
+_EMPTY_LAYER = {
+    "number": 1, "active": "False", "vel_start": 0, "vel_end": 0,
+    "volume": 0.707946, "pan": 0.5, "pitch": 0.0, "tune_coarse": 0,
+    "tune_fine": 0, "sample_name": "", "sample_file": "", "file": "",
+    "root_note": 0, "key_track": "False", "loop": "False",
+    "loop_start": 0, "loop_end": 0, "loop_tune": 0, "mute": "False",
+    "sample_start": 0, "sample_end": 0, "slice_index": 128,
+    "direction": 0, "offset": 0, "slice_start": 0, "slice_end": 0,
+    "slice_loop_start": 0, "slice_loop": 0, "cycle_type": "", "cycle_group": 0,
+}
+
+
+def _empty_instrument(note_num: int) -> InstrumentState:
+    inst = InstrumentState(note_num)
+    inst.layers = [dict(_EMPTY_LAYER, number=i + 1) for i in range(4)]
+    return inst
+
+
 def generate_step_xpm(
     step_num: int,
-    all_notes: list,
     start_map: dict,
     end_map: dict,
     n_steps: int,
+    ease: str,
+    prog_name_prefix: str,
 ) -> str:
-    """
-    Generate XPM XML for a single evolution step.
-    step_num: 1-based step number.
-    all_notes: sorted list of all MIDI note numbers present in either XPM.
-    """
-    # t = 0.0 for step 1, 1.0 for step N
-    if n_steps == 1:
-        t = 0.0
-    else:
-        t = (step_num - 1) / (n_steps - 1)
+    """Build XPM XML for one evolution step."""
+    raw_t = 0.0 if n_steps == 1 else (step_num - 1) / (n_steps - 1)
+    t = apply_ease(raw_t, ease)
+    step_idx = step_num - 1
 
-    step_idx = step_num - 1  # 0-based for midpoint sample-swap logic
-
-    prog_name = xml_escape(f"Evolution Step {step_num:02d}")
-
+    prog_name = xml_escape(f"{prog_name_prefix} {step_num:02d}")
     instruments_parts = []
-    # Emit all 128 slots to satisfy MPC XPM spec
+
     for note_num in range(128):
-        if note_num in start_map and note_num in end_map:
+        in_start = note_num in start_map
+        in_end = note_num in end_map
+
+        if in_start and in_end:
             inst = interpolate_instrument(
-                start_map[note_num],
-                end_map[note_num],
-                t,
-                n_steps,
-                step_idx,
+                start_map[note_num], end_map[note_num], t, n_steps, step_idx
             )
-        elif note_num in start_map:
-            # Fade out instruments only in start kit as we evolve
-            inst = start_map[note_num]
-            # Gradually reduce volume toward end
-            faded = InstrumentState(note_num)
-            faded.__dict__.update(inst.__dict__)
-            faded.layers = [dict(l) for l in inst.layers]
-            fade_vol = _lerp(inst.volume, 0.0, t)
-            faded.volume = fade_vol
-            inst = faded
-        elif note_num in end_map:
-            # Fade in instruments only in end kit as we evolve
-            inst = end_map[note_num]
-            faded = InstrumentState(note_num)
-            faded.__dict__.update(inst.__dict__)
-            faded.layers = [dict(l) for l in inst.layers]
-            fade_vol = _lerp(0.0, inst.volume, t)
-            faded.volume = fade_vol
-            inst = faded
+        elif in_start:
+            # Fade out — only in start
+            import copy
+            inst = copy.deepcopy(start_map[note_num])
+            inst.volume = _lerp(start_map[note_num].volume, 0.0, t)
+        elif in_end:
+            # Fade in — only in end
+            import copy
+            inst = copy.deepcopy(end_map[note_num])
+            inst.volume = _lerp(0.0, end_map[note_num].volume, t)
         else:
-            # Empty slot — minimal instrument block
-            inst = InstrumentState(note_num)
-            inst.layers = [
-                {
-                    "number": i + 1, "active": "False", "vel_start": 0,
-                    "vel_end": 0, "volume": 0.707946, "pan": 0.5,
-                    "pitch": 0.0, "tune_coarse": 0, "tune_fine": 0,
-                    "sample_name": "", "sample_file": "", "file": "",
-                    "root_note": 0, "key_track": "False", "loop": "False",
-                    "loop_start": 0, "loop_end": 0, "loop_tune": 0,
-                    "mute": "False", "sample_start": 0, "sample_end": 0,
-                    "slice_index": 128, "direction": 0, "offset": 0,
-                    "slice_start": 0, "slice_end": 0, "slice_loop_start": 0,
-                    "slice_loop": 0, "cycle_type": "", "cycle_group": 0,
-                }
-                for i in range(4)
-            ]
+            inst = _empty_instrument(note_num)
 
         instruments_parts.append(_instrument_xml(inst))
 
     instruments_xml = "\n".join(instruments_parts)
-
     return (
         '<?xml version="1.0" encoding="UTF-8"?>\n\n'
         '<MPCVObject>\n'
@@ -527,84 +627,129 @@ def generate_step_xpm(
 
 
 # =============================================================================
+# SUMMARY TABLE
+# =============================================================================
+
+def print_summary_table(start_map: dict, end_map: dict, n_steps: int, ease: str):
+    """
+    Print a formatted table showing key parameter values at each step,
+    computed from the first shared MIDI note (or first start note).
+    """
+    shared = sorted(set(start_map.keys()) & set(end_map.keys()))
+    if not shared:
+        print("  (no shared MIDI notes — no interpolation table available)\n")
+        return
+
+    ref = shared[0]
+    si = start_map[ref]
+    ei = end_map[ref]
+
+    col_w = 9
+    header_parts = ["Step", "t_raw", "t_eased"] + [_TABLE_LABELS[p] for p in _TABLE_PARAMS]
+    separator = "-" * (6 + 7 + 9 + col_w * len(_TABLE_PARAMS) + 3 * (len(header_parts) - 1))
+
+    print(f"  Ref instrument: MIDI note {ref}")
+    print(f"  Ease curve    : {ease}")
+    print()
+
+    row_fmt = "  {:<5} {:>6} {:>8}  " + ("  {:>8}" * len(_TABLE_PARAMS))
+    print(row_fmt.format(*header_parts))
+    print("  " + separator)
+
+    for step_num in range(1, n_steps + 1):
+        raw_t = 0.0 if n_steps == 1 else (step_num - 1) / (n_steps - 1)
+        t = apply_ease(raw_t, ease)
+        vals = [
+            f"{_lerp(getattr(si, p), getattr(ei, p), t):.4f}"
+            for p in _TABLE_PARAMS
+        ]
+        print(row_fmt.format(step_num, f"{raw_t:.3f}", f"{t:.3f}", *vals))
+    print()
+
+
+# =============================================================================
 # EVOLUTION NOTES
 # =============================================================================
 
 def generate_evolution_notes(
-    start_path: Path,
-    end_path: Path,
+    start_label: str,
+    end_label: str,
     n_steps: int,
+    ease: str,
     start_map: dict,
     end_map: dict,
 ) -> str:
-    """Generate a human-readable evolution_notes.txt describing each step."""
-    shared_notes = sorted(set(start_map.keys()) & set(end_map.keys()))
+    shared = sorted(set(start_map.keys()) & set(end_map.keys()))
     start_only = sorted(set(start_map.keys()) - set(end_map.keys()))
     end_only = sorted(set(end_map.keys()) - set(start_map.keys()))
 
     lines = [
         "XPN Evolution Builder — XO_OX Designs",
-        f"Generated: {date.today()}",
+        f"Generated : {date.today()}",
         "",
-        f"Start kit : {start_path.name}",
-        f"End kit   : {end_path.name}",
+        f"Start     : {start_label}",
+        f"End       : {end_label}",
         f"Steps     : {n_steps}",
+        f"Ease      : {ease}",
         "",
         "Interpolation rules:",
-        "  - VelocityToVolume   : linear interpolation",
-        "  - PitchSemitones     : linear interpolation (rounded to nearest semitone)",
-        "  - FilterCutoff       : linear interpolation (0.0–1.0 range)",
-        f"  - Sample assignment  : start samples for steps 1–{n_steps // 2},"
-        f" end samples for steps {n_steps // 2 + 1}–{n_steps}",
+        "  - All numeric ProgramParameters attributes: linearly interpolated",
+        "  - Instrument floats (Volume, Pan, Cutoff, Resonance, envelopes): eased lerp",
+        "  - TuneCoarse (semitones): lerp → round to nearest int",
+        f"  - Sample assignment: start kit steps 1–{n_steps // 2},"
+        f" end kit steps {n_steps // 2 + 1}–{n_steps}",
+        "  - Boolean / string values: snap at midpoint",
         "",
-        f"Shared instruments (MIDI notes): {shared_notes if shared_notes else 'none'}",
-        f"Start-only instruments         : {start_only if start_only else 'none'} (fade out)",
-        f"End-only instruments           : {end_only if end_only else 'none'} (fade in)",
+        f"Shared instruments (MIDI notes): {shared or 'none'}",
+        f"Start-only (fade out)           : {start_only or 'none'}",
+        f"End-only   (fade in)            : {end_only or 'none'}",
         "",
     ]
 
     if n_steps == 1:
-        t_values = [0.0]
+        t_raw_values = [0.0]
     else:
-        t_values = [(i) / (n_steps - 1) for i in range(n_steps)]
+        t_raw_values = [i / (n_steps - 1) for i in range(n_steps)]
 
-    for step_idx, t in enumerate(t_values):
+    for step_idx, raw_t in enumerate(t_raw_values):
+        t = apply_ease(raw_t, ease)
         step_num = step_idx + 1
-        phase = "START (dry/raw)" if t < 0.25 else (
-            "TRANSITIONING" if t < 0.75 else "END (evolved/processed)"
+        phase = (
+            "START (raw)" if raw_t < 0.25 else
+            "TRANSITIONING" if raw_t < 0.75 else
+            "END (evolved)"
         )
-        use_start_samples = (step_idx < n_steps // 2)
-        sample_src = f"start kit ({start_path.stem})" if use_start_samples else f"end kit ({end_path.stem})"
+        use_start = step_idx < n_steps // 2
+        sample_src = f"start ({start_label})" if use_start else f"end ({end_label})"
 
-        lines.append(f"Step {step_num:02d}  [t={t:.3f}]  {phase}")
+        lines.append(f"Step {step_num:02d}  [t_raw={raw_t:.3f}  t_eased={t:.3f}]  {phase}")
         lines.append(f"  Samples from : {sample_src}")
 
-        if shared_notes:
-            # Show parameter values at this step for the first active note
-            ref_note = shared_notes[0]
-            si = start_map[ref_note]
-            ei = end_map[ref_note]
-            vol_val = _lerp(si.volume, ei.volume, t)
-            pitch_val = _lerp_int(si.tune_coarse, ei.tune_coarse, t)
-            cutoff_val = _lerp(si.cutoff, ei.cutoff, t)
-            lines.append(
-                f"  Ref note {ref_note}: Volume={vol_val:.3f}  "
-                f"Pitch={pitch_val:+d}st  FilterCutoff={cutoff_val:.3f}"
+        if shared:
+            ref = shared[0]
+            si = start_map[ref]
+            ei = end_map[ref]
+            param_summary = "  ".join(
+                f"{_TABLE_LABELS[p]}={_lerp(getattr(si, p), getattr(ei, p), t):.3f}"
+                for p in _TABLE_PARAMS
             )
+            lines.append(f"  Ref note {ref:3d} : {param_summary}")
         lines.append("")
 
-    lines.append("Live set tip:")
-    lines.append("  Load Step 01 at set start, swap programs across the set arc.")
-    lines.append("  Steps 1-4 are raw/dry, Steps 5-8 are processed/evolved.")
-
+    lines += [
+        "Live set tip:",
+        "  Load Step 01 at set start, swap programs across the set arc.",
+        f"  Steps 1–{n_steps // 2} carry start-kit samples (raw/dry).",
+        f"  Steps {n_steps // 2 + 1}–{n_steps} carry end-kit samples (evolved).",
+    ]
     return "\n".join(lines) + "\n"
 
 
 # =============================================================================
-# XPN (ZIP) PACKAGING
+# XPN PACKAGING
 # =============================================================================
 
-def generate_expansion_xml(pack_name: str, pack_id: str, n_steps: int) -> str:
+def generate_expansion_xml(pack_name: str, pack_id: str, n_steps: int, ease: str) -> str:
     today = str(date.today())
     return (
         '<?xml version="1.0" encoding="UTF-8"?>\n\n'
@@ -617,26 +762,20 @@ def generate_expansion_xml(pack_name: str, pack_id: str, n_steps: int) -> str:
         f'  <type>drum</type>\n'
         f'  <priority>50</priority>\n'
         f'  <img>artwork.png</img>\n'
-        f'  <description>Kit evolution arc — {n_steps} steps from raw to processed. '
+        f'  <description>Evolution arc — {n_steps} steps, {ease} curve. '
         f'XO_OX Designs.</description>\n'
         f'  <separator>-</separator>\n'
         f'</expansion>\n'
     )
 
 
-def build_xpn(
-    xpm_files: list,      # list of (filename, content_str)
-    notes_content: str,
-    expansion_xml: str,
-    output_path: Path,
-):
-    """Write XPM files + notes + expansion manifest into an XPN ZIP."""
+def build_xpn(xpm_files: list, notes_content: str, expansion_xml: str, output_path: Path):
     with zipfile.ZipFile(str(output_path), "w", zipfile.ZIP_DEFLATED) as zf:
         zf.writestr("Expansion.xml", expansion_xml)
         zf.writestr("evolution_notes.txt", notes_content)
         for filename, content in xpm_files:
             zf.writestr(filename, content)
-    print(f"  XPN: {output_path}  ({len(xpm_files)} programs)")
+    print(f"  XPN bundle : {output_path}  ({len(xpm_files)} programs)")
 
 
 # =============================================================================
@@ -645,121 +784,142 @@ def build_xpn(
 
 def main():
     parser = argparse.ArgumentParser(
-        description="XPN Evolution Builder — interpolate between two XPM kits across N steps.",
+        description="XPN Evolution Builder — morphs two XPM kits across N steps.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
     parser.add_argument("--start", required=True, metavar="START.xpm",
-                        help="Path to the start/initial XPM program file.")
-    parser.add_argument("--end", required=True, metavar="END.xpm",
-                        help="Path to the target/evolved XPM program file.")
+                        help="Path to the start XPM program file.")
+    parser.add_argument("--end", default="", metavar="END.xpm",
+                        help="Path to the target XPM program file (omit when using --dna-target).")
+    parser.add_argument("--dna-target", default="", metavar="AXES",
+                        help='DNA end state, e.g. "brightness=0.9,warmth=0.2,aggression=0.8". '
+                             'Axes: brightness, warmth, aggression, movement, space, density.')
     parser.add_argument("--steps", type=int, default=8, metavar="N",
                         help="Number of evolution steps to generate (default: 8).")
-    parser.add_argument("--output", default="./out", metavar="DIR",
-                        help="Output directory (default: ./out).")
+    parser.add_argument("--output-dir", default="./evolved", metavar="DIR",
+                        help="Output directory (default: ./evolved).")
+    parser.add_argument("--ease", default="linear",
+                        choices=["linear", "ease-in", "ease-out", "ease-in-out"],
+                        help="Interpolation easing curve (default: linear).")
     parser.add_argument("--pack-name", default="", metavar="NAME",
-                        help="Override the XPN pack name. Default: 'Evolution: <start> → <end>'.")
+                        help="Override XPN pack name.")
     parser.add_argument("--pack-id", default="", metavar="ID",
-                        help="Override the XPN pack identifier. Default: auto-generated.")
+                        help="Override XPN pack identifier.")
     parser.add_argument("--dry-run", action="store_true",
-                        help="Parse and report without writing any files.")
+                        help="Show interpolation plan without writing files.")
     args = parser.parse_args()
 
+    # Validate mutual exclusivity of --end vs --dna-target
+    if not args.end and not args.dna_target:
+        parser.error("Provide either --end <file.xpm> or --dna-target <axes>.")
+    if args.end and args.dna_target:
+        parser.error("--end and --dna-target are mutually exclusive.")
+
     start_path = Path(args.start)
-    end_path = Path(args.end)
     n_steps = max(1, args.steps)
-    output_dir = Path(args.output)
+    output_dir = Path(args.output_dir)
 
-    # Validate inputs
-    for p, label in [(start_path, "--start"), (end_path, "--end")]:
-        if not p.exists():
-            print(f"[ERROR] {label} file not found: {p}", file=sys.stderr)
-            sys.exit(1)
-        if p.suffix.lower() != ".xpm":
-            print(f"[WARN] {label} file does not have .xpm extension: {p}", file=sys.stderr)
-
-    if n_steps < 1:
-        print("[ERROR] --steps must be >= 1", file=sys.stderr)
+    if not start_path.exists():
+        print(f"[ERROR] --start file not found: {start_path}", file=sys.stderr)
         sys.exit(1)
+    if start_path.suffix.lower() != ".xpm":
+        print(f"[WARN] --start does not have .xpm extension: {start_path}", file=sys.stderr)
 
-    print(f"XPN Evolution Builder — XO_OX Designs")
-    print(f"  Start : {start_path}")
-    print(f"  End   : {end_path}")
-    print(f"  Steps : {n_steps}")
-    print(f"  Output: {output_dir}")
-    print()
+    # Determine basename for output files (start stem)
+    basename = start_path.stem
 
-    # Parse both XPMs
-    print("Parsing XPMs...")
+    print("XPN Evolution Builder — XO_OX Designs")
+    print(f"  Start     : {start_path}")
+
+    # Parse start
+    print("Parsing start XPM...")
     start_map = parse_xpm(start_path)
-    end_map = parse_xpm(end_path)
-
     if not start_map:
-        print("[ERROR] Start XPM yielded no instruments — check file.", file=sys.stderr)
+        print("[ERROR] Start XPM yielded no instruments.", file=sys.stderr)
         sys.exit(1)
-    if not end_map:
-        print("[ERROR] End XPM yielded no instruments — check file.", file=sys.stderr)
-        sys.exit(1)
+
+    # Resolve end map
+    if args.end:
+        end_path = Path(args.end)
+        if not end_path.exists():
+            print(f"[ERROR] --end file not found: {end_path}", file=sys.stderr)
+            sys.exit(1)
+        if end_path.suffix.lower() != ".xpm":
+            print(f"[WARN] --end does not have .xpm extension: {end_path}", file=sys.stderr)
+        print("Parsing end XPM...")
+        end_map = parse_xpm(end_path)
+        if not end_map:
+            print("[ERROR] End XPM yielded no instruments.", file=sys.stderr)
+            sys.exit(1)
+        end_label = end_path.stem
+        print(f"  End       : {end_path}")
+    else:
+        try:
+            dna_targets = parse_dna_target(args.dna_target)
+        except ValueError as exc:
+            print(f"[ERROR] --dna-target: {exc}", file=sys.stderr)
+            sys.exit(1)
+        end_map = synthesise_end_map(start_map, dna_targets)
+        end_label = f"DNA({args.dna_target})"
+        print(f"  End       : {end_label}")
 
     shared = set(start_map.keys()) & set(end_map.keys())
-    print(f"  Start instruments: {len(start_map)}")
-    print(f"  End instruments  : {len(end_map)}")
-    print(f"  Shared (matched) : {len(shared)}")
+    print(f"  Steps     : {n_steps}  |  Ease: {args.ease}")
+    print(f"  Shared instruments: {len(shared)}")
+    print(f"  Output dir: {output_dir}")
     print()
 
     if not shared:
-        print("[WARN] No shared MIDI notes — no interpolation will occur. "
-              "Start and end kits use different note assignments.", file=sys.stderr)
+        print("[WARN] No shared MIDI notes — only volume fade in/out will occur.", file=sys.stderr)
 
-    all_notes = sorted(set(start_map.keys()) | set(end_map.keys()))
+    # Summary table
+    print("Parameter interpolation table:")
+    print_summary_table(start_map, end_map, n_steps, args.ease)
 
     if args.dry_run:
-        print("[DRY RUN] Would generate:")
+        print("[DRY RUN] Would write:")
         for s in range(1, n_steps + 1):
-            print(f"  Evolution_Step{s:02d}.xpm")
-        print("  evolution_notes.txt")
-        print("  Evolution_Kit.xpn")
+            print(f"  {basename}_evo_{s:02d}.xpm")
+        print(f"  {basename}_evolution_notes.txt")
+        print(f"  {basename}_Evolution.xpn")
         return
 
-    # Create output directory
+    # Write files
     output_dir.mkdir(parents=True, exist_ok=True)
-
-    # Generate all step XPMs
     xpm_files = []
-    print("Generating evolution steps...")
+
+    prog_name_prefix = basename[:20] if len(basename) > 20 else basename
+
+    print("Writing evolution steps...")
     for step_num in range(1, n_steps + 1):
-        filename = f"Evolution_Step{step_num:02d}.xpm"
-        content = generate_step_xpm(step_num, all_notes, start_map, end_map, n_steps)
+        filename = f"{basename}_evo_{step_num:02d}.xpm"
+        content = generate_step_xpm(
+            step_num, start_map, end_map, n_steps, args.ease, prog_name_prefix
+        )
         xpm_files.append((filename, content))
+        (output_dir / filename).write_text(content, encoding="utf-8")
+        raw_t = 0.0 if n_steps == 1 else (step_num - 1) / (n_steps - 1)
+        eased_t = apply_ease(raw_t, args.ease)
+        print(f"  {filename}  [t={raw_t:.2f} → eased={eased_t:.2f}]")
 
-        # Also write individual .xpm to output dir for easy MPC drag-and-drop
-        xpm_path = output_dir / filename
-        xpm_path.write_text(content, encoding="utf-8")
-        t = 0.0 if n_steps == 1 else (step_num - 1) / (n_steps - 1)
-        print(f"  {filename}  [t={t:.2f}]")
-
-    # Generate evolution notes
-    notes_content = generate_evolution_notes(start_path, end_path, n_steps, start_map, end_map)
-    notes_path = output_dir / "evolution_notes.txt"
-    notes_path.write_text(notes_content, encoding="utf-8")
-    print(f"  evolution_notes.txt")
-
-    # Pack name / ID
-    pack_name = args.pack_name or f"Evolution: {start_path.stem} → {end_path.stem}"
-    pack_id = args.pack_id or (
-        f"com.xo-ox.evolution.{start_path.stem.lower().replace(' ', '_')}"
-        f"_to_{end_path.stem.lower().replace(' ', '_')}"
+    notes = generate_evolution_notes(
+        basename, end_label, n_steps, args.ease, start_map, end_map
     )
+    notes_path = output_dir / f"{basename}_evolution_notes.txt"
+    notes_path.write_text(notes, encoding="utf-8")
+    print(f"  {notes_path.name}")
 
-    expansion_xml = generate_expansion_xml(pack_name, pack_id, n_steps)
-
-    # Build XPN ZIP
-    xpn_path = output_dir / "Evolution_Kit.xpn"
-    build_xpn(xpm_files, notes_content, expansion_xml, xpn_path)
+    pack_name = args.pack_name or f"Evolution: {basename}"
+    pack_id = args.pack_id or (
+        f"com.xo-ox.evolution.{basename.lower().replace(' ', '_')}"
+    )
+    expansion_xml = generate_expansion_xml(pack_name, pack_id, n_steps, args.ease)
+    xpn_path = output_dir / f"{basename}_Evolution.xpn"
+    build_xpn(xpm_files, notes, expansion_xml, xpn_path)
 
     print()
-    print(f"Done. {n_steps} evolution steps written to {output_dir}/")
-    print(f"XPN pack: {xpn_path}")
+    print(f"Done. {n_steps} steps → {output_dir}/")
 
 
 if __name__ == "__main__":
