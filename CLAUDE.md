@@ -11,7 +11,7 @@ and mutate into sounds impossible with any single synth. **34 engines** are regi
 - **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
-- **Presets:** 2,451 factory presets in `.xometa` format, 7 mood categories (incl. Family), 6D Sonic DNA
+- **Presets:** 2,550 factory presets in `.xometa` format, 7 mood categories (incl. Family), 6D Sonic DNA
 - **Formats:** AU, Standalone (macOS); AUv3, Standalone (iOS); VST3 (v2)
 - **Design:** Gallery Model — warm white shell frames engine accent colors. Light mode default.
 
@@ -146,7 +146,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Engines/Orca/OrcaEngine.h` | Apex predator engine (wavetable + echolocation + breach) |
 | `Source/Engines/Octopus/OctopusEngine.h` | Decentralized alien intelligence engine (arms + chromatophores + ink cloud) |
 | `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
-| `Docs/xomnibus_sound_design_guides.md` | Sound design guide (24 of 29 engines in unified guide; 5 Constellation engines have dedicated guides in Docs/) |
+| `Docs/xomnibus_sound_design_guides.md` | Sound design guide (30 of 34 engines in unified guide; 4 Constellation engines have dedicated guides in Docs/) |
 | `Source/DSP/` | Shared DSP library |
 | `Source/UI/` | Gallery Model UI components |
 | `Source/Export/` | XPN export pipeline |

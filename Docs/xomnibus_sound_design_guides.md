@@ -1970,6 +1970,7 @@ A lofi processing chain (bit depth reduction, sample rate reduction, tape wobble
 **Forest Floor:** ocelot_floorModel=3, ocelot_floorTension=0.55, ocelot_floorStrike=0.6, ocelot_strataBalance=0.3, ocelot_ecosystemDepth=0.2 — physical model dominant, minimal cross-modulation, grounded
 **Canopy Shimmer:** ocelot_strataBalance=0.8, ocelot_canopyWavefold=0.4, ocelot_canopyBreathe=0.5, ocelot_canopyShimmer=0.4 — canopy dominant, shimmer LFO active, airy texture
 **Ecosystem Pulse:** ocelot_ecosystemDepth=0.7, ocelot_xf_floorUnder=0.4, ocelot_xf_underCanopy=0.3, ocelot_xf_canopyEmerg=0.3 — cross-modulation chain active, floor pulses through understory to canopy to creature
+**Archival Field Recording:** ocelot_bitDepth=12, ocelot_tapeWobble=0.08, ocelot_tapeAge=0.1, ocelot_dustLevel=0.1, ocelot_reverbMix=0.3 — lofi field recording character, forest sounds as degraded archive
 
 ---
 
@@ -2122,4 +2123,3 @@ OCTOPUS accepts: `AudioToFM` (modulates wavetable position via FM — external a
 OCTOPUS is the most generative engine in the fleet. The 8-arm LFO system operates independently — each arm runs at a prime-ratio multiple of the base rate (so arm ratios are 1×, 1.3×, 1.7×, 2.1×, 2.3×, 2.9×, 3.1×, 3.7× or similar), meaning the arms never exactly re-synchronize. The result is modulation that is always moving, always changing, but always internally coherent because it shares a common tempo reference. `octo_armSpread` is the key variable: at 0 all arms run at the same rate (synchronized), at 1 they diverge maximally.
 
 The ink cloud is a performance weapon, not a mixing tool. Set `octo_inkThreshold` to 0.75–0.9 and leave `octo_inkMix` at 0. Play phrases normally; the ink only erupts when you play an accent note at maximum velocity. This creates dramatic contrast: melodic content suddenly obliterated by a wall of saturated noise that slowly dissolves. Pair with OPAL (granular) to freeze the ink cloud into indefinite sustain, or with OVERDUB (tape delay) to smear the noise into a murky wash.
-**Archival Field Recording:** ocelot_bitDepth=12, ocelot_tapeWobble=0.08, ocelot_tapeAge=0.1, ocelot_dustLevel=0.1, ocelot_reverbMix=0.3 — lofi field recording character, forest sounds as degraded archive
