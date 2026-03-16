@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "HOT VIOLENT KINETIC BRIGHT 5",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "warmth": 0.9331,
+    "aggression": 0.9557,
+    "movement": 0.9096,
+    "brightness": 0.9383,
+    "density": 0.4435,
+    "space": 0.4889
+  },
+  "dna": {
+    "warmth": 0.9331,
+    "aggression": 0.9557,
+    "movement": 0.9096,
+    "brightness": 0.9383,
+    "density": 0.4435,
+    "space": 0.4889
+  },
+  "engines": [
+    "XOsprey"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 hot violent kinetic bright. Designed for MIRROR coupling with XOsprey.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "mirror",
+    "osprey"
+  ],
+  "macroLabels": [
+    "STRIKE",
+    "GLEAM",
+    "BURN",
+    "SWEEP"
+  ],
+  "couplingType": "MIRROR",
+  "couplingIntensity": "Medium",
+  "parameters": {
+    "XOsprey": {
+      "couplingLevel": 0.951,
+      "couplingBus": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

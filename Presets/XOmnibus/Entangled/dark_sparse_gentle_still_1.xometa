@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "DARK SPARSE GENTLE STILL 1",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.0851,
+    "density": 0.0442,
+    "aggression": 0.0593,
+    "movement": 0.1078,
+    "warmth": 0.5898,
+    "space": 0.5648
+  },
+  "dna": {
+    "brightness": 0.0851,
+    "density": 0.0442,
+    "aggression": 0.0593,
+    "movement": 0.1078,
+    "warmth": 0.5898,
+    "space": 0.5648
+  },
+  "engines": [
+    "XOsteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 dark sparse gentle still. Designed for SURGE coupling with XOsteria.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "surge",
+    "osteria"
+  ],
+  "macroLabels": [
+    "WEIGHT",
+    "SHRED",
+    "GLEAM",
+    "FLOW"
+  ],
+  "couplingType": "SURGE",
+  "couplingIntensity": "Low",
+  "parameters": {
+    "XOsteria": {
+      "couplingLevel": 0.893,
+      "couplingBus": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

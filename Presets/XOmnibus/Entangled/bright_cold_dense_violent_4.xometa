@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT COLD DENSE VIOLENT 4",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.9205,
+    "warmth": 0.0764,
+    "density": 0.9465,
+    "aggression": 0.9381,
+    "movement": 0.5881,
+    "space": 0.5474
+  },
+  "dna": {
+    "brightness": 0.9205,
+    "warmth": 0.0764,
+    "density": 0.9465,
+    "aggression": 0.9381,
+    "movement": 0.5881,
+    "space": 0.5474
+  },
+  "engines": [
+    "XOutwit"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 bright cold dense violent. Designed for FLOW coupling with XOutwit.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "flow",
+    "outwit"
+  ],
+  "macroLabels": [
+    "PACK",
+    "CRUSH",
+    "HEAT",
+    "RADIANCE"
+  ],
+  "couplingType": "FLOW",
+  "couplingIntensity": "Medium",
+  "parameters": {
+    "XOutwit": {
+      "couplingLevel": 0.812,
+      "couplingBus": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

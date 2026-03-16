@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "COLD SPARSE VAST BRIGHT 1",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "warmth": 0.0709,
+    "density": 0.0642,
+    "space": 0.9311,
+    "brightness": 0.9347,
+    "aggression": 0.4849,
+    "movement": 0.45
+  },
+  "dna": {
+    "warmth": 0.0709,
+    "density": 0.0642,
+    "space": 0.9311,
+    "brightness": 0.9347,
+    "aggression": 0.4849,
+    "movement": 0.45
+  },
+  "engines": [
+    "XObsidian"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 cold sparse vast bright. Designed for PHASE coupling with XObsidian.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "phase",
+    "obsidian"
+  ],
+  "macroLabels": [
+    "WEIGHT",
+    "FLARE",
+    "DEPTH",
+    "HEAT"
+  ],
+  "couplingType": "PHASE",
+  "couplingIntensity": "High",
+  "parameters": {
+    "XObsidian": {
+      "couplingLevel": 0.619,
+      "couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

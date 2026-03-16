@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "DARK COLD SPARSE VAST F1",
+  "mood": "Flux",
+  "sonic_dna": {
+    "brightness": 0.055,
+    "warmth": 0.096,
+    "aggression": 0.539,
+    "movement": 0.493,
+    "density": 0.079,
+    "space": 0.954
+  },
+  "engines": [
+    "OVERWORLD"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset \u2014 extreme dark brightness, extreme cold warmth, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "tags": [
+    "dark",
+    "cold",
+    "sparse",
+    "vast",
+    "flux",
+    "extreme"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Dynamic",
+  "dna": {
+    "brightness": 0.055,
+    "warmth": 0.096,
+    "movement": 0.493,
+    "density": 0.079,
+    "space": 0.954,
+    "aggression": 0.539
+  },
+  "parameters": {
+    "OVERWORLD": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "DARK HOT VAST KINETIC 5",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.0887,
+    "warmth": 0.9225,
+    "space": 0.929,
+    "movement": 0.9542,
+    "aggression": 0.4243,
+    "density": 0.4267
+  },
+  "dna": {
+    "brightness": 0.0887,
+    "warmth": 0.9225,
+    "space": 0.929,
+    "movement": 0.9542,
+    "aggression": 0.4243,
+    "density": 0.4267
+  },
+  "engines": [
+    "XObese"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 dark hot vast kinetic. Designed for PULSE coupling with XObese.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "pulse",
+    "obese"
+  ],
+  "macroLabels": [
+    "SWEEP",
+    "EXPANSE",
+    "FORGE",
+    "RADIANCE"
+  ],
+  "couplingType": "PULSE",
+  "couplingIntensity": "Extreme",
+  "parameters": {
+    "XObese": {
+      "couplingLevel": 0.975,
+      "couplingBus": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

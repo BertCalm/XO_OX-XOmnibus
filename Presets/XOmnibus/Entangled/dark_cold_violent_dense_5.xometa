@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "DARK COLD VIOLENT DENSE 5",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.0999,
+    "warmth": 0.1007,
+    "aggression": 0.9166,
+    "density": 0.9217,
+    "movement": 0.5668,
+    "space": 0.4325
+  },
+  "dna": {
+    "brightness": 0.0999,
+    "warmth": 0.1007,
+    "aggression": 0.9166,
+    "density": 0.9217,
+    "movement": 0.5668,
+    "space": 0.4325
+  },
+  "engines": [
+    "XOblongBob"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 dark cold violent dense. Designed for WEAVE coupling with XOblongBob.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "weave",
+    "oblong"
+  ],
+  "macroLabels": [
+    "WEIGHT",
+    "STRIKE",
+    "GLEAM",
+    "FORGE"
+  ],
+  "couplingType": "WEAVE",
+  "couplingIntensity": "High",
+  "parameters": {
+    "XOblongBob": {
+      "couplingLevel": 0.817,
+      "couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT HOT KINETIC DENSE 5",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.898,
+    "warmth": 0.9519,
+    "movement": 0.9426,
+    "density": 0.9438,
+    "aggression": 0.468,
+    "space": 0.4587
+  },
+  "dna": {
+    "brightness": 0.898,
+    "warmth": 0.9519,
+    "movement": 0.9426,
+    "density": 0.9438,
+    "aggression": 0.468,
+    "space": 0.4587
+  },
+  "engines": [
+    "XOrbital"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 bright hot kinetic dense. Designed for FLOW coupling with XOrbital.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "flow",
+    "orbital"
+  ],
+  "macroLabels": [
+    "EMBER",
+    "MASS",
+    "PULSE",
+    "LUSTER"
+  ],
+  "couplingType": "FLOW",
+  "couplingIntensity": "Medium",
+  "parameters": {
+    "XOrbital": {
+      "couplingLevel": 0.881,
+      "couplingBus": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

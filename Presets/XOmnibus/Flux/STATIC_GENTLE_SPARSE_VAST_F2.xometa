@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "STATIC GENTLE SPARSE VAST F2",
+  "mood": "Flux",
+  "sonic_dna": {
+    "brightness": 0.533,
+    "warmth": 0.524,
+    "aggression": 0.047,
+    "movement": 0.107,
+    "density": 0.056,
+    "space": 0.912
+  },
+  "engines": [
+    "OCELOT"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset \u2014 extreme gentle aggression, extreme static movement, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "tags": [
+    "gentle",
+    "static",
+    "sparse",
+    "vast",
+    "flux",
+    "extreme"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.533,
+    "warmth": 0.524,
+    "movement": 0.107,
+    "density": 0.056,
+    "space": 0.912,
+    "aggression": 0.047
+  },
+  "parameters": {
+    "OCELOT": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

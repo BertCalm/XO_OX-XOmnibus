@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "VIOLENT DENSE HOT TIGHT F2",
+  "mood": "Flux",
+  "sonic_dna": {
+    "brightness": 0.568,
+    "warmth": 0.933,
+    "aggression": 0.907,
+    "movement": 0.495,
+    "density": 0.898,
+    "space": 0.106
+  },
+  "engines": [
+    "OBSCURA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset \u2014 extreme hot warmth, extreme violent aggression, extreme dense density, extreme tight space. Maximum contrast character design.",
+  "tags": [
+    "warm",
+    "aggressive",
+    "dense",
+    "tight",
+    "flux",
+    "extreme"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Spatial",
+  "dna": {
+    "brightness": 0.568,
+    "warmth": 0.933,
+    "movement": 0.495,
+    "density": 0.898,
+    "space": 0.106,
+    "aggression": 0.907
+  },
+  "parameters": {
+    "OBSCURA": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

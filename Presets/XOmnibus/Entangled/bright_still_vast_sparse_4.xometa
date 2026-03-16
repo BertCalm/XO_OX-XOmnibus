@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT STILL VAST SPARSE 4",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.9457,
+    "movement": 0.0605,
+    "space": 0.9162,
+    "density": 0.0502,
+    "warmth": 0.5062,
+    "aggression": 0.5132
+  },
+  "dna": {
+    "brightness": 0.9457,
+    "movement": 0.0605,
+    "space": 0.9162,
+    "density": 0.0502,
+    "warmth": 0.5062,
+    "aggression": 0.5132
+  },
+  "engines": [
+    "XOrganon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 bright still vast sparse. Designed for SURGE coupling with XOrganon.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "surge",
+    "organon"
+  ],
+  "macroLabels": [
+    "WEIGHT",
+    "SHIMMER",
+    "FLOW",
+    "EXPANSE"
+  ],
+  "couplingType": "SURGE",
+  "couplingIntensity": "Medium",
+  "parameters": {
+    "XOrganon": {
+      "couplingLevel": 0.935,
+      "couplingBus": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

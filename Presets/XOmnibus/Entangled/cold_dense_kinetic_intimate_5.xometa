@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "COLD DENSE KINETIC INTIMATE 5",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "warmth": 0.0798,
+    "density": 0.9102,
+    "movement": 0.8987,
+    "space": 0.0882,
+    "brightness": 0.5399,
+    "aggression": 0.5885
+  },
+  "dna": {
+    "warmth": 0.0798,
+    "density": 0.9102,
+    "movement": 0.8987,
+    "space": 0.0882,
+    "brightness": 0.5399,
+    "aggression": 0.5885
+  },
+  "engines": [
+    "XOrca"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 cold dense kinetic intimate. Designed for WEAVE coupling with XOrca.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "weave",
+    "orca"
+  ],
+  "macroLabels": [
+    "EMBER",
+    "VOID",
+    "PRESS",
+    "FLOW"
+  ],
+  "couplingType": "WEAVE",
+  "couplingIntensity": "Extreme",
+  "parameters": {
+    "XOrca": {
+      "couplingLevel": 0.945,
+      "couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

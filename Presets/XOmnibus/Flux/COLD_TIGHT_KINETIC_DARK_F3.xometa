@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "COLD TIGHT KINETIC DARK F3",
+  "mood": "Flux",
+  "sonic_dna": {
+    "brightness": 0.051,
+    "warmth": 0.071,
+    "aggression": 0.541,
+    "movement": 0.929,
+    "density": 0.422,
+    "space": 0.106
+  },
+  "engines": [
+    "OPAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset \u2014 extreme dark brightness, extreme cold warmth, extreme kinetic movement, extreme tight space. Maximum contrast character design.",
+  "tags": [
+    "dark",
+    "cold",
+    "kinetic",
+    "tight",
+    "flux",
+    "extreme"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Spectral",
+  "dna": {
+    "brightness": 0.051,
+    "warmth": 0.071,
+    "movement": 0.929,
+    "density": 0.422,
+    "space": 0.106,
+    "aggression": 0.541
+  },
+  "parameters": {
+    "OPAL": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

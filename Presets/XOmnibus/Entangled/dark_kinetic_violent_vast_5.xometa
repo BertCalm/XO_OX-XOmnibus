@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "DARK KINETIC VIOLENT VAST 5",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.0894,
+    "movement": 0.9468,
+    "aggression": 0.917,
+    "space": 0.9365,
+    "warmth": 0.5641,
+    "density": 0.5962
+  },
+  "dna": {
+    "brightness": 0.0894,
+    "movement": 0.9468,
+    "aggression": 0.917,
+    "space": 0.9365,
+    "warmth": 0.5641,
+    "density": 0.5962
+  },
+  "engines": [
+    "XOnset"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 dark kinetic violent vast. Designed for ECHO coupling with XOnset.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "echo",
+    "onset"
+  ],
+  "macroLabels": [
+    "FLOW",
+    "OPEN",
+    "SHRED",
+    "LUSTER"
+  ],
+  "couplingType": "ECHO",
+  "couplingIntensity": "Extreme",
+  "parameters": {
+    "XOnset": {
+      "couplingLevel": 0.666,
+      "couplingBus": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

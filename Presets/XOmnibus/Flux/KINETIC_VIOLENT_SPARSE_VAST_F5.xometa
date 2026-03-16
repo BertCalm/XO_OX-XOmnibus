@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "KINETIC VIOLENT SPARSE VAST F5",
+  "mood": "Flux",
+  "sonic_dna": {
+    "brightness": 0.442,
+    "warmth": 0.557,
+    "aggression": 0.932,
+    "movement": 0.913,
+    "density": 0.071,
+    "space": 0.937
+  },
+  "engines": [
+    "OBESE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset \u2014 extreme violent aggression, extreme kinetic movement, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "tags": [
+    "aggressive",
+    "kinetic",
+    "sparse",
+    "vast",
+    "flux",
+    "extreme"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Sync",
+  "dna": {
+    "brightness": 0.442,
+    "warmth": 0.557,
+    "movement": 0.913,
+    "density": 0.071,
+    "space": 0.937,
+    "aggression": 0.932
+  },
+  "parameters": {
+    "OBESE": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

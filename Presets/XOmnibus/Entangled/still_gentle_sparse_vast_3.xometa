@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "STILL GENTLE SPARSE VAST 3",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "movement": 0.0645,
+    "aggression": 0.0855,
+    "density": 0.0947,
+    "space": 0.9356,
+    "brightness": 0.5508,
+    "warmth": 0.5899
+  },
+  "dna": {
+    "movement": 0.0645,
+    "aggression": 0.0855,
+    "density": 0.0947,
+    "space": 0.9356,
+    "brightness": 0.5508,
+    "warmth": 0.5899
+  },
+  "engines": [
+    "XOpossum"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 still gentle sparse vast. Designed for BIND coupling with XOpossum.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "bind",
+    "overbite"
+  ],
+  "macroLabels": [
+    "VOID",
+    "SWEEP",
+    "FORCE",
+    "WEIGHT"
+  ],
+  "couplingType": "BIND",
+  "couplingIntensity": "Medium",
+  "parameters": {
+    "XOpossum": {
+      "couplingLevel": 0.563,
+      "couplingBus": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "DARK COLD VIOLENT DENSE F2",
+  "mood": "Flux",
+  "sonic_dna": {
+    "brightness": 0.077,
+    "warmth": 0.049,
+    "aggression": 0.936,
+    "movement": 0.589,
+    "density": 0.902,
+    "space": 0.506
+  },
+  "engines": [
+    "ORGANON"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset \u2014 extreme dark brightness, extreme cold warmth, extreme violent aggression, extreme dense density. Maximum contrast character design.",
+  "tags": [
+    "dark",
+    "cold",
+    "aggressive",
+    "dense",
+    "flux",
+    "extreme"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Timbral",
+  "dna": {
+    "brightness": 0.077,
+    "warmth": 0.049,
+    "movement": 0.589,
+    "density": 0.902,
+    "space": 0.506,
+    "aggression": 0.936
+  },
+  "parameters": {
+    "ORGANON": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

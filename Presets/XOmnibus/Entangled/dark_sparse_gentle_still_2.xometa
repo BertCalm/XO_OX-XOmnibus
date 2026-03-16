@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "DARK SPARSE GENTLE STILL 2",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.057,
+    "density": 0.0488,
+    "aggression": 0.0795,
+    "movement": 0.0448,
+    "warmth": 0.553,
+    "space": 0.4414
+  },
+  "dna": {
+    "brightness": 0.057,
+    "density": 0.0488,
+    "aggression": 0.0795,
+    "movement": 0.0448,
+    "warmth": 0.553,
+    "space": 0.4414
+  },
+  "engines": [
+    "XOwlfish"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 dark sparse gentle still. Designed for TANGLE coupling with XOwlfish.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "tangle",
+    "owlfish"
+  ],
+  "macroLabels": [
+    "SURGE",
+    "PACK",
+    "SHIMMER",
+    "SHRED"
+  ],
+  "couplingType": "TANGLE",
+  "couplingIntensity": "Medium",
+  "parameters": {
+    "XOwlfish": {
+      "couplingLevel": 0.501,
+      "couplingBus": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

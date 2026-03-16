@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "COLD DENSE KINETIC TIGHT F3",
+  "mood": "Flux",
+  "sonic_dna": {
+    "brightness": 0.533,
+    "warmth": 0.046,
+    "aggression": 0.486,
+    "movement": 0.951,
+    "density": 0.903,
+    "space": 0.058
+  },
+  "engines": [
+    "OHM"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset \u2014 extreme cold warmth, extreme kinetic movement, extreme dense density, extreme tight space. Maximum contrast character design.",
+  "tags": [
+    "cold",
+    "kinetic",
+    "dense",
+    "tight",
+    "flux",
+    "extreme"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Temporal",
+  "dna": {
+    "brightness": 0.533,
+    "warmth": 0.046,
+    "movement": 0.951,
+    "density": 0.903,
+    "space": 0.058,
+    "aggression": 0.486
+  },
+  "parameters": {
+    "OHM": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

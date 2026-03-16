@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT COLD DENSE VIOLENT 3",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.9588,
+    "warmth": 0.0427,
+    "density": 0.9318,
+    "aggression": 0.9142,
+    "movement": 0.5573,
+    "space": 0.4873
+  },
+  "dna": {
+    "brightness": 0.9588,
+    "warmth": 0.0427,
+    "density": 0.9318,
+    "aggression": 0.9142,
+    "movement": 0.5573,
+    "space": 0.4873
+  },
+  "engines": [
+    "XOverlap"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 bright cold dense violent. Designed for PHASE coupling with XOverlap.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "phase",
+    "overlap"
+  ],
+  "macroLabels": [
+    "FLARE",
+    "FORGE",
+    "WEIGHT",
+    "STRIKE"
+  ],
+  "couplingType": "PHASE",
+  "couplingIntensity": "Low",
+  "parameters": {
+    "XOverlap": {
+      "couplingLevel": 0.522,
+      "couplingBus": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

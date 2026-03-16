@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "VIOLENT DENSE HOT INTIMATE 5",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "aggression": 0.9249,
+    "density": 0.9209,
+    "warmth": 0.8936,
+    "space": 0.0587,
+    "brightness": 0.4262,
+    "movement": 0.4576
+  },
+  "dna": {
+    "aggression": 0.9249,
+    "density": 0.9209,
+    "warmth": 0.8936,
+    "space": 0.0587,
+    "brightness": 0.4262,
+    "movement": 0.4576
+  },
+  "engines": [
+    "XOddOscar"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 violent dense hot intimate. Designed for FLOW coupling with XOddOscar.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "flow",
+    "oddoscar"
+  ],
+  "macroLabels": [
+    "VOID",
+    "IMPACT",
+    "PRESS",
+    "GLOW"
+  ],
+  "couplingType": "FLOW",
+  "couplingIntensity": "Extreme",
+  "parameters": {
+    "XOddOscar": {
+      "couplingLevel": 0.855,
+      "couplingBus": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

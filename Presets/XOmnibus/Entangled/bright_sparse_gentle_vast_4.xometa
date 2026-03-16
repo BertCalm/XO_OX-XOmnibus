@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT SPARSE GENTLE VAST 4",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.9494,
+    "density": 0.0516,
+    "aggression": 0.074,
+    "space": 0.905,
+    "warmth": 0.4802,
+    "movement": 0.4117
+  },
+  "dna": {
+    "brightness": 0.9494,
+    "density": 0.0516,
+    "aggression": 0.074,
+    "space": 0.905,
+    "warmth": 0.4802,
+    "movement": 0.4117
+  },
+  "engines": [
+    "XOcelot"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 bright sparse gentle vast. Designed for SURGE coupling with XOcelot.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "surge",
+    "ocelot"
+  ],
+  "macroLabels": [
+    "GLEAM",
+    "LAYER",
+    "STRIKE",
+    "DEPTH"
+  ],
+  "couplingType": "SURGE",
+  "couplingIntensity": "Extreme",
+  "parameters": {
+    "XOcelot": {
+      "couplingLevel": 0.643,
+      "couplingBus": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

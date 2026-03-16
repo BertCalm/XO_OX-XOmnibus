@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "DARK VAST KINETIC VIOLENT 2",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.0742,
+    "space": 0.8978,
+    "movement": 0.9154,
+    "aggression": 0.959,
+    "warmth": 0.5614,
+    "density": 0.4479
+  },
+  "dna": {
+    "brightness": 0.0742,
+    "space": 0.8978,
+    "movement": 0.9154,
+    "aggression": 0.959,
+    "warmth": 0.5614,
+    "density": 0.4479
+  },
+  "engines": [
+    "XOuroboros"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 dark vast kinetic violent. Designed for BIND coupling with XOuroboros.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "bind",
+    "ouroboros"
+  ],
+  "macroLabels": [
+    "SHRED",
+    "GLEAM",
+    "FLOW",
+    "DEPTH"
+  ],
+  "couplingType": "BIND",
+  "couplingIntensity": "Medium",
+  "parameters": {
+    "XOuroboros": {
+      "couplingLevel": 0.908,
+      "couplingBus": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

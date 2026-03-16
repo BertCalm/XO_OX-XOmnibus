@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "STILL GENTLE SPARSE VAST 5",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "movement": 0.0618,
+    "aggression": 0.0874,
+    "density": 0.1071,
+    "space": 0.9178,
+    "brightness": 0.543,
+    "warmth": 0.4152
+  },
+  "dna": {
+    "movement": 0.0618,
+    "aggression": 0.0874,
+    "density": 0.1071,
+    "space": 0.9178,
+    "brightness": 0.543,
+    "warmth": 0.4152
+  },
+  "engines": [
+    "XOracle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 still gentle sparse vast. Designed for ORBIT coupling with XOracle.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "orbit",
+    "oracle"
+  ],
+  "macroLabels": [
+    "FLOW",
+    "FIELD",
+    "SHRED",
+    "MASS"
+  ],
+  "couplingType": "ORBIT",
+  "couplingIntensity": "Medium",
+  "parameters": {
+    "XOracle": {
+      "couplingLevel": 0.898,
+      "couplingBus": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

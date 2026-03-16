@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "COLD DENSE KINETIC INTIMATE 4",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "warmth": 0.1054,
+    "density": 0.9198,
+    "movement": 0.9281,
+    "space": 0.0853,
+    "brightness": 0.5817,
+    "aggression": 0.5653
+  },
+  "dna": {
+    "warmth": 0.1054,
+    "density": 0.9198,
+    "movement": 0.9281,
+    "space": 0.0853,
+    "brightness": 0.5817,
+    "aggression": 0.5653
+  },
+  "engines": [
+    "XOmbre"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 cold dense kinetic intimate. Designed for PULSE coupling with XOmbre.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "pulse",
+    "ombre"
+  ],
+  "macroLabels": [
+    "FLOW",
+    "WEIGHT",
+    "FIELD",
+    "FORGE"
+  ],
+  "couplingType": "PULSE",
+  "couplingIntensity": "Low",
+  "parameters": {
+    "XOmbre": {
+      "couplingLevel": 0.874,
+      "couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

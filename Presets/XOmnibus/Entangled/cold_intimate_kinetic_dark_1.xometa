@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "COLD INTIMATE KINETIC DARK 1",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "warmth": 0.092,
+    "space": 0.0509,
+    "movement": 0.9097,
+    "brightness": 0.0547,
+    "aggression": 0.4686,
+    "density": 0.5375
+  },
+  "dna": {
+    "warmth": 0.092,
+    "space": 0.0509,
+    "movement": 0.9097,
+    "brightness": 0.0547,
+    "aggression": 0.4686,
+    "density": 0.5375
+  },
+  "engines": [
+    "XOrphica"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 cold intimate kinetic dark. Designed for ORBIT coupling with XOrphica.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "orbit",
+    "orphica"
+  ],
+  "macroLabels": [
+    "EXPANSE",
+    "FLARE",
+    "PULSE",
+    "HEAT"
+  ],
+  "couplingType": "ORBIT",
+  "couplingIntensity": "High",
+  "parameters": {
+    "XOrphica": {
+      "couplingLevel": 0.546,
+      "couplingBus": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

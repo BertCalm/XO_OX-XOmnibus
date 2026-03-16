@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "DARK COLD VIOLENT DENSE F5",
+  "mood": "Flux",
+  "sonic_dna": {
+    "brightness": 0.044,
+    "warmth": 0.041,
+    "aggression": 0.929,
+    "movement": 0.518,
+    "density": 0.891,
+    "space": 0.542
+  },
+  "engines": [
+    "OUTWIT"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset \u2014 extreme dark brightness, extreme cold warmth, extreme violent aggression, extreme dense density. Maximum contrast character design.",
+  "tags": [
+    "dark",
+    "cold",
+    "aggressive",
+    "dense",
+    "flux",
+    "extreme"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Sync",
+  "dna": {
+    "brightness": 0.044,
+    "warmth": 0.041,
+    "movement": 0.518,
+    "density": 0.891,
+    "space": 0.542,
+    "aggression": 0.929
+  },
+  "parameters": {
+    "OUTWIT": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

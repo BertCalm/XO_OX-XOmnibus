@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "COLD INTIMATE KINETIC DARK 2",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "warmth": 0.0697,
+    "space": 0.0594,
+    "movement": 0.8902,
+    "brightness": 0.094,
+    "aggression": 0.5274,
+    "density": 0.4524
+  },
+  "dna": {
+    "warmth": 0.0697,
+    "space": 0.0594,
+    "movement": 0.8902,
+    "brightness": 0.094,
+    "aggression": 0.5274,
+    "density": 0.4524
+  },
+  "engines": [
+    "XObbligato"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 cold intimate kinetic dark. Designed for ECHO coupling with XObbligato.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "echo",
+    "obbligato"
+  ],
+  "macroLabels": [
+    "EXPANSE",
+    "EMBER",
+    "LUSTER",
+    "FLOW"
+  ],
+  "couplingType": "ECHO",
+  "couplingIntensity": "Extreme",
+  "parameters": {
+    "XObbligato": {
+      "couplingLevel": 0.556,
+      "couplingBus": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

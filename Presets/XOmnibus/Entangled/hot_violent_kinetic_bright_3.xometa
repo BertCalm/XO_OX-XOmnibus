@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "HOT VIOLENT KINETIC BRIGHT 3",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "warmth": 0.9293,
+    "aggression": 0.9541,
+    "movement": 0.9055,
+    "brightness": 0.8944,
+    "density": 0.5648,
+    "space": 0.5819
+  },
+  "dna": {
+    "warmth": 0.9293,
+    "aggression": 0.9541,
+    "movement": 0.9055,
+    "brightness": 0.8944,
+    "density": 0.5648,
+    "space": 0.5819
+  },
+  "engines": [
+    "XOptic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 hot violent kinetic bright. Designed for PULSE coupling with XOptic.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "pulse",
+    "optic"
+  ],
+  "macroLabels": [
+    "CRUSH",
+    "HEAT",
+    "SURGE",
+    "GLEAM"
+  ],
+  "couplingType": "PULSE",
+  "couplingIntensity": "High",
+  "parameters": {
+    "XOptic": {
+      "couplingLevel": 0.973,
+      "couplingBus": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

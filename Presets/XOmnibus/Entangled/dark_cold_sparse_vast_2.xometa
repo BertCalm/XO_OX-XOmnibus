@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "DARK COLD SPARSE VAST 2",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.0845,
+    "warmth": 0.098,
+    "density": 0.0895,
+    "space": 0.9205,
+    "aggression": 0.5468,
+    "movement": 0.5931
+  },
+  "dna": {
+    "brightness": 0.0845,
+    "warmth": 0.098,
+    "density": 0.0895,
+    "space": 0.9205,
+    "aggression": 0.5468,
+    "movement": 0.5931
+  },
+  "engines": [
+    "XOceanic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 dark cold sparse vast. Designed for PULSE coupling with XOceanic.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "pulse",
+    "oceanic"
+  ],
+  "macroLabels": [
+    "EXPANSE",
+    "LUSTER",
+    "LAYER",
+    "EMBER"
+  ],
+  "couplingType": "PULSE",
+  "couplingIntensity": "High",
+  "parameters": {
+    "XOceanic": {
+      "couplingLevel": 0.718,
+      "couplingBus": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

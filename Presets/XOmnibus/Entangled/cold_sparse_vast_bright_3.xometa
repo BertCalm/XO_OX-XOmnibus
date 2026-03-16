@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "COLD SPARSE VAST BRIGHT 3",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "warmth": 0.0983,
+    "density": 0.1032,
+    "space": 0.9443,
+    "brightness": 0.9061,
+    "aggression": 0.5604,
+    "movement": 0.4438
+  },
+  "dna": {
+    "warmth": 0.0983,
+    "density": 0.1032,
+    "space": 0.9443,
+    "brightness": 0.9061,
+    "aggression": 0.5604,
+    "movement": 0.4438
+  },
+  "engines": [
+    "XOrigami"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 cold sparse vast bright. Designed for SPARK coupling with XOrigami.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "spark",
+    "origami"
+  ],
+  "macroLabels": [
+    "EXPANSE",
+    "RADIANCE",
+    "GLOW",
+    "MASS"
+  ],
+  "couplingType": "SPARK",
+  "couplingIntensity": "Medium",
+  "parameters": {
+    "XOrigami": {
+      "couplingLevel": 0.952,
+      "couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

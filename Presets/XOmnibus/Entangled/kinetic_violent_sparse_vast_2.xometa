@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "KINETIC VIOLENT SPARSE VAST 2",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "movement": 0.9094,
+    "aggression": 0.9444,
+    "density": 0.0739,
+    "space": 0.9067,
+    "brightness": 0.488,
+    "warmth": 0.5427
+  },
+  "dna": {
+    "movement": 0.9094,
+    "aggression": 0.9444,
+    "density": 0.0739,
+    "space": 0.9067,
+    "brightness": 0.488,
+    "warmth": 0.5427
+  },
+  "engines": [
+    "XOverworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 kinetic violent sparse vast. Designed for MIRROR coupling with XOverworld.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "mirror",
+    "overworld"
+  ],
+  "macroLabels": [
+    "STRIKE",
+    "PACK",
+    "PULSE",
+    "EXPANSE"
+  ],
+  "couplingType": "MIRROR",
+  "couplingIntensity": "Medium",
+  "parameters": {
+    "XOverworld": {
+      "couplingLevel": 0.54,
+      "couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

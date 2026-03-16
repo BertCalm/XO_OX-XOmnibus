@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "HOT DENSE STATIC VIOLENT F3",
+  "mood": "Flux",
+  "sonic_dna": {
+    "brightness": 0.488,
+    "warmth": 0.928,
+    "aggression": 0.911,
+    "movement": 0.109,
+    "density": 0.946,
+    "space": 0.506
+  },
+  "engines": [
+    "OPAL"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset \u2014 extreme hot warmth, extreme violent aggression, extreme static movement, extreme dense density. Maximum contrast character design.",
+  "tags": [
+    "warm",
+    "aggressive",
+    "static",
+    "dense",
+    "flux",
+    "extreme"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Sync",
+  "dna": {
+    "brightness": 0.488,
+    "warmth": 0.928,
+    "movement": 0.109,
+    "density": 0.946,
+    "space": 0.506,
+    "aggression": 0.911
+  },
+  "parameters": {
+    "OPAL": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

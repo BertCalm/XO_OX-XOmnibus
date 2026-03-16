@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT COLD VIOLENT DENSE F5",
+  "mood": "Flux",
+  "sonic_dna": {
+    "brightness": 0.923,
+    "warmth": 0.054,
+    "aggression": 0.954,
+    "movement": 0.47,
+    "density": 0.947,
+    "space": 0.574
+  },
+  "engines": [
+    "OTTONI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset \u2014 extreme bright brightness, extreme cold warmth, extreme violent aggression, extreme dense density. Maximum contrast character design.",
+  "tags": [
+    "bright",
+    "cold",
+    "aggressive",
+    "dense",
+    "flux",
+    "extreme"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Temporal",
+  "dna": {
+    "brightness": 0.923,
+    "warmth": 0.054,
+    "movement": 0.47,
+    "density": 0.947,
+    "space": 0.574,
+    "aggression": 0.954
+  },
+  "parameters": {
+    "OTTONI": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

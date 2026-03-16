@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "DARK COLD SPARSE VAST 5",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.0904,
+    "warmth": 0.0742,
+    "density": 0.0931,
+    "space": 0.9383,
+    "aggression": 0.5292,
+    "movement": 0.4982
+  },
+  "dna": {
+    "brightness": 0.0904,
+    "warmth": 0.0742,
+    "density": 0.0931,
+    "space": 0.9383,
+    "aggression": 0.5292,
+    "movement": 0.4982
+  },
+  "engines": [
+    "XOblique"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 dark cold sparse vast. Designed for SURGE coupling with XOblique.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "surge",
+    "oblique"
+  ],
+  "macroLabels": [
+    "VOID",
+    "BURN",
+    "SHIMMER",
+    "LAYER"
+  ],
+  "couplingType": "SURGE",
+  "couplingIntensity": "Low",
+  "parameters": {
+    "XOblique": {
+      "couplingLevel": 0.846,
+      "couplingBus": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

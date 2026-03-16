@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "VIOLENT DENSE HOT INTIMATE 4",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "aggression": 0.9579,
+    "density": 0.9183,
+    "warmth": 0.926,
+    "space": 0.1092,
+    "brightness": 0.5315,
+    "movement": 0.5085
+  },
+  "dna": {
+    "aggression": 0.9579,
+    "density": 0.9183,
+    "warmth": 0.926,
+    "space": 0.1092,
+    "brightness": 0.5315,
+    "movement": 0.5085
+  },
+  "engines": [
+    "XOddFelix"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 violent dense hot intimate. Designed for PHASE coupling with XOddFelix.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "phase",
+    "oddfelix"
+  ],
+  "macroLabels": [
+    "IMPACT",
+    "GLOW",
+    "PRESS",
+    "FIELD"
+  ],
+  "couplingType": "PHASE",
+  "couplingIntensity": "Extreme",
+  "parameters": {
+    "XOddFelix": {
+      "couplingLevel": 0.811,
+      "couplingBus": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

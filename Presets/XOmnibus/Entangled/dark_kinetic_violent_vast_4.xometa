@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "DARK KINETIC VIOLENT VAST 4",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.0786,
+    "movement": 0.928,
+    "aggression": 0.9219,
+    "space": 0.9125,
+    "warmth": 0.4377,
+    "density": 0.5395
+  },
+  "dna": {
+    "brightness": 0.0786,
+    "movement": 0.928,
+    "aggression": 0.9219,
+    "space": 0.9125,
+    "warmth": 0.4377,
+    "density": 0.5395
+  },
+  "engines": [
+    "XObese"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 dark kinetic violent vast. Designed for ORBIT coupling with XObese.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "orbit",
+    "obese"
+  ],
+  "macroLabels": [
+    "SURGE",
+    "CRUSH",
+    "GLEAM",
+    "FIELD"
+  ],
+  "couplingType": "ORBIT",
+  "couplingIntensity": "Extreme",
+  "parameters": {
+    "XObese": {
+      "couplingLevel": 0.872,
+      "couplingBus": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

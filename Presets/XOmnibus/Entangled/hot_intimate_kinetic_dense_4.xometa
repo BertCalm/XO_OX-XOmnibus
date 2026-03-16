@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "HOT INTIMATE KINETIC DENSE 4",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "warmth": 0.8968,
+    "space": 0.0917,
+    "movement": 0.9468,
+    "density": 0.9289,
+    "brightness": 0.5173,
+    "aggression": 0.5123
+  },
+  "dna": {
+    "warmth": 0.8968,
+    "space": 0.0917,
+    "movement": 0.9468,
+    "density": 0.9289,
+    "brightness": 0.5173,
+    "aggression": 0.5123
+  },
+  "engines": [
+    "XOrca"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 hot intimate kinetic dense. Designed for ECHO coupling with XOrca.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "echo",
+    "orca"
+  ],
+  "macroLabels": [
+    "FLOW",
+    "LAYER",
+    "FIELD",
+    "EMBER"
+  ],
+  "couplingType": "ECHO",
+  "couplingIntensity": "High",
+  "parameters": {
+    "XOrca": {
+      "couplingLevel": 0.934,
+      "couplingBus": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

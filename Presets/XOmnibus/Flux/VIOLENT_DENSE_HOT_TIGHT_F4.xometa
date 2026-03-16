@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "VIOLENT DENSE HOT TIGHT F4",
+  "mood": "Flux",
+  "sonic_dna": {
+    "brightness": 0.556,
+    "warmth": 0.901,
+    "aggression": 0.912,
+    "movement": 0.516,
+    "density": 0.955,
+    "space": 0.08
+  },
+  "engines": [
+    "OBESE"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset \u2014 extreme hot warmth, extreme violent aggression, extreme dense density, extreme tight space. Maximum contrast character design.",
+  "tags": [
+    "warm",
+    "aggressive",
+    "dense",
+    "tight",
+    "flux",
+    "extreme"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Temporal",
+  "dna": {
+    "brightness": 0.556,
+    "warmth": 0.901,
+    "movement": 0.516,
+    "density": 0.955,
+    "space": 0.08,
+    "aggression": 0.912
+  },
+  "parameters": {
+    "OBESE": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

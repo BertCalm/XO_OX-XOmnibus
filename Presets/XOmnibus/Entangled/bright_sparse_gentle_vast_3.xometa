@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT SPARSE GENTLE VAST 3",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.9195,
+    "density": 0.0595,
+    "aggression": 0.0575,
+    "space": 0.9546,
+    "warmth": 0.4886,
+    "movement": 0.5723
+  },
+  "dna": {
+    "brightness": 0.9195,
+    "density": 0.0595,
+    "aggression": 0.0575,
+    "space": 0.9546,
+    "warmth": 0.4886,
+    "movement": 0.5723
+  },
+  "engines": [
+    "XOceanic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 bright sparse gentle vast. Designed for MIRROR coupling with XOceanic.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "mirror",
+    "oceanic"
+  ],
+  "macroLabels": [
+    "VOID",
+    "SHRED",
+    "MASS",
+    "GLEAM"
+  ],
+  "couplingType": "MIRROR",
+  "couplingIntensity": "Low",
+  "parameters": {
+    "XOceanic": {
+      "couplingLevel": 0.963,
+      "couplingBus": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

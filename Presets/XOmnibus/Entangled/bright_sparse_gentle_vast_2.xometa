@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT SPARSE GENTLE VAST 2",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.941,
+    "density": 0.0871,
+    "aggression": 0.1089,
+    "space": 0.8969,
+    "warmth": 0.4805,
+    "movement": 0.4679
+  },
+  "dna": {
+    "brightness": 0.941,
+    "density": 0.0871,
+    "aggression": 0.1089,
+    "space": 0.8969,
+    "warmth": 0.4805,
+    "movement": 0.4679
+  },
+  "engines": [
+    "XObscura"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 bright sparse gentle vast. Designed for WEAVE coupling with XObscura.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "weave",
+    "obscura"
+  ],
+  "macroLabels": [
+    "SHIMMER",
+    "WEIGHT",
+    "OPEN",
+    "SHRED"
+  ],
+  "couplingType": "WEAVE",
+  "couplingIntensity": "Low",
+  "parameters": {
+    "XObscura": {
+      "couplingLevel": 0.724,
+      "couplingBus": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

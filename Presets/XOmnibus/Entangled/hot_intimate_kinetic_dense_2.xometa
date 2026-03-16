@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "HOT INTIMATE KINETIC DENSE 2",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "warmth": 0.9318,
+    "space": 0.0606,
+    "movement": 0.9254,
+    "density": 0.9201,
+    "brightness": 0.5586,
+    "aggression": 0.4229
+  },
+  "dna": {
+    "warmth": 0.9318,
+    "space": 0.0606,
+    "movement": 0.9254,
+    "density": 0.9201,
+    "brightness": 0.5586,
+    "aggression": 0.4229
+  },
+  "engines": [
+    "XOle"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 hot intimate kinetic dense. Designed for DRIFT coupling with XOle.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "drift",
+    "ole"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "EMBER",
+    "SURGE",
+    "LAYER"
+  ],
+  "couplingType": "DRIFT",
+  "couplingIntensity": "Medium",
+  "parameters": {
+    "XOle": {
+      "couplingLevel": 0.669,
+      "couplingBus": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT STATIC VAST SPARSE F4",
+  "mood": "Flux",
+  "sonic_dna": {
+    "brightness": 0.903,
+    "warmth": 0.448,
+    "aggression": 0.481,
+    "movement": 0.079,
+    "density": 0.057,
+    "space": 0.923
+  },
+  "engines": [
+    "ORPHICA"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset \u2014 extreme bright brightness, extreme static movement, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "tags": [
+    "bright",
+    "static",
+    "sparse",
+    "vast",
+    "flux",
+    "extreme"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.903,
+    "warmth": 0.448,
+    "movement": 0.079,
+    "density": 0.057,
+    "space": 0.923,
+    "aggression": 0.481
+  },
+  "parameters": {
+    "ORPHICA": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

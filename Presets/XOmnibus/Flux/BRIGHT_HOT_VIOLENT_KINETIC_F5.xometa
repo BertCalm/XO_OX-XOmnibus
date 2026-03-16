@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT HOT VIOLENT KINETIC F5",
+  "mood": "Flux",
+  "sonic_dna": {
+    "brightness": 0.949,
+    "warmth": 0.928,
+    "aggression": 0.941,
+    "movement": 0.946,
+    "density": 0.58,
+    "space": 0.498
+  },
+  "engines": [
+    "OVERDUB"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset \u2014 extreme bright brightness, extreme hot warmth, extreme violent aggression, extreme kinetic movement. Maximum contrast character design.",
+  "tags": [
+    "bright",
+    "warm",
+    "aggressive",
+    "kinetic",
+    "flux",
+    "extreme"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Timbral",
+  "dna": {
+    "brightness": 0.949,
+    "warmth": 0.928,
+    "movement": 0.946,
+    "density": 0.58,
+    "space": 0.498,
+    "aggression": 0.941
+  },
+  "parameters": {
+    "OVERDUB": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

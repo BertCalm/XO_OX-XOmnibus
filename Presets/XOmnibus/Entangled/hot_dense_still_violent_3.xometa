@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "HOT DENSE STILL VIOLENT 3",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "warmth": 0.9043,
+    "density": 0.9401,
+    "movement": 0.0567,
+    "aggression": 0.9177,
+    "brightness": 0.5343,
+    "space": 0.46
+  },
+  "dna": {
+    "warmth": 0.9043,
+    "density": 0.9401,
+    "movement": 0.0567,
+    "aggression": 0.9177,
+    "brightness": 0.5343,
+    "space": 0.46
+  },
+  "engines": [
+    "XOsteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 hot dense still violent. Designed for SPARK coupling with XOsteria.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "spark",
+    "osteria"
+  ],
+  "macroLabels": [
+    "FLOW",
+    "MASS",
+    "CRUSH",
+    "FORGE"
+  ],
+  "couplingType": "SPARK",
+  "couplingIntensity": "High",
+  "parameters": {
+    "XOsteria": {
+      "couplingLevel": 0.999,
+      "couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

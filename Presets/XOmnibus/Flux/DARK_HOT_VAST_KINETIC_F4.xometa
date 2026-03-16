@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "DARK HOT VAST KINETIC F4",
+  "mood": "Flux",
+  "sonic_dna": {
+    "brightness": 0.064,
+    "warmth": 0.945,
+    "aggression": 0.487,
+    "movement": 0.959,
+    "density": 0.423,
+    "space": 0.953
+  },
+  "engines": [
+    "OVERLAP"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset \u2014 extreme dark brightness, extreme hot warmth, extreme kinetic movement, extreme vast space. Maximum contrast character design.",
+  "tags": [
+    "dark",
+    "warm",
+    "kinetic",
+    "vast",
+    "flux",
+    "extreme"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Temporal",
+  "dna": {
+    "brightness": 0.064,
+    "warmth": 0.945,
+    "movement": 0.959,
+    "density": 0.423,
+    "space": 0.953,
+    "aggression": 0.487
+  },
+  "parameters": {
+    "OVERLAP": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

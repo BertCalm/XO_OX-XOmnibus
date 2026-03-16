@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT SPARSE GENTLE VAST F3",
+  "mood": "Flux",
+  "sonic_dna": {
+    "brightness": 0.95,
+    "warmth": 0.481,
+    "aggression": 0.106,
+    "movement": 0.514,
+    "density": 0.081,
+    "space": 0.893
+  },
+  "engines": [
+    "OVERLAP"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset \u2014 extreme bright brightness, extreme gentle aggression, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "tags": [
+    "bright",
+    "gentle",
+    "sparse",
+    "vast",
+    "flux",
+    "extreme"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Spatial",
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.481,
+    "movement": 0.514,
+    "density": 0.081,
+    "space": 0.893,
+    "aggression": 0.106
+  },
+  "parameters": {
+    "OVERLAP": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

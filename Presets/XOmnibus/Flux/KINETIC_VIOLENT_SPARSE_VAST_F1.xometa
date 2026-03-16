@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "KINETIC VIOLENT SPARSE VAST F1",
+  "mood": "Flux",
+  "sonic_dna": {
+    "brightness": 0.588,
+    "warmth": 0.547,
+    "aggression": 0.904,
+    "movement": 0.92,
+    "density": 0.106,
+    "space": 0.954
+  },
+  "engines": [
+    "OPTIC"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset \u2014 extreme violent aggression, extreme kinetic movement, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "tags": [
+    "aggressive",
+    "kinetic",
+    "sparse",
+    "vast",
+    "flux",
+    "extreme"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Chaotic",
+  "dna": {
+    "brightness": 0.588,
+    "warmth": 0.547,
+    "movement": 0.92,
+    "density": 0.106,
+    "space": 0.954,
+    "aggression": 0.904
+  },
+  "parameters": {
+    "OPTIC": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

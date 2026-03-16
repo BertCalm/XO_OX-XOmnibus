@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT STATIC VAST SPARSE F1",
+  "mood": "Flux",
+  "sonic_dna": {
+    "brightness": 0.907,
+    "warmth": 0.587,
+    "aggression": 0.456,
+    "movement": 0.072,
+    "density": 0.093,
+    "space": 0.93
+  },
+  "engines": [
+    "OTTONI"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset \u2014 extreme bright brightness, extreme static movement, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "tags": [
+    "bright",
+    "static",
+    "sparse",
+    "vast",
+    "flux",
+    "extreme"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Spectral",
+  "dna": {
+    "brightness": 0.907,
+    "warmth": 0.587,
+    "movement": 0.072,
+    "density": 0.093,
+    "space": 0.93,
+    "aggression": 0.456
+  },
+  "parameters": {
+    "OTTONI": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

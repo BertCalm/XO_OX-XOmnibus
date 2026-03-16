@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "KINETIC VIOLENT SPARSE VAST 1",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "movement": 0.9524,
+    "aggression": 0.9329,
+    "density": 0.0903,
+    "space": 0.9253,
+    "brightness": 0.5661,
+    "warmth": 0.5096
+  },
+  "dna": {
+    "movement": 0.9524,
+    "aggression": 0.9329,
+    "density": 0.0903,
+    "space": 0.9253,
+    "brightness": 0.5661,
+    "warmth": 0.5096
+  },
+  "engines": [
+    "XOnset"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 kinetic violent sparse vast. Designed for WEAVE coupling with XOnset.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "weave",
+    "onset"
+  ],
+  "macroLabels": [
+    "DRIFT",
+    "CRUSH",
+    "FIELD",
+    "WEIGHT"
+  ],
+  "couplingType": "WEAVE",
+  "couplingIntensity": "Medium",
+  "parameters": {
+    "XOnset": {
+      "couplingLevel": 0.92,
+      "couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

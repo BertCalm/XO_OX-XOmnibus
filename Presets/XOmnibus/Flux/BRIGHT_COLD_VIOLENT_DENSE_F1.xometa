@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT COLD VIOLENT DENSE F1",
+  "mood": "Flux",
+  "sonic_dna": {
+    "brightness": 0.938,
+    "warmth": 0.087,
+    "aggression": 0.915,
+    "movement": 0.512,
+    "density": 0.951,
+    "space": 0.595
+  },
+  "engines": [
+    "OUROBOROS"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset \u2014 extreme bright brightness, extreme cold warmth, extreme violent aggression, extreme dense density. Maximum contrast character design.",
+  "tags": [
+    "bright",
+    "cold",
+    "aggressive",
+    "dense",
+    "flux",
+    "extreme"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Harmonic",
+  "dna": {
+    "brightness": 0.938,
+    "warmth": 0.087,
+    "movement": 0.512,
+    "density": 0.951,
+    "space": 0.595,
+    "aggression": 0.915
+  },
+  "parameters": {
+    "OUROBOROS": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

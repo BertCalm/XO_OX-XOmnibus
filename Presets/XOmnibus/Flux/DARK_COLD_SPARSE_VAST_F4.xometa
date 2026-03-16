@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "DARK COLD SPARSE VAST F4",
+  "mood": "Flux",
+  "sonic_dna": {
+    "brightness": 0.071,
+    "warmth": 0.051,
+    "aggression": 0.572,
+    "movement": 0.49,
+    "density": 0.093,
+    "space": 0.949
+  },
+  "engines": [
+    "OBSIDIAN"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Flux preset \u2014 extreme dark brightness, extreme cold warmth, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "tags": [
+    "dark",
+    "cold",
+    "sparse",
+    "vast",
+    "flux",
+    "extreme"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "couplingIntensity": "Timbral",
+  "dna": {
+    "brightness": 0.071,
+    "warmth": 0.051,
+    "movement": 0.49,
+    "density": 0.093,
+    "space": 0.949,
+    "aggression": 0.572
+  },
+  "parameters": {
+    "OBSIDIAN": {}
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

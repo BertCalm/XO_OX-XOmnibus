@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT HOT KINETIC DENSE 1",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.9274,
+    "warmth": 0.9071,
+    "movement": 0.9224,
+    "density": 0.9089,
+    "aggression": 0.5851,
+    "space": 0.5376
+  },
+  "dna": {
+    "brightness": 0.9274,
+    "warmth": 0.9071,
+    "movement": 0.9224,
+    "density": 0.9089,
+    "aggression": 0.5851,
+    "space": 0.5376
+  },
+  "engines": [
+    "XObese"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 bright hot kinetic dense. Designed for MIRROR coupling with XObese.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "mirror",
+    "obese"
+  ],
+  "macroLabels": [
+    "RADIANCE",
+    "FLOW",
+    "WEIGHT",
+    "HEAT"
+  ],
+  "couplingType": "MIRROR",
+  "couplingIntensity": "Medium",
+  "parameters": {
+    "XObese": {
+      "couplingLevel": 0.903,
+      "couplingBus": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

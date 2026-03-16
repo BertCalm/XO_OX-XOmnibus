@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT HOT KINETIC DENSE 3",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "brightness": 0.9421,
+    "warmth": 0.9277,
+    "movement": 0.9423,
+    "density": 0.92,
+    "aggression": 0.5167,
+    "space": 0.4724
+  },
+  "dna": {
+    "brightness": 0.9421,
+    "warmth": 0.9277,
+    "movement": 0.9423,
+    "density": 0.92,
+    "aggression": 0.5167,
+    "space": 0.4724
+  },
+  "engines": [
+    "XOverworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 bright hot kinetic dense. Designed for TANGLE coupling with XOverworld.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "tangle",
+    "overworld"
+  ],
+  "macroLabels": [
+    "SWEEP",
+    "FLARE",
+    "HEAT",
+    "MASS"
+  ],
+  "couplingType": "TANGLE",
+  "couplingIntensity": "Medium",
+  "parameters": {
+    "XOverworld": {
+      "couplingLevel": 0.931,
+      "couplingBus": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

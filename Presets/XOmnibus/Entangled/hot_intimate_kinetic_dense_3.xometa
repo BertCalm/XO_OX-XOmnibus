@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "HOT INTIMATE KINETIC DENSE 3",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "warmth": 0.9217,
+    "space": 0.0691,
+    "movement": 0.8967,
+    "density": 0.9199,
+    "brightness": 0.533,
+    "aggression": 0.4749
+  },
+  "dna": {
+    "warmth": 0.9217,
+    "space": 0.0691,
+    "movement": 0.8967,
+    "density": 0.9199,
+    "brightness": 0.533,
+    "aggression": 0.4749
+  },
+  "engines": [
+    "XOmbre"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-diverse Entangled preset \u2014 hot intimate kinetic dense. Designed for ORBIT coupling with XOmbre.",
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "orbit",
+    "ombre"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "HEAT",
+    "MASS",
+    "FLOW"
+  ],
+  "couplingType": "ORBIT",
+  "couplingIntensity": "Medium",
+  "parameters": {
+    "XOmbre": {
+      "couplingLevel": 0.547,
+      "couplingBus": 3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}
