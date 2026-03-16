@@ -1,184 +1,99 @@
-# XO_OX Social Media Strategy — R&D Spec
-**Version**: 0.1
-**Date**: 2026-03-16
-**Status**: Draft
-**Scope**: Pack launches + ongoing brand presence across primary platforms
+# XO_OX Expansion Pack — Social Media Strategy R&D Spec
+**Date:** 2026-03-16
+**Status:** Draft
+**Scope:** Platform strategy, content pillars, cadence, and measurement for XPN expansion pack promotion
 
 ---
 
-## 1. Platform Priorities
+## 1. Platform Strategy
 
-### 1.1 Twitter/X — Primary Channel
-**Role**: Real-time community hub. MPC producers live here.
-**Posting cadence**: 3–5x/week during active release cycles; 1–2x/week baseline.
-**Content mix**: Short audio/video clips (15–30s), text threads on sound design, pack announcements, Field Guide link drops.
-**Why it works**: The MPC community on Twitter is tight-knit and technically engaged. Short clips autoplay. Threads let you explain craft without losing the casual scroll reader.
-**Account targets to follow before launch**: MPC beat makers, Akai official, sample pack reviewers, producers who post workflow content.
-**Key constraint**: First 30 words carry the post. Caption must land before the fold.
+**Instagram** is the primary brand platform. The visual language of XO_OX — deep ocean color palettes, creature mythology, cover art — translates directly to feed and Reels. Priority content: beat-on-pad videos showing hands playing a specific pack, cover art reveals with minimal copy, and DNA bar visualizations that make synthesis tangible. Instagram is where the brand lives aesthetically. Every post should feel like it belongs in the same world.
 
-### 1.2 Instagram — Visual Channel
-**Role**: Cover art, UI screenshots, "made with XO_OX" reposts, engine identity cards.
-**Posting cadence**: 2–3x/week, heavier during launch weeks.
-**Content mix**: Static cover art, Reels (30–60s demos), engine spotlight cards, community reposts.
-**Why it works**: Instagram is where pack artwork earns shelf presence. The aquatic mythology visual system and engine identity cards are native Instagram content — bold, iconic, self-explanatory.
-**Key constraint**: Audio on Reels is discoverable but autoplay is muted. Open with a visual hook in the first 2 seconds. Caption should function without audio.
+**TikTok** is the discovery engine. The format is short, direct, and hook-first. The winning angle: "This sound was made with one MPC preset." No DAW plugins, no sample chops — just an XPN preset doing the work. Quick tips for MPC producers (not pack promotions) build algorithmic reach. The pack mention is the payoff at the end, not the premise.
 
-### 1.3 YouTube — Primary SEO Channel
-**Role**: Long-form tutorials, deep dives, engine walkthroughs. Primary search-discoverability asset.
-**Posting cadence**: 2x/month minimum. Quality over volume.
-**Content types**:
-- Engine deep dive (8–15 min): one engine, its character, 3–5 presets explored with context
-- Pack walkthrough (5–10 min): all packs in a release, best presets, XPN workflow
-- "How it was designed" (5–8 min): behind the scenes of DSP decisions — plain language
-- Field Guide video edition: spoken version of a published post
-**Why it works**: "XO_OX OPAL granular walkthrough" is a searchable asset that compounds over time. Twitter content decays in 48 hours. YouTube content earns views for years.
-**Key constraint**: Thumbnail and title carry 90% of the click. Spend real time on both.
+**YouTube** is long-form authority. Pack walkthroughs that show every key group in context. Behind-the-scenes on pack design decisions. "How we designed the OBLONG bass engine" with actual synthesis explanation. YouTube content has long shelf life and drives conversion from producers who want to understand before they buy. One 8-12 minute walkthrough per pack release is a realistic and high-value target.
 
-### 1.4 TikTok — Optional, Low Priority (V1)
-**Role**: "60 seconds with [engine]" format. Reach outside the existing MPC community.
-**Posting cadence**: Opportunistic. Repurpose Twitter/Instagram Reels content.
-**Rationale for low priority**: The XO_OX audience is experienced producers, not casual music app browsers. TikTok discovery skews toward novelty, not craft depth. Revisit after V1 ships with data.
-**If activated**: Engine name + 1-sentence character description as text overlay. Let the sound play. End with "XO-OX.org" on screen.
+**Twitter/X** is daily, informal, and conversational. Announcements, stray thoughts on synthesis, reactions to MPC firmware updates, replies to producers. This is the lowest editorial bar — it is fine to be unpolished here. The goal is presence and responsiveness, not reach.
 
-### 1.5 r/mpc — Community Participation
-**Role**: Earn presence in the community before any promotion. Participate, don't broadcast.
-**Pre-launch protocol**: 3 weeks of genuine participation — answer questions, share tips, comment on other people's work — before any XO_OX post.
-**What to post**: "Made something with the new XO_OX pack" from a community member is worth 10x a brand post. Encourage and share those.
-**What not to do**: Never open with a sales post. Never cross-post launch content without context. The MPC Reddit community has a low tolerance for cold promotion.
-**Posting cadence**: As relevant, never forced.
+**Reddit** (r/makinghiphop, r/akai) requires a different posture entirely. The communities are sharp and immediately detect promotional intent. The rule: share value first, mention packs second — or not at all. A post explaining how MPCe quad corners interact with XPN keygroup structure, with no pack link, builds more long-term trust than any launch post. Packs get mentioned only when directly relevant to a question being answered. Two high-value posts per month is the right cadence. More is diminishing returns.
 
 ---
 
-## 2. Content Types and Formats
+## 2. Content Pillars
 
-### 2.1 Pack Launch Post
-**Format**: 1 video clip (15–30s of the pack playing in-context), cover art frame, Gumroad link.
-**Caption structure**:
-1. Opening hook — describe the sound experience, not the feature list
-2. 2–3 sentences on what makes this pack distinct (engine character, design intent)
-3. Price + link
-4. 2–3 targeted hashtags (not a wall of tags)
+Four recurring types anchor the calendar and prevent content entropy.
 
-**Example hook (not for use verbatim)**: "This one is built around a jellyfish that never repeats. 150 presets of FDN reverb gone feral."
+**The Sound Post** is 15-30 seconds of a beat featuring a specific preset, with the engine name and a drop date. "This bassline is OBLONG — pack drops Friday." No explanation needed. Let the sound do the work. Pair with vertical video of hands on pads whenever possible.
 
-### 2.2 Engine Spotlight
-**Format**: 60s demo of a single preset. No talking. Let the sound develop naturally.
-**Caption structure**: Engine name, one-sentence character description, the specific preset name, 1–2 sentences on why this preset represents the engine's soul.
-**Cadence**: 1 per week during non-launch periods. Builds catalog awareness between releases.
-**Cross-platform**: Post natively to Twitter, Instagram Reels, and YouTube Shorts simultaneously.
+**The Mythology Post** is the deep cut. An engine's aquatic creature archetype, the historical gear it references, why those choices were made together. The Lion's Mane jellyfish and knot-topology reverb is a real design decision, not decoration — tell that story. These posts attract producers who become evangelists, not just buyers.
 
-### 2.3 "Made with XO_OX" Reposts
-**Protocol**:
-1. DM the creator first — ask permission and confirm how they want to be credited
-2. Repost with their handle tagged prominently
-3. Caption describes what you hear, not what you sold them
-4. Never repost without permission
-**Why this matters**: Community-created content is the most credible signal XO_OX can have. A producer posting "this pack made me finish a beat I've been stuck on" is the entire value proposition, stated by a peer.
+**The Process Post** is raw and unpolished on purpose. A design decision that got made, a preset that did not work and why, a parameter that was cut late. This is the content that makes XO_OX feel like a real creative practice and not a product catalog. Authenticity is the differentiator here.
 
-### 2.4 Behind the Scenes
-**Format**: Screenshot of the XPN tool, JUCE editor, or DAW session. Brief caption.
-**Caption structure**: 1–2 sentences on what the screenshot shows, 1 sentence on why that decision was made.
-**Purpose**: Builds trust with technically literate producers. Shows craft. Differentiates XO_OX from sample packs assembled without intent.
-**Frequency**: 1–2x/month. Not every release. Reserve for genuinely interesting design moments.
-
-### 2.5 Field Guide Cross-Post
-**Format**: Title card with post title + key pull quote + link to XO-OX.org/guide.
-**Caption**: The single most interesting sentence from the post. Don't summarize — tease.
-**Cadence**: Every published Field Guide post gets a social cross-post within 48 hours of publication.
+**The Education Post** is deliberately not about XO_OX. Quick tips for MPC producers in general — workflow, sequencing, sampling technique. Building authority outside the brand expands the audience that eventually encounters the packs. The ratio should feel like you are giving more than you are selling.
 
 ---
 
-## 3. Launch Week Content Calendar
+## 3. Cadence
 
-A repeatable template for every new pack release. Adapt timing to day-of-week data once baseline is established (expect Tuesday–Thursday to outperform weekends for this audience).
+| Platform | Frequency | Content Mix |
+|----------|-----------|-------------|
+| Instagram | 4x/week | 2 Sound Posts + 1 Mythology + 1 Education |
+| TikTok | 3x/week | 3 quick tips or sound demos |
+| Twitter/X | Daily | Informal — low editorial overhead |
+| Reddit | 2x/month | High-value posts only |
 
-| Day | Content | Platform | Notes |
-|-----|---------|----------|-------|
-| Day -7 | Teaser — cover art only, no audio | Twitter, Instagram | No price reveal. Let the art speak. Caption: engine name + 1 evocative line. |
-| Day -3 | 30s audio preview clip | Twitter, Instagram, YouTube Shorts | No context overload. Let the sound carry it. Caption: "Three days." |
-| Day -1 | "Tomorrow" post with price reveal | Twitter, Instagram | Price + Gumroad URL drop at end of caption. "Ships tomorrow." |
-| Day 0 | Full launch post: link + 3 best presets demo | All platforms | Lead with the best 15s clip. Full caption with design intent. Pin to profile. |
-| Day +3 | "First week" stats post | Twitter | Optional: sales count, community highlight, a quote from a buyer. Keep it brief. |
-| Day +7 | Community challenge announcement | Twitter, r/mpc | "Make something with [pack], post it, tag XO_OX." No prize necessary — recognition is enough. |
-
-**Notes on Day 0 execution**: Post at a consistent time. 10am–noon EST has historically performed for music production content. Schedule Day -7, -3, -1 in advance. Post Day 0 manually to respond to comments in real time.
+This cadence is sustainable without a dedicated social team. Instagram and TikTok content can often be produced in the same session — shoot the hands-on-pads video once, cut for both platforms.
 
 ---
 
-## 4. Voice and Tone
+## 4. Pre-Launch / Launch / Long-Tail
 
-### 4.1 Technical but Not Dry
-Explain the WHY behind sound design decisions. Producers who buy XO_OX packs are curious about craft. A sentence like "the resonance sweeps toward the body, not away from it — that's why it feels like pressure instead of brightness" earns more trust than "32 filters included."
+**Pre-launch (2 weeks out):** Sound clips only, no explicit pack mention. "Something is coming" energy without the announcement. This builds curiosity without triggering the skip reflex that comes with promotional content. The mythology and process posts during this window do the contextual setup.
 
-### 4.2 Enthusiastic but Not Hype
-Let the sounds do the work. The caption's job is to explain what you're hearing and why it was designed that way — not to amplify excitement with superlatives. Avoid: "insane," "fire," "goes hard." Use: specific, concrete, honest description.
+**Launch week:** 2x daily across all active platforms. Link in bio updated. YouTube walkthrough drops on launch day. Reddit post in r/akai with genuine context and a link — one post, done. The volume is high this week; the quality floor stays the same.
 
-### 4.3 Character Over Specs
-XO_OX engines have identities — aquatic creatures, mythologies, physical behaviors. Lean into those. "OPAL is a granular engine that behaves like a Portuguese Man O' War — colonies of micro-grains doing something none of them could do alone" is more memorable and more useful than "150 granular presets with 6 macro controls."
-
-### 4.4 Consistency Across Platforms
-The voice stays the same across Twitter, Instagram, and YouTube. The format changes. The character doesn't. When in doubt: write how you'd explain it to a producer you respect, not an audience you're trying to impress.
+**Long-tail (months 2-6):** One Sound Post per pack per month keeps the catalog visible. New producers are always entering the MPC ecosystem and encountering XO_OX for the first time. A pack from six months ago is new to them. The back-catalog is always alive if it keeps appearing in feeds.
 
 ---
 
-## 5. Engagement Tactics
+## 5. MPCe Content Opportunity
 
-### 5.1 First 24 Hours
-Respond to every comment in the first 24 hours of a post. Not with filler — with something that advances the conversation. If someone asks a technical question, answer it fully. If someone shares a beat, listen to it and say something specific.
+XO_OX is positioned as the authority on MPCe-native pack design. This is a specific, ownable angle. No one else is explaining MPCe quad corners, velocity response curves, and keygroup architecture at this level of detail and then shipping packs built around those exact features.
 
-### 5.2 Ask Questions That Work
-Bad: "What do you think?"
-Good: "What would you layer this with?"
-Good: "Which engine would you pair this with for a full kit?"
-Good: "What's missing from your current sample library that a pack like this could fill?"
+An educational series — "Here's what MPCe quad corners actually do" — builds that authority through utility. Each installment explains one feature of MPCe-native design without mentioning packs. The series conclusion is: "This is why XO_OX packs are built the way they are." The teaching earns the positioning. The positioning converts.
 
-The goal is conversation, not engagement farming. Ask questions you're genuinely curious about the answers to.
-
-### 5.3 Pre-Launch Community Warm-Up
-3 weeks before first launch: follow and genuinely engage with 20–30 MPC-focused accounts. Comment on their work. Share non-XO_OX tips. Be a participant in the community before asking it to pay attention to a launch.
-
-Accounts to prioritize: working beatmakers who post regularly, MPC workflow educators, producers who already mention sample packs.
-
-### 5.4 Engine Identity Cards as Engagement Assets
-The 18 engine identity cards (aquatic mythology system) are ready-made engagement content. Post one per week during slow periods. Ask: "Which XO_OX creature sounds most like your music?" Identity content generates more genuine interaction than product content.
+Every MPCe tip also works as evergreen content. A tutorial on velocity curve behavior from 2026 will still be relevant when OS updates ship. That shelf life is the compounding advantage of education-first content over promotional content.
 
 ---
 
-## 6. Metrics
+## 6. Metrics to Track
 
-### 6.1 Primary Metrics (Track Per Pack Launch)
-| Metric | What it measures | Target (V1 baseline) |
-|--------|-----------------|----------------------|
-| Impressions per launch post | Reach of the announcement | Establish baseline; optimize from there |
-| Gumroad click-through rate | Social → product page conversion | >3% of impressions |
-| Conversion rate: social vs. organic | Which channel drives buyers | Compare Gumroad referral source data |
-| Comment engagement rate | Community response quality | Track qualitative + quantitative |
+**Instagram:** Reach is the vanity metric. Saves are the real signal for pack interest — a save means a producer plans to return. Profile visits to link-in-bio track conversion intent.
 
-### 6.2 Secondary Metrics (Track Monthly)
-- YouTube subscriber growth rate
-- Twitter follower growth (net, not gross)
-- "Made with XO_OX" posts from community (count per month)
-- Field Guide referral traffic (from social → XO-OX.org/guide)
+**TikTok:** Completion rate is the algorithm signal. A video that gets watched to the end gets pushed to more feeds. Follows per video tracks whether tips are building an audience, not just views.
 
-### 6.3 What Not to Optimize For
-- Raw follower count — vanity metric at this stage
-- Like counts on individual posts — engagement rate is more signal
-- Repost/share counts without context — a repost from a bot is noise
+**YouTube:** Watch time and click-through rate from video to pack link. A 6-minute average watch time on a 10-minute walkthrough is a strong signal that the audience is engaged and evaluating.
 
-### 6.4 Review Cadence
-- Post-launch review: 7 days after each pack release. What performed, what didn't.
-- Monthly review: channel health, content mix balance, community sentiment.
-- Quarterly: platform priority re-evaluation. If TikTok is driving measurable conversions, revisit its priority tier.
+**Conversion:** Gumroad downloads tracked per platform via UTM parameters. This is the number that matters. Every platform strategy should have a clear path from post to purchase, and UTM params make that path visible.
+
+| Platform | Primary Signal | Secondary Signal | Conversion Proxy |
+|----------|---------------|-----------------|-----------------|
+| Instagram | Saves | Profile visits | Link-in-bio clicks |
+| TikTok | Completion rate | Follows per video | Link-in-bio clicks |
+| YouTube | Watch time | CTR to pack link | Direct Gumroad referral |
+| Reddit | Upvotes + comments | DMs | UTM-tagged pack link |
 
 ---
 
-## 7. Open Questions and V1 Constraints
+## 7. Brand Voice Guidelines
 
-- **No paid advertising at V1**: All reach is organic. Revisit after the first 3 pack launches provide baseline conversion data.
-- **Single-operator execution**: This strategy is designed for one person to execute. If volume targets feel unsustainable, cut cadence before cutting quality.
-- **TikTok activation trigger**: If a Twitter clip organically hits >10K views, repurpose it to TikTok immediately. Use that as the test case before committing to a TikTok presence.
-- **r/mpc timing**: Soft-launch the community participation protocol 4 weeks before first launch, not 3. Buffer for slow-start weeks.
+Confident but not salesy. XO_OX has something worth hearing — it does not need to push.
 
----
+Technical when relevant, accessible always. Never synthesizer gatekeeping. The goal is to make the engineering legible to producers who think in sound, not in parameters. "The reverb is modeled on knot topology" is a legitimate sentence. "The all-pass diffusion network uses a Schroeder topology with feedback gain tuned to 0.7" is not an Instagram caption.
 
-*R&D spec. Subject to revision after first launch cycle.*
+The mythology and aquatic creatures are treated seriously. The Lion's Mane jellyfish is not a cute mascot — it is the conceptual origin of a reverb architecture. The OBLONG bass is not named after an adjective — it is named after a character instrument with a defined sonic identity. That distinction is the difference between brand depth and brand decoration.
+
+Short sentences. Clean cuts. Three hashtags maximum per post, chosen for discoverability not comprehensiveness. The copy should sound like a producer who knows exactly what they made and is not explaining themselves.
+
+**Do:** "ONSET. Eight voices. One pad. Drop Friday."
+**Do not:** "We're so excited to announce that our incredible ONSET drum engine expansion pack is finally here and it features eight synthesis voices including kick, snare, hi-hat..."
