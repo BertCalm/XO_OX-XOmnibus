@@ -1,0 +1,39 @@
+{
+  "name": "Porto Voyage",
+  "version": "1.0",
+  "engines": [
+    "ODYSSEY",
+    "OSTERIA"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.6,
+    "SPACE": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.49,
+    "warmth": 0.6,
+    "movement": 0.57,
+    "density": 0.59,
+    "space": 0.56,
+    "aggression": 0.39
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "HARMONIC_BLEND",
+    "source": "ODYSSEY",
+    "target": "OSTERIA",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "odyssey",
+    "osteria",
+    "wavetable"
+  ],
+  "description": "Drift odyssey docks at a wine-dark tavern \u2014 FM warmth soaked in osteria resonance"
+}

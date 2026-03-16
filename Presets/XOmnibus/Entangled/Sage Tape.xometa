@@ -1,0 +1,39 @@
+{
+  "name": "Sage Tape",
+  "version": "1.0",
+  "engines": [
+    "OVERDUB",
+    "OHM"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.6,
+    "SPACE": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.44,
+    "warmth": 0.69,
+    "movement": 0.51,
+    "density": 0.56,
+    "space": 0.61,
+    "aggression": 0.29
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SYMPATHETIC_RESONANCE",
+    "source": "OHM",
+    "target": "OVERDUB",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "overdub",
+    "ohm",
+    "dub"
+  ],
+  "description": "Tape saturation mellows an ohm drone \u2014 warmth and grain dissolving into each other"
+}

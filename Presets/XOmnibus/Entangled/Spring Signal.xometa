@@ -1,0 +1,39 @@
+{
+  "name": "Spring Signal",
+  "version": "1.0",
+  "engines": [
+    "OVERDUB",
+    "OPTIC"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.7,
+    "SPACE": 0.7
+  },
+  "sonic_dna": {
+    "brightness": 0.58,
+    "warmth": 0.53,
+    "movement": 0.53,
+    "density": 0.54,
+    "space": 0.55,
+    "aggression": 0.37
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_REFRACTION",
+    "source": "OPTIC",
+    "target": "OVERDUB",
+    "amount": 0.7
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "overdub",
+    "optic",
+    "dub"
+  ],
+  "description": "Spring reverb bloom refracts through an optical array \u2014 resonance split to spectrum"
+}

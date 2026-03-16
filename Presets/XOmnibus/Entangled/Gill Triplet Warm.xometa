@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Gill Triplet Warm",
+  "mood": "Entangled",
+  "engines": [
+    "OddOscar",
+    "Ottoni"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddOscar's envelope contour shapes XOttoni's triple-brass grow's filter \u2014 axolotl gill warmth breathing in and out through the partner's resonant body.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "morph",
+    "ottoni",
+    "dynamic",
+    "filter",
+    "envelope"
+  ],
+  "macroLabels": [
+    "MORPH",
+    "OTTONI",
+    "FILTER",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.55,
+    "SPACE": 0.45
+  },
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.318,
+    "warmth": 0.818,
+    "movement": 0.5,
+    "density": 0.667,
+    "space": 0.5,
+    "aggression": 0.335
+  },
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.5,
+      "morph_filterCutoff": 2200.0,
+      "morph_filterReso": 0.35,
+      "morph_filterEnvDepth": 0.45,
+      "morph_attack": 0.12,
+      "morph_decay": 0.6,
+      "morph_sustain": 0.55,
+      "morph_release": 1.2,
+      "morph_level": 0.75
+    },
+    "Ottoni": {
+      "otto_macroGrow": 0.5,
+      "otto_filterCutoff": 2500.0,
+      "otto_filterReso": 0.35,
+      "otto_drive": 0.5,
+      "otto_lfoRate": 0.2
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Ottoni",
+        "type": "Amp->Filter",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null
+}

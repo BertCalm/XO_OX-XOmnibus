@@ -1,0 +1,39 @@
+{
+  "name": "Tape Phosphor",
+  "version": "1.0",
+  "engines": [
+    "OVERDUB",
+    "OPTIC"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.65,
+    "SPACE": 0.7
+  },
+  "sonic_dna": {
+    "brightness": 0.58,
+    "warmth": 0.53,
+    "movement": 0.53,
+    "density": 0.54,
+    "space": 0.55,
+    "aggression": 0.37
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_REFRACTION",
+    "source": "OVERDUB",
+    "target": "OPTIC",
+    "amount": 0.65
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "overdub",
+    "optic",
+    "dub"
+  ],
+  "description": "Dub delay trails caught in optical scan \u2014 each echo a phosphorescent afterimage"
+}

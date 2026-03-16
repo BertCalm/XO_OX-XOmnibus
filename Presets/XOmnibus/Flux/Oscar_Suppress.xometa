@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Oscar Suppress",
+  "mood": "Flux",
+  "engines": [
+    "Oddoscar"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.84,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.05,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.48,
+    "movement": 0.28,
+    "density": 0.84,
+    "space": 0.2,
+    "aggression": 0.84
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "tension",
+    "oddoscar",
+    "suppress",
+    "axolotl"
+  ],
+  "description": "Axolotl gill pink beneath still water \u2014 morph parameter caged at maximum saturation."
+}

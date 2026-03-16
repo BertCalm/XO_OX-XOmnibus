@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Shore Surge",
+  "mood": "Flux",
+  "engines": [
+    "Osprey"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.08,
+    "SPACE": 0.27
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.73,
+    "warmth": 0.4,
+    "movement": 0.88,
+    "density": 0.73,
+    "space": 0.27,
+    "aggression": 0.67
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "controlled",
+    "osprey",
+    "shore",
+    "surge"
+  ],
+  "description": "ShoreSystem at high tide \u2014 coastal wind against structured rhythm."
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Amber Wolfram Beat",
+  "mood": "Entangled",
+  "engines": [
+    "Oblong",
+    "Outwit"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OBLONG's groove pattern seeds OUTWIT's 8-arm Wolfram cellular automaton. Simple amber pulse generates complex rhythmic evolution.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "oblong",
+    "outwit",
+    "beat",
+    "wolfram",
+    "automaton"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.65,
+    "movement": 0.7,
+    "density": 0.72,
+    "space": 0.4,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_groove": 0.6,
+      "bob_density": 0.65,
+      "bob_curiousRate": 0.6
+    },
+    "Outwit": {
+      "owit_wolfRule": 30,
+      "owit_armDensity": 0.55,
+      "owit_caRate": 0.6
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Outwit",
+        "type": "Rhythm->Blend",
+        "amount": 0.65
+      },
+      {
+        "engineA": "Outwit",
+        "engineB": "Oblong",
+        "type": "Env->Character",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null
+}

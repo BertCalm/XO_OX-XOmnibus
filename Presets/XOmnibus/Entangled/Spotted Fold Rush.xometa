@@ -1,0 +1,39 @@
+{
+  "name": "Spotted Fold Rush",
+  "version": "1.0",
+  "engines": [
+    "OCELOT",
+    "ORIGAMI"
+  ],
+  "mood": "Entangled",
+  "strategy": "Fast Cold",
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.91,
+    "COUPLING": 0.72,
+    "SPACE": 0.58
+  },
+  "sonic_dna": {
+    "brightness": 0.6,
+    "warmth": 0.09,
+    "movement": 0.91,
+    "density": 0.42,
+    "space": 0.55,
+    "aggression": 0.58
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "PHASE_LOCK",
+    "source": "OCELOT",
+    "target": "ORIGAMI",
+    "amount": 0.68
+  },
+  "tags": [
+    "entangled",
+    "cold",
+    "fast",
+    "spotted",
+    "kinetic"
+  ],
+  "description": "Spotted pattern rushing through cold Origami folds \u2014 spotted light fragmenting in motion."
+}

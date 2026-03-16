@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Glitch Era Collapse",
+  "mood": "Flux",
+  "engines": [
+    "Overworld"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.93,
+    "COUPLING": 0.0,
+    "SPACE": 0.12
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.05,
+    "movement": 0.93,
+    "density": 0.82,
+    "space": 0.12,
+    "aggression": 0.9
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "maximum",
+    "overworld",
+    "glitch",
+    "collapse"
+  ],
+  "description": "ERA triangle cornered in NES maximum \u2014 chip noise at the edge of meltdown."
+}

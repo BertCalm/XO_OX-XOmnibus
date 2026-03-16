@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Perc Barrage",
+  "mood": "Flux",
+  "engines": [
+    "Onset"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.97,
+    "COUPLING": 0.0,
+    "SPACE": 0.06
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.12,
+    "movement": 0.97,
+    "density": 0.9,
+    "space": 0.06,
+    "aggression": 0.97
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "maximum",
+    "onset",
+    "percussion",
+    "barrage"
+  ],
+  "description": "All 8 voices triggered in a 32nd-note fusillade \u2014 rhythm as violence."
+}

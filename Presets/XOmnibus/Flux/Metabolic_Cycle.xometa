@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Metabolic Cycle",
+  "mood": "Flux",
+  "engines": [
+    "Organon"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.79,
+    "COUPLING": 0.2,
+    "SPACE": 0.31
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.5,
+    "movement": 0.79,
+    "density": 0.75,
+    "space": 0.31,
+    "aggression": 0.61
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "controlled",
+    "organon",
+    "metabolic",
+    "cycle"
+  ],
+  "description": "Cellular coupling at medium rate \u2014 organism in aerobic flux, not anaerobic crisis."
+}

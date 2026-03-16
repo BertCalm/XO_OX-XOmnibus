@@ -1,0 +1,39 @@
+{
+  "name": "Grow Slow Choir",
+  "version": "1.0",
+  "engines": [
+    "OTTONI",
+    "ORGANON"
+  ],
+  "mood": "Entangled",
+  "strategy": "Warm Sparse",
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.78,
+    "SPACE": 0.82
+  },
+  "sonic_dna": {
+    "brightness": 0.45,
+    "warmth": 0.91,
+    "movement": 0.45,
+    "density": 0.08,
+    "space": 0.8,
+    "aggression": 0.12
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "TIMBRAL_WARP",
+    "source": "ORGANON",
+    "target": "OTTONI",
+    "amount": 0.68
+  },
+  "tags": [
+    "entangled",
+    "warm",
+    "sparse",
+    "choral",
+    "evolving"
+  ],
+  "description": "GROW macro expanding Ottoni's warmth through Organon's slow choral logic."
+}

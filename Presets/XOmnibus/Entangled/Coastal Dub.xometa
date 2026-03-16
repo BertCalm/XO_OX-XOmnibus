@@ -1,0 +1,39 @@
+{
+  "name": "Coastal Dub",
+  "version": "1.0",
+  "engines": [
+    "OVERDUB",
+    "OSPREY"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.65,
+    "SPACE": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.48,
+    "warmth": 0.59,
+    "movement": 0.55,
+    "density": 0.58,
+    "space": 0.57,
+    "aggression": 0.43
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "COASTAL_DIVE",
+    "source": "OVERDUB",
+    "target": "OSPREY",
+    "amount": 0.65
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "overdub",
+    "osprey",
+    "dub"
+  ],
+  "description": "Shore winds carry the dub delay out to sea \u2014 osprey plunge timed to the echo"
+}

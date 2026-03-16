@@ -1,0 +1,39 @@
+{
+  "name": "Reed Delay",
+  "version": "1.0",
+  "engines": [
+    "OVERDUB",
+    "OBBLIGATO"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.6,
+    "SPACE": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.46,
+    "warmth": 0.65,
+    "movement": 0.51,
+    "density": 0.62,
+    "space": 0.57,
+    "aggression": 0.39
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "BREATH_COUPLING",
+    "source": "OVERDUB",
+    "target": "OBBLIGATO",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "overdub",
+    "obbligato",
+    "dub"
+  ],
+  "description": "Dual wind phrase caught in dub loop \u2014 breath suspended in tape saturation"
+}

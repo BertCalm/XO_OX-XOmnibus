@@ -1,0 +1,39 @@
+{
+  "name": "Slant Transient Hail",
+  "version": "1.0",
+  "engines": [
+    "OBLIQUE",
+    "ONSET"
+  ],
+  "mood": "Entangled",
+  "strategy": "Fast Cold",
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.75,
+    "SPACE": 0.5
+  },
+  "sonic_dna": {
+    "brightness": 0.68,
+    "warmth": 0.09,
+    "movement": 0.9,
+    "density": 0.65,
+    "space": 0.48,
+    "aggression": 0.68
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "TIMBRAL_WARP",
+    "source": "OBLIQUE",
+    "target": "ONSET",
+    "amount": 0.7
+  },
+  "tags": [
+    "entangled",
+    "cold",
+    "fast",
+    "transient",
+    "kinetic"
+  ],
+  "description": "Transient hail falling at a slant \u2014 cold, dense, oblique and unrelenting."
+}

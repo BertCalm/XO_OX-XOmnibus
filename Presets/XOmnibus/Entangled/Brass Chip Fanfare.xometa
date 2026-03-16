@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Brass Chip Fanfare",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "Ottoni"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERWORLD's 8-bit melody triggers OTTONI brass chord stabs. The video-game hero theme gets a full brass orchestra response.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overworld",
+    "ottoni",
+    "chip",
+    "brass",
+    "fanfare"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.4,
+    "movement": 0.72,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.58
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_eraCross": 0.45,
+      "ow_oscWave": 1,
+      "ow_arpRate": 100.0
+    },
+    "Ottoni": {
+      "otto_grow": 0.6,
+      "otto_brassAttack": 0.2,
+      "otto_ensemble": 0.65
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Ottoni",
+        "type": "Pitch->Character",
+        "amount": 0.65
+      },
+      {
+        "engineA": "Ottoni",
+        "engineB": "Overworld",
+        "type": "Amp->Filter",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null
+}

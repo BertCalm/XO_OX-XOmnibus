@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Predator Frequency",
+  "mood": "Flux",
+  "engines": [
+    "Orca"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.95,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.0,
+    "SPACE": 0.07
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.12,
+    "movement": 0.92,
+    "density": 0.93,
+    "space": 0.07,
+    "aggression": 1.0
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "maximum",
+    "orca",
+    "predator",
+    "frequency"
+  ],
+  "description": "Echolocation locked on target \u2014 subsonic pulse before the kill."
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Logic Serpent Lock",
+  "version": "1.0",
+  "engines": [
+    "ORGANON",
+    "OUROBOROS"
+  ],
+  "mood": "Entangled",
+  "strategy": "Still Aggressive",
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.88,
+    "SPACE": 0.5
+  },
+  "sonic_dna": {
+    "brightness": 0.35,
+    "warmth": 0.42,
+    "movement": 0.05,
+    "density": 0.8,
+    "space": 0.48,
+    "aggression": 0.95
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "TIMBRAL_WARP",
+    "source": "ORGANON",
+    "target": "OUROBOROS",
+    "amount": 0.82
+  },
+  "tags": [
+    "entangled",
+    "aggressive",
+    "still",
+    "logic",
+    "serpent"
+  ],
+  "description": "Organon's logical system imprisoning Ouroboros in a perfectly still cycle of force."
+}

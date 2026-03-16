@@ -1,0 +1,39 @@
+{
+  "name": "Cephalopod Overdrive",
+  "version": "1.0",
+  "engines": [
+    "OCTOPUS",
+    "OVERWORLD"
+  ],
+  "mood": "Entangled",
+  "strategy": "Fast Cold",
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.98,
+    "COUPLING": 0.65,
+    "SPACE": 0.42
+  },
+  "sonic_dna": {
+    "brightness": 0.78,
+    "warmth": 0.06,
+    "movement": 0.98,
+    "density": 0.68,
+    "space": 0.4,
+    "aggression": 0.78
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "PHASE_LOCK",
+    "source": "OVERWORLD",
+    "target": "OCTOPUS",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "cold",
+    "fast",
+    "aggressive",
+    "overdrive"
+  ],
+  "description": "Cephalopod intelligence at maximum overdrive \u2014 chip reality fractured by cold speed."
+}

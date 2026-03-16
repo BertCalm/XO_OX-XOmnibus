@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Morph Patina",
+  "mood": "Entangled",
+  "engines": [
+    "OddOscar",
+    "Ottoni"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddOscar's slow organic LFO nudges XOttoni's triple-brass grow's pitch \u2014 a warm morphological drift that pulls both engines into a shared tidal rhythm.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "morph",
+    "ottoni",
+    "lfo",
+    "pitch",
+    "rhythmic"
+  ],
+  "macroLabels": [
+    "MORPH",
+    "OTTONI",
+    "PITCH",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.8,
+    "SPACE": 0.5
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.318,
+    "warmth": 0.818,
+    "movement": 0.5,
+    "density": 0.667,
+    "space": 0.5,
+    "aggression": 0.335
+  },
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.5,
+      "morph_filterCutoff": 2200.0,
+      "morph_filterReso": 0.35,
+      "morph_filterEnvDepth": 0.45,
+      "morph_attack": 0.12,
+      "morph_decay": 0.6,
+      "morph_sustain": 0.55,
+      "morph_release": 1.2,
+      "morph_level": 0.75
+    },
+    "Ottoni": {
+      "otto_macroGrow": 0.5,
+      "otto_filterCutoff": 2500.0,
+      "otto_filterReso": 0.35,
+      "otto_drive": 0.5,
+      "otto_lfoRate": 0.2
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Ottoni",
+        "type": "LFO->Pitch",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Pod Cloud",
+  "version": "1.0",
+  "engines": [
+    "OPAL",
+    "ORCA"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.65,
+    "SPACE": 0.7
+  },
+  "sonic_dna": {
+    "brightness": 0.54,
+    "warmth": 0.51,
+    "movement": 0.64,
+    "density": 0.56,
+    "space": 0.66,
+    "aggression": 0.42
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "ECHOLOCATION_SYNC",
+    "source": "ORCA",
+    "target": "OPAL",
+    "amount": 0.65
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "opal",
+    "orca",
+    "granular"
+  ],
+  "description": "Opal grain cloud navigated by orca pod \u2014 granular terrain mapped by echolocation"
+}

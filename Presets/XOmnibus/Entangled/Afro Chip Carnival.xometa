@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Afro Chip Carnival",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "Ole"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERWORLD's chip game-music energy feeds OLE's Afro-Latin trio. Pixel carnival \u2014 8-bit meets clave, congas, and drama.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overworld",
+    "ole",
+    "chip",
+    "afro-latin",
+    "carnival"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.5,
+    "movement": 0.8,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_eraCross": 0.5,
+      "ow_arpRate": 110.0,
+      "ow_glitch": 0.2
+    },
+    "Ole": {
+      "ole_drama": 0.65,
+      "ole_clave": 0.6,
+      "ole_percMix": 0.65
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Ole",
+        "type": "Rhythm->Blend",
+        "amount": 0.65
+      },
+      {
+        "engineA": "Ole",
+        "engineB": "Overworld",
+        "type": "Amp->Filter",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null
+}

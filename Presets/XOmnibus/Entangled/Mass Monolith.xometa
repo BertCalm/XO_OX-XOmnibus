@@ -1,0 +1,39 @@
+{
+  "name": "Mass Monolith",
+  "version": "1.0",
+  "engines": [
+    "OBESE",
+    "OBSIDIAN"
+  ],
+  "mood": "Entangled",
+  "strategy": "Still Aggressive",
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.85,
+    "SPACE": 0.4
+  },
+  "sonic_dna": {
+    "brightness": 0.2,
+    "warmth": 0.4,
+    "movement": 0.05,
+    "density": 0.9,
+    "space": 0.35,
+    "aggression": 0.95
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_FOLD",
+    "source": "OBESE",
+    "target": "OBSIDIAN",
+    "amount": 0.82
+  },
+  "tags": [
+    "entangled",
+    "aggressive",
+    "still",
+    "massive",
+    "monolithic"
+  ],
+  "description": "XObese's low-end mass fused with Obsidian's volcanic density \u2014 immovable and crushing."
+}

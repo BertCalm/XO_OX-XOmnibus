@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Daguerreotype Freeze",
+  "mood": "Flux",
+  "engines": [
+    "Obscura"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.0,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.28,
+    "movement": 0.15,
+    "density": 0.82,
+    "space": 0.2,
+    "aggression": 0.82
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "tension",
+    "obscura",
+    "daguerreotype",
+    "freeze"
+  ],
+  "description": "Silver plate under pressure \u2014 the moment before the image burns through."
+}

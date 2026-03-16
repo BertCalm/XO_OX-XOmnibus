@@ -1,0 +1,39 @@
+{
+  "name": "Latin Reverb Soul",
+  "version": "1.0",
+  "engines": [
+    "OLE",
+    "OVERDUB"
+  ],
+  "mood": "Entangled",
+  "strategy": "Warm Sparse",
+  "macros": {
+    "CHARACTER": 0.8,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.7,
+    "SPACE": 0.88
+  },
+  "sonic_dna": {
+    "brightness": 0.45,
+    "warmth": 0.9,
+    "movement": 0.62,
+    "density": 0.1,
+    "space": 0.85,
+    "aggression": 0.1
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_FOLD",
+    "source": "OLE",
+    "target": "OVERDUB",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "warm",
+    "sparse",
+    "movement",
+    "soulful"
+  ],
+  "description": "Latin rhythm warmth evaporating into wide reverb space \u2014 presence without clutter."
+}

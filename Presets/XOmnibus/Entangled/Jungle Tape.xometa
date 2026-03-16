@@ -1,0 +1,39 @@
+{
+  "name": "Jungle Tape",
+  "version": "1.0",
+  "engines": [
+    "OVERDUB",
+    "OCELOT"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.7,
+    "SPACE": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.5,
+    "warmth": 0.61,
+    "movement": 0.57,
+    "density": 0.58,
+    "space": 0.51,
+    "aggression": 0.49
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "PREDATOR_STALK",
+    "source": "OVERDUB",
+    "target": "OCELOT",
+    "amount": 0.7
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "overdub",
+    "ocelot",
+    "dub"
+  ],
+  "description": "Dub loop stalked through dense foliage \u2014 feline tension coiling inside the delay"
+}

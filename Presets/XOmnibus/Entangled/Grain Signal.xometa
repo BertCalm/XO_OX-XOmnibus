@@ -1,0 +1,39 @@
+{
+  "name": "Grain Signal",
+  "version": "1.0",
+  "engines": [
+    "OPAL",
+    "OPTIC"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.75,
+    "SPACE": 0.8
+  },
+  "sonic_dna": {
+    "brightness": 0.64,
+    "warmth": 0.47,
+    "movement": 0.62,
+    "density": 0.48,
+    "space": 0.64,
+    "aggression": 0.28
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_REFRACTION",
+    "source": "OPAL",
+    "target": "OPTIC",
+    "amount": 0.75
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "opal",
+    "optic",
+    "granular"
+  ],
+  "description": "Granular particles scattered through optical scan \u2014 each grain a photon burst"
+}

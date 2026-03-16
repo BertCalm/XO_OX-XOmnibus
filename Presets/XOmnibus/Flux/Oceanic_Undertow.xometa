@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Oceanic Undertow",
+  "mood": "Flux",
+  "engines": [
+    "Oceanic"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.83,
+    "COUPLING": 0.12,
+    "SPACE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.45,
+    "movement": 0.83,
+    "density": 0.8,
+    "space": 0.35,
+    "aggression": 0.58
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "controlled",
+    "oceanic",
+    "undertow",
+    "teal"
+  ],
+  "description": "Chromatophore modulator cycling fast \u2014 tidal pull with predictable return."
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Morph Abyssal Glow",
+  "mood": "Entangled",
+  "engines": [
+    "OddOscar",
+    "Owlfish"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddOscar's slow organic LFO nudges XOwlfish's Mixtur-Trautonium oscillator's pitch \u2014 a warm morphological drift that pulls both engines into a shared tidal rhythm.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "morph",
+    "owlfish",
+    "lfo",
+    "pitch",
+    "rhythmic"
+  ],
+  "macroLabels": [
+    "MORPH",
+    "OWLFISH",
+    "PITCH",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.8,
+    "SPACE": 0.5
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.335,
+    "warmth": 0.818,
+    "movement": 0.5,
+    "density": 0.667,
+    "space": 0.517,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.5,
+      "morph_filterCutoff": 2200.0,
+      "morph_filterReso": 0.35,
+      "morph_filterEnvDepth": 0.45,
+      "morph_attack": 0.12,
+      "morph_decay": 0.6,
+      "morph_sustain": 0.55,
+      "morph_release": 1.2,
+      "morph_level": 0.75
+    },
+    "Owlfish": {
+      "owl_filterCutoff": 3500.0,
+      "owl_filterReso": 0.4,
+      "owl_drive": 0.35,
+      "owl_lfoRate": 0.2,
+      "owl_mixturDepth": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Owlfish",
+        "type": "LFO->Pitch",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null
+}

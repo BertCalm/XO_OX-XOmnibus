@@ -1,0 +1,39 @@
+{
+  "name": "Coastal Drift",
+  "version": "1.0",
+  "engines": [
+    "ODYSSEY",
+    "OSPREY"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.6,
+    "SPACE": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.57,
+    "warmth": 0.5,
+    "movement": 0.67,
+    "density": 0.55,
+    "space": 0.6,
+    "aggression": 0.43
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "COASTAL_DIVE",
+    "source": "OSPREY",
+    "target": "ODYSSEY",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "odyssey",
+    "osprey",
+    "wavetable"
+  ],
+  "description": "Wavetable tide pushes the odyssey toward shore \u2014 drift current meeting the azure dive"
+}

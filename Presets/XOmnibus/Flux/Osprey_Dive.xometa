@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Osprey Dive",
+  "mood": "Flux",
+  "engines": [
+    "Osprey"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.73,
+    "MOVEMENT": 0.89,
+    "COUPLING": 0.06,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.77,
+    "warmth": 0.36,
+    "movement": 0.89,
+    "density": 0.74,
+    "space": 0.2,
+    "aggression": 0.71
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "controlled",
+    "osprey",
+    "dive",
+    "azulejo"
+  ],
+  "description": "Shore wind behind the dive \u2014 controlled plummet with azulejo blue clarity."
+}

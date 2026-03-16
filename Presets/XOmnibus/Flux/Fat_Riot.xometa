@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Fat Riot",
+  "mood": "Flux",
+  "engines": [
+    "Obese"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.95,
+    "MOVEMENT": 0.91,
+    "COUPLING": 0.0,
+    "SPACE": 0.08
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.35,
+    "movement": 0.91,
+    "density": 0.95,
+    "space": 0.08,
+    "aggression": 0.95
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "maximum",
+    "obese",
+    "saturation",
+    "riot"
+  ],
+  "description": "MOJO slammed \u2014 every harmonic screaming at once, saturation absolute."
+}

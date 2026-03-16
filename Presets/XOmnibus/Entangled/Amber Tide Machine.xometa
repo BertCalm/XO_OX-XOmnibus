@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Amber Tide Machine",
+  "mood": "Entangled",
+  "engines": [
+    "Oblong",
+    "Oceanic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OBLONG's amber density acts as the breathing mechanism for OCEANIC's wave engine. Rhythmic inhale and exhale across the water column.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "oblong",
+    "oceanic",
+    "beat",
+    "tide",
+    "underwater"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.65,
+    "movement": 0.55,
+    "density": 0.65,
+    "space": 0.55,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_density": 0.65,
+      "bob_warmth": 0.65,
+      "bob_groove": 0.45
+    },
+    "Oceanic": {
+      "oce_tideRate": 0.4,
+      "oce_depth": 0.55,
+      "oce_filterCut": 3500.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Oceanic",
+        "type": "Amp->Filter",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oblong",
+        "type": "Env->Character",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null
+}

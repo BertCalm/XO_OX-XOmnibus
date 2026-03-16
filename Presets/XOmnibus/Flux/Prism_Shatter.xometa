@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Prism Shatter",
+  "mood": "Flux",
+  "engines": [
+    "Oblique"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.08,
+    "SPACE": 0.22
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.18,
+    "movement": 0.9,
+    "density": 0.85,
+    "space": 0.22,
+    "aggression": 0.91
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "maximum",
+    "oblique",
+    "prism",
+    "shatter"
+  ],
+  "description": "Prismatic bounce with walls collapsed \u2014 RTJ-mode at critical resonance."
+}

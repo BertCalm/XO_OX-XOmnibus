@@ -1,0 +1,39 @@
+{
+  "name": "Paper Echo Freeze",
+  "version": "1.0",
+  "engines": [
+    "ORIGAMI",
+    "OVERDUB"
+  ],
+  "mood": "Entangled",
+  "strategy": "Bright Dark",
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.8,
+    "SPACE": 0.75
+  },
+  "sonic_dna": {
+    "brightness": 0.92,
+    "warmth": 0.08,
+    "movement": 0.33,
+    "density": 0.4,
+    "space": 0.72,
+    "aggression": 0.15
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "HARMONIC_BLEND",
+    "source": "ORIGAMI",
+    "target": "OVERDUB",
+    "amount": 0.7
+  },
+  "tags": [
+    "entangled",
+    "bright",
+    "cold",
+    "paper",
+    "delay"
+  ],
+  "description": "Origami's crisp paper folds echoed cold through Overdub's tape delay."
+}

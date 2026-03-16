@@ -1,0 +1,39 @@
+{
+  "name": "Resonant Brass Void",
+  "version": "1.0",
+  "engines": [
+    "OTTONI",
+    "ORGANON"
+  ],
+  "mood": "Entangled",
+  "strategy": "Warm Sparse",
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.88,
+    "SPACE": 0.9
+  },
+  "sonic_dna": {
+    "brightness": 0.38,
+    "warmth": 0.95,
+    "movement": 0.28,
+    "density": 0.07,
+    "space": 0.88,
+    "aggression": 0.08
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "PHASE_LOCK",
+    "source": "OTTONI",
+    "target": "ORGANON",
+    "amount": 0.82
+  },
+  "tags": [
+    "entangled",
+    "warm",
+    "sparse",
+    "meditative",
+    "brass"
+  ],
+  "description": "Three brass voices locked into Organon's vast resonant void \u2014 warm and almost empty."
+}

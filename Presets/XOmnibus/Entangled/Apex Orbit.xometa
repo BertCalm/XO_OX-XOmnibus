@@ -1,0 +1,39 @@
+{
+  "name": "Apex Orbit",
+  "version": "1.0",
+  "engines": [
+    "ORBITAL",
+    "ORCA"
+  ],
+  "mood": "Entangled",
+  "strategy": "Still Aggressive",
+  "macros": {
+    "CHARACTER": 0.8,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.85,
+    "SPACE": 0.55
+  },
+  "sonic_dna": {
+    "brightness": 0.45,
+    "warmth": 0.35,
+    "movement": 0.05,
+    "density": 0.7,
+    "space": 0.52,
+    "aggression": 0.94
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "HARMONIC_BLEND",
+    "source": "ORBITAL",
+    "target": "ORCA",
+    "amount": 0.78
+  },
+  "tags": [
+    "entangled",
+    "aggressive",
+    "still",
+    "orbital",
+    "apex"
+  ],
+  "description": "Orbital's locked rotation containing Orca's apex predator force \u2014 still, massive, circling."
+}

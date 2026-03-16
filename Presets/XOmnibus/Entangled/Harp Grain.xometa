@@ -1,0 +1,39 @@
+{
+  "name": "Harp Grain",
+  "version": "1.0",
+  "engines": [
+    "OPAL",
+    "ORPHICA"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.7,
+    "SPACE": 0.8
+  },
+  "sonic_dna": {
+    "brightness": 0.58,
+    "warmth": 0.53,
+    "movement": 0.68,
+    "density": 0.46,
+    "space": 0.66,
+    "aggression": 0.18
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "GRAIN_SCATTER",
+    "source": "OPAL",
+    "target": "ORPHICA",
+    "amount": 0.7
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "opal",
+    "orphica",
+    "granular"
+  ],
+  "description": "Orphica harp plucks seeding the granular cloud \u2014 microsound and grain in conversation"
+}

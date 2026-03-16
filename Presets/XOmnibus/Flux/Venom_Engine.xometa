@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Venom Engine",
+  "mood": "Flux",
+  "engines": [
+    "Overbite"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.92,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.0,
+    "SPACE": 0.09
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.15,
+    "movement": 0.82,
+    "density": 0.89,
+    "space": 0.09,
+    "aggression": 0.98
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "maximum",
+    "overbite",
+    "venom",
+    "engine"
+  ],
+  "description": "BITE + TRASH running together \u2014 acid filter with possum venom backing."
+}

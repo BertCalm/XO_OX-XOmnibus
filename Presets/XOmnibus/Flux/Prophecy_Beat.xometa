@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Prophecy Beat",
+  "mood": "Flux",
+  "engines": [
+    "Oracle"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.77,
+    "MOVEMENT": 0.74,
+    "COUPLING": 0.0,
+    "SPACE": 0.28
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.32,
+    "movement": 0.74,
+    "density": 0.73,
+    "space": 0.28,
+    "aggression": 0.73
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "controlled",
+    "oracle",
+    "prophecy",
+    "beat"
+  ],
+  "description": "Indigo oracle locking stochastic output to a groove \u2014 chaos serving rhythm."
+}

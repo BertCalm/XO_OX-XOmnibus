@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Morph Sage Soft",
+  "mood": "Entangled",
+  "engines": [
+    "OddOscar",
+    "Ohm"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddOscar's slow organic LFO nudges XOhm's Meddling macro commune's pitch \u2014 a warm morphological drift that pulls both engines into a shared tidal rhythm.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "morph",
+    "ohm",
+    "lfo",
+    "pitch",
+    "rhythmic"
+  ],
+  "macroLabels": [
+    "MORPH",
+    "OHM",
+    "PITCH",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.8,
+    "SPACE": 0.5
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.835,
+    "movement": 0.517,
+    "density": 0.65,
+    "space": 0.517,
+    "aggression": 0.282
+  },
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.5,
+      "morph_filterCutoff": 2200.0,
+      "morph_filterReso": 0.35,
+      "morph_filterEnvDepth": 0.45,
+      "morph_attack": 0.12,
+      "morph_decay": 0.6,
+      "morph_sustain": 0.55,
+      "morph_release": 1.2,
+      "morph_level": 0.75
+    },
+    "Ohm": {
+      "ohm_macroMeddling": 0.5,
+      "ohm_filterCutoff": 4500.0,
+      "ohm_lfoRate": 0.2,
+      "ohm_reverbMix": 0.35,
+      "ohm_drive": 0.25
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Ohm",
+        "type": "LFO->Pitch",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Phosphor Storm",
+  "mood": "Flux",
+  "engines": [
+    "Optic"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.95,
+    "COUPLING": 0.0,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.99,
+    "warmth": 0.05,
+    "movement": 0.95,
+    "density": 0.78,
+    "space": 0.2,
+    "aggression": 0.87
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "maximum",
+    "optic",
+    "phosphor",
+    "storm"
+  ],
+  "description": "AutoPulse at maximum rate \u2014 light as pure aggression, zero silence."
+}

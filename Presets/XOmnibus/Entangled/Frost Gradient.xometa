@@ -1,0 +1,39 @@
+{
+  "name": "Frost Gradient",
+  "version": "1.0",
+  "engines": [
+    "OVERWORLD",
+    "OMBRE"
+  ],
+  "mood": "Entangled",
+  "strategy": "Bright Dark",
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.9,
+    "SPACE": 0.8
+  },
+  "sonic_dna": {
+    "brightness": 0.94,
+    "warmth": 0.06,
+    "movement": 0.32,
+    "density": 0.55,
+    "space": 0.78,
+    "aggression": 0.18
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_FOLD",
+    "source": "OVERWORLD",
+    "target": "OMBRE",
+    "amount": 0.82
+  },
+  "tags": [
+    "entangled",
+    "bright",
+    "cold",
+    "dense-mid",
+    "still"
+  ],
+  "description": "Deep coupling freezes OVERWORLD's chip harmonics into Ombre's tonal gradients."
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Decay Gradient Hit",
+  "mood": "Entangled",
+  "engines": [
+    "Onset",
+    "Ombre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Each ONSET hit triggers an OMBRE gradient decay. The drum silhouette grows darker as the tail fades. Cinematic rhythm.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "onset",
+    "ombre",
+    "drum",
+    "decay",
+    "cinematic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.72,
+    "density": 0.7,
+    "space": 0.55,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v1_level": 0.8,
+      "perc_v1_decay": 0.6,
+      "perc_macro_space": 0.5
+    },
+    "Ombre": {
+      "ombr_gradient": 0.6,
+      "ombr_shadow": 0.5,
+      "ombr_filterCut": 4500.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Ombre",
+        "type": "Amp->Filter",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Ombre",
+        "engineB": "Onset",
+        "type": "Env->Character",
+        "amount": 0.4
+      }
+    ]
+  },
+  "sequencer": null
+}

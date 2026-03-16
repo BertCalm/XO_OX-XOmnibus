@@ -1,0 +1,39 @@
+{
+  "name": "Fang Prophecy",
+  "version": "1.0",
+  "engines": [
+    "OVERBITE",
+    "ORACLE"
+  ],
+  "mood": "Entangled",
+  "strategy": "Still Aggressive",
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.82,
+    "SPACE": 0.5
+  },
+  "sonic_dna": {
+    "brightness": 0.35,
+    "warmth": 0.55,
+    "movement": 0.05,
+    "density": 0.75,
+    "space": 0.48,
+    "aggression": 0.96
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "TIMBRAL_WARP",
+    "source": "OVERBITE",
+    "target": "ORACLE",
+    "amount": 0.75
+  },
+  "tags": [
+    "entangled",
+    "aggressive",
+    "still",
+    "bass",
+    "oracle"
+  ],
+  "description": "Overbite's fang-sharp attack biting into Oracle's still prophecy \u2014 venom suspended in time."
+}

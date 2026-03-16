@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Ol\u00e9 Pivot",
+  "mood": "Flux",
+  "engines": [
+    "Ole"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.74,
+    "MOVEMENT": 0.83,
+    "COUPLING": 0.08,
+    "SPACE": 0.26
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.4,
+    "movement": 0.83,
+    "density": 0.76,
+    "space": 0.26,
+    "aggression": 0.63
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "controlled",
+    "ole",
+    "pivot",
+    "hibiscus"
+  ],
+  "description": "The pivot before the DRAMA \u2014 Afro-Latin swing at precise center of gravity."
+}

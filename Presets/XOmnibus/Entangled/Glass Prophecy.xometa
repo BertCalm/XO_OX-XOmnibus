@@ -1,0 +1,39 @@
+{
+  "name": "Glass Prophecy",
+  "version": "1.0",
+  "engines": [
+    "OPTIC",
+    "ORACLE"
+  ],
+  "mood": "Entangled",
+  "strategy": "Bright Dark",
+  "macros": {
+    "CHARACTER": 0.8,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.8,
+    "SPACE": 0.7
+  },
+  "sonic_dna": {
+    "brightness": 0.93,
+    "warmth": 0.08,
+    "movement": 0.45,
+    "density": 0.6,
+    "space": 0.72,
+    "aggression": 0.25
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_FOLD",
+    "source": "OPTIC",
+    "target": "ORACLE",
+    "amount": 0.72
+  },
+  "tags": [
+    "entangled",
+    "bright",
+    "cold",
+    "crystalline",
+    "prophetic"
+  ],
+  "description": "Optic's icy prism splits Oracle's visions into cold glass harmonics."
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Amber Sucker Grid",
+  "mood": "Entangled",
+  "engines": [
+    "Oblong",
+    "Octopus"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OCTOPUS's 8-arm trigger grid receives OBLONG's groove information. Each arm decorates the beat with a different textural element.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "oblong",
+    "octopus",
+    "beat",
+    "grid",
+    "arms"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.65,
+    "movement": 0.7,
+    "density": 0.75,
+    "space": 0.4,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_density": 0.7,
+      "bob_groove": 0.6,
+      "bob_curiousRate": 0.55
+    },
+    "Octopus": {
+      "oct_armBalance": 0.5,
+      "oct_intelRate": 0.55,
+      "oct_inkDensity": 0.4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Octopus",
+        "type": "Rhythm->Blend",
+        "amount": 0.65
+      },
+      {
+        "engineA": "Octopus",
+        "engineB": "Oblong",
+        "type": "Env->Character",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Origami Rage",
+  "mood": "Flux",
+  "engines": [
+    "Origami"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.86,
+    "COUPLING": 0.0,
+    "SPACE": 0.08
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.25,
+    "movement": 0.86,
+    "density": 0.87,
+    "space": 0.08,
+    "aggression": 0.95
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "maximum",
+    "origami",
+    "rage",
+    "fold"
+  ],
+  "description": "Fold point slammed forward \u2014 paper crane becomes shuriken."
+}

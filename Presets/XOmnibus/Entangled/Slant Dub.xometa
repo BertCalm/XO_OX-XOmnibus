@@ -1,0 +1,39 @@
+{
+  "name": "Slant Dub",
+  "version": "1.0",
+  "engines": [
+    "OVERDUB",
+    "OBLIQUE"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.6,
+    "SPACE": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.42,
+    "warmth": 0.59,
+    "movement": 0.49,
+    "density": 0.6,
+    "space": 0.59,
+    "aggression": 0.41
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "ANGULAR_DEFLECT",
+    "source": "OVERDUB",
+    "target": "OBLIQUE",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "overdub",
+    "oblique",
+    "dub"
+  ],
+  "description": "Tape loop deflected mid-play \u2014 the expected echo arrives from a crooked angle"
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Electric Afro Snap",
+  "mood": "Entangled",
+  "engines": [
+    "OddfeliX",
+    "Ole"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddfeliX's transient snap drives XOl\u00e9's Afro-Latin drama's filter dynamics \u2014 every neon-bright attack sculpts the partner's tonal response in real time.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "snap",
+    "ole",
+    "dynamic",
+    "filter",
+    "envelope"
+  ],
+  "macroLabels": [
+    "SNAP",
+    "OLE",
+    "FILTER",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.55,
+    "SPACE": 0.45
+  },
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.833,
+    "warmth": 0.235,
+    "movement": 0.652,
+    "density": 0.5,
+    "space": 0.55,
+    "aggression": 0.367
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 1,
+      "snap_filterCutoff": 5500.0,
+      "snap_filterReso": 0.45,
+      "snap_filterEnvDepth": 0.65,
+      "snap_decay": 0.18,
+      "snap_level": 0.78,
+      "snap_snap": 0.55,
+      "snap_detune": 8.0
+    },
+    "Ole": {
+      "ole_macroDrama": 0.6,
+      "ole_filterCutoff": 3200.0,
+      "ole_lfoRate": 0.3,
+      "ole_drive": 0.4,
+      "ole_reverbMix": 0.35
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Ole",
+        "type": "Amp->Filter",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null
+}

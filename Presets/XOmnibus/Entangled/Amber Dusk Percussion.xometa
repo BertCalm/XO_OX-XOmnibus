@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Amber Dusk Percussion",
+  "mood": "Entangled",
+  "engines": [
+    "Oblong",
+    "Ombre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OMBRE's gradient shadow-tone pairs with OBLONG's amber warmth for twilight percussion textures. Groove dissolves into silhouette.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "oblong",
+    "ombre",
+    "beat",
+    "dusk",
+    "gradient",
+    "warm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.7,
+    "movement": 0.55,
+    "density": 0.7,
+    "space": 0.5,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_warmth": 0.7,
+      "bob_groove": 0.45,
+      "bob_density": 0.6
+    },
+    "Ombre": {
+      "ombr_gradient": 0.55,
+      "ombr_shadow": 0.4,
+      "ombr_filterCut": 4000.0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Ombre",
+        "type": "Amp->Filter",
+        "amount": 0.55
+      },
+      {
+        "engineA": "Ombre",
+        "engineB": "Oblong",
+        "type": "Env->Character",
+        "amount": 0.4
+      }
+    ]
+  },
+  "sequencer": null
+}

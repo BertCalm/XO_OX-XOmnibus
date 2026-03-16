@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Morph Biolume Soft",
+  "mood": "Entangled",
+  "engines": [
+    "OddOscar",
+    "Oceanic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddOscar's slow organic LFO nudges XOceanic's chromatophore depth's pitch \u2014 a warm morphological drift that pulls both engines into a shared tidal rhythm.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "morph",
+    "oceanic",
+    "lfo",
+    "pitch",
+    "rhythmic"
+  ],
+  "macroLabels": [
+    "MORPH",
+    "OCEANIC",
+    "PITCH",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.8,
+    "SPACE": 0.5
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.282,
+    "warmth": 0.835,
+    "movement": 0.517,
+    "density": 0.65,
+    "space": 0.535,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.5,
+      "morph_filterCutoff": 2200.0,
+      "morph_filterReso": 0.35,
+      "morph_filterEnvDepth": 0.45,
+      "morph_attack": 0.12,
+      "morph_decay": 0.6,
+      "morph_sustain": 0.55,
+      "morph_release": 1.2,
+      "morph_level": 0.75
+    },
+    "Oceanic": {
+      "ocean_separation": 0.55,
+      "ocean_filterCutoff": 4000.0,
+      "ocean_lfoRate": 0.1,
+      "ocean_reverbMix": 0.5,
+      "ocean_depth": 0.45
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Oceanic",
+        "type": "LFO->Pitch",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null
+}

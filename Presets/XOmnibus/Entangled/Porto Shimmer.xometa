@@ -1,0 +1,39 @@
+{
+  "name": "Porto Shimmer",
+  "version": "1.0",
+  "engines": [
+    "OPAL",
+    "OSTERIA"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.65,
+    "SPACE": 0.7
+  },
+  "sonic_dna": {
+    "brightness": 0.46,
+    "warmth": 0.63,
+    "movement": 0.54,
+    "density": 0.56,
+    "space": 0.62,
+    "aggression": 0.3
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "HARMONIC_BLEND",
+    "source": "OSTERIA",
+    "target": "OPAL",
+    "amount": 0.65
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "opal",
+    "osteria",
+    "granular"
+  ],
+  "description": "Porto wine-dark warmth diffuses through opal grain field \u2014 granular tavern texture"
+}

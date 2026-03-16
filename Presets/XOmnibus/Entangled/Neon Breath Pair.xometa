@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Neon Breath Pair",
+  "mood": "Entangled",
+  "engines": [
+    "OddfeliX",
+    "Obbligato"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddfeliX's transient snap drives XObbligato's dual-wind bond's filter dynamics \u2014 every neon-bright attack sculpts the partner's tonal response in real time.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "snap",
+    "obbligato",
+    "dynamic",
+    "filter",
+    "envelope"
+  ],
+  "macroLabels": [
+    "SNAP",
+    "OBBLIGATO",
+    "FILTER",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.55,
+    "SPACE": 0.45
+  },
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.217,
+    "movement": 0.635,
+    "density": 0.517,
+    "space": 0.568,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 1,
+      "snap_filterCutoff": 5500.0,
+      "snap_filterReso": 0.45,
+      "snap_filterEnvDepth": 0.65,
+      "snap_decay": 0.18,
+      "snap_level": 0.78,
+      "snap_snap": 0.55,
+      "snap_detune": 8.0
+    },
+    "Obbligato": {
+      "obbl_breathA": 0.55,
+      "obbl_filterCutoff": 3000.0,
+      "obbl_lfoRate": 0.22,
+      "obbl_drive": 0.3,
+      "obbl_reverbMix": 0.4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Obbligato",
+        "type": "Amp->Filter",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null
+}

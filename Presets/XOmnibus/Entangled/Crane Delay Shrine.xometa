@@ -1,0 +1,39 @@
+{
+  "name": "Crane Delay Shrine",
+  "version": "1.0",
+  "engines": [
+    "ORIGAMI",
+    "OVERDUB"
+  ],
+  "mood": "Entangled",
+  "strategy": "Bright Dark",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.85,
+    "SPACE": 0.9
+  },
+  "sonic_dna": {
+    "brightness": 0.9,
+    "warmth": 0.1,
+    "movement": 0.47,
+    "density": 0.35,
+    "space": 0.88,
+    "aggression": 0.12
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "PHASE_LOCK",
+    "source": "ORIGAMI",
+    "target": "OVERDUB",
+    "amount": 0.78
+  },
+  "tags": [
+    "entangled",
+    "bright",
+    "cold",
+    "meditative",
+    "spacious"
+  ],
+  "description": "A thousand paper cranes folded in cold cathedral reverb \u2014 still and luminous."
+}

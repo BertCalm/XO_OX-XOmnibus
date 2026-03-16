@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Grain Storm Frozen",
+  "mood": "Flux",
+  "engines": [
+    "Opal"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.1,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.4,
+    "movement": 0.15,
+    "density": 0.88,
+    "space": 0.2,
+    "aggression": 0.82
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "tension",
+    "opal",
+    "grain",
+    "frozen"
+  ],
+  "description": "Granular storm arrested mid-scatter \u2014 lavender clouds of maximum density, no escape velocity."
+}

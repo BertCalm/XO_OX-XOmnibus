@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Morph Tangle Soft",
+  "mood": "Entangled",
+  "engines": [
+    "OddOscar",
+    "Overlap"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddOscar's slow organic LFO nudges XOverlap's FDN knot-topology's pitch \u2014 a warm morphological drift that pulls both engines into a shared tidal rhythm.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "morph",
+    "overlap",
+    "lfo",
+    "pitch",
+    "rhythmic"
+  ],
+  "macroLabels": [
+    "MORPH",
+    "OVERLAP",
+    "PITCH",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.8,
+    "SPACE": 0.5
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.282,
+    "warmth": 0.8,
+    "movement": 0.517,
+    "density": 0.685,
+    "space": 0.552,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.5,
+      "morph_filterCutoff": 2200.0,
+      "morph_filterReso": 0.35,
+      "morph_filterEnvDepth": 0.45,
+      "morph_attack": 0.12,
+      "morph_decay": 0.6,
+      "morph_sustain": 0.55,
+      "morph_release": 1.2,
+      "morph_level": 0.75
+    },
+    "Overlap": {
+      "olap_fdnMix": 0.6,
+      "olap_filterCutoff": 4000.0,
+      "olap_lfoRate": 0.12,
+      "olap_reverbDecay": 0.7,
+      "olap_drive": 0.25
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Overlap",
+        "type": "LFO->Pitch",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null
+}

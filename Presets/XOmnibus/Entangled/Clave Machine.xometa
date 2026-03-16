@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Clave Machine",
+  "mood": "Entangled",
+  "engines": [
+    "Onset",
+    "Ole"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ONSET drum hits follow CLAVE pattern, OLE responds with Afro-Latin counter-rhythms. DRAMA macro scales with syncopation depth.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "onset",
+    "ole",
+    "drum",
+    "clave",
+    "afro-latin"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.55,
+    "movement": 0.82,
+    "density": 0.7,
+    "space": 0.4,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v1_level": 0.8,
+      "perc_v3_level": 0.7,
+      "perc_macro_punch": 0.7
+    },
+    "Ole": {
+      "ole_drama": 0.65,
+      "ole_clave": 0.65,
+      "ole_percMix": 0.7
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Ole",
+        "type": "Rhythm->Blend",
+        "amount": 0.7
+      },
+      {
+        "engineA": "Ole",
+        "engineB": "Onset",
+        "type": "Amp->Filter",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Shimmer Cloud",
+  "version": "1.0",
+  "engines": [
+    "OPAL",
+    "ORPHICA"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.75,
+    "SPACE": 0.8
+  },
+  "sonic_dna": {
+    "brightness": 0.58,
+    "warmth": 0.53,
+    "movement": 0.68,
+    "density": 0.46,
+    "space": 0.66,
+    "aggression": 0.18
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "GRAIN_SCATTER",
+    "source": "ORPHICA",
+    "target": "OPAL",
+    "amount": 0.75
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "opal",
+    "orphica",
+    "granular"
+  ],
+  "description": "Opal grain shimmer and orphica crystal shimmer braided \u2014 two high-frequency textures merged"
+}

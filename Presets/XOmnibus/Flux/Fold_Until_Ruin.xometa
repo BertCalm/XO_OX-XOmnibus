@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Fold Until Ruin",
+  "mood": "Flux",
+  "engines": [
+    "Origami"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.0,
+    "SPACE": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.3,
+    "movement": 0.85,
+    "density": 0.88,
+    "space": 0.1,
+    "aggression": 0.92
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "maximum",
+    "origami",
+    "fold",
+    "ruin"
+  ],
+  "description": "Paper folded past its limit \u2014 vermillion crease becomes a wound."
+}

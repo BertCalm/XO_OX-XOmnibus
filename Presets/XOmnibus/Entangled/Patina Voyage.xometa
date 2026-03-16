@@ -1,0 +1,39 @@
+{
+  "name": "Patina Voyage",
+  "version": "1.0",
+  "engines": [
+    "ODYSSEY",
+    "OTTONI"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.6,
+    "SPACE": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.59,
+    "warmth": 0.54,
+    "movement": 0.59,
+    "density": 0.61,
+    "space": 0.56,
+    "aggression": 0.45
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "HARMONIC_BLEND",
+    "source": "OTTONI",
+    "target": "ODYSSEY",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "odyssey",
+    "ottoni",
+    "wavetable"
+  ],
+  "description": "Ottoni density grounds the drift trajectory \u2014 brass weight slowing the FM journey"
+}

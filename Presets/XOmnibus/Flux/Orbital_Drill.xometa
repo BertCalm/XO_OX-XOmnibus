@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Orbital Drill",
+  "mood": "Flux",
+  "engines": [
+    "Orbital"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.05,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.74,
+    "warmth": 0.38,
+    "movement": 0.9,
+    "density": 0.79,
+    "space": 0.2,
+    "aggression": 0.75
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "controlled",
+    "orbital",
+    "drill",
+    "focused"
+  ],
+  "description": "Group envelopes staggered for drilling rhythm \u2014 sustained intensity with internal order."
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Infinite Cold Loop",
+  "version": "1.0",
+  "engines": [
+    "OUROBOROS",
+    "OPTIC"
+  ],
+  "mood": "Entangled",
+  "strategy": "Fast Cold",
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 1.0,
+    "COUPLING": 0.7,
+    "SPACE": 0.5
+  },
+  "sonic_dna": {
+    "brightness": 0.7,
+    "warmth": 0.07,
+    "movement": 0.98,
+    "density": 0.55,
+    "space": 0.48,
+    "aggression": 0.7
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "TIMBRAL_WARP",
+    "source": "OPTIC",
+    "target": "OUROBOROS",
+    "amount": 0.65
+  },
+  "tags": [
+    "entangled",
+    "cold",
+    "fast",
+    "infinite",
+    "aggressive"
+  ],
+  "description": "The ouroboros consumes itself in cold refracted light \u2014 absolute maximum velocity."
+}

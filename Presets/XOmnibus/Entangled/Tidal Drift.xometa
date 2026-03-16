@@ -1,0 +1,39 @@
+{
+  "name": "Tidal Drift",
+  "version": "1.0",
+  "engines": [
+    "ODYSSEY",
+    "OCEANIC"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.65,
+    "SPACE": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.69,
+    "density": 0.57,
+    "space": 0.64,
+    "aggression": 0.37
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "TIDAL_MODULATION",
+    "source": "ODYSSEY",
+    "target": "OCEANIC",
+    "amount": 0.65
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "odyssey",
+    "oceanic",
+    "wavetable"
+  ],
+  "description": "Wavetable odyssey carried on oceanic current \u2014 FM harmonics reshaped by tide pressure"
+}

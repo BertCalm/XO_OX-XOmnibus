@@ -1,0 +1,39 @@
+{
+  "name": "Hippie Dust Cloud",
+  "version": "1.0",
+  "engines": [
+    "OHM",
+    "OPAL"
+  ],
+  "mood": "Entangled",
+  "strategy": "Warm Sparse",
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.7,
+    "SPACE": 0.9
+  },
+  "sonic_dna": {
+    "brightness": 0.38,
+    "warmth": 0.95,
+    "movement": 0.55,
+    "density": 0.09,
+    "space": 0.88,
+    "aggression": 0.08
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "HARMONIC_BLEND",
+    "source": "OPAL",
+    "target": "OHM",
+    "amount": 0.62
+  },
+  "tags": [
+    "entangled",
+    "warm",
+    "sparse",
+    "movement",
+    "dreamy"
+  ],
+  "description": "Warm communal drones dissolving into slow granular drift \u2014 vast and inviting."
+}

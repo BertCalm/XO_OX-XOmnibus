@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Phosphor Siphon",
+  "mood": "Entangled",
+  "engines": [
+    "OddfeliX",
+    "Orphica"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddfeliX's electric LFO modulates XOrphica's siphonophore micro-pluck's pitch \u2014 tetra-blue oscillation locking the pair into a synchronized rhythmic entanglement.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "snap",
+    "orphica",
+    "lfo",
+    "pitch",
+    "rhythmic"
+  ],
+  "macroLabels": [
+    "SNAP",
+    "ORPHICA",
+    "PITCH",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.8,
+    "SPACE": 0.5
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.867,
+    "warmth": 0.2,
+    "movement": 0.617,
+    "density": 0.482,
+    "space": 0.585,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 1,
+      "snap_filterCutoff": 5500.0,
+      "snap_filterReso": 0.45,
+      "snap_filterEnvDepth": 0.65,
+      "snap_decay": 0.18,
+      "snap_level": 0.78,
+      "snap_snap": 0.55,
+      "snap_detune": 8.0
+    },
+    "Orphica": {
+      "orph_pluckBrightness": 0.65,
+      "orph_filterCutoff": 5500.0,
+      "orph_lfoRate": 0.18,
+      "orph_reverbMix": 0.4,
+      "orph_decay": 0.8
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Orphica",
+        "type": "LFO->Pitch",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null
+}

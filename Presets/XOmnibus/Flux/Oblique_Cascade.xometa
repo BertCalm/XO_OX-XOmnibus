@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Oblique Cascade",
+  "mood": "Flux",
+  "engines": [
+    "Oblique"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.93,
+    "COUPLING": 0.1,
+    "SPACE": 0.17
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.2,
+    "movement": 0.93,
+    "density": 0.88,
+    "space": 0.17,
+    "aggression": 0.9
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "maximum",
+    "oblique",
+    "cascade",
+    "prism"
+  ],
+  "description": "Bouncing prisms past Nyquist \u2014 harmonic cascade without ceiling."
+}

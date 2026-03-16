@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "FDN Drum Room",
+  "mood": "Entangled",
+  "engines": [
+    "Onset",
+    "Overlap"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ONSET drum transients feed OVERLAP's Lion's Mane FDN room. Every hit blooms into a knot-topology reverb space. Architecture of decay.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "onset",
+    "overlap",
+    "drum",
+    "reverb",
+    "fdn"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.5,
+    "movement": 0.75,
+    "density": 0.68,
+    "space": 0.65,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v1_level": 0.85,
+      "perc_v2_level": 0.7,
+      "perc_macro_space": 0.55
+    },
+    "Overlap": {
+      "olap_diffusion": 0.65,
+      "olap_knotTopo": 0.6,
+      "olap_decay": 0.7
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Overlap",
+        "type": "Amp->Filter",
+        "amount": 0.65
+      },
+      {
+        "engineA": "Overlap",
+        "engineB": "Onset",
+        "type": "Pitch->Character",
+        "amount": 0.4
+      }
+    ]
+  },
+  "sequencer": null
+}

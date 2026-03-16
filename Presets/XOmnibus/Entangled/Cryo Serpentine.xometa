@@ -1,0 +1,39 @@
+{
+  "name": "Cryo Serpentine",
+  "version": "1.0",
+  "engines": [
+    "OUROBOROS",
+    "OPTIC"
+  ],
+  "mood": "Entangled",
+  "strategy": "Fast Cold",
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.8,
+    "SPACE": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.8,
+    "warmth": 0.09,
+    "movement": 0.92,
+    "density": 0.45,
+    "space": 0.58,
+    "aggression": 0.55
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_FOLD",
+    "source": "OUROBOROS",
+    "target": "OPTIC",
+    "amount": 0.75
+  },
+  "tags": [
+    "entangled",
+    "cold",
+    "fast",
+    "serpentine",
+    "prism"
+  ],
+  "description": "Frozen snake motion fracturing into prismatic cold at maximum cycle speed."
+}

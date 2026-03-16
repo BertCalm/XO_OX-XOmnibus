@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Owlfish Stalk",
+  "mood": "Flux",
+  "engines": [
+    "Owlfish"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.0,
+    "SPACE": 0.16
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.22,
+    "movement": 0.12,
+    "density": 0.89,
+    "space": 0.16,
+    "aggression": 0.88
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "tension",
+    "owlfish",
+    "stalk",
+    "abyssal"
+  ],
+  "description": "Gold bioluminescence suspended \u2014 every subharmonic coiled, not one emitted."
+}

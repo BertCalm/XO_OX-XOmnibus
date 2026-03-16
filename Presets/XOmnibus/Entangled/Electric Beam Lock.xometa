@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Electric Beam Lock",
+  "mood": "Entangled",
+  "engines": [
+    "OddfeliX",
+    "Optic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddfeliX's electric LFO modulates XOptic's visual-pulse modulation's pitch \u2014 tetra-blue oscillation locking the pair into a synchronized rhythmic entanglement.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "snap",
+    "optic",
+    "lfo",
+    "pitch",
+    "rhythmic"
+  ],
+  "macroLabels": [
+    "SNAP",
+    "OPTIC",
+    "PITCH",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.8,
+    "SPACE": 0.5
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.885,
+    "warmth": 0.183,
+    "movement": 0.652,
+    "density": 0.5,
+    "space": 0.585,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 1,
+      "snap_filterCutoff": 5500.0,
+      "snap_filterReso": 0.45,
+      "snap_filterEnvDepth": 0.65,
+      "snap_decay": 0.18,
+      "snap_level": 0.78,
+      "snap_snap": 0.55,
+      "snap_detune": 8.0
+    },
+    "Optic": {
+      "optic_pulseRate": 0.45,
+      "optic_pulseDepth": 0.6,
+      "optic_lfoRate": 0.3,
+      "optic_brightness": 0.8,
+      "optic_scanMode": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Optic",
+        "type": "LFO->Pitch",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null
+}

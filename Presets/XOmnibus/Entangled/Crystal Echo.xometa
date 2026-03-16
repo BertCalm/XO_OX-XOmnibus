@@ -1,0 +1,39 @@
+{
+  "name": "Crystal Echo",
+  "version": "1.0",
+  "engines": [
+    "OVERDUB",
+    "ORPHICA"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.7,
+    "SPACE": 0.7
+  },
+  "sonic_dna": {
+    "brightness": 0.52,
+    "warmth": 0.59,
+    "movement": 0.59,
+    "density": 0.52,
+    "space": 0.57,
+    "aggression": 0.27
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "GRAIN_SCATTER",
+    "source": "ORPHICA",
+    "target": "OVERDUB",
+    "amount": 0.7
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "overdub",
+    "orphica",
+    "dub"
+  ],
+  "description": "Spring reverb carries microsound particles forward \u2014 shimmer locked inside the bloom"
+}

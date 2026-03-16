@@ -1,0 +1,39 @@
+{
+  "name": "Drift Fragment",
+  "version": "1.0",
+  "engines": [
+    "ODYSSEY",
+    "OBLIQUE"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.55,
+    "SPACE": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.51,
+    "warmth": 0.5,
+    "movement": 0.61,
+    "density": 0.57,
+    "space": 0.62,
+    "aggression": 0.41
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "ANGULAR_DEFLECT",
+    "source": "OBLIQUE",
+    "target": "ODYSSEY",
+    "amount": 0.55
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "odyssey",
+    "oblique",
+    "wavetable"
+  ],
+  "description": "Oblique strategy intercepts drift FM \u2014 calculated redirection of an uncontrolled journey"
+}

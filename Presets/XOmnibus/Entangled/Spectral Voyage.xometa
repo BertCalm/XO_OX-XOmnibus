@@ -1,0 +1,39 @@
+{
+  "name": "Spectral Voyage",
+  "version": "1.0",
+  "engines": [
+    "ODYSSEY",
+    "OPTIC"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.75,
+    "SPACE": 0.7
+  },
+  "sonic_dna": {
+    "brightness": 0.67,
+    "warmth": 0.44,
+    "movement": 0.65,
+    "density": 0.51,
+    "space": 0.58,
+    "aggression": 0.37
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_REFRACTION",
+    "source": "OPTIC",
+    "target": "ODYSSEY",
+    "amount": 0.75
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "odyssey",
+    "optic",
+    "wavetable"
+  ],
+  "description": "Odyssey FM sideband spectrum beamed through optical prism \u2014 journey charted in light"
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Sage Shimmer",
+  "version": "1.0",
+  "engines": [
+    "OPAL",
+    "OHM"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.65,
+    "SPACE": 0.7
+  },
+  "sonic_dna": {
+    "brightness": 0.5,
+    "warmth": 0.63,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.7,
+    "aggression": 0.2
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SYMPATHETIC_RESONANCE",
+    "source": "OHM",
+    "target": "OPAL",
+    "amount": 0.65
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "opal",
+    "ohm",
+    "granular"
+  ],
+  "description": "Opal shimmer and sage warmth dissolve into each other \u2014 granular community at rest"
+}

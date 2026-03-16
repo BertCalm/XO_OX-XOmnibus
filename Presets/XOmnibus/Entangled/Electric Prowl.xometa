@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Electric Prowl",
+  "mood": "Entangled",
+  "engines": [
+    "OddfeliX",
+    "Ocelot"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddfeliX's electric LFO modulates XOcelot's biome-driven filter's pitch \u2014 tetra-blue oscillation locking the pair into a synchronized rhythmic entanglement.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "snap",
+    "ocelot",
+    "lfo",
+    "pitch",
+    "rhythmic"
+  ],
+  "macroLabels": [
+    "SNAP",
+    "OCELOT",
+    "PITCH",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.8,
+    "SPACE": 0.5
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.833,
+    "warmth": 0.235,
+    "movement": 0.6,
+    "density": 0.517,
+    "space": 0.55,
+    "aggression": 0.402
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 1,
+      "snap_filterCutoff": 5500.0,
+      "snap_filterReso": 0.45,
+      "snap_filterEnvDepth": 0.65,
+      "snap_decay": 0.18,
+      "snap_level": 0.78,
+      "snap_snap": 0.55,
+      "snap_detune": 8.0
+    },
+    "Ocelot": {
+      "ocelot_biome": 0.5,
+      "ocelot_filterCutoff": 2800.0,
+      "ocelot_filterReso": 0.4,
+      "ocelot_drive": 0.45,
+      "ocelot_lfoRate": 0.25
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Ocelot",
+        "type": "LFO->Pitch",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null
+}

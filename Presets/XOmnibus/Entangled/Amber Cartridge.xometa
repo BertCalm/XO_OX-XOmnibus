@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "name": "Amber Cartridge",
+  "mood": "Entangled",
+  "engines": [
+    "Oblong",
+    "Onset",
+    "Overworld"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Warm lo-fi cartridge aesthetic. OBLONG's amber character coats every element in analog warmth, ONSET provides dusty drum hits, OVERWORLD runs a mellow SNES-era pad melody underneath. Nostalgia in crystalline form.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "oblong",
+    "onset",
+    "overworld",
+    "marquee",
+    "lo-fi",
+    "snes",
+    "amber",
+    "warm"
+  ],
+  "macroLabels": [
+    "WARMTH",
+    "DUST",
+    "ERA",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": 85,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.7,
+    "movement": 0.667,
+    "density": 0.633,
+    "space": 0.55,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_warmth": 0.8,
+      "bob_swing": 0.4,
+      "bob_amberMix": 0.75,
+      "bob_density": 0.5
+    },
+    "Onset": {
+      "perc_v1_level": 0.75,
+      "perc_v2_level": 0.7,
+      "perc_macro_punch": 0.5,
+      "perc_macro_space": 0.55
+    },
+    "Overworld": {
+      "ow_eraCross": 0.2,
+      "ow_oscWave": 3,
+      "ow_reverbMix": 0.45,
+      "ow_filterCut": 4500.0,
+      "ow_glitch": 0.1
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Overworld",
+        "type": "Amp->Filter",
+        "amount": 0.55
+      },
+      {
+        "engineA": "Overworld",
+        "engineB": "Onset",
+        "type": "Pitch->Velocity",
+        "amount": 0.45
+      },
+      {
+        "engineA": "Onset",
+        "engineB": "Oblong",
+        "type": "Rhythm->Blend",
+        "amount": 0.4
+      }
+    ]
+  },
+  "sequencer": null
+}

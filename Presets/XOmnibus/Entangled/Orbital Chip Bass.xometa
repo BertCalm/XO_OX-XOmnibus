@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Orbital Chip Bass",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "Owlfish"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERWORLD's chip melody floats over OWLFISH's orbital subharmonics. NES squares above, bioluminescent subs below. Full frequency architecture.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overworld",
+    "owlfish",
+    "chip",
+    "bass",
+    "subharmonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.4,
+    "movement": 0.7,
+    "density": 0.65,
+    "space": 0.52,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_eraCross": 0.4,
+      "ow_oscWave": 1,
+      "ow_arpRate": 85.0
+    },
+    "Owlfish": {
+      "owl_subMix": 0.6,
+      "owl_subDiv1": 2,
+      "owl_subLevel1": 0.7,
+      "owl_mixtur": 0.4
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Owlfish",
+        "type": "Pitch->Character",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Owlfish",
+        "engineB": "Overworld",
+        "type": "Amp->Filter",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Abyssal Grain",
+  "version": "1.0",
+  "engines": [
+    "OPAL",
+    "OWLFISH"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.6,
+    "SPACE": 0.8
+  },
+  "sonic_dna": {
+    "brightness": 0.48,
+    "warmth": 0.57,
+    "movement": 0.52,
+    "density": 0.56,
+    "space": 0.68,
+    "aggression": 0.24
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "RESONANT_PIPE",
+    "source": "OPAL",
+    "target": "OWLFISH",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "opal",
+    "owlfish",
+    "granular"
+  ],
+  "description": "Opal grain cloud descends past the thermocline \u2014 owlfish pipes resonating through particles"
+}

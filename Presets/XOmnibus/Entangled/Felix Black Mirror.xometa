@@ -1,0 +1,39 @@
+{
+  "name": "Felix Black Mirror",
+  "version": "1.0",
+  "engines": [
+    "ODDFELIX",
+    "OBSIDIAN"
+  ],
+  "mood": "Entangled",
+  "strategy": "Bright Dark",
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.8,
+    "SPACE": 0.5
+  },
+  "sonic_dna": {
+    "brightness": 0.91,
+    "warmth": 0.08,
+    "movement": 0.42,
+    "density": 0.7,
+    "space": 0.5,
+    "aggression": 0.5
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "PHASE_LOCK",
+    "source": "ODDFELIX",
+    "target": "OBSIDIAN",
+    "amount": 0.75
+  },
+  "tags": [
+    "entangled",
+    "bright",
+    "cold",
+    "character",
+    "obsidian"
+  ],
+  "description": "OddFelix's bright eccentricity reflected back through Obsidian's volcanic black."
+}

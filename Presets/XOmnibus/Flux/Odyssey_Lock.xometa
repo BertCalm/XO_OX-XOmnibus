@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Odyssey Lock",
+  "mood": "Flux",
+  "engines": [
+    "Odyssey"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.87,
+    "MOVEMENT": 0.16,
+    "COUPLING": 0.0,
+    "SPACE": 0.22
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.3,
+    "movement": 0.16,
+    "density": 0.87,
+    "space": 0.22,
+    "aggression": 0.87
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "tension",
+    "odyssey",
+    "lock",
+    "violet"
+  ],
+  "description": "Drift envelopes frozen at peak sustain \u2014 violet pressure behind glass."
+}

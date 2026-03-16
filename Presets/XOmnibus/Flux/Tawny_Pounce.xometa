@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Tawny Pounce",
+  "mood": "Flux",
+  "engines": [
+    "Ocelot"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.84,
+    "COUPLING": 0.0,
+    "SPACE": 0.22
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.55,
+    "movement": 0.84,
+    "density": 0.69,
+    "space": 0.22,
+    "aggression": 0.64
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "controlled",
+    "ocelot",
+    "pounce",
+    "biome"
+  ],
+  "description": "Low crouch to explosive spring \u2014 every gesture deliberate, landing exact."
+}

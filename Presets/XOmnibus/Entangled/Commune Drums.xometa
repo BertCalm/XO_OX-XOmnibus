@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Commune Drums",
+  "mood": "Entangled",
+  "engines": [
+    "Onset",
+    "Ohm"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OHM's commune axis expanded by ONSET rhythm. The beat is the ritual. Drum pattern becomes a communal invocation. MEDDLING macro activates.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "onset",
+    "ohm",
+    "drum",
+    "commune",
+    "ritual"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.55,
+    "movement": 0.78,
+    "density": 0.7,
+    "space": 0.48,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v1_level": 0.8,
+      "perc_v2_level": 0.65,
+      "perc_macro_punch": 0.65
+    },
+    "Ohm": {
+      "ohm_commune": 0.65,
+      "ohm_meddling": 0.5,
+      "ohm_ritualDepth": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Ohm",
+        "type": "Rhythm->Blend",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Ohm",
+        "engineB": "Onset",
+        "type": "Amp->Filter",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null
+}

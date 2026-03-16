@@ -1,0 +1,39 @@
+{
+  "name": "Drama Delay",
+  "version": "1.0",
+  "engines": [
+    "OLE",
+    "OVERDUB"
+  ],
+  "mood": "Entangled",
+  "strategy": "Warm Sparse",
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.75,
+    "SPACE": 0.72
+  },
+  "sonic_dna": {
+    "brightness": 0.48,
+    "warmth": 0.92,
+    "movement": 0.5,
+    "density": 0.09,
+    "space": 0.7,
+    "aggression": 0.15
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "TIMBRAL_WARP",
+    "source": "OLE",
+    "target": "OVERDUB",
+    "amount": 0.68
+  },
+  "tags": [
+    "entangled",
+    "warm",
+    "sparse",
+    "afro-latin",
+    "drama"
+  ],
+  "description": "Ol\u00e9's DRAMA axis trailing warm echoes through Overdub's vast dub space."
+}

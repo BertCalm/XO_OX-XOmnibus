@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Snap FDN Wash",
+  "mood": "Entangled",
+  "engines": [
+    "OddfeliX",
+    "Overlap"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddfeliX's transient snap drives XOverlap's FDN knot-topology's filter dynamics \u2014 every neon-bright attack sculpts the partner's tonal response in real time.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "snap",
+    "overlap",
+    "dynamic",
+    "filter",
+    "envelope"
+  ],
+  "macroLabels": [
+    "SNAP",
+    "OVERLAP",
+    "FILTER",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.55,
+    "SPACE": 0.45
+  },
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.833,
+    "warmth": 0.2,
+    "movement": 0.617,
+    "density": 0.535,
+    "space": 0.603,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 1,
+      "snap_filterCutoff": 5500.0,
+      "snap_filterReso": 0.45,
+      "snap_filterEnvDepth": 0.65,
+      "snap_decay": 0.18,
+      "snap_level": 0.78,
+      "snap_snap": 0.55,
+      "snap_detune": 8.0
+    },
+    "Overlap": {
+      "olap_fdnMix": 0.6,
+      "olap_filterCutoff": 4000.0,
+      "olap_lfoRate": 0.12,
+      "olap_reverbDecay": 0.7,
+      "olap_drive": 0.25
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Overlap",
+        "type": "Amp->Filter",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null
+}

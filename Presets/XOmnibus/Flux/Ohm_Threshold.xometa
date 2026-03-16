@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Ohm Threshold",
+  "mood": "Flux",
+  "engines": [
+    "Ohm"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.74,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.18,
+    "SPACE": 0.3
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.62,
+    "movement": 0.22,
+    "density": 0.74,
+    "space": 0.3,
+    "aggression": 0.74
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "tension",
+    "ohm",
+    "threshold",
+    "sage"
+  ],
+  "description": "COMMUNE macro at decision threshold \u2014 the commune before it either harmonizes or fractures."
+}

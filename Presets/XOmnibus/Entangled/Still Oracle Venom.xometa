@@ -1,0 +1,39 @@
+{
+  "name": "Still Oracle Venom",
+  "version": "1.0",
+  "engines": [
+    "OVERBITE",
+    "ORACLE"
+  ],
+  "mood": "Entangled",
+  "strategy": "Still Aggressive",
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.04,
+    "COUPLING": 0.88,
+    "SPACE": 0.55
+  },
+  "sonic_dna": {
+    "brightness": 0.3,
+    "warmth": 0.48,
+    "movement": 0.04,
+    "density": 0.8,
+    "space": 0.52,
+    "aggression": 0.98
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_FOLD",
+    "source": "ORACLE",
+    "target": "OVERBITE",
+    "amount": 0.8
+  },
+  "tags": [
+    "entangled",
+    "aggressive",
+    "still",
+    "prophecy",
+    "venom"
+  ],
+  "description": "Oracle's vision delivered through Overbite's fangs \u2014 the prophecy is violence."
+}

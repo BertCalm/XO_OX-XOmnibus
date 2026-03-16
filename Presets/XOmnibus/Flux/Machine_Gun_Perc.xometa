@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Machine Gun Perc",
+  "mood": "Flux",
+  "engines": [
+    "Onset"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.99,
+    "COUPLING": 0.0,
+    "SPACE": 0.05
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.1,
+    "movement": 0.99,
+    "density": 0.87,
+    "space": 0.05,
+    "aggression": 0.99
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "maximum",
+    "onset",
+    "percussion",
+    "machine"
+  ],
+  "description": "XVC at maximum cross-voice density \u2014 drum machine as weapon."
+}

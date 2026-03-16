@@ -1,0 +1,39 @@
+{
+  "name": "Pod Drift",
+  "version": "1.0",
+  "engines": [
+    "ODYSSEY",
+    "ORCA"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.7,
+    "SPACE": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.57,
+    "warmth": 0.48,
+    "movement": 0.67,
+    "density": 0.59,
+    "space": 0.6,
+    "aggression": 0.51
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "ECHOLOCATION_SYNC",
+    "source": "ODYSSEY",
+    "target": "ORCA",
+    "amount": 0.7
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "odyssey",
+    "orca",
+    "wavetable"
+  ],
+  "description": "Orca pod navigates by drift FM \u2014 wavetable odyssey mapped as echolocation terrain"
+}

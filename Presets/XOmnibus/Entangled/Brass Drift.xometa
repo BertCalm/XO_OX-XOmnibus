@@ -1,0 +1,39 @@
+{
+  "name": "Brass Drift",
+  "version": "1.0",
+  "engines": [
+    "ODYSSEY",
+    "OTTONI"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.65,
+    "SPACE": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.59,
+    "warmth": 0.54,
+    "movement": 0.59,
+    "density": 0.61,
+    "space": 0.56,
+    "aggression": 0.45
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "HARMONIC_BLEND",
+    "source": "ODYSSEY",
+    "target": "OTTONI",
+    "amount": 0.65
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "odyssey",
+    "ottoni",
+    "wavetable"
+  ],
+  "description": "Triple brass harmonics drawn into FM wavetable \u2014 patina aged by odyssey spectral warp"
+}

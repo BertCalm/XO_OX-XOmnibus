@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Grain Pixel Clouds",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "Orphica"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORPHICA's microsound engine granularizes OVERWORLD's chip tone output. Retro pixels dissolve into impressionistic sound-grain clusters.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "overworld",
+    "orphica",
+    "chip",
+    "granular",
+    "texture"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.4,
+    "movement": 0.72,
+    "density": 0.5,
+    "space": 0.55,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_eraCross": 0.5,
+      "ow_oscWave": 1,
+      "ow_filterCut": 7000.0
+    },
+    "Orphica": {
+      "orph_grainSize": 0.2,
+      "orph_scatter": 0.6,
+      "orph_harpDensity": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Orphica",
+        "type": "Amp->Filter",
+        "amount": 0.6
+      },
+      {
+        "engineA": "Orphica",
+        "engineB": "Overworld",
+        "type": "Env->Character",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null
+}

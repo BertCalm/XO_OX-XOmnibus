@@ -1,0 +1,39 @@
+{
+  "name": "Frozen Strike",
+  "version": "1.0",
+  "engines": [
+    "ONSET",
+    "OBSCURA"
+  ],
+  "mood": "Entangled",
+  "strategy": "Bright Dark",
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.75,
+    "SPACE": 0.65
+  },
+  "sonic_dna": {
+    "brightness": 0.9,
+    "warmth": 0.09,
+    "movement": 0.6,
+    "density": 0.55,
+    "space": 0.62,
+    "aggression": 0.42
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_FOLD",
+    "source": "OBSCURA",
+    "target": "ONSET",
+    "amount": 0.68
+  },
+  "tags": [
+    "entangled",
+    "bright",
+    "cold",
+    "percussive",
+    "crystalline"
+  ],
+  "description": "Each drum strike crystallised in Obscura's cold refraction."
+}

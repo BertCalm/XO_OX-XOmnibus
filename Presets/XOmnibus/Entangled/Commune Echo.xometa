@@ -1,0 +1,39 @@
+{
+  "name": "Commune Echo",
+  "version": "1.0",
+  "engines": [
+    "OVERDUB",
+    "OHM"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.55,
+    "SPACE": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.44,
+    "warmth": 0.69,
+    "movement": 0.51,
+    "density": 0.56,
+    "space": 0.61,
+    "aggression": 0.29
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SYMPATHETIC_RESONANCE",
+    "source": "OVERDUB",
+    "target": "OHM",
+    "amount": 0.55
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "overdub",
+    "ohm",
+    "dub"
+  ],
+  "description": "Folk warmth held inside a dub delay loop \u2014 communal presence echoing forward in time"
+}

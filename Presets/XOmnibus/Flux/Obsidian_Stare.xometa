@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Obsidian Stare",
+  "mood": "Flux",
+  "engines": [
+    "Obsidian"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.0,
+    "SPACE": 0.18
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.12,
+    "movement": 0.12,
+    "density": 0.88,
+    "space": 0.18,
+    "aggression": 0.92
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "tension",
+    "obsidian",
+    "still",
+    "intense"
+  ],
+  "description": "Crystal surface with interior rage \u2014 total stillness, maximum internal pressure."
+}

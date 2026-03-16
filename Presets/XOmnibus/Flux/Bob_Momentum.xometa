@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Bob Momentum",
+  "mood": "Flux",
+  "engines": [
+    "Oblong"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.78,
+    "COUPLING": 0.08,
+    "SPACE": 0.28
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.55,
+    "movement": 0.78,
+    "density": 0.72,
+    "space": 0.28,
+    "aggression": 0.62
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "controlled",
+    "oblong",
+    "momentum",
+    "amber"
+  ],
+  "description": "Amber warmth with purposeful forward motion \u2014 Bob in full stride."
+}

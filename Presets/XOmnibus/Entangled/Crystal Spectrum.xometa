@@ -1,0 +1,39 @@
+{
+  "name": "Crystal Spectrum",
+  "version": "1.0",
+  "engines": [
+    "OPAL",
+    "OPTIC"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.8,
+    "SPACE": 0.8
+  },
+  "sonic_dna": {
+    "brightness": 0.64,
+    "warmth": 0.47,
+    "movement": 0.62,
+    "density": 0.48,
+    "space": 0.64,
+    "aggression": 0.28
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_REFRACTION",
+    "source": "OPTIC",
+    "target": "OPAL",
+    "amount": 0.8
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "opal",
+    "optic",
+    "granular"
+  ],
+  "description": "Opal shimmer refracted through prismatic lens \u2014 grain cloud split to spectral rays"
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Electric Cask",
+  "mood": "Entangled",
+  "engines": [
+    "OddfeliX",
+    "Osteria"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddfeliX's electric LFO modulates XOsteria's Porto-wine warmth's pitch \u2014 tetra-blue oscillation locking the pair into a synchronized rhythmic entanglement.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "snap",
+    "osteria",
+    "lfo",
+    "pitch",
+    "rhythmic"
+  ],
+  "macroLabels": [
+    "SNAP",
+    "OSTERIA",
+    "PITCH",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.8,
+    "SPACE": 0.5
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.833,
+    "warmth": 0.253,
+    "movement": 0.6,
+    "density": 0.535,
+    "space": 0.55,
+    "aggression": 0.367
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 1,
+      "snap_filterCutoff": 5500.0,
+      "snap_filterReso": 0.45,
+      "snap_filterEnvDepth": 0.65,
+      "snap_decay": 0.18,
+      "snap_level": 0.78,
+      "snap_snap": 0.55,
+      "snap_detune": 8.0
+    },
+    "Osteria": {
+      "osteria_qBassShore": 0.6,
+      "osteria_filterCutoff": 1800.0,
+      "osteria_filterReso": 0.35,
+      "osteria_drive": 0.5,
+      "osteria_lfoDepth": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Osteria",
+        "type": "LFO->Pitch",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null
+}

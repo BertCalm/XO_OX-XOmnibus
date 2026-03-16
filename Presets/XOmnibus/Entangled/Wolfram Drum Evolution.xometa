@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Wolfram Drum Evolution",
+  "mood": "Entangled",
+  "engines": [
+    "Onset",
+    "Outwit"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ONSET seeds OUTWIT's Wolfram CA rules. The drum pattern becomes the initial condition \u2014 the automaton evolves it bar by bar.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "onset",
+    "outwit",
+    "drum",
+    "wolfram",
+    "cellular-automata"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.5,
+    "movement": 0.8,
+    "density": 0.75,
+    "space": 0.4,
+    "aggression": 0.62
+  },
+  "parameters": {
+    "Onset": {
+      "perc_v1_level": 0.8,
+      "perc_v3_level": 0.65,
+      "perc_macro_machine": 0.65
+    },
+    "Outwit": {
+      "owit_wolfRule": 110,
+      "owit_armDensity": 0.6,
+      "owit_caRate": 0.65
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Outwit",
+        "type": "Rhythm->Blend",
+        "amount": 0.7
+      },
+      {
+        "engineA": "Outwit",
+        "engineB": "Onset",
+        "type": "Env->Character",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null
+}

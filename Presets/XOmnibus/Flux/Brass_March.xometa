@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Brass March",
+  "mood": "Flux",
+  "engines": [
+    "Ottoni"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.1,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.48,
+    "movement": 0.8,
+    "density": 0.82,
+    "space": 0.2,
+    "aggression": 0.72
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "controlled",
+    "ottoni",
+    "brass",
+    "march"
+  ],
+  "description": "GROW macro building \u2014 triple brass advancing in disciplined formation."
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Dead Weight Obsidian",
+  "version": "1.0",
+  "engines": [
+    "OBESE",
+    "OBSIDIAN"
+  ],
+  "mood": "Entangled",
+  "strategy": "Still Aggressive",
+  "macros": {
+    "CHARACTER": 0.95,
+    "MOVEMENT": 0.04,
+    "COUPLING": 0.88,
+    "SPACE": 0.35
+  },
+  "sonic_dna": {
+    "brightness": 0.15,
+    "warmth": 0.45,
+    "movement": 0.04,
+    "density": 0.95,
+    "space": 0.3,
+    "aggression": 0.97
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "PHASE_LOCK",
+    "source": "OBSIDIAN",
+    "target": "OBESE",
+    "amount": 0.85
+  },
+  "tags": [
+    "entangled",
+    "aggressive",
+    "still",
+    "heavy",
+    "obsidian"
+  ],
+  "description": "Obsidian's hardness bearing down on XObese's mass \u2014 completely static, devastatingly heavy."
+}

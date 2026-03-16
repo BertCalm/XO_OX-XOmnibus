@@ -1,0 +1,39 @@
+{
+  "name": "Tavern Grain",
+  "version": "1.0",
+  "engines": [
+    "OPAL",
+    "OSTERIA"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.6,
+    "SPACE": 0.7
+  },
+  "sonic_dna": {
+    "brightness": 0.46,
+    "warmth": 0.63,
+    "movement": 0.54,
+    "density": 0.56,
+    "space": 0.62,
+    "aggression": 0.3
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "HARMONIC_BLEND",
+    "source": "OPAL",
+    "target": "OSTERIA",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "opal",
+    "osteria",
+    "granular"
+  ],
+  "description": "Granular warmth soaked in osteria resonance \u2014 opal shimmer pooling in stone acoustics"
+}

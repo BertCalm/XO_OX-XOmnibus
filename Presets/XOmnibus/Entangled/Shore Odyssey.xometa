@@ -1,0 +1,39 @@
+{
+  "name": "Shore Odyssey",
+  "version": "1.0",
+  "engines": [
+    "ODYSSEY",
+    "OSPREY"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.65,
+    "SPACE": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.57,
+    "warmth": 0.5,
+    "movement": 0.67,
+    "density": 0.55,
+    "space": 0.6,
+    "aggression": 0.43
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "COASTAL_DIVE",
+    "source": "ODYSSEY",
+    "target": "OSPREY",
+    "amount": 0.65
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "odyssey",
+    "osprey",
+    "wavetable"
+  ],
+  "description": "Drift FM lands at the shoreline \u2014 osprey plunge marks the destination of the voyage"
+}

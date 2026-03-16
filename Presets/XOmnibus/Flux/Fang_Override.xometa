@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Fang Override",
+  "mood": "Flux",
+  "engines": [
+    "Overbite"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.0,
+    "SPACE": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.28,
+    "movement": 0.88,
+    "density": 0.9,
+    "space": 0.1,
+    "aggression": 0.97
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "maximum",
+    "overbite",
+    "fang",
+    "override"
+  ],
+  "description": "All five BITE macros pinned \u2014 the filter bites through bone."
+}

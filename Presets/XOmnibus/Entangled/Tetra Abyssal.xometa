@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Tetra Abyssal",
+  "mood": "Entangled",
+  "engines": [
+    "OddfeliX",
+    "Owlfish"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OddfeliX's electric LFO modulates XOwlfish's Mixtur-Trautonium oscillator's pitch \u2014 tetra-blue oscillation locking the pair into a synchronized rhythmic entanglement.",
+  "tags": [
+    "entangled",
+    "coupling",
+    "snap",
+    "owlfish",
+    "lfo",
+    "pitch",
+    "rhythmic"
+  ],
+  "macroLabels": [
+    "SNAP",
+    "OWLFISH",
+    "PITCH",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.8,
+    "SPACE": 0.5
+  },
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.885,
+    "warmth": 0.217,
+    "movement": 0.6,
+    "density": 0.517,
+    "space": 0.568,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 1,
+      "snap_filterCutoff": 5500.0,
+      "snap_filterReso": 0.45,
+      "snap_filterEnvDepth": 0.65,
+      "snap_decay": 0.18,
+      "snap_level": 0.78,
+      "snap_snap": 0.55,
+      "snap_detune": 8.0
+    },
+    "Owlfish": {
+      "owl_filterCutoff": 3500.0,
+      "owl_filterReso": 0.4,
+      "owl_drive": 0.35,
+      "owl_lfoRate": 0.2,
+      "owl_mixturDepth": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Owlfish",
+        "type": "LFO->Pitch",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null
+}

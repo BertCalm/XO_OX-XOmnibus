@@ -1,0 +1,39 @@
+{
+  "name": "Pipe Spring",
+  "version": "1.0",
+  "engines": [
+    "OVERDUB",
+    "OWLFISH"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.65,
+    "SPACE": 0.7
+  },
+  "sonic_dna": {
+    "brightness": 0.42,
+    "warmth": 0.63,
+    "movement": 0.43,
+    "density": 0.62,
+    "space": 0.59,
+    "aggression": 0.33
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "RESONANT_PIPE",
+    "source": "OWLFISH",
+    "target": "OVERDUB",
+    "amount": 0.65
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "overdub",
+    "owlfish",
+    "dub"
+  ],
+  "description": "Spring reverb rings through Mixtur-Trautonium pipes \u2014 deep-water dub resonance"
+}

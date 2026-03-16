@@ -1,0 +1,39 @@
+{
+  "name": "Pod Velocity",
+  "version": "1.0",
+  "engines": [
+    "ORCA",
+    "ODDFELIX"
+  ],
+  "mood": "Entangled",
+  "strategy": "Fast Cold",
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.96,
+    "COUPLING": 0.68,
+    "SPACE": 0.45
+  },
+  "sonic_dna": {
+    "brightness": 0.6,
+    "warmth": 0.08,
+    "movement": 0.96,
+    "density": 0.58,
+    "space": 0.43,
+    "aggression": 0.7
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_FOLD",
+    "source": "ODDFELIX",
+    "target": "ORCA",
+    "amount": 0.62
+  },
+  "tags": [
+    "entangled",
+    "cold",
+    "fast",
+    "pod",
+    "eccentric"
+  ],
+  "description": "The entire pod moving at OddFelix-driven speeds through Arctic cold."
+}

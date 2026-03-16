@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Tidal Engine",
+  "mood": "Flux",
+  "engines": [
+    "Oceanic"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.67,
+    "MOVEMENT": 0.81,
+    "COUPLING": 0.14,
+    "SPACE": 0.32
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.64,
+    "warmth": 0.48,
+    "movement": 0.81,
+    "density": 0.82,
+    "space": 0.32,
+    "aggression": 0.6
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "controlled",
+    "oceanic",
+    "tidal",
+    "engine"
+  ],
+  "description": "Separation parameter mid-range \u2014 flocking behavior synchronized to a driving pulse."
+}

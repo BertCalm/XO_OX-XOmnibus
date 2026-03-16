@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Crystal Threat",
+  "mood": "Flux",
+  "engines": [
+    "Obsidian"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.92,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.0,
+    "SPACE": 0.14
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.08,
+    "movement": 0.08,
+    "density": 0.92,
+    "space": 0.14,
+    "aggression": 0.95
+  },
+  "parameters": {},
+  "tags": [
+    "flux",
+    "tension",
+    "obsidian",
+    "crystal",
+    "threat"
+  ],
+  "description": "Pure obsidian density with zero release \u2014 structural threat without a single movement."
+}

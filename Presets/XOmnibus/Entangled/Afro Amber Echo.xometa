@@ -1,0 +1,39 @@
+{
+  "name": "Afro Amber Echo",
+  "version": "1.0",
+  "engines": [
+    "OLE",
+    "OVERDUB"
+  ],
+  "mood": "Entangled",
+  "strategy": "Warm Sparse",
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.8,
+    "SPACE": 0.8
+  },
+  "sonic_dna": {
+    "brightness": 0.42,
+    "warmth": 0.95,
+    "movement": 0.38,
+    "density": 0.08,
+    "space": 0.78,
+    "aggression": 0.12
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "HARMONIC_BLEND",
+    "source": "OVERDUB",
+    "target": "OLE",
+    "amount": 0.72
+  },
+  "tags": [
+    "entangled",
+    "warm",
+    "sparse",
+    "afro-latin",
+    "dub"
+  ],
+  "description": "Ol\u00e9's fiery warmth stretched into amber dub delays \u2014 sparse and deeply soulful."
+}

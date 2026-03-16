@@ -1,0 +1,39 @@
+{
+  "name": "Pelagic Hearth",
+  "version": "1.0",
+  "engines": [
+    "OSTERIA",
+    "OCEANIC"
+  ],
+  "mood": "Entangled",
+  "strategy": "Warm Sparse",
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.72,
+    "SPACE": 0.85
+  },
+  "sonic_dna": {
+    "brightness": 0.4,
+    "warmth": 0.91,
+    "movement": 0.45,
+    "density": 0.1,
+    "space": 0.82,
+    "aggression": 0.08
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "PHASE_LOCK",
+    "source": "OSTERIA",
+    "target": "OCEANIC",
+    "amount": 0.65
+  },
+  "tags": [
+    "entangled",
+    "warm",
+    "sparse",
+    "depth",
+    "hearth"
+  ],
+  "description": "Deep-sea warmth radiating from a pelagic hearth \u2014 absurd and beautiful."
+}

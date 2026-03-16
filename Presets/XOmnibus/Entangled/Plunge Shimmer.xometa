@@ -1,0 +1,39 @@
+{
+  "name": "Plunge Shimmer",
+  "version": "1.0",
+  "engines": [
+    "OPAL",
+    "OSPREY"
+  ],
+  "mood": "Entangled",
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.6,
+    "SPACE": 0.7
+  },
+  "sonic_dna": {
+    "brightness": 0.54,
+    "warmth": 0.53,
+    "movement": 0.64,
+    "density": 0.52,
+    "space": 0.66,
+    "aggression": 0.34
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "COASTAL_DIVE",
+    "source": "OSPREY",
+    "target": "OPAL",
+    "amount": 0.6
+  },
+  "tags": [
+    "entangled",
+    "coupling",
+    "flagship",
+    "opal",
+    "osprey",
+    "granular"
+  ],
+  "description": "Grain cloud breaks at the waterline \u2014 osprey plunge moment frozen in opal shimmer"
+}

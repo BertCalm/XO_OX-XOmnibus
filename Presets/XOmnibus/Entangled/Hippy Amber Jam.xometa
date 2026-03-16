@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Hippy Amber Jam",
+  "mood": "Entangled",
+  "engines": [
+    "Oblong",
+    "Ohm"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OBLONG's groove curiosity feeds OHM's communal jam engine. Beatnik percussion meets commune consciousness in amber amber light.",
+  "tags": [
+    "coupling",
+    "entangled",
+    "oblong",
+    "ohm",
+    "beat",
+    "communal",
+    "groove"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.68,
+    "movement": 0.62,
+    "density": 0.7,
+    "space": 0.5,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_swing": 0.45,
+      "bob_groove": 0.5,
+      "bob_warmth": 0.65
+    },
+    "Ohm": {
+      "ohm_commune": 0.55,
+      "ohm_meddling": 0.35,
+      "ohm_warmth": 0.6
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Ohm",
+        "type": "Rhythm->Blend",
+        "amount": 0.5
+      },
+      {
+        "engineA": "Ohm",
+        "engineB": "Oblong",
+        "type": "Amp->Filter",
+        "amount": 0.4
+      }
+    ]
+  },
+  "sequencer": null
+}

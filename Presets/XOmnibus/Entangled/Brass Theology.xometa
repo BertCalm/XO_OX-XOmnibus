@@ -1,0 +1,39 @@
+{
+  "name": "Brass Theology",
+  "version": "1.0",
+  "engines": [
+    "OTTONI",
+    "ORGANON"
+  ],
+  "mood": "Entangled",
+  "strategy": "Warm Sparse",
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.82,
+    "SPACE": 0.75
+  },
+  "sonic_dna": {
+    "brightness": 0.5,
+    "warmth": 0.93,
+    "movement": 0.32,
+    "density": 0.09,
+    "space": 0.72,
+    "aggression": 0.2
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "HARMONIC_BLEND",
+    "source": "OTTONI",
+    "target": "ORGANON",
+    "amount": 0.75
+  },
+  "tags": [
+    "entangled",
+    "warm",
+    "sparse",
+    "brass",
+    "organ"
+  ],
+  "description": "Ottoni's triple brass warmth feeding Organon's theological resonance \u2014 sparse and stately."
+}
