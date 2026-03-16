@@ -1,0 +1,49 @@
+{
+  "name": "OBSIDIAN PILLAR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBESE",
+    "ORGANON"
+  ],
+  "parameters": {
+    "OBESE": {
+      "macro_character": 0.153,
+      "macro_movement": 0.176,
+      "macro_coupling": 0.522,
+      "macro_space": 0.65
+    },
+    "ORGANON": {
+      "macro_character": 0.616,
+      "macro_movement": 0.92,
+      "macro_coupling": 0.775,
+      "macro_space": 0.465
+    }
+  },
+  "coupling": {
+    "type": "TIMBRAL_BLEND",
+    "source": "OBESE",
+    "target": "ORGANON",
+    "amount": 0.576
+  },
+  "dna": {
+    "brightness": 0.076,
+    "warmth": 0.208,
+    "movement": 0.452,
+    "density": 0.071,
+    "space": 0.417,
+    "aggression": 0.735
+  },
+  "macros": {
+    "CHARACTER": 0.385,
+    "MOVEMENT": 0.548,
+    "COUPLING": 0.649,
+    "SPACE": 0.557
+  },
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme",
+    "low-density"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "CRUSH FLOOR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ODDFELIX",
+    "OVERBITE"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.672,
+      "macro_movement": 0.658,
+      "macro_coupling": 0.493,
+      "macro_space": 0.687
+    },
+    "OVERBITE": {
+      "macro_character": 0.548,
+      "macro_movement": 0.499,
+      "macro_coupling": 0.762,
+      "macro_space": 0.46
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ODDFELIX",
+    "target": "OVERBITE",
+    "amount": 0.845
+  },
+  "dna": {
+    "brightness": 0.414,
+    "warmth": 0.898,
+    "movement": 0.719,
+    "density": 0.399,
+    "space": 0.275,
+    "aggression": 0.947
+  },
+  "macros": {
+    "CHARACTER": 0.701,
+    "MOVEMENT": 0.719,
+    "COUPLING": 0.845,
+    "SPACE": 0.275
+  },
+  "tags": [
+    "foundation",
+    "aggressive",
+    "harsh"
+  ]
+}

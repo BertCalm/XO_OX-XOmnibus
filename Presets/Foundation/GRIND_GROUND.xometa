@@ -1,0 +1,48 @@
+{
+  "name": "GRIND GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OUTWIT",
+    "ONSET"
+  ],
+  "parameters": {
+    "OUTWIT": {
+      "macro_character": 0.332,
+      "macro_movement": 0.61,
+      "macro_coupling": 0.529,
+      "macro_space": 0.347
+    },
+    "ONSET": {
+      "macro_character": 0.322,
+      "macro_movement": 0.38,
+      "macro_coupling": 0.321,
+      "macro_space": 0.667
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OUTWIT",
+    "target": "ONSET",
+    "amount": 0.806
+  },
+  "dna": {
+    "brightness": 0.688,
+    "warmth": 0.305,
+    "movement": 0.667,
+    "density": 0.479,
+    "space": 0.932,
+    "aggression": 0.915
+  },
+  "macros": {
+    "CHARACTER": 0.558,
+    "MOVEMENT": 0.667,
+    "COUPLING": 0.806,
+    "SPACE": 0.932
+  },
+  "tags": [
+    "foundation",
+    "aggressive",
+    "harsh"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "UMBRA DRIFT",
+  "version": "1.0",
+  "mood": "Atmosphere",
+  "engines": [
+    "OPAL",
+    "OMBRE"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.639,
+      "macro_movement": 0.971,
+      "macro_coupling": 0.051,
+      "macro_space": 0.334
+    },
+    "OMBRE": {
+      "macro_character": 0.989,
+      "macro_movement": 0.787,
+      "macro_coupling": 0.205,
+      "macro_space": 0.83
+    }
+  },
+  "coupling": {
+    "type": "TEXTURE_WEAVE",
+    "source": "OPAL",
+    "target": "OMBRE",
+    "amount": 0.427
+  },
+  "dna": {
+    "brightness": 0.079,
+    "warmth": 0.236,
+    "movement": 0.366,
+    "density": 0.983,
+    "space": 0.695,
+    "aggression": 0.255
+  },
+  "macros": {
+    "CHARACTER": 0.814,
+    "MOVEMENT": 0.879,
+    "COUPLING": 0.128,
+    "SPACE": 0.582
+  },
+  "tags": [
+    "atmosphere",
+    "dark",
+    "extreme",
+    "high-density"
+  ]
+}

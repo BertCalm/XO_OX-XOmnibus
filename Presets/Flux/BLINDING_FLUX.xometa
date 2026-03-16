@@ -1,0 +1,49 @@
+{
+  "name": "BLINDING FLUX",
+  "version": "1.0",
+  "mood": "Flux",
+  "engines": [
+    "OUROBOROS",
+    "OBSIDIAN"
+  ],
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.073,
+      "macro_movement": 0.414,
+      "macro_coupling": 0.63,
+      "macro_space": 0.194
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.696,
+      "macro_movement": 0.494,
+      "macro_coupling": 0.244,
+      "macro_space": 0.656
+    }
+  },
+  "coupling": {
+    "type": "TEXTURE_WEAVE",
+    "source": "OUROBOROS",
+    "target": "OBSIDIAN",
+    "amount": 0.81
+  },
+  "dna": {
+    "brightness": 0.889,
+    "warmth": 0.604,
+    "movement": 0.038,
+    "density": 0.215,
+    "space": 0.347,
+    "aggression": 0.485
+  },
+  "macros": {
+    "CHARACTER": 0.384,
+    "MOVEMENT": 0.454,
+    "COUPLING": 0.437,
+    "SPACE": 0.425
+  },
+  "tags": [
+    "flux",
+    "bright",
+    "extreme",
+    "low-movement"
+  ]
+}

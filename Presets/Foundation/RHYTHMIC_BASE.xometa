@@ -1,0 +1,48 @@
+{
+  "name": "RHYTHMIC BASE",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBLONG",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.41,
+      "macro_movement": 0.911,
+      "macro_coupling": 0.799,
+      "macro_space": 0.455
+    },
+    "OVERWORLD": {
+      "macro_character": 0.345,
+      "macro_movement": 0.946,
+      "macro_coupling": 0.324,
+      "macro_space": 0.255
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBLONG",
+    "target": "OVERWORLD",
+    "amount": 0.6
+  },
+  "dna": {
+    "brightness": 0.359,
+    "warmth": 0.348,
+    "movement": 0.924,
+    "density": 0.537,
+    "space": 0.137,
+    "aggression": 0.551
+  },
+  "macros": {
+    "CHARACTER": 0.614,
+    "MOVEMENT": 0.924,
+    "COUPLING": 0.6,
+    "SPACE": 0.137
+  },
+  "tags": [
+    "foundation",
+    "kinetic",
+    "moving"
+  ]
+}

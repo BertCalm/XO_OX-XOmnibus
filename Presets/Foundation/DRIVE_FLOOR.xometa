@@ -1,0 +1,48 @@
+{
+  "name": "DRIVE FLOOR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OSTERIA",
+    "OCTOPUS"
+  ],
+  "parameters": {
+    "OSTERIA": {
+      "macro_character": 0.397,
+      "macro_movement": 0.975,
+      "macro_coupling": 0.648,
+      "macro_space": 0.447
+    },
+    "OCTOPUS": {
+      "macro_character": 0.422,
+      "macro_movement": 0.903,
+      "macro_coupling": 0.628,
+      "macro_space": 0.203
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OSTERIA",
+    "target": "OCTOPUS",
+    "amount": 0.715
+  },
+  "dna": {
+    "brightness": 0.215,
+    "warmth": 0.074,
+    "movement": 0.931,
+    "density": 0.485,
+    "space": 0.71,
+    "aggression": 0.244
+  },
+  "macros": {
+    "CHARACTER": 0.675,
+    "MOVEMENT": 0.931,
+    "COUPLING": 0.715,
+    "SPACE": 0.71
+  },
+  "tags": [
+    "foundation",
+    "kinetic",
+    "moving"
+  ]
+}

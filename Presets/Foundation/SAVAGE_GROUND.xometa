@@ -1,0 +1,48 @@
+{
+  "name": "SAVAGE GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OVERWORLD",
+    "OLE"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.643,
+      "macro_movement": 0.598,
+      "macro_coupling": 0.325,
+      "macro_space": 0.503
+    },
+    "OLE": {
+      "macro_character": 0.548,
+      "macro_movement": 0.662,
+      "macro_coupling": 0.443,
+      "macro_space": 0.599
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OVERWORLD",
+    "target": "OLE",
+    "amount": 0.683
+  },
+  "dna": {
+    "brightness": 0.545,
+    "warmth": 0.796,
+    "movement": 0.377,
+    "density": 0.886,
+    "space": 0.595,
+    "aggression": 0.957
+  },
+  "macros": {
+    "CHARACTER": 0.604,
+    "MOVEMENT": 0.377,
+    "COUPLING": 0.683,
+    "SPACE": 0.595
+  },
+  "tags": [
+    "foundation",
+    "aggressive",
+    "harsh"
+  ]
+}

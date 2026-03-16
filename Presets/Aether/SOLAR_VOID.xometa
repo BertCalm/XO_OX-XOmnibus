@@ -1,0 +1,49 @@
+{
+  "name": "SOLAR VOID",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OHM",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.944,
+      "macro_movement": 0.037,
+      "macro_coupling": 0.202,
+      "macro_space": 0.791
+    },
+    "OVERWORLD": {
+      "macro_character": 0.886,
+      "macro_movement": 0.316,
+      "macro_coupling": 0.31,
+      "macro_space": 0.398
+    }
+  },
+  "coupling": {
+    "type": "TIMBRAL_BLEND",
+    "source": "OHM",
+    "target": "OVERWORLD",
+    "amount": 0.73
+  },
+  "dna": {
+    "brightness": 0.961,
+    "warmth": 0.698,
+    "movement": 0.987,
+    "density": 0.487,
+    "space": 0.309,
+    "aggression": 0.281
+  },
+  "macros": {
+    "CHARACTER": 0.915,
+    "MOVEMENT": 0.176,
+    "COUPLING": 0.256,
+    "SPACE": 0.595
+  },
+  "tags": [
+    "aether",
+    "bright",
+    "extreme",
+    "high-movement"
+  ]
+}

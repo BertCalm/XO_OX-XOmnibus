@@ -1,0 +1,48 @@
+{
+  "name": "WRATH FLOOR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OSTERIA",
+    "OCTOPUS"
+  ],
+  "parameters": {
+    "OSTERIA": {
+      "macro_character": 0.68,
+      "macro_movement": 0.562,
+      "macro_coupling": 0.389,
+      "macro_space": 0.586
+    },
+    "OCTOPUS": {
+      "macro_character": 0.547,
+      "macro_movement": 0.602,
+      "macro_coupling": 0.68,
+      "macro_space": 0.424
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OSTERIA",
+    "target": "OCTOPUS",
+    "amount": 0.701
+  },
+  "dna": {
+    "brightness": 0.636,
+    "warmth": 0.691,
+    "movement": 0.876,
+    "density": 0.342,
+    "space": 0.288,
+    "aggression": 0.926
+  },
+  "macros": {
+    "CHARACTER": 0.762,
+    "MOVEMENT": 0.876,
+    "COUPLING": 0.701,
+    "SPACE": 0.288
+  },
+  "tags": [
+    "foundation",
+    "aggressive",
+    "harsh"
+  ]
+}

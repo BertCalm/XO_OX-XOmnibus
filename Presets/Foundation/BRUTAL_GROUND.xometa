@@ -1,0 +1,48 @@
+{
+  "name": "BRUTAL GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ORACLE",
+    "OBSCURA"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.526,
+      "macro_movement": 0.391,
+      "macro_coupling": 0.469,
+      "macro_space": 0.427
+    },
+    "OBSCURA": {
+      "macro_character": 0.508,
+      "macro_movement": 0.338,
+      "macro_coupling": 0.513,
+      "macro_space": 0.533
+    }
+  },
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ORACLE",
+    "target": "OBSCURA",
+    "amount": 0.508
+  },
+  "dna": {
+    "brightness": 0.26,
+    "warmth": 0.621,
+    "movement": 0.712,
+    "density": 0.591,
+    "space": 0.944,
+    "aggression": 0.954
+  },
+  "macros": {
+    "CHARACTER": 0.487,
+    "MOVEMENT": 0.712,
+    "COUPLING": 0.508,
+    "SPACE": 0.944
+  },
+  "tags": [
+    "foundation",
+    "aggressive",
+    "harsh"
+  ]
+}

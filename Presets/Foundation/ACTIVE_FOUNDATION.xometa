@@ -1,0 +1,48 @@
+{
+  "name": "ACTIVE FOUNDATION",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OCEANIC",
+    "ORCA"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.705,
+      "macro_movement": 0.942,
+      "macro_coupling": 0.433,
+      "macro_space": 0.594
+    },
+    "ORCA": {
+      "macro_character": 0.354,
+      "macro_movement": 0.895,
+      "macro_coupling": 0.736,
+      "macro_space": 0.629
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OCEANIC",
+    "target": "ORCA",
+    "amount": 0.832
+  },
+  "dna": {
+    "brightness": 0.729,
+    "warmth": 0.124,
+    "movement": 0.936,
+    "density": 0.642,
+    "space": 0.399,
+    "aggression": 0.758
+  },
+  "macros": {
+    "CHARACTER": 0.411,
+    "MOVEMENT": 0.936,
+    "COUPLING": 0.832,
+    "SPACE": 0.399
+  },
+  "tags": [
+    "foundation",
+    "kinetic",
+    "moving"
+  ]
+}

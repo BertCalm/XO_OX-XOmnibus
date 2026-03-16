@@ -1,0 +1,48 @@
+{
+  "name": "PROPEL FOUNDATION",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ODDOSCAR",
+    "OBLIQUE"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.598,
+      "macro_movement": 0.928,
+      "macro_coupling": 0.609,
+      "macro_space": 0.588
+    },
+    "OBLIQUE": {
+      "macro_character": 0.49,
+      "macro_movement": 0.962,
+      "macro_coupling": 0.754,
+      "macro_space": 0.349
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ODDOSCAR",
+    "target": "OBLIQUE",
+    "amount": 0.608
+  },
+  "dna": {
+    "brightness": 0.093,
+    "warmth": 0.687,
+    "movement": 0.941,
+    "density": 0.769,
+    "space": 0.251,
+    "aggression": 0.349
+  },
+  "macros": {
+    "CHARACTER": 0.594,
+    "MOVEMENT": 0.941,
+    "COUPLING": 0.608,
+    "SPACE": 0.251
+  },
+  "tags": [
+    "foundation",
+    "kinetic",
+    "moving"
+  ]
+}

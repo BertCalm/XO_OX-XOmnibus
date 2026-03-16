@@ -1,0 +1,49 @@
+{
+  "name": "LUMINOUS AETHER",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OUROBOROS",
+    "OUTWIT"
+  ],
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.077,
+      "macro_movement": 0.138,
+      "macro_coupling": 0.367,
+      "macro_space": 0.314
+    },
+    "OUTWIT": {
+      "macro_character": 0.279,
+      "macro_movement": 0.961,
+      "macro_coupling": 0.026,
+      "macro_space": 0.186
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_LOCK",
+    "source": "OUROBOROS",
+    "target": "OUTWIT",
+    "amount": 0.566
+  },
+  "dna": {
+    "brightness": 0.904,
+    "warmth": 0.417,
+    "movement": 0.77,
+    "density": 0.031,
+    "space": 0.47,
+    "aggression": 0.423
+  },
+  "macros": {
+    "CHARACTER": 0.178,
+    "MOVEMENT": 0.549,
+    "COUPLING": 0.197,
+    "SPACE": 0.25
+  },
+  "tags": [
+    "aether",
+    "bright",
+    "extreme",
+    "low-density"
+  ]
+}

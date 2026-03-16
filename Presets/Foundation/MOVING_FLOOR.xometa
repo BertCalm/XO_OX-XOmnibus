@@ -1,0 +1,48 @@
+{
+  "name": "MOVING FLOOR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OUROBOROS",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.692,
+      "macro_movement": 0.928,
+      "macro_coupling": 0.631,
+      "macro_space": 0.443
+    },
+    "OSTERIA": {
+      "macro_character": 0.395,
+      "macro_movement": 0.966,
+      "macro_coupling": 0.409,
+      "macro_space": 0.229
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OUROBOROS",
+    "target": "OSTERIA",
+    "amount": 0.765
+  },
+  "dna": {
+    "brightness": 0.201,
+    "warmth": 0.941,
+    "movement": 0.963,
+    "density": 0.756,
+    "space": 0.671,
+    "aggression": 0.371
+  },
+  "macros": {
+    "CHARACTER": 0.668,
+    "MOVEMENT": 0.963,
+    "COUPLING": 0.765,
+    "SPACE": 0.671
+  },
+  "tags": [
+    "foundation",
+    "kinetic",
+    "moving"
+  ]
+}

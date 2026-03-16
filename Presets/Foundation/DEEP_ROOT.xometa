@@ -1,0 +1,49 @@
+{
+  "name": "DEEP ROOT",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ODDFELIX",
+    "OBLONG"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.308,
+      "macro_movement": 0.749,
+      "macro_coupling": 0.569,
+      "macro_space": 0.289
+    },
+    "OBLONG": {
+      "macro_character": 0.124,
+      "macro_movement": 0.689,
+      "macro_coupling": 0.7,
+      "macro_space": 0.943
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ODDFELIX",
+    "target": "OBLONG",
+    "amount": 0.4
+  },
+  "dna": {
+    "brightness": 0.102,
+    "warmth": 0.455,
+    "movement": 0.941,
+    "density": 0.745,
+    "space": 0.696,
+    "aggression": 0.243
+  },
+  "macros": {
+    "CHARACTER": 0.216,
+    "MOVEMENT": 0.719,
+    "COUPLING": 0.634,
+    "SPACE": 0.616
+  },
+  "tags": [
+    "foundation",
+    "dark",
+    "extreme",
+    "high-movement"
+  ]
+}
