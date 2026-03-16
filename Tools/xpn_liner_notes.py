@@ -1686,6 +1686,110 @@ def build_engine_notes(engine_id: str) -> list:
     return [engine_standalone_profile(engine_id)]
 
 
+# All known engine IDs with full profiles in engine_standalone_profile()
+ALL_ENGINE_IDS = [
+    "ONSET", "OPAL", "OVERDUB", "OBLONG", "ORBITAL", "OBESE",
+    "ORACLE", "ORGANON", "OUROBOROS", "OVERBITE", "OVERWORLD",
+    "OHM", "ORPHICA", "OBBLIGATO", "OTTONI", "OLE",
+]
+
+
+def build_all_engines_notes() -> list:
+    """Generate engine profiles for all known engines in one document."""
+    sections = []
+    sections.append(_section(
+        "collection_intro",
+        collection="XOmnibus Engine Library",
+        title="XO_OX Designs — Complete Engine Library",
+        body=(
+            "XOmnibus is a free, open-source multi-engine synthesizer platform. "
+            "Each engine is a character instrument with a distinct sonic identity, "
+            "cultural heritage, and coupling role. This document is the liner notes "
+            "for the full engine library — all engines, all creatures, all stories. "
+            "xo-ox.org"
+        ),
+    ))
+    for engine_id in ALL_ENGINE_IDS:
+        sections.append(engine_standalone_profile(engine_id))
+    return sections
+
+
+def build_pack_notes(pack_path: Path) -> list:
+    """
+    Generate liner notes for a .xpn pack file by inspecting its contents.
+
+    Reads the bundle_manifest.json inside the ZIP to determine which engines
+    are present, then generates an engine profile for each one found.
+    Falls back to a generic intro section if no manifest is present.
+    """
+    import zipfile
+
+    sections = []
+
+    if not pack_path.exists():
+        raise FileNotFoundError(f"Pack not found: {pack_path}")
+
+    if not zipfile.is_zipfile(pack_path):
+        raise ValueError(f"Not a valid ZIP/XPN archive: {pack_path}")
+
+    pack_name = pack_path.stem
+    engine_ids_found: list = []
+
+    with zipfile.ZipFile(pack_path, "r") as zf:
+        names = zf.namelist()
+        manifest_name = next((n for n in names if n.endswith("bundle_manifest.json")), None)
+
+        if manifest_name:
+            try:
+                manifest_data = json.loads(zf.read(manifest_name).decode("utf-8"))
+                # Manifest may list engines under "engines" or "programs"
+                engines_raw = manifest_data.get("engines", [])
+                if isinstance(engines_raw, list):
+                    engine_ids_found = [str(e).upper() for e in engines_raw]
+                elif isinstance(engines_raw, dict):
+                    engine_ids_found = [str(k).upper() for k in engines_raw.keys()]
+            except (json.JSONDecodeError, KeyError, UnicodeDecodeError):
+                pass
+
+        if not engine_ids_found:
+            # Heuristic: scan XPM filenames for engine name hints
+            for name in names:
+                base = Path(name).stem.upper()
+                for eid in ALL_ENGINE_IDS:
+                    if eid in base and eid not in engine_ids_found:
+                        engine_ids_found.append(eid)
+
+    sections.append(_section(
+        "collection_intro",
+        collection="XPN Pack",
+        title=f"Liner Notes — {pack_name}",
+        pack_file=str(pack_path),
+        body=(
+            f"This document provides cultural and historical context for the engines "
+            f"and presets contained in the '{pack_name}' XPN expansion pack. "
+            f"Engines detected: {', '.join(engine_ids_found) if engine_ids_found else 'none detected — add bundle_manifest.json for auto-detection'}. "
+            f"XO_OX Designs — xo-ox.org"
+        ),
+    ))
+
+    if engine_ids_found:
+        for eid in engine_ids_found:
+            sections.append(engine_standalone_profile(eid))
+    else:
+        sections.append(_section(
+            "engine_profile",
+            engine="UNKNOWN",
+            title=_stub("Add engine name after inspecting pack contents"),
+            summary=_stub("Write engine summary — see CLAUDE.md engine table for canonical data"),
+            sound_design_notes=_stub("Write sound design notes"),
+            sonic_dna=_stub("Fill 6D Sonic DNA"),
+            param_prefix=_stub("Fill prefix from CLAUDE.md"),
+            accent=_stub("Fill accent hex from CLAUDE.md engine table"),
+        ))
+
+    return sections
+
+
 # =============================================================================
 # Top-level document
 # =============================================================================
@@ -1811,9 +1915,13 @@ def main():
     group.add_argument("--collection", metavar="NAME",
                        help='Collection name: "Kitchen Essentials", "Travel / Water", "Artwork / Color"')
     group.add_argument("--engine", metavar="ENGINE_ID",
-                       help="Standalone engine ID (e.g. ONSET, OPAL)")
+                       help="Standalone engine ID (e.g. ONSET, OPAL, OVERDUB)")
+    group.add_argument("--pack", metavar="XPN_FILE",
+                       help="Path to a .xpn pack file — auto-detects engines from bundle_manifest.json")
+    group.add_argument("--all-engines", action="store_true",
+                       help=f"Generate liner notes for all {len(ALL_ENGINE_IDS)} known engines in one document")
     group.add_argument("--all", action="store_true",
-                       help="Generate liner notes for all three collections")
+                       help="Generate liner notes for all three collections (Kitchen/Travel/Artwork)")
     group.add_argument("--validate", metavar="FILE",
                        help="Validate an existing liner notes JSON file")
 
@@ -1844,6 +1952,37 @@ def main():
         )
         out = doc.write(output_dir, args.filename)
         print(f"  Liner notes: {out}  ({len(doc.sections)} sections)")
+        return
+
+    # --- Pack file ---
+    if args.pack:
+        pack_path = Path(args.pack)
+        try:
+            sections = build_pack_notes(pack_path)
+        except (FileNotFoundError, ValueError) as exc:
+            print(f"  [ERROR] {exc}")
+            sys.exit(1)
+        doc = LinerNotesDoc(
+            pack_name=f"XPN Pack — {pack_path.stem}",
+            collection="XPN Pack",
+            quad=None,
+            sections=sections,
+        )
+        out = doc.write(output_dir, args.filename)
+        print(f"  Liner notes: {out}  ({len(doc.sections)} sections)")
+        return
+
+    # --- All engines ---
+    if args.all_engines:
+        sections = build_all_engines_notes()
+        doc = LinerNotesDoc(
+            pack_name="XO_OX — Complete Engine Library",
+            collection="XOmnibus",
+            quad=None,
+            sections=sections,
+        )
+        out = doc.write(output_dir, args.filename or "liner_notes_all_engines.json")
+        print(f"  Liner notes: {out}  ({len(doc.sections)} sections, {len(ALL_ENGINE_IDS)} engines)")
         return
 
     # --- All collections ---
