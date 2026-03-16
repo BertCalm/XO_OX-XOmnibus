@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Chaos Family Cool",
+  "mood": "Family",
+  "engines": [
+    "Ouroboros",
+    "Oracle",
+    "Outwit"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OUROBOROS, ORACLE, and OUTWIT — the stochastic siblings. Strange attractor red, prophecy indigo, octopus orange. Lorenz/Halvorsen chaos, GENDY stochastic synthesis, and Wolfram cellular automata. They are unpredictable alone; together they negotiate a shared randomness. Cold deterministic chaos — strange attractors in a crystalline lattice, ORACLE's prophecy reduced to pure math.",
+  "tags": [
+    "family",
+    "multi-engine",
+    "ouroboros",
+    "oracle",
+    "outwit"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": null,
+  "tempo": null,
+  "dna": {
+    "brightness": 0.615,
+    "warmth": 0.61,
+    "movement": 0.789,
+    "density": 0.531,
+    "space": 0.773,
+    "aggression": 0.316
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_character": 0.569,
+      "ouro_movement": 0.683,
+      "ouro_space": 0.798
+    },
+    "Oracle": {},
+    "Outwit": {}
+  },
+  "coupling": null,
+  "sequencer": null
+}

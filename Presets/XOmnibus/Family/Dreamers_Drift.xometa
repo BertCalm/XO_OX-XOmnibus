@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Dreamers Drift",
+  "mood": "Family",
+  "engines": [
+    "Odyssey",
+    "Opal",
+    "Oracle"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ODYSSEY, OPAL, and ORACLE — the evocative trio. Drift's wavetable wandering, Opal's granular clouds, Oracle's stochastic prophecy. Together they conjure sounds that exist only in the space between memory and imagination. Balanced dreaming — Odyssey anchors, Opal scatters, Oracle whispers breakpoints into the void.",
+  "tags": [
+    "family",
+    "multi-engine",
+    "odyssey",
+    "opal",
+    "oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": null,
+  "tempo": null,
+  "dna": {
+    "brightness": 0.595,
+    "warmth": 0.677,
+    "movement": 0.722,
+    "density": 0.478,
+    "space": 0.783,
+    "aggression": 0.165
+  },
+  "parameters": {
+    "Odyssey": {
+      "drift_character": 0.507,
+      "drift_movement": 0.384,
+      "drift_space": 0.777
+    },
+    "Opal": {},
+    "Oracle": {}
+  },
+  "coupling": null,
+  "sequencer": null
+}

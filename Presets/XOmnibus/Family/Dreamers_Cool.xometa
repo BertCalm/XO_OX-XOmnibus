@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Dreamers Cool",
+  "mood": "Family",
+  "engines": [
+    "Odyssey",
+    "Opal",
+    "Oracle"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ODYSSEY, OPAL, and ORACLE — the evocative trio. Drift's wavetable wandering, Opal's granular clouds, Oracle's stochastic prophecy. Together they conjure sounds that exist only in the space between memory and imagination. The trio in coolest form — glacial wavetables, sparse grain, cold prophecy from a distant Oracle.",
+  "tags": [
+    "family",
+    "multi-engine",
+    "odyssey",
+    "opal",
+    "oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": null,
+  "tempo": null,
+  "dna": {
+    "brightness": 0.71,
+    "warmth": 0.605,
+    "movement": 0.632,
+    "density": 0.412,
+    "space": 0.913,
+    "aggression": 0.117
+  },
+  "parameters": {
+    "Odyssey": {
+      "drift_character": 0.506,
+      "drift_movement": 0.399,
+      "drift_space": 0.625
+    },
+    "Opal": {},
+    "Oracle": {}
+  },
+  "coupling": null,
+  "sequencer": null
+}

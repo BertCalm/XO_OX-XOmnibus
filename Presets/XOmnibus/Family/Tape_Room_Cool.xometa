@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Tape Room Cool",
+  "mood": "Family",
+  "engines": [
+    "Overdub",
+    "Obscura",
+    "Overbite"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERDUB, OBSCURA, and OVERBITE — the lo-fi family. Olive, daguerreotype silver, fang white. Spring reverb, stiff-string physical modeling, and opossum-energy bass character. Three instruments built for warmth, wear, and weight. Morning-after cool — tape hiss settling, OBSCURA spectral, OVERBITE restrained and coiled.",
+  "tags": [
+    "family",
+    "multi-engine",
+    "overdub",
+    "obscura",
+    "overbite"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": null,
+  "tempo": null,
+  "dna": {
+    "brightness": 0.529,
+    "warmth": 0.62,
+    "movement": 0.451,
+    "density": 0.58,
+    "space": 0.658,
+    "aggression": 0.26
+  },
+  "parameters": {
+    "Overdub": {
+      "dub_character": 0.568,
+      "dub_movement": 0.533,
+      "dub_space": 0.609
+    },
+    "Obscura": {},
+    "Overbite": {}
+  },
+  "coupling": null,
+  "sequencer": null
+}

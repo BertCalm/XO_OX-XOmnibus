@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Chaos Family Entangled",
+  "mood": "Family",
+  "engines": [
+    "Ouroboros",
+    "Oracle",
+    "Outwit"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OUROBOROS, ORACLE, and OUTWIT — the stochastic siblings. Strange attractor red, prophecy indigo, octopus orange. Lorenz/Halvorsen chaos, GENDY stochastic synthesis, and Wolfram cellular automata. They are unpredictable alone; together they negotiate a shared randomness. Balanced chaos — three stochastic systems sharing state. Order emerges at the edges of their interaction.",
+  "tags": [
+    "family",
+    "multi-engine",
+    "ouroboros",
+    "oracle",
+    "outwit"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": null,
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.677,
+    "movement": 0.858,
+    "density": 0.634,
+    "space": 0.708,
+    "aggression": 0.353
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_character": 0.594,
+      "ouro_movement": 0.385,
+      "ouro_space": 0.56
+    },
+    "Oracle": {},
+    "Outwit": {}
+  },
+  "coupling": null,
+  "sequencer": null
+}

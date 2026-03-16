@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Foundation Cool",
+  "mood": "Family",
+  "engines": [
+    "Oblong",
+    "Onset",
+    "Obese"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OBLONG, ONSET, and OBESE — the rhythm section. Bob lays the harmonic foundation, Onset drives the pulse, Obese saturates everything with hot-pink character. The trio that holds the whole XOmnibus together. A cooler, more clinical foundation — Onset precise, Obese restrained, Oblong spectral.",
+  "tags": [
+    "family",
+    "multi-engine",
+    "oblong",
+    "onset",
+    "obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": null,
+  "tempo": null,
+  "dna": {
+    "brightness": 0.599,
+    "warmth": 0.578,
+    "movement": 0.622,
+    "density": 0.611,
+    "space": 0.539,
+    "aggression": 0.27
+  },
+  "parameters": {
+    "Oblong": {
+      "bob_character": 0.484,
+      "bob_movement": 0.407,
+      "bob_space": 0.775
+    },
+    "Onset": {},
+    "Obese": {}
+  },
+  "coupling": null,
+  "sequencer": null
+}

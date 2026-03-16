@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Digital Tribe Cool",
+  "mood": "Family",
+  "engines": [
+    "Optic",
+    "Oblique",
+    "Overworld"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPTIC, OBLIQUE, and OVERWORLD — the electronic family. Phosphor green, prism violet, neon green. Visual synthesis meets prismatic bounce meets chip-era geometry. Three engines that live in the frequency ranges where digital began. Cold phosphor — the tribe at their most clinical. OPTIC pulses, OBLIQUE prisms, OVERWORLD geometric and exact.",
+  "tags": [
+    "family",
+    "multi-engine",
+    "optic",
+    "oblique",
+    "overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": null,
+  "tempo": null,
+  "dna": {
+    "brightness": 0.81,
+    "warmth": 0.6,
+    "movement": 0.553,
+    "density": 0.507,
+    "space": 0.736,
+    "aggression": 0.259
+  },
+  "parameters": {
+    "Optic": {
+      "optic_character": 0.795,
+      "optic_movement": 0.562,
+      "optic_space": 0.403
+    },
+    "Oblique": {},
+    "Overworld": {}
+  },
+  "coupling": null,
+  "sequencer": null
+}

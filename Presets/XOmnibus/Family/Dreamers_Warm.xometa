@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Dreamers Warm",
+  "mood": "Family",
+  "engines": [
+    "Odyssey",
+    "Opal",
+    "Oracle"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ODYSSEY, OPAL, and ORACLE — the evocative trio. Drift's wavetable wandering, Opal's granular clouds, Oracle's stochastic prophecy. Together they conjure sounds that exist only in the space between memory and imagination. Drift and grain and prophecy in amber light — a warm dream state where melody dissolves into texture.",
+  "tags": [
+    "family",
+    "multi-engine",
+    "odyssey",
+    "opal",
+    "oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": null,
+  "tempo": null,
+  "dna": {
+    "brightness": 0.532,
+    "warmth": 0.729,
+    "movement": 0.624,
+    "density": 0.568,
+    "space": 0.773,
+    "aggression": 0.14
+  },
+  "parameters": {
+    "Odyssey": {
+      "drift_character": 0.796,
+      "drift_movement": 0.556,
+      "drift_space": 0.623
+    },
+    "Opal": {},
+    "Oracle": {}
+  },
+  "coupling": null,
+  "sequencer": null
+}

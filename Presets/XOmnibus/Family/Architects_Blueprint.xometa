@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Architects Blueprint",
+  "mood": "Family",
+  "engines": [
+    "Overworld",
+    "Orbital",
+    "Origami"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERWORLD, ORBITAL, and ORIGAMI — the structure builders. Chip-era geometry from OVERWORLD, ORBITAL's warm-red harmonic groups, ORIGAMI's precise vermillion folds. They build sound the way architects build spaces — with intention and silence. The neutral blueprint — each engine distinct in register, the trio locked in harmonic architecture.",
+  "tags": [
+    "family",
+    "multi-engine",
+    "overworld",
+    "orbital",
+    "origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": null,
+  "tempo": null,
+  "dna": {
+    "brightness": 0.589,
+    "warmth": 0.63,
+    "movement": 0.523,
+    "density": 0.574,
+    "space": 0.615,
+    "aggression": 0.241
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_character": 0.798,
+      "ow_movement": 0.512,
+      "ow_space": 0.788
+    },
+    "Orbital": {},
+    "Origami": {}
+  },
+  "coupling": null,
+  "sequencer": null
+}

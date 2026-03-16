@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Tape Room Session",
+  "mood": "Family",
+  "engines": [
+    "Overdub",
+    "Obscura",
+    "Overbite"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERDUB, OBSCURA, and OVERBITE — the lo-fi family. Olive, daguerreotype silver, fang white. Spring reverb, stiff-string physical modeling, and opossum-energy bass character. Three instruments built for warmth, wear, and weight. The late-night session — three lo-fi engines locked in the same room, trading character.",
+  "tags": [
+    "family",
+    "multi-engine",
+    "overdub",
+    "obscura",
+    "overbite"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": null,
+  "tempo": null,
+  "dna": {
+    "brightness": 0.487,
+    "warmth": 0.75,
+    "movement": 0.528,
+    "density": 0.623,
+    "space": 0.587,
+    "aggression": 0.286
+  },
+  "parameters": {
+    "Overdub": {
+      "dub_character": 0.474,
+      "dub_movement": 0.538,
+      "dub_space": 0.67
+    },
+    "Obscura": {},
+    "Overbite": {}
+  },
+  "coupling": null,
+  "sequencer": null
+}

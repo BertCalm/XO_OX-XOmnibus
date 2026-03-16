@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "The Depths Cool",
+  "mood": "Family",
+  "engines": [
+    "Oceanic",
+    "Owlfish",
+    "Organon"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OCEANIC, OWLFISH, and ORGANON — the deep-water family. Phosphorescent teal, abyssal gold, bioluminescent cyan. Chromatophore modulation, Mixtur-Trautonium harmonics, and variational free-energy metabolism — three engines that evolved in the dark and glow on their own terms. The hadal zone — cold, crushing, crystalline. Three instruments adapted to absolute darkness.",
+  "tags": [
+    "family",
+    "multi-engine",
+    "oceanic",
+    "owlfish",
+    "organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": null,
+  "tempo": null,
+  "dna": {
+    "brightness": 0.342,
+    "warmth": 0.654,
+    "movement": 0.51,
+    "density": 0.777,
+    "space": 0.865,
+    "aggression": 0.215
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_character": 0.751,
+      "ocean_movement": 0.679,
+      "ocean_space": 0.434
+    },
+    "Owlfish": {},
+    "Organon": {}
+  },
+  "coupling": null,
+  "sequencer": null
+}

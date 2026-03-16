@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Coastline Tidal",
+  "mood": "Family",
+  "engines": [
+    "Osprey",
+    "Osteria",
+    "Oceanic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OSPREY, OSTERIA, and OCEANIC — the shore family. Azulejo blue, porto wine, phosphorescent teal. The ShoreSystem blessing (B012) connects OSPREY and OSTERIA through 5 coastline cultural datasets; OCEANIC provides the intertidal zone where land-breath meets water. The tide in balance — coastal instruments sharing the ShoreSystem data, OCEANIC connecting them to open water.",
+  "tags": [
+    "family",
+    "multi-engine",
+    "osprey",
+    "osteria",
+    "oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": null,
+  "tempo": null,
+  "dna": {
+    "brightness": 0.574,
+    "warmth": 0.657,
+    "movement": 0.623,
+    "density": 0.518,
+    "space": 0.696,
+    "aggression": 0.165
+  },
+  "parameters": {
+    "Osprey": {
+      "osprey_character": 0.798,
+      "osprey_movement": 0.56,
+      "osprey_space": 0.575
+    },
+    "Osteria": {},
+    "Oceanic": {}
+  },
+  "coupling": null,
+  "sequencer": null
+}

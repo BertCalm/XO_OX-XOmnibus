@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Constellation Warm",
+  "mood": "Family",
+  "engines": [
+    "Ohm",
+    "Orphica",
+    "Obbligato",
+    "Ottoni",
+    "Ole"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OHM, ORPHICA, OBBLIGATO, OTTONI, and OLE — all five Constellation engines in one room. Hippy Dad jam, microsound harp, dual wind, triple brass, and Afro-Latin trio. The fastest-built family in XOmnibus history, now gathered for their first group portrait. The gathering — all five Constellation siblings in warm acoustic register. Sage, seafoam, coral, patina, hibiscus.",
+  "tags": [
+    "family",
+    "multi-engine",
+    "ohm",
+    "orphica",
+    "obbligato",
+    "ottoni",
+    "ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": null,
+  "tempo": null,
+  "dna": {
+    "brightness": 0.558,
+    "warmth": 0.812,
+    "movement": 0.649,
+    "density": 0.646,
+    "space": 0.599,
+    "aggression": 0.234
+  },
+  "parameters": {
+    "Ohm": {
+      "ohm_character": 0.486,
+      "ohm_movement": 0.353,
+      "ohm_space": 0.774
+    },
+    "Orphica": {},
+    "Obbligato": {},
+    "Ottoni": {},
+    "Ole": {}
+  },
+  "coupling": null,
+  "sequencer": null
+}

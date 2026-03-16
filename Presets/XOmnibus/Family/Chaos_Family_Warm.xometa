@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Chaos Family Warm",
+  "mood": "Family",
+  "engines": [
+    "Ouroboros",
+    "Oracle",
+    "Outwit"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OUROBOROS, ORACLE, and OUTWIT — the stochastic siblings. Strange attractor red, prophecy indigo, octopus orange. Lorenz/Halvorsen chaos, GENDY stochastic synthesis, and Wolfram cellular automata. They are unpredictable alone; together they negotiate a shared randomness. The chaotic trio in a warmer, more hospitable mode — the leash engaged, ORACLE constrained, OUTWIT patterned.",
+  "tags": [
+    "family",
+    "multi-engine",
+    "ouroboros",
+    "oracle",
+    "outwit"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": null,
+  "tempo": null,
+  "dna": {
+    "brightness": 0.516,
+    "warmth": 0.674,
+    "movement": 0.762,
+    "density": 0.56,
+    "space": 0.684,
+    "aggression": 0.345
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_character": 0.745,
+      "ouro_movement": 0.52,
+      "ouro_space": 0.42
+    },
+    "Oracle": {},
+    "Outwit": {}
+  },
+  "coupling": null,
+  "sequencer": null
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Coastline Cool",
+  "mood": "Family",
+  "engines": [
+    "Osprey",
+    "Osteria",
+    "Oceanic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OSPREY, OSTERIA, and OCEANIC — the shore family. Azulejo blue, porto wine, phosphorescent teal. The ShoreSystem blessing (B012) connects OSPREY and OSTERIA through 5 coastline cultural datasets; OCEANIC provides the intertidal zone where land-breath meets water. Dawn shore — cool light, mist, OSPREY offshore, OSTERIA shuttered, OCEANIC grey and wide.",
+  "tags": [
+    "family",
+    "multi-engine",
+    "osprey",
+    "osteria",
+    "oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": null,
+  "tempo": null,
+  "dna": {
+    "brightness": 0.651,
+    "warmth": 0.59,
+    "movement": 0.528,
+    "density": 0.437,
+    "space": 0.787,
+    "aggression": 0.128
+  },
+  "parameters": {
+    "Osprey": {
+      "osprey_character": 0.488,
+      "osprey_movement": 0.328,
+      "osprey_space": 0.652
+    },
+    "Osteria": {},
+    "Oceanic": {}
+  },
+  "coupling": null,
+  "sequencer": null
+}

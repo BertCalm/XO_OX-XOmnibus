@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Digital Tribe Grid",
+  "mood": "Family",
+  "engines": [
+    "Optic",
+    "Oblique",
+    "Overworld"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPTIC, OBLIQUE, and OVERWORLD — the electronic family. Phosphor green, prism violet, neon green. Visual synthesis meets prismatic bounce meets chip-era geometry. Three engines that live in the frequency ranges where digital began. The neutral grid — three electronic engines in precise register, each distinct, all digital.",
+  "tags": [
+    "family",
+    "multi-engine",
+    "optic",
+    "oblique",
+    "overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": null,
+  "tempo": null,
+  "dna": {
+    "brightness": 0.686,
+    "warmth": 0.617,
+    "movement": 0.69,
+    "density": 0.54,
+    "space": 0.616,
+    "aggression": 0.277
+  },
+  "parameters": {
+    "Optic": {
+      "optic_character": 0.506,
+      "optic_movement": 0.673,
+      "optic_space": 0.752
+    },
+    "Oblique": {},
+    "Overworld": {}
+  },
+  "coupling": null,
+  "sequencer": null
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Architects Cool",
+  "mood": "Family",
+  "engines": [
+    "Overworld",
+    "Orbital",
+    "Origami"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERWORLD, ORBITAL, and ORIGAMI — the structure builders. Chip-era geometry from OVERWORLD, ORBITAL's warm-red harmonic groups, ORIGAMI's precise vermillion folds. They build sound the way architects build spaces — with intention and silence. Cold geometry — chip precision, orbital distance, origami edges sharp as code.",
+  "tags": [
+    "family",
+    "multi-engine",
+    "overworld",
+    "orbital",
+    "origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": null,
+  "tempo": null,
+  "dna": {
+    "brightness": 0.749,
+    "warmth": 0.571,
+    "movement": 0.468,
+    "density": 0.535,
+    "space": 0.723,
+    "aggression": 0.201
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_character": 0.656,
+      "ow_movement": 0.345,
+      "ow_space": 0.574
+    },
+    "Orbital": {},
+    "Origami": {}
+  },
+  "coupling": null,
+  "sequencer": null
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "The Core Portrait",
+  "mood": "Family",
+  "engines": [
+    "OddfeliX",
+    "OddOscar"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The founding siblings — feliX the neon tetra and Oscar the axolotl. Neon electric blue meets axolotl gill pink. Where digital crispness and organic morphology were born together, they still breathe as one. A neutral family portrait — feliX sharp and focused, Oscar fluid beside them. The definitive sibling snapshot.",
+  "tags": [
+    "family",
+    "multi-engine",
+    "oddfelix",
+    "oddoscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": null,
+  "tempo": null,
+  "dna": {
+    "brightness": 0.582,
+    "warmth": 0.597,
+    "movement": 0.5,
+    "density": 0.482,
+    "space": 0.576,
+    "aggression": 0.292
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_character": 0.618,
+      "snap_movement": 0.388,
+      "snap_space": 0.636
+    },
+    "OddOscar": {}
+  },
+  "coupling": null,
+  "sequencer": null
+}

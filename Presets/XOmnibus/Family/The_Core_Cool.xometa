@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "The Core Cool",
+  "mood": "Family",
+  "engines": [
+    "OddfeliX",
+    "OddOscar"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The founding siblings — feliX the neon tetra and Oscar the axolotl. Neon electric blue meets axolotl gill pink. Where digital crispness and organic morphology were born together, they still breathe as one. The siblings in a cooler, more spectral register. Crystalline feliX shimmer over slow axolotl morphology.",
+  "tags": [
+    "family",
+    "multi-engine",
+    "oddfelix",
+    "oddoscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": null,
+  "tempo": null,
+  "dna": {
+    "brightness": 0.745,
+    "warmth": 0.561,
+    "movement": 0.574,
+    "density": 0.456,
+    "space": 0.737,
+    "aggression": 0.172
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_character": 0.783,
+      "snap_movement": 0.435,
+      "snap_space": 0.437
+    },
+    "OddOscar": {}
+  },
+  "coupling": null,
+  "sequencer": null
+}
