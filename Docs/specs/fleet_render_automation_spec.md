@@ -117,6 +117,140 @@ Option A leverages 80% existing code, runs faster than realtime, handles all edg
 
 ---
 
+## 2.5 The ~40-Line Implementation
+
+This section documents the intended `renderNoteToWav()` body in full. The surrounding scaffolding
+(buffer allocation, WAV writing, normalization, error handling) is already in place — only the
+processor dispatch loop is missing.
+
+```cpp
+// In XPNExporter.h, replacing the placeholder at lines 602-616
+// Assumes: proc_ is an XOmnibusProcessor* prepared via prepareToPlay()
+//          currentPreset_ is the loaded PresetData
+//          sampleRate_ and blockSize_ are set at construction
+
+std::vector<float> renderNoteToWav(int midiNote, int velocity, float durationSecs)
+{
+    // 1. Compute sample counts from current context sample rate (never hardcode 44100)
+    const int holdSamples = static_cast<int>(durationSecs * sampleRate_);
+    const int tailSamples = static_cast<int>(tailSecsForProfile(currentProfile_) * sampleRate_);
+    const int totalSamples = holdSamples + tailSamples;
+
+    // 2. Allocate stereo output buffer (no heap allocation on audio thread — this is offline)
+    juce::AudioBuffer<float> outputBuffer(2, totalSamples);
+    outputBuffer.clear();
+
+    // 3. Let engine settle: one silent block after preset load
+    //    (some engines have one-block initialization latency)
+    {
+        juce::AudioBuffer<float> warmupBuf(2, blockSize_);
+        warmupBuf.clear();
+        juce::MidiBuffer emptyMidi;
+        proc_->processBlock(warmupBuf, emptyMidi);
+    }
+
+    // 4. Note-on block: inject MIDI note-on at sample position 0 of the first block
+    {
+        juce::MidiBuffer noteonMidi;
+        noteonMidi.addEvent(
+            juce::MidiMessage::noteOn(1, midiNote, static_cast<uint8>(velocity)), 0);
+
+        juce::AudioBuffer<float> firstBlock(2, blockSize_);
+        firstBlock.clear();
+        proc_->processBlock(firstBlock, noteonMidi);
+
+        // Copy first block into output
+        for (int ch = 0; ch < 2; ++ch)
+            outputBuffer.copyFrom(ch, 0, firstBlock, ch, 0,
+                                  juce::jmin(blockSize_, totalSamples));
+    }
+
+    // 5. Hold phase: render remaining hold blocks with empty MIDI
+    int samplePos = blockSize_;
+    while (samplePos < holdSamples)
+    {
+        const int blockLen = juce::jmin(blockSize_, holdSamples - samplePos);
+        juce::AudioBuffer<float> block(2, blockLen);
+        block.clear();
+        juce::MidiBuffer emptyMidi;
+        proc_->processBlock(block, emptyMidi);
+
+        for (int ch = 0; ch < 2; ++ch)
+            outputBuffer.copyFrom(ch, samplePos, block, ch, 0, blockLen);
+
+        samplePos += blockLen;
+    }
+
+    // 6. Note-off: inject at the first sample of the tail phase
+    {
+        juce::MidiBuffer noteoffMidi;
+        noteoffMidi.addEvent(
+            juce::MidiMessage::noteOff(1, midiNote), 0);
+
+        juce::AudioBuffer<float> noteoffBlock(2, blockSize_);
+        noteoffBlock.clear();
+        proc_->processBlock(noteoffBlock, noteoffMidi);
+
+        const int copyLen = juce::jmin(blockSize_, totalSamples - samplePos);
+        for (int ch = 0; ch < 2; ++ch)
+            outputBuffer.copyFrom(ch, samplePos, noteoffBlock, ch, 0, copyLen);
+
+        samplePos += blockSize_;
+    }
+
+    // 7. Tail phase: render remaining tail blocks; stop early if RMS drops below -60 dBFS
+    while (samplePos < totalSamples)
+    {
+        const int blockLen = juce::jmin(blockSize_, totalSamples - samplePos);
+        juce::AudioBuffer<float> block(2, blockLen);
+        block.clear();
+        juce::MidiBuffer emptyMidi;
+        proc_->processBlock(block, emptyMidi);
+
+        for (int ch = 0; ch < 2; ++ch)
+            outputBuffer.copyFrom(ch, samplePos, block, ch, 0, blockLen);
+
+        // Early exit: check RMS of this block; silence = tail fully decayed
+        const float rmsL = block.getRMSLevel(0, 0, blockLen);
+        const float rmsR = block.getRMSLevel(1, 0, blockLen);
+        const float rmsDb = juce::Decibels::gainToDecibels(juce::jmax(rmsL, rmsR));
+        if (rmsDb < -60.0f && samplePos > holdSamples + static_cast<int>(0.1f * sampleRate_))
+            break; // Silence confirmed; no need to render remainder
+
+        samplePos += blockLen;
+    }
+
+    // 8. Trim, normalize, convert to std::vector<float> (mono sum for size check)
+    //    Actual WAV writing uses the full AudioBuffer via existing writeWav()
+    trimSilence(outputBuffer, -80.0f, 0.005f * sampleRate_, 0.05f * sampleRate_);
+    applyFades(outputBuffer, static_cast<int>(0.002f * sampleRate_),
+                             static_cast<int>(0.010f * sampleRate_));
+    normalizeBuffer(outputBuffer, -0.3f);
+
+    // Return flattened interleaved float vector for callers that need raw samples
+    // (WAV writing path uses outputBuffer directly via the existing writeWav() method)
+    std::vector<float> result;
+    result.reserve(static_cast<size_t>(outputBuffer.getNumSamples() * 2));
+    for (int s = 0; s < outputBuffer.getNumSamples(); ++s)
+    {
+        result.push_back(outputBuffer.getSample(0, s)); // L
+        result.push_back(outputBuffer.getSample(1, s)); // R
+    }
+    return result;
+}
+```
+
+**JUCE API notes:**
+- `juce::AudioBuffer<float>` — heap-allocated; safe for offline use, never call on audio thread
+- `juce::MidiBuffer::addEvent()` — takes `MidiMessage` + sample offset within block
+- `proc_->processBlock(buffer, midi)` — identical call to live plugin processing; coupling and
+  master FX chain run automatically
+- `juce::Decibels::gainToDecibels()` — use for RMS silence check; not `std::log10`
+- `juce::jmin()` — prefer over `std::min` for JUCE integer/float mixed-type calls
+- Sample rate must come from `proc_->getSampleRate()` at `prepareToPlay()` time — never hardcode
+
+---
+
 ## 3. Render Pipeline Design
 
 ### 3.1 Pipeline Stages
