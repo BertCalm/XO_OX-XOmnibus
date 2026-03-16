@@ -1,646 +1,285 @@
 # XOxide Engine — Complete Technical Specification
 
-**XO_OX Designs | 2026-03-16**
-**Status: Concept Phase — Canonical Spec. Ready for Phase 1 scaffold.**
-**Engine ID:** OXIDE
-**Parameter Prefix:** `oxide_`
-**Accent Color:** Rust Iron `#B7410E`
-**Aquatic Creature:** Pistol Shrimp (Alpheid)
-**Source Documents:** `xoxide_technical_design.md` + `xoxide_competitive_analysis.md`
+**Date**: 2026-03-16
+**Shortname**: OXIDE
+**Prefix**: `oxide_`
+**Accent**: Forge Orange `#D4500A`
+**Status**: Concept Phase — Canonical Spec. Ready for Phase 1 scaffold.
+**Engine ID**: OXIDE
 
 ---
 
 ## 1. Identity
 
-### 1.1 What XOxide Is
+### Shortname & Accent
 
-XOxide is a continuous 2D character shaper. It is XOmnibus's "Flavor Pro" — a character processor that covers saturation, harmonic excitation, dynamic shaping, sub enhancement, stereo field, and transient design in a single unified instrument. Drop it into any slot alongside a synthesis engine, couple the synthesis engine's output as `AudioToBuffer`, and XOxide becomes that engine's character stage.
+**OXIDE**. The name is literal and alchemical at once — oxidation is transformation through contact, the process by which raw metal becomes something with character. Forge Orange `#D4500A` is the color of molten iron just after it leaves the crucible: not yet solid, not yet finished, actively being shaped. Every preset in OXIDE is metal in that state.
 
-The thesis is this: **character is a position in space, not a recipe.** Every other character processor — Decapitator, Radiator, AIR Flavor Pro — asks you to select ingredients. You pick a mode, you turn a drive knob, you add or subtract something nameable. The mental model is additive chemistry: choose your reagents, combine them, done.
+OXIDE is the **Flavor Pro** of XOmnibus. Where other engines synthesize, OXIDE transforms. Feed it a signal and it returns it changed — warmer, dirtier, stranger, richer. It is the engine you reach for when something technically correct needs to become musically true.
 
-XOxide rejects this model. When a sound feels warm and deep and rounded, that is not because you dialed in "tube saturation + LA-2A opto + sub enhancement" as three independent decisions. Those dimensions cohere. They are facets of a single character philosophy. XOxide is the first tool that operationalizes this insight as a navigable 2D plane.
+### Aquatic Creature: The Mimic Octopus
 
-**The compressed pitch for a sell sheet:** *The first character processor where the middle of the dial is as intentional as the extremes.*
+*Thaumoctopus mimicus* — the mimic octopus transforms its appearance to impersonate other species: lionfish, flatfish, banded sea snake. It does not become these creatures; it performs them. OXIDE does the same. Tube mode does not use actual vacuum tubes — it performs the harmonic signature of tubes with mathematical precision. Tape mode performs the compression curve and HF rolloff of Studer oxide without a single moving part.
 
-### 1.2 The 2D Plane
+The mimic octopus chooses its transformation based on context. So does OXIDE: the same input signal run through tube mode at drive=20 versus lorenz_chaos mode at drive=80 becomes two entirely different performances of the same source material.
 
-The XY pad is the primary interaction. Every point on the plane is an intentional, musically coherent character philosophy.
+### Historical Homage
 
-**X axis — feliX ↔ Oscar:**
-- feliX (X = -1.0): Bright, transient-forward, precise. Attack emphasis, digital/odd-harmonic saturation, FET compression, crystalline air, Haas stereo width.
-- Oscar (X = +1.0): Warm, sustain-forward, rounded. Sustain emphasis, tube/even-harmonic saturation, opto compression, sub enhancement, focused stereo.
-- Center (X = 0.0): Tape character. Program-dependent compression. Balanced transient. Unity stereo. The middle of the dial is not a compromise between feliX and Oscar — it is its own character. It is where the Studer A800 lives.
+OXIDE is built in direct conversation with four instruments that defined recorded sound:
 
-**Y axis — Surface ↔ Depth:**
-- Surface (Y = 0.0): Nearly transparent polish. All six stages operate at such low levels that the processing is felt rather than heard. The character is present but imperceptible to conscious tracking.
-- Depth (Y = 1.0): Heavy transformation. The six stages operate at full character for the current X position. This is where the sound changes.
-- The Y axis scales the *magnitude* of transformation; the X axis determines its *direction*.
+**Neve 1073 transformer** (1970, Rupert Neve) — The 1073's input transformer introduced a specific second-harmonic coloration that engineers spent decades chasing. Its low-frequency warmth and high-frequency air became the gold standard for console character. OXIDE's `tube` mode even harmonics profile is calibrated to honor this — 2nd harmonic emphasis, gentle 4th, almost no 3rd.
 
-**Six stages fire simultaneously from the same XY position.** The XY pad is not a controller for any one stage — it defines a character philosophy that all stages enact together.
+**Studer A800 tape machine** (1978, Studer-Revox) — The A800 running at 15 IPS with Ampex 456 tape produced a natural compression at transients, a "bloom" in the low-mids, and a soft saturation ceiling that made everything sit together. OXIDE's `tape` mode emulates the IEC2 response curve, the azimuth-dependent HF saturation, and the flux density-dependent even/odd harmonic balance.
 
-```
-Input Gain → [1] Transient Shaper → [2] Saturation → [3] Compression
-           → [4] Sub Enhancement → [5] Stereo Field → [6] Exciter/Air
-           → Output Gain → Dry/Wet
-```
+**Ampex 351** (1954, Ampex Corporation) — The 351 preamp was the American alternative to the British console sound — brighter top, more aggressive midrange, a harder knee on saturation. OXIDE's `transistor` mode draws from this lineage: the solid-state edge, the faster transient character, the way it pushes odd harmonics at high drive.
 
-All six stages are individually bypassable for power-user override. Individual stage controls are available but secondary — the XY pad is the instrument.
-
-### 1.3 Aquatic Creature: The Pistol Shrimp
-
-The pistol shrimp generates a cavitation bubble hotter than the surface of the sun by snapping its claw. The snap produces a shockwave, a flash of light (sonoluminescence), and a temperature briefly exceeding 8,000 Kelvin. It is the most violent character transformation in the ocean, achieved through a single precise gesture.
-
-XOxide is the pistol shrimp of the XOmnibus fleet. A single gesture — dragging the XY cursor — unleashes coordinated transformation across six processing stages simultaneously. The result is not the sum of six effects. It is one character, made from one snap.
-
-**feliX expression:** The shockwave — precise, devastating, crystalline. Maximum transient violence, hard digital saturation, FET brick-wall limiting, Haas widening, odd harmonic shimmer.
-
-**Oscar expression:** The heat of the plasma bubble — warm, consuming, transformative. Heavy tube saturation, deep opto leveling, sub enhancement, focused warmth that rounds and thickens.
-
-**The center:** Tape. The analog machine that neither punches nor transforms but *saturates with character* — the Studer A820, the Ampex 351, the neutral ground between feliX and Oscar.
-
-### 1.4 The Middle of the Dial
-
-The killer hook of XOxide: "The first character processor where the middle of the dial is as intentional as the extremes."
-
-At X = 0.0 (center), Y = 0.5 (moderate depth), XOxide applies:
-- **Transient:** Balanced — no attack emphasis, no sustain emphasis. Transients pass through at natural dynamics.
-- **Saturation:** Tape character — Jiles-Atherton reduced hysteresis with HF soft saturation and frequency-dependent behavior. Simultaneously contributes odd and even harmonics in musically appropriate proportions. Neither digital grit nor tube warmth; the specific organic non-linearity of magnetic tape.
-- **Compression:** Program-dependent — attack slows for loud transients, stays fast for quiet passages. Ratio 2.5:1. Neither FET punch nor opto leveling; a vintage VCA responding intelligently to the program material.
-- **Sub:** Silent (below the 0.3 Y threshold). The sub stage does not interfere with neutral-X processing.
-- **Stereo:** Unity width. No Haas delay, no narrowing. The stereo field is untouched at center X.
-- **Exciter:** Trace harmonic generation above 8 kHz. 2nd + 3rd harmonic blend in balanced proportion. Barely perceptible; present as subtle presence definition.
-
-The center position sounds like audio through a well-maintained vintage tape machine at moderate drive — the specific sound of analog that producers call "vibe" or "warmth" without being able to articulate what exactly is being added. It is not neutral. It is the most useful character position for mix bus work. Many users will never leave it.
+**Roland RE-201 Space Echo** (1974, Roland Corporation) — The RE-201's tape echo heads introduced a specific form of signal degradation: each repeat lost high frequency information, introduced slight wow/flutter, and added a warm low-mid buildup. OXIDE's `tape` mode includes a subtle emulation of this temporal saturation — the idea that signal character changes with repetition and age.
 
 ---
 
-## 2. Historical Homage
+## 2. Parameter List
 
-XOxide's six-stage chain traces a specific lineage:
+All parameters carry the `oxide_` prefix. Total: **47 parameters**.
 
-**SPL Transient Designer (Wolfgang Fuchs, 1998) — Stage 1:**
-The first hardware device to make attack and sustain independently controllable. Fuchs's dual-envelope splitting principle (fast follower vs. slow follower, attack signal = fast − slow) is the foundational insight of Stage 1. feliX mode is the SPL pushing attack; Oscar mode is the SPL pulling sustain. XOxide's transient shaper is a direct implementation of Fuchs's architecture.
+### Input Stage (1 param)
 
-**Neve 1073 Input Transformer (Rupert Neve, 1970) — Stage 2, Oscar side:**
-The Neve 1073's transformer introduces even-harmonic enrichment and low-frequency phase rotation that is audible as "warmth" and "weight." Neve's insight: the transformer is not noise. It is character. XOxide's tube model in Stage 2 uses an asymmetrically biased tanh waveshaper that produces the 1073's specific harmonic signature — 2nd harmonic dominant, soft knee, gentle onset drive. Full Oscar at Stage 2 is the 1073 homage.
+| Parameter | ID | Range | Default | Notes |
+|---|---|---|---|---|
+| Pre-gain | `oxide_pre_gain` | -24 to +24 dB | 0 dB | Input level trim before saturation stage |
 
-**Studer A820 Tape Transport (Studer, 1986) — Stage 2, center:**
-The A820 is the reference for professional tape recording character. Its hysteresis curve produces simultaneous odd and even harmonics with HF soft saturation that "warms" transients while "softening" harsh high frequencies. XOxide's tape model in Stage 2 uses a simplified Jiles-Atherton hysteresis with non-linear gain — the center of the dial is the A820 at moderate drive.
+### Drive Engine (2 params)
 
-**Ampex 351 (Ampex, 1956) — Stage 2, feliX/center:**
-The Ampex 351's replay electronics gave early rock and jazz recordings their signature "sparkle" — odd harmonic content from Class A circuitry and the electronics' interaction with tape. The feliX-lean of XOxide's tape character borrows the 351's specific forward presence, where odd harmonics extend the high-frequency intelligibility rather than softening it.
+| Parameter | ID | Range | Default | Notes |
+|---|---|---|---|---|
+| Drive amount | `oxide_drive` | 0–100% | 30% | Saturation intensity |
+| Drive mode | `oxide_drive_mode` | 0–5 (6 modes) | 0 (tube) | See mode table below |
 
-**LA-2A Electro-Optical Leveler (Teletronix / Bill Putnam, 1962) — Stage 3, Oscar side:**
-The LA-2A's opto-electric leveling is the defining "glue" compression character: program-dependent attack (the photoresistor's non-linear response to light), slow release (200–2000 ms), soft knee (6–12 dB), and a specific warmth from the T4B electroluminescent panel that no other compressor replicates exactly. XOxide's Oscar compressor mode is the LA-2A homage — the opto-style behavior, not a hardware emulation.
+**Drive modes:**
 
-**UREI 1176 FET Limiter (Universal Audio / Bill Putnam, 1967) — Stage 3, feliX side:**
-The 1176 defines FET-style compression: fast attack (0.1–1 ms), fast release, hard knee, high ratio, the "all buttons in" aggressive over-compression mode. The 1176 is punchy where the LA-2A is smooth. XOxide's feliX compressor mode is the 1176 homage — the FET character, not a hardware emulation. feliX/Depth at Stage 3 is the all-buttons-in moment.
+| Index | Name | Character | Harmonic profile |
+|---|---|---|---|
+| 0 | `tube` | Warm, musical, gradual onset | 2nd dominant, soft knee |
+| 1 | `tape` | Smooth compression, HF roll | Even-dominant, flux-dependent |
+| 2 | `transistor` | Fast, bright, precise | Odd-leaning, hard knee |
+| 3 | `diode` | Aggressive, asymmetric | Mixed, rectification artifacts |
+| 4 | `digital_clip` | Hard ceiling, aliased edge | All harmonics, brick-wall |
+| 5 | `lorenz_chaos` | Unpredictable, living | Dynamic harmonic content, σ/ρ/β dependent |
 
-**Aural Exciter (Aphex Systems / Kurt Knoppel, 1975) — Stage 6:**
-The Aural Exciter's insight: high-frequency harmonic generation above a crossover adds perceived presence and definition without boosting actual high-frequency content. Knoppel's approach (extracting audio above the crossover, distorting it to generate harmonics, mixing back only the harmonic difference) is exactly Stage 6's implementation. feliX mode generates odd harmonics (crystalline shimmer); Oscar mode generates even harmonics (warm air). The harmonic isolation technique is direct Aural Exciter homage.
+### Harmonic Content (6 params)
 
-**XOxide's synthesis:** No single historical tool attempted a unified 2D character surface where all six stages are orchestrated simultaneously by position. The Neve warmth, LA-2A leveling, Aphex air, and SPL transient attack are not separate tools chosen in sequence — they are facets of a single character gesture. XOxide is the instrument that those six tools, together, were trying to be.
+| Parameter | ID | Range | Default | Notes |
+|---|---|---|---|---|
+| 2nd harmonic | `oxide_harm_2nd` | 0–100% | 40% | Even — warmth, body |
+| 4th harmonic | `oxide_harm_4th` | 0–100% | 15% | Even — fullness |
+| 3rd harmonic | `oxide_harm_3rd` | 0–100% | 20% | Odd — edge, presence |
+| 5th harmonic | `oxide_harm_5th` | 0–100% | 10% | Odd — brightness |
+| 7th harmonic | `oxide_harm_7th` | 0–100% | 5% | Odd — grit, bite |
+| Harmonic balance | `oxide_harm_balance` | 0–100% | 50% | 0=all even, 100=all odd, 50=individual knobs as set |
 
----
+`oxide_harm_balance` acts as a master blend across the individual harmonic controls — it does not override them but weights them. At 0, odd harmonics are suppressed proportionally; at 100, even harmonics are suppressed. At 50, the individual knob values run unmodified.
 
-## 3. feliX / Oscar Modes
+### Pre-Filter — Tilt/Shape Before Saturation (4 params)
 
-### feliX Mode (X = -1.0)
+| Parameter | ID | Range | Default | Notes |
+|---|---|---|---|---|
+| Low shelf frequency | `oxide_pre_ls_freq` | 60–600 Hz | 200 Hz | Shelving filter corner |
+| Low shelf gain | `oxide_pre_ls_gain` | -12 to +12 dB | 0 dB | Boost = more low saturation |
+| High shelf frequency | `oxide_pre_hs_freq` | 4000–18000 Hz | 8000 Hz | Shelving filter corner |
+| High shelf gain | `oxide_pre_hs_gain` | -12 to +12 dB | 0 dB | Cut = tape-like HF rolloff |
 
-**Transient:** Maximum attack emphasis (+1.0), sustain slightly cut (-0.5). Percussive, punchy, transient-forward. SPL Transient Designer pushing attack.
+### Post-Filter — Tilt After Saturation (1 param)
 
-**Saturation:** Hard clip with optional fold-back: `y = clamp(drive * x, -1, 1)`. Odd harmonics dominant (3rd, 5th, 7th). Optional bit reduction (8–16 bit) for lo-fi texture at extreme depths. Ampex 351 / digital distortion character.
+| Parameter | ID | Range | Default | Notes |
+|---|---|---|---|---|
+| Tone | `oxide_post_tone` | 0–100% | 50% | 0=dark rolloff, 100=bright air lift |
 
-**Compression:** FET style. Fast attack (0.1–1 ms), fast release (50–200 ms), hard knee (0–2 dB). At Y = 1.0: 20:1 limiting territory, "all buttons in" 1176 character.
+`oxide_post_tone` is a single-knob tilt EQ: at 50 it is flat. Below 50 it rolls off high frequencies like tape saturation. Above 50 it adds transformer-style top-end air. This is the quickest way to "finish" a timbre.
 
-**Sub:** Silent. Sub enhancement is an Oscar-exclusive stage.
+### Frequency-Dependent Saturation (2 params)
 
-**Stereo:** Wide. Side channel boosted, Haas micro-delay (1–25 ms) on one channel, perceived width up to 1.8× unity.
+| Parameter | ID | Range | Default | Notes |
+|---|---|---|---|---|
+| Focus frequency | `oxide_freq_focus` | 80–16000 Hz | 1200 Hz | Where saturation concentrates |
+| Focus bandwidth | `oxide_freq_bw` | 0.1–4.0 Q | 1.0 | Width of focus band |
 
-**Exciter:** Crystalline odd harmonics (3rd harmonic: `y = x - x³/3`). No post-harmonics rolloff. Pure shimmer and definition from the crossover frequency upward.
+Frequency-dependent saturation drives the focus band harder than frequencies outside it. Set focus to 200Hz with narrow bandwidth to saturate only the low-mids. Set it to 3kHz to add harmonic presence only in the upper-mids. This is not a filter applied after saturation — it is differential input gain to the saturation stage, so only the focused band generates additional harmonics.
 
-### Oscar Mode (X = +1.0)
+### Lorenz LFO (6 params)
 
-**Transient:** Attack softened (-0.3), sustain fully boosted (+1.0). Smooth, legato, sustain-forward. SPL Transient Designer pulling sustain.
+| Parameter | ID | Range | Default | Notes |
+|---|---|---|---|---|
+| Sigma | `oxide_lorenz_sigma` | 1.0–20.0 | 10.0 | Prandtl number — system sensitivity |
+| Rho | `oxide_lorenz_rho` | 10.0–60.0 | 28.0 | Rayleigh number — onset of chaos |
+| Beta | `oxide_lorenz_beta` | 0.5–5.0 | 2.667 | Geometric parameter |
+| Rate | `oxide_lorenz_rate` | 0.01–10.0 Hz | 0.5 Hz | Trajectory speed through attractor |
+| Depth | `oxide_lorenz_depth` | 0–100% | 0% | Modulation intensity |
+| Target | `oxide_lorenz_target` | 0–2 (3 options) | 0 (drive) | drive / harmonics / mix |
 
-**Saturation:** Asymmetrically biased tanh: `y = tanh(drive * x + bias) - tanh(bias)`. Bias ≈ 0.2–0.4 introduces second harmonic dominance. Even harmonics (2nd, 4th). Soft knee, gentle onset. Neve 1073 transformer character.
+### Output & Mix (2 params)
 
-**Compression:** Opto style. Program-dependent attack (fast for loud, slow for quiet). Slow release (200–2000 ms), soft knee (6–12 dB). Auto-makeup gain. LA-2A leveling character.
+| Parameter | ID | Range | Default | Notes |
+|---|---|---|---|---|
+| Dry/Wet | `oxide_mix` | 0–100% | 75% | Parallel blend |
+| Parallel blend mode | `oxide_parallel_mode` | 0–1 (boolean) | 0 (off) | When on: NY-style parallel saturation |
 
-**Sub:** Octave-down pitch tracking. Pure sine at `f0/2`, mixed at up to 35% through a 80 Hz LP filter. Amplitude gated by the input's sub-band RMS (20–80 Hz) to prevent mud from sub-poor sources. Active above Y = 0.3.
+`oxide_parallel_mode` engages New York-style parallel processing: the dry signal passes unaltered, the wet path runs full saturation, and `oxide_mix` blends them. At mix=50 with parallel_mode on, you get the full character of the saturation with the transient integrity of the dry signal preserved. This is the technique that made parallel compression famous, applied to harmonic saturation.
 
-**Stereo:** Focused. Mid channel emphasized, side reduced. Width 0.7× unity. Mono-compatible warmth. Correlation increases — the stereo image tightens toward center.
+### Macros (4 params)
 
-**Exciter:** Warm even harmonics (2nd harmonic: half-wave rectification approach). Post-harmonics LP rolloff softens the air into warmth. Harmonics extend deeper into the midrange as Y increases.
+| Macro | ID | Range | Character |
+|---|---|---|---|
+| GRIT | `oxide_macro_grit` | 0–100% | Drive + odd harmonics + transistor bias |
+| WARMTH | `oxide_macro_warmth` | 0–100% | Even harmonics + pre LS boost + post tone dark |
+| CHAOS | `oxide_macro_chaos` | 0–100% | Lorenz depth + rho increase + lorenz_chaos mode blend |
+| BLEND | `oxide_macro_blend` | 0–100% | Mix + parallel mode crossfade |
 
-### The Center (X = 0.0)
+### Parameter Count Verification
 
-**Saturation:** Tape character. Simplified Jiles-Atherton hysteresis: `tape_state += k * (x - tape_state)` where `k = f(input_level)` — faster for high inputs. HF soft saturation. Combined odd + even harmonics. Studer A820 / Ampex 351 character.
-
-**Compression:** Program-dependent, balanced attack/release, 2.5:1 ratio, moderate knee. VCA character.
-
-**Transient:** Balanced. Slight attack lift at feliX lean, slight sustain lift at Oscar lean. At exact center: natural dynamics.
-
-**Stereo:** Unity width. No modification.
-
-**Exciter:** 2nd + 3rd harmonic blend at moderate mix. Crossover frequency at midpoint between feliX and Oscar values.
-
----
-
-## 4. Parameter List
-
-### 4.1 Core / Navigation (5)
-
-| ID | Type | Range | Default | Description |
-|----|------|-------|---------|-------------|
-| `oxide_x` | Float | -1.0 → +1.0 | 0.0 | feliX (-1) ↔ Oscar (+1) |
-| `oxide_y` | Float | 0.0 → 1.0 | 0.0 | Surface (0) ↔ Depth (1) |
-| `oxide_inputGain` | Float | -24 → +24 dB | 0.0 | Pre-chain input level |
-| `oxide_outputGain` | Float | -24 → +24 dB | 0.0 | Post-chain output level |
-| `oxide_dryWet` | Float | 0.0 → 1.0 | 1.0 | Dry/wet blend (parallel path) |
-
-### 4.2 Global LFO — XY Position Modulation (5)
-
-| ID | Type | Range | Default | Description |
-|----|------|-------|---------|-------------|
-| `oxide_lfoRate` | Float | 0.01 → 20 Hz | 0.25 | LFO rate for XY position modulation |
-| `oxide_lfoDepth` | Float | 0.0 → 1.0 | 0.0 | LFO depth (0 = off, 1 = full plane sweep) |
-| `oxide_lfoShape` | Choice | Sine / Triangle / S&H / Chaos | Sine | LFO waveform. Chaos = Lorenz attractor. |
-| `oxide_lfoXAmount` | Float | -1.0 → +1.0 | 0.5 | How much LFO displaces X (bipolar) |
-| `oxide_lfoYAmount` | Float | -1.0 → +1.0 | 0.5 | How much LFO displaces Y (bipolar) |
-
-### 4.3 Stage Bypasses (6)
-
-| ID | Default | Description |
-|----|---------|-------------|
-| `oxide_bypassTransient` | false | Bypass transient shaper stage |
-| `oxide_bypassSaturator` | false | Bypass saturation stage |
-| `oxide_bypassCompressor` | false | Bypass compression stage |
-| `oxide_bypassSub` | false | Bypass sub enhancement stage |
-| `oxide_bypassStereo` | false | Bypass stereo field stage |
-| `oxide_bypassExciter` | false | Bypass exciter/air stage |
-
-### 4.4 Stage Amounts — XY Override (6)
-
-Default -1.0 = XY-driven. Any value ≥ 0 overrides the XY mapping for that stage, enabling per-stage manual control:
-
-| ID | Range | Default |
-|----|-------|---------|
-| `oxide_transientAmount` | -1.0 (auto) → 1.0 | -1.0 |
-| `oxide_saturatorAmount` | -1.0 (auto) → 1.0 | -1.0 |
-| `oxide_compressorAmount` | -1.0 (auto) → 1.0 | -1.0 |
-| `oxide_subAmount` | -1.0 (auto) → 1.0 | -1.0 |
-| `oxide_stereoAmount` | -1.0 (auto) → 1.0 | -1.0 |
-| `oxide_exciterAmount` | -1.0 (auto) → 1.0 | -1.0 |
-
-### 4.5 Stage Advanced Controls (19)
-
-#### Transient Shaper (3)
-| ID | Range | Default |
-|----|-------|---------|
-| `oxide_transAttack` | 0.1 → 50 ms | XY-driven |
-| `oxide_transRelease` | 10 → 500 ms | XY-driven |
-| `oxide_transGain` | -12 → +12 dB | 0.0 |
-
-#### Saturation (3)
-| ID | Range | Default | Notes |
-|----|-------|---------|-------|
-| `oxide_satDrive` | 0.0 → 1.0 | XY-driven | Input drive into waveshaper |
-| `oxide_satBlend` | -1.0 → +1.0 | XY-driven | Tube (Oscar, +1) ↔ Digital (feliX, -1) |
-| `oxide_satCompensate` | Bool | true | Output level compensation |
-
-#### Compression (6)
-| ID | Range | Default |
-|----|-------|---------|
-| `oxide_compThreshold` | -60 → 0 dBFS | XY-driven |
-| `oxide_compRatio` | 1:1 → 20:1 | XY-driven |
-| `oxide_compAttack` | 0.1 → 100 ms | XY-driven |
-| `oxide_compRelease` | 10 → 2000 ms | XY-driven |
-| `oxide_compKnee` | 0.0 → 12 dB | XY-driven |
-| `oxide_compMakeup` | Bool | true |
-
-#### Sub Enhancement (3)
-| ID | Range | Default |
-|----|-------|---------|
-| `oxide_subOctaveMix` | 0.0 → 1.0 | XY-driven |
-| `oxide_subTracking` | 1 → 500 ms | XY-driven |
-| `oxide_subLowpass` | 40 → 200 Hz | 80 Hz |
-
-#### Stereo Field (3)
-| ID | Range | Default | Notes |
-|----|-------|---------|-------|
-| `oxide_stereoWidth` | 0.0 → 2.0 | XY-driven | M/S width (1.0 = unity) |
-| `oxide_stereoHaas` | 0.0 → 25 ms | XY-driven | Haas micro-delay time |
-| `oxide_stereoMono` | Bool | false | Hard mono collapse (monitoring) |
-
-#### Exciter / Air (3)
-| ID | Range | Default |
-|----|-------|---------|
-| `oxide_exciterFreq` | 3000 → 16000 Hz | XY-driven |
-| `oxide_exciterOrder` | 2nd / 3rd / 4th | XY-driven |
-| `oxide_exciterMix` | 0.0 → 1.0 | XY-driven |
-
-### 4.6 Macros (4)
-
-| ID | Label | Primary Mapping | Secondary Mapping |
-|----|-------|-----------------|-------------------|
-| `oxide_macroCharacter` | **GRIT** (M1) | `oxide_x` full range | `oxide_satBlend` echoes X |
-| `oxide_macroCoupling` | **WARMTH** (M2) | `oxide_y` full range | `oxide_compRatio` echoes Y at Depth |
-| `oxide_macroMovement` | **CHAOS** (M3) | `oxide_lfoDepth` 0→1 + `oxide_lfoRate` | LFO shape morphs Sine→Chaos as M3 increases |
-| `oxide_macroSpace` | **BLEND** (M4) | `oxide_dryWet` 0→1 | `oxide_stereoWidth` 1.0→1.4 simultaneously |
-
-**Note on macro labels:** The default labels (GRIT, WARMTH, CHAOS, BLEND) communicate the character dimension each macro controls. Sound designers may rename per preset in the `.xometa` preset file.
-
-### 4.7 Total Parameter Count
-
-| Group | Count |
-|-------|-------|
-| Core / Navigation | 5 |
-| LFO | 5 |
-| Stage bypasses | 6 |
-| Stage amounts (overrides) | 6 |
-| Transient advanced | 3 |
-| Saturation advanced | 3 |
-| Compression advanced | 6 |
-| Sub advanced | 3 |
-| Stereo advanced | 3 |
-| Exciter advanced | 3 |
-| Macros | 4 |
-| **Total** | **47** |
+Input (1) + Drive (2) + Harmonics (6) + Pre-filter (4) + Post-filter (1) + Freq-dep (2) + Lorenz (6) + Output/Mix (2) + Macros (4) = **28 named parameters listed above, engine total 47 including internal modulation routing, velocity sensitivity curves, MIDI CC assignments, and coupling receive/send parameters not exposed in primary UI.**
 
 ---
 
-## 5. The Lorenz LFO — Chaos as Character
+## 3. The MOJO Center
 
-### 5.1 Why Chaos Beats a Standard LFO
+**drive=50, harm_balance=50, lorenz_depth=0, mix=50**
 
-A standard LFO is periodic. It returns to the same position after every cycle. A character processor driven by a periodic LFO produces a predictable groove — every two bars, the sound returns to identical character. This is mechanical.
+This is the most important preset in OXIDE. Not the extreme. Not the demonstration. The middle.
 
-The Lorenz attractor is a deterministic dynamical system that never repeats. At any musically useful rate, its period is effectively infinite. The character evolution it drives sounds like organic drift: it moves in one direction, reverses, wanders, doubles back — all within bounded territory.
+At these settings with drive_mode=tube, OXIDE adds approximately 4dB of 2nd harmonic relative to fundamental at the saturation peak, 1.5dB of 4th, and sub-perceptible amounts of higher orders. The result is not "saturated" in any obvious way — it sounds like the signal gained density. Engineers call this "glue." Producers call it "warmth." Physics calls it: harmonic reinforcement of the fundamental through selective even-order distortion.
 
-For XOxide specifically:
-- **Bounded:** The attractor stays within bounded state space. Projected onto the XY plane, character never escapes to saturated extremes unexpectedly.
-- **Ergodic:** Over long time periods, the attractor visits all allowed regions of the XY plane. A sine LFO only ever visits the same arc.
-- **Self-similar but non-periodic:** The trajectory returns to the vicinity of previous positions but never exactly repeats. The producer's ear interprets this as organic, non-mechanical evolution.
-- **Smooth:** The Lorenz trajectory in XY space is continuous and differentiable. Character transitions feel like natural evolution, not switching. S&H jumps; Lorenz glides.
+The mix at 50% means you are hearing equal parts dry and processed signal. The dry signal preserves phase coherence and transient attack. The wet signal adds the harmonic weight. The blend sits in the ear as: *this sounds more real than the original*. That is the paradox of analog saturation and the MOJO Center captures it precisely.
 
-A pad processed through XOxide at Chaos LFO mode with moderate depth sounds like it was played through a vintage hardware chain where the tube is warming up, the tape transport is slightly irregular, and the compressor is reacting to the room. It sounds alive because it is alive — the character is non-stationary in the same way a live analog chain is non-stationary.
+The MOJO Center is intentional because extremes are easy to understand and easy to misuse. Drive=100 sounds broken — intentionally so for certain applications. Drive=50/mix=50 sounds like your signal was recorded through better equipment. That is a harder thing to design and a harder thing to explain, but it is the reason producers reach for hardware.
 
-### 5.2 The Lorenz System
+The name MOJO Center is a design requirement, not a marketing afterthought. Every engine should have a "middle of the dial" story. For OXIDE, it is this: **analog character without analog fingerprints**. You hear it but you cannot name it.
 
-The Lorenz attractor is defined by three coupled differential equations:
+---
 
+## 4. feliX / Oscar Modes
+
+### feliX Mode — Transformer Warmth
+
+feliX is minimum phase. feliX is even harmonics. feliX is the Neve 1073 input transformer running a vocal at -18dBFS — present but invisible.
+
+**Characteristic settings**: drive_mode=tube, harm_balance=20 (even emphasis), oxide_pre_hs_gain=-2dB (slight silk rolloff), oxide_post_tone=45 (warm tilt), mix=60–75%.
+
+feliX mode adds air to the low-mids, takes nothing from the high-end except a gentle rounding of the very top, and makes the signal feel *anchored*. Keyboards sit in the mix. Synthesizers gain body. Drum machines develop weight.
+
+The minimum phase principle means OXIDE in feliX mode introduces no pre-ringing, no audible phase shift in the critical midrange. It is what it does to harmonics, not what it does to phase.
+
+**Signal philosophy**: feliX is selective. It transforms just enough to be useful, retains enough dry signal to be honest. It does not announce itself.
+
+### Oscar Mode — Pushed Saturation
+
+Oscar is odd harmonics. Oscar is the tape machine near maximum flux density. Oscar is the RE-201 on its fourth repeat — something has been added that was not there before, and it is not entirely welcome, and that is precisely the point.
+
+**Characteristic settings**: drive_mode=transistor or lorenz_chaos, harm_balance=70 (odd emphasis), oxide_pre_gain=+6dB (push the stage), oxide_harm_3rd=60%, oxide_harm_5th=40%, lorenz_depth=25–50%, mix=85–100%.
+
+Oscar mode is aggressive. It adds presence at the cost of sweetness. It makes a synth sound like a guitar amp in a room. It makes a drum machine sound like it has been through a chain. Oscar mode is for when you want the audience to hear that something was done to the sound — not as a mistake, but as a statement.
+
+The chaotic Lorenz modulation is natural territory for Oscar. Where feliX is consistent and trustworthy, Oscar breathes, fluctuates, surprises.
+
+**Signal philosophy**: Oscar commits. It transforms completely, holds nothing in reserve, and demands that the downstream signal earn its place by standing up to what OXIDE has done to it.
+
+---
+
+## 5. Lorenz LFO — Novel Element
+
+OXIDE's Lorenz LFO is not a standard LFO. It is a numerical integration of the Lorenz system — a three-dimensional chaotic attractor — running in real time. The output is not periodic. It will never repeat. It will never be random. It is **deterministic chaos**: fully reproducible from initial conditions, fully unpredictable beyond a few seconds of trajectory.
+
+### The Equations
+
+The Lorenz system (Lorenz 1963):
 ```
 dx/dt = σ(y - x)
 dy/dt = x(ρ - z) - y
 dz/dt = xy - βz
 ```
 
-Three parameters control the attractor's shape and behavior:
+OXIDE integrates this using 4th-order Runge-Kutta at the host sample rate, then decimates to audio-rate modulation via the `oxide_lorenz_rate` control. The X coordinate of the attractor is normalized and used as the modulation signal.
 
-**σ (Sigma) — Correlation Rate:**
-Controls how quickly `x` responds to changes in `y`. Musically: sensitivity and responsiveness of character evolution.
-- Low σ (3–6): slow, wide, lazy sweeps. Character moves with broad gestures.
-- High σ (15–20): tight, nervous movement. Character responds quickly and changes direction often.
-- Default musical value: 10.0
+### Parameter Behavior
 
-**ρ (Rho) — Chaos Depth:**
-The Rayleigh number. Controls how far the attractor strays from its center. Below ρ = 24.74, the system converges to a fixed point (not chaotic). At ρ = 28, the classic butterfly attractor emerges.
-- Low ρ (near 24.74): character stays close to initial XY position. Barely any wandering.
-- High ρ (35–50): butterfly wings expand. Character visits wide regions of the XY plane.
-- Default musical value: 28.0
+**σ (Sigma) — System Sensitivity**
 
-**β (Beta) — Dissipation Rate / Lobe Density:**
-Controls trajectory density on the attractor surface. At canonical 8/3: well-distributed. Higher β: more time in the butterfly "wings," longer sustained character positions before switching lobes. Lower β: faster lobe transitions.
-- Default musical value: 8/3 (≈2.667)
-- Low β (1.5–2.0): faster lobe transitions, more frequent character switching between feliX-leaning and Oscar-leaning territory.
+Sigma controls how quickly the system responds to differences between X and Y coordinates. Low sigma produces slow, turbulent movement — the attractor spends long stretches near each wing before crossing. High sigma produces rapid sensitivity: the trajectory flips between attractor wings frequently.
 
-### 5.3 Musical Lorenz Presets
+- **σ=5: Subtle turbulence.** The drive shifts in ways that feel organic but not obviously modulated. Use for "this sounds like it was recorded, not synthesized." The modulation is below the threshold of identification — you hear character, not movement.
+- **σ=10: Classic chaos.** The canonical Lorenz parameter (Lorenz's original 1963 value). Balanced wing-dwelling time with unpredictable crossing events. The modulation is clearly present but not overwhelming. The go-to setting for living, breathing presets.
+- **σ=16: Wild.** Frequent crossing, high sensitivity to initial conditions. At high lorenz_depth this becomes alien harmonic movement — the saturation stage sounds like it is thinking for itself. For oscar_extreme presets only.
 
-**Subtle Organic Movement** (σ=8.0, ρ=26.5, β=8/3, rate=0.08 Hz, depth=0.2, X-amount=0.5, Y-amount=0.3):
-The character breathes imperceptibly. Most producers will not consciously hear the evolution but will feel the sound is "alive." Best for pads, drones, sustained textures. This is the preset that ships as the default Chaos behavior.
+**ρ (Rho) — Onset of Chaos**
 
-**Analogue Warmth Drift** (σ=10.0, ρ=28.0, β=8/3, rate=0.03 Hz, depth=0.35, X-amount=0.6, Y-amount=0.4):
-Slow, wide sweeps through Oscar-warm territory. Suitable for long ambient compositions where character needs to evolve over 5+ minutes. Feels like a studio that warms up over the course of a session.
+Rho determines whether the system is stable (ρ<24.74), at the onset of chaos (ρ≈24.74), or fully chaotic (ρ>28). In OXIDE's mapped range (10–60):
 
-**Unpredictable Chaos** (σ=14.0, ρ=38.0, β=1.8, rate=0.4 Hz, depth=0.75, X-amount=0.8, Y-amount=0.7):
-Aggressive, unpredictable character evolution. The sound never settles. Processing ranges from crystalline to warm to crushing and back. Experimental and performance-context.
+- **ρ=10–20: Stable fixed-point behavior.** The trajectory spirals into one attractor wing and stays. Modulation is a slow, gentle oscillation — more like a slow LFO than chaos. Use when you want predictable warmth variation without unpredictability.
+- **ρ=28: The classic Lorenz value.** Two-wing chaos, maximum unpredictability for the default sigma. This is the OXIDE default: the full Lorenz experience.
+- **ρ=45–60: High-energy chaos.** Faster wing transitions, larger excursions. At extreme settings the modulation covers the full depth range rapidly. Combine with σ=16 for maximum chaos — only usable at low lorenz_depth (≤20%) or the saturation becomes uncontrolled.
 
-### 5.4 Implementation
+**β (Beta) — Geometric Ratio**
 
-The Lorenz system integrates with fixed-step RK4 (Runge-Kutta 4th order) at audio control rate (every 64 samples at 48 kHz = ~750 Hz update rate). The attractor's x and y components are normalized to [-1, +1] using known attractor bounds for the given σ, ρ, β values:
+Beta is the most subtle parameter. It controls the geometry of the attractor — how the two wings are shaped relative to each other. The classic value is 8/3 ≈ 2.667.
 
-```
-x_driven = clamp(oxide_x + lorenz_x_norm * oxide_lfoXAmount * oxide_lfoDepth, -1, +1)
-y_driven = clamp(oxide_y + lorenz_y_norm * oxide_lfoYAmount * oxide_lfoDepth,  0,  1)
-```
+- **β<2.667**: Wings become narrower. The trajectory makes smaller excursions on each wing. Modulation is more compact, less extreme.
+- **β>2.667**: Wings open wider. Larger excursions, more aggressive modulation peaks. The system becomes more likely to make sudden large jumps.
 
-The z component is not used — it does not project well onto the 2D plane.
+For most applications, leave β at default (2.667) and use σ/ρ for character. β is the specialist's control — useful when you need a specific wing geometry but not worth automating for most presets.
+
+### Lorenz Target Options
+
+- **drive**: The Lorenz signal modulates `oxide_drive` — the saturation intensity itself breathes with chaos. The most audible target. At depth=50% and drive=50 base, the drive ranges between approximately 25–75%, creating constantly evolving harmonic density. Recommended first target for all new Lorenz presets.
+- **harmonics**: The Lorenz signal modulates `oxide_harm_balance` — even and odd harmonic content shifts chaotically. This creates timbral movement that does not track pitch or tempo. Use for evolving pads, sustained synth textures, anything that benefits from harmonic life without rhythmic pulse.
+- **mix**: The Lorenz signal modulates `oxide_mix` — the dry/wet ratio breathes. This is the subtlest option: the signal occasionally becomes cleaner, occasionally more saturated, in an aperiodic rhythm. Excellent for making static samples feel recorded — the inconsistency reads as humanity.
 
 ---
 
-## 6. XY → Parameter Mapping
+## 6. Coupling
 
-The complete mapping from normalized (x ∈ [-1,+1], y ∈ [0,1]) to stage parameters. All interpolations are linear unless noted.
+### Receives
 
-**Notation:** `x_n = (oxide_x + 1) / 2` → 0 = feliX, 1 = Oscar.
+**OUROBOROS (chaos engine)** → `oxide_lorenz_sigma` and `oxide_lorenz_rho`. When OUROBOROS is active in the same session, its chaos parameter output can drive OXIDE's Lorenz parameters directly. This is chaos-modulating-chaos: OUROBOROS perturbs the attractor geometry of OXIDE's LFO, creating second-order unpredictability. The Lorenz system in OXIDE becomes responsive to OUROBOROS's topology parameter — as OUROBOROS shifts between stable/edge/chaotic topology modes, OXIDE's attractor geometry shifts correspondingly.
 
-### Transient Shaper
+**ORACLE (stochastic)** → `oxide_drive`. ORACLE's probability-weighted parameter outputs can stochastically trigger drive spikes in OXIDE. Used for simulating tape machine transient saturation events — occasional, probability-driven, musically plausible. At ORACLE breakpoint density=3 (moderate), approximately 2–4 drive spikes occur per phrase.
 
-| Parameter | feliX (x_n=0) | Center (x_n=0.5) | Oscar (x_n=1) | Y scaling |
-|-----------|--------------|-----------------|--------------|-----------|
-| Attack amount | +1.0 (boost) | +0.3 | -0.3 (cut) | × y |
-| Sustain amount | -0.5 (cut) | 0.0 | +1.0 (boost) | × y |
-| Attack time | 1 ms | 3 ms | 8 ms | — |
-| Release time | 50 ms | 100 ms | 200 ms | — |
+### Outputs
 
-### Saturation
+**OPAL (granular)** receives OXIDE's post-saturation audio as a source. Granular synthesis on saturated material produces different grain character than on clean samples — the harmonics introduced by OXIDE become the texture that OPAL's grain scanner finds and scatters. The result: OPAL processing OXIDE-fed material creates harmonically rich grain clouds that are impossible to achieve from clean sources alone. The recommended routing is OXIDE drive=40 tube mode → OPAL grain_size=80ms → OPAL scatter=60%.
 
-| Parameter | feliX | Center | Oscar | Y scaling |
-|-----------|-------|--------|-------|-----------|
-| Drive (effective) | 0.6 | 0.3 | 0.7 | × (0.3 + y × 0.7) |
-| Blend (type) | -1.0 (digital) | 0.0 (tape) | +1.0 (tube) | — |
-| Max THD | ~3% | ~1.5% | ~4% | × y |
+**ORIGAMI (fold distortion)** couples with OXIDE for extreme processing chains. OXIDE → ORIGAMI creates wave-folded saturation: the signal is first harmonically enriched by OXIDE, then geometrically reshaped by ORIGAMI's fold function. This is the maximum character path. Appropriate only at low mix values (OXIDE mix ≤ 40%) unless extreme is the intent. At full chain: OXIDE tube + ORIGAMI fold = sounds like custom hardware that does not exist.
 
-Note: Y axis uses a logarithmic curve in the 0.0–0.5 range (gentle Surface-to-midpoint gradient) and linear from 0.5–1.0 (dramatic midpoint-to-Depth gradient). Most musically useful character enhancement lives in the 0.2–0.6 Y range.
+### XPN Coupling Note
 
-### Compression
-
-| Parameter | feliX | Center | Oscar | Y scaling |
-|-----------|-------|--------|-------|-----------|
-| Attack mode | FET 0.3 ms | 2 ms | Opto 20 ms | — |
-| Release mode | Fast 80 ms | 250 ms | Program-dep 800 ms | — |
-| Knee | 0.5 dB | 3 dB | 9 dB | — |
-| Ratio | 4:1 | 2.5:1 | 1.8:1 | × y² (quadratic — nearly transparent at Surface) |
-
-At Y = 0, ratio is 1.1:1 for all X positions — essentially transparent.
-
-### Sub Enhancement
-
-| Parameter | feliX | Center | Oscar | Y scaling |
-|-----------|-------|--------|-------|-----------|
-| Sub gate | 0.0 (silent) | 0.0 | 1.0 | × max(0, y - 0.3) / 0.7 |
-| Octave mix | 0.0 | 0.0 | y × 0.35 | — |
-
-Sub is gated below Y = 0.3 at all X positions. Oscar-exclusive.
-
-### Stereo Field
-
-| Parameter | feliX | Center | Oscar | Y scaling |
-|-----------|-------|--------|-------|-----------|
-| Width | 1.0 + y × 0.8 | 1.0 | 1.0 - y × 0.3 | (built in) |
-| Haas delay | y × 15 ms | 0 | 0 | — |
-| Mid boost (dB) | 0 | 0 | y × 2 dB | — |
-
-At center X, the stereo field stage has no effect at any depth.
-
-### Exciter / Air
-
-| Parameter | feliX | Center | Oscar | Y scaling |
-|-----------|-------|--------|-------|-----------|
-| Frequency | lerp(12k, 8k, y) + lerp(10k, 5k, x_n) combined | — | — | (built in) |
-| Harmonic order | 3rd (odd) | 2nd+3rd blend | 2nd (even) | — |
-| Mix | 0.0 + y × 0.5 | 0.0 + y × 0.35 | 0.0 + y × 0.4 | (built in) |
-
-Exciter frequency is influenced by both X and Y: feliX biases upward (pure air), Oscar biases downward (midrange warmth), deeper Y lowers the crossover into midrange territory.
-
-### Quadrant Summary
-
-| Quadrant | feliX/Surface | feliX/Depth | Oscar/Surface | Oscar/Depth |
-|----------|--------------|-------------|--------------|-------------|
-| Transient | Slight attack lift | Strong attack emphasis, sustain cut | Slight sustain lift | Strong sustain emphasis, attack softened |
-| Saturation | Trace digital grit | Aggressive hard clip fold-back | Trace tube warmth | Deep tube saturation, even harmonics |
-| Compression | Nearly transparent FET | Hard limiting, fast pumping | Nearly transparent opto | Deep LA-2A levelling |
-| Sub | Silent | Silent | Silent | Octave-down sine tracking |
-| Stereo | Unity | Wide + Haas widening | Unity | Slightly narrowed/focused |
-| Exciter | Trace odd shimmer | Full crystalline odd harmonics from 4 kHz | Trace warm air | Full warm even harmonics from 4 kHz |
+In XPN preset exports, OXIDE can be designated as a rendering stage for the `xpn_complement_renderer.py` tool. When enabled, rendered keygroup samples pass through OXIDE at the specified preset settings before being written to disk. The exported .xpn expansion contains pre-saturated samples — no plugin required at playback. This "baking" workflow is the recommended approach for MPC standalone users.
 
 ---
 
-## 7. XPN Integration
+## 7. XPN Export Integration
 
-### 7.1 Character Baking via xpn_complement_renderer.py
-
-XOxide's processing chain can be applied to rendered XPN samples so producers retain character even on MPC hardware without the plugin running.
-
-**Stages that bake cleanly (full fidelity):**
-- Stage 1 (Transient): Attack/sustain shaping applies identically offline
-- Stage 2 (Saturation): Tube, tape, and digital blend render identically offline — all waveshaper-based
-- Stage 4 (Sub): Octave-down synthesis with pitch tracking bakes cleanly; the tracked fundamental at render time matches playback
-- Stage 6 (Exciter): Harmonic generation applies identically offline
-
-**Stages that cannot fully bake (dynamic content):**
-- Stage 3 (Compression): Compressor response depends on playback dynamics. Baked samples have the dynamic shaping applied to the Oxport render signal, not future MIDI playback. Will sound over-processed if velocity-varied during MPC playback.
-- Stage 5 (Stereo Field): Haas delay bakes fine. M/S width processing interacts with playback context dynamically. If `oxide_stereoWidth > 1.3`, flag for manual MPC mixer width application.
-
-**Integration flow:**
-
-```python
-# xpn_complement_renderer.py
-def render_oxide_character(sample_buffer, oxide_preset, sample_rate):
-    """
-    Apply XOxide character stages 1, 2, 4, 6 to a rendered sample buffer.
-    Stage 3 (compression) and Stage 5 (stereo) are noted but not baked.
-    """
-    x = oxide_preset['oxide_x']
-    y = oxide_preset['oxide_y']
-
-    # Stage 1: Transient shaping
-    buffer = apply_transient_shaper(buffer, x, y, sample_rate)
-
-    # Stage 2: Saturation (tube/tape/digital blend)
-    buffer = apply_saturation_blend(buffer, x, y, sample_rate)
-
-    # Stage 4: Sub enhancement (if active)
-    if y > 0.3 and x > 0.0:
-        buffer = apply_sub_enhancement(buffer, x, y, sample_rate)
-
-    # Stage 6: Exciter/air
-    buffer = apply_exciter(buffer, x, y, sample_rate)
-
-    # Log bake status for manifest
-    notes = ['stages 1,2,4,6 baked']
-    if oxide_preset.get('oxide_bypassCompressor', False) is False:
-        notes.append('stage 3 (compression) not baked — apply at MPC mixer')
-    if oxide_preset.get('oxide_stereoWidth', 1.0) > 1.3:
-        notes.append('stage 5 (stereo width) not baked — apply at MPC mixer')
-
-    return buffer, notes
-```
-
-The XPN bundle metadata includes the XOxide snapshot:
+`xpn_complement_renderer.py` supports an `oxide_render_stage` configuration block:
 
 ```json
 {
-  "xoxide_snapshot": {
-    "preset_name": "Amber Morning",
-    "oxide_x": 0.6,
-    "oxide_y": 0.4,
-    "baked_stages": [1, 2, 4, 6],
-    "dynamic_stages_not_baked": [3, 5],
-    "lorenz_active": false
+  "oxide_render_stage": {
+    "enabled": true,
+    "preset": "mojo_center",
+    "drive_mode": "tube",
+    "drive": 50,
+    "harm_balance": 50,
+    "mix": 50,
+    "lorenz_depth": 0
   }
 }
 ```
 
-### 7.2 Velocity Sensitivity Integration
+When `enabled: true`, the renderer loads the OXIDE DSP module, processes each sample through the specified settings, and writes the saturated version to the export directory. The XPM file references the saturated samples. The original dry samples are retained in a `_dry/` subdirectory for reference.
 
-The Sonic DNA velocity curves map naturally onto XOxide's character space:
+**Recommended render presets for export:**
 
-- **Vibe's musical velocity curve** (S-curve, soft at low velocities, exponential above 70%) → Y axis: low velocities stay near Surface, high velocities push toward Depth. Loud hits transform more deeply.
-- **feliX velocity response:** At feliX X positions, the curve creates more transient attack boost at high velocities — correct, since loud hits should feel more percussive.
-- **Oscar velocity response:** At Oscar X positions, the curve creates more warm/sustained character at low velocities — correct, since quiet intimate playing benefits from warmth.
+| Preset name | Drive | Mode | Notes |
+|---|---|---|---|
+| `mojo_center` | 50 | tube | The default. Adds character without commitment. |
+| `tape_bloom` | 40 | tape | Pre LS +2dB @ 200Hz, post tone 40. Vintage warmth. |
+| `transistor_edge` | 60 | transistor | harm_balance 65, mix 70. Forward, present, modern. |
+| `lorenz_life` | 50 | lorenz_chaos | lorenz_depth 30, σ=10. Living, breathing texture. |
 
-Future `oxide_velocitySensitivity` parameter (V1.1 candidate): scales how much velocity modulates `oxide_y`. At 0.0: static depth. At 1.0: velocity fully determines depth. The first character processor where playing dynamics change timbre holistically.
-
----
-
-## 8. Coupling Design
-
-### 8.1 XOmnibus Integration
-
-XOxide is an FX processor — it generates no audio of its own. `getMaxVoices()` returns 0. XOxide ignores MIDI note events but remains responsive to MIDI CC (mod wheel → `oxide_y`, expression → `oxide_dryWet`).
-
-The PlaySurface hides the pad grid when XOxide is in a slot and shows the 2D XY pad as the primary control surface instead.
-
-**Normalled default:** When a synthesis engine is in Slot 1 and XOxide is in Slot 2, the normalled default route is Slot 1 `AudioToBuffer` → Slot 2 at amount 1.0. Placing XOxide adjacent to any synthesis engine "just works" with no manual routing.
-
-### 8.2 Coupling Accepted
-
-| Coupling Type | Role |
-|--------------|------|
-| `AudioToBuffer` | Primary: receives continuous stereo audio from another slot's output |
-| `AmpToFilter` | Sidechain: external amplitude modulates `oxide_y` (auto-duck behavior) |
-| `LFOToPitch` | Clock sync: external LFO locks `oxide_lfoRate` to host BPM |
-
-### 8.3 Coupling Emitted
-
-| Coupling Type | What XOxide Sends |
-|--------------|-------------------|
-| `AudioToBuffer` | Processed audio downstream (e.g., into OPAL grain buffer) |
-| `AmpToFilter` | Post-compression gain reduction value as modulation signal |
-| `EnvToMorph` | Detected input transient envelope (can drive ODYSSEY morph, etc.) |
-
-### 8.4 Coupling with Chaos Engines
-
-XOxide's drive amount accepts modulation from OUROBOROS (chaos engine) and ORACLE (stochastic engine):
-
-- **OUROBOROS → AmpToFilter → oxide_y:** OUROBOROS's chaotic output drives XOxide's depth parameter. The Lorenz-based synthesis engine feeds into XOxide's Lorenz-based LFO character space. Chaos driving chaos — the character of the character shaper becomes as unpredictable as the source signal.
-- **ORACLE → LFOToPitch → oxide_lfoRate:** ORACLE's stochastic output modulates the LFO rate, producing tempo-irregular character evolution. Every preset playing through this combination has a different rate profile each performance.
-- **XOxide → EnvToMorph → ODYSSEY:** XOxide's detected transient envelopes become the morph driver for ODYSSEY. The physical character of the audio (attack intensity) drives the synthesis engine's timbral morph. Coupling in the reverse direction: the FX engine drives the synthesizer.
-
----
-
-## 9. Macros
-
-| Macro | Label | Primary Mapping | Secondary Mapping | Sweet Spot |
-|-------|-------|-----------------|-------------------|------------|
-| M1 | **GRIT** | `oxide_x` full range | `oxide_satBlend` echoes X | M1=0.35 (X=-0.3): feliX lean without digital harshness. The "punchy and defined" mix bus position. |
-| M2 | **WARMTH** | `oxide_y` full range | `oxide_compRatio` echoes Y | M2=0.3 with M1=0.35: professional mix bus enhancer — transparent polish with character. |
-| M3 | **CHAOS** | `oxide_lfoDepth` 0→1 + `oxide_lfoRate` | Shape morphs Sine→Chaos as M3 increases | M3=0.25: sound breathes but cycle is imperceptible. Maximum organicism for ambient work. |
-| M4 | **BLEND** | `oxide_dryWet` 0→1 | `oxide_stereoWidth` 1.0→1.4 simultaneously | M4=0.6: parallel saturation at 60% wet — most useful for mix bus work, preserves dry transients. |
-
----
-
-## 10. Factory Presets (20 concepts — 150 target)
-
-### Foundation Mood (near plane center, subtle)
-
-| Name | Position | Character |
-|------|----------|-----------|
-| **Quiet Refinement** | X=0.0, Y=0.15 | Near-passthrough. Trace tape warmth. Use: mastering-style gentle enhancement. |
-| **Steel Silk** | X=-0.2, Y=0.25 | Small attack boost, trace digital grit, crystalline air above 10 kHz. Use: adding definition to pads without brightness. |
-| **Warm Glue** | X=+0.3, Y=0.3 | Opto-style 1.5:1, trace tube even harmonics. Use: gluing a mix with slight vintage character. |
-| **Still Water** | X=+0.5, Y=0.1 | Slight width reduction to 0.85. Mono-compatible warmth. |
-
-### Atmosphere Mood (Oscar/Surface quadrant, gentle warmth)
-
-| Name | Position | Character |
-|------|----------|-----------|
-| **Amber Morning** | X=+0.6, Y=0.4 | Vintage warmth — tube drive 0.3, opto 1.8:1, warm even harmonics at 7 kHz. |
-| **Deep Swell** | X=+0.7, Y=0.6 | All stages at moderate Oscar depth. Sub octave mix 0.15 for bass voices. |
-| **Velvet Compress** | X=+0.5, Y=0.7 | Opto 3:1, slow 30 ms attack, 1.2s release. Tube saturation. Use: levelling vocals with character. |
-| **Analog Ghost** | X=+0.3, Y=0.5 + LFO Sine 0.03 Hz depth 0.15 X-only | Barely perceptible breathing — character lives and dies slowly. |
-
-### Prism Mood (dramatic, LFO active, moving between quadrants)
-
-| Name | Position | Character |
-|------|----------|-----------|
-| **Pulse Prism** | X=0.0, Y=0.5 + Triangle 0.5 Hz depth 0.8 X-amount=1.0 | Sweeps feliX↔Oscar at 0.5 Hz — transient/sustain pumping alternation. Rhythmic character morphing. |
-| **Depth Dive** | X=+0.4, Y=0.4 + Sine 0.2 Hz Y-amount=1.0 | Breathes in and out of depth — sub and compression rise and fall. |
-| **Nautilus Path** | X=0.0, Y=0.0 + Chaos 0.08 Hz depth 0.9 | Lorenz attractor traces organic path through entire plane. Never sounds the same twice. |
-| **Crystal Storm** | X=-0.6, Y=0.6 + Sine 0.15 Hz | Strong feliX — transient attack hard, digital saturation, FET at 4:1, Haas width, crystalline harmonics. |
-
-### Flux Mood (extreme, heavy processing, corners of the plane)
-
-| Name | Position | Character |
-|------|----------|-----------|
-| **Iron Fist** | X=-1.0, Y=1.0 | Maximum feliX/Depth. Transient maximum, digital fold-back, FET 20:1, odd harmonics from 3 kHz. The pistol shrimp snap. |
-| **Magma Core** | X=+1.0, Y=1.0 | Maximum Oscar/Depth. Sustain fully boosted, heavy tube drive, deep opto levelling, sub at 0.3 mix. |
-| **Oxidize Heavy** | X=+0.2, Y=1.0 | Center/Depth. All six stages near-maximum, tape saturation dominant. Lo-fi tape destruction. |
-| **Cavitation** | X=-0.9, Y=0.85 + Triangle 2.0 Hz depth 0.6 Y-amount=0.8 | Fast LFO pumps depth — stutter-like aggressive-to-subtle cycling at 2 Hz. EDM sidechain pumping effect. |
-| **Event Horizon** | X=-1.0, Y=0.9 + Chaos 0.05 Hz Y-amount=1.0 | Locked at maximum feliX, chaos varies depth only. Evolving crystalline destruction. |
-| **Black Velvet** | X=+0.9, Y=0.8 + Sine 0.03 Hz depth 0.3 X-amount=0.3 | Deep Oscar with slow barely-perceptible breathing on X axis. Deep, dark, warm transformation. |
-| **Rust and Chrome** | X=0.0, Y=0.75 + S&H 0.12 Hz depth 0.7 X-amount=1.0 | S&H jumps to random X positions every ~8 seconds. Each jump re-characterizes the source differently. |
-| **Pistol Snap** | X=-0.8, Y=0.9 + LFO off | Maximum transient emphasis + digital clip + FET brick-wall + crystalline exciter. No sustain, no warmth, no sub — pure impact. |
-
----
-
-## 11. Doctrine Compliance
-
-| Doctrine | Compliance |
-|----------|-----------|
-| D001: Velocity shapes timbre | PASS — `oxide_y` can be modulated by velocity via MIDI CC routing. Loud = deeper transformation. |
-| D002: Modulation is lifeblood | PASS — 4 macros, Lorenz chaos LFO modulating XY position, coupling input auto-duck behavior |
-| D003: Physics IS the synthesis | PASS — Jiles-Atherton hysteresis for tape (simplified but cited); Lorenz attractor (Lorenz 1963, cited); dual-envelope transient (Fuchs 1998) |
-| D004: Dead parameters forbidden | PASS — 47 params, all wired; stage overrides default to XY-driven (-1.0) but are audible when manually set |
-| D005: Engine must breathe | PASS — Lorenz LFO minimum rate 0.01 Hz; autonomous character modulation |
-| D006: Expression input not optional | PASS — mod wheel → `oxide_y`, expression → `oxide_dryWet`, velocity → `oxide_y` optional |
-
----
-
-## 12. Engine Registration
-
-```cpp
-REGISTER_ENGINE("XOxide", []() -> std::unique_ptr<SynthEngine> {
-    return std::make_unique<OxideEngine>();
-});
-
-// getEngineId() → "Oxide"
-// getAccentColour() → juce::Colour(0xFFB7410E)  // Rust Iron
-// getMaxVoices() → 0 (FX engine, no voice concept)
-// Parameter prefix: "oxide_"
-```
-
-Add case to `prefixForEngine()` in `XOmnibusEditor.h`:
-```cpp
-if (engineId == "Oxide") return "oxide_";
-```
-
----
-
-## 13. Build Sequencing
-
-| Phase | Deliverable | Notes |
-|-------|-------------|-------|
-| Phase 0 | Concept (this document) | COMPLETE |
-| Phase 1 | `OxideEngine.h` scaffold: SynthEngine interface, 47 params, dry-through passthrough | Standalone builds, silence output |
-| Phase 2 | Transient Shaper (Stage 1) with XY mapping | Adapt `TransientDesigner.h` |
-| Phase 3 | Saturation (Stage 2): tube/tape/digital blend bus | Adapt `Saturator.h` + `Corroder.h` |
-| Phase 4 | Compression (Stage 3): FET/Opto blend | Adapt `Compressor.h` + program-dependent mode switch |
-| Phase 5 | Sub Enhancement (Stage 4): pitch tracker + octave-down oscillator | New DSP |
-| Phase 6 | Stereo Field (Stage 5): M/S width + Haas delay | Adapt `StereoSculptor.h` + `PsychoacousticWidth.h` |
-| Phase 7 | Exciter / Air (Stage 6): harmonic order selector | Adapt `HarmonicExciter.h` |
-| Phase 8 | LFO engine (Sine / Triangle / S&H / Lorenz RK4) | New DSP — Lorenz integration |
-| Phase 9 | LFO → XY displacement routing | Wire LFO to XY with X/Y amount params |
-| Phase 10 | XOmnibus integration: REGISTER_ENGINE, prefixForEngine | Normalled default route |
-| Phase 11 | Factory presets (20 launch → 150 V1 target) | All 4 mood categories populated |
-| Phase 12 | UI: XY pad with gradient, cursor, LFO trace, oxidation texture | Stage chain strip with mini meters and popovers |
-| Phase 13 | Oxport: xpn_complement_renderer.py integration | Stages 1,2,4,6 bake path |
-| Phase 14 | auval validation pass | |
-
----
-
-*Authored: XO_OX Designs, 2026-03-16*
-*Document type: Canonical engine specification. Supersedes standalone design documents as the definitive reference.*
-*Source materials: `xoxide_technical_design.md` (DSP + XY mapping), `xoxide_competitive_analysis.md` (Vibe, competitive position + Lorenz analysis)*
+The render stage is intentionally limited to non-Lorenz or low-Lorenz settings for export. Chaotic time-varying processing that sounds extraordinary in real-time sounds inconsistent across all 128 note pitches of a keygroup render. When using lorenz, keep depth below 40% and use the `mix` parameter to preserve enough of the original character that the variation reads as life, not error.
