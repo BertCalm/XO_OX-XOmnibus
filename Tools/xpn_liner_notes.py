@@ -697,9 +697,9 @@ def artwork_artist_bio(artist_name: str) -> dict:
                 "just look pink, it turns the light in a courtyard pink, and that pink light falls "
                 "on white walls and yellow floors and suddenly you are inside a color. He was "
                 "awarded the Pritzker Prize in 1980. In his acceptance speech, he said: "
-                "'In my work, I have always tried to maintain a dialogue with the forces of '
+                "\u2018In my work, I have always tried to maintain a dialogue with the forces of "
                 "Nature, and especially with silence. Silence is something that architects have "
-                "forgotten.'"
+                "forgotten.\u2019"
             ),
             "key_works": [
                 "Casa Barragán, Mexico City (1948) — now UNESCO World Heritage Site",
@@ -854,9 +854,13 @@ def engine_standalone_profile(engine_id: str) -> dict:
     References the engine table in CLAUDE.md for accent colors and prefixes.
     """
     known = {
+        # ------------------------------------------------------------------
+        # ONSET — XOnset (Electric Blue #0066FF)
+        # ------------------------------------------------------------------
         "ONSET": {
             "engine": "ONSET",
             "full_name": "XOnset",
+            "creature": "Electric Eel — Bio-electric percussion architect",
             "accent": "#0066FF",
             "param_prefix": "perc_",
             "title": "XOnset — Percussive Synthesis Engine",
@@ -866,6 +870,28 @@ def engine_standalone_profile(engine_id: str) -> dict:
                 "a synthesis model of the physical mechanism that produces that sound: resonant "
                 "membranes, spring reverbs, metallic plate modes, noise through waveguides."
             ),
+            "historical_homage": (
+                "Inspired by the Roland TR-808 and TR-909 — synthesized drum machines that "
+                "redefined pop, hip hop, and electronic music worldwide between 1980 and 1985. "
+                "XOnset extends their philosophy: physical models replace sample lookup, "
+                "producing infinite timbral variation from first principles."
+            ),
+            "cultural_context": (
+                "Synthesized percussion has shaped every genre from Miami bass to techno to "
+                "drill. XOnset carries the torch of those drum machines while adding the "
+                "cross-voice coupling intelligence (XVC) that the originals never had — "
+                "your kick now shapes your hi-hat, your snare modulates your FX voice."
+            ),
+            "use_cases": [
+                "Building fully synthesized drum kits that breathe and evolve in real time",
+                "Cross-voice percussion design — kick sidechain into hat filter, clap into reverb tail",
+                "Drum synthesis export to MPC via XPN — 8-voice physical kits for sampler playback",
+            ],
+            "coupling_recommendations": [
+                "OPAL: route ONSET transients into grain trigger — percussive granular textures",
+                "ORBITAL: ONSET MACHINE macro drives ORBITAL GROUP envelope macro",
+                "OVERDUB: ONSET FX voice feeds OVERDUB spring reverb send",
+            ],
             "doctrine_compliance": "B002 — XVC Cross-Voice Coupling (Blessing 2): all 8 voices can modulate each other, 3–5 years ahead of the field.",
             "sound_design_notes": _stub(
                 "Write 150 words on XOnset's dual-layer blend architecture (Circuit layer = "
@@ -873,10 +899,16 @@ def engine_standalone_profile(engine_id: str) -> dict:
                 "Explain the MACHINE/PUNCH/SPACE/MUTATE macros."
             ),
             "sonic_dna": {"brightness": 0.55, "warmth": 0.35, "movement": 0.60, "density": 0.70, "space": 0.45, "aggression": 0.65},
+            "credit": "XO_OX Designs — xo-ox.org",
         },
+
+        # ------------------------------------------------------------------
+        # OPAL — XOpal (Lavender #A78BFA)
+        # ------------------------------------------------------------------
         "OPAL": {
             "engine": "OPAL",
             "full_name": "XOpal",
+            "creature": "Jellyfish — Cloud of luminescent particles in perpetual drift",
             "accent": "#A78BFA",
             "param_prefix": "opal_",
             "title": "XOpal — Granular Synthesis Engine",
@@ -886,6 +918,28 @@ def engine_standalone_profile(engine_id: str) -> dict:
                 "The engine draws from Curtis Roads' granular theory, building sound from clouds "
                 "of particles rather than continuous waveforms."
             ),
+            "historical_homage": (
+                "Homage to Iannis Xenakis and his 1971 granular theory, plus Barry Truax's "
+                "early real-time granular synthesis work in the 1980s. The grain cloud model "
+                "was a speculative DSP concept for decades before CPU power made it practical. "
+                "XOpal treats each grain as a living organism contributing to a collective."
+            ),
+            "cultural_context": (
+                "Granular synthesis gave composers tools to work with time itself — stretching, "
+                "compressing, and randomizing audio at the sub-note level. XOpal inherits this "
+                "philosophy and adds the XO_OX coupling dimension: grains can be driven by "
+                "external engine outputs, creating layered cloud textures no single engine could produce."
+            ),
+            "use_cases": [
+                "Atmospheric pads and textures from single sustained notes stretched into landscapes",
+                "Glitch and stutter effects by manipulating grain position and scatter in real time",
+                "Layered granular coupling with ODYSSEY for spectral drift clouds",
+            ],
+            "coupling_recommendations": [
+                "ODYSSEY (DRIFT): DRIFT→OPAL coupling route — pitch modulates grain position",
+                "OVERDUB (DUB): OPAL→DUB route — granular output into OVERDUB tape delay",
+                "ONSET: ONSET triggers drive grain density bursts",
+            ],
             "doctrine_compliance": "D005 — autonomous modulation with rate floor ≤ 0.01 Hz (grain scatter LFO).",
             "sound_design_notes": _stub(
                 "Write 150 words on XOpal's grain parameters: grain size, scatter, density, "
@@ -893,6 +947,683 @@ def engine_standalone_profile(engine_id: str) -> dict:
                 "enables the DRIFT→OPAL and OPAL→DUB coupling routes."
             ),
             "sonic_dna": {"brightness": 0.50, "warmth": 0.55, "movement": 0.75, "density": 0.65, "space": 0.80, "aggression": 0.20},
+            "credit": "XO_OX Designs — xo-ox.org",
+        },
+
+        # ------------------------------------------------------------------
+        # OVERDUB — XOverdub (Olive #6B7B3A)
+        # ------------------------------------------------------------------
+        "OVERDUB": {
+            "engine": "OVERDUB",
+            "full_name": "XOverdub",
+            "creature": "Sea Turtle — Patient, ancient, layered in accumulated time",
+            "accent": "#6B7B3A",
+            "param_prefix": "dub_",
+            "title": "XOverdub — Dub Synth & Performance FX Engine",
+            "summary": (
+                "XOverdub is a dub synth and performance FX platform built around the "
+                "Jamaican sound system tradition. Its signal chain runs Voice → Send VCA → "
+                "Drive → Tape Delay → Spring Reverb → Master, placing classic dub effects "
+                "as first-class synthesis elements rather than afterthoughts."
+            ),
+            "historical_homage": (
+                "Homage to King Tubby, Lee 'Scratch' Perry, and the Jamaican dub tradition "
+                "of the 1960s–70s — engineers who turned the mixing board into an instrument. "
+                "The spring reverb model is specifically inspired by the AKG BX20, a staple "
+                "of classic reggae and dub productions that Vangelis and Tomita also praised."
+            ),
+            "cultural_context": (
+                "Dub is the genre that invented remix culture — the idea that a recording's "
+                "raw tracks are raw material for a new performance. XOverdub channels that "
+                "philosophy into a synthesizer: the FX chain is the composition. "
+                "Every preset is a live sound system waiting for your performance."
+            ),
+            "use_cases": [
+                "Dub and reggae bass lines with authentic tape echo and spring reverb textures",
+                "Live dub mixing — real-time send VCA throws and tape delay feedback swells",
+                "Ambient and experimental soundscapes via the spring reverb reverb tail",
+            ],
+            "coupling_recommendations": [
+                "OPAL: OPAL→DUB coupling route — granular clouds into the dub FX chain",
+                "OBLONG: OBLONG bassline feeds OVERDUB tape delay for deep dub bass",
+                "ODYSSEY: DRIFT pitch source drives OVERDUB vibrato depth",
+            ],
+            "doctrine_compliance": "B004 — Spring Reverb (Blessing 4): metallic splash praised by Vangelis + Tomita.",
+            "sound_design_notes": _stub(
+                "Write 150 words on XOverdub's signal path: Voice oscillator quality, "
+                "Send VCA performance throws, Drive saturation character, Tape Delay "
+                "feedback behavior at high settings, and the AKG-inspired spring reverb model."
+            ),
+            "sonic_dna": {"brightness": 0.40, "warmth": 0.75, "movement": 0.55, "density": 0.50, "space": 0.80, "aggression": 0.35},
+            "credit": "XO_OX Designs — xo-ox.org",
+        },
+
+        # ------------------------------------------------------------------
+        # OBLONG — XOblong (Amber #E9A84A)
+        # ------------------------------------------------------------------
+        "OBLONG": {
+            "engine": "OBLONG",
+            "full_name": "XOblong",
+            "creature": "Mudskipper — Amphibious, low-end explorer crossing genres",
+            "accent": "#E9A84A",
+            "param_prefix": "bob_",
+            "title": "XOblong — Character Bass Synthesizer",
+            "summary": (
+                "XOblong is a character bass synthesizer with a 72-source file architecture, "
+                "167 factory presets, and an Apple Liquid Glass UI. It excels at warm analog "
+                "bass tones, chord/scale performance via PlaySurface, and MPC XPN export for "
+                "bass keygroup programs. The engine name internally uses the 'bob_' prefix, "
+                "a legacy identifier frozen for preset compatibility."
+            ),
+            "historical_homage": (
+                "Inspired by the Minimoog Model D and its descendants — the synthesis standard "
+                "for bass from 1970 to the present. XOblong's filter model draws from the "
+                "ladder filter topology, adding modern character controls that push the tonal "
+                "palette beyond the analog originals without erasing their warmth."
+            ),
+            "cultural_context": (
+                "Bass synthesis is the engine of popular music — from Motown to hip hop to "
+                "techno, the bass synth defines the groove. XOblong gives producers a bass "
+                "engine that handles everything from vintage Moog tones to modern reese basses, "
+                "with PlaySurface chord modes that turn bass lines into melodic statements."
+            ),
+            "use_cases": [
+                "Deep analog-style bass lines with expressive filter envelope articulation",
+                "Chord-mode bass comping via PlaySurface scale/chord selection",
+                "MPC export of multi-velocity bass keygroup programs for live performance",
+            ],
+            "coupling_recommendations": [
+                "OVERDUB: OBLONG bass feeds OVERDUB dub echo chain",
+                "ONSET: ONSET kick modulates OBLONG filter cutoff for sidechain-style pumping",
+                "OUROBOROS: OBLONG bass root feeds OUROBOROS chaotic oscillator pitch",
+            ],
+            "doctrine_compliance": "D001 — velocity drives filter brightness (hammer weight model).",
+            "sound_design_notes": _stub(
+                "Write 150 words on XOblong's filter character, the PlaySurface chord/scale "
+                "modes, and what makes OBLONG presets distinct from generic bass synth presets."
+            ),
+            "sonic_dna": {"brightness": 0.35, "warmth": 0.80, "movement": 0.45, "density": 0.60, "space": 0.30, "aggression": 0.55},
+            "credit": "XO_OX Designs — xo-ox.org",
+        },
+
+        # ------------------------------------------------------------------
+        # ORBITAL — XOrbital (Warm Red #FF6B6B)
+        # ------------------------------------------------------------------
+        "ORBITAL": {
+            "engine": "ORBITAL",
+            "full_name": "XOrbital",
+            "creature": "Nautilus — Chambered, orbital, ancient logarithmic architecture",
+            "accent": "#FF6B6B",
+            "param_prefix": "orb_",
+            "title": "XOrbital — Group Envelope Performance Synthesizer",
+            "summary": (
+                "XOrbital is a performance synthesizer built around a Group Envelope System — "
+                "macros that govern entire sections of the synthesis chain in coordinated "
+                "sweeps. The engine excels at cinematic pads, evolving leads, and "
+                "orchestral-style dynamics where multiple parameters move as one organism."
+            ),
+            "historical_homage": (
+                "Homage to Bob Moog and Dave Smith — the engineers who gave synthesizers "
+                "the ADSR envelope as a musical instrument parameter. XOrbital's Group "
+                "Envelope System is crowned by their legacy: the envelope is no longer a "
+                "utility function but the primary compositional tool."
+            ),
+            "cultural_context": (
+                "Orbital (the band) proved that electronic music could be performed live with "
+                "as much drama as a rock concert — real-time parameter automation as "
+                "composition. XOrbital channels that performance-first spirit into a "
+                "synthesis engine where every macro arc tells a sonic story."
+            ),
+            "use_cases": [
+                "Cinematic pad sweeps with coordinated filter, volume, and pitch arcs",
+                "Live performance leads with macro GROUP sweeps for dramatic dynamic shifts",
+                "Evolving ambient textures driven by autonomous GROUP envelope automation",
+            ],
+            "coupling_recommendations": [
+                "ONSET: ONSET macro output drives ORBITAL GROUP envelope trigger",
+                "OPAL: ORBITAL GROUP drives OPAL grain density in coordinated swells",
+                "ORGANON: ORGANON metabolic rate drives ORBITAL envelope speed",
+            ],
+            "doctrine_compliance": "B001 — Group Envelope System (Blessing 1): crowned by Moog + Smith.",
+            "sound_design_notes": _stub(
+                "Write 150 words on XOrbital's GROUP envelope macros, how they differ from "
+                "standard ADSR per-voice envelopes, and what kinds of sounds benefit most "
+                "from the coordinated GROUP sweep approach."
+            ),
+            "sonic_dna": {"brightness": 0.60, "warmth": 0.65, "movement": 0.70, "density": 0.55, "space": 0.75, "aggression": 0.40},
+            "credit": "XO_OX Designs — xo-ox.org",
+        },
+
+        # ------------------------------------------------------------------
+        # OBESE — XObese (Hot Pink #FF1493)
+        # ------------------------------------------------------------------
+        "OBESE": {
+            "engine": "OBESE",
+            "full_name": "XObese",
+            "creature": "Pufferfish — Expands under pressure, saturates on contact",
+            "accent": "#FF1493",
+            "param_prefix": "fat_",
+            "title": "XObese — Saturation & Character Synthesis Engine",
+            "summary": (
+                "XObese is a saturation-forward character synthesis engine with a MOJO control "
+                "as its defining feature — an orthogonal analog/digital axis that determines "
+                "the fundamental tonal character before any effects are applied. "
+                "The 'fat_' parameter prefix reflects its core philosophy: fullness first."
+            ),
+            "historical_homage": (
+                "Inspired by the Roland Juno-106 and Oberheim OB-X — synthesizers whose "
+                "character came from harmonic saturation in the signal path, not just "
+                "filter cutoff. XObese takes that analog-warmth tradition and makes saturation "
+                "a primary synthesis parameter, not a post-processing tool."
+            ),
+            "cultural_context": (
+                "Saturation and harmonic density define the difference between thin and full "
+                "in music production. XObese is built for producers who want presence before "
+                "they start mixing — sounds that sit in the mix without fighting for space. "
+                "The MOJO axis gives producers language for what was previously only instinct."
+            ),
+            "use_cases": [
+                "Fat pads and chords that fill frequency spectrum without post-processing",
+                "Saturated leads with MOJO analog character dialed to taste",
+                "Layered textures using the MOJO axis to differentiate harmonic density across layers",
+            ],
+            "coupling_recommendations": [
+                "OBLONG: OBLONG bass routed into OBESE for saturation before the mix",
+                "OVERDUB: OBESE MOJO output feeds OVERDUB Drive input parameter",
+                "ORBITAL: OBESE density drives ORBITAL GROUP sweep depth",
+            ],
+            "doctrine_compliance": "B015 — Mojo Control (Blessing 15): orthogonal analog/digital axis.",
+            "sound_design_notes": _stub(
+                "Write 150 words on XObese's MOJO control — what the analog vs. digital poles "
+                "mean sonically, how saturation interacts with the filter, and why OBESE "
+                "presets sound different from the same patch without the fat_ prefix engines."
+            ),
+            "sonic_dna": {"brightness": 0.55, "warmth": 0.85, "movement": 0.40, "density": 0.90, "space": 0.35, "aggression": 0.70},
+            "credit": "XO_OX Designs — xo-ox.org",
+        },
+
+        # ------------------------------------------------------------------
+        # ORACLE — XOracle (Prophecy Indigo #4B0082)
+        # ------------------------------------------------------------------
+        "ORACLE": {
+            "engine": "ORACLE",
+            "full_name": "XOracle",
+            "creature": "Cuttlefish — Stochastic pattern painter with intelligent memory",
+            "accent": "#4B0082",
+            "param_prefix": "oracle_",
+            "title": "XOracle — Stochastic & Generative Synthesis Engine",
+            "summary": (
+                "XOracle generates sound through GENDY stochastic synthesis and Maqam-informed "
+                "pitch organization — two systems that introduce controlled randomness and "
+                "microtonal intelligence into synthesis. Each note is a prediction, each "
+                "phrase is a probability field shaped by the oracle's breakpoints."
+            ),
+            "historical_homage": (
+                "Homage to Iannis Xenakis and his GENDY stochastic synthesis system (1991), "
+                "and to the Maqam tradition of Arabic and Turkish classical music — a "
+                "microtonal framework developed across 1,000 years of musical culture. "
+                "ORACLE scores 8.6/10 from the ghost council; Buchla gave it a 10/10."
+            ),
+            "cultural_context": (
+                "Stochastic synthesis was Xenakis's application of probability theory to "
+                "sound generation — chaos as compositional material. XOracle pairs this "
+                "Western avant-garde approach with Maqam's deeply human microtonal grammar, "
+                "creating a generative engine that sounds both ancient and alien simultaneously."
+            ),
+            "use_cases": [
+                "Generative melodic phrases in Arabic and Turkish Maqam scales",
+                "GENDY-style stochastic timbral evolution for unpredictable pads and leads",
+                "Microtonal composition with controlled randomness via breakpoint probability fields",
+            ],
+            "coupling_recommendations": [
+                "ORGANON: ORACLE stochastic output feeds ORGANON metabolic modulation",
+                "OPAL: ORACLE pitch field drives OPAL grain position scatter",
+                "ODYSSEY: ORACLE melodic output routes into ODYSSEY wavetable position",
+            ],
+            "doctrine_compliance": "B010 — GENDY Stochastic Synthesis + Maqam (Blessing 10): Buchla gave 10/10.",
+            "sound_design_notes": _stub(
+                "Write 150 words on XOracle's GENDY breakpoint system, how Maqam scale "
+                "selection interacts with stochastic pitch generation, and what the "
+                "oracle_breakpoints parameter actually controls."
+            ),
+            "sonic_dna": {"brightness": 0.60, "warmth": 0.40, "movement": 0.85, "density": 0.55, "space": 0.70, "aggression": 0.45},
+            "credit": "XO_OX Designs — xo-ox.org",
+        },
+
+        # ------------------------------------------------------------------
+        # ORGANON — XOrganon (Bioluminescent Cyan #00CED1)
+        # ------------------------------------------------------------------
+        "ORGANON": {
+            "engine": "ORGANON",
+            "full_name": "XOrganon",
+            "creature": "Bioluminescent Anglerfish — Metabolic deep-sea signal processor",
+            "accent": "#00CED1",
+            "param_prefix": "organon_",
+            "title": "XOrganon — Metabolic Synthesis Engine",
+            "summary": (
+                "XOrganon models synthesis as a biological metabolism — parameters like "
+                "metabolicRate, energy, and homeostasis drive a system that breathes, "
+                "self-regulates, and responds to stimulus as a living organism. The Variational "
+                "Free Energy metabolism model is so rigorous it earned unanimous approval from "
+                "the ghost council as a publishable academic paper."
+            ),
+            "historical_homage": (
+                "Inspired by Karl Friston's Variational Free Energy framework and the tradition "
+                "of biologically-inspired synthesis from composer and theorist Herbert Brün. "
+                "XOrganon extends this into an actual synthesis engine where metabolic "
+                "parameters govern DSP states, not just metaphorically but mathematically."
+            ),
+            "cultural_context": (
+                "Biological modeling in synthesis has always been aspirational — most bio-inspired "
+                "synths use the metaphor without the math. XOrganon uses the math. The engine "
+                "is the first in XOmnibus to earn a Blessing for publishable academic novelty, "
+                "and it still makes music you can dance to."
+            ),
+            "use_cases": [
+                "Evolving ambient textures that self-regulate and breathe autonomously",
+                "Coupling hub: metabolicRate drives multiple connected engine parameters",
+                "Scientific sound design — sonification of biological and mathematical processes",
+            ],
+            "coupling_recommendations": [
+                "ORACLE: ORGANON metabolic rate drives ORACLE stochastic probability field",
+                "ORBITAL: ORGANON energy level drives ORBITAL GROUP envelope depth",
+                "OUROBOROS: ORGANON homeostasis signal feeds OUROBOROS leash parameter",
+            ],
+            "doctrine_compliance": "B011 — Variational Free Energy Metabolism (Blessing 11): unanimous; publishable as paper.",
+            "sound_design_notes": _stub(
+                "Write 150 words on XOrganon's metabolic parameters: metabolicRate, energy, "
+                "homeostasis, and how the Variational Free Energy model produces synthesis "
+                "behavior that standard ADSR+LFO systems cannot replicate."
+            ),
+            "sonic_dna": {"brightness": 0.55, "warmth": 0.60, "movement": 0.90, "density": 0.65, "space": 0.70, "aggression": 0.30},
+            "credit": "XO_OX Designs — xo-ox.org",
+        },
+
+        # ------------------------------------------------------------------
+        # OUROBOROS — XOuroboros (Strange Attractor Red #FF2D2D)
+        # ------------------------------------------------------------------
+        "OUROBOROS": {
+            "engine": "OUROBOROS",
+            "full_name": "XOuroboros",
+            "creature": "Ouroboros Serpent — Chaos contained by a leash, always almost escaping",
+            "accent": "#FF2D2D",
+            "param_prefix": "ouro_",
+            "title": "XOuroboros — Chaotic Attractor Synthesis Engine",
+            "summary": (
+                "XOuroboros is built on the mathematics of chaotic systems — strange attractors, "
+                "Lorenz equations, and feedback topologies that produce deterministic but "
+                "unpredictable sonic behavior. The Leash Mechanism is its defining feature: "
+                "a parameter that keeps the chaos musical by constraining how far it can wander."
+            ),
+            "historical_homage": (
+                "Homage to Edward Lorenz and his 1963 strange attractor equations that founded "
+                "chaos theory, and to the electronic music tradition of feedback synthesis "
+                "from Pauline Oliveros and early Buchla experimentalists. The Leash mechanism "
+                "is XOuroboros's invention: a musical solution to the control problem of chaos."
+            ),
+            "cultural_context": (
+                "Chaos in music has always been in tension with repetition — the organizing "
+                "principle of all groove. XOuroboros resolves this tension with the Leash, "
+                "which lets chaos inform timbre without destroying meter. The result sounds "
+                "like something alive: never exactly repeating, never completely lost."
+            ),
+            "use_cases": [
+                "Chaotic leads and pads that evolve without repetition yet remain musical",
+                "Velocity coupling source — ouro_topology outputs feed other engine mod targets",
+                "Feedback synthesis experiments with the Leash as a safety parameter",
+            ],
+            "coupling_recommendations": [
+                "ORGANON: OUROBOROS chaos signal feeds ORGANON homeostasis input",
+                "OPAL: OUROBOROS attractor position drives OPAL grain scatter",
+                "ORACLE: OUROBOROS velocity coupling into ORACLE stochastic probability",
+            ],
+            "doctrine_compliance": "B003 — Leash Mechanism (Blessing 3); B007 — Velocity Coupling Outputs (Blessing 7).",
+            "sound_design_notes": _stub(
+                "Write 150 words on XOuroboros's Leash Mechanism, how ouro_topology "
+                "selects different strange attractor geometries, and how velocity coupling "
+                "outputs make OUROBOROS a unique modulation source engine."
+            ),
+            "sonic_dna": {"brightness": 0.65, "warmth": 0.30, "movement": 0.95, "density": 0.70, "space": 0.50, "aggression": 0.85},
+            "credit": "XO_OX Designs — xo-ox.org",
+        },
+
+        # ------------------------------------------------------------------
+        # OVERBITE — XOverbite (Fang White #F0EDE8)
+        # ------------------------------------------------------------------
+        "OVERBITE": {
+            "engine": "OVERBITE",
+            "full_name": "XOverbite",
+            "creature": "Opossum — Bass-forward, plays dead, bites when ready",
+            "accent": "#F0EDE8",
+            "param_prefix": "poss_",
+            "title": "XOverbite — Bass-Forward Character Synthesizer",
+            "summary": (
+                "XOverbite is a bass-forward character synthesizer with 342 factory presets "
+                "and five performance macros: BELLY, BITE, SCURRY, TRASH, and PLAY DEAD. "
+                "The 'poss_' parameter prefix is frozen for backward compatibility with all "
+                "342 presets. The Gallery code is OVERBITE; the instrument accent is Fang White."
+            ),
+            "historical_homage": (
+                "Homage to the Korg MS-20 and its aggressive, distinctive bass character — "
+                "the synthesizer that defined 'gnarly' before that word existed in synth circles. "
+                "XOverbite's five-macro system earns Blessing 8 from the ghost council, "
+                "specifically cited by all 8 legacy synthesizer ghosts."
+            ),
+            "cultural_context": (
+                "Bass-forward synthesis defines hip hop, trap, and any genre where the low "
+                "end carries emotional weight. XOverbite's PLAY DEAD macro is a performance "
+                "innovation — a macro that kills the signal and waits, creating silence as "
+                "a deliberate compositional element rather than an absence."
+            ),
+            "use_cases": [
+                "Bass leads with the BITE macro for aggressive filter articulation",
+                "BELLY macro for warm low-end emphasis in pad and chord contexts",
+                "PLAY DEAD performance trick — silence as composition, drop as statement",
+            ],
+            "coupling_recommendations": [
+                "OVERDUB: OVERBITE bass into OVERDUB dub echo chain",
+                "OBLONG: OVERBITE and OBLONG bass layers — BITE vs. warmth character contrast",
+                "ONSET: OVERBITE SCURRY macro synced with ONSET kick for locked groove",
+            ],
+            "doctrine_compliance": "B008 — Five-Macro System BELLY/BITE/SCURRY/TRASH/PLAY DEAD (Blessing 8): all 8 ghosts.",
+            "sound_design_notes": _stub(
+                "Write 150 words on XOverbite's five-macro system and how BELLY/BITE/SCURRY/"
+                "TRASH/PLAY DEAD each address a different expressive dimension of bass synthesis."
+            ),
+            "sonic_dna": {"brightness": 0.40, "warmth": 0.70, "movement": 0.50, "density": 0.75, "space": 0.30, "aggression": 0.80},
+            "credit": "XO_OX Designs — xo-ox.org",
+        },
+
+        # ------------------------------------------------------------------
+        # OVERWORLD — XOverworld (Neon Green #39FF14)
+        # ------------------------------------------------------------------
+        "OVERWORLD": {
+            "engine": "OVERWORLD",
+            "full_name": "XOverworld",
+            "creature": "Neon Tetra School — Chip-sync collective moving as one",
+            "accent": "#39FF14",
+            "param_prefix": "ow_",
+            "title": "XOverworld — Chip Synthesis & ERA Crossfade Engine",
+            "summary": (
+                "XOverworld is a chip synthesizer modeled on three classic game console "
+                "sound chips: NES 2A03, Sega Genesis YM2612, and SNES SPC700. Its ERA "
+                "triangle gives producers a 2D crossfade between the timbral character of "
+                "each console era, with the ow_era parameter as the defining control."
+            ),
+            "historical_homage": (
+                "Homage to Koji Kondo (Nintendo), Yuzo Koshiro (Sega), and Nobuo Uematsu "
+                "(Square) — the composers who built entire musical universes within the "
+                "constraints of 4-bit and 8-bit sound hardware. XOverworld honors their "
+                "craft by modeling the physics of each chip, not just its output character."
+            ),
+            "cultural_context": (
+                "Chiptune is simultaneously the most constrained and most beloved synthesis "
+                "tradition — music made from hardware limitations becomes its own aesthetic. "
+                "XOverworld's ERA triangle lets producers blend between console eras as "
+                "timbral dimensions, making the constraint a compositional variable."
+            ),
+            "use_cases": [
+                "Chiptune leads and arpeggios with authentic NES/Genesis/SNES chip textures",
+                "ERA crossfade sweeps — from 8-bit NES purity to FM-rich YM2612 complexity",
+                "CRT-filtered ambient textures using the 15 color themes and glitch types",
+            ],
+            "coupling_recommendations": [
+                "OPAL: OVERWORLD chip patterns feed OPAL grain scatter for chip-granular textures",
+                "ONSET: OVERWORLD arp triggers ONSET percussion for chip+drums locked sync",
+                "OBLONG: OVERWORLD leads layered with OBLONG bass for full chiptune production",
+            ],
+            "doctrine_compliance": "B009 — ERA Triangle (Blessing 9): 2D timbral crossfade, praised by Buchla/Schulze/Vangelis/Pearlman.",
+            "sound_design_notes": _stub(
+                "Write 150 words on XOverworld's ERA triangle — how NES, YM2612, and SNES "
+                "SPC700 differ sonically, what the ow_era parameter controls, and why "
+                "the 2D crossfade approach produces sounds no single chip engine can."
+            ),
+            "sonic_dna": {"brightness": 0.80, "warmth": 0.25, "movement": 0.65, "density": 0.45, "space": 0.40, "aggression": 0.60},
+            "credit": "XO_OX Designs — xo-ox.org",
+        },
+
+        # ------------------------------------------------------------------
+        # OHM — XOhm (Sage #87AE73)
+        # ------------------------------------------------------------------
+        "OHM": {
+            "engine": "OHM",
+            "full_name": "XOhm",
+            "creature": "Sea Anemone — Commune of waving tendrils, ohm-resonant",
+            "accent": "#87AE73",
+            "param_prefix": "ohm_",
+            "title": "XOhm — Communal Meditation & Drone Synthesizer",
+            "summary": (
+                "XOhm is a drone and meditation synthesizer designed around the MEDDLING/COMMUNE "
+                "axis — a macro that moves from intrusive harmonic intervention to total "
+                "communal resonance. Its character is the Hippy Dad jam: warm, patient, "
+                "seeking harmonic convergence rather than timbral aggression."
+            ),
+            "historical_homage": (
+                "Homage to La Monte Young and his drone music investigations from 1960 onward, "
+                "and to the tambura tradition of Indian classical music — an instrument whose "
+                "entire purpose is to sustain a harmonic foundation for other voices. "
+                "XOhm makes the drone expressive, not static."
+            ),
+            "cultural_context": (
+                "Drone music is meditation music, healing music, the music of sustained "
+                "resonance — a tradition spanning Indian raga, Tibetan singing bowls, and "
+                "Western minimalism. XOhm gives producers a synthesizer engine where "
+                "patience and stillness are first-class sound design values."
+            ),
+            "use_cases": [
+                "Sustained drone pads for meditation, ambient, and ceremonial contexts",
+                "COMMUNE macro — full harmonic lock-in for lush, beating resonance clouds",
+                "MEDDLING macro — harmonic disturbance as compositional tension and release",
+            ],
+            "coupling_recommendations": [
+                "ORGANON: OHM drone feeds ORGANON metabolic modulation as sustained carrier",
+                "OPAL: OHM drone sustain into OPAL grain cloud for layered resonance",
+                "ORACLE: OHM harmonic field sets tonal center for ORACLE Maqam generation",
+            ],
+            "doctrine_compliance": "D005 — LFO rate floor ≤ 0.01 Hz; D006 — mod wheel controls COMMUNE depth.",
+            "sound_design_notes": _stub(
+                "Write 150 words on XOhm's MEDDLING/COMMUNE axis, what each pole sounds "
+                "like in practice, and how the drone architecture differs from a standard "
+                "pad synthesizer."
+            ),
+            "sonic_dna": {"brightness": 0.30, "warmth": 0.85, "movement": 0.20, "density": 0.60, "space": 0.90, "aggression": 0.10},
+            "credit": "XO_OX Designs — xo-ox.org",
+        },
+
+        # ------------------------------------------------------------------
+        # ORPHICA — XOrphica (Siren Seafoam #7FDBCA)
+        # ------------------------------------------------------------------
+        "ORPHICA": {
+            "engine": "ORPHICA",
+            "full_name": "XOrphica",
+            "creature": "Siphonophore — Colony instrument, each member a microsound harp string",
+            "accent": "#7FDBCA",
+            "param_prefix": "orph_",
+            "title": "XOrphica — Microsound Harp Synthesis Engine",
+            "summary": (
+                "XOrphica is a microsound harp synthesizer that treats each partial of a "
+                "plucked string as an independent microsound particle. The pluck brightness "
+                "parameter (orph_pluckBrightness) governs transient spectral character; "
+                "the siphonophore model means the instrument is a colony of voices "
+                "coordinating as a single sonic organism."
+            ),
+            "historical_homage": (
+                "Homage to Orpheus and the mythological harp tradition, and to Curtis Roads' "
+                "microsound theory applied to plucked string synthesis. The siphonophore "
+                "biology metaphor — a colony that is simultaneously individual and collective "
+                "— maps directly onto how harp partials cooperate in physical reality."
+            ),
+            "cultural_context": (
+                "The harp is one of the oldest instruments in human music, appearing across "
+                "every major culture independently. XOrphica uses this universal instrument "
+                "as the basis for a microsound exploration that honors the harp's mythology "
+                "while extending its timbral vocabulary into electronic territory."
+            ),
+            "use_cases": [
+                "Ethereal plucked textures with microsound grain-level articulation",
+                "Colony-voice pads where each voice is an independent pluck partial",
+                "Coupling source: pluck transient brightness drives other engine filter attacks",
+            ],
+            "coupling_recommendations": [
+                "OVERDUB: ORPHICA pluck feeds OVERDUB spring reverb for natural resonance bloom",
+                "OPAL: ORPHICA partials route into OPAL grain cloud for string-granular fusion",
+                "OHM: ORPHICA melodic plucks over OHM drone — ancient harp + drone meditation",
+            ],
+            "doctrine_compliance": "D001 — velocity drives pluck brightness; D006 — aftertouch controls sustain bloom.",
+            "sound_design_notes": _stub(
+                "Write 150 words on XOrphica's microsound harp model, what orph_pluckBrightness "
+                "controls at different values, and how the siphonophore colony voice architecture "
+                "produces harp textures that single-voice models cannot."
+            ),
+            "sonic_dna": {"brightness": 0.70, "warmth": 0.55, "movement": 0.50, "density": 0.40, "space": 0.75, "aggression": 0.20},
+            "credit": "XO_OX Designs — xo-ox.org",
+        },
+
+        # ------------------------------------------------------------------
+        # OBBLIGATO — XObbligato (Rascal Coral #FF8A7A)
+        # ------------------------------------------------------------------
+        "OBBLIGATO": {
+            "engine": "OBBLIGATO",
+            "full_name": "XObbligato",
+            "creature": "Mantis Shrimp — Dual-punching mandatory presence",
+            "accent": "#FF8A7A",
+            "param_prefix": "obbl_",
+            "title": "XObbligato — Dual Wind Instrument Synthesis Engine",
+            "summary": (
+                "XObbligato is a dual wind instrument synthesizer built around two breath "
+                "models (obbl_breathA and obbl_breathB) that can blend, counterpoint, or "
+                "lock together via the BOND macro. The name means 'mandatory' — this engine "
+                "insists on being heard, its two voices demanding presence in the mix."
+            ),
+            "historical_homage": (
+                "Homage to the oboe d'amore and bassoon duet tradition in Baroque music, "
+                "and to the Yamaha WX11 MIDI wind controller that brought physical breath "
+                "to electronic synthesis. OBBLIGATO's dual breath architecture honors the "
+                "human requirement for air as the driver of musical expression."
+            ),
+            "cultural_context": (
+                "Wind instruments are the most directly human of all instrument families — "
+                "breath is life, and putting breath into a synthesizer means modeling the "
+                "most intimate expressive gesture. OBBLIGATO's dual breath model lets "
+                "two breath sources counterpoint, harmonize, or chase each other."
+            ),
+            "use_cases": [
+                "Woodwind-style leads with authentic breath pressure articulation",
+                "BOND macro — lock both breath voices into harmonic unison for thick wind chords",
+                "Counterpoint textures using independent breathA and breathB modulation",
+            ],
+            "coupling_recommendations": [
+                "OHM: OBBLIGATO wind voices over OHM drone foundation",
+                "ORPHICA: OBBLIGATO breath over ORPHICA harp plucks — woodwind + harp ensemble",
+                "ORBITAL: OBBLIGATO BOND macro drives ORBITAL GROUP envelope for coordinated swells",
+            ],
+            "doctrine_compliance": "D006 — breath pressure CC controls breathA/breathB directly.",
+            "sound_design_notes": _stub(
+                "Write 150 words on XObbligato's dual breath model — how breathA and breathB "
+                "differ in character, what the BOND macro does at different settings, and "
+                "what genres benefit most from the mandatory-presence wind texture."
+            ),
+            "sonic_dna": {"brightness": 0.65, "warmth": 0.60, "movement": 0.55, "density": 0.50, "space": 0.55, "aggression": 0.45},
+            "credit": "XO_OX Designs — xo-ox.org",
+        },
+
+        # ------------------------------------------------------------------
+        # OTTONI — XOttoni (Patina #5B8A72)
+        # ------------------------------------------------------------------
+        "OTTONI": {
+            "engine": "OTTONI",
+            "full_name": "XOttoni",
+            "creature": "Chambered Nautilus Trio — Three brass bells resonating in formation",
+            "accent": "#5B8A72",
+            "param_prefix": "otto_",
+            "title": "XOttoni — Triple Brass Synthesis Engine",
+            "summary": (
+                "XOttoni models three simultaneous brass voices — trumpet, trombone, and "
+                "French horn — synthesized through physical brass bore and bell models. "
+                "The GROW macro drives coordinated dynamic expansion across all three "
+                "voices, producing orchestral brass swell behavior from a single gesture."
+            ),
+            "historical_homage": (
+                "Homage to the Italian Renaissance brass ensemble tradition (ottoni = 'brasses' "
+                "in Italian), and to the orchestral brass writing of Gustav Mahler — a "
+                "composer who treated the brass section as a unified organism capable of "
+                "both whisper and thunder. XOttoni's GROW macro is Mahler's crescendo in code."
+            ),
+            "cultural_context": (
+                "Brass instruments developed from animal horns to metal tubes to valved "
+                "instruments over 5,000 years. XOttoni compresses this entire lineage into "
+                "three physical models that can be played simultaneously, giving solo "
+                "producers access to the full harmonic weight of a brass section."
+            ),
+            "use_cases": [
+                "Orchestral brass stabs and swells with GROW macro for coordinated crescendo",
+                "Soul and funk horn sections using all three voices in tight voicings",
+                "Cinematic brass textures with the physical bore models for authentic air-column resonance",
+            ],
+            "coupling_recommendations": [
+                "OBBLIGATO: OTTONI brass and OBBLIGATO wind — full wind ensemble simulation",
+                "ORBITAL: OTTONI GROW macro drives ORBITAL GROUP envelope for synchronized swell",
+                "OVERDUB: OTTONI brass into OVERDUB spring reverb for vintage brass hall sound",
+            ],
+            "doctrine_compliance": "D001 — velocity drives brass lip tension across all three voice models.",
+            "sound_design_notes": _stub(
+                "Write 150 words on XOttoni's three brass models — what distinguishes trumpet, "
+                "trombone, and horn synthesis in the physical model, what otto_macroGrow "
+                "controls, and what musical contexts the triple brass architecture serves best."
+            ),
+            "sonic_dna": {"brightness": 0.70, "warmth": 0.55, "movement": 0.55, "density": 0.65, "space": 0.60, "aggression": 0.65},
+            "credit": "XO_OX Designs — xo-ox.org",
+        },
+
+        # ------------------------------------------------------------------
+        # OLE — XOlé (Hibiscus #C9377A)
+        # ------------------------------------------------------------------
+        "OLE": {
+            "engine": "OLE",
+            "full_name": "XOlé",
+            "creature": "Flamingo Colony — Afro-Latin percussive elegance",
+            "accent": "#C9377A",
+            "param_prefix": "ole_",
+            "title": "XOlé — Afro-Latin Trio Percussion Synthesizer",
+            "summary": (
+                "XOlé is an Afro-Latin trio synthesizer — three percussion voices (congas, "
+                "claves, and cowbell) modeled through physical membrane and shell resonance. "
+                "The DRAMA macro drives collective intensity across the trio, moving from "
+                "gentle groove to full percussive drama in a single gesture."
+            ),
+            "historical_homage": (
+                "Homage to the Cuban son and Afro-Cuban rumba traditions — the root music "
+                "that gave Latin jazz, salsa, and bossa nova their rhythmic vocabulary. "
+                "Also honors Tito Puente and Mongo Santamaria — percussionists who brought "
+                "Afro-Cuban rhythm to international audiences. XOlé synthesizes the physics "
+                "of their instruments, not just their samples."
+            ),
+            "cultural_context": (
+                "Afro-Latin percussion is the rhythmic foundation of half the popular music "
+                "on earth — the clave rhythm pattern underlies reggaeton, salsa, jazz, and "
+                "hip hop in ways producers often don't consciously recognize. XOlé gives "
+                "these rhythmic traditions physical synthesis models: not samples of the past, "
+                "but living models of the instruments themselves."
+            ),
+            "use_cases": [
+                "Afro-Cuban percussion synthesis with authentic conga, clave, and cowbell physical models",
+                "DRAMA macro for live percussive intensity sweeps in DJ and live contexts",
+                "Coupling source: OLE rhythm output drives other engine groove parameters",
+            ],
+            "coupling_recommendations": [
+                "ONSET: OLE percussion alongside ONSET drum synthesis — full rhythm section",
+                "OHM: OLE groove over OHM drone — Afro-Latin meditation fusion",
+                "OVERDUB: OLE percussion into OVERDUB dub echo for reggaeton flavor",
+            ],
+            "doctrine_compliance": "D001 — velocity drives membrane strike intensity across trio voices.",
+            "sound_design_notes": _stub(
+                "Write 150 words on XOlé's three physical percussion models — how conga, "
+                "clave, and cowbell synthesis differs, what ole_macroDrama controls at "
+                "different settings, and the cultural significance of preserving physical "
+                "modeling over sampling for these instruments."
+            ),
+            "sonic_dna": {"brightness": 0.65, "warmth": 0.60, "movement": 0.80, "density": 0.55, "space": 0.40, "aggression": 0.65},
+            "credit": "XO_OX Designs — xo-ox.org",
         },
     }
     data = known.get(engine_id.upper(), {})
@@ -979,7 +1710,9 @@ class LinerNotesDoc:
     def write(self, output_dir: Path, filename: Optional[str] = None) -> Path:
         output_dir.mkdir(parents=True, exist_ok=True)
         if not filename:
-            slug = self.pack_name.lower().replace(" ", "_").replace("/", "_")
+            import re
+            slug = self.pack_name.lower()
+            slug = re.sub(r"[^a-z0-9]+", "_", slug).strip("_")
             filename = f"liner_notes_{slug}.json"
         out_path = output_dir / filename
         with open(out_path, "w", encoding="utf-8") as f:
@@ -1033,8 +1766,8 @@ def validate_liner_notes(path: Path) -> bool:
                 errors.append(f"Section {i}: missing 'type' field")
             elif sec_type not in VALID_SECTION_TYPES:
                 errors.append(f"Section {i}: unknown type {sec_type!r} — valid: {sorted(VALID_SECTION_TYPES)}")
-            if "title" not in sec and "engine" not in sec and "name" not in sec:
-                errors.append(f"Section {i} (type={sec_type!r}): no 'title', 'engine', or 'name' field")
+            if not any(k in sec for k in ("title", "engine", "name", "quad", "collection")):
+                errors.append(f"Section {i} (type={sec_type!r}): no identifying field (title/engine/name/quad/collection)")
 
     if errors:
         print(f"  [FAIL] {path}")

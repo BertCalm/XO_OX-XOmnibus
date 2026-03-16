@@ -79,16 +79,29 @@ STAGES = [
     "expand",
     "export",
     "cover_art",
+    "complement_chain",
     "package",
 ]
 
 STAGE_DESCRIPTIONS = {
-    "render_spec": "Generate render specifications from .xometa presets",
-    "categorize":  "Classify WAV samples into voice categories",
-    "expand":      "Expand flat kits into velocity/cycle/smart WAV sets",
-    "export":      "Generate .xpm programs (drum or keygroup)",
-    "cover_art":   "Generate branded procedural cover art",
-    "package":     "Package into .xpn archive",
+    "render_spec":      "Generate render specifications from .xometa presets",
+    "categorize":       "Classify WAV samples into voice categories",
+    "expand":           "Expand flat kits into velocity/cycle/smart WAV sets",
+    "export":           "Generate .xpm programs (drum or keygroup)",
+    "cover_art":        "Generate branded procedural cover art",
+    "complement_chain": "Generate primary+complement variant XPM pairs (Artwork/Color collection)",
+    "package":          "Package into .xpn archive",
+}
+
+# Artwork/Color collection engine keys — complement_chain stage is active only for these.
+# This set is the canonical gating check; the full database lives in xpn_complement_renderer.py.
+ARTWORK_ENGINES = {
+    "XOxblood", "XOnyx", "XOchre", "XOrchid",
+    "XOttanio", "XOmaomao", "XOstrum", "XOni",
+    "XOpulent", "XOccult", "XOvation", "XOverdrive",
+    "XOrnament", "XOblation", "XObsession", "XOther",
+    "XOrdeal",  "XOutpour", "XOctavo", "XObjet",
+    "XOkami",   "XOmni",    "XOdama",  "XOffer",
 }
 
 
@@ -413,14 +426,56 @@ def _stage_package(ctx: PipelineContext) -> None:
     print(f"    Output: {ctx.xpn_path}")
 
 
+def _stage_complement_chain(ctx: PipelineContext) -> None:
+    """Stage 5b: Generate primary+complement variant XPM pairs (Artwork collection only)."""
+    # Only meaningful for Artwork/Color collection engines.
+    if ctx.engine not in ARTWORK_ENGINES:
+        print(f"    [SKIP] '{ctx.engine}' is not an Artwork/Color engine "
+              f"— complement chain does not apply")
+        return
+
+    try:
+        from xpn_complement_renderer import run_complement_stage
+    except ImportError:
+        print("    [SKIP] xpn_complement_renderer not found")
+        return
+
+    # Search for presets in the wavs_dir or the build Programs directory.
+    presets_search = ctx.wavs_dir or ctx.programs_dir
+
+    if ctx.dry_run:
+        print(f"    [DRY] Would render complement chain for '{ctx.engine}' "
+              f"from {presets_search}")
+        return
+
+    result = run_complement_stage(
+        engine_key=ctx.engine,
+        output_dir=ctx.output_dir,
+        presets_dir=presets_search if (presets_search and presets_search.exists()) else None,
+        version=ctx.version,
+        skip_cover_art=False,
+        dry_run=False,
+        verbose=True,
+    )
+
+    if result.get("skipped"):
+        print(f"    [SKIP] {result.get('reason', '')}")
+        return
+
+    n_presets  = result.get("preset_count", 0)
+    n_variants = result.get("variant_count", 0)
+    print(f"    {n_presets} preset(s) × 5 shades = {n_variants} variant programs")
+
+
 # Stage function dispatch
 STAGE_FUNCS = {
-    "render_spec": _stage_render_spec,
-    "categorize":  _stage_categorize,
-    "expand":      _stage_expand,
-    "export":      _stage_export,
-    "cover_art":   _stage_cover_art,
-    "package":     _stage_package,
+    "render_spec":      _stage_render_spec,
+    "categorize":       _stage_categorize,
+    "expand":           _stage_expand,
+    "export":           _stage_export,
+    "cover_art":        _stage_cover_art,
+    "complement_chain": _stage_complement_chain,
+    "package":          _stage_package,
 }
 
 
@@ -553,6 +608,14 @@ def cmd_run(args) -> int:
             print(f"ERROR: Unknown stages to skip: {invalid}")
             print(f"Valid stages: {', '.join(STAGES)}")
             return 1
+
+    # Auto-skip complement_chain unless --collection artwork is specified and the
+    # engine is an Artwork/Color collection engine.
+    collection = getattr(args, "collection", None)
+    if "complement_chain" not in skip:
+        is_artwork = (collection == "artwork") or (args.engine in ARTWORK_ENGINES)
+        if not is_artwork:
+            skip.add("complement_chain")
 
     ctx = PipelineContext(
         engine=args.engine,
@@ -715,6 +778,10 @@ def main():
                        help="Kit expansion mode for drum engines (default: smart)")
     p_run.add_argument("--version",    default="1.0",
                        help="Pack version string (default: 1.0)")
+    p_run.add_argument("--collection", metavar="NAME",
+                       choices=["artwork"],
+                       help="Collection name — enables collection-specific stages "
+                            "(e.g. 'artwork' enables complement_chain)")
     p_run.add_argument("--skip",       metavar="STAGES",
                        help="Comma-separated stages to skip "
                             f"({', '.join(STAGES)})")
