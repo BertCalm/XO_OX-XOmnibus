@@ -1,697 +1,571 @@
 # Non-Audio Data Sources for XPN Kit Generation — R&D
 
 **Date**: 2026-03-16
-**Project**: XO_OX Designs — XPN/MPC Export Tool Suite
-**Status**: R&D / Concept
+**Project**: XO_OX Designs — Oxport XPN Tool Suite
+**Status**: Research & Development
 
 ---
 
-## Central Thesis
+## Overview
 
-Anything with periodicity, intensity variation, or detectable pattern can be mapped to percussion. The world is full of time-series data that no one has thought of as rhythm — earthquake catalogs, cardiac waveforms, protein backbone angles, git commit graphs. These pipelines transform domain-specific signals into playable XPN kits on MPC hardware, giving producers rhythms that are structurally valid by physics, biology, or human activity patterns rather than programmed intuition.
+The XPN format encodes drum kits as structured XML with per-pad velocity layers, timing data, sample references, Q-Link assignments, and program metadata. Every one of these fields is a numerical or categorical value that can, in principle, be derived from any dataset — not just recorded audio. This document surveys 10 non-audio data sources, examines how each maps to XPN parameters, and estimates the engineering cost of building a real parser.
 
-The XPN format is a good target: it supports multi-velocity layers, multiple pads, pad-level filter/envelope settings, and per-sample gain. Most of these pipelines collapse to the same abstract problem: normalize a 1D time-series to velocity range 1–127, discretize timestamps to rhythmic grid positions, and optionally use a secondary signal dimension to select velocity layers.
+The goal is not novelty for its own sake. Each data source must produce kits that are *musically useful* — repeatable, variable in meaningful ways, and distinct from anything a human producer would design by hand.
 
 ---
 
-## Pipeline 01 — Seismograph Data
+## 1. Seismograph — USGS Earthquake CSV
 
-**Concept**: USGS earthquake catalog CSV → percussion kit where seismic events become drum hits
+### Data Source + Format
+USGS publishes earthquake event catalogs at earthquake.usgs.gov/earthquakes/search/ as comma-separated value files. Each row represents one event. Key columns: `time` (ISO 8601 UTC), `latitude`, `longitude`, `depth` (km), `mag` (Richter scale), `magType`, `place` (region string). A typical export covers thousands of events over a chosen time window.
 
-### Data Source & Format
-- USGS Earthquake Hazards Program: `earthquake.usgs.gov/earthquakes/search/`
-- CSV export: `time, latitude, longitude, depth, mag, magType, nst, gap, dmin, rms, net, id, updated, place, type`
-- Key columns: `time` (ISO 8601), `mag` (float, typically 0.0–9.5), `depth` (km)
-- Download URL pattern: `https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=...&endtime=...`
-
-### Python Parsing Approach
+### Python Parsing Approach (stdlib only)
 ```python
-import pandas as pd
-import numpy as np
+import csv
+from datetime import datetime
 
-df = pd.read_csv('usgs_earthquakes.csv', parse_dates=['time'])
-df = df.sort_values('time')
+with open('earthquakes.csv', newline='') as f:
+    reader = csv.DictReader(f)
+    events = [row for row in reader if row['mag']]
 
-# Normalize magnitude to velocity 1-127
-# Typical catalog range: 0.5 to 7.0 for a regional dataset
-df['velocity'] = ((df['mag'] - df['mag'].min()) /
-                  (df['mag'].max() - df['mag'].min()) * 126 + 1).astype(int)
+events.sort(key=lambda r: r['time'])
+origin = datetime.fromisoformat(events[0]['time'].replace('Z', '+00:00'))
 
-# Convert time to seconds-since-start for beat placement
-df['seconds'] = (df['time'] - df['time'].iloc[0]).dt.total_seconds()
+for ev in events:
+    ts = datetime.fromisoformat(ev['time'].replace('Z', '+00:00'))
+    seconds_since_first = (ts - origin).total_seconds()
+    magnitude = float(ev['mag'])
+    depth_km = float(ev['depth'])
+```
 
-# Velocity layer selection by depth:
-# shallow < 30km = Layer 1 (punchy short attack)
-# intermediate 30-70km = Layer 2
-# deep > 70km = Layer 3 (sub-bass, long release)
-def depth_layer(d):
-    if d < 30:   return 1
-    if d < 70:   return 2
-    return 3
+`csv.DictReader` handles headers automatically. `datetime.fromisoformat` parses UTC timestamps without third-party libs. Depth and magnitude are cast to float directly.
 
-df['layer'] = df['depth'].apply(depth_layer)
+### Mapping to XPN Parameters
+| Seismic Field | XPN Parameter |
+|---|---|
+| Magnitude (0–9+) | Pad velocity (normalized to 0–127) |
+| Depth (0–700 km) | Velocity layer selection (shallow = layer 1, deep = layer 4) |
+| Seconds since epoch (mod 2.0) | Note onset timing offset within sequence |
+| Latitude band (N/S hemisphere) | Pad bank assignment (A/B) |
+| Longitude band (E/W) | Pad column within bank (1–4) |
+| Magnitude delta (aftershock chains) | Velocity fade curve across layers |
+
+### Creative Sonic Result
+Earthquake clusters produce polyrhythmic kick/impact sequences with physically motivated dynamics — big events hit hard, aftershocks trail off. Deep-focus events trigger bass-heavy lower velocity layers. Geographically sorted events map naturally to stereo-left/right pad placement. Pacific Ring of Fire sequences generate dense syncopated patterns; intraplate events produce sparse, isolated hits.
+
+### Implementation Complexity
+**Easy.** USGS CSV schema is stable and well-documented. All parsing is basic float arithmetic and datetime math. The only design decision is the normalization curve for magnitude (linear vs. logarithmic).
+
+---
+
+## 2. Protein Folding Angles — PDB Dihedral Data
+
+### Data Source + Format
+The RCSB Protein Data Bank (rcsb.org) distributes structures in PDB format — plain-text files with ATOM records containing x/y/z coordinates for each residue. Phi (φ) and psi (ψ) dihedral angles describe the backbone conformation at each amino acid. A typical protein has 100–500 residues. Dihedral angles range –180° to +180°.
+
+### Python Parsing Approach (stdlib only)
+```python
+import math
+
+def parse_atoms(path):
+    atoms = []
+    with open(path) as f:
+        for line in f:
+            if line.startswith('ATOM'):
+                name = line[12:16].strip()
+                res_seq = int(line[22:26])
+                x, y, z = float(line[30:38]), float(line[38:46]), float(line[46:54])
+                atoms.append({'name': name, 'res': res_seq, 'x': x, 'y': y, 'z': z})
+    return atoms
+
+def dihedral(p0, p1, p2, p3):
+    b0 = [p1[i]-p0[i] for i in range(3)]
+    b1 = [p2[i]-p1[i] for i in range(3)]
+    b2 = [p3[i]-p2[i] for i in range(3)]
+    n1 = cross(b0, b1)
+    n2 = cross(b1, b2)
+    return math.degrees(math.atan2(dot(cross(n1,n2),b1), dot(n1,n2)))
+```
+
+PDB fixed-column format is parsed with string slicing — no external library needed.
+
+### Mapping to XPN Parameters
+| Protein Field | XPN Parameter |
+|---|---|
+| Phi angle (–180 to +180°) | Gate length (negative = short, positive = long) |
+| Psi angle (–180 to +180°) | Velocity (remapped 0–127) |
+| Residue index (mod 16) | Pad assignment across single bank |
+| Residue index (mod 64) | Pad assignment across 4 banks |
+| Alpha-helix / beta-sheet classification | Velocity layer (helix = layer 2, sheet = layer 4) |
+| Ramachandran region | Q-Link macro assignment |
+
+One residue = one 1/64th note slot in the sequence. A 256-residue protein fills exactly 4 bars of 4/4 at 1/64th note resolution.
+
+### Creative Sonic Result
+Alpha-helical regions produce smooth, rolling hi-hat patterns (consistent phi/psi ranges). Beta-sheets generate staccato, angular hits. Disordered loops create irregular fills. Different proteins — an antibiotic peptide vs. a muscle fiber — produce completely different rhythmic fingerprints while remaining internally coherent. The kit is unique, reproducible from the PDB ID, and impossible to reverse-engineer by ear.
+
+### Implementation Complexity
+**Hard.** PDB parsing from scratch requires implementing correct dihedral angle math (cross products, atan2, sign handling for –180/+180 wraparound). Secondary structure classification (helix/sheet/loop) requires either reading HELIX/SHEET records or implementing a Ramachandran region classifier. Not a weekend project, but entirely stdlib.
+
+---
+
+## 3. ECG Heartbeat — P/Q/R/S/T Peak Detection
+
+### Data Source + Format
+PhysioNet (physionet.org) distributes ECG recordings in WFDB format and as CSV exports. Each row: timestamp (ms) and voltage (mV). A standard 12-lead ECG at 500 Hz captures thousands of samples per minute. The waveform cycles through P, Q, R, S, T waves per heartbeat. RR interval (R-to-R distance in ms) defines the instantaneous heart rate.
+
+### Python Parsing Approach (stdlib only)
+```python
+import csv
+
+def load_ecg(path):
+    times, voltages = [], []
+    with open(path) as f:
+        for row in csv.reader(f):
+            times.append(float(row[0]))
+            voltages.append(float(row[1]))
+    return times, voltages
+
+def find_peaks(voltages, threshold=0.5, min_gap=200):
+    peaks = []
+    for i in range(1, len(voltages)-1):
+        if voltages[i] > threshold and voltages[i] > voltages[i-1] and voltages[i] > voltages[i+1]:
+            if not peaks or i - peaks[-1] > min_gap:
+                peaks.append(i)
+    return peaks
+```
+
+R-peaks (the tall spike) are the most prominent and easiest to detect with a simple threshold + local maximum test. P and T waves require lower thresholds applied within windowed search zones relative to each R-peak.
+
+### Mapping to XPN Parameters
+| ECG Feature | XPN Parameter |
+|---|---|
+| R-peak | Pad 1 (kick anchor) |
+| P-peak | Pad 9 or 13 (pre-beat anticipation) |
+| Q/S notches | Pad 5 or 6 (transient detail) |
+| T-peak | Pad 12 or 16 (post-beat bloom) |
+| RR interval (ms) | Sequence tempo (60000 / RR_ms = BPM) |
+| Voltage amplitude at each peak | Pad velocity (normalized to 0–127) |
+| QRS complex width | Gate / note length |
+| Heart rate variability (HRV) | Timing humanization offset |
+
+### Creative Sonic Result
+A resting heart at 60 BPM generates a slow, groove-weighted kick pattern with natural HRV-derived swing. An athlete's heart at 180 BPM during exertion becomes an aggressive, compressed drum machine. Clinical arrhythmias (AFib, PVCs) produce polyrhythmic and off-beat patterns that no quantize grid would ever produce. Each person's ECG is a unique rhythmic signature.
+
+### Implementation Complexity
+**Medium.** R-peak detection is straightforward with simple threshold logic. Accurately separating P, Q, S, and T waves requires careful window math around each RR cycle but is achievable in pure Python. The main challenge is noise tolerance — real ECG signals have motion artifact and baseline wander.
+
+---
+
+## 4. Satellite Imagery — Multi-Spectral TIFF Histogram
+
+### Data Source + Format
+Sentinel-2 and Landsat imagery from ESA/USGS is distributed as GeoTIFF files with 8–13 spectral bands (visible, NIR, SWIR, etc.). Each band is a 2D array of 16-bit pixel values. For XPN purposes, only the brightness histogram per band is needed — not spatial structure.
+
+### Python Parsing Approach (stdlib only)
+```python
+import struct
+
+def read_tiff_strip(path):
+    # Minimal TIFF IFD parser for single-strip uint16 data
+    with open(path, 'rb') as f:
+        header = f.read(4)
+        endian = '<' if header[:2] == b'II' else '>'
+        offset = struct.unpack(endian + 'I', f.read(4))[0]
+        f.seek(offset)
+        # ... IFD tag parsing for StripOffsets, StripByteCounts, BitsPerSample
+
+def histogram_from_values(values, bins=128):
+    mn, mx = min(values), max(values)
+    counts = [0] * bins
+    span = mx - mn or 1
+    for v in values:
+        idx = min(int((v - mn) / span * bins), bins - 1)
+        counts[idx] += 1
+    return counts
+```
+
+For production use, a pre-processed CSV export of per-band histograms sidesteps raw TIFF parsing. The imaging pipeline (QGIS, GDAL) generates these exports trivially; the XPN tool accepts that CSV directly.
+
+### Mapping to XPN Parameters
+| Spectral Feature | XPN Parameter |
+|---|---|
+| Band 1 (coastal aerosol) brightness | Pad 1 velocity curve |
+| Bands 2–4 (blue/green/red) | Pads 2–4 velocity curves |
+| Bands 5–8 (red-edge / NIR) | Pads 5–8 velocity curves |
+| Histogram peak position | Velocity center point per pad |
+| Histogram spread (std dev) | Velocity layer spread width |
+| Band ratio NDVI = (NIR-Red)/(NIR+Red) | Crossfade between two sample sets |
+
+### Creative Sonic Result
+A dense forest image (high NDVI) produces pads weighted toward sustained, lush mid-velocity hits. A desert scene (low NDVI, high red/SWIR) generates bright, sparse, high-velocity transients. An urban scene creates a flat, compressed dynamic range across all pads. Seasonal satellite imagery of the same location generates evolving kits that literally sound like spring vs. winter.
+
+### Implementation Complexity
+**Hard** (raw TIFF). **Easy** (pre-processed CSV histogram input). The recommended implementation accepts a simple 8-column CSV of band histograms. TIFF parsing in pure Python is painful and fragile; the spec should document the CSV preprocessing step clearly and make it the primary path.
+
+---
+
+## 5. Poetry Scansion — CMU Pronouncing Dictionary
+
+### Data Source + Format
+The CMU Pronouncing Dictionary (CMUdict) maps English words to phoneme sequences with stress markers: `0` = unstressed, `1` = primary stress, `2` = secondary stress. Distributed as a plain text file (~125,000 entries). Example: `HELLO  HH AH0 L OW1`. A scanned poem maps each syllable to a stress value.
+
+### Python Parsing Approach (stdlib only)
+```python
+def load_cmudict(path):
+    lexicon = {}
+    with open(path) as f:
+        for line in f:
+            if line.startswith(';;;'):
+                continue
+            word, *phonemes = line.strip().split()
+            stresses = [p[-1] for p in phonemes if p[-1].isdigit()]
+            lexicon[word.upper()] = stresses
+    return lexicon
+
+def scan_poem(text, lexicon):
+    syllables = []
+    for word in text.upper().split():
+        clean = ''.join(c for c in word if c.isalpha())
+        stresses = lexicon.get(clean, ['0'])
+        syllables.extend(stresses)
+    return syllables
 ```
 
 ### Mapping to XPN Parameters
-| Source field | XPN target |
+| Scansion Feature | XPN Parameter |
 |---|---|
-| `mag` normalized 1–127 | velocity |
-| `depth` < 30km | velocity layer 1 (short attack, hard transient) |
-| `depth` 30–70km | velocity layer 2 (mid body) |
-| `depth` > 70km | velocity layer 3 (low-end rumble, long release) |
-| `seconds` quantized to 1/16 grid | pad trigger timing |
-| `latitude/longitude` zone | pad selection (geographic clustering) |
+| Primary stress (`1`) | Full-velocity accent hit |
+| Secondary stress (`2`) | Mid-velocity hit (~80 velocity) |
+| Unstressed (`0`) | Ghost note (~30 velocity) or rest |
+| Syllable position (mod 16) | Pad position in sequence |
+| Line break | Bar boundary / sequence reset |
+| Metrical foot (iamb/trochee/dactyl) | Q-Link swing parameter |
+| Feminine ending (trailing unstressed) | Final note decay tail |
 
 ### Creative Sonic Result
-Seismically active regions (Pacific Ring of Fire, Cascadia subduction zone, Turkey fault systems) produce dense polyrhythmic kits with violent velocity spikes. Quiet periods produce ghost note fields. A one-year USGS catalog of magnitude 3.0+ events in California generates a 365-beat pattern that is genuinely unpredictable but physically real. Depth-layering creates natural kick/snare/sub separation: shallow crustal events punch like snares, deep subduction zone events rumble like 808 subs.
+Iambic pentameter (Shakespeare) produces a da-DUM da-DUM kick pattern with natural forward momentum. Trochaic verse (Longfellow) flips to DUM-da, creating a march feel. Dactylic hexameter (Homer) generates triplet-feel patterns. Free verse produces irregular accent bursts. The same poem read aloud and played as a kit would share rhythmic DNA.
 
-### Estimated Complexity: **Easy**
-pandas + numpy, no exotic dependencies. USGS CSV is well-structured. Quantization to rhythmic grid is a simple modulo operation.
+### Implementation Complexity
+**Easy.** CMUdict is a static text file distributed freely. The parsing is trivial string splitting. The main design decision is how to handle unknown words (fall back to all-unstressed).
 
 ---
 
-## Pipeline 02 — Protein Folding Angles
+## 6. DNA Codon Sequences — FASTA Input
 
-**Concept**: PDB (Protein Data Bank) backbone dihedral angles → rhythmic gate pattern
+### Data Source + Format
+FASTA format encodes nucleotide or protein sequences as plain text: a `>identifier` header line followed by the sequence string (`ATGCGATCC...`). DNA codons are 3-nucleotide triplets that encode amino acids. There are 64 possible codons (4^3). NCBI GenBank provides FASTA exports for any gene or genome region.
 
-### Data Source & Format
-- Protein Data Bank: `rcsb.org` — any `.pdb` file
-- Relevant data: ATOM records with residue backbone φ (phi) and ψ (psi) dihedral angles
-- Standard computation via BioPython's `Polypeptide` module: phi/psi per residue
-- Ideal alpha-helix: φ ≈ -57°, ψ ≈ -47°
-- Ideal beta-sheet: φ ≈ -119°, ψ ≈ +113°
-- Deviation from ideal = structural tension = mapped velocity
-
-### Python Parsing Approach
+### Python Parsing Approach (stdlib only)
 ```python
-from Bio.PDB import PDBParser, PPBuilder
-import numpy as np
-
-parser = PDBParser(QUIET=True)
-structure = parser.get_structure('protein', 'my_protein.pdb')
-ppb = PPBuilder()
-
-events = []
-ideal_alpha = (-57, -47)
-ideal_beta  = (-119, 113)
-
-for pp in ppb.build_peptides(structure):
-    phi_psi = pp.get_phi_psi_list()
-    for i, (phi, psi) in enumerate(phi_psi):
-        if phi is None or psi is None:
-            continue
-        phi_deg = np.degrees(phi)
-        psi_deg = np.degrees(psi)
-
-        # Distance from alpha helix ideal
-        dist_alpha = np.sqrt((phi_deg - ideal_alpha[0])**2 +
-                             (psi_deg - ideal_alpha[1])**2)
-        # Normalize to velocity: max deviation ~180 degrees
-        velocity = int(np.clip((dist_alpha / 180.0) * 126 + 1, 1, 127))
-
-        # Secondary structure assignment → pad selection
-        if dist_alpha < 30:
-            pad = 1   # alpha helix → hi-hat-like metallic hit
-        elif np.sqrt((phi_deg - ideal_beta[0])**2 +
-                     (psi_deg - ideal_beta[1])**2) < 40:
-            pad = 2   # beta sheet → snare-like hit
-        else:
-            pad = 3   # loop/coil region → ghost note
-
-        # Each residue = 1/64th note position
-        timing_64th = i
-        events.append({'timing': timing_64th, 'velocity': velocity, 'pad': pad})
-```
-
-### Mapping to XPN Parameters
-| Source field | XPN target |
-|---|---|
-| Residue index | 1/64th note timing slot |
-| Deviation from alpha-helix ideal | velocity |
-| Secondary structure class | pad selection (kick/snare/hat) |
-| B-factor (thermal motion) | sample variation / humanization |
-| Chain identity | kit bank selection |
-
-### Creative Sonic Result
-Alpha-helical proteins (structural proteins like collagen, many membrane proteins) produce tight repetitive patterns with small velocity variation — like a metronomic 16th-note pulse. Intrinsically disordered proteins or loop-heavy enzymes produce highly varied, unpredictable velocity maps. A full human hemoglobin tetramer (PDB: 1GZX, ~574 residues) generates a ~9-bar pattern. Sonically: biologically stable structures sound rhythmically stable; flexible proteins sound loose and organic.
-
-### Estimated Complexity: **Medium**
-Requires BioPython (`pip install biopython`). PDB parsing is well-documented. Dihedral angle computation is built-in. Main challenge is handling missing residues and multi-chain structures gracefully.
-
----
-
-## Pipeline 03 — ECG Heartbeat
-
-**Concept**: Raw ECG waveform → drum kit where cardiac wave peaks trigger different pads
-
-### Data Source & Format
-- PhysioNet / MIT-BIH Arrhythmia Database: `physionet.org/content/mitdb/`
-- Format: `.dat` + `.hea` header files, read via `wfdb` Python library
-- Sample rate: typically 360 Hz (MIT-BIH), some datasets 250 Hz
-- Key features: P wave, Q trough, R peak (dominant), S trough, T wave
-- RR interval (time between R peaks) → tempo
-
-### Python Parsing Approach
-```python
-import wfdb
-import numpy as np
-from scipy.signal import find_peaks
-
-record = wfdb.rdrecord('mit-bih-arrhythmia/100')
-signal = record.p_signal[:, 0]  # Lead I
-fs = record.fs  # 360 Hz
-
-# Detect R peaks (the dominant QRS complex)
-r_peaks, _ = find_peaks(signal, height=0.5, distance=int(0.5 * fs))
-
-# Median RR interval → tempo in BPM
-rr_intervals = np.diff(r_peaks) / fs  # seconds
-bpm = 60.0 / np.median(rr_intervals)
-
-# For each beat: extract P, Q, R, S, T features
-events = []
-for i, r in enumerate(r_peaks):
-    window = signal[max(0, r-100):r+150]
-    r_amp = signal[r]
-
-    # R amplitude → velocity (QRS is largest feature, 0.5–2.0 mV range)
-    velocity = int(np.clip((r_amp / 2.0) * 126 + 1, 1, 127))
-
-    events.append({
-        'pad': 'kick',   # R peak = kick drum
-        'timing_samples': r,
-        'velocity': velocity,
-        'bpm': bpm
-    })
-    # Could extend: detect P wave (pad=snare), T wave (pad=hat) via windowed peak search
-```
-
-### Mapping to XPN Parameters
-| Source field | XPN target |
-|---|---|
-| R peak timing | kick drum trigger |
-| P wave | snare or rim shot |
-| T wave | hi-hat or shaker |
-| QRS amplitude | velocity |
-| RR interval | tempo (BPM for XPN) |
-| HRV (RR variance) | humanization / timing scatter |
-| Arrhythmia events | velocity spike / accent |
-
-### Creative Sonic Result
-A healthy resting heart at 72 BPM produces a clean 4/4 kick pattern with slight HRV humanization — sounds like a properly humanized drum loop. Atrial fibrillation produces metrically irregular but physiologically real timing deviations. Tachycardia records from exercise produce dense fast kit patterns. A runner's ECG during a sprint creates a genuine acceleration ramp. Medical data becomes a timing source that is both deeply human and structurally unexpected.
-
-### Estimated Complexity: **Medium**
-Requires `wfdb` and `scipy`. Feature detection (P/T waves beyond R peak) requires careful windowing but is well-understood in biomedical signal processing literature.
-
----
-
-## Pipeline 04 — Satellite Imagery Multi-Spectral
-
-**Concept**: Multi-spectral TIFF (8 bands) → 8-pad velocity curve from per-band brightness histogram
-
-### Data Source & Format
-- Sentinel-2 via Copernicus Open Access Hub: `scihub.copernicus.eu`
-- Landsat via USGS EarthExplorer: `earthexplorer.usgs.gov`
-- Format: GeoTIFF, 8–13 bands, 10–30m resolution
-- Bands (Sentinel-2): B1 (coastal aerosol), B2 (blue), B3 (green), B4 (red), B5–B7 (vegetation red edge), B8 (NIR), B11–B12 (SWIR)
-- Values: 0–10000 (reflectance ×10000)
-
-### Python Parsing Approach
-```python
-import rasterio
-import numpy as np
-
-velocities = []
-with rasterio.open('sentinel2_scene.tif') as src:
-    for band_idx in range(1, min(9, src.count + 1)):
-        band = src.read(band_idx).astype(float)
-        # Mask nodata
-        band = band[band > 0]
-        # Mean brightness normalized to 1-127
-        mean_brightness = np.mean(band)
-        # Sentinel-2 reflectance range: typically 0–4000 for most surfaces
-        velocity = int(np.clip((mean_brightness / 4000.0) * 126 + 1, 1, 127))
-        velocities.append(velocity)
-
-# Each band → one pad's base velocity
-# Coastal water (B1) → subtle, low velocity
-# Desert/bare soil (B4 high, B8 low) → harsh high velocity
-# Forest (B8 NIR high) → mid velocity with long sustain mapping
-```
-
-### Mapping to XPN Parameters
-| Source field | XPN target |
-|---|---|
-| Per-band mean brightness | pad base velocity |
-| Band 1 (coastal aerosol) | pad 1 — subtle dynamics |
-| Band 4 (red/visible) | pad 4 — mid punch |
-| Band 8 (NIR) | pad 5 — organic body |
-| Band 11/12 (SWIR, heat) | pad 7/8 — harsh spikes |
-| Spatial variance | velocity layer spread |
-| Scene classification (water/urban/vegetation) | kit mood selection |
-
-### Creative Sonic Result
-A coastal estuary scene: B1 (coastal aerosol) is high → pad 1 gets a soft, breathy attack. B8 (vegetation NIR) is high → pad 5 gets organic body. B4 (red) is low over water → pad 4 is ghost note level. Result: a kit built from the reflectance signature of a specific place on Earth. Compare two images of the same location in different seasons → two kit presets that are structurally related but timbrally contrasted.
-
-### Estimated Complexity: **Medium**
-Requires `rasterio` and `numpy`. GeoTIFF multi-band reading is straightforward. Main challenge is selecting a geographically interesting scene and normalizing for cloud cover / atmospheric correction.
-
----
-
-## Pipeline 05 — Poetry Scansion
-
-**Concept**: Iambic pentameter and other metrical verse → velocity-mapped rhythm pattern via CMU Pronouncing Dictionary
-
-### Data Source & Format
-- Any poem text file (UTF-8)
-- CMU Pronouncing Dictionary: `pronouncing` Python library or `nltk.corpus.cmudict`
-- Stress values: 0 = no stress, 1 = primary stress, 2 = secondary stress
-- Input example: "Shall I compare thee to a summer's day?" (Shakespeare Sonnet 18)
-
-### Python Parsing Approach
-```python
-import pronouncing
-import re
-
-def stress_sequence(text):
-    words = re.findall(r"[a-zA-Z']+", text.lower())
-    stresses = []
-    for word in words:
-        phones = pronouncing.phones_for_word(word)
-        if phones:
-            # Get stress pattern from first pronunciation
-            stress = pronouncing.stresses(phones[0])
-            stresses.extend(list(stress))
-        else:
-            stresses.append('0')  # unknown word = unstressed
-    return stresses
-
-def stress_to_velocity(stress_char):
-    mapping = {'1': 120, '2': 80, '0': 30}
-    return mapping.get(stress_char, 30)
-
-poem = open('sonnet18.txt').read()
-lines = poem.strip().split('\n')
-
-events = []
-position = 0
-for line in lines:
-    stresses = stress_sequence(line)
-    for syllable_idx, s in enumerate(stresses):
-        vel = stress_to_velocity(s)
-        events.append({
-            'position_16th': position,
-            'velocity': vel,
-            'pad': 1 if s == '1' else (2 if s == '2' else 3)
-        })
-        position += 1  # each syllable = 1/16th note
-```
-
-### Mapping to XPN Parameters
-| Source field | XPN target |
-|---|---|
-| Primary stress (1) | accent hit — velocity 100–127 |
-| Secondary stress (2) | mid hit — velocity 50–90 |
-| Unstressed (0) | ghost note — velocity 10–40 |
-| Line break | bar boundary / rest |
-| Caesura (mid-line pause) | syncopation marker |
-| Poem meter (iambic/trochaic) | rhythmic feel preset |
-
-### Creative Sonic Result
-Shakespeare's iambic pentameter produces a metronomic da-DUM da-DUM pattern with ghost notes filling the unstressed syllables — a rhythm that is both mathematically regular and naturally musical. Free verse (Whitman, Ginsberg) creates irregular ghost-note-heavy patterns with unexpected accent clusters. Epic poetry (Homer, Virgil in translation) generates long-form drum patterns across hundreds of lines. A full sonnet sequence (154 sonnets) creates a multi-kit pack.
-
-### Estimated Complexity: **Easy**
-`pronouncing` library wraps CMU dict cleanly. Text normalization (punctuation, contractions) adds minor complexity. Grid placement of variable-length lines requires a decision about syllable-to-grid mapping.
-
----
-
-## Pipeline 06 — DNA Codon Sequences
-
-**Concept**: FASTA gene file → 64-pad velocity map based on codon frequency in the gene
-
-### Data Source & Format
-- NCBI GenBank: `ncbi.nlm.nih.gov/nuccore/`
-- Format: FASTA (`.fasta` / `.fa`) — plain text, header line starting with `>`, sequence lines
-- Codons: 3-nucleotide groups from ACGT alphabet → 4³ = 64 possible codons
-- 64 codons → 20 amino acids + 3 stop codons
-- Input: any coding DNA sequence (CDS)
-
-### Python Parsing Approach
-```python
-from collections import Counter
-
-def read_fasta(filename):
+def parse_fasta(path):
     sequences = {}
-    current = None
-    with open(filename) as f:
+    current_id = None
+    with open(path) as f:
         for line in f:
             line = line.strip()
             if line.startswith('>'):
-                current = line[1:].split()[0]
-                sequences[current] = ''
-            elif current:
-                sequences[current] += line.upper()
+                current_id = line[1:].split()[0]
+                sequences[current_id] = ''
+            elif current_id:
+                sequences[current_id] += line.upper()
     return sequences
 
-# All 64 codons
-BASES = 'ACGT'
-ALL_CODONS = [a+b+c for a in BASES for b in BASES for c in BASES]
-CODON_TO_PAD = {codon: i for i, codon in enumerate(sorted(ALL_CODONS))}
+def extract_codons(seq):
+    return [seq[i:i+3] for i in range(0, len(seq)-2, 3) if len(seq[i:i+3]) == 3]
 
-def gene_to_kit(fasta_path, gene_id):
-    seqs = read_fasta(fasta_path)
-    seq = seqs[gene_id]
-    codons = [seq[i:i+3] for i in range(0, len(seq)-2, 3)
-              if len(seq[i:i+3]) == 3]
-    counts = Counter(codons)
-    total = sum(counts.values())
-
-    pad_velocities = {}
-    for codon, pad_idx in CODON_TO_PAD.items():
-        freq = counts.get(codon, 0) / total
-        # Rare codons → low velocity; frequent codons → high velocity
-        velocity = int(np.clip(freq * 127 * 20, 1, 127))  # scale to useful range
-        pad_velocities[pad_idx] = velocity
-
-    return pad_velocities
+# All 64 codons assigned to pads 0-63 (4 banks x 16 pads)
+CODON_PAD = {codon: idx for idx, codon in enumerate(sorted(
+    [a+b+c for a in 'ATGC' for b in 'ATGC' for c in 'ATGC']))}
 ```
 
+64 codons map cleanly to 64 pads across 4 banks of 16 — a perfect fit for MPC's pad structure.
+
 ### Mapping to XPN Parameters
-| Source field | XPN target |
+| DNA Feature | XPN Parameter |
 |---|---|
-| Codon identity (64 values) | pad selection (4 banks × 16 pads) |
-| Codon frequency in gene | base velocity for that pad |
-| Codon position in sequence | trigger timing (1 codon = 1/16th note) |
-| Stop codon (TAA/TAG/TGA) | rest / velocity 0 |
-| GC content | filter cutoff bias |
-| Repeat sequences (tandem repeats) | loop markers |
+| Codon identity (1 of 64) | Pad assignment (4 banks × 16 pads) |
+| Codon frequency in sequence | Velocity weight (common codons hit harder) |
+| Synonymous codon group | Velocity layer within pad |
+| Start codon (ATG) | Bank A, Pad 1 — kick anchor |
+| Stop codons (TAA/TAG/TGA) | Sequence end marker / reset |
+| GC content of 16-codon window | Q-Link filter cutoff curve |
+| ORF (open reading frame) length | Kit sequence length |
 
 ### Creative Sonic Result
-Human insulin gene (short, ~333 bp) → a 111-step pattern. BRCA1 tumor suppressor (long, ~81k bp) → a sprawling multi-hour pattern. Highly expressed genes (abundant mRNA) have biased codon usage toward a specific subset → kits with 10–15 active pads while others stay ghost-note level. Viral genomes (HIV, SARS-CoV-2) have distinct codon usage biases compared to human genes — two kits from the same drum samples that have structurally different velocity maps based on evolutionary biology.
+High-GC genes (common in heat-adapted bacteria) produce dense, high-frequency pad clusters. AT-rich regions produce sparse, open patterns. Different organisms' versions of the same gene (e.g., human vs. yeast cytochrome C) produce similar melodic shapes but different rhythmic emphasis — like two musicians playing the same song in different dialects.
 
-### Estimated Complexity: **Easy**
-No exotic libraries. Pure Python string parsing. Codon table is static. Main creative decision is how aggressively to scale frequency to velocity range.
+### Implementation Complexity
+**Easy.** FASTA parsing is trivially string-based. The codon-to-integer mapping is a static dictionary. Frequency counting is a hand-rolled dict. The 64-pad layout maps perfectly to MPC's 4-bank structure with no remainder.
 
 ---
 
-## Pipeline 07 — Git Commit History
+## 7. Git Commit History — Repository Activity
 
-**Concept**: Git repository commit log → drum pattern where coding sessions become polyrhythmic bursts
+### Data Source + Format
+`git log --format="%H %at %s" --numstat` outputs commit hash, Unix timestamp, subject, and per-file change counts. `git log --shortstat` provides summary line counts. Export via Python's `subprocess`. Timestamps are Unix epoch integers.
 
-### Data Source & Format
-- Any git repository accessible locally
-- `git log --format="%H %ai %s" --numstat` → commit hash, timestamp, subject, file counts
-- Key metrics: timestamp (ISO), files changed (from numstat), insertions, deletions
-- Public repos via GitHub API: `api.github.com/repos/{owner}/{repo}/commits`
-
-### Python Parsing Approach
+### Python Parsing Approach (stdlib only)
 ```python
 import subprocess
-import re
-from datetime import datetime
 
-def get_commits(repo_path):
+def get_git_log(repo_path):
     result = subprocess.run(
-        ['git', 'log', '--format=%H|%ai|%s', '--shortstat'],
-        cwd=repo_path, capture_output=True, text=True
+        ['git', '-C', repo_path, 'log',
+         '--format=%H|%at|%an', '--shortstat'],
+        capture_output=True, text=True
     )
     commits = []
     lines = result.stdout.strip().split('\n')
-    current = None
-    for line in lines:
-        if '|' in line and len(line.split('|')) >= 3:
-            parts = line.split('|', 2)
-            current = {
-                'hash': parts[0],
-                'time': datetime.fromisoformat(parts[1]),
-                'subject': parts[2],
-                'files': 0
-            }
-            commits.append(current)
-        elif current and 'changed' in line:
-            m = re.search(r'(\d+) file', line)
-            if m:
-                current['files'] = int(m.group(1))
+    for i, line in enumerate(lines):
+        if '|' in line:
+            h, ts, author = line.split('|')
+            stats = lines[i+2] if i+2 < len(lines) else ''
+            files = int(stats.split('file')[0].strip()) if 'file' in stats else 0
+            commits.append({'hash': h, 'timestamp': int(ts), 'files': files})
     return commits
-
-commits = get_commits('/path/to/repo')
-# Time between commits → rhythm spacing
-# Files changed → velocity (1 file = 20, 50 files = 127)
-# Burst sessions (< 5 min between commits) → 16th note density
-# Long gaps (> 1 day) → bar reset
 ```
 
 ### Mapping to XPN Parameters
-| Source field | XPN target |
+| Git Feature | XPN Parameter |
 |---|---|
-| Files changed | velocity (clamped 1–127) |
-| Time between commits | inter-note duration |
-| Commit subject keywords ("fix"/"feat"/"refactor") | pad selection |
-| Lines added | filter open amount |
-| Lines deleted | filter close / mute |
-| Burst session (rapid commits) | 32nd/64th note density |
-| Long pause (days) | new section / phrase |
+| Files changed per commit | Pad velocity (0 files = ghost, 20+ = accent) |
+| Inter-commit interval (seconds) | Timing offset / note spacing |
+| Author identity (hash mod 16) | Pad bank assignment |
+| Commit message keyword ('fix'/'feat'/'refactor') | Velocity layer |
+| Lines added vs. deleted ratio | Attack vs. decay character |
+| Merge commit | Accent marker / section boundary |
+| Commit burst (3+ commits < 1 hour) | Drum fill trigger |
 
 ### Creative Sonic Result
-The Linux kernel git history (50+ years of commits) produces an extraordinarily dense kit with statistically valid burst patterns matching major release cycles. A solo developer's side project produces sparse ghost note patterns with occasional intense velocity spikes. XO_OX's own XOmnibus repo history would produce a kit that literally encodes the development timeline as rhythm. Meta-artistic: the act of building the instrument becomes the drum pattern.
+A solo developer's late-night session becomes an erratic, high-intensity snare burst. A disciplined team's CI pipeline produces metronomic, consistent hits. A repository's 10-year history becomes a historical rhythm track — quiet periods map to whisper-soft hi-hats, crunch periods become wall-of-sound fills. The XO_OX-XOmnibus repo itself would generate a kit that sounds like the project was built.
 
-### Estimated Complexity: **Easy**
-`subprocess` + stdlib `datetime`. GitHub API version requires `requests`. No DSP or scientific computing.
+### Implementation Complexity
+**Easy.** Git log output is well-structured and scriptable. `subprocess` is stdlib. The main design choice is normalization: how to scale files-changed and time-intervals into the 0–127 velocity range without clipping at either extreme.
 
 ---
 
-## Pipeline 08 — Weather Patterns
+## 8. Weather Patterns — Historical Time Series
 
-**Concept**: Historical weather time series → kit with cross-fade between sample sets based on temperature/pressure
+### Data Source + Format
+NOAA Global Historical Climatology Network (GHCN) distributes daily station observations as CSV: `STATION, DATE, ELEMENT, VALUE`. Key elements: `TMAX`/`TMIN` (temperature in tenths of °C), `PRCP` (precipitation), `PRES` (station pressure). A year of daily data for one station is ~1,460 rows (4 elements × 365 days).
 
-### Data Source & Format
-- NOAA Climate Data Online: `ncdc.noaa.gov/cdo-web/`
-- Open-Meteo API (free): `api.open-meteo.com/v1/archive`
-- CSV: `date, temp_max, temp_min, precipitation, wind_speed, pressure_hpa, cloud_cover`
-- Daily or hourly granularity
-
-### Python Parsing Approach
+### Python Parsing Approach (stdlib only)
 ```python
-import requests
-import pandas as pd
+import csv
+from datetime import date
 
-# Open-Meteo example: 1 year of hourly data for a location
-url = "https://archive-api.open-meteo.com/v1/archive"
-params = {
-    "latitude": 37.77, "longitude": -122.41,
-    "start_date": "2025-01-01", "end_date": "2025-12-31",
-    "hourly": "temperature_2m,surface_pressure,precipitation,windspeed_10m"
-}
-data = requests.get(url, params=params).json()
-df = pd.DataFrame(data['hourly'])
-
-# Temperature → cross-fade position between 2 sample sets
-# e.g., cold (0°C) = sample set A (dark, padded), hot (40°C) = sample set B (bright, dry)
-df['xfade'] = ((df['temperature_2m'] - 0) / 40.0).clip(0, 1)
-
-# Pressure drop rate → filter sweep velocity
-df['pressure_delta'] = df['surface_pressure'].diff()
-df['filter_vel'] = ((df['pressure_delta'].abs() / 5.0) * 127).clip(1, 127).astype(int)
-
-# Precipitation → rim shot accent
-df['precip_vel'] = ((df['precipitation'] / 20.0) * 127).clip(0, 127).astype(int)
+def load_ghcn(path, station_id):
+    records = {}
+    with open(path) as f:
+        for row in csv.DictReader(f):
+            if row['STATION'] != station_id:
+                continue
+            d = date.fromisoformat(row['DATE'])
+            records.setdefault(d, {})[row['ELEMENT']] = float(row['VALUE']) / 10.0
+    return records
 ```
 
 ### Mapping to XPN Parameters
-| Source field | XPN target |
+| Weather Feature | XPN Parameter |
 |---|---|
-| Temperature | sample set crossfade (A=cold, B=hot) |
-| Pressure drop rate | filter sweep / velocity accent |
-| Precipitation | rim shot / accent pad velocity |
-| Wind speed | LFO rate proxy (stored as velocity layer hint) |
-| Cloud cover % | overall mix wetness / reverb depth |
-| Storm events | velocity spike + filter open |
-| Calm days | ghost note baseline |
+| Temperature (daily high) | Crossfade position between two sample layers |
+| Temperature anomaly (vs. 30-yr avg) | Velocity deviation from base |
+| Precipitation (mm) | Reverb send / decay tail length |
+| Pressure (hPa) | Filter cutoff position |
+| Temperature range (TMAX–TMIN) | Velocity layer spread |
+| Storm event flag | Accent velocity override |
+| Seasonal position (day of year) | Q-Link macro position |
+
+The crossfade between two sample sets (e.g., "winter" samples vs. "summer" samples) driven by temperature is this source's defining feature — it produces kits that smoothly evolve over time rather than making binary pad assignments.
 
 ### Creative Sonic Result
-One year of San Francisco weather produces a kit that cycles between seasons: foggy summer (cold = dark samples, moderate velocity), dry autumn (warming = brighter samples), storm fronts (pressure drops = velocity spikes). Compare the same date range for two cities (NYC vs Miami) → two kits, structurally similar in timing but tonally contrasted by temperature regime. Hurricanes create extreme velocity events. Drought years are flat and dry.
+A year of weather data from New Orleans becomes a jazz kit that swells in summer heat and pulls back in mild winter. An Icelandic station produces sparse, cold, percussive hits that occasionally explode into storm-driven accents. A tropical station near the equator produces a near-constant moderate-energy groove with rainfall-driven fills. The kit literally embodies climate.
 
-### Estimated Complexity: **Easy**
-Open-Meteo API is free, no authentication. `requests` + `pandas`. Cross-fade is a simple normalized value.
+### Implementation Complexity
+**Medium.** GHCN CSV parsing is simple. The complexity is in the crossfade math — interpolating between two complete sample sets based on a continuous temperature value requires defining what "sample set A" and "sample set B" mean in XPN terms (likely two complete programs merged into one with velocity-layer crossfade).
 
 ---
 
-## Pipeline 09 — Stock Market OHLC
+## 9. Stock Market OHLC — Open/High/Low/Close Data
 
-**Concept**: Open/High/Low/Close candles → 4-velocity-layer kit with volume as pad sensitivity
+### Data Source + Format
+Yahoo Finance, Alpha Vantage, and Polygon.io distribute daily OHLC data as CSV: `Date, Open, High, Low, Close, Volume, Adj Close`. Each row is one trading day. Volume is share count. Yahoo Finance allows CSV export from the browser without an API key.
 
-### Data Source & Format
-- Yahoo Finance via `yfinance` library (free)
-- Alpha Vantage API (free tier): `alphavantage.co`
-- Format: daily/hourly OHLC + Volume
-- Fields: `Open, High, Low, Close, Volume, Date`
-
-### Python Parsing Approach
+### Python Parsing Approach (stdlib only)
 ```python
-import yfinance as yf
-import numpy as np
+import csv
 
-ticker = yf.Ticker("SPY")  # S&P 500 ETF as example
-hist = ticker.history(period="1y", interval="1d")
+def load_ohlc(path):
+    rows = []
+    with open(path) as f:
+        for row in csv.DictReader(f):
+            rows.append({
+                'date': row['Date'],
+                'open': float(row['Open']),
+                'high': float(row['High']),
+                'low': float(row['Low']),
+                'close': float(row['Close']),
+                'volume': float(row['Volume'])
+            })
+    return rows
 
-# Normalize each OHLC value to 1-127 within period range
-def normalize(series):
-    return ((series - series.min()) /
-            (series.max() - series.min()) * 126 + 1).astype(int)
-
-hist['open_vel']  = normalize(hist['Open'])
-hist['high_vel']  = normalize(hist['High'])
-hist['low_vel']   = normalize(hist['Low'])
-hist['close_vel'] = normalize(hist['Close'])
-
-# Volume → pad sensitivity (high volume day = all pads louder)
-hist['vol_scale'] = normalize(hist['Volume'])
-
-# Volatility: daily range (High-Low) / Close
-hist['volatility'] = (hist['High'] - hist['Low']) / hist['Close']
-# High volatility → LFO rate proxy (encoded in metadata)
-hist['lfo_rate_hint'] = (hist['volatility'] * 100).clip(0, 100).astype(int)
-
-# Each trading day = 1 bar; each OHLC value = 1 beat of the bar
-# Open = beat 1, High = beat 2, Low = beat 3, Close = beat 4
+def normalize(value, mn, mx):
+    return int(127 * (value - mn) / (mx - mn + 1e-9))
 ```
 
 ### Mapping to XPN Parameters
-| Source field | XPN target |
+| OHLC Feature | XPN Parameter |
 |---|---|
-| Open | beat 1 velocity |
-| High | beat 2 velocity (often loudest on trending day) |
-| Low | beat 3 velocity (ghost note on bullish day) |
-| Close | beat 4 velocity |
-| Volume | global velocity scalar / pad sensitivity |
-| Volatility index (VIX) | LFO rate hint |
-| Price gap (previous close → current open) | accent / velocity jump |
-| Earnings announcement days | extreme velocity spike events |
+| Open price | Velocity layer 1 (floor) |
+| High price | Velocity layer 2 (peak) |
+| Low price | Velocity layer 3 (dip) |
+| Close price | Velocity layer 4 (resolution) |
+| Volume | Pad sensitivity / Q-Link response scaling |
+| Daily price range (High–Low) | Velocity spread within pad |
+| Bullish candle (Close > Open) | Rising velocity accent direction |
+| Bearish candle (Close < Open) | Falling velocity decay direction |
+| Volume spike (>2× 20-day avg) | Fill trigger |
+| Price gap (Open > prev Close) | Sequence position skip / rest |
 
 ### Creative Sonic Result
-Bull market year (SPY 2023): consistent upward velocity trend, Close > Open most days → beat 4 usually louder than beat 1, producing a forward-leaning rhythmic feel. 2020 COVID crash: extreme volatility → wild velocity variation, daily candle swings map to rhythmic chaos then recovery. Comparing two stocks with high/low correlation produces kits that are rhythmically similar or distinct based on price correlation. Crypto (BTC) produces dramatically more volatile kits than treasury bonds.
+A volatile tech stock (GME during its 2021 surge) produces an extreme kit where velocity swings from whisper to full accent within a few bars, with massive volume-spike fills. A stable treasury ETF produces a tight, compressed, almost metronomic pattern. Crash periods (2008, 2020) generate dense, overlapping accent cascades. The kit captures market emotion as rhythm.
 
-### Estimated Complexity: **Easy**
-`yfinance` is excellent, free, and well-maintained. Pure pandas normalization.
+### Implementation Complexity
+**Easy.** CSV parsing is trivial. OHLC normalization is straightforward min-max scaling. The main design decision is the time window: daily bars produce slow-evolving patterns; intraday 1-minute bars produce hyper-dense sequences.
 
 ---
 
-## Pipeline 10 — Sports Play-by-Play
+## 10. Sports Play-by-Play — NBA / Soccer Event Sequences
 
-**Concept**: NBA/soccer event log → each event type maps to a different pad, crowd noise = velocity
+### Data Source + Format
+NBA play-by-play data is available from stats.nba.com as JSON or pre-scraped CSVs on Kaggle. Each row: `game_clock`, `period`, `event_type` (field goal, foul, timeout, turnover, etc.), `team`, `player`. Soccer event data (Statsbomb, Opta) follows similar conventions. A full NBA game contains 400–600 events.
 
-### Data Source & Format
-- NBA: `nba.com/stats` or `stats.nba.com` API (undocumented but accessible)
-- NBA Play-by-Play via `nba_api` library
-- Soccer: StatsBomb open data: `github.com/statsbomb/open-data`
-- Format: timestamped event records — `time, event_type, player, team, coordinates`
-- NBA event types: made shot, missed shot, free throw, turnover, foul, timeout, rebound
-- Soccer: pass, shot, dribble, tackle, clearance, substitution, goal
-
-### Python Parsing Approach
+### Python Parsing Approach (stdlib only)
 ```python
-from nba_api.stats.endpoints import playbyplayv2
-import pandas as pd
+import csv
 
-# Example: retrieve play-by-play for a game
-pbp = playbyplayv2.PlayByPlayV2(game_id='0022300001')
-df = pbp.get_data_frames()[0]
-
-# Event type mapping to pad
-EVENT_PAD = {
-    1: 1,   # Made shot → kick drum
-    2: 2,   # Missed shot → snare
-    3: 3,   # Free throw → hi-hat
-    4: 4,   # Rebound → clap
-    5: 5,   # Turnover → rim shot
-    6: 6,   # Foul → crash
+EVENT_PAD_MAP = {
+    'field_goal_made': 1,
+    'field_goal_missed': 2,
+    'free_throw_made': 3,
+    'free_throw_missed': 4,
+    'rebound': 5,
+    'turnover': 6,
+    'foul': 7,
+    'timeout': 8,
+    '3pt_made': 9,
+    'block': 10,
+    'steal': 11,
+    'assist': 12,
 }
 
-# Game clock to beat position
-def clock_to_seconds(clock_str):
-    # Format: "PT12M00.00S" (NBA) or "MM:SS"
-    parts = clock_str.replace('PT','').replace('S','').split('M')
-    return int(parts[0]) * 60 + float(parts[1])
-
-events = []
-for _, row in df.iterrows():
-    pad = EVENT_PAD.get(row['EVENTMSGTYPE'], 8)
-    time_sec = clock_to_seconds(row['PCTIMESTRING'])
-    # Score margin → velocity (blowout = low energy, close game = high velocity)
-    score_diff = abs(row.get('SCOREMARGIN', 0) or 0)
-    velocity = max(1, min(127, 127 - score_diff * 2))
-    events.append({'pad': pad, 'time_sec': time_sec, 'velocity': velocity})
+def parse_pbp(path):
+    events = []
+    with open(path) as f:
+        for row in csv.DictReader(f):
+            events.append({
+                'time_seconds': float(row['game_clock']),
+                'event': row['event_type'],
+                'pad': EVENT_PAD_MAP.get(row['event_type'], 16)
+            })
+    return events
 ```
 
 ### Mapping to XPN Parameters
-| Source field | XPN target |
+| Sports Feature | XPN Parameter |
 |---|---|
-| Event type | pad selection |
-| Game clock | timing (seconds → beat quantization) |
-| Score margin | inverse velocity (close game = high energy) |
-| Quarter / Half | section boundary |
-| Timeout | silence / rest |
-| Goal / Made shot | velocity 127 accent |
-| Overtime | extended pattern / extra bars |
-| Fast break (< 5s possession) | 16th note density burst |
+| Event type | Pad assignment (per EVENT_PAD_MAP) |
+| Home team event | Pad bank A/C |
+| Away team event | Pad bank B/D |
+| Game clock position | Sequence timing |
+| Score differential at event | Velocity (blowout = flat; close game = variable) |
+| Made vs. missed | Velocity layer (made = full, missed = mid) |
+| Overtime period | Extended sequence region |
+| Crowd-response events (slam dunk, triple) | Accent marker |
 
 ### Creative Sonic Result
-A close playoff game in the 4th quarter generates dense, high-velocity patterns with rapid event clustering — genuine crowd energy mapped to drum velocity. A blowout game generates predictable, low-energy ghost-note patterns. Comparing the same team's win vs loss games produces rhythmically distinct kits from the same sample palette. Soccer's lower event density produces sparser, more syncopated patterns than basketball. A full 48-minute NBA game → a roughly 5-minute drum pattern at 120 BPM.
+A close fourth-quarter NBA game generates a dense, high-intensity kit with rapid alternating pad hits as both teams trade baskets. A dominant first-half blowout creates an asymmetric pattern weighted to one pad bank. A soccer match with few goals produces sparse, atmospheric patterns punctuated by sudden goal-burst accents. Different sports have completely different rhythmic vocabularies — basketball is fast and polyrhythmic; baseball is sparse and meditative.
 
-### Estimated Complexity: **Medium**
-`nba_api` is stable but the API can be rate-limited. StatsBomb open data is JSON and straightforward. Event type normalization varies between sports data providers.
+### Implementation Complexity
+**Medium.** The parsing is simple CSV/JSON work. The complexity is data availability — NBA CSV exports require scraping or Kaggle datasets; the EVENT_PAD_MAP must be tuned per sport/data source. The game clock time-mapping requires careful handling of stoppages and overtime.
 
 ---
 
-## Implementation Notes
+## Implementation Priority Matrix
 
-### Shared Infrastructure
-All 10 pipelines share a common output target: a Python dict structure that maps to the XPN tool suite's existing `generate_xpms.py`:
+**The 3 to build first:**
+
+### Priority 1 — Poetry Scansion (CMU Pronouncing Dictionary)
+**Reason:** Lowest implementation barrier. CMUdict is a static text file distributed freely, the parsing is trivial string processing, and the creative result — a kit that plays your lyrics as rhythm — is immediately legible and demonstrable to any producer. It has natural crossover appeal with the XO_OX field guide and community, and requires no external data fetching or API access. Build time: 1–2 days.
+
+### Priority 2 — Git Commit History
+**Reason:** The XO_OX developer community is deeply technical. A script that generates a kit from a GitHub repository's commit log is a natural promotional tool — shareable, reproducible, and surprising. The `subprocess` + `git log` pipeline is entirely stdlib. Every user can immediately apply it to their own projects. The "generate a kit from your codebase" concept is inherently viral in dev-adjacent music production circles. Build time: 2–3 days including normalization tuning.
+
+### Priority 3 — Stock Market OHLC
+**Reason:** OHLC data is the most universally available non-audio dataset on the internet. Every producer has heard of it; many follow markets. The 4-layer (Open/High/Low/Close) velocity mapping is elegant and has a direct musical logic. Yahoo Finance CSV export requires no API key. The "generate a kit from a stock ticker" concept is meme-able and immediately viral. Build time: 2–3 days.
+
+**Deferred rationale for the remaining 7:**
+- Seismograph: Conceptually compelling but USGS data format changes occasionally and magnitude normalization decisions are non-trivial.
+- DNA codons: The 64-codon/64-pad mapping is architecturally perfect but sourcing relevant FASTA files is non-obvious for non-biologists.
+- ECG: Highest creative ceiling (personal heartbeat as kit) but accurate P/Q/S/T detection is genuinely hard in pure Python.
+- Satellite imagery: Beautiful concept but preprocessing dependency (GeoTIFF to histogram CSV) creates friction.
+- Protein folding, Weather, Sports: Excellent medium-term targets once the first three prove the concept.
+
+---
+
+## Monster Rancher Extension
+
+`xpn_monster_rancher.py` generates unique drum kits by hashing arbitrary files into a DNA fingerprint — the same file always produces the same kit, different files produce different kits. The 10 data sources above each provide a new class of *meaningful* DNA input: not random bytes, but structured data where the resulting kit is *legible* — you can hear the source in the output.
+
+### Shared Integration Interface
+
+All 10 sources hook into the same interface:
 
 ```python
-{
-    'bpm': float,
-    'events': [
-        {
-            'pad': int,          # 1-16
-            'position_16th': int, # beat position in 1/16th note units
-            'velocity': int,     # 1-127
-            'layer': int         # 1-4 velocity layer
-        }
-    ],
-    'pad_settings': {
-        pad_idx: {
-            'base_velocity': int,
-            'filter_cutoff': float,  # 0.0-1.0
-            'attack': float,
-            'decay': float
-        }
-    }
-}
+class DNASource:
+    def get_name(self) -> str: ...
+    def get_dna_bytes(self) -> bytes: ...
+
+# xpn_monster_rancher.py calls:
+source = SeismographDNA('usgs_2024_pacific.csv')
+kit = generate_kit_from_dna(source.get_dna_bytes(), name=source.get_name())
 ```
 
-### Quantization Strategy
-Non-audio sources have continuous timing. Quantization decisions:
-- **Hard quantize**: snap to nearest 1/16th (grid-locked, robotic feel)
-- **Soft quantize**: snap + random offset within ±1/32nd (humanized)
-- **Free time**: preserve raw timing, generate non-quantized XPN (requires MPC swing/quantize at playback)
+`generate_kit_from_dna()` already exists in `xpn_monster_rancher.py`. Adding a new data source is purely additive — implement `DNASource`, register in the CLI `--source` argument parser, document here.
 
-Recommended default: soft quantize at 75% strength.
+### Per-Source DNA Encoding
 
-### Priority for Implementation
-| Pipeline | Data availability | Musical interest | Complexity | Priority |
-|---|---|---|---|---|
-| Git Commit History | Immediate (any repo) | High (meta-artistic) | Easy | **1** |
-| Poetry Scansion | Immediate (any text) | High (lyrical connection) | Easy | **2** |
-| ECG Heartbeat | Free download | Very high | Medium | **3** |
-| Seismograph | Free USGS API | High | Easy | **4** |
-| Weather | Free API | High (geographic identity) | Easy | **5** |
-| Stock OHLC | Free API | Medium | Easy | **6** |
-| DNA Codon | Free NCBI | High (biological) | Easy | **7** |
-| Sports Play-by-Play | Moderate access | Medium | Medium | **8** |
-| Satellite Imagery | Free but large files | Medium | Medium | **9** |
-| Protein Folding | Free but niche | Niche | Medium | **10** |
+**Seismograph**
+Each event's `(latitude, longitude, depth, magnitude)` tuple is serialized as 4 bytes and appended. The USGS event ID becomes the monster's name. Pacific Ring of Fire queries produce dense, attack-heavy monsters.
+
+**Protein Folding**
+The PDB ID (e.g., `1AKE`) is the monster name. Each residue's dihedral angle pair (phi, psi) is quantized to 2 bytes and appended. Proteins with similar functions but different organisms produce recognizably related monsters — same genus, different species.
+
+**ECG**
+Patient ID or recording date is the monster name. RR intervals (as 16-bit ms values) form the DNA. The same person at rest vs. exercise produces a monster and its powered-up variant — same base DNA, different rhythm signature.
+
+**Satellite Imagery**
+Geographic bounding box (lat/lon) and acquisition date form the monster name. Band histogram values (8 bands × 128 bins) provide 1024 bytes of highly specific DNA. The same location across seasons produces seasonal monster variants.
+
+**Poetry Scansion**
+Poem title or first line is the monster name. The syllable stress sequence (`010201010...`) is serialized as nibbles and appended as DNA bytes. Two sonnets by the same poet produce sibling monsters.
+
+**DNA Codons**
+Gene symbol (e.g., `BRCA1`, `COX1`) is the monster name. The codon sequence — after encoding each of the 64 codons as a 6-bit value — is the DNA. Organisms sharing a gene produce related monsters.
+
+**Git Commit History**
+Repository name is the monster name. Each commit's `(timestamp mod 65536, files_changed)` pair becomes 3 bytes of DNA. Two forks of the same repo produce fork-monsters that diverge after their branch point. The XO_OX-XOmnibus repo would produce a legendary-tier monster.
+
+**Weather**
+Station ID and year form the monster name. Daily TMAX/TMIN/PRCP values (quantized to bytes) provide ~1,095 bytes of seasonal DNA. Two years from the same station produce a climate-drift monster pair.
+
+**Stock OHLC**
+Ticker symbol and date range form the monster name. Each day's `(close-open, high-low, volume_rank)` vector provides 3 bytes of DNA. Bull market periods produce aggressive, high-velocity monsters; bear markets produce compressed, subdued ones.
+
+**Sports Play-by-Play**
+Game ID (e.g., `NBA-2024-GSW-LAL-Game7`) is the monster name. Each event type is encoded as a single byte and appended in game-clock order. Overtime games produce longer DNA than regulation games. Championship games produce legendary monsters.
 
 ---
 
-*Document prepared for XO_OX Designs R&D. Part of the XPN Tool Suite expansion research.*
+*End of document — non_audio_xpn_sources_rnd.md*
