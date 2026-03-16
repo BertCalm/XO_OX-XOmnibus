@@ -1,0 +1,48 @@
+{
+  "name": "WINTER NEST",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "ONSET",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "ONSET": {
+      "macro_character": 0.059,
+      "macro_movement": 0.379,
+      "macro_coupling": 0.985,
+      "macro_space": 0.265
+    },
+    "OSTERIA": {
+      "macro_character": 0.784,
+      "macro_movement": 0.455,
+      "macro_coupling": 0.423,
+      "macro_space": 0.957
+    }
+  },
+  "coupling": {
+    "type": "RING_MOD",
+    "source": "ONSET",
+    "target": "OSTERIA",
+    "amount": 0.897
+  },
+  "dna": {
+    "brightness": 0.541,
+    "warmth": 0.021,
+    "movement": 0.093,
+    "density": 0.754,
+    "space": 0.236,
+    "aggression": 0.06
+  },
+  "macros": {
+    "CHARACTER": 0.556,
+    "MOVEMENT": 0.718,
+    "COUPLING": 0.155,
+    "SPACE": 0.297
+  },
+  "tags": [
+    "family",
+    "cold",
+    "xlow-warmth"
+  ]
+}

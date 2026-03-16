@@ -1,0 +1,48 @@
+{
+  "name": "MIDNIGHT SPECTRUM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OSTERIA",
+    "OBESE"
+  ],
+  "parameters": {
+    "OSTERIA": {
+      "macro_character": 0.396,
+      "macro_movement": 0.09,
+      "macro_coupling": 0.368,
+      "macro_space": 0.387
+    },
+    "OBESE": {
+      "macro_character": 0.686,
+      "macro_movement": 0.958,
+      "macro_coupling": 0.744,
+      "macro_space": 0.933
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OSTERIA",
+    "target": "OBESE",
+    "amount": 0.615
+  },
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.245,
+    "movement": 0.487,
+    "density": 0.027,
+    "space": 0.862,
+    "aggression": 0.594
+  },
+  "macros": {
+    "CHARACTER": 0.807,
+    "MOVEMENT": 0.814,
+    "COUPLING": 0.85,
+    "SPACE": 0.912
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "spectrum"
+  ]
+}

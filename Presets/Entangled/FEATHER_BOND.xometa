@@ -1,0 +1,49 @@
+{
+  "name": "FEATHER BOND",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBSCURA",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.784,
+      "macro_movement": 0.592,
+      "macro_coupling": 0.506,
+      "macro_space": 0.47
+    },
+    "ODYSSEY": {
+      "macro_character": 0.543,
+      "macro_movement": 0.733,
+      "macro_coupling": 0.817,
+      "macro_space": 0.46
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBSCURA",
+    "target": "ODYSSEY",
+    "amount": 0.807
+  },
+  "dna": {
+    "brightness": 0.145,
+    "warmth": 0.506,
+    "movement": 0.079,
+    "density": 0.128,
+    "space": 0.132,
+    "aggression": 0.045
+  },
+  "macros": {
+    "CHARACTER": 0.621,
+    "MOVEMENT": 0.357,
+    "COUPLING": 0.481,
+    "SPACE": 0.221
+  },
+  "tags": [
+    "calm",
+    "entangled",
+    "yielding",
+    "delicate"
+  ]
+}

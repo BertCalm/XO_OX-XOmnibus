@@ -1,0 +1,49 @@
+{
+  "name": "MAGMA LATTICE",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ONSET",
+    "OBBLIGATO"
+  ],
+  "parameters": {
+    "ONSET": {
+      "macro_character": 0.55,
+      "macro_movement": 0.894,
+      "macro_coupling": 0.123,
+      "macro_space": 0.264
+    },
+    "OBBLIGATO": {
+      "macro_character": 0.546,
+      "macro_movement": 0.24,
+      "macro_coupling": 0.791,
+      "macro_space": 0.842
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ONSET",
+    "target": "OBBLIGATO",
+    "amount": 0.305
+  },
+  "dna": {
+    "brightness": 0.288,
+    "warmth": 0.916,
+    "movement": 0.894,
+    "density": 0.501,
+    "space": 0.926,
+    "aggression": 0.853
+  },
+  "macros": {
+    "CHARACTER": 0.961,
+    "MOVEMENT": 0.982,
+    "COUPLING": 0.789,
+    "SPACE": 0.298
+  },
+  "tags": [
+    "prism",
+    "warm",
+    "spectrum",
+    "fire"
+  ]
+}

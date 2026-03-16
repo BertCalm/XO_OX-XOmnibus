@@ -1,0 +1,50 @@
+{
+  "name": "WRATHFUL ETHER",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OMBRE",
+    "OTTONI"
+  ],
+  "parameters": {
+    "OMBRE": {
+      "macro_character": 0.174,
+      "macro_movement": 0.854,
+      "macro_coupling": 0.742,
+      "macro_space": 0.792
+    },
+    "OTTONI": {
+      "macro_character": 0.746,
+      "macro_movement": 0.897,
+      "macro_coupling": 0.778,
+      "macro_space": 0.791
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OMBRE",
+    "target": "OTTONI",
+    "amount": 0.376
+  },
+  "dna": {
+    "brightness": 0.661,
+    "warmth": 0.026,
+    "movement": 0.899,
+    "density": 0.015,
+    "space": 0.79,
+    "aggression": 0.908
+  },
+  "macros": {
+    "CHARACTER": 0.504,
+    "MOVEMENT": 0.899,
+    "COUPLING": 0.945,
+    "SPACE": 0.79
+  },
+  "tags": [
+    "aether",
+    "violent",
+    "transcendence",
+    "aggression-xhigh",
+    "movement-xhigh"
+  ]
+}

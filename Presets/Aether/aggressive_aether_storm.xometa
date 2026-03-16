@@ -1,0 +1,50 @@
+{
+  "name": "AGGRESSIVE AETHER STORM",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OVERWORLD",
+    "OCELOT"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.51,
+      "macro_movement": 0.906,
+      "macro_coupling": 0.51,
+      "macro_space": 0.364
+    },
+    "OCELOT": {
+      "macro_character": 0.349,
+      "macro_movement": 0.968,
+      "macro_coupling": 0.819,
+      "macro_space": 0.359
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OVERWORLD",
+    "target": "OCELOT",
+    "amount": 0.465
+  },
+  "dna": {
+    "brightness": 0.524,
+    "warmth": 0.396,
+    "movement": 0.945,
+    "density": 0.31,
+    "space": 0.34,
+    "aggression": 0.907
+  },
+  "macros": {
+    "CHARACTER": 0.146,
+    "MOVEMENT": 0.945,
+    "COUPLING": 0.197,
+    "SPACE": 0.34
+  },
+  "tags": [
+    "aether",
+    "violent",
+    "transcendence",
+    "aggression-xhigh",
+    "movement-xhigh"
+  ]
+}

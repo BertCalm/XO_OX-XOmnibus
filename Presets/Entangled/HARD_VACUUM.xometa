@@ -1,0 +1,49 @@
+{
+  "name": "HARD VACUUM",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OCTOPUS",
+    "OTTONI"
+  ],
+  "parameters": {
+    "OCTOPUS": {
+      "macro_character": 0.248,
+      "macro_movement": 0.558,
+      "macro_coupling": 0.416,
+      "macro_space": 0.596
+    },
+    "OTTONI": {
+      "macro_character": 0.618,
+      "macro_movement": 0.776,
+      "macro_coupling": 0.38,
+      "macro_space": 0.909
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OCTOPUS",
+    "target": "OTTONI",
+    "amount": 0.478
+  },
+  "dna": {
+    "brightness": 0.421,
+    "warmth": 0.102,
+    "movement": 0.159,
+    "density": 0.604,
+    "space": 0.143,
+    "aggression": 0.861
+  },
+  "macros": {
+    "CHARACTER": 0.589,
+    "MOVEMENT": 0.429,
+    "COUPLING": 0.569,
+    "SPACE": 0.06
+  },
+  "tags": [
+    "entangled",
+    "cold",
+    "clinical",
+    "icy"
+  ]
+}

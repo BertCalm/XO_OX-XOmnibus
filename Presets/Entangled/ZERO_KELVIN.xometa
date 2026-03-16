@@ -1,0 +1,49 @@
+{
+  "name": "ZERO KELVIN",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OUTWIT",
+    "ODYSSEY"
+  ],
+  "parameters": {
+    "OUTWIT": {
+      "macro_character": 0.075,
+      "macro_movement": 0.754,
+      "macro_coupling": 0.226,
+      "macro_space": 0.676
+    },
+    "ODYSSEY": {
+      "macro_character": 0.674,
+      "macro_movement": 0.397,
+      "macro_coupling": 0.846,
+      "macro_space": 0.557
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OUTWIT",
+    "target": "ODYSSEY",
+    "amount": 0.354
+  },
+  "dna": {
+    "brightness": 0.764,
+    "warmth": 0.111,
+    "movement": 0.306,
+    "density": 0.911,
+    "space": 0.485,
+    "aggression": 0.745
+  },
+  "macros": {
+    "CHARACTER": 0.395,
+    "MOVEMENT": 0.264,
+    "COUPLING": 0.124,
+    "SPACE": 0.369
+  },
+  "tags": [
+    "entangled",
+    "cold",
+    "clinical",
+    "icy"
+  ]
+}

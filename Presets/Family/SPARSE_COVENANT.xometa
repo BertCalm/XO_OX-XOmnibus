@@ -1,0 +1,48 @@
+{
+  "name": "SPARSE COVENANT",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OBSCURA",
+    "OUROBOROS"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.352,
+      "macro_movement": 0.074,
+      "macro_coupling": 0.462,
+      "macro_space": 0.038
+    },
+    "OUROBOROS": {
+      "macro_character": 0.369,
+      "macro_movement": 0.287,
+      "macro_coupling": 0.645,
+      "macro_space": 0.977
+    }
+  },
+  "coupling": {
+    "type": "AMP_COUPLE",
+    "source": "OBSCURA",
+    "target": "OUROBOROS",
+    "amount": 0.354
+  },
+  "dna": {
+    "brightness": 0.625,
+    "warmth": 0.864,
+    "movement": 0.627,
+    "density": 0.035,
+    "space": 0.939,
+    "aggression": 0.442
+  },
+  "macros": {
+    "CHARACTER": 0.594,
+    "MOVEMENT": 0.384,
+    "COUPLING": 0.58,
+    "SPACE": 0.954
+  },
+  "tags": [
+    "family",
+    "sparse",
+    "xlow-density"
+  ]
+}

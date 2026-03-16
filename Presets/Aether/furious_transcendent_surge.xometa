@@ -1,0 +1,49 @@
+{
+  "name": "FURIOUS TRANSCENDENT SURGE",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OPAL",
+    "OCTOPUS"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.063,
+      "macro_movement": 0.457,
+      "macro_coupling": 0.5,
+      "macro_space": 0.24
+    },
+    "OCTOPUS": {
+      "macro_character": 0.632,
+      "macro_movement": 0.431,
+      "macro_coupling": 0.719,
+      "macro_space": 0.225
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OPAL",
+    "target": "OCTOPUS",
+    "amount": 0.301
+  },
+  "dna": {
+    "brightness": 0.776,
+    "warmth": 0.238,
+    "movement": 0.423,
+    "density": 0.122,
+    "space": 0.238,
+    "aggression": 0.947
+  },
+  "macros": {
+    "CHARACTER": 0.353,
+    "MOVEMENT": 0.423,
+    "COUPLING": 0.571,
+    "SPACE": 0.238
+  },
+  "tags": [
+    "aether",
+    "violent",
+    "transcendence",
+    "aggression-xhigh"
+  ]
+}

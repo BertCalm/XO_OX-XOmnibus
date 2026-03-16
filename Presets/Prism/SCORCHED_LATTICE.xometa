@@ -1,0 +1,49 @@
+{
+  "name": "SCORCHED LATTICE",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OBSCURA",
+    "OVERDUB"
+  ],
+  "parameters": {
+    "OBSCURA": {
+      "macro_character": 0.975,
+      "macro_movement": 0.273,
+      "macro_coupling": 0.656,
+      "macro_space": 0.258
+    },
+    "OVERDUB": {
+      "macro_character": 0.366,
+      "macro_movement": 0.448,
+      "macro_coupling": 0.398,
+      "macro_space": 0.507
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBSCURA",
+    "target": "OVERDUB",
+    "amount": 0.493
+  },
+  "dna": {
+    "brightness": 0.537,
+    "warmth": 0.898,
+    "movement": 0.856,
+    "density": 0.439,
+    "space": 0.709,
+    "aggression": 0.805
+  },
+  "macros": {
+    "CHARACTER": 0.996,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.479,
+    "SPACE": 0.174
+  },
+  "tags": [
+    "prism",
+    "warm",
+    "spectrum",
+    "fire"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "VAST GROUND",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ORIGAMI",
+    "OCEANIC"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.732,
+      "macro_movement": 0.952,
+      "macro_coupling": 0.978,
+      "macro_space": 0.912
+    },
+    "OCEANIC": {
+      "macro_character": 0.126,
+      "macro_movement": 0.936,
+      "macro_coupling": 0.947,
+      "macro_space": 0.89
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ORIGAMI",
+    "target": "OCEANIC",
+    "amount": 0.669
+  },
+  "dna": {
+    "brightness": 0.985,
+    "warmth": 0.807,
+    "movement": 0.92,
+    "density": 0.239,
+    "space": 0.91,
+    "aggression": 0.241
+  },
+  "macros": {
+    "CHARACTER": 0.607,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.964,
+    "SPACE": 0.91
+  },
+  "tags": [
+    "foundation",
+    "vast",
+    "open",
+    "space-xhigh",
+    "movement-xhigh"
+  ]
+}

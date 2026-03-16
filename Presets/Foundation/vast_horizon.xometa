@@ -1,0 +1,50 @@
+{
+  "name": "VAST HORIZON",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OBLONG",
+    "ODDOSCAR"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.927,
+      "macro_movement": 0.954,
+      "macro_coupling": 0.285,
+      "macro_space": 0.933
+    },
+    "ODDOSCAR": {
+      "macro_character": 0.731,
+      "macro_movement": 0.953,
+      "macro_coupling": 0.662,
+      "macro_space": 0.92
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OBLONG",
+    "target": "ODDOSCAR",
+    "amount": 0.433
+  },
+  "dna": {
+    "brightness": 0.481,
+    "warmth": 0.865,
+    "movement": 0.925,
+    "density": 0.902,
+    "space": 0.921,
+    "aggression": 0.165
+  },
+  "macros": {
+    "CHARACTER": 0.218,
+    "MOVEMENT": 0.925,
+    "COUPLING": 0.058,
+    "SPACE": 0.921
+  },
+  "tags": [
+    "foundation",
+    "vast",
+    "open",
+    "space-xhigh",
+    "movement-xhigh"
+  ]
+}

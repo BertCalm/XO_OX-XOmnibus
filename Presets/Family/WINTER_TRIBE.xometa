@@ -1,0 +1,48 @@
+{
+  "name": "WINTER TRIBE",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OBLONG",
+    "ORCA"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.871,
+      "macro_movement": 0.223,
+      "macro_coupling": 0.66,
+      "macro_space": 0.398
+    },
+    "ORCA": {
+      "macro_character": 0.279,
+      "macro_movement": 0.069,
+      "macro_coupling": 0.773,
+      "macro_space": 0.351
+    }
+  },
+  "coupling": {
+    "type": "RHYTHM_SYNC",
+    "source": "OBLONG",
+    "target": "ORCA",
+    "amount": 0.606
+  },
+  "dna": {
+    "brightness": 0.159,
+    "warmth": 0.09,
+    "movement": 0.383,
+    "density": 0.039,
+    "space": 0.471,
+    "aggression": 0.123
+  },
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.844,
+    "COUPLING": 0.331,
+    "SPACE": 0.028
+  },
+  "tags": [
+    "family",
+    "cold",
+    "xlow-warmth"
+  ]
+}

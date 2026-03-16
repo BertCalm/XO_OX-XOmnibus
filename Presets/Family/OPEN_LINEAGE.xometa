@@ -1,0 +1,48 @@
+{
+  "name": "OPEN LINEAGE",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OHM",
+    "OLE"
+  ],
+  "parameters": {
+    "OHM": {
+      "macro_character": 0.652,
+      "macro_movement": 0.152,
+      "macro_coupling": 0.965,
+      "macro_space": 0.126
+    },
+    "OLE": {
+      "macro_character": 0.965,
+      "macro_movement": 0.332,
+      "macro_coupling": 0.1,
+      "macro_space": 0.845
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OHM",
+    "target": "OLE",
+    "amount": 0.36
+  },
+  "dna": {
+    "brightness": 0.234,
+    "warmth": 0.776,
+    "movement": 0.044,
+    "density": 0.094,
+    "space": 0.705,
+    "aggression": 0.969
+  },
+  "macros": {
+    "CHARACTER": 0.91,
+    "MOVEMENT": 0.015,
+    "COUPLING": 0.144,
+    "SPACE": 0.871
+  },
+  "tags": [
+    "family",
+    "sparse",
+    "xlow-density"
+  ]
+}

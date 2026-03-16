@@ -1,0 +1,49 @@
+{
+  "name": "FLAME REFRACTION",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OUTWIT",
+    "ORPHICA"
+  ],
+  "parameters": {
+    "OUTWIT": {
+      "macro_character": 0.583,
+      "macro_movement": 0.451,
+      "macro_coupling": 0.065,
+      "macro_space": 0.648
+    },
+    "ORPHICA": {
+      "macro_character": 0.618,
+      "macro_movement": 0.109,
+      "macro_coupling": 0.348,
+      "macro_space": 0.165
+    }
+  },
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OUTWIT",
+    "target": "ORPHICA",
+    "amount": 0.722
+  },
+  "dna": {
+    "brightness": 0.243,
+    "warmth": 0.901,
+    "movement": 0.665,
+    "density": 0.28,
+    "space": 0.991,
+    "aggression": 0.792
+  },
+  "macros": {
+    "CHARACTER": 0.046,
+    "MOVEMENT": 0.168,
+    "COUPLING": 0.117,
+    "SPACE": 0.284
+  },
+  "tags": [
+    "prism",
+    "warm",
+    "spectrum",
+    "fire"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "OBSIDIAN HEAT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OCEANIC",
+    "OHM"
+  ],
+  "parameters": {
+    "OCEANIC": {
+      "macro_character": 0.163,
+      "macro_movement": 0.991,
+      "macro_coupling": 0.739,
+      "macro_space": 0.299
+    },
+    "OHM": {
+      "macro_character": 0.336,
+      "macro_movement": 0.828,
+      "macro_coupling": 0.532,
+      "macro_space": 0.709
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OCEANIC",
+    "target": "OHM",
+    "amount": 0.48
+  },
+  "dna": {
+    "brightness": 0.671,
+    "warmth": 0.884,
+    "movement": 0.1,
+    "density": 0.515,
+    "space": 0.219,
+    "aggression": 0.815
+  },
+  "macros": {
+    "CHARACTER": 0.816,
+    "MOVEMENT": 0.368,
+    "COUPLING": 0.674,
+    "SPACE": 0.98
+  },
+  "tags": [
+    "entangled",
+    "hot",
+    "molten",
+    "furnace"
+  ]
+}

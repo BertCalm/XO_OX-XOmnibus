@@ -1,0 +1,49 @@
+{
+  "name": "SAVAGE THREAD",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBLIQUE",
+    "OUTWIT"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.878,
+      "macro_movement": 0.853,
+      "macro_coupling": 0.637,
+      "macro_space": 0.729
+    },
+    "OUTWIT": {
+      "macro_character": 0.355,
+      "macro_movement": 0.433,
+      "macro_coupling": 0.219,
+      "macro_space": 0.401
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OBLIQUE",
+    "target": "OUTWIT",
+    "amount": 0.766
+  },
+  "dna": {
+    "brightness": 0.34,
+    "warmth": 0.143,
+    "movement": 0.804,
+    "density": 0.938,
+    "space": 0.084,
+    "aggression": 0.954
+  },
+  "macros": {
+    "CHARACTER": 0.479,
+    "MOVEMENT": 0.779,
+    "COUPLING": 0.341,
+    "SPACE": 0.666
+  },
+  "tags": [
+    "obliterating",
+    "savage",
+    "brutal",
+    "fury"
+  ]
+}

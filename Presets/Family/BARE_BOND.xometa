@@ -1,0 +1,48 @@
+{
+  "name": "BARE BOND",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OBLIQUE",
+    "OBSIDIAN"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.12,
+      "macro_movement": 0.497,
+      "macro_coupling": 0.431,
+      "macro_space": 0.129
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.533,
+      "macro_movement": 0.23,
+      "macro_coupling": 0.559,
+      "macro_space": 0.668
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_GATE",
+    "source": "OBLIQUE",
+    "target": "OBSIDIAN",
+    "amount": 0.513
+  },
+  "dna": {
+    "brightness": 0.045,
+    "warmth": 0.395,
+    "movement": 0.893,
+    "density": 0.021,
+    "space": 0.301,
+    "aggression": 0.211
+  },
+  "macros": {
+    "CHARACTER": 0.397,
+    "MOVEMENT": 0.742,
+    "COUPLING": 0.436,
+    "SPACE": 0.46
+  },
+  "tags": [
+    "family",
+    "sparse",
+    "xlow-density"
+  ]
+}

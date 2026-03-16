@@ -1,0 +1,50 @@
+{
+  "name": "FURIOUS TRANSCENDENCE",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "ODDFELIX",
+    "OBSIDIAN"
+  ],
+  "parameters": {
+    "ODDFELIX": {
+      "macro_character": 0.739,
+      "macro_movement": 0.952,
+      "macro_coupling": 0.556,
+      "macro_space": 0.837
+    },
+    "OBSIDIAN": {
+      "macro_character": 0.562,
+      "macro_movement": 0.904,
+      "macro_coupling": 0.122,
+      "macro_space": 0.823
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ODDFELIX",
+    "target": "OBSIDIAN",
+    "amount": 0.766
+  },
+  "dna": {
+    "brightness": 0.153,
+    "warmth": 0.923,
+    "movement": 0.921,
+    "density": 0.067,
+    "space": 0.832,
+    "aggression": 0.953
+  },
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.921,
+    "COUPLING": 0.868,
+    "SPACE": 0.832
+  },
+  "tags": [
+    "aether",
+    "violent",
+    "transcendence",
+    "aggression-xhigh",
+    "movement-xhigh"
+  ]
+}

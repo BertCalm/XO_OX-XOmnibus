@@ -1,0 +1,48 @@
+{
+  "name": "OPEN CIRCLE",
+  "version": "1.0",
+  "mood": "Family",
+  "engines": [
+    "OBLONG",
+    "ORCA"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.08,
+      "macro_movement": 0.04,
+      "macro_coupling": 0.432,
+      "macro_space": 0.322
+    },
+    "ORCA": {
+      "macro_character": 0.25,
+      "macro_movement": 0.091,
+      "macro_coupling": 0.962,
+      "macro_space": 0.836
+    }
+  },
+  "coupling": {
+    "type": "AMP_COUPLE",
+    "source": "OBLONG",
+    "target": "ORCA",
+    "amount": 0.645
+  },
+  "dna": {
+    "brightness": 0.824,
+    "warmth": 0.921,
+    "movement": 0.439,
+    "density": 0.067,
+    "space": 0.924,
+    "aggression": 0.403
+  },
+  "macros": {
+    "CHARACTER": 0.951,
+    "MOVEMENT": 1.0,
+    "COUPLING": 0.672,
+    "SPACE": 0.27
+  },
+  "tags": [
+    "family",
+    "sparse",
+    "xlow-density"
+  ]
+}

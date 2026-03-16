@@ -1,0 +1,48 @@
+{
+  "name": "RAVEN SPECTRUM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OBLIQUE",
+    "OHM"
+  ],
+  "parameters": {
+    "OBLIQUE": {
+      "macro_character": 0.359,
+      "macro_movement": 0.052,
+      "macro_coupling": 0.048,
+      "macro_space": 0.106
+    },
+    "OHM": {
+      "macro_character": 0.401,
+      "macro_movement": 0.725,
+      "macro_coupling": 0.815,
+      "macro_space": 0.476
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OBLIQUE",
+    "target": "OHM",
+    "amount": 0.621
+  },
+  "dna": {
+    "brightness": 0.075,
+    "warmth": 0.771,
+    "movement": 0.044,
+    "density": 0.14,
+    "space": 0.12,
+    "aggression": 0.629
+  },
+  "macros": {
+    "CHARACTER": 0.06,
+    "MOVEMENT": 0.554,
+    "COUPLING": 0.206,
+    "SPACE": 0.489
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "spectrum"
+  ]
+}

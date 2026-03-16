@@ -1,0 +1,49 @@
+{
+  "name": "BLAZE LATTICE",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OTTONI",
+    "OMBRE"
+  ],
+  "parameters": {
+    "OTTONI": {
+      "macro_character": 0.171,
+      "macro_movement": 0.581,
+      "macro_coupling": 0.9,
+      "macro_space": 0.281
+    },
+    "OMBRE": {
+      "macro_character": 0.372,
+      "macro_movement": 0.099,
+      "macro_coupling": 0.844,
+      "macro_space": 0.939
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OTTONI",
+    "target": "OMBRE",
+    "amount": 0.411
+  },
+  "dna": {
+    "brightness": 0.716,
+    "warmth": 0.897,
+    "movement": 0.794,
+    "density": 0.198,
+    "space": 0.996,
+    "aggression": 0.978
+  },
+  "macros": {
+    "CHARACTER": 0.517,
+    "MOVEMENT": 0.609,
+    "COUPLING": 0.677,
+    "SPACE": 0.16
+  },
+  "tags": [
+    "prism",
+    "warm",
+    "spectrum",
+    "fire"
+  ]
+}

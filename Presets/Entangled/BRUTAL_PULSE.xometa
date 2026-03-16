@@ -1,0 +1,49 @@
+{
+  "name": "BRUTAL PULSE",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORACLE",
+    "OVERDUB"
+  ],
+  "parameters": {
+    "ORACLE": {
+      "macro_character": 0.388,
+      "macro_movement": 0.316,
+      "macro_coupling": 0.206,
+      "macro_space": 0.25
+    },
+    "OVERDUB": {
+      "macro_character": 0.459,
+      "macro_movement": 0.544,
+      "macro_coupling": 0.426,
+      "macro_space": 0.121
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "ORACLE",
+    "target": "OVERDUB",
+    "amount": 0.465
+  },
+  "dna": {
+    "brightness": 0.669,
+    "warmth": 0.954,
+    "movement": 0.353,
+    "density": 0.021,
+    "space": 0.347,
+    "aggression": 0.956
+  },
+  "macros": {
+    "CHARACTER": 0.174,
+    "MOVEMENT": 0.578,
+    "COUPLING": 0.36,
+    "SPACE": 0.408
+  },
+  "tags": [
+    "aggressive",
+    "obliterating",
+    "entangled",
+    "fury"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "WRATHFUL COSMIC SURGE",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OSPREY",
+    "ORIGAMI"
+  ],
+  "parameters": {
+    "OSPREY": {
+      "macro_character": 0.709,
+      "macro_movement": 0.967,
+      "macro_coupling": 0.115,
+      "macro_space": 0.833
+    },
+    "ORIGAMI": {
+      "macro_character": 0.325,
+      "macro_movement": 1.005,
+      "macro_coupling": 0.618,
+      "macro_space": 0.882
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OSPREY",
+    "target": "ORIGAMI",
+    "amount": 0.944
+  },
+  "dna": {
+    "brightness": 0.042,
+    "warmth": 0.019,
+    "movement": 0.975,
+    "density": 0.921,
+    "space": 0.862,
+    "aggression": 0.888
+  },
+  "macros": {
+    "CHARACTER": 0.088,
+    "MOVEMENT": 0.975,
+    "COUPLING": 0.844,
+    "SPACE": 0.862
+  },
+  "tags": [
+    "aether",
+    "violent",
+    "transcendence",
+    "aggression-xhigh",
+    "movement-xhigh"
+  ]
+}

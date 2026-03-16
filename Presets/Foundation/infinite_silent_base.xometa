@@ -1,0 +1,49 @@
+{
+  "name": "INFINITE SILENT BASE",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OVERDUB",
+    "OVERBITE"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.026,
+      "macro_movement": 0.149,
+      "macro_coupling": 0.677,
+      "macro_space": 0.996
+    },
+    "OVERBITE": {
+      "macro_character": 0.397,
+      "macro_movement": 0.19,
+      "macro_coupling": 0.076,
+      "macro_space": 0.98
+    }
+  },
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OVERDUB",
+    "target": "OVERBITE",
+    "amount": 0.739
+  },
+  "dna": {
+    "brightness": 0.607,
+    "warmth": 0.748,
+    "movement": 0.168,
+    "density": 0.115,
+    "space": 0.969,
+    "aggression": 0.819
+  },
+  "macros": {
+    "CHARACTER": 0.102,
+    "MOVEMENT": 0.168,
+    "COUPLING": 0.772,
+    "SPACE": 0.969
+  },
+  "tags": [
+    "foundation",
+    "vast",
+    "open",
+    "space-xhigh"
+  ]
+}

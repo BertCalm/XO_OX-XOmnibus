@@ -1,0 +1,49 @@
+{
+  "name": "DEVASTATOR",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ODYSSEY",
+    "OBLONG"
+  ],
+  "parameters": {
+    "ODYSSEY": {
+      "macro_character": 0.291,
+      "macro_movement": 0.141,
+      "macro_coupling": 0.824,
+      "macro_space": 0.281
+    },
+    "OBLONG": {
+      "macro_character": 0.286,
+      "macro_movement": 0.18,
+      "macro_coupling": 0.364,
+      "macro_space": 0.478
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "ODYSSEY",
+    "target": "OBLONG",
+    "amount": 0.711
+  },
+  "dna": {
+    "brightness": 0.271,
+    "warmth": 0.762,
+    "movement": 0.093,
+    "density": 0.034,
+    "space": 0.693,
+    "aggression": 0.926
+  },
+  "macros": {
+    "CHARACTER": 0.21,
+    "MOVEMENT": 0.872,
+    "COUPLING": 0.882,
+    "SPACE": 0.226
+  },
+  "tags": [
+    "violent",
+    "obliterating",
+    "entangled",
+    "brutal"
+  ]
+}

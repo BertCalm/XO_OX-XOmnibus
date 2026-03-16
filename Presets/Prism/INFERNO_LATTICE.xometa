@@ -1,0 +1,49 @@
+{
+  "name": "INFERNO LATTICE",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ODDOSCAR",
+    "OCELOT"
+  ],
+  "parameters": {
+    "ODDOSCAR": {
+      "macro_character": 0.801,
+      "macro_movement": 0.397,
+      "macro_coupling": 0.902,
+      "macro_space": 0.491
+    },
+    "OCELOT": {
+      "macro_character": 0.11,
+      "macro_movement": 0.296,
+      "macro_coupling": 0.94,
+      "macro_space": 0.643
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ODDOSCAR",
+    "target": "OCELOT",
+    "amount": 0.733
+  },
+  "dna": {
+    "brightness": 0.844,
+    "warmth": 0.903,
+    "movement": 0.676,
+    "density": 0.985,
+    "space": 0.05,
+    "aggression": 0.873
+  },
+  "macros": {
+    "CHARACTER": 0.625,
+    "MOVEMENT": 0.779,
+    "COUPLING": 0.935,
+    "SPACE": 0.77
+  },
+  "tags": [
+    "prism",
+    "warm",
+    "spectrum",
+    "fire"
+  ]
+}

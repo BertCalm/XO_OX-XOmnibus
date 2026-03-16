@@ -1,0 +1,49 @@
+{
+  "name": "GOSSAMER KNOT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "ORIGAMI",
+    "OVERDUB"
+  ],
+  "parameters": {
+    "ORIGAMI": {
+      "macro_character": 0.604,
+      "macro_movement": 0.739,
+      "macro_coupling": 0.668,
+      "macro_space": 0.349
+    },
+    "OVERDUB": {
+      "macro_character": 0.111,
+      "macro_movement": 0.426,
+      "macro_coupling": 0.28,
+      "macro_space": 0.773
+    }
+  },
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ORIGAMI",
+    "target": "OVERDUB",
+    "amount": 0.285
+  },
+  "dna": {
+    "brightness": 0.454,
+    "warmth": 0.141,
+    "movement": 0.037,
+    "density": 0.135,
+    "space": 0.024,
+    "aggression": 0.073
+  },
+  "macros": {
+    "CHARACTER": 0.858,
+    "MOVEMENT": 0.618,
+    "COUPLING": 0.223,
+    "SPACE": 0.846
+  },
+  "tags": [
+    "calm",
+    "yielding",
+    "entangled",
+    "gentle"
+  ]
+}

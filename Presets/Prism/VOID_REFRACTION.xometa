@@ -1,0 +1,48 @@
+{
+  "name": "VOID REFRACTION",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "OVERDUB",
+    "OVERLAP"
+  ],
+  "parameters": {
+    "OVERDUB": {
+      "macro_character": 0.844,
+      "macro_movement": 0.638,
+      "macro_coupling": 0.001,
+      "macro_space": 0.069
+    },
+    "OVERLAP": {
+      "macro_character": 0.046,
+      "macro_movement": 0.759,
+      "macro_coupling": 0.088,
+      "macro_space": 0.223
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OVERDUB",
+    "target": "OVERLAP",
+    "amount": 0.574
+  },
+  "dna": {
+    "brightness": 0.106,
+    "warmth": 0.679,
+    "movement": 0.869,
+    "density": 0.658,
+    "space": 0.875,
+    "aggression": 0.271
+  },
+  "macros": {
+    "CHARACTER": 0.515,
+    "MOVEMENT": 0.556,
+    "COUPLING": 0.503,
+    "SPACE": 0.287
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "spectrum"
+  ]
+}

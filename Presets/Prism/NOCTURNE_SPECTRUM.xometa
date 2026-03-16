@@ -1,0 +1,48 @@
+{
+  "name": "NOCTURNE SPECTRUM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ORBITAL",
+    "ORACLE"
+  ],
+  "parameters": {
+    "ORBITAL": {
+      "macro_character": 0.311,
+      "macro_movement": 0.148,
+      "macro_coupling": 0.929,
+      "macro_space": 0.643
+    },
+    "ORACLE": {
+      "macro_character": 0.538,
+      "macro_movement": 0.526,
+      "macro_coupling": 0.551,
+      "macro_space": 0.75
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ORBITAL",
+    "target": "ORACLE",
+    "amount": 0.468
+  },
+  "dna": {
+    "brightness": 0.064,
+    "warmth": 0.188,
+    "movement": 0.893,
+    "density": 0.691,
+    "space": 0.036,
+    "aggression": 0.999
+  },
+  "macros": {
+    "CHARACTER": 0.98,
+    "MOVEMENT": 0.166,
+    "COUPLING": 0.408,
+    "SPACE": 0.464
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "spectrum"
+  ]
+}

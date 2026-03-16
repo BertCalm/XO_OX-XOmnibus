@@ -1,0 +1,49 @@
+{
+  "name": "AGGRESSIVE STAR COLLAPSE",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OWLFISH",
+    "OSTERIA"
+  ],
+  "parameters": {
+    "OWLFISH": {
+      "macro_character": 0.657,
+      "macro_movement": 0.83,
+      "macro_coupling": 0.873,
+      "macro_space": 0.668
+    },
+    "OSTERIA": {
+      "macro_character": 0.583,
+      "macro_movement": 0.753,
+      "macro_coupling": 0.35,
+      "macro_space": 0.706
+    }
+  },
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OWLFISH",
+    "target": "OSTERIA",
+    "amount": 0.789
+  },
+  "dna": {
+    "brightness": 0.647,
+    "warmth": 0.066,
+    "movement": 0.789,
+    "density": 0.095,
+    "space": 0.678,
+    "aggression": 0.946
+  },
+  "macros": {
+    "CHARACTER": 0.392,
+    "MOVEMENT": 0.789,
+    "COUPLING": 0.595,
+    "SPACE": 0.678
+  },
+  "tags": [
+    "aether",
+    "violent",
+    "transcendence",
+    "aggression-xhigh"
+  ]
+}

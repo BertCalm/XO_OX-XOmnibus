@@ -1,0 +1,49 @@
+{
+  "name": "ENDLESS OPEN PLAIN",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OUROBOROS",
+    "OBESE"
+  ],
+  "parameters": {
+    "OUROBOROS": {
+      "macro_character": 0.901,
+      "macro_movement": 0.096,
+      "macro_coupling": 0.17,
+      "macro_space": 0.912
+    },
+    "OBESE": {
+      "macro_character": 0.515,
+      "macro_movement": 0.079,
+      "macro_coupling": 0.335,
+      "macro_space": 0.956
+    }
+  },
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OUROBOROS",
+    "target": "OBESE",
+    "amount": 0.826
+  },
+  "dna": {
+    "brightness": 0.304,
+    "warmth": 0.21,
+    "movement": 0.066,
+    "density": 0.786,
+    "space": 0.937,
+    "aggression": 0.607
+  },
+  "macros": {
+    "CHARACTER": 0.673,
+    "MOVEMENT": 0.066,
+    "COUPLING": 0.225,
+    "SPACE": 0.937
+  },
+  "tags": [
+    "foundation",
+    "vast",
+    "open",
+    "space-xhigh"
+  ]
+}

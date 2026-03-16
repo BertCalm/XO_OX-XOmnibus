@@ -1,0 +1,50 @@
+{
+  "name": "VAST OPEN BASE",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "OPAL",
+    "OCELOT"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.051,
+      "macro_movement": 0.916,
+      "macro_coupling": 0.829,
+      "macro_space": 0.898
+    },
+    "OCELOT": {
+      "macro_character": 0.334,
+      "macro_movement": 0.866,
+      "macro_coupling": 0.98,
+      "macro_space": 0.905
+    }
+  },
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OPAL",
+    "target": "OCELOT",
+    "amount": 0.609
+  },
+  "dna": {
+    "brightness": 0.343,
+    "warmth": 0.687,
+    "movement": 0.903,
+    "density": 0.853,
+    "space": 0.925,
+    "aggression": 0.505
+  },
+  "macros": {
+    "CHARACTER": 0.706,
+    "MOVEMENT": 0.903,
+    "COUPLING": 0.561,
+    "SPACE": 0.925
+  },
+  "tags": [
+    "foundation",
+    "vast",
+    "open",
+    "space-xhigh",
+    "movement-xhigh"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "THERMAL BIND",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OVERWORLD",
+    "ORCA"
+  ],
+  "parameters": {
+    "OVERWORLD": {
+      "macro_character": 0.686,
+      "macro_movement": 0.923,
+      "macro_coupling": 0.888,
+      "macro_space": 0.77
+    },
+    "ORCA": {
+      "macro_character": 0.69,
+      "macro_movement": 0.639,
+      "macro_coupling": 0.941,
+      "macro_space": 0.368
+    }
+  },
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OVERWORLD",
+    "target": "ORCA",
+    "amount": 0.433
+  },
+  "dna": {
+    "brightness": 0.041,
+    "warmth": 0.91,
+    "movement": 0.109,
+    "density": 0.623,
+    "space": 0.654,
+    "aggression": 0.15
+  },
+  "macros": {
+    "CHARACTER": 0.957,
+    "MOVEMENT": 0.478,
+    "COUPLING": 0.455,
+    "SPACE": 0.989
+  },
+  "tags": [
+    "entangled",
+    "hot",
+    "molten",
+    "furnace"
+  ]
+}

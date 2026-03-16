@@ -1,0 +1,49 @@
+{
+  "name": "MASSACRE KNOT",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OBLONG",
+    "OVERWORLD"
+  ],
+  "parameters": {
+    "OBLONG": {
+      "macro_character": 0.847,
+      "macro_movement": 0.83,
+      "macro_coupling": 0.627,
+      "macro_space": 0.113
+    },
+    "OVERWORLD": {
+      "macro_character": 0.526,
+      "macro_movement": 0.429,
+      "macro_coupling": 0.113,
+      "macro_space": 0.678
+    }
+  },
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBLONG",
+    "target": "OVERWORLD",
+    "amount": 0.602
+  },
+  "dna": {
+    "brightness": 0.154,
+    "warmth": 0.048,
+    "movement": 0.465,
+    "density": 0.148,
+    "space": 0.61,
+    "aggression": 0.907
+  },
+  "macros": {
+    "CHARACTER": 0.329,
+    "MOVEMENT": 0.502,
+    "COUPLING": 0.658,
+    "SPACE": 0.444
+  },
+  "tags": [
+    "entangled",
+    "fury",
+    "chaos",
+    "aggressive"
+  ]
+}

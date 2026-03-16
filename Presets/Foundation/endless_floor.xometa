@@ -1,0 +1,50 @@
+{
+  "name": "ENDLESS FLOOR",
+  "version": "1.0",
+  "mood": "Foundation",
+  "engines": [
+    "ONSET",
+    "ORCA"
+  ],
+  "parameters": {
+    "ONSET": {
+      "macro_character": 0.243,
+      "macro_movement": 0.934,
+      "macro_coupling": 0.407,
+      "macro_space": 0.906
+    },
+    "ORCA": {
+      "macro_character": 0.659,
+      "macro_movement": 0.922,
+      "macro_coupling": 0.411,
+      "macro_space": 0.952
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ONSET",
+    "target": "ORCA",
+    "amount": 0.338
+  },
+  "dna": {
+    "brightness": 0.278,
+    "warmth": 0.485,
+    "movement": 0.937,
+    "density": 0.539,
+    "space": 0.93,
+    "aggression": 0.723
+  },
+  "macros": {
+    "CHARACTER": 0.653,
+    "MOVEMENT": 0.937,
+    "COUPLING": 0.646,
+    "SPACE": 0.93
+  },
+  "tags": [
+    "foundation",
+    "vast",
+    "open",
+    "space-xhigh",
+    "movement-xhigh"
+  ]
+}

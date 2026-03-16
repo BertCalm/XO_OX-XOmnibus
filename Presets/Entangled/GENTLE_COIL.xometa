@@ -1,0 +1,49 @@
+{
+  "name": "GENTLE COIL",
+  "version": "1.0",
+  "mood": "Entangled",
+  "engines": [
+    "OPAL",
+    "OWLFISH"
+  ],
+  "parameters": {
+    "OPAL": {
+      "macro_character": 0.394,
+      "macro_movement": 0.71,
+      "macro_coupling": 0.559,
+      "macro_space": 0.746
+    },
+    "OWLFISH": {
+      "macro_character": 0.776,
+      "macro_movement": 0.88,
+      "macro_coupling": 0.755,
+      "macro_space": 0.591
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OPAL",
+    "target": "OWLFISH",
+    "amount": 0.682
+  },
+  "dna": {
+    "brightness": 0.381,
+    "warmth": 0.562,
+    "movement": 0.105,
+    "density": 0.279,
+    "space": 0.13,
+    "aggression": 0.095
+  },
+  "macros": {
+    "CHARACTER": 0.121,
+    "MOVEMENT": 0.843,
+    "COUPLING": 0.764,
+    "SPACE": 0.314
+  },
+  "tags": [
+    "quiet",
+    "calm",
+    "delicate",
+    "entangled"
+  ]
+}

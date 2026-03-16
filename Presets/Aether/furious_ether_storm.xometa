@@ -1,0 +1,49 @@
+{
+  "name": "FURIOUS ETHER STORM",
+  "version": "1.0",
+  "mood": "Aether",
+  "engines": [
+    "OCTOPUS",
+    "OWLFISH"
+  ],
+  "parameters": {
+    "OCTOPUS": {
+      "macro_character": 0.693,
+      "macro_movement": 0.539,
+      "macro_coupling": 0.903,
+      "macro_space": 0.61
+    },
+    "OWLFISH": {
+      "macro_character": 0.044,
+      "macro_movement": 0.513,
+      "macro_coupling": 0.72,
+      "macro_space": 0.625
+    }
+  },
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OCTOPUS",
+    "target": "OWLFISH",
+    "amount": 0.727
+  },
+  "dna": {
+    "brightness": 0.662,
+    "warmth": 0.876,
+    "movement": 0.527,
+    "density": 0.618,
+    "space": 0.597,
+    "aggression": 0.961
+  },
+  "macros": {
+    "CHARACTER": 0.752,
+    "MOVEMENT": 0.527,
+    "COUPLING": 0.784,
+    "SPACE": 0.597
+  },
+  "tags": [
+    "aether",
+    "violent",
+    "transcendence",
+    "aggression-xhigh"
+  ]
+}

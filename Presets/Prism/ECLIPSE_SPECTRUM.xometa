@@ -1,0 +1,48 @@
+{
+  "name": "ECLIPSE SPECTRUM",
+  "version": "1.0",
+  "mood": "Prism",
+  "engines": [
+    "ONSET",
+    "OBESE"
+  ],
+  "parameters": {
+    "ONSET": {
+      "macro_character": 0.742,
+      "macro_movement": 0.092,
+      "macro_coupling": 0.556,
+      "macro_space": 0.575
+    },
+    "OBESE": {
+      "macro_character": 0.423,
+      "macro_movement": 0.961,
+      "macro_coupling": 0.976,
+      "macro_space": 0.075
+    }
+  },
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ONSET",
+    "target": "OBESE",
+    "amount": 0.895
+  },
+  "dna": {
+    "brightness": 0.072,
+    "warmth": 0.601,
+    "movement": 0.971,
+    "density": 0.983,
+    "space": 0.198,
+    "aggression": 0.753
+  },
+  "macros": {
+    "CHARACTER": 0.425,
+    "MOVEMENT": 0.937,
+    "COUPLING": 0.433,
+    "SPACE": 0.83
+  },
+  "tags": [
+    "prism",
+    "dark",
+    "spectrum"
+  ]
+}
