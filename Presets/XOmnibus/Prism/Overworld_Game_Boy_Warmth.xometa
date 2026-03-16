@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Game Boy Warmth",
+  "mood": "Prism",
+  "engines": ["OVERWORLD"],
+  "author": "Guru Bin — OVERWORLD Deepening 2026-03-16",
+  "version": "1.0.0",
+  "description": "OW-I: Game Boy is the warmest unvisited console. DMG chip character at ERA midpoint — not deep NES purity, not FM metal, not SNES echo. The in-between warmth. eraMemory 4.2s lets the harmonic ghost accumulate like battery static. eraDrift breathes at 0.067Hz. filterEnvDepth 0.7 — velocity feels like battery level.",
+  "tags": ["game-boy", "dmg", "warm", "prism", "lo-fi", "unvisited", "battery"],
+  "macroLabels": ["CHARACTER", "GLITCH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.77,
+    "movement": 0.43,
+    "density": 0.56,
+    "space": 0.61,
+    "aggression": 0.22
+  },
+  "sonic_dna": {
+    "brightness": 0.48,
+    "warmth": 0.77,
+    "movement": 0.43,
+    "density": 0.56,
+    "space": 0.61,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "OVERWORLD": {
+      "ow_era": 0.45,
+      "ow_eraY": 0.33,
+      "ow_eraMemory": 4.2,
+      "ow_eraPortamento": 0.65,
+      "ow_eraDrift": 0.067,
+      "ow_filterCutoff": 0.52,
+      "ow_filterEnvDepth": 0.70,
+      "ow_glitch": 0.11,
+      "ow_fmLfoRate": 0.22,
+      "ow_fmLfoDepth": 0.0,
+      "ow_macro_era": 0.45,
+      "ow_macro_chaos": 0.11,
+      "ow_macro_couple": 0.04,
+      "ow_macro_space": 0.66,
+      "ow_outputLevel": 0.79,
+      "ow_couplingLevel": 0.04,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

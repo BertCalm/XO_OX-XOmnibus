@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Triangle Ghost",
+  "mood": "Atmosphere",
+  "engines": ["OVERWORLD"],
+  "author": "Guru Bin — OVERWORLD Deepening 2026-03-16",
+  "version": "1.0.0",
+  "description": "NES 2A03 pure triangle held long — the ghost note after the note ends. eraMemory 5.0s at maximum, the harmonic echo of a chip song played in an empty room. Low filterCutoff softens the square edges into atmosphere. eraDrift breathes at 0.067Hz so it never fully settles. Velocity barely reaches through (filterEnvDepth 0.63) — light touches only.",
+  "tags": ["triangle", "ghost", "nes", "atmosphere", "ambient", "long", "memory"],
+  "macroLabels": ["CHARACTER", "GLITCH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.34,
+    "warmth": 0.65,
+    "movement": 0.28,
+    "density": 0.42,
+    "space": 0.86,
+    "aggression": 0.09
+  },
+  "sonic_dna": {
+    "brightness": 0.34,
+    "warmth": 0.65,
+    "movement": 0.28,
+    "density": 0.42,
+    "space": 0.86,
+    "aggression": 0.09
+  },
+  "parameters": {
+    "OVERWORLD": {
+      "ow_era": 0.05,
+      "ow_eraY": 0.03,
+      "ow_eraMemory": 5.0,
+      "ow_eraPortamento": 0.8,
+      "ow_eraDrift": 0.067,
+      "ow_filterCutoff": 0.38,
+      "ow_filterEnvDepth": 0.63,
+      "ow_glitch": 0.03,
+      "ow_fmLfoRate": 0.067,
+      "ow_fmLfoDepth": 0.0,
+      "ow_macro_era": 0.05,
+      "ow_macro_chaos": 0.03,
+      "ow_macro_couple": 0.06,
+      "ow_macro_space": 0.88,
+      "ow_outputLevel": 0.72,
+      "ow_couplingLevel": 0.06,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

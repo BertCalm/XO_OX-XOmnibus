@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "SNES Warm FIR",
+  "mood": "Atmosphere",
+  "engines": ["OVERWORLD"],
+  "author": "Guru Bin — OVERWORLD Deepening 2026-03-16",
+  "version": "1.0.0",
+  "description": "OW-II doctrine applied: SNES SPC700 at Vertex 2 with warm echo FIR [80,30,15,8,3,0,0,0] — not the flat default [127,0,0,0,0,0,0,0]. eraMemory 4.5s holds the warm tail. eraPortamento 1.1s — the console exhales slowly. Low glitch (0.05) — one artifact every now and then, like a VHS warp. This is the sound of a console left running all night.",
+  "tags": ["snes", "spc700", "warm-fir", "atmosphere", "ambient", "echo", "overnight"],
+  "macroLabels": ["CHARACTER", "GLITCH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.41,
+    "warmth": 0.88,
+    "movement": 0.35,
+    "density": 0.61,
+    "space": 0.92,
+    "aggression": 0.07
+  },
+  "sonic_dna": {
+    "brightness": 0.41,
+    "warmth": 0.88,
+    "movement": 0.35,
+    "density": 0.61,
+    "space": 0.92,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "OVERWORLD": {
+      "ow_era": 0.09,
+      "ow_eraY": 0.82,
+      "ow_eraMemory": 4.5,
+      "ow_eraPortamento": 1.1,
+      "ow_eraDrift": 0.067,
+      "ow_filterCutoff": 0.45,
+      "ow_filterEnvDepth": 0.66,
+      "ow_glitch": 0.05,
+      "ow_fmLfoRate": 0.1,
+      "ow_fmLfoDepth": 0.0,
+      "ow_macro_era": 0.09,
+      "ow_macro_chaos": 0.05,
+      "ow_macro_couple": 0.05,
+      "ow_macro_space": 0.91,
+      "ow_outputLevel": 0.76,
+      "ow_couplingLevel": 0.05,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "PC Engine Strike",
+  "mood": "Prism",
+  "engines": ["OVERWORLD"],
+  "author": "Guru Bin — OVERWORLD Deepening 2026-03-16",
+  "version": "1.0.0",
+  "description": "OW-I Unvisited Console: PC Engine (Vertex 3, HuC6280 wavetable) hits hardest. ERA positioned deep in the triangle corner away from NES/Genesis/SNES — the chip road not taken. filterEnvDepth 0.78 (OW-III velocity contract fully honored). Each velocity level is a different weapon.",
+  "tags": ["pc-engine", "huc6280", "wavetable", "prism", "strike", "unvisited", "velocity"],
+  "macroLabels": ["CHARACTER", "GLITCH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.89,
+    "warmth": 0.18,
+    "movement": 0.54,
+    "density": 0.63,
+    "space": 0.38,
+    "aggression": 0.77
+  },
+  "sonic_dna": {
+    "brightness": 0.89,
+    "warmth": 0.18,
+    "movement": 0.54,
+    "density": 0.63,
+    "space": 0.38,
+    "aggression": 0.77
+  },
+  "parameters": {
+    "OVERWORLD": {
+      "ow_era": 0.5,
+      "ow_eraY": 0.5,
+      "ow_eraMemory": 0.6,
+      "ow_eraPortamento": 0.55,
+      "ow_eraDrift": 0.067,
+      "ow_filterCutoff": 0.86,
+      "ow_filterEnvDepth": 0.78,
+      "ow_glitch": 0.31,
+      "ow_fmLfoRate": 0.8,
+      "ow_fmLfoDepth": 0.0,
+      "ow_macro_era": 0.5,
+      "ow_macro_chaos": 0.31,
+      "ow_macro_couple": 0.05,
+      "ow_macro_space": 0.44,
+      "ow_outputLevel": 0.9,
+      "ow_couplingLevel": 0.05,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

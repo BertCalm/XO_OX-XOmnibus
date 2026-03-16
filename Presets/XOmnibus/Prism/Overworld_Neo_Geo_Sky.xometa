@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Neo Geo Sky",
+  "mood": "Prism",
+  "engines": ["OVERWORLD"],
+  "author": "Guru Bin — OVERWORLD Deepening 2026-03-16",
+  "version": "1.0.0",
+  "description": "OW-I: Neo Geo has the widest sky. ERA at maximum X+Y reach — the far corner of the triangle where the big cartridge breathes. eraPortamento 1.5s (maximum living creature). eraDrift 0.067Hz. OW-IV Living FM at depth 18 — subtle DX vintage shimmer under the wide open space. filterEnvDepth 0.62 keeps the sky bright on hard strikes.",
+  "tags": ["neo-geo", "wide", "sky", "prism", "expansive", "unvisited", "living"],
+  "macroLabels": ["CHARACTER", "GLITCH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.44,
+    "movement": 0.58,
+    "density": 0.45,
+    "space": 0.91,
+    "aggression": 0.31
+  },
+  "sonic_dna": {
+    "brightness": 0.72,
+    "warmth": 0.44,
+    "movement": 0.58,
+    "density": 0.45,
+    "space": 0.91,
+    "aggression": 0.31
+  },
+  "parameters": {
+    "OVERWORLD": {
+      "ow_era": 0.78,
+      "ow_eraY": 0.74,
+      "ow_eraMemory": 3.1,
+      "ow_eraPortamento": 1.5,
+      "ow_eraDrift": 0.067,
+      "ow_filterCutoff": 0.71,
+      "ow_filterEnvDepth": 0.62,
+      "ow_glitch": 0.09,
+      "ow_fmLfoRate": 1.0,
+      "ow_fmLfoDepth": 18.0,
+      "ow_macro_era": 0.78,
+      "ow_macro_chaos": 0.09,
+      "ow_macro_couple": 0.07,
+      "ow_macro_space": 0.93,
+      "ow_outputLevel": 0.81,
+      "ow_couplingLevel": 0.07,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

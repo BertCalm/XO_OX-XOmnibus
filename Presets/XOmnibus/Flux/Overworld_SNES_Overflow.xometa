@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "SNES Overflow",
+  "mood": "Flux",
+  "engines": ["OVERWORLD"],
+  "author": "Guru Bin — OVERWORLD Deepening 2026-03-16",
+  "version": "1.0.0",
+  "description": "SPC700 warmth overflows its vessel. OW-II SNES FIR doctrine: warm echo coefficients [80,30,15,8,3,0,0,0] applied via eraMemory 3.8s harmonic ghost. Vertex 2 dominant — the console breathes. eraPortamento 0.9s, eraDrift at the canonical 0.067Hz. Not aggressive. Just overflowing.",
+  "tags": ["snes", "spc700", "warm", "echo", "overflow", "flux", "ghost"],
+  "macroLabels": ["CHARACTER", "GLITCH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.82,
+    "movement": 0.61,
+    "density": 0.74,
+    "space": 0.78,
+    "aggression": 0.29
+  },
+  "sonic_dna": {
+    "brightness": 0.52,
+    "warmth": 0.82,
+    "movement": 0.61,
+    "density": 0.74,
+    "space": 0.78,
+    "aggression": 0.29
+  },
+  "parameters": {
+    "OVERWORLD": {
+      "ow_era": 0.11,
+      "ow_eraY": 0.89,
+      "ow_eraMemory": 3.8,
+      "ow_eraPortamento": 0.9,
+      "ow_eraDrift": 0.067,
+      "ow_filterCutoff": 0.58,
+      "ow_filterEnvDepth": 0.68,
+      "ow_glitch": 0.07,
+      "ow_fmLfoRate": 0.4,
+      "ow_fmLfoDepth": 0.0,
+      "ow_macro_era": 0.11,
+      "ow_macro_chaos": 0.07,
+      "ow_macro_couple": 0.08,
+      "ow_macro_space": 0.84,
+      "ow_outputLevel": 0.82,
+      "ow_couplingLevel": 0.08,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}
