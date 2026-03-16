@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "WARM DENSE STILL INTIMATE AET 3",
+  "mood": "Aether",
+  "engines": [
+    "OSTERIA",
+    "OMBRE"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 aether, warm, still, dense.",
+  "tags": [
+    "aether",
+    "warm",
+    "still",
+    "dense",
+    "intimate",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.455,
+    "warmth": 0.949,
+    "movement": 0.06,
+    "density": 0.912,
+    "space": 0.058,
+    "aggression": 0.413
+  },
+  "parameters": {
+    "OSTERIA": {
+      "level": 0.732,
+      "pan": 0.119
+    },
+    "OMBRE": {
+      "level": 0.805,
+      "pan": -0.026
+    }
+  },
+  "coupling": [
+    {
+      "source": "OSTERIA",
+      "destination": "OMBRE",
+      "type": "SPECTRAL_MORPH",
+      "amount": 0.307
+    }
+  ],
+  "sequencer": null
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "WARM DENSE STILL INTIMATE AET 4",
+  "mood": "Aether",
+  "engines": [
+    "OWLFISH",
+    "ORCA"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 aether, warm, still, dense.",
+  "tags": [
+    "aether",
+    "warm",
+    "still",
+    "dense",
+    "intimate",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.419,
+    "warmth": 0.892,
+    "movement": 0.049,
+    "density": 0.938,
+    "space": 0.08,
+    "aggression": 0.587
+  },
+  "parameters": {
+    "OWLFISH": {
+      "level": 0.72,
+      "pan": 0.084
+    },
+    "ORCA": {
+      "level": 0.771,
+      "pan": 0.046
+    }
+  },
+  "coupling": [
+    {
+      "source": "OWLFISH",
+      "destination": "ORCA",
+      "type": "VELOCITY_COUPLE",
+      "amount": 0.577
+    }
+  ],
+  "sequencer": null
+}

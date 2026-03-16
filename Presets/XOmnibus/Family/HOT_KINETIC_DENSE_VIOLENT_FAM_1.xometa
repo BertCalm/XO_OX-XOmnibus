@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "HOT KINETIC DENSE VIOLENT FAM 1",
+  "mood": "Family",
+  "engines": [
+    "OBBLIGATO",
+    "OUTWIT"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 family, warm, kinetic, dense.",
+  "tags": [
+    "family",
+    "warm",
+    "kinetic",
+    "dense",
+    "violent",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.416,
+    "warmth": 0.94,
+    "movement": 0.934,
+    "density": 0.901,
+    "space": 0.434,
+    "aggression": 0.935
+  },
+  "parameters": {
+    "OBBLIGATO": {
+      "level": 0.688,
+      "pan": 0.134
+    },
+    "OUTWIT": {
+      "level": 0.847,
+      "pan": -0.141
+    }
+  },
+  "coupling": [
+    {
+      "source": "OBBLIGATO",
+      "destination": "OUTWIT",
+      "type": "FREQUENCY_SHIFT",
+      "amount": 0.737
+    }
+  ],
+  "sequencer": null
+}

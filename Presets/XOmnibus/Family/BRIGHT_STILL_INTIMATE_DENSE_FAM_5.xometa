@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT STILL INTIMATE DENSE FAM 5",
+  "mood": "Family",
+  "engines": [
+    "OUROBOROS",
+    "OCELOT"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 family, bright, still, dense.",
+  "tags": [
+    "family",
+    "bright",
+    "still",
+    "dense",
+    "intimate",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.936,
+    "warmth": 0.423,
+    "movement": 0.049,
+    "density": 0.933,
+    "space": 0.062,
+    "aggression": 0.482
+  },
+  "parameters": {
+    "OUROBOROS": {
+      "level": 0.7,
+      "pan": -0.017
+    },
+    "OCELOT": {
+      "level": 0.709,
+      "pan": -0.105
+    }
+  },
+  "coupling": [
+    {
+      "source": "OUROBOROS",
+      "destination": "OCELOT",
+      "type": "CHAOS_INJECT",
+      "amount": 0.585
+    }
+  ],
+  "sequencer": null
+}

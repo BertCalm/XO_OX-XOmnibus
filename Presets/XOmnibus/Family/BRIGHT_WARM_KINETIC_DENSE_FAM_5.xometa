@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT WARM KINETIC DENSE FAM 5",
+  "mood": "Family",
+  "engines": [
+    "ORACLE",
+    "OSTERIA"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 family, bright, warm, kinetic.",
+  "tags": [
+    "family",
+    "bright",
+    "warm",
+    "kinetic",
+    "dense",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.949,
+    "warmth": 0.893,
+    "movement": 0.924,
+    "density": 0.892,
+    "space": 0.562,
+    "aggression": 0.451
+  },
+  "parameters": {
+    "ORACLE": {
+      "level": 0.801,
+      "pan": -0.09
+    },
+    "OSTERIA": {
+      "level": 0.705,
+      "pan": 0.103
+    }
+  },
+  "coupling": [
+    {
+      "source": "ORACLE",
+      "destination": "OSTERIA",
+      "type": "AMPLITUDE_MOD",
+      "amount": 0.48
+    }
+  ],
+  "sequencer": null
+}

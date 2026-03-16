@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "DARK COLD DENSE VIOLENT AET 2",
+  "mood": "Aether",
+  "engines": [
+    "ODDOSCAR",
+    "OPAL"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 aether, dark, cold, dense.",
+  "tags": [
+    "aether",
+    "dark",
+    "cold",
+    "dense",
+    "violent",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.094,
+    "warmth": 0.093,
+    "movement": 0.517,
+    "density": 0.907,
+    "space": 0.523,
+    "aggression": 0.898
+  },
+  "parameters": {
+    "ODDOSCAR": {
+      "level": 0.813,
+      "pan": -0.015
+    },
+    "OPAL": {
+      "level": 0.813,
+      "pan": 0.056
+    }
+  },
+  "coupling": [
+    {
+      "source": "ODDOSCAR",
+      "destination": "OPAL",
+      "type": "AMPLITUDE_MOD",
+      "amount": 0.606
+    }
+  ],
+  "sequencer": null
+}

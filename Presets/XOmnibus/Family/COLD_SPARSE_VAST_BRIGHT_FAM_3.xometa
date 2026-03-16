@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "COLD SPARSE VAST BRIGHT FAM 3",
+  "mood": "Family",
+  "engines": [
+    "OUTWIT",
+    "ONSET"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 family, bright, cold, sparse.",
+  "tags": [
+    "family",
+    "bright",
+    "cold",
+    "sparse",
+    "vast",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.944,
+    "warmth": 0.081,
+    "movement": 0.518,
+    "density": 0.074,
+    "space": 0.891,
+    "aggression": 0.589
+  },
+  "parameters": {
+    "OUTWIT": {
+      "level": 0.727,
+      "pan": -0.14
+    },
+    "ONSET": {
+      "level": 0.743,
+      "pan": -0.108
+    }
+  },
+  "coupling": [
+    {
+      "source": "OUTWIT",
+      "destination": "ONSET",
+      "type": "CHAOS_INJECT",
+      "amount": 0.408
+    }
+  ],
+  "sequencer": null
+}

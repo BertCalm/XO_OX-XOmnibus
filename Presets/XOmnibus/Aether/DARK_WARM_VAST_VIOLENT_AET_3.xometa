@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "DARK WARM VAST VIOLENT AET 3",
+  "mood": "Aether",
+  "engines": [
+    "ODYSSEY",
+    "ORGANON"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 aether, dark, warm, vast.",
+  "tags": [
+    "aether",
+    "dark",
+    "warm",
+    "vast",
+    "violent",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.102,
+    "warmth": 0.926,
+    "movement": 0.576,
+    "density": 0.529,
+    "space": 0.89,
+    "aggression": 0.916
+  },
+  "parameters": {
+    "ODYSSEY": {
+      "level": 0.724,
+      "pan": -0.085
+    },
+    "ORGANON": {
+      "level": 0.681,
+      "pan": 0.033
+    }
+  },
+  "coupling": [
+    {
+      "source": "ODYSSEY",
+      "destination": "ORGANON",
+      "type": "AMPLITUDE_MOD",
+      "amount": 0.357
+    }
+  ],
+  "sequencer": null
+}

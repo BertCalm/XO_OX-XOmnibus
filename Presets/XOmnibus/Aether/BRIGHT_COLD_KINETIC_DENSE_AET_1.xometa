@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT COLD KINETIC DENSE AET 1",
+  "mood": "Aether",
+  "engines": [
+    "ORCA",
+    "ODYSSEY"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 aether, bright, cold, kinetic.",
+  "tags": [
+    "aether",
+    "bright",
+    "cold",
+    "kinetic",
+    "dense",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.936,
+    "warmth": 0.041,
+    "movement": 0.958,
+    "density": 0.923,
+    "space": 0.594,
+    "aggression": 0.536
+  },
+  "parameters": {
+    "ORCA": {
+      "level": 0.822,
+      "pan": 0.128
+    },
+    "ODYSSEY": {
+      "level": 0.831,
+      "pan": -0.03
+    }
+  },
+  "coupling": [
+    {
+      "source": "ORCA",
+      "destination": "ODYSSEY",
+      "type": "HARMONIC_FOLD",
+      "amount": 0.739
+    }
+  ],
+  "sequencer": null
+}

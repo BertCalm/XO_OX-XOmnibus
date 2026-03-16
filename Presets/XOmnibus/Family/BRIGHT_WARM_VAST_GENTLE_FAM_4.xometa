@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT WARM VAST GENTLE FAM 4",
+  "mood": "Family",
+  "engines": [
+    "OHM",
+    "OCTOPUS"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 family, bright, warm, vast.",
+  "tags": [
+    "family",
+    "bright",
+    "warm",
+    "vast",
+    "gentle",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.92,
+    "movement": 0.567,
+    "density": 0.434,
+    "space": 0.906,
+    "aggression": 0.108
+  },
+  "parameters": {
+    "OHM": {
+      "level": 0.693,
+      "pan": -0.102
+    },
+    "OCTOPUS": {
+      "level": 0.848,
+      "pan": -0.023
+    }
+  },
+  "coupling": [
+    {
+      "source": "OHM",
+      "destination": "OCTOPUS",
+      "type": "SPECTRAL_MORPH",
+      "amount": 0.49
+    }
+  ],
+  "sequencer": null
+}

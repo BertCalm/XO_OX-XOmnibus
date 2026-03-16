@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT COLD KINETIC DENSE AET 2",
+  "mood": "Aether",
+  "engines": [
+    "OCTOPUS",
+    "OBLONG"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 aether, bright, cold, kinetic.",
+  "tags": [
+    "aether",
+    "bright",
+    "cold",
+    "kinetic",
+    "dense",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.957,
+    "warmth": 0.056,
+    "movement": 0.948,
+    "density": 0.914,
+    "space": 0.44,
+    "aggression": 0.472
+  },
+  "parameters": {
+    "OCTOPUS": {
+      "level": 0.777,
+      "pan": 0.015
+    },
+    "OBLONG": {
+      "level": 0.745,
+      "pan": 0.087
+    }
+  },
+  "coupling": [
+    {
+      "source": "OCTOPUS",
+      "destination": "OBLONG",
+      "type": "CHAOS_INJECT",
+      "amount": 0.561
+    }
+  ],
+  "sequencer": null
+}

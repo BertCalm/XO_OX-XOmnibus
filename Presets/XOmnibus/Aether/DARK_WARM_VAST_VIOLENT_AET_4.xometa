@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "DARK WARM VAST VIOLENT AET 4",
+  "mood": "Aether",
+  "engines": [
+    "OBLONG",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 aether, dark, warm, vast.",
+  "tags": [
+    "aether",
+    "dark",
+    "warm",
+    "vast",
+    "violent",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.109,
+    "warmth": 0.924,
+    "movement": 0.575,
+    "density": 0.545,
+    "space": 0.917,
+    "aggression": 0.933
+  },
+  "parameters": {
+    "OBLONG": {
+      "level": 0.78,
+      "pan": -0.046
+    },
+    "OUROBOROS": {
+      "level": 0.832,
+      "pan": -0.114
+    }
+  },
+  "coupling": [
+    {
+      "source": "OBLONG",
+      "destination": "OUROBOROS",
+      "type": "FILTER_MOD",
+      "amount": 0.534
+    }
+  ],
+  "sequencer": null
+}

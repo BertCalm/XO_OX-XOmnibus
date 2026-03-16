@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "DARK COLD VAST VIOLENT FAM 2",
+  "mood": "Family",
+  "engines": [
+    "OVERWORLD",
+    "ORIGAMI"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 family, dark, cold, vast.",
+  "tags": [
+    "family",
+    "dark",
+    "cold",
+    "vast",
+    "violent",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.064,
+    "warmth": 0.095,
+    "movement": 0.482,
+    "density": 0.561,
+    "space": 0.917,
+    "aggression": 0.901
+  },
+  "parameters": {
+    "OVERWORLD": {
+      "level": 0.799,
+      "pan": 0.047
+    },
+    "ORIGAMI": {
+      "level": 0.676,
+      "pan": -0.07
+    }
+  },
+  "coupling": [
+    {
+      "source": "OVERWORLD",
+      "destination": "ORIGAMI",
+      "type": "ENVELOPE_LINK",
+      "amount": 0.676
+    }
+  ],
+  "sequencer": null
+}

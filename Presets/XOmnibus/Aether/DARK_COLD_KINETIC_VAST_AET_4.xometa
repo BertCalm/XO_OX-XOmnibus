@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "DARK COLD KINETIC VAST AET 4",
+  "mood": "Aether",
+  "engines": [
+    "OLE",
+    "ODDOSCAR"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 aether, dark, cold, kinetic.",
+  "tags": [
+    "aether",
+    "dark",
+    "cold",
+    "kinetic",
+    "vast",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.086,
+    "warmth": 0.105,
+    "movement": 0.938,
+    "density": 0.479,
+    "space": 0.908,
+    "aggression": 0.43
+  },
+  "parameters": {
+    "OLE": {
+      "level": 0.655,
+      "pan": -0.067
+    },
+    "ODDOSCAR": {
+      "level": 0.746,
+      "pan": -0.071
+    }
+  },
+  "coupling": [
+    {
+      "source": "OLE",
+      "destination": "ODDOSCAR",
+      "type": "TIMBRE_BLEND",
+      "amount": 0.442
+    }
+  ],
+  "sequencer": null
+}

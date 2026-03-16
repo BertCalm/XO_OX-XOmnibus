@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT COLD SPARSE GENTLE AET 1",
+  "mood": "Aether",
+  "engines": [
+    "ORACLE",
+    "OSTERIA"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 aether, bright, cold, sparse.",
+  "tags": [
+    "aether",
+    "bright",
+    "cold",
+    "sparse",
+    "gentle",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.93,
+    "warmth": 0.096,
+    "movement": 0.431,
+    "density": 0.076,
+    "space": 0.487,
+    "aggression": 0.064
+  },
+  "parameters": {
+    "ORACLE": {
+      "level": 0.77,
+      "pan": 0.054
+    },
+    "OSTERIA": {
+      "level": 0.664,
+      "pan": -0.03
+    }
+  },
+  "coupling": [
+    {
+      "source": "ORACLE",
+      "destination": "OSTERIA",
+      "type": "PITCH_SYNC",
+      "amount": 0.388
+    }
+  ],
+  "sequencer": null
+}

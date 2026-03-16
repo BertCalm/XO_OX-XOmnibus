@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT WARM KINETIC VAST AET 2",
+  "mood": "Aether",
+  "engines": [
+    "ONSET",
+    "OVERBITE"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 aether, bright, warm, kinetic.",
+  "tags": [
+    "aether",
+    "bright",
+    "warm",
+    "kinetic",
+    "vast",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.952,
+    "warmth": 0.934,
+    "movement": 0.922,
+    "density": 0.494,
+    "space": 0.955,
+    "aggression": 0.597
+  },
+  "parameters": {
+    "ONSET": {
+      "level": 0.759,
+      "pan": 0.018
+    },
+    "OVERBITE": {
+      "level": 0.784,
+      "pan": -0.058
+    }
+  },
+  "coupling": [
+    {
+      "source": "ONSET",
+      "destination": "OVERBITE",
+      "type": "HARMONIC_FOLD",
+      "amount": 0.66
+    }
+  ],
+  "sequencer": null
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "DARK COLD DENSE VIOLENT AET 3",
+  "mood": "Aether",
+  "engines": [
+    "OVERDUB",
+    "ORBITAL"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 aether, dark, cold, dense.",
+  "tags": [
+    "aether",
+    "dark",
+    "cold",
+    "dense",
+    "violent",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.055,
+    "warmth": 0.058,
+    "movement": 0.596,
+    "density": 0.955,
+    "space": 0.561,
+    "aggression": 0.96
+  },
+  "parameters": {
+    "OVERDUB": {
+      "level": 0.753,
+      "pan": -0.127
+    },
+    "ORBITAL": {
+      "level": 0.718,
+      "pan": 0.017
+    }
+  },
+  "coupling": [
+    {
+      "source": "OVERDUB",
+      "destination": "ORBITAL",
+      "type": "FILTER_MOD",
+      "amount": 0.431
+    }
+  ],
+  "sequencer": null
+}

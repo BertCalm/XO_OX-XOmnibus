@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "DARK KINETIC VAST VIOLENT AET 5",
+  "mood": "Aether",
+  "engines": [
+    "ORIGAMI",
+    "OSPREY"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 aether, dark, kinetic, vast.",
+  "tags": [
+    "aether",
+    "dark",
+    "kinetic",
+    "vast",
+    "violent",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.044,
+    "warmth": 0.469,
+    "movement": 0.915,
+    "density": 0.554,
+    "space": 0.892,
+    "aggression": 0.926
+  },
+  "parameters": {
+    "ORIGAMI": {
+      "level": 0.716,
+      "pan": -0.059
+    },
+    "OSPREY": {
+      "level": 0.715,
+      "pan": -0.114
+    }
+  },
+  "coupling": [
+    {
+      "source": "ORIGAMI",
+      "destination": "OSPREY",
+      "type": "FILTER_MOD",
+      "amount": 0.727
+    }
+  ],
+  "sequencer": null
+}

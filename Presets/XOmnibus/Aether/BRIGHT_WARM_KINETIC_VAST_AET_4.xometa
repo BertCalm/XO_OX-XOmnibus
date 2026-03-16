@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT WARM KINETIC VAST AET 4",
+  "mood": "Aether",
+  "engines": [
+    "OPAL",
+    "ORACLE"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 aether, bright, warm, kinetic.",
+  "tags": [
+    "aether",
+    "bright",
+    "warm",
+    "kinetic",
+    "vast",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.924,
+    "warmth": 0.955,
+    "movement": 0.908,
+    "density": 0.497,
+    "space": 0.926,
+    "aggression": 0.565
+  },
+  "parameters": {
+    "OPAL": {
+      "level": 0.812,
+      "pan": 0.017
+    },
+    "ORACLE": {
+      "level": 0.831,
+      "pan": 0.099
+    }
+  },
+  "coupling": [
+    {
+      "source": "OPAL",
+      "destination": "ORACLE",
+      "type": "RESONANCE_SHARE",
+      "amount": 0.442
+    }
+  ],
+  "sequencer": null
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "DARK HOT DENSE VIOLENT FAM 3",
+  "mood": "Family",
+  "engines": [
+    "OBLONG",
+    "OUROBOROS"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 family, dark, warm, dense.",
+  "tags": [
+    "family",
+    "dark",
+    "warm",
+    "dense",
+    "violent",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.108,
+    "warmth": 0.893,
+    "movement": 0.418,
+    "density": 0.936,
+    "space": 0.456,
+    "aggression": 0.891
+  },
+  "parameters": {
+    "OBLONG": {
+      "level": 0.774,
+      "pan": -0.137
+    },
+    "OUROBOROS": {
+      "level": 0.835,
+      "pan": -0.129
+    }
+  },
+  "coupling": [
+    {
+      "source": "OBLONG",
+      "destination": "OUROBOROS",
+      "type": "FREQUENCY_SHIFT",
+      "amount": 0.615
+    }
+  ],
+  "sequencer": null
+}

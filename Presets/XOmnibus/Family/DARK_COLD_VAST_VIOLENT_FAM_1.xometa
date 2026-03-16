@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "DARK COLD VAST VIOLENT FAM 1",
+  "mood": "Family",
+  "engines": [
+    "ONSET",
+    "OVERBITE"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 family, dark, cold, vast.",
+  "tags": [
+    "family",
+    "dark",
+    "cold",
+    "vast",
+    "violent",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.063,
+    "warmth": 0.075,
+    "movement": 0.466,
+    "density": 0.581,
+    "space": 0.941,
+    "aggression": 0.95
+  },
+  "parameters": {
+    "ONSET": {
+      "level": 0.731,
+      "pan": -0.097
+    },
+    "OVERBITE": {
+      "level": 0.811,
+      "pan": -0.084
+    }
+  },
+  "coupling": [
+    {
+      "source": "ONSET",
+      "destination": "OVERBITE",
+      "type": "TIMBRE_BLEND",
+      "amount": 0.61
+    }
+  ],
+  "sequencer": null
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "BRIGHT COLD SPARSE GENTLE AET 4",
+  "mood": "Aether",
+  "engines": [
+    "OCELOT",
+    "ORPHICA"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 aether, bright, cold, sparse.",
+  "tags": [
+    "aether",
+    "bright",
+    "cold",
+    "sparse",
+    "gentle",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.908,
+    "warmth": 0.075,
+    "movement": 0.556,
+    "density": 0.069,
+    "space": 0.494,
+    "aggression": 0.063
+  },
+  "parameters": {
+    "OCELOT": {
+      "level": 0.746,
+      "pan": -0.114
+    },
+    "ORPHICA": {
+      "level": 0.809,
+      "pan": 0.089
+    }
+  },
+  "coupling": [
+    {
+      "source": "OCELOT",
+      "destination": "ORPHICA",
+      "type": "HARMONIC_FOLD",
+      "amount": 0.667
+    }
+  ],
+  "sequencer": null
+}

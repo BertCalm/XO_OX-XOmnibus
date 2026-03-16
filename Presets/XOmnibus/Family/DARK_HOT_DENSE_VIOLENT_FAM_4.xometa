@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "DARK HOT DENSE VIOLENT FAM 4",
+  "mood": "Family",
+  "engines": [
+    "OBESE",
+    "OBSIDIAN"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 family, dark, warm, dense.",
+  "tags": [
+    "family",
+    "dark",
+    "warm",
+    "dense",
+    "violent",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.078,
+    "warmth": 0.928,
+    "movement": 0.503,
+    "density": 0.928,
+    "space": 0.499,
+    "aggression": 0.894
+  },
+  "parameters": {
+    "OBESE": {
+      "level": 0.72,
+      "pan": 0.011
+    },
+    "OBSIDIAN": {
+      "level": 0.743,
+      "pan": -0.077
+    }
+  },
+  "coupling": [
+    {
+      "source": "OBESE",
+      "destination": "OBSIDIAN",
+      "type": "AMPLITUDE_MOD",
+      "amount": 0.307
+    }
+  ],
+  "sequencer": null
+}

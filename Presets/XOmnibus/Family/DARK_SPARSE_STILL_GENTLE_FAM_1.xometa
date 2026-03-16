@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "DARK SPARSE STILL GENTLE FAM 1",
+  "mood": "Family",
+  "engines": [
+    "OBSCURA",
+    "OWLFISH"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 family, dark, still, sparse.",
+  "tags": [
+    "family",
+    "dark",
+    "still",
+    "sparse",
+    "gentle",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.055,
+    "warmth": 0.411,
+    "movement": 0.069,
+    "density": 0.045,
+    "space": 0.544,
+    "aggression": 0.086
+  },
+  "parameters": {
+    "OBSCURA": {
+      "level": 0.786,
+      "pan": 0.08
+    },
+    "OWLFISH": {
+      "level": 0.71,
+      "pan": -0.005
+    }
+  },
+  "coupling": [
+    {
+      "source": "OBSCURA",
+      "destination": "OWLFISH",
+      "type": "FILTER_MOD",
+      "amount": 0.341
+    }
+  ],
+  "sequencer": null
+}

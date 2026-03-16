@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "WARM DENSE STILL INTIMATE AET 1",
+  "mood": "Aether",
+  "engines": [
+    "OBLIQUE",
+    "OTTONI"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 aether, warm, still, dense.",
+  "tags": [
+    "aether",
+    "warm",
+    "still",
+    "dense",
+    "intimate",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.431,
+    "warmth": 0.929,
+    "movement": 0.08,
+    "density": 0.928,
+    "space": 0.048,
+    "aggression": 0.543
+  },
+  "parameters": {
+    "OBLIQUE": {
+      "level": 0.761,
+      "pan": 0.02
+    },
+    "OTTONI": {
+      "level": 0.693,
+      "pan": -0.062
+    }
+  },
+  "coupling": [
+    {
+      "source": "OBLIQUE",
+      "destination": "OTTONI",
+      "type": "RESONANCE_SHARE",
+      "amount": 0.421
+    }
+  ],
+  "sequencer": null
+}

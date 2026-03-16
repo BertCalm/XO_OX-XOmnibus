@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "HOT KINETIC DENSE VIOLENT FAM 5",
+  "mood": "Family",
+  "engines": [
+    "ORCA",
+    "ODYSSEY"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 family, warm, kinetic, dense.",
+  "tags": [
+    "family",
+    "warm",
+    "kinetic",
+    "dense",
+    "violent",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.513,
+    "warmth": 0.917,
+    "movement": 0.935,
+    "density": 0.93,
+    "space": 0.491,
+    "aggression": 0.924
+  },
+  "parameters": {
+    "ORCA": {
+      "level": 0.654,
+      "pan": 0.119
+    },
+    "ODYSSEY": {
+      "level": 0.677,
+      "pan": -0.118
+    }
+  },
+  "coupling": [
+    {
+      "source": "ORCA",
+      "destination": "ODYSSEY",
+      "type": "TIMBRE_BLEND",
+      "amount": 0.341
+    }
+  ],
+  "sequencer": null
+}

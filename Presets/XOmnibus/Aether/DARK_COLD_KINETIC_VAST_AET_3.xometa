@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "DARK COLD KINETIC VAST AET 3",
+  "mood": "Aether",
+  "engines": [
+    "OTTONI",
+    "ODDFELIX"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 aether, dark, cold, kinetic.",
+  "tags": [
+    "aether",
+    "dark",
+    "cold",
+    "kinetic",
+    "vast",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.085,
+    "warmth": 0.086,
+    "movement": 0.892,
+    "density": 0.516,
+    "space": 0.915,
+    "aggression": 0.477
+  },
+  "parameters": {
+    "OTTONI": {
+      "level": 0.698,
+      "pan": -0.024
+    },
+    "ODDFELIX": {
+      "level": 0.694,
+      "pan": -0.112
+    }
+  },
+  "coupling": [
+    {
+      "source": "OTTONI",
+      "destination": "ODDFELIX",
+      "type": "PITCH_SYNC",
+      "amount": 0.544
+    }
+  ],
+  "sequencer": null
+}

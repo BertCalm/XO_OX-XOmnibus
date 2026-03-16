@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "COLD SPARSE VAST BRIGHT FAM 1",
+  "mood": "Family",
+  "engines": [
+    "OCTOPUS",
+    "OBLONG"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme DNA corners \u2014 family, bright, cold, sparse.",
+  "tags": [
+    "family",
+    "bright",
+    "cold",
+    "sparse",
+    "vast",
+    "ultra-diverse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "dna": {
+    "brightness": 0.927,
+    "warmth": 0.058,
+    "movement": 0.594,
+    "density": 0.092,
+    "space": 0.895,
+    "aggression": 0.52
+  },
+  "parameters": {
+    "OCTOPUS": {
+      "level": 0.674,
+      "pan": 0.139
+    },
+    "OBLONG": {
+      "level": 0.831,
+      "pan": 0.065
+    }
+  },
+  "coupling": [
+    {
+      "source": "OCTOPUS",
+      "destination": "OBLONG",
+      "type": "ENVELOPE_LINK",
+      "amount": 0.438
+    }
+  ],
+  "sequencer": null
+}
