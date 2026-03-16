@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP at near-zero level with long decay — a cosmic tick, the sound of distant time.",
+  "description": "SNAP at near-zero level with long decay \u2014 a cosmic tick, the sound of distant time.",
   "tags": [
     "snap",
     "cosmic",
@@ -34,15 +34,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 2,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 8000.0,
       "snap_filterReso": 0.2,
-      "snap_filterEnvAmt": 0.5,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.5,
       "snap_decay": 0.2,
-      "snap_sustain": 0.0,
-      "snap_release": 0.4,
       "snap_level": 0.25
     }
   },

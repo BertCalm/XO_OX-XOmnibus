@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP bright gates FAT's spectral content — percussion opens the harmonic density filter.",
+  "description": "SNAP bright gates FAT's spectral content \u2014 percussion opens the harmonic density filter.",
   "tags": [
     "snap",
     "fat",
@@ -35,15 +35,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 2,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 9000.0,
       "snap_filterReso": 0.5,
-      "snap_filterEnvAmt": 0.75,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.75,
       "snap_decay": 0.1,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.75
     },
     "Obese": {

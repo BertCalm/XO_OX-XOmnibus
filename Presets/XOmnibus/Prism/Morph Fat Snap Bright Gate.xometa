@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine bright gate — SNAP opens MORPH and FAT simultaneously for spectral gate burst.",
+  "description": "Three-engine bright gate \u2014 SNAP opens MORPH and FAT simultaneously for spectral gate burst.",
   "tags": [
     "morph",
     "fat",
@@ -37,15 +37,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 2,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 10000.0,
       "snap_filterReso": 0.58,
-      "snap_filterEnvAmt": 0.88,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.88,
       "snap_decay": 0.08,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.72
     },
     "OddOscar": {

@@ -57,15 +57,10 @@
     },
     "OddfeliX": {
       "snap_oscMode": 2,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.65,
       "snap_filterCutoff": 9000.0,
       "snap_filterReso": 0.3,
-      "snap_filterEnvAmt": 0.6,
-      "snap_attack": 0.0,
+      "snap_filterEnvDepth": 0.6,
       "snap_decay": 0.05,
-      "snap_sustain": 0.0,
-      "snap_release": 0.06,
       "snap_snap": 0.8,
       "snap_level": 0.6
     }

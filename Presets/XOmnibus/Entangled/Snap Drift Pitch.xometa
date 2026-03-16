@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP transient energy pitches DRIFT upward on every hit — the shimmer pad gets micro-pitched each time the snap fires. Metallic brightness.",
+  "description": "SNAP transient energy pitches DRIFT upward on every hit \u2014 the shimmer pad gets micro-pitched each time the snap fires. Metallic brightness.",
   "tags": [
     "snap",
     "drift",
@@ -37,15 +37,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 2,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 7000.0,
       "snap_filterReso": 0.4,
-      "snap_filterEnvAmt": 0.5,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.5,
       "snap_decay": 0.12,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.75
     },
     "Odyssey": {

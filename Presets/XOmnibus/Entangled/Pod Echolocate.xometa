@@ -2,21 +2,33 @@
   "schema_version": 1,
   "name": "Pod Echolocate",
   "mood": "Entangled",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Wavetable and echolocation intertwine with LFO-modulated click rates.",
-  "tags": ["entangled", "echolocation", "wavetable", "evolving"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "echolocation",
+    "wavetable",
+    "evolving"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-13",
   "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
+    "brightness": 0.6,
+    "warmth": 0.3,
     "movement": 0.8,
-    "density": 0.5,
-    "space": 0.5,
+    "density": 0.45,
+    "space": 0.65,
     "aggression": 0.4
   },
   "parameters": {
@@ -63,5 +75,7 @@
       "orca_macroSpace": 0.5
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -38,15 +38,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 0,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.3,
       "snap_filterCutoff": 8000.0,
       "snap_filterReso": 0.15,
-      "snap_filterEnvAmt": 0.5,
-      "snap_attack": 0.0,
+      "snap_filterEnvDepth": 0.5,
       "snap_decay": 0.06,
-      "snap_sustain": 0.0,
-      "snap_release": 0.08,
       "snap_snap": 0.3,
       "snap_level": 0.4,
       "snap_detune": 0.0

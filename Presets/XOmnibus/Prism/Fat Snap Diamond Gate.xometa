@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT prism with SNAP diamond gate — bright density opened by hardest transients.",
+  "description": "FAT prism with SNAP diamond gate \u2014 bright density opened by hardest transients.",
   "tags": [
     "fat",
     "snap",
@@ -35,15 +35,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 2,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 11000.0,
       "snap_filterReso": 0.62,
-      "snap_filterEnvAmt": 0.88,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.88,
       "snap_decay": 0.07,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.75
     },
     "Obese": {

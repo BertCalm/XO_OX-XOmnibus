@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP tuned to clap range — noise-like oscillator, fast decay. Pitched clap texture.",
+  "description": "SNAP tuned to clap range \u2014 noise-like oscillator, fast decay. Pitched clap texture.",
   "tags": [
     "snap",
     "clap",
@@ -34,15 +34,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 3,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 6000.0,
       "snap_filterReso": 0.3,
-      "snap_filterEnvAmt": 0.6,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.6,
       "snap_decay": 0.12,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.85
     }
   },

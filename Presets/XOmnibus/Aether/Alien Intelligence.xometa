@@ -2,20 +2,33 @@
   "schema_version": 1,
   "name": "Alien Intelligence",
   "mood": "Aether",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "All subsystems engaged at subtle levels. Transcendent and unknowable.",
-  "tags": ["aether", "subtle", "transcendent", "complex", "organic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "subtle",
+    "transcendent",
+    "complex",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-13",
   "dna": {
-    "brightness": 0.5,
-    "warmth": 0.55,
-    "movement": 0.5,
-    "density": 0.5,
+    "brightness": 0.45,
+    "warmth": 0.45,
+    "movement": 0.45,
+    "density": 0.55,
     "space": 0.75,
     "aggression": 0.1
   },
@@ -67,5 +80,7 @@
       "octo_macroSpace": 0.7
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -12,7 +12,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Six-engine world atmosphere — all engines creating complete acoustic world. Cinematic.",
+  "description": "Six-engine world atmosphere \u2014 all engines creating complete acoustic world. Cinematic.",
   "tags": [
     "snap",
     "morph",
@@ -45,15 +45,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 1,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 5500.0,
       "snap_filterReso": 0.2,
-      "snap_filterEnvAmt": 0.38,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.38,
       "snap_decay": 0.18,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.3
     },
     "OddOscar": {

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP transient over DRIFT sustained pad — classic percussion-plus-pad combination.",
+  "description": "SNAP transient over DRIFT sustained pad \u2014 classic percussion-plus-pad combination.",
   "tags": [
     "snap",
     "drift",
@@ -35,15 +35,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 1,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 6000.0,
       "snap_filterReso": 0.35,
-      "snap_filterEnvAmt": 0.5,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.5,
       "snap_decay": 0.15,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.68
     },
     "Odyssey": {

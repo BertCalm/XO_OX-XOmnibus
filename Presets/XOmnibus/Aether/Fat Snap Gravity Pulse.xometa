@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT massive void with SNAP rare gravity pulses — density interrupted by distant events.",
+  "description": "FAT massive void with SNAP rare gravity pulses \u2014 density interrupted by distant events.",
   "tags": [
     "fat",
     "snap",
@@ -68,15 +68,10 @@
     },
     "OddfeliX": {
       "snap_oscMode": 0,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 4000.0,
       "snap_filterReso": 0.2,
-      "snap_filterEnvAmt": 0.4,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.4,
       "snap_decay": 0.25,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.32
     }
   },

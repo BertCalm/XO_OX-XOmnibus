@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP as diamond — hardest spectral attack, no softening, pure energy transient.",
+  "description": "SNAP as diamond \u2014 hardest spectral attack, no softening, pure energy transient.",
   "tags": [
     "snap",
     "diamond",
@@ -34,15 +34,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 2,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 12000.0,
       "snap_filterReso": 0.72,
-      "snap_filterEnvAmt": 0.92,
-      "snap_attack": 0.0,
+      "snap_filterEnvDepth": 0.92,
       "snap_decay": 0.04,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.82
     }
   },

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FAT envelope controls SNAP decay — density sustain determines how long the transient rings.",
+  "description": "FAT envelope controls SNAP decay \u2014 density sustain determines how long the transient rings.",
   "tags": [
     "fat",
     "snap",
@@ -68,15 +68,10 @@
     },
     "OddfeliX": {
       "snap_oscMode": 2,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 7500.0,
       "snap_filterReso": 0.42,
-      "snap_filterEnvAmt": 0.62,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.62,
       "snap_decay": 0.15,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.75
     }
   },

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP barely-there with DRIFT shimmer — rare transient sparkle in infinite shimmer space.",
+  "description": "SNAP barely-there with DRIFT shimmer \u2014 rare transient sparkle in infinite shimmer space.",
   "tags": [
     "snap",
     "drift",
@@ -35,15 +35,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 2,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 10000.0,
       "snap_filterReso": 0.2,
-      "snap_filterEnvAmt": 0.5,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.5,
       "snap_decay": 0.08,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.4
     },
     "Odyssey": {

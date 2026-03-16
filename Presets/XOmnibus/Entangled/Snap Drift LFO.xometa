@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP modulates DRIFT pitch via LFO — each attack resets LFO phase creating rhythmic pitch shimmer.",
+  "description": "SNAP modulates DRIFT pitch via LFO \u2014 each attack resets LFO phase creating rhythmic pitch shimmer.",
   "tags": [
     "snap",
     "drift",
@@ -35,15 +35,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 2,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 8000.0,
       "snap_filterReso": 0.42,
-      "snap_filterEnvAmt": 0.5,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.5,
       "snap_decay": 0.12,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.75
     },
     "Odyssey": {

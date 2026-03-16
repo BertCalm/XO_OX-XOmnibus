@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP at maximum cascade speed — series of rapid decay transients at high polyphony.",
+  "description": "SNAP at maximum cascade speed \u2014 series of rapid decay transients at high polyphony.",
   "tags": [
     "snap",
     "cascade",
@@ -34,15 +34,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 2,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 9000.0,
       "snap_filterReso": 0.42,
-      "snap_filterEnvAmt": 0.72,
-      "snap_attack": 0.0,
+      "snap_filterEnvDepth": 0.72,
       "snap_decay": 0.04,
-      "snap_sustain": 0.0,
-      "snap_release": 0.02,
       "snap_level": 0.78
     }
   },

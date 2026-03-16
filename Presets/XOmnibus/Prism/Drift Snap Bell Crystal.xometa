@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT shimmer with SNAP crystal bell — ultra-bright bell tones in a shimmer field.",
+  "description": "DRIFT shimmer with SNAP crystal bell \u2014 ultra-bright bell tones in a shimmer field.",
   "tags": [
     "drift",
     "snap",
@@ -75,15 +75,10 @@
     },
     "OddfeliX": {
       "snap_oscMode": 2,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 9000.0,
       "snap_filterReso": 0.55,
-      "snap_filterEnvAmt": 0.65,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.65,
       "snap_decay": 0.15,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.65
     }
   },

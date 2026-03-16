@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Attractor Tap",
   "mood": "Entangled",
-  "engines": ["Ouroboros", "Onset"],
+  "engines": [
+    "Ouroboros",
+    "Onset"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The strange attractor barely influences Onset's filter envelope — chaotic amplitude gently modulates drum decay, like a trembling hand on the snare drum.",
-  "tags": ["coupling", "Ouroboros-pair", "chaos", "drums", "whisper", "attractor"],
-  "macroLabels": ["CHAOS", "PUNCH", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling",
+    "Ouroboros-pair",
+    "chaos",
+    "drums",
+    "whisper",
+    "attractor"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Subtle",
   "tempo": null,
   "created": "2026-03-14",
@@ -85,11 +100,11 @@
   },
   "sequencer": null,
   "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.55,
+    "brightness": 0.45,
+    "warmth": 0.45,
+    "movement": 0.6,
     "density": 0.5,
-    "space": 0.25,
-    "aggression": 0.3
+    "space": 0.2,
+    "aggression": 0.35
   }
 }

@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine performance kit — BOB lead, SNAP percussion, DUB bass. Full performance.",
+  "description": "Three-engine performance kit \u2014 BOB lead, SNAP percussion, DUB bass. Full performance.",
   "tags": [
     "bob",
     "snap",
@@ -80,15 +80,10 @@
     },
     "OddfeliX": {
       "snap_oscMode": 1,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 6000.0,
       "snap_filterReso": 0.38,
-      "snap_filterEnvAmt": 0.5,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.5,
       "snap_decay": 0.15,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.7
     },
     "Overdub": {

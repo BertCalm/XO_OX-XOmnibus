@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine tower — SNAP percussion triggers MORPH wavetable scan while FAT provides harmonic foundation. Percussive spectral architecture.",
+  "description": "Three-engine tower \u2014 SNAP percussion triggers MORPH wavetable scan while FAT provides harmonic foundation. Percussive spectral architecture.",
   "tags": [
     "snap",
     "morph",
@@ -38,15 +38,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 2,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 7000.0,
       "snap_filterReso": 0.45,
-      "snap_filterEnvAmt": 0.5,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.5,
       "snap_decay": 0.12,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.75
     },
     "OddOscar": {

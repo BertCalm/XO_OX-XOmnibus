@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine sunset — SNAP last light ticks, BOB warm fading, DRIFT shimmer dusk.",
+  "description": "Three-engine sunset \u2014 SNAP last light ticks, BOB warm fading, DRIFT shimmer dusk.",
   "tags": [
     "snap",
     "bob",
@@ -37,15 +37,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 1,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 5500.0,
       "snap_filterReso": 0.18,
-      "snap_filterEnvAmt": 0.35,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.35,
       "snap_decay": 0.18,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.32
     },
     "Oblong": {

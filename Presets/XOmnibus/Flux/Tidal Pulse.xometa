@@ -2,22 +2,34 @@
   "schema_version": 1,
   "name": "Tidal Pulse",
   "mood": "Flux",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rhythmic echolocation clicks forming pitched pulse patterns.",
-  "tags": ["rhythmic", "echolocation", "pulsing", "evolving"],
-  "macroLabels": ["CHARACTER", "PULSE RATE", "COUPLING", "SPACE"],
+  "tags": [
+    "rhythmic",
+    "echolocation",
+    "pulsing",
+    "evolving"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "PULSE RATE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 120,
   "created": "2026-03-13",
   "dna": {
-    "brightness": 0.5,
+    "brightness": 0.6,
     "warmth": 0.4,
     "movement": 0.9,
-    "density": 0.5,
-    "space": 0.4,
-    "aggression": 0.5
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.55
   },
   "parameters": {
     "Orca": {
@@ -63,5 +75,7 @@
       "orca_macroSpace": 0.0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  }
 }

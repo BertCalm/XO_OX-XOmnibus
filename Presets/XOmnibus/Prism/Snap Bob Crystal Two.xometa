@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP crystal and BOB spectral sync — dual spectral attack architecture.",
+  "description": "SNAP crystal and BOB spectral sync \u2014 dual spectral attack architecture.",
   "tags": [
     "snap",
     "bob",
@@ -35,15 +35,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 2,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 10000.0,
       "snap_filterReso": 0.58,
-      "snap_filterEnvAmt": 0.82,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.82,
       "snap_decay": 0.09,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.75
     },
     "Oblong": {

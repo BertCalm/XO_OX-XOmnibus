@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DUB and SNAP interlocked — DUB LFO syncs SNAP through coupling for rhythmic interlock.",
+  "description": "DUB and SNAP interlocked \u2014 DUB LFO syncs SNAP through coupling for rhythmic interlock.",
   "tags": [
     "dub",
     "snap",
@@ -73,15 +73,10 @@
     },
     "OddfeliX": {
       "snap_oscMode": 1,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 7000.0,
       "snap_filterReso": 0.4,
-      "snap_filterEnvAmt": 0.5,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.5,
       "snap_decay": 0.1,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.75
     }
   },

@@ -29,6 +29,14 @@
     "PRESSURE"
   ],
   "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.85,
+    "movement": 0.4,
+    "density": 0.8,
+    "space": 1.0,
+    "aggression": 0.05
+  },
   "parameters": {
     "XOwlfish": {
       "owl_portamento": 0.6,

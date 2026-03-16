@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine environment — SNAP natural ticks, BOB warm air, FAT deep resonance.",
+  "description": "Three-engine environment \u2014 SNAP natural ticks, BOB warm air, FAT deep resonance.",
   "tags": [
     "snap",
     "bob",
@@ -37,15 +37,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 1,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 5500.0,
       "snap_filterReso": 0.2,
-      "snap_filterEnvAmt": 0.38,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.38,
       "snap_decay": 0.2,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.38
     },
     "Oblong": {

@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "BOB warm chord stabs drive SNAP's blend — the character of the lead literally shapes the percussive transient coloring.",
+  "description": "BOB warm chord stabs drive SNAP's blend \u2014 the character of the lead literally shapes the percussive transient coloring.",
   "tags": [
     "rhythm",
     "blend",
@@ -80,15 +80,10 @@
     },
     "OddfeliX": {
       "snap_oscMode": 1,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 5000.0,
       "snap_filterReso": 0.3,
-      "snap_filterEnvAmt": 0.5,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.5,
       "snap_decay": 0.15,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.75
     }
   },

@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three-engine kit — SNAP percussion, FAT pad, MORPH keys. Versatile arrangement kit.",
+  "description": "Three-engine kit \u2014 SNAP percussion, FAT pad, MORPH keys. Versatile arrangement kit.",
   "tags": [
     "snap",
     "fat",
@@ -37,15 +37,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 1,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 6500.0,
       "snap_filterReso": 0.38,
-      "snap_filterEnvAmt": 0.5,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.5,
       "snap_decay": 0.15,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.72
     },
     "Obese": {

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP as rim shot — medium pitch, sharp attack, fast decay. Classic percussion timbre.",
+  "description": "SNAP as rim shot \u2014 medium pitch, sharp attack, fast decay. Classic percussion timbre.",
   "tags": [
     "snap",
     "rim",
@@ -34,15 +34,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 1,
-      "snap_oscTune": 3.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 5500.0,
       "snap_filterReso": 0.38,
-      "snap_filterEnvAmt": 0.65,
-      "snap_attack": 0.0,
+      "snap_filterEnvDepth": 0.65,
       "snap_decay": 0.1,
-      "snap_sustain": 0.0,
-      "snap_release": 0.06,
       "snap_level": 0.82
     }
   },

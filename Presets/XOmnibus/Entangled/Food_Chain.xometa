@@ -35,7 +35,6 @@
     "OddfeliX": {
       "snap_oscMode": 1,
       "snap_filterCutoff": 3000.0,
-      "snap_attack": 0.001,
       "snap_decay": 0.1,
       "snap_level": 0.7
     },

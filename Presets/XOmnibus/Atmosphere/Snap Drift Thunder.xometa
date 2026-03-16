@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "SNAP as distant thunder with DRIFT shimmer atmosphere — storm approaching.",
+  "description": "SNAP as distant thunder with DRIFT shimmer atmosphere \u2014 storm approaching.",
   "tags": [
     "snap",
     "drift",
@@ -35,15 +35,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 0,
-      "snap_oscTune": -12.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 800.0,
       "snap_filterReso": 0.35,
-      "snap_filterEnvAmt": 0.55,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.55,
       "snap_decay": 0.55,
-      "snap_sustain": 0.0,
-      "snap_release": 0.4,
       "snap_level": 0.55
     },
     "Odyssey": {

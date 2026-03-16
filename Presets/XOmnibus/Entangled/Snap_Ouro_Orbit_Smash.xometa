@@ -32,17 +32,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 0,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 6000.0,
       "snap_filterReso": 0.35,
-      "snap_filterEnv": 0.6,
-      "snap_ampAttack": 0.001,
-      "snap_ampDecay": 0.15,
-      "snap_ampSustain": 0.0,
-      "snap_ampRelease": 0.1,
-      "snap_snapAmount": 0.7,
-      "snap_snapTone": 0.6,
+      "snap_filterEnvDepth": 0.6,
+      "snap_snap": 0.7,
       "snap_level": 0.75
     },
     "Ouroboros": {

@@ -12,7 +12,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Six-engine prism — all engines in spectral mode. Maximum harmonic light spectrum.",
+  "description": "Six-engine prism \u2014 all engines in spectral mode. Maximum harmonic light spectrum.",
   "tags": [
     "snap",
     "morph",
@@ -44,15 +44,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 2,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 9500.0,
       "snap_filterReso": 0.55,
-      "snap_filterEnvAmt": 0.82,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.82,
       "snap_decay": 0.09,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.62
     },
     "OddOscar": {

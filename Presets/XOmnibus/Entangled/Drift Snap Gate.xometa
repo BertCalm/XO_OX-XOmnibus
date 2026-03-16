@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "DRIFT shimmer gates SNAP's filter — the shimmer envelope creates slow filter undulations in the percussive engine. Reversed-feel gating.",
+  "description": "DRIFT shimmer gates SNAP's filter \u2014 the shimmer envelope creates slow filter undulations in the percussive engine. Reversed-feel gating.",
   "tags": [
     "drift",
     "snap",
@@ -77,15 +77,10 @@
     },
     "OddfeliX": {
       "snap_oscMode": 1,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 4000.0,
       "snap_filterReso": 0.5,
-      "snap_filterEnvAmt": 0.6,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.6,
       "snap_decay": 0.25,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.75
     }
   },

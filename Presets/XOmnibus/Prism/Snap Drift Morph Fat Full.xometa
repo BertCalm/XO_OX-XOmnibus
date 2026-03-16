@@ -10,7 +10,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Four-engine prism tower — SNAP crystal, DRIFT shimmer, MORPH spectral, FAT dense base. Maximum.",
+  "description": "Four-engine prism tower \u2014 SNAP crystal, DRIFT shimmer, MORPH spectral, FAT dense base. Maximum.",
   "tags": [
     "snap",
     "drift",
@@ -39,15 +39,10 @@
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 2,
-      "snap_oscTune": 0.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 10000.0,
       "snap_filterReso": 0.58,
-      "snap_filterEnvAmt": 0.88,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.88,
       "snap_decay": 0.09,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.65
     },
     "Odyssey": {

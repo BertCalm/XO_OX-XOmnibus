@@ -24,25 +24,20 @@
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "brightness": 0.5,
+    "brightness": 0.55,
     "warmth": 0.55,
-    "movement": 0.65,
-    "density": 0.5,
-    "space": 0.3,
-    "aggression": 0.5
+    "movement": 0.25,
+    "density": 0.35,
+    "space": 0.1,
+    "aggression": 0.45
   },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 1,
-      "snap_oscTune": -5.0,
-      "snap_oscShape": 0.5,
       "snap_filterCutoff": 3000.0,
       "snap_filterReso": 0.4,
-      "snap_filterEnvAmt": 0.55,
-      "snap_attack": 0.001,
+      "snap_filterEnvDepth": 0.55,
       "snap_decay": 0.18,
-      "snap_sustain": 0.0,
-      "snap_release": 0.1,
       "snap_level": 0.78
     }
   },
