@@ -180,21 +180,27 @@ Ranked by estimated CPU savings potential:
 
 1. **SilenceGate fleet-wide rollout** — 6 lines per engine adapter. The single biggest win. Every engine that isn't sounding currently burns full CPU.
 
-2. **OCELOT triage** — 35 std:: calls across 7 DSP files. Replace `std::tanh` → `fastTanh` in WaveFolder.h, OcelotVoice.h, OcelotVoicePool.h. Replace local SVF in OcelotFloor.h → CytomicSVF.
+2. **Shared `fastPan()` utility** — ~20 engines call `std::cos/sin` per sample per voice for constant-power panning. A shared `fastPan(position, &gainL, &gainR)` in FastMath.h using `fastSin`/`fastCos` or a 256-point pan LUT would lift the entire fleet in one commit.
 
-3. **OHM FM oscillators** — 6× `std::sin` per sample for Dad's instruments. Replace with `fastSin` or sin LUT. This is a Constellation engine running FM synthesis on raw `std::sin` — the savings are dramatic.
+3. **BOB + FAT `std::tan` per sample** — Both ZDF filter implementations call `std::tan(pi * cutoff / sr)` per sample (~50 cycles each). Cache coefficients at block rate or migrate to `CytomicSVF::setCoefficients_fast()`.
+
+4. **OCELOT triage** — 35 std:: calls across 7 DSP files. Replace `std::tanh` → `fastTanh` in WaveFolder.h, OcelotVoice.h, OcelotVoicePool.h. Replace local SVF in OcelotFloor.h → CytomicSVF.
+
+5. **OHM FM oscillators** — 6× `std::sin` per sample for Dad's instruments. Replace with `fastSin` or sin LUT. This is a Constellation engine running FM synthesis on raw `std::sin` — the savings are dramatic.
 
 ### Short-Term (Moderate Impact)
 
-4. **OWLFISH dedup** — Delete `OwlfishFastMath.h` and `OwlfishCytomicSVF.h`, point imports to kernel. Zero behavioral change, pure code health.
+6. **OWLFISH dedup** — Delete `OwlfishFastMath.h` and `OwlfishCytomicSVF.h`, point imports to kernel. Zero behavioral change, pure code health.
 
-5. **OVERLAP + OVERWORLD kernel integration** — Both late additions missing FastMath. OVERLAP also needs CytomicSVF to replace its local SVF.
+7. **OVERLAP + OVERWORLD kernel integration** — Both late additions missing FastMath. OVERLAP also needs CytomicSVF to replace its local SVF.
 
-6. **Additive synthesis LUTs** — OCTOPUS, ORCA, OHM, OPAL all run `std::sin` per-partial per-sample. A shared sin LUT would lift all four simultaneously.
+8. **Additive synthesis LUTs** — OCTOPUS, ORCA, OHM, OPAL all run `std::sin` per-partial per-sample. A shared sin LUT would lift all four simultaneously.
+
+9. **ORIGAMI IFFT resynthesis** — `std::cos/sin` per bin per hop (up to 1025 bins). Pre-compute or use LUT for phase resynthesis.
 
 ### Phase 2 (ControlRateReducer)
 
-7. **ControlRateReducer for slow coupling types** — All 34 engines process coupling at audio rate. LFO→pitch, env→morph, amp→filter coupling should be decimated to 1/32.
+10. **ControlRateReducer for audio-rate coupling engines** — Engines using per-sample source buffer coupling (ORGANON, OUROBOROS, ORIGAMI, OPTIC, ORCA, OCTOPUS, OMBRE, OVERLAP, OUTWIT, OPAL, ORBITAL, BITE) should use ControlRateReducer for slow modulation types (LFO→pitch, env→morph, amp→filter). Audio-rate types (AudioToFM, AudioToRing) stay at full rate.
 
 ---
 
