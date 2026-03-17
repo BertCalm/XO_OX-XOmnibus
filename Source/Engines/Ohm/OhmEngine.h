@@ -36,9 +36,9 @@ struct OhmObedFM {
         if (envLevel >= 0.999f) envLevel = 1.0f; // snap to peak
         envLevel *= (1.0f - rate);
         modPhase+=mf/sr; if(modPhase>=1)modPhase-=1;
-        float mod=std::sin(modPhase*6.2831853f)*index*envLevel;
+        float mod=fastSin(modPhase*6.2831853f)*index*envLevel;
         phase+=freq/sr; if(phase>=1)phase-=1;
-        return std::sin((phase+mod)*6.2831853f)*envLevel;
+        return fastSin((phase+mod)*6.2831853f)*envLevel;
     }
 };
 constexpr float OhmObedFM::kRatios[8][2];
@@ -49,9 +49,9 @@ struct OhmInLaw {
     void prepare(double s){sr=(float)s;} void reset(){phase=wobPhase=0;}
     float tick(float freq, float scale, float wobble){
         wobPhase+=0.3f/sr; if(wobPhase>=1)wobPhase-=1;
-        float wob=std::sin(wobPhase*6.2831853f)*wobble*0.05f;
+        float wob=fastSin(wobPhase*6.2831853f)*wobble*0.05f;
         phase+=(freq*scale*(1+wob))/sr; if(phase>=1)phase-=1;
-        return std::sin(phase*6.2831853f);
+        return fastSin(phase*6.2831853f);
     }
 };
 
@@ -64,7 +64,7 @@ struct OhmGlassPartial {
         float partialFreq = freq * (2.0f + brightness * 6.0f);
         phase += partialFreq / sr;
         if (phase >= 1.0f) phase -= 1.0f;
-        return std::sin(phase * 6.2831853f);
+        return fastSin(phase * 6.2831853f);
     }
 };
 
@@ -110,7 +110,7 @@ struct OhmGrainEngine {
             if (grainPhase >= 1.0f) grainPhase -= 1.0f;
             // Hann-ish grain envelope
             grainEnv *= (1.0f - 1.0f / (float)(grainLen + 2));
-            return std::sin(grainPhase * 6.2831853f) * grainEnv;
+            return fastSin(grainPhase * 6.2831853f) * grainEnv;
         }
         return 0.0f;
     }
@@ -226,7 +226,7 @@ struct OhmAdapterVoice {
         active=false;ampEnv=0;
     }
     void noteOn(int n,float v){
-        note=n;vel=v;freq=440*std::pow(2.f,(n-69)/12.f);
+        note=n;vel=v;freq=440*fastPow2((n-69)/12.f);
         dl.reset();df.reset();body.setParams(freq*1.5f,3);symp.tune(freq);
         if(!bowed)pick.trigger(1.5f); obed.trigger();
         ampEnv=v;releasing=false;active=true;

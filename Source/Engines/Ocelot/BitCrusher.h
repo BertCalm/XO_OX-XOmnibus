@@ -1,6 +1,7 @@
 #pragma once
 #include <cmath>
 #include <algorithm>
+#include "../../DSP/FastMath.h"
 
 namespace xocelot {
 
@@ -24,7 +25,7 @@ struct BitCrusher
         {
             holdCounter -= ratio;
             // Bit depth quantization
-            float levels = std::pow(2.0f, std::clamp(bitDepth, 1.0f, 24.0f));
+            float levels = xomnibus::fastPow2(std::clamp(bitDepth, 1.0f, 24.0f));
             holdSample = std::round(x * levels) / levels;
         }
         return holdSample;

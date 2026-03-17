@@ -113,7 +113,7 @@ public:
         }
         else
         {
-            portaCoeff = std::exp (-1.0f / (portaMs * 0.001f * static_cast<float> (sampleRate)));
+            portaCoeff = fastExp (-1.0f / (portaMs * 0.001f * static_cast<float> (sampleRate)));
         }
 
         // D004 fix: morphGlide modulates mixtur (waveshaper blend) during portamento.
@@ -140,7 +140,7 @@ public:
         // D005 fix: minimal LFO added — advance grain size LFO (0.05 Hz, ±12%)
         grainLfoPhase += (0.05f * juce::MathConstants<float>::twoPi) / static_cast<float>(sampleRate);
         if (grainLfoPhase >= juce::MathConstants<float>::twoPi) grainLfoPhase -= juce::MathConstants<float>::twoPi;
-        const float lfoGrainSize = snap.grainSize * (1.0f + 0.12f * std::sin(grainLfoPhase));
+        const float lfoGrainSize = snap.grainSize * (1.0f + 0.12f * fastSin(grainLfoPhase));
 
         // -- Diet (micro-granular) params --
         diet.setParams (lfoGrainSize, snap.grainDensity, snap.grainPitch, snap.feedRate);
@@ -156,7 +156,7 @@ public:
 
         // -- Filter setup --
         // Cutoff mapping: 0-1 -> 20Hz-20kHz (logarithmic via pow2)
-        float cutoffHz = 20.0f * std::pow (2.0f, snap.filterCutoff * 10.0f);
+        float cutoffHz = 20.0f * fastPow2 (snap.filterCutoff * 10.0f);
         // Add key tracking: offset by fundamental frequency * tracking amount
         if (currentNote >= 0)
             cutoffHz += midiToFreq (currentNote) * snap.filterTrack;

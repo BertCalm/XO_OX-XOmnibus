@@ -474,7 +474,7 @@ private:
     {
         switch (shape)
         {
-            case 0: return std::sin(phase * 6.28318530f);                         // Sine
+            case 0: return fastSin(phase * 6.28318530f);                         // Sine
             case 1: return (phase < 0.5f) ? (4.0f * phase - 1.0f)                // Triangle
                                           : (3.0f - 4.0f * phase);
             case 2: return 2.0f * phase - 1.0f;                                   // Saw

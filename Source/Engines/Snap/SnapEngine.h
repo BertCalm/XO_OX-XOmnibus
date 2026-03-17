@@ -427,7 +427,7 @@ public:
         // D006: aftertouch adds up to +6kHz brightness on full pressure (sensitivity 0.3)
         const float effectiveBpfCenter = std::max (20.0f, std::min (20000.0f,
                                              effectiveCutoff
-                                             * (1.0f + 0.08f * (float)std::sin(lfoPhase))
+                                             * (1.0f + 0.08f * (float)fastSin(lfoPhase))
                                              * cutoffMod
                                              + atPressure * 0.3f * 6000.0f));
 
@@ -929,7 +929,7 @@ private:
             int activeUnisonCount = std::min (unisonCount, 4);
             for (int unisonIndex = 0; unisonIndex < activeUnisonCount; ++unisonIndex)
             {
-                float detunedFrequency = baseFrequency * std::pow (2.0f,
+                float detunedFrequency = baseFrequency * fastPow2 (
                     voice.detuneOffsets[unisonIndex] / 12.0f);
                 voice.karplusStrongOscillators[unisonIndex].setFrequency (
                     static_cast<double> (detunedFrequency));
@@ -996,7 +996,7 @@ private:
     /// A4 (MIDI 69) = 440 Hz, equal temperament, 12-TET.
     static float midiToHz (float midiNote) noexcept
     {
-        return 440.0f * std::pow (2.0f, (midiNote - 69.0f) / 12.0f);
+        return 440.0f * fastPow2 ((midiNote - 69.0f) / 12.0f);
     }
 
     //==========================================================================

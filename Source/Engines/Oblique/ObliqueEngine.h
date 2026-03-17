@@ -424,8 +424,8 @@ public:
 
             // Equal-power pan law using cos/sin (constant-power stereo placement)
             float panPosition = lerp (0.5f, facetPanPositions[i], prismParams.stereoWidth);
-            float panGainL = std::cos (panPosition * kHalfPi);
-            float panGainR = std::sin (panPosition * kHalfPi);
+            float panGainL = fastCos (panPosition * kHalfPi);
+            float panGainR = fastSin (panPosition * kHalfPi);
 
             wetL += coloredSample * facetLevel * panGainL;
             wetR += coloredSample * facetLevel * panGainR;
@@ -1035,8 +1035,8 @@ public:
                 static constexpr float kHalfPi = 1.5707963f;  // pi/2 for equal-power pan law
                 float bouncePan = kBouncePanBase
                     + (static_cast<float> (voice.noteNumber % 7) / 7.0f) * kBouncePanRange;
-                float bounceL = bounceOutput * std::cos (bouncePan * kHalfPi);
-                float bounceR = bounceOutput * std::sin (bouncePan * kHalfPi);
+                float bounceL = bounceOutput * fastCos (bouncePan * kHalfPi);
+                float bounceR = bounceOutput * fastSin (bouncePan * kHalfPi);
 
                 voiceSumL += bodyL + bounceL;
                 voiceSumR += bodyR + bounceR;

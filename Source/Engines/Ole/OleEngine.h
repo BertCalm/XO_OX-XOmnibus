@@ -23,7 +23,7 @@ struct OleAdapterVoice {
     }
     void reset(){dl.reset();df.reset();body.reset();symp.reset();drift.reset();strum.reset();pluck.reset();active=false;ampEnv=0;tremoloPhase=0;}
     void noteOn(int n,float v, float strumRateMs=8.0f){
-        note=n;vel=v;freq=440*std::pow(2.f,(n-69)/12.f);
+        note=n;vel=v;freq=440*fastPow2((n-69)/12.f);
         dl.reset();df.reset();body.setParams(freq*1.1f,3);symp.tune(freq);
         strum.trigger(3,strumRateMs,1);pluck.trigger(2);
         ampEnv=v;releasing=false;active=true;tremoloPhase=0;
@@ -202,7 +202,7 @@ public:
                     // Rapid tremolo oscillation (5-25 Hz) modulates amplitude
                     v.tremoloPhase += pA3Tr / v.sr;
                     if (v.tremoloPhase >= 1.0f) v.tremoloPhase -= 1.0f;
-                    tremoloMod = 0.7f + 0.3f * std::sin(v.tremoloPhase * 6.2831853f);
+                    tremoloMod = 0.7f + 0.3f * fastSin(v.tremoloPhase * 6.2831853f);
                 }
 
                 float bo=out+v.body.process(out)*bodyGain;

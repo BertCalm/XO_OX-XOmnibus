@@ -326,7 +326,7 @@ public:
         sr = sampleRate;
         srf = static_cast<float> (sr);
 
-        smoothCoeff = 1.0f - std::exp (-kTwoPi * (1.0f / 0.005f) / srf);
+        smoothCoeff = 1.0f - fastExp (-kTwoPi * (1.0f / 0.005f) / srf);
         crossfadeRate = 1.0f / (0.005f * srf);
 
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
@@ -458,7 +458,7 @@ public:
         // Glide coefficient — heavy portamento for whale song
         float glideCoeff = 1.0f;
         if (pGlideVal > 0.001f)
-            glideCoeff = 1.0f - std::exp (-1.0f / (pGlideVal * srf));
+            glideCoeff = 1.0f - fastExp (-1.0f / (pGlideVal * srf));
 
         // === APEX HUNT MACRO ===
         // Single control drives filter cutoff, echolocation resonance,
@@ -507,7 +507,7 @@ public:
 
         // Bitcrusher resolution: map [1..16] bits, with HUNT pushing it lower
         float crushBits = clamp (pCrushBits - huntAmount * 12.0f, 1.0f, 16.0f);
-        float crushStep = std::pow (2.0f, crushBits);
+        float crushStep = fastPow2 (crushBits);
         // Downsample factor
         float crushDownsample = clamp (pCrushRate + huntAmount * 0.8f, 1.0f, 64.0f);
 
@@ -621,7 +621,7 @@ public:
                 // LFO1 scans wavetable position slowly (the "dialect" evolving)
                 float wtPos = clamp (smoothedWTPos + lfo1Val * 0.3f + modLevel * pWTScanRate * 0.5f, 0.0f, 1.0f);
                 voice.wtOsc.setPosition (wtPos);
-                float mpeFreqOrc = voice.currentFreq * std::pow (2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
+                float mpeFreqOrc = voice.currentFreq * fastPow2 (voice.mpeExpression.pitchBendSemitones / 12.0f);
                 voice.wtOsc.setFrequency (mpeFreqOrc, srf);
 
                 float wtSample = voice.wtOsc.processSample();
@@ -1137,7 +1137,7 @@ private:
                 float sample = 0.0f;
 
                 // Frame 0: Pure sine (whale call fundamental)
-                float sine = std::sin (kTwoPi * phase);
+                float sine = fastSin (kTwoPi * phase);
 
                 // Frame progression: add increasingly inharmonic partials
                 // These create the metallic, eerie quality of orca calls
@@ -1160,7 +1160,7 @@ private:
                     // Alternate phase offsets for complexity
                     float phaseOffset = (p % 3 == 0) ? 0.25f : 0.0f;
 
-                    sample += amp * std::sin (kTwoPi * (stretchedRatio * phase + phaseOffset));
+                    sample += amp * fastSin (kTwoPi * (stretchedRatio * phase + phaseOffset));
                     totalAmp += amp;
                 }
 

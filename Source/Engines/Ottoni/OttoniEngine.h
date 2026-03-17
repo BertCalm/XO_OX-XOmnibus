@@ -23,7 +23,7 @@ struct OttoniAdapterVoice {
     }
     void reset(){dl.reset();df.reset();body.reset();symp.reset();drift.reset();lipBuzz.reset();active=false;ampEnv=0;vibPhase=0;}
     void noteOn(int n,float v){
-        note=n;vel=v;freq=440*std::pow(2.f,(n-69)/12.f);
+        note=n;vel=v;freq=440*fastPow2((n-69)/12.f);
         dl.reset();df.reset();body.setParams(freq*0.8f,5);symp.tune(freq);
         ampEnv=v;releasing=false;active=true;vibPhase=0;
     }
@@ -187,7 +187,7 @@ public:
                 float dlen=v.sr/std::max(df*stretch,20.f);
 
                 // --- Foreign drift: microtonal pitch drift ---
-                float microDrift=effFDr*std::sin(v.vibPhase*3.7f)*0.02f;
+                float microDrift=effFDr*fastSin(v.vibPhase*3.7f)*0.02f;
                 dlen*=(1.f+microDrift);
 
                 float out=v.dl.read(dlen);
@@ -200,7 +200,7 @@ public:
                 // Toddler: loose lips, low pressure, simple
                 float excToddler=v.lipBuzz.tick(df*0.998f, effTodPres*0.4f*velIntens, 0.0f)*toddlerMix;
                 // Tween: moderate embouchure, valve modulates pitch slightly
-                float tweenPitchMod=1.f+pTwValve*0.003f*std::sin(v.vibPhase*2.1f);
+                float tweenPitchMod=1.f+pTwValve*0.003f*fastSin(v.vibPhase*2.1f);
                 float excTween=v.lipBuzz.tick(df*tweenPitchMod, effTwEmb*0.7f*velIntens, 0.5f)*tweenMix;
                 // Teen: full virtuosity, bore width affects body
                 float excTeen=v.lipBuzz.tick(df, std::min(1.f,effTnEmb*velIntens), ageScale)*teenMix;
@@ -240,7 +240,7 @@ public:
             if(pChoR>0.001f){
                 choPhase+=pChoR/(float)sr;
                 if(choPhase>=1.f)choPhase-=1.f;
-                float choMod=std::sin(choPhase*6.2831853f);
+                float choMod=fastSin(choPhase*6.2831853f);
                 float choDelay=0.005f*(float)sr*(1.f+choMod*0.3f); // ~5ms center
                 // Use delay buffer for chorus (read from delay line with modulated offset)
                 int choIdx=((delWr-(int)choDelay)%kDelMax+kDelMax)%kDelMax;

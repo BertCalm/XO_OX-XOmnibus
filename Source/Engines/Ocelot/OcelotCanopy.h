@@ -5,6 +5,7 @@
 #include <array>
 #include "OcelotParamSnapshot.h"
 #include "BiomeMorph.h"
+#include "../../DSP/FastMath.h"
 
 namespace xocelot {
 
@@ -60,7 +61,7 @@ public:
 
         // Base frequency from MIDI note
         float pitchOffset = (snap.canopyPitch - 0.5f) * 48.0f; // ±24 cents
-        float baseFreq = 440.0f * std::pow(2.0f, (baseNote - 69 + pitchOffset / 100.0f) / 12.0f);
+        float baseFreq = 440.0f * xomnibus::fastPow2((baseNote - 69 + pitchOffset / 100.0f) / 12.0f);
 
         // Active partials (biome can tilt balance)
         int numPartials = std::clamp(snap.canopyPartials, 1, kMaxPartials);
@@ -71,7 +72,7 @@ public:
 
         // Spectral filter position (modulated by floor via matrix)
         float spectralPos = std::clamp(snap.canopySpectralFilter + mod.canopyFilterMod, 0.0f, 1.0f);
-        float spectralCutoff = 200.0f * std::pow(100.0f, spectralPos); // 200Hz–20kHz log
+        float spectralCutoff = 200.0f * xomnibus::fastPow2(std::log2(100.0f) * spectralPos); // 200Hz–20kHz log
 
         // Wavefold depth
         float wavefold = std::clamp(snap.canopyWavefold + mod.canopyMorphMod, 0.0f, 1.0f);
@@ -88,7 +89,7 @@ public:
             // Breathe LFO
             breathePhase += breatheRate / static_cast<float>(sr);
             if (breathePhase > 1.0f) breathePhase -= 1.0f;
-            float breathe = 0.5f + 0.5f * std::sin(breathePhase * juce::MathConstants<float>::twoPi);
+            float breathe = 0.5f + 0.5f * xomnibus::fastSin(breathePhase * juce::MathConstants<float>::twoPi);
 
             // Sum partials
             float sample = 0.0f;
@@ -111,7 +112,7 @@ public:
                 if (partialPhases[static_cast<size_t>(p)] > 1.0f)
                     partialPhases[static_cast<size_t>(p)] -= 1.0f;
 
-                float s = std::sin(partialPhases[static_cast<size_t>(p)]
+                float s = xomnibus::fastSin(partialPhases[static_cast<size_t>(p)]
                                    * juce::MathConstants<float>::twoPi);
                 sample += s * partialLevel;
                 spectralSum += partialFreq * partialLevel;

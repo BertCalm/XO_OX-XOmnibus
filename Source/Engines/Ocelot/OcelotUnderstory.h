@@ -8,6 +8,7 @@
 #include "BiomeMorph.h"
 #include "BitCrusher.h"
 #include "TapeWarp.h"
+#include "../../DSP/FastMath.h"
 
 namespace xocelot {
 
@@ -109,7 +110,7 @@ public:
         float grainPosMod = mod.understoryGrainPosMod;
 
         // Internal oscillator frequency: sine/saw blend at chopDiv-derived pitch
-        float oscFreq = 110.0f * std::pow(2.0f, static_cast<float>(chopDiv) * 0.1f);
+        float oscFreq = 110.0f * xomnibus::fastPow2(static_cast<float>(chopDiv) * 0.1f);
 
         float sumSq = 0.0f;
 
@@ -124,7 +125,7 @@ public:
                 if (oscPhase >= 1.0f) oscPhase -= 1.0f;
 
                 float saw = oscPhase * 2.0f - 1.0f;
-                float sine = std::sin(oscPhase * 2.0f * kPi);
+                float sine = xomnibus::fastSin(oscPhase * 2.0f * kPi);
                 // Blend: 70% saw, 30% sine for a rich but simple tone
                 float oscSample = saw * 0.7f + sine * 0.3f;
 

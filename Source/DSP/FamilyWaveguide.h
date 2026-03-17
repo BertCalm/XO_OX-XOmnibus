@@ -331,8 +331,8 @@ public:
         phase1 = std::fmod (phase1 + inc1, 1.0f);
         phase2 = std::fmod (phase2 + inc2, 1.0f);
 
-        float lfo = 0.6f * std::sin (phase1 * 6.2831853f)
-                  + 0.4f * std::sin (phase2 * 6.2831853f);
+        float lfo = 0.6f * fastSin (phase1 * 6.2831853f)
+                  + 0.4f * fastSin (phase2 * 6.2831853f);
 
         return lfo * (depthCents / 100.0f); // cents → semitone fraction
     }
@@ -674,7 +674,7 @@ public:
     {
         // Age-scaled intonation instability: toddlers wobble, teens are stable
         float jitterAmt = (1.0f - ageScale) * 0.015f;
-        float jitter    = jitterAmt * std::sin (phase * 17.3f); // irregular flutter
+        float jitter    = jitterAmt * fastSin (phase * 17.3f); // irregular flutter
         float adjFreq   = frequency * (1.0f + jitter);
 
         phase += adjFreq / sr;
