@@ -582,6 +582,14 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         juce::ParameterID("master_pwidthMix", 1), "Master PWidth Mix",
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
+    // Stage 20: Brickwall Limiter
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_limCeiling", 1), "Master Limiter Ceiling",
+        juce::NormalisableRange<float>(-6.0f, 0.0f), -0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_limRelease", 1), "Master Limiter Release",
+        juce::NormalisableRange<float>(10.0f, 500.0f, 0.0f, 0.4f), 50.0f));
+
     // Stage 6: fXOsmosis (Membrane Transfer)
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_osmMembrane", 1), "Master Osmosis Membrane",
