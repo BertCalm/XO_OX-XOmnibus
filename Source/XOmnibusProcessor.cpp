@@ -468,10 +468,10 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_seqTarget1", 1), "Master Seq Target 1",
-        juce::NormalisableRange<float>(0.0f, 15.0f, 1.0f), 0.0f));
+        juce::NormalisableRange<float>(0.0f, 17.0f, 1.0f), 0.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_seqTarget2", 1), "Master Seq Target 2",
-        juce::NormalisableRange<float>(0.0f, 15.0f, 1.0f), 0.0f));
+        juce::NormalisableRange<float>(0.0f, 17.0f, 1.0f), 0.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_seqPattern", 1), "Master Seq Pattern",
         juce::NormalisableRange<float>(0.0f, 7.0f, 1.0f), 0.0f));
@@ -580,6 +580,43 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_pwidthMix", 1), "Master PWidth Mix",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+
+    // Stage 6: fXOsmosis (Membrane Transfer)
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_osmMembrane", 1), "Master Osmosis Membrane",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_osmReactivity", 1), "Master Osmosis Reactivity",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_osmResonance", 1), "Master Osmosis Resonance",
+        juce::NormalisableRange<float>(0.0f, 0.85f), 0.4f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_osmSaturation", 1), "Master Osmosis Saturation",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_osmMix", 1), "Master Osmosis Mix",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+
+    // Stage 12: fXOneiric (Dream State)
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_onDelayTime", 1), "Master Oneiric Delay",
+        juce::NormalisableRange<float>(1.0f, 1500.0f, 0.0f, 0.3f), 350.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_onShiftHz", 1), "Master Oneiric Shift",
+        juce::NormalisableRange<float>(-500.0f, 500.0f), 5.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_onFeedback", 1), "Master Oneiric Feedback",
+        juce::NormalisableRange<float>(0.0f, 0.92f), 0.6f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_onDamping", 1), "Master Oneiric Damping",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_onSpread", 1), "Master Oneiric Spread",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_onMix", 1), "Master Oneiric Mix",
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
     return { params.begin(), params.end() };

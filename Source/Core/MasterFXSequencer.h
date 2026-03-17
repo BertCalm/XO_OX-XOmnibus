@@ -72,6 +72,8 @@ public:
         StereoWidth,       // Stereo sculptor mid width
         PsychoWidth,       // Psychoacoustic widener width
         VibeKnob,          // Vibe knob (bipolar grit/sweet)
+        OsmosisMix,        // fXOsmosis membrane mix
+        OneiricMix,        // fXOneiric dream state mix
         NumTargets
     };
 
