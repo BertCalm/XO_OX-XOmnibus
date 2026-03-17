@@ -98,20 +98,35 @@ Brilliant concept but it's a feature, not a fix. V2.
 
 ---
 
-## PHASE 4 — Preset Polish
+## PHASE 4 — Preset Expansion (Target: 120 per engine, including Entangled)
 
-### Current state: 2,550 factory presets, 100% DNA coverage, 0 duplicates
+### Current state: ~2,550 factory presets, 100% DNA coverage, 0 duplicates
 
-| Task | Details | Effort |
-|------|---------|--------|
-| **OWLFISH expansion** | 35 presets → target 80 minimum | S |
-| **OVERLAP expansion** | 51 presets → target 80 minimum | S |
-| **OUTWIT expansion** | 61 presets → target 80 minimum | S |
-| **Aquatic FX presets** | 20-30 presets showcasing the new FX suite | M |
-| **Coupling showcase refresh** | Verify all 18 Entangled presets still sound right after SRO changes | S |
-| **Init patch audit** | Every engine's init patch must sound compelling (DB003 debate) | M |
+12 engines below 120 presets. ~423 new presets needed (Entangled coupling presets count toward both participating engines).
 
-**Gate:** Every engine ≥80 presets. Aquatic FX has dedicated showcase presets.
+| Engine | Current | Need | Priority Coupling Partners |
+|--------|---------|------|---------------------------|
+| **Owlfish** | 35 | +85 | Overdub, Obscura, Opal |
+| **Overlap** | 51 | +69 | Orca, Octopus, Ouroboros |
+| **Outwit** | 61 | +59 | Onset, Optic, Oblique |
+| **Oceanic** | 79 | +41 | Osprey, Osteria, Organon |
+| **Orca** | 89 | +31 | Ombre, Octopus, OceanDeep (V2) |
+| **Osteria** | 90 | +30 | Osprey, Ole, Ottoni |
+| **Osprey** | 91 | +29 | Osteria, Oceanic, Ohm |
+| **Origami** | 96 | +24 | Oracle, Obsidian, Opal |
+| **Ombre** | 98 | +22 | Orca, Odyssey, Orphica |
+| **Octopus** | 100 | +20 | Orca, Overlap, Ouroboros |
+| **Ocelot** | 109 | +11 | Opal, Overdub, Overworld |
+| **Oracle** | 118 | +2 | Organon, Obscura |
+
+| Task | Details |
+|------|---------|
+| **12-engine preset expansion** | All 12 engines above to ≥120 presets (solo + Entangled) |
+| **Aquatic FX presets** | 20-30 presets showcasing the new FX suite across multiple engines |
+| **Coupling showcase refresh** | Verify all existing Entangled presets still sound right after SRO changes |
+| **Init patch audit** | Every engine's init patch must sound compelling dry (DB003) |
+
+**Gate:** Every engine ≥120 presets. Aquatic FX has dedicated showcase presets.
 
 ---
 
@@ -148,7 +163,7 @@ Brilliant concept but it's a feature, not a fix. V2.
 
 ```
 ENGINES:           34 (all registered, all unique paradigms)
-PRESETS:           2,550+ (target 2,700+ after expansion)
+PRESETS:           2,550+ (target ~3,000 after expansion — 120 per engine min)
 MOODS:             7 (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family)
 MACROS:            4 (CHARACTER, MOVEMENT, COUPLING, SPACE)
 COUPLING TYPES:    12 (MegaCouplingMatrix)
