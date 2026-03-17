@@ -141,9 +141,9 @@ inline juce::String resolveSnapParamAlias(const juce::String& paramId)
     return (it != renamed.end()) ? it->second : paramId;
 }
 
-// Valid moods — the 6 browsing categories plus User.
+// Valid moods — the 8 browsing categories plus User.
 inline const juce::StringArray validMoods {
-    "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "User"
+    "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "Submerged", "User"
 };
 
 // Valid coupling intensity levels.
@@ -191,7 +191,7 @@ struct CouplingPair {
 struct PresetData {
     int schemaVersion = 1;
     juce::String name;
-    juce::String mood;                     // Foundation|Atmosphere|Entangled|Prism|Flux|Aether|User
+    juce::String mood;                     // Foundation|Atmosphere|Entangled|Prism|Flux|Aether|Family|Submerged|User
     juce::StringArray engines;             // 1-3 engine names
     juce::String author;
     juce::String version;

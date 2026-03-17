@@ -4,7 +4,7 @@ xpn_mood_arc_designer.py — Mood Arc Designer for XPN packs
 XO_OX XOmnibus Tools Suite
 
 Analyzes and optimizes the emotional journey across pad banks in an XPN pack.
-Moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family
+Moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged
 """
 
 import json
@@ -16,7 +16,7 @@ from typing import Optional
 
 # ── Mood definitions ─────────────────────────────────────────────────────────
 
-MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"]
+MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "Submerged"]
 
 # Grounded moods that feel like "landing" — good arc endings
 GROUNDING_MOODS = {"Foundation", "Family"}
@@ -52,6 +52,14 @@ DISSIMILARITY = {
     ("Aether",      "Aether"):      0.0,
     ("Aether",      "Family"):      0.8,
     ("Family",      "Family"):      0.0,
+    ("Foundation",  "Submerged"):   0.7,
+    ("Atmosphere",  "Submerged"):   0.3,
+    ("Entangled",   "Submerged"):   0.4,
+    ("Prism",       "Submerged"):   0.6,
+    ("Flux",        "Submerged"):   0.5,
+    ("Aether",      "Submerged"):   0.3,
+    ("Family",      "Submerged"):   0.7,
+    ("Submerged",   "Submerged"):   0.0,
 }
 
 def dissimilarity(a: str, b: str) -> float:
