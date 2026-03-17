@@ -275,7 +275,9 @@ public:
             float rms = 0.0f;
             for (int i = 0; i < numSamples; ++i)
                 rms += L[i] * L[i] + R[i] * R[i];
-            rms = std::sqrt (rms / static_cast<float> (numSamples * 2));
+            // SRO: fast sqrt via 2^(0.5 * log2(x)) replaces std::sqrt (per-block, sequencer only)
+            float rmsArg = rms / static_cast<float> (numSamples * 2);
+            rms = (rmsArg > 1e-10f) ? fastPow2 (0.5f * fastLog2 (rmsArg)) : 0.0f;
 
             sequencer.updateBlock (ppqPosition, bpm, numSamples, rms);
             seqMod1 = sequencer.getModValue1();
