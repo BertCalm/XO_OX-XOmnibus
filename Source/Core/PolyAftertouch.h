@@ -2,6 +2,7 @@
 #include <array>
 #include <cmath>
 #include <algorithm>
+#include "../DSP/FastMath.h"
 
 namespace xomnibus {
 
@@ -82,8 +83,9 @@ public:
     {
         sr = sampleRate;
         // Smoothing coefficient: ~5ms attack, ~20ms release
-        smoothAttack  = 1.0f - std::exp (-1.0f / (0.005f * static_cast<float> (sr)));
-        smoothRelease = 1.0f - std::exp (-1.0f / (0.020f * static_cast<float> (sr)));
+        // SRO: fastExp replaces std::exp (prepare-time coefficient calc)
+        smoothAttack  = 1.0f - fastExp (-1.0f / (0.005f * static_cast<float> (sr)));
+        smoothRelease = 1.0f - fastExp (-1.0f / (0.020f * static_cast<float> (sr)));
         reset();
     }
 
@@ -234,7 +236,8 @@ private:
             case ResponseCurve::SCurve:
                 return x * x * (3.0f - 2.0f * x);  // Hermite S-curve
             case ResponseCurve::Logarithmic:
-                return std::sqrt (x);
+                // SRO: fast sqrt via fastPow2/fastLog2 (per-voice response curve)
+                return (x > 0.0f) ? fastPow2 (0.5f * fastLog2 (x)) : 0.0f;
             default:
                 return x;
         }

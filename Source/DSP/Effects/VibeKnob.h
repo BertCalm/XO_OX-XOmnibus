@@ -286,7 +286,8 @@ private:
         float cosW0 = fastCos (w0);
         float sinW0 = fastSin (w0);
         float alpha = sinW0 / (2.0f * 0.707f);
-        float sqrtA = std::sqrt (A);
+        // SRO: fast sqrt via fastPow2/fastLog2 (per-setter shelf calc)
+        float sqrtA = (A > 0.0f) ? fastPow2 (0.5f * fastLog2 (A)) : 0.0f;
 
         float a0 = (A + 1.0f) - (A - 1.0f) * cosW0 + 2.0f * sqrtA * alpha;
         c.b0 = (A * ((A + 1.0f) + (A - 1.0f) * cosW0 + 2.0f * sqrtA * alpha)) / a0;

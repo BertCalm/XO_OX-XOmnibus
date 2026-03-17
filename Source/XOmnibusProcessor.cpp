@@ -627,6 +627,11 @@ void XOmnibusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     chordMachine.prepare(sampleRate, samplesPerBlock);
     masterFX.prepare(sampleRate, samplesPerBlock, apvts);
 
+    // SRO: Prepare profilers and auditor
+    for (auto& prof : engineProfilers)
+        prof.prepare(sampleRate, samplesPerBlock);
+    sroAuditor.prepare(sampleRate, samplesPerBlock);
+
     for (auto& buf : engineBuffers)
         buf.setSize(2, samplesPerBlock);
 
@@ -738,12 +743,23 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         // SRO: Skip DSP if silence gate says engine output is silent
         engineBuffers[i].clear();
         if (enginePtrs[i]->isSilenceGateBypassed() && slotMidi[i].isEmpty())
+        {
+            // Still record as active-but-bypassed for the auditor
+            sroAuditor.recordSlot(i, engineProfilers[i].getStats(), true);
             continue;
+        }
 
-        enginePtrs[i]->renderBlock(engineBuffers[i], slotMidi[i], numSamples);
+        {
+            EngineProfiler::ScopedMeasurement measurement (engineProfilers[i]);
+            enginePtrs[i]->renderBlock(engineBuffers[i], slotMidi[i], numSamples);
+        }
 
         // SRO: Feed output to silence gate for analysis
         enginePtrs[i]->analyzeForSilenceGate(engineBuffers[i], numSamples);
+
+        // SRO: Record slot stats for auditor (CPU + silence gate state)
+        sroAuditor.recordSlot(i, engineProfilers[i].getStats(),
+                              enginePtrs[i]->isSilenceGateBypassed());
     }
 
     // Apply coupling matrix between engines.
@@ -933,6 +949,10 @@ void XOmnibusProcessor::unloadEngine(int slot)
 
     std::shared_ptr<SynthEngine> empty;
     std::atomic_store(&engines[slot], empty);
+
+    // SRO: Clear profiler and auditor for this slot
+    engineProfilers[slot].reset();
+    sroAuditor.clearSlot(slot);
 
     if (onEngineChanged)
         juce::MessageManager::callAsync([this, slot]{ if (onEngineChanged) onEngineChanged(slot); });
