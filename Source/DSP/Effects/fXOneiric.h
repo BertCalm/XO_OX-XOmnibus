@@ -6,7 +6,7 @@
 namespace xomnibus {
 
 //==============================================================================
-// Oneiric — "Dream State" boutique effect.
+// fXfXOneiric — "Dream State" boutique effect.
 //
 // A pitch-shifted feedback delay that creates infinitely ascending or
 // descending spectral spirals. The frequency shifter lives inside the
@@ -33,7 +33,7 @@ namespace xomnibus {
 // Bricks: FastMath (fastSin/fastCos), flushDenormal, lerp
 //
 // Usage:
-//   Oneiric fx;
+//   fXOneiric fx;
 //   fx.prepare(44100.0, 512);
 //   fx.setDelayTime(350.0f);    // ms
 //   fx.setShift(5.0f);          // Hz — positive = up, negative = down
@@ -42,10 +42,10 @@ namespace xomnibus {
 //   fx.setMix(0.35f);
 //   fx.processBlock(L, R, numSamples);
 //==============================================================================
-class Oneiric
+class fXOneiric
 {
 public:
-    Oneiric() = default;
+    fXOneiric() = default;
 
     //--------------------------------------------------------------------------
     void prepare (double sampleRate, int /*maxBlockSize*/)

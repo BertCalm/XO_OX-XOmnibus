@@ -7,7 +7,7 @@
 namespace xomnibus {
 
 //==============================================================================
-// Osmosis — "Membrane Transfer" boutique effect.
+// fXfXOsmosis — "Membrane Transfer" boutique effect.
 //
 // Audio passes through a resonant 3-band filter membrane that breathes with
 // input dynamics. Quiet signals pass muted; loud signals bloom through the
@@ -27,7 +27,7 @@ namespace xomnibus {
 // Bricks: CytomicSVF ×3, Saturator ×1, FastMath (envelope coefficients)
 //
 // Usage:
-//   Osmosis fx;
+//   fXOsmosis fx;
 //   fx.prepare(44100.0);
 //   fx.setMembraneTone(0.5f);   // 0 = dark/submerged, 1 = bright/open
 //   fx.setReactivity(0.6f);     // how much input dynamics open the pores
@@ -36,10 +36,10 @@ namespace xomnibus {
 //   fx.setMix(0.5f);
 //   fx.processBlock(L, R, numSamples);
 //==============================================================================
-class Osmosis
+class fXOsmosis
 {
 public:
-    Osmosis() = default;
+    fXOsmosis() = default;
 
     //--------------------------------------------------------------------------
     void prepare (double sampleRate)
