@@ -1,6 +1,7 @@
 #pragma once
 #include <cmath>
 #include <algorithm>
+#include "../FastMath.h"
 
 namespace xomnibus {
 
@@ -182,8 +183,9 @@ private:
         // Release: 80-200ms
         float attackMs  = 30.0f - amount * 15.0f;  // 30ms → 15ms
         float releaseMs = 200.0f - amount * 120.0f; // 200ms → 80ms
-        compAttackCoeff  = 1.0f - std::exp (-1.0f / (attackMs * 0.001f * static_cast<float> (sr)));
-        compReleaseCoeff = 1.0f - std::exp (-1.0f / (releaseMs * 0.001f * static_cast<float> (sr)));
+        // SRO: fastExp replaces std::exp (per-block coefficient computation)
+        compAttackCoeff  = 1.0f - fastExp (-1.0f / (attackMs * 0.001f * static_cast<float> (sr)));
+        compReleaseCoeff = 1.0f - fastExp (-1.0f / (releaseMs * 0.001f * static_cast<float> (sr)));
 
         // Threshold and ratio scale with amount
         compThresh = 0.5f - amount * 0.25f;  // -6dB → -12dB
@@ -209,9 +211,10 @@ private:
         float compGain = 1.0f;
         if (compEnv > compThresh && compThresh > 0.001f)
         {
-            float overDb = 20.0f * std::log10 (compEnv / compThresh);
+            // SRO: gainToDb/dbToGain replace std::log10/std::pow (per-sample hot path)
+            float overDb = gainToDb (compEnv / compThresh);
             float reducedDb = overDb * (1.0f - 1.0f / compRatio);
-            compGain = std::pow (10.0f, -reducedDb / 20.0f);
+            compGain = dbToGain (-reducedDb);
         }
 
         // Makeup gain: gentle, proportional to compression amount
@@ -277,10 +280,11 @@ private:
 
     void calcHighShelf (FilterCoeffs& c, float freq, float gainDb)
     {
-        float A = std::pow (10.0f, gainDb / 40.0f);
+        // SRO: fastExp + fastSin/fastCos replace std:: trig (per-block coefficient calc)
+        float A = dbToGain (gainDb * 0.5f);  // 10^(dB/40) = dbToGain(dB/2)
         float w0 = 2.0f * kPi * freq / static_cast<float> (sr);
-        float cosW0 = std::cos (w0);
-        float sinW0 = std::sin (w0);
+        float cosW0 = fastCos (w0);
+        float sinW0 = fastSin (w0);
         float alpha = sinW0 / (2.0f * 0.707f);
         float sqrtA = std::sqrt (A);
 
@@ -292,9 +296,10 @@ private:
         c.a2 = ((A + 1.0f) - (A - 1.0f) * cosW0 - 2.0f * sqrtA * alpha) / a0;
     }
 
+    // SRO: Use shared flushDenormal from FastMath.h
     void flushDenormals()
     {
-        auto fd = [] (float& v) { if (std::abs (v) < 1e-15f) v = 0.0f; };
+        auto fd = [] (float& v) { v = flushDenormal (v); };
         fd (shelfL.x1); fd (shelfL.x2); fd (shelfL.y1); fd (shelfL.y2);
         fd (shelfR.x1); fd (shelfR.x2); fd (shelfR.y1); fd (shelfR.y2);
         fd (presL.x1); fd (presL.x2); fd (presL.y1); fd (presL.y2);

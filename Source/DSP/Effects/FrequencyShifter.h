@@ -127,8 +127,10 @@ public:
             hilbertTransform (inR, 1, iR, qR);
 
             // Generate shift oscillator (complex exponential)
-            float cosOsc = static_cast<float> (std::cos (oscPhase * 6.283185307179586));
-            float sinOsc = static_cast<float> (std::sin (oscPhase * 6.283185307179586));
+            // SRO: fastSin/fastCos replace std:: trig (~0.02% accuracy, ~10x faster)
+            float oscAngle = static_cast<float> (oscPhase * 6.283185307179586);
+            float cosOsc = fastCos (oscAngle);
+            float sinOsc = fastSin (oscAngle);
 
             // Complex multiply: shift = I*cos - Q*sin (upper), I*cos + Q*sin (lower)
             float upL = iL * cosOsc - qL * sinOsc;

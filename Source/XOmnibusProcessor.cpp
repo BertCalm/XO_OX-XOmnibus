@@ -603,7 +603,13 @@ void XOmnibusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     {
         auto eng = std::atomic_load(&engines[i]);
         if (eng)
+        {
             eng->prepare(sampleRate, samplesPerBlock);
+            // SRO: Prepare silence gate with engine-appropriate hold time.
+            // Default 200ms is safe for most engines; engines with long tails
+            // (reverb, granular, infinite-sustain) should override in their prepare().
+            eng->prepareSilenceGate(sampleRate, samplesPerBlock, 200.0f);
+        }
     }
 }
 
@@ -688,8 +694,25 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         if (!enginePtrs[i])
             continue;
 
+        // SRO: Wake silence gate on note-on events (BEFORE bypass check)
+        for (const auto metadata : slotMidi[i])
+        {
+            if (metadata.getMessage().isNoteOn())
+            {
+                enginePtrs[i]->wakeSilenceGate();
+                break;  // One wake per block is sufficient
+            }
+        }
+
+        // SRO: Skip DSP if silence gate says engine output is silent
         engineBuffers[i].clear();
+        if (enginePtrs[i]->isSilenceGateBypassed() && slotMidi[i].isEmpty())
+            continue;
+
         enginePtrs[i]->renderBlock(engineBuffers[i], slotMidi[i], numSamples);
+
+        // SRO: Feed output to silence gate for analysis
+        enginePtrs[i]->analyzeForSilenceGate(engineBuffers[i], numSamples);
     }
 
     // Apply coupling matrix between engines.
@@ -842,6 +865,8 @@ void XOmnibusProcessor::loadEngine(int slot, const std::string& engineId)
 
     newEngine->attachParameters(apvts);
     newEngine->prepare(currentSampleRate, currentBlockSize);
+    // SRO: Prepare silence gate for new engine (200ms default hold time)
+    newEngine->prepareSilenceGate(currentSampleRate, currentBlockSize, 200.0f);
 
     // Move the old engine to crossfade-out state
     auto oldEngine = std::atomic_load(&engines[slot]);
