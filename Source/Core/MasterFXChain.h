@@ -74,7 +74,7 @@ public:
         // Stage 4: Spectral Tilt
         spectralTilt.prepare (sampleRate);
 
-        // Stage 4: Transient Designer
+        // Stage 5: Transient Designer
         transientDesigner.prepare (sampleRate);
 
         // Stage 5: Delay
@@ -158,12 +158,12 @@ public:
         const float tiltAmount   = pTiltAmount   ? pTiltAmount->load()   : 0.0f;
         const float tiltMix      = pTiltMix      ? pTiltMix->load()      : 1.0f;
 
-        // Stage 4: Transient Designer
+        // Stage 5: Transient Designer
         const float tdAttack     = pTDAttack     ? pTDAttack->load()     : 0.0f;
         const float tdSustain    = pTDSustain    ? pTDSustain->load()    : 0.0f;
         const float tdMix        = pTDMix        ? pTDMix->load()        : 0.0f;
 
-        // Stage 5: Delay
+        // Stage 6: Delay
         const float delayTime    = pDelayTime    ? pDelayTime->load()    : 375.0f;
         const float delayFB      = pDelayFB      ? pDelayFB->load()      : 0.3f;
         const float delayMix     = pDelayMix     ? pDelayMix->load()     : 0.0f;
@@ -373,7 +373,7 @@ public:
         }
 
         // ====================================================================
-        // Stage 4: Transient Designer
+        // Stage 5: Transient Designer
         // ====================================================================
         float effectiveTDAttack = applySeqModBipolar (tdAttack,
             MasterFXSequencer::Target::TransientAttack, 0.6f);
@@ -387,7 +387,7 @@ public:
         }
 
         // ====================================================================
-        // Stage 5: Stereo Delay
+        // Stage 6: Stereo Delay
         // ====================================================================
         float effectiveDelayMix = applySeqMod (delayMix,
             MasterFXSequencer::Target::DelayMix, 0.8f);
@@ -656,12 +656,12 @@ private:
         pTiltAmount   = apvts.getRawParameterValue ("master_tiltAmount");
         pTiltMix      = apvts.getRawParameterValue ("master_tiltMix");
 
-        // Stage 4: Transient Designer
+        // Stage 5: Transient Designer
         pTDAttack     = apvts.getRawParameterValue ("master_tdAttack");
         pTDSustain    = apvts.getRawParameterValue ("master_tdSustain");
         pTDMix        = apvts.getRawParameterValue ("master_tdMix");
 
-        // Stage 5: Delay
+        // Stage 6: Delay
         pDelayTime    = apvts.getRawParameterValue ("master_delayTime");
         pDelayFB      = apvts.getRawParameterValue ("master_delayFeedback");
         pDelayMix     = apvts.getRawParameterValue ("master_delayMix");
@@ -792,7 +792,7 @@ private:
     // Stage 4: Spectral Tilt
     std::atomic<float>* pTiltAmount  = nullptr;
     std::atomic<float>* pTiltMix     = nullptr;
-    // Stage 4: Transient Designer
+    // Stage 5: Transient Designer
     std::atomic<float>* pTDAttack    = nullptr;
     std::atomic<float>* pTDSustain   = nullptr;
     std::atomic<float>* pTDMix       = nullptr;
