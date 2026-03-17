@@ -576,6 +576,138 @@ Constraint isn't the enemy. Constraint is the instrument.
 
 ---
 
+## Phase 2 Roadmap: Architecture Extensions
+
+These decisions were made during the SRO framework review (2026-03-17) and are logged here for implementation when the current Phase 1 (audit + integrate) work stabilizes.
+
+### 2A. Dynamic Oversampling Manager (Graceful Degradation)
+
+**Status:** Approved for early Phase 2
+**Concept:** A new SRO component that dynamically reduces oversampling (4×→2×→1×) based on CPU budget pressure.
+
+The SROAuditor already tracks budget via `budgetAlarm`. When the alarm fires, the OversamplingManager could step down the oversampling rate for the most CPU-expensive slot first. When budget pressure eases, step back up. This is Graceful Degradation — the system maintains sonic quality as long as it can afford to, and sacrifices intelligently when it can't.
+
+**Interface sketch:**
+```cpp
+class OversamplingManager
+{
+public:
+    void prepare(double sampleRate, int maxBlockSize) noexcept;
+    int getCurrentFactor(int slot) const noexcept;  // returns 1, 2, or 4
+    void update(const SROAuditor::Report& report) noexcept;  // call once per block
+};
+```
+
+**Creative angle:** Variable oversampling is analogous to how tape machines behave — at higher speeds (15 ips, 30 ips) you get more bandwidth; at lower speeds you get warmth and compression. The dynamic toggle isn't a quality loss — it's a timbral shift. Document the sonic difference at each rate so users (and preset designers) can hear the trade-off.
+
+### 2B. Prime Mover Engines — Send-Only Slot Class
+
+**Status:** Approved architecture
+**Concept:** A new engine class that drives a 4-engine effects chain. Prime Movers generate audio (from MIDI, from internal sources, from audio input) and send it into the coupling matrix, but **never receive coupling input**. They are the source — the prime mover of the signal chain.
+
+**Key design decisions:**
+- `MaxSlots` remains 4 for generator engines. The Prime Mover occupies a **separate, dedicated slot** — not a 5th generic slot.
+- Coupling is **send-only**: Prime Mover → Slot 0-3. No reverse path. This keeps the coupling matrix at 4×3 routes (not 5×4), avoiding a 67% complexity increase.
+- Prime Movers implement `SynthEngine` with an additional trait/flag indicating send-only status.
+- SROAuditor monitors the Prime Mover slot separately (not counted in the 4-slot budget).
+- SilenceGate applies normally to Prime Movers — if the source is silent, the whole chain can sleep.
+
+**Use case:** User picks an fXO_ effect chain (4 slots of effects). The Prime Mover generates the source audio that feeds through them. This enables XOmnibus to function as a full effects processor, not just a generator.
+
+**Interface addition to SynthEngine:**
+```cpp
+// In SynthEngine.h — optional override:
+virtual bool isPrimeMover() const noexcept { return false; }
+```
+
+### 2C. fXO_ Effects Ecosystem — Shared-Core Architecture
+
+**Status:** Approved approach — shared cores first, regional presets second
+**Naming convention:** `fXO_` prefix + O-word (e.g., `fXO_Obsession`, `fXO_Orbit`, `fXO_Overtone`)
+
+The `fXO_` prefix maintains XO brand DNA while clearly differentiating effects from generator engines (`XO_` prefix). The `f` signals "effect" to both users and code.
+
+#### Shared Effect Cores (Build These First)
+
+Instead of 48 individual fX modules, build **6-8 shared effect cores**. Each core is a configurable DSP engine. The "48 effects" become **preset configurations** of these cores with regional naming and character.
+
+| Core | DSP Foundation | What It Covers |
+|------|---------------|----------------|
+| `ReverbCore` | Feedback delay network + diffusion | Room, hall, plate, spring, shimmer |
+| `DelayCore` | Multi-tap delay + modulation | Tape echo, ping-pong, granular delay, rhythmic |
+| `SaturationCore` | Waveshaping + multiband | Tube, tape, transistor, bitcrush, fold |
+| `ModulationCore` | LFO → delay line | Chorus, flanger, phaser, vibrato, rotary |
+| `FilterCore` | CytomicSVF chains + resonators | Formant, comb, vocal, tilt EQ, wah |
+| `SpatialCore` | Stereo manipulation + panning | Width, rotation, mid-side, Haas, binaural |
+| `PitchCore` | Pitch detection + shifting | Harmonizer, octaver, detune, glitch |
+| `DynamicsCore` | Envelope follower + gain | Compressor, gate, expander, ducker, sidechain |
+
+This is the LEGO principle applied to effects: 8 bricks, infinite combinations. Each core exposes a parameter set that regional presets configure differently. A "Midwest" reverb and a "Nordic" reverb are both `ReverbCore` with different diffusion, decay, and tonal character presets.
+
+#### Regional Consolidation
+
+Instead of 13 regions × 4 fX = 48 separate modules, each region becomes a **single fXO_ engine** that configures the shared cores into a curated effects chain.
+
+| Region | fXO_ Engine | Character | Cores Used |
+|--------|------------|-----------|------------|
+| Midwest | `fXO_Outpost` | Wide open, tape warmth, AM radio grit | SaturationCore + DelayCore + ReverbCore |
+| Nordic | `fXO_Overcast` | Glacial reverb, pristine delay, subtle modulation | ReverbCore + DelayCore + ModulationCore |
+| Tokyo | `fXO_Origami` | Glitch, bitcrush, precision delay | SaturationCore + DelayCore + PitchCore |
+| Saharan | `fXO_Oasis` | Desert reverb, sand-filtered resonance | ReverbCore + FilterCore + SpatialCore |
+| Coastal | `fXO_Offshore` | Wave-shaped modulation, sea-spray diffusion | ModulationCore + ReverbCore + SpatialCore |
+| ... | ... | ... | ... |
+
+Each regional fXO_ engine is a thin adapter that instantiates 2-3 shared cores and routes them in a specific topology. The adapter is ~200 lines. The shared cores do the heavy lifting.
+
+**SRO alignment:** This is the Unix philosophy — small composable tools. 8 cores × regional routing = unlimited character with minimal code. Every optimization to `ReverbCore` improves every regional engine that uses it. One fix, 13 regions better.
+
+#### fXO_ Integration with SynthEngine
+
+Effects engines extend `SynthEngine` with an optional audio input bus (Path B — approved):
+
+```cpp
+// In SynthEngine.h — optional override for effects:
+virtual bool isEffect() const noexcept { return false; }
+
+// Effects override renderBlock to read from an input bus:
+// void renderBlock(AudioBuffer& buffer, MidiBuffer& midi, int numSamples) override
+// {
+//     // buffer arrives pre-filled with input audio (from Prime Mover or previous slot)
+//     // Apply effect processing in-place
+//     // SilenceGate, ControlRateReducer, etc. work identically
+// }
+```
+
+### 2D. Prime Mover Engine Candidates
+
+A reasonable initial set of Prime Mover engines (source generators for effects chains):
+
+| Engine | Concept | Why It's a Prime Mover |
+|--------|---------|----------------------|
+| `XO_Origin` | Clean multi-osc generator (saw/square/sine/noise) | Neutral source — lets the fXO_ chain define character |
+| `XO_Overture` | Sample/loop player | Brings any audio into the fXO_ chain |
+| `XO_Oscillograph` | Wavetable + FM source | Rich harmonic starting material |
+| `XO_Ouverture` | Mic/line input pass-through | Makes XOmnibus a live effects processor |
+
+These are **not** creative engines like OPAL or ORGANON — they're transparent sources designed to feed effects chains. Their job is to get out of the way and let the fXO_ engines shine.
+
+---
+
+## Architectural Decisions Log
+
+| Date | Decision | Rationale |
+|------|----------|-----------|
+| 2026-03-17 | `MaxSlots` stays at 4 for generators; Prime Mover is a separate slot | Avoids 67% coupling complexity increase (4×3 → 5×4 routes) |
+| 2026-03-17 | Effects extend `SynthEngine` with optional audio input (Path B) | Organic — one interface, one system. Effects are engines that process input instead of generating from MIDI |
+| 2026-03-17 | No `XO_Kernel` abstraction class | SRO components composed at call site ARE the kernel. 6 lines in each adapter. Adding a class adds indirection without benefit |
+| 2026-03-17 | `fXO_` naming prefix for effects | Maintains XO brand DNA, clear differentiator from `XO_` generators |
+| 2026-03-17 | 6-8 shared effect cores, not 48 individual modules | LEGO/Unix principle — composable cores, regional presets. One optimization lifts all regions |
+| 2026-03-17 | Regional engines = single fXO_ adapter per region | Consolidates quad-per-region to one engine configuring 2-3 shared cores |
+| 2026-03-17 | Dynamic oversampling → early Phase 2 | SROAuditor budget alarm is the trigger; needs OversamplingManager component |
+| 2026-03-17 | CodeShark / Synesthesia → separate workstreams | Not DSP architecture — engagement/visualization features, orthogonal to SRO |
+
+---
+
 ## Related Resources
 
 - `Source/DSP/FastMath.h` — Fast approximation library (the foundation — and a gallery of creative constraint)

@@ -43,6 +43,7 @@ These skills exist in the Claude profile (not version-controlled here) but are r
 | Adding DNA to existing presets | `/dna-designer` |
 | Building an MPC export bundle | `/xpn-export-specialist` |
 | Auditing engine CPU / optimizing performance | `/sro-optimizer` |
+| Designing fXO_ effects or Prime Mover engines | `/sro-optimizer` (§Phase 2 Roadmap) |
 | Deep engine quality evaluation | `/synth-seance` |
 | After finishing an engine | `/post-engine-completion-checklist` |
 | Product direction / market review | `/producers-guild` |

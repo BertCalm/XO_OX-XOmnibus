@@ -18,6 +18,7 @@ and mutate into sounds impossible with any single synth. **34 engines** are regi
 ## Brand Rules
 
 - All XO_OX instruments follow the **XO + O-word** naming convention
+- Effect engines use the **fXO_ + O-word** naming convention (e.g., `fXO_Obsession`, `fXO_Orbit`)
 - Character over feature count — every feature must support a sonic pillar
 - Dry patches must sound compelling before effects are applied
 - Presets are a core product feature, not an afterthought
@@ -84,6 +85,14 @@ are next up after current Opus sessions resume.
 | OPENSKY | XOpenSky | Sunburst `#FF8C00` |
 | OCEANDEEP | XOceanDeep | Trench Violet `#2D0A4E` |
 | OUIE | XOuïe | Hammerhead Steel `#708090` |
+
+### Phase 2 Architecture — Effects Ecosystem & Prime Movers (approved 2026-03-17)
+
+**Prime Mover engines:** A new send-only engine class that drives a 4-slot effects chain. Prime Movers generate source audio and feed it into the coupling matrix but never receive coupling input. `MaxSlots` remains 4 for generators; the Prime Mover occupies a separate dedicated slot. Candidates: `XO_Origin` (multi-osc), `XO_Overture` (sample player), `XO_Oscillograph` (wavetable+FM), `XO_Ouverture` (mic/line input).
+
+**fXO_ effects engines:** Built on 6-8 shared effect cores (`ReverbCore`, `DelayCore`, `SaturationCore`, `ModulationCore`, `FilterCore`, `SpatialCore`, `PitchCore`, `DynamicsCore`). Regional engines (e.g., `fXO_Outpost` for Midwest, `fXO_Overcast` for Nordic) are thin adapters that configure 2-3 shared cores into a curated chain. Effects extend `SynthEngine` with optional audio input (Path B). Full design: `Skills/sro-optimizer/SKILL.md` §Phase 2 Roadmap.
+
+**Dynamic oversampling:** Early Phase 2 — `OversamplingManager` component triggers 4×→2×→1× reduction based on `SROAuditor` budget alarm.
 
 ### Engine ID vs Parameter Prefix
 
