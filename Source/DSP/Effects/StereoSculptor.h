@@ -1,6 +1,7 @@
 #pragma once
 #include <cmath>
 #include <algorithm>
+#include "../FastMath.h"
 
 namespace xomnibus {
 
@@ -38,16 +39,25 @@ public:
     void setMidWidth (float w)   { midWidth  = std::clamp (w, 0.0f, 2.0f); }
     void setHighWidth (float w)  { highWidth = std::clamp (w, 0.0f, 2.0f); }
 
+    // SRO: Dirty-flag coefficient caching — skip recalc if value unchanged
     void setLowCrossover (float f)
     {
-        lowCross = std::clamp (f, 60.0f, 500.0f);
-        recalcCrossovers();
+        float clamped = std::clamp (f, 60.0f, 500.0f);
+        if (std::abs (clamped - lowCross) > 0.01f)
+        {
+            lowCross = clamped;
+            recalcCrossovers();
+        }
     }
 
     void setHighCrossover (float f)
     {
-        highCross = std::clamp (f, 2000.0f, 12000.0f);
-        recalcCrossovers();
+        float clamped = std::clamp (f, 2000.0f, 12000.0f);
+        if (std::abs (clamped - highCross) > 0.01f)
+        {
+            highCross = clamped;
+            recalcCrossovers();
+        }
     }
 
     void setMix (float m) { mix = std::clamp (m, 0.0f, 1.0f); }
@@ -137,9 +147,10 @@ private:
 
     void calcLPF (BiquadCoeffs& c, float freq)
     {
+        // SRO: fastSin/fastCos replace std:: trig (per-setter coefficient calc)
         float w0 = 2.0f * 3.14159265f * freq / static_cast<float> (sr);
-        float cosW0 = std::cos (w0);
-        float sinW0 = std::sin (w0);
+        float cosW0 = fastCos (w0);
+        float sinW0 = fastSin (w0);
         float alpha = sinW0 / (2.0f * 0.707f);
         float a0 = 1.0f + alpha;
         c.b0 = ((1.0f - cosW0) / 2.0f) / a0;
@@ -151,9 +162,10 @@ private:
 
     void calcHPF (BiquadCoeffs& c, float freq)
     {
+        // SRO: fastSin/fastCos replace std:: trig (per-setter coefficient calc)
         float w0 = 2.0f * 3.14159265f * freq / static_cast<float> (sr);
-        float cosW0 = std::cos (w0);
-        float sinW0 = std::sin (w0);
+        float cosW0 = fastCos (w0);
+        float sinW0 = fastSin (w0);
         float alpha = sinW0 / (2.0f * 0.707f);
         float a0 = 1.0f + alpha;
         c.b0 = ((1.0f + cosW0) / 2.0f) / a0;
@@ -190,11 +202,12 @@ private:
         right = mid - side;
     }
 
+    // SRO: Use shared flushDenormal from FastMath.h
     void flushAllStates()
     {
         auto flush = [] (BiquadState& s) {
-            auto fd = [] (float& v) { if (std::abs (v) < 1e-15f) v = 0.0f; };
-            fd (s.x1); fd (s.x2); fd (s.y1); fd (s.y2);
+            s.x1 = flushDenormal (s.x1); s.x2 = flushDenormal (s.x2);
+            s.y1 = flushDenormal (s.y1); s.y2 = flushDenormal (s.y2);
         };
         flush (lp1StateL); flush (lp1StateR);
         flush (hp2StateL); flush (hp2StateR);

@@ -585,6 +585,39 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     return { params.begin(), params.end() };
 }
 
+// SRO: Engine-specific silence gate hold times.
+// Tuned to each engine's tail characteristics per SilenceGate.h guidance:
+//   Percussive (fast decay, no internal reverb):           100ms
+//   Standard (typical synth voices):                       200ms
+//   Reverb-tail (internal delay/reverb/granular):          500ms
+//   Infinite-sustain (self-sustaining feedback/metabolic): 1000ms
+//   Visual-only (OPTIC — no audio output):                  50ms
+static float silenceGateHoldMs(const juce::String& engineId)
+{
+    // Percussive — 100ms
+    if (engineId == "Onset"     || engineId == "Bite"      || engineId == "OddfeliX"
+     || engineId == "Origami")
+        return 100.0f;
+
+    // Reverb-tail / granular / delay — 500ms
+    if (engineId == "Overdub"   || engineId == "Opal"      || engineId == "Oceanic"
+     || engineId == "Obscura"   || engineId == "Osprey"    || engineId == "Osteria"
+     || engineId == "Ombre"     || engineId == "Overlap")
+        return 500.0f;
+
+    // Infinite-sustain / self-exciting feedback — 1000ms
+    if (engineId == "Organon"   || engineId == "Ouroboros"  || engineId == "Oracle"
+     || engineId == "Owlfish")
+        return 1000.0f;
+
+    // Visual-only — 50ms (Optic generates no audio; gate closes fast)
+    if (engineId == "Optic")
+        return 50.0f;
+
+    // Standard — 200ms (all remaining engines)
+    return 200.0f;
+}
+
 void XOmnibusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
     currentSampleRate = sampleRate;
@@ -605,10 +638,8 @@ void XOmnibusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
         if (eng)
         {
             eng->prepare(sampleRate, samplesPerBlock);
-            // SRO: Prepare silence gate with engine-appropriate hold time.
-            // Default 200ms is safe for most engines; engines with long tails
-            // (reverb, granular, infinite-sustain) should override in their prepare().
-            eng->prepareSilenceGate(sampleRate, samplesPerBlock, 200.0f);
+            eng->prepareSilenceGate(sampleRate, samplesPerBlock,
+                                    silenceGateHoldMs(eng->getEngineId()));
         }
     }
 }
@@ -865,8 +896,8 @@ void XOmnibusProcessor::loadEngine(int slot, const std::string& engineId)
 
     newEngine->attachParameters(apvts);
     newEngine->prepare(currentSampleRate, currentBlockSize);
-    // SRO: Prepare silence gate for new engine (200ms default hold time)
-    newEngine->prepareSilenceGate(currentSampleRate, currentBlockSize, 200.0f);
+    newEngine->prepareSilenceGate(currentSampleRate, currentBlockSize,
+                                  silenceGateHoldMs(newEngine->getEngineId()));
 
     // Move the old engine to crossfade-out state
     auto oldEngine = std::atomic_load(&engines[slot]);

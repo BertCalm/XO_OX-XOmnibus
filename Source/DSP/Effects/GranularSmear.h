@@ -5,6 +5,7 @@
 #include <vector>
 #include <cstring>
 #include "../FastMath.h"
+#include "../SRO/LookupTable.h"
 
 namespace xomnibus {
 
@@ -89,8 +90,8 @@ public:
                     // Hann window position
                     float phase = static_cast<float> (grain.grainLength - grain.samplesRemaining)
                                 / static_cast<float> (grain.grainLength);
-                    // SRO: fastCos replaces std::cos (per-sample × 4 grains)
-                    float window = 0.5f * (1.0f - fastCos (2.0f * 3.14159265f * phase));
+                    // SRO: Hann LUT replaces trig (per-sample × 4 grains, zero trig)
+                    float window = SROTables::hann().lookupNormalized (phase);
 
                     int rp = grain.readPos % bufferSize;
                     if (rp < 0) rp += bufferSize;

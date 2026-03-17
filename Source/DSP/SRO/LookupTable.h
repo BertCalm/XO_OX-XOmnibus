@@ -151,6 +151,17 @@ struct SROTables
         return table;
     }
 
+    /// Hann window, t in [0, 1]. 1024 points.
+    /// Used by GranularSmear, crossfades, and any windowed block processing.
+    /// hann(t) = 0.5 * (1 - cos(2*pi*t))
+    static const LookupTable<1024>& hann()
+    {
+        static const auto table = LookupTable<1024>::generate (
+            0.0f, 1.0f,
+            [] (float t) { return 0.5f * (1.0f - std::cos (2.0f * 3.14159265f * t)); });
+        return table;
+    }
+
     /// Soft-clip curve, x in [-2, 2]. 1024 points.
     /// Musical cubic saturation matching FastMath::softClip.
     static const LookupTable<1024>& softClip()

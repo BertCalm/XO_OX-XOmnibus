@@ -1,6 +1,7 @@
 #pragma once
 #include <cmath>
 #include <algorithm>
+#include "../FastMath.h"
 
 namespace xomnibus {
 
@@ -26,10 +27,15 @@ public:
     }
 
     /// tiltAmount: -1.0 (full dark) to +1.0 (full bright)
+    // SRO: Dirty-flag coefficient caching — skip recalc if value unchanged
     void setTilt (float tiltAmount)
     {
-        tilt = std::clamp (tiltAmount, -1.0f, 1.0f);
-        recalcCoeffs();
+        float clamped = std::clamp (tiltAmount, -1.0f, 1.0f);
+        if (std::abs (clamped - tilt) > 0.0001f)
+        {
+            tilt = clamped;
+            recalcCoeffs();
+        }
     }
 
     /// mix: 0.0 = fully dry, 1.0 = fully wet
@@ -118,9 +124,10 @@ private:
             float normalized = static_cast<float> (s) / static_cast<float> (kNumStages - 1);
             float gainDb = tilt * 6.0f * (2.0f * normalized - 1.0f); // ±6dB per stage at extremes
 
-            float A  = std::pow (10.0f, gainDb / 20.0f);
+            // SRO: dbToGain + fastTan replace std::pow/tan (per-block coeff calc)
+            float A  = dbToGain (gainDb);
             float w0 = 2.0f * 3.14159265f * kFreqs[s] / static_cast<float> (sr);
-            float t  = std::tan (w0 * 0.5f);
+            float t  = fastTan (w0 * 0.5f);
 
             // First-order shelving filter coefficients
             // High shelf when gain > 0 at high freq, low shelf when gain > 0 at low freq
@@ -148,10 +155,7 @@ private:
         }
     }
 
-    static float flushDenormal (float x)
-    {
-        return (std::abs (x) < 1.0e-15f) ? 0.0f : x;
-    }
+    // SRO: uses shared flushDenormal from FastMath.h
 };
 
 } // namespace xomnibus
