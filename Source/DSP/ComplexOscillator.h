@@ -1,6 +1,7 @@
 #pragma once
 #include <cmath>
 #include <algorithm>
+#include "FastMath.h"
 
 namespace xomnibus {
 
@@ -74,8 +75,9 @@ public:
 
             // Apply FM to B: phase-modulate B's signal
             // We approximate this by time-varying waveshaping
-            float modulatedB = b * std::cos (fmModB * 3.14159265f)
-                             + b * std::sin (fmModB * 3.14159265f) * 0.5f;
+            // SRO: fastCos/fastSin replace std:: trig (per-sample coupling)
+            float modulatedB = b * fastCos (fmModB * 3.14159265f)
+                             + b * fastSin (fmModB * 3.14159265f) * 0.5f;
 
             // --- Bidirectional Timbre Mod ---
             // B → A waveshape modulation
@@ -88,7 +90,8 @@ public:
             {
                 float driven = a * (1.0f + foldAmount * 4.0f);
                 // Soft wavefold
-                modulatedA = std::sin (driven) * (1.0f / (1.0f + foldAmount));
+                // SRO: fastSin replaces std::sin (per-sample wavefold)
+                modulatedA = fastSin (driven) * (1.0f / (1.0f + foldAmount));
                 modulatedA = a + foldAmount * (modulatedA - a);
             }
 

@@ -1,6 +1,7 @@
 #pragma once
 #include "SynthEngine.h"
 #include "../Engines/Opal/OpalEngine.h"
+#include "../DSP/FastMath.h"
 #include <array>
 #include <vector>
 #include <atomic>
@@ -152,6 +153,7 @@ public:
 
             if (isAudioRoute)
             {
+                // Audio routes: per-sample stereo-to-mono mixdown (must stay audio rate)
                 for (int i = 0; i < limit; ++i)
                     couplingBuffer[static_cast<size_t>(i)] =
                         (source->getSampleForCoupling(0, i)
@@ -159,9 +161,12 @@ public:
             }
             else
             {
-                for (int i = 0; i < limit; ++i)
-                    couplingBuffer[static_cast<size_t>(i)] =
-                        source->getSampleForCoupling(0, i);
+                // SRO: Control-rate decimation for modulation coupling types.
+                // Modulation signals (amp, LFO, envelope, pitch) change slowly —
+                // sample source every kControlRateRatio samples and linearly
+                // interpolate between control points (Buchla 266 topology).
+                // Saves ~97% of getSampleForCoupling calls for these route types.
+                fillControlRateBuffer(source, limit);
             }
 
             dest->applyCouplingInput(route.type, route.amount,
@@ -176,11 +181,55 @@ public:
     }
 
 private:
+    // SRO: Control-rate decimation ratio for modulation coupling types.
+    // Must be power of 2. 32 = sample every 32nd sample (~1.5 kHz at 48 kHz).
+    static constexpr int kControlRateRatio = 32;
+
     std::shared_ptr<std::vector<CouplingRoute>> routeList =
         std::make_shared<std::vector<CouplingRoute>>();
     std::array<SynthEngine*, MaxSlots> activeEngines = {};
     std::vector<float> couplingBuffer;   // L / mono scratch — pre-allocated in prepare()
     std::vector<float> couplingBufferR;  // R scratch for AudioToBuffer stereo push
+
+    //-- SRO: Control-rate buffer fill with linear interpolation ----------------
+    //
+    // For modulation routes (AmpToFilter, LFOToPitch, EnvToMorph, etc.),
+    // the source signal is inherently control-rate. Instead of reading
+    // every sample, we read every kControlRateRatio-th sample and linearly
+    // interpolate between control points. This mirrors the Buchla 266
+    // "source of uncertainty" topology where CV line capacitance produces
+    // smooth transitions between discrete control updates.
+    //
+    void fillControlRateBuffer(SynthEngine* source, int numSamples)
+    {
+        if (numSamples <= 0)
+            return;
+
+        const float invRatio = 1.0f / static_cast<float>(kControlRateRatio);
+        float currentVal = source->getSampleForCoupling(0, 0);
+
+        int blockStart = 0;
+        while (blockStart < numSamples)
+        {
+            int blockEnd = std::min(blockStart + kControlRateRatio, numSamples);
+            // Read next control point (or last sample if at buffer end)
+            float nextVal = source->getSampleForCoupling(0,
+                std::min(blockEnd, numSamples - 1));
+
+            // Linearly interpolate between control points
+            int blockLen = blockEnd - blockStart;
+            float invLen = (blockLen > 1) ? 1.0f / static_cast<float>(blockLen) : 1.0f;
+            for (int i = 0; i < blockLen; ++i)
+            {
+                float t = static_cast<float>(i) * invLen;
+                couplingBuffer[static_cast<size_t>(blockStart + i)] =
+                    flushDenormal(currentVal + t * (nextVal - currentVal));
+            }
+
+            currentVal = nextVal;
+            blockStart = blockEnd;
+        }
+    }
 
     //-- AudioToBuffer push path -----------------------------------------------
     //

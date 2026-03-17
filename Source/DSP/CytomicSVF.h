@@ -67,7 +67,8 @@ public:
 
         // Prewarp cutoff frequency for trapezoidal integration
         constexpr float pi = 3.14159265358979323846f;
-        g = std::tan (pi * fc / sampleRate);
+        // SRO: fastTan replaces std::tan (per-setter coefficient calc)
+        g = fastTan (pi * fc / sampleRate);
 
         // Map resonance [0,1] to damping factor k.
         // k = 2 at res=0 (Butterworth), k = 0 at res=1 (self-oscillation).
@@ -76,7 +77,9 @@ public:
         // Shelf gain coefficient (only used in shelf modes)
         if (mode == Mode::LowShelf || mode == Mode::HighShelf)
         {
-            A = std::pow (10.0f, shelfGainDb / 40.0f);  // sqrt of voltage gain
+            // SRO: dbToGain replaces std::pow (per-setter shelf calc)
+            // pow(10, dB/40) = dbToGain(dB/2) since dbToGain(x) = pow(10, x/20)
+            A = dbToGain (shelfGainDb * 0.5f);
         }
         else
         {

@@ -11,13 +11,14 @@ and mutate into sounds impossible with any single synth. **34 engines** are regi
 - **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
-- **Presets:** 2,550 factory presets in `.xometa` format, 7 mood categories (incl. Family), 6D Sonic DNA
+- **Presets:** 2,550 factory presets in `.xometa` format, 8 mood categories (incl. Family, Submerged), 6D Sonic DNA
 - **Formats:** AU, Standalone (macOS); AUv3, Standalone (iOS); VST3 (v2)
 - **Design:** Gallery Model — warm white shell frames engine accent colors. Light mode default.
 
 ## Brand Rules
 
 - All XO_OX instruments follow the **XO + O-word** naming convention
+- Effect engines use the **fXO_ + O-word** naming convention (e.g., `fXO_Obsession`, `fXO_Orbit`)
 - Character over feature count — every feature must support a sonic pillar
 - Dry patches must sound compelling before effects are applied
 - Presets are a core product feature, not an afterthought
@@ -85,6 +86,14 @@ are next up after current Opus sessions resume.
 | OCEANDEEP | XOceanDeep | Trench Violet `#2D0A4E` |
 | OUIE | XOuïe | Hammerhead Steel `#708090` |
 
+### Phase 2 Architecture — Effects Ecosystem & Prime Movers (approved 2026-03-17)
+
+**Prime Mover engines:** A new send-only engine class that drives a 4-slot effects chain. Prime Movers generate source audio and feed it into the coupling matrix but never receive coupling input. `MaxSlots` remains 4 for generators; the Prime Mover occupies a separate dedicated slot. Candidates: `XO_Origin` (multi-osc), `XO_Overture` (sample player), `XO_Oscillograph` (wavetable+FM), `XO_Ouverture` (mic/line input).
+
+**fXO_ effects engines:** Built on 6-8 shared effect cores (`ReverbCore`, `DelayCore`, `SaturationCore`, `ModulationCore`, `FilterCore`, `SpatialCore`, `PitchCore`, `DynamicsCore`). Regional engines (e.g., `fXO_Outpost` for Midwest, `fXO_Overcast` for Nordic) are thin adapters that configure 2-3 shared cores into a curated chain. Effects extend `SynthEngine` with optional audio input (Path B). Full design: `Skills/sro-optimizer/SKILL.md` §Phase 2 Roadmap.
+
+**Dynamic oversampling:** Early Phase 2 — `OversamplingManager` component triggers 4×→2×→1× reduction based on `SROAuditor` budget alarm.
+
 ### Engine ID vs Parameter Prefix
 
 Engine IDs (used in preset `"engines"` arrays, `"parameters"` keys, UI, and coupling routes)
@@ -148,6 +157,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
 | `Docs/xomnibus_sound_design_guides.md` | Sound design guide (30 of 34 engines in unified guide; 4 Constellation engines have dedicated guides in Docs/) |
 | `Source/DSP/` | Shared DSP library |
+| `Source/DSP/SRO/` | SRO framework (SilenceGate, ControlRateReducer, LookupTable, SROAuditor) |
 | `Source/UI/` | Gallery Model UI components |
 | `Source/Export/` | XPN export pipeline |
 | `Presets/XOmnibus/{mood}/` | Factory presets by mood |
@@ -157,7 +167,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 ## Preset System
 
 - `.xometa` JSON files are the source of truth (version-controlled)
-- 7 moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family
+- 8 moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged
 - 4 macros: CHARACTER, MOVEMENT, COUPLING, SPACE
 - 6D Sonic DNA: brightness, warmth, movement, density, space, aggression
 - Naming: 2-3 words, evocative, max 30 chars, no duplicates, no jargon
@@ -290,6 +300,7 @@ Reusable skill guides live in `Skills/` — invoke the relevant one before start
 | [engine-health-check](Skills/engine-health-check/SKILL.md) | `/engine-health-check` | Quick D001–D006 doctrine check on any engine |
 | [dna-designer](Skills/dna-designer/SKILL.md) | `/dna-designer` | Assigning accurate 6D Sonic DNA to presets |
 | [xpn-export-specialist](Skills/xpn-export-specialist/SKILL.md) | `/xpn-export-specialist` | Full XPN/MPC export pipeline |
+| [sro-optimizer](Skills/sro-optimizer/SKILL.md) | `/sro-optimizer` | CPU audit, zero-idle bypass, LUT replacement, control-rate coupling optimization |
 | synth-seance (`~/.claude/skills/`) | `/synth-seance` | Ghost council full engine quality evaluation |
 | post-engine-completion-checklist (`~/.claude/skills/`) | `/post-engine-completion-checklist` | 5-point post-build audit |
 | producers-guild (`~/.claude/skills/`) | `/producers-guild` | 12-specialist market/product review |

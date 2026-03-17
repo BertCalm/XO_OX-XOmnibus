@@ -17,7 +17,7 @@
     },
     "mood": {
       "type": "string",
-      "enum": ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "User"],
+      "enum": ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "Submerged", "User"],
       "description": "Top-level browsing category"
     },
     "engines": {

@@ -597,7 +597,7 @@ Single source of truth. JSON files replacing all per-engine C++ presets and `.xo
 - Coupling types (enum): `Amp->Filter`, `Amp->Pitch`, `LFO->Pitch`, `Env->Morph`, `Audio->FM`, `Audio->Ring`, `Filter->Filter`, `Amp->Choke`, `Rhythm->Blend`, `Env->Decay`
 - Coupling intensity: `None`, `Subtle`, `Moderate`, `Deep`
 
-### 8.3 Mood Categories (6)
+### 8.3 Mood Categories (8)
 
 | Mood | Intent | UI Color |
 |------|--------|----------|
@@ -607,6 +607,8 @@ Single source of truth. JSON files replacing all per-engine C++ presets and `.xo
 | **Prism** | Leads, keys, bells, melodic, articulate | Silver `#B8C4CC` |
 | **Flux** | Glitchy, unstable, experimental, lo-fi | Crimson `#C0392B` |
 | **Aether** | Cinematic, transcendent, ambient, spiritual | Indigo `#4A3680` |
+| **Family** | Constellation family presets | Warm White `#F8F6F3` |
+| **Submerged** | Generator + FX engine coupling — aquatic, processed, effected | Deep Aqua `#006B7A` |
 
 ### 8.4 Macro System (4 Unified)
 
@@ -692,7 +694,7 @@ Cross-engine presets additionally:
 ### 8.9 Preset Browser UX
 
 ```
-[Mood tabs: Foundation | Atmosphere | Entangled | Prism | Flux | Aether]
+[Mood tabs: Foundation | Atmosphere | Entangled | Prism | Flux | Aether | Family | Submerged]
     ↓
 [Engine filter: All | OddfeliX/OddOscar | XOverdub | XOdyssey | XOblong | XOnset | Multi]
     ↓
@@ -1105,7 +1107,7 @@ Modules used by multiple engines, extracted to `Source/DSP/`:
 | **DNA** | 6-dimensional sonic fingerprint (brightness, warmth, movement, density, space, aggression) |
 | **Exhibition** | An engine's visual presentation within the Gallery Model |
 | **Gallery** | The neutral shell (warm white) that frames engine panels |
-| **Mood** | One of 6 browsing categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether) |
+| **Mood** | One of 8 browsing categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged) |
 | **Normalled** | Pre-wired default coupling route (can be overridden by explicit patching) |
 | **PlaySurface** | Unified playing interface with 4 zones and 3 note input modes |
 | **XO Gold** | `#E9C46A` — the brand color constant, used for coupling strip, macros, active states |

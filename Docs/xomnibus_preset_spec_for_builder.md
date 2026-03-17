@@ -80,7 +80,7 @@ Single source of truth. JSON files replacing all per-engine C++ presets and `.xo
 
 ## 4. Mood Categories (Browsing Taxonomy)
 
-6 universal moods replace 42 per-engine categories.
+8 mood categories for browsing.
 
 | Mood | Intent | UI Color |
 |------|--------|----------|
@@ -90,6 +90,8 @@ Single source of truth. JSON files replacing all per-engine C++ presets and `.xo
 | **Prism** | Leads, keys, bells, melodic, articulate | Silver |
 | **Flux** | Glitchy, unstable, experimental, lo-fi | Crimson |
 | **Aether** | Cinematic, transcendent, ambient, spiritual | Indigo |
+| **Family** | Constellation family presets | Warm White |
+| **Submerged** | Generator + FX engine coupling — aquatic, processed, effected | Deep Aqua |
 
 **Current library distribution (519 presets):**
 

@@ -16,6 +16,10 @@
 #include "../DSP/Effects/PsychoacousticWidth.h"
 #include "../DSP/Effects/MultibandCompressor.h"
 #include "../DSP/Effects/Compressor.h"
+#include "../DSP/Effects/fXOsmosis.h"
+#include "../DSP/Effects/fXOneiric.h"
+#include "../DSP/Effects/BrickwallLimiter.h"
+#include "../DSP/Effects/DCBlocker.h"
 #include "MasterFXSequencer.h"
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <array>
@@ -25,28 +29,33 @@ namespace xomnibus {
 //==============================================================================
 // MasterFXChain — Post-mix master effects for XOmnibus.
 //
-// Signal chain (18 stages, fixed order):
+// Signal chain (22 stages, fixed order):
 //   1.  Saturation        — Tape/Tube/Digital/FoldBack via Saturator (mode select)
 //   2.  Corroder          — Digital erosion: bitcrush + SR reduce + FM distortion
 //   3.  Vibe Knob         — Bipolar character: GRIT(+) ←→ SWEET(−) in one dial
 //   4.  Spectral Tilt     — Cascaded shelving: shift spectral energy up/down
 //   5.  Transient Designer— Attack/sustain shaping via envelope followers
-//   6.  Stereo Delay      — Spatial echo with diffusion, autoclear, tape feedback
-//   7.  Combulator        — Tuned comb bank with noise exciter (pitched resonance)
-//   8.  Doppler           — Distance-based filtering + pitch micro-shift + level
-//   9.  Space Reverb      — Algorithmic reverb (Schroeder-Moorer)
-//   10. Freq Shifter      — Hilbert transform frequency shifter (metallic/alien)
-//   11. Modulation FX     — Chorus/Flanger/Ensemble/Drift
-//   12. Granular Smear    — Micro-granular buffer: transients → texture
-//   13. Harmonic Exciter  — Parallel HF saturation for air & presence
-//   14. Stereo Sculptor   — M/S frequency-dependent stereo field shaping
-//   15. Psychoacoustic Width — Haas + complementary comb decorrelation
-//   16. Multiband OTT     — 3-band upward+downward compression
-//   17. Bus Compressor    — Single-band output glue (parallel blend)
-//   18. Sequenced Mod     — Rhythmic parameter animation (non-audio)
+//   6.  fXOsmosis         — Membrane transfer: dynamic filter bank breathes with input
+//   7.  Multiband OTT     — 3-band upward+downward compression (pre-spatial)
+//   8.  Stereo Delay      — Spatial echo with diffusion, autoclear, tape feedback
+//   9.  Combulator        — Tuned comb bank with noise exciter (pitched resonance)
+//   10. Doppler           — Distance-based filtering + pitch micro-shift + level
+//   11. Space Reverb      — Algorithmic reverb (Schroeder-Moorer)
+//   12. Freq Shifter      — Hilbert transform frequency shifter (metallic/alien)
+//   13. fXOneiric         — Dream state: pitch-shifted feedback delay (spectral spirals)
+//   14. Modulation FX     — Chorus/Flanger/Ensemble/Drift
+//   15. Granular Smear    — Micro-granular buffer: transients → texture
+//   16. Harmonic Exciter  — Parallel HF saturation for air & presence
+//   17. Stereo Sculptor   — M/S frequency-dependent stereo field shaping
+//   18. Psychoacoustic Width — Haas + complementary comb decorrelation
+//   19. Bus Compressor    — Single-band output glue (parallel blend)
+//   20. Brickwall Limiter — True-peak safety limiter (1ms lookahead, ∞:1)
+//   21. DC Blocker        — 10 Hz HPF removes any residual DC offset
+//   22. Sequenced Mod     — Rhythmic parameter animation (non-audio)
 //
 // All stages bypass at zero CPU when their mix/depth/enable = 0.
-// Sequencer modulates stages 1-17 parameters rhythmically (15 targets).
+// Sequencer modulates stages 1-19 parameters rhythmically (17 targets).
+// Safety stages 20-21 are always active (no bypass).
 //==============================================================================
 class MasterFXChain
 {
@@ -74,50 +83,62 @@ public:
         // Stage 4: Spectral Tilt
         spectralTilt.prepare (sampleRate);
 
-        // Stage 4: Transient Designer
+        // Stage 5: Transient Designer
         transientDesigner.prepare (sampleRate);
 
-        // Stage 5: Delay
+        // Stage 6: fXOsmosis (membrane transfer)
+        osmosis.prepare (sampleRate);
+
+        // Stage 7: Multiband OTT (pre-spatial dynamics)
+        multibandComp.prepare (sampleRate);
+
+        // Stage 8: Delay
         delay.prepare (sampleRate, samplesPerBlock);
 
-        // Stage 6: Combulator
+        // Stage 9: Combulator
         combulator.prepare (sampleRate);
 
-        // Stage 7: Doppler
+        // Stage 10: Doppler
         doppler.prepare (sampleRate);
 
-        // Stage 8: Reverb
+        // Stage 11: Reverb
         reverb.prepare (sampleRate);
         reverb.setWidth (1.0f);
 
-        // Stage 9: Frequency Shifter
+        // Stage 12: Frequency Shifter
         freqShifter.prepare (sampleRate);
 
-        // Stage 10: Modulation
+        // Stage 13: fXOneiric (dream state)
+        oneiric.prepare (sampleRate, samplesPerBlock);
+
+        // Stage 14: Modulation
         modulation.prepare (sampleRate, samplesPerBlock);
 
-        // Stage 11: Granular Smear
+        // Stage 15: Granular Smear
         granularSmear.prepare (sampleRate);
 
-        // Stage 12: Harmonic Exciter
+        // Stage 16: Harmonic Exciter
         harmonicExciter.prepare (sampleRate);
 
-        // Stage 13: Stereo Sculptor
+        // Stage 17: Stereo Sculptor
         stereoSculptor.prepare (sampleRate);
 
-        // Stage 14: Psychoacoustic Width
+        // Stage 18: Psychoacoustic Width
         psychoWidth.prepare (sampleRate);
 
-        // Stage 15: Multiband OTT
-        multibandComp.prepare (sampleRate);
-
-        // Stage 16: Bus Compressor
+        // Stage 19: Bus Compressor
         compressor.prepare (sampleRate);
         compressor.setThreshold (-12.0f);
         compressor.setKnee (6.0f);
         compressor.setMakeupGain (0.0f);
 
-        // Stage 17: Sequencer
+        // Stage 20: Brickwall Limiter
+        limiter.prepare (sampleRate, samplesPerBlock);
+
+        // Stage 21: DC Blocker
+        dcBlocker.prepare (sampleRate);
+
+        // Stage 22: Sequencer (non-audio)
         sequencer.prepare (sampleRate);
 
         // Dry buffer for compressor parallel blend
@@ -158,12 +179,23 @@ public:
         const float tiltAmount   = pTiltAmount   ? pTiltAmount->load()   : 0.0f;
         const float tiltMix      = pTiltMix      ? pTiltMix->load()      : 1.0f;
 
-        // Stage 4: Transient Designer
+        // Stage 5: Transient Designer
         const float tdAttack     = pTDAttack     ? pTDAttack->load()     : 0.0f;
         const float tdSustain    = pTDSustain    ? pTDSustain->load()    : 0.0f;
         const float tdMix        = pTDMix        ? pTDMix->load()        : 0.0f;
 
-        // Stage 5: Delay
+        // Stage 6: fXOsmosis
+        const float osmMembrane  = pOsmMembrane  ? pOsmMembrane->load()  : 0.5f;
+        const float osmReact     = pOsmReact     ? pOsmReact->load()     : 0.5f;
+        const float osmRes       = pOsmRes       ? pOsmRes->load()       : 0.4f;
+        const float osmSat       = pOsmSat       ? pOsmSat->load()       : 0.3f;
+        const float osmMix       = pOsmMix       ? pOsmMix->load()       : 0.0f;
+
+        // Stage 7: Multiband OTT (pre-spatial)
+        const float ottMix       = pOttMix       ? pOttMix->load()       : 0.0f;
+        const float ottDepth     = pOttDepth     ? pOttDepth->load()     : 0.7f;
+
+        // Stage 8: Delay
         const float delayTime    = pDelayTime    ? pDelayTime->load()    : 375.0f;
         const float delayFB      = pDelayFB      ? pDelayFB->load()      : 0.3f;
         const float delayMix     = pDelayMix     ? pDelayMix->load()     : 0.0f;
@@ -197,7 +229,15 @@ public:
         const float fshiftMode   = pFShiftMode   ? pFShiftMode->load()   : 0.0f;
         const float fshiftFB     = pFShiftFB     ? pFShiftFB->load()     : 0.0f;
 
-        // Stage 10: Modulation
+        // Stage 12: fXOneiric
+        const float onDelayMs    = pOnDelayMs    ? pOnDelayMs->load()    : 350.0f;
+        const float onShiftHz    = pOnShiftHz    ? pOnShiftHz->load()    : 5.0f;
+        const float onFeedback   = pOnFeedback   ? pOnFeedback->load()   : 0.6f;
+        const float onDamping    = pOnDamping    ? pOnDamping->load()    : 0.3f;
+        const float onSpread     = pOnSpread     ? pOnSpread->load()     : 0.3f;
+        const float onMix        = pOnMix        ? pOnMix->load()        : 0.0f;
+
+        // Stage 13: Modulation
         const float modRate      = pModRate      ? pModRate->load()      : 0.8f;
         const float modDepth     = pModDepth     ? pModDepth->load()     : 0.0f;
         const float modMix       = pModMix       ? pModMix->load()       : 0.0f;
@@ -231,15 +271,15 @@ public:
         const float pWidthMono   = pPWidthMono   ? pPWidthMono->load()   : 0.5f;
         const float pWidthMix    = pPWidthMix    ? pPWidthMix->load()    : 0.0f;
 
-        // Stage 15: Multiband OTT
-        const float ottMix       = pOttMix       ? pOttMix->load()       : 0.0f;
-        const float ottDepth     = pOttDepth     ? pOttDepth->load()     : 0.7f;
-
-        // Stage 16: Bus Compressor
+        // Stage 19: Bus Compressor
         const float compRatio    = pCompRatio->load();
         const float compAttack   = pCompAttack->load();
         const float compRelease  = pCompRelease->load();
         const float compMix      = pCompMix->load();
+
+        // Stage 20: Brickwall Limiter
+        const float limCeiling   = pLimCeiling   ? pLimCeiling->load()   : -0.3f;
+        const float limRelease   = pLimRelease   ? pLimRelease->load()   : 50.0f;
 
         // Stage 17: Sequencer
         const float seqEnabled   = pSeqEnabled   ? pSeqEnabled->load()   : 0.0f;
@@ -275,7 +315,9 @@ public:
             float rms = 0.0f;
             for (int i = 0; i < numSamples; ++i)
                 rms += L[i] * L[i] + R[i] * R[i];
-            rms = std::sqrt (rms / static_cast<float> (numSamples * 2));
+            // SRO: fast sqrt via 2^(0.5 * log2(x)) replaces std::sqrt (per-block, sequencer only)
+            float rmsArg = rms / static_cast<float> (numSamples * 2);
+            rms = (rmsArg > 1e-10f) ? fastPow2 (0.5f * fastLog2 (rmsArg)) : 0.0f;
 
             sequencer.updateBlock (ppqPosition, bpm, numSamples, rms);
             seqMod1 = sequencer.getModValue1();
@@ -371,7 +413,7 @@ public:
         }
 
         // ====================================================================
-        // Stage 4: Transient Designer
+        // Stage 5: Transient Designer
         // ====================================================================
         float effectiveTDAttack = applySeqModBipolar (tdAttack,
             MasterFXSequencer::Target::TransientAttack, 0.6f);
@@ -385,7 +427,33 @@ public:
         }
 
         // ====================================================================
-        // Stage 5: Stereo Delay
+        // Stage 6: fXOsmosis (Membrane Transfer)
+        // ====================================================================
+        float effectiveOsmMix = applySeqMod (osmMix,
+            MasterFXSequencer::Target::OsmosisMix, 0.6f);
+
+        if (effectiveOsmMix > 0.001f)
+        {
+            osmosis.setMembraneTone (osmMembrane);
+            osmosis.setReactivity (osmReact);
+            osmosis.setResonance (osmRes);
+            osmosis.setSaturation (osmSat);
+            osmosis.setMix (effectiveOsmMix);
+            osmosis.processBlock (L, R, numSamples);
+        }
+
+        // ====================================================================
+        // Stage 7: Multiband OTT (pre-spatial dynamics)
+        // ====================================================================
+        if (ottMix > 0.001f)
+        {
+            multibandComp.setDepth (ottDepth);
+            multibandComp.setMix (ottMix);
+            multibandComp.processBlock (L, R, numSamples);
+        }
+
+        // ====================================================================
+        // Stage 8: Stereo Delay
         // ====================================================================
         float effectiveDelayMix = applySeqMod (delayMix,
             MasterFXSequencer::Target::DelayMix, 0.8f);
@@ -463,7 +531,24 @@ public:
         }
 
         // ====================================================================
-        // Stage 10: Modulation FX
+        // Stage 12: fXOneiric (Dream State)
+        // ====================================================================
+        float effectiveOnMix = applySeqMod (onMix,
+            MasterFXSequencer::Target::OneiricMix, 0.6f);
+
+        if (effectiveOnMix > 0.001f)
+        {
+            oneiric.setDelayTime (onDelayMs);
+            oneiric.setShift (onShiftHz);
+            oneiric.setFeedback (onFeedback);
+            oneiric.setDamping (onDamping);
+            oneiric.setSpread (onSpread);
+            oneiric.setMix (effectiveOnMix);
+            oneiric.processBlock (L, R, numSamples);
+        }
+
+        // ====================================================================
+        // Stage 13: Modulation FX
         // ====================================================================
         float effectiveModDepth = applySeqMod (modDepth,
             MasterFXSequencer::Target::ModDepth, 0.7f);
@@ -558,17 +643,7 @@ public:
         }
 
         // ====================================================================
-        // Stage 15: Multiband OTT Compressor
-        // ====================================================================
-        if (ottMix > 0.001f)
-        {
-            multibandComp.setDepth (ottDepth);
-            multibandComp.setMix (ottMix);
-            multibandComp.processBlock (L, R, numSamples);
-        }
-
-        // ====================================================================
-        // Stage 16: Bus Compressor (with wet/dry blend)
+        // Stage 19: Bus Compressor (with wet/dry blend)
         // ====================================================================
         float effectiveCompMix = applySeqMod (compMix,
             MasterFXSequencer::Target::CompMix, 0.5f);
@@ -595,6 +670,18 @@ public:
                 buffer.addFrom (1, 0, dryBuffer, 1, 0, safeSamples, dryGain);
             }
         }
+
+        // ====================================================================
+        // Stage 20: Brickwall Limiter (always active — safety net)
+        // ====================================================================
+        limiter.setCeiling (limCeiling);
+        limiter.setRelease (limRelease);
+        limiter.processBlock (L, R, numSamples);
+
+        // ====================================================================
+        // Stage 21: DC Blocker (always active — safety net)
+        // ====================================================================
+        dcBlocker.processBlock (L, R, numSamples);
     }
 
     //--------------------------------------------------------------------------
@@ -606,6 +693,7 @@ public:
 
     //--------------------------------------------------------------------------
     float getCompGainReduction() const { return compressor.getGainReduction(); }
+    float getLimiterGainReduction() const { return limiter.getGainReduction(); }
     int getSeqCurrentStep() const { return sequencer.getCurrentStep(); }
     bool isSeqEnabled() const { return sequencer.isEnabled(); }
     MasterDelay& getDelay() { return delay; }
@@ -618,18 +706,22 @@ public:
         vibeKnob.reset();
         spectralTilt.reset();
         transientDesigner.reset();
+        osmosis.reset();
+        multibandComp.reset();
         delay.reset();
         combulator.reset();
         doppler.reset();
         reverb.reset();
         freqShifter.reset();
+        oneiric.reset();
         modulation.reset();
         granularSmear.reset();
         harmonicExciter.reset();
         stereoSculptor.reset();
         psychoWidth.reset();
-        multibandComp.reset();
         compressor.reset();
+        limiter.reset();
+        dcBlocker.reset();
         sequencer.reset();
     }
 
@@ -654,12 +746,23 @@ private:
         pTiltAmount   = apvts.getRawParameterValue ("master_tiltAmount");
         pTiltMix      = apvts.getRawParameterValue ("master_tiltMix");
 
-        // Stage 4: Transient Designer
+        // Stage 5: Transient Designer
         pTDAttack     = apvts.getRawParameterValue ("master_tdAttack");
         pTDSustain    = apvts.getRawParameterValue ("master_tdSustain");
         pTDMix        = apvts.getRawParameterValue ("master_tdMix");
 
-        // Stage 5: Delay
+        // Stage 6: fXOsmosis
+        pOsmMembrane  = apvts.getRawParameterValue ("master_osmMembrane");
+        pOsmReact     = apvts.getRawParameterValue ("master_osmReactivity");
+        pOsmRes       = apvts.getRawParameterValue ("master_osmResonance");
+        pOsmSat       = apvts.getRawParameterValue ("master_osmSaturation");
+        pOsmMix       = apvts.getRawParameterValue ("master_osmMix");
+
+        // Stage 7: Multiband OTT
+        pOttMix       = apvts.getRawParameterValue ("master_ottMix");
+        pOttDepth     = apvts.getRawParameterValue ("master_ottDepth");
+
+        // Stage 8: Delay
         pDelayTime    = apvts.getRawParameterValue ("master_delayTime");
         pDelayFB      = apvts.getRawParameterValue ("master_delayFeedback");
         pDelayMix     = apvts.getRawParameterValue ("master_delayMix");
@@ -693,7 +796,15 @@ private:
         pFShiftMode   = apvts.getRawParameterValue ("master_fshiftMode");
         pFShiftFB     = apvts.getRawParameterValue ("master_fshiftFeedback");
 
-        // Stage 10: Modulation
+        // Stage 12: fXOneiric
+        pOnDelayMs    = apvts.getRawParameterValue ("master_onDelayTime");
+        pOnShiftHz    = apvts.getRawParameterValue ("master_onShiftHz");
+        pOnFeedback   = apvts.getRawParameterValue ("master_onFeedback");
+        pOnDamping    = apvts.getRawParameterValue ("master_onDamping");
+        pOnSpread     = apvts.getRawParameterValue ("master_onSpread");
+        pOnMix        = apvts.getRawParameterValue ("master_onMix");
+
+        // Stage 13: Modulation
         pModRate      = apvts.getRawParameterValue ("master_modRate");
         pModDepth     = apvts.getRawParameterValue ("master_modDepth");
         pModMix       = apvts.getRawParameterValue ("master_modMix");
@@ -727,17 +838,17 @@ private:
         pPWidthMono   = apvts.getRawParameterValue ("master_pwidthMono");
         pPWidthMix    = apvts.getRawParameterValue ("master_pwidthMix");
 
-        // Stage 15: Multiband OTT
-        pOttMix       = apvts.getRawParameterValue ("master_ottMix");
-        pOttDepth     = apvts.getRawParameterValue ("master_ottDepth");
-
-        // Stage 16: Bus Compressor
+        // Stage 19: Bus Compressor
         pCompRatio    = apvts.getRawParameterValue ("master_compRatio");
         pCompAttack   = apvts.getRawParameterValue ("master_compAttack");
         pCompRelease  = apvts.getRawParameterValue ("master_compRelease");
         pCompMix      = apvts.getRawParameterValue ("master_compMix");
 
-        // Stage 17: Sequencer
+        // Stage 20: Brickwall Limiter
+        pLimCeiling   = apvts.getRawParameterValue ("master_limCeiling");
+        pLimRelease   = apvts.getRawParameterValue ("master_limRelease");
+
+        // Stage 22: Sequencer
         pSeqEnabled   = apvts.getRawParameterValue ("master_seqEnabled");
         pSeqRate      = apvts.getRawParameterValue ("master_seqRate");
         pSeqSteps     = apvts.getRawParameterValue ("master_seqSteps");
@@ -751,25 +862,29 @@ private:
     }
 
     //--------------------------------------------------------------------------
-    // DSP processors (17 stages)
+    // DSP processors (19 stages + sequencer)
     Saturator            saturator;          // 1
     Corroder             corroder;           // 2
     VibeKnob             vibeKnob;           // 3
     SpectralTilt         spectralTilt;       // 4
-    TransientDesigner    transientDesigner;  // 4
-    MasterDelay          delay;              // 5
-    Combulator           combulator;         // 6
-    DopplerEffect        doppler;            // 7
-    LushReverb           reverb;             // 8
-    FrequencyShifter     freqShifter;        // 9
-    MasterModulation     modulation;         // 10
-    GranularSmear        granularSmear;      // 11
-    HarmonicExciter      harmonicExciter;    // 12
-    StereoSculptor       stereoSculptor;     // 13
-    PsychoacousticWidth  psychoWidth;        // 14
-    MultibandCompressor  multibandComp;      // 15
-    Compressor           compressor;         // 16
-    MasterFXSequencer    sequencer;          // 17
+    TransientDesigner    transientDesigner;  // 5
+    fXOsmosis            osmosis;            // 6  — Membrane Transfer
+    MultibandCompressor  multibandComp;      // 7  — OTT (pre-spatial)
+    MasterDelay          delay;              // 8
+    Combulator           combulator;         // 9
+    DopplerEffect        doppler;            // 10
+    LushReverb           reverb;             // 11
+    FrequencyShifter     freqShifter;        // 12
+    fXOneiric            oneiric;            // 13 — Dream State
+    MasterModulation     modulation;         // 14
+    GranularSmear        granularSmear;      // 15
+    HarmonicExciter      harmonicExciter;    // 16
+    StereoSculptor       stereoSculptor;     // 17
+    PsychoacousticWidth  psychoWidth;        // 18
+    Compressor           compressor;         // 19
+    BrickwallLimiter     limiter;            // 20 — Safety
+    DCBlocker            dcBlocker;          // 21 — Safety
+    MasterFXSequencer    sequencer;          // 22
 
     juce::AudioBuffer<float> dryBuffer;
     double sr = 44100.0;
@@ -790,11 +905,20 @@ private:
     // Stage 4: Spectral Tilt
     std::atomic<float>* pTiltAmount  = nullptr;
     std::atomic<float>* pTiltMix     = nullptr;
-    // Stage 4: Transient Designer
+    // Stage 5: Transient Designer
     std::atomic<float>* pTDAttack    = nullptr;
     std::atomic<float>* pTDSustain   = nullptr;
     std::atomic<float>* pTDMix       = nullptr;
-    // Stage 5: Delay
+    // Stage 6: fXOsmosis
+    std::atomic<float>* pOsmMembrane = nullptr;
+    std::atomic<float>* pOsmReact    = nullptr;
+    std::atomic<float>* pOsmRes      = nullptr;
+    std::atomic<float>* pOsmSat      = nullptr;
+    std::atomic<float>* pOsmMix      = nullptr;
+    // Stage 7: Multiband OTT
+    std::atomic<float>* pOttMix      = nullptr;
+    std::atomic<float>* pOttDepth    = nullptr;
+    // Stage 8: Delay
     std::atomic<float>* pDelayTime   = nullptr;
     std::atomic<float>* pDelayFB     = nullptr;
     std::atomic<float>* pDelayMix    = nullptr;
@@ -823,7 +947,14 @@ private:
     std::atomic<float>* pFShiftMix   = nullptr;
     std::atomic<float>* pFShiftMode  = nullptr;
     std::atomic<float>* pFShiftFB    = nullptr;
-    // Stage 10: Modulation
+    // Stage 12: fXOneiric
+    std::atomic<float>* pOnDelayMs   = nullptr;
+    std::atomic<float>* pOnShiftHz   = nullptr;
+    std::atomic<float>* pOnFeedback  = nullptr;
+    std::atomic<float>* pOnDamping   = nullptr;
+    std::atomic<float>* pOnSpread    = nullptr;
+    std::atomic<float>* pOnMix       = nullptr;
+    // Stage 13: Modulation
     std::atomic<float>* pModRate     = nullptr;
     std::atomic<float>* pModDepth    = nullptr;
     std::atomic<float>* pModMix      = nullptr;
@@ -852,15 +983,15 @@ private:
     std::atomic<float>* pPWidthComb  = nullptr;
     std::atomic<float>* pPWidthMono  = nullptr;
     std::atomic<float>* pPWidthMix   = nullptr;
-    // Stage 15: Multiband OTT
-    std::atomic<float>* pOttMix      = nullptr;
-    std::atomic<float>* pOttDepth    = nullptr;
-    // Stage 16: Bus Compressor
+    // Stage 19: Bus Compressor
     std::atomic<float>* pCompRatio   = nullptr;
     std::atomic<float>* pCompAttack  = nullptr;
     std::atomic<float>* pCompRelease = nullptr;
     std::atomic<float>* pCompMix     = nullptr;
-    // Stage 17: Sequencer
+    // Stage 20: Brickwall Limiter
+    std::atomic<float>* pLimCeiling  = nullptr;
+    std::atomic<float>* pLimRelease  = nullptr;
+    // Stage 22: Sequencer
     std::atomic<float>* pSeqEnabled  = nullptr;
     std::atomic<float>* pSeqRate     = nullptr;
     std::atomic<float>* pSeqSteps    = nullptr;

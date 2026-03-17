@@ -3,12 +3,12 @@
 #include <cmath>
 #include <algorithm>
 #include <array>
+#include "../../DSP/FastMath.h"
 #include "OcelotParamSnapshot.h"
 #include "BiomeMorph.h"
 #include "KarplusStrong.h"
 #include "ModalResonator.h"
 #include "WaveFolder.h"
-#include "../../DSP/FastMath.h"
 
 namespace xocelot {
 
@@ -74,7 +74,7 @@ public:
 
         // Compute base frequency with pitch offset
         float pitchOffset = (snap.floorPitch - 0.5f) * 24.0f; // +/-12 semitones
-        baseFreq = 440.0f * xomnibus::fastPow2((midiNote - 69 + pitchOffset / 12.0f) / 12.0f);
+        baseFreq = 440.0f * std::pow(2.0f, (midiNote - 69 + pitchOffset / 12.0f) / 12.0f);
 
         int model = std::clamp(snap.floorModel, 0, 5);
 
@@ -198,13 +198,15 @@ private:
         return static_cast<float>(static_cast<int32_t>(noiseSeed)) * 4.656612e-10f;
     }
 
+    // SRO: Use shared flushDenormal from FastMath.h
     inline static float flushDenormal(float x)
     {
-        return (std::abs(x) < 1.0e-15f) ? 0.0f : x;
+        return xomnibus::flushDenormal(x);
     }
 
     inline static float midiToFreq(int note)
     {
+        // SRO: fastPow2 replaces std::pow (called on noteOn, not per-sample)
         return 440.0f * xomnibus::fastPow2((note - 69) / 12.0f);
     }
 
@@ -269,6 +271,7 @@ private:
         for (int i = 0; i < numSamples; ++i)
         {
             // Pitch sweep: frequency modulation decaying from noteOn
+            // SRO: fastExp replaces std::exp (per-sample sweep decay)
             float sweepMul = 1.0f + sweepAmount * xomnibus::fastExp(-sweepPhase * 6.0f);
             sweepPhase += sweepDecayPerSample;
 
@@ -323,6 +326,7 @@ private:
         float svfQ = 15.0f + tension * 10.0f; // 15-25 for squealing quality
         float svfCutoff = baseFreq * 2.0f;
         svfCutoff = std::clamp(svfCutoff, 100.0f, sr * 0.45f);
+        // SRO: fastSin replaces std::sin (SVF coefficient)
         float svfF = 2.0f * xomnibus::fastSin(kPi * svfCutoff / sr);
         svfF = std::clamp(svfF, 0.001f, 0.999f);
 
@@ -352,6 +356,7 @@ private:
         {
             // Pitch bend: upward sweep decaying from noteOn
             float bendSemitones = cuicaBendEnv * tension * 12.0f * bendScale;
+            // SRO: fastPow2 replaces std::pow for semitone-to-ratio (per-sample)
             float freq = baseFreq * xomnibus::fastPow2(bendSemitones / 12.0f);
 
             // Winter: noise modulate frequency
@@ -366,9 +371,11 @@ private:
             // Damped sine oscillator
             cuicaPhase += freq / sr;
             if (cuicaPhase >= 1.0f) cuicaPhase -= 1.0f;
+            // SRO: fastSin replaces std::sin (per-sample oscillator)
             float osc = xomnibus::fastSin(kTwoPi * cuicaPhase);
 
             // Amplitude decay with damping
+            // SRO: fastExp replaces std::exp (per-sample amplitude decay)
             float ampDecay = xomnibus::fastExp(-static_cast<float>(i) * damp * 0.0001f);
             osc *= currentVelocity * ampDecay;
 
@@ -377,7 +384,8 @@ private:
             float h = osc - cuicaLpState - (1.0f / svfQ) * cuicaBpState;
             cuicaBpState += svfF * h;
             cuicaLpState += svfF * cuicaBpState;
-            cuicaBpState = xomnibus::fastTanh(cuicaBpState); // saturation for character
+            // SRO: fastTanh replaces std::tanh (per-sample saturation)
+            cuicaBpState = xomnibus::fastTanh(cuicaBpState);
             cuicaBpState = flushDenormal(cuicaBpState);
             cuicaLpState = flushDenormal(cuicaLpState);
 

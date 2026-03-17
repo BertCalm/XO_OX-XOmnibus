@@ -155,7 +155,29 @@ Ongoing:
   - Deferred doctrine improvements as capacity allows
   - KNOT coupling architecture (requires deep MegaCouplingMatrix work)
   - Guru Bin retreats on Constellation engines using completed knowledge compendium
+
+When capacity allows:
+  - P001 — Synesthesia Engine planning session (no build until session produces spec)
 ```
+
+---
+
+## Priority Planning Sessions (Parked)
+
+Features that need their own dedicated planning session before any implementation begins. Not V2 build items yet — they become build items after the planning session produces a scoped spec.
+
+| ID | Topic | Why It Matters | Planning Inputs | Status |
+|----|-------|---------------|-----------------|--------|
+| P001 | **Synesthesia Engine** | AI-powered cross-domain preset generation (recipe/painting/poem → .xometa). The community growth flywheel for the Collections architecture. No other synth does this. | `Docs/concepts/xomnibus_collections_vision.md` §Synesthesia, `Docs/concepts/culinary_collection_overview.md` §Synesthesia Engine, `Source/AI/NaturalLanguageInterpreter.h` (proto-Synesthesia mappings), `Docs/plans/synesthesia_engine_escalation.md` (consolidated open questions) | **PARKED** — escalated 2026-03-17, awaiting dedicated session |
+
+### P001 Key Decisions Needed
+1. MVP scope — single collection + single input type, or multi-domain from launch?
+2. Architecture — on-device (privacy/offline) vs cloud (power) vs hybrid?
+3. Relationship to `NaturalLanguageInterpreter.h` — foundation or fresh start?
+4. Runtime — plugin-internal, companion website, or both?
+5. Community calibration loop — data model for ratings that improve the mapping model
+
+*These do not block any current V2 work. Schedule the planning session when the build pipeline has capacity.*
 
 ---
 

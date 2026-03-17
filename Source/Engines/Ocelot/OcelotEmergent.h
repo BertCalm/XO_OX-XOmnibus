@@ -4,9 +4,9 @@
 #include <algorithm>
 #include <array>
 #include <cstdint>
+#include "../../DSP/FastMath.h"
 #include "OcelotParamSnapshot.h"
 #include "BiomeMorph.h"
-#include "../../DSP/FastMath.h"
 
 namespace xocelot {
 
@@ -117,6 +117,7 @@ public:
                 else
                 {
                     float decayPos = (callEnvSample - attackSamp) / decaySamp;
+                    // SRO: fastExp replaces std::exp (per-sample envelope decay)
                     envAmp = xomnibus::fastExp(-5.0f * decayPos);
                     if (envAmp < 0.0001f)
                         callEnvSample = -1.0f; // call finished
@@ -134,6 +135,7 @@ public:
             float envPhaseNorm = (callEnvSample >= 0.0f && totalSamp > 0.0f)
                                  ? std::clamp(callEnvSample / totalSamp, 0.0f, 1.0f)
                                  : 0.0f;
+            // SRO: fastSin + fastPow2 replace std:: trig/pow (per-sample)
             float sweep    = xomnibus::fastSin(envPhaseNorm * juce::MathConstants<float>::pi)
                              * biome.emergentPitchRange;
             float sweepMul = xomnibus::fastPow2(sweep);
@@ -152,7 +154,11 @@ public:
             sumSq  += sample * sample;
         }
 
-        lastAmplitude = std::sqrt(sumSq / static_cast<float>(numSamples));
+        // SRO: fast sqrt via fastPow2/fastLog2 (per-block RMS)
+        float rmsArg = sumSq / static_cast<float>(numSamples);
+        lastAmplitude = (rmsArg > 1e-10f)
+            ? xomnibus::fastPow2(0.5f * xomnibus::fastLog2(rmsArg))
+            : 0.0f;
         lastPattern   = std::clamp(callsFired * 4.0f, 0.0f, 1.0f); // calls/block → density
         return lastAmplitude;
     }
@@ -171,6 +177,7 @@ private:
         float process(float x, float freq, float q, float sr)
         {
             // freq coefficient: approximate, clamp well below Nyquist
+            // SRO: fastSin replaces std::sin (per-sample SVF coefficient)
             float f = std::min(1.99f,
                                2.0f * xomnibus::fastSin(juce::MathConstants<float>::pi
                                                * std::min(freq, sr * 0.45f) / sr));
@@ -179,6 +186,7 @@ private:
             bp         = f * h + bp;
             lp         = f * bp + lp;
             // Soft-saturate BP output to prevent numerical blowup at high Q
+            // SRO: fastTanh replaces std::tanh (per-sample saturation)
             bp         = xomnibus::fastTanh(bp);
             return bp;
         }
@@ -210,21 +218,21 @@ private:
 
         // MIDI note transposition from baseNote (C3=60 = concert pitch)
         float noteSemitones = static_cast<float>(baseNote - 60);
-        float noteMul       = xomnibus::fastPow2(noteSemitones / 12.0f);
+        float noteMul       = std::pow(2.0f, noteSemitones / 12.0f);
 
         // User creaturePitch: -1..+1 (centered at 0.5) → ±1 octave range
         float pitchUser  = (snap.creaturePitch - 0.5f) * 2.0f;
         float pitchMod   = std::clamp(pitchUser + mod.emergentPitchMod, -1.0f, 1.0f);
-        float pitchMul   = xomnibus::fastPow2(pitchMod * 0.5f); // ±0.5 oct from user pitch
+        float pitchMul   = std::pow(2.0f, pitchMod * 0.5f); // ±0.5 oct from user pitch
 
         // Formant additive mod from Canopy→Emergent (spectral route)
         float formantMod = mod.emergentFormantMod;
-        float formantMul = xomnibus::fastPow2(formantMod * 0.3f);
+        float formantMul = std::pow(2.0f, formantMod * 0.3f);
 
         // Biome: emergentPitchRange encodes the "creature character scale"
         // 0.35 (Winter/wolf) → lower formants; 0.8 (Underwater/whale) → much lower
         float biomeTilt = (biome.emergentPitchRange - 0.5f);     // -0.15 to +0.30
-        float biomeMul  = xomnibus::fastPow2(-biomeTilt * 1.2f);     // Underwater = lower
+        float biomeMul  = std::pow(2.0f, -biomeTilt * 1.2f);     // Underwater = lower
 
         float mul = noteMul * pitchMul * formantMul * biomeMul;
         f1 = std::clamp(f1 * mul, 40.0f, 16000.0f);

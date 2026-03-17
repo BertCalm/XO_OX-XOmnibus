@@ -1107,7 +1107,7 @@ private:
 
         // Validate mood
         static const juce::StringArray validMoods {
-            "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether" };
+            "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "Submerged" };
         if (! validMoods.contains (result.recipe.mood))
         {
             result.validationWarnings.add ("Mood '" + result.recipe.mood

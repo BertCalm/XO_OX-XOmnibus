@@ -3,6 +3,7 @@
 #include <array>
 #include <algorithm>
 #include <cmath>
+#include "../../DSP/FastMath.h"
 #include "OcelotParamSnapshot.h"
 #include "BiomeMorph.h"
 #include "EcosystemMatrix.h"
@@ -109,6 +110,7 @@ public:
         ecosystemDriftPhase += static_cast<float>(numSamples) * 0.07f
                                / static_cast<float>(sr);
         if (ecosystemDriftPhase > 1.0f) ecosystemDriftPhase -= 1.0f;
+        // SRO: fastSin replaces std::sin (per-block LFO)
         float driftSine = xomnibus::fastSin(ecosystemDriftPhase * juce::MathConstants<float>::twoPi);
         float lfoEcosystemDepth = std::clamp(
             snap.ecosystemDepth + snap.ecosystemDepth * 0.20f * driftSine, 0.0f, 1.0f);
@@ -172,6 +174,7 @@ public:
             if (snap.humidity > 0.01f)
             {
                 float drive = 1.0f + snap.humidity * 4.0f;
+                // SRO: fastTanh replaces std::tanh (per-sample saturation)
                 l = xomnibus::fastTanh(l * drive) / drive;
                 r = xomnibus::fastTanh(r * drive) / drive;
             }
@@ -197,7 +200,11 @@ public:
             sumSq   += l * l;
         }
 
-        lastAmplitude = std::sqrt(sumSq / static_cast<float>(numSamples));
+        // SRO: fast sqrt via fastPow2/fastLog2 (per-block RMS)
+        float rmsArg = sumSq / static_cast<float>(numSamples);
+        lastAmplitude = (rmsArg > 1e-10f)
+            ? xomnibus::fastPow2(0.5f * xomnibus::fastLog2(rmsArg))
+            : 0.0f;
 
         // Voice goes idle when amp envelope finishes and all strata are quiet
         if (!ampEnv.isActive()
