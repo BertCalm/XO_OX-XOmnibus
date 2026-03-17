@@ -24,7 +24,7 @@ ControlRateReducer integrated:  0 / 34 engines
 All 34 engines process coupling at audio rate (or stub)
 ```
 
-**No engine uses ControlRateReducer.** All `applyCouplingInput` implementations (34/34 engines have the method) process at full audio rate. Slow modulation types (LFO→pitch, env→morph, amp→filter) are candidates for 1/32 decimation.
+**No engine uses ControlRateReducer.** However, many engines (SNAP, MORPH, DUB, DRIFT, BOB, FAT, BITE, ONSET, OVERWORLD, OLE, OTTONI, OBBLIGATO, ORPHICA, OHM) already use scalar-accumulator coupling — effectively control-rate without the formal component. The remaining engines (OVERLAP, OUTWIT, OPAL, ORBITAL, ORCA, OCTOPUS, OMBRE, OCEANIC, OSPREY, etc.) process coupling per-sample from source buffers and are candidates for 1/32 decimation via ControlRateReducer.
 
 ---
 
@@ -46,10 +46,10 @@ Engines ranked by `std::sin/cos/tan/exp/pow/tanh` call count (includes all `.h` 
 |--------|------------|---------------------|-------|
 | **OCELOT** | **35** | `std::sin` × ~8 (oscillators, LFOs), `std::tanh` × 6 (saturation in voice pool + wavefolder), `std::cos` × 2, `std::pow` × ~12, `std::exp` × 4 | **Worst offender.** Multi-file architecture (7 DSP files) with per-sample sin/tanh throughout. Local tanh saturation in WaveFolder.h, OcelotVoice.h, OcelotVoicePool.h, OcelotEmergent.h. |
 | **OPAL** | **21** | `std::cos` × 7 (grain windows), `std::sin` × 6 (oscillators, pan), `std::pow` × 5, `std::tan` × 1 | Grain windows use `std::cos` per-grain. OpalDSP.h duplicates OpalEngine.h grain envelope code. |
-| **FAT** | **13** | `std::tan` × 2 (filter prewarp), `std::exp` × 4 (envelope coeffs), `std::pow` × 3 | Most `std::` calls are block-constant (coefficient calc with dirty flag). Well-optimized existing design. |
+| **FAT** | **13** | `std::tan` × 2 (**filter prewarp — PER SAMPLE**), `std::exp` × 4 (envelope coeffs), `std::pow` × 3 | **Critical:** ZDF Ladder and ZDF SVF both call `std::tan(pi * cutoff / sr)` per sample. `std::tan` is the most expensive transcendental (~50 cycles). Should cache at block rate or use `CytomicSVF::setCoefficients_fast()`. |
 | **ORIGAMI** | **12** | `std::cos/sin` × 6 (FFT twiddle factors, spectral pan), `std::pow` × 3 (warp), `std::exp` × 2 | FFT twiddle factors precomputed in prepare — benign. Per-voice spectral pan (`std::cos/sin` line 813-814) is per-sample. |
 | **OWLFISH** | **11** | `std::sin` × 1 (grain LFO), `std::pow` × 5 (pitch, filter cutoff), `std::exp` × 3, `std::tan` × 1 | Has its own `OwlfishFastMath.h` (local duplicate of FastMath.h) and `OwlfishCytomicSVF.h` (local duplicate of CytomicSVF). |
-| **BOB** | **10** | `std::sin` × 1 (wavetable init), `std::tan` × 2 (filter prewarp), `std::exp` × 3 (envelope), `std::pow` × 2 | Wavetable `std::sin` is init-only. Filter `std::tan` is per-block. Mostly benign. |
+| **BOB** | **10** | `std::sin` × 1 (wavetable init), `std::tan` × 2 (**filter prewarp — PER SAMPLE**), `std::exp` × 3 (envelope), `std::pow` × 2 | **Critical:** BobFilter ZDF SVF calls `std::tan(pi * cutoff * invSR)` per sample in `process()`. Same issue as FAT. Should cache coefficients at block rate. |
 | **ORBITAL** | **9** | `std::pow` × 4 (partial tilt, formant), `std::exp` × 4 (Gaussian, decay), `std::sin` × 1 (drift) | Partial tilt computation (`std::pow` line 86) is per-partial per-block — potentially hot with 32 partials. |
 | **ONSET** | **9** | `std::exp` × 3 (decay coefficients), `std::pow` × 2 (LoFi — block-constant), `std::cos/sin` × 2 (blend pan) | Per-voice blend pan uses `std::cos/sin` (line 1775-1776). Rest is block-constant. |
 | **ORACLE** | **8** | `std::sin` × 2 (breakpoint init), `std::exp` × 2 (smoothing), `std::pow` × 3 (frequency), `std::tan` × 1 (Cauchy) | `std::tan` for Cauchy distribution (line 1316) is per-voice stochastic — hot path. `std::pow` for maqam frequency is per-voice. |
