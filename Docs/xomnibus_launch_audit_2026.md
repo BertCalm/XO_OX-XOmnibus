@@ -649,6 +649,7 @@ XOmnibus isn't just a synth. It's a declaration that **quality should not requir
 | 8 | Implement `prism_fractal` cover art for OBLIQUE | MEDIUM | Visual identity complete |
 | 9 | Extend engine tests to all 34 | MEDIUM | 76% coverage gap closed |
 | 10 | Add edge function rate limiting | LOW | DoS prevention |
+| 11 | Expand DNA computer to all 34 engines (only 4/34) | MEDIUM | "Find Similar" broken for 88% of library |
 
 ### P2 — Important (Post-Launch Sprint)
 
@@ -860,12 +861,15 @@ Simulated detailed feedback from 25 producer archetypes across 5 genre clusters 
 | "Southside 808" (sub bass with drift) | OBESE | Hip-Hop/Trap |
 | "Festival Supersaw" (massive unison) | OBESE | EDM |
 | "Dark Slide" (exponential pitch glide) | OBESE | UK Drill |
-| "Tape Rhodes" (worn, warm keys) | OVERDUB | Lo-fi |
-| "Log Drum" (pitched percussion) | ODDFELIX | Afrobeats |
-| "Maqam Pad" (quarter-tone ambient) | ORACLE | Turkish/Arabic |
-| "Talking Drum" (pitch-responsive perc) | ONSET | West African |
-| "Amapiano Log Bass" (tuned bass stab) | OBESE + OPAL | Amapiano |
-| "City Pop Chord" (FM bright stack) | ODDOSCAR | J-Pop |
+| "Dusty Memory" (worn, warm Rhodes) | OBLONG + OVERDUB | Lo-fi |
+| "Lagos Sunrise" (log drum + melodic hook) | ODDFELIX + OBLONG | Afrobeats |
+| "Istanbul at Dawn" (maqam Hijaz) | ORACLE + OBSCURA + OWLFISH | Turkish/Arabic |
+| "Griot's Circle" (polyrhythmic ensemble) | ODDFELIX + ONSET | West African |
+| "Soweto Sunset" (log drum + jazz piano + sub) | ODDFELIX + OBLONG + OBESE | Amapiano |
+| "Shibuya 1984" (FM + Juno pad) | OVERWORLD + ODDOSCAR | J-Pop/City Pop |
+| "Kingston Nights" (complete riddim bed) | OVERDUB + OBLONG + OBESE + ODDFELIX | Dancehall |
+| "Basic Channel 001" (dub techno bed) | OVERDUB + ONSET + ODDOSCAR | Techno |
+| "Geologic Time" (4-engine ambient evolution) | ODYSSEY + OUROBOROS + OPAL + ORGANON | Ambient |
 
 ### XPN Export Adoption Intent
 
@@ -877,9 +881,37 @@ Simulated detailed feedback from 25 producer archetypes across 5 genre clusters 
 
 **Key insight**: The producers most excited about XPN are MPC-native producers (Hip-Hop, Drill, Afrobeats, Amapiano, Dancehall) — exactly the demographic XOmnibus targets. The free XPN angle resonated strongest with producers who currently pay $30-100 for commercial expansion packs.
 
+### Universal Feature Requests (3+ Mentions Across Genres)
+
+| Feature | Mentions | Genres Requesting | Impact |
+|---------|----------|-------------------|--------|
+| Global microtuning (.scl/.tun) | 4 | Bollywood, Turkish/Arabic, West African, Classical | Unlocks production for billions of non-Western musicians |
+| BPM-synced delay/LFO | 5 | Techno, EDM, Baile Funk, Dancehall, Latin | Most surprising omission in a modern synth |
+| Chorus/ensemble effect | 4 | J-Pop, Pop, R&B, Lo-fi | Missing from master FX chain; defines 80s sound |
+| External audio input | 3 | Sound Designer, Rock/Metal, Glitch/IDM | Makes XOmnibus a processor, not just generator |
+| Velocity curve editor | 3 | Jazz, R&B, Pop | Keyboardists won't use an instrument they can't calibrate |
+| Groove/swing quantization | 4 | Afrobeats, Amapiano, Latin, West African | Non-negotiable for groove-based genres |
+| Additional scales (maqam, Phrygian, etc.) | 4 | UK Drill, Latin, Turkish/Arabic, West African | Current list covers Western music only |
+
+### What Every Producer Agreed On
+
+1. **The coupling matrix is genuinely novel** — no other synth does cross-engine modulation this elegantly
+2. **10,028 presets for free** is an overwhelming competitive advantage
+3. **XPN export is revolutionary** for MPC producers — creates an entirely new market for user-generated expansion packs
+4. **34 engines is overwhelming** — genre-specific starter collections would dramatically improve onboarding
+5. **The aquatic creature metaphors** are charming for some (ambient, lo-fi, dub) and alienating for others (gospel, K-Pop, metal)
+
+### The "Fruity Loops Kid" Test
+
+Every producer was told the origin story. The response was universal: **respect**. Several said this was the first time they felt a free plugin was made by someone who understood what it means to not be able to afford tools. The XPN export was called *"the most generous feature in any synth, commercial or free"* by producers from the Global South (Africa, Latin America, Caribbean, South Asia) — communities systematically underserved by the music technology industry.
+
 ### Most Impactful Quote (Simulated)
 
-> *"You're telling me I can render my own expansion packs and load them straight into my MPC? For free? That alone makes this worth installing."* — DeMarco, Hip-Hop/Trap Producer
+> *"You're telling me I can render my own expansion packs and load them straight into my MPC? For free? That alone makes this worth installing."* — Hip-Hop/Trap Producer
+
+> *"There are zero MPC expansion packs for Arabic or Turkish music. Zero. If I can render maqam-tuned instruments as MPC programs, I am creating the first professional Arabic music toolkit for MPC."* — Turkish/Arabic Producer
+
+> *"South African producers on MPC need this. There are basically no Amapiano expansion packs with real log drums. If I can synthesize my own and export them as MPC kits, I'm building the pack that every producer in Johannesburg wants."* — Amapiano Producer
 
 ---
 
