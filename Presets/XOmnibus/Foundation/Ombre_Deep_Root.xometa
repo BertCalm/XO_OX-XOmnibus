@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Deep Root",
+  "mood": "Foundation",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Heavy sub presence, Oubli-biased. Memory accumulates slowly across notes, thickening the low end with ghosted harmonics. A foundation that remembers.",
+  "tags": ["foundation", "sub", "deep", "oubli", "bass", "memory"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.8,
+    "movement": 0.15,
+    "density": 0.75,
+    "space": 0.4,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.15,
+      "ombre_interference": 0.25,
+      "ombre_memoryDecay": 8.0,
+      "ombre_memoryGrain": 150.0,
+      "ombre_memoryDrift": 0.1,
+      "ombre_oscShape": 0,
+      "ombre_reactivity": 0.4,
+      "ombre_subLevel": 0.7,
+      "ombre_filterCutoff": 2000.0,
+      "ombre_filterReso": 0.15,
+      "ombre_attack": 0.02,
+      "ombre_decay": 0.8,
+      "ombre_sustain": 0.75,
+      "ombre_release": 1.2,
+      "ombre_level": 0.82,
+      "ombre_velCutoffScale": 0.4,
+      "ombre_lfo1Rate": 0.2,
+      "ombre_lfo1Depth": 0.15,
+      "ombre_lfo2Rate": 0.15,
+      "ombre_lfo2Depth": 0.12,
+      "ombre_macroCharacter": 0.75,
+      "ombre_macroMovement": 0.15,
+      "ombre_macroCoupling": 0.3,
+      "ombre_macroSpace": 0.45
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Dusk Gathering",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ostinato"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "textural",
+    "tribal",
+    "evolving",
+    "drums"
+  ],
+  "macroLabels": [
+    "SPACE",
+    "GATHER",
+    "FIRE",
+    "CIRCLE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.7,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.6,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Ostinato": {
+      "osti_drumType": 0,
+      "osti_filterCutoff": 700,
+      "osti_filterRes": 0.44,
+      "osti_ampAtk": 0.007,
+      "osti_ampDec": 1.0,
+      "osti_ampSus": 0.2,
+      "osti_ampRel": 0.9,
+      "osti_velCutoffAmt": 0.35,
+      "osti_reverbMix": 0.55,
+      "osti_lfo1Rate": 0.2,
+      "osti_lfo1Depth": 0.25,
+      "osti_lfo2Rate": 0.6,
+      "osti_lfo2Depth": 0.2,
+      "osti_patternStep0": true,
+      "osti_patternStep1": true,
+      "osti_patternStep2": true,
+      "osti_patternStep3": true,
+      "osti_patternStep4": false,
+      "osti_patternStep5": false,
+      "osti_patternStep6": false,
+      "osti_patternStep7": false,
+      "osti_macroGather": 0.3,
+      "osti_macroFire": 0.3,
+      "osti_macroCircle": 0.6,
+      "osti_macroSpace": 0.6
+    }
+  },
+  "macros": {
+    "GATHER": 0.3,
+    "FIRE": 0.3,
+    "CIRCLE": 0.6,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

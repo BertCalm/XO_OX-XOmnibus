@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Full Column",
+  "mood": "Entangled",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "bass",
+    "sub",
+    "abyssal",
+    "deep"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.84,
+    "movement": 0.28,
+    "density": 0.92,
+    "space": 0.92,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 2,
+      "deep_subOctave": -2,
+      "deep_harmonicLevel": 0.15,
+      "deep_pressure": 0.85,
+      "deep_bodyType": 3,
+      "deep_bodySize": 0.92,
+      "deep_bodyDamp": 0.82,
+      "deep_flashRate": 0.2,
+      "deep_flashBright": 0.28,
+      "deep_creatureSpeed": 0.25,
+      "deep_creatureDepth": 0.22,
+      "deep_darkness": 0.92,
+      "deep_filterReso": 0.25,
+      "deep_reverbMix": 0.68,
+      "deep_reverbSize": 0.96,
+      "deep_delayMix": 0.15,
+      "deep_rumble": 0.88,
+      "deep_attack": 0.01,
+      "deep_decay": 1.8,
+      "deep_sustain": 0.86,
+      "deep_release": 4.5
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.85,
+    "CREATURE": 0.25,
+    "WRECK": 0.2,
+    "ABYSS": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

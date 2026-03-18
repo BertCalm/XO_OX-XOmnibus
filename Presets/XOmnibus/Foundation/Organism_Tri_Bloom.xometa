@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Tri Bloom",
+  "mood": "Foundation",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "organic",
+    "living",
+    "colony",
+    "biological"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.6,
+    "movement": 0.42,
+    "density": 0.52,
+    "space": 0.45,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 90.0,
+      "org_seed": 999,
+      "org_stepRate": 3.0,
+      "org_scope": 6,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.4,
+      "org_filterCutoff": 2500.0,
+      "org_filterRes": 0.25,
+      "org_velCutoff": 0.45,
+      "org_ampAtk": 0.025,
+      "org_ampDec": 0.45,
+      "org_ampSus": 0.78,
+      "org_ampRel": 1.0,
+      "org_lfo1Rate": 0.35,
+      "org_lfo1Depth": 0.14,
+      "org_lfo2Rate": 0.22,
+      "org_lfo2Depth": 0.16,
+      "org_reverbMix": 0.28,
+      "org_macroRule": 0.14,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

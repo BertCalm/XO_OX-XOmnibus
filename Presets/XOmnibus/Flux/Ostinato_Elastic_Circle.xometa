@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Elastic Circle",
+  "mood": "Flux",
+  "engines": [
+    "Ostinato"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "drums",
+    "tribal",
+    "evolving",
+    "groove"
+  ],
+  "macroLabels": [
+    "SPACE",
+    "GATHER",
+    "FIRE",
+    "CIRCLE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.68,
+    "movement": 0.82,
+    "density": 0.62,
+    "space": 0.45,
+    "aggression": 0.48
+  },
+  "parameters": {
+    "Ostinato": {
+      "osti_drumType": 0,
+      "osti_filterCutoff": 1050,
+      "osti_filterRes": 0.49,
+      "osti_ampAtk": 0.005,
+      "osti_ampDec": 0.75,
+      "osti_ampSus": 0.12,
+      "osti_ampRel": 0.65,
+      "osti_velCutoffAmt": 0.55,
+      "osti_reverbMix": 0.38,
+      "osti_lfo1Rate": 0.4,
+      "osti_lfo1Depth": 0.22,
+      "osti_lfo2Rate": 1.1,
+      "osti_lfo2Depth": 0.2,
+      "osti_patternStep0": true,
+      "osti_patternStep1": true,
+      "osti_patternStep2": true,
+      "osti_patternStep3": true,
+      "osti_patternStep4": true,
+      "osti_patternStep5": true,
+      "osti_patternStep6": false,
+      "osti_patternStep7": true,
+      "osti_macroGather": 0.35,
+      "osti_macroFire": 0.55,
+      "osti_macroCircle": 0.58,
+      "osti_macroSpace": 0.45
+    }
+  },
+  "macros": {
+    "GATHER": 0.35,
+    "FIRE": 0.55,
+    "CIRCLE": 0.58,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Present Tense II",
+  "mood": "Foundation",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "High reactivity Opsis with velocity-sensitive filter opening. Plucky, responsive — notes feel exactly as hard as you play them. Memory is background only.",
+  "tags": ["foundation", "plucky", "velocity", "reactive", "expressive"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.5,
+    "movement": 0.25,
+    "density": 0.42,
+    "space": 0.35,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.82,
+      "ombre_interference": 0.1,
+      "ombre_memoryDecay": 2.0,
+      "ombre_memoryGrain": 50.0,
+      "ombre_memoryDrift": 0.15,
+      "ombre_oscShape": 1,
+      "ombre_reactivity": 0.85,
+      "ombre_subLevel": 0.15,
+      "ombre_filterCutoff": 3500.0,
+      "ombre_filterReso": 0.35,
+      "ombre_attack": 0.003,
+      "ombre_decay": 0.25,
+      "ombre_sustain": 0.55,
+      "ombre_release": 0.6,
+      "ombre_level": 0.8,
+      "ombre_velCutoffScale": 0.65,
+      "ombre_lfo1Rate": 0.7,
+      "ombre_lfo1Depth": 0.08,
+      "ombre_lfo2Rate": 0.4,
+      "ombre_lfo2Depth": 0.1,
+      "ombre_macroCharacter": 0.25,
+      "ombre_macroMovement": 0.25,
+      "ombre_macroCoupling": 0.25,
+      "ombre_macroSpace": 0.3
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

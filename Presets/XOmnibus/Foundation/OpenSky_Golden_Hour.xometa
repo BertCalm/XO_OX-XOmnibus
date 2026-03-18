@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Golden Hour",
+  "mood": "Foundation",
+  "engines": [
+    "OpenSky"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "pad",
+    "warm",
+    "shimmer",
+    "euphoric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.65,
+    "movement": 0.32,
+    "density": 0.5,
+    "space": 0.62,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_sawDetune": 0.48,
+      "sky_sawLevel": 1.0,
+      "sky_filterFc": 7800.0,
+      "sky_filterRes": 0.1,
+      "sky_ampAttack": 0.3,
+      "sky_ampDecay": 0.5,
+      "sky_ampSustain": 0.85,
+      "sky_ampRelease": 1.6,
+      "sky_shimmerMix": 0.58,
+      "sky_shimmerDecay": 3.2,
+      "sky_shimmerOct": 0.75,
+      "sky_shimmerBright": 0.65,
+      "sky_lfoRate": 0.055,
+      "sky_lfoDepth": 8.0,
+      "sky_lfoShape": 0.1,
+      "sky_chorusMix": 0.3,
+      "sky_chorusRate": 0.2,
+      "sky_chorusDepth": 8.5,
+      "sky_reverbMix": 0.45,
+      "sky_reverbSize": 0.7,
+      "sky_outputGain": 0.8,
+      "sky_couplingAmt": 0.0,
+      "sky_macroCharacter": 0.6,
+      "sky_macroMovement": 0.3,
+      "sky_macroCoupling": 0.0,
+      "sky_macroSpace": 0.6,
+      "sky_shimmerSpread": 0.55,
+      "sky_shimmerPhase": 0.0,
+      "sky_velSensitivity": 0.8,
+      "sky_glide": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

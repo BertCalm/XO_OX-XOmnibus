@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Dark Thermocline",
+  "mood": "Foundation",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "bass",
+    "deep",
+    "warm",
+    "low-end"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.65,
+    "movement": 0.28,
+    "density": 0.78,
+    "space": 0.55,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 1,
+      "deep_subOctave": -1,
+      "deep_harmonicLevel": 0.32,
+      "deep_pressure": 0.55,
+      "deep_bodyType": 3,
+      "deep_bodySize": 0.6,
+      "deep_bodyDamp": 0.55,
+      "deep_flashRate": 0.18,
+      "deep_flashBright": 0.28,
+      "deep_creatureSpeed": 0.22,
+      "deep_creatureDepth": 0.22,
+      "deep_darkness": 0.72,
+      "deep_filterReso": 0.32,
+      "deep_reverbMix": 0.38,
+      "deep_reverbSize": 0.62,
+      "deep_delayMix": 0.18,
+      "deep_rumble": 0.48,
+      "deep_attack": 0.008,
+      "deep_decay": 1.0,
+      "deep_sustain": 0.68,
+      "deep_release": 2.0
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.55,
+    "CREATURE": 0.2,
+    "WRECK": 0.3,
+    "ABYSS": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Abyssal Pulse",
+  "mood": "Atmosphere",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "biological",
+    "organic",
+    "living",
+    "colony"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.8,
+    "movement": 0.3,
+    "density": 0.72,
+    "space": 0.82,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 30.0,
+      "org_seed": 60000,
+      "org_stepRate": 1.5,
+      "org_scope": 12,
+      "org_mutate": 0.01,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.7,
+      "org_filterCutoff": 1400.0,
+      "org_filterRes": 0.15,
+      "org_velCutoff": 0.25,
+      "org_ampAtk": 0.4,
+      "org_ampDec": 1.8,
+      "org_ampSus": 0.9,
+      "org_ampRel": 4.0,
+      "org_lfo1Rate": 0.08,
+      "org_lfo1Depth": 0.18,
+      "org_lfo2Rate": 0.05,
+      "org_lfo2Depth": 0.22,
+      "org_reverbMix": 0.78,
+      "org_macroRule": 0.0,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.03
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.15,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.0,
+    "SPACE": 0.8
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

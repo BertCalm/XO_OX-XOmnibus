@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Anglerfish Lure",
+  "mood": "Foundation",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "bass",
+    "deep",
+    "dark",
+    "growl"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.62,
+    "movement": 0.7,
+    "density": 0.78,
+    "space": 0.58,
+    "aggression": 0.62
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 0,
+      "deep_subOctave": -1,
+      "deep_harmonicLevel": 0.4,
+      "deep_pressure": 0.7,
+      "deep_bodyType": 1,
+      "deep_bodySize": 0.65,
+      "deep_bodyDamp": 0.55,
+      "deep_flashRate": 0.7,
+      "deep_flashBright": 0.85,
+      "deep_creatureSpeed": 0.65,
+      "deep_creatureDepth": 0.55,
+      "deep_darkness": 0.78,
+      "deep_filterReso": 0.45,
+      "deep_reverbMix": 0.4,
+      "deep_reverbSize": 0.7,
+      "deep_delayMix": 0.25,
+      "deep_rumble": 0.55,
+      "deep_attack": 0.001,
+      "deep_decay": 0.5,
+      "deep_sustain": 0.65,
+      "deep_release": 1.2
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.7,
+    "CREATURE": 0.75,
+    "WRECK": 0.25,
+    "ABYSS": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

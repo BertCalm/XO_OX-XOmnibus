@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Morning Ritual",
+  "mood": "Family",
+  "engines": [
+    "Ostinato"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "drums",
+    "tribal",
+    "soft",
+    "groove"
+  ],
+  "macroLabels": [
+    "SPACE",
+    "GATHER",
+    "FIRE",
+    "CIRCLE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.7,
+    "movement": 0.62,
+    "density": 0.62,
+    "space": 0.5,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Ostinato": {
+      "osti_drumType": 8,
+      "osti_filterCutoff": 650,
+      "osti_filterRes": 0.36,
+      "osti_ampAtk": 0.007,
+      "osti_ampDec": 1.0,
+      "osti_ampSus": 0.15,
+      "osti_ampRel": 0.88,
+      "osti_velCutoffAmt": 0.42,
+      "osti_reverbMix": 0.48,
+      "osti_lfo1Rate": 0.22,
+      "osti_lfo1Depth": 0.22,
+      "osti_lfo2Rate": 0.55,
+      "osti_lfo2Depth": 0.18,
+      "osti_patternStep0": true,
+      "osti_patternStep1": true,
+      "osti_patternStep2": true,
+      "osti_patternStep3": false,
+      "osti_patternStep4": true,
+      "osti_patternStep5": false,
+      "osti_patternStep6": true,
+      "osti_patternStep7": false,
+      "osti_macroGather": 0.3,
+      "osti_macroFire": 0.4,
+      "osti_macroCircle": 0.55,
+      "osti_macroSpace": 0.5
+    }
+  },
+  "macros": {
+    "GATHER": 0.3,
+    "FIRE": 0.4,
+    "CIRCLE": 0.55,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

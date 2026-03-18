@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Drift Current",
+  "mood": "Aether",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "organic",
+    "cellular",
+    "colony",
+    "living"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.75,
+    "movement": 0.22,
+    "density": 0.65,
+    "space": 0.83,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 90.0,
+      "org_seed": 8000,
+      "org_stepRate": 1.0,
+      "org_scope": 12,
+      "org_mutate": 0.008,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.55,
+      "org_filterCutoff": 1900.0,
+      "org_filterRes": 0.14,
+      "org_velCutoff": 0.28,
+      "org_ampAtk": 0.55,
+      "org_ampDec": 1.8,
+      "org_ampSus": 0.92,
+      "org_ampRel": 4.5,
+      "org_lfo1Rate": 0.04,
+      "org_lfo1Depth": 0.22,
+      "org_lfo2Rate": 0.025,
+      "org_lfo2Depth": 0.28,
+      "org_reverbMix": 0.82,
+      "org_macroRule": 0.14,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.02
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.32,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.8
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

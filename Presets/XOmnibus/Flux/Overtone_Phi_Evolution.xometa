@@ -1,0 +1,61 @@
+{
+  "name": "Phi Evolution",
+  "engine": "Overtone",
+  "schema_version": 1,
+  "version": "1.0",
+  "mood": "Flux",
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.0,
+    "SPACE": 0.46
+  },
+  "parameters": {
+    "Overtone": {
+      "over_constant": 2,
+      "over_depth": 4.5,
+      "over_partial0": 0.7,
+      "over_partial1": 0.52,
+      "over_partial2": 0.43,
+      "over_partial3": 0.35,
+      "over_partial4": 0.27,
+      "over_partial5": 0.21,
+      "over_partial6": 0.17,
+      "over_partial7": 0.13,
+      "over_velBright": 0.42,
+      "over_filterCutoff": 12500,
+      "over_filterRes": 0.36,
+      "over_ampAtk": 0.3,
+      "over_ampDec": 0.5,
+      "over_ampSus": 0.65,
+      "over_ampRel": 2.0,
+      "over_lfo1Rate": 0.85,
+      "over_lfo1Depth": 0.65,
+      "over_lfo2Rate": 0.58,
+      "over_lfo2Depth": 0.44,
+      "over_resoMix": 0.25,
+      "over_macroDepth": 0.45,
+      "over_macroColor": 0.62,
+      "over_macroCoupling": 0.0,
+      "over_macroSpace": 0.46
+    }
+  },
+  "sonicDNA": {
+    "brightness": 0.64,
+    "warmth": 0.46,
+    "movement": 0.75,
+    "density": 0.62,
+    "space": 0.5,
+    "aggression": 0.12
+  },
+  "tags": [
+    "mathematical",
+    "movement",
+    "spectral",
+    "harmonic"
+  ],
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  }
+}

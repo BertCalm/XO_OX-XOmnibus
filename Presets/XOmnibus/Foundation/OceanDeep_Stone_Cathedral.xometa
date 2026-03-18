@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Stone Cathedral",
+  "mood": "Foundation",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "bass",
+    "deep",
+    "warm",
+    "low-end"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.7,
+    "movement": 0.15,
+    "density": 0.85,
+    "space": 0.82,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 0,
+      "deep_subOctave": -1,
+      "deep_harmonicLevel": 0.38,
+      "deep_pressure": 0.65,
+      "deep_bodyType": 2,
+      "deep_bodySize": 0.88,
+      "deep_bodyDamp": 0.42,
+      "deep_flashRate": 0.05,
+      "deep_flashBright": 0.1,
+      "deep_creatureSpeed": 0.1,
+      "deep_creatureDepth": 0.12,
+      "deep_darkness": 0.78,
+      "deep_filterReso": 0.55,
+      "deep_reverbMix": 0.65,
+      "deep_reverbSize": 0.88,
+      "deep_delayMix": 0.3,
+      "deep_rumble": 0.55,
+      "deep_attack": 0.015,
+      "deep_decay": 1.5,
+      "deep_sustain": 0.75,
+      "deep_release": 3.8
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.65,
+    "CREATURE": 0.1,
+    "WRECK": 0.8,
+    "ABYSS": 0.7
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

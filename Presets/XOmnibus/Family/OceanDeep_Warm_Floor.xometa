@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Warm Floor",
+  "mood": "Family",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "bass",
+    "warm",
+    "low-end",
+    "deep"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.16,
+    "warmth": 0.82,
+    "movement": 0.12,
+    "density": 0.8,
+    "space": 0.48,
+    "aggression": 0.32
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 2,
+      "deep_subOctave": -1,
+      "deep_harmonicLevel": 0.28,
+      "deep_pressure": 0.62,
+      "deep_bodyType": 2,
+      "deep_bodySize": 0.62,
+      "deep_bodyDamp": 0.68,
+      "deep_flashRate": 0.08,
+      "deep_flashBright": 0.1,
+      "deep_creatureSpeed": 0.1,
+      "deep_creatureDepth": 0.1,
+      "deep_darkness": 0.76,
+      "deep_filterReso": 0.22,
+      "deep_reverbMix": 0.28,
+      "deep_reverbSize": 0.58,
+      "deep_delayMix": 0.1,
+      "deep_rumble": 0.52,
+      "deep_attack": 0.006,
+      "deep_decay": 0.7,
+      "deep_sustain": 0.7,
+      "deep_release": 1.5
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.62,
+    "CREATURE": 0.1,
+    "WRECK": 0.18,
+    "ABYSS": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  }
+}
