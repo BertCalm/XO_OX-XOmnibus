@@ -36,7 +36,7 @@ This master spec consolidates 15 foundation documents. When conflicts exist betw
 
 ### 1.1 What XOmnibus Is
 
-**XOmnibus** (Latin: "for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**. It merges 6 character instruments — each originally a standalone product — into a unified creative environment where engines couple, collide, and mutate into sounds impossible with any single synth.
+**XOmnibus** (Latin: "for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**. It merges 34 registered character engines — each originally a standalone instrument — into a unified creative environment where engines couple, collide, and mutate into sounds impossible with any single synth.
 
 - **Not** a DAW replacement, a commercial product, or a plugin that tries to do everything
 - **Is** a creative tool where cross-engine coupling is the signature feature
@@ -46,7 +46,7 @@ This master spec consolidates 15 foundation documents. When conflicts exist betw
 
 | Value | Expression |
 |-------|------------|
-| **Character** | 1000 presets with evocative names, not "Init Patch 47" |
+| **Character** | 11,247 presets with evocative names, not "Init Patch 47" |
 | **Coupling** | Cross-engine modulation is the defining differentiator |
 | **Openness** | Open source, community presets, documented architecture |
 | **Craft** | Each engine was a standalone instrument first |
@@ -144,18 +144,46 @@ Toggle between modes at any time. Preset data is identical — only UI visibilit
 
 ## 3. Engine Modules
 
-### 3.1 The Seven Engines
+### 3.1 The 34 Registered Engines
 
-| Short Name | Source | Sonic Role | Voices | CPU Est. | Accent Color |
-|-----------|--------|-----------|--------|----------|-------------|
-| **ODDFELIX** | OddfeliX | Percussive (PolyBLEP, FM, K-S) | 8 | ~15% | Neon Tetra Blue `#00A6D6` |
-| **ODDOSCAR** | OddOscar | Pad (wavetable morph, Moog ladder) | 16 | ~15% | Axolotl Gill Pink `#E8839B` |
-| **OVERDUB** | XOverdub | Dub mixing desk (send/return FX) | 8 | ~10% | Olive `#6B7B3A` |
-| **ODYSSEY** | XOdyssey | Psychedelic pad (Familiar→Alien) | 24 | ~20% | Violet `#7B2D8B` |
-| **OBLONG** | XOblong | Warm character (fuzzy, curious motion) | 16 | ~15% | Amber `#E9A84A` |
-| **OBESE** | XObese | Character-driven sampler | 8 | ~8% | Hot Pink `#FF1493` |
-| **ONSET** | XOnset (new) | Percussive synthesis (Circuit↔Algorithm) | 8 | ~12% | Electric Blue `#0066FF` |
-| **OMBRE** | XOmbre (new) | Dual-narrative (memory/forgetting + perception) | 8 | ~12% | Shadow Mauve `#7B6B8A` |
+*As of 2026-03-15. All engines installed, auval PASS.*
+
+| Short Name | Source | Accent Color |
+|-----------|--------|-------------|
+| **ODDFELIX** | OddfeliX | Neon Tetra Blue `#00A6D6` |
+| **ODDOSCAR** | OddOscar | Axolotl Gill Pink `#E8839B` |
+| **OVERDUB** | XOverdub | Olive `#6B7B3A` |
+| **ODYSSEY** | XOdyssey | Violet `#7B2D8B` |
+| **OBLONG** | XOblong | Amber `#E9A84A` |
+| **OBESE** | XObese | Hot Pink `#FF1493` |
+| **ONSET** | XOnset | Electric Blue `#0066FF` |
+| **OVERWORLD** | XOverworld | Neon Green `#39FF14` |
+| **OPAL** | XOpal | Lavender `#A78BFA` |
+| **ORBITAL** | XOrbital | Warm Red `#FF6B6B` |
+| **ORGANON** | XOrganon | Bioluminescent Cyan `#00CED1` |
+| **OUROBOROS** | XOuroboros | Strange Attractor Red `#FF2D2D` |
+| **OBSIDIAN** | XObsidian | Crystal White `#E8E0D8` |
+| **ORIGAMI** | XOrigami | Vermillion Fold `#E63946` |
+| **ORACLE** | XOracle | Prophecy Indigo `#4B0082` |
+| **OBSCURA** | XObscura | Daguerreotype Silver `#8A9BA8` |
+| **OCEANIC** | XOceanic | Phosphorescent Teal `#00B4A0` |
+| **OCELOT** | XOcelot | Ocelot Tawny `#C5832B` |
+| **OVERBITE** | XOverbite | Fang White `#F0EDE8` |
+| **OPTIC** | XOptic | Phosphor Green `#00FF41` |
+| **OBLIQUE** | XOblique | Prism Violet `#BF40FF` |
+| **OSPREY** | XOsprey | Azulejo Blue `#1B4F8A` |
+| **OSTERIA** | XOsteria | Porto Wine `#722F37` |
+| **OWLFISH** | XOwlfish | Abyssal Gold `#B8860B` |
+| **OHM** | XOhm | Sage `#87AE73` |
+| **ORPHICA** | XOrphica | Siren Seafoam `#7FDBCA` |
+| **OBBLIGATO** | XObbligato | Rascal Coral `#FF8A7A` |
+| **OTTONI** | XOttoni | Patina `#5B8A72` |
+| **OLE** | XOlé | Hibiscus `#C9377A` |
+| **OVERLAP** | XOverlap | Lion's Mane Green `#00FFB4` |
+| **OUTWIT** | XOutwit | Octopus Orange `#CC6600` |
+| **OMBRE** | XOmbre | Shadow Mauve `#7B6B8A` |
+| **ORCA** | XOrca | Deep Ocean `#1B2838` |
+| **OCTOPUS** | XOctopus | Chromatophore Magenta `#E040FB` |
 
 ### 3.2 Engine Visual Identity
 
@@ -205,17 +233,31 @@ Each engine is an "exhibition" within the gallery. Its accent color fills the ac
 
 ### 3.5 Parameter Namespacing
 
-Each engine prefixes its APVTS parameter IDs to avoid collisions:
+Each engine prefixes its APVTS parameter IDs to avoid collisions. Prefixes are **frozen and never change** after release. Canonical prefix table is in `CLAUDE.md`. Key examples:
 
 ```
-snap_filterCutoff      // ODDFELIX engine
-morph_wavePosition     // ODDOSCAR engine
-dub_sendAmount         // OVERDUB engine
-drift_journey          // ODYSSEY engine
-bob_curiosity          // OBLONG engine
-fat_mojo               // OBESE engine
-onset_blend            // ONSET engine
-ombre_blend            // OMBRE engine
+snap_filterCutoff      // ODDFELIX (OddfeliX)
+morph_morph            // ODDOSCAR (OddOscar)
+dub_oscWave            // OVERDUB
+drift_oscA_mode        // ODYSSEY
+bob_fltCutoff          // OBLONG
+fat_satDrive           // OBESE
+perc_noiseLevel        // ONSET
+ow_era                 // OVERWORLD
+opal_grainSize         // OPAL
+orb_brightness         // ORBITAL
+ocean_separation       // OCEANIC
+poss_biteDepth         // OVERBITE
+ohm_macroMeddling      // OHM
+orph_pluckBrightness   // ORPHICA
+obbl_breathA           // OBBLIGATO
+otto_macroGrow         // OTTONI
+ole_macroDrama         // OLE
+olap_blend             // OVERLAP
+owit_armDepth          // OUTWIT
+ombre_blend            // OMBRE
+orca_huntMacro         // ORCA
+octo_armDepth          // OCTOPUS
 ```
 
 **Detail:** `xo_mega_tool_engine_catalog.md`
@@ -650,9 +692,13 @@ Every preset carries a 6-dimensional vector for similarity search, morphing, and
 - **Preset Morphing** — parameter interpolation via single fader
 - **Preset Breeding** — genetic crossover + DNA-aware mutation
 
-### 8.6 1000-Preset Library Architecture
+### 8.6 Factory Preset Library
 
-| Layer | Count | Description |
+**Total: 11,247 factory presets** (verified count as of 2026-03-17). Zero duplicates, 100% DNA coverage, health score ~92/100. See `Docs/prism_sweep_final_report.md` for full audit history.
+
+Original architecture layers (reference only — actual count is 11,247):
+
+| Layer | Original Target | Description |
 |-------|-------|-------------|
 | Migrated Singles | 588 | Existing presets, one engine each |
 | Impossible Sounds | 40 | Coupling-dependent flagships |
@@ -663,7 +709,6 @@ Every preset carries a 6-dimensional vector for similarity search, morphing, and
 | Living Presets | 32 | Generative, never-repeating ambient |
 | Reimagined Classics | 25 | MVP hits rebuilt with coupling |
 | XO Duality | 20 | Opposing forces creating unity |
-| **TOTAL** | **1000** | |
 
 ### 8.7 Naming Conventions
 
@@ -717,15 +762,20 @@ Cross-engine presets additionally:
 
 ### 8.10 Migration Status
 
-| Source | Presets | Status | Tool |
-|--------|---------|--------|------|
-| OddfeliX/OddOscar | 114 | Done | `migrate_xocmeta_to_xometa.py` |
-| XOverdub | 40 | Done | `extract_cpp_presets.py` |
-| XOdyssey | 198 | Done | `extract_cpp_presets.py` |
-| XOblong | 167 | Done | `extract_cpp_presets.py` |
-| XObese | 52 | Pending | Manual export + migration |
-| XOnset | 85 | Spec only | N/A |
-| **Total in .xometa** | **519** | **All fingerprinted with DNA** | |
+**All 34 engines migrated. Total: 11,247 presets in `.xometa` format, 100% DNA-fingerprinted.**
+
+Original migration tracking (superseded — all complete as of 2026-03-17):
+
+| Source | Presets (original) | Status |
+|--------|---------|--------|
+| OddfeliX/OddOscar | 114 | Done |
+| XOverdub | 40 | Done |
+| XOdyssey | 198 | Done |
+| XOblong | 167 | Done |
+| XObese | 52 | Done |
+| XOnset | 85 | Done |
+| All remaining 28 engines | ~10,591 | Done — see Prism Sweep rounds 1–12 |
+| **Total in .xometa** | **11,247** | **All fingerprinted with DNA** |
 
 **Detail:** `xomnibus_preset_spec_for_builder.md`, `xometa_schema.json`
 
@@ -1000,10 +1050,10 @@ The MVP ships with:
 
 ### 12.2 v1.0 Target
 
-- All 7 engines wrapped and integrated
+- All 34 engines (+ 4 V1 concept engines: OSTINATO, OPENSKY, OCEANDEEP, OUIE) wrapped and integrated
 - Full coupling matrix (12 types)
 - PlaySurface (all 3 modes)
-- 1000 factory presets with DNA fingerprints
+- 11,247 factory presets with DNA fingerprints (8 moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged)
 - Preset morphing and breeding
 - XPN export
 - macOS + iOS (AUv3)

@@ -1,8 +1,6 @@
 # XOmnibus — Sound Design Guide
 *Per-engine reference for sound designers, preset builders, and performers.*
-*Covers 26 of 34 registered engines: features, key parameters, coupling strategies, and recommended pairings.*
-*5 Constellation engines (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) have dedicated synthesis guides in Docs/ (e.g. ohm_synthesis_guide.md) but are not yet integrated into this unified guide.*
-*Registered engines not yet covered in this guide: OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT.*
+*Covers all 34 registered engines: features, key parameters, coupling strategies, and recommended pairings.*
 *V2 concept engines (OSTINATO, OPENSKY, OCEANDEEP, OUIE) are not registered in XOmnibus and are out of scope for this guide.*
 
 ---
