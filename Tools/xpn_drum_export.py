@@ -788,6 +788,17 @@ def generate_xpm(preset_name: str, wav_map: dict,
     # Q-Link assignments — 4 knobs per program for macro control
     qlink_xml = _generate_qlink_xml()
 
+    # Expression mapping: AfterTouch → FilterCutoff (amount 30) for drums
+    expression_xml = (
+        '    <ExpressionMappings>\n'
+        '      <ExpressionMapping number="1">\n'
+        '        <Source>AfterTouch</Source>\n'
+        '        <Destination>FilterCutoff</Destination>\n'
+        '        <Amount>30</Amount>\n'
+        '      </ExpressionMapping>\n'
+        '    </ExpressionMappings>\n'
+    )
+
     return (
         '<?xml version="1.0" encoding="UTF-8"?>\n\n'
         '<MPCVObject>\n'
@@ -806,6 +817,7 @@ def generate_xpm(preset_name: str, wav_map: dict,
         '    <PadGroupMap>\n'
         f'{pad_group_xml}\n'
         '    </PadGroupMap>\n'
+        f'{expression_xml}'
         f'{qlink_xml}'
         '    <Instruments>\n'
         f'{instruments_xml}\n'

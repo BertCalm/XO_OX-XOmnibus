@@ -5,6 +5,7 @@
 #include "../Core/MegaCouplingMatrix.h"
 #include "XPNCoverArt.h"
 
+#include <array>
 #include <atomic>
 #include <cmath>
 #include <random>
@@ -271,7 +272,17 @@ public:
             int totalNotesForPreset = (int)notes.size() * effectiveSettings.velocityLayers;
             progress.totalNotes = totalNotesForPreset;
 
-            // Build work items for parallel rendering
+            // Build note-group work items for parallel rendering.
+            // Each note group contains all velocity layers so we can group-normalize
+            // (preserving dynamic relationships between soft and loud hits).
+            struct NoteGroupJob {
+                int note;
+                std::vector<VelocityGroupJob> velJobs;
+            };
+            std::vector<NoteGroupJob> noteGroups;
+            noteGroups.reserve(notes.size());
+
+            // Also track all WAV files for tally
             struct RenderJob {
                 int note;
                 int velLayer;
@@ -284,19 +295,30 @@ public:
             for (int ni = 0; ni < (int)notes.size(); ++ni)
             {
                 int note = notes[(size_t)ni];
+                NoteGroupJob group;
+                group.note = note;
+
                 for (int vel = 0; vel < effectiveSettings.velocityLayers; ++vel)
                 {
-                    jobs.push_back({
-                        note, vel,
+                    auto wavFile = presetDir.getChildFile(wavFilename(preset.name, note, vel));
+                    group.velJobs.push_back({
+                        vel,
                         velocityForLayer(vel, effectiveSettings.velocityLayers),
-                        presetDir.getChildFile(wavFilename(preset.name, note, vel))
+                        wavFile
                     });
+                    jobs.push_back({ note, vel,
+                        velocityForLayer(vel, effectiveSettings.velocityLayers),
+                        wavFile });
                 }
+                noteGroups.push_back(std::move(group));
             }
 
-            // Parallel rendering with thread pool
+            // Parallel rendering with thread pool — one job per note group.
+            // Group rendering ensures all velocity layers for a note are rendered
+            // together, enabling group normalization (loudest layer hits ceiling,
+            // softer layers stay proportionally quieter).
             unsigned int numWorkers = juce::jmax(1u, std::thread::hardware_concurrency() - 1);
-            std::atomic<int> completedJobs { 0 };
+            std::atomic<int> completedNoteGroups { 0 };
             std::atomic<bool> renderError { false };
             juce::String firstError;
             std::mutex errorMutex;
@@ -306,29 +328,31 @@ public:
             {
                 for (size_t j = startIdx; j < endIdx && !cancelled.load() && !renderError.load(); ++j)
                 {
-                    const auto& job = jobs[j];
-                    auto wavResult = renderNoteToWav(preset, job.note, job.velocity,
-                                                     effectiveSettings, job.wavFile);
-                    if (!wavResult.success)
+                    const auto& group = noteGroups[j];
+                    auto groupResult = renderNoteGroupToWav(preset, group.note,
+                                                            group.velJobs, effectiveSettings);
+                    if (!groupResult.success)
                     {
                         std::lock_guard<std::mutex> lock(errorMutex);
                         if (!renderError.load())
                         {
                             renderError.store(true);
-                            firstError = wavResult.error;
+                            firstError = groupResult.error;
                         }
                         return;
                     }
 
-                    int done = completedJobs.fetch_add(1) + 1;
+                    int doneGroups = completedNoteGroups.fetch_add(1) + 1;
+                    int doneJobs = doneGroups * effectiveSettings.velocityLayers;
 
                     // Progress update — serialized via mutex to avoid data races
-                    if (progressCb && (done % juce::jmax(1, (int)numWorkers) == 0 || done == (int)jobs.size()))
+                    if (progressCb && (doneGroups % juce::jmax(1, (int)numWorkers) == 0
+                                       || doneGroups == (int)noteGroups.size()))
                     {
                         std::lock_guard<std::mutex> lock(progressMutex);
-                        progress.currentNote = done;
+                        progress.currentNote = doneJobs;
                         float presetFrac = (float)pi / (float)presets.size();
-                        float noteFrac = (float)done / (float)totalNotesForPreset;
+                        float noteFrac = (float)doneJobs / (float)totalNotesForPreset;
                         progress.overallProgress = presetFrac + noteFrac / (float)presets.size();
                         progressCb(progress);
                         if (progress.cancelled)
@@ -337,21 +361,21 @@ public:
                 }
             };
 
-            if (numWorkers <= 1 || jobs.size() <= 4)
+            if (numWorkers <= 1 || noteGroups.size() <= 4)
             {
                 // Small batch: run sequentially
-                renderBatch(0, jobs.size());
+                renderBatch(0, noteGroups.size());
             }
             else
             {
-                // Partition jobs across worker threads
+                // Partition note groups across worker threads
                 std::vector<std::future<void>> futures;
-                size_t chunkSize = (jobs.size() + numWorkers - 1) / numWorkers;
+                size_t chunkSize = (noteGroups.size() + numWorkers - 1) / numWorkers;
 
-                for (unsigned int w = 0; w < numWorkers && w * chunkSize < jobs.size(); ++w)
+                for (unsigned int w = 0; w < numWorkers && w * chunkSize < noteGroups.size(); ++w)
                 {
                     size_t start = w * chunkSize;
-                    size_t end = juce::jmin(start + chunkSize, jobs.size());
+                    size_t end = juce::jmin(start + chunkSize, noteGroups.size());
                     futures.push_back(std::async(std::launch::async, renderBatch, start, end));
                 }
 
@@ -558,9 +582,79 @@ private:
     {
         if (totalLayers <= 1) return 0.8f;
         if (totalLayers == 2) return layer == 0 ? 0.5f : 1.0f;
-        // 3 layers: soft, medium, hard
-        static constexpr float vels[] = { 0.3f, 0.7f, 1.0f };
-        return vels[juce::jlimit(0, 2, layer)];
+        if (totalLayers == 3)
+        {
+            static constexpr float vels3[] = { 0.3f, 0.7f, 1.0f };
+            return vels3[juce::jlimit(0, 2, layer)];
+        }
+        // 4 layers: ghost, light, mid, hard (ported from Python toolchain)
+        static constexpr float vels4[] = { 0.15f, 0.45f, 0.75f, 1.0f };
+        return vels4[juce::jlimit(0, 3, layer)];
+    }
+
+    //==========================================================================
+    // Velocity split points — 4-layer system ported from Python toolchain
+    //
+    // Default splits: ghost(1-20), light(21-50), mid(51-90), hard(91-127)
+    // DNA-adaptive: high aggression shifts splits downward so hard hits
+    // trigger earlier (more aggressive response curve)
+    //==========================================================================
+
+    struct VelSplit { int start; int end; };
+
+    static std::array<VelSplit, 4> getVelocitySplits(float aggressionDNA = 0.5f,
+                                                      bool dnaAdaptive = true)
+    {
+        // Base split points: ghost(1-20), light(21-50), mid(51-90), hard(91-127)
+        int ghost_end = 20;
+        int light_end = 50;
+        int mid_end   = 90;
+
+        if (dnaAdaptive && aggressionDNA > 0.5f)
+        {
+            // High aggression: shift splits downward (hard hits trigger sooner)
+            float shift = (aggressionDNA - 0.5f) * 2.0f; // 0..1 for aggression 0.5..1.0
+            ghost_end = juce::jmax(10, ghost_end - (int)(shift * 8));   // 20 -> 12
+            light_end = juce::jmax(25, light_end - (int)(shift * 15));  // 50 -> 35
+            mid_end   = juce::jmax(60, mid_end   - (int)(shift * 20)); // 90 -> 70
+        }
+
+        return {{
+            { 1,             ghost_end },
+            { ghost_end + 1, light_end },
+            { light_end + 1, mid_end   },
+            { mid_end + 1,   127       }
+        }};
+    }
+
+    static VelSplit velSplitForLayer(int layer, int totalLayers,
+                                      float aggressionDNA = 0.5f,
+                                      bool dnaAdaptive = true)
+    {
+        if (totalLayers <= 1)
+            return { 0, 127 };
+
+        if (totalLayers == 2)
+        {
+            if (layer == 0) return { 0, 63 };
+            return { 64, 127 };
+        }
+
+        if (totalLayers == 3)
+        {
+            auto splits = getVelocitySplits(aggressionDNA, dnaAdaptive);
+            // Merge ghost+light for 3-layer mode
+            if (layer == 0) return { 0, splits[1].end };
+            if (layer == 1) return { splits[1].end + 1, splits[2].end };
+            return { splits[2].end + 1, 127 };
+        }
+
+        // 4 layers: use full split system
+        auto splits = getVelocitySplits(aggressionDNA, dnaAdaptive);
+        auto s = splits[(size_t)juce::jlimit(0, 3, layer)];
+        // First layer starts at 0 per MPC convention
+        if (layer == 0) s.start = 0;
+        return s;
     }
 
     //==========================================================================
@@ -863,15 +957,37 @@ private:
         if (!stream)
             return { false, "Cannot create output stream: " + file.getFullPathName() };
 
+        // Apply TPDF dithering before quantization.
+        // We add triangular-PDF dither noise at the LSB level of the target bit depth
+        // to the float data, then let JUCE's writer handle the final conversion.
+        juce::AudioBuffer<float> dithered(buffer.getNumChannels(), buffer.getNumSamples());
+        for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
+            dithered.copyFrom(ch, 0, buffer, ch, 0, buffer.getNumSamples());
+
+        // TPDF dither: sum of two uniform random values gives triangular distribution
+        float maxVal = (bitDepth == 24) ? 8388607.0f : 32767.0f;
+        std::mt19937 ditherRng(42 + std::hash<juce::String>{}(file.getFileName()));
+        std::uniform_real_distribution<float> ditherDist(-1.0f, 1.0f);
+
+        for (int ch = 0; ch < dithered.getNumChannels(); ++ch)
+        {
+            auto* data = dithered.getWritePointer(ch);
+            for (int i = 0; i < dithered.getNumSamples(); ++i)
+            {
+                float dither = (ditherDist(ditherRng) + ditherDist(ditherRng)) / maxVal;
+                data[i] = juce::jlimit(-1.0f, 1.0f, data[i] + dither);
+            }
+        }
+
         juce::WavAudioFormat wav;
         auto writer = std::unique_ptr<juce::AudioFormatWriter>(
             wav.createWriterFor(stream.release(), sampleRate,
-                               (unsigned int)buffer.getNumChannels(),
+                               (unsigned int)dithered.getNumChannels(),
                                bitDepth, {}, 0));
         if (!writer)
             return { false, "Cannot create WAV writer for: " + file.getFullPathName() };
 
-        if (!writer->writeFromAudioSampleBuffer(buffer, 0, buffer.getNumSamples()))
+        if (!writer->writeFromAudioSampleBuffer(dithered, 0, dithered.getNumSamples()))
             return { false, "Failed to write audio data: " + file.getFullPathName() };
 
         return { true, {} };
@@ -893,6 +1009,17 @@ private:
         program->createNewChildElement("ProgramName")->addTextElement(preset.name);
         program->createNewChildElement("KeyTrack")->addTextElement(KEY_TRACK ? "True" : "False");
         program->createNewChildElement("NumKeygroups")->addTextElement(juce::String((int)notes.size()));
+
+        // Expression mapping for keygroup programs
+        auto* afterTouch = program->createNewChildElement("AfterTouch");
+        afterTouch->createNewChildElement("Destination")->addTextElement("FilterCutoff");
+        afterTouch->createNewChildElement("Amount")->addTextElement("50");
+
+        auto* modWheel = program->createNewChildElement("ModWheel");
+        modWheel->createNewChildElement("Destination")->addTextElement("FilterCutoff");
+        modWheel->createNewChildElement("Amount")->addTextElement("70");
+
+        program->createNewChildElement("PitchBendRange")->addTextElement("12");
 
         auto* keygroups = program->createNewChildElement("Keygroups");
 
@@ -919,19 +1046,12 @@ private:
                 auto sampleName = sanitizeFilename(preset.name) + "/" + wavFilename(preset.name, note, v);
                 layer->createNewChildElement("SampleName")->addTextElement(sampleName);
 
-                if (settings.velocityLayers == 1)
-                {
-                    layer->createNewChildElement("VelStart")->addTextElement("0");
-                    layer->createNewChildElement("VelEnd")->addTextElement("127");
-                }
-                else
-                {
-                    int velRange = 128 / settings.velocityLayers;
-                    int velStart = v * velRange;
-                    int velEnd = (v == settings.velocityLayers - 1) ? 127 : (v + 1) * velRange - 1;
-                    layer->createNewChildElement("VelStart")->addTextElement(juce::String(velStart));
-                    layer->createNewChildElement("VelEnd")->addTextElement(juce::String(velEnd));
-                }
+                // Use DNA-adaptive velocity splits for 4-layer mode
+                auto split = velSplitForLayer(v, settings.velocityLayers,
+                                               preset.dna.aggression,
+                                               settings.dnaAdaptiveVelocity);
+                layer->createNewChildElement("VelStart")->addTextElement(juce::String(split.start));
+                layer->createNewChildElement("VelEnd")->addTextElement(juce::String(split.end));
             }
 
             // Empty layers get VelStart = 0 (critical rule #3)

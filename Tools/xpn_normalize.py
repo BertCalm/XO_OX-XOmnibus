@@ -11,6 +11,7 @@ Usage:
 import argparse
 import math
 import os
+import random
 import struct
 import wave
 from pathlib import Path
@@ -56,22 +57,44 @@ def read_wav(path: str):
     return frames_float, sample_rate, n_channels, bit_depth, n_frames
 
 
-def write_wav(path: str, frames_float: list, sample_rate: int, n_channels: int, bit_depth: int):
+def _tpdf_dither():
+    """Generate a single TPDF (Triangular Probability Density Function) dither value.
+
+    Two uniform random values are summed to produce a triangular distribution
+    centered at zero with range [-1.0, +1.0]. This is the industry-standard
+    dither shape for audio quantization.
+    """
+    return (random.random() - 0.5) + (random.random() - 0.5)
+
+
+def write_wav(path: str, frames_float: list, sample_rate: int, n_channels: int,
+              bit_depth: int, dither: bool = True):
     """
     Write frames_float (flat list of floats in [-1.0, 1.0]) to a WAV file.
     Supports 16-bit and 24-bit PCM.
+
+    When dither=True (default), TPDF dithering is applied before quantization
+    to decorrelate quantization noise from the signal.
     """
     os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
 
     if bit_depth == 16:
         scale = 32767.0
-        clamped = [max(-32768, min(32767, int(round(s * scale)))) for s in frames_float]
+        dither_scale = 1.0 / (2 ** (bit_depth - 1)) if dither else 0.0
+        clamped = []
+        for s in frames_float:
+            if dither:
+                s = s + _tpdf_dither() * dither_scale
+            clamped.append(max(-32768, min(32767, int(round(s * scale)))))
         raw = struct.pack(f"<{len(clamped)}h", *clamped)
         sample_width = 2
 
     elif bit_depth == 24:
+        dither_scale = 1.0 / (2 ** (bit_depth - 1)) if dither else 0.0
         raw_bytes = bytearray()
         for s in frames_float:
+            if dither:
+                s = s + _tpdf_dither() * dither_scale
             value = int(round(s * 8388607.0))
             value = max(-8388608, min(8388607, value))
             if value < 0:

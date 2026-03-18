@@ -951,13 +951,30 @@ def generate_keygroup_xpm(
         '    </QLinks>\n'
     )
 
+    # Expression mapping: AfterTouch → FilterCutoff, ModWheel → FilterCutoff
+    expression_xml = (
+        '    <ExpressionMappings>\n'
+        '      <ExpressionMapping number="1">\n'
+        '        <Source>AfterTouch</Source>\n'
+        '        <Destination>FilterCutoff</Destination>\n'
+        '        <Amount>50</Amount>\n'
+        '      </ExpressionMapping>\n'
+        '      <ExpressionMapping number="2">\n'
+        '        <Source>ModWheel</Source>\n'
+        '        <Destination>FilterCutoff</Destination>\n'
+        '        <Amount>70</Amount>\n'
+        '      </ExpressionMapping>\n'
+        '    </ExpressionMappings>\n'
+    )
+
     xpm = (
         f"{_XPM_HEADER}\n"
         f"  <Program type=\"Keygroup\">\n"
         f"    <Name>{prog_name}</Name>\n"
         f"    <KeygroupNumKeygroups>{num_instruments}</KeygroupNumKeygroups>\n"
-        f"    <KeygroupPitchBendRange>2</KeygroupPitchBendRange>\n"
+        f"    <KeygroupPitchBendRange>12</KeygroupPitchBendRange>\n"
         f"    <KeygroupWheelToLfo>0.000000</KeygroupWheelToLfo>\n"
+        f"{expression_xml}"
         f"{qlink_xml}"
         f"    <Instruments>\n"
         f"{instruments_xml}"

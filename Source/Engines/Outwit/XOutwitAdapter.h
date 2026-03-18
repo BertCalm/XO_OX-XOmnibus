@@ -152,10 +152,12 @@ public:
         ampEnv.setParams(snap.ampAttack, snap.ampDecay, snap.ampSustain, snap.ampRelease);
 
         // extFilterMod adds to each arm's base filter cutoff
+        // D001: velocity modulates filter cutoff — harder hits open filter for brighter timbre
+        float velFilterMod = currentVelocity * 0.4f;
         for (int n = 0; n < 8; ++n)
         {
             auto i = static_cast<size_t>(n);
-            float armFilterHz = std::clamp(snap.armFilter[i] + extFilterMod, 20.0f, 20000.0f);
+            float armFilterHz = std::clamp(snap.armFilter[i] + extFilterMod + velFilterMod * 8000.0f, 20.0f, 20000.0f);
             // extPitchMod: semitone offset added to arm pitch
             int   armPitchSt  = snap.armPitch[i] + static_cast<int>(std::round(extPitchMod));
             arms[i].setParams(snap.armRule[i], snap.armLength[i],

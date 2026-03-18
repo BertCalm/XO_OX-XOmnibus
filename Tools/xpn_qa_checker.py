@@ -3,12 +3,13 @@
 xpn_qa_checker.py — Perceptual quality checker for rendered WAV files.
 Oxport QA pipeline stage.
 
-5 checks per file:
+6 checks per file:
   1. silence          — RMS < -60 dBFS → SILENT
   2. clipping         — >0.1% of samples at digital maximum → CLIPPING
-  3. dc_offset        — sample mean > 0.01 → DC_OFFSET
-  4. phase_cancel     — stereo: summed RMS < 10% of avg L/R RMS → PHASE_CANCELLED
-  5. undynamic        — RMS std-dev across 500ms windows < 0.001 → UNDYNAMIC
+  3. true_peak        — 4x oversampled true peak > -1 dBTP → TRUE_PEAK
+  4. dc_offset        — sample mean > 0.01 → DC_OFFSET
+  5. phase_cancel     — stereo: summed RMS < 10% of avg L/R RMS → PHASE_CANCELLED
+  6. undynamic        — RMS std-dev across 500ms windows < 0.001 → UNDYNAMIC
 
 Usage:
     python xpn_qa_checker.py samples/kick_vel_01.wav
@@ -39,6 +40,8 @@ REMEDIATION = {
     "SILENT":           "Verify the render pipeline produced audio — check gain staging, "
                         "engine active state, and that the correct preset was rendered",
     "CLIPPING":         "Apply true-peak limiting at -1 dBTP before export",
+    "TRUE_PEAK":        "True peak exceeds -1 dBTP — apply a true-peak limiter before export "
+                        "to prevent inter-sample clipping on D/A conversion",
     "DC_OFFSET":        "Apply a high-pass filter at 5–10 Hz (or DC-blocking filter) "
                         "before export to remove DC bias",
     "PHASE_CANCELLED":  "Check stereo field processing — excessive L/R polarity inversion "
@@ -177,6 +180,53 @@ def _check_undynamic(samples: "np.ndarray", framerate: int) -> dict:
     return result
 
 
+def _estimate_true_peak(samples: "np.ndarray") -> float:
+    """4x oversampled true-peak estimation using linear interpolation.
+
+    Inter-sample peaks can exceed the digital peak by up to ~3 dB.
+    This estimates the true peak by interpolating 4 points between each
+    pair of adjacent samples and tracking the maximum absolute value.
+
+    Returns the true peak as a linear amplitude value (0.0-1.0+).
+    """
+    flat = samples.flatten()
+    if len(flat) < 2:
+        return float(np.max(np.abs(flat))) if len(flat) > 0 else 0.0
+
+    max_tp = float(np.max(np.abs(flat)))
+
+    # 4x oversampled linear interpolation between adjacent samples
+    s0 = flat[:-1]
+    s1 = flat[1:]
+    for k in range(1, 4):
+        t = k / 4.0
+        interpolated = s0 + t * (s1 - s0)
+        candidate = float(np.max(np.abs(interpolated)))
+        if candidate > max_tp:
+            max_tp = candidate
+
+    return max_tp
+
+
+# True peak threshold: -1 dBTP = 10^(-1/20) = 0.891
+_TRUE_PEAK_THRESHOLD = 0.891
+
+
+def _check_true_peak(samples: "np.ndarray") -> dict:
+    """Check if true peak exceeds -1 dBTP (0.891 linear)."""
+    tp_linear = _estimate_true_peak(samples)
+    if tp_linear > 0.0:
+        tp_db = 20.0 * math.log10(tp_linear)
+    else:
+        tp_db = -120.0
+    passed = tp_linear <= _TRUE_PEAK_THRESHOLD
+    result: dict = {"pass": passed, "true_peak_linear": round(tp_linear, 6),
+                    "true_peak_dbtp": round(tp_db, 2)}
+    if not passed:
+        result["issue"] = "TRUE_PEAK"
+    return result
+
+
 # ---------------------------------------------------------------------------
 # Per-file checker
 # ---------------------------------------------------------------------------
@@ -206,6 +256,7 @@ def check_file(path: Path) -> dict:
 
     checks["silence"]           = _check_silence(samples)
     checks["clipping"]          = _check_clipping(samples)
+    checks["true_peak"]         = _check_true_peak(samples)
     checks["dc_offset"]         = _check_dc_offset(samples)
     checks["phase_cancellation"] = _check_phase_cancellation(samples, n_channels)
     checks["undynamic"]         = _check_undynamic(samples, framerate)
@@ -268,6 +319,9 @@ def _print_console_result(result: dict) -> None:
             if issue == "CLIPPING":
                 pct = checks.get("clipping", {}).get("percentage", "?")
                 detail_parts.append(f"CLIPPING ({pct}%)")
+            elif issue == "TRUE_PEAK":
+                tp_db = checks.get("true_peak", {}).get("true_peak_dbtp", "?")
+                detail_parts.append(f"TRUE_PEAK ({tp_db} dBTP)")
             elif issue == "UNDYNAMIC":
                 std = checks.get("undynamic", {}).get("rms_std", "?")
                 detail_parts.append(f"UNDYNAMIC (rms_std={std})")

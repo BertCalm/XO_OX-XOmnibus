@@ -723,10 +723,13 @@ public:
                     voice.envFollower = flushDenormal (voice.envFollower);
 
                     // Map envelope to filter frequency modulation
+                    // D001: velocity boosts chromatophore filter — harder hits = brighter skin-shift
+                    float velChromaBoost = voice.velocity * 0.3f * 3000.0f;
                     float chromaFreqMod = clamp (
                         pChromaFreq
                         + voice.envFollower * pChromaSens * 4000.0f
-                        + armMods[ArmChromaFreq] * 2000.0f,
+                        + armMods[ArmChromaFreq] * 2000.0f
+                        + velChromaBoost,
                         100.0f, 16000.0f);
 
                     // Morph filter type: LP → BP → HP → Notch

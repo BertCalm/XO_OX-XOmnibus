@@ -627,14 +627,17 @@ public:
                 float wtSample = voice.wtOsc.processSample();
 
                 // Formant filter network — gives the wavetable a "speaking" quality
+                // D001: velocity boosts formant intensity — harder hits = more vocal character
+                float velFilterBoost = voice.velocity * 0.35f;
+                float velFormant = clamp (smoothedFormant + velFilterBoost, 0.0f, 1.0f);
                 float formantOut = 0.0f;
-                if (smoothedFormant > 0.001f)
+                if (velFormant > 0.001f)
                 {
                     for (int f = 0; f < 5; ++f)
                         formantOut += voice.formant[f].processSample (wtSample);
                     formantOut *= 0.2f;  // normalize 5-band sum
 
-                    wtSample = wtSample * (1.0f - smoothedFormant) + formantOut * smoothedFormant;
+                    wtSample = wtSample * (1.0f - velFormant) + formantOut * velFormant;
                 }
 
                 // =====================================================

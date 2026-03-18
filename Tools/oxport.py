@@ -128,7 +128,8 @@ class PipelineContext:
                  dry_run: bool = False,
                  strict_qa: bool = False,
                  tuning: Optional[str] = None,
-                 choke_preset: str = "none"):
+                 choke_preset: str = "none",
+                 round_robin: bool = True):
         self.engine = engine
         self.output_dir = output_dir
         self.wavs_dir = wavs_dir
@@ -140,6 +141,7 @@ class PipelineContext:
         self.strict_qa = strict_qa
         self.tuning = tuning  # Optional tuning system name (from xpn_tuning_systems)
         self.choke_preset = choke_preset  # "onset" | "standard" | "none"
+        self.round_robin = round_robin  # Enable round-robin layer support (default: on)
 
         # Accumulated outputs
         self.render_specs: list[dict] = []
@@ -543,7 +545,8 @@ def _export_keygroup(ctx: PipelineContext) -> None:
         if ctx.wavs_dir and ctx.wavs_dir.exists():
             wav_map = build_keygroup_wav_map(ctx.wavs_dir, slug)
 
-        xpm_content = generate_keygroup_xpm(name, ctx.engine, wav_map)
+        xpm_content = generate_keygroup_xpm(name, ctx.engine, wav_map,
+                                                  round_robin=ctx.round_robin)
 
         # Apply tuning: rewrite PitchCents in every Instrument block
         if tuning_module is not None and not ctx.dry_run:
@@ -883,6 +886,7 @@ def cmd_run(args) -> int:
         strict_qa=getattr(args, "strict_qa", False),
         tuning=getattr(args, "tuning", None),
         choke_preset=getattr(args, "choke_preset", "none"),
+        round_robin=getattr(args, "round_robin", True),
     )
     return run_pipeline(ctx, skip)
 
@@ -1051,6 +1055,9 @@ def main():
                             "(e.g. just_intonation, 19tet, pythagorean, maqam_rast). "
                             "Run xpn_tuning_systems.py --list-tunings to see all options. "
                             "Tuning name is also appended to the expansion manifest description.")
+    p_run.add_argument("--no-round-robin", action="store_false", dest="round_robin",
+                       help="Disable round-robin layer support for keygroup programs "
+                            "(round-robin is enabled by default)")
     p_run.add_argument("--choke-preset", metavar="PRESET", default="none",
                        choices=["onset", "standard", "none"], dest="choke_preset",
                        help="Apply a choke group preset to each generated XPM after export. "
