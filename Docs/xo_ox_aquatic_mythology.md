@@ -178,6 +178,14 @@ Species that evolved complex, distributed, or alien cognitive architectures.
 - **XOutwit** — 8-arm Wolfram cellular automaton. Distributed intelligence as pure rule.
 - **XOctopus** — Decentralized alien mind. 8 arms that think without a center. Boneless pitch.
 
+### Eighth Generation — New Niches (V1 Concept + V2 Theorem)
+Species evolved in unexplored territories — rhythmic, duophonic, spectral, and generative.
+
+- **XOstinato** — The drum circle. Twelve voices gathered around a fire, each with its own character. The rhythm is communal.
+- **XOuïe** — The hammerhead shark. Two sensory lobes, two independent voices — STRIFE and LOVE in counterpoint. The duophonic predator.
+- **XOvertone** — The nautilus. Partials arranged by continued fractions, Pi and Phi as tuning systems. Mathematics as mythology.
+- **XOrganism** — The coral colony. Sixteen cells obeying one rule, producing emergent structure. Wolfram's ocean.
+
 ### The Bookends — Completing the Column
 The final species. The ones that went all the way.
 
