@@ -714,8 +714,9 @@ auto-fills with the Easter egg name. The user can keep it or rename it.
   The `"easterEgg"` field in `.xometa` is optional.
 - **Discoverable but not documented.** No menu lists them. No achievement
   screen. Just play, stumble, discover. Word of mouth is the distribution.
-- **Community can't add Easter eggs** (first-party only). This keeps them
-  rare, surprising, and on-brand.
+- **First-party Easter eggs are always secret.** Community-winning combos
+  become official via Brix Packs (see Part 8) but ship as curated content,
+  not user-injected code.
 
 ### Professor Oscar's Easter Egg Reaction System
 
@@ -732,7 +733,215 @@ over 0.5s. Oscar says nothing — no guilt, no loss. Just back to building.
 
 ---
 
-## Part 8: Sequencing & Priority
+## Part 8: Brix Packs, Community, and the BrixBox
+
+### Brix Packs — Curated Combo Releases
+
+Brix Packs are themed collections of OBRIX brick combos, released periodically
+as free content drops. Each pack is a set of `.xometa` presets with specific
+brick configurations, parameter tunings, Easter eggs, and Professor Oscar
+commentary.
+
+**What's in a Brix Pack:**
+
+```
+Brix Pack: "Tide Pool Machines" (Q2 2027)
+├── 8-12 curated OBRIX presets
+│   ├── Specific brick configurations (which types, which routing)
+│   ├── Tuned parameter values (not just "here's a saw + filter")
+│   └── Multi-slot presets where applicable
+├── 2-3 new Easter egg combos (pack-exclusive)
+├── Professor Oscar commentary for each preset
+│   └── "Here's what makes this one special..."
+└── Optional: 1 new brick variant (e.g., a new wavetable set)
+```
+
+**Example Packs:**
+
+| Pack Name | Theme | Key Combos |
+|-----------|-------|-----------|
+| **Tide Pool Machines** | Percussive, rhythmic, short envelopes | Noise sculpting, comb filter tricks, layered hits |
+| **Abyssal Drones** | Deep, slow, evolving textures | Detuned saws, slow LFOs, long delays, coupled OBRIX pads |
+| **Coral Keyboards** | Playable melodic instruments | Classic subtractive, FM keys, velocity-responsive |
+| **Bioluminescence** | Weird, experimental, glitchy | Ring mod chaos, all-modulator patches, wavefolder extremes |
+| **Shallow Waters** | Beginner-friendly, simple, approachable | 3-brick combos max, clear cause-and-effect |
+| **Oscar's Favorites** | Professor Oscar's personal picks | Cross-section of techniques, heavy on training commentary |
+
+**Release cadence:** One Brix Pack per quarter. Free. Delivered as a preset
+folder update — no app update required if we support downloadable preset packs.
+
+### Community Submissions
+
+Users can submit their OBRIX combos for consideration. The submission is just
+a preset file — the `.xometa` already contains the full brick configuration,
+parameter values, and routing. No special format needed.
+
+**Submission flow:**
+
+1. **Build something in OBRIX.** Play with it. Love it.
+2. **Save the preset.** Standard `.xometa` save.
+3. **Submit via xoox.design/brix** — upload the `.xometa` + a short description
+   of what makes it interesting. Optional: 15-second audio clip.
+4. **Community votes.** Other users can load submitted presets and upvote.
+5. **Quarterly curation.** XO_OX reviews top-voted submissions each quarter.
+
+**What we're looking for:**
+- Surprising combinations (not just "saw + filter" — everyone does that)
+- Good parameter tuning (the knob positions matter as much as the brick choices)
+- Interesting multi-slot configurations (coupling between OBRIX instances)
+- Teaching value (does this combo reveal something about synthesis?)
+- Fun Easter egg potential (could this become a named combo?)
+
+### Quarterly Brix Champion
+
+Each quarter, the best community submission becomes an **official Brix Pack
+entry**. The winner gets:
+
+- **Their combo included in the next Brix Pack** — with their name credited
+- **A custom Easter egg** built around their combo — XO_OX designs the name,
+  reskin, and Oscar reaction based on the community winner's creation
+- **"Brix Champion Q[X] [Year]" badge** in the community gallery
+- **Their preset becomes permanent** — never removed from future versions
+
+The quarterly cycle:
+
+```
+Month 1: Submissions open (community builds + uploads)
+Month 2: Voting period (community plays + votes)
+Month 3: Winner announced → XO_OX builds Easter egg + pack integration
+         → Next Brix Pack ships with winner included
+```
+
+### The BrixBox — Your Personal Collection
+
+The BrixBox is a persistent personal inventory where discovered Easter eggs
+and earned Brix Pack items live. It's not a preset browser — it's a trophy case.
+
+**How it works:**
+
+```
+┌─────────────────────────────────────────────┐
+│  🧱 YOUR BRIXBOX                    42/87   │
+│                                             │
+│  ── DISCOVERED ──────────────────────────── │
+│  ✦ CHAIN SAW MAN         found 2027-01-15  │
+│  ✦ DEEP SEA DIVER        found 2027-01-18  │
+│  ✦ PURE THOUGHT          found 2027-02-03  │
+│  ○ ????????               (undiscovered)    │
+│  ○ ????????               (undiscovered)    │
+│  ○ ????????               (undiscovered)    │
+│                                             │
+│  ── BRIX PACKS ──────────────────────────── │
+│  ◆ Tide Pool Machines      12/12 collected  │
+│  ◆ Abyssal Drones           8/10 collected  │
+│  ◇ Coral Keyboards          0/11 (locked)   │
+│                                             │
+│  ── CHAMPION COMBOS ─────────────────────── │
+│  ★ "Thermal Vent" by @synthwitch  Q1 2027  │
+│  ★ "Glass Jellyfish" by @deepcurrent Q2    │
+│                                             │
+│  ── STATS ───────────────────────────────── │
+│  Bricks placed: 1,247                       │
+│  Combos tried: 318                          │
+│  Easter eggs found: 3/10 (+pack eggs)       │
+│  Packs completed: 1                         │
+└─────────────────────────────────────────────┘
+```
+
+**BrixBox rules:**
+
+- **Easter eggs appear when discovered.** The undiscovered slots show `????????`
+  — you know how many exist but not what they are. This creates the hunt.
+- **Brix Pack items "collect" when you load and play them.** Download a pack,
+  load a preset, play at least one note — it's in your BrixBox. This rewards
+  engagement, not just downloading.
+- **Pack Easter eggs stay in your BrixBox even if you uninstall the pack.**
+  Once found, always yours.
+- **Champion combos are highlighted** with the creator's name and quarter.
+  Loading a champion combo shows a brief credit overlay.
+- **Stats are for fun, not competition.** No leaderboards. No sharing pressure.
+  Your BrixBox is yours. The count at the top (42/87) is the only hint at
+  how much is left to find.
+- **BrixBox syncs via iCloud / user account.** Discover an Easter egg on
+  iPhone Pocket, it's in your BrixBox on desktop too.
+
+### BrixBox on iPhone Pocket
+
+On Pocket, the BrixBox is accessed via a dedicated tab (swipe left from the
+main OBRIX Pocket view). It's a compact scrollable list with the same
+sections. Tapping any collected item loads it immediately — no navigation
+to a separate preset browser.
+
+When you discover an Easter egg on Pocket:
+1. The discovery animation plays (Oscar's gills flash, bricks reskin)
+2. A subtle **"Added to BrixBox"** toast appears at the top
+3. A badge dot appears on the BrixBox tab
+
+### Technical Implementation
+
+```
+BrixBox storage:
+├── Local: ~/Library/XOmnibus/BrixBox/brixbox.json
+│   ├── discovered: ["CHAIN_SAW_MAN", "DEEP_SEA_DIVER", ...]
+│   ├── collected: { "tide_pool_machines": ["preset1", "preset2", ...] }
+│   ├── stats: { bricksPlaced: 1247, combosTried: 318 }
+│   └── syncToken: "..." (for cloud sync)
+├── iCloud: com.xoox.xomnibus/BrixBox/
+└── Merge strategy: union (never lose discoveries)
+```
+
+- **Discovery detection** reuses the Easter egg parameter check —
+  same `obrix_source1_type` / `obrix_proc1_type` pattern matching.
+- **Pack collection** triggers on `noteOn` event while a pack preset is active.
+- **Stats increment** on brick type changes (bricksPlaced) and unique
+  configuration hashes (combosTried).
+- **No server dependency for core BrixBox.** Works fully offline.
+  Community voting and pack downloads need network, but your personal
+  collection is local-first.
+
+### Brix Pack Distribution
+
+Two models, depending on platform constraints:
+
+**Model A: In-app download (preferred)**
+- Pack metadata lives on xoox.design/api/brixpacks
+- User taps "Get Pack" in OBRIX → downloads preset folder + Easter egg
+  definitions → unpacks to `Presets/XOmnibus/BrixPacks/{packName}/`
+- No app update required. Works on macOS, iOS.
+
+**Model B: App update bundle (fallback for App Store restrictions)**
+- Packs ship in point releases (v1.3.1, v1.3.2...)
+- All packs are included in the app bundle
+- Locked until "activated" by the user in the BrixBox (so you still get
+  the collection/discovery experience)
+
+### How Brix Packs, Easter Eggs, and BrixBox Connect
+
+```
+User builds combo in OBRIX
+    │
+    ├── Matches a built-in Easter egg? → Discovery animation → BrixBox
+    │
+    ├── Matches a Brix Pack Easter egg? → Discovery animation → BrixBox
+    │   (only if pack is installed)
+    │
+    ├── Something interesting? → Submit to community
+    │   │
+    │   └── Wins quarterly? → Becomes official Easter egg
+    │       → Ships in next Brix Pack
+    │       → All users can discover it
+    │       → Winner's name in Champion section
+    │
+    └── Just playing? → Stats increment → Combos tried goes up
+        → Eventually stumble into an egg you didn't know existed
+```
+
+The whole system is a flywheel: OBRIX is fun → users build combos → best
+combos become packs → packs bring users back → more combos → repeat.
+
+---
+
+## Part 9: Sequencing & Priority
 
 ### V1 (Ship)
 - 34 engines, current architecture, no expansion API yet
@@ -760,11 +969,19 @@ over 0.5s. Oscar says nothing — no guilt, no loss. Just back to building.
 - **OBRIX Pocket** — iPhone-optimized Pocket Operator-inspired single-screen interface
 - Aquatic visual identity (ocean gradient, shell/coral/current/tide pool brick types)
 
-### V1.4+ (Community)
+### V1.4 (BrixBox + Packs)
+- **BrixBox** — personal discovery collection with iCloud sync
+- **Brix Pack infrastructure** — downloadable preset packs (or bundled in updates)
+- **First Brix Pack ships** — "Shallow Waters" (beginner-friendly) + "Oscar's Favorites"
+- **Community submission portal** on xoox.design/brix
+
+### V1.5 (Community Engines + Quarterly Cycle)
 - **Community engine gallery** on xoox.design
 - **In-app engine browser** — discover and install community engines
+- **First Quarterly Brix Champion** selected
 - **OBRIX-to-SDK bridge** — export an OBRIX patch as an SDK project scaffold
   (the brick graph becomes starter code in a real engine template)
+- Ongoing quarterly cadence: submissions → voting → winner → Brix Pack
 
 ---
 
@@ -791,13 +1008,24 @@ over 0.5s. Oscar says nothing — no guilt, no loss. Just back to building.
    lot. Should layers 3-5 (science cards, scope, "why does it sound like that")
    unlock progressively as the user builds more patches? Or always available?
 
-7. **Easter egg expansion.** Should we ship with 10 combos and add more in
-   updates? Community-suggested combos (but first-party implemented)?
+7. **Brix Pack pricing.** Strategy says free. But if packs get expensive to
+   curate (custom Easter eggs, Oscar commentary, new brick variants), is a
+   mix of free + premium packs sustainable? Or does free drive enough
+   engagement that it pays for itself in platform growth?
 
-8. **Pocket landscape mode.** iPhone landscape could show a wider brick canvas
+8. **Community moderation.** Submission portal needs content moderation —
+   preset names, descriptions, audio clips. Automated + human review?
+   Community flagging? How much overhead is this?
+
+9. **BrixBox gamification ceiling.** Stats and counts are "for fun" but
+   there's a fine line before it feels like a mobile game. No XP, no
+   levels, no daily streaks. But the ???????? slots are inherently
+   completionist bait — is that okay? Probably yes, but worth monitoring.
+
+10. **Pocket landscape mode.** iPhone landscape could show a wider brick canvas
    (closer to iPad). Or it could show a split: keyboard left, bricks right.
    Needs prototyping.
 
-9. **Oscar localization.** Training mode text needs translation. Oscar's
+11. **Oscar localization.** Training mode text needs translation. Oscar's
    personality needs to survive localization — casual analogies don't always
    translate well. Consider hiring writers per language, not just translators.
