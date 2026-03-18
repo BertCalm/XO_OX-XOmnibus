@@ -3,11 +3,11 @@
   "name": "Deep Sea Glow",
   "mood": "Family",
   "engines": [
-    "OWLFISH"
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OWLFISH in the dark \u2014 GLOW macro lit, DEPTH resonant. Bioluminescence at 3000 meters. Patient. Necessary.",
+  "description": "OWLFISH in the dark — GLOW macro lit, DEPTH resonant. Bioluminescence at 3000 meters. Patient. Necessary.",
   "tags": [
     "family",
     "extended-family",

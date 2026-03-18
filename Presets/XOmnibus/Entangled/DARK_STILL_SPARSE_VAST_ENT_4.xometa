@@ -3,12 +3,12 @@
   "name": "DARK_STILL_SPARSE_VAST_ENT_4",
   "mood": "Entangled",
   "engines": [
-    "OBLONG",
-    "OHM"
+    "Oblong",
+    "Ohm"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Still Sparse Vast character entanglement \u2014 OBLONG \u00d7 OHM via Chaos Inject. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Still Sparse Vast character entanglement — OBLONG × OHM via Chaos Inject. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.6247
   },
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.5477,
       "macro_movement": 0.0001,
       "macro_coupling": 0.8069,
@@ -57,7 +57,7 @@
       "output_level": 0.7202,
       "coupling_level": 0.7778
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.53,
       "macro_movement": 0.0579,
       "macro_coupling": 0.808,

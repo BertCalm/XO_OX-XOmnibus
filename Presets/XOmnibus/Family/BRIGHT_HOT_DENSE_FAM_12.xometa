@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OVERDUB",
-    "OCTOPUS"
+    "Overdub",
+    "Octopus"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.941,
       "macro_movement": 0.41,
       "macro_coupling": 0.719,
       "macro_space": 0.679
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 1.0,
       "macro_movement": 0.464,
       "macro_coupling": 0.718,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ODDOSCAR",
-    "OBBLIGATO"
+    "OddOscar",
+    "Obbligato"
   ],
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.843,
       "macro_movement": 0.286,
       "macro_coupling": 0.727,
       "macro_space": 0.585
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.902,
       "macro_movement": 0.215,
       "macro_coupling": 0.292,

@@ -3,11 +3,11 @@
   "name": "Refraction Edge",
   "mood": "Foundation",
   "engines": [
-    "OBLIQUE"
+    "Oblique"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "OBLIQUE \u2014 bright extreme brightness preset for Foundation.",
+  "description": "OBLIQUE — bright extreme brightness preset for Foundation.",
   "tags": [
     "foundation",
     "bright",
@@ -37,7 +37,7 @@
     "aggression": 0.21
   },
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "oblq_warpAngle": 0.05,
       "oblq_filterCutoff": 0.94,
       "oblq_filterReso": 0.48,

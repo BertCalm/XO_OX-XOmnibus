@@ -12,7 +12,7 @@
   },
   "engines": [
     "XOverbite",
-    "XOhm"
+    "Ohm"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -49,7 +49,7 @@
       "poss_warmth": 0.633,
       "poss_aggression": 0.605
     },
-    "XOhm": {
+    "Ohm": {
       "ohm_outputLevel": 0.77,
       "ohm_outputPan": 0.03,
       "ohm_couplingLevel": 0.57,

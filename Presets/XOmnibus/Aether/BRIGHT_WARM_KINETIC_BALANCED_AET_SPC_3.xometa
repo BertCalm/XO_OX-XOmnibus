@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OBLIQUE",
-    "ORACLE"
+    "Oblique",
+    "Oracle"
   ],
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.912,
       "macro_movement": 0.902,
       "macro_coupling": 0.783,
       "macro_space": 0.488
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.935,
       "macro_movement": 0.894,
       "macro_coupling": 0.765,

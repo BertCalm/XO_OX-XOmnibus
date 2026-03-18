@@ -3,12 +3,12 @@
   "name": "Oblique Recipe",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "OBLIQUE"
+    "Osteria",
+    "Oblique"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The unexpected ingredient \u2014 OBLIQUE introduces an angle the kitchen didn't plan for.",
+  "description": "The unexpected ingredient — OBLIQUE introduces an angle the kitchen didn't plan for.",
   "tags": [
     "entangled",
     "coupling",

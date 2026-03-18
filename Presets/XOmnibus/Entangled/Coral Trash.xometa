@@ -2,8 +2,8 @@
   "name": "Coral Trash",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OVERBITE"
+    "Obbligato",
+    "Overbite"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "overbite",
     "wind"
   ],
-  "description": "OBBLIGATO BOND macro linked to overbite TRASH macro \u2014 necessary connection, chaotic content"
+  "description": "OBBLIGATO BOND macro linked to overbite TRASH macro — necessary connection, chaotic content"
 }

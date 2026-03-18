@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ORGANON",
-    "OSPREY"
+    "Organon",
+    "Osprey"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.447,
       "macro_movement": 0.484,
       "macro_coupling": 0.332,
       "macro_space": 0.763
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.377,
       "macro_movement": 0.933,
       "macro_coupling": 0.87,

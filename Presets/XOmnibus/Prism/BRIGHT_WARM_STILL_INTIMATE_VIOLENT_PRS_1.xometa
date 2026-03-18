@@ -3,8 +3,8 @@
   "name": "BRIGHT_WARM_STILL_INTIMATE_VIOLENT_PRS_1",
   "mood": "Prism",
   "engines": [
-    "OSTERIA",
-    "ORACLE"
+    "Osteria",
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.987,
       "macro_movement": 0.063,
       "macro_coupling": 0.245,
       "macro_space": 0.004
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 1.0,
       "macro_movement": 0.042,
       "macro_coupling": 0.445,

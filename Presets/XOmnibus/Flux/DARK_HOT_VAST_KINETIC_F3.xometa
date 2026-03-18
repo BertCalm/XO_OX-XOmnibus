@@ -11,11 +11,11 @@
     "space": 0.932
   },
   "engines": [
-    "OPAL"
+    "Opal"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Flux preset \u2014 extreme dark brightness, extreme hot warmth, extreme kinetic movement, extreme vast space. Maximum contrast character design.",
+  "description": "Ultra-diverse Flux preset — extreme dark brightness, extreme hot warmth, extreme kinetic movement, extreme vast space. Maximum contrast character design.",
   "tags": [
     "dark",
     "warm",
@@ -40,7 +40,7 @@
     "aggression": 0.516
   },
   "parameters": {
-    "OPAL": {}
+    "Opal": {}
   },
   "coupling": {
     "pairs": []

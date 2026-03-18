@@ -2,8 +2,8 @@
   "name": "Sage Pounce",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OCELOT"
+    "Ohm",
+    "Ocelot"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ocelot",
     "hippy"
   ],
-  "description": "Warm folk groove ambushed by a sudden feline leap \u2014 tension coils then releases"
+  "description": "Warm folk groove ambushed by a sudden feline leap — tension coils then releases"
 }

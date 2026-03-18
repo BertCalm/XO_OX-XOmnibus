@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OPAL"
+    "Overlap",
+    "Opal"
   ],
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.06,
       "macro_movement": 0.018,
       "macro_coupling": 0.144,
       "macro_space": 0.659
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.084,
       "macro_movement": 0.017,
       "macro_coupling": 0.145,

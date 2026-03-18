@@ -3,7 +3,7 @@
   "name": "Predator Cycle",
   "mood": "Foundation",
   "engines": [
-    "OCELOT"
+    "Ocelot"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -26,7 +26,7 @@
     "aggression": 0.6
   },
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "ocelot_biome": 0,
       "ocelot_strataBalance": 0.4,
       "ocelot_ecosystemDepth": 0.8,

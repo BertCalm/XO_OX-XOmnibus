@@ -3,12 +3,12 @@
   "name": "Cell Rule",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OVERWORLD"
+    "Outwit",
+    "Overworld"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Overworld ERA state selects OUTWIT Wolfram rule set \u2014 chip era as cellular law",
+  "description": "Overworld ERA state selects OUTWIT Wolfram rule set — chip era as cellular law",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.7
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 30,
       "owit_arms": 6,
       "owit_cellSize": 0.476,

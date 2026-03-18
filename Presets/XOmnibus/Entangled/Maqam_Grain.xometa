@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OPAL",
-    "ORACLE"
+    "Opal",
+    "Oracle"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.13,
       "macro_movement": 0.28,
       "macro_coupling": 0.75,
       "macro_space": 0.93
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.1,
       "macro_movement": 0.23,
       "macro_coupling": 0.8,
@@ -46,5 +46,5 @@
     "maqam",
     "grain"
   ],
-  "description": "Maqam intervals as grain positions \u2014 ancient intervals suspend in cold space."
+  "description": "Maqam intervals as grain positions — ancient intervals suspend in cold space."
 }

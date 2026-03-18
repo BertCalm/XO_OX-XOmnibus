@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OHM",
-    "ORPHICA"
+    "Ohm",
+    "Orphica"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.852,
       "macro_movement": 0.068,
       "macro_coupling": 0.788,
       "macro_space": 0.355
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.033,
       "macro_movement": 0.102,
       "macro_coupling": 0.022,

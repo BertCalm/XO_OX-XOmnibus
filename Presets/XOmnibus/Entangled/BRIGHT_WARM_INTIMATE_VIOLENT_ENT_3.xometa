@@ -3,12 +3,12 @@
   "name": "BRIGHT_WARM_INTIMATE_VIOLENT_ENT_3",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ODDOSCAR"
+    "Overlap",
+    "OddOscar"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Warm Intimate Violent character entanglement \u2014 OVERLAP \u00d7 ODDOSCAR via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Warm Intimate Violent character entanglement — OVERLAP × ODDOSCAR via Resonance Share. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.8869
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.9261,
       "macro_movement": 0.4337,
       "macro_coupling": 0.9426,
@@ -57,7 +57,7 @@
       "output_level": 0.7545,
       "coupling_level": 0.8963
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.9292,
       "macro_movement": 0.376,
       "macro_coupling": 0.9171,

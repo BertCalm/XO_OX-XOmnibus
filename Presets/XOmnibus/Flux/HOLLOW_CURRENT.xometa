@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ORPHICA",
-    "OVERLAP"
+    "Orphica",
+    "Overlap"
   ],
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.9042,
       "macro_movement": 0.2862,
       "macro_coupling": 0.7989,
       "macro_space": 0.6071
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.3523,
       "macro_movement": 0.6366,
       "macro_coupling": 0.6209,

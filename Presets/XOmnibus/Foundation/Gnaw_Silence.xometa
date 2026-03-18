@@ -3,11 +3,11 @@
   "name": "Gnaw Silence",
   "mood": "Foundation",
   "engines": [
-    "OVERBITE"
+    "Overbite"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "OVERBITE \u2014 dark extreme brightness preset for Foundation.",
+  "description": "OVERBITE — dark extreme brightness preset for Foundation.",
   "tags": [
     "foundation",
     "dark",
@@ -37,7 +37,7 @@
     "aggression": 0.15
   },
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "poss_filterCutoff": 0.89,
       "poss_filterReso": 0.25,
       "poss_envAmount": 0.59,

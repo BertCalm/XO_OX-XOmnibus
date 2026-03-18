@@ -2,8 +2,8 @@
   "name": "Chiptune Reed",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OVERWORLD"
+    "Obbligato",
+    "Overworld"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "overworld",
     "wind"
   ],
-  "description": "OBBLIGATO breath modulates overworld era crossfade \u2014 each exhale shifts the era"
+  "description": "OBBLIGATO breath modulates overworld era crossfade — each exhale shifts the era"
 }

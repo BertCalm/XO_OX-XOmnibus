@@ -2,7 +2,7 @@
   "name": "Orchid Haze",
   "version": "1.0",
   "engines": [
-    "OLE"
+    "Ole"
   ],
   "mood": "Atmosphere",
   "macros": {

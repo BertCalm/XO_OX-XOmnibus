@@ -11,11 +11,11 @@
     "aggression": 0.146
   },
   "engines": [
-    "OBSCURA"
+    "Obscura"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Crystal lattice tone \u2014 intervals measured, density absent.",
+  "description": "Crystal lattice tone — intervals measured, density absent.",
   "tags": [
     "prism",
     "cold",

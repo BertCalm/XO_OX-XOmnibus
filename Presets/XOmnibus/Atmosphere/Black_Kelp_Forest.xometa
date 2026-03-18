@@ -3,7 +3,7 @@
   "name": "Black Kelp Forest",
   "mood": "Atmosphere",
   "engines": [
-    "OUROBOROS"
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.142
   },
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "cycle": 0.108,
       "tension": 0.259,
       "coupling": 0.325,

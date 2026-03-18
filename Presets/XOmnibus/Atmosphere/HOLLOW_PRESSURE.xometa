@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OLE",
-    "ORPHICA"
+    "Ole",
+    "Orphica"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.873,
       "macro_movement": 0.788,
       "macro_coupling": 0.679,
       "macro_space": 0.06
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.874,
       "macro_movement": 0.744,
       "macro_coupling": 0.393,

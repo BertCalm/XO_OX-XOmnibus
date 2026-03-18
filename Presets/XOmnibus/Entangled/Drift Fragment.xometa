@@ -2,8 +2,8 @@
   "name": "Drift Fragment",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OBLIQUE"
+    "Odyssey",
+    "Oblique"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oblique",
     "wavetable"
   ],
-  "description": "Oblique strategy intercepts drift FM \u2014 calculated redirection of an uncontrolled journey"
+  "description": "Oblique strategy intercepts drift FM — calculated redirection of an uncontrolled journey"
 }

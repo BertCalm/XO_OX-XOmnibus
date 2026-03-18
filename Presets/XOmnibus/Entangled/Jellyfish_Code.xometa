@@ -3,12 +3,12 @@
   "name": "Jellyfish Code",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OUTWIT"
+    "Overlap",
+    "Outwit"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OUTWIT emergence events scatter OVERLAP diffusion coefficients \u2014 unpredictable bloom in infinite space",
+  "description": "OUTWIT emergence events scatter OVERLAP diffusion coefficients — unpredictable bloom in infinite space",
   "tags": [
     "coupling",
     "entangled",
@@ -48,7 +48,7 @@
     "density": 0.675
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.595,
       "olap_decay": 0.645,
       "olap_damping": 0.644,
@@ -69,7 +69,7 @@
       "olap_spinRate": 0.141,
       "olap_shimmerMix": 0.243
     },
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 110,
       "owit_arms": 8,
       "owit_cellSize": 0.44,

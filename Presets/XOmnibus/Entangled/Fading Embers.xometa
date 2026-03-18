@@ -2,8 +2,8 @@
   "name": "Fading Embers",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OMBRE"
+    "Ohm",
+    "Ombre"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ombre",
     "hippy"
   ],
-  "description": "Warm ohm communal fire slowly fades to gradient dusk \u2014 beauty in diminishment"
+  "description": "Warm ohm communal fire slowly fades to gradient dusk — beauty in diminishment"
 }

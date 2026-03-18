@@ -3,12 +3,12 @@
   "name": "Brass Phosphor",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "OUROBOROS"
+    "Ottoni",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Triple brass GROW macro with Ouroboros chaos injection \u2014 harmonic brass in fractal formation.",
+  "description": "Triple brass GROW macro with Ouroboros chaos injection — harmonic brass in fractal formation.",
   "tags": [
     "entangled",
     "brutal",

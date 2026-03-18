@@ -2,8 +2,8 @@
   "name": "Saturated Breath",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OBESE"
+    "Obbligato",
+    "Obese"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "obese",
     "wind"
   ],
-  "description": "Dual wind runs through obese saturation \u2014 obligated coral warmth turned molten"
+  "description": "Dual wind runs through obese saturation — obligated coral warmth turned molten"
 }

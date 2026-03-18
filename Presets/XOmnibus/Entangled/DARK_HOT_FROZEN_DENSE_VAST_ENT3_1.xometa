@@ -3,12 +3,12 @@
   "name": "DARK_HOT_FROZEN_DENSE_VAST_ENT3_1",
   "mood": "Entangled",
   "engines": [
-    "OBLIQUE",
-    "OVERWORLD"
+    "Oblique",
+    "Overworld"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: DARK_HOT_FROZEN_DENSE_VAST. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_HOT_FROZEN_DENSE_VAST. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.5918,
       "macro_movement": 0.0286,
       "macro_coupling": 0.9104,
       "macro_space": 0.545
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.9672,
       "macro_movement": 0.0345,
       "macro_coupling": 0.8806,

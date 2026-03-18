@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ORPHICA",
-    "OCELOT"
+    "Orphica",
+    "Ocelot"
   ],
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.493,
       "macro_movement": 0.401,
       "macro_coupling": 0.726,
       "macro_space": 0.682
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.601,
       "macro_movement": 0.36,
       "macro_coupling": 0.341,

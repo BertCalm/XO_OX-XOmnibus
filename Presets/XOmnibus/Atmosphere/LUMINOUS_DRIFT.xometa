@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OCTOPUS",
-    "OVERLAP"
+    "Octopus",
+    "Overlap"
   ],
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.559,
       "macro_movement": 0.668,
       "macro_coupling": 0.354,
       "macro_space": 0.397
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.742,
       "macro_movement": 0.436,
       "macro_coupling": 0.46,

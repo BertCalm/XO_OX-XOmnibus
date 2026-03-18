@@ -2,8 +2,8 @@
   "name": "Chaos Commune",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OUROBOROS"
+    "Ohm",
+    "Ouroboros"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ouroboros",
     "hippy"
   ],
-  "description": "Ouroboros strange attractor leashed to ohm's warm gravitational centre \u2014 chaos with a hearth"
+  "description": "Ouroboros strange attractor leashed to ohm's warm gravitational centre — chaos with a hearth"
 }

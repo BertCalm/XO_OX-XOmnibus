@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "ORBITAL",
-    "ORGANON"
+    "Orbital",
+    "Organon"
   ],
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.9374,
       "macro_movement": 0.8706,
       "macro_coupling": 0.1419,
       "macro_space": 0.3098
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.9119,
       "macro_movement": 0.8827,
       "macro_coupling": 0.1127,

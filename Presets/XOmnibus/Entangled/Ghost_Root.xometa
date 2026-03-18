@@ -3,8 +3,8 @@
   "name": "Ghost Root",
   "mood": "Entangled",
   "engines": [
-    "OCTOPUS",
-    "ORCA"
+    "Octopus",
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.635
   },
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.426,
       "macro_movement": 0.599,
       "macro_coupling": 0.77,
       "macro_space": 0.309
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.776,
       "macro_movement": 0.692,
       "macro_coupling": 0.498,

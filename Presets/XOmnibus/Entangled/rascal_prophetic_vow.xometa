@@ -3,8 +3,8 @@
   "name": "Rascal Prophetic Vow",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "ORACLE"
+    "Obbligato",
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0.0",

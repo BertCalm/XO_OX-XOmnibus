@@ -3,8 +3,8 @@
   "name": "BRIGHT_HOT_STILL_INTIMATE_GENTLE_PRS_1",
   "mood": "Prism",
   "engines": [
-    "ORIGAMI",
-    "OTTONI"
+    "Origami",
+    "Ottoni"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.869,
       "macro_movement": 0.121,
       "macro_coupling": 0.274,
       "macro_space": 0.0
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.877,
       "macro_movement": 0.11,
       "macro_coupling": 0.387,

@@ -3,12 +3,12 @@
   "name": "DARK HOT DENSE VIOLENT FAM 1",
   "mood": "Family",
   "engines": [
-    "OVERDUB",
-    "ORBITAL"
+    "Overdub",
+    "Orbital"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, dark, warm, dense.",
+  "description": "Extreme DNA corners — family, dark, warm, dense.",
   "tags": [
     "family",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.905
   },
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "level": 0.818,
       "pan": 0.091
     },
-    "ORBITAL": {
+    "Orbital": {
       "level": 0.762,
       "pan": 0.12
     }

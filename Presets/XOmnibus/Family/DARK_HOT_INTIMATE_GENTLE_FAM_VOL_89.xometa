@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OBLONG",
-    "ORGANON"
+    "Oblong",
+    "Organon"
   ],
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.492,
       "macro_movement": 0.383,
       "macro_coupling": 0.279,
       "macro_space": 0.097
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.465,
       "macro_movement": 0.401,
       "macro_coupling": 0.281,

@@ -3,12 +3,12 @@
   "name": "COLD_STILL_INTIMATE_GENTLE_ENT_2",
   "mood": "Entangled",
   "engines": [
-    "ORGANON",
-    "OUROBOROS"
+    "Organon",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Cold Still Intimate Gentle character entanglement \u2014 ORGANON \u00d7 OUROBOROS via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "description": "Cold Still Intimate Gentle character entanglement — ORGANON × OUROBOROS via Spectral Morph. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "cold",
@@ -41,7 +41,7 @@
     "aggression": 0.0767
   },
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.4669,
       "macro_movement": 0.0988,
       "macro_coupling": 0.6201,
@@ -57,7 +57,7 @@
       "output_level": 0.8323,
       "coupling_level": 0.5916
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.4962,
       "macro_movement": 0.0999,
       "macro_coupling": 0.5881,

@@ -3,12 +3,12 @@
   "name": "BRIGHT_COLD_VAST_VIOLENT_ENT_2",
   "mood": "Entangled",
   "engines": [
-    "ODYSSEY",
-    "ODDFELIX"
+    "Odyssey",
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Cold Vast Violent character entanglement \u2014 ODYSSEY \u00d7 ODDFELIX via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Cold Vast Violent character entanglement — ODYSSEY × ODDFELIX via Spectral Morph. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.9371
   },
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.6325,
       "macro_movement": 0.3847,
       "macro_coupling": 0.9221,
@@ -57,7 +57,7 @@
       "output_level": 0.8203,
       "coupling_level": 0.9039
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.6025,
       "macro_movement": 0.3704,
       "macro_coupling": 0.9068,

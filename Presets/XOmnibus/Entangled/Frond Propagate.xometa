@@ -3,12 +3,12 @@
   "name": "Frond Propagate",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OVERWORLD"
+    "Overlap",
+    "Overworld"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERLAP bloom softens OVERWORLD ERA transitions \u2014 chip era changes wash through space",
+  "description": "OVERLAP bloom softens OVERWORLD ERA transitions — chip era changes wash through space",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.6
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.937,
       "olap_decay": 0.732,
       "olap_damping": 0.49,

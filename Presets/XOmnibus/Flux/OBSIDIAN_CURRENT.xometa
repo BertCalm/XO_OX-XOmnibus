@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OVERBITE",
-    "ORGANON"
+    "Overbite",
+    "Organon"
   ],
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.069,
       "macro_movement": 0.068,
       "macro_coupling": 0.862,
       "macro_space": 0.404
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.942,
       "macro_movement": 0.57,
       "macro_coupling": 0.579,

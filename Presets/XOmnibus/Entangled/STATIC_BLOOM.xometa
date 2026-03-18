@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORCA",
-    "OCEANIC"
+    "Orca",
+    "Oceanic"
   ],
   "parameters": {
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.981,
       "macro_movement": 0.833,
       "macro_coupling": 0.296,
       "macro_space": 0.361
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.302,
       "macro_movement": 0.708,
       "macro_coupling": 0.127,

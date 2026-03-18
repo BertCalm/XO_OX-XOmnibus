@@ -2,8 +2,8 @@
   "name": "Deep Voyage",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OWLFISH"
+    "Odyssey",
+    "Owlfish"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "owlfish",
     "wavetable"
   ],
-  "description": "Mixtur-Trautonium partials intercept wavetable drift \u2014 ancient deep-water resonance"
+  "description": "Mixtur-Trautonium partials intercept wavetable drift — ancient deep-water resonance"
 }

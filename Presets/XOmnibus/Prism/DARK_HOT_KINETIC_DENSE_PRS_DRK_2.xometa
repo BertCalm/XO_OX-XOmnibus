@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OBLIQUE",
-    "ORACLE"
+    "Oblique",
+    "Oracle"
   ],
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.7859,
       "macro_movement": 0.9354,
       "macro_coupling": 0.8965,
       "macro_space": 0.5357
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.7681,
       "macro_movement": 0.9126,
       "macro_coupling": 0.9176,

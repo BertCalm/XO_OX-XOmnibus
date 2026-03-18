@@ -3,12 +3,12 @@
   "name": "Axolotl Strike",
   "mood": "Entangled",
   "engines": [
-    "ODDOSCAR",
-    "ORCA"
+    "OddOscar",
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Orca strike velocity coupled into Oddoscar morph \u2014 gill pink meets apex predator cold.",
+  "description": "Orca strike velocity coupled into Oddoscar morph — gill pink meets apex predator cold.",
   "tags": [
     "entangled",
     "brutal",

@@ -3,8 +3,8 @@
   "name": "Dark Arm Slash",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OBSIDIAN"
+    "Outwit",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.71
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 54,
       "owit_arms": 8,
       "owit_cellSize": 0.18,
@@ -70,7 +70,7 @@
       "owit_outputLevel": 0.77,
       "owit_outputPan": 0.07
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "obsidian_character": 0.29,
       "obsidian_movement": 0.76,
       "obsidian_coupling": 0.62,

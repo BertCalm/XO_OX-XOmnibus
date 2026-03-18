@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OBBLIGATO",
-    "ORPHICA"
+    "Obbligato",
+    "Orphica"
   ],
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.38,
       "macro_movement": 0.85,
       "macro_coupling": 0.5,
       "macro_space": 0.82
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.25,
       "macro_movement": 0.78,
       "macro_coupling": 0.5,

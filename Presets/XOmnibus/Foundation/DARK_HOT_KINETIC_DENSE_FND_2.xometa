@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OUROBOROS",
-    "OVERWORLD"
+    "Ouroboros",
+    "Overworld"
   ],
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.104,
       "macro_movement": 0.403,
       "macro_coupling": 0.68,
       "macro_space": 0.317
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.438,
       "macro_movement": 0.395,
       "macro_coupling": 0.891,

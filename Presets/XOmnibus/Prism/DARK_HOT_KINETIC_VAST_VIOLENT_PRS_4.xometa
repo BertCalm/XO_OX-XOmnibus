@@ -3,8 +3,8 @@
   "name": "DARK_HOT_KINETIC_VAST_VIOLENT_PRS_4",
   "mood": "Prism",
   "engines": [
-    "OVERWORLD",
-    "OHM"
+    "Overworld",
+    "Ohm"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.143,
       "macro_movement": 0.985,
       "macro_coupling": 0.432,
       "macro_space": 0.886
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.184,
       "macro_movement": 0.943,
       "macro_coupling": 0.432,

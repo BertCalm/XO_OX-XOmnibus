@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OCELOT",
-    "ORPHICA"
+    "Ocelot",
+    "Orphica"
   ],
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.069,
       "macro_movement": 0.066,
       "macro_coupling": 0.658,
       "macro_space": 0.716
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.215,
       "macro_movement": 0.079,
       "macro_coupling": 0.558,

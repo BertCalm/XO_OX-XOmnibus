@@ -2,8 +2,8 @@
   "name": "Harp Spool",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "ORPHICA"
+    "Overdub",
+    "Orphica"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orphica",
     "dub"
   ],
-  "description": "Orphica grain-shimmer drawn through dub tape \u2014 each grain a loop frozen in amber"
+  "description": "Orphica grain-shimmer drawn through dub tape — each grain a loop frozen in amber"
 }

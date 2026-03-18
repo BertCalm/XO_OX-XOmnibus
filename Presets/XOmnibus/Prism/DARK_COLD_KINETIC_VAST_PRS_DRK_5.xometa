@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ORACLE",
-    "OHM"
+    "Oracle",
+    "Ohm"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.3033,
       "macro_movement": 0.9563,
       "macro_coupling": 0.5019,
       "macro_space": 0.9697
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.2831,
       "macro_movement": 0.9673,
       "macro_coupling": 0.5232,

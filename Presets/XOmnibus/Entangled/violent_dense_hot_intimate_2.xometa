@@ -19,11 +19,11 @@
     "movement": 0.4983
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 violent dense hot intimate. Designed for SURGE coupling with XOverlap.",
+  "description": "Ultra-diverse Entangled preset — violent dense hot intimate. Designed for SURGE coupling with XOverlap.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "SURGE",
   "couplingIntensity": "Low",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "couplingLevel": 0.661,
       "couplingBus": 1
     }

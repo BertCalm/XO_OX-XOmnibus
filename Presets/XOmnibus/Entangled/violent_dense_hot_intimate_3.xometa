@@ -19,11 +19,11 @@
     "movement": 0.4801
   },
   "engines": [
-    "XOutwit"
+    "Outwit"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 violent dense hot intimate. Designed for TANGLE coupling with XOutwit.",
+  "description": "Ultra-diverse Entangled preset — violent dense hot intimate. Designed for TANGLE coupling with XOutwit.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "TANGLE",
   "couplingIntensity": "Low",
   "parameters": {
-    "XOutwit": {
+    "Outwit": {
       "couplingLevel": 0.662,
       "couplingBus": 1
     }

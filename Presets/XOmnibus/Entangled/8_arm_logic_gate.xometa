@@ -3,8 +3,8 @@
   "name": "8-Arm Logic Gate",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ORGANON"
+    "Outwit",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.31
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 150,
       "owit_arms": 8,
       "owit_cellSize": 0.3,
@@ -70,7 +70,7 @@
       "owit_outputLevel": 0.79,
       "owit_outputPan": 0.18
     },
-    "ORGANON": {
+    "Organon": {
       "organon_character": 0.45,
       "organon_movement": 0.57,
       "organon_coupling": 0.79,

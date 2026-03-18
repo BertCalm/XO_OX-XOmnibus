@@ -3,12 +3,12 @@
   "name": "Crystal Morph",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "ODDOSCAR"
+    "Obsidian",
+    "OddOscar"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Axolotl morph timbral-warped by Obsidian crystal density \u2014 regeneration under absolute cold.",
+  "description": "Axolotl morph timbral-warped by Obsidian crystal density — regeneration under absolute cold.",
   "tags": [
     "entangled",
     "brutal",

@@ -3,12 +3,12 @@
   "name": "Bond Fanfare",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OTTONI"
+    "Obbligato",
+    "Ottoni"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OBBLIGATO and OTTONI coupled via LFO->Pitch. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "description": "OBBLIGATO and OTTONI coupled via LFO->Pitch. Blended Constellation DNA — stub seeded for expansion.",
   "tags": [
     "coupling",
     "constellation",

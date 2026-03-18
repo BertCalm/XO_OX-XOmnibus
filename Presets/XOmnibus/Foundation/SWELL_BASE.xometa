@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OVERLAP",
-    "OUTWIT"
+    "Overlap",
+    "Outwit"
   ],
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.502,
       "macro_movement": 0.881,
       "macro_coupling": 0.422,
       "macro_space": 0.532
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.485,
       "macro_movement": 0.975,
       "macro_coupling": 0.577,

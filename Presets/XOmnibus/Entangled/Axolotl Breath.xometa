@@ -2,8 +2,8 @@
   "name": "Axolotl Breath",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "ODDOSCAR"
+    "Obbligato",
+    "OddOscar"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oddoscar",
     "wind"
   ],
-  "description": "Axolotl's regenerative morph fed through dual wind channel \u2014 tender gill-song obligated to air"
+  "description": "Axolotl's regenerative morph fed through dual wind channel — tender gill-song obligated to air"
 }

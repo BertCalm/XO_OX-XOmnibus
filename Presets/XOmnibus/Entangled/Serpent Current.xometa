@@ -3,12 +3,12 @@
   "name": "Serpent Current",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "OUROBOROS"
+    "Oceanic",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Ouroboros cycles in the open ocean \u2014 a current that feeds itself forever.",
+  "description": "Ouroboros cycles in the open ocean — a current that feeds itself forever.",
   "tags": [
     "entangled",
     "coupling",

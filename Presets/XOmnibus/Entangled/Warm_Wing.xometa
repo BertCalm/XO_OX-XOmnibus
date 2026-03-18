@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERDUB",
-    "OSPREY"
+    "Overdub",
+    "Osprey"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.92,
       "macro_movement": 0.53,
       "macro_coupling": 0.75,
       "macro_space": 0.36
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.85,
       "macro_movement": 0.48,
       "macro_coupling": 0.49,

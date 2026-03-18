@@ -3,8 +3,8 @@
   "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FND_2",
   "mood": "Foundation",
   "engines": [
-    "ODDOSCAR",
-    "OUROBOROS"
+    "OddOscar",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.067,
       "macro_movement": 1.0,
       "macro_coupling": 0.946,
       "macro_space": 0.409
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.122,
       "macro_movement": 1.0,
       "macro_coupling": 0.774,

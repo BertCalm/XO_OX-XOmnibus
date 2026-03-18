@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ODDFELIX"
+    "OddfeliX"
   ],
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "felx_macro_character": 0.33,
       "felx_macro_movement": 0.12,
       "felx_macro_coupling": 0.17,

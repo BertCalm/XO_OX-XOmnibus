@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ONSET",
-    "OBESE"
+    "Onset",
+    "Obese"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.665,
       "macro_movement": 0.339,
       "macro_coupling": 0.538,
       "macro_space": 0.506
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.449,
       "macro_movement": 0.425,
       "macro_coupling": 0.68,

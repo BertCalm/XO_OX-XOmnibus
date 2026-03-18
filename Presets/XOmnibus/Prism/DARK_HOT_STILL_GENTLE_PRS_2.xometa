@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OLE",
-    "ORPHICA"
+    "Ole",
+    "Orphica"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.091,
       "macro_movement": 0.065,
       "macro_coupling": 0.376,
       "macro_space": 0.579
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.502,
       "macro_movement": 0.065,
       "macro_coupling": 0.879,

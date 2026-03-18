@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OWLFISH"
+    "Owlfish"
   ],
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.32,
       "macro_movement": 0.79,
       "macro_coupling": 0.2,

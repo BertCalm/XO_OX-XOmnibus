@@ -3,12 +3,12 @@
   "name": "HOT KINETIC DENSE VIOLENT FAM 3",
   "mood": "Family",
   "engines": [
-    "OLE",
-    "ODDOSCAR"
+    "Ole",
+    "OddOscar"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, warm, kinetic, dense.",
+  "description": "Extreme DNA corners — family, warm, kinetic, dense.",
   "tags": [
     "family",
     "warm",
@@ -35,11 +35,11 @@
     "aggression": 0.932
   },
   "parameters": {
-    "OLE": {
+    "Ole": {
       "level": 0.836,
       "pan": 0.051
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "level": 0.715,
       "pan": -0.074
     }

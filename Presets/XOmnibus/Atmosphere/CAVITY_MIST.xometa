@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OBSIDIAN",
-    "OBBLIGATO"
+    "Obsidian",
+    "Obbligato"
   ],
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.764,
       "macro_movement": 0.417,
       "macro_coupling": 0.106,
       "macro_space": 0.054
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.723,
       "macro_movement": 0.879,
       "macro_coupling": 0.828,

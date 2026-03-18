@@ -3,12 +3,12 @@
   "name": "Obbligato Legacy Weave",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
+    "Obbligato",
     "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OBBLIGATO and OddfeliX coupled via Amp->Filter. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "description": "OBBLIGATO and OddfeliX coupled via Amp->Filter. Blended Constellation DNA — stub seeded for expansion.",
   "tags": [
     "coupling",
     "constellation",

@@ -2,8 +2,8 @@
   "name": "Shore Breath",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OCEANIC"
+    "Obbligato",
+    "Oceanic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oceanic",
     "wind"
   ],
-  "description": "Oceanic shoreline separation obligated to OBBLIGATO breath rhythm \u2014 tide follows the reed"
+  "description": "Oceanic shoreline separation obligated to OBBLIGATO breath rhythm — tide follows the reed"
 }

@@ -3,11 +3,11 @@
   "name": "Opal Shadow",
   "mood": "Atmosphere",
   "engines": [
-    "OPAL"
+    "Opal"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "OPAL \u2014 dark extreme brightness preset for Atmosphere.",
+  "description": "OPAL — dark extreme brightness preset for Atmosphere.",
   "tags": [
     "atmosphere",
     "dark",
@@ -37,7 +37,7 @@
     "aggression": 0.15
   },
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "opal_grainSize": 0.51,
       "opal_grainDensity": 0.91,
       "opal_grainPitch": 0.35,

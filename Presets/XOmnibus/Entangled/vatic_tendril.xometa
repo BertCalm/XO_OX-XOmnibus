@@ -3,8 +3,8 @@
   "name": "Vatic Tendril",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ORACLE"
+    "Overlap",
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.17
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.62,
       "olap_decay": 0.91,
       "olap_damping": 0.35,
@@ -69,7 +69,7 @@
       "olap_outputLevel": 0.81,
       "olap_outputPan": 0.06
     },
-    "ORACLE": {
+    "Oracle": {
       "oracle_character": 0.34,
       "oracle_movement": 0.31,
       "oracle_coupling": 0.61,

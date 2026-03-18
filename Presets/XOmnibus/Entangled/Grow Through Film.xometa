@@ -3,12 +3,12 @@
   "name": "Grow Through Film",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "OBSCURA"
+    "Ottoni",
+    "Obscura"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "GROW macro injects chaos into Obscura's silver film \u2014 brilliant emergence.",
+  "description": "GROW macro injects chaos into Obscura's silver film — brilliant emergence.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.22
   },
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.7,
       "macro_movement": 0.52,
       "macro_coupling": 0.63,
       "macro_space": 0.38
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.52,
       "macro_movement": 0.62,
       "macro_coupling": 0.63,

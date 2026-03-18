@@ -3,12 +3,12 @@
   "name": "COLD_STILL_INTIMATE_GENTLE_ENT_5",
   "mood": "Entangled",
   "engines": [
-    "OMBRE",
-    "OUTWIT"
+    "Ombre",
+    "Outwit"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Cold Still Intimate Gentle character entanglement \u2014 OMBRE \u00d7 OUTWIT via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "description": "Cold Still Intimate Gentle character entanglement — OMBRE × OUTWIT via Resonance Share. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "cold",
@@ -41,7 +41,7 @@
     "aggression": 0.0475
   },
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.5058,
       "macro_movement": 0.0831,
       "macro_coupling": 0.5975,
@@ -57,7 +57,7 @@
       "output_level": 0.8467,
       "coupling_level": 0.5646
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.4818,
       "macro_movement": 0.0928,
       "macro_coupling": 0.6442,

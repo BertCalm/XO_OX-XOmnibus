@@ -3,12 +3,12 @@
   "name": "Orca Mass Strike",
   "mood": "Entangled",
   "engines": [
-    "ORCA",
-    "OUROBOROS"
+    "Orca",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Orca echolocation pulse shattered by Ouroboros topology \u2014 predator meets singularity.",
+  "description": "Orca echolocation pulse shattered by Ouroboros topology — predator meets singularity.",
   "tags": [
     "entangled",
     "brutal",

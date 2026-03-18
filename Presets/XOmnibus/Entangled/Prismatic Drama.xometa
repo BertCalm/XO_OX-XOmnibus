@@ -2,8 +2,8 @@
   "name": "Prismatic Drama",
   "version": "1.0",
   "engines": [
-    "OLE",
-    "OPTIC"
+    "Ole",
+    "Optic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "optic",
     "afro-latin"
   ],
-  "description": "Ole percussion refracts through optical array \u2014 rhythm becomes light spectrum"
+  "description": "Ole percussion refracts through optical array — rhythm becomes light spectrum"
 }

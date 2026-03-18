@@ -3,8 +3,8 @@
   "name": "DARK_COLD_STILL_DENSE_VAST_PRS_4",
   "mood": "Prism",
   "engines": [
-    "ORPHICA",
-    "OSTERIA"
+    "Orphica",
+    "Osteria"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.0,
       "macro_movement": 0.086,
       "macro_coupling": 0.9,
       "macro_space": 0.932
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.195,
       "macro_movement": 0.016,
       "macro_coupling": 0.779,

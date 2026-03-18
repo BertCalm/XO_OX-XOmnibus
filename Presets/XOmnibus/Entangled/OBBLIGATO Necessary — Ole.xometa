@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "name": "OBBLIGATO Necessary \u2014 Ole",
+  "name": "OBBLIGATO Necessary — Ole",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OLE"
+    "Obbligato",
+    "Ole"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OBBLIGATO rascal coral answers OLE's communal call \u2014 BOND creates an obligate rhythmic breath tie.",
+  "description": "OBBLIGATO rascal coral answers OLE's communal call — BOND creates an obligate rhythmic breath tie.",
   "tags": [
     "coupling",
     "obbligato",

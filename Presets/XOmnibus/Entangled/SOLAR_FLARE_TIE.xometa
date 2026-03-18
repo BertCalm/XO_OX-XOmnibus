@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ODDFELIX",
-    "ORACLE"
+    "OddfeliX",
+    "Oracle"
   ],
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.019,
       "macro_movement": 0.921,
       "macro_coupling": 0.862,
       "macro_space": 0.576
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.573,
       "macro_movement": 0.709,
       "macro_coupling": 0.418,

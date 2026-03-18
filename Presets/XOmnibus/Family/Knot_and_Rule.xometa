@@ -3,12 +3,12 @@
   "name": "Knot and Rule",
   "mood": "Family",
   "engines": [
-    "OVERLAP",
-    "OUTWIT"
+    "Overlap",
+    "Outwit"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERLAP FDN knots + OUTWIT Wolfram CA arms \u2014 the complex systems reunion. Topology and cellular automata in conversation. Both are right.",
+  "description": "OVERLAP FDN knots + OUTWIT Wolfram CA arms — the complex systems reunion. Topology and cellular automata in conversation. Both are right.",
   "tags": [
     "family",
     "reunion",

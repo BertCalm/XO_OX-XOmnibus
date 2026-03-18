@@ -3,7 +3,7 @@
   "name": "Void Between Stars",
   "mood": "Atmosphere",
   "engines": [
-    "OBSIDIAN"
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.185
   },
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "darkness": 0.308,
       "shimmer": 0.105,
       "coupling": 0.269,

@@ -2,8 +2,8 @@
   "name": "Geostationary Predator",
   "version": "1.0",
   "engines": [
-    "ORBITAL",
-    "ORCA"
+    "Orbital",
+    "Orca"
   ],
   "mood": "Entangled",
   "strategy": "Still Aggressive",
@@ -35,5 +35,5 @@
     "orbital",
     "predator"
   ],
-  "description": "A predator in geostationary orbit \u2014 watching, still, ferociously present."
+  "description": "A predator in geostationary orbit — watching, still, ferociously present."
 }

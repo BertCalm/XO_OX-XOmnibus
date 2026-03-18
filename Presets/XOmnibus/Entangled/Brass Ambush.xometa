@@ -2,8 +2,8 @@
   "name": "Brass Ambush",
   "version": "1.0",
   "engines": [
-    "OTTONI",
-    "OCELOT"
+    "Ottoni",
+    "Ocelot"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ocelot",
     "triple"
   ],
-  "description": "Triple brass fanfare interrupted by sudden ocelot pounce \u2014 stately meeting feral"
+  "description": "Triple brass fanfare interrupted by sudden ocelot pounce — stately meeting feral"
 }

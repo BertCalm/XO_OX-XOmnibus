@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OTTONI",
-    "ORIGAMI"
+    "Ottoni",
+    "Origami"
   ],
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.491,
       "macro_movement": 0.06,
       "macro_coupling": 0.164,
       "macro_space": 0.134
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.485,
       "macro_movement": 0.082,
       "macro_coupling": 0.142,

@@ -3,8 +3,8 @@
   "name": "Lava Strike",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OBSIDIAN"
+    "Outwit",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.75
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 45,
       "owit_arms": 8,
       "owit_cellSize": 0.42,
@@ -70,7 +70,7 @@
       "owit_outputLevel": 0.81,
       "owit_outputPan": -0.04
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "obsidian_character": 0.5,
       "obsidian_movement": 0.4,
       "obsidian_coupling": 0.85,

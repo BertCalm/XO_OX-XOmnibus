@@ -2,8 +2,8 @@
   "name": "Canopy Shimmer",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OCELOT"
+    "Opal",
+    "Ocelot"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ocelot",
     "granular"
   ],
-  "description": "Opal shimmer filters through jungle foliage \u2014 feline presence shaping the grain density"
+  "description": "Opal shimmer filters through jungle foliage — feline presence shaping the grain density"
 }

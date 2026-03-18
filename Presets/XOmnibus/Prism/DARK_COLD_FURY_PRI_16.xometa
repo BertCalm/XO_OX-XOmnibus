@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OUTWIT",
-    "OCEANIC"
+    "Outwit",
+    "Oceanic"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.053,
       "macro_movement": 0.304,
       "macro_coupling": 0.479,
       "macro_space": 0.66
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.007,
       "macro_movement": 0.33,
       "macro_coupling": 0.663,

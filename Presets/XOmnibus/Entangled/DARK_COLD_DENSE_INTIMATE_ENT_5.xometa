@@ -3,12 +3,12 @@
   "name": "DARK_COLD_DENSE_INTIMATE_ENT_5",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OCEANIC"
+    "Obbligato",
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Cold Dense Intimate character entanglement \u2014 OBBLIGATO \u00d7 OCEANIC via Formant Bridge. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Cold Dense Intimate character entanglement — OBBLIGATO × OCEANIC via Formant Bridge. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.4579
   },
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.3792,
       "macro_movement": 0.5348,
       "macro_coupling": 0.7989,
@@ -57,7 +57,7 @@
       "output_level": 0.9393,
       "coupling_level": 0.7094
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.4037,
       "macro_movement": 0.5009,
       "macro_coupling": 0.7679,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OHM",
-    "OLE"
+    "Ohm",
+    "Ole"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.801,
       "macro_movement": 0.618,
       "macro_coupling": 0.832,
       "macro_space": 0.92
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.088,
       "macro_movement": 0.844,
       "macro_coupling": 0.243,

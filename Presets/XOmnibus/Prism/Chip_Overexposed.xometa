@@ -3,11 +3,11 @@
   "name": "Chip Overexposed",
   "mood": "Prism",
   "engines": [
-    "OVERWORLD"
+    "Overworld"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OVERWORLD pushed to extreme brightness \u2014 brightness 0.91, movement 0.56, aggression 0.60. Ultra-bright Prism zone filler.",
+  "description": "OVERWORLD pushed to extreme brightness — brightness 0.91, movement 0.56, aggression 0.60. Ultra-bright Prism zone filler.",
   "tags": [
     "prism",
     "ultra-bright",
@@ -40,7 +40,7 @@
     "aggression": 0.603
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_macro_era": 0.812,
       "ow_macro_chaos": 0.376,
       "ow_macro_couple": 0.086,

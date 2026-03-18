@@ -3,11 +3,11 @@
   "name": "Orca Kill Strike",
   "mood": "Family",
   "engines": [
-    "ORCA"
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORCA hunting strike \u2014 maximum power, density absolute, aggression apex.",
+  "description": "ORCA hunting strike — maximum power, density absolute, aggression apex.",
   "tags": [
     "family",
     "portrait",

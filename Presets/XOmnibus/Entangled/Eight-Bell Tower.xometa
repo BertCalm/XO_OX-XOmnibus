@@ -2,8 +2,8 @@
   "name": "Eight-Bell Tower",
   "version": "1.0",
   "engines": [
-    "OTTONI",
-    "OCTOPUS"
+    "Ottoni",
+    "Octopus"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "octopus",
     "triple"
   ],
-  "description": "Ottoni bells multiplied across eight arms \u2014 impossible carillon of distributed brass"
+  "description": "Ottoni bells multiplied across eight arms — impossible carillon of distributed brass"
 }

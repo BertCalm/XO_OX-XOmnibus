@@ -3,12 +3,12 @@
   "name": "Bounce Riot",
   "mood": "Entangled",
   "engines": [
-    "OBLIQUE",
-    "OUROBOROS"
+    "Oblique",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Prism walls chaos-injected by Ouroboros \u2014 the bounce has no predictable reflection.",
+  "description": "Prism walls chaos-injected by Ouroboros — the bounce has no predictable reflection.",
   "tags": [
     "entangled",
     "brutal",

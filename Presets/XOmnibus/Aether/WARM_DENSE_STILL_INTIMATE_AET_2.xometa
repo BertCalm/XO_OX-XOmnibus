@@ -3,12 +3,12 @@
   "name": "WARM DENSE STILL INTIMATE AET 2",
   "mood": "Aether",
   "engines": [
-    "OSPREY",
-    "OLE"
+    "Osprey",
+    "Ole"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, warm, still, dense.",
+  "description": "Extreme DNA corners — aether, warm, still, dense.",
   "tags": [
     "aether",
     "warm",
@@ -35,11 +35,11 @@
     "aggression": 0.537
   },
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "level": 0.802,
       "pan": 0.067
     },
-    "OLE": {
+    "Ole": {
       "level": 0.687,
       "pan": 0.039
     }

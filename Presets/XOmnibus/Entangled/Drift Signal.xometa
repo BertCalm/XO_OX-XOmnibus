@@ -2,8 +2,8 @@
   "name": "Drift Signal",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OPTIC"
+    "Odyssey",
+    "Optic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "optic",
     "wavetable"
   ],
-  "description": "Wavetable odyssey caught in optical scan \u2014 FM harmonics refracted to phosphor columns"
+  "description": "Wavetable odyssey caught in optical scan — FM harmonics refracted to phosphor columns"
 }

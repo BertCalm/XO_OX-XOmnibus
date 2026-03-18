@@ -3,7 +3,7 @@
   "name": "Convection Surge",
   "mood": "Atmosphere",
   "engines": [
-    "ORIGAMI"
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.47
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "fold": 0.53,
       "tension": 0.849,
       "coupling": 0.492,

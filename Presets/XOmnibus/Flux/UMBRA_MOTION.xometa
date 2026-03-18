@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OCELOT",
-    "OTTONI"
+    "Ocelot",
+    "Ottoni"
   ],
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.383,
       "macro_movement": 0.039,
       "macro_coupling": 0.471,
       "macro_space": 0.2
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.918,
       "macro_movement": 0.35,
       "macro_coupling": 0.821,

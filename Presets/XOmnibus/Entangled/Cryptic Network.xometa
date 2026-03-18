@@ -4,8 +4,8 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OUROBOROS"
+    "Outwit",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "macros": {
@@ -23,7 +23,7 @@
     "density": 0.71
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 45,
       "owit_arms": 5,
       "owit_cellSize": 0.346,
@@ -56,5 +56,5 @@
     "wolfram",
     "cellular-automata"
   ],
-  "description": "Ouroboros loop length sets OUTWIT rule lifespan \u2014 the serpent bites its tail inside the automata"
+  "description": "Ouroboros loop length sets OUTWIT rule lifespan — the serpent bites its tail inside the automata"
 }

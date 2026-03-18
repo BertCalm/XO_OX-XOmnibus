@@ -2,8 +2,8 @@
   "name": "Impact Suspended",
   "version": "1.0",
   "engines": [
-    "ONSET",
-    "OBLONG"
+    "Onset",
+    "Oblong"
   ],
   "mood": "Entangled",
   "strategy": "Still Aggressive",
@@ -35,5 +35,5 @@
     "impact",
     "suspension"
   ],
-  "description": "Maximum impact suspended in time \u2014 aggression held at the moment of strike."
+  "description": "Maximum impact suspended in time — aggression held at the moment of strike."
 }

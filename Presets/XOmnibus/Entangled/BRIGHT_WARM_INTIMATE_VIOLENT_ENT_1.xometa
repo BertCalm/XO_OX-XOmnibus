@@ -3,12 +3,12 @@
   "name": "BRIGHT_WARM_INTIMATE_VIOLENT_ENT_1",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "OCEANIC"
+    "Ouroboros",
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Warm Intimate Violent character entanglement \u2014 OUROBOROS \u00d7 OCEANIC via Chaos Inject. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Warm Intimate Violent character entanglement — OUROBOROS × OCEANIC via Chaos Inject. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.9191
   },
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.8964,
       "macro_movement": 0.5841,
       "macro_coupling": 0.9231,
@@ -57,7 +57,7 @@
       "output_level": 0.8243,
       "coupling_level": 0.9019
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.9035,
       "macro_movement": 0.6216,
       "macro_coupling": 0.8997,

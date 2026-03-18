@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OPAL",
-    "OTTONI"
+    "Opal",
+    "Ottoni"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.392,
       "macro_movement": 0.468,
       "macro_coupling": 0.673,
       "macro_space": 0.901
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.343,
       "macro_movement": 0.582,
       "macro_coupling": 0.606,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OVERLAP",
-    "ORBITAL"
+    "Overlap",
+    "Orbital"
   ],
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.596,
       "macro_movement": 0.049,
       "macro_coupling": 0.776,
       "macro_space": 0.899
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.909,
       "macro_movement": 0.017,
       "macro_coupling": 0.589,

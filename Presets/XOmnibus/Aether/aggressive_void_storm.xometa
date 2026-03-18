@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OVERDUB",
-    "OPAL"
+    "Overdub",
+    "Opal"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.981,
       "macro_movement": 0.755,
       "macro_coupling": 0.182,
       "macro_space": 0.621
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.716,
       "macro_movement": 0.801,
       "macro_coupling": 0.037,

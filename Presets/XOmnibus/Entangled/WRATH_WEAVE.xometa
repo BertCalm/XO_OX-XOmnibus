@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ONSET",
-    "ODDFELIX"
+    "Onset",
+    "OddfeliX"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.459,
       "macro_movement": 0.578,
       "macro_coupling": 0.566,
       "macro_space": 0.527
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.839,
       "macro_movement": 0.796,
       "macro_coupling": 0.435,

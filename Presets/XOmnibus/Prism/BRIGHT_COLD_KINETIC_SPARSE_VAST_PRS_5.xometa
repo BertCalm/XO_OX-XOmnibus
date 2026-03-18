@@ -3,8 +3,8 @@
   "name": "BRIGHT_COLD_KINETIC_SPARSE_VAST_PRS_5",
   "mood": "Prism",
   "engines": [
-    "ORIGAMI",
-    "OCELOT"
+    "Origami",
+    "Ocelot"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.959,
       "macro_movement": 0.886,
       "macro_coupling": 0.0,
       "macro_space": 1.0
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.972,
       "macro_movement": 0.894,
       "macro_coupling": 0.148,

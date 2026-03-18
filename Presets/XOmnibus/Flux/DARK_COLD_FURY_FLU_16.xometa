@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OUTWIT",
-    "OCEANIC"
+    "Outwit",
+    "Oceanic"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.052,
       "macro_movement": 0.566,
       "macro_coupling": 0.884,
       "macro_space": 0.647
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.007,
       "macro_movement": 0.589,
       "macro_coupling": 0.614,

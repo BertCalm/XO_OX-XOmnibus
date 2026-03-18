@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OSPREY",
-    "OPAL"
+    "Osprey",
+    "Opal"
   ],
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.706,
       "macro_movement": 0.77,
       "macro_coupling": 0.733,
       "macro_space": 0.374
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.836,
       "macro_movement": 0.651,
       "macro_coupling": 0.846,

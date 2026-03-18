@@ -2,8 +2,8 @@
   "name": "Infinite Cold Loop",
   "version": "1.0",
   "engines": [
-    "OUROBOROS",
-    "OPTIC"
+    "Ouroboros",
+    "Optic"
   ],
   "mood": "Entangled",
   "strategy": "Fast Cold",
@@ -35,5 +35,5 @@
     "infinite",
     "aggressive"
   ],
-  "description": "The ouroboros consumes itself in cold refracted light \u2014 absolute maximum velocity."
+  "description": "The ouroboros consumes itself in cold refracted light — absolute maximum velocity."
 }

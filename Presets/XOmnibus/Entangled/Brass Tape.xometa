@@ -2,8 +2,8 @@
   "name": "Brass Tape",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OTTONI"
+    "Overdub",
+    "Ottoni"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ottoni",
     "dub"
   ],
-  "description": "Triple brass fanfare fed to dub delay \u2014 patina aged further by tape saturation"
+  "description": "Triple brass fanfare fed to dub delay — patina aged further by tape saturation"
 }

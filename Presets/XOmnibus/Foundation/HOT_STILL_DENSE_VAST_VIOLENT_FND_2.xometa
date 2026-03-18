@@ -3,8 +3,8 @@
   "name": "HOT_STILL_DENSE_VAST_VIOLENT_FND_2",
   "mood": "Foundation",
   "engines": [
-    "OBLONG",
-    "OBSIDIAN"
+    "Oblong",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.437,
       "macro_movement": 0.103,
       "macro_coupling": 0.838,
       "macro_space": 0.927
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.46,
       "macro_movement": 0.006,
       "macro_coupling": 1.0,

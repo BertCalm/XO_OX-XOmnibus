@@ -3,12 +3,12 @@
   "name": "Arm Fracture",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OUROBOROS"
+    "Outwit",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Serpent cycle feeds OUTWIT generation clock \u2014 endless recursion meets endless arms",
+  "description": "Serpent cycle feeds OUTWIT generation clock — endless recursion meets endless arms",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.775
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 22,
       "owit_arms": 7,
       "owit_cellSize": 0.351,

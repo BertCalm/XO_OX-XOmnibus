@@ -3,12 +3,12 @@
   "name": "Obsidian Trench",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "OBSIDIAN"
+    "Oceanic",
+    "Obsidian"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oceanic phosphorescence against obsidian black of the trench \u2014 maximum depth contrast.",
+  "description": "Oceanic phosphorescence against obsidian black of the trench — maximum depth contrast.",
   "tags": [
     "entangled",
     "coupling",

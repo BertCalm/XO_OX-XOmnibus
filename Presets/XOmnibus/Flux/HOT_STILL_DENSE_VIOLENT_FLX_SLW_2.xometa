@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OBLONG",
-    "ORIGAMI"
+    "Oblong",
+    "Origami"
   ],
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.981,
       "macro_movement": 0.068,
       "macro_coupling": 0.902,
       "macro_space": 0.647
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.986,
       "macro_movement": 0.077,
       "macro_coupling": 0.677,

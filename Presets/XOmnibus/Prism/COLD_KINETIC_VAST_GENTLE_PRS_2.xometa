@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OTTONI",
-    "OSTERIA"
+    "Ottoni",
+    "Osteria"
   ],
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.358,
       "macro_movement": 0.865,
       "macro_coupling": 0.451,
       "macro_space": 0.895
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.276,
       "macro_movement": 0.865,
       "macro_coupling": 0.817,

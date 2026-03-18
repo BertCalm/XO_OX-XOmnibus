@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OUROBOROS",
-    "OVERWORLD"
+    "Ouroboros",
+    "Overworld"
   ],
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.494,
       "macro_movement": 0.09,
       "macro_coupling": 0.935,
       "macro_space": 1.0
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.328,
       "macro_movement": 0.086,
       "macro_coupling": 0.764,

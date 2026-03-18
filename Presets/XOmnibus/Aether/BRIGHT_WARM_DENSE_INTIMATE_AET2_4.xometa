@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ODDFELIX",
-    "OBLIQUE"
+    "OddfeliX",
+    "Oblique"
   ],
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.9041,
       "macro_movement": 0.6564,
       "macro_coupling": 0.9462,
       "macro_space": 0.0506
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.884,
       "macro_movement": 0.6109,
       "macro_coupling": 0.9842,

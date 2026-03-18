@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OUROBOROS",
-    "OUTWIT"
+    "Ouroboros",
+    "Outwit"
   ],
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.077,
       "macro_movement": 0.138,
       "macro_coupling": 0.367,
       "macro_space": 0.314
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.279,
       "macro_movement": 0.961,
       "macro_coupling": 0.026,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OCTOPUS",
-    "OLE"
+    "Octopus",
+    "Ole"
   ],
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.42,
       "macro_movement": 0.794,
       "macro_coupling": 0.457,
       "macro_space": 0.111
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.905,
       "macro_movement": 0.597,
       "macro_coupling": 0.016,

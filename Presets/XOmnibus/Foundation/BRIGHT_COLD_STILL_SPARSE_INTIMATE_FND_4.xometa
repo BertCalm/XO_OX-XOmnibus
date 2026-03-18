@@ -3,8 +3,8 @@
   "name": "BRIGHT_COLD_STILL_SPARSE_INTIMATE_FND_4",
   "mood": "Foundation",
   "engines": [
-    "ODDOSCAR",
-    "OUROBOROS"
+    "OddOscar",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.955,
       "macro_movement": 0.159,
       "macro_coupling": 0.221,
       "macro_space": 0.126
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.87,
       "macro_movement": 0.148,
       "macro_coupling": 0.164,

@@ -2,8 +2,8 @@
   "name": "Violet Dissolve",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OMBRE"
+    "Odyssey",
+    "Ombre"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ombre",
     "wavetable"
   ],
-  "description": "Drift violet and shadow mauve bleed together \u2014 FM journey softening at the horizon"
+  "description": "Drift violet and shadow mauve bleed together — FM journey softening at the horizon"
 }

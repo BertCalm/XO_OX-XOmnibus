@@ -3,11 +3,11 @@
   "name": "Organon Cathedral",
   "mood": "Family",
   "engines": [
-    "ORGANON"
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORGANON in full bloom \u2014 voice logic in maximum warm space, the living organ.",
+  "description": "ORGANON in full bloom — voice logic in maximum warm space, the living organ.",
   "tags": [
     "family",
     "portrait",

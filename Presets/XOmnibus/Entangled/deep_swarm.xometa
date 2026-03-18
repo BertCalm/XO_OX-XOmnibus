@@ -3,8 +3,8 @@
   "name": "Deep Swarm",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OCEANIC"
+    "Outwit",
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.83
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 182,
       "owit_arms": 8,
       "owit_cellSize": 0.55,
@@ -70,7 +70,7 @@
       "owit_outputLevel": 0.79,
       "owit_outputPan": -0.09
     },
-    "OCEANIC": {
+    "Oceanic": {
       "ocean_character": 0.42,
       "ocean_movement": 0.31,
       "ocean_coupling": 0.82,

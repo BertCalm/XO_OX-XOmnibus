@@ -3,7 +3,7 @@
   "name": "Thick Current",
   "mood": "Atmosphere",
   "engines": [
-    "OVERBITE"
+    "Overbite"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.4
   },
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "bite": 0.468,
       "resonance": 0.368,
       "coupling": 0.116,

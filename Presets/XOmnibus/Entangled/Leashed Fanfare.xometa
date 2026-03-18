@@ -3,12 +3,12 @@
   "name": "Leashed Fanfare",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "OTTONI"
+    "Ouroboros",
+    "Ottoni"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Ouroboros's leash mechanism controls OTTONI attack \u2014 controlled chaotic brass.",
+  "description": "Ouroboros's leash mechanism controls OTTONI attack — controlled chaotic brass.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.6
   },
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.6,
       "macro_movement": 0.72,
       "macro_coupling": 0.73,
       "macro_space": 0.42
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.65,
       "macro_movement": 0.44,
       "macro_coupling": 0.73,

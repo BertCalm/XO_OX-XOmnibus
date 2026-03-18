@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OHM",
-    "ODDOSCAR"
+    "Ohm",
+    "OddOscar"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.431,
       "macro_movement": 0.622,
       "macro_coupling": 0.752,
       "macro_space": 0.796
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.476,
       "macro_movement": 0.614,
       "macro_coupling": 0.776,

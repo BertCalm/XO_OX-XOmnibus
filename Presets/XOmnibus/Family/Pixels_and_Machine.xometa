@@ -3,12 +3,12 @@
   "name": "Pixels and Machine",
   "mood": "Family",
   "engines": [
-    "OVERWORLD",
-    "ONSET"
+    "Overworld",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERWORLD chip melody + ONSET percussion \u2014 the NES band reunion. The cartridge that has a drum kit. 8-bit groove, full production.",
+  "description": "OVERWORLD chip melody + ONSET percussion — the NES band reunion. The cartridge that has a drum kit. 8-bit groove, full production.",
   "tags": [
     "family",
     "reunion",

@@ -2,8 +2,8 @@
   "name": "Spring Pounce",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OCELOT"
+    "Overdub",
+    "Ocelot"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ocelot",
     "dub"
   ],
-  "description": "A sudden ocelot leap interrupts the spring reverb bloom \u2014 tension released in echo"
+  "description": "A sudden ocelot leap interrupts the spring reverb bloom — tension released in echo"
 }

@@ -3,12 +3,12 @@
   "name": "Cell Fracture",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OBLIQUE"
+    "Outwit",
+    "Oblique"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OUTWIT signal output feeds OBLIQUE FM index \u2014 cellular chaos into oblique modulation",
+  "description": "OUTWIT signal output feeds OBLIQUE FM index — cellular chaos into oblique modulation",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.7
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 110,
       "owit_arms": 6,
       "owit_cellSize": 0.381,

@@ -3,8 +3,8 @@
   "name": "Warm Form",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "ORCA"
+    "Obbligato",
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.505
   },
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.729,
       "macro_movement": 0.632,
       "macro_coupling": 0.744,
       "macro_space": 0.626
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.715,
       "macro_movement": 0.747,
       "macro_coupling": 0.768,

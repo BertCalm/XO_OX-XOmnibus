@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT ENT 3",
   "mood": "Entangled",
   "engines": [
-    "OVERWORLD",
-    "ORGANON"
+    "Overworld",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.75,
       "macro_movement": 0.97,
       "macro_coupling": 0.64,
       "macro_space": 0.1
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.9,
       "macro_movement": 0.93,
       "macro_coupling": 0.78,

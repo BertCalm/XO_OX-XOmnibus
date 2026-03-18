@@ -3,12 +3,12 @@
   "name": "Paper and Neon",
   "mood": "Family",
   "engines": [
-    "ORIGAMI",
+    "Origami",
     "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORIGAMI paper precision + OddfeliX neon shimmer \u2014 the fold that catches the light. Geometric quiet beneath digital sparkle.",
+  "description": "ORIGAMI paper precision + OddfeliX neon shimmer — the fold that catches the light. Geometric quiet beneath digital sparkle.",
   "tags": [
     "family",
     "reunion",

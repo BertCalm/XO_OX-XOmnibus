@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OVERWORLD",
-    "OTTONI"
+    "Overworld",
+    "Ottoni"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.725,
       "macro_movement": 0.068,
       "macro_coupling": 0.508,
       "macro_space": 0.1087
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.6906,
       "macro_movement": 0.0811,
       "macro_coupling": 0.4944,

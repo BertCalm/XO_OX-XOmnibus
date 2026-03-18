@@ -2,8 +2,8 @@
   "name": "Gentle Fang",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OVERBITE"
+    "Ohm",
+    "Overbite"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "overbite",
     "hippy"
   ],
-  "description": "Overbite's BITE macro tempered by ohm commune \u2014 the possum rests in sage warmth"
+  "description": "Overbite's BITE macro tempered by ohm commune — the possum rests in sage warmth"
 }

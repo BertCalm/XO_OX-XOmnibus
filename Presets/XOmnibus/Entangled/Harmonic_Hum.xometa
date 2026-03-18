@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORGANON",
-    "OHM"
+    "Organon",
+    "Ohm"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.85,
       "macro_movement": 0.44,
       "macro_coupling": 0.83,
       "macro_space": 0.56
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.71,
       "macro_movement": 0.41,
       "macro_coupling": 0.83,

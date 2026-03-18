@@ -2,8 +2,8 @@
   "name": "Grain Breath",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OPAL"
+    "Obbligato",
+    "Opal"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "opal",
     "wind"
   ],
-  "description": "Opal grain cloud shaped by OBBLIGATO breath envelope \u2014 each breath a new grain cluster"
+  "description": "Opal grain cloud shaped by OBBLIGATO breath envelope — each breath a new grain cluster"
 }

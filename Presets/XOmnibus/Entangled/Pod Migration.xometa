@@ -2,8 +2,8 @@
   "name": "Pod Migration",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "ORCA"
+    "Ohm",
+    "Orca"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orca",
     "hippy"
   ],
-  "description": "Sage groove carried on deep tidal current \u2014 orca pod navigates by ohm resonance"
+  "description": "Sage groove carried on deep tidal current — orca pod navigates by ohm resonance"
 }

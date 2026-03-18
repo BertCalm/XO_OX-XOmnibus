@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OPTIC",
-    "OVERWORLD"
+    "Optic",
+    "Overworld"
   ],
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.383,
       "macro_movement": 0.046,
       "macro_coupling": 0.701,
       "macro_space": 0.858
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.535,
       "macro_movement": 0.047,
       "macro_coupling": 0.864,

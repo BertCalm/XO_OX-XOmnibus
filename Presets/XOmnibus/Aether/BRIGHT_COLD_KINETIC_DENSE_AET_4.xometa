@@ -3,12 +3,12 @@
   "name": "BRIGHT COLD KINETIC DENSE AET 4",
   "mood": "Aether",
   "engines": [
-    "OUTWIT",
-    "ONSET"
+    "Outwit",
+    "Onset"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, bright, cold, kinetic.",
+  "description": "Extreme DNA corners — aether, bright, cold, kinetic.",
   "tags": [
     "aether",
     "bright",
@@ -35,11 +35,11 @@
     "aggression": 0.404
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "level": 0.693,
       "pan": 0.105
     },
-    "ONSET": {
+    "Onset": {
       "level": 0.766,
       "pan": 0.022
     }

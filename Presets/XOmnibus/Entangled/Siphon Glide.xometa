@@ -2,8 +2,8 @@
   "name": "Siphon Glide",
   "version": "1.0",
   "engines": [
-    "ORPHICA",
-    "OSPREY"
+    "Orphica",
+    "Osprey"
   ],
   "mood": "Entangled",
   "strategy": "Warm Sparse",
@@ -35,5 +35,5 @@
     "gliding",
     "delicate"
   ],
-  "description": "Siphonophore warmth gliding through Osprey's open skies \u2014 weightless and amber."
+  "description": "Siphonophore warmth gliding through Osprey's open skies — weightless and amber."
 }

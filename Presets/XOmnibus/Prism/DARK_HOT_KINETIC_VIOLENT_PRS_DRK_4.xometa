@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OHM",
-    "OVERWORLD"
+    "Ohm",
+    "Overworld"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.9631,
       "macro_movement": 0.9612,
       "macro_coupling": 0.3814,
       "macro_space": 0.5197
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.9735,
       "macro_movement": 0.9851,
       "macro_coupling": 0.3982,

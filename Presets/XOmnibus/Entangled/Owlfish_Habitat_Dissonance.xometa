@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Habitat Dissonance",
   "mood": "Entangled",
-  "engines": ["XOwlfish"],
+  "engines": [
+    "Owlfish"
+  ],
   "author": "Guru Bin — OWLFISH Retreat 2026-03-15",
   "version": "1.0.0",
   "description": "bodyFreq=62Hz (~B♭1) against any C-rooted melody. The habitat clashes with the tonic. Play C major and the floor disagrees. The dissonance is not a mistake — it is the nature of the abyss. The habitat predates the melody and does not yield.",
-  "tags": ["dissonance", "body-frequency", "tonal-clash", "entangled", "awakening"],
-  "macroLabels": ["DEPTH", "FEEDING", "DEFENSE", "PRESSURE"],
+  "tags": [
+    "dissonance",
+    "body-frequency",
+    "tonal-clash",
+    "entangled",
+    "awakening"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "FEEDING",
+    "DEFENSE",
+    "PRESSURE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -19,7 +32,7 @@
     "aggression": 0.5
   },
   "parameters": {
-    "XOwlfish": {
+    "Owlfish": {
       "owl_portamento": 0.1,
       "owl_legatoMode": 1,
       "owl_morphGlide": 0.3,
@@ -73,6 +86,8 @@
       "owl_couplingBus": 0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

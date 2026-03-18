@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OPAL",
-    "ORGANON"
+    "Opal",
+    "Organon"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.335,
       "macro_movement": 0.583,
       "macro_coupling": 0.832,
       "macro_space": 0.908
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.387,
       "macro_movement": 0.57,
       "macro_coupling": 0.794,

@@ -3,8 +3,8 @@
   "name": "Burning Map",
   "mood": "Entangled",
   "engines": [
-    "ODDFELIX",
-    "ORBITAL"
+    "OddfeliX",
+    "Orbital"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.3
   },
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.446,
       "macro_movement": 0.794,
       "macro_coupling": 0.667,
       "macro_space": 0.541
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.481,
       "macro_movement": 0.608,
       "macro_coupling": 0.649,

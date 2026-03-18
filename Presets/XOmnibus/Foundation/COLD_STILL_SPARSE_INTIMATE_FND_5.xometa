@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OBESE",
-    "OBSIDIAN"
+    "Obese",
+    "Obsidian"
   ],
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.267,
       "macro_movement": 0.411,
       "macro_coupling": 0.277,
       "macro_space": 0.791
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.368,
       "macro_movement": 0.213,
       "macro_coupling": 0.858,

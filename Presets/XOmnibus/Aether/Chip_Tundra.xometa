@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OVERWORLD"
+    "Overworld"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_macro_character": 0.21,
       "ow_macro_movement": 0.26,
       "ow_macro_coupling": 0.23,

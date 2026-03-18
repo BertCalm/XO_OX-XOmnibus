@@ -3,20 +3,20 @@
   "name": "Patina Attractor",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "OUROBOROS"
+    "Ottoni",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Chaos injection sends OUROBOROS into strange attractor orbits seeded by warm brass.",
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.8,
       "macro_movement": 0.7,
       "macro_coupling": 0.88,
       "macro_space": 0.3
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.75,
       "macro_movement": 0.78,
       "macro_coupling": 0.8,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OPTIC",
-    "OSPREY"
+    "Optic",
+    "Osprey"
   ],
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.143,
       "macro_movement": 0.657,
       "macro_coupling": 0.07,
       "macro_space": 0.741
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.972,
       "macro_movement": 0.092,
       "macro_coupling": 0.53,

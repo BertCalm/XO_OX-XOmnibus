@@ -3,12 +3,12 @@
   "name": "Phosphor Topology",
   "mood": "Entangled",
   "engines": [
-    "OBLONG",
-    "OPTIC"
+    "Oblong",
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bob's warmth timbral-warped by Optic luminance modulation \u2014 amber light at brutal intensity.",
+  "description": "Bob's warmth timbral-warped by Optic luminance modulation — amber light at brutal intensity.",
   "tags": [
     "entangled",
     "brutal",

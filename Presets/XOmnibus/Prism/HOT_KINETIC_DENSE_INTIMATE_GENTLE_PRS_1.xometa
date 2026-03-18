@@ -3,8 +3,8 @@
   "name": "HOT_KINETIC_DENSE_INTIMATE_GENTLE_PRS_1",
   "mood": "Prism",
   "engines": [
-    "OBLIQUE",
-    "ORIGAMI"
+    "Oblique",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.421,
       "macro_movement": 0.994,
       "macro_coupling": 1.0,
       "macro_space": 0.032
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.425,
       "macro_movement": 1.0,
       "macro_coupling": 0.797,

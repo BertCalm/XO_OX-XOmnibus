@@ -3,8 +3,8 @@
   "name": "Burning Horizon",
   "mood": "Entangled",
   "engines": [
-    "ODYSSEY",
-    "ORBITAL"
+    "Odyssey",
+    "Orbital"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.365
   },
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.783,
       "macro_movement": 0.554,
       "macro_coupling": 0.656,
       "macro_space": 0.361
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.398,
       "macro_movement": 0.553,
       "macro_coupling": 0.432,

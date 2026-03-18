@@ -3,11 +3,11 @@
   "name": "Orphica Cloud",
   "mood": "Atmosphere",
   "engines": [
-    "ORPHICA"
+    "Orphica"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "ORPHICA \u2014 bright extreme brightness preset for Atmosphere.",
+  "description": "ORPHICA — bright extreme brightness preset for Atmosphere.",
   "tags": [
     "atmosphere",
     "bright",
@@ -37,7 +37,7 @@
     "aggression": 0.88
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "orph_pluckDecay": 58.8,
       "orph_resonanceBody": 0.53,
       "orph_filterCutoff": 0.51,

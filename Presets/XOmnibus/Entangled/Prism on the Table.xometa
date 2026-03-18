@@ -3,8 +3,8 @@
   "name": "Prism on the Table",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "OPTIC"
+    "Osteria",
+    "Optic"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

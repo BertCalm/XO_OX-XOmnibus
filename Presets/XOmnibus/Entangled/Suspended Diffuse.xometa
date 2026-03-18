@@ -4,8 +4,8 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OBBLIGATO"
+    "Overlap",
+    "Obbligato"
   ],
   "author": "XO_OX",
   "macros": {
@@ -23,7 +23,7 @@
     "density": 0.68
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.81,
       "olap_decay": 0.841,
       "olap_damping": 0.591,
@@ -56,5 +56,5 @@
     "fdn",
     "reverb"
   ],
-  "description": "Obbligato breath pressure drives OVERLAP pre-delay \u2014 each exhalation opens the room wider"
+  "description": "Obbligato breath pressure drives OVERLAP pre-delay — each exhalation opens the room wider"
 }

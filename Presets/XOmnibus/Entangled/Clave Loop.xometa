@@ -2,8 +2,8 @@
   "name": "Clave Loop",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OLE"
+    "Overdub",
+    "Ole"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ole",
     "dub"
   ],
-  "description": "Afro-Latin clave locked in dub loop \u2014 percussion building through tape repeats"
+  "description": "Afro-Latin clave locked in dub loop — percussion building through tape repeats"
 }

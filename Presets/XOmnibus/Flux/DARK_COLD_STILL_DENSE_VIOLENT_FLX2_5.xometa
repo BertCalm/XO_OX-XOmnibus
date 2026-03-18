@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OCEANIC",
-    "ORGANON"
+    "Oceanic",
+    "Organon"
   ],
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.0694,
       "macro_movement": 0.1111,
       "macro_coupling": 0.9047,
       "macro_space": 0.4147
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.0743,
       "macro_movement": 0.1007,
       "macro_coupling": 0.8736,

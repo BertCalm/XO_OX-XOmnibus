@@ -3,12 +3,12 @@
   "name": "DARK COLD KINETIC VAST AET 2",
   "mood": "Aether",
   "engines": [
-    "OBBLIGATO",
-    "OUTWIT"
+    "Obbligato",
+    "Outwit"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, dark, cold, kinetic.",
+  "description": "Extreme DNA corners — aether, dark, cold, kinetic.",
   "tags": [
     "aether",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.544
   },
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "level": 0.673,
       "pan": 0.036
     },
-    "OUTWIT": {
+    "Outwit": {
       "level": 0.674,
       "pan": -0.112
     }

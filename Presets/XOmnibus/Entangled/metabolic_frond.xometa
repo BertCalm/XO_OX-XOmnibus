@@ -3,8 +3,8 @@
   "name": "Metabolic Frond",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ORGANON"
+    "Overlap",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.31
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.6,
       "olap_decay": 0.84,
       "olap_damping": 0.37,
@@ -69,7 +69,7 @@
       "olap_outputLevel": 0.73,
       "olap_outputPan": 0.09
     },
-    "ORGANON": {
+    "Organon": {
       "organon_character": 0.71,
       "organon_movement": 0.4,
       "organon_coupling": 0.79,

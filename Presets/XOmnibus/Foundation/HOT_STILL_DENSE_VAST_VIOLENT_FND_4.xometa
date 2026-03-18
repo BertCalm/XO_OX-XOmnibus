@@ -3,8 +3,8 @@
   "name": "HOT_STILL_DENSE_VAST_VIOLENT_FND_4",
   "mood": "Foundation",
   "engines": [
-    "ORIGAMI",
-    "ONSET"
+    "Origami",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.407,
       "macro_movement": 0.0,
       "macro_coupling": 0.933,
       "macro_space": 0.839
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.563,
       "macro_movement": 0.012,
       "macro_coupling": 1.0,

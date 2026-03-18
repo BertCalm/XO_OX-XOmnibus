@@ -3,12 +3,12 @@
   "name": "Metabolic Mist",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "ORGANON"
+    "Orphica",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "ORPHICA microsound spatially coupled with Organon's diffusion \u2014 sea mist harp.",
+  "description": "ORPHICA microsound spatially coupled with Organon's diffusion — sea mist harp.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.05
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.62,
       "macro_movement": 0.5,
       "macro_coupling": 0.7,
       "macro_space": 0.8
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.52,
       "macro_movement": 0.65,
       "macro_coupling": 0.7,

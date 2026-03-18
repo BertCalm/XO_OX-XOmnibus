@@ -3,12 +3,12 @@
   "name": "Frond Bloom",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ORBITAL"
+    "Overlap",
+    "Orbital"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERLAP cascade tail feeds ORBITAL timbre bus \u2014 reverb becomes a new oscillator",
+  "description": "OVERLAP cascade tail feeds ORBITAL timbre bus — reverb becomes a new oscillator",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.55
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.612,
       "olap_decay": 0.872,
       "olap_damping": 0.603,

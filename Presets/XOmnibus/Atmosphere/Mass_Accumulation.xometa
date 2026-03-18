@@ -3,7 +3,7 @@
   "name": "Mass Accumulation",
   "mood": "Atmosphere",
   "engines": [
-    "OBLONG"
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.327
   },
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "character": 0.403,
       "movement": 0.342,
       "coupling": 0.375,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OBLIQUE",
-    "OBSIDIAN"
+    "Oblique",
+    "Obsidian"
   ],
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.943,
       "macro_movement": 0.547,
       "macro_coupling": 0.423,
       "macro_space": 0.531
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.88,
       "macro_movement": 0.421,
       "macro_coupling": 0.434,

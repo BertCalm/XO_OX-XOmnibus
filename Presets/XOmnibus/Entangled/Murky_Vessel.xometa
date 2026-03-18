@@ -3,8 +3,8 @@
   "name": "Murky Vessel",
   "mood": "Entangled",
   "engines": [
-    "OMBRE",
-    "ORCA"
+    "Ombre",
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.56
   },
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.303,
       "macro_movement": 0.318,
       "macro_coupling": 0.699,
       "macro_space": 0.412
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.589,
       "macro_movement": 0.411,
       "macro_coupling": 0.652,

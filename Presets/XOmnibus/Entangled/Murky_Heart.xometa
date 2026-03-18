@@ -3,8 +3,8 @@
   "name": "Murky Heart",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OCTOPUS"
+    "Obbligato",
+    "Octopus"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.53
   },
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.327,
       "macro_movement": 0.522,
       "macro_coupling": 0.584,
       "macro_space": 0.608
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.685,
       "macro_movement": 0.776,
       "macro_coupling": 0.406,

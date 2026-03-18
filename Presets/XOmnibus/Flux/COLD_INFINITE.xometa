@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OUTWIT",
-    "OCELOT"
+    "Outwit",
+    "Ocelot"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.395,
       "macro_movement": 0.432,
       "macro_coupling": 0.775,
       "macro_space": 0.698
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.324,
       "macro_movement": 0.306,
       "macro_coupling": 0.697,

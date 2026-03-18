@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBESE",
-    "OCTOPUS"
+    "Obese",
+    "Octopus"
   ],
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.984,
       "macro_movement": 0.917,
       "macro_coupling": 0.462,
       "macro_space": 0.282
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.382,
       "macro_movement": 0.975,
       "macro_coupling": 0.527,

@@ -2,8 +2,8 @@
   "name": "Feline Resonance",
   "version": "1.0",
   "engines": [
-    "ORPHICA",
-    "OCELOT"
+    "Orphica",
+    "Ocelot"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ocelot",
     "microsound"
   ],
-  "description": "Ocelot stalks through a field of ringing crystal harmonics \u2014 each step a note"
+  "description": "Ocelot stalks through a field of ringing crystal harmonics — each step a note"
 }

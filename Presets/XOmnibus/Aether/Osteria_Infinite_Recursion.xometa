@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Infinite Recursion",
+  "mood": "Aether",
+  "engines": [
+    "Osteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Each voice contains the whole. Recursive depth without end.",
+  "tags": [
+    "recursive",
+    "infinite",
+    "depth",
+    "contains",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.9,
+    "movement": 0.38,
+    "density": 0.8,
+    "space": 0.14,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_porto": 0.35,
+      "osteria_patina": 0.62,
+      "osteria_murmur": 0.08,
+      "osteria_oceanBleed": 0.28,
+      "osteria_blendMode": 2,
+      "osteria_bassLevel": 0.5,
+      "osteria_melLevel": 0.62,
+      "osteria_harmLevel": 0.65,
+      "osteria_rhythmLevel": 0.4,
+      "osteria_qBassShore": 0.28,
+      "osteria_qMelShore": 0.28,
+      "osteria_qHarmShore": 0.35,
+      "osteria_qRhythmShore": 0.18,
+      "osteria_qElastic": 0.72,
+      "osteria_qMemory": 0.85,
+      "osteria_qStretch": 0.82,
+      "osteria_qSympathy": 0.88,
+      "osteria_attack": 0.1,
+      "osteria_decay": 0.68,
+      "osteria_sustain": 0.8,
+      "osteria_release": 2.2,
+      "osteria_chorus": 0.1,
+      "osteria_hall": 0.52,
+      "osteria_ensWidth": 0.98,
+      "osteria_tape": 0.04,
+      "osteria_sessionDelay": 0.45,
+      "osteria_filterEnvDepth": 0.08,
+      "osteria_warmth": 0.85,
+      "osteria_smoke": 0.1,
+      "osteria_tavernMix": 0.45,
+      "osteria_tavernShore": 0.3,
+      "osteria_macroCharacter": 0.22,
+      "osteria_macroMovement": 0.55,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

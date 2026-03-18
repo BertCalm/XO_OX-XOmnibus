@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OWLFISH",
-    "OHM"
+    "Owlfish",
+    "Ohm"
   ],
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.822,
       "macro_movement": 0.437,
       "macro_coupling": 0.784,
       "macro_space": 0.428
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.858,
       "macro_movement": 0.418,
       "macro_coupling": 0.81,

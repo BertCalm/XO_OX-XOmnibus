@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ODYSSEY",
-    "OCEANIC"
+    "Odyssey",
+    "Oceanic"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.8604,
       "macro_movement": 0.8747,
       "macro_coupling": 0.9327,
       "macro_space": 0.3513
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.776,
       "macro_movement": 0.9464,
       "macro_coupling": 0.897,

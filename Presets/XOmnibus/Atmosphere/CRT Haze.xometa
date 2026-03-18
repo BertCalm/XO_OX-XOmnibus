@@ -2,7 +2,7 @@
   "name": "CRT Haze",
   "version": "1.0",
   "engines": [
-    "ORIGAMI"
+    "Origami"
   ],
   "mood": "Atmosphere",
   "macros": {

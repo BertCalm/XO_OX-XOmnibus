@@ -2,8 +2,8 @@
   "name": "Axolotl Commune",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "ODDOSCAR"
+    "Ohm",
+    "OddOscar"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oddoscar",
     "hippy"
   ],
-  "description": "Regenerative axolotl morphology breathes through ohm's warm family circle \u2014 tender and strange together"
+  "description": "Regenerative axolotl morphology breathes through ohm's warm family circle — tender and strange together"
 }

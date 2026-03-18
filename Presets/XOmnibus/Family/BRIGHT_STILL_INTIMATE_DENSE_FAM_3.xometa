@@ -3,12 +3,12 @@
   "name": "BRIGHT STILL INTIMATE DENSE FAM 3",
   "mood": "Family",
   "engines": [
-    "ORBITAL",
-    "OBSCURA"
+    "Orbital",
+    "Obscura"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, bright, still, dense.",
+  "description": "Extreme DNA corners — family, bright, still, dense.",
   "tags": [
     "family",
     "bright",
@@ -35,11 +35,11 @@
     "aggression": 0.449
   },
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "level": 0.711,
       "pan": 0.053
     },
-    "OBSCURA": {
+    "Obscura": {
       "level": 0.786,
       "pan": 0.02
     }

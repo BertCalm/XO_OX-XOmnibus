@@ -2,8 +2,8 @@
   "name": "Echolocation Dub",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "ORCA"
+    "Overdub",
+    "Orca"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orca",
     "dub"
   ],
-  "description": "Orca click train processed through dub delay \u2014 cetacean sonar rebuilt as echo chamber"
+  "description": "Orca click train processed through dub delay — cetacean sonar rebuilt as echo chamber"
 }

@@ -3,20 +3,20 @@
   "name": "Siphonophore Memory",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "ORGANON"
+    "Orphica",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Envelope linking: ORPHICA's long decay imprints on ORGANON's long-term cellular pattern.",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.66,
       "macro_movement": 0.52,
       "macro_coupling": 0.66,
       "macro_space": 0.73
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.5,
       "macro_movement": 0.6,
       "macro_coupling": 0.56,

@@ -3,12 +3,12 @@
   "name": "BRIGHT_WARM_FROZEN_INTIMATE_VIOLENT_ENT3_3",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "OSPREY"
+    "Orphica",
+    "Osprey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_WARM_FROZEN_INTIMATE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_INTIMATE_VIOLENT. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.6584,
       "macro_movement": 0.1051,
       "macro_coupling": 0.9828,
       "macro_space": 0.4435
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.9842,
       "macro_movement": 0.101,
       "macro_coupling": 0.9078,

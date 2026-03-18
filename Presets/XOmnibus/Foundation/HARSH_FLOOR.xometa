@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OCELOT",
-    "ODYSSEY"
+    "Ocelot",
+    "Odyssey"
   ],
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.565,
       "macro_movement": 0.45,
       "macro_coupling": 0.527,
       "macro_space": 0.279
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.456,
       "macro_movement": 0.43,
       "macro_coupling": 0.771,

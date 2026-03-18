@@ -3,12 +3,12 @@
   "name": "BRIGHT_KINETIC_DENSE_VIOLENT_ENT_3",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OWLFISH"
+    "Overlap",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Kinetic Dense Violent character entanglement \u2014 OVERLAP \u00d7 OWLFISH via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Kinetic Dense Violent character entanglement — OVERLAP × OWLFISH via Spectral Morph. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.9655
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.7859,
       "macro_movement": 0.9586,
       "macro_coupling": 0.9613,
@@ -57,7 +57,7 @@
       "output_level": 0.925,
       "coupling_level": 0.897
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.8078,
       "macro_movement": 0.9854,
       "macro_coupling": 0.9521,

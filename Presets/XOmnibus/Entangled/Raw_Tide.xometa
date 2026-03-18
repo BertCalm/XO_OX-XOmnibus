@@ -3,8 +3,8 @@
   "name": "Raw Tide",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "OWLFISH"
+    "Osteria",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.0
   },
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.454,
       "macro_movement": 0.776,
       "macro_coupling": 0.526,
       "macro_space": 0.266
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.314,
       "macro_movement": 0.407,
       "macro_coupling": 0.573,

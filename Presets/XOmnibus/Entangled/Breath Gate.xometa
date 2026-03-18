@@ -2,8 +2,8 @@
   "name": "Breath Gate",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "ONSET"
+    "Obbligato",
+    "Onset"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "onset",
     "wind"
   ],
-  "description": "Onset percussive hits gated by OBBLIGATO breath pattern \u2014 drums speak only when wind allows"
+  "description": "Onset percussive hits gated by OBBLIGATO breath pattern — drums speak only when wind allows"
 }

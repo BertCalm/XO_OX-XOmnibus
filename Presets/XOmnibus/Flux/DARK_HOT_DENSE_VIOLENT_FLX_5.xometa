@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OVERWORLD",
-    "ORACLE"
+    "Overworld",
+    "Oracle"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.2079,
       "macro_movement": 0.5981,
       "macro_coupling": 0.7345,
       "macro_space": 0.2403
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.0628,
       "macro_movement": 0.5788,
       "macro_coupling": 0.7567,

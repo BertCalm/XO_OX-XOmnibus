@@ -2,8 +2,8 @@
   "name": "Still Oracle Venom",
   "version": "1.0",
   "engines": [
-    "OVERBITE",
-    "ORACLE"
+    "Overbite",
+    "Oracle"
   ],
   "mood": "Entangled",
   "strategy": "Still Aggressive",
@@ -35,5 +35,5 @@
     "prophecy",
     "venom"
   ],
-  "description": "Oracle's vision delivered through Overbite's fangs \u2014 the prophecy is violence."
+  "description": "Oracle's vision delivered through Overbite's fangs — the prophecy is violence."
 }

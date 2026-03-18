@@ -2,8 +2,8 @@
   "name": "Brass Grain",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OTTONI"
+    "Opal",
+    "Ottoni"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ottoni",
     "granular"
   ],
-  "description": "Triple brass harmonics granularized \u2014 patina aged to grain shimmer texture"
+  "description": "Triple brass harmonics granularized — patina aged to grain shimmer texture"
 }

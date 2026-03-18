@@ -3,12 +3,12 @@
   "name": "Kinetic Saturation",
   "mood": "Entangled",
   "engines": [
-    "OCTOPUS",
-    "OBESE"
+    "Octopus",
+    "Obese"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Octopus arm timbre warped by OBESE saturation \u2014 kinetic intelligence at full harmonic load.",
+  "description": "Octopus arm timbre warped by OBESE saturation — kinetic intelligence at full harmonic load.",
   "tags": [
     "entangled",
     "brutal",

@@ -3,7 +3,7 @@
   "name": "Electron Storm",
   "mood": "Atmosphere",
   "engines": [
-    "OVERWORLD"
+    "Overworld"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.616
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "era": 0.719,
       "glitch": 0.817,
       "coupling": 0.415,

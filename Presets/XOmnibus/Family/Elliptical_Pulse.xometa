@@ -3,11 +3,11 @@
   "name": "Elliptical Pulse",
   "mood": "Family",
   "engines": [
-    "ORBITAL"
+    "Orbital"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORBITAL deep orbit \u2014 elliptical motion, resonant nodes, celestial timing. A sequencer that moves like a planet.",
+  "description": "ORBITAL deep orbit — elliptical motion, resonant nodes, celestial timing. A sequencer that moves like a planet.",
   "tags": [
     "family",
     "signature",

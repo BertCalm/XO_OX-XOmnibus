@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OBLIQUE",
-    "OVERWORLD"
+    "Oblique",
+    "Overworld"
   ],
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.415,
       "macro_movement": 0.935,
       "macro_coupling": 0.545,
       "macro_space": 0.949
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.219,
       "macro_movement": 0.935,
       "macro_coupling": 0.714,

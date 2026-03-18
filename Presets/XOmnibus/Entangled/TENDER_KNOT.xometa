@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OVERBITE"
+    "Overlap",
+    "Overbite"
   ],
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.323,
       "macro_movement": 0.861,
       "macro_coupling": 0.437,
       "macro_space": 0.768
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.476,
       "macro_movement": 0.699,
       "macro_coupling": 0.142,

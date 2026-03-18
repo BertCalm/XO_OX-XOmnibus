@@ -3,11 +3,11 @@
   "name": "Twilight Fade",
   "mood": "Atmosphere",
   "engines": [
-    "OMBRE"
+    "Ombre"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "OMBRE \u2014 dark extreme brightness preset for Atmosphere.",
+  "description": "OMBRE — dark extreme brightness preset for Atmosphere.",
   "tags": [
     "atmosphere",
     "dark",
@@ -37,7 +37,7 @@
     "aggression": 0.14
   },
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "ombr_fadeDepth": 0.23,
       "ombr_filterCutoff": 0.03,
       "ombr_filterReso": 0.88,

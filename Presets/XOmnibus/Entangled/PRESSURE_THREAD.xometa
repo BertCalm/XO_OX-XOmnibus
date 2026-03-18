@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "OBSIDIAN"
+    "Ottoni",
+    "Obsidian"
   ],
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.2033,
       "macro_movement": 0.6467,
       "macro_coupling": 0.9689,
       "macro_space": 0.8471
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.0925,
       "macro_movement": 0.7246,
       "macro_coupling": 0.6762,

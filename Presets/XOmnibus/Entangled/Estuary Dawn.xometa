@@ -3,13 +3,13 @@
   "name": "Estuary Dawn",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "OSTERIA",
-    "OCEANIC"
+    "Osprey",
+    "Osteria",
+    "Oceanic"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Estuary at first light \u2014 salt air, the cook's fire, and the tide returning.",
+  "description": "Estuary at first light — salt air, the cook's fire, and the tide returning.",
   "tags": [
     "entangled",
     "coupling",

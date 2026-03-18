@@ -4,8 +4,8 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ODYSSEY"
+    "Overlap",
+    "Odyssey"
   ],
   "author": "XO_OX",
   "macros": {
@@ -23,7 +23,7 @@
     "density": 0.62
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.748,
       "olap_decay": 0.532,
       "olap_damping": 0.266,
@@ -56,5 +56,5 @@
     "fdn",
     "reverb"
   ],
-  "description": "Odyssey tidal swell expands OVERLAP room size \u2014 tide and tail rise together toward the horizon"
+  "description": "Odyssey tidal swell expands OVERLAP room size — tide and tail rise together toward the horizon"
 }

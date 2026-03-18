@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT FND 2",
   "mood": "Foundation",
   "engines": [
-    "ONSET",
-    "OPTIC"
+    "Onset",
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.82,
       "macro_movement": 0.95,
       "macro_coupling": 0.7,
       "macro_space": 0.23
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.93,
       "macro_movement": 0.63,
       "macro_coupling": 0.82,

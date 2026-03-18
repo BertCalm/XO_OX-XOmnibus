@@ -2,8 +2,8 @@
   "name": "Folk Grains",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OPAL"
+    "Ohm",
+    "Opal"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "opal",
     "hippy"
   ],
-  "description": "Ohm groove granularized \u2014 each moment of warmth scattered and suspended in space"
+  "description": "Ohm groove granularized — each moment of warmth scattered and suspended in space"
 }

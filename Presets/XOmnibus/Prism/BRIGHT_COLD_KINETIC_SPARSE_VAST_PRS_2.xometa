@@ -3,8 +3,8 @@
   "name": "BRIGHT_COLD_KINETIC_SPARSE_VAST_PRS_2",
   "mood": "Prism",
   "engines": [
-    "OVERWORLD",
-    "ORPHICA"
+    "Overworld",
+    "Orphica"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.786,
       "macro_movement": 0.954,
       "macro_coupling": 0.072,
       "macro_space": 0.909
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.903,
       "macro_movement": 0.932,
       "macro_coupling": 0.128,

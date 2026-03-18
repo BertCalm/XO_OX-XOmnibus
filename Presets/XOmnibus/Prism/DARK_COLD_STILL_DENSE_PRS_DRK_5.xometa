@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OBLIQUE",
-    "ORPHICA"
+    "Oblique",
+    "Orphica"
   ],
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.1966,
       "macro_movement": 0.1238,
       "macro_coupling": 0.9465,
       "macro_space": 0.6011
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.1918,
       "macro_movement": 0.0985,
       "macro_coupling": 0.9106,

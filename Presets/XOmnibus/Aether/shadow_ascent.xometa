@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OBSIDIAN"
+    "Obsidian"
   ],
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.6,
       "macro_movement": 0.55,
       "macro_coupling": 0.35,

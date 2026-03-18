@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORACLE",
-    "ORGANON"
+    "Oracle",
+    "Organon"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.5626,
       "macro_movement": 0.9792,
       "macro_coupling": 0.4825,
       "macro_space": 0.0668
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.5731,
       "macro_movement": 0.9814,
       "macro_coupling": 0.4569,

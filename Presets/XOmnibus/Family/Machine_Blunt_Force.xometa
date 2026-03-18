@@ -3,11 +3,11 @@
   "name": "Machine Blunt Force",
   "mood": "Family",
   "engines": [
-    "ONSET"
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ONSET at maximum punch \u2014 MACHINE full, density stacked, every hit a wall.",
+  "description": "ONSET at maximum punch — MACHINE full, density stacked, every hit a wall.",
   "tags": [
     "family",
     "portrait",

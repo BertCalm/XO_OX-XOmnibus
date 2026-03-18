@@ -3,8 +3,8 @@
   "name": "Murky Pulse",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OCTOPUS"
+    "Obbligato",
+    "Octopus"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.47
   },
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.726,
       "macro_movement": 0.76,
       "macro_coupling": 0.784,
       "macro_space": 0.677
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.737,
       "macro_movement": 0.5,
       "macro_coupling": 0.45,

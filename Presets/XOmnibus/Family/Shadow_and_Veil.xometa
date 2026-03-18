@@ -3,12 +3,12 @@
   "name": "Shadow and Veil",
   "mood": "Family",
   "engines": [
-    "OBSIDIAN",
-    "OBSCURA"
+    "Obsidian",
+    "Obscura"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OBSIDIAN volcanic edge + OBSCURA pinhole dark \u2014 the two darknesses meeting. One cuts, one conceals. The shadow and the veil.",
+  "description": "OBSIDIAN volcanic edge + OBSCURA pinhole dark — the two darknesses meeting. One cuts, one conceals. The shadow and the veil.",
   "tags": [
     "family",
     "reunion",

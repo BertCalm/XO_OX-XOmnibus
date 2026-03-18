@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ODYSSEY",
-    "OMBRE"
+    "Odyssey",
+    "Ombre"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.826,
       "macro_movement": 0.794,
       "macro_coupling": 0.955,
       "macro_space": 0.904
     },
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.649,
       "macro_movement": 0.887,
       "macro_coupling": 0.579,

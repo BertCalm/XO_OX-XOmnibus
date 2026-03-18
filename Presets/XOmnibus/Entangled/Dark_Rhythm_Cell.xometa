@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OPTIC",
-    "OUTWIT"
+    "Optic",
+    "Outwit"
   ],
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.55,
       "macro_movement": 0.74,
       "macro_coupling": 0.6,
       "macro_space": 0.26
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.68,
       "macro_movement": 0.11,
       "macro_coupling": 0.7,

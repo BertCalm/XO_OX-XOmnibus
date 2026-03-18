@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OCELOT",
-    "OUROBOROS"
+    "Ocelot",
+    "Ouroboros"
   ],
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.244,
       "macro_movement": 0.903,
       "macro_coupling": 0.39,
       "macro_space": 0.955
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.491,
       "macro_movement": 0.477,
       "macro_coupling": 0.094,

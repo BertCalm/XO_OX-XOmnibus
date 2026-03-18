@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ODYSSEY",
-    "OPAL"
+    "Odyssey",
+    "Opal"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.932,
       "macro_movement": 0.089,
       "macro_coupling": 0.015,
       "macro_space": 0.322
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.453,
       "macro_movement": 0.093,
       "macro_coupling": 0.978,

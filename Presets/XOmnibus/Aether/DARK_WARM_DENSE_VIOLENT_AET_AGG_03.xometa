@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OPAL",
-    "ORACLE"
+    "Opal",
+    "Oracle"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.1,
       "macro_movement": 0.452,
       "macro_coupling": 0.852,
       "macro_space": 0.414
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.095,
       "macro_movement": 0.454,
       "macro_coupling": 0.92,

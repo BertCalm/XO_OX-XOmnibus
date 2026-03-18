@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OPTIC",
-    "ORGANON"
+    "Optic",
+    "Organon"
   ],
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.654,
       "macro_movement": 0.976,
       "macro_coupling": 0.301,
       "macro_space": 0.663
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.569,
       "macro_movement": 0.907,
       "macro_coupling": 0.66,

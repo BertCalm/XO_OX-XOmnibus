@@ -3,11 +3,11 @@
   "name": "Oracle at Midnight",
   "mood": "Family",
   "engines": [
-    "ORACLE"
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORACLE speaking from the pit \u2014 voice from total dark, gravity of prophecy.",
+  "description": "ORACLE speaking from the pit — voice from total dark, gravity of prophecy.",
   "tags": [
     "family",
     "portrait",

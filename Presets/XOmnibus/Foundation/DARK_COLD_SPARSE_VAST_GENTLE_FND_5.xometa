@@ -3,8 +3,8 @@
   "name": "DARK_COLD_SPARSE_VAST_GENTLE_FND_5",
   "mood": "Foundation",
   "engines": [
-    "OBESE",
-    "OVERBITE"
+    "Obese",
+    "Overbite"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.0,
       "macro_movement": 0.381,
       "macro_coupling": 0.094,
       "macro_space": 0.893
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.107,
       "macro_movement": 0.475,
       "macro_coupling": 0.085,

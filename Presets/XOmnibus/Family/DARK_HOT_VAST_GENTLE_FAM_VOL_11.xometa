@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OPAL",
-    "OHM"
+    "Opal",
+    "Ohm"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.508,
       "macro_movement": 0.296,
       "macro_coupling": 0.263,
       "macro_space": 0.914
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.523,
       "macro_movement": 0.3,
       "macro_coupling": 0.242,

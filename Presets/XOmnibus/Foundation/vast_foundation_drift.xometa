@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OMBRE",
-    "OUTWIT"
+    "Ombre",
+    "Outwit"
   ],
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.984,
       "macro_movement": 0.543,
       "macro_coupling": 0.9,
       "macro_space": 0.905
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.044,
       "macro_movement": 0.575,
       "macro_coupling": 0.52,

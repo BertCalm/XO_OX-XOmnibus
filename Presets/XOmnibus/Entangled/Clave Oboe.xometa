@@ -3,12 +3,12 @@
   "name": "Clave Oboe",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OLE"
+    "Obbligato",
+    "Ole"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OBBLIGATO and OLE coupled via Env->Morph. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "description": "OBBLIGATO and OLE coupled via Env->Morph. Blended Constellation DNA — stub seeded for expansion.",
   "tags": [
     "coupling",
     "constellation",

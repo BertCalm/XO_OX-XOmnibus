@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ODDOSCAR",
-    "OVERWORLD"
+    "OddOscar",
+    "Overworld"
   ],
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.923,
       "macro_movement": 0.447,
       "macro_coupling": 0.823,
       "macro_space": 0.53
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 1.0,
       "macro_movement": 0.481,
       "macro_coupling": 0.93,

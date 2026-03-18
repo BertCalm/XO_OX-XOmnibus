@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OBSIDIAN"
+    "Outwit",
+    "Obsidian"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.99,
       "macro_movement": 0.03,
       "macro_coupling": 0.107,
       "macro_space": 0.453
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.99,
       "macro_movement": 0.028,
       "macro_coupling": 0.069,

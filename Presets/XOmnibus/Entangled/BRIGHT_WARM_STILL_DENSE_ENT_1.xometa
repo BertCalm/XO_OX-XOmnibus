@@ -3,12 +3,12 @@
   "name": "BRIGHT_WARM_STILL_DENSE_ENT_1",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "ODDOSCAR"
+    "Ouroboros",
+    "OddOscar"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Warm Still Dense character entanglement \u2014 OUROBOROS \u00d7 ODDOSCAR via Chaos Inject. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Warm Still Dense character entanglement — OUROBOROS × ODDOSCAR via Chaos Inject. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.56
   },
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.9454,
       "macro_movement": 0.0361,
       "macro_coupling": 0.8205,
@@ -57,7 +57,7 @@
       "output_level": 0.9429,
       "coupling_level": 0.7924
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.9235,
       "macro_movement": 0.1134,
       "macro_coupling": 0.7863,

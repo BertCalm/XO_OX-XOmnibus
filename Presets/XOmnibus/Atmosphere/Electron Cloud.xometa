@@ -2,7 +2,7 @@
   "name": "Electron Cloud",
   "version": "1.0",
   "engines": [
-    "OSTERIA"
+    "Osteria"
   ],
   "mood": "Atmosphere",
   "macros": {

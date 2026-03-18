@@ -3,12 +3,12 @@
   "name": "Fang Topology",
   "mood": "Entangled",
   "engines": [
-    "OVERBITE",
-    "OUROBOROS"
+    "Overbite",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "BITE macro chaos-injected by Ouroboros \u2014 the possum's fang at fractal frequency.",
+  "description": "BITE macro chaos-injected by Ouroboros — the possum's fang at fractal frequency.",
   "tags": [
     "entangled",
     "brutal",

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OVERBITE",
-    "OBSCURA"
+    "Overbite",
+    "Obscura"
   ],
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.803,
       "macro_movement": 0.482,
       "macro_coupling": 0.26,
       "macro_space": 0.848
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.357,
       "macro_movement": 0.617,
       "macro_coupling": 0.826,

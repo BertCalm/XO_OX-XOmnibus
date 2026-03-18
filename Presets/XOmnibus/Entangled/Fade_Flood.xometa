@@ -3,8 +3,8 @@
   "name": "Fade Flood",
   "mood": "Entangled",
   "engines": [
-    "ODYSSEY",
-    "ORBITAL"
+    "Odyssey",
+    "Orbital"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.335
   },
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.715,
       "macro_movement": 0.707,
       "macro_coupling": 0.584,
       "macro_space": 0.316
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.386,
       "macro_movement": 0.498,
       "macro_coupling": 0.658,

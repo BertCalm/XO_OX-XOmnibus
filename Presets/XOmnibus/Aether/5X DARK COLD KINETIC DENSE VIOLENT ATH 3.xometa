@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT ATH 3",
   "mood": "Aether",
   "engines": [
-    "ORGANON",
-    "OCEANIC"
+    "Organon",
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.77,
       "macro_movement": 0.99,
       "macro_coupling": 0.79,
       "macro_space": 0.25
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.8,
       "macro_movement": 0.88,
       "macro_coupling": 0.74,

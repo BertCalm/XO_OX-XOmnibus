@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ONSET",
-    "OPTIC"
+    "Onset",
+    "Optic"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.451,
       "macro_movement": 0.938,
       "macro_coupling": 0.064,
       "macro_space": 0.955
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.554,
       "macro_movement": 0.972,
       "macro_coupling": 0.007,

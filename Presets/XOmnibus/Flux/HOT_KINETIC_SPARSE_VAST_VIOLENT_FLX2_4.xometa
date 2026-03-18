@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OCEANIC",
-    "OVERDUB"
+    "Oceanic",
+    "Overdub"
   ],
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.7358,
       "macro_movement": 0.9849,
       "macro_coupling": 0.1186,
       "macro_space": 0.9516
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.7741,
       "macro_movement": 0.9622,
       "macro_coupling": 0.1279,

@@ -3,8 +3,8 @@
   "name": "Cellular Bloom",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OUTWIT"
+    "Overlap",
+    "Outwit"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -48,7 +48,7 @@
     "density": 0.675
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.944,
       "olap_decay": 0.842,
       "olap_damping": 0.597,
@@ -69,7 +69,7 @@
       "olap_spinRate": 0.107,
       "olap_shimmerMix": 0.396
     },
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 73,
       "owit_arms": 5,
       "owit_cellSize": 0.408,

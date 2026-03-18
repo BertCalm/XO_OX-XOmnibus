@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "OVERBITE"
+    "Orphica",
+    "Overbite"
   ],
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.639,
       "macro_movement": 0.869,
       "macro_coupling": 0.517,
       "macro_space": 0.974
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.628,
       "macro_movement": 0.8,
       "macro_coupling": 0.502,

@@ -3,11 +3,11 @@
   "name": "The Dub Machine",
   "mood": "Family",
   "engines": [
-    "OVERDUB"
+    "Overdub"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERDUB in its element \u2014 drive warm, wobble riding the 2, send VCA open. Tape hiss present, spring reverb trailing. The machine breathes.",
+  "description": "OVERDUB in its element — drive warm, wobble riding the 2, send VCA open. Tape hiss present, spring reverb trailing. The machine breathes.",
   "tags": [
     "family",
     "signature",

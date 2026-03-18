@@ -11,11 +11,11 @@
     "space": 0.7
   },
   "engines": [
-    "ORGANON"
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Logical form in darkness \u2014 argument without light",
+  "description": "Logical form in darkness — argument without light",
   "tags": [
     "aether",
     "dark",

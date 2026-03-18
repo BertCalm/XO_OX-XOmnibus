@@ -3,7 +3,7 @@
   "name": "Sediment Cloud",
   "mood": "Atmosphere",
   "engines": [
-    "ORGANON"
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.387
   },
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "system": 0.308,
       "logic": 0.44,
       "coupling": 0.295,

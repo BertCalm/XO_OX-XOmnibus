@@ -3,12 +3,12 @@
   "name": "White Strike",
   "mood": "Entangled",
   "engines": [
-    "OVERBITE",
-    "OPTIC"
+    "Overbite",
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Fang White meets Phosphor Green \u2014 BITE macro timbral-warped by Optic luminance.",
+  "description": "Fang White meets Phosphor Green — BITE macro timbral-warped by Optic luminance.",
   "tags": [
     "entangled",
     "brutal",

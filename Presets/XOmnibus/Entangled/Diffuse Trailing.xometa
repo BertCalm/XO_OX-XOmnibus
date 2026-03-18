@@ -3,12 +3,12 @@
   "name": "Diffuse Trailing",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OPAL"
+    "Overlap",
+    "Opal"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Granular clouds refract through Lion's Mane FDN \u2014 spectral shimmer meets deep space",
+  "description": "Granular clouds refract through Lion's Mane FDN — spectral shimmer meets deep space",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.625
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.719,
       "olap_decay": 0.512,
       "olap_damping": 0.377,

@@ -3,8 +3,8 @@
   "name": "Commune Cells",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OHM"
+    "Outwit",
+    "Ohm"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "density": 0.65
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 110,
       "owit_arms": 5,
       "owit_cellSize": 0.55,

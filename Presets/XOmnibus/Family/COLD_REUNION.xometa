@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OBESE",
-    "OPTIC"
+    "Obese",
+    "Optic"
   ],
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.73,
       "macro_movement": 0.536,
       "macro_coupling": 0.973,
       "macro_space": 0.379
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.552,
       "macro_movement": 0.829,
       "macro_coupling": 0.619,

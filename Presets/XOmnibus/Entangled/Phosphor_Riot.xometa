@@ -3,12 +3,12 @@
   "name": "Phosphor Riot",
   "mood": "Entangled",
   "engines": [
-    "OPTIC",
-    "OUROBOROS"
+    "Optic",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Optic AutoPulse at maximum rate chaos-injected by Ouroboros \u2014 light as pure mathematical violence.",
+  "description": "Optic AutoPulse at maximum rate chaos-injected by Ouroboros — light as pure mathematical violence.",
   "tags": [
     "entangled",
     "brutal",

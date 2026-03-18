@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OWLFISH",
-    "OVERLAP"
+    "Owlfish",
+    "Overlap"
   ],
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.792,
       "macro_movement": 0.237,
       "macro_coupling": 0.494,
       "macro_space": 0.361
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.572,
       "macro_movement": 0.467,
       "macro_coupling": 0.983,

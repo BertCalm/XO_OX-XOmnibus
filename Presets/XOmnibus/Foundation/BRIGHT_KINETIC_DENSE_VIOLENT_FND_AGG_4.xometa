@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ODDOSCAR",
-    "OBSIDIAN"
+    "OddOscar",
+    "Obsidian"
   ],
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.604,
       "macro_movement": 0.477,
       "macro_coupling": 0.674,
       "macro_space": 0.788
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.574,
       "macro_movement": 0.458,
       "macro_coupling": 0.724,

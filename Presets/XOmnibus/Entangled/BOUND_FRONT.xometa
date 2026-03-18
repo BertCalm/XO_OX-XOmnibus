@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERBITE",
-    "OCTOPUS"
+    "Overbite",
+    "Octopus"
   ],
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.8062,
       "macro_movement": 0.9098,
       "macro_coupling": 0.6428,
       "macro_space": 0.0963
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.1489,
       "macro_movement": 0.1919,
       "macro_coupling": 0.8106,

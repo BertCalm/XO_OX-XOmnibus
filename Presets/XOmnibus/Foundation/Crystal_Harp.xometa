@@ -3,11 +3,11 @@
   "name": "Crystal Harp",
   "mood": "Foundation",
   "engines": [
-    "ORPHICA"
+    "Orphica"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "ORPHICA \u2014 bright extreme brightness preset for Foundation.",
+  "description": "ORPHICA — bright extreme brightness preset for Foundation.",
   "tags": [
     "foundation",
     "bright",
@@ -37,7 +37,7 @@
     "aggression": 0.57
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "orph_pluckDecay": 306.3,
       "orph_resonanceBody": 0.03,
       "orph_filterCutoff": 0.85,

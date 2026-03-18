@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "ODYSSEY",
-    "ODDOSCAR"
+    "Odyssey",
+    "OddOscar"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.956,
       "macro_movement": 0.03,
       "macro_coupling": 0.567,
       "macro_space": 0.883
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.965,
       "macro_movement": 0.05,
       "macro_coupling": 0.607,

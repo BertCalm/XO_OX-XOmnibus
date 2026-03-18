@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OUTWIT",
-    "ODDOSCAR"
+    "Outwit",
+    "OddOscar"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.417,
       "macro_movement": 0.491,
       "macro_coupling": 0.899,
       "macro_space": 0.039
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.629,
       "macro_movement": 0.52,
       "macro_coupling": 0.266,

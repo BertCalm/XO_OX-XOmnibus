@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OVERDUB",
-    "OSPREY"
+    "Overdub",
+    "Osprey"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.524,
       "macro_movement": 0.419,
       "macro_coupling": 0.934,
       "macro_space": 0.372
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.547,
       "macro_movement": 0.456,
       "macro_coupling": 0.954,

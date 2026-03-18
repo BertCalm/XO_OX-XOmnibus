@@ -3,11 +3,11 @@
   "name": "Serpent Swallows Sun",
   "mood": "Family",
   "engines": [
-    "OUROBOROS"
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OUROBOROS terminal loop \u2014 the cycle collapses inward, no light escapes.",
+  "description": "OUROBOROS terminal loop — the cycle collapses inward, no light escapes.",
   "tags": [
     "family",
     "portrait",

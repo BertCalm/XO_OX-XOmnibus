@@ -2,8 +2,8 @@
   "name": "Breach Bloom",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "ORCA"
+    "Ohm",
+    "Orca"
   ],
   "mood": "Entangled",
   "macros": {

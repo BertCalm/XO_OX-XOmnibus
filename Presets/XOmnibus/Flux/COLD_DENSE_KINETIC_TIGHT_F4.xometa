@@ -11,11 +11,11 @@
     "space": 0.107
   },
   "engines": [
-    "OCEANIC"
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Flux preset \u2014 extreme cold warmth, extreme kinetic movement, extreme dense density, extreme tight space. Maximum contrast character design.",
+  "description": "Ultra-diverse Flux preset — extreme cold warmth, extreme kinetic movement, extreme dense density, extreme tight space. Maximum contrast character design.",
   "tags": [
     "cold",
     "kinetic",
@@ -40,7 +40,7 @@
     "aggression": 0.468
   },
   "parameters": {
-    "OCEANIC": {}
+    "Oceanic": {}
   },
   "coupling": {
     "pairs": []

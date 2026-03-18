@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OMBRE"
+    "Ombre"
   ],
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "ombre_macro_character": 0.26,
       "ombre_macro_movement": 0.35,
       "ombre_macro_coupling": 0.37,

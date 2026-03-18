@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OLE",
-    "OVERDUB"
+    "Ole",
+    "Overdub"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.742,
       "macro_movement": 0.031,
       "macro_coupling": 0.515,
       "macro_space": 0.033
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.715,
       "macro_movement": 0.02,
       "macro_coupling": 0.533,

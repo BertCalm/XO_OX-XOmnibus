@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORACLE",
-    "ORIGAMI"
+    "Oracle",
+    "Origami"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.224,
       "macro_movement": 0.036,
       "macro_coupling": 0.038,
       "macro_space": 0.025
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.224,
       "macro_movement": 0.036,
       "macro_coupling": 0.038,

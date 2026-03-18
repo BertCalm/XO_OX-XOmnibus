@@ -3,11 +3,11 @@
   "name": "Aphelion Glow",
   "mood": "Atmosphere",
   "engines": [
-    "ORBITAL"
+    "Orbital"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "ORBITAL \u2014 bright extreme brightness preset for Atmosphere.",
+  "description": "ORBITAL — bright extreme brightness preset for Atmosphere.",
   "tags": [
     "atmosphere",
     "bright",
@@ -37,7 +37,7 @@
     "aggression": 0.66
   },
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "orb_orbitPeriod": 0.53,
       "orb_eccentricity": 0.77,
       "orb_filterCutoff": 0.82,

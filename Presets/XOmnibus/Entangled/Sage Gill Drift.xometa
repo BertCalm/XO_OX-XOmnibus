@@ -2,8 +2,8 @@
   "name": "Sage Gill Drift",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "ODDOSCAR"
+    "Ohm",
+    "OddOscar"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oddoscar",
     "hippy"
   ],
-  "description": "Ohm warmth feeds OddOscar's gill-pink oscillation \u2014 folk slow-burn becomes tender mutation"
+  "description": "Ohm warmth feeds OddOscar's gill-pink oscillation — folk slow-burn becomes tender mutation"
 }

@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Starfox Barrel Roll",
   "mood": "Prism",
-  "engines": ["OVERWORLD"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "DO A BARREL ROLL — SNES with the Super FX chip energy, polygons spinning, Hajime Hirasawa's brass fanfares translated into chip texture. Full ERA toward SNES, coupling engaged for that rotational harmonic shimmer. Cocky and precise.",
-  "tags": ["snes", "starfox", "bright", "prism", "fanfare", "brass", "spin", "FX-chip"],
-  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "tags": [
+    "snes",
+    "starfox",
+    "bright",
+    "prism",
+    "fanfare",
+    "brass",
+    "spin",
+    "FX-chip"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
   "couplingIntensity": "Light",
   "tempo": null,
   "dna": {
@@ -19,7 +35,7 @@
     "aggression": 0.45
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_macro_era": 0.92,
       "ow_macro_chaos": 0.18,
       "ow_macro_couple": 0.42,
@@ -29,6 +45,13 @@
       "ow_couplingBus": 0
     }
   },
-  "macros": {"ERA": 0.92, "CHAOS": 0.18, "COUPLE": 0.42, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "ERA": 0.92,
+    "CHAOS": 0.18,
+    "COUPLE": 0.42,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

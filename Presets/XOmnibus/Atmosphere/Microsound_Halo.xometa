@@ -3,11 +3,11 @@
   "name": "Microsound Halo",
   "mood": "Atmosphere",
   "engines": [
-    "ORPHICA"
+    "Orphica"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "ORPHICA \u2014 bright extreme brightness preset for Atmosphere.",
+  "description": "ORPHICA — bright extreme brightness preset for Atmosphere.",
   "tags": [
     "atmosphere",
     "bright",
@@ -37,7 +37,7 @@
     "aggression": 0.74
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "orph_pluckDecay": 144.2,
       "orph_resonanceBody": 0.78,
       "orph_filterCutoff": 0.46,

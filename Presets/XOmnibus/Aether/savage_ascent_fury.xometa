@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OVERDUB",
-    "OCEANIC"
+    "Overdub",
+    "Oceanic"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.449,
       "macro_movement": 1.006,
       "macro_coupling": 0.564,
       "macro_space": 0.502
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.625,
       "macro_movement": 1.0,
       "macro_coupling": 0.627,

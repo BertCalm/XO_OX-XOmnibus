@@ -2,17 +2,38 @@
   "schema_version": 1,
   "name": "Cartridge Memory",
   "mood": "Aether",
-  "engines": ["OVERWORLD"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "The sonic imprint of a cartridge — three eras of memory encoded in one slow, spacious tone.",
-  "tags": ["cartridge", "memory", "aether", "era", "nostalgic", "overworld"],
-  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "tags": [
+    "cartridge",
+    "memory",
+    "aether",
+    "era",
+    "nostalgic",
+    "overworld"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.6, "movement": 0.12, "density": 0.32, "space": 0.92, "aggression": 0.06},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.6,
+    "movement": 0.12,
+    "density": 0.32,
+    "space": 0.92,
+    "aggression": 0.06
+  },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_era": 0,
       "ow_macro_era": 0.5,
       "ow_macro_chaos": 0.04,
@@ -23,6 +44,8 @@
       "ow_couplingBus": 0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -2,8 +2,8 @@
   "name": "Dive Spool",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OSPREY"
+    "Overdub",
+    "Osprey"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "osprey",
     "dub"
   ],
-  "description": "Tape spool unspools at the moment of the plunge \u2014 shore-blue reverb expanding outward"
+  "description": "Tape spool unspools at the moment of the plunge — shore-blue reverb expanding outward"
 }

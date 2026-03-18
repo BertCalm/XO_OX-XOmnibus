@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORIGAMI",
-    "OBSIDIAN"
+    "Origami",
+    "Obsidian"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.22,
       "macro_movement": 0.55,
       "macro_coupling": 0.62,
       "macro_space": 0.86
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.19,
       "macro_movement": 0.5,
       "macro_coupling": 0.67,
@@ -46,5 +46,5 @@
     "white",
     "fold"
   ],
-  "description": "Obsidian locks pitch to a paper crease \u2014 white on white on white."
+  "description": "Obsidian locks pitch to a paper crease — white on white on white."
 }

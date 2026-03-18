@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OCEANIC",
-    "OUROBOROS"
+    "Oceanic",
+    "Ouroboros"
   ],
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.8647,
       "macro_movement": 0.46,
       "macro_coupling": 0.8725,
       "macro_space": 0.497
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.939,
       "macro_movement": 0.4202,
       "macro_coupling": 0.9345,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OBSCURA",
-    "OBBLIGATO"
+    "Obscura",
+    "Obbligato"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.32,
       "macro_movement": 0.263,
       "macro_coupling": 0.138,
       "macro_space": 0.927
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.694,
       "macro_movement": 0.28,
       "macro_coupling": 0.064,

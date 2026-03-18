@@ -3,8 +3,8 @@
   "name": "Pulse Surge",
   "mood": "Entangled",
   "engines": [
-    "ODDOSCAR",
-    "ORIGAMI"
+    "OddOscar",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.43
   },
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.735,
       "macro_movement": 0.568,
       "macro_coupling": 0.773,
       "macro_space": 0.635
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.647,
       "macro_movement": 0.795,
       "macro_coupling": 0.459,

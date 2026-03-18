@@ -2,8 +2,8 @@
   "name": "Coral Gill",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "ODDOSCAR"
+    "Obbligato",
+    "OddOscar"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oddoscar",
     "wind"
   ],
-  "description": "OBBLIGATO BOND macro tied to OddOscar morph depth \u2014 wind must breathe with the axolotl"
+  "description": "OBBLIGATO BOND macro tied to OddOscar morph depth — wind must breathe with the axolotl"
 }

@@ -3,8 +3,8 @@
   "name": "Bronze Tower",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OWLFISH"
+    "Ole",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.37
   },
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.726,
       "macro_movement": 0.482,
       "macro_coupling": 0.695,
       "macro_space": 0.22
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.486,
       "macro_movement": 0.554,
       "macro_coupling": 0.754,

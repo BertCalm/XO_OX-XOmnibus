@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ODDOSCAR",
-    "OSTERIA"
+    "OddOscar",
+    "Osteria"
   ],
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.829,
       "macro_movement": 0.58,
       "macro_coupling": 0.588,
       "macro_space": 0.482
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.129,
       "macro_movement": 0.575,
       "macro_coupling": 0.868,

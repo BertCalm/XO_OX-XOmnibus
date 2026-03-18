@@ -3,8 +3,8 @@
   "name": "Solar Horizon",
   "mood": "Entangled",
   "engines": [
-    "ORCA",
-    "OSPREY"
+    "Orca",
+    "Osprey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.57
   },
   "parameters": {
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.535,
       "macro_movement": 0.399,
       "macro_coupling": 0.751,
       "macro_space": 0.622
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.69,
       "macro_movement": 0.584,
       "macro_coupling": 0.736,

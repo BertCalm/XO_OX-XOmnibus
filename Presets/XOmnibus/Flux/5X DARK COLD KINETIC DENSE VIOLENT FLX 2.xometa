@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT FLX 2",
   "mood": "Flux",
   "engines": [
-    "OBESE",
-    "OLE"
+    "Obese",
+    "Ole"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.65,
       "macro_movement": 0.78,
       "macro_coupling": 0.53,
       "macro_space": 0.2
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.71,
       "macro_movement": 0.79,
       "macro_coupling": 0.64,

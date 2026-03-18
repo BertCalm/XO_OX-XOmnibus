@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OVERWORLD",
-    "OCELOT"
+    "Overworld",
+    "Ocelot"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.709,
       "macro_movement": 0.946,
       "macro_coupling": 0.496,
       "macro_space": 0.104
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.238,
       "macro_movement": 0.946,
       "macro_coupling": 0.718,

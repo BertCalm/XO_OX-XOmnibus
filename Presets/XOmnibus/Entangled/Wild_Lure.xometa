@@ -3,8 +3,8 @@
   "name": "Wild Lure",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OWLFISH"
+    "Ole",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.43
   },
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.449,
       "macro_movement": 0.519,
       "macro_coupling": 0.764,
       "macro_space": 0.693
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.33,
       "macro_movement": 0.72,
       "macro_coupling": 0.748,

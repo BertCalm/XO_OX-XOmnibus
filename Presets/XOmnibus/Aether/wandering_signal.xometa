@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OPTIC"
+    "Optic"
   ],
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.42,
       "macro_movement": 0.8,
       "macro_coupling": 0.28,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OUTWIT",
-    "OBBLIGATO"
+    "Outwit",
+    "Obbligato"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.117,
       "macro_movement": 0.045,
       "macro_coupling": 0.037,
       "macro_space": 0.996
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.116,
       "macro_movement": 0.235,
       "macro_coupling": 0.538,

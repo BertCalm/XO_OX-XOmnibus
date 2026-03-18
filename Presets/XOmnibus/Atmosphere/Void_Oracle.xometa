@@ -3,11 +3,11 @@
   "name": "Void Oracle",
   "mood": "Atmosphere",
   "engines": [
-    "ORACLE"
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "ORACLE \u2014 dark extreme brightness preset for Atmosphere.",
+  "description": "ORACLE — dark extreme brightness preset for Atmosphere.",
   "tags": [
     "atmosphere",
     "dark",
@@ -37,7 +37,7 @@
     "aggression": 0.53
   },
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "orc_prophecyDepth": 0.08,
       "orc_filterCutoff": 0.05,
       "orc_filterReso": 0.16,

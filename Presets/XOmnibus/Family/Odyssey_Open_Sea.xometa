@@ -3,11 +3,11 @@
   "name": "Odyssey Open Sea",
   "mood": "Family",
   "engines": [
-    "ODYSSEY"
+    "Odyssey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ODYSSEY maximum drift across warm water \u2014 wavetable horizon, endless space.",
+  "description": "ODYSSEY maximum drift across warm water — wavetable horizon, endless space.",
   "tags": [
     "family",
     "portrait",

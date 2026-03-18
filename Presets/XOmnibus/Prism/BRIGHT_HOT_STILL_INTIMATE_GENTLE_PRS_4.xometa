@@ -3,8 +3,8 @@
   "name": "BRIGHT_HOT_STILL_INTIMATE_GENTLE_PRS_4",
   "mood": "Prism",
   "engines": [
-    "OHM",
-    "OBLIQUE"
+    "Ohm",
+    "Oblique"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.921,
       "macro_movement": 0.042,
       "macro_coupling": 0.509,
       "macro_space": 0.035
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.989,
       "macro_movement": 0.099,
       "macro_coupling": 0.591,

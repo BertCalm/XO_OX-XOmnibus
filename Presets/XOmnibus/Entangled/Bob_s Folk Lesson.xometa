@@ -2,8 +2,8 @@
   "name": "Bob's Folk Lesson",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OBLONG"
+    "Ohm",
+    "Oblong"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oblong",
     "hippy"
   ],
-  "description": "Oblong teaches ohm a few bar-chord tricks \u2014 character synth meets hippy jam session"
+  "description": "Oblong teaches ohm a few bar-chord tricks — character synth meets hippy jam session"
 }

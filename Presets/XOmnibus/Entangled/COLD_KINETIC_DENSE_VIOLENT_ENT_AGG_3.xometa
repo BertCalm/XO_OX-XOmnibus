@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OCELOT",
-    "OBSIDIAN"
+    "Ocelot",
+    "Obsidian"
   ],
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.563,
       "macro_movement": 0.869,
       "macro_coupling": 0.884,
       "macro_space": 0.462
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.442,
       "macro_movement": 0.908,
       "macro_coupling": 0.879,

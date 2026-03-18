@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OPAL",
-    "ORIGAMI"
+    "Opal",
+    "Origami"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.08,
       "macro_movement": 0.14,
       "macro_coupling": 0.85,
       "macro_space": 0.97
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.05,
       "macro_movement": 0.09,
       "macro_coupling": 0.9,
@@ -46,5 +46,5 @@
     "folded",
     "cloud"
   ],
-  "description": "Origami envelope shapes grain cloud density \u2014 the cloud folds into almost nothing."
+  "description": "Origami envelope shapes grain cloud density — the cloud folds into almost nothing."
 }

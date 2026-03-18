@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ORGANON",
-    "OPTIC"
+    "Organon",
+    "Optic"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.509,
       "macro_movement": 0.686,
       "macro_coupling": 0.496,
       "macro_space": 0.951
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.509,
       "macro_movement": 0.686,
       "macro_coupling": 0.496,

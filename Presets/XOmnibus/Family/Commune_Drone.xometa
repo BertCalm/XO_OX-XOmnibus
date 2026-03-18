@@ -3,11 +3,11 @@
   "name": "Commune Drone",
   "mood": "Family",
   "engines": [
-    "OHM"
+    "Ohm"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OHM COMMUNE axis \u2014 drone warmth sustained, MEDDLING at peace. The hippy dad who knows when to stop talking and just hum.",
+  "description": "OHM COMMUNE axis — drone warmth sustained, MEDDLING at peace. The hippy dad who knows when to stop talking and just hum.",
   "tags": [
     "family",
     "extended-family",

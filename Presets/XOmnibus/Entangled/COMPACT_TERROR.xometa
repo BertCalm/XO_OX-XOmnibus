@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OCTOPUS",
-    "OPAL"
+    "Octopus",
+    "Opal"
   ],
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.114,
       "macro_movement": 0.579,
       "macro_coupling": 0.624,
       "macro_space": 0.075
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.204,
       "macro_movement": 0.38,
       "macro_coupling": 0.25,

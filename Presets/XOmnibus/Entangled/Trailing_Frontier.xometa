@@ -3,12 +3,12 @@
   "name": "Trailing Frontier",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OUTWIT"
+    "Overlap",
+    "Outwit"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERLAP frond-spread traces the OUTWIT Wolfram frontier \u2014 the jellyfish follows the octopus's thought",
+  "description": "OVERLAP frond-spread traces the OUTWIT Wolfram frontier — the jellyfish follows the octopus's thought",
   "tags": [
     "coupling",
     "entangled",
@@ -48,7 +48,7 @@
     "density": 0.675
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.636,
       "olap_decay": 0.553,
       "olap_damping": 0.624,
@@ -69,7 +69,7 @@
       "olap_spinRate": 0.113,
       "olap_shimmerMix": 0.136
     },
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 54,
       "owit_arms": 5,
       "owit_cellSize": 0.186,

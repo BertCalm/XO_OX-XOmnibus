@@ -2,8 +2,8 @@
   "name": "Patina Voyage",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OTTONI"
+    "Odyssey",
+    "Ottoni"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ottoni",
     "wavetable"
   ],
-  "description": "Ottoni density grounds the drift trajectory \u2014 brass weight slowing the FM journey"
+  "description": "Ottoni density grounds the drift trajectory — brass weight slowing the FM journey"
 }

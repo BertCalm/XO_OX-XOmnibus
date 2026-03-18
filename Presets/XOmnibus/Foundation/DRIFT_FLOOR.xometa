@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ORCA",
-    "OPTIC"
+    "Orca",
+    "Optic"
   ],
   "parameters": {
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.783,
       "macro_movement": 0.917,
       "macro_coupling": 0.435,
       "macro_space": 0.604
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.569,
       "macro_movement": 0.931,
       "macro_coupling": 0.542,

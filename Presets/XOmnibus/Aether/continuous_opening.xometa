@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORGANON"
+    "Organon"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.28,
       "macro_movement": 0.82,
       "macro_coupling": 0.15,

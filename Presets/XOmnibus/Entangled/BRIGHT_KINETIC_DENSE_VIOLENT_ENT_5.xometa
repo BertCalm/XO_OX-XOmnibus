@@ -3,12 +3,12 @@
   "name": "BRIGHT_KINETIC_DENSE_VIOLENT_ENT_5",
   "mood": "Entangled",
   "engines": [
-    "OVERWORLD",
-    "OCTOPUS"
+    "Overworld",
+    "Octopus"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Kinetic Dense Violent character entanglement \u2014 OVERWORLD \u00d7 OCTOPUS via Phase Lock. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Kinetic Dense Violent character entanglement — OVERWORLD × OCTOPUS via Phase Lock. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.9008
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.8755,
       "macro_movement": 0.9208,
       "macro_coupling": 0.8845,
@@ -57,7 +57,7 @@
       "output_level": 0.9682,
       "coupling_level": 0.8714
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.8587,
       "macro_movement": 0.9301,
       "macro_coupling": 0.9291,

@@ -3,12 +3,12 @@
   "name": "Wolfram Attractor",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OUROBOROS"
+    "Outwit",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ouroboros timbral warp modulating Outwit arm evolution rate \u2014 strange attractor as cellular rule.",
+  "description": "Ouroboros timbral warp modulating Outwit arm evolution rate — strange attractor as cellular rule.",
   "tags": [
     "entangled",
     "brutal",

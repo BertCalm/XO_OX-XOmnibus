@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBLIQUE",
-    "ORPHICA"
+    "Oblique",
+    "Orphica"
   ],
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.943,
       "macro_movement": 0.876,
       "macro_coupling": 0.315,
       "macro_space": 0.655
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.396,
       "macro_movement": 0.915,
       "macro_coupling": 0.459,

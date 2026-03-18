@@ -19,11 +19,11 @@
     "space": 0.5648
   },
   "engines": [
-    "XOsteria"
+    "Osteria"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark sparse gentle still. Designed for SURGE coupling with XOsteria.",
+  "description": "Ultra-diverse Entangled preset — dark sparse gentle still. Designed for SURGE coupling with XOsteria.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "SURGE",
   "couplingIntensity": "Low",
   "parameters": {
-    "XOsteria": {
+    "Osteria": {
       "couplingLevel": 0.893,
       "couplingBus": 2
     }

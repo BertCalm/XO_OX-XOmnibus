@@ -11,11 +11,11 @@
     "space": 0.5
   },
   "engines": [
-    "OVERDUB"
+    "Overdub"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Saturated tape \u2014 all HF eaten by magnetic oxide",
+  "description": "Saturated tape — all HF eaten by magnetic oxide",
   "tags": [
     "aether",
     "dark",

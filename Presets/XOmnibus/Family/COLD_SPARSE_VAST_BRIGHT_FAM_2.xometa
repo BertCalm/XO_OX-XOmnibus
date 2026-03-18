@@ -3,12 +3,12 @@
   "name": "COLD SPARSE VAST BRIGHT FAM 2",
   "mood": "Family",
   "engines": [
-    "OVERLAP",
-    "OBESE"
+    "Overlap",
+    "Obese"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, bright, cold, sparse.",
+  "description": "Extreme DNA corners — family, bright, cold, sparse.",
   "tags": [
     "family",
     "bright",
@@ -35,11 +35,11 @@
     "aggression": 0.503
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "level": 0.82,
       "pan": -0.024
     },
-    "OBESE": {
+    "Obese": {
       "level": 0.748,
       "pan": 0.029
     }

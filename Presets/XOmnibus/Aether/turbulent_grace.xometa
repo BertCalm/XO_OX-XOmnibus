@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OTTONI"
+    "Ottoni"
   ],
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.45,
       "macro_movement": 0.88,
       "macro_coupling": 0.3,

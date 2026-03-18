@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ORACLE",
-    "ODDOSCAR"
+    "Oracle",
+    "OddOscar"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.713,
       "macro_movement": 0.781,
       "macro_coupling": 0.472,
       "macro_space": 0.731
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.689,
       "macro_movement": 0.78,
       "macro_coupling": 0.513,

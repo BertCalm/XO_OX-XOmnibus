@@ -3,11 +3,11 @@
   "name": "Origami Light Sheet",
   "mood": "Family",
   "engines": [
-    "ORIGAMI"
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORIGAMI fold in pure white \u2014 geometry revealed by maximum brightness.",
+  "description": "ORIGAMI fold in pure white — geometry revealed by maximum brightness.",
   "tags": [
     "family",
     "portrait",

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OLE",
-    "OWLFISH"
+    "Ole",
+    "Owlfish"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.5386,
       "macro_movement": 0.3451,
       "macro_coupling": 0.5519,
       "macro_space": 0.5434
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.4553,
       "macro_movement": 0.3218,
       "macro_coupling": 0.1887,

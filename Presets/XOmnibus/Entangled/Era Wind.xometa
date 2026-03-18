@@ -2,8 +2,8 @@
   "name": "Era Wind",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OVERWORLD"
+    "Obbligato",
+    "Overworld"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "overworld",
     "wind"
   ],
-  "description": "Overworld ERA triangle obligated to dual wind breath \u2014 chip music breathes again"
+  "description": "Overworld ERA triangle obligated to dual wind breath — chip music breathes again"
 }

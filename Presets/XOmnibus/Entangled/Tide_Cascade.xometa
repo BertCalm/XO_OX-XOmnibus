@@ -3,8 +3,8 @@
   "name": "Tide Cascade",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ODYSSEY"
+    "Overlap",
+    "Odyssey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "density": 0.55
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.771,
       "olap_decay": 0.609,
       "olap_damping": 0.492,

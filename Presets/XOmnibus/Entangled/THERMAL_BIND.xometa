@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERWORLD",
-    "ORCA"
+    "Overworld",
+    "Orca"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.686,
       "macro_movement": 0.923,
       "macro_coupling": 0.888,
       "macro_space": 0.77
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.69,
       "macro_movement": 0.639,
       "macro_coupling": 0.941,

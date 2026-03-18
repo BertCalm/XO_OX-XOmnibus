@@ -2,8 +2,8 @@
   "name": "Folded Reed",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "ORIGAMI"
+    "Obbligato",
+    "Origami"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "origami",
     "wind"
   ],
-  "description": "Origami fold point obligated to OBBLIGATO breath phase \u2014 the paper folds when the wind blows"
+  "description": "Origami fold point obligated to OBBLIGATO breath phase — the paper folds when the wind blows"
 }

@@ -2,8 +2,8 @@
   "name": "Fat Reed",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OBESE"
+    "Obbligato",
+    "Obese"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "obese",
     "wind"
   ],
-  "description": "Obese MOJO axis obligated to OBBLIGATO breath envelope \u2014 saturation breathes"
+  "description": "Obese MOJO axis obligated to OBBLIGATO breath envelope — saturation breathes"
 }

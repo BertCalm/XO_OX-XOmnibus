@@ -3,11 +3,11 @@
   "name": "Nighthawk Glide",
   "mood": "Atmosphere",
   "engines": [
-    "OSPREY"
+    "Osprey"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "OSPREY \u2014 dark extreme brightness preset for Atmosphere.",
+  "description": "OSPREY — dark extreme brightness preset for Atmosphere.",
   "tags": [
     "atmosphere",
     "dark",
@@ -37,7 +37,7 @@
     "aggression": 0.52
   },
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "osp_diveSpeed": 0,
       "osp_filterCutoff": 0.45,
       "osp_filterReso": 0.81,

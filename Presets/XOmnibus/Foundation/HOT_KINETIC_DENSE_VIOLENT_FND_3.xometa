@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ODDFELIX",
-    "OVERWORLD"
+    "OddfeliX",
+    "Overworld"
   ],
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.851,
       "macro_movement": 0.482,
       "macro_coupling": 0.312,
       "macro_space": 0.464
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.748,
       "macro_movement": 0.167,
       "macro_coupling": 0.146,

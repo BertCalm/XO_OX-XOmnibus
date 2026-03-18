@@ -19,11 +19,11 @@
     "space": 0.5474
   },
   "engines": [
-    "XOutwit"
+    "Outwit"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 bright cold dense violent. Designed for FLOW coupling with XOutwit.",
+  "description": "Ultra-diverse Entangled preset — bright cold dense violent. Designed for FLOW coupling with XOutwit.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "FLOW",
   "couplingIntensity": "Medium",
   "parameters": {
-    "XOutwit": {
+    "Outwit": {
       "couplingLevel": 0.812,
       "couplingBus": 2
     }

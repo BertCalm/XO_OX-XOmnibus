@@ -3,12 +3,12 @@
   "name": "HOT_FROZEN_SPARSE_VAST_GENTLE_ENT3_1",
   "mood": "Entangled",
   "engines": [
-    "ORBITAL",
-    "OBESE"
+    "Orbital",
+    "Obese"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: HOT_FROZEN_SPARSE_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: HOT_FROZEN_SPARSE_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.5762,
       "macro_movement": 0.0303,
       "macro_coupling": 0.9311,
       "macro_space": 0.1423
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.7171,
       "macro_movement": 0.0436,
       "macro_coupling": 0.8518,

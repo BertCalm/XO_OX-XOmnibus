@@ -3,8 +3,8 @@
   "name": "Dark Crystal Bloom",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OBSIDIAN"
+    "Overlap",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.25
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.94,
       "olap_decay": 0.54,
       "olap_damping": 0.49,
@@ -69,7 +69,7 @@
       "olap_outputLevel": 0.82,
       "olap_outputPan": -0.05
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "obsidian_character": 0.58,
       "obsidian_movement": 0.36,
       "obsidian_coupling": 0.61,

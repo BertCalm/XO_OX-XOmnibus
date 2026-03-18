@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OVERDUB",
-    "OSTERIA"
+    "Overdub",
+    "Osteria"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.979,
       "macro_movement": 0.711,
       "macro_coupling": 0.512,
       "macro_space": 0.539
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.983,
       "macro_movement": 0.671,
       "macro_coupling": 0.501,

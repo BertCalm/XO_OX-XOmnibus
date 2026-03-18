@@ -4,8 +4,8 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OVERWORLD"
+    "Outwit",
+    "Overworld"
   ],
   "author": "XO_OX",
   "macros": {
@@ -23,7 +23,7 @@
     "density": 0.57
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 22,
       "owit_arms": 5,
       "owit_cellSize": 0.436,
@@ -56,5 +56,5 @@
     "wolfram",
     "cellular-automata"
   ],
-  "description": "Overworld ERA state selects OUTWIT rule set \u2014 each chip era carries a different cellular DNA"
+  "description": "Overworld ERA state selects OUTWIT rule set — each chip era carries a different cellular DNA"
 }

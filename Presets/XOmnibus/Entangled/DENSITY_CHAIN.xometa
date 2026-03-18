@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBSCURA",
-    "OTTONI"
+    "Obscura",
+    "Ottoni"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.1509,
       "macro_movement": 0.0619,
       "macro_coupling": 0.6414,
       "macro_space": 0.8991
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.3434,
       "macro_movement": 0.7143,
       "macro_coupling": 0.8018,

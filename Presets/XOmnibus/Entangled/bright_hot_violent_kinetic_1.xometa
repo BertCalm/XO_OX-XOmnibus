@@ -19,11 +19,11 @@
     "space": 0.5492
   },
   "engines": [
-    "XOsprey"
+    "Osprey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 bright hot violent kinetic. Designed for TANGLE coupling with XOsprey.",
+  "description": "Ultra-diverse Entangled preset — bright hot violent kinetic. Designed for TANGLE coupling with XOsprey.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "TANGLE",
   "couplingIntensity": "High",
   "parameters": {
-    "XOsprey": {
+    "Osprey": {
       "couplingLevel": 0.626,
       "couplingBus": 3
     }

@@ -3,8 +3,8 @@
   "name": "HOT_KINETIC_DENSE_INTIMATE_GENTLE_PRS_2",
   "mood": "Prism",
   "engines": [
-    "ORPHICA",
-    "OWLFISH"
+    "Orphica",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.58,
       "macro_movement": 0.943,
       "macro_coupling": 0.961,
       "macro_space": 0.031
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.774,
       "macro_movement": 0.861,
       "macro_coupling": 0.911,

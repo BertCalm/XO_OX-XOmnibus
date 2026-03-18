@@ -2,8 +2,8 @@
   "name": "Diagonal Reverb",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OBLIQUE"
+    "Overdub",
+    "Oblique"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oblique",
     "dub"
   ],
-  "description": "Spring trail bent obliquely at the peak \u2014 dub warmth arriving from wrong direction"
+  "description": "Spring trail bent obliquely at the peak — dub warmth arriving from wrong direction"
 }

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "ODDOSCAR"
+    "Oceanic",
+    "OddOscar"
   ],
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.655,
       "macro_movement": 0.154,
       "macro_coupling": 0.469,
       "macro_space": 0.969
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.339,
       "macro_movement": 0.693,
       "macro_coupling": 0.65,

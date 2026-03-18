@@ -3,8 +3,8 @@
   "name": "BRIGHT_WARM_STILL_INTIMATE_VIOLENT_PRS_5",
   "mood": "Prism",
   "engines": [
-    "OCELOT",
-    "OWLFISH"
+    "Ocelot",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.869,
       "macro_movement": 0.136,
       "macro_coupling": 0.282,
       "macro_space": 0.184
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.878,
       "macro_movement": 0.038,
       "macro_coupling": 0.308,

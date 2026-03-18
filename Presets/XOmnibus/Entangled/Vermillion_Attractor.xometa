@@ -3,12 +3,12 @@
   "name": "Vermillion Attractor",
   "mood": "Entangled",
   "engines": [
-    "ORIGAMI",
-    "OUROBOROS"
+    "Origami",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ouroboros timbral warping Origami fold timbre \u2014 vermillion crease fractal.",
+  "description": "Ouroboros timbral warping Origami fold timbre — vermillion crease fractal.",
   "tags": [
     "entangled",
     "brutal",

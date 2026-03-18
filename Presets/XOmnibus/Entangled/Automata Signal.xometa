@@ -3,12 +3,12 @@
   "name": "Automata Signal",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OUROBOROS"
+    "Outwit",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OUTWIT evolve rate tracks OUROBOROS phase position \u2014 pattern complexity rises with the coil",
+  "description": "OUTWIT evolve rate tracks OUROBOROS phase position — pattern complexity rises with the coil",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.775
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 184,
       "owit_arms": 6,
       "owit_cellSize": 0.317,

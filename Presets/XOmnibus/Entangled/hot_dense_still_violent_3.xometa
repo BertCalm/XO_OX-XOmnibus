@@ -19,11 +19,11 @@
     "space": 0.46
   },
   "engines": [
-    "XOsteria"
+    "Osteria"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 hot dense still violent. Designed for SPARK coupling with XOsteria.",
+  "description": "Ultra-diverse Entangled preset — hot dense still violent. Designed for SPARK coupling with XOsteria.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "SPARK",
   "couplingIntensity": "High",
   "parameters": {
-    "XOsteria": {
+    "Osteria": {
       "couplingLevel": 0.999,
       "couplingBus": 0
     }

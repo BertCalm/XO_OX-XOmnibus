@@ -3,12 +3,12 @@
   "name": "Weight and Bite",
   "mood": "Family",
   "engines": [
-    "OBESE",
-    "OVERBITE"
+    "Obese",
+    "Overbite"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OBESE sub weight + OVERBITE warm fang \u2014 the low end family reunion. Mass below, character above. The bass section has arrived.",
+  "description": "OBESE sub weight + OVERBITE warm fang — the low end family reunion. Mass below, character above. The bass section has arrived.",
   "tags": [
     "family",
     "reunion",

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ORGANON",
-    "ORIGAMI"
+    "Organon",
+    "Origami"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.375,
       "macro_movement": 0.431,
       "macro_coupling": 0.843,
       "macro_space": 0.862
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.683,
       "macro_movement": 0.424,
       "macro_coupling": 0.849,

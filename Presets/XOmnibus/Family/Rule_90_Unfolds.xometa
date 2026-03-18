@@ -3,11 +3,11 @@
   "name": "Rule 90 Unfolds",
   "mood": "Family",
   "engines": [
-    "OUTWIT"
+    "Outwit"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OUTWIT RULE 90 \u2014 the octopus outmaneuvering logic itself. Eight arms of cellular automata solving what shouldn't be solvable.",
+  "description": "OUTWIT RULE 90 — the octopus outmaneuvering logic itself. Eight arms of cellular automata solving what shouldn't be solvable.",
   "tags": [
     "family",
     "extended-family",

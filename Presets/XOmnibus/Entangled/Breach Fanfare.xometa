@@ -2,8 +2,8 @@
   "name": "Breach Fanfare",
   "version": "1.0",
   "engines": [
-    "OTTONI",
-    "ORCA"
+    "Ottoni",
+    "Orca"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orca",
     "triple"
   ],
-  "description": "The orca breach is answered by brass flourish \u2014 ocean triumph declared in patina"
+  "description": "The orca breach is answered by brass flourish — ocean triumph declared in patina"
 }

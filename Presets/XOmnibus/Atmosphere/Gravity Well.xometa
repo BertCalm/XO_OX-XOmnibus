@@ -2,7 +2,7 @@
   "name": "Gravity Well",
   "version": "1.0",
   "engines": [
-    "OWLFISH"
+    "Owlfish"
   ],
   "mood": "Atmosphere",
   "macros": {

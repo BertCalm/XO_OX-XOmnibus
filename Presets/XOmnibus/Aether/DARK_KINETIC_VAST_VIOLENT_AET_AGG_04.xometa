@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OVERWORLD",
-    "OBLIQUE"
+    "Overworld",
+    "Oblique"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.025,
       "macro_movement": 0.954,
       "macro_coupling": 0.892,
       "macro_space": 0.845
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.024,
       "macro_movement": 0.924,
       "macro_coupling": 0.935,

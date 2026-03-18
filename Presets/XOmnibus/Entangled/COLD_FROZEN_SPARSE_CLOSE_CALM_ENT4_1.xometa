@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OWLFISH",
-    "ORGANON"
+    "Owlfish",
+    "Organon"
   ],
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.3,
       "macro_movement": 0.072,
       "macro_coupling": 0.062,
       "macro_space": 0.063
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.281,
       "macro_movement": 0.067,
       "macro_coupling": 0.038,

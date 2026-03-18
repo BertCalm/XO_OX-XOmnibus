@@ -3,7 +3,7 @@
   "name": "Lead Atmosphere",
   "mood": "Atmosphere",
   "engines": [
-    "OBLONG"
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.319
   },
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "character": 0.459,
       "movement": 0.181,
       "coupling": 0.386,

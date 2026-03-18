@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OHM",
-    "OLE"
+    "Ohm",
+    "Ole"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.199,
       "macro_movement": 0.929,
       "macro_coupling": 0.815,
       "macro_space": 0.928
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.296,
       "macro_movement": 0.924,
       "macro_coupling": 0.62,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ONSET",
-    "ORCA"
+    "Onset",
+    "Orca"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.11,
       "macro_movement": 0.985,
       "macro_coupling": 0.662,
       "macro_space": 0.983
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.146,
       "macro_movement": 0.955,
       "macro_coupling": 0.65,

@@ -3,12 +3,12 @@
   "name": "Signal Evolve",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OPTIC"
+    "Outwit",
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OUTWIT emergence events modulate OPTIC harmonic tilt \u2014 pattern shapes spectrum",
+  "description": "OUTWIT emergence events modulate OPTIC harmonic tilt — pattern shapes spectrum",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.725
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 184,
       "owit_arms": 5,
       "owit_cellSize": 0.394,

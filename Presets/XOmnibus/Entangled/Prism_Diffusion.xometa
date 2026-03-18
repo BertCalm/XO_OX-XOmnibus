@@ -3,8 +3,8 @@
   "name": "Prism Diffusion",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OBLIQUE"
+    "Overlap",
+    "Oblique"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "density": 0.575
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.928,
       "olap_decay": 0.755,
       "olap_damping": 0.551,

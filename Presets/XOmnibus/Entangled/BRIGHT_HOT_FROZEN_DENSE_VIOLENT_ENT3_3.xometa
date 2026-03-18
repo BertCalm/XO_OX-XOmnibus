@@ -3,12 +3,12 @@
   "name": "BRIGHT_HOT_FROZEN_DENSE_VIOLENT_ENT3_3",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "ORGANON"
+    "Obsidian",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_HOT_FROZEN_DENSE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_HOT_FROZEN_DENSE_VIOLENT. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.9427,
       "macro_movement": 0.0697,
       "macro_coupling": 0.9051,
       "macro_space": 0.3626
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.784,
       "macro_movement": 0.0639,
       "macro_coupling": 0.9258,

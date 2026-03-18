@@ -2,8 +2,8 @@
   "name": "Ocean Carnival",
   "version": "1.0",
   "engines": [
-    "OLE",
-    "ORCA"
+    "Ole",
+    "Orca"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orca",
     "afro-latin"
   ],
-  "description": "Orca breach timed to carnival rhythm \u2014 sea and celebration merge explosively"
+  "description": "Orca breach timed to carnival rhythm — sea and celebration merge explosively"
 }

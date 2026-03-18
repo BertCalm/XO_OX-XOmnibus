@@ -3,8 +3,8 @@
   "name": "Logical Tendril",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ORGANON"
+    "Overlap",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.26
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.56,
       "olap_decay": 0.77,
       "olap_damping": 0.41,
@@ -69,7 +69,7 @@
       "olap_outputLevel": 0.77,
       "olap_outputPan": -0.06
     },
-    "ORGANON": {
+    "Organon": {
       "organon_character": 0.49,
       "organon_movement": 0.67,
       "organon_coupling": 0.59,

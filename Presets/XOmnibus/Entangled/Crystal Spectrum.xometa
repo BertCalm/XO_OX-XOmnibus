@@ -2,8 +2,8 @@
   "name": "Crystal Spectrum",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OPTIC"
+    "Opal",
+    "Optic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "optic",
     "granular"
   ],
-  "description": "Opal shimmer refracted through prismatic lens \u2014 grain cloud split to spectral rays"
+  "description": "Opal shimmer refracted through prismatic lens — grain cloud split to spectral rays"
 }

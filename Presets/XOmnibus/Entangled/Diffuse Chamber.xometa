@@ -4,8 +4,8 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OHM"
+    "Overlap",
+    "Ohm"
   ],
   "author": "XO_OX",
   "macros": {
@@ -23,7 +23,7 @@
     "density": 0.66
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.62,
       "olap_decay": 0.53,
       "olap_damping": 0.251,
@@ -56,5 +56,5 @@
     "fdn",
     "reverb"
   ],
-  "description": "OHM commune drift rate syncs OVERLAP modulation rate \u2014 the jam's slow tempo rocks the FDN"
+  "description": "OHM commune drift rate syncs OVERLAP modulation rate — the jam's slow tempo rocks the FDN"
 }

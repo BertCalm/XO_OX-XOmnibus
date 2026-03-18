@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OVERDUB",
-    "OPTIC"
+    "Overdub",
+    "Optic"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.574,
       "macro_movement": 0.019,
       "macro_coupling": 0.724,
       "macro_space": 1.0
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.636,
       "macro_movement": 0.018,
       "macro_coupling": 0.823,

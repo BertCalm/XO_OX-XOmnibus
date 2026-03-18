@@ -19,7 +19,7 @@
     "aggression": 0.7939
   },
   "engines": [
-    "ORIGAMI"
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,7 +45,7 @@
   },
   "couplingIntensity": "None",
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "ori_macro_fold": 0.2661,
       "ori_macro_tension": 0.7826,
       "ori_macro_couple": 0.455,

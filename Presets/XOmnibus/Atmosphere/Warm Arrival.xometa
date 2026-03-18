@@ -2,7 +2,7 @@
   "name": "Warm Arrival",
   "version": "1.0",
   "engines": [
-    "ORACLE"
+    "Oracle"
   ],
   "mood": "Atmosphere",
   "macros": {

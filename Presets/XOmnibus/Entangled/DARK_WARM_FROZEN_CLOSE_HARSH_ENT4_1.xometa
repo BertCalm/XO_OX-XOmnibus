@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORIGAMI",
-    "OVERWORLD"
+    "Origami",
+    "Overworld"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.517,
       "macro_movement": 0.086,
       "macro_coupling": 0.665,
       "macro_space": 0.077
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.493,
       "macro_movement": 0.076,
       "macro_coupling": 0.662,

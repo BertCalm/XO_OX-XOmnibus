@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OSTERIA",
-    "OHM"
+    "Osteria",
+    "Ohm"
   ],
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.487,
       "macro_movement": 0.5158,
       "macro_coupling": 0.6115,
       "macro_space": 0.9336
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.476,
       "macro_movement": 0.5546,
       "macro_coupling": 0.636,

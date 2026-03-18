@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "OBESE"
+    "Obsidian",
+    "Obese"
   ],
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.31,
       "macro_movement": 0.33,
       "macro_coupling": 0.9,
       "macro_space": 0.37
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.44,
       "macro_movement": 0.71,
       "macro_coupling": 0.55,

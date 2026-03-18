@@ -3,12 +3,12 @@
   "name": "WARM DENSE STILL INTIMATE AET 3",
   "mood": "Aether",
   "engines": [
-    "OSTERIA",
-    "OMBRE"
+    "Osteria",
+    "Ombre"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, warm, still, dense.",
+  "description": "Extreme DNA corners — aether, warm, still, dense.",
   "tags": [
     "aether",
     "warm",
@@ -35,11 +35,11 @@
     "aggression": 0.413
   },
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "level": 0.732,
       "pan": 0.119
     },
-    "OMBRE": {
+    "Ombre": {
       "level": 0.805,
       "pan": -0.026
     }

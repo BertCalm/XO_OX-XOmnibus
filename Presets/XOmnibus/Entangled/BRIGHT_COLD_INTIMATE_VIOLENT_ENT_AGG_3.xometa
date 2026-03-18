@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "ORPHICA"
+    "Oceanic",
+    "Orphica"
   ],
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.743,
       "macro_movement": 0.704,
       "macro_coupling": 0.905,
       "macro_space": 0.158
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.384,
       "macro_movement": 0.685,
       "macro_coupling": 0.914,

@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Sonic 2 Final Zone",
   "mood": "Flux",
-  "engines": ["OVERWORLD"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Death Egg Zone. The tempo is relentless, the stakes are maximum, the YM2612 is screaming at full FM complexity. Masato Nakamura's final boss energy: everything moving at once, chaos barely contained, every moment urgent. ERA at Genesis peak with movement fully open.",
-  "tags": ["sonic", "genesis", "boss", "flux", "fast", "urgent", "YM2612", "movement"],
-  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "tags": [
+    "sonic",
+    "genesis",
+    "boss",
+    "flux",
+    "fast",
+    "urgent",
+    "YM2612",
+    "movement"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 180,
   "dna": {
@@ -19,7 +35,7 @@
     "aggression": 0.82
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_macro_era": 0.55,
       "ow_macro_chaos": 0.58,
       "ow_macro_couple": 0.28,
@@ -29,6 +45,13 @@
       "ow_couplingBus": 0
     }
   },
-  "macros": {"ERA": 0.55, "CHAOS": 0.58, "COUPLE": 0.28, "SPACE": 0.3},
-  "coupling": {"pairs": []}
+  "macros": {
+    "ERA": 0.55,
+    "CHAOS": 0.58,
+    "COUPLE": 0.28,
+    "SPACE": 0.3
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

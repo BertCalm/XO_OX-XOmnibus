@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ODYSSEY",
-    "OCTOPUS"
+    "Odyssey",
+    "Octopus"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.379,
       "macro_movement": 0.442,
       "macro_coupling": 0.856,
       "macro_space": 0.74
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.408,
       "macro_movement": 0.586,
       "macro_coupling": 0.956,

@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT PRM 1",
   "mood": "Prism",
   "engines": [
-    "ODYSSEY",
-    "OBSIDIAN"
+    "Odyssey",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.65,
       "macro_movement": 0.71,
       "macro_coupling": 0.8,
       "macro_space": 0.22
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 1.0,
       "macro_movement": 0.98,
       "macro_coupling": 0.72,

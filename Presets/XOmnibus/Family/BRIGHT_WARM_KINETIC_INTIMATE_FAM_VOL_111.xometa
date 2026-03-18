@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OBBLIGATO",
-    "ORGANON"
+    "Obbligato",
+    "Organon"
   ],
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.907,
       "macro_movement": 0.956,
       "macro_coupling": 0.362,
       "macro_space": 0.015
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.918,
       "macro_movement": 0.966,
       "macro_coupling": 0.365,

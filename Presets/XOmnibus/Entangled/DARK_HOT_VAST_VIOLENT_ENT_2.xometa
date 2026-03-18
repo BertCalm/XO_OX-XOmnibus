@@ -3,12 +3,12 @@
   "name": "DARK_HOT_VAST_VIOLENT_ENT_2",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ORIGAMI"
+    "Outwit",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Hot Vast Violent character entanglement \u2014 OUTWIT \u00d7 ORIGAMI via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Hot Vast Violent character entanglement — OUTWIT × ORIGAMI via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.9344
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.7107,
       "macro_movement": 0.6176,
       "macro_coupling": 0.9643,
@@ -57,7 +57,7 @@
       "output_level": 0.8662,
       "coupling_level": 0.931
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.7108,
       "macro_movement": 0.6035,
       "macro_coupling": 0.9061,

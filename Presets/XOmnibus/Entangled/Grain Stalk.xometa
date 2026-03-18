@@ -2,8 +2,8 @@
   "name": "Grain Stalk",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OCELOT"
+    "Opal",
+    "Ocelot"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ocelot",
     "granular"
   ],
-  "description": "Granular cloud stalked through jungle canopy \u2014 ocelot tension threading the grain field"
+  "description": "Granular cloud stalked through jungle canopy — ocelot tension threading the grain field"
 }

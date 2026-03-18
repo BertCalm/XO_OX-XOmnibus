@@ -11,11 +11,11 @@
     "aggression": 0.482
   },
   "engines": [
-    "ORCA"
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Cauldron harmonic \u2014 boiling slowly, dense as cast iron.",
+  "description": "Cauldron harmonic — boiling slowly, dense as cast iron.",
   "tags": [
     "foundation",
     "warm",

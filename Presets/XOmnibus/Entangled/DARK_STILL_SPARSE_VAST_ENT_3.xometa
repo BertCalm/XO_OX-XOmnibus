@@ -3,12 +3,12 @@
   "name": "DARK_STILL_SPARSE_VAST_ENT_3",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "OBSIDIAN"
+    "Ouroboros",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Still Sparse Vast character entanglement \u2014 OUROBOROS \u00d7 OBSIDIAN via Subharmonic Weave. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Still Sparse Vast character entanglement — OUROBOROS × OBSIDIAN via Subharmonic Weave. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.4961
   },
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.4762,
       "macro_movement": 0.038,
       "macro_coupling": 0.7556,
@@ -57,7 +57,7 @@
       "output_level": 0.7442,
       "coupling_level": 0.7605
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.489,
       "macro_movement": 0.0904,
       "macro_coupling": 0.7508,

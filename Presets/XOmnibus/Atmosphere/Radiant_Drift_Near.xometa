@@ -11,11 +11,11 @@
     "aggression": 0.223
   },
   "engines": [
-    "OCEANIC"
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Thermal drift \u2014 a sparse harmonic rising on warm air.",
+  "description": "Thermal drift — a sparse harmonic rising on warm air.",
   "tags": [
     "atmosphere",
     "warm",

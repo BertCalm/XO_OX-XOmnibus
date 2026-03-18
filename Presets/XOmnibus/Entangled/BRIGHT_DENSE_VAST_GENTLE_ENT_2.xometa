@@ -3,12 +3,12 @@
   "name": "BRIGHT_DENSE_VAST_GENTLE_ENT_2",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "OVERLAP"
+    "Obsidian",
+    "Overlap"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Dense Vast Gentle character entanglement \u2014 OBSIDIAN \u00d7 OVERLAP via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Dense Vast Gentle character entanglement — OBSIDIAN × OVERLAP via Resonance Share. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.1028
   },
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.7372,
       "macro_movement": 0.6131,
       "macro_coupling": 0.648,
@@ -57,7 +57,7 @@
       "output_level": 0.9418,
       "coupling_level": 0.5983
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.7255,
       "macro_movement": 0.6895,
       "macro_coupling": 0.6212,

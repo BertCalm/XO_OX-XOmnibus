@@ -2,8 +2,8 @@
   "name": "Bob Needs Air",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OBLONG"
+    "Obbligato",
+    "Oblong"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oblong",
     "wind"
   ],
-  "description": "OBBLIGATO dual wind feeds oblong filter \u2014 the bass synth finally has breath"
+  "description": "OBBLIGATO dual wind feeds oblong filter — the bass synth finally has breath"
 }

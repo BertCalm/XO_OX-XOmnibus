@@ -2,8 +2,8 @@
   "name": "Paper Leopard Sprint",
   "version": "1.0",
   "engines": [
-    "OCELOT",
-    "ORIGAMI"
+    "Ocelot",
+    "Origami"
   ],
   "mood": "Entangled",
   "strategy": "Fast Cold",

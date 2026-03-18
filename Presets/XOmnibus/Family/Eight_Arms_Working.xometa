@@ -3,11 +3,11 @@
   "name": "Eight Arms Working",
   "mood": "Family",
   "engines": [
-    "OCTOPUS"
+    "Octopus"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OCTOPUS ARMS macro full \u2014 Wolfram CA in 8-part motion. The distributed intelligence that solves problems sideways.",
+  "description": "OCTOPUS ARMS macro full — Wolfram CA in 8-part motion. The distributed intelligence that solves problems sideways.",
   "tags": [
     "family",
     "extended-family",

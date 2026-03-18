@@ -3,20 +3,20 @@
   "name": "Harp Ouroboros",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "OUROBOROS"
+    "Orphica",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Spatial coupling places OUROBOROS's eternal loop inside ORPHICA's resonant chamber.",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.7,
       "macro_movement": 0.56,
       "macro_coupling": 0.7,
       "macro_space": 0.72
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.62,
       "macro_movement": 0.64,
       "macro_coupling": 0.65,

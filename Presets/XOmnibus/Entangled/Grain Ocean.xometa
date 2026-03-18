@@ -3,12 +3,12 @@
   "name": "Grain Ocean",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "OPAL"
+    "Oceanic",
+    "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Grain spray over open ocean \u2014 OPAL granularity in OCEANIC's phosphor light.",
+  "description": "Grain spray over open ocean — OPAL granularity in OCEANIC's phosphor light.",
   "tags": [
     "entangled",
     "coupling",

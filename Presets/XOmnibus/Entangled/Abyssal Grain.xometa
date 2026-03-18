@@ -2,8 +2,8 @@
   "name": "Abyssal Grain",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OWLFISH"
+    "Opal",
+    "Owlfish"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "owlfish",
     "granular"
   ],
-  "description": "Opal grain cloud descends past the thermocline \u2014 owlfish pipes resonating through particles"
+  "description": "Opal grain cloud descends past the thermocline — owlfish pipes resonating through particles"
 }

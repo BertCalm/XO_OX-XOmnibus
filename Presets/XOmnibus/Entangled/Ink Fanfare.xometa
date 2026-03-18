@@ -2,8 +2,8 @@
   "name": "Ink Fanfare",
   "version": "1.0",
   "engines": [
-    "OTTONI",
-    "OCTOPUS"
+    "Ottoni",
+    "Octopus"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "octopus",
     "triple"
   ],
-  "description": "Brass declaration shrouded in octopus ink cloud \u2014 triumph gone mysterious"
+  "description": "Brass declaration shrouded in octopus ink cloud — triumph gone mysterious"
 }

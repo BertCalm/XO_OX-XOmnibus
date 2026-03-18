@@ -3,12 +3,12 @@
   "name": "Spread Tangle",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ORGANON"
+    "Overlap",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERLAP pre-delay follows ORGANON attack envelope \u2014 space opens after the pipe speaks",
+  "description": "OVERLAP pre-delay follows ORGANON attack envelope — space opens after the pipe speaks",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.575
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.765,
       "olap_decay": 0.788,
       "olap_damping": 0.56,

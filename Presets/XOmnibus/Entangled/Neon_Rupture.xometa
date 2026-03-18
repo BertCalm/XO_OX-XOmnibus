@@ -3,12 +3,12 @@
   "name": "Neon Rupture",
   "mood": "Entangled",
   "engines": [
-    "OVERWORLD",
-    "OBESE"
+    "Overworld",
+    "Obese"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Overworld neon green running through OBESE saturation \u2014 chip signal with infinite harmonic weight.",
+  "description": "Overworld neon green running through OBESE saturation — chip signal with infinite harmonic weight.",
   "tags": [
     "entangled",
     "brutal",

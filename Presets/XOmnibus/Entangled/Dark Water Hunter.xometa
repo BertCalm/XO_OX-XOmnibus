@@ -3,8 +3,8 @@
   "name": "Dark Water Hunter",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "OBSIDIAN"
+    "Osprey",
+    "Obsidian"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

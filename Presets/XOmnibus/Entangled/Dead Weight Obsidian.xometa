@@ -2,8 +2,8 @@
   "name": "Dead Weight Obsidian",
   "version": "1.0",
   "engines": [
-    "OBESE",
-    "OBSIDIAN"
+    "Obese",
+    "Obsidian"
   ],
   "mood": "Entangled",
   "strategy": "Still Aggressive",
@@ -35,5 +35,5 @@
     "heavy",
     "obsidian"
   ],
-  "description": "Obsidian's hardness bearing down on XObese's mass \u2014 completely static, devastatingly heavy."
+  "description": "Obsidian's hardness bearing down on XObese's mass — completely static, devastatingly heavy."
 }

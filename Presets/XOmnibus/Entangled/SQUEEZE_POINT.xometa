@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OCTOPUS"
+    "Overlap",
+    "Octopus"
   ],
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.437,
       "macro_movement": 0.106,
       "macro_coupling": 0.311,
       "macro_space": 0.011
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.667,
       "macro_movement": 0.709,
       "macro_coupling": 0.175,

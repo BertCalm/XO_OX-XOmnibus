@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OPTIC",
-    "OSTERIA"
+    "Optic",
+    "Osteria"
   ],
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 1.0,
       "macro_movement": 0.155,
       "macro_coupling": 0.296,
       "macro_space": 0.788
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.508,
       "macro_movement": 0.54,
       "macro_coupling": 0.739,

@@ -2,8 +2,8 @@
   "name": "Refractive Brass",
   "version": "1.0",
   "engines": [
-    "OTTONI",
-    "OPTIC"
+    "Ottoni",
+    "Optic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "optic",
     "triple"
   ],
-  "description": "Dense brass chord refracted through optical prism \u2014 harmonic partials separated"
+  "description": "Dense brass chord refracted through optical prism — harmonic partials separated"
 }

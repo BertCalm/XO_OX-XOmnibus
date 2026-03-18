@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "ODYSSEY",
-    "OTTONI"
+    "Odyssey",
+    "Ottoni"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.475,
       "macro_movement": 0.668,
       "macro_coupling": 0.519,
       "macro_space": 0.063
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.475,
       "macro_movement": 0.668,
       "macro_coupling": 0.519,

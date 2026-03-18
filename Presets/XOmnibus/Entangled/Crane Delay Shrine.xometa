@@ -2,8 +2,8 @@
   "name": "Crane Delay Shrine",
   "version": "1.0",
   "engines": [
-    "ORIGAMI",
-    "OVERDUB"
+    "Origami",
+    "Overdub"
   ],
   "mood": "Entangled",
   "strategy": "Bright Dark",
@@ -35,5 +35,5 @@
     "meditative",
     "spacious"
   ],
-  "description": "A thousand paper cranes folded in cold cathedral reverb \u2014 still and luminous."
+  "description": "A thousand paper cranes folded in cold cathedral reverb — still and luminous."
 }

@@ -3,20 +3,20 @@
   "name": "Verde Metabolism",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "ORGANON"
+    "Ottoni",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Brass frequency shifts drive ORGANON's metabolic rhythm \u2014 a living ecosystem of harmonic life.",
+  "description": "Brass frequency shifts drive ORGANON's metabolic rhythm — a living ecosystem of harmonic life.",
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.7,
       "macro_movement": 0.55,
       "macro_coupling": 0.72,
       "macro_space": 0.45
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.5,
       "macro_movement": 0.65,
       "macro_coupling": 0.6,

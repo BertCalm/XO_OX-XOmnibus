@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OWLFISH",
-    "OSTERIA"
+    "Owlfish",
+    "Osteria"
   ],
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.958,
       "macro_movement": 0.9223,
       "macro_coupling": 0.6257,
       "macro_space": 0.6876
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.9866,
       "macro_movement": 0.9087,
       "macro_coupling": 0.6412,

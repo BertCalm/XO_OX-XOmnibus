@@ -3,8 +3,8 @@
   "name": "Mirror Void",
   "mood": "Entangled",
   "engines": [
-    "OMBRE",
-    "ORCA"
+    "Ombre",
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.44
   },
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.544,
       "macro_movement": 0.692,
       "macro_coupling": 0.639,
       "macro_space": 0.575
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.649,
       "macro_movement": 0.554,
       "macro_coupling": 0.788,

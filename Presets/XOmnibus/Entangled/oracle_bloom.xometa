@@ -3,8 +3,8 @@
   "name": "Oracle Bloom",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ORACLE"
+    "Overlap",
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.19
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.75,
       "olap_decay": 0.59,
       "olap_damping": 0.47,
@@ -69,7 +69,7 @@
       "olap_outputLevel": 0.77,
       "olap_outputPan": 0.11
     },
-    "ORACLE": {
+    "Oracle": {
       "oracle_character": 0.53,
       "oracle_movement": 0.28,
       "oracle_coupling": 0.54,

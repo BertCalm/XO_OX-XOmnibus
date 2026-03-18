@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OCELOT",
-    "OVERDUB"
+    "Ocelot",
+    "Overdub"
   ],
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.307,
       "macro_movement": 0.231,
       "macro_coupling": 0.721,
       "macro_space": 0.316
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.743,
       "macro_movement": 0.951,
       "macro_coupling": 0.69,

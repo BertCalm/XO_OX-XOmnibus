@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORIGAMI"
+    "Origami"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "orig_macro_character": 0.29,
       "orig_macro_movement": 0.25,
       "orig_macro_coupling": 0.4,

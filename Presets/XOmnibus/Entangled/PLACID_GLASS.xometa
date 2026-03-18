@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OMBRE",
-    "OBSIDIAN"
+    "Ombre",
+    "Obsidian"
   ],
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.795,
       "macro_movement": 0.09,
       "macro_coupling": 0.682,
       "macro_space": 0.15
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.586,
       "macro_movement": 0.072,
       "macro_coupling": 0.352,

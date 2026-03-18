@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OVERWORLD",
-    "ORIGAMI"
+    "Overworld",
+    "Origami"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.9103,
       "macro_movement": 0.9383,
       "macro_coupling": 0.5463,
       "macro_space": 0.4113
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.4864,
       "macro_movement": 0.5956,
       "macro_coupling": 0.9247,

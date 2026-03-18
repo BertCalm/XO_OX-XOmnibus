@@ -3,8 +3,8 @@
   "name": "Abyssal Cathedral",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OWLFISH"
+    "Overlap",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "density": 0.625
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.825,
       "olap_decay": 0.78,
       "olap_damping": 0.627,

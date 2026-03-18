@@ -3,8 +3,8 @@
   "name": "DARK_HOT_KINETIC_VAST_VIOLENT_PRS_3",
   "mood": "Prism",
   "engines": [
-    "ORPHICA",
-    "ORACLE"
+    "Orphica",
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.142,
       "macro_movement": 0.947,
       "macro_coupling": 0.547,
       "macro_space": 1.0
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.145,
       "macro_movement": 0.977,
       "macro_coupling": 0.385,

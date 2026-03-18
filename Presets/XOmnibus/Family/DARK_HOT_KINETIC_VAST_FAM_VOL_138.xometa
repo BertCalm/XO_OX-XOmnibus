@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "ORIGAMI",
-    "ODDOSCAR"
+    "Origami",
+    "OddOscar"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.475,
       "macro_movement": 0.95,
       "macro_coupling": 0.483,
       "macro_space": 0.894
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.482,
       "macro_movement": 0.929,
       "macro_coupling": 0.462,

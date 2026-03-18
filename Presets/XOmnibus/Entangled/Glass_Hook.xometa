@@ -3,8 +3,8 @@
   "name": "Glass Hook",
   "mood": "Entangled",
   "engines": [
-    "ODDFELIX",
-    "ORIGAMI"
+    "OddfeliX",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.3
   },
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.687,
       "macro_movement": 0.33,
       "macro_coupling": 0.609,
       "macro_space": 0.641
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.513,
       "macro_movement": 0.753,
       "macro_coupling": 0.594,

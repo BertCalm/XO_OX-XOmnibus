@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OUROBOROS"
+    "Obbligato",
+    "Ouroboros"
   ],
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.465,
       "macro_movement": 0.641,
       "macro_coupling": 0.775,
       "macro_space": 0.978
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.475,
       "macro_movement": 0.711,
       "macro_coupling": 0.763,

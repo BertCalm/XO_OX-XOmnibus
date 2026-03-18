@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OCTOPUS",
-    "OWLFISH"
+    "Octopus",
+    "Owlfish"
   ],
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.693,
       "macro_movement": 0.539,
       "macro_coupling": 0.903,
       "macro_space": 0.61
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.044,
       "macro_movement": 0.513,
       "macro_coupling": 0.72,

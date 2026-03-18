@@ -3,8 +3,8 @@
   "name": "Crease Assault",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ORIGAMI"
+    "Outwit",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.96
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 150,
       "owit_arms": 8,
       "owit_cellSize": 0.52,
@@ -70,7 +70,7 @@
       "owit_outputLevel": 0.76,
       "owit_outputPan": 0.01
     },
-    "ORIGAMI": {
+    "Origami": {
       "origami_character": 0.26,
       "origami_movement": 0.75,
       "origami_coupling": 0.74,

@@ -3,12 +3,12 @@
   "name": "OHM Depth",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "OHM"
+    "Oceanic",
+    "Ohm"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OHM's drone holds the tone of the water column \u2014 the ocean's fundamental frequency.",
+  "description": "OHM's drone holds the tone of the water column — the ocean's fundamental frequency.",
   "tags": [
     "entangled",
     "coupling",

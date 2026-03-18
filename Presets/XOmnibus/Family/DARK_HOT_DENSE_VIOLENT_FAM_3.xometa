@@ -3,12 +3,12 @@
   "name": "DARK HOT DENSE VIOLENT FAM 3",
   "mood": "Family",
   "engines": [
-    "OBLONG",
-    "OUROBOROS"
+    "Oblong",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, dark, warm, dense.",
+  "description": "Extreme DNA corners — family, dark, warm, dense.",
   "tags": [
     "family",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.891
   },
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "level": 0.774,
       "pan": -0.137
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "level": 0.835,
       "pan": -0.129
     }

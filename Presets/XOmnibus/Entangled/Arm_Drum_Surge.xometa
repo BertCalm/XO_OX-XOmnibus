@@ -3,12 +3,12 @@
   "name": "Arm Drum Surge",
   "mood": "Entangled",
   "engines": [
-    "OCTOPUS",
-    "ONSET"
+    "Octopus",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Octopus CA rule 30 chaos injected into Onset drum voices \u2014 alien intelligence driving drums.",
+  "description": "Octopus CA rule 30 chaos injected into Onset drum voices — alien intelligence driving drums.",
   "tags": [
     "entangled",
     "brutal",

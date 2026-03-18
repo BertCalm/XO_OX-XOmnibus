@@ -3,12 +3,12 @@
   "name": "Spectral Conga",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "OLE"
+    "Orphica",
+    "Ole"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORPHICA and OLE coupled via Env->Morph. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "description": "ORPHICA and OLE coupled via Env->Morph. Blended Constellation DNA — stub seeded for expansion.",
   "tags": [
     "coupling",
     "constellation",

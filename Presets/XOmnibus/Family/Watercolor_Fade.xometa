@@ -3,11 +3,11 @@
   "name": "Watercolor Fade",
   "mood": "Family",
   "engines": [
-    "OMBRE"
+    "Ombre"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OMBRE SHADE to FADE \u2014 tonal gradient drifting. A watercolor bleeding at the edges. The in-between as destination.",
+  "description": "OMBRE SHADE to FADE — tonal gradient drifting. A watercolor bleeding at the edges. The in-between as destination.",
   "tags": [
     "family",
     "extended-family",

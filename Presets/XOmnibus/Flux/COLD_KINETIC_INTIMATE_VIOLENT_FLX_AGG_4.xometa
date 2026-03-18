@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OPTIC",
-    "ODYSSEY"
+    "Optic",
+    "Odyssey"
   ],
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.674,
       "macro_movement": 0.891,
       "macro_coupling": 0.77,
       "macro_space": 0.122
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.73,
       "macro_movement": 0.94,
       "macro_coupling": 0.793,

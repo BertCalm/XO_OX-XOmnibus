@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OTTONI",
-    "OCEANIC"
+    "Ottoni",
+    "Oceanic"
   ],
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.481,
       "macro_movement": 0.669,
       "macro_coupling": 0.459,
       "macro_space": 0.084
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.335,
       "macro_movement": 0.424,
       "macro_coupling": 0.295,

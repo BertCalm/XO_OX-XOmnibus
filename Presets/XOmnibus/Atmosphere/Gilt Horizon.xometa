@@ -2,7 +2,7 @@
   "name": "Gilt Horizon",
   "version": "1.0",
   "engines": [
-    "ORPHICA"
+    "Orphica"
   ],
   "mood": "Atmosphere",
   "macros": {

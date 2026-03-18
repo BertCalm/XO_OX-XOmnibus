@@ -11,11 +11,11 @@
     "space": 0.88
   },
   "engines": [
-    "OPTIC"
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Self-similar bright structure \u2014 recursive upper harmonics",
+  "description": "Self-similar bright structure — recursive upper harmonics",
   "tags": [
     "prism",
     "bright",

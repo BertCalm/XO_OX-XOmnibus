@@ -2,8 +2,8 @@
   "name": "Spotted Fold Rush",
   "version": "1.0",
   "engines": [
-    "OCELOT",
-    "ORIGAMI"
+    "Ocelot",
+    "Origami"
   ],
   "mood": "Entangled",
   "strategy": "Fast Cold",
@@ -35,5 +35,5 @@
     "spotted",
     "kinetic"
   ],
-  "description": "Spotted pattern rushing through cold Origami folds \u2014 spotted light fragmenting in motion."
+  "description": "Spotted pattern rushing through cold Origami folds — spotted light fragmenting in motion."
 }

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ORIGAMI",
-    "OUTWIT"
+    "Origami",
+    "Outwit"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.155,
       "macro_movement": 0.241,
       "macro_coupling": 0.4,
       "macro_space": 0.76
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.148,
       "macro_movement": 0.586,
       "macro_coupling": 0.145,

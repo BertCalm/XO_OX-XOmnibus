@@ -11,11 +11,11 @@
     "space": 0.35
   },
   "engines": [
-    "ORCA"
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Maximum depth pursuit \u2014 bass frequencies only",
+  "description": "Maximum depth pursuit — bass frequencies only",
   "tags": [
     "aether",
     "dark",

@@ -3,11 +3,11 @@
   "name": "Bond Radiance",
   "mood": "Foundation",
   "engines": [
-    "OBBLIGATO"
+    "Obbligato"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "OBBLIGATO \u2014 bright extreme brightness preset for Foundation.",
+  "description": "OBBLIGATO — bright extreme brightness preset for Foundation.",
   "tags": [
     "foundation",
     "bright",
@@ -37,7 +37,7 @@
     "aggression": 0.88
   },
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "obbl_bond": 0.66,
       "obbl_wind1": 0.27,
       "obbl_wind2": 0.57,

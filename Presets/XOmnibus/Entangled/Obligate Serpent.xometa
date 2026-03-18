@@ -2,8 +2,8 @@
   "name": "Obligate Serpent",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OUROBOROS"
+    "Obbligato",
+    "Ouroboros"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ouroboros",
     "wind"
   ],
-  "description": "Ouroboros chaos leash implemented as OBBLIGATO breath gating \u2014 chaos breathes on cue"
+  "description": "Ouroboros chaos leash implemented as OBBLIGATO breath gating — chaos breathes on cue"
 }

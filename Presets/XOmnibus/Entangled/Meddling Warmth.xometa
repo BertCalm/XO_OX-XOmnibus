@@ -2,8 +2,8 @@
   "name": "Meddling Warmth",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OPAL"
+    "Ohm",
+    "Opal"
   ],
   "mood": "Entangled",
   "strategy": "Warm Sparse",

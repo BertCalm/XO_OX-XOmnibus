@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OHM",
-    "ORPHICA"
+    "Ohm",
+    "Orphica"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.503,
       "macro_movement": 0.6,
       "macro_coupling": 0.53,
       "macro_space": 0.395
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.877,
       "macro_movement": 0.6,
       "macro_coupling": 0.323,

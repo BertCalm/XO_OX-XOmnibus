@@ -3,11 +3,11 @@
   "name": "Reed Crypt",
   "mood": "Foundation",
   "engines": [
-    "ORGANON"
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "ORGANON \u2014 dark extreme brightness preset for Foundation.",
+  "description": "ORGANON — dark extreme brightness preset for Foundation.",
   "tags": [
     "foundation",
     "dark",
@@ -37,7 +37,7 @@
     "aggression": 0.53
   },
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "org_drawbar1": 0.11,
       "org_drawbar2": 0.95,
       "org_drawbar3": 0.69,

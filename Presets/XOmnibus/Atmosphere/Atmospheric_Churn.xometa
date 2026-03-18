@@ -3,7 +3,7 @@
   "name": "Atmospheric Churn",
   "mood": "Atmosphere",
   "engines": [
-    "OPTIC"
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.495
   },
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "focus": 0.448,
       "aberration": 0.802,
       "coupling": 0.404,

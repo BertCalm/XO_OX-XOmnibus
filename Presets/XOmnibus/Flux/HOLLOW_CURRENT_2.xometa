@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OBBLIGATO",
-    "OMBRE"
+    "Obbligato",
+    "Ombre"
   ],
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.1259,
       "macro_movement": 0.5646,
       "macro_coupling": 0.0686,
       "macro_space": 0.7652
     },
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.2072,
       "macro_movement": 0.216,
       "macro_coupling": 0.8697,

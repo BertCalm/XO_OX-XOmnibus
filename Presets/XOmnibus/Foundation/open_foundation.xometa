@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OSTERIA",
-    "OCELOT"
+    "Osteria",
+    "Ocelot"
   ],
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.625,
       "macro_movement": 0.914,
       "macro_coupling": 0.508,
       "macro_space": 0.896
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.374,
       "macro_movement": 0.846,
       "macro_coupling": 0.953,

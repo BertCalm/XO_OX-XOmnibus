@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT FND 4",
   "mood": "Foundation",
   "engines": [
-    "OBSIDIAN",
-    "OUTWIT"
+    "Obsidian",
+    "Outwit"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.9,
       "macro_movement": 0.69,
       "macro_coupling": 0.76,
       "macro_space": 0.5
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.75,
       "macro_movement": 0.94,
       "macro_coupling": 0.79,

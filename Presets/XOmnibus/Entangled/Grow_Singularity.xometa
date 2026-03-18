@@ -3,12 +3,12 @@
   "name": "Grow Singularity",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "OUROBOROS"
+    "Ottoni",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "GROW macro timbral-warped by Ouroboros topology \u2014 brass expansion without harmonic ceiling.",
+  "description": "GROW macro timbral-warped by Ouroboros topology — brass expansion without harmonic ceiling.",
   "tags": [
     "entangled",
     "brutal",

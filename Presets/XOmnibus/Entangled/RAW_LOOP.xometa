@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OPTIC",
-    "OCELOT"
+    "Optic",
+    "Ocelot"
   ],
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.607,
       "macro_movement": 0.322,
       "macro_coupling": 0.442,
       "macro_space": 0.676
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.511,
       "macro_movement": 0.794,
       "macro_coupling": 0.96,

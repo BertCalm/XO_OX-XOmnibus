@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT FAM 8",
   "mood": "Family",
   "engines": [
-    "OHM",
-    "OTTONI"
+    "Ohm",
+    "Ottoni"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.67,
       "macro_movement": 0.92,
       "macro_coupling": 0.67,
       "macro_space": 0.39
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.65,
       "macro_movement": 0.79,
       "macro_coupling": 0.52,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OCEANIC",
-    "OBSCURA"
+    "Oceanic",
+    "Obscura"
   ],
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.886,
       "macro_movement": 0.598,
       "macro_coupling": 0.868,
       "macro_space": 0.317
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.892,
       "macro_movement": 0.593,
       "macro_coupling": 0.861,

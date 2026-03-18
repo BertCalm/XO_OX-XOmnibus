@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ONSET",
-    "ORBITAL"
+    "Onset",
+    "Orbital"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.163,
       "macro_movement": 0.095,
       "macro_coupling": 0.501,
       "macro_space": 0.916
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.815,
       "macro_movement": 0.108,
       "macro_coupling": 0.522,

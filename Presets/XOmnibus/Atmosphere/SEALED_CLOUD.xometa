@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OCTOPUS",
-    "OUTWIT"
+    "Octopus",
+    "Outwit"
   ],
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.765,
       "macro_movement": 0.169,
       "macro_coupling": 0.805,
       "macro_space": 0.032
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.472,
       "macro_movement": 0.588,
       "macro_coupling": 0.403,

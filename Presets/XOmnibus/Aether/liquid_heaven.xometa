@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OPAL"
+    "Opal"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.4,
       "macro_movement": 0.88,
       "macro_coupling": 0.3,

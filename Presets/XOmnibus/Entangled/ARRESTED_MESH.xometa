@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORIGAMI",
-    "ORACLE"
+    "Origami",
+    "Oracle"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.677,
       "macro_movement": 0.064,
       "macro_coupling": 0.765,
       "macro_space": 0.13
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.525,
       "macro_movement": 0.09,
       "macro_coupling": 0.316,

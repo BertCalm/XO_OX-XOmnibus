@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "ORPHICA",
-    "ODYSSEY"
+    "Orphica",
+    "Odyssey"
   ],
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.464,
       "macro_movement": 0.895,
       "macro_coupling": 0.267,
       "macro_space": 0.658
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.49,
       "macro_movement": 0.912,
       "macro_coupling": 0.28,

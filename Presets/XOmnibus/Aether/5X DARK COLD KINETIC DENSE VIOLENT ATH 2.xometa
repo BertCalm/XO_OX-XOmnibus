@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT ATH 2",
   "mood": "Aether",
   "engines": [
-    "OVERWORLD",
-    "ORGANON"
+    "Overworld",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.64,
       "macro_movement": 0.66,
       "macro_coupling": 0.56,
       "macro_space": 0.11
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.98,
       "macro_movement": 0.65,
       "macro_coupling": 0.61,

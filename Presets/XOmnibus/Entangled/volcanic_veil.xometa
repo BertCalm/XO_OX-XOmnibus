@@ -3,8 +3,8 @@
   "name": "Volcanic Veil",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OBSIDIAN"
+    "Overlap",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.22
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.89,
       "olap_decay": 0.62,
       "olap_damping": 0.51,
@@ -69,7 +69,7 @@
       "olap_outputLevel": 0.76,
       "olap_outputPan": 0.04
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "obsidian_character": 0.61,
       "obsidian_movement": 0.66,
       "obsidian_coupling": 0.53,

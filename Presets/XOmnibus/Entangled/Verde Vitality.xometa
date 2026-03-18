@@ -3,12 +3,12 @@
   "name": "Verde Vitality",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "ORGANON"
+    "Ottoni",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Velocity of OTTONI attack drives Organon's vitality parameter \u2014 touch-sensitive life.",
+  "description": "Velocity of OTTONI attack drives Organon's vitality parameter — touch-sensitive life.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.06
   },
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.75,
       "macro_movement": 0.5,
       "macro_coupling": 0.68,
       "macro_space": 0.3
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.52,
       "macro_movement": 0.72,
       "macro_coupling": 0.68,

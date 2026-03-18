@@ -3,8 +3,8 @@
   "name": "DARK_HOT_KINETIC_SPARSE_VIOLENT_PRS_2",
   "mood": "Prism",
   "engines": [
-    "OVERWORLD",
-    "ORPHICA"
+    "Overworld",
+    "Orphica"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.151,
       "macro_movement": 0.965,
       "macro_coupling": 0.012,
       "macro_space": 0.56
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.026,
       "macro_movement": 1.0,
       "macro_coupling": 0.0,

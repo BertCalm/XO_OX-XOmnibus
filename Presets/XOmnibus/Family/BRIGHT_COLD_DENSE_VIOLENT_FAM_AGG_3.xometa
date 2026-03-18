@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OVERDUB",
-    "OPAL"
+    "Overdub",
+    "Opal"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.411,
       "macro_movement": 0.813,
       "macro_coupling": 0.851,
       "macro_space": 0.88
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.365,
       "macro_movement": 0.797,
       "macro_coupling": 0.878,

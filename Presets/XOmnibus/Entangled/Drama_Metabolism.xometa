@@ -3,20 +3,20 @@
   "name": "Drama Metabolism",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "ORGANON"
+    "Ole",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "OLE's percussive frequency spikes drive ORGANON into metabolic overdrive \u2014 aggression 0.86.",
+  "description": "OLE's percussive frequency spikes drive ORGANON into metabolic overdrive — aggression 0.86.",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.78,
       "macro_movement": 0.72,
       "macro_coupling": 0.8,
       "macro_space": 0.38
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.58,
       "macro_movement": 0.7,
       "macro_coupling": 0.68,

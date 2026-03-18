@@ -2,8 +2,8 @@
   "name": "Daguerreotype Folk",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OBSCURA"
+    "Ohm",
+    "Obscura"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "obscura",
     "hippy"
   ],
-  "description": "Ohm commune captured through obscura daguerreotype process \u2014 folk warmth made antique"
+  "description": "Ohm commune captured through obscura daguerreotype process — folk warmth made antique"
 }

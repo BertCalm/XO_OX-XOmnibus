@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "ODYSSEY",
-    "OLE"
+    "Odyssey",
+    "Ole"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.414,
       "macro_movement": 0.579,
       "macro_coupling": 0.565,
       "macro_space": 0.528
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.434,
       "macro_movement": 0.531,
       "macro_coupling": 0.598,

@@ -3,12 +3,12 @@
   "name": "Mass Collision",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "OBESE"
+    "Ouroboros",
+    "Obese"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ouroboros strange attractor injecting chaos into OBESE saturation \u2014 harmonic mass at total density.",
+  "description": "Ouroboros strange attractor injecting chaos into OBESE saturation — harmonic mass at total density.",
   "tags": [
     "entangled",
     "brutal",

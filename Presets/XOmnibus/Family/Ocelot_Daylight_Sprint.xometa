@@ -3,11 +3,11 @@
   "name": "Ocelot Daylight Sprint",
   "mood": "Family",
   "engines": [
-    "OCELOT"
+    "Ocelot"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OCELOT at full speed in open light \u2014 spots catching sun, velocity supreme.",
+  "description": "OCELOT at full speed in open light — spots catching sun, velocity supreme.",
   "tags": [
     "family",
     "portrait",

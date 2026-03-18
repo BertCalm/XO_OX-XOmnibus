@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "ODDOSCAR",
-    "OBBLIGATO"
+    "OddOscar",
+    "Obbligato"
   ],
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.737,
       "macro_movement": 0.439,
       "macro_coupling": 0.412,
       "macro_space": 0.504
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.704,
       "macro_movement": 0.404,
       "macro_coupling": 0.438,

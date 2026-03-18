@@ -2,8 +2,8 @@
   "name": "Dubbed Sage",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OVERDUB"
+    "Ohm",
+    "Overdub"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "overdub",
     "hippy"
   ],
-  "description": "Overdub spring reverb wraps ohm drone \u2014 folk ritual heard through the haze of a worn cassette"
+  "description": "Overdub spring reverb wraps ohm drone — folk ritual heard through the haze of a worn cassette"
 }

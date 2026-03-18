@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OBESE",
-    "OPTIC"
+    "Obese",
+    "Optic"
   ],
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.08,
       "macro_movement": 0.372,
       "macro_coupling": 0.403,
       "macro_space": 0.424
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.1,
       "macro_movement": 0.342,
       "macro_coupling": 0.728,

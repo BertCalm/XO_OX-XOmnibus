@@ -2,8 +2,8 @@
   "name": "Pod Drift",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "ORCA"
+    "Odyssey",
+    "Orca"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orca",
     "wavetable"
   ],
-  "description": "Orca pod navigates by drift FM \u2014 wavetable odyssey mapped as echolocation terrain"
+  "description": "Orca pod navigates by drift FM — wavetable odyssey mapped as echolocation terrain"
 }

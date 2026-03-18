@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORGANON",
-    "OUTWIT"
+    "Organon",
+    "Outwit"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.314,
       "macro_movement": 0.445,
       "macro_coupling": 0.691,
       "macro_space": 0.375
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.775,
       "macro_movement": 0.522,
       "macro_coupling": 0.873,

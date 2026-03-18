@@ -19,7 +19,7 @@
     "aggression": 0.2639
   },
   "engines": [
-    "OVERWORLD"
+    "Overworld"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -44,7 +44,7 @@
   },
   "couplingIntensity": "None",
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_macro_era": 0.1617,
       "ow_macro_chaos": 0.8402,
       "ow_macro_couple": 0.5212,

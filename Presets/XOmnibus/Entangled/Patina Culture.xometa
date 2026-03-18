@@ -3,8 +3,8 @@
   "name": "Patina Culture",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "ORGANON"
+    "Ottoni",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
@@ -34,13 +34,13 @@
     "aggression": 0.12
   },
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.6,
       "macro_movement": 0.5,
       "macro_coupling": 0.58,
       "macro_space": 0.45
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.6,
       "macro_movement": 0.55,
       "macro_coupling": 0.58,

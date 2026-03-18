@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORIGAMI",
-    "OBSIDIAN"
+    "Origami",
+    "Obsidian"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.596,
       "macro_movement": 0.892,
       "macro_coupling": 0.755,
       "macro_space": 0.648
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.712,
       "macro_movement": 0.938,
       "macro_coupling": 0.749,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OHM",
-    "ODYSSEY"
+    "Ohm",
+    "Odyssey"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.378,
       "macro_movement": 0.243,
       "macro_coupling": 0.53,
       "macro_space": 0.523
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.682,
       "macro_movement": 0.278,
       "macro_coupling": 0.103,

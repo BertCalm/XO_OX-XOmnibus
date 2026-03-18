@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OBBLIGATO",
-    "OPAL"
+    "Obbligato",
+    "Opal"
   ],
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.031,
       "macro_movement": 0.11,
       "macro_coupling": 0.733,
       "macro_space": 0.438
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.055,
       "macro_movement": 0.098,
       "macro_coupling": 0.783,

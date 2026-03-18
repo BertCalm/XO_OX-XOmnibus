@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OCEANIC",
-    "ODDFELIX"
+    "Oceanic",
+    "OddfeliX"
   ],
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.491,
       "macro_movement": 0.07,
       "macro_coupling": 0.657,
       "macro_space": 0.649
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.465,
       "macro_movement": 0.055,
       "macro_coupling": 0.644,

@@ -3,12 +3,12 @@
   "name": "OVERBITE Through Ottoni",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "OVERBITE"
+    "Ottoni",
+    "Overbite"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OTTONI and OVERBITE coupled via Env->Level. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "description": "OTTONI and OVERBITE coupled via Env->Level. Blended Constellation DNA — stub seeded for expansion.",
   "tags": [
     "coupling",
     "constellation",

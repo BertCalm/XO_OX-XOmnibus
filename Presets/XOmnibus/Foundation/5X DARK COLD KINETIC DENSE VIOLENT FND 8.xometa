@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT FND 8",
   "mood": "Foundation",
   "engines": [
-    "OHM",
-    "OTTONI"
+    "Ohm",
+    "Ottoni"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.99,
       "macro_movement": 0.77,
       "macro_coupling": 0.52,
       "macro_space": 0.1
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.94,
       "macro_movement": 0.81,
       "macro_coupling": 0.79,

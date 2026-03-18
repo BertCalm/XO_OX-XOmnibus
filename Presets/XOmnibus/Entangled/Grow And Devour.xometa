@@ -3,12 +3,12 @@
   "name": "Grow And Devour",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "OUROBOROS"
+    "Ottoni",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "GROW macro blends timbre into Ouroboros's voracious topology \u2014 eat the brass.",
+  "description": "GROW macro blends timbre into Ouroboros's voracious topology — eat the brass.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.58
   },
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.72,
       "macro_movement": 0.5,
       "macro_coupling": 0.66,
       "macro_space": 0.35
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.58,
       "macro_movement": 0.68,
       "macro_coupling": 0.66,

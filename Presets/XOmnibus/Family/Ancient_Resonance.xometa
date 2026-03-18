@@ -3,11 +3,11 @@
   "name": "Ancient Resonance",
   "mood": "Family",
   "engines": [
-    "ORACLE"
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORACLE speaking \u2014 harmonic prophecy at medium depth. The voice that knows. Deep resonance, unhurried delivery.",
+  "description": "ORACLE speaking — harmonic prophecy at medium depth. The voice that knows. Deep resonance, unhurried delivery.",
   "tags": [
     "family",
     "signature",

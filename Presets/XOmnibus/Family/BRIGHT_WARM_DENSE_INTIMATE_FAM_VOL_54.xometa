@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OSPREY",
-    "ORIGAMI"
+    "Osprey",
+    "Origami"
   ],
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.896,
       "macro_movement": 0.32,
       "macro_coupling": 0.639,
       "macro_space": 0.085
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.888,
       "macro_movement": 0.312,
       "macro_coupling": 0.658,

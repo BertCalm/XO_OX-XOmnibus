@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "OUROBOROS"
+    "Ottoni",
+    "Ouroboros"
   ],
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.23,
       "macro_movement": 0.559,
       "macro_coupling": 0.668,
       "macro_space": 0.354
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.397,
       "macro_movement": 0.742,
       "macro_coupling": 0.436,

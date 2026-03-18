@@ -3,12 +3,12 @@
   "name": "Dub Pressure",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "OVERDUB"
+    "Oceanic",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Tape dub pressure increases with depth \u2014 bass as atmospheric compression.",
+  "description": "Tape dub pressure increases with depth — bass as atmospheric compression.",
   "tags": [
     "entangled",
     "coupling",

@@ -3,12 +3,12 @@
   "name": "Tangle Bloom",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OPAL"
+    "Overlap",
+    "Opal"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERLAP decay envelopes OPAL grain pitch \u2014 sustained tones bloom outward",
+  "description": "OVERLAP decay envelopes OPAL grain pitch — sustained tones bloom outward",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.625
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.882,
       "olap_decay": 0.747,
       "olap_damping": 0.602,

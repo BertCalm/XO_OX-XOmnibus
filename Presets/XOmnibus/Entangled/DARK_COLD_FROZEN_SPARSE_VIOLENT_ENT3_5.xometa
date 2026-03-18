@@ -3,12 +3,12 @@
   "name": "DARK_COLD_FROZEN_SPARSE_VIOLENT_ENT3_5",
   "mood": "Entangled",
   "engines": [
-    "ORIGAMI",
-    "OBLIQUE"
+    "Origami",
+    "Oblique"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: DARK_COLD_FROZEN_SPARSE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_COLD_FROZEN_SPARSE_VIOLENT. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.7603,
       "macro_movement": 0.01,
       "macro_coupling": 0.8858,
       "macro_space": 0.7736
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.5387,
       "macro_movement": 0.01,
       "macro_coupling": 0.959,

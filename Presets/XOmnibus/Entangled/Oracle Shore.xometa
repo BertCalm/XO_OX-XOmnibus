@@ -3,8 +3,8 @@
   "name": "Oracle Shore",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "ORACLE"
+    "Osprey",
+    "Oracle"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

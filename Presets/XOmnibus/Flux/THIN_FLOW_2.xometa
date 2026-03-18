@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OBSIDIAN",
-    "ODYSSEY"
+    "Obsidian",
+    "Odyssey"
   ],
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.3022,
       "macro_movement": 0.4083,
       "macro_coupling": 0.1398,
       "macro_space": 0.9463
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.3044,
       "macro_movement": 0.4926,
       "macro_coupling": 0.0972,

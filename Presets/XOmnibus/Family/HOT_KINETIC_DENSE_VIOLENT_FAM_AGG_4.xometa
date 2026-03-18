@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OLE",
-    "OSPREY"
+    "Ole",
+    "Osprey"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.846,
       "macro_movement": 0.589,
       "macro_coupling": 0.788,
       "macro_space": 0.538
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.827,
       "macro_movement": 0.564,
       "macro_coupling": 0.833,

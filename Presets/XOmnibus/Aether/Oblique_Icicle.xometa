@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OBLIQUE"
+    "Oblique"
   ],
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "oblq_macro_character": 0.36,
       "oblq_macro_movement": 0.43,
       "oblq_macro_coupling": 0.4,

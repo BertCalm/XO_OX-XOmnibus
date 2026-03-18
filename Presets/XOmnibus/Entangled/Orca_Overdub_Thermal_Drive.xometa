@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Overdub Thermal Drive",
   "mood": "Entangled",
-  "engines": ["OVERDUB", "ORCA"],
+  "engines": [
+    "Overdub",
+    "Orca"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Overdub tape delay feeding into Orca echolocation — delay echoes become the impulse for comb filter resonance. The tape warmth and saturation tinting the metallic ping network.",
-  "tags": ["entangled", "overdub", "orca", "tape", "comb"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "overdub",
+    "orca",
+    "tape",
+    "comb"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.6,
     "MOVEMENT": 0.45,

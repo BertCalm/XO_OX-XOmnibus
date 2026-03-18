@@ -3,8 +3,8 @@
   "name": "Augury Chaos",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ORACLE"
+    "Outwit",
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.78
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 150,
       "owit_arms": 8,
       "owit_cellSize": 0.16,
@@ -70,7 +70,7 @@
       "owit_outputLevel": 0.85,
       "owit_outputPan": -0.06
     },
-    "ORACLE": {
+    "Oracle": {
       "oracle_character": 0.71,
       "oracle_movement": 0.31,
       "oracle_coupling": 0.78,

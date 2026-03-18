@@ -3,12 +3,12 @@
   "name": "DARK_HOT_SPARSE_GENTLE_ENT_4",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ORPHICA"
+    "Overlap",
+    "Orphica"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Hot Sparse Gentle character entanglement \u2014 OVERLAP \u00d7 ORPHICA via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Hot Sparse Gentle character entanglement — OVERLAP × ORPHICA via Resonance Share. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.0517
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.6997,
       "macro_movement": 0.423,
       "macro_coupling": 0.6176,
@@ -57,7 +57,7 @@
       "output_level": 0.7617,
       "coupling_level": 0.6107
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.6781,
       "macro_movement": 0.4046,
       "macro_coupling": 0.5813,

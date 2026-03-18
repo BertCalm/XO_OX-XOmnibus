@@ -3,12 +3,12 @@
   "name": "Overtone Pluck",
   "mood": "Entangled",
   "engines": [
-    "OHM",
-    "ORPHICA"
+    "Ohm",
+    "Orphica"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OHM and ORPHICA coupled via Gate->Env. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "description": "OHM and ORPHICA coupled via Gate->Env. Blended Constellation DNA — stub seeded for expansion.",
   "tags": [
     "coupling",
     "constellation",

@@ -3,12 +3,12 @@
   "name": "Fracture Emerge",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OBBLIGATO"
+    "Outwit",
+    "Obbligato"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Obbligato dual winds breathe into OUTWIT cell birth/death rates \u2014 flute and oboe as life",
+  "description": "Obbligato dual winds breathe into OUTWIT cell birth/death rates — flute and oboe as life",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.65
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 110,
       "owit_arms": 6,
       "owit_cellSize": 0.229,

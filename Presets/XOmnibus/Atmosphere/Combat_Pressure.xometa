@@ -3,7 +3,7 @@
   "name": "Combat Pressure",
   "mood": "Atmosphere",
   "engines": [
-    "OVERWORLD"
+    "Overworld"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.724
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "era": 0.821,
       "glitch": 0.744,
       "coupling": 0.15,

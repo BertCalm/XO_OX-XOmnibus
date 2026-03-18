@@ -3,12 +3,12 @@
   "name": "Stochastic Forge",
   "mood": "Entangled",
   "engines": [
-    "ORACLE",
-    "OTTONI"
+    "Oracle",
+    "Ottoni"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Oracle's GENDY stochastic events amplitude-shape OTTONI attack \u2014 chance forging.",
+  "description": "Oracle's GENDY stochastic events amplitude-shape OTTONI attack — chance forging.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.22
   },
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.52,
       "macro_movement": 0.68,
       "macro_coupling": 0.6,
       "macro_space": 0.55
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.68,
       "macro_movement": 0.45,
       "macro_coupling": 0.6,

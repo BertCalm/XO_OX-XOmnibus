@@ -3,12 +3,12 @@
   "name": "World Percussion",
   "mood": "Entangled",
   "engines": [
-    "OVERWORLD",
-    "ONSET"
+    "Overworld",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Overworld chip oscillator velocity coupling into Onset \u2014 NES era collapse as kinetic percussion.",
+  "description": "Overworld chip oscillator velocity coupling into Onset — NES era collapse as kinetic percussion.",
   "tags": [
     "entangled",
     "brutal",

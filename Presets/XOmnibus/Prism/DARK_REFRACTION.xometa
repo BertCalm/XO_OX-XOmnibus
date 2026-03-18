@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ORBITAL",
-    "OBSCURA"
+    "Orbital",
+    "Obscura"
   ],
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.772,
       "macro_movement": 0.552,
       "macro_coupling": 0.923,
       "macro_space": 0.45
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.33,
       "macro_movement": 0.481,
       "macro_coupling": 0.509,

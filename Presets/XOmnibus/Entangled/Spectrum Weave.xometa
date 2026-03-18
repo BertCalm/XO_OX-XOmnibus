@@ -2,8 +2,8 @@
   "name": "Spectrum Weave",
   "version": "1.0",
   "engines": [
-    "ORPHICA",
-    "OPTIC"
+    "Orphica",
+    "Optic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "optic",
     "microsound"
   ],
-  "description": "Microsound harp threads through prismatic refraction \u2014 each grain a different hue"
+  "description": "Microsound harp threads through prismatic refraction — each grain a different hue"
 }

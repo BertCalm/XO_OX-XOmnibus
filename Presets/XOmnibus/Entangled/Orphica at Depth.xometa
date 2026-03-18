@@ -3,12 +3,12 @@
   "name": "Orphica at Depth",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "ORPHICA"
+    "Oceanic",
+    "Orphica"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Orphica's grain harp dissolves in OCEANIC depth \u2014 microsound at pressure.",
+  "description": "Orphica's grain harp dissolves in OCEANIC depth — microsound at pressure.",
   "tags": [
     "entangled",
     "coupling",

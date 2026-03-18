@@ -3,20 +3,20 @@
   "name": "Ole Resonance",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OUROBOROS"
+    "Ole",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Resonance shared between OLE's clave hit and OUROBOROS's infinite cycle \u2014 a drum inside the snake.",
+  "description": "Resonance shared between OLE's clave hit and OUROBOROS's infinite cycle — a drum inside the snake.",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.8,
       "macro_movement": 0.72,
       "macro_coupling": 0.8,
       "macro_space": 0.36
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.72,
       "macro_movement": 0.76,
       "macro_coupling": 0.75,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OUROBOROS",
-    "OSPREY"
+    "Ouroboros",
+    "Osprey"
   ],
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.513,
       "macro_movement": 0.967,
       "macro_coupling": 0.092,
       "macro_space": 0.109
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.817,
       "macro_movement": 0.972,
       "macro_coupling": 0.93,

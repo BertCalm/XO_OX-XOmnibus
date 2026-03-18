@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ODYSSEY",
-    "ORIGAMI"
+    "Odyssey",
+    "Origami"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.18,
       "macro_movement": 0.5,
       "macro_coupling": 0.66,
       "macro_space": 0.89
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.15,
       "macro_movement": 0.45,
       "macro_coupling": 0.71,
@@ -46,5 +46,5 @@
     "folded",
     "epoch"
   ],
-  "description": "Odyssey's drift envelope controls Origami fold rate \u2014 geological paper folding."
+  "description": "Odyssey's drift envelope controls Origami fold rate — geological paper folding."
 }

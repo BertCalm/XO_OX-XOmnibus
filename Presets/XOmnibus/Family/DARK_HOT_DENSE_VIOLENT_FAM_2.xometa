@@ -3,12 +3,12 @@
   "name": "DARK HOT DENSE VIOLENT FAM 2",
   "mood": "Family",
   "engines": [
-    "ODYSSEY",
-    "ORGANON"
+    "Odyssey",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, dark, warm, dense.",
+  "description": "Extreme DNA corners — family, dark, warm, dense.",
   "tags": [
     "family",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.926
   },
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "level": 0.837,
       "pan": 0.137
     },
-    "ORGANON": {
+    "Organon": {
       "level": 0.83,
       "pan": 0.14
     }

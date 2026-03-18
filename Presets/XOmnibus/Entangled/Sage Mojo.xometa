@@ -2,8 +2,8 @@
   "name": "Sage Mojo",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OBESE"
+    "Ohm",
+    "Obese"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "obese",
     "hippy"
   ],
-  "description": "Obese MOJO axis modulated by ohm's MEDDLING macro \u2014 hippy wisdom meets the hot pink machine"
+  "description": "Obese MOJO axis modulated by ohm's MEDDLING macro — hippy wisdom meets the hot pink machine"
 }

@@ -3,11 +3,11 @@
   "name": "ERA Flux Blaze",
   "mood": "Flux",
   "engines": [
-    "OVERWORLD"
+    "Overworld"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OVERWORLD pushed to extreme brightness \u2014 brightness 0.91, movement 0.73, aggression 0.66. Ultra-bright Flux zone filler.",
+  "description": "OVERWORLD pushed to extreme brightness — brightness 0.91, movement 0.73, aggression 0.66. Ultra-bright Flux zone filler.",
   "tags": [
     "flux",
     "ultra-bright",
@@ -40,7 +40,7 @@
     "aggression": 0.662
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_macro_era": 0.99,
       "ow_macro_chaos": 0.353,
       "ow_macro_couple": 0.096,

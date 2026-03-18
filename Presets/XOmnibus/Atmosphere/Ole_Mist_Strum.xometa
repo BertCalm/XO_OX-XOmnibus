@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Mist Strum",
+  "mood": "Atmosphere",
+  "engines": ["Ole"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "High sympathetic resonance and slow strum rates create a misty, diffuse string atmosphere.",
+  "tags": ["latin", "mist", "sympathetic", "atmospheric", "diffuse"],
+  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.42, "warmth": 0.7, "movement": 0.35, "density": 0.4, "space": 0.78, "aggression": 0.08},
+  "parameters": {
+    "Ole": {
+      "ole_allianceConfig": 0,
+      "ole_allianceBlend": 0.55,
+      "ole_aunt1Level": 0.62,
+      "ole_aunt1Brightness": 0.42,
+      "ole_aunt1StrumRate": 0.8,
+      "ole_aunt2Level": 0.6,
+      "ole_aunt2GourdSize": 0.52,
+      "ole_aunt2CoinPress": 0.4,
+      "ole_aunt3Level": 0.62,
+      "ole_aunt3Brightness": 0.45,
+      "ole_aunt3Tremolo": 0.4,
+      "ole_husbandOudLevel": 0.48,
+      "ole_husbandBouzLevel": 0.38,
+      "ole_husbandPinLevel": 0.35,
+      "ole_damping": 0.22,
+      "ole_sympatheticAmt": 0.75,
+      "ole_driftRate": 1.2,
+      "ole_driftDepth": 0.3,
+      "ole_macroDrama": 0.2,
+      "ole_macroFuego": 0.2,
+      "ole_macroIsla": 0.6,
+      "ole_macroSides": 0.3
+    }
+  },
+  "macros": {"DRAMA": 0.2, "FUEGO": 0.2, "ISLA": 0.6, "SIDES": 0.3},
+  "coupling": {"pairs": []}
+}

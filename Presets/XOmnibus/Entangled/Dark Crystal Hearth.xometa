@@ -2,8 +2,8 @@
   "name": "Dark Crystal Hearth",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OBSIDIAN"
+    "Ohm",
+    "Obsidian"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "obsidian",
     "hippy"
   ],
-  "description": "Obsidian crystal white depth filtered through ohm sage warmth \u2014 coldness made human"
+  "description": "Obsidian crystal white depth filtered through ohm sage warmth — coldness made human"
 }

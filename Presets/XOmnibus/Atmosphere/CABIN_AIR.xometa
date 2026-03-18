@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "ONSET",
-    "OCTOPUS"
+    "Onset",
+    "Octopus"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.256,
       "macro_movement": 0.657,
       "macro_coupling": 0.496,
       "macro_space": 0.085
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.625,
       "macro_movement": 0.104,
       "macro_coupling": 0.701,

@@ -3,11 +3,11 @@
   "name": "Organon Extended",
   "mood": "Family",
   "engines": [
-    "ORGANON"
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORGANON extended metabolism \u2014 logic processing more pathways. The biological instrument in a longer conversation with itself.",
+  "description": "ORGANON extended metabolism — logic processing more pathways. The biological instrument in a longer conversation with itself.",
   "tags": [
     "family",
     "extended-family",

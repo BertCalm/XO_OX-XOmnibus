@@ -3,20 +3,20 @@
   "name": "Latin Resonance",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OBSCURA"
+    "Ole",
+    "Obscura"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Resonance shared between clave transient and OBSCURA's plate nodes \u2014 rhythmically focused.",
+  "description": "Resonance shared between clave transient and OBSCURA's plate nodes — rhythmically focused.",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.74,
       "macro_movement": 0.66,
       "macro_coupling": 0.74,
       "macro_space": 0.42
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.6,
       "macro_movement": 0.52,
       "macro_coupling": 0.62,

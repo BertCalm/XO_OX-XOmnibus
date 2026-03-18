@@ -2,7 +2,7 @@
   "name": "Silent Basin",
   "version": "1.0",
   "engines": [
-    "ORACLE"
+    "Oracle"
   ],
   "mood": "Atmosphere",
   "macros": {

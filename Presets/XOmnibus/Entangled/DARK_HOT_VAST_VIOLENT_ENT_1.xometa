@@ -3,12 +3,12 @@
   "name": "DARK_HOT_VAST_VIOLENT_ENT_1",
   "mood": "Entangled",
   "engines": [
-    "ODYSSEY",
-    "ORCA"
+    "Odyssey",
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Hot Vast Violent character entanglement \u2014 ODYSSEY \u00d7 ORCA via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Hot Vast Violent character entanglement — ODYSSEY × ORCA via Velocity Couple. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.9112
   },
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.6563,
       "macro_movement": 0.6503,
       "macro_coupling": 0.9151,
@@ -57,7 +57,7 @@
       "output_level": 0.8493,
       "coupling_level": 0.9187
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.675,
       "macro_movement": 0.6266,
       "macro_coupling": 0.9159,

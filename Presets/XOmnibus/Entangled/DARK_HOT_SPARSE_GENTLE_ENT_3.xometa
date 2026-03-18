@@ -3,12 +3,12 @@
   "name": "DARK_HOT_SPARSE_GENTLE_ENT_3",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "ODDOSCAR"
+    "Obbligato",
+    "OddOscar"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Hot Sparse Gentle character entanglement \u2014 OBBLIGATO \u00d7 ODDOSCAR via Pitch Entangle. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Hot Sparse Gentle character entanglement — OBBLIGATO × ODDOSCAR via Pitch Entangle. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.1146
   },
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.6997,
       "macro_movement": 0.5282,
       "macro_coupling": 0.6759,
@@ -57,7 +57,7 @@
       "output_level": 0.7007,
       "coupling_level": 0.5743
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.7075,
       "macro_movement": 0.5252,
       "macro_coupling": 0.6364,

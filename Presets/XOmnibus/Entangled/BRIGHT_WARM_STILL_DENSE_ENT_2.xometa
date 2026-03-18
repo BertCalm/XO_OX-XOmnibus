@@ -3,12 +3,12 @@
   "name": "BRIGHT_WARM_STILL_DENSE_ENT_2",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "OBLIQUE"
+    "Osteria",
+    "Oblique"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Warm Still Dense character entanglement \u2014 OSTERIA \u00d7 OBLIQUE via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Warm Still Dense character entanglement — OSTERIA × OBLIQUE via Spectral Morph. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.3838
   },
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.9347,
       "macro_movement": 0.0636,
       "macro_coupling": 0.7526,
@@ -57,7 +57,7 @@
       "output_level": 0.891,
       "coupling_level": 0.6887
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.9074,
       "macro_movement": 0.0668,
       "macro_coupling": 0.7697,

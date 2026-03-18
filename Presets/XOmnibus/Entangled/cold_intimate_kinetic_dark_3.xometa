@@ -19,11 +19,11 @@
     "density": 0.5105
   },
   "engines": [
-    "XOttoni"
+    "Ottoni"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 cold intimate kinetic dark. Designed for PULSE coupling with XOttoni.",
+  "description": "Ultra-diverse Entangled preset — cold intimate kinetic dark. Designed for PULSE coupling with XOttoni.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "PULSE",
   "couplingIntensity": "Extreme",
   "parameters": {
-    "XOttoni": {
+    "Ottoni": {
       "couplingLevel": 0.949,
       "couplingBus": 1
     }

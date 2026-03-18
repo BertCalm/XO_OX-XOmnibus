@@ -3,12 +3,12 @@
   "name": "DARK_COLD_DENSE_INTIMATE_ENT_3",
   "mood": "Entangled",
   "engines": [
-    "OPTIC",
-    "ODDOSCAR"
+    "Optic",
+    "OddOscar"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Cold Dense Intimate character entanglement \u2014 OPTIC \u00d7 ODDOSCAR via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Cold Dense Intimate character entanglement — OPTIC × ODDOSCAR via Resonance Share. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.3134
   },
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.3537,
       "macro_movement": 0.4212,
       "macro_coupling": 0.6826,
@@ -57,7 +57,7 @@
       "output_level": 0.9396,
       "coupling_level": 0.6701
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.3307,
       "macro_movement": 0.3767,
       "macro_coupling": 0.7477,

@@ -2,7 +2,7 @@
   "name": "Phosphor Bloom",
   "version": "1.0",
   "engines": [
-    "OPTIC"
+    "Optic"
   ],
   "mood": "Atmosphere",
   "macros": {

@@ -3,12 +3,12 @@
   "name": "Wave Machine",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "ONSET"
+    "Oceanic",
+    "Onset"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Drum machine mapped to wave topology \u2014 each hit a different depth of water column.",
+  "description": "Drum machine mapped to wave topology — each hit a different depth of water column.",
   "tags": [
     "entangled",
     "coupling",

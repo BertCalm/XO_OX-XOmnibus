@@ -11,11 +11,11 @@
     "space": 0.65
   },
   "engines": [
-    "OSTERIA"
+    "Osteria"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Coastal brightness \u2014 warmth tempered by sea air",
+  "description": "Coastal brightness — warmth tempered by sea air",
   "tags": [
     "prism",
     "bright",

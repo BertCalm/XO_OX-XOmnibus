@@ -3,12 +3,12 @@
   "name": "HOT KINETIC DENSE VIOLENT FAM 5",
   "mood": "Family",
   "engines": [
-    "ORCA",
-    "ODYSSEY"
+    "Orca",
+    "Odyssey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, warm, kinetic, dense.",
+  "description": "Extreme DNA corners — family, warm, kinetic, dense.",
   "tags": [
     "family",
     "warm",
@@ -35,11 +35,11 @@
     "aggression": 0.924
   },
   "parameters": {
-    "ORCA": {
+    "Orca": {
       "level": 0.654,
       "pan": 0.119
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "level": 0.677,
       "pan": -0.118
     }

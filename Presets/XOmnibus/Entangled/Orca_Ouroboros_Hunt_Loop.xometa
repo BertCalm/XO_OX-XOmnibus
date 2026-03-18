@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Ouroboros Hunt Loop",
   "mood": "Entangled",
-  "engines": ["OUROBOROS", "ORCA"],
+  "engines": [
+    "Ouroboros",
+    "Orca"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Ouroboros chaos feeding Orca hunt macro — the strange attractor's amplitude envelope directly controls coordinated aggression. As Ouroboros reaches chaos threshold, Orca launches into full hunt mode.",
-  "tags": ["entangled", "ouroboros", "orca", "chaos", "hunt"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "ouroboros",
+    "orca",
+    "chaos",
+    "hunt"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.8,
     "MOVEMENT": 0.75,

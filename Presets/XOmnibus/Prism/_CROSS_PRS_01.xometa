@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OLE",
-    "OPTIC"
+    "Ole",
+    "Optic"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.93,
       "macro_movement": 0.513,
       "macro_coupling": 0.318,
       "macro_space": 0.557
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.93,
       "macro_movement": 0.513,
       "macro_coupling": 0.318,

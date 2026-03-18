@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OBSCURA",
-    "ORPHICA"
+    "Obscura",
+    "Orphica"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.8809,
       "macro_movement": 0.8793,
       "macro_coupling": 0.3695,
       "macro_space": 0.1577
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.8337,
       "macro_movement": 0.7035,
       "macro_coupling": 0.6117,

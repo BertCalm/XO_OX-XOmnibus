@@ -4,8 +4,8 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ONSET"
+    "Outwit",
+    "Onset"
   ],
   "author": "XO_OX",
   "macros": {
@@ -23,7 +23,7 @@
     "density": 0.71
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 110,
       "owit_arms": 4,
       "owit_cellSize": 0.214,
@@ -56,5 +56,5 @@
     "wolfram",
     "cellular-automata"
   ],
-  "description": "Onset drum transients trigger OUTWIT rule mutations \u2014 every hit reshapes the cellular law"
+  "description": "Onset drum transients trigger OUTWIT rule mutations — every hit reshapes the cellular law"
 }

@@ -2,8 +2,8 @@
   "name": "Echoic Voyage",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "ORCA"
+    "Odyssey",
+    "Orca"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orca",
     "wavetable"
   ],
-  "description": "Click train and FM sideband merge \u2014 cetacean intelligence guiding the odyssey path"
+  "description": "Click train and FM sideband merge — cetacean intelligence guiding the odyssey path"
 }

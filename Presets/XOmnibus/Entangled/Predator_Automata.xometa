@@ -3,8 +3,8 @@
   "name": "Predator Automata",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ORCA"
+    "Outwit",
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "density": 0.75
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 73,
       "owit_arms": 6,
       "owit_cellSize": 0.162,

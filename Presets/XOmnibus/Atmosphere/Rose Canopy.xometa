@@ -2,7 +2,7 @@
   "name": "Rose Canopy",
   "version": "1.0",
   "engines": [
-    "OPAL"
+    "Opal"
   ],
   "mood": "Atmosphere",
   "macros": {

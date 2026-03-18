@@ -3,8 +3,8 @@
   "name": "Pulse Web",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OPTIC"
+    "Overlap",
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "density": 0.525
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.895,
       "olap_decay": 0.628,
       "olap_damping": 0.645,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ORBITAL",
-    "OUTWIT"
+    "Orbital",
+    "Outwit"
   ],
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.551,
       "macro_movement": 0.384,
       "macro_coupling": 0.922,
       "macro_space": 0.508
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.879,
       "macro_movement": 0.864,
       "macro_coupling": 0.276,

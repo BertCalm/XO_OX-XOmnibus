@@ -2,8 +2,8 @@
   "name": "Frozen Strike",
   "version": "1.0",
   "engines": [
-    "ONSET",
-    "OBSCURA"
+    "Onset",
+    "Obscura"
   ],
   "mood": "Entangled",
   "strategy": "Bright Dark",

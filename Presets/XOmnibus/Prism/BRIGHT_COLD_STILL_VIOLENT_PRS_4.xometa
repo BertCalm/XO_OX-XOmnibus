@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ORPHICA",
-    "ORIGAMI"
+    "Orphica",
+    "Origami"
   ],
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.917,
       "macro_movement": 0.114,
       "macro_coupling": 0.563,
       "macro_space": 0.351
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.499,
       "macro_movement": 0.114,
       "macro_coupling": 0.611,

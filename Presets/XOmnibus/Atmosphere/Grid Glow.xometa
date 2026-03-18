@@ -2,7 +2,7 @@
   "name": "Grid Glow",
   "version": "1.0",
   "engines": [
-    "OPTIC"
+    "Optic"
   ],
   "mood": "Atmosphere",
   "macros": {

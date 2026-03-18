@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OSPREY",
-    "ODDFELIX"
+    "Osprey",
+    "OddfeliX"
   ],
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.916,
       "macro_movement": 0.673,
       "macro_coupling": 0.794,
       "macro_space": 0.123
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.915,
       "macro_movement": 0.654,
       "macro_coupling": 0.82,

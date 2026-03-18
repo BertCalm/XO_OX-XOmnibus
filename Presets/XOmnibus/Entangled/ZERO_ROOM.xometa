@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBLIQUE",
-    "OCTOPUS"
+    "Oblique",
+    "Octopus"
   ],
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.959,
       "macro_movement": 0.653,
       "macro_coupling": 0.511,
       "macro_space": 0.05
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.208,
       "macro_movement": 0.797,
       "macro_coupling": 0.209,

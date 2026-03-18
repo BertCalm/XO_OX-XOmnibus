@@ -19,11 +19,11 @@
     "space": 0.4414
   },
   "engines": [
-    "XOwlfish"
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark sparse gentle still. Designed for TANGLE coupling with XOwlfish.",
+  "description": "Ultra-diverse Entangled preset — dark sparse gentle still. Designed for TANGLE coupling with XOwlfish.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "TANGLE",
   "couplingIntensity": "Medium",
   "parameters": {
-    "XOwlfish": {
+    "Owlfish": {
       "couplingLevel": 0.501,
       "couplingBus": 2
     }

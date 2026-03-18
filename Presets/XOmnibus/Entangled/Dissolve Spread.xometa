@@ -3,12 +3,12 @@
   "name": "Dissolve Spread",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OCEANIC"
+    "Overlap",
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Two deep-water engines in resonance \u2014 OCEANIC pressure feeds OVERLAP space size",
+  "description": "Two deep-water engines in resonance — OCEANIC pressure feeds OVERLAP space size",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.5
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.948,
       "olap_decay": 0.529,
       "olap_damping": 0.375,

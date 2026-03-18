@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ORIGAMI",
-    "OWLFISH"
+    "Origami",
+    "Owlfish"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.366,
       "macro_movement": 0.898,
       "macro_coupling": 0.747,
       "macro_space": 0.384
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.811,
       "macro_movement": 0.898,
       "macro_coupling": 0.623,

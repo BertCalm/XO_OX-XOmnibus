@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT ATM 8",
   "mood": "Atmosphere",
   "engines": [
-    "OWLFISH",
-    "OVERDUB"
+    "Owlfish",
+    "Overdub"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 1.0,
       "macro_movement": 0.77,
       "macro_coupling": 0.67,
       "macro_space": 0.17
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.95,
       "macro_movement": 0.97,
       "macro_coupling": 0.83,

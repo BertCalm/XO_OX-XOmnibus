@@ -3,12 +3,12 @@
   "name": "DARK WARM VAST VIOLENT AET 3",
   "mood": "Aether",
   "engines": [
-    "ODYSSEY",
-    "ORGANON"
+    "Odyssey",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, dark, warm, vast.",
+  "description": "Extreme DNA corners — aether, dark, warm, vast.",
   "tags": [
     "aether",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.916
   },
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "level": 0.724,
       "pan": -0.085
     },
-    "ORGANON": {
+    "Organon": {
       "level": 0.681,
       "pan": 0.033
     }

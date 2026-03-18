@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBLIQUE",
-    "OPTIC"
+    "Oblique",
+    "Optic"
   ],
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.825,
       "macro_movement": 0.775,
       "macro_coupling": 0.675,
       "macro_space": 0.575
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.475,
       "macro_movement": 0.425,
       "macro_coupling": 0.575,

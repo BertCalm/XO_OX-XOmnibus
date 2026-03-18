@@ -2,8 +2,8 @@
   "name": "Sage Shimmer",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OHM"
+    "Opal",
+    "Ohm"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ohm",
     "granular"
   ],
-  "description": "Opal shimmer and sage warmth dissolve into each other \u2014 granular community at rest"
+  "description": "Opal shimmer and sage warmth dissolve into each other — granular community at rest"
 }

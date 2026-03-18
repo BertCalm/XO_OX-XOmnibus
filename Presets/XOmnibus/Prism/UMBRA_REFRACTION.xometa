@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OBLONG",
-    "ODDFELIX"
+    "Oblong",
+    "OddfeliX"
   ],
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.993,
       "macro_movement": 0.246,
       "macro_coupling": 0.221,
       "macro_space": 0.48
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.071,
       "macro_movement": 0.544,
       "macro_coupling": 0.775,

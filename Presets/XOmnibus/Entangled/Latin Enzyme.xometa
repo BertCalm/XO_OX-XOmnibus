@@ -3,12 +3,12 @@
   "name": "Latin Enzyme",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "ORGANON"
+    "Ole",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Organon enzyme kinetics filter-modulate OLE's brightness \u2014 bio-rhythmic drama.",
+  "description": "Organon enzyme kinetics filter-modulate OLE's brightness — bio-rhythmic drama.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.7
   },
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.7,
       "macro_movement": 0.68,
       "macro_coupling": 0.75,
       "macro_space": 0.35
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.55,
       "macro_movement": 0.72,
       "macro_coupling": 0.75,

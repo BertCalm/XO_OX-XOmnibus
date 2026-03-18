@@ -3,8 +3,8 @@
   "name": "Pleated Swarm",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ORIGAMI"
+    "Outwit",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.14
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 182,
       "owit_arms": 8,
       "owit_cellSize": 0.49,
@@ -70,7 +70,7 @@
       "owit_outputLevel": 0.86,
       "owit_outputPan": -0.19
     },
-    "ORIGAMI": {
+    "Origami": {
       "origami_character": 0.72,
       "origami_movement": 0.78,
       "origami_coupling": 0.71,

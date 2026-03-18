@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OUROBOROS"
+    "Ouroboros"
   ],
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.7,
       "macro_movement": 0.6,
       "macro_coupling": 0.45,

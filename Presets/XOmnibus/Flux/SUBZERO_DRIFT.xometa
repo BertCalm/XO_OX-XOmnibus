@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OSTERIA",
-    "OVERBITE"
+    "Osteria",
+    "Overbite"
   ],
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.343,
       "macro_movement": 0.434,
       "macro_coupling": 0.663,
       "macro_space": 0.78
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.372,
       "macro_movement": 0.551,
       "macro_coupling": 0.733,

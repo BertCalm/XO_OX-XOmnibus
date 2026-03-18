@@ -2,8 +2,8 @@
   "name": "Glass Prophecy",
   "version": "1.0",
   "engines": [
-    "OPTIC",
-    "ORACLE"
+    "Optic",
+    "Oracle"
   ],
   "mood": "Entangled",
   "strategy": "Bright Dark",

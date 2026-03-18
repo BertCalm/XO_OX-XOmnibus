@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OCELOT",
-    "ODDOSCAR"
+    "Ocelot",
+    "OddOscar"
   ],
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.179,
       "macro_movement": 1.004,
       "macro_coupling": 0.782,
       "macro_space": 0.983
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.67,
       "macro_movement": 0.986,
       "macro_coupling": 0.248,

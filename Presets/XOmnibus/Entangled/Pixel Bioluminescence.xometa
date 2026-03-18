@@ -3,12 +3,12 @@
   "name": "Pixel Bioluminescence",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "OVERWORLD"
+    "Oceanic",
+    "Overworld"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Chiptune phosphorescence \u2014 Overworld glitch lights the midnight water column.",
+  "description": "Chiptune phosphorescence — Overworld glitch lights the midnight water column.",
   "tags": [
     "entangled",
     "coupling",

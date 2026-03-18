@@ -11,11 +11,11 @@
     "space": 0.8
   },
   "engines": [
-    "OSPREY"
+    "Osprey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Riding the updraft \u2014 open treble soar",
+  "description": "Riding the updraft — open treble soar",
   "tags": [
     "prism",
     "bright",

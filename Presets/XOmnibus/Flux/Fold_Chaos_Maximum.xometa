@@ -3,11 +3,11 @@
   "name": "Fold Chaos Maximum",
   "mood": "Flux",
   "engines": [
-    "ORIGAMI"
+    "Origami"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORIGAMI pushed to extreme brightness \u2014 brightness 0.97, movement 0.87, aggression 0.81. Ultra-bright Flux zone filler.",
+  "description": "ORIGAMI pushed to extreme brightness — brightness 0.97, movement 0.87, aggression 0.81. Ultra-bright Flux zone filler.",
   "tags": [
     "flux",
     "ultra-bright",
@@ -40,7 +40,7 @@
     "aggression": 0.805
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "ori_macro_fold": 0.782,
       "ori_macro_tension": 0.742,
       "ori_macro_couple": 0.347,

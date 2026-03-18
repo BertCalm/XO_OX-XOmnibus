@@ -2,19 +2,50 @@
   "schema_version": 1,
   "name": "Overbite Pack",
   "mood": "Entangled",
-  "engines": ["OVERBITE", "ORCA"],
+  "engines": [
+    "Overbite",
+    "Orca"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Overbite's amplitude feeding Orca formant modulation — the possum's BELLY macro and BITE coupling to Orca's formant intensity. Two apex-of-their-domain animals in sonic conversation.",
-  "tags": ["entangled", "overbite", "orca", "formant", "apex"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "macros": {"CHARACTER": 0.68, "MOVEMENT": 0.48, "COUPLING": 0.75, "SPACE": 0.38},
+  "tags": [
+    "entangled",
+    "overbite",
+    "orca",
+    "formant",
+    "apex"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.75,
+    "SPACE": 0.38
+  },
   "couplingIntensity": "Medium",
-  "dna": {"brightness": 0.5, "warmth": 0.5, "movement": 0.55, "density": 0.68, "space": 0.38, "aggression": 0.62},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.55,
+    "density": 0.68,
+    "space": 0.38,
+    "aggression": 0.62
+  },
   "parameters": {},
   "coupling": {
     "pairs": [
-      {"engineA": "OVERBITE", "engineB": "ORCA", "type": "AmpToFilter", "amount": 0.72}
+      {
+        "engineA": "OVERBITE",
+        "engineB": "ORCA",
+        "type": "AmpToFilter",
+        "amount": 0.72
+      }
     ]
   }
 }

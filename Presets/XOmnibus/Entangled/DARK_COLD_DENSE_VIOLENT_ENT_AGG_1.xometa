@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OPTIC",
-    "OUROBOROS"
+    "Optic",
+    "Ouroboros"
   ],
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.459,
       "macro_movement": 0.638,
       "macro_coupling": 0.985,
       "macro_space": 0.575
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.684,
       "macro_movement": 0.675,
       "macro_coupling": 0.986,

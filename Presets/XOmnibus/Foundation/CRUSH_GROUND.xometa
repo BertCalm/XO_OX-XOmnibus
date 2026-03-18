@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ODYSSEY",
-    "ODDFELIX"
+    "Odyssey",
+    "OddfeliX"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.798,
       "macro_movement": 0.414,
       "macro_coupling": 0.758,
       "macro_space": 0.446
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.361,
       "macro_movement": 0.641,
       "macro_coupling": 0.526,

@@ -2,8 +2,8 @@
   "name": "Drifting Commune",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "ODYSSEY"
+    "Ohm",
+    "Odyssey"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "odyssey",
     "hippy"
   ],
-  "description": "Ohm family gathered then scattered across tonal drift \u2014 warmth persists as everything shifts"
+  "description": "Ohm family gathered then scattered across tonal drift — warmth persists as everything shifts"
 }

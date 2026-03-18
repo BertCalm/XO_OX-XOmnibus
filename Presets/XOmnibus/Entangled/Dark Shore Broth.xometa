@@ -3,12 +3,12 @@
   "name": "Dark Shore Broth",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "OBSIDIAN"
+    "Osteria",
+    "Obsidian"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Obsidian shadow thickens the broth \u2014 dark tones enrich the shore feast.",
+  "description": "Obsidian shadow thickens the broth — dark tones enrich the shore feast.",
   "tags": [
     "entangled",
     "coupling",

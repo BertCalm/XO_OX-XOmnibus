@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OWLFISH",
-    "OTTONI"
+    "Owlfish",
+    "Ottoni"
   ],
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.226,
       "macro_movement": 0.875,
       "macro_coupling": 0.82,
       "macro_space": 0.332
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.691,
       "macro_movement": 0.875,
       "macro_coupling": 0.528,

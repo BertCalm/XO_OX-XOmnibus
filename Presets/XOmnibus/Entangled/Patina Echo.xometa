@@ -2,8 +2,8 @@
   "name": "Patina Echo",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OTTONI"
+    "Overdub",
+    "Ottoni"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ottoni",
     "dub"
   ],
-  "description": "Spring reverb adds age to ottoni harmonics \u2014 brass weathered into warm dub texture"
+  "description": "Spring reverb adds age to ottoni harmonics — brass weathered into warm dub texture"
 }

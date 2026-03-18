@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OWLFISH",
-    "OLE"
+    "Owlfish",
+    "Ole"
   ],
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.933,
       "macro_movement": 0.447,
       "macro_coupling": 0.926,
       "macro_space": 0.99
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.903,
       "macro_movement": 0.473,
       "macro_coupling": 0.951,

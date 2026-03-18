@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT ATM 1",
   "mood": "Atmosphere",
   "engines": [
-    "OVERDUB",
-    "OSPREY"
+    "Overdub",
+    "Osprey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.64,
       "macro_movement": 0.82,
       "macro_coupling": 0.75,
       "macro_space": 0.18
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.99,
       "macro_movement": 0.91,
       "macro_coupling": 0.62,

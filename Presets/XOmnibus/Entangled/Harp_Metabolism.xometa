@@ -3,20 +3,20 @@
   "name": "Harp Metabolism",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "ORGANON"
+    "Orphica",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Microsound harp frequency shifts trigger ORGANON's metabolic cascade \u2014 brightness 0.88.",
+  "description": "Microsound harp frequency shifts trigger ORGANON's metabolic cascade — brightness 0.88.",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.68,
       "macro_movement": 0.55,
       "macro_coupling": 0.68,
       "macro_space": 0.72
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.5,
       "macro_movement": 0.62,
       "macro_coupling": 0.58,

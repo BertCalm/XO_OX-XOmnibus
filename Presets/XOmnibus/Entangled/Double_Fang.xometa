@@ -3,12 +3,12 @@
   "name": "Double Fang",
   "mood": "Entangled",
   "engines": [
-    "OVERBITE",
-    "OBESE"
+    "Overbite",
+    "Obese"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Both BITE and MOJO maxed and coupled \u2014 double bite architecture at total density.",
+  "description": "Both BITE and MOJO maxed and coupled — double bite architecture at total density.",
   "tags": [
     "entangled",
     "brutal",

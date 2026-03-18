@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OVERWORLD",
-    "OBBLIGATO"
+    "Overworld",
+    "Obbligato"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.048,
       "macro_movement": 0.414,
       "macro_coupling": 0.273,
       "macro_space": 0.665
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.437,
       "macro_movement": 0.388,
       "macro_coupling": 0.44,

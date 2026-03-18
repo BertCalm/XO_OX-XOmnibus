@@ -3,12 +3,12 @@
   "name": "Glitch Rhythm",
   "mood": "Entangled",
   "engines": [
-    "OVERWORLD",
-    "ONSET"
+    "Overworld",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "NES glitch chaos injected into Onset XVC \u2014 chip noise as rhythm engine at maximum velocity.",
+  "description": "NES glitch chaos injected into Onset XVC — chip noise as rhythm engine at maximum velocity.",
   "tags": [
     "entangled",
     "brutal",

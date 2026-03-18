@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "name": "Coral Coral \u00d7 Overdub",
+  "name": "Coral Coral × Overdub",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OVERDUB"
+    "Obbligato",
+    "Overdub"
   ],
   "author": "XO_OX",
   "version": "1.0.0",

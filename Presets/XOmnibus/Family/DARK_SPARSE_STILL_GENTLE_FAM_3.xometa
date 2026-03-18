@@ -3,12 +3,12 @@
   "name": "DARK SPARSE STILL GENTLE FAM 3",
   "mood": "Family",
   "engines": [
-    "OCELOT",
-    "ORPHICA"
+    "Ocelot",
+    "Orphica"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, dark, still, sparse.",
+  "description": "Extreme DNA corners — family, dark, still, sparse.",
   "tags": [
     "family",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.055
   },
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "level": 0.743,
       "pan": -0.087
     },
-    "ORPHICA": {
+    "Orphica": {
       "level": 0.752,
       "pan": 0.008
     }

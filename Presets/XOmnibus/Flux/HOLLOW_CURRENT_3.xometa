@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OTTONI",
-    "OBBLIGATO"
+    "Ottoni",
+    "Obbligato"
   ],
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.9745,
       "macro_movement": 0.8184,
       "macro_coupling": 0.6136,
       "macro_space": 0.6427
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.0263,
       "macro_movement": 0.9291,
       "macro_coupling": 0.8295,

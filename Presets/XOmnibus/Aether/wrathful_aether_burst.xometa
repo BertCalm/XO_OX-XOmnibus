@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORACLE",
-    "ONSET"
+    "Oracle",
+    "Onset"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.02,
       "macro_movement": 0.705,
       "macro_coupling": 0.044,
       "macro_space": 0.537
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.373,
       "macro_movement": 0.693,
       "macro_coupling": 0.357,

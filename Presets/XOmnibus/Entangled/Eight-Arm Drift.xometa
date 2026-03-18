@@ -2,8 +2,8 @@
   "name": "Eight-Arm Drift",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OCTOPUS"
+    "Odyssey",
+    "Octopus"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "octopus",
     "wavetable"
   ],
-  "description": "Wavetable drift distributed across eight arms \u2014 each limb pursuing a separate odyssey"
+  "description": "Wavetable drift distributed across eight arms — each limb pursuing a separate odyssey"
 }

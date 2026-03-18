@@ -3,12 +3,12 @@
   "name": "Shadow Topology",
   "mood": "Entangled",
   "engines": [
-    "OMBRE",
-    "OUROBOROS"
+    "Ombre",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Shadow mauve frequency-smeared by Ouroboros \u2014 the memory's topology consumed by chaos.",
+  "description": "Shadow mauve frequency-smeared by Ouroboros — the memory's topology consumed by chaos.",
   "tags": [
     "entangled",
     "brutal",

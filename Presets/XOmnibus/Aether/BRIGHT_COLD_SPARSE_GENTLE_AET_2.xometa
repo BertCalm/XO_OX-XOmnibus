@@ -3,12 +3,12 @@
   "name": "BRIGHT COLD SPARSE GENTLE AET 2",
   "mood": "Aether",
   "engines": [
-    "OBSCURA",
-    "OWLFISH"
+    "Obscura",
+    "Owlfish"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, bright, cold, sparse.",
+  "description": "Extreme DNA corners — aether, bright, cold, sparse.",
   "tags": [
     "aether",
     "bright",
@@ -35,11 +35,11 @@
     "aggression": 0.093
   },
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "level": 0.688,
       "pan": 0.063
     },
-    "OWLFISH": {
+    "Owlfish": {
       "level": 0.826,
       "pan": -0.111
     }

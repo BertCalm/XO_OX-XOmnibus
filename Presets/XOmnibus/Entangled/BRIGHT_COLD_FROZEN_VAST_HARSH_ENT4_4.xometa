@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ONSET",
-    "ORPHICA"
+    "Onset",
+    "Orphica"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.534,
       "macro_movement": 0.056,
       "macro_coupling": 0.526,
       "macro_space": 0.885
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.509,
       "macro_movement": 0.057,
       "macro_coupling": 0.547,

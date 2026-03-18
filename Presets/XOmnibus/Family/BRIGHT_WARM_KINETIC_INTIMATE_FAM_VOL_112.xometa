@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OHM",
-    "OBBLIGATO"
+    "Ohm",
+    "Obbligato"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.902,
       "macro_movement": 0.973,
       "macro_coupling": 0.461,
       "macro_space": 0.072
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.895,
       "macro_movement": 0.978,
       "macro_coupling": 0.47,

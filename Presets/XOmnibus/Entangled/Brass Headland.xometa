@@ -3,8 +3,8 @@
   "name": "Brass Headland",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "OTTONI"
+    "Osprey",
+    "Ottoni"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

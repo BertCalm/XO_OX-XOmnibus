@@ -3,8 +3,8 @@
   "name": "Coral Dual Voice × Opal",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OPAL"
+    "Obbligato",
+    "Opal"
   ],
   "author": "XO_OX",
   "version": "1.0.0",

@@ -3,12 +3,12 @@
   "name": "Evolve Cell",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ORACLE"
+    "Outwit",
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORACLE resonance frequency maps to OUTWIT cell pitch spread \u2014 tone becomes pattern",
+  "description": "ORACLE resonance frequency maps to OUTWIT cell pitch spread — tone becomes pattern",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.65
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 54,
       "owit_arms": 8,
       "owit_cellSize": 0.286,

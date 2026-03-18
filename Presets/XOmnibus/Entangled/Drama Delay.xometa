@@ -2,8 +2,8 @@
   "name": "Drama Delay",
   "version": "1.0",
   "engines": [
-    "OLE",
-    "OVERDUB"
+    "Ole",
+    "Overdub"
   ],
   "mood": "Entangled",
   "strategy": "Warm Sparse",
@@ -35,5 +35,5 @@
     "afro-latin",
     "drama"
   ],
-  "description": "Ol\u00e9's DRAMA axis trailing warm echoes through Overdub's vast dub space."
+  "description": "Olé's DRAMA axis trailing warm echoes through Overdub's vast dub space."
 }

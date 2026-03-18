@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OBSCURA",
-    "OUROBOROS"
+    "Obscura",
+    "Ouroboros"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.624,
       "macro_movement": 0.06,
       "macro_coupling": 0.747,
       "macro_space": 0.643
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.758,
       "macro_movement": 0.154,
       "macro_coupling": 0.559,

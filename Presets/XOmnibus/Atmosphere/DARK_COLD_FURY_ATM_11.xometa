@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OVERBITE",
-    "OCELOT"
+    "Overbite",
+    "Ocelot"
   ],
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.076,
       "macro_movement": 0.328,
       "macro_coupling": 0.824,
       "macro_space": 0.432
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.016,
       "macro_movement": 0.271,
       "macro_coupling": 0.733,

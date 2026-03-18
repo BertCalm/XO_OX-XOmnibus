@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OCEANIC",
-    "OVERDUB"
+    "Oceanic",
+    "Overdub"
   ],
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.413,
       "macro_movement": 0.385,
       "macro_coupling": 0.948,
       "macro_space": 0.658
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.483,
       "macro_movement": 0.452,
       "macro_coupling": 0.085,

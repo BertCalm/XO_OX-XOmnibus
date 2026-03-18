@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OHM",
-    "OUTWIT"
+    "Ohm",
+    "Outwit"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.967,
       "macro_movement": 0.295,
       "macro_coupling": 0.87,
       "macro_space": 0.804
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.468,
       "macro_movement": 0.075,
       "macro_coupling": 0.754,

@@ -3,8 +3,8 @@
   "name": "Rascal Folded Vow",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "ORIGAMI"
+    "Obbligato",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",

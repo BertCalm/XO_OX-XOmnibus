@@ -2,8 +2,8 @@
   "name": "Eight Hands Jam",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OCTOPUS"
+    "Ohm",
+    "Octopus"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "octopus",
     "hippy"
   ],
-  "description": "Ohm rhythm section finds eight unexpected limbs \u2014 communal groove goes multi-armed"
+  "description": "Ohm rhythm section finds eight unexpected limbs — communal groove goes multi-armed"
 }

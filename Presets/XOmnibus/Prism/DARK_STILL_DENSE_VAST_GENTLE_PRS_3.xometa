@@ -3,8 +3,8 @@
   "name": "DARK_STILL_DENSE_VAST_GENTLE_PRS_3",
   "mood": "Prism",
   "engines": [
-    "ORPHICA",
-    "OVERWORLD"
+    "Orphica",
+    "Overworld"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.118,
       "macro_movement": 0.0,
       "macro_coupling": 0.92,
       "macro_space": 0.993
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.18,
       "macro_movement": 0.077,
       "macro_coupling": 0.86,

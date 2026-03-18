@@ -4,8 +4,8 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OVERLAP"
+    "Outwit",
+    "Overlap"
   ],
   "author": "XO_OX",
   "macros": {
@@ -23,7 +23,7 @@
     "aggression": 0.33
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 110,
       "owit_arms": 5,
       "owit_cellSize": 0.364,
@@ -39,7 +39,7 @@
       "owit_couplingLevel": 0.62,
       "owit_couplingBus": 0
     },
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.819,
       "olap_decay": 0.649,
       "olap_damping": 0.61,
@@ -74,5 +74,5 @@
     "deep-water",
     "intelligence"
   ],
-  "description": "Two abyssal intelligences in harmonic resonance \u2014 Wolfram rules translated into FDN mode frequencies; pattern and space become one organism"
+  "description": "Two abyssal intelligences in harmonic resonance — Wolfram rules translated into FDN mode frequencies; pattern and space become one organism"
 }

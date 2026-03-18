@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OHM"
+    "Ohm"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "ohm_macro_character": 0.32,
       "ohm_macro_movement": 0.16,
       "ohm_macro_coupling": 0.28,

@@ -2,8 +2,8 @@
   "name": "Jungle Tape",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OCELOT"
+    "Overdub",
+    "Ocelot"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ocelot",
     "dub"
   ],
-  "description": "Dub loop stalked through dense foliage \u2014 feline tension coiling inside the delay"
+  "description": "Dub loop stalked through dense foliage — feline tension coiling inside the delay"
 }

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ORGANON",
-    "ONSET"
+    "Organon",
+    "Onset"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.06,
       "macro_movement": 0.833,
       "macro_coupling": 0.595,
       "macro_space": 0.972
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.921,
       "macro_movement": 0.798,
       "macro_coupling": 0.469,

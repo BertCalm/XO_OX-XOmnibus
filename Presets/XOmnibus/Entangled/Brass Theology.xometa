@@ -2,8 +2,8 @@
   "name": "Brass Theology",
   "version": "1.0",
   "engines": [
-    "OTTONI",
-    "ORGANON"
+    "Ottoni",
+    "Organon"
   ],
   "mood": "Entangled",
   "strategy": "Warm Sparse",
@@ -35,5 +35,5 @@
     "brass",
     "organ"
   ],
-  "description": "Ottoni's triple brass warmth feeding Organon's theological resonance \u2014 sparse and stately."
+  "description": "Ottoni's triple brass warmth feeding Organon's theological resonance — sparse and stately."
 }

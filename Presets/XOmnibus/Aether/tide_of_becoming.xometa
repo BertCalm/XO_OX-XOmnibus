@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OCEANIC"
+    "Oceanic"
   ],
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.35,
       "macro_movement": 0.85,
       "macro_coupling": 0.22,

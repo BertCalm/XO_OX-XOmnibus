@@ -3,12 +3,12 @@
   "name": "Ocean and Serpent",
   "mood": "Family",
   "engines": [
-    "OCEANIC",
-    "OWLFISH"
+    "Oceanic",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OCEANIC pressure swell + OWLFISH bioluminescence \u2014 the column and the creature. The deep ocean meeting the thing that lives in it.",
+  "description": "OCEANIC pressure swell + OWLFISH bioluminescence — the column and the creature. The deep ocean meeting the thing that lives in it.",
   "tags": [
     "family",
     "reunion",

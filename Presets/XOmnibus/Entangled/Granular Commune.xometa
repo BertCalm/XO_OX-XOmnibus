@@ -2,8 +2,8 @@
   "name": "Granular Commune",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OPAL"
+    "Ohm",
+    "Opal"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "opal",
     "hippy"
   ],
-  "description": "Opal grain clouds dispersed through ohm's sage warmth \u2014 microsound made communal"
+  "description": "Opal grain clouds dispersed through ohm's sage warmth — microsound made communal"
 }

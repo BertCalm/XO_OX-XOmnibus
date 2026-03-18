@@ -3,7 +3,7 @@
   "name": "Abyss",
   "mood": "Foundation",
   "engines": [
-    "OCELOT"
+    "Ocelot"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -26,7 +26,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "ocelot_biome": 1,
       "ocelot_strataBalance": 0.6,
       "ocelot_ecosystemDepth": 0.7,

@@ -3,11 +3,11 @@
   "name": "Osprey Thermal",
   "mood": "Family",
   "engines": [
-    "OSPREY"
+    "Osprey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OSPREY riding warm thermal updraft \u2014 maximum warmth, maximum space, effortless.",
+  "description": "OSPREY riding warm thermal updraft — maximum warmth, maximum space, effortless.",
   "tags": [
     "family",
     "portrait",

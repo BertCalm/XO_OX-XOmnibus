@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OBSIDIAN",
-    "OVERDUB"
+    "Obsidian",
+    "Overdub"
   ],
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.896,
       "macro_movement": 0.749,
       "macro_coupling": 0.348,
       "macro_space": 0.895
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.878,
       "macro_movement": 0.239,
       "macro_coupling": 0.508,

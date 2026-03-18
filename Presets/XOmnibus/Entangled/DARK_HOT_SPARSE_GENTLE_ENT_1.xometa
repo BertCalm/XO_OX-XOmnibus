@@ -3,12 +3,12 @@
   "name": "DARK_HOT_SPARSE_GENTLE_ENT_1",
   "mood": "Entangled",
   "engines": [
-    "OMBRE",
-    "OBLIQUE"
+    "Ombre",
+    "Oblique"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Hot Sparse Gentle character entanglement \u2014 OMBRE \u00d7 OBLIQUE via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Hot Sparse Gentle character entanglement — OMBRE × OBLIQUE via Resonance Share. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.0504
   },
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.7169,
       "macro_movement": 0.4352,
       "macro_coupling": 0.6383,
@@ -57,7 +57,7 @@
       "output_level": 0.7271,
       "coupling_level": 0.5727
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.6933,
       "macro_movement": 0.4558,
       "macro_coupling": 0.6041,

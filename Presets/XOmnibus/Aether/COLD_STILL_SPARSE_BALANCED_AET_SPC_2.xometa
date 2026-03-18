@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORIGAMI",
-    "OBSCURA"
+    "Origami",
+    "Obscura"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.187,
       "macro_movement": 0.082,
       "macro_coupling": 0.647,
       "macro_space": 0.543
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.184,
       "macro_movement": 0.072,
       "macro_coupling": 0.67,

@@ -3,12 +3,12 @@
   "name": "Memory Barrage",
   "mood": "Entangled",
   "engines": [
-    "OMBRE",
-    "ONSET"
+    "Ombre",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ombre memory layer chaos-injected into Onset percussion \u2014 grief as machine barrage.",
+  "description": "Ombre memory layer chaos-injected into Onset percussion — grief as machine barrage.",
   "tags": [
     "entangled",
     "brutal",

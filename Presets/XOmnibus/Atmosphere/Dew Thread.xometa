@@ -2,7 +2,7 @@
   "name": "Dew Thread",
   "version": "1.0",
   "engines": [
-    "ORPHICA"
+    "Orphica"
   ],
   "mood": "Atmosphere",
   "macros": {

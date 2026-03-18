@@ -3,12 +3,12 @@
   "name": "The Grand Entanglement",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OUTWIT"
+    "Overlap",
+    "Outwit"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "The ultimate aquatic coupling: Lion's Mane FDN reverb meets Giant Pacific Octopus cellular automata \u2014 space and pattern entangled",
+  "description": "The ultimate aquatic coupling: Lion's Mane FDN reverb meets Giant Pacific Octopus cellular automata — space and pattern entangled",
   "tags": [
     "coupling",
     "entangled",
@@ -45,7 +45,7 @@
     "movement": 0.7
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.919,
       "olap_decay": 0.703,
       "olap_damping": 0.608,
@@ -61,7 +61,7 @@
       "olap_couplingLevel": 0.697,
       "olap_couplingBus": 0
     },
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 54,
       "owit_arms": 7,
       "owit_cellSize": 0.446,

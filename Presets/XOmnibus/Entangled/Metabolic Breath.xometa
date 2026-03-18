@@ -2,8 +2,8 @@
   "name": "Metabolic Breath",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "ORGANON"
+    "Obbligato",
+    "Organon"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "organon",
     "wind"
   ],
-  "description": "Organon metabolic rate obligated to OBBLIGATO breath tempo \u2014 biology must keep pace with the reed"
+  "description": "Organon metabolic rate obligated to OBBLIGATO breath tempo — biology must keep pace with the reed"
 }

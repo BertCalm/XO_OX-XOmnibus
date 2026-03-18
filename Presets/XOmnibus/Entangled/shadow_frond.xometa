@@ -3,8 +3,8 @@
   "name": "Shadow Frond",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OBSCURA"
+    "Overlap",
+    "Obscura"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.23
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.75,
       "olap_decay": 0.55,
       "olap_damping": 0.34,
@@ -69,7 +69,7 @@
       "olap_outputLevel": 0.73,
       "olap_outputPan": -0.12
     },
-    "OBSCURA": {
+    "Obscura": {
       "obscura_character": 0.64,
       "obscura_movement": 0.71,
       "obscura_coupling": 0.84,

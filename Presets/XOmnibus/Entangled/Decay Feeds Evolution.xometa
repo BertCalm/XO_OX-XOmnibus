@@ -4,8 +4,8 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OVERLAP"
+    "Outwit",
+    "Overlap"
   ],
   "author": "XO_OX",
   "macros": {
@@ -23,7 +23,7 @@
     "aggression": 0.32
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 110,
       "owit_arms": 8,
       "owit_cellSize": 0.392,
@@ -39,7 +39,7 @@
       "owit_couplingLevel": 0.51,
       "owit_couplingBus": 0
     },
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.676,
       "olap_decay": 0.607,
       "olap_damping": 0.334,
@@ -74,5 +74,5 @@
     "generation",
     "clock"
   ],
-  "description": "OVERLAP decay length modulates OUTWIT generation rate \u2014 the longer the tail, the faster the evolution; reverb time as a cellular clock"
+  "description": "OVERLAP decay length modulates OUTWIT generation rate — the longer the tail, the faster the evolution; reverb time as a cellular clock"
 }

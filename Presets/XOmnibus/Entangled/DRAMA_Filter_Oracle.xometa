@@ -3,20 +3,20 @@
   "name": "DRAMA Filter Oracle",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "ORACLE"
+    "Ole",
+    "Oracle"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Filter coupling \u2014 DRAMA macro sweeps forward into ORACLE's GENDY resonant body \u2014 aggression 0.86.",
+  "description": "Filter coupling — DRAMA macro sweeps forward into ORACLE's GENDY resonant body — aggression 0.86.",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.8,
       "macro_movement": 0.72,
       "macro_coupling": 0.82,
       "macro_space": 0.38
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.66,
       "macro_movement": 0.68,
       "macro_coupling": 0.72,

@@ -2,17 +2,38 @@
   "schema_version": 1,
   "name": "NES Pulse Lead",
   "mood": "Foundation",
-  "engines": ["OVERWORLD"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Pure NES 2A03 pulse lead — the building block of a generation of melodies.",
-  "tags": ["nes", "pulse", "lead", "chip", "foundation", "2a03"],
-  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "tags": [
+    "nes",
+    "pulse",
+    "lead",
+    "chip",
+    "foundation",
+    "2a03"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.72, "warmth": 0.35, "movement": 0.4, "density": 0.5, "space": 0.25, "aggression": 0.45},
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.35,
+    "movement": 0.4,
+    "density": 0.5,
+    "space": 0.25,
+    "aggression": 0.45
+  },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_era": 0,
       "ow_macro_era": 0.05,
       "ow_macro_chaos": 0.05,
@@ -23,6 +44,8 @@
       "ow_couplingBus": 0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

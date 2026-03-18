@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ORIGAMI",
-    "OVERDUB"
+    "Origami",
+    "Overdub"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.491,
       "macro_movement": 0.632,
       "macro_coupling": 0.748,
       "macro_space": 0.243
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.15,
       "macro_movement": 0.495,
       "macro_coupling": 0.851,

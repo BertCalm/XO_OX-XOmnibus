@@ -3,12 +3,12 @@
   "name": "Siphon In Silver",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "OBSCURA"
+    "Orphica",
+    "Obscura"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "ORPHICA siphonophore envelope linked into Obscura's decay \u2014 colony fades to silver.",
+  "description": "ORPHICA siphonophore envelope linked into Obscura's decay — colony fades to silver.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.05
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.65,
       "macro_movement": 0.52,
       "macro_coupling": 0.68,
       "macro_space": 0.78
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.52,
       "macro_movement": 0.58,
       "macro_coupling": 0.68,

@@ -2,8 +2,8 @@
   "name": "Cryo Serpentine",
   "version": "1.0",
   "engines": [
-    "OUROBOROS",
-    "OPTIC"
+    "Ouroboros",
+    "Optic"
   ],
   "mood": "Entangled",
   "strategy": "Fast Cold",

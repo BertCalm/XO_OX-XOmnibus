@@ -2,8 +2,8 @@
   "name": "Grove Stalk",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OCELOT"
+    "Ohm",
+    "Ocelot"
   ],
   "mood": "Entangled",
   "macros": {

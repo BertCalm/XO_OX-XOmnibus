@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "ORACLE"
+    "Ole",
+    "Oracle"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.232,
       "macro_movement": 0.45,
       "macro_coupling": 0.429,
       "macro_space": 0.641
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.29,
       "macro_movement": 0.455,
       "macro_coupling": 0.328,

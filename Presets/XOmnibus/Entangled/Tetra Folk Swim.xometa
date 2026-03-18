@@ -2,8 +2,8 @@
   "name": "Tetra Folk Swim",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "ODDFELIX"
+    "Ohm",
+    "OddfeliX"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oddfelix",
     "hippy"
   ],
-  "description": "Neon arc cuts through sage haze \u2014 OddfeliX sharp edges softened by ohm's communal gravity"
+  "description": "Neon arc cuts through sage haze — OddfeliX sharp edges softened by ohm's communal gravity"
 }

@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT PRM 5",
   "mood": "Prism",
   "engines": [
-    "ORACLE",
-    "ONSET"
+    "Oracle",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.86,
       "macro_movement": 0.91,
       "macro_coupling": 0.83,
       "macro_space": 0.12
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.67,
       "macro_movement": 0.71,
       "macro_coupling": 0.59,

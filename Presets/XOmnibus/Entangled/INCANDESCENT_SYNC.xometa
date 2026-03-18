@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "ORGANON"
+    "Osteria",
+    "Organon"
   ],
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.463,
       "macro_movement": 0.554,
       "macro_coupling": 0.792,
       "macro_space": 0.896
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.45,
       "macro_movement": 0.81,
       "macro_coupling": 0.652,

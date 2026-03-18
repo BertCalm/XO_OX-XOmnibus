@@ -3,11 +3,11 @@
   "name": "Oscar's Shadow Self",
   "mood": "Family",
   "engines": [
-    "ODDOSCAR"
+    "OddOscar"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ODDOSCAR at maximum weight and minimum light \u2014 the character unmasked.",
+  "description": "ODDOSCAR at maximum weight and minimum light — the character unmasked.",
   "tags": [
     "family",
     "portrait",

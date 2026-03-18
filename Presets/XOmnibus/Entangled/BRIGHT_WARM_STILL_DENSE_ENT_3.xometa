@@ -3,12 +3,12 @@
   "name": "BRIGHT_WARM_STILL_DENSE_ENT_3",
   "mood": "Entangled",
   "engines": [
-    "OPTIC",
-    "OBSIDIAN"
+    "Optic",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Warm Still Dense character entanglement \u2014 OPTIC \u00d7 OBSIDIAN via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Warm Still Dense character entanglement — OPTIC × OBSIDIAN via Resonance Share. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.3364
   },
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.9839,
       "macro_movement": 0.0379,
       "macro_coupling": 0.6828,
@@ -57,7 +57,7 @@
       "output_level": 0.9287,
       "coupling_level": 0.6959
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.9294,
       "macro_movement": 0.0389,
       "macro_coupling": 0.714,

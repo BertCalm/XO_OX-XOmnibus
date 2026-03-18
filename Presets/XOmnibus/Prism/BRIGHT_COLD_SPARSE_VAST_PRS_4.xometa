@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ORIGAMI",
-    "OBLIQUE"
+    "Origami",
+    "Oblique"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.632,
       "macro_movement": 0.603,
       "macro_coupling": 0.486,
       "macro_space": 0.951
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.249,
       "macro_movement": 0.603,
       "macro_coupling": 0.308,

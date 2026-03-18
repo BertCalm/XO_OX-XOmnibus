@@ -3,20 +3,20 @@
   "name": "Velocity Serpent",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OUROBOROS"
+    "Ole",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Velocity coupling: OLE's attack energy winds OUROBOROS's recursion rate tighter.",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.82,
       "macro_movement": 0.74,
       "macro_coupling": 0.82,
       "macro_space": 0.34
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.74,
       "macro_movement": 0.78,
       "macro_coupling": 0.77,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OVERWORLD",
-    "OBSCURA"
+    "Overworld",
+    "Obscura"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.942,
       "macro_movement": 0.896,
       "macro_coupling": 0.625,
       "macro_space": 0.593
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.925,
       "macro_movement": 0.912,
       "macro_coupling": 0.601,

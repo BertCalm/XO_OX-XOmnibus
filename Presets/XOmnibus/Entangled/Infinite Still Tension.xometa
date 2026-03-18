@@ -2,8 +2,8 @@
   "name": "Infinite Still Tension",
   "version": "1.0",
   "engines": [
-    "ORGANON",
-    "OUROBOROS"
+    "Organon",
+    "Ouroboros"
   ],
   "mood": "Entangled",
   "strategy": "Still Aggressive",
@@ -35,5 +35,5 @@
     "infinite",
     "tension"
   ],
-  "description": "The snake eating itself according to formal logical rules \u2014 infinite aggression held motionless."
+  "description": "The snake eating itself according to formal logical rules — infinite aggression held motionless."
 }

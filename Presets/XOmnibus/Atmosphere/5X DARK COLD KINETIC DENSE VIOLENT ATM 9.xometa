@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT ATM 9",
   "mood": "Atmosphere",
   "engines": [
-    "OBBLIGATO",
-    "ORBITAL"
+    "Obbligato",
+    "Orbital"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.92,
       "macro_movement": 0.92,
       "macro_coupling": 0.52,
       "macro_space": 0.31
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.67,
       "macro_movement": 0.93,
       "macro_coupling": 0.84,

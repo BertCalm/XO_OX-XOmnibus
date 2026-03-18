@@ -3,12 +3,12 @@
   "name": "Daguerreotype Dance",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OBSCURA"
+    "Ole",
+    "Obscura"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "OLE vibrant timbre blended with Obscura's silver grain \u2014 vintage dance floor.",
+  "description": "OLE vibrant timbre blended with Obscura's silver grain — vintage dance floor.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.55
   },
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.68,
       "macro_movement": 0.65,
       "macro_coupling": 0.6,
       "macro_space": 0.38
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.52,
       "macro_movement": 0.58,
       "macro_coupling": 0.6,

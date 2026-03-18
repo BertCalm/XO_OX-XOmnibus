@@ -3,12 +3,12 @@
   "name": "Arm Topology",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ONSET"
+    "Outwit",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Outwit 8-arm velocity coupled into Onset XVC \u2014 Wolfram CA feeding drum velocity at maximum kinetics.",
+  "description": "Outwit 8-arm velocity coupled into Onset XVC — Wolfram CA feeding drum velocity at maximum kinetics.",
   "tags": [
     "entangled",
     "brutal",

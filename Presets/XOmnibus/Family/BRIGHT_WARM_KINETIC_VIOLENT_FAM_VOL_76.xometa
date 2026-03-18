@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OTTONI",
-    "OBBLIGATO"
+    "Ottoni",
+    "Obbligato"
   ],
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.968,
       "macro_movement": 0.857,
       "macro_coupling": 0.776,
       "macro_space": 0.379
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.951,
       "macro_movement": 0.869,
       "macro_coupling": 0.782,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OPAL",
-    "OCELOT"
+    "Opal",
+    "Ocelot"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.051,
       "macro_movement": 0.916,
       "macro_coupling": 0.829,
       "macro_space": 0.898
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.334,
       "macro_movement": 0.866,
       "macro_coupling": 0.98,

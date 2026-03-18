@@ -3,8 +3,8 @@
   "name": "Brass Announcement",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "OTTONI"
+    "Osteria",
+    "Ottoni"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

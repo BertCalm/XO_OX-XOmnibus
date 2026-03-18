@@ -3,11 +3,11 @@
   "name": "Obese Core Collapse",
   "mood": "Family",
   "engines": [
-    "OBESE"
+    "Obese"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OBESE beyond event horizon \u2014 saturation beyond recovery, density star.",
+  "description": "OBESE beyond event horizon — saturation beyond recovery, density star.",
   "tags": [
     "family",
     "portrait",

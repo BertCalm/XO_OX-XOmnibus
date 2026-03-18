@@ -19,11 +19,11 @@
     "density": 0.4524
   },
   "engines": [
-    "XObbligato"
+    "Obbligato"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 cold intimate kinetic dark. Designed for ECHO coupling with XObbligato.",
+  "description": "Ultra-diverse Entangled preset — cold intimate kinetic dark. Designed for ECHO coupling with XObbligato.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "ECHO",
   "couplingIntensity": "Extreme",
   "parameters": {
-    "XObbligato": {
+    "Obbligato": {
       "couplingLevel": 0.556,
       "couplingBus": 1
     }

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Resonant Pluck",
+  "mood": "Foundation",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "High-resonance pluck — filter self-oscillation at the edge of feedback, bright and ringing.",
+  "tags": ["resonant", "pluck", "ring", "feedback"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.84, "warmth": 0.2, "movement": 0.4, "density": 0.22, "space": 0.52, "aggression": 0.22},
+  "parameters": {
+    "OddfeliX": {"snap_oscMode": 0, "snap_snap": 0.62, "snap_decay": 0.48, "snap_detune": 0.03, "snap_filterCutoff": 12000.0, "snap_filterReso": 0.88, "snap_filterEnvDepth": 0.65, "snap_unison": 1, "snap_sweepDirection": 0, "snap_pitchLock": 0.94, "snap_polyphony": 6, "snap_level": 0.72, "snap_macroDart": 0.32, "snap_macroDepth": 0.38, "snap_macroSchool": 0.08, "snap_macroSurface": 0.75}
+  },
+  "macros": {"CHARACTER": 0.68, "MOVEMENT": 0.4, "COUPLING": 0.0, "SPACE": 0.52},
+  "coupling": {"pairs": []}
+}

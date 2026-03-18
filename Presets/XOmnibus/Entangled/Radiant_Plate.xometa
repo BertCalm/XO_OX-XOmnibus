@@ -3,8 +3,8 @@
   "name": "Radiant Plate",
   "mood": "Entangled",
   "engines": [
-    "OHM",
-    "OWLFISH"
+    "Ohm",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.0
   },
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.628,
       "macro_movement": 0.308,
       "macro_coupling": 0.741,
       "macro_space": 0.582
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.484,
       "macro_movement": 0.622,
       "macro_coupling": 0.742,

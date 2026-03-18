@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OVERWORLD",
-    "OPAL"
+    "Overworld",
+    "Opal"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.624,
       "macro_movement": 0.039,
       "macro_coupling": 0.882,
       "macro_space": 0.116
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.513,
       "macro_movement": 0.036,
       "macro_coupling": 0.948,

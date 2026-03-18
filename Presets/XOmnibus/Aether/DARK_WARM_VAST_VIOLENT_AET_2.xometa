@@ -3,12 +3,12 @@
   "name": "DARK WARM VAST VIOLENT AET 2",
   "mood": "Aether",
   "engines": [
-    "OVERDUB",
-    "ORBITAL"
+    "Overdub",
+    "Orbital"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, dark, warm, vast.",
+  "description": "Extreme DNA corners — aether, dark, warm, vast.",
   "tags": [
     "aether",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.96
   },
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "level": 0.684,
       "pan": 0.005
     },
-    "ORBITAL": {
+    "Orbital": {
       "level": 0.686,
       "pan": 0.012
     }

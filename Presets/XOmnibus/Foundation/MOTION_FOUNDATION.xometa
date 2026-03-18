@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OWLFISH",
-    "OBLONG"
+    "Owlfish",
+    "Oblong"
   ],
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.598,
       "macro_movement": 0.957,
       "macro_coupling": 0.775,
       "macro_space": 0.646
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.606,
       "macro_movement": 0.891,
       "macro_coupling": 0.66,

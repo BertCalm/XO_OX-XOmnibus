@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORBITAL",
-    "OUTWIT"
+    "Orbital",
+    "Outwit"
   ],
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.646,
       "macro_movement": 0.309,
       "macro_coupling": 0.441,
       "macro_space": 0.58
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.732,
       "macro_movement": 0.09,
       "macro_coupling": 0.295,

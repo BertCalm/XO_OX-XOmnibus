@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ODYSSEY",
-    "ORACLE"
+    "Odyssey",
+    "Oracle"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.4,
       "macro_movement": 0.5,
       "macro_coupling": 0.8,
       "macro_space": 0.4
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.7,
       "macro_movement": 0.5,
       "macro_coupling": 0.8,

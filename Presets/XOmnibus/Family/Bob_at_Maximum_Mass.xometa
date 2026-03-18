@@ -3,11 +3,11 @@
   "name": "Bob at Maximum Mass",
   "mood": "Family",
   "engines": [
-    "OBLONG"
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OBLONG at maximum density \u2014 shape compressed to its most irreducible weight.",
+  "description": "OBLONG at maximum density — shape compressed to its most irreducible weight.",
   "tags": [
     "family",
     "portrait",

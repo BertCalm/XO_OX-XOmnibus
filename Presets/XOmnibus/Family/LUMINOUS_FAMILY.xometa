@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OBBLIGATO",
-    "OCELOT"
+    "Obbligato",
+    "Ocelot"
   ],
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.791,
       "macro_movement": 0.568,
       "macro_coupling": 0.757,
       "macro_space": 0.175
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.856,
       "macro_movement": 0.897,
       "macro_coupling": 0.827,

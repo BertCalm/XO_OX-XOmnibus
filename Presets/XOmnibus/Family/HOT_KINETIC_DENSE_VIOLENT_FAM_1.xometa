@@ -3,12 +3,12 @@
   "name": "HOT KINETIC DENSE VIOLENT FAM 1",
   "mood": "Family",
   "engines": [
-    "OBBLIGATO",
-    "OUTWIT"
+    "Obbligato",
+    "Outwit"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, warm, kinetic, dense.",
+  "description": "Extreme DNA corners — family, warm, kinetic, dense.",
   "tags": [
     "family",
     "warm",
@@ -35,11 +35,11 @@
     "aggression": 0.935
   },
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "level": 0.688,
       "pan": 0.134
     },
-    "OUTWIT": {
+    "Outwit": {
       "level": 0.847,
       "pan": -0.141
     }

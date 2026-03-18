@@ -2,8 +2,8 @@
   "name": "Slant Shimmer",
   "version": "1.0",
   "engines": [
-    "ORPHICA",
-    "OBLIQUE"
+    "Orphica",
+    "Oblique"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oblique",
     "microsound"
   ],
-  "description": "Harp glissando deflected mid-arc \u2014 oblique strategy reshapes the melodic curve"
+  "description": "Harp glissando deflected mid-arc — oblique strategy reshapes the melodic curve"
 }

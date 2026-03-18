@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OVERBITE",
-    "ORCA"
+    "Overbite",
+    "Orca"
   ],
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.608,
       "macro_movement": 0.291,
       "macro_coupling": 0.406,
       "macro_space": 0.84
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.405,
       "macro_movement": 0.191,
       "macro_coupling": 0.796,

@@ -2,8 +2,8 @@
   "name": "Mass Monolith",
   "version": "1.0",
   "engines": [
-    "OBESE",
-    "OBSIDIAN"
+    "Obese",
+    "Obsidian"
   ],
   "mood": "Entangled",
   "strategy": "Still Aggressive",
@@ -35,5 +35,5 @@
     "massive",
     "monolithic"
   ],
-  "description": "XObese's low-end mass fused with Obsidian's volcanic density \u2014 immovable and crushing."
+  "description": "XObese's low-end mass fused with Obsidian's volcanic density — immovable and crushing."
 }

@@ -3,11 +3,11 @@
   "name": "Crystal Siphonophore",
   "mood": "Family",
   "engines": [
-    "ORPHICA"
+    "Orphica"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORPHICA maximum scatter in full light \u2014 the harp colony at peak luminescence.",
+  "description": "ORPHICA maximum scatter in full light — the harp colony at peak luminescence.",
   "tags": [
     "family",
     "portrait",

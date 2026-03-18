@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "ODDOSCAR",
-    "OPTIC"
+    "OddOscar",
+    "Optic"
   ],
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.481,
       "macro_movement": 0.496,
       "macro_coupling": 0.726,
       "macro_space": 0.75
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.465,
       "macro_movement": 0.568,
       "macro_coupling": 0.879,

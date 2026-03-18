@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OSTERIA",
-    "OBESE"
+    "Osteria",
+    "Obese"
   ],
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.611,
       "macro_movement": 0.129,
       "macro_coupling": 0.097,
       "macro_space": 0.373
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.987,
       "macro_movement": 0.558,
       "macro_coupling": 0.366,

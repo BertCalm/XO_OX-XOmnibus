@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "name": "Coral The Bond \u00d7 Orphica",
+  "name": "Coral The Bond × Orphica",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "ORPHICA"
+    "Obbligato",
+    "Orphica"
   ],
   "author": "XO_OX",
   "version": "1.0.0",

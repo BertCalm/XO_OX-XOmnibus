@@ -3,11 +3,11 @@
   "name": "Obsidian Veil",
   "mood": "Atmosphere",
   "engines": [
-    "OBSIDIAN"
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "OBSIDIAN \u2014 dark extreme brightness preset for Atmosphere.",
+  "description": "OBSIDIAN — dark extreme brightness preset for Atmosphere.",
   "tags": [
     "atmosphere",
     "dark",
@@ -37,7 +37,7 @@
     "aggression": 0.82
   },
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "obs_glassResonance": 0.65,
       "obs_filterCutoff": 0.31,
       "obs_filterReso": 0.44,

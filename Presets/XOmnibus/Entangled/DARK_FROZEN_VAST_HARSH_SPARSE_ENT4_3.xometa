@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OPTIC",
-    "OVERLAP"
+    "Optic",
+    "Overlap"
   ],
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.344,
       "macro_movement": 0.093,
       "macro_coupling": 0.077,
       "macro_space": 0.954
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.352,
       "macro_movement": 0.095,
       "macro_coupling": 0.044,

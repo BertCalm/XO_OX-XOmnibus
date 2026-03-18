@@ -3,12 +3,12 @@
   "name": "BRIGHT_DENSE_VAST_GENTLE_ENT_5",
   "mood": "Entangled",
   "engines": [
-    "ORCA",
-    "ODDOSCAR"
+    "Orca",
+    "OddOscar"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Dense Vast Gentle character entanglement \u2014 ORCA \u00d7 ODDOSCAR via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Dense Vast Gentle character entanglement — ORCA × ODDOSCAR via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.0285
   },
   "parameters": {
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.759,
       "macro_movement": 0.3149,
       "macro_coupling": 0.5904,
@@ -57,7 +57,7 @@
       "output_level": 0.9295,
       "coupling_level": 0.5334
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.7881,
       "macro_movement": 0.3541,
       "macro_coupling": 0.6142,

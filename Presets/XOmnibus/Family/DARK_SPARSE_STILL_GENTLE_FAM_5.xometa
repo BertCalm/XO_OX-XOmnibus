@@ -3,12 +3,12 @@
   "name": "DARK SPARSE STILL GENTLE FAM 5",
   "mood": "Family",
   "engines": [
-    "OBLIQUE",
-    "OTTONI"
+    "Oblique",
+    "Ottoni"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, dark, still, sparse.",
+  "description": "Extreme DNA corners — family, dark, still, sparse.",
   "tags": [
     "family",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.097
   },
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "level": 0.781,
       "pan": -0.132
     },
-    "OTTONI": {
+    "Ottoni": {
       "level": 0.783,
       "pan": -0.14
     }

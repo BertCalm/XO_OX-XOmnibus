@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "OSTERIA"
+    "Ouroboros",
+    "Osteria"
   ],
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.721,
       "macro_movement": 0.066,
       "macro_coupling": 0.985,
       "macro_space": 0.512
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.057,
       "macro_movement": 0.063,
       "macro_coupling": 0.772,

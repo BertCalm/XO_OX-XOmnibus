@@ -2,8 +2,8 @@
   "name": "Bond Spring",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OBBLIGATO"
+    "Overdub",
+    "Obbligato"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "obbligato",
     "dub"
   ],
-  "description": "Spring reverb rings between two reed voices \u2014 the obligate bond sustained in echo"
+  "description": "Spring reverb rings between two reed voices — the obligate bond sustained in echo"
 }

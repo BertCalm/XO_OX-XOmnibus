@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OUROBOROS",
-    "ONSET"
+    "Ouroboros",
+    "Onset"
   ],
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.5479,
       "macro_movement": 0.8972,
       "macro_coupling": 0.7437,
       "macro_space": 0.4747
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.2592,
       "macro_movement": 0.2472,
       "macro_coupling": 0.6377,

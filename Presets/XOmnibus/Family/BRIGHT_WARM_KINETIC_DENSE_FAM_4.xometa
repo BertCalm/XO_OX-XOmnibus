@@ -3,12 +3,12 @@
   "name": "BRIGHT WARM KINETIC DENSE FAM 4",
   "mood": "Family",
   "engines": [
-    "ORIGAMI",
-    "OSPREY"
+    "Origami",
+    "Osprey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, bright, warm, kinetic.",
+  "description": "Extreme DNA corners — family, bright, warm, kinetic.",
   "tags": [
     "family",
     "bright",
@@ -35,11 +35,11 @@
     "aggression": 0.532
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "level": 0.718,
       "pan": -0.046
     },
-    "OSPREY": {
+    "Osprey": {
       "level": 0.771,
       "pan": -0.073
     }

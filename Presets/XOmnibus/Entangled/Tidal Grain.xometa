@@ -2,8 +2,8 @@
   "name": "Tidal Grain",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OCEANIC"
+    "Opal",
+    "Oceanic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oceanic",
     "granular"
   ],
-  "description": "Granular particles swept on oceanic current \u2014 opal cloud dispersed by tidal pressure"
+  "description": "Granular particles swept on oceanic current — opal cloud dispersed by tidal pressure"
 }

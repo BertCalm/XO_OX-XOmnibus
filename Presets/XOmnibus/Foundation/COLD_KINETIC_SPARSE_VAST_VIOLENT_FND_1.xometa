@@ -3,8 +3,8 @@
   "name": "COLD_KINETIC_SPARSE_VAST_VIOLENT_FND_1",
   "mood": "Foundation",
   "engines": [
-    "ONSET",
-    "ODDFELIX"
+    "Onset",
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.405,
       "macro_movement": 0.984,
       "macro_coupling": 0.12,
       "macro_space": 0.998
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.523,
       "macro_movement": 0.968,
       "macro_coupling": 0.154,

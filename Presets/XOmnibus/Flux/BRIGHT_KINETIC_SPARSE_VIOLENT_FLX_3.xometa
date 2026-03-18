@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OVERWORLD",
-    "OCEANIC"
+    "Overworld",
+    "Oceanic"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.9099,
       "macro_movement": 0.8752,
       "macro_coupling": 0.8122,
       "macro_space": 0.7219
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.7916,
       "macro_movement": 0.9459,
       "macro_coupling": 0.7792,

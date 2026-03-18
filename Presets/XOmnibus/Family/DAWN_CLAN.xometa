@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OSTERIA",
-    "ODYSSEY"
+    "Osteria",
+    "Odyssey"
   ],
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.574,
       "macro_movement": 0.535,
       "macro_coupling": 0.723,
       "macro_space": 0.937
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.913,
       "macro_movement": 0.175,
       "macro_coupling": 0.882,

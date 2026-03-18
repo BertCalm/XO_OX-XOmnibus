@@ -3,12 +3,12 @@
   "name": "DARK_COLD_KINETIC_INTIMATE_ENT_1",
   "mood": "Entangled",
   "engines": [
-    "OMBRE",
-    "ORGANON"
+    "Ombre",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Cold Kinetic Intimate character entanglement \u2014 OMBRE \u00d7 ORGANON via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Cold Kinetic Intimate character entanglement — OMBRE × ORGANON via Velocity Couple. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.4061
   },
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.3753,
       "macro_movement": 0.9166,
       "macro_coupling": 0.7466,
@@ -57,7 +57,7 @@
       "output_level": 0.8131,
       "coupling_level": 0.7406
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.3113,
       "macro_movement": 0.9139,
       "macro_coupling": 0.7085,

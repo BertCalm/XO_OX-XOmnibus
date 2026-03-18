@@ -2,8 +2,8 @@
   "name": "Angled Cloud",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OBLIQUE"
+    "Opal",
+    "Oblique"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oblique",
     "granular"
   ],
-  "description": "Opal grain scatter redirected mid-flight \u2014 oblique intelligence reshaping the granular field"
+  "description": "Opal grain scatter redirected mid-flight — oblique intelligence reshaping the granular field"
 }

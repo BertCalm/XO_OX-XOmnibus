@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "ODDOSCAR",
-    "ORPHICA"
+    "OddOscar",
+    "Orphica"
   ],
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.085,
       "macro_movement": 0.304,
       "macro_coupling": 0.083,
       "macro_space": 0.098
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.085,
       "macro_movement": 0.304,
       "macro_coupling": 0.083,

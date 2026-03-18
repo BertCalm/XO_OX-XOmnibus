@@ -3,8 +3,8 @@
   "name": "Eternal Return",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "OTTONI"
+    "Ouroboros",
+    "Ottoni"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
@@ -34,13 +34,13 @@
     "aggression": 0.5
   },
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.5,
       "macro_movement": 0.7,
       "macro_coupling": 0.55,
       "macro_space": 0.45
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.68,
       "macro_movement": 0.48,
       "macro_coupling": 0.55,

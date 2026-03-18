@@ -3,12 +3,12 @@
   "name": "HOT_FROZEN_SPARSE_VAST_GENTLE_ENT3_2",
   "mood": "Entangled",
   "engines": [
-    "OBLONG",
-    "OPTIC"
+    "Oblong",
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: HOT_FROZEN_SPARSE_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: HOT_FROZEN_SPARSE_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.6937,
       "macro_movement": 0.0304,
       "macro_coupling": 0.8938,
       "macro_space": 0.1065
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.6035,
       "macro_movement": 0.0314,
       "macro_coupling": 0.7829,

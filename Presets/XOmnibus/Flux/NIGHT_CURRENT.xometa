@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OMBRE",
-    "OVERDUB"
+    "Ombre",
+    "Overdub"
   ],
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.697,
       "macro_movement": 0.554,
       "macro_coupling": 0.192,
       "macro_space": 0.665
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.379,
       "macro_movement": 0.748,
       "macro_coupling": 0.174,

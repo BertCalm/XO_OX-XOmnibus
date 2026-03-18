@@ -3,12 +3,12 @@
   "name": "Oblique Drift",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "OBLIQUE"
+    "Oceanic",
+    "Oblique"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBLIQUE's lateral drift catches the surface current \u2014 not against the tide, sideways.",
+  "description": "OBLIQUE's lateral drift catches the surface current — not against the tide, sideways.",
   "tags": [
     "entangled",
     "coupling",

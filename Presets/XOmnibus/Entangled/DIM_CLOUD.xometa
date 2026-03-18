@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "OBLONG"
+    "Osprey",
+    "Oblong"
   ],
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.908,
       "macro_movement": 0.113,
       "macro_coupling": 0.22,
       "macro_space": 0.812
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.978,
       "macro_movement": 0.045,
       "macro_coupling": 0.655,

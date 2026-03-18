@@ -3,12 +3,12 @@
   "name": "Daguerreotype Siren",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "OBSCURA"
+    "Orphica",
+    "Obscura"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "ORPHICA siren timbre blended with Obscura silver grain \u2014 vintage marine photograph.",
+  "description": "ORPHICA siren timbre blended with Obscura silver grain — vintage marine photograph.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.06
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.62,
       "macro_movement": 0.52,
       "macro_coupling": 0.6,
       "macro_space": 0.75
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.52,
       "macro_movement": 0.58,
       "macro_coupling": 0.6,

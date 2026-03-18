@@ -3,8 +3,8 @@
   "name": "Warm String Tavern",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "OBLONG"
+    "Osteria",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

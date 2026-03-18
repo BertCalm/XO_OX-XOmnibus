@@ -3,12 +3,12 @@
   "name": "Pixels and Paper",
   "mood": "Family",
   "engines": [
-    "OVERWORLD",
-    "ORIGAMI"
+    "Overworld",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERWORLD chip voice + ORIGAMI paper fold \u2014 NES geometry meeting Japanese precision. Pixel and crease. The unlikely duo that works.",
+  "description": "OVERWORLD chip voice + ORIGAMI paper fold — NES geometry meeting Japanese precision. Pixel and crease. The unlikely duo that works.",
   "tags": [
     "family",
     "reunion",

@@ -3,8 +3,8 @@
   "name": "Tactical Syllogism",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ORGANON"
+    "Outwit",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.31
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 30,
       "owit_arms": 8,
       "owit_cellSize": 0.32,
@@ -70,7 +70,7 @@
       "owit_outputLevel": 0.73,
       "owit_outputPan": 0.11
     },
-    "ORGANON": {
+    "Organon": {
       "organon_character": 0.7,
       "organon_movement": 0.66,
       "organon_coupling": 0.65,

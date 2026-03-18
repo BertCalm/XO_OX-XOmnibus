@@ -3,20 +3,20 @@
   "name": "Hibiscus Biome",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "ORGANON"
+    "Ole",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Timbre blend \u2014 DRAMA's tropical palette colors ORGANON's bio-signal vermillion.",
+  "description": "Timbre blend — DRAMA's tropical palette colors ORGANON's bio-signal vermillion.",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.76,
       "macro_movement": 0.7,
       "macro_coupling": 0.76,
       "macro_space": 0.4
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.6,
       "macro_movement": 0.68,
       "macro_coupling": 0.65,

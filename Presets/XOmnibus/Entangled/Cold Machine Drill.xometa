@@ -2,8 +2,8 @@
   "name": "Cold Machine Drill",
   "version": "1.0",
   "engines": [
-    "OBLIQUE",
-    "ONSET"
+    "Oblique",
+    "Onset"
   ],
   "mood": "Entangled",
   "strategy": "Fast Cold",

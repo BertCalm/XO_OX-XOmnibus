@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OPAL",
-    "ORACLE"
+    "Opal",
+    "Oracle"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.12,
       "macro_movement": 0.32,
       "macro_coupling": 0.78,
       "macro_space": 0.95
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.09,
       "macro_movement": 0.27,
       "macro_coupling": 0.83,
@@ -46,5 +46,5 @@
     "divination",
     "sparse"
   ],
-  "description": "Oracle frequency-shifts grain positions \u2014 divination through spectral scarcity."
+  "description": "Oracle frequency-shifts grain positions — divination through spectral scarcity."
 }

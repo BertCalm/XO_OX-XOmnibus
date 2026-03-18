@@ -2,7 +2,7 @@
   "name": "Wool Blanket",
   "version": "1.0",
   "engines": [
-    "OBLONG"
+    "Oblong"
   ],
   "mood": "Atmosphere",
   "macros": {

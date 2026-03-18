@@ -2,8 +2,8 @@
   "name": "Wolfram Pixel Rush",
   "version": "1.0",
   "engines": [
-    "OCTOPUS",
-    "OVERWORLD"
+    "Octopus",
+    "Overworld"
   ],
   "mood": "Entangled",
   "strategy": "Fast Cold",

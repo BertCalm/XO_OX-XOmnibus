@@ -2,12 +2,29 @@
   "schema_version": 1,
   "name": "SNES RPG Town",
   "mood": "Atmosphere",
-  "engines": ["OVERWORLD"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "You've arrived at Narshe. Or Porre. Or Truce Village. The SPC700 playing its warmest, most domestic register — the music of a place where people live normal lives while you are on a world-saving quest. Yasunori Mitsuda / Uematsu town register: major key, gentle, slightly melancholic if you listen long enough.",
-  "tags": ["snes", "RPG", "town", "SPC700", "atmosphere", "JRPG", "Mitsuda", "Uematsu", "warm"],
-  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "tags": [
+    "snes",
+    "RPG",
+    "town",
+    "SPC700",
+    "atmosphere",
+    "JRPG",
+    "Mitsuda",
+    "Uematsu",
+    "warm"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -19,7 +36,7 @@
     "aggression": 0.1
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_macro_era": 0.95,
       "ow_macro_chaos": 0.05,
       "ow_macro_couple": 0.15,
@@ -29,6 +46,13 @@
       "ow_couplingBus": 0
     }
   },
-  "macros": {"ERA": 0.95, "CHAOS": 0.05, "COUPLE": 0.15, "SPACE": 0.65},
-  "coupling": {"pairs": []}
+  "macros": {
+    "ERA": 0.95,
+    "CHAOS": 0.05,
+    "COUPLE": 0.15,
+    "SPACE": 0.65
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

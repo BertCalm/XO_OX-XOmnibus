@@ -2,8 +2,8 @@
   "name": "Spring Signal",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OPTIC"
+    "Overdub",
+    "Optic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "optic",
     "dub"
   ],
-  "description": "Spring reverb bloom refracts through an optical array \u2014 resonance split to spectrum"
+  "description": "Spring reverb bloom refracts through an optical array — resonance split to spectrum"
 }

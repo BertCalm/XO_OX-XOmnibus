@@ -3,11 +3,11 @@
   "name": "Overworld Sunrise",
   "mood": "Family",
   "engines": [
-    "OVERWORLD"
+    "Overworld"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERWORLD chip sunrise \u2014 NES palette at dawn, all 16 colors fully lit.",
+  "description": "OVERWORLD chip sunrise — NES palette at dawn, all 16 colors fully lit.",
   "tags": [
     "family",
     "portrait",

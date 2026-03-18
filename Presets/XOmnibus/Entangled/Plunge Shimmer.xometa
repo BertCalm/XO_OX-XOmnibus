@@ -2,8 +2,8 @@
   "name": "Plunge Shimmer",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OSPREY"
+    "Opal",
+    "Osprey"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "osprey",
     "granular"
   ],
-  "description": "Grain cloud breaks at the waterline \u2014 osprey plunge moment frozen in opal shimmer"
+  "description": "Grain cloud breaks at the waterline — osprey plunge moment frozen in opal shimmer"
 }

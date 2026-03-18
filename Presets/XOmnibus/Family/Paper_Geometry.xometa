@@ -3,11 +3,11 @@
   "name": "Paper Geometry",
   "mood": "Family",
   "engines": [
-    "ORIGAMI"
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORIGAMI at rest \u2014 the perfect fold. Tension geometric, air between planes. Delicate structure that holds its shape without effort.",
+  "description": "ORIGAMI at rest — the perfect fold. Tension geometric, air between planes. Delicate structure that holds its shape without effort.",
   "tags": [
     "family",
     "signature",

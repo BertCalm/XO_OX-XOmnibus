@@ -2,8 +2,8 @@
   "name": "Crystal Echo",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "ORPHICA"
+    "Overdub",
+    "Orphica"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orphica",
     "dub"
   ],
-  "description": "Spring reverb carries microsound particles forward \u2014 shimmer locked inside the bloom"
+  "description": "Spring reverb carries microsound particles forward — shimmer locked inside the bloom"
 }

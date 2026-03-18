@@ -2,8 +2,8 @@
   "name": "Spectral Voyage",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OPTIC"
+    "Odyssey",
+    "Optic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "optic",
     "wavetable"
   ],
-  "description": "Odyssey FM sideband spectrum beamed through optical prism \u2014 journey charted in light"
+  "description": "Odyssey FM sideband spectrum beamed through optical prism — journey charted in light"
 }

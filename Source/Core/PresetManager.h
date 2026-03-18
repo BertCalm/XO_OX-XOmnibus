@@ -20,6 +20,12 @@ inline const juce::StringArray validEngineNames {
     "Ocelot", "Osprey", "Osteria", "Owlfish",
     "Ohm", "Orphica", "Obbligato", "Ottoni", "Ole",
     "Optic", "Oblique", "Ombre", "Orca", "Octopus",
+    // Phase 4 engines
+    "Overlap", "Outwit",
+    // V1 concept engines
+    "OpenSky", "Ostinato", "OceanDeep", "Ouie",
+    // V2 theorem engines
+    "Overtone", "Organism",
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
     "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
@@ -64,6 +70,9 @@ inline juce::String resolveEngineAlias(const juce::String& name)
         { "XOverworld",  "Overworld" },
         { "XOrca",       "Orca"      },
         { "XOctopus",    "Octopus"   },
+        // Phase 4 engine aliases
+        { "XOverlap",    "Overlap"   },
+        { "XOutwit",     "Outwit"    },
     };
     auto it = aliases.find(name);
     return (it != aliases.end()) ? it->second : name;
@@ -107,12 +116,12 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         { "Ombre",       "ombre"   },
         { "Orca",        "orca"    },
         { "Octopus",     "octo"    },
-        { "XOverlap",    "olap"    },
-        { "XOutwit",     "owit"    },
+        { "Overlap",     "olap"    },
+        { "Outwit",      "owit"    },
         // V1 Concept Engines
         { "OpenSky",     "sky"     },
         { "Ostinato",    "osti"    },
-        { "Oceandeep",   "deep"    },
+        { "OceanDeep",   "deep"    },
         { "Ouie",        "ouie"    },
         // V2 Theorem Engines
         { "Overtone",    "over"    },

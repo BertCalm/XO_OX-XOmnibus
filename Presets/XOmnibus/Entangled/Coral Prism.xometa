@@ -2,8 +2,8 @@
   "name": "Coral Prism",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OPTIC"
+    "Obbligato",
+    "Optic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "optic",
     "wind"
   ],
-  "description": "OBBLIGATO dual-wind spectrum refracted through optic prism \u2014 air becomes light spectrum"
+  "description": "OBBLIGATO dual-wind spectrum refracted through optic prism — air becomes light spectrum"
 }

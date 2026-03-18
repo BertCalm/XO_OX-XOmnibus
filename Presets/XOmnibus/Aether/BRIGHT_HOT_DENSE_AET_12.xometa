@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OVERDUB",
-    "OCTOPUS"
+    "Overdub",
+    "Octopus"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.923,
       "macro_movement": 0.363,
       "macro_coupling": 0.569,
       "macro_space": 0.413
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 1.0,
       "macro_movement": 0.407,
       "macro_coupling": 0.569,

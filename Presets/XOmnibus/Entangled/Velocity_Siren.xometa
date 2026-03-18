@@ -3,20 +3,20 @@
   "name": "Velocity Siren",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "OUROBOROS"
+    "Orphica",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Velocity coupling: delicate ORPHICA touch slows OUROBOROS's cycle; hard attacks accelerate it.",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.72,
       "macro_movement": 0.58,
       "macro_coupling": 0.72,
       "macro_space": 0.7
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.64,
       "macro_movement": 0.66,
       "macro_coupling": 0.67,

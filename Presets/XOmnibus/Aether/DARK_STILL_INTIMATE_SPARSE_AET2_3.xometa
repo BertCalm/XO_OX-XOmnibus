@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORGANON",
-    "OBSCURA"
+    "Organon",
+    "Obscura"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.0273,
       "macro_movement": 0.1164,
       "macro_coupling": 0.1021,
       "macro_space": 0.0278
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.01,
       "macro_movement": 0.1644,
       "macro_coupling": 0.1089,

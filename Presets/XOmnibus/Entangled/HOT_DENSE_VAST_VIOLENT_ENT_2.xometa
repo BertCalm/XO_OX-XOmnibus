@@ -3,12 +3,12 @@
   "name": "HOT_DENSE_VAST_VIOLENT_ENT_2",
   "mood": "Entangled",
   "engines": [
-    "ODYSSEY",
-    "OBESE"
+    "Odyssey",
+    "Obese"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Hot Dense Vast Violent character entanglement \u2014 ODYSSEY \u00d7 OBESE via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "description": "Hot Dense Vast Violent character entanglement — ODYSSEY × OBESE via Velocity Couple. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "warm",
@@ -41,7 +41,7 @@
     "aggression": 0.985
   },
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.82,
       "macro_movement": 0.3515,
       "macro_coupling": 0.9169,
@@ -57,7 +57,7 @@
       "output_level": 0.9522,
       "coupling_level": 0.9829
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.8254,
       "macro_movement": 0.4153,
       "macro_coupling": 0.93,

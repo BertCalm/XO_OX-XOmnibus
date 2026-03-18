@@ -2,8 +2,8 @@
   "name": "Rotating Wind",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "ORBITAL"
+    "Obbligato",
+    "Orbital"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orbital",
     "wind"
   ],
-  "description": "OBBLIGATO dual-channel breath mapped to orbital ring rotation \u2014 wind becomes orbit"
+  "description": "OBBLIGATO dual-channel breath mapped to orbital ring rotation — wind becomes orbit"
 }

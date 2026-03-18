@@ -3,8 +3,8 @@
   "name": "Tail-Loop Assault",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OUROBOROS"
+    "Outwit",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.79
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 126,
       "owit_arms": 8,
       "owit_cellSize": 0.41,
@@ -70,7 +70,7 @@
       "owit_outputLevel": 0.74,
       "owit_outputPan": 0.24
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "ouro_character": 0.3,
       "ouro_movement": 0.44,
       "ouro_coupling": 0.53,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "ODYSSEY",
-    "OMBRE"
+    "Odyssey",
+    "Ombre"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.703,
       "macro_movement": 0.309,
       "macro_coupling": 0.34,
       "macro_space": 0.006
     },
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.87,
       "macro_movement": 0.566,
       "macro_coupling": 0.401,

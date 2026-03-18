@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "name": "OBBLIGATO Bond \u2014 Overdub",
+  "name": "OBBLIGATO Bond — Overdub",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OVERDUB"
+    "Obbligato",
+    "Overdub"
   ],
   "author": "XO_OX",
   "version": "1.0.0",

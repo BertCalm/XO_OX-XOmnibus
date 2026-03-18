@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "ORACLE",
-    "OCEANIC"
+    "Oracle",
+    "Oceanic"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.923,
       "macro_movement": 0.921,
       "macro_coupling": 0.648,
       "macro_space": 0.368
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.923,
       "macro_movement": 0.921,
       "macro_coupling": 0.648,

@@ -2,8 +2,8 @@
   "name": "Carnival Delay",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OLE"
+    "Overdub",
+    "Ole"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ole",
     "dub"
   ],
-  "description": "Ole drama macro feeds dub delay \u2014 festival percussion echoing through the night"
+  "description": "Ole drama macro feeds dub delay — festival percussion echoing through the night"
 }

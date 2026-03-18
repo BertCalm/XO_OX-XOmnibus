@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "OWLFISH"
+    "Orphica",
+    "Owlfish"
   ],
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.5466,
       "macro_movement": 0.0739,
       "macro_coupling": 0.9781,
       "macro_space": 0.9877
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.2992,
       "macro_movement": 0.962,
       "macro_coupling": 0.8761,

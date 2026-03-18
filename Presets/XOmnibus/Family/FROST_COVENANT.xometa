@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OUTWIT",
-    "OCEANIC"
+    "Outwit",
+    "Oceanic"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.606,
       "macro_movement": 0.511,
       "macro_coupling": 0.385,
       "macro_space": 0.577
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.255,
       "macro_movement": 0.709,
       "macro_coupling": 0.002,

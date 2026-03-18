@@ -3,12 +3,12 @@
   "name": "Morph Singularity",
   "mood": "Entangled",
   "engines": [
-    "ODDOSCAR",
-    "OUROBOROS"
+    "OddOscar",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Morph parameter frequency-smeared by Ouroboros \u2014 axolotl regeneration as brutal topology.",
+  "description": "Morph parameter frequency-smeared by Ouroboros — axolotl regeneration as brutal topology.",
   "tags": [
     "entangled",
     "brutal",

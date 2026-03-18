@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OUROBOROS",
-    "OVERBITE"
+    "Ouroboros",
+    "Overbite"
   ],
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.929,
       "macro_movement": 0.415,
       "macro_coupling": 0.365,
       "macro_space": 0.537
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.947,
       "macro_movement": 0.461,
       "macro_coupling": 0.355,

@@ -2,8 +2,8 @@
   "name": "Clave Grain",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OLE"
+    "Opal",
+    "Ole"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ole",
     "granular"
   ],
-  "description": "Afro-Latin clave rhythm scattered across grain field \u2014 percussion becoming texture"
+  "description": "Afro-Latin clave rhythm scattered across grain field — percussion becoming texture"
 }

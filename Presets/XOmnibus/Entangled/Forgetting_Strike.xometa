@@ -3,12 +3,12 @@
   "name": "Forgetting Strike",
   "mood": "Entangled",
   "engines": [
-    "OMBRE",
-    "OUROBOROS"
+    "Ombre",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Forgetting layer chaos-injected by Ouroboros topology \u2014 the narrative erased by mathematics.",
+  "description": "Forgetting layer chaos-injected by Ouroboros topology — the narrative erased by mathematics.",
   "tags": [
     "entangled",
     "brutal",

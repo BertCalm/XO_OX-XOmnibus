@@ -3,11 +3,11 @@
   "name": "Tape Blackout",
   "mood": "Family",
   "engines": [
-    "OVERDUB"
+    "Overdub"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERDUB saturated to extinction \u2014 tape eaten alive, signal buried in dark.",
+  "description": "OVERDUB saturated to extinction — tape eaten alive, signal buried in dark.",
   "tags": [
     "family",
     "portrait",

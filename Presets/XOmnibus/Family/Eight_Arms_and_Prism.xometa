@@ -3,12 +3,12 @@
   "name": "Eight Arms and Prism",
   "mood": "Family",
   "engines": [
-    "OCTOPUS",
-    "OPTIC"
+    "Octopus",
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OCTOPUS distributed intelligence + OPTIC prismatic light \u2014 the problem solver and the spectrum. Eight arms catching every frequency.",
+  "description": "OCTOPUS distributed intelligence + OPTIC prismatic light — the problem solver and the spectrum. Eight arms catching every frequency.",
   "tags": [
     "family",
     "reunion",

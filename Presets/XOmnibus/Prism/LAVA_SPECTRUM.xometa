@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OBSIDIAN",
-    "OCTOPUS"
+    "Obsidian",
+    "Octopus"
   ],
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.154,
       "macro_movement": 0.814,
       "macro_coupling": 0.337,
       "macro_space": 0.704
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 1.0,
       "macro_movement": 0.25,
       "macro_coupling": 0.314,

@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Castle Theme F",
   "mood": "Flux",
-  "engines": ["OVERWORLD"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Not World 8-4 again — this is a different castle, a harder one, one where the tempo shuffles between NES pulse arpeggiations and SNES sample layering. The letter F is not a level number. It's a feeling: fleeting, frantic, falling.",
-  "tags": ["nes-snes", "castle", "flux", "arp", "movement", "platform", "danger", "run"],
-  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "tags": [
+    "nes-snes",
+    "castle",
+    "flux",
+    "arp",
+    "movement",
+    "platform",
+    "danger",
+    "run"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 152,
   "dna": {
@@ -19,7 +35,7 @@
     "aggression": 0.68
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_macro_era": 0.18,
       "ow_macro_chaos": 0.38,
       "ow_macro_couple": 0.22,
@@ -29,6 +45,13 @@
       "ow_couplingBus": 0
     }
   },
-  "macros": {"ERA": 0.18, "CHAOS": 0.38, "COUPLE": 0.22, "SPACE": 0.25},
-  "coupling": {"pairs": []}
+  "macros": {
+    "ERA": 0.18,
+    "CHAOS": 0.38,
+    "COUPLE": 0.22,
+    "SPACE": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -3,8 +3,8 @@
   "name": "Deep Current",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OCEANIC"
+    "Overlap",
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "density": 0.6
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.873,
       "olap_decay": 0.715,
       "olap_damping": 0.443,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ODYSSEY",
-    "OBLONG"
+    "Odyssey",
+    "Oblong"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.8485,
       "macro_movement": 0.9787,
       "macro_coupling": 0.493,
       "macro_space": 0.8419
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.8085,
       "macro_movement": 0.862,
       "macro_coupling": 0.6128,

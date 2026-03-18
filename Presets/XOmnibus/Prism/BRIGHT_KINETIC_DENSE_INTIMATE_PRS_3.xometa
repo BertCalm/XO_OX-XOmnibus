@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OTTONI",
-    "OPTIC"
+    "Ottoni",
+    "Optic"
   ],
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.706,
       "macro_movement": 0.905,
       "macro_coupling": 0.565,
       "macro_space": 0.049
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.323,
       "macro_movement": 0.905,
       "macro_coupling": 0.428,

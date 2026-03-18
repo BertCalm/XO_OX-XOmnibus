@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OCTOPUS",
-    "ORACLE"
+    "Octopus",
+    "Oracle"
   ],
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.997,
       "macro_movement": 0.725,
       "macro_coupling": 0.968,
       "macro_space": 0.103
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.668,
       "macro_movement": 0.715,
       "macro_coupling": 0.55,

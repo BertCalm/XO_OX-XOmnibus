@@ -3,11 +3,11 @@
   "name": "Volcanic Glass",
   "mood": "Family",
   "engines": [
-    "OBSIDIAN"
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OBSIDIAN unsheathed \u2014 edge maximum, mass full, brightness nearly absent. The sharpest thing in the kit. Use with intent.",
+  "description": "OBSIDIAN unsheathed — edge maximum, mass full, brightness nearly absent. The sharpest thing in the kit. Use with intent.",
   "tags": [
     "family",
     "signature",

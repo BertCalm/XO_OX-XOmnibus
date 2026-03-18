@@ -3,11 +3,11 @@
   "name": "Spotted Hunter",
   "mood": "Family",
   "engines": [
-    "OCELOT"
+    "Ocelot"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OCELOT in motion \u2014 HUNT macro engaged, agility full. Quick attack, precise placement, feline economy of movement.",
+  "description": "OCELOT in motion — HUNT macro engaged, agility full. Quick attack, precise placement, feline economy of movement.",
   "tags": [
     "family",
     "signature",

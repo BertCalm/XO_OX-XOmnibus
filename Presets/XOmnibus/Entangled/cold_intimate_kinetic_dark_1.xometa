@@ -19,11 +19,11 @@
     "density": 0.5375
   },
   "engines": [
-    "XOrphica"
+    "Orphica"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 cold intimate kinetic dark. Designed for ORBIT coupling with XOrphica.",
+  "description": "Ultra-diverse Entangled preset — cold intimate kinetic dark. Designed for ORBIT coupling with XOrphica.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "ORBIT",
   "couplingIntensity": "High",
   "parameters": {
-    "XOrphica": {
+    "Orphica": {
       "couplingLevel": 0.546,
       "couplingBus": 1
     }

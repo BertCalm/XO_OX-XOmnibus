@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ODDOSCAR"
+    "Overlap",
+    "OddOscar"
   ],
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.077,
       "macro_movement": 0.43,
       "macro_coupling": 0.075,
       "macro_space": 0.127
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.11,
       "macro_movement": 0.483,
       "macro_coupling": 0.083,

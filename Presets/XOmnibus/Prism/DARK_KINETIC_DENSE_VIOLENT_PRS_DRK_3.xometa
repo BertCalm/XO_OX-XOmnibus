@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OCELOT",
-    "ORACLE"
+    "Ocelot",
+    "Oracle"
   ],
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.7079,
       "macro_movement": 0.9032,
       "macro_coupling": 0.8704,
       "macro_space": 0.6084
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.7244,
       "macro_movement": 0.9081,
       "macro_coupling": 0.8393,

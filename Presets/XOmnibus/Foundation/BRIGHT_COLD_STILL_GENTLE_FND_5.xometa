@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OBESE",
-    "OVERBITE"
+    "Obese",
+    "Overbite"
   ],
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.444,
       "macro_movement": 0.814,
       "macro_coupling": 0.661,
       "macro_space": 0.38
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.133,
       "macro_movement": 0.125,
       "macro_coupling": 0.58,

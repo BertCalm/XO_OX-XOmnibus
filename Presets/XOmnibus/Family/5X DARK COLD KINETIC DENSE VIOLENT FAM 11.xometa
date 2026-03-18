@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT FAM 11",
   "mood": "Family",
   "engines": [
-    "OUTWIT",
-    "ORIGAMI"
+    "Outwit",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.85,
       "macro_movement": 0.61,
       "macro_coupling": 0.66,
       "macro_space": 0.14
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.9,
       "macro_movement": 0.79,
       "macro_coupling": 0.62,

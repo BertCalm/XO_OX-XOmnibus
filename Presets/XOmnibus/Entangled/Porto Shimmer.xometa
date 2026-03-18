@@ -2,8 +2,8 @@
   "name": "Porto Shimmer",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OSTERIA"
+    "Opal",
+    "Osteria"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "osteria",
     "granular"
   ],
-  "description": "Porto wine-dark warmth diffuses through opal grain field \u2014 granular tavern texture"
+  "description": "Porto wine-dark warmth diffuses through opal grain field — granular tavern texture"
 }

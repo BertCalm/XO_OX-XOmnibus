@@ -2,8 +2,8 @@
   "name": "Commune Grain",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OHM"
+    "Opal",
+    "Ohm"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ohm",
     "granular"
   ],
-  "description": "Communal ohm warmth seeded into granular field \u2014 folk presence distributed across cloud"
+  "description": "Communal ohm warmth seeded into granular field — folk presence distributed across cloud"
 }

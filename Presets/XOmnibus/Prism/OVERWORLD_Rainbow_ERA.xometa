@@ -2,17 +2,38 @@
   "schema_version": 1,
   "name": "Rainbow ERA",
   "mood": "Prism",
-  "engines": ["OVERWORLD"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "ERA triangle center with maximum spread — three chip eras bleeding into each other in full color.",
-  "tags": ["era", "rainbow", "prism", "spread", "chip", "overworld"],
-  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "tags": [
+    "era",
+    "rainbow",
+    "prism",
+    "spread",
+    "chip",
+    "overworld"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.9, "warmth": 0.35, "movement": 0.45, "density": 0.65, "space": 0.6, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.35,
+    "movement": 0.45,
+    "density": 0.65,
+    "space": 0.6,
+    "aggression": 0.35
+  },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_era": 0,
       "ow_macro_era": 0.5,
       "ow_macro_chaos": 0.15,
@@ -23,6 +44,8 @@
       "ow_couplingBus": 0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

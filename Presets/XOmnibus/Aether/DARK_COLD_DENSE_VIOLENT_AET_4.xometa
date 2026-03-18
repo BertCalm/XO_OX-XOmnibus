@@ -3,12 +3,12 @@
   "name": "DARK COLD DENSE VIOLENT AET 4",
   "mood": "Aether",
   "engines": [
-    "ODYSSEY",
-    "ORGANON"
+    "Odyssey",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, dark, cold, dense.",
+  "description": "Extreme DNA corners — aether, dark, cold, dense.",
   "tags": [
     "aether",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.94
   },
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "level": 0.723,
       "pan": -0.023
     },
-    "ORGANON": {
+    "Organon": {
       "level": 0.73,
       "pan": 0.026
     }

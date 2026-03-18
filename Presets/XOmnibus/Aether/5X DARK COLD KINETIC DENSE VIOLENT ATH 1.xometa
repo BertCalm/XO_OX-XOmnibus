@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT ATH 1",
   "mood": "Aether",
   "engines": [
-    "OBLONG",
-    "ODYSSEY"
+    "Oblong",
+    "Odyssey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.9,
       "macro_movement": 0.94,
       "macro_coupling": 0.6,
       "macro_space": 0.4
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.95,
       "macro_movement": 0.94,
       "macro_coupling": 0.54,

@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Tetris Variant B",
   "mood": "Flux",
-  "engines": ["OVERWORLD"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Not the Korobeiniki melody everyone knows — this is the B-type music, the slower rotating one, the one that plays while you watch blocks pile up and realize the situation is already worse than you thought. NES-to-Genesis ERA blend, moderate chaos, hypnotic flux.",
-  "tags": ["tetris", "nes-genesis", "flux", "hypnotic", "falling", "moderate", "loop", "movement"],
-  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "tags": [
+    "tetris",
+    "nes-genesis",
+    "flux",
+    "hypnotic",
+    "falling",
+    "moderate",
+    "loop",
+    "movement"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 128,
   "dna": {
@@ -19,7 +35,7 @@
     "aggression": 0.42
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_macro_era": 0.28,
       "ow_macro_chaos": 0.28,
       "ow_macro_couple": 0.32,
@@ -29,6 +45,13 @@
       "ow_couplingBus": 0
     }
   },
-  "macros": {"ERA": 0.28, "CHAOS": 0.28, "COUPLE": 0.32, "SPACE": 0.35},
-  "coupling": {"pairs": []}
+  "macros": {
+    "ERA": 0.28,
+    "CHAOS": 0.28,
+    "COUPLE": 0.32,
+    "SPACE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

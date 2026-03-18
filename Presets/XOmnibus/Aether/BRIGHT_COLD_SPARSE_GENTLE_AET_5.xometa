@@ -3,12 +3,12 @@
   "name": "BRIGHT COLD SPARSE GENTLE AET 5",
   "mood": "Aether",
   "engines": [
-    "OPTIC",
-    "OBBLIGATO"
+    "Optic",
+    "Obbligato"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, bright, cold, sparse.",
+  "description": "Extreme DNA corners — aether, bright, cold, sparse.",
   "tags": [
     "aether",
     "bright",
@@ -35,11 +35,11 @@
     "aggression": 0.069
   },
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "level": 0.807,
       "pan": 0.105
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "level": 0.784,
       "pan": 0.138
     }

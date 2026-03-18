@@ -3,8 +3,8 @@
   "name": "Self-Feeding Chaos",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OUROBOROS"
+    "Outwit",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.98
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 182,
       "owit_arms": 8,
       "owit_cellSize": 0.24,
@@ -70,7 +70,7 @@
       "owit_outputLevel": 0.7,
       "owit_outputPan": -0.07
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "ouro_character": 0.44,
       "ouro_movement": 0.43,
       "ouro_coupling": 0.72,

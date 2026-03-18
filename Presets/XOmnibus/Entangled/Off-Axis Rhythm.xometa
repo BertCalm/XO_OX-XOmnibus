@@ -2,8 +2,8 @@
   "name": "Off-Axis Rhythm",
   "version": "1.0",
   "engines": [
-    "OLE",
-    "OBLIQUE"
+    "Ole",
+    "Oblique"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oblique",
     "afro-latin"
   ],
-  "description": "Clave redirected obliquely \u2014 familiar African pulse arrives from unexpected angle"
+  "description": "Clave redirected obliquely — familiar African pulse arrives from unexpected angle"
 }

@@ -3,8 +3,8 @@
   "name": "Osprey Strike Pattern",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "ONSET"
+    "Osprey",
+    "Onset"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

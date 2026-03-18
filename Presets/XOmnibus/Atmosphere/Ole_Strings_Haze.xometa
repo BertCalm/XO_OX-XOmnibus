@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Strings Haze",
+  "mood": "Atmosphere",
+  "engines": ["Ole"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "All strings at low level with high sympathetic resonance, a warm haze of Latin harmonics.",
+  "tags": ["latin", "strings", "haze", "sympathetic", "warm"],
+  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.45, "warmth": 0.72, "movement": 0.35, "density": 0.38, "space": 0.8, "aggression": 0.08},
+  "parameters": {
+    "Ole": {
+      "ole_allianceConfig": 0,
+      "ole_allianceBlend": 0.58,
+      "ole_aunt1Level": 0.45,
+      "ole_aunt1Brightness": 0.45,
+      "ole_aunt1StrumRate": 1.0,
+      "ole_aunt2Level": 0.42,
+      "ole_aunt2GourdSize": 0.5,
+      "ole_aunt2CoinPress": 0.38,
+      "ole_aunt3Level": 0.45,
+      "ole_aunt3Brightness": 0.48,
+      "ole_aunt3Tremolo": 0.45,
+      "ole_husbandOudLevel": 0.38,
+      "ole_husbandBouzLevel": 0.32,
+      "ole_husbandPinLevel": 0.3,
+      "ole_damping": 0.2,
+      "ole_sympatheticAmt": 0.82,
+      "ole_driftRate": 1.5,
+      "ole_driftDepth": 0.35,
+      "ole_macroDrama": 0.2,
+      "ole_macroFuego": 0.22,
+      "ole_macroIsla": 0.58,
+      "ole_macroSides": 0.35
+    }
+  },
+  "macros": {"DRAMA": 0.2, "FUEGO": 0.22, "ISLA": 0.58, "SIDES": 0.35},
+  "coupling": {"pairs": []}
+}

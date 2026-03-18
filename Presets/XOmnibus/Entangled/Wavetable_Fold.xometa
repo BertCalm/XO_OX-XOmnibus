@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ODYSSEY",
-    "ORIGAMI"
+    "Odyssey",
+    "Origami"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.16,
       "macro_movement": 0.42,
       "macro_coupling": 0.7,
       "macro_space": 0.91
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.13,
       "macro_movement": 0.37,
       "macro_coupling": 0.75,
@@ -46,5 +46,5 @@
     "wavetable",
     "fold"
   ],
-  "description": "Odyssey wavetable morphs along Origami crease paths \u2014 spectral architecture in motion."
+  "description": "Odyssey wavetable morphs along Origami crease paths — spectral architecture in motion."
 }

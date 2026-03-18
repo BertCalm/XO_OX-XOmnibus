@@ -19,11 +19,11 @@
     "density": 0.4206
   },
   "engines": [
-    "XOle"
+    "Ole"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 cold intimate kinetic dark. Designed for WEAVE coupling with XOle.",
+  "description": "Ultra-diverse Entangled preset — cold intimate kinetic dark. Designed for WEAVE coupling with XOle.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "WEAVE",
   "couplingIntensity": "Extreme",
   "parameters": {
-    "XOle": {
+    "Ole": {
       "couplingLevel": 0.988,
       "couplingBus": 1
     }

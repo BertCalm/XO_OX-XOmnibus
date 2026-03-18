@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OBESE",
-    "OUROBOROS"
+    "Obese",
+    "Ouroboros"
   ],
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.592,
       "macro_movement": 0.732,
       "macro_coupling": 0.552,
       "macro_space": 0.7
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.696,
       "macro_movement": 0.33,
       "macro_coupling": 0.62,

@@ -3,12 +3,12 @@
   "name": "Silver Serpent",
   "mood": "Entangled",
   "engines": [
-    "OBSCURA",
-    "ORCA"
+    "Obscura",
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Orca breach timbral-warping Obscura stiffness model \u2014 cold silver with hunter's velocity.",
+  "description": "Orca breach timbral-warping Obscura stiffness model — cold silver with hunter's velocity.",
   "tags": [
     "entangled",
     "brutal",

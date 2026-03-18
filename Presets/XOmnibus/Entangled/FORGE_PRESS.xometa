@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OPTIC",
-    "ORACLE"
+    "Optic",
+    "Oracle"
   ],
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.6928,
       "macro_movement": 0.0621,
       "macro_coupling": 0.6473,
       "macro_space": 0.3068
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.4054,
       "macro_movement": 0.5025,
       "macro_coupling": 0.958,

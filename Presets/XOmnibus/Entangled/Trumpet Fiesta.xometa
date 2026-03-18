@@ -3,12 +3,12 @@
   "name": "Trumpet Fiesta",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "OLE"
+    "Ottoni",
+    "Ole"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OTTONI and OLE coupled via LFO->Pitch. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "description": "OTTONI and OLE coupled via LFO->Pitch. Blended Constellation DNA — stub seeded for expansion.",
   "tags": [
     "coupling",
     "constellation",

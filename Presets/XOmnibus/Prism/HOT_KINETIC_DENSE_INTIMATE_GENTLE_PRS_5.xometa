@@ -3,8 +3,8 @@
   "name": "HOT_KINETIC_DENSE_INTIMATE_GENTLE_PRS_5",
   "mood": "Prism",
   "engines": [
-    "ORPHICA",
-    "ORACLE"
+    "Orphica",
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.331,
       "macro_movement": 0.859,
       "macro_coupling": 1.0,
       "macro_space": 0.106
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.466,
       "macro_movement": 0.981,
       "macro_coupling": 1.0,

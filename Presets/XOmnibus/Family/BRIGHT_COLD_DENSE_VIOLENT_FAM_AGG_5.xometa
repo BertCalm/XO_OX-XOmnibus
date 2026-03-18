@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OTTONI",
-    "ORPHICA"
+    "Ottoni",
+    "Orphica"
   ],
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.831,
       "macro_movement": 0.433,
       "macro_coupling": 0.5,
       "macro_space": 0.735
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.868,
       "macro_movement": 0.438,
       "macro_coupling": 0.46,

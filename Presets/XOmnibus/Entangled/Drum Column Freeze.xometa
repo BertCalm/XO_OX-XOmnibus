@@ -2,8 +2,8 @@
   "name": "Drum Column Freeze",
   "version": "1.0",
   "engines": [
-    "ONSET",
-    "OBLONG"
+    "Onset",
+    "Oblong"
   ],
   "mood": "Entangled",
   "strategy": "Still Aggressive",
@@ -35,5 +35,5 @@
     "percussive",
     "monolith"
   ],
-  "description": "Onset's percussion locked into Oblong's elongated mass \u2014 a frozen drum monolith."
+  "description": "Onset's percussion locked into Oblong's elongated mass — a frozen drum monolith."
 }

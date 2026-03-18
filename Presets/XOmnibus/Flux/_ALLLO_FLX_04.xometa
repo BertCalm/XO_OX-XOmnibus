@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OPTIC",
-    "OUROBOROS"
+    "Optic",
+    "Ouroboros"
   ],
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.062,
       "macro_movement": 0.275,
       "macro_coupling": 0.077,
       "macro_space": 0.045
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.062,
       "macro_movement": 0.275,
       "macro_coupling": 0.077,

@@ -3,8 +3,8 @@
   "name": "Harp in the Rafters",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "ORPHICA"
+    "Osteria",
+    "Orphica"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

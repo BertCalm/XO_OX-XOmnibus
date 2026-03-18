@@ -3,12 +3,12 @@
   "name": "Variational Drama",
   "mood": "Entangled",
   "engines": [
-    "ORGANON",
-    "OLE"
+    "Organon",
+    "Ole"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Organon's free-energy inference spectrally morphs OLE's timbral drama \u2014 lived theatre.",
+  "description": "Organon's free-energy inference spectrally morphs OLE's timbral drama — lived theatre.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.923
   },
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.58,
       "macro_movement": 0.68,
       "macro_coupling": 0.72,
       "macro_space": 0.52
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.68,
       "macro_movement": 0.62,
       "macro_coupling": 0.72,

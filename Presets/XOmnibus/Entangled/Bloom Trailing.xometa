@@ -3,12 +3,12 @@
   "name": "Bloom Trailing",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ORACLE"
+    "Overlap",
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERLAP mod rate tracks ORACLE harmonic series \u2014 overtones become geometry",
+  "description": "OVERLAP mod rate tracks ORACLE harmonic series — overtones become geometry",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.55
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.634,
       "olap_decay": 0.877,
       "olap_damping": 0.607,

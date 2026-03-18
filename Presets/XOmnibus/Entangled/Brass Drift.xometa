@@ -2,8 +2,8 @@
   "name": "Brass Drift",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OTTONI"
+    "Odyssey",
+    "Ottoni"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ottoni",
     "wavetable"
   ],
-  "description": "Triple brass harmonics drawn into FM wavetable \u2014 patina aged by odyssey spectral warp"
+  "description": "Triple brass harmonics drawn into FM wavetable — patina aged by odyssey spectral warp"
 }

@@ -3,8 +3,8 @@
   "name": "Tidal Frond",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OCEANIC"
+    "Overlap",
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.32
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.61,
       "olap_decay": 0.84,
       "olap_damping": 0.21,
@@ -69,7 +69,7 @@
       "olap_outputLevel": 0.71,
       "olap_outputPan": -0.12
     },
-    "OCEANIC": {
+    "Oceanic": {
       "ocean_character": 0.68,
       "ocean_movement": 0.31,
       "ocean_coupling": 0.82,

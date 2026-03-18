@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OLE",
-    "OBESE"
+    "Ole",
+    "Obese"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.65,
       "macro_movement": 0.887,
       "macro_coupling": 0.683,
       "macro_space": 0.284
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.604,
       "macro_movement": 0.976,
       "macro_coupling": 0.674,

@@ -3,12 +3,12 @@
   "name": "Cell Evolve",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ORIGAMI"
+    "Outwit",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OUTWIT cell fracture triggers ORIGAMI crease events \u2014 cellular collapse folds new shapes",
+  "description": "OUTWIT cell fracture triggers ORIGAMI crease events — cellular collapse folds new shapes",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.75
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 110,
       "owit_arms": 5,
       "owit_cellSize": 0.36,

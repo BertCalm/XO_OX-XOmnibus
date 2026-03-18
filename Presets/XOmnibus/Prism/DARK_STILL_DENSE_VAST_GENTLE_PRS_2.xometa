@@ -3,8 +3,8 @@
   "name": "DARK_STILL_DENSE_VAST_GENTLE_PRS_2",
   "mood": "Prism",
   "engines": [
-    "OBLIQUE",
-    "ORIGAMI"
+    "Oblique",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.088,
       "macro_movement": 0.06,
       "macro_coupling": 0.906,
       "macro_space": 0.884
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.094,
       "macro_movement": 0.106,
       "macro_coupling": 1.0,

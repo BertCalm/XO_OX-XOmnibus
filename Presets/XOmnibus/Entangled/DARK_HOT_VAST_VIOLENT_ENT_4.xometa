@@ -3,12 +3,12 @@
   "name": "DARK_HOT_VAST_VIOLENT_ENT_4",
   "mood": "Entangled",
   "engines": [
-    "OCTOPUS",
-    "ORGANON"
+    "Octopus",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Hot Vast Violent character entanglement \u2014 OCTOPUS \u00d7 ORGANON via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Hot Vast Violent character entanglement — OCTOPUS × ORGANON via Resonance Share. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.975
   },
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.6486,
       "macro_movement": 0.6236,
       "macro_coupling": 0.9106,
@@ -57,7 +57,7 @@
       "output_level": 0.8655,
       "coupling_level": 0.9644
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.6872,
       "macro_movement": 0.597,
       "macro_coupling": 0.9489,

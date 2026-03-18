@@ -2,7 +2,7 @@
   "name": "Warm Monolith",
   "version": "1.0",
   "engines": [
-    "ODDOSCAR"
+    "OddOscar"
   ],
   "mood": "Atmosphere",
   "macros": {

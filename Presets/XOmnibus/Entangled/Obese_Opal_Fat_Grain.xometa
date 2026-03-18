@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBESE",
-    "OPAL"
+    "Obese",
+    "Opal"
   ],
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.88,
       "macro_movement": 0.45,
       "macro_coupling": 0.78,
       "macro_space": 0.2
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.5,
       "macro_movement": 0.75,
       "macro_coupling": 0.65,

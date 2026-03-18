@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "name": "OBBLIGATO The Bond \u2014 Oceanic",
+  "name": "OBBLIGATO The Bond — Oceanic",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OCEANIC"
+    "Obbligato",
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",

@@ -2,8 +2,8 @@
   "name": "Reed Delay",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OBBLIGATO"
+    "Overdub",
+    "Obbligato"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "obbligato",
     "dub"
   ],
-  "description": "Dual wind phrase caught in dub loop \u2014 breath suspended in tape saturation"
+  "description": "Dual wind phrase caught in dub loop — breath suspended in tape saturation"
 }

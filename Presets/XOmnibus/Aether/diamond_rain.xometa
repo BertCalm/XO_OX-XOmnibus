@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ODYSSEY"
+    "Odyssey"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.25,
       "macro_movement": 0.6,
       "macro_coupling": 0.15,

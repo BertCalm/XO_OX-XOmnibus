@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OCTOPUS",
-    "ORCA"
+    "Octopus",
+    "Orca"
   ],
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.611,
       "macro_movement": 0.498,
       "macro_coupling": 0.602,
       "macro_space": 0.332
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.865,
       "macro_movement": 0.486,
       "macro_coupling": 0.744,

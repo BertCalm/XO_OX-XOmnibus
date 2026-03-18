@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBSCURA",
-    "OCELOT"
+    "Obscura",
+    "Ocelot"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.312,
       "macro_movement": 0.212,
       "macro_coupling": 0.512,
       "macro_space": 0.562
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.688,
       "macro_movement": 0.738,
       "macro_coupling": 0.588,

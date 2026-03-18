@@ -2,8 +2,8 @@
   "name": "Pelagic Hearth",
   "version": "1.0",
   "engines": [
-    "OSTERIA",
-    "OCEANIC"
+    "Osteria",
+    "Oceanic"
   ],
   "mood": "Entangled",
   "strategy": "Warm Sparse",
@@ -35,5 +35,5 @@
     "depth",
     "hearth"
   ],
-  "description": "Deep-sea warmth radiating from a pelagic hearth \u2014 absurd and beautiful."
+  "description": "Deep-sea warmth radiating from a pelagic hearth — absurd and beautiful."
 }

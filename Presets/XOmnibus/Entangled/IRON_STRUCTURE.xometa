@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ORPHICA"
+    "Outwit",
+    "Orphica"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.8814,
       "macro_movement": 0.0248,
       "macro_coupling": 0.8946,
       "macro_space": 0.3322
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.9308,
       "macro_movement": 0.8022,
       "macro_coupling": 0.9456,

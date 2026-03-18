@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "ORACLE",
-    "OPTIC"
+    "Oracle",
+    "Optic"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.0745,
       "macro_movement": 0.9262,
       "macro_coupling": 0.0248,
       "macro_space": 0.9196
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.0575,
       "macro_movement": 0.9255,
       "macro_coupling": 0.02,

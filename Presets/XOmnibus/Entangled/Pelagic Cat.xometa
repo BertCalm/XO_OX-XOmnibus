@@ -3,12 +3,12 @@
   "name": "Pelagic Cat",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "OCELOT"
+    "Oceanic",
+    "Ocelot"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The feline leaps \u2014 OCELOT's speed meets oceanic roll in open-water play.",
+  "description": "The feline leaps — OCELOT's speed meets oceanic roll in open-water play.",
   "tags": [
     "entangled",
     "coupling",

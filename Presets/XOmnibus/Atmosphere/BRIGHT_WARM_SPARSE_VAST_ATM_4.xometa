@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OBSCURA",
-    "ORGANON"
+    "Obscura",
+    "Organon"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.506,
       "macro_movement": 0.501,
       "macro_coupling": 0.498,
       "macro_space": 0.939
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.58,
       "macro_movement": 0.541,
       "macro_coupling": 0.791,

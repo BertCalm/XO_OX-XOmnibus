@@ -3,8 +3,8 @@
   "name": "Bound Voice with Oceanic",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OCEANIC"
+    "Obbligato",
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",

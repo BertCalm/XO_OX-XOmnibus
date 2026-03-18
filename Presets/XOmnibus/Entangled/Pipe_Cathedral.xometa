@@ -3,12 +3,12 @@
   "name": "Pipe Cathedral",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ORGANON"
+    "Overlap",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Organon pipe resonance propagates through OVERLAP web \u2014 the pipe organ acquires an infinite cave",
+  "description": "Organon pipe resonance propagates through OVERLAP web — the pipe organ acquires an infinite cave",
   "tags": [
     "coupling",
     "entangled",
@@ -47,7 +47,7 @@
     "density": 0.625
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.609,
       "olap_decay": 0.518,
       "olap_damping": 0.644,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OVERDUB",
-    "ORCA"
+    "Overdub",
+    "Orca"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.526,
       "macro_movement": 0.629,
       "macro_coupling": 0.155,
       "macro_space": 0.077
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.11,
       "macro_movement": 0.436,
       "macro_coupling": 0.492,

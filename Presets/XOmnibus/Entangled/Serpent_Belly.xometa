@@ -3,12 +3,12 @@
   "name": "Serpent Belly",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "OBESE"
+    "Ouroboros",
+    "Obese"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "MOJO driven by Ouroboros topology loop \u2014 the serpent swallowed by its own belly.",
+  "description": "MOJO driven by Ouroboros topology loop — the serpent swallowed by its own belly.",
   "tags": [
     "entangled",
     "brutal",

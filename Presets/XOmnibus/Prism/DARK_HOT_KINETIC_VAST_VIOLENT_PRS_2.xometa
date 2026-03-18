@@ -3,8 +3,8 @@
   "name": "DARK_HOT_KINETIC_VAST_VIOLENT_PRS_2",
   "mood": "Prism",
   "engines": [
-    "OCELOT",
-    "OTTONI"
+    "Ocelot",
+    "Ottoni"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.12,
       "macro_movement": 1.0,
       "macro_coupling": 0.419,
       "macro_space": 0.982
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.133,
       "macro_movement": 0.912,
       "macro_coupling": 0.494,

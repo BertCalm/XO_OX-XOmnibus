@@ -3,8 +3,8 @@
   "name": "Sage Space",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OHM"
+    "Overlap",
+    "Ohm"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "density": 0.575
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.623,
       "olap_decay": 0.734,
       "olap_damping": 0.504,

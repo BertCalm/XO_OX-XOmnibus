@@ -2,8 +2,8 @@
   "name": "Pod Cloud",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "ORCA"
+    "Opal",
+    "Orca"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orca",
     "granular"
   ],
-  "description": "Opal grain cloud navigated by orca pod \u2014 granular terrain mapped by echolocation"
+  "description": "Opal grain cloud navigated by orca pod — granular terrain mapped by echolocation"
 }

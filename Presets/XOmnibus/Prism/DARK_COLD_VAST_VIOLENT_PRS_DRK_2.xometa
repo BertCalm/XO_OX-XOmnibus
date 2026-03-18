@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OPTIC",
-    "ORACLE"
+    "Optic",
+    "Oracle"
   ],
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.4999,
       "macro_movement": 0.4051,
       "macro_coupling": 0.5338,
       "macro_space": 0.9777
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.5204,
       "macro_movement": 0.434,
       "macro_coupling": 0.506,

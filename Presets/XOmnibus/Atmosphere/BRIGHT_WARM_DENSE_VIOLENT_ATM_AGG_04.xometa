@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "ORIGAMI",
-    "ORGANON"
+    "Origami",
+    "Organon"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.811,
       "macro_movement": 0.307,
       "macro_coupling": 0.917,
       "macro_space": 0.618
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.812,
       "macro_movement": 0.316,
       "macro_coupling": 0.867,

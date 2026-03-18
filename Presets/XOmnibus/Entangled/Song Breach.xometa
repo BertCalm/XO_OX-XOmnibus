@@ -2,8 +2,8 @@
   "name": "Song Breach",
   "version": "1.0",
   "engines": [
-    "ORPHICA",
-    "ORCA"
+    "Orphica",
+    "Orca"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orca",
     "microsound"
   ],
-  "description": "Orphica microsong and orca click-train merge \u2014 two ancient sonic languages"
+  "description": "Orphica microsong and orca click-train merge — two ancient sonic languages"
 }

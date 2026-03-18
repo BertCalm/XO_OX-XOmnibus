@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "name": "OBBLIGATO Wind Tie \u2014 Opal",
+  "name": "OBBLIGATO Wind Tie — Opal",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OPAL"
+    "Obbligato",
+    "Opal"
   ],
   "author": "XO_OX",
   "version": "1.0.0",

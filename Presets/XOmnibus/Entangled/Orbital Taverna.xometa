@@ -3,8 +3,8 @@
   "name": "Orbital Taverna",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "ORBITAL"
+    "Osteria",
+    "Orbital"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

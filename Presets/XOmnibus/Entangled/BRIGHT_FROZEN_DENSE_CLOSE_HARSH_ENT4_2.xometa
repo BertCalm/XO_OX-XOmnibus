@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERWORLD",
-    "ORPHICA"
+    "Overworld",
+    "Orphica"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.742,
       "macro_movement": 0.068,
       "macro_coupling": 0.911,
       "macro_space": 0.13
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.789,
       "macro_movement": 0.072,
       "macro_coupling": 0.873,

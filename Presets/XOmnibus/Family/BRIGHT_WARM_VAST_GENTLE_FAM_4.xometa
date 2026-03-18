@@ -3,12 +3,12 @@
   "name": "BRIGHT WARM VAST GENTLE FAM 4",
   "mood": "Family",
   "engines": [
-    "OHM",
-    "OCTOPUS"
+    "Ohm",
+    "Octopus"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, bright, warm, vast.",
+  "description": "Extreme DNA corners — family, bright, warm, vast.",
   "tags": [
     "family",
     "bright",
@@ -35,11 +35,11 @@
     "aggression": 0.108
   },
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "level": 0.693,
       "pan": -0.102
     },
-    "OCTOPUS": {
+    "Octopus": {
       "level": 0.848,
       "pan": -0.023
     }

@@ -3,12 +3,12 @@
   "name": "DARK_STILL_SPARSE_VAST_ENT_1",
   "mood": "Entangled",
   "engines": [
-    "OPAL",
-    "ORCA"
+    "Opal",
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Still Sparse Vast character entanglement \u2014 OPAL \u00d7 ORCA via Timbral Bleed. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Still Sparse Vast character entanglement — OPAL × ORCA via Timbral Bleed. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.5973
   },
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.5436,
       "macro_movement": 0.0281,
       "macro_coupling": 0.777,
@@ -57,7 +57,7 @@
       "output_level": 0.7324,
       "coupling_level": 0.7925
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.6094,
       "macro_movement": 0.0236,
       "macro_coupling": 0.801,

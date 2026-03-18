@@ -3,20 +3,20 @@
   "name": "Grow Circuit",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "ORGANON"
+    "Ottoni",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Brass filter sweeps cultivate ORGANON's bio-signal \u2014 warmth at 0.86 anchors the growth arc.",
+  "description": "Brass filter sweeps cultivate ORGANON's bio-signal — warmth at 0.86 anchors the growth arc.",
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.75,
       "macro_movement": 0.5,
       "macro_coupling": 0.78,
       "macro_space": 0.4
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.6,
       "macro_movement": 0.55,
       "macro_coupling": 0.7,

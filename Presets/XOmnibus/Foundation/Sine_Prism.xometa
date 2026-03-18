@@ -19,7 +19,7 @@
     "aggression": 0.1292
   },
   "engines": [
-    "OPAL"
+    "Opal"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,7 +45,7 @@
   },
   "couplingIntensity": "None",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "opal_macro_grain": 0.6718,
       "opal_macro_scatter": 0.41,
       "opal_macro_density": 0.4213,

@@ -3,7 +3,7 @@
   "name": "Strata Cascade",
   "mood": "Foundation",
   "engines": [
-    "OCELOT"
+    "Ocelot"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -26,7 +26,7 @@
     "aggression": 0.45
   },
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "ocelot_biome": 0,
       "ocelot_strataBalance": 0.45,
       "ocelot_ecosystemDepth": 0.7,

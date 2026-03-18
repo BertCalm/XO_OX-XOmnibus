@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT FND 11",
   "mood": "Foundation",
   "engines": [
-    "OUTWIT",
-    "ORIGAMI"
+    "Outwit",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.86,
       "macro_movement": 0.9,
       "macro_coupling": 0.84,
       "macro_space": 0.14
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.79,
       "macro_movement": 0.97,
       "macro_coupling": 0.56,

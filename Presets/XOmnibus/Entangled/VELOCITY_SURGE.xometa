@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERWORLD",
-    "OCELOT"
+    "Overworld",
+    "Ocelot"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.968,
       "macro_movement": 0.967,
       "macro_coupling": 0.6,
       "macro_space": 0.352
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.578,
       "macro_movement": 0.952,
       "macro_coupling": 0.213,

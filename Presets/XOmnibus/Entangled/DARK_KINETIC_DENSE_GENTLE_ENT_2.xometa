@@ -3,12 +3,12 @@
   "name": "DARK_KINETIC_DENSE_GENTLE_ENT_2",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "OCTOPUS"
+    "Orphica",
+    "Octopus"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Kinetic Dense Gentle character entanglement \u2014 ORPHICA \u00d7 OCTOPUS via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Kinetic Dense Gentle character entanglement — ORPHICA × OCTOPUS via Spectral Morph. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.1196
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.4388,
       "macro_movement": 0.9567,
       "macro_coupling": 0.6564,
@@ -57,7 +57,7 @@
       "output_level": 0.9077,
       "coupling_level": 0.5806
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.4171,
       "macro_movement": 0.9804,
       "macro_coupling": 0.6541,

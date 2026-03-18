@@ -19,7 +19,7 @@
     "aggression": 0.2217
   },
   "engines": [
-    "ODDFELIX"
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,7 +45,7 @@
   },
   "couplingIntensity": "None",
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "felix_macro_voice": 0.8886,
       "felix_macro_motion": 0.7716,
       "felix_macro_couple": 0.5222,

@@ -3,11 +3,11 @@
   "name": "Chip Chaos Maximum",
   "mood": "Flux",
   "engines": [
-    "OVERWORLD"
+    "Overworld"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OVERWORLD pushed to extreme brightness \u2014 brightness 0.96, movement 0.89, aggression 0.61. Ultra-bright Flux zone filler.",
+  "description": "OVERWORLD pushed to extreme brightness — brightness 0.96, movement 0.89, aggression 0.61. Ultra-bright Flux zone filler.",
   "tags": [
     "flux",
     "ultra-bright",
@@ -40,7 +40,7 @@
     "aggression": 0.609
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_macro_era": 0.648,
       "ow_macro_chaos": 0.607,
       "ow_macro_couple": 0.309,

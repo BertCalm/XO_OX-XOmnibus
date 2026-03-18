@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT ENT 4",
   "mood": "Entangled",
   "engines": [
-    "ORGANON",
-    "OCEANIC"
+    "Organon",
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.94,
       "macro_movement": 0.65,
       "macro_coupling": 0.79,
       "macro_space": 0.16
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.77,
       "macro_movement": 0.82,
       "macro_coupling": 0.7,

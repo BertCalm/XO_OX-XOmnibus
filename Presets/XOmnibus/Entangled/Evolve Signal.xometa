@@ -3,12 +3,12 @@
   "name": "Evolve Signal",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OBLIQUE"
+    "Outwit",
+    "Oblique"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OBLIQUE rate generator clocks OUTWIT generation steps \u2014 skewed time, emergent rhythm",
+  "description": "OBLIQUE rate generator clocks OUTWIT generation steps — skewed time, emergent rhythm",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.7
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 22,
       "owit_arms": 8,
       "owit_cellSize": 0.213,

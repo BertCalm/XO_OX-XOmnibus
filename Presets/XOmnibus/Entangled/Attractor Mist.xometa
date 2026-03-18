@@ -3,12 +3,12 @@
   "name": "Attractor Mist",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "OUROBOROS"
+    "Orphica",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "ORPHICA microsound timbre blends into strange attractor state \u2014 ethereal topology.",
+  "description": "ORPHICA microsound timbre blends into strange attractor state — ethereal topology.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.42
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.62,
       "macro_movement": 0.52,
       "macro_coupling": 0.6,
       "macro_space": 0.78
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.6,
       "macro_movement": 0.7,
       "macro_coupling": 0.6,

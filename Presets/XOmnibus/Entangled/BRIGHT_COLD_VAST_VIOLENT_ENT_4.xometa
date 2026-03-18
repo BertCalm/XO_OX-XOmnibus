@@ -3,12 +3,12 @@
   "name": "BRIGHT_COLD_VAST_VIOLENT_ENT_4",
   "mood": "Entangled",
   "engines": [
-    "OCELOT",
-    "OVERBITE"
+    "Ocelot",
+    "Overbite"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Cold Vast Violent character entanglement \u2014 OCELOT \u00d7 OVERBITE via Phase Lock. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Cold Vast Violent character entanglement — OCELOT × OVERBITE via Phase Lock. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.9206
   },
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.5644,
       "macro_movement": 0.6881,
       "macro_coupling": 0.9001,
@@ -57,7 +57,7 @@
       "output_level": 0.772,
       "coupling_level": 0.954
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.5974,
       "macro_movement": 0.6324,
       "macro_coupling": 0.9117,

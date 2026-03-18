@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OMBRE",
-    "OCELOT"
+    "Ombre",
+    "Ocelot"
   ],
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.67,
       "macro_movement": 0.054,
       "macro_coupling": 0.95,
       "macro_space": 0.079
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.652,
       "macro_movement": 0.051,
       "macro_coupling": 0.916,

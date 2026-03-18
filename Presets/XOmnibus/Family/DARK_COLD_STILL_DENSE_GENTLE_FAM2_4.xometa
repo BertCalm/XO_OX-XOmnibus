@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "ODYSSEY",
-    "OVERDUB"
+    "Odyssey",
+    "Overdub"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.045,
       "macro_movement": 0.09,
       "macro_coupling": 0.457,
       "macro_space": 0.543
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.059,
       "macro_movement": 0.102,
       "macro_coupling": 0.444,

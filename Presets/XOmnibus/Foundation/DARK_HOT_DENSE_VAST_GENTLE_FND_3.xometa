@@ -3,8 +3,8 @@
   "name": "DARK_HOT_DENSE_VAST_GENTLE_FND_3",
   "mood": "Foundation",
   "engines": [
-    "OVERBITE",
-    "ORIGAMI"
+    "Overbite",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.114,
       "macro_movement": 0.333,
       "macro_coupling": 1.0,
       "macro_space": 0.912
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.123,
       "macro_movement": 0.283,
       "macro_coupling": 0.819,

@@ -3,12 +3,12 @@
   "name": "BRIGHT_DENSE_VAST_GENTLE_ENT_3",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OBESE"
+    "Obbligato",
+    "Obese"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Dense Vast Gentle character entanglement \u2014 OBBLIGATO \u00d7 OBESE via Timbral Bleed. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Dense Vast Gentle character entanglement — OBBLIGATO × OBESE via Timbral Bleed. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.1188
   },
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.7812,
       "macro_movement": 0.6066,
       "macro_coupling": 0.6439,
@@ -57,7 +57,7 @@
       "output_level": 0.9628,
       "coupling_level": 0.6191
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.7425,
       "macro_movement": 0.5645,
       "macro_coupling": 0.6226,

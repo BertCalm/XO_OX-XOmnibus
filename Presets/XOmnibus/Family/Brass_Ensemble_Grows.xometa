@@ -3,11 +3,11 @@
   "name": "Brass Ensemble Grows",
   "mood": "Family",
   "engines": [
-    "OTTONI"
+    "Ottoni"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OTTONI GROW macro engaged \u2014 triple brass building. The crescendo of an ensemble that finds its size.",
+  "description": "OTTONI GROW macro engaged — triple brass building. The crescendo of an ensemble that finds its size.",
   "tags": [
     "family",
     "extended-family",

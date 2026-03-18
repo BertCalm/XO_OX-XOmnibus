@@ -3,8 +3,8 @@
   "name": "BRIGHT_COLD_DENSE_VAST_VIOLENT_PRS_4",
   "mood": "Prism",
   "engines": [
-    "OCELOT",
-    "OWLFISH"
+    "Ocelot",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.935,
       "macro_movement": 0.642,
       "macro_coupling": 0.773,
       "macro_space": 1.0
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.89,
       "macro_movement": 0.475,
       "macro_coupling": 0.792,

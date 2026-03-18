@@ -3,12 +3,12 @@
   "name": "HOT_DENSE_VAST_VIOLENT_ENT_1",
   "mood": "Entangled",
   "engines": [
-    "OBLONG",
-    "OPTIC"
+    "Oblong",
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Hot Dense Vast Violent character entanglement \u2014 OBLONG \u00d7 OPTIC via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "description": "Hot Dense Vast Violent character entanglement — OBLONG × OPTIC via Spectral Morph. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "warm",
@@ -41,7 +41,7 @@
     "aggression": 0.9339
   },
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.7668,
       "macro_movement": 0.4908,
       "macro_coupling": 0.9463,
@@ -57,7 +57,7 @@
       "output_level": 0.9677,
       "coupling_level": 0.8973
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.8143,
       "macro_movement": 0.4958,
       "macro_coupling": 0.9421,

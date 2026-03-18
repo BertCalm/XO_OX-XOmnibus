@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ORGANON",
-    "OUROBOROS"
+    "Organon",
+    "Ouroboros"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.279,
       "macro_movement": 0.435,
       "macro_coupling": 0.916,
       "macro_space": 0.826
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.15,
       "macro_movement": 0.355,
       "macro_coupling": 0.845,

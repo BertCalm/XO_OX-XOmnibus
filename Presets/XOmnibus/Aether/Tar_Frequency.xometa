@@ -11,11 +11,11 @@
     "space": 0.3
   },
   "engines": [
-    "ODDOSCAR"
+    "OddOscar"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Maximum Oscar density \u2014 thick sub matter",
+  "description": "Maximum Oscar density — thick sub matter",
   "tags": [
     "aether",
     "dark",

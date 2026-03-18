@@ -2,8 +2,8 @@
   "name": "Eight-Arm Spool",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OCTOPUS"
+    "Overdub",
+    "Octopus"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "octopus",
     "dub"
   ],
-  "description": "Tape spool operated by eight independent arms \u2014 parallel loops weaving in phase"
+  "description": "Tape spool operated by eight independent arms — parallel loops weaving in phase"
 }

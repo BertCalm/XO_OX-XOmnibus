@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ODDOSCAR",
-    "OWLFISH"
+    "OddOscar",
+    "Owlfish"
   ],
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.584,
       "macro_movement": 0.797,
       "macro_coupling": 0.725,
       "macro_space": 0.688
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.027,
       "macro_movement": 0.475,
       "macro_coupling": 0.967,

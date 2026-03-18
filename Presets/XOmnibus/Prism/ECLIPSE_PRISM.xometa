@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OSTERIA",
-    "ODDFELIX"
+    "Osteria",
+    "OddfeliX"
   ],
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.862,
       "macro_movement": 0.314,
       "macro_coupling": 0.556,
       "macro_space": 0.145
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.681,
       "macro_movement": 0.162,
       "macro_coupling": 0.085,

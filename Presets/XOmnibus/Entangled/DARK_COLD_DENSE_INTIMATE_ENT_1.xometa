@@ -3,12 +3,12 @@
   "name": "DARK_COLD_DENSE_INTIMATE_ENT_1",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OBLONG"
+    "Overlap",
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Cold Dense Intimate character entanglement \u2014 OVERLAP \u00d7 OBLONG via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Cold Dense Intimate character entanglement — OVERLAP × OBLONG via Resonance Share. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.3238
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.3245,
       "macro_movement": 0.3731,
       "macro_coupling": 0.7025,
@@ -57,7 +57,7 @@
       "output_level": 0.9527,
       "coupling_level": 0.6785
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.341,
       "macro_movement": 0.3876,
       "macro_coupling": 0.7183,

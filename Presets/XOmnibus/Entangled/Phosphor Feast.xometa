@@ -3,9 +3,9 @@
   "name": "Phosphor Feast",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "OSTERIA",
-    "OCEANIC"
+    "Osprey",
+    "Osteria",
+    "Oceanic"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

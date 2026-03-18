@@ -3,8 +3,8 @@
   "name": "Wind Tie with Odyssey",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "ODYSSEY"
+    "Obbligato",
+    "Odyssey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",

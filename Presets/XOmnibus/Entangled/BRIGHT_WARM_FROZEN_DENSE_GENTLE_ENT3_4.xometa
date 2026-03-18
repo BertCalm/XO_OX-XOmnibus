@@ -3,12 +3,12 @@
   "name": "BRIGHT_WARM_FROZEN_DENSE_GENTLE_ENT3_4",
   "mood": "Entangled",
   "engines": [
-    "OPTIC",
-    "OBESE"
+    "Optic",
+    "Obese"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_GENTLE. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.7859,
       "macro_movement": 0.0414,
       "macro_coupling": 0.7909,
       "macro_space": 0.6347
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.9122,
       "macro_movement": 0.0179,
       "macro_coupling": 0.7855,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OCEANIC",
-    "ORIGAMI"
+    "Oceanic",
+    "Origami"
   ],
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.3838,
       "macro_movement": 0.9841,
       "macro_coupling": 0.8739,
       "macro_space": 0.0525
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.3966,
       "macro_movement": 0.9842,
       "macro_coupling": 0.9141,

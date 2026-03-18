@@ -3,11 +3,11 @@
   "name": "Wind Bond Shine",
   "mood": "Atmosphere",
   "engines": [
-    "OBBLIGATO"
+    "Obbligato"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "OBBLIGATO \u2014 bright extreme brightness preset for Atmosphere.",
+  "description": "OBBLIGATO — bright extreme brightness preset for Atmosphere.",
   "tags": [
     "atmosphere",
     "bright",
@@ -37,7 +37,7 @@
     "aggression": 0.76
   },
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "obbl_bond": 0.15,
       "obbl_wind1": 0.68,
       "obbl_wind2": 0.03,

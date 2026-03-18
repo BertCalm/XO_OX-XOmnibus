@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OVERDUB",
-    "ORIGAMI"
+    "Overdub",
+    "Origami"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.89,
       "macro_movement": 0.04,
       "macro_coupling": 0.749,
       "macro_space": 0.668
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.9,
       "macro_movement": 0.013,
       "macro_coupling": 0.722,

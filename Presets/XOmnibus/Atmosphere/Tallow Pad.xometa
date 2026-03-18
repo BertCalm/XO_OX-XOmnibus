@@ -2,7 +2,7 @@
   "name": "Tallow Pad",
   "version": "1.0",
   "engines": [
-    "ODDOSCAR"
+    "OddOscar"
   ],
   "mood": "Atmosphere",
   "macros": {
@@ -27,5 +27,5 @@
     "warm",
     "thick"
   ],
-  "description": "Tallow and beeswax \u2014 organic warmth that refuses to move."
+  "description": "Tallow and beeswax — organic warmth that refuses to move."
 }

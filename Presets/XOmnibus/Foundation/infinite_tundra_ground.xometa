@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ORCA",
-    "OSPREY"
+    "Orca",
+    "Osprey"
   ],
   "parameters": {
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.648,
       "macro_movement": 0.276,
       "macro_coupling": 0.933,
       "macro_space": 0.952
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.705,
       "macro_movement": 0.303,
       "macro_coupling": 0.482,

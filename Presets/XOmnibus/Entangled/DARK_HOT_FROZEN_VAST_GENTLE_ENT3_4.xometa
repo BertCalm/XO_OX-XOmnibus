@@ -3,12 +3,12 @@
   "name": "DARK_HOT_FROZEN_VAST_GENTLE_ENT3_4",
   "mood": "Entangled",
   "engines": [
-    "ODDFELIX",
-    "OSTERIA"
+    "OddfeliX",
+    "Osteria"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: DARK_HOT_FROZEN_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_HOT_FROZEN_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.9206,
       "macro_movement": 0.0216,
       "macro_coupling": 0.7847,
       "macro_space": 0.2105
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.5855,
       "macro_movement": 0.0122,
       "macro_coupling": 0.9087,

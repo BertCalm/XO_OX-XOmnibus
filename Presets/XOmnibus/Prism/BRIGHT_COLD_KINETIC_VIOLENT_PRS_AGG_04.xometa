@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ORACLE",
-    "OWLFISH"
+    "Oracle",
+    "Owlfish"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.925,
       "macro_movement": 0.91,
       "macro_coupling": 0.883,
       "macro_space": 0.406
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.877,
       "macro_movement": 0.899,
       "macro_coupling": 0.803,

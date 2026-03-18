@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ONSET",
-    "ODYSSEY"
+    "Onset",
+    "Odyssey"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.841,
       "macro_movement": 0.632,
       "macro_coupling": 0.864,
       "macro_space": 0.047
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.945,
       "macro_movement": 0.506,
       "macro_coupling": 0.233,

@@ -3,8 +3,8 @@
   "name": "Granular Coastline",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "OPAL"
+    "Osprey",
+    "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

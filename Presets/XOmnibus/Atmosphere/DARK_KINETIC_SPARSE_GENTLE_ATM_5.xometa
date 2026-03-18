@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "ORBITAL",
-    "OPTIC"
+    "Orbital",
+    "Optic"
   ],
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.615,
       "macro_movement": 0.891,
       "macro_coupling": 0.52,
       "macro_space": 0.528
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.681,
       "macro_movement": 0.848,
       "macro_coupling": 0.629,

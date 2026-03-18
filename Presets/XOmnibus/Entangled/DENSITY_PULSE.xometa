@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBLONG",
-    "OVERLAP"
+    "Oblong",
+    "Overlap"
   ],
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.8207,
       "macro_movement": 0.8209,
       "macro_coupling": 0.9715,
       "macro_space": 0.2993
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.564,
       "macro_movement": 0.5667,
       "macro_coupling": 0.9398,

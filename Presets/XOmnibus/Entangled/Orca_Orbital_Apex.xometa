@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Orbital Apex",
   "mood": "Entangled",
-  "engines": ["ORBITAL", "ORCA"],
+  "engines": [
+    "Orbital",
+    "Orca"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Orbital envelope output triggering Orca echolocation rate modulation. As Orbital's group envelope rises, the click rate accelerates — both engines locked in temporal coordination, the orbit becoming the hunt.",
-  "tags": ["entangled", "orbital", "orca", "envelope", "echolocation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "orbital",
+    "orca",
+    "envelope",
+    "echolocation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.65,
     "MOVEMENT": 0.6,

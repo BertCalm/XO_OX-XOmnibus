@@ -3,12 +3,12 @@
   "name": "BRIGHT COLD SPARSE GENTLE AET 4",
   "mood": "Aether",
   "engines": [
-    "OCELOT",
-    "ORPHICA"
+    "Ocelot",
+    "Orphica"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, bright, cold, sparse.",
+  "description": "Extreme DNA corners — aether, bright, cold, sparse.",
   "tags": [
     "aether",
     "bright",
@@ -35,11 +35,11 @@
     "aggression": 0.063
   },
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "level": 0.746,
       "pan": -0.114
     },
-    "ORPHICA": {
+    "Orphica": {
       "level": 0.809,
       "pan": 0.089
     }

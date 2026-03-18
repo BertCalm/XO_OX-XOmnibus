@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OPAL",
-    "ORACLE"
+    "Opal",
+    "Oracle"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.472,
       "macro_movement": 0.8867,
       "macro_coupling": 0.1227,
       "macro_space": 0.5218
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.504,
       "macro_movement": 0.92,
       "macro_coupling": 0.11,

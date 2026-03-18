@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ORACLE",
-    "OTTONI"
+    "Oracle",
+    "Ottoni"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.915,
       "macro_movement": 0.311,
       "macro_coupling": 0.851,
       "macro_space": 0.894
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.889,
       "macro_movement": 0.307,
       "macro_coupling": 0.833,

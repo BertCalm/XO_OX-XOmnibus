@@ -3,7 +3,7 @@
   "name": "Ice Chimes",
   "mood": "Foundation",
   "engines": [
-    "OCELOT"
+    "Ocelot"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -26,7 +26,7 @@
     "aggression": 0.15
   },
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "ocelot_biome": 2,
       "ocelot_strataBalance": 0.55,
       "ocelot_ecosystemDepth": 0.5,

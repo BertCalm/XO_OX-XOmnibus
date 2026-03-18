@@ -2,8 +2,8 @@
   "name": "Phosphor Commune",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OCEANIC"
+    "Ohm",
+    "Oceanic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oceanic",
     "hippy"
   ],
-  "description": "Ohm warmth meeting oceanic phosphorescent pulse \u2014 campfire at the edge of a glowing sea"
+  "description": "Ohm warmth meeting oceanic phosphorescent pulse — campfire at the edge of a glowing sea"
 }

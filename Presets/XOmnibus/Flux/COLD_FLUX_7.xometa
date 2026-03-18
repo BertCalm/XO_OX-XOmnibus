@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ONSET",
-    "OSPREY"
+    "Onset",
+    "Osprey"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.5341,
       "macro_movement": 0.2743,
       "macro_coupling": 0.9743,
       "macro_space": 0.5534
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.6974,
       "macro_movement": 0.1263,
       "macro_coupling": 0.8685,

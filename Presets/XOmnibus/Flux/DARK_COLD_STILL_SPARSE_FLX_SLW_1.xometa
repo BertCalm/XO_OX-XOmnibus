@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OBLIQUE",
-    "OUROBOROS"
+    "Oblique",
+    "Ouroboros"
   ],
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.466,
       "macro_movement": 0.091,
       "macro_coupling": 0.691,
       "macro_space": 0.316
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.528,
       "macro_movement": 0.084,
       "macro_coupling": 0.838,

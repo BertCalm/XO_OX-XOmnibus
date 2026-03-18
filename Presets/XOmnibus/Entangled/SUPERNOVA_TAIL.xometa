@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORCA",
-    "OBLIQUE"
+    "Orca",
+    "Oblique"
   ],
   "parameters": {
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.965,
       "macro_movement": 0.386,
       "macro_coupling": 0.435,
       "macro_space": 0.97
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.201,
       "macro_movement": 0.565,
       "macro_coupling": 0.906,

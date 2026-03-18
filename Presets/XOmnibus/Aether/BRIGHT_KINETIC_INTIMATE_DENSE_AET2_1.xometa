@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORIGAMI",
-    "OBLIQUE"
+    "Origami",
+    "Oblique"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.9377,
       "macro_movement": 0.926,
       "macro_coupling": 0.9706,
       "macro_space": 0.0997
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.8836,
       "macro_movement": 0.95,
       "macro_coupling": 0.99,

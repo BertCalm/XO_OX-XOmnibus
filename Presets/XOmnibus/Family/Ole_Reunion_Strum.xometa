@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Reunion Strum",
+  "mood": "Family",
+  "engines": ["Ole"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Circle alliance with all voices at full reunion energy, drama and fuego macros both elevated.",
+  "tags": ["latin", "family", "reunion", "circle", "celebration"],
+  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.62, "warmth": 0.7, "movement": 0.65, "density": 0.62, "space": 0.58, "aggression": 0.35},
+  "parameters": {
+    "Ole": {
+      "ole_allianceConfig": 2,
+      "ole_allianceBlend": 0.7,
+      "ole_aunt1Level": 0.85,
+      "ole_aunt1Brightness": 0.62,
+      "ole_aunt1StrumRate": 5.5,
+      "ole_aunt2Level": 0.82,
+      "ole_aunt2GourdSize": 0.62,
+      "ole_aunt2CoinPress": 0.72,
+      "ole_aunt3Level": 0.85,
+      "ole_aunt3Brightness": 0.65,
+      "ole_aunt3Tremolo": 0.62,
+      "ole_husbandOudLevel": 0.78,
+      "ole_husbandBouzLevel": 0.72,
+      "ole_husbandPinLevel": 0.68,
+      "ole_damping": 0.28,
+      "ole_sympatheticAmt": 0.55,
+      "ole_driftRate": 1.5,
+      "ole_driftDepth": 0.28,
+      "ole_macroDrama": 0.78,
+      "ole_macroFuego": 0.78,
+      "ole_macroIsla": 0.55,
+      "ole_macroSides": 0.55
+    }
+  },
+  "macros": {"DRAMA": 0.78, "FUEGO": 0.78, "ISLA": 0.55, "SIDES": 0.55},
+  "coupling": {"pairs": []}
+}

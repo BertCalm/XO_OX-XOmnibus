@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBSCURA",
-    "OBSIDIAN"
+    "Obscura",
+    "Obsidian"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.479,
       "macro_movement": 0.916,
       "macro_coupling": 0.833,
       "macro_space": 0.923
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.634,
       "macro_movement": 0.852,
       "macro_coupling": 0.844,

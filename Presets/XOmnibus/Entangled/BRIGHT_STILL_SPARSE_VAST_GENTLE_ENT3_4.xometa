@@ -3,12 +3,12 @@
   "name": "BRIGHT_STILL_SPARSE_VAST_GENTLE_ENT3_4",
   "mood": "Entangled",
   "engines": [
-    "OBLONG",
-    "OBLIQUE"
+    "Oblong",
+    "Oblique"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_STILL_SPARSE_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_STILL_SPARSE_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.9821,
       "macro_movement": 0.0317,
       "macro_coupling": 0.8967,
       "macro_space": 0.7532
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.9342,
       "macro_movement": 0.0289,
       "macro_coupling": 0.8882,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORIGAMI",
-    "OBSIDIAN"
+    "Origami",
+    "Obsidian"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.09,
       "macro_movement": 0.15,
       "macro_coupling": 0.82,
       "macro_space": 0.95
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.06,
       "macro_movement": 0.1,
       "macro_coupling": 0.87,
@@ -46,5 +46,5 @@
     "crease",
     "void"
   ],
-  "description": "Paper envelope shapes crystal decay \u2014 a crease becomes a lattice of cold air."
+  "description": "Paper envelope shapes crystal decay — a crease becomes a lattice of cold air."
 }

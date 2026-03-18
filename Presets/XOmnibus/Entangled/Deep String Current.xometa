@@ -3,12 +3,12 @@
   "name": "Deep String Current",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "OBLONG"
+    "Oceanic",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBLONG strings drawn into OCEANIC current \u2014 warmth beneath the thermocline.",
+  "description": "OBLONG strings drawn into OCEANIC current — warmth beneath the thermocline.",
   "tags": [
     "entangled",
     "coupling",

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OUTWIT",
-    "OBSCURA"
+    "Outwit",
+    "Obscura"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.85,
       "macro_movement": 0.6,
       "macro_coupling": 0.121,
       "macro_space": 0.984
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.783,
       "macro_movement": 0.347,
       "macro_coupling": 0.428,

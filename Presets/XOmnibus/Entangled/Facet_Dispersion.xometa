@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "OPAL"
+    "Obsidian",
+    "Opal"
   ],
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.2,
       "macro_movement": 0.58,
       "macro_coupling": 0.63,
       "macro_space": 0.87
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.17,
       "macro_movement": 0.53,
       "macro_coupling": 0.68,
@@ -46,5 +46,5 @@
     "facet",
     "dispersion"
   ],
-  "description": "Opal frequency-shifts Obsidian's crystal facets \u2014 each facet refracts a different grain."
+  "description": "Opal frequency-shifts Obsidian's crystal facets — each facet refracts a different grain."
 }

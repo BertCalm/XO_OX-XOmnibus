@@ -3,12 +3,12 @@
   "name": "Oceanic Drama",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "OLE"
+    "Oceanic",
+    "Ole"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OLE's Afro-Latin percussion drives OCEANIC swell \u2014 the ocean has rhythm, always.",
+  "description": "OLE's Afro-Latin percussion drives OCEANIC swell — the ocean has rhythm, always.",
   "tags": [
     "entangled",
     "coupling",

@@ -3,12 +3,12 @@
   "name": "BRIGHT_WARM_FROZEN_DENSE_GENTLE_ENT3_5",
   "mood": "Entangled",
   "engines": [
-    "OCTOPUS",
-    "OBESE"
+    "Octopus",
+    "Obese"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_GENTLE. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.8458,
       "macro_movement": 0.045,
       "macro_coupling": 0.8745,
       "macro_space": 0.5768
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.7344,
       "macro_movement": 0.0235,
       "macro_coupling": 0.8404,

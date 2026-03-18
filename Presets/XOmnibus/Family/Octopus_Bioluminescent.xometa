@@ -3,11 +3,11 @@
   "name": "Octopus Bioluminescent",
   "mood": "Family",
   "engines": [
-    "OCTOPUS"
+    "Octopus"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OCTOPUS full bioluminescence \u2014 8 arms glowing, chaos engine in pure light.",
+  "description": "OCTOPUS full bioluminescence — 8 arms glowing, chaos engine in pure light.",
   "tags": [
     "family",
     "portrait",

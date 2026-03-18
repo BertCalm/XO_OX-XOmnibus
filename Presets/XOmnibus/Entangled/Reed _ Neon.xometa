@@ -2,8 +2,8 @@
   "name": "Reed & Neon",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "ODDFELIX"
+    "Obbligato",
+    "OddfeliX"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oddfelix",
     "wind"
   ],
-  "description": "Dual wind breath intertwined with neon tetra arc \u2014 obligate weave of air and electricity"
+  "description": "Dual wind breath intertwined with neon tetra arc — obligate weave of air and electricity"
 }

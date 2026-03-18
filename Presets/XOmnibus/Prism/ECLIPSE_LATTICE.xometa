@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OBLONG",
-    "OVERBITE"
+    "Oblong",
+    "Overbite"
   ],
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.566,
       "macro_movement": 0.136,
       "macro_coupling": 0.902,
       "macro_space": 0.052
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.942,
       "macro_movement": 0.79,
       "macro_coupling": 0.824,

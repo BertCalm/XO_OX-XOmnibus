@@ -3,11 +3,11 @@
   "name": "Orbital Sunburst",
   "mood": "Family",
   "engines": [
-    "ORBITAL"
+    "Orbital"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORBITAL resonance at maximum \u2014 the orbit closest to the star, pure radiant spin.",
+  "description": "ORBITAL resonance at maximum — the orbit closest to the star, pure radiant spin.",
   "tags": [
     "family",
     "portrait",

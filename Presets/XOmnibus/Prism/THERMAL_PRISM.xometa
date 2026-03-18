@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OUTWIT",
-    "OHM"
+    "Outwit",
+    "Ohm"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.081,
       "macro_movement": 0.38,
       "macro_coupling": 0.043,
       "macro_space": 0.474
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.521,
       "macro_movement": 0.657,
       "macro_coupling": 0.287,

@@ -2,8 +2,8 @@
   "name": "Crystal Wind",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OBSIDIAN"
+    "Obbligato",
+    "Obsidian"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "obsidian",
     "wind"
   ],
-  "description": "Dual wind breath filtered through obsidian crystal depth \u2014 warm coral turned cold clarity"
+  "description": "Dual wind breath filtered through obsidian crystal depth — warm coral turned cold clarity"
 }

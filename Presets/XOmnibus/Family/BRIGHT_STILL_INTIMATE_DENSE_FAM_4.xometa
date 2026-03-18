@@ -3,12 +3,12 @@
   "name": "BRIGHT STILL INTIMATE DENSE FAM 4",
   "mood": "Family",
   "engines": [
-    "ORGANON",
-    "OCEANIC"
+    "Organon",
+    "Oceanic"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, bright, still, dense.",
+  "description": "Extreme DNA corners — family, bright, still, dense.",
   "tags": [
     "family",
     "bright",
@@ -35,11 +35,11 @@
     "aggression": 0.518
   },
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "level": 0.699,
       "pan": -0.009
     },
-    "OCEANIC": {
+    "Oceanic": {
       "level": 0.838,
       "pan": 0.032
     }

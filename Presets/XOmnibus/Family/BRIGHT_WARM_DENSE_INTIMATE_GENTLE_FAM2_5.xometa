@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OSTERIA",
-    "OPAL"
+    "Osteria",
+    "Opal"
   ],
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.911,
       "macro_movement": 0.343,
       "macro_coupling": 0.522,
       "macro_space": 0.127
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.92,
       "macro_movement": 0.324,
       "macro_coupling": 0.528,

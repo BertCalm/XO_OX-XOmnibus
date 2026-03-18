@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OCTOPUS",
-    "OUTWIT"
+    "Octopus",
+    "Outwit"
   ],
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.169,
       "macro_movement": 0.203,
       "macro_coupling": 0.846,
       "macro_space": 0.29
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.79,
       "macro_movement": 0.43,
       "macro_coupling": 0.99,

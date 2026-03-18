@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OVERLAP",
-    "OSPREY"
+    "Overlap",
+    "Osprey"
   ],
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.386,
       "macro_movement": 0.611,
       "macro_coupling": 0.893,
       "macro_space": 0.736
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.409,
       "macro_movement": 0.69,
       "macro_coupling": 0.796,

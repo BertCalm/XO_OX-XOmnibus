@@ -3,8 +3,8 @@
   "name": "COLD_KINETIC_SPARSE_VAST_VIOLENT_FND_5",
   "mood": "Foundation",
   "engines": [
-    "OVERDUB",
-    "OBSIDIAN"
+    "Overdub",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.364,
       "macro_movement": 0.883,
       "macro_coupling": 0.094,
       "macro_space": 0.978
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.429,
       "macro_movement": 0.957,
       "macro_coupling": 0.101,

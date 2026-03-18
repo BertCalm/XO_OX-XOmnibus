@@ -3,12 +3,12 @@
   "name": "Cell Branch",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OUROBOROS"
+    "Outwit",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OUROBOROS loop length determines OUTWIT rule lifespan \u2014 structure within structure",
+  "description": "OUROBOROS loop length determines OUTWIT rule lifespan — structure within structure",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.775
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 184,
       "owit_arms": 7,
       "owit_cellSize": 0.315,

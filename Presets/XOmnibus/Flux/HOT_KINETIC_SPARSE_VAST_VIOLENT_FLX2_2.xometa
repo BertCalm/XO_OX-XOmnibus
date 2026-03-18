@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OPAL",
-    "ODYSSEY"
+    "Opal",
+    "Odyssey"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.6444,
       "macro_movement": 0.8606,
       "macro_coupling": 0.1008,
       "macro_space": 0.8862
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.62,
       "macro_movement": 0.8813,
       "macro_coupling": 0.1015,

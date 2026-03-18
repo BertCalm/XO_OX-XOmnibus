@@ -3,8 +3,8 @@
   "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FND_4",
   "mood": "Foundation",
   "engines": [
-    "ODDOSCAR",
-    "ORIGAMI"
+    "OddOscar",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.158,
       "macro_movement": 0.886,
       "macro_coupling": 1.0,
       "macro_space": 0.513
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.176,
       "macro_movement": 0.85,
       "macro_coupling": 1.0,

@@ -3,12 +3,12 @@
   "name": "Grain Wine",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "OPAL"
+    "Osteria",
+    "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Grain clouds carry the bouquet of OSTERIA \u2014 wine-dark and atmospheric.",
+  "description": "Grain clouds carry the bouquet of OSTERIA — wine-dark and atmospheric.",
   "tags": [
     "entangled",
     "coupling",

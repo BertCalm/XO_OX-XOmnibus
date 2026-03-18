@@ -3,8 +3,8 @@
   "name": "Prowl Bloom",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OCELOT"
+    "Overlap",
+    "Ocelot"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "density": 0.575
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.772,
       "olap_decay": 0.707,
       "olap_damping": 0.326,

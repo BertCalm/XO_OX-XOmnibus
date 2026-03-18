@@ -3,11 +3,11 @@
   "name": "Ombre Into Nothing",
   "mood": "Family",
   "engines": [
-    "OMBRE"
+    "Ombre"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OMBRE gradient that ends in black \u2014 fade completed, no return.",
+  "description": "OMBRE gradient that ends in black — fade completed, no return.",
   "tags": [
     "family",
     "portrait",

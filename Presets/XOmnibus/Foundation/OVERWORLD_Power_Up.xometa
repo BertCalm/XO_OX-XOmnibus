@@ -2,17 +2,38 @@
   "schema_version": 1,
   "name": "Power Up",
   "mood": "Foundation",
-  "engines": ["OVERWORLD"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Rising NES arpeggio sweep — the auditory reward signal every game designer relied on.",
-  "tags": ["nes", "power-up", "rising", "arp", "chip", "foundation"],
-  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "tags": [
+    "nes",
+    "power-up",
+    "rising",
+    "arp",
+    "chip",
+    "foundation"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.82, "warmth": 0.35, "movement": 0.7, "density": 0.5, "space": 0.3, "aggression": 0.4},
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.35,
+    "movement": 0.7,
+    "density": 0.5,
+    "space": 0.3,
+    "aggression": 0.4
+  },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_era": 0,
       "ow_macro_era": 0.12,
       "ow_macro_chaos": 0.08,
@@ -23,6 +44,8 @@
       "ow_couplingBus": 0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

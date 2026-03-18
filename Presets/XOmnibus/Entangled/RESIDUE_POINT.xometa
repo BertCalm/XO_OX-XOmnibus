@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OUTWIT"
+    "Ole",
+    "Outwit"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.373,
       "macro_movement": 0.283,
       "macro_coupling": 0.409,
       "macro_space": 0.338
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.598,
       "macro_movement": 0.789,
       "macro_coupling": 0.647,

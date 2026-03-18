@@ -2,8 +2,8 @@
   "name": "Amber Hearth",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OBLONG"
+    "Ohm",
+    "Oblong"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oblong",
     "hippy"
   ],
-  "description": "Oblong amber warmth and ohm sage warmth double-stack \u2014 two hearths, one room"
+  "description": "Oblong amber warmth and ohm sage warmth double-stack — two hearths, one room"
 }

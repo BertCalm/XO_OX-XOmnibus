@@ -2,8 +2,8 @@
   "name": "Neural Shimmer",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OCTOPUS"
+    "Opal",
+    "Octopus"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "octopus",
     "granular"
   ],
-  "description": "Eight-arm intelligence routing the granular cloud \u2014 opal shimmer processed through neural net"
+  "description": "Eight-arm intelligence routing the granular cloud — opal shimmer processed through neural net"
 }

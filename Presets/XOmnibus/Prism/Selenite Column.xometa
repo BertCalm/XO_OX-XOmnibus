@@ -3,7 +3,7 @@
   "name": "Selenite Column",
   "mood": "Prism",
   "engines": [
-    "OddFelix"
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -30,7 +30,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OddFelix": {
+    "OddfeliX": {
       "oddfelix_harmonicBlend": 0.801,
       "oddfelix_spectralTilt": 0.623,
       "oddfelix_pitchMod": 0.084,

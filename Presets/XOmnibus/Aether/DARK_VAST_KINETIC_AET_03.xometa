@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OHM",
-    "OLE"
+    "Ohm",
+    "Ole"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.309,
       "macro_movement": 0.924,
       "macro_coupling": 0.457,
       "macro_space": 0.905
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.244,
       "macro_movement": 0.978,
       "macro_coupling": 0.611,

@@ -3,11 +3,11 @@
   "name": "Felix Radiance",
   "mood": "Foundation",
   "engines": [
-    "ODDFELIX"
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "ODDFELIX \u2014 bright extreme brightness preset for Foundation.",
+  "description": "ODDFELIX — bright extreme brightness preset for Foundation.",
   "tags": [
     "foundation",
     "bright",
@@ -37,7 +37,7 @@
     "aggression": 0.08
   },
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "oddf_oscAwave": 0,
       "oddf_oscBwave": 0,
       "oddf_filterCutoff": 0.2,

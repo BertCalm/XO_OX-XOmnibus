@@ -3,12 +3,12 @@
   "name": "Bloom Cascade",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OBSIDIAN"
+    "Overlap",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERLAP diffusion softens OBSIDIAN transients \u2014 glass edges dissolve in water",
+  "description": "OVERLAP diffusion softens OBSIDIAN transients — glass edges dissolve in water",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.575
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.766,
       "olap_decay": 0.811,
       "olap_damping": 0.486,

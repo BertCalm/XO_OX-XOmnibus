@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERBITE",
-    "OPAL"
+    "Overbite",
+    "Opal"
   ],
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.086,
       "macro_movement": 0.956,
       "macro_coupling": 0.681,
       "macro_space": 0.961
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.098,
       "macro_movement": 0.926,
       "macro_coupling": 0.698,

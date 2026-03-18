@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT ATM 10",
   "mood": "Atmosphere",
   "engines": [
-    "OMBRE",
-    "OBSCURA"
+    "Ombre",
+    "Obscura"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.84,
       "macro_movement": 0.77,
       "macro_coupling": 0.79,
       "macro_space": 0.4
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.87,
       "macro_movement": 0.66,
       "macro_coupling": 0.81,

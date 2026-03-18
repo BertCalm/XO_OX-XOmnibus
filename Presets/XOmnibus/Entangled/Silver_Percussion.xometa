@@ -3,12 +3,12 @@
   "name": "Silver Percussion",
   "mood": "Entangled",
   "engines": [
-    "OBSCURA",
-    "ORCA"
+    "Obscura",
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Orca velocity driving Obscura stiffness \u2014 silver daguerreotype percussion at predator tempo.",
+  "description": "Orca velocity driving Obscura stiffness — silver daguerreotype percussion at predator tempo.",
   "tags": [
     "entangled",
     "brutal",

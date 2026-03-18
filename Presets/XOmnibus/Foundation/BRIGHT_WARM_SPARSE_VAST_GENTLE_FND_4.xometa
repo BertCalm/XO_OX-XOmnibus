@@ -3,8 +3,8 @@
   "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_FND_4",
   "mood": "Foundation",
   "engines": [
-    "ODDFELIX",
-    "OBLONG"
+    "OddfeliX",
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.861,
       "macro_movement": 0.501,
       "macro_coupling": 0.263,
       "macro_space": 0.994
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 1.0,
       "macro_movement": 0.464,
       "macro_coupling": 0.037,

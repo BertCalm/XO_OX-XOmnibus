@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OVERLAP",
-    "OTTONI"
+    "Overlap",
+    "Ottoni"
   ],
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.28,
       "macro_movement": 0.355,
       "macro_coupling": 0.179,
       "macro_space": 0.165
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.368,
       "macro_movement": 0.217,
       "macro_coupling": 0.131,

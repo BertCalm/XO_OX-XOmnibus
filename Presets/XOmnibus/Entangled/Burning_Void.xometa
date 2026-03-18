@@ -3,8 +3,8 @@
   "name": "Burning Void",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "OWLFISH"
+    "Osprey",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.43
   },
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.785,
       "macro_movement": 0.57,
       "macro_coupling": 0.867,
       "macro_space": 0.61
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.44,
       "macro_movement": 0.625,
       "macro_coupling": 0.617,

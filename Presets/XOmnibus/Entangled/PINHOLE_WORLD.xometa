@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OPAL",
-    "ONSET"
+    "Opal",
+    "Onset"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.422,
       "macro_movement": 0.743,
       "macro_coupling": 0.88,
       "macro_space": 0.024
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.473,
       "macro_movement": 0.454,
       "macro_coupling": 0.054,

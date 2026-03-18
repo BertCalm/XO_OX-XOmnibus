@@ -3,7 +3,7 @@
   "name": "Magnetic Squall",
   "mood": "Atmosphere",
   "engines": [
-    "OPTIC"
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.544
   },
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "focus": 0.508,
       "aberration": 0.939,
       "coupling": 0.101,

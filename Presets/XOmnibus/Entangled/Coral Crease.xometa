@@ -2,8 +2,8 @@
   "name": "Coral Crease",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "ORIGAMI"
+    "Obbligato",
+    "Origami"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "origami",
     "wind"
   ],
-  "description": "OBBLIGATO dual-wind channel mapped to origami fold/unfold cycle \u2014 breath becomes geometry"
+  "description": "OBBLIGATO dual-wind channel mapped to origami fold/unfold cycle — breath becomes geometry"
 }

@@ -3,11 +3,11 @@
   "name": "Magma Seam",
   "mood": "Foundation",
   "engines": [
-    "OBSIDIAN"
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "OBSIDIAN \u2014 dark extreme brightness preset for Foundation.",
+  "description": "OBSIDIAN — dark extreme brightness preset for Foundation.",
   "tags": [
     "foundation",
     "dark",
@@ -37,7 +37,7 @@
     "aggression": 0.56
   },
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "obs_glassResonance": 0.35,
       "obs_filterCutoff": 0.79,
       "obs_filterReso": 0.44,

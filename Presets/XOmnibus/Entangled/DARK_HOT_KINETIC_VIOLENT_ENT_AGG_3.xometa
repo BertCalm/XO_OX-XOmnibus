@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OWLFISH",
-    "OVERDUB"
+    "Owlfish",
+    "Overdub"
   ],
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.371,
       "macro_movement": 0.91,
       "macro_coupling": 0.839,
       "macro_space": 0.544
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.542,
       "macro_movement": 0.851,
       "macro_coupling": 0.806,

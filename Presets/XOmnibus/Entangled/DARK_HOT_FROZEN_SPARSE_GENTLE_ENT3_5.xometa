@@ -3,12 +3,12 @@
   "name": "DARK_HOT_FROZEN_SPARSE_GENTLE_ENT3_5",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "OTTONI"
+    "Osteria",
+    "Ottoni"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: DARK_HOT_FROZEN_SPARSE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_HOT_FROZEN_SPARSE_GENTLE. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.8143,
       "macro_movement": 0.0774,
       "macro_coupling": 0.8459,
       "macro_space": 0.934
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.9602,
       "macro_movement": 0.0631,
       "macro_coupling": 0.7777,

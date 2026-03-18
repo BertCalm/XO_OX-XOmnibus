@@ -3,7 +3,7 @@
   "name": "Violent Updraft",
   "mood": "Atmosphere",
   "engines": [
-    "ONSET"
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.726
   },
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "machine": 0.643,
       "punch": 0.852,
       "space": 0.468,

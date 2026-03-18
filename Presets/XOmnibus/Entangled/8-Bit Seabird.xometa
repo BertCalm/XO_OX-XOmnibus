@@ -3,8 +3,8 @@
   "name": "8-Bit Seabird",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "OVERWORLD"
+    "Osprey",
+    "Overworld"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

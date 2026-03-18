@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OHM",
-    "OLE"
+    "Ohm",
+    "Ole"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.385,
       "macro_movement": 0.925,
       "macro_coupling": 0.616,
       "macro_space": 0.887
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.31,
       "macro_movement": 0.802,
       "macro_coupling": 0.7,

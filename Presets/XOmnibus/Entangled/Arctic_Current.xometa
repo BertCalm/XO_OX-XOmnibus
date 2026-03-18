@@ -3,8 +3,8 @@
   "name": "Arctic Current",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "OWLFISH"
+    "Orphica",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.265
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.378,
       "macro_movement": 0.731,
       "macro_coupling": 0.543,
       "macro_space": 0.437
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.305,
       "macro_movement": 0.676,
       "macro_coupling": 0.665,

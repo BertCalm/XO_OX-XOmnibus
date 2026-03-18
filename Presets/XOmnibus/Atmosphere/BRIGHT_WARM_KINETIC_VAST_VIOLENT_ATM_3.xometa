@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OBSCURA",
-    "ORBITAL"
+    "Obscura",
+    "Orbital"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.9261,
       "macro_movement": 0.9216,
       "macro_coupling": 0.5274,
       "macro_space": 0.99
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.9584,
       "macro_movement": 0.9346,
       "macro_coupling": 0.5191,

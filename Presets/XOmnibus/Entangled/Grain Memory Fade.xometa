@@ -2,8 +2,8 @@
   "name": "Grain Memory Fade",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OMBRE"
+    "Opal",
+    "Ombre"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ombre",
     "granular"
   ],
-  "description": "Granular cloud softens through ombre gradient \u2014 each grain dimmer at the horizon"
+  "description": "Granular cloud softens through ombre gradient — each grain dimmer at the horizon"
 }

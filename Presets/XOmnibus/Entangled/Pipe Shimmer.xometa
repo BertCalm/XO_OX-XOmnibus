@@ -2,8 +2,8 @@
   "name": "Pipe Shimmer",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OWLFISH"
+    "Opal",
+    "Owlfish"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "owlfish",
     "granular"
   ],
-  "description": "Mixtur-Trautonium harmonics scatter the grain field \u2014 abyssal tone meeting granular light"
+  "description": "Mixtur-Trautonium harmonics scatter the grain field — abyssal tone meeting granular light"
 }

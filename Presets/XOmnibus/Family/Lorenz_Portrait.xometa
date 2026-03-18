@@ -3,11 +3,11 @@
   "name": "Lorenz Portrait",
   "mood": "Family",
   "engines": [
-    "OUROBOROS"
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OUROBOROS tail-biting \u2014 Lorenz attractor spiraling at medium chaos. The self-devouring pattern at its most hypnotic.",
+  "description": "OUROBOROS tail-biting — Lorenz attractor spiraling at medium chaos. The self-devouring pattern at its most hypnotic.",
   "tags": [
     "family",
     "signature",

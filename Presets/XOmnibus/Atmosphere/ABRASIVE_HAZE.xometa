@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "ORACLE",
-    "OCELOT"
+    "Oracle",
+    "Ocelot"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.759,
       "macro_movement": 0.828,
       "macro_coupling": 0.342,
       "macro_space": 0.151
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.212,
       "macro_movement": 0.857,
       "macro_coupling": 0.343,

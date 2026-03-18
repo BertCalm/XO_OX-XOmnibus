@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ODDOSCAR",
-    "OBESE"
+    "OddOscar",
+    "Obese"
   ],
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.352,
       "macro_movement": 0.136,
       "macro_coupling": 0.166,
       "macro_space": 0.547
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.885,
       "macro_movement": 0.655,
       "macro_coupling": 0.612,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "ORGANON",
-    "OHM"
+    "Organon",
+    "Ohm"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.529,
       "macro_movement": 0.92,
       "macro_coupling": 0.558,
       "macro_space": 0.918
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.515,
       "macro_movement": 0.918,
       "macro_coupling": 0.564,

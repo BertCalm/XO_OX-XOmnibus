@@ -3,12 +3,12 @@
   "name": "DARK COLD VAST VIOLENT FAM 3",
   "mood": "Family",
   "engines": [
-    "OPAL",
-    "ORACLE"
+    "Opal",
+    "Oracle"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, dark, cold, vast.",
+  "description": "Extreme DNA corners — family, dark, cold, vast.",
   "tags": [
     "family",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.906
   },
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "level": 0.844,
       "pan": 0.018
     },
-    "ORACLE": {
+    "Oracle": {
       "level": 0.675,
       "pan": -0.062
     }

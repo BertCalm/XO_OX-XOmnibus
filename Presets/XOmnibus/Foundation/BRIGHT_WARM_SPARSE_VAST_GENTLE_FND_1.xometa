@@ -3,8 +3,8 @@
   "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_FND_1",
   "mood": "Foundation",
   "engines": [
-    "ORIGAMI",
-    "OBESE"
+    "Origami",
+    "Obese"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 1.0,
       "macro_movement": 0.566,
       "macro_coupling": 0.121,
       "macro_space": 0.91
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 1.0,
       "macro_movement": 0.664,
       "macro_coupling": 0.0,

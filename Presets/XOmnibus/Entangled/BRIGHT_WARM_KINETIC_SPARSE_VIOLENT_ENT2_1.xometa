@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERWORLD",
-    "OVERLAP"
+    "Overworld",
+    "Overlap"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.962,
       "macro_movement": 0.941,
       "macro_coupling": 0.489,
       "macro_space": 0.376
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.978,
       "macro_movement": 0.953,
       "macro_coupling": 0.472,

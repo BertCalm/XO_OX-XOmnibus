@@ -3,12 +3,12 @@
   "name": "Emerge Pattern",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OVERWORLD"
+    "Outwit",
+    "Overworld"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OUTWIT branch complexity drives OVERWORLD glitch rate \u2014 arms fracture the pixels",
+  "description": "OUTWIT branch complexity drives OVERWORLD glitch rate — arms fracture the pixels",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.7
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 184,
       "owit_arms": 8,
       "owit_cellSize": 0.338,

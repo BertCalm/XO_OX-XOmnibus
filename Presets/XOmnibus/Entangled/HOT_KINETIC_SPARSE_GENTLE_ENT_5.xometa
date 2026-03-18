@@ -3,12 +3,12 @@
   "name": "HOT_KINETIC_SPARSE_GENTLE_ENT_5",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "ORBITAL"
+    "Orphica",
+    "Orbital"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Hot Kinetic Sparse Gentle character entanglement \u2014 ORPHICA \u00d7 ORBITAL via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "description": "Hot Kinetic Sparse Gentle character entanglement — ORPHICA × ORBITAL via Velocity Couple. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "warm",
@@ -41,7 +41,7 @@
     "aggression": 0.0782
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.7753,
       "macro_movement": 0.9759,
       "macro_coupling": 0.6087,
@@ -57,7 +57,7 @@
       "output_level": 0.7342,
       "coupling_level": 0.5554
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.8147,
       "macro_movement": 0.9879,
       "macro_coupling": 0.6432,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ORIGAMI",
-    "OPTIC"
+    "Origami",
+    "Optic"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.9084,
       "macro_movement": 0.8979,
       "macro_coupling": 0.8879,
       "macro_space": 0.5029
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.7822,
       "macro_movement": 0.9738,
       "macro_coupling": 0.9203,

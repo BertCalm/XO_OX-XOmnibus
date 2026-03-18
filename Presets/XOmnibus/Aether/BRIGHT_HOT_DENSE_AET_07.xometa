@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORPHICA",
-    "ORBITAL"
+    "Orphica",
+    "Orbital"
   ],
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.909,
       "macro_movement": 0.433,
       "macro_coupling": 0.655,
       "macro_space": 0.504
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.864,
       "macro_movement": 0.501,
       "macro_coupling": 0.949,

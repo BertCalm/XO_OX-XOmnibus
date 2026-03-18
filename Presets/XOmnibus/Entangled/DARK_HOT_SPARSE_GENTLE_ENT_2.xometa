@@ -3,12 +3,12 @@
   "name": "DARK_HOT_SPARSE_GENTLE_ENT_2",
   "mood": "Entangled",
   "engines": [
-    "ORCA",
-    "OVERDUB"
+    "Orca",
+    "Overdub"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Hot Sparse Gentle character entanglement \u2014 ORCA \u00d7 OVERDUB via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Hot Sparse Gentle character entanglement — ORCA × OVERDUB via Spectral Morph. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.0414
   },
   "parameters": {
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.7275,
       "macro_movement": 0.4918,
       "macro_coupling": 0.6524,
@@ -57,7 +57,7 @@
       "output_level": 0.6875,
       "coupling_level": 0.5307
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.7601,
       "macro_movement": 0.5081,
       "macro_coupling": 0.6403,

@@ -3,12 +3,12 @@
   "name": "Brass Storm",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "ONSET"
+    "Ottoni",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ottoni triple brass velocity coupled into Onset percussion \u2014 martial brass storm.",
+  "description": "Ottoni triple brass velocity coupled into Onset percussion — martial brass storm.",
   "tags": [
     "entangled",
     "brutal",

@@ -3,12 +3,12 @@
   "name": "Stochastic Pluck",
   "mood": "Entangled",
   "engines": [
-    "ORACLE",
-    "ORPHICA"
+    "Oracle",
+    "Orphica"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "GENDY chaos injected into ORPHICA pluck \u2014 stochastic microsound.",
+  "description": "GENDY chaos injected into ORPHICA pluck — stochastic microsound.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.1
   },
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.54,
       "macro_movement": 0.68,
       "macro_coupling": 0.6,
       "macro_space": 0.62
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.65,
       "macro_movement": 0.5,
       "macro_coupling": 0.6,

@@ -3,12 +3,12 @@
   "name": "BRIGHT_HOT_FROZEN_DENSE_VIOLENT_ENT3_4",
   "mood": "Entangled",
   "engines": [
-    "ORACLE",
-    "OSPREY"
+    "Oracle",
+    "Osprey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_HOT_FROZEN_DENSE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_HOT_FROZEN_DENSE_VIOLENT. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.9479,
       "macro_movement": 0.0894,
       "macro_coupling": 0.9766,
       "macro_space": 0.9223
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.9265,
       "macro_movement": 0.0806,
       "macro_coupling": 0.943,

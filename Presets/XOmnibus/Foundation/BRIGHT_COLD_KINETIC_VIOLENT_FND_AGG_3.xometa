@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ORACLE",
-    "OBESE"
+    "Oracle",
+    "Obese"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.82,
       "macro_movement": 0.558,
       "macro_coupling": 0.607,
       "macro_space": 0.572
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.821,
       "macro_movement": 0.542,
       "macro_coupling": 0.642,

@@ -2,8 +2,8 @@
   "name": "Harp & Claw",
   "version": "1.0",
   "engines": [
-    "ORPHICA",
-    "OCELOT"
+    "Orphica",
+    "Ocelot"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ocelot",
     "microsound"
   ],
-  "description": "Gossamer string plucks interrupted by sudden predatory stabs \u2014 beauty and danger"
+  "description": "Gossamer string plucks interrupted by sudden predatory stabs — beauty and danger"
 }

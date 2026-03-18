@@ -2,8 +2,8 @@
   "name": "Orbital Reed",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "ORBITAL"
+    "Obbligato",
+    "Orbital"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orbital",
     "wind"
   ],
-  "description": "Orbital group envelope obligated to OBBLIGATO breath phase \u2014 the orbit breathes in sync"
+  "description": "Orbital group envelope obligated to OBBLIGATO breath phase — the orbit breathes in sync"
 }

@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "name": "OBBLIGATO Wind Tie \u2014 Organon",
+  "name": "OBBLIGATO Wind Tie — Organon",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "ORGANON"
+    "Obbligato",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bioluminescent cyan and rascal coral in BOND union \u2014 ORGANON's variational metabolism breathes through both reeds.",
+  "description": "Bioluminescent cyan and rascal coral in BOND union — ORGANON's variational metabolism breathes through both reeds.",
   "tags": [
     "coupling",
     "obbligato",

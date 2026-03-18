@@ -3,12 +3,12 @@
   "name": "BRIGHT_KINETIC_DENSE_VIOLENT_ENT_2",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "ORIGAMI"
+    "Ouroboros",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Kinetic Dense Violent character entanglement \u2014 OUROBOROS \u00d7 ORIGAMI via Formant Bridge. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Kinetic Dense Violent character entanglement — OUROBOROS × ORIGAMI via Formant Bridge. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.9408
   },
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.8696,
       "macro_movement": 0.926,
       "macro_coupling": 0.9471,
@@ -57,7 +57,7 @@
       "output_level": 0.9468,
       "coupling_level": 0.955
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.8579,
       "macro_movement": 0.9147,
       "macro_coupling": 0.9468,

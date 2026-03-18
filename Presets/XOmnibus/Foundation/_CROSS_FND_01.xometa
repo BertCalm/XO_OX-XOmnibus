@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ODDOSCAR",
-    "OVERBITE"
+    "OddOscar",
+    "Overbite"
   ],
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.958,
       "macro_movement": 0.482,
       "macro_coupling": 0.252,
       "macro_space": 0.398
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.958,
       "macro_movement": 0.482,
       "macro_coupling": 0.252,

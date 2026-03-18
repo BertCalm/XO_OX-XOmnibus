@@ -2,8 +2,8 @@
   "name": "Sage Dissolve",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OMBRE"
+    "Ohm",
+    "Ombre"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ombre",
     "hippy"
   ],
-  "description": "Folk wholeness softens into ombre blur \u2014 unity becoming gradient becoming mist"
+  "description": "Folk wholeness softens into ombre blur — unity becoming gradient becoming mist"
 }

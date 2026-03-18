@@ -3,8 +3,8 @@
   "name": "DARK_HOT_KINETIC_SPARSE_VIOLENT_PRS_5",
   "mood": "Prism",
   "engines": [
-    "OLE",
-    "OWLFISH"
+    "Ole",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.161,
       "macro_movement": 0.846,
       "macro_coupling": 0.123,
       "macro_space": 0.444
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.073,
       "macro_movement": 0.834,
       "macro_coupling": 0.0,

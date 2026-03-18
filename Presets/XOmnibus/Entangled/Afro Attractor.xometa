@@ -3,12 +3,12 @@
   "name": "Afro Attractor",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "OLE"
+    "Ouroboros",
+    "Ole"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Strange attractor amplitude pattern drives OLE Afro-Latin density \u2014 orbital drama.",
+  "description": "Strange attractor amplitude pattern drives OLE Afro-Latin density — orbital drama.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.72
   },
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.58,
       "macro_movement": 0.75,
       "macro_coupling": 0.7,
       "macro_space": 0.44
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.72,
       "macro_movement": 0.62,
       "macro_coupling": 0.7,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OWLFISH",
-    "OSTERIA"
+    "Owlfish",
+    "Osteria"
   ],
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.657,
       "macro_movement": 0.83,
       "macro_coupling": 0.873,
       "macro_space": 0.668
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.583,
       "macro_movement": 0.753,
       "macro_coupling": 0.35,

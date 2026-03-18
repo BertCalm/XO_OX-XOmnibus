@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OWLFISH",
-    "OBBLIGATO"
+    "Owlfish",
+    "Obbligato"
   ],
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.511,
       "macro_movement": 0.794,
       "macro_coupling": 0.96,
       "macro_space": 0.736
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.659,
       "macro_movement": 0.284,
       "macro_coupling": 0.664,

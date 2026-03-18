@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ORIGAMI"
+    "Outwit",
+    "Origami"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.43,
       "macro_movement": 0.89,
       "macro_coupling": 0.76,
       "macro_space": 0.25
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.22,
       "macro_movement": 0.78,
       "macro_coupling": 0.61,

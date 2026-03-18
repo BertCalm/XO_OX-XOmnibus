@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT ATH 10",
   "mood": "Aether",
   "engines": [
-    "OCTOPUS",
-    "OVERLAP"
+    "Octopus",
+    "Overlap"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.98,
       "macro_movement": 0.64,
       "macro_coupling": 0.76,
       "macro_space": 0.1
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.79,
       "macro_movement": 0.87,
       "macro_coupling": 0.84,

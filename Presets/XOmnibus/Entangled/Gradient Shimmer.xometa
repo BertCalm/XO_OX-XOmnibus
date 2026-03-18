@@ -2,8 +2,8 @@
   "name": "Gradient Shimmer",
   "version": "1.0",
   "engines": [
-    "ORPHICA",
-    "OMBRE"
+    "Orphica",
+    "Ombre"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ombre",
     "microsound"
   ],
-  "description": "Crystal brightness softens through ombre gradient \u2014 spectral fade to warmth"
+  "description": "Crystal brightness softens through ombre gradient — spectral fade to warmth"
 }

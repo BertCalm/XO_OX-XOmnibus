@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OBSCURA",
-    "OVERDUB"
+    "Obscura",
+    "Overdub"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.975,
       "macro_movement": 0.273,
       "macro_coupling": 0.656,
       "macro_space": 0.258
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.366,
       "macro_movement": 0.448,
       "macro_coupling": 0.398,

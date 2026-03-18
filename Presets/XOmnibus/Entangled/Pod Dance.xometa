@@ -2,8 +2,8 @@
   "name": "Pod Dance",
   "version": "1.0",
   "engines": [
-    "OLE",
-    "ORCA"
+    "Ole",
+    "Orca"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orca",
     "afro-latin"
   ],
-  "description": "Afro-Latin percussion drives orca migration \u2014 drums become echolocation signal"
+  "description": "Afro-Latin percussion drives orca migration — drums become echolocation signal"
 }

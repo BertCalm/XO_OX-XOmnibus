@@ -3,12 +3,12 @@
   "name": "Cold Machine",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "ONSET"
+    "Obsidian",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Obsidian crystal density driving Onset percussion velocity \u2014 cold machine with perfect silence between hits.",
+  "description": "Obsidian crystal density driving Onset percussion velocity — cold machine with perfect silence between hits.",
   "tags": [
     "entangled",
     "brutal",

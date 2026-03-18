@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OBBLIGATO",
-    "ORIGAMI"
+    "Obbligato",
+    "Origami"
   ],
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.036,
       "macro_movement": 0.43,
       "macro_coupling": 0.86,
       "macro_space": 0.547
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.139,
       "macro_movement": 0.353,
       "macro_coupling": 0.471,

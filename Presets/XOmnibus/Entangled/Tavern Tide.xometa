@@ -2,8 +2,8 @@
   "name": "Tavern Tide",
   "version": "1.0",
   "engines": [
-    "OSTERIA",
-    "OCEANIC"
+    "Osteria",
+    "Oceanic"
   ],
   "mood": "Entangled",
   "strategy": "Warm Sparse",
@@ -35,5 +35,5 @@
     "coastal",
     "nostalgic"
   ],
-  "description": "Osteria's warm hearth melting into Oceanic's open horizon \u2014 salt and embers."
+  "description": "Osteria's warm hearth melting into Oceanic's open horizon — salt and embers."
 }

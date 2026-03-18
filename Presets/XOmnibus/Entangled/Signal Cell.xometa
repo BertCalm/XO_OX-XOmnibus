@@ -3,12 +3,12 @@
   "name": "Signal Cell",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OCELOT"
+    "Outwit",
+    "Ocelot"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OCELOT leap transient triggers OUTWIT rule mutation \u2014 the hunt reshapes the automata",
+  "description": "OCELOT leap transient triggers OUTWIT rule mutation — the hunt reshapes the automata",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.825
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 30,
       "owit_arms": 5,
       "owit_cellSize": 0.288,

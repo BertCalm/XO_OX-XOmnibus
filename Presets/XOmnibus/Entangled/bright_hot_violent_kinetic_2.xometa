@@ -19,11 +19,11 @@
     "space": 0.437
   },
   "engines": [
-    "XOsteria"
+    "Osteria"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 bright hot violent kinetic. Designed for PHASE coupling with XOsteria.",
+  "description": "Ultra-diverse Entangled preset — bright hot violent kinetic. Designed for PHASE coupling with XOsteria.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "PHASE",
   "couplingIntensity": "Medium",
   "parameters": {
-    "XOsteria": {
+    "Osteria": {
       "couplingLevel": 0.798,
       "couplingBus": 3
     }

@@ -3,11 +3,11 @@
   "name": "NES Kid",
   "mood": "Family",
   "engines": [
-    "OVERWORLD"
+    "Overworld"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERWORLD full ERA mode \u2014 NES square waves in the room. The pixelated nostalgia of a cartridge that still boots. Warmth through 8-bit limitation.",
+  "description": "OVERWORLD full ERA mode — NES square waves in the room. The pixelated nostalgia of a cartridge that still boots. Warmth through 8-bit limitation.",
   "tags": [
     "family",
     "signature",

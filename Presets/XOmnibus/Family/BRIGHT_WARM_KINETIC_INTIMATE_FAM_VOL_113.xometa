@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "ODYSSEY",
-    "ODDFELIX"
+    "Odyssey",
+    "OddfeliX"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.918,
       "macro_movement": 0.883,
       "macro_coupling": 0.507,
       "macro_space": 0.042
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.94,
       "macro_movement": 0.867,
       "macro_coupling": 0.458,

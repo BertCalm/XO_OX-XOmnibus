@@ -3,12 +3,12 @@
   "name": "Strange Clave",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OUROBOROS"
+    "Ole",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "OLE clave pattern timbres blend with strange attractor state \u2014 topological rhythm.",
+  "description": "OLE clave pattern timbres blend with strange attractor state — topological rhythm.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.7
   },
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.72,
       "macro_movement": 0.7,
       "macro_coupling": 0.65,
       "macro_space": 0.35
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.6,
       "macro_movement": 0.72,
       "macro_coupling": 0.65,

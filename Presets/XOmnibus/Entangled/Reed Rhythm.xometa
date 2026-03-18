@@ -2,8 +2,8 @@
   "name": "Reed Rhythm",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "ONSET"
+    "Obbligato",
+    "Onset"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "onset",
     "wind"
   ],
-  "description": "OBBLIGATO attack shaped by onset kick pattern \u2014 the wind is rhythmically forced"
+  "description": "OBBLIGATO attack shaped by onset kick pattern — the wind is rhythmically forced"
 }

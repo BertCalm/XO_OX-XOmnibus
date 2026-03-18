@@ -2,8 +2,8 @@
   "name": "Photographic Breath",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OBSCURA"
+    "Obbligato",
+    "Obscura"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "obscura",
     "wind"
   ],
-  "description": "Obscura daguerreotype stiffness obligated to OBBLIGATO breath \u2014 each breath exposes the plate"
+  "description": "Obscura daguerreotype stiffness obligated to OBBLIGATO breath — each breath exposes the plate"
 }

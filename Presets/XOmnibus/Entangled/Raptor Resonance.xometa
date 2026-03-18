@@ -2,8 +2,8 @@
   "name": "Raptor Resonance",
   "version": "1.0",
   "engines": [
-    "ORPHICA",
-    "OSPREY"
+    "Orphica",
+    "Osprey"
   ],
   "mood": "Entangled",
   "strategy": "Warm Sparse",

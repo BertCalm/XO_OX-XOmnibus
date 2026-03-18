@@ -3,11 +3,11 @@
   "name": "Prismatic Light",
   "mood": "Family",
   "engines": [
-    "OPTIC"
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OPTIC at full spectrum \u2014 REFRACT open, brightness maximum. Light through a prism: every frequency present, each in its place.",
+  "description": "OPTIC at full spectrum — REFRACT open, brightness maximum. Light through a prism: every frequency present, each in its place.",
   "tags": [
     "family",
     "signature",

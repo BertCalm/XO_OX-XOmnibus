@@ -2,8 +2,8 @@
   "name": "Shimmer Dissolve",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OMBRE"
+    "Opal",
+    "Ombre"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ombre",
     "granular"
   ],
-  "description": "Opal shimmer bleeds into shadow mauve \u2014 lavender grain dissolving to twilight"
+  "description": "Opal shimmer bleeds into shadow mauve — lavender grain dissolving to twilight"
 }

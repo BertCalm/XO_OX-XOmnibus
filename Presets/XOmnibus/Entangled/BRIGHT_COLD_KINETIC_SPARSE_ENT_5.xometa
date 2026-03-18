@@ -3,12 +3,12 @@
   "name": "BRIGHT_COLD_KINETIC_SPARSE_ENT_5",
   "mood": "Entangled",
   "engines": [
-    "OVERDUB",
-    "OCTOPUS"
+    "Overdub",
+    "Octopus"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Cold Kinetic Sparse character entanglement \u2014 OVERDUB \u00d7 OCTOPUS via Pitch Entangle. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Cold Kinetic Sparse character entanglement — OVERDUB × OCTOPUS via Pitch Entangle. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.3296
   },
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.6029,
       "macro_movement": 0.9826,
       "macro_coupling": 0.7307,
@@ -57,7 +57,7 @@
       "output_level": 0.7131,
       "coupling_level": 0.6936
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.5659,
       "macro_movement": 0.9877,
       "macro_coupling": 0.7296,

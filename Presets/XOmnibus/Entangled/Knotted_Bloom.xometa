@@ -3,8 +3,8 @@
   "name": "Knotted Bloom",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "OVERBITE"
+    "Obsidian",
+    "Overbite"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.735
   },
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.567,
       "macro_movement": 0.779,
       "macro_coupling": 0.68,
       "macro_space": 0.344
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.775,
       "macro_movement": 0.612,
       "macro_coupling": 0.658,

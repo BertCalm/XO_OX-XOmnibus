@@ -3,8 +3,8 @@
   "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_FND_5",
   "mood": "Foundation",
   "engines": [
-    "ODDOSCAR",
-    "OBLONG"
+    "OddOscar",
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 1.0,
       "macro_movement": 0.623,
       "macro_coupling": 0.133,
       "macro_space": 0.892
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 1.0,
       "macro_movement": 0.541,
       "macro_coupling": 0.0,

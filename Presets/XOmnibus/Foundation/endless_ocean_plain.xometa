@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OCTOPUS",
-    "ODYSSEY"
+    "Octopus",
+    "Odyssey"
   ],
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.861,
       "macro_movement": 0.607,
       "macro_coupling": 0.021,
       "macro_space": 0.955
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.821,
       "macro_movement": 0.606,
       "macro_coupling": 0.763,

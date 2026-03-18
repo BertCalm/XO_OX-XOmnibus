@@ -4,8 +4,8 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OVERLAP"
+    "Outwit",
+    "Overlap"
   ],
   "author": "XO_OX",
   "macros": {
@@ -23,7 +23,7 @@
     "aggression": 0.42
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 45,
       "owit_arms": 6,
       "owit_cellSize": 0.188,
@@ -39,7 +39,7 @@
       "owit_couplingLevel": 0.614,
       "owit_couplingBus": 0
     },
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.948,
       "olap_decay": 0.712,
       "olap_damping": 0.638,
@@ -74,5 +74,5 @@
     "scatter",
     "fm"
   ],
-  "description": "OUTWIT emergence events scatter OVERLAP diffusion coefficients \u2014 unpredictable bloom in infinite space, each cellular birth rewrites the room"
+  "description": "OUTWIT emergence events scatter OVERLAP diffusion coefficients — unpredictable bloom in infinite space, each cellular birth rewrites the room"
 }

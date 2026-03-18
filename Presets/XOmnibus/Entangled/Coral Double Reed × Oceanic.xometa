@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "name": "Coral Double Reed \u00d7 Oceanic",
+  "name": "Coral Double Reed × Oceanic",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OCEANIC"
+    "Obbligato",
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",

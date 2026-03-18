@@ -3,12 +3,12 @@
   "name": "Obese Attractor",
   "mood": "Entangled",
   "engines": [
-    "OBESE",
-    "OUROBOROS"
+    "Obese",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OBESE BELLY maxed, MOJO maxed \u2014 Ouroboros strange attractor as the engine's own heartbeat.",
+  "description": "OBESE BELLY maxed, MOJO maxed — Ouroboros strange attractor as the engine's own heartbeat.",
   "tags": [
     "entangled",
     "brutal",

@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OLE"
+    "Ole"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.44,
       "macro_movement": 0.93,
       "macro_coupling": 0.3,

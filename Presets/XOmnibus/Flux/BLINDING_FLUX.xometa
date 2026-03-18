@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OUROBOROS",
-    "OBSIDIAN"
+    "Ouroboros",
+    "Obsidian"
   ],
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.073,
       "macro_movement": 0.414,
       "macro_coupling": 0.63,
       "macro_space": 0.194
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.696,
       "macro_movement": 0.494,
       "macro_coupling": 0.244,

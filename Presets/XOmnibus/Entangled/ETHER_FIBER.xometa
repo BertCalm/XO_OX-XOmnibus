@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBLONG",
-    "OUROBOROS"
+    "Oblong",
+    "Ouroboros"
   ],
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.76,
       "macro_movement": 0.449,
       "macro_coupling": 0.924,
       "macro_space": 0.564
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.635,
       "macro_movement": 0.625,
       "macro_coupling": 0.864,

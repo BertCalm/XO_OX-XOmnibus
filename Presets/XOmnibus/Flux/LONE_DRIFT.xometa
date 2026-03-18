@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OCELOT",
-    "OCTOPUS"
+    "Ocelot",
+    "Octopus"
   ],
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.544,
       "macro_movement": 0.414,
       "macro_coupling": 0.625,
       "macro_space": 0.901
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.676,
       "macro_movement": 0.323,
       "macro_coupling": 0.653,

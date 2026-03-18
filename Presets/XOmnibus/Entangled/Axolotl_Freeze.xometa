@@ -3,12 +3,12 @@
   "name": "Axolotl Freeze",
   "mood": "Entangled",
   "engines": [
-    "ODDOSCAR",
-    "OUROBOROS"
+    "OddOscar",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Axolotl morph parameter chaos-injected by Ouroboros topology \u2014 gill pink frozen at fractal cold.",
+  "description": "Axolotl morph parameter chaos-injected by Ouroboros topology — gill pink frozen at fractal cold.",
   "tags": [
     "entangled",
     "brutal",

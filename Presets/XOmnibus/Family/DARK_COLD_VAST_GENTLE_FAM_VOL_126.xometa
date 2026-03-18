@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OTTONI",
-    "OSTERIA"
+    "Ottoni",
+    "Osteria"
   ],
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.085,
       "macro_movement": 0.386,
       "macro_coupling": 0.363,
       "macro_space": 0.905
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.058,
       "macro_movement": 0.358,
       "macro_coupling": 0.343,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OVERDUB",
-    "ORGANON"
+    "Overdub",
+    "Organon"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.511,
       "macro_movement": 0.355,
       "macro_coupling": 0.554,
       "macro_space": 0.962
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.472,
       "macro_movement": 0.387,
       "macro_coupling": 0.693,

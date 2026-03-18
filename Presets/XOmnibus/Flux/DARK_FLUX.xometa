@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OWLFISH",
-    "ORCA"
+    "Owlfish",
+    "Orca"
   ],
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.709,
       "macro_movement": 0.002,
       "macro_coupling": 0.926,
       "macro_space": 0.538
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.719,
       "macro_movement": 0.742,
       "macro_coupling": 0.671,

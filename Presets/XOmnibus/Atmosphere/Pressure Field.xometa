@@ -2,7 +2,7 @@
   "name": "Pressure Field",
   "version": "1.0",
   "engines": [
-    "ODYSSEY"
+    "Odyssey"
   ],
   "mood": "Atmosphere",
   "macros": {

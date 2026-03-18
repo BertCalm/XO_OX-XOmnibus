@@ -3,12 +3,12 @@
   "name": "Silver Topology",
   "mood": "Entangled",
   "engines": [
-    "OBSCURA",
-    "OUROBOROS"
+    "Obscura",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ouroboros timbral warp corrupting Obscura plate stiffness \u2014 silver daguerreotype at fractal resolution.",
+  "description": "Ouroboros timbral warp corrupting Obscura plate stiffness — silver daguerreotype at fractal resolution.",
   "tags": [
     "entangled",
     "brutal",

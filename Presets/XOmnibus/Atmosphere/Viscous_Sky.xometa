@@ -3,7 +3,7 @@
   "name": "Viscous Sky",
   "mood": "Atmosphere",
   "engines": [
-    "ORCA"
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.233
   },
   "parameters": {
-    "ORCA": {
+    "Orca": {
       "character": 0.309,
       "movement": 0.277,
       "coupling": 0.201,

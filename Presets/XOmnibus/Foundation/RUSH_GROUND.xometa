@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OUTWIT",
-    "ONSET"
+    "Outwit",
+    "Onset"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.669,
       "macro_movement": 0.935,
       "macro_coupling": 0.438,
       "macro_space": 0.495
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.68,
       "macro_movement": 0.915,
       "macro_coupling": 0.598,

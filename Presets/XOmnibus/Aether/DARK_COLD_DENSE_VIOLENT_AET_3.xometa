@@ -3,12 +3,12 @@
   "name": "DARK COLD DENSE VIOLENT AET 3",
   "mood": "Aether",
   "engines": [
-    "OVERDUB",
-    "ORBITAL"
+    "Overdub",
+    "Orbital"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, dark, cold, dense.",
+  "description": "Extreme DNA corners — aether, dark, cold, dense.",
   "tags": [
     "aether",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.96
   },
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "level": 0.753,
       "pan": -0.127
     },
-    "ORBITAL": {
+    "Orbital": {
       "level": 0.718,
       "pan": 0.017
     }

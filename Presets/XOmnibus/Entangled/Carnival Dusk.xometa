@@ -2,8 +2,8 @@
   "name": "Carnival Dusk",
   "version": "1.0",
   "engines": [
-    "OLE",
-    "OMBRE"
+    "Ole",
+    "Ombre"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ombre",
     "afro-latin"
   ],
-  "description": "Afro-Latin celebration winding down \u2014 the drums fade through gradient twilight"
+  "description": "Afro-Latin celebration winding down — the drums fade through gradient twilight"
 }

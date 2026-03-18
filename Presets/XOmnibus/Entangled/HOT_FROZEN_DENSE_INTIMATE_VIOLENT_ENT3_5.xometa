@@ -3,12 +3,12 @@
   "name": "HOT_FROZEN_DENSE_INTIMATE_VIOLENT_ENT3_5",
   "mood": "Entangled",
   "engines": [
-    "OBLIQUE",
-    "OHM"
+    "Oblique",
+    "Ohm"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: HOT_FROZEN_DENSE_INTIMATE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: HOT_FROZEN_DENSE_INTIMATE_VIOLENT. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.8253,
       "macro_movement": 0.0529,
       "macro_coupling": 0.8386,
       "macro_space": 0.5705
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.9883,
       "macro_movement": 0.0572,
       "macro_coupling": 0.8821,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "OBSCURA"
+    "Ouroboros",
+    "Obscura"
   ],
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.311,
       "macro_movement": 0.092,
       "macro_coupling": 0.148,
       "macro_space": 0.168
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.62,
       "macro_movement": 0.071,
       "macro_coupling": 0.154,

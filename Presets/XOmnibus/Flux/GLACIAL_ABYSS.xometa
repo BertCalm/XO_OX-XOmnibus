@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OHM",
-    "OBESE"
+    "Ohm",
+    "Obese"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.38,
       "macro_movement": 0.436,
       "macro_coupling": 0.771,
       "macro_space": 0.773
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.463,
       "macro_movement": 0.4,
       "macro_coupling": 0.894,

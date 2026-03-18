@@ -2,8 +2,8 @@
   "name": "Carnival Voyage",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OLE"
+    "Odyssey",
+    "Ole"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ole",
     "wavetable"
   ],
-  "description": "Ole drama macro erupts inside drift FM \u2014 the journey interrupted by celebration"
+  "description": "Ole drama macro erupts inside drift FM — the journey interrupted by celebration"
 }

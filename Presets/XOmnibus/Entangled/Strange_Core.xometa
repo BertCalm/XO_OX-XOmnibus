@@ -3,8 +3,8 @@
   "name": "Strange Core",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "ORCA"
+    "Obbligato",
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.595
   },
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.699,
       "macro_movement": 0.597,
       "macro_coupling": 0.693,
       "macro_space": 0.573
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.516,
       "macro_movement": 0.75,
       "macro_coupling": 0.56,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OBLIQUE",
-    "OBSCURA"
+    "Oblique",
+    "Obscura"
   ],
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.0729,
       "macro_movement": 0.9235,
       "macro_coupling": 0.5097,
       "macro_space": 0.0776
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.1001,
       "macro_movement": 0.8988,
       "macro_coupling": 0.5358,

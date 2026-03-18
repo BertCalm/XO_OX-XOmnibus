@@ -3,7 +3,7 @@
   "name": "Eclipsed Basin",
   "mood": "Atmosphere",
   "engines": [
-    "OPAL"
+    "Opal"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.093
   },
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "scatter": 0.064,
       "drift": 0.533,
       "coupling": 0.452,

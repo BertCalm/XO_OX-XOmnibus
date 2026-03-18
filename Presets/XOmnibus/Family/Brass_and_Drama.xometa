@@ -3,12 +3,12 @@
   "name": "Brass and Drama",
   "mood": "Family",
   "engines": [
-    "OTTONI",
-    "OLE"
+    "Ottoni",
+    "Ole"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OTTONI triple brass + OLE Afro-Latin trio \u2014 the full ensemble reunion. GROW meets DRAMA. The most joyful collision in the family.",
+  "description": "OTTONI triple brass + OLE Afro-Latin trio — the full ensemble reunion. GROW meets DRAMA. The most joyful collision in the family.",
   "tags": [
     "family",
     "reunion",

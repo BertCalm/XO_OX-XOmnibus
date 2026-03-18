@@ -3,12 +3,12 @@
   "name": "Orbit and Obligation",
   "mood": "Family",
   "engines": [
-    "ORBITAL",
-    "OBBLIGATO"
+    "Orbital",
+    "Obbligato"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORBITAL elliptical pulse + OBBLIGATO dual wind \u2014 the planet and its breath. Celestial orbit carried by wind. BOND across the solar system.",
+  "description": "ORBITAL elliptical pulse + OBBLIGATO dual wind — the planet and its breath. Celestial orbit carried by wind. BOND across the solar system.",
   "tags": [
     "family",
     "reunion",

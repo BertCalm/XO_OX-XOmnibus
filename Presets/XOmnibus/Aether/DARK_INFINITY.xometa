@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORPHICA",
-    "OVERBITE"
+    "Orphica",
+    "Overbite"
   ],
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.715,
       "macro_movement": 0.335,
       "macro_coupling": 0.146,
       "macro_space": 0.038
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.917,
       "macro_movement": 0.472,
       "macro_coupling": 0.831,

@@ -3,12 +3,12 @@
   "name": "Cumbia Cell",
   "mood": "Entangled",
   "engines": [
-    "ORGANON",
-    "OLE"
+    "Organon",
+    "Ole"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Organon velocity output fires OLE Afro-Latin rhythm \u2014 biological cumbia.",
+  "description": "Organon velocity output fires OLE Afro-Latin rhythm — biological cumbia.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.58
   },
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.52,
       "macro_movement": 0.72,
       "macro_coupling": 0.65,
       "macro_space": 0.5
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.7,
       "macro_movement": 0.6,
       "macro_coupling": 0.65,

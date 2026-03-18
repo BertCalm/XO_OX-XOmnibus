@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "OUROBOROS"
+    "Obsidian",
+    "Ouroboros"
   ],
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.49,
       "macro_movement": 0.75,
       "macro_coupling": 0.86,
       "macro_space": 0.41
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.68,
       "macro_movement": 0.83,
       "macro_coupling": 0.6,

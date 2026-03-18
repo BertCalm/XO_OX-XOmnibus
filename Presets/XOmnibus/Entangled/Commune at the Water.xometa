@@ -3,12 +3,12 @@
   "name": "Commune at the Water",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "OHM"
+    "Osprey",
+    "Ohm"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OHM's meditative drone grounds osprey's altitude \u2014 sky meets sea floor.",
+  "description": "OHM's meditative drone grounds osprey's altitude — sky meets sea floor.",
   "tags": [
     "entangled",
     "coupling",

@@ -2,8 +2,8 @@
   "name": "Voyage Stalk",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OCELOT"
+    "Odyssey",
+    "Ocelot"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ocelot",
     "wavetable"
   ],
-  "description": "Predatory tension threads through drifting harmonics \u2014 the journey watched from the dark"
+  "description": "Predatory tension threads through drifting harmonics — the journey watched from the dark"
 }

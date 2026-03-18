@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OCEANIC",
-    "OSTERIA"
+    "Oceanic",
+    "Osteria"
   ],
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.5766,
       "macro_movement": 0.2547,
       "macro_coupling": 0.7088,
       "macro_space": 0.0017
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.9256,
       "macro_movement": 0.5385,
       "macro_coupling": 0.7194,

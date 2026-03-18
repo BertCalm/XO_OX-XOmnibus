@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OBSCURA",
-    "ONSET"
+    "Obscura",
+    "Onset"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.481,
       "macro_movement": 0.758,
       "macro_coupling": 0.602,
       "macro_space": 0.567
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.599,
       "macro_movement": 0.632,
       "macro_coupling": 0.497,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ORACLE",
-    "ODYSSEY"
+    "Oracle",
+    "Odyssey"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.1411,
       "macro_movement": 0.6347,
       "macro_coupling": 0.4027,
       "macro_space": 0.7854
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.1773,
       "macro_movement": 0.5068,
       "macro_coupling": 0.6245,

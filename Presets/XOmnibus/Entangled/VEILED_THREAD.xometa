@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "OLE"
+    "Ouroboros",
+    "Ole"
   ],
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.132,
       "macro_movement": 0.057,
       "macro_coupling": 0.913,
       "macro_space": 0.98
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.201,
       "macro_movement": 0.1,
       "macro_coupling": 0.521,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OSTERIA",
-    "OVERWORLD"
+    "Osteria",
+    "Overworld"
   ],
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.813,
       "macro_movement": 0.658,
       "macro_coupling": 0.466,
       "macro_space": 0.078
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.858,
       "macro_movement": 0.877,
       "macro_coupling": 0.92,

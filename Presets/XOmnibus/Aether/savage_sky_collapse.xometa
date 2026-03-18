@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORCA",
-    "OMBRE"
+    "Orca",
+    "Ombre"
   ],
   "parameters": {
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.639,
       "macro_movement": 0.028,
       "macro_coupling": 0.627,
       "macro_space": 0.638
     },
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.957,
       "macro_movement": 0.026,
       "macro_coupling": 0.805,

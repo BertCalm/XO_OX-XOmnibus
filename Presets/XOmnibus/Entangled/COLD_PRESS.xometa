@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OHM",
-    "OVERBITE"
+    "Ohm",
+    "Overbite"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.859,
       "macro_movement": 0.953,
       "macro_coupling": 0.401,
       "macro_space": 0.032
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.935,
       "macro_movement": 0.422,
       "macro_coupling": 0.145,

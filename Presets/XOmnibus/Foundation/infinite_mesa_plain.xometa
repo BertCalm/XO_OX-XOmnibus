@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OSTERIA",
-    "OCTOPUS"
+    "Osteria",
+    "Octopus"
   ],
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.227,
       "macro_movement": 0.846,
       "macro_coupling": 0.978,
       "macro_space": 0.972
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.704,
       "macro_movement": 0.847,
       "macro_coupling": 0.166,

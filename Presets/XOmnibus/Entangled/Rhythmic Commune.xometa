@@ -2,8 +2,8 @@
   "name": "Rhythmic Commune",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "ONSET"
+    "Ohm",
+    "Onset"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "onset",
     "hippy"
   ],
-  "description": "Onset rhythms shaped by ohm MEDDLING macro \u2014 the drum machine joins the commune"
+  "description": "Onset rhythms shaped by ohm MEDDLING macro — the drum machine joins the commune"
 }

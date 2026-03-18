@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OUTWIT",
-    "ORPHICA"
+    "Outwit",
+    "Orphica"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.704,
       "macro_movement": 0.274,
       "macro_coupling": 0.375,
       "macro_space": 0.054
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.61,
       "macro_movement": 0.664,
       "macro_coupling": 0.235,

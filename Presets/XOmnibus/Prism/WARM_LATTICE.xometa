@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ORBITAL",
-    "OBLONG"
+    "Orbital",
+    "Oblong"
   ],
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.416,
       "macro_movement": 0.274,
       "macro_coupling": 0.1,
       "macro_space": 0.847
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.87,
       "macro_movement": 0.728,
       "macro_coupling": 0.923,

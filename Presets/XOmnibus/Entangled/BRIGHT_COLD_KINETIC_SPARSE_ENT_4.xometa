@@ -3,12 +3,12 @@
   "name": "BRIGHT_COLD_KINETIC_SPARSE_ENT_4",
   "mood": "Entangled",
   "engines": [
-    "ODYSSEY",
-    "OVERDUB"
+    "Odyssey",
+    "Overdub"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Cold Kinetic Sparse character entanglement \u2014 ODYSSEY \u00d7 OVERDUB via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Cold Kinetic Sparse character entanglement — ODYSSEY × OVERDUB via Resonance Share. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.6897
   },
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.5885,
       "macro_movement": 0.8953,
       "macro_coupling": 0.8786,
@@ -57,7 +57,7 @@
       "output_level": 0.6965,
       "coupling_level": 0.831
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.6198,
       "macro_movement": 0.9139,
       "macro_coupling": 0.8559,

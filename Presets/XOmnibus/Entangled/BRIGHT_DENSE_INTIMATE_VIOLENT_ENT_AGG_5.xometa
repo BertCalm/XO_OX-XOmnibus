@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBSCURA",
-    "OVERLAP"
+    "Obscura",
+    "Overlap"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.522,
       "macro_movement": 0.579,
       "macro_coupling": 0.793,
       "macro_space": 0.012
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.748,
       "macro_movement": 0.599,
       "macro_coupling": 0.789,

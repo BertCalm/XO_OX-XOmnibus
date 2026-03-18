@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT ENT 11",
   "mood": "Entangled",
   "engines": [
-    "OCTOPUS",
-    "OVERLAP"
+    "Octopus",
+    "Overlap"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.79,
       "macro_movement": 0.94,
       "macro_coupling": 0.89,
       "macro_space": 0.31
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.65,
       "macro_movement": 0.9,
       "macro_coupling": 0.87,

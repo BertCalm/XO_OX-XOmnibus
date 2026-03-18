@@ -3,8 +3,8 @@
   "name": "Timeless Sink",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "OWLFISH"
+    "Ottoni",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.405
   },
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.506,
       "macro_movement": 0.715,
       "macro_coupling": 0.53,
       "macro_space": 0.247
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.494,
       "macro_movement": 0.759,
       "macro_coupling": 0.5,

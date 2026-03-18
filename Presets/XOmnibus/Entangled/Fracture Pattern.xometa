@@ -3,12 +3,12 @@
   "name": "Fracture Pattern",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ORACLE"
+    "Outwit",
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Oracle harmonic ratios seed OUTWIT Wolfram rules \u2014 prophecy becomes cellular law",
+  "description": "Oracle harmonic ratios seed OUTWIT Wolfram rules — prophecy becomes cellular law",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.65
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 110,
       "owit_arms": 8,
       "owit_cellSize": 0.366,

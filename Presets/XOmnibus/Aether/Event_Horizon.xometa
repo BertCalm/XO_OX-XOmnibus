@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OBSCURA"
+    "Obscura"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "obscura_macro_character": 0.23,
       "obscura_macro_movement": 0.34,
       "obscura_macro_coupling": 0.16,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OSPREY",
-    "ORACLE"
+    "Osprey",
+    "Oracle"
   ],
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.867,
       "macro_movement": 0.549,
       "macro_coupling": 0.486,
       "macro_space": 0.663
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.978,
       "macro_movement": 0.69,
       "macro_coupling": 0.358,

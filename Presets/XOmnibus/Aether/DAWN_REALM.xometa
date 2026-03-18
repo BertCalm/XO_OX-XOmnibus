@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OLE",
-    "OCTOPUS"
+    "Ole",
+    "Octopus"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.103,
       "macro_movement": 0.328,
       "macro_coupling": 0.296,
       "macro_space": 0.446
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.718,
       "macro_movement": 0.167,
       "macro_coupling": 0.444,

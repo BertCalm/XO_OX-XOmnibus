@@ -3,12 +3,12 @@
   "name": "Automata Pattern",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OBLIQUE"
+    "Outwit",
+    "Oblique"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OBLIQUE angle offset modulates OUTWIT arm phase stagger \u2014 diagonal automata",
+  "description": "OBLIQUE angle offset modulates OUTWIT arm phase stagger — diagonal automata",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.7
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 90,
       "owit_arms": 7,
       "owit_cellSize": 0.358,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OBLIQUE",
-    "ODDFELIX"
+    "Oblique",
+    "OddfeliX"
   ],
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.575,
       "macro_movement": 0.135,
       "macro_coupling": 0.864,
       "macro_space": 0.708
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.7,
       "macro_movement": 0.256,
       "macro_coupling": 0.406,

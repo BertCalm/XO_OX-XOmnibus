@@ -3,11 +3,11 @@
   "name": "Optic Aurora",
   "mood": "Atmosphere",
   "engines": [
-    "OPTIC"
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "OPTIC \u2014 bright extreme brightness preset for Atmosphere.",
+  "description": "OPTIC — bright extreme brightness preset for Atmosphere.",
   "tags": [
     "atmosphere",
     "bright",
@@ -37,7 +37,7 @@
     "aggression": 0.25
   },
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "opt_prismAngle": 0.99,
       "opt_spectralShift": 0.37,
       "opt_filterCutoff": 0.03,

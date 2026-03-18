@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OTTONI",
-    "OHM"
+    "Ottoni",
+    "Ohm"
   ],
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.897,
       "macro_movement": 0.611,
       "macro_coupling": 0.773,
       "macro_space": 0.113
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.924,
       "macro_movement": 0.595,
       "macro_coupling": 0.747,

@@ -3,12 +3,12 @@
   "name": "Phantom Architecture",
   "mood": "Entangled",
   "engines": [
-    "OBSCURA",
-    "OUROBOROS"
+    "Obscura",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Daguerreotype silver structure chaos-injected by Ouroboros \u2014 the photograph as topological weapon.",
+  "description": "Daguerreotype silver structure chaos-injected by Ouroboros — the photograph as topological weapon.",
   "tags": [
     "entangled",
     "brutal",

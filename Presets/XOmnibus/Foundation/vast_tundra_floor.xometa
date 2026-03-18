@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OVERWORLD",
-    "OCTOPUS"
+    "Overworld",
+    "Octopus"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.498,
       "macro_movement": 0.819,
       "macro_coupling": 0.052,
       "macro_space": 0.964
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.131,
       "macro_movement": 0.804,
       "macro_coupling": 0.881,

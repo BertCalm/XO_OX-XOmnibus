@@ -19,11 +19,11 @@
     "space": 0.4839
   },
   "engines": [
-    "XOddOscar"
+    "OddOscar"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark cold violent dense. Designed for ORBIT coupling with XOddOscar.",
+  "description": "Ultra-diverse Entangled preset — dark cold violent dense. Designed for ORBIT coupling with XOddOscar.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "ORBIT",
   "couplingIntensity": "Extreme",
   "parameters": {
-    "XOddOscar": {
+    "OddOscar": {
       "couplingLevel": 0.849,
       "couplingBus": 0
     }

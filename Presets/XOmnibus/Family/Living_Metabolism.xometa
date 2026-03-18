@@ -3,11 +3,11 @@
   "name": "Living Metabolism",
   "mood": "Family",
   "engines": [
-    "ORGANON"
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORGANON in metabolic state \u2014 logic processes humming, harmonic biology alive. The living instrument breathing its own air.",
+  "description": "ORGANON in metabolic state — logic processes humming, harmonic biology alive. The living instrument breathing its own air.",
   "tags": [
     "family",
     "signature",

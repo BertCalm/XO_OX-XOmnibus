@@ -3,8 +3,8 @@
   "name": "Abyssal Bloom",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OCEANIC"
+    "Overlap",
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.24
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.85,
       "olap_decay": 0.74,
       "olap_damping": 0.33,
@@ -69,7 +69,7 @@
       "olap_outputLevel": 0.71,
       "olap_outputPan": 0.14
     },
-    "OCEANIC": {
+    "Oceanic": {
       "ocean_character": 0.6,
       "ocean_movement": 0.28,
       "ocean_coupling": 0.71,

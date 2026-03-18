@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OHM",
-    "OCTOPUS"
+    "Ohm",
+    "Octopus"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.996,
       "macro_movement": 0.327,
       "macro_coupling": 0.074,
       "macro_space": 0.123
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.136,
       "macro_movement": 0.945,
       "macro_coupling": 0.04,

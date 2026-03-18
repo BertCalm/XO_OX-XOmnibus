@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OUTWIT",
-    "ODDOSCAR"
+    "Outwit",
+    "OddOscar"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.448,
       "macro_movement": 0.223,
       "macro_coupling": 0.735,
       "macro_space": 0.263
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.66,
       "macro_movement": 0.516,
       "macro_coupling": 0.444,

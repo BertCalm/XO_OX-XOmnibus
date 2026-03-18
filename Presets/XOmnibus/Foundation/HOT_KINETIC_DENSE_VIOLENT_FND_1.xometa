@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ORACLE",
-    "OBSIDIAN"
+    "Oracle",
+    "Obsidian"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.278,
       "macro_movement": 0.12,
       "macro_coupling": 0.551,
       "macro_space": 0.753
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.45,
       "macro_movement": 0.272,
       "macro_coupling": 0.473,

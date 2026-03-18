@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OBESE",
-    "OMBRE"
+    "Obese",
+    "Ombre"
   ],
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.79,
       "macro_movement": 0.561,
       "macro_coupling": 0.559,
       "macro_space": 0.837
     },
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.434,
       "macro_movement": 0.192,
       "macro_coupling": 0.117,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "ODDOSCAR",
-    "OBLONG"
+    "OddOscar",
+    "Oblong"
   ],
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.657,
       "macro_movement": 0.224,
       "macro_coupling": 0.108,
       "macro_space": 0.845
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.368,
       "macro_movement": 0.763,
       "macro_coupling": 0.574,

@@ -3,12 +3,12 @@
   "name": "Serpent Dance",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OUROBOROS"
+    "Ole",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "OUROBOROS chaos injected into OLE rhythm \u2014 unpredictable Afro-Latin serpent.",
+  "description": "OUROBOROS chaos injected into OLE rhythm — unpredictable Afro-Latin serpent.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.75
   },
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.7,
       "macro_movement": 0.68,
       "macro_coupling": 0.72,
       "macro_space": 0.38
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.62,
       "macro_movement": 0.75,
       "macro_coupling": 0.72,

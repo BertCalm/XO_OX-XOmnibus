@@ -19,11 +19,11 @@
     "movement": 0.4117
   },
   "engines": [
-    "XOcelot"
+    "Ocelot"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 bright sparse gentle vast. Designed for SURGE coupling with XOcelot.",
+  "description": "Ultra-diverse Entangled preset — bright sparse gentle vast. Designed for SURGE coupling with XOcelot.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "SURGE",
   "couplingIntensity": "Extreme",
   "parameters": {
-    "XOcelot": {
+    "Ocelot": {
       "couplingLevel": 0.643,
       "couplingBus": 3
     }

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OBESE",
-    "ORGANON"
+    "Obese",
+    "Organon"
   ],
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.428,
       "macro_movement": 0.624,
       "macro_coupling": 0.223,
       "macro_space": 0.099
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.875,
       "macro_movement": 0.371,
       "macro_coupling": 0.654,

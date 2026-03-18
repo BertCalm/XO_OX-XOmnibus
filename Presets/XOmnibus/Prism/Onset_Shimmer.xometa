@@ -19,11 +19,11 @@
     "aggression": 0.2285
   },
   "engines": [
-    "ONSET"
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Transient shimmer prism \u2014 percussion gone spectral",
+  "description": "Transient shimmer prism — percussion gone spectral",
   "tags": [
     "prism",
     "bright",
@@ -45,7 +45,7 @@
   },
   "couplingIntensity": "None",
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "onset_macro_machine": 0.8967,
       "onset_macro_punch": 0.5542,
       "onset_macro_space": 0.4389,

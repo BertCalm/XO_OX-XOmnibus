@@ -3,12 +3,12 @@
   "name": "HOT_DENSE_VAST_VIOLENT_ENT_4",
   "mood": "Entangled",
   "engines": [
-    "OHM",
-    "OCELOT"
+    "Ohm",
+    "Ocelot"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Hot Dense Vast Violent character entanglement \u2014 OHM \u00d7 OCELOT via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "description": "Hot Dense Vast Violent character entanglement — OHM × OCELOT via Velocity Couple. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "warm",
@@ -41,7 +41,7 @@
     "aggression": 0.8798
   },
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.8216,
       "macro_movement": 0.6988,
       "macro_coupling": 0.8782,
@@ -57,7 +57,7 @@
       "output_level": 0.9686,
       "coupling_level": 0.8694
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.8227,
       "macro_movement": 0.6865,
       "macro_coupling": 0.8694,

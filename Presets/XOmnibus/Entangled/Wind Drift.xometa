@@ -2,8 +2,8 @@
   "name": "Wind Drift",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OBBLIGATO"
+    "Odyssey",
+    "Obbligato"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "obbligato",
     "wavetable"
   ],
-  "description": "Dual wind phrase carried on FM current \u2014 breath and wavetable drift together outward"
+  "description": "Dual wind phrase carried on FM current — breath and wavetable drift together outward"
 }

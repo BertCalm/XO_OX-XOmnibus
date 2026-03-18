@@ -3,12 +3,12 @@
   "name": "Ink Storm",
   "mood": "Entangled",
   "engines": [
-    "OCTOPUS",
-    "OUROBOROS"
+    "Octopus",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ouroboros timbral warping Octopus ink cloud mix \u2014 chromatophore explosion in topological space.",
+  "description": "Ouroboros timbral warping Octopus ink cloud mix — chromatophore explosion in topological space.",
   "tags": [
     "entangled",
     "brutal",

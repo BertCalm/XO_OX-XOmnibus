@@ -3,7 +3,7 @@
   "name": "Wave Front Rush",
   "mood": "Atmosphere",
   "engines": [
-    "OUTWIT"
+    "Outwit"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.418
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "cunning": 0.422,
       "reflex": 0.894,
       "coupling": 0.178,

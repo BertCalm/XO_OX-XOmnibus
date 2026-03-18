@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ONSET",
-    "OVERBITE"
+    "Onset",
+    "Overbite"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.616,
       "macro_movement": 0.528,
       "macro_coupling": 0.495,
       "macro_space": 0.233
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.561,
       "macro_movement": 0.285,
       "macro_coupling": 0.309,

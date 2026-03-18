@@ -3,12 +3,12 @@
   "name": "Bioluminescent Harp",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "ORGANON"
+    "Orphica",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "ORPHICA resonance peaks shared with Organon's metabolic nodes \u2014 underwater glow.",
+  "description": "ORPHICA resonance peaks shared with Organon's metabolic nodes — underwater glow.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.05
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.65,
       "macro_movement": 0.52,
       "macro_coupling": 0.72,
       "macro_space": 0.75
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.55,
       "macro_movement": 0.68,
       "macro_coupling": 0.72,

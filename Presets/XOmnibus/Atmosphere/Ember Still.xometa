@@ -2,7 +2,7 @@
   "name": "Ember Still",
   "version": "1.0",
   "engines": [
-    "OBLONG"
+    "Oblong"
   ],
   "mood": "Atmosphere",
   "macros": {

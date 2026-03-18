@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORACLE"
+    "Oracle"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "oracle_macro_character": 0.2,
       "oracle_macro_movement": 0.43,
       "oracle_macro_coupling": 0.36,

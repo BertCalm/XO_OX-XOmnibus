@@ -3,12 +3,12 @@
   "name": "Brass Below",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "OTTONI"
+    "Oceanic",
+    "Ottoni"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OTTONI brass resonance transforms underwater \u2014 pressure changes the timbre.",
+  "description": "OTTONI brass resonance transforms underwater — pressure changes the timbre.",
   "tags": [
     "entangled",
     "coupling",

@@ -3,12 +3,12 @@
   "name": "Breakpoint Grow",
   "mood": "Entangled",
   "engines": [
-    "ORACLE",
-    "OTTONI"
+    "Oracle",
+    "Ottoni"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Oracle breakpoints velocity-coupled to GROW \u2014 dynamic oracle reveals its brass.",
+  "description": "Oracle breakpoints velocity-coupled to GROW — dynamic oracle reveals its brass.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.15
   },
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.5,
       "macro_movement": 0.7,
       "macro_coupling": 0.65,
       "macro_space": 0.55
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.72,
       "macro_movement": 0.42,
       "macro_coupling": 0.65,

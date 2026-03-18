@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OWLFISH",
-    "OVERBITE"
+    "Owlfish",
+    "Overbite"
   ],
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.536,
       "macro_movement": 0.334,
       "macro_coupling": 0.001,
       "macro_space": 0.39
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.526,
       "macro_movement": 0.083,
       "macro_coupling": 0.723,

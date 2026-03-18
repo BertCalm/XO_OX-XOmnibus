@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OHM",
-    "ORBITAL"
+    "Ohm",
+    "Orbital"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.592,
       "macro_movement": 0.936,
       "macro_coupling": 0.885,
       "macro_space": 0.904
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.687,
       "macro_movement": 0.997,
       "macro_coupling": 0.891,

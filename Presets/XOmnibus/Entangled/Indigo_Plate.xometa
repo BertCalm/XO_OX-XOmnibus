@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORACLE",
-    "OBSCURA"
+    "Oracle",
+    "Obscura"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.13,
       "macro_movement": 0.25,
       "macro_coupling": 0.79,
       "macro_space": 0.94
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.1,
       "macro_movement": 0.2,
       "macro_coupling": 0.84,
@@ -46,5 +46,5 @@
     "indigo",
     "plate"
   ],
-  "description": "Oracle's indigo pitch anchors Obscura's silverpoint resonance \u2014 cold tonality fixed."
+  "description": "Oracle's indigo pitch anchors Obscura's silverpoint resonance — cold tonality fixed."
 }

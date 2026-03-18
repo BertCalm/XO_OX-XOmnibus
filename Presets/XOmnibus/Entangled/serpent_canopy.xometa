@@ -3,8 +3,8 @@
   "name": "Serpent Canopy",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OUROBOROS"
+    "Overlap",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.11
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.86,
       "olap_decay": 0.73,
       "olap_damping": 0.57,
@@ -69,7 +69,7 @@
       "olap_outputLevel": 0.83,
       "olap_outputPan": 0.11
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "ouro_character": 0.37,
       "ouro_movement": 0.31,
       "ouro_coupling": 0.9,

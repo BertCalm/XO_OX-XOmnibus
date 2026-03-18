@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Benthic Pair",
+  "mood": "Submerged",
+  "engines": ["Ouie"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Two voices hugging the seafloor, slow hammer pulse and dense mid-bass.",
+  "tags": ["submerged", "benthic", "seafloor", "bass"],
+  "macroLabels": ["HAMMER", "CARTILAGE", "AMPULLAE", "CURRENT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.6,
+    "movement": 0.35,
+    "density": 0.75,
+    "space": 0.65,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Ouie": {
+      "ouie_ampAtk": 0.2,
+      "ouie_ampDec": 0.75,
+      "ouie_ampSus": 0.68,
+      "ouie_ampRel": 1.6,
+      "ouie_filterACutoff": 350,
+      "ouie_filterARes": 0.28,
+      "ouie_filterBCutoff": 450,
+      "ouie_filterBRes": 0.24,
+      "ouie_hammerDepth": 0.65,
+      "ouie_hammerPos": 0.25,
+      "ouie_lfo1Rate": 0.09,
+      "ouie_lfo1Depth": 0.1,
+      "ouie_lfo1Target": 0,
+      "ouie_lfo2Rate": 0.06,
+      "ouie_lfo2Depth": 0.08,
+      "ouie_portaAuto": 0.25,
+      "ouie_macroHammer": 0.65,
+      "ouie_macroCartilage": 0.25,
+      "ouie_macroAmpullae": 0.5,
+      "ouie_macroCurrent": 0.82
+    }
+  },
+  "macros": {
+    "HAMMER": 0.65,
+    "CARTILAGE": 0.25,
+    "AMPULLAE": 0.5,
+    "CURRENT": 0.82
+  },
+  "coupling": {"pairs": []}
+}

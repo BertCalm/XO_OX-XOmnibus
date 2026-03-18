@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "OWLFISH"
+    "Osteria",
+    "Owlfish"
   ],
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.577,
       "macro_movement": 0.595,
       "macro_coupling": 0.721,
       "macro_space": 0.404
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.827,
       "macro_movement": 0.338,
       "macro_coupling": 0.571,

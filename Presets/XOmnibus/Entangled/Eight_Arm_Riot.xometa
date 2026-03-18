@@ -3,12 +3,12 @@
   "name": "Eight Arm Riot",
   "mood": "Entangled",
   "engines": [
-    "OCTOPUS",
-    "OBESE"
+    "Octopus",
+    "Obese"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Octopus eight arms saturated by OBESE MOJO \u2014 decentralized alien intelligence at harmonic maximum.",
+  "description": "Octopus eight arms saturated by OBESE MOJO — decentralized alien intelligence at harmonic maximum.",
   "tags": [
     "entangled",
     "brutal",

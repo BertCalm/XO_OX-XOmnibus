@@ -3,8 +3,8 @@
   "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FND_1",
   "mood": "Foundation",
   "engines": [
-    "OBSIDIAN",
-    "OUROBOROS"
+    "Obsidian",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 1.0,
       "macro_movement": 0.981,
       "macro_coupling": 0.985,
       "macro_space": 0.04
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 1.0,
       "macro_movement": 0.932,
       "macro_coupling": 0.931,

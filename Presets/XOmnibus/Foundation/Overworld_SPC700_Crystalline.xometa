@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "SPC700 Crystalline",
   "mood": "Foundation",
-  "engines": ["OVERWORLD"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "The SNES SPC700 at its most archetypal — that extraordinary sample-based clarity that let Nobuo Uematsu conjure entire orchestras from 64KB. Bell-clear, warm, slightly soft at the attack. The foundation of every JRPG town theme.",
-  "tags": ["snes", "SPC700", "lead", "crystalline", "foundation", "FF6", "JRPG", "Uematsu"],
-  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "tags": [
+    "snes",
+    "SPC700",
+    "lead",
+    "crystalline",
+    "foundation",
+    "FF6",
+    "JRPG",
+    "Uematsu"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -19,7 +35,7 @@
     "aggression": 0.22
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_macro_era": 1.0,
       "ow_macro_chaos": 0.03,
       "ow_macro_couple": 0.0,
@@ -29,6 +45,13 @@
       "ow_couplingBus": 0
     }
   },
-  "macros": {"ERA": 1.0, "CHAOS": 0.03, "COUPLE": 0.0, "SPACE": 0.32},
-  "coupling": {"pairs": []}
+  "macros": {
+    "ERA": 1.0,
+    "CHAOS": 0.03,
+    "COUPLE": 0.0,
+    "SPACE": 0.32
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

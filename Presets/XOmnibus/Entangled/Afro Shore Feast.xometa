@@ -3,8 +3,8 @@
   "name": "Afro Shore Feast",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "OLE"
+    "Osteria",
+    "Ole"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Famicom Nocturne",
   "mood": "Aether",
-  "engines": ["OVERWORLD"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "3AM and the 2A03 is playing to no one. The NES at its most hushed — triangle channel barely moving, pulse wave at maximum duty width, noise channel silent. Hiroshi Miyauchi's quietest register. The space between the scanlines. A nocturne for an 8-bit machine dreaming of being something else.",
-  "tags": ["nes", "nocturne", "aether", "quiet", "2A03", "late-night", "introspective", "dreaming"],
-  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "tags": [
+    "nes",
+    "nocturne",
+    "aether",
+    "quiet",
+    "2A03",
+    "late-night",
+    "introspective",
+    "dreaming"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -19,7 +35,7 @@
     "aggression": 0.06
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_macro_era": 0.05,
       "ow_macro_chaos": 0.05,
       "ow_macro_couple": 0.35,
@@ -29,6 +45,13 @@
       "ow_couplingBus": 0
     }
   },
-  "macros": {"ERA": 0.05, "CHAOS": 0.05, "COUPLE": 0.35, "SPACE": 0.88},
-  "coupling": {"pairs": []}
+  "macros": {
+    "ERA": 0.05,
+    "CHAOS": 0.05,
+    "COUPLE": 0.35,
+    "SPACE": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

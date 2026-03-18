@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OPTIC",
-    "ORPHICA"
+    "Optic",
+    "Orphica"
   ],
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.318,
       "macro_movement": 0.52,
       "macro_coupling": 0.645,
       "macro_space": 0.788
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.264,
       "macro_movement": 0.401,
       "macro_coupling": 0.543,

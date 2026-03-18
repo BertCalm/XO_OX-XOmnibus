@@ -11,11 +11,11 @@
     "space": 0.38
   },
   "engines": [
-    "OUROBOROS"
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Underground root network \u2014 exchange in total darkness",
+  "description": "Underground root network — exchange in total darkness",
   "tags": [
     "aether",
     "dark",

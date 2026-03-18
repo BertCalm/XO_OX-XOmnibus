@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ONSET",
-    "ORCA"
+    "Onset",
+    "Orca"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.243,
       "macro_movement": 0.934,
       "macro_coupling": 0.407,
       "macro_space": 0.906
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.659,
       "macro_movement": 0.922,
       "macro_coupling": 0.411,

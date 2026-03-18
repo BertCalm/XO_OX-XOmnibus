@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORBITAL",
-    "OBLIQUE"
+    "Orbital",
+    "Oblique"
   ],
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.122,
       "macro_movement": 0.63,
       "macro_coupling": 0.4219,
       "macro_space": 0.0908
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.0627,
       "macro_movement": 0.6487,
       "macro_coupling": 0.4732,

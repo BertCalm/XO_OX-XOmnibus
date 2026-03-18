@@ -3,11 +3,11 @@
   "name": "Asphalt Drift",
   "mood": "Foundation",
   "engines": [
-    "OBESE"
+    "Obese"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "OBESE \u2014 dark extreme brightness preset for Foundation.",
+  "description": "OBESE — dark extreme brightness preset for Foundation.",
   "tags": [
     "foundation",
     "dark",
@@ -37,7 +37,7 @@
     "aggression": 0.37
   },
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "fat_drive": 0.12,
       "fat_saturation": 0.22,
       "fat_filterCutoff": 0.34,

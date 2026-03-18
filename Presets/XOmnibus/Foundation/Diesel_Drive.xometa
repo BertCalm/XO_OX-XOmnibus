@@ -19,7 +19,7 @@
     "aggression": 0.776
   },
   "engines": [
-    "OBLONG"
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,7 +45,7 @@
   },
   "couplingIntensity": "None",
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "bob_macro_character": 0.7338,
       "bob_macro_movement": 0.7001,
       "bob_macro_coupling": 0.745,

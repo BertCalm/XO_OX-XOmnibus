@@ -2,8 +2,8 @@
   "name": "Spring Reed",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OVERDUB"
+    "Obbligato",
+    "Overdub"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "overdub",
     "wind"
   ],
-  "description": "Overdub spring reverb activated by OBBLIGATO breath gate \u2014 the spring only splashes when the reed speaks"
+  "description": "Overdub spring reverb activated by OBBLIGATO breath gate — the spring only splashes when the reed speaks"
 }

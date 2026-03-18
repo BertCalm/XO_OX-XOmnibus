@@ -3,20 +3,20 @@
   "name": "Indigo Forge",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "ORACLE"
+    "Ottoni",
+    "Oracle"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Filter coupling bridges OTTONI's warm resonance with ORACLE's GENDY stochastic body.",
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.74,
       "macro_movement": 0.56,
       "macro_coupling": 0.76,
       "macro_space": 0.44
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.62,
       "macro_movement": 0.6,
       "macro_coupling": 0.68,

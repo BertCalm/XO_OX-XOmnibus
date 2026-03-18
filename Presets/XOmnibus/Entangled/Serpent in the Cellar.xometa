@@ -3,12 +3,12 @@
   "name": "Serpent in the Cellar",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "OUROBOROS"
+    "Osteria",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Ouroboros cycles beneath floorboards of the osteria \u2014 ancient depths in an old building.",
+  "description": "Ouroboros cycles beneath floorboards of the osteria — ancient depths in an old building.",
   "tags": [
     "entangled",
     "coupling",

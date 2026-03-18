@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OVERDUB",
-    "OCTOPUS"
+    "Overdub",
+    "Octopus"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.917,
       "macro_movement": 0.647,
       "macro_coupling": 0.43,
       "macro_space": 0.483
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.887,
       "macro_movement": 0.703,
       "macro_coupling": 0.636,

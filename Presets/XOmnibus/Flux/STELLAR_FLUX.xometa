@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ORPHICA",
-    "ORBITAL"
+    "Orphica",
+    "Orbital"
   ],
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.35,
       "macro_movement": 0.65,
       "macro_coupling": 0.781,
       "macro_space": 0.652
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.754,
       "macro_movement": 0.95,
       "macro_coupling": 0.199,

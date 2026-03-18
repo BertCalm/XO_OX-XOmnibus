@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ODDFELIX",
-    "OUROBOROS"
+    "OddfeliX",
+    "Ouroboros"
   ],
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.63,
       "macro_movement": 0.228,
       "macro_coupling": 0.225,
       "macro_space": 0.565
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.345,
       "macro_movement": 0.159,
       "macro_coupling": 0.719,

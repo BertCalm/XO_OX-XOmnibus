@@ -2,8 +2,8 @@
   "name": "Drum Circle Ritual",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "ONSET"
+    "Ohm",
+    "Onset"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "onset",
     "hippy"
   ],
-  "description": "Ohm groove finally finds its percussion section \u2014 sage drone locked to kick and clap"
+  "description": "Ohm groove finally finds its percussion section — sage drone locked to kick and clap"
 }

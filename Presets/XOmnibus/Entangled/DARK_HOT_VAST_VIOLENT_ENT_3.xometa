@@ -3,12 +3,12 @@
   "name": "DARK_HOT_VAST_VIOLENT_ENT_3",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "ODDOSCAR"
+    "Ottoni",
+    "OddOscar"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Hot Vast Violent character entanglement \u2014 OTTONI \u00d7 ODDOSCAR via Formant Bridge. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Hot Vast Violent character entanglement — OTTONI × ODDOSCAR via Formant Bridge. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.9443
   },
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.6433,
       "macro_movement": 0.4062,
       "macro_coupling": 0.9354,
@@ -57,7 +57,7 @@
       "output_level": 0.7563,
       "coupling_level": 0.9057
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.6508,
       "macro_movement": 0.438,
       "macro_coupling": 0.9358,

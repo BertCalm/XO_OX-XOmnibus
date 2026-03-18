@@ -3,12 +3,12 @@
   "name": "DARK_HOT_FROZEN_SPARSE_GENTLE_ENT3_1",
   "mood": "Entangled",
   "engines": [
-    "ORGANON",
-    "OBSIDIAN"
+    "Organon",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: DARK_HOT_FROZEN_SPARSE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_HOT_FROZEN_SPARSE_GENTLE. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.6296,
       "macro_movement": 0.0616,
       "macro_coupling": 0.9635,
       "macro_space": 0.7311
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.6381,
       "macro_movement": 0.0829,
       "macro_coupling": 0.8006,

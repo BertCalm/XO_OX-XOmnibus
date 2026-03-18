@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ONSET",
-    "ODYSSEY"
+    "Onset",
+    "Odyssey"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.582,
       "macro_movement": 0.488,
       "macro_coupling": 0.466,
       "macro_space": 0.616
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.489,
       "macro_movement": 0.499,
       "macro_coupling": 0.358,

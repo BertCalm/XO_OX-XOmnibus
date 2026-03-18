@@ -2,8 +2,8 @@
   "name": "Hippie Dust Cloud",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OPAL"
+    "Ohm",
+    "Opal"
   ],
   "mood": "Entangled",
   "strategy": "Warm Sparse",
@@ -35,5 +35,5 @@
     "movement",
     "dreamy"
   ],
-  "description": "Warm communal drones dissolving into slow granular drift \u2014 vast and inviting."
+  "description": "Warm communal drones dissolving into slow granular drift — vast and inviting."
 }

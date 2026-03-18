@@ -19,11 +19,11 @@
     "space": 0.5239
   },
   "engines": [
-    "XOsprey"
+    "Osprey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 hot dense still violent. Designed for FLOW coupling with XOsprey.",
+  "description": "Ultra-diverse Entangled preset — hot dense still violent. Designed for FLOW coupling with XOsprey.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "FLOW",
   "couplingIntensity": "Extreme",
   "parameters": {
-    "XOsprey": {
+    "Osprey": {
       "couplingLevel": 0.967,
       "couplingBus": 0
     }

@@ -3,8 +3,8 @@
   "name": "Recursive Weave",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OUROBOROS"
+    "Overlap",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.11
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.78,
       "olap_decay": 0.64,
       "olap_damping": 0.49,
@@ -69,7 +69,7 @@
       "olap_outputLevel": 0.81,
       "olap_outputPan": -0.17
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "ouro_character": 0.52,
       "ouro_movement": 0.45,
       "ouro_coupling": 0.69,

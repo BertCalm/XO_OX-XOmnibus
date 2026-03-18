@@ -3,12 +3,12 @@
   "name": "Feline Shore",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "OCELOT"
+    "Osprey",
+    "Ocelot"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Cat and raptor share the shoreline at dusk \u2014 speed and grace in coupling.",
+  "description": "Cat and raptor share the shoreline at dusk — speed and grace in coupling.",
   "tags": [
     "entangled",
     "coupling",

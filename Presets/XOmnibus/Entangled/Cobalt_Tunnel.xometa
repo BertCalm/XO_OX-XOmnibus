@@ -3,8 +3,8 @@
   "name": "Cobalt Tunnel",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "OWLFISH"
+    "Osprey",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.37
   },
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.686,
       "macro_movement": 0.463,
       "macro_coupling": 0.897,
       "macro_space": 0.486
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.605,
       "macro_movement": 0.71,
       "macro_coupling": 0.567,

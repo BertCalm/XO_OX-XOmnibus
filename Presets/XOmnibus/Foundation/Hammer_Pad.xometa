@@ -19,11 +19,11 @@
     "aggression": 0.8637
   },
   "engines": [
-    "OPAL"
+    "Opal"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Granular impact cloud \u2014 every grain hits hard",
+  "description": "Granular impact cloud — every grain hits hard",
   "tags": [
     "foundation",
     "aggressive",
@@ -45,7 +45,7 @@
   },
   "couplingIntensity": "None",
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "opal_macro_grain": 0.35,
       "opal_macro_scatter": 0.8182,
       "opal_macro_density": 0.8549,

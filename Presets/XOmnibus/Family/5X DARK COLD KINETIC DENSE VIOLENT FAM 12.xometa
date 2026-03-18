@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT FAM 12",
   "mood": "Family",
   "engines": [
-    "OVERDUB",
-    "OSPREY"
+    "Overdub",
+    "Osprey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.87,
       "macro_movement": 0.89,
       "macro_coupling": 0.79,
       "macro_space": 0.29
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.72,
       "macro_movement": 0.79,
       "macro_coupling": 0.72,

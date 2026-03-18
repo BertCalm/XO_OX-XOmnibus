@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ORACLE",
-    "OVERDUB"
+    "Oracle",
+    "Overdub"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.486,
       "macro_movement": 0.044,
       "macro_coupling": 0.864,
       "macro_space": 0.089
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.471,
       "macro_movement": 0.049,
       "macro_coupling": 0.765,

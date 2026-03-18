@@ -3,20 +3,20 @@
   "name": "Crystal Daguerreotype",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "OBSCURA"
+    "Orphica",
+    "Obscura"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "ORPHICA's harmonic spectrum folded into OBSCURA's silver surface \u2014 brightness 0.90.",
+  "description": "ORPHICA's harmonic spectrum folded into OBSCURA's silver surface — brightness 0.90.",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.72,
       "macro_movement": 0.58,
       "macro_coupling": 0.72,
       "macro_space": 0.72
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.58,
       "macro_movement": 0.52,
       "macro_coupling": 0.62,

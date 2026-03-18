@@ -2,8 +2,8 @@
   "name": "Dark Reed",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OBSIDIAN"
+    "Obbligato",
+    "Obsidian"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "obsidian",
     "wind"
   ],
-  "description": "OBBLIGATO breath gate opens into obsidian void \u2014 obligated warmth swallowed by crystal silence"
+  "description": "OBBLIGATO breath gate opens into obsidian void — obligated warmth swallowed by crystal silence"
 }

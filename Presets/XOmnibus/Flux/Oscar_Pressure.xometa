@@ -5,7 +5,7 @@
   "name": "Oscar Pressure",
   "mood": "Flux",
   "engines": [
-    "Oddoscar"
+    "OddOscar"
   ],
   "couplingIntensity": "None",
   "tempo": null,
@@ -41,5 +41,5 @@
     "pressure",
     "morph"
   ],
-  "description": "Morph fully loaded but unmoved \u2014 gill pink compressed under motionless surface."
+  "description": "Morph fully loaded but unmoved — gill pink compressed under motionless surface."
 }

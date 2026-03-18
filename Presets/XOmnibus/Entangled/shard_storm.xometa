@@ -3,8 +3,8 @@
   "name": "Shard Storm",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OBSIDIAN"
+    "Outwit",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.26
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 150,
       "owit_arms": 8,
       "owit_cellSize": 0.2,
@@ -70,7 +70,7 @@
       "owit_outputLevel": 0.74,
       "owit_outputPan": -0.04
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "obsidian_character": 0.49,
       "obsidian_movement": 0.3,
       "obsidian_coupling": 0.61,

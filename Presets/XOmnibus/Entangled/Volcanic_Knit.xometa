@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ODDOSCAR",
-    "ORGANON"
+    "OddOscar",
+    "Organon"
   ],
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.89,
       "macro_movement": 0.48,
       "macro_coupling": 0.45,
       "macro_space": 0.41
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.75,
       "macro_movement": 0.24,
       "macro_coupling": 0.42,

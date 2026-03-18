@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBESE",
-    "ORIGAMI"
+    "Obese",
+    "Origami"
   ],
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.2,
       "macro_movement": 0.4,
       "macro_coupling": 0.9,
       "macro_space": 0.2
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.8,
       "macro_movement": 0.4,
       "macro_coupling": 0.8,

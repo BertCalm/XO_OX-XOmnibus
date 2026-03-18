@@ -3,8 +3,8 @@
   "name": "BRIGHT_WARM_STILL_INTIMATE_VIOLENT_PRS_4",
   "mood": "Prism",
   "engines": [
-    "OHM",
-    "OTTONI"
+    "Ohm",
+    "Ottoni"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.893,
       "macro_movement": 0.159,
       "macro_coupling": 0.44,
       "macro_space": 0.096
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 1.0,
       "macro_movement": 0.165,
       "macro_coupling": 0.453,

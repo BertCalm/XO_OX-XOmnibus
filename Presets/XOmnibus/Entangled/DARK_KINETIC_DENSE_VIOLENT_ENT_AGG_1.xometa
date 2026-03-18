@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OMBRE",
-    "OTTONI"
+    "Ombre",
+    "Ottoni"
   ],
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.667,
       "macro_movement": 0.98,
       "macro_coupling": 0.911,
       "macro_space": 0.499
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.373,
       "macro_movement": 0.945,
       "macro_coupling": 0.873,

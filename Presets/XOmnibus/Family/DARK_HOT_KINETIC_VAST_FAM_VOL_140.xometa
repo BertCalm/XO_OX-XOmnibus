@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "ODDFELIX",
-    "ORPHICA"
+    "OddfeliX",
+    "Orphica"
   ],
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.511,
       "macro_movement": 0.943,
       "macro_coupling": 0.464,
       "macro_space": 0.892
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.521,
       "macro_movement": 0.943,
       "macro_coupling": 0.426,

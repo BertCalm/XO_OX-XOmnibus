@@ -19,11 +19,11 @@
     "aggression": 0.4422
   },
   "engines": [
-    "XOttoni"
+    "Ottoni"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 cold dense kinetic intimate. Designed for ORBIT coupling with XOttoni.",
+  "description": "Ultra-diverse Entangled preset — cold dense kinetic intimate. Designed for ORBIT coupling with XOttoni.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "ORBIT",
   "couplingIntensity": "Low",
   "parameters": {
-    "XOttoni": {
+    "Ottoni": {
       "couplingLevel": 0.538,
       "couplingBus": 0
     }

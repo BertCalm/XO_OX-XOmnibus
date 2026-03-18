@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORBITAL",
-    "OCEANIC"
+    "Orbital",
+    "Oceanic"
   ],
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.727,
       "macro_movement": 0.095,
       "macro_coupling": 0.462,
       "macro_space": 0.928
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.444,
       "macro_movement": 0.206,
       "macro_coupling": 0.439,

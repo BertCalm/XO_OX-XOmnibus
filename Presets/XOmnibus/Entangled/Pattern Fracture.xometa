@@ -3,12 +3,12 @@
   "name": "Pattern Fracture",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ORIGAMI"
+    "Outwit",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORIGAMI carrier frequency seeds OUTWIT initial row \u2014 one fold, infinite generations",
+  "description": "ORIGAMI carrier frequency seeds OUTWIT initial row — one fold, infinite generations",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.75
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 54,
       "owit_arms": 6,
       "owit_cellSize": 0.407,

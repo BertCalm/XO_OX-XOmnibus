@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORACLE",
-    "OWLFISH"
+    "Oracle",
+    "Owlfish"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.45,
       "macro_movement": 0.42,
       "macro_coupling": 0.452,
       "macro_space": 0.865
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.371,
       "macro_movement": 0.249,
       "macro_coupling": 0.654,

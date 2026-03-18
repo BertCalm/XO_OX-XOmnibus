@@ -2,8 +2,8 @@
   "name": "Volcanic Glare",
   "version": "1.0",
   "engines": [
-    "ODDFELIX",
-    "OBSIDIAN"
+    "OddfeliX",
+    "Obsidian"
   ],
   "mood": "Entangled",
   "strategy": "Bright Dark",
@@ -35,5 +35,5 @@
     "aggressive",
     "volcanic"
   ],
-  "description": "Cold white light striking obsidian \u2014 blinding and hard-edged."
+  "description": "Cold white light striking obsidian — blinding and hard-edged."
 }

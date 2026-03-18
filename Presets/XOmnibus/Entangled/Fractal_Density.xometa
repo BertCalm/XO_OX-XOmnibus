@@ -3,12 +3,12 @@
   "name": "Fractal Density",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "OBLONG"
+    "Ouroboros",
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ouroboros fractal frequency smearing Bob's filter cutoff \u2014 warmth buried under mathematical weight.",
+  "description": "Ouroboros fractal frequency smearing Bob's filter cutoff — warmth buried under mathematical weight.",
   "tags": [
     "entangled",
     "brutal",

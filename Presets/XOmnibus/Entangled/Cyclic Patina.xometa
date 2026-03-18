@@ -3,12 +3,12 @@
   "name": "Cyclic Patina",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "OTTONI"
+    "Ouroboros",
+    "Ottoni"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Ouroboros pitch topology locks OTTONI intervals \u2014 serpentine brass loops.",
+  "description": "Ouroboros pitch topology locks OTTONI intervals — serpentine brass loops.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.45
   },
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.55,
       "macro_movement": 0.65,
       "macro_coupling": 0.62,
       "macro_space": 0.42
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.7,
       "macro_movement": 0.45,
       "macro_coupling": 0.62,

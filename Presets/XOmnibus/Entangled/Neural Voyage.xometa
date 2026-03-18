@@ -2,8 +2,8 @@
   "name": "Neural Voyage",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OCTOPUS"
+    "Odyssey",
+    "Octopus"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "octopus",
     "wavetable"
   ],
-  "description": "Octopus neural net processes FM trajectory \u2014 decentralized intelligence routing the drift"
+  "description": "Octopus neural net processes FM trajectory — decentralized intelligence routing the drift"
 }

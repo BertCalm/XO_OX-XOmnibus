@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORACLE",
-    "OMBRE"
+    "Oracle",
+    "Ombre"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.9335,
       "macro_movement": 0.5995,
       "macro_coupling": 0.2943,
       "macro_space": 0.6948
     },
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.9101,
       "macro_movement": 0.3238,
       "macro_coupling": 0.5958,

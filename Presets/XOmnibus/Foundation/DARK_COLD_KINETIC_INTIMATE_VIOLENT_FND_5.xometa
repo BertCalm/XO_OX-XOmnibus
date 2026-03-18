@@ -3,8 +3,8 @@
   "name": "DARK_COLD_KINETIC_INTIMATE_VIOLENT_FND_5",
   "mood": "Foundation",
   "engines": [
-    "OVERDUB",
-    "OUROBOROS"
+    "Overdub",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.015,
       "macro_movement": 0.898,
       "macro_coupling": 0.333,
       "macro_space": 0.0
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.055,
       "macro_movement": 0.995,
       "macro_coupling": 0.465,

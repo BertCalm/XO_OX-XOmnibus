@@ -2,8 +2,8 @@
   "name": "Serpent Syllogism",
   "version": "1.0",
   "engines": [
-    "ORGANON",
-    "OUROBOROS"
+    "Organon",
+    "Ouroboros"
   ],
   "mood": "Entangled",
   "strategy": "Still Aggressive",

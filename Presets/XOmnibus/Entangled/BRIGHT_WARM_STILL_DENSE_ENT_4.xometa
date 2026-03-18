@@ -3,12 +3,12 @@
   "name": "BRIGHT_WARM_STILL_DENSE_ENT_4",
   "mood": "Entangled",
   "engines": [
-    "ORGANON",
-    "ORBITAL"
+    "Organon",
+    "Orbital"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Warm Still Dense character entanglement \u2014 ORGANON \u00d7 ORBITAL via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Warm Still Dense character entanglement — ORGANON × ORBITAL via Resonance Share. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.4297
   },
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.9888,
       "macro_movement": 0.0902,
       "macro_coupling": 0.715,
@@ -57,7 +57,7 @@
       "output_level": 0.9374,
       "coupling_level": 0.7031
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.9921,
       "macro_movement": 0.0995,
       "macro_coupling": 0.7273,

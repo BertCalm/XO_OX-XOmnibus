@@ -3,8 +3,8 @@
   "name": "DARK_HOT_DENSE_VAST_GENTLE_FND_1",
   "mood": "Foundation",
   "engines": [
-    "ORIGAMI",
-    "OBSIDIAN"
+    "Origami",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.061,
       "macro_movement": 0.425,
       "macro_coupling": 0.913,
       "macro_space": 0.864
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.106,
       "macro_movement": 0.453,
       "macro_coupling": 1.0,

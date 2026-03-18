@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OPAL",
-    "ODDOSCAR"
+    "Opal",
+    "OddOscar"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.958,
       "macro_movement": 0.967,
       "macro_coupling": 0.643,
       "macro_space": 0.368
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.958,
       "macro_movement": 0.967,
       "macro_coupling": 0.643,

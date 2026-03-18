@@ -2,8 +2,8 @@
   "name": "Slant Drama",
   "version": "1.0",
   "engines": [
-    "OLE",
-    "OBLIQUE"
+    "Ole",
+    "Oblique"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oblique",
     "afro-latin"
   ],
-  "description": "DRAMA macro collides with oblique strategy \u2014 passion meets calculation"
+  "description": "DRAMA macro collides with oblique strategy — passion meets calculation"
 }

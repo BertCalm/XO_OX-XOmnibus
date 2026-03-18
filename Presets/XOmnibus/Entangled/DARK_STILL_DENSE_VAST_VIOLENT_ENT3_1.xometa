@@ -3,12 +3,12 @@
   "name": "DARK_STILL_DENSE_VAST_VIOLENT_ENT3_1",
   "mood": "Entangled",
   "engines": [
-    "ORACLE",
-    "OCTOPUS"
+    "Oracle",
+    "Octopus"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: DARK_STILL_DENSE_VAST_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_STILL_DENSE_VAST_VIOLENT. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.7205,
       "macro_movement": 0.073,
       "macro_coupling": 0.9304,
       "macro_space": 0.8139
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.8811,
       "macro_movement": 0.0795,
       "macro_coupling": 0.8663,

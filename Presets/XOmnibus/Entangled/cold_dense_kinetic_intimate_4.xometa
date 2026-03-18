@@ -19,11 +19,11 @@
     "aggression": 0.5653
   },
   "engines": [
-    "XOmbre"
+    "Ombre"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 cold dense kinetic intimate. Designed for PULSE coupling with XOmbre.",
+  "description": "Ultra-diverse Entangled preset — cold dense kinetic intimate. Designed for PULSE coupling with XOmbre.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "PULSE",
   "couplingIntensity": "Low",
   "parameters": {
-    "XOmbre": {
+    "Ombre": {
       "couplingLevel": 0.874,
       "couplingBus": 0
     }

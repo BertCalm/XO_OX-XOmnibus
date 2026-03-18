@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Oceanic Pressure Field",
   "mood": "Entangled",
-  "engines": ["OCEANIC", "ORCA"],
+  "engines": [
+    "Oceanic",
+    "Orca"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Oceanic phosphorescence feeding Orca breach trigger — the bioluminescent engine triggering the sidechain displacement of the predator. Light and mass as coupled systems in the deep.",
-  "tags": ["entangled", "oceanic", "orca", "bioluminescent", "sidechain"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "oceanic",
+    "orca",
+    "bioluminescent",
+    "sidechain"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
     "MOVEMENT": 0.5,

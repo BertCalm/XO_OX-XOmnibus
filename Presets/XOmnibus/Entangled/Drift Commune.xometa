@@ -2,8 +2,8 @@
   "name": "Drift Commune",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OHM"
+    "Odyssey",
+    "Ohm"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ohm",
     "wavetable"
   ],
-  "description": "FM odyssey passes through communal fire \u2014 ohm warmth slowing the wavetable drift"
+  "description": "FM odyssey passes through communal fire — ohm warmth slowing the wavetable drift"
 }

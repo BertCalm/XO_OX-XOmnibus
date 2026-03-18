@@ -3,11 +3,11 @@
   "name": "Dark Glass Dome",
   "mood": "Atmosphere",
   "engines": [
-    "OBSIDIAN"
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "OBSIDIAN \u2014 dark extreme brightness preset for Atmosphere.",
+  "description": "OBSIDIAN — dark extreme brightness preset for Atmosphere.",
   "tags": [
     "atmosphere",
     "dark",
@@ -37,7 +37,7 @@
     "aggression": 0.34
   },
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "obs_glassResonance": 0.12,
       "obs_filterCutoff": 0.96,
       "obs_filterReso": 0.14,

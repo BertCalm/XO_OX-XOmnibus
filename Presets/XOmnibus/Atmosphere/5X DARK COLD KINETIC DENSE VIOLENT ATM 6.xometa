@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT ATM 6",
   "mood": "Atmosphere",
   "engines": [
-    "OCEANIC",
-    "OSTERIA"
+    "Oceanic",
+    "Osteria"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.83,
       "macro_movement": 0.96,
       "macro_coupling": 0.83,
       "macro_space": 0.45
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.69,
       "macro_movement": 0.67,
       "macro_coupling": 0.66,

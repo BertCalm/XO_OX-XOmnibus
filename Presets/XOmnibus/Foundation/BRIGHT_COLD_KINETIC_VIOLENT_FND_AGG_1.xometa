@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ODDOSCAR",
-    "OUROBOROS"
+    "OddOscar",
+    "Ouroboros"
   ],
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.741,
       "macro_movement": 0.803,
       "macro_coupling": 0.92,
       "macro_space": 0.47
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.693,
       "macro_movement": 0.768,
       "macro_coupling": 0.883,

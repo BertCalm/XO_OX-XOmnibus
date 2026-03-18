@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OUROBOROS",
-    "ONSET"
+    "Ouroboros",
+    "Onset"
   ],
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.226,
       "macro_movement": 0.767,
       "macro_coupling": 0.663,
       "macro_space": 0.095
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.89,
       "macro_movement": 0.623,
       "macro_coupling": 0.106,

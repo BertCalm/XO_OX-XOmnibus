@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OHM",
-    "ODDOSCAR"
+    "Ohm",
+    "OddOscar"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.1273,
       "macro_movement": 0.4204,
       "macro_coupling": 0.9404,
       "macro_space": 0.6773
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.9028,
       "macro_movement": 0.6155,
       "macro_coupling": 0.3009,

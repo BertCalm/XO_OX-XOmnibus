@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ONSET",
-    "OSPREY"
+    "Onset",
+    "Osprey"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.112,
       "macro_movement": 0.345,
       "macro_coupling": 0.067,
       "macro_space": 0.085
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.107,
       "macro_movement": 0.38,
       "macro_coupling": 0.065,

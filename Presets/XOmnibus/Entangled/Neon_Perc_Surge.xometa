@@ -3,12 +3,12 @@
   "name": "Neon Perc Surge",
   "mood": "Entangled",
   "engines": [
-    "OVERWORLD",
-    "OBLIQUE"
+    "Overworld",
+    "Oblique"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Overworld chip timbral-warped by Oblique prism \u2014 neon spectrum through bounced geometry.",
+  "description": "Overworld chip timbral-warped by Oblique prism — neon spectrum through bounced geometry.",
   "tags": [
     "entangled",
     "brutal",

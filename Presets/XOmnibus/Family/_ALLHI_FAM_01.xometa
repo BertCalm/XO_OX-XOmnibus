@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OLE",
-    "OPAL"
+    "Ole",
+    "Opal"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.648,
       "macro_movement": 0.935,
       "macro_coupling": 0.964,
       "macro_space": 0.946
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.648,
       "macro_movement": 0.935,
       "macro_coupling": 0.964,

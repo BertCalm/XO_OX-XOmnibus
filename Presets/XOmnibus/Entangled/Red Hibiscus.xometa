@@ -3,12 +3,12 @@
   "name": "Red Hibiscus",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OUROBOROS"
+    "Ole",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "OLE warmth frequency-shifts into strange attractor territory \u2014 red hibiscus chaos.",
+  "description": "OLE warmth frequency-shifts into strange attractor territory — red hibiscus chaos.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.65
   },
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.68,
       "macro_movement": 0.65,
       "macro_coupling": 0.58,
       "macro_space": 0.38
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.6,
       "macro_movement": 0.72,
       "macro_coupling": 0.58,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OPAL",
-    "OBSCURA"
+    "Opal",
+    "Obscura"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.5403,
       "macro_movement": 0.9156,
       "macro_coupling": 0.5114,
       "macro_space": 0.8827
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.5586,
       "macro_movement": 0.9038,
       "macro_coupling": 0.5113,

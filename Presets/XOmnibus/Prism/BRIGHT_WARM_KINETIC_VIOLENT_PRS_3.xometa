@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OLE",
-    "OCELOT"
+    "Ole",
+    "Ocelot"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.941,
       "macro_movement": 0.929,
       "macro_coupling": 0.807,
       "macro_space": 0.584
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.47,
       "macro_movement": 0.929,
       "macro_coupling": 0.446,

@@ -2,18 +2,36 @@
   "schema_version": 1,
   "name": "Abyssal Silence",
   "mood": "Foundation",
-  "engines": ["XOwlfish"],
+  "engines": [
+    "Owlfish"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "The Mixtur-Trautonium at zero subharmonic depth — fundamental wave only, body resonator at minimum, no grain, reverb barely present. A single percussive click tone in near-total isolation. Cold as the deep trench without bioluminescence.",
-  "tags": ["cold", "dry", "minimal", "click", "percussive", "isolated"],
-  "macroLabels": ["DEPTH", "FEEDING", "DEFENSE", "PRESSURE"],
+  "tags": [
+    "cold",
+    "dry",
+    "minimal",
+    "click",
+    "percussive",
+    "isolated"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "FEEDING",
+    "DEFENSE",
+    "PRESSURE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
-    "XOwlfish": {
+    "Owlfish": {
       "owl_portamento": 0.0,
       "owl_legatoMode": 0,
       "owl_morphGlide": 0.0,
@@ -61,7 +79,7 @@
       "owl_feeding": 0.0,
       "owl_defense": 0.0,
       "owl_pressure": 0.0,
-      "owl_outputLevel": 0.70,
+      "owl_outputLevel": 0.7,
       "owl_outputPan": 0.0,
       "owl_couplingLevel": 0.5,
       "owl_couplingBus": 0
@@ -72,7 +90,7 @@
   },
   "sequencer": null,
   "dna": {
-    "brightness": 0.70,
+    "brightness": 0.7,
     "warmth": 0.08,
     "movement": 0.08,
     "density": 0.12,

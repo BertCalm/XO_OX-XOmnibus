@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT FLX 11",
   "mood": "Flux",
   "engines": [
-    "OVERLAP",
-    "OWLFISH"
+    "Overlap",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.98,
       "macro_movement": 0.63,
       "macro_coupling": 0.53,
       "macro_space": 0.47
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.78,
       "macro_movement": 0.85,
       "macro_coupling": 0.64,

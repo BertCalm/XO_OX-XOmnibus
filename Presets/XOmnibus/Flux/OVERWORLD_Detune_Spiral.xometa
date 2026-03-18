@@ -2,17 +2,38 @@
   "schema_version": 1,
   "name": "Detune Spiral",
   "mood": "Flux",
-  "engines": ["OVERWORLD"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Genesis FM detuning in a spiral — operator frequencies diverging while the ERA morphs.",
-  "tags": ["detune", "spiral", "flux", "fm", "genesis", "overworld"],
-  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "tags": [
+    "detune",
+    "spiral",
+    "flux",
+    "fm",
+    "genesis",
+    "overworld"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.68, "warmth": 0.35, "movement": 0.8, "density": 0.6, "space": 0.55, "aggression": 0.55},
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.35,
+    "movement": 0.8,
+    "density": 0.6,
+    "space": 0.55,
+    "aggression": 0.55
+  },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_era": 1,
       "ow_macro_era": 0.58,
       "ow_macro_chaos": 0.5,
@@ -23,6 +44,8 @@
       "ow_couplingBus": 0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

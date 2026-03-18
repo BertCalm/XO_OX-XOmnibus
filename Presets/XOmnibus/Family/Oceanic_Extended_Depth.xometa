@@ -3,11 +3,11 @@
   "name": "Oceanic Extended Depth",
   "mood": "Family",
   "engines": [
-    "OCEANIC"
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OCEANIC at maximum depth \u2014 the extended family portrait taken at the bottom of the water column. Pressure, beauty, silence between waves.",
+  "description": "OCEANIC at maximum depth — the extended family portrait taken at the bottom of the water column. Pressure, beauty, silence between waves.",
   "tags": [
     "family",
     "extended-family",

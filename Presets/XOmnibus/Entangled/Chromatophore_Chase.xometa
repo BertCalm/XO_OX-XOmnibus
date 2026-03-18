@@ -3,12 +3,12 @@
   "name": "Chromatophore Chase",
   "mood": "Entangled",
   "engines": [
-    "OCTOPUS",
-    "OUROBOROS"
+    "Octopus",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Octopus chromatophore modulators chaos-injected by Ouroboros \u2014 color change at topological velocity.",
+  "description": "Octopus chromatophore modulators chaos-injected by Ouroboros — color change at topological velocity.",
   "tags": [
     "entangled",
     "brutal",

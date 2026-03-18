@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ODYSSEY",
-    "ORCA"
+    "Odyssey",
+    "Orca"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.2533,
       "macro_movement": 0.7533,
       "macro_coupling": 0.1911,
       "macro_space": 0.357
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.7808,
       "macro_movement": 0.8658,
       "macro_coupling": 0.3319,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OLE",
-    "ORBITAL"
+    "Ole",
+    "Orbital"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.587,
       "macro_movement": 0.635,
       "macro_coupling": 0.257,
       "macro_space": 0.771
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.978,
       "macro_movement": 0.966,
       "macro_coupling": 0.786,

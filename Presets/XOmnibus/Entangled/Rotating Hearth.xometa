@@ -2,8 +2,8 @@
   "name": "Rotating Hearth",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "ORBITAL"
+    "Ohm",
+    "Orbital"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orbital",
     "hippy"
   ],
-  "description": "Orbital group envelope cycles through ohm commune \u2014 the fire rotates, always warm"
+  "description": "Orbital group envelope cycles through ohm commune — the fire rotates, always warm"
 }

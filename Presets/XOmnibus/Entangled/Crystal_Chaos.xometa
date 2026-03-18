@@ -3,20 +3,20 @@
   "name": "Crystal Chaos",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "OUROBOROS"
+    "Orphica",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Spectral morphing crystallizes OUROBOROS's noise into ORPHICA's glass-harmonic structure.",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.78,
       "macro_movement": 0.66,
       "macro_coupling": 0.8,
       "macro_space": 0.66
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.72,
       "macro_movement": 0.74,
       "macro_coupling": 0.76,

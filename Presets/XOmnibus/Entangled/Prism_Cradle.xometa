@@ -3,8 +3,8 @@
   "name": "Prism Cradle",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "OWLFISH"
+    "Ottoni",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.495
   },
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.626,
       "macro_movement": 0.492,
       "macro_coupling": 0.899,
       "macro_space": 0.421
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.749,
       "macro_movement": 0.576,
       "macro_coupling": 0.508,

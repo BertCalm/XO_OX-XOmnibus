@@ -3,12 +3,12 @@
   "name": "Coastal Drama",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "OLE"
+    "Osprey",
+    "Ole"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Afro-Latin rhythm rides beneath osprey's theatric dive \u2014 coastal DRAMA.",
+  "description": "Afro-Latin rhythm rides beneath osprey's theatric dive — coastal DRAMA.",
   "tags": [
     "entangled",
     "coupling",

@@ -3,12 +3,12 @@
   "name": "Prism Shatter Storm",
   "mood": "Entangled",
   "engines": [
-    "OBLIQUE",
-    "ONSET"
+    "Oblique",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Prism bounce frequency smearing Onset percussion \u2014 shattered light spectrum as percussion.",
+  "description": "Prism bounce frequency smearing Onset percussion — shattered light spectrum as percussion.",
   "tags": [
     "entangled",
     "brutal",

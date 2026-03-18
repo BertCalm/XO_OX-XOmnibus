@@ -2,8 +2,8 @@
   "name": "Festival Shimmer",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OLE"
+    "Opal",
+    "Ole"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ole",
     "granular"
   ],
-  "description": "Ole drama macro erupts inside opal cloud \u2014 the carnival explosion granularized"
+  "description": "Ole drama macro erupts inside opal cloud — the carnival explosion granularized"
 }

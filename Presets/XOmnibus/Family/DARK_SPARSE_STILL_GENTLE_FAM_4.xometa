@@ -3,12 +3,12 @@
   "name": "DARK SPARSE STILL GENTLE FAM 4",
   "mood": "Family",
   "engines": [
-    "OPTIC",
-    "OBBLIGATO"
+    "Optic",
+    "Obbligato"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, dark, still, sparse.",
+  "description": "Extreme DNA corners — family, dark, still, sparse.",
   "tags": [
     "family",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.099
   },
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "level": 0.715,
       "pan": 0.149
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "level": 0.728,
       "pan": 0.035
     }

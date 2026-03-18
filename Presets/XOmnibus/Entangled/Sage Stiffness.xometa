@@ -2,8 +2,8 @@
   "name": "Sage Stiffness",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OBSCURA"
+    "Ohm",
+    "Obscura"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "obscura",
     "hippy"
   ],
-  "description": "Obscura string stiffness modulated by ohm's slow communal breathe \u2014 photography meets folk"
+  "description": "Obscura string stiffness modulated by ohm's slow communal breathe — photography meets folk"
 }

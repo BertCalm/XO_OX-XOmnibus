@@ -3,12 +3,12 @@
   "name": "Venom Overdrive",
   "mood": "Entangled",
   "engines": [
-    "OBESE",
-    "OVERBITE"
+    "Obese",
+    "Overbite"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Overbite fang venom soaking OBESE harmonic chain \u2014 poisoned saturation at maximum density.",
+  "description": "Overbite fang venom soaking OBESE harmonic chain — poisoned saturation at maximum density.",
   "tags": [
     "entangled",
     "brutal",

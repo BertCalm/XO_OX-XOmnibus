@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Snap Sequence",
+  "mood": "Flux",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Programmatic snap sequence — arp locked to pitch with steady tempo feel.",
+  "tags": ["sequence", "arp", "tempo", "locked"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.8, "warmth": 0.25, "movement": 0.72, "density": 0.45, "space": 0.42, "aggression": 0.32},
+  "parameters": {
+    "OddfeliX": {"snap_oscMode": 2, "snap_snap": 0.8, "snap_decay": 0.14, "snap_detune": 0.08, "snap_filterCutoff": 12000.0, "snap_filterReso": 0.38, "snap_filterEnvDepth": 0.65, "snap_unison": 1, "snap_sweepDirection": 0, "snap_pitchLock": 0.9, "snap_polyphony": 4, "snap_level": 0.78, "snap_macroDart": 0.78, "snap_macroDepth": 0.4, "snap_macroSchool": 0.38, "snap_macroSurface": 0.48}
+  },
+  "macros": {"CHARACTER": 0.65, "MOVEMENT": 0.72, "COUPLING": 0.0, "SPACE": 0.42},
+  "coupling": {"pairs": []}
+}

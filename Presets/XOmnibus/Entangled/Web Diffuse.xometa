@@ -3,12 +3,12 @@
   "name": "Web Diffuse",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OVERWORLD"
+    "Overlap",
+    "Overworld"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Overworld chip glitch triggers OVERLAP scatter bursts \u2014 pixels dissolve into reverb",
+  "description": "Overworld chip glitch triggers OVERLAP scatter bursts — pixels dissolve into reverb",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.6
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.71,
       "olap_decay": 0.523,
       "olap_damping": 0.433,

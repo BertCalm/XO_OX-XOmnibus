@@ -3,20 +3,20 @@
   "name": "GROW Obscura",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "OBSCURA"
+    "Ottoni",
+    "Obscura"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Resonance shared through OBSCURA's plate \u2014 warmth 0.84 floods the system.",
+  "description": "Resonance shared through OBSCURA's plate — warmth 0.84 floods the system.",
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.76,
       "macro_movement": 0.62,
       "macro_coupling": 0.78,
       "macro_space": 0.42
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.65,
       "macro_movement": 0.58,
       "macro_coupling": 0.7,

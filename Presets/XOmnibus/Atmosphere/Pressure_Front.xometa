@@ -3,7 +3,7 @@
   "name": "Pressure Front",
   "mood": "Atmosphere",
   "engines": [
-    "OCTOPUS"
+    "Octopus"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.465
   },
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "spread": 0.55,
       "pulse": 0.839,
       "coupling": 0.271,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ONSET",
-    "OHM"
+    "Onset",
+    "Ohm"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.476,
       "macro_movement": 0.936,
       "macro_coupling": 0.712,
       "macro_space": 0.448
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.017,
       "macro_movement": 0.904,
       "macro_coupling": 0.294,

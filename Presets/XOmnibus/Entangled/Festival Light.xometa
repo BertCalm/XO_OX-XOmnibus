@@ -2,8 +2,8 @@
   "name": "Festival Light",
   "version": "1.0",
   "engines": [
-    "OLE",
-    "OPTIC"
+    "Ole",
+    "Optic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "optic",
     "afro-latin"
   ],
-  "description": "Afro-Latin festival illuminated by prism beams \u2014 each drum hit a color event"
+  "description": "Afro-Latin festival illuminated by prism beams — each drum hit a color event"
 }

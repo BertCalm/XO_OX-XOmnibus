@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ONSET",
-    "ODDOSCAR"
+    "Onset",
+    "OddOscar"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.377,
       "macro_movement": 0.487,
       "macro_coupling": 0.524,
       "macro_space": 0.398
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.35,
       "macro_movement": 0.447,
       "macro_coupling": 0.502,

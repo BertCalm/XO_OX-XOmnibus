@@ -4,8 +4,8 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OBBLIGATO"
+    "Outwit",
+    "Obbligato"
   ],
   "author": "XO_OX",
   "macros": {
@@ -23,7 +23,7 @@
     "density": 0.65
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 184,
       "owit_arms": 4,
       "owit_cellSize": 0.266,
@@ -56,5 +56,5 @@
     "wolfram",
     "cellular-automata"
   ],
-  "description": "Obbligato dual wind BOND macro sets OUTWIT cell birth/death balance \u2014 the bond between winds is cellular life"
+  "description": "Obbligato dual wind BOND macro sets OUTWIT cell birth/death balance — the bond between winds is cellular life"
 }

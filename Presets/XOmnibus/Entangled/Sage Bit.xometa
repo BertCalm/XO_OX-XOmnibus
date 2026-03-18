@@ -2,8 +2,8 @@
   "name": "Sage Bit",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OVERWORLD"
+    "Ohm",
+    "Overworld"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "overworld",
     "hippy"
   ],
-  "description": "Ohm warmth modulates overworld era selection \u2014 folk spirit channels 16-bit nostalgia"
+  "description": "Ohm warmth modulates overworld era selection — folk spirit channels 16-bit nostalgia"
 }

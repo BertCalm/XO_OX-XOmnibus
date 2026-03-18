@@ -3,11 +3,11 @@
   "name": "Tension Flux White",
   "mood": "Flux",
   "engines": [
-    "ORIGAMI"
+    "Origami"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORIGAMI pushed to extreme brightness \u2014 brightness 0.98, movement 0.84, aggression 0.51. Ultra-bright Flux zone filler.",
+  "description": "ORIGAMI pushed to extreme brightness — brightness 0.98, movement 0.84, aggression 0.51. Ultra-bright Flux zone filler.",
   "tags": [
     "flux",
     "ultra-bright",
@@ -40,7 +40,7 @@
     "aggression": 0.508
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "ori_macro_fold": 0.386,
       "ori_macro_tension": 0.616,
       "ori_macro_couple": 0.093,

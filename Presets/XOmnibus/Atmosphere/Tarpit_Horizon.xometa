@@ -3,7 +3,7 @@
   "name": "Tarpit Horizon",
   "mood": "Atmosphere",
   "engines": [
-    "OMBRE"
+    "Ombre"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.118
   },
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "gradient": 0.233,
       "warmth": 0.357,
       "coupling": 0.176,

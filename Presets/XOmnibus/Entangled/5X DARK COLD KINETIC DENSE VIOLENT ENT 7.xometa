@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT ENT 7",
   "mood": "Entangled",
   "engines": [
-    "OPTIC",
-    "OBLONG"
+    "Optic",
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.69,
       "macro_movement": 0.81,
       "macro_coupling": 0.63,
       "macro_space": 0.41
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.67,
       "macro_movement": 0.91,
       "macro_coupling": 0.68,

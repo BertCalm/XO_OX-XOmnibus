@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBLIQUE",
-    "OSTERIA"
+    "Oblique",
+    "Osteria"
   ],
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.323,
       "macro_movement": 0.086,
       "macro_coupling": 0.077,
       "macro_space": 0.914
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.301,
       "macro_movement": 0.087,
       "macro_coupling": 0.104,

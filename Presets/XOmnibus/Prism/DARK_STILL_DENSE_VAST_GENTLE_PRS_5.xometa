@@ -3,8 +3,8 @@
   "name": "DARK_STILL_DENSE_VAST_GENTLE_PRS_5",
   "mood": "Prism",
   "engines": [
-    "OBLIQUE",
-    "OSTERIA"
+    "Oblique",
+    "Osteria"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.083,
       "macro_movement": 0.057,
       "macro_coupling": 0.798,
       "macro_space": 1.0
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.104,
       "macro_movement": 0.187,
       "macro_coupling": 0.859,

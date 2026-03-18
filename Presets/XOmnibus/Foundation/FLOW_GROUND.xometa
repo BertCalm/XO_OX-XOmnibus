@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OSPREY",
-    "OHM"
+    "Osprey",
+    "Ohm"
   ],
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.78,
       "macro_movement": 0.921,
       "macro_coupling": 0.668,
       "macro_space": 0.529
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.442,
       "macro_movement": 0.963,
       "macro_coupling": 0.632,

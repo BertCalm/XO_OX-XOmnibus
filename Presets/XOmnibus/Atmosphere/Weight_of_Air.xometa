@@ -3,7 +3,7 @@
   "name": "Weight of Air",
   "mood": "Atmosphere",
   "engines": [
-    "OBESE"
+    "Obese"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.292
   },
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "mass": 0.264,
       "density": 0.131,
       "coupling": 0.375,

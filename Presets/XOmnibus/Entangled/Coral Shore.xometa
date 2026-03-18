@@ -2,8 +2,8 @@
   "name": "Coral Shore",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OCEANIC"
+    "Obbligato",
+    "Oceanic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oceanic",
     "wind"
   ],
-  "description": "OBBLIGATO dual-wind tones mapped to oceanic phosphor pulse \u2014 breath illuminates the deep"
+  "description": "OBBLIGATO dual-wind tones mapped to oceanic phosphor pulse — breath illuminates the deep"
 }

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OVERLAP"
+    "Ole",
+    "Overlap"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.79,
       "macro_movement": 0.17,
       "macro_coupling": 0.792,
       "macro_space": 0.194
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.75,
       "macro_movement": 0.268,
       "macro_coupling": 0.69,

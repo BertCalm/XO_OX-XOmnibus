@@ -2,8 +2,8 @@
   "name": "Crystal Signal",
   "version": "1.0",
   "engines": [
-    "ORPHICA",
-    "OPTIC"
+    "Orphica",
+    "Optic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "optic",
     "microsound"
   ],
-  "description": "High-frequency orphica overtones beamed through optical array \u2014 pure transmission"
+  "description": "High-frequency orphica overtones beamed through optical array — pure transmission"
 }

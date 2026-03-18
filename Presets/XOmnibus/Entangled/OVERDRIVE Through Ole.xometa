@@ -3,12 +3,12 @@
   "name": "OVERDRIVE Through Ole",
   "mood": "Entangled",
   "engines": [
-    "OLE",
+    "Ole",
     "OVERDRIVE"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OLE and OVERDRIVE coupled via Env->Level. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "description": "OLE and OVERDRIVE coupled via Env->Level. Blended Constellation DNA — stub seeded for expansion.",
   "tags": [
     "coupling",
     "constellation",

@@ -3,8 +3,8 @@
   "name": "Benthic Chaos",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OCEANIC"
+    "Outwit",
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.03
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 182,
       "owit_arms": 8,
       "owit_cellSize": 0.32,
@@ -70,7 +70,7 @@
       "owit_outputLevel": 0.76,
       "owit_outputPan": -0.03
     },
-    "OCEANIC": {
+    "Oceanic": {
       "ocean_character": 0.47,
       "ocean_movement": 0.62,
       "ocean_coupling": 0.55,

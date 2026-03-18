@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "ORACLE"
+    "Ouroboros",
+    "Oracle"
   ],
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.163,
       "macro_movement": 0.095,
       "macro_coupling": 0.099,
       "macro_space": 0.064
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.122,
       "macro_movement": 0.08,
       "macro_coupling": 0.102,

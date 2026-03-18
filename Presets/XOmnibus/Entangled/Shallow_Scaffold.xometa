@@ -3,8 +3,8 @@
   "name": "Shallow Scaffold",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "ORIGAMI"
+    "Oceanic",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.235
   },
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.6,
       "macro_movement": 0.649,
       "macro_coupling": 0.561,
       "macro_space": 0.68
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.573,
       "macro_movement": 0.45,
       "macro_coupling": 0.432,

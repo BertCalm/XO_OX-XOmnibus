@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OBLIQUE",
-    "ORGANON"
+    "Oblique",
+    "Organon"
   ],
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.5731,
       "macro_movement": 0.8932,
       "macro_coupling": 0.5895,
       "macro_space": 0.8009
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.7453,
       "macro_movement": 0.2592,
       "macro_coupling": 0.6518,

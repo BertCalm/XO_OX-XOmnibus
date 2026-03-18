@@ -3,12 +3,12 @@
   "name": "Cellular Predator",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ORCA"
+    "Outwit",
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Orca hunt velocity coupling into Outwit arm evolution \u2014 apex predator driving cellular automata.",
+  "description": "Orca hunt velocity coupling into Outwit arm evolution — apex predator driving cellular automata.",
   "tags": [
     "entangled",
     "brutal",

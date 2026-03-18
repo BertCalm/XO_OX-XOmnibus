@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "8bit Transcendence",
   "mood": "Aether",
-  "engines": ["OVERWORLD"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "The moment chip music becomes something beyond nostalgia — when the quantized, limited, aliased world of the 8-bit register stops being a constraint and starts being the point. ERA at 0.62 (Genesis leaning), chaos just high enough to pulse, space maximized. This is what happens when you forgive the hardware for what it couldn't do and love it for what it could.",
-  "tags": ["aether", "transcendent", "genesis-snes", "spiritual", "space", "beyond", "8-bit", "beauty"],
-  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "tags": [
+    "aether",
+    "transcendent",
+    "genesis-snes",
+    "spiritual",
+    "space",
+    "beyond",
+    "8-bit",
+    "beauty"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
   "couplingIntensity": "Light",
   "tempo": null,
   "dna": {
@@ -19,7 +35,7 @@
     "aggression": 0.05
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_macro_era": 0.62,
       "ow_macro_chaos": 0.12,
       "ow_macro_couple": 0.48,
@@ -29,6 +45,13 @@
       "ow_couplingBus": 0
     }
   },
-  "macros": {"ERA": 0.62, "CHAOS": 0.12, "COUPLE": 0.48, "SPACE": 0.95},
-  "coupling": {"pairs": []}
+  "macros": {
+    "ERA": 0.62,
+    "CHAOS": 0.12,
+    "COUPLE": 0.48,
+    "SPACE": 0.95
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

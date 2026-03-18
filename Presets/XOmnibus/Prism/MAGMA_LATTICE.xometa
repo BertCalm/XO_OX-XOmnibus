@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ONSET",
-    "OBBLIGATO"
+    "Onset",
+    "Obbligato"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.55,
       "macro_movement": 0.894,
       "macro_coupling": 0.123,
       "macro_space": 0.264
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.546,
       "macro_movement": 0.24,
       "macro_coupling": 0.791,

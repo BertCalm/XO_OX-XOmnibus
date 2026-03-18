@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ONSET",
-    "OSTERIA"
+    "Onset",
+    "Osteria"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.748,
       "macro_movement": 0.539,
       "macro_coupling": 0.463,
       "macro_space": 0.615
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.619,
       "macro_movement": 0.619,
       "macro_coupling": 0.594,

@@ -3,12 +3,12 @@
   "name": "DARK WARM VAST VIOLENT AET 4",
   "mood": "Aether",
   "engines": [
-    "OBLONG",
-    "OUROBOROS"
+    "Oblong",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, dark, warm, vast.",
+  "description": "Extreme DNA corners — aether, dark, warm, vast.",
   "tags": [
     "aether",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.933
   },
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "level": 0.78,
       "pan": -0.046
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "level": 0.832,
       "pan": -0.114
     }

@@ -3,11 +3,11 @@
   "name": "Bright Crease Burst",
   "mood": "Prism",
   "engines": [
-    "ORIGAMI"
+    "Origami"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORIGAMI pushed to extreme brightness \u2014 brightness 0.93, movement 0.81, aggression 0.44. Ultra-bright Prism zone filler.",
+  "description": "ORIGAMI pushed to extreme brightness — brightness 0.93, movement 0.81, aggression 0.44. Ultra-bright Prism zone filler.",
   "tags": [
     "prism",
     "ultra-bright",
@@ -40,7 +40,7 @@
     "aggression": 0.441
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "ori_macro_fold": 0.273,
       "ori_macro_tension": 0.627,
       "ori_macro_couple": 0.279,

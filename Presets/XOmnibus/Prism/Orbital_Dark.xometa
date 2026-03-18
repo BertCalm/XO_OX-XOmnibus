@@ -19,7 +19,7 @@
     "aggression": 0.7536
   },
   "engines": [
-    "ORBITAL"
+    "Orbital"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,7 +45,7 @@
   },
   "couplingIntensity": "None",
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "orb_macro_orbit": 0.3004,
       "orb_macro_phase": 0.8669,
       "orb_macro_couple": 0.7938,

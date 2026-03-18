@@ -11,11 +11,11 @@
     "space": 0.95
   },
   "engines": [
-    "ODDFELIX"
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Flat spectral energy \u2014 maximum brightness, minimal character",
+  "description": "Flat spectral energy — maximum brightness, minimal character",
   "tags": [
     "prism",
     "bright",

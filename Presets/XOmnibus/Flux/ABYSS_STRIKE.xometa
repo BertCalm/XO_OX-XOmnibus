@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OCELOT",
-    "OBSCURA"
+    "Ocelot",
+    "Obscura"
   ],
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.559,
       "macro_movement": 0.47,
       "macro_coupling": 0.479,
       "macro_space": 0.558
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.514,
       "macro_movement": 0.341,
       "macro_coupling": 0.402,

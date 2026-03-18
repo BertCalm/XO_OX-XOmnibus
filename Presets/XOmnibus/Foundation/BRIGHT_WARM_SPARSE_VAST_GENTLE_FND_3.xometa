@@ -3,8 +3,8 @@
   "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_FND_3",
   "mood": "Foundation",
   "engines": [
-    "ONSET",
-    "OBESE"
+    "Onset",
+    "Obese"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 1.0,
       "macro_movement": 0.481,
       "macro_coupling": 0.057,
       "macro_space": 0.988
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 1.0,
       "macro_movement": 0.643,
       "macro_coupling": 0.047,

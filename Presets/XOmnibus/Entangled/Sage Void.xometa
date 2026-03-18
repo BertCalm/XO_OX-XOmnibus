@@ -2,8 +2,8 @@
   "name": "Sage Void",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OBSIDIAN"
+    "Ohm",
+    "Obsidian"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "obsidian",
     "hippy"
   ],
-  "description": "Ohm commune swallowed by obsidian depth \u2014 warmth persists as a memory in the crystal"
+  "description": "Ohm commune swallowed by obsidian depth — warmth persists as a memory in the crystal"
 }

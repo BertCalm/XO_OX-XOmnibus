@@ -19,11 +19,11 @@
     "movement": 0.4576
   },
   "engines": [
-    "XOddOscar"
+    "OddOscar"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 violent dense hot intimate. Designed for FLOW coupling with XOddOscar.",
+  "description": "Ultra-diverse Entangled preset — violent dense hot intimate. Designed for FLOW coupling with XOddOscar.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "FLOW",
   "couplingIntensity": "Extreme",
   "parameters": {
-    "XOddOscar": {
+    "OddOscar": {
       "couplingLevel": 0.855,
       "couplingBus": 1
     }

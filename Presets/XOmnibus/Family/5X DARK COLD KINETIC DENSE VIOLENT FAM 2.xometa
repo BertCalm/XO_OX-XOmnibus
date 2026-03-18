@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT FAM 2",
   "mood": "Family",
   "engines": [
-    "ONSET",
-    "OPTIC"
+    "Onset",
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.89,
       "macro_movement": 0.73,
       "macro_coupling": 0.58,
       "macro_space": 0.38
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.93,
       "macro_movement": 0.74,
       "macro_coupling": 0.57,

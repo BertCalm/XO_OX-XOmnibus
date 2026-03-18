@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "OSPREY"
+    "Ottoni",
+    "Osprey"
   ],
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.003,
       "macro_movement": 0.451,
       "macro_coupling": 0.594,
       "macro_space": 0.291
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.231,
       "macro_movement": 0.707,
       "macro_coupling": 0.703,

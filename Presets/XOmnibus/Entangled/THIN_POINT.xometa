@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORGANON",
-    "OUROBOROS"
+    "Organon",
+    "Ouroboros"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.62,
       "macro_movement": 0.241,
       "macro_coupling": 0.913,
       "macro_space": 0.143
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.461,
       "macro_movement": 0.254,
       "macro_coupling": 0.255,

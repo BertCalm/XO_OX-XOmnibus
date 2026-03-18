@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ORIGAMI",
-    "OCTOPUS"
+    "Origami",
+    "Octopus"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.0423,
       "macro_movement": 0.0187,
       "macro_coupling": 0.9212,
       "macro_space": 0.8621
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.5758,
       "macro_movement": 0.5734,
       "macro_coupling": 0.7095,

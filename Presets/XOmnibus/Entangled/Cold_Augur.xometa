@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORACLE",
-    "OBSCURA"
+    "Oracle",
+    "Obscura"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.22,
       "macro_movement": 0.58,
       "macro_coupling": 0.64,
       "macro_space": 0.87
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.19,
       "macro_movement": 0.53,
       "macro_coupling": 0.69,
@@ -46,5 +46,5 @@
     "augur",
     "spectral"
   ],
-  "description": "Oracle shifts Obscura's resonant frequencies into cold augury \u2014 reading the stiffness of ice."
+  "description": "Oracle shifts Obscura's resonant frequencies into cold augury — reading the stiffness of ice."
 }

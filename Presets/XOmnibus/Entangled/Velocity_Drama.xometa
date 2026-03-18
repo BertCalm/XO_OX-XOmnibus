@@ -3,20 +3,20 @@
   "name": "Velocity Drama",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OBSCURA"
+    "Ole",
+    "Obscura"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Velocity coupling: harder OLE hits expose deeper grain in OBSCURA's surface.",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.78,
       "macro_movement": 0.7,
       "macro_coupling": 0.78,
       "macro_space": 0.38
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.64,
       "macro_movement": 0.56,
       "macro_coupling": 0.68,

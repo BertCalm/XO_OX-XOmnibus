@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "OTTONI"
+    "Osteria",
+    "Ottoni"
   ],
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.739,
       "macro_movement": 0.896,
       "macro_coupling": 0.299,
       "macro_space": 0.336
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.828,
       "macro_movement": 0.979,
       "macro_coupling": 0.532,

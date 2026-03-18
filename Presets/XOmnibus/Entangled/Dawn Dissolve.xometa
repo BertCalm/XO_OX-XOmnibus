@@ -2,8 +2,8 @@
   "name": "Dawn Dissolve",
   "version": "1.0",
   "engines": [
-    "ORPHICA",
-    "OMBRE"
+    "Orphica",
+    "Ombre"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ombre",
     "microsound"
   ],
-  "description": "Microsound dawn slowly dissolves into dusk palette \u2014 time-lapse of a day"
+  "description": "Microsound dawn slowly dissolves into dusk palette — time-lapse of a day"
 }

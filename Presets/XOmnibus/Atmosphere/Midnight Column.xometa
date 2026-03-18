@@ -2,7 +2,7 @@
   "name": "Midnight Column",
   "version": "1.0",
   "engines": [
-    "OBSIDIAN"
+    "Obsidian"
   ],
   "mood": "Atmosphere",
   "macros": {

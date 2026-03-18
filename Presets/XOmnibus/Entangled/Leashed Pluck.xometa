@@ -3,12 +3,12 @@
   "name": "Leashed Pluck",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "ORPHICA"
+    "Ouroboros",
+    "Orphica"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Ouroboros leash envelope shape linked to ORPHICA pluck decay \u2014 controlled chaos harp.",
+  "description": "Ouroboros leash envelope shape linked to ORPHICA pluck decay — controlled chaos harp.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.42
   },
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.6,
       "macro_movement": 0.75,
       "macro_coupling": 0.75,
       "macro_space": 0.42
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.65,
       "macro_movement": 0.48,
       "macro_coupling": 0.75,

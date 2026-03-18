@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT FLX 8",
   "mood": "Flux",
   "engines": [
-    "OWLFISH",
-    "OVERDUB"
+    "Owlfish",
+    "Overdub"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.74,
       "macro_movement": 0.68,
       "macro_coupling": 0.6,
       "macro_space": 0.17
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.93,
       "macro_movement": 0.87,
       "macro_coupling": 0.65,

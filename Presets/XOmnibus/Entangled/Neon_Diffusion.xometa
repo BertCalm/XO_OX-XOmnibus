@@ -3,8 +3,8 @@
   "name": "Neon Diffusion",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ODDFELIX"
+    "Overlap",
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "density": 0.55
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.944,
       "olap_decay": 0.606,
       "olap_damping": 0.564,

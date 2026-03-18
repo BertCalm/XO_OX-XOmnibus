@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "ORGANON",
-    "ORPHICA"
+    "Organon",
+    "Orphica"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.541,
       "macro_movement": 0.416,
       "macro_coupling": 0.765,
       "macro_space": 0.097
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.548,
       "macro_movement": 0.424,
       "macro_coupling": 0.78,

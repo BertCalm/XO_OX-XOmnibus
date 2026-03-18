@@ -2,8 +2,8 @@
   "name": "Stroboscopic Ritual",
   "version": "1.0",
   "engines": [
-    "ONSET",
-    "OBSCURA"
+    "Onset",
+    "Obscura"
   ],
   "mood": "Entangled",
   "strategy": "Bright Dark",
@@ -35,5 +35,5 @@
     "aggressive",
     "ritual"
   ],
-  "description": "Percussion strobes carving cold light into darkness \u2014 mechanized and relentless."
+  "description": "Percussion strobes carving cold light into darkness — mechanized and relentless."
 }

@@ -3,12 +3,12 @@
   "name": "Light Singularity",
   "mood": "Entangled",
   "engines": [
-    "OPTIC",
-    "OUROBOROS"
+    "Optic",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ouroboros timbral warp modulating Optic luminance \u2014 bright singularity event.",
+  "description": "Ouroboros timbral warp modulating Optic luminance — bright singularity event.",
   "tags": [
     "entangled",
     "brutal",

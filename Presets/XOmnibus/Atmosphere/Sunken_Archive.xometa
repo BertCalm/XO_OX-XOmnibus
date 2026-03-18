@@ -3,7 +3,7 @@
   "name": "Sunken Archive",
   "mood": "Atmosphere",
   "engines": [
-    "ORACLE"
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.126
   },
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "vision": 0.273,
       "flow": 0.211,
       "coupling": 0.323,

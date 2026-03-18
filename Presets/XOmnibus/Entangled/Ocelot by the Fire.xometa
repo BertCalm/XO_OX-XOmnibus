@@ -3,12 +3,12 @@
   "name": "Ocelot by the Fire",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "OCELOT"
+    "Osteria",
+    "Ocelot"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The cat curls near the hearth of the osteria \u2014 feline warmth by the shore fire.",
+  "description": "The cat curls near the hearth of the osteria — feline warmth by the shore fire.",
   "tags": [
     "entangled",
     "coupling",

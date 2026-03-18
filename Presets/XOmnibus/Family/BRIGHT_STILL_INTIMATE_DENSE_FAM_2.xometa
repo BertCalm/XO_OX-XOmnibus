@@ -3,12 +3,12 @@
   "name": "BRIGHT STILL INTIMATE DENSE FAM 2",
   "mood": "Family",
   "engines": [
-    "OPAL",
-    "ORACLE"
+    "Opal",
+    "Oracle"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, bright, still, dense.",
+  "description": "Extreme DNA corners — family, bright, still, dense.",
   "tags": [
     "family",
     "bright",
@@ -35,11 +35,11 @@
     "aggression": 0.593
   },
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "level": 0.75,
       "pan": -0.024
     },
-    "ORACLE": {
+    "Oracle": {
       "level": 0.763,
       "pan": 0.004
     }

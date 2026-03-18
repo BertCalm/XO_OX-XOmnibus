@@ -3,11 +3,11 @@
   "name": "Sibyl Hollow",
   "mood": "Atmosphere",
   "engines": [
-    "ORACLE"
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "ORACLE \u2014 dark extreme brightness preset for Atmosphere.",
+  "description": "ORACLE — dark extreme brightness preset for Atmosphere.",
   "tags": [
     "atmosphere",
     "dark",
@@ -37,7 +37,7 @@
     "aggression": 0.06
   },
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "orc_prophecyDepth": 0.66,
       "orc_filterCutoff": 0.13,
       "orc_filterReso": 0.71,

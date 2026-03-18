@@ -3,12 +3,12 @@
   "name": "HOT_DENSE_VAST_VIOLENT_ENT_3",
   "mood": "Entangled",
   "engines": [
-    "ODDFELIX",
-    "OCELOT"
+    "OddfeliX",
+    "Ocelot"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Hot Dense Vast Violent character entanglement \u2014 ODDFELIX \u00d7 OCELOT via Timbral Bleed. Extreme DNA zones push sound design to the edges.",
+  "description": "Hot Dense Vast Violent character entanglement — ODDFELIX × OCELOT via Timbral Bleed. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "warm",
@@ -41,7 +41,7 @@
     "aggression": 0.9396
   },
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.895,
       "macro_movement": 0.3418,
       "macro_coupling": 0.904,
@@ -57,7 +57,7 @@
       "output_level": 0.8984,
       "coupling_level": 0.9424
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.9016,
       "macro_movement": 0.338,
       "macro_coupling": 0.9377,

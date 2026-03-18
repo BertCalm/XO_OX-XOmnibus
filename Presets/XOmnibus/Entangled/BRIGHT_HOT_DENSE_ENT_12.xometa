@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERDUB",
-    "OCTOPUS"
+    "Overdub",
+    "Octopus"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.919,
       "macro_movement": 0.389,
       "macro_coupling": 0.637,
       "macro_space": 0.422
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.897,
       "macro_movement": 0.463,
       "macro_coupling": 0.614,

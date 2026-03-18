@@ -3,11 +3,11 @@
   "name": "Oscar Still Water",
   "mood": "Atmosphere",
   "engines": [
-    "ODDOSCAR"
+    "OddOscar"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "ODDOSCAR \u2014 dark extreme brightness preset for Atmosphere.",
+  "description": "ODDOSCAR — dark extreme brightness preset for Atmosphere.",
   "tags": [
     "atmosphere",
     "dark",
@@ -37,7 +37,7 @@
     "aggression": 0.79
   },
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "oddo_oscAwave": 0,
       "oddo_oscBwave": 1,
       "oddo_filterCutoff": 0.6,

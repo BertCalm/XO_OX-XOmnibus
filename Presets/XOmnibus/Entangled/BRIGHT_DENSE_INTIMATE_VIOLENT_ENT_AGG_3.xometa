@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OBSIDIAN"
+    "Obbligato",
+    "Obsidian"
   ],
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.628,
       "macro_movement": 0.653,
       "macro_coupling": 0.945,
       "macro_space": 0.102
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.603,
       "macro_movement": 0.604,
       "macro_coupling": 0.909,

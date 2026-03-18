@@ -3,12 +3,12 @@
   "name": "DARK_COLD_FROZEN_DENSE_INTIMATE_ENT3_5",
   "mood": "Entangled",
   "engines": [
-    "OPAL",
-    "OUTWIT"
+    "Opal",
+    "Outwit"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: DARK_COLD_FROZEN_DENSE_INTIMATE. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_COLD_FROZEN_DENSE_INTIMATE. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.6166,
       "macro_movement": 0.0584,
       "macro_coupling": 0.9106,
       "macro_space": 0.2821
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.9584,
       "macro_movement": 0.0845,
       "macro_coupling": 0.8871,

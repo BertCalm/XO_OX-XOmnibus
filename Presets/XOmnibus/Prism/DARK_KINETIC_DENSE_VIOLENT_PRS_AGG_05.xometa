@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OWLFISH",
-    "ORPHICA"
+    "Owlfish",
+    "Orphica"
   ],
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.022,
       "macro_movement": 0.877,
       "macro_coupling": 0.807,
       "macro_space": 0.45
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.024,
       "macro_movement": 0.852,
       "macro_coupling": 0.793,

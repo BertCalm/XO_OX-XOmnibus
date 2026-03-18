@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "name": "Attractor Spectrum",
+  "mood": "Prism",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Strange attractor cycling through spectral colors — medium chaos with varying phase sweeps harmonics.",
+  "tags": ["attractor", "spectrum", "spectral", "phase", "prism"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.72, "warmth": 0.45, "movement": 0.55, "density": 0.58, "space": 0.65, "aggression": 0.35},
+  "parameters": {"Ouroboros": {
+    "ouro_topology": 2,
+    "ouro_rate": 0.5,
+    "ouro_chaosIndex": 0.5,
+    "ouro_leash": 0.5,
+    "ouro_theta": 0.2,
+    "ouro_phi": 0.8,
+    "ouro_damping": 0.35,
+    "ouro_injection": 0.55
+  }},
+  "macros": {"CHARACTER": 0.68, "MOVEMENT": 0.55, "COUPLING": 0.5, "SPACE": 0.62},
+  "coupling": {"pairs": []}
+}

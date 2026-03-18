@@ -3,8 +3,8 @@
   "name": "DARK_COLD_KINETIC_INTIMATE_VIOLENT_FND_1",
   "mood": "Foundation",
   "engines": [
-    "ORIGAMI",
-    "OBLONG"
+    "Origami",
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.031,
       "macro_movement": 1.0,
       "macro_coupling": 0.378,
       "macro_space": 0.098
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.069,
       "macro_movement": 0.996,
       "macro_coupling": 0.507,

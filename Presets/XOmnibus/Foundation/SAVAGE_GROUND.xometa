@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OVERWORLD",
-    "OLE"
+    "Overworld",
+    "Ole"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.643,
       "macro_movement": 0.598,
       "macro_coupling": 0.325,
       "macro_space": 0.503
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.548,
       "macro_movement": 0.662,
       "macro_coupling": 0.443,

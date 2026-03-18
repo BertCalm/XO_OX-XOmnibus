@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OCELOT",
-    "ORIGAMI"
+    "Ocelot",
+    "Origami"
   ],
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.7003,
       "macro_movement": 0.6045,
       "macro_coupling": 0.0617,
       "macro_space": 0.9602
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.7035,
       "macro_movement": 0.6445,
       "macro_coupling": 0.0497,

@@ -2,8 +2,8 @@
   "name": "Hibiscus Dissolve",
   "version": "1.0",
   "engines": [
-    "OLE",
-    "OMBRE"
+    "Ole",
+    "Ombre"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ombre",
     "afro-latin"
   ],
-  "description": "Hibiscus color bleeds into ombre spectrum \u2014 vivid joy softening to memory"
+  "description": "Hibiscus color bleeds into ombre spectrum — vivid joy softening to memory"
 }

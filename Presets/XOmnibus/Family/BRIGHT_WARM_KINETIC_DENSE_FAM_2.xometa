@@ -3,12 +3,12 @@
   "name": "BRIGHT WARM KINETIC DENSE FAM 2",
   "mood": "Family",
   "engines": [
-    "OBSIDIAN",
-    "OPTIC"
+    "Obsidian",
+    "Optic"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, bright, warm, kinetic.",
+  "description": "Extreme DNA corners — family, bright, warm, kinetic.",
   "tags": [
     "family",
     "bright",
@@ -35,11 +35,11 @@
     "aggression": 0.538
   },
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "level": 0.758,
       "pan": -0.147
     },
-    "OPTIC": {
+    "Optic": {
       "level": 0.669,
       "pan": -0.051
     }

@@ -3,12 +3,12 @@
   "name": "DARK COLD KINETIC VAST AET 5",
   "mood": "Aether",
   "engines": [
-    "OMBRE",
-    "OVERDUB"
+    "Ombre",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, dark, cold, kinetic.",
+  "description": "Extreme DNA corners — aether, dark, cold, kinetic.",
   "tags": [
     "aether",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.592
   },
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "level": 0.753,
       "pan": -0.07
     },
-    "OVERDUB": {
+    "Overdub": {
       "level": 0.777,
       "pan": 0.076
     }

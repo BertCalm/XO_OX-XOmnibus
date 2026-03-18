@@ -2,8 +2,8 @@
   "name": "Ink & Clave",
   "version": "1.0",
   "engines": [
-    "OLE",
-    "OCTOPUS"
+    "Ole",
+    "Octopus"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "octopus",
     "afro-latin"
   ],
-  "description": "Octopus cloud conceals the rhythm \u2014 African pulse heard dimly through dark water"
+  "description": "Octopus cloud conceals the rhythm — African pulse heard dimly through dark water"
 }

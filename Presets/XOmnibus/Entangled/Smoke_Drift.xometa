@@ -3,8 +3,8 @@
   "name": "Smoke Drift",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OMBRE"
+    "Obbligato",
+    "Ombre"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.365
   },
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.572,
       "macro_movement": 0.502,
       "macro_coupling": 0.783,
       "macro_space": 0.246
     },
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.622,
       "macro_movement": 0.373,
       "macro_coupling": 0.519,

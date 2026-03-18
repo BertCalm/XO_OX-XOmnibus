@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OCTOPUS",
-    "OCELOT"
+    "Octopus",
+    "Ocelot"
   ],
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.681,
       "macro_movement": 0.032,
       "macro_coupling": 0.948,
       "macro_space": 0.11
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.019,
       "macro_movement": 0.314,
       "macro_coupling": 0.151,

@@ -3,8 +3,8 @@
   "name": "Chip Automata",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OVERWORLD"
+    "Outwit",
+    "Overworld"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "density": 0.6
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 90,
       "owit_arms": 4,
       "owit_cellSize": 0.507,

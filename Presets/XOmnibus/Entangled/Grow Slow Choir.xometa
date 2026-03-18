@@ -2,8 +2,8 @@
   "name": "Grow Slow Choir",
   "version": "1.0",
   "engines": [
-    "OTTONI",
-    "ORGANON"
+    "Ottoni",
+    "Organon"
   ],
   "mood": "Entangled",
   "strategy": "Warm Sparse",

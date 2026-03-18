@@ -2,7 +2,7 @@
   "name": "Amber Solstice",
   "version": "1.0",
   "engines": [
-    "OSPREY"
+    "Osprey"
   ],
   "mood": "Atmosphere",
   "macros": {

@@ -3,12 +3,12 @@
   "name": "DARK COLD DENSE VIOLENT AET 5",
   "mood": "Aether",
   "engines": [
-    "OBLONG",
-    "OUROBOROS"
+    "Oblong",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, dark, cold, dense.",
+  "description": "Extreme DNA corners — aether, dark, cold, dense.",
   "tags": [
     "aether",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.954
   },
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "level": 0.702,
       "pan": -0.024
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "level": 0.835,
       "pan": -0.006
     }

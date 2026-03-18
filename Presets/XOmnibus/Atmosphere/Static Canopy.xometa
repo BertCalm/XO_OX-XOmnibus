@@ -2,7 +2,7 @@
   "name": "Static Canopy",
   "version": "1.0",
   "engines": [
-    "OBLIQUE"
+    "Oblique"
   ],
   "mood": "Atmosphere",
   "macros": {

@@ -3,12 +3,12 @@
   "name": "Spectral Current",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "ORBITAL"
+    "Oceanic",
+    "Orbital"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORBITAL frequency rotation mirrors deep-ocean gyre \u2014 spectral and vast.",
+  "description": "ORBITAL frequency rotation mirrors deep-ocean gyre — spectral and vast.",
   "tags": [
     "entangled",
     "coupling",

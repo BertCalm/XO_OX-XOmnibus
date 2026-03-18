@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OSTERIA",
-    "OVERLAP"
+    "Osteria",
+    "Overlap"
   ],
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.343,
       "macro_movement": 0.714,
       "macro_coupling": 0.505,
       "macro_space": 0.173
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.248,
       "macro_movement": 0.438,
       "macro_coupling": 0.439,

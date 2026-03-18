@@ -3,7 +3,7 @@
   "name": "Mangrove Breath",
   "mood": "Foundation",
   "engines": [
-    "OCELOT"
+    "Ocelot"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -26,7 +26,7 @@
     "aggression": 0.1
   },
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "ocelot_biome": 3,
       "ocelot_strataBalance": 0.5,
       "ocelot_ecosystemDepth": 0.55,

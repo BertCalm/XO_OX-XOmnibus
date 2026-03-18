@@ -3,12 +3,12 @@
   "name": "Prism Fang",
   "mood": "Entangled",
   "engines": [
-    "OBLIQUE",
-    "OVERBITE"
+    "Oblique",
+    "Overbite"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Prism bounce frequency smearing Overbite resonance \u2014 bright venom across the spectrum.",
+  "description": "Prism bounce frequency smearing Overbite resonance — bright venom across the spectrum.",
   "tags": [
     "entangled",
     "brutal",

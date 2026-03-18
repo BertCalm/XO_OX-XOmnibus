@@ -3,8 +3,8 @@
   "name": "DARK_HOT_KINETIC_SPARSE_VIOLENT_PRS_4",
   "mood": "Prism",
   "engines": [
-    "OTTONI",
-    "OVERWORLD"
+    "Ottoni",
+    "Overworld"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.085,
       "macro_movement": 0.957,
       "macro_coupling": 0.0,
       "macro_space": 0.592
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.107,
       "macro_movement": 0.891,
       "macro_coupling": 0.196,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ORGANON",
-    "ORPHICA"
+    "Organon",
+    "Orphica"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.277,
       "macro_movement": 0.341,
       "macro_coupling": 0.966,
       "macro_space": 0.804
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.318,
       "macro_movement": 0.417,
       "macro_coupling": 0.847,

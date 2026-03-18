@@ -2,8 +2,8 @@
   "name": "Deep Spring",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "ORCA"
+    "Overdub",
+    "Orca"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orca",
     "dub"
   ],
-  "description": "Spring reverb descends to ocean depth \u2014 bloom expanding in cold dark pressure"
+  "description": "Spring reverb descends to ocean depth — bloom expanding in cold dark pressure"
 }

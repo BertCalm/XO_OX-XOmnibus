@@ -3,12 +3,12 @@
   "name": "Signal Branch",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ORACLE"
+    "Outwit",
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OUTWIT arm pattern modulates ORACLE filter sweep \u2014 8-arm intelligence shapes resonance",
+  "description": "OUTWIT arm pattern modulates ORACLE filter sweep — 8-arm intelligence shapes resonance",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.65
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 184,
       "owit_arms": 7,
       "owit_cellSize": 0.454,

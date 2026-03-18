@@ -2,8 +2,8 @@
   "name": "Slant Hearth",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OBLIQUE"
+    "Ohm",
+    "Oblique"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oblique",
     "hippy"
   ],
-  "description": "A warm fire seen at an angle \u2014 folk melody deflected into unexpected intervals"
+  "description": "A warm fire seen at an angle — folk melody deflected into unexpected intervals"
 }

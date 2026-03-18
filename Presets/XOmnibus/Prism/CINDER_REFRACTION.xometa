@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OUTWIT",
-    "OVERDUB"
+    "Outwit",
+    "Overdub"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.05,
       "macro_movement": 0.816,
       "macro_coupling": 0.272,
       "macro_space": 0.306
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.116,
       "macro_movement": 0.039,
       "macro_coupling": 0.055,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ORACLE",
-    "OSTERIA"
+    "Oracle",
+    "Osteria"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.122,
       "macro_movement": 0.361,
       "macro_coupling": 0.825,
       "macro_space": 0.124
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.118,
       "macro_movement": 0.353,
       "macro_coupling": 0.88,

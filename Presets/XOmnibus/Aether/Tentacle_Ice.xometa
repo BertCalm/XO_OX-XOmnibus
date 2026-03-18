@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OCTOPUS"
+    "Octopus"
   ],
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "oct_macro_character": 0.4,
       "oct_macro_movement": 0.45,
       "oct_macro_coupling": 0.38,

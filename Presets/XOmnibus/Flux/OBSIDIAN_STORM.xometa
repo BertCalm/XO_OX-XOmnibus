@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ORCA",
-    "OUTWIT"
+    "Orca",
+    "Outwit"
   ],
   "parameters": {
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.606,
       "macro_movement": 0.379,
       "macro_coupling": 0.437,
       "macro_space": 0.41
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.55,
       "macro_movement": 0.244,
       "macro_coupling": 0.43,

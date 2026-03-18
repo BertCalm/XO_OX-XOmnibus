@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ORACLE",
-    "OVERWORLD"
+    "Oracle",
+    "Overworld"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.223,
       "macro_movement": 0.929,
       "macro_coupling": 0.57,
       "macro_space": 0.878
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.396,
       "macro_movement": 0.929,
       "macro_coupling": 0.566,

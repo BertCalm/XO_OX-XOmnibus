@@ -3,12 +3,12 @@
   "name": "DARK_HOT_SPARSE_GENTLE_ENT_5",
   "mood": "Entangled",
   "engines": [
-    "OBSCURA",
-    "OVERLAP"
+    "Obscura",
+    "Overlap"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Hot Sparse Gentle character entanglement \u2014 OBSCURA \u00d7 OVERLAP via Phase Lock. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Hot Sparse Gentle character entanglement — OBSCURA × OVERLAP via Phase Lock. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.124
   },
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.7025,
       "macro_movement": 0.4178,
       "macro_coupling": 0.681,
@@ -57,7 +57,7 @@
       "output_level": 0.7341,
       "coupling_level": 0.6204
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.6936,
       "macro_movement": 0.4358,
       "macro_coupling": 0.6776,

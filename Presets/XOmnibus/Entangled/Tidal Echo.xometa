@@ -2,8 +2,8 @@
   "name": "Tidal Echo",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OCEANIC"
+    "Overdub",
+    "Oceanic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oceanic",
     "dub"
   ],
-  "description": "Dub delay cycles with tidal rhythm \u2014 each repeat a wave receding up the shore"
+  "description": "Dub delay cycles with tidal rhythm — each repeat a wave receding up the shore"
 }

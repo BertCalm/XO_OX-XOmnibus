@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OVERDUB",
-    "ODYSSEY"
+    "Overdub",
+    "Odyssey"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.92,
       "macro_movement": 0.507,
       "macro_coupling": 0.313,
       "macro_space": 0.538
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.92,
       "macro_movement": 0.507,
       "macro_coupling": 0.313,

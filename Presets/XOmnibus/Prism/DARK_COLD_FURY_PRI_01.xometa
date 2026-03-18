@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OBESE",
-    "OPTIC"
+    "Obese",
+    "Optic"
   ],
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.077,
       "macro_movement": 0.417,
       "macro_coupling": 0.627,
       "macro_space": 0.583
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.204,
       "macro_movement": 0.503,
       "macro_coupling": 0.782,

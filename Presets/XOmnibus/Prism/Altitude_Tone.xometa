@@ -11,11 +11,11 @@
     "space": 0.88
   },
   "engines": [
-    "OSPREY"
+    "Osprey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Above cloud ceiling \u2014 breathless treble presence",
+  "description": "Above cloud ceiling — breathless treble presence",
   "tags": [
     "prism",
     "bright",

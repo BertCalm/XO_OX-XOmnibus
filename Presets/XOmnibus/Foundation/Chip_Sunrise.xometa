@@ -3,11 +3,11 @@
   "name": "Chip Sunrise",
   "mood": "Foundation",
   "engines": [
-    "OVERWORLD"
+    "Overworld"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "OVERWORLD \u2014 bright extreme brightness preset for Foundation.",
+  "description": "OVERWORLD — bright extreme brightness preset for Foundation.",
   "tags": [
     "foundation",
     "bright",
@@ -37,7 +37,7 @@
     "aggression": 0.84
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_era": 0.51,
       "ow_chipWave": 0,
       "ow_filterCutoff": 0.28,

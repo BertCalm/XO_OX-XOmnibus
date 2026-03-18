@@ -3,8 +3,8 @@
   "name": "COLD_KINETIC_SPARSE_VAST_VIOLENT_FND_3",
   "mood": "Foundation",
   "engines": [
-    "ORIGAMI",
-    "OUROBOROS"
+    "Origami",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.576,
       "macro_movement": 0.853,
       "macro_coupling": 0.135,
       "macro_space": 0.911
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.52,
       "macro_movement": 0.873,
       "macro_coupling": 0.055,

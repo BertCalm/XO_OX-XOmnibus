@@ -2,8 +2,8 @@
   "name": "Sage Scurry",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OVERBITE"
+    "Ohm",
+    "Overbite"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "overbite",
     "hippy"
   ],
-  "description": "Ohm MEDDLING tames the SCURRY macro \u2014 play dead dissolves into folk meditation"
+  "description": "Ohm MEDDLING tames the SCURRY macro — play dead dissolves into folk meditation"
 }

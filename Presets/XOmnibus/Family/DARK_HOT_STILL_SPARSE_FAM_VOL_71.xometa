@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "ODDOSCAR",
-    "ORGANON"
+    "OddOscar",
+    "Organon"
   ],
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.519,
       "macro_movement": 0.124,
       "macro_coupling": 0.279,
       "macro_space": 0.524
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.49,
       "macro_movement": 0.129,
       "macro_coupling": 0.275,

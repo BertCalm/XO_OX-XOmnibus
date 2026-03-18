@@ -3,12 +3,12 @@
   "name": "Prophecy Harp",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "ORACLE"
+    "Orphica",
+    "Oracle"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "ORPHICA harp harmonics fold into Oracle's vision \u2014 micro-prophecy.",
+  "description": "ORPHICA harp harmonics fold into Oracle's vision — micro-prophecy.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.06
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.65,
       "macro_movement": 0.52,
       "macro_coupling": 0.68,
       "macro_space": 0.75
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.56,
       "macro_movement": 0.65,
       "macro_coupling": 0.68,

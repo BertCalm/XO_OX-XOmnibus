@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT FLX 12",
   "mood": "Flux",
   "engines": [
-    "ODDOSCAR",
-    "ORCA"
+    "OddOscar",
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.61,
       "macro_movement": 0.95,
       "macro_coupling": 0.79,
       "macro_space": 0.47
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.64,
       "macro_movement": 0.87,
       "macro_coupling": 0.63,

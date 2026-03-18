@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OVERDUB"
+    "Overdub"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.25,
       "macro_movement": 0.82,
       "macro_coupling": 0.15,

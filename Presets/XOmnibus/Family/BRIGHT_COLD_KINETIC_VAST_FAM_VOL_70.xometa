@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OSTERIA",
-    "OBLONG"
+    "Osteria",
+    "Oblong"
   ],
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.525,
       "macro_movement": 0.91,
       "macro_coupling": 0.361,
       "macro_space": 0.874
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.53,
       "macro_movement": 0.863,
       "macro_coupling": 0.358,

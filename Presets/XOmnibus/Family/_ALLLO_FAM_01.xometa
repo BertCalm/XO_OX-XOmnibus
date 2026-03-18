@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OVERDUB",
-    "ODDOSCAR"
+    "Overdub",
+    "OddOscar"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.335,
       "macro_movement": 0.083,
       "macro_coupling": 0.066,
       "macro_space": 0.041
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.335,
       "macro_movement": 0.083,
       "macro_coupling": 0.066,

@@ -3,12 +3,12 @@
   "name": "Propagate Cascade",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ORGANON"
+    "Overlap",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Organon pipe resonance propagates through OVERLAP web \u2014 the cathedral breathes",
+  "description": "Organon pipe resonance propagates through OVERLAP web — the cathedral breathes",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.575
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.935,
       "olap_decay": 0.606,
       "olap_damping": 0.338,

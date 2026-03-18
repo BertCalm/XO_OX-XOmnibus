@@ -3,8 +3,8 @@
   "name": "OBBLIGATO Rascal Chord 3",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "ORIGAMI"
+    "Obbligato",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",

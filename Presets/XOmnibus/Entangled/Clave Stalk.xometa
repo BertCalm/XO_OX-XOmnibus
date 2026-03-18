@@ -2,8 +2,8 @@
   "name": "Clave Stalk",
   "version": "1.0",
   "engines": [
-    "OLE",
-    "OCELOT"
+    "Ole",
+    "Ocelot"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ocelot",
     "afro-latin"
   ],
-  "description": "Ocelot moves through clave rhythm \u2014 each predatory step precisely on the pulse"
+  "description": "Ocelot moves through clave rhythm — each predatory step precisely on the pulse"
 }

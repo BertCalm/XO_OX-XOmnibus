@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OCEANIC",
-    "OBLIQUE"
+    "Oceanic",
+    "Oblique"
   ],
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.402,
       "macro_movement": 0.852,
       "macro_coupling": 0.86,
       "macro_space": 0.438
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.608,
       "macro_movement": 0.907,
       "macro_coupling": 0.828,

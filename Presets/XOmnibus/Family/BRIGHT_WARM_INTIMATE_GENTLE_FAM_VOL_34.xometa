@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "ODYSSEY",
-    "ORGANON"
+    "Odyssey",
+    "Organon"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.914,
       "macro_movement": 0.565,
       "macro_coupling": 0.195,
       "macro_space": 0.156
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.939,
       "macro_movement": 0.578,
       "macro_coupling": 0.218,

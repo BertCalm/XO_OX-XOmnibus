@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OBSCURA",
-    "OWLFISH"
+    "Obscura",
+    "Owlfish"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.635,
       "macro_movement": 0.464,
       "macro_coupling": 0.737,
       "macro_space": 0.671
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.511,
       "macro_movement": 0.666,
       "macro_coupling": 0.326,

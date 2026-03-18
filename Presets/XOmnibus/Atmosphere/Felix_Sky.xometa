@@ -3,11 +3,11 @@
   "name": "Felix Sky",
   "mood": "Atmosphere",
   "engines": [
-    "ODDFELIX"
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "ODDFELIX \u2014 bright extreme brightness preset for Atmosphere.",
+  "description": "ODDFELIX — bright extreme brightness preset for Atmosphere.",
   "tags": [
     "atmosphere",
     "bright",
@@ -37,7 +37,7 @@
     "aggression": 0.66
   },
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "oddf_oscAwave": 1,
       "oddf_oscBwave": 1,
       "oddf_filterCutoff": 0.75,

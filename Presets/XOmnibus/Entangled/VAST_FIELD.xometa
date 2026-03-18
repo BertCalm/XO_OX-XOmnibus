@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORGANON",
-    "OCEANIC"
+    "Organon",
+    "Oceanic"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.941,
       "macro_movement": 0.08,
       "macro_coupling": 0.458,
       "macro_space": 0.693
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.14,
       "macro_movement": 0.066,
       "macro_coupling": 0.253,

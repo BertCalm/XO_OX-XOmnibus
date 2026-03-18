@@ -2,17 +2,38 @@
   "schema_version": 1,
   "name": "CRT Shimmer",
   "mood": "Prism",
-  "engines": ["OVERWORLD"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "ERA at crossfade maximum — the phosphor glow of three chip architectures stacked into prismatic shimmer.",
-  "tags": ["crt", "shimmer", "prism", "bright", "chip", "overworld"],
-  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "tags": [
+    "crt",
+    "shimmer",
+    "prism",
+    "bright",
+    "chip",
+    "overworld"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.92, "warmth": 0.25, "movement": 0.55, "density": 0.6, "space": 0.5, "aggression": 0.4},
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.25,
+    "movement": 0.55,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.4
+  },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_era": 1,
       "ow_macro_era": 0.75,
       "ow_macro_chaos": 0.18,
@@ -23,6 +44,8 @@
       "ow_couplingBus": 0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

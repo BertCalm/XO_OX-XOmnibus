@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OLE",
-    "ODDFELIX"
+    "Ole",
+    "OddfeliX"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.091,
       "macro_movement": 0.379,
       "macro_coupling": 0.402,
       "macro_space": 0.918
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.074,
       "macro_movement": 0.34,
       "macro_coupling": 0.382,

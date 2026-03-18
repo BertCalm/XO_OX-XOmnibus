@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "ORACLE"
+    "Obsidian",
+    "Oracle"
   ],
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.11,
       "macro_movement": 0.24,
       "macro_coupling": 0.79,
       "macro_space": 0.95
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.08,
       "macro_movement": 0.19,
       "macro_coupling": 0.84,
@@ -46,5 +46,5 @@
     "void",
     "oracle"
   ],
-  "description": "Obsidian locks Oracle's pitch into crystalline void \u2014 absolute cold prophecy."
+  "description": "Obsidian locks Oracle's pitch into crystalline void — absolute cold prophecy."
 }

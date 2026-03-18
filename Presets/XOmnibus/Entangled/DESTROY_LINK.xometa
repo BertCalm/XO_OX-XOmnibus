@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORIGAMI",
-    "OVERLAP"
+    "Origami",
+    "Overlap"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.329,
       "macro_movement": 0.107,
       "macro_coupling": 0.186,
       "macro_space": 0.207
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.312,
       "macro_movement": 0.393,
       "macro_coupling": 0.423,

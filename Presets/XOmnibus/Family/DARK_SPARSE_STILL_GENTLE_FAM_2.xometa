@@ -3,12 +3,12 @@
   "name": "DARK SPARSE STILL GENTLE FAM 2",
   "mood": "Family",
   "engines": [
-    "OCEANIC",
-    "OHM"
+    "Oceanic",
+    "Ohm"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, dark, still, sparse.",
+  "description": "Extreme DNA corners — family, dark, still, sparse.",
   "tags": [
     "family",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.053
   },
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "level": 0.848,
       "pan": 0.109
     },
-    "OHM": {
+    "Ohm": {
       "level": 0.685,
       "pan": -0.073
     }

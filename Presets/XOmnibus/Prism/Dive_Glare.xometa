@@ -11,7 +11,7 @@
     "space": 0.7
   },
   "engines": [
-    "OSPREY"
+    "Osprey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",

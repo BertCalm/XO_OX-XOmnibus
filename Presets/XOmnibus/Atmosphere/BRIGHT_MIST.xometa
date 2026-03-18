@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OCEANIC",
-    "OUTWIT"
+    "Oceanic",
+    "Outwit"
   ],
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.739,
       "macro_movement": 0.812,
       "macro_coupling": 0.556,
       "macro_space": 0.586
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.562,
       "macro_movement": 0.33,
       "macro_coupling": 0.122,

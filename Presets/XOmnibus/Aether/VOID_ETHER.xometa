@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OCELOT",
-    "ODDFELIX"
+    "Ocelot",
+    "OddfeliX"
   ],
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.559,
       "macro_movement": 0.643,
       "macro_coupling": 0.328,
       "macro_space": 0.128
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.703,
       "macro_movement": 0.947,
       "macro_coupling": 0.997,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OBLIQUE",
-    "OVERDUB"
+    "Oblique",
+    "Overdub"
   ],
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.535,
       "macro_movement": 0.521,
       "macro_coupling": 0.841,
       "macro_space": 0.931
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.37,
       "macro_movement": 0.564,
       "macro_coupling": 0.823,

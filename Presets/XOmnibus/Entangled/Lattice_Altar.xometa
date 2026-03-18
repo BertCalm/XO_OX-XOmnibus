@@ -3,8 +3,8 @@
   "name": "Lattice Altar",
   "mood": "Entangled",
   "engines": [
-    "ODDOSCAR",
-    "ORBITAL"
+    "OddOscar",
+    "Orbital"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.43
   },
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.301,
       "macro_movement": 0.722,
       "macro_coupling": 0.53,
       "macro_space": 0.681
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.623,
       "macro_movement": 0.38,
       "macro_coupling": 0.541,

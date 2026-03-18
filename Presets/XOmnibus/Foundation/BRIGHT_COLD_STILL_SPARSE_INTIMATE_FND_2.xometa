@@ -3,8 +3,8 @@
   "name": "BRIGHT_COLD_STILL_SPARSE_INTIMATE_FND_2",
   "mood": "Foundation",
   "engines": [
-    "OBESE",
-    "ONSET"
+    "Obese",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.948,
       "macro_movement": 0.081,
       "macro_coupling": 0.083,
       "macro_space": 0.062
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 1.0,
       "macro_movement": 0.018,
       "macro_coupling": 0.141,

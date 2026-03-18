@@ -3,12 +3,12 @@
   "name": "COLD SPARSE VAST BRIGHT FAM 4",
   "mood": "Family",
   "engines": [
-    "ODDFELIX",
-    "OVERWORLD"
+    "OddfeliX",
+    "Overworld"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, bright, cold, sparse.",
+  "description": "Extreme DNA corners — family, bright, cold, sparse.",
   "tags": [
     "family",
     "bright",
@@ -35,11 +35,11 @@
     "aggression": 0.52
   },
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "level": 0.754,
       "pan": 0.136
     },
-    "OVERWORLD": {
+    "Overworld": {
       "level": 0.674,
       "pan": -0.039
     }

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERDUB",
-    "OBBLIGATO"
+    "Overdub",
+    "Obbligato"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.163,
       "macro_movement": 0.109,
       "macro_coupling": 0.103,
       "macro_space": 0.051
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.162,
       "macro_movement": 0.108,
       "macro_coupling": 0.088,

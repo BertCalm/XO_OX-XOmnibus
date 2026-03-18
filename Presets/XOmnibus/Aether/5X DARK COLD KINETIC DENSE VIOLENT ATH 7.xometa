@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT ATH 7",
   "mood": "Aether",
   "engines": [
-    "OSTERIA",
-    "OUROBOROS"
+    "Osteria",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.94,
       "macro_movement": 0.93,
       "macro_coupling": 0.55,
       "macro_space": 0.41
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.93,
       "macro_movement": 0.81,
       "macro_coupling": 0.83,

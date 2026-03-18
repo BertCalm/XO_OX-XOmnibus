@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OVERWORLD",
-    "OPTIC"
+    "Overworld",
+    "Optic"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.2364,
       "macro_movement": 0.0587,
       "macro_coupling": 0.9244,
       "macro_space": 0.4226
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.2393,
       "macro_movement": 0.0797,
       "macro_coupling": 0.8992,

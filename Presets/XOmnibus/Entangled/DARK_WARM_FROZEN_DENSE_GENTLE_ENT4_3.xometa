@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORGANON",
-    "OTTONI"
+    "Organon",
+    "Ottoni"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.515,
       "macro_movement": 0.099,
       "macro_coupling": 0.854,
       "macro_space": 0.469
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.543,
       "macro_movement": 0.107,
       "macro_coupling": 0.894,

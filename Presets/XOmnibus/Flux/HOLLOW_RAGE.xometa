@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ORBITAL",
-    "OCTOPUS"
+    "Orbital",
+    "Octopus"
   ],
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.576,
       "macro_movement": 0.42,
       "macro_coupling": 0.559,
       "macro_space": 0.576
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.465,
       "macro_movement": 0.464,
       "macro_coupling": 0.546,

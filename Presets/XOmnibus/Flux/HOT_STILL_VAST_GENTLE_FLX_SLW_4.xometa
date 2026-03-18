@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OUROBOROS",
-    "ORACLE"
+    "Ouroboros",
+    "Oracle"
   ],
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.531,
       "macro_movement": 0.041,
       "macro_coupling": 0.777,
       "macro_space": 0.813
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.344,
       "macro_movement": 0.044,
       "macro_coupling": 0.747,

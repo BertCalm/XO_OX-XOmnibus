@@ -3,20 +3,20 @@
   "name": "Tuning Oracle",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "ORACLE"
+    "Ottoni",
+    "Oracle"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Pitch sync locks OTTONI's third brass voice to ORACLE's microtonal breakpoint map.",
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.65,
       "macro_movement": 0.5,
       "macro_coupling": 0.65,
       "macro_space": 0.52
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.52,
       "macro_movement": 0.55,
       "macro_coupling": 0.58,

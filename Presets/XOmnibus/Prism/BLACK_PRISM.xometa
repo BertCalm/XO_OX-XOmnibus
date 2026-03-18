@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OVERBITE",
-    "OVERLAP"
+    "Overbite",
+    "Overlap"
   ],
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.771,
       "macro_movement": 0.934,
       "macro_coupling": 0.713,
       "macro_space": 0.108
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.009,
       "macro_movement": 0.28,
       "macro_coupling": 0.393,

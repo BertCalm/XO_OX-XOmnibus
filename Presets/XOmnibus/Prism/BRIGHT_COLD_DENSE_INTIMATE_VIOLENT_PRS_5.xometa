@@ -3,8 +3,8 @@
   "name": "BRIGHT_COLD_DENSE_INTIMATE_VIOLENT_PRS_5",
   "mood": "Prism",
   "engines": [
-    "OLE",
-    "OCELOT"
+    "Ole",
+    "Ocelot"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.894,
       "macro_movement": 0.583,
       "macro_coupling": 0.879,
       "macro_space": 0.124
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 1.0,
       "macro_movement": 0.438,
       "macro_coupling": 0.85,

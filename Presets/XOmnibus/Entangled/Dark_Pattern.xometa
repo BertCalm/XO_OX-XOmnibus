@@ -3,8 +3,8 @@
   "name": "Dark Pattern",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OBSIDIAN"
+    "Outwit",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "density": 0.75
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 30,
       "owit_arms": 5,
       "owit_cellSize": 0.219,

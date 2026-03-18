@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OPAL",
-    "ORGANON"
+    "Opal",
+    "Organon"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.5386,
       "macro_movement": 0.8846,
       "macro_coupling": 0.3443,
       "macro_space": 0.0621
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.5337,
       "macro_movement": 0.9074,
       "macro_coupling": 0.3295,

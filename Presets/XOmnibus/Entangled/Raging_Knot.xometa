@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERBITE",
-    "OBESE"
+    "Overbite",
+    "Obese"
   ],
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.83,
       "macro_movement": 0.5,
       "macro_coupling": 0.69,
       "macro_space": 0.21
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.76,
       "macro_movement": 0.39,
       "macro_coupling": 0.68,

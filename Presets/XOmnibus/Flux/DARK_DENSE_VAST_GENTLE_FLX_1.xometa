@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OVERWORLD",
-    "ORGANON"
+    "Overworld",
+    "Organon"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.1756,
       "macro_movement": 0.5479,
       "macro_coupling": 0.1768,
       "macro_space": 0.8946
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.173,
       "macro_movement": 0.6471,
       "macro_coupling": 0.171,

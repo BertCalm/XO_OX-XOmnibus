@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OBSCURA",
-    "ODDFELIX"
+    "Obscura",
+    "OddfeliX"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.476,
       "macro_movement": 0.712,
       "macro_coupling": 0.448,
       "macro_space": 0.017
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.294,
       "macro_movement": 0.404,
       "macro_coupling": 0.243,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OUTWIT",
-    "OBBLIGATO"
+    "Outwit",
+    "Obbligato"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.996,
       "macro_movement": 0.711,
       "macro_coupling": 0.823,
       "macro_space": 0.435
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.292,
       "macro_movement": 0.294,
       "macro_coupling": 0.1,

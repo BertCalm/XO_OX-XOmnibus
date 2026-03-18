@@ -2,7 +2,7 @@
   "name": "Morning Veil",
   "version": "1.0",
   "engines": [
-    "OCEANIC"
+    "Oceanic"
   ],
   "mood": "Atmosphere",
   "macros": {

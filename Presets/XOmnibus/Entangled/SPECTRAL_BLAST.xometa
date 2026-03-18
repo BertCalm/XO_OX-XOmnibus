@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORACLE",
-    "OCEANIC"
+    "Oracle",
+    "Oceanic"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.975,
       "macro_movement": 0.953,
       "macro_coupling": 0.131,
       "macro_space": 0.371
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.562,
       "macro_movement": 0.966,
       "macro_coupling": 0.319,

@@ -2,17 +2,38 @@
   "schema_version": 1,
   "name": "Void Chip",
   "mood": "Aether",
-  "engines": ["OVERWORLD"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "A single NES pulse decaying into pure reverb void — the last note before the cartridge dies.",
-  "tags": ["void", "decay", "aether", "nes", "reverb", "overworld"],
-  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "tags": [
+    "void",
+    "decay",
+    "aether",
+    "nes",
+    "reverb",
+    "overworld"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.4, "warmth": 0.3, "movement": 0.15, "density": 0.2, "space": 0.95, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.3,
+    "movement": 0.15,
+    "density": 0.2,
+    "space": 0.95,
+    "aggression": 0.08
+  },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_era": 0,
       "ow_macro_era": 0.05,
       "ow_macro_chaos": 0.02,
@@ -23,6 +44,8 @@
       "ow_couplingBus": 0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

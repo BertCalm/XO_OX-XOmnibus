@@ -19,11 +19,11 @@
     "space": 0.5353
   },
   "engines": [
-    "XOddFelix"
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark cold violent dense. Designed for DRIFT coupling with XOddFelix.",
+  "description": "Ultra-diverse Entangled preset — dark cold violent dense. Designed for DRIFT coupling with XOddFelix.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "DRIFT",
   "couplingIntensity": "Low",
   "parameters": {
-    "XOddFelix": {
+    "OddfeliX": {
       "couplingLevel": 0.547,
       "couplingBus": 0
     }

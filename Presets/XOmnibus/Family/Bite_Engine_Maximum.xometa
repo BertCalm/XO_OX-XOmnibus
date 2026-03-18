@@ -3,11 +3,11 @@
   "name": "Bite Engine Maximum",
   "mood": "Family",
   "engines": [
-    "OVERBITE"
+    "Overbite"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERBITE full aggression mode \u2014 BITE at maximum, density stacked, no mercy.",
+  "description": "OVERBITE full aggression mode — BITE at maximum, density stacked, no mercy.",
   "tags": [
     "family",
     "portrait",

@@ -19,11 +19,11 @@
     "density": 0.5862
   },
   "engines": [
-    "XOmbre"
+    "Ombre"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 cold intimate kinetic dark. Designed for MIRROR coupling with XOmbre.",
+  "description": "Ultra-diverse Entangled preset — cold intimate kinetic dark. Designed for MIRROR coupling with XOmbre.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "MIRROR",
   "couplingIntensity": "Medium",
   "parameters": {
-    "XOmbre": {
+    "Ombre": {
       "couplingLevel": 0.936,
       "couplingBus": 1
     }

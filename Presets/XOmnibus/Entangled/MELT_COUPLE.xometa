@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OBLIQUE"
+    "Outwit",
+    "Oblique"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.489,
       "macro_movement": 0.48,
       "macro_coupling": 0.56,
       "macro_space": 0.934
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.722,
       "macro_movement": 0.288,
       "macro_coupling": 0.573,

@@ -3,12 +3,12 @@
   "name": "Obsidian Rupture",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "OUROBOROS"
+    "Obsidian",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Crystal surface shattered by Ouroboros strange attractor \u2014 cold brutality as topology event.",
+  "description": "Crystal surface shattered by Ouroboros strange attractor — cold brutality as topology event.",
   "tags": [
     "entangled",
     "brutal",

@@ -2,7 +2,7 @@
   "name": "First Light",
   "version": "1.0",
   "engines": [
-    "OPAL"
+    "Opal"
   ],
   "mood": "Atmosphere",
   "macros": {

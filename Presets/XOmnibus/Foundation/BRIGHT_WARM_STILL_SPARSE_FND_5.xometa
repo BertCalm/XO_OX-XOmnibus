@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OVERWORLD",
-    "OVERBITE"
+    "Overworld",
+    "Overbite"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.211,
       "macro_movement": 0.242,
       "macro_coupling": 0.173,
       "macro_space": 0.542
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.155,
       "macro_movement": 0.295,
       "macro_coupling": 0.302,

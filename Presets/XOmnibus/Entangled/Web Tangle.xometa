@@ -3,12 +3,12 @@
   "name": "Web Tangle",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OCEANIC"
+    "Overlap",
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERLAP frond-spread follows OCEANIC current rate \u2014 slow drift, infinite room",
+  "description": "OVERLAP frond-spread follows OCEANIC current rate — slow drift, infinite room",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.5
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.553,
       "olap_decay": 0.827,
       "olap_damping": 0.405,

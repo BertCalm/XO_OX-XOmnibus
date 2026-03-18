@@ -3,12 +3,12 @@
   "name": "BRIGHT WARM VAST GENTLE FAM 3",
   "mood": "Family",
   "engines": [
-    "OWLFISH",
-    "ORCA"
+    "Owlfish",
+    "Orca"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, bright, warm, vast.",
+  "description": "Extreme DNA corners — family, bright, warm, vast.",
   "tags": [
     "family",
     "bright",
@@ -35,11 +35,11 @@
     "aggression": 0.097
   },
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "level": 0.701,
       "pan": 0.077
     },
-    "ORCA": {
+    "Orca": {
       "level": 0.683,
       "pan": -0.093
     }

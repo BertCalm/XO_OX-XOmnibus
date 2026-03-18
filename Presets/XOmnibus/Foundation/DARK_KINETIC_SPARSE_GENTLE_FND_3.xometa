@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ONSET",
-    "ORIGAMI"
+    "Onset",
+    "Origami"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.262,
       "macro_movement": 0.753,
       "macro_coupling": 0.579,
       "macro_space": 0.521
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.501,
       "macro_movement": 0.824,
       "macro_coupling": 0.118,

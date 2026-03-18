@@ -2,8 +2,8 @@
   "name": "Metabolic Folk",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "ORGANON"
+    "Ohm",
+    "Organon"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "organon",
     "hippy"
   ],
-  "description": "Organon's variational free energy metabolism fed by ohm commune warmth \u2014 biology meets hippy jam"
+  "description": "Organon's variational free energy metabolism fed by ohm commune warmth — biology meets hippy jam"
 }

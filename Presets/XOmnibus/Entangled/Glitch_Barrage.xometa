@@ -3,12 +3,12 @@
   "name": "Glitch Barrage",
   "mood": "Entangled",
   "engines": [
-    "OVERWORLD",
-    "ONSET"
+    "Overworld",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "NES glitch velocity coupling into Onset XVC \u2014 chip noise driving percussion barrage.",
+  "description": "NES glitch velocity coupling into Onset XVC — chip noise driving percussion barrage.",
   "tags": [
     "entangled",
     "brutal",

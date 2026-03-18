@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OCELOT"
+    "Ocelot"
   ],
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "ocel_macro_character": 0.33,
       "ocel_macro_movement": 0.28,
       "ocel_macro_coupling": 0.38,

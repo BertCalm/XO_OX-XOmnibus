@@ -19,11 +19,11 @@
     "aggression": 0.4749
   },
   "engines": [
-    "XOmbre"
+    "Ombre"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 hot intimate kinetic dense. Designed for ORBIT coupling with XOmbre.",
+  "description": "Ultra-diverse Entangled preset — hot intimate kinetic dense. Designed for ORBIT coupling with XOmbre.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "ORBIT",
   "couplingIntensity": "Medium",
   "parameters": {
-    "XOmbre": {
+    "Ombre": {
       "couplingLevel": 0.547,
       "couplingBus": 3
     }

@@ -3,8 +3,8 @@
   "name": "Dense Emergence",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OBESE"
+    "Outwit",
+    "Obese"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "density": 0.775
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 184,
       "owit_arms": 6,
       "owit_cellSize": 0.304,

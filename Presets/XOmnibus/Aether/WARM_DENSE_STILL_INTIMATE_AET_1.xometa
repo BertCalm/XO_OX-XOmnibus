@@ -3,12 +3,12 @@
   "name": "WARM DENSE STILL INTIMATE AET 1",
   "mood": "Aether",
   "engines": [
-    "OBLIQUE",
-    "OTTONI"
+    "Oblique",
+    "Ottoni"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, warm, still, dense.",
+  "description": "Extreme DNA corners — aether, warm, still, dense.",
   "tags": [
     "aether",
     "warm",
@@ -35,11 +35,11 @@
     "aggression": 0.543
   },
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "level": 0.761,
       "pan": 0.02
     },
-    "OTTONI": {
+    "Ottoni": {
       "level": 0.693,
       "pan": -0.062
     }

@@ -3,12 +3,12 @@
   "name": "BRIGHT_DENSE_VAST_GENTLE_ENT_1",
   "mood": "Entangled",
   "engines": [
-    "OWLFISH",
-    "OBBLIGATO"
+    "Owlfish",
+    "Obbligato"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Dense Vast Gentle character entanglement \u2014 OWLFISH \u00d7 OBBLIGATO via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Dense Vast Gentle character entanglement — OWLFISH × OBBLIGATO via Velocity Couple. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.0423
   },
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.7954,
       "macro_movement": 0.5111,
       "macro_coupling": 0.5967,
@@ -57,7 +57,7 @@
       "output_level": 0.9299,
       "coupling_level": 0.5832
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.7828,
       "macro_movement": 0.4746,
       "macro_coupling": 0.5854,

@@ -3,12 +3,12 @@
   "name": "Abyss Predator",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "ORCA"
+    "Obsidian",
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Orca chaos injected into Obsidian crystal \u2014 the predator in the abyss, zero warmth, maximum kill.",
+  "description": "Orca chaos injected into Obsidian crystal — the predator in the abyss, zero warmth, maximum kill.",
   "tags": [
     "entangled",
     "brutal",

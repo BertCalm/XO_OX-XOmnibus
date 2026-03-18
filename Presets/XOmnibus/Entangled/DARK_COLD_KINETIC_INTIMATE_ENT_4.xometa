@@ -3,12 +3,12 @@
   "name": "DARK_COLD_KINETIC_INTIMATE_ENT_4",
   "mood": "Entangled",
   "engines": [
-    "ORACLE",
-    "OVERWORLD"
+    "Oracle",
+    "Overworld"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Cold Kinetic Intimate character entanglement \u2014 ORACLE \u00d7 OVERWORLD via Phase Lock. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Cold Kinetic Intimate character entanglement — ORACLE × OVERWORLD via Phase Lock. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.6905
   },
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.3736,
       "macro_movement": 0.8751,
       "macro_coupling": 0.8762,
@@ -57,7 +57,7 @@
       "output_level": 0.8933,
       "coupling_level": 0.823
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.3391,
       "macro_movement": 0.9121,
       "macro_coupling": 0.8199,

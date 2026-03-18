@@ -3,12 +3,12 @@
   "name": "COLD_FROZEN_DENSE_VAST_VIOLENT_ENT3_5",
   "mood": "Entangled",
   "engines": [
-    "OHM",
-    "OVERLAP"
+    "Ohm",
+    "Overlap"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: COLD_FROZEN_DENSE_VAST_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: COLD_FROZEN_DENSE_VAST_VIOLENT. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.5114,
       "macro_movement": 0.0477,
       "macro_coupling": 0.9769,
       "macro_space": 0.5296
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.6054,
       "macro_movement": 0.0288,
       "macro_coupling": 0.8347,

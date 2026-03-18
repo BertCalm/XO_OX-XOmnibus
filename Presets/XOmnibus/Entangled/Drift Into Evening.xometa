@@ -2,8 +2,8 @@
   "name": "Drift Into Evening",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OMBRE"
+    "Odyssey",
+    "Ombre"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ombre",
     "wavetable"
   ],
-  "description": "Odyssey wavetable fades through ombre gradient \u2014 the voyage dissolving to shadow"
+  "description": "Odyssey wavetable fades through ombre gradient — the voyage dissolving to shadow"
 }

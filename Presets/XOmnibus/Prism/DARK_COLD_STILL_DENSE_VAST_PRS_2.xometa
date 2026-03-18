@@ -3,8 +3,8 @@
   "name": "DARK_COLD_STILL_DENSE_VAST_PRS_2",
   "mood": "Prism",
   "engines": [
-    "ORPHICA",
-    "OTTONI"
+    "Orphica",
+    "Ottoni"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.122,
       "macro_movement": 0.022,
       "macro_coupling": 1.0,
       "macro_space": 0.93
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.143,
       "macro_movement": 0.0,
       "macro_coupling": 0.893,

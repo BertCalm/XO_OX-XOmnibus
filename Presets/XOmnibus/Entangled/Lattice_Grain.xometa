@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "OPAL"
+    "Obsidian",
+    "Opal"
   ],
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.08,
       "macro_movement": 0.16,
       "macro_coupling": 0.84,
       "macro_space": 0.97
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.05,
       "macro_movement": 0.11,
       "macro_coupling": 0.89,
@@ -46,5 +46,5 @@
     "lattice",
     "grain"
   ],
-  "description": "Obsidian's crystal envelope gates grain emergence \u2014 grains born from lattice vacancies."
+  "description": "Obsidian's crystal envelope gates grain emergence — grains born from lattice vacancies."
 }

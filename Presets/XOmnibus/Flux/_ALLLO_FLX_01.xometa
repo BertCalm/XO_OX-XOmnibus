@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OVERDUB",
-    "ORIGAMI"
+    "Overdub",
+    "Origami"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.323,
       "macro_movement": 0.06,
       "macro_coupling": 0.042,
       "macro_space": 0.035
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.323,
       "macro_movement": 0.06,
       "macro_coupling": 0.042,

@@ -2,8 +2,8 @@
   "name": "Folded Commune",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "ORIGAMI"
+    "Ohm",
+    "Origami"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "origami",
     "hippy"
   ],
-  "description": "Origami fold point applied to ohm's melodic arc \u2014 warmth creased into geometric beauty"
+  "description": "Origami fold point applied to ohm's melodic arc — warmth creased into geometric beauty"
 }

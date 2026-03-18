@@ -3,11 +3,11 @@
   "name": "Grain Cloud Portrait",
   "mood": "Family",
   "engines": [
-    "OPAL"
+    "Opal"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OPAL in full scatter \u2014 grain size micro, scatter wide, luminous cloud diffuse. The gem at rest, refracting quietly.",
+  "description": "OPAL in full scatter — grain size micro, scatter wide, luminous cloud diffuse. The gem at rest, refracting quietly.",
   "tags": [
     "family",
     "signature",

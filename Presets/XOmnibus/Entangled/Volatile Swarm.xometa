@@ -4,8 +4,8 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OMBRE"
+    "Outwit",
+    "Ombre"
   ],
   "author": "XO_OX",
   "macros": {
@@ -23,7 +23,7 @@
     "density": 0.61
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 22,
       "owit_arms": 5,
       "owit_cellSize": 0.396,
@@ -56,5 +56,5 @@
     "wolfram",
     "cellular-automata"
   ],
-  "description": "Ombre memory/forgetting gradient sets OUTWIT mutation probability \u2014 what fades reshapes the pattern"
+  "description": "Ombre memory/forgetting gradient sets OUTWIT mutation probability — what fades reshapes the pattern"
 }

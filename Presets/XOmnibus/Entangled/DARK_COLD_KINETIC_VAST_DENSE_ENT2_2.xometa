@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBSCURA",
-    "OHM"
+    "Obscura",
+    "Ohm"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.088,
       "macro_movement": 0.96,
       "macro_coupling": 0.659,
       "macro_space": 0.974
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.07,
       "macro_movement": 0.943,
       "macro_coupling": 0.668,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "ORIGAMI"
+    "Ole",
+    "Origami"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.418,
       "macro_movement": 0.985,
       "macro_coupling": 0.957,
       "macro_space": 0.111
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.08,
       "macro_movement": 0.616,
       "macro_coupling": 0.916,

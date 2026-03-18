@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OBLONG",
-    "OHM"
+    "Oblong",
+    "Ohm"
   ],
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.534,
       "macro_movement": 0.769,
       "macro_coupling": 0.634,
       "macro_space": 0.382
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.615,
       "macro_movement": 0.903,
       "macro_coupling": 0.49,

@@ -3,12 +3,12 @@
   "name": "Drone and Harp",
   "mood": "Family",
   "engines": [
-    "OHM",
-    "ORPHICA"
+    "Ohm",
+    "Orphica"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OHM commune drone + ORPHICA siphonophore harp \u2014 the meditation circle. Sustained resonance beneath shimmering grain scatter. The practice.",
+  "description": "OHM commune drone + ORPHICA siphonophore harp — the meditation circle. Sustained resonance beneath shimmering grain scatter. The practice.",
   "tags": [
     "family",
     "reunion",

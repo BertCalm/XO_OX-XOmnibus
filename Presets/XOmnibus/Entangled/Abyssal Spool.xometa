@@ -2,8 +2,8 @@
   "name": "Abyssal Spool",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OWLFISH"
+    "Overdub",
+    "Owlfish"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "owlfish",
     "dub"
   ],
-  "description": "Tape spool descends to abyssal depth \u2014 owlfish pipe harmonics resonate the delay"
+  "description": "Tape spool descends to abyssal depth — owlfish pipe harmonics resonate the delay"
 }

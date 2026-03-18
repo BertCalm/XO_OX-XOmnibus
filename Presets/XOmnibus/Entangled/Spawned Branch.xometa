@@ -4,8 +4,8 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OPAL"
+    "Outwit",
+    "Opal"
   ],
   "author": "XO_OX",
   "macros": {
@@ -23,7 +23,7 @@
     "density": 0.61
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 30,
       "owit_arms": 4,
       "owit_cellSize": 0.339,
@@ -56,5 +56,5 @@
     "wolfram",
     "cellular-automata"
   ],
-  "description": "Opal grain scatter probability feeds OUTWIT cell density \u2014 granular fragments birth cellular population"
+  "description": "Opal grain scatter probability feeds OUTWIT cell density — granular fragments birth cellular population"
 }

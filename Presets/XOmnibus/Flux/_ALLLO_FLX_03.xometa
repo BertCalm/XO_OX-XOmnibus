@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OBLONG",
-    "OPAL"
+    "Oblong",
+    "Opal"
   ],
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.048,
       "macro_movement": 0.25,
       "macro_coupling": 0.085,
       "macro_space": 0.097
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.048,
       "macro_movement": 0.25,
       "macro_coupling": 0.085,

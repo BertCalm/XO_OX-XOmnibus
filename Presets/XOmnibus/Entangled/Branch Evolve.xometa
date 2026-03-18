@@ -3,12 +3,12 @@
   "name": "Branch Evolve",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OVERWORLD"
+    "Outwit",
+    "Overworld"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERWORLD noise register seeds OUTWIT initial pattern \u2014 retro chaos into cellular order",
+  "description": "OVERWORLD noise register seeds OUTWIT initial pattern — retro chaos into cellular order",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.7
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 90,
       "owit_arms": 5,
       "owit_cellSize": 0.206,

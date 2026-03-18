@@ -3,8 +3,8 @@
   "name": "COLD_KINETIC_SPARSE_VAST_VIOLENT_FND_2",
   "mood": "Foundation",
   "engines": [
-    "OVERBITE",
-    "OBSIDIAN"
+    "Overbite",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.318,
       "macro_movement": 0.949,
       "macro_coupling": 0.076,
       "macro_space": 1.0
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.47,
       "macro_movement": 0.982,
       "macro_coupling": 0.0,

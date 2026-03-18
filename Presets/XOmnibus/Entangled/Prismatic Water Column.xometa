@@ -3,12 +3,12 @@
   "name": "Prismatic Water Column",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "OPTIC"
+    "Oceanic",
+    "Optic"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OPTIC prisms refract inside the water column \u2014 light bending with depth.",
+  "description": "OPTIC prisms refract inside the water column — light bending with depth.",
   "tags": [
     "entangled",
     "coupling",

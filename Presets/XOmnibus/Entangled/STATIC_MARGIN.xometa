@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORGANON",
-    "OVERBITE"
+    "Organon",
+    "Overbite"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.915,
       "macro_movement": 0.048,
       "macro_coupling": 0.661,
       "macro_space": 0.729
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.807,
       "macro_movement": 0.101,
       "macro_coupling": 0.962,

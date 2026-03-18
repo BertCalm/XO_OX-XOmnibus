@@ -3,12 +3,12 @@
   "name": "DARK KINETIC VAST VIOLENT AET 1",
   "mood": "Aether",
   "engines": [
-    "ORGANON",
-    "OCEANIC"
+    "Organon",
+    "Oceanic"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, dark, kinetic, vast.",
+  "description": "Extreme DNA corners — aether, dark, kinetic, vast.",
   "tags": [
     "aether",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.921
   },
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "level": 0.653,
       "pan": -0.15
     },
-    "OCEANIC": {
+    "Oceanic": {
       "level": 0.766,
       "pan": 0.13
     }

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Ricochet",
+  "mood": "Flux",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Arp ricochets off tank walls — extreme both-direction with tight decay.",
+  "tags": ["ricochet", "arp", "tank", "extreme"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.88, "warmth": 0.18, "movement": 0.92, "density": 0.35, "space": 0.35, "aggression": 0.52},
+  "parameters": {
+    "OddfeliX": {"snap_oscMode": 2, "snap_snap": 0.94, "snap_decay": 0.06, "snap_detune": 0.06, "snap_filterCutoff": 15000.0, "snap_filterReso": 0.45, "snap_filterEnvDepth": 0.82, "snap_unison": 1, "snap_sweepDirection": 2, "snap_pitchLock": 0.94, "snap_polyphony": 4, "snap_level": 0.84, "snap_macroDart": 0.96, "snap_macroDepth": 0.32, "snap_macroSchool": 0.2, "snap_macroSurface": 0.55}
+  },
+  "macros": {"CHARACTER": 0.82, "MOVEMENT": 0.92, "COUPLING": 0.0, "SPACE": 0.35},
+  "coupling": {"pairs": []}
+}

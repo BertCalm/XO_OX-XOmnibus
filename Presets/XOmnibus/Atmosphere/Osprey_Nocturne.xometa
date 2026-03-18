@@ -3,11 +3,11 @@
   "name": "Osprey Nocturne",
   "mood": "Atmosphere",
   "engines": [
-    "OSPREY"
+    "Osprey"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "OSPREY \u2014 dark extreme brightness preset for Atmosphere.",
+  "description": "OSPREY — dark extreme brightness preset for Atmosphere.",
   "tags": [
     "atmosphere",
     "dark",
@@ -37,7 +37,7 @@
     "aggression": 0.37
   },
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "osp_diveSpeed": 1,
       "osp_filterCutoff": 0.39,
       "osp_filterReso": 0.77,

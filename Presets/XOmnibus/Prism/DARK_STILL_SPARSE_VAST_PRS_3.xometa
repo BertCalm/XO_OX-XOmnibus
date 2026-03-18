@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OCELOT",
-    "OPTIC"
+    "Ocelot",
+    "Optic"
   ],
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.348,
       "macro_movement": 0.13,
       "macro_coupling": 0.464,
       "macro_space": 0.943
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.795,
       "macro_movement": 0.13,
       "macro_coupling": 0.591,

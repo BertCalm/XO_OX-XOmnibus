@@ -3,13 +3,13 @@
   "name": "Saltwater Solstice",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "OSTERIA",
-    "OCEANIC"
+    "Osprey",
+    "Osteria",
+    "Oceanic"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Midsummer on the coast \u2014 maximum sun, maximum tide, maximum feast.",
+  "description": "Midsummer on the coast — maximum sun, maximum tide, maximum feast.",
   "tags": [
     "entangled",
     "coupling",

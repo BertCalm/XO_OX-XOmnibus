@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OBLIQUE",
-    "OSPREY"
+    "Oblique",
+    "Osprey"
   ],
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.8393,
       "macro_movement": 0.8445,
       "macro_coupling": 0.485,
       "macro_space": 0.4375
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.739,
       "macro_movement": 0.7696,
       "macro_coupling": 0.8543,

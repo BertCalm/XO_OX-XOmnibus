@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OCELOT",
-    "ORPHICA"
+    "Ocelot",
+    "Orphica"
   ],
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.867,
       "macro_movement": 0.263,
       "macro_coupling": 0.501,
       "macro_space": 0.564
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.481,
       "macro_movement": 0.946,
       "macro_coupling": 0.093,

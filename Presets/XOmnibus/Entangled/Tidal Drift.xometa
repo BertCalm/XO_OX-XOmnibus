@@ -2,8 +2,8 @@
   "name": "Tidal Drift",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OCEANIC"
+    "Odyssey",
+    "Oceanic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oceanic",
     "wavetable"
   ],
-  "description": "Wavetable odyssey carried on oceanic current \u2014 FM harmonics reshaped by tide pressure"
+  "description": "Wavetable odyssey carried on oceanic current — FM harmonics reshaped by tide pressure"
 }

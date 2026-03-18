@@ -3,11 +3,11 @@
   "name": "Oblique Noon Sun",
   "mood": "Family",
   "engines": [
-    "OBLIQUE"
+    "Oblique"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OBLIQUE at sharpest angle in full light \u2014 the cut is brilliant, edge catches everything.",
+  "description": "OBLIQUE at sharpest angle in full light — the cut is brilliant, edge catches everything.",
   "tags": [
     "family",
     "portrait",

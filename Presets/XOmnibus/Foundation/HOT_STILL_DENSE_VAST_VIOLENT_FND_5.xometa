@@ -3,8 +3,8 @@
   "name": "HOT_STILL_DENSE_VAST_VIOLENT_FND_5",
   "mood": "Foundation",
   "engines": [
-    "OVERBITE",
-    "ODDOSCAR"
+    "Overbite",
+    "OddOscar"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.642,
       "macro_movement": 0.121,
       "macro_coupling": 0.922,
       "macro_space": 1.0
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.59,
       "macro_movement": 0.0,
       "macro_coupling": 1.0,

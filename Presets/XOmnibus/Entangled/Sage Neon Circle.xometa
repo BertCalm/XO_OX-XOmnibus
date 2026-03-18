@@ -2,8 +2,8 @@
   "name": "Sage Neon Circle",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "ODDFELIX"
+    "Ohm",
+    "OddfeliX"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oddfelix",
     "hippy"
   ],
-  "description": "Warm ohm commune illuminated by neon tetra flash \u2014 folk warmth and electric shimmer share the same hearth"
+  "description": "Warm ohm commune illuminated by neon tetra flash — folk warmth and electric shimmer share the same hearth"
 }

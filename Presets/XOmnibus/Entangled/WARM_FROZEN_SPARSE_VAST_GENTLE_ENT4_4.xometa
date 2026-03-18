@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORIGAMI",
-    "OSPREY"
+    "Origami",
+    "Osprey"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.803,
       "macro_movement": 0.078,
       "macro_coupling": 0.091,
       "macro_space": 0.984
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.787,
       "macro_movement": 0.08,
       "macro_coupling": 0.126,

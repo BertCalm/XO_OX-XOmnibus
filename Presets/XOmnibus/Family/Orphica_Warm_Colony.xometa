@@ -3,11 +3,11 @@
   "name": "Orphica Warm Colony",
   "mood": "Family",
   "engines": [
-    "ORPHICA"
+    "Orphica"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORPHICA warm microsound \u2014 each grain a warm polyp, colony spanning full space.",
+  "description": "ORPHICA warm microsound — each grain a warm polyp, colony spanning full space.",
   "tags": [
     "family",
     "portrait",

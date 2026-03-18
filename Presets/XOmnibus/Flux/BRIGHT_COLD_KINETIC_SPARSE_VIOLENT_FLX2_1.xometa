@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ODYSSEY",
-    "ORIGAMI"
+    "Odyssey",
+    "Origami"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.4673,
       "macro_movement": 0.8844,
       "macro_coupling": 0.02,
       "macro_space": 0.4866
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.4596,
       "macro_movement": 0.9112,
       "macro_coupling": 0.0474,

@@ -2,8 +2,8 @@
   "name": "Harp Grain",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "ORPHICA"
+    "Opal",
+    "Orphica"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orphica",
     "granular"
   ],
-  "description": "Orphica harp plucks seeding the granular cloud \u2014 microsound and grain in conversation"
+  "description": "Orphica harp plucks seeding the granular cloud — microsound and grain in conversation"
 }

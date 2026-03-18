@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ORACLE",
-    "OVERLAP"
+    "Oracle",
+    "Overlap"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.646,
       "macro_movement": 0.938,
       "macro_coupling": 0.929,
       "macro_space": 0.985
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.009,
       "macro_movement": 0.954,
       "macro_coupling": 0.563,

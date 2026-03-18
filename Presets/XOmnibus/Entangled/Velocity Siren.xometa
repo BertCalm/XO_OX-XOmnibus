@@ -3,12 +3,12 @@
   "name": "Velocity Siren",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "ORPHICA"
+    "Ouroboros",
+    "Orphica"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Ouroboros velocity output drives ORPHICA harp intensity \u2014 siren song emerges.",
+  "description": "Ouroboros velocity output drives ORPHICA harp intensity — siren song emerges.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.44
   },
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.58,
       "macro_movement": 0.72,
       "macro_coupling": 0.7,
       "macro_space": 0.44
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.68,
       "macro_movement": 0.5,
       "macro_coupling": 0.7,

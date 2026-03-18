@@ -11,11 +11,11 @@
     "space": 0.546
   },
   "engines": [
-    "ORACLE"
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Flux preset \u2014 extreme bright brightness, extreme hot warmth, extreme kinetic movement, extreme dense density. Maximum contrast character design.",
+  "description": "Ultra-diverse Flux preset — extreme bright brightness, extreme hot warmth, extreme kinetic movement, extreme dense density. Maximum contrast character design.",
   "tags": [
     "bright",
     "warm",
@@ -40,7 +40,7 @@
     "aggression": 0.531
   },
   "parameters": {
-    "ORACLE": {}
+    "Oracle": {}
   },
   "coupling": {
     "pairs": []

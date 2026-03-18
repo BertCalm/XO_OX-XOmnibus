@@ -3,12 +3,12 @@
   "name": "HOT KINETIC DENSE VIOLENT FAM 4",
   "mood": "Family",
   "engines": [
-    "OMBRE",
-    "OVERDUB"
+    "Ombre",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, warm, kinetic, dense.",
+  "description": "Extreme DNA corners — family, warm, kinetic, dense.",
   "tags": [
     "family",
     "warm",
@@ -35,11 +35,11 @@
     "aggression": 0.897
   },
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "level": 0.705,
       "pan": -0.139
     },
-    "OVERDUB": {
+    "Overdub": {
       "level": 0.768,
       "pan": -0.129
     }

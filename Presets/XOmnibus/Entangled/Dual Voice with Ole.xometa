@@ -3,8 +3,8 @@
   "name": "Dual Voice with Ole",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OLE"
+    "Obbligato",
+    "Ole"
   ],
   "author": "XO_OX",
   "version": "1.0.0",

@@ -3,11 +3,11 @@
   "name": "Orca Pod Signal",
   "mood": "Family",
   "engines": [
-    "ORCA"
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORCA POD macro active \u2014 echolocation and song. The apex predator communicating across kilometers of dark water.",
+  "description": "ORCA POD macro active — echolocation and song. The apex predator communicating across kilometers of dark water.",
   "tags": [
     "family",
     "extended-family",

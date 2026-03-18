@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT FAM 9",
   "mood": "Family",
   "engines": [
-    "OTTONI",
-    "ODDFELIX"
+    "Ottoni",
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.64,
       "macro_movement": 0.81,
       "macro_coupling": 0.84,
       "macro_space": 0.47
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.87,
       "macro_movement": 0.84,
       "macro_coupling": 0.53,

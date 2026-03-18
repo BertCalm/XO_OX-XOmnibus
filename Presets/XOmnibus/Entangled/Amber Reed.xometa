@@ -2,8 +2,8 @@
   "name": "Amber Reed",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OBLONG"
+    "Obbligato",
+    "Oblong"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oblong",
     "wind"
   ],
-  "description": "Oblong amber character obligated to OBBLIGATO breath rhythm \u2014 amber must breathe with the wind"
+  "description": "Oblong amber character obligated to OBBLIGATO breath rhythm — amber must breathe with the wind"
 }

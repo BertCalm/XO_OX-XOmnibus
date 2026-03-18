@@ -3,8 +3,8 @@
   "name": "OHM Grove Cloud 2",
   "mood": "Entangled",
   "engines": [
-    "OHM",
-    "OBSIDIAN"
+    "Ohm",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",

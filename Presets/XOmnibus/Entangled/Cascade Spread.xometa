@@ -3,12 +3,12 @@
   "name": "Cascade Spread",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ODYSSEY"
+    "Overlap",
+    "Odyssey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Odyssey tidal swell expands OVERLAP room size \u2014 tide and tail rise together",
+  "description": "Odyssey tidal swell expands OVERLAP room size — tide and tail rise together",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.65
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.576,
       "olap_decay": 0.508,
       "olap_damping": 0.494,

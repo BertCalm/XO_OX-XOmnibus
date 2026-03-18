@@ -3,11 +3,11 @@
   "name": "Occult Mist",
   "mood": "Atmosphere",
   "engines": [
-    "OBSCURA"
+    "Obscura"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "OBSCURA \u2014 dark extreme brightness preset for Atmosphere.",
+  "description": "OBSCURA — dark extreme brightness preset for Atmosphere.",
   "tags": [
     "atmosphere",
     "dark",
@@ -37,7 +37,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "obsc_veilDepth": 0.4,
       "obsc_filterCutoff": 0.19,
       "obsc_filterReso": 0.12,

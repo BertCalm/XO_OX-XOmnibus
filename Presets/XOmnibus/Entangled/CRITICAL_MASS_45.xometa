@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "OVERLAP"
+    "Ouroboros",
+    "Overlap"
   ],
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.593,
       "macro_movement": 0.891,
       "macro_coupling": 0.527,
       "macro_space": 0.308
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.221,
       "macro_movement": 0.948,
       "macro_coupling": 0.984,

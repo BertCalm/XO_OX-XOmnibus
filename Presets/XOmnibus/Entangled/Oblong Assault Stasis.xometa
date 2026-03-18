@@ -2,8 +2,8 @@
   "name": "Oblong Assault Stasis",
   "version": "1.0",
   "engines": [
-    "ONSET",
-    "OBLONG"
+    "Onset",
+    "Oblong"
   ],
   "mood": "Entangled",
   "strategy": "Still Aggressive",
@@ -35,5 +35,5 @@
     "heavy",
     "dense"
   ],
-  "description": "Full assault locked in stasis \u2014 every drum hit absorbed into Oblong's stationary weight."
+  "description": "Full assault locked in stasis — every drum hit absorbed into Oblong's stationary weight."
 }

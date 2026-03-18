@@ -11,11 +11,11 @@
     "aggression": 0.377
   },
   "engines": [
-    "ORBITAL"
+    "Orbital"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Cryogenic thickness \u2014 cold partials locked together tightly.",
+  "description": "Cryogenic thickness — cold partials locked together tightly.",
   "tags": [
     "aether",
     "cold",

@@ -19,7 +19,7 @@
     "aggression": 0.8983
   },
   "engines": [
-    "OVERDUB"
+    "Overdub"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,7 +45,7 @@
   },
   "couplingIntensity": "None",
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "dub_macro_voice": 0.4962,
       "dub_macro_send": 0.7503,
       "dub_macro_echo": 0.5775,

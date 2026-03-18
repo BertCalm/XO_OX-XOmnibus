@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OVERBITE",
-    "OBLONG"
+    "Overbite",
+    "Oblong"
   ],
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.607,
       "macro_movement": 0.4,
       "macro_coupling": 0.658,
       "macro_space": 0.269
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.889,
       "macro_movement": 0.249,
       "macro_coupling": 0.868,

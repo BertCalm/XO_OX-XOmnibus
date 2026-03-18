@@ -3,8 +3,8 @@
   "name": "BRIGHT_HOT_STILL_INTIMATE_GENTLE_PRS_3",
   "mood": "Prism",
   "engines": [
-    "OWLFISH",
-    "OTTONI"
+    "Owlfish",
+    "Ottoni"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 1.0,
       "macro_movement": 0.021,
       "macro_coupling": 0.642,
       "macro_space": 0.092
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.957,
       "macro_movement": 0.002,
       "macro_coupling": 0.618,

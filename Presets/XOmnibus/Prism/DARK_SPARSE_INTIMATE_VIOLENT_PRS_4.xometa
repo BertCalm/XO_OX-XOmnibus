@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OVERWORLD",
-    "ORPHICA"
+    "Overworld",
+    "Orphica"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.523,
       "macro_movement": 0.53,
       "macro_coupling": 0.304,
       "macro_space": 0.123
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.954,
       "macro_movement": 0.53,
       "macro_coupling": 0.822,

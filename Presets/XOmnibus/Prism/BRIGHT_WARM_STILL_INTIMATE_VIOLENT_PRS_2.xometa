@@ -3,8 +3,8 @@
   "name": "BRIGHT_WARM_STILL_INTIMATE_VIOLENT_PRS_2",
   "mood": "Prism",
   "engines": [
-    "OLE",
-    "ORIGAMI"
+    "Ole",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.987,
       "macro_movement": 0.176,
       "macro_coupling": 0.472,
       "macro_space": 0.0
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.992,
       "macro_movement": 0.192,
       "macro_coupling": 0.425,

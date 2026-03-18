@@ -3,8 +3,8 @@
   "name": "DARK_STILL_DENSE_VAST_GENTLE_PRS_1",
   "mood": "Prism",
   "engines": [
-    "ORIGAMI",
-    "OPTIC"
+    "Origami",
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.026,
       "macro_movement": 0.086,
       "macro_coupling": 1.0,
       "macro_space": 1.0
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.073,
       "macro_movement": 0.0,
       "macro_coupling": 0.82,

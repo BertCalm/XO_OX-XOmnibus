@@ -2,8 +2,8 @@
   "name": "Tape Dissolve",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OMBRE"
+    "Overdub",
+    "Ombre"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ombre",
     "dub"
   ],
-  "description": "Spring trail softens into shadow mauve \u2014 the reverb bloom dissolving to memory"
+  "description": "Spring trail softens into shadow mauve — the reverb bloom dissolving to memory"
 }

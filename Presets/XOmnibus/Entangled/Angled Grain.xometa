@@ -2,8 +2,8 @@
   "name": "Angled Grain",
   "version": "1.0",
   "engines": [
-    "ORPHICA",
-    "OBLIQUE"
+    "Orphica",
+    "Oblique"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oblique",
     "microsound"
   ],
-  "description": "Microsound particles scattered at oblique angles \u2014 cloud of deflected shimmer"
+  "description": "Microsound particles scattered at oblique angles — cloud of deflected shimmer"
 }

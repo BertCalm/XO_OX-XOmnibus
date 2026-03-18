@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OVERDUB",
-    "OBBLIGATO"
+    "Overdub",
+    "Obbligato"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.979,
       "macro_movement": 0.089,
       "macro_coupling": 0.784,
       "macro_space": 0.102
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.99,
       "macro_movement": 0.084,
       "macro_coupling": 0.798,

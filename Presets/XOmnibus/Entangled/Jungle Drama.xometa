@@ -2,8 +2,8 @@
   "name": "Jungle Drama",
   "version": "1.0",
   "engines": [
-    "OLE",
-    "OCELOT"
+    "Ole",
+    "Ocelot"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ocelot",
     "afro-latin"
   ],
-  "description": "Afro-Latin percussion meets the jungle cat \u2014 DRAMA macro triggers feline eruption"
+  "description": "Afro-Latin percussion meets the jungle cat — DRAMA macro triggers feline eruption"
 }

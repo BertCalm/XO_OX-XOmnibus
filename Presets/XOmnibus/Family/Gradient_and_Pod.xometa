@@ -3,12 +3,12 @@
   "name": "Gradient and Pod",
   "mood": "Family",
   "engines": [
-    "OMBRE",
-    "ORCA"
+    "Ombre",
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OMBRE watercolor fade + ORCA pod signal \u2014 soft surface above, apex hunter below. The gradient that ends in apex predator.",
+  "description": "OMBRE watercolor fade + ORCA pod signal — soft surface above, apex hunter below. The gradient that ends in apex predator.",
   "tags": [
     "family",
     "reunion",

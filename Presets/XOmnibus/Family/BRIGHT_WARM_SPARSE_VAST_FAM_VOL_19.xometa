@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OVERDUB",
-    "ORPHICA"
+    "Overdub",
+    "Orphica"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.97,
       "macro_movement": 0.367,
       "macro_coupling": 0.393,
       "macro_space": 0.888
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.929,
       "macro_movement": 0.391,
       "macro_coupling": 0.385,

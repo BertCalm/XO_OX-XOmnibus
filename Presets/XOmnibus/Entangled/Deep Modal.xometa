@@ -3,12 +3,12 @@
   "name": "Deep Modal",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "ORGANON"
+    "Oceanic",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORGANON's modal logic meets abyssal pressure \u2014 voices compressed by depth.",
+  "description": "ORGANON's modal logic meets abyssal pressure — voices compressed by depth.",
   "tags": [
     "entangled",
     "coupling",

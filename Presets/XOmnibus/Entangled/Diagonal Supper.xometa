@@ -2,8 +2,8 @@
   "name": "Diagonal Supper",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OBLIQUE"
+    "Ohm",
+    "Oblique"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oblique",
     "hippy"
   ],
-  "description": "Ohm family table set askew \u2014 familiar warmth arriving from an oblique direction"
+  "description": "Ohm family table set askew — familiar warmth arriving from an oblique direction"
 }

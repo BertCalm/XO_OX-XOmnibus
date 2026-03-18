@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OVERBITE",
-    "OWLFISH"
+    "Overbite",
+    "Owlfish"
   ],
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.861,
       "macro_movement": 0.437,
       "macro_coupling": 0.768,
       "macro_space": 0.093
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.699,
       "macro_movement": 0.142,
       "macro_coupling": 0.862,

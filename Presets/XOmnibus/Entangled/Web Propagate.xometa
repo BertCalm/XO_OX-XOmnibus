@@ -3,12 +3,12 @@
   "name": "Web Propagate",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OBSIDIAN"
+    "Overlap",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Obsidian aggression cuts through OVERLAP bloom \u2014 darkness fractures the reverb tail",
+  "description": "Obsidian aggression cuts through OVERLAP bloom — darkness fractures the reverb tail",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.575
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.724,
       "olap_decay": 0.681,
       "olap_damping": 0.634,

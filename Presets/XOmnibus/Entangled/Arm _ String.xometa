@@ -2,8 +2,8 @@
   "name": "Arm & String",
   "version": "1.0",
   "engines": [
-    "ORPHICA",
-    "OCTOPUS"
+    "Orphica",
+    "Octopus"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "octopus",
     "microsound"
   ],
-  "description": "Eight tentacles drawn across harp strings simultaneously \u2014 impossible ensemble"
+  "description": "Eight tentacles drawn across harp strings simultaneously — impossible ensemble"
 }

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERWORLD",
-    "OWLFISH"
+    "Overworld",
+    "Owlfish"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.656,
       "macro_movement": 0.972,
       "macro_coupling": 0.662,
       "macro_space": 0.129
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.709,
       "macro_movement": 0.911,
       "macro_coupling": 0.085,

@@ -3,11 +3,11 @@
   "name": "Commune Gleam",
   "mood": "Foundation",
   "engines": [
-    "OHM"
+    "Ohm"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "OHM \u2014 bright extreme brightness preset for Foundation.",
+  "description": "OHM — bright extreme brightness preset for Foundation.",
   "tags": [
     "foundation",
     "bright",
@@ -37,7 +37,7 @@
     "aggression": 0.87
   },
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "ohm_commune": 0.34,
       "ohm_meddling": 0.69,
       "ohm_filterCutoff": 0.65,

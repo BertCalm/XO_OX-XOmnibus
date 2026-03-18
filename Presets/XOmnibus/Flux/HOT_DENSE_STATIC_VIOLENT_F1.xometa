@@ -11,11 +11,11 @@
     "space": 0.508
   },
   "engines": [
-    "ORCA"
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Flux preset \u2014 extreme hot warmth, extreme violent aggression, extreme static movement, extreme dense density. Maximum contrast character design.",
+  "description": "Ultra-diverse Flux preset — extreme hot warmth, extreme violent aggression, extreme static movement, extreme dense density. Maximum contrast character design.",
   "tags": [
     "warm",
     "aggressive",
@@ -40,7 +40,7 @@
     "aggression": 0.933
   },
   "parameters": {
-    "ORCA": {}
+    "Orca": {}
   },
   "coupling": {
     "pairs": []

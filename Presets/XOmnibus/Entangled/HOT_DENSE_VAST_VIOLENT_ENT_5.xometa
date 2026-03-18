@@ -3,12 +3,12 @@
   "name": "HOT_DENSE_VAST_VIOLENT_ENT_5",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "OSPREY"
+    "Obsidian",
+    "Osprey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Hot Dense Vast Violent character entanglement \u2014 OBSIDIAN \u00d7 OSPREY via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "description": "Hot Dense Vast Violent character entanglement — OBSIDIAN × OSPREY via Resonance Share. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "warm",
@@ -41,7 +41,7 @@
     "aggression": 0.9417
   },
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.8619,
       "macro_movement": 0.597,
       "macro_coupling": 0.9473,
@@ -57,7 +57,7 @@
       "output_level": 0.981,
       "coupling_level": 0.9494
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.8842,
       "macro_movement": 0.5403,
       "macro_coupling": 0.9439,

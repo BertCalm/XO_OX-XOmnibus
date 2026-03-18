@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OBSIDIAN",
-    "OCEANIC"
+    "Obsidian",
+    "Oceanic"
   ],
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.65,
       "macro_movement": 0.55,
       "macro_coupling": 0.5,
       "macro_space": 0.85
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.5,
       "macro_movement": 0.6,
       "macro_coupling": 0.5,

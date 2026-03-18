@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OBBLIGATO",
-    "ORIGAMI"
+    "Obbligato",
+    "Origami"
   ],
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.811,
       "macro_movement": 0.837,
       "macro_coupling": 0.982,
       "macro_space": 0.084
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.646,
       "macro_movement": 0.039,
       "macro_coupling": 0.708,

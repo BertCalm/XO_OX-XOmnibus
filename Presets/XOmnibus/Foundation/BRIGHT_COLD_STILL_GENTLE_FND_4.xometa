@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OVERDUB",
-    "ONSET"
+    "Overdub",
+    "Onset"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.401,
       "macro_movement": 0.617,
       "macro_coupling": 0.471,
       "macro_space": 0.893
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.236,
       "macro_movement": 0.124,
       "macro_coupling": 0.667,

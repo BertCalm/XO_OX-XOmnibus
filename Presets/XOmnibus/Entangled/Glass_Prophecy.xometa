@@ -3,20 +3,20 @@
   "name": "Glass Prophecy",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "ORACLE"
+    "Orphica",
+    "Oracle"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Timbre blend: ORACLE's GENDY waveform acquires ORPHICA's glass-harmonic sheen.",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.7,
       "macro_movement": 0.56,
       "macro_coupling": 0.7,
       "macro_space": 0.74
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.56,
       "macro_movement": 0.61,
       "macro_coupling": 0.62,

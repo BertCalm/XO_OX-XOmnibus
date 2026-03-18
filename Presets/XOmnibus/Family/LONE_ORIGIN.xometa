@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "ONSET",
-    "OSTERIA"
+    "Onset",
+    "Osteria"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.625,
       "macro_movement": 0.903,
       "macro_coupling": 0.721,
       "macro_space": 0.044
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.364,
       "macro_movement": 0.72,
       "macro_coupling": 0.97,

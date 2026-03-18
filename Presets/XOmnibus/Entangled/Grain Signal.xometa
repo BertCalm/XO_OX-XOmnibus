@@ -2,8 +2,8 @@
   "name": "Grain Signal",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OPTIC"
+    "Opal",
+    "Optic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "optic",
     "granular"
   ],
-  "description": "Granular particles scattered through optical scan \u2014 each grain a photon burst"
+  "description": "Granular particles scattered through optical scan — each grain a photon burst"
 }

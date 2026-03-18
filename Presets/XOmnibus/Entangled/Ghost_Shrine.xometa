@@ -3,8 +3,8 @@
   "name": "Ghost Shrine",
   "mood": "Entangled",
   "engines": [
-    "ODDFELIX",
-    "ORIGAMI"
+    "OddfeliX",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.3
   },
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.559,
       "macro_movement": 0.668,
       "macro_coupling": 0.761,
       "macro_space": 0.325
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.461,
       "macro_movement": 0.427,
       "macro_coupling": 0.716,

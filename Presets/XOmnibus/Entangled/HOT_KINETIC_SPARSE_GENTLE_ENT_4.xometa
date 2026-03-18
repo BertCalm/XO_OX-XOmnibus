@@ -3,12 +3,12 @@
   "name": "HOT_KINETIC_SPARSE_GENTLE_ENT_4",
   "mood": "Entangled",
   "engines": [
-    "OWLFISH",
-    "OHM"
+    "Owlfish",
+    "Ohm"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Hot Kinetic Sparse Gentle character entanglement \u2014 OWLFISH \u00d7 OHM via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "description": "Hot Kinetic Sparse Gentle character entanglement — OWLFISH × OHM via Velocity Couple. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "warm",
@@ -41,7 +41,7 @@
     "aggression": 0.0232
   },
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.7764,
       "macro_movement": 0.9213,
       "macro_coupling": 0.6388,
@@ -57,7 +57,7 @@
       "output_level": 0.7036,
       "coupling_level": 0.5901
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.8035,
       "macro_movement": 0.9494,
       "macro_coupling": 0.6323,

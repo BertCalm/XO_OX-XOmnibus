@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORIGAMI",
-    "ODDOSCAR"
+    "Origami",
+    "OddOscar"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.5865,
       "macro_movement": 0.3815,
       "macro_coupling": 0.3077,
       "macro_space": 0.5219
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.6611,
       "macro_movement": 0.3804,
       "macro_coupling": 0.5124,

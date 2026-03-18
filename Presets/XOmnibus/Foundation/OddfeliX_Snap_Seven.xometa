@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Snap Seven",
+  "mood": "Foundation",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Seven-voice unison snap — near-full school in tight formation, rich dense texture.",
+  "tags": ["seven", "unison", "rich", "dense"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.78, "warmth": 0.3, "movement": 0.48, "density": 0.78, "space": 0.45, "aggression": 0.2},
+  "parameters": {
+    "OddfeliX": {"snap_oscMode": 0, "snap_snap": 0.7, "snap_decay": 0.28, "snap_detune": 0.25, "snap_filterCutoff": 10000.0, "snap_filterReso": 0.32, "snap_filterEnvDepth": 0.46, "snap_unison": 7, "snap_sweepDirection": 0, "snap_pitchLock": 0.82, "snap_polyphony": 8, "snap_level": 0.72, "snap_macroDart": 0.46, "snap_macroDepth": 0.5, "snap_macroSchool": 0.85, "snap_macroSurface": 0.38}
+  },
+  "macros": {"CHARACTER": 0.46, "MOVEMENT": 0.48, "COUPLING": 0.0, "SPACE": 0.45},
+  "coupling": {"pairs": []}
+}

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OCTOPUS",
-    "OTTONI"
+    "Octopus",
+    "Ottoni"
   ],
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.586,
       "macro_movement": 0.698,
       "macro_coupling": 0.192,
       "macro_space": 0.755
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.872,
       "macro_movement": 0.186,
       "macro_coupling": 0.121,

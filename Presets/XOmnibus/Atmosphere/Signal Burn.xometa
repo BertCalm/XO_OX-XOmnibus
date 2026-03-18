@@ -2,7 +2,7 @@
   "name": "Signal Burn",
   "version": "1.0",
   "engines": [
-    "OVERWORLD"
+    "Overworld"
   ],
   "mood": "Atmosphere",
   "macros": {

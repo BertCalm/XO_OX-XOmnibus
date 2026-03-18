@@ -3,8 +3,8 @@
   "name": "Deep Current Mesh",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OCEANIC"
+    "Overlap",
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.92,
       "olap_decay": 0.77,
       "olap_damping": 0.31,
@@ -69,7 +69,7 @@
       "olap_outputLevel": 0.84,
       "olap_outputPan": 0.08
     },
-    "OCEANIC": {
+    "Oceanic": {
       "ocean_character": 0.67,
       "ocean_movement": 0.58,
       "ocean_coupling": 0.52,

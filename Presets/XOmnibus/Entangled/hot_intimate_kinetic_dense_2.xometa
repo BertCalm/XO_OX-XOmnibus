@@ -19,11 +19,11 @@
     "aggression": 0.4229
   },
   "engines": [
-    "XOle"
+    "Ole"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 hot intimate kinetic dense. Designed for DRIFT coupling with XOle.",
+  "description": "Ultra-diverse Entangled preset — hot intimate kinetic dense. Designed for DRIFT coupling with XOle.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "DRIFT",
   "couplingIntensity": "Medium",
   "parameters": {
-    "XOle": {
+    "Ole": {
       "couplingLevel": 0.669,
       "couplingBus": 3
     }

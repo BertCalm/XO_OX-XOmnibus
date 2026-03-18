@@ -3,12 +3,12 @@
   "name": "Harbour Commune",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "OHM"
+    "Osteria",
+    "Ohm"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OHM's communal drone gathers at the harbour table \u2014 everyone eats, everyone hums.",
+  "description": "OHM's communal drone gathers at the harbour table — everyone eats, everyone hums.",
   "tags": [
     "entangled",
     "coupling",

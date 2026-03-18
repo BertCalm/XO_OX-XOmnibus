@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OBBLIGATO",
-    "OVERBITE"
+    "Obbligato",
+    "Overbite"
   ],
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.488,
       "macro_movement": 0.431,
       "macro_coupling": 0.441,
       "macro_space": 0.964
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.625,
       "macro_movement": 0.293,
       "macro_coupling": 0.3,

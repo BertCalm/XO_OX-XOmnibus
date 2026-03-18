@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "ORIGAMI"
+    "Ouroboros",
+    "Origami"
   ],
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.477,
       "macro_movement": 0.779,
       "macro_coupling": 0.682,
       "macro_space": 0.665
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.515,
       "macro_movement": 0.549,
       "macro_coupling": 0.898,

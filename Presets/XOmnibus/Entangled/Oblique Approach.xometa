@@ -3,12 +3,12 @@
   "name": "Oblique Approach",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "OBLIQUE"
+    "Osprey",
+    "Oblique"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The indirect angle of attack \u2014 osprey and OBLIQUE share the diagonal path.",
+  "description": "The indirect angle of attack — osprey and OBLIQUE share the diagonal path.",
   "tags": [
     "entangled",
     "coupling",

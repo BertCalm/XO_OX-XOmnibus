@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ONSET",
-    "OSTERIA"
+    "Onset",
+    "Osteria"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.784,
       "macro_movement": 0.583,
       "macro_coupling": 0.535,
       "macro_space": 0.594
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.795,
       "macro_movement": 0.578,
       "macro_coupling": 0.785,

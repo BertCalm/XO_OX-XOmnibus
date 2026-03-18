@@ -2,8 +2,8 @@
   "name": "Reed & Fang",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OVERBITE"
+    "Obbligato",
+    "Overbite"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "overbite",
     "wind"
   ],
-  "description": "Overbite BITE macro obligated to OBBLIGATO breath attack \u2014 the possum bites on the downbeat"
+  "description": "Overbite BITE macro obligated to OBBLIGATO breath attack — the possum bites on the downbeat"
 }

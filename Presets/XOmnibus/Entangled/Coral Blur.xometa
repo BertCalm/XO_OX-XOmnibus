@@ -2,8 +2,8 @@
   "name": "Coral Blur",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OBSCURA"
+    "Obbligato",
+    "Obscura"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "obscura",
     "wind"
   ],
-  "description": "OBBLIGATO BOND macro tied to obscura blur depth \u2014 the tighter the bond, the sharper the image"
+  "description": "OBBLIGATO BOND macro tied to obscura blur depth — the tighter the bond, the sharper the image"
 }

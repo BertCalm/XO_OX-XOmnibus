@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OPAL",
-    "ORACLE"
+    "Opal",
+    "Oracle"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.17,
       "macro_movement": 0.45,
       "macro_coupling": 0.69,
       "macro_space": 0.91
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.14,
       "macro_movement": 0.4,
       "macro_coupling": 0.74,
@@ -46,5 +46,5 @@
     "prophecy",
     "grain"
   ],
-  "description": "Oracle breakpoints scatter Opal grains \u2014 each grain lands on a prophesied frequency."
+  "description": "Oracle breakpoints scatter Opal grains — each grain lands on a prophesied frequency."
 }

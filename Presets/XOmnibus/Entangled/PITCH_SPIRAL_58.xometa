@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OBSIDIAN"
+    "Overlap",
+    "Obsidian"
   ],
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.088,
       "macro_movement": 0.963,
       "macro_coupling": 0.844,
       "macro_space": 0.243
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.589,
       "macro_movement": 0.972,
       "macro_coupling": 0.524,

@@ -3,12 +3,12 @@
   "name": "BRIGHT_COLD_VAST_VIOLENT_ENT_5",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "ORCA"
+    "Orphica",
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Cold Vast Violent character entanglement \u2014 ORPHICA \u00d7 ORCA via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Cold Vast Violent character entanglement — ORPHICA × ORCA via Spectral Morph. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.9537
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.6353,
       "macro_movement": 0.5421,
       "macro_coupling": 0.8971,
@@ -57,7 +57,7 @@
       "output_level": 0.8893,
       "coupling_level": 0.9283
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.5838,
       "macro_movement": 0.5109,
       "macro_coupling": 0.9355,

@@ -3,8 +3,8 @@
   "name": "DARK_COLD_STILL_DENSE_VAST_PRS_3",
   "mood": "Prism",
   "engines": [
-    "OBLIQUE",
-    "OLE"
+    "Oblique",
+    "Ole"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.059,
       "macro_movement": 0.0,
       "macro_coupling": 0.823,
       "macro_space": 0.969
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.084,
       "macro_movement": 0.069,
       "macro_coupling": 0.836,

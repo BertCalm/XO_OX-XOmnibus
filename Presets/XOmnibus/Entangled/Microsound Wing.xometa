@@ -3,12 +3,12 @@
   "name": "Microsound Wing",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "ORPHICA"
+    "Osprey",
+    "Orphica"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Orphica's grain harp scatters in osprey's wake \u2014 microsound aerodynamics.",
+  "description": "Orphica's grain harp scatters in osprey's wake — microsound aerodynamics.",
   "tags": [
     "entangled",
     "coupling",

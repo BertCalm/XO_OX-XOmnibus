@@ -3,20 +3,20 @@
   "name": "Verdigris Loop",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "OUROBOROS"
+    "Ottoni",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Spectral morphing between brass formants and attractor-state noise \u2014 warmth 0.84 locks the loop.",
+  "description": "Spectral morphing between brass formants and attractor-state noise — warmth 0.84 locks the loop.",
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.82,
       "macro_movement": 0.68,
       "macro_coupling": 0.84,
       "macro_space": 0.33
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.76,
       "macro_movement": 0.74,
       "macro_coupling": 0.78,

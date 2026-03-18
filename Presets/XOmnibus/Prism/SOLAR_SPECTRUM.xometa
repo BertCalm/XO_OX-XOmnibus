@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OBESE",
-    "OBSCURA"
+    "Obese",
+    "Obscura"
   ],
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.151,
       "macro_movement": 0.224,
       "macro_coupling": 0.852,
       "macro_space": 0.355
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.833,
       "macro_movement": 0.227,
       "macro_coupling": 0.026,

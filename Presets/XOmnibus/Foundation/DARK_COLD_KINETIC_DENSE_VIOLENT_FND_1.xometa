@@ -3,8 +3,8 @@
   "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FND_1",
   "mood": "Foundation",
   "engines": [
-    "OBLONG",
-    "OVERBITE"
+    "Oblong",
+    "Overbite"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.102,
       "macro_movement": 0.946,
       "macro_coupling": 0.957,
       "macro_space": 0.579
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.13,
       "macro_movement": 0.859,
       "macro_coupling": 1.0,

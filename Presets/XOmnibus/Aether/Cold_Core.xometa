@@ -11,11 +11,11 @@
     "aggression": 0.493
   },
   "engines": [
-    "OBBLIGATO"
+    "Obbligato"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Permafrost texture \u2014 dense and cold as geological strata.",
+  "description": "Permafrost texture — dense and cold as geological strata.",
   "tags": [
     "aether",
     "cold",

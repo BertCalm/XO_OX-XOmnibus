@@ -3,11 +3,11 @@
   "name": "OddLight Run",
   "mood": "Prism",
   "engines": [
-    "OddFelix"
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OddFelix harmonics in fluid refractive motion \u2014 spectral run through shifting medium.",
+  "description": "OddFelix harmonics in fluid refractive motion — spectral run through shifting medium.",
   "tags": [
     "refraction",
     "oddlight",
@@ -30,7 +30,7 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OddFelix": {
+    "OddfeliX": {
       "oddfelix_harmonicBlend": 0.684,
       "oddfelix_spectralTilt": 0.532,
       "oddfelix_pitchMod": 0.332,

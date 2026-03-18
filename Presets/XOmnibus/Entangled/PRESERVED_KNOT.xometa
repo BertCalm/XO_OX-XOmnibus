@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORBITAL",
-    "OUROBOROS"
+    "Orbital",
+    "Ouroboros"
   ],
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.157,
       "macro_movement": 0.079,
       "macro_coupling": 0.015,
       "macro_space": 0.708
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.786,
       "macro_movement": 0.114,
       "macro_coupling": 0.178,

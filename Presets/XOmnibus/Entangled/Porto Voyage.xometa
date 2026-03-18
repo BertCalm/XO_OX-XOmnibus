@@ -2,8 +2,8 @@
   "name": "Porto Voyage",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OSTERIA"
+    "Odyssey",
+    "Osteria"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "osteria",
     "wavetable"
   ],
-  "description": "Drift odyssey docks at a wine-dark tavern \u2014 FM warmth soaked in osteria resonance"
+  "description": "Drift odyssey docks at a wine-dark tavern — FM warmth soaked in osteria resonance"
 }

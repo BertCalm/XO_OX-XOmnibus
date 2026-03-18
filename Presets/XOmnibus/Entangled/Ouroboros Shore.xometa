@@ -3,8 +3,8 @@
   "name": "Ouroboros Shore",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "OUROBOROS"
+    "Osprey",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

@@ -3,20 +3,20 @@
   "name": "Siren Attractor",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "OUROBOROS"
+    "Orphica",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Chaos injection from OUROBOROS disrupts ORPHICA's crystalline lattice \u2014 brightness 0.92.",
+  "description": "Chaos injection from OUROBOROS disrupts ORPHICA's crystalline lattice — brightness 0.92.",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.8,
       "macro_movement": 0.68,
       "macro_coupling": 0.82,
       "macro_space": 0.65
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.74,
       "macro_movement": 0.76,
       "macro_coupling": 0.78,

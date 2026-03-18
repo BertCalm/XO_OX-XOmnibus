@@ -3,11 +3,11 @@
   "name": "Orbital Return",
   "mood": "Family",
   "engines": [
-    "ORBITAL"
+    "Orbital"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORBITAL completing its ellipse \u2014 the long orbit coming home. Extended resonance, slow pulse. The planet that remembers its path.",
+  "description": "ORBITAL completing its ellipse — the long orbit coming home. Extended resonance, slow pulse. The planet that remembers its path.",
   "tags": [
     "family",
     "extended-family",

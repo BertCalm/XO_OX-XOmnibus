@@ -3,8 +3,8 @@
   "name": "Tail-Swallow Halo",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OUROBOROS"
+    "Overlap",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.07
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.76,
       "olap_decay": 0.72,
       "olap_damping": 0.42,
@@ -69,7 +69,7 @@
       "olap_outputLevel": 0.83,
       "olap_outputPan": 0.2
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "ouro_character": 0.54,
       "ouro_movement": 0.36,
       "ouro_coupling": 0.77,

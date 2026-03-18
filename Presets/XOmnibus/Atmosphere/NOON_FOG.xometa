@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "ORCA",
-    "OBESE"
+    "Orca",
+    "Obese"
   ],
   "parameters": {
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.487,
       "macro_movement": 0.667,
       "macro_coupling": 0.045,
       "macro_space": 0.395
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.599,
       "macro_movement": 0.008,
       "macro_coupling": 0.301,

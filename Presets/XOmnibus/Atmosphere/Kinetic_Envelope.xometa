@@ -3,7 +3,7 @@
   "name": "Kinetic Envelope",
   "mood": "Atmosphere",
   "engines": [
-    "ORBITAL"
+    "Orbital"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.45
   },
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "orbit": 0.355,
       "gravity": 0.829,
       "coupling": 0.15,

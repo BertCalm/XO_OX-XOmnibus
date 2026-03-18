@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OCELOT",
-    "OSPREY"
+    "Ocelot",
+    "Osprey"
   ],
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.425,
       "macro_movement": 0.052,
       "macro_coupling": 0.887,
       "macro_space": 0.487
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.178,
       "macro_movement": 0.07,
       "macro_coupling": 0.606,

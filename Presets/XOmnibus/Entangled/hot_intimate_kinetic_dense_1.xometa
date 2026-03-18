@@ -19,11 +19,11 @@
     "aggression": 0.4131
   },
   "engines": [
-    "XOttoni"
+    "Ottoni"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 hot intimate kinetic dense. Designed for BIND coupling with XOttoni.",
+  "description": "Ultra-diverse Entangled preset — hot intimate kinetic dense. Designed for BIND coupling with XOttoni.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "BIND",
   "couplingIntensity": "High",
   "parameters": {
-    "XOttoni": {
+    "Ottoni": {
       "couplingLevel": 0.69,
       "couplingBus": 3
     }

@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT ATH 8",
   "mood": "Aether",
   "engines": [
-    "ORPHICA",
-    "OCELOT"
+    "Orphica",
+    "Ocelot"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.69,
       "macro_movement": 0.86,
       "macro_coupling": 0.76,
       "macro_space": 0.14
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.76,
       "macro_movement": 0.64,
       "macro_coupling": 0.61,

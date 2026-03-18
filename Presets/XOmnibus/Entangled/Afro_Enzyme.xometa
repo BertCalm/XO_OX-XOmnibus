@@ -3,20 +3,20 @@
   "name": "Afro Enzyme",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "ORGANON"
+    "Ole",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Envelope linking: OLE's decay triggers ORGANON's protein-synthesis envelope.",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.72,
       "macro_movement": 0.66,
       "macro_coupling": 0.72,
       "macro_space": 0.44
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.56,
       "macro_movement": 0.64,
       "macro_coupling": 0.62,

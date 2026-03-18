@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBSCURA",
-    "ODDOSCAR"
+    "Obscura",
+    "OddOscar"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.67,
       "macro_movement": 0.702,
       "macro_coupling": 0.193,
       "macro_space": 0.9
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.583,
       "macro_movement": 0.809,
       "macro_coupling": 0.951,

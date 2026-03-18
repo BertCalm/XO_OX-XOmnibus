@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OSPREY",
-    "OSTERIA"
+    "Osprey",
+    "Osteria"
   ],
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.925,
       "macro_movement": 0.93,
       "macro_coupling": 0.457,
       "macro_space": 0.633
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.93,
       "macro_movement": 0.927,
       "macro_coupling": 0.475,

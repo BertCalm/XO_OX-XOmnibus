@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ORIGAMI",
-    "OUTWIT"
+    "Origami",
+    "Outwit"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.548,
       "macro_movement": 0.765,
       "macro_coupling": 0.876,
       "macro_space": 0.556
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.686,
       "macro_movement": 0.836,
       "macro_coupling": 0.924,

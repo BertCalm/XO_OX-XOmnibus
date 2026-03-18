@@ -3,12 +3,12 @@
   "name": "Obbligato Meets OddfeliX",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
+    "Obbligato",
     "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OBBLIGATO and OddfeliX coupled via Env->Morph. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "description": "OBBLIGATO and OddfeliX coupled via Env->Morph. Blended Constellation DNA — stub seeded for expansion.",
   "tags": [
     "coupling",
     "constellation",

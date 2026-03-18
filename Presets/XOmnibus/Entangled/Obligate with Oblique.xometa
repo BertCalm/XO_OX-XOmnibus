@@ -3,12 +3,12 @@
   "name": "Obligate with Oblique",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OBLIQUE"
+    "Obbligato",
+    "Oblique"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OBLIQUE prism scatter refracts OBBLIGATO's BOND \u2014 coral reeds split into prismatic violet threads.",
+  "description": "OBLIQUE prism scatter refracts OBBLIGATO's BOND — coral reeds split into prismatic violet threads.",
   "tags": [
     "coupling",
     "obbligato",

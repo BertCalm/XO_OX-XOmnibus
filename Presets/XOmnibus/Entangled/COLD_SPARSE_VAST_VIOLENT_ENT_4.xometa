@@ -3,12 +3,12 @@
   "name": "COLD_SPARSE_VAST_VIOLENT_ENT_4",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "OTTONI"
+    "Obsidian",
+    "Ottoni"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Cold Sparse Vast Violent character entanglement \u2014 OBSIDIAN \u00d7 OTTONI via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "description": "Cold Sparse Vast Violent character entanglement — OBSIDIAN × OTTONI via Spectral Morph. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "cold",
@@ -41,7 +41,7 @@
     "aggression": 0.8944
   },
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.5085,
       "macro_movement": 0.5503,
       "macro_coupling": 0.9173,
@@ -57,7 +57,7 @@
       "output_level": 0.7129,
       "coupling_level": 0.9289
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.4883,
       "macro_movement": 0.6069,
       "macro_coupling": 0.9322,

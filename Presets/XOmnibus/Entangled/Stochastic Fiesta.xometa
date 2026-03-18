@@ -3,12 +3,12 @@
   "name": "Stochastic Fiesta",
   "mood": "Entangled",
   "engines": [
-    "ORACLE",
-    "OLE"
+    "Oracle",
+    "Ole"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "GENDY stochastic chaos injected into OLE \u2014 unpredictable celebration.",
+  "description": "GENDY stochastic chaos injected into OLE — unpredictable celebration.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.528
   },
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.55,
       "macro_movement": 0.72,
       "macro_coupling": 0.65,
       "macro_space": 0.55
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.7,
       "macro_movement": 0.65,
       "macro_coupling": 0.65,

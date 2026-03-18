@@ -3,8 +3,8 @@
   "name": "DARK_HOT_KINETIC_SPARSE_VIOLENT_PRS_3",
   "mood": "Prism",
   "engines": [
-    "OWLFISH",
-    "ORIGAMI"
+    "Owlfish",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.074,
       "macro_movement": 1.0,
       "macro_coupling": 0.0,
       "macro_space": 0.399
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.167,
       "macro_movement": 1.0,
       "macro_coupling": 0.155,

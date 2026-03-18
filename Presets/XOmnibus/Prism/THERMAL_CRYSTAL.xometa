@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OVERWORLD",
-    "ODDOSCAR"
+    "Overworld",
+    "OddOscar"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.167,
       "macro_movement": 0.224,
       "macro_coupling": 0.721,
       "macro_space": 0.592
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.397,
       "macro_movement": 0.057,
       "macro_coupling": 0.935,

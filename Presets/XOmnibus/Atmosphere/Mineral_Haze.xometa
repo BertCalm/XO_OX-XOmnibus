@@ -3,7 +3,7 @@
   "name": "Mineral Haze",
   "mood": "Atmosphere",
   "engines": [
-    "ORIGAMI"
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.179
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "fold": 0.287,
       "tension": 0.473,
       "coupling": 0.387,

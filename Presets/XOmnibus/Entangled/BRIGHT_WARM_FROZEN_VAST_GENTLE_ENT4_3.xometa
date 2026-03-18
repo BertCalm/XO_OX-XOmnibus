@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ODDOSCAR",
-    "ORPHICA"
+    "OddOscar",
+    "Orphica"
   ],
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.883,
       "macro_movement": 0.061,
       "macro_coupling": 0.372,
       "macro_space": 0.976
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.894,
       "macro_movement": 0.059,
       "macro_coupling": 0.372,

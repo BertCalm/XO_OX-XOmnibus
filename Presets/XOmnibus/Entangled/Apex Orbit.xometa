@@ -2,8 +2,8 @@
   "name": "Apex Orbit",
   "version": "1.0",
   "engines": [
-    "ORBITAL",
-    "ORCA"
+    "Orbital",
+    "Orca"
   ],
   "mood": "Entangled",
   "strategy": "Still Aggressive",
@@ -35,5 +35,5 @@
     "orbital",
     "apex"
   ],
-  "description": "Orbital's locked rotation containing Orca's apex predator force \u2014 still, massive, circling."
+  "description": "Orbital's locked rotation containing Orca's apex predator force — still, massive, circling."
 }

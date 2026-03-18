@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OBLONG",
-    "OVERWORLD"
+    "Oblong",
+    "Overworld"
   ],
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.41,
       "macro_movement": 0.911,
       "macro_coupling": 0.799,
       "macro_space": 0.455
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.345,
       "macro_movement": 0.946,
       "macro_coupling": 0.324,

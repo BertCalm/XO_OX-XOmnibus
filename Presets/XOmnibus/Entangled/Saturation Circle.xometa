@@ -2,8 +2,8 @@
   "name": "Saturation Circle",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OBESE"
+    "Ohm",
+    "Obese"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "obese",
     "hippy"
   ],
-  "description": "Ohm commune runs through fat saturation drive \u2014 communal warmth becomes communal fire"
+  "description": "Ohm commune runs through fat saturation drive — communal warmth becomes communal fire"
 }

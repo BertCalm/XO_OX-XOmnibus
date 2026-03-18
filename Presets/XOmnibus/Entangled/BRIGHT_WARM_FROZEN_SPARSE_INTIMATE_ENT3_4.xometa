@@ -3,12 +3,12 @@
   "name": "BRIGHT_WARM_FROZEN_SPARSE_INTIMATE_ENT3_4",
   "mood": "Entangled",
   "engines": [
-    "OPTIC",
-    "ODDOSCAR"
+    "Optic",
+    "OddOscar"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_WARM_FROZEN_SPARSE_INTIMATE. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_SPARSE_INTIMATE. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.6562,
       "macro_movement": 0.043,
       "macro_coupling": 0.7738,
       "macro_space": 0.7075
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.5716,
       "macro_movement": 0.0485,
       "macro_coupling": 0.7592,

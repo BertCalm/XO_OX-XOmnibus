@@ -2,8 +2,8 @@
   "name": "Dubbed Wind",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OVERDUB"
+    "Obbligato",
+    "Overdub"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "overdub",
     "wind"
   ],
-  "description": "Dual wind obligated to tape echo returns \u2014 every breath echoes back a beat later"
+  "description": "Dual wind obligated to tape echo returns — every breath echoes back a beat later"
 }

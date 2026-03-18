@@ -3,12 +3,12 @@
   "name": "Diffuse Tangle",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ODYSSEY"
+    "Overlap",
+    "Odyssey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ODYSSEY modulation clock syncs OVERLAP mod rate \u2014 rhythmic bloom in open water",
+  "description": "ODYSSEY modulation clock syncs OVERLAP mod rate — rhythmic bloom in open water",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.65
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.574,
       "olap_decay": 0.791,
       "olap_damping": 0.58,

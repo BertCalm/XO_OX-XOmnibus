@@ -3,12 +3,12 @@
   "name": "Shuriken Barrage",
   "mood": "Entangled",
   "engines": [
-    "ORIGAMI",
-    "ONSET"
+    "Origami",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Origami crane chaos-injected into Onset trigger rate \u2014 folded paper as weaponized percussion.",
+  "description": "Origami crane chaos-injected into Onset trigger rate — folded paper as weaponized percussion.",
   "tags": [
     "entangled",
     "brutal",

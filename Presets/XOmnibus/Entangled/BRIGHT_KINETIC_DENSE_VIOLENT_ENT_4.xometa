@@ -3,12 +3,12 @@
   "name": "BRIGHT_KINETIC_DENSE_VIOLENT_ENT_4",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OSTERIA"
+    "Outwit",
+    "Osteria"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Kinetic Dense Violent character entanglement \u2014 OUTWIT \u00d7 OSTERIA via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Kinetic Dense Violent character entanglement — OUTWIT × OSTERIA via Velocity Couple. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.9874
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.796,
       "macro_movement": 0.9586,
       "macro_coupling": 0.9095,
@@ -57,7 +57,7 @@
       "output_level": 0.9615,
       "coupling_level": 0.9627
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.7938,
       "macro_movement": 0.9661,
       "macro_coupling": 0.9559,

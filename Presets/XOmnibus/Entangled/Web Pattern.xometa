@@ -3,12 +3,12 @@
   "name": "Web Pattern",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OUTWIT"
+    "Overlap",
+    "Outwit"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERLAP frond-spread follows OUTWIT Wolfram frontier \u2014 the jellyfish traces the octopus's thought",
+  "description": "OVERLAP frond-spread follows OUTWIT Wolfram frontier — the jellyfish traces the octopus's thought",
   "tags": [
     "coupling",
     "entangled",
@@ -45,7 +45,7 @@
     "movement": 0.7
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.645,
       "olap_decay": 0.729,
       "olap_damping": 0.501,
@@ -61,7 +61,7 @@
       "olap_couplingLevel": 0.702,
       "olap_couplingBus": 0
     },
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 184,
       "owit_arms": 6,
       "owit_cellSize": 0.41,

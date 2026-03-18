@@ -2,8 +2,8 @@
   "name": "Serpent Folk",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OUROBOROS"
+    "Ohm",
+    "Ouroboros"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ouroboros",
     "hippy"
   ],
-  "description": "Ohm groove becomes the leash for self-devouring chaos \u2014 folk holds the serpent"
+  "description": "Ohm groove becomes the leash for self-devouring chaos — folk holds the serpent"
 }

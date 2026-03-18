@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORACLE",
-    "OBSCURA"
+    "Oracle",
+    "Obscura"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.874,
       "macro_movement": 0.5338,
       "macro_coupling": 0.2658,
       "macro_space": 0.7114
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.8341,
       "macro_movement": 0.4397,
       "macro_coupling": 0.4606,

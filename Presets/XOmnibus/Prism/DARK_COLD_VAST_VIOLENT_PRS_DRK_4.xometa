@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OLE",
-    "ORACLE"
+    "Ole",
+    "Oracle"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.4847,
       "macro_movement": 0.4815,
       "macro_coupling": 0.6815,
       "macro_space": 0.9751
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.5143,
       "macro_movement": 0.4654,
       "macro_coupling": 0.6926,

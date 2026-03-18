@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OVERBITE",
-    "ORACLE"
+    "Overbite",
+    "Oracle"
   ],
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.465,
       "macro_movement": 0.793,
       "macro_coupling": 0.516,
       "macro_space": 0.704
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.491,
       "macro_movement": 0.803,
       "macro_coupling": 0.564,

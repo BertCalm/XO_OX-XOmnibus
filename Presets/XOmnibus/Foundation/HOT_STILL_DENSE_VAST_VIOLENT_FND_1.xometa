@@ -3,8 +3,8 @@
   "name": "HOT_STILL_DENSE_VAST_VIOLENT_FND_1",
   "mood": "Foundation",
   "engines": [
-    "OVERDUB",
-    "OBLONG"
+    "Overdub",
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.57,
       "macro_movement": 0.117,
       "macro_coupling": 0.775,
       "macro_space": 0.906
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.5,
       "macro_movement": 0.102,
       "macro_coupling": 0.925,

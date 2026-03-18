@@ -3,8 +3,8 @@
   "name": "BRIGHT_COLD_DENSE_INTIMATE_VIOLENT_PRS_3",
   "mood": "Prism",
   "engines": [
-    "ORIGAMI",
-    "OWLFISH"
+    "Origami",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.926,
       "macro_movement": 0.461,
       "macro_coupling": 1.0,
       "macro_space": 0.025
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.86,
       "macro_movement": 0.336,
       "macro_coupling": 0.972,

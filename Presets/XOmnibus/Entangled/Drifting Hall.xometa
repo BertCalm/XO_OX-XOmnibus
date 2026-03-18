@@ -4,8 +4,8 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ODDFELIX"
+    "Overlap",
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "macros": {
@@ -23,7 +23,7 @@
     "density": 0.64
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.745,
       "olap_decay": 0.803,
       "olap_damping": 0.526,
@@ -56,5 +56,5 @@
     "fdn",
     "reverb"
   ],
-  "description": "Neon tetra spectral brightness modulates OVERLAP filter cutoff \u2014 fin flash tunes the reverb color"
+  "description": "Neon tetra spectral brightness modulates OVERLAP filter cutoff — fin flash tunes the reverb color"
 }

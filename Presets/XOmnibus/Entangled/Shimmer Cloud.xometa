@@ -2,8 +2,8 @@
   "name": "Shimmer Cloud",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "ORPHICA"
+    "Opal",
+    "Orphica"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orphica",
     "granular"
   ],
-  "description": "Opal grain shimmer and orphica crystal shimmer braided \u2014 two high-frequency textures merged"
+  "description": "Opal grain shimmer and orphica crystal shimmer braided — two high-frequency textures merged"
 }

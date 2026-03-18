@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OCEANIC",
-    "ORCA"
+    "Oceanic",
+    "Orca"
   ],
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.61,
       "macro_movement": 0.379,
       "macro_coupling": 0.029,
       "macro_space": 0.851
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.182,
       "macro_movement": 0.212,
       "macro_coupling": 0.798,

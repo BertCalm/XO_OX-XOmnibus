@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT FAM 4",
   "mood": "Family",
   "engines": [
-    "OBSIDIAN",
-    "OUTWIT"
+    "Obsidian",
+    "Outwit"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.85,
       "macro_movement": 0.71,
       "macro_coupling": 0.7,
       "macro_space": 0.39
     },
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.69,
       "macro_movement": 0.75,
       "macro_coupling": 0.66,

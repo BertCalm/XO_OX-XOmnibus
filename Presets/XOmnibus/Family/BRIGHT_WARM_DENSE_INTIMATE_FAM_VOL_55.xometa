@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OBBLIGATO",
-    "ODYSSEY"
+    "Obbligato",
+    "Odyssey"
   ],
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.956,
       "macro_movement": 0.356,
       "macro_coupling": 0.793,
       "macro_space": 0.043
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.982,
       "macro_movement": 0.306,
       "macro_coupling": 0.757,

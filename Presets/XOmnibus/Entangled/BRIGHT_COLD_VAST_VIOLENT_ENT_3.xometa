@@ -3,12 +3,12 @@
   "name": "BRIGHT_COLD_VAST_VIOLENT_ENT_3",
   "mood": "Entangled",
   "engines": [
-    "OHM",
-    "OWLFISH"
+    "Ohm",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Cold Vast Violent character entanglement \u2014 OHM \u00d7 OWLFISH via Chaos Inject. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Cold Vast Violent character entanglement — OHM × OWLFISH via Chaos Inject. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.9757
   },
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.6,
       "macro_movement": 0.5991,
       "macro_coupling": 0.9728,
@@ -57,7 +57,7 @@
       "output_level": 0.8831,
       "coupling_level": 0.9642
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.634,
       "macro_movement": 0.6351,
       "macro_coupling": 0.9751,

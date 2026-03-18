@@ -3,8 +3,8 @@
   "name": "Crystal Topology",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "OUROBOROS"
+    "Obsidian",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",

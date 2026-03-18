@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OBSCURA",
-    "OUROBOROS"
+    "Obscura",
+    "Ouroboros"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.358,
       "macro_movement": 0.431,
       "macro_coupling": 0.244,
       "macro_space": 0.412
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.682,
       "macro_movement": 0.18,
       "macro_coupling": 0.175,

@@ -2,8 +2,8 @@
   "name": "Coastal Drift",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OSPREY"
+    "Odyssey",
+    "Osprey"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "osprey",
     "wavetable"
   ],
-  "description": "Wavetable tide pushes the odyssey toward shore \u2014 drift current meeting the azure dive"
+  "description": "Wavetable tide pushes the odyssey toward shore — drift current meeting the azure dive"
 }

@@ -3,8 +3,8 @@
   "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FND_5",
   "mood": "Foundation",
   "engines": [
-    "OBSIDIAN",
-    "OBLONG"
+    "Obsidian",
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 1.0,
       "macro_movement": 0.907,
       "macro_coupling": 0.81,
       "macro_space": 0.109
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.943,
       "macro_movement": 0.9,
       "macro_coupling": 0.77,

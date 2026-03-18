@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OLE",
-    "OTTONI"
+    "Ole",
+    "Ottoni"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.0872,
       "macro_movement": 0.6136,
       "macro_coupling": 0.9246,
       "macro_space": 0.4692
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.0624,
       "macro_movement": 0.591,
       "macro_coupling": 0.8893,

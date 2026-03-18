@@ -4,8 +4,8 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OVERLAP"
+    "Outwit",
+    "Overlap"
   ],
   "author": "XO_OX",
   "macros": {
@@ -23,7 +23,7 @@
     "aggression": 0.35
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 54,
       "owit_arms": 6,
       "owit_cellSize": 0.341,
@@ -39,7 +39,7 @@
       "owit_couplingLevel": 0.673,
       "owit_couplingBus": 0
     },
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.832,
       "olap_decay": 0.518,
       "olap_damping": 0.341,
@@ -74,5 +74,5 @@
     "routing",
     "fdn"
   ],
-  "description": "OUTWIT's 8-arm pattern shapes OVERLAP's FDN node routing \u2014 cellular intelligence selects the reflection path through the jellyfish's tangled fronds"
+  "description": "OUTWIT's 8-arm pattern shapes OVERLAP's FDN node routing — cellular intelligence selects the reflection path through the jellyfish's tangled fronds"
 }

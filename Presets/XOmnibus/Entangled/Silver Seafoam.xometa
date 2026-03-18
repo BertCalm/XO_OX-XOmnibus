@@ -3,12 +3,12 @@
   "name": "Silver Seafoam",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "OBSCURA"
+    "Orphica",
+    "Obscura"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "ORPHICA microsound spatially coupled with Obscura depth \u2014 silver seafoam.",
+  "description": "ORPHICA microsound spatially coupled with Obscura depth — silver seafoam.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.05
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.65,
       "macro_movement": 0.5,
       "macro_coupling": 0.72,
       "macro_space": 0.78
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.52,
       "macro_movement": 0.58,
       "macro_coupling": 0.72,

@@ -3,20 +3,20 @@
   "name": "Serpent Drama",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OUROBOROS"
+    "Ole",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Chaos injection from OUROBOROS dismantles OLE's Afro-Latin phrase structure, rebuilding it recursively.",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.84,
       "macro_movement": 0.76,
       "macro_coupling": 0.85,
       "macro_space": 0.32
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.76,
       "macro_movement": 0.8,
       "macro_coupling": 0.8,

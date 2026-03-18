@@ -3,12 +3,12 @@
   "name": "Daguerreotype Brass",
   "mood": "Entangled",
   "engines": [
-    "OBSCURA",
-    "OTTONI"
+    "Obscura",
+    "Ottoni"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Obscura envelope contour linked to OTTONI attack \u2014 silver-coated fanfare.",
+  "description": "Obscura envelope contour linked to OTTONI attack — silver-coated fanfare.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.1
   },
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.55,
       "macro_movement": 0.6,
       "macro_coupling": 0.72,
       "macro_space": 0.62
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.66,
       "macro_movement": 0.44,
       "macro_coupling": 0.72,

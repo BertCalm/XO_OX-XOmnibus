@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OHM",
-    "OWLFISH"
+    "Ohm",
+    "Owlfish"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.344,
       "macro_movement": 0.246,
       "macro_coupling": 0.655,
       "macro_space": 0.509
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.435,
       "macro_movement": 0.21,
       "macro_coupling": 0.407,

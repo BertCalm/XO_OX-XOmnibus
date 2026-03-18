@@ -3,20 +3,20 @@
   "name": "Harp Prophecy",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "ORACLE"
+    "Orphica",
+    "Oracle"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "ORPHICA's high-frequency shimmer seeds ORACLE's stochastic breakpoint mapping.",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.68,
       "macro_movement": 0.55,
       "macro_coupling": 0.68,
       "macro_space": 0.74
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.54,
       "macro_movement": 0.6,
       "macro_coupling": 0.6,

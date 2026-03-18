@@ -3,12 +3,12 @@
   "name": "HOT KINETIC DENSE VIOLENT FAM 2",
   "mood": "Family",
   "engines": [
-    "OTTONI",
-    "ODDFELIX"
+    "Ottoni",
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, warm, kinetic, dense.",
+  "description": "Extreme DNA corners — family, warm, kinetic, dense.",
   "tags": [
     "family",
     "warm",
@@ -35,11 +35,11 @@
     "aggression": 0.891
   },
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "level": 0.754,
       "pan": 0.116
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "level": 0.818,
       "pan": -0.004
     }

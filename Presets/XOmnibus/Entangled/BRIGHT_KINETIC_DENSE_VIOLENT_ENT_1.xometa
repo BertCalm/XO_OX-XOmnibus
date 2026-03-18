@@ -3,12 +3,12 @@
   "name": "BRIGHT_KINETIC_DENSE_VIOLENT_ENT_1",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "ORCA"
+    "Ouroboros",
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Kinetic Dense Violent character entanglement \u2014 OUROBOROS \u00d7 ORCA via Formant Bridge. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Kinetic Dense Violent character entanglement — OUROBOROS × ORCA via Formant Bridge. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.931
   },
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.7785,
       "macro_movement": 0.9294,
       "macro_coupling": 0.9605,
@@ -57,7 +57,7 @@
       "output_level": 0.9166,
       "coupling_level": 0.9266
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.7588,
       "macro_movement": 0.9326,
       "macro_coupling": 0.9115,

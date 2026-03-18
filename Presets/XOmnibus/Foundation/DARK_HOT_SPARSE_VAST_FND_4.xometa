@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OVERWORLD",
-    "OBSIDIAN"
+    "Overworld",
+    "Obsidian"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.786,
       "macro_movement": 0.25,
       "macro_coupling": 0.654,
       "macro_space": 0.491
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.612,
       "macro_movement": 0.256,
       "macro_coupling": 0.279,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OBLONG",
-    "ORPHICA"
+    "Oblong",
+    "Orphica"
   ],
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.463,
       "macro_movement": 0.768,
       "macro_coupling": 0.693,
       "macro_space": 0.49
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.491,
       "macro_movement": 0.722,
       "macro_coupling": 0.717,

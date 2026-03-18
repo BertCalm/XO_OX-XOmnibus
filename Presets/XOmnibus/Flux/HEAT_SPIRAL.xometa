@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OCTOPUS",
-    "ODDFELIX"
+    "Octopus",
+    "OddfeliX"
   ],
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.478,
       "macro_movement": 0.811,
       "macro_coupling": 0.495,
       "macro_space": 0.623
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.586,
       "macro_movement": 0.796,
       "macro_coupling": 0.571,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ODDFELIX",
-    "OVERLAP"
+    "OddfeliX",
+    "Overlap"
   ],
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.637,
       "macro_movement": 0.079,
       "macro_coupling": 0.506,
       "macro_space": 0.649
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.706,
       "macro_movement": 0.0,
       "macro_coupling": 0.614,

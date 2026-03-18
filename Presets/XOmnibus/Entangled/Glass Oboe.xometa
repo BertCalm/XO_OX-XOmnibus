@@ -3,12 +3,12 @@
   "name": "Glass Oboe",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "OBBLIGATO"
+    "Orphica",
+    "Obbligato"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORPHICA and OBBLIGATO coupled via Env->Morph. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "description": "ORPHICA and OBBLIGATO coupled via Env->Morph. Blended Constellation DNA — stub seeded for expansion.",
   "tags": [
     "coupling",
     "constellation",

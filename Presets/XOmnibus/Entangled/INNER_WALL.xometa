@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ODDOSCAR"
+    "Outwit",
+    "OddOscar"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.648,
       "macro_movement": 0.702,
       "macro_coupling": 0.059,
       "macro_space": 0.053
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.365,
       "macro_movement": 0.763,
       "macro_coupling": 0.404,

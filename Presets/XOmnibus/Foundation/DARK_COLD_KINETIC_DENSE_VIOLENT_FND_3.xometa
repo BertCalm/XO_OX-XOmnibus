@@ -3,8 +3,8 @@
   "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FND_3",
   "mood": "Foundation",
   "engines": [
-    "ODDOSCAR",
-    "ODDFELIX"
+    "OddOscar",
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.047,
       "macro_movement": 0.892,
       "macro_coupling": 1.0,
       "macro_space": 0.662
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.175,
       "macro_movement": 0.953,
       "macro_coupling": 1.0,

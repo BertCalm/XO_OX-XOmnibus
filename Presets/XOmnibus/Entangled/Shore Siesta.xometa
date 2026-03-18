@@ -2,8 +2,8 @@
   "name": "Shore Siesta",
   "version": "1.0",
   "engines": [
-    "OSTERIA",
-    "OCEANIC"
+    "Osteria",
+    "Oceanic"
   ],
   "mood": "Entangled",
   "strategy": "Warm Sparse",
@@ -35,5 +35,5 @@
     "still",
     "siesta"
   ],
-  "description": "An afternoon siesta at the water's edge \u2014 warm, nearly still, endlessly open."
+  "description": "An afternoon siesta at the water's edge — warm, nearly still, endlessly open."
 }

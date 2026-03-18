@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ORACLE",
-    "ORGANON"
+    "Oracle",
+    "Organon"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.833,
       "macro_movement": 0.569,
       "macro_coupling": 0.635,
       "macro_space": 0.316
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.958,
       "macro_movement": 0.473,
       "macro_coupling": 0.752,

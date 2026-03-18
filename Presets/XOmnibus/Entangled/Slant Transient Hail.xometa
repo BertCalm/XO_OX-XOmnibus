@@ -2,8 +2,8 @@
   "name": "Slant Transient Hail",
   "version": "1.0",
   "engines": [
-    "OBLIQUE",
-    "ONSET"
+    "Oblique",
+    "Onset"
   ],
   "mood": "Entangled",
   "strategy": "Fast Cold",
@@ -35,5 +35,5 @@
     "transient",
     "kinetic"
   ],
-  "description": "Transient hail falling at a slant \u2014 cold, dense, oblique and unrelenting."
+  "description": "Transient hail falling at a slant — cold, dense, oblique and unrelenting."
 }

@@ -2,8 +2,8 @@
   "name": "Porto Dub Session",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OSTERIA"
+    "Overdub",
+    "Osteria"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "osteria",
     "dub"
   ],
-  "description": "Late-night tavern acoustics soaked in dub delay \u2014 warm wine-dark echo saturating wood"
+  "description": "Late-night tavern acoustics soaked in dub delay — warm wine-dark echo saturating wood"
 }

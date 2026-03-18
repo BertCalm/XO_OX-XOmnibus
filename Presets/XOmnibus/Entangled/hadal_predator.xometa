@@ -3,8 +3,8 @@
   "name": "Hadal Predator",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OCEANIC"
+    "Outwit",
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.81
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 30,
       "owit_arms": 8,
       "owit_cellSize": 0.35,
@@ -70,7 +70,7 @@
       "owit_outputLevel": 0.86,
       "owit_outputPan": 0.04
     },
-    "OCEANIC": {
+    "Oceanic": {
       "ocean_character": 0.64,
       "ocean_movement": 0.44,
       "ocean_coupling": 0.68,

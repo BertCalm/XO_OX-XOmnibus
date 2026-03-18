@@ -2,7 +2,7 @@
   "name": "Depth Mantra",
   "version": "1.0",
   "engines": [
-    "ORGANON"
+    "Organon"
   ],
   "mood": "Atmosphere",
   "macros": {

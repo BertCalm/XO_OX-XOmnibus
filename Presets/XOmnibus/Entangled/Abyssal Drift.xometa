@@ -2,8 +2,8 @@
   "name": "Abyssal Drift",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OWLFISH"
+    "Odyssey",
+    "Owlfish"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "owlfish",
     "wavetable"
   ],
-  "description": "Odyssey FM descends below the thermocline \u2014 owlfish pipe harmonics resonate the voyage"
+  "description": "Odyssey FM descends below the thermocline — owlfish pipe harmonics resonate the voyage"
 }

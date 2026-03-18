@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OPTIC",
-    "OWLFISH"
+    "Optic",
+    "Owlfish"
   ],
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.2166,
       "macro_movement": 0.091,
       "macro_coupling": 0.9289,
       "macro_space": 0.6172
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.2297,
       "macro_movement": 0.0805,
       "macro_coupling": 0.9332,

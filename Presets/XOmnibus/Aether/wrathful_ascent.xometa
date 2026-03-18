@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OWLFISH",
-    "OLE"
+    "Owlfish",
+    "Ole"
   ],
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.108,
       "macro_movement": 1.022,
       "macro_coupling": 0.368,
       "macro_space": 0.229
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.574,
       "macro_movement": 1.018,
       "macro_coupling": 0.845,

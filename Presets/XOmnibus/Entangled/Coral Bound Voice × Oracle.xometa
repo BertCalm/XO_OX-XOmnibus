@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "name": "Coral Bound Voice \u00d7 Oracle",
+  "name": "Coral Bound Voice × Oracle",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "ORACLE"
+    "Obbligato",
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "GENDY maqam lattice meets dual wind BOND \u2014 OBBLIGATO's voices are bound to ORACLE's spectral decree.",
+  "description": "GENDY maqam lattice meets dual wind BOND — OBBLIGATO's voices are bound to ORACLE's spectral decree.",
   "tags": [
     "coupling",
     "obbligato",

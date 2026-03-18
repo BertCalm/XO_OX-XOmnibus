@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT ATM 4",
   "mood": "Atmosphere",
   "engines": [
-    "OUROBOROS",
-    "OPAL"
+    "Ouroboros",
+    "Opal"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.7,
       "macro_movement": 0.87,
       "macro_coupling": 0.7,
       "macro_space": 0.47
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.76,
       "macro_movement": 0.85,
       "macro_coupling": 0.88,

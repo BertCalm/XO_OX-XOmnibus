@@ -2,8 +2,8 @@
   "name": "Phosphor Shimmer",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OCEANIC"
+    "Opal",
+    "Oceanic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oceanic",
     "granular"
   ],
-  "description": "Bioluminescent wake illuminates the grain field \u2014 opal shimmer as living ocean light"
+  "description": "Bioluminescent wake illuminates the grain field — opal shimmer as living ocean light"
 }

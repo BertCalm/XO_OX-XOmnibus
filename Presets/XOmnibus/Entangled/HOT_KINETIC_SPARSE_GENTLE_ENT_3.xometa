@@ -3,12 +3,12 @@
   "name": "HOT_KINETIC_SPARSE_GENTLE_ENT_3",
   "mood": "Entangled",
   "engines": [
-    "OPAL",
-    "ORCA"
+    "Opal",
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Hot Kinetic Sparse Gentle character entanglement \u2014 OPAL \u00d7 ORCA via Velocity Couple. Extreme DNA zones push sound design to the edges.",
+  "description": "Hot Kinetic Sparse Gentle character entanglement — OPAL × ORCA via Velocity Couple. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "warm",
@@ -41,7 +41,7 @@
     "aggression": 0.0765
   },
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.8165,
       "macro_movement": 0.8733,
       "macro_coupling": 0.623,
@@ -57,7 +57,7 @@
       "output_level": 0.7377,
       "coupling_level": 0.5704
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.8644,
       "macro_movement": 0.8925,
       "macro_coupling": 0.6334,

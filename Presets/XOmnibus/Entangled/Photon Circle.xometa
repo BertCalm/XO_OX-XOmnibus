@@ -2,8 +2,8 @@
   "name": "Photon Circle",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OPTIC"
+    "Ohm",
+    "Optic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "optic",
     "hippy"
   ],
-  "description": "Communal chant processed through optical shimmer \u2014 shared breath caught in light"
+  "description": "Communal chant processed through optical shimmer — shared breath caught in light"
 }

@@ -3,7 +3,7 @@
   "name": "Compacted Vapor",
   "mood": "Atmosphere",
   "engines": [
-    "OVERDUB"
+    "Overdub"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.384
   },
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "tape": 0.411,
       "drive": 0.338,
       "coupling": 0.213,

@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT PRM 11",
   "mood": "Prism",
   "engines": [
-    "OUTWIT",
-    "ORIGAMI"
+    "Outwit",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.85,
       "macro_movement": 0.76,
       "macro_coupling": 0.64,
       "macro_space": 0.41
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.92,
       "macro_movement": 0.65,
       "macro_coupling": 0.63,

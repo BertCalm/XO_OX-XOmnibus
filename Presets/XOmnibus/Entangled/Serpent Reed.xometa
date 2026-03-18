@@ -2,8 +2,8 @@
   "name": "Serpent Reed",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OUROBOROS"
+    "Obbligato",
+    "Ouroboros"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ouroboros",
     "wind"
   ],
-  "description": "OBBLIGATO dual wind tone obligated to ouroboros topology \u2014 the reed bends to the serpent's geometry"
+  "description": "OBBLIGATO dual wind tone obligated to ouroboros topology — the reed bends to the serpent's geometry"
 }

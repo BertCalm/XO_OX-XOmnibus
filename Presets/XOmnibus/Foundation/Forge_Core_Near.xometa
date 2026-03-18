@@ -11,11 +11,11 @@
     "aggression": 0.413
   },
   "engines": [
-    "ORGANON"
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Packed formant stack \u2014 rich overtones, no breath to spare.",
+  "description": "Packed formant stack — rich overtones, no breath to spare.",
   "tags": [
     "foundation",
     "warm",

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERWORLD",
-    "OUROBOROS"
+    "Overworld",
+    "Ouroboros"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.404,
       "macro_movement": 0.952,
       "macro_coupling": 0.911,
       "macro_space": 0.023
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.531,
       "macro_movement": 0.931,
       "macro_coupling": 0.883,

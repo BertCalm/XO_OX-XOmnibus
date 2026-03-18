@@ -3,12 +3,12 @@
   "name": "BRIGHT WARM KINETIC DENSE FAM 5",
   "mood": "Family",
   "engines": [
-    "ORACLE",
-    "OSTERIA"
+    "Oracle",
+    "Osteria"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, bright, warm, kinetic.",
+  "description": "Extreme DNA corners — family, bright, warm, kinetic.",
   "tags": [
     "family",
     "bright",
@@ -35,11 +35,11 @@
     "aggression": 0.451
   },
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "level": 0.801,
       "pan": -0.09
     },
-    "OSTERIA": {
+    "Osteria": {
       "level": 0.705,
       "pan": 0.103
     }

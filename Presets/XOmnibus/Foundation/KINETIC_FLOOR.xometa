@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OBESE",
-    "ORIGAMI"
+    "Obese",
+    "Origami"
   ],
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.433,
       "macro_movement": 0.959,
       "macro_coupling": 0.62,
       "macro_space": 0.256
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.517,
       "macro_movement": 0.922,
       "macro_coupling": 0.527,

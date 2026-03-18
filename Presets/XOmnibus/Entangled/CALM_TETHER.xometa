@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORBITAL",
-    "OWLFISH"
+    "Orbital",
+    "Owlfish"
   ],
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.455,
       "macro_movement": 0.162,
       "macro_coupling": 0.21,
       "macro_space": 0.394
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.352,
       "macro_movement": 0.323,
       "macro_coupling": 0.868,

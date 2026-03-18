@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OBESE",
-    "OPTIC"
+    "Obese",
+    "Optic"
   ],
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.095,
       "macro_movement": 0.32,
       "macro_coupling": 0.543,
       "macro_space": 0.499
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.127,
       "macro_movement": 0.276,
       "macro_coupling": 0.84,

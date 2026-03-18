@@ -3,11 +3,11 @@
   "name": "Lion's Mane Tails",
   "mood": "Family",
   "engines": [
-    "OVERLAP"
+    "Overlap"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERLAP KNOT topology \u2014 FDN tails overlapping. The jellyfish whose tendrils never fully separate. Endless interweave.",
+  "description": "OVERLAP KNOT topology — FDN tails overlapping. The jellyfish whose tendrils never fully separate. Endless interweave.",
   "tags": [
     "family",
     "extended-family",

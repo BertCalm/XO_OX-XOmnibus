@@ -11,11 +11,11 @@
     "space": 0.22
   },
   "engines": [
-    "OBSIDIAN"
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Basalt ocean floor \u2014 nothing reflects, everything absorbs",
+  "description": "Basalt ocean floor — nothing reflects, everything absorbs",
   "tags": [
     "aether",
     "dark",

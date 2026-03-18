@@ -3,20 +3,20 @@
   "name": "Brass Ouroboros",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "OUROBOROS"
+    "Ottoni",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Velocity coupling ties OTTONI's attack to OUROBOROS's cycle speed \u2014 serpent swallows brass.",
+  "description": "Velocity coupling ties OTTONI's attack to OUROBOROS's cycle speed — serpent swallows brass.",
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.76,
       "macro_movement": 0.62,
       "macro_coupling": 0.78,
       "macro_space": 0.36
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.7,
       "macro_movement": 0.68,
       "macro_coupling": 0.72,

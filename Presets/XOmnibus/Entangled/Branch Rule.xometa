@@ -3,12 +3,12 @@
   "name": "Branch Rule",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ORIGAMI"
+    "Outwit",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Origami fold depth increases OUTWIT branch count \u2014 geometry births geometry",
+  "description": "Origami fold depth increases OUTWIT branch count — geometry births geometry",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.75
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 90,
       "owit_arms": 4,
       "owit_cellSize": 0.204,

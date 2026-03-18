@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT FAM 1",
   "mood": "Family",
   "engines": [
-    "ODYSSEY",
-    "OBSIDIAN"
+    "Odyssey",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.87,
       "macro_movement": 0.66,
       "macro_coupling": 0.5,
       "macro_space": 0.17
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.94,
       "macro_movement": 0.65,
       "macro_coupling": 0.53,

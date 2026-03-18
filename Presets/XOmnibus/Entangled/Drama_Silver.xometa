@@ -3,20 +3,20 @@
   "name": "Drama Silver",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OBSCURA"
+    "Ole",
+    "Obscura"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Spectral morphing: DRAMA's harmonic spray exposed on OBSCURA's silver surface \u2014 aggression 0.88.",
+  "description": "Spectral morphing: DRAMA's harmonic spray exposed on OBSCURA's silver surface — aggression 0.88.",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.82,
       "macro_movement": 0.74,
       "macro_coupling": 0.84,
       "macro_space": 0.34
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.68,
       "macro_movement": 0.6,
       "macro_coupling": 0.74,

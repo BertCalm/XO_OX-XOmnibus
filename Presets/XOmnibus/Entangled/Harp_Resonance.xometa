@@ -3,20 +3,20 @@
   "name": "Harp Resonance",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "OBSCURA"
+    "Orphica",
+    "Obscura"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Resonance shared between glass-harmonic and OBSCURA's plate \u2014 spacious and luminous.",
+  "description": "Resonance shared between glass-harmonic and OBSCURA's plate — spacious and luminous.",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.76,
       "macro_movement": 0.62,
       "macro_coupling": 0.76,
       "macro_space": 0.7
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.62,
       "macro_movement": 0.55,
       "macro_coupling": 0.66,

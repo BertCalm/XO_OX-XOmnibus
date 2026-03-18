@@ -2,8 +2,8 @@
   "name": "Resonant Brass Void",
   "version": "1.0",
   "engines": [
-    "OTTONI",
-    "ORGANON"
+    "Ottoni",
+    "Organon"
   ],
   "mood": "Entangled",
   "strategy": "Warm Sparse",
@@ -35,5 +35,5 @@
     "meditative",
     "brass"
   ],
-  "description": "Three brass voices locked into Organon's vast resonant void \u2014 warm and almost empty."
+  "description": "Three brass voices locked into Organon's vast resonant void — warm and almost empty."
 }

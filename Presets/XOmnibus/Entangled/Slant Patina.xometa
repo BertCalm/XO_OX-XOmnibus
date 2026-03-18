@@ -2,8 +2,8 @@
   "name": "Slant Patina",
   "version": "1.0",
   "engines": [
-    "OTTONI",
-    "OBLIQUE"
+    "Ottoni",
+    "Oblique"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oblique",
     "triple"
   ],
-  "description": "Aged brass surface examined at an angle \u2014 new facets catch the light"
+  "description": "Aged brass surface examined at an angle — new facets catch the light"
 }

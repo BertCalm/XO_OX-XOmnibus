@@ -11,11 +11,11 @@
     "space": 0.25
   },
   "engines": [
-    "OWLFISH"
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Maximum depth pressure \u2014 owlfish at 8000m",
+  "description": "Maximum depth pressure — owlfish at 8000m",
   "tags": [
     "aether",
     "dark",

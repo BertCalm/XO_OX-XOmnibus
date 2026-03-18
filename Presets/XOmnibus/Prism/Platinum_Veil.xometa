@@ -11,11 +11,11 @@
     "space": 0.82
   },
   "engines": [
-    "OHM"
+    "Ohm"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OHM commune at maximum frequency \u2014 a shared platinum radiance",
+  "description": "OHM commune at maximum frequency — a shared platinum radiance",
   "tags": [
     "prism",
     "bright",

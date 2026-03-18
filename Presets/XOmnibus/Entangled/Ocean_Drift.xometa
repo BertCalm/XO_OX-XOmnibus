@@ -3,8 +3,8 @@
   "name": "Ocean Drift",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "OVERBITE"
+    "Obsidian",
+    "Overbite"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.765
   },
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.505,
       "macro_movement": 0.481,
       "macro_coupling": 0.611,
       "macro_space": 0.276
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.737,
       "macro_movement": 0.65,
       "macro_coupling": 0.735,

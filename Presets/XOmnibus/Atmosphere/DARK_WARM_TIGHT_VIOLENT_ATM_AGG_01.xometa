@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OCEANIC",
-    "ORBITAL"
+    "Oceanic",
+    "Orbital"
   ],
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.052,
       "macro_movement": 0.417,
       "macro_coupling": 0.85,
       "macro_space": 0.112
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.053,
       "macro_movement": 0.439,
       "macro_coupling": 0.876,

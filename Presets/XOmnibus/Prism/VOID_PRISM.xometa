@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ORACLE",
-    "ORIGAMI"
+    "Oracle",
+    "Origami"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.275,
       "macro_movement": 0.561,
       "macro_coupling": 0.108,
       "macro_space": 0.899
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.571,
       "macro_movement": 0.914,
       "macro_coupling": 0.235,

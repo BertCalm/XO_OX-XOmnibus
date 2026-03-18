@@ -3,11 +3,11 @@
   "name": "Overworld Crunch",
   "mood": "Family",
   "engines": [
-    "OVERWORLD"
+    "Overworld"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERWORLD chip crunch \u2014 all synthesis layers stacked, ERA at maximum conflict.",
+  "description": "OVERWORLD chip crunch — all synthesis layers stacked, ERA at maximum conflict.",
   "tags": [
     "family",
     "portrait",

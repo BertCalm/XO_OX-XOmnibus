@@ -2,8 +2,8 @@
   "name": "Phosphor Dub",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OCEANIC"
+    "Overdub",
+    "Oceanic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oceanic",
     "dub"
   ],
-  "description": "Oceanic phosphorescence lights the spring trail from within \u2014 bioluminescent reverb"
+  "description": "Oceanic phosphorescence lights the spring trail from within — bioluminescent reverb"
 }

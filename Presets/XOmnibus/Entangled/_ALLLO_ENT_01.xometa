@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OSTERIA"
+    "Obbligato",
+    "Osteria"
   ],
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.259,
       "macro_movement": 0.044,
       "macro_coupling": 0.093,
       "macro_space": 0.105
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.259,
       "macro_movement": 0.044,
       "macro_coupling": 0.093,

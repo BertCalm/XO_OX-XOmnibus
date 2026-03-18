@@ -3,12 +3,12 @@
   "name": "Bone Grind",
   "mood": "Entangled",
   "engines": [
-    "OBLONG",
-    "OBESE"
+    "Oblong",
+    "Obese"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bob's amber warmth ground through OBESE saturation \u2014 character crushed into harmonic bone dust.",
+  "description": "Bob's amber warmth ground through OBESE saturation — character crushed into harmonic bone dust.",
   "tags": [
     "entangled",
     "brutal",

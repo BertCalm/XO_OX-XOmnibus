@@ -3,12 +3,12 @@
   "name": "Hippy Dad and the Axolotl",
   "mood": "Family",
   "engines": [
-    "OHM",
+    "Ohm",
     "OddOscar"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OHM commune warmth + OddOscar regenerative bloom \u2014 the generational reunion. Father drone holding the room; Oscar breathing slow underneath.",
+  "description": "OHM commune warmth + OddOscar regenerative bloom — the generational reunion. Father drone holding the room; Oscar breathing slow underneath.",
   "tags": [
     "family",
     "reunion",

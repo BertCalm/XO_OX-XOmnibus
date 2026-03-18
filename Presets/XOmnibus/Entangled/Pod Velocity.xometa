@@ -2,8 +2,8 @@
   "name": "Pod Velocity",
   "version": "1.0",
   "engines": [
-    "ORCA",
-    "ODDFELIX"
+    "Orca",
+    "OddfeliX"
   ],
   "mood": "Entangled",
   "strategy": "Fast Cold",

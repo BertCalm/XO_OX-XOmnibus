@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OBLONG",
-    "ONSET"
+    "Oblong",
+    "Onset"
   ],
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.836,
       "macro_movement": 0.51,
       "macro_coupling": 0.822,
       "macro_space": 0.415
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.873,
       "macro_movement": 0.546,
       "macro_coupling": 0.794,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OBLIQUE",
-    "OHM"
+    "Oblique",
+    "Ohm"
   ],
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.951,
       "macro_movement": 0.881,
       "macro_coupling": 0.778,
       "macro_space": 0.498
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.5,
       "macro_movement": 0.881,
       "macro_coupling": 0.655,

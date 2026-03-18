@@ -2,8 +2,8 @@
   "name": "Shore Odyssey",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OSPREY"
+    "Odyssey",
+    "Osprey"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "osprey",
     "wavetable"
   ],
-  "description": "Drift FM lands at the shoreline \u2014 osprey plunge marks the destination of the voyage"
+  "description": "Drift FM lands at the shoreline — osprey plunge marks the destination of the voyage"
 }

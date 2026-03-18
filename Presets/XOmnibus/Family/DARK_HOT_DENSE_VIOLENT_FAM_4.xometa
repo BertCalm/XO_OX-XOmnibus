@@ -3,12 +3,12 @@
   "name": "DARK HOT DENSE VIOLENT FAM 4",
   "mood": "Family",
   "engines": [
-    "OBESE",
-    "OBSIDIAN"
+    "Obese",
+    "Obsidian"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, dark, warm, dense.",
+  "description": "Extreme DNA corners — family, dark, warm, dense.",
   "tags": [
     "family",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.894
   },
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "level": 0.72,
       "pan": 0.011
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "level": 0.743,
       "pan": -0.077
     }

@@ -3,12 +3,12 @@
   "name": "Hibiscus Growth",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "ORGANON"
+    "Ole",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "OLE harmonic bloom folds into Organon's metabolic expansion \u2014 flowers multiply.",
+  "description": "OLE harmonic bloom folds into Organon's metabolic expansion — flowers multiply.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.6
   },
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.72,
       "macro_movement": 0.6,
       "macro_coupling": 0.68,
       "macro_space": 0.38
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.55,
       "macro_movement": 0.68,
       "macro_coupling": 0.68,

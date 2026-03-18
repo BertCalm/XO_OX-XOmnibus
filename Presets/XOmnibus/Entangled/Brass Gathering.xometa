@@ -3,12 +3,12 @@
   "name": "Brass Gathering",
   "mood": "Entangled",
   "engines": [
-    "OHM",
-    "OTTONI"
+    "Ohm",
+    "Ottoni"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OHM and OTTONI coupled via Env->Level. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "description": "OHM and OTTONI coupled via Env->Level. Blended Constellation DNA — stub seeded for expansion.",
   "tags": [
     "coupling",
     "constellation",

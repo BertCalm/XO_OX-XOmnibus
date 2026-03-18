@@ -19,11 +19,11 @@
     "space": 0.5762
   },
   "engines": [
-    "XOwlfish"
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 hot dense still violent. Designed for BIND coupling with XOwlfish.",
+  "description": "Ultra-diverse Entangled preset — hot dense still violent. Designed for BIND coupling with XOwlfish.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "BIND",
   "couplingIntensity": "Medium",
   "parameters": {
-    "XOwlfish": {
+    "Owlfish": {
       "couplingLevel": 0.917,
       "couplingBus": 0
     }

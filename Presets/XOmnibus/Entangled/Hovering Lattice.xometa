@@ -4,8 +4,8 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OUTWIT"
+    "Overlap",
+    "Outwit"
   ],
   "author": "XO_OX",
   "macros": {
@@ -23,7 +23,7 @@
     "density": 0.62
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 22,
       "owit_arms": 8,
       "owit_cellSize": 0.423,
@@ -39,7 +39,7 @@
       "owit_couplingLevel": 0.573,
       "owit_couplingBus": 0
     },
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.736,
       "olap_decay": 0.744,
       "olap_damping": 0.402,
@@ -72,5 +72,5 @@
     "fdn",
     "reverb"
   ],
-  "description": "OVERLAP frond-spread traces OUTWIT Wolfram frontier \u2014 the jellyfish maps the octopus's thought in reverb"
+  "description": "OVERLAP frond-spread traces OUTWIT Wolfram frontier — the jellyfish maps the octopus's thought in reverb"
 }

@@ -2,8 +2,8 @@
   "name": "Cellar Drift",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OSTERIA"
+    "Odyssey",
+    "Osteria"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "osteria",
     "wavetable"
   ],
-  "description": "Wavetable FM drifts through stone cellar acoustics \u2014 odyssey warmth deepening in wood"
+  "description": "Wavetable FM drifts through stone cellar acoustics — odyssey warmth deepening in wood"
 }

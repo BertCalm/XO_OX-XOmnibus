@@ -3,11 +3,11 @@
   "name": "Hadal Current",
   "mood": "Atmosphere",
   "engines": [
-    "OCEANIC"
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "OCEANIC \u2014 dark extreme brightness preset for Atmosphere.",
+  "description": "OCEANIC — dark extreme brightness preset for Atmosphere.",
   "tags": [
     "atmosphere",
     "dark",
@@ -37,7 +37,7 @@
     "aggression": 0.11
   },
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "ocn_depthZone": 0.28,
       "ocn_pressure": 0.63,
       "ocn_filterCutoff": 0.55,

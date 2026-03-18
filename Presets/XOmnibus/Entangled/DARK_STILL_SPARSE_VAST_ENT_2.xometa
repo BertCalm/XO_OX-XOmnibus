@@ -3,12 +3,12 @@
   "name": "DARK_STILL_SPARSE_VAST_ENT_2",
   "mood": "Entangled",
   "engines": [
-    "OHM",
-    "OVERWORLD"
+    "Ohm",
+    "Overworld"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Still Sparse Vast character entanglement \u2014 OHM \u00d7 OVERWORLD via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Still Sparse Vast character entanglement — OHM × OVERWORLD via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.6479
   },
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.4158,
       "macro_movement": 0.1329,
       "macro_coupling": 0.7984,
@@ -57,7 +57,7 @@
       "output_level": 0.6846,
       "coupling_level": 0.7734
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.4749,
       "macro_movement": 0.1063,
       "macro_coupling": 0.8465,

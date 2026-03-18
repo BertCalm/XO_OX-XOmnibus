@@ -3,12 +3,12 @@
   "name": "OddfeliX Constellation",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
+    "Obbligato",
     "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OBBLIGATO and OddfeliX coupled via Env->Level. Blended Constellation DNA \u2014 stub seeded for expansion.",
+  "description": "OBBLIGATO and OddfeliX coupled via Env->Level. Blended Constellation DNA — stub seeded for expansion.",
   "tags": [
     "coupling",
     "constellation",

@@ -3,12 +3,12 @@
   "name": "Leash The Drama",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "OLE"
+    "Ouroboros",
+    "Ole"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Ouroboros leash envelope linked to OLE \u2014 chaos harnessed into dramatic performance.",
+  "description": "Ouroboros leash envelope linked to OLE — chaos harnessed into dramatic performance.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.72
   },
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.62,
       "macro_movement": 0.75,
       "macro_coupling": 0.78,
       "macro_space": 0.42
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.72,
       "macro_movement": 0.6,
       "macro_coupling": 0.78,

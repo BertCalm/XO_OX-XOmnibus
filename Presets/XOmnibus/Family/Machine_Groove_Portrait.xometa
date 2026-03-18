@@ -3,11 +3,11 @@
   "name": "Machine Groove Portrait",
   "mood": "Family",
   "engines": [
-    "ONSET"
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ONSET full kit \u2014 MACHINE macro engaged, PUNCH present. The rhythm architect laying down its signature groove.",
+  "description": "ONSET full kit — MACHINE macro engaged, PUNCH present. The rhythm architect laying down its signature groove.",
   "tags": [
     "family",
     "signature",

@@ -3,12 +3,12 @@
   "name": "BRIGHT_DENSE_VAST_GENTLE_ENT_4",
   "mood": "Entangled",
   "engines": [
-    "OBLONG",
-    "ORGANON"
+    "Oblong",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Dense Vast Gentle character entanglement \u2014 OBLONG \u00d7 ORGANON via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Dense Vast Gentle character entanglement — OBLONG × ORGANON via Harmonic Fold. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.079
   },
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.7551,
       "macro_movement": 0.4698,
       "macro_coupling": 0.6435,
@@ -57,7 +57,7 @@
       "output_level": 0.9429,
       "coupling_level": 0.5512
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.7572,
       "macro_movement": 0.5206,
       "macro_coupling": 0.6007,

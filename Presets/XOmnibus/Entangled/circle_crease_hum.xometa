@@ -3,8 +3,8 @@
   "name": "Circle Crease Hum",
   "mood": "Entangled",
   "engines": [
-    "OHM",
-    "ORIGAMI"
+    "Ohm",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",

@@ -3,12 +3,12 @@
   "name": "Trailing Frond",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ORGANON"
+    "Overlap",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORGANON registration depth modulates OVERLAP diffusion \u2014 dense stops, dense reflections",
+  "description": "ORGANON registration depth modulates OVERLAP diffusion — dense stops, dense reflections",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.575
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.711,
       "olap_decay": 0.618,
       "olap_damping": 0.345,

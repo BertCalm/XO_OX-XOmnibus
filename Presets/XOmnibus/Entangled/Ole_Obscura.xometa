@@ -3,20 +3,20 @@
   "name": "Ole Obscura",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OBSCURA"
+    "Ole",
+    "Obscura"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Chaos injection sends OBSCURA's strings into Afro-Latin syncopated chaos.",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.76,
       "macro_movement": 0.68,
       "macro_coupling": 0.76,
       "macro_space": 0.4
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.62,
       "macro_movement": 0.55,
       "macro_coupling": 0.65,

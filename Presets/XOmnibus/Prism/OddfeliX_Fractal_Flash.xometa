@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Fractal Flash",
+  "mood": "Prism",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Recursive bright flash — self-similar prismatic patterns in the school's movement.",
+  "tags": ["fractal", "flash", "recursive", "prism"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.94, "warmth": 0.18, "movement": 0.58, "density": 0.45, "space": 0.5, "aggression": 0.35},
+  "parameters": {
+    "OddfeliX": {"snap_oscMode": 2, "snap_snap": 0.86, "snap_decay": 0.15, "snap_detune": 0.07, "snap_filterCutoff": 16000.0, "snap_filterReso": 0.68, "snap_filterEnvDepth": 0.85, "snap_unison": 2, "snap_sweepDirection": 2, "snap_pitchLock": 0.93, "snap_polyphony": 6, "snap_level": 0.8, "snap_macroDart": 0.72, "snap_macroDepth": 0.38, "snap_macroSchool": 0.22, "snap_macroSurface": 0.82}
+  },
+  "macros": {"CHARACTER": 0.8, "MOVEMENT": 0.58, "COUPLING": 0.0, "SPACE": 0.5},
+  "coupling": {"pairs": []}
+}

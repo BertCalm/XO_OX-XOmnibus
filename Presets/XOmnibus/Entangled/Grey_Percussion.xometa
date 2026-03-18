@@ -3,12 +3,12 @@
   "name": "Grey Percussion",
   "mood": "Entangled",
   "engines": [
-    "OMBRE",
-    "ONSET"
+    "Ombre",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ombre shadow mauve velocity coupling into Onset \u2014 grey percussion with zero warmth.",
+  "description": "Ombre shadow mauve velocity coupling into Onset — grey percussion with zero warmth.",
   "tags": [
     "entangled",
     "brutal",

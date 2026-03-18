@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OBSIDIAN",
-    "OSPREY"
+    "Obsidian",
+    "Osprey"
   ],
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.309,
       "macro_movement": 0.441,
       "macro_coupling": 0.58,
       "macro_space": 0.732
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.09,
       "macro_movement": 0.295,
       "macro_coupling": 0.747,

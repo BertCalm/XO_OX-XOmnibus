@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OSPREY",
-    "OBLONG"
+    "Osprey",
+    "Oblong"
   ],
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.506,
       "macro_movement": 0.035,
       "macro_coupling": 0.191,
       "macro_space": 0.112
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.487,
       "macro_movement": 0.02,
       "macro_coupling": 0.174,

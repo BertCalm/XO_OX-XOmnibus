@@ -3,8 +3,8 @@
   "name": "BRIGHT_COLD_DENSE_VAST_VIOLENT_PRS_2",
   "mood": "Prism",
   "engines": [
-    "OVERWORLD",
-    "OBLIQUE"
+    "Overworld",
+    "Oblique"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 1.0,
       "macro_movement": 0.374,
       "macro_coupling": 1.0,
       "macro_space": 0.871
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.969,
       "macro_movement": 0.472,
       "macro_coupling": 0.854,

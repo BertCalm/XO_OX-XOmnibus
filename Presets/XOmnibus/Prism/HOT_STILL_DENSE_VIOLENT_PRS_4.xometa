@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OHM",
-    "OTTONI"
+    "Ohm",
+    "Ottoni"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.68,
       "macro_movement": 0.097,
       "macro_coupling": 0.61,
       "macro_space": 0.311
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.782,
       "macro_movement": 0.097,
       "macro_coupling": 0.415,

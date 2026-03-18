@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBSCURA",
-    "ORIGAMI"
+    "Obscura",
+    "Origami"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.12,
       "macro_movement": 0.27,
       "macro_coupling": 0.78,
       "macro_space": 0.95
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.09,
       "macro_movement": 0.22,
       "macro_coupling": 0.83,
@@ -46,5 +46,5 @@
     "cyanotype",
     "fold"
   ],
-  "description": "Obscura pitch-locks Origami's crease angle \u2014 blue cold chemistry etched in paper."
+  "description": "Obscura pitch-locks Origami's crease angle — blue cold chemistry etched in paper."
 }

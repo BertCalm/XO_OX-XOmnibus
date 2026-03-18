@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORGANON",
-    "OVERDUB"
+    "Organon",
+    "Overdub"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.656,
       "macro_movement": 0.917,
       "macro_coupling": 0.548,
       "macro_space": 0.96
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.649,
       "macro_movement": 0.942,
       "macro_coupling": 0.594,

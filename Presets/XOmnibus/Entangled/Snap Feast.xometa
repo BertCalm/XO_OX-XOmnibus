@@ -12,7 +12,7 @@
   },
   "engines": [
     "XOverbite",
-    "XOsteria"
+    "Osteria"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -49,7 +49,7 @@
       "poss_warmth": 0.692,
       "poss_aggression": 0.609
     },
-    "XOsteria": {
+    "Osteria": {
       "ost_outputLevel": 0.76,
       "ost_outputPan": 0.05,
       "ost_couplingLevel": 0.57,

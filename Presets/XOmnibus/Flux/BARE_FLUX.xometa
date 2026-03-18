@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OCELOT",
-    "OPTIC"
+    "Ocelot",
+    "Optic"
   ],
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.6389,
       "macro_movement": 0.4243,
       "macro_coupling": 0.2501,
       "macro_space": 0.8453
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.1992,
       "macro_movement": 0.3847,
       "macro_coupling": 0.4832,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OCEANIC",
-    "ORIGAMI"
+    "Oceanic",
+    "Origami"
   ],
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.0931,
       "macro_movement": 0.9414,
       "macro_coupling": 0.3558,
       "macro_space": 0.069
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.0716,
       "macro_movement": 0.99,
       "macro_coupling": 0.3187,

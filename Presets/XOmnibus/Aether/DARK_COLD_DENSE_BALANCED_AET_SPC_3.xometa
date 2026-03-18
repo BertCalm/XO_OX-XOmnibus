@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OVERWORLD",
-    "ORBITAL"
+    "Overworld",
+    "Orbital"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.065,
       "macro_movement": 0.677,
       "macro_coupling": 0.632,
       "macro_space": 0.384
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.044,
       "macro_movement": 0.647,
       "macro_coupling": 0.645,

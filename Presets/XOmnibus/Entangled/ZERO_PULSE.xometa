@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "ORIGAMI"
+    "Obbligato",
+    "Origami"
   ],
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.125,
       "macro_movement": 0.9,
       "macro_coupling": 0.507,
       "macro_space": 0.667
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.326,
       "macro_movement": 0.697,
       "macro_coupling": 0.554,

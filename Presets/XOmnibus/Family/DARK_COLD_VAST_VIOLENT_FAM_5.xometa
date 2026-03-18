@@ -3,12 +3,12 @@
   "name": "DARK COLD VAST VIOLENT FAM 5",
   "mood": "Family",
   "engines": [
-    "ORGANON",
-    "OCEANIC"
+    "Organon",
+    "Oceanic"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, dark, cold, vast.",
+  "description": "Extreme DNA corners — family, dark, cold, vast.",
   "tags": [
     "family",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.941
   },
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "level": 0.652,
       "pan": 0.018
     },
-    "OCEANIC": {
+    "Oceanic": {
       "level": 0.7,
       "pan": -0.05
     }

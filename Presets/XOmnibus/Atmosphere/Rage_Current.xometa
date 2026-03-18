@@ -3,7 +3,7 @@
   "name": "Rage Current",
   "mood": "Atmosphere",
   "engines": [
-    "OUROBOROS"
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.89
   },
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "cycle": 0.854,
       "tension": 0.733,
       "coupling": 0.139,

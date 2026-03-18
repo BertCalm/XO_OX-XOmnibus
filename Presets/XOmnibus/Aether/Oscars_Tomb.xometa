@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ODDOSCAR"
+    "OddOscar"
   ],
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "osco_macro_character": 0.39,
       "osco_macro_movement": 0.29,
       "osco_macro_coupling": 0.32,

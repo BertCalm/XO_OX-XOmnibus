@@ -3,8 +3,8 @@
   "name": "Prismatic Wingspan",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "OPTIC"
+    "Osprey",
+    "Optic"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

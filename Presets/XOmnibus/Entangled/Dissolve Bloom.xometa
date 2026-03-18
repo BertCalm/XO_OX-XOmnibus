@@ -3,12 +3,12 @@
   "name": "Dissolve Bloom",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ODYSSEY"
+    "Overlap",
+    "Odyssey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERLAP trailing decay follows ODYSSEY phrase shape \u2014 the sea remembers",
+  "description": "OVERLAP trailing decay follows ODYSSEY phrase shape — the sea remembers",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.65
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.839,
       "olap_decay": 0.853,
       "olap_damping": 0.502,

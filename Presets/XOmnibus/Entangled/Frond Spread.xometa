@@ -3,12 +3,12 @@
   "name": "Frond Spread",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OPAL"
+    "Overlap",
+    "Opal"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OPAL grain density drives OVERLAP diffusion rate \u2014 the more fragments, the wider the web",
+  "description": "OPAL grain density drives OVERLAP diffusion rate — the more fragments, the wider the web",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.625
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.686,
       "olap_decay": 0.562,
       "olap_damping": 0.635,

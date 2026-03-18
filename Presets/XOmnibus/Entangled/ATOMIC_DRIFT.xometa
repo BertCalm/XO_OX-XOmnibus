@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORIGAMI",
-    "OCELOT"
+    "Origami",
+    "Ocelot"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.829,
       "macro_movement": 0.976,
       "macro_coupling": 0.707,
       "macro_space": 0.435
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.734,
       "macro_movement": 0.944,
       "macro_coupling": 0.965,

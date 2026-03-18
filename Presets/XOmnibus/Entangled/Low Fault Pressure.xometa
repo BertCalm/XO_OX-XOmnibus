@@ -2,8 +2,8 @@
   "name": "Low Fault Pressure",
   "version": "1.0",
   "engines": [
-    "OBESE",
-    "OBSIDIAN"
+    "Obese",
+    "Obsidian"
   ],
   "mood": "Entangled",
   "strategy": "Still Aggressive",
@@ -35,5 +35,5 @@
     "tectonic",
     "pressure"
   ],
-  "description": "Geological pressure between tectonic bass and obsidian crust \u2014 barely moving, maximum force."
+  "description": "Geological pressure between tectonic bass and obsidian crust — barely moving, maximum force."
 }

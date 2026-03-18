@@ -3,11 +3,11 @@
   "name": "NES White Crown",
   "mood": "Prism",
   "engines": [
-    "OVERWORLD"
+    "Overworld"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OVERWORLD pushed to extreme brightness \u2014 brightness 0.90, movement 0.74, aggression 0.76. Ultra-bright Prism zone filler.",
+  "description": "OVERWORLD pushed to extreme brightness — brightness 0.90, movement 0.74, aggression 0.76. Ultra-bright Prism zone filler.",
   "tags": [
     "prism",
     "ultra-bright",
@@ -40,7 +40,7 @@
     "aggression": 0.762
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_macro_era": 0.983,
       "ow_macro_chaos": 0.673,
       "ow_macro_couple": 0.175,

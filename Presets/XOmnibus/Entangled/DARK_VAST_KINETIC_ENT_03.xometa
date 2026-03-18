@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OHM",
-    "OLE"
+    "Ohm",
+    "Ole"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.219,
       "macro_movement": 0.919,
       "macro_coupling": 0.602,
       "macro_space": 0.91
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.209,
       "macro_movement": 0.807,
       "macro_coupling": 0.52,

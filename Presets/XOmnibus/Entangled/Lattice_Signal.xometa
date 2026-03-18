@@ -3,8 +3,8 @@
   "name": "Lattice Signal",
   "mood": "Entangled",
   "engines": [
-    "ODDFELIX",
-    "ORBITAL"
+    "OddfeliX",
+    "Orbital"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.3
   },
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.648,
       "macro_movement": 0.369,
       "macro_coupling": 0.772,
       "macro_space": 0.219
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.734,
       "macro_movement": 0.325,
       "macro_coupling": 0.561,

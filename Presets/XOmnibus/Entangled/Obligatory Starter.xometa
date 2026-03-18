@@ -3,12 +3,12 @@
   "name": "Obligatory Starter",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "OBBLIGATO"
+    "Osteria",
+    "Obbligato"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The obligatory first course \u2014 OBBLIGATO sets the harmonic table before the main arrives.",
+  "description": "The obligatory first course — OBBLIGATO sets the harmonic table before the main arrives.",
   "tags": [
     "entangled",
     "coupling",

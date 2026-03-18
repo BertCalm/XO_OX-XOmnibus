@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Contra Run Fire",
   "mood": "Flux",
-  "engines": ["OVERWORLD"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Jungle Stage 1, bullets everywhere. The NES 2A03 driving hard at maximum pulse duty cycle, chaos high enough to feel the bullet spread, movement unstoppable. Marc-Alexandre Ouelett's action gaming DNA: you are always moving, always firing, the music never lets you rest.",
-  "tags": ["contra", "nes", "action", "flux", "2A03", "run-and-gun", "aggressive", "fast"],
-  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "tags": [
+    "contra",
+    "nes",
+    "action",
+    "flux",
+    "2A03",
+    "run-and-gun",
+    "aggressive",
+    "fast"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 165,
   "dna": {
@@ -19,7 +35,7 @@
     "aggression": 0.88
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_macro_era": 0.05,
       "ow_macro_chaos": 0.62,
       "ow_macro_couple": 0.15,
@@ -29,6 +45,13 @@
       "ow_couplingBus": 0
     }
   },
-  "macros": {"ERA": 0.05, "CHAOS": 0.62, "COUPLE": 0.15, "SPACE": 0.22},
-  "coupling": {"pairs": []}
+  "macros": {
+    "ERA": 0.05,
+    "CHAOS": 0.62,
+    "COUPLE": 0.15,
+    "SPACE": 0.22
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

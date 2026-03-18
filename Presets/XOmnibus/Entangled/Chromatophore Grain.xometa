@@ -2,8 +2,8 @@
   "name": "Chromatophore Grain",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OCTOPUS"
+    "Opal",
+    "Octopus"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "octopus",
     "granular"
   ],
-  "description": "Octopus chromatophore patterns distributed across grain field \u2014 skin-color as texture"
+  "description": "Octopus chromatophore patterns distributed across grain field — skin-color as texture"
 }

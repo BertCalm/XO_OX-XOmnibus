@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OPTIC",
-    "OSPREY"
+    "Optic",
+    "Osprey"
   ],
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.9449,
       "macro_movement": 0.6765,
       "macro_coupling": 0.0884,
       "macro_space": 0.9622
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.8984,
       "macro_movement": 0.6787,
       "macro_coupling": 0.1248,

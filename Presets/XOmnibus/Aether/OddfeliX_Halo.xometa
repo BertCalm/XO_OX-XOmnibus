@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Halo",
+  "mood": "Aether",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Light halo around a school — soft six-voice shimmer with minimal density.",
+  "tags": ["halo", "light", "soft", "circle"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.84, "warmth": 0.2, "movement": 0.28, "density": 0.22, "space": 0.9, "aggression": 0.06},
+  "parameters": {
+    "OddfeliX": {"snap_oscMode": 0, "snap_snap": 0.22, "snap_decay": 0.82, "snap_detune": 0.2, "snap_filterCutoff": 13000.0, "snap_filterReso": 0.62, "snap_filterEnvDepth": 0.3, "snap_unison": 4, "snap_sweepDirection": 0, "snap_pitchLock": 0.58, "snap_polyphony": 6, "snap_level": 0.38, "snap_macroDart": 0.12, "snap_macroDepth": 0.25, "snap_macroSchool": 0.28, "snap_macroSurface": 0.92}
+  },
+  "macros": {"CHARACTER": 0.3, "MOVEMENT": 0.28, "COUPLING": 0.0, "SPACE": 0.9},
+  "coupling": {"pairs": []}
+}

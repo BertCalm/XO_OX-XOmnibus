@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ONSET",
-    "OBLIQUE"
+    "Onset",
+    "Oblique"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.537,
       "macro_movement": 0.738,
       "macro_coupling": 0.641,
       "macro_space": 0.248
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.614,
       "macro_movement": 0.236,
       "macro_coupling": 0.5,

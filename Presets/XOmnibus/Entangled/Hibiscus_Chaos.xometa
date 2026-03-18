@@ -3,20 +3,20 @@
   "name": "Hibiscus Chaos",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OUROBOROS"
+    "Ole",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Spectral morphing between hibiscus harmonic burst and OUROBOROS's self-replicating noise.",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.86,
       "macro_movement": 0.78,
       "macro_coupling": 0.88,
       "macro_space": 0.3
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.78,
       "macro_movement": 0.82,
       "macro_coupling": 0.83,

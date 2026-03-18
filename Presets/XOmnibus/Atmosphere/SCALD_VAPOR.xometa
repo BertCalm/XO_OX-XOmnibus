@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OBBLIGATO",
-    "OCTOPUS"
+    "Obbligato",
+    "Octopus"
   ],
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.762,
       "macro_movement": 0.512,
       "macro_coupling": 0.169,
       "macro_space": 0.818
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.248,
       "macro_movement": 0.212,
       "macro_coupling": 0.359,

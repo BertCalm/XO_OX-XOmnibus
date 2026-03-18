@@ -2,8 +2,8 @@
   "name": "Coastal Dub",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OSPREY"
+    "Overdub",
+    "Osprey"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "osprey",
     "dub"
   ],
-  "description": "Shore winds carry the dub delay out to sea \u2014 osprey plunge timed to the echo"
+  "description": "Shore winds carry the dub delay out to sea — osprey plunge timed to the echo"
 }

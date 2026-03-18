@@ -2,8 +2,8 @@
   "name": "Brass Dusk",
   "version": "1.0",
   "engines": [
-    "OTTONI",
-    "OMBRE"
+    "Ottoni",
+    "Ombre"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ombre",
     "triple"
   ],
-  "description": "Triple horn sunset \u2014 three voices converging to a single gradient horizon line"
+  "description": "Triple horn sunset — three voices converging to a single gradient horizon line"
 }

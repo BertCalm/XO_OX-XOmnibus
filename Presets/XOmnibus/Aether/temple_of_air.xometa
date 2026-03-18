@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORPHICA"
+    "Orphica"
   ],
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.22,
       "macro_movement": 0.63,
       "macro_coupling": 0.12,

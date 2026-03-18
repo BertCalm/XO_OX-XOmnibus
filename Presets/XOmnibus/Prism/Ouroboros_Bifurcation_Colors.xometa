@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "name": "Bifurcation Colors",
+  "mood": "Prism",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Period-doubling bifurcation cascade painted in color — each doublings adds a new spectral harmonic.",
+  "tags": ["bifurcation", "colors", "doubling", "harmonic", "prism"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.72, "warmth": 0.5, "movement": 0.5, "density": 0.62, "space": 0.62, "aggression": 0.38},
+  "parameters": {"Ouroboros": {
+    "ouro_topology": 2,
+    "ouro_rate": 0.55,
+    "ouro_chaosIndex": 0.6,
+    "ouro_leash": 0.4,
+    "ouro_theta": 0.3,
+    "ouro_phi": 0.7,
+    "ouro_damping": 0.28,
+    "ouro_injection": 0.6
+  }},
+  "macros": {"CHARACTER": 0.7, "MOVEMENT": 0.5, "COUPLING": 0.5, "SPACE": 0.6},
+  "coupling": {"pairs": []}
+}

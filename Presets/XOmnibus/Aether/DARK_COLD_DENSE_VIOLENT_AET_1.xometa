@@ -3,12 +3,12 @@
   "name": "DARK COLD DENSE VIOLENT AET 1",
   "mood": "Aether",
   "engines": [
-    "ODDFELIX",
-    "OVERWORLD"
+    "OddfeliX",
+    "Overworld"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, dark, cold, dense.",
+  "description": "Extreme DNA corners — aether, dark, cold, dense.",
   "tags": [
     "aether",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.906
   },
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "level": 0.77,
       "pan": 0.017
     },
-    "OVERWORLD": {
+    "Overworld": {
       "level": 0.807,
       "pan": 0.014
     }

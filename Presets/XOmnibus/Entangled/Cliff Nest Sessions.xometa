@@ -3,12 +3,12 @@
   "name": "Cliff Nest Sessions",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "OBLONG"
+    "Osprey",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBLONG's warm strings nest inside osprey resonance \u2014 a cliff-side bower of sound.",
+  "description": "OBLONG's warm strings nest inside osprey resonance — a cliff-side bower of sound.",
   "tags": [
     "entangled",
     "coupling",

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ONSET",
-    "OPTIC"
+    "Onset",
+    "Optic"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.5533,
       "macro_movement": 0.584,
       "macro_coupling": 0.888,
       "macro_space": 0.2952
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.1962,
       "macro_movement": 0.23,
       "macro_coupling": 0.8279,

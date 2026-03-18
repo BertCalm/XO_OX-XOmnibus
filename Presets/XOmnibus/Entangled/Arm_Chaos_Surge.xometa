@@ -3,12 +3,12 @@
   "name": "Arm Chaos Surge",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OUROBOROS"
+    "Outwit",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Outwit 8-arm Wolfram CA chaos-injected by Ouroboros topology \u2014 cellular automation in fractal storm.",
+  "description": "Outwit 8-arm Wolfram CA chaos-injected by Ouroboros topology — cellular automation in fractal storm.",
   "tags": [
     "entangled",
     "brutal",

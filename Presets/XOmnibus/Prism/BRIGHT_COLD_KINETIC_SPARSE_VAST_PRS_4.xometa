@@ -3,8 +3,8 @@
   "name": "BRIGHT_COLD_KINETIC_SPARSE_VAST_PRS_4",
   "mood": "Prism",
   "engines": [
-    "OVERWORLD",
-    "ORACLE"
+    "Overworld",
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.95,
       "macro_movement": 0.986,
       "macro_coupling": 0.0,
       "macro_space": 0.981
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.98,
       "macro_movement": 1.0,
       "macro_coupling": 0.0,

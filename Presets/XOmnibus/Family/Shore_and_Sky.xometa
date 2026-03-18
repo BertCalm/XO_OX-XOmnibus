@@ -3,12 +3,12 @@
   "name": "Shore and Sky",
   "mood": "Family",
   "engines": [
-    "OSPREY",
-    "OSTERIA"
+    "Osprey",
+    "Osteria"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OSPREY clean air + OSTERIA table warmth \u2014 the Mediterranean reunion. Sea hawk diving toward the harbor where dinner is ready.",
+  "description": "OSPREY clean air + OSTERIA table warmth — the Mediterranean reunion. Sea hawk diving toward the harbor where dinner is ready.",
   "tags": [
     "family",
     "reunion",

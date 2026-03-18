@@ -3,11 +3,11 @@
   "name": "Octopus All Arms",
   "mood": "Family",
   "engines": [
-    "OCTOPUS"
+    "Octopus"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OCTOPUS 8 arms simultaneously \u2014 maximum CA density, full aggressive Wolfram field.",
+  "description": "OCTOPUS 8 arms simultaneously — maximum CA density, full aggressive Wolfram field.",
   "tags": [
     "family",
     "portrait",

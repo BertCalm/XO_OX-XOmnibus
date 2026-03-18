@@ -2,8 +2,8 @@
   "name": "Obligate Voyage",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OBBLIGATO"
+    "Odyssey",
+    "Obbligato"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "obbligato",
     "wavetable"
   ],
-  "description": "The obligate bond sustained across drift distance \u2014 two reeds in FM orbit"
+  "description": "The obligate bond sustained across drift distance — two reeds in FM orbit"
 }

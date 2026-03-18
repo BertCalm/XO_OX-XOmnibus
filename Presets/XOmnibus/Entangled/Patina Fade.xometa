@@ -2,8 +2,8 @@
   "name": "Patina Fade",
   "version": "1.0",
   "engines": [
-    "OTTONI",
-    "OMBRE"
+    "Ottoni",
+    "Ombre"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ombre",
     "triple"
   ],
-  "description": "Aged brass patina slowly bleeds into gradient haze \u2014 history dissolving to gradient"
+  "description": "Aged brass patina slowly bleeds into gradient haze — history dissolving to gradient"
 }

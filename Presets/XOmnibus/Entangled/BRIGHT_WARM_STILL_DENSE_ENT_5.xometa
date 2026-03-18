@@ -3,12 +3,12 @@
   "name": "BRIGHT_WARM_STILL_DENSE_ENT_5",
   "mood": "Entangled",
   "engines": [
-    "OVERBITE",
-    "OBLONG"
+    "Overbite",
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Warm Still Dense character entanglement \u2014 OVERBITE \u00d7 OBLONG via Subharmonic Weave. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Warm Still Dense character entanglement — OVERBITE × OBLONG via Subharmonic Weave. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.3916
   },
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.9202,
       "macro_movement": 0.0577,
       "macro_coupling": 0.7142,
@@ -57,7 +57,7 @@
       "output_level": 0.9135,
       "coupling_level": 0.704
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.9595,
       "macro_movement": 0.0581,
       "macro_coupling": 0.7758,

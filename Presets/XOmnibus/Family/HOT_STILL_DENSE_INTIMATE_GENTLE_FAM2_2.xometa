@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "ODDFELIX",
-    "OTTONI"
+    "OddfeliX",
+    "Ottoni"
   ],
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.751,
       "macro_movement": 0.032,
       "macro_coupling": 0.518,
       "macro_space": 0.033
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.735,
       "macro_movement": 0.02,
       "macro_coupling": 0.535,

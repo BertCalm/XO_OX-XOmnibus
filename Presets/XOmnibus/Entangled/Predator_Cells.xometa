@@ -3,8 +3,8 @@
   "name": "Predator Cells",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OCELOT"
+    "Outwit",
+    "Ocelot"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "density": 0.65
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 22,
       "owit_arms": 8,
       "owit_cellSize": 0.417,

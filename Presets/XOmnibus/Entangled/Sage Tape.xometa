@@ -2,8 +2,8 @@
   "name": "Sage Tape",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OHM"
+    "Overdub",
+    "Ohm"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ohm",
     "dub"
   ],
-  "description": "Tape saturation mellows an ohm drone \u2014 warmth and grain dissolving into each other"
+  "description": "Tape saturation mellows an ohm drone — warmth and grain dissolving into each other"
 }

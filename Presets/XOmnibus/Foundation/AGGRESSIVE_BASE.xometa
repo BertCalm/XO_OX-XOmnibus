@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ONSET",
-    "OSPREY"
+    "Onset",
+    "Osprey"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.573,
       "macro_movement": 0.33,
       "macro_coupling": 0.773,
       "macro_space": 0.694
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.45,
       "macro_movement": 0.685,
       "macro_coupling": 0.645,

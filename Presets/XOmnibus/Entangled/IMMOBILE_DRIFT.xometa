@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBESE",
-    "OVERWORLD"
+    "Obese",
+    "Overworld"
   ],
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.386,
       "macro_movement": 0.067,
       "macro_coupling": 0.144,
       "macro_space": 0.038
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.046,
       "macro_movement": 0.097,
       "macro_coupling": 0.103,

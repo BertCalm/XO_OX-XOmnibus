@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORIGAMI",
-    "ORACLE"
+    "Origami",
+    "Oracle"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.15,
       "macro_movement": 0.34,
       "macro_coupling": 0.72,
       "macro_space": 0.92
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.12,
       "macro_movement": 0.29,
       "macro_coupling": 0.77,
@@ -46,5 +46,5 @@
     "fold",
     "prophecy"
   ],
-  "description": "Each crease reveals a new prophetic partial \u2014 Origami and Oracle unfold together in cold air."
+  "description": "Each crease reveals a new prophetic partial — Origami and Oracle unfold together in cold air."
 }

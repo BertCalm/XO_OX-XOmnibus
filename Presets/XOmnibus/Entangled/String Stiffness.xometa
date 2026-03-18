@@ -3,12 +3,12 @@
   "name": "String Stiffness",
   "mood": "Entangled",
   "engines": [
-    "OBSCURA",
-    "OTTONI"
+    "Obscura",
+    "Ottoni"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Obscura string stiffness frequency-shifts OTTONI partials \u2014 warped brass.",
+  "description": "Obscura string stiffness frequency-shifts OTTONI partials — warped brass.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.15
   },
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.5,
       "macro_movement": 0.65,
       "macro_coupling": 0.55,
       "macro_space": 0.58
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.68,
       "macro_movement": 0.45,
       "macro_coupling": 0.55,

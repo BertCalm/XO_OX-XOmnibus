@@ -3,12 +3,12 @@
   "name": "HOT_KINETIC_SPARSE_GENTLE_ENT_2",
   "mood": "Entangled",
   "engines": [
-    "OBLONG",
-    "ODYSSEY"
+    "Oblong",
+    "Odyssey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Hot Kinetic Sparse Gentle character entanglement \u2014 OBLONG \u00d7 ODYSSEY via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "description": "Hot Kinetic Sparse Gentle character entanglement — OBLONG × ODYSSEY via Resonance Share. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "warm",
@@ -41,7 +41,7 @@
     "aggression": 0.1102
   },
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.8666,
       "macro_movement": 0.8591,
       "macro_coupling": 0.6195,
@@ -57,7 +57,7 @@
       "output_level": 0.7144,
       "coupling_level": 0.5665
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.8026,
       "macro_movement": 0.8775,
       "macro_coupling": 0.6311,

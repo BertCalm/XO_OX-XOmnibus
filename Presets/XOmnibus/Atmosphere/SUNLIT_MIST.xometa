@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "ODDFELIX",
-    "ORIGAMI"
+    "OddfeliX",
+    "Origami"
   ],
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.564,
       "macro_movement": 0.635,
       "macro_coupling": 0.625,
       "macro_space": 0.864
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.627,
       "macro_movement": 0.151,
       "macro_coupling": 0.068,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OSPREY",
-    "ORACLE"
+    "Osprey",
+    "Oracle"
   ],
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.369,
       "macro_movement": 0.897,
       "macro_coupling": 0.884,
       "macro_space": 0.932
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.367,
       "macro_movement": 0.901,
       "macro_coupling": 0.83,

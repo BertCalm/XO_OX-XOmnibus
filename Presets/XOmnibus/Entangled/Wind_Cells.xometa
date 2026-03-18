@@ -3,12 +3,12 @@
   "name": "Wind Cells",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OBBLIGATO"
+    "Outwit",
+    "Obbligato"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Obbligato BOND macro depth modulates OUTWIT mutation probability \u2014 tight bond tightens cellular order",
+  "description": "Obbligato BOND macro depth modulates OUTWIT mutation probability — tight bond tightens cellular order",
   "tags": [
     "coupling",
     "entangled",
@@ -47,7 +47,7 @@
     "density": 0.675
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 45,
       "owit_arms": 5,
       "owit_cellSize": 0.373,

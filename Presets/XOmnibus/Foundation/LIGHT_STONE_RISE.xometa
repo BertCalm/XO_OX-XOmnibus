@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OBSIDIAN",
-    "ORGANON"
+    "Obsidian",
+    "Organon"
   ],
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.424,
       "macro_movement": 0.25,
       "macro_coupling": 0.845,
       "macro_space": 0.199
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.385,
       "macro_movement": 0.483,
       "macro_coupling": 0.237,

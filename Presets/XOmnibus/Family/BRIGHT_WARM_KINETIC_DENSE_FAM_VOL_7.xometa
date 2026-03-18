@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "ODDFELIX",
-    "OBBLIGATO"
+    "OddfeliX",
+    "Obbligato"
   ],
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.931,
       "macro_movement": 0.946,
       "macro_coupling": 0.781,
       "macro_space": 0.37
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.935,
       "macro_movement": 0.938,
       "macro_coupling": 0.745,

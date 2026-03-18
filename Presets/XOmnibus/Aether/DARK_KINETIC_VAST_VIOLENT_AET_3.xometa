@@ -3,12 +3,12 @@
   "name": "DARK KINETIC VAST VIOLENT AET 3",
   "mood": "Aether",
   "engines": [
-    "OBSIDIAN",
-    "OPTIC"
+    "Obsidian",
+    "Optic"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, dark, kinetic, vast.",
+  "description": "Extreme DNA corners — aether, dark, kinetic, vast.",
   "tags": [
     "aether",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.931
   },
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "level": 0.842,
       "pan": 0.113
     },
-    "OPTIC": {
+    "Optic": {
       "level": 0.751,
       "pan": -0.125
     }

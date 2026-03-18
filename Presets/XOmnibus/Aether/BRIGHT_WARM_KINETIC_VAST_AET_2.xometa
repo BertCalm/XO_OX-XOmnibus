@@ -3,12 +3,12 @@
   "name": "BRIGHT WARM KINETIC VAST AET 2",
   "mood": "Aether",
   "engines": [
-    "ONSET",
-    "OVERBITE"
+    "Onset",
+    "Overbite"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, bright, warm, kinetic.",
+  "description": "Extreme DNA corners — aether, bright, warm, kinetic.",
   "tags": [
     "aether",
     "bright",
@@ -35,11 +35,11 @@
     "aggression": 0.597
   },
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "level": 0.759,
       "pan": 0.018
     },
-    "OVERBITE": {
+    "Overbite": {
       "level": 0.784,
       "pan": -0.058
     }

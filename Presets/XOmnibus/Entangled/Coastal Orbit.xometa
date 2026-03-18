@@ -3,8 +3,8 @@
   "name": "Coastal Orbit",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "ORBITAL"
+    "Osprey",
+    "Orbital"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",

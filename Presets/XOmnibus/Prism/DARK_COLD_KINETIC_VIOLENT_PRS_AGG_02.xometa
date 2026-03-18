@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OCELOT",
-    "OSTERIA"
+    "Ocelot",
+    "Osteria"
   ],
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.084,
       "macro_movement": 0.854,
       "macro_coupling": 0.883,
       "macro_space": 0.577
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.086,
       "macro_movement": 0.831,
       "macro_coupling": 0.858,

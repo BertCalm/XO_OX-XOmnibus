@@ -2,7 +2,7 @@
   "name": "UV Lattice",
   "version": "1.0",
   "engines": [
-    "ONSET"
+    "Onset"
   ],
   "mood": "Atmosphere",
   "macros": {

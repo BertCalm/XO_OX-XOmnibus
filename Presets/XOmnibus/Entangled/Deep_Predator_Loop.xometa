@@ -3,12 +3,12 @@
   "name": "Deep Predator Loop",
   "mood": "Entangled",
   "engines": [
-    "ORCA",
-    "OUROBOROS"
+    "Orca",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Frequency smear locks Orca breach timing to strange attractor rhythm \u2014 looped predation.",
+  "description": "Frequency smear locks Orca breach timing to strange attractor rhythm — looped predation.",
   "tags": [
     "entangled",
     "brutal",

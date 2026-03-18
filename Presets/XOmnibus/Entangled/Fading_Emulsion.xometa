@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OPAL",
-    "OBSCURA"
+    "Opal",
+    "Obscura"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.12,
       "macro_movement": 0.28,
       "macro_coupling": 0.8,
       "macro_space": 0.93
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.09,
       "macro_movement": 0.23,
       "macro_coupling": 0.85,
@@ -46,5 +46,5 @@
     "emulsion",
     "fading"
   ],
-  "description": "Grain envelope shapes Obscura's decay \u2014 both dissolve before the eye can fix them."
+  "description": "Grain envelope shapes Obscura's decay — both dissolve before the eye can fix them."
 }

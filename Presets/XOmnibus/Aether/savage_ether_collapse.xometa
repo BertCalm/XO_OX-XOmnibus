@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OVERDUB",
-    "ONSET"
+    "Overdub",
+    "Onset"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.917,
       "macro_movement": 0.222,
       "macro_coupling": 0.831,
       "macro_space": 0.351
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.469,
       "macro_movement": 0.237,
       "macro_coupling": 0.906,

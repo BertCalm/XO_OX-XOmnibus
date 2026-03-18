@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OBLONG",
-    "OBBLIGATO"
+    "Oblong",
+    "Obbligato"
   ],
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.498,
       "macro_movement": 0.99,
       "macro_coupling": 0.795,
       "macro_space": 0.36
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.503,
       "macro_movement": 0.983,
       "macro_coupling": 0.774,

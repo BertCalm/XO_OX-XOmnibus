@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ODYSSEY"
+    "Outwit",
+    "Odyssey"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.075,
       "macro_movement": 0.754,
       "macro_coupling": 0.226,
       "macro_space": 0.676
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.674,
       "macro_movement": 0.397,
       "macro_coupling": 0.846,

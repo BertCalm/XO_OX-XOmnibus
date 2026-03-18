@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OLE",
-    "OBBLIGATO"
+    "Ole",
+    "Obbligato"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.925,
       "macro_movement": 0.967,
       "macro_coupling": 0.581,
       "macro_space": 0.906
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.901,
       "macro_movement": 0.965,
       "macro_coupling": 0.589,

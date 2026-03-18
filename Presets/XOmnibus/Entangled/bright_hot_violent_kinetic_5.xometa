@@ -19,11 +19,11 @@
     "space": 0.5373
   },
   "engines": [
-    "XOrphica"
+    "Orphica"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 bright hot violent kinetic. Designed for BIND coupling with XOrphica.",
+  "description": "Ultra-diverse Entangled preset — bright hot violent kinetic. Designed for BIND coupling with XOrphica.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "BIND",
   "couplingIntensity": "Medium",
   "parameters": {
-    "XOrphica": {
+    "Orphica": {
       "couplingLevel": 0.997,
       "couplingBus": 3
     }

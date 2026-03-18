@@ -3,12 +3,12 @@
   "name": "Arm Emerge",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OPTIC"
+    "Outwit",
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OPTIC filter tracking drives OUTWIT pitch spread \u2014 spectral focus \u2192 cellular focus",
+  "description": "OPTIC filter tracking drives OUTWIT pitch spread — spectral focus → cellular focus",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.725
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 184,
       "owit_arms": 5,
       "owit_cellSize": 0.4,

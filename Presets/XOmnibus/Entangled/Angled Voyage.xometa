@@ -2,8 +2,8 @@
   "name": "Angled Voyage",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OBLIQUE"
+    "Odyssey",
+    "Oblique"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oblique",
     "wavetable"
   ],
-  "description": "The odyssey path deflected mid-arc \u2014 wavetable trajectory arriving from slant angle"
+  "description": "The odyssey path deflected mid-arc — wavetable trajectory arriving from slant angle"
 }

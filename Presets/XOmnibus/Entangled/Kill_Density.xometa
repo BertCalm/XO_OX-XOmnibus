@@ -3,12 +3,12 @@
   "name": "Kill Density",
   "mood": "Entangled",
   "engines": [
-    "ORCA",
-    "ONSET"
+    "Orca",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Orca kill velocity coupling into Onset XVC \u2014 every breach triggers percussion cascade.",
+  "description": "Orca kill velocity coupling into Onset XVC — every breach triggers percussion cascade.",
   "tags": [
     "entangled",
     "brutal",

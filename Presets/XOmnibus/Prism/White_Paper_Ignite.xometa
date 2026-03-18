@@ -3,11 +3,11 @@
   "name": "White Paper Ignite",
   "mood": "Prism",
   "engines": [
-    "ORIGAMI"
+    "Origami"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORIGAMI pushed to extreme brightness \u2014 brightness 0.94, movement 0.90, aggression 0.42. Ultra-bright Prism zone filler.",
+  "description": "ORIGAMI pushed to extreme brightness — brightness 0.94, movement 0.90, aggression 0.42. Ultra-bright Prism zone filler.",
   "tags": [
     "prism",
     "ultra-bright",
@@ -40,7 +40,7 @@
     "aggression": 0.419
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "ori_macro_fold": 0.28,
       "ori_macro_tension": 0.793,
       "ori_macro_couple": 0.392,

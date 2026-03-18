@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OBSCURA",
-    "ORPHICA"
+    "Obscura",
+    "Orphica"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.651,
       "macro_movement": 1.016,
       "macro_coupling": 0.721,
       "macro_space": 0.082
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.452,
       "macro_movement": 0.962,
       "macro_coupling": 0.339,

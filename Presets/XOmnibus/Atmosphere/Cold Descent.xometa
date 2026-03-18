@@ -2,7 +2,7 @@
   "name": "Cold Descent",
   "version": "1.0",
   "engines": [
-    "OMBRE"
+    "Ombre"
   ],
   "mood": "Atmosphere",
   "macros": {

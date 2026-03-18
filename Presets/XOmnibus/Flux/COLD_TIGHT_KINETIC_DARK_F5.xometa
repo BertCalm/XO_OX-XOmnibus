@@ -11,11 +11,11 @@
     "space": 0.065
   },
   "engines": [
-    "OBBLIGATO"
+    "Obbligato"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Flux preset \u2014 extreme dark brightness, extreme cold warmth, extreme kinetic movement, extreme tight space. Maximum contrast character design.",
+  "description": "Ultra-diverse Flux preset — extreme dark brightness, extreme cold warmth, extreme kinetic movement, extreme tight space. Maximum contrast character design.",
   "tags": [
     "dark",
     "cold",
@@ -40,7 +40,7 @@
     "aggression": 0.587
   },
   "parameters": {
-    "OBBLIGATO": {}
+    "Obbligato": {}
   },
   "coupling": {
     "pairs": []

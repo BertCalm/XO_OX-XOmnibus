@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ORIGAMI",
-    "OVERWORLD"
+    "Origami",
+    "Overworld"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.374,
       "macro_movement": 0.893,
       "macro_coupling": 0.758,
       "macro_space": 0.277
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.377,
       "macro_movement": 0.953,
       "macro_coupling": 0.735,

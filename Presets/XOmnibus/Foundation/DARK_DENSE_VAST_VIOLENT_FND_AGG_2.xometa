@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ONSET",
-    "OBSIDIAN"
+    "Onset",
+    "Obsidian"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.516,
       "macro_movement": 0.817,
       "macro_coupling": 0.641,
       "macro_space": 0.494
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.51,
       "macro_movement": 0.838,
       "macro_coupling": 0.614,

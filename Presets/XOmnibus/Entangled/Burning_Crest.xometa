@@ -3,8 +3,8 @@
   "name": "Burning Crest",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "ORIGAMI"
+    "Oceanic",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.0
   },
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.322,
       "macro_movement": 0.408,
       "macro_coupling": 0.857,
       "macro_space": 0.437
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.57,
       "macro_movement": 0.686,
       "macro_coupling": 0.676,

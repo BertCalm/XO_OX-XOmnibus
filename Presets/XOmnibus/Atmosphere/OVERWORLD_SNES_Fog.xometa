@@ -2,17 +2,38 @@
   "schema_version": 1,
   "name": "SNES Fog",
   "mood": "Atmosphere",
-  "engines": ["OVERWORLD"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "SNES SPC700 high in the mix with maximum space — chip textures dissolving in wet reverb.",
-  "tags": ["snes", "fog", "atmosphere", "spc700", "reverb", "overworld"],
-  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "tags": [
+    "snes",
+    "fog",
+    "atmosphere",
+    "spc700",
+    "reverb",
+    "overworld"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.6, "movement": 0.2, "density": 0.4, "space": 0.9, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.2,
+    "density": 0.4,
+    "space": 0.9,
+    "aggression": 0.1
+  },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_era": 2,
       "ow_macro_era": 0.92,
       "ow_macro_chaos": 0.04,
@@ -23,6 +44,8 @@
       "ow_couplingBus": 0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

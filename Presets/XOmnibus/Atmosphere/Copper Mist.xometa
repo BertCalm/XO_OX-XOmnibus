@@ -2,7 +2,7 @@
   "name": "Copper Mist",
   "version": "1.0",
   "engines": [
-    "OHM"
+    "Ohm"
   ],
   "mood": "Atmosphere",
   "macros": {
@@ -27,5 +27,5 @@
     "dawn",
     "gentle"
   ],
-  "description": "A slow opening \u2014 like watching a flower find the sun. Patient and luminous."
+  "description": "A slow opening — like watching a flower find the sun. Patient and luminous."
 }

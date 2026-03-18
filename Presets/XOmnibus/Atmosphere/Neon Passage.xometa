@@ -2,7 +2,7 @@
   "name": "Neon Passage",
   "version": "1.0",
   "engines": [
-    "OBLIQUE"
+    "Oblique"
   ],
   "mood": "Atmosphere",
   "macros": {

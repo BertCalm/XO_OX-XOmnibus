@@ -3,8 +3,8 @@
   "name": "DARK_COLD_SPARSE_VAST_GENTLE_FND_4",
   "mood": "Foundation",
   "engines": [
-    "ONSET",
-    "OBLONG"
+    "Onset",
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.18,
       "macro_movement": 0.241,
       "macro_coupling": 0.0,
       "macro_space": 0.901
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.26,
       "macro_movement": 0.323,
       "macro_coupling": 0.159,

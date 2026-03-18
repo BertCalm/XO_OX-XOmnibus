@@ -3,12 +3,12 @@
   "name": "Colony Harp",
   "mood": "Entangled",
   "engines": [
-    "ORGANON",
-    "ORPHICA"
+    "Organon",
+    "Orphica"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Organon colony harmonics fold into ORPHICA's harp strings \u2014 communal instrument.",
+  "description": "Organon colony harmonics fold into ORPHICA's harp strings — communal instrument.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.06
   },
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.55,
       "macro_movement": 0.68,
       "macro_coupling": 0.65,
       "macro_space": 0.55
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.65,
       "macro_movement": 0.52,
       "macro_coupling": 0.65,

@@ -3,7 +3,7 @@
   "name": "Violent Column",
   "mood": "Atmosphere",
   "engines": [
-    "OUTWIT"
+    "Outwit"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.819
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "cunning": 0.8,
       "reflex": 0.812,
       "coupling": 0.312,

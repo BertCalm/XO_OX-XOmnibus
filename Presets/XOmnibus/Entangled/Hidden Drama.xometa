@@ -3,12 +3,12 @@
   "name": "Hidden Drama",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OBSCURA"
+    "Ole",
+    "Obscura"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "OLE drama spatially coupled into Obscura's depth \u2014 the dancer disappears.",
+  "description": "OLE drama spatially coupled into Obscura's depth — the dancer disappears.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.58
   },
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.7,
       "macro_movement": 0.62,
       "macro_coupling": 0.68,
       "macro_space": 0.4
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.52,
       "macro_movement": 0.58,
       "macro_coupling": 0.68,

@@ -3,12 +3,12 @@
   "name": "DARK_KINETIC_DENSE_GENTLE_ENT_3",
   "mood": "Entangled",
   "engines": [
-    "OVERDUB",
-    "ORPHICA"
+    "Overdub",
+    "Orphica"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Kinetic Dense Gentle character entanglement \u2014 OVERDUB \u00d7 ORPHICA via Chaos Inject. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Kinetic Dense Gentle character entanglement — OVERDUB × ORPHICA via Chaos Inject. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.0528
   },
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.5483,
       "macro_movement": 0.986,
       "macro_coupling": 0.6204,
@@ -57,7 +57,7 @@
       "output_level": 0.8873,
       "coupling_level": 0.5581
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.5356,
       "macro_movement": 0.9887,
       "macro_coupling": 0.594,

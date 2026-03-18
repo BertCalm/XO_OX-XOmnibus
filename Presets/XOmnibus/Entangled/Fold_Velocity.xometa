@@ -3,12 +3,12 @@
   "name": "Fold Velocity",
   "mood": "Entangled",
   "engines": [
-    "ORIGAMI",
-    "ONSET"
+    "Origami",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Origami fold velocity coupled into Onset percussion \u2014 paper crane at drumstick speed.",
+  "description": "Origami fold velocity coupled into Onset percussion — paper crane at drumstick speed.",
   "tags": [
     "entangled",
     "brutal",

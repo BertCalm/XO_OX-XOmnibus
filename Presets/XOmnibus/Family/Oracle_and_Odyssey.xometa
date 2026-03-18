@@ -3,12 +3,12 @@
   "name": "Oracle and Odyssey",
   "mood": "Family",
   "engines": [
-    "ORACLE",
-    "ODYSSEY"
+    "Oracle",
+    "Odyssey"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORACLE ancient voice + ODYSSEY open-water drift \u2014 the prophet on the water. Resonance carried on current. Wisdom moving.",
+  "description": "ORACLE ancient voice + ODYSSEY open-water drift — the prophet on the water. Resonance carried on current. Wisdom moving.",
   "tags": [
     "family",
     "reunion",

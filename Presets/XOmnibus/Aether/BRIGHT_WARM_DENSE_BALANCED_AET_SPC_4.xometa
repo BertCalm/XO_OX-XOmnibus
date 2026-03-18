@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OCEANIC",
-    "OVERWORLD"
+    "Oceanic",
+    "Overworld"
   ],
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.97,
       "macro_movement": 0.339,
       "macro_coupling": 0.563,
       "macro_space": 0.452
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.951,
       "macro_movement": 0.337,
       "macro_coupling": 0.585,

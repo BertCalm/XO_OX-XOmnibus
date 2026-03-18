@@ -3,8 +3,8 @@
   "name": "Amber Pattern",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OBLONG"
+    "Outwit",
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "density": 0.675
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 73,
       "owit_arms": 4,
       "owit_cellSize": 0.378,

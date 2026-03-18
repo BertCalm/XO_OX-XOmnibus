@@ -3,8 +3,8 @@
   "name": "Organ Web",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ORGANON"
+    "Overlap",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.09
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.83,
       "olap_decay": 0.85,
       "olap_damping": 0.38,
@@ -69,7 +69,7 @@
       "olap_outputLevel": 0.77,
       "olap_outputPan": -0.17
     },
-    "ORGANON": {
+    "Organon": {
       "organon_character": 0.32,
       "organon_movement": 0.27,
       "organon_coupling": 0.78,

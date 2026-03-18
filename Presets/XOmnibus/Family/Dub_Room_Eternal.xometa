@@ -3,11 +3,11 @@
   "name": "Dub Room Eternal",
   "mood": "Family",
   "engines": [
-    "OVERDUB"
+    "Overdub"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERDUB spring and tape at maximum warmth \u2014 the room that never ends.",
+  "description": "OVERDUB spring and tape at maximum warmth — the room that never ends.",
   "tags": [
     "family",
     "portrait",

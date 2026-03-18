@@ -2,8 +2,8 @@
   "name": "Clave Drift",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OLE"
+    "Odyssey",
+    "Ole"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ole",
     "wavetable"
   ],
-  "description": "Afro-Latin clave rhythm modulates FM drift \u2014 percussion reshaping the odyssey path"
+  "description": "Afro-Latin clave rhythm modulates FM drift — percussion reshaping the odyssey path"
 }

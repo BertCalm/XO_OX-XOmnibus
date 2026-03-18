@@ -3,20 +3,20 @@
   "name": "Green Augury",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "ORACLE"
+    "Ottoni",
+    "Oracle"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Envelope linking draws ORACLE's sustained glissandi through OTTONI's brass sustain arc.",
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.7,
       "macro_movement": 0.55,
       "macro_coupling": 0.7,
       "macro_space": 0.48
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.58,
       "macro_movement": 0.6,
       "macro_coupling": 0.62,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OSTERIA",
-    "ORIGAMI"
+    "Osteria",
+    "Origami"
   ],
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.821,
       "macro_movement": 0.483,
       "macro_coupling": 0.836,
       "macro_space": 0.864
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.858,
       "macro_movement": 0.505,
       "macro_coupling": 0.791,

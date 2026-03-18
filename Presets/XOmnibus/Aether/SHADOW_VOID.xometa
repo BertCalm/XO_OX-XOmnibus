@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OBSIDIAN",
-    "ORBITAL"
+    "Obsidian",
+    "Orbital"
   ],
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.33,
       "macro_movement": 0.558,
       "macro_coupling": 0.387,
       "macro_space": 0.252
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.852,
       "macro_movement": 0.964,
       "macro_coupling": 0.603,

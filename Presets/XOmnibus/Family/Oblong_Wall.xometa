@@ -3,11 +3,11 @@
   "name": "Oblong Wall",
   "mood": "Family",
   "engines": [
-    "OBLONG"
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OBLONG as total wall \u2014 shape fills every frequency gap, no air remains.",
+  "description": "OBLONG as total wall — shape fills every frequency gap, no air remains.",
   "tags": [
     "family",
     "portrait",

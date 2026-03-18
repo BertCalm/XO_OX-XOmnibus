@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OPTIC",
-    "OHM"
+    "Optic",
+    "Ohm"
   ],
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.179,
       "macro_movement": 0.237,
       "macro_coupling": 0.882,
       "macro_space": 0.045
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.544,
       "macro_movement": 0.643,
       "macro_coupling": 0.804,

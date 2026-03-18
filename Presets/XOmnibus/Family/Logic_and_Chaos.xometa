@@ -3,12 +3,12 @@
   "name": "Logic and Chaos",
   "mood": "Family",
   "engines": [
-    "ORGANON",
-    "OUROBOROS"
+    "Organon",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORGANON biological logic + OUROBOROS Lorenz spiral \u2014 the organism and its shadow. Metabolism meeting entropy. The system and its undoing.",
+  "description": "ORGANON biological logic + OUROBOROS Lorenz spiral — the organism and its shadow. Metabolism meeting entropy. The system and its undoing.",
   "tags": [
     "family",
     "reunion",

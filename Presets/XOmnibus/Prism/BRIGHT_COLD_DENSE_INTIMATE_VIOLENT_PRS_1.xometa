@@ -3,8 +3,8 @@
   "name": "BRIGHT_COLD_DENSE_INTIMATE_VIOLENT_PRS_1",
   "mood": "Prism",
   "engines": [
-    "ORPHICA",
-    "OVERWORLD"
+    "Orphica",
+    "Overworld"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.853,
       "macro_movement": 0.388,
       "macro_coupling": 0.979,
       "macro_space": 0.0
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.954,
       "macro_movement": 0.351,
       "macro_coupling": 0.84,

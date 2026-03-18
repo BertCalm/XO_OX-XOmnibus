@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OVERBITE",
-    "OHM"
+    "Overbite",
+    "Ohm"
   ],
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.289,
       "macro_movement": 0.253,
       "macro_coupling": 0.45,
       "macro_space": 0.054
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.825,
       "macro_movement": 0.276,
       "macro_coupling": 0.611,

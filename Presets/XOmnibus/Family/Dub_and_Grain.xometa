@@ -3,12 +3,12 @@
   "name": "Dub and Grain",
   "mood": "Family",
   "engines": [
-    "OVERDUB",
-    "OPAL"
+    "Overdub",
+    "Opal"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERDUB tape warmth + OPAL grain scatter \u2014 the reunion of textures. Tape hiss feeding grain clouds. The studio and the sky.",
+  "description": "OVERDUB tape warmth + OPAL grain scatter — the reunion of textures. Tape hiss feeding grain clouds. The studio and the sky.",
   "tags": [
     "family",
     "reunion",

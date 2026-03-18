@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OBBLIGATO"
+    "Obbligato"
   ],
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "obbl_macro_character": 0.37,
       "obbl_macro_movement": 0.15,
       "obbl_macro_coupling": 0.19,

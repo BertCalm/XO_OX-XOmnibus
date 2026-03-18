@@ -2,8 +2,8 @@
   "name": "Chip Ice Cathedral",
   "version": "1.0",
   "engines": [
-    "OVERWORLD",
-    "OMBRE"
+    "Overworld",
+    "Ombre"
   ],
   "mood": "Entangled",
   "strategy": "Bright Dark",

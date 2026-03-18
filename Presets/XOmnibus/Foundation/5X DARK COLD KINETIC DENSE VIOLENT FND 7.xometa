@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT FND 7",
   "mood": "Foundation",
   "engines": [
-    "OSPREY",
-    "OBLIQUE"
+    "Osprey",
+    "Oblique"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.74,
       "macro_movement": 0.72,
       "macro_coupling": 0.54,
       "macro_space": 0.49
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.85,
       "macro_movement": 0.91,
       "macro_coupling": 0.54,

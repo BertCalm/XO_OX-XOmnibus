@@ -2,8 +2,8 @@
   "name": "Bass Oracle Bite",
   "version": "1.0",
   "engines": [
-    "OVERBITE",
-    "ORACLE"
+    "Overbite",
+    "Oracle"
   ],
   "mood": "Entangled",
   "strategy": "Still Aggressive",
@@ -35,5 +35,5 @@
     "bass",
     "locked"
   ],
-  "description": "BITE code locked to Oracle's still vision \u2014 aggressive ground state."
+  "description": "BITE code locked to Oracle's still vision — aggressive ground state."
 }

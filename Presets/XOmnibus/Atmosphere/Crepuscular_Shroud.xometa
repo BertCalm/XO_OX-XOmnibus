@@ -3,7 +3,7 @@
   "name": "Crepuscular Shroud",
   "mood": "Atmosphere",
   "engines": [
-    "ORACLE"
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.083
   },
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "vision": 0.113,
       "flow": 0.344,
       "coupling": 0.26,

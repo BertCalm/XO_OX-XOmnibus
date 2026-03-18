@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OBLONG",
-    "OPTIC"
+    "Oblong",
+    "Optic"
   ],
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.704,
       "macro_movement": 0.913,
       "macro_coupling": 0.784,
       "macro_space": 0.391
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.607,
       "macro_movement": 0.914,
       "macro_coupling": 0.791,

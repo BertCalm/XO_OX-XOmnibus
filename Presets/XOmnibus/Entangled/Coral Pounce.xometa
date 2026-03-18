@@ -2,8 +2,8 @@
   "name": "Coral Pounce",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OCELOT"
+    "Obbligato",
+    "Ocelot"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ocelot",
     "wind"
   ],
-  "description": "OBBLIGATO BOND macro triggers ocelot pounce envelope \u2014 breath obligates the ambush"
+  "description": "OBBLIGATO BOND macro triggers ocelot pounce envelope — breath obligates the ambush"
 }

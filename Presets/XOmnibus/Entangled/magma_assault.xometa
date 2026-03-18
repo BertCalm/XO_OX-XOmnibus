@@ -3,8 +3,8 @@
   "name": "Magma Assault",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OBSIDIAN"
+    "Outwit",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.36
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 150,
       "owit_arms": 8,
       "owit_cellSize": 0.25,
@@ -70,7 +70,7 @@
       "owit_outputLevel": 0.78,
       "owit_outputPan": 0.18
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "obsidian_character": 0.58,
       "obsidian_movement": 0.74,
       "obsidian_coupling": 0.74,

@@ -3,12 +3,12 @@
   "name": "Impact Geometry",
   "mood": "Entangled",
   "engines": [
-    "OBLONG",
-    "ONSET"
+    "Oblong",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bob's filter geometry velocity-coupled to Onset drum voices \u2014 warm percussion at maximum density.",
+  "description": "Bob's filter geometry velocity-coupled to Onset drum voices — warm percussion at maximum density.",
   "tags": [
     "entangled",
     "brutal",

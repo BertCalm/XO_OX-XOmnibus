@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT FAM 6",
   "mood": "Family",
   "engines": [
-    "OCELOT",
-    "OVERBITE"
+    "Ocelot",
+    "Overbite"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.62,
       "macro_movement": 0.63,
       "macro_coupling": 0.75,
       "macro_space": 0.2
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.76,
       "macro_movement": 1.0,
       "macro_coupling": 0.56,

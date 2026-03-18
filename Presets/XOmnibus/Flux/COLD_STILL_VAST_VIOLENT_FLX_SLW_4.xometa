@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OCEANIC",
-    "OPTIC"
+    "Oceanic",
+    "Optic"
   ],
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.684,
       "macro_movement": 0.056,
       "macro_coupling": 0.94,
       "macro_space": 0.85
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.664,
       "macro_movement": 0.06,
       "macro_coupling": 0.771,

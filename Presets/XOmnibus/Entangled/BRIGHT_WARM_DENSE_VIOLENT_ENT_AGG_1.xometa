@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OCTOPUS",
-    "OWLFISH"
+    "Octopus",
+    "Owlfish"
   ],
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.456,
       "macro_movement": 0.383,
       "macro_coupling": 0.892,
       "macro_space": 0.289
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.666,
       "macro_movement": 0.385,
       "macro_coupling": 0.864,

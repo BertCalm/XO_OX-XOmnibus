@@ -2,8 +2,8 @@
   "name": "Dub At Dusk",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OMBRE"
+    "Overdub",
+    "Ombre"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ombre",
     "dub"
   ],
-  "description": "Dub loop fades through ombre gradient \u2014 each echo dimmer than the last at twilight"
+  "description": "Dub loop fades through ombre gradient — each echo dimmer than the last at twilight"
 }

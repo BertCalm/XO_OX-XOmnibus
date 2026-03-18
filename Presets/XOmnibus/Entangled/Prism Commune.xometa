@@ -2,8 +2,8 @@
   "name": "Prism Commune",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OPTIC"
+    "Ohm",
+    "Optic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "optic",
     "hippy"
   ],
-  "description": "Sage warmth refracts through a prismatic lens \u2014 folk harmonics split to spectral rays"
+  "description": "Sage warmth refracts through a prismatic lens — folk harmonics split to spectral rays"
 }

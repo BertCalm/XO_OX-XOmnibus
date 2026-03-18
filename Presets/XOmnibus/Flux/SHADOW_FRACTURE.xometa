@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OTTONI",
-    "OBSCURA"
+    "Ottoni",
+    "Obscura"
   ],
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.582,
       "macro_movement": 0.616,
       "macro_coupling": 0.644,
       "macro_space": 0.419
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.46,
       "macro_movement": 0.664,
       "macro_coupling": 0.6,

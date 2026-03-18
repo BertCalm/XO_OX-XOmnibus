@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OPAL",
-    "ODYSSEY"
+    "Opal",
+    "Odyssey"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.951,
       "macro_movement": 0.649,
       "macro_coupling": 0.506,
       "macro_space": 0.607
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.912,
       "macro_movement": 0.673,
       "macro_coupling": 0.468,

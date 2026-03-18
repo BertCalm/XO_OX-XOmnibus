@@ -3,12 +3,12 @@
   "name": "Verdant Oracle",
   "mood": "Entangled",
   "engines": [
-    "ORACLE",
-    "OTTONI"
+    "Oracle",
+    "Ottoni"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Oracle resonance peaks shared into OTTONI body \u2014 prophecy in patina green.",
+  "description": "Oracle resonance peaks shared into OTTONI body — prophecy in patina green.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.1
   },
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.55,
       "macro_movement": 0.65,
       "macro_coupling": 0.76,
       "macro_space": 0.58
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.68,
       "macro_movement": 0.44,
       "macro_coupling": 0.76,

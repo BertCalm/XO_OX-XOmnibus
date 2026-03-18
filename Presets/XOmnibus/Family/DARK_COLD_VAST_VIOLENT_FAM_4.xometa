@@ -3,12 +3,12 @@
   "name": "DARK COLD VAST VIOLENT FAM 4",
   "mood": "Family",
   "engines": [
-    "ORBITAL",
-    "OBSCURA"
+    "Orbital",
+    "Obscura"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, dark, cold, vast.",
+  "description": "Extreme DNA corners — family, dark, cold, vast.",
   "tags": [
     "family",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.938
   },
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "level": 0.835,
       "pan": 0.123
     },
-    "OBSCURA": {
+    "Obscura": {
       "level": 0.819,
       "pan": 0.136
     }

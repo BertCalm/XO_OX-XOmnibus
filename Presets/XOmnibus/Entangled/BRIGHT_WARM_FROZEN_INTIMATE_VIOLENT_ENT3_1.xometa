@@ -3,12 +3,12 @@
   "name": "BRIGHT_WARM_FROZEN_INTIMATE_VIOLENT_ENT3_1",
   "mood": "Entangled",
   "engines": [
-    "OMBRE",
-    "ORBITAL"
+    "Ombre",
+    "Orbital"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_WARM_FROZEN_INTIMATE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_INTIMATE_VIOLENT. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.793,
       "macro_movement": 0.0445,
       "macro_coupling": 0.9635,
       "macro_space": 0.7244
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.5127,
       "macro_movement": 0.0548,
       "macro_coupling": 0.8049,

@@ -3,8 +3,8 @@
   "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_FND_2",
   "mood": "Foundation",
   "engines": [
-    "OBSIDIAN",
-    "OUROBOROS"
+    "Obsidian",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 1.0,
       "macro_movement": 0.624,
       "macro_coupling": 0.153,
       "macro_space": 1.0
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 1.0,
       "macro_movement": 0.512,
       "macro_coupling": 0.048,

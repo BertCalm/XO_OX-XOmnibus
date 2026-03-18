@@ -2,8 +2,8 @@
   "name": "Sage Shore",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OCEANIC"
+    "Ohm",
+    "Oceanic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oceanic",
     "hippy"
   ],
-  "description": "Oceanic shoreline separation tuned to ohm COMMUNE macro \u2014 the sea joins the circle"
+  "description": "Oceanic shoreline separation tuned to ohm COMMUNE macro — the sea joins the circle"
 }

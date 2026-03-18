@@ -3,12 +3,12 @@
   "name": "BRIGHT_WARM_INTIMATE_VIOLENT_ENT_2",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "OBLIQUE"
+    "Obsidian",
+    "Oblique"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Warm Intimate Violent character entanglement \u2014 OBSIDIAN \u00d7 OBLIQUE via Timbral Bleed. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Warm Intimate Violent character entanglement — OBSIDIAN × OBLIQUE via Timbral Bleed. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.9105
   },
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.9247,
       "macro_movement": 0.4044,
       "macro_coupling": 0.9404,
@@ -57,7 +57,7 @@
       "output_level": 0.817,
       "coupling_level": 0.9388
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.9507,
       "macro_movement": 0.3648,
       "macro_coupling": 0.9338,

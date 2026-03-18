@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OBSCURA"
+    "Outwit",
+    "Obscura"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.295,
       "macro_movement": 0.918,
       "macro_coupling": 0.506,
       "macro_space": 0.43
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.793,
       "macro_movement": 0.94,
       "macro_coupling": 0.114,

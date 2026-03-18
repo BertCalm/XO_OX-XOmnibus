@@ -2,8 +2,8 @@
   "name": "Patina Shimmer",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OTTONI"
+    "Opal",
+    "Ottoni"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ottoni",
     "granular"
   ],
-  "description": "Ottoni density grounds the opal grain field \u2014 brass weight settling the shimmer cloud"
+  "description": "Ottoni density grounds the opal grain field — brass weight settling the shimmer cloud"
 }

@@ -3,8 +3,8 @@
   "name": "Aristotelian Bloom",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ORGANON"
+    "Overlap",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.2
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.8,
       "olap_decay": 0.81,
       "olap_damping": 0.43,
@@ -69,7 +69,7 @@
       "olap_outputLevel": 0.81,
       "olap_outputPan": -0.2
     },
-    "ORGANON": {
+    "Organon": {
       "organon_character": 0.64,
       "organon_movement": 0.26,
       "organon_coupling": 0.57,

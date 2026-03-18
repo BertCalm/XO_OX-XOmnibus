@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OPAL",
-    "OCEANIC"
+    "Opal",
+    "Oceanic"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.281,
       "macro_movement": 0.9482,
       "macro_coupling": 0.964,
       "macro_space": 0.9337
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.2803,
       "macro_movement": 0.9521,
       "macro_coupling": 0.9644,

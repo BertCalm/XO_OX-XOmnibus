@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OPAL",
-    "OVERDUB"
+    "Opal",
+    "Overdub"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.4818,
       "macro_movement": 0.4772,
       "macro_coupling": 0.8622,
       "macro_space": 0.9054
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.4923,
       "macro_movement": 0.4384,
       "macro_coupling": 0.9039,

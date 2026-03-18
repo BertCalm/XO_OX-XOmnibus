@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OSPREY"
+    "Osprey"
   ],
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "osp_macro_character": 0.39,
       "osp_macro_movement": 0.36,
       "osp_macro_coupling": 0.36,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ORACLE",
-    "OSTERIA"
+    "Oracle",
+    "Osteria"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.603,
       "macro_movement": 0.745,
       "macro_coupling": 0.427,
       "macro_space": 0.503
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.584,
       "macro_movement": 0.751,
       "macro_coupling": 0.519,

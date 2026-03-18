@@ -4,8 +4,8 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OTTONI"
+    "Outwit",
+    "Ottoni"
   ],
   "author": "XO_OX",
   "macros": {
@@ -23,7 +23,7 @@
     "density": 0.67
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 30,
       "owit_arms": 7,
       "owit_cellSize": 0.337,
@@ -56,5 +56,5 @@
     "wolfram",
     "cellular-automata"
   ],
-  "description": "Ottoni GROW macro drives OUTWIT branch complexity \u2014 brass growth as arm proliferation"
+  "description": "Ottoni GROW macro drives OUTWIT branch complexity — brass growth as arm proliferation"
 }

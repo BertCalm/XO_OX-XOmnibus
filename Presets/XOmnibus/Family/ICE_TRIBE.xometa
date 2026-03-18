@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OTTONI",
-    "OSPREY"
+    "Ottoni",
+    "Osprey"
   ],
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.589,
       "macro_movement": 0.429,
       "macro_coupling": 0.569,
       "macro_space": 0.06
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.96,
       "macro_movement": 0.099,
       "macro_coupling": 0.763,

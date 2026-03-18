@@ -2,8 +2,8 @@
   "name": "Frozen Oracle",
   "version": "1.0",
   "engines": [
-    "OPTIC",
-    "ORACLE"
+    "Optic",
+    "Oracle"
   ],
   "mood": "Entangled",
   "strategy": "Bright Dark",
@@ -35,5 +35,5 @@
     "sparse",
     "oracular"
   ],
-  "description": "Prophecy suspended in Arctic light \u2014 future seen through a frozen lens."
+  "description": "Prophecy suspended in Arctic light — future seen through a frozen lens."
 }

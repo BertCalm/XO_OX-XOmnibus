@@ -3,11 +3,11 @@
   "name": "Black Iris",
   "mood": "Family",
   "engines": [
-    "OBSCURA"
+    "Obscura"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OBSCURA fully closed \u2014 shadow at maximum density. The pupil in total darkness.",
+  "description": "OBSCURA fully closed — shadow at maximum density. The pupil in total darkness.",
   "tags": [
     "family",
     "portrait",

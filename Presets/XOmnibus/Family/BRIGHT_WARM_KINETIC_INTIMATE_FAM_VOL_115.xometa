@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OBLONG",
-    "ORIGAMI"
+    "Oblong",
+    "Origami"
   ],
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.902,
       "macro_movement": 0.941,
       "macro_coupling": 0.582,
       "macro_space": 0.082
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.91,
       "macro_movement": 0.923,
       "macro_coupling": 0.616,

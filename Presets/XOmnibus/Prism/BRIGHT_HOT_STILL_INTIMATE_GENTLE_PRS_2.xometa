@@ -3,8 +3,8 @@
   "name": "BRIGHT_HOT_STILL_INTIMATE_GENTLE_PRS_2",
   "mood": "Prism",
   "engines": [
-    "OPTIC",
-    "OLE"
+    "Optic",
+    "Ole"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.89,
       "macro_movement": 0.062,
       "macro_coupling": 0.285,
       "macro_space": 0.183
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 1.0,
       "macro_movement": 0.207,
       "macro_coupling": 0.332,

@@ -19,11 +19,11 @@
     "density": 0.5667
   },
   "engines": [
-    "XOddOscar"
+    "OddOscar"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark hot vast kinetic. Designed for BIND coupling with XOddOscar.",
+  "description": "Ultra-diverse Entangled preset — dark hot vast kinetic. Designed for BIND coupling with XOddOscar.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "BIND",
   "couplingIntensity": "High",
   "parameters": {
-    "XOddOscar": {
+    "OddOscar": {
       "couplingLevel": 0.803,
       "couplingBus": 3
     }

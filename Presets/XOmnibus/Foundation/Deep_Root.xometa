@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "ODDFELIX",
-    "OBLONG"
+    "OddfeliX",
+    "Oblong"
   ],
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.308,
       "macro_movement": 0.749,
       "macro_coupling": 0.569,
       "macro_space": 0.289
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.124,
       "macro_movement": 0.689,
       "macro_coupling": 0.7,

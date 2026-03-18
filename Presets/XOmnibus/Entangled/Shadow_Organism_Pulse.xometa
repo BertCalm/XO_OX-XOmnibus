@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OCTOPUS",
-    "OUROBOROS"
+    "Octopus",
+    "Ouroboros"
   ],
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.51,
       "macro_movement": 0.88,
       "macro_coupling": 0.56,
       "macro_space": 0.74
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.83,
       "macro_movement": 0.2,
       "macro_coupling": 0.63,

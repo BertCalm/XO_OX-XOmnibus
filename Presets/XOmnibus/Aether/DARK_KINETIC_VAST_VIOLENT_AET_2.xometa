@@ -3,12 +3,12 @@
   "name": "DARK KINETIC VAST VIOLENT AET 2",
   "mood": "Aether",
   "engines": [
-    "OUROBOROS",
-    "OCELOT"
+    "Ouroboros",
+    "Ocelot"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, dark, kinetic, vast.",
+  "description": "Extreme DNA corners — aether, dark, kinetic, vast.",
   "tags": [
     "aether",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.937
   },
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "level": 0.777,
       "pan": -0.104
     },
-    "OCELOT": {
+    "Ocelot": {
       "level": 0.713,
       "pan": 0.025
     }

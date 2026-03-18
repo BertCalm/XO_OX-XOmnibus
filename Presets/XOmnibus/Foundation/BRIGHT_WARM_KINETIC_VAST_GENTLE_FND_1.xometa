@@ -3,8 +3,8 @@
   "name": "BRIGHT_WARM_KINETIC_VAST_GENTLE_FND_1",
   "mood": "Foundation",
   "engines": [
-    "OVERBITE",
-    "ODDOSCAR"
+    "Overbite",
+    "OddOscar"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.818,
       "macro_movement": 1.0,
       "macro_coupling": 0.495,
       "macro_space": 0.879
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.953,
       "macro_movement": 0.857,
       "macro_coupling": 0.439,

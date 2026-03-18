@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OVERDUB",
-    "OTTONI"
+    "Overdub",
+    "Ottoni"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.618,
       "macro_movement": 0.943,
       "macro_coupling": 0.482,
       "macro_space": 0.385
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.405,
       "macro_movement": 0.969,
       "macro_coupling": 0.433,

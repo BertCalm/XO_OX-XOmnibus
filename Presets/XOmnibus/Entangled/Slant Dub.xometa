@@ -2,8 +2,8 @@
   "name": "Slant Dub",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OBLIQUE"
+    "Overdub",
+    "Oblique"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oblique",
     "dub"
   ],
-  "description": "Tape loop deflected mid-play \u2014 the expected echo arrives from a crooked angle"
+  "description": "Tape loop deflected mid-play — the expected echo arrives from a crooked angle"
 }

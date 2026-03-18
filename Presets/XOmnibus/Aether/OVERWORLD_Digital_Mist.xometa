@@ -2,17 +2,38 @@
   "schema_version": 1,
   "name": "Digital Mist",
   "mood": "Aether",
-  "engines": ["OVERWORLD"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "SNES SPC700 smeared across a reverb field — sample playback dissolving into pure space.",
-  "tags": ["digital", "mist", "aether", "snes", "ethereal", "overworld"],
-  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "tags": [
+    "digital",
+    "mist",
+    "aether",
+    "snes",
+    "ethereal",
+    "overworld"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.55, "movement": 0.15, "density": 0.3, "space": 0.95, "aggression": 0.07},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.55,
+    "movement": 0.15,
+    "density": 0.3,
+    "space": 0.95,
+    "aggression": 0.07
+  },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_era": 2,
       "ow_macro_era": 0.95,
       "ow_macro_chaos": 0.03,
@@ -23,6 +44,8 @@
       "ow_couplingBus": 0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

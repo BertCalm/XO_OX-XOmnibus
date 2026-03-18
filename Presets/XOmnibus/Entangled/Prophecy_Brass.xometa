@@ -3,20 +3,20 @@
   "name": "Prophecy Brass",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "ORACLE"
+    "Ottoni",
+    "Oracle"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Brass frequency shifts seed ORACLE's stochastic breakpoint predictions.",
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.68,
       "macro_movement": 0.52,
       "macro_coupling": 0.68,
       "macro_space": 0.5
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.55,
       "macro_movement": 0.58,
       "macro_coupling": 0.6,

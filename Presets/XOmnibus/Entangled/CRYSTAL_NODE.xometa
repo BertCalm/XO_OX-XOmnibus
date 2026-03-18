@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORIGAMI",
-    "ORPHICA"
+    "Origami",
+    "Orphica"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.214,
       "macro_movement": 0.473,
       "macro_coupling": 0.901,
       "macro_space": 0.796
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.17,
       "macro_movement": 0.085,
       "macro_coupling": 0.515,

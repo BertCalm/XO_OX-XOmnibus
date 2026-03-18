@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OPAL",
-    "OCEANIC"
+    "Opal",
+    "Oceanic"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.24,
       "macro_movement": 0.5,
       "macro_coupling": 0.71,
       "macro_space": 0.86
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.31,
       "macro_movement": 0.69,
       "macro_coupling": 0.63,

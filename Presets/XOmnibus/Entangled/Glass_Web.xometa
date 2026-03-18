@@ -3,8 +3,8 @@
   "name": "Glass Web",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OBSIDIAN"
+    "Overlap",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "density": 0.675
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.664,
       "olap_decay": 0.609,
       "olap_damping": 0.378,

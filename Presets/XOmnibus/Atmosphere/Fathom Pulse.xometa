@@ -2,7 +2,7 @@
   "name": "Fathom Pulse",
   "version": "1.0",
   "engines": [
-    "OBSIDIAN"
+    "Obsidian"
   ],
   "mood": "Atmosphere",
   "macros": {

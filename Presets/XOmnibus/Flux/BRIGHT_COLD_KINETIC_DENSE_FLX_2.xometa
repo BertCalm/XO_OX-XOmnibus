@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OUROBOROS",
-    "ORIGAMI"
+    "Ouroboros",
+    "Origami"
   ],
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.8545,
       "macro_movement": 0.8782,
       "macro_coupling": 0.5372,
       "macro_space": 0.594
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.8147,
       "macro_movement": 0.9489,
       "macro_coupling": 0.6594,

@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Chip Heaven",
   "mood": "Aether",
-  "engines": ["OVERWORLD"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "All three eras dissolving into one another at the ERA Triangle's center of gravity — NES, Genesis, and SNES blended at the midpoint where their timbres momentarily agree on something transcendent. Maximum space, minimal chaos, full coupling. The afterlife of the 16-bit era.",
-  "tags": ["aether", "all-eras", "transcendent", "ERA-blend", "space", "spiritual", "coupling", "heaven"],
-  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "tags": [
+    "aether",
+    "all-eras",
+    "transcendent",
+    "ERA-blend",
+    "space",
+    "spiritual",
+    "coupling",
+    "heaven"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
@@ -19,7 +35,7 @@
     "aggression": 0.08
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_macro_era": 0.5,
       "ow_macro_chaos": 0.08,
       "ow_macro_couple": 0.72,
@@ -29,6 +45,13 @@
       "ow_couplingBus": 0
     }
   },
-  "macros": {"ERA": 0.5, "CHAOS": 0.08, "COUPLE": 0.72, "SPACE": 0.92},
-  "coupling": {"pairs": []}
+  "macros": {
+    "ERA": 0.5,
+    "CHAOS": 0.08,
+    "COUPLE": 0.72,
+    "SPACE": 0.92
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

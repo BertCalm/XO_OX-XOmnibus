@@ -3,12 +3,12 @@
   "name": "Resonant Growth",
   "mood": "Entangled",
   "engines": [
-    "ORGANON",
-    "OTTONI"
+    "Organon",
+    "Ottoni"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Organon resonance peaks shared into brass body \u2014 rich sympathetic vibration.",
+  "description": "Organon resonance peaks shared into brass body — rich sympathetic vibration.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.08
   },
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.55,
       "macro_movement": 0.6,
       "macro_coupling": 0.75,
       "macro_space": 0.5
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.7,
       "macro_movement": 0.4,
       "macro_coupling": 0.75,

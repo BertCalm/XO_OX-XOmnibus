@@ -3,12 +3,12 @@
   "name": "Topology Crush",
   "mood": "Entangled",
   "engines": [
-    "OBLONG",
-    "OUROBOROS"
+    "Oblong",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bob's amber warmth crushed under Ouroboros strange attractor \u2014 structure consumed by chaos.",
+  "description": "Bob's amber warmth crushed under Ouroboros strange attractor — structure consumed by chaos.",
   "tags": [
     "entangled",
     "brutal",

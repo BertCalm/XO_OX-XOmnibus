@@ -3,12 +3,12 @@
   "name": "Pixel Feast",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "OVERWORLD"
+    "Osteria",
+    "Overworld"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Chiptune glitch decorates the tavern table \u2014 retro colour in a warm room.",
+  "description": "Chiptune glitch decorates the tavern table — retro colour in a warm room.",
   "tags": [
     "entangled",
     "coupling",

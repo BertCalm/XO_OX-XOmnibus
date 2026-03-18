@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OTTONI",
-    "OBLIQUE"
+    "Ottoni",
+    "Oblique"
   ],
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.911,
       "macro_movement": 0.745,
       "macro_coupling": 0.833,
       "macro_space": 0.903
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.776,
       "macro_movement": 0.23,
       "macro_coupling": 0.802,

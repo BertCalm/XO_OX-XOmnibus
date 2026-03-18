@@ -3,12 +3,12 @@
   "name": "Branch Signal",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OBBLIGATO"
+    "Outwit",
+    "Obbligato"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OUTWIT arm count maps to OBBLIGATO voice balance \u2014 8 arms, 2 voices, infinite shades",
+  "description": "OUTWIT arm count maps to OBBLIGATO voice balance — 8 arms, 2 voices, infinite shades",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.65
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 30,
       "owit_arms": 5,
       "owit_cellSize": 0.207,

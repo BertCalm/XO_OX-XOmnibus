@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OHM",
-    "OUROBOROS"
+    "Ohm",
+    "Ouroboros"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.339,
       "macro_movement": 0.935,
       "macro_coupling": 0.443,
       "macro_space": 0.336
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.46,
       "macro_movement": 0.97,
       "macro_coupling": 0.57,

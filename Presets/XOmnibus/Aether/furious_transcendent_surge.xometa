@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OPAL",
-    "OCTOPUS"
+    "Opal",
+    "Octopus"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.063,
       "macro_movement": 0.457,
       "macro_coupling": 0.5,
       "macro_space": 0.24
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.632,
       "macro_movement": 0.431,
       "macro_coupling": 0.719,

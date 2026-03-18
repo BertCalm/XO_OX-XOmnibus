@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OVERBITE",
-    "OPTIC"
+    "Overbite",
+    "Optic"
   ],
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.042,
       "macro_movement": 0.425,
       "macro_coupling": 0.383,
       "macro_space": 0.532
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.371,
       "macro_movement": 0.336,
       "macro_coupling": 0.18,

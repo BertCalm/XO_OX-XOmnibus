@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ODDFELIX",
-    "OBSCURA"
+    "OddfeliX",
+    "Obscura"
   ],
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.109,
       "macro_movement": 0.443,
       "macro_coupling": 0.778,
       "macro_space": 0.842
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.37,
       "macro_movement": 0.407,
       "macro_coupling": 0.536,

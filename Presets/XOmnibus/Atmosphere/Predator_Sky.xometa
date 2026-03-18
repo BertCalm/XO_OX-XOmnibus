@@ -3,7 +3,7 @@
   "name": "Predator Sky",
   "mood": "Atmosphere",
   "engines": [
-    "OBLONG"
+    "Oblong"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.751
   },
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "character": 0.816,
       "movement": 0.585,
       "coupling": 0.106,

@@ -3,20 +3,20 @@
   "name": "Drama Circuit",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "ORGANON"
+    "Ole",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Filter sweeps from OLE's DRAMA macro trigger ORGANON's enzymatic filters \u2014 aggression 0.88.",
+  "description": "Filter sweeps from OLE's DRAMA macro trigger ORGANON's enzymatic filters — aggression 0.88.",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.8,
       "macro_movement": 0.74,
       "macro_coupling": 0.82,
       "macro_space": 0.36
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.62,
       "macro_movement": 0.72,
       "macro_coupling": 0.72,

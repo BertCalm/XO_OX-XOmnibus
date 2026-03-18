@@ -2,19 +2,50 @@
   "schema_version": 1,
   "name": "Odyssey Deep Scan",
   "mood": "Entangled",
-  "engines": ["ODYSSEY", "ORCA"],
+  "engines": [
+    "Odyssey",
+    "Orca"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Odyssey's drift oscillator amplitude modulating Orca wavetable position — the violet synthesis of ODYSSEY moving the metallic wavetable of ORCA. Two exploratory systems scanning different dimensions simultaneously.",
-  "tags": ["entangled", "odyssey", "orca", "drift", "scan"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "macros": {"CHARACTER": 0.52, "MOVEMENT": 0.68, "COUPLING": 0.72, "SPACE": 0.5},
+  "tags": [
+    "entangled",
+    "odyssey",
+    "orca",
+    "drift",
+    "scan"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.68,
+    "COUPLING": 0.72,
+    "SPACE": 0.5
+  },
   "couplingIntensity": "Medium",
-  "dna": {"brightness": 0.45, "warmth": 0.42, "movement": 0.68, "density": 0.58, "space": 0.52, "aggression": 0.32},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.42,
+    "movement": 0.68,
+    "density": 0.58,
+    "space": 0.52,
+    "aggression": 0.32
+  },
   "parameters": {},
   "coupling": {
     "pairs": [
-      {"engineA": "ODYSSEY", "engineB": "ORCA", "type": "AudioToFM", "amount": 0.62}
+      {
+        "engineA": "ODYSSEY",
+        "engineB": "ORCA",
+        "type": "AudioToFM",
+        "amount": 0.62
+      }
     ]
   }
 }

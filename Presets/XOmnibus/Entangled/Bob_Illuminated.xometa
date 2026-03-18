@@ -3,12 +3,12 @@
   "name": "Bob Illuminated",
   "mood": "Entangled",
   "engines": [
-    "OBLONG",
-    "OPTIC"
+    "Oblong",
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Optic velocity signal driving Bob's filter \u2014 amber warmth at maximum luminous aggression.",
+  "description": "Optic velocity signal driving Bob's filter — amber warmth at maximum luminous aggression.",
   "tags": [
     "entangled",
     "brutal",

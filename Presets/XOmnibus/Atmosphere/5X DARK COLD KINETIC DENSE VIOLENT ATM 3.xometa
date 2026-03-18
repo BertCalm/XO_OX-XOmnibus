@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT ATM 3",
   "mood": "Atmosphere",
   "engines": [
-    "OPAL",
-    "ODDOSCAR"
+    "Opal",
+    "OddOscar"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.79,
       "macro_movement": 0.77,
       "macro_coupling": 0.65,
       "macro_space": 0.42
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.64,
       "macro_movement": 0.88,
       "macro_coupling": 0.56,

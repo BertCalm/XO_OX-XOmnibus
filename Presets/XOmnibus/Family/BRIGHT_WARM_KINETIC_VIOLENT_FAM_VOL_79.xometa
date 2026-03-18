@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "ORGANON",
-    "ODDFELIX"
+    "Organon",
+    "OddfeliX"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.904,
       "macro_movement": 0.907,
       "macro_coupling": 0.647,
       "macro_space": 0.523
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.894,
       "macro_movement": 0.864,
       "macro_coupling": 0.691,

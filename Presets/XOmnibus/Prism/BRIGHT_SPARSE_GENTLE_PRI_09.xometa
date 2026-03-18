@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ONSET",
-    "OSTERIA"
+    "Onset",
+    "Osteria"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.792,
       "macro_movement": 0.503,
       "macro_coupling": 0.795,
       "macro_space": 0.646
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.922,
       "macro_movement": 0.505,
       "macro_coupling": 0.703,

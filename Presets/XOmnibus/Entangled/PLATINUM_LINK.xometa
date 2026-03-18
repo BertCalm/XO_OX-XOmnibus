@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OCEANIC"
+    "Outwit",
+    "Oceanic"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.383,
       "macro_movement": 0.856,
       "macro_coupling": 0.411,
       "macro_space": 0.318
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.473,
       "macro_movement": 0.913,
       "macro_coupling": 0.381,

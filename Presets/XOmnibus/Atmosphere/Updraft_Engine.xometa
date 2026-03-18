@@ -3,7 +3,7 @@
   "name": "Updraft Engine",
   "mood": "Atmosphere",
   "engines": [
-    "OVERWORLD"
+    "Overworld"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.452
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "era": 0.457,
       "glitch": 0.977,
       "coupling": 0.334,

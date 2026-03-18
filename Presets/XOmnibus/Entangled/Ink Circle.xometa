@@ -2,8 +2,8 @@
   "name": "Ink Circle",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OCTOPUS"
+    "Ohm",
+    "Octopus"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "octopus",
     "hippy"
   ],
-  "description": "Cloud of dark neural complexity envelops sage warmth \u2014 obscured but not lost"
+  "description": "Cloud of dark neural complexity envelops sage warmth — obscured but not lost"
 }

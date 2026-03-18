@@ -3,12 +3,12 @@
   "name": "BRIGHT_COLD_KINETIC_SPARSE_ENT_2",
   "mood": "Entangled",
   "engines": [
-    "OHM",
-    "ORBITAL"
+    "Ohm",
+    "Orbital"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Cold Kinetic Sparse character entanglement \u2014 OHM \u00d7 ORBITAL via Phase Lock. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Cold Kinetic Sparse character entanglement — OHM × ORBITAL via Phase Lock. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.4748
   },
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.6729,
       "macro_movement": 0.9218,
       "macro_coupling": 0.7881,
@@ -57,7 +57,7 @@
       "output_level": 0.6987,
       "coupling_level": 0.7494
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.6603,
       "macro_movement": 0.9471,
       "macro_coupling": 0.7328,

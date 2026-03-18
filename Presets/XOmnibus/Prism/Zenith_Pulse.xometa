@@ -11,11 +11,11 @@
     "space": 0.8
   },
   "engines": [
-    "ORBITAL"
+    "Orbital"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Orbital peak at zenith \u2014 highest orbital resonance",
+  "description": "Orbital peak at zenith — highest orbital resonance",
   "tags": [
     "prism",
     "bright",

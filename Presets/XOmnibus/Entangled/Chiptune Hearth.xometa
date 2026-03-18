@@ -2,8 +2,8 @@
   "name": "Chiptune Hearth",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OVERWORLD"
+    "Ohm",
+    "Overworld"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "overworld",
     "hippy"
   ],
-  "description": "ERA triangle crossfades through ohm communal warmth \u2014 retro game music finds its soul"
+  "description": "ERA triangle crossfades through ohm communal warmth — retro game music finds its soul"
 }

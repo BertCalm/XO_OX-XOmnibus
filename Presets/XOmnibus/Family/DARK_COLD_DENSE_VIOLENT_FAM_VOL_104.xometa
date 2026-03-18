@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "ORPHICA",
-    "OHM"
+    "Orphica",
+    "Ohm"
   ],
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.126,
       "macro_movement": 0.522,
       "macro_coupling": 0.931,
       "macro_space": 0.655
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.114,
       "macro_movement": 0.522,
       "macro_coupling": 0.91,

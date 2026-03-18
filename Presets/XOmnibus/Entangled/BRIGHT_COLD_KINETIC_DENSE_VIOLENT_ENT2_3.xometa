@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORGANON",
-    "OBESE"
+    "Organon",
+    "Obese"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.495,
       "macro_movement": 0.918,
       "macro_coupling": 0.969,
       "macro_space": 0.444
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.516,
       "macro_movement": 0.887,
       "macro_coupling": 0.942,

@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OVERLAP"
+    "Overlap"
   ],
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.35,
       "macro_movement": 0.87,
       "macro_coupling": 0.22,

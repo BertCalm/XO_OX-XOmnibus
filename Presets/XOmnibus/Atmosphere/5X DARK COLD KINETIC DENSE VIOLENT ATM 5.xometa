@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT ATM 5",
   "mood": "Atmosphere",
   "engines": [
-    "ORIGAMI",
-    "ORACLE"
+    "Origami",
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.89,
       "macro_movement": 0.99,
       "macro_coupling": 0.66,
       "macro_space": 0.17
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.96,
       "macro_movement": 0.92,
       "macro_coupling": 0.81,

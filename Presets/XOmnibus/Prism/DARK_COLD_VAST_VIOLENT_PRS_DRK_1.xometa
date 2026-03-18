@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ORPHICA",
-    "OSTERIA"
+    "Orphica",
+    "Osteria"
   ],
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.4703,
       "macro_movement": 0.3128,
       "macro_coupling": 0.4262,
       "macro_space": 0.9021
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.462,
       "macro_movement": 0.346,
       "macro_coupling": 0.4229,

@@ -3,8 +3,8 @@
   "name": "Circle Stochastic Hum",
   "mood": "Entangled",
   "engines": [
-    "OHM",
-    "ORACLE"
+    "Ohm",
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0.0",

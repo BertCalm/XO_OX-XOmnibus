@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ODDOSCAR",
-    "OCTOPUS"
+    "OddOscar",
+    "Octopus"
   ],
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.542,
       "macro_movement": 0.975,
       "macro_coupling": 0.923,
       "macro_space": 0.423
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.56,
       "macro_movement": 0.961,
       "macro_coupling": 0.929,

@@ -3,11 +3,11 @@
   "name": "Fold Under Pressure",
   "mood": "Family",
   "engines": [
-    "ORIGAMI"
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORIGAMI under maximum fold tension \u2014 geometry stressed to densest possible form.",
+  "description": "ORIGAMI under maximum fold tension — geometry stressed to densest possible form.",
   "tags": [
     "family",
     "portrait",

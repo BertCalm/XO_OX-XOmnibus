@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ORBITAL",
-    "OPTIC"
+    "Orbital",
+    "Optic"
   ],
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.793,
       "macro_movement": 0.894,
       "macro_coupling": 0.732,
       "macro_space": 0.286
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.337,
       "macro_movement": 0.405,
       "macro_coupling": 0.727,

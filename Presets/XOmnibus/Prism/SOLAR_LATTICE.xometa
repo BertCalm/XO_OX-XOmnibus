@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ORIGAMI",
-    "OBESE"
+    "Origami",
+    "Obese"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.698,
       "macro_movement": 0.407,
       "macro_coupling": 0.82,
       "macro_space": 0.03
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.648,
       "macro_movement": 0.912,
       "macro_coupling": 0.958,

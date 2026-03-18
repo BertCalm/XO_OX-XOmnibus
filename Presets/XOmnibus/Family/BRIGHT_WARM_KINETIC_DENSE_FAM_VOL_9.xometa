@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OHM",
-    "ORIGAMI"
+    "Ohm",
+    "Origami"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.99,
       "macro_movement": 0.86,
       "macro_coupling": 0.818,
       "macro_space": 0.486
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.968,
       "macro_movement": 0.859,
       "macro_coupling": 0.837,

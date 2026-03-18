@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERDUB",
-    "ORCA"
+    "Overdub",
+    "Orca"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.131,
       "macro_movement": 0.018,
       "macro_coupling": 0.508,
       "macro_space": 0.932
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.097,
       "macro_movement": 0.019,
       "macro_coupling": 0.513,

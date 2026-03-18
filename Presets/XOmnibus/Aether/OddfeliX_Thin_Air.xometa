@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Thin Air",
+  "mood": "Aether",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Snap disappearing into thin air — altitude-like sparseness, barely above threshold.",
+  "tags": ["thin", "air", "sparse", "aether"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.88, "warmth": 0.08, "movement": 0.48, "density": 0.08, "space": 0.95, "aggression": 0.06},
+  "parameters": {
+    "OddfeliX": {"snap_oscMode": 0, "snap_snap": 0.72, "snap_decay": 0.18, "snap_detune": 0.03, "snap_filterCutoff": 16500.0, "snap_filterReso": 0.55, "snap_filterEnvDepth": 0.82, "snap_unison": 1, "snap_sweepDirection": 0, "snap_pitchLock": 0.97, "snap_polyphony": 2, "snap_level": 0.28, "snap_macroDart": 0.5, "snap_macroDepth": 0.1, "snap_macroSchool": 0.02, "snap_macroSurface": 0.96}
+  },
+  "macros": {"CHARACTER": 0.68, "MOVEMENT": 0.48, "COUPLING": 0.0, "SPACE": 0.95},
+  "coupling": {"pairs": []}
+}

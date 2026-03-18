@@ -2,8 +2,8 @@
   "name": "Sage Voyage",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OHM"
+    "Odyssey",
+    "Ohm"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ohm",
     "wavetable"
   ],
-  "description": "Odyssey trajectory rooted in sage warmth \u2014 the drift grounded by ohm resonance"
+  "description": "Odyssey trajectory rooted in sage warmth — the drift grounded by ohm resonance"
 }

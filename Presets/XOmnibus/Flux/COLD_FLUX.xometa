@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ODDFELIX",
-    "OBESE"
+    "OddfeliX",
+    "Obese"
   ],
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.4219,
       "macro_movement": 0.0298,
       "macro_coupling": 0.2186,
       "macro_space": 0.5054
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.0265,
       "macro_movement": 0.1988,
       "macro_coupling": 0.6499,

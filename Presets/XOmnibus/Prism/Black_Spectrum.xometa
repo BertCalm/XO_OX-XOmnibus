@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OBSCURA",
-    "OBBLIGATO"
+    "Obscura",
+    "Obbligato"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.164,
       "macro_movement": 0.979,
       "macro_coupling": 0.864,
       "macro_space": 0.67
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.641,
       "macro_movement": 0.307,
       "macro_coupling": 0.184,

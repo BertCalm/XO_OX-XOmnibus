@@ -3,8 +3,8 @@
   "name": "Mirror Flow",
   "mood": "Entangled",
   "engines": [
-    "ORCA",
-    "OWLFISH"
+    "Orca",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.44
   },
   "parameters": {
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.356,
       "macro_movement": 0.301,
       "macro_coupling": 0.693,
       "macro_space": 0.261
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.75,
       "macro_movement": 0.793,
       "macro_coupling": 0.589,

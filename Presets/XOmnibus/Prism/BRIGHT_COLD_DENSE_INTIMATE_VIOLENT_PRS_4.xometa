@@ -3,8 +3,8 @@
   "name": "BRIGHT_COLD_DENSE_INTIMATE_VIOLENT_PRS_4",
   "mood": "Prism",
   "engines": [
-    "OBLIQUE",
-    "OPTIC"
+    "Oblique",
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 1.0,
       "macro_movement": 0.504,
       "macro_coupling": 0.894,
       "macro_space": 0.0
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 1.0,
       "macro_movement": 0.394,
       "macro_coupling": 0.899,

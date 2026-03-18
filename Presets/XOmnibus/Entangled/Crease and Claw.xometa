@@ -2,8 +2,8 @@
   "name": "Crease and Claw",
   "version": "1.0",
   "engines": [
-    "OCELOT",
-    "ORIGAMI"
+    "Ocelot",
+    "Origami"
   ],
   "mood": "Entangled",
   "strategy": "Fast Cold",
@@ -35,5 +35,5 @@
     "aggressive",
     "tension"
   ],
-  "description": "Claws through cold paper at maximum speed \u2014 tension and release at velocity."
+  "description": "Claws through cold paper at maximum speed — tension and release at velocity."
 }

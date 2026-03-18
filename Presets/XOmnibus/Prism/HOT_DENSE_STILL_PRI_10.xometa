@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ODDFELIX",
-    "OVERLAP"
+    "OddfeliX",
+    "Overlap"
   ],
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.752,
       "macro_movement": 0.074,
       "macro_coupling": 0.676,
       "macro_space": 0.515
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.739,
       "macro_movement": 0.021,
       "macro_coupling": 0.579,

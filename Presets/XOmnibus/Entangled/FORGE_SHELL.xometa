@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OWLFISH",
-    "OUROBOROS"
+    "Owlfish",
+    "Ouroboros"
   ],
   "parameters": {
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.5967,
       "macro_movement": 0.0164,
       "macro_coupling": 0.8062,
       "macro_space": 0.2419
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.1436,
       "macro_movement": 0.4292,
       "macro_coupling": 0.8459,

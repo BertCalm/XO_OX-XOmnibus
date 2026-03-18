@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "ORACLE",
-    "OBSCURA"
+    "Oracle",
+    "Obscura"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.9179,
       "macro_movement": 0.7048,
       "macro_coupling": 0.0691,
       "macro_space": 0.8867
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.9052,
       "macro_movement": 0.6841,
       "macro_coupling": 0.0792,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OVERWORLD",
-    "ONSET"
+    "Overworld",
+    "Onset"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.202,
       "macro_movement": 0.839,
       "macro_coupling": 0.699,
       "macro_space": 0.159
     },
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.673,
       "macro_movement": 0.252,
       "macro_coupling": 0.689,

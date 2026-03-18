@@ -2,8 +2,8 @@
   "name": "Tape Circle",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OVERDUB"
+    "Ohm",
+    "Overdub"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "overdub",
     "hippy"
   ],
-  "description": "Warm commune recorded to tape \u2014 ohm groove preserved in saturated analogue warmth"
+  "description": "Warm commune recorded to tape — ohm groove preserved in saturated analogue warmth"
 }

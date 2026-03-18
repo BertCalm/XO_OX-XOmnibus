@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OCTOPUS",
-    "ORIGAMI"
+    "Octopus",
+    "Origami"
   ],
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.139,
       "macro_movement": 0.046,
       "macro_coupling": 0.541,
       "macro_space": 0.026
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.693,
       "macro_movement": 0.06,
       "macro_coupling": 0.447,

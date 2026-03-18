@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORIGAMI",
-    "OPAL"
+    "Origami",
+    "Opal"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.517,
       "macro_movement": 0.649,
       "macro_coupling": 0.5,
       "macro_space": 0.965
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.517,
       "macro_movement": 0.649,
       "macro_coupling": 0.5,

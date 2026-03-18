@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OVERDUB",
-    "OUROBOROS"
+    "Overdub",
+    "Ouroboros"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.49,
       "macro_movement": 0.053,
       "macro_coupling": 0.756,
       "macro_space": 0.505
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.432,
       "macro_movement": 0.041,
       "macro_coupling": 0.733,

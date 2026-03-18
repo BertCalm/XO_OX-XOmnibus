@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "ODDFELIX"
+    "Obsidian",
+    "OddfeliX"
   ],
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.069,
       "macro_movement": 0.698,
       "macro_coupling": 0.442,
       "macro_space": 0.89
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.407,
       "macro_movement": 0.564,
       "macro_coupling": 0.496,

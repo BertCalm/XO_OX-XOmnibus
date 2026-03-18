@@ -3,12 +3,12 @@
   "name": "COLD SPARSE VAST BRIGHT FAM 5",
   "mood": "Family",
   "engines": [
-    "ODDOSCAR",
-    "OPAL"
+    "OddOscar",
+    "Opal"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 family, bright, cold, sparse.",
+  "description": "Extreme DNA corners — family, bright, cold, sparse.",
   "tags": [
     "family",
     "bright",
@@ -35,11 +35,11 @@
     "aggression": 0.598
   },
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "level": 0.73,
       "pan": -0.148
     },
-    "OPAL": {
+    "Opal": {
       "level": 0.689,
       "pan": -0.071
     }

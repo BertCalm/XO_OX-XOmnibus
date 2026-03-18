@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OMBRE",
-    "OBLIQUE"
+    "Ombre",
+    "Oblique"
   ],
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.0506,
       "macro_movement": 0.9993,
       "macro_coupling": 0.836,
       "macro_space": 0.969
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.9264,
       "macro_movement": 0.8487,
       "macro_coupling": 0.1663,

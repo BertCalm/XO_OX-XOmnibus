@@ -3,11 +3,11 @@
   "name": "Wind Obligation",
   "mood": "Family",
   "engines": [
-    "OBBLIGATO"
+    "Obbligato"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OBBLIGATO BOND macro \u2014 dual wind voices interlocked. The obligation fulfilled in harmony. Neither voice can leave.",
+  "description": "OBBLIGATO BOND macro — dual wind voices interlocked. The obligation fulfilled in harmony. Neither voice can leave.",
   "tags": [
     "family",
     "extended-family",

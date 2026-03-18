@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OBBLIGATO",
-    "OSPREY"
+    "Obbligato",
+    "Osprey"
   ],
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.496,
       "macro_movement": 0.646,
       "macro_coupling": 0.114,
       "macro_space": 0.333
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.566,
       "macro_movement": 0.002,
       "macro_coupling": 1.0,

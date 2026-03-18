@@ -3,8 +3,8 @@
   "name": "BRIGHT_COLD_STILL_SPARSE_INTIMATE_FND_5",
   "mood": "Foundation",
   "engines": [
-    "OVERBITE",
-    "ORIGAMI"
+    "Overbite",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.962,
       "macro_movement": 0.158,
       "macro_coupling": 0.195,
       "macro_space": 0.084
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 1.0,
       "macro_movement": 0.105,
       "macro_coupling": 0.015,

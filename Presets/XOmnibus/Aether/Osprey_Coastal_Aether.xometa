@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "name": "Coastal Aether",
+  "mood": "Aether",
+  "engines": ["Osprey"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The coastal world dissolves into aether — fog and brine evaporate upward.",
+  "tags": ["aether", "coastal", "dissolve", "ethereal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.6, "warmth": 0.5, "movement": 0.4, "density": 0.35, "space": 0.9, "aggression": 0.08},
+  "parameters": {
+    "Osprey": {
+      "osprey_brine": 0.3,
+      "osprey_foam": 0.4,
+      "osprey_fog": 0.7,
+      "osprey_hull": 0.3,
+      "osprey_depth": 0.3,
+      "osprey_coherence": 0.6,
+      "osprey_filterTilt": 0.55,
+      "osprey_filterEnvDepth": 0.05,
+      "osprey_harborVerb": 0.85,
+      "osprey_creatureRate": 0.1,
+      "osprey_creatureDepth": 0.2,
+      "osprey_glide": 0.6,
+      "osprey_ampAttack": 1.2,
+      "osprey_ampDecay": 0.6,
+      "osprey_ampSustain": 0.55,
+      "osprey_ampRelease": 4.0,
+      "osprey_macroCharacter": 0.4,
+      "osprey_macroMovement": 0.4,
+      "osprey_macroCoupling": 0.0,
+      "osprey_macroSpace": 0.9
+    }
+  },
+  "macros": {"CHARACTER": 0.4, "MOVEMENT": 0.4, "COUPLING": 0.0, "SPACE": 0.9},
+  "coupling": {"pairs": []}
+}

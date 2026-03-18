@@ -3,12 +3,12 @@
   "name": "Prophecy Brass",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "ORACLE"
+    "Ottoni",
+    "Oracle"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "OTTONI harmonics feed Oracle's breakpoint system \u2014 brass foretells timbre.",
+  "description": "OTTONI harmonics feed Oracle's breakpoint system — brass foretells timbre.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.18
   },
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.65,
       "macro_movement": 0.5,
       "macro_coupling": 0.67,
       "macro_space": 0.42
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.58,
       "macro_movement": 0.62,
       "macro_coupling": 0.67,

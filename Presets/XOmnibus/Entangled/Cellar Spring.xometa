@@ -2,8 +2,8 @@
   "name": "Cellar Spring",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OSTERIA"
+    "Overdub",
+    "Osteria"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "osteria",
     "dub"
   ],
-  "description": "Osteria cellar reverb blends with dub spring \u2014 ancient stone meeting oil-drum resonance"
+  "description": "Osteria cellar reverb blends with dub spring — ancient stone meeting oil-drum resonance"
 }

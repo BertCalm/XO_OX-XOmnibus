@@ -19,11 +19,11 @@
     "aggression": 0.5414
   },
   "engines": [
-    "XOle"
+    "Ole"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 cold dense kinetic intimate. Designed for ECHO coupling with XOle.",
+  "description": "Ultra-diverse Entangled preset — cold dense kinetic intimate. Designed for ECHO coupling with XOle.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "ECHO",
   "couplingIntensity": "Extreme",
   "parameters": {
-    "XOle": {
+    "Ole": {
       "couplingLevel": 0.831,
       "couplingBus": 0
     }

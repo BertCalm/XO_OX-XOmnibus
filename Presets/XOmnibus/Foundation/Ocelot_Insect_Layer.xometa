@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Insect Layer",
+  "mood": "Foundation",
+  "engines": ["Ocelot"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Insect creature voices at steady rate — the foundation hum of a living forest.",
+  "tags": ["insect", "layer", "foundation", "creature", "hum", "jungle"],
+  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.55, "warmth": 0.58, "movement": 0.45, "density": 0.6, "space": 0.45, "aggression": 0.25},
+  "parameters": {
+    "Ocelot": {
+      "ocelot_biome": 0,
+      "ocelot_strataBalance": 0.2,
+      "ocelot_ecosystemDepth": 0.55,
+      "ocelot_humidity": 0.7,
+      "ocelot_swing": 0.25,
+      "ocelot_density": 0.55,
+      "ocelot_floorModel": 2,
+      "ocelot_floorTension": 0.45,
+      "ocelot_floorStrike": 0.5,
+      "ocelot_floorDamping": 0.55,
+      "ocelot_floorLevel": 0.4,
+      "ocelot_canopyLevel": 0.3,
+      "ocelot_canopyShimmer": 0.3,
+      "ocelot_canopyBreathe": 0.45,
+      "ocelot_creatureType": 0,
+      "ocelot_creatureRate": 3.0,
+      "ocelot_creatureLevel": 0.6,
+      "ocelot_reverbMix": 0.3,
+      "ocelot_delayMix": 0.1,
+      "ocelot_prowl": 0.4,
+      "ocelot_foliage": 0.55,
+      "ocelot_ecosystem": 0.55,
+      "ocelot_canopy": 0.35
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

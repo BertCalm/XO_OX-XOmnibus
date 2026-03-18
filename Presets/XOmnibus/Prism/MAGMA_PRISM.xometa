@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OSPREY",
-    "ORPHICA"
+    "Osprey",
+    "Orphica"
   ],
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.765,
       "macro_movement": 0.778,
       "macro_coupling": 0.726,
       "macro_space": 0.894
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.404,
       "macro_movement": 0.097,
       "macro_coupling": 0.334,

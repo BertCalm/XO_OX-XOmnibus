@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "ORGANON",
-    "ODYSSEY"
+    "Organon",
+    "Odyssey"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.636,
       "macro_movement": 0.928,
       "macro_coupling": 0.956,
       "macro_space": 0.924
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.636,
       "macro_movement": 0.928,
       "macro_coupling": 0.956,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ORIGAMI",
-    "OVERWORLD"
+    "Origami",
+    "Overworld"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.141,
       "macro_movement": 0.57,
       "macro_coupling": 0.857,
       "macro_space": 0.395
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.899,
       "macro_movement": 0.495,
       "macro_coupling": 0.571,

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Slow Regen",
+  "mood": "Atmosphere",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Slow regenerative atmosphere — bloom cycling at glacial pace over minutes.",
+  "tags": ["slow", "regen", "glacial", "pace"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.35, "warmth": 0.72, "movement": 0.28, "density": 0.65, "space": 0.85, "aggression": 0.08},
+  "parameters": {
+    "OddOscar": {"morph_morph": 0.38, "morph_bloom": 0.85, "morph_detune": 0.22, "morph_drift": 0.22, "morph_filterCutoff": 3200.0, "morph_filterReso": 0.4, "morph_filterEnvDepth": 0.25, "morph_sub": 0.52, "morph_decay": 3.5, "morph_sustain": 0.88, "morph_release": 6.0, "morph_glide": 0.4, "morph_voiceMode": 0, "morph_polyphony": 6, "morph_level": 0.62, "morph_macroBloom": 0.85, "morph_macroDepth": 0.52, "morph_macroDrift": 0.22, "morph_macroSpace": 0.85}
+  },
+  "macros": {"CHARACTER": 0.38, "MOVEMENT": 0.28, "COUPLING": 0.0, "SPACE": 0.85},
+  "coupling": {"pairs": []}
+}

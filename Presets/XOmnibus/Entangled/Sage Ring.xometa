@@ -2,8 +2,8 @@
   "name": "Sage Ring",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "ORBITAL"
+    "Ohm",
+    "Orbital"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orbital",
     "hippy"
   ],
-  "description": "Ohm's COMMUNE axis imprinted on orbital ring modulation \u2014 shared breathing in orbit"
+  "description": "Ohm's COMMUNE axis imprinted on orbital ring modulation — shared breathing in orbit"
 }

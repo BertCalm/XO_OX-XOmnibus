@@ -3,12 +3,12 @@
   "name": "Obligatory Current",
   "mood": "Entangled",
   "engines": [
-    "OCEANIC",
-    "OBBLIGATO"
+    "Oceanic",
+    "Obbligato"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBBLIGATO's required melodic line runs like a current \u2014 inescapable direction.",
+  "description": "OBBLIGATO's required melodic line runs like a current — inescapable direction.",
   "tags": [
     "entangled",
     "coupling",

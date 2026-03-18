@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OBBLIGATO",
-    "OBLIQUE"
+    "Obbligato",
+    "Oblique"
   ],
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.361,
       "macro_movement": 0.181,
       "macro_coupling": 0.467,
       "macro_space": 0.821
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.13,
       "macro_movement": 0.212,
       "macro_coupling": 0.066,

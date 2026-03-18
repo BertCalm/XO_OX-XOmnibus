@@ -3,12 +3,12 @@
   "name": "Ombre Machine",
   "mood": "Entangled",
   "engines": [
-    "OMBRE",
-    "ORCA"
+    "Ombre",
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Orca predator chaos injected into Ombre dual narrative \u2014 the hunt as cold memory.",
+  "description": "Orca predator chaos injected into Ombre dual narrative — the hunt as cold memory.",
   "tags": [
     "entangled",
     "brutal",

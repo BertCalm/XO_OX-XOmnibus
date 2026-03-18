@@ -19,11 +19,11 @@
     "aggression": 0.5045
   },
   "engines": [
-    "XObbligato"
+    "Obbligato"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 cold dense kinetic intimate. Designed for DRIFT coupling with XObbligato.",
+  "description": "Ultra-diverse Entangled preset — cold dense kinetic intimate. Designed for DRIFT coupling with XObbligato.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "DRIFT",
   "couplingIntensity": "Extreme",
   "parameters": {
-    "XObbligato": {
+    "Obbligato": {
       "couplingLevel": 0.653,
       "couplingBus": 0
     }

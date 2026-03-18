@@ -3,20 +3,20 @@
   "name": "Siren Circuit",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "ORGANON"
+    "Orphica",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Filter coupling \u2014 ORPHICA's glass-harmonic filter feeds ORGANON's enzymatic sweep \u2014 brightness 0.90.",
+  "description": "Filter coupling — ORPHICA's glass-harmonic filter feeds ORGANON's enzymatic sweep — brightness 0.90.",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.72,
       "macro_movement": 0.58,
       "macro_coupling": 0.72,
       "macro_space": 0.7
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.55,
       "macro_movement": 0.65,
       "macro_coupling": 0.62,

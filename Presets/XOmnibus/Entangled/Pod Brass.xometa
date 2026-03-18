@@ -2,8 +2,8 @@
   "name": "Pod Brass",
   "version": "1.0",
   "engines": [
-    "OTTONI",
-    "ORCA"
+    "Ottoni",
+    "Orca"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orca",
     "triple"
   ],
-  "description": "Orca pod vocalizations harmonized by triple brass \u2014 cetacean choir with horns"
+  "description": "Orca pod vocalizations harmonized by triple brass — cetacean choir with horns"
 }

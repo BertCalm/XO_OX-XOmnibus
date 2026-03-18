@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OSTERIA",
-    "ORGANON"
+    "Osteria",
+    "Organon"
   ],
   "parameters": {
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.456,
       "macro_movement": 0.406,
       "macro_coupling": 0.913,
       "macro_space": 0.494
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.479,
       "macro_movement": 0.405,
       "macro_coupling": 0.916,

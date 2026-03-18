@@ -19,11 +19,11 @@
     "space": 0.5322
   },
   "engines": [
-    "XOhm"
+    "Ohm"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 dark sparse gentle still. Designed for PHASE coupling with XOhm.",
+  "description": "Ultra-diverse Entangled preset — dark sparse gentle still. Designed for PHASE coupling with XOhm.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "PHASE",
   "couplingIntensity": "Low",
   "parameters": {
-    "XOhm": {
+    "Ohm": {
       "couplingLevel": 0.794,
       "couplingBus": 2
     }

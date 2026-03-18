@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OVERLAP",
-    "OBBLIGATO"
+    "Overlap",
+    "Obbligato"
   ],
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.765,
       "macro_movement": 0.917,
       "macro_coupling": 0.216,
       "macro_space": 0.148
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.329,
       "macro_movement": 0.911,
       "macro_coupling": 0.901,

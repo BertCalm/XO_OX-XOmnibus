@@ -3,11 +3,11 @@
   "name": "Deep Fang",
   "mood": "Family",
   "engines": [
-    "OVERBITE"
+    "Overbite"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OVERBITE in the depths \u2014 BITE maximal but no brightness, only bass and darkness.",
+  "description": "OVERBITE in the depths — BITE maximal but no brightness, only bass and darkness.",
   "tags": [
     "family",
     "portrait",

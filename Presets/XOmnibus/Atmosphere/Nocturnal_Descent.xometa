@@ -3,7 +3,7 @@
   "name": "Nocturnal Descent",
   "mood": "Atmosphere",
   "engines": [
-    "OPAL"
+    "Opal"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.062
   },
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "scatter": 0.186,
       "drift": 0.501,
       "coupling": 0.134,

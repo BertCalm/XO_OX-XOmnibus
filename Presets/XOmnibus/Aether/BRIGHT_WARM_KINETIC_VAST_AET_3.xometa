@@ -3,12 +3,12 @@
   "name": "BRIGHT WARM KINETIC VAST AET 3",
   "mood": "Aether",
   "engines": [
-    "OVERWORLD",
-    "ORIGAMI"
+    "Overworld",
+    "Origami"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, bright, warm, kinetic.",
+  "description": "Extreme DNA corners — aether, bright, warm, kinetic.",
   "tags": [
     "aether",
     "bright",
@@ -35,11 +35,11 @@
     "aggression": 0.454
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "level": 0.657,
       "pan": 0.047
     },
-    "ORIGAMI": {
+    "Origami": {
       "level": 0.769,
       "pan": -0.013
     }

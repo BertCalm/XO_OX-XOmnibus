@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ODDOSCAR",
-    "ORACLE"
+    "OddOscar",
+    "Oracle"
   ],
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.79,
       "macro_movement": 0.72,
       "macro_coupling": 0.74,
       "macro_space": 0.59
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.78,
       "macro_movement": 0.85,
       "macro_coupling": 0.79,

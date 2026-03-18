@@ -3,12 +3,12 @@
   "name": "COLD_SPARSE_VAST_VIOLENT_ENT_1",
   "mood": "Entangled",
   "engines": [
-    "OVERWORLD",
-    "OLE"
+    "Overworld",
+    "Ole"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Cold Sparse Vast Violent character entanglement \u2014 OVERWORLD \u00d7 OLE via Pitch Entangle. Extreme DNA zones push sound design to the edges.",
+  "description": "Cold Sparse Vast Violent character entanglement — OVERWORLD × OLE via Pitch Entangle. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "cold",
@@ -41,7 +41,7 @@
     "aggression": 0.9607
   },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.5283,
       "macro_movement": 0.3412,
       "macro_coupling": 0.9146,
@@ -57,7 +57,7 @@
       "output_level": 0.763,
       "coupling_level": 0.9136
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.4998,
       "macro_movement": 0.3584,
       "macro_coupling": 0.9319,

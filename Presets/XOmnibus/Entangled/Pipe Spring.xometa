@@ -2,8 +2,8 @@
   "name": "Pipe Spring",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OWLFISH"
+    "Overdub",
+    "Owlfish"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "owlfish",
     "dub"
   ],
-  "description": "Spring reverb rings through Mixtur-Trautonium pipes \u2014 deep-water dub resonance"
+  "description": "Spring reverb rings through Mixtur-Trautonium pipes — deep-water dub resonance"
 }

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "ODYSSEY",
-    "OWLFISH"
+    "Odyssey",
+    "Owlfish"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.665,
       "macro_movement": 0.38,
       "macro_coupling": 0.825,
       "macro_space": 0.398
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.639,
       "macro_movement": 0.419,
       "macro_coupling": 0.344,

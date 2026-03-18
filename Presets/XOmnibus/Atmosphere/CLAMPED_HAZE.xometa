@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OVERLAP",
-    "ODYSSEY"
+    "Overlap",
+    "Odyssey"
   ],
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.491,
       "macro_movement": 0.318,
       "macro_coupling": 0.489,
       "macro_space": 0.081
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.635,
       "macro_movement": 0.739,
       "macro_coupling": 0.679,

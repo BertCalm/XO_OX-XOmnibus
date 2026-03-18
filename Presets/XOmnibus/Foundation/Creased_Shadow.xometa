@@ -3,11 +3,11 @@
   "name": "Creased Shadow",
   "mood": "Foundation",
   "engines": [
-    "ORIGAMI"
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0",
-  "description": "ORIGAMI \u2014 dark extreme brightness preset for Foundation.",
+  "description": "ORIGAMI — dark extreme brightness preset for Foundation.",
   "tags": [
     "foundation",
     "dark",
@@ -37,7 +37,7 @@
     "aggression": 0.54
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "ori_foldDepth": 0.72,
       "ori_foldRate": 0.38,
       "ori_filterCutoff": 0.4,

@@ -3,12 +3,12 @@
   "name": "Light Percussion",
   "mood": "Entangled",
   "engines": [
-    "OPTIC",
-    "ONSET"
+    "Optic",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Optic AutoPulse velocity triggering Onset percussive events \u2014 light as drumstick.",
+  "description": "Optic AutoPulse velocity triggering Onset percussive events — light as drumstick.",
   "tags": [
     "entangled",
     "brutal",

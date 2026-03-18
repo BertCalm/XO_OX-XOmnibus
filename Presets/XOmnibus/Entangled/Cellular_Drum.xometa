@@ -3,12 +3,12 @@
   "name": "Cellular Drum",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ONSET"
+    "Outwit",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Outwit CA chaos injected into Onset percussive triggers \u2014 alien cellular intelligence as drum computer.",
+  "description": "Outwit CA chaos injected into Onset percussive triggers — alien cellular intelligence as drum computer.",
   "tags": [
     "entangled",
     "brutal",

@@ -3,12 +3,12 @@
   "name": "Dual Voice with Overdub",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OVERDUB"
+    "Obbligato",
+    "Overdub"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Tape warmth embraces OBBLIGATO's BOND \u2014 coral reeds echo into OVERDUB's olive spring reverb.",
+  "description": "Tape warmth embraces OBBLIGATO's BOND — coral reeds echo into OVERDUB's olive spring reverb.",
   "tags": [
     "coupling",
     "obbligato",

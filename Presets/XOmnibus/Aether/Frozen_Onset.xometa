@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ONSET"
+    "Onset"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "onset_macro_character": 0.39,
       "onset_macro_movement": 0.45,
       "onset_macro_coupling": 0.23,

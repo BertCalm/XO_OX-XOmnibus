@@ -2,8 +2,8 @@
   "name": "Diagonal Brass",
   "version": "1.0",
   "engines": [
-    "OTTONI",
-    "OBLIQUE"
+    "Ottoni",
+    "Oblique"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oblique",
     "triple"
   ],
-  "description": "Straight fanfare angled obliquely \u2014 expected resolution arrives from wrong direction"
+  "description": "Straight fanfare angled obliquely — expected resolution arrives from wrong direction"
 }

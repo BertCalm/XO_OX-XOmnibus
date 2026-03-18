@@ -3,20 +3,20 @@
   "name": "Seafoam Augury",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "ORACLE"
+    "Orphica",
+    "Oracle"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Amplitude of ORPHICA's glissando modulates ORACLE's GENDY stochastic parameters.",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.65,
       "macro_movement": 0.52,
       "macro_coupling": 0.65,
       "macro_space": 0.76
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.52,
       "macro_movement": 0.58,
       "macro_coupling": 0.56,

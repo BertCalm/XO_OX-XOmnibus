@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OVERLAP",
-    "OBLIQUE"
+    "Overlap",
+    "Oblique"
   ],
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.705,
       "macro_movement": 0.699,
       "macro_coupling": 0.549,
       "macro_space": 0.428
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.603,
       "macro_movement": 0.759,
       "macro_coupling": 0.514,

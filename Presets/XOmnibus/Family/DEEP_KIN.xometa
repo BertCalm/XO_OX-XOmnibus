@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OBSCURA",
-    "OVERWORLD"
+    "Obscura",
+    "Overworld"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.308,
       "macro_movement": 0.899,
       "macro_coupling": 0.872,
       "macro_space": 0.629
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.597,
       "macro_movement": 0.266,
       "macro_coupling": 0.656,

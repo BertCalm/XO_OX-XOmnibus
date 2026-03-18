@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORBITAL"
+    "Orbital"
   ],
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.15,
       "macro_movement": 0.52,
       "macro_coupling": 0.08,

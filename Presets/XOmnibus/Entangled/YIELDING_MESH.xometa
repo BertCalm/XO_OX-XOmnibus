@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OBLONG"
+    "Ole",
+    "Oblong"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.184,
       "macro_movement": 0.869,
       "macro_coupling": 0.608,
       "macro_space": 0.763
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.666,
       "macro_movement": 0.448,
       "macro_coupling": 0.687,

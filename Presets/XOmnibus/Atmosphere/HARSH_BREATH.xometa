@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OUTWIT",
-    "OPTIC"
+    "Outwit",
+    "Optic"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.175,
       "macro_movement": 0.636,
       "macro_coupling": 0.507,
       "macro_space": 0.83
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.347,
       "macro_movement": 0.861,
       "macro_coupling": 0.373,

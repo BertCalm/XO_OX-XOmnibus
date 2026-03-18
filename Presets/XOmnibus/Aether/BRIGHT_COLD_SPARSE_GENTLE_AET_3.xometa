@@ -3,12 +3,12 @@
   "name": "BRIGHT COLD SPARSE GENTLE AET 3",
   "mood": "Aether",
   "engines": [
-    "OCEANIC",
-    "OHM"
+    "Oceanic",
+    "Ohm"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, bright, cold, sparse.",
+  "description": "Extreme DNA corners — aether, bright, cold, sparse.",
   "tags": [
     "aether",
     "bright",
@@ -35,11 +35,11 @@
     "aggression": 0.067
   },
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "level": 0.735,
       "pan": -0.026
     },
-    "OHM": {
+    "Ohm": {
       "level": 0.666,
       "pan": -0.059
     }

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OHM",
-    "ORACLE"
+    "Ohm",
+    "Oracle"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.83,
       "macro_movement": 0.51,
       "macro_coupling": 0.81,
       "macro_space": 0.61
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.63,
       "macro_movement": 0.64,
       "macro_coupling": 0.63,

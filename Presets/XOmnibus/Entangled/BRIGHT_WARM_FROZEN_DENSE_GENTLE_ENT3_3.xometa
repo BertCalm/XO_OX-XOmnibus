@@ -3,12 +3,12 @@
   "name": "BRIGHT_WARM_FROZEN_DENSE_GENTLE_ENT3_3",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OVERLAP"
+    "Outwit",
+    "Overlap"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_GENTLE. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_GENTLE. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.8473,
       "macro_movement": 0.044,
       "macro_coupling": 0.8219,
       "macro_space": 0.7934
     },
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.8302,
       "macro_movement": 0.0612,
       "macro_coupling": 0.9852,

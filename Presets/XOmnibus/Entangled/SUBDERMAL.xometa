@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OCELOT",
-    "OHM"
+    "Ocelot",
+    "Ohm"
   ],
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.837,
       "macro_movement": 0.065,
       "macro_coupling": 0.924,
       "macro_space": 0.116
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.199,
       "macro_movement": 0.479,
       "macro_coupling": 0.982,

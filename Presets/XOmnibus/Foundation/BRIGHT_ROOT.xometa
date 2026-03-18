@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OCEANIC",
-    "OVERBITE"
+    "Oceanic",
+    "Overbite"
   ],
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.609,
       "macro_movement": 0.383,
       "macro_coupling": 0.683,
       "macro_space": 0.498
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.583,
       "macro_movement": 0.232,
       "macro_coupling": 0.638,

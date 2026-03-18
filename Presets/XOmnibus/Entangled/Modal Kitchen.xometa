@@ -3,12 +3,12 @@
   "name": "Modal Kitchen",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "ORGANON"
+    "Osteria",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORGANON's modal voice becomes the cook's humming \u2014 logic hidden in warmth.",
+  "description": "ORGANON's modal voice becomes the cook's humming — logic hidden in warmth.",
   "tags": [
     "entangled",
     "coupling",

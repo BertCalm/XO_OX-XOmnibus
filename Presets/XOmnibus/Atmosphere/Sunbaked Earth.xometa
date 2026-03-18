@@ -2,7 +2,7 @@
   "name": "Sunbaked Earth",
   "version": "1.0",
   "engines": [
-    "OTTONI"
+    "Ottoni"
   ],
   "mood": "Atmosphere",
   "macros": {

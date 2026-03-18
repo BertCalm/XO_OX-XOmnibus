@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBLONG",
-    "OHM"
+    "Oblong",
+    "Ohm"
   ],
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.91,
       "macro_movement": 0.27,
       "macro_coupling": 0.66,
       "macro_space": 0.4
     },
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.79,
       "macro_movement": 0.19,
       "macro_coupling": 0.73,

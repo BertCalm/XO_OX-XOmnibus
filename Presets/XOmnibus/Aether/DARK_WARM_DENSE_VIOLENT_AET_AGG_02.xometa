@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OVERWORLD",
-    "ODDOSCAR"
+    "Overworld",
+    "OddOscar"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.081,
       "macro_movement": 0.304,
       "macro_coupling": 0.827,
       "macro_space": 0.599
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.08,
       "macro_movement": 0.308,
       "macro_coupling": 0.855,

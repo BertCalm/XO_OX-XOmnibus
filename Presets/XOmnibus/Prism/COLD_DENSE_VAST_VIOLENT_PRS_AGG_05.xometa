@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OBLIQUE",
-    "OSTERIA"
+    "Oblique",
+    "Osteria"
   ],
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.607,
       "macro_movement": 0.58,
       "macro_coupling": 0.871,
       "macro_space": 0.947
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.576,
       "macro_movement": 0.562,
       "macro_coupling": 0.899,

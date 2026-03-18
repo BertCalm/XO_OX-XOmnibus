@@ -3,20 +3,20 @@
   "name": "Siren Exposure",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "OBSCURA"
+    "Orphica",
+    "Obscura"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Spatial coupling extends ORPHICA's siphonophore ring into OBSCURA's reverberant field \u2014 space 0.80.",
+  "description": "Spatial coupling extends ORPHICA's siphonophore ring into OBSCURA's reverberant field — space 0.80.",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.65,
       "macro_movement": 0.52,
       "macro_coupling": 0.65,
       "macro_space": 0.76
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.52,
       "macro_movement": 0.46,
       "macro_coupling": 0.56,

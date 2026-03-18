@@ -2,8 +2,8 @@
   "name": "Slant Grain",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OBLIQUE"
+    "Opal",
+    "Oblique"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oblique",
     "granular"
   ],
-  "description": "Granular cloud deflected by oblique strategy \u2014 grain particles arriving from wrong angle"
+  "description": "Granular cloud deflected by oblique strategy — grain particles arriving from wrong angle"
 }

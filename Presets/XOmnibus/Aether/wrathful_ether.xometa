@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OMBRE",
-    "OTTONI"
+    "Ombre",
+    "Ottoni"
   ],
   "parameters": {
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.174,
       "macro_movement": 0.854,
       "macro_coupling": 0.742,
       "macro_space": 0.792
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.746,
       "macro_movement": 0.897,
       "macro_coupling": 0.778,

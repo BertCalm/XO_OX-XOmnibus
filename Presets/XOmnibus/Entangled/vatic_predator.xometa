@@ -3,8 +3,8 @@
   "name": "Vatic Predator",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ORACLE"
+    "Outwit",
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.39
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 110,
       "owit_arms": 8,
       "owit_cellSize": 0.14,
@@ -70,7 +70,7 @@
       "owit_outputLevel": 0.71,
       "owit_outputPan": -0.21
     },
-    "ORACLE": {
+    "Oracle": {
       "oracle_character": 0.56,
       "oracle_movement": 0.69,
       "oracle_coupling": 0.57,

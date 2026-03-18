@@ -2,8 +2,8 @@
   "name": "Bond Shimmer",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OBBLIGATO"
+    "Opal",
+    "Obbligato"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "obbligato",
     "granular"
   ],
-  "description": "The obligate bond sustained in opal shimmer \u2014 two voices dissolved into grain texture"
+  "description": "The obligate bond sustained in opal shimmer — two voices dissolved into grain texture"
 }

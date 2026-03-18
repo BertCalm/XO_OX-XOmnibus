@@ -3,12 +3,12 @@
   "name": "DARK KINETIC VAST VIOLENT AET 5",
   "mood": "Aether",
   "engines": [
-    "ORIGAMI",
-    "OSPREY"
+    "Origami",
+    "Osprey"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, dark, kinetic, vast.",
+  "description": "Extreme DNA corners — aether, dark, kinetic, vast.",
   "tags": [
     "aether",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.926
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "level": 0.716,
       "pan": -0.059
     },
-    "OSPREY": {
+    "Osprey": {
       "level": 0.715,
       "pan": -0.114
     }

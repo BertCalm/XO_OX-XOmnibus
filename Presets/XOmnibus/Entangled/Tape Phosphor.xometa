@@ -2,8 +2,8 @@
   "name": "Tape Phosphor",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OPTIC"
+    "Overdub",
+    "Optic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "optic",
     "dub"
   ],
-  "description": "Dub delay trails caught in optical scan \u2014 each echo a phosphorescent afterimage"
+  "description": "Dub delay trails caught in optical scan — each echo a phosphorescent afterimage"
 }

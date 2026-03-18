@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OVERWORLD"
+    "Ole",
+    "Overworld"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.321,
       "macro_movement": 0.732,
       "macro_coupling": 0.432,
       "macro_space": 0.847
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.506,
       "macro_movement": 0.756,
       "macro_coupling": 0.326,

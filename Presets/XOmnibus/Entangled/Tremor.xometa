@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OPTIC",
-    "ORPHICA"
+    "Optic",
+    "Orphica"
   ],
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.31,
       "macro_movement": 0.969,
       "macro_coupling": 0.398,
       "macro_space": 0.815
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.473,
       "macro_movement": 0.912,
       "macro_coupling": 0.037,

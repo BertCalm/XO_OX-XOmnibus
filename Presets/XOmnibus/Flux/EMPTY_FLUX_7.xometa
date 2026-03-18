@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OBLONG",
-    "OTTONI"
+    "Oblong",
+    "Ottoni"
   ],
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.0862,
       "macro_movement": 0.3093,
       "macro_coupling": 0.9996,
       "macro_space": 0.7189
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.5257,
       "macro_movement": 0.7692,
       "macro_coupling": 0.8233,

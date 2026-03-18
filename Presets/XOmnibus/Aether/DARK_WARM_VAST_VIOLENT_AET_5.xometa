@@ -3,12 +3,12 @@
   "name": "DARK WARM VAST VIOLENT AET 5",
   "mood": "Aether",
   "engines": [
-    "OBESE",
-    "OBSIDIAN"
+    "Obese",
+    "Obsidian"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, dark, warm, vast.",
+  "description": "Extreme DNA corners — aether, dark, warm, vast.",
   "tags": [
     "aether",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.945
   },
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "level": 0.668,
       "pan": -0.002
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "level": 0.712,
       "pan": 0.076
     }

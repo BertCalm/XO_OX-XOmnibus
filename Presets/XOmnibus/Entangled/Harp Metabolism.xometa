@@ -3,12 +3,12 @@
   "name": "Harp Metabolism",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "ORGANON"
+    "Orphica",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "ORPHICA microsound harp spectrally morphs Organon's metabolic palette \u2014 bioluminescent life.",
+  "description": "ORPHICA microsound harp spectrally morphs Organon's metabolic palette — bioluminescent life.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.08
   },
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.6,
       "macro_movement": 0.55,
       "macro_coupling": 0.68,
       "macro_space": 0.68
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.55,
       "macro_movement": 0.7,
       "macro_coupling": 0.68,

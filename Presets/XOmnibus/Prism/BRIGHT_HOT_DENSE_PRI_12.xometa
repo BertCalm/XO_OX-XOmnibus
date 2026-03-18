@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OVERDUB",
-    "OCTOPUS"
+    "Overdub",
+    "Octopus"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.946,
       "macro_movement": 0.65,
       "macro_coupling": 0.761,
       "macro_space": 0.51
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.992,
       "macro_movement": 0.546,
       "macro_coupling": 0.596,

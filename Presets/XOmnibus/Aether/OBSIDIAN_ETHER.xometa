@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ONSET",
-    "OBLONG"
+    "Onset",
+    "Oblong"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.645,
       "macro_movement": 0.977,
       "macro_coupling": 0.09,
       "macro_space": 0.594
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.384,
       "macro_movement": 0.58,
       "macro_coupling": 0.954,

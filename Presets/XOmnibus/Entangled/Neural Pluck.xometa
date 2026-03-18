@@ -2,8 +2,8 @@
   "name": "Neural Pluck",
   "version": "1.0",
   "engines": [
-    "ORPHICA",
-    "OCTOPUS"
+    "Orphica",
+    "Octopus"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "octopus",
     "microsound"
   ],
-  "description": "Orphica grains processed through octopus neural net \u2014 distributed shimmer"
+  "description": "Orphica grains processed through octopus neural net — distributed shimmer"
 }

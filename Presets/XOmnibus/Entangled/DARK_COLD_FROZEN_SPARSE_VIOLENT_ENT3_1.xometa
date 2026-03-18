@@ -3,12 +3,12 @@
   "name": "DARK_COLD_FROZEN_SPARSE_VIOLENT_ENT3_1",
   "mood": "Entangled",
   "engines": [
-    "ODDFELIX",
-    "OWLFISH"
+    "OddfeliX",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: DARK_COLD_FROZEN_SPARSE_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_COLD_FROZEN_SPARSE_VIOLENT. Designed to raise Entangled cosine diversity.",
   "tags": [
     "entangled",
     "frozen",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.8558,
       "macro_movement": 0.0954,
       "macro_coupling": 0.951,
       "macro_space": 0.5929
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.924,
       "macro_movement": 0.0823,
       "macro_coupling": 0.8572,

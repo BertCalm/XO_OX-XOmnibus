@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OBLIQUE",
-    "OWLFISH"
+    "Oblique",
+    "Owlfish"
   ],
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.76,
       "macro_movement": 0.88,
       "macro_coupling": 0.89,
       "macro_space": 0.087
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.293,
       "macro_movement": 0.88,
       "macro_coupling": 0.667,

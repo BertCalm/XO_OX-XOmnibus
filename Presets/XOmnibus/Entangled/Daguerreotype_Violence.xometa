@@ -3,12 +3,12 @@
   "name": "Daguerreotype Violence",
   "mood": "Entangled",
   "engines": [
-    "OBSCURA",
-    "ONSET"
+    "Obscura",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Obscura plate stiffness velocity coupling into Onset percussion \u2014 frozen image as drumbeat.",
+  "description": "Obscura plate stiffness velocity coupling into Onset percussion — frozen image as drumbeat.",
   "tags": [
     "entangled",
     "brutal",

@@ -3,12 +3,12 @@
   "name": "Shore Logic",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "ORGANON"
+    "Osprey",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORGANON's modal logic shapes osprey's dive angle \u2014 precision meets instinct.",
+  "description": "ORGANON's modal logic shapes osprey's dive angle — precision meets instinct.",
   "tags": [
     "entangled",
     "coupling",

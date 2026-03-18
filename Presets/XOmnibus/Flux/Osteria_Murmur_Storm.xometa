@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Murmur Storm",
+  "mood": "Flux",
+  "engines": [
+    "Osteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Background murmur pushed to storm intensity.",
+  "tags": [
+    "murmur",
+    "storm",
+    "intensity",
+    "pushed",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.65,
+    "movement": 0.52,
+    "density": 0.55,
+    "space": 0.28,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_porto": 0.48,
+      "osteria_patina": 0.42,
+      "osteria_murmur": 0.88,
+      "osteria_oceanBleed": 0.25,
+      "osteria_blendMode": 2,
+      "osteria_bassLevel": 0.68,
+      "osteria_melLevel": 0.65,
+      "osteria_harmLevel": 0.68,
+      "osteria_rhythmLevel": 0.68,
+      "osteria_qBassShore": 0.28,
+      "osteria_qMelShore": 0.25,
+      "osteria_qHarmShore": 0.28,
+      "osteria_qRhythmShore": 0.28,
+      "osteria_qElastic": 0.42,
+      "osteria_qMemory": 0.42,
+      "osteria_qStretch": 0.45,
+      "osteria_qSympathy": 0.52,
+      "osteria_attack": 0.02,
+      "osteria_decay": 0.25,
+      "osteria_sustain": 0.65,
+      "osteria_release": 0.8,
+      "osteria_chorus": 0.18,
+      "osteria_hall": 0.25,
+      "osteria_ensWidth": 0.65,
+      "osteria_tape": 0.08,
+      "osteria_sessionDelay": 0.2,
+      "osteria_filterEnvDepth": 0.2,
+      "osteria_warmth": 0.65,
+      "osteria_smoke": 0.25,
+      "osteria_tavernMix": 0.62,
+      "osteria_tavernShore": 0.35,
+      "osteria_macroCharacter": 0.38,
+      "osteria_macroMovement": 0.58,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.58
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

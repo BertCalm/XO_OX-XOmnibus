@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ONSET",
-    "OBESE"
+    "Onset",
+    "Obese"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.742,
       "macro_movement": 0.092,
       "macro_coupling": 0.556,
       "macro_space": 0.575
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.423,
       "macro_movement": 0.961,
       "macro_coupling": 0.976,

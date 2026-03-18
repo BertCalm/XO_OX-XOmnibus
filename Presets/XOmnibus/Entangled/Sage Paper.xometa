@@ -2,8 +2,8 @@
   "name": "Sage Paper",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "ORIGAMI"
+    "Ohm",
+    "Origami"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "origami",
     "hippy"
   ],
-  "description": "Ohm groove folded once, twice, three times \u2014 communal heat concentrated at the crease"
+  "description": "Ohm groove folded once, twice, three times — communal heat concentrated at the crease"
 }

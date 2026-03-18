@@ -2,17 +2,38 @@
   "schema_version": 1,
   "name": "Map Screen",
   "mood": "Atmosphere",
-  "engines": ["OVERWORLD"],
+  "engines": [
+    "Overworld"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Gentle SNES overworld theme with wide space — the calm between encounters.",
-  "tags": ["map", "overworld", "atmosphere", "snes", "gentle", "calm"],
-  "macroLabels": ["ERA", "CHAOS", "COUPLE", "SPACE"],
+  "tags": [
+    "map",
+    "overworld",
+    "atmosphere",
+    "snes",
+    "gentle",
+    "calm"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.58, "movement": 0.28, "density": 0.42, "space": 0.8, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.58,
+    "movement": 0.28,
+    "density": 0.42,
+    "space": 0.8,
+    "aggression": 0.12
+  },
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "ow_era": 2,
       "ow_macro_era": 0.85,
       "ow_macro_chaos": 0.05,
@@ -23,6 +44,8 @@
       "ow_couplingBus": 0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

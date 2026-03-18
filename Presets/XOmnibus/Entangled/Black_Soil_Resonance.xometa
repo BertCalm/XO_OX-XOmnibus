@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "OVERWORLD"
+    "Obsidian",
+    "Overworld"
   ],
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.47,
       "macro_movement": 0.64,
       "macro_coupling": 0.79,
       "macro_space": 0.17
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.15,
       "macro_movement": 0.17,
       "macro_coupling": 0.69,

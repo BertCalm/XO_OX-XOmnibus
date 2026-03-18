@@ -2,8 +2,8 @@
   "name": "Commune of Grains",
   "version": "1.0",
   "engines": [
-    "OHM",
-    "OPAL"
+    "Ohm",
+    "Opal"
   ],
   "mood": "Entangled",
   "strategy": "Warm Sparse",
@@ -35,5 +35,5 @@
     "granular",
     "commune"
   ],
-  "description": "OHM's communal warmth scattered into Opal's granular mist \u2014 sparse and glowing."
+  "description": "OHM's communal warmth scattered into Opal's granular mist — sparse and glowing."
 }

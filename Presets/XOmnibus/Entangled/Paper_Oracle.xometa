@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORIGAMI",
-    "ORACLE"
+    "Origami",
+    "Oracle"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.18,
       "macro_movement": 0.46,
       "macro_coupling": 0.67,
       "macro_space": 0.9
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.15,
       "macro_movement": 0.41,
       "macro_coupling": 0.72,
@@ -46,5 +46,5 @@
     "paper",
     "oracle"
   ],
-  "description": "Oracle's timbre blends with Origami paper harmonics \u2014 prophecy written in folded sheets."
+  "description": "Oracle's timbre blends with Origami paper harmonics — prophecy written in folded sheets."
 }

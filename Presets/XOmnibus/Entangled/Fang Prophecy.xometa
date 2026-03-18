@@ -2,8 +2,8 @@
   "name": "Fang Prophecy",
   "version": "1.0",
   "engines": [
-    "OVERBITE",
-    "ORACLE"
+    "Overbite",
+    "Oracle"
   ],
   "mood": "Entangled",
   "strategy": "Still Aggressive",
@@ -35,5 +35,5 @@
     "bass",
     "oracle"
   ],
-  "description": "Overbite's fang-sharp attack biting into Oracle's still prophecy \u2014 venom suspended in time."
+  "description": "Overbite's fang-sharp attack biting into Oracle's still prophecy — venom suspended in time."
 }

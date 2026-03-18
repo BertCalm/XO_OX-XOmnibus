@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OVERWORLD",
-    "OPAL"
+    "Overworld",
+    "Opal"
   ],
   "parameters": {
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.714,
       "macro_movement": 0.346,
       "macro_coupling": 0.442,
       "macro_space": 0.256
     },
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.479,
       "macro_movement": 0.202,
       "macro_coupling": 0.539,

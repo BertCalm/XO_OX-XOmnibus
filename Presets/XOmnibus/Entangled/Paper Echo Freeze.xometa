@@ -2,8 +2,8 @@
   "name": "Paper Echo Freeze",
   "version": "1.0",
   "engines": [
-    "ORIGAMI",
-    "OVERDUB"
+    "Origami",
+    "Overdub"
   ],
   "mood": "Entangled",
   "strategy": "Bright Dark",

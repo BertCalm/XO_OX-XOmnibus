@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "ODDOSCAR",
-    "ODDFELIX"
+    "OddOscar",
+    "OddfeliX"
   ],
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.514,
       "macro_movement": 0.231,
       "macro_coupling": 0.499,
       "macro_space": 0.821
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.718,
       "macro_movement": 0.212,
       "macro_coupling": 0.499,

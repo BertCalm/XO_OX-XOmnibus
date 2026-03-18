@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Family",
   "engines": [
-    "OLE",
-    "OTTONI"
+    "Ole",
+    "Ottoni"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.936,
       "macro_movement": 0.485,
       "macro_coupling": 0.305,
       "macro_space": 0.03
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.963,
       "macro_movement": 0.482,
       "macro_coupling": 0.311,

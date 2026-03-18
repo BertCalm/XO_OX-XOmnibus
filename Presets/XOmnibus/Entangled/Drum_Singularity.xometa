@@ -3,12 +3,12 @@
   "name": "Drum Singularity",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "ONSET"
+    "Ouroboros",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ouroboros velocity coupling feeding Onset percussive triggers \u2014 a drum singularity event.",
+  "description": "Ouroboros velocity coupling feeding Onset percussive triggers — a drum singularity event.",
   "tags": [
     "entangled",
     "brutal",

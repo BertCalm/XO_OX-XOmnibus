@@ -3,12 +3,12 @@
   "name": "Cell Pattern",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OPTIC"
+    "Outwit",
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OPTIC waveshaper brightness maps to OUTWIT cell density \u2014 light becomes population",
+  "description": "OPTIC waveshaper brightness maps to OUTWIT cell density — light becomes population",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.725
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 22,
       "owit_arms": 4,
       "owit_cellSize": 0.239,

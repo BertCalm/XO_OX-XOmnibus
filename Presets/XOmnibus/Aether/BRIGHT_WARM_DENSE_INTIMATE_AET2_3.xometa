@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ORGANON",
-    "OSPREY"
+    "Organon",
+    "Osprey"
   ],
   "parameters": {
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.9117,
       "macro_movement": 0.5537,
       "macro_coupling": 0.964,
       "macro_space": 0.061
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.8932,
       "macro_movement": 0.5579,
       "macro_coupling": 0.9568,

@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT ATM 2",
   "mood": "Atmosphere",
   "engines": [
-    "OBESE",
-    "OLE"
+    "Obese",
+    "Ole"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.83,
       "macro_movement": 0.93,
       "macro_coupling": 0.69,
       "macro_space": 0.13
     },
-    "OLE": {
+    "Ole": {
       "macro_character": 0.63,
       "macro_movement": 0.98,
       "macro_coupling": 0.8,

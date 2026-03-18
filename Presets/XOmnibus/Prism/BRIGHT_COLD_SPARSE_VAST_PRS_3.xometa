@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ORPHICA",
-    "OTTONI"
+    "Orphica",
+    "Ottoni"
   ],
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.732,
       "macro_movement": 0.364,
       "macro_coupling": 0.695,
       "macro_space": 0.919
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.333,
       "macro_movement": 0.364,
       "macro_coupling": 0.626,

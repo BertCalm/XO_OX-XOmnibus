@@ -2,8 +2,8 @@
   "name": "Echoic Grain",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "ORCA"
+    "Opal",
+    "Orca"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orca",
     "granular"
   ],
-  "description": "Orca click train seeds the granular field \u2014 echolocation returns as opal shimmer"
+  "description": "Orca click train seeds the granular field — echolocation returns as opal shimmer"
 }

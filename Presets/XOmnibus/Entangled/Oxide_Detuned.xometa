@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERDUB",
-    "ODDOSCAR"
+    "Overdub",
+    "OddOscar"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.99,
       "macro_movement": 0.41,
       "macro_coupling": 0.64,
       "macro_space": 0.52
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.81,
       "macro_movement": 0.38,
       "macro_coupling": 0.64,

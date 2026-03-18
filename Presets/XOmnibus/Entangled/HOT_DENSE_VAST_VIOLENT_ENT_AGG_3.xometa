@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OPTIC",
-    "OVERWORLD"
+    "Optic",
+    "Overworld"
   ],
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.5,
       "macro_movement": 0.499,
       "macro_coupling": 0.972,
       "macro_space": 0.88
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.411,
       "macro_movement": 0.426,
       "macro_coupling": 0.991,

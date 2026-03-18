@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OPAL",
-    "OUROBOROS"
+    "Opal",
+    "Ouroboros"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.095,
       "macro_movement": 0.108,
       "macro_coupling": 0.687,
       "macro_space": 0.31
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.717,
       "macro_movement": 0.065,
       "macro_coupling": 0.688,

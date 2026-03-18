@@ -3,10 +3,10 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "OBLONG"
+    "Oblong"
   ],
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.55,
       "macro_movement": 0.52,
       "macro_coupling": 0.3,

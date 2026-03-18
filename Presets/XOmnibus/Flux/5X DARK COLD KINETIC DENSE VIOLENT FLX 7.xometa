@@ -3,8 +3,8 @@
   "name": "5X DARK COLD KINETIC DENSE VIOLENT FLX 7",
   "mood": "Flux",
   "engines": [
-    "OBLIQUE",
-    "OMBRE"
+    "Oblique",
+    "Ombre"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -32,13 +32,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.63,
       "macro_movement": 0.74,
       "macro_coupling": 0.59,
       "macro_space": 0.42
     },
-    "OMBRE": {
+    "Ombre": {
       "macro_character": 0.84,
       "macro_movement": 0.67,
       "macro_coupling": 0.69,

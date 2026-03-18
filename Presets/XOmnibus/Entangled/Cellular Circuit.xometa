@@ -4,8 +4,8 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OBLONG"
+    "Outwit",
+    "Oblong"
   ],
   "author": "XO_OX",
   "macros": {
@@ -23,7 +23,7 @@
     "density": 0.65
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 184,
       "owit_arms": 7,
       "owit_cellSize": 0.298,
@@ -56,5 +56,5 @@
     "wolfram",
     "cellular-automata"
   ],
-  "description": "Oblong's unstable tuning modulates OUTWIT arm pitch spread \u2014 wobble becomes pattern drift"
+  "description": "Oblong's unstable tuning modulates OUTWIT arm pitch spread — wobble becomes pattern drift"
 }

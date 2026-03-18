@@ -3,12 +3,12 @@
   "name": "Cyclic Seafoam",
   "mood": "Entangled",
   "engines": [
-    "OUROBOROS",
-    "ORPHICA"
+    "Ouroboros",
+    "Orphica"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Ouroboros cyclic topology frequency-shifts ORPHICA strings \u2014 eternal pluck.",
+  "description": "Ouroboros cyclic topology frequency-shifts ORPHICA strings — eternal pluck.",
   "tags": [
     "entangled",
     "coupling",
@@ -34,13 +34,13 @@
     "aggression": 0.4
   },
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.58,
       "macro_movement": 0.7,
       "macro_coupling": 0.58,
       "macro_space": 0.44
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.65,
       "macro_movement": 0.5,
       "macro_coupling": 0.58,

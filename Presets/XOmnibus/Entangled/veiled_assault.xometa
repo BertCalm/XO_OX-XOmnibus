@@ -3,8 +3,8 @@
   "name": "Veiled Assault",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "OBSCURA"
+    "Outwit",
+    "Obscura"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.97
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 220,
       "owit_arms": 8,
       "owit_cellSize": 0.12,
@@ -70,7 +70,7 @@
       "owit_outputLevel": 0.86,
       "owit_outputPan": 0.22
     },
-    "OBSCURA": {
+    "Obscura": {
       "obscura_character": 0.68,
       "obscura_movement": 0.78,
       "obscura_coupling": 0.66,

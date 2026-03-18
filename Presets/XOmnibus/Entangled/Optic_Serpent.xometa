@@ -3,12 +3,12 @@
   "name": "Optic Serpent",
   "mood": "Entangled",
   "engines": [
-    "OPTIC",
-    "OUROBOROS"
+    "Optic",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ouroboros topology channeled through Optic luminance \u2014 the strange attractor made of light.",
+  "description": "Ouroboros topology channeled through Optic luminance — the strange attractor made of light.",
   "tags": [
     "entangled",
     "brutal",

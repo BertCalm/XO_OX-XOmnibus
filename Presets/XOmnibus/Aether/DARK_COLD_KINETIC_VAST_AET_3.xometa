@@ -3,12 +3,12 @@
   "name": "DARK COLD KINETIC VAST AET 3",
   "mood": "Aether",
   "engines": [
-    "OTTONI",
-    "ODDFELIX"
+    "Ottoni",
+    "OddfeliX"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, dark, cold, kinetic.",
+  "description": "Extreme DNA corners — aether, dark, cold, kinetic.",
   "tags": [
     "aether",
     "dark",
@@ -35,11 +35,11 @@
     "aggression": 0.477
   },
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "level": 0.698,
       "pan": -0.024
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "level": 0.694,
       "pan": -0.112
     }

@@ -3,12 +3,12 @@
   "name": "BRIGHT_COLD_KINETIC_SPARSE_ENT_3",
   "mood": "Entangled",
   "engines": [
-    "OBLONG",
-    "ORBITAL"
+    "Oblong",
+    "Orbital"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Cold Kinetic Sparse character entanglement \u2014 OBLONG \u00d7 ORBITAL via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Cold Kinetic Sparse character entanglement — OBLONG × ORBITAL via Resonance Share. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.4416
   },
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.5863,
       "macro_movement": 0.9199,
       "macro_coupling": 0.7456,
@@ -57,7 +57,7 @@
       "output_level": 0.7156,
       "coupling_level": 0.6917
     },
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.5903,
       "macro_movement": 0.9303,
       "macro_coupling": 0.7533,

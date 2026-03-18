@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "name": "Coral Rascal \u00d7 Ohm",
+  "name": "Coral Rascal × Ohm",
   "mood": "Entangled",
   "engines": [
-    "OBBLIGATO",
-    "OHM"
+    "Obbligato",
+    "Ohm"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "A hippy-dad commune \u2014 OHM's commune axis holds OBBLIGATO's breath voices in harmonic orbit via BOND.",
+  "description": "A hippy-dad commune — OHM's commune axis holds OBBLIGATO's breath voices in harmonic orbit via BOND.",
   "tags": [
     "coupling",
     "obbligato",

@@ -3,8 +3,8 @@
   "name": "DARK_STILL_DENSE_VAST_GENTLE_PRS_4",
   "mood": "Prism",
   "engines": [
-    "OHM",
-    "OSTERIA"
+    "Ohm",
+    "Osteria"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.193,
       "macro_movement": 0.064,
       "macro_coupling": 0.977,
       "macro_space": 0.8
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.083,
       "macro_movement": 0.079,
       "macro_coupling": 0.902,

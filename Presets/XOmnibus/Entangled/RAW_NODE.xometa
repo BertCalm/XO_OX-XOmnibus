@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ONSET",
-    "OVERBITE"
+    "Onset",
+    "Overbite"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.157,
       "macro_movement": 0.174,
       "macro_coupling": 0.075,
       "macro_space": 0.003
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.451,
       "macro_movement": 0.594,
       "macro_coupling": 0.291,

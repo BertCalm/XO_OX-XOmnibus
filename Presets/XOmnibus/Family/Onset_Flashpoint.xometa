@@ -3,11 +3,11 @@
   "name": "Onset Flashpoint",
   "mood": "Family",
   "engines": [
-    "ONSET"
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ONSET transient maximum \u2014 the brightest hit, attack fully lit, presence absolute.",
+  "description": "ONSET transient maximum — the brightest hit, attack fully lit, presence absolute.",
   "tags": [
     "family",
     "portrait",

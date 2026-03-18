@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OHM",
-    "ORCA"
+    "Ohm",
+    "Orca"
   ],
   "parameters": {
-    "OHM": {
+    "Ohm": {
       "macro_character": 0.623,
       "macro_movement": 0.476,
       "macro_coupling": 0.529,
       "macro_space": 0.806
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.445,
       "macro_movement": 0.806,
       "macro_coupling": 0.682,

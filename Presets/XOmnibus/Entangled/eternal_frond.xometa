@@ -3,8 +3,8 @@
   "name": "Eternal Frond",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OUROBOROS"
+    "Overlap",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.09
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.6,
       "olap_decay": 0.62,
       "olap_damping": 0.31,
@@ -69,7 +69,7 @@
       "olap_outputLevel": 0.7,
       "olap_outputPan": -0.01
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "ouro_character": 0.55,
       "ouro_movement": 0.44,
       "ouro_coupling": 0.88,

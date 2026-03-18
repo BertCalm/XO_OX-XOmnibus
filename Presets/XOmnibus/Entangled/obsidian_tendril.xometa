@@ -3,8 +3,8 @@
   "name": "Obsidian Tendril",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OBSIDIAN"
+    "Overlap",
+    "Obsidian"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.28
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.91,
       "olap_decay": 0.65,
       "olap_damping": 0.39,
@@ -69,7 +69,7 @@
       "olap_outputLevel": 0.72,
       "olap_outputPan": -0.18
     },
-    "OBSIDIAN": {
+    "Obsidian": {
       "obsidian_character": 0.68,
       "obsidian_movement": 0.76,
       "obsidian_coupling": 0.64,

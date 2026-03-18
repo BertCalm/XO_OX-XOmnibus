@@ -3,20 +3,20 @@
   "name": "Seafoam Recursion",
   "mood": "Entangled",
   "engines": [
-    "ORPHICA",
-    "OUROBOROS"
+    "Orphica",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Resonance shared between ORPHICA's glass harmonic and OUROBOROS's recursive loop.",
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.74,
       "macro_movement": 0.6,
       "macro_coupling": 0.74,
       "macro_space": 0.7
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.66,
       "macro_movement": 0.68,
       "macro_coupling": 0.7,

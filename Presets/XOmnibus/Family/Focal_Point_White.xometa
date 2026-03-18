@@ -3,11 +3,11 @@
   "name": "Focal Point White",
   "mood": "Family",
   "engines": [
-    "OPTIC"
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OPTIC full spectrum \u2014 refraction complete, white light resolved to purest signal.",
+  "description": "OPTIC full spectrum — refraction complete, white light resolved to purest signal.",
   "tags": [
     "family",
     "portrait",

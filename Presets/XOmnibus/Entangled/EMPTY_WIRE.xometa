@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OVERDUB",
-    "OBESE"
+    "Overdub",
+    "Obese"
   ],
   "parameters": {
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.639,
       "macro_movement": 0.971,
       "macro_coupling": 0.051,
       "macro_space": 0.334
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.989,
       "macro_movement": 0.787,
       "macro_coupling": 0.205,

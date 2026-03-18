@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OBLONG",
-    "OUROBOROS"
+    "Oblong",
+    "Ouroboros"
   ],
   "parameters": {
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.0909,
       "macro_movement": 0.4207,
       "macro_coupling": 0.9064,
       "macro_space": 0.7456
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.1149,
       "macro_movement": 0.4023,
       "macro_coupling": 0.9245,

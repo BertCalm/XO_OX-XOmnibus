@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OUROBOROS",
-    "OSTERIA"
+    "Ouroboros",
+    "Osteria"
   ],
   "parameters": {
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.692,
       "macro_movement": 0.928,
       "macro_coupling": 0.631,
       "macro_space": 0.443
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.395,
       "macro_movement": 0.966,
       "macro_coupling": 0.409,

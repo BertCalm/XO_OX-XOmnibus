@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OCEANIC",
-    "ORACLE"
+    "Oceanic",
+    "Oracle"
   ],
   "parameters": {
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.734,
       "macro_movement": 0.396,
       "macro_coupling": 0.064,
       "macro_space": 0.978
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.47,
       "macro_movement": 0.186,
       "macro_coupling": 0.264,

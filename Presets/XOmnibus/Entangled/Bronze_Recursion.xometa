@@ -3,20 +3,20 @@
   "name": "Bronze Recursion",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "OUROBOROS"
+    "Ottoni",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Resonance shared between OTTONI's bell and OUROBOROS's loop \u2014 self-devouring harmonics.",
+  "description": "Resonance shared between OTTONI's bell and OUROBOROS's loop — self-devouring harmonics.",
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.74,
       "macro_movement": 0.6,
       "macro_coupling": 0.76,
       "macro_space": 0.38
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.68,
       "macro_movement": 0.65,
       "macro_coupling": 0.7,

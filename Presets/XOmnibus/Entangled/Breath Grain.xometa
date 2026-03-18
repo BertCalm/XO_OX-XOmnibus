@@ -2,8 +2,8 @@
   "name": "Breath Grain",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OBBLIGATO"
+    "Opal",
+    "Obbligato"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "obbligato",
     "granular"
   ],
-  "description": "Dual wind breath dispersed into granular field \u2014 exhale becoming grain cloud scatter"
+  "description": "Dual wind breath dispersed into granular field — exhale becoming grain cloud scatter"
 }

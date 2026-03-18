@@ -2,8 +2,8 @@
   "name": "Hunt Fanfare",
   "version": "1.0",
   "engines": [
-    "OTTONI",
-    "OCELOT"
+    "Ottoni",
+    "Ocelot"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ocelot",
     "triple"
   ],
-  "description": "Patina brass announces the hunt \u2014 ocelot responds with low menacing harmonic"
+  "description": "Patina brass announces the hunt — ocelot responds with low menacing harmonic"
 }

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ODYSSEY",
-    "OBSCURA"
+    "Odyssey",
+    "Obscura"
   ],
   "parameters": {
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.14,
       "macro_movement": 0.24,
       "macro_coupling": 0.76,
       "macro_space": 0.94
     },
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.11,
       "macro_movement": 0.19,
       "macro_coupling": 0.81,
@@ -46,5 +46,5 @@
     "exposure",
     "slow"
   ],
-  "description": "A long-exposure photograph of a cold drift \u2014 blurred with silver chemistry."
+  "description": "A long-exposure photograph of a cold drift — blurred with silver chemistry."
 }

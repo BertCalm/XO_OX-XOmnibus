@@ -3,13 +3,13 @@
   "name": "Shore Trinity",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "OSTERIA",
-    "OCEANIC"
+    "Osprey",
+    "Osteria",
+    "Oceanic"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The three shore engines in full communion \u2014 coastline, cuisine, and current as one.",
+  "description": "The three shore engines in full communion — coastline, cuisine, and current as one.",
   "tags": [
     "entangled",
     "coupling",

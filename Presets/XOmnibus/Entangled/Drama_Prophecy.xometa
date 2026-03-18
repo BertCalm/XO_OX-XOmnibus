@@ -3,20 +3,20 @@
   "name": "Drama Prophecy",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "ORACLE"
+    "Ole",
+    "Oracle"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Afro-Latin frequency bursts seed ORACLE's prophetic stochastic sequences.",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.78,
       "macro_movement": 0.7,
       "macro_coupling": 0.78,
       "macro_space": 0.4
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.62,
       "macro_movement": 0.65,
       "macro_coupling": 0.68,

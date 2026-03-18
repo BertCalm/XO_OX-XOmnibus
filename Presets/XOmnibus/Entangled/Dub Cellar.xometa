@@ -3,12 +3,12 @@
   "name": "Dub Cellar",
   "mood": "Entangled",
   "engines": [
-    "OSTERIA",
-    "OVERDUB"
+    "Osteria",
+    "Overdub"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Tape echo wraps the cellar in warm amber delay \u2014 dub bass from the cask.",
+  "description": "Tape echo wraps the cellar in warm amber delay — dub bass from the cask.",
   "tags": [
     "entangled",
     "coupling",

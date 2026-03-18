@@ -2,8 +2,8 @@
   "name": "Tavern Grain",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OSTERIA"
+    "Opal",
+    "Osteria"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "osteria",
     "granular"
   ],
-  "description": "Granular warmth soaked in osteria resonance \u2014 opal shimmer pooling in stone acoustics"
+  "description": "Granular warmth soaked in osteria resonance — opal shimmer pooling in stone acoustics"
 }

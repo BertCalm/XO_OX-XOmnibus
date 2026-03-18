@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORIGAMI",
-    "OBLONG"
+    "Origami",
+    "Oblong"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.117,
       "macro_movement": 0.045,
       "macro_coupling": 0.037,
       "macro_space": 0.996
     },
-    "OBLONG": {
+    "Oblong": {
       "macro_character": 0.116,
       "macro_movement": 0.235,
       "macro_coupling": 0.538,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORIGAMI",
-    "ODYSSEY"
+    "Origami",
+    "Odyssey"
   ],
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.17,
       "macro_movement": 0.42,
       "macro_coupling": 0.69,
       "macro_space": 0.91
     },
-    "ODYSSEY": {
+    "Odyssey": {
       "macro_character": 0.14,
       "macro_movement": 0.37,
       "macro_coupling": 0.74,
@@ -46,5 +46,5 @@
     "paper",
     "drift"
   ],
-  "description": "A paper fold drifts across wavetable space \u2014 folded harmonics dispersing on cold air."
+  "description": "A paper fold drifts across wavetable space — folded harmonics dispersing on cold air."
 }

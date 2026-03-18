@@ -19,7 +19,7 @@
     "aggression": 0.776
   },
   "engines": [
-    "OPTIC"
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,7 +45,7 @@
   },
   "couplingIntensity": "None",
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "optic_macro_refract": 0.264,
       "optic_macro_spectrum": 0.7014,
       "optic_macro_scatter": 0.5461,

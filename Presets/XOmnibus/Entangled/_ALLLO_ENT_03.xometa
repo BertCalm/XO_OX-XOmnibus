@@ -3,11 +3,11 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OPTIC",
+    "Optic",
     "FAT"
   ],
   "parameters": {
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.082,
       "macro_movement": 0.312,
       "macro_coupling": 0.047,

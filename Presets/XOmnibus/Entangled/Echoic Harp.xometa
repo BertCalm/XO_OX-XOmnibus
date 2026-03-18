@@ -2,8 +2,8 @@
   "name": "Echoic Harp",
   "version": "1.0",
   "engines": [
-    "ORPHICA",
-    "ORCA"
+    "Orphica",
+    "Orca"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orca",
     "microsound"
   ],
-  "description": "Siren calls bounce back as echolocation \u2014 the ocean replies in grain-shimmer"
+  "description": "Siren calls bounce back as echolocation — the ocean replies in grain-shimmer"
 }

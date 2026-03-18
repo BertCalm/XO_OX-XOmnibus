@@ -3,13 +3,13 @@
   "name": "Rocky Shore Rite",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "OSTERIA",
-    "OCEANIC"
+    "Osprey",
+    "Osteria",
+    "Oceanic"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Windswept ritual on the rocks \u2014 flight, fire, and foam in deep entanglement.",
+  "description": "Windswept ritual on the rocks — flight, fire, and foam in deep entanglement.",
   "tags": [
     "entangled",
     "coupling",

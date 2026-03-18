@@ -3,12 +3,12 @@
   "name": "Spread Diffuse",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "ORACLE"
+    "Overlap",
+    "Oracle"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Oracle resonance feeds OVERLAP early reflections \u2014 prophecy echoed in cavern walls",
+  "description": "Oracle resonance feeds OVERLAP early reflections — prophecy echoed in cavern walls",
   "tags": [
     "coupling",
     "entangled",
@@ -43,7 +43,7 @@
     "movement": 0.55
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.618,
       "olap_decay": 0.792,
       "olap_damping": 0.357,

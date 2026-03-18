@@ -2,8 +2,8 @@
   "name": "Cold Ellipse",
   "version": "1.0",
   "engines": [
-    "ORBITAL",
-    "ORCA"
+    "Orbital",
+    "Orca"
   ],
   "mood": "Entangled",
   "strategy": "Still Aggressive",
@@ -35,5 +35,5 @@
     "cold",
     "elliptical"
   ],
-  "description": "Orca's aggression tracing a cold orbital ellipse \u2014 force in geometric stasis."
+  "description": "Orca's aggression tracing a cold orbital ellipse — force in geometric stasis."
 }

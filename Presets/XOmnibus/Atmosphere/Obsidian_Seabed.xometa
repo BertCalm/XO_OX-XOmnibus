@@ -3,7 +3,7 @@
   "name": "Obsidian Seabed",
   "mood": "Atmosphere",
   "engines": [
-    "OBSCURA"
+    "Obscura"
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -31,7 +31,7 @@
     "aggression": 0.081
   },
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "veil": 0.221,
       "depth": 0.326,
       "coupling": 0.137,

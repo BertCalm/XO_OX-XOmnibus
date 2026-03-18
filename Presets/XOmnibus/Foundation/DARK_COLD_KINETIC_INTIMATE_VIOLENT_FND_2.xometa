@@ -3,8 +3,8 @@
   "name": "DARK_COLD_KINETIC_INTIMATE_VIOLENT_FND_2",
   "mood": "Foundation",
   "engines": [
-    "ODDFELIX",
-    "ORIGAMI"
+    "OddfeliX",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.126,
       "macro_movement": 0.915,
       "macro_coupling": 0.631,
       "macro_space": 0.128
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.048,
       "macro_movement": 0.875,
       "macro_coupling": 0.469,

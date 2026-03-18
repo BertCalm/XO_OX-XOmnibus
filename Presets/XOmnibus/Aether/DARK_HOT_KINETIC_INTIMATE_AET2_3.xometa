@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Aether",
   "engines": [
-    "ODDOSCAR",
-    "OSPREY"
+    "OddOscar",
+    "Osprey"
   ],
   "parameters": {
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.1385,
       "macro_movement": 0.936,
       "macro_coupling": 0.6826,
       "macro_space": 0.0699
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.1706,
       "macro_movement": 0.9433,
       "macro_coupling": 0.6613,

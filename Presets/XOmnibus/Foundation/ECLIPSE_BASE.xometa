@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OBBLIGATO",
-    "OSPREY"
+    "Obbligato",
+    "Osprey"
   ],
   "parameters": {
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.401,
       "macro_movement": 0.074,
       "macro_coupling": 0.629,
       "macro_space": 0.054
     },
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.149,
       "macro_movement": 0.563,
       "macro_coupling": 0.304,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OPAL",
-    "ORCA"
+    "Opal",
+    "Orca"
   ],
   "parameters": {
-    "OPAL": {
+    "Opal": {
       "macro_character": 0.791,
       "macro_movement": 0.964,
       "macro_coupling": 0.138,
       "macro_space": 0.287
     },
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.83,
       "macro_movement": 0.945,
       "macro_coupling": 0.696,

@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "OBSIDIAN",
-    "OCEANIC"
+    "Obsidian",
+    "Oceanic"
   ],
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.2,
       "macro_movement": 0.354,
       "macro_coupling": 0.159,
       "macro_space": 0.56
     },
-    "OCEANIC": {
+    "Oceanic": {
       "macro_character": 0.514,
       "macro_movement": 0.203,
       "macro_coupling": 0.763,

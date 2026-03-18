@@ -2,8 +2,8 @@
   "name": "Predator Breath",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OCELOT"
+    "Obbligato",
+    "Ocelot"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "ocelot",
     "wind"
   ],
-  "description": "Ocelot stalk rhythm obligated to OBBLIGATO breath gate \u2014 the cat moves only when the wind allows"
+  "description": "Ocelot stalk rhythm obligated to OBBLIGATO breath gate — the cat moves only when the wind allows"
 }

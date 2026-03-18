@@ -3,8 +3,8 @@
   "name": "BRIGHT_COLD_DENSE_VAST_VIOLENT_PRS_3",
   "mood": "Prism",
   "engines": [
-    "OBLIQUE",
-    "ORPHICA"
+    "Oblique",
+    "Orphica"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.952,
       "macro_movement": 0.462,
       "macro_coupling": 0.923,
       "macro_space": 0.93
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.998,
       "macro_movement": 0.518,
       "macro_coupling": 0.816,

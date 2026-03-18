@@ -3,12 +3,12 @@
   "name": "DARK_STILL_SPARSE_VAST_ENT_5",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OUROBOROS"
+    "Overlap",
+    "Ouroboros"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Still Sparse Vast character entanglement \u2014 OVERLAP \u00d7 OUROBOROS via Formant Bridge. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Still Sparse Vast character entanglement — OVERLAP × OUROBOROS via Formant Bridge. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.3024
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.435,
       "macro_movement": 0.108,
       "macro_coupling": 0.6683,
@@ -57,7 +57,7 @@
       "output_level": 0.6777,
       "coupling_level": 0.6436
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.4731,
       "macro_movement": 0.1112,
       "macro_coupling": 0.6876,

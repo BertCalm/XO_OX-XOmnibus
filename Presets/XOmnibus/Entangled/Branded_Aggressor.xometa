@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ORCA",
-    "OUROBOROS"
+    "Orca",
+    "Ouroboros"
   ],
   "parameters": {
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.68,
       "macro_movement": 0.62,
       "macro_coupling": 0.68,
       "macro_space": 0.36
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.72,
       "macro_movement": 0.4,
       "macro_coupling": 0.72,

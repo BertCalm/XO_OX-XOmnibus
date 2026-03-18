@@ -2,8 +2,8 @@
   "name": "Ink Echo",
   "version": "1.0",
   "engines": [
-    "OVERDUB",
-    "OCTOPUS"
+    "Overdub",
+    "Octopus"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "octopus",
     "dub"
   ],
-  "description": "Octopus ink cloud swallows the spring reverb \u2014 dub warmth diffusing through dark water"
+  "description": "Octopus ink cloud swallows the spring reverb — dub warmth diffusing through dark water"
 }

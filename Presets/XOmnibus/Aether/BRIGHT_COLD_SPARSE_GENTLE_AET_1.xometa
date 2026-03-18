@@ -3,12 +3,12 @@
   "name": "BRIGHT COLD SPARSE GENTLE AET 1",
   "mood": "Aether",
   "engines": [
-    "ORACLE",
-    "OSTERIA"
+    "Oracle",
+    "Osteria"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, bright, cold, sparse.",
+  "description": "Extreme DNA corners — aether, bright, cold, sparse.",
   "tags": [
     "aether",
     "bright",
@@ -35,11 +35,11 @@
     "aggression": 0.064
   },
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "level": 0.77,
       "pan": 0.054
     },
-    "OSTERIA": {
+    "Osteria": {
       "level": 0.664,
       "pan": -0.03
     }

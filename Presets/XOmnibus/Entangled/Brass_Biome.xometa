@@ -3,20 +3,20 @@
   "name": "Brass Biome",
   "mood": "Entangled",
   "engines": [
-    "OTTONI",
-    "ORGANON"
+    "Ottoni",
+    "Organon"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "Timbre blend merges triple brass with metabolic granularity \u2014 a living brass biome.",
+  "description": "Timbre blend merges triple brass with metabolic granularity — a living brass biome.",
   "parameters": {
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.72,
       "macro_movement": 0.62,
       "macro_coupling": 0.74,
       "macro_space": 0.43
     },
-    "ORGANON": {
+    "Organon": {
       "macro_character": 0.58,
       "macro_movement": 0.68,
       "macro_coupling": 0.62,

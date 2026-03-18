@@ -2,8 +2,8 @@
   "name": "Grain Voyage",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "ORPHICA"
+    "Odyssey",
+    "Orphica"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "orphica",
     "wavetable"
   ],
-  "description": "Orphica microsound cloud seeded into drift FM \u2014 grain particles carried on the odyssey"
+  "description": "Orphica microsound cloud seeded into drift FM — grain particles carried on the odyssey"
 }

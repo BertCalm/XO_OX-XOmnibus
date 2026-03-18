@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ORACLE",
-    "ORPHICA"
+    "Oracle",
+    "Orphica"
   ],
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.3274,
       "macro_movement": 0.9181,
       "macro_coupling": 0.3296,
       "macro_space": 0.9455
     },
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.3073,
       "macro_movement": 0.9227,
       "macro_coupling": 0.3229,

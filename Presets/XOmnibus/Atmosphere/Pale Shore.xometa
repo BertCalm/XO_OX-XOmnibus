@@ -2,7 +2,7 @@
   "name": "Pale Shore",
   "version": "1.0",
   "engines": [
-    "OHM"
+    "Ohm"
   ],
   "mood": "Atmosphere",
   "macros": {

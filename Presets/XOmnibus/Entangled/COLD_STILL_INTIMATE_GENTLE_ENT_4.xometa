@@ -3,12 +3,12 @@
   "name": "COLD_STILL_INTIMATE_GENTLE_ENT_4",
   "mood": "Entangled",
   "engines": [
-    "ORACLE",
-    "OSTERIA"
+    "Oracle",
+    "Osteria"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Cold Still Intimate Gentle character entanglement \u2014 ORACLE \u00d7 OSTERIA via Spectral Morph. Extreme DNA zones push sound design to the edges.",
+  "description": "Cold Still Intimate Gentle character entanglement — ORACLE × OSTERIA via Spectral Morph. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "cold",
@@ -41,7 +41,7 @@
     "aggression": 0.0927
   },
   "parameters": {
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.5217,
       "macro_movement": 0.0681,
       "macro_coupling": 0.5958,
@@ -57,7 +57,7 @@
       "output_level": 0.8312,
       "coupling_level": 0.6015
     },
-    "OSTERIA": {
+    "Osteria": {
       "macro_character": 0.5427,
       "macro_movement": 0.0514,
       "macro_coupling": 0.641,

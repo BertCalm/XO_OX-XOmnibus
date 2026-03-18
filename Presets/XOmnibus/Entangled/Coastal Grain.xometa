@@ -2,8 +2,8 @@
   "name": "Coastal Grain",
   "version": "1.0",
   "engines": [
-    "OPAL",
-    "OSPREY"
+    "Opal",
+    "Osprey"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "osprey",
     "granular"
   ],
-  "description": "Granular particles carried on shore wind \u2014 osprey dive scattering the opal cloud"
+  "description": "Granular particles carried on shore wind — osprey dive scattering the opal cloud"
 }

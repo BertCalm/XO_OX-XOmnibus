@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "ONSET",
-    "OBBLIGATO"
+    "Onset",
+    "Obbligato"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.851,
       "macro_movement": 0.704,
       "macro_coupling": 0.259,
       "macro_space": 0.371
     },
-    "OBBLIGATO": {
+    "Obbligato": {
       "macro_character": 0.5,
       "macro_movement": 0.136,
       "macro_coupling": 0.21,

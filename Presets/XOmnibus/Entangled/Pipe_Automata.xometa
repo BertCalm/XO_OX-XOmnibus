@@ -3,12 +3,12 @@
   "name": "Pipe Automata",
   "mood": "Entangled",
   "engines": [
-    "OUTWIT",
-    "ORGANON"
+    "Outwit",
+    "Organon"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Organon registration depth modulates OUTWIT mutation probability \u2014 denser pipe stops, less order",
+  "description": "Organon registration depth modulates OUTWIT mutation probability — denser pipe stops, less order",
   "tags": [
     "coupling",
     "entangled",
@@ -47,7 +47,7 @@
     "density": 0.7
   },
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "owit_rule": 54,
       "owit_arms": 7,
       "owit_cellSize": 0.377,

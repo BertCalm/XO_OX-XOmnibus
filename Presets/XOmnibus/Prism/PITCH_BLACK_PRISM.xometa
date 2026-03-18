@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "OCELOT",
-    "OBESE"
+    "Ocelot",
+    "Obese"
   ],
   "parameters": {
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.67,
       "macro_movement": 0.822,
       "macro_coupling": 0.226,
       "macro_space": 0.268
     },
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.047,
       "macro_movement": 0.983,
       "macro_coupling": 0.042,

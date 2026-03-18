@@ -3,8 +3,8 @@
   "name": "Jade Rune",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "ODDOSCAR"
+    "Obsidian",
+    "OddOscar"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.695
   },
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.622,
       "macro_movement": 0.339,
       "macro_coupling": 0.593,
       "macro_space": 0.225
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.367,
       "macro_movement": 0.699,
       "macro_coupling": 0.653,

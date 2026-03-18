@@ -3,8 +3,8 @@
   "name": "Brine Lattice",
   "mood": "Entangled",
   "engines": [
-    "OVERLAP",
-    "OCEANIC"
+    "Overlap",
+    "Oceanic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -47,7 +47,7 @@
     "aggression": 0.06
   },
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "olap_size": 0.81,
       "olap_decay": 0.9,
       "olap_damping": 0.29,
@@ -69,7 +69,7 @@
       "olap_outputLevel": 0.82,
       "olap_outputPan": -0.18
     },
-    "OCEANIC": {
+    "Oceanic": {
       "ocean_character": 0.79,
       "ocean_movement": 0.53,
       "ocean_coupling": 0.57,

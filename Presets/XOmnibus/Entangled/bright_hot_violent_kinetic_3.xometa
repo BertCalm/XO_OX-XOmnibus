@@ -19,11 +19,11 @@
     "space": 0.5416
   },
   "engines": [
-    "XOwlfish"
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Ultra-diverse Entangled preset \u2014 bright hot violent kinetic. Designed for FLOW coupling with XOwlfish.",
+  "description": "Ultra-diverse Entangled preset — bright hot violent kinetic. Designed for FLOW coupling with XOwlfish.",
   "tags": [
     "entangled",
     "ultra-diverse",
@@ -39,7 +39,7 @@
   "couplingType": "FLOW",
   "couplingIntensity": "Medium",
   "parameters": {
-    "XOwlfish": {
+    "Owlfish": {
       "couplingLevel": 0.646,
       "couplingBus": 3
     }

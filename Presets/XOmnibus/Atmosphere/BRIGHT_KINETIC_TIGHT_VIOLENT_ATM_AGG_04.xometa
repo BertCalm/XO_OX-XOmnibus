@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Atmosphere",
   "engines": [
-    "ORBITAL",
-    "ORACLE"
+    "Orbital",
+    "Oracle"
   ],
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.97,
       "macro_movement": 0.887,
       "macro_coupling": 0.857,
       "macro_space": 0.038
     },
-    "ORACLE": {
+    "Oracle": {
       "macro_character": 0.903,
       "macro_movement": 0.899,
       "macro_coupling": 0.777,

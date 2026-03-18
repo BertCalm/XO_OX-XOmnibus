@@ -3,8 +3,8 @@
   "name": "Cascade Layer",
   "mood": "Entangled",
   "engines": [
-    "ORCA",
-    "OWLFISH"
+    "Orca",
+    "Owlfish"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -45,13 +45,13 @@
     "aggression": 0.56
   },
   "parameters": {
-    "ORCA": {
+    "Orca": {
       "macro_character": 0.641,
       "macro_movement": 0.483,
       "macro_coupling": 0.567,
       "macro_space": 0.258
     },
-    "OWLFISH": {
+    "Owlfish": {
       "macro_character": 0.444,
       "macro_movement": 0.583,
       "macro_coupling": 0.728,

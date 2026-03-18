@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OBLIQUE",
-    "OVERBITE"
+    "Oblique",
+    "Overbite"
   ],
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.3296,
       "macro_movement": 0.1222,
       "macro_coupling": 0.3536,
       "macro_space": 0.6653
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 0.7503,
       "macro_movement": 0.8681,
       "macro_coupling": 0.7211,

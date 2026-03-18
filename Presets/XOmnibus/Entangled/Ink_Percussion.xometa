@@ -3,12 +3,12 @@
   "name": "Ink Percussion",
   "mood": "Entangled",
   "engines": [
-    "OCTOPUS",
-    "ONSET"
+    "Octopus",
+    "Onset"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Octopus eight arms velocity coupled into Onset XVC \u2014 ink cloud as percussion weapon.",
+  "description": "Octopus eight arms velocity coupled into Onset XVC — ink cloud as percussion weapon.",
   "tags": [
     "entangled",
     "brutal",

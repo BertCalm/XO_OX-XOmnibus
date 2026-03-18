@@ -2,8 +2,8 @@
   "name": "Tetra Wind Bond",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "ODDFELIX"
+    "Obbligato",
+    "OddfeliX"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oddfelix",
     "wind"
   ],
-  "description": "OddfeliX sharp modulation obligated to OBBLIGATO's breath pattern \u2014 neon must follow the reed"
+  "description": "OddfeliX sharp modulation obligated to OBBLIGATO's breath pattern — neon must follow the reed"
 }

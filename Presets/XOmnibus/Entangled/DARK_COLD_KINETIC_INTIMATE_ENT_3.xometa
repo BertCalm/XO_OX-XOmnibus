@@ -3,12 +3,12 @@
   "name": "DARK_COLD_KINETIC_INTIMATE_ENT_3",
   "mood": "Entangled",
   "engines": [
-    "ORBITAL",
-    "OBLIQUE"
+    "Orbital",
+    "Oblique"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark Cold Kinetic Intimate character entanglement \u2014 ORBITAL \u00d7 OBLIQUE via Subharmonic Weave. Extreme DNA zones push sound design to the edges.",
+  "description": "Dark Cold Kinetic Intimate character entanglement — ORBITAL × OBLIQUE via Subharmonic Weave. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "dark",
@@ -41,7 +41,7 @@
     "aggression": 0.4954
   },
   "parameters": {
-    "ORBITAL": {
+    "Orbital": {
       "macro_character": 0.3594,
       "macro_movement": 0.8765,
       "macro_coupling": 0.7337,
@@ -57,7 +57,7 @@
       "output_level": 0.8707,
       "coupling_level": 0.7518
     },
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.3923,
       "macro_movement": 0.901,
       "macro_coupling": 0.7452,

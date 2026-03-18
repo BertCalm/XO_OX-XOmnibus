@@ -3,8 +3,8 @@
   "name": "BRIGHT_WARM_KINETIC_VAST_GENTLE_FND_2",
   "mood": "Foundation",
   "engines": [
-    "OBSIDIAN",
-    "ORIGAMI"
+    "Obsidian",
+    "Origami"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBSIDIAN": {
+    "Obsidian": {
       "macro_character": 0.908,
       "macro_movement": 0.878,
       "macro_coupling": 0.494,
       "macro_space": 1.0
     },
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.98,
       "macro_movement": 0.877,
       "macro_coupling": 0.414,

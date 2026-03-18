@@ -3,20 +3,20 @@
   "name": "Drama Attractor",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OUROBOROS"
+    "Ole",
+    "Ouroboros"
   ],
   "author": "XO_OX Designs",
   "version": "1.0",
-  "description": "DRAMA \u00d7 CHAOS: OLE's harmonic folds ignite OUROBOROS's strange attractor \u2014 aggression 0.90.",
+  "description": "DRAMA × CHAOS: OLE's harmonic folds ignite OUROBOROS's strange attractor — aggression 0.90.",
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.88,
       "macro_movement": 0.8,
       "macro_coupling": 0.9,
       "macro_space": 0.28
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.8,
       "macro_movement": 0.84,
       "macro_coupling": 0.85,

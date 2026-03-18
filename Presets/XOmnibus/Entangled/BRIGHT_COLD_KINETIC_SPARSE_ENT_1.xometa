@@ -3,12 +3,12 @@
   "name": "BRIGHT_COLD_KINETIC_SPARSE_ENT_1",
   "mood": "Entangled",
   "engines": [
-    "OBLIQUE",
-    "OPTIC"
+    "Oblique",
+    "Optic"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright Cold Kinetic Sparse character entanglement \u2014 OBLIQUE \u00d7 OPTIC via Chaos Inject. Extreme DNA zones push sound design to the edges.",
+  "description": "Bright Cold Kinetic Sparse character entanglement — OBLIQUE × OPTIC via Chaos Inject. Extreme DNA zones push sound design to the edges.",
   "tags": [
     "entangled",
     "bright",
@@ -41,7 +41,7 @@
     "aggression": 0.6138
   },
   "parameters": {
-    "OBLIQUE": {
+    "Oblique": {
       "macro_character": 0.5737,
       "macro_movement": 0.854,
       "macro_coupling": 0.7917,
@@ -57,7 +57,7 @@
       "output_level": 0.7531,
       "coupling_level": 0.7807
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.6083,
       "macro_movement": 0.8976,
       "macro_coupling": 0.835,

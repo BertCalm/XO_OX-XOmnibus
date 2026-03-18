@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBESE",
-    "OTTONI"
+    "Obese",
+    "Ottoni"
   ],
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.696,
       "macro_movement": 0.477,
       "macro_coupling": 0.898,
       "macro_space": 0.116
     },
-    "OTTONI": {
+    "Ottoni": {
       "macro_character": 0.692,
       "macro_movement": 0.51,
       "macro_coupling": 0.93,

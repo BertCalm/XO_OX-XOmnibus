@@ -3,11 +3,11 @@
   "name": "Siphonophore Harp",
   "mood": "Family",
   "engines": [
-    "ORPHICA"
+    "Orphica"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "ORPHICA microsound colony \u2014 SCATTER wide, SHIMMER present. Each grain a polyp. The organism that thinks it is a single being.",
+  "description": "ORPHICA microsound colony — SCATTER wide, SHIMMER present. Each grain a polyp. The organism that thinks it is a single being.",
   "tags": [
     "family",
     "extended-family",

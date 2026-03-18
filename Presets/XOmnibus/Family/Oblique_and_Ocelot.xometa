@@ -3,12 +3,12 @@
   "name": "Oblique and Ocelot",
   "mood": "Family",
   "engines": [
-    "OBLIQUE",
-    "OCELOT"
+    "Oblique",
+    "Ocelot"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "OBLIQUE off-axis + OCELOT feline precision \u2014 the unexpected angle and the precise strike. Two ways of not going straight.",
+  "description": "OBLIQUE off-axis + OCELOT feline precision — the unexpected angle and the precise strike. Two ways of not going straight.",
   "tags": [
     "family",
     "reunion",

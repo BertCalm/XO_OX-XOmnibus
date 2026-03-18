@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OBSCURA",
-    "OVERDUB"
+    "Obscura",
+    "Overdub"
   ],
   "parameters": {
-    "OBSCURA": {
+    "Obscura": {
       "macro_character": 0.13,
       "macro_movement": 0.83,
       "macro_coupling": 0.54,
       "macro_space": 0.43
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.25,
       "macro_movement": 0.81,
       "macro_coupling": 0.85,

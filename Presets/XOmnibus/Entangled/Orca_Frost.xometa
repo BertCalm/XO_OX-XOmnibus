@@ -3,12 +3,12 @@
   "name": "Orca Frost",
   "mood": "Entangled",
   "engines": [
-    "OBSIDIAN",
-    "ORCA"
+    "Obsidian",
+    "Orca"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Orca echolocation pulse beneath Obsidian crystal density \u2014 deep cold with predator velocity.",
+  "description": "Orca echolocation pulse beneath Obsidian crystal density — deep cold with predator velocity.",
   "tags": [
     "entangled",
     "brutal",

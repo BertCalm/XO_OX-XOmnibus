@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Prism",
   "engines": [
-    "ORPHICA",
-    "OPTIC"
+    "Orphica",
+    "Optic"
   ],
   "parameters": {
-    "ORPHICA": {
+    "Orphica": {
       "macro_character": 0.707,
       "macro_movement": 0.934,
       "macro_coupling": 0.964,
       "macro_space": 0.957
     },
-    "OPTIC": {
+    "Optic": {
       "macro_character": 0.707,
       "macro_movement": 0.934,
       "macro_coupling": 0.964,

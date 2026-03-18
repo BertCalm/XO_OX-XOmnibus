@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OLE",
-    "OVERDUB"
+    "Ole",
+    "Overdub"
   ],
   "parameters": {
-    "OLE": {
+    "Ole": {
       "macro_character": 0.02,
       "macro_movement": 0.873,
       "macro_coupling": 0.044,
       "macro_space": 0.387
     },
-    "OVERDUB": {
+    "Overdub": {
       "macro_character": 0.373,
       "macro_movement": 0.747,
       "macro_coupling": 0.357,

@@ -2,8 +2,8 @@
   "name": "Optical Reed",
   "version": "1.0",
   "engines": [
-    "OBBLIGATO",
-    "OPTIC"
+    "Obbligato",
+    "Optic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "optic",
     "wind"
   ],
-  "description": "Optic AutoPulse rate obligated to OBBLIGATO breath tempo \u2014 light pulses to the reed's rhythm"
+  "description": "Optic AutoPulse rate obligated to OBBLIGATO breath tempo — light pulses to the reed's rhythm"
 }

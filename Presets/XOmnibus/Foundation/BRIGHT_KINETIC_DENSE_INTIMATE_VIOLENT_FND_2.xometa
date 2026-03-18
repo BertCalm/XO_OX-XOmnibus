@@ -3,8 +3,8 @@
   "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FND_2",
   "mood": "Foundation",
   "engines": [
-    "ODDFELIX",
-    "OVERBITE"
+    "OddfeliX",
+    "Overbite"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.935,
       "macro_movement": 0.884,
       "macro_coupling": 0.794,
       "macro_space": 0.157
     },
-    "OVERBITE": {
+    "Overbite": {
       "macro_character": 1.0,
       "macro_movement": 0.914,
       "macro_coupling": 0.824,

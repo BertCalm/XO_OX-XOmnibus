@@ -2,8 +2,8 @@
   "name": "Phosphor Voyage",
   "version": "1.0",
   "engines": [
-    "ODYSSEY",
-    "OCEANIC"
+    "Odyssey",
+    "Oceanic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "oceanic",
     "wavetable"
   ],
-  "description": "Drift trajectory lit by bioluminescent wake \u2014 oceanic phosphorescence marking the path"
+  "description": "Drift trajectory lit by bioluminescent wake — oceanic phosphorescence marking the path"
 }

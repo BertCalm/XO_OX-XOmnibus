@@ -3,8 +3,8 @@
   "name": "DARK_HOT_KINETIC_VAST_VIOLENT_PRS_5",
   "mood": "Prism",
   "engines": [
-    "ORIGAMI",
-    "OCELOT"
+    "Origami",
+    "Ocelot"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "ORIGAMI": {
+    "Origami": {
       "macro_character": 0.115,
       "macro_movement": 0.993,
       "macro_coupling": 0.252,
       "macro_space": 1.0
     },
-    "OCELOT": {
+    "Ocelot": {
       "macro_character": 0.084,
       "macro_movement": 1.0,
       "macro_coupling": 0.461,

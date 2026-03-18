@@ -3,8 +3,8 @@
   "name": "HOT_STILL_DENSE_VAST_VIOLENT_FND_3",
   "mood": "Foundation",
   "engines": [
-    "OBESE",
-    "ODDFELIX"
+    "Obese",
+    "OddfeliX"
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -34,13 +34,13 @@
     "sourcePresetName": null
   },
   "parameters": {
-    "OBESE": {
+    "Obese": {
       "macro_character": 0.438,
       "macro_movement": 0.0,
       "macro_coupling": 0.965,
       "macro_space": 0.962
     },
-    "ODDFELIX": {
+    "OddfeliX": {
       "macro_character": 0.603,
       "macro_movement": 0.0,
       "macro_coupling": 0.994,

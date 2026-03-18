@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Flux",
   "engines": [
-    "OVERLAP",
-    "OUROBOROS"
+    "Overlap",
+    "Ouroboros"
   ],
   "parameters": {
-    "OVERLAP": {
+    "Overlap": {
       "macro_character": 0.7612,
       "macro_movement": 0.3791,
       "macro_coupling": 0.752,
       "macro_space": 0.8319
     },
-    "OUROBOROS": {
+    "Ouroboros": {
       "macro_character": 0.2523,
       "macro_movement": 0.0819,
       "macro_coupling": 0.0194,

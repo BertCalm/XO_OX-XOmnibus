@@ -3,12 +3,12 @@
   "name": "BRIGHT COLD KINETIC DENSE AET 2",
   "mood": "Aether",
   "engines": [
-    "OCTOPUS",
-    "OBLONG"
+    "Octopus",
+    "Oblong"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Extreme DNA corners \u2014 aether, bright, cold, kinetic.",
+  "description": "Extreme DNA corners — aether, bright, cold, kinetic.",
   "tags": [
     "aether",
     "bright",
@@ -35,11 +35,11 @@
     "aggression": 0.472
   },
   "parameters": {
-    "OCTOPUS": {
+    "Octopus": {
       "level": 0.777,
       "pan": 0.015
     },
-    "OBLONG": {
+    "Oblong": {
       "level": 0.745,
       "pan": 0.087
     }

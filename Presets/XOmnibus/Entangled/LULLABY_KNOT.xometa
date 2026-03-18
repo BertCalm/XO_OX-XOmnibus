@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "ONSET",
-    "OCTOPUS"
+    "Onset",
+    "Octopus"
   ],
   "parameters": {
-    "ONSET": {
+    "Onset": {
       "macro_character": 0.888,
       "macro_movement": 0.144,
       "macro_coupling": 0.264,
       "macro_space": 0.856
     },
-    "OCTOPUS": {
+    "Octopus": {
       "macro_character": 0.714,
       "macro_movement": 0.711,
       "macro_coupling": 0.332,

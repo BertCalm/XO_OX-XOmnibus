@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Entangled",
   "engines": [
-    "OSPREY",
-    "ODDOSCAR"
+    "Osprey",
+    "OddOscar"
   ],
   "parameters": {
-    "OSPREY": {
+    "Osprey": {
       "macro_character": 0.8731,
       "macro_movement": 0.0819,
       "macro_coupling": 0.7787,
       "macro_space": 0.7038
     },
-    "ODDOSCAR": {
+    "OddOscar": {
       "macro_character": 0.0781,
       "macro_movement": 0.5642,
       "macro_coupling": 0.6247,

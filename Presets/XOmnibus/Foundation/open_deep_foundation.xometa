@@ -3,17 +3,17 @@
   "version": "1.0",
   "mood": "Foundation",
   "engines": [
-    "OUTWIT",
-    "OVERWORLD"
+    "Outwit",
+    "Overworld"
   ],
   "parameters": {
-    "OUTWIT": {
+    "Outwit": {
       "macro_character": 0.663,
       "macro_movement": 0.294,
       "macro_coupling": 0.429,
       "macro_space": 0.925
     },
-    "OVERWORLD": {
+    "Overworld": {
       "macro_character": 0.182,
       "macro_movement": 0.312,
       "macro_coupling": 0.327,

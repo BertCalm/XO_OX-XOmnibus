@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Bolt",
+  "mood": "Flux",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Single lightning bolt snap — instant maximum transient followed by silence.",
+  "tags": ["bolt", "lightning", "instant", "flux"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.92, "warmth": 0.15, "movement": 0.88, "density": 0.2, "space": 0.4, "aggression": 0.62},
+  "parameters": {
+    "OddfeliX": {"snap_oscMode": 0, "snap_snap": 1.0, "snap_decay": 0.04, "snap_detune": 0.02, "snap_filterCutoff": 17000.0, "snap_filterReso": 0.42, "snap_filterEnvDepth": 0.98, "snap_unison": 1, "snap_sweepDirection": 0, "snap_pitchLock": 1.0, "snap_polyphony": 2, "snap_level": 0.88, "snap_macroDart": 1.0, "snap_macroDepth": 0.2, "snap_macroSchool": 0.05, "snap_macroSurface": 0.7}
+  },
+  "macros": {"CHARACTER": 0.95, "MOVEMENT": 0.88, "COUPLING": 0.0, "SPACE": 0.4},
+  "coupling": {"pairs": []}
+}

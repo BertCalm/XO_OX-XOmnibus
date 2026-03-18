@@ -2,8 +2,8 @@
   "name": "Prismatic Fanfare",
   "version": "1.0",
   "engines": [
-    "OTTONI",
-    "OPTIC"
+    "Ottoni",
+    "Optic"
   ],
   "mood": "Entangled",
   "macros": {
@@ -35,5 +35,5 @@
     "optic",
     "triple"
   ],
-  "description": "Fanfare hits optical array and shatters into spectral components \u2014 glory dispersed"
+  "description": "Fanfare hits optical array and shatters into spectral components — glory dispersed"
 }
