@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-16",
-  "description": "Deep cave acoustics — minerals ringing in their own resonant frequencies, undisturbed for millennia. High stiffness (0.82) and high formant intensity (0.90) give the crystal its character: brittle, specific, ringing. Slow 1.5-second attack and 4-second release create a sense of the instrument discovering you rather than you discovering it. Filter left semi-open to preserve the full mineral harmonic series.",
+  "description": "Deep cave acoustics \u2014 minerals ringing in their own resonant frequencies, undisturbed for millennia. High stiffness (0.82) and high formant intensity (0.90) give the crystal its character: brittle, specific, ringing. Slow 1.5-second attack and 4-second release create a sense of the instrument discovering you rather than you discovering it. Filter left semi-open to preserve the full mineral harmonic series.",
   "dna": {
     "aggression": 0.12,
     "brightness": 0.7,
@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Crystal Cave",
+  "name": "Crystal Cave II",
   "parameters": {
     "Obsidian": {
       "obsidian_ampAttack": 1.5,

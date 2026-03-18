@@ -6,7 +6,7 @@
     "target": "Obsidian",
     "type": "SPECTRAL_MORPH"
   },
-  "description": "A paper fold frozen mid-crease — Origami's vermillion edge meets Obsidian's white silence.",
+  "description": "A paper fold frozen mid-crease \u2014 Origami's vermillion edge meets Obsidian's white silence.",
   "dna": {
     "aggression": 0.0,
     "brightness": 0.07,
@@ -32,7 +32,7 @@
     "SPACE": 0.93
   },
   "mood": "Entangled",
-  "name": "Folded Crystal",
+  "name": "Folded Crystal II",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.11,

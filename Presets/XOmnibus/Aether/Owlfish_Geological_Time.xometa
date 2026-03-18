@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "All odd dividers: ÷3, ÷5, ÷7 — Oskar Sala's alien complete set. bodyFreq=28Hz: seismic, below pitch, felt in the chest. 4-second attack, 6-second release. This preset does not respond to human time. A note played here takes geological patience to arrive and an epoch to fade. The odd harmonics wobble like tectonic plates. The body at 28Hz is not a musical event — it is a condition of the habitat.",
+  "description": "All odd dividers: \u00f73, \u00f75, \u00f77 \u2014 Oskar Sala's alien complete set. bodyFreq=28Hz: seismic, below pitch, felt in the chest. 4-second attack, 6-second release. This preset does not respond to human time. A note played here takes geological patience to arrive and an epoch to fade. The odd harmonics wobble like tectonic plates. The body at 28Hz is not a musical event \u2014 it is a condition of the habitat.",
   "dna": {
     "aggression": 0.15,
     "brightness": 0.15,
@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Aether",
-  "name": "Geological Time",
+  "name": "Geological Time II",
   "parameters": {
     "Owlfish": {
       "owl_ampAttack": 4000,

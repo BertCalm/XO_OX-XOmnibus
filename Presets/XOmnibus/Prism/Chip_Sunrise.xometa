@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "2A03 pulse wave at dawn — pure retro luminance",
+  "description": "2A03 pulse wave at dawn \u2014 pure retro luminance",
   "dna": {
     "aggression": 0.15,
     "brightness": 0.96,
@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Prism",
-  "name": "Chip Sunrise",
+  "name": "Chip Sunrise II",
   "parameters": {},
   "schema_version": 1,
   "sonic_dna": {

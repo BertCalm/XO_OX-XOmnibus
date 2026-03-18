@@ -20,7 +20,7 @@ for preset compatibility.
 | SNAP | ODDFELIX | Snap | OddfeliX | OddfeliX (feliX the neon tetra) | `snap_` |
 | MORPH | ODDOSCAR | Morph | OddOscar | OddOscar (Oscar the axolotl) | `morph_` |
 | DUB | OVERDUB | Dub | Overdub | XOverdub | `dub_` |
-| DRIFT | ODYSSEY | Drift | Odyssey | XOdyssey | `odyssey_` |
+| DRIFT | ODYSSEY | Drift | Odyssey | XOdyssey | `drift_` |
 | BOB | OBLONG | Bob | Oblong | XOblong | `bob_` |
 | FAT | OBESE | Fat | Obese | XObese | `fat_` |
 | BITE | OVERBITE | Bite | Overbite | XOverbite (was XOpossum) | `poss_` |

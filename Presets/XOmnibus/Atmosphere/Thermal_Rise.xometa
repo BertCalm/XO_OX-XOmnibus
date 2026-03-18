@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Single warm partial in vast open space — glowing, alone.",
+  "description": "Single warm partial in vast open space \u2014 glowing, alone.",
   "dna": {
     "aggression": 0.168,
     "brightness": 0.645,
@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Thermal Rise",
+  "name": "Thermal Rise II",
   "parameters": {},
   "schema_version": 1,
   "sonic_dna": {

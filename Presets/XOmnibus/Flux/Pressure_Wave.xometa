@@ -2,7 +2,7 @@
   "author": "XO_OX Designs",
   "coupling": null,
   "couplingIntensity": "None",
-  "description": "crushDepth=8, crushRate=22050. The whale's voice compressed by deep pressure — 8-bit resolution through 4 ZDF ladders. First bit-crushed FAT preset.",
+  "description": "crushDepth=8, crushRate=22050. The whale's voice compressed by deep pressure \u2014 8-bit resolution through 4 ZDF ladders. First bit-crushed FAT preset.",
   "dna": {
     "aggression": 0.75,
     "brightness": 0.65,
@@ -21,7 +21,7 @@
     "SURFACE"
   ],
   "mood": "Flux",
-  "name": "Pressure Wave",
+  "name": "Pressure Wave II",
   "parameters": {
     "Obese": {
       "fat_ampAttack": 0.002,

@@ -6,7 +6,7 @@
     "target": "Oracle",
     "type": "ENVELOPE_LINK"
   },
-  "description": "Obsidian's envelope freezes Oracle's timing — the prophecy delivered once, then silent.",
+  "description": "Obsidian's envelope freezes Oracle's timing \u2014 the prophecy delivered once, then silent.",
   "dna": {
     "aggression": 0.03,
     "brightness": 0.05,
@@ -32,7 +32,7 @@
     "SPACE": 0.97
   },
   "mood": "Entangled",
-  "name": "Frozen Oracle",
+  "name": "Frozen Oracle II",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.08,

@@ -7,7 +7,7 @@
     "target": "Organon",
     "type": "FREQUENCY_SHIFT"
   },
-  "description": "Microsound harp frequency shifts trigger ORGANON's metabolic cascade — brightness 0.88.",
+  "description": "Microsound harp frequency shifts trigger ORGANON's metabolic cascade \u2014 brightness 0.88.",
   "dna": {
     "aggression": 0.08,
     "brightness": 0.88,
@@ -33,7 +33,7 @@
     "SPACE": 0.72
   },
   "mood": "Entangled",
-  "name": "Harp Metabolism",
+  "name": "Harp Metabolism II",
   "parameters": {
     "Organon": {
       "macro_character": 0.5,

@@ -11,7 +11,7 @@
     ]
   },
   "couplingIntensity": "Deep",
-  "description": "OVERLAP decay length modulates OUTWIT generation rate — the longer the tail, the faster the evolution",
+  "description": "OVERLAP decay length modulates OUTWIT generation rate \u2014 the longer the tail, the faster the evolution",
   "dna": {
     "aggression": 0.077,
     "brightness": 0.55,
@@ -37,7 +37,7 @@
     "SPACE": 0.67
   },
   "mood": "Entangled",
-  "name": "FDN Automata",
+  "name": "FDN Automata II",
   "parameters": {
     "Outwit": {
       "owit_ampAttack": 0.195,

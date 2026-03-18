@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Triple-brass GROW macro expands FM depth — the orchestra swells and the wavetable opens.",
+  "description": "Triple-brass GROW macro expands FM depth \u2014 the orchestra swells and the wavetable opens.",
   "dna": {
     "aggression": 0.409,
     "brightness": 0.554,
@@ -32,7 +32,7 @@
     "SPACE"
   ],
   "mood": "Entangled",
-  "name": "Brass Drift",
+  "name": "Brass Drift II",
   "parameters": {
     "Odyssey": {
       "drift_ampAttack": 0.0667,

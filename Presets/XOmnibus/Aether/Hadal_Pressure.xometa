@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Maximum depth pressure — owlfish at 8000m",
+  "description": "Maximum depth pressure \u2014 owlfish at 8000m",
   "dna": {
     "aggression": 0.55,
     "brightness": 0.02,
@@ -23,7 +23,7 @@
     "PRESSURE"
   ],
   "mood": "Aether",
-  "name": "Hadal Pressure",
+  "name": "Hadal Pressure II",
   "parameters": {},
   "schema_version": 1,
   "sonic_dna": {

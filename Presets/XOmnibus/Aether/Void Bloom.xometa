@@ -3,7 +3,7 @@
   "coupling": null,
   "couplingIntensity": "None",
   "created": "2026-03-16",
-  "description": "Opal dissolved into infinite space. Space dimension at 0.97 — cavernous and unbound. The sound arrives from everywhere and nowhere.",
+  "description": "Opal dissolved into infinite space. Space dimension at 0.97 \u2014 cavernous and unbound. The sound arrives from everywhere and nowhere.",
   "dna": {
     "aggression": 0.258,
     "brightness": 0.268,
@@ -22,7 +22,7 @@
     "SPACE"
   ],
   "mood": "Aether",
-  "name": "Void Bloom",
+  "name": "Void Bloom II",
   "parameters": {
     "Opal": {
       "opal_ampAttack": 0.437,

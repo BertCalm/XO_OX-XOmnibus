@@ -116,9 +116,13 @@ namespace GalleryColors {
         if (id == "Obbligato") return juce::Colour(0xFFFF8A7A); // Rascal Coral
         if (id == "Ottoni")    return juce::Colour(0xFF5B8A72); // Patina
         if (id == "Ole")       return juce::Colour(0xFFC9377A); // Hibiscus
+        // Newest engines (2026-03-15)
+        if (id == "Ombre")     return juce::Colour(0xFF7B6B8A); // Shadow Mauve
+        if (id == "Orca")      return juce::Colour(0xFF1B2838); // Deep Ocean
+        if (id == "Octopus")   return juce::Colour(0xFFE040FB); // Chromatophore Magenta
         // Standalone adapters (Phase 4)
-        if (id == "XOverlap")  return juce::Colour(0xFF00FFB4); // Bioluminescent Cyan-Green
-        if (id == "XOutwit")   return juce::Colour(0xFFCC6600); // Chromatophore Amber
+        if (id == "Overlap" || id == "XOverlap")  return juce::Colour(0xFF00FFB4); // Bioluminescent Cyan-Green
+        if (id == "Outwit"  || id == "XOutwit")   return juce::Colour(0xFFCC6600); // Chromatophore Amber
         return get(borderGray());
     }
 

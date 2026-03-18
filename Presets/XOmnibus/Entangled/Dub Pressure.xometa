@@ -11,7 +11,7 @@
     ]
   },
   "couplingIntensity": "Moderate",
-  "description": "Tape dub pressure increases with depth — bass as atmospheric compression.",
+  "description": "Tape dub pressure increases with depth \u2014 bass as atmospheric compression.",
   "dna": {
     "aggression": 0.525,
     "brightness": 1.0,
@@ -37,7 +37,7 @@
     "SPACE": 0.65
   },
   "mood": "Entangled",
-  "name": "Dub Pressure",
+  "name": "Dub Pressure II",
   "parameters": {},
   "schema_version": 1,
   "sequencer": null,

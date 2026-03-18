@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OBSIDIAN — dark extreme brightness preset for Foundation.",
+  "description": "OBSIDIAN \u2014 dark extreme brightness preset for Foundation.",
   "dna": {
     "aggression": 0.48,
     "brightness": 0.04,
@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Foundation",
-  "name": "Volcanic Glass",
+  "name": "Volcanic Glass II",
   "parameters": {
     "Obsidian": {
       "obs_ampAttack": 529.7,

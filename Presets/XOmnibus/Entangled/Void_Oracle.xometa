@@ -6,7 +6,7 @@
     "target": "Oracle",
     "type": "PITCH_SYNC"
   },
-  "description": "Obsidian locks Oracle's pitch into crystalline void — absolute cold prophecy.",
+  "description": "Obsidian locks Oracle's pitch into crystalline void \u2014 absolute cold prophecy.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.253,
@@ -32,7 +32,7 @@
     "SPACE": 0.95
   },
   "mood": "Entangled",
-  "name": "Void Oracle",
+  "name": "Void Oracle III",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.11,

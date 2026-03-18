@@ -180,6 +180,7 @@ private:
             case CouplingType::EnvToDecay:      return "Env>D";
             case CouplingType::PitchToPitch:    return "P>P";
             case CouplingType::AudioToWavetable: return "WT";
+            case CouplingType::AudioToBuffer:    return "A>B";
             default: return "?";
         }
     }

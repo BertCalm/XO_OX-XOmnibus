@@ -3,7 +3,7 @@
   "coupling": null,
   "couplingIntensity": "None",
   "created": "2026-03-16",
-  "description": "The possum moving at 3am through a suburban yard — confident in the darkness, unhurried, every footfall deliberate. PLAY DEAD activated at low level, creating a halting breath quality: the sustained note shivers slightly then goes still, then breathes again. Sub oscillator for low-mass presence. Filter nearly closed, warmth pooling in the midrange.",
+  "description": "The possum moving at 3am through a suburban yard \u2014 confident in the darkness, unhurried, every footfall deliberate. PLAY DEAD activated at low level, creating a halting breath quality: the sustained note shivers slightly then goes still, then breathes again. Sub oscillator for low-mass presence. Filter nearly closed, warmth pooling in the midrange.",
   "dna": {
     "aggression": 0.08,
     "brightness": 0.28,
@@ -22,7 +22,7 @@
     "TRASH"
   ],
   "mood": "Atmosphere",
-  "name": "Nocturnal Drift",
+  "name": "Nocturnal Drift II",
   "parameters": {
     "Overbite": {
       "poss_ampAttack": 1.2,

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "A trefoil knot tuned to simulate underwater acoustic propagation — sound travels faster and differently at depth. Wide spread, high diffusion, moderate mod to add the micro-wobble of pressure variation. The FDN acts like the water column itself: input sound enters and propagates outward in all six directions simultaneously.",
+  "description": "A trefoil knot tuned to simulate underwater acoustic propagation \u2014 sound travels faster and differently at depth. Wide spread, high diffusion, moderate mod to add the micro-wobble of pressure variation. The FDN acts like the water column itself: input sound enters and propagates outward in all six directions simultaneously.",
   "dna": {
     "aggression": 0.08,
     "brightness": 0.4,
@@ -23,7 +23,7 @@
     "DECAY"
   ],
   "mood": "Atmosphere",
-  "name": "Pressure Wave",
+  "name": "Pressure Wave III",
   "parameters": {
     "Overlap": {
       "olap_damping": 0.62,

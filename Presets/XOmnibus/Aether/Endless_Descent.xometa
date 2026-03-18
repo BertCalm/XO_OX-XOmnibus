@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Self-consuming loop — cycle into infinite dark",
+  "description": "Self-consuming loop \u2014 cycle into infinite dark",
   "dna": {
     "aggression": 0.3,
     "brightness": 0.03,
@@ -23,7 +23,7 @@
     "VOID"
   ],
   "mood": "Aether",
-  "name": "Endless Descent",
+  "name": "Endless Descent II",
   "parameters": {},
   "schema_version": 1,
   "sonic_dna": {

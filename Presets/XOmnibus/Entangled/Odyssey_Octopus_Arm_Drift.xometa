@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Eight arms each hold a different wavetable phase — decentralized oscillators drifting apart.",
+  "description": "Eight arms each hold a different wavetable phase \u2014 decentralized oscillators drifting apart.",
   "dna": {
     "aggression": 0.435,
     "brightness": 0.624,
@@ -32,7 +32,7 @@
     "SPACE"
   ],
   "mood": "Entangled",
-  "name": "Arm Drift",
+  "name": "Arm Drift II",
   "parameters": {
     "Octopus": {
       "octo_filterCutoff": 6457.9,

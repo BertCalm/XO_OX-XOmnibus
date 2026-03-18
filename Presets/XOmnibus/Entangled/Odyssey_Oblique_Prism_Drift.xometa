@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Violet meets prism violet — two purples at oblique angles, refracting into a third colour.",
+  "description": "Violet meets prism violet \u2014 two purples at oblique angles, refracting into a third colour.",
   "dna": {
     "aggression": 0.426,
     "brightness": 0.694,
@@ -32,7 +32,7 @@
     "SPACE"
   ],
   "mood": "Entangled",
-  "name": "Prism Drift",
+  "name": "Prism Drift II",
   "parameters": {
     "Oblique": {
       "oblq_filterCutoff": 8427.3,

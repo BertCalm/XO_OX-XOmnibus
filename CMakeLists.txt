@@ -132,6 +132,11 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Ocelot/TapeWarp.h
     Source/Engines/Ocelot/WaveFolder.h
 
+    Source/Engines/Osprey/OspreyEngine.h
+    Source/Engines/Osprey/OspreyEngine.cpp
+    Source/Engines/Osteria/OsteriaEngine.h
+    Source/Engines/Osteria/OsteriaEngine.cpp
+
     Source/Engines/Owlfish/OwlfishEngine.h
     Source/Engines/Owlfish/OwlfishEngine.cpp
     Source/Engines/Owlfish/OwlfishParameters.h
@@ -175,6 +180,7 @@ target_sources(XOmnibus PRIVATE
     # Export pipeline
     Source/Export/XPNCoverArt.h
     Source/Export/XPNExporter.h
+    Source/Export/XPNDrumExporter.h
 
     # Core (MIDI Learn — shared across platforms)
     Source/Core/MIDILearnManager.h
@@ -242,6 +248,7 @@ add_executable(XOmnibusTests
     Tests/PresetTests/PresetRoundTripTests.cpp
     Tests/ExportTests/XPNExportTests.cpp
     Tests/DoctrineTests/DoctrineTests.cpp
+    Tests/FamilyWaveguideTest.cpp
 )
 
 target_include_directories(XOmnibusTests PRIVATE

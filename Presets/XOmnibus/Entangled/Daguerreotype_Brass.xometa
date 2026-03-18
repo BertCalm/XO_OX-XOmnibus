@@ -7,7 +7,7 @@
     "target": "Obscura",
     "type": "HARMONIC_FOLD"
   },
-  "description": "Harmonic folding through OBSCURA's string network — brass preserved in silver.",
+  "description": "Harmonic folding through OBSCURA's string network \u2014 brass preserved in silver.",
   "dna": {
     "aggression": 0.1,
     "brightness": 0.844,
@@ -33,7 +33,7 @@
     "SPACE": 0.46
   },
   "mood": "Entangled",
-  "name": "Daguerreotype Brass",
+  "name": "Daguerreotype Brass II",
   "parameters": {
     "Obscura": {
       "macro_character": 0.6,

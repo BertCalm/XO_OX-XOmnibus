@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Settled sediment — the lowest resonant floor",
+  "description": "Settled sediment \u2014 the lowest resonant floor",
   "dna": {
     "aggression": 0.25,
     "brightness": 0.08,
@@ -23,7 +23,7 @@
     "CAVE"
   ],
   "mood": "Aether",
-  "name": "Silt Bed",
+  "name": "Silt Bed II",
   "parameters": {},
   "schema_version": 1,
   "sonic_dna": {

@@ -3,7 +3,7 @@
   "coupling": null,
   "couplingIntensity": "None",
   "created": "2026-03-16",
-  "description": "OSPREY in full dive — CLARITY macro open, Mediterranean air carrying it. The clean predator falling toward the water.",
+  "description": "OSPREY in full dive \u2014 CLARITY macro open, Mediterranean air carrying it. The clean predator falling toward the water.",
   "dna": {
     "aggression": 0.42,
     "brightness": 0.75,
@@ -27,7 +27,7 @@
     "SPACE"
   ],
   "mood": "Family",
-  "name": "Osprey Dive",
+  "name": "Osprey Dive II",
   "parameters": {},
   "schema_version": 1,
   "sequencer": null,

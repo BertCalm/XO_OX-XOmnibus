@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The full jungle ecosystem in one patch — kalimba floor rhythm drives the canopy pad while bird trills scatter overhead. The EcosystemMatrix cross-feeds are alive but controlled: raise ECOSYSTEM to hear the strata begin talking to each other.",
+  "description": "The full jungle ecosystem in one patch \u2014 kalimba floor rhythm drives the canopy pad while bird trills scatter overhead. The EcosystemMatrix cross-feeds are alive but controlled: raise ECOSYSTEM to hear the strata begin talking to each other.",
   "dna": {
     "aggression": 0.25,
     "brightness": 0.5,
@@ -23,7 +23,7 @@
     "CANOPY"
   ],
   "mood": "Foundation",
-  "name": "Jungle Floor",
+  "name": "Jungle Floor II",
   "parameters": {
     "Ocelot": {
       "ocelot_ampAttack": 8.0,

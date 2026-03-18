@@ -24,7 +24,7 @@
     "M3": "ECOSYSTEM",
     "M4": "CANOPY"
   },
-  "name": "Deep Current",
+  "name": "Deep Current II",
   "parameters": {
     "ocelot_ampAttack": 30.0,
     "ocelot_ampDecay": 600.0,

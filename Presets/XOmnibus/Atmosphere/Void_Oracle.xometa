@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "ORACLE — dark extreme brightness preset for Atmosphere.",
+  "description": "ORACLE \u2014 dark extreme brightness preset for Atmosphere.",
   "dna": {
     "aggression": 0.53,
     "brightness": 0.06,
@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Void Oracle",
+  "name": "Void Oracle II",
   "parameters": {
     "Oracle": {
       "orc_ampAttack": 496.2,

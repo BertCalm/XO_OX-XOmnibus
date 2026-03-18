@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-16",
-  "description": "ERA balanced between two systems, glitch rate introduces occasional bit-corruption. Six voices — not quite enough to fill the space. Something is being concealed behind the surface.",
+  "description": "ERA balanced between two systems, glitch rate introduces occasional bit-corruption. Six voices \u2014 not quite enough to fill the space. Something is being concealed behind the surface.",
   "dna": {
     "aggression": 0.35,
     "brightness": 0.58,
@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Mirage Layer",
+  "name": "Mirage Layer II",
   "parameters": {
     "Overworld": {
       "ow_ampAttack": 0.8,

@@ -11,7 +11,7 @@
     ]
   },
   "couplingIntensity": "Deep",
-  "description": "OUTWIT arm patterns feed OVERLAP FDN node routing — cellular intelligence chooses the reflection path",
+  "description": "OUTWIT arm patterns feed OVERLAP FDN node routing \u2014 cellular intelligence chooses the reflection path",
   "dna": {
     "aggression": 0.4,
     "brightness": 0.55,
@@ -37,7 +37,7 @@
     "SPACE": 0.593
   },
   "mood": "Entangled",
-  "name": "Cellular Bloom",
+  "name": "Cellular Bloom II",
   "parameters": {
     "Outwit": {
       "owit_ampAttack": 0.05,

@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-16",
-  "description": "Lorenz trajectory at near-zero chaos — the attractor traces its path so slowly it reads as a breathing drone. Temperature boundary: dense below, open above.",
+  "description": "Lorenz trajectory at near-zero chaos \u2014 the attractor traces its path so slowly it reads as a breathing drone. Temperature boundary: dense below, open above.",
   "dna": {
     "aggression": 0.07,
     "brightness": 0.35,
@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Thermocline",
+  "name": "Thermocline II",
   "parameters": {
     "Ouroboros": {
       "ouro_chaosIndex": 0.12,

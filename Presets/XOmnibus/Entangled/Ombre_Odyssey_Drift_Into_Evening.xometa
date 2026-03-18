@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Wavetable position as a sundial hand — the oscillator drifts from afternoon gold to evening violet.",
+  "description": "Wavetable position as a sundial hand \u2014 the oscillator drifts from afternoon gold to evening violet.",
   "dna": {
     "aggression": 0.381,
     "brightness": 0.511,
@@ -32,7 +32,7 @@
     "SPACE"
   ],
   "mood": "Entangled",
-  "name": "Drift Into Evening",
+  "name": "Drift Into Evening II",
   "parameters": {
     "Odyssey": {
       "drift_filterCutoff": 4541.8,

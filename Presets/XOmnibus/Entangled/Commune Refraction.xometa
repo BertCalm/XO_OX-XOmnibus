@@ -6,7 +6,7 @@
     "target": "Ohm",
     "type": "FILTER_COUPLING"
   },
-  "description": "Sage commune drone entering the prism — the group's collective frequency split into its individual voice-harmonics.",
+  "description": "Sage commune drone entering the prism \u2014 the group's collective frequency split into its individual voice-harmonics.",
   "engines": [
     "Oblique",
     "Ohm"
@@ -24,7 +24,7 @@
     "SPACE": 0.576
   },
   "mood": "Entangled",
-  "name": "Commune Refraction",
+  "name": "Commune Refraction II",
   "parameters": {
     "oblq_ampAttack": 0.0521,
     "oblq_ampDecay": 0.294,

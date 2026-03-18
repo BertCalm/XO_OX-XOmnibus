@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-16",
-  "description": "Eight oscillators at elevated detune, group envelope fluctuating at moderate rate. Spread allows voices to interfere. Not storm — charged particle stream. The quiet danger of radiation.",
+  "description": "Eight oscillators at elevated detune, group envelope fluctuating at moderate rate. Spread allows voices to interfere. Not storm \u2014 charged particle stream. The quiet danger of radiation.",
   "dna": {
     "aggression": 0.42,
     "brightness": 0.62,
@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Solar Wind",
+  "name": "Solar Wind II",
   "parameters": {
     "Orbital": {
       "orb_ampAttack": 0.5,

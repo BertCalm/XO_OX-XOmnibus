@@ -6,7 +6,7 @@
     "target": "Orca",
     "type": "ECHOLOCATION_SYNC"
   },
-  "description": "Sage groove carried on deep tidal current — orca pod navigates by ohm resonance",
+  "description": "Sage groove carried on deep tidal current \u2014 orca pod navigates by ohm resonance",
   "engines": [
     "Ohm",
     "Orca"
@@ -24,7 +24,7 @@
     "SPACE": 0.65
   },
   "mood": "Entangled",
-  "name": "Pod Migration",
+  "name": "Pod Migration II",
   "parameters": {},
   "schema_version": 1,
   "sonic_dna": {

@@ -13,7 +13,7 @@
   },
   "couplingIntensity": "Light",
   "created": "2026-03-16",
-  "description": "OPTIC's visual pulse rate synchronizes with ORCA's echolocation — the hunt visible as AutoPulse geometry, predation as oscilloscope trace.",
+  "description": "OPTIC's visual pulse rate synchronizes with ORCA's echolocation \u2014 the hunt visible as AutoPulse geometry, predation as oscilloscope trace.",
   "dna": {
     "aggression": 0.701,
     "brightness": 0.458,
@@ -33,7 +33,7 @@
     "SPACE"
   ],
   "mood": "Entangled",
-  "name": "Scan Line",
+  "name": "Scan Line II",
   "parameters": {
     "Optic": {
       "optic_attack": 0.0,

@@ -3,7 +3,7 @@
   "coupling": null,
   "couplingIntensity": "None",
   "created": "2026-03-16",
-  "description": "OBSIDIAN unsheathed — edge maximum, mass full, brightness nearly absent. The sharpest thing in the kit. Use with intent.",
+  "description": "OBSIDIAN unsheathed \u2014 edge maximum, mass full, brightness nearly absent. The sharpest thing in the kit. Use with intent.",
   "dna": {
     "aggression": 0.7,
     "brightness": 0.18,
@@ -27,7 +27,7 @@
     "SPACE"
   ],
   "mood": "Family",
-  "name": "Volcanic Glass",
+  "name": "Volcanic Glass IV",
   "parameters": {},
   "schema_version": 1,
   "sequencer": null,

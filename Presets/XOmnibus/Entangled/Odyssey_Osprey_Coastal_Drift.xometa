@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "A wavetable oscillator carried on shore-system wind — five coastlines, five timbral zones.",
+  "description": "A wavetable oscillator carried on shore-system wind \u2014 five coastlines, five timbral zones.",
   "dna": {
     "aggression": 0.449,
     "brightness": 0.613,
@@ -32,7 +32,7 @@
     "SPACE"
   ],
   "mood": "Entangled",
-  "name": "Coastal Drift",
+  "name": "Coastal Drift II",
   "parameters": {
     "Odyssey": {
       "drift_ampAttack": 0.0959,

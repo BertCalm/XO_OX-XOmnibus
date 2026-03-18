@@ -3,7 +3,7 @@
   "coupling": null,
   "couplingIntensity": "None",
   "created": "2026-03-16",
-  "description": "The possum with its claws retracted. Warmth forward, sub beneath, no bite or trash. Long release lets every chord breathe. Family-safe — BELLY at zero, BITE silent.",
+  "description": "The possum with its claws retracted. Warmth forward, sub beneath, no bite or trash. Long release lets every chord breathe. Family-safe \u2014 BELLY at zero, BITE silent.",
   "dna": {
     "aggression": 0.06,
     "brightness": 0.35,
@@ -27,7 +27,7 @@
     "TRASH"
   ],
   "mood": "Family",
-  "name": "Gentle Fang",
+  "name": "Gentle Fang II",
   "parameters": {
     "Overbite": {
       "poss_ampAttack": 0.4,

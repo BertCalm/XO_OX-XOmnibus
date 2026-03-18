@@ -6,7 +6,7 @@
     "target": "Opal",
     "type": "SPECTRAL_REFRACTION"
   },
-  "description": "Opal shimmer refracted through prismatic lens — grain cloud split to spectral rays",
+  "description": "Opal shimmer refracted through prismatic lens \u2014 grain cloud split to spectral rays",
   "engines": [
     "Opal",
     "Optic"
@@ -24,7 +24,7 @@
     "SPACE": 0.8
   },
   "mood": "Entangled",
-  "name": "Crystal Spectrum",
+  "name": "Crystal Spectrum II",
   "parameters": {},
   "schema_version": 1,
   "sonic_dna": {

@@ -7,14 +7,14 @@
         "direction": "A->B",
         "engineA": "Overworld",
         "engineB": "Oblique",
-        "notes": "Overworld ERA triangle horizontal position (ow_era) drives oblq_prismColor — the chip voice identity continuously determines the hue of Oblique's prismatic refraction",
+        "notes": "Overworld ERA triangle horizontal position (ow_era) drives oblq_prismColor \u2014 the chip voice identity continuously determines the hue of Oblique's prismatic refraction",
         "type": "ModToMod"
       }
     ]
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Overworld's ERA triangle position continuously paints oblq_prismColor — the chip voice identity (NES pulse, Genesis FM, SNES wavetable) becomes the hue input for Oblique's prismatic refraction. A patch in pure NES space (ow_era 0.0) drives a cool violet prism; sweeping into Genesis warm FM territory shifts the prism toward amber. Oblique does not modulate Overworld — it receives the chip's color and refracts it through its own bounce geometry. The chips teach the prism what color to be. Set ow_eraDrift high for a restless prism that never settles; zero drift gives you a stable color field that only breaks when you move the ERA manually.",
+  "description": "Overworld's ERA triangle position continuously paints oblq_prismColor \u2014 the chip voice identity (NES pulse, Genesis FM, SNES wavetable) becomes the hue input for Oblique's prismatic refraction. A patch in pure NES space (ow_era 0.0) drives a cool violet prism; sweeping into Genesis warm FM territory shifts the prism toward amber. Oblique does not modulate Overworld \u2014 it receives the chip's color and refracts it through its own bounce geometry. The chips teach the prism what color to be. Set ow_eraDrift high for a restless prism that never settles; zero drift gives you a stable color field that only breaks when you move the ERA manually.",
   "dna": {
     "aggression": 0.38,
     "brightness": 0.74,
@@ -39,7 +39,7 @@
     "SPACE"
   ],
   "mood": "Entangled",
-  "name": "Chip Prism",
+  "name": "Chip Prism II",
   "parameters": {
     "Oblique": {
       "oblq_ampAttack": 0.08,

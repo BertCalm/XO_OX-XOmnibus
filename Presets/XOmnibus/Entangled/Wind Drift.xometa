@@ -6,7 +6,7 @@
     "target": "Obbligato",
     "type": "BREATH_COUPLING"
   },
-  "description": "Dual wind phrase carried on FM current — breath and wavetable drift together outward",
+  "description": "Dual wind phrase carried on FM current \u2014 breath and wavetable drift together outward",
   "engines": [
     "Odyssey",
     "Obbligato"
@@ -24,7 +24,7 @@
     "SPACE": 0.6
   },
   "mood": "Entangled",
-  "name": "Wind Drift",
+  "name": "Wind Drift II",
   "parameters": {},
   "schema_version": 1,
   "sonic_dna": {
