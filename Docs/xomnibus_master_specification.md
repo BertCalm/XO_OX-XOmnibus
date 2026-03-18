@@ -46,7 +46,7 @@ This master spec consolidates 15 foundation documents. When conflicts exist betw
 
 | Value | Expression |
 |-------|------------|
-| **Character** | 11,247 presets with evocative names, not "Init Patch 47" |
+| **Character** | 11,794+ presets with evocative names, not "Init Patch 47" |
 | **Coupling** | Cross-engine modulation is the defining differentiator |
 | **Openness** | Open source, community presets, documented architecture |
 | **Craft** | Each engine was a standalone instrument first |
@@ -144,9 +144,9 @@ Toggle between modes at any time. Preset data is identical — only UI visibilit
 
 ## 3. Engine Modules
 
-### 3.1 The 44 Registered Engines
+### 3.1 The 40 Registered Engines
 
-*As of 2026-03-17. All engines installed, auval PASS. Seance coverage: 44/44.*
+*As of 2026-03-17. All engines installed, auval PASS. Seance coverage: 40/40. All 6 doctrines PASS fleet-wide.*
 
 | Short Name | Source | Accent Color | Generation |
 |-----------|--------|-------------|------------|
@@ -704,9 +704,9 @@ Every preset carries a 6-dimensional vector for similarity search, morphing, and
 
 ### 8.6 Factory Preset Library
 
-**Total: 11,247 factory presets** (verified count as of 2026-03-17). Zero duplicates, 100% DNA coverage, health score ~92/100. See `Docs/prism_sweep_final_report.md` for full audit history.
+**Total: 11,794+ factory presets** (as of 2026-03-17, actively expanding). Target: 150 per engine × 40 engines = 6,000 minimum. Zero duplicates, 100% DNA coverage, health score ~92/100. See `Docs/prism_sweep_final_report.md` for full audit history.
 
-Original architecture layers (reference only — actual count is 11,247):
+Original architecture layers (reference only — count growing with fleet expansion):
 
 | Layer | Original Target | Description |
 |-------|-------|-------------|
@@ -772,20 +772,19 @@ Cross-engine presets additionally:
 
 ### 8.10 Migration Status
 
-**All 34 engines migrated. Total: 11,247 presets in `.xometa` format, 100% DNA-fingerprinted.**
+**All 40 engines in `.xometa` format, 100% DNA-fingerprinted. Actively expanding to 150+ presets per engine.**
 
-Original migration tracking (superseded — all complete as of 2026-03-17):
+Current expansion status (2026-03-17):
 
-| Source | Presets (original) | Status |
+| Source | Presets | Status |
 |--------|---------|--------|
-| OddfeliX/OddOscar | 114 | Done |
-| XOverdub | 40 | Done |
-| XOdyssey | 198 | Done |
-| XOblong | 167 | Done |
-| XObese | 52 | Done |
-| XOnset | 85 | Done |
-| All remaining 28 engines | ~10,591 | Done — see Prism Sweep rounds 1–12 |
-| **Total in .xometa** | **11,247** | **All fingerprinted with DNA** |
+| Original 26 engines | ~11,000+ | Expanding to 150 each |
+| Constellation 5 | 100+ each | Expanding to 150 each |
+| OVERLAP/OUTWIT | 150 each | ✅ At target |
+| OMBRE/ORCA/OCTOPUS | Expanding | In progress |
+| OPENSKY/OSTINATO/OCEANDEEP/OUIE | Expanding | In progress |
+| OVERTONE/ORGANISM | 150+/121 | OVERTONE ✅, expanding |
+| **Total in .xometa** | **11,794+** | **All fingerprinted with DNA** |
 
 **Detail:** `xomnibus_preset_spec_for_builder.md`, `xometa_schema.json`
 
@@ -1060,10 +1059,10 @@ The MVP ships with:
 
 ### 12.2 v1.0 Target
 
-- All 44 engines wrapped and integrated (34 original + 5 Constellation + 2 Phase 4 + 3 Phase 3 + 4 V1 Concept + 2 V2 Theorem)
+- All 40 engines wrapped and integrated (26 original + 5 Constellation + 2 Phase 4 + 3 Phase 3 + 4 V1 Concept + 2 V2 Theorem)
 - Full coupling matrix (12 types)
 - PlaySurface (all 3 modes)
-- 12,147+ factory presets with DNA fingerprints (8 moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged) — 11,247 original + 900 new from 6 engines × 150 each
+- 15,000+ factory presets (target) with DNA fingerprints (8 moods) — 11,794+ currently, expanding to 150 per engine (40 × 150 = 6,000 minimum)
 - Preset morphing and breeding
 - XPN export
 - macOS + iOS (AUv3)
