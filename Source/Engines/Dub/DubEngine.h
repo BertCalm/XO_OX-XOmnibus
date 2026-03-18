@@ -1033,7 +1033,7 @@ public:
         // LFO
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "dub_lfoRate", 1 }, "Dub LFO Rate",
-            juce::NormalisableRange<float> (0.1f, 20.0f, 0.01f, 0.3f), 2.0f));
+            juce::NormalisableRange<float> (0.005f, 20.0f, 0.001f, 0.3f), 2.0f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "dub_lfoDepth", 1 }, "Dub LFO Depth",

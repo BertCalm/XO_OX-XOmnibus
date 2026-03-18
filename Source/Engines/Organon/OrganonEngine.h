@@ -869,8 +869,23 @@ public:
         const float phasonShift      = paramPhasonShift      ? paramPhasonShift->load()      : 0.0f;
         const float isotopeBalance   = paramIsotopeBalance   ? paramIsotopeBalance->load()   : 0.5f;
         const float lockIn           = paramLockIn           ? paramLockIn->load()           : 0.0f;
-        const float membrane         = paramMembrane         ? paramMembrane->load()         : 0.2f;
+        float membrane               = paramMembrane         ? paramMembrane->load()         : 0.2f;
         const float noiseColor       = paramNoiseColor       ? paramNoiseColor->load()       : 0.5f;
+
+        // D002: Macro reads — centered at 0.5, bipolar offset is (value - 0.5)
+        const float macroChar  = paramMacroCharacter ? paramMacroCharacter->load() : 0.5f;
+        const float macroMove  = paramMacroMovement  ? paramMacroMovement->load()  : 0.5f;
+        const float macroCoup  = paramMacroCoupling  ? paramMacroCoupling->load()  : 0.5f;
+        const float macroSpace = paramMacroSpace     ? paramMacroSpace->load()     : 0.5f;
+
+        // D002: CHARACTER → enzyme selectivity offset (tone/filter)
+        //       MOVEMENT → metabolic rate multiplier (modulation speed)
+        //       COUPLING → signal flux (coupling input level)
+        //       SPACE → membrane porosity (reverb send)
+        metabolicRate = std::max (0.1f, metabolicRate + (macroMove - 0.5f) * 4.0f);
+        signalFlux    = std::max (0.0f, std::min (1.0f, signalFlux + (macroCoup - 0.5f) * 0.6f));
+        membrane      = std::max (0.0f, std::min (1.0f, membrane + (macroSpace - 0.5f) * 0.6f));
+        // macroChar wired to enzymeSelectivity in voice loop below
 
         // ---- MIDI handling ----
         for (const auto metadata : midi)
@@ -1067,8 +1082,9 @@ public:
                     // noiseColor 0.5 = white (moderate Q)
                     // noiseColor 1.0 = bright (high Q, resonant HP character)
                     // Range [0.3, 0.7] maps noiseColor [0, 1]
+                    // D002: CHARACTER macro offsets enzyme selectivity (tone control)
                     voice.ingestionFilter.setCoefficients (
-                        enzymeSelectivity + externalFilterModulation * 2000.0f,
+                        enzymeSelectivity + externalFilterModulation * 2000.0f + (macroChar - 0.5f) * 4000.0f,
                         0.3f + noiseColor * 0.4f,
                         static_cast<float> (cachedSampleRate));
                     ingestedSample = voice.ingestionFilter.processSample (noise) * signalFlux;
