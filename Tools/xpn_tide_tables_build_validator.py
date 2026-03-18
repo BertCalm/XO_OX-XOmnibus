@@ -4,10 +4,10 @@ xpn_tide_tables_build_validator.py
 
 Validates a TIDE TABLES XPN pack directory against the spec.
 TIDE TABLES is the free gateway XPN pack with 4 programs:
-  SURGE   — ONSET drum kit (DrumProgram)
-  DRIFT   — ODYSSEY melodic (KeygroupProgram)
-  CURRENT — coupling demo (references 2+ engine sources)
-  SWELL   — OPAL foam (KeygroupProgram)
+  Coastal Drums — ONSET drum kit (DrumProgram)
+  Tide Lead     — ODYSSEY melodic (KeygroupProgram)
+  Shore Texture — OPAL granular texture stems (KeygroupProgram)
+  Deep Water    — coupling demo (references 2+ engine sources)
 
 Usage:
   python xpn_tide_tables_build_validator.py --pack-dir /path/to/TIDE_TABLES
@@ -27,9 +27,9 @@ from pathlib import Path
 
 # ── Constants ─────────────────────────────────────────────────────────────────
 
-REQUIRED_PROGRAMS = ["SURGE.xpm", "DRIFT.xpm", "CURRENT.xpm", "SWELL.xpm"]
-DRUM_PROGRAMS = {"SURGE.xpm"}
-KEYGROUP_PROGRAMS = {"DRIFT.xpm", "SWELL.xpm"}
+REQUIRED_PROGRAMS = ["Coastal Drums.xpm", "Tide Lead.xpm", "Shore Texture.xpm", "Deep Water.xpm"]
+DRUM_PROGRAMS = {"Coastal Drums.xpm"}
+KEYGROUP_PROGRAMS = {"Tide Lead.xpm", "Shore Texture.xpm"}
 MAX_SAMPLE_SIZE_MB = 20
 MAX_TOTAL_SIZE_MB = 200
 MIN_SAMPLE_COUNT = 16
@@ -218,7 +218,7 @@ def check_program_types(pack_dir: Path) -> tuple[bool, list[str]]:
     lines = []
     ok = True
 
-    # SURGE must be DrumProgram
+    # Coastal Drums must be DrumProgram
     for fname in DRUM_PROGRAMS:
         path = _resolve_xpm_path(pack_dir, fname)
         if path is None:
@@ -233,7 +233,7 @@ def check_program_types(pack_dir: Path) -> tuple[bool, list[str]]:
             lines.append(fmt_fail(f"{fname} type={ptype!r} (expected DrumProgram)"))
             ok = False
 
-    # DRIFT and SWELL must be KeygroupProgram
+    # Tide Lead and Shore Texture must be KeygroupProgram
     for fname in KEYGROUP_PROGRAMS:
         path = _resolve_xpm_path(pack_dir, fname)
         if path is None:
@@ -252,21 +252,21 @@ def check_program_types(pack_dir: Path) -> tuple[bool, list[str]]:
 
 
 def check_current_coupling(pack_dir: Path) -> tuple[bool, list[str]]:
-    """CURRENT.xpm must reference samples from at least 2 different engine source directories."""
+    """Deep Water.xpm must reference samples from at least 2 different engine source directories."""
     lines = []
-    path = _resolve_xpm_path(pack_dir, "CURRENT.xpm")
+    path = _resolve_xpm_path(pack_dir, "Deep Water.xpm")
     if path is None:
-        lines.append(fmt_fail("CURRENT.xpm not found — cannot check coupling"))
+        lines.append(fmt_fail("Deep Water.xpm not found — cannot check coupling"))
         return False, lines
 
     root = parse_xpm(path)
     if root is None:
-        lines.append(fmt_fail("CURRENT.xpm failed to parse — cannot check coupling"))
+        lines.append(fmt_fail("Deep Water.xpm failed to parse — cannot check coupling"))
         return False, lines
 
     refs = collect_sample_refs(root)
     if not refs:
-        lines.append(fmt_fail("CURRENT.xpm: no sample references found"))
+        lines.append(fmt_fail("Deep Water.xpm: no sample references found"))
         return False, lines
 
     # Derive source directories (top-level directory component of each path)
@@ -288,14 +288,14 @@ def check_current_coupling(pack_dir: Path) -> tuple[bool, list[str]]:
             else:
                 source_dirs.add(ref)  # treat as unique source if no match
 
-    lines.append(fmt_info(f"CURRENT.xpm sample source dirs detected: {sorted(source_dirs)}"))
+    lines.append(fmt_info(f"Deep Water.xpm sample source dirs detected: {sorted(source_dirs)}"))
 
     if len(source_dirs) >= 2:
-        lines.append(fmt_pass(f"CURRENT.xpm references {len(source_dirs)} distinct engine sources (coupling confirmed)"))
+        lines.append(fmt_pass(f"Deep Water.xpm references {len(source_dirs)} distinct engine sources (coupling confirmed)"))
         return True, lines
     else:
         lines.append(fmt_fail(
-            f"CURRENT.xpm references only {len(source_dirs)} engine source(s) — "
+            f"Deep Water.xpm references only {len(source_dirs)} engine source(s) — "
             "coupling demo requires at least 2 different engine sample sources"
         ))
         return False, lines
@@ -421,10 +421,10 @@ def run_validation(pack_dir: Path, strict: bool) -> int:
         print(f"    python Tools/xpn_free_pack_pipeline.py --output-dir {pack_dir}")
         print()
         print("  The pipeline will generate:")
-        print("    • SURGE.xpm   — ONSET drum kit")
-        print("    • DRIFT.xpm   — ODYSSEY melodic program")
-        print("    • CURRENT.xpm — coupling demo (ONSET + ODYSSEY)")
-        print("    • SWELL.xpm   — OPAL foam program")
+        print("    • Coastal Drums.xpm   — ONSET drum kit")
+        print("    • Tide Lead.xpm   — ODYSSEY melodic program")
+        print("    • Deep Water.xpm — coupling demo (ONSET + ODYSSEY)")
+        print("    • Shore Texture.xpm   — OPAL foam program")
         print("    • Samples/    — all referenced WAV files")
         print("    • expansion.json")
         print("    • README.md / TIDE_TABLES_GUIDE.md")
@@ -445,9 +445,9 @@ def run_validation(pack_dir: Path, strict: bool) -> int:
     ok, lines = check_program_types(pack_dir)
     checks.append(("Program types (DrumProgram / KeygroupProgram)", ok, lines))
 
-    # 4. CURRENT coupling
+    # 4. Deep Water coupling
     ok, lines = check_current_coupling(pack_dir)
-    checks.append(("CURRENT.xpm coupling (2+ engine sources)", ok, lines))
+    checks.append(("Deep Water.xpm coupling (2+ engine sources)", ok, lines))
 
     # 5. XPM params
     ok, lines = check_xpm_params(pack_dir)
