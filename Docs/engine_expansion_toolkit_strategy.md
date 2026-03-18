@@ -1,7 +1,7 @@
 # Engine Expansion Toolkit — Post-V1 Strategy
 
 > How XOmnibus grows from 34 engines to an open ecosystem,
-> and how we give people a playground to learn synthesis by building.
+> and how we give people an ocean of toy bricks to learn synthesis by building.
 
 ---
 
@@ -85,9 +85,9 @@ XOmnibus enforces constraints:
 
 ### Channel C: OBRIX — The Synthesis Toy Box (see Part 3)
 
-**XObrix** — synthesis building blocks you snap together like toy bricks.
-Not an external SDK but a playable synthesis sandbox inside XOmnibus itself.
-A toy you learn from. Details in Part 3.
+**XObrix** — ocean bricks you snap together to build sound. Not an external SDK
+but a playable synthesis sandbox inside XOmnibus itself. A toy you learn from,
+guided by Professor Oscar. Details in Part 3.
 
 ---
 
@@ -168,8 +168,8 @@ xomnibus-engine-sdk/
 
 ### Concept
 
-**OBRIX** — toy bricks for synthesis. The name says it all: snap pieces together,
-hear what happens, learn by building. It's a LEGO set where every brick makes sound.
+**OBRIX** — ocean bricks for synthesis. Snap pieces together like coral building
+a reef. Hear what happens. Learn by building. It's a toy box pulled from the sea.
 
 XObrix is a registered engine in XOmnibus — it occupies a slot just like ODDFELIX
 or ORBITAL. But instead of a fixed signal path, its graph is runtime-configurable
@@ -178,9 +178,10 @@ up to 4 OBRIX instances simultaneously in the 4 engine slots — each with a com
 different configuration. Couple them together via the MegaCouplingMatrix and you've
 got a user-designed multi-engine instrument built entirely from toy bricks.
 
-The goal: **anyone can snap blocks together, hear what happens, and learn what
+The goal: **anyone can snap bricks together, hear what happens, and learn what
 oscillators, filters, envelopes, and modulation actually do.** No code. No SDK.
-Just play.
+Just play. And when you want to understand *why* it sounds that way, Professor
+Oscar is there to explain the science.
 
 ### Architecture
 
@@ -223,8 +224,10 @@ preset file.
 
 ### Building Blocks (Curated, Not Infinite)
 
-The key insight: **don't give people Eurorack.** Give them LEGO bricks. Constrained
-choices that always sound good and always teach something.
+The key insight: **don't give people Eurorack.** Give them ocean bricks. Constrained
+choices that always sound good and always teach something. Each brick type has an
+aquatic visual identity — oscillators are shells, filters are coral, modulators
+are currents, effects are tide pools.
 
 **Sources (pick 1-2):**
 
@@ -364,7 +367,372 @@ routes and why they produce the interaction they do.
 
 ---
 
-## Part 4: Sequencing & Priority
+## Part 4: Professor Oscar's Training Mode
+
+### The Character
+
+Oscar the axolotl is already the patient, warm, regenerative half of the XO_OX
+origin pair. Where feliX darts and vanishes, Oscar remains. Where feliX is a
+flash, Oscar is a tide. He lives in duration. He breathes slowly. He's the
+perfect teacher.
+
+**Professor Oscar** appears in OBRIX as an optional training companion — not a
+chatbot, not a tutorial wizard, but a quiet presence that explains *why* things
+sound the way they do. He teaches the science behind the sound.
+
+### How Training Mode Works
+
+Training mode is a toggle — turn it on, and every action in OBRIX gets context.
+Turn it off, and OBRIX is just a toy box. No friction.
+
+**Layer 1: Brick Tooltips (always available)**
+
+When you long-press any brick, Professor Oscar explains what it does in plain
+language. Not "12dB/oct resonant low-pass filter" — instead:
+
+> *"This brick removes the bright, buzzy frequencies from your sound.*
+> *Turn the cutoff knob down and listen — hear how it gets darker?*
+> *That's because higher harmonics are being filtered out.*
+> *Every physical object does this naturally — a pillow over a speaker,*
+> *your hand over your mouth. This brick gives you that control."*
+> — Professor Oscar
+
+**Layer 2: Connection Insights (training mode on)**
+
+When you drag a modulation connection, Oscar explains the relationship:
+
+> *"You just connected your LFO to the filter cutoff.*
+> *The LFO is a slow wave — it goes up and down on its own.*
+> *Now your filter cutoff will rise and fall with it.*
+> *That's the 'wah-wah' sound. Speed up the LFO — it gets faster.*
+> *Slow it way down — it becomes a gentle breathing."*
+> — Professor Oscar
+
+**Layer 3: Science Cards (training mode on)**
+
+Expandable cards that go deeper. Each brick and connection type has a science
+card that explains the physics, math, or psychoacoustics behind it. These are
+written for curious beginners, not engineers:
+
+| Topic | Science Card |
+|-------|-------------|
+| **Why filters sound warm** | Harmonics, overtone series, how acoustic instruments naturally roll off high frequencies. Why a muted guitar string sounds "warm." |
+| **What FM synthesis actually is** | Frequency modulation explained with two tuning forks. Why it makes bell sounds. Chowning's discovery at Stanford. |
+| **Why detuning creates width** | Beating frequencies, binaural perception, how a chorus of slightly-out-of-tune singers sounds "wide." |
+| **What an envelope is** | A letter's journey: Attack (opening it), Decay (the initial rush), Sustain (reading), Release (putting it down). How piano hammers vs. organ keys differ. |
+| **Why resonance screams** | Feedback at a specific frequency. Wine glass shattering. Shower acoustics. The Tacoma Narrows Bridge. |
+| **What ring modulation does** | Sum and difference frequencies. Why it sounds metallic and "robotic." Dalek voices. |
+| **Why noise makes percussion** | All frequencies at once = no pitch. Shaping noise with fast envelopes = snare drums, hi-hats, ocean waves. |
+| **What coupling means** | Why two instruments playing together sound different from two instruments playing separately. Sympathetic resonance. Piano strings vibrating without being struck. |
+
+**Layer 4: Waveform Visualizer**
+
+When training mode is on, a real-time oscilloscope appears at the bottom of the
+OBRIX view. It shows the waveform at each stage of the signal path:
+
+```
+[Source: Saw] ──▶ [Filter: LP] ──▶ [Output]
+   ╱╲╱╲╱╲           ∿∿∿∿∿∿          ∿∿∿∿∿∿
+   raw saw        filtered         final output
+```
+
+As you change parameters, the waveform changes in real time. Connect the dots
+between what you hear and what you see. This is synthesis made visible.
+
+**Layer 5: "Why Does It Sound Like That?" Button**
+
+A single button (Oscar's face) that, when pressed, gives a plain-language
+description of the current patch:
+
+> *"Right now you have a sawtooth wave — that's the buzzy, bright one —*
+> *going through a low-pass filter set fairly dark. An envelope is opening*
+> *the filter quickly when you play a note, then closing it slowly.*
+> *That's why it goes 'bwow' — bright at the start, then muffled.*
+> *Your LFO is gently moving the filter up and down, which adds that*
+> *subtle breathing quality. This is basically how a Minimoog bass works."*
+> — Professor Oscar
+
+### Professor Oscar's Personality in Training Mode
+
+- **Patient.** Never rushes. Never says "obviously" or "simply."
+- **Analogies first.** Always explains with real-world comparisons before technical terms.
+- **Encouraging.** "That sounds great" when you make something good. "Try this" when
+  you're stuck. Never "that's wrong."
+- **Axolotl quirks.** Occasional gentle references to water, breathing, coral, tides.
+  "A filter is like water — it absorbs the sharp edges." Not overdone.
+- **Progressive depth.** First explanation is simple. Tap "tell me more" for the
+  physics. Tap again for the math. Most people never go past the first level, and
+  that's fine.
+- **Visual identity.** Oscar appears as a small pink axolotl icon (Gill Pink `#E8839B`)
+  in the corner of the OBRIX view. Gills animate slowly when he's "speaking."
+  Matches the OddOscar engine accent.
+
+### Technical Notes
+
+- Training mode content is stored as structured data, not hardcoded strings.
+  This enables localization and future expansion.
+- Science cards render as expandable overlays — no navigation away from the
+  brick-building interface.
+- The waveform visualizer reuses OPTIC's `OpticBandAnalyzer` infrastructure
+  (already built for audio-reactive visualization).
+- "Why Does It Sound Like That?" uses a rule-based descriptor, not AI.
+  It reads the current patch matrix and parameter values and assembles a
+  description from templates. Deterministic, instant, works offline.
+
+---
+
+## Part 5: OBRIX Pocket — iPhone-Optimized Interface
+
+### Inspiration
+
+Teenage Engineering Pocket Operators: tiny, immediate, constrained, delightful.
+Everything on one screen. No menus. No hidden panels. You see the whole instrument
+and you play it. That energy, applied to OBRIX on iPhone.
+
+### Design Philosophy
+
+The desktop/iPad OBRIX interface is a drag-and-connect brick canvas. That works
+with a mouse or a large touch screen. On iPhone, we don't shrink that interface
+down — we **reimagine it** as a single-screen instrument inspired by pocket
+synthesizers.
+
+```
+┌─────────────────────────────────────┐
+│  OBRIX POCKET              ≡  ?    │
+│                                     │
+│  ┌─────────────────────────────┐    │
+│  │      ∿∿∿  WAVEFORM  ∿∿∿    │    │  ← mini scope (training mode)
+│  └─────────────────────────────┘    │
+│                                     │
+│  ┌──────┐  ┌──────┐  ┌──────┐      │
+│  │ SRC  │  │ FLT  │  │ FX   │      │  ← brick selector row
+│  │ SAW▾ │  │ LP ▾ │  │ DLY▾ │      │  ← tap to cycle types
+│  └──────┘  └──────┘  └──────┘      │
+│                                     │
+│  ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐    │
+│  │CT│ │RS│ │AT│ │DC│ │SP│ │DP│    │  ← 6 knobs (context-sensitive)
+│  └──┘ └──┘ └──┘ └──┘ └──┘ └──┘    │
+│                                     │
+│  [MOD: LFO→CT ▾]  [ENV ▾]         │  ← mod routing strip
+│                                     │
+│  ┌─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┐    │
+│  │ │█│ │█│ │ │█│ │█│ │█│ │ │    │  ← mini keyboard / pads
+│  └─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘    │
+│                                     │
+│  [M1] [M2] [M3] [M4]   ● REC      │  ← macros + record
+└─────────────────────────────────────┘
+```
+
+### Key Differences from Desktop OBRIX
+
+| Aspect | Desktop/iPad | iPhone Pocket |
+|--------|-------------|---------------|
+| **Brick selection** | Drag from palette, visual canvas | Tap brick slots to cycle types |
+| **Mod routing** | Drag lines between bricks | Tap mod strip — pick source → target from list |
+| **Parameters** | Full knob panels per brick | 6 context-sensitive knobs (tap a brick slot to load its params) |
+| **Waveform** | Large oscilloscope panel | Mini scope strip at top |
+| **Layout** | Freeform canvas | Fixed single-screen grid |
+| **Coupling** | Full MegaCouplingMatrix view | Simplified — tap coupling badge to pick type + target |
+| **Play** | PlaySurface 4-zone | Mini keyboard or 8-pad drum grid |
+
+### Pocket Interaction Model
+
+1. **Tap a brick slot** (SRC / FLT / FX) → the 6 knobs below load that brick's
+   parameters. Cutoff, resonance, attack, decay — whatever's relevant. Labels
+   update dynamically. This is the Pocket Operator approach: same knobs, different
+   context based on what's selected.
+
+2. **Tap the brick type label** (e.g., "SAW") → cycles through available types
+   for that slot. SAW → SQR → SINE → NOISE → WAVE → off. Immediate sonic change.
+   Hold to see the full list.
+
+3. **Mod routing strip** shows active modulation routes as compact chips.
+   Tap to add: pick modulator (LFO/ENV/VEL/NOTE/RND/MACRO) → pick target
+   (any parameter on any brick) → set depth with a slider. Max 4 routes visible,
+   swipe for more.
+
+4. **Mini keyboard** at the bottom — 1 octave, swipe left/right to shift octave.
+   Or toggle to **8-pad mode** for percussion/drum building. Velocity from
+   touch force (existing `MobileTouchHandler` infrastructure).
+
+5. **Record button** — tap to capture a loop. Plays back while you twist knobs.
+   Instant gratification for sound design on the go.
+
+### Pocket-Specific Features
+
+**Shake to randomize.** Shake the phone — Oscar randomly reconfigures the bricks.
+Uses the existing `SensorManager` accelerometer infrastructure. A fun discovery
+tool that produces musically valid results (random within curated constraints,
+not pure chaos).
+
+**Gyro-filter.** Tilt the phone to sweep the filter cutoff. Already supported
+by `SensorManager.h` motion modes — just needs a default mapping in OBRIX Pocket.
+
+**Tap tempo LFO.** Tap the LFO brick twice to set LFO rate from your tapping
+rhythm. Natural on a phone, awkward on desktop.
+
+**Pocket presets.** Presets designed specifically for the 6-knob interface.
+The same `.xometa` format, but with `"pocket": true` metadata flag so the
+preset browser can filter. Desktop presets still load on Pocket (just with
+knobs mapped to the most important 6 params), but Pocket presets are curated
+for the constrained interface.
+
+### Training Mode on Pocket
+
+Professor Oscar adapts to the smaller screen:
+
+- **Tooltips** appear as bottom sheets (half-screen slide-up) instead of popovers.
+- **Science cards** are swipeable carousel cards, not expandable panels.
+- **Waveform visualizer** is the mini scope strip at the top — always visible
+  in training mode, hidden otherwise.
+- **"Why Does It Sound Like That?"** is triggered by tapping Oscar's face in
+  the top-right corner. Response appears as a temporary bottom sheet overlay.
+- **Haptic feedback** reinforces learning: different haptic patterns for
+  different brick types when you cycle through them. Feel the difference
+  between a saw (sharp buzz) and a sine (smooth pulse).
+
+### Visual Identity — Ocean Bricks
+
+The Pocket interface leans into the aquatic identity:
+
+- **Background:** Deep ocean gradient — dark at bottom (keyboard), lighter at
+  top (scope). Not the Gallery Model warm white — Pocket OBRIX has its own mood.
+- **Brick slots:** Rounded rectangles with subtle wave texture. Active brick
+  glows with its type color (shells = warm amber, coral = pink, currents = cyan).
+- **Knobs:** Translucent, like sea glass. Ring indicator in aquatic teal.
+- **Oscar:** Small animated axolotl in the top-right. Gills pulse with the LFO
+  rate when training mode is on. Tappable.
+- **Transitions:** When you cycle brick types, the mini scope waveform morphs
+  smoothly — like something shifting shape underwater.
+
+### Relationship to Full OBRIX
+
+OBRIX Pocket is **not a separate engine.** It's an alternative UI layer over
+the same `ObrixEngine` instance. The DSP is identical. A patch built on Pocket
+opens on desktop with the full canvas view, and vice versa.
+
+The existing `MobileLayoutManager` already handles layout mode detection
+(`iPhonePortrait`, `iPhoneLandscape`). OBRIX Pocket activates when
+`LayoutMode == iPhonePortrait` and the active engine is OBRIX. In landscape
+or on iPad, the full canvas interface loads instead.
+
+```
+ObrixEngine (DSP — identical everywhere)
+    │
+    ├── ObrixCanvasView (desktop + iPad)
+    │     └── drag-and-connect brick builder
+    │
+    └── ObrixPocketView (iPhone portrait)
+          └── Pocket Operator-style single screen
+```
+
+---
+
+## Part 6: OBRIX Visual Identity — Ocean Bricks
+
+### Accent Color
+
+**Reef Teal `#2CB5A0`** — sits between OCEANIC's Phosphorescent Teal (`#00B4A0`)
+and ORGANON's Bioluminescent Cyan (`#00CED1`) but distinct from both. Warmer,
+more mineral, like sun-bleached coral viewed through clear tropical water.
+
+### Brick Type Visual Language
+
+Every brick category has an aquatic visual metaphor:
+
+| Category | Metaphor | Color Family | Shape |
+|----------|----------|-------------|-------|
+| **Sources** (oscillators) | Shells | Warm amber / sand `#D4A76A` | Conch spiral icon |
+| **Processors** (filters, wavefolder) | Coral | Living pink / reef `#E8839B` | Branching coral icon |
+| **Modulators** (LFO, env, velocity) | Currents | Ocean blue / teal `#2CB5A0` | Wave/current icon |
+| **Effects** (delay, chorus) | Tide Pools | Deep violet / iridescent `#7B6B8A` | Pool ripple icon |
+
+The brick colors create a natural visual grouping — you can see at a glance
+that the pink things are processors and the teal things are modulators,
+without reading labels.
+
+### On-Brand but Distinct
+
+OBRIX lives inside the Gallery Model (warm white shell on desktop/iPad) but
+has permission to be more playful than other engines:
+
+- **Brick textures** have a subtle tactile quality — slightly 3D, like actual
+  toy bricks. Other engines have flat, clean UI. OBRIX gets to be toylike.
+- **Animations** are bouncier — bricks snap into place with a satisfying
+  micro-bounce. Connections draw with a fluid, underwater feel.
+- **Sound on interaction** — optional subtle water/click sounds when snapping
+  bricks together (off by default, toggle in settings).
+
+On iPhone Pocket, OBRIX drops the Gallery Model warm white entirely and goes
+full ocean — dark gradient background, luminous bricks, underwater atmosphere.
+This is deliberate: Pocket OBRIX is a different *experience*, not just a
+smaller layout.
+
+---
+
+## Part 7: Easter Egg Brick Combos
+
+### The Idea
+
+Certain brick combinations trigger a **secret reskin** — the OBRIX instance
+gets a custom name, custom visual treatment, and Professor Oscar reacts with
+delight. These break every naming convention on purpose. They're toys. They're
+fun. They reward curiosity.
+
+The user doesn't know these exist until they stumble into one. When the combo
+triggers, the bricks flash, Oscar does a little dance, and the patch name
+auto-fills with the Easter egg name. The user can keep it or rename it.
+
+### Known Combos
+
+| Combo | Easter Egg Name | Visual Reskin |
+|-------|----------------|---------------|
+| 2× Saw + Wavefolder | **CHAIN SAW MAN** | Bricks turn warning orange, jagged teeth on the scope |
+| Sine + Sine (FM routed) | **BELL BOY** | Bricks turn brass gold, scope shows bell curve decay |
+| Noise + BP Filter + fast Env | **SNARE DRUM MACHINE** | Bricks turn chrome, military stencil font |
+| 2× Square (detuned) + Chorus | **CHIPTUNE KID** | Bricks turn pixel green, 8-bit font, scope pixelates |
+| Wavetable + slow LFO + Delay | **DEEP SEA DIVER** | Bricks turn deep blue, bubbles rise in background |
+| Noise + LP Filter (cutoff very low) | **OCEAN FLOOR** | Bricks go abyssal dark, bioluminescent glow edges |
+| Sine + Ring Mod + Sine | **ROBOT VOICE** | Bricks turn steel, Dalek-style modulated scope |
+| All modulators active, no effects | **CHAOS THEORY** | Bricks jitter subtly, Lorenz attractor on scope |
+| 2× Source + 3× Filter (all slots used) | **FILTER MANIAC** | Bricks turn neon pink, Professor Oscar puts on sunglasses |
+| Single bare Sine, nothing else | **PURE THOUGHT** | Everything fades to white except the sine wave. Silence around simplicity. |
+
+### Rules for Easter Eggs
+
+- **Detection is parameter-based.** The combo check runs when any brick type
+  changes — reads `obrix_source1_type`, `obrix_proc1_type`, etc. No audio
+  analysis needed, just parameter pattern matching.
+- **Reskins are cosmetic only.** The DSP is identical — the Easter egg name
+  doesn't change the sound. It celebrates what the user already built.
+- **Oscar reacts.** Each Easter egg has a unique Professor Oscar line:
+  - CHAIN SAW MAN: *"Two saws and a fold? You've built a monster. I love it."*
+  - PURE THOUGHT: *"Just a sine wave. Nothing else. Sometimes the simplest thing is the most beautiful."*
+  - DEEP SEA DIVER: *"Ah, you found my home."*
+- **Reskins persist in presets.** If you save while an Easter egg is active,
+  the preset stores the Easter egg name. Loading it restores the reskin.
+  The `"easterEgg"` field in `.xometa` is optional.
+- **Discoverable but not documented.** No menu lists them. No achievement
+  screen. Just play, stumble, discover. Word of mouth is the distribution.
+- **Community can't add Easter eggs** (first-party only). This keeps them
+  rare, surprising, and on-brand.
+
+### Professor Oscar's Easter Egg Reaction System
+
+When an Easter egg triggers, Oscar's response follows a pattern:
+
+1. **Gills flash** (pink pulse animation)
+2. **Short text bubble** appears near his icon (2-3 seconds)
+3. **Scope reskin** applies with a smooth 0.5s crossfade
+4. **Brick colors** shift to the Easter egg palette over 0.3s
+5. **Haptic** — a unique "discovery" haptic pattern (distinct from all other haptics)
+
+If the user breaks the combo (swaps a brick), the reskin fades back to normal
+over 0.5s. Oscar says nothing — no guilt, no loss. Just back to building.
+
+---
+
+## Part 8: Sequencing & Priority
 
 ### V1 (Ship)
 - 34 engines, current architecture, no expansion API yet
@@ -381,12 +749,16 @@ routes and why they produce the interaction they do.
 - **Parameter namespace registry** — prevent collisions
 
 ### V1.3 (OBRIX)
-- **XObrix** — the synthesis toy box
-- Ships as engine "Obrix" with param prefix `obrix_`
+- **XObrix** — the ocean brick synthesis toy box
+- Ships as engine "Obrix" with param prefix `obrix_`, accent color Reef Teal `#2CB5A0`
 - Starter kit presets + snap challenges
 - Multi-slot support (up to 4 OBRIX instances, each independently configured)
 - Cross-instance coupling via MegaCouplingMatrix
 - Full coupling compatibility with all existing engines
+- Professor Oscar training mode (tooltips, connection insights, science cards, waveform visualizer)
+- Easter egg brick combos (CHAIN SAW MAN, DEEP SEA DIVER, PURE THOUGHT, etc.)
+- **OBRIX Pocket** — iPhone-optimized Pocket Operator-inspired single-screen interface
+- Aquatic visual identity (ocean gradient, shell/coral/current/tide pool brick types)
 
 ### V1.4+ (Community)
 - **Community engine gallery** on xoox.design
@@ -398,23 +770,34 @@ routes and why they produce the interaction they do.
 
 ## Open Questions
 
-1. **OBRIX accent color.** Needs to be distinct from existing 34 engines.
-   Candidates: Construction Yellow `#FFD700`? Brick Red `#CB4154`? Something
-   that says "toy" and "build."
-
-2. **Sample loading in community engines.** V1 community engines can't load files
+1. **Sample loading in community engines.** V1 community engines can't load files
    (security boundary). Do we add a sandboxed sample API in V1.3+?
 
-3. **Community engine code signing.** Do we require notarized/signed binaries?
+2. **Community engine code signing.** Do we require notarized/signed binaries?
    Or trust-on-first-use with a warning dialog?
 
-4. **OBRIX complexity ceiling.** 12 bricks per instance is the proposed limit.
+3. **OBRIX complexity ceiling.** 12 bricks per instance is the proposed limit.
    With 4 slots that's 48 bricks total — probably plenty. But does a single
    instance need more than 12? Needs user testing.
 
-5. **Revenue model for community.** Free marketplace? Paid tier for premium
+4. **Revenue model for community.** Free marketplace? Paid tier for premium
    community engines? Donation model? This affects incentives.
 
-6. **OBRIX multi-slot presets.** When a preset uses 3 OBRIX slots + 1 ORBITAL,
+5. **OBRIX multi-slot presets.** When a preset uses 3 OBRIX slots + 1 ORBITAL,
    should the preset browser show it as an OBRIX preset, an ORBITAL preset,
    or a new "Multi" category? Current preset system is per-engine.
+
+6. **Training mode depth vs. overwhelm.** Five layers of training content is a
+   lot. Should layers 3-5 (science cards, scope, "why does it sound like that")
+   unlock progressively as the user builds more patches? Or always available?
+
+7. **Easter egg expansion.** Should we ship with 10 combos and add more in
+   updates? Community-suggested combos (but first-party implemented)?
+
+8. **Pocket landscape mode.** iPhone landscape could show a wider brick canvas
+   (closer to iPad). Or it could show a split: keyboard left, bricks right.
+   Needs prototyping.
+
+9. **Oscar localization.** Training mode text needs translation. Oscar's
+   personality needs to survive localization — casual analogies don't always
+   translate well. Consider hiring writers per language, not just translators.
