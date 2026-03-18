@@ -181,7 +181,10 @@ public:
             if ((i & 63) == 63)
             {
                 float mag2 = cosOsc * cosOsc + sinOsc * sinOsc;
-                float correction = 1.5f - 0.5f * mag2;  // Fast inverse sqrt approx
+                // First-order Taylor correction: 1/sqrt(mag2) ≈ 1.5 - 0.5*mag2 when mag2 ≈ 1.
+                // Valid for small drift (|mag2-1| < 0.1) — each rotation step accumulates
+                // only tiny error, so this keeps oscillator amplitude near 1.0 cheaply.
+                float correction = 1.5f - 0.5f * mag2;
                 cosOsc *= correction;
                 sinOsc *= correction;
             }
