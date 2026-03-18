@@ -21,11 +21,19 @@ enum class CouplingType {
     EnvToDecay,        // Engine A envelope → Engine B decay time
     PitchToPitch,      // Engine A pitch → Engine B pitch (harmony)
     AudioToWavetable,  // Engine A audio → Engine B wavetable source
-    AudioToBuffer      // Engine A audio → Engine B ring buffer (continuous stereo streaming)
+    AudioToBuffer,     // Engine A audio → Engine B ring buffer (continuous stereo streaming)
                        // Designed for OPAL's grain buffer — the "Time Telescope" coupling type.
                        // Unlike AudioToWavetable (periodic snapshots), AudioToBuffer streams
                        // every block into a pre-allocated circular buffer with freeze support.
                        // See Docs/xopal_phase1_architecture.md §15 for the full design.
+    KnotTopology       // Bidirectional irreducible coupling (KNOT type, V2 Theorem feature).
+                       // Both engines modulate each other's parameters simultaneously.
+                       // Linking number (encoded in `amount` param, 1-5) sets entanglement depth:
+                       //   linkingNum = juce::roundToInt(amount * 4.0f) + 1  →  range [1, 5]
+                       // Unlike all other CouplingType values (which are sender→receiver),
+                       // KnotTopology creates mutual, co-evolving entanglement: neither engine
+                       // can be decoupled from the other without destroying the patch.
+                       // See Docs/specs/knot_coupling_spec.md for full design.
 };
 
 //==============================================================================
