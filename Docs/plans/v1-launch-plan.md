@@ -1,29 +1,39 @@
 # XOmnibus V1 Launch Plan
 
-*Drafted: 2026-03-17*
+*Drafted: 2026-03-17 | Updated: 2026-03-17 (RAC review + owner ratification)*
 *Goal: Ship a clean, confident, no-apologies V1*
 
 ---
 
 ## Philosophy
 
-V1 ships what's **done and excellent** — not everything that's been imagined. Every engine that ships must pass all 6 Doctrines, have compelling presets, and be free of P0 audio bugs. Anything that isn't ready gets a clear "V2" label and stops consuming V1 attention.
+V1 ships what's **done and excellent** — not everything that's been imagined. Every engine that ships must pass all 6 Doctrines, have compelling presets, and be free of P0 audio bugs. Anything that isn't ready gets a clear post-V1 label and stops consuming V1 attention.
 
 ---
 
-## PHASE 0 — Fix What's Broken (P0 Audio Bugs)
+## Owner Decisions (Ratified 2026-03-17)
 
-These are showstoppers. Fix before anything else.
+1. **Scope:** 4 concept engines (OSTINATO, OPENSKY, OCEANDEEP, OUIE) deferred to post-V1 release cadence. Supersedes 2026-03-15 "all V1" decision.
+2. **Release model:** Tiered — V1.0 → V1.1 → V1.2 (see Execution Order).
+3. **License:** MIT (committed to repo).
+4. **Post-V1 cadence:** Bi-monthly free engine releases. Premium boutique engines (voice + custom FX in 5th slot) as paid products, potentially fundraiser-connected. OSTINATO is top premium candidate.
+5. **OddfeliX/OddOscar:** Character names stay primary in UI. "Transient Designer" / "Morph Pad" as secondary functional descriptors in documentation only.
 
-| # | Bug | File | Fix | Effort |
-|---|-----|------|-----|--------|
-| 1 | **OBSIDIAN right channel filter bypass** | `ObsidianEngine.h:801-805` | Apply `mainFilter.processSample()` to both channels | 1 line |
-| 2 | **OSTERIA warmth filter left-only** | `OsteriaEngine.h:1227` | Duplicate low-shelf for mixR | 1 line |
-| 3 | **ORIGAMI STFT race condition** | `OrigamiEngine.h:758-770` | Serialize hop-counter boundary with buffer writes | S |
-| 4 | **5 dead parameters (D004)** | SNAP macroDepth, OWLFISH morphGlide, OBLIQUE percDecay, OCELOT ecosystem macros, OSPREY LFO | Wire to DSP or remove | S each |
-| 5 | **Test target link error** | CMakeLists.txt | Link `juce_audio_formats` to test target | 1 line |
+---
 
-**Gate:** All 5 fixed, build PASS, auval PASS, tests PASS.
+## PHASE 0 — Fix What's Broken (P0 Audio Bugs) ✅ COMPLETE
+
+All 5 issues resolved on `v1-launch-prep` branch:
+
+| # | Bug | Status |
+|---|-----|--------|
+| 1 | OBSIDIAN right channel filter bypass | ✅ Fixed (both channels filtered) |
+| 2 | OSTERIA warmth filter left-only | ✅ Fixed (mixR now passes through warmth) |
+| 3 | ORIGAMI STFT race condition | ✅ Fixed (activeVoiceCount atomic; hop counter audio-thread-only) |
+| 4 | 5 dead parameters (D004) | ✅ All wired to DSP |
+| 5 | Test target link error | ✅ juce_audio_formats linked |
+
+**Gate:** ✅ All fixed. Build + auval verification pending.
 
 ---
 
@@ -38,34 +48,33 @@ A 34-engine synth that burns CPU while silent is not shippable.
 | 3 | **ControlRateReducer for coupling** — coupling at control rate, not audio rate | Major CPU savings in multi-engine patches | M |
 | 4 | **SROAuditor dashboard** — real-time CPU budget visibility | User confidence; "pro-grade" signal | S |
 
+**Governance notes (Architect):**
+- SilenceGate must not break D001 (velocity at slow attack) — validate all 34 engines post-integration
+- ControlRateReducer must maintain minimum CC update rate ≥ ~5ms for D006 compliance
+- Coupling routes may need exempt lanes from ControlRateReducer to prevent zipper artifacts
+- D005 drift floor must be re-validated after FastMath substitution
+
 **Gate:** 4-engine patch idles at <2% CPU. Single-engine worst case <15%.
 
 ---
 
-## PHASE 2 — Engine Roster Decision
+## PHASE 2 — Engine Roster Lock
 
 ### 34 engines SHIP AS-IS
 
 All 34 registered engines are unique synthesis paradigms with no redundancy at the DSP level. Nothing gets cut from V1.
 
-**However, two engines get reframed in marketing/UI (no code changes):**
+OddfeliX and OddOscar retain their character identities (feliX the neon tetra, Oscar the axolotl) as primary UI names. Functional descriptors ("transient design," "morph") appear as secondary labels in documentation and guides only — never replacing character names in the gallery.
 
-| Engine | Current Framing | V1 Framing | Why |
-|--------|----------------|------------|-----|
-| ODDFELIX | Standalone engine | "Transient Designer" — positioned as excitation source | KS transients pair best as input to other engines |
-| ODDOSCAR | Standalone engine | "Morph Pad" — positioned as the PPG morphing specialist | Clarifies identity vs OBLONG's warm analog character |
+### 4 concept engines — POST-V1 RELEASE CADENCE
 
-Both keep their DSP, presets, and slot position. This is **labeling**, not surgery.
+OSTINATO, OPENSKY, OCEANDEEP, OUIE have zero DSP. They enter the bi-monthly free release cadence post-V1, with OSTINATO additionally being the top candidate for the first premium boutique engine (voice + custom FX in 5th slot).
 
-### 4 concept engines — DEFER TO V2
-
-OSTINATO, OPENSKY, OCEANDEEP, OUIE have zero DSP. Building 4 new engines while shipping V1 is a scope trap. They're designed and waiting — that's a V2 strength, not a V1 gap.
-
-**Exception:** If you have capacity after Phase 4 and want to ship ONE concept engine, **OPENSKY** is the easiest build (supersaw + shimmer + reverb — well-understood DSP) and completes the brand's "sky" mythology.
+**V2 narrative:** Announce all 4 at V1 launch as "coming next" — converts a scope cut into a roadmap moment.
 
 ---
 
-## PHASE 3 — FX for V1
+## PHASE 3 — FX for V1 (V1.1 milestone)
 
 ### Ship: Aquatic FX Suite (The Aquarium)
 
@@ -74,7 +83,7 @@ The **6-stage Aquatic FX** (Fathom/Drift/Tide/Reef/Surface/Biolume) is the right
 - Design is COMPLETE — 22 parameters, signal flow defined, `aqua_` prefix assigned
 - All algorithmic DSP (no convolution) — moderate build effort
 - Brand-defining: "that sounds like XO_OX" regardless of active engine
-- Augments/replaces MasterFXChain (which has 18 stages already working)
+- **Architecture decision needed:** Does Aquatic FX Suite replace or extend MasterFXChain? (Architect P1 flag)
 - Maps directly to the 4 macros (CHARACTER→Fathom+Biolume, SPACE→Reef+Drift, MOVEMENT→Tide+Drift, COUPLING→Surface)
 
 | FX | DSP Core | Effort |
@@ -88,74 +97,60 @@ The **6-stage Aquatic FX** (Fathom/Drift/Tide/Reef/Surface/Biolume) is the right
 
 **Total effort:** ~1 focused week for all 6 stages.
 
-### Defer: fXO_ Regional Effects + Prime Movers
+### Defer: fXO_ Regional Effects + Prime Movers + Chord Machine → V2
 
-These need the 8 shared effect cores built first. That's infrastructure work. V2.
-
-### Defer: Chord Machine
-
-Brilliant concept but it's a feature, not a fix. V2.
+**Note:** fXOsmosis and fXOneiric (boutique effects added on SRO branch) need a decision — either they ship as V1 content (requiring seance + mood categorization) or they defer with the rest of the fXO_ category.
 
 ---
 
-## PHASE 4 — Preset Expansion (Target: 120 per engine, including Entangled)
+## PHASE 4 — Preset Expansion (V1.2 milestone)
 
-### Current state: ~2,550 factory presets, 100% DNA coverage, 0 duplicates
+### Current state: 11,247 factory presets, 100% DNA coverage, 0 duplicates
 
-12 engines below 120 presets. ~423 new presets needed (Entangled coupling presets count toward both participating engines).
-
-| Engine | Current | Need | Priority Coupling Partners |
-|--------|---------|------|---------------------------|
-| **Owlfish** | 35 | +85 | Overdub, Obscura, Opal |
-| **Overlap** | 51 | +69 | Orca, Octopus, Ouroboros |
-| **Outwit** | 61 | +59 | Onset, Optic, Oblique |
-| **Oceanic** | 79 | +41 | Osprey, Osteria, Organon |
-| **Orca** | 89 | +31 | Ombre, Octopus, OceanDeep (V2) |
-| **Osteria** | 90 | +30 | Osprey, Ole, Ottoni |
-| **Osprey** | 91 | +29 | Osteria, Oceanic, Ohm |
-| **Origami** | 96 | +24 | Oracle, Obsidian, Opal |
-| **Ombre** | 98 | +22 | Orca, Odyssey, Orphica |
-| **Octopus** | 100 | +20 | Orca, Overlap, Ouroboros |
-| **Ocelot** | 109 | +11 | Opal, Overdub, Overworld |
-| **Oracle** | 118 | +2 | Organon, Obscura |
+With 11,247 presets, the 120/engine minimum target needs recalculation. Run per-engine count to identify actual gaps.
 
 | Task | Details |
 |------|---------|
-| **12-engine preset expansion** | All 12 engines above to ≥120 presets (solo + Entangled) |
+| **Per-engine audit** | Count presets per engine, identify any below 120 |
 | **Aquatic FX presets** | 20-30 presets showcasing the new FX suite across multiple engines |
-| **Coupling showcase refresh** | Verify all existing Entangled presets still sound right after SRO changes |
+| **Coupling showcase refresh** | Verify existing Entangled presets still sound right after SRO changes |
 | **Init patch audit** | Every engine's init patch must sound compelling dry (DB003) |
 
 **Gate:** Every engine ≥120 presets. Aquatic FX has dedicated showcase presets.
 
 ---
 
-## PHASE 5 — Documentation & Ship Prep
+## PHASE 5 — Documentation & Ship Prep (Parallel with Phases 1-4)
 
-| Task | Details | Effort |
-|------|---------|--------|
-| **Master spec rewrite** | "The Seven Engines" table → accurate 34-engine table | M |
-| **Sound design guide completion** | 4 Constellation engines missing from unified guide | M |
-| **CLAUDE.md accuracy pass** | Verify all counts, engine lists, build instructions | S |
-| **README for open-source launch** | User-facing: what is XOmnibus, how to build, how to contribute | M |
-| **License file** | Confirm open-source license choice | S |
+| Task | Details | Effort | Status |
+|------|---------|--------|--------|
+| **MIT License** | Committed to repo | S | ✅ DONE |
+| **README.md** | User-facing: what is XOmnibus, how to build, how to contribute | M | In progress |
+| **CONTRIBUTING.md** | PR standards, code style, fnm requirement | M | In progress |
+| **SECURITY.md** | Vulnerability reporting process | S | In progress |
+| **CODE_OF_CONDUCT.md** | Contributor Covenant | S | In progress |
+| **GitHub issue templates** | Bug report + feature request | S | In progress |
+| **Master spec rewrite** | Accurate 34-engine table | M | Pending |
+| **Sound design guide completion** | 4 Constellation engines missing from unified guide | M | Pending |
+| **CLAUDE.md accuracy pass** | Preset count corrected (11,247). Verify all other counts. | S | In progress |
+| **Security audit** | Git history for secrets, firebase-debug.log, no .env | M | Pending |
+| **11 missing engine identity cards** | Aquatic mythology gap | M | Pending |
 
 ---
 
 ## What V1 Does NOT Ship
 
-| Item | Why Deferred |
-|------|-------------|
-| OSTINATO, OPENSKY, OCEANDEEP, OUIE | Zero DSP — design-only. V2 build queue. |
-| fXO_ regional effects | Need shared cores infrastructure. V2. |
-| Prime Movers (Origin/Overture/Oscillograph/Ouverture) | Phase 2 architecture. V2. |
-| Chord Machine | Feature, not fix. V2. |
-| Synesthesia Engine | PARKED (P001). Needs dedicated planning session. |
-| XOscillum, XObliqua, XOccult, XOblivion, XOntara | V2 build queue (concept/spec only). |
-| Theorem engines (OVERTONE, KNOT, ORGANISM) | Pi Day concepts. V2+. |
-| Kitchen Essentials / Collections | Long-term platform vision. V3+. |
-| Dynamic oversampling (OversamplingManager) | Phase 2 SRO. V2. |
-| AudioToBuffer Phase 3 | Spec'd but not blocking V1 coupling. V2. |
+| Item | Why Deferred | When |
+|------|-------------|------|
+| OSTINATO | Premium boutique candidate (voice + FX 5th slot) | Post-V1 bi-monthly cadence |
+| OPENSKY, OCEANDEEP, OUIE | Zero DSP — design-only | Post-V1 bi-monthly cadence |
+| fXO_ regional effects | Need shared cores infrastructure | V2 |
+| Prime Movers | Phase 2 architecture | V2 |
+| Chord Machine | Feature, not fix | V2 |
+| Synesthesia Engine | PARKED (P001) | Needs planning session |
+| Theorem engines (OVERTONE, KNOT, ORGANISM) | Pi Day concepts | V2+ |
+| Kitchen Essentials / Collections | Paid expansion platform | V2 ($39-49) |
+| Dynamic oversampling | Phase 2 SRO | V2 |
 
 ---
 
@@ -163,32 +158,67 @@ Brilliant concept but it's a feature, not a fix. V2.
 
 ```
 ENGINES:           34 (all registered, all unique paradigms)
-PRESETS:           2,550+ (target ~3,000 after expansion — 120 per engine min)
-MOODS:             7 (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family)
+PRESETS:           11,247 factory (target: every engine ≥120)
+MOODS:             8 (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged)
 MACROS:            4 (CHARACTER, MOVEMENT, COUPLING, SPACE)
 COUPLING TYPES:    12 (MegaCouplingMatrix)
 MAX SLOTS:         4 simultaneous engines
 FX:                Aquatic FX Suite (6 stages) + MasterFXChain (18 stages)
 FORMATS:           AU + Standalone (macOS), AUv3 + Standalone (iOS), VST3
 DOCTRINES:         6/6 resolved fleet-wide
+LICENSE:           MIT
 ```
 
 ---
 
-## Execution Order
+## Execution Order — Tiered Release
 
 ```
-Week 1:  PHASE 0 — P0 bug fixes (3 audio bugs + 5 dead params + test link)
-Week 1:  PHASE 1 — SilenceGate + FastMath fleet rollout (parallel with bug fixes)
-Week 2:  PHASE 1 — ControlRateReducer + SROAuditor
-Week 2:  PHASE 3 — Aquatic FX build (6 stages)
-Week 3:  PHASE 4 — Preset expansion (Owlfish/Overlap/Outwit + Aquatic FX presets)
-Week 3:  PHASE 5 — Documentation pass
-Week 4:  Integration testing, auval, final audit
+WEEKS 1-2:  PHASE 0 ✅ (already done)
+            PHASE 1 — SilenceGate + FastMath fleet rollout
+            PHASE 5 — Community infrastructure (README, CONTRIBUTING, etc.)
+            PHASE 5 — Security audit (git history, no secrets)
+            Site: Record audio demos, fix Patreon URL, build Download page
+
+WEEKS 3-4:  PHASE 1 — ControlRateReducer + SROAuditor
+            PHASE 5 — Documentation pass (master spec, sound design guides)
+            Site: Index refresh, engine gallery, Getting Started page
+
+WEEK 5:    Integration testing, hardware MPC validation, auval
+            Launch-ready gate review
+
+WEEK 6:    ═══ V1.0 LAUNCH ═══
+            Repo public, download live, TIDE TABLES live
+            Community seeding (Reddit, KVR, Discord, forums)
+
+WEEKS 7-8:  Post-launch monitoring + hotfix protocol
+            MACHINE GUN REEF push
+            Community Challenge #1
+
+WEEKS 9-10: PHASE 3 — Aquatic FX Suite build + integration
+            ═══ V1.1 UPDATE ═══
+
+WEEKS 11-14: PHASE 4 — Preset expansion (if needed per audit)
+             Content cadence (Field Guide, Signal)
+             ═══ V1.2 UPDATE ═══ (content complete)
 ```
 
-**Total: ~4 weeks to clean V1.**
+**Total: ~6 weeks to V1.0 launch. ~14 weeks to content-complete V1.2.**
 
 ---
 
-*This plan ships 34 engines, 2,700+ presets, branded Aquatic FX, zero P0 bugs, and SRO-optimized performance. Everything else is V2 — designed, documented, and waiting.*
+## Hard Gates (from Board of Directors)
+
+Nothing ships without these cleared:
+
+1. **Security** — Git history clean, no secrets, npm audit clean
+2. **License** — ✅ MIT committed
+3. **Community infrastructure** — README, CONTRIBUTING, SECURITY, CODE_OF_CONDUCT, issue templates
+4. **Audio demos** — Minimum 5 hero preset recordings on XO-OX.org
+5. **Preset silence audit** — All presets verified non-silent
+6. **Engine count accuracy** — All materials say "34 engines" (accurate — all registered with DSP)
+7. **Patreon URL** — Fixed from placeholder across all pages
+
+---
+
+*This plan ships 34 engines, 11,247+ presets, branded Aquatic FX, zero P0 bugs, SRO-optimized performance, and MIT-licensed open source. Premium boutique engines and bi-monthly free releases sustain momentum post-launch. Everything else is V2 — designed, documented, and waiting.*

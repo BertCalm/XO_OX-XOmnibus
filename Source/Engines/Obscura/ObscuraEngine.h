@@ -3,6 +3,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 #include <algorithm>
@@ -605,6 +606,7 @@ public:
     {
         sampleRateDouble = sampleRate;
         sampleRateFloat = static_cast<float> (sampleRateDouble);
+        silenceGate.prepare (sampleRate, maxBlockSize);
 
         // How many audio samples elapse between physics simulation steps.
         // At 44.1 kHz with 4 kHz control rate: ~11.025 samples per step.
@@ -831,6 +833,8 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
+            {
+                silenceGate.wake();
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), maxPolyphony,
                         monoMode, legatoMode, glideCoefficient,
                         paramAmpAttack, paramAmpDecay, paramAmpSustain, paramAmpRelease,
@@ -838,6 +842,7 @@ public:
                         paramLfo1Rate, paramLfo1Depth, paramLfo1Shape,
                         paramLfo2Rate, paramLfo2Depth, paramLfo2Shape,
                         initialShapeIndex, paramExcitePosition, paramExciteWidth);
+            }
             else if (msg.isNoteOff())
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
@@ -851,6 +856,13 @@ public:
             // Full wheel adds +0.4 to sustainForce (sensitivity 0.4).
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
+        }
+
+        // SilenceGate: skip all DSP if engine has been silent long enough
+        if (silenceGate.isBypassed() && midi.isEmpty())
+        {
+            buffer.clear();
+            return;
         }
 
         // D006: smooth aftertouch pressure and compute modulation value
@@ -1135,6 +1147,11 @@ public:
         for (const auto& voice : voices)
             if (voice.active) ++count;
         activeVoiceCount = count;
+
+        // SilenceGate: analyze output level for next-block bypass decision
+        silenceGate.analyzeBlock (buffer.getReadPointer (0),
+                                  buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr,
+                                  numSamples);
     }
 
 
@@ -1405,6 +1422,8 @@ public:
 
 
 private:
+
+    SilenceGate silenceGate;
 
     //==========================================================================
     // Helper: safe atomic parameter load with fallback

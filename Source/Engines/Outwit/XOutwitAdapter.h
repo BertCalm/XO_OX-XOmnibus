@@ -25,6 +25,7 @@
 #include "DSP/InkCloud.h"
 #include "DSP/ParamSnapshot.h"
 #include "DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 
@@ -37,9 +38,10 @@ public:
     // Lifecycle
     //==========================================================================
 
-    void prepare(double sampleRate, int /*maxBlockSize*/) override
+    void prepare(double sampleRate, int maxBlockSize) override
     {
         sr = sampleRate;
+        silenceGate.prepare(sampleRate, maxBlockSize);
         for (auto& arm : arms)
             arm.prepare(sampleRate);
         ampEnv.prepare(sampleRate);
@@ -171,6 +173,13 @@ public:
         auto* outL = buf.getWritePointer(0);
         auto* outR = buf.getWritePointer(1);
 
+        // SilenceGate: pre-pass scan for note-on to wake gate before bypass check
+        for (const auto& meta : midi)
+            if (meta.getMessage().isNoteOn())
+                silenceGate.wake();
+
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buf.clear(); return; }
+
         // 8. Process MIDI and audio interleaved
         int samplePos = 0;
         for (const auto metadata : midi)
@@ -203,6 +212,8 @@ public:
         }
 
         activeCount = noteHeld ? 1 : 0;
+
+        silenceGate.analyzeBlock(buf.getReadPointer(0), buf.getReadPointer(1), ns);
     }
 
     //==========================================================================
@@ -427,6 +438,7 @@ private:
     // DSP state
     //==========================================================================
 
+    SilenceGate silenceGate;
     std::array<xoutwit::ArmChannel, 8> arms;
     xoutwit::AmpEnvelope ampEnv;
     xoutwit::DenReverb   denReverb;

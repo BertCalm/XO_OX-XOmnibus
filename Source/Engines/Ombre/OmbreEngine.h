@@ -3,6 +3,7 @@
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 #include <vector>
@@ -195,6 +196,8 @@ public:
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
 
+        silenceGate.prepare (sampleRate, maxBlockSize);
+
         for (auto& voice : voices)
         {
             voice.active = false;
@@ -262,7 +265,10 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
+            {
+                silenceGate.wake();
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), reactivity);
+            }
             else if (msg.isNoteOff())
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
@@ -270,6 +276,8 @@ public:
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount_ = msg.getControllerValue() / 127.0f;
         }
+
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
 
         // Mod wheel: sweeps blend toward pure Opsis (perception) at full throw.
         // At modWheel=0: blend unchanged. At modWheel=1: blend pushed fully to 1.0.
@@ -492,6 +500,8 @@ public:
         }
 
         envelopeOutput = peakEnv;
+
+        silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
 
     //-- Coupling --------------------------------------------------------------
@@ -651,6 +661,9 @@ public:
     int getMaxVoices() const override { return kMaxVoices; }
 
 private:
+
+    SilenceGate silenceGate;
+
     //--------------------------------------------------------------------------
     void noteOn (int noteNumber, float velocity, float reactivity)
     {

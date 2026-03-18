@@ -3,6 +3,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 #include <algorithm>
@@ -483,6 +484,9 @@ public:
 
         aftertouch.prepare (sampleRate);
 
+        silenceGate.prepare (sampleRate, maxBlockSize);
+        silenceGate.setHoldTime (500.0f);  // Origami has reverb tails
+
         // Coupling input buffer for receiving external audio
         couplingInputBuffer.resize (static_cast<size_t> (safeBlockSize), 0.0f);
 
@@ -649,12 +653,15 @@ public:
         {
             const auto message = metadata.getMessage();
             if (message.isNoteOn())
+            {
+                silenceGate.wake();
                 handleNoteOn (message.getNoteNumber(), message.getFloatVelocity(),
                               maxPolyphony, monoMode, legatoMode, glideCoefficient,
                               paramAmpAttack, paramAmpDecay, paramAmpSustain, paramAmpRelease,
                               paramFoldEnvAttack, paramFoldEnvDecay, paramFoldEnvSustain, paramFoldEnvRelease,
                               paramLfo1Rate, paramLfo1Depth, paramLfo1Shape,
                               paramLfo2Rate, paramLfo2Depth, paramLfo2Shape);
+            }
             else if (message.isNoteOff())
                 handleNoteOff (message.getNoteNumber());
             else if (message.isAllNotesOff() || message.isAllSoundOff())
@@ -666,6 +673,8 @@ public:
             else if (message.isController() && message.getControllerNumber() == 1)
                 modWheelValue = message.getControllerValue() / 127.0f;
         }
+
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
 
         // D006: smooth aftertouch and apply to fold depth (more spectral shimmer on pressure)
         aftertouch.updateBlock (numSamples);
@@ -848,6 +857,8 @@ public:
         }
 
         envelopeOutput = peakEnvelopeLevel;
+
+        silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
 
         // Clear coupling input buffer for next block
         std::fill (couplingInputBuffer.begin(),
@@ -1140,6 +1151,9 @@ public:
     int getActiveVoiceCount() const override { return activeVoiceCount; }
 
 private:
+
+    SilenceGate silenceGate;
+
     //==========================================================================
     //  Helper: Safe Parameter Load
     //==========================================================================

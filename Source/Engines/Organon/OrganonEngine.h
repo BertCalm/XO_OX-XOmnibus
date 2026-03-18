@@ -51,6 +51,7 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/EngineProfiler.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 #include <cstring>
@@ -820,6 +821,9 @@ public:
 
         profiler.prepare (sampleRate, maxBlockSize);
         profiler.setCpuBudgetFraction (0.22f); // Organon's 22% CPU budget allocation
+
+        silenceGate.prepare (sampleRate, maxBlockSize);
+        silenceGate.setHoldTime (1000.0f);  // Organon has infinite-sustain voices
     }
 
     void releaseResources() override
@@ -877,7 +881,10 @@ public:
         {
             auto message = metadata.getMessage();
             if (message.isNoteOn())
+            {
+                silenceGate.wake();
                 handleNoteOn (message.getNoteNumber(), message.getFloatVelocity());
+            }
             else if (message.isNoteOff())
                 handleNoteOff (message.getNoteNumber());
             else if (message.isAllNotesOff() || message.isAllSoundOff())
@@ -895,6 +902,8 @@ public:
             else if (message.isController() && message.getControllerNumber() == 1)
                 modWheelAmount = message.getControllerValue() / 127.0f;
         }
+
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
 
         // D006: smooth aftertouch pressure and compute modulation value
         aftertouch.updateBlock (numSamples);
@@ -1197,6 +1206,8 @@ public:
         float sendLevel = membrane + averageSurprise * 0.3f;
         if (sendLevel > 1.0f) sendLevel = 1.0f;
         reverbSendLevel.store (sendLevel, std::memory_order_relaxed);
+
+        silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
 
     //==========================================================================
@@ -1308,6 +1319,8 @@ public:
     }
 
 private:
+
+    SilenceGate silenceGate;
 
     //==========================================================================
     //  PARAMETER DEFINITIONS

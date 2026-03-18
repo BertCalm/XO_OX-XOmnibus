@@ -4,6 +4,7 @@
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 #include <vector>
@@ -534,6 +535,8 @@ public:
     void prepare (double sampleRate, int maxBlockSize) override
     {
         sr = sampleRate;
+        silenceGate.prepare (sampleRate, maxBlockSize);
+        silenceGate.setHoldTime (500.0f); // Overdub has reverb tails
         srf = static_cast<float> (sr);
 
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
@@ -669,8 +672,11 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
+            {
+                silenceGate.wake();
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
                         oscOctaveIdx, oscTune, glideAmt, voiceMode, maxPoly);
+            }
             else if (msg.isNoteOff())
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
@@ -681,6 +687,13 @@ public:
             // D006: CC#1 mod wheel → send VCA boost (+0–0.35, more signal into echo/reverb chain)
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
+        }
+
+        // SilenceGate: skip all DSP if engine has been silent long enough
+        if (silenceGate.isBypassed() && midi.isEmpty())
+        {
+            buffer.clear();
+            return;
         }
 
         // D006: smooth aftertouch pressure and compute modulation value
@@ -885,6 +898,11 @@ public:
         }
 
         envelopeOutput = peakEnv;
+
+        // SilenceGate: analyze output level for next-block bypass decision
+        silenceGate.analyzeBlock (buffer.getReadPointer (0),
+                                  buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr,
+                                  numSamples);
     }
 
     //-- Coupling --------------------------------------------------------------
@@ -1145,6 +1163,8 @@ public:
     int getMaxVoices() const override { return kMaxVoices; }
 
 private:
+    SilenceGate silenceGate;
+
     //--------------------------------------------------------------------------
     void noteOn (int noteNumber, float velocity,
                  int oscOctaveIdx, float oscTune, float glideAmt,

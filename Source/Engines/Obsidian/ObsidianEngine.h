@@ -3,6 +3,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 #include <algorithm>
@@ -393,6 +394,8 @@ public:
 
         aftertouch.prepare (sampleRate);
 
+        silenceGate.prepare (sampleRate, maxBlockSize);
+
         // Build the 2D phase distortion lookup table (~2 MB, one-time cost)
         buildDistortionLUT();
 
@@ -563,6 +566,8 @@ public:
         {
             const auto message = metadata.getMessage();
             if (message.isNoteOn())
+            {
+                silenceGate.wake();
                 noteOn (message.getNoteNumber(), message.getFloatVelocity(),
                         maxPolyphony, monoMode, legatoMode, glideCoefficient,
                         paramAmpAttack, paramAmpDecay, paramAmpSustain, paramAmpRelease,
@@ -570,6 +575,7 @@ public:
                         paramLfo1Rate, paramLfo1Depth, paramLfo1Shape,
                         paramLfo2Rate, paramLfo2Depth, paramLfo2Shape,
                         effectiveCutoff, paramFilterResonance, stiffnessCoefficient);
+            }
             else if (message.isNoteOff())
                 noteOff (message.getNoteNumber());
             else if (message.isAllNotesOff() || message.isAllSoundOff())
@@ -581,6 +587,8 @@ public:
             else if (message.isController() && message.getControllerNumber() == 1)
                 modWheelValue = message.getControllerValue() / 127.0f;
         }
+
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
 
         // D006: smooth aftertouch and apply to formant intensity (more vowel on pressure)
         aftertouch.updateBlock (numSamples);
@@ -891,6 +899,8 @@ public:
         for (const auto& voice : voices)
             if (voice.active) ++count;
         activeVoices = count;
+
+        silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
 
     //==========================================================================
@@ -1175,6 +1185,8 @@ public:
 
 
 private:
+
+    SilenceGate silenceGate;
 
     //==========================================================================
     //  Helper: Safe Atomic Parameter Load

@@ -2,6 +2,7 @@
 #include "../../Core/SynthEngine.h"
 #include "../../DSP/FamilyWaveguide.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 
@@ -33,7 +34,7 @@ struct OleAdapterVoice {
 
 class OleEngine : public SynthEngine {
 public:
-    void prepare(double sampleRate,int) override {sr=sampleRate;for(auto&v:voices)v.prepare(sampleRate);}
+    void prepare(double sampleRate,int maxBlockSize) override {sr=sampleRate;for(auto&v:voices)v.prepare(sampleRate);silenceGate.prepare(sampleRate,maxBlockSize);}
     void releaseResources() override {for(auto&v:voices)v.reset();}
     void reset() override {for(auto&v:voices)v.reset();lastL=lastR=0;}
 
@@ -41,6 +42,7 @@ public:
         for(const auto m:midi){
             auto msg=m.getMessage();
             if(msg.isNoteOn()){
+                silenceGate.wake();
                 int nn=msg.getNoteNumber(); float vel=msg.getVelocity()/127.f;
                 float strumRateMs=a1StrumRate?a1StrumRate->load():8.0f;
 
@@ -70,6 +72,9 @@ public:
                     if (v.active) v.vel = juce::jmax(v.vel, modWheel * 0.7f);
             }
         }
+
+        // SilenceGate: skip all DSP if engine has been silent long enough
+        if(silenceGate.isBypassed() && midi.isEmpty()){buf.clear();return;}
 
         // ---- Read ALL parameters ----
         // Aunt levels
@@ -235,6 +240,8 @@ public:
             oL[i]+=sL;oR[i]+=sR;lastL=sL;lastR=sR;
         }
         ac=0;for(auto&v:voices)if(v.active)++ac;
+        // SilenceGate: analyze output level for next-block bypass decision
+        silenceGate.analyzeBlock(buf.getReadPointer(0),buf.getNumChannels()>1?buf.getReadPointer(1):nullptr,ns);
     }
 
     float getSampleForCoupling(int ch,int) const override {return ch==0?lastL:lastR;}
@@ -335,6 +342,7 @@ public:
     int getActiveVoiceCount() const override {return ac;}
 
 private:
+    SilenceGate silenceGate;
     static constexpr int kV=18;
     double sr=44100; int nv=0,nhv=0,ac=0; float lastL=0,lastR=0;
     std::array<OleAdapterVoice,kV> voices;

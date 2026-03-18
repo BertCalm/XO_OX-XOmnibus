@@ -2,6 +2,7 @@
 
 #include "../../Core/SynthEngine.h"
 #include "../../Core/PolyAftertouch.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include "OcelotVoicePool.h"
 #include "OcelotParamSnapshot.h"
 #include "OcelotParameters.h"
@@ -24,6 +25,7 @@ public:
         outputCacheL.assign(static_cast<size_t>(maxBlockSize), 0.0f);
         outputCacheR.assign(static_cast<size_t>(maxBlockSize), 0.0f);
         snapshot = {};
+        silenceGate.prepare(sampleRate, maxBlockSize);
     }
 
     void releaseResources() override { /* no-op: all state is member-allocated */ }
@@ -49,8 +51,11 @@ public:
         {
             auto msg = metadata.getMessage();
             if (msg.isNoteOn())
+            {
+                silenceGate.wake();
                 voicePool.noteOn(msg.getNoteNumber(),
                                  msg.getFloatVelocity(), snapshot);
+            }
             else if (msg.isNoteOff())
                 voicePool.noteOff(msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
@@ -61,6 +66,8 @@ public:
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
         }
+
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
 
         aftertouch.updateBlock(numSamples);
         const float atPressure = aftertouch.getSmoothedPressure(0);
@@ -84,6 +91,8 @@ public:
             outputCacheL[static_cast<size_t>(i)] = outL[i];
             outputCacheR[static_cast<size_t>(i)] = outR[i];
         }
+
+        silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getReadPointer(1), numSamples);
     }
 
     // ── Coupling ─────────────────────────────────────────
@@ -127,6 +136,7 @@ public:
     int   getActiveVoiceCount()    const override { return voicePool.activeVoiceCount(); }
 
 private:
+    xomnibus::SilenceGate silenceGate;
     OcelotVoicePool voicePool;
     OcelotParamSnapshot snapshot;
     xomnibus::PolyAftertouch aftertouch;

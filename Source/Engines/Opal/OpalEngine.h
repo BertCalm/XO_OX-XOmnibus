@@ -5,6 +5,7 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <juce_audio_basics/juce_audio_basics.h>
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <array>
@@ -1043,6 +1044,9 @@ public:
         // Per-block external audio cache (blended in renderBlock grain source path)
         extAudioBufL.assign (static_cast<size_t> (maxBlockSize), 0.0f);
         extAudioBufR.assign (static_cast<size_t> (maxBlockSize), 0.0f);
+
+        silenceGate.prepare (sampleRate, maxBlockSize);
+        silenceGate.setHoldTime (500.0f);  // Opal granular has reverb tails
     }
 
     void releaseResources() override
@@ -1759,6 +1763,7 @@ public:
             auto m = msg.getMessage();
             if (m.isNoteOn())
             {
+                silenceGate.wake();
                 float prevFreq = 261.63f;
                 int voiceIdx;
 
@@ -1861,6 +1866,8 @@ public:
                 mpeManager->updateVoiceExpression(v.mpeExpression);
             }
         }
+
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
 
         // ---- Per-sample: write grain source + tick schedulers ----
         bool isCouplingSource = (sourceMode == 5);
@@ -2174,9 +2181,14 @@ public:
             lastSampleL = outL[numSamples - 1];
             lastSampleR = outR[numSamples - 1];
         }
+
+        silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
 
 private:
+
+    SilenceGate silenceGate;
+
     //-- Helpers ----------------------------------------------------------------
 
     static int safeLoad (std::atomic<float>* p, int fallback) noexcept

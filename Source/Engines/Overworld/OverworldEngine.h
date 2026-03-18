@@ -2,6 +2,7 @@
 #include "../../Core/SynthEngine.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 
 // XOverworld DSP — included via target_include_directories in CMakeLists.txt
 #include "engine/VoicePool.h"
@@ -57,6 +58,7 @@ public:
         // P0-05 fix: allocate per-sample output cache for coupling reads
         outputCacheLeft.assign (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheRight.assign (static_cast<size_t> (maxBlockSize), 0.0f);
+        silenceGate.prepare(sampleRate, maxBlockSize);
     }
 
     void releaseResources() override
@@ -280,7 +282,7 @@ public:
                     filterEnvLevel = msg.getFloatVelocity();
             }
             // Decay: one-pole, coefficient chosen so envelope halves in ~200ms
-            const float decayCoeff = std::exp(-1.0f / (0.2f * sr));
+            const float decayCoeff = fastExp(-1.0f / (0.2f * sr));
             filterEnvLevel *= decayCoeff;
 
             const float filterEnvBoost = filterEnvDepth * filterEnvLevel * kOwFilterEnvMaxHz;
@@ -314,7 +316,10 @@ public:
         {
             const auto msg = meta.getMessage();
             if (msg.isNoteOn())
+            {
+                silenceGate.wake();
                 voicePool.noteOn(msg.getNoteNumber(), msg.getVelocity() / 127.0f);
+            }
             else if (msg.isNoteOff())
                 voicePool.noteOff(msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
@@ -325,6 +330,8 @@ public:
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
         }
+
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
 
         aftertouch.updateBlock(numSamples);
         const float atPressure = aftertouch.getSmoothedPressure(0);
@@ -344,14 +351,14 @@ public:
         // ERA portamento: one-pole IIR smoothing
         float targetEra  = juce::jlimit(0.0f, 1.0f,
                                         snap.era + externalEraMod
-                                        + snap.eraDriftDepth * 0.35f * std::sin(eraPhase * juce::MathConstants<float>::twoPi));
+                                        + snap.eraDriftDepth * 0.35f * fastSin(eraPhase * juce::MathConstants<float>::twoPi));
         float targetEraY = juce::jlimit(0.0f, 1.0f,
                                         snap.eraY + externalEraYMod
                                         + atPressure * 0.2f);
 
         float portaCoeff = 1.0f;
         if (snap.eraPortaTime > 0.001f)
-            portaCoeff = 1.0f - std::exp(-1.0f / (sr * snap.eraPortaTime));
+            portaCoeff = 1.0f - fastExp(-1.0f / (sr * snap.eraPortaTime));
 
         // ERA Memory ghost layer position (delayed)
         float ghostEra  = eraSmooth;
@@ -394,6 +401,8 @@ public:
         }
 
         lastSample = L[numSamples - 1];
+
+        silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getReadPointer(1), numSamples);
 
         // Reset per-block coupling accumulators
         externalFilterMod = 0.0f;
@@ -438,6 +447,9 @@ public:
     }
 
 private:
+
+    SilenceGate silenceGate;
+
     xoverworld::ParamSnapshot buildSnapshot() const
     {
         xoverworld::ParamSnapshot s;

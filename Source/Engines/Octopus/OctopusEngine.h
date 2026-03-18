@@ -3,6 +3,7 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/WavetableOscillator.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/Effects/LushReverb.h"
 #include <array>
 #include <cmath>
@@ -384,6 +385,8 @@ public:
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
 
+        silenceGate.prepare (sampleRate, maxBlockSize);
+
         // Build procedural organic wavetable
         buildOctopusWavetable();
 
@@ -551,6 +554,8 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
+            {
+                silenceGate.wake();
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel(), maxPoly, monoMode, legatoMode, glideCoeff,
                         pAmpA, pAmpD, pAmpS, pAmpR, pModA, pModD, pModS, pModR,
                         pSuckerDecay,
@@ -558,6 +563,7 @@ public:
                         effectiveCutoff, effectiveReso, effectiveArmRate, pArmSpread, pArmCount,
                         pInkThreshold, pInkDensity, effectiveInkDecay,
                         pShiftMicro);
+            }
             else if (msg.isNoteOff())
                 noteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
@@ -565,6 +571,8 @@ public:
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount_ = msg.getControllerValue() / 127.0f;
         }
+
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
 
         // --- Update per-voice MPE expression from MPEManager ---
         if (mpeManager != nullptr)
@@ -837,6 +845,8 @@ public:
         for (const auto& v : voices)
             if (v.active) ++count;
         activeVoices = count;
+
+        silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
 
     //==========================================================================
@@ -1164,6 +1174,9 @@ public:
     int getActiveVoiceCount() const override { return activeVoices; }
 
 private:
+
+    SilenceGate silenceGate;
+
     //==========================================================================
     // Safe parameter load
     //==========================================================================

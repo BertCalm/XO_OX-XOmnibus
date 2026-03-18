@@ -2,6 +2,7 @@
 #include "../../Core/SynthEngine.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/Effects/Saturator.h"
 #include <array>
@@ -262,6 +263,8 @@ public:
         outputCacheR.assign (static_cast<size_t> (maxBlockSize), 0.0f);
 
         aftertouch.prepare (sampleRate);
+
+        silenceGate.prepare (sampleRate, maxBlockSize);
 
         couplingAudioBuffer.setSize (2, maxBlockSize, false, true, false);
         couplingRingBuffer .setSize (2, maxBlockSize, false, true, false);
@@ -618,6 +621,7 @@ public:
             auto message = meta.getMessage();
             if (message.isNoteOn())
             {
+                silenceGate.wake();
                 // Round 11D: Legato mode — if a voice is gate-open (active and not
                 // in release), slide its pitch to the new note without retriggering
                 // the envelope. This preserves the spectral bloom during legato lines.
@@ -670,6 +674,8 @@ public:
             else if (message.isController() && message.getControllerNumber() == 1)
                 modWheelValue = message.getControllerValue() / 127.0f;
         }
+
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
 
         // D006: smooth aftertouch and apply to morph — pressure pushes toward profile B
         aftertouch.updateBlock (numSamples);
@@ -943,10 +949,14 @@ public:
         }
         if (externalFmActive)
             couplingAudioBuffer.clear (1, 0, numSamples);
+
+        silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
 
 
 private:
+
+    SilenceGate silenceGate;
 
     //==========================================================================
     //  VOICE MANAGEMENT

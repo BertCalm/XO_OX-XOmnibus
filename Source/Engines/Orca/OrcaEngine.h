@@ -3,6 +3,7 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/WavetableOscillator.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/Effects/Compressor.h"
 #include <array>
 #include <cmath>
@@ -325,6 +326,7 @@ public:
     {
         sr = sampleRate;
         srf = static_cast<float> (sr);
+        silenceGate.prepare (sampleRate, maxBlockSize);
 
         smoothCoeff = 1.0f - std::exp (-kTwoPi * (1.0f / 0.005f) / srf);
         crossfadeRate = 1.0f / (0.005f * srf);
@@ -516,16 +518,26 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
+            {
+                silenceGate.wake();
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel(), maxPoly, monoMode, legatoMode, glideCoeff,
                         pAmpA, pAmpD, pAmpS, pAmpR, pModA, pModD, pModS, pModR,
                         pLfo1Rate, pLfo1Depth, pLfo1Shape, pLfo2Rate, pLfo2Depth, pLfo2Shape,
                         effectiveCutoff, effectiveReso, formantFreqs, formantQ);
+            }
             else if (msg.isNoteOff())
                 noteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount_ = msg.getControllerValue() / 127.0f;
+        }
+
+        // SilenceGate: skip all DSP if engine has been silent long enough
+        if (silenceGate.isBypassed() && midi.isEmpty())
+        {
+            buffer.clear();
+            return;
         }
 
         // --- Update per-voice MPE expression from MPEManager ---
@@ -802,6 +814,11 @@ public:
         for (const auto& v : voices)
             if (v.active) ++count;
         activeVoices = count;
+
+        // SilenceGate: analyze output level for next-block bypass decision
+        silenceGate.analyzeBlock (buffer.getReadPointer (0),
+                                  buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr,
+                                  numSamples);
     }
 
     //==========================================================================
@@ -1106,6 +1123,8 @@ public:
     int getActiveVoiceCount() const override { return activeVoices; }
 
 private:
+    SilenceGate silenceGate;
+
     //==========================================================================
     // Safe parameter load
     //==========================================================================

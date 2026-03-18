@@ -13,6 +13,7 @@
 #include "../../Core/SynthEngine.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <vector>
 #include <algorithm>
@@ -736,6 +737,7 @@ public:
     {
         sr = sampleRate;
         srf = static_cast<float> (sr);
+        silenceGate.prepare (sampleRate, maxBlockSize);
 
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
@@ -902,8 +904,11 @@ public:
             for (int i = 0; i < numArpEvents; ++i)
             {
                 if (arpEvents[i].isNoteOn)
+                {
+                    silenceGate.wake();
                     noteOn (arpEvents[i].note, arpEvents[i].velocity,
                             glideAmt, voiceMode, maxPoly);
+                }
                 else
                     noteOff (arpEvents[i].note);
             }
@@ -914,8 +919,11 @@ public:
             {
                 const auto msg = metadata.getMessage();
                 if (msg.isNoteOn())
+                {
+                    silenceGate.wake();
                     noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
                             glideAmt, voiceMode, maxPoly);
+                }
                 else if (msg.isNoteOff())
                     noteOff (msg.getNoteNumber());
                 else if (msg.isAllNotesOff() || msg.isAllSoundOff())
@@ -944,6 +952,13 @@ public:
                 else if (msg.isController() && msg.getControllerNumber() == 1)
                     modWheelValue = msg.getControllerValue() / 127.0f;
             }
+        }
+
+        // SilenceGate: skip all DSP if engine has been silent long enough
+        if (silenceGate.isBypassed() && midi.isEmpty())
+        {
+            buffer.clear();
+            return;
         }
 
         // D006: smooth aftertouch pressure and compute modulation value
@@ -1170,6 +1185,11 @@ public:
         activeVoiceCount.store (cnt, std::memory_order_relaxed);
 
         envelopeOutput = peakEnv;
+
+        // SilenceGate: analyze output level for next-block bypass decision
+        silenceGate.analyzeBlock (buffer.getReadPointer (0),
+                                  buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr,
+                                  numSamples);
     }
 
     //-- Coupling --------------------------------------------------------------
@@ -1367,6 +1387,8 @@ public:
     }
 
 private:
+    SilenceGate silenceGate;
+
     //-- Voice management -------------------------------------------------------
 
     void noteOn (int noteNumber, float velocity, float glideAmt, int voiceMode, int maxPoly)

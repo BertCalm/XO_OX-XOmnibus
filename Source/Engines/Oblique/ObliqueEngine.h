@@ -40,6 +40,7 @@
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 #include <vector>
@@ -699,6 +700,8 @@ public:
             voice.voiceFilter.setMode (CytomicSVF::Mode::LowPass);
             voice.bounce.prepare (hostSampleRate);
         }
+
+        silenceGate.prepare (sampleRate, maxBlockSize);
     }
 
     void releaseResources() override
@@ -819,9 +822,12 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
+            {
+                silenceGate.wake();
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
                         oscWaveIndex, oscDetuneCents, glideTime, effectiveBounceRate, bounceClickTone,
                         voiceMode);
+            }
             else if (msg.isNoteOff())
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
@@ -833,6 +839,8 @@ public:
             else if (msg.isChannelPressure())
                 aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
         }
+
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
 
         // D006: smooth aftertouch pressure and compute modulation value
         aftertouch.updateBlock (numSamples);
@@ -1111,6 +1119,8 @@ public:
         }
 
         envelopeFollowerOutput = peakEnvelopeLevel;
+
+        silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
 
     //--------------------------------------------------------------------------
@@ -1419,6 +1429,9 @@ public:
     }
 
 private:
+
+    SilenceGate silenceGate;
+
     //--------------------------------------------------------------------------
     // Core state
     //--------------------------------------------------------------------------

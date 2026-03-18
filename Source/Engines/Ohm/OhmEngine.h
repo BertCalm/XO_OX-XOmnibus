@@ -2,6 +2,7 @@
 #include "../../Core/SynthEngine.h"
 #include "../../DSP/FamilyWaveguide.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 
@@ -240,6 +241,7 @@ public:
         sr = sampleRate;
         for(auto&v:voices)v.prepare(sampleRate);
         couplingBuf.resize(maxBlockSize*2,0);
+        silenceGate.prepare(sampleRate, maxBlockSize);
         // Prepare master FX
         delay.prepare(sampleRate, (int)(sampleRate * 2.5)); // max 2.5s delay buffer
         reverb.prepare(sampleRate);
@@ -256,6 +258,7 @@ public:
         for(const auto m:midi){
             auto msg=m.getMessage();
             if(msg.isNoteOn()){
+                silenceGate.wake();
                 int t=-1;
                 for(int i=0;i<kVoices;++i)if(!voices[i].active){t=i;break;}
                 if(t<0)t=nextV%kVoices; nextV=(t+1)%kVoices;
@@ -276,6 +279,9 @@ public:
                     if (v.active) v.vel = juce::jmax(v.vel, modWheel * 0.7f);
             }
         }
+
+        // SilenceGate: skip all DSP if engine has been silent long enough
+        if(silenceGate.isBypassed() && midi.isEmpty()){buf.clear();return;}
 
         // ------- Param reads (all 33 ohm_ params) -------
         // Section A: The Dad
@@ -408,6 +414,8 @@ public:
             lastSampleL=sL; lastSampleR=sR;
         }
         activeCount=0;for(auto&v:voices)if(v.active)++activeCount;
+        // SilenceGate: analyze output level for next-block bypass decision
+        silenceGate.analyzeBlock(buf.getReadPointer(0),buf.getNumChannels()>1?buf.getReadPointer(1):nullptr,ns);
     }
 
     float getSampleForCoupling(int ch,int) const override { return ch==0?lastSampleL:lastSampleR; }
@@ -537,6 +545,7 @@ public:
     int getActiveVoiceCount() const override { return activeCount; }
 
 private:
+    SilenceGate silenceGate;
     static constexpr int kVoices=12;
     double sr=44100;
     std::array<OhmAdapterVoice,kVoices> voices;

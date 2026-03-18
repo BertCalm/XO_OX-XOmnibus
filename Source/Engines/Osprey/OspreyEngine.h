@@ -3,6 +3,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/ShoreSystem/ShoreSystem.h"
 #include <array>
 #include <cmath>
@@ -885,6 +886,9 @@ public:
         hullFilterL.reset();   hullFilterR.reset();
 
         aftertouch.prepare (sampleRate);
+
+        silenceGate.prepare (sampleRate, maxBlockSize);
+        silenceGate.setHoldTime (500.0f);  // Osprey has harbor reverb tails
     }
 
     void releaseResources() override {}
@@ -1124,6 +1128,7 @@ public:
 
             if (msg.isNoteOn())
             {
+                silenceGate.wake();
                 handleNoteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
                               pAmpAttack, pAmpDecay, pAmpSustain, pAmpRelease,
                               morphedResonators, morphedCreatures, morphedFluid,
@@ -1144,6 +1149,8 @@ public:
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
         }
+
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
 
         aftertouch.updateBlock (numSamples);
         const float atPressure = aftertouch.getSmoothedPressure (0);
@@ -1551,6 +1558,8 @@ public:
         for (const auto& voice : voices)
             if (voice.active) ++count;
         activeVoiceCount = count;
+
+        silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
 
     //==========================================================================
@@ -1832,6 +1841,9 @@ public:
     int getActiveVoiceCount() const override { return activeVoiceCount; }
 
 private:
+
+    SilenceGate silenceGate;
+
     //==========================================================================
     // Helper: safe atomic parameter load
     //==========================================================================

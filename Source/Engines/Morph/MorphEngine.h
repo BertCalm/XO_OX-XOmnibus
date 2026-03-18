@@ -3,6 +3,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 
@@ -352,6 +353,7 @@ public:
         cachedSampleRate = sampleRate;
         cachedSampleRateFloat = static_cast<float> (cachedSampleRate);
         lfoPhase = 0.0;
+        silenceGate.prepare (sampleRate, maxBlockSize);
 
         aftertouch.prepare (sampleRate);  // D006: 5ms attack / 20ms release smoothing
 
@@ -478,6 +480,7 @@ public:
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
             {
+                silenceGate.wake();
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
                         effectiveDetune, effectiveMorph, effectiveCutoff, filterResonance,
                         effectivePolyphony, monoMode, legatoMode, glideCoefficient);
@@ -523,6 +526,13 @@ public:
                     modWheelMorphOffset = static_cast<float> (controllerValue) / 127.0f * 3.0f;
                 }
             }
+        }
+
+        // SilenceGate: skip all DSP if engine has been silent long enough
+        if (silenceGate.isBypassed() && midi.isEmpty())
+        {
+            buffer.clear();
+            return;
         }
 
         //----------------------------------------------------------------------
@@ -707,6 +717,11 @@ public:
                 outputCacheRight[static_cast<size_t> (sampleIndex)] = outputRight;
             }
         }
+
+        // SilenceGate: analyze output level for next-block bypass decision
+        silenceGate.analyzeBlock (buffer.getReadPointer (0),
+                                  buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr,
+                                  numSamples);
     }
 
     //==========================================================================
@@ -913,6 +928,8 @@ public:
     int getMaxVoices() const override { return kMaxVoices; }
 
 private:
+    SilenceGate silenceGate;
+
     //==========================================================================
     //  VOICE MANAGEMENT
     //==========================================================================
